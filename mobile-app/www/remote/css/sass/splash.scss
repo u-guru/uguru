@@ -6364,7 +6364,7 @@
 			@include flex;
 			@include flex-wrap;
 			@include flex-center;
-			margin-top: 60px;
+			margin-top: 20px!important;
 			padding: 7.5px;
 			width: 100%;
 			&:not(.active) {
@@ -6491,6 +6491,7 @@
 		}
 		@media screen and (min-width: 768px) {
 			ul {
+				margin-top: 60px!important;
 				max-width: 100%!important;
 				li {
 					padding: 15px;

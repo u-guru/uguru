@@ -9242,7 +9242,7 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 20px !important;
   padding: 7.5px;
   width: 100%;
 }
@@ -9418,6 +9418,7 @@ a:hover .hiw-everyone-container .hiw-everyone-wins .platform-2-90, a:focus .hiw-
 
 @media screen and (min-width: 768px) {
   #splash-demographic .splash-demographic-content ul {
+    margin-top: 60px !important;
     max-width: 100% !important;
   }
   #splash-demographic .splash-demographic-content ul li {
