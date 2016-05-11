@@ -1011,7 +1011,6 @@ angular.module('uguru.util.controllers')
 				var cssToChange = {transform: {}, etc: {}};
 				for (var i = 0; i < currentPropertiesModified.length - 1; i++) {
 					var indexPropertyName = currentPropertiesModified[i]
-					console.log('traversing all keyframes from t=0 to t=', valueIndex - 1, 'to search for the last ', indexPropertyName, 'edit, if it exists');
 					for (var j = 0; j < valueIndex - 1; j++) {
 						console.log('checking t=', j, 'for traces of', indexPropertyName);
 						var previousIndexPercentValue = propertiesSorted[j];
@@ -1074,7 +1073,7 @@ angular.module('uguru.util.controllers')
 				var nonTransformProperties = ['opacity', 'fill', 'backgroundColor', 'strokeDashArray', 'strokeOpacity', 'strokeWidth', 'strokeDashOffset','stroke', 'fillOpacity', 'color'];
 				var cssToChange = {transform: [], etc: {}};
 				var newPropertiesToModify = Object.keys($scope.animation.selected_keyframe.modified);
-				console.log(newPropertiesToModify);
+				// console.log(newPropertiesToModify);
 				for(var i = 0; i < newPropertiesToModify.length; i++) {
 					var indexPropertyName = newPropertiesToModify[i];
 					var propertyValue = $scope.animation.selected_keyframe[indexPropertyName]
@@ -1706,6 +1705,7 @@ angular.module('uguru.util.controllers')
 						for (var j = 0; j < modifiedDictKeys.length; j++) {
 							var indexModifiedKey = modifiedDictKeys[j];
 							var indexModifiedValue = modifiedDict[indexModifiedKey];
+							console.log($scope.animation.obj, indexModifiedKey, indexModifiedValue);
 							editKeyframeAtX($scope.animation, indexPropertyKeyPercent.replace('%',''), indexModifiedKey, indexModifiedValue);
 						}
 					}
@@ -2052,6 +2052,7 @@ angular.module('uguru.util.controllers')
 			// console.log(keyframe_percent, property, value)
 			var percentage = keyframe_percent;
 			anim.obj.deleteRule(percentage + '%');
+
 			// console.log('properties', anim.properties, keyframe_percent);
 			transformObj = anim.properties[percentage + '%'];
 			transformObj.edited = true;
@@ -2059,7 +2060,7 @@ angular.module('uguru.util.controllers')
 
 
 
-
+			console.log('setting', property, value);
 
 			if (!clear_css_text) {
 				var css_text = transformObjToCssText(transformObj, property);
@@ -2615,9 +2616,9 @@ angular.module('uguru.util.controllers')
 
 		function importLastAnimation() {
 			var lastAnimation = $localstorage.getObject('last_animation');
-			console.log(lastAnimation);
-			lastAnimation.attr.name.replace('-edit-edit', '-edit');
-			// if (lastAnimation && (!lastAnimation.attr || !lastAnimation.attr.name || !lastAnimation.attr.name.length)) {
+
+			// lastAnimation.attr.name.replace('-edit-edit', '-edit');
+			if (lastAnimation && (!lastAnimation.attr || !lastAnimation.attr.name || !lastAnimation.attr.name.length)) {
 
 				$scope.animation = initAnimation('base-animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
 				if ($scope.animation.obj.name.indexOf('-edit') === -1) {
@@ -2629,23 +2630,22 @@ angular.module('uguru.util.controllers')
 				if ($scope.stage && $scope.stage.stageName) {
 					$scope.updatePageDom($scope.stage.stageName, $scope.stage.stageHtml, $scope.stage.stageCss);
 				}
-			// } else {
+			} else {
+				// reconstructAnimationFromProperties(serverAnimation.attr, serverAnimation.properties, serverAnimation.kf_count);
 
-			// 	var callback = function() {
-			// 		// if ($scope.animation.obj.name.indexOf('-edit') === -1) {
-			// 		// 	$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
-			// 		// 	$scope.animation.attr.name = $scope.animation.obj.name + '-edit';
-			// 		// }
-			// 		$scope.animationDropdown.options[0] = $scope.animation.obj.name;
-			// 		$scope.animationDropdown.options.push('Save');
-			// 		if ($scope.stage && $scope.stage.stageName) {
-			// 			$scope.updatePageDom($scope.stage.stageName, $scope.stage.stageHtml, $scope.stage.stageCss);
-			// 		}
-			// 	}
-			// 	$timeout(function() {
-			// 		$scope.animation = reconstructAnimationFromProperties(lastAnimation.attr, lastAnimation.properties, lastAnimation.kf_count, callback);
-			// 	}, 2500)
-			// }
+				var callback = function() {
+					// if ($scope.animation.obj.name.indexOf('-edit') === -1) {
+					// 	$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
+					// 	$scope.animation.attr.name = $scope.animation.obj.name + '-edit';
+					// }
+					$scope.animationDropdown.options[0] = $scope.animation.obj.name;
+					$scope.animationDropdown.options.push('Save');
+					if ($scope.stage && $scope.stage.stageName) {
+						$scope.updatePageDom($scope.stage.stageName, $scope.stage.stageHtml, $scope.stage.stageCss);
+					}
+				}
+				reconstructAnimationFromProperties(lastAnimation.attr, lastAnimation.properties, lastAnimation.kf_count, callback)
+			}
 
 			return;
 		}
@@ -2900,8 +2900,19 @@ angular.module('uguru.util.controllers')
 				if (indexAnimation.owner === 'asif') {
 					indexAnimation.owner = 'samir';
 				}
+			}
+			for (var i = 0; i < animation_arr.length; i++) {
 
+				importAnimation(animation_arr[i], i * 50)
+			}
 
+			function importAnimation(animation, delay) {
+				$timeout(function() {
+					var lastAnimation = animation;
+					$scope.importFromCSSText(animation.cssText, animation.name);
+
+					// reconstructAnimationFromProperties(lastAnimation.attr, lastAnimation.properties, lastAnimation.kf_count);
+				}, delay || 0)
 			}
 
 			return animation_arr
@@ -3015,7 +3026,7 @@ angular.module('uguru.util.controllers')
 			injectStyleSheet();
 		})
 
-
+		// $localstorage.removeObject('last_animation');
 		//start core functions
 		//core #1
 		function importAnimationFromRawCssText(css_text, name) {
@@ -3074,9 +3085,11 @@ angular.module('uguru.util.controllers')
 							var transformString = indexRule.style[indexStyleProperty];
 							console.log(indexStyleProperty, transformString);
 							var matrixTransform = transformString;
-
+								if (matrixTransform === 'matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)') {
+									continue;
+								}
 							// if (indexStyleProperty.indexOf('matrix') > -1) {
-								var m = new WebKitCSSMatrix(matrixTransform.replace('%', 'px'));
+								var m = new WebKitCSSMatrix(replaceAll(matrixTransform, '%', 'px'));
 								matrixTransform = "matrix3d(" + [m.m11, m.m12, m.m13, m.m14, m.m21, m.m22, m.m23, m.m24, m.m31, m.m32, m.m33, m.m34, m.m41, m.m42, m.m43, m.m44].join(", ") + ")";
 								dMatrix = dynamics.initMatrixFromTransform(matrixTransform);
 								var decomposedCSSText = getDMatrixString(dMatrix);
@@ -3085,6 +3098,7 @@ angular.module('uguru.util.controllers')
 							// }
 
 							if (decomposedCSSText) {
+								console.log(decomposedCSSText);
 								processedCSSText += decomposedCSSText;
 							}
 							// console.log(indexStyleProperty, indexRule.style[indexStyleProperty], );
@@ -3108,18 +3122,31 @@ angular.module('uguru.util.controllers')
 			for (var i = 0; i < mod_arr.length; i++) {
 				uguruAnimObj.obj.appendRule(mod_arr[i].key + " {" + mod_arr[i].css + " }", i);
 			}
+
 			var styleKeys = Object.keys(multiKFStyle);
+
+			//replace all previous style keys with updated transform value
+
+			// for (var i = 0; i < styleKeys.length; i++) {
+			// 	var styleKeyPercent = styleKeys[i];
+			// 	var styleKeyValue = multiKFStyle[styleKeyPercent];
+
+			// }
+
+			var originalMultiKFTextsToRemove = [];
 			for (var i = 0; i < styleKeys.length; i++) {
 				var indexKFStyle = styleKeys[i];
 				var indexKFValue = multiKFStyle[indexKFStyle];
 				var numPercentages = indexKFStyle.split('%,');
-				if (numPercentages.length > 1) {
+				if (numPercentages.length) {
 					var parsedPercentages = indexKFStyle.split(',');
 					for (var j = 0; j < parsedPercentages.length; j++) {
 						var indexPercent = parsedPercentages[j].trim();
+						console.log(indexPercent);
 						var intOfIndexPercent = parseInt(indexPercent.replace('%'));
 						var kfIndex = findKFByPercentage(uguruAnimObj.obj.cssRules, intOfIndexPercent);
 						var kf = uguruAnimObj.obj.cssRules.item(kfIndex);
+
 						if (kf) {
 							var resultAddOnCSS = "";
 							for (var k = 0; k < kf.style.length; k++) {
@@ -3135,6 +3162,16 @@ angular.module('uguru.util.controllers')
 							for (var k = 0; k < indexKFValue.length; k++) {
 								var indexStyle = indexKFValue[k];
 								var indexValue = indexKFValue[indexStyle];
+								if (indexStyle.indexOf('transform') > -1) {
+									for (var l = 0; l < uguruAnimObj.obj.cssRules.length; l++) {
+										var indexRule = uguruAnimObj.obj.cssRules.item(l);
+										if (indexRule.keyText.indexOf(indexPercent) > -1) {
+											if (indexRule.style['transform'] !== indexValue)  {
+												indexValue = indexRule.style['transform'];
+											}
+										}
+									}
+								}
 								resultAddOnCSS += indexStyle + ":" +  indexValue + '; ';
 								if (indexStyle.indexOf('animation') > -1) {
 									resultAddOnCSS += ('-' +browserPrefix + '-' + indexStyle + ":" +  indexValue + '; ');
@@ -3142,17 +3179,27 @@ angular.module('uguru.util.controllers')
 							}
 							uguruAnimObj.obj.deleteRule(indexPercent);
 							uguruAnimObj.obj.appendRule(indexPercent + " { " + resultAddOnCSS  + " }"  ,kfIndex);
+							var originalKF = uguruAnimObj.obj.cssRules.item(i);
+							var originalKFKeyText = originalKF.keyText;
+							if (originalKFKeyText.split(',').length >= 2) {
+								originalMultiKFTextsToRemove.push(originalKFKeyText);
+							}
 						} else {
 							console.log('error!');
 						}
 					}
-
-					var originalKF = uguruAnimObj.obj.cssRules.item(i);
-					var originalKFKeyText = originalKF.keyText;
-					uguruAnimObj.obj.deleteRule(originalKFKeyText);
 				}
 
 			}
+			console.log('multi-kfs to remove', originalMultiKFTextsToRemove, uguruAnimObj.obj)
+
+
+			for (var i = 0; i < originalMultiKFTextsToRemove.length; i++) {
+				var kfTextToRemove = originalMultiKFTextsToRemove[i];
+				uguruAnimObj.obj.deleteRule(kfTextToRemove);
+				delete uguruAnimObj.properties[kfTextToRemove];
+			}
+			console.log('should be removed', originalMultiKFTextsToRemove);
 
 			function findKFByPercentage(css_rules, percent_val) {
 				var percentValStr = percent_val + '%';
@@ -3184,10 +3231,11 @@ angular.module('uguru.util.controllers')
 			uguruAnimObj.kf_count = percentageKeys.length;
 
 			// , selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: num_keyframes, attr:attr}
-
+			console.log(uguruAnimObj);
 			return uguruAnimObj;
 
 		}
+		$localstorage.removeObject('last_animation');
 
 		function refreshTransformPropertyObjFromAnim(anim) {
 			console.log(anim.properties)
@@ -3201,14 +3249,29 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
+		function replaceAll(str, find, replace) {
+		  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+
+		  function escapeRegExp(str) {
+			    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+		  }
+
+		}
+
+		function processAllTransformValues(transform_str) {
+			transform_str = replaceAll(transform_str, ', ', ',').split(' ');
+			return transform_str;
+		}
+
 		function initTransformObjFromKF(kf) {
 			var transformObj = new transformPropertiesObj();
 			for (var i = 0; i < kf.style.length; i++) {
 				var indexStyle = kf.style[i];
 				var indexValue = kf.style[indexStyle];
 				if (indexStyle.indexOf('transform') > -1 && indexStyle.indexOf('transform-origin') === -1) {
-					var separateTransformValues = indexValue.replace(', ', ',').split(' ');
-					console.log(indexStyle, separateTransformValues);
+
+					var separateTransformValues = processAllTransformValues(indexValue);
+
 					for (var j = 0; j < separateTransformValues.length; j++) {
 						var indexTransformPropSplit = separateTransformValues[j].replace(')', '').split('(');
 						var transformPropertyName = indexTransformPropSplit[0];
