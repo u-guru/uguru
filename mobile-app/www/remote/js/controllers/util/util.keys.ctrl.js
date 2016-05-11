@@ -192,7 +192,7 @@ angular.module('uguru.util.controllers')
 
 		$scope.asideTabIndex = 2;
 
-		$scope.intervals = {arr: [], enabled: false, count: 5, onChange: onChangeIntervalState};
+		$scope.intervals = {arr: [], enabled: false, count: 5, onCheck: onIntervalCheckbox, onChange: onChangeIntervalState};
 		$scope.animationSneakPreview = {show: false, content: ''};
 		$scope.showKFBarPercentage = {show: false};
 		$scope.keyShortcuts = {
@@ -200,12 +200,23 @@ angular.module('uguru.util.controllers')
 		}
 
 		function onChangeIntervalState(count) {
+
 			$timeout(function() {
 				if ($scope.intervals.enabled) {
 					$scope.intervals.arr = newArrSize($scope.intervals.count);
 				}
 			})
 		}
+
+		function onIntervalCheckbox(value) {
+			$timeout(function() {
+				if (value) {
+					onChangeIntervalState($scope.intervals.count);
+				}
+				$scope.$apply();
+			}, 100)
+		}
+
 		function newArrSize(num) {
 			var resultArr = [];
 			for (var i = 0; i <= num; i++) {
@@ -1915,6 +1926,7 @@ angular.module('uguru.util.controllers')
 
 			$timeout(function() {
 				console.log($scope.animation.selected_keyframe);
+				$scope.renderAnimationCSSText($scope.animation, true);
 			})
 			// console.log($scope.animation.obj.cssText);
 			// }, 500)
@@ -2812,8 +2824,10 @@ angular.module('uguru.util.controllers')
 			$scope.stageElemDefaults.draggable = !$scope.stageElemDefaults.draggable;
 		}
 
-		$scope.renderAnimationCSSText = function(animation) {
-			$scope.layout.index = 2;
+		$scope.renderAnimationCSSText = function(animation, skip_tab_switch) {
+			if (!skip_tab_switch) {
+				$scope.layout.index = 2;
+			}
 
 			var tempAnim = initAnimationFromCSSText(animation.obj.name, browserPrefix, animation.obj.cssText);
 			var cssRulesLength = animation.obj.cssRules.length;
@@ -2844,7 +2858,7 @@ angular.module('uguru.util.controllers')
 		$scope.saveAnimationClass = function(animation, owner) {
 			console.log('rendering', animation);
 			if (!animation.exportable_kf) {
-				$scope.renderAnimationCSSText(animation);
+				$scope.renderAnimationCSSText(animation, true);
 			}
 			if (animation.exportable_kf.className.length && animation.exportable_kf.classText.length) {
 				var payloadDict = {
@@ -3508,6 +3522,7 @@ angular.module('uguru.util.controllers')
 			// var js_anim_obj = importAnimationFromRawCssText(css_text, name);
 
 			// var final_obj = initAnimationFromAnimObj(js_anim_obj);
+			var originAnimCSSText = css_text;
 			$scope.animationDropdown.options[0] = name;
 			$scope.showStatusMsgForXSec('Importing ' + name + ' ....', 2500);
 			$scope.animation = importAndProcessAnimationCSSTextByKF(css_text, name);
@@ -3530,6 +3545,7 @@ angular.module('uguru.util.controllers')
 
 			$localstorage.setObject('last_animation',$scope.animation);
 			$scope.layout.index = 0;
+			$scope.animation.obj.origCSSText = originAnimCSSText;
 			return $scope.animation;
 		}
 
