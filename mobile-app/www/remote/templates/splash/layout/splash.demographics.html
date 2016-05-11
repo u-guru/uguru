@@ -1,15 +1,11 @@
 <div class="full-xy flex-center relative" >
-
     <div class="splash-projector-bg bg-slate-75p absolute top-0 left-0 full-xy opacity-0 activate" ng-controller='AccountPageController' class-on-activate="fadeIn:anim"></div>
-    <div class="splash-projector-school projector-slide matrix-0 activate relative"
-        class-on-activate="u-slideInDown, null:inject#echo-loader-echo|activate, null:inject#echo-loader-main|activate, null:inject#echo-loader-number tspan|activate, null:inject#echo-loader|clear, null:inject.splash-school-loader-container|clear, null:inject#splash-school-search-guru|activate, null:inject.coach-support|activate"
-        class-on-clear="bounceOutUp:animOut">
+    <div class="splash-projector-school projector-slide matrix-0 activate relative" class-on-activate="u-slideInDown, null:inject#echo-loader-echo|activate, null:inject#echo-loader-main|activate, null:inject#echo-loader-number tspan|activate, null:inject#echo-loader|clear, null:inject.splash-school-loader-container|clear, null:inject#splash-school-search-guru|activate, null:inject.coach-support|activate" class-on-clear="bounceOutUp:animOut">
         <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
             <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
         </svg>
         <div class="projector-top"></div>
-        <div class="projector-content relative flex-wrap-center full-xy" id="splash-demographic" ng-controller='SplashController'>
-
+        <div class="projector-content relative flex-wrap-center" id="splash-demographic" ng-controller='SplashController'>
             <div class="splash-projector-guru absolute full-x flex-wrap-center">
                 <div class="splash-logo-guru" ng-include="img_base + 'templates/svg/guru-head.html'"></div>
                 <svg class="coach active" width="114px" height="98px" viewBox="0 0 228 196">
@@ -19,8 +15,8 @@
                         <tspan x="76.2331477" y="133.776332">you?</tspan>
                     </text>
                     <text transform="translate(116.193148, 94.776332) rotate(24.000000) translate(-116.193148, -94.776332) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF" ng-if='user.demographic && user.demographic.name !== "College Student"'>
-                        <tspan x="48.6931477" y="93.7763318">Nice! You</tspan>
-                        <tspan x="76.2331477" y="133.776332">are a ...</tspan>
+                        <tspan x="48.6931477" y="93.7763318">nice! you</tspan>
+                        <tspan x="76.2331477" y="133.776332">are a</tspan>
                     </text>
                 </svg>
             </div>
@@ -46,7 +42,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class='info-demographic-button flex-wrap-center ugrid-3 absolute bottom-0 full-x left-0'>
+                <div class='info-demographic-button flex-wrap-center absolute bottom-0 full-x left-0'>
                     <button class="btn-ghost-white hide" ng-class='{"show": user.demographic && user.demographic.name === "College Student"}' ng-click='clearDemographic()'>Back</button>
                     <button class="btn-ghost-white hide" ng-class='{"show": user.demographic && user.demographic.name !== "College Student"}' ng-click='clearDemographic()'>Edit</button>
                 </div>
