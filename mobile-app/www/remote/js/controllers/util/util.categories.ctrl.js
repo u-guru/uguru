@@ -40,6 +40,13 @@ angular.module('uguru.util.controllers')
       $scope.active_category.active = true;
     }
 
+    $scope.returnCategories = function (requestForm) {
+      if (requestForm) {
+        requestForm.category = {};
+      }
+      $scope.active_category.active = false;
+    }
+
     $scope.launchCategoryModal = function(category) {
 
 

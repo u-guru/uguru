@@ -113,7 +113,7 @@ angular.module('uguru.student.controllers', [])
                 $timeout(function() {
                     console.log("initAllCTAS")
                     initAllCTAS();
-                },1)
+                },2000)
             }
 
 

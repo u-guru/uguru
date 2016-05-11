@@ -6,7 +6,7 @@
 		</header>
 		<ul class="request-category-tiles desktop max-1030 flex-center-wrap p15-grid" ng-if="desktopMode">
 			<li name='category-menu' ng-repeat='category in ::categories' ng-if='category.is_active'>
-				<a class="category-tile bg-{{category.hex_color}} no-photo">
+				<a class="category-tile bg-{{category.hex_color}} no-photo"  ng-click='showDesktopSubcategories(category, requestForm)'>
 					<svg width="240px" height="150px" viewBox="0 0 240 150">
 						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 					</svg>
@@ -59,7 +59,7 @@
 				</a>
 			</li>
 			<li class="full-x flex-center">
-				<button class='bg-{{::category.hex_color}} normal radius-2 width-300'>Back</button>
+				<button class='bg-{{::category.hex_color}} normal radius-2 width-300' ng-click='returnCategories(requestForm)'>Back</button>
 			</li>
 		</ul>
 	</div>
