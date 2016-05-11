@@ -7,15 +7,15 @@
 		<div class="request-courses">
 			<h1>Choose a Course</h1>
 			<ul class="request-course-list desktop p15-grid ugrid-3" ng-if="desktopMode">
-				<li>
+				<li class='course-card' ng-click='requestForm.course = course' ng-repeat='course in user.student_courses'>
 					<div class="course-card">
 						<svg width="240px" height="150px" viewBox="0 0 240 150">
 							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 						</svg>
 						<input type="radio" name="request-course-tile" checked/>
 						<div class="course-card-inside">
-							<h2 style="color: #003262;">BIO 1A</h2>
-							<h1 style="color: #003262;">Introduction to Biology</h1>
+							<h2 style="color: #003262;">{{course.short_name}}</h2>
+							<h1 style="color: #003262;">{{course.title}}</h1>
 						</div>
 						<div class="course-card-border" style="background: #003262;"></div>
 						<span class="course-card-count">
@@ -26,83 +26,7 @@
 						</span>
 					</div>
 				</li>
-				<li>
-					<div class="course-card">
-						<svg width="240px" height="150px" viewBox="0 0 240 150">
-							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-						</svg>
-						<input type="radio" name="request-course-tile"/>
-						<div class="course-card-inside">
-							<h2 style="color: #003262;">BIO 1A</h2>
-							<h1 style="color: #003262;">Introduction to Biology</h1>
-						</div>
-						<div class="course-card-border" style="background: #003262;"></div>
-						<span class="course-card-count">
-							<span style="background: #003262;"></span>
-							<svg viewBox="0 0 100 100">
-								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-							</svg>
-						</span>
-					</div>
-				</li>
-				<li>
-					<div class="course-card">
-						<svg width="240px" height="150px" viewBox="0 0 240 150">
-							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-						</svg>
-						<input type="radio" name="request-course-tile"/>
-						<div class="course-card-inside">
-							<h2 style="color: #003262;">BIO 1A</h2>
-							<h1 style="color: #003262;">Introduction to Biology</h1>
-						</div>
-						<div class="course-card-border" style="background: #003262;"></div>
-						<span class="course-card-count">
-							<span style="background: #003262;"></span>
-							<svg viewBox="0 0 100 100">
-								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-							</svg>
-						</span>
-					</div>
-				</li>
-				<li>
-					<div class="course-card">
-						<svg width="240px" height="150px" viewBox="0 0 240 150">
-							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-						</svg>
-						<input type="radio" name="request-course-tile"/>
-						<div class="course-card-inside">
-							<h2 style="color: #003262;">BIO 1A</h2>
-							<h1 style="color: #003262;">Introduction to Biology</h1>
-						</div>
-						<div class="course-card-border" style="background: #003262;"></div>
-						<span class="course-card-count">
-							<span style="background: #003262;"></span>
-							<svg viewBox="0 0 100 100">
-								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-							</svg>
-						</span>
-					</div>
-				</li>
-				<li>
-					<div class="course-card">
-						<svg width="240px" height="150px" viewBox="0 0 240 150">
-							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-						</svg>
-						<input type="radio" name="request-course-tile"/>
-						<div class="course-card-inside">
-							<h2 style="color: #003262;">BIO 1A</h2>
-							<h1 style="color: #003262;">Introduction to Biology</h1>
-						</div>
-						<div class="course-card-border" style="background: #003262;"></div>
-						<span class="course-card-count">
-							<span style="background: #003262;"></span>
-							<svg viewBox="0 0 100 100">
-								<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-							</svg>
-						</span>
-					</div>
-				</li>
-				<li>
+				<li id='cta-box-request-courses'>
 					<a class="course-card">
 						<svg width="240px" height="150px" viewBox="0 0 240 150">
 							<rect x="0" y="0" width="240" height="150" fill="none"></rect>
@@ -118,27 +42,6 @@
 			<ul class="request-course-list mobile" ng-if="!desktopMode">
 				<li class='course-item' ng-click='requestForm.course = course' ng-repeat='course in user.student_courses'>
 					<a>{{course.short_name}}</a>
-				</li>
-				<li class="course-item">
-					<a>Bio 1A</a>
-				</li>
-				<li class="course-item">
-					<a>Bio 1A</a>
-				</li>
-				<li class="course-item">
-					<a>Bio 1A</a>
-				</li>
-				<li class="course-item">
-					<a>Bio 1A</a>
-				</li>
-				<li class="course-item">
-					<a>Bio 1A</a>
-				</li>
-				<li class="course-item">
-					<a>Bio 1A</a>
-				</li>
-				<li class="course-item">
-					<a>Bio 1A</a>
 				</li>
 				<li id='cta-box-request-courses' class='course-item'>
 					<a>+ Add One</a>

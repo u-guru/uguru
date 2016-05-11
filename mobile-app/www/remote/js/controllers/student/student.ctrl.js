@@ -113,6 +113,7 @@ angular.module('uguru.student.controllers', [])
                 $timeout(function() {
                     console.log("initAllCTAS")
                     initAllCTAS();
+                    console.log("user",$scope.user.student_courses)
                 },2000)
             }
 
