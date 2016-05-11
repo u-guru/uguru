@@ -2039,16 +2039,16 @@ angular.module('uguru.util.controllers')
 				kf.modified[property] = 0;
 			}
 			var defaultValue = getDefaultValue(property);
-			editKeyframeAtX($scope.animation, percent_value, property, defaultValue);
+			editKeyframeAtX($scope.animation, percent_value.replace('%', ''), property, defaultValue);
 
-			editKeyframeAtX($scope.animation, percent_value, property, null);
+			editKeyframeAtX($scope.animation, percent_value.replace('%', ''), property, null);
 			kf[property] = defaultValue;
 
 
 
 
 			$timeout(function() {
-				$scope.setActiveKeyFrame($scope.animation.selected_percent)
+				$scope.setActiveKeyFrame($scope.animation.selected_percent.replace('%', ''))
 				$scope.$apply();
 			}, 500);
 		}
