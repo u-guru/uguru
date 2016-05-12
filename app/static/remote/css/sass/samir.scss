@@ -2243,3 +2243,32 @@ button[disabled] {
 	border-radius: 5px;
 	background: linear-gradient(135deg, rgba(255,255,255,.25) 0%,rgba(255,255,255,0) 60%);
 }
+
+.max-height-125 {
+	max-height:125px !important;
+}
+
+.max-height-50 {
+	max-height:50px !important;
+	.stage-elem-clone-container {
+		svg, > * {
+			position:absolute !important;
+			min-width:initial !important;
+			min-height:initial !important;
+			height:50px !important;
+			width:50px !important;
+			max-height:50px !important;
+			max-width:50px !important;
+			left:10% !important;
+		}
+	}
+	> a {
+		top:25% !important;
+		position:absolute !important;
+		i {
+			width:20px;
+			height:20px;
+			font-size:30px;
+		}
+	}
+}

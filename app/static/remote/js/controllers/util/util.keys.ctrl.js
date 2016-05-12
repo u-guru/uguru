@@ -191,7 +191,8 @@ angular.module('uguru.util.controllers')
 			$scope.asideTabIndex = Math.abs(($scope.asideTabIndex + 1) % 3)};
 
 		$scope.asideTabIndex = 2;
-
+		$scope.kfTools = {cloneConfirm: false};
+		$scope.animationPreview = {collapsed: true};
 		$scope.intervals = {arr: [], enabled: false, count: 5, onCheck: onIntervalCheckbox, onChange: onChangeIntervalState};
 		$scope.animationSneakPreview = {show: false, content: ''};
 		$scope.showKFBarPercentage = {show: false};
@@ -2906,7 +2907,7 @@ angular.module('uguru.util.controllers')
 				document.execCommand('copy')
 			}, 1000)
 			function generateClassText(anim) {
-				 return "." + anim.obj.name + "\n{\n   " + ' animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n    ' + browserPrefix + '-' + 'animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n}\n\n'
+				 return "." + anim.obj.name + "\n{\n   " + ' animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n    ' + '-' + browserPrefix + '-' + 'animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n}\n\n'
 			}
 		}
 

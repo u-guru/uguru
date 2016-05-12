@@ -519,10 +519,12 @@
                 </div>
             </div>
             <div class="full-x absolute" style="height: calc(100% - 60px);" ng-hide='asideTabIndex !== 2'>
-                <div style='height:125px !important;' class='bg-azure-20p flex-wrap-center relative full-x p15xy preview-container ugrid-2'>
+                <div class='bg-azure-20p flex-wrap-center relative full-x p15xy preview-container ugrid-2' ng-class="{'max-height-125':!animationPreview.collapsed, 'max-height-50':animationPreview.collapsed}">
+                    <a ng-click='animationPreview.collapsed = !animationPreview.collapsed;' ng-if='animationPreview.collapsed'> <i class='icon ion-chevron-down'> </i></a>
+                    <a ng-click='animationPreview.collapsed = !animationPreview.collapsed;' class='absolute right-0' ng-if='!animationPreview.collapsed'> <i class='icon ion-chevron-up'> </i></a>
                     <div class='full-y stage-elem-clone-container'>
                     </div>
-                    <div class='flex-wrap-center flex-stretch' style='max-height:125px;'>
+                    <div class='flex-wrap-center flex-stretch' ng-class="{'max-height-125':!animationPreview.collapsed, 'max-height-50':animationPreview.collapsed}">
                         <h1 class='upper-case weight-600 txt-1 p05y full-x uppercase'> <span class='opacity-50'> Animated Component:</span>
                             <span class='upper-case weight-600 txt-1 p05y full-x text-center uppercase opacity-3'> {{actor.id || actor.className}} </span>
                         </h1>
@@ -555,7 +557,7 @@
                         </div>
                     </div>
                 </div>
-                <ul class="flex-space-between p15-grid bg-campus-50p">
+                <ul class="flex-space-between p15-grid bg-charcoal-50p">
                     <li class='flex-wrap-center' ng-if='animation.edit' style='width:100%'>
                         <div class='flex-wrap-center' style='width:70%'>
                             <h2 class="txt-18 semibold block">Name</h2>
@@ -592,14 +594,19 @@
 
                     <ul class="full-x ugrid-2">
                         <li class="height-36">
-                            <button ng-click="applyCurrentKFtoAnother(animation.flex_selected_index)" class='height-36 txt-18 bg-moxie'>clone @ T = {{animation.flex_selected_index}}</button>
+                            <button ng-if='!kfTools.cloneConfirm' ng-click='kfTools.cloneConfirm = true;' ng-click="" class='height-36 txt-18 bg-campus'>clone @ T = {{animation.flex_selected_index}}</button>
+                            <button ng-if='kfTools.cloneConfirm' ng-click='applyCurrentKFtoAnother(animation.flex_selected_index);' ng-click="" class='height-36 txt-18 bg-moxie'>Tap to clone @ T = {{animation.flex_selected_index}}</button>
+
                         </li>
-                        <li class="height-36 relative">
-                            <button ng-click='clearAllProperties(animation.selected_keyframe)' class='absolute full-xy height-36 txt-18 bg-crimson' ng-if='!animation.selected_keyframe.confirmed'> reset </button>
+                        <li class="height-36 relative" ng-if='kfTools.cloneConfirm'>
+                            <button ng-click='kfTools.cloneConfirm = !kfTools.cloneConfirm;' class='height-36 txt-18 bg-crimson'>cancel clone @ T </button>
+                        </li>
+                        <li class="height-36 relative" ng-if="!kfTools.cloneConfirm">
+                            <button ng-click='clearAllProperties(animation.selected_keyframe)' class='absolute full-xy height-36 txt-18 bg-crimson' ng-if='!animation.selected_keyframe.confirmed'> reset all KF </button>
                             <button ng-click='clearAllProperties(animation.selected_keyframe)' class='absolute full-xy height-36 txt-18 bg-crimson' ng-if='animation.selected_keyframe.confirmed'> confirm? </button>
                         </li>
                     </ul>
-                    <div class="flex-center-vertical-wrap-space-between p15xy bg-campus-25p">
+                    <div class="flex-center-vertical-wrap-space-between p15xy bg-campus-25p" ng-if='kfTools.cloneConfirm'>
                         <div class='full-x'>
                             <h2 class="inline txt-18 semibold">KF#</h2>
                         </div>
