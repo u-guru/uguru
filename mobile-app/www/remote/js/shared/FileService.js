@@ -212,6 +212,7 @@ function FileService(LoadingService, Restangular, DevToolService) {
                             scope.$apply();
                         }
                     }
+                    console.log(scope.requestForm)
                 }
             });
             dropzoneElem.on("success", function(file, server_response) {
@@ -220,9 +221,6 @@ function FileService(LoadingService, Restangular, DevToolService) {
                     scope.requestForm.files.push(server_response);
                     scope.root.vars.getUserFromServer(scope);
                 }
-            })
-            dropzoneElem.on('maxfilesexceeded',function(x){
-                console.log('maxfilesexceeded')
             })
             dropzoneElem.on("sending", function(file, xhr, data) {
                 if (scope.user && scope.user.id) {
@@ -234,10 +232,6 @@ function FileService(LoadingService, Restangular, DevToolService) {
 
             });
             dropzoneElem.on("error", function(file, errorMessage, xml_error) {
-                console.log('errorMessage',errorMessage)
-                console.log('file',file)
-                console.log('xml_error',xml_error)
-
                 var fileExtension;
                 fileNameSplit = file.name.split('.')
                 if (fileNameSplit.length === 1) {

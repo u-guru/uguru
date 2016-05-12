@@ -59,7 +59,13 @@ angular.module('uguru.student.controllers', [])
         }
 
 
+        $scope.nextButton = function(){
+            console.log($scope.requestForm.nav)
+            index =  $scope.requestForm.nav.index
+            $scope.requestForm.nav.switchTo(index+1)
+        }
 
+        
         $scope.closeRequestModal = function() {
             $scope.requestModal.hide();
             $ionicSlideBoxDelegate.update();
