@@ -1310,6 +1310,7 @@ angular.module('uguru.util.controllers')
 				return count;
 			}
 
+
 			function constructAllAnimationStrings(main_anim, anim_arr) {
 				var resultString = constructAnimationString(main_anim) + ', ';
 				for (var i = 0; i < anim_arr.length; i++) {
@@ -1483,6 +1484,19 @@ angular.module('uguru.util.controllers')
 				elem.style.cssText = elem.style.cssText + csstext;
 			}
 		}
+
+		$scope.swapAnimationWithActive = function(animation, index) {
+				var newActiveAnimation = $scope.animations.splice(index, 1);
+				$scope.animation.active = false;
+				var newSubAnimation = $scope.animation;
+				$scope.animation = null;
+				$timeout(function() {
+					$scope.animation = newActiveAnimation[0];
+					$scope.animation.active = true;
+					$scope.animations.unshift(newSubAnimation);
+				}, 1000)
+
+			}
 
 		var transformObjToCssText = function(dance_obj, property) {
 			var unit ='%';

@@ -605,9 +605,9 @@
                 <div class="overflow-auto no-scrollbar" style="height: calc(100% - 66px); overflow-x:hidden;">
 
                     <ul class="ugrid-4" style='width:calc(150px * {{animations.length}}); overflow: auto;'>
-                        <li style='height:50px;width:150px;' class='imported-animation-unfocused txt-1 uppercase weight-400 txt-white bg-slate-80p flex-vertical-center flex-stretch text-right relative p05xy' ng-repeat='animation in animations.slice(1)'>
+                        <li style='height:50px;width:150px;' class='imported-animation-unfocused txt-1 uppercase weight-400 txt-white bg-slate-80p flex-vertical-center flex-stretch text-right relative p05xy' ng-repeat='animation in animations track by $index'>
                             <checkbox style='width:20%;' class='txt-1 absolute left-0' value="animation.active"> </checkbox>
-                            <span style='left:20%;width:80%; padding-left:5px;' class='absolute flex-wrap-center text-left'>{{animation.obj.name}} </span>
+                            <a on-hold="swapAnimationWithActive(animation, $index)" style='height:inherit;left:20%;width:80%; padding-left:5px;' class='absolute flex-wrap-center text-left'>{{animation.obj.name}} </a>
                         </li>
                     </ul>
                     <ul class="full-x ugrid-4">
