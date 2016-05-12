@@ -1312,7 +1312,7 @@ angular.module('uguru.util.controllers')
 
 
 			function constructAllAnimationStrings(main_anim, anim_arr) {
-				var resultString = constructAnimationString(main_anim) + ', ';
+				var resultString = '';
 				for (var i = 0; i < anim_arr.length; i++) {
 					if (i === anim_arr.length - 1) {
 						resultString += (constructAnimationString(anim_arr[i]));
@@ -1343,14 +1343,14 @@ angular.module('uguru.util.controllers')
 
 
 				var isMoreThanOneAnimationActive = numActiveSubAnimations();
+				var animationString = constructAnimationString($scope.animation);
 				if (isMoreThanOneAnimationActive) {
-					var animationString = constructAllAnimationStrings($scope.animation, $scope.animations);
-				} else {
-					var animationString = constructAnimationString($scope.animation);
+					animationString += (',' + constructAllAnimationStrings($scope.animation, $scope.animations));
 				}
 
 
 				// $scope.animation.obj.name = $scope.animation.obj.animation = animationString;
+				console.log('playing animation', animationString);
 				elem.style.animation = animationString;
 				elem.style[browserPrefix + "Animation"] = animationString;
 
