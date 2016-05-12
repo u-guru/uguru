@@ -113,7 +113,7 @@
         <ul class='list list-item-half flex-wrap'>
             <li ng-repeat='category in categories' style='background:url({{categories_img_base + category.background_url}})'>
                 <a class='skill-item-link skill-item-bg-{{category.hex_color}} ng-class:{"important":category.active_subcategories > 0}' ng-click='launchCategoryModal(category)'>
-                    <img='background:url({{category.icon_url}})'/>
+                    <img style='background:url({{category.icon_url}})'/>
                     <div>
                         <span class="skill-label ng-class:{'count-exists':category.active_subcategories > 0}">{{category.hex_color}}</span>
                         <span class="skill-count" ng-show='category.active_subcategories > 1'>{{category.active_subcategories}}</span>

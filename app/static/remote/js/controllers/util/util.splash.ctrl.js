@@ -175,7 +175,41 @@ angular.module('uguru.util.controllers')
         })
       }, 1000)
     }
-    $scope.updateUserIdCard = function(field_name, val, form) {
+    $scope.reset = function(field_name,form,isValid)
+    {
+      if (field_name === 'name' && !form.full_name)
+      {
+        form.activateErrorName = false;
+        form.validateName = false;
+        if (!form.email){
+          form.activateEmail = false
+        }
+        if (!form.password){
+          form.activatePassword = false
+        }
+        $scope.user.name = form.full_name;
+      }
+      else if (field_name === 'email' && (!form.email && isValid))
+      {
+        form.activateErrorEmail = false;
+        form.validateEmail = false;
+
+        if (!form.password){
+          form.activatePassword = false
+        }
+        $scope.user.email = form.email;
+
+      }
+      else if (field_name === 'password' && !form.password)
+      {
+        form.activateErrorPassword = false;
+        form.validatePassword = false;
+        $scope.user.password = form.password;
+
+      }
+    }
+    $scope.updateUserIdCard = function(field_name, val, form,isValid) {
+
       if (field_name === 'name' && val && val.length) {
         $scope.updateFormCapitalization(val, 'full_name', form)
         var error_msg = validateFullName(val)
@@ -199,7 +233,7 @@ angular.module('uguru.util.controllers')
           })
         }
       }
-      if (field_name === 'email' && val && val.length) {
+      if (field_name === 'email'&& (val || !isValid)) {
         var error_msg = validateEmail(val);
         if (error_msg.validated) {
           $timeout(function(){
@@ -245,11 +279,13 @@ angular.module('uguru.util.controllers')
       function validateFullName(name) {
         var splitName = name.split(' ');
         var errorResults = {};
+
         if (splitName.length < 2) {
           errorResults.error_msg = "Please enter your full name";
           errorResults.validated = false;
           return errorResults;
         }
+
         for (var i = 0; i < splitName.length; i++) {
           var indexWord = splitName[i];
           if (indexWord.length < 2) {
@@ -268,7 +304,13 @@ angular.module('uguru.util.controllers')
         if(re.test(email)) {
           errorResults.validated = true;
           return errorResults
-        } else {
+        } 
+        else if(!email){
+          errorResults.validated = false;
+          errorResults.error_msg = 'Invalid email format';
+          return errorResults
+        }
+        else {
           errorResults.validated = false;
           errorResults.error_msg = 'Please enter a valid school .edu email';
           return errorResults
@@ -326,7 +368,7 @@ angular.module('uguru.util.controllers')
     $scope.map;
     $scope.page = {account: {}, progress: {}, scroll: {}, waypoints: {}, sidebar:{}, dropdowns: {}, modals: {}, swipers: {cachedBefore: [], cachedAfter:[], cached:[], galleryIndex:0}, map:{}};
     $scope.page.dropdowns = {closeAll: closeAllDropdowns, category: {show: true, active:false, toggle:toggleCategoryDropdown}, university: {show: true, active: false, toggle: toggleUniversityDropdown}};
-    $scope.page.account = {loginMode:true, forgotPassword:false, toggle: function(){$scope.page.account.loginMode = !$scope.page.account.loginMode}};
+    $scope.page.account = {loginMode:false, forgotPassword:false, toggle: function(){$scope.page.account.loginMode = !$scope.page.account.loginMode}};
     $scope.page.faq_arr = ContentService.faq;
     //@gabrielle note, scroll preferences
 
