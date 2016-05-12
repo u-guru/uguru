@@ -23,7 +23,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
   function getMaxNumHourArr() {
     var result = [];
     for (var i = 0; i < MAX_REQUEST_HOURS; i++) {
-      result.push(i)
+        result.push(i)
     }
     return result;
   }
@@ -249,6 +249,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
   function toggleHoursDropdown(form) {
     form.time_estimate.showMinutes = false;
     form.time_estimate.showHours = !form.time_estimate.showHours;
+    console.log(form.time_estimate.showHours)
   }
 
   function toggleMinutesDropdown(form) {
@@ -342,8 +343,9 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       form.calendarGetSelected && form.calendarGetSelected(scope);
     }
   }
-
-
+  function setUrgent(form){
+      form.urgent.isUrgent = !form.urgent.isUrgent;
+  }
   function initStudentForm(slide_box, scope, lat, long, color) {
     if (!FileService.DropzoneDict['#request-form-file-uploader']) {
       FileService.initRequestDropzoneFromSelector('#request-form-file-uploader', scope);
@@ -351,7 +353,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
     return {
       course: null,
       addCourse: addCourseFromRequestForm,
-      urgent: true,
+      urgent: { isUrgent:false,'set':setUrgent},
       category: {},
       subcategory: {},
       address: '',
@@ -369,7 +371,8 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       calendar_selected_by_day: [],
       calendar_selected_ranges: [],
       calendarGetSelected: CalendarService.getCalendarSelected(),
-      time_estimate: {hours: 1, minutes:30, showHours:false, showHoursToggle: toggleHoursDropdown, showMinutesToggle: toggleMinutesDropdown, showMinutes:false, setHours:setRequestTimeEstimateHours, setMinutes:setRequestTimeEstimateMinutes},
+      time_estimate: {hours: 0, minutes:0, showHours:false, showHoursToggle: toggleHoursDropdown, showMinutesToggle: toggleMinutesDropdown, showMinutes:false, setHours:setRequestTimeEstimateHours, setMinutes:setRequestTimeEstimateMinutes},
+      // time_estimate: {hours: { hours:0,selectedIndex:0,options:getMaxNumHourArr(),active:false}, minutes:{ minutes:0,selectedIndex:0,options:['-',15,30,45],active:false}, showHours:false, showHoursToggle: toggleHoursDropdown, showMinutesToggle: toggleMinutesDropdown, showMinutes:false, setHours:setRequestTimeEstimateHours, setMinutes:setRequestTimeEstimateMinutes},
       position: {latitude: null, longitude: null},
       calendar: CalendarService.getNextSevenDaysArr(),
       scope: scope,

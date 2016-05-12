@@ -58,14 +58,19 @@ angular.module('uguru.student.controllers', [])
 
         }
 
-
         $scope.nextButton = function(){
             console.log($scope.requestForm.nav)
+            console.log($scope.requestForm)
+
             index =  $scope.requestForm.nav.index
             $scope.requestForm.nav.switchTo(index+1)
         }
 
-        
+        $scope.test = function(){
+            console.log($scope.requestForm)
+        }
+
+
         $scope.closeRequestModal = function() {
             $scope.requestModal.hide();
             $ionicSlideBoxDelegate.update();
@@ -135,6 +140,8 @@ angular.module('uguru.student.controllers', [])
             CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
             $timeout(function() {
                 $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
+                $scope.requestForm.nav.switchTo(2)
+
             //     $scope.requestForm.category = $scope.categories[0];
             //     $scope.requestForm.subcategory = $scope.requestForm.category.subcategories[0];
             //     $scope.requestForm.description.content = 'sample test';
