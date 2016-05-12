@@ -446,9 +446,9 @@ if 'test' in args and len(args) == 2:
     ## returns the integer(python type) 200 type<'int'> if successfull
 
 if 'supported' in args and len(args) == 2:
-    supported_files = ['layouts/splash.json']
+    supported_files = ['splash.json', 'demographic.json', 'sidebar.json']
     for _file in supported_files:
-        print _file
+        print 'layouts', _file
 
 if 'status' in args and len(args) == 4:
     import json, requests

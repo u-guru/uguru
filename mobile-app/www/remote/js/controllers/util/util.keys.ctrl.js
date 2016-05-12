@@ -191,11 +191,46 @@ angular.module('uguru.util.controllers')
 			$scope.asideTabIndex = Math.abs(($scope.asideTabIndex + 1) % 3)};
 
 		$scope.asideTabIndex = 2;
+		$scope.kfTools = {cloneConfirm: false};
+		$scope.animationPreview = {collapsed: true};
+		$scope.intervals = {arr: [], enabled: false, count: 5, onCheck: onIntervalCheckbox, onChange: onChangeIntervalState};
 		$scope.animationSneakPreview = {show: false, content: ''};
 		$scope.showKFBarPercentage = {show: false};
 		$scope.keyShortcuts = {
 				ctrl: ctrlShortcuts
 		}
+
+		function onChangeIntervalState(count) {
+
+			$timeout(function() {
+				if ($scope.intervals.enabled) {
+					$scope.intervals.arr = newArrSize($scope.intervals.count);
+				}
+			})
+		}
+
+		function onIntervalCheckbox(value) {
+			$timeout(function() {
+				if (value) {
+					onChangeIntervalState($scope.intervals.count);
+				}
+				$scope.$apply();
+			}, 100)
+		}
+
+		function newArrSize(num) {
+			var resultArr = [];
+			for (var i = 0; i <= num; i++) {
+				var indexValue = i * 1.0 * (100.0/num);
+				resultArr.push({
+					left: parseFloat(indexValue, 2),
+					value: indexValue,
+					onClick: $scope.setClosestActiveKeyFrame
+				})
+			}
+			return resultArr;
+		}
+
 		function initShortCuts() {
 			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_cmd, on_released_cmd, 91, 'metaKey', null, 1000);
 			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_ctrl, on_released_ctrl, 17, 'ctrlKey', null,  100);
@@ -1003,6 +1038,7 @@ angular.module('uguru.util.controllers')
 			//going backwards
 			//for each property, check the last one it was edited, apply it to that
 			//
+
 			var currentPropertiesModified = Object.keys($scope.animation.properties[$scope.animation.selected_percent].modified);
 			var cssToChange;
 			if (true) {
@@ -1123,19 +1159,20 @@ angular.module('uguru.util.controllers')
 			}
 
 			function startTimer(timer, duration) {
-				if (duration && duration.indexOf('s') > -1) {
+				if (duration && duration.split('s').length) {
 					duration = parseInt(duration.replace('s', ''));
 				}
 				timer.time = 1;
 				timer.duration = duration || 5;
 				$scope.player.currentFrame = 0;
-				timer.promise = $interval(function() {
-					if (timer.time < timer.duration) {
+				console.log('time', timer.time, 'duration', timer.duration);
+				$interval(function() {
+					if (!timer.time) {
+						return;
+					}
+					if (timer.time <= timer.duration) {
 						timer.time += 1
-						console.log('current time into animation is', timer.time);
 						updateFramesIfNecessary(timer.time);
-					} else {
-						resetTimer(timer);
 					}
 				}, 1000);
 			}
@@ -1143,9 +1180,9 @@ angular.module('uguru.util.controllers')
 			function resumeTimer(timer) {
 				$interval.cancel(timer.promise);
 				timer.promise = $interval(function() {
+					console.log('current time into animation is', timer.time);
 					if (timer.time < timer.duration) {
 						timer.time += 1
-						console.log('current time into animation is', timer.time);
 						updateFramesIfNecessary(timer.time);
 					} else {
 						resetTimer(timer);
@@ -1165,13 +1202,15 @@ angular.module('uguru.util.controllers')
 			}
 
 			function resetTimer(timer) {
-				timer.time = null;
-				timer.paused = null;
-				if (timer.promise) {
-					$interval.cancel(timer.promise);
-					timer.promise = null;
+				$timeout(function() {
+					timer.time = 0;
+					timer.paused = null;
+					if (timer.promise) {
+						$interval.cancel(timer.promise);
+						timer.promise = null;
 
-				}
+					}
+				}, 2000)
 			}
 
 			return {
@@ -1242,6 +1281,22 @@ angular.module('uguru.util.controllers')
 				elem.style[browserPrefix + "AnimationName"] = $scope.animation.obj.name;
 
 
+				console.log('actor', $scope.actor);
+				if (!$scope.actor) {
+					var elem = document.querySelector('#stage-elem');
+					if (elem) {
+						$scope.actor = elem;
+					}
+				}
+				$scope.timer = initAnimationTimer()
+				if (!$scope.initAnimationListener)  {
+					initAnimationListener($scope.actor);
+				}
+				// if (browserPrefix === 'webkit') {
+				// 	elem.addEventListener( 'webkitAnimationEnd', initAnimationEndListener)
+				// } else {
+				// 	elem.addEventListener( 'animationend', initAnimationEndListener)
+				// }
 
 
 				if (!$scope.timer.paused) {
@@ -1250,7 +1305,6 @@ angular.module('uguru.util.controllers')
 
 				if (!player.status) {
 					player.status = 1;
-
 				}
 				else if (player.status === 1) {
 					return
@@ -1259,6 +1313,38 @@ angular.module('uguru.util.controllers')
 					resumeDanceMoveElem(player, elem, browserPrefix);
 				}
 			}
+
+
+				// function initAnimationEndListener( event ) {
+				// 	$timeout(function() {
+				// 		$scope.player.reset();
+				// 	}, 2500);
+				// 	// alert('animation ended')
+				// }
+			// 		// $scope.player.reset();
+			// 		// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
+			// 		$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
+			// 		$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
+			// 		$scope.setActiveKeyFrame($scope.animation.selected_percent)
+			// 		console.log($scope.animation.selected_index);
+
+			// 		// $scope.animation.selected_percent = keyPercent + '%';
+			// 		$timeout(function(){$scope.$apply();})
+			// 	}, false );
+			// } else {
+			// 	elem.addEventListener( 'animationend',
+			// 	function( event ) {
+			// 		$scope.player.reset();
+			// 		// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
+			// 		$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
+			// 		$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
+			// 		$scope.setActiveKeyFrame($scope.animation.selected_percent);
+			// 		alert('animation ended');
+			// 		// $scope.setActiveKeyFrame($scope.animation.selected_index)
+			// 		// $scope.animation.selected_keyframe = $scope.animation.properties[keyPercent + '%'];
+			// 		// $scope.animation.selected_percent = keyPercent + '%';
+			// 		$timeout(function(){$scope.$apply();})
+			// 	}, false );
 
 			function pauseDanceMoveElem(player, elem) {
 				elem = elem || $scope.actor;
@@ -1285,7 +1371,6 @@ angular.module('uguru.util.controllers')
 				elem.style[browserPrefix + "AnimationName"] = null;
 				elem.offsetWidth = elem.offsetWidth;
 				$scope.timer.reset($scope.timer);
-
 
 			}
 		}
@@ -1892,6 +1977,7 @@ angular.module('uguru.util.controllers')
 
 			$timeout(function() {
 				console.log($scope.animation.selected_keyframe);
+				$scope.renderAnimationCSSText($scope.animation, true);
 			})
 			// console.log($scope.animation.obj.cssText);
 			// }, 500)
@@ -2356,15 +2442,19 @@ angular.module('uguru.util.controllers')
 		}
 
 		function initAnimationListener(elem) {
+			$scope.initListenerAnimation = true;
 			if (browserPrefix === 'webkit') {
 
 				elem.addEventListener( 'webkitAnimationEnd',
 				function( event ) {
-					$scope.player.reset();
+					$scope.showStatusMsgForXSec('Reseting....')
+					$timeout(function() {
+						$scope.player.reset();
+					}, 1500)
 					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
 					$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
 					$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
-					$scope.setActiveKeyFrame($scope.animation.selected_percent)
+					$scope.setActiveKeyFrame($scope.animation.selected_percent.replace('%', ''));
 					console.log($scope.animation.selected_index);
 
 					// $scope.animation.selected_percent = keyPercent + '%';
@@ -2373,11 +2463,14 @@ angular.module('uguru.util.controllers')
 			} else {
 				elem.addEventListener( 'animationend',
 				function( event ) {
-					$scope.player.reset();
+					$scope.showStatusMsgForXSec('Resetting....')
+					$timeout(function() {
+						$scope.player.reset();
+					}, 1500);
 					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
 					$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
 					$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
-					$scope.setActiveKeyFrame($scope.animation.selected_percent);
+					$scope.setActiveKeyFrame($scope.animation.selected_percent.replace('%', ''));
 					// $scope.setActiveKeyFrame($scope.animation.selected_index)
 					// $scope.animation.selected_keyframe = $scope.animation.properties[keyPercent + '%'];
 					// $scope.animation.selected_percent = keyPercent + '%';
@@ -2722,7 +2815,7 @@ angular.module('uguru.util.controllers')
 			$scope.defaults = getDefaults();
 			applyDefaultProperties($scope.defaults);
 			$scope.actor = document.querySelector('#stage-elem');
-			initAnimationListener($scope.actor);
+
 
 
 			// $scope.resetStageDom();
@@ -2789,19 +2882,36 @@ angular.module('uguru.util.controllers')
 			$scope.stageElemDefaults.draggable = !$scope.stageElemDefaults.draggable;
 		}
 
-		$scope.renderAnimationCSSText = function(animation) {
-			$scope.layout.index = 2;
-
+		function cleanupAnimation(animation) {
 			var tempAnim = initAnimationFromCSSText(animation.obj.name, browserPrefix, animation.obj.cssText);
 			var cssRulesLength = animation.obj.cssRules.length;
+			var animDictToSort = {};
 			for (var i = 0; i < cssRulesLength; i++) {
 				var indexKFRule = animation.obj.cssRules.item(i);
 				var indexKeyText = indexKFRule.keyText;
 				var indexKeyStyle = indexKFRule.cssText;
 				if (!(indexKeyStyle.indexOf('{ }') > -1)) {
-					tempAnim.appendRule(indexKeyStyle, 0)
+					animDictToSort[indexKeyText] = indexKeyStyle;
+					tempAnim.deleteRule(indexKeyStyle, i);
 				}
 			}
+
+			var animDictKeysSorted = Object.keys(animDictToSort).sort(function(val_a, val_b) {return parseFloat(val_b.replace('%', '')) - parseFloat(val_a.replace('%', ''))}).reverse();
+			for (var i = 0; i < animDictKeysSorted.length; i++) {
+				var indexKey = animDictKeysSorted[i];
+				var cssValueText = animDictToSort[indexKey];
+				tempAnim.appendRule(cssValueText, i);
+			}
+			return tempAnim;
+		}
+
+		$scope.renderAnimationCSSText = function(animation, skip_tab_switch) {
+			if (!skip_tab_switch) {
+				$scope.layout.index = 2;
+			}
+
+			var tempAnim = cleanupAnimation(animation);
+
 			var animClassText = generateClassText(animation);
 			animation.exportable_kf = {obj: tempAnim, className: tempAnim.name, classText: animClassText, fullText: animClassText + tempAnim.cssText, cssText: tempAnim.cssText};
 
@@ -2812,7 +2922,7 @@ angular.module('uguru.util.controllers')
 				document.execCommand('copy')
 			}, 1000)
 			function generateClassText(anim) {
-				 return "." + anim.obj.name + "\n{\n   " + ' animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n    ' + browserPrefix + '-' + 'animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n}\n\n'
+				 return "." + anim.obj.name + "\n{\n   " + ' animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n    ' + '-' + browserPrefix + '-' + 'animation:  ' + anim.obj.name + ' ' + anim.attr.duration  + ' ' + anim.attr.timing_function + ' ' + anim.attr.delay + ' ' + anim.attr.iteration_count + ' ' + anim.attr.direction + ';\n}\n\n'
 			}
 		}
 
@@ -2821,7 +2931,7 @@ angular.module('uguru.util.controllers')
 		$scope.saveAnimationClass = function(animation, owner) {
 			console.log('rendering', animation);
 			if (!animation.exportable_kf) {
-				$scope.renderAnimationCSSText(animation);
+				$scope.renderAnimationCSSText(animation, true);
 			}
 			if (animation.exportable_kf.className.length && animation.exportable_kf.classText.length) {
 				var payloadDict = {
@@ -3224,6 +3334,7 @@ angular.module('uguru.util.controllers')
 					}
 				}
 			}
+			uguruAnimObj.obj = cleanupAnimation(uguruAnimObj);
 
 			refreshTransformPropertyObjFromAnim(uguruAnimObj);
 			// console.log('\n\n\n\n\nKeyframes after\n-----\n\n', uguruAnimObj.obj.cssText);
@@ -3485,6 +3596,7 @@ angular.module('uguru.util.controllers')
 			// var js_anim_obj = importAnimationFromRawCssText(css_text, name);
 
 			// var final_obj = initAnimationFromAnimObj(js_anim_obj);
+			var originAnimCSSText = css_text;
 			$scope.animationDropdown.options[0] = name;
 			$scope.showStatusMsgForXSec('Importing ' + name + ' ....', 2500);
 			$scope.animation = importAndProcessAnimationCSSTextByKF(css_text, name);
@@ -3495,8 +3607,10 @@ angular.module('uguru.util.controllers')
 
 			$scope.animationDict.importClassText = class_text;
 			$scope.animationDict.importTextarea = css_text;
-			$scope.animationDict.importInput = name;
+			$scope.animationDict.importInput = $scope.animation.attr.name;
 			$scope.animation.attr.kf_intervals = 100;
+
+
 
 
 			var kfIntervalInput = document.querySelector('#kt-intervals-input');
@@ -3507,6 +3621,7 @@ angular.module('uguru.util.controllers')
 
 			$localstorage.setObject('last_animation',$scope.animation);
 			$scope.layout.index = 0;
+			$scope.animation.obj.origCSSText = originAnimCSSText;
 			return $scope.animation;
 		}
 

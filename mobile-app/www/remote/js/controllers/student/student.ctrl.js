@@ -204,12 +204,18 @@ angular.module('uguru.student.controllers', [])
         }
 
         function initRequestDetailsCTA() {
-          $timeout(function() {
             CTAService.initSingleCTA('.cta-box-request-details', '#student-request-details', function() {
                 LoadingService.showAmbig(null, 750);
             })
-          })
         }
+
+        $scope.$on('$ionicView.loaded', function() {
+            initAllCTAS();
+            $timeout(function() {
+                var requestModalLink = document.querySelector('#cta-box-student-request');
+                angular.element(requestModalLink).triggerHandler('click');
+            }, 2000);
+        })
 
     }
 

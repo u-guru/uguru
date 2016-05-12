@@ -343,7 +343,7 @@ var cardLength, cardValue, el;
   }
 
 var cardLength, cardValue, el;
-var initHandlers = function($scope, parent) {
+function initHandlers($scope, parent) {
   if (parent) {
     parent += ' ';
   } else {
@@ -351,103 +351,103 @@ var initHandlers = function($scope, parent) {
   }
       el = document.querySelector(parent + "#card-number");
 
-      $("#card-number").on("keydown", function(e) {
-        cardLength = $(this).val().replace(/ /g, "").length;
-        cardValue = $(this).val();
+      // $("#card-number").on("keydown", function(e) {
+      //   cardLength = $(this).val().replace(/ /g, "").length;
+      //   cardValue = $(this).val();
 
-        if (e.keyCode == 8) {
-          if (pos == cardValue.length && cardLength % 4 == 0) {
-            $(this).val(cardValue.slice(0, cardValue.length - 1));
-          }
-          return;
-        } else if (e.keyCode > 57 || e.keyCode == 32) {
-          if (e.keyCode >= 96 && e.keyCode <= 105) {
-            return;
-          }
-          e.preventDefault();
-          return;
-        }
+      //   if (e.keyCode == 8) {
+      //     if (pos == cardValue.length && cardLength % 4 == 0) {
+      //       $(this).val(cardValue.slice(0, cardValue.length - 1));
+      //     }
+      //     return;
+      //   } else if (e.keyCode > 57 || e.keyCode == 32) {
+      //     if (e.keyCode >= 96 && e.keyCode <= 105) {
+      //       return;
+      //     }
+      //     e.preventDefault();
+      //     return;
+      //   }
 
-      });
+      // });
 
-      $(parent + "#card-number").on("keyup", function(e) {
-        cardLength = $(this).val().replace(/ /g, "").length;
-        cardValue = $(this).val().replace(/ /g, ""),
-          pos = GetCaretPosition(this),
-          newValue = "";
+      // $(parent + "#card-number").on("keyup", function(e) {
+      //   cardLength = $(this).val().replace(/ /g, "").length;
+      //   cardValue = $(this).val().replace(/ /g, ""),
+      //     pos = GetCaretPosition(this),
+      //     newValue = "";
 
-        if (cardLength >= 15 || e.keyCode < 48 && e.keyCode != 8) {
-          e.preventDefault();
-          return;
-        }
+      //   if (cardLength >= 15 || e.keyCode < 48 && e.keyCode != 8) {
+      //     e.preventDefault();
+      //     return;
+      //   }
 
-        for (var i = 0; i < cardValue.length; i++) {
-          if (i != 0 && i % 4 == 3) {
-            newValue = newValue + cardValue[i] + " ";
-          } else {
-            newValue = newValue + cardValue[i];
-          }
-        }
+      //   for (var i = 0; i < cardValue.length; i++) {
+      //     if (i != 0 && i % 4 == 3) {
+      //       newValue = newValue + cardValue[i] + " ";
+      //     } else {
+      //       newValue = newValue + cardValue[i];
+      //     }
+      //   }
 
-        if (pos % 5 == 4) {
-          pos++;
-        } else if (pos % 5 == 0 && e.keyCode == 8) {
-          pos--;
-        }
+      //   if (pos % 5 == 4) {
+      //     pos++;
+      //   } else if (pos % 5 == 0 && e.keyCode == 8) {
+      //     pos--;
+      //   }
 
-        $(this).val(newValue);
+      //   $(this).val(newValue);
 
-        setCaretPosition(pos);
-        displayCardIcon($(this), $scope);
+      //   setCaretPosition(pos);
+      //   displayCardIcon($(this), $scope);
 
-      });
+      // });
 
-      $(parent + "#exp-date").on("keydown", function(e) {
-        var value = $(this).val(),
-          length = value.length;
+      // $(parent + "#exp-date").on("keydown", function(e) {
+      //   var value = $(this).val(),
+      //     length = value.length;
 
-        if (e.keyCode == 8) {
-          if (length == 5) {
-            $(this).val($(this).val().slice(0, 1));
-            e.preventDefault();
-            return;
-          }
-        } else if (e.keyCode > 57 || e.keyCode == 32) {
-          if (e.keyCode >= 96 && e.keyCode <= 105) {
-            return;
-          }
-          e.preventDefault();
-          return;
-        }
-      })
+      //   if (e.keyCode == 8) {
+      //     if (length == 5) {
+      //       $(this).val($(this).val().slice(0, 1));
+      //       e.preventDefault();
+      //       return;
+      //     }
+      //   } else if (e.keyCode > 57 || e.keyCode == 32) {
+      //     if (e.keyCode >= 96 && e.keyCode <= 105) {
+      //       return;
+      //     }
+      //     e.preventDefault();
+      //     return;
+      //   }
+      // })
 
-      $(parent + "#exp-date").on("keyup", function(e) {
-        var value = $(this).val(),
-          length = value.length;
+      // $(parent + "#exp-date").on("keyup", function(e) {
+      //   var value = $(this).val(),
+      //     length = value.length;
 
-        if (e.keyCode < 48 && e.keyCode != 8) {
-          e.preventDefault();
-          return;
-        }
+      //   if (e.keyCode < 48 && e.keyCode != 8) {
+      //     e.preventDefault();
+      //     return;
+      //   }
 
-        value = value.replace(/ /g, "").replace(/\//, "");
-        var newValue = "";
-        for (var i = 0; i < value.length; i++) {
-          if (i == 1) {
-            newValue += value[i] + " / ";
-          } else {
-            newValue += value[i];
-          }
-        }
-        value = newValue;
+      //   value = value.replace(/ /g, "").replace(/\//, "");
+      //   var newValue = "";
+      //   for (var i = 0; i < value.length; i++) {
+      //     if (i == 1) {
+      //       newValue += value[i] + " / ";
+      //     } else {
+      //       newValue += value[i];
+      //     }
+      //   }
+      //   value = newValue;
 
-        if (value.charAt(0) != "0" && parseInt(value) > 1 && parseInt(value) < 10) {
-          value = "0" + value + " / ";
-        }
+      //   if (value.charAt(0) != "0" && parseInt(value) > 1 && parseInt(value) < 10) {
+      //     value = "0" + value + " / ";
+      //   }
 
-        $(this).val(value);
+      //   $(this).val(value);
 
-      });
+      // });
 
   }
 
