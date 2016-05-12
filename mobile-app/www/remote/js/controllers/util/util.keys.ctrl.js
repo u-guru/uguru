@@ -2463,7 +2463,7 @@ angular.module('uguru.util.controllers')
 			} else {
 				elem.addEventListener( 'animationend',
 				function( event ) {
-					$scope.showStatusMsgForXSec('Reseting....')
+					$scope.showStatusMsgForXSec('Resetting....')
 					$timeout(function() {
 						$scope.player.reset();
 					}, 1500);
