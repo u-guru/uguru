@@ -2882,21 +2882,36 @@ angular.module('uguru.util.controllers')
 			$scope.stageElemDefaults.draggable = !$scope.stageElemDefaults.draggable;
 		}
 
-		$scope.renderAnimationCSSText = function(animation, skip_tab_switch) {
-			if (!skip_tab_switch) {
-				$scope.layout.index = 2;
-			}
-
+		function cleanupAnimation(animation) {
 			var tempAnim = initAnimationFromCSSText(animation.obj.name, browserPrefix, animation.obj.cssText);
 			var cssRulesLength = animation.obj.cssRules.length;
+			var animDictToSort = {};
 			for (var i = 0; i < cssRulesLength; i++) {
 				var indexKFRule = animation.obj.cssRules.item(i);
 				var indexKeyText = indexKFRule.keyText;
 				var indexKeyStyle = indexKFRule.cssText;
 				if (!(indexKeyStyle.indexOf('{ }') > -1)) {
-					tempAnim.appendRule(indexKeyStyle, 0)
+					animDictToSort[indexKeyText] = indexKeyStyle;
+					tempAnim.deleteRule(indexKeyStyle, i);
 				}
 			}
+
+			var animDictKeysSorted = Object.keys(animDictToSort).sort(function(val_a, val_b) {return parseFloat(val_b.replace('%', '')) - parseFloat(val_a.replace('%', ''))}).reverse();
+			for (var i = 0; i < animDictKeysSorted.length; i++) {
+				var indexKey = animDictKeysSorted[i];
+				var cssValueText = animDictToSort[indexKey];
+				tempAnim.appendRule(cssValueText, i);
+			}
+			return tempAnim;
+		}
+
+		$scope.renderAnimationCSSText = function(animation, skip_tab_switch) {
+			if (!skip_tab_switch) {
+				$scope.layout.index = 2;
+			}
+
+			var tempAnim = cleanupAnimation(animation);
+
 			var animClassText = generateClassText(animation);
 			animation.exportable_kf = {obj: tempAnim, className: tempAnim.name, classText: animClassText, fullText: animClassText + tempAnim.cssText, cssText: tempAnim.cssText};
 
@@ -3319,6 +3334,7 @@ angular.module('uguru.util.controllers')
 					}
 				}
 			}
+			uguruAnimObj.obj = cleanupAnimation(uguruAnimObj);
 
 			refreshTransformPropertyObjFromAnim(uguruAnimObj);
 			// console.log('\n\n\n\n\nKeyframes after\n-----\n\n', uguruAnimObj.obj.cssText);
@@ -3593,6 +3609,8 @@ angular.module('uguru.util.controllers')
 			$scope.animationDict.importTextarea = css_text;
 			$scope.animationDict.importInput = $scope.animation.attr.name;
 			$scope.animation.attr.kf_intervals = 100;
+
+
 
 
 			var kfIntervalInput = document.querySelector('#kt-intervals-input');

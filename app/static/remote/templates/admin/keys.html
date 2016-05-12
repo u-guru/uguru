@@ -592,10 +592,23 @@
                 </ul>
                 <div class="overflow-auto no-scrollbar" style="height: calc(100% - 66px);">
 
-                    <ul class="full-x ugrid-2">
-                        <li class="height-36">
-                            <button ng-if='!kfTools.cloneConfirm' ng-click='kfTools.cloneConfirm = true;' ng-click="" class='height-36 txt-18 bg-campus'>clone @ T = {{animation.flex_selected_index}}</button>
-                            <button ng-if='kfTools.cloneConfirm' ng-click='applyCurrentKFtoAnother(animation.flex_selected_index);' ng-click="" class='height-36 txt-18 bg-moxie'>Tap to clone @ T = {{animation.flex_selected_index}}</button>
+                    <ul class="full-x ugrid-4">
+                        <li class='flex-wrap-center bg-cerise-80 txt-white ugrid-2' ng-if='!kfTools.cloneConfirm'>
+                            <div class='txt-4 text-right weight-400 opacity-50 uppercase flex-wrap-center' style='opacity:0.8;'>
+                                KF#&nbsp;
+                            </div>
+                            <div class='txt-4 text-left uppercase weight-900 flex-wrap-center'>
+                                &nbsp;{{animation.selected_percent}}
+                            </div>
+                        </li>
+                        <li class='bg-charcoal-50 txt-white flex-wrap-center' ng-if='!kfTools.cloneConfirm'>
+                            <div class='txt-4 text-right uppercase  flex-wrap-center' style='opacity:0.9;'>
+                                <span class='weight-900'>{{animation.obj.cssRules.length}} </span>&nbsp; <span class='weight-400'>Total KF</span>
+                            </div>
+                        </li>
+                        <li class="height-36 flex-wrap-center">
+                            <button ng-if='!kfTools.cloneConfirm' ng-click='kfTools.cloneConfirm = true;' ng-click="" class='full-x height-36 txt-2 bg-campus'>clone @ T = X</button>
+                            <button ng-if='kfTools.cloneConfirm' ng-click='applyCurrentKFtoAnother(animation.flex_selected_index);' ng-click="" class='height-36 txt-2 full-x bg-moxie'>Tap to clone @ T = {{animation.flex_selected_index}}</button>
 
                         </li>
                         <li class="height-36 relative" ng-if='kfTools.cloneConfirm'>
