@@ -10,7 +10,7 @@ var img_base = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  // REST_URL = "http://localhost:5000";
+  REST_URL = "http://localhost:5000";
 
 } else {
   img_base = '/static/';
@@ -21,7 +21,6 @@ if (window.location.href.indexOf('uguru-rest-test.herokuapp') > -1) {
 } else if (window.location.href.indexOf('localhost:5000') > -1) {
   var REST_URL = 'https://uguru-rest-test.herokuapp.com';
 }
-
 
 
 

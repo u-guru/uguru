@@ -42,7 +42,7 @@ angular.module('uguru.util.controllers')
     $scope.slideHasChanged = function(index) {
       $scope.activeSlideIndex = index;
 
-
+      
       if (index === 1) {
         $scope.universityInput = document.getElementById('university-input');
         if ($scope.universityInput) {

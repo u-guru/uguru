@@ -212,17 +212,18 @@ function FileService(LoadingService, Restangular, DevToolService) {
                             scope.$apply();
                         }
                     }
-                    console.log(scope.requestForm)
                 }
             });
             dropzoneElem.on("success", function(file, server_response) {
+                console.log("success server_response",server_response)
                 if (scope.requestForm && scope.requestForm.files) {
                     scope.requestForm.files.push(server_response);
                     scope.root.vars.getUserFromServer(scope);
                 }
             })
-
-
+            dropzoneElem.on('maxfilesexceeded',function(x){
+                console.log('maxfilesexceeded')
+            })
             dropzoneElem.on("sending", function(file, xhr, data) {
                 if (scope.user && scope.user.id) {
                     data.append("user_id", scope.user.id);
@@ -230,17 +231,26 @@ function FileService(LoadingService, Restangular, DevToolService) {
                 data.append("filename", file.name);
                 data.append("filesize", file.size);
                 data.append("filetype", file.type);
+
             });
             dropzoneElem.on("error", function(file, errorMessage, xml_error) {
+                console.log('errorMessage',errorMessage)
+                console.log('file',file)
+                console.log('xml_error',xml_error)
+
                 var fileExtension;
                 fileNameSplit = file.name.split('.')
                 if (fileNameSplit.length === 1) {
                     LoadingService.showMsg('Sorry, we no longer can accept unknown file types, please add an extension to the file or submit another one.', 5000)
-                    return;
-                } else {
+                } 
+                else if(errorMessage == 'You can not upload any more files.'){
+                    LoadingService.showMsg('Sorry, max files reach. Please zip the files', 5000)
+                } 
+                else {
                     fileExtension = fileNameSplit.slice(-1)[0];
                     LoadingService.showMsg('Sorry, we no longer can accept bare .' + fileExtension + ' file types, please either compress & resubmit or submit another file type.', 5000)
                 }
+                return;
             })
 
             dropzoneElem.on("uploadprogress", function(file, progress, bytesSent) {
@@ -294,6 +304,7 @@ function FileService(LoadingService, Restangular, DevToolService) {
                     method: "POST",
                     paramName: "file",
                     maxFilesize: 10,
+                    maxFiles: 1,
                     addRemoveLinks: true,
                     uploadMultiple: false,
                     acceptedFiles: "image/*, application/pdf, audio/*, text/*, video/*, application/zip, audio/*, application/powerpoint, application/msword, application/rtf",

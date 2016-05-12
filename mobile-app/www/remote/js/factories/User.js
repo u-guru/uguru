@@ -781,7 +781,7 @@ angular.module('uguru.user', [])
         $scope.user.current_credibility_percent = RankingService.calcCredibility(user);
         $scope.user.current_guru_ranking = RankingService.calcRanking(user);
 
-
+        $localstorage.setObject('test', $scope.user);
         $localstorage.setObject('user', $scope.user);
 
         if (!$scope.root.vars.guru_mode && $scope.user.guru_relationships.length) {

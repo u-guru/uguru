@@ -205,16 +205,22 @@ function FileService(LoadingService, Restangular, DevToolService) {
             });
             dropzoneElem.on("removedfile", function(file) {
                 if (scope.requestForm && scope.requestForm.files && scope.requestForm.files.length) {
+                    console.log("FILES", scope.requestForm.files )
                     for (var i = 0; i < scope.requestForm.files.length; i++) {
                         var indexRequestFile = scope.requestForm.files[i];
+                        console.log(indexRequestFile.name +" , "+file.name +' , ')
+
                         if (indexRequestFile.name === file.name) {
                             var removedFile = scope.requestForm.files.splice(i, 1);
+
                             scope.$apply();
                         }
                     }
                 }
             });
             dropzoneElem.on("success", function(file, server_response) {
+                console.log("success server_response",server_response)
+                console.log("success file",file)
                 if (scope.requestForm && scope.requestForm.files) {
                     scope.requestForm.files.push(server_response);
                     scope.root.vars.getUserFromServer(scope);
@@ -225,10 +231,24 @@ function FileService(LoadingService, Restangular, DevToolService) {
             dropzoneElem.on("sending", function(file, xhr, data) {
                 if (scope.user && scope.user.id) {
                     data.append("user_id", scope.user.id);
+                    // data.user_id = scope.user.id;
+
                 }
                 data.append("filename", file.name);
                 data.append("filesize", file.size);
                 data.append("filetype", file.type);
+                data.append("name", file.name);
+
+                // data.name = file.name;
+                // data.size = file.size;
+                // data.type = file.type;
+
+                console.log("BEFORE Sent file:", file)
+                console.log("BEFORE Sent xhr:", xhr)
+                console.log("BEFORE Sent data:", data.entries().next())
+
+
+
             });
             dropzoneElem.on("error", function(file, errorMessage, xml_error) {
                 var fileExtension;

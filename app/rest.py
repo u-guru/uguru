@@ -1720,9 +1720,8 @@ class FileView(restful.Resource):
             file_obj = File.initEmptyFile()
             file_obj.name = file_name
             file_obj.size = file_size
-            file_obj.type = file_type
+            file_obj._type = file_type
             file_obj.user_id = user_id
-
             file_string_base64 = base64.urlsafe_b64decode(file_string.encode("utf-8"))
             file_extension = imghdr.what(None,file_string_base64)
             file_name = 'request_file_id_' + str(file_obj.id) + '.png'

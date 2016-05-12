@@ -289,14 +289,14 @@ angular.module('uguru.util.controllers')
         //     }
         // }
 
+        // Do we need this?
+        var saveCategoriesToRootScope = function(categories) {
 
-        // var saveCategoriesToRootScope = function(categories) {
-
-        //     $scope.categories = categories.filter(function(category, index) {
-        //       return category.is_active;
-        //     })
-        // }
-        // $scope.getCategories(saveCategoriesToRootScope)
+            $scope.categories = categories.filter(function(category, index) {
+              return category.is_active;
+            })
+        }
+        $scope.getCategories(saveCategoriesToRootScope)
 
         $scope.rootUser = User;
 
