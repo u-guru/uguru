@@ -392,8 +392,7 @@ def send_campaign_two(campaign, is_test=False):
         'html':html_message,
         'text':html_message.replace('<br>', '').replace('&nbsp;', ' ')
     }
-    # result = mandrill_client.messages.send(message=message)
-    # return result
+    #
 
 email_notif_copy = {
     "student_request": """Make $%s total in %smin helping %s in %s. Swipe for more details & increase response rate""",

@@ -149,6 +149,29 @@ angular.module('uguru.directives')
     }
   }
 }])
+.directive('tracePath', ['$timeout', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      var elementToTraceSelector = attr.tracePath;
+      var elem = document.querySelector(elementToTraceSelector);
+      var pathLength = elem.getTotalLength();
+      if (elem) {
+        console.log(elem);
+        scope.$watch(function() {
+          return elem.style.strokeDashoffset;
+        }, function(value) {
+          var pt = elem.getPointAtLength(pathLength - value);
+          element[0].style.transform = 'translate(' +  pt.x+ 'px, ' + pt.y + 'px)';
+        })
+      }
+
+
+
+      }
+    }
+  }])
+
 .directive('drawShapes', ['$timeout', 'SVGService', function ($timeout, SVGService) {
   return {
     restrict: 'A',
@@ -187,7 +210,8 @@ angular.module('uguru.directives')
                 } else {
                   currentFrame++;
                   for(var j=0; j<svgPaths.length;j++){
-                    svgPaths[j].style.strokeDashoffset = Math.floor(pathLengths[j] * (1 - progress));
+                    svgPaths[j].style.strokeDashoffset = Math.floor(pathLengths[j] * (1 - progress))
+                    // console.log(svgPaths[j].style.strokeDashoffset);
                   }
                   requestFrameHandle = window.requestAnimationFrame(draw);
                 }
