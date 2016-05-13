@@ -20,13 +20,13 @@
                     <h1 style='font-size:36px'> {{showStatusMsg}} </h1>
                 </div>
                 <ul class='p15-grid flex-center-vertical txt-center'>
-                    <li ng-if='adminUser && adminUser.profile_url'>
-                        <user-icon size="48" url="adminUser.profile_url"> </user-icon>
-                    </li>
                     <li ng-if='player.status'>
+                        <user-icon ng-if='adminUser && adminUser.profile_url' size="48" url="adminUser.profile_url"> </user-icon>
+                    </li>
+                    <li ng-if='player.status === 1'>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="img_base + BASE + 'templates/svg/main/pause.html'">Pause</a>
                     </li>
-                    <li ng-if='!player.status'>
+                    <li ng-if='!player.status || player.status === 2'>
                         <a id="play-keyframes-button" ng-disabled="player.status" class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.play()' ng-include="img_base + BASE + 'templates/svg/main/play.html'">Play</a>
                     </li>
                     <li>
@@ -222,7 +222,7 @@
                         <div class='txt-1 txt-center full-x semibold'>Intervals OFF</div>
                         <checkbox on-change="intervals.onCheck" value="intervals.enabled"> </checkbox>
                     </li>
-                    <li ng-if='intervals.enabled'>
+                    <li ng-if='intervals.enabled' class='relative flex-wrap-center flex-wrap' style='width:125px;'>
                         <div class='text-center txt-1 full-x semibold'> Total Intervals </div>
                         <div class='intervals-container flex'>
                             <span class="block m05right">
@@ -232,6 +232,10 @@
                                 <checkbox on-change="intervals.onCheck" value="intervals.enabled"> </checkbox>
                             </span>
                         </div>
+                    </li>
+                    <li ng-if='intervals.enabled'>
+                        <div class='txt-1 txt-center full-x semibold'>KF Visuals</div>
+                        <checkbox on-change="kf_visuals.onChange" value="kf_visuals.show"> </checkbox>
                     </li>
                     <li>
                         <div class='txt-1 txt-center full-x semibold'>Duration</div>
@@ -330,9 +334,13 @@
                 <div class="range-container small full-x">
                     <div id='keyframe-bar-container' class='relative p10xy'>
                         <span>0%</span>
-                        <div class="relative">
-                            <div class='absolute full-x bg-transparent animated lightSpeedIn opacity-0' ng-if='intervals.enabled && intervals.arr && intervals.arr.length' style='margin-left: 1px;'>
-                                <a ng-click='interval.onClick(interval.value)' class='block bg-robin absolute radius-4' ng-repeat="interval in intervals.arr" style='width: 3px; height: 20px; bottom: -2px; left:{{interval.left}}% !important' />
+                        <div class="relative high-index-z">
+                            <div class='absolute power-bar-marker-container full-x bg-transparent animated lightSpeedIn opacity-0' ng-if='kf_visuals.show'>
+                                <a ng-click='kf.onNgClick(kf.keyText)' ng-class="{'active': animation.selected_percent === kf.keyText}" class='power-bar-marker bg-azure absolute' ng-repeat="kf in kf_visuals.arr" style='left:{{kf.keyText}} !important' />
+                                </a>
+                            </div>
+                            <div class='absolute full-x bg-transparent animated lightSpeedIn opacity-0' ng-if='intervals.enabled && intervals.arr && intervals.arr.length' style='margin-left:1px;'>
+                                <a ng-click='interval.onClick(interval.value)' class='bg-robin absolute block radius-4' ng-repeat="interval in intervals.arr" style='width:3px; height:20px; bottom:-2px; left:{{interval.left}}% !important' />
                                 </a>
                             </div>
                             <span ng-if='showKFBarPercentage.show' style='left: {{animation.selected_percent}} !important; margin-top: -3%; width: 5%; margin-left: -30px; top: -20%;' class='flex-center bg-white-50p absolute p10xy txt-center txt-1 weight-700 txt-white radius-2'>{{animation.selected_percent}}</span>
@@ -579,8 +587,11 @@
                         <div class='full-x txt-1 opacity p05y'>
                             You are currently editing
                         </div>
-                        <div class='full-x txt-4 uppercase weight-600'>
-                            {{animation.attr.name}}
+                        <div class='full-x txt-3 uppercase weight-600 flex-stretch flex-vertical-center'>
+                            <span>
+                                <checkbox value="animation.active"></checkbox>
+                            </span>
+                            <span class='p10x'>{{animation.attr.name}}</span>
                         </div>
                     </li>
                     <li class="flex-center" ng-if='!animation.edit'>
@@ -592,6 +603,12 @@
                     </li>
                 </ul>
                 <div id="keys-keyframe-attr" class="overflow-auto no-scrollbar" ng-class="{'active':!animationPreview.collapsed}">
+                    <ul class="ugrid-4" style='width:calc(150px * {{animations.length}}); overflow: auto;'>
+                        <li style='height:50px;width:150px;' class='imported-animation-unfocused txt-1 uppercase weight-400 txt-white bg-slate-80p flex-vertical-center flex-stretch text-right relative p05xy' ng-repeat='animation in animations track by $index'>
+                            <checkbox style='width:20%;' class='txt-1 absolute left-0' value="animation.active"> </checkbox>
+                            <a on-hold="swapAnimationWithActive(animation, $index)" style='height:inherit;left:20%;width:80%; padding-left:5px;' class='absolute flex-wrap-center text-left'>{{animation.obj.name}} </a>
+                        </li>
+                    </ul>
                     <ul class="full-x ugrid-4">
                         <li class='height-36 flex-wrap-center bg-robin-80 txt-white' ng-if='!kfTools.cloneConfirm'>
                             <div class='txt-2 weight-400 uppercase' style='opacity: 0.8;'>

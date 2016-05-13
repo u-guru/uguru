@@ -193,6 +193,7 @@ angular.module('uguru.util.controllers')
 		$scope.asideTabIndex = 2;
 		$scope.kfTools = {cloneConfirm: false};
 		$scope.animationPreview = {collapsed: true};
+		$scope.kf_visuals = {arr: [], show: true, cache:true, onChange: triggerGetCSSRulesArr};
 		$scope.intervals = {arr: [], enabled: false, count: 5, onCheck: onIntervalCheckbox, onChange: onChangeIntervalState};
 		$scope.animationSneakPreview = {show: false, content: ''};
 		$scope.showKFBarPercentage = {show: false};
@@ -218,6 +219,32 @@ angular.module('uguru.util.controllers')
 			}, 100)
 		}
 
+		function getCSSRulesArr(css_rules) {
+			var resultArr = [];
+			for (var i = 0; i < css_rules.length; i++) {
+				var indexRule = resultArr[i];
+				resultArr.push({
+					keyText: css_rules.item(i).keyText,
+					onNgClick: setKFToActive
+				})
+			}
+			console.log(resultArr);
+			return resultArr.slice();
+
+			function setKFToActive(kf_keytext) {
+				$scope.setActiveKeyFrame(kf_keytext.replace('%', ''))
+			}
+		}
+
+		function triggerGetCSSRulesArr(value) {
+			$timeout(function () {
+				if (value) {
+					$scope.kf_visuals.arr = getCSSRulesArr($scope.animation.obj.cssRules);
+				}
+				$scope.$apply();
+			}, 100)
+		}
+
 		function newArrSize(num) {
 			var resultArr = [];
 			for (var i = 0; i <= num; i++) {
@@ -230,6 +257,9 @@ angular.module('uguru.util.controllers')
 			}
 			return resultArr;
 		}
+		$scope.newArrSize = newArrSize;
+		$scope.getCSSRulesArr = getCSSRulesArr;
+		$scope.cssRulesArr = [];
 
 		function initShortCuts() {
 			KeyboardService.initOptionPressedAndReleasedFunction(on_pressed_cmd, on_released_cmd, 91, 'metaKey', null, 1000);
@@ -1166,13 +1196,12 @@ angular.module('uguru.util.controllers')
 				timer.duration = duration || 5;
 				$scope.player.currentFrame = 0;
 				console.log('time', timer.time, 'duration', timer.duration);
-				$interval(function() {
+				timer.promise = $interval(function() {
 					if (!timer.time) {
 						return;
 					}
 					if (timer.time <= timer.duration) {
 						timer.time += 1
-						updateFramesIfNecessary(timer.time);
 					}
 				}, 1000);
 			}
@@ -1248,40 +1277,96 @@ angular.module('uguru.util.controllers')
 				$scope.player.settings = !$scope.player.settings;
 			}
 
+			function constructAnimationString(animation) {
+				var attr = animation.attr;
+				if (!attr) {
+					$scope.showStatusMsgForXSec('Current animation with name ' + animation.obj.name||'no_name' + ' does not have any default animation attributes')
+					return;
+				}
+				var name, duration, time_f, delay, iter, direc, f_mode;
+				name = attr.name || 'temp-anim';
+				duration = attr.duration || DEFAULTS.duration + 's';
+				time_f = attr.timing_function || 'ease';
+				delay = attr.delay || '0s';
+				iter = attr.iteration_count || 1;
+				direc = attr.direction || 'normal';
+				f_mode = attr.fill_mode || 'none';
+
+				var full_animation_string = name + " " + duration + " " + time_f + " " + delay + " " + iter + " " + direc + " " + f_mode;
+
+				return full_animation_string
+			}
+
+			function numActiveSubAnimations() {
+				var count = 0;
+				for (var i = 0; i < $scope.animations.length; i++) {
+					var indexAnimation = $scope.animations[i];
+					if (indexAnimation.active) {
+						count += 1
+					}
+
+				}
+				return count;
+			}
+
+
+			function constructAllAnimationStrings(main_anim, anim_arr) {
+				var resultString = '';
+				for (var i = 0; i < anim_arr.length; i++) {
+					if (i === anim_arr.length - 1) {
+						resultString += (constructAnimationString(anim_arr[i]));
+					} else {
+						resultString += (constructAnimationString(anim_arr[i]) + ', ')
+					}
+				}
+
+				return resultString;
+			}
+
+			function isElemPaused(elem) {
+				return elem.style.animationPlayState === "paused" || elem.style[browserPrefix + "AnimationPlayState"] === 'paused';
+			}
+
 			function playElemAnimation(player, elem, anim_name) {
 
 
 
 				elem = elem || $scope.actor;
+				$scope.actor.cachedStyle = elem.style.cssText;
 				player = player || $scope.player;
 				anim_name = $scope.animation.attr.name;
 
+				if (isElemPaused(elem)) {
+					elem.style.animationPlayState = "running";
+					elem.style[browserPrefix + "AnimationPlayState"] = "running";
+					player.status = 1;
+					$scope.timer.resume($scope.timer);
+					return;
+				}
 
-				elem.style[browserPrefix + 'AnimationDuration'] = $scope.animation.attr.duration;
-				elem.style['animationDuration'] = $scope.animation.attr.duration;
-				elem.style[browserPrefix + 'AnimationIterationCount'] = $scope.animation.attr.iteration_count;
-				elem.style['animationIterationCount'] = $scope.animation.attr.iteration_count;
-				elem.style[browserPrefix + 'AnimationTimingFunction'] = $scope.animation.attr.timing_function;
-				elem.style['animationTimingFunction'] = $scope.animation.attr.timing_function;
-				elem.style[browserPrefix + 'AnimationFillMode'] = $scope.animation.attr.fill_mode;
-				elem.style['animationFillMode'] = $scope.animation.attr.fill_mode;
-				elem.style[browserPrefix + 'AnimationDirection'] = $scope.animation.attr.direction;
-				elem.style['animationDirection'] = $scope.animation.attr.direction;
-				elem.style[browserPrefix + 'AnimationDelay'] = $scope.animation.attr.delay;
-				elem.style['animationDelay'] = $scope.animation.attr.delay;
-
-				console.log($scope.animation.attr.delay, $scope.animation.attr.iteration_count, $scope.animation.attr.direction, $scope.animation.attr.duration, $scope.animation.attr.fill_mode, $scope.animation.attr.timing_function);
 				$scope.player.reset();
 				$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
 				$scope.animation.selected_index = 0;
 				$scope.animation.flex_selected_index = 0;
 
 
-				$scope.animation.obj.name = $scope.animation.obj.name;
-				elem.style[browserPrefix + "AnimationName"] = $scope.animation.obj.name;
+				var isMoreThanOneAnimationActive = numActiveSubAnimations();
+				var animationString = constructAnimationString($scope.animation);
+				if (isMoreThanOneAnimationActive) {
+					animationString += (',' + constructAllAnimationStrings($scope.animation, $scope.animations));
+				}
+
+				// $scope.animation.obj.name = $scope.animation.obj.animation = animationString;
+				$scope.animation.obj.name = $scope.animation.attr.name;
+
+				elem.style.animation = animationString;
+				elem.style[browserPrefix + "Animation"] = animationString;
 
 
 				console.log('actor', $scope.actor);
+				$timeout(function() {
+					console.log('playing this animation string', animationString);
+				}, 1000)
 				if (!$scope.actor) {
 					var elem = document.querySelector('#stage-elem');
 					if (elem) {
@@ -1351,7 +1436,9 @@ angular.module('uguru.util.controllers')
 				player = player || $scope.player;
 				$scope.timer.pause($scope.timer);
 				player.status = 2;
+				player.state = 'paused';
 				anim_name = $scope.animation.attr.name;
+				elem.style.animationPlayState = "paused";
 				elem.style[browserPrefix + "AnimationPlayState"]="paused";
 			}
 
@@ -1410,6 +1497,19 @@ angular.module('uguru.util.controllers')
 				elem.style.cssText = elem.style.cssText + csstext;
 			}
 		}
+
+		$scope.swapAnimationWithActive = function(animation, index) {
+				var newActiveAnimation = $scope.animations.splice(index, 1);
+				$scope.animation.active = false;
+				var newSubAnimation = $scope.animation;
+				$scope.animation = null;
+				$timeout(function() {
+					$scope.animation = newActiveAnimation[0];
+					$scope.animation.active = true;
+					$scope.animations.unshift(newSubAnimation);
+				}, 1000)
+
+			}
 
 		var transformObjToCssText = function(dance_obj, property) {
 			var unit ='%';
@@ -1656,13 +1756,14 @@ angular.module('uguru.util.controllers')
 				timing_function: options.timing_function || "ease",
 				duration: options.duration || defaults.DURATION + 's',
 				durationVal: defaults.DURATION,
-				fill_mode: options.fill_mode ||  "forwards",
+				fill_mode: options.fill_mode ||  "none",
 				kf_intervals: defaults.KF_INTERVALS
 			}
-			return {obj: anim_obj, selected_keyframe:properties['0%'], selected_kf_index:0, selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: defaults.KF_COUNT, attr:attr};
+			return {obj: anim_obj, active:options.active, selected_keyframe:properties['0%'], selected_kf_index:0, selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: defaults.KF_COUNT, attr:attr};
 		}
 
-		function initAnimation(anim_name, browserPrefix, num_keyframes, duration) {
+		function initAnimation(anim_name, browserPrefix, num_keyframes, duration, active) {
+			active = active || false;
 			num_keyframes = num_keyframes || 100;
 			duration = (duration || 5) + 's';
 			var lastSheet = document.styleSheets[document.styleSheets.length - 1];
@@ -1683,7 +1784,7 @@ angular.module('uguru.util.controllers')
 				fill_mode: "none",
 				kf_intervals: defaults.KF_INTERVALS
 			}
-			return {obj: anim, selected_keyframe:properties['0%'], selected_kf_index:0, selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: num_keyframes, attr:attr};
+			return {obj: anim, active: active, selected_keyframe:properties['0%'], selected_kf_index:0, selected_percent:'0%', selected_index: 0, flex_selected_index:0, properties: properties, kf_count: num_keyframes, attr:attr};
 		}
 
 
@@ -2447,40 +2548,47 @@ angular.module('uguru.util.controllers')
 
 				elem.addEventListener( 'webkitAnimationEnd',
 				function( event ) {
-					$scope.showStatusMsgForXSec('Reseting....')
+					$scope.showStatusMsgForXSec('Resetting....')
 					$timeout(function() {
-						$scope.player.reset();
-					}, 1500)
-					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
 					$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
 					$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
 					$scope.setActiveKeyFrame($scope.animation.selected_percent.replace('%', ''));
 					console.log($scope.animation.selected_index);
-
+					if ($scope.actor.cachedStyle) {
+							$scope.actor.style.cssText = $scope.actor.cachedStyle;
+						}
 					// $scope.animation.selected_percent = keyPercent + '%';
 					$timeout(function(){$scope.$apply();})
+					$scope.player.reset();
+					}, 750)
+					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
 				}, false );
 			} else {
 				elem.addEventListener( 'animationend',
 				function( event ) {
 					$scope.showStatusMsgForXSec('Resetting....')
 					$timeout(function() {
+						$scope.player.pause();
 						$scope.player.reset();
-					}, 1500);
+						$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
+						$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
+						$scope.setActiveKeyFrame($scope.animation.selected_percent.replace('%', ''));
+						$timeout(function(){$scope.$apply();})
+						if ($scope.actor.cachedStyle) {
+							$scope.actor.style.cssText = $scope.actor.cachedStyle;
+						}
+					}, 750);
 					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
-					$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
-					$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
-					$scope.setActiveKeyFrame($scope.animation.selected_percent.replace('%', ''));
+
 					// $scope.setActiveKeyFrame($scope.animation.selected_index)
 					// $scope.animation.selected_keyframe = $scope.animation.properties[keyPercent + '%'];
 					// $scope.animation.selected_percent = keyPercent + '%';
-					$timeout(function(){$scope.$apply();})
 				}, false );
 			}
 		}
 
 		function loadAllS3Files() {
-			LoadingService.showAmbig(null, 10000);
+
 			$timeout(function(){
 				getS3Animations()
 			},1000);
@@ -2725,10 +2833,15 @@ angular.module('uguru.util.controllers')
 			// lastAnimation.attr.name.replace('-edit-edit', '-edit');
 			if (lastAnimation && (!lastAnimation.attr || !lastAnimation.attr.name || !lastAnimation.attr.name.length)) {
 
-				$scope.animation = initAnimation('base-animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION);
+				$scope.animation = initAnimation('base-animation', browserPrefix, defaults.KF_COUNT, defaults.DURATION, true);
 				if ($scope.animation.obj.name.indexOf('-edit') === -1) {
 					$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
 					$scope.animation.attr.name = $scope.animation.obj.name + '-edit';
+					$timeout(function() {
+						$scope.kf_visuals.show = true;
+						$scope.kf_visuals.onChange(true);
+						$scope.$apply();
+					}, 500)
 				}
 				$scope.animationDropdown.options[0] = $scope.animation.obj.name;
 				$scope.animationDropdown.options.push('Save');
@@ -3017,6 +3130,19 @@ angular.module('uguru.util.controllers')
 			$scope.layout.index = 0;
 		}
 
+		function chooseXRandomAnimations(x, animations_arr) {
+			var randAnimations = [];
+			for (var i = 0; i < x; i++) {
+				var indexRandomInteger = Math.floor(Math.random() * (animations_arr.length - 1) + 1);
+				var indexAnimation = animations_arr[indexRandomInteger];
+				var processedIndexAnimation = $scope.importFromCSSText(indexAnimation.cssText, indexAnimation.name, indexAnimation.classText, {skip_local:true});
+				processedIndexAnimation.attr.name.replace('-edit', '');
+				processedIndexAnimation.obj.name.replace('-edit', '');
+				randAnimations.push(processedIndexAnimation);
+			}
+			return randAnimations;
+		}
+
 		function processAnimations(animation_arr) {
 
 			for (var i = 0; i < animation_arr.length; i++) {
@@ -3025,6 +3151,11 @@ angular.module('uguru.util.controllers')
 					indexAnimation.owner = 'samir';
 				}
 			}
+			$scope.animations = chooseXRandomAnimations(5, animation_arr);
+
+			$timeout(function() {
+				console.log('random 5 animations', $scope.animations);
+			}, 1000);
 			// for (var i = 0; i < animation_arr.length; i++) {
 
 			// 	importAnimation(animation_arr[i], i * 50)
@@ -3181,9 +3312,9 @@ angular.module('uguru.util.controllers')
 		}
 
 		//core 2
-		function importAndProcessAnimationCSSTextByKF(css_text, name, cb) {
+		function importAndProcessAnimationCSSTextByKF(css_text, name, cb, is_active) {
 			var jsAnimCssObj = importAnimationFromRawCssText(css_text, name);
-			var uguruAnimObj = initAnimationFromAnimObj(jsAnimCssObj, {name: jsAnimCssObj.name});
+			var uguruAnimObj = initAnimationFromAnimObj(jsAnimCssObj, {name: jsAnimCssObj.name, active:is_active || false});
 
 			var all_properties = Object.keys(uguruAnimObj);
 			var transformPropertyVariants = ['transform', 'WebkitTransform', 'MozTransform',  'msTransform' , 'OTransform'];
@@ -3590,16 +3721,25 @@ angular.module('uguru.util.controllers')
 
 
 
-		$scope.importFromCSSText = function(css_text, name, class_text) {
+		$scope.importFromCSSText = function(css_text, name, class_text, options) {
 
+			options = options || {active:false};
+			if (!$scope.animations || !$scope.animations.length) {
+				options.active = false;
+			}
+			if (!options.callback) {
+				options.callback = null;
+			}
 			// var css_text = "@keyframes animation { 0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -300, 0, 0, 1); } 2.92% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -135.218, 0, 0, 1); } 3.37% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -114.871, 0, 0, 1); } 3.47% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -110.596, 0, 0, 1); } 4.58% { -webkit-transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); transform: matrix3d(2.061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -68.65, 0, 0, 1); } 5.69% { -webkit-transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); transform: matrix3d(2.321, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -36.551, 0, 0, 1); } 5.76% { -webkit-transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); transform: matrix3d(2.32, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -34.768, 0, 0, 1); } 7.41% { -webkit-transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); transform: matrix3d(1.99, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -3.804, 0, 0, 1); } 7.51% { -webkit-transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); transform: matrix3d(1.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2.454, 0, 0, 1); } 7.88% { -webkit-transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); transform: matrix3d(1.771, 0, 0, 0, 0, 1.062, 0, 0, 0, 0, 1, 0, 2.008, 0, 0, 1); } 8.68% { -webkit-transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); transform: matrix3d(1.408, 0, 0, 0, 0, 1.181, 0, 0, 0, 0, 1, 0, 9.646, 0, 0, 1); } 10.03% { -webkit-transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); transform: matrix3d(0.982, 0, 0, 0, 0, 1.333, 0, 0, 0, 0, 1, 0, 16.853, 0, 0, 1); } 10.85% { -webkit-transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); transform: matrix3d(0.822, 0, 0, 0, 0, 1.398, 0, 0, 0, 0, 1, 0, 18.613, 0, 0, 1); } 11.53% { -webkit-transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); transform: matrix3d(0.732, 0, 0, 0, 0, 1.439, 0, 0, 0, 0, 1, 0, 18.992, 0, 0, 1); } 12.22% { -webkit-transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); transform: matrix3d(0.672, 0, 0, 0, 0, 1.469, 0, 0, 0, 0, 1, 0, 18.618, 0, 0, 1); } 14.18% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 15.054, 0, 0, 1); } 14.37% { -webkit-transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); transform: matrix3d(0.612, 0, 0, 0, 0, 1.501, 0, 0, 0, 0, 1, 0, 14.604, 0, 0, 1); } 19.23% { -webkit-transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); transform: matrix3d(0.737, 0, 0, 0, 0, 1.371, 0, 0, 0, 0, 1, 0, 3.855, 0, 0, 1); } 20.01% { -webkit-transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); transform: matrix3d(0.763, 0, 0, 0, 0, 1.338, 0, 0, 0, 0, 1, 0, 2.724, 0, 0, 1); } 23.05% { -webkit-transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); transform: matrix3d(0.856, 0, 0, 0, 0, 1.211, 0, 0, 0, 0, 1, 0, 0.036, 0, 0, 1); } 25.75% { -webkit-transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); transform: matrix3d(0.923, 0, 0, 0, 0, 1.114, 0, 0, 0, 0, 1, 0, -0.709, 0, 0, 1); } 26.94% { -webkit-transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); transform: matrix3d(0.947, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, -0.76, 0, 0, 1); } 31.58% { -webkit-transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); transform: matrix3d(1.009, 0, 0, 0, 0, 0.987, 0, 0, 0, 0, 1, 0, -0.406, 0, 0, 1); } 31.73% { -webkit-transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); transform: matrix3d(1.01, 0, 0, 0, 0, 0.986, 0, 0, 0, 0, 1, 0, -0.392, 0, 0, 1); } 37.32% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.03, 0, 0, 1); } 38.15% { -webkit-transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); transform: matrix3d(1.029, 0, 0, 0, 0, 0.958, 0, 0, 0, 0, 1, 0, -0.008, 0, 0, 1); } 42.35% { -webkit-transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); transform: matrix3d(1.022, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0.03, 0, 0, 1); } 48.9% { -webkit-transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); transform: matrix3d(1.007, 0, 0, 0, 0, 0.99, 0, 0, 0, 0, 1, 0, 0.009, 0, 0, 1); } 57.77% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 60.47% { -webkit-transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); transform: matrix3d(0.998, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, -0.001, 0, 0, 1); } 69.36% { -webkit-transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.999, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 83.61% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 100% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } ";
 			// var js_anim_obj = importAnimationFromRawCssText(css_text, name);
 
 			// var final_obj = initAnimationFromAnimObj(js_anim_obj);
+			$scope.kf_visuals.cache = $scope.kf_visuals.show;
+			$scope.kf_visuals.show = false;
 			var originAnimCSSText = css_text;
 			$scope.animationDropdown.options[0] = name;
 			$scope.showStatusMsgForXSec('Importing ' + name + ' ....', 2500);
-			$scope.animation = importAndProcessAnimationCSSTextByKF(css_text, name);
+			$scope.animation = importAndProcessAnimationCSSTextByKF(css_text, name, options.callback, options.active);
 			if ($scope.animation.attr.name.indexOf('-edit') === -1 || $scope.animation.obj.name.indexOf('-edit') > -1)   {
 				$scope.animation.attr.name += '-edit';
 				$scope.animation.obj.name += '-edit';
@@ -3618,10 +3758,19 @@ angular.module('uguru.util.controllers')
 				kfIntervalInput && kfIntervalInput.classList.remove('animated', 'wobble');
 			}, 1000)
 			kfIntervalInput && kfIntervalInput.classList.add('animated', 'wobble');
-
-			$localstorage.setObject('last_animation',$scope.animation);
+			if (!options.skip_local) {
+				$localstorage.setObject('last_animation',$scope.animation);
+			}
 			$scope.layout.index = 0;
 			$scope.animation.obj.origCSSText = originAnimCSSText;
+			$timeout(function(){
+				if ($scope.kf_visuals.cache) {
+					$scope.kf_visuals.onChange($scope.kf_visuals.cache);
+				}
+				$scope.kf_visuals.show = $scope.kf_visuals.cache;
+				$scope.kf_visuals.cache = null;
+				$scope.$apply();
+			}, 100)
 			return $scope.animation;
 		}
 
