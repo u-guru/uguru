@@ -21,10 +21,10 @@
                 </div>
                 <ul class='p15-grid flex-center-vertical txt-center'>
                     <user-icon ng-if='adminUser && adminUser.profile_url' size="medium" url="adminUser.profile_url"> </user-icon>
-                    <li ng-if='player.status'>
+                    <li ng-if='player.status === 1'>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="img_base + BASE + 'templates/svg/main/pause.html'">Pause</a>
                     </li>
-                    <li ng-if='!player.status'>
+                    <li ng-if='!player.status || player.status === 2'>
                         <a id="play-keyframes-button" ng-disabled="player.status" class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.play()' ng-include="img_base + BASE + 'templates/svg/main/play.html'">Play</a>
                     </li>
                     <li>

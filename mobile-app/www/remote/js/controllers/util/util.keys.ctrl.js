@@ -193,7 +193,7 @@ angular.module('uguru.util.controllers')
 		$scope.asideTabIndex = 2;
 		$scope.kfTools = {cloneConfirm: false};
 		$scope.animationPreview = {collapsed: true};
-		$scope.kf_visuals = {arr: [], show: false, onChange: triggerGetCSSRulesArr};
+		$scope.kf_visuals = {arr: [], show: true, cache:true, onChange: triggerGetCSSRulesArr};
 		$scope.intervals = {arr: [], enabled: false, count: 5, onCheck: onIntervalCheckbox, onChange: onChangeIntervalState};
 		$scope.animationSneakPreview = {show: false, content: ''};
 		$scope.showKFBarPercentage = {show: false};
@@ -1196,13 +1196,12 @@ angular.module('uguru.util.controllers')
 				timer.duration = duration || 5;
 				$scope.player.currentFrame = 0;
 				console.log('time', timer.time, 'duration', timer.duration);
-				$interval(function() {
+				timer.promise = $interval(function() {
 					if (!timer.time) {
 						return;
 					}
 					if (timer.time <= timer.duration) {
 						timer.time += 1
-						updateFramesIfNecessary(timer.time);
 					}
 				}, 1000);
 			}
@@ -1324,17 +1323,26 @@ angular.module('uguru.util.controllers')
 				return resultString;
 			}
 
+			function isElemPaused(elem) {
+				return elem.style.animationPlayState === "paused" || elem.style[browserPrefix + "AnimationPlayState"] === 'paused';
+			}
 
 			function playElemAnimation(player, elem, anim_name) {
 
 
 
 				elem = elem || $scope.actor;
+				$scope.actor.cachedStyle = elem.style.cssText;
 				player = player || $scope.player;
 				anim_name = $scope.animation.attr.name;
 
-
-
+				if (isElemPaused(elem)) {
+					elem.style.animationPlayState = "running";
+					elem.style[browserPrefix + "AnimationPlayState"] = "running";
+					player.status = 1;
+					$scope.timer.resume($scope.timer);
+					return;
+				}
 
 				$scope.player.reset();
 				$scope.animation.selected_keyframe = $scope.animation.properties['0%'];
@@ -1348,14 +1356,17 @@ angular.module('uguru.util.controllers')
 					animationString += (',' + constructAllAnimationStrings($scope.animation, $scope.animations));
 				}
 
-
 				// $scope.animation.obj.name = $scope.animation.obj.animation = animationString;
-				console.log('playing animation', animationString);
+				$scope.animation.obj.name = $scope.animation.attr.name;
+
 				elem.style.animation = animationString;
 				elem.style[browserPrefix + "Animation"] = animationString;
 
 
 				console.log('actor', $scope.actor);
+				$timeout(function() {
+					console.log('playing this animation string', animationString);
+				}, 1000)
 				if (!$scope.actor) {
 					var elem = document.querySelector('#stage-elem');
 					if (elem) {
@@ -1425,7 +1436,9 @@ angular.module('uguru.util.controllers')
 				player = player || $scope.player;
 				$scope.timer.pause($scope.timer);
 				player.status = 2;
+				player.state = 'paused';
 				anim_name = $scope.animation.attr.name;
+				elem.style.animationPlayState = "paused";
 				elem.style[browserPrefix + "AnimationPlayState"]="paused";
 			}
 
@@ -2537,32 +2550,39 @@ angular.module('uguru.util.controllers')
 				function( event ) {
 					$scope.showStatusMsgForXSec('Resetting....')
 					$timeout(function() {
-						$scope.player.reset();
-					}, 1500)
-					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
 					$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
 					$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
 					$scope.setActiveKeyFrame($scope.animation.selected_percent.replace('%', ''));
 					console.log($scope.animation.selected_index);
-
+					if ($scope.actor.cachedStyle) {
+							$scope.actor.style.cssText = $scope.actor.cachedStyle;
+						}
 					// $scope.animation.selected_percent = keyPercent + '%';
 					$timeout(function(){$scope.$apply();})
+					$scope.player.reset();
+					}, 750)
+					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
 				}, false );
 			} else {
 				elem.addEventListener( 'animationend',
 				function( event ) {
 					$scope.showStatusMsgForXSec('Resetting....')
 					$timeout(function() {
+						$scope.player.pause();
 						$scope.player.reset();
-					}, 1500);
+						$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
+						$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
+						$scope.setActiveKeyFrame($scope.animation.selected_percent.replace('%', ''));
+						$timeout(function(){$scope.$apply();})
+						if ($scope.actor.cachedStyle) {
+							$scope.actor.style.cssText = $scope.actor.cachedStyle;
+						}
+					}, 750);
 					// var keyPercent = getNthSortedKeyText($scope.animation.obj, 0);
-					$scope.animation.selected_keyframe = $scope.animation.properties[$scope.animation.selected_percent];
-					$scope.animation.selected_index = Object.keys($scope.animation.properties).indexOf($scope.animation.selected_percent);
-					$scope.setActiveKeyFrame($scope.animation.selected_percent.replace('%', ''));
+
 					// $scope.setActiveKeyFrame($scope.animation.selected_index)
 					// $scope.animation.selected_keyframe = $scope.animation.properties[keyPercent + '%'];
 					// $scope.animation.selected_percent = keyPercent + '%';
-					$timeout(function(){$scope.$apply();})
 				}, false );
 			}
 		}
@@ -2817,6 +2837,11 @@ angular.module('uguru.util.controllers')
 				if ($scope.animation.obj.name.indexOf('-edit') === -1) {
 					$scope.animation.obj.name = $scope.animation.obj.name + '-edit';
 					$scope.animation.attr.name = $scope.animation.obj.name + '-edit';
+					$timeout(function() {
+						$scope.kf_visuals.show = true;
+						$scope.kf_visuals.onChange(true);
+						$scope.$apply();
+					}, 500)
 				}
 				$scope.animationDropdown.options[0] = $scope.animation.obj.name;
 				$scope.animationDropdown.options.push('Save');
