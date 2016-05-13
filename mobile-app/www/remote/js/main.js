@@ -443,6 +443,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
   }).
+  state('root.demos', {
+        url: '/demos',
+        templateUrl: BASE + 'templates/demos.html',
+        controller: 'DemosController'
+  }).
   // state('root.gpa', {
   //       url: '/gpa',
   //       templateUrl: BASE + 'templates/dev/archives/gpa.html',
