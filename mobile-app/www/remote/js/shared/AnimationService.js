@@ -2364,8 +2364,12 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
     return addTimeout(fn, delay * slowRatio);
   };
 
-  dynamics.initMatrixFromTransform = function(transform) {
-  	return Matrix.fromTransform(transform).decompose();
+  dynamics.initMatrixFromTransform = function(transform, cb) {
+  	var matrix = Matrix.fromTransform(Matrix.matrixForTransform(transform)).decompose();
+    setTimeout(function() {
+            cb && cb(matrix);
+    }, 250)
+    return matrix;
   }
 
   dynamics.clearTimeout = function(id) {

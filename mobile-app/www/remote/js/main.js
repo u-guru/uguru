@@ -592,6 +592,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/dev/sound/youtubelist.html',
         controller: 'SoundController'
   }).
+  state('root.jeselle', {
+        url: '/jeselle',
+        templateUrl: BASE + 'templates/jeselle.html',
+        controller: 'JeselleController'
+  }).
   state('root.getting-started', {
         url: '/getting-started',
         templateUrl: BASE + 'templates/.html',
