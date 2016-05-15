@@ -2756,61 +2756,70 @@ angular.module('uguru.util.controllers')
 			}
 		}
 
-		function getDMatrixString(d_matrix, units) {
+		function getDMatrixString(d_matrix, transform_str, perspective) {
+			transform_str = transform_str + " ";
 			var result = "";
+
 			var defaults = {"scaleX": 1, "scaleY": 1, "scaleZ": 1};
 			var count =0;
-			if (d_matrix.skew[0]) {
+
+			if (d_matrix.skew[0] || transform_str.split('skewX').length > 1) {
 				result += "skewX(" + parseFloat(d_matrix.skew[0], 10) + 'rad) '
 				count++;
 			}
-			if (d_matrix.skew[1]) {
+			if (d_matrix.skew[1] || transform_str.split('skewY').length > 1) {
 				result += "skewY(" + parseFloat(d_matrix.skew[1], 10) + 'rad) ';
 				count++;
 			}
-			if (d_matrix.rotate[0]) {
+			if (d_matrix.rotate[0] || transform_str.split('rotateX').length > 1) {
 				result += "rotateX(" + parseFloat(d_matrix.rotate[0], 10) + 'rad) ';
 				count++;
 			}
-			if (d_matrix.rotate[1]) {
+			if (d_matrix.rotate[1] || transform_str.split('rotateY').length > 1) {
 				result += "rotateY(" + parseFloat(d_matrix.rotate[1], 10) + "rad) ";
 				count++;
 			}
-			if (d_matrix.rotate[2]) {
+			if (d_matrix.rotate[2] || transform_str.split('rotateZ').length > 1) {
 				result += "rotateZ(" + parseFloat(d_matrix.rotate[2], 10) + "rad) ";
 				count++;
 			}
-			if (d_matrix.translate[0]) {
+			if (d_matrix.translate[0] || transform_str.split('translateX').length > 1) {
 				result += "translateX(" + parseFloat(d_matrix.translate[0], 10) + "%) ";
 				count++;
 			}
-			if (d_matrix.translate[1]) {
+			if (d_matrix.translate[1] || transform_str.split('translateY').length > 1) {
 				result += "translateY(" + parseFloat(d_matrix.translate[1], 10) + "%) ";
 				count++;
 			}
-			if (d_matrix.translate[2]) {
+			if (d_matrix.translate[2] || transform_str.split('translateZ').length > 1) {
 				result += "translateZ(" + parseFloat(d_matrix.translate[2], 10) + "px) ";
 				count++;
 			}
-			if (d_matrix.scale[0] && d_matrix.scale[0] !== defaults['scaleX']) {
+			if (d_matrix.scale[0] !== 1 && transform_str.split('scaleX').length > 1) {
 				result += "scaleX(" + parseFloat(d_matrix.scale[0], 10) + ") ";
 				count++;
 			}
-			if (d_matrix.scale[1] && d_matrix.scale[1] !== defaults['scaleY']) {
+			if (d_matrix.scale[1] !== 1 && transform_str.split('scaleY').length > 1) {
 				result += "scaleY(" + parseFloat(d_matrix.scale[1], 10) + ") ";
 				count++;
 			}
-			if (d_matrix.scale[2] &&  d_matrix.scale[2] !== defaults['scaleZ']) {
+			if (d_matrix.scale[2] !== 1 &&  transform_str.split('scaleZ').length > 1) {
 				result += "scaleZ(" + parseFloat(d_matrix.scale[1], 10) + ") ";
 				count++;
 			}
+			if (perspective && perspective.length) {
+				result += "perspective(" + perspective + ') '
+				count++;
+			}
 			if (count) {
-				result = "transform:" + result + ";" + browserPrefix + "Transform:" + result;
+				result = "transform:" + result + ";" //+ '-' + browserPrefix + "Transform:" + result;
 				return result
 			}
 		}
 
-
+		function doesPropertyExistInsideTransformString(prop, transform_value) {
+			return (transform_value.split(prop).length > 1) || (transform_value === prop && transform_value.length === prop.length);
+		}
 
 		function updateDropdown(uguru_anim_obj) {
 
@@ -3151,11 +3160,11 @@ angular.module('uguru.util.controllers')
 					indexAnimation.owner = 'samir';
 				}
 			}
-			$scope.animations = chooseXRandomAnimations(5, animation_arr);
+			// $scope.animations = chooseXRandomAnimations(5, animation_arr);
 
-			$timeout(function() {
-				console.log('random 5 animations', $scope.animations);
-			}, 1000);
+			// $timeout(function() {
+			// 	console.log('random 5 animations', $scope.animations);
+			// }, 1000);
 			// for (var i = 0; i < animation_arr.length; i++) {
 
 			// 	importAnimation(animation_arr[i], i * 50)
@@ -3338,22 +3347,28 @@ angular.module('uguru.util.controllers')
 						if (transformPropertyVariants.indexOf(indexStyleProperty) > -1) {
 
 							var transformString = indexRule.style[indexStyleProperty];
-							console.log(indexStyleProperty, transformString);
 							var matrixTransform = transformString;
 								if (matrixTransform === 'matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)') {
 									continue;
 								}
+								matrixTransform = replaceAll(matrixTransform, '%', 'px');
+
 							// if (indexStyleProperty.indexOf('matrix') > -1) {
 								var m = new WebKitCSSMatrix(replaceAll(matrixTransform, '%', 'px'));
 								matrixTransform = "matrix3d(" + [m.m11, m.m12, m.m13, m.m14, m.m21, m.m22, m.m23, m.m24, m.m31, m.m32, m.m33, m.m34, m.m41, m.m42, m.m43, m.m44].join(", ") + ")";
 								dMatrix = dynamics.initMatrixFromTransform(matrixTransform);
-								var decomposedCSSText = getDMatrixString(dMatrix);
+								var perspective = null;
+								if (m.m34 && m.m34 !== 1) {
+									perspective = (parseFloat(1/m.m34, 5) * -1) + 'px';
+								}
+								console.log('toparse:' + matrixTransform, m.m34, perspective, dMatrix);
+								var decomposedCSSText = getDMatrixString(dMatrix, transformString, perspective);
+
 							// } else {
 							// 	var decomposedCSSText = matrixTransform;
 							// }
 
 							if (decomposedCSSText) {
-								console.log(decomposedCSSText);
 								processedCSSText += decomposedCSSText;
 							}
 							// console.log(indexStyleProperty, indexRule.style[indexStyleProperty], );
@@ -3361,7 +3376,7 @@ angular.module('uguru.util.controllers')
 							processedCSSText += ' ' + (indexStyleProperty + ":" + indexRule.style[indexStyleProperty] + ";");
 						}
 					}
-
+					console.log('pushing', keyText, processedCSSText, dMatrix);
 					mod_arr.push({key: keyText, css: processedCSSText, d_matrix: dMatrix});
 					uguruAnimObj.obj.deleteRule(keyText);
 				}

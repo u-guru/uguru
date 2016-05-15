@@ -149,6 +149,20 @@ angular.module('uguru.directives')
     }
   }
 }])
+.directive('timer', ['$timeout', '$interval', function ($timeout, $interval) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      scope.count = 0;
+      if (isElementInViewport(element[0])) {
+        $interval(function() {
+          var timerChildren = element[0].querySelectorAll('[timer-children]');
+
+        }, 1000);
+      };
+    }
+  }
+}])
 .directive('tracePath', ['$timeout', function ($timeout) {
   return {
     restrict: 'A',
@@ -157,10 +171,10 @@ angular.module('uguru.directives')
       var elem = document.querySelector(elementToTraceSelector);
       var pathLength = elem.getTotalLength();
       if (elem) {
-        console.log(elem);
         scope.$watch(function() {
           return elem.style.strokeDashoffset;
         }, function(value) {
+
           var pt = elem.getPointAtLength(pathLength - value);
           element[0].style.transform = 'translate(' +  pt.x+ 'px, ' + pt.y + 'px)';
         })
@@ -169,6 +183,11 @@ angular.module('uguru.directives')
 
 
       }
+    }
+
+
+    function tracePath(total_duration, tracer, trace_elem) {
+
     }
   }])
 
@@ -1032,3 +1051,21 @@ directive("initWp", ['$timeout', 'ScrollService', '$state', function ($timeout, 
           }
       }
 }]);
+
+
+function isElementInViewport (el) {
+
+    //special bonus for those using jQuery
+    if (typeof jQuery === "function" && el instanceof jQuery) {
+        el = el[0];
+    }
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    );
+}
