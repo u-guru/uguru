@@ -2295,5 +2295,8 @@ button[disabled] {
 }
 
 [timer-child] {
-	opacity:0;
+	display:none;
+}
+[timer-child].opacity-1 {
+	display:block;
 }
