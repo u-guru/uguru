@@ -1,0 +1,34 @@
+<ion-view class='bg-charcoal' ng-controller='BugsController'>
+	<ion-content class='flex-wrap-center flex-stretch full-xy absolute left-0 top-0'>
+
+
+		<header class='full-x bg-azure txt-white weight-700 text-center p10xy'>
+			Bugs
+		</header>
+		<div class='ugrid-3 full-x'>
+			<div class='bg-slate flex-wrap-center flex-stretch'>
+				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
+					All bugs
+				</h1>
+				<div class='flex-wrap-center text-left'>
+					{{bugs}}
+				</div>
+
+			</div>
+			<div class='bg-slate-80p flex-stretch flex-wrap-center'>
+				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
+					Prioritized Bugs
+				</h1>
+				<div class='txt-white flex-wrap-center'>
+					{{Object.keys(bugs)}}
+				</div>
+			</div>
+			<div class='bg-slate-50p'>
+				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
+					Recently Complete
+				</h1>
+			</div>
+		</div>
+
+	</ion-content>
+</ion-view>

@@ -112,6 +112,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/dev/tools.build.html',
         controller: 'DevToolsController'
   }).
+  state('root.bugs', {
+        url: '/bugs',
+        templateUrl: BASE + 'templates/bugs.html'
+  }).
   state('root.guru-validation', {
         url: '/guru-validation',
         templateUrl: BASE + 'templates/validation.guru.html'
