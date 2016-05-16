@@ -277,9 +277,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/rating',
     templateUrl: BASE + 'templates/rating.html'
   }).
-  state('root.request-calendar', {
-    url:'/request-calendar',
-    templateUrl: BASE + 'templates/request-calendar.html'
+  state('root.calendar', {
+    url:'/calendar',
+    templateUrl: BASE + 'templates/calendar.html'
   }).
   state('root.request-price', {
     url:'/request-price',
