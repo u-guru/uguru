@@ -23,7 +23,9 @@
             </ui-gmap-google-map>
         </div>
         <div class="input-field">
-            <input type="text" placeholder="Search"/>
+            <input type="text" placeholder="Search">
+                {{requestForm.address || 'This is filler where the address will go'}}
+            </input>
         </div>
     </div>
     <button class="confirm" ng-click="nextButton()">Next</button>

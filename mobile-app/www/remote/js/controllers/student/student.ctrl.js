@@ -135,7 +135,7 @@ angular.module('uguru.student.controllers', [])
         function initAllCTAS() {
             //ngAnimate
             var parentRef = '#desktop-student-home'
-            var elemRefArr = ['#cta-box-content', '#cta-box-student-courses', '#cta-box-request-courses', '#cta-box-student-request','#cta-box-created-requests', '#cta-box-billing', '#cta-box-messages', '#cta-box-shop'];
+            var elemRefArr = ['#cta-box-calendar','#cta-box-content', '#cta-box-student-courses', '#cta-box-request-courses', '#cta-box-student-request','#cta-box-created-requests', '#cta-box-billing', '#cta-box-messages', '#cta-box-shop'];
             var cbOptions = {'#cta-box-student-request': triggerRequestFormCTA, '#cta-box-created-requests': initRequestDetailsCTA};
             CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
             $timeout(function() {
