@@ -140,7 +140,7 @@ angular.module('uguru.student.controllers', [])
             CTAService.initArrCTASharedParent(parentRef, elemRefArr, cbOptions);
             $timeout(function() {
                 $scope.requestForm = RequestService.initStudentForm($ionicSlideBoxDelegate.$getByHandle('request-form'), $scope, $scope.user.university.latitude, $scope.user.university.longitude, $scope.user.university.school_color_dark);
-                $scope.requestForm.nav.switchTo(2)
+                $scope.requestForm.nav.switchTo(3)
 
             //     $scope.requestForm.category = $scope.categories[0];
             //     $scope.requestForm.subcategory = $scope.requestForm.category.subcategories[0];
