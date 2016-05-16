@@ -29,16 +29,14 @@
                 </a>
             </li>
             <li>
-                <a ng-class="{'active': requestForm.price.proposed_options.indexOf(requestForm.price.selected) === -1}" ng-click='requestForm.price.showInput = true;'>
+                <a ng-class="{'active': requestForm.price.proposed_options.indexOf(requestForm.price.selected) === -1}" ng-click='requestForm.price.focus()'>
                     <svg viewBox="0 0 100 100"><rect fill="none" x="0" y="0" width="100" height="100"></rect></svg>
-                    <svg class="add" viewBox="0 0 100 100" ng-if='requestForm.price.proposed_options.indexOf(requestForm.price.selected) > -1'>
+                    <svg class="add" viewBox="0 0 100 100" ng-if='!requestForm.price.showInput && !requestForm.price.custom_price'>
                         <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
                     </svg>
-                    <span ng-if='requestForm.price.proposed_options.indexOf(requestForm.price.selected) === -1 && !requestForm.price.showInput'>
-                        ${{requestForm.price.selected || '15'}}
-                    </span>
+                    <span  ng-if='!requestForm.price.showInput && requestForm.price.custom_price'>${{requestForm.price.custom_price}}<span>
                 </a>
-                <input ng-class="{'show': requestForm.price.showInput}" placeholder="$7" ng-model="requestForm.price.selected" ng-focus="requestForm.price.focus()" ng-blur="requestForm.price.showInput = false;"/>
+                <input type ='number' min="0" ng-class="{'show': requestForm.price.showInput}" placeholder="$15" ng-model="requestForm.price.custom_price"  ng-blur="requestForm.price.blur()" ng-show='requestForm.price.showInput'>
             </li>
         </ul>
         <div class="request-cards">

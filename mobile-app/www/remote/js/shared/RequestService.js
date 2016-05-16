@@ -331,12 +331,32 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
 
   function focusRequestPriceInput(scope) {
     return function() {
+      scope.requestForm.price.showInput = true; 
+      $timeout(function() {
+           document.querySelector("#request .request-offer input").focus()
+           document.querySelector("#request .request-offer input").select()
+       });
+
       if (scope.requestForm.price.proposed_options.indexOf(scope.requestForm.price.selected) > -1) {
         scope.requestForm.price.selected = null;
+        if (scope.requestForm.price.custom_price ){
+          scope.requestForm.price.selected = scope.requestForm.price.custom_price
+        }
       };
     }
   }
-
+  function blurRequestPriceInput(scope){
+    return function() {
+      if (scope.requestForm.price.custom_price && scope.requestForm.price.proposed_options.indexOf(scope.requestForm.price.custom_price) < 0){
+        scope.requestForm.price.selected = scope.requestForm.price.custom_price
+      }
+      else {
+        console.log("ELSE")
+        scope.requestForm.price.custom_price = null
+      }
+      scope.requestForm.price.showInput = false
+    }
+  }
   function selectCalendarInterval(scope) {
     return function(interval, form) {
       interval.selected = !interval.selected;
@@ -363,7 +383,7 @@ function RequestService(Category, CalendarService, $timeout, LoadingService, Fil
       tags: {list:[], add: addTagToRequestList, remove:removeTagFromTagList, showError:false, empty_tag: {placeholder:"+   add a tag", content: ''}},
       subcategory: {selected: null, options: Category.getAcademic()},
       files: [],
-      price: {proposed_options: [0, 5, 10], selected:10, custom_selected:false, showInput: false, focus: focusRequestPriceInput(scope)},
+      price: {proposed_options: [0, 5, 10], selected:null, custom_price:null,custom_selected:false, showInput: false,blur:blurRequestPriceInput(scope), focus: focusRequestPriceInput(scope)},
       payment_card: null,
       calendar: null,
       calendar_selected: [],
