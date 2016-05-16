@@ -6,27 +6,42 @@
 			Bugs
 		</header>
 		<div class='ugrid-3 full-x'>
-			<div class='bg-slate flex-wrap-center flex-stretch'>
+			<div class='bg-slate-50p'>
 				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
 					All bugs
 				</h1>
 				<div class='flex-wrap-center text-left'>
-					{{bugs}}
+					<ul>
+						<li ng-repeat='bug in bugs'>
+							{{bug.title}}
+						</li>
+					</ul>
 				</div>
 
 			</div>
-			<div class='bg-slate-80p flex-stretch flex-wrap-center'>
+			<div class='bg-slate-50p'>
 				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
 					Prioritized Bugs
 				</h1>
 				<div class='txt-white flex-wrap-center'>
-					{{Object.keys(bugs)}}
+					<ul>
+						<li ng-repeat="bug in bugs | orderBy : '-rank':true">
+							{{bug.title}} {{bug.rank}}
+						</li>
+					</ul>
 				</div>
 			</div>
 			<div class='bg-slate-50p'>
 				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
 					Recently Complete
 				</h1>
+				<div class='txt-white flex-wrap-center'>
+					<ul>
+						<li ng-if="bug.fixedDate" ng-repeat="bug in bugs | orderBy : '-fixedDate':true">
+							{{bug.title}} {{bug.fixedDate}}
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 
