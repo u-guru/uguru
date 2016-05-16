@@ -1655,7 +1655,7 @@
             <nav class="build-aside-bottom" ng-if='current_file.selected_variation.selected_scene_state'>
                 <ul class="flex-space-between">
                     <li>
-                        <a class="build-add-element" ng-click="addElementState()" ng-hide-"!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                        <a class="build-add-element" ng-click="addElementState()" ng-hide="!page.toggles.add_component" ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
                     </li>
                     <li>
                         <a ng-click='refreshAllComponents()' ng-include="img_base + BASE + 'templates/svg/main/switch.html'"></a>

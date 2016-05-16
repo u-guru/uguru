@@ -764,50 +764,49 @@
                             </div>
                         </li> -->
                         <li class="flex-center-vertical-wrap-space-between">
-                            <h2 class="txt-18 semibold m15right">rotateX&nbsp;&nbsp;
-                                <a ng-click='clearProperty(animation.selected_keyframe, "rotate3DXdeg")'>
+                            <h2 class="txt-18 semibold m15right">rotateZ&nbsp;&nbsp;
+                                <a ng-click='clearProperty(animation.selected_keyframe, "rotate3DZ")'>
                                 <i class='icon ion-trash-a'></i></a></h2>
                             <div class="flex-center-vertical">
-                                <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DXdeg, 'rotate3DXdeg')" ng-model="animation.selected_keyframe.rotate3DXdeg" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
-                                <span class="bg-campus block txt-16 p05xy radius-2-right">deg&nbsp;&dtrif;</span>
-
+                                <input class="radius-2-left txt-center p05xy" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZ, 'rotate3DZ')" size="4" style="height: 30px;" type="" step="1" placeholder="0" ng-model="animation.selected_keyframe.rotate3DZ"/>
+                                <span class="bg-campus block txt-16 p05xy radius-2-right">rad&nbsp;&dtrif;</span>
                             </div>
                             <div class="range-container small full-x m10top">
                                 <div>
                                     <span>-180</span>
-                                    <input class="range-slider" type="range" size="2" min="-180" max="180" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DXdeg, 'rotate3DXdeg')" ng-model="animation.selected_keyframe.rotate3DXdeg"/>
+                                    <input class="range-slider" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZ, 'rotate3DZ')" ng-model="animation.selected_keyframe.rotate3DZ" type="range" size="2" min="-180" max="180" list="numbers"/>
+                                    <span>180</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="flex-center-vertical-wrap-space-between">
+                            <h2 class="txt-18 semibold m15right">rotateX&nbsp;&nbsp;
+                                <a ng-click='clearProperty(animation.selected_keyframe, "rotate3DX")'>
+                                <i class='icon ion-trash-a'></i></a></h2>
+                            <div class="flex-center-vertical">
+                                <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DX, 'rotate3DX')" ng-model="animation.selected_keyframe.rotate3DX" class="radius-2-left txt-center p05xy" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
+                                <span class="bg-campus block txt-16 p05xy radius-2-right">rad&nbsp;&dtrif;</span>
+                            </div>
+                            <div class="range-container small full-x m10top">
+                                <div>
+                                    <span>-180</span>
+                                    <input class="range-slider" type="range" size="2" min="-180" max="180" list="numbers" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DX, 'rotate3DX')" ng-model="animation.selected_keyframe.rotate3DX"/>
                                     <span>180</span>
                                 </div>
                             </div>
                         </li>
                         <li class="flex-center-vertical-wrap-space-between">
                             <h2 class="txt-18 semibold m15right">rotateY&nbsp;&nbsp;
-                                <a ng-click='clearProperty(animation.selected_keyframe, "rotate3DYdeg")'>
+                                <a ng-click='clearProperty(animation.selected_keyframe, "rotate3DY")'>
                                 <i class='icon ion-trash-a'></i></a></h2>
                             <div class="flex-center-vertical">
-                                <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DYdeg, 'rotate3DYdeg')" class="radius-2-left txt-center p05xy" ng-model="animation.selected_keyframe.rotate3DYdeg" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
-                                <span class="bg-campus block txt-16 p05xy radius-2-right">deg&nbsp;&dtrif;</span>
+                                <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DY, 'rotate3DY')" class="radius-2-left txt-center p05xy" ng-model="animation.selected_keyframe.rotate3DY" size="4" style="height: 30px;" type="" step="1" placeholder="0"/>
+                                <span class="bg-campus block txt-16 p05xy radius-2-right">rad&nbsp;&dtrif;</span>
                             </div>
                             <div class="range-container small full-x m10top">
                                 <div>
                                     <span>-180</span>
-                                    <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DYdeg, 'rotate3DYdeg')" ng-model="animation.selected_keyframe.rotate3DYdeg" class="range-slider" type="range" size="2" min="-180" max="180" list="numbers"/>
-                                    <span>180</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="flex-center-vertical-wrap-space-between">
-                            <h2 class="txt-18 semibold m15right">rotateZ&nbsp;&nbsp;
-                                <a ng-click='clearProperty(animation.selected_keyframe, "rotate3DZdeg")'>
-                                <i class='icon ion-trash-a'></i></a></h2>
-                            <div class="flex-center-vertical">
-                                <input class="radius-2-left txt-center p05xy" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZdeg, 'rotate3DZdeg')" size="4" style="height: 30px;" type="" step="1" placeholder="0" ng-model="animation.selected_keyframe.rotate3DZdeg"/>
-                                <span class="bg-campus block txt-16 p05xy radius-2-right">deg&nbsp;&dtrif;</span>
-                            </div>
-                            <div class="range-container small full-x m10top">
-                                <div>
-                                    <span>-180</span>
-                                    <input class="range-slider" ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DZdeg, 'rotate3DZdeg')" ng-model="animation.selected_keyframe.rotate3DZdeg" type="range" size="2" min="-180" max="180" list="numbers"/>
+                                    <input ng-change="applyPropertyChange(animation.selected_keyframe.rotate3DY, 'rotate3DY')" ng-model="animation.selected_keyframe.rotate3DY" class="range-slider" type="range" size="2" min="-180" max="180" list="numbers"/>
                                     <span>180</span>
                                 </div>
                             </div>

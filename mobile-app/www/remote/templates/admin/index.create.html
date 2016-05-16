@@ -159,10 +159,10 @@
                         </label>
                         <div class="tag-list">
                             <span ng-if='page.createObjects.bug_ticket.new.tags.length' ng-repeat="tag in page.createObjects.bug_ticket.new.tags track by $index" class='chip tag-add'>
-                                <input ng-model='tag' size-"15" placeholder="add text here" />
+                                <input ng-model='tag' size="15" placeholder="add text here" />
                                 <a ng-click="page.createObjects.bug_ticket.new.tags.splice($index, 1)">&times;</a>
                             </span>
-                            <a class="chip" ng-click="page.createObjects.bug_ticket.new.tags.push('')">+ New Tag </a></span>
+                            <span><a class="chip" ng-click="page.createObjects.bug_ticket.new.tags.push('')">+ New Tag </a></span>
                         </div>
                     </li>
                 </ul>

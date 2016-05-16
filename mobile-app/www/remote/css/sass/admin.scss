@@ -9,6 +9,12 @@
 }
 
 /* ---------- KEYFRAMES */
+#keys-keyframe-attr {
+	height: calc(100% - 130px);
+	&.active {
+		height: calc(100% - 80px - 125px);
+	}
+}
 #keyframe-pointer {
 	width: 5px;
 	height: 36px;
@@ -201,8 +207,8 @@
 		margin: 0; 
 	}
 	.size-150 {
-		width: 150px;
-		height: 150px;
+		width: 150px!important;
+		height: 150px!important;
 	}
 }
 .anim-timeline {

@@ -1218,6 +1218,35 @@ button.bg-cerise.reverse:active, button.bg-academic.reverse:active {
   color: white;
 }
 
+button.bg-fb {
+  background: #3b5998;
+}
+
+button.bg-fb:hover, button.bg-fb:focus {
+  background: #9daccc;
+  color: #3e5172;
+}
+
+button.bg-fb:active {
+  background: #3e5172;
+  color: white;
+}
+
+button.bg-fb.reverse {
+  background: white;
+  color: #3b5998;
+}
+
+button.bg-fb.reverse:hover, button.bg-fb.reverse:focus {
+  background: #9daccc;
+  color: #3e5172;
+}
+
+button.bg-fb.reverse:active {
+  background: #3e5172;
+  color: white;
+}
+
 button.disabled {
   filter: alpha(opacity=70);
   opacity: 0.7;
@@ -1586,6 +1615,23 @@ button.disabled {
   border-color: #f39ccd;
   background: #f39ccd;
   color: #934073;
+}
+
+[class*="btn-ghost"][class*="btn-ghost-fb"] {
+  color: #3b5998;
+  border-color: #3b5998;
+}
+
+[class*="btn-ghost"][class*="btn-ghost-fb"]:hover, [class*="btn-ghost"][class*="btn-ghost-fb"]:focus {
+  border-color: #3b5998;
+  background: #3b5998;
+  color: white;
+}
+
+[class*="btn-ghost"][class*="btn-ghost-fb"]:active {
+  border-color: #9daccc;
+  background: #9daccc;
+  color: #3e5172;
 }
 
 [class*="btn-split"] {
@@ -18282,7 +18328,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 
 .projector-slide {
   position: relative;
-  width: 80%;
+  width: 90% !important;
   height: 80%;
   max-width: 900px;
   max-height: 600px;
