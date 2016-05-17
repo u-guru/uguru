@@ -344,6 +344,7 @@ gulp.task('scripts', function() {
       "js/shared/Settings.js",
       "js/directives/*.js",
       "js/device/*.js",
+      "!js/shared/Jeselle*.js",
       "js/shared/*.js",
 
 
