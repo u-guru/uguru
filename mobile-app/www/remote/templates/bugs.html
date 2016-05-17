@@ -1,6 +1,8 @@
 <ion-view class='bg-charcoal' ng-controller='BugsController'>
 	<ion-content class='flex-wrap-center flex-stretch full-xy absolute left-0 top-0'>
 
+		<ion-pane id='cta-modal-bug-detail' class='absolute full-xy hide-display cta-modal bg-charcoal' ng-controller='BugsController'  ng-include="img_base + BASE + 'templates/bug.detail.html'"></ion-pane>
+
 
 		<header class='full-x bg-azure txt-white weight-700 text-center p10xy'>
 			Bugs
@@ -21,23 +23,52 @@
 				</div>
 
 			</div>
-			<div class='bg-slate-50p'>
+			<div class='bg-slate-50p' ng-int= 'reverse = false'>
 				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
-					{{selectOption}}
-					<select ng-model"selectOption">
-						<option value="option" ng-repeat='option in listOption'>
-							{{option}}
-						</option>
+					<select ng-model="selectOption" ng-options="option.name for option in availableOptions track by option.id">
 					</select>
-					  
+					<a ng-if='selectOption.id > 1' ng-click="order()">Reverse ? {{reverse}}</a>
 				</h1>
-				<div class='flex-wrap-center text-left'>
+
+				<div class='tag-list bg-slate-50p'>
 					<ul>
-						<li ng-repeat='bug in bugs'>
-							{{bug.title}}
+						<li ng-repeat="tag in advanceSearch.tags.list">
+							<a class="chip tag-selected" ng-click='advanceSearch.tags.remove($index)'>
+								<span>&times;&nbsp;&nbsp;</span>
+								<span>{{tag}}</span>
+							</a>
+						</li>
+						<li>
+							<input tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
+						</li>
+					</ul>
+					<span class="error hide" ng-class="{'show': advanceSearch.tags.err_msg}">{{advanceSearch.tags.err_msg}}</span> 
+				</div>
+
+
+
+
+
+
+				<div class='flex-wrap-center text-left'>
+					<ul ng-if="selectOption.id == 1">
+						<li ng-repeat='bug in bugs | selectedTags:advanceSearch.tags.list'>	
+							{{bug.title}} {{bug.tags}}
 						</li>
 					</ul>
 				</div>
+				
+				<ul ng-if="selectOption.id == 2">
+					<li ng-repeat="bug in bugs | orderBy:'-rank':reverse">
+						#{{bug.rank}}. {{bug.title}}
+					</li>
+				</ul>
+
+				<ul ng-if="selectOption.id == 3">
+					<li ng-repeat="bug in bugs | filter:{fixed:true}">
+						{{bug.title}}
+					</li>
+				</ul>
 
 			</div>
 		<!-- 	<div class='bg-slate-50p'>

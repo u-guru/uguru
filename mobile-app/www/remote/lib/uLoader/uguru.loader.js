@@ -267,7 +267,9 @@ if (window.location.href.indexOf(':5000') > -1 || window.location.href.indexOf('
 	TIMEOUT_UNTIL_END_OF_LOADER = 7000;
 }
 loader = new SVGLoader( document.querySelector('#body-loading-div .pageload-overlay'), { speedIn : 300, easingIn : mina.easeinout } );
+
 setTimeout(function() {
+	
     var head = document.querySelector('head')
     var app_version = document.createElement('link');
     var animate = document.createElement('link');
@@ -288,7 +290,7 @@ setTimeout(function() {
     app_version.setAttribute('async', 'async');
     head.appendChild(magic);
     head.appendChild(utility);
-    head.appendChild(app_version);
+    // head.appendChild(app_version);
     // head.appendChild(animate);
     // head.appendChild(animation);
 }, 500);

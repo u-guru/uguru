@@ -1,5 +1,21 @@
 angular.module('uguru.util.controllers')
+.filter('selectedTags', function() {
+  return function(bugs, tags) {
+          return bugs.filter(function(bug) {
+              //no filter if tags is empty
+              if (tags.length == 0){
+                return true
+              }
+              for (var i in bug.tags) {
+                  if (tags.indexOf(bug.tags[i]) != -1) {
+                      return true;
+                  }
+              }
+              return false;
 
+          });
+        }
+})
 .controller('BugsController', [
 
   //All imported packages go here
@@ -9,21 +25,62 @@ angular.module('uguru.util.controllers')
   'FileService',
   'LoadingService',
   function($scope, $state, $timeout, FileService, LoadingService) {
-    $scope.bugs = [];
-    $scope.help = {};
-    $scope.listOption = ['All Bugs', 'Prioritized Bugs','Recently Complete'];
-    $scope.selectOption = $scope.listOption[0]
+    
     $scope.openBugList=function(section){
-        console.log("Click",section.name)
         $scope.bugs = section.bugs
         $scope.help = section.help
         $scope.name = section.name
+    }
+    $scope.order = function() {
+      $scope.reverse = !$scope.reverse;
+    };
+    function addTag(content){
+        taglist = $scope.advanceSearch.tags.list
+        if (content.length > 0 ) {
+          for (var i = 0; i < taglist.length; ++i)
+          {
+              if (taglist[i].name.indexOf(content) > -1){
+                $scope.advanceSearch.tags.empty_tag.content = '';
+                $scope.advanceSearch.tags.err_msg = 'Repeating Tag';
+                $timeout(function() {
+                  $scope.advanceSearch.tags.err_msg = '';
+                }, 2500);
+                return
+              }
+          }        
+          $scope.advanceSearch.tags.list.push(content);
+          $scope.advanceSearch.tags.empty_tag.content = '';
+        }
+
+    }
+    function removeTag(index){
+      if ($scope.advanceSearch.tags.list && $scope.advanceSearch.tags.list.length) {
+        $scope.advanceSearch.tags.list.splice(index, 1);
+      }
+    }
+
+    function intData(){
+        $scope.bugs = [];
+        $scope.help = {};
+        $scope.availableOptions = [
+                                     {id: '1', name: 'All Bugs'},
+                                     {id: '2', name: 'Prioritized Bugs'},
+                                     {id: '3', name: 'Recently Complete'} 
+                                   ]
+        $scope.reverse = true;
+        $scope.selectOption = $scope.availableOptions[0]
+        $scope.advanceSearch ={
+             'tags': {'list':[], 'add': addTag, 'remove':removeTag, 'err_msg':'', 'empty_tag': {'placeholder':"+   add a tag", 'content': ''}},
+        }
+
     }
 
 
     $scope.$on('$ionicView.beforeEnter', function() {
   
       loadUpdatedBugsJsonFile($scope);
+      intData()
+
     })
 
     function loadUpdatedBugsJsonFile(scope) {
