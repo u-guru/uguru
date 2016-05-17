@@ -9,7 +9,11 @@ angular.module('uguru.util.controllers')
   '$interval',
   function($scope, $state, $timeout, SVGService, LoadingService, $interval) {
 
-//     $(document).ready(function() {
+    // $scope.$on('$ionicView.loaded', function() {
+    //   var line = document.querySelector('svg line');
+    //   console.log(line, line.getTotalPathLength());
+    // })
+  //     $(document).ready(function() {
 //   //variable for the 'stroke-dashoffset' unit
 //   var $dashOffset = $(".path").css("stroke-dashoffset");
 //   //on a scroll event - execute function
@@ -24,34 +28,34 @@ angular.module('uguru.util.controllers')
 //     $(".path").css("stroke-dashoffset", $newUnit - $offsetUnit);
 //   });
 // });
-    $timeout(function() {
+    // $timeout(function() {
 
 
-      var parentContainer = document.querySelector('ion-content');
-      var elements = document.querySelectorAll('svg .path');
-      var initialOffset = 1000;
-      var pageHeight = parentContainer.scrollHeight;
-      var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-      for (var i = 0; i < elements.length; i++) {
-        var indexelement = elements[i];
-        indexelement.style.strokeDashoffset = initialOffset;
-      }
+    //   var parentContainer = document.querySelector('ion-content');
+    //   var elements = document.querySelectorAll('svg .path');
+    //   var initialOffset = 1000;
+    //   var pageHeight = parentContainer.scrollHeight;
+    //   var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+    //   for (var i = 0; i < elements.length; i++) {
+    //     var indexelement = elements[i];
+    //     indexelement.style.strokeDashoffset = initialOffset;
+    //   }
 
 
-      // var pathLength = SVGService.getTotalPathLength(element);
-      parentContainer.addEventListener('scroll', function() {
-        var viewPortScrollTop = parentContainer.scrollTop;
-        var percentage = ((viewPortScrollTop / (pageHeight - viewPortHeight)) * 100);
+    //   // var pathLength = SVGService.getTotalPathLength(element);
+    //   parentContainer.addEventListener('scroll', function() {
+    //     var viewPortScrollTop = parentContainer.scrollTop;
+    //     var percentage = ((viewPortScrollTop / (pageHeight - viewPortHeight)) * 100);
 
-        for (var i = 0; i < elements.length; i++) {
-          var indexElement = elements[i];
-          var currentStrokeDashoffset = parseInt(indexElement.style.strokeDashoffset, 10);
-          var offsetScaledPercent = percentage * (currentStrokeDashoffset / 100);
-          indexElement.style.strokeDashoffset = initialOffset - offsetScaledPercent;
-        }
-      })
+    //     for (var i = 0; i < elements.length; i++) {
+    //       var indexElement = elements[i];
+    //       var currentStrokeDashoffset = parseInt(indexElement.style.strokeDashoffset, 10);
+    //       var offsetScaledPercent = percentage * (currentStrokeDashoffset / 100);
+    //       indexElement.style.strokeDashoffset = initialOffset - offsetScaledPercent;
+    //     }
+    //   })
 
-    }, 2000)
+    // }, 2000)
 
 
 

@@ -277,9 +277,9 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     url:'/rating',
     templateUrl: BASE + 'templates/rating.html'
   }).
-  state('root.request-calendar', {
-    url:'/request-calendar',
-    templateUrl: BASE + 'templates/request-calendar.html'
+  state('root.calendar', {
+    url:'/calendar',
+    templateUrl: BASE + 'templates/calendar.html'
   }).
   state('root.request-price', {
     url:'/request-price',
@@ -443,6 +443,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/courses.html',
         controller: 'CoursesController'
   }).
+  state('root.demos', {
+        url: '/demos',
+        templateUrl: BASE + 'templates/demos.html',
+        controller: 'DemosController'
+  }).
   // state('root.gpa', {
   //       url: '/gpa',
   //       templateUrl: BASE + 'templates/dev/archives/gpa.html',
@@ -586,6 +591,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         url: '/youtube',
         templateUrl: BASE + 'templates/dev/sound/youtubelist.html',
         controller: 'SoundController'
+  }).
+  state('root.jeselle', {
+        url: '/jeselle',
+        templateUrl: BASE + 'templates/jeselle.html',
+        controller: 'JeselleController'
   }).
   state('root.getting-started', {
         url: '/getting-started',

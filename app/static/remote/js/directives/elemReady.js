@@ -149,6 +149,103 @@ angular.module('uguru.directives')
     }
   }
 }])
+.directive('timer', ['$timeout', '$interval', function ($timeout, $interval) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      scope.count = 0;
+      scope.index = 0;
+      scope.globalInterval;
+      scope.timerInterval = parseTimerInterval(attr.timerAuto);
+      scope.isWithinViewPort = isElementInViewport(element[0]);
+      if (!scope.timerInterval) return;
+      // scope.mod parseInt()
+      function initInterval(scope) {
+        scope.children = timerChildren = element[0].querySelectorAll('[timer-child]');
+        scope.maxIndex = scope.children.length;
+          $interval(function() {
+            scope.index = (scope.index + 1) % scope.maxIndex;
+
+            var devTool = document.querySelector('[dev-tool]');
+            devTool.innerHTML = scope.index;
+
+            for (var i = 0; i < scope.children.length; i++) {
+              var indexChild = scope.children[i];
+              var indexChildClass = indexChild.getAttribute('timer-class');
+              indexChild.classList.remove(indexChildClass);
+            }
+            var indexChild = scope.children[scope.index];
+            console.log(indexChild);
+            var indexChildClass = indexChild.getAttribute('timer-class');
+            if (indexChildClass && indexChildClass.length) {
+              indexChild.classList.add(indexChildClass);
+            }
+
+          }, scope.timerInterval);
+      }
+
+      scope.$watch(function() {
+          scope.isWithinViewPort = isElementInViewport(element[0])
+          return scope.isWithinViewPort
+        }, function(in_viewport) {
+          if (in_viewport) {
+            initInterval(scope)
+          } else {
+            console.log('canceling..', in_viewport);
+
+          }
+          // alert('viewport changed to' + in_viewport);
+        }
+      )
+    }
+  }
+
+  function processTimerChildren(elems) {
+    resultDict = {};
+    for (var i = 0; i < elems.length; i++) {
+
+    }
+    return resultDict;
+  }
+
+  function parseTimerInterval(time_str) {
+    //seconds
+    if (time_str.split('ms').length > 1) {
+      return parseInt(time_str.replace('ms', ''));
+    } else if (time_str.split('s').length > 1) {
+      return (parseInt(time_str.replace('s', '')) * 1000);
+    }
+  }
+
+}])
+.directive('tracePath', ['$timeout', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      var elementToTraceSelector = attr.tracePath;
+      var elem = document.querySelector(elementToTraceSelector);
+      var pathLength = elem.getTotalLength();
+      if (elem) {
+        scope.$watch(function() {
+          return elem.style.strokeDashoffset;
+        }, function(value) {
+
+          var pt = elem.getPointAtLength(pathLength - value);
+          element[0].style.transform = 'translate(' +  pt.x+ 'px, ' + pt.y + 'px)';
+        })
+      }
+
+
+
+      }
+    }
+
+
+    function tracePath(total_duration, tracer, trace_elem) {
+
+    }
+  }])
+
 .directive('drawShapes', ['$timeout', 'SVGService', function ($timeout, SVGService) {
   return {
     restrict: 'A',
@@ -187,7 +284,8 @@ angular.module('uguru.directives')
                 } else {
                   currentFrame++;
                   for(var j=0; j<svgPaths.length;j++){
-                    svgPaths[j].style.strokeDashoffset = Math.floor(pathLengths[j] * (1 - progress));
+                    svgPaths[j].style.strokeDashoffset = Math.floor(pathLengths[j] * (1 - progress))
+                    // console.log(svgPaths[j].style.strokeDashoffset);
                   }
                   requestFrameHandle = window.requestAnimationFrame(draw);
                 }
@@ -1008,3 +1106,21 @@ directive("initWp", ['$timeout', 'ScrollService', '$state', function ($timeout, 
           }
       }
 }]);
+
+
+function isElementInViewport (el) {
+
+    //special bonus for those using jQuery
+    if (typeof jQuery === "function" && el instanceof jQuery) {
+        el = el[0];
+    }
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    );
+}
