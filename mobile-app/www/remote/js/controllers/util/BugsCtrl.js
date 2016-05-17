@@ -32,9 +32,26 @@ angular.module('uguru.util.controllers')
         $scope.help = section.help
         $scope.name = section.name
     }
+
     $scope.order = function() {
       $scope.reverse = !$scope.reverse;
-    };
+    }
+
+    $scope.initAndLaunchBugCTA = function($event, bug){
+      var targetElem = $event.target;
+      $scope.selected_bug = bug;
+      $scope.lastCTABoxTargetElem = targetElem;
+      $scope.lastCTABoxTargetElem.id = 'cta-box-selected-bug';
+      CTAService.initSingleCTA('#' + targetElem.id, '#main-bug-content');
+      $timeout(function() {
+        var targetElem = document.querySelector('#cta-box-selected-bug');
+        angular.element(targetElem).triggerHandler('click');
+        var modalElem = document.querySelector('#cta-modal-selected-bug');
+        modalElem && modalElem.classList.add('show');
+      })
+
+    }
+
     function addTag(content){
         taglist = $scope.advanceSearch.tags.list
         if (content.length > 0 ) {
@@ -74,19 +91,6 @@ angular.module('uguru.util.controllers')
 
     }
 
-
-    $scope.$on('$ionicView.beforeEnter', function() {
-  
-      loadUpdatedBugsJsonFile($scope);
-      intData()
-      setTimeout(function() {
-        CTAService.initSingleCTA('#cta-box-request-payments', '#request-cta-payment', function() {
-          $scope.card = {exp: '', number: '', cvc: '', placeholder:"**** **** **** 4242"};
-          initHandlers($scope, '#request-cta-payment');
-        });
-      }, 500);
-    })
-
     function loadUpdatedBugsJsonFile(scope) {
       LoadingService.showAmbig('Loading....', 10000);
       //https://s3.amazonaws.com/uguru-admin/jason/bugs.json
@@ -100,10 +104,18 @@ angular.module('uguru.util.controllers')
         })
       }
     }
+
+    $scope.$on('$ionicView.beforeEnter', function() {
+  
+      loadUpdatedBugsJsonFile($scope);
+      intData()
+    })
+
     setTimeout(function() {
       console.log($scope.bugReport)
-    }, 1000);
+      $scope.openBugList($scope.bugReport[0])
 
+    }, 1000);
 
 
   }

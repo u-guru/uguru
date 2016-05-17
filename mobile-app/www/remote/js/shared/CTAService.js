@@ -87,6 +87,7 @@ function CTAService($timeout) {
     if (!(parentElem && boxElem && modalElem)) {
       return false;
     }
+
     ctaParentDict[boxSelector] = parentSelector;
     bindCtaToBoxElem(boxElem, modalElem, show_callback, boxSelector, eventTriggers);
 

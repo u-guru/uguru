@@ -1,15 +1,13 @@
 <ion-view class='bg-charcoal' ng-controller='BugsController'>
 	<ion-content class='flex-wrap-center flex-stretch full-xy absolute left-0 top-0'>
-
-		<ion-pane id='cta-modal-bug-detail' class='absolute full-xy hide-display cta-modal bg-charcoal' ng-controller='BugsController'  ng-include="img_base + BASE + 'templates/bug.detail.html'"></ion-pane>
-
+		<ion-pane id='cta-modal-selected-bug' class='absolute full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/bug.detail.html'"></ion-pane>
 
 		<header class='full-x bg-azure txt-white weight-700 text-center p10xy'>
 			Bugs
 		</header>
 		
 
-		<div class='ugrid-2 full-x'>
+		<div class='ugrid-2 full-x' id="main-bug-content">
 			<div class='bg-slate-50p'>
 				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
 					Sections
@@ -51,9 +49,9 @@
 
 
 				<div class='flex-wrap-center text-left'>
-					<ul ng-if="selectOption.id == 1">
-						<li ng-repeat='bug in bugs | selectedTags:advanceSearch.tags.list'>	
-							{{bug.title}} {{bug.tags}}
+					<ul ng-if="selectOption.id == 1" >
+						<li ng-repeat='bug in bugs | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug)'>	
+							<a >{{bug.title}}</a>
 						</li>
 					</ul>
 				</div>
