@@ -194,7 +194,11 @@ function FileService(LoadingService, Restangular, DevToolService) {
 
     function initRequestDropzoneFromSelector(elem_selector, scope) {
         if (elem_selector && !DropzoneDict[elem_selector]) {
-            var dropzoneElem = new Dropzone(elem_selector, getDefaultRequestDropzone());
+            var dz_elem = getDefaultRequestDropzone();
+            if (!dz_elem) {
+                return;
+            }
+            var dropzoneElem = new Dropzone(elem_selector, dz_elem);
             //stor in global
             DropzoneDict[elem_selector] = dropzoneElem;
 
@@ -287,8 +291,13 @@ function FileService(LoadingService, Restangular, DevToolService) {
     }
 
     function getDefaultRequestDropzone(elem) {
+        console.log(elem);
+        if (!elem) {
+            return;
+
+        }
         return {
-                    previewTemplate: document.getElementById('dz-preview-template').innerHTML,
+                    previewTemplate: elem.innerHTML,
                     url: REST_URL + '/api/v1/files',
                     method: "POST",
                     paramName: "file",

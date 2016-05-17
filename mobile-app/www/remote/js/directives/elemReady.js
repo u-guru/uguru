@@ -154,14 +154,69 @@ angular.module('uguru.directives')
     restrict: 'A',
     link: function(scope, element, attr) {
       scope.count = 0;
-      if (isElementInViewport(element[0])) {
-        $interval(function() {
-          var timerChildren = element[0].querySelectorAll('[timer-children]');
+      scope.index = 0;
+      scope.globalInterval;
+      scope.timerInterval = parseTimerInterval(attr.timerAuto);
+      scope.isWithinViewPort = isElementInViewport(element[0]);
+      if (!scope.timerInterval) return;
+      // scope.mod parseInt()
+      function initInterval(scope) {
+        scope.children = timerChildren = element[0].querySelectorAll('[timer-child]');
+        scope.maxIndex = scope.children.length;
+          $interval(function() {
+            scope.index = (scope.index + 1) % scope.maxIndex;
 
-        }, 1000);
-      };
+            var devTool = document.querySelector('[dev-tool]');
+            devTool.innerHTML = scope.index;
+
+            for (var i = 0; i < scope.children.length; i++) {
+              var indexChild = scope.children[i];
+              var indexChildClass = indexChild.getAttribute('timer-class');
+              indexChild.classList.remove(indexChildClass);
+            }
+            var indexChild = scope.children[scope.index];
+            console.log(indexChild);
+            var indexChildClass = indexChild.getAttribute('timer-class');
+            if (indexChildClass && indexChildClass.length) {
+              indexChild.classList.add(indexChildClass);
+            }
+
+          }, scope.timerInterval);
+      }
+
+      scope.$watch(function() {
+          scope.isWithinViewPort = isElementInViewport(element[0])
+          return scope.isWithinViewPort
+        }, function(in_viewport) {
+          if (in_viewport) {
+            initInterval(scope)
+          } else {
+            console.log('canceling..', in_viewport);
+
+          }
+          // alert('viewport changed to' + in_viewport);
+        }
+      )
     }
   }
+
+  function processTimerChildren(elems) {
+    resultDict = {};
+    for (var i = 0; i < elems.length; i++) {
+
+    }
+    return resultDict;
+  }
+
+  function parseTimerInterval(time_str) {
+    //seconds
+    if (time_str.split('ms').length > 1) {
+      return parseInt(time_str.replace('ms', ''));
+    } else if (time_str.split('s').length > 1) {
+      return (parseInt(time_str.replace('s', '')) * 1000);
+    }
+  }
+
 }])
 .directive('tracePath', ['$timeout', function ($timeout) {
   return {

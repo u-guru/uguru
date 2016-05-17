@@ -1950,4 +1950,10 @@ button[disabled] {
       height: 10px;
       background-color: white; }
 
+[timer-child] {
+  display: none; }
+
+[timer-child].opacity-1 {
+  display: block; }
+
 /*# sourceMappingURL=samir.css.map */

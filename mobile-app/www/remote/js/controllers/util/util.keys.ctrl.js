@@ -3368,16 +3368,16 @@ angular.module('uguru.util.controllers')
 							// 	var decomposedCSSText = matrixTransform;
 							// }
 
-							if (decomposedCSSText) {
-								processedCSSText += decomposedCSSText;
-							}
+							// if (decomposedCSSText) {
+							// 	processedCSSText += decomposedCSSText;
+							// }
 							// console.log(indexStyleProperty, indexRule.style[indexStyleProperty], );
 						} else {
-							processedCSSText += ' ' + (indexStyleProperty + ":" + indexRule.style[indexStyleProperty] + ";");
+							var processedCSSText = function() { return ' ' + (indexStyleProperty + ":" + indexRule.style[indexStyleProperty] + ";")};
 						}
 					}
 					console.log('pushing', keyText, processedCSSText, dMatrix);
-					mod_arr.push({key: keyText, css: processedCSSText, d_matrix: dMatrix});
+					mod_arr.push({key: keyText, cssFunc: processedCSSText, d_matrix: dMatrix});
 					uguruAnimObj.obj.deleteRule(keyText);
 				}
 			}
