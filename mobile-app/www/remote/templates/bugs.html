@@ -5,10 +5,31 @@
 		<header class='full-x bg-azure txt-white weight-700 text-center p10xy'>
 			Bugs
 		</header>
-		<div class='ugrid-3 full-x'>
+		
+
+		<div class='ugrid-2 full-x'>
 			<div class='bg-slate-50p'>
 				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
-					All bugs
+					Sections
+				</h1>
+				<div class='flex-wrap-center text-left'>
+					<ul>
+						<li ng-repeat='section in bugReport'>
+							<button ng-click="openBugList(section)">{{section.name}} Section</button>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<div class='bg-slate-50p'>
+				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
+					{{selectOption}}
+					<select ng-model"selectOption">
+						<option value="option" ng-repeat='option in listOption'>
+							{{option}}
+						</option>
+					</select>
+					  
 				</h1>
 				<div class='flex-wrap-center text-left'>
 					<ul>
@@ -19,7 +40,7 @@
 				</div>
 
 			</div>
-			<div class='bg-slate-50p'>
+		<!-- 	<div class='bg-slate-50p'>
 				<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
 					Prioritized Bugs
 				</h1>
@@ -42,7 +63,7 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 	</ion-content>
