@@ -59,7 +59,7 @@
 				</div>
 				
 				<ul ng-if="selectOption.id == 2">
-					<li ng-repeat="bug in bugs | orderBy:'-rank':reverse">
+					<li ng-repeat="bug in bugs | selectedTags:advanceSearch.tags.list | orderBy:'-rank':reverse">
 						#{{bug.rank}}. {{bug.title}}
 					</li>
 				</ul>

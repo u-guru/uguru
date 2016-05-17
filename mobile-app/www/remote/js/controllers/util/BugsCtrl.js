@@ -24,7 +24,8 @@ angular.module('uguru.util.controllers')
   '$timeout',
   'FileService',
   'LoadingService',
-  function($scope, $state, $timeout, FileService, LoadingService) {
+  'CTAService',
+  function($scope, $state, $timeout, FileService, LoadingService ,CTAService) {
     
     $scope.openBugList=function(section){
         $scope.bugs = section.bugs
@@ -37,17 +38,15 @@ angular.module('uguru.util.controllers')
     function addTag(content){
         taglist = $scope.advanceSearch.tags.list
         if (content.length > 0 ) {
-          for (var i = 0; i < taglist.length; ++i)
-          {
-              if (taglist[i].name.indexOf(content) > -1){
-                $scope.advanceSearch.tags.empty_tag.content = '';
-                $scope.advanceSearch.tags.err_msg = 'Repeating Tag';
-                $timeout(function() {
-                  $scope.advanceSearch.tags.err_msg = '';
-                }, 2500);
-                return
-              }
-          }        
+          if (taglist.indexOf(content) > -1){
+            $scope.advanceSearch.tags.empty_tag.content = '';
+            $scope.advanceSearch.tags.err_msg = 'Repeating Tag';
+            $timeout(function() {
+              $scope.advanceSearch.tags.err_msg = '';
+            }, 2500);
+            return
+          }
+            
           $scope.advanceSearch.tags.list.push(content);
           $scope.advanceSearch.tags.empty_tag.content = '';
         }
@@ -80,7 +79,12 @@ angular.module('uguru.util.controllers')
   
       loadUpdatedBugsJsonFile($scope);
       intData()
-
+      setTimeout(function() {
+        CTAService.initSingleCTA('#cta-box-request-payments', '#request-cta-payment', function() {
+          $scope.card = {exp: '', number: '', cvc: '', placeholder:"**** **** **** 4242"};
+          initHandlers($scope, '#request-cta-payment');
+        });
+      }, 500);
     })
 
     function loadUpdatedBugsJsonFile(scope) {
