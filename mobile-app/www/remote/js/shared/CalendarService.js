@@ -27,6 +27,11 @@ function CalendarService() {
     return calendar;
   }
 
+  function selectCalendarInterval(interval, cb) {
+    interval.selected = !interval.selected;
+    cb && cb();
+  }
+
   function getCalendarRanges(arr) {
     var allRanges = [];
     if (!arr || !arr.length) {
@@ -161,7 +166,7 @@ function CalendarService() {
       resultArr.push(dayDict);
     }
 
-    return resultArr
+    return {days: resultArr, onSelect:selectCalendarInterval }
 
     function hasAlreadyPast(time) {
       return false
