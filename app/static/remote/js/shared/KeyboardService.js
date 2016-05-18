@@ -2,11 +2,10 @@ angular.module('sharedServices')
 .factory("KeyboardService", [
 	'Utilities',
 	'$timeout',
-	'DeviceService',
 	KeyboardService
 	]);
 
-function KeyboardService(Utilities, $timeout, DeviceService) {
+function KeyboardService(Utilities, $timeout) {
 
 	var deviceKeyboardExists = false;
 	var deviceKeyboardOpen = false;
@@ -117,13 +116,12 @@ function KeyboardService(Utilities, $timeout, DeviceService) {
     	deviceKeyboardOpen = bool;
     }
 
-    function closeKeyboardIfExists() {
-        DeviceService.doesCordovaExist() && cordova.plugins.Keyboard && cordova.plugins.Keyboard.close();
-    }
+    // function closeKeyboardIfExists() {
+    //     DeviceService.doesCordovaExist() && cordova.plugins.Keyboard && cordova.plugins.Keyboard.close();
+    // }
 
     return {
         setDeviceKeyboardState:setDeviceKeyboardState,
-        closeKeyboardIfExists: closeKeyboardIfExists,
         initOptionPressedAndReleasedFunction: initOptionPressedAndReleasedFunction,
         initCopyPasteFunctionCallbacks: initCopyPasteFunctionCallbacks,
         initKeyboardKeydownFunc: initKeyboardKeydownFunc
