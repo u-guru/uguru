@@ -31,11 +31,21 @@
 				<div>
 					<span>Advance Search</span>
 					<div class='tag-list bg-slate-50p'>
-						<span>Platforms : </span>
-						
+						<ul>
+							<span>Platforms : </span>
+							<li ng-repeat="name in advanceSearch.platforms.available_list">
+								<a class="chip tag-selected" ng-if='advanceSearch.platforms.list.indexOf(name) < 0' ng-click='advanceSearch.platforms.add(name)'>
+									<span>Tag {{name}}</span>
+								</a>
+								<a class="chip tag-selected" ng-if='advanceSearch.platforms.list.indexOf(name) > -1' ng-click='advanceSearch.platforms.remove(name)'>
+									<span>UnTag {{name}}</span>
+								</a>
+							</li>
+						</ul>
 					</div>
 					<div class='tag-list bg-slate-50p'>
 						<ul>
+							<span>Tag by : </span>
 							<li ng-repeat="tag in advanceSearch.tags.list">
 								<a class="chip tag-selected" ng-click='advanceSearch.tags.remove($index)'>
 									<span>&times;&nbsp;&nbsp;</span>
@@ -52,7 +62,7 @@
 				
 				<div class='flex-wrap-center text-left'>
 					<ul ng-if="selectOption.id == 1" >
-						<li ng-repeat='bug in bugs | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug,$index)'>	
+						<li ng-repeat='bug in bugs | selectedPlatforms: advanceSearch.platforms.list |selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug,$index)'>	
 							<a >{{bug.title}}</a>
 						</li>
 					</ul>

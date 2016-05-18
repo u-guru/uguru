@@ -16,6 +16,23 @@ angular.module('uguru.util.controllers')
           });
         }
 })
+.filter('selectedPlatforms', function() {
+  return function(bugs, platforms) {
+          return bugs.filter(function(bug) {
+              //no filter if tags is empty
+              if (platforms.length == 0){
+                return true
+              }
+              for (var i in bug.platforms) {
+                  if (platforms.indexOf(bug.platforms[i]) != -1) {
+                      return true;
+                  }
+              }
+              return false;
+
+          });
+        }
+})
 .controller('BugsController', [
   //All imported packages go here
   '$scope',
@@ -25,7 +42,7 @@ angular.module('uguru.util.controllers')
   'LoadingService',
   'CTAService',
   function($scope, $state, $timeout, FileService, LoadingService ,CTAService) {
-    
+
     $scope.openBugList=function(section){
         $scope.bugs = section.bugs
         $scope.help = section.help
@@ -67,6 +84,15 @@ angular.module('uguru.util.controllers')
         modalElem && modalElem.classList.add('show');
       })
     }
+    function addPlatform(content){
+      $scope.advanceSearch.platforms.list.push(content);
+    }
+    function removePlatform(content){
+      if ($scope.advanceSearch.platforms.list && $scope.advanceSearch.platforms.list.length) {
+        var index = $scope.advanceSearch.platforms.list.indexOf(content)
+        $scope.advanceSearch.platforms.list.splice(index, 1);
+      }
+    }
 
     function addTag(content){
         taglist = $scope.advanceSearch.tags.list
@@ -103,6 +129,7 @@ angular.module('uguru.util.controllers')
         $scope.reverse = true;
         $scope.selectOption = $scope.availableOptions[0]
         $scope.advanceSearch ={
+             'platforms' :{'list':[],'add': addPlatform, 'remove':removePlatform,'available_list':[ 'chrome','firefox','safari','android','android-chrome','ios','ios-safari']},
              'tags': {'list':[], 'add': addTag, 'remove':removeTag, 'err_msg':'', 'empty_tag': {'placeholder':"+   add a tag", 'content': ''}},
         }
 
