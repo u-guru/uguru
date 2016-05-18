@@ -32,9 +32,11 @@ angular.module('uguru.util.controllers')
         KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
         KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
         KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 27, 'esc', true, null);
-        $timeout(function() {
-          generateCodePenData();
-        }, 5000)
+        if (window.location.href.split('codepen').length === 1) {
+          $timeout(function() {
+            generateCodePenData();
+          }, 5000)
+        }
       }, 1000)
     // })
 

@@ -317,7 +317,7 @@
                 <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a>|<a ng-click='openDocInNewTab()'> gDoc </a>
             </div>
             <div class='p05xy flex-wrap-center ugrid-2' ng-class='{"bg-azure": dev.toggleSpec}'>
-                <div>
+                <div ng-if='codepenData'>
                     <form action="http://codepen.io/pen/define" method="POST" target="_blank">
                       <input type="hidden" name="data" value='{{codepenData}}'>
 
