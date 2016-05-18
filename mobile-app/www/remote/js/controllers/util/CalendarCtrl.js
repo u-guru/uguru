@@ -28,14 +28,14 @@ angular.module('uguru.util.controllers')
     // $scope.$on('$ionicView.loaded', function() {
       $timeout(function() {
         $scope.calendar = CalendarService.getNextSevenDaysArr()
-        loadCodepenSpec();
         KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
         KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
         KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 27, 'esc', true, null);
         if (window.location.href.split('codepen').length === 1) {
           $timeout(function() {
+            loadCodepenSpec();
             generateCodePenData();
-          }, 5000)
+          }, 2000);
         }
       }, 1000)
     // })
