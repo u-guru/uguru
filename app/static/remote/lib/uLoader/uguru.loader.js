@@ -284,11 +284,11 @@ setTimeout(function() {
     animation.href = URL_BASE + 'remote/css/sass/animation.css';
     magic.href = URL_BASE + 'remote/css/sass/magic.css';
     utility.href = URL_BASE + 'remote/css/sass/utility.css';
-    app_version.href = URL_BASE + 'remote/css/app_version.css';
+    // app_version.href = URL_BASE + 'remote/css/app_version.css';
     app_version.setAttribute('async', 'async');
     head.appendChild(magic);
     head.appendChild(utility);
-    head.appendChild(app_version);
+    // head.appendChild(app_version);
     // head.appendChild(animate);
     // head.appendChild(animation);
 }, 500);

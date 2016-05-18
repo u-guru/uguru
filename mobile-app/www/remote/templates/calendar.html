@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <ion-view ng-controller='CalendarController'>
     <ion-content class="bg-slate">
         <section class="calendar-container guru">
             <div class='calendar guru relative'>
+=======
+<ion-view id='calendar-view'>
+    <ion-content class="bg-smoke">
+        <section class="calendar-container student" class-on-click="has-filters">
+            <div class='calendar student relative'>
+>>>>>>> 0ae7b45a6ffbecc60f26eeb06c55fcec72c21cca
                 <div class="cal-week active">
                     <div>
         				<h1 class="cal-month">
@@ -398,7 +405,7 @@
                 <form action="http://codepen.io/pen/define" method="POST" target="_blank">
                   <input type="hidden" name="data" value='{{codepenData}}'>
 
-                  <input type="submit" value="Create New Pen with Prefilled Data">
+                  <input type="submit" id='codepen-input' value="Create New Pen with Prefilled Data">
                 </form>
             </div>
             <div class='p05xy text-center' >

@@ -1,7 +1,6 @@
 angular
 .module('sharedServices')
 .factory("AnimationService", [
-	'DeviceService',
 	'$ionicViewSwitcher',
 	'$timeout',
 	'uTracker',
@@ -10,7 +9,7 @@ angular
 	AnimationService
 		]);
 
-function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker, $state, InAppMapService) {
+function AnimationService($ionicViewSwitcher, $timeout, uTracker, $state, InAppMapService) {
 
 	var slideOptions = {
 	  "direction"        : "right", // 'left|right|up|down', default 'left' (which is like 'next')
@@ -24,8 +23,7 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 	};
 
 	return {
-		initSlide: initSlide,
-		slide: slide,
+		// slide: slide,
 		flip: flip,
 		shakeElem: shakeElem,
 		fadeOutElem: fadeOutElem,
@@ -45,18 +43,18 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
       }
   	}
 
-	function initSlide() {
-		if(DeviceService.isMobile() && window.plugins.nativepagetransitions) {
-			window.plugins.nativepagetransitions.slide({
-				"direction": "right",
-				"duration" : 10,
-				"slowdownfactor": 1,
-				"iosdelay": 10,
-				"androiddelay": 10
-			}, successMsg, errorMsg);
-		}
+	// function initSlide() {
+	// 	if(DeviceService.isMobile() && window.plugins.nativepagetransitions) {
+	// 		window.plugins.nativepagetransitions.slide({
+	// 			"direction": "right",
+	// 			"duration" : 10,
+	// 			"slowdownfactor": 1,
+	// 			"iosdelay": 10,
+	// 			"androiddelay": 10
+	// 		}, successMsg, errorMsg);
+	// 	}
 
-	}
+	// }
 
 	 function activateSectionAnimations(elements, css_arr, delay_arr) {
         if (!elements || !elements.length) {
@@ -245,50 +243,50 @@ function AnimationService(DeviceService, $ionicViewSwitcher, $timeout, uTracker,
 		Velocity(elem, "fadeOut", {duration:duration});
 	}
 
-	function slide(direction, target, slowdownFactor) {
-		if(DeviceService.isMobile()) {
-			if(direction !== undefined) slideOptions.direction = direction;
-			if(slowdownFactor !== undefined) slideOptions.slowdownFactor = slowdownFactor;
-			if(DeviceService.isMobile()) {
+	// function slide(direction, target, slowdownFactor) {
+	// 	if(DeviceService.isMobile()) {
+	// 		if(direction !== undefined) slideOptions.direction = direction;
+	// 		if(slowdownFactor !== undefined) slideOptions.slowdownFactor = slowdownFactor;
+	// 		if(DeviceService.isMobile()) {
 
-				window.plugins.nativepagetransitions.slide(slideOptions, successMsg, errorMsg);
-				var start = null;
-				var fpsArray = [];
-				function step(timestamp) {
-				  stats.begin();
-				  stats.end();
-				  if (!start) start = timestamp;
-				  var progress = timestamp - start;
-				  fpsArray.push(stats.getFPS());
-				  if(progress < 200) {
-				    requestAnimationFrame(step);
-				  } else {
-				  	var total = 0;
-				  	for (var i = 0; i < fpsArray.length; i++) {
-				  	  total += fpsArray[i];
-				  	}
-				  	//we are disregarding the first value since it's most likely 0 due to initial transition
-				  	fpsArray.shift();
-				  	var meanFPS = Math.round(total / (fpsArray.length));
-			  		if(target !== undefined) {
-			  			var performance = 'pass';
-			  			if(meanFPS < 10) performance = 'fail';
-			  			uTracker.track(tracker, target, {
-			  			  "$Mean_FPS": meanFPS,
-			  			  "$FPS_Array": fpsArray.toString(),
-			  			  "$Performance": performance
-			  			});
-			  		}
+	// 			window.plugins.nativepagetransitions.slide(slideOptions, successMsg, errorMsg);
+	// 			var start = null;
+	// 			var fpsArray = [];
+	// 			function step(timestamp) {
+	// 			  stats.begin();
+	// 			  stats.end();
+	// 			  if (!start) start = timestamp;
+	// 			  var progress = timestamp - start;
+	// 			  fpsArray.push(stats.getFPS());
+	// 			  if(progress < 200) {
+	// 			    requestAnimationFrame(step);
+	// 			  } else {
+	// 			  	var total = 0;
+	// 			  	for (var i = 0; i < fpsArray.length; i++) {
+	// 			  	  total += fpsArray[i];
+	// 			  	}
+	// 			  	//we are disregarding the first value since it's most likely 0 due to initial transition
+	// 			  	fpsArray.shift();
+	// 			  	var meanFPS = Math.round(total / (fpsArray.length));
+	// 		  		if(target !== undefined) {
+	// 		  			var performance = 'pass';
+	// 		  			if(meanFPS < 10) performance = 'fail';
+	// 		  			uTracker.track(tracker, target, {
+	// 		  			  "$Mean_FPS": meanFPS,
+	// 		  			  "$FPS_Array": fpsArray.toString(),
+	// 		  			  "$Performance": performance
+	// 		  			});
+	// 		  		}
 
-				  }
+	// 			  }
 
-				}
-				requestAnimationFrame(step);
-				//window.plugins.nativepagetransitions.slide(slideOptions, successMsg, errorMsg);
-			}
-		}
+	// 			}
+	// 			requestAnimationFrame(step);
+	// 			//window.plugins.nativepagetransitions.slide(slideOptions, successMsg, errorMsg);
+	// 		}
+	// 	}
 
-	}
+	// }
 
 	//customOptions is optional, if none are set then default options will be used
 	function flip(target, customOptions, params, cb) {

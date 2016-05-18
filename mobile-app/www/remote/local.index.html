@@ -234,8 +234,8 @@
   </script>
 
     <script type="text/javascript" src="remote/js/shared/stats.js"></script>
-    <!-- cordova script (this will be a 404 during development) <script src="cordova_plugins.js"></script> -->
-    <script type="text/javascript" src="remote/lib/facebook/facebookConnectPlugin.js"></script>
+    <!-- cordova script (this will be a 404 during development) <script src="cordova_plugins.js"></script>
+    <script type="text/javascript" src="remote/lib/facebook/facebookConnectPlugin.js"></script>-->
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
 
@@ -244,12 +244,12 @@
     </script>
     <script src="remote/js/constants.js"></script>
     <!-- uguru app main js -->
-    <script src="remote/js/main.js"></script>
+    <script src="remote/js/main.min.js"></script>
 
 
-
+    <!--
     <script type="text/javascript" src="remote/lib/facebook/openfb.js"></script>
-    <script type="text/javascript" src="remote/lib/facebook/ngopenfb.js"></script>
+    <script type="text/javascript" src="remote/lib/facebook/ngopenfb.js"></script> -->
 
     <script type="text/javascript" src="remote/js/directives/customDirectives.js"></script>
     <script type="text/javascript" src="remote/js/directives/throttle.js"></script>
@@ -323,7 +323,7 @@
     <script type="text/javascript" src="remote/js/controllers/guru/guru.questions.ctrl.js"></script>
 
 
-    <script type="text/javascript" src="remote/js/university/AddUniversityCtrl.js"></script>
+
     <script type="text/javascript" src="remote/js/university/UniversityFilterCtrl.js"></script>
     <script type="text/javascript" src="remote/js/university/AddMajorCtrl.js"></script>
     <script type="text/javascript" src="remote/js/university/AddCourseCtrl.js"></script>
@@ -454,7 +454,6 @@
     <script type="text/javascript" src="remote/js/essay/EssayStudentHomeCtrl.js"></script>
     <script type="text/javascript" src="remote/js/essay/EssayStudentRequestCtrl.js"></script>
     <!-- Card component -->
-
     <script type="text/javascript" src="remote/js/controllers/util/CardList.ctrl.js"></script>
     <script type="text/javascript" src="remote/js/controllers/util/UniversitySearchCtrl.js"></script>
     <!-- GPA Controller -->
@@ -510,9 +509,9 @@
    <button id="button">Full Screen</button> -->
 
     <ui-view id="uguru-view">
-            <!--<script type="text/ng-template" id="view1.html">
+            <script type="text/ng-template" id="view1.html">
                     <div ng-include="'remote/templates/calendar.html'"> VIEW 1 </div>
-            </script> -->
+            </script>
     </ui-view>
     <script>
       window.intercomSettings = {
