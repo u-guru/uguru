@@ -28,7 +28,9 @@ angular.module('uguru.util.controllers')
         KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
         KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
         KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 27, 'esc', true, null);
-        generateCodePenData();
+        $timeout(function() {
+          generateCodePenData();
+        }, 5000)
       }, 1000)
     // })
 
@@ -82,11 +84,11 @@ angular.module('uguru.util.controllers')
       return;
     }
 
-    toggleDev();
-    $timeout(function() {
-      angular.element(document.querySelector('#codepen-input')).triggerHandler('click');
-      document.querySelector('#codepen-input').click();
-    }, 1500);
+    // toggleDev();
+    // $timeout(function() {
+    //   angular.element(document.querySelector('#codepen-input')).triggerHandler('click');
+    //   document.querySelector('#codepen-input').click();
+    // }, 1500);
 
   }
 
