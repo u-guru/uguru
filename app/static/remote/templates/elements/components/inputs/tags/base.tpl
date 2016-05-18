@@ -1,4 +1,5 @@
-<span class="chip bg-{{category.hex_class}}">{{innerText}}<!--     <div class="absolute full-xy top-0 left-0 flex-center-wrap">
+<span class="chip bg-{{category.hex_class}}">{{innerText}}
+<!--     <div class="absolute full-xy top-0 left-0 flex-center-wrap">
     <ul class="flex">
         <li><span class="chip bg-auburn">auburn</span></li>
         <li><span class="chip bg-orange">orange</span></li>
@@ -14,4 +15,6 @@
         <li><span class="chip">tag span</span></li>
 
     </ul>
-</div> --></span>
+</div> -->
+</span>
+

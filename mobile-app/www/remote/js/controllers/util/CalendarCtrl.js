@@ -46,7 +46,7 @@ angular.module('uguru.util.controllers')
 
     function getHtmlString() {
       var calendar_view_html = document.querySelector('#calendar-view').parentNode.innerHTML;
-      return '<div id="fb-root"></div><body ng-app="uguru" animation="slide-left-right-ios7"><ui-view id="uguru-view"><script type="text/ng-template" id="view1.html">' + calendar_view_html + '</div></script></ui-view></body>'
+      return '<body ng-app="uguru" animation="slide-left-right-ios7"><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + calendar_view_html + '</div></script></ui-view></body>'
     }
     function generateCodePenData () {
 
@@ -67,8 +67,8 @@ angular.module('uguru.util.controllers')
         js_pre_processor      : "none",
         html_classes          : null,
         head                  : "<meta name='viewport' content='width=device-width'><script>_local=false;_startpage='calendar';</script>",
-        css_external          : "https://uguru-rest-test.herokuapp.com/static/remote/css/app_version.css", // semi-colon separate multiple files
-        js_external           : 'https://uguru-rest-test.herokuapp.com/static/remote/js/min.app.js', // semi-colon separate multiple files
+        css_external          : "https://uguru-rest-test.herokuapp.com/static/remote/css/app_version.css",
+        js_external           : 'https://uguru-rest-test.herokuapp.com/static/remote/js/u.base.js;https://uguru-rest-test.herokuapp.com/static/remote/js/main.min.js;https://uguru-rest-test.herokuapp.com/static/remote/js/controllers/util/CalendarCtrl.js',
         css_pre_processor_lib : null,
         js_modernizr : null,
         js_library   : null,
@@ -82,11 +82,11 @@ angular.module('uguru.util.controllers')
       return;
     }
 
-    // toggleDev();
-    // $timeout(function() {
-    //   angular.element(document.querySelector('#codepen-input')).triggerHandler('click');
-    //   document.querySelector('#codepen-input').click();
-    // }, 1500);
+    toggleDev();
+    $timeout(function() {
+      angular.element(document.querySelector('#codepen-input')).triggerHandler('click');
+      document.querySelector('#codepen-input').click();
+    }, 1500);
 
   }
 
