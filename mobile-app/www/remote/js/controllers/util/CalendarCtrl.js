@@ -76,6 +76,8 @@ angular.module('uguru.util.controllers')
 
     }
 
+    console.log('controller has loaded');
+
     function switchScreenSize() {
       return;
     }
