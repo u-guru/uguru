@@ -2,19 +2,16 @@ angular
 .module('sharedServices')
 .factory("Utilities", [
 	'$rootScope',
-	'Settings',
-	'User',
 	'$compile',
 	Utilities
 	]);
 
-function Utilities($rootScope, Settings, User, $compile) {
+function Utilities($rootScope, $compile) {
 
 	return {
 		getNetworkSpeed: getNetworkSpeed,
 		deg2rad: deg2rad,
 		getDistanceInMiles: getDistanceInMiles,
-		readError: readError,
 		nickMatcher: nickMatcher,
 		getFileName: getFileName,
 		isElementInViewport: isElementInViewport,
