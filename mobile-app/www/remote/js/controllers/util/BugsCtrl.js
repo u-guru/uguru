@@ -159,14 +159,23 @@ angular.module('uguru.util.controllers')
 
       loadUpdatedBugsJsonFile($scope);
       intData()
-    })
 
+    })
+    // $scope.$on('$routeChangeStart',function(){
+    //   alert("Hello! I am an alert box!!");
+    // })
     setTimeout(function() {
       console.log($scope.bugReport)
       $scope.openBugList($scope.bugReport[0])
 
     }, 1000);
-
+    window.onbeforeunload = function(event)
+      { 
+        if(!$scope.isEditMode){
+          event.returnValue = "All file won't be saved without click save button.\n";
+        }
+          
+      };
 
   }
 

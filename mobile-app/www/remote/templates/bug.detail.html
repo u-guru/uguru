@@ -70,29 +70,36 @@
 		<div class="ugrid-2" style="height: calc(100% - 54px - 158px - 66px)">
 			<ul class="bg-charcoal full-y overflow-auto p15-grid no-scrollbar">
 				<li class="flex-stretch">
+					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">file&nbsp;names</span>
+					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selected_bug.file_names}}</span>
+					<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selected_bug.file_names' ng-if='isEditMode' ></input>
+				</li>
+
+				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">file&nbsp;type</span>
-					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selected_bug.file_type}}</span>
+					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selected_bug.file_type}}</span>
+					<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selected_bug.file_type' ng-if='isEditMode' ></input>
 				</li>
 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">notes</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selected_bug.notes}}</span>
-					<textarea class="full-x p10y-p15x radius-2-right txt-18 semibold" ng-if='isEditMode'></textarea>
+					<textarea class="full-x p10y-p15x radius-2-right txt-18 semibold" ng-model='selected_bug.notes'ng-if='isEditMode'></textarea>
 				</li>
 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">rank</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selected_bug.rank}}</span>
-					<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;" ng-if='isEditMode'></input>
+					<input type='number' min='0' class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selected_bug.rank' ng-if='isEditMode' ></input>
 				</li>
 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">element</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selected_bug.element}}</span>
-					<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;" ng-if='isEditMode'></input>
+					<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;" ng-model='selected_bug.element' ng-if='isEditMode'></input>
 				</li>
 				<li class="flex-stretch-space-between">
 					<span class="block bg-rocket p10y-p15x txt-18 semibold" ng-class="{'radius-2-left': !isEditMode, 'radius-2': isEditMode}">priority</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selected_bug.priority}}</span>
 					<div class="toggle" style="margin-top: 2px" ng-if='isEditMode'>
-						<input type="checkbox" ng-click='' />
+						<input type="checkbox" ng-model='selected_bug.priority' />
 						<label>
 							<svg class="square" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
@@ -106,34 +113,43 @@
 				</li>
 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">difficulty</span>
-					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selected_bug.difficulty}}</span>
+					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode' >{{selected_bug.difficulty}}</span>
+					<div ng-if='isEditMode' >
+						<span>[low to high]</span>
+						<a ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10]" ng-click="selected_bug.difficulty = i">
+							<span>{{i}}</span>
+						</a>
+					</div>
+
 				</li>
-				<li class="flex-stretch">
+
+<!-- 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">impact&nbsp;file</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selected_bug.impact_file}}</span>
-				</li>
-				<li class="flex-stretch">
-					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">file&nbsp;names</span>
-					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selected_bug.file_names}}</span>
-				</li>
+				</li> -->
+
 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">error&nbsp;msg</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selected_bug.error_msg}}</span>
 				</li>
-				<li class="flex-stretch">
-					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">fixed</span>
-					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selected_bug.fixed}}</span>
-				</li>
-				<li class="flex-stretch">
-					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">fixed&nbsp;date</span>
-					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selected_bug.fixedDate}}</span>
-				</li>
-				<li>
-					<input ng-if='isEditMode' tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
-				</li>
 			</ul>
 			<div class="full-y bg-slate overflow-auto no-scrollbar">
-				<h1 class="p15x-p15top semibold">Platforms</h1>
+				<h1 class="p15x-p15top semibold">Impact Files :</h1>
+				<div class='tag-list'>
+					<ul>
+						<li ng-repeat="file in selected_bug.impact_file">
+							<a class="chip bg bg-robin">
+								<span ng-if='isEditMode'>&times;&nbsp;&nbsp;</span>
+								<span>{{file}}</span>
+							</a>
+						</li>
+						<li>
+							<input ng-if='isEditMode' tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
+						</li>
+					</ul>
+				</div>
+
+				<h1 class="p15x-p15top semibold">Platforms :</h1>
 				<div class='tag-list'>
 					<ul>
 						<li ng-repeat="tag in selected_bug.platforms">
@@ -142,9 +158,13 @@
 								<span>{{tag}}</span>
 							</a>
 						</li>
+						<li>
+							<input ng-if='isEditMode' tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
+						</li>
 					</ul>
 				</div>
-				<h1 class="p15x-p15top semibold">Tags</h1>
+
+				<h1 class="p15x-p15top semibold">Tags :</h1>
 				<div class='tag-list'>
 					<ul>
 						<li ng-repeat="tag in selected_bug.tags">
