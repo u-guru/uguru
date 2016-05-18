@@ -385,11 +385,18 @@
             <div class='p05xy flex-wrap-center'>
                 Dev bar
             </div>
-            <div class='p05xy flex-wrap-center' ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>
-                View Spec
+            <div class='p05xy flex-wrap-center'>
+                <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a>|<a ng-click='openDocInNewTab()'> gDoc </a>
             </div>
             <div class='p05xy flex-wrap-center' ng-class='{"bg-azure": dev.toggleSpec}'>
-                Export 2 Codepen
+                <!-- <a ng-click='editInCodepen()'>
+                    Edit in Codepen
+                </a> -->
+                <form action="http://codepen.io/pen/define" method="POST" target="_blank">
+                  <input type="hidden" name="data" value='{{codepenData}}'>
+
+                  <input type="submit" value="Create New Pen with Prefilled Data">
+                </form>
             </div>
             <div class='p05xy text-center' >
                 <dropdown ng-model="dev.screenSizesDropdown">

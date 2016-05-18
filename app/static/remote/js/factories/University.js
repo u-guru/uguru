@@ -1,6 +1,6 @@
 angular.module('uguru.rest', [])
-.factory('University', ['Restangular', '$timeout', '$localstorage', 'uTracker', 'GUtilService',
-    function(Restangular, $timeout, $localstorage, uTracker, GUtilService) {
+.factory('University', ['Restangular', '$timeout', '$localstorage', 'GUtilService',
+    function(Restangular, $timeout, $localstorage, GUtilService) {
     var University;
     var source = {
         majors: [],
@@ -107,9 +107,6 @@ angular.module('uguru.rest', [])
                         source.majors = response.plain();
                         $timeout(function() {
                             $localstorage.set(uni_id + ' majors', source.majors);
-                            uTracker.track(tracker, {
-                                '$Downloaded_Majors': uni_id
-                            });
                         }, 1000);
                     }, function(err) {
                         console.error("Error getting majors: " + err);
@@ -210,7 +207,7 @@ function hasNoMajors(list) {
 
 
 function removeAlreadyAddedCourses(user_courses) {
-    return 
+    return
 }
 
 var targettedUniversities = [{
