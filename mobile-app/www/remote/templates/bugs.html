@@ -73,7 +73,7 @@
 					</ul>
 					
 					<ul ng-if="availableOptions.selectedIndex == 1" class="p15-grid">
-						<li class="flex" ng-repeat="bug in bugs | selectedTags:advanceSearch.tags.list | orderBy:'-rank':reverse">
+						<li class="flex" ng-repeat="bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list | orderBy:'-rank':reverse">
 							<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">#{{bug.rank}}</span>
 							<span class="block bg-charcoal p10y-p15x radius-2-right txt-18 semibold full-x">{{bug.title}}</span>
 						</li>
