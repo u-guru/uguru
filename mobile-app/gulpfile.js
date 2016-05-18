@@ -390,7 +390,7 @@ gulp.task('scripts', function() {
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
-    .pipe(plugins.if(build, plugins.concat('min.app.js')))
+    .pipe(plugins.if(build, plugins.concat('app.js')))
     .pipe(gulp.dest(dest))
 });
 
