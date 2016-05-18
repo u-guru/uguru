@@ -326,7 +326,7 @@ gulp.task('scripts', function() {
       // 'cordova.js',
       // 'plugins/*/www/*.js',
       "js/shared/stats.js",
-      "js/main.min.js",
+      "js/main.js",
       "js/factories/LocalStorage.js",
       "js/factories/University.js",
       "js/factories/*.js",
