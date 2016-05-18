@@ -1,10 +1,103 @@
-<main class="desktop-mode" >
-	<header class="desktop-header">
+<main class="desktop-mode desktop-search" >
+	<header class="desktop-header full-x bg-azure txt-white weight-700 text-center p10xy">
 		<a></a>
-		<a class='cta-modal-close desktop-header-next desktop-header-close'>
+		<span>{{selected_bug.title}}</span>
+		<a class='cta-modal-close desktop-header-next desktop-header-close' ng-click="closeBug()">
 			<svg viewBox="0 0 100 100">
 				<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 			</svg>
 		</a>
+
 	</header>
+	<div class="main default bg-slate-50p">
+		<div>
+			<a ng-if='selected_bug.index != 0' ng-click='preBug()'>Previous</a>
+			<a ng-if='selected_bug.index < bugs.length-1' ng-click='nextBug()'>Next</a>
+		</div>
+
+		<div>
+			<ul>
+				<li ng-repeat='shot in selected_bug.screenshot'>
+					<a src ='{{shot}}'>
+						<img style='height:250px; display:inline-block;' src ='{{shot}}'></img>
+					</a>
+				</li>
+				<li>
+					<img style='height:100px; display:inline-block;' src ='https://files.slack.com/files-pri/T052B7MCK-F12DF12TF/2016-04-20_15_29_24.png'></img>
+				</li>
+			<ul>
+		</div>
+
+		<div>
+			"file_type": {{selected_bug.file_type}}
+		</div>
+
+		<div>
+			"notes": {{selected_bug.notes}}
+		</div>
+
+		<div>
+			"rank": {{selected_bug.rank}}
+		</div>
+
+		<div>
+			"element": {{selected_bug.element}}
+		</div>
+
+		<div>
+			"priority": {{selected_bug.priority}}
+		</div>
+
+		<div>
+			"difficulty": {{selected_bug.difficulty}}
+		</div>
+
+
+
+		<div>
+			"impact_file":  {{selected_bug.impact_file}}
+		</div>
+
+		<div>
+			"file_names": {{selected_bug.file_names}}
+		</div>
+
+		<div>
+			"error_msg": {{selected_bug.error_msg}}
+		</div>
+
+		<div>
+			"fixed": " {{selected_bug.fixed}}
+		</div>
+
+		<div>
+			"fixedDate": {{selected_bug.fixedDate}} 
+		</div>
+		<div class='tag-list bg-slate-50p'>
+			<ul>
+				<span>Platforms :</span>
+				<li ng-repeat="tag in selected_bug.platforms">
+					<a class="chip tag-selected">
+						<span>{{tag}}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class='tag-list bg-slate-50p'>
+			<ul>
+				<span>Tags :</span>
+				<li ng-repeat="tag in selected_bug.tags">
+					<a class="chip tag-selected">
+						<span>&times;&nbsp;&nbsp;</span>
+						<span>{{tag}}</span>
+					</a>
+				</li>
+				<!-- <li>
+					<input tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
+				</li> -->
+			</ul>
+		</div>
+	</div>
+	<button> Fixed the Bug </button>
+
 </main>

@@ -1,6 +1,6 @@
 <ion-view class='bg-charcoal' ng-controller='BugsController'>
 	<ion-content class='flex-wrap-center flex-stretch full-xy absolute left-0 top-0'>
-		<ion-pane id='cta-modal-selected-bug' class='absolute full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/bug.detail.html'"></ion-pane>
+		<ion-pane id='cta-modal-selected-bug' class='absolute full-xy hide-display cta-modal bg-charcoal' ng-controller="BugsController" ng-include="img_base + BASE + 'templates/bug.detail.html'"></ion-pane>
 
 		<header class='full-x bg-azure txt-white weight-700 text-center p10xy'>
 			Bugs
@@ -27,30 +27,27 @@
 					</select>
 					<a ng-if='selectOption.id > 1' ng-click="order()">Reverse ? {{reverse}}</a>
 				</h1>
-
-				<div class='tag-list bg-slate-50p'>
-					<ul>
-						<li ng-repeat="tag in advanceSearch.tags.list">
-							<a class="chip tag-selected" ng-click='advanceSearch.tags.remove($index)'>
-								<span>&times;&nbsp;&nbsp;</span>
-								<span>{{tag}}</span>
-							</a>
-						</li>
-						<li>
-							<input tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
-						</li>
-					</ul>
-					<span class="error hide" ng-class="{'show': advanceSearch.tags.err_msg}">{{advanceSearch.tags.err_msg}}</span> 
+				<div>
+					<span>Advance Search</span>
+					<div class='tag-list bg-slate-50p'>
+						<ul>
+							<li ng-repeat="tag in advanceSearch.tags.list">
+								<a class="chip tag-selected" ng-click='advanceSearch.tags.remove($index)'>
+									<span>&times;&nbsp;&nbsp;</span>
+									<span>{{tag}}</span>
+								</a>
+							</li>
+							<li>
+								<input tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
+							</li>
+						</ul>
+						<span class="error hide" ng-class="{'show': advanceSearch.tags.err_msg}">{{advanceSearch.tags.err_msg}}</span> 
+					</div>
 				</div>
-
-
-
-
-
-
+				
 				<div class='flex-wrap-center text-left'>
 					<ul ng-if="selectOption.id == 1" >
-						<li ng-repeat='bug in bugs | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug)'>	
+						<li ng-repeat='bug in bugs | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug,$index)'>	
 							<a >{{bug.title}}</a>
 						</li>
 					</ul>

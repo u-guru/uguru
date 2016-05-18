@@ -36,10 +36,27 @@ angular.module('uguru.util.controllers')
     $scope.order = function() {
       $scope.reverse = !$scope.reverse;
     }
-
-    $scope.initAndLaunchBugCTA = function($event, bug){
+    $scope.closeBug = function(){
+        element = document.querySelector('#cta-modal-selected-bug')
+        className = element.className.replace('show','')
+        element.className = className;
+    }
+    $scope.nextBug = function(){
+      console.log($scope.selected_bug.index)
+      var index = $scope.selected_bug.index + 1
+      $scope.selected_bug = $scope.bugs[index]
+      $scope.selected_bug.index = index
+    }
+    $scope.preBug = function(){
+      var index = $scope.selected_bug.index - 1
+      $scope.selected_bug = $scope.bugs[index]
+      $scope.selected_bug.index = index
+    }
+    
+    $scope.initAndLaunchBugCTA = function($event,bug,index){
       var targetElem = $event.target;
       $scope.selected_bug = bug;
+      $scope.selected_bug.index = index
       $scope.lastCTABoxTargetElem = targetElem;
       $scope.lastCTABoxTargetElem.id = 'cta-box-selected-bug';
       CTAService.initSingleCTA('#' + targetElem.id, '#main-bug-content');
@@ -49,7 +66,6 @@ angular.module('uguru.util.controllers')
         var modalElem = document.querySelector('#cta-modal-selected-bug');
         modalElem && modalElem.classList.add('show');
       })
-
     }
 
     function addTag(content){
@@ -110,7 +126,9 @@ angular.module('uguru.util.controllers')
       loadUpdatedBugsJsonFile($scope);
       intData()
     })
-
+    $scope.$watch('selected_bug',function(newValue,oldValue){
+        console.log('detect',newValue,oldValue)
+    });
     setTimeout(function() {
       console.log($scope.bugReport)
       $scope.openBugList($scope.bugReport[0])
