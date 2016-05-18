@@ -51,11 +51,26 @@
 								</li>
 							</ul>
 						</div>
+						<h1 class="semibold p15x txt-18">Platforms</h1>
+						<div class='tag-list bg-slate-50p'>
+							<ul>
+								<li ng-repeat="name in advanceSearch.platforms.available_list">
+									<a class="chip" ng-if='advanceSearch.platforms.list.indexOf(name) < 0' ng-click='advanceSearch.platforms.add(name)'>
+										<span>+&nbsp;&nbsp;</span>
+										<span>{{name}}</span>
+									</a>
+									<a class="chip bg bg-robin" ng-if='advanceSearch.platforms.list.indexOf(name) > -1' ng-click='advanceSearch.platforms.remove(name)'>
+										<span>&times;&nbsp;&nbsp;</span>
+										<span>{{name}}</span>
+									</a>
+								</li>
+							</ul>
+						</div>
 						<div class="error bg-crimson m15x p10y-p15x radius-2 txt-white semibold txt-18 hide" ng-class="{'show': advanceSearch.tags.err_msg}">{{advanceSearch.tags.err_msg}}</div>
 					</div>
 					
 					<ul ng-if="selectOption.id == 1" class="p15-grid">
-						<li ng-repeat='bug in bugs | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug,$index)'>	
+						<li ng-repeat='bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug,$index)'>	
 							<a class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</a>
 						</li>
 					</ul>

@@ -1,7 +1,7 @@
 <div class="full-xy">
 	<header class='bg-robin txt-center flex-center'>
 		<h1 class="txt-white weight-700 txt-28">Bug Detail</h1>
-		<span class="block p15x-p10y bg-white txt-moxie radius-2 caps txt-18 semibold m15left">Fixed 10/15/16</span>
+		<span class="block p15x-p10y bg-white txt-moxie radius-2 caps txt-18 semibold" ng-if="selected_bug.fixedDate">Fixed {{selected_bug.fixedDate}}</span>
 		<a class='svg-white svg-36 svg-stroke-8 absolute top-0 right-0 close-icon m10xy' ng-click="closeBug()">
 			<svg viewBox="0 0 100 100">
 				<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
@@ -67,7 +67,6 @@
 				</li> -->
 			<ul>
 		</div>
-
 		<div class="ugrid-2" style="height: calc(100% - 54px - 158px - 66px)">
 			<ul class="bg-charcoal full-y overflow-auto p15-grid no-scrollbar">
 				<li class="flex-stretch">
@@ -128,6 +127,9 @@
 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">fixed&nbsp;date</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selected_bug.fixedDate}}</span>
+				</li>
+				<li>
+					<input ng-if='isEditMode' tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
 				</li>
 			</ul>
 			<div class="full-y bg-slate overflow-auto no-scrollbar">
