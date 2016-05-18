@@ -87,15 +87,15 @@ angular.module('uguru.util.controllers')
         html                  : getHtmlString(),
         html_pre_processor    : "",
         css                   : "html { color: red; }",
-        css_pre_processor     : "scss",
+        css_pre_processor     : "css",
         css_starter           : "neither",
-        css_prefix            : "autoprefixer",
-        js                    : "_local=true;",
+        css_prefix            : "none",
+        js                    : "//import this extra file manually https://codepen.io/teamuguru/pen/ONePXN.js",
         js_pre_processor      : "none",
         html_classes          : null,
         head                  : "<meta name='viewport' content='width=device-width'><script>_local=false;_startpage='calendar';</script>",
         css_external          : "https://uguru-rest-test.herokuapp.com/static/remote/css/app_version.css",
-        js_external           : 'https://uguru-rest-test.herokuapp.com/static/remote/js/u.base.js;https://uguru-rest-test.herokuapp.com/static/remote/js/main.min.js;https://uguru-rest-test.herokuapp.com/static/remote/js/controllers/util/CalendarCtrl.js',
+        js_external           : 'https://uguru-rest-test.herokuapp.com/static/remote/js/u.base.js;https://uguru-rest-test.herokuapp.com/static/remote/js/main.min.js',
         css_pre_processor_lib : null,
         js_modernizr : null,
         js_library   : null,
@@ -109,11 +109,6 @@ angular.module('uguru.util.controllers')
       return;
     }
 
-    // toggleDev();
-    // $timeout(function() {
-    //   angular.element(document.querySelector('#codepen-input')).triggerHandler('click');
-    //   document.querySelector('#codepen-input').click();
-    // }, 1500);
 
   }
 
