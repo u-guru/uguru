@@ -15,16 +15,13 @@
 							<li ng-repeat='section in bugReport'>
 								<button class="bg-shamrock radius-2" ng-click="openBugList(section)">{{section.name}} Section</button>
 							</li>
-							<li>
-								<select ng-model="selectOption" ng-options="option.name for option in availableOptions track by option.id"></select>
-							</li>
 						</ul>
 					</div>
 				</aside>
 				<div class='bg-slate-50p' ng-int='reverse = false'>
 					<h1 class='p05xy bg-robin-80p full-x flex-wrap-center' style="height: 54px;">
-						<dropdown class="height-32 m15right" ng-model="selectOption" selected-index="0"> </dropdown>
-						<div class="checkbox-container" ng-if='selectOption.id > 1'>
+						<dropdown class="height-32 m15right" ng-model="availableOptions" selected-index="0"> </dropdown>
+						<div class="checkbox-container" ng-if='availableOptions.selectedIndex > 0'>
 							<div>
 								<input type="checkbox" id="reverse-order" ng-click="order()" />
 								<span>
@@ -69,20 +66,20 @@
 						<div class="error bg-crimson m15x p10y-p15x radius-2 txt-white semibold txt-18 hide" ng-class="{'show': advanceSearch.tags.err_msg}">{{advanceSearch.tags.err_msg}}</div>
 					</div>
 					
-					<ul ng-if="selectOption.id == 1" class="p15-grid">
+					<ul ng-if="availableOptions.selectedIndex == 0" class="p15-grid">
 						<li ng-repeat='bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug,$index)'>	
 							<a class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</a>
 						</li>
 					</ul>
 					
-					<ul ng-if="selectOption.id == 2" class="p15-grid">
+					<ul ng-if="availableOptions.selectedIndex == 1" class="p15-grid">
 						<li class="flex" ng-repeat="bug in bugs | selectedTags:advanceSearch.tags.list | orderBy:'-rank':reverse">
 							<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">#{{bug.rank}}</span>
 							<span class="block bg-charcoal p10y-p15x radius-2-right txt-18 semibold full-x">{{bug.title}}</span>
 						</li>
 					</ul>
 
-					<ul ng-if="selectOption.id == 3">
+					<ul ng-if="availableOptions.selectedIndex == 2">
 						<li ng-repeat="bug in bugs | filter:{fixed:true}">
 							<span class="block bg-charcoal p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</span>
 						</li>

@@ -120,11 +120,17 @@ angular.module('uguru.util.controllers')
     function intData(){
         $scope.bugs = [];
         $scope.help = {};
-        $scope.availableOptions = [
+        $scope.availableOptions = [ 
                                      {id: '1', name: 'All Bugs'},
                                      {id: '2', name: 'Prioritized Bugs'},
                                      {id: '3', name: 'Recently Complete'} 
                                   ]
+        $scope.availableOptions = {
+            'selectedIndex': 0,
+            'options': ['All Bugs','Prioritized Bugs','Recently Complete']
+        } 
+
+
         $scope.isEditMode = false
         $scope.reverse = true;
         $scope.selectOption = $scope.availableOptions[0]
