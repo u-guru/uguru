@@ -13863,10 +13863,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 }
 
 .calendar-container .cal-search {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 25%;
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -13882,9 +13878,16 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25%;
   height: 64px;
   padding: 0 15px 0 0;
   background: #69B3A5;
+  transform: translateX(100%) translateX(-49px) translateZ(0);
+  transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
 }
 
 @media screen and (max-width: 768px) {
@@ -13893,18 +13896,35 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   }
 }
 
-.calendar-container .cal-search div {
+.calendar-container .cal-search > div {
   position: relative;
   height: calc(100% - 30px);
   width: 100%;
 }
 
+.calendar-container .cal-search > div div {
+  border-radius: 1000px;
+  transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+  background: white;
+}
+
 .calendar-container .cal-search input {
   border-radius: 1000px;
+  transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+  transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  position: relative;
+  z-index: 5;
   height: 100%;
-  width: 37px;
-  padding-left: 37px;
+  width: calc(100% - 34px - 15px);
+  padding-left: 34px;
   padding-right: 15px;
+  background: none;
   font-size: 18px;
   box-sizing: border-box;
 }
@@ -13925,10 +13945,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   opacity: 0;
 }
 
-.calendar-container .cal-search input:focus, .calendar-container .cal-search input:active {
-  width: calc(100% - 37px - 15px);
-}
-
 .calendar-container .cal-search label {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -13946,17 +13962,18 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   -webkit-justify-content: center;
   justify-content: center;
   position: absolute;
-  z-index: 2;
+  z-index: 6;
   top: 0;
   left: 0;
   height: 100%;
-  width: 37px;
+  width: 34px;
+  cursor: pointer;
 }
 
 .calendar-container .cal-search label svg {
   display: block;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
 }
 
 .calendar-container .cal-search label svg * {
@@ -13967,8 +13984,28 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   stroke-linejoin: round;
 }
 
-.calendar-container.student .cal-search {
-  background: #50A5DD;
+.calendar-container .cal-search.active {
+  transform: translateX(0) translateZ(0);
+}
+
+.calendar-container .cal-search.active > div div {
+  width: 100%;
+}
+
+.calendar-container .cal-search.active input::-webkit-input-placeholder {
+  opacity: 1;
+}
+
+.calendar-container .cal-search.active input:-moz-placeholder {
+  opacity: 1;
+}
+
+.calendar-container .cal-search.active input::-moz-placeholder {
+  opacity: 1;
+}
+
+.calendar-container .cal-search.active input:-ms-input-placeholder {
+  opacity: 1;
 }
 
 .calendar-container .calendar {
@@ -13983,6 +14020,15 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 .calendar-container .cal-filters {
   transition: transform 300ms cubic-bezier(0.77, 0, 0.05, 1);
   transition: transform 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+  background: #40484B;
+}
+
+.calendar-container.student .cal-search {
+  background: #50A5DD;
+}
+
+.calendar-container.student .cal-filters {
+  background: #F1F1F1;
 }
 
 .calendar-container:not(.has-filters) .cal-filters {
@@ -14107,7 +14153,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 }
 
 .cal-filters {
-  background: #F1F1F1;
   position: absolute;
   top: 64px;
   right: 0;
@@ -14212,7 +14257,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   justify-content: center;
   margin: 0 0 2px;
   width: calc(100% + 4px);
-  background: #40484B;
+  background: #69B3A5;
   height: 64px;
   padding: 15px;
   font-size: 28px;
@@ -14409,6 +14454,10 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   text-align: left;
 }
 
+.calendar .cal-week > div .cal-main .cal-events .cal-day li > span + div, .calendar .cal-week > div .cal-main .cal-events .cal-day li > a + div {
+  display: none;
+}
+
 .calendar .cal-week > div .cal-main .cal-events .cal-day li > span h1, .calendar .cal-week > div .cal-main .cal-events .cal-day li > a h1 {
   font-weight: 600;
   font-size: 16px;
@@ -14419,6 +14468,72 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   font-size: 14px;
   line-height: 1.1;
   color: #637074 !important;
+}
+
+.calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.has-event) > a:empty, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.match) > a:empty, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.guru-available) > a:empty, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.student-available) > a:empty, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.not-available) > a:empty {
+  position: relative;
+  z-index: 1;
+}
+
+.calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.has-event) > a:empty + div, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.match) > a:empty + div, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.guru-available) > a:empty + div, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.student-available) > a:empty + div, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.not-available) > a:empty + div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  transform: all 150ms ease-in-out;
+  position: absolute;
+  z-index: 0;
+  top: 1px;
+  left: 1px;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  background: rgba(99, 112, 116, 0.95);
+  border-radius: 2px;
+  opacity: 0;
+}
+
+.calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.has-event) > a:empty + div svg, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.match) > a:empty + div svg, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.guru-available) > a:empty + div svg, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.student-available) > a:empty + div svg, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.not-available) > a:empty + div svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.has-event) > a:empty + div svg *, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.match) > a:empty + div svg *, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.guru-available) > a:empty + div svg *, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.student-available) > a:empty + div svg *, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.not-available) > a:empty + div svg * {
+  fill: none;
+  stroke: #999d9e;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.has-event) > a:empty + div:after, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.match) > a:empty + div:after, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.guru-available) > a:empty + div:after, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.student-available) > a:empty + div:after, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.not-available) > a:empty + div:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  border: 2px dashed #999d9e;
+}
+
+.calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.has-event) > a:empty:hover, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.match) > a:empty:hover, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.guru-available) > a:empty:hover, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.student-available) > a:empty:hover, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.not-available) > a:empty:hover {
+  opacity: 0;
+}
+
+.calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.has-event) > a:empty:hover + div, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.match) > a:empty:hover + div, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.guru-available) > a:empty:hover + div, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.student-available) > a:empty:hover + div, .calendar .cal-week > div .cal-main .cal-events .cal-day li:not(.not-available) > a:empty:hover + div {
+  opacity: 1;
 }
 
 .calendar .cal-week > div .cal-main .cal-events .cal-day li.match > span, .calendar .cal-week > div .cal-main .cal-events .cal-day li.match > a {
@@ -14743,8 +14858,31 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 }
 
 .calendar.student .cal-week > div .cal-main .cal-events .cal-day li > span, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li > a {
-  background: rgba(255, 255, 255, 0.7);
+  background: #fbfbfb;
   color: #637074 !important;
+}
+
+.calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.has-event) > a + div, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.match) > a + div, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.guru-available) > a + div, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.student-available) > a + div, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.not-available) > a + div {
+  background: #f9f9f9;
+}
+
+.calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.has-event) > a + div svg *, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.match) > a + div svg *, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.guru-available) > a + div svg *, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.student-available) > a + div svg *, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.not-available) > a + div svg * {
+  fill: none;
+  stroke: #999d9e;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.has-event) > a + div:after, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.match) > a + div:after, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.guru-available) > a + div:after, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.student-available) > a + div:after, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li:not(.not-available) > a + div:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  border: 2px dashed #999d9e;
 }
 
 .calendar.student .cal-week > div .cal-main .cal-events .cal-day li.match > span, .calendar.student .cal-week > div .cal-main .cal-events .cal-day li.match > a {

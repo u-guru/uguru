@@ -1,7 +1,7 @@
 <ion-view ng-controller='CalendarController'>
-    <ion-content class="bg-smoke">
-        <section class="calendar-container student" class-on-click="has-filters">
-            <div class='calendar student relative'>
+    <ion-content class="bg-slate">
+        <section class="calendar-container guru">
+            <div class='calendar guru relative'>
                 <div class="cal-week active">
                     <div>
         				<h1 class="cal-month">
@@ -99,9 +99,11 @@
                                     <ul ng-repeat='day in ::calendar.days' class='cal-day'>
                                         <li class="all-day">
                                             <a></a>
+                                            <div ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></div>
                                         </li>
                                         <li ng-repeat='hour in ::day.hours'>
                                             <a></a>
+                                            <div ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></div>
                                         </li>
                                     </ul>
                                 </div>
@@ -110,10 +112,11 @@
                     </div>
                 </div>
             </div>
-            <div class="cal-search">
+            <div class="cal-search" class-on-click="active, null:inject.calendar-container|has-filters">
                 <div>
                     <input id="search-events" type="search" placeholder="Search"/>
                     <label for="search-events" ng-include="img_base + BASE + 'templates/svg/main/search.html'"></label>
+                    <div></div>
                 </div>
             </div>
             <div class="cal-filters">
