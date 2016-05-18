@@ -3554,6 +3554,16 @@ input[type="range"] {
 	height: 32px;
 	border: 2px solid white;
 }
+.user-icon-28 {
+	width: 28px;
+	height: 28px;
+	border: 2px solid white;
+}
+.user-icon-24 {
+	width: 24px;
+	height: 24px;
+	border: 2px solid white;
+}
 .user-icon-container {
 	display: block;
 	position: relative;
@@ -8619,7 +8629,7 @@ a.category-tile {
 	border: 2px solid $shamrock;
 	border-left-width: 5px;
 	border-radius: 2px;
-	background: white;
+	background: white!important;
 	padding: 15px;
 	h1 {
 		color: $shamrock;
@@ -11190,292 +11200,254 @@ a.category-tile {
 }
 
 
-/* ---------- CALENDAR & CALENDAR LEGEND */
-.cal-legend {
-	ul {
+/* ---------- CALENDAR */
+.calendar-container {
+	@include flex;
+	width: 100%;
+	background: $slate;
+	.cal-search {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 25%;
 		@include flex;
+		@include flex-center;
+		height: 64px;
+		padding: 0 15px 0 0;
+		background: $shamrock;
+		@media screen and (max-width: 768px) {
+			padding: 0 15px;
+		}
+		div {
+			position: relative;
+			height: calc(100% - 30px);
+			width: 100%;
+		}
+		input {
+			@include round;
+			height: 100%;
+			width: 37px;
+			padding-left: 37px;
+			padding-right: 15px;
+			font-size: 18px;
+			box-sizing: border-box;
+			@include placeholder {
+				opacity: 0;
+			}
+			&:focus, &:active {
+				width: calc(100% - 37px - 15px);
+				+ label {
+					
+				}
+			}
+		}
+		label {
+			@include flex;
+			@include flex-center;
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 37px;
+			svg {
+				display: block;
+				width: 28px;
+				height: 28px;
+				* {
+					@include svg-stroke(rgba(lighten($slate, 15%), .5), 8);
+				}
+			}
+		}
+	}
+	&.student {
+		.cal-search {
+			background: $lake;
+		}
+	}
+	.calendar {
+		transition: width 300ms cubic-bezier(0.77, 0, 0.05, 1);
+		transition: width 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+	}
+	.cal-day-container {
 		width: 100%;
-		padding: 1px;
-		li {
-			width: calc(100% / 7);
-			min-width: 102px;
-			> span {
-				@include flex-center;
-				text-align: center;
+	}
+	.cal-filters {
+		transition: transform 300ms cubic-bezier(0.77, 0, 0.05, 1);
+		transition: transform 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+	}
+	&:not(.has-filters) {
+		.cal-filters {
+			transform: translateX(100%);
+			opacity: 0;
+		}
+	}
+	&.has-filters {
+		overflow: hidden;
+		height: 100%;
+		.calendar {
+			height: 100%;
+			.cal-week {
+				height: 100%;
+				> div {
+					height: 100%;
+				}
+			}
+			.cal-day-container {
+				height: calc(100% - 64px);
+				width: 75%;
+				overflow: auto;
+				&::-webkit-scrollbar {
+				  display: none;
+				}
+				&::-moz-scrollbar {
+				  display: none;
+				}
+			}
+		}
+		@media screen and (max-width: 768px) {
+			.calendar {
+				width: 100%!important;
+			}
+		}
+	}
+}
+.cal-confirm {
+	position: absolute;
+	top: 70px;
+	left: 50%;
+	margin-left: -125px;
+	z-index: 100;
+	width: 250px;
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: -30px;
+		left: 50%;
+		margin-left: -15px;
+		width: 0;
+		height: 0;
+		border: 15px solid transparent;
+		border-bottom-color: rgba(lighten($slate, 15%), .95);
+	}
+	> div:not(.ugrid-2) {
+		background: rgba(lighten($slate, 15%), .95);
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		padding: 15px;
+	}
+	.cal-confirm-time {
+		@include flex;
+		@include flex-center-vertical;
+		background: lighten($slate, 25%);
+		padding: 0 10px;
+		height: 36px;
+		border-radius: 2px;
+		font-size: 18px;
+		font-weight: 600;
+	}
+	button {
+		height: 48px;
+		font-size: 20px;
+		padding: 0;
+		&.bg-crimson {
+			&:hover, &:focus {
+				svg {
+					* {
+						stroke: mix($crimson, $slate);
+					}
+				}
+			}
+			&:active {
+				svg {
+					* {
+						stroke: white;
+					}
+				}
+			}
+		}
+		&.bg-moxie {
+			&:hover, &:focus {
+				svg {
+					* {
+						stroke: mix($moxie, $slate);
+					}
+				}
+			}
+			&:active {
+				svg {
+					* {
+						stroke: white;
+					}
+				}
+			}
+		}
+	}
+	.ugrid-2 {
+		div {
+			&:first-child {
+				button {
+					border-bottom-left-radius: 2px;
+				}
+			}
+			&:last-child {
+				button {
+					border-bottom-right-radius: 2px;
+				}
 			}
 		}
 	}
 }
 
-.cal-day, .cal-legend {
-	li {
-		position: relative;
+.cal-filters {
+	background: $smoke;
+	position: absolute;
+	top: 64px;
+	right: 0;
+	height: calc(100% - 64px);
+	width: 25%;
+	overflow: auto;
+	@media screen and (max-width: 768px) {
 		width: 100%;
-		// min-width: 110px;
-		min-width: 102px!important;
-		height: 50px;
-		padding: 1px;
-		> span {
-			@include flex;
-			@include flex-center-vertical;
-			width: 100%;
-			height: 100%;
-			border-radius: 2px;
-			padding: 5px;
-			color: lighten($slate, 15%);
-			font-size: 16px;
-			font-weight: 600;
-		}
-		&.has-event {
-			> span {
-				background: white;
-				border-width: 2px!important;
-				border-left-width: 5px!important;
-				border-style: solid;
-				border-color: $campus;
-				color: $campus;
-				span {
-					display: block;
-					line-height: 1.1;
-				}
-			}
-		}
-		&.event-academic {
-			> span {
-				border-color: $cerise;
-				color: $cerise;
-			}
-		}
-		&.event-baking {
-			> span {
-				border-color: $gold;
-				color: $gold;
-			}
-		}
-		&.event-photography {
-			> span {
-				border-color: $moola;
-				color: $moola;
-			}
-		}
-		&.event-household {
-			> span {
-				border-color: $cobalt;
-				color: $cobalt;
-			}
-		}
-		&.event-delivery {
-			> span {
-				border-color: $auburn;
-				color: $auburn;
-			}
-		}
-		&.event-freelancing {
-			> span {
-				border-color: $orange;
-				color: $orange;
-			}
-		}
-		&.event-athletic {
-			> span {
-				border-color: $eggplant;
-				color: $eggplant;
-			}
-		}
-		&.event-tech {
-			> span {
-				border-color: $azure;
-				color: $azure;
-			}
-		}
 	}
-}
-.guru, .cal-legend {
-	.cal-day {
-		li {
-			> span {
-				background: rgba($smoke, .4)!important;
-			}
-			&.student-available {
-				> span {
-					background: $lake!important;
-					color: white!important;
-				}
-			}
-			&.guru-available {
-				> span {
-					background: $shamrock!important;
-					color: white!important;
-				}
-			}
-			&.not-available {
-				> span {
-					background: rgba($smoke, .2)!important;
-				}
-			}
+	.tag-list {
+		width: 100%;
+		overflow: auto;
+		&::-webkit-scrollbar {
+		  display: none;
 		}
-		&.not-available {
+		&::-moz-scrollbar {
+		  display: none;
+		}
+		ul {
+			@include prefix(flex-flow, nowrap row, webkit);
+			padding: 7.5px;
 			li {
-				> span {
-					background: rgba($smoke, .2)!important;
-				}
+				padding: 7.5px;
+			}
+		}
+	}
+	.cal-results {
+		height: calc(100% - 62px);
+		overflow: auto;
+		ul {
+			padding-top: 0;
+			li:first-child {
+				padding-top: 0;
 			}
 		}
 	}
 }
-.student, .cal-legend {
-	.cal-day {
-		li {
-			> span {
-				background: rgba(white, .7)!important;
-			}
-			&.has-event > span {
-				background: white!important;
-			}
-			&.student-available {
-				> span {
-					background: mix($lake, white, 40%)!important;
-					color: white!important;
-				}
-			}
-			&.guru-available {
-				> span {
-					background: mix($shamrock, white, 50%)!important;
-					color: white!important;
-				}
-			}
-			&.not-available {
-				> span {
-					background: rgba($slate, .075)!important;
-				}
-			}
-		}
-		&.not-available {
-			li > span {
-				background: rgba($slate, .075)!important;
-			}
-		}
-	}
-}
-.calendar, .cal-legend {
-	&.bg-delivery {
-		li {
-			&.student-available {
-				> span {
-					background: mix($auburn, white, 40%)!important;
-				}
-			}
-			&.guru-available {
-				> span {
-					background: mix($auburn, white, 60%)!important;
-				}
-			}
-		}
-	}
-	&.bg-freelancing {
-		li {
-			&.student-available {
-				> span {
-					background: mix($orange, white, 40%)!important;
-				}
-			}
-			&.guru-available {
-				> span {
-					background: mix($orange, white, 60%)!important;
-				}
-			}
-		}
-	}
-	&.bg-baking {
-		li {
-			&.student-available {
-				> span {
-					background: mix($gold, white, 40%)!important;
-				}
-			}
-			&.guru-available {
-				> span {
-					background: mix($gold, white, 60%)!important;
-				}
-			}
-		}
-	}
-	&.bg-photography {
-		li {
-			&.student-available {
-				> span {
-					background: mix($moola, white, 40%)!important;
-				}
-			}
-			&.guru-available {
-				> span {
-					background: mix($moola, white, 60%)!important;
-				}
-			}
-		}
-	}
-	&.bg-tech {
-		li {
-			&.student-available {
-				> span {
-					background: mix($azure, white, 40%)!important;
-				}
-			}
-			&.guru-available {
-				> span {
-					background: mix($azure, white, 60%)!important;
-				}
-			}
-		}
-	}
-	&.bg-household {
-		li {
-			&.student-available {
-				> span {
-					background: mix($cobalt, white, 40%)!important;
-				}
-			}
-			&.guru-available {
-				> span {
-					background: mix($cobalt, white, 60%)!important;
-				}
-			}
-		}
-	}
-	&.bg-athletic {
-		li {
-			&.student-available {
-				> span {
-					background: mix($eggplant, white, 40%)!important;
-				}
-			}
-			&.guru-available {
-				> span {
-					background: mix($eggplant, white, 60%)!important;
-				}
-			}
-		}
-	}
-	&.bg-academic {
-		li {
-			&.student-available {
-				> span {
-					background: mix($cerise, white, 40%)!important;
-				}
-			}
-			&.guru-available {
-				> span {
-					background: mix($cerise, white, 60%)!important;
-				}
-			}
-		}
+.student + .cal-filters {
+	header {
+		background: $lake;
 	}
 }
 
 .calendar {
 	width: 100%;
-	margin: 0 auto;
-	background: darken($campus, 15%);
+	background: $slate;
 	color: white;
 	.cal-week {
 		&:not(.active) {
@@ -11497,9 +11469,12 @@ a.category-tile {
 			@include flex-wrap;
 			width: 100%;
 			.cal-month {
+				@include flex;
+				@include flex-center;
 				margin: 0 0 2px;
 				width: calc(100% + 4px);
-				background: darken($campus, 25%);
+				background: $slate;
+				height: 64px;
 				padding: 15px;
 				font-size: 28px;
 				font-weight: 700;
@@ -11524,13 +11499,13 @@ a.category-tile {
 				a {
 					display: block;
 					padding: 10px 15px;
-					background: darken($campus, 25%);
+					background: $shamrock;
 					color: white!important;
 					&:hover, &:focus {
-						background: darken($campus, 15%);
+						background: mix($shamrock, $slate);
 					}
 					&:active, &.active {
-						background: darken($campus, 20%);
+						background: $slate;
 					}
 				}
 			}
@@ -11540,6 +11515,9 @@ a.category-tile {
 				li {
 					position: relative;
 					height: 50px;
+					&:first-child {
+						height: 36px;
+					}
 					span {
 						display: block;
 						position: absolute;
@@ -11553,9 +11531,7 @@ a.category-tile {
 				}
 			}
 			.cal-main {
-				overflow: hidden;
 				width: calc(100% - 80px);
-				overflow-x: auto;
 				.cal-date {
 					@include flex;
 					width: 100%;
@@ -11594,6 +11570,12 @@ a.category-tile {
 					.cal-day {
 						width: calc(100% / 7);
 						li {
+							position: relative;
+							width: 100%;
+							// min-width: 110px;
+							min-width: 102px!important;
+							height: 50px;
+							padding: 1px;
 							&.hours-2 {
 								height: 100px;
 							}
@@ -11614,6 +11596,285 @@ a.category-tile {
 							}
 							&.hours-8 {
 								height: 400px;
+							}
+							> span, > a {
+								display: block;
+								width: 100%;
+								height: 100%;
+								border-radius: 2px;
+								padding: 5px;
+								background: lighten($slate, 10%);
+								font-size: 16px;
+								font-weight: 600;
+								text-align: left;
+								h1 {
+									font-weight: 600;
+									font-size: 16px;
+								}
+								span {
+									display: block;
+									font-size: 14px;
+									line-height: 1.1;
+									color: lighten($slate, 15%)!important;
+								}
+							}
+							&.match {
+								> span, > a {
+									background: mix($lake, $shamrock)!important;
+									color: white!important;
+									span, h1 {
+										color: white!important;
+									}
+									> div {
+										@include flex;
+										@include flex-center-vertical;
+										height: 100%;
+										> div:first-child {
+											position: relative;
+											width: 38px;
+											height: 38px;
+											margin-right: 10px;
+											span {
+												position: absolute;
+												&:first-child {
+													top: 0;
+													left: 0;
+												}
+												&:last-child {
+													bottom: 0;
+													right: 0;
+												}
+											}
+										}
+									}
+								}
+							}
+							&.student-available {
+								> span, > a {
+									background: $lake;
+									color: white!important;
+								}
+							}
+							&.guru-available {
+								> span, > a {
+									background: $shamrock;
+									color: white!important;
+								}
+							}
+							&.not-available {
+								> span, > a {
+									background: lighten($slate, 5%);
+								}
+							}
+							&.all-day {
+								@include flex;
+								@include flex-center-vertical;
+								height: 36px!important;
+							}
+							&.has-event {
+								> span, > a {
+									background: white;
+									border-width: 2px!important;
+									border-left-width: 5px!important;
+									border-style: solid;
+									border-color: $campus;
+									color: lighten($slate, 15%);
+									span {
+										color: lighten($slate, 15%)!important;
+									}
+								}
+							}
+							&.tentative {
+								> span, > a {
+									position: relative;
+									border-style: dashed!important;
+									border-left-style: solid!important;
+									&:after {
+										content: "";
+										display: block;
+										position: absolute;
+										top: -2px;
+										left: -5px;
+										width: 5px;
+										height: calc(100% + 4px);
+										border-top-left-radius: 2px;
+										border-top-right-radius: 2px;
+										background: $campus;
+									}
+								}
+							}
+							&.urgent {
+								> span, > a {
+									border-color: $crimson!important;
+									background: mix($crimson, white, 10%)!important;
+									h1 {
+										color: $crimson!important;
+									}
+								}
+								&.all-day {
+									> span {
+										background: mix($crimson, white, 10%)!important;
+									}
+								}
+							}
+							&.event-academic {
+								> span, > a {
+									border-color: $cerise;
+									color: $cerise;
+								}
+								&.all-day {
+									> span, > a {
+										background: mix($cerise, white, 10%);
+									}
+								}
+								&.tentative {
+									> span, > a {
+										border-color: mix($cerise, white);
+										&:after {
+											background: mix($cerise, white);
+										}
+									}
+								}
+							}
+							&.event-baking {
+								> span, > a {
+									border-color: $gold;
+									color: $gold;
+								}
+								&.all-day {
+									> span, > a {
+										background: mix($gold, white, 10%);
+									}
+								}
+								&.tentative {
+									> span, > a {
+										border-color: mix($gold, white);
+										&:after {
+											background: mix($gold, white);
+										}
+									}
+								}
+							}
+							&.event-photography {
+								> span, > a {
+									border-color: $moola;
+									color: $moola;
+								}
+								&.all-day {
+									> span, > a {
+										background: mix($moola, white, 10%);
+									}
+								}
+								&.tentative {
+									> span, > a {
+										border-color: mix($moola, white);
+										&:after {
+											background: mix($moola, white);
+										}
+									}
+								}
+							}
+							&.event-household {
+								> span, > a {
+									border-color: $cobalt;
+									color: $cobalt;
+								}
+								&.all-day {
+									> span, > a {
+										background: mix($cobalt, white, 10%);
+									}
+								}
+								&.tentative {
+									> span, > a {
+										border-color: mix($cobalt, white);
+										&:after {
+											background: mix($cobalt, white);
+										}
+									}
+								}
+							}
+							&.event-delivery {
+								> span, > a {
+									border-color: $auburn;
+									color: $auburn;
+								}
+								&.all-day {
+									> span, > a {
+										background: mix($auburn, white, 10%);
+									}
+								}
+								&.tentative {
+									> span, > a {
+										border-color: mix($auburn, white);
+										&:after {
+											background: mix($auburn, white);
+										}
+									}
+								}
+							}
+							&.event-freelancing {
+								> span, > a {
+									border-color: $orange;
+									color: $orange;
+								}
+								&.all-day {
+									> span, > a {
+										background: mix($orange, white, 10%);
+									}
+								}
+								&.tentative {
+									> span, > a {
+										border-color: mix($orange, white);
+										&:after {
+											background: mix($orange, white);
+										}
+									}
+								}
+							}
+							&.event-athletic {
+								> span, > a {
+									border-color: $eggplant;
+									color: $eggplant;
+								}
+								&.all-day {
+									> span, > a {
+										background: mix($eggplant, white, 10%);
+									}
+								}
+								&.tentative {
+									> span, > a {
+										border-color: mix($eggplant, white);
+										&:after {
+											background: mix($eggplant, white);
+										}
+									}
+								}
+							}
+							&.event-tech {
+								> span, > a {
+									border-color: $azure;
+									color: $azure;
+								}
+								&.all-day {
+									> span, > a {
+										background: mix($azure, white, 10%);
+									}
+								}
+								&.tentative {
+									> span, > a {
+										border-color: mix($azure, white);
+										&:after {
+											background: mix($azure, white);
+										}
+									}
+								}
+							}
+						}
+						&.not-available {
+							li {
+								> span, > a {
+									background: lighten($slate, 5%);
+								}
 							}
 						}
 					}
@@ -11676,10 +11937,52 @@ a.category-tile {
 						}
 					}
 				}
+				.cal-main {
+					.cal-events {
+						.cal-day {
+							li {
+								> span, > a {
+									background: rgba(white, .7);
+									color: lighten($slate, 15%)!important;
+								}
+								&.match {
+									> span, > a {
+										background: mix(mix($lake, $shamrock), white, 40%)!important;
+										color: $slate!important;
+										span, h1 {
+											color: $slate!important;
+										}
+									}
+								}
+								&.student-available {
+									> span, > a {
+										background: mix($lake, $smoke, 20%);
+										color: $slate!important;
+									}
+								}
+								&.guru-available {
+									> span, > a {
+										background: mix($shamrock, $smoke, 20%);
+										color: $slate!important;
+									}
+								}
+								&.not-available {
+									> span, > a {
+										background: rgba($slate, .075);
+									}
+								}
+							}
+							&.not-available {
+								li > span, li > a {
+									background: rgba($slate, .075);
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
-
 	&.bg-delivery {
 		.cal-week {
 			> div {
@@ -11857,187 +12160,6 @@ a.category-tile {
 							&:active, &.active {
 								background: mix($cerise, $slate);
 								color: white;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-/* ---------- CALENDAR [deprecate] */
-.cal-week {
-	> div {
-		@include flex;
-		@include flex-wrap;
-		width: 100%;
-		.cal-month {
-			width: 100%;
-			background: darken($campus, 25%);
-			padding: 15px;
-			font-size: 28px;
-			font-weight: 700;
-			text-align: center;
-			text-transform: uppercase;
-			margin: 0 2px 2px;
-		}
-		.cal-month.has-link {
-			padding: 0;
-			a {
-				display: block;
-				padding: 15px;
-				background: darken($campus, 25%);
-				color: white!important;
-				&:hover,
-				&:focus {
-					background: darken($campus, 15%);
-				}
-				&:active,
-				&.active {
-					background: darken($campus, 20%);
-				}
-			}
-		}
-		.cal-time {
-			width: 80px;
-			padding-top: 30px;
-			li {
-				position: relative;
-				height: 50px;
-				span {
-					display: block;
-					position: absolute;
-					top: -9px;
-					right: 15px;
-					font-size: 18px;
-					font-weight: 600;
-					line-height: 1;
-					text-align: right;
-				}
-			}
-		}
-		.cal-main {
-			width: calc(100% - 80px);
-			overflow-x: auto;
-			.cal-date {
-				@include flex;
-				width: 100%;
-				min-width: 770px;
-				height: 30px;
-				padding: 0 1px;
-				li {
-					width: calc(100% / 7);
-					min-width: 110px;
-					font-size: 18px;
-					font-weight: 600;
-					text-align: center;
-					padding: 0 1px;
-					> span {
-						@include flex;
-						@include flex-center;
-						border-radius: 2px;
-						height: 30px;
-						width: 100%;
-						background: $campus;
-					}
-				}
-			}
-			.cal-events {
-				@include flex;
-				min-width: 770px;
-				padding: 1px;
-				.cal-day {
-					width: calc(100% / 7);
-					li {
-						position: relative;
-						width: 100%;
-						min-width: 110px;
-						height: 50px;
-						padding: 1px;
-						> span {
-							display: block;
-							width: 100%;
-							height: 100%;
-							border-radius: 2px;
-							background: rgba($smoke, .4);
-						}
-						&.has-event {
-							> span {
-								background: white;
-								border: 1px solid $campus;
-								border-left-width: 5px;
-								padding: 5px;
-								font-size: 16px;
-								font-weight: 600;
-								color: $campus;
-								span {
-									display: block;
-									line-height: 1.1;
-								}
-							}
-						}
-						&.hours-2 {
-							height: 100px;
-						}
-						&.hours-3 {
-							height: 150px;
-						}
-						&.hours-4 {
-							height: 200px;
-						}
-						&.hours-5 {
-							height: 250px;
-						}
-						&.hours-6 {
-							height: 300px;
-						}
-						&.event-academic {
-							> span {
-								border-color: $cerise;
-								color: $cerise;
-							}
-						}
-						&.event-baking {
-							> span {
-								border-color: $gold;
-								color: $gold;
-							}
-						}
-						&.event-photography {
-							> span {
-								border-color: $moola;
-								color: $moola;
-							}
-						}
-						&.event-household {
-							> span {
-								border-color: $cobalt;
-								color: $cobalt;
-							}
-						}
-						&.event-delivery {
-							> span {
-								border-color: $auburn;
-								color: $auburn;
-							}
-						}
-						&.event-freelancing {
-							> span {
-								border-color: $orange;
-								color: $orange;
-							}
-						}
-						&.event-athletic {
-							> span {
-								border-color: $eggplant;
-								color: $eggplant;
-							}
-						}
-						&.event-tech {
-							> span {
-								border-color: $azure;
-								color: $azure;
 							}
 						}
 					}
