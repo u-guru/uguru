@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-<ion-view ng-controller='CalendarController'>
-    <ion-content class="bg-slate">
-        <section class="calendar-container guru">
-            <div class='calendar guru relative'>
-=======
 <ion-view id='calendar-view'>
     <ion-content class="bg-smoke">
-        <section class="calendar-container student" class-on-click="has-filters">
+        <section class="calendar-container student">
             <div class='calendar student relative'>
->>>>>>> 0ae7b45a6ffbecc60f26eeb06c55fcec72c21cca
                 <div class="cal-week active">
                     <div>
         				<h1 class="cal-month">
@@ -106,11 +99,19 @@
                                     <ul ng-repeat='day in ::calendar.days' class='cal-day'>
                                         <li class="all-day">
                                             <a></a>
-                                            <div ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></div>
+                                            <div>
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                                </svg>
+                                            </div>
                                         </li>
                                         <li ng-repeat='hour in ::day.hours'>
                                             <a></a>
-                                            <div ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></div>
+                                            <div>
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                                </svg>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
@@ -122,7 +123,11 @@
             <div class="cal-search" class-on-click="active, null:inject.calendar-container|has-filters">
                 <div>
                     <input id="search-events" type="search" placeholder="Search"/>
-                    <label for="search-events" ng-include="img_base + BASE + 'templates/svg/main/search.html'"></label>
+                    <label for="search-events">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                        </svg>
+                    </label>
                     <div></div>
                 </div>
             </div>
