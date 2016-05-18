@@ -3,13 +3,11 @@ angular
 .factory("AnimationService", [
 	'$ionicViewSwitcher',
 	'$timeout',
-	'uTracker',
 	'$state',
-	'InAppMapService',
 	AnimationService
 		]);
 
-function AnimationService($ionicViewSwitcher, $timeout, uTracker, $state, InAppMapService) {
+function AnimationService($ionicViewSwitcher, $timeout, $state) {
 
 	var slideOptions = {
 	  "direction"        : "right", // 'left|right|up|down', default 'left' (which is like 'next')
