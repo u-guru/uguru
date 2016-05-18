@@ -34,18 +34,34 @@
 
 		<div>
 			"notes": {{selected_bug.notes}}
+			<textarea ng-if='isEditMode'></textarea>
 		</div>
 
 		<div>
 			"rank": {{selected_bug.rank}}
+			<input ng-if='isEditMode'></input>
 		</div>
 
 		<div>
 			"element": {{selected_bug.element}}
+			<input ng-if='isEditMode'></input>
 		</div>
 
 		<div>
-			"priority": {{selected_bug.priority}}
+			<span>"priority": {{selected_bug.priority}}</span>
+			<div class="toggle white-round" ng-if='isEditMode' ng-click=''>
+			    <input type="checkbox" checked />
+			    <label>
+			        <svg class="square" viewBox="0 0 100 100">
+			            <rect x="0" y="0" width="100" height="100"></rect>
+			        </svg>
+			        <svg class="square" viewBox="0 0 100 100">
+			            <rect x="0" y="0" width="100" height="100"></rect>
+			        </svg>
+			        <span ng-if='selected_bug.priority'>ON</span>
+			        <span ng-if='!selected_bug.priority'>OFF</span>
+			    </label>
+			</div>
 		</div>
 
 		<div>
@@ -78,6 +94,7 @@
 				<span>Platforms :</span>
 				<li ng-repeat="tag in selected_bug.platforms">
 					<a class="chip tag-selected">
+						<span ng-if='isEditMode'>&times;&nbsp;&nbsp;</span>
 						<span>{{tag}}</span>
 					</a>
 				</li>
@@ -88,16 +105,19 @@
 				<span>Tags :</span>
 				<li ng-repeat="tag in selected_bug.tags">
 					<a class="chip tag-selected">
-						<span>&times;&nbsp;&nbsp;</span>
+						<span ng-if='isEditMode'>&times;&nbsp;&nbsp;</span>
 						<span>{{tag}}</span>
 					</a>
 				</li>
-				<!-- <li>
-					<input tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
-				</li> -->
+				<li>
+					<input ng-if='isEditMode' tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
+				</li>
 			</ul>
 		</div>
 	</div>
-	<button> Fixed the Bug </button>
-
+	<footer>
+		<button ng-click='isEditMode = !isEditMode'> Edit Bug</button>
+		<!-- <button ng-if='isEditMode' ng-click='isEditMode = !isEditMode'> Done Edit</button> -->
+		<button> Fix Bug </button>
+	</footer>
 </main>

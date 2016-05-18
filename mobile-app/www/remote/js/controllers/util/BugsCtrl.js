@@ -17,7 +17,6 @@ angular.module('uguru.util.controllers')
         }
 })
 .controller('BugsController', [
-
   //All imported packages go here
   '$scope',
   '$state',
@@ -52,7 +51,7 @@ angular.module('uguru.util.controllers')
       $scope.selected_bug = $scope.bugs[index]
       $scope.selected_bug.index = index
     }
-    
+
     $scope.initAndLaunchBugCTA = function($event,bug,index){
       var targetElem = $event.target;
       $scope.selected_bug = bug;
@@ -60,6 +59,7 @@ angular.module('uguru.util.controllers')
       $scope.lastCTABoxTargetElem = targetElem;
       $scope.lastCTABoxTargetElem.id = 'cta-box-selected-bug';
       CTAService.initSingleCTA('#' + targetElem.id, '#main-bug-content');
+
       $timeout(function() {
         var targetElem = document.querySelector('#cta-box-selected-bug');
         angular.element(targetElem).triggerHandler('click');
@@ -98,7 +98,8 @@ angular.module('uguru.util.controllers')
                                      {id: '1', name: 'All Bugs'},
                                      {id: '2', name: 'Prioritized Bugs'},
                                      {id: '3', name: 'Recently Complete'} 
-                                   ]
+                                  ]
+        $scope.isEditMode = false
         $scope.reverse = true;
         $scope.selectOption = $scope.availableOptions[0]
         $scope.advanceSearch ={
@@ -122,13 +123,11 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.$on('$ionicView.beforeEnter', function() {
-  
+
       loadUpdatedBugsJsonFile($scope);
       intData()
     })
-    $scope.$watch('selected_bug',function(newValue,oldValue){
-        console.log('detect',newValue,oldValue)
-    });
+
     setTimeout(function() {
       console.log($scope.bugReport)
       $scope.openBugList($scope.bugReport[0])
