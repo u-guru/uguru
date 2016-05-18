@@ -13,9 +13,8 @@ angular.module('uguru.util.controllers')
     var gDocUrl = 'https://docs.google.com/document/d/1Xsnsv2cZTvRtUPv9NWXJDG5mMyYYi_RmDZkGsve6xLU/edit'
     var cpFiles = [
       'https://uguru-rest-test.herokuapp.com/static/remote/lib/ionic/js/ionic.bundle.min.v2.js',
-      'https://uguru-rest-test.herokuapp.com/static/remote/js/constants.js',
-      'https://uguru-rest-test.herokuapp.com/static/remote/lib/restangular.js',
-      'https://uguru-rest-test.herokuapp.com/static/remote/js/controllers/util/util.root.ctrl.js'
+      'https://uguru-rest-test.herokuapp.com/static/remote/lib/restangular/dist/restangular.js',
+      'https://uguru-rest-test.herokuapp.com/static/remote/js/min.app.js'
 
     ];
 
@@ -39,6 +38,10 @@ angular.module('uguru.util.controllers')
       $window.open(gDocUrl, '_blank');
     };
 
+    function getHtmlString() {
+      return '<ui-view id="uguru-view" ng-app="uguru"> <script type="text/ng-template" id="view1.html"> <div ng-include="' + "'remote/templates/calendar.html'" + '"> VIEW 1 </div> </script> <ui-view>'
+    }
+
     $scope.codepenData = {
       title                 : "Uguru Calendar",
       description           : "Most updated version",
@@ -46,7 +49,7 @@ angular.module('uguru.util.controllers')
       tags                  : [], // an array of strings
       editors               : "101", // Set which editors are open. In this example HTML open, CSS closed, JS open
       layout                : "right", // top | left | right
-      html                  : document.querySelector('#uguru-view').innerHTML,
+      html                  : getHtmlString(),
       html_pre_processor    : "",
       css                   : "html { color: red; }",
       css_pre_processor     : "scss",
@@ -62,6 +65,12 @@ angular.module('uguru.util.controllers')
       js_modernizr : null,
       js_library   : null,
     }
+
+    // toggleDev();
+    // $timeout(function() {
+    //   angular.element(document.querySelector('#codepen-input')).triggerHandler('click');
+    //   document.querySelector('#codepen-input').click();
+    // }, 1500);
 
 
     function initDevOptions() {

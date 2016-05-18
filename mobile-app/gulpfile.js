@@ -32,10 +32,12 @@ var htmlmin = require('gulp-htmlmin');
 var args = require('yargs')
     .alias('uld', 'update-local-device')
     .alias('b', 'build')
+    .alias('m', 'min')
     .default('build', false)
     .argv;
 
 var build = args.build;
+var min = args.min;
 var uld = args.uld;
 var targetDir = path.resolve('dest');
 
@@ -293,7 +295,7 @@ gulp.task('scripts', function() {
       'lib/scroll/waypoints.min.js',
       'lib/scroll/iscroll.js',
       'lib/facebook/ngopenfb.js',
-      'lib/facebook/facebookConnectPlugin.js',
+      // 'lib/facebook/facebookConnectPlugin.js',
       'lib/facebook/*.js',
       'lib/dropzone/*min.js',
       'lib/ngElastic/*.js',
@@ -324,7 +326,7 @@ gulp.task('scripts', function() {
       // 'cordova.js',
       // 'plugins/*/www/*.js',
       "js/shared/stats.js",
-      "js/main.js",
+      "js/main.min.js",
       "js/factories/LocalStorage.js",
       "js/factories/University.js",
       "js/factories/*.js",
@@ -388,11 +390,9 @@ gulp.task('scripts', function() {
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
-    .pipe(plugins.if(build, plugins.concat('app.js')))
+    .pipe(plugins.if(build, plugins.concat('min.app.js')))
     .pipe(gulp.dest(dest))
-
 });
-
 
 
 // lint js sources based on .jshintrc ruleset
@@ -544,6 +544,13 @@ gulp.task('default', function(done) {
     build ? 'noop' : 'serve',
     done);
 });
+
+gulp.task('min', function(done) {
+  runSequence(
+    'min-scripts'
+    )
+})
+
 
 gulp.task('preprocess-regular', function() {
     return gulp.src(['js/main.js'], { cwd: 'www/remote' })
