@@ -1,14 +1,21 @@
 <main class="desktop-mode desktop-search" >
 	<header class="desktop-header full-x bg-azure txt-white weight-700 text-center p10xy">
-		<a></a>
-		<span>{{selected_bug.title}}</span>
+		<a>	"fixedDate": {{selected_bug.fixedDate}} </a>
+		<span>
+			{{selected_bug.title}} "fixed": " {{selected_bug.fixed}}
+
+			<text class="impact-label" transform="translate(267.892006, 104.422814) rotate(-6.000000) translate(-267.892006, -104.422814)" font-family="Impact Label" font-size="48" font-weight="normal" fill="#2B3234" text-anchor="end">
+			    <!-- school names must be between 7-14 characters - if shorter, add space around the name -->
+			    <tspan x="114" y="114" style="white-space:pre;" class='uppercase'>  FIXED!  </tspan>
+			</text>
+		</span>
 		<a class='cta-modal-close desktop-header-next desktop-header-close' ng-click="closeBug()">
 			<svg viewBox="0 0 100 100">
 				<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 			</svg>
 		</a>
-
 	</header>
+
 	<div class="main default bg-slate-50p">
 		<div>
 			<a ng-if='selected_bug.index != 0' ng-click='preBug()'>Previous</a>
@@ -34,7 +41,7 @@
 
 		<div>
 			"notes": {{selected_bug.notes}}
-			<textarea ng-if='isEditMode'></textarea>
+			<textarea ng-if='isEditMode' type='text' ng-model='selected_bug.notes'></textarea>
 		</div>
 
 		<div>
@@ -66,28 +73,30 @@
 
 		<div>
 			"difficulty": {{selected_bug.difficulty}}
+			<ul ng-if='isEditMode'>
+				<span>Level from 0 - 10 [low to high]</span>
+				<li ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10]">
+					<a>{{i}}</a>
+				</li>
+			</ul>
 		</div>
 
-
-
 		<div>
-			"impact_file":  {{selected_bug.impact_file}}
+			"impact_file": {{selected_bug.impact_file}}
 		</div>
 
 		<div>
 			"file_names": {{selected_bug.file_names}}
+			<div ng-if='isEditMode'>
+				<input></input>
+				<a>+</a>
+			</div>
+
 		</div>
 
 		<div>
 			"error_msg": {{selected_bug.error_msg}}
-		</div>
-
-		<div>
-			"fixed": " {{selected_bug.fixed}}
-		</div>
-
-		<div>
-			"fixedDate": {{selected_bug.fixedDate}} 
+			<!-- <textarea ng-if='isEditMode'></textarea> -->
 		</div>
 		<div class='tag-list bg-slate-50p'>
 			<ul>
@@ -97,6 +106,9 @@
 						<span ng-if='isEditMode'>&times;&nbsp;&nbsp;</span>
 						<span>{{tag}}</span>
 					</a>
+				</li>
+				<li>
+					<input ng-if='isEditMode' tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
 				</li>
 			</ul>
 		</div>
