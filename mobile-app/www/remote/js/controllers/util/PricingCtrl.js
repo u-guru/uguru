@@ -1,6 +1,6 @@
 angular.module('uguru.util.controllers')
 
-.controller('PricingController', [
+.controller('BugsController', [
 
   //All imported packages go here
   '$scope',
