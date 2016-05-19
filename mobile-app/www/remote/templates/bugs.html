@@ -80,8 +80,10 @@
 					</ul>
 
 					<ul ng-if="availableOptions.selectedIndex == 2">
-						<li ng-repeat="bug in bugs | filter:{fixed:true}">
+						<li ng-repeat="bug in bugs | filter:{fixed:true}" | orderBy:'-fixedDate.getTime()':reverse>
+							<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">{{bug.fixedDate.toUTCString()}}</span>
 							<span class="block bg-charcoal p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</span>
+
 						</li>
 					</ul>
 				</div>

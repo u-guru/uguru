@@ -68,6 +68,7 @@ angular.module('uguru.util.controllers')
         element = document.querySelector('#cta-modal-selected-bug')
         className = element.className.replace('show','')
         element.className = className;
+        $scope.isEditMode = false
     }
     $scope.nextBug = function(){
       console.log($scope.selected_bug.index)
