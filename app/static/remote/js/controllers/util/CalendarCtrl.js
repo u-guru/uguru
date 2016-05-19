@@ -52,8 +52,8 @@ angular.module('uguru.util.controllers')
           });
       };
       xhr.send();
-
     }
+
 
     function toggleDev() {
       $scope.dev.toggleDev = !$scope.dev.toggleDev;
@@ -75,6 +75,20 @@ angular.module('uguru.util.controllers')
       var calendar_view_html = document.querySelector('#calendar-view').parentNode.innerHTML;
       return '<body ng-app="uguru" animation="slide-left-right-ios7"><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + calendar_view_html + '</div></script></ui-view></body>'
     }
+
+    function importAllJS() {
+      var xhr = new XMLHttpRequest();
+      xhr.open( 'GET', 'https://uguru-rest-test.herokuapp.com/static/remote/js/u.base.js', true );
+
+      xhr.onload = function () {
+          $scope.baseJS = JSON.parse(xhr.responseText);
+          console.log($scope.baseJS);
+      };
+      xhr.send();
+    }
+
+    importAllJS();
+
     function generateCodePenData () {
 
       $scope.codepenData = {
@@ -90,12 +104,12 @@ angular.module('uguru.util.controllers')
         css_pre_processor     : "css",
         css_starter           : "neither",
         css_prefix            : "none",
-        js                    : "//import this extra file manually https://codepen.io/teamuguru/pen/ONePXN.js",
+        js                    : importAllJS(),
         js_pre_processor      : "none",
         html_classes          : null,
         head                  : "<meta name='viewport' content='width=device-width'>",
         css_external          : "https://uguru-rest-test.herokuapp.com/static/remote/css/app_version.css",
-        js_external           : 'https://uguru-rest-test.herokuapp.com/static/remote/js/u.base.js;https://uguru-rest-test.herokuapp.com/static/remote/js/main.min.js',
+        js_external           : '',
         css_pre_processor_lib : null,
         js_modernizr : null,
         js_library   : null,

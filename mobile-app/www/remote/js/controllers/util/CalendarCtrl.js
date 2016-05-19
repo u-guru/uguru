@@ -52,8 +52,8 @@ angular.module('uguru.util.controllers')
           });
       };
       xhr.send();
-
     }
+
 
     function toggleDev() {
       $scope.dev.toggleDev = !$scope.dev.toggleDev;

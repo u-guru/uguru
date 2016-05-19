@@ -1,6 +1,4 @@
-<ion-modal-view ng-controller='PageLoadingController' id='cta-modal-page-loader' style='visibility:hidden;'>
-  <style>
-      .helicopter-container {
+<ion-modal-view ng-controller="PageLoadingController" id="cta-modal-page-loader" style="visibility:hidden"><style>.helicopter-container {
         animation: bob 0.5s infinite;
       }
 
@@ -50,21 +48,4 @@
           transform-origin: 50% 85%;
           animation-timing-function: ease-in-out;
         }
-      }
-  </style>
-
-  <div class='full-xy bg-smoke flex-center-wrap' class="ng-class:{'fx-zoom-normal fx-dur-1000 fx-ease-cubic':page.status.exitLoader}">
-          <div class='full-x txt-charcoal'>
-              <h1 class='text-center'>
-                  Redirecting you to your university..
-              </h1>
-          </div>
-          <div class='container'>
-              <div ng-fx-speed="slow" ngfx-bounce-in-up="true" class='helicopter-container' ng-include="img_base + BASE + 'templates/svg/gurucopter.html'"></div>
-          </div>
-          <div class='full-x txt-charcoal footer-text full-x text-center txt-slate'>
-              <p class='text-center weight-900' id='loading-counter'>
-              </p>
-          </div>
-  </div>
-</ion-modal-view>
+      }</style><div class="full-xy bg-smoke flex-center-wrap" class="ng-class:{'fx-zoom-normal fx-dur-1000 fx-ease-cubic':page.status.exitLoader}"><div class="full-x txt-charcoal"><h1 class="text-center">Redirecting you to your university..</h1></div><div class="container"><div ng-fx-speed="slow" ngfx-bounce-in-up="true" class="helicopter-container" ng-include="img_base + BASE + 'templates/svg/gurucopter.html'"></div></div><div class="full-x txt-charcoal footer-text full-x text-center txt-slate"><p class="text-center weight-900" id="loading-counter"></p></div></div></ion-modal-view>
