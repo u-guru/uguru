@@ -365,6 +365,7 @@ gulp.task('scripts', function() {
       "js/controllers/food/*.js",
       "js/controllers/sound/*.js",
       "js/controllers/transit/*.js",
+      "!js/controllers/util/*bugs*js",
       "js/controllers/util/*js",
       "js/controllers/dev/util.dev.ctrl.js",
       "js/controllers/dev/util.devtools.ctrl.js",

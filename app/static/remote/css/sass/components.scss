@@ -3736,6 +3736,35 @@ input[type="range"] {
 		}
 	}
 }
+.dropdown-moxie.dropdown-container .dropdown, .dropdown-moxie.dropdown {
+	> div {
+		a {
+			svg {
+				background: $moxie!important;
+			}
+			&:hover, &:focus {
+				svg {
+					background: lighten($moxie, 10%)!important;
+				}
+			}
+			&:active {
+				svg {
+					background: darken($moxie, 10%)!important;
+				}
+			}
+		}
+	}
+	> ul {
+		li {
+			&:hover, &:focus {
+				background: rgba(darken($moxie, 10%),.9)!important;
+			}
+			&:active {
+				background: rgba(lighten($moxie, 10%),.9)!important;
+			}
+		}
+	}
+}
 .dropdown-container.full-x {
 	.dropdown {
 		> div {
@@ -3764,6 +3793,11 @@ input[type="range"] {
 	}
 }
 .dropdown-container {
+	&.hide-header {
+		h2 {
+			display: none!important;
+		}
+	}
 	&.double {
 		.dropdown {
 			> div {
@@ -3829,6 +3863,14 @@ input[type="range"] {
 				top: 32px;
 				li {
 					width: calc(100% - 32px);
+				}
+			}
+		}
+		&.reverse {
+			.dropdown {
+				> ul {
+					top: auto;
+					bottom: 32px;
 				}
 			}
 		}
@@ -11206,63 +11248,85 @@ a.category-tile {
 	width: 100%;
 	background: $slate;
 	.cal-search {
+		@include flex;
+		@include flex-center;
 		position: absolute;
 		top: 0;
 		right: 0;
 		width: 25%;
-		@include flex;
-		@include flex-center;
 		height: 64px;
 		padding: 0 15px 0 0;
 		background: $shamrock;
+		transform: translateX(100%) translateX(-49px) translateZ(0);
+		transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+		transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
 		@media screen and (max-width: 768px) {
 			padding: 0 15px;
 		}
-		div {
+		> div {
 			position: relative;
 			height: calc(100% - 30px);
 			width: 100%;
+			div {
+				@include round;
+				transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+				transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 34px;
+				height: 100%;
+				background: white;
+			}
 		}
 		input {
 			@include round;
+			transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
+			transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+			position: relative;
+			z-index: 5;
 			height: 100%;
-			width: 37px;
-			padding-left: 37px;
+			width: calc(100% - 34px - 15px);
+			padding-left: 34px;
 			padding-right: 15px;
+			background: none;
 			font-size: 18px;
 			box-sizing: border-box;
 			@include placeholder {
 				opacity: 0;
-			}
-			&:focus, &:active {
-				width: calc(100% - 37px - 15px);
-				+ label {
-					
-				}
 			}
 		}
 		label {
 			@include flex;
 			@include flex-center;
 			position: absolute;
-			z-index: 2;
+			z-index: 6;
 			top: 0;
 			left: 0;
 			height: 100%;
-			width: 37px;
+			width: 34px;
+			cursor: pointer;
 			svg {
 				display: block;
-				width: 28px;
-				height: 28px;
+				width: 24px;
+				height: 24px;
 				* {
 					@include svg-stroke(rgba(lighten($slate, 15%), .5), 8);
 				}
 			}
 		}
-	}
-	&.student {
-		.cal-search {
-			background: $lake;
+		&.active {
+			transform: translateX(0) translateZ(0);
+			> div {
+				div {
+					width: 100%;
+				}
+			}
+			input {
+				@include placeholder {
+					opacity: 1;
+				}
+			}
 		}
 	}
 	.calendar {
@@ -11275,6 +11339,15 @@ a.category-tile {
 	.cal-filters {
 		transition: transform 300ms cubic-bezier(0.77, 0, 0.05, 1);
 		transition: transform 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+		background: $slate;
+	}
+	&.student {
+		.cal-search {
+			background: $lake;
+		}
+		.cal-filters {
+			background: $smoke;
+		}
 	}
 	&:not(.has-filters) {
 		.cal-filters {
@@ -11298,10 +11371,10 @@ a.category-tile {
 				width: 75%;
 				overflow: auto;
 				&::-webkit-scrollbar {
-				  display: none;
+					display: none;
 				}
 				&::-moz-scrollbar {
-				  display: none;
+					display: none;
 				}
 			}
 		}
@@ -11312,13 +11385,24 @@ a.category-tile {
 		}
 	}
 }
-.cal-confirm {
+.event-household {
+	.cal-edit {
+		&:before {
+			border-bottom-color: $cobalt;
+		}
+		header {
+			background: $cobalt;
+		}
+		> ul {
+			border-color: $cobalt;
+		}
+	}
+}
+.cal-popup {
 	position: absolute;
 	top: 70px;
 	left: 50%;
-	margin-left: -125px;
 	z-index: 100;
-	width: 250px;
 	&:before {
 		content: "";
 		display: block;
@@ -11329,6 +11413,116 @@ a.category-tile {
 		width: 0;
 		height: 0;
 		border: 15px solid transparent;
+	}
+}
+.cal-edit {
+	margin-left: -150px;
+	width: 300px;
+	&:before {
+		border-bottom-color: $shamrock;
+	}
+	header {
+		@include flex;
+		justify-content: center;
+		padding: 15px 15px 13px;
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		background: $shamrock;
+		[class*="user-icon"] {
+			margin: 0;
+			&:last-child {
+				margin-left: -5px;
+			}
+		}
+	}
+	> ul {
+		@include flex;
+		@include flex-wrap;
+		background: $smoke;
+		border: 2px solid $shamrock;
+		border-top-width: 0;
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		padding: 5px;
+		li {
+			padding: 5px;
+			input {
+				border-radius: 2px;
+				color: $slate;
+				font-size: 16px;
+				font-weight: 600;
+				@include placeholder {
+					font-weight: 400;
+				}
+				&:focus, &:active {
+					background: white!important;
+				}
+			}
+			&.title, &.location {
+				width: 100%;
+				input {
+					display: block;
+					height: 40px;
+					background: darken($smoke, 5%);
+					width: 100%;
+					padding: 0 10px;
+				}
+			}
+			&.notes {
+				width: 100%;
+				textarea {
+					width: 100%;
+					padding: 10px;
+					background: darken($smoke, 5%);
+					border-radius: 2px;
+					border: 0;
+					font-size: 16px;
+					color: $slate;
+					resize: none;
+					&:focus, &:active {
+						background: white;
+					}
+				}
+			}
+			&.date, &.time {
+				width: calc(100% / 3)!important;
+				> div {
+					@include flex;
+					@include flex-center;
+					height: 40px;
+					background: darken($smoke, 5%);
+					color: $slate;
+					border-radius: 2px;
+					span, input {
+						@include flex;
+						@include flex-center;
+						background: none;
+						text-align: center;
+						font-size: 16px;
+						&:not(:first-child) {
+							margin-left: -3px;
+						}
+					}
+				}
+			}
+			&.attachments {
+				.attach-list {
+					ul {
+						margin: -20px -10px -10px;
+						padding: 5px;
+						li {
+							padding: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.cal-confirm {
+	margin-left: -125px;
+	width: 250px;
+	&:before {
 		border-bottom-color: rgba(lighten($slate, 15%), .95);
 	}
 	> div:not(.ugrid-2) {
@@ -11401,7 +11595,6 @@ a.category-tile {
 }
 
 .cal-filters {
-	background: $smoke;
 	position: absolute;
 	top: 64px;
 	right: 0;
@@ -11415,10 +11608,10 @@ a.category-tile {
 		width: 100%;
 		overflow: auto;
 		&::-webkit-scrollbar {
-		  display: none;
+			display: none;
 		}
 		&::-moz-scrollbar {
-		  display: none;
+			display: none;
 		}
 		ul {
 			@include prefix(flex-flow, nowrap row, webkit);
@@ -11473,7 +11666,7 @@ a.category-tile {
 				@include flex-center;
 				margin: 0 0 2px;
 				width: calc(100% + 4px);
-				background: $slate;
+				background: $shamrock;
 				height: 64px;
 				padding: 15px;
 				font-size: 28px;
@@ -11512,7 +11705,7 @@ a.category-tile {
 			.cal-time {
 				width: 80px;
 				padding-top: 30px;
-				li {
+				> li {
 					position: relative;
 					height: 50px;
 					&:first-child {
@@ -11539,7 +11732,7 @@ a.category-tile {
 					min-width: 720px;
 					height: 30px;
 					padding: 0 1px;
-					li {
+					> li {
 						width: calc(100% / 7);
 						// min-width: 110px;
 						min-width: 102px;
@@ -11569,7 +11762,7 @@ a.category-tile {
 					padding: 1px;
 					.cal-day {
 						width: calc(100% / 7);
-						li {
+						> li {
 							position: relative;
 							width: 100%;
 							// min-width: 110px;
@@ -11607,6 +11800,9 @@ a.category-tile {
 								font-size: 16px;
 								font-weight: 600;
 								text-align: left;
+								+ div:not(.cal-popup) {
+									display: none;
+								}
 								h1 {
 									font-weight: 600;
 									font-size: 16px;
@@ -11616,6 +11812,50 @@ a.category-tile {
 									font-size: 14px;
 									line-height: 1.1;
 									color: lighten($slate, 15%)!important;
+								}
+							}
+							&:not(.has-event), &:not(.match), &:not(.guru-available), &:not(.student-available), &:not(.not-available) {
+								> a:empty {
+									position: relative;
+									z-index: 1;
+									+ div:not(.cal-popup) {
+										@include flex;
+										@include flex-center;
+										transform: all 150ms ease-in-out;
+										position: absolute;
+										z-index: 0;
+										top: 1px;
+										left: 1px;
+										width: calc(100% - 2px);
+										height: calc(100% - 2px);
+										background: rgba(lighten($slate, 15%), .95);
+										border-radius: 2px;
+										opacity: 0;
+										svg {
+											display: block;
+											width: 20px;
+											height: 20px;
+											* {
+												@include svg-stroke(mix($slate, $smoke), 8);
+											}
+										}
+										&:after {
+											content: "";
+											display: block;
+											position: absolute;
+											top: 5px;
+											left: 5px;
+											width: calc(100% - 10px);
+											height: calc(100% - 10px);
+											border: 2px dashed mix($slate, $smoke);
+										}
+									}
+									&:hover {
+										opacity: 0;
+										+ div:not(.cal-popup) {
+											opacity: 1;
+										}
+									}
 								}
 							}
 							&.match {
@@ -11720,7 +11960,9 @@ a.category-tile {
 							&.event-academic {
 								> span, > a {
 									border-color: $cerise;
-									color: $cerise;
+									h1 {
+										color: $cerise!important;
+									}
 								}
 								&.all-day {
 									> span, > a {
@@ -11739,7 +11981,9 @@ a.category-tile {
 							&.event-baking {
 								> span, > a {
 									border-color: $gold;
-									color: $gold;
+									h1 {
+										color: $gold!important;
+									}
 								}
 								&.all-day {
 									> span, > a {
@@ -11758,7 +12002,9 @@ a.category-tile {
 							&.event-photography {
 								> span, > a {
 									border-color: $moola;
-									color: $moola;
+									h1 {
+										color: $moola!important;
+									}
 								}
 								&.all-day {
 									> span, > a {
@@ -11777,7 +12023,9 @@ a.category-tile {
 							&.event-household {
 								> span, > a {
 									border-color: $cobalt;
-									color: $cobalt;
+									h1 {
+										color: $cobalt!important;
+									}
 								}
 								&.all-day {
 									> span, > a {
@@ -11796,7 +12044,9 @@ a.category-tile {
 							&.event-delivery {
 								> span, > a {
 									border-color: $auburn;
-									color: $auburn;
+									h1 {
+										color: $auburn!important;
+									}
 								}
 								&.all-day {
 									> span, > a {
@@ -11815,7 +12065,9 @@ a.category-tile {
 							&.event-freelancing {
 								> span, > a {
 									border-color: $orange;
-									color: $orange;
+									h1 {
+										color: $orange!important;
+									}
 								}
 								&.all-day {
 									> span, > a {
@@ -11834,7 +12086,9 @@ a.category-tile {
 							&.event-athletic {
 								> span, > a {
 									border-color: $eggplant;
-									color: $eggplant;
+									h1 {
+										color: $eggplant!important;
+									}
 								}
 								&.all-day {
 									> span, > a {
@@ -11853,7 +12107,9 @@ a.category-tile {
 							&.event-tech {
 								> span, > a {
 									border-color: $azure;
-									color: $azure;
+									h1 {
+										color: $azure!important;
+									}
 								}
 								&.all-day {
 									> span, > a {
@@ -11942,8 +12198,30 @@ a.category-tile {
 						.cal-day {
 							li {
 								> span, > a {
-									background: rgba(white, .7);
+									background: mix(white, $smoke, 70%);
 									color: lighten($slate, 15%)!important;
+								}
+								&:not(.has-event), &:not(.match), &:not(.guru-available), &:not(.student-available), &:not(.not-available) {
+									> a {
+										+ div {
+											background: mix(white, $smoke, 60%);
+											svg {
+												* {
+													@include svg-stroke(mix($slate, $smoke), 8);
+												}
+											}
+											&:after {
+												content: "";
+												display: block;
+												position: absolute;
+												top: 5px;
+												left: 5px;
+												width: calc(100% - 10px);
+												height: calc(100% - 10px);
+												border: 2px dashed mix($slate, $smoke);
+											}
+										}
+									}
 								}
 								&.match {
 									> span, > a {
@@ -12162,6 +12440,96 @@ a.category-tile {
 								color: white;
 							}
 						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.attach-list {
+	ul {
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+			> a, > span {
+				@include flex;
+				@include flex-center-vertical;
+				border-radius: 2px;
+				padding: 5px 10px 5px 5px;
+				span {
+					display: block;
+					&:nth-child(1) {
+						width: 36px;
+						height: 36px;
+						border-radius: 2px;
+						span {
+							width: 28px;
+							height: 26px;
+							margin: 5px 4px;
+							border: 1px solid white;
+							background-position: center center;
+							background-size: cover;
+						}
+						svg {
+							display: block;
+							width: 36px;
+							height: 36px;
+						}
+					}
+					&:nth-child(2) {
+						margin-left: 5px;
+						font-size: 16px;
+						font-weight: 600;
+					}
+				}
+			}
+		}
+	}
+	&.no-padding {
+		ul {
+			li {
+				> a, > span {
+					padding: 0;
+				}
+			}
+		}
+	}
+	&.student {
+		ul {
+			li {
+				> a, > span {
+					background: $smoke;
+					color: $slate;
+				}
+				> a {
+					&:hover, &:focus {
+						background: lighten($slate, 15%);
+						color: white;
+					}
+					&:active {
+						background: $lake;
+					}
+				}
+			}
+		}
+	}
+	&.guru {
+		ul {
+			li {
+				> a, > span {
+					background: lighten($slate, 15%);
+					color: white;
+				}
+				> a {
+					&:hover, &:focus {
+						background: $slate;
+						color: white;
+					}
+					&:active {
+						background: $shamrock;
 					}
 				}
 			}
