@@ -3252,7 +3252,7 @@ angular.module('uguru.util.controllers')
 			// }, 1000);
 			for (var i = 0; i < animation_arr.length; i++) {
 				if (animation_arr[i].name === 'magic') {
-					importAnimation(animation_arr[i], i * 50);
+					// importAnimation(animation_arr[i], i * 50);
 				}
 			}
 
@@ -3896,7 +3896,7 @@ angular.module('uguru.util.controllers')
 			}, 1000)
 		}
 		$timeout(function() {
-			// importLastAnimation();
+			importLastAnimation();
 			importLastStage();
 		}, 3000);
 
