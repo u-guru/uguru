@@ -16,42 +16,47 @@
     <main class='lyt-30-70-sidebar relative full-y'>
         <section class="relative">
             <div id="keys-toolbar" class="flex-center-vertical-space-between bg-campus relative">
-                <div class='absolute animated bounceInDown full-xy bg-charcoal weight-900 flex-wrap-center text-center' style='z-index:100000 !important' ng-if='showStatusMsg'>
-                    <h1 style='font-size:36px'> {{showStatusMsg}} </h1>
+                <div class='absolute animated bounceInDown full-xy bg-charcoal weight-900 flex-wrap-center text-center z-index-2000' ng-if='showStatusMsg'>
+                    <h1 class="txt-36 semibold"> {{showStatusMsg}} </h1>
                 </div>
-                <ul class='p15-grid flex-center-vertical txt-center' ng-init='layout.index = 3;'>
+                <ul class='p15-grid flex-center-vertical txt-center' ng-init='layout.index = 0;'>
                     <li>
                         <user-icon ng-if='adminUser && adminUser.profile_url' size="48" url="adminUser.profile_url"> </user-icon>
                     </li>
-                    <li ng-click='layout.index = 0' class='txt-1' ng-class="{'weight-700': !layout.index}">
-                        Tool
+                    <li>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': !layout.index}" ng-click='layout.index = 0' ng-include="img_base + BASE + 'templates/svg/main/edit.html'">Tools</a>
                     </li>
-                    <li ng-click='layout.index = 3' class='txt-1' ng-class="{'weight-700': layout.index === 3}">
-                        Action Items
+                    <li>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 3}" ng-click='layout.index = 3' ng-include="img_base + BASE + 'templates/svg/main/pyramid.html'">Action Items</a>
                     </li>
-                    <li ng-click='layout.index = 4' class='txt-1' ng-class="{'weight-700': layout.index === 4}">
-                        Calendar
+                    <li>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 4}" ng-click='layout.index = 4' ng-include="img_base + BASE + 'templates/svg/main/calendar.html'">Calendar</a>
                     </li>
-                    <li ng-click='layout.index = 5' class='txt-1' ng-class="{'weight-700': layout.index === 5}">
-                        Bugs
+                    <li>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate urgent-icon" ng-class="{'bg-moxie': layout.index === 5}" ng-click='layout.index = 5' ng-include="img_base + BASE + 'templates/svg/main/info.html'">Bugs</a>
                     </li>
-                    <li ng-click='layout.index = 5' class='txt-1' ng-class="{'weight-700': layout.index === 6}">
-                        Docs
+                    <li>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 6}" ng-click='layout.index = 6' ng-include="img_base + BASE + 'templates/svg/main/document.html'">Docs</a>
+                    </li>
+                    <li>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 7}" ng-click='layout.index = 7' ng-include="img_base + BASE + 'templates/svg/main/profile.html'">Components</a>
                     </li>
                     <li ng-if='player.status === 1'>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="img_base + BASE + 'templates/svg/main/pause.html'">Pause</a>
                     </li>
+                </ul>
+                <ul class='p15-grid flex-center-vertical txt-center' ng-if='!layout.index'>
                     <li ng-if='!player.status || player.status === 2'>
                         <a id="play-keyframes-button" ng-disabled="player.status" class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.play()' ng-include="img_base + BASE + 'templates/svg/main/play.html'">Play</a>
                     </li>
                     <li>
                         <a ng-disabled='!player.status' id='reset-link' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.reset()' ng-include="img_base + BASE + 'templates/svg/main/switch.html'">Reset</a>
                     </li>
-                    <!-- <li>
-                        <a id='settings-button' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.toggleSettings()' ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
-                    </li> -->
                     <li>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='clearCache()'><i class='icon ion-trash-a txt-36'></i></a>
+                    </li>
+                    <!-- <li>
+                        <a id='settings-button' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.toggleSettings()' ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
                     </li>
                     <li>
                         <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-48-36 svg-stroke-6" ng-click='layout.index = 1' ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
@@ -59,7 +64,7 @@
                     <li>
                         <a id='export-button' class="bg bg-slate radius-2 svg-white flex-center svg-48-36 svg-stroke-6" ng-click='renderAnimationCSSText(animation)'  ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
                     </li>
-                    <!-- <li>
+                    <li>
                         <a id='save-button' class="bg bg-slate radius-2 flex-center-vertical"><span class="svg-white flex-center svg-48-36 svg-stroke-6" ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></span><span class="p10right">&dtrif;</span></a>
                         <div class="absolute txt-left">
                             <ul>
@@ -70,8 +75,6 @@
                             </ul>
                         </div>
                     </li> -->
-                </ul>
-                <ul class='p15-grid flex-center-vertical txt-center' ng-if='!layout.index'>
                     <li>
                         <dropdown ng-if='stageDropdown.toggleActive' id='stage-dropdown' class='height-32' ng-model="stageDropdown"> </dropdown>
                     </li>
@@ -196,20 +199,65 @@
                     </div>
                 </div>
             </div>
-            <div class='relative flex-wrap-center txt-white bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3'>
-                <h1 class='txt-36'> Action Items Go Here </h1>
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3'>
+                <header class="bg-slate">
+                    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Action Items</h1>
+                </header>
+                <div class="overflow-auto no-scrollbar" style="height: calc(100% - 48px)">
+                    <ul class="p15-grid">
+                        <li>
+                            <div class="bg-white-10p radius-2 flex-space-between-center-vertical">
+                                <h2 class="p15xy txt-18 semibold">User waits for page to load</h2>
+                                <ul class="flex p15-grid">
+                                    <li>
+                                        <button class="bg-moxie height-36 txt-18 radius-2">Master</button>
+                                    </li>
+                                    <li>
+                                        <button class="bg-robin height-36 txt-18 radius-2">Edit</button>
+                                    </li>
+                                    <li>
+                                        <button class="bg-azure height-36 txt-18 radius-2">Codepen</button>
+                                    </li>
+                                    <li>
+                                        <button class="bg-lake height-36 txt-18 radius-2">Spec</button>
+                                    </li>
+                                    <li>
+                                        <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold">78%</span>
+                                    </li>
+                                    <li>
+                                        <span class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold">3</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class='relative flex-wrap-center txt-white bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 4'>
-                <h1 class='txt-36'> Calendar Goes Here </h1>
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 4'>
+                <header class="bg-slate">
+                    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Calendar</h1>
+                </header>
             </div>
-            <div class='relative flex-wrap-center txt-white bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5'>
-                <h1 class='txt-36'> Bugs Go Here </h1>
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5'>
+                <header class="bg-slate">
+                    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Bugs</h1>
+                </header>
             </div>
-            <div class='relative flex-wrap-center txt-white bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5'>
-                <h1 class='txt-36'> Reference Goes Here</h1>
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 6'>
+                <header class="bg-slate">
+                    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Docs</h1>
+                </header>
+                <div class="overflow-auto no-scrollbar admin-docs" style="height: calc(100% - 48px)">
+                    <ul class="p15-grid" ng-include="img_base + BASE + 'templates/admin/docs.html'"></ul>
+                </div>
             </div>
-            <div class='relative flex-wrap-center txt-white bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5'>
-                <h1 class='txt-36'> Directives Go Here</h1>
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 7'>
+                <header class="bg-slate">
+                    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Components</h1>
+                </header>
+                <div class="overflow-auto no-scrollbar" style="height: calc(100% - 48px)">
+                    <div class="admin-html flex-wrap-start" ng-include="img_base + BASE + 'templates/admin/utility-classes.html'"></div>
+                </div>
             </div>
             <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 2' ng-init="animation.showDefaultImportedKF = false;">
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
