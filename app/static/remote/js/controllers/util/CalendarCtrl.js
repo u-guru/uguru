@@ -28,9 +28,9 @@ angular.module('uguru.util.controllers')
     // $scope.$on('$ionicView.loaded', function() {
       $timeout(function() {
         $scope.calendar = CalendarService.getNextSevenDaysArr()
-        // KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
-        // KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
-        // KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 27, 'esc', true, null);
+        KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
+        KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
+        KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 27, 'esc', true, null);
         if (window.location.href.split('codepen').length === 1) {
           $timeout(function() {
             loadCodepenSpec();
@@ -93,7 +93,7 @@ angular.module('uguru.util.controllers')
         js                    : "//import this extra file manually https://codepen.io/teamuguru/pen/ONePXN.js",
         js_pre_processor      : "none",
         html_classes          : null,
-        head                  : "<meta name='viewport' content='width=device-width'><script>_local=false;_startpage='calendar';</script>",
+        head                  : "<meta name='viewport' content='width=device-width'>",
         css_external          : "https://uguru-rest-test.herokuapp.com/static/remote/css/app_version.css",
         js_external           : 'https://uguru-rest-test.herokuapp.com/static/remote/js/u.base.js;https://uguru-rest-test.herokuapp.com/static/remote/js/main.min.js',
         css_pre_processor_lib : null,
