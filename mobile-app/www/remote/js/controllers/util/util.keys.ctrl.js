@@ -950,7 +950,7 @@ angular.module('uguru.util.controllers')
 					previousStyle.parentNode.removeChild(previousStyle);
 				}
 			}
-			$scope.layout.index = 0;
+			// $scope.layout.index = 0;
 		}
 
 		function setAnimationFillMode(option, index) {
@@ -3776,7 +3776,7 @@ angular.module('uguru.util.controllers')
 			if (!options.skip_local) {
 				$localstorage.setObject('last_animation',$scope.animation);
 			}
-			$scope.layout.index = 0;
+			// $scope.layout.index = 0;
 			$scope.animation.obj.origCSSText = originAnimCSSText;
 			$timeout(function(){
 				if ($scope.kf_visuals.cache) {

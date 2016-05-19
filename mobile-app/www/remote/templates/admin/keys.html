@@ -19,9 +19,24 @@
                 <div class='absolute animated bounceInDown full-xy bg-charcoal weight-900 flex-wrap-center text-center' style='z-index:100000 !important' ng-if='showStatusMsg'>
                     <h1 style='font-size:36px'> {{showStatusMsg}} </h1>
                 </div>
-                <ul class='p15-grid flex-center-vertical txt-center'>
-                    <li ng-if='player.status'>
+                <ul class='p15-grid flex-center-vertical txt-center' ng-init='layout.index = 3;'>
+                    <li>
                         <user-icon ng-if='adminUser && adminUser.profile_url' size="48" url="adminUser.profile_url"> </user-icon>
+                    </li>
+                    <li ng-click='layout.index = 0' class='txt-1' ng-class="{'weight-700': !layout.index}">
+                        Tool
+                    </li>
+                    <li ng-click='layout.index = 3' class='txt-1' ng-class="{'weight-700': layout.index === 3}">
+                        Action Items
+                    </li>
+                    <li ng-click='layout.index = 4' class='txt-1' ng-class="{'weight-700': layout.index === 4}">
+                        Calendar
+                    </li>
+                    <li ng-click='layout.index = 5' class='txt-1' ng-class="{'weight-700': layout.index === 5}">
+                        Bugs
+                    </li>
+                    <li ng-click='layout.index = 5' class='txt-1' ng-class="{'weight-700': layout.index === 6}">
+                        Docs
                     </li>
                     <li ng-if='player.status === 1'>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="img_base + BASE + 'templates/svg/main/pause.html'">Pause</a>
@@ -56,7 +71,7 @@
                         </div>
                     </li> -->
                 </ul>
-                <ul class='p15-grid flex-center-vertical txt-center'>
+                <ul class='p15-grid flex-center-vertical txt-center' ng-if='!layout.index'>
                     <li>
                         <dropdown ng-if='stageDropdown.toggleActive' id='stage-dropdown' class='height-32' ng-model="stageDropdown"> </dropdown>
                     </li>
@@ -180,6 +195,21 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class='relative flex-wrap-center txt-white bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3'>
+                <h1 class='txt-36'> Action Items Go Here </h1>
+            </div>
+            <div class='relative flex-wrap-center txt-white bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 4'>
+                <h1 class='txt-36'> Calendar Goes Here </h1>
+            </div>
+            <div class='relative flex-wrap-center txt-white bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5'>
+                <h1 class='txt-36'> Bugs Go Here </h1>
+            </div>
+            <div class='relative flex-wrap-center txt-white bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5'>
+                <h1 class='txt-36'> Reference Goes Here</h1>
+            </div>
+            <div class='relative flex-wrap-center txt-white bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5'>
+                <h1 class='txt-36'> Directives Go Here</h1>
             </div>
             <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 2' ng-init="animation.showDefaultImportedKF = false;">
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>

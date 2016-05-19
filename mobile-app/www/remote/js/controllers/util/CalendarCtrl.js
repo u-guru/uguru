@@ -21,7 +21,7 @@ angular.module('uguru.util.controllers')
         viewsDropdown: {},
         screenSizesDropdown: {label: "screen sizes", size: "small", options: ["desktop", "mobile"], selectedIndex:0, onOptionClick: switchScreenSize},
         toggleDev: false,
-        toggleSpec: false
+        toggleSpec: true
     }
 
     $scope.spec = {};
