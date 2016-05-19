@@ -1,4 +1,442 @@
-<ion-view><main id="ranking" class="desktop-mode" ng-if="desktopMode"><nav class="main-nav" ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav><div class="main"><header><h1>Guru Ranking</h1></header><div><ul class="ranking-top"><li><div class="ranking-tile large"><h2>Ranking at UIUC</h2><span class="ranking-tile-progress" ng-include="img_base + BASE + 'templates/svg/open-progress-demo.html'"></span></div></li><li><div class="ranking-tile"><h2>Big 10 Academic Ratings</h2><span class="ranking-tile-graph" ng-include="img_base + BASE + 'templates/svg/ranking-graph-demo.html'"></span></div><div class="ranking-tile with-icon tile-shamrock"><header><span ng-include="img_base + BASE + 'templates/svg/main/user.html'"></span><div><h1>100</h1><h2>Ranked Gurus</h2></div></header><span class="ranking-tile-graph" ng-include="img_base + BASE + 'templates/svg/ranking-graph-demo.html'"></span></div></li><li><div class="ranking-tile with-icon tile-lake"><header><span ng-include="img_base + BASE + 'templates/svg/main/user.html'"></span><div><h1>100</h1><h2>Ranked Gurus</h2></div></header><span class="ranking-tile-graph" ng-include="img_base + BASE + 'templates/svg/ranking-graph-demo.html'"></span></div><div class="ranking-tile with-icon tile-auburn"><header><span ng-include="img_base + BASE + 'templates/svg/main/user.html'"></span><div><h1>100</h1><h2>Ranked Gurus</h2></div></header><span class="ranking-tile-graph" ng-include="img_base + BASE + 'templates/svg/ranking-graph-demo.html'"></span></div></li></ul><div class="ranking-list"><tabs class="tall" options="['High Scores', 'Next Steps']"><ul class="ranking-next-steps"><li><a><span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span><div><h1>Refer Two Friends</h1><h2>Tap to complete Request Referrals</h2></div><div><h4>Impact Level</h4><span class="impact-meter" data-impact="1" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span></div><div><h4>Unlocks Rank</h4><div>5</div></div><span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span></a></li><li><a><span class="ranking-next-steps-check complete" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span><div><h1>Refer Two Friends</h1><h2>Tap to complete Request Referrals</h2></div><div><h4>Impact Level</h4><span class="impact-meter" data-impact="2" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span></div><div><h4>Unlocks Rank</h4><div>5</div></div><span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span></a></li><li class="ranking-next-steps-locked"><a><span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/lock.html'"></span><div><h1>Refer Two Friends</h1><h2>Tap to complete Request Referrals</h2></div><div><h4>Impact Level</h4><span class="impact-meter" data-impact="2" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span></div><div><h4>Unlocks Rank</h4><div>5</div></div><span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span></a></li><li><a><span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span><div><h1>Refer Two Friends</h1><h2>Tap to complete Request Referrals</h2></div><div><h4>Impact Level</h4><span class="impact-meter" data-impact="3" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span></div><div><h4>Unlocks Rank</h4><div>5</div></div><span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span></a></li></ul><ol class="ranking-high-score" ng-if="false"><li><user-icon size="72"></user-icon><div><h1>User Name</h1><h2>Academic Guru</h2><div class="tag-list"><ul><li><span class="chip bg-cobalt">Floor Care</span></li><li><span class="chip bg-cobalt">General Cleaning</span></li><li><span class="chip bg-cerise">ADV 231L</span></li><li><span class="chip bg-cobalt">Dish Washing</span></li></ul></div></div><div><rating avg="4.5"><h3>612 Reviews</h3></div></li><li><user-icon size="72"></user-icon><div><h1>User Name</h1><h2>Academic Guru</h2><div class="tag-list"><ul><li><span class="chip bg-cobalt">Floor Care</span></li><li><span class="chip bg-cobalt">General Cleaning</span></li><li><span class="chip bg-cerise">ADV 231L</span></li><li><span class="chip bg-cobalt">Dish Washing</span></li></ul></div></div><div><rating avg="4.5"><h3>612 Reviews</h3></div></li><li><user-icon size="72"></user-icon><div><h1>User Name</h1><h2>Academic Guru</h2><div class="tag-list"><ul><li><span class="chip bg-cobalt">Floor Care</span></li><li><span class="chip bg-cobalt">General Cleaning</span></li><li><span class="chip bg-cerise">ADV 231L</span></li><li><span class="chip bg-cobalt">Dish Washing</span></li></ul></div></div><div><rating avg="4.5"><h3>612 Reviews</h3></div></li><li><user-icon size="72"></user-icon><div><h1>User Name</h1><h2>Academic Guru</h2><div class="tag-list"><ul><li><span class="chip bg-cobalt">Floor Care</span></li><li><span class="chip bg-cobalt">General Cleaning</span></li><li><span class="chip bg-cerise">ADV 231L</span></li><li><span class="chip bg-cobalt">Dish Washing</span></li></ul></div></div><div><rating avg="4.5"><h3>612 Reviews</h3></div></li><li class="current-score"><user-icon size="72"></user-icon><div><h1>User Name</h1><h2>Academic Guru</h2><div class="tag-list"><ul><li><span class="chip bg-cobalt">Floor Care</span></li><li><span class="chip bg-cobalt">General Cleaning</span></li><li><span class="chip bg-cerise">ADV 231L</span></li><li><span class="chip bg-cobalt">Dish Washing</span></li></ul></div></div><div><rating avg="4.5"><h3>612 Reviews</h3></div></li><li><user-icon size="72"></user-icon><div><h1>User Name</h1><h2>Academic Guru</h2><div class="tag-list"><ul><li><span class="chip bg-cobalt">Floor Care</span></li><li><span class="chip bg-cobalt">General Cleaning</span></li><li><span class="chip bg-cerise">ADV 231L</span></li><li><span class="chip bg-cobalt">Dish Washing</span></li></ul></div></div><div><rating avg="4.5"><h3>612 Reviews</h3></div></li></ol></div></div></div></main><main id="ranking" class="lyt-1-3-header bg-slate full-xy" ng-if="!desktopMode"><header><h1 class="txt-center txt-28 lettercase">Guru Ranking</h1><ion-slide-box class="ranking-slider"><ion-slide class="ranking-slide"><span ng-include="img_base + BASE + 'templates/svg/open-progress-demo.html'"></span></ion-slide><ion-slide class="ranking-slide"><span ng-include="img_base + BASE + 'templates/svg/open-progress-demo.html'"></span></ion-slide><ion-slide class="ranking-slide"><span ng-include="img_base + BASE + 'templates/svg/open-progress-demo.html'"></span></ion-slide><ion-slide class="ranking-slide"><span ng-include="img_base + BASE + 'templates/svg/open-progress-demo.html'"></span></ion-slide></ion-slide-box></header><div class="main"><div class="ranking-list"><tabs options="['High Scores', 'Next Steps']"><ul class="ranking-next-steps" ng-if="false"><li><a><span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span><div><div><h1>Refer Two Friends</h1><h2>Tap to complete Request Referrals</h2></div><div><h4>Impact Level</h4><span class="impact-meter" data-impact="1" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span></div><div><h4>Unlocks Rank</h4><div>5</div></div></div><span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span></a></li><li><a><span class="ranking-next-steps-check complete" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span><div><div><h1>Refer Two Friends</h1><h2>Tap to complete Request Referrals</h2></div><div><h4>Impact Level</h4><span class="impact-meter" data-impact="2" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span></div><div><h4>Unlocks Rank</h4><div>5</div></div></div><span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span></a></li><li class="ranking-next-steps-locked"><a><span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/lock.html'"></span><div><div><h1>Refer Two Friends</h1><h2>Tap to complete Request Referrals</h2></div><div><h4>Impact Level</h4><span class="impact-meter" data-impact="2" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span></div><div><h4>Unlocks Rank</h4><div>5</div></div></div><span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span></a></li><li><a><span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span><div><div><h1>Refer Two Friends</h1><h2>Tap to complete Request Referrals</h2></div><div><h4>Impact Level</h4><span class="impact-meter" data-impact="3" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span></div><div><h4>Unlocks Rank</h4><div>5</div></div></div><span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span></a></li></ul><ol class="ranking-high-score"><li><user-icon size="32"></user-icon><div><div><h1>User Name</h1><h2>Academic Guru</h2></div><div class="flex m05top"><rating avg="4.5"><h3>612</h3></div></div></li><li><user-icon size="32"></user-icon><div><div><h1>User Name</h1><h2>Academic Guru</h2></div><div class="flex m05top"><rating avg="4.5"><h3>612</h3></div></div></li><li><user-icon size="32"></user-icon><div><div><h1>User Name</h1><h2>Academic Guru</h2></div><div class="flex m05top"><rating avg="4.5"><h3>612</h3></div></div></li><li><user-icon size="32"></user-icon><div><div><h1>User Name</h1><h2>Academic Guru</h2></div><div class="flex m05top"><rating avg="4.5"><h3>612</h3></div></div></li><li class="current-score"><user-icon size="32"></user-icon><div><div><h1>User Name</h1><h2>Academic Guru</h2></div><div class="flex m05top"><rating avg="4.5"><h3>612</h3></div></div></li><li><user-icon size="32"></user-icon><div><div><h1>User Name</h1><h2>Academic Guru</h2></div><div class="flex m05top"><rating avg="4.5"><h3>612</h3></div></div></li></ol></div></div></main><!-- <main id='desktop-ranking' class="sidebar-layout desktop-mode" ng-if='isDesktopMode()'>
+<ion-view>
+	<main id="ranking" class="desktop-mode" ng-if="desktopMode">
+		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
+		<div class="main">
+			<header>
+				<h1>Guru Ranking</h1>
+			</header>
+			<div>
+				<ul class="ranking-top">
+					<li>
+						<div class="ranking-tile large">
+							<h2>Ranking at UIUC</h2>
+							<span class="ranking-tile-progress" ng-include="img_base + BASE + 'templates/svg/open-progress-demo.html'"></span>
+						</div>
+					</li>
+					<li>
+						<div class="ranking-tile">
+							<h2>Big 10 Academic Ratings</h2>
+							<span class="ranking-tile-graph" ng-include="img_base + BASE + 'templates/svg/ranking-graph-demo.html'"></span>
+						</div>
+						<div class="ranking-tile with-icon tile-shamrock">
+							<header>
+								<span ng-include="img_base + BASE + 'templates/svg/main/user.html'"></span>
+								<div>
+									<h1>100</h1>
+									<h2>Ranked Gurus</h2>
+								</div>
+							</header>
+							<span class="ranking-tile-graph" ng-include="img_base + BASE + 'templates/svg/ranking-graph-demo.html'"></span>
+						</div>
+					</li>
+					<li>
+						<div class="ranking-tile with-icon tile-lake">
+							<header>
+								<span ng-include="img_base + BASE + 'templates/svg/main/user.html'"></span>
+								<div>
+									<h1>100</h1>
+									<h2>Ranked Gurus</h2>
+								</div>
+							</header>
+							<span class="ranking-tile-graph" ng-include="img_base + BASE + 'templates/svg/ranking-graph-demo.html'"></span>
+						</div>
+						<div class="ranking-tile with-icon tile-auburn">
+							<header>
+								<span ng-include="img_base + BASE + 'templates/svg/main/user.html'"></span>
+								<div>
+									<h1>100</h1>
+									<h2>Ranked Gurus</h2>
+								</div>
+							</header>
+							<span class="ranking-tile-graph" ng-include="img_base + BASE + 'templates/svg/ranking-graph-demo.html'"></span>
+						</div>
+					</li>
+				</ul>
+				<div class="ranking-list">
+					<tabs class="tall" options="['High Scores', 'Next Steps']"/></tabs>
+					<ul class="ranking-next-steps">
+						<li>
+							<a>
+								<span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span>
+								<div>
+									<h1>Refer Two Friends</h1>
+									<h2>Tap to complete Request Referrals</h2>
+								</div>
+								<div>
+									<h4>Impact Level</h4>
+									<span class="impact-meter" data-impact="1" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span>
+								</div>
+								<div>
+									<h4>Unlocks Rank</h4>
+									<div>5</div>
+								</div>
+								<span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span>
+							</a>
+						</li>
+						<li>
+							<a>
+								<span class="ranking-next-steps-check complete" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span>
+								<div>
+									<h1>Refer Two Friends</h1>
+									<h2>Tap to complete Request Referrals</h2>
+								</div>
+								<div>
+									<h4>Impact Level</h4>
+									<span class="impact-meter" data-impact="2" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span>
+								</div>
+								<div>
+									<h4>Unlocks Rank</h4>
+									<div>5</div>
+								</div>
+								<span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span>
+							</a>
+						</li>
+						<li class="ranking-next-steps-locked">
+							<a>
+								<span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/lock.html'"></span>
+								<div>
+									<h1>Refer Two Friends</h1>
+									<h2>Tap to complete Request Referrals</h2>
+								</div>
+								<div>
+									<h4>Impact Level</h4>
+									<span class="impact-meter" data-impact="2" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span>
+								</div>
+								<div>
+									<h4>Unlocks Rank</h4>
+									<div>5</div>
+								</div>
+								<span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span>
+							</a>
+						</li>
+						<li>
+							<a>
+								<span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span>
+								<div>
+									<h1>Refer Two Friends</h1>
+									<h2>Tap to complete Request Referrals</h2>
+								</div>
+								<div>
+									<h4>Impact Level</h4>
+									<span class="impact-meter" data-impact="3" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span>
+								</div>
+								<div>
+									<h4>Unlocks Rank</h4>
+									<div>5</div>
+								</div>
+								<span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span>
+							</a>
+						</li>
+					</ul>
+					<ol class="ranking-high-score" ng-if="false">
+						<li>
+							<user-icon size="72"></user-icon>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+								<div class="tag-list">
+									<ul>
+										<li><span class="chip bg-cobalt">Floor Care</span></li>
+										<li><span class="chip bg-cobalt">General Cleaning</span></li>
+										<li><span class="chip bg-cerise">ADV 231L</span></li>
+										<li><span class="chip bg-cobalt">Dish Washing</span></li>
+									</ul>
+								</div>
+							</div>
+							<div>
+								<rating avg="4.5"/> </rating>
+								<h3>612 Reviews</h3>
+							</div>
+						</li>
+						<li>
+							<user-icon size="72"></user-icon>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+								<div class="tag-list">
+									<ul>
+										<li><span class="chip bg-cobalt">Floor Care</span></li>
+										<li><span class="chip bg-cobalt">General Cleaning</span></li>
+										<li><span class="chip bg-cerise">ADV 231L</span></li>
+										<li><span class="chip bg-cobalt">Dish Washing</span></li>
+									</ul>
+								</div>
+							</div>
+							<div>
+								<rating avg="4.5"/> </rating>
+								<h3>612 Reviews</h3>
+							</div>
+						</li>
+						<li>
+							<user-icon size="72"></user-icon>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+								<div class="tag-list">
+									<ul>
+										<li><span class="chip bg-cobalt">Floor Care</span></li>
+										<li><span class="chip bg-cobalt">General Cleaning</span></li>
+										<li><span class="chip bg-cerise">ADV 231L</span></li>
+										<li><span class="chip bg-cobalt">Dish Washing</span></li>
+									</ul>
+								</div>
+							</div>
+							<div>
+								<rating avg="4.5"/> </rating>
+								<h3>612 Reviews</h3>
+							</div>
+						</li>
+						<li>
+							<user-icon size="72"></user-icon>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+								<div class="tag-list">
+									<ul>
+										<li><span class="chip bg-cobalt">Floor Care</span></li>
+										<li><span class="chip bg-cobalt">General Cleaning</span></li>
+										<li><span class="chip bg-cerise">ADV 231L</span></li>
+										<li><span class="chip bg-cobalt">Dish Washing</span></li>
+									</ul>
+								</div>
+							</div>
+							<div>
+								<rating avg="4.5"/> </rating>
+								<h3>612 Reviews</h3>
+							</div>
+						</li>
+						<li class="current-score">
+							<user-icon size="72"></user-icon>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+								<div class="tag-list">
+									<ul>
+										<li><span class="chip bg-cobalt">Floor Care</span></li>
+										<li><span class="chip bg-cobalt">General Cleaning</span></li>
+										<li><span class="chip bg-cerise">ADV 231L</span></li>
+										<li><span class="chip bg-cobalt">Dish Washing</span></li>
+									</ul>
+								</div>
+							</div>
+							<div>
+								<rating avg="4.5"/> </rating>
+								<h3>612 Reviews</h3>
+							</div>
+						</li>
+						<li>
+							<user-icon size="72"></user-icon>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+								<div class="tag-list">
+									<ul>
+										<li><span class="chip bg-cobalt">Floor Care</span></li>
+										<li><span class="chip bg-cobalt">General Cleaning</span></li>
+										<li><span class="chip bg-cerise">ADV 231L</span></li>
+										<li><span class="chip bg-cobalt">Dish Washing</span></li>
+									</ul>
+								</div>
+							</div>
+							<div>
+								<rating avg="4.5"/> </rating>
+								<h3>612 Reviews</h3>
+							</div>
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+	<main id="ranking" class="lyt-1-3-header bg-slate full-xy" ng-if="!desktopMode">
+		<header>
+			<h1 class="txt-center txt-28 lettercase">Guru Ranking</h1>
+			<ion-slide-box class="ranking-slider">
+				<ion-slide class="ranking-slide">
+					<span ng-include="img_base + BASE + 'templates/svg/open-progress-demo.html'"></span>
+				</ion-slide>
+				<ion-slide class="ranking-slide">
+					<span ng-include="img_base + BASE + 'templates/svg/open-progress-demo.html'"></span>
+				</ion-slide>
+				<ion-slide class="ranking-slide">
+					<span ng-include="img_base + BASE + 'templates/svg/open-progress-demo.html'"></span>
+				</ion-slide>
+				<ion-slide class="ranking-slide">
+					<span ng-include="img_base + BASE + 'templates/svg/open-progress-demo.html'"></span>
+				</ion-slide>
+			</ion-slide-box>
+		</header>
+		<div class="main">
+			<div class="ranking-list">
+				<tabs options="['High Scores', 'Next Steps']"/></tabs>
+				<ul class="ranking-next-steps" ng-if="false">
+					<li>
+						<a>
+							<span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span>
+							<div>
+								<div>
+									<h1>Refer Two Friends</h1>
+									<h2>Tap to complete Request Referrals</h2>
+								</div>
+								<div>
+									<h4>Impact Level</h4>
+									<span class="impact-meter" data-impact="1" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span>
+								</div>
+								<div>
+									<h4>Unlocks Rank</h4>
+									<div>5</div>
+								</div>
+							</div>
+							<span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span>
+						</a>
+					</li>
+					<li>
+						<a>
+							<span class="ranking-next-steps-check complete" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span>
+							<div>
+								<div>
+									<h1>Refer Two Friends</h1>
+									<h2>Tap to complete Request Referrals</h2>
+								</div>
+								<div>
+									<h4>Impact Level</h4>
+									<span class="impact-meter" data-impact="2" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span>
+								</div>
+								<div>
+									<h4>Unlocks Rank</h4>
+									<div>5</div>
+								</div>
+							</div>
+							<span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span>
+						</a>
+					</li>
+					<li class="ranking-next-steps-locked">
+						<a>
+							<span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/lock.html'"></span>
+							<div>
+								<div>
+									<h1>Refer Two Friends</h1>
+									<h2>Tap to complete Request Referrals</h2>
+								</div>
+								<div>
+									<h4>Impact Level</h4>
+									<span class="impact-meter" data-impact="2" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span>
+								</div>
+								<div>
+									<h4>Unlocks Rank</h4>
+									<div>5</div>
+								</div>
+							</div>
+							<span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span>
+						</a>
+					</li>
+					<li>
+						<a>
+							<span class="ranking-next-steps-check" ng-include="img_base + BASE + 'templates/svg/main/check.html'"></span>
+							<div>
+								<div>
+									<h1>Refer Two Friends</h1>
+									<h2>Tap to complete Request Referrals</h2>
+								</div>
+								<div>
+									<h4>Impact Level</h4>
+									<span class="impact-meter" data-impact="3" ng-include="img_base + BASE + 'templates/svg/meter.html'"></span>
+								</div>
+								<div>
+									<h4>Unlocks Rank</h4>
+									<div>5</div>
+								</div>
+							</div>
+							<span class="ranking-next-steps-link" ng-include="img_base + BASE + 'templates/svg/main/right.html'"></span>
+						</a>
+					</li>
+				</ul>
+				<ol class="ranking-high-score">
+					<li>
+						<user-icon size="32"></user-icon>
+						<div>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+							</div>
+							<div class="flex m05top">
+								<rating avg="4.5"/> </rating>
+								<h3>612</h3>
+							</div>
+						</div>
+					</li>
+					<li>
+						<user-icon size="32"></user-icon>
+						<div>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+							</div>
+							<div class="flex m05top">
+								<rating avg="4.5"/> </rating>
+								<h3>612</h3>
+							</div>
+						</div>
+					</li>
+					<li>
+						<user-icon size="32"></user-icon>
+						<div>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+							</div>
+							<div class="flex m05top">
+								<rating avg="4.5"/> </rating>
+								<h3>612</h3>
+							</div>
+						</div>
+					</li>
+					<li>
+						<user-icon size="32"></user-icon>
+						<div>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+							</div>
+							<div class="flex m05top">
+								<rating avg="4.5"/> </rating>
+								<h3>612</h3>
+							</div>
+						</div>
+					</li>
+					<li class="current-score">
+						<user-icon size="32"></user-icon>
+						<div>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+							</div>
+							<div class="flex m05top">
+								<rating avg="4.5"/> </rating>
+								<h3>612</h3>
+							</div>
+						</div>
+					</li>
+					<li>
+						<user-icon size="32"></user-icon>
+						<div>
+							<div>
+								<h1>User Name</h1>
+								<h2>Academic Guru</h2>
+							</div>
+							<div class="flex m05top">
+								<rating avg="4.5"/> </rating>
+								<h3>612</h3>
+							</div>
+						</div>
+					</li>
+				</ol>
+			</div>
+		</div>
+	</main>
+	
+	<!-- <main id='desktop-ranking' class="sidebar-layout desktop-mode" ng-if='isDesktopMode()'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 		<div class="main">
 			<div>	
@@ -123,4 +561,5 @@
                 </div>
             </div>
         </div>
-    </main> --></ion-view>
+    </main> -->
+</ion-view>

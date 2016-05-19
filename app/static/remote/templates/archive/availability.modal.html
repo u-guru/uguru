@@ -1,4 +1,46 @@
-<ion-modal-view class="availability-modal full-xy" ng-controller="AvailabilityController"><header class="bg-charcoal"><div class="header-nav"><a class="header-down half" ng-click="closeAvailabilityModal()"><svg viewBox="0 0 100 100"><path d="M14,32 L50,68 L86,32"></path></svg> </a><a class="header-nav-next" ng-click="closeAvailabilityModal()"><h1>Save</h1></a></div><h1 class="text-center">Availability</h1></header><section><div class="flex full-x"><div class="avail-days"><ul><li ng-repeat="date in dates"><span>{{date.month}}/{{date.date}}</span> <span>{{date.name}}</span></li></ul></div><div class="avail-times"><ul ng-repeat="hour in hours"><li><span ng-bind="hour"></span></li></ul></div><div class="avail-hours"><ul class="{{hour}}" ng-repeat="hour in hours"><li ng-repeat="date in dates"><input type="checkbox" ng-model="date.schedule[$parent.$index].isPass"><span>{{date.schedule[$parent.$index].hour}}</span></li></ul></div></div></section></ion-modal-view><!--
+<ion-modal-view  class='availability-modal full-xy' ng-controller='AvailabilityController'>
+	<header class="bg-charcoal">
+		<div class="header-nav">
+			<a class="header-down half" ng-click="closeAvailabilityModal()">
+				<svg viewBox="0 0 100 100">
+					<path d="M14,32 L50,68 L86,32"></path>
+				</svg>
+			</a>
+			<a class="header-nav-next" ng-click="closeAvailabilityModal()">
+				<h1>Save</h1>
+			</a>
+		</div>
+		<h1 class="text-center">Availability</h1>
+	</header>
+
+	<section>
+		<div class="flex full-x">
+			<div class="avail-days">
+				<ul>
+					<li ng-repeat='date in dates'>
+						<span>{{date.month}}/{{date.date}}</span>
+						<span>{{date.name}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="avail-times">
+				<ul ng-repeat='hour in hours'>
+					<li><span ng-bind="hour"></span></li>
+				</ul>
+
+			</div>
+			<div class="avail-hours">
+					<ul class={{hour}} ng-repeat="hour in hours">
+						<li ng-repeat='date in dates'>
+							<input type="checkbox" ng-model="date.schedule[$parent.$index].isPass"/><span>{{date.schedule[$parent.$index].hour}}</span>
+						</li>
+					</ul> 		
+			</div>
+		</div>
+	</section>
+</ion-modal-view>
+
+<!--
 <ion-modal-view  class='availability-modal' ng-controller='AvailabilityController'>
 
   <ion-header-bar align-title="center" class='dark-bg-header calendar-top-header no-background-image' hide-nav-bar='true'>
@@ -71,7 +113,11 @@
               <!-- <div class='draggable-event absolute' data-tap-disabled ="true">
                     <span class='drag-point' id='drag-point-top'> </span>
                     <span class='drag-point' id='drag-point-bottom'> </span>
-              </div> --><!-- </div> --
+              </div> -->
+            </div>
+          </div>
+        </div>
+    <!-- </div> --
 
   </ion-content>
 </ion-modal-view>

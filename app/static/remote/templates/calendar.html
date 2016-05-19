@@ -1,1 +1,341 @@
-<ion-view id="calendar-view" ng-controller="CalendarController"><ion-content class="bg-smoke"><section class="calendar-container student"><div class="calendar student relative"><div class="cal-week active"><div><h1 class="cal-month"><span>{{calendar[0].monthLong || 'May'}}</span></h1><div class="cal-day-container flex"><ul class="cal-time"><li><span>All Day</span></li><li><span>12am</span></li><li><span>1am</span></li><li><span>2am</span></li><li><span>3am</span></li><li><span>4am</span></li><li><span>5am</span></li><li><span>6am</span></li><li><span>7am</span></li><li><span>8am</span></li><li><span>9am</span></li><li><span>10am</span></li><li><span>11am</span></li><li><span>Noon</span></li><li><span>1pm</span></li><li><span>2pm</span></li><li><span>3pm</span></li><li><span>4pm</span></li><li><span>5pm</span></li><li><span>6pm</span></li><li><span>7pm</span></li><li><span>8pm</span></li><li><span>9pm</span></li><li><span>10pm</span></li><li><span>11pm</span></li></ul><div class="cal-main"><ul class="cal-date"><li ng-repeat="day in ::calendar.days"><span><span>{{::day.dayShort}}</span> <span>&nbsp;</span> <span>{{::day.date}}</span></span></li></ul><div class="cal-events"><ul ng-repeat="day in ::calendar.days" class="cal-day"><li class="all-day"><a></a></li><li ng-repeat="hour in ::day.hours"><a></a></li></ul></div></div></div></div></div></div><div class="cal-search"><div><input id="search-events" type="search" placeholder="Search"></div></div><div class="cal-filters"><div class="cal-tags tag-list"><ul><li><a class="chip bg-auburn">Delivery</a></li><li><a class="chip bg-orange">Freelancing</a></li><li><a class="chip bg-gold">Baking</a></li><li><a class="chip bg-moola">Photography</a></li><li><a class="chip bg-azure">Tech</a></li><li><a class="chip bg-cobalt">Household</a></li><li><a class="chip bg-eggplant">Athletic</a></li><li><a class="chip bg-cerise">Academic</a></li></ul></div><div class="cal-results"><ul class="p15-grid"><li><div class="calendar-tile bg-slate"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-taupe"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-campus"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-shamrock"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-robin"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-lake"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-moxie"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-crimson"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-auburn"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-orange"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-gold"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-moola"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-azure"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-cobalt"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-eggplant"><h1>February 11</h1><h2>4pm-6am</h2></div></li><li><div class="calendar-tile bg-cerise"><h1>February 11</h1><h2>4pm-6am</h2></div></li></ul></div></div></section></ion-content><div id="dev-spec" class="full-x p05xy top-0 left-0 absolute full-xy bg-smoke animated slideInDown ugrid-5" style="height:90%" ng-if="spec && spec.title && dev.toggleSpec"><div class="p05xy flex-wrap-center full-xy absolute top-0 left-0 flex-stretch" ng-repeat="use_case in spec.use_cases"><div><h1 class="txt-7 txt-charcoal weight-900 full-x">{{spec.title}}: {{use_case.title}}</h1></div><div class="full-xy txt-charcoal ugrid-4"><div><h1 class="txt-36 flex-wrap-center">{{use_case.columns.static.title}}</h1><ul><li class="p10xy" ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}" ng-repeat="item in use_case.columns.static.items"><div class="full-x flex-stretch"><span class="p10x"><checkbox value="item.value"></checkbox></span><p class="txt-4">{{item.title}}</p></div><ul ng-if="item.sub_items" class="full-x nested-action-item txt-2"><li ng-repeat="sub_item in item.sub_items">{{sub_item.text}}</li></ul></li></ul></div><div><h1 class="text-center txt-36 flex-wrap-center">{{use_case.columns.micro.title}}</h1><ul><li class="p10xy" ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}" ng-repeat="item in use_case.columns.micro.items"><div class="full-x flex-stretch"><span class="p10x"><checkbox value="item.value"></checkbox></span><p class="txt-4">{{item.title}}</p></div><ul ng-if="item.sub_items" class="full-x nested-action-item txt-2"><li ng-repeat="sub_item in item.sub_items">{{sub_item.text}}</li></ul></li></ul></div><div><h1 class="text-center txt-36 flex-wrap-center">{{use_case.columns.macro.title}}</h1><ul><li class="p10xy" ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}" ng-repeat="item in use_case.columns.macro.items"><div class="full-x flex-stretch"><span class="p10x"><checkbox value="item.value"></checkbox></span><p class="txt-4">{{item.title}}</p></div><ul ng-if="item.sub_items" class="full-x nested-action-item txt-2"><li ng-repeat="sub_item in item.sub_items">{{sub_item.text}}</li></ul></li></ul></div><div class="bg-slate-10p txt-slate"><h1 class="text-center txt-36 flex-wrap-center">{{use_case.columns.icebox.title}}</h1><ul><li class="p10xy" ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}" ng-repeat="item in use_case.columns.icebox.items"><div class="full-x flex-stretch"><span class="p10x"><checkbox value="item.value"></checkbox></span><p class="txt-4">{{item.title}}</p></div><ul ng-if="item.sub_items" class="full-x nested-action-item txt-2"><li ng-repeat="sub_item in item.sub_items">{{sub_item.text}}</li></ul></li></ul></div></div></div></div><div id="dev-toolbar" class="full-x p05xy bottom-0 left-0 absolute bg-smoke animated slideInUp" ng-if="dev.toggleDev"><div class="bg-azure-50p full-x txt-charcoal ugrid-5"><div class="p05xy flex-wrap-center">Dev bar</div><div class="p05xy flex-wrap-center"><a ng-click="dev.toggleSpec = !dev.toggleSpec" ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a>|<a ng-click="openDocInNewTab()"> gDoc</a></div><div class="p05xy flex-wrap-center ugrid-2" ng-class='{"bg-azure": dev.toggleSpec}'><div ng-if="codepenData"><form action="http://codepen.io/pen/define" method="POST" target="_blank"><input type="hidden" name="data" value="{{codepenData}}"> <input type="submit" id="codepen-input" value="Edit in Codepen"></form></div><div><a ng-click="openCodepenSpec()">Open CP Spec</a></div></div><div class="p05xy text-center"><dropdown ng-model="dev.screenSizesDropdown"></dropdown></div><div class="p05xy text-center"><dropdown ng-model="dev.environmentsDropdown"></dropdown></div></div></div></ion-view>
+<ion-view id='calendar-view'  ng-controller='CalendarController'>
+    <ion-content class="bg-smoke">
+        <section class="calendar-container student"  >
+            <div class='calendar student relative'>
+                <div class="cal-week active">
+                    <div>
+        				<h1 class="cal-month">
+        					<span>{{calendar[0].monthLong || 'May'}}</span>
+        				</h1>
+                        <div class="cal-day-container flex">
+                            <ul class="cal-time">
+                                <li>
+                                    <span>All Day</span>
+                                </li>
+            					<li>
+            						<span>12am</span>
+            					</li>
+            					<li>
+            						<span>1am</span>
+            					</li>
+            					<li>
+            						<span>2am</span>
+            					</li>
+            					<li>
+            						<span>3am</span>
+            					</li>
+            					<li>
+            						<span>4am</span>
+            					</li>
+            					<li>
+            						<span>5am</span>
+            					</li>
+            					<li>
+            						<span>6am</span>
+            					</li>
+            					<li>
+            						<span>7am</span>
+            					</li>
+            					<li>
+            						<span>8am</span>
+            					</li>
+            					<li>
+            						<span>9am</span>
+            					</li>
+            					<li>
+            						<span>10am</span>
+            					</li>
+            					<li>
+            						<span>11am</span>
+            					</li>
+            					<li>
+            						<span>Noon</span>
+            					</li>
+            					<li>
+            						<span>1pm</span>
+            					</li>
+            					<li>
+            						<span>2pm</span>
+            					</li>
+            					<li>
+            						<span>3pm</span>
+            					</li>
+            					<li>
+            						<span>4pm</span>
+            					</li>
+            					<li>
+            						<span>5pm</span>
+            					</li>
+            					<li>
+            						<span>6pm</span>
+            					</li>
+            					<li>
+            						<span>7pm</span>
+            					</li>
+            					<li>
+            						<span>8pm</span>
+            					</li>
+            					<li>
+            						<span>9pm</span>
+            					</li>
+            					<li>
+            						<span>10pm</span>
+            					</li>
+            					<li>
+            						<span>11pm</span>
+            					</li>
+            				</ul>
+                            <div class="cal-main">
+                                <ul class="cal-date">
+                                    <li ng-repeat='day in ::calendar.days'>
+                                        <span>
+            								<span>{{::day.dayShort}}</span>
+            								<span>&nbsp;</span>
+            								<span>{{::day.date}}</span>
+            							</span>
+                                    </li>
+                                </ul>
+                                <div class="cal-events">
+                                    <ul ng-repeat='day in ::calendar.days' class='cal-day'>
+                                        <li class="all-day">
+                                            <a></a>
+                                        </li>
+                                        <li ng-repeat='hour in ::day.hours'>
+                                            <a></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cal-search">
+                <div>
+                    <input id="search-events" type="search" placeholder="Search"/>
+                    <label for="search-events" ng-include="img_base + BASE + 'templates/svg/main/search.html'"></label>
+                </div>
+            </div>
+            <div class="cal-filters">
+                <div class="cal-tags tag-list">
+                    <ul>
+                        <li><a class="chip bg-auburn">Delivery</a></li>
+                        <li><a class="chip bg-orange">Freelancing</a></li>
+                        <li><a class="chip bg-gold">Baking</a></li>
+                        <li><a class="chip bg-moola">Photography</a></li>
+                        <li><a class="chip bg-azure">Tech</a></li>
+                        <li><a class="chip bg-cobalt">Household</a></li>
+                        <li><a class="chip bg-eggplant">Athletic</a></li>
+                        <li><a class="chip bg-cerise">Academic</a></li>
+                    </ul>
+                </div>
+                <div class="cal-results">
+                    <ul class="p15-grid">
+                        <li>
+                			<div class="calendar-tile bg-slate">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-taupe">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-campus">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-shamrock">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-robin">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-lake">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-moxie">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-crimson">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-auburn">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-orange">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-gold">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-moola">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-azure">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-cobalt">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-eggplant">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                		<li>
+                			<div class="calendar-tile bg-cerise">
+                				<h1>February 11</h1>
+                				<h2>4pm-6am</h2>
+                			</div>
+                		</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </ion-content>
+    <div id="dev-spec"
+     class='full-x p05xy top-0 left-0 absolute full-xy bg-smoke animated slideInDown ugrid-5' style='height:90%;' ng-if='spec && spec.title && dev.toggleSpec'>
+        <div class='p05xy flex-wrap-center full-xy absolute top-0 left-0 flex-stretch' ng-repeat="use_case in spec.use_cases">
+            <div><h1 class='txt-7 txt-charcoal weight-900 full-x'> {{spec.title}}: {{use_case.title}} </h1></div>
+            <div class='full-xy txt-charcoal ugrid-4'>
+                <div><h1 class='txt-36 flex-wrap-center'>{{use_case.columns.static.title}}</h1>
+                    <ul>
+                        <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.static.items'>
+                            <div class='full-x flex-stretch' >
+                                <span class='p10x'>
+                                    <checkbox value="item.value"> </checkbox>
+                                </span>
+                                <p class='txt-4'>{{item.title}}</p>
+                            </div>
+                            <ul ng-if='item.sub_items' class='full-x nested-action-item txt-2'>
+                                <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}}
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h1 class='text-center txt-36 flex-wrap-center'>{{use_case.columns.micro.title}}</h1>
+                    <ul>
+                            <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.micro.items'>
+                                <div class='full-x flex-stretch' >
+                                    <span class='p10x'>
+                                        <checkbox value="item.value"> </checkbox>
+                                    </span>
+                                    <p class='txt-4'>{{item.title}}</p>
+                                </div>
+                                <ul ng-if='item.sub_items' class='full-x nested-action-item txt-2'>
+                                    <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}}
+                                    </li>
+                                </ul>
+                            </li>
+                    </ul>
+                </div>
+                <div>
+                    <h1 class='text-center txt-36 flex-wrap-center'>{{use_case.columns.macro.title}}</h1>
+                    <ul>
+                            <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.macro.items'>
+                                <div class='full-x flex-stretch' >
+                                    <span class='p10x'>
+                                        <checkbox value="item.value"> </checkbox>
+                                    </span>
+                                    <p class='txt-4'>{{item.title}}</p>
+                                </div>
+                                <ul ng-if='item.sub_items' class='full-x nested-action-item txt-2'>
+                                    <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}}
+                                    </li>
+                                </ul>
+                            </li>
+                    </ul>
+                </div>
+                <div class='bg-slate-10p txt-slate'>
+                    <h1 class='text-center txt-36 flex-wrap-center'>{{use_case.columns.icebox.title}}</h1>
+                    <ul>
+                            <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.icebox.items'>
+                                <div class='full-x flex-stretch' >
+                                    <span class='p10x'>
+                                        <checkbox value="item.value"> </checkbox>
+                                    </span>
+                                    <p class='txt-4'>{{item.title}}</p>
+                                </div>
+                                <ul ng-if='item.sub_items' class='full-x nested-action-item txt-2'>
+                                    <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}}
+                                    </li>
+                                </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dev-toolbar"
+     class='full-x p05xy bottom-0 left-0 absolute bg-smoke animated slideInUp' ng-if='dev.toggleDev'>
+         <div class='bg-azure-50p full-x txt-charcoal ugrid-5'>
+            <div class='p05xy flex-wrap-center'>
+                Dev bar
+            </div>
+            <div class='p05xy flex-wrap-center'>
+                <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a>|<a ng-click='openDocInNewTab()'> gDoc </a>
+            </div>
+            <div class='p05xy flex-wrap-center ugrid-2' ng-class='{"bg-azure": dev.toggleSpec}'>
+                <div ng-if='codepenData'>
+                    <form action="http://codepen.io/pen/define" method="POST" target="_blank">
+                      <input type="hidden" name="data" value='{{codepenData}}'>
+
+                      <input type="submit" id='codepen-input' value="Edit in Codepen">
+                    </form>
+                </div>
+                <div>
+                    <a ng-click='openCodepenSpec()'> Open CP Spec </a>
+                </div>
+            </div>
+            <div class='p05xy text-center' >
+                <dropdown ng-model="dev.screenSizesDropdown">
+                </dropdown>
+            </div>
+            <div class='p05xy text-center' >
+                <dropdown ng-model="dev.environmentsDropdown">
+                </dropdown>
+            </div>
+        </div>
+    </div>
+</ion-view>

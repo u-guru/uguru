@@ -9,7 +9,8 @@ angular.module('uguru.util.controllers')
   'CalendarService',
   'KeyboardService',
   '$window',
-  function($scope, $state, $timeout, $localstorage, $ionicSlideBoxDelegate, CalendarService, KeyboardService, $window) {
+  '$compile',
+  function($scope, $state, $timeout, $localstorage, $ionicSlideBoxDelegate, CalendarService, KeyboardService, $window, $compile) {
     var gDocUrl = 'https://docs.google.com/document/d/1Xsnsv2cZTvRtUPv9NWXJDG5mMyYYi_RmDZkGsve6xLU/edit';
     var codepenSpecUrl = 'http://codepen.io/teamuguru/pen/ddd2f97039f2fec817d52499dd3c00ac.js';
     var cpFiles = [
@@ -24,10 +25,12 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.spec = {};
+    var originalHTML = document.querySelector('#calendar-view').parentNode.innerHTML + "";
 
+    $scope.calendar = CalendarService.getNextSevenDaysArr()
     // $scope.$on('$ionicView.loaded', function() {
       $timeout(function() {
-        $scope.calendar = CalendarService.getNextSevenDaysArr()
+        loadHTMLSpec();
         KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
         KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
         KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 27, 'esc', true, null);
@@ -54,6 +57,19 @@ angular.module('uguru.util.controllers')
       xhr.send();
     }
 
+    function loadHTMLSpec() {
+      var xhr = new XMLHttpRequest();
+      xhr.open( 'GET', 'https://uguru-rest-test.herokuapp.com/static/remote/templates/calendar.html', true );
+
+      xhr.onload = function () {
+          $scope.rawHTML = xhr.responseText;
+
+          $timeout(function() {
+            $scope.$apply();
+          });
+      };
+      xhr.send();
+    }
 
     function toggleDev() {
       $scope.dev.toggleDev = !$scope.dev.toggleDev;
@@ -72,23 +88,10 @@ angular.module('uguru.util.controllers')
     }
 
     function getHtmlString() {
-      var calendar_view_html = document.querySelector('#calendar-view').parentNode.innerHTML;
-      return '<body ng-app="uguru" animation="slide-left-right-ios7"><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + calendar_view_html + '</div></script></ui-view></body>'
+      var calendarView = document.querySelector('#calendar-view').parentNode;
+      var calendar_view_html = angular.element(calendarView).contents()[1].innerHTML;
+      return '<body ng-app="uguru" animation="slide-left-right-ios7"><script src="https://uguru-rest-test.herokuapp.com/static/remote/js/u.base.js"></script><script src="https://uguru-rest-test.herokuapp.com/static/remote/js/main.min.js"></script><script src="https://codepen.io/teamuguru/pen/ONePXN.js"></script><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + $scope.rawHTML + '</div></script></ui-view></body>'
     }
-
-    function importAllJS() {
-      var xhr = new XMLHttpRequest();
-      xhr.open( 'GET', 'https://uguru-rest-test.herokuapp.com/static/remote/js/u.base.js', true );
-
-      xhr.onload = function () {
-          $scope.baseJS = JSON.parse(xhr.responseText);
-          console.log($scope.baseJS);
-      };
-      xhr.send();
-    }
-
-    importAllJS();
-
     function generateCodePenData () {
 
       $scope.codepenData = {
@@ -101,10 +104,10 @@ angular.module('uguru.util.controllers')
         html                  : getHtmlString(),
         html_pre_processor    : "",
         css                   : "html { color: red; }",
-        css_pre_processor     : "css",
+        css_pre_processor     : "none",
         css_starter           : "neither",
         css_prefix            : "none",
-        js                    : importAllJS(),
+        js                    : "//import this extra file manually https://codepen.io/teamuguru/pen/ONePXN.js",
         js_pre_processor      : "none",
         html_classes          : null,
         head                  : "<meta name='viewport' content='width=device-width'>",
