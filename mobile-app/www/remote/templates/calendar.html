@@ -1,4 +1,4 @@
-<ion-view id='calendar-view'  ng-controller='CalendarController'>
+<ion-view id='calendar-view' ng-controller='CalendarController'>
     <ion-content class="bg-smoke">
         <section class="calendar-container student">
             <div class='calendar student relative'>
@@ -247,8 +247,7 @@
             </div>
         </section>
     </ion-content>
-    <div id="dev-spec"
-     class='full-x p05xy top-0 left-0 absolute full-xy bg-smoke animated slideInDown ugrid-5' style='height:90%;' ng-if='spec && spec.title && dev.toggleSpec'>
+    <div id="dev-spec" class='full-x p05xy top-0 left-0 absolute full-xy bg-smoke animated slideInDown' style='height: calc(100% - 83px);' ng-if='spec && spec.title && dev.toggleSpec'>
         <div class='p05xy flex-wrap-center full-xy absolute top-0 left-0 flex-stretch' ng-repeat="use_case in spec.use_cases">
             <div><h1 class='txt-7 txt-charcoal weight-900 full-x'> {{spec.title}}: {{use_case.title}} </h1></div>
             <div class='full-xy txt-charcoal ugrid-4'>
@@ -271,86 +270,84 @@
                 <div>
                     <h1 class='text-center txt-36 flex-wrap-center'>{{use_case.columns.micro.title}}</h1>
                     <ul>
-                            <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.micro.items'>
-                                <div class='full-x flex-stretch' >
-                                    <span class='p10x'>
-                                        <checkbox value="item.value"> </checkbox>
-                                    </span>
-                                    <p class='txt-4'>{{item.title}}</p>
-                                </div>
-                                <ul ng-if='item.sub_items' class='full-x nested-action-item txt-2'>
-                                    <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}}
-                                    </li>
-                                </ul>
-                            </li>
+                        <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.micro.items'>
+                            <div class='full-x flex-stretch' >
+                                <span class='p10x'>
+                                    <checkbox value="item.value"> </checkbox>
+                                </span>
+                                <p class='txt-4'>{{item.title}}</p>
+                            </div>
+                            <ul ng-if='item.sub_items' class='full-x nested-action-item txt-2'>
+                                <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}}
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <div>
                     <h1 class='text-center txt-36 flex-wrap-center'>{{use_case.columns.macro.title}}</h1>
                     <ul>
-                            <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.macro.items'>
-                                <div class='full-x flex-stretch' >
-                                    <span class='p10x'>
-                                        <checkbox value="item.value"> </checkbox>
-                                    </span>
-                                    <p class='txt-4'>{{item.title}}</p>
-                                </div>
-                                <ul ng-if='item.sub_items' class='full-x nested-action-item txt-2'>
-                                    <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}}
-                                    </li>
-                                </ul>
-                            </li>
+                        <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.macro.items'>
+                            <div class='full-x flex-stretch' >
+                                <span class='p10x'>
+                                    <checkbox value="item.value"> </checkbox>
+                                </span>
+                                <p class='txt-4'>{{item.title}}</p>
+                            </div>
+                            <ul ng-if='item.sub_items' class='full-x nested-action-item txt-2'>
+                                <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}}
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <div class='bg-slate-10p txt-slate'>
                     <h1 class='text-center txt-36 flex-wrap-center'>{{use_case.columns.icebox.title}}</h1>
                     <ul>
-                            <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.icebox.items'>
-                                <div class='full-x flex-stretch' >
-                                    <span class='p10x'>
-                                        <checkbox value="item.value"> </checkbox>
-                                    </span>
-                                    <p class='txt-4'>{{item.title}}</p>
-                                </div>
-                                <ul ng-if='item.sub_items' class='full-x nested-action-item txt-2'>
-                                    <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}}
-                                    </li>
-                                </ul>
-                            </li>
+                        <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.icebox.items'>
+                            <div class='full-x flex-stretch' >
+                                <span class='p10x'>
+                                    <checkbox value="item.value"> </checkbox>
+                                </span>
+                                <p class='txt-4'>{{item.title}}</p>
+                            </div>
+                            <ul ng-if='item.sub_items' class='full-x nested-action-item txt-2'>
+                                <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}}
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div id="dev-toolbar"
-     class='full-x p05xy bottom-0 left-0 absolute bg-smoke animated slideInUp' ng-if='dev.toggleDev'>
-         <div class='bg-azure-50p full-x txt-charcoal ugrid-5'>
-            <div class='p05xy flex-wrap-center'>
-                Dev bar
-            </div>
-            <div class='p05xy flex-wrap-center'>
-                <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a>|<a ng-click='openDocInNewTab()'> gDoc </a>
-            </div>
-            <div class='p05xy flex-wrap-center ugrid-2' ng-class='{"bg-azure": dev.toggleSpec}'>
-                <div ng-if='codepenData'>
+    <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate animated slideInUp' ng-if='!dev.toggleDev'>
+         <ul class='bg-cobalt-25p flex-center-vertical-space-between p15-grid'>
+            <li class="flex">
+                <!-- <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a> -->
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='dev.toggleSpec = !dev.toggleSpec'>Spec</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='openDocInNewTab()'>gDoc</button>
+            </li>
+            <li class="flex">
+            <!-- <li class='flex-wrap-center ugrid-2' ng-class='{"bg-azure": dev.toggleSpec}'> -->
+                <div class="m15right" ng-if='codepenData'>
                     <form action="http://codepen.io/pen/define" method="POST" target="_blank">
                       <input type="hidden" name="data" value='{{codepenData}}'>
-
-                      <input type="submit" id='codepen-input' value="Edit in Codepen">
+                      <input class="bg bg-moxie txt-18 height-36 semibold radius-2 p15x" type="submit" id='codepen-input' value="Edit in Codepen">
                     </form>
                 </div>
                 <div>
-                    <a ng-click='openCodepenSpec()'> Open CP Spec </a>
+                    <button class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='openCodepenSpec()'>CP Spec</button>
                 </div>
-            </div>
-            <div class='p05xy text-center' >
-                <dropdown ng-model="dev.screenSizesDropdown">
-                </dropdown>
-            </div>
-            <div class='p05xy text-center' >
-                <dropdown ng-model="dev.environmentsDropdown">
-                </dropdown>
-            </div>
-        </div>
+            </li>
+            <li>
+                <h2 class="txt-14 semibold m05bottom">Screen Sizes</h2>
+                <dropdown class="reverse hide-header height-32 dropdown-moxie" ng-model="dev.screenSizesDropdown"></dropdown>
+            </li>
+            <li>
+                <h2 class="txt-14 semibold m05bottom">Categories</h2>
+                <dropdown class="reverse hide-header height-32 dropdown-moxie" ng-model="dev.environmentsDropdown"></dropdown>
+            </li>
+        </ul>
     </div>
 </ion-view>
