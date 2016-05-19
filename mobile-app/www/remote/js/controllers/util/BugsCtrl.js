@@ -52,6 +52,15 @@ angular.module('uguru.util.controllers')
 
     $scope.saveBug = function(index){
       $scope.editMode();
+      console.log($scope.bugReport)
+      FileService.postS3JsonFile(JSON.stringify($scope.bugReport), null , 'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', post_callback)
+      function post_callback(first_name, resp) {
+          console.log('file successfully saved', resp);
+          LoadingService.hide();
+          $timeout(function() {
+            LoadingService.showSuccess('Saved!', 1000);
+          })
+        }
     }
     $scope.reviseBug = function(){
       $scope.selected_bug = angular.copy($scope.backup_bug)
