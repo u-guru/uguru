@@ -1,8 +1,8 @@
 <div class="full-xy">
 	<header class='bg-robin txt-center flex-center'>
 		<h1 class="txt-white weight-700 txt-28">Bug Detail</h1>
-		<span class="block p15x-p10y bg-white txt-moxie radius-2 caps txt-18 semibold" ng-if="selected_bug.fixedDate">Fixed {{selected_bug.fixedDate}}</span>
-		<a class='svg-white svg-36 svg-stroke-8 absolute top-0 right-0 close-icon m10xy' ng-click="closeBug()">
+		<span class="block p15x-p10y bg-white txt-moxie radius-2 caps txt-18 semibold" ng-if="selected_bug.fixedDate">Fixed {{selected_bug.fixedDate.toUTCString()}}</span>
+		<a class='svg-white svg-36 svg-stroke-8 absolute top-0 right-0 close-icon m10xy' ng-if='!isEditMode' ng-click="closeBug()">
 			<svg viewBox="0 0 100 100">
 				<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 			</svg>
@@ -134,9 +134,9 @@
 				</li>
 			</ul>
 			<div class="full-y bg-slate overflow-auto no-scrollbar">
-				<h1 class="p15x-p15top semibold">Impact Files :</h1>
-				<div class='tag-list'>
-					<ul>
+				<div class='tag-list' ng-if="false">
+					<h1 class="p15x-p15top semibold">Impact Files :</h1>
+					<ul >
 						<li ng-repeat="file in selected_bug.impact_file">
 							<a class="chip bg bg-robin">
 								<span ng-if='isEditMode'>&times;&nbsp;&nbsp;</span>
@@ -152,14 +152,14 @@
 				<h1 class="p15x-p15top semibold">Platforms :</h1>
 				<div class='tag-list'>
 					<ul>
-						<li ng-repeat="tag in selected_bug.platforms">
+						<li ng-repeat="platform in selected_bug.platforms">
 							<a class="chip bg bg-robin">
-								<span ng-if='isEditMode'>&times;&nbsp;&nbsp;</span>
-								<span>{{tag}}</span>
+								<span ng-if='isEditMode' ng-click='removePlatform($index)'>&times;&nbsp;&nbsp;</span>
+								<span>{{platform}}</span>
 							</a>
 						</li>
 						<li>
-							<input ng-if='isEditMode' tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
+							<input ng-if='isEditMode' tabindex="1" class='chip tag-add' ng-model='empty_platform' ng-blur='empty_platform = addNewPlatform(empty_platform)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9)&& (empty_platform = addNewPlatform(empty_platform))" placeholder="+ add a tag" size="{{empty_platform.length || 10}}">
 						</li>
 					</ul>
 				</div>
@@ -168,33 +168,47 @@
 				<div class='tag-list'>
 					<ul>
 						<li ng-repeat="tag in selected_bug.tags">
-							<a class="chip bg bg-robin">
-								<span ng-if='isEditMode'>&times;&nbsp;&nbsp;</span>
+							<a class="chip bg bg-robin" >
+								<span ng-if='isEditMode'ng-click='removeTag($index)'>&times;&nbsp;&nbsp;</span>
 								<span>{{tag}}</span>
 							</a>
 						</li>
 						<li>
-							<input ng-if='isEditMode' tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
+							<input ng-if='isEditMode' tabindex="1" class='chip tag-add' ng-model='empty_tag' ng-blur='empty_tag = addNewTag(empty_tag)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9)&& (empty_tag = addNewTag(empty_tag))" placeholder="+ add a tag" size="{{empty_tag.length || 10}}">
 						</li>
 					</ul>
 				</div>
+				<div class="error bg-crimson m15x p10y-p15x radius-2 txt-white semibold txt-18 hide" ng-class="{'show': error_msg}">{{error_msg}}</div>
 			</div>
 		</div>
 		<div class="flex-space-between">
 			<ul class="p15-grid flex">
 				<li>
-					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='isEditMode = !isEditMode'>Edit Bug</button>
+					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='editMode()' ng-if='!isEditMode'>Edit Bug</button>
 				</li>
-				<!-- <li><button ng-if='isEditMode' ng-click='isEditMode = !isEditMode'> Done Edit</button></li> -->
+
 				<li>
-					<button class="bg-moxie radius-2 height-36 txt-18">Fix Bug</button>
+					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='saveBug($index)' ng-if='isEditMode'>Save Bug</button>
 				</li>
+
+				<li>
+					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='reviseBug()' ng-if='isEditMode'>Undo Bug</button>
+				</li>
+				<li>
+					<button class="bg-moxie radius-2 height-36 txt-18" ng-if='!selected_bug.fixed' ng-click='fixBug()'>Fixed !</button>
+					<button class="bg-moxie radius-2 height-36 txt-18" ng-if='selected_bug.fixed' ng-click='unfixBug()'>JK! it is not fixed yet :P </button>
+
+				</li>
+
 			</ul>
 			<ul class="p15-grid flex">
-				<li ng-if='selected_bug.index != 0'>
+				<li ng-if='selected_bug.index != 0 && !isEditMode'>
 					<button class="bg-robin radius-2 height-36 txt-18" ng-click='preBug()'>Previous</button>
 				</li>
-				<li ng-if='selected_bug.index < bugs.length-1'>
+				<li>
+					<button class="bg-robin radius-2 height-36 txt-18" ng-click='saveBug($index);closeBug();'>Save & Close</button>
+				</li>
+				<li ng-if='selected_bug.index < bugs.length-1 && !isEditMode'>
 					<button class="bg-robin radius-2 height-36 txt-18" ng-click='nextBug()'>Next</button>
 				</li>
 			</ul>

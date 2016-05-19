@@ -41,7 +41,8 @@ angular.module('uguru.util.controllers')
   'FileService',
   'LoadingService',
   'CTAService',
-  function($scope, $state, $timeout, FileService, LoadingService ,CTAService) {
+  '$localstorage',
+  function($scope, $state, $timeout, FileService, LoadingService,CTAService,$localstorage) {
 
     $scope.openBugList=function(section){
         $scope.bugs = section.bugs
@@ -49,6 +50,17 @@ angular.module('uguru.util.controllers')
         $scope.name = section.name
     }
 
+    $scope.saveBug = function(index){
+      $scope.editMode();
+    }
+    $scope.reviseBug = function(){
+      $scope.selected_bug = angular.copy($scope.backup_bug)
+      $scope.editMode();
+    }
+    $scope.editMode = function(){
+      $scope.isEditMode = !$scope.isEditMode;
+
+    }
     $scope.order = function() {
       $scope.reverse = !$scope.reverse;
     }
@@ -62,16 +74,29 @@ angular.module('uguru.util.controllers')
       var index = $scope.selected_bug.index + 1
       $scope.selected_bug = $scope.bugs[index]
       $scope.selected_bug.index = index
+      $scope.backup_bug = angular.copy($scope.selected_bug)
+
     }
+    $scope.fixBug = function(){
+      $scope.selected_bug.fixed = true
+      $scope.selected_bug.fixedDate = new Date()
+    }
+
+    $scope.unfixBug = function(){
+      $scope.selected_bug.fixed = false
+      $scope.selected_bug.fixedDate = null
+    }
+
     $scope.preBug = function(){
       var index = $scope.selected_bug.index - 1
       $scope.selected_bug = $scope.bugs[index]
       $scope.selected_bug.index = index
+      $scope.backup_bug = angular.copy($scope.selected_bug)
     }
-
     $scope.initAndLaunchBugCTA = function($event,bug,index){
       var targetElem = $event.target;
       $scope.selected_bug = bug;
+      $scope.backup_bug = angular.copy(bug);
       $scope.selected_bug.index = index
       $scope.lastCTABoxTargetElem = targetElem;
       $scope.lastCTABoxTargetElem.id = 'cta-box-selected-bug';
@@ -84,13 +109,58 @@ angular.module('uguru.util.controllers')
         modalElem && modalElem.classList.add('show');
       })
     }
+
+    $scope.removePlatform = function(index){
+      if ($scope.selected_bug.platforms && $scope.selected_bug.platforms.length) {
+        $scope.selected_bug.platforms.splice(index, 1);
+      }
+    }
+    $scope.addNewPlatform = function(name){
+      platlist = $scope.selected_bug.platforms
+      if (name) {
+        if ($scope.advanceSearch.platforms.available_list.indexOf(name) < 0){
+          return setErrorMsg('We do not support this platforms: '+name)
+        }
+        if (platlist.indexOf(name) > -1){
+          return setErrorMsg('This platform is already exist')
+        }
+        $scope.selected_bug.platforms.push(name);
+      }
+      return ''
+    }
+
+    $scope.removeTag = function(index){
+      if ($scope.selected_bug.tags && $scope.selected_bug.tags.length) {
+        $scope.selected_bug.tags.splice(index, 1);
+      }
+    }
+    $scope.addNewTag = function(newTag){
+      taglist = $scope.selected_bug.tags
+      if (newTag) {
+        if (taglist.indexOf(newTag) > -1){
+          return setErrorMsg('Repeating Tag')
+        }
+        $scope.selected_bug.tags.push(newTag);
+      }
+      return ''
+    }
+    function setErrorMsg(desc){
+      $scope.error_msg = desc;
+      $timeout(function() {
+        $scope.error_msg = '';
+      }, 2500);
+      return ''
+    }
     function addPlatform(content){
       $scope.advanceSearch.platforms.list.push(content);
+      $localstorage.setObject('advanceSearch', $scope.advanceSearch);
     }
     function removePlatform(content){
       if ($scope.advanceSearch.platforms.list && $scope.advanceSearch.platforms.list.length) {
         var index = $scope.advanceSearch.platforms.list.indexOf(content)
         $scope.advanceSearch.platforms.list.splice(index, 1);
+        $localstorage.setObject('advanceSearch', $scope.advanceSearch);
+
       }
     }
 
@@ -108,18 +178,22 @@ angular.module('uguru.util.controllers')
             
           $scope.advanceSearch.tags.list.push(content);
           $scope.advanceSearch.tags.empty_tag.content = '';
+          console.log($scope.advanceSearch)
+          $localstorage.setObject('advanceSearch', $scope.advanceSearch);
         }
 
     }
     function removeTag(index){
       if ($scope.advanceSearch.tags.list && $scope.advanceSearch.tags.list.length) {
         $scope.advanceSearch.tags.list.splice(index, 1);
+        $localstorage.setObject('advanceSearch', $scope.advanceSearch);
       }
     }
 
     function intData(){
         $scope.bugs = [];
         $scope.help = {};
+        $scope.isEditMode = false;
         $scope.availableOptions = [ 
                                      {id: '1', name: 'All Bugs'},
                                      {id: '2', name: 'Prioritized Bugs'},
@@ -129,9 +203,6 @@ angular.module('uguru.util.controllers')
             'selectedIndex': 0,
             'options': ['All Bugs','Prioritized Bugs','Recently Complete']
         } 
-
-
-        $scope.isEditMode = false
         $scope.reverse = true;
         $scope.selectOption = $scope.availableOptions[0]
         $scope.advanceSearch ={
@@ -139,6 +210,12 @@ angular.module('uguru.util.controllers')
              'tags': {'list':[], 'add': addTag, 'remove':removeTag, 'err_msg':'', 'empty_tag': {'placeholder':"+   add a tag", 'content': ''}},
         }
 
+        if ($localstorage.getObject('advanceSearch')!='[]'){
+          var cache = $localstorage.getObject('advanceSearch');
+          $scope.advanceSearch.platforms.list = cache.platforms.list
+          $scope.advanceSearch.tags.list = cache.tags.list
+          console.log('Reset',$scope.advanceSearch)
+        }
     }
 
     function loadUpdatedBugsJsonFile(scope) {
@@ -171,7 +248,7 @@ angular.module('uguru.util.controllers')
     }, 1000);
     window.onbeforeunload = function(event)
       { 
-        if(!$scope.isEditMode){
+        if($scope.isEditMode){
           event.returnValue = "All file won't be saved without click save button.\n";
         }
           
