@@ -6,7 +6,8 @@ angular.module('uguru.util.controllers')
   '$timeout',
   '$localstorage',
   '$window',
-  function($scope, $state, $timeout, $localstorage, $window) {
+  'FileService',
+  function($scope, $state, $timeout, $localstorage, $window,FileService) {
     //spec service get all
     var defaultRoutes = {
       local: 'http://localhost:8100/#/',
@@ -29,7 +30,6 @@ angular.module('uguru.util.controllers')
         bugs: getBugInfo('calendar')
       }
     ];
-
     function launchSeparateWindowFunc(url) {
       return function() {
         $window.open(url, '_blank');
@@ -47,6 +47,17 @@ angular.module('uguru.util.controllers')
 
     function getSpec(wkflow_name) {
       // codepenSpecUrl.replace('.js','') + '/?editors=0010'
+      FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json', callbackFunc);
+      function callbackFunc(name, resp) {
+        console.log("splash",resp)
+        LoadingService.hide()
+        $timeout(function() {
+         LoadingService.showSuccess(resp.length + ' Spec loaded', 1000) ;
+        })
+      }
+
+
+
       return {launch: wkflow_name, progress:'78%'};
     }
 
