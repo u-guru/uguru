@@ -7,35 +7,102 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$window',
   'FileService',
-  function($scope, $state, $timeout, $localstorage, $window,FileService) {
+  'CTAService',
+  function($scope, $state, $timeout, $localstorage, $window,FileService,CTAService) {
     //spec service get all
     var defaultRoutes = {
       local: 'http://localhost:8100/#/',
       staging: 'https://uguru-rest-test.herokuapp.com/#/'
     }
+    $scope.closePlatform = function(){
+      element = document.querySelector('#cta-modal-platforms')
+      className = element.className.replace('show','')
+      element.className = className;
+    }
+    $scope.openPlatforms = function($event,tests,index){
+      var targetElem = $event.target;
+      $scope.tests = tests;
+      $scope.tests.index = index
+      // $scope.backup_bug = angular.copy(bug);
+      $scope.lastCTABoxTargetElem = targetElem;
+      $scope.lastCTABoxTargetElem.id = 'cta-box-platforms';
+      CTAService.initSingleCTA('#' + targetElem.id, '#main-state-content');
 
-    $scope.user_workflows = [
-      {
-        title: 'User selects a splash tag',
-        controller: 'SplashController',
-        routes: getRoutes('splash', 'splash.html'),
-        spec: getSpec('splash'),
-        bugs: getBugInfo('splash')
-      },
-      {
-        title: 'General Calendar',
-        controller: 'CalendarController',
-        routes: getRoutes('calendar', 'calendar.html', 'controllers/util/CalendarCtrl.js'),
-        spec: getSpec('calendar'),
-        bugs: getBugInfo('calendar')
-      }
-    ];
+      $timeout(function() {
+        var targetElem = document.querySelector('#cta-box-platforms');
+        var modalElem = document.querySelector('#cta-modal-platforms');
+        modalElem && modalElem.classList.add('show');
+      })
+    }
+
+    FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json', callbackFunc)
+    $scope.user_workflows = []
+    function callbackFunc(name, resp) {
+      $scope.user_workflows.push(resp)
+      LoadingService.hide()
+      $timeout(function() {
+       LoadingService.showSuccess(resp.length + ' Spec loaded', 1000) ;
+      })
+    }
+    setTimeout(function() {
+      console.log('workflows: ',$scope.user_workflows)
+    }, 2000);
+
+
+
+
+    // $scope.user_workflows = [
+    //   {
+    //     title: getWorkflowTitle('splash'),
+    //     controller: 'SplashController',
+    //     routes: getRoutes('splash', 'splash.html'),
+    //     spec: getSpec('splash'),
+    //     steps: getSteps('splash'),
+    //     bugs: getBugInfo('splash')
+    //   }
+      // },
+      // {
+      //   title: 'User selects a splash tag',
+      //   controller: 'SplashController',
+      //   routes: getRoutes('splash', 'splash.html'),
+      //   spec: getSpec('splash'),
+      //   // layout: getLayout('splash'),
+      //   bugs: getBugInfo('splash')
+      // },
+      // {
+      //   title: 'General Calendar',
+      //   controller: 'CalendarController',
+      //   routes: getRoutes('calendar', 'calendar.html', 'controllers/util/CalendarCtrl.js'),
+      //   spec: getSpec('calendar'),
+      //   // layout: getLayout('calendar'),
+      //   bugs: getBugInfo('calendar')
+      // }
+    // ];
+
+    function getSteps(name){
+      return 'hi'
+    }
+
     function launchSeparateWindowFunc(url) {
       return function() {
         $window.open(url, '_blank');
       }
     }
+    function getLayout(wkflow_name){
+      var result
+      
+      FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json', callbackFunc)
+      function callbackFunc(name, resp) {
+        result = resp
+        LoadingService.hide()
+        $timeout(function() {
+         LoadingService.showSuccess(resp.length + ' Spec loaded', 1000) ;
+        })
+      }
+      return{
 
+      }
+    }
     function getBugInfo(wkflow_name) {
       return {
         count: 1,
@@ -47,17 +114,6 @@ angular.module('uguru.util.controllers')
 
     function getSpec(wkflow_name) {
       // codepenSpecUrl.replace('.js','') + '/?editors=0010'
-      FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json', callbackFunc);
-      function callbackFunc(name, resp) {
-        console.log("splash",resp)
-        LoadingService.hide()
-        $timeout(function() {
-         LoadingService.showSuccess(resp.length + ' Spec loaded', 1000) ;
-        })
-      }
-
-
-
       return {launch: wkflow_name, progress:'78%'};
     }
 

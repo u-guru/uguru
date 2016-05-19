@@ -1,11 +1,14 @@
 <header class="bg-slate">
     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Action Items</h1>
 </header>
-<div class="overflow-auto no-scrollbar" style="height: calc(100% - 48px)">
+<ion-pane id='cta-modal-platforms' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10' ng-include="img_base + BASE + 'templates/admin/keys.action.platforms.html'"></ion-pane>
+<div id = 'main-state-content' class="overflow-auto no-scrollbar" style="height: calc(100% - 48px)">
     <ul class="p15-grid">
+
+
         <li ng-repeat='flow in user_workflows'>
             <div class="bg-white-10p radius-2 flex-space-between-center-vertical">
-                <h2 class="p15xy txt-18 semibold">{{flow.title}}</h2>
+                <h2 class="p15xy txt-18 semibold">{{flow.name}}</h2>
                 <ul class="flex p15-grid">
                     <li>
                         <button class="bg-moxie height-36 txt-18 radius-2" ng-click='flow.routes.staging.launch()'>Master</button>
@@ -26,14 +29,35 @@
                     <li>
                         <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='flow.spec.progress'>78%</span>
                     </li>
-                    <li>
+                  <!--   <li>
                         <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='flow.spec.progress'>Phone</span>
-                    </li>
+                    </li> -->
                     <li>
                         <span class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold" ng-click='flow.bugs.count'>3</span>
                     </li>
                 </ul>
             </div>
+            <!-- Expend the steps -->
+            <ul ng-if='true'>
+                <li ng-repeat='state in flow.scene_states'>
+                <h2 class="p15xy txt-18 semibold">{{state.name}}</h2>
+                    <ul class="flex p15-grid">
+                        <li>
+                            <button class="bg-lake height-36 txt-18 radius-2" ng-click='flow.spec.launch()'>Spec</button>
+                        </li>
+                        <li>
+                            <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='flow.spec.progress'>78%</span>
+                        </li>
+                        <li>
+                            <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='openPlatforms($event,state.tests,$index)'>Phone</span>
+                        </li>
+                        <li>
+                            <span class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold" ng-click='flow.bugs.count'>3</span>
+                        </li>
+                    </ul> 
+                </li>
+            </ul>
         </li>
     </ul>
 </div>
+
