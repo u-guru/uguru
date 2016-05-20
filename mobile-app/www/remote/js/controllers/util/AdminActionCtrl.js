@@ -10,7 +10,7 @@ angular.module('uguru.util.controllers')
     //spec service get all
     var defaultRoutes = {
       local: 'http://localhost:8100/#/',
-      staging: 'https://uguru-rest-test.herokuapp.com/#/'
+      staging: 'https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/'
     }
 
     $scope.user_workflows = [
@@ -114,7 +114,7 @@ angular.module('uguru.util.controllers')
         if (window.location.href.split(':8100').length > 1) {
           requestUrl = flow.routes.local.url.split('#/')[0] + 'remote/templates/' + flow.routes.codepen.template_url;
         } else {
-          requestUrl = flow.routes.staging.url + '/static/remote/templates/' + flow.routes.codepen.template_url;
+          requestUrl = flow.routes.staging.url + 'static/remote/templates/' + flow.routes.codepen.template_url;
         }
         loadHTMLSpec(flow, requestUrl, cb);
       }
