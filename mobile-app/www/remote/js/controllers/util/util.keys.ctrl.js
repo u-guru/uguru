@@ -26,7 +26,10 @@ angular.module('uguru.util.controllers')
 			$scope.adminUser.profile_url = profile_url;
 
 		})
+		$scope.$on('$ionicView.afterEnter',function(){
+			$scope.$broadcast('BugLoadEvent','CHECK')
 
+		})
 		var defaults = {
 			KF_COUNT: 100,
 			DURATION: 1,

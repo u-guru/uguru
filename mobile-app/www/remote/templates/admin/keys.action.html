@@ -7,6 +7,9 @@
 
 
         <li ng-repeat='flow in user_workflows'>
+            <div>
+                <button class="bg-moxie height-36 txt-18 radius-2" ng-click='flow.isExpand = !flow.isExpand'>Expand(+){{flow.scene_states.length}} states</button>
+            </div>
             <div class="bg-white-10p radius-2 flex-space-between-center-vertical">
                 <h2 class="p15xy txt-18 semibold">{{flow.name}}</h2>
                 <ul class="flex p15-grid">
@@ -38,16 +41,15 @@
                 </ul>
             </div>
             <!-- Expend the steps -->
-            <ul ng-if='true'>
+            <!-- <ul ng-if="isStateExpand('')"> -->
+            <ul ng-if ='flow.isExpand'>
                 <li ng-repeat='state in flow.scene_states'>
                 <h2 class="p15xy txt-18 semibold">{{state.name}}</h2>
                     <ul class="flex p15-grid">
                         <li>
                             <button class="bg-lake height-36 txt-18 radius-2" ng-click='flow.spec.launch()'>Spec</button>
                         </li>
-                        <li>
-                            <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='flow.spec.progress'>78%</span>
-                        </li>
+
                         <li>
                             <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='openPlatforms($event,state.tests,$index)'>Phone</span>
                         </li>

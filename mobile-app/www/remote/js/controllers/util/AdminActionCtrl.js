@@ -35,50 +35,65 @@ angular.module('uguru.util.controllers')
       })
     }
 
-    FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json', callbackFunc)
-    $scope.user_workflows = []
-    function callbackFunc(name, resp) {
-      $scope.user_workflows.push(resp)
-      LoadingService.hide()
-      $timeout(function() {
-       LoadingService.showSuccess(resp.length + ' Spec loaded', 1000) ;
-      })
-    }
-    setTimeout(function() {
-      console.log('workflows: ',$scope.user_workflows)
-    }, 2000);
-
+    $timeout(function() {
+      $scope.user_workflows = []
+      loadUpdatedWorkflowFile($scope);
+    })
+ 
 
 
 
     // $scope.user_workflows = [
     //   {
-    //     title: getWorkflowTitle('splash'),
+    //     title: 'User selects a splash tag',
     //     controller: 'SplashController',
     //     routes: getRoutes('splash', 'splash.html'),
     //     spec: getSpec('splash'),
-    //     steps: getSteps('splash'),
+    //     // layout: getLayout('splash'),
     //     bugs: getBugInfo('splash')
+    //   },
+    //   {
+    //     title: 'General Calendar',
+    //     controller: 'CalendarController',
+    //     routes: getRoutes('calendar', 'calendar.html', 'controllers/util/CalendarCtrl.js'),
+    //     spec: getSpec('calendar'),
+    //     // layout: getLayout('calendar'),
+    //     bugs: getBugInfo('calendar')
     //   }
-      // },
-      // {
-      //   title: 'User selects a splash tag',
-      //   controller: 'SplashController',
-      //   routes: getRoutes('splash', 'splash.html'),
-      //   spec: getSpec('splash'),
-      //   // layout: getLayout('splash'),
-      //   bugs: getBugInfo('splash')
-      // },
-      // {
-      //   title: 'General Calendar',
-      //   controller: 'CalendarController',
-      //   routes: getRoutes('calendar', 'calendar.html', 'controllers/util/CalendarCtrl.js'),
-      //   spec: getSpec('calendar'),
-      //   // layout: getLayout('calendar'),
-      //   bugs: getBugInfo('calendar')
-      // }
     // ];
 
+    setTimeout(function() {
+      console.log('workflows: ',$scope.user_workflows)
+      initWorkflows($scope.user_workflows)
+      // console.log('workflows: ',$scope.user_workflows)
+
+    },2000)
+
+    $scope.$on('BugLoadEvent', function(e, d) {
+     console.log('CHECK CHECK ');
+      alert("WTF")
+    });
+
+
+    function initWorkflows(workflows){
+        for (var i = 0 ; i< workflows.length ;++ i){
+          var name = workflows[i].name
+          workflows[i].routes = getRoutes(workflows[i].url,workflows[i].file_name)
+          workflows[i].spec = getSpec(name)
+          workflows[i].bugs = getBugInfo(name)
+        }
+    }
+    function loadUpdatedWorkflowFile($scope){
+      FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json', callbackFunc)
+      function callbackFunc(name, resp) {
+        resp.isExpand = false
+        $scope.user_workflows.push(resp)
+        LoadingService.hide()
+        $timeout(function() {
+         LoadingService.showSuccess(resp.length + ' Spec loaded', 1000) ;
+        })
+      }
+    }
     function getSteps(name){
       return 'hi'
     }
@@ -88,21 +103,7 @@ angular.module('uguru.util.controllers')
         $window.open(url, '_blank');
       }
     }
-    function getLayout(wkflow_name){
-      var result
-      
-      FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json', callbackFunc)
-      function callbackFunc(name, resp) {
-        result = resp
-        LoadingService.hide()
-        $timeout(function() {
-         LoadingService.showSuccess(resp.length + ' Spec loaded', 1000) ;
-        })
-      }
-      return{
 
-      }
-    }
     function getBugInfo(wkflow_name) {
       return {
         count: 1,
