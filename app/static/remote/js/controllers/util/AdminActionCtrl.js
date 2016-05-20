@@ -10,7 +10,7 @@ angular.module('uguru.util.controllers')
     //spec service get all
     var defaultRoutes = {
       local: 'http://localhost:8100/#/',
-      staging: 'https://uguru-rest-test.herokuapp.com/#/'
+      staging: 'https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/'
     }
 
     $scope.user_workflows = [
@@ -27,7 +27,15 @@ angular.module('uguru.util.controllers')
         routes: getRoutes('calendar', 'calendar.html', 'controllers/util/CalendarCtrl.js'),
         spec: getSpec('calendar'),
         bugs: getBugInfo('calendar')
+      },
+      {
+        title: 'Jeselle Portfolio',
+        controller: 'JeselleController',
+        routes: getRoutes('jeselle', 'jeselle.html', 'controllers/util/JeselleController.js'),
+        spec: getSpec('calendar'),
+        bugs: getBugInfo('calendar')
       }
+
     ];
 
     function launchSeparateWindowFunc(url) {
@@ -52,14 +60,13 @@ angular.module('uguru.util.controllers')
 
     function getRoutes(param, template_url, ctrl_url) {
       var localUrl = defaultRoutes.local + param;
-      var stagingUrl = defaultRoutes.staging + param;
+      var stagingUrl = defaultRoutes.staging;
       return {
         local: {url: localUrl, launch: launchSeparateWindowFunc(localUrl)},
         staging: {url: stagingUrl, launch: launchSeparateWindowFunc(stagingUrl)},
         codepen: {launch: launchCodepenFunc(), template_url: template_url, ctrl_url:ctrl_url}
       }
     }
-
     function launchCodepenFunc() {
       return function(flow, $event) {
         console.log('flow', flow);
@@ -80,7 +87,7 @@ angular.module('uguru.util.controllers')
             js_pre_processor      : "none",
             html_classes          : null,
             head                  : "<meta name='viewport' content='width=device-width'>",
-            css_external          : "https://uguru-rest-test.herokuapp.com/static/remote/css/app_version.css",
+            css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/css/app_version.css",
             js_external           : '',
             css_pre_processor_lib : null,
             js_modernizr : null,
@@ -107,7 +114,7 @@ angular.module('uguru.util.controllers')
         if (window.location.href.split(':8100').length > 1) {
           requestUrl = flow.routes.local.url.split('#/')[0] + 'remote/templates/' + flow.routes.codepen.template_url;
         } else {
-          requestUrl = flow.routes.local.staging.split('#/')[0] + '/static/remote/templates/' + flow.routes.codepen.template_url;
+          requestUrl = flow.routes.staging.url.split('#/')[0] + 'static/remote/templates/' + flow.routes.codepen.template_url;
         }
         loadHTMLSpec(flow, requestUrl, cb);
       }
@@ -131,7 +138,7 @@ angular.module('uguru.util.controllers')
       }
 
       function wrapMinUguruHtml(response_html, relative_ctrl_url) {
-        return '<body ng-app="uguru" animation="slide-left-right-ios7"><script src="https://uguru-rest-test.herokuapp.com/static/remote/js/u.base.js"></script><script src="https://uguru-rest-test.herokuapp.com/static/remote/js/main.min.js"></script><script src="https://uguru-rest-test.herokuapp.com/static/remote/js/' + relative_ctrl_url + '"></script><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + response_html + '</div></script></ui-view></body>'
+        return '<body ng-app="uguru" animation="slide-left-right-ios7"><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/js/u.base.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/js/main.min.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/js/' + relative_ctrl_url + '"></script><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + response_html + '</div></script></ui-view></body>'
       }
 
     }

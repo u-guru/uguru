@@ -195,6 +195,9 @@ gulp.task('styles', function() {
   var cssStream26 = gulp.src('www/remote/css/sass/samir.css');
   var cssStream27 = gulp.src('www/remote/css/sass/essay.css');
   var cssStream28 = gulp.src('www/remote/css/sass/angular-fx.css');
+  var cssStream29 = gulp.src('www/remote/css/sass/gabrie/style.css');
+  var cssStream30 = gulp.src('www/remote/css/sass/jeselle/utility.css');
+  var cssStream31 = gulp.src('www/remote/css/sass/jeselle/style.css');
 
 
 
@@ -203,7 +206,8 @@ gulp.task('styles', function() {
   return streamqueue({ objectMode: true }, cssStream1, cssStream2, cssStream3,
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8, cssStream9, cssStream10,
     cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
-    cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26, cssStream27, cssStream28).pipe(plugins.concat('main.css'))
+    cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26,
+    cssStream27, cssStream28, cssStream29, cssStream30, cssStream31).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS({debug: true}, function(details) {
             console.log("DEBUG")
