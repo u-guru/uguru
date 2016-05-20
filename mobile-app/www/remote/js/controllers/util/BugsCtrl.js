@@ -239,14 +239,10 @@ angular.module('uguru.util.controllers')
         LoadingService.hide()
         $timeout(function() {
          LoadingService.showSuccess(resp.length + ' bugs loaded', 1000) ;
-          
         })
       }
     }
-    $scope.$on('BugLoadEvent', function(e, d) {
-         console.log('CHECK CHECK ');
-          alert("WTF")
-        });
+
     // only need this for standalone view, since this function is not relevant to the view rendering, you're better off just showing a loader until it's complete
     // $scope.$on('$ionicView.beforeEnter', function() {
 

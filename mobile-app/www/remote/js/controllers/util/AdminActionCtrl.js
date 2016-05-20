@@ -66,14 +66,8 @@ angular.module('uguru.util.controllers')
       console.log('workflows: ',$scope.user_workflows)
       initWorkflows($scope.user_workflows)
       // console.log('workflows: ',$scope.user_workflows)
-
+      
     },2000)
-
-    $scope.$on('BugLoadEvent', function(e, d) {
-     console.log('CHECK CHECK ');
-      alert("WTF")
-    });
-
 
     function initWorkflows(workflows){
         for (var i = 0 ; i< workflows.length ;++ i){
@@ -93,6 +87,7 @@ angular.module('uguru.util.controllers')
          LoadingService.showSuccess(resp.length + ' Spec loaded', 1000) ;
         })
       }
+      
     }
     function getSteps(name){
       return 'hi'
