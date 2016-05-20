@@ -31,7 +31,7 @@ angular.module('uguru.util.controllers')
       {
         title: 'Jeselle Portfolio',
         controller: 'JeselleController',
-        routes: getRoutes('jeselle', 'jeselle.html', 'controllers/util/JeselleController.js'),
+        routes: getRoutes('jeselle', 'jeselle/index.html', 'controllers/util/JeselleController.js'),
         spec: getSpec('calendar'),
         bugs: getBugInfo('calendar')
       }
@@ -71,7 +71,7 @@ angular.module('uguru.util.controllers')
       return function(flow, $event) {
         console.log('flow', flow);
           flow.codepenData = {
-            title                 : "Uguru Calendar",
+            title                 : flow.title,
             description           : "Most updated version",
             private               : true, // true || false
             tags                  : [], // an array of strings
