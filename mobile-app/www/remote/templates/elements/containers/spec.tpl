@@ -1,7 +1,6 @@
 
-<div class='fixed full-xy'>
-    <div id="dev-spec" class='top-0 left-0 absolute full-x bg-smoke animated slideInDown' style='height: calc(100% - 83px);' ng-show="spec.toggleSpec">
-
+<div class='fixed full-xy z-index--1000' ng-class="{'z-index-2000': spec.toggleSpec}" ng-show="spec.toggleSpec">
+    <div id="dev-spec" class='top-0 left-0 absolute full-x bg-smoke animated slideInDown' style='height: calc(100% - 83px);'>
         <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">
             <div class="bg-slate txt-center">
                 <h1 class='bg-cobalt-25p p15xy txt-28 weight-600 height-64 flex-center'><span class="weight-900">{{spec.title}}:&nbsp;</span> {{use_case.title}} </h1>
@@ -46,7 +45,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class='bg-slate-10p txt-slate'>
+                <li>
                     <div class="bg-lake txt-white txt-center">
                         <h1 class='txt-20 semibold p10xy'>{{use_case.columns.icebox.title}}</h1>
                     </div>
