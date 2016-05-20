@@ -598,7 +598,17 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   }).
   state('root.jeselle', {
         url: '/jeselle',
-        templateUrl: BASE + 'templates/jeselle.html',
+        templateUrl: BASE + 'templates/jeselle/index.html',
+        controller: 'JeselleController'
+  }).
+  state('root.gabrie', {
+        url: '/gabrie',
+        templateUrl: BASE + 'templates/gabrie/index.html',
+        controller: 'JeselleController'
+  }).
+  state('root.gabrie-project', {
+        url: '/gabrie/project',
+        templateUrl: BASE + 'templates/gabrie/project.html',
         controller: 'JeselleController'
   }).
   state('root.getting-started', {

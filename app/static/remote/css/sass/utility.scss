@@ -601,6 +601,43 @@ input, fieldset {
 .show-opacity-impt {
 	@include opacity-important(1);
 }
+.opacity-10p {
+	@include opacity(0.1);
+}
+.opacity-20p {
+	@include opacity(0.2);
+}
+.opacity-25p {
+	@include opacity(0.25);
+}
+.opacity-30p {
+	@include opacity(0.3);
+}
+.opacity-40p {
+	@include opacity(0.4);
+}
+.opacity-50p {
+	@include opacity(0.5);
+}
+.opacity-60p {
+	@include opacity(0.6);
+}
+.opacity-70p {
+	@include opacity(0.7);
+}
+.opacity-75p {
+	@include opacity(0.75);
+}
+.opacity-80p {
+	@include opacity(0.8);
+}
+.opacity-90p {
+	@include opacity(0.9);
+}
+.opacity-100p {
+	@include opacity(1);
+}
+
 .absolute {
 	position: absolute!important;
 }
@@ -1590,7 +1627,7 @@ input, fieldset {
 		background: rgba($slate, .9);
 	}
 	&[class*="-important"] {
-		background: $taupe !important;
+		background: $slate !important;
 	}
 }
 [class*="bg-taupe"] {
