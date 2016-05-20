@@ -90,7 +90,11 @@ angular.module('uguru.util.controllers')
     }
     $scope.fixBug = function(){
       $scope.selected_bug.fixed = true
-      $scope.selected_bug.fixedDate = new Date()
+      var today = new Date()
+      $scope.selected_bug.fixedDate = {
+          'utc' : today.toUTCString(),
+          'time': today.getTime()
+      }
     }
 
     $scope.unfixBug = function(){

@@ -1,10 +1,9 @@
 <header class="bg-slate">
-    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Action Items</h1>
+    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Action Items     {{bugs.bugReport}}</h1>
 </header>
 <ion-pane id='cta-modal-platforms' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10' ng-include="img_base + BASE + 'templates/admin/keys.action.platforms.html'"></ion-pane>
 <div id = 'main-state-content' class="overflow-auto no-scrollbar" style="height: calc(100% - 48px)">
     <ul class="p15-grid">
-
 
         <li ng-repeat='flow in user_workflows'>
             <div>

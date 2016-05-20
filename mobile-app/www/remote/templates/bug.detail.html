@@ -1,7 +1,7 @@
 <div class="full-xy">
 	<header class='bg-robin txt-center flex-center'>
 		<h1 class="txt-white weight-700 txt-28">Bug Detail</h1>
-		<span class="block p15x-p10y bg-white txt-moxie radius-2 caps txt-18 semibold" ng-if="selected_bug.fixedDate">Fixed {{selected_bug.fixedDate.toUTCString()}}</span>
+		<span class="block p15x-p10y bg-white txt-moxie radius-2 caps txt-18 semibold" ng-if="selected_bug.fixedDate">Fixed {{selected_bug.fixedDate.utc}}</span>
 		<a class='svg-white svg-36 svg-stroke-8 absolute top-0 right-0 close-icon m10xy' ng-if='!isEditMode' ng-click="closeBug()">
 			<svg viewBox="0 0 100 100">
 				<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
