@@ -45,6 +45,10 @@
   box-sizing: border-box;
 }
 
+#jeselle * {
+  backface-visibility: visible !important;
+}
+
 #jeselle #jeselle-top {
   display: flex;
   align-items: center;
@@ -402,6 +406,16 @@
 
 #jeselle #jeselle-home .jeselle-home-container .jeselle-home-thumbs > li .jeselle-project {
   overflow: auto;
+}
+
+#jeselle #jeselle-home .jeselle-home-container .jeselle-home-thumbs > li .jeselle-project header h1 {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+}
+
+#jeselle #jeselle-home .jeselle-home-container .jeselle-home-thumbs > li.active .jeselle-project header h1 {
+  width: 100%;
 }
 
 #jeselle #jeselle-home .jeselle-home-container .jeselle-home-thumbs > li.active .jeselle-project header h2 {
