@@ -32,8 +32,8 @@ angular.module('uguru.util.controllers')
         title: 'Jeselle Portfolio',
         controller: 'JeselleController',
         routes: getRoutes('jeselle', 'jeselle.html', 'controllers/util/JeselleController.js'),
-        spec: getSpec('calendar'),
-        bugs: getBugInfo('calendar')
+        spec: getSpec('jeselle'),
+        bugs: getBugInfo('jeselle')
       }
 
     ];
