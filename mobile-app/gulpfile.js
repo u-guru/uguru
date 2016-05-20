@@ -207,7 +207,7 @@ gulp.task('styles', function() {
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8, cssStream9, cssStream10,
     cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
     cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26,
-    cssStream27, cssStream28, cssStream29, cssStream30).pipe(plugins.concat('main.css'))
+    cssStream27, cssStream28, cssStream29, cssStream30, cssStream31).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS({debug: true}, function(details) {
             console.log("DEBUG")
