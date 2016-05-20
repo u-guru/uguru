@@ -19,6 +19,5 @@ function JeselleController($scope, $timeout, $state, KeyboardService, SpecServic
     function pauseTimer() {
 
     };
-
     SpecService.initSpec($scope, '#gabrie', 'gabrie', 'gabrie/index.html', 'controllers/util/GabrielleCtrl.js');
 }
