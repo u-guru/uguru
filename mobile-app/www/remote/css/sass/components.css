@@ -13636,6 +13636,58 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   font-size: 16px;
 }
 
+.checkbox-shamrock input:checked + span {
+  background: #69B3A5 !important;
+}
+
+.checkbox-robin input:checked + span {
+  background: #2BB3B8 !important;
+}
+
+.checkbox-lake input:checked + span {
+  background: #50A5DD !important;
+}
+
+.checkbox-moxie input:checked + span {
+  background: #43cb9d !important;
+}
+
+.checkbox-crimson input:checked + span {
+  background: #d3242c !important;
+}
+
+.checkbox-auburn input:checked + span, .checkbox-delivery input:checked + span {
+  background: #F04F54 !important;
+}
+
+.checkbox-orange input:checked + span, .checkbox-freelancing input:checked + span {
+  background: #E5753C !important;
+}
+
+.checkbox-gold input:checked + span, .checkbox-baking input:checked + span {
+  background: #F6C64E !important;
+}
+
+.checkbox-moola input:checked + span, .checkbox-photography input:checked + span {
+  background: #81B566 !important;
+}
+
+.checkbox-azure input:checked + span, .checkbox-tech input:checked + span {
+  background: #55A4B7 !important;
+}
+
+.checkbox-cobalt input:checked + span, .checkbox-household input:checked + span {
+  background: #7872e3 !important;
+}
+
+.checkbox-eggplant input:checked + span, .checkbox-athletic input:checked + span {
+  background: #9A5BC5 !important;
+}
+
+.checkbox-cerise input:checked + span, .checkbox-academic input:checked + span {
+  background: #e6389b !important;
+}
+
 .radio-container div span {
   border-radius: 1000px;
   width: 24px;
@@ -13654,6 +13706,62 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 
 .radio-container div input:checked + span svg {
   background: #69B3A5;
+}
+
+.radio-shamrock input:checked + span svg {
+  background: #69B3A5 !important;
+}
+
+.radio-robin input:checked + span svg {
+  background: #2BB3B8 !important;
+}
+
+.radio-lake input:checked + span svg {
+  background: #50A5DD !important;
+}
+
+.radio-moxie input:checked + span svg {
+  background: #43cb9d !important;
+}
+
+.radio-crimson input:checked + span svg {
+  background: #d3242c !important;
+}
+
+.radio-auburn input:checked + span svg, .radio-delivery input:checked + span svg {
+  background: #F04F54 !important;
+}
+
+.radio-orange input:checked + span svg, .radio-freelancing input:checked + span svg {
+  background: #E5753C !important;
+}
+
+.radio-gold input:checked + span svg, .radio-baking input:checked + span svg {
+  background: #F6C64E !important;
+}
+
+.radio-moola input:checked + span svg, .radio-photography input:checked + span svg {
+  background: #81B566 !important;
+}
+
+.radio-azure input:checked + span svg, .radio-tech input:checked + span svg {
+  background: #55A4B7 !important;
+}
+
+.radio-cobalt input:checked + span svg, .radio-household input:checked + span svg {
+  background: #7872e3 !important;
+}
+
+.radio-eggplant input:checked + span svg, .radio-athletic input:checked + span svg {
+  background: #9A5BC5 !important;
+}
+
+.radio-cerise input:checked + span svg, .radio-academic input:checked + span svg {
+  background: #e6389b !important;
+}
+
+.txt-slate .checkbox-container label, .txt-slate .radio-container label {
+  color: #40484B !important;
 }
 
 .toggle {
