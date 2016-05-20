@@ -604,7 +604,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.gabrie', {
         url: '/gabrie',
         templateUrl: BASE + 'templates/gabrie/index.html',
-        controller: 'JeselleController'
+        controller: 'GabrielleController'
   }).
   state('root.gabrie-project', {
         url: '/gabrie/project',
