@@ -34,6 +34,13 @@ angular.module('uguru.util.controllers')
         routes: getRoutes('jeselle', 'jeselle/index.html', 'controllers/util/JeselleController.js'),
         spec: getSpec('calendar'),
         bugs: getBugInfo('calendar')
+      },
+      {
+        title: 'Gabrielle Portfolio',
+        controller: 'GabrielleController',
+        routes: getRoutes('gabrie', 'gabrie/index.html', 'controllers/util/GabrielleController.js'),
+        spec: getSpec('calendar'),
+        bugs: getBugInfo('calendar')
       }
 
     ];
