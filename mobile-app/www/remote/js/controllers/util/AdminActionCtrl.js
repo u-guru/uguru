@@ -60,7 +60,7 @@ angular.module('uguru.util.controllers')
 
     function getRoutes(param, template_url, ctrl_url) {
       var localUrl = defaultRoutes.local + param;
-      var stagingUrl = defaultRoutes.staging + param;
+      var stagingUrl = defaultRoutes.staging;
       return {
         local: {url: localUrl, launch: launchSeparateWindowFunc(localUrl)},
         staging: {url: stagingUrl, launch: launchSeparateWindowFunc(stagingUrl)},
@@ -114,7 +114,7 @@ angular.module('uguru.util.controllers')
         if (window.location.href.split(':8100').length > 1) {
           requestUrl = flow.routes.local.url.split('#/')[0] + 'remote/templates/' + flow.routes.codepen.template_url;
         } else {
-          requestUrl = flow.routes.staging.url + 'static/remote/templates/' + flow.routes.codepen.template_url;
+          requestUrl = flow.routes.staging.url.split('#/')[0] + 'static/remote/templates/' + flow.routes.codepen.template_url;
         }
         loadHTMLSpec(flow, requestUrl, cb);
       }
