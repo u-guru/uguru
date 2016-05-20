@@ -71,7 +71,7 @@ angular.module('uguru.util.controllers')
       return function(flow, $event) {
         console.log('flow', flow);
           flow.codepenData = {
-            title                 : "Uguru Calendar",
+            title                 : flow.title,
             description           : "Most updated version",
             private               : true, // true || false
             tags                  : [], // an array of strings
