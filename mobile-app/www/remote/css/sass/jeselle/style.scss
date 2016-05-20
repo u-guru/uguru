@@ -9,13 +9,13 @@ $midnight: #17324A;
 
 $padding: 12px;
 
-$text: "proxima-nova", "Proxima Nova", "Open Sans", "Gill Sans MT", "Gill Sans", Corbel, Arial, sans-serif!important;
-$header: "lulu-clean", "Lulo Clean";
+$proxima: "proxima-nova", "Proxima Nova", "Open Sans", "Gill Sans MT", "Gill Sans", Corbel, Arial, sans-serif!important;
+$lulo: "lulu-clean", "Lulo Clean";
 
 #jeselle {
 	background: white;
 	color: $wine;
-	font-family: $text;
+	font-family: $proxima;
 	font-size: 16px;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -131,7 +131,7 @@ $header: "lulu-clean", "Lulo Clean";
 			}
 			h1 {
 				font-size: 36px;
-				font-family: $header;
+				font-family: $lulo;
 			}
 			h2 {
 				opacity: 0;
