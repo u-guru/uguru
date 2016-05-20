@@ -28,7 +28,9 @@ $header: "lulu-clean", "Lulo Clean";
 		cursor: pointer;
 	}
 	*, *:before, *:after { box-sizing: border-box }
-	
+	* {
+		backface-visibility: visible!important;
+	}
 	#jeselle-top {
 		display: flex;
 		align-items: center;
@@ -341,10 +343,20 @@ $header: "lulu-clean", "Lulo Clean";
 					}
 					.jeselle-project {
 						overflow: auto;
+						header {
+							h1 {
+								margin: 0 auto;
+								text-align: center;
+								width: 50%;
+							}
+						}
 					}
 					&.active {
 						.jeselle-project {
 							header {
+								h1 {
+									width: 100%;
+								}
 								h2 {
 									opacity: 1;
 									transition-delay: 150ms;
