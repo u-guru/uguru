@@ -47,21 +47,24 @@ angular.module('uguru.util.controllers')
       //initialize empty animation object
 
       $timeout(function() {
-        var cxr = 2*circle.r.animVal.value;
+        var shapeOffset = SVGService.getShapeWidthHeight(rect).width/2;
+
         var cssAnimObj = AnimationService.initCSSAnimation('draw-star');
-        cssAnimObj.appendRule('0% {transform: translate(' + (startPoint.x - cxr) + 'px, ' + (startPoint.y-cxr) +'px);}', i);
+        cssAnimObj.appendRule('0% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px);}', i);
         for (var i = 1; i < 100; i++) {
            var indexPoint = path.getPointAtLength(i/100 *totalPathLength);
            var indexPreviousPoint = path.getPointAtLength(i - 1);
-           var translateX = indexPoint.x - cxr;
-           var translateY = indexPoint.y - cxr;
+           var translateX = indexPoint.x - shapeOffset;
+           var translateY = indexPoint.y - shapeOffset;
+           var translateAng = Math.atan(indexPreviousPoint.y - indexPoint.y, indexPreviousPoint.x - indexPoint.x) * (180/Math.PI);
+           console.log(i, translateAng);
            $scope.buttonText = 'Loading ... %' + i;
            $timeout(function() {
             $scope.$apply();
            })
-           cssAnimObj.appendRule(i + '% {transform: translate(' + translateX + 'px, ' + translateY +'px);}', i);
+           cssAnimObj.appendRule(i + '% {transform: translate(' + translateX + 'px, ' + translateY +'px) rotate(' + (translateAng + 180) + 'deg);}', i);
         }
-        cssAnimObj.appendRule('100% {transform: translate(' + (startPoint.x - cxr) + 'px, ' + (startPoint.y-cxr) +'px);}', i);
+        cssAnimObj.appendRule('100% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px);}', i);
 
         $scope.buttonText = 'Play';
         $scope.full_animation_string = cssAnimObj.name + " 2s linear 0s 1 normal forwards";
@@ -76,14 +79,14 @@ angular.module('uguru.util.controllers')
       var pathCoordInfo = path.getBoundingClientRect();
       console.log('path info:', pathCoordInfo);
 
-      //get the circle & inject into the path svg
-      var circle = document.querySelector('svg circle');
-      path.parentNode.appendChild(circle);
-      //position the circle to be at the start point
+      //get the rect & inject into the path svg
+      var rect = document.querySelector('svg rect');
+      path.parentNode.appendChild(rect);
+      //position the rect to be at the start point
       var startPoint = path.getPointAtLength(0);
       //offset from the top left of the svg
-      // circle.style.cx = startPoint.x;
-      // circle.style.cy = startPoint.y;
+      // rect.style.cx = startPoint.x;
+      // rect.style.cy = startPoint.y;
 
       //apply animation
 
@@ -91,16 +94,16 @@ angular.module('uguru.util.controllers')
     })
 
     $scope.playAnimation = function(animation_text) {
-      var circle = document.querySelector('svg circle');
-      circle.style.animation = animation_text
-      circle.style.webkitAnimation = animation_text;
-      circle.addEventListener( 'webkitAnimationEnd', animEndCallback)
+      var rect = document.querySelector('svg rect');
+      rect.style.animation = animation_text
+      rect.style.webkitAnimation = animation_text;
+      rect.addEventListener( 'webkitAnimationEnd', animEndCallback)
 
       function animEndCallback() {
-        circle.offsetWidth = circle.offsetWidth;
-        circle.style.animation = null;
-        circle.style.webkitAnimation = null;
-        circle.removeEventListener('webkitAnimationEnd', animEndCallback);
+        rect.offsetWidth = rect.offsetWidth;
+        rect.style.animation = null;
+        rect.style.webkitAnimation = null;
+        rect.removeEventListener('webkitAnimationEnd', animEndCallback);
       }
     }
 

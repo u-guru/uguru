@@ -12,11 +12,20 @@ function SVGService() {
     computeDrawDuration:computeDrawDuration,
     supportedShapes: supportedShapes,
     drawOneShape: drawOneShape,
-    convertPolyToPath: convertPolyToPath
+    convertPolyToPath: convertPolyToPath,
+    getShapeWidthHeight: getShapeWidthHeight
   }
 
   //step two
   //addEventToCalendar
+
+  function getShapeWidthHeight(shape_elem) {
+    if (shape_elem.nodeName === 'circle') {
+      return {width: shape_elem.r.animVal.value, height: shape_elem.r.animVal.value};
+    } else {
+      return {width: shape_elem.getBoundingClientRect().width, height: shape_elem.getBoundingClientRect().height}
+    }
+  }
 
   function getTotalPathLength(elem) {
     var elemType = elem && elem.nodeName && elem.nodeName.toLowerCase();
