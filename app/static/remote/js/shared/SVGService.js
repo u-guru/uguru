@@ -11,7 +11,8 @@ function SVGService() {
     getTotalPathLength: getTotalPathLength,
     computeDrawDuration:computeDrawDuration,
     supportedShapes: supportedShapes,
-    drawOneShape: drawOneShape
+    drawOneShape: drawOneShape,
+    convertPolyToPath: convertPolyToPath
   }
 
   //step two
@@ -84,6 +85,27 @@ function SVGService() {
       var y2 = elem.getAttribute('y2');
       var lineLength = Math.sqrt(Math.pow((x2-x1), 2)+Math.pow((y2-y1),2));
       return lineLength;
+  }
+
+  function convertPolyToPath(poly){
+    var svgNS = poly.ownerSVGElement.namespaceURI;
+    var path = document.createElementNS(svgNS,'path');
+    var points = poly.getAttribute('points').split(/\s+|,/);
+    var x0=points.shift(), y0=points.shift();
+    var pathdata = 'M'+x0+','+y0+'L'+points.join(' ');
+    if (poly.tagName=='polygon') pathdata+='z';
+    path.setAttribute('d',pathdata);
+    // poly.parentNode.replaceChild(path,poly);
+    return path;
+  }
+
+  function convertPointStringToPathString(point_str) {
+    var path = "";
+    var p = point_str;
+    for( var i = 0, len = p.length; i < len; i++ ){
+        path += (i && "L" || "M") + p[i]
+    }
+    return path.replace(',', ' ') + 'z';
   }
 
   function getPolygonLength(elem){

@@ -7,62 +7,103 @@ angular.module('uguru.util.controllers')
   'SVGService',
   'LoadingService',
   '$interval',
-  function($scope, $state, $timeout, SVGService, LoadingService, $interval) {
+  '$compile',
+  'AnimationService',
+  function($scope, $state, $timeout, SVGService, LoadingService, $interval, $compile, AnimationService) {
+    $scope.full_animation_string = 'Loading...';
+    $scope.buttonText = 'Loading...'
+    $scope.$on('$ionicView.loaded', function() {
+      var polygon = document.querySelector('polygon');
 
-    // $scope.$on('$ionicView.loaded', function() {
-    //   var line = document.querySelector('svg line');
-    //   console.log(line, line.getTotalPathLength());
-    // })
-  //     $(document).ready(function() {
-//   //variable for the 'stroke-dashoffset' unit
-//   var $dashOffset = $(".path").css("stroke-dashoffset");
-//   //on a scroll event - execute function
-//   $(window).scroll(function() {
-//     //calculate how far down the page the user is
-//     var $percentageComplete = (($(window).scrollTop() / ($("html").height() - $(window).height())) * 100);
-//     //convert dashoffset pixel value to interger
-//     var $newUnit = parseInt($dashOffset, 10);
-//     //get the value to be subtracted from the 'stroke-dashoffset'
-//     var $offsetUnit = $percentageComplete * ($newUnit / 100);
-//     //set the new value of the dashoffset to create the drawing effect
-//     $(".path").css("stroke-dashoffset", $newUnit - $offsetUnit);
-//   });
-// });
-    // $timeout(function() {
+      //converts polygon into a path
+      var path = SVGService.convertPolyToPath(polygon);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', '#FFFFFF');
+      path.setAttribute('stroke-width', '5px');
+      polygon.parentNode.replaceChild(path,polygon);
 
+      //redraws
+      $timeout(function() {
+        $compile(path.parentNode)($scope)
+      })
 
-    //   var parentContainer = document.querySelector('ion-content');
-    //   var elements = document.querySelectorAll('svg .path');
-    //   var initialOffset = 1000;
-    //   var pageHeight = parentContainer.scrollHeight;
-    //   var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-    //   for (var i = 0; i < elements.length; i++) {
-    //     var indexelement = elements[i];
-    //     indexelement.style.strokeDashoffset = initialOffset;
-    //   }
+      //prints properties we have access to
+      for (property in path) {
+        if (property.toLowerCase().split('path').length > 1 || property.toLowerCase().split('length').length > 1) {
+          console.log(property);
+        }
+      }
 
 
-    //   // var pathLength = SVGService.getTotalPathLength(element);
-    //   parentContainer.addEventListener('scroll', function() {
-    //     var viewPortScrollTop = parentContainer.scrollTop;
-    //     var percentage = ((viewPortScrollTop / (pageHeight - viewPortHeight)) * 100);
+      //prints all the path
+      var totalPathLength = path.getTotalLength()
+      console.log(totalPathLength);
+      for (var i = 0; i < parseInt(totalPathLength); i++) {
+        var point = path.getPointAtLength(i);
+        // uncomment when you get here, prints hella shit;
+        // console.log(i, point.x, point.y);
+      }
 
-    //     for (var i = 0; i < elements.length; i++) {
-    //       var indexElement = elements[i];
-    //       var currentStrokeDashoffset = parseInt(indexElement.style.strokeDashoffset, 10);
-    //       var offsetScaledPercent = percentage * (currentStrokeDashoffset / 100);
-    //       indexElement.style.strokeDashoffset = initialOffset - offsetScaledPercent;
-    //     }
-    //   })
+      //initialize empty animation object
 
-    // }, 2000)
+      $timeout(function() {
+        var cxr = 2*circle.r.animVal.value;
+        var cssAnimObj = AnimationService.initCSSAnimation('draw-star');
+        cssAnimObj.appendRule('0% {transform: translate(' + (startPoint.x - cxr) + 'px, ' + (startPoint.y-cxr) +'px);}', i);
+        for (var i = 1; i < 100; i++) {
+           var indexPoint = path.getPointAtLength(i/100 *totalPathLength);
+           var indexPreviousPoint = path.getPointAtLength(i - 1);
+           var translateX = indexPoint.x - cxr;
+           var translateY = indexPoint.y - cxr;
+           $scope.buttonText = 'Loading ... %' + i;
+           $timeout(function() {
+            $scope.$apply();
+           })
+           cssAnimObj.appendRule(i + '% {transform: translate(' + translateX + 'px, ' + translateY +'px);}', i);
+        }
+        cssAnimObj.appendRule('100% {transform: translate(' + (startPoint.x - cxr) + 'px, ' + (startPoint.y-cxr) +'px);}', i);
+
+        $scope.buttonText = 'Play';
+        $scope.full_animation_string = cssAnimObj.name + " 2s linear 0s 1 normal forwards";
+        $scope.$apply();
+      }, 100);
 
 
 
-    // $timeout(function() {
-    //     var fillBgDemo = document.querySelector('#fill-bg-demo');
-    //     fillBgDemo.classList.add('activate');
-    // }, 2500);
+
+
+      //get path details
+      var pathCoordInfo = path.getBoundingClientRect();
+      console.log('path info:', pathCoordInfo);
+
+      //get the circle & inject into the path svg
+      var circle = document.querySelector('svg circle');
+      path.parentNode.appendChild(circle);
+      //position the circle to be at the start point
+      var startPoint = path.getPointAtLength(0);
+      //offset from the top left of the svg
+      // circle.style.cx = startPoint.x;
+      // circle.style.cy = startPoint.y;
+
+      //apply animation
+
+
+    })
+
+    $scope.playAnimation = function(animation_text) {
+      var circle = document.querySelector('svg circle');
+      circle.style.animation = animation_text
+      circle.style.webkitAnimation = animation_text;
+      circle.addEventListener( 'webkitAnimationEnd', animEndCallback)
+
+      function animEndCallback() {
+        circle.offsetWidth = circle.offsetWidth;
+        circle.style.animation = null;
+        circle.style.webkitAnimation = null;
+        circle.removeEventListener('webkitAnimationEnd', animEndCallback);
+      }
+    }
+
   }
 
 ])
