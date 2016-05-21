@@ -74,22 +74,51 @@ angular.module('uguru.util.controllers')
         members: ['jeselle']
       },
       {
-        title: 'Academic Guru Profile',
-        controller: 'GuruProfileController',
-        routes: getRoutes('guru-profile', 'guru.profile.html', 'controllers/guru/guru.profile.ctrl.js'),
-        spec: getSpec('guru-profile'),
-        bugs: getBugInfo('guru-profile'),
-        members: ['jeselle']
+        title: 'GenericGuruProfile',
+        dependencies: ['FakeDataService'],
+        controller: 'GuruProfileController'
       },
       {
-        title: 'Bakery Guru Profile',
-        controller: 'GuruProfileController',
-        routes: getRoutes('guru-profile', 'guru.profile.html', 'controllers/guru/guru.profile.ctrl.js'),
-        spec: getSpec('guru-profile'),
-        bugs: getBugInfo('guru-profile'),
-        members: ['jeselle', 'samir']
+        title: 'DeviceDemoController',
+        dependencies: ['GenericGuruProfile']
       },
-
+      {
+        title: 'SplashLoaderController',
+        priority: 1
+      },
+      {
+        title: 'UniversitySearchController',
+      },
+      {
+        title: 'SplashMadLibController',
+        priority: 1
+      },
+      {
+        title: 'SplashMapController'
+      },
+      {
+        title: 'SplashTransitions',
+        description: ['Loader:SplashMadLibController']
+      },
+      {
+        title: 'HowItWorksController'
+      },
+      {
+        title: 'BecomeGuruController'
+      },
+      {
+        title: 'SignupController',
+        notes: 'Needs Refactoring'
+      },
+      {
+        title: 'AccessController'
+      },
+      {
+        title: 'DemographicsController'
+      },
+      {
+        title: 'GettingStartedController'
+      }
     ];
 
 
