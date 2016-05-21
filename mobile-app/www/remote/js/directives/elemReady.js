@@ -276,9 +276,16 @@ angular.module('uguru.directives')
       $timeout(function() {
         pathElem.parentNode.classList.add('activate');
         scope.$apply()
-        element[0].style.animation = cssAnimObjString
-        element[0].style.webkitAnimation = cssAnimObjString
-      })
+        element[0].style.animation = cssAnimObjString;
+        element[0].style.webkitAnimation = cssAnimObjString;
+        element[0].addEventListener( 'webkitAnimationEnd', animEndCallback)
+        function animEndCallback() {
+          element[0].offsetWidth = element[0].offsetWidth;
+          element[0].style.animation = null;
+          element[0].style.webkitAnimation = null;
+          element[0].removeEventListener('webkitAnimationEnd', animEndCallback);
+        }
+      });
 
       // if (pathElem) {
       //   scope.$watch(function() {
@@ -294,14 +301,8 @@ angular.module('uguru.directives')
 
       //     $timeout(function() {
 
-      //       // element[0].addEventListener( 'webkitAnimationEnd', animEndCallback)
-      //       // function animEndCallback() {
-      //       //   element[0].offsetWidth = rect.offsetWidth;
-      //       //   element[0].style.animation = null;
-      //       //   element[0].style.webkitAnimation = null;
-      //       //   element[0].removeEventListener('webkitAnimationEnd', animEndCallback);
-      //       // }
-      //     }, 100)
+
+          // }, 100)
       //   })
       // }
 

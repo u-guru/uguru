@@ -81,17 +81,19 @@ angular.module('uguru.util.controllers')
     })
 
     $scope.playAnimation = function(animation_text) {
-      var rect = document.querySelector('svg rect');
-      rect.style.animation = animation_text
-      rect.style.webkitAnimation = animation_text;
-      rect.addEventListener( 'webkitAnimationEnd', animEndCallback)
+      var elem = document.querySelector('#svg-wrapper');
+      $compile(elem)($scope);
+      // var rect = document.querySelector('svg rect');
+      // rect.style.animation = animation_text
+      // rect.style.webkitAnimation = animation_text;
+      // rect.addEventListener( 'webkitAnimationEnd', animEndCallback)
 
-      function animEndCallback() {
-        rect.offsetWidth = rect.offsetWidth;
-        rect.style.animation = null;
-        rect.style.webkitAnimation = null;
-        rect.removeEventListener('webkitAnimationEnd', animEndCallback);
-      }
+      // function animEndCallback() {
+      //   rect.offsetWidth = rect.offsetWidth;
+      //   rect.style.animation = null;
+      //   rect.style.webkitAnimation = null;
+      //   rect.removeEventListener('webkitAnimationEnd', animEndCallback);
+      // }
     }
 
   }
