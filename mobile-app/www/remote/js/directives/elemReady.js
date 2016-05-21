@@ -238,9 +238,12 @@ angular.module('uguru.directives')
     }
   }
 }])
-.directive('tracePath', ['$timeout', 'SVGService', '$compile', function ($timeout, SVGService, $compile) {
+.directive('tracePath', ['$timeout', 'SVGService', '$compile', '$rootScope', function ($timeout, SVGService, $compile, $rootScope) {
   return {
     restrict: 'A',
+    scope: {
+        kf: '=kf',
+    },
     link: function(scope, element, attr) {
 
       var elementToTraceSelector = attr.tracePath;
@@ -268,8 +271,7 @@ angular.module('uguru.directives')
       var elemOffset = SVGService.getShapeWidthHeight(element[0]).width;
       var cssAnimObj = SVGService.generateCSSObjFromPath(animName, pathElem, elemOffset);
       var cssAnimObjString = [animName, options.duration, options.time_function, options.delay, options.iter_count, options.direction, options.fill_mode].join(' ');
-
-      console.log(cssAnimObjString, cssAnimObj, 'complete');
+      $rootScope.cssText = cssAnimObj.cssText;
       pathElem.parentNode.appendChild(element[0]);
       $timeout(function() {
         pathElem.parentNode.classList.add('activate');
