@@ -21,6 +21,8 @@ $lulo: "lulu-clean", "Lulo Clean";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-overflow-scrolling: touch;
+	-webkit-perspective: 1000;
+	perspective: 1000;
 	height: 100%;
 	line-height: 1;
 	div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0} 
@@ -31,7 +33,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 	* {
 		backface-visibility: visible!important;
 	}
-	#jeselle-top {
+	#top {
 		display: flex;
 		align-items: center;
 		align-content: center;
@@ -42,7 +44,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 		z-index: 100;
 		width: 100%;
 		padding: $padding*2;
-		.jeselle-top-home {
+		.top-home {
 			display: block;
 			width: 48px;
 			height: 48px;
@@ -55,7 +57,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 				}
 			}
 		}
-		.jeselle-top-projects {
+		.top-projects {
 			position: relative;
 			display: block;
 			height: 48px;
@@ -103,7 +105,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 		}
 	}
 
-	.jeselle-project {
+	.project {
 		width: 100%;
 		height: 100%;
 		header {
@@ -146,7 +148,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 			width: 100%;
 			overflow-x: hidden;
 			background: white;
-			.jeselle-project-info {
+			.project-info {
 				@include listless;
 				width: 100%;
 				max-width: 1200px;
@@ -205,7 +207,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 							}
 						}
 					}
-					&.jeselle-project-branding {
+					&.project-branding {
 						> div {
 							border-color: $lavendar;
 							> svg {
@@ -232,7 +234,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 						}
 					}
 				}
-				&.jeselle-mobile {
+				&.mobile {
 					display: block;
 					> li {
 						> div {
@@ -244,11 +246,11 @@ $lulo: "lulu-clean", "Lulo Clean";
 						}
 					}
 				}
-				&.jeselle-desktop {
+				&.desktop {
 					display: none;
 					> li {
 						width: calc(100% / 3);
-						&.jeselle-project-details {
+						&.project-details {
 							> div {
 								h1 {
 									margin-left: -$padding*3;
@@ -257,7 +259,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 								}
 							}
 						}
-						&.jeselle-project-work {
+						&.project-work {
 							> div {
 								h1 {
 									margin-right: -$padding*3;
@@ -268,7 +270,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 					}
 				}
 			}
-			.jeselle-project-desc {
+			.project-desc {
 				width: 100%;
 				max-width: 1200px;
 				margin: 0 auto;
@@ -287,11 +289,11 @@ $lulo: "lulu-clean", "Lulo Clean";
 		}
 	}
 
-	#jeselle-home {
+	#home {
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-		.jeselle-home-container {
+		.home-container {
 			display: flex;
 			align-items: center;
 			align-content: center;
@@ -299,7 +301,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 			width: 100%;
 			height: 100%;
 			padding: $padding*2;
-			.jeselle-home-coach {
+			.home-coach {
 				position: absolute;
 				bottom: $padding*2;
 				left: 50%;
@@ -310,11 +312,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 				font-weight: 700;
 				color: white;
 			}
-			.jeselle-home-border {
-				position: absolute;
-				border: $padding/2 solid white;
-			}
-			.jeselle-home-thumbs {
+			.home-thumbs {
 				@include listless;
 				position: absolute;
 				top: 0;
@@ -322,7 +320,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 				z-index: 10;
 				width: 100%;
 				height: 100%;
-				overflow: hidden;
+				transform-style: preserve-3d;
 				> li {
 					position: absolute;
 					top: 0;
@@ -333,7 +331,19 @@ $lulo: "lulu-clean", "Lulo Clean";
 					justify-content: center;
 					width: 100%;
 					height: 100%;
-					.jeselle-home-link {
+					transform-style: preserve-3d;
+					transform-origin: center center;
+					transition: all 150ms ease-out;
+					&:not(:first-child) {
+						transform: translate3d(100%,0,0);
+					}
+					&:after {
+						content: "";
+						display: block;
+						position: absolute;
+						border: $padding/2 solid white;
+					}
+					.home-link {
 						position: absolute;
 						top: 0;
 						left: 0;
@@ -341,7 +351,7 @@ $lulo: "lulu-clean", "Lulo Clean";
 						height: 100%;
 						z-index: 10;
 					}
-					.jeselle-project {
+					.project {
 						overflow: auto;
 						header {
 							h1 {
@@ -352,7 +362,14 @@ $lulo: "lulu-clean", "Lulo Clean";
 						}
 					}
 					&.active {
-						.jeselle-project {
+						transform: translate3d(0,0,0);
+						.home-link {
+							z-index: -10;
+						}
+						&:after {
+							opacity: 0;
+						}
+						.project {
 							header {
 								h1 {
 									width: 100%;
@@ -364,32 +381,30 @@ $lulo: "lulu-clean", "Lulo Clean";
 							}
 						}
 					}
+					&.inactive {
+						opacity: 0;
+					}
 				}
 			}
 		}
 	}
 
 	@media all and (orientation:portrait) {
-		#jeselle-home {
-			.jeselle-home-container {
-				.jeselle-home-border {
-					width: calc(90% + #{$padding});
-					height: calc(70% + #{$padding});
-					left: calc(5% - #{$padding/2});
-					top: calc(15% - #{$padding/2});
-				}
-				.jeselle-home-thumbs {
+		#home {
+			.home-container {
+				.home-thumbs {
 					> li {
-						// clip: rect(15%, 5%, 15%, 5%);
 						-webkit-clip-path: polygon(5% 15%, 95% 15%, 95% 85%, 5% 85%);
 						clip-path: polygon(5% 15%, 95% 15%, 95% 85%, 5% 85%);
+						&:after {
+							width: 90%;
+							height: 70%;
+							left: 5%;
+							top: 15%;
+						}
 						&.active {
-							// clip: rect(0, 0, 0, 0);
 							-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 							clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-							.jeselle-home-link {
-								z-index: -10;
-							}
 						}
 					}
 				}
@@ -400,27 +415,21 @@ $lulo: "lulu-clean", "Lulo Clean";
 
 @media all and (orientation:landscape) {
 	#jeselle {
-		#jeselle-home {
-			.jeselle-home-container {
-				.jeselle-home-border {
-					width: calc(50% + #{$padding});
-					height: calc(50% + #{$padding});
-					left: calc(25% - #{$padding/2});
-					top: calc(25% - #{$padding/2});
-				}
-				.jeselle-home-thumbs {
+		#home {
+			.home-container {
+				.home-thumbs {
 					> li {
-						transition: all 150ms ease-out;
-						// clip: rect(25%, 25%, 25%, 25%);
 						-webkit-clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
 						clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
+						&:after {
+							width: 50%;
+							height: 50%;
+							left: 25%;
+							top: 25%;
+						}
 						&.active {
-							// clip: rect(0, 0, 0, 0);
 							-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 							clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-							.jeselle-home-link {
-								z-index: -10;
-							}
 						}
 					}
 				}
@@ -431,14 +440,14 @@ $lulo: "lulu-clean", "Lulo Clean";
 
 @media only screen and (min-width: 768px) {
 	#jeselle {
-		#jeselle-home {
-			.jeselle-home-container {
-				.jeselle-home-coach {
+		#home {
+			.home-container {
+				.home-coach {
 					bottom: $padding*4;
 				}
 			}
 		}
-		.jeselle-project {
+		.project {
 			header {
 				h1 {
 					font-size: 72px;
@@ -448,11 +457,11 @@ $lulo: "lulu-clean", "Lulo Clean";
 				}
 			}
 			main {
-				.jeselle-project-info {
-					&.jeselle-mobile {
+				.project-info {
+					&.mobile {
 						display: none;
 					}
-					&.jeselle-desktop {
+					&.desktop {
 						display: flex;
 					}
 				}

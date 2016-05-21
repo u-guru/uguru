@@ -10,38 +10,19 @@
   -webkit-overflow-scrolling: touch;
 }
 
-#gabrie div, #gabrie span, #gabrie applet, #gabrie object, #gabrie iframe, #gabrie h1, #gabrie h2, #gabrie h3, #gabrie h4, #gabrie h5, #gabrie h6, #gabrie p, #gabrie blockquote, #gabrie pre, #gabrie a, #gabrie abbr, #gabrie acronym, #gabrie address, #gabrie big, #gabrie cite, #gabrie code, #gabrie del, #gabrie dfn, #gabrie em, #gabrie img, #gabrie ins, #gabrie kbd, #gabrie q, #gabrie s, #gabrie samp, #gabrie small, #gabrie strike, #gabrie strong, #gabrie sub, #gabrie sup, #gabrie tt, #gabrie var, #gabrie b, #gabrie u, #gabrie i, #gabrie center, #gabrie dl, #gabrie dt, #gabrie dd, #gabrie ol, #gabrie ul, #gabrie li, #gabrie fieldset, #gabrie form, #gabrie label, #gabrie legend, #gabrie table, #gabrie caption, #gabrie tbody, #gabrie tfoot, #gabrie thead, #gabrie tr, #gabrie th, #gabrie td, #gabrie article, #gabrie aside, #gabrie canvas, #gabrie details, #gabrie embed, #gabrie figure, #gabrie figcaption, #gabrie footer, #gabrie header, #gabrie hgroup, #gabrie menu, #gabrie nav, #gabrie output, #gabrie ruby, #gabrie section, #gabrie summary, #gabrie time, #gabrie mark, #gabrie audio, #gabrie video {
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  margin: 0;
-  padding: 0;
+#gabrie .nested-action-item li {
+  font-size: 16px !important;
+  line-height: 1.2 !important;
 }
 
-#gabrie article, #gabrie aside, #gabrie details, #gabrie figcaption, #gabrie figure, #gabrie footer, #gabrie header, #gabrie hgroup, #gabrie menu, #gabrie nav, #gabrie section {
-  display: block;
+#gabrie button {
+  font: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important;
 }
 
-#gabrie body {
-  line-height: 1;
-}
-
-#gabrie blockquote, #gabrie q {
-  quotes: none;
-}
-
-#gabrie blockquote:before, #gabrie blockquote:after, #gabrie q:before, #gabrie q:after {
-  content: none;
-}
-
-#gabrie table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-#gabrie *, #gabrie *:before, #gabrie *:after {
-  box-sizing: border-box;
+#gabrie > div[id*="page"] {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 #gabrie * {
@@ -98,12 +79,6 @@
 
 #gabrie h3 strong {
   font-weight: 400;
-}
-
-#gabrie > div {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
 }
 
 #gabrie #top {
