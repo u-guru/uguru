@@ -34,6 +34,8 @@ angular.module('uguru.util.controllers')
 			$scope.page.active.tabName = tabName;
 		}
 
+
+
 		//Launch on friday
 		// - back and forth
 		// --- student makes a request

@@ -1,12 +1,37 @@
-<header class="bg-slate">
-    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Action Items</h1>
+<header class="bg-slate flex-wrap-center full-x relative">
+    <h1 class='full-x bg-cobalt-25p txt-18 p15xy txt-center'>Action Items</h1>
+
+    <div class='absolute left-0 bottom-0 full-y flex-wrap-center' style='width:33%; margin-left:5px; '>
+        <fieldset class="with-icon">
+            <input class="input-border light" ng-model="search.text" type="text" placeholder="Search actions">
+            <label></label>
+            <span class="input-icon">
+                <svg viewBox="0 0 100 100">
+                    <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                </svg>
+            </span>
+        </fieldset>
+        <a ng-click='search.text = "";' class='absolute right-0 m20xy txt-white txt-1'> Clear </a>
+    </div>
+    <div class='absolute right-0 bottom-0 ugrid-4 full-y flex-stretch flex-wrap-center' style='width:33%; margin-left:5px; '>
+
+        <a ng-click='search.text = user.first_name'><user-icon url="user.profile_url"> </user-icon> </a>
+        <a ng-click='search.text = member.first_name' ng-repeat='member in team_members' ng-if='member.name.toLowerCase() !== user.name.split(" ")[0].toLowerCase()'>
+            <user-icon url="member.profile_url"> </user-icon>
+        </a>
+    </div>
 </header>
 <div class="overflow-auto no-scrollbar" style="height: calc(100% - 48px)">
     <ul class="p15-grid">
-        <li ng-repeat='flow in user_workflows'>
+        <li ng-repeat='flow in user_workflows | filter:search.text:strict'>
             <div class="bg-white-10p radius-2 flex-space-between-center-vertical">
                 <h2 class="p15xy txt-18 semibold">{{flow.title}}</h2>
                 <ul class="flex p15-grid">
+                    <li ng-repeat='member in flow.members | filter:member.value'>
+                        <div ng-class='{"bg-auburn": member.priority, "bg-shamrock": member.complete,"bg-gold": !member.complete && !member.priority }'>
+                            <user-icon url="member.profile_url"> </user-icon>
+                        </div>
+                    </li>
                     <li>
                         <button class="bg-moxie height-36 txt-18 radius-2" ng-click='flow.routes.staging.launch()'>Master</button>
                     </li>

@@ -13,6 +13,35 @@ angular.module('uguru.util.controllers')
       staging: 'https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/'
     }
 
+    $scope.search = {text: ''};
+
+    $scope.team_members = [{
+                name: "Jeselle",
+                first_name: 'jeselle',
+                profile_url: 'https://uguru.me/static/web/images/team/jeselle.png',
+                priorities: {
+                    components: ['tabs', 'steps', 'dropdown', 'refresher']
+                }
+            },
+            {
+                name: "Gabrielle",
+                first_name: 'gabrielle',
+                profile_url: 'https://uguru.me/static/web/images/team/gabrielle.png'
+            },
+            {
+                name: "Jason",
+                first_name: 'jason',
+                profile_url: 'https://uguru.me/static/web/images/team/jason.png'
+            },
+            {
+                name: 'Samir',
+                first_name: 'samir',
+                profile_url: 'https://uguru.me/static/web/images/team/samir.png',
+                responsibilities: "Dev, Product Specs, Everything else"
+            }]
+
+
+
     $scope.user_workflows = [
       {
         title: 'User selects a splash tag',
@@ -33,17 +62,79 @@ angular.module('uguru.util.controllers')
         controller: 'JeselleController',
         routes: getRoutes('jeselle', 'jeselle/index.html', 'controllers/util/JeselleController.js'),
         spec: getSpec('calendar'),
-        bugs: getBugInfo('calendar')
+        bugs: getBugInfo('calendar'),
+        members: ['jeselle:priority', 'samir', 'gabrielle:complete', 'jason']
       },
       {
         title: 'Gabrielle Portfolio',
         controller: 'GabrielleController',
         routes: getRoutes('gabrie', 'gabrie/index.html', 'controllers/util/GabrielleController.js'),
         spec: getSpec('calendar'),
-        bugs: getBugInfo('calendar')
-      }
+        bugs: getBugInfo('calendar'),
+        members: ['jeselle']
+      },
+      {
+        title: 'Academic Guru Profile',
+        controller: 'GuruProfileController',
+        routes: getRoutes('guru-profile', 'guru.profile.html', 'controllers/guru/guru.profile.ctrl.js'),
+        spec: getSpec('guru-profile'),
+        bugs: getBugInfo('guru-profile'),
+        members: ['jeselle']
+      },
+      {
+        title: 'Bakery Guru Profile',
+        controller: 'GuruProfileController',
+        routes: getRoutes('guru-profile', 'guru.profile.html', 'controllers/guru/guru.profile.ctrl.js'),
+        spec: getSpec('guru-profile'),
+        bugs: getBugInfo('guru-profile'),
+        members: ['jeselle', 'samir']
+      },
 
     ];
+
+
+
+    $scope.parseMember = function(member_name) {
+
+      var first_name = member_name.split(':')[0];
+      var member = JSON.parse(JSON.stringify(getMemberFromFirstName(first_name)));
+
+      var args = null;
+      if (member_name.split(':').length > 1) {
+        args = member_name.split(':')[1];
+        if (args === 'priority') {
+          member.priority = true;
+          member.value = 0;
+        }
+        else if (args === 'complete') {
+          member.complete = true;
+          member.value = 2;
+        }
+      } else {
+        member.value = 1;
+      }
+      return member;
+
+      function getMemberFromFirstName(name) {
+        for (var i = 0; i < $scope.team_members.length; i++) {
+          if ($scope.team_members[i].first_name.toLowerCase() === name.toLowerCase()) {
+            return $scope.team_members[i];
+          }
+        }
+      }
+    }
+
+    for (var i = 0; i < $scope.user_workflows.length; i++) {
+      var indexWF = $scope.user_workflows[i];
+      if (indexWF.members && indexWF.members.length) {
+        for (var j =0; j < indexWF.members.length; j++) {
+          var indexMember = indexWF.members[j];
+          var memberString = indexWF.members.splice(j, 1)[0];
+          indexWF.members.unshift($scope.parseMember(memberString));
+        }
+      }
+    }
+    console.log($scope.user_workflows);
 
     function launchSeparateWindowFunc(url) {
       return function() {
