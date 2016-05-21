@@ -1,10 +1,11 @@
 angular
 .module('sharedServices')
 .factory("SVGService", [
+  'AnimationService',
   SVGService
     ]);
 
-function SVGService() {
+function SVGService(AnimationService) {
   var supportedShapes = ['circle', 'rect', 'polygon', 'path', 'line']
 
   return {
@@ -13,17 +14,40 @@ function SVGService() {
     supportedShapes: supportedShapes,
     drawOneShape: drawOneShape,
     convertPolyToPath: convertPolyToPath,
-    getShapeWidthHeight: getShapeWidthHeight
+    getShapeWidthHeight: getShapeWidthHeight,
+    generateCSSObjFromPath: generateCSSObjFromPath
   }
 
   //step two
   //addEventToCalendar
 
+  function generateCSSObjFromPath(anim_name, path, shape_offset) {
+    var startPoint = path.getPointAtLength(0);
+    var totalPathLength = path.getTotalLength();
+    var shapeOffset = shape_offset;
+    console.log(startPoint, path, shapeOffset);
+    if (!startPoint || !path || (!shapeOffset && shapeOffset !== 0)) return;
+
+    var cssAnimObj = AnimationService.initCSSAnimation(anim_name);
+    cssAnimObj.appendRule('0% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px);}', i);
+    console.log('starting animation obj...');
+    for (var i = 1; i < 100; i++) {
+       var indexPoint = path.getPointAtLength(i/100 *totalPathLength);
+       var indexPreviousPoint = path.getPointAtLength(i - 1);
+       var translateX = indexPoint.x - shapeOffset;
+       var translateY = indexPoint.y - shapeOffset;
+       var translateAng = Math.atan(indexPreviousPoint.y - indexPoint.y, indexPreviousPoint.x - indexPoint.x) * (180/Math.PI);
+       cssAnimObj.appendRule(i + '% {transform: translate(' + translateX + 'px, ' + translateY +'px) rotate(' + (translateAng + 180) + 'deg);}', i);
+    }
+    cssAnimObj.appendRule('100% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px);}', i);
+    return cssAnimObj;
+  }
+
   function getShapeWidthHeight(shape_elem) {
     if (shape_elem.nodeName === 'circle') {
       return {width: shape_elem.r.animVal.value, height: shape_elem.r.animVal.value};
     } else {
-      return {width: shape_elem.getBoundingClientRect().width, height: shape_elem.getBoundingClientRect().height}
+      return {width: shape_elem.getBoundingClientRect().width/2, height: shape_elem.getBoundingClientRect().height/2}
     }
   }
 
