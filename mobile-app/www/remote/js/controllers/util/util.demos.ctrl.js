@@ -48,10 +48,11 @@ angular.module('uguru.util.controllers')
       //initialize empty animation object
 
       $timeout(function() {
-        var shapeOffset = 18;
+        var shapeOffset = SVGService.getShapeWidthHeight(rect).width/2;
+        // var shapeOffset = 7.5;
 
         var cssAnimObj = AnimationService.initCSSAnimation('draw-star');
-        cssAnimObj.appendRule('0% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px);}', i);
+        cssAnimObj.appendRule('0% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px) rotate(' + (translateAng) + 'deg);}', i);
         for (var i = 1; i < 100; i++) {
            var indexPoint = path.getPointAtLength(i/100 *totalPathLength);
            var indexPreviousPoint = path.getPointAtLength(i - 1);
@@ -63,12 +64,14 @@ angular.module('uguru.util.controllers')
            $timeout(function() {
             $scope.$apply();
            })
-           cssAnimObj.appendRule(i + '% {transform: translate(' + translateX + 'px, ' + translateY +'px) rotate(' + (translateAng + 180) + 'deg);}', i);
+           cssAnimObj.appendRule(i + '% {transform: translate(' + translateX + 'px, ' + translateY +'px) rotate(' + (translateAng) + 'deg);}', i);
+           console.log('translate(' + translateX + 'px, ' + translateY +'px) rotate(' + (translateAng) + 'deg)');
         }
-        cssAnimObj.appendRule('100% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px);}', i);
+        cssAnimObj.appendRule('100% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px) rotate(' + (translateAng) + 'deg);}', i);
 
         $scope.buttonText = 'Play';
         $scope.full_animation_string = cssAnimObj.name + " 10s linear 0s 1 normal forwards";
+        $scope.full_keyframes = cssAnimObj.cssStyle;
         $scope.$apply();
       }, 100);
 
@@ -81,7 +84,7 @@ angular.module('uguru.util.controllers')
       console.log('path info:', pathCoordInfo);
 
       //get the rect & inject into the path svg
-      var rect = document.querySelector('svg polygon');
+      var rect = document.querySelector('svg rect');
       path.parentNode.appendChild(rect);
       //position the rect to be at the start point
       var startPoint = path.getPointAtLength(0);
@@ -95,7 +98,7 @@ angular.module('uguru.util.controllers')
     })
 
     $scope.playAnimation = function(animation_text) {
-      var rect = document.querySelector('svg polygon');
+      var rect = document.querySelector('svg rect');
       rect.style.animation = animation_text
       rect.style.webkitAnimation = animation_text;
       rect.addEventListener( 'webkitAnimationEnd', animEndCallback)
