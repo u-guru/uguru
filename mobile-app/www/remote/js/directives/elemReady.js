@@ -218,6 +218,24 @@ angular.module('uguru.directives')
   }
 
 }])
+.directive('onInit', ['$timeout', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      var kvSplit = attr.onInit && attr.onInit.length && attr.onInit.split(':');
+      if (kvSplit && kvSplit.length > 1) {
+        onInitProperty = kvSplit[0];
+        onInitPropertyValue = kvSplit[1];
+        if (onInitProperty in element[0].style) {
+          element[0].style[onInitProperty] = onInitPropertyValue;
+          $timeout(function() {
+            scope.$apply();
+          })
+        }
+      }
+    }
+  }
+}])
 .directive('tracePath', ['$timeout', function ($timeout) {
   return {
     restrict: 'A',
