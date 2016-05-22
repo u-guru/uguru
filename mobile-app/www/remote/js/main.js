@@ -611,6 +611,10 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
         templateUrl: BASE + 'templates/gabrie/project.html',
         controller: 'JeselleController'
   }).
+  state('root.curtains', {
+        url: '/curtains',
+        templateUrl: BASE + 'templates/curtains.html'
+  }).
   state('root.getting-started', {
         url: '/getting-started',
         templateUrl: BASE + 'templates/.html',

@@ -30,8 +30,34 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
 		activateSectionAnimations: activateSectionAnimations,
 		initializeSectionComponents: initializeSectionComponents,
 		applyAnimateInDirective: applyAnimateInDirective,
-		applyAnimateOutDirective: applyAnimateOutDirective
+		applyAnimateOutDirective: applyAnimateOutDirective,
+        initCSSAnimation: initCSSAnimation
 	}
+
+    function getBrowserPrefix() {
+        var browserPrefix;
+        navigator.sayswho= (function(){
+          var N = navigator.appName, ua = navigator.userAgent, tem;
+          var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+          if(M && (tem = ua.match(/version\/([\.\d]+)/i))!= null) M[2] = tem[1];
+          M = M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
+          M = M[0];
+          if(M == "Chrome") { browserPrefix = "webkit"; }
+          if(M == "Firefox") { browserPrefix = "moz"; }
+          if(M == "Safari") { browserPrefix = "webkit"; }
+          if(M == "MSIE") { browserPrefix = "ms"; }
+        })();
+        return browserPrefix;
+
+
+    }
+
+    function initCSSAnimation(anim_name, options) {
+        var browserPrefix = getBrowserPrefix();
+        var lastSheet = document.styleSheets[document.styleSheets.length - 1];
+        var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + anim_name + " { } ");
+        return lastSheet.cssRules[indexOfRuleInSheet];
+    }
 
   	function prefixedEventListener(element, type, callback) {
       var pfx = ["webkit", "moz", "MS", "o", ""];
