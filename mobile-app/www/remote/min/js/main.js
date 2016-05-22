@@ -1,7 +1,6 @@
 var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var img_base = ''; if (LOCAL) {BASE = 'remote/';REST_URL = "http://localhost:5000";}
 
-angular.module('uguru', ['ionic','ionic.utils', 'restangular',
-   'uguru.util.controllers','sharedServices', 'uguru.directives', 'uguru.components'])
+angular.module('uguru', ['ionic', 'uguru.preApp'])
 
 .run(function($ionicPlatform, $localstorage,
   $state, $ionicHistory, $rootScope,
@@ -40,12 +39,11 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular',
           $scope.root.vars = {min:true};
         }
   })
-
   .state('root.splash', {
     url:'/',
     templateUrl: BASE + 'templates/splash.html',
     controller: 'SplashController'
-  });
+  })
 
 
 
@@ -53,4 +51,5 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular',
   $urlRouterProvider.otherwise('/');
 
 
-});
+})
+.angular.module('uguru.preApp');
