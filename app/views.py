@@ -393,7 +393,7 @@ def check_auth(username, password):
     """This function is called to check if a username /
     password combination is valid.
     """
-    if 'uguru-rest-test' in request.url and 'static' not in request.url:
+    if 'uguru-rest-test' in request.url and not ('static' in request.url):
         return username == 'uguru_admin' and password == 'wetrackeverything'
     else:
         return True
