@@ -4,8 +4,9 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
     <link href="remote/min/css/loader.css" rel="stylesheet">
+    <script> var timer = {initTime: new Date().getTime()}; </script>
     </head>
-    <body ng-app="uguru" animation="slide-left-right-ios7">
+    <body animation="slide-left-right-ios7" onload="timer.body = new Date().getTime()" ng-app="uguru">
       <div class="loader-portal">
           <div class="portal">
             <div>
@@ -62,11 +63,35 @@
             </div>
           </div>
         </div>
-      <!--<script src="remote/js/u.base.js"></script>
-      <script src="remote/min/js/SplashController.js"></script>
+
       <ui-view id="uguru-view">
       </ui-view>
-      <script src="remote/js/main.min.js"></script>
-      <script type="text/javascript" src="remote/js/controllers/util/CalendarCtrl.js" ></script> -->
   </body>
+  <footer>
+
+    <script>
+        var files = ['remote/min/js/lib/bowser.min.js:async', 'remote/min/js/lib/snap.svg.min.js', 'remote/min/js/lib/ionic.bundle.min.js','remote/min/js/main.js', 'remote/min/js/SplashController.js'];
+        var isAngularReady = false;
+        for (var i = 0; i < files.length; i++) {
+          var new_script  = document.createElement('script');
+          new_script.type = 'text/javascript';
+          new_script.async = files[i].split('async').length > 1;
+          new_script.src = files[i].replace(':async', '');
+          new_script.onload = function(file_name) {
+            return function() {timer[file_name.split('/').reverse()[0]] = new Date().getTime();};
+          }(files[i])
+          document.getElementsByTagName('head')[0].appendChild(new_script);
+        }
+        var portalElem = document.querySelector('.loader-portal');
+        var portalEvent = document.createEvent('Event');
+        portalEvent.initEvent('shouldRenderView', true, true);
+        portalElem.addEventListener(((navigator.userAgent.indexOf('AppleWebKit') != -1) && 'webkitAnimationEnd') ||'animationend', function(e) { if (e.animationName === 'l-head-hover') {
+
+            portalElem.dispatchEvent(portalEvent);
+          }}, false)
+        setTimeout(function() {
+          for (property in timer) (timer[property] !== 'initTime') && console.log(property, timer[property] - timer['initTime'] + 'ms');
+        }, 1000)
+    </script>
+  </footer>
 </html>

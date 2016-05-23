@@ -2,7 +2,7 @@ var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var
 
 angular.module('uguru', ['ionic', 'uguru.preApp'])
 
-.run(function($ionicPlatform, $localstorage,
+.run(function($ionicPlatform,
   $state, $ionicHistory, $rootScope,
   $templateCache, $injector) {
 
@@ -10,7 +10,7 @@ angular.module('uguru', ['ionic', 'uguru.preApp'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, RestangularProvider,
+.config(function($stateProvider, $urlRouterProvider,
   $ionicConfigProvider, $compileProvider, $provide, $httpProvider,$sceDelegateProvider) {
 
    $sceDelegateProvider.resourceUrlWhitelist([
@@ -27,22 +27,20 @@ angular.module('uguru', ['ionic', 'uguru.preApp'])
 
 
 
-  RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
+  // RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
 
   $stateProvider
   .state('root', {
         url: '',
         abstract: true,
-        templateUrl: BASE + 'templates/root.html',
+        templateUrl: BASE + 'min/templates/root.html',
         controller: function($scope, $state) {
-          $scope.root = {};
-          $scope.root.vars = {min:true};
+          $state.go('^.splash');
         }
   })
   .state('root.splash', {
     url:'/',
-    templateUrl: BASE + 'templates/splash.html',
-    controller: 'SplashController'
+    templateUrl: BASE + 'min/templates/splash.html'
   })
 
 
@@ -52,4 +50,3 @@ angular.module('uguru', ['ionic', 'uguru.preApp'])
 
 
 })
-.angular.module('uguru.preApp');
