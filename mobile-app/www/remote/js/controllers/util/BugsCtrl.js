@@ -241,6 +241,7 @@ angular.module('uguru.util.controllers')
       FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', callbackFunc);
       function callbackFunc(name, resp) {
         scope.bugReport = resp
+        ReportService.updateBug(scope.bugReport)
         LoadingService.hide()
         $timeout(function() {
          LoadingService.showSuccess(resp.length + ' bugs loaded', 1000) ;
@@ -256,18 +257,15 @@ angular.module('uguru.util.controllers')
     // $scope.$on('$routeChangeStart',function(){
     //   alert("Hello! I am an alert box!!");
     // })
-
     $timeout(function() {
-      loadUpdatedBugsJsonFile($scope);
+      // loadUpdatedBugsJsonFile($scope);
+      $scope.bugReport = ReportService.getBug()
       intData()
-      $scope.test = ReportService.init()
-
     })
     
     setTimeout(function() {
-      console.log($scope.bugReport)
       $scope.openBugList($scope.bugReport[0])
-
+      console.log("ReportService: ",ReportService.getBug())
     }, 1000);
     window.onbeforeunload = function(event)
       {

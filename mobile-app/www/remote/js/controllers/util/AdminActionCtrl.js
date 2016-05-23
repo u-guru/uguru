@@ -7,7 +7,8 @@ angular.module('uguru.util.controllers')
   '$localstorage',
   '$window',
   'SpecContentService',
-  function($scope, $state, $timeout, $localstorage, $window, SpecContentService) {
+  'ReportService',
+  function($scope, $state, $timeout, $localstorage, $window, SpecContentService,ReportService) {
     //spec service get all
 
 
@@ -21,6 +22,12 @@ angular.module('uguru.util.controllers')
     $scope.admin_tasks = SpecContentService.getContentSpecAdmin('preApp');
     console.log('admin spec', $scope.admin_tasks);
 
+    // ReportService.initBug()
+    $scope.bugReport = ReportService.getBug()
+
+    setTimeout(function() {
+      console.log("service : ",  $scope.bugReport)
+    },3000);
 
     function getUserFirstName(user) {
       return user.name.split(' ')[0].toLowerCase();
