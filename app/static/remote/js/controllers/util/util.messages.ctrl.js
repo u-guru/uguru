@@ -55,9 +55,7 @@ angular.module('uguru.student.controllers')
         $scope.root.vars.last_active_relationship = $scope.active_relationship;
       }
       MessageService.initActiveRelationship($scope.active_relationship);
-      console.log($scope.active_relationship.nav)
       $scope.active_relationship.msg_nav = false;
-      console.log($scope.active_relationship);
     }
 
     $scope.student_search = {
@@ -74,7 +72,6 @@ angular.module('uguru.student.controllers')
     var txtInput; // ^^^
 
     $scope.$on('modal.shown', function() {
-      console.log('UserMessages $ionicView.enter');
       initActiveRelationships();
     });
 
@@ -133,7 +130,6 @@ angular.module('uguru.student.controllers')
 
       //2. Format message payload
       var messagePayload = getMessagePayload(msg_contents);
-      console.log('#1. Payload for message', messagePayload);
       var serverSuccessCallback = function() {
         $scope.active_relationship.new_message = '';
       }
@@ -169,14 +165,11 @@ angular.module('uguru.student.controllers')
     // this keeps the keyboard open on a device only after sending a message, it is non obtrusive
     function keepKeyboardOpen() {
       txtInput.one('blur', function() {
-        console.log('textarea blur, focus back on it');
         txtInput[0].focus();
       });
     }
 
     $scope.onMessageHold = function(e, itemIndex, message) {
-      console.log('onMessageHold');
-      console.log('message: ' + JSON.stringify(message, null, 2));
       $ionicActionSheet.show({
         buttons: [{
           text: 'Copy Text'
@@ -215,11 +208,9 @@ angular.module('uguru.student.controllers')
 
     // I emit this event from the monospaced.elastic directive, read line 480
     $scope.$on('taResize', function(e, ta) {
-      console.log('taResize');
       if (!ta) return;
 
       var taHeight = ta[0].offsetHeight;
-      console.log('taHeight: ' + taHeight);
 
       if (!footerBar) return;
 
@@ -290,7 +281,7 @@ angular.module('uguru.student.controllers')
       return $http.jsonp(endpoint).then(function(response) {
         return response.data;
       }, function(err) {
-        console.log('get user messages error, err: ' + JSON.stringify(
+        console.error('get user messages error, err: ' + JSON.stringify(
           err, null, 2));
       });
 
@@ -349,10 +340,8 @@ angular.module('uguru.student.controllers')
           for (var i = 0; i < autolinks.length; i++) {
             angular.element(autolinks[i]).bind('click', function(e) {
               var href = e.target.href;
-              console.log('autolinkClick, href: ' + href);
 
               if (href) {
-                //window.open(href, '_system');
                 window.open(href, '_blank');
               }
 
@@ -1064,13 +1053,11 @@ angular.module('monospaced.elastic', [])
 //
 
     // $scope.getMessagesFromServer = function(time_between, one_time, callback) {
-    //   console.log('getting message from server');
     //   Restangular
     //     .one('user', $scope.user.id).one('sessions', $scope.session.id).one('messages')
     //     .customGET()
     //     .then(function(response){
 
-    //         console.log('response from server', JSON.stringify(response.plain()));
     //         var server_messages = $scope.processMessages(response.messages);
     //         server_messages.sort($scope.sortMessageComparator);
     //         if (server_messages.length > $scope.messages.length) {
@@ -1088,8 +1075,7 @@ angular.module('monospaced.elastic', [])
     //         }
 
     //     }, function(err){
-    //         console.log(err);
-    //         console.log('error...something happened with the server;')
+    //         console.error('error...something happened with the server;')
     //   });
 
     // }

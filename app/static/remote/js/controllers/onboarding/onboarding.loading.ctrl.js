@@ -18,13 +18,11 @@ angular.module('uguru.onboarding.controllers')
 
 
     if ($scope.user.university_id && $scope.user.guru_mode) {
-        console.log('going to guru mode');
     //mixpanel track
     mixpanel.track("Guru.home");
       $state.go('^.guru-home')
       return;
     } else if ($scope.user.university_id && !$scope.user.guru_mode) {
-        console.log('going to student mode');
         //mixpanel track
         mixpanel.track("Student.home");
       $state.go('^.student-home');

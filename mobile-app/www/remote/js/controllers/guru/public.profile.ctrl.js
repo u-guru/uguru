@@ -39,7 +39,7 @@ angular.module('uguru.guru.controllers')
         }
 
         var failure = function(err) {
-          console.log(err);
+          console.error(err);
         }
 
         Restangular.one('user', user_id).customGET().then(success, failure)

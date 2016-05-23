@@ -153,11 +153,16 @@ def loadMostUpdatedElementsJson():
 
 ### Initialize elements component
 def syncLocalElementsToMP():
-    mp = Mixpanel('3e9825a431a4944b5037c7bf6d909690')
+    import json
+    from s3_tools import create_static_file
     elements = loadMostUpdatedElementsJson()
-    mp.people_set('4', {
-        'elements': elements
-    })
+    create_static_file(bucket_name="uguru-admin", path="master", file_name="elements.json",
+    file_contents=json.dumps(elements, indent=4), file_metadata='application/json', perm='public-read')
+    # mp = Mixpanel('3e9825a431a4944b5037c7bf6d909690')
+
+    # mp.people_set('4', {
+    #     'elements': elements
+    # })
     print "local elements successfully synced"
 
 def resolveLocalElements():
@@ -243,8 +248,10 @@ def addNewElement(element, _dict):
     return mp_elements_dict
 
 def getMostUpdatedMPElements():
-    user = formatMPResponse(getQueryDict('engage', {'distinct_id': 4}))
-    elements =  user['results'][0]['$properties']['elements']
+    import json
+    # user = formatMPResponse(getQueryDict('engage', {'distinct_id': 4}))
+    # elements =  user['results'][0]['$properties']['elements']
+    elements = json.loads(requests.get('https://s3.amazonaws.com/uguru-admin/master/elements.json').text)
     return elements
 
 def applyChangeToElement(section, _id, change_dict):
@@ -560,6 +567,81 @@ def cliTemplate(arr_args):
     selected_option = arr_args[int(option) - 1]
     return selected_option, int(option) - 1
 
+def getAllFiles(path, wildcard_matcher):
+    import fnmatch
+    import os
+    matches = []
+    for root, dirnames, filenames in os.walk(path):
+        for filename in fnmatch.filter(filenames, wildcard_matcher):
+            matches.append(os.path.join(root, filename))
+    return matches
+
+def getAllComponentsContainers():
+    matcher = '*.tpl'
+    path = 'mobile-app/www/remote/templates/elements'
+    matches = getAllFiles(path, matcher)
+    matches += getAllFiles(path, '*html')
+    matches += getAllFiles(path, '*svg')
+    matches += getAllFiles(path, '*json')
+    match_dict = {'components': [], 'containers': [], 'assets': [], "layouts":[]}
+
+    for match in matches:
+        if '/elements/components/' in match:
+            nested_path = match.split('/elements/components/')[-1]
+            nested_path_split = nested_path.split('/')
+            tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
+            _id = len(match_dict['components']) + 1
+            ref = "-".join(nested_path_split).replace('.tpl', '')
+            ref = ref.replace('.','-')
+            match_dict['components'].append({
+                'id': _id,
+                'ref': ref,
+                'template_url': 'templates/' + nested_path,
+                'tags': tags
+                })
+        elif '/elements/containers/' in match:
+            nested_path = match.split('/elements/containers/')[-1]
+            nested_path_split = nested_path.split('/')
+            tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
+            _id = len(match_dict['containers']) + 1
+            ref = "-".join(nested_path_split).replace('.tpl', '')
+            ref = ref.replace('.','-')
+            match_dict['containers'].append({
+                'id': _id,
+                'ref': ref,
+                'template_url': 'templates/' + nested_path,
+                'tags': tags
+                })
+        elif '/elements/layouts/' in match:
+            nested_path = match.split('/elements/layouts/')[-1]
+            nested_path_split = nested_path.split('/')
+            tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
+            _id = len(match_dict['layouts']) + 1
+            ref = "-".join(nested_path_split).replace('.tpl', '')
+            ref = ref.replace('.','-')
+            match_dict['layouts'].append({
+                'id': _id,
+                'ref': ref,
+                'template_url': 'templates/' + nested_path,
+                'tags': tags
+                })
+        elif '/elements/assets/' in match:
+            print match
+            nested_path = match.split('/elements/assets/')[-1]
+            nested_path_split = nested_path.split('/')
+            tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
+            _id = len(match_dict['assets']) + 1
+            ref = "-".join(nested_path_split).replace('.tpl', '')
+            ref = ref.replace('.','-')
+            match_dict['assets'].append({
+                'id': _id,
+                'ref': ref,
+                'template_url': 'templates/' + nested_path,
+                'tags': tags
+                })
+    return match_dict
+
+
 def cliFormTemplate(arr_args, _type="required"):
     print "\n\nThese are the %s %s fields to fill out\n\n>>>  " % (len(arr_args), _type)
     filled_args = []
@@ -598,57 +680,13 @@ if 'sync' in args and len(args) == 2:
     print "syncing MP --> Local"
     saveDictToElementsJson()
 
-if 'sync' in args and len(args) == 3 and '-e' in args:
+if 'sync' in args and len(args) == 3 and ('-e' in args or 'files' in args):
     elem_dict = loadMostUpdatedElementsJson()
     from pprint import pprint
     components = elem_dict.get('components')
     containers = elem_dict.get('containers')
-
-    def getAllFiles(path, wildcard_matcher):
-        import fnmatch
-        import os
-        matches = []
-        for root, dirnames, filenames in os.walk(path):
-            for filename in fnmatch.filter(filenames, wildcard_matcher):
-                matches.append(os.path.join(root, filename))
-        return matches
-
-    def getAllComponentsContainers():
-        matcher = '*.tpl'
-        path = 'mobile-app/www/remote/templates/elements'
-        matches = getAllFiles(path, matcher)
-        match_dict = {'components': [], 'containers': []}
-        for match in matches:
-            if '/elements/components/' in match:
-                nested_path = match.split('/elements/components/')[-1]
-                nested_path_split = nested_path.split('/')
-                tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
-                _id = len(match_dict['components']) + 1
-                ref = "-".join(nested_path_split).replace('.tpl', '')
-                ref = ref.replace('.','-')
-                match_dict['components'].append({
-                    'id': _id,
-                    'ref': ref,
-                    'template_url': 'templates/' + nested_path,
-                    'tags': tags
-                    })
-            elif '/elements/containers/' in match:
-                nested_path = match.split('/elements/containers/')[-1]
-                nested_path_split = nested_path.split('/')
-                tags = [tag.replace('.tpl', '') for tag in nested_path_split[0:len(nested_path_split)]]
-                _id = len(match_dict['containers']) + 1
-                ref = "-".join(nested_path_split).replace('.tpl', '')
-                ref = ref.replace('.','-')
-                match_dict['containers'].append({
-                    'id': _id,
-                    'ref': ref,
-                    'template_url': 'templates/' + nested_path,
-                    'tags': tags
-                    })
-        return match_dict
-
-
-
+    layouts = elem_dict.get('layouts')
+    assets = elem_dict.get('assets')
 
     match_dict = getAllComponentsContainers()
     comp_refs = [comp['ref'] for comp in match_dict['components']]
@@ -663,10 +701,21 @@ if 'sync' in args and len(args) == 3 and '-e' in args:
                 if key not in new_comp_keys:
                     new_comp_dict[key] = old_comp[key]
 
+    comp_refs = [comp['ref'] for comp in match_dict['containers']]
     for old_comp in containers:
         if old_comp['ref'] in comp_refs:
             comp_refs_index = comp_refs.index(old_comp['ref'])
             new_comp_dict = match_dict['containers'][comp_refs_index]
+            new_comp_keys = new_comp_dict.keys()
+            for key in old_comp.keys():
+                if key not in new_comp_keys:
+                    new_comp_dict[key] = old_comp[key]
+
+    comp_refs = [comp['ref'] for comp in match_dict['layouts']]
+    for old_comp in layouts:
+        if old_comp['ref'] in comp_refs:
+            comp_refs_index = comp_refs.index(old_comp['ref'])
+            new_comp_dict = match_dict['layouts'][comp_refs_index]
             new_comp_keys = new_comp_dict.keys()
             for key in old_comp.keys():
                 if key not in new_comp_keys:
@@ -678,8 +727,23 @@ if 'sync' in args and len(args) == 3 and '-e' in args:
         if not component.get('name'):
              needs_name = "NEEDS NAME"
         print component['id'], component['ref'], needs_name
+
+    elem_dict['layouts'] = match_dict['layouts']
+    for component in elem_dict['layouts']:
+        needs_name = ''
+        if not component.get('name'):
+             needs_name = "NEEDS NAME"
+        print 'layouts - ', component['id'], component['ref'], needs_name
+
+    elem_dict['assets'] = match_dict['assets']
+    for component in elem_dict['assets']:
+        needs_name = ''
+        if not component.get('name'):
+             needs_name = "NEEDS NAME"
+        print 'assets - ', component['id'], component['ref'], needs_name
+
     elem_dict['containers'] = match_dict['containers']
-    print "Saving new dict with %s components and %s containers ... to elements.json" % (len(elem_dict['components']), len(elem_dict['containers']))
+    print "Saving new dict with \n\n%s components \n\n%s containers \n\n%s assets \n\n%s layouts to elements.json \n\n" % (len(elem_dict['components']), len(elem_dict['containers']), len(elem_dict['assets']), len(elem_dict['layouts']))
     saveElementsJson(elem_dict)
     print "syncing to MP..."
     syncLocalElementsToMP()
@@ -799,14 +863,40 @@ if 'get' in args or '-g' in args:
         pprint(next_option['element_states'])
 
 
-if 'edit' in args or '-e' in args:
-    if len(args) == 3:
+if 'edit' in args and ('--json' in args or '-j' in args):
+    if len(args) == 6 and args[-2] == "tests":
+        user_name = args[-1]
+        import json
+        from pprint import pprint
+        path = args[-3]
+        json_element_dict = json.load(open(path))
+        scene_states = json_element_dict['scene_states']
+        for scene in scene_states:
+            if scene.get('tests'):
+                scene['tests'] = None
+        for variation in json_element_dict['variations']:
+            if variation.get('scene_states'):
+                variation['scene_states'] = scene_states
+            if variation.get('selected_scene_state'):
+                variation['selected_scene_state'] = None
+        if json_element_dict.get('selected_scene_state'):
+            json_element_dict['selected_scene_state'] = None
+        if json_element_dict.get('selected_variation'):
+            s_variation = json_element_dict['selected_variation']
 
-        allElementRequirements = getInteractiveRequirements()
-        all_options = allElementRequirements["all_options"]
+            if s_variation.get('selected_scene_state'):
+                s_variation['selected_scene_state'] = None
+        for scene in scene_states:
+            scene['tests'] = getBasePlatformDict()
+        with open(path, 'wb') as fp:
+            json.dump(json_element_dict, fp, sort_keys = True, indent = 4)
+        print "successfully updated scene states for %s with tests in path %s" % (path.split('/')[-1], path)
 
-        all_options = cliFormat(all_options, action="edit")
-        selected_option, selected_index = cliTemplate(all_options)
+
+
+
+
+
 
 if 'link' in args or '-l' in args:
     validateResults, elements = validateCreateArgs(args[2:])

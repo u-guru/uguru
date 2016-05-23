@@ -136,9 +136,6 @@ angular.module('uguru.guru.controllers')
       var studentCalendarDates = $scope.convertPythonDateStrToJsDate(studentCalendarJson);
 
       $scope.student_calendar = studentCalendarDates;
-      console.log(JSON.stringify($scope.student_calendar));
-
-
 
     });
 

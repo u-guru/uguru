@@ -1,21 +1,57 @@
 angular
 .module('sharedServices')
 .factory("SVGService", [
+  'AnimationService',
   SVGService
     ]);
 
-function SVGService() {
+function SVGService(AnimationService) {
   var supportedShapes = ['circle', 'rect', 'polygon', 'path', 'line']
 
   return {
     getTotalPathLength: getTotalPathLength,
     computeDrawDuration:computeDrawDuration,
     supportedShapes: supportedShapes,
-    drawOneShape: drawOneShape
+    drawOneShape: drawOneShape,
+    convertPolyToPath: convertPolyToPath,
+    getShapeWidthHeight: getShapeWidthHeight,
+    generateCSSObjFromPath: generateCSSObjFromPath
   }
 
   //step two
   //addEventToCalendar
+
+  function generateCSSObjFromPath(anim_name, path, shape_offset) {
+    var startPoint = path.getPointAtLength(0);
+    var totalPathLength = path.getTotalLength();
+    var shapeOffset = shape_offset * 6;
+    console.log(startPoint, path, shapeOffset);
+    if (!startPoint || !path || (!shapeOffset && shapeOffset !== 0)) return;
+
+    var cssAnimObj = AnimationService.initCSSAnimation(anim_name);
+    // cssAnimObj.appendRule('0% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px) rotate(' +180 + 'deg);}', i);
+    console.log('starting animation obj...');
+    for (var i = 0; i < 100; i++) {
+       var indexPoint = path.getPointAtLength(i/100 *totalPathLength);
+       var indexPreviousPoint = path.getPointAtLength((i+1)/100 * totalPathLength);
+
+
+       var translateX = indexPoint.x - shapeOffset;
+       var translateY = indexPoint.y - shapeOffset;
+       var translateAng = Math.atan2(indexPoint.y - indexPreviousPoint.y, indexPoint.x - indexPreviousPoint.x) * (180/Math.PI);
+       cssAnimObj.appendRule(i + '% {transform: translate(' + translateX + 'px, ' + translateY +'px) rotate(' + (translateAng + 180) + 'deg);}', i);
+    }
+    cssAnimObj.appendRule('100% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px);}', i);
+    return cssAnimObj;
+  }
+
+  function getShapeWidthHeight(shape_elem) {
+    if (shape_elem.nodeName === 'circle') {
+      return {width: shape_elem.r.animVal.value, height: shape_elem.r.animVal.value};
+    } else {
+      return {width: shape_elem.getBoundingClientRect().width/2, height: shape_elem.getBoundingClientRect().height/2}
+    }
+  }
 
   function getTotalPathLength(elem) {
     var elemType = elem && elem.nodeName && elem.nodeName.toLowerCase();
@@ -42,7 +78,6 @@ function SVGService() {
       drawShape();
 
       var requestFrameHandle = 0;
-
       function drawShape() {
         var progress = current_frame/total_frames;
           if (progress > 1) {
@@ -85,6 +120,27 @@ function SVGService() {
       var y2 = elem.getAttribute('y2');
       var lineLength = Math.sqrt(Math.pow((x2-x1), 2)+Math.pow((y2-y1),2));
       return lineLength;
+  }
+
+  function convertPolyToPath(poly){
+    var svgNS = poly.ownerSVGElement.namespaceURI;
+    var path = document.createElementNS(svgNS,'path');
+    var points = poly.getAttribute('points').split(/\s+|,/);
+    var x0=points.shift(), y0=points.shift();
+    var pathdata = 'M'+x0+','+y0+'L'+points.join(' ');
+    if (poly.tagName=='polygon') pathdata+='z';
+    path.setAttribute('d',pathdata);
+    // poly.parentNode.replaceChild(path,poly);
+    return path;
+  }
+
+  function convertPointStringToPathString(point_str) {
+    var path = "";
+    var p = point_str;
+    for( var i = 0, len = p.length; i < len; i++ ){
+        path += (i && "L" || "M") + p[i]
+    }
+    return path.replace(',', ' ') + 'z';
   }
 
   function getPolygonLength(elem){

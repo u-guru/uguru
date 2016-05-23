@@ -24,16 +24,20 @@ var karma = require('karma').server;
 var preprocess = require('gulp-preprocess');
 var replace = require('gulp-replace-task');
 var fs = require('fs');
+var htmlmin = require('gulp-htmlmin');
+
 /**
  * Parse arguments
  */
 var args = require('yargs')
     .alias('uld', 'update-local-device')
     .alias('b', 'build')
+    .alias('m', 'min')
     .default('build', false)
     .argv;
 
 var build = args.build;
+var min = args.min;
 var uld = args.uld;
 var targetDir = path.resolve('dest');
 
@@ -185,11 +189,15 @@ gulp.task('styles', function() {
 
   var cssStream21 = gulp.src('www/remote/css/sass/splash.css');
   var cssStream22 = gulp.src('www/remote/css/sass/splash-animation.css');
-
-  var cssStream23 = gulp.src('www/remote/css/sass/intercom.css');
-  var cssStream24 = gulp.src('www/remote/css/sass/samir.css');
-  var cssStream25 = gulp.src('www/remote/css/sass/essay.css');
-  var cssStream26 = gulp.src('www/remote/css/sass/angular-fx.css');
+  var cssStream23 = gulp.src('www/remote/css/sass/powerups.css');
+  var cssStream24 = gulp.src('www/remote/css/dev/gpa/style.css');
+  var cssStream25 = gulp.src('www/remote/css/sass/intercom.css');
+  var cssStream26 = gulp.src('www/remote/css/sass/samir.css');
+  var cssStream27 = gulp.src('www/remote/css/sass/essay.css');
+  var cssStream28 = gulp.src('www/remote/css/sass/angular-fx.css');
+  var cssStream29 = gulp.src('www/remote/css/sass/gabrie/style.css');
+  var cssStream30 = gulp.src('www/remote/css/sass/jeselle/utility.css');
+  var cssStream31 = gulp.src('www/remote/css/sass/jeselle/style.css');
 
 
 
@@ -198,9 +206,14 @@ gulp.task('styles', function() {
   return streamqueue({ objectMode: true }, cssStream1, cssStream2, cssStream3,
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8, cssStream9, cssStream10,
     cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
-    cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26).pipe(plugins.concat('main.css'))
+    cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26,
+    cssStream27, cssStream28, cssStream29, cssStream30, cssStream31).pipe(plugins.concat('main.css'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
-    .pipe(minifyCSS())
+    .pipe(minifyCSS({debug: true}, function(details) {
+            console.log("DEBUG")
+            console.log(details.name + ': ' + details.stats.originalSize);
+            console.log(details.name + ': ' + details.stats.minifiedSize);
+    }))
     .pipe(plugins.if(build, plugins.rev()))
     .pipe(gulp.dest(path.join(targetDir, 'styles')))
     .on('error', errorHandler);
@@ -221,47 +234,56 @@ gulp.task('scripts', function() {
   // (remember to change appName var to desired module name)
   var templateStream = gulp
       .src([
-        'templates/root.html',
-        'templates/access.html',
-        'templates/university.html',
-        'templates/university.container.html',
-        'templates/majors.container.html',
-        'templates/guru.courses.container.html',
-        'templates/signup.html',
-        'templates/guru.remote.html',
-        'templates/guru.languages.container.html',
-        'templates/guru.experiences.container.html',
-        'templates/payments.html',
-        'templates/student.guru-book.html',
-        'templates/student.settings.html',
-        'templates/student.settings.html',
-        'templates/add-course.modal.html',
-        'templates/add-university.modal.html',
-        'templates/university.modal.html',
-        'templates/signup.modal.html',
-        // 'templates/become-guru.modal.html',
-        'templates/offline.html',
-        'templates/*html',
-        'templates/dev/*html',
-        'templates/**/*html',
-        'templates/**/**/*html',
-        'templates/**/**/**/*html',
+        'templates/**/*',
+        // 'templates/root.html',
+        // 'templates/access.html',
+        // 'templates/university.html',
+        // 'templates/university.container.html',
+        // 'templates/majors.container.html',
+        // 'templates/guru.courses.container.html',
+        // 'templates/signup.html',
+        // 'templates/guru.remote.html',
+        // 'templates/guru.languages.container.html',
+        // 'templates/guru.experiences.container.html',
+        // 'templates/payments.html',
+        // 'templates/student.guru-book.html',
+        // 'templates/student.settings.html',
+        // 'templates/student.settings.html',
+        // 'templates/add-course.modal.html',
+        // 'templates/add-university.modal.html',
+        // 'templates/university.modal.html',
+        // 'templates/signup.modal.html',
+        // // 'templates/become-guru.modal.html',
+        // 'templates/offline.html',
+        // 'templates/*html',
+        // 'templates/dev/*html',
+        // 'templates/**/*html',
+        // 'templates/**/**/*html',
+        // 'templates/**/**/**/*html',
         // 'templates/guru/*html',
         // 'templates/components/modals/*html',
         // 'templates/components/details/*html',
         // 'templates/components/inputs/*html'
-      ], { cwd: 'www/remote' })
-
+      ], { cwd: 'dest/' })
+    // .pipe(debug())
     .pipe(plugins.angularTemplatecache('templates.js', {
       root: '/static/remote/templates/',
       module: 'uguru',
       htmlmin: build && minifyConfig
     }));
 
+    streamqueue({ objectMode: true }, templateStream)
+        .pipe(plugins.if(build, plugins.ngAnnotate()))
+        .pipe(plugins.if(build, plugins.uglify()))
+        .pipe(plugins.if(build, plugins.rev()))
+        .pipe(plugins.if(build, plugins.concat('templates.js')))
+        .pipe(gulp.dest(dest))
+
+        .on('error', errorHandler);
   var scriptStream = gulp
 
     .src([
-      'templates.js',
+      // 'templates.js',
       "lib/google/webfont.js",
       'lib/uguru/detect.mobile.js',
       'lib/uguru/preload.analytics.js',
@@ -328,6 +350,7 @@ gulp.task('scripts', function() {
       "js/shared/Settings.js",
       "js/directives/*.js",
       "js/device/*.js",
+      "!js/shared/Jeselle*.js",
       "js/shared/*.js",
 
 
@@ -335,31 +358,46 @@ gulp.task('scripts', function() {
       "js/university/*.js",
       "js/essay/*.js",
       "js/access/*.js",
-      "js/controllers/student/home.ctrl.js",
+
+      // "js/controllers/student/home.ctrl.js",
+      "js/controllers/student/student.ctrl.js",
       "js/controllers/student/*.js",
       "js/controllers/guru/guru.ctrl.js",
       "js/controllers/guru/*.js",
+      "js/controllers/gpa/GPAController.js",
+      "js/controllers/gpa/*.js",
+      "js/controllers/food/*.js",
+      "js/controllers/sound/*.js",
+      "js/controllers/transit/*.js",
+      "!js/controllers/util/*bugs*js",
       "js/controllers/util/*js",
-      "js/controllers/dev/*js",
+      "js/controllers/dev/util.dev.ctrl.js",
+      "js/controllers/dev/util.devtools.ctrl.js",
       "js/controllers/desktop/SettingsCtrl.js",
       "js/controllers/desktop/*",
+      "js/controllers/gpa/GPAController.js",
+      "js/controllers/gpa/IntroController.js",
+      "js/controllers/food/GrubHomeCtrl.js",
+      "js/controllers/food/GrubDetailsCtrl.js",
+      "js/controllers/food/GrubFiltersCtrl.js",
+      "js/controllers/food/restaurants.js",
+      "js/controllers/sound/MusicHomeCtrl.js",
+      "js/controllers/sound/*.js",
+      "js/controllers/transit/TransitHomeCtrl.js",
+      "js/controllers/transit/*.js"
       ], { cwd: 'www/remote' })
     // .src(['templates.js', 'app.js', '**/*.js'], { cwd: 'app/scripts' })
 
     .pipe(plugins.if(!build, plugins.changed(dest)));
 
   // return streamqueue({ objectMode: true }, scriptStream, templateStream)
-  return streamqueue({ objectMode: true }, scriptStream, templateStream)
+  return streamqueue({ objectMode: true }, scriptStream)
     .pipe(plugins.if(build, plugins.ngAnnotate()))
-    .pipe(plugins.if(build, plugins.concat('app.js')))
-    // .pipe(plugins.if(build, plugins.uglify()))
+    .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
-
+    .pipe(plugins.if(build, plugins.concat('app.js')))
     .pipe(gulp.dest(dest))
-
-    .on('error', errorHandler);
 });
-
 
 
 // lint js sources based on .jshintrc ruleset
@@ -402,41 +440,49 @@ gulp.task('jsHint', function(done) {
 
 // copy templates
 gulp.task('templates', function() {
-  return gulp.src([
-        'templates/**/*.html',
-        'templates/**/**/*.html',
-        'templates/**/**/**/*.html',
-        'templates/svg/**/*.html',
-        'templates/student.home.html',
-        'templates/student.home.body.html',
-        'templates/student.guru-book.html',
-        'templates/student.settings.html',
-        'templates/student.settings.html',
-        'templates/components/modals/add-course.modal.html',
-        'templates/components/modals/add-university.modal.html',
-        'templates/components/modals/university.modal.html',
-        // 'templates/components/modals/signup.modal.html',
-        'templates/components/modals/become-guru.modal.html',
-        'templates/util/offline.html',
-        'templates/*html',
-        'templates/dev/*html',
-        'templates/elements/*',
-        'templates/elements/**/**',
-        'templates/elements/**/**/**',
-        'templates/elements/**/**/**/**',
-        'templates/elements/**/**/**/**/**',
-        'templates/guru/*html',
-        'templates/components/modals/*html',
-        'templates/components/details/*html',
-        'templates/components/inputs/*html',
-        'templates/components/**/**/**.html',
-        'templates/splash/*.html',
-        'templates/splash/**/*.html',
-        'templates/splash/**/**/**.html',
-
-      ], { cwd: 'www/remote' })
+  gulp.src([
+      'templates/**/*png',
+       ], { cwd: 'www/remote' })
     .pipe(gulp.dest(path.join(targetDir, 'templates')))
 
+
+  return gulp.src([
+        'templates/**/*html',
+        'templates/**/*tpl',
+        'templates/**/*svg',
+        // 'templates/**/**/*.html',
+        // 'templates/**/**/**/*.html',
+        // 'templates/svg/**/*.html',
+        // 'templates/student.home.html',
+        // 'templates/student.home.body.html',
+        // 'templates/student.guru-book.html',
+        // 'templates/student.settings.html',
+        // 'templates/student.settings.html',
+        // 'templates/components/modals/add-course.modal.html',
+        // 'templates/components/modals/add-university.modal.html',
+        // 'templates/components/modals/university.modal.html',
+        // // 'templates/components/modals/signup.modal.html',
+        // 'templates/components/modals/become-guru.modal.html',
+        // 'templates/util/offline.html',
+        // 'templates/*html',
+        // 'templates/dev/*html',
+        // 'templates/elements/*',
+        // 'templates/elements/assets/*',
+        // // 'templates/elements/**/**/**',
+        // // 'templates/elements/**/**/**/**',
+        // // 'templates/elements/**/**/**/**/**'
+        // 'templates/guru/*html',
+        // 'templates/components/modals/*html',
+        // 'templates/components/details/*html',
+        // 'templates/components/inputs/*html',
+        // 'templates/components/**/**/**.html',
+        // 'templates/splash/*.html',
+        // 'templates/splash/**/*.html',
+        // 'templates/splash/**/**/**.html',
+
+      ], { cwd: 'www/remote' })
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest(path.join(targetDir, 'templates')))
     .on('error', errorHandler);
 });
 
@@ -496,13 +542,20 @@ gulp.task('default', function(done) {
       'templates',
       'styles',
       'jsHint',
-      'scripts'
     ],
+    'scripts',
     // 'index',
     build ? 'noop' : 'watchers',
     build ? 'noop' : 'serve',
     done);
 });
+
+gulp.task('min', function(done) {
+  runSequence(
+    'min-scripts'
+    )
+})
+
 
 gulp.task('preprocess-regular', function() {
     return gulp.src(['js/main.js'], { cwd: 'www/remote' })

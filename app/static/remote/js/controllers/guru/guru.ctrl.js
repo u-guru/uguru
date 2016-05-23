@@ -39,7 +39,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   };
 
   $scope.profile = {edit_mode:true, showCredibility:false};
-
+  console.log("USER",$scope.user)
   $scope.activePortfolioItem = {};
 
   if (!$scope.user.id) {
@@ -52,23 +52,25 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
   }, 1500)
 
   var CTA_PARENT_DICT = {
-    'cta-box-profile':'.guru-home-container',
-    'cta-box-credibility':'.guru-home-container',
-    'cta-box-students': '.guru-home-container',
-    'cta-box-balance': '.guru-home-container',
+    'cta-box-profile':'#desktop-guru-home',
+    'cta-box-credibility':'#desktop-guru-home',
+    'cta-box-students': '#desktop-guru-home',
+    'cta-box-balance': '#desktop-guru-home',
     'cta-box-profile-contact': '.pf-type',
     'cta-box-profile-experiences': '.pf-tab-container',
     'cta-box-profile-languages': '.pf-tab-container',
     'cta-box-profile-pi-item': '.pf-tab-item',
     'cta-box-profile-skills': '.pf-type',
     'cta-box-referrals': '#desktop-guru-home',
-    'cta-box-support': '.guru-home-container',
-    'cta-box-signup': '.guru-home-container',
+    'cta-box-ranking': '#desktop-guru-home',
+    'cta-box-rating' :'#desktop-guru-home',
+    'cta-box-support': '#desktop-guru-home',
+    'cta-box-signup': '#desktop-guru-home',
     'cta-box-payments': '#desktop-balance',
-    'cta-box-billing': '.guru-home-container',
-    'cta-box-tour': '.guru-home-container',
-    'cta-box-content': '.guru-home-container',
-    'cta-box-proposals': '.guru-home-container'
+    'cta-box-billing': '#desktop-guru-home',
+    'cta-box-tour': '#desktop-guru-home',
+    'cta-box-content': '#desktop-guru-home',
+    'cta-box-proposals': '#desktop-guru-home'
   }
 
   $scope.launchCtaDict = {};
@@ -134,7 +136,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 
   $scope.shiftCTAUnderneathPI = function($event) {
-    console.log($event.target);
+      return;
   }
 
   $scope.root.vars.guru_mode = true;
@@ -167,7 +169,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
           // elem = document.querySelector('#guru-ranking-progress-bar')
           // if (elem) {
-          //   console.log('circle already exists!');
           //   return;
           // }
 
@@ -200,6 +201,8 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
         function addEventListenerToCTABox(box_elem, modal_elem_id, index) {
             $scope.launchCtaDict[box_elem.id] = function() {
                 var modal_elem = document.querySelector('#' + modal_elem_id);
+                console.log("CHECK ", modal_elem)
+
                 var closeCTAModal = cta(box_elem, modal_elem, CTA_OPTIONS, function() {
 
                     $timeout(function() {
@@ -217,7 +220,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
                 }, CTA_PARENT_DICT[box_elem.id]);
 
               }
-
             box_elem.addEventListener('click', $scope.launchCtaDict[box_elem.id]);
         }
 
@@ -235,7 +237,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
          function getModalCTAElemID(cta_box_elem) {
             elem_id = cta_box_elem.id;
             modalID = elem_id.replace('box', 'modal');
-            // console.log('\n\nprocessing box --> modal mapping', elem_id, modalID, '\n\n');
             return modalID;
         }
 
@@ -324,7 +325,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
       })
 
         $scope.initMobileModals = function() {
-          console.log('initializing modals..');
+
+          $ionicModal.fromTemplateUrl(BASE + 'templates/billing.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.billingModal = modal;
+          });
+
           $ionicModal.fromTemplateUrl(BASE + 'templates/referrals.mobile.modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -359,6 +367,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
             animation: 'slide-in-up'
           }).then(function(modal) {
             $scope.profileModal = modal;
+          });
+
+          $ionicModal.fromTemplateUrl(BASE + 'templates/ranking.mobile.modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+          }).then(function(modal) {
+            $scope.rankingModal = modal;
           });
 
           $ionicModal.fromTemplateUrl(BASE + 'templates/credibility.mobile.modal.html', {
@@ -486,7 +501,6 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 
 		var checkIsFirstTimeGuruMode = function(is_first_time) {
 			if (is_first_time) {
-				console.log('it is the first itme..');
 				appOnboardingObj = {
 					guruWelcome: true
 				}
@@ -496,9 +510,7 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 				}, 1000);
 				$localstorage.setObject('appOnboarding', appOnboardingObj);
 
-			} else {
-				console.log(appOnboardingObj);
-			}
+			} 
 		}
 
 
@@ -538,6 +550,13 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 				LoadingService.showMsg('You need an account to do that!', 2500)
 			}
 		}
+    $scope.showRankingModal = function(){
+      if($scope.user && $scope.user.id){
+        $scope.rankingModal.show();
+      }else{
+        LoadingService.showMsg('You need an account to do that!', 2500)
+      }
+    }
 
 		$scope.showCredibilityModal = function() {
 			if ($scope.user && $scope.user.id) {
@@ -546,7 +565,14 @@ function($scope, $state, $ionicPlatform, $cordovaStatusbar,
 				LoadingService.showMsg('You need an account to do that!', 2500)
 			}
 		}
-
+    $scope.showBillingModal = function()
+    {
+      if ($scope.user && $scope.user.id) {
+        $scope.billingModal.show();
+      } else {
+        LoadingService.showMsg('You need an account to do that!', 2500)
+      }
+    }
 		$scope.$on('$ionicView.loaded', function() {
 			$scope.root.vars.showDesktopSettings = false;
 		})

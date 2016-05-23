@@ -19,7 +19,6 @@ angular.module('uguru.util.controllers')
   $q, Major, $ionicSideMenuDelegate, Utilities,
   $localstorage, uTracker, University, LoadingService) {
 
-    console.log('starting university majors from', University)
     $scope.source = University.source;
 
     $scope.refresh = {
@@ -82,16 +81,11 @@ angular.module('uguru.util.controllers')
       var majorsList = document.querySelectorAll('#major-list');
       var items = majorsList[0].querySelectorAll('ul li a');
 
-      console.log("items.length: " + items.length);
-
       if (items.length === 1) {
-        console.log("fast selecting the one present major");
         $timeout(function() {
           angular.element(items[0]).triggerHandler('click');
         }, 0);
 
-      } else {
-        console.log("ignoring since more than one majors in the source list");
       }
     };
 
@@ -102,7 +96,6 @@ angular.module('uguru.util.controllers')
 
       for(var i=0; i < $scope.source.majors.length; i++) {
         if($scope.source.majors[i].id === major.id) {
-          console.log("transferring major from source to user");
           $scope.source.majors.splice(i, 1);
         }
       }
@@ -130,8 +123,6 @@ angular.module('uguru.util.controllers')
 
     $scope.clearSearchInput = function() {
       $scope.search_text.major = '';
-
-      console.log("length of majors: " + $scope.source.majors.length);
     };
 
 

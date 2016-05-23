@@ -8,6 +8,12 @@
         </li>
         <li>
             <a class="badge-container click">
+                <span class="badge-left bg-moxie">1</span>
+                <span>Messages</span>
+            </a>
+        </li>
+        <li>
+            <a class="badge-container click">
                 <span>Students</span>
                 <span class="badge-bottom bg-robin">4</span>
             </a>

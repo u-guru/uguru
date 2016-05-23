@@ -28,9 +28,9 @@ angular.module('uguru.guru.controllers')
 
     $scope.fireUberApi = function() {
       $cordovaOauth.uber(UBER_CLIENT_ID, $scope, {}).then(function(result) {
-        console.log(result);
+          return
       }, function(err) {
-        console.log(err);
+        console.error(err);
       });
     }
 

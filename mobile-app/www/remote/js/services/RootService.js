@@ -33,7 +33,6 @@ angular.module('uguru.root.services', [])
                         return true;
                     }
             }
-            console.log('object not found for key', key, 'value', value);
             return null;
         },
         removeObjectByKey: function(array, key, value) {
@@ -43,7 +42,6 @@ angular.module('uguru.root.services', [])
                         return;
                     }
             }
-            console.log('object not found for key', key, 'value', value);
             return null;
 
         }
@@ -220,11 +218,53 @@ angular.module('uguru.root.services', [])
 
     this.nav = {
         goBack: function() {
-            console.log('root nav go back was clicked');
             $ionicViewSwitcher.nextDirection('back');
             $state.go('^.guru-home');
         }
     }
+
+    this.triggers = {runSequence: function(arr_triggers, time_delay) {
+    $timeout(function() {
+        var currentDelay = 0;
+        var supportedTriggers = ['click'];
+        for (var i = 0; i < arr_triggers.length; i++) {
+          var indexTriggerString = arr_triggers[i];
+          var indexTriggerSplit = indexTriggerString.split(':');
+          if (indexTriggerSplit.length ===3) {
+            var indexTrigger =indexTriggerSplit[0];
+            var indexSelector = indexTriggerSplit[1];
+            var indexDelay = indexTriggerSplit[2];
+            currentDelay += parseInt(indexDelay);
+            runAndDetectTrigger(indexTriggerSplit[0], indexTriggerSplit[1], indexTriggerSplit[2], currentDelay || 0);
+          } else {
+            console.log('TRIGGER ERROR:INSUFFICIENT ARGS FOR ARG:', indexTriggerString);
+            return;
+          }
+      }
+
+
+
+    }, time_delay || 2000);
+    }
+    }
+
+    function runAndDetectTrigger(trigger, selector, delay, current_delay) {
+        $timeout(function() {
+            var supportedTriggers = ['click'];
+            var element = document.querySelector(selector);
+            if (!element) {
+              console.log('TRIGGER ELEMENT ERROR:ELEMENT WITH SELECTOR DOES NOT EXIST:', selector);
+              return;
+            }
+            var element = angular.element(element);
+            if (supportedTriggers.indexOf(trigger) === -1) {
+              console.log('TRIGGER ELEMENT ERROR:TRIGGER NOT SUPPORTED (YET):', trigger);
+              return;
+            }
+            console.log(trigger +'ing', 'element', selector, 'in about', delay, 'seconds');
+            angular.element(element).triggerHandler(trigger);
+        }, current_delay);
+      }
 
     this.dialog = {
         //IMPORTANT: WEB-ONLY QUIRK: Confirm does not have a button index if canceled

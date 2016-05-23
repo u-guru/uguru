@@ -94,7 +94,7 @@ angular.module('uguru.util.controllers')
         }
 
         var failure = function(err) {
-          console.log(err);
+          console.error(err);
         }
 
         Restangular.one('universities', university_id).customGET().then(success, failure)
@@ -105,7 +105,6 @@ angular.module('uguru.util.controllers')
           getPublicUniversityInformation(university_id);
           University.getPopularCoursesPromise(university_id).then(function(response) {
             $scope.courses = response.plain();
-            console.log('fetched ' + $scope.courses.length + ' courses');
           });
 
           $scope.sampleMiniProfilesDict = ContentService.generateMiniSampleProfileDict();
@@ -150,7 +149,6 @@ angular.module('uguru.util.controllers')
 
       $scope.peelCard = function($event, item, type) {
         if ($scope.peelInTransition) {
-          console.log('already transitioning -- skip the click');
           return;
         }
         var targetId = $event.currentTarget.children[0].id;
@@ -209,7 +207,6 @@ angular.module('uguru.util.controllers')
       }
 
       $scope.goToBecomeGuru = function() {
-        console.log('transitioning to become guru', $scope.university);
 
         if (!$scope.university) {
           LoadingService.showMsg('Something went wrong.. Redirecting you back to home page.', 2000)
@@ -295,15 +292,6 @@ angular.module('uguru.util.controllers')
         } else {
           $scope.page.header.showSolidNav = false;
         }
-
-        // if (($scope.page.offsets.current + default_offset) > $scope.page.offsets.become_guru) {
-        //   console.log('we have passed become a guru')
-        // }
-
-        // if (($scope.page.offsets.current + default_offset) > $scope.page.offsets.how_it_works) {
-        //   console.log('we have passed how it works')
-        // }
-
       }
       var initSupportBox = function() {
         Intercom('boot', {
@@ -312,10 +300,8 @@ angular.module('uguru.util.controllers')
         })
         $timeout(function() {
           var intercomContainer = document.querySelector('#intercom-container');
-          console.log('attempting intercom container');
           if (intercomContainer) {
             Intercom('hide');
-            console.log('initiating intercom container');
             intercomContainer.style.cssText += ' z-index:1000 !important; visibility:hidden;';
 
           }
@@ -347,7 +333,6 @@ angular.module('uguru.util.controllers')
         var goToHomePage = function() {
           var cb = function() {
             $timeout(function() {
-              console.log('transition to home cb executed');
               $scope.$apply();
             })
           }
@@ -409,7 +394,6 @@ angular.module('uguru.util.controllers')
       $scope.links = [];
 
       $scope.toggleSidebar = function() {
-        console.log('this was calledf');
         $scope.page.sidebar.show= !$scope.page.sidebar.show;
         if ($scope.page.sidebar.show) {
           $scope.links = [];
@@ -427,7 +411,6 @@ angular.module('uguru.util.controllers')
       $scope.queryAutocompleteFromSearch = function(query) {
 
         query = $scope.page.dropdowns.location_search.input;
-        console.log('querying', $scope.page.dropdowns.location_search.input)
         if (query && query.length) {
           SearchboxService.queryAutocompleteService($scope.page.dropdowns.location_search.input, $scope, $scope.map.control.getGMap());
         } else {
@@ -438,7 +421,6 @@ angular.module('uguru.util.controllers')
 
 
     var showMarkerInfoWindow = function(gMarker, event, modelMark) {
-            console.log(gMarker, event, modelMark);
             gMarker.showInfoWindow();
       }
 
@@ -453,7 +435,6 @@ angular.module('uguru.util.controllers')
     }
 
     var initRequestMap = function() {
-      console.log($scope.university)
       if ($scope.university) {
         $scope.map = GMapService.initMapObj($scope.university, {zoom:16, disableDoubleClickZoom:true, draggable:false});
 
@@ -503,7 +484,6 @@ angular.module('uguru.util.controllers')
             events: { place_changed: function (autocomplete) {
 
                          place = autocomplete.getPlace()
-                         console.log(place)
                           // if (place.address_components) {
 
                           //   newMarkers = [];
@@ -542,8 +522,6 @@ angular.module('uguru.util.controllers')
             $scope.becomeGuruHeaderActive = true;
             $scope.root.vars.page_cache.essayHomeBecomeGuru = true;
             $localstorage.setObject('page_cache', $scope.root.vars.page_cache);
-          } else {
-            console.log('already shown');
           }
         }, 7000);
       }

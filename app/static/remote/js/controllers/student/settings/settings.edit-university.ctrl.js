@@ -61,7 +61,7 @@ angular.module('uguru.student.controllers')
 	//       	}, 1000);
  //      } else {
 
- //      	console.log('Show success cannot be shown because progress bar is already active');
+ //      	return
  //      }
  //    }
 

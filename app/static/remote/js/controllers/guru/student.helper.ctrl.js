@@ -13,11 +13,6 @@ angular.module('uguru.guru.controllers')
   function($scope, $state, $timeout, $localstorage,
  	RequestService, LoadingService, CTAService) {
 
-    $timeout(function() {
-      console.log('incoming requests', $scope.user.incoming_requests.length);
-      console.log('past requests', $scope.user.past_requests.length);
-      console.log('pending requests', $scope.user.pending_requests.length);
-    }, 2500);
     $scope.shouldShowNav = shouldShowNav;
     $scope.student_requests = {nav: {index: 0, show:shouldShowNav($scope.user)}, selected: null};
     $scope.incoming_requests = $scope.user.incoming_requests;

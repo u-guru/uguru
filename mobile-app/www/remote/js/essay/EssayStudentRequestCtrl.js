@@ -107,7 +107,6 @@ angular.module('uguru.util.controllers')
     }
 
     $scope.removeTagFromRequest = function(index, tag) {
-      console.log('test this works');
       if ($scope.newRequest.info.tags.length >= index) {
         $scope.newRequest.info.tags.splice(index, 1);
       }

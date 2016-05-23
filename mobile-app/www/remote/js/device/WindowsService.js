@@ -24,7 +24,6 @@ function WindowsService($rootScope, $state, $localstorage, $cordovaPush,
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|x-wmapp.?):|data:image\//);
 	
 	    if ($cordovaPush) {
-	        console.log('we are updating the push notifications on windows device');
 	        $cordovaPush.register(channelHandler, errorHandler, {
 	            "channelName": "123723560",
 	            "ecb": "onNotificationWP8",
@@ -46,7 +45,7 @@ function WindowsService($rootScope, $state, $localstorage, $cordovaPush,
 
 	        function errorHandler(error) {
 	            // document.getElementById('app-status-ul').appendChild(document.createElement(error));
-	            console.log("Error Handle :", error);
+	            console.error("Error Handle :", error);
 	        }
 
 	        function onNotificationWP8(e) {
@@ -65,8 +64,7 @@ function WindowsService($rootScope, $state, $localstorage, $cordovaPush,
 	        function jsonErrorHandler(error) {
 	            //document.getElementById('app-status-ul').appendChild(document.createElement(error.code));
 	            //document.getElementById('app-status-ul').appendChild(document.createElement(error.message));
-	            console.log("ERROR: ", error.code);
-	            console.log("ERROR: ", error.message);
+	            console.error("ERROR: ", error);
 	        }
 	    }
 

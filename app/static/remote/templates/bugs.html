@@ -1,0 +1,30 @@
+<ion-view class="bg-charcoal"><ion-content class="full-xy"><ion-pane id="cta-modal-selected-bug" class="absolute full-xy hide-display cta-modal bg-charcoal z-index-10" ng-include="img_base + BASE + 'templates/bug.detail.html'"></ion-pane><div class="full-xy absolute top-0 left-0 z-index-9"><header class="bg-robin txt-center"><h1 class="txt-white weight-700 txt-28">Bugs</h1></header><div id="main-bug-content" class="lyt-1-3-sidebar full-x overflow-auto" style="height: calc(100% - 58px)!important"><aside class="bg-charcoal-50p"><h1 class="p15xy bg-robin-80p txt-center caps txt-20 semibold">Sections</h1><div><ul class="p15-grid"><li ng-repeat="section in bugReport"><button class="bg-shamrock radius-2" ng-click="openBugList(section)">{{section.name}} Section</button></li></ul></div></aside><div class="bg-slate-50p" ng-int="reverse = false"><h1 class="p05xy bg-robin-80p full-x flex-wrap-center" style="height: 54px"><dropdown class="height-32 m15right" ng-model="availableOptions" selected-index="0"></dropdown><div class="checkbox-container" ng-if="availableOptions.selectedIndex > 0"><div><input type="checkbox" id="reverse-order" ng-click="order()"> <span><svg viewBox="0 0 100 100"><path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path></svg></span></div><label for="reverse-order">Reverse</label></div></h1><div class="bg-slate" ng-class="{'p15bottom': advanceSearch.tags.err_msg}"><h1 class="semibold p15x-p15top">Advanced Search</h1><div class="tag-list"><ul><li ng-repeat="tag in advanceSearch.tags.list"><a class="chip bg-robin" ng-click="advanceSearch.tags.remove($index)"><span>&times;&nbsp;&nbsp;</span> <span>{{tag}}</span></a></li><li><input tabindex="1" class="chip tag-add" ng-model="advanceSearch.tags.empty_tag.content" ng-blur="advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}"></li></ul></div><h1 class="semibold p15x txt-18">Platforms</h1><div class="tag-list bg-slate-50p"><ul><li ng-repeat="name in advanceSearch.platforms.available_list"><a class="chip" ng-if="advanceSearch.platforms.list.indexOf(name) < 0" ng-click="advanceSearch.platforms.add(name)"><span>+&nbsp;&nbsp;</span> <span>{{name}}</span> </a><a class="chip bg bg-robin" ng-if="advanceSearch.platforms.list.indexOf(name) > -1" ng-click="advanceSearch.platforms.remove(name)"><span>&times;&nbsp;&nbsp;</span> <span>{{name}}</span></a></li></ul></div><div class="error bg-crimson m15x p10y-p15x radius-2 txt-white semibold txt-18 hide" ng-class="{'show': advanceSearch.tags.err_msg}">{{advanceSearch.tags.err_msg}}</div></div><ul ng-if="availableOptions.selectedIndex == 0" class="p15-grid"><li ng-repeat="bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list" ng-click="initAndLaunchBugCTA($event, bug,$index)"><a class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</a></li></ul><ul ng-if="availableOptions.selectedIndex == 1" class="p15-grid"><li class="flex" ng-repeat="bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list | orderBy:'-rank':reverse"><span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">#{{bug.rank}}</span> <span class="block bg-charcoal p10y-p15x radius-2-right txt-18 semibold full-x">{{bug.title}}</span></li></ul><!-- <ul ng-if="availableOptions.selectedIndex == 2">
+						<li ng-repeat="bug in bugs | filter:{fixed:true}" | orderBy:'-fixedDate.getTime()':reverse>
+							<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">{{bug.fixedDate.toUTCString()}}</span>
+							<span class="block bg-charcoal p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</span>
+
+						</li>
+					</ul> --></div><!-- <div class='bg-slate-50p'>
+					<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
+						Prioritized Bugs
+					</h1>
+					<div class='txt-white flex-wrap-center'>
+						<ul>
+							<li ng-repeat="bug in bugs | orderBy : '-rank':true">
+								{{bug.title}} {{bug.rank}}
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class='bg-slate-50p'>
+					<h1 class='p05xy bg-azure-80p full-x uppercase flex-wrap-center'>
+						Recently Complete
+					</h1>
+					<div class='txt-white flex-wrap-center'>
+						<ul>
+							<li ng-if="bug.fixedDate" ng-repeat="bug in bugs | orderBy : '-fixedDate':true">
+								{{bug.title}} {{bug.fixedDate}}
+							</li>
+						</ul>
+					</div>
+				</div> --></div></div></ion-content></ion-view>

@@ -35,16 +35,13 @@ angular.module('uguru.guru.controllers')
     var startScanner;
     $scope.courses = [];
 
-    console.log('starting to detect object');
     if ($stateParams.universityObj) {
-      console.log('universityObj passed in', $stateParams.universityObj);
       $scope.university = $scope.universityObj;
       $scope.root.vars.university = $scope.university;
       $localstorage.setObject('university', $scope.university || $scope.user.university);
       $scope.user.university = $scope.university;
     }
     if ($scope.root.vars.university && !$stateParams.universityObj) {
-      console.log('root vars passted in ', $scope.root.vars.university);
       $scope.university = $scope.root.vars.university;
       $localstorage.setObject('university', $scope.university);
       $scope.user.university = $scope.university;
@@ -229,7 +226,6 @@ angular.module('uguru.guru.controllers')
 
     $scope.hideLoader = function() {
       $timeout(function() {
-        console.log('hiding directive loader')
         LoadingService();
       }, 1000)
     }
@@ -237,7 +233,6 @@ angular.module('uguru.guru.controllers')
     // $scope.$on('$ionicView.beforeEnter', function() {
     //     if (!$scope.root.vars.becomeGuruCached) {
     //       $scope.root.vars.becomeGuruCached = true;
-    //       console.log('become guru first time cache')
     //       LoadingService.showAmbig(null, 10000);
     //     }
     // });

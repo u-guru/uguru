@@ -1,0 +1,2042 @@
+/* Reset */
+#gabrie {
+  height: 100%;
+  background: #f2faf3;
+  color: #A6ADA7;
+  font-family: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+}
+
+#gabrie .nested-action-item li {
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+}
+
+#gabrie button {
+  font: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important;
+}
+
+#gabrie > div[id*="page"] {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+#gabrie * {
+  box-shadow: 0 0 1px transparent;
+  backface-visibility: hidden;
+}
+
+#gabrie ::-webkit-scrollbar {
+  display: none;
+}
+
+#gabrie ::-moz-scrollbar {
+  display: none;
+}
+
+#gabrie a {
+  transition: all 150ms cubic-bezier(0, 0.5, 0.25, 1);
+  cursor: pointer;
+  color: #A6ADA7;
+  text-decoration: none;
+}
+
+#gabrie button, #gabrie .button {
+  transition: all 150ms cubic-bezier(0, 0.5, 0.25, 1);
+  appearance: none;
+  border: 0;
+  border-radius: 3px;
+  background: #A6ADA7;
+  color: white !important;
+  font-family: "brandon-grotesque", "Brandon Grotesque", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+#gabrie h1, #gabrie h2, #gabrie h3 {
+  width: 100%;
+}
+
+#gabrie h1 {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+#gabrie h2 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+#gabrie h3 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+#gabrie h3 strong {
+  font-weight: 400;
+}
+
+#gabrie #top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 0 12px 12px;
+}
+
+#gabrie #bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 72px;
+}
+
+#gabrie .top {
+  width: 100%;
+  text-align: center;
+}
+
+#gabrie .top a {
+  display: block;
+  position: relative;
+  margin: 12px auto 0;
+  width: 50px;
+  height: 50px;
+  cursor: n-resize;
+}
+
+#gabrie .top a svg {
+  transition: all 300ms cubic-bezier(0, 0.5, 0.25, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+}
+
+#gabrie .top a svg:nth-child(1) {
+  opacity: 1;
+}
+
+#gabrie .top a svg:nth-child(1) * {
+  fill: #F5C8BF;
+}
+
+#gabrie .top a svg:nth-child(2) {
+  opacity: 0;
+}
+
+#gabrie .top a svg:nth-child(2) * {
+  fill: #A6ADA7;
+}
+
+#gabrie .top a svg:nth-child(3) {
+  opacity: 0;
+}
+
+#gabrie .top a svg:nth-child(3) * {
+  fill: #495453;
+}
+
+#gabrie .top a svg path {
+  fill: none !important;
+}
+
+#gabrie .top a:hover svg, #gabrie .top a:focus svg {
+  transform: rotate(1turn);
+}
+
+#gabrie .top a:hover svg:nth-child(1), #gabrie .top a:focus svg:nth-child(1) {
+  opacity: 0;
+}
+
+#gabrie .top a:hover svg:nth-child(2), #gabrie .top a:focus svg:nth-child(2) {
+  opacity: 1;
+}
+
+#gabrie .top a:hover svg:nth-child(3), #gabrie .top a:focus svg:nth-child(3) {
+  opacity: 0;
+}
+
+#gabrie .top a:active svg:nth-child(1) {
+  opacity: 0;
+}
+
+#gabrie .top a:active svg:nth-child(2) {
+  opacity: 0;
+}
+
+#gabrie .top a:active svg:nth-child(3) {
+  opacity: 1;
+}
+
+#gabrie #main {
+  height: 100%;
+  overflow: auto;
+}
+
+#gabrie section {
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  height: auto;
+}
+
+#gabrie section .angle {
+  position: absolute;
+  bottom: -1px;
+  right: -1%;
+  width: 102%;
+  min-width: 1280px !important;
+  height: auto;
+}
+
+#gabrie section button, #gabrie section .button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 24px;
+  text-transform: lowercase;
+}
+
+#gabrie section#intro {
+  width: 100%;
+  height: calc(100% - 12px);
+  overflow: hidden;
+  background: #f2faf3;
+}
+
+#gabrie section#intro .angle path {
+  fill: #A6ADA7;
+}
+
+#gabrie section#intro #scroll-down {
+  animation: hover 1000ms linear infinite alternate;
+  display: block;
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  right: 12px;
+  width: 48px;
+  height: 48px;
+}
+
+#gabrie section#intro #scroll-down svg {
+  fill: none;
+  stroke: white;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#gabrie section#summary {
+  padding-top: 48px;
+  padding-bottom: 108px;
+  background: #A6ADA7;
+  color: white;
+}
+
+#gabrie section#summary .angle path {
+  fill: #c7c9ba;
+}
+
+#gabrie section#summary ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#gabrie section#summary #summary-skill-grid {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 24px;
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+#gabrie section#summary #summary-skill-grid > li {
+  padding: 0 12px;
+  width: 50%;
+}
+
+#gabrie section#summary #summary-skill-grid > li h4 {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-labels {
+  display: flex;
+  margin-top: 6px;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-labels li {
+  width: calc(100% / 3);
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-labels li:first-child {
+  text-align: left;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-labels li:last-child {
+  text-align: right;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li .percent {
+  border-radius: 1000px;
+  display: block;
+  width: 100%;
+  margin: 12px 0 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li .percent span {
+  border-radius: 1000px;
+  display: block;
+  background: white;
+  height: 100%;
+  width: 0;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-html .percent span {
+  background: #fac3b9;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-css .percent span {
+  background: #baddf7;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-js .percent span {
+  background: #bcdfeb;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-php .percent span {
+  background: #cacfe3;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-git .percent span {
+  background: #fbc6ba;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-ps .percent span {
+  background: #cdd1ec;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-il .percent span {
+  background: #ffccb3;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-sk .percent span {
+  background: #fee3a1;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-fl .percent span {
+  background: #f2bab9;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-maya .percent span {
+  background: #bdf1f1;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-zbrush .percent span {
+  background: #ffd1b3;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-udk .percent span {
+  background: #c3ddf5;
+}
+
+#gabrie section#summary #summary-skill-grid > li .summary-bars li.bar-quixel .percent span {
+  background: #e7cafa;
+}
+
+#gabrie section#current {
+  padding-top: 48px;
+  padding-bottom: 108px;
+  background: #c7c9ba;
+  color: white;
+}
+
+#gabrie section#current .angle path {
+  fill: #E0D2C5;
+}
+
+#gabrie section#current a {
+  color: #7e8880;
+}
+
+#gabrie section#current ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 12px auto 0;
+  padding: 6px;
+}
+
+#gabrie section#current ul li {
+  width: 33.3333%;
+  width: calc(100% / 3);
+  padding: 6px;
+}
+
+#gabrie section#current ul li div {
+  position: relative;
+}
+
+#gabrie section#current ul li div figure {
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+#gabrie section#current ul li div figure span {
+  display: block;
+  margin-top: -12px;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#gabrie section#current ul li div figure svg {
+  display: block;
+  padding: 12px 12px 0;
+  height: calc(100% - 42px);
+}
+
+#gabrie section#current ul li div figure svg g {
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#gabrie section#current ul li div figure svg + svg {
+  opacity: .25;
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 100%;
+}
+
+#gabrie section#work {
+  padding-bottom: 72px;
+  background: #E0D2C5;
+  color: white;
+}
+
+#gabrie section#work .tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-flow: row wrap;
+  display: none;
+  width: 100%;
+  max-width: 824px;
+  margin: 0 auto;
+  padding: 12px 12px 0;
+}
+
+#gabrie section#work .tags li {
+  padding: 12px;
+}
+
+#gabrie section#work .tags li a {
+  border-radius: 1000px;
+  display: block;
+  padding: 12px 18px;
+  background: white;
+  color: #A6ADA7;
+}
+
+#gabrie section#work .tags li a:hover, #gabrie section#work .tags li a:focus {
+  background: #A6ADA7;
+  color: white;
+}
+
+#gabrie section#work .tags li a:active {
+  background: #495453;
+}
+
+#gabrie section#work .grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 824px;
+  margin: 12px auto 0;
+  padding: 6px;
+}
+
+#gabrie section#work .grid li {
+  padding: 6px;
+  width: calc(100%  / 3);
+}
+
+#gabrie section#work .grid li > div {
+  position: relative;
+}
+
+#gabrie section#work .grid li > div svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#gabrie section#work .grid li > div .overlay {
+  opacity: 0;
+  transition: 150ms ease-in-out;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#gabrie section#work .grid li > div .overlay svg {
+  opacity: .95;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  fill: #413D44;
+}
+
+#gabrie section#work .grid li > div .overlay h3 {
+  position: relative;
+  z-index: 2;
+  padding: 12px;
+  color: white;
+  font-size: 16px;
+}
+
+#gabrie section#work .grid li > div a {
+  display: block;
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#gabrie section#work .grid li > div a:hover + div .overlay, #gabrie section#work .grid li > div a:focus + div .overlay {
+  opacity: 1;
+}
+
+#gabrie section#work .angle path {
+  fill: #AEBFAF;
+}
+
+#gabrie section#themes {
+  padding-top: 48px;
+  padding-bottom: 108px;
+  background: #AEBFAF;
+  color: #f2faf3;
+}
+
+#gabrie section#themes .angle path {
+  fill: #fceeeb;
+}
+
+#gabrie section#misc {
+  padding-top: 48px;
+  padding-bottom: 108px;
+  background: #fceeeb;
+  color: #A6ADA7;
+}
+
+#gabrie section#misc .angle path {
+  fill: #495453;
+}
+
+#gabrie section#contact {
+  padding-top: 48px;
+  padding-bottom: 72px;
+  background: #495453;
+  color: #E0D2C5;
+}
+
+#gabrie section#contact p {
+  padding: 12px 0;
+  max-width: 800px;
+  font-size: 24px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+#gabrie section#contact p #social-facebook {
+  background: #3b5997;
+}
+
+#gabrie section#contact p #social-facebook:hover, #gabrie section#contact p #social-facebook:focus {
+  background: #839ccf;
+}
+
+#gabrie section#contact p #social-facebook:active {
+  background: #5e7ec0;
+}
+
+#gabrie section#contact p #social-twitter {
+  background: #2daae1;
+}
+
+#gabrie section#contact p #social-twitter:hover, #gabrie section#contact p #social-twitter:focus {
+  background: #9dd7f1;
+}
+
+#gabrie section#contact p #social-twitter:active {
+  background: #70c5eb;
+}
+
+#gabrie section#contact p #social-linkedin {
+  background: #069;
+}
+
+#gabrie section#contact p #social-linkedin:hover, #gabrie section#contact p #social-linkedin:focus {
+  background: #1ab3ff;
+}
+
+#gabrie section#contact p #social-linkedin:active {
+  background: #0099e6;
+}
+
+#gabrie section#contact p #social-tumblr {
+  background: #3a5976;
+}
+
+#gabrie section#contact p #social-tumblr:hover, #gabrie section#contact p #social-tumblr:focus {
+  background: #7599bb;
+}
+
+#gabrie section#contact p #social-tumblr:active {
+  background: #5380a9;
+}
+
+#gabrie section#contact p #social-skype {
+  background: #00AFF0;
+}
+
+#gabrie section#contact p #social-skype:hover, #gabrie section#contact p #social-skype:focus {
+  background: #71d8ff;
+}
+
+#gabrie section#contact p #social-skype:active {
+  background: #3ecbff;
+}
+
+#gabrie section#contact p #social-resource {
+  background: #d34836;
+}
+
+#gabrie section#contact p #social-resource:hover, #gabrie section#contact p #social-resource:focus {
+  background: #eaa79f;
+}
+
+#gabrie section#contact p #social-resource:active {
+  background: #e18175;
+}
+
+#gabrie section#contact p #social-email {
+  background: #AEBFAF;
+}
+
+#gabrie section#contact p #social-email:hover, #gabrie section#contact p #social-email:focus {
+  background: #cad6cb;
+}
+
+#gabrie section#contact p #social-email:active {
+  background: #bccabd;
+}
+
+#gabrie section#contact p .social-link {
+  transition: 150ms ease-in-out;
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 3px;
+  color: white;
+  font-weight: 500;
+}
+
+#gabrie section#contact footer {
+  width: 100%;
+  padding-top: 72px;
+}
+
+#gabrie .no-skrollr .percent span[class*="5"] {
+  width: 5% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="10"] {
+  width: 10% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="15"] {
+  width: 15% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="20"] {
+  width: 20% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="25"] {
+  width: 25% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="30"] {
+  width: 30% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="35"] {
+  width: 35% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="40"] {
+  width: 40% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="45"] {
+  width: 45% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="50"] {
+  width: 50% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="55"] {
+  width: 55% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="60"] {
+  width: 60% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="65"] {
+  width: 65% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="70"] {
+  width: 70% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="75"] {
+  width: 75% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="80"] {
+  width: 80% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="85"] {
+  width: 85% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="90"] {
+  width: 90% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="95"] {
+  width: 95% !important;
+}
+
+#gabrie .no-skrollr .percent span[class*="100"] {
+  width: 100% !important;
+}
+
+#gabrie .project {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  width: 100%;
+  color: white;
+}
+
+#gabrie .project main {
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-top: 36px;
+}
+
+#gabrie .project footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: 30px 0 42px;
+}
+
+#gabrie .project footer a {
+  padding: 12px 24px;
+  font-size: 24px;
+  text-transform: lowercase;
+}
+
+#gabrie .project footer a:not(:first-child) {
+  margin-left: 12px;
+}
+
+#gabrie .project footer a.project-back {
+  cursor: w-resize;
+}
+
+#gabrie .project footer.desktop {
+  display: none;
+}
+
+#gabrie .project footer.mobile {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+#gabrie .project .project-link {
+  cursor: ne-resize;
+}
+
+#gabrie .project-desc {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 848px;
+  padding: 12px;
+}
+
+#gabrie .project-desc > li {
+  width: 100%;
+  padding: 12px;
+  font-size: 20px;
+  text-align: left;
+}
+
+#gabrie .project-desc > li h1 {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+#gabrie .project-desc > li h2 {
+  display: flex;
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+#gabrie .project-desc > li h2 span {
+  opacity: .2;
+}
+
+#gabrie .project-desc > li h2 a {
+  opacity: .2;
+  display: block;
+  margin-left: 6px;
+}
+
+#gabrie .project-desc > li h2 a svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+#gabrie .project-desc > li h2 a svg * {
+  fill: none;
+  stroke: white;
+  stroke-width: 8px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#gabrie .project-desc > li h2 a:hover, #gabrie .project-desc > li h2 a:focus {
+  opacity: .7;
+}
+
+#gabrie .project-desc > li h2 a:active {
+  opacity: 1;
+}
+
+#gabrie .project-desc > li h4 {
+  opacity: 0.4;
+  position: relative;
+  padding-bottom: 9px;
+  margin-bottom: 9px;
+  height: 21px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#gabrie .project-desc > li h4:after {
+  border-radius: 1000px;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66ffffff', endColorstr='#00ffffff',GradientType=1 );
+}
+
+#gabrie .project-desc > li > div {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#gabrie .project-desc > li > div ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  padding: 6px;
+}
+
+#gabrie .project-desc > li > div ul li {
+  padding: 6px;
+}
+
+#gabrie .project-desc > li > div ul li .project-tag {
+  padding: 12px;
+  border-radius: 2px;
+}
+
+#gabrie .project-desc > li > div p {
+  font-weight: 400;
+}
+
+#gabrie .project-desc > li > div p:not(:first-child) {
+  padding-top: 12px;
+}
+
+#gabrie .project-desc > li > div p em {
+  font-style: italic;
+}
+
+#gabrie .project-desc > li.project-title {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#gabrie .project-desc > li.project-title h4 {
+  width: 100%;
+}
+
+#gabrie .project-desc > li.project-title .project-thumb svg, #gabrie .project-desc > li.project-title img {
+  width: 100px;
+  height: 100px;
+}
+
+#gabrie .project-desc > li.project-title div:last-child {
+  width: calc(100% - 100px);
+  padding-left: 24px;
+}
+
+#gabrie .project-desc > li.project-info {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#gabrie .project-desc > li.project-info > div:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+#gabrie .project-desc > li.project-info > div:first-child {
+  margin-right: 12px;
+}
+
+#gabrie .project-desc > li.project-info > div:last-child:nth-child(2) {
+  width: calc(100% / 3 * 2);
+}
+
+#gabrie .project-desc > li.project-info > div.project-goal {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#gabrie .project-desc > li.project-tools > div ul {
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li {
+  transition: all 150ms ease-in-out;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li:nth-child(1) {
+  transition-delay: 50ms;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li:nth-child(3) {
+  transition-delay: 150ms;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li:nth-child(4) {
+  transition-delay: 200ms;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li:nth-child(5) {
+  transition-delay: 250ms;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li:nth-child(6) {
+  transition-delay: 300ms;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li:nth-child(7) {
+  transition-delay: 350ms;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li:nth-child(8) {
+  transition-delay: 400ms;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li:nth-child(9) {
+  transition-delay: 450ms;
+}
+
+#gabrie .project-desc > li.project-tools > div ul li:nth-child(10) {
+  transition-delay: 500ms;
+}
+
+#gabrie .project-desc > li.project-tools > div, #gabrie .project-desc > li.project-screenshots > div {
+  padding: 0;
+}
+
+#gabrie .project-desc > li.project-tools > div ul, #gabrie .project-desc > li.project-styles > div ul {
+  margin: -6px -12px;
+}
+
+#gabrie .project-desc > li.project-styles > div ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample {
+  display: none;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path, #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon {
+  transition: all 150ms ease-in-out;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(1), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(1) {
+  transition-delay: 10ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(2), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(2) {
+  transition-delay: 20ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(3), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(3) {
+  transition-delay: 30ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(4), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(4) {
+  transition-delay: 40ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(5), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(5) {
+  transition-delay: 50ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(6), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(6) {
+  transition-delay: 60ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(7), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(7) {
+  transition-delay: 70ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(8), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(8) {
+  transition-delay: 80ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(9), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(9) {
+  transition-delay: 90ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(10), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(10) {
+  transition-delay: 100ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(11), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(11) {
+  transition-delay: 110ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(12), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(12) {
+  transition-delay: 120ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(13), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(13) {
+  transition-delay: 130ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(14), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(14) {
+  transition-delay: 140ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(15), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(15) {
+  transition-delay: 150ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(16), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(16) {
+  transition-delay: 160ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(17), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(17) {
+  transition-delay: 170ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(18), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(18) {
+  transition-delay: 180ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(19), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(19) {
+  transition-delay: 190ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(20), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(20) {
+  transition-delay: 200ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(21), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(21) {
+  transition-delay: 210ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(22), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(22) {
+  transition-delay: 220ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(23), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(23) {
+  transition-delay: 230ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(24), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(24) {
+  transition-delay: 240ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(25), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(25) {
+  transition-delay: 250ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(26), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(26) {
+  transition-delay: 260ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(27), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(27) {
+  transition-delay: 270ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(28), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(28) {
+  transition-delay: 280ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(29), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(29) {
+  transition-delay: 290ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(30), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(30) {
+  transition-delay: 300ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(31), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(31) {
+  transition-delay: 310ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(32), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(32) {
+  transition-delay: 320ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(33), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(33) {
+  transition-delay: 330ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(34), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(34) {
+  transition-delay: 340ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(35), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(35) {
+  transition-delay: 350ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(36), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(36) {
+  transition-delay: 360ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(37), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(37) {
+  transition-delay: 370ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(38), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(38) {
+  transition-delay: 380ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(39), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(39) {
+  transition-delay: 390ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(40), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(40) {
+  transition-delay: 400ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(41), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(41) {
+  transition-delay: 410ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(42), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(42) {
+  transition-delay: 420ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(43), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(43) {
+  transition-delay: 430ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(44), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(44) {
+  transition-delay: 440ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(45), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(45) {
+  transition-delay: 450ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(46), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(46) {
+  transition-delay: 460ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(47), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(47) {
+  transition-delay: 470ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(48), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(48) {
+  transition-delay: 480ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(49), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(49) {
+  transition-delay: 490ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(50), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(50) {
+  transition-delay: 500ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(51), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(51) {
+  transition-delay: 510ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(52), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(52) {
+  transition-delay: 520ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(53), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(53) {
+  transition-delay: 530ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(54), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(54) {
+  transition-delay: 540ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(55), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(55) {
+  transition-delay: 550ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(56), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(56) {
+  transition-delay: 560ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(57), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(57) {
+  transition-delay: 570ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(58), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(58) {
+  transition-delay: 580ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(59), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(59) {
+  transition-delay: 590ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(60), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(60) {
+  transition-delay: 600ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(61), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(61) {
+  transition-delay: 610ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(62), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(62) {
+  transition-delay: 620ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(63), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(63) {
+  transition-delay: 630ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(64), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(64) {
+  transition-delay: 640ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(65), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(65) {
+  transition-delay: 650ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(66), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(66) {
+  transition-delay: 660ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(67), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(67) {
+  transition-delay: 670ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(68), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(68) {
+  transition-delay: 680ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(69), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(69) {
+  transition-delay: 690ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(70), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(70) {
+  transition-delay: 700ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(71), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(71) {
+  transition-delay: 710ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(72), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(72) {
+  transition-delay: 720ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(73), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(73) {
+  transition-delay: 730ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(74), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(74) {
+  transition-delay: 740ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(75), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(75) {
+  transition-delay: 750ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(76), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(76) {
+  transition-delay: 760ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(77), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(77) {
+  transition-delay: 770ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(78), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(78) {
+  transition-delay: 780ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(79), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(79) {
+  transition-delay: 790ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(80), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(80) {
+  transition-delay: 800ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(81), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(81) {
+  transition-delay: 810ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(82), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(82) {
+  transition-delay: 820ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(83), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(83) {
+  transition-delay: 830ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(84), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(84) {
+  transition-delay: 840ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(85), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(85) {
+  transition-delay: 850ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(86), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(86) {
+  transition-delay: 860ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(87), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(87) {
+  transition-delay: 870ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(88), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(88) {
+  transition-delay: 880ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(89), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(89) {
+  transition-delay: 890ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(90), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(90) {
+  transition-delay: 900ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(91), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(91) {
+  transition-delay: 910ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(92), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(92) {
+  transition-delay: 920ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(93), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(93) {
+  transition-delay: 930ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(94), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(94) {
+  transition-delay: 940ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(95), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(95) {
+  transition-delay: 950ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(96), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(96) {
+  transition-delay: 960ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(97), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(97) {
+  transition-delay: 970ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(98), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(98) {
+  transition-delay: 980ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(99), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(99) {
+  transition-delay: 990ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(100), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(100) {
+  transition-delay: 1000ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(101), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(101) {
+  transition-delay: 1010ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(102), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(102) {
+  transition-delay: 1020ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(103), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(103) {
+  transition-delay: 1030ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(104), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(104) {
+  transition-delay: 1040ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(105), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(105) {
+  transition-delay: 1050ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(106), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(106) {
+  transition-delay: 1060ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(107), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(107) {
+  transition-delay: 1070ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg path:nth-child(108), #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample svg polygon:nth-child(108) {
+  transition-delay: 1080ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  margin: -6px;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div {
+  padding: 6px;
+  width: 44px;
+  height: 44px;
+  transition: all 150ms ease-in-out;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div span {
+  border-radius: 1000px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(1) {
+  transition-delay: 50ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(3) {
+  transition-delay: 150ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(4) {
+  transition-delay: 200ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(5) {
+  transition-delay: 250ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(6) {
+  transition-delay: 300ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(7) {
+  transition-delay: 350ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(8) {
+  transition-delay: 400ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(9) {
+  transition-delay: 450ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(10) {
+  transition-delay: 500ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(11) {
+  transition-delay: 550ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(12) {
+  transition-delay: 600ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(13) {
+  transition-delay: 650ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(14) {
+  transition-delay: 700ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(15) {
+  transition-delay: 750ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(16) {
+  transition-delay: 800ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(17) {
+  transition-delay: 850ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(18) {
+  transition-delay: 900ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(19) {
+  transition-delay: 950ms;
+}
+
+#gabrie .project-desc > li.project-styles > div ul li.project-styles-colors div:nth-child(20) {
+  transition-delay: 1000ms;
+}
+
+#gabrie .project-desc > li.project-screenshots > div ul {
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding: 0;
+}
+
+#gabrie .project-desc > li.project-screenshots > div ul li {
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+#gabrie .project-desc > li.project-screenshots > div ul li a {
+  display: block;
+  position: relative;
+}
+
+#gabrie .project-desc > li.project-screenshots > div ul li a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+#gabrie .project-desc > li.project-screenshots > div ul li img {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 2px;
+}
+
+#gabrie .project-desc > li.project-switcher {
+  width: 100%;
+}
+
+#gabrie .project-desc > li.project-switcher > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#gabrie .project-desc > li.project-switcher > div form {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: 35%;
+  padding: 6px;
+  margin: -6px -12px;
+}
+
+#gabrie .project-desc > li.project-switcher > div form > div {
+  position: relative;
+  padding: 6px;
+  width: 50%;
+}
+
+#gabrie .project-desc > li.project-switcher > div form > div label {
+  transition: all 150ms ease-in-out;
+  display: block;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+#gabrie .project-desc > li.project-switcher > div form > div svg {
+  display: block;
+  width: 100%;
+}
+
+#gabrie .project-desc > li.project-switcher > div form > div svg * {
+  stroke: white;
+}
+
+#gabrie .project-desc > li.project-switcher > div form > div input {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#gabrie .project-desc > li.project-switcher > div form > div input:hover + label, #gabrie .project-desc > li.project-switcher > div form > div input:focus + label {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#gabrie .project-desc > li.project-switcher > div form > div input:active + label {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+#gabrie .project-desc > li.project-switcher > div form > div input:checked + label {
+  background: white;
+}
+
+#gabrie .project-desc > li.project-switcher > div form > div input:checked + label svg * {
+  stroke: #A6ADA7;
+}
+
+#gabrie .project-desc > li.project-switcher > div > ul {
+  width: 55%;
+  padding: 0;
+}
+
+#gabrie .project-desc > li.project-switcher > div > ul li {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+}
+
+#gabrie .project-desc > li.project-switcher > div > ul li svg {
+  display: block;
+  width: 100%;
+}
+
+#gabrie .project-feature {
+  display: none;
+  position: fixed;
+  z-index: -1;
+}
+
+#gabrie .project-feature div {
+  transition: all 300ms cubic-bezier(0, 0.5, 0.25, 1);
+}
+
+#gabrie .project-feature img {
+  display: block;
+  max-width: 100%;
+}
+
+#gabrie .project-website .project-desc > li.project-info > div:last-child:nth-child(3) {
+  width: 100%;
+}
+
+#gabrie #page-guild {
+  background: #585499;
+}
+
+#gabrie #page-guild header a svg:nth-child(1) * {
+  fill: #A6B3A5;
+}
+
+#gabrie #page-guild header a svg:nth-child(2) * {
+  fill: #E9D28B;
+}
+
+#gabrie #page-guild header a svg:nth-child(3) * {
+  fill: white;
+}
+
+#gabrie #project-guild .project-tag {
+  background: rgba(166, 179, 165, 0.5);
+}
+
+#gabrie #project-guild .project-style-colors {
+  max-width: calc(100% - 144px);
+}
+
+#gabrie #project-guild a {
+  color: #A6B3A5;
+}
+
+#gabrie #project-guild a:hover, #gabrie #project-guild a:focus {
+  color: #E9D28B;
+}
+
+#gabrie #project-guild a:active {
+  color: white;
+}
+
+#gabrie #project-guild footer a {
+  background: #A6B3A5;
+  color: white;
+}
+
+#gabrie #project-guild footer a:hover, #gabrie #project-guild footer a:focus {
+  background: #E9D28B;
+}
+
+#gabrie #project-guild footer a:active {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#gabrie #page-quake {
+  background: #41ced6;
+}
+
+#gabrie #page-quake header a svg:nth-child(1) * {
+  fill: white;
+}
+
+#gabrie #page-quake header a svg:nth-child(2) * {
+  fill: #986BCD;
+}
+
+#gabrie #page-quake header a svg:nth-child(3) * {
+  fill: #F8A74D;
+}
+
+#gabrie #page-quake footer {
+  color: white;
+}
+
+#gabrie #project-quake .project-tag {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+#gabrie #project-quake .project-style-colors {
+  max-width: calc(100% - 165px);
+}
+
+#gabrie #project-quake a {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#gabrie #project-quake a:hover, #gabrie #project-quake a:focus {
+  color: #986BCD;
+}
+
+#gabrie #project-quake a:active {
+  color: #F8A74D;
+}
+
+#gabrie #project-quake footer a {
+  background: white;
+  color: #41ced6 !important;
+}
+
+#gabrie #project-quake footer a:hover, #gabrie #project-quake footer a:focus {
+  background: #986BCD;
+  color: white !important;
+}
+
+#gabrie #project-quake footer a:active {
+  background: #F8A74D;
+  color: white;
+}
+
+#gabrie #page-mcclun {
+  background: #8D8F8B;
+}
+
+#gabrie #page-mcclun header a svg:nth-child(1) * {
+  fill: #423C33;
+}
+
+#gabrie #page-mcclun header a svg:nth-child(2) * {
+  fill: #7a5b51;
+}
+
+#gabrie #page-mcclun header a svg:nth-child(3) * {
+  fill: #d1c7b8;
+}
+
+#gabrie #page-mcclun .project-feature {
+  width: 400px;
+  bottom: 0;
+  right: 0;
+}
+
+#gabrie #project-mcclun .project-tag {
+  background: #B3A28A;
+}
+
+#gabrie #project-mcclun .project-style-colors {
+  max-width: calc(100% - 144px);
+}
+
+#gabrie #project-mcclun a {
+  color: #423C33;
+}
+
+#gabrie #project-mcclun a:hover, #gabrie #project-mcclun a:focus {
+  color: #7a5b51;
+}
+
+#gabrie #project-mcclun a:active {
+  color: #d1c7b8;
+}
+
+#gabrie #project-mcclun footer a {
+  background: #7a5b51;
+  color: white;
+}
+
+#gabrie #project-mcclun footer a:hover, #gabrie #project-mcclun footer a:focus {
+  background: #423C33;
+}
+
+#gabrie #project-mcclun footer a:active {
+  background: #d1c7b8;
+  color: #423C33;
+}
+
+@media only screen and (max-width: 768px) {
+  #gabrie #bottom {
+    padding-top: 12px;
+    padding-bottom: 108px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #gabrie h1, #gabrie h2 {
+    font-weight: 300;
+  }
+  #gabrie h1 {
+    font-size: 60px;
+    line-height: 1.25;
+  }
+  #gabrie h2 {
+    font-size: 48px;
+  }
+  #gabrie h3 {
+    font-size: 24px;
+  }
+  #gabrie section {
+    padding: 12px;
+  }
+  #gabrie section#current ul {
+    margin-top: 0;
+    padding: 12px;
+  }
+  #gabrie section#current ul li {
+    width: 25%;
+    padding: 12px;
+  }
+  #gabrie section#work {
+    padding-top: 48px;
+    padding-bottom: 108px;
+  }
+  #gabrie section#work .tags {
+    display: flex;
+  }
+  #gabrie section#work .grid {
+    margin: -12px auto 0;
+    padding: 12px;
+  }
+  #gabrie section#work .grid li {
+    width: 20%;
+    padding: 12px;
+  }
+  #gabrie .project footer.desktop {
+    display: flex;
+  }
+  #gabrie .project footer.mobile {
+    display: none;
+  }
+  #gabrie .project-desc > li.project-title {
+    width: 60%;
+  }
+  #gabrie .project-desc > li.project-info {
+    width: 40%;
+  }
+  #gabrie .project-desc > li.project-info:not(:last-child) {
+    margin-bottom: 6px;
+  }
+  #gabrie .project-desc > li.project-info > div:first-child {
+    margin-right: 0;
+  }
+  #gabrie .project-desc > li.project-info > div:first-child:not(:nth-last-child(3)), #gabrie .project-desc > li.project-info > div:last-child {
+    width: 100% !important;
+  }
+  #gabrie .project-desc > li.project-info > div:first-child:nth-last-child(3), #gabrie .project-desc > li.project-info > div:nth-child(2):not(:last-child) {
+    width: 50% !important;
+  }
+  #gabrie .project-desc > li.project-styles > div ul {
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+  }
+  #gabrie .project-desc > li.project-styles > div ul li.project-styles-sample {
+    display: block;
+  }
+  #gabrie .project-desc > li.project-styles > div ul li.project-styles-colors {
+    width: 400px;
+  }
+  #gabrie .project-feature {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  #gabrie h1 {
+    font-size: 72px;
+  }
+  #gabrie h2 {
+    font-size: 60px;
+  }
+  #gabrie h3 {
+    font-size: 28px;
+  }
+  #gabrie section#summary #summary-skill-grid {
+    max-width: 1024px;
+  }
+  #gabrie section#summary #summary-skill-grid > li .summary-labels {
+    margin-top: 12px;
+  }
+  #gabrie section#summary #summary-skill-grid > li .summary-bars li .percent {
+    margin: 15px 0 12px;
+  }
+  #gabrie section#current ul {
+    margin-top: 12px;
+    max-width: 1024px;
+  }
+  #gabrie section#current ul li div figure svg g {
+    fill: none;
+    stroke: white;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  #gabrie section#work .tags {
+    margin-top: 12px;
+  }
+  #gabrie section#work .tags, #gabrie section#work .grid {
+    max-width: 1048px;
+  }
+}
+
+@-moz-document url-prefix() {}

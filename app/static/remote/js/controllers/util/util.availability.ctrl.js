@@ -27,14 +27,9 @@ angular.module('uguru.util.controllers')
     $scope.dates = [];
     $scope.currentTime = today.getHours();
 
-
-    console.log("Today : ", today.toString());
-    console.log("current time : ",  today.getHours()-12, ":",today.getMinutes());
-
     function setDate(currentDay,number)
     {
       currentDay.setDate(number);
-      // console.log(currentDay.toString());
       var day = {
                   name : $scope.weekdays[(currentDay.getDay())%7],
                   month: (currentDay.getMonth()+1),
@@ -61,13 +56,10 @@ angular.module('uguru.util.controllers')
     function filterPassedTime (schedule)
     { 
       var tempSch = schedule;
-      console.log("Wut time : ",tempSch);
       for (var i = 0 ; i < $scope.currentTime; ++i)
       {
         tempSch[i].isPass = true;
       }
-      console.log("new: ",tempSch);
-
       return tempSch;
 
     }
@@ -77,15 +69,7 @@ angular.module('uguru.util.controllers')
 
     for (var i = tempDate.getDate(), count =0 ; count < 7; ++ i,++count)
       $scope.dates.push(setDate(tempDate,i))
-    // console.log($scope.dates);
       $scope.dates[0].schedule= filterPassedTime( $scope.dates[0].schedule);
-
-    console.log("Today : ", today.toString());
-    console.log("Today : ", $scope.dates[0]);
-
-
-
-
 
     $scope.calendarMoversShown = false;
 
@@ -169,7 +153,6 @@ angular.module('uguru.util.controllers')
             $scope.toggleCalendarHeight(false);
             $scope.calendar.date.offset = index + date_index + 1;
             var weekday = $scope.weekdays[(date_index + $scope.calendar.weekday_offset) % 7];
-            console.log('selected', index, date_index, actual_date);
             $scope.calendar.date.weekday = weekday.toString();
             var date = actual_date;
             $scope.calendar.date.date = date;
@@ -178,8 +161,6 @@ angular.module('uguru.util.controllers')
             $scope.showDateTabs = false;
             $scope.date_index = null;
           }
-
-          console.log('current offset', $scope.calendar.date.offset);
         }
 
         $timeout(function() {
@@ -187,9 +168,6 @@ angular.module('uguru.util.controllers')
           if (!$scope.request.calendar_edit) {
             var _7am_row = document.getElementById('8AM');
             height  = _7am_row.getBoundingClientRect().top;
-            console.log(_7am_row.getBoundingClientRect());
-            console.log(height, 'height')
-            console.log($ionicScrollDelegate.$getByHandle('calendar').getScrollPosition());
             $ionicScrollDelegate.$getByHandle('calendar').scrollTo(0, height * 0.7);
           }
 
@@ -283,7 +261,6 @@ angular.module('uguru.util.controllers')
     function dragMoveListener (event) {
 
       if (!event) {
-        console.log('event doesnt exist.. quitting')
         return;
       }
       var target = event.target,

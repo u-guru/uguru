@@ -479,7 +479,6 @@ angular.module('uguru.util.controllers')
           // $scope.root.loader.body.hide = true;
           $scope.page.scroll.section_index = 0;
           $timeout(function() {
-            console.log(document.querySelector('#iscroll-wrapper'));
             $scope.homePageScroll = ScrollService.initIScroll('#iscroll-wrapper', {snap: 'section'});
           }, 5000)
 
@@ -546,7 +545,6 @@ angular.module('uguru.util.controllers')
           },
           play: function() {
             $scope.topHomeSlider.paused = false;
-            console.log('play clicked');
             $ionicSlideBoxDelegate.$getByHandle('splash-hero-home').start();
           },
           index: 0,
@@ -622,7 +620,6 @@ angular.module('uguru.util.controllers')
             var indexTypeWriter = typeWriterElems[i];
             indexTypeWriter.id = 'typed-writer-' + i;
             var dataOptions = indexTypeWriter.getAttribute("typed-options").split(", ");
-            console.log(indexTypeWriter.id, dataOptions);
             TypedService.initTypedTicker(indexTypeWriter.id, dataOptions);
           }
         }
@@ -648,10 +645,8 @@ angular.module('uguru.util.controllers')
 
             if (!$scope.page.animations.hiw.viewed) {
               $scope.page.animations.hiw.viewed = true;
-              console.log('firing first time animations for hiw')
               AnimationService.activateSectionAnimations($scope.page.animations.hiw.firstViewed.elements, $scope.page.animations.hiw.firstViewed.css_classes, $scope.page.animations.hiw.firstViewed.delays);
             } else {
-              console.log('firing second time animations for hiw')
               AnimationService.activateSectionAnimations($scope.page.animations.hiw.secondViewed.elements, $scope.page.animations.hiw.secondViewed.css_classes, $scope.page.animations.hiw.secondViewed.delays);
             }
 
@@ -686,10 +681,8 @@ angular.module('uguru.util.controllers')
 
         if (!$scope.page.animations.bg.viewed) {
           $scope.page.animations.bg.viewed = true;
-          console.log('firing first time animations for become guru');
           AnimationService.activateSectionAnimations($scope.page.animations.bg.firstViewed.elements, $scope.page.animations.bg.firstViewed.css_classes, $scope.page.animations.bg.firstViewed.delays);
         } else {
-          console.log('firing second time animations for become guru');
           AnimationService.activateSectionAnimations($scope.page.animations.bg.secondViewed.elements, $scope.page.animations.bg.secondViewed.css_classes, $scope.page.animations.bg.secondViewed.delays);
         }
 
@@ -733,8 +726,6 @@ angular.module('uguru.util.controllers')
           if (!indexElemDeclaration) continue;
 
           var indexElemOffset = indexElem.getAttribute('wp-offset') || 0;
-
-          console.log(indexElem.id, 'initialized has offset', indexElemOffset);
         }
       }
 
@@ -776,7 +767,6 @@ angular.module('uguru.util.controllers')
       //       angular.forEach(['$scope', '$isolateScope'], function (scopeProperty) {
       //           if (element.data() && element.data().hasOwnProperty(scopeProperty)) {
       //               angular.forEach(element.data()[scopeProperty].$$watchers, function (watcher) {
-      //                   console.log(element[0].id || element[0].class, element[0]);
       //                   watchers.push(watcher);
       //               });
       //           }
@@ -796,7 +786,6 @@ angular.module('uguru.util.controllers')
       //            watchersWithoutDuplicates.push(item);
       //       }
       //   });
-      //   console.log(watchersWithoutDuplicates.length);
       // }, 10000);
 
       $scope.scrollNextSection = function() {
@@ -858,10 +847,8 @@ angular.module('uguru.util.controllers')
         })
         $timeout(function() {
           var intercomContainer = document.querySelector('#intercom-container');
-          console.log('attempting intercom container');
           if (intercomContainer) {
             Intercom('hide');
-            console.log('initiating intercom container');
             intercomContainer.style.cssText += ' z-index:1000 !important; visibility:hidden;';
 
           }
@@ -979,9 +966,7 @@ angular.module('uguru.util.controllers')
       var initProfileCTAS = function() {
 
         var academicCTABoxElem = document.getElementById('cta-box-academic');
-        console.log(academicCTABoxElem);
         // if (!academicCTABoxElem) {
-        //   console.log('checking for categories again in 1 second');
         //   setTimeout(function() {
         //     initProfileCTAS();
         //   }, 1000)
@@ -1014,7 +999,6 @@ angular.module('uguru.util.controllers')
         var result = CTAService.initSingleCTA('#cta-box-academic', '#home-splash', showCTACallback("academic"));
         if (result === false) {
           $timeout(function() {
-            console.log('trying again in 1000 ms');
             initProfileCTAS();
           }, 1000)
           return;
@@ -1381,7 +1365,7 @@ angular.module('uguru.util.controllers')
       }
 
       var windowCloseButtonIsClicked = function(e) {
-        console.log(e);
+        return
       }
 
       var defaultWindowOptions = {
@@ -1395,7 +1379,6 @@ angular.module('uguru.util.controllers')
 
       var refreshMap = function() {
         $scope.map.refresh = true;
-        console.log('map is refreshing');
         $timeout(function() {
           $scope.map.refresh = false;
         })
@@ -1424,7 +1407,6 @@ angular.module('uguru.util.controllers')
           deleteWindowExtraCSS();
         }, 100)
         $timeout(function() {
-          console.log('attempting to compile');
           $compile(document.getElementById('university-info-window-button'))($scope);
           $compile(document.getElementById('university-info-window-close-button'))($scope);
         }, 1000)
@@ -1440,7 +1422,6 @@ angular.module('uguru.util.controllers')
             $scope.page.load.complete = true;
           }, 2000);
           document.querySelector('#splash-university').classList.add('show-map');
-          console.log('map has finally rendered');
         }
       }
 
@@ -1450,7 +1431,6 @@ angular.module('uguru.util.controllers')
         if (!$scope.universities) {
             $scope.universities = University.getTargetted().slice();
             $scope.staticUniversityMaps = GUtilService.generateStaticMapUrls($scope.universities.slice(0, 4), staticMapOptions);
-            console.log($scope.staticUniversityMaps)
         }
         initHomeMap();
 
@@ -1458,7 +1438,6 @@ angular.module('uguru.util.controllers')
 
 
       $scope.$on('$ionicView.enter', function() {
-         console.log('ionic has entered');
          $timeout(function() {
             shouldShowBecomeGuruHeader && showDelayedBecomeGuruHeader();
             // initUniversityTypeWriter();

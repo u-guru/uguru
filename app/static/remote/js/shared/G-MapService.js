@@ -13,7 +13,7 @@ function GMapService() {
 
 
     var dragEndMap = function(maps, event_name, drag_options) {
-      console.log(maps, event_name, drag_options)
+      return
     }
 
     var getMostPopularCafe = function() {

@@ -84,7 +84,6 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
         var intercomContainer = document.querySelector('#intercom-container');
         if (!intercomContainer) {
           $timeout(function() {
-            console.log('attempting to load intercom again');
             showSupport(scope)();
           }, 1000)
           return;
@@ -152,7 +151,6 @@ function SideMenuService(LoadingService, $timeout, CounterService, CTAService, $
     }
 
     function initSideMenuCTAs(scope, parent_ref) {
-
       CTAService.initSingleCTA('#cta-box-pricing', parent_ref, initPricingCounters(scope));
       CTAService.initSingleCTA('#cta-box-FAQ', parent_ref);
       CTAService.initSingleCTA('#cta-box-signup', parent_ref);

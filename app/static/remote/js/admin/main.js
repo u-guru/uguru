@@ -38,7 +38,6 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
 
   DeviceService.readyDevice();
 
-  // console.log("Firing event start to GA");
 
   // ga('create', 'UA-67802516-1', 'auto');
   // ga('send', 'event', 'App Start', 'action');
@@ -142,11 +141,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         templateUrl: BASE + 'templates/signup.html',
         controller: 'SignupController'
   }).
-  state('root.guru-remote', {
-    url:'/guru-remote',
-    templateUrl: BASE + 'templates/guru.remote.html',
-    controller: 'GuruRemoteController'
-  }).
+  // state('root.guru-remote', {
+  //   url:'/guru-remote',
+  //   templateUrl: BASE + 'templates/guru.remote.html',
+  //   controller: 'GuruRemoteController'
+  // }).
   state('root.guru-languages', {
     url:'/guru-languages',
     templateUrl: BASE + 'templates/guru.languages.container.html',
@@ -167,11 +166,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         templateUrl: BASE + 'templates/home.html',
         controller: 'HomeController'
   }).
-  state('root.cashout', {
-        url: '/cashout',
-        templateUrl: BASE + 'templates/guru.cashout.html',
-        controller: 'GuruCashoutController'
-  }).
+  // state('root.cashout', {
+  //       url: '/cashout',
+  //       templateUrl: BASE + 'templates/guru.cashout.html',
+  //       controller: 'GuruCashoutController'
+  // }).
   state('root.guru-questions', {
         url: '/guru-questions',
         templateUrl: BASE + 'templates/guru.questions.html',
@@ -217,11 +216,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         templateUrl: BASE + 'templates/guru.ranking.html',
         controller: 'GuruRankingController'
   }).
-  state('root.guru-tasks', {
-        url: '/guru-tasks',
-        templateUrl: BASE + 'templates/guru.tasks.html',
-        controller: 'GuruTaskController'
-  }).
+  // state('root.guru-tasks', {
+  //       url: '/guru-tasks',
+  //       templateUrl: BASE + 'templates/guru.tasks.html',
+  //       controller: 'GuruTaskController'
+  // }).
   state('root.guru', {
         url: '/guru',
         templateUrl: BASE + 'templates/guru.html',
@@ -251,11 +250,11 @@ angular.module('uguru', ['ionic','ionic.utils','ngCordova', 'restangular',
         url: '/student-conversations',
         templateUrl: BASE + 'templates/student.conversations.html'
   }).
-  state('root.bill-student', {
-        url: '/bill-student',
-        templateUrl: BASE + 'templates/guru.bill-student.html',
-        controller: 'BillStudentController'
-  }).
+  // state('root.bill-student', {
+  //       url: '/bill-student',
+  //       templateUrl: BASE + 'templates/guru.bill-student.html',
+  //       controller: 'BillStudentController'
+  // }).
   state('root.test-error', {
         url: '/test-error',
         templateUrl: BASE + 'templates/guru.bill-student.html',
@@ -310,6 +309,5 @@ var processSkills = function($scope) {
           }
         }
     }
-    console.log('skills processed');
 }
 

@@ -30,11 +30,8 @@ function GUtilService($timeout) {
             if (scope && scope.requestForm) {
               scope.requestForm.address = results[0].formatted_address;
               scope.requestForm.location = {latitude: results[0].geometry.location.lat(), longitude:results[0].geometry.location.lng()};
-              console.log(scope.requestForm.address, scope.requestForm.location);
             }
           }
-        } else {
-          console.log('GEOCODE ERROR:',results, status);
         }
       })
   }
@@ -45,12 +42,8 @@ function GUtilService($timeout) {
           var resultPlace = places[i];
           if (resultPlace.photos && resultPlace.photos.length){
             photoCount += 1;
-            console.log(resultPlace.name, resultPlace.photos[0]);
-            console.log(resultPlace.name, resultPlace.photos[0].getUrl({'maxWidth': 260, 'maxHeight': 90}));
-
           }
       }
-      console.log(photoCount, 'photos found');
     }
 
   function getPlaceListByCoords(scope, map, coords, callback, options) {
@@ -70,20 +63,20 @@ function GUtilService($timeout) {
         if (results.length) {
 
           $timeout(function() {
-            scope.selectedUniversity.place_results = [];
+            scope.university.place_results = [];
             for (var i = 0; i < results.length; i++) {
               var resultPlace = results[i];
               if (!resultPlace.photos || !resultPlace.photos.length) {
                 continue;
               }
 
-              resultPlace.svg_path = getMapIconPathOnly(resultPlace.types[0], scope.selectedUniversity.school_color_dark, '#FFFFFF', 5);
+              resultPlace.svg_path = getMapIconPathOnly(resultPlace.types[0], scope.university.school_color_dark, '#FFFFFF', 5);
               resultPlace.photo_url = resultPlace.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
-              scope.selectedUniversity.place_results.push(resultPlace);
+              scope.university.place_results.push(resultPlace);
             }
             if (callback) {
 
-              callback(scope.selectedUniversity, scope.selectedCategory);
+              callback(scope.university, scope.category);
             }
           });
         }
@@ -102,15 +95,11 @@ function GUtilService($timeout) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
            if (results.length) {
             for (var i = 0; i < results.length; i++) {
-              console.log(results[i].name, results[i].types, results[i]);
             }
            } else {
             //get cross street
-            console.log('nothing found');
             // TODO: http://stackoverflow.com/questions/10676790/getting-an-intersection-with-google-places-geocoding-api
            }
-      } else {
-        console.log(status, results);
       }
     }
 

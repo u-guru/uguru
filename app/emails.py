@@ -76,20 +76,20 @@ def send_campaign_email(campaign_name, template_name,
         'tags':[campaign_name]
     }
 
-    if not os.environ.get('PRODUCTION'):
+    # if not os.environ.get('PRODUCTION'):
 
-        result = mandrill_client.messages.send_template(
-            template_name=template_name,
-            template_content=[],
-            message=message)
+    #     result = mandrill_client.messages.send_template(
+    #         template_name=template_name,
+    #         template_content=[],
+    #         message=message)
 
-    else:
-        result = mandrill_test_client.messages.send_template(
-            template_name=template_name,
-            template_content=[],
-            message=message)
+    # else:
+    #     result = mandrill_test_client.messages.send_template(
+    #         template_name=template_name,
+    #         template_content=[],
+    #         message=message)
 
-    return result
+    # return result
 
 def send_transactional_email(subject, content, receiver, tags, email=None):
 
@@ -133,8 +133,8 @@ def send_transactional_email(subject, content, receiver, tags, email=None):
     # else:
     #     print "production: email turned off for now", receiver.email, subject, tags
 
-    result = mandrill_client.messages.send(message=message)
-    return result
+    # result = mandrill_client.messages.send(message=message)
+    # return result
 
 def compose_email_notif_message(notif_key, args_tuple):
     return str(email_notif_copy[notif_key] % args_tuple)
@@ -145,8 +145,8 @@ def send_reset_password_email(user, raw_password):
     email_message = compose_email_notif_message('reset_password', args_tuple)
     email_receiver = user
     email_tags = "student-reset-password"
-    result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
-    print result
+    # result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
+    # print result
 
 def send_web_reminder_email(email, subject, message):
     receiver_info = [{
@@ -167,8 +167,8 @@ def send_web_reminder_email(email, subject, message):
         'html':message,
         'text':message.replace('<br>', '').replace('&nbsp;', ' ')
     }
-    result = mandrill_client.messages.send(message=message)
-    return result
+    # result = mandrill_client.messages.send(message=message)
+    # return result
 
 
 def send_errors_email(body, client_only=False, default_email='samir@uguru.me'):
@@ -205,9 +205,9 @@ def send_errors_email(body, client_only=False, default_email='samir@uguru.me'):
         'text': email_content.replace('\n', '\n\n')
     }
 
-    result = mandrill_client.messages.send(message=message)
-    print result
-    return result
+    # result = mandrill_client.messages.send(message=message)
+    # print result
+    # return result
 
 
 def send_message_to_receiver_support(sender, receiver):
@@ -220,8 +220,8 @@ def send_message_to_receiver_support(sender, receiver):
     email_receiver = receiver
     email_tags = 'support-message-to-user'
 
-    result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
-    print result
+    # result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
+    # print result
 
 def send_student_request_to_guru(_request, guru):
 
@@ -256,8 +256,8 @@ def send_student_request_to_guru(_request, guru):
     email_receiver = guru
     email_tags = "guru-receives-request"
 
-    result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
-    print result
+    # result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
+    # print result
 
 def send_guru_proposal_to_student(proposal, student):
     args_tuple = (
@@ -270,8 +270,8 @@ def send_guru_proposal_to_student(proposal, student):
     email_receiver = student
     email_tags = "student-receives-guru-proposal"
 
-    result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
-    print result
+    # result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
+    # print result
 
 def send_student_has_accepted_to_guru(session, guru):
 
@@ -297,8 +297,8 @@ def send_student_has_accepted_to_guru(session, guru):
     email_receiver = guru
     email_tags = "student-accepts-guru"
 
-    result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
-    print result
+    # result = send_transactional_email(email_subject, email_message, email_receiver, email_tags)
+    # print result
 
 
 
@@ -316,7 +316,7 @@ def send_campaign_email_test(campaign_name, template_name,
 def send_campaign_one(campaign, is_test=False):
     from campaigns.guru_campaigns import berkeleyCampaignOneTemplate, berkeleyCampaignTwoTemplate
     receivers = []
-        
+
     recipients = Campaign.query.get(campaign.id).recipients
 
     for recipient in recipient:
@@ -326,13 +326,13 @@ def send_campaign_one(campaign, is_test=False):
             'type': 'to'
             })
 
-    if is_test: 
+    if is_test:
         from math import randint
         receivers = [receivers[randint(0, len(receivers) - 1)]]
         receivers[0]['email'] = 'samir@uguru.me'
         campaign_tag = 'test-' + campaign_tag
         date_tag = 'test-' + date_tag
-    
+
     campaign_tag = "campaign-%s" % campaign.id
     date_tag = "sent-%s-%s-%s" % (datetime.now().day, datetime.now().month, datetime.now().year)
 
@@ -352,8 +352,8 @@ def send_campaign_one(campaign, is_test=False):
         'html':html_message,
         'text':html_message.replace('<br>', '').replace('&nbsp;', ' ')
     }
-    result = mandrill_client.messages.send(message=message)
-    return result
+    # result = mandrill_client.messages.send(message=message)
+    # return result
 
 def send_campaign_two(campaign, is_test=False):
     from campaigns.guru_campaigns import berkeleyCampaignTwoTemplate
@@ -367,13 +367,13 @@ def send_campaign_two(campaign, is_test=False):
             'type': 'to'
             })
 
-    if is_test: 
+    if is_test:
         from math import randint
         receivers = [receivers[randint(0, len(receivers) - 1)]]
         receivers[0]['email'] = 'samir@uguru.me'
         campaign_tag = 'test-' + campaign_tag
         date_tag = 'test-' + date_tag
-    
+
     campaign_tag = "campaign-%s" % campaign.id
     date_tag = "sent-%s-%s-%s" % (datetime.now().day, datetime.now().month, datetime.now().year)
 
@@ -392,8 +392,7 @@ def send_campaign_two(campaign, is_test=False):
         'html':html_message,
         'text':html_message.replace('<br>', '').replace('&nbsp;', ' ')
     }
-    result = mandrill_client.messages.send(message=message)
-    return result
+    #
 
 email_notif_copy = {
     "student_request": """Make $%s total in %smin helping %s in %s. Swipe for more details & increase response rate""",

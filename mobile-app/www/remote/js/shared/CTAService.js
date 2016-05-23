@@ -21,7 +21,6 @@ function CTAService($timeout) {
   }
 
   var showCTAManually = function(elem_id, cb) {
-    console.log(ctaFuncDict);
     var func = ctaFuncDict[elem_id];
     func && func();
     cb && cb();
@@ -41,7 +40,6 @@ function CTAService($timeout) {
   var bindCtaToBoxElem = function(box_elem, modal_elem, show_callback, box_selector, key_triggers) {
     key_triggers = key_triggers || [];
     ctaFuncDict[box_selector] = function() {
-
       ctaCloseFuncDict[box_selector]  = cta(box_elem, modal_elem, ctaOptions, function() {
 
         //show modal cta
@@ -49,13 +47,12 @@ function CTAService($timeout) {
         // $timeout(function() { showModalCTA(modal_elem) });
 
         $timeout(function() {
-          console.log('calling callback');
           show_callback && show_callback(modal_elem);
         })
-
         var modalCloseIcon = getModalCloseIcon(modal_elem);
         if (modalCloseIcon) {
           modalCloseIcon.addEventListener('click', function() {
+
             ctaCloseFuncDict[box_selector]();
             hideModalCTA(modal_elem);
           });
@@ -80,12 +77,21 @@ function CTAService($timeout) {
   }
 
   var initSingleCTA = function(boxSelector, parentSelector, show_callback, eventTriggers) {
-
     var parentElem = document.querySelector(parentSelector);
     var boxElem = document.querySelector(boxSelector);
 
     var modalElemId = boxElem && boxSelector.replace('.', '#').replace('box', 'modal');
     var modalElem = document.querySelector(modalElemId);
+
+    // Debug use
+    // if(modalElemId =='#cta-modal-request-courses'){
+    //     console.log('parentElem',parentElem)
+    //     console.log('boxElem',boxElem)
+    //     console.log('modalElemId',modalElemId)
+    //     console.log('modalElem',modalElem)
+
+    // }
+
     //if both dont exist dont do anything
     if (!(parentElem && boxElem && modalElem)) {
       return false;

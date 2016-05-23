@@ -1,73 +1,60 @@
 {
     "action_items": {
-        "ben": [
-            {
-                "description": "Together we will create a base script that will allow you to link subjects with their courses. <br> By the end of this project all 200 universities should have a list of subjects with many courses.", 
-                "name": "Link popular courses with subject", 
-                "priority": 10
-            }, 
-            {
-                "description": "", 
-                "name": "Find & Create Popular Tags for Each Subject", 
-                "priority": 10
-            }
-        ], 
         "gabrielle": [
             {
                 "assigned": [
                     "gabrielle"
                 ], 
-                "description": "There are new updates of which Jeselle will go over (from Saturday). There may not be new updates since Saturday but there's still a good amount working more than Friday. It appears the magic animations are laggy.<br><br>", 
-                "description_2": "Pull from Dev && try to fix the issues Jeselle is having on your local & see if you can resolve or at least pinpoin which CSS properties are causing it.", 
+                "description": "Bonus for finding one that has several platforms", 
                 "difficulty": 1, 
-                "estimated_time": "b4 <11am", 
+                "estimated_time": "Until 10:45am", 
                 "index": 1, 
-                "name": "Magic.css Identify Animation Lag w/ Jeselle ['See Description']", 
+                "name": "Most crazy[1]  + fluid [2] timer app [Chrome or Mac App only]", 
                 "priority": 10, 
                 "ref": "admin-tools-1", 
                 "substates": [], 
-                "time_created": "04/04", 
+                "time_created": "04/08", 
                 "type": "Morning Skills"
             }, 
             {
                 "assigned": [
                     "gabrielle"
                 ], 
-                "description": "Prioritize by need/impact on pre-app + student dashboard workflows. Third party URL references only. Feel free to record in format of your choice. Dig through old zeplins & docs. While Jeselle creates list you should make sure they r cross platform & take", 
+                "description": "Only have 30 minutes. Here are the things that you should consider: colors based on environments, desktop+mobile. Definitely will be used in dashboards & great for indicating things in realtime (1 new message) while doing something else.", 
+                "description_2": "Steps to success <br><br>1. Research HiFi <br> 2. Spec out & make sure color works for all 3. Jeselle -> HiFi while Gabrielle creates barebones directive. Bonus for doing something new/above and beyond", 
                 "difficulty": 1, 
-                "estimated_time": "11-11:30", 
+                "estimated_time": "Until 11:15", 
                 "index": 1, 
-                "name": "[w/ Jeselle + see description] Make master list of 'Animations we wish we had' w/ links to URL", 
+                "name": "Mobile + Desktop Toasts [see description]", 
                 "priority": 10, 
                 "ref": "admin-tools-1", 
                 "substates": [], 
-                "time_created": "04/04", 
+                "time_created": "04/08", 
                 "type": "Morning Skills"
             }, 
             {
                 "assigned": [
-                    "gabrielle"
+                    "jeselle"
                 ], 
-                "description": "For GPA - landing apge only. Feel free to create in codepen.", 
-                "difficulty": 2, 
-                "estimated_time": 120, 
-                "index": 14, 
-                "name": "From Zeplin: Receipts, Parents (100%), GPA Landing Page [See description]", 
-                "priority": 8, 
-                "ref": "mad-lib-state-2", 
-                "substates": [], 
-                "time_created": "04/04", 
-                "type": "HTML Files"
+                "complete": false, 
+                "desc_dropdown": false, 
+                "description": "Use cases --> Rendering content within projector slide, image container. Go through the file list and see if you can eyeball all possible cases for containers, layouts, assets, components", 
+                "difficulty": 3, 
+                "estimated_time": 20, 
+                "index": 1, 
+                "name": "Component/Container/Layout/Asset Specific Loaders --> Final spec", 
+                "priority": 10, 
+                "ref": "user-content-state-2", 
+                "time_created": "04/08", 
+                "type": "Morning Skills"
             }, 
             {
-                "assigned": [
-                    "gabrielle"
-                ], 
-                "description": "When Samir gets in -- go over 'Steps to import your own component'", 
+                "assigned": [], 
+                "description": "Continue polishing one/more section of the UI Aesthetics for the Admin Tool", 
                 "difficulty": 3, 
                 "estimated_time": 30, 
                 "index": 3, 
-                "name": "Steps to Import your own component from codepen / .tpl file", 
+                "name": "Admin UI Tools / Components", 
                 "priority": 5, 
                 "ref": "admin-tools-3", 
                 "substates": [], 
@@ -78,47 +65,32 @@
                 "assigned": [
                     "gabrielle"
                 ], 
-                "description": "For remainder of monday. Main states, all internal components transitions in. See polymer elements as great example. Focus on cards & smaller components. <br><br><b> IMPORTANT </b>Do not worry about how", 
+                "description": "Animation states: onComponentRender, onAttribute Update(for example if a user ID card gets updated", 
                 "description_2": "these components come into the scene (that's the containers job!)", 
                 "difficulty": 3, 
                 "estimated_time": 30, 
                 "index": 5, 
-                "name": "Animating all component-specific like you did for dropdown", 
+                "name": "[See desc] HiFi for all components including animation states", 
                 "priority": null, 
                 "ref": "admin-tools-3", 
                 "substates": [], 
-                "time_created": "04/04", 
+                "time_created": "04/08", 
                 "type": "Upcoming"
             }, 
             {
                 "assigned": [
                     "gabrielle"
                 ], 
-                "description": "", 
+                "description": "See dashboard for prioritized list", 
                 "difficulty": 3, 
                 "estimated_time": 30, 
                 "index": 3, 
-                "name": "Tuesday: Revisit become Guru", 
+                "name": "Continue knocking out components you have not completed yet", 
                 "priority": null, 
                 "ref": "admin-tools-3", 
                 "substates": [], 
                 "time_created": "04/04", 
                 "type": "Upcoming"
-            }, 
-            {
-                "assigned": [
-                    "gabrielle"
-                ], 
-                "description": "<ul><li> 1. Base style guide </li><li> 2. List all the svg icons </li></ul>", 
-                "difficulty": 3, 
-                "estimated_time": 30, 
-                "index": 3, 
-                "name": "Tuesday Morning Skills: Style Guide w/ 2 example code snippets, directive & .tpl + open in codepen", 
-                "priority": null, 
-                "ref": "admin-tools-3", 
-                "substates": [], 
-                "time_created": "04/04", 
-                "type": "Morning Skills"
             }
         ], 
         "jason": [
@@ -156,33 +128,33 @@
         "jeselle": [
             {
                 "assigned": [
-                    "Jeselle"
-                ], 
-                "complete": false, 
-                "desc_dropdown": false, 
-                "description": "If a category-specific Guru creates multiple cardlets, how will these impact the public view of their category profile? <br><br>There will be two parts (this one part 1), the initial glance (2-3 mini cards, and a view all state)", 
-                "difficulty": 3, 
-                "estimated_time": "b4 11am", 
-                "index": 1, 
-                "name": "Catch Gabrielle up with dashboard upfrom Saturday + Magic.css issues.", 
-                "priority": 10, 
-                "ref": "create-edit-resource-1", 
-                "time_created": "04/04", 
-                "type": "Hifi Container"
-            }, 
-            {
-                "assigned": [
                     "jeselle"
                 ], 
-                "description": "Prioritize by need/impact on pre-app + student dashboard workflows. Third party URL references only. Feel free to record in format of your choice. Dig through old zeplins & docs. While Jeselle creates list you should make sure they r cross platform & take", 
+                "description": "Bonus for finding one that has several platforms", 
                 "difficulty": 1, 
-                "estimated_time": "11-11:30", 
+                "estimated_time": "", 
                 "index": 1, 
-                "name": "[w/ Gabrielle + see description] Make master list of 'Animations we wish we had' w/ links to URL", 
+                "name": "Most crazy[1]  + fluid [2] timer app [Chrome or Mac App only]", 
                 "priority": 10, 
                 "ref": "admin-tools-1", 
                 "substates": [], 
-                "time_created": "04/04", 
+                "time_created": "04/08", 
+                "type": "Morning Skills"
+            }, 
+            {
+                "assigned": [
+                    "Jeselle"
+                ], 
+                "description": "Only have 30 minutes. Here are the things that you should consider: colors based on environments, desktop+mobile. Definitely will be used in dashboards & great for indicating things in realtime (1 new message) while doing something else.", 
+                "description_2": "Steps to success <br><br>1. Research HiFi <br> 2. Spec out & make sure color works for all 3. Jeselle -> HiFi while Gabrielle creates barebones directive. Bonus for doing something new/above and beyond", 
+                "difficulty": 1, 
+                "estimated_time": "Until 11:15", 
+                "index": 1, 
+                "name": "Mobile + Desktop Toasts [see description]", 
+                "priority": 10, 
+                "ref": "admin-tools-1", 
+                "substates": [], 
+                "time_created": "04/08", 
                 "type": "Morning Skills"
             }, 
             {
@@ -191,15 +163,15 @@
                 ], 
                 "complete": false, 
                 "desc_dropdown": false, 
-                "description": "Will be uploading updates as you guys request more. You will primarily be focusing on the layouts & entrance of components while Gabrielel will focus on animations within components.", 
+                "description": "Use cases --> Rendering content within projector slide, image container. Go through the file list and see if you can eyeball all possible cases for containers, layouts, assets, components", 
                 "difficulty": 3, 
                 "estimated_time": 20, 
                 "index": 1, 
-                "name": "Continue Layout Based Become-Guru Scenes", 
+                "name": "Component/Container/Layout/Asset Specific Loaders --> Final spec", 
                 "priority": 10, 
                 "ref": "user-content-state-2", 
-                "time_created": "04/04", 
-                "type": "Hifi Container"
+                "time_created": "04/08", 
+                "type": "Morning Skills"
             }, 
             {
                 "assigned": [
@@ -207,36 +179,64 @@
                 ], 
                 "complete": false, 
                 "desc_dropdown": false, 
-                "description": "See /#/ timer on staging to see a bare bones working prototype", 
+                "description": "", 
                 "difficulty": 3, 
                 "estimated_time": 20, 
                 "index": 1, 
-                "name": "[W/Gabrielle] Resolve become a Guru user action workflow", 
+                "name": "All Become a Guru animated states", 
                 "priority": null, 
                 "ref": "create-edit-resource-3", 
-                "time_created": "04/04", 
-                "type": "Hifi Container"
-            }, 
-            {
-                "assigned": [
-                    "Jeselle"
-                ], 
-                "complete": false, 
-                "desc_dropdown": false, 
-                "description": "See /#/ timer on staging to see a bare bones working prototype", 
-                "difficulty": 3, 
-                "estimated_time": 20, 
-                "index": 1, 
-                "name": "[Upcoming] Focus Guru Hifi (Straight from Build tool ;) )", 
-                "priority": null, 
-                "ref": "create-edit-resource-3", 
-                "time_created": "3/28", 
-                "type": "Hifi Container"
+                "time_created": "04/08", 
+                "type": "Hifi Animation"
             }
         ], 
         "samir": []
     }, 
-    "assets": [], 
+    "assets": [
+        {
+            "id": 1, 
+            "ref": "logo", 
+            "tags": [
+                "logo"
+            ], 
+            "template_url": "templates/logo.tpl"
+        }, 
+        {
+            "id": 2, 
+            "ref": "svg", 
+            "tags": [
+                "svg"
+            ], 
+            "template_url": "templates/svg.tpl"
+        }, 
+        {
+            "id": 3, 
+            "ref": "placeholder-circle", 
+            "tags": [
+                "placeholder", 
+                "circle"
+            ], 
+            "template_url": "templates/placeholder/circle.tpl"
+        }, 
+        {
+            "id": 4, 
+            "ref": "placeholder-square", 
+            "tags": [
+                "placeholder", 
+                "square"
+            ], 
+            "template_url": "templates/placeholder/square.tpl"
+        }, 
+        {
+            "id": 5, 
+            "ref": "social-social", 
+            "tags": [
+                "social", 
+                "social"
+            ], 
+            "template_url": "templates/social/social.tpl"
+        }
+    ], 
     "components": [
         {
             "id": 1, 
@@ -250,6 +250,15 @@
         }, 
         {
             "id": 2, 
+            "ref": "cards-album", 
+            "tags": [
+                "cards", 
+                "album"
+            ], 
+            "template_url": "templates/cards/album.tpl"
+        }, 
+        {
+            "id": 3, 
             "name": "Guru Profile Cardlet", 
             "ref": "cards-cardlet", 
             "tags": [
@@ -259,19 +268,47 @@
             "template_url": "templates/cards/cardlet.tpl"
         }, 
         {
+            "id": 4, 
+            "ref": "cards-course-check", 
+            "tags": [
+                "cards", 
+                "course.check"
+            ], 
+            "template_url": "templates/cards/course.check.tpl"
+        }, 
+        {
+            "id": 5, 
+            "ref": "cards-course-hover", 
+            "tags": [
+                "cards", 
+                "course.hover"
+            ], 
+            "template_url": "templates/cards/course.hover.tpl"
+        }, 
+        {
+            "id": 6, 
+            "ref": "cards-course-link", 
+            "tags": [
+                "cards", 
+                "course.link"
+            ], 
+            "template_url": "templates/cards/course.link.tpl"
+        }, 
+        {
             "active": true, 
-            "id": 3, 
+            "id": 7, 
             "name": "Course Card", 
             "ref": "cards-course", 
             "sample": {
                 "scope": {
                     "course": {
-                        "description": "UC berkeley's #1 intro computer science course", 
-                        "full_name": "beauty and joy of computing", 
+                        "color": "#003262", 
+                        "description": "UC Berkeley's #1 Intro Computer Science Course", 
+                        "full_name": "Beauty and Joy of Computing", 
                         "name": "CS10"
                     }
                 }, 
-                "template": "<course-card ng-model=\"component.sample.scope.course\"> </course-card>"
+                "template": "<course-card ng-model=\"component.sample.scope.course\" type=\"link\"> </course-card><course-card ng-model=\"component.sample.scope.course\" type=\"check\"> </course-card><course-card ng-model=\"component.sample.scope.course\" type=\"hover\"> </course-card>"
             }, 
             "tags": [
                 "cards", 
@@ -281,7 +318,7 @@
         }, 
         {
             "active": false, 
-            "id": 4, 
+            "id": 8, 
             "name": "PaymentCard", 
             "ref": "cards-payment", 
             "sample": {
@@ -316,14 +353,8 @@
             "template_url": "templates/cards/payment.tpl"
         }, 
         {
-            "active": true, 
-            "id": 5, 
-            "name": "Profile Mini Card", 
+            "id": 9, 
             "ref": "cards-profile-mini", 
-            "sample": {
-                "scope": {}, 
-                "template": "<profile-mini-card></profile-mini-card>"
-            }, 
             "tags": [
                 "cards", 
                 "profile.mini"
@@ -337,7 +368,7 @@
                     "girls": "Discuss names convenient for everyone. I.e. PF -Card."
                 }
             ], 
-            "id": 6, 
+            "id": 10, 
             "name": "Profile Card", 
             "ref": "cards-profile", 
             "sample": {
@@ -352,7 +383,7 @@
         }, 
         {
             "active": true, 
-            "id": 7, 
+            "id": 11, 
             "name": "Profile 1/3 Side Card", 
             "ref": "cards-profile-widget", 
             "sample": {
@@ -378,7 +409,7 @@
                     ]
                 }
             ], 
-            "id": 8, 
+            "id": 12, 
             "name": "University Card", 
             "ref": "cards-university", 
             "sample": {
@@ -406,7 +437,7 @@
         }, 
         {
             "active": true, 
-            "id": 9, 
+            "id": 13, 
             "name": "User ID Card", 
             "ref": "cards-user-id", 
             "sample": {
@@ -434,14 +465,8 @@
             "template_url": "templates/cards/user.id.tpl"
         }, 
         {
-            "active": true, 
-            "id": 10, 
-            "name": "Icon Attachment", 
+            "id": 14, 
             "ref": "info-attachment", 
-            "sample": {
-                "scope": {}, 
-                "template": "<attachment type=\"component.sample.scope.type\"> </attachment>"
-            }, 
             "tags": [
                 "info", 
                 "attachment"
@@ -450,11 +475,17 @@
         }, 
         {
             "active": true, 
-            "id": 11, 
+            "id": 15, 
             "name": "Badge", 
             "ref": "info-badge", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "color": "moxie", 
+                    "count": "1", 
+                    "direction": "left", 
+                    "label": "Badge"
+                }, 
+                "template": "<badge count=\"component.sample.scope.count\" label=\"component.sample.scope.label\" direction=\"component.sample.scope.direction\" color=\"component.sample.scope.color\"> </badge>"
             }, 
             "tags": [
                 "info", 
@@ -464,7 +495,7 @@
         }, 
         {
             "active": true, 
-            "id": 12, 
+            "id": 16, 
             "name": "University Pennant", 
             "ref": "info-pennant", 
             "sample": {
@@ -483,13 +514,8 @@
             "template_url": "templates/info/pennant.tpl"
         }, 
         {
-            "active": true, 
-            "id": 13, 
-            "name": "Profile Section", 
+            "id": 17, 
             "ref": "info-profile-section", 
-            "sample": {
-                "scope": {}
-            }, 
             "tags": [
                 "info", 
                 "profile.section"
@@ -498,7 +524,7 @@
         }, 
         {
             "active": true, 
-            "id": 14, 
+            "id": 18, 
             "name": "Rating Stars", 
             "notes": "doesnt show 0.5", 
             "ref": "info-rating", 
@@ -515,7 +541,7 @@
             "template_url": "templates/info/rating.tpl"
         }, 
         {
-            "id": 15, 
+            "id": 19, 
             "name": "Card Ribbon", 
             "ref": "info-ribbon", 
             "tags": [
@@ -525,23 +551,18 @@
             "template_url": "templates/info/ribbon.tpl"
         }, 
         {
-            "id": 16, 
-            "name": "Toast", 
-            "ref": "info-toast", 
-            "tags": [
-                "info", 
-                "toast"
-            ], 
-            "template_url": "templates/info/toast.tpl"
-        }, 
-        {
             "active": true, 
-            "id": 17, 
-            "name": "Tool Tip", 
-            "notes": "CSS issues", 
+            "id": 21, 
+            "name": "Tooltip", 
+            "notes": "", 
             "ref": "info-tooltip", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "button": "Okay", 
+                    "content": "This is a tooltip", 
+                    "direction": "top"
+                }, 
+                "template": "<tooltip button=\"component.sample.scope.button\" content=\"component.sample.scope.content\" direction=\"component.sample.scope.direction\"> </tooltip>"
             }, 
             "tags": [
                 "info", 
@@ -551,20 +572,80 @@
         }, 
         {
             "active": true, 
-            "bugs": [
-                {
-                    "assigned": "samir", 
-                    "reason": "doesn't work"
-                }
+            "id": 17, 
+            "name": "Toast", 
+            "notes": "", 
+            "ref": "info-toast", 
+            "sample": {
+                "scope": {
+                    "toast": {
+                        "content": "Gabrielle sent you a new message!", 
+                        "overlay": true, 
+                        "quote": "I'm at the library, where are you?"
+                    }
+                }, 
+                "template": "<toast class=\"bg-moxie\" ng-model=\"component.sample.scope.toast\"> </toast>"
+            }, 
+            "tags": [
+                "info", 
+                "toast"
             ], 
+            "template_url": "templates/info/toast.tpl"
+        }, 
+        {
+            "active": true, 
+            "id": 17, 
+            "name": "Toast with Overlay", 
+            "notes": "", 
+            "ref": "info-toast-overlay", 
+            "sample": {
+                "scope": {
+                    "toast": {
+                        "content": "Gabrielle sent you a new message!", 
+                        "quote": "I'm at the library, where are you?"
+                    }
+                }, 
+                "template": "<toast class=\"bg-smoke txt-moxie\" ng-model=\"component.sample.scope.toast\" type=\"overlay\"> </toast>"
+            }, 
+            "tags": [
+                "info", 
+                "toast", 
+                "overlay"
+            ], 
+            "template_url": "templates/info/toast.tpl"
+        }, 
+        {
+            "active": true, 
             "id": 18, 
+            "name": "Mobile Toast", 
+            "notes": "", 
+            "ref": "info-toast-mobile", 
+            "sample": {
+                "scope": {
+                    "toast": {
+                        "content": "Gabrielle sent you a new message!", 
+                        "quote": "I'm at the library, where are you?"
+                    }
+                }, 
+                "template": "<toast class=\"toast-mobile bg-smoke txt-crimson\" ng-model=\"component.sample.scope.toast\"> </toast>"
+            }, 
+            "tags": [
+                "info", 
+                "toast"
+            ], 
+            "template_url": "templates/info/toast.tpl"
+        }, 
+        {
+            "active": true, 
+            "bugs": "", 
+            "id": 22, 
             "name": "User Icon", 
             "notes": "Add pre-loader states while the image is loading", 
             "ref": "info-user-icon", 
             "sample": {
                 "scope": {
                     "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=200", 
-                    "size": "medium"
+                    "size": "64"
                 }, 
                 "template": "<user-icon size=\"component.sample.scope.size\" url=\"component.sample.scope.profile_url\"> </user-icon>"
             }, 
@@ -576,8 +657,8 @@
         }, 
         {
             "active": true, 
-            "id": 19, 
-            "name": "Drag-in Attachment Box", 
+            "id": 23, 
+            "name": "Attachment Box", 
             "ref": "inputs-attach-box", 
             "sample": {
                 "scope": {}
@@ -590,11 +671,14 @@
         }, 
         {
             "active": true, 
-            "id": 20, 
+            "id": 24, 
             "name": "Standard Checkbox", 
             "ref": "inputs-checkbox", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "label": "Checkbox"
+                }, 
+                "template": "<checkbox label=\"component.sample.scope.label\"> </checkbox>"
             }, 
             "tags": [
                 "inputs", 
@@ -614,7 +698,7 @@
                     "girls": "resolve inputs and save buttons vs blurs"
                 }
             ], 
-            "id": 21, 
+            "id": 25, 
             "name": "Color Picker", 
             "ref": "inputs-color-picker", 
             "sample": {
@@ -632,7 +716,7 @@
         {
             "active": true, 
             "cp_link": "", 
-            "id": 22, 
+            "id": 26, 
             "name": "Standard Dropdown", 
             "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
             "ref": "inputs-dropdown", 
@@ -656,11 +740,14 @@
         }, 
         {
             "active": true, 
-            "id": 23, 
-            "name": "Standard Radio Input", 
+            "id": 27, 
+            "name": "Standard Radio", 
             "ref": "inputs-radio", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "label": "Radio"
+                }, 
+                "template": "<radio label=\"component.sample.scope.label\"> </radio>"
             }, 
             "tags": [
                 "inputs", 
@@ -669,13 +756,8 @@
             "template_url": "templates/inputs/radio.tpl"
         }, 
         {
-            "active": true, 
-            "id": 24, 
-            "name": "Standard Range Slider", 
+            "id": 28, 
             "ref": "inputs-slider", 
-            "sample": {
-                "scope": {}
-            }, 
             "tags": [
                 "inputs", 
                 "slider"
@@ -684,11 +766,12 @@
         }, 
         {
             "active": true, 
-            "id": 25, 
+            "id": 29, 
             "name": "Arrow Tab Bar", 
             "ref": "inputs-tab-arrow", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<tabs-arrow></tabs-arrow>"
             }, 
             "tags": [
                 "inputs", 
@@ -697,7 +780,7 @@
             "template_url": "templates/inputs/tab.arrow.tpl"
         }, 
         {
-            "id": 26, 
+            "id": 30, 
             "name": "Copy Text Input", 
             "ref": "inputs-text-copy", 
             "tags": [
@@ -708,11 +791,17 @@
         }, 
         {
             "active": true, 
-            "id": 27, 
+            "id": 31, 
             "name": "Standard Text Input", 
             "ref": "inputs-text", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "input": {
+                        "label": "Label", 
+                        "placeholder": "This is a standard input"
+                    }
+                }, 
+                "template": "<input-standard ng-model=\"component.sample.scope.input\"></input-standard>"
             }, 
             "tags": [
                 "inputs", 
@@ -723,10 +812,33 @@
         {
             "active": true, 
             "id": 28, 
+            "name": "Material Text Input", 
+            "ref": "inputs-material", 
+            "sample": {
+                "scope": {
+                    "input": {
+                        "color": "light", 
+                        "placeholder": "This is a material input", 
+                        "type": "material"
+                    }
+                }, 
+                "template": "<input-standard ng-model=\"component.sample.scope.input\" type=\"material\"></input-standard>"
+            }, 
+            "tags": [
+                "inputs", 
+                "text", 
+                "material"
+            ], 
+            "template_url": "templates/inputs/material.tpl"
+        }, 
+        {
+            "active": true, 
+            "id": 32, 
             "name": "Standard Toggle", 
             "ref": "inputs-toggle", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<toggle></toggle>"
             }, 
             "tags": [
                 "inputs", 
@@ -736,12 +848,23 @@
         }, 
         {
             "active": true, 
-            "id": 29, 
-            "name": "Colorful dropdown", 
+            "cp_link": "", 
+            "id": 33, 
+            "name": "Color Dropdowns", 
+            "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
             "ref": "inputs-dropdowns-color", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "options": [
+                        "apples", 
+                        "bananas", 
+                        "oranges"
+                    ], 
+                    "selectedIndex": 0
+                }, 
+                "template": "<dropdown type=\"color\" ng-model=\"component.sample.scope\"></dropdown>"
             }, 
+            "stage": 1, 
             "tags": [
                 "inputs", 
                 "dropdowns", 
@@ -750,33 +873,8 @@
             "template_url": "templates/inputs/dropdowns/color.tpl"
         }, 
         {
-            "active": true, 
-            "cp_link": "", 
-            "id": 30, 
-            "name": "Dropdowns", 
-            "notes": "Seems not 100% unified, could be more fluid with another sample tool", 
+            "id": 34, 
             "ref": "inputs-dropdowns-splash", 
-            "sample": {
-                "scope": {
-                    "key": "name", 
-                    "label": "Top Fruits", 
-                    "options": [
-                        {
-                            "name": "apples"
-                        }, 
-                        {
-                            "name": "bananas"
-                        }, 
-                        {
-                            "name": "oranges"
-                        }
-                    ], 
-                    "selectedIndex": 0, 
-                    "size": "small"
-                }, 
-                "template": "<dropdown type=\"splash\" ng-model=\"component.sample.scope\"></dropdown>"
-            }, 
-            "stage": 1, 
             "tags": [
                 "inputs", 
                 "dropdowns", 
@@ -785,7 +883,7 @@
             "template_url": "templates/inputs/dropdowns/splash.tpl"
         }, 
         {
-            "id": 31, 
+            "id": 35, 
             "name": "Color picker", 
             "ref": "inputs-pickers-color", 
             "tags": [
@@ -802,7 +900,7 @@
                     "girls": "Whats the different conceptually between a tag and a chip?"
                 }
             ], 
-            "id": 32, 
+            "id": 36, 
             "name": "Base Tag", 
             "ref": "inputs-tags-base", 
             "sample": {
@@ -831,7 +929,7 @@
                     "girls": "Whats the different conceptually between a tag and a chip?"
                 }
             ], 
-            "id": 33, 
+            "id": 37, 
             "name": "Tag", 
             "ref": "inputs-tags-splash", 
             "sample": {
@@ -869,22 +967,7 @@
         }, 
         {
             "active": true, 
-            "id": 34, 
-            "name": "Gallery Inputs", 
-            "ref": "inputs-text-all_inputs", 
-            "sample": {
-                "scope": {}
-            }, 
-            "tags": [
-                "inputs", 
-                "text", 
-                "all_inputs"
-            ], 
-            "template_url": "templates/inputs/text/all_inputs.tpl"
-        }, 
-        {
-            "active": true, 
-            "id": 35, 
+            "id": 39, 
             "name": "Base Tag Input", 
             "ref": "inputs-text-tag", 
             "sample": {
@@ -896,12 +979,9 @@
                 "scope": {
                     "category": {
                         "hex_class": "azure", 
-                        "hex_color": "academic", 
-                        "id": 5, 
-                        "name": "Academic", 
-                        "placeholder": "{{component.sample.scope.placeholder}}"
+                        "placeholder": "Try Me"
                     }, 
-                    "innerText": "Tag Input Try Me"
+                    "innerText": "Try Me"
                 }, 
                 "template": "<tag desktop=\"desktopMode\" category=\"component.sample.scope.category\" inner-text=\"component.sample.scope.innerText\" type=\"input\"> </tag>"
             }, 
@@ -914,7 +994,7 @@
         }, 
         {
             "active": true, 
-            "id": 36, 
+            "id": 40, 
             "name": "Map Marker", 
             "ref": "links-map-marker", 
             "sample": {
@@ -922,7 +1002,7 @@
                     "categoryColor": "categoryColor", 
                     "guru": {
                         "greeting": "Hey there", 
-                        "guru_introduction": "I can tutor you in any bio class. We\u0102\u02d8\u00c2\u0080\u00c2\u0099ll get you to an A in no time!", 
+                        "guru_introduction": "I can tutor you in any bio class. We can get you to an A in no time!", 
                         "last_active_min": "24m", 
                         "name": "Gabrielle", 
                         "profile_url": "http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256", 
@@ -935,7 +1015,7 @@
                     }, 
                     "size": "medium"
                 }, 
-                "template": "", 
+                "template": "<university-marker></university-marker>", 
                 "variations": {
                     "modes": [
                         "view", 
@@ -956,7 +1036,7 @@
             "template_url": "templates/links/map.marker.tpl"
         }, 
         {
-            "id": 37, 
+            "id": 41, 
             "name": "Progress Arrow Tab", 
             "ref": "progress-arrow", 
             "tags": [
@@ -967,11 +1047,12 @@
         }, 
         {
             "active": true, 
-            "id": 38, 
+            "id": 42, 
             "name": "Standard Progress Bar", 
             "ref": "progress-bar", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<progress-bar></progress-bar>"
             }, 
             "tags": [
                 "progress", 
@@ -980,22 +1061,17 @@
             "template_url": "templates/progress/bar.tpl"
         }, 
         {
-            "active": true, 
-            "id": 39, 
-            "name": "Circular progress bar", 
-            "ref": "progress-circlular", 
-            "sample": {
-                "scope": {}
-            }, 
+            "id": 43, 
+            "ref": "progress-circular", 
             "tags": [
                 "progress", 
-                "circlular"
+                "circular"
             ], 
-            "template_url": "templates/progress/circlular.tpl"
+            "template_url": "templates/progress/circular.tpl"
         }, 
         {
             "active": true, 
-            "id": 40, 
+            "id": 44, 
             "name": "Countdown Progress", 
             "ref": "progress-countdown", 
             "sample": {
@@ -1008,7 +1084,7 @@
             "template_url": "templates/progress/countdown.tpl"
         }, 
         {
-            "id": 41, 
+            "id": 45, 
             "name": "Guru Ranking Progress", 
             "ref": "progress-ranking", 
             "tags": [
@@ -1018,7 +1094,29 @@
             "template_url": "templates/progress/ranking.tpl"
         }, 
         {
-            "id": 42, 
+            "active": true, 
+            "id": 46, 
+            "name": "Album", 
+            "ref": "tiles-album", 
+            "sample": {
+                "scope": {
+                    "album": {
+                        "art": "https://snap-photos.s3.amazonaws.com/img-thumbs/960w/Z3VPU4IDKE.jpg", 
+                        "color": "#020c39", 
+                        "genre": "Intense EDM", 
+                        "title": "Midnight<br/>Cramming"
+                    }
+                }, 
+                "template": "<album-tile ng-model=\"component.sample.scope.album\"></album-tile>"
+            }, 
+            "tags": [
+                "tiles", 
+                "album"
+            ], 
+            "template_url": "templates/tiles/album.tpl"
+        }, 
+        {
+            "id": 47, 
             "name": "Calendar Tile", 
             "ref": "tiles-calendar", 
             "tags": [
@@ -1029,11 +1127,16 @@
         }, 
         {
             "active": true, 
-            "id": 43, 
+            "id": 48, 
             "name": "Category Tile", 
             "ref": "tiles-category", 
             "sample": {
-                "scope": {}
+                "scope": {
+                    "tile": {
+                        "category": "household"
+                    }
+                }, 
+                "template": "<category-tile ng-model=\"component.sample.scope.tile\" img-base=\"img_base\"></category-tile>"
             }, 
             "tags": [
                 "tiles", 
@@ -1043,7 +1146,7 @@
         }, 
         {
             "active": true, 
-            "id": 44, 
+            "id": 49, 
             "name": "Student Credits Tile", 
             "ref": "tiles-credit-student", 
             "tags": [
@@ -1054,11 +1157,12 @@
         }, 
         {
             "active": true, 
-            "id": 45, 
+            "id": 50, 
             "name": "Pricing Page Tile", 
             "ref": "tiles-pricing", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<pricing-tile></pricing-tile>"
             }, 
             "tags": [
                 "tiles", 
@@ -1068,7 +1172,7 @@
         }, 
         {
             "active": true, 
-            "id": 46, 
+            "id": 51, 
             "name": "Profile Tile", 
             "ref": "tiles-profile", 
             "sample": {
@@ -1083,11 +1187,12 @@
         }, 
         {
             "active": true, 
-            "id": 47, 
+            "id": 52, 
             "name": "Request Tile", 
             "ref": "tiles-request", 
             "sample": {
-                "scope": {}
+                "scope": {}, 
+                "template": "<request-tile></request-tile>"
             }, 
             "tags": [
                 "tiles", 
@@ -1279,540 +1384,121 @@
     ], 
     "layouts": [
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
+            "id": 1, 
+            "ref": "profiles-academic", 
+            "tags": [
+                "profiles", 
+                "academic"
+            ], 
+            "template_url": "templates/profiles/academic.tpl"
+        }, 
+        {
             "id": 2, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-1", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen.html"
+            "ref": "profiles-baking", 
+            "tags": [
+                "profiles", 
+                "baking"
+            ], 
+            "template_url": "templates/profiles/baking.tpl"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 3, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-2", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-2.html"
+            "ref": "profiles-household", 
+            "tags": [
+                "profiles", 
+                "household"
+            ], 
+            "template_url": "templates/profiles/household.tpl"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 4, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-3", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-3.html"
+            "ref": "profiles-photography", 
+            "tags": [
+                "profiles", 
+                "photography"
+            ], 
+            "template_url": "templates/profiles/photography.tpl"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 5, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-4", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-4.html"
+            "ref": "profiles-tech", 
+            "tags": [
+                "profiles", 
+                "tech"
+            ], 
+            "template_url": "templates/profiles/tech.tpl"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 6, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-5", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-5.html"
+            "ref": "bg-projector-screen-2-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-2.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-2.html"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 7, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-6", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-6.html"
+            "ref": "bg-projector-screen-3-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-3.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-3.html"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 8, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-7", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-7.html"
+            "ref": "bg-projector-screen-4-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-4.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-4.html"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
             "id": 9, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "projector-screen-8", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "projector-screen-8.html"
+            "ref": "bg-projector-screen-5-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-5.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-5.html"
         }, 
         {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "SplashController", 
-            "cp_link": "", 
-            "description": "", 
-            "element_states": {
-                "fluid": [
-                    {
-                        "name": "on load", 
-                        "selectors": [
-                            "[animate]"
-                        ]
-                    }, 
-                    {
-                        "name": "on tag selected", 
-                        "selectors": [
-                            ".adlib-tag"
-                        ]
-                    }
-                ], 
-                "testing": [
-                    {
-                        "name": "User interacts with default academic tags", 
-                        "ref": "mad-lib-layout-state-1", 
-                        "substates": [
-                            {
-                                "name": "User clicks first tag", 
-                                "ref": "mad-lib-layout-state-1-substate-1"
-                            }, 
-                            {
-                                "name": "User re-clicks in FILLED tag (goes back to original)", 
-                                "ref": "mad-lib-layout-state-2-susbtate-2"
-                            }, 
-                            {
-                                "name": "User clicks second tag", 
-                                "ref": "mad-lib-layout-state-1-substate-1"
-                            }, 
-                            {
-                                "name": "User re-clicks second tag (goes back to original)", 
-                                "ref": "mad-lib-layout-state-2-susbtate-2"
-                            }
-                        ]
-                    }, 
-                    {
-                        "name": "User switches all categories", 
-                        "ref": "mad-lib-layout-state-2", 
-                        "substates": [
-                            {
-                                "name": "User switches category to bakery", 
-                                "ref": "mad-lib-layout-state-2-substate-1"
-                            }, 
-                            {
-                                "name": "User switches category to household", 
-                                "ref": "mad-lib-layout-state-2-substate-2"
-                            }, 
-                            {
-                                "name": "User switches category to tech", 
-                                "ref": "mad-lib-layout-state-2-substate-3"
-                            }, 
-                            {
-                                "name": "User switches category to photography", 
-                                "ref": "mad-lib-layout-state-2-substate-4"
-                            }, 
-                            {
-                                "name": "User switches category back to academic", 
-                                "ref": "mad-lib-layout-state-2-substate-5"
-                            }
-                        ]
-                    }, 
-                    {
-                        "name": "User switches university", 
-                        "ref": "mad-lib-layout-state-3", 
-                        "substates": []
-                    }, 
-                    {
-                        "name": "User wants to search university", 
-                        "ref": "mad-lib-layout-state-4", 
-                        "substates": [
-                            {
-                                "name": "dropdown takes over entire screen with no CSS errors", 
-                                "ref": "mad-lib-layout-state-4-substate-1"
-                            }, 
-                            {
-                                "name": "Check university cards show", 
-                                "ref": "mad-lib-layout-state-4-substate-2"
-                            }, 
-                            {
-                                "name": "Check cluster bubbles show", 
-                                "ref": "mad-lib-layout-state-4-substate-3"
-                            }, 
-                            {
-                                "ref": "mad-lib-layout-state-4-substate-4"
-                            }
-                        ]
-                    }
-                ]
-            }, 
-            "id": 0, 
-            "name": "Splash Mad Lib", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "mad-lib", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "splash.html"
-        }, 
-        {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "GMapController", 
-            "cp_link": "", 
-            "description": "", 
-            "id": 2, 
-            "name": "Splash Maps", 
-            "notes": "", 
-            "parents": {
-                "scenes": [], 
-                "user_stories": []
-            }, 
-            "ref": "splash-map-markers", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "splash.maps.html", 
-            "type": [
-                "Splash Maps"
-            ]
-        }, 
-        {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "controller": "General 2/3", 
-            "cp_link": "", 
-            "description": "", 
-            "id": 3, 
-            "name": "One Page Pull-Down", 
-            "notes": "", 
-            "parents": {
-                "scenes": [], 
-                "user_stories": []
-            }, 
-            "ref": "general-2-3", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": "home.desktop.student.html"
-        }, 
-        {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "cp_link": "", 
-            "description": "", 
-            "id": 4, 
-            "name": "One Page Pull-Down", 
-            "notes": "", 
-            "parents": {
-                "scenes": [], 
-                "user_stories": []
-            }, 
-            "ref": "one-page-pull-down", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": {
-                "assets": [], 
-                "components": [], 
-                "container": [], 
-                "scenes": []
-            }, 
-            "cp_link": "", 
-            "description": "", 
-            "id": 5, 
-            "name": "Getting Started", 
-            "notes": "", 
-            "parents": {
-                "scenes": [], 
-                "user_stories": []
-            }, 
-            "ref": "getting-started", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "states": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
-            "id": 6, 
-            "name": "Scene Transition #1", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "scene-transition-one", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
-            "id": 7, 
-            "name": "Full page loader", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "full-page-loader", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
-            "id": 8, 
-            "name": "CTA General Content", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "cta-general", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
-            "id": 9, 
-            "name": "Full Swiper", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "full-swiper", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
-        }, 
-        {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
             "id": 10, 
-            "name": "", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "bakery-layout", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
+            "ref": "bg-projector-screen-6-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-6.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-6.html"
         }, 
         {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
             "id": 11, 
-            "name": "", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "household-layout", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
+            "ref": "bg-projector-screen-7-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-7.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-7.html"
         }, 
         {
-            "bugs": [], 
-            "children": [], 
-            "cp_link": "", 
-            "description": "", 
             "id": 12, 
-            "name": "", 
-            "notes": "", 
-            "parents": [], 
-            "ref": "general-edit-layout", 
-            "sample": {
-                "scope": "", 
-                "template": ""
-            }, 
-            "scenes": [], 
-            "template_url": ""
+            "ref": "bg-projector-screen-8-html", 
+            "tags": [
+                "bg", 
+                "projector-screen-8.html"
+            ], 
+            "template_url": "templates/bg/projector-screen-8.html"
+        }, 
+        {
+            "id": 13, 
+            "ref": "bg-projector-screen-html", 
+            "tags": [
+                "bg", 
+                "projector-screen.html"
+            ], 
+            "template_url": "templates/bg/projector-screen.html"
         }
     ], 
     "moodboards": [], 

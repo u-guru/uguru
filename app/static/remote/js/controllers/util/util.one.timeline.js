@@ -19,9 +19,6 @@ angular.module('uguru.util.controllers')
 
 		$scope.user.timeline_universities = TimelineService.formatUniversitiesByDueDate($scope.user.universities);
 		$scope.user.timeline_universities = TimelineService.formatTimelineUniversitiesForHSStudent($scope.user.timeline_universities);
-		console.log($scope.user.timeline_universities);
-
-
 		$scope.header = {
 			timestamp: TimelineService.todaysDateShortFormat()
 		}

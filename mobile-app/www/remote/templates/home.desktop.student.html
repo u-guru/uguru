@@ -2,8 +2,8 @@
 	<main id='desktop-student-home' class="desktop-mode desktop-home student-mode" ng-if='desktopMode'>
 		<nav class='main-nav' ng-include="img_base + BASE + 'templates/desktop.nav.html'"></nav>
 
-		<div id='desktop-student-home-main' class="main">
-			<ion-pane id='cta-modal-student-request' class='absolute full-xy hide-display cta-modal bg-charcoal show' ng-controller='RequestController' ng-include="img_base + BASE + 'templates/request.html'"></ion-pane>
+		<div id='desktop-student-home-main' class="main" >
+			<ion-pane id='cta-modal-student-request' class='absolute full-xy hide-display cta-modal bg-charcoal' ng-controller='RequestController'  ng-include="img_base + BASE + 'templates/request.html'"></ion-pane>
 
 			<ion-pane id='cta-modal-content' class='full-xy hide-display cta-modal bg-charcoal' ng-include="img_base + BASE + 'templates/content.general.html'"></ion-pane>
 
@@ -81,7 +81,7 @@
 											<user-icon class="user-icon bg-cerise"size="small" > </user-icon>
 											<span class="pf-name">Christopher W.</span>
 											<!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
-											<rating class="rating-stars" style="width:70px; height:14px;" avg="4.5"/>										
+											<rating class="rating-stars" style="width:70px; height:14px;" avg="4.5"/>
 										</div>
 									</li>
 									<li>
@@ -91,7 +91,7 @@
 											<user-icon class="user-icon bg-cerise" size="small" > </user-icon>
 											<span class="pf-name">Christopher W.</span>
 											<!-- <ul class="rating-stars" data-rating="4" data-half="true" ng-include="::img_base + 'templates/svg/rating.html'"></ul> -->
-											<rating class="rating-stars" style="width:70px; height:14px;" avg="4.5"/>										
+											<rating class="rating-stars" style="width:70px; height:14px;" avg="4.5"/>
 										</div>
 									</li>
 								</ul>
@@ -167,7 +167,7 @@
 				</div>
 				<div class="home-tiles-main home-tiles-container">
 					<div class="home-tiles-main-inside">
-						<a class="home-tile" id='cta-box-student-request'>
+						<a class="home-tile" id='cta-box-student-request' ng-click='initRequestDetailsCTA()'>
 							<div class="home-tile-inside">
 								<div>
 									<span ng-include="img_base + 'templates/svg/main/calendar.html'"></span>

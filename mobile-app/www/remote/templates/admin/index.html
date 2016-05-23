@@ -1,4 +1,3 @@
-
 <div id="admin" class='full-xy flex-wrap-center flex-stretch absolute'>
     <header>
         <span class="admin-logo" ng-include="img_base + BASE + 'templates/svg/logo-admin.html'"></span>
@@ -644,10 +643,8 @@
                         <!-- Demo -->
                         <div class='full-xy p15xy flex-wrap-start' ng-if='!selected_component.index'>
                             <div class='playground-container full-x flex-wrap-center relative'>
-                                <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span>
-                                </h4>
-                                <demo class='flex-wrap-center relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
-                                
+                                <h4 class='uppercase text-center full-x p20xy opacity-50'>{{selected_component.name}} Demo - <span class='weight-800'>TRY ME!</span></h4>
+                                <demo class='flex-wrap-center full-x relative p20xy' ng-if='selected_component.sample' ng-init='component = selected_component' template="{{selected_component.sample.template}}"></demo>
                             </div>
 
                             <ul class="playground-code-container">
@@ -700,11 +697,11 @@
                         <div>
                             <a ng-repeat='option in page.layout.sections[0].tabs.options' ng-click='page.layout.sections[0].tabs.index = $index'>
                                 <div>
-                                    <user-icon size="-32" url="option.profile_url" ng-if="$index != 5"></user-icon>
-                                    <user-icon size="-32" url="option.profile_url" ng-if="$index === 0"></user-icon>
-                                    <user-icon size="-32" url="option.profile_url" ng-if="$index === 0"></user-icon>
-                                    <user-icon class="gabrielle" size="-32" url="option.profile_url_1" ng-if="$index === 5"></user-icon>
-                                    <user-icon class="jeselle" size="-32" url="option.profile_url_2" ng-if="$index === 5"></user-icon>
+                                    <user-icon size="32" url="option.profile_url" ng-if="$index != 5"></user-icon>
+                                    <user-icon size="32" url="option.profile_url" ng-if="$index === 0"></user-icon>
+                                    <user-icon size="32" url="option.profile_url" ng-if="$index === 0"></user-icon>
+                                    <user-icon class="gabrielle" size="32" url="option.profile_url_1" ng-if="$index === 5"></user-icon>
+                                    <user-icon class="jeselle" size="32" url="option.profile_url_2" ng-if="$index === 5"></user-icon>
                                 </div>
                                 <div ng-bind-html="option.title"></div>
                             </a>
@@ -743,8 +740,8 @@
                                                 <!-- normal "checked" input is blue, adding .complete means it's 100% complete -->
                                                 <div class="checkbox-container complete">
                                     				<div>
-                                    					<input ng-if="action_item.complete" type="checkbox" id="checkbox-item" checked/>
-                                                        <input ng-if="!action_item.complete" type="checkbox" id="checkbox-item"/>
+                                    					<input ng-change="updateCheckMark(user, action_item.complete)" type="checkbox" ng-model="action_item.complete" id="checkbox-item" checked/>
+                                                        <!-- <input ng-change="updateCheckMark(user, action_item.complete)" ng-if="!action_item.complete" ng-model="action_item.complete" type="checkbox" id="checkbox-item"/> -->
                                     					<span>
                                     						<svg viewBox="0 0 100 100">
                                     							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
@@ -987,7 +984,7 @@
                                             </a>
                                             <div>
                                                 <!-- <ng-bind src="component.template"/> -->
-                                                <demo class='flex-wrap-center' template="{{component.sample.template}}"></demo>
+                                                <demo class='flex-wrap-center full-x' template="{{component.sample.template}}"></demo>
                                                 <!-- <step-by-step steps="component.scope.steps" header="component.scope.header"></step-by-step> -->
                                             </div>
                                         </div>
@@ -1762,6 +1759,59 @@
                             </li>
                             <li class="admin-definition-list">
                                 <div>
+                                    <h2>Rendering Notes</h2>
+                                    <dl>
+                                        <div>
+                                            <h1 class="semibold txt-center p15xy flex-center">
+                                                <span class="block p05y-p10x radius-2 bg-gold txt-white">Javascript</span> &nbsp;&rarr;&nbsp;
+                                                <span class="block p05y-p10x radius-2 bg-cobalt txt-white">Style</span> &nbsp;&rarr;&nbsp;
+                                                <span class="block p05y-p10x radius-2 bg-cobalt txt-white">Layout</span> &nbsp;&rarr;&nbsp;
+                                                <span class="block p05y-p10x radius-2 bg-moola txt-white">Paint</span> &nbsp;&rarr;&nbsp;
+                                                <span class="block p05y-p10x radius-2 bg-moola txt-white">Composite</span></h1>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-gold txt-white">Javascript</span></dt>
+                                            <dd>Handles work that results in visual changes.</dd>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-cobalt txt-white">Style</span></dt>
+                                            <dd>Applies CSS rules to appropriate elements based on matching selectors.</dd>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-cobalt txt-white">Layout</span></dt>
+                                            <dd>Calculates space and position of each element on the screen.<br/><em>Layout is skipped if a "paint-only" property like text color is used.</em></dd>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-moola txt-white">Paint</span></dt>
+                                            <dd>Draw calls for all elements, including text, colors, images, etc. <br/><em>Paint is skipped if the property doesn't require either layout or paint, such as transform.</em></dd>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-moola txt-white">Composite</span></dt>
+                                            <dd>Drawing elements on screen in correct order.<br/><em>Elements meant to be animated should be promoted with&nbsp;<strong>will-change: transform</strong>&nbsp;and/or&nbsp;<strong>transform: translateZ(0)</strong>, which changes composite order.</em></dd>
+                                        </div>
+                                        <div>
+                                            <dt class="flex"><span class="block p05y-p10x radius-2 bg-moola txt-white">Rasterize</span></dt>
+                                            <dd>Visually fills in pixels of all elements, including text, colors, images, etc.<br/><em>Rasterize is skipped if the property doesn't require either layout or paint, such as transform.</em></dd>
+                                        </div>
+                                        <!-- <div>
+                                            <div class="txt-18 padding-15-half full-x flex-left-center-vertical"></div>
+                                        </div> -->
+                                    </dl>
+                                </div>
+                            </li>
+                            <li class="admin-definition-list" ng-if='reference.animation.terms'>
+                                <div>
+                                    <h2>Animation Terminology</h2>
+                                    <dl>
+                                        <div ng-repeat="term in reference.animation.terms"class=''>
+                                            <dt ng-bind-html="term.name" class='p20xy'></dt>
+                                            <dd ng-bind-html="term.description"></dd>
+                                        </div>
+                                    </dl>
+                                </div>
+                            </li>
+                            <li class="admin-definition-list">
+                                <div>
                                     <h2>Animation Placeholders</h2>
                                     <dl>
                                         <div>
@@ -1960,7 +2010,25 @@
                         </ul>
                     </div>
                     <div class="admin-html admin-reference admin-content-section flex-wrap-start" ng-if='page.layout.sections[2].tabs.index === 1'>
-                        <h2>Margin</h2>
+                        <h2>Z-Index</h2>
+                        <ul>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-1"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-2"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-3"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-4"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-5"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-6"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-7"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-8"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="9" value="z-index-9"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="10" value="z-index-10"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="10" value="z-index-99"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="11" value="z-index-100"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="11" value="z-index-999"/></span></li>
+                            <li><span>.<input readonly="true" onclick="this.select()" size="12" value="z-index-1000"/></span></li>
+                        </ul>
+
+                        <h2>Margin (combinable)</h2>
                         <ul class="ugrid-4">
                             <li>
                                 <div class="bg-campus p15xy">
@@ -2005,7 +2073,45 @@
                                 </div>
                             </li>
                         </ul>
-                        
+
+                        <h2>Padding (combinable)</h2>
+                        <ul class="ugrid-4">
+                            <li>
+                                <div class="bg-campus">
+                                    <div class="full-xy flex flex-start bg-slate-20p">
+                                        <span class="padding-none">.<input readonly="true" onclick="this.select()" size="12" value="padding-none"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p05top">
+                                    <div class="full-xy flex flex-start bg-slate-20p">
+                                        <span>.<input readonly="true" onclick="this.select()" size="6" value="p05top"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p15x">
+                                    <div class="full-xy bg-slate-20p">
+                                        <span>.<input readonly="true" onclick="this.select()" size="4" value="p15x"/></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="bg-campus p15-grid">
+                                    <div class="full-x bg-slate-20p">
+                                        <span>.<input readonly="true" onclick="this.select()" size="8" value="p15-grid"/></span>
+                                    </div>
+                                    <div class="full-x bg-slate-20p">
+                                        <span></span>
+                                    </div>
+                                    <div class="full-x bg-slate-20p">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
                         <h2>Type &rarr; Weight</h2>
                         <ul>
         					<li>
@@ -2070,16 +2176,46 @@
 
                         <h2>Type &rarr; Sizes</h2>
                         <ul>
-                            <li><span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-1"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-16" onclick="this.select()" size="6" value="txt-2"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-18" onclick="this.select()" size="6" value="txt-3"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-20" onclick="this.select()" size="6" value="txt-4"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-24" onclick="this.select()" size="6" value="txt-5"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-28" onclick="this.select()" size="6" value="txt-6"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-32" onclick="this.select()" size="6" value="txt-7"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-36" onclick="this.select()" size="6" value="txt-8"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-48" onclick="this.select()" size="6" value="txt-9"/></span></li>
-                            <li><span>.<input readonly="true" class="txt-64" onclick="this.select()" size="6" value="txt-10"/></span></li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-14"/></span>
+                                <span class="m05top bg-campus txt-14">.<input readonly="true" class="txt-14" onclick="this.select()" size="5" value="txt-1"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-16"/></span>
+                                <span class="m05top bg-campus txt-16">.<input readonly="true" class="txt-16" onclick="this.select()" size="5" value="txt-2"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-18"/></span>
+                                <span class="m05top bg-campus txt-18">.<input readonly="true" class="txt-18" onclick="this.select()" size="5" value="txt-3"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-20"/></span>
+                                <span class="m05top bg-campus txt-20">.<input readonly="true" class="txt-20" onclick="this.select()" size="5" value="txt-4"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-24"/></span>
+                                <span class="m05top bg-campus txt-24">.<input readonly="true" class="txt-24" onclick="this.select()" size="5" value="txt-5"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-28"/></span>
+                                <span class="m05top bg-campus txt-28">.<input readonly="true" class="txt-28" onclick="this.select()" size="5" value="txt-6"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-14"/></span>
+                                <span class="m05top bg-campus txt-32">.<input readonly="true" class="txt-32" onclick="this.select()" size="5" value="txt-7"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-36"/></span>
+                                <span class="m05top bg-campus txt-36">.<input readonly="true" class="txt-36" onclick="this.select()" size="5" value="txt-8"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-48"/></span>
+                                <span class="m05top bg-campus txt-48">.<input readonly="true" class="txt-48" onclick="this.select()" size="5" value="txt-9"/></span>
+                            </li>
+                            <li>
+                                <span>.<input readonly="true" class="txt-14" onclick="this.select()" size="6" value="txt-64"/></span>
+                                <span class="m05top bg-campus txt-64">.<input readonly="true" class="txt-64" onclick="this.select()" size="6" value="txt-10"/></span>
+                            </li>
                         </ul>
 
                         <h2>Type &rarr; Colors</h2>
@@ -2144,7 +2280,7 @@
                             <li><span class="bg-li">.<input readonly="true" onclick="this.select()" size="5" value="bg-li"/></span></li>
                             <li><span class="bg-in">.<input readonly="true" onclick="this.select()" size="5" value="bg-in"/></span></li>
                         </ul>
-                        
+
                         <h2>Border &rarr; Widths</h2>
                         <ul>
                             <li><span class="border-1 border-slate">.<input readonly="true" onclick="this.select()" size="8" value="border-1"/></span></li>
@@ -2166,14 +2302,14 @@
                             <li><span class="border-10-left">.<input readonly="true" onclick="this.select()" size="14" value="border-10-left"/></span></li>
                             <li><span class="border-10-right">.<input readonly="true" onclick="this.select()" size="15" value="border-10-right"/></span></li>
                         </ul>
-                        
+
                         <h2>Border &rarr; Styles</h2>
                         <ul>
                             <li><span class="border-1 border-dashed">.<input readonly="true" onclick="this.select()" size="13" value="border-dashed"/></span></li>
                             <li><span class="border-1 border-dotted">.<input readonly="true" onclick="this.select()" size="13" value="border-dotted"/></span></li>
                             <li><span class="border-3 border-double">.<input readonly="true" onclick="this.select()" size="13" value="border-double"/></span></li>
                         </ul>
-                        
+
                         <h2>Border &rarr; Colors</h2>
                         <ul class="border">
                             <li>
@@ -2291,13 +2427,155 @@
                                 </span>
                             </li>
                         </ul>
-                        
+
                         <h2>Border &rarr; Radius</h2>
                         <ul>
                             <li><span class="radius-2 bg-campus">.<input readonly="true" onclick="this.select()" size="8" value="radius-2"/></span></li>
+                            <li><span class="radius-2-top bg-campus">.<input readonly="true" onclick="this.select()" size="12" value="radius-2-top"/></span></li>
+                            <li><span class="radius-2-bottom bg-campus">.<input readonly="true" onclick="this.select()" size="15" value="radius-2-bottom"/></span></li>
+                            <li><span class="radius-2-left bg-campus">.<input readonly="true" onclick="this.select()" size="13" value="radius-2-left"/></span></li>
+                            <li><span class="radius-2-right bg-campus">.<input readonly="true" onclick="this.select()" size="14" value="radius-2-right"/></span></li>
                             <li><span class="radius-4 bg-campus">.<input readonly="true" onclick="this.select()" size="8" value="radius-4"/></span></li>
+                            <li><span class="radius-4-top bg-campus">.<input readonly="true" onclick="this.select()" size="12" value="radius-4-top"/></span></li>
+                            <li><span class="radius-4-bottom bg-campus">.<input readonly="true" onclick="this.select()" size="15" value="radius-4-bottom"/></span></li>
+                            <li><span class="radius-4-left bg-campus">.<input readonly="true" onclick="this.select()" size="13" value="radius-4-left"/></span></li>
+                            <li><span class="radius-4-right bg-campus">.<input readonly="true" onclick="this.select()" size="14" value="radius-4-right"/></span></li>
                             <li><span class="radius-10 bg-campus">.<input readonly="true" onclick="this.select()" size="9" value="radius-10"/></span></li>
+                            <li><span class="radius-10-top bg-campus">.<input readonly="true" onclick="this.select()" size="13" value="radius-10-top"/></span></li>
+                            <li><span class="radius-10-bottom bg-campus">.<input readonly="true" onclick="this.select()" size="16" value="radius-10-bottom"/></span></li>
+                            <li><span class="radius-10-left bg-campus">.<input readonly="true" onclick="this.select()" size="14" value="radius-10-left"/></span></li>
+                            <li><span class="radius-10-right bg-campus">.<input readonly="true" onclick="this.select()" size="15" value="radius-10-right"/></span></li>
                             <li><span class="round bg-campus">.<input readonly="true" onclick="this.select()" size="5" value="round"/></span></li>
+                        </ul>
+
+                        <h2>SVG &rarr; Size + Container Size</h2>
+                        <ul>
+                            <li>
+                                <div class="svg-24-18 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-24-18"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="7" value="svg-xxs"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-32-24 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-32-24"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-36-24 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-36-24"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="6" value="svg-xs"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-48-36 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-48-36"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="5" value="svg-s"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-64-48 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-64-48"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="5" value="svg-m"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-72-52 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-72-52"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-84-64 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-84-64"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-96-72 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="9" value="svg-96-72"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="5" value="svg-l"/></span>
+                            </li>
+                            <li>
+                                <div class="svg-128-96 size-auto bg-white" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></div>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="10" value="svg-128-96"/></span>
+                                <span class="m05top bg-campus">.<input readonly="true" onclick="this.select()" size="6" value="svg-xl"/></span>
+                            </li>
+                        </ul>
+
+                        <h2>SVG &rarr; Size Only</h2>
+                        <ul>
+                            <li>
+                                <span class="svg-24 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-24"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-32 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-32"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-36 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-36"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-48"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-64 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-64"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-72 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-72"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-84 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-84"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-96 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="6" value="svg-96"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-128 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="7" value="svg-128"/></span>
+                            </li>
+                        </ul>
+
+                        <h2>SVG &rarr; Stroke-Width</h2>
+                        <ul>
+                            <li>
+                                <span class="svg-48 svg-stroke-1 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-1"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-2 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-2"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-3 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-3"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-4 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-4"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-5 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-5"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-6 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-6"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-7 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-7"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-8 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-8"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-9 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="12" value="svg-stroke-9"/></span>
+                            </li>
+                            <li>
+                                <span class="svg-48 svg-stroke-10 flex-center" ng-include="img_base + BASE + 'templates/svg/main/star.html'"></span>
+                                <span class="m05top">.<input readonly="true" onclick="this.select()" size="13" value="svg-stroke-10"/></span>
+                            </li>
                         </ul>
                     </div>
                     <div class="admin-colors admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 2'>
@@ -2520,7 +2798,7 @@
                         </ul>
                     </div>
                     <div class="admin-reference admin-content-section" ng-if='page.layout.sections[2].tabs.index === 3'></div>
-                    <div class="admin-reference admin-content-section p15xy" ng-if='page.layout.sections[2].tabs.index === 4'>
+                    <div class="admin-reference admin-content-section p15xy overflow-auto" ng-if='page.layout.sections[2].tabs.index === 4'>
                         <div class="admin-definition-list">
                             <div>
                                 <h2>Animation Directive</h2>
@@ -2545,11 +2823,63 @@
                                         <dt>class-on-activate-delay</dt>
                                         <dd>Delays class(es) being added</dd>
                                     </div>
+                                    <div>
+                                        <dt><a class='txt-charcoal' href='#/demo'>draw</a></dt>
+                                        <dd>
+                                            <h4 class='weight-600'> Draws any singular line, polgyon, path, rect, circle with these options:  </h4>
+                                            <br>
+                                            <ul class='weight-400' style='padding-left:20px'>
+                                                <li>1. draw-duration: 1000ms, 1s (default) </li>
+                                                <li>2. draw-start-frame:  0</li>
+                                                <li>3. draw-delay:  1000ms, 1ms [default == 0] </li>
+                                            </ul>
+                                        </dd>
+                                    </div>
+                                    <div>
+                                        <dt>draw-shapes</dt>
+                                        <dd>
+                                            <h4 class='weight-600'> Draws all svg shapes within all childnodes (at any depth) of this element  </h4>
+                                            <br>
+                                            <h4>
+                                                Applies the same options as draw, but can be declared on the same element 'draw-shape' is declared on
+                                            </h4>
+                                            <h4>
+                                                If a child has "Draw" already, it's attributes will already be ignored, and the child's draw preferences (i.e. drawStartFrame), will override that of it's parent with the "draw-shape" directive
+                                            </h4>
+                                        </dd>
+                                    </div>
+                                    <div>
+                                        <dt>draw-ignore</dt>
+                                        <dd>
+                                            <h4 class='weight-600'>   </h4>
+                                            <br>
+                                            <h4>
+                                                Skips the request for a particular element, or a group of elements (just apply to highest parent where the children do not need to be drawn) a parent container that has decladed "draw-shapes"
+                                            </h4>
+                                        </dd>
+                                    </div>
                                 </dl>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="admin-reference admin-content-section p15xy" ng-if='page.layout.sections[2].tabs.index === 5'>
+                        <div class="admin-definition-list">
+                            <div>
+                                <h2>Responsibilities in prioritized order</h2>
+                                <dl>
+                                    <div ng-repeat="member in page.team_members" ng-if='member.name !== "Girls"'>
+                                        <dt>
+                                            <user-icon size="small" style='height:50px; width:50px;' url="member.profile_url"></user-icon
+                                            >
+                                            <div class='full-x txt-3 lowercase weight-600 txt-charcoal-50p'>{{member.name}}</div>
+                                        </dt>
+                                        <dd>{{member.responsibilities}}</dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
             </section>
             <section id="admin-moodboard" class='flex-wrap-center full-xy' ng-hide='page.layout.sidebar.index !== 3'>
                 <div class="tab-container">
@@ -2602,9 +2932,9 @@
                     </div>
                 </div>
             </section>
-            <section id="admin-tools" class='flex-wrap-center full-x' ng-hide='page.layout.sidebar.index !== 4'  ng-include="img_base + BASE + 'templates/admin/index.tools.html'">
+            <section id="admin-tools" class='flex-wrap-center full-x' ng-hide='page.layout.sidebar.index !== 4' ng-include="img_base + BASE + 'templates/admin/index.tools.html'"></section>
 
-            </section>
+
         </div>
     </main>
 </div>

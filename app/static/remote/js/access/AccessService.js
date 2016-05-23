@@ -25,8 +25,6 @@ function AccessService($localstorage, University, User, DeviceService, LoadingSe
 
 	function validate(code, success_func, fail_func) {
 		if(code !== undefined) {
-			console.log("code entered: " + code);
-
 			if (mixpanel && mixpanel.track) {
 				mixpanel.track(
 			    	"Access attempt",
@@ -49,7 +47,6 @@ function AccessService($localstorage, University, User, DeviceService, LoadingSe
 				}
 
 			}, function(err) {
-				console.log('SERVER ERR', err);
 				if (err.status === 401) {
 					fail_func();
 				} else {

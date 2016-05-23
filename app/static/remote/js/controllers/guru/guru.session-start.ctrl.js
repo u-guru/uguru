@@ -118,7 +118,6 @@ angular.module('uguru.guru.controllers')
           $cordovaActionSheet.show(options)
           .then(function(btnIndex) {
             var index = btnIndex;
-            console.log(index);
             if (index === 1) {
               $scope.resetTimer()
             } else if (index === 2) {
@@ -201,7 +200,6 @@ angular.module('uguru.guru.controllers')
     if (!$scope.timer_seconds) {
       $scope.initTimer();
     }
-    console.log('timer initializer');
    });
 
    $scope.$on('$ionicView.loaded', function(){

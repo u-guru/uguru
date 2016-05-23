@@ -39,7 +39,6 @@ function PeelService($timeout) {
     startPeel(p);
 
     cb && cb();
-    console.log('calling callback');
     $timeout(function() {
       resetPeel(p);
     }, 3000);

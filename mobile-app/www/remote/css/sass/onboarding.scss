@@ -163,9 +163,6 @@
 			padding-bottom: 30px;
 		}
 		.onboarding-search {
-			input {
-				width: calc(100% - 48px - 15px);
-			}
 			input, label {
 				color: white!important;
 				border-color: white!important;
@@ -173,8 +170,8 @@
 		}
 		.geolocation-icon {
 			position: absolute;
-			top: -15px;
-			right: -15px;
+			top: -25px;
+			right: -20px;
 			padding: 30px;
 		}
 	}

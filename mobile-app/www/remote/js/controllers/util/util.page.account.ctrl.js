@@ -47,7 +47,6 @@ angular.module('uguru.util.controllers')
       var loadUniversityCourses = function(university_id) {
         if (!$scope.courses.length) {
           var loadingCourseCallback = function(scope, courses) {
-            console.log('courses have loaded', courses.length);
             $scope.university.popular_courses = courses;
           }
           University.getPopularCourses(university_id, $scope, loadingCourseCallback);

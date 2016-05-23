@@ -137,7 +137,7 @@
 					</span>
 				</a>
 			</li>
-			<li ng-repeat='course in university.popular_courses| filter:search_text.course:strict | limitTo: 10 track by course.id' ng-click='addSelectedGuruCourse(course)' ng-if='course.short_name && course.full_name'>
+			<li ng-repeat='course in university.popular_courses| filter:search_text.course:strict | limitTo: 10 track by $index' ng-click='addSelectedGuruCourse(course)' ng-if='course.short_name && course.full_name'>
 				<input type="checkbox">
 				<label>
 					<span class="course-name">{{course.full_name}}</span>

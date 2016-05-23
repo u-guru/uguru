@@ -27,6 +27,11 @@ function CalendarService() {
     return calendar;
   }
 
+  function selectCalendarInterval(interval, cb) {
+    interval.selected = !interval.selected;
+    cb && cb();
+  }
+
   function getCalendarRanges(arr) {
     var allRanges = [];
     if (!arr || !arr.length) {
@@ -45,7 +50,6 @@ function CalendarService() {
       if (indexRange.js_obj_start === currentRange.end_time || (currentRange.end_time - currentRange.js_obj_start) < 5) {
         currentRange.end_time = indexRange.js_obj_end;
         currentRange.ranges.push(indexRange);
-        console.log(new Date(indexRange.js_obj_start), new Date(indexRange.js_obj_end), 'are connected');
       } else {
         // currentRange.end_time = indexRange.js_obj_end;
         // currentRange.ranges.push(indexRange);
@@ -80,7 +84,6 @@ function CalendarService() {
     for (var i = 0; i < allRanges.length; i++) {
       var indexRange = allRanges[i];
     }
-    console.log(allRanges);
     return allRanges;
 
     function initDateRange(date_interval) {
@@ -119,7 +122,6 @@ function CalendarService() {
         indexDaySelected.selected_ranges = getCalendarRanges(indexDaySelected.selected);
       }
       scope.requestForm.calendar_selected_by_day = resultArrDay;
-      console.log(scope.requestForm.calendar_selected_by_day);
       return resultArr;
     }
   }
@@ -164,7 +166,7 @@ function CalendarService() {
       resultArr.push(dayDict);
     }
 
-    return resultArr
+    return {days: resultArr, onSelect:selectCalendarInterval }
 
     function hasAlreadyPast(time) {
       return false

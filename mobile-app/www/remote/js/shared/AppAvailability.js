@@ -32,11 +32,11 @@ function AppAvailability(DeviceService) {
     appAvailability.check(scheme, successCallback, errorCallback);
 
     function successCallback() {
-      console.log(scheme + ' is available');
+      return
     }
 
     function errorCallback() {
-      console.log(scheme + ' is not available');
+      return
     }
   
 

@@ -62,7 +62,6 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 
 	function setStatusBarText(state_name) {
 		if(!window.StatusBar) {
-			console.log('no status bar detected');
 			return;
 		}
 
@@ -79,7 +78,6 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 
 	function setStatusBarLightText() {
 		if(!window.StatusBar) {
-			console.log('no status bar detected');
 			return;
 		}
 		window.StatusBar.styleLightContent();
@@ -87,7 +85,6 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 
 	function setStatusBarDarkText() {
 		if(!window.StatusBar) {
-			console.log('no status bar detected');
 			return;
 		}
 		window.StatusBar.styleDefault();
@@ -97,9 +94,7 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 		delay = delay || 0;
 
 		$timeout(function() {
-			console.log('hidding splash screen')
 			if (navigator.splashscreen && navigator.splashscreen.hide) {
-				console.log('splash screen detected');
             	navigator.splashscreen.hide();
         	}
 		}, delay)
@@ -125,7 +120,6 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	        negativeBtnText: 'NO THANKS',
 	        delay: 500,
 	        onFailure: function() {
-	          console.log('failed to get device location');
 	          Settings.location = false;
 	          // UNCOMMENT
 	          // if ($state.current.name !== 'root.onboarding-location') {
@@ -134,7 +128,6 @@ function iOSService($rootScope, $state, $localstorage, $cordovaPush,
 	          // failureCallback($scope, $state);
 	        },
 	        onSuccess: function() {
-	          console.log('succeeded in getting device location');
 	          Settings.location = true;
 	          Geolocation.getCurrentPosition();
 	        },

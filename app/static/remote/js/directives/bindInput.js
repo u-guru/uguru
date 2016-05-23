@@ -24,24 +24,21 @@ angular.module('uguru.directives')
 		$scope.$parent.$watch(
 			refreshModel,
 			function(newValue, oldValue) {
-
-				console.log("heard something from " + refreshModel + "!");
 				$timeout(function() {
 					try {
 						$scope.listScope = Utilities.nickMatcher('', $scope.source, property, model);
 					} catch(err) {
-						console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
+						console.error("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
 					}
 				}, 0);
 
 
 				if(newValue === 'update') {
-					console.log("heard something from " + refreshModel + "!");
 					$timeout(function() {
 						try {
 							$scope.listScope = Utilities.nickMatcher('', $scope.source, property, model);
 						} catch(err) {
-							console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
+							console.error("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
 						}
 					}, 0);
 				}
@@ -53,7 +50,6 @@ angular.module('uguru.directives')
 		$scope.$parent.$watch(
 			model,
 			function(newValue, oldValue) {
-				 // console.log("its changed!");
 			  if(newValue.length < oldValue.length) {
 			    if(queryPromise) {
 			      $timeout.cancel(queryPromise);
@@ -62,7 +58,7 @@ angular.module('uguru.directives')
 			      try {
 			      	$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, property, model);
 			      } catch(err) {
-			      	console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
+			      	console.error("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school.): " + err);
 			      }
 
 			      queryPromise = null;
@@ -78,7 +74,7 @@ angular.module('uguru.directives')
 		    		try{
 		    			$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, property, model);
 		    		} catch(err) {
-		    			console.log("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school): " + err);
+		    			console.error("fastmatcher slice error (if it's courses related, make sure we have the actual data for that school): " + err);
 		    		}
 
 			      queryPromise = null;
@@ -93,7 +89,7 @@ angular.module('uguru.directives')
 		    		try{
 	    				$scope.listScope = Utilities.nickMatcher(newValue, $scope.source, property, model);
 		    		} catch(err) {
-		    			console.log("fastmatcher slice error (most likely due to not being loaded yet): " + err);
+		    			console.error("fastmatcher slice error (most likely due to not being loaded yet): " + err);
 		    		}
 
 			      queryPromise = null;

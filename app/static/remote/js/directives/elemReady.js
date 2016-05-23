@@ -38,6 +38,33 @@ angular.module('uguru.directives')
       }
     };
 })
+.directive('page-transition', function () {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+
+      var loader = new SVGLoader( element[0], { speedIn : attr.pageTransitionDelay || 300, easingIn : mina.easeinout } );
+      loader.show();
+
+      element[0].className += ' pageload-overlay';
+      element[0].setAttribute('data-opening', 'M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 29.96875 C 40.01804 29.96875 40.03125 29.98196 40.03125 30 C 40.03125 30.01804 40.01804 30.03125 40 30.03125 C 39.98196 30.03125 39.96875 30.01804 39.96875 30 C 39.96875 29.98196 39.98196 29.96875 40 29.96875 Z');
+
+      var div = document.createElement('div');
+      div.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="transition" style="position:fixed;background-color:transparent; visibility:hidden;" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="xMidYMid slice"><path d="M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 -25.6875 C 70.750092 -25.6875 95.6875 -0.7500919 95.6875 30 C 95.6875 60.750092 70.750092 85.6875 40 85.6875 C 9.2499078 85.6875 -15.6875 60.750092 -15.6875 30 C -15.6875 -0.7500919 9.2499078 -25.6875 40 -25.6875 Z"/></svg>'
+      element[0].appendChild(div);
+
+
+      scope.$watch(function() {
+          return element.attr('class');
+        }, function(new_class) {
+          if (element[0].className.indexOf('activate')) {
+            element[0].classList.remove('activate');
+            element[0].querySelector('svg.transition').style.visibility = "visible";
+          }
+      })
+    }
+  }
+})
 .directive('preBg', function () {
     return {
         restrict: 'A',
@@ -71,7 +98,6 @@ angular.module('uguru.directives')
           }, function() {
 
             if (element[0].classList.contains('activate') || ('activatePostBgOnClass' in attr && element[0].classList.contains(attr.activatePostBgOnClass) > -1)) {
-              console.log('it works', element[0].nodeName);
               var elementOpacity = parseFloat(attr.postBgOpacity) || 1;
               var elementNodeName = element[0].nodeName;
               element[0].style.transition = 'all 150ms ease-in-out';
@@ -86,10 +112,8 @@ angular.module('uguru.directives')
               } else {
                 var elemFill = 'rgba("' + (attr.postBg || '#FFFFFF')  + ',' + elementOpacity + '")'
                  if (['circle', 'rect', 'polygon', 'path', 'line'].indexOf(elementNodeName.toLowerCase())) {
-                    console.log(elemFill);
                     element[0].style.fill = elemFill;
                   }
-                console.log(element[0].style);
               }
             }
           })
@@ -105,12 +129,11 @@ angular.module('uguru.directives')
       if (SVGService.supportedShapes.indexOf(nodeName) > -1) {
         var drawElement = element[0]
         var drawDelay = attr.drawDelay || 0;
-        var drawStartFrame = attr.drawStartFrame || 0;
+        var drawStartFrame = parseInt(attr.drawStartFrame) || 0;
         var drawDuration = SVGService.computeDrawDuration(attr.drawDuration);
 
         var drawPathLength = SVGService.getTotalPathLength(drawElement);
-
-        drawElement.style.strokeDasharray = drawPathLength + ' ' + drawPathLength;
+        drawElement.style.strokeDasharray = drawPathLength;
         drawElement.style.strokeDashoffset = drawPathLength;
         scope.$watch(function() {
           return element.attr('class');
@@ -126,6 +149,169 @@ angular.module('uguru.directives')
     }
   }
 }])
+.directive('timer', ['$timeout', '$interval', function ($timeout, $interval) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      scope.count = 0;
+      scope.index = 0;
+      scope.globalInterval;
+      scope.timerInterval = parseTimerInterval(attr.timerAuto);
+      scope.isWithinViewPort = isElementInViewport(element[0]);
+      if (!scope.timerInterval) return;
+      // scope.mod parseInt()
+      function initInterval(scope) {
+        scope.children = timerChildren = element[0].querySelectorAll('[timer-child]');
+        scope.maxIndex = scope.children.length;
+          $interval(function() {
+            scope.index = (scope.index + 1) % scope.maxIndex;
+
+            var devTool = document.querySelector('[dev-tool]');
+            devTool.innerHTML = scope.index;
+
+            for (var i = 0; i < scope.children.length; i++) {
+              var indexChild = scope.children[i];
+              var indexChildClass = indexChild.getAttribute('timer-class');
+              indexChild.classList.remove(indexChildClass);
+            }
+            var indexChild = scope.children[scope.index];
+            console.log(indexChild);
+            var indexChildClass = indexChild.getAttribute('timer-class');
+            if (indexChildClass && indexChildClass.length) {
+              indexChild.classList.add(indexChildClass);
+            }
+
+          }, scope.timerInterval);
+      }
+
+      scope.$watch(function() {
+          scope.isWithinViewPort = isElementInViewport(element[0])
+          return scope.isWithinViewPort
+        }, function(in_viewport) {
+          if (in_viewport) {
+            initInterval(scope)
+          } else {
+            console.log('canceling..', in_viewport);
+
+          }
+          // alert('viewport changed to' + in_viewport);
+        }
+      )
+    }
+  }
+
+  function processTimerChildren(elems) {
+    resultDict = {};
+    for (var i = 0; i < elems.length; i++) {
+
+    }
+    return resultDict;
+  }
+
+  function parseTimerInterval(time_str) {
+    //seconds
+    if (time_str.split('ms').length > 1) {
+      return parseInt(time_str.replace('ms', ''));
+    } else if (time_str.split('s').length > 1) {
+      return (parseInt(time_str.replace('s', '')) * 1000);
+    }
+  }
+
+}])
+.directive('onInit', ['$timeout', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      elem.ready(function(){
+        var kvSplit = attr.onInit && attr.onInit.length && attr.onInit.split(':');
+        if (kvSplit && kvSplit.length > 1) {
+          onInitProperty = kvSplit[0];
+          onInitPropertyValue = kvSplit[1];
+          if (onInitProperty in element[0].style) {
+            element[0].style[onInitProperty] = onInitPropertyValue;
+            $timeout(function() {
+              scope.$apply();
+            })
+          }
+        }
+      })
+    }
+  }
+}])
+.directive('tracePath', ['$timeout', 'SVGService', '$compile', '$rootScope', function ($timeout, SVGService, $compile, $rootScope) {
+  return {
+    restrict: 'A',
+    scope: {
+        kf: '=kf',
+    },
+    link: function(scope, element, attr) {
+
+      var elementToTraceSelector = attr.tracePath;
+      var options = {
+        duration: attr.traceDuration || '5s',
+        time_function: attr.traceTimeFunc || 'linear',
+        delay: attr.traceDelay || '0s',
+        iter_count: attr.traceIterCount || '1',
+        direction: attr.traceDirection || 'normal',
+        fill_mode: attr.traceFillMode || 'forwards',
+        anim_name: attr.traceAnimName || (element[0].id + '-' + element[0].nodeName)
+      }
+
+      var pathElem = document.querySelector(elementToTraceSelector);
+      console.log('path elem', pathElem);
+      if (!pathElem) {
+        $timeout(function() {
+          console.log('trying again 1 sec later');
+          $compile(element[0])(scope);
+        }, 1000)
+        return;
+      }
+      console.log('begin render');
+      var animName = options.anim_name;
+      var elemOffset = SVGService.getShapeWidthHeight(element[0]).width;
+      var cssAnimObj = SVGService.generateCSSObjFromPath(animName, pathElem, elemOffset);
+      var cssAnimObjString = [animName, options.duration, options.time_function, options.delay, options.iter_count, options.direction, options.fill_mode].join(' ');
+      $rootScope.cssText = cssAnimObj.cssText;
+      pathElem.parentNode.appendChild(element[0]);
+      $timeout(function() {
+        pathElem.parentNode.classList.add('activate');
+        scope.$apply()
+        element[0].style.animation = cssAnimObjString;
+        element[0].style.webkitAnimation = cssAnimObjString;
+        element[0].addEventListener( 'webkitAnimationEnd', animEndCallback)
+        function animEndCallback() {
+          element[0].offsetWidth = element[0].offsetWidth;
+          element[0].style.animation = null;
+          element[0].style.webkitAnimation = null;
+          element[0].removeEventListener('webkitAnimationEnd', animEndCallback);
+        }
+      });
+
+      // if (pathElem) {
+      //   scope.$watch(function() {
+      //     return pathElem.style.strokeDashoffset;
+      //   }, function(value) {
+
+      //     if (scope.activated) {
+      //       return;
+      //     };
+      //     console.log('should be tracing...', cssAnimObjString);
+
+      //     scope.activated = true;
+
+      //     $timeout(function() {
+
+
+          // }, 100)
+      //   })
+      // }
+
+
+
+      }
+    }
+  }])
+
 .directive('drawShapes', ['$timeout', 'SVGService', function ($timeout, SVGService) {
   return {
     restrict: 'A',
@@ -164,7 +350,8 @@ angular.module('uguru.directives')
                 } else {
                   currentFrame++;
                   for(var j=0; j<svgPaths.length;j++){
-                    svgPaths[j].style.strokeDashoffset = Math.floor(pathLengths[j] * (1 - progress));
+                    svgPaths[j].style.strokeDashoffset = Math.floor(pathLengths[j] * (1 - progress))
+                    // console.log(svgPaths[j].style.strokeDashoffset);
                   }
                   requestFrameHandle = window.requestAnimationFrame(draw);
                 }
@@ -192,7 +379,6 @@ angular.module('uguru.directives')
                  if (!parsedIndexArg || !parsedIndexArg.length) continue;
                  var indexArg = parallaxArgs[i];
                  elemParallaxArgs.push(parsedIndexArg);
-                 // console.log('setting', elemParallaxArgs[i], 'to', parseArg(attr[parsedIndexArg], parallaxArgsType[i]) || ('default ' + elemParallax[indexArg]))
                  elemParallax[indexArg] = parseArg(attr[parsedIndexArg], parallaxArgsType[i]) || elemParallax[indexArg]
               }
               $timeout(function() {
@@ -202,9 +388,6 @@ angular.module('uguru.directives')
               })
 
               scope.root.parallax[attr.parallaxParent] = elemParallax
-              $timeout(function() {
-                // console.log(elemParallax)
-              })
             }
           })
           function parseArg(arg, _type) {
@@ -299,7 +482,7 @@ angular.module('uguru.directives')
                 return true
               };
             })
-            return injectArg.replace("inject", "");
+            return (injectArg && injectArg.replace("inject", ""));
           }
         }
       })
@@ -380,7 +563,7 @@ angular.module('uguru.directives')
                 return true
               };
             })
-            return injectArg.replace("inject", "");
+            return (injectArg && injectArg.replace("inject", ""));
           }
         }
       })
@@ -410,7 +593,6 @@ angular.module('uguru.directives')
             return (element.attr('class') && element.attr('class').indexOf(initCounterClass) > -1) || "";
 
           },function(elem_has_init_counter_class) {
-            console.log('starting_counter', elem_has_init_counter_class)
             if (elem_has_init_counter_class) {
               $timeout(function() {
                 scope.$apply(function() {
@@ -420,7 +602,6 @@ angular.module('uguru.directives')
               if (!element[0].id) {
                 var numCounterElems = document.querySelectorAll('[counter]').length + 1
                 element[0].id = 'counter-' + numCounterElems;
-                console.log('setting id for counter directive');
               }
               var counterArgs = {
                   useEasing : false,
@@ -516,6 +697,10 @@ angular.module('uguru.directives')
         scope.$watch(function() {
           return element.attr('class');
         },function(value) {
+            if (!element.attr('class')) {
+              console.log('ERROR TRANSLATE-ON-CLASS', 'needs at least one class to provide translate-on-class-functionality');
+              return
+            }
             var classNames = element.attr('class').split(' ');
 
               if (((classNames.indexOf('activate') > -1 && !('translateOnClass' in attr)) || classNames.indexOf(attr.translateOnClass) > -1) && attr.translateToElem) {
@@ -527,7 +712,7 @@ angular.module('uguru.directives')
                 var translateElemCoords = {height: translateElemBounding.height, width: translateElemBounding.width, top: translateElemBounding.top, left: translateElemBounding.left};
                 var injectOnTranslateClass = 'translate-active';
                 if (!element[0].style.webkitTransform && !element[0].style.MozTransform && !element[0].style.msTransform && !element[0].style.OTransform && !element[0].style.transform) {
-                  var translateY = parseInt(translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
+                  var translateY = parseInt(translateElemCoords.top - elemCoords.top) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
                   var translateX = parseInt(translateElemCoords.left - elemCoords.left) + ((attr.translateXOffset && parseInt(attr.translateXOffset)) || 0);
                   var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
                   var delay = attr.translateOnClassDelay || 0;
@@ -559,12 +744,13 @@ angular.module('uguru.directives')
 .directive('translateOnClick', ['$timeout', function ($timeout) {
     // add 'translate-to-click' to element to "declare" directive. "translate-active" is added to element if element does not have transform properties && transforms
     // add 'translate-to-elem'="#sample-selector" to element to link destination element
-    // add 'translate-to-x'="200" to add 200px X offset (origin = bottom left);
-    // add 'translate-to-y'="200" to add 200px Y offset (origin = bottom left);
+    // add 'translate-x-offset'="200" to add 200px X offset (origin = bottom left);
+    // add 'translate-y-offset'="200" to add 200px Y offset (origin = bottom left);
     // add 'scale-x-on-click'="1.3" scales x by 1.3
     // add 'translate-on-click-duration'="2.0" scales x by 1.3
+    // add 'translate-on-click-delay'="1000" sets transition duration to 1000ms
     // add 'scale-y-on-click'="0.7" scales y by 0.7
-    // add 'translate-back-class'="untransform-class-name1, untransform-class-name-2" adds the argument/class(es) when the transform is set to null (when element with attribute transforms)
+    // add [NOT SUPPORTED YET] 'translate-back-class'="untransform-class-name1, untransform-class-name-2" adds the argument/class(es) when the transform is set to null (when element with attribute transforms)
     return {
         restrict: 'A',
         link: function(scope, element, attr) {
@@ -578,18 +764,25 @@ angular.module('uguru.directives')
               var injectOnTranslateClass = attr.translateOnClick || 'translate-active';
               var scaleString = "";
               if (!element[0].style.webkitTransform && !element[0].style.MozTransform && !element[0].style.msTransform && !element[0].style.OTransform && !element[0].style.transform) {
-                var translateY = parseInt(translateElemCoords.top - elemCoords.top + elemCoords.height - translateElemCoords.height) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
+                var translateY = parseInt(translateElemCoords.top - elemCoords.top) + ((attr.translateYOffset && parseInt(attr.translateYOffset)) || 0);
                 var translateX = parseInt(translateElemCoords.left - elemCoords.left) + ((attr.translateXOffset && parseInt(attr.translateXOffset)) || 0);
                 var scaleX = (attr.scaleXOnClick && parseFloat(attr.scaleXOnClick)) || 1.0;
                 var scaleY = (attr.scaleXOnClick && parseFloat(attr.scaleYOnClick)) || 1.0;
                 var transFormString = "translate(" + translateX + "px, " + translateY + "px)"
                 var scaleString = " scale(" + scaleX + ',' + scaleY + ')'
-                // console.log(transFormString, translateElemCoords);
                 element[0].style.webkitTransform = transFormString + scaleString;
                 element[0].style.MozTransform = transFormString + scaleString;
                 element[0].style.msTransform = transFormString + scaleString;
                 element[0].style.OTransform = transFormString + scaleString;
                 element[0].style.transform = transFormString + scaleString;
+                if (attr.translateOnClickDelay && attr.translateOnClickDelay.length) {
+                  var translateDelay = parseInt(attr.translateOnClickDelay);
+                  element[0].style.webkitTransitionDelay = translateDelay + "ms";
+                  element[0].style.MozTransitionDelay = translateDelay + "ms";
+                  element[0].style.msTransitionDelay = translateDelay + "ms";
+                  element[0].style.OTransitionDelay = translateDelay + "ms";
+                  element[0].style.transitionDelay = translateDelay + "ms";
+                }
                 if (attr.translateOnClickDuration && attr.translateOnClickDuration.length) {
                   var translateDuration = parseInt(attr.translateOnClickDuration);
                   element[0].style.webkitTransitionDuration = translateDuration + "ms";
@@ -600,7 +793,6 @@ angular.module('uguru.directives')
                 }
                 //deactivate other directives with transforms towards the same element "translate-to-elem";
                 var allTranslateOnClickElems = document.querySelectorAll('.' + injectOnTranslateClass + ".active");
-                // console.log('allTranslateOnClickElems', allTranslateOnClickElems.length, 'found:\n', allTranslateOnClickElems);
                 element[0].classList.add(injectOnTranslateClass, 'active', 'recently-active');
                 for (var i = 0; i < allTranslateOnClickElems.length; i++) {
                   var indexTranslateElem  = allTranslateOnClickElems[i];
@@ -640,7 +832,7 @@ directive("classOnLoad", ["$timeout", 'AnimationService', function ($timeout, An
                           }
                           AnimationService.animateIn(element[0], indexClass);
                         } else {
-                          element[0].classList.add(indexClass);
+                          indexClass && element[0].classList.add(indexClass);
                         }
                       }
                       scope.$apply();
@@ -675,6 +867,7 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
           restrict: 'A',
           link: function(scope, element, attr) {
               element.on("click", function() {
+                console.log(element[0], 'clicked');
                 var delay = attr.classOnClickDelay || 0;
                 var classes = attr.classOnClick.split(", ");
                 $timeout(function() {
@@ -715,7 +908,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                           }
                         }
                         // var otherClassElems = document.querySelectorAll('.' + indexClass);
-                        // console.log(otherClassElems);
                         // for (var j = 0; j < otherClassElems.length; j++) {
                         //   var otherElemIndex = otherClassElems[j];
                         //   if (otherElemIndex !== element[0]) {
@@ -725,18 +917,29 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                       }
                     }
                 }, delay);
-                function classArgsHasInject(args) {
-                  console.log("args",args)
-                  var injectArg = null;
-                  args.filter(function(word, index) {
-                    console.log("word",index)
-                    if (word.indexOf("inject") > -1) {
-                      injectArg = args[index];
-                      return true
-                    };
-                  })
-                  return injectArg.replace("inject", "");
-                }
+          function classArgsHasInject(args) {
+            var injectArg = null;
+            args.filter(function(word, index) {
+              console.log(word);
+              if (word.indexOf("inject") > -1) {
+                injectArg = args[index];
+                return true
+              };
+            })
+            return injectArg && injectArg.replace("inject", "");
+          }
+                // function classArgsHasInject(args) {
+                //   console.log('inject args', args);
+                //   if (!args || args.length) return false;
+                //   var injectArg = null;
+                //   args.filter(function(word, index) {
+                //     if (word.indexOf("inject") > -1) {
+                //       injectArg = args[index];
+                //       return true
+                //     };
+                //   })
+                //   return (args && injectArg && injectArg.replace("inject", ""));
+                // }
               });
             }
           }
@@ -748,7 +951,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
             if (!scope.page.waypoints[attr.animEnterDown]) {
                 scope.page.waypoints[attr.animEnterDown] = {};
             }
-            console.log('anim exit down value has changed');
             $timeout(function() {
               scope.$watch('page.waypoints.' + attr.animEnterDown + '.activated', function(isActive) {
                 var hasFirstTimeEnter = scope.page.waypoints[attr.animEnterDown].hasFirstTimeEnter;
@@ -788,14 +990,12 @@ directive("animFirstEnterDown", ["AnimationService", "$timeout", function (Anima
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
-            // console.log(element[0].attributes);
             $timeout(function() {
               if (!scope.page.waypoints[attr.animFirstEnterDown]) {
                 scope.page.waypoints[attr.animFirstEnterDown] = {};
               }
               scope.page.waypoints[attr.animFirstEnterDown].hasFirstTimeEnter = true;
               scope.$watch('page.waypoints.' + attr.animFirstEnterDown + '.direction', function(isActive) {
-                // console.log(element[0], 'activated for first time enter down');
                 var direction = scope.page.waypoints[attr.animFirstEnterDown].direction;
                 var firstTimeActivated = scope.page.waypoints[attr.animFirstEnterDown].firstTimeEnterActivated;
                 if ((isActive &&  direction === 'down' && !firstTimeActivated)) {
@@ -848,7 +1048,6 @@ directive("initWpParent", function () {
           restrict: 'A',
           link: function(scope, element, attr) {
               scope.page.waypoints.parent = '#' + element[0].id || '.' + element[0].class
-              // console.log('wp parent declared', scope.page.waypoints.parent);
           }
       }
 }).
@@ -875,7 +1074,6 @@ directive("animOnShow", ["AnimationService", "$timeout", function (AnimationServ
           link: function(scope, element, attr) {
               $timeout(function() {
                 scope.$watch(function() {return element.attr('class'); }, function(newValue){
-                  // console.log('animOnShow triggered', newValue, element.hasClass(attr.animOnShow));
                   if (element.hasClass('show') || (attr.animOnShow && attr.animOnShow.length
                     && element.hasClass(attr.animOnShow) && (attr.animOnShow === attr.animOnHide || !element.hasClass(attr.animOnHide)))) {
                     AnimationService.applyAnimateInDirective(element[0], 'on-show');
@@ -955,7 +1153,7 @@ directive("initWp", ['$timeout', 'ScrollService', '$state', function ($timeout, 
 
                 if (elemHasManyWp.length > 1) {
                   if (elemHasManyOffset.length !== elemHasManyWp.length) {
-                    console.log('ERROR: waypoint declaration for element', element[0].id || element[0].class, 'has more/less offsets declared than wp vars');
+                    console.error('ERROR: waypoint declaration for element', element[0].id || element[0].class, 'has more/less offsets declared than wp vars');
                     return;
                   }
                   for (var i = 0; i < elemHasManyWp.length; i++) {
@@ -974,3 +1172,21 @@ directive("initWp", ['$timeout', 'ScrollService', '$state', function ($timeout, 
           }
       }
 }]);
+
+
+function isElementInViewport (el) {
+
+    //special bonus for those using jQuery
+    if (typeof jQuery === "function" && el instanceof jQuery) {
+        el = el[0];
+    }
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    );
+}

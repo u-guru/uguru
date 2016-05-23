@@ -52,7 +52,6 @@ angular.module('uguru.util.controllers')
 				}
 				var payload = {};
 				payload[mappingDict[fieldName]] = currentValue;
-				console.log('updating db value for payload', payload)
 				payload = JSON.stringify(payload);
 				$scope.updateField(payload, uni.id);
 			}

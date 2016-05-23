@@ -15,27 +15,27 @@
     		<h1 class='ng-class: {"hide": !root.vars.loginMode || root.vars.forgotPassword}'>Login</h1>
     		<h1 class='hide ng-class: {"show": !root.vars.loginMode && !root.vars.forgotPassword}'>Create an Account!</h1>
     		<form onkeypress="return event.keyCode != 13;">
-    			<div class="input-field relative" ng-if='!root.vars.loginMode && !root.vars.forgotPassword'>
-    				<input ng-model='signupForm.full_name' autocomplete="off" id='signup-name' type="text" class="validate txt-white">
-    				<label for="Full Name">Full Name</label>
-    				<a ng-show='signupForm.full_name && signupForm.full_name.length' ng-click='signupForm.full_name = "";' class="desktop-input-close-icon side-icon">
+                <fieldset class="relative full-x m15y" style="max-width: 100%!important;" ng-if='!root.vars.loginMode && !root.vars.forgotPassword'>
+                	<input class="input-border light" type="text" placeholder="Full Name" ng-model='signupForm.full_name' autocomplete="off" id='signup-name'/>
+                	<label></label>
+                    <a ng-show='signupForm.full_name && signupForm.full_name.length' ng-click='signupForm.full_name = "";' class="desktop-input-close-icon side-icon">
     					<i class='icon ion-close-circled'> </i>
     				</a>
-    			</div>
-    			<div class="input-field relative">
-    				<input ng-model='signupForm.email' autocomplete="off" id="email" type="text" class="validate txt-white">
-    				<label for="email">Email</label>
-    				<a ng-show="root.vars.loginMode && signupForm.email.length" ng-click='signupForm.email = "";' class="desktop-input-close-icon side-icon">
+                </fieldset>
+                <fieldset class="relative full-x m15y" style="max-width: 100%!important;">
+                	<input class="input-border light" type="email" placeholder="Email" ng-model='signupForm.email' autocomplete="off" id="email"/>
+                	<label></label>
+                    <a ng-show="root.vars.loginMode && signupForm.email.length" ng-click='signupForm.email = "";' class="desktop-input-close-icon side-icon">
     					<i class='icon ion-close-circled'> </i>
     				</a>
-    			</div>
-    			<div class="input-field ng-class:{'hide':root.vars.forgotPassword}">
-    				<input autocomplete="off" ng-keyup="$event.keyCode == 13 && signupOnEnter()" ng-model='signupForm.password' id="password" type="password" class="validate txt-white">
-    				<label for="password">Password</label>
-    				<a ng-show="root.vars.loginMode && signupForm.password.length" ng-click='signupForm.password = "";' class="desktop-input-close-icon side-icon">
+                </fieldset>
+                <fieldset class="relative full-x m15y ng-class:{'hide':root.vars.forgotPassword} " style="max-width: 100%!important;">
+                	<input class="input-border light" type="password" placeholder="Password" autocomplete="off" ng-keyup="$event.keyCode == 13 && signupOnEnter()" ng-model='signupForm.password' id="password"/>
+                	<label></label>
+                    <a ng-show="root.vars.loginMode && signupForm.password.length" ng-click='signupForm.password = "";' class="desktop-input-close-icon side-icon">
     					<i class='icon ion-close-circled'> </i>
     				</a>
-    			</div>
+                </fieldset>
     			<!-- radio input for remember me -->
 
     			<div ng-if="!root.vars.loginMode" class="desktop-login-buttons hide ng-class:{'show':!root.vars.forgotPassword}">

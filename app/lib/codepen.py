@@ -19,7 +19,6 @@ def generateSingleComponentCSSFile():
     for css_link in all_links:
         css_response = requests.get(css_link).text
         result_str += '\n\n' + css_response
-        print css_link
         sleep(DEFAULT_SLEEP_INTERVAL)
     saveFile(result_str.encode('utf-8'), 'components', 'scss', '../')
 
@@ -29,4 +28,21 @@ def saveFile(_str, filename, ext, path):
     print "%s successfully saved in this directory:" % (filename + '.' + ext)
 
 
-generateSingleComponentCSSFile()
+def fetchAndSaveHtmlToTemplates(url):
+    print "supposed to get url: %s" % url
+    import requests
+    from bs4 import BeautifulSoup
+    soup_html = BeautifulSoup(requests.get(url).text)
+    response = raw_input("Is this a \n\n1.Component\n2.Container\n3.Layout\n\n >>")
+    while response not in ["1", "2", "3"]:
+        response = raw_input("Is this a \n\n1.Component\n2.Container\n3.Layout\n\n >>")
+    print response
+
+
+import sys
+args = sys.argv
+
+if '--url' in args or '-u' in args:
+    fetchAndSaveHtmlToTemplates(args[-1])
+
+
