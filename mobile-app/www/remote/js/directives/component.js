@@ -138,11 +138,21 @@ directive('draggable', function($document) {
     }
   };
 }])
-
-//////////
-// End-CONTAINERS
-//////////
-    .directive("dropdown", ['$timeout', function($timeout) {
+.directive("spec", ['$timeout', function($timeout) {
+        return {
+            templateUrl: BASE + 'templates/elements/containers/spec.tpl',
+            scope: {
+                spec: '=data'
+                    // tests:'=testArr',
+            },
+            replace: true,
+            restrict: 'E',
+            link: function(scope, element, attr) {
+            }
+        }
+    }
+])
+.directive("dropdown", ['$timeout', function($timeout) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'color') {
                 return BASE + 'templates/elements/components/inputs/dropdowns/color.tpl'

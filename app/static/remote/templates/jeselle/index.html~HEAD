@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view id='jeselle-view'>
     <ion-content id="jeselle">
         <header id="jeselle-top">
     		<a class="jeselle-top-home" href="/">
@@ -25,7 +25,8 @@
     		<div class="jeselle-home-container" style="background: #BEB9C0;">
     			<div class="jeselle-home-border"></div>
     			<ul class="jeselle-home-thumbs">
-    				<li id="project-one">
+
+    				<li id="project-one" class="null">
     					<a class="jeselle-home-link" class-on-click="null:inject#project-one|active"></a>
     					<article class="jeselle-project">
     						<header style="background-image: url('http://cdn.paper4pc.com/images/hipster-wallpaper-18.jpg');">
@@ -35,7 +36,7 @@
     							</div>
     						</header>
     						<main>
-    							<ul class="jeselle-project-info desktop">
+    							<ul class="jeselle-project-info jeselle-desktop">
     								<li class="jeselle-project-details">
     									<div>
     										<h1>Role</h1>
@@ -81,7 +82,7 @@
     									</div>
     								</li>
     							</ul>
-    							<ul class="jeselle-project-info mobile">
+    							<ul class="jeselle-project-info jeselle-mobile">
     								<li class="jeselle-project-branding">
     									<div>
     										<svg viewBox="0 0 300 400">

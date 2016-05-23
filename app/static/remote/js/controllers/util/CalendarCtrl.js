@@ -10,7 +10,8 @@ angular.module('uguru.util.controllers')
   'KeyboardService',
   '$window',
   '$compile',
-  function($scope, $state, $timeout, $localstorage, $ionicSlideBoxDelegate, CalendarService, KeyboardService, $window, $compile) {
+  'SpecService',
+  function($scope, $state, $timeout, $localstorage, $ionicSlideBoxDelegate, CalendarService, KeyboardService, $window, $compile, SpecService) {
     var gDocUrl = 'https://docs.google.com/document/d/1Xsnsv2cZTvRtUPv9NWXJDG5mMyYYi_RmDZkGsve6xLU/edit';
     var codepenSpecUrl = 'http://codepen.io/teamuguru/pen/ddd2f97039f2fec817d52499dd3c00ac.js';
     var cpFiles = [
@@ -31,12 +32,9 @@ angular.module('uguru.util.controllers')
     // $scope.$on('$ionicView.loaded', function() {
       $timeout(function() {
         loadHTMLSpec();
-        KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
-        KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
-        KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 27, 'esc', true, null);
         if (window.location.href.split('codepen').length === 1) {
           $timeout(function() {
-            loadCodepenSpec();
+            // loadCodepenSpec();
             generateCodePenData();
           }, 2000);
         }
@@ -71,13 +69,7 @@ angular.module('uguru.util.controllers')
       xhr.send();
     }
 
-    function toggleDev() {
-      $scope.dev.toggleDev = !$scope.dev.toggleDev;
-      console.log('setting dev to', $scope.dev.toggleDev);
-    }
-    function toggleSpec() {
-      $scope.dev.toggleSpec = !$scope.dev.toggleSpec;
-    }
+
 
     $scope.openDocInNewTab = function(){
       $window.open(gDocUrl, '_blank');
@@ -125,7 +117,8 @@ angular.module('uguru.util.controllers')
     function switchScreenSize() {
       return;
     }
-
+    $scope.spec = {};
+    SpecService.initSpec($scope, '#calendar-view', 'calendar', 'calendar.html', 'controllers/util/CalendarCtrl.js');
 
   }
 

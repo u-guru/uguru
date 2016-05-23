@@ -42,8 +42,9 @@ angular.module('uguru.util.controllers')
   'LoadingService',
   'CTAService',
   '$localstorage',
+  'ReportService',
   '$timeout',
-  function($scope, $state, $timeout, FileService, LoadingService,CTAService,$localstorage, $timeout) {
+  function($scope, $state, $timeout, FileService, LoadingService, CTAService, $localstorage, ReportService, $timeout) {
 
     $scope.openBugList=function(section){
         $scope.bugs = section.bugs
@@ -90,7 +91,11 @@ angular.module('uguru.util.controllers')
     }
     $scope.fixBug = function(){
       $scope.selected_bug.fixed = true
-      $scope.selected_bug.fixedDate = new Date()
+      var today = new Date()
+      $scope.selected_bug.fixedDate = {
+          'utc' : today.toUTCString(),
+          'time': today.getTime()
+      }
     }
 
     $scope.unfixBug = function(){
@@ -255,8 +260,10 @@ angular.module('uguru.util.controllers')
     $timeout(function() {
       loadUpdatedBugsJsonFile($scope);
       intData()
-    })
+      $scope.test = ReportService.init()
 
+    })
+    
     setTimeout(function() {
       console.log($scope.bugReport)
       $scope.openBugList($scope.bugReport[0])

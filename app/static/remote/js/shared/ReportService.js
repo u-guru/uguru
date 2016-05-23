@@ -1,11 +1,11 @@
 angular
-	.module('sharedServices')
-	.factory("ReportService", [
-        '$timeout',
-        'FileService',
-        'LoadingService',
-         ReportService
-	]);
+.module('sharedServices')
+.factory("ReportService", [
+    '$timeout',
+    'FileService',
+    'LoadingService',
+     ReportService
+]);
 function ReportService($timeout,FileService,LoadingService) {
     var bugReport =[]
 
