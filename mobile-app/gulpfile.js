@@ -25,7 +25,7 @@ var preprocess = require('gulp-preprocess');
 var replace = require('gulp-replace-task');
 var fs = require('fs');
 var htmlmin = require('gulp-htmlmin');
-
+var changed = require('gulp-changed');
 /**
  * Parse arguments
  */
@@ -207,7 +207,8 @@ gulp.task('styles', function() {
     cssStream4, cssStream5, cssStream6, cssStream7, cssStream8, cssStream9, cssStream10,
     cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
     cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26,
-    cssStream27, cssStream28, cssStream29, cssStream30, cssStream31).pipe(plugins.concat('main.css'))
+    cssStream27, cssStream28, cssStream29, cssStream30, cssStream31)
+    // .pipe(autoprefixer('last 2 versions'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS({debug: true}, function(details) {
             console.log("DEBUG")
@@ -215,6 +216,7 @@ gulp.task('styles', function() {
             console.log(details.name + ': ' + details.stats.minifiedSize);
     }))
     .pipe(plugins.if(build, plugins.rev()))
+    .pipe(plugins.concat('main.css'))
     .pipe(gulp.dest(path.join(targetDir, 'styles')))
     .on('error', errorHandler);
 });
@@ -437,15 +439,18 @@ gulp.task('jsHint', function(done) {
 //     .on('error', errorHandler);
 // });
 
-
-// copy templates
-gulp.task('templates', function() {
-  gulp.src([
+// copy images
+gulp.task('images', function() {
+   gulp.src([
       'templates/**/*png',
        ], { cwd: 'www/remote' })
     .pipe(gulp.dest(path.join(targetDir, 'templates')))
 
+    .on('error', errorHandler);
+});
 
+// copy templates
+gulp.task('templates', function() {
   return gulp.src([
         'templates/**/*html',
         'templates/**/*tpl',
@@ -481,6 +486,7 @@ gulp.task('templates', function() {
         // 'templates/splash/**/**/**.html',
 
       ], { cwd: 'www/remote' })
+    .pipe(changed(path.join(targetDir, 'templates')))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(path.join(targetDir, 'templates')))
     .on('error', errorHandler);
@@ -504,13 +510,7 @@ gulp.task('iconfont', function(){
     .on('error', errorHandler);
 });
 
-// copy images
-gulp.task('images', function() {
-  return gulp.src('app/images/**/*.*')
-    .pipe(gulp.dest(path.join(targetDir, 'images')))
 
-    .on('error', errorHandler);
-});
 
 
 
@@ -539,11 +539,12 @@ gulp.task('default', function(done) {
   runSequence(
     'clean',
     [
+      'images',
       'templates',
       'styles',
-      'jsHint',
+      // 'jsHint',
     ],
-    'scripts',
+    // 'scripts',
     // 'index',
     build ? 'noop' : 'watchers',
     build ? 'noop' : 'serve',

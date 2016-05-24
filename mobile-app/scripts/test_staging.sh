@@ -41,7 +41,8 @@ echo 'minifying + compressing local assets..'
 
 gulp -b
 echo 'compiling all local assets..'
-cp dest/scripts/app.js www/remote/js/app.js && cp dest/styles/*.css www/remote/css/app_version.css
+cp dest/scripts/app.js www/remote/js/app.js 
+cp dest/styles/*.css www/remote/css/app_version.css
 cp dest/scripts/templates.js www/remote/js/templates.js
 echo 'cd to uguru-web'
 cd ..
