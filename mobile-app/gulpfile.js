@@ -208,7 +208,7 @@ gulp.task('styles', function() {
     cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
     cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26,
     cssStream27, cssStream28, cssStream29, cssStream30, cssStream31)
-    // .pipe(autoprefixer('last 2 versions'))
+    .pipe(autoprefixer('last 2 versions'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
     .pipe(minifyCSS({debug: true}, function(details) {
             console.log("DEBUG")
