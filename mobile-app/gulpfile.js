@@ -26,6 +26,8 @@ var replace = require('gulp-replace-task');
 var fs = require('fs');
 var htmlmin = require('gulp-htmlmin');
 var changed = require('gulp-changed');
+var uncss = require('gulp-uncss');
+
 /**
  * Parse arguments
  */
@@ -105,11 +107,15 @@ gulp.task('styles', function() {
     cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
     cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26,
     cssStream27, cssStream28, cssStream29, cssStream30, cssStream31)
-    // .pipe(autoprefixer('last 2 versions'))
+    .pipe(autoprefixer('last 2 versions'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
-    .pipe(minifyCSS())
+    .pipe(minifyCSS({keepSpecialComments : 0}))
     .pipe(plugins.if(build, plugins.rev()))
     .pipe(plugins.concat('main.css'))
+    // .pipe(uncss({
+    //     html: ['dest/templates/**/*html']
+    // }))
+    // .pipe(minifyCSS())
     .pipe(gulp.dest(path.join(targetDir, 'styles')))
     .on('error', errorHandler);
 });
@@ -311,7 +317,11 @@ gulp.task('templates', function() {
         'templates/**/*svg'
       ], { cwd: 'www/remote' })
     .pipe(changed(path.join(targetDir, 'templates')))
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({   collapseWhitespace: true,
+                      collapseBooleanAttributes: true,
+                      removeAttributeQuotes: true,
+                      removeComments: true
+                  })) // we can take this out it out
     .pipe(gulp.dest(path.join(targetDir, 'templates')))
     .on('error', errorHandler);
 });
