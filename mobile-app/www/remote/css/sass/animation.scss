@@ -768,21 +768,21 @@
 
 // postit exit
 .animated.hinge-right {
-	@include animation-duration(2s);
+	animation-duration: 2s;
 }
 @keyframes hinge-right {
 	0% {
-		@include transform-origin(top right);
+		transform-origin: top right;
 		animation-timing-function: ease-in-out;
 	}
 	20%, 60% {
 		transform: rotate3d(0, 0, 1, -80deg);
-		@include transform-origin(top right);
+		transform-origin: top right;
 		animation-timing-function: ease-in-out;
 	}
 	40%, 80% {
 		transform: rotate3d(0, 0, 1, -60deg);
-		@include transform-origin(top right);
+		transform-origin: top right;
 		animation-timing-function: ease-in-out;
 		@include opacity(1);
 	}
@@ -808,274 +808,6 @@
 	100% {
 		@include opacity(.9);
 		transform: scale3d(1, 1, 1);
-	}
-}
-
-// become guru postits
-@keyframes bounceInLeft-bg-1 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(0);
-		transform: rotate(7deg) translate3d(-3000px, 0, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(7deg) translate3d(25px, 0, 0);
-	}
-	75% {
-		transform: rotate(7deg) translate3d(-10px, 5px, 0);
-	}
-	90% {
-		transform: rotate(7deg) translate3d(5px, 10px, 0);
-	}
-	100% {
-		transform: rotate(7deg) translate3d(0, 20px, 0);
-	}
-}
-@keyframes bounceInRight-bg-2 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(1);
-		transform: rotate(-7deg) translate3d(3000px, 0, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(-7deg) translate3d(-25px, 0, 0);
-	}
-	75% {
-		transform: rotate(-7deg) translate3d(10px, 5, 0);
-	}
-	90% {
-		transform: rotate(-7deg) translate3d(-5px, 15, 0);
-	}
-	100% {
-		transform: rotate(-7deg) translate3d(-25px, 30px, 0);
-	}
-}
-@keyframes bounceInUp-bg-3 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(0);
-		transform: rotate(5deg) translate3d(0, 3000px, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(5deg) translate3d(0, -20px, 0);
-	}
-	75% {
-		transform: rotate(5deg) translate3d(5, 10px, 0);
-	}
-	90% {
-		transform: rotate(5deg) translate3d(15, -5px, 0);
-	}
-	100% {
-		transform: rotate(5deg) translate3d(30px, 20px, 0);
-	}
-}
-@keyframes bounceInLeft-bg-4 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(0);
-		transform: rotate(20deg) translate3d(-3000px, 0, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(20deg) translate3d(25px, 0, 0);
-	}
-	75% {
-		transform: translate3d(-10px, 0, 0);
-	}
-	90% {
-		transform: rotate(20deg) translate3d(5px, -5px, 0);
-	}
-	100% {
-		transform: rotate(20deg) translate3d(-10px, -10px, 0);
-	}
-}
-@keyframes bounceInUp-bg-5 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(0);
-		transform: rotate(5deg) translate3d(0, 3000px, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(5deg) translate3d(0, -20px, 0);
-	}
-	75% {
-		transform: rotate(5deg) translate3d(0, 10px, 0);
-	}
-	90% {
-		transform: rotate(5deg) translate3d(0, -5px, 0);
-	}
-	100% {
-		transform: rotate(5deg) translate3d(0, 0, 0);
-	}
-}
-@keyframes bounceInRight-bg-6 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	from {
-		@include opacity(0);
-		transform: rotate(-2deg) translate3d(3000px, 0, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(-2deg) translate3d(-25px, 0, 0);
-	}
-	75% {
-		transform: rotate(-2deg) translate3d(10px, 5px, 0);
-	}
-	90% {
-		transform: rotate(-2deg) translate3d(-5px, 10px, 0);
-	}
-	100% {
-		transform: rotate(-2deg) translate3d(-20px, 15px, 0);
-	}
-}
-
-// how it works postits
-@keyframes bounceInLeft-hiw-1 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(0);
-		transform: rotate(5deg) translate3d(-3000px, 0, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(5deg) translate3d(25px, 0, 0);
-	}
-	75% {
-		transform: rotate(5deg) translate3d(-10px, 5px, 0);
-	}
-	90% {
-		transform: rotate(5deg) translate3d(5px, 10px, 0);
-	}
-	100% {
-		transform: rotate(5deg) translate3d(30px, 20px, 0);
-	}
-}
-@keyframes bounceInDown-hiw-2 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(0);
-		transform: rotate(-7deg) translate3d(0, -3000px, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(-7deg) translate3d(0, 25px, 0);
-	}
-	75% {
-		transform: rotate(-7deg) translate3d(-5px, -10px, 0);
-	}
-	90% {
-		transform: rotate(-7deg) translate3d(-15px, 5px, 0);
-	}
-	100% {
-		transform: rotate(-7deg) translate3d(-25px, 60px, 0);
-	}
-}
-@keyframes bounceInRight-hiw-3 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(0);
-		transform: rotate(7deg) translate3d(3000px, 0, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(7deg) translate3d(-25px, 0, 0);
-	}
-	75% {
-		transform: rotate(7deg) translate3d(10px, 5px, 0);
-	}
-	90% {
-		transform: rotate(7deg) translate3d(-5px, 10px, 0);
-	}
-	100% {
-		transform: rotate(7deg) translate3d(0, 20px, 0);
-	}
-}
-@keyframes bounceInLeft-hiw-4 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(0);
-		transform: rotate(-2deg) translate3d(-3000px, 0, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(-2deg) translate3d(25px, 0, 0);
-	}
-	75% {
-		transform: rotate(-2deg) translate3d(-10px, 5px, 0);
-	}
-	90% {
-		transform: rotate(-2deg) translate3d(5px, 10px, 0);
-	}
-	100% {
-		transform: rotate(-2deg) translate3d(-20px, 15px, 0);
-	}
-}
-@keyframes bounceInUp-hiw-5 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(0);
-		transform: rotate(20deg) translate3d(0, 3000px, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(20deg) translate3d(0, -20px, 0);
-	}
-	75% {
-		transform: rotate(20deg) translate3d(0, 10px, 0);
-	}
-	90% {
-		transform: rotate(20deg) translate3d(-5px, -5px, 0);
-	}
-	100% {
-		transform: rotate(20deg) translate3d(-10px, -10px, 0);
-	}
-}
-@keyframes bounceInRight-hiw-6 {
-	0%, 60%, 75%, 90%, 100% {
-		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-	}
-	0% {
-		@include opacity(0);
-		transform: rotate(-5deg) translate3d(3000px, 0, 0);
-	}
-	60% {
-		@include opacity(1);
-		transform: rotate(-5deg) translate3d(-25px, 0, 0);
-	}
-	75% {
-		transform: rotate(-5deg) translate3d(10px, 0, 0);
-	}
-	90% {
-		transform: rotate(-5deg) translate3d(-5px, 0, 0);
-	}
-	100% {
-		transform: rotate(-5deg) translate3d(0, 0, 0);
 	}
 }
 
@@ -1111,46 +843,6 @@
 	}
 	100% {
 		@include scale(1);
-	}
-}
-@keyframes tape-1 {
-	0% {
-		@include opacity(0);
-		transform: rotate(30deg) scale(1.5);
-	}
-	100% {
-		@include opacity(1);
-		transform: rotate(45deg) scale(1);
-	}
-}
-@keyframes tape-2 {
-	0% {
-		@include opacity(0);
-		transform: rotate(-60deg) scale(1.5);
-	}
-	100% {
-		@include opacity(1);
-		transform: rotate(-45deg) scale(1);
-	}
-}
-@keyframes tape-3 {
-	0% {
-		@include opacity(0);
-		transform: rotate(-75deg) scale(1.5);
-	}
-	100% {
-		@include opacity(1);
-		transform: rotate(-90deg) scale(1);
-	}
-}
-@keyframes tape-4 {
-	0% {
-		@include opacity(0);
-		transform: rotate(60deg) scale(1.5);
-	}
-	100% {
-		@include opacity(1);
-		transform: rotate(45deg) scale(1);
 	}
 }
 
