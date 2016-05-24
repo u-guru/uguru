@@ -1,6 +1,8 @@
 var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var img_base = ''; if (LOCAL) {BASE = 'remote/';REST_URL = "http://localhost:5000";}
 
-angular.module('uguru', ['ionic', 'uguru.preApp'])
+angular.module('uguru', ['ionic', 'restangular', 'uguru.preApp',
+  'uguru.shared.directives', 'uguru.shared.services',
+  'uguru.shared.controllers'])
 
 .run(function($ionicPlatform,
   $state, $ionicHistory, $rootScope,
@@ -10,7 +12,7 @@ angular.module('uguru', ['ionic', 'uguru.preApp'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider,
+.config(function($stateProvider, $urlRouterProvider, RestangularProvider,
   $ionicConfigProvider, $compileProvider, $provide, $httpProvider,$sceDelegateProvider) {
 
    $sceDelegateProvider.resourceUrlWhitelist([
@@ -20,6 +22,8 @@ angular.module('uguru', ['ionic', 'uguru.preApp'])
 
 
   $httpProvider.useApplyAsync(true);
+
+  RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
 
@@ -33,14 +37,11 @@ angular.module('uguru', ['ionic', 'uguru.preApp'])
   .state('root', {
         url: '',
         abstract: true,
-        templateUrl: BASE + 'min/templates/root.html',
-        controller: function($scope, $state) {
-          $state.go('^.splash');
-        }
+        templateUrl: BASE + 'min/shared/templates/root.html'
   })
   .state('root.splash', {
     url:'/',
-    templateUrl: BASE + 'min/templates/splash.html'
+    templateUrl: BASE + 'min/preapp/templates/splash.html'
   })
 
 

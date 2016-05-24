@@ -3,10 +3,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
-    <link href="remote/min/css/loader.css" rel="stylesheet">
+    <link href="remote/min/preapp/css/loader.css" rel="stylesheet">
     <script> var timer = {initTime: new Date().getTime()}; </script>
     </head>
-    <body animation="slide-left-right-ios7" onload="timer.body = new Date().getTime()" ng-app="uguru">
+    <body animation="slide-left-right-ios7"  onload="timer.body = new Date().getTime()" ng-app="uguru">
       <div class="loader-portal">
           <div class="portal">
             <div>
@@ -64,34 +64,108 @@
           </div>
         </div>
 
-      <ui-view id="uguru-view">
+      <ui-view id="uguru-view" class='full-xy absolute top-0 left-0' ng-controller='RootController as root'>
       </ui-view>
+      <div class='absolute full-xy top-0 left-0 z-index-999 bg-transparent' id='loader-wrapper'>
+        <div class="pageload-overlay" data-opening="M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 29.96875 C 40.01804 29.96875 40.03125 29.98196 40.03125 30 C 40.03125 30.01804 40.01804 30.03125 40 30.03125 C 39.98196 30.03125 39.96875 30.01804 39.96875 30 C 39.96875 29.98196 39.98196 29.96875 40 29.96875 Z">
+            <svg xmlns="http://www.w3.org/2000/svg" class="transition bg-cerise" style="position:fixed;background-color:transparent; visibility:hidden;" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="xMidYMid slice"><path d="M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 -25.6875 C 70.750092 -25.6875 95.6875 -0.7500919 95.6875 30 C 95.6875 60.750092 70.750092 85.6875 40 85.6875 C 9.2499078 85.6875 -15.6875 60.750092 -15.6875 30 C -15.6875 -0.7500919 9.2499078 -25.6875 40 -25.6875 Z"/></svg>
+        </div>
+    </div>
   </body>
   <footer>
 
     <script>
-        var files = ['remote/min/js/lib/bowser.min.js:async', 'remote/min/js/lib/snap.svg.min.js', 'remote/min/js/lib/ionic.bundle.min.js','remote/min/js/main.js', 'remote/min/js/SplashController.js'];
+        var files = [
+          'remote/css/app_version.css:async',
+          'remote/min/shared/js/lib/bowser.min.js:async',
+          'remote/min/shared/js/lib/snap.svg.min.js',
+          'remote/min/shared/js/lib/ionic.bundle.min.js',
+          'remote/min/shared/js/lib/restangular.min.js',
+          'remote/min/shared/js/lib/lodash.min.js',
+          'remote/min/shared/js/directives/AnimationDirectives.js',
+          'remote/min/shared/js/directives/ElementDirectives.js',
+          'remote/min/shared/js/directives/ComponentDirectives.js',
+          'remote/min/shared/js/services/LocalStorageService.js',
+          'remote/min/shared/js/services/AnimationService.js',
+          'remote/min/shared/js/services/CategoryService.js',
+          'remote/min/shared/js/services/UniversityService.js',
+          'remote/min/shared/js/services/GUtilService.js',
+          'remote/min/shared/js/services/ContentService.js',
+          'remote/min/main.js',
+          'remote/min/shared/js/controllers/RootController.js',
+          'remote/min/preapp/js/SplashController.js',
+          'remote/min/preapp/js/SplashMadlibController.js'
+          ];
+        var fileInitCB = {'remote/min/shared/js/lib/snap.svg.min.js': initSnapLoadedEvent}
         var isAngularReady = false;
         for (var i = 0; i < files.length; i++) {
-          var new_script  = document.createElement('script');
-          new_script.type = 'text/javascript';
-          new_script.async = files[i].split('async').length > 1;
-          new_script.src = files[i].replace(':async', '');
-          new_script.onload = function(file_name) {
-            return function() {timer[file_name.split('/').reverse()[0]] = new Date().getTime();};
-          }(files[i])
-          document.getElementsByTagName('head')[0].appendChild(new_script);
+          if (files[i].split('.js').length > 1) {
+            var new_script  = initScriptElem(files[i])
+
+          } else if (files[i].split('.css').length > 1) {
+            var new_script  = initLinkElem(files[i]);
+          }
         }
         var portalElem = document.querySelector('.loader-portal');
-        var portalEvent = document.createEvent('Event');
-        portalEvent.initEvent('shouldRenderView', true, true);
-        portalElem.addEventListener(((navigator.userAgent.indexOf('AppleWebKit') != -1) && 'webkitAnimationEnd') ||'animationend', function(e) { if (e.animationName === 'l-head-hover') {
+        var portalEvent = initEventFromName('splashMainLoadingComplete');
+        var snapScriptElem, globalLoader;
 
-            portalElem.dispatchEvent(portalEvent);
-          }}, false)
+        portalElem.addEventListener(((navigator.userAgent.indexOf('AppleWebKit') != -1) && 'webkitAnimationEnd') ||'animationend',
+          function(e) {if (e.animationName === 'l-portal-shrink') {
+            setTimeout(function() {
+              portalElem.dispatchEvent(portalEvent);
+            }, 200)
+          }}, false);
+
+
+        function initSnapLoadedEvent(script_elem) {
+
+          var snapLoadedEvent = initEventFromName('shouldRenderSplashTransition');
+          script_elem.onload = function(e) {
+            globalLoader = new SVGLoader( document.querySelector('#loader-wrapper .pageload-overlay'), { speedOut : 300, easingOut : mina.easeinout } );
+            globalLoader.show();
+          }
+        }
+
+        function initLinkElem(src_path) {
+          var new_link = document.createElement('link');
+          new_link.async = src_path.split('async').length > 1;
+          new_link.type = "text/css";
+          new_link.rel = "stylesheet";
+          new_link.href = src_path.replace(':async', '');
+          document.getElementsByTagName("head")[0].appendChild(new_link);
+        }
+
+        function initEventFromName(event_name) {
+          var newEvent = document.createEvent('Event');
+          newEvent.initEvent(event_name, true, true);
+          return newEvent;
+        }
+
+
+
+        function initScriptElem(src_path) {
+          var new_script = document.createElement('script');
+          new_script.type = 'text/javascript';
+          new_script.async = src_path.split('async').length > 1;
+
+          new_script.src = src_path.replace(':async', '');
+          document.getElementsByTagName('head')[0].appendChild(new_script);
+          if (src_path in fileInitCB) {
+            fileInitCB[src_path](new_script);
+          } else {
+            new_script.onload = function(file_name) {
+              return function() {timer[file_name.split('/').reverse()[0]] = new Date().getTime();};
+            }(src_path);
+          }
+          return new_script
+        }
+
+        //uncomment to show load times per page
         setTimeout(function() {
           for (property in timer) (timer[property] !== 'initTime') && console.log(property, timer[property] - timer['initTime'] + 'ms');
-        }, 1000)
+        }, 1000);
+
     </script>
   </footer>
 </html>
