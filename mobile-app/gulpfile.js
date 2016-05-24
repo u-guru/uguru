@@ -41,109 +41,6 @@ var min = args.min;
 var uld = args.uld;
 var targetDir = path.resolve('dest');
 
-gulp.task('replace', function() {
-
-    var env = args.env || 'localdev';
-    var start = args.page || 'university';
-    var ip = args.ip
-
-    var filename = env + '.json';
-    var settings = JSON.parse(fs.readFileSync('./config/' + filename, 'utf8'));
-
-    gulp.src('./www/js/constants.js/')
-      .pipe(replace({
-        patterns: [
-          {
-            match: 'local',
-            replacement: settings.local
-          },
-          {
-            match: 'startpage',
-            replacement: start
-          },
-          {
-            match: 'ipaddress',
-            replacement: ip
-          }
-        ]
-      }))
-      .pipe(gulp.dest('./www/remote/js/'));
-
-    gulp.src('./platforms/android/AndroidManifest.xml')
-      .pipe(replace({
-        patterns: [
-        {
-          match: /adjustResize/g,
-          replacement: 'adjustPan'
-        },
-        {
-          match: /android:theme="@android:style\/Theme.Black.NoTitleBar/g,
-          replacement: 'android:theme="@android:style/Theme.Translucent.NoTitleBar'
-        }
-        ]
-      }))
-      .pipe(gulp.dest('./platforms/android/'));
-});
-
-
-gulp.task('express', function() {
-  var express = require('express');
-  var app = express();
-  app.use(require('connect-livereload')({port: 4002}));
-  app.use(express.static(__dirname));
-  app.listen(4000);
-});
-
-
-var IS_WATCH = false;
-gulp.task('watch', function() {
-  IS_WATCH = true;
-  gulp.watch('www/remote/css/sass/*.scss', ['sass', 'sassy']);
-});
-
-gulp.task('sass', function(done) {
-  gulp.src('www/remote/css/sass/new.scss')
-    .pipe(sass({
-      onError: function(err) {
-        //If we're watching, don't exit on error
-        if (IS_WATCH) {
-          console.log(gutil.colors.red(err));
-        } else {
-          done(err);
-        }
-      }
-    }))
-    .pipe(plugins.concat('new.css'))
-    .pipe(gulp.dest('www/remote/css/sass'))
-    .on('end', done);
-});
-
-gulp.task('sassy', function(done) {
-  gulp.src('www/remote/css/sass/components.scss')
-    .pipe(sass({
-      onError: function(err) {
-        //If we're watching, don't exit on error
-        if (IS_WATCH) {
-          console.log(gutil.colors.red(err));
-        } else {
-          done(err);
-        }
-      }
-    }))
-    .pipe(plugins.concat('components.css'))
-    .pipe(gulp.dest('www/remote/css/sass'))
-    .on('end', done);
-});
-
-gulp.task('run_test', function(done) {
-    karma.start({
-        configFile: __dirname + '/karma.config.js',
-        singleRun: true
-    }, function() {
-        done();
-    });
-});
-
 // global error handler
 var errorHandler = function(error) {
   if (build || prePush) {
@@ -208,13 +105,9 @@ gulp.task('styles', function() {
     cssStream11, cssStream12, cssStream13, cssStream14, cssStream15, cssStream16, cssStream17, cssStream18,
     cssStream19, cssStream20, cssStream21, cssStream22, cssStream23, cssStream24, cssStream25, cssStream26,
     cssStream27, cssStream28, cssStream29, cssStream30, cssStream31)
-    .pipe(autoprefixer('last 2 versions'))
+    // .pipe(autoprefixer('last 2 versions'))
     .pipe(plugins.if(build, plugins.stripCssComments()))
-    .pipe(minifyCSS({debug: true}, function(details) {
-            console.log("DEBUG")
-            console.log(details.name + ': ' + details.stats.originalSize);
-            console.log(details.name + ': ' + details.stats.minifiedSize);
-    }))
+    .pipe(minifyCSS())
     .pipe(plugins.if(build, plugins.rev()))
     .pipe(plugins.concat('main.css'))
     .pipe(gulp.dest(path.join(targetDir, 'styles')))
@@ -236,36 +129,7 @@ gulp.task('scripts', function() {
   // (remember to change appName var to desired module name)
   var templateStream = gulp
       .src([
-        'templates/**/*',
-        // 'templates/root.html',
-        // 'templates/access.html',
-        // 'templates/university.html',
-        // 'templates/university.container.html',
-        // 'templates/majors.container.html',
-        // 'templates/guru.courses.container.html',
-        // 'templates/signup.html',
-        // 'templates/guru.remote.html',
-        // 'templates/guru.languages.container.html',
-        // 'templates/guru.experiences.container.html',
-        // 'templates/payments.html',
-        // 'templates/student.guru-book.html',
-        // 'templates/student.settings.html',
-        // 'templates/student.settings.html',
-        // 'templates/add-course.modal.html',
-        // 'templates/add-university.modal.html',
-        // 'templates/university.modal.html',
-        // 'templates/signup.modal.html',
-        // // 'templates/become-guru.modal.html',
-        // 'templates/offline.html',
-        // 'templates/*html',
-        // 'templates/dev/*html',
-        // 'templates/**/*html',
-        // 'templates/**/**/*html',
-        // 'templates/**/**/**/*html',
-        // 'templates/guru/*html',
-        // 'templates/components/modals/*html',
-        // 'templates/components/details/*html',
-        // 'templates/components/inputs/*html'
+        'templates/**/*'
       ], { cwd: 'dest/' })
     // .pipe(debug())
     .pipe(plugins.angularTemplatecache('templates.js', {
@@ -285,7 +149,7 @@ gulp.task('scripts', function() {
   var scriptStream = gulp
 
     .src([
-      // 'templates.js',
+      'templates.js',
       "lib/google/webfont.js",
       'lib/uguru/detect.mobile.js',
       'lib/uguru/preload.analytics.js',
@@ -429,16 +293,6 @@ gulp.task('jsHint', function(done) {
     done();
 });
 
-// copy fonts
-// gulp.task('fonts', function() {
-//   return gulp
-//     .src(['app/fonts/*.*', 'bower_components/ionic/fonts/*.*'])
-
-//     .pipe(gulp.dest(path.join(targetDir, 'fonts')))
-
-//     .on('error', errorHandler);
-// });
-
 // copy images
 gulp.task('images', function() {
    gulp.src([
@@ -454,37 +308,7 @@ gulp.task('templates', function() {
   return gulp.src([
         'templates/**/*html',
         'templates/**/*tpl',
-        'templates/**/*svg',
-        // 'templates/**/**/*.html',
-        // 'templates/**/**/**/*.html',
-        // 'templates/svg/**/*.html',
-        // 'templates/student.home.html',
-        // 'templates/student.home.body.html',
-        // 'templates/student.guru-book.html',
-        // 'templates/student.settings.html',
-        // 'templates/student.settings.html',
-        // 'templates/components/modals/add-course.modal.html',
-        // 'templates/components/modals/add-university.modal.html',
-        // 'templates/components/modals/university.modal.html',
-        // // 'templates/components/modals/signup.modal.html',
-        // 'templates/components/modals/become-guru.modal.html',
-        // 'templates/util/offline.html',
-        // 'templates/*html',
-        // 'templates/dev/*html',
-        // 'templates/elements/*',
-        // 'templates/elements/assets/*',
-        // // 'templates/elements/**/**/**',
-        // // 'templates/elements/**/**/**/**',
-        // // 'templates/elements/**/**/**/**/**'
-        // 'templates/guru/*html',
-        // 'templates/components/modals/*html',
-        // 'templates/components/details/*html',
-        // 'templates/components/inputs/*html',
-        // 'templates/components/**/**/**.html',
-        // 'templates/splash/*.html',
-        // 'templates/splash/**/*.html',
-        // 'templates/splash/**/**/**.html',
-
+        'templates/**/*svg'
       ], { cwd: 'www/remote' })
     .pipe(changed(path.join(targetDir, 'templates')))
     .pipe(htmlmin({collapseWhitespace: true}))
@@ -492,36 +316,13 @@ gulp.task('templates', function() {
     .on('error', errorHandler);
 });
 
-// generate iconfont
-gulp.task('iconfont', function(){
-  return gulp.src('app/icons/*.svg', {
-      buffer: false
-    })
-    .pipe(plugins.iconfontCss({
-      fontName: 'ownIconFont',
-      path: 'app/icons/own-icons-template.css',
-      targetPath: '../styles/own-icons.css',
-      fontPath: '../fonts/'
-    }))
-    .pipe(plugins.iconfont({
-        fontName: 'ownIconFont'
-    }))
-    .pipe(gulp.dest(path.join(targetDir, 'fonts')))
-    .on('error', errorHandler);
-});
-
-
-
-
-
-
 // start watchers
 gulp.task('watchers', function() {
   plugins.livereload.listen();
   gulp.watch('app/styles/**/*.scss', ['styles']);
-  gulp.watch('app/fonts/**', ['fonts']);
-  gulp.watch('app/icons/**', ['iconfont']);
-  gulp.watch('app/images/**', ['images']);
+  // gulp.watch('app/fonts/**', ['fonts']);
+  // gulp.watch('app/icons/**', ['iconfont']);
+  // gulp.watch('app/images/**', ['images']);
   gulp.watch('app/scripts/**/*.js', ['jsHint', 'scripts', 'index']);
   gulp.watch('./vendor.json', ['vendor']);
   gulp.watch('app/templates/**/*.html', ['scripts', 'index']);
@@ -542,9 +343,9 @@ gulp.task('default', function(done) {
       'images',
       'templates',
       'styles',
-      // 'jsHint',
+      'jsHint',
     ],
-    // 'scripts',
+    'scripts',
     // 'index',
     build ? 'noop' : 'watchers',
     build ? 'noop' : 'serve',
