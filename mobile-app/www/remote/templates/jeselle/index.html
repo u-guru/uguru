@@ -1,5 +1,5 @@
 <ion-view id='jeselle-view' ng-controller='JeselleController'>
-    <ion-content id="jeselle" class="has-cascade">
+    <ion-content id="jeselle" class="null">
         <header id="top">
     		<a class="top-home" href="/">
     			<svg viewBox="0 0 350 350">
@@ -19,11 +19,11 @@
     				</g>
     			</svg>
     		</a>
-    		<a class="top-projects"><span>Projects</span></a>
+    		<a class="top-projects" class-on-click="null:inject#jeselle|has-cascade, null:inject.home-thumbs|cascade"><span>Projects</span></a>
     	</header>
         <main id="home">
     		<div class="home-container" style="background: #BEB9C0;">
-    			<ul class="home-thumbs cascade">
+    			<ul class="home-thumbs">
     				<li id="project-one" class="null">
     					<a class="home-link" class-on-click="null:inject#project-one|active"></a><h2 class="cascade-title"><span>Project Title</span></h2>
     					<article class="project">
