@@ -752,7 +752,7 @@ header#home-nav-header.splash-header,
               opacity: 0;
               cursor: pointer; }
               #request main section#request-cta-calendar .calendar .calendar-container .week-view .ugrid-7 .hour .hour-interval:hover {
-              /*  @extends .high-z-index;*/
+                @extends .high-z-index;
                 opacity: 1;
                 visibility: visible !important;
                 font-size: 11px;

@@ -103,7 +103,6 @@ gulp.task('watch', function() {
   // gulp.watch('www/remote/js/**/*js', ['jshint-current']);
 });
 gulp.task('jshint-current',function(){
-    // Javascript change + prints log in console
      gulp.watch('www/remote/js/**/*js').on('change', function(file) {
       // plugins.livereload.changed(file.path);
       // gutil.log(gutil.colors.yellow('JS changed' + ' (' + file.path + ')'));
@@ -114,20 +113,39 @@ gulp.task('jshint-current',function(){
      });
 });
 gulp.task('sass', function(done) {
-  gulp.src('www/remote/css/sass/new.scss')
-    .pipe(sass({
-      onError: function(err) {
-        //If we're watching, don't exit on error
-        if (IS_WATCH) {
-          console.log(gutil.colors.red(err));
-        } else {
-          done(err);
-        }
-      }
-    }))
-    .pipe(plugins.concat('new.css'))
-    .pipe(gulp.dest('www/remote/css/sass'))
-    .on('end', done);
+  gulp.watch('www/remote/css/sass/**/*scss').on('change', function(file) {
+   // plugins.livereload.changed(file.path);
+   gutil.log(gutil.colors.yellow('CSS changed' + ' (' + file.path + ')'));
+      gulp.src(file.path)
+        .pipe(sass({
+          onError: function(err) {
+            //If we're watching, don't exit on error
+            if (IS_WATCH) {
+              console.log(gutil.colors.red(err));
+            } else {
+              done(err);
+            }
+          }
+        }))
+        .pipe(gulp.dest('www/remote/css/sass'))
+        .on('end', done);
+  });
+
+
+  // gulp.src('www/remote/css/sass/new.scss')
+  //   .pipe(sass({
+  //     onError: function(err) {
+  //       //If we're watching, don't exit on error
+  //       if (IS_WATCH) {
+  //         console.log(gutil.colors.red(err));
+  //       } else {
+  //         done(err);
+  //       }
+  //     }
+  //   }))
+  //   .pipe(plugins.concat('new.css'))
+  //   .pipe(gulp.dest('www/remote/css/sass'))
+  //   .on('end', done);
 });
 
 gulp.task('sassy', function(done) {

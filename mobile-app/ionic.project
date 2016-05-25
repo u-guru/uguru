@@ -1,11 +1,13 @@
 {
   "name": "uguru-mobile",
   "app_id": "",
-  "gulpStartupTasks": ['sass','jshint-current'],
+  "gulpStartupTasks": ["sass","jshint-current"],
   
 
   "watchPatterns": [
-    "www/remote/**/*",
+  	"www/remote/**/*",
+  	"!www/remote/css/**/*",
+    "www/remote/js/**/*",
     "!www/lib/**/*"
   ]
 }
