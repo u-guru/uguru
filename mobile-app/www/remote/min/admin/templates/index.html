@@ -214,7 +214,7 @@
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Calendar</h1>
                 </header>
             </div>
-            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5' ng-include="'shared/templates/components/bugs.html'">
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5' ng-include="'admin/templates/bugs.html'">
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Bugs</h1>
                 </header>
@@ -534,7 +534,7 @@
                                     </div>
                                     <div class='txt-1 flex-wrap-center text-center relative height-64' style="width: calc(75% - 128px);">
                                         <span ng-if='!time_state.editDescription' class='flex-wrap-center bg-slate absolute full-xy top-0 left-0 p05xy p10left weight-400 p05left text-left line-height-1-2' ng-click='time_state.editDescription = true'>
-                                        {{time_state.description || 'Time state description goes here - click to eidt'}}
+                                        {{time_state.description || 'Time state description goes here - click to edit'}}
                                         </span>
                                         <textarea ng-if='time_state.editDescription' ng-blur="time_state.editDescription = false;" class='full-xy bg-slate txt-white p05xy absolute left-0 top-0' rows="3"  ng-model='time_state.description'> </textarea>
                                     </div>
@@ -583,16 +583,16 @@
             </div>
             <div class="full-x absolute" style="height: calc(100% - 60px);" ng-hide='asideTabIndex !== 2'>
                 <div class='bg-azure-20p flex-wrap-center relative full-x p15xy preview-container' ng-class="{'max-height-125':!animationPreview.collapsed, 'max-height-50':animationPreview.collapsed}">
-                    <div style="width: 40%">
+                    <div class="width-40p">
                         <a ng-click='animationPreview.collapsed = !animationPreview.collapsed;' class="block absolute top-0 left-0 p15x-p10y z-index-100" ng-if='animationPreview.collapsed'>
                             <i class='icon ion-chevron-down'> </i>
                         </a>
                         <a ng-click='animationPreview.collapsed = !animationPreview.collapsed;' class="block absolute top-0 left-0 p15x-p10y z-index-100" ng-if='!animationPreview.collapsed'>
                             <i class='icon ion-chevron-up'> </i>
                         </a>
-                        <div class='full-y stage-elem-clone-container'> </div>
+                        <div class='stage-elem-clone-container'> </div>
                     </div>
-                    <div class='flex-wrap-center' style="width: 60%">
+                    <div class='flex-wrap-center width-60p'>
                         <h1 class='weight-600 txt-1 p05top full-x uppercase flex-center txt-center' ng-class="{'txt-2':!animationPreview.collapsed}">
                             <span class='opacity-50'>Animated Component:</span>
                             <span>&nbsp;{{actor.id || actor.className}}</span>
