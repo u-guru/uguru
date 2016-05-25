@@ -114,8 +114,8 @@ gulp.task('jshint-current',function(){
 });
 
 gulp.task('sass:watch', function () {
-    IS_WATCH = true;
-  gulp.watch('www/remote/css/sass/*scss', ['sass']);
+    // IS_WATCH = true;
+  gulp.watch('www/remote/css/sass/*.scss', ['sass']);
 });
 
 gulp.task('sass', function(done) {
@@ -142,15 +142,18 @@ gulp.task('sass', function(done) {
   // });
 
 
-  gulp.src('www/remote/css/sass/*scss')
+  gulp.src(['www/remote/css/sass/*.scss',
+            '!www/remote/css/sass/old.scss',
+            '!www/remote/css/sass/onboarding.scss',
+            '!www/remote/css/sass/powerups.scss'])
     .pipe(debug())
     .pipe(sass().on('error',function(err) {
         //If we're watching, don't exit on error
-        if (IS_WATCH) {
+        // if (IS_WATCH) {
           gutil.log('MSG :'+err);
-        } else {
-          done(err);
-        }
+        // } else {
+          // done(err);
+        // }
       }))
     // .pipe(plugins.concat('new.css'))
     .pipe(gulp.dest('www/remote/css/sass'))

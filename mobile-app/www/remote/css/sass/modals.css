@@ -16,7 +16,7 @@
       stroke-width: 5px; }
 
 .uguru-popup {
-  filter: alpha(opacity=0);
+  /*filter: alpha(opacity=$opacity * 100);*/
   opacity: 0;
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -161,7 +161,7 @@
               line-height: 15px;
               text-transform: uppercase; }
         .uguru-popup .uguru-popup-content .content-wrapper .content-body h2 {
-          filter: alpha(opacity=90);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0.9;
           width: 100%;
           margin-bottom: 10px;
@@ -171,7 +171,7 @@
           text-align: center;
           text-transform: uppercase; }
         .uguru-popup .uguru-popup-content .content-wrapper .content-body p {
-          filter: alpha(opacity=80);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0.8;
           color: #2B3234;
           font-weight: 400;
@@ -187,7 +187,7 @@
           left: 0;
           bottom: 0; }
   .uguru-popup.show {
-    filter: alpha(opacity=100);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1;
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -310,7 +310,7 @@
         width: 100%;
         height: 100%; }
         #contact-type #contact-type-list li > div input {
-          filter: alpha(opacity=0);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0;
           display: block;
           position: absolute;
@@ -361,7 +361,7 @@
             #contact-type #contact-type-list li > div input + span label span {
               display: block; }
           #contact-type #contact-type-list li > div input + span > span {
-            filter: alpha(opacity=50);
+            /*filter: alpha(opacity=$opacity * 100);*/
             opacity: 0.5;
             display: block;
             position: absolute;
@@ -371,7 +371,7 @@
             height: 40%;
             background: rgba(255, 255, 255, 0.4) url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgPHBhdGggZD0iTTE0LDU0LjIzNTI5NDEgTDM1LjE3NjQ3MDYsNzUuNDExNzY0NyBMODYsMjQuNTg4MjM1MyIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+PC9wYXRoPjwvc3ZnPg==) no-repeat center center/40px 40px; }
         #contact-type #contact-type-list li > div input:checked + span span {
-          filter: alpha(opacity=100);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 1; }
       #contact-type #contact-type-list li:nth-child(1) > div input:checked + span label {
         background: #81B566; }
@@ -689,7 +689,7 @@
     top: 12px;
     right: 10px; }
   .signup-modal #account-form #tos {
-    filter: alpha(opacity=60);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 0.6;
     display: block;
     color: white;
@@ -716,7 +716,7 @@
       .signup-modal #account-form #social-login button.bg-fb {
         background: #3b5998; }
       .signup-modal #account-form #social-login button:hover, .signup-modal #account-form #social-login button:focus {
-        filter: alpha(opacity=100);
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 1;
         background: #6f7d82; }
       .signup-modal #account-form #social-login button:active {
@@ -1039,7 +1039,7 @@
       border-left: 1px solid #F1F1F1;
       border-right: 1px solid #F1F1F1; }
       .request-modal .request-content .request-loc ul li input[type="radio"] {
-        filter: alpha(opacity=0);
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 0;
         position: absolute;
         z-index: 9;
@@ -1077,7 +1077,7 @@
       -ms-transform: translate(-50%, -50%);
       -o-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
-      filter: alpha(opacity=15);
+      /*filter: alpha(opacity=$opacity * 100);*/
       opacity: 0.15;
       -webkit-filter: grayscale(1);
       filter: grayscale(1);
@@ -1144,7 +1144,7 @@
       .request-modal .request-content .request-time .request-time-needed ul li:last-child {
         border-right: 0; }
       .request-modal .request-content .request-time .request-time-needed ul li input {
-        filter: alpha(opacity=0);
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 0;
         position: absolute;
         z-index: 9;
@@ -1298,7 +1298,7 @@
         width: 100%;
         height: 100%; }
         .availability-modal .avail-hours ul li input {
-          filter: alpha(opacity=0);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0;
           border-radius: 0;
           position: absolute;
@@ -1554,7 +1554,7 @@
         .credibility-view #credit-slider ul li a:active .credit-icon, .credibility-view #credit-slider ul li a:focus .credit-icon, .credibility-view #credit-slider ul li a:hover .credit-icon {
           background: #e6389b; }
       .credibility-view #credit-slider ul li a.active, .credibility-view #credit-slider ul li a:active {
-        filter: alpha(opacity=75);
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 0.75; }
     .credibility-view #credit-slider ul .active#credit-exp a {
       border-bottom: 5px solid #69B3A5;
@@ -1618,10 +1618,10 @@
     .credibility-view #credibility-content-wrapper .credit-content-slide.active {
       display: block; }
     .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque {
-      filter: alpha(opacity=50);
+      /*filter: alpha(opacity=$opacity * 100);*/
       opacity: 0.5; }
     .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque:active, .credibility-view #credibility-content-wrapper .credit-content-slide .semi-opaque.active {
-      filter: alpha(opacity=100);
+      /*filter: alpha(opacity=$opacity * 100);*/
       opacity: 1; }
     .credibility-view #credibility-content-wrapper .credit-content-slide > div {
       height: 100%; }

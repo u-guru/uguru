@@ -6,7 +6,7 @@
 
   "watchPatterns": [
   	"www/remote/**/*",
-  	"!www/remote/css/**/*",
+  	"!www/remote/css/sass/*",
     "www/remote/js/**/*",
     "!www/lib/**/*"
   ]

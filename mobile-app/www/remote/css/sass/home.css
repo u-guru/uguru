@@ -380,7 +380,7 @@
                 fill: rgba(255, 255, 255, 0.3) !important; }
 
 #mobile-guru-home .home-top {
-  background: #5b6e70; }
+  background: #5b6f70; }
 #mobile-guru-home .home-tabs {
   background: #40484B; }
   #mobile-guru-home .home-tabs ul li {
@@ -422,9 +422,9 @@
       border-bottom-left-radius: 1000px;
       border-bottom-right-radius: 1000px; }
     #mobile-guru-home .home-links ul li a:hover, #mobile-guru-home .home-links ul li a:focus {
-      background: rgba(90, 109, 112, 0.5); }
+      background: rgba(91, 111, 112, 0.5); }
     #mobile-guru-home .home-links ul li a:active {
-      background: #5b6e70; }
+      background: #5b6f70; }
     #mobile-guru-home .home-links ul li a span:first-child {
       position: relative;
       display: block; }
@@ -445,7 +445,7 @@
 #mobile-student-home {
   background: #F1F1F1; }
   #mobile-student-home .home-top {
-    background: #6c8794; }
+    background: #6e8694; }
     #mobile-student-home .home-top .home-top-guru {
       position: relative;
       height: 100%;
@@ -504,7 +504,7 @@
   #mobile-student-home .home-links {
     background: #50A5DD; }
     #mobile-student-home .home-links ul:after {
-      background: #a7d2ee; }
+      background: #a8d2ee; }
     #mobile-student-home .home-links ul li {
       width: calc(100% / 3); }
       #mobile-student-home .home-links ul li:nth-child(1):after, #mobile-student-home .home-links ul li:nth-child(2):after {
@@ -514,7 +514,7 @@
         right: -1px;
         height: calc(100% - 15px);
         width: 2px;
-        background: #a7d2ee;
+        background: #a8d2ee;
         border-top-left-radius: 1000px;
         border-top-right-radius: 1000px; }
       #mobile-student-home .home-links ul li:nth-child(4):after, #mobile-student-home .home-links ul li:nth-child(5):after {
@@ -524,13 +524,13 @@
         right: -1px;
         height: calc(100% - 15px);
         width: 2px;
-        background: #a7d2ee;
+        background: #a8d2ee;
         border-bottom-left-radius: 1000px;
         border-bottom-right-radius: 1000px; }
       #mobile-student-home .home-links ul li a:hover, #mobile-student-home .home-links ul li a:focus {
-        background: rgba(108, 134, 147, 0.5); }
+        background: rgba(110, 134, 148, 0.5); }
       #mobile-student-home .home-links ul li a:active {
-        background: #6c8794; }
+        background: #6e8694; }
 
 /* ---------- DESKTOP */
 .desktop-home .main {
@@ -1007,7 +1007,7 @@
 #desktop-guru-home {
   background: #40484B; }
   #desktop-guru-home .main .home-tabs {
-    background: #5b6e70; }
+    background: #5b6f70; }
   #desktop-guru-home .main .home-main .home-tiles-top .home-tiles-daily {
     width: calc(100% - 320px);
     height: 100%; }
@@ -1025,9 +1025,9 @@
   #desktop-guru-home .main .home-main .home-tiles-main .home-tiles-main-inside {
     background: #69B3A5; }
     #desktop-guru-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:hover, #desktop-guru-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:focus {
-      background: rgba(90, 109, 112, 0.5); }
+      background: rgba(91, 111, 112, 0.5); }
     #desktop-guru-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:active {
-      background: #5b6e70; }
+      background: #5b6f70; }
     #desktop-guru-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:not(:last-child):after {
       background: #b4d9d2; }
 
@@ -1035,7 +1035,7 @@
   background: #F1F1F1;
   color: #40484B; }
   #desktop-student-home .main .home-tabs {
-    background: #6c8794; }
+    background: #6e8694; }
   #desktop-student-home .main .home-main .home-tiles-top .home-tiles-daily .home-ticket-content {
     border: 3px solid #F1B99D;
     background: white; }
@@ -1079,8 +1079,10 @@
   #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside {
     background: #50A5DD; }
     #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:hover, #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:focus {
-      background: rgba(108, 134, 147, 0.5); }
+      background: rgba(110, 134, 148, 0.5); }
     #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:active {
-      background: #6c8794; }
+      background: #6e8694; }
     #desktop-student-home .main .home-main .home-tiles-main .home-tiles-main-inside .home-tile:not(:last-child):after {
-      background: #a7d2ee; }
+      background: #a8d2ee; }
+
+/*# sourceMappingURL=home.css.map */

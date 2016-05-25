@@ -155,7 +155,7 @@ ion-view #essay-footer-badges {
   stroke-linecap: round;
   stroke-linejoin: round; }
 .splash-landing#essay-splash > section .splash-footer-link:hover, .splash-landing#essay-splash > section .splash-footer-link:focus {
-  background: #eb9469; }
+  background: #eb9569; }
   .splash-landing#essay-splash > section .splash-footer-link:hover svg, .splash-landing#essay-splash > section .splash-footer-link:focus svg {
     stroke: white; }
 .splash-landing#essay-splash > section .splash-footer-link:active {
@@ -189,7 +189,7 @@ ion-view #essay-footer-badges {
         #essay-student-login .main > div .notecard:first-child button:hover, #essay-student-login .main > div .notecard:first-child button:focus {
           /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 1;
-          background: #66918c; }
+          background: #66928d; }
         #essay-student-login .main > div .notecard:first-child button:active, #essay-student-login .main > div .notecard:first-child button.activated {
           /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 1;
@@ -224,7 +224,9 @@ ion-view {
   #essay-student-home section {
     /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1; }
-    #essay-student-home section button:hover, #essay-student-home section button.activated, #essay-student-home section button.active {
+    #essay-student-home section button:hover,
+    #essay-student-home section button.activated,
+    #essay-student-home section button.active {
       background-color: rgba(105, 179, 165, 0.8); }
 
 #desktop-university .school-card .school-card-inside .school-card-top .school-card-icon {
@@ -282,35 +284,36 @@ ion-view {
 
 #request-slide-two .desktop-forms-container {
   width: 33%; }
-  #request-slide-two .desktop-forms-container h1, #request-slide-two .desktop-forms-container .cta-modal-close {
+  #request-slide-two .desktop-forms-container h1,
+  #request-slide-two .desktop-forms-container .cta-modal-close {
     display: none; }
   #request-slide-two .desktop-forms-container form .input-field input {
     color: #40484B !important; }
     #request-slide-two .desktop-forms-container form .input-field input::-webkit-input-placeholder {
       color: #40484B !important;
-      opacity: 0.5; }
+      opacity: .5; }
     #request-slide-two .desktop-forms-container form .input-field input:-moz-placeholder {
       color: #40484B !important;
-      opacity: 0.5; }
+      opacity: .5; }
     #request-slide-two .desktop-forms-container form .input-field input::-moz-placeholder {
       color: #40484B !important;
-      opacity: 0.5; }
+      opacity: .5; }
     #request-slide-two .desktop-forms-container form .input-field input:-ms-input-placeholder {
       color: #40484B !important;
-      opacity: 0.5; }
+      opacity: .5; }
 
 #essay-student-request-form textarea::-webkit-input-placeholder {
   color: #40484B !important;
-  opacity: 0.5; }
+  opacity: .5; }
 #essay-student-request-form textarea:-moz-placeholder {
   color: #40484B !important;
-  opacity: 0.5; }
+  opacity: .5; }
 #essay-student-request-form textarea::-moz-placeholder {
   color: #40484B !important;
-  opacity: 0.5; }
+  opacity: .5; }
 #essay-student-request-form textarea:-ms-input-placeholder {
   color: #40484B !important;
-  opacity: 0.5; }
+  opacity: .5; }
 #essay-student-request-form .essay-request-type h1 {
   font-size: 28px;
   padding: 10px 0; }
@@ -373,3 +376,5 @@ ion-scroll, .scroll {
 
 .loading {
   display: block; }
+
+/*# sourceMappingURL=essay.css.map */

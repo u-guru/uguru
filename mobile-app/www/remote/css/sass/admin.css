@@ -1,5 +1,5 @@
 .admin-html h2 {
-  width: 90%;
+  width: 100%;
   padding: 15px 15px 5px;
   font-weight: 600;
   font-size: 24px; }
@@ -108,7 +108,7 @@
   position: relative;
   padding: 7.5px; }
   .admin-definition-list dl div[deprecate] {
-    color: rgba(92, 172, 193, 0.3); }
+    color: rgba(93, 172, 193, 0.3); }
   .admin-definition-list dl div dt {
     width: calc(100% / 3);
     padding: 7.5px;
@@ -128,7 +128,7 @@
     left: 15px;
     width: calc(100% - 30px);
     height: 2px;
-    background: rgba(92, 172, 193, 0.2); }
+    background: rgba(93, 172, 193, 0.2); }
 
 .preview-container {
   position: relative !important;
@@ -302,7 +302,8 @@
   margin-bottom: 5px; }
 #keys .dropdown-container .dropdown.small > div > span {
   width: 160px; }
-#keys input[type=number]::-webkit-inner-spin-button, #keys input[type=number]::-webkit-outer-spin-button {
+#keys input[type=number]::-webkit-inner-spin-button,
+#keys input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -393,15 +394,15 @@
       justify-content: center;
       width: 15px; }
       .anim-timeline ul.anim-label li:nth-child(1) {
-        background: #984b4f; }
+        background: #984c50; }
       .anim-timeline ul.anim-label li:nth-child(2) {
-        background: #925e43; }
+        background: #935f44; }
       .anim-timeline ul.anim-label li:nth-child(3) {
-        background: #9b874c; }
+        background: #9b874d; }
       .anim-timeline ul.anim-label li:nth-child(4) {
-        background: #607e58; }
+        background: #617f59; }
       .anim-timeline ul.anim-label li:nth-child(5) {
-        background: #4a7681; }
+        background: #4b7681; }
   .anim-timeline ul.anim-border {
     position: absolute;
     left: 0;
@@ -523,15 +524,15 @@
   #build .dropdown > div a svg {
     background: #43cb9d; }
   #build .dropdown > div a:hover svg, #build .dropdown > div a:focus svg {
-    background: #6bd6b1; }
+    background: #6bd6b2; }
   #build .dropdown > div a:active svg {
-    background: #2fac80; }
+    background: #2fac82; }
   #build .dropdown > ul li {
-    background: rgba(75, 85, 88, 0.9); }
+    background: rgba(76, 85, 89, 0.9); }
     #build .dropdown > ul li:hover, #build .dropdown > ul li:focus {
-      background: rgba(47, 171, 128, 0.9); }
+      background: rgba(47, 172, 130, 0.9); }
     #build .dropdown > ul li:active {
-      background: rgba(106, 214, 176, 0.9); }
+      background: rgba(107, 214, 178, 0.9); }
   #build > main {
     width: calc(100% / 3 * 2);
     height: 100%;
@@ -662,9 +663,9 @@
             #build > main .build-main-top > ul > li.flex a.bg.bg-moxie:hover, #build > main .build-main-top > ul > li.flex a.bg.bg-moxie:focus {
               background: #a1e5ce; }
               #build > main .build-main-top > ul > li.flex a.bg.bg-moxie:hover svg *, #build > main .build-main-top > ul > li.flex a.bg.bg-moxie:focus svg * {
-                stroke: #418974; }
+                stroke: #428a74; }
             #build > main .build-main-top > ul > li.flex a.bg.bg-moxie:active {
-              background: #418974; }
+              background: #428a74; }
               #build > main .build-main-top > ul > li.flex a.bg.bg-moxie:active svg * {
                 stroke: white; }
           #build > main .build-main-top > ul > li.flex a.bg.bg-crimson {
@@ -673,11 +674,11 @@
             margin-right: 15px;
             background: #d3242c; }
             #build > main .build-main-top > ul > li.flex a.bg.bg-crimson:hover, #build > main .build-main-top > ul > li.flex a.bg.bg-crimson:focus {
-              background: #e99195; }
+              background: #e99296; }
               #build > main .build-main-top > ul > li.flex a.bg.bg-crimson:hover svg *, #build > main .build-main-top > ul > li.flex a.bg.bg-crimson:focus svg * {
-                stroke: #89363b; }
+                stroke: #8a363c; }
             #build > main .build-main-top > ul > li.flex a.bg.bg-crimson:active {
-              background: #89363b; }
+              background: #8a363c; }
               #build > main .build-main-top > ul > li.flex a.bg.bg-crimson:active svg * {
                 stroke: white; }
       #build > main .build-main-top .build-main-settings {
@@ -891,7 +892,7 @@
               right: -1px;
               height: calc(100% - 12px);
               width: 2px;
-              background: #adbbbe; }
+              background: #adbbbf; }
             #build > main .build-main-bottom .build-search-results ul li a {
               -ms-box-orient: horizontal;
               display: -webkit-box;
@@ -910,7 +911,7 @@
               white-space: nowrap;
               padding: 0 15px; }
               #build > main .build-main-bottom .build-search-results ul li a:hover, #build > main .build-main-bottom .build-search-results ul li a:focus {
-                background: #c4ced1;
+                background: #c5cfd1;
                 color: #657377; }
               #build > main .build-main-bottom .build-search-results ul li a:active {
                 background: #657377;
@@ -968,7 +969,7 @@
   #build .build-item-state.inactive header ul, #build .build-item-component.inactive header ul {
     background: rgba(43, 50, 52, 0.5) !important; }
     #build .build-item-state.inactive header ul li:first-child a, #build .build-item-component.inactive header ul li:first-child a {
-      background: #446376; }
+      background: #456477; }
       #build .build-item-state.inactive header ul li:first-child a:hover, #build .build-item-state.inactive header ul li:first-child a:focus, #build .build-item-component.inactive header ul li:first-child a:hover, #build .build-item-component.inactive header ul li:first-child a:focus {
         background: #43cb9d; }
         #build .build-item-state.inactive header ul li:first-child a:hover svg *, #build .build-item-state.inactive header ul li:first-child a:focus svg *, #build .build-item-component.inactive header ul li:first-child a:hover svg *, #build .build-item-component.inactive header ul li:first-child a:focus svg * {
@@ -1226,7 +1227,7 @@
         -o-transform: rotate(180deg);
         transform: rotate(180deg); }
       #build > aside.build-settings .build-docs .build-docs-history li .build-file a:hover, #build > aside.build-settings .build-docs .build-docs-history li .build-file a:focus {
-        background: #738488; }
+        background: #748489; }
       #build > aside.build-settings .build-docs .build-docs-history li .build-file a:active {
         background: #43cb9d; }
       #build > aside.build-settings .build-docs .build-docs-tuts li > div h2 span {
@@ -1296,7 +1297,7 @@
         -o-transform: rotate(180deg);
         transform: rotate(180deg); }
       #build > aside.build-settings .build-files-list .build-files-dropdown:hover, #build > aside.build-settings .build-files-list .build-files-dropdown:focus {
-        background: #738488; }
+        background: #748489; }
       #build > aside.build-settings .build-files-list .build-files-dropdown:active {
         background: #43cb9d; }
     #build > aside.build-settings .build-settings-list > li {
@@ -1336,7 +1337,7 @@
       #build > aside.build-settings .build-settings-list > li > a:hover, #build > aside.build-settings .build-settings-list > li > a:focus {
         background: #8A9EA3; }
       #build > aside.build-settings .build-settings-list > li > a:active {
-        background: #738488; }
+        background: #748489; }
     #build > aside .build-aside-top {
       height: 64px;
       background: #637074; }
@@ -1369,7 +1370,7 @@
             right: -1px;
             height: calc(100% - 12px);
             width: 2px;
-            background: #919a9d; }
+            background: #929b9e; }
           #build > aside .build-aside-top > ul > li a {
             -ms-box-orient: horizontal;
             display: -webkit-box;
@@ -1392,7 +1393,7 @@
             font-weight: 600; }
             #build > aside .build-aside-top > ul > li a:hover, #build > aside .build-aside-top > ul > li a:focus {
               background: #a1e5ce;
-              color: #418974; }
+              color: #428a74; }
             #build > aside .build-aside-top > ul > li a:active, #build > aside .build-aside-top > ul > li a.active {
               background: #43cb9d;
               color: white; }
@@ -1434,7 +1435,7 @@
               font-size: 16px;
               font-weight: 600; }
           #build > aside .build-aside-state > ul > li:first-child > div {
-            background: #738488;
+            background: #748489;
             text-transform: lowercase; }
             #build > aside .build-aside-state > ul > li:first-child > div h2, #build > aside .build-aside-state > ul > li:first-child > div h1 {
               width: 100%; }
@@ -1546,7 +1547,7 @@
                     background: #43cb9d; }
                   #build > aside .build-element-list > ul > li > div:first-of-type h1.has-link a:first-child:active {
                     background: #a1e5ce;
-                    color: #418974; }
+                    color: #428a74; }
             #build > aside .build-element-list > ul > li > div:first-of-type > span {
               -ms-box-orient: horizontal;
               display: -webkit-box;
@@ -1608,9 +1609,9 @@
               #build > aside .build-element-list > ul > li > div:first-of-type > a:hover, #build > aside .build-element-list > ul > li > div:first-of-type > a:focus {
                 background: #a1e5ce; }
                 #build > aside .build-element-list > ul > li > div:first-of-type > a:hover svg *, #build > aside .build-element-list > ul > li > div:first-of-type > a:focus svg * {
-                  stroke: #418974; }
+                  stroke: #428a74; }
               #build > aside .build-element-list > ul > li > div:first-of-type > a:active {
-                background: #418974; }
+                background: #428a74; }
                 #build > aside .build-element-list > ul > li > div:first-of-type > a:active svg * {
                   stroke: white; }
               #build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate {
@@ -1622,7 +1623,7 @@
                   -o-transform: rotate(45deg);
                   transform: rotate(45deg); }
                 #build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:hover, #build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:focus {
-                  background: #c4ced1; }
+                  background: #c5cfd1; }
                   #build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:hover svg *, #build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:focus svg * {
                     stroke: #657377; }
                 #build > aside .build-element-list > ul > li > div:first-of-type > a.build-activate:active {
@@ -1700,7 +1701,7 @@
                 justify-content: center;
                 width: 100%;
                 height: 28px;
-                background: #738488; }
+                background: #748489; }
                 #build > aside .build-element-list > ul > li .build-save li a svg {
                   display: block;
                   width: 24px;
@@ -1712,9 +1713,9 @@
                     stroke-linecap: round;
                     stroke-linejoin: round; }
                 #build > aside .build-element-list > ul > li .build-save li a:hover, #build > aside .build-element-list > ul > li .build-save li a:focus {
-                  background: #418974; }
+                  background: #428a74; }
                 #build > aside .build-element-list > ul > li .build-save li a:active {
-                  background: #5ba792; }
+                  background: #5ca893; }
           #build > aside .build-element-list > ul > li .build-css-header {
             -ms-box-orient: horizontal;
             display: -webkit-box;
@@ -1732,7 +1733,7 @@
             -webkit-justify-content: center;
             justify-content: center;
             width: 100%;
-            background: #76868b;
+            background: #77878c;
             font-size: 14px;
             font-weight: 600;
             text-align: center;
@@ -1883,7 +1884,7 @@
                     font-weight: 600;
                     text-align: center; }
                     #build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(2) > span.build-class {
-                      background: #759090 !important;
+                      background: #769190 !important;
                       font-weight: 700; }
                   #build > aside .build-element-list > ul > li .build-css-list > li > div:nth-child(2) button {
                     font-size: 18px;
@@ -1932,7 +1933,7 @@
                 bottom: -1px;
                 width: calc(100% - 30px);
                 height: 2px;
-                background: #6f777a; }
+                background: #70777a; }
               #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child {
                 -ms-box-orient: horizontal;
                 display: -webkit-box;
@@ -1999,7 +2000,7 @@
                     #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(1) a:active {
                       background: #a1e5ce; }
                       #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(1) a:active svg * {
-                        stroke: #418974; }
+                        stroke: #428a74; }
                     #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a svg {
                       -webkit-transform: rotate(45deg);
                       -moz-transform: rotate(45deg);
@@ -2011,17 +2012,17 @@
                       #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a:hover svg *, #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a:focus svg * {
                         stroke: white; }
                     #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a:active {
-                      background: #e99195; }
+                      background: #e99296; }
                       #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(2) a:active svg * {
-                        stroke: #89363b; }
+                        stroke: #8a363c; }
                     #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:hover, #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:focus {
                       background: #F6C64E; }
                       #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:hover svg *, #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:focus svg * {
                         stroke: white; }
                     #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:active {
-                      background: #fae2a6; }
+                      background: #fbe3a7; }
                       #build > aside .build-element-list > ul > li .build-property-list > li > div:first-child .build-property-options li:nth-child(3) a:active svg * {
-                        stroke: #9b874c; }
+                        stroke: #9b874d; }
               #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values {
                 -ms-box-orient: horizontal;
                 display: -webkit-box;
@@ -2126,9 +2127,9 @@
                       padding: 0 5px; }
                       #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li div > a:hover, #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li div > a:focus {
                         background: #a1e5ce;
-                        color: #418974; }
+                        color: #428a74; }
                       #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li div > a:active {
-                        background: #418974;
+                        background: #428a74;
                         color: white; }
                     #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li div .build-property-options {
                       position: absolute;
@@ -2164,9 +2165,9 @@
                         text-align: center; }
                         #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li div .build-property-options li a:hover, #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li div .build-property-options li a:focus {
                           background: #a1e5ce;
-                          color: #418974; }
+                          color: #428a74; }
                         #build > aside .build-element-list > ul > li .build-property-list > li > div:last-child .build-property-values > li div .build-property-options li a:active {
-                          background: #418974;
+                          background: #428a74;
                           color: white; }
               #build > aside .build-element-list > ul > li .build-property-list > li:last-child > a {
                 /*filter: alpha(opacity=$opacity * 100);*/
@@ -2231,7 +2232,7 @@
                         right: -1px;
                         height: calc(100% - 12px);
                         width: 2px;
-                        background: #adbbbe; }
+                        background: #adbbbf; }
                       #build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul li a {
                         -ms-box-orient: horizontal;
                         display: -webkit-box;
@@ -2250,7 +2251,7 @@
                         white-space: nowrap;
                         padding: 0 15px; }
                         #build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul li a:hover, #build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul li a:focus {
-                          background: #c4ced1;
+                          background: #c5cfd1;
                           color: #657377; }
                         #build > aside .build-element-list > ul > li .build-property-list > li:last-child .build-element-search .build-element-search-results ul li a:active {
                           background: #657377;
@@ -2372,7 +2373,7 @@
         font-weight: 600;
         text-align: center; }
         #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) > span.build-class, #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(2) > span.build-class {
-          background: #759090 !important;
+          background: #769190 !important;
           font-weight: 700; }
       #build > aside .build-element-list.animation > ul > li.build-timeline .build-css-list > li > div:nth-child(1) {
         width: 50%; }
@@ -2403,7 +2404,7 @@
             margin-top: 10px; }
     #build > aside .build-aside-bottom {
       height: 64px;
-      background: #738488; }
+      background: #748489; }
       #build > aside .build-aside-bottom > ul {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -2447,7 +2448,7 @@
             #build > aside .build-aside-bottom > ul > li > a:hover, #build > aside .build-aside-bottom > ul > li > a:focus {
               background: #a1e5ce; }
               #build > aside .build-aside-bottom > ul > li > a:hover svg *, #build > aside .build-aside-bottom > ul > li > a:focus svg * {
-                stroke: #418974; }
+                stroke: #428a74; }
             #build > aside .build-aside-bottom > ul > li > a:active {
               background: #43cb9d; }
               #build > aside .build-aside-bottom > ul > li > a:active svg * {
@@ -2459,7 +2460,7 @@
           #build > aside .build-aside-bottom > ul > li .bg.bg-moxie {
             background: #43cb9d; }
             #build > aside .build-aside-bottom > ul > li .bg.bg-moxie:active {
-              background: #418974; }
+              background: #428a74; }
           #build > aside .build-aside-bottom > ul > li .build-add-element svg, #build > aside .build-aside-bottom > ul > li .bg.bg-moxie svg {
             width: 36px;
             height: 36px; }
@@ -2590,11 +2591,11 @@
             stroke-linecap: round;
             stroke-linejoin: round; }
       #build .build-property-option-list button.starred:hover svg *, #build .build-property-option-list button.starred:focus svg * {
-        stroke: #9b874c; }
+        stroke: #9b874d; }
       #build .build-property-option-list button.starred:active svg * {
         stroke: white; }
       #build .build-property-option-list button.flagged:hover svg *, #build .build-property-option-list button.flagged:focus svg * {
-        stroke: #925e43; }
+        stroke: #935f44; }
       #build .build-property-option-list button.flagged:active svg * {
         stroke: white; }
       #build .build-property-option-list button.flagged span svg {
@@ -2606,13 +2607,13 @@
 
 /* ---------- DASHBOARD */
 [class*="user-icon"].jeselle {
-  background-image: url('https://uguru.me/static/web/images/team/jeselle.png') !important; }
+  background-image: url("https://uguru.me/static/web/images/team/jeselle.png") !important; }
 [class*="user-icon"].gabrielle {
-  background-image: url('https://uguru.me/static/web/images/team/gabrielle.png') !important; }
+  background-image: url("https://uguru.me/static/web/images/team/gabrielle.png") !important; }
 [class*="user-icon"].samir {
-  background-image: url('https://uguru.me/static/web/images/team/samir.png') !important; }
+  background-image: url("https://uguru.me/static/web/images/team/samir.png") !important; }
 [class*="user-icon"].jason {
-  background-image: url('https://uguru.me/static/web/images/team/jason.png') !important; }
+  background-image: url("https://uguru.me/static/web/images/team/jason.png") !important; }
 
 #admin tabs {
   width: 100% !important;
@@ -2625,7 +2626,7 @@
   display: -moz-flex;
   display: -webkit-flex;
   display: flex;
-  background: #447272;
+  background: #447373;
   width: 100%;
   height: 64px; }
   #admin > header .admin-logo {
@@ -2713,70 +2714,70 @@
         #admin > main > aside a:nth-child(1):active {
           color: #69B3A5; }
       #admin > main > aside a:nth-child(2) {
-        color: #4ab3ae; }
+        color: #4ab3af; }
         #admin > main > aside a:nth-child(2):hover, #admin > main > aside a:nth-child(2):focus {
           color: white; }
         #admin > main > aside a:nth-child(2):active {
-          color: #4ab3ae; }
+          color: #4ab3af; }
       #admin > main > aside a:nth-child(3) {
-        color: #5cacc1; }
+        color: #5dacc1; }
         #admin > main > aside a:nth-child(3):hover, #admin > main > aside a:nth-child(3):focus {
           color: white; }
         #admin > main > aside a:nth-child(3):active {
-          color: #5cacc1; }
+          color: #5dacc1; }
       #admin > main > aside a:nth-child(4) {
-        color: #7092c4; }
+        color: #7193c4; }
         #admin > main > aside a:nth-child(4):hover, #admin > main > aside a:nth-child(4):focus {
           color: white; }
         #admin > main > aside a:nth-child(4):active {
-          color: #7092c4; }
+          color: #7193c4; }
       #admin > main > aside a:nth-child(5) {
-        color: #8187b5; }
+        color: #8287b5; }
         #admin > main > aside a:nth-child(5):hover, #admin > main > aside a:nth-child(5):focus {
           color: white; }
         #admin > main > aside a:nth-child(5):active {
-          color: #8187b5; }
+          color: #8287b5; }
       #admin > main > aside a.active {
         color: white; }
         #admin > main > aside a.active:nth-child(1) {
           background: #69B3A5; }
           #admin > main > aside a.active:nth-child(1):hover, #admin > main > aside a.active:nth-child(1):focus {
             background: #b4d9d2;
-            color: #547d78; }
+            color: #557e78; }
           #admin > main > aside a.active:nth-child(1):active {
-            background: #547d78;
+            background: #557e78;
             color: white; }
         #admin > main > aside a.active:nth-child(2) {
-          background: #4ab3ae; }
+          background: #4ab3af; }
           #admin > main > aside a.active:nth-child(2):hover, #admin > main > aside a.active:nth-child(2):focus {
-            background: #a4d9d6;
-            color: #457d7c; }
+            background: #a5d9d7;
+            color: #457e7d; }
           #admin > main > aside a.active:nth-child(2):active {
-            background: #457d7c;
+            background: #457e7d;
             color: white; }
         #admin > main > aside a.active:nth-child(3) {
-          background: #5cacc1; }
+          background: #5dacc1; }
           #admin > main > aside a.active:nth-child(3):hover, #admin > main > aside a.active:nth-child(3):focus {
-            background: #add5e0;
-            color: #4e7a86; }
+            background: #aed6e0;
+            color: #4f7a86; }
           #admin > main > aside a.active:nth-child(3):active {
-            background: #4e7a86;
+            background: #4f7a86;
             color: white; }
         #admin > main > aside a.active:nth-child(4) {
-          background: #7092c4; }
+          background: #7193c4; }
           #admin > main > aside a.active:nth-child(4):hover, #admin > main > aside a.active:nth-child(4):focus {
-            background: #b7c8e1;
-            color: #586d87; }
+            background: #b8c9e2;
+            color: #596e88; }
           #admin > main > aside a.active:nth-child(4):active {
-            background: #586d87;
+            background: #596e88;
             color: white; }
         #admin > main > aside a.active:nth-child(5) {
-          background: #8187b5; }
+          background: #8287b5; }
           #admin > main > aside a.active:nth-child(5):hover, #admin > main > aside a.active:nth-child(5):focus {
-            background: #c0c3da;
-            color: #606780; }
+            background: #c1c3da;
+            color: #616880; }
           #admin > main > aside a.active:nth-child(5):active {
-            background: #606780;
+            background: #616880;
             color: white; }
   #admin > main > div {
     -ms-box-orient: horizontal;
@@ -2805,7 +2806,7 @@
       height: 100%;
       color: #40484B; }
       #admin > main > div > section#admin-projects .tab-container {
-        background: #609d93; }
+        background: #619e93; }
         #admin > main > div > section#admin-projects .tab-container .tab-bar.slide > div a {
           position: relative; }
           #admin > main > div > section#admin-projects .tab-container .tab-bar.slide > div a > div:first-child {
@@ -2835,13 +2836,13 @@
             #admin > main > div > section#admin-projects .tab-container .tab-bar.slide > div a > div:first-child .user-icon-32:nth-child(2), #admin > main > div > section#admin-projects .tab-container .tab-bar.slide > div a > div:first-child .user-icon-32:nth-child(3) {
               margin-left: -6px; }
       #admin > main > div > section#admin-components .tab-container {
-        background: #489d9a; }
+        background: #489e9b; }
       #admin > main > div > section#admin-reference .tab-container {
-        background: #5698a9; }
+        background: #5798a9; }
       #admin > main > div > section#admin-moodboard .tab-container {
-        background: #6683ab; }
+        background: #6784ac; }
       #admin > main > div > section#admin-tools .tab-container {
-        background: #747a9f; }
+        background: #757aa0; }
 #admin #admin-add-edit > * {
   position: relative; }
 #admin #admin-add-edit .admin-add-edit-submit {
@@ -2950,7 +2951,7 @@
       -webkit-justify-content: center;
       justify-content: center;
       position: relative;
-      background: #66918c;
+      background: #66928d;
       padding: 15px;
       padding-top: 30px;
       width: 100%;
@@ -2986,7 +2987,7 @@
         font-size: 18px;
         font-weight: 900;
         background: white;
-        color: #66918c; }
+        color: #66928d; }
       #admin .admin-user-stories ul li a h1 {
         font-size: 16px;
         font-weight: 600; }
@@ -3086,10 +3087,10 @@
           display: block;
           width: 100%;
           background: white;
-          border: 2px solid #4ab3ae;
+          border: 2px solid #4ab3af;
           border-bottom-width: 0; }
         #admin .admin-assets ul li span + span, #admin .admin-assets ul li span + a, #admin .admin-assets ul li a + span, #admin .admin-assets ul li a + a {
-          background: #4ab3ae;
+          background: #4ab3af;
           padding: 5px 10px;
           color: white;
           font-size: 18px;
@@ -3166,12 +3167,12 @@
         font-weight: 600;
         padding: 5px 10px;
         border-radius: 2px;
-        background: rgba(112, 146, 196, 0.95); }
+        background: rgba(113, 147, 196, 0.95); }
         #admin .admin-moodboard > ul li div a:hover, #admin .admin-moodboard > ul li div a:focus {
-          background: #b7c8e1;
-          color: #586d87; }
+          background: #b8c9e2;
+          color: #596e88; }
         #admin .admin-moodboard > ul li div a:active {
-          background: #586d87;
+          background: #596e88;
           color: white; }
 #admin .admin-colors > ul > li > div {
   position: relative; }
@@ -3245,7 +3246,7 @@
     padding: 7.5px; }
     #admin .admin-components > ul > li > div > h1, #admin .admin-components > ul > li > div > a, #admin .admin-containers > ul > li > div > h1, #admin .admin-containers > ul > li > div > a, #admin .admin-scenes > ul > li > div > h1, #admin .admin-scenes > ul > li > div > a, #admin .admin-layouts > ul > li > div > h1, #admin .admin-layouts > ul > li > div > a, #admin .admin-stories > ul > li > div > h1, #admin .admin-stories > ul > li > div > a {
       padding: 10px 15px;
-      background: #4ab3ae;
+      background: #4ab3af;
       font-size: 20px;
       font-weight: 600;
       text-align: center;
@@ -3254,22 +3255,22 @@
       #admin .admin-components > ul > li > div > h1 h1, #admin .admin-components > ul > li > div > a h1, #admin .admin-containers > ul > li > div > h1 h1, #admin .admin-containers > ul > li > div > a h1, #admin .admin-scenes > ul > li > div > h1 h1, #admin .admin-scenes > ul > li > div > a h1, #admin .admin-layouts > ul > li > div > h1 h1, #admin .admin-layouts > ul > li > div > a h1, #admin .admin-stories > ul > li > div > h1 h1, #admin .admin-stories > ul > li > div > a h1 {
         font-weight: 600; }
     #admin .admin-components > ul > li > div > a:hover, #admin .admin-components > ul > li > div > a:focus, #admin .admin-containers > ul > li > div > a:hover, #admin .admin-containers > ul > li > div > a:focus, #admin .admin-scenes > ul > li > div > a:hover, #admin .admin-scenes > ul > li > div > a:focus, #admin .admin-layouts > ul > li > div > a:hover, #admin .admin-layouts > ul > li > div > a:focus, #admin .admin-stories > ul > li > div > a:hover, #admin .admin-stories > ul > li > div > a:focus {
-      background: #a4d9d6;
-      color: #457d7c; }
+      background: #a5d9d7;
+      color: #457e7d; }
       #admin .admin-components > ul > li > div > a:hover + div, #admin .admin-components > ul > li > div > a:focus + div, #admin .admin-containers > ul > li > div > a:hover + div, #admin .admin-containers > ul > li > div > a:focus + div, #admin .admin-scenes > ul > li > div > a:hover + div, #admin .admin-scenes > ul > li > div > a:focus + div, #admin .admin-layouts > ul > li > div > a:hover + div, #admin .admin-layouts > ul > li > div > a:focus + div, #admin .admin-stories > ul > li > div > a:hover + div, #admin .admin-stories > ul > li > div > a:focus + div {
-        border-color: #a4d9d6; }
+        border-color: #a5d9d7; }
     #admin .admin-components > ul > li > div > a:active, #admin .admin-containers > ul > li > div > a:active, #admin .admin-scenes > ul > li > div > a:active, #admin .admin-layouts > ul > li > div > a:active, #admin .admin-stories > ul > li > div > a:active {
-      background: #457d7c;
+      background: #457e7d;
       color: white; }
       #admin .admin-components > ul > li > div > a:active + div, #admin .admin-containers > ul > li > div > a:active + div, #admin .admin-scenes > ul > li > div > a:active + div, #admin .admin-layouts > ul > li > div > a:active + div, #admin .admin-stories > ul > li > div > a:active + div {
-        border-color: #457d7c; }
+        border-color: #457e7d; }
     #admin .admin-components > ul > li > div > a:only-child, #admin .admin-containers > ul > li > div > a:only-child, #admin .admin-scenes > ul > li > div > a:only-child, #admin .admin-layouts > ul > li > div > a:only-child, #admin .admin-stories > ul > li > div > a:only-child {
       border-bottom-left-radius: 2px;
       border-bottom-right-radius: 2px; }
     #admin .admin-components > ul > li > div > h2, #admin .admin-containers > ul > li > div > h2, #admin .admin-scenes > ul > li > div > h2, #admin .admin-layouts > ul > li > div > h2, #admin .admin-stories > ul > li > div > h2 {
       padding: 10px 15px;
-      background: #a4d9d6;
-      color: #457d7c;
+      background: #a5d9d7;
+      color: #457e7d;
       font-size: 16px;
       font-weight: 600;
       text-align: center;
@@ -3284,7 +3285,7 @@
       overflow: hidden;
       background: rgba(43, 50, 52, 0.8);
       position: relative;
-      border: 2px solid #4ab3ae;
+      border: 2px solid #4ab3af;
       border-top: 0;
       height: 200px; }
       #admin .admin-components > ul > li > div > div > *, #admin .admin-containers > ul > li > div > div > *, #admin .admin-scenes > ul > li > div > div > *, #admin .admin-layouts > ul > li > div > div > *, #admin .admin-stories > ul > li > div > div > * {
@@ -3324,7 +3325,7 @@
     -webkit-justify-content: center;
     justify-content: center;
     height: 64px;
-    background: #a4d9d6;
+    background: #a5d9d7;
     width: 100%; }
     #admin .admin-states .admin-states-header h1 {
       color: #40484B;
@@ -3333,7 +3334,7 @@
     #admin .admin-states .admin-states-header div {
       margin-left: 15px;
       padding: 10px 15px;
-      background: #4ab3ae;
+      background: #4ab3af;
       border-radius: 2px;
       color: white;
       font-size: 20px;
@@ -3486,9 +3487,9 @@
       display: flex;
       width: 100%; }
       #admin .admin-states .admin-states-container > ul:first-child, #admin .admin-states .admin-states-container > ul.title {
-        background: #479290; }
+        background: #479391; }
         #admin .admin-states .admin-states-container > ul:first-child li, #admin .admin-states .admin-states-container > ul.title li {
-          background: #479290; }
+          background: #479391; }
           #admin .admin-states .admin-states-container > ul:first-child li h1, #admin .admin-states .admin-states-container > ul.title li h1 {
             font-size: 16px;
             font-weight: 600;
@@ -3541,7 +3542,7 @@
                 right: -1px;
                 height: calc(100% - 20px);
                 width: 2px;
-                background: #a4d9d6; }
+                background: #a5d9d7; }
               #admin .admin-states .admin-states-container > ul:last-child > li > ul > li > span, #admin .admin-states .admin-states-container > ul:last-child > li > ul > li a {
                 -ms-box-orient: horizontal;
                 display: -webkit-box;
@@ -3566,18 +3567,18 @@
                 font-size: 20px;
                 font-weight: 600; }
               #admin .admin-states .admin-states-container > ul:last-child > li > ul > li > span {
-                background: #4ab3ae; }
+                background: #4ab3af; }
               #admin .admin-states .admin-states-container > ul:last-child > li > ul > li a {
                 background: #637074; }
                 #admin .admin-states .admin-states-container > ul:last-child > li > ul > li a:hover, #admin .admin-states .admin-states-container > ul:last-child > li > ul > li a:focus {
-                  background: #4ab3ae; }
+                  background: #4ab3af; }
                 #admin .admin-states .admin-states-container > ul:last-child > li > ul > li a:active {
-                  background: #a4d9d6;
-                  color: #457d7c; }
+                  background: #a5d9d7;
+                  color: #457e7d; }
           #admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) {
             position: relative;
             width: 100%;
-            background: rgba(99, 111, 116, 0.2); }
+            background: rgba(99, 112, 116, 0.2); }
             #admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child):not(:nth-last-child(2)):after {
               border-radius: 1000px;
               content: "";
@@ -3648,11 +3649,11 @@
                   height: 28px;
                   border-radius: 2px; }
                   #admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li a:hover, #admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li a:focus {
-                    background: #4ab3ae;
+                    background: #4ab3af;
                     color: white; }
                   #admin .admin-states .admin-states-container > ul:last-child > li > div:not(:last-child) ul > li a:active {
-                    background: #a4d9d6;
-                    color: #457d7c; }
+                    background: #a5d9d7;
+                    color: #457e7d; }
           #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child {
             width: 100%; }
             #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul {
@@ -3673,7 +3674,7 @@
               justify-content: center;
               width: 100%;
               padding: 7.5px;
-              background: rgba(74, 179, 174, 0.2); }
+              background: rgba(74, 179, 175, 0.2); }
               #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li {
                 padding: 7.5px; }
                 #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li a {
@@ -3684,20 +3685,20 @@
                   font-size: 16px;
                   font-weight: 600; }
                 #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:first-child a {
-                  background: #4ab3ae; }
+                  background: #4ab3af; }
                   #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:first-child a:hover, #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:first-child a:focus {
-                    background: #a4d9d6;
-                    color: #457d7c; }
+                    background: #a5d9d7;
+                    color: #457e7d; }
                   #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:first-child a:active {
-                    background: #457d7c;
+                    background: #457e7d;
                     color: white; }
                 #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:last-child a {
                   background: #7c8a8f; }
                   #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:last-child a:hover, #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:last-child a:focus {
-                    background: #bdc4c6;
-                    color: #5d686c; }
+                    background: #bec5c7;
+                    color: #5e696d; }
                   #admin .admin-states .admin-states-container > ul:last-child > li > div:last-child ul li:last-child a:active {
-                    background: #5d686c;
+                    background: #5e696d;
                     color: white; }
 #admin .admin-action-item-list {
   padding: 7.5px; }
@@ -3730,7 +3731,7 @@
         border-radius: 2px; }
         #admin .admin-action-item-list > ul > li > a:hover, #admin .admin-action-item-list > ul > li > a:focus, #admin .admin-action-item-list > ul > li > div:hover, #admin .admin-action-item-list > ul > li > div:focus {
           color: #50A5DD;
-          background: #edf6fb; }
+          background: #eef6fc; }
         #admin .admin-action-item-list > ul > li > a:nth-child(2), #admin .admin-action-item-list > ul > li > div:nth-child(2) {
           margin-top: 5px;
           padding: 15px;
@@ -3855,20 +3856,20 @@
           border-radius: 2px;
           color: white; }
       #admin .admin-action-item-list > ul > li.type-component > a h2, #admin .admin-action-item-list > ul > li.type-component > div h2 {
-        background: #4ab3ae; }
+        background: #4ab3af; }
       #admin .admin-action-item-list > ul > li.type-reference > a h2, #admin .admin-action-item-list > ul > li.type-reference > div h2 {
-        background: #5cacc1; }
+        background: #5dacc1; }
       #admin .admin-action-item-list > ul > li.type-moodboard > a h2, #admin .admin-action-item-list > ul > li.type-moodboard > div h2 {
-        background: #7092c4; }
+        background: #7193c4; }
       #admin .admin-action-item-list > ul > li.type-tools > a h2, #admin .admin-action-item-list > ul > li.type-tools > div h2 {
-        background: #8187b5; }
+        background: #8287b5; }
       #admin .admin-action-item-list > ul > li.type-prioritized > div a:hover, #admin .admin-action-item-list > ul > li.type-prioritized > div a:focus {
         color: #d3242c !important; }
       #admin .admin-action-item-list > ul > li.type-prioritized > a, #admin .admin-action-item-list > ul > li.type-prioritized > div {
         border-color: #d3242c; }
         #admin .admin-action-item-list > ul > li.type-prioritized > a:hover, #admin .admin-action-item-list > ul > li.type-prioritized > a:focus, #admin .admin-action-item-list > ul > li.type-prioritized > div:hover, #admin .admin-action-item-list > ul > li.type-prioritized > div:focus {
           color: #d3242c;
-          background: #fae9e9; }
+          background: #fbe9ea; }
         #admin .admin-action-item-list > ul > li.type-prioritized > a .priority, #admin .admin-action-item-list > ul > li.type-prioritized > div .priority {
           background: #d3242c; }
       #admin .admin-action-item-list > ul > li.type-completed > div a:hover, #admin .admin-action-item-list > ul > li.type-completed > div a:focus {
@@ -3877,7 +3878,7 @@
         border-color: #43cb9d; }
         #admin .admin-action-item-list > ul > li.type-completed > a:hover, #admin .admin-action-item-list > ul > li.type-completed > a:focus, #admin .admin-action-item-list > ul > li.type-completed > div:hover, #admin .admin-action-item-list > ul > li.type-completed > div:focus {
           color: #43cb9d;
-          background: #ecf9f5; }
+          background: #ecfaf5; }
         #admin .admin-action-item-list > ul > li.type-completed > a .priority, #admin .admin-action-item-list > ul > li.type-completed > div .priority {
           background: #43cb9d; }
       #admin .admin-action-item-list > ul > li.type-future > div a:hover, #admin .admin-action-item-list > ul > li.type-future > div a:focus {
@@ -3889,7 +3890,7 @@
           opacity: 0.5; }
         #admin .admin-action-item-list > ul > li.type-future > a:hover, #admin .admin-action-item-list > ul > li.type-future > a:focus, #admin .admin-action-item-list > ul > li.type-future > div:hover, #admin .admin-action-item-list > ul > li.type-future > div:focus {
           color: #b3bbbe;
-          background: #f7f8f8; }
+          background: #f7f8f9; }
         #admin .admin-action-item-list > ul > li.type-future > a .priority, #admin .admin-action-item-list > ul > li.type-future > div .priority {
           background: #b3bbbe; }
 #admin .admin-action-items h2 {
@@ -4011,3 +4012,5 @@
     stroke: #F6C64E !important; }
   .demo-scene svg.gold [fill*="#"] {
     fill: #F6C64E !important; }
+
+/*# sourceMappingURL=admin.css.map */
