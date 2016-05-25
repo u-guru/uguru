@@ -1,7 +1,5 @@
-@mixin opacity($opacity) {
-  filter: alpha(opacity=$opacity * 100);
-  opacity: $opacity;
-}
+@import '../../../shared/css/scss/partials/mixin';
+
 body, html {
   display: -webkit-box;
   display: -webkit-flex;
@@ -800,14 +798,14 @@ body, html {
   margin: -10px 0 0 -10px;
   border-radius: 50%;
   visibility: hidden;
-  @include opacity(0);
+  opacity: 0;
   z-index: 1000;
   -webkit-transition: opacity .15s, visibility 0s .15s;
   transition: opacity .15s, visibility 0s .15s;
 }
 .pageload-loading.pageload-overlay::after,
 .pageload-loading.pageload-overlay::before {
-  @include opacity(1);
+  opacity: 1;
   visibility: visible;
   -webkit-transition: opacity .3s;
   transition: opacity .3s;

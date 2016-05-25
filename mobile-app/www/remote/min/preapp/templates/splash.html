@@ -1,6 +1,6 @@
 <ion-view id='splash-view' class='bg-charcoal' ng-controller='SplashController as splash'>
-    <ion-content class='relative splash-landing' id='home-splash'>
-        <main class='splash-landing'>
+    <ion-content class='relative'>
+        <main class='splash-landing' id="home-splash">
             <section id='splash-home' class='splash-hero' ng-if='splash.renderView'>
                 <div id='splash-madlib-container' ng-if='splash.state.madlib' ng-controller='SplashMadlibController as madlib' ng-include="img_base + BASE + 'remote/min/preapp/templates/splash.madlib.html'">
                 </div>
