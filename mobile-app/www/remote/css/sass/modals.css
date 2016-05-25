@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* ---------- MODALS & POPUPS */
 .close-popup-link {
   position: absolute;
@@ -215,25 +214,18 @@
           border: 3px solid #40484B; }
       .uguru-popup.guru-mode .uguru-popup-content .guru-logo-container .tour-guru svg {
         background: white; }
-      .uguru-popup.guru-mode .uguru-popup-content .content-wrapper .content-body h2,
-      .uguru-popup.guru-mode .uguru-popup-content .content-wrapper .content-body p {
+      .uguru-popup.guru-mode .uguru-popup-content .content-wrapper .content-body h2, .uguru-popup.guru-mode .uguru-popup-content .content-wrapper .content-body p {
         color: white; }
 
-#confirm-phone-uguru-popup .svg-logo-wrapper svg,
-#confirm-phone-uguru-popup button {
+#confirm-phone-uguru-popup .svg-logo-wrapper svg, #confirm-phone-uguru-popup button {
   background: #9A5BC5 !important; }
 
-#confirm-email-uguru-popup .svg-logo-wrapper svg,
-#confirm-email-uguru-popup button {
+#confirm-email-uguru-popup .svg-logo-wrapper svg, #confirm-email-uguru-popup button {
   background: #50A5DD !important; }
 
-.terms-modal header h1,
-.faq-modal header h1,
-.support-modal header h1 {
+.terms-modal header h1, .faq-modal header h1, .support-modal header h1 {
   color: white; }
-.terms-modal ion-content,
-.faq-modal ion-content,
-.support-modal ion-content {
+.terms-modal ion-content, .faq-modal ion-content, .support-modal ion-content {
   height: calc(100% - 50px);
   margin-top: 50px; }
 
@@ -256,25 +248,21 @@
         text-shadow: none !important; }
   #cards button {
     z-index: 10; }
-  #cards .jp-card.jp-card-visa.jp-card-identified .jp-card-front:before,
-  #cards .jp-card.jp-card-visa.jp-card-identified .jp-card-back:before {
+  #cards .jp-card.jp-card-visa.jp-card-identified .jp-card-front:before, #cards .jp-card.jp-card-visa.jp-card-identified .jp-card-back:before {
     background: #9A5BC5 !important; }
-  #cards .jp-card.jp-card-discover.jp-card-identified .jp-card-front:before,
-  #cards .jp-card.jp-card-discover.jp-card-identified .jp-card-back:before {
+  #cards .jp-card.jp-card-discover.jp-card-identified .jp-card-front:before, #cards .jp-card.jp-card-discover.jp-card-identified .jp-card-back:before {
     background: #8A9EA3 !important; }
   #cards .jp-card.jp-card-discover.jp-card-identified .jp-card-front:after {
     background: #E5753C !important;
     box-shadow: none !important; }
-  #cards .jp-card.jp-card-mastercard.jp-card-identified .jp-card-front:before,
-  #cards .jp-card.jp-card-mastercard.jp-card-identified .jp-card-back:before {
+  #cards .jp-card.jp-card-mastercard.jp-card-identified .jp-card-front:before, #cards .jp-card.jp-card-mastercard.jp-card-identified .jp-card-back:before {
     background: #55A4B7 !important; }
   #cards .card-list-item {
     width: 100%; }
 
 #edit-cards {
   height: calc(100% - 114px); }
-  #edit-cards .jp-card .jp-card-front,
-  #edit-cards .jp-card .jp-card-back {
+  #edit-cards .jp-card .jp-card-front, #edit-cards .jp-card .jp-card-back {
     background: #757575 !important; }
   #edit-cards .card-modal-wrapper-0 {
     padding: 0 15px 15px; }
@@ -400,6 +388,7 @@
   #contact-type #contact-type-list li > div input + span > span {
     height: 30%;
     background-size: 30px 30px; } }
+
 @media screen and (min-height: 667px) {
   #contact-type #contact-type-list li > div input + span label {
     padding: 15px 0 40%;
@@ -409,6 +398,7 @@
   #contact-type #contact-type-list li > div input + span > span {
     height: 40%;
     background-size: 40px 40px; } }
+
 .category-skills-modal {
   top: calc(100% / 3);
   overflow: visible; }
@@ -444,41 +434,32 @@
         height: 100%;
         overflow: auto; }
 
-#experience-modal,
-#guru-introduction-modal {
+#experience-modal, #guru-introduction-modal {
   position: absolute;
   top: 0; }
-  #experience-modal .main,
-  #guru-introduction-modal .main {
+  #experience-modal .main, #guru-introduction-modal .main {
     height: calc(100% - 114px); }
-    #experience-modal .main .ugrid-3,
-    #guru-introduction-modal .main .ugrid-3 {
+    #experience-modal .main .ugrid-3, #guru-introduction-modal .main .ugrid-3 {
       margin-top: -10px;
       padding-bottom: 15px;
       font-size: 16px;
       font-weight: 400; }
-      #experience-modal .main .ugrid-3 li,
-      #guru-introduction-modal .main .ugrid-3 li {
+      #experience-modal .main .ugrid-3 li, #guru-introduction-modal .main .ugrid-3 li {
         padding: 0 15px; }
-      #experience-modal .main .ugrid-3 li:nth-child(2),
-      #guru-introduction-modal .main .ugrid-3 li:nth-child(2) {
+      #experience-modal .main .ugrid-3 li:nth-child(2), #guru-introduction-modal .main .ugrid-3 li:nth-child(2) {
         text-align: center; }
-      #experience-modal .main .ugrid-3 li:nth-child(3),
-      #guru-introduction-modal .main .ugrid-3 li:nth-child(3) {
+      #experience-modal .main .ugrid-3 li:nth-child(3), #guru-introduction-modal .main .ugrid-3 li:nth-child(3) {
         text-align: right; }
-    #experience-modal .main input[type=range],
-    #guru-introduction-modal .main input[type=range] {
+    #experience-modal .main input[type=range], #guru-introduction-modal .main input[type=range] {
       padding: 105px 15px 20px;
       height: 50px; }
-      #experience-modal .main input[type=range]:-webkit-slider-thumb,
-      #guru-introduction-modal .main input[type=range]:-webkit-slider-thumb {
+      #experience-modal .main input[type=range]:-webkit-slider-thumb, #guru-introduction-modal .main input[type=range]:-webkit-slider-thumb {
         position: relative;
         border-radius: 0;
         margin-top: -80px;
         width: 40px;
         height: 40px; }
-        #experience-modal .main input[type=range]:-webkit-slider-thumb:before,
-        #guru-introduction-modal .main input[type=range]:-webkit-slider-thumb:before {
+        #experience-modal .main input[type=range]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range]:-webkit-slider-thumb:before {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -490,8 +471,7 @@
           content: "0";
           font-size: 20px;
           font-weight: 600; }
-        #experience-modal .main input[type=range]:-webkit-slider-thumb:after,
-        #guru-introduction-modal .main input[type=range]:-webkit-slider-thumb:after {
+        #experience-modal .main input[type=range]:-webkit-slider-thumb:after, #guru-introduction-modal .main input[type=range]:-webkit-slider-thumb:after {
           content: "";
           display: block;
           position: absolute;
@@ -501,15 +481,13 @@
           height: 0;
           border: 20px solid transparent;
           border-top-color: white; }
-      #experience-modal .main input[type=range]:-moz-range-thumb,
-      #guru-introduction-modal .main input[type=range]:-moz-range-thumb {
+      #experience-modal .main input[type=range]:-moz-range-thumb, #guru-introduction-modal .main input[type=range]:-moz-range-thumb {
         position: relative;
         border-radius: 0;
         margin-top: -80px;
         width: 40px;
         height: 40px; }
-        #experience-modal .main input[type=range]:-moz-range-thumb:before,
-        #guru-introduction-modal .main input[type=range]:-moz-range-thumb:before {
+        #experience-modal .main input[type=range]:-moz-range-thumb:before, #guru-introduction-modal .main input[type=range]:-moz-range-thumb:before {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -521,8 +499,7 @@
           content: "0";
           font-size: 20px;
           font-weight: 600; }
-        #experience-modal .main input[type=range]:-moz-range-thumb:after,
-        #guru-introduction-modal .main input[type=range]:-moz-range-thumb:after {
+        #experience-modal .main input[type=range]:-moz-range-thumb:after, #guru-introduction-modal .main input[type=range]:-moz-range-thumb:after {
           content: "";
           display: block;
           position: absolute;
@@ -532,15 +509,13 @@
           height: 0;
           border: 20px solid transparent;
           border-top-color: white; }
-      #experience-modal .main input[type=range]:-ms-range-thumb,
-      #guru-introduction-modal .main input[type=range]:-ms-range-thumb {
+      #experience-modal .main input[type=range]:-ms-range-thumb, #guru-introduction-modal .main input[type=range]:-ms-range-thumb {
         position: relative;
         border-radius: 0;
         margin-top: -80px;
         width: 40px;
         height: 40px; }
-        #experience-modal .main input[type=range]:-ms-range-thumb:before,
-        #guru-introduction-modal .main input[type=range]:-ms-range-thumb:before {
+        #experience-modal .main input[type=range]:-ms-range-thumb:before, #guru-introduction-modal .main input[type=range]:-ms-range-thumb:before {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -552,8 +527,7 @@
           content: "0";
           font-size: 20px;
           font-weight: 600; }
-        #experience-modal .main input[type=range]:-ms-range-thumb:after,
-        #guru-introduction-modal .main input[type=range]:-ms-range-thumb:after {
+        #experience-modal .main input[type=range]:-ms-range-thumb:after, #guru-introduction-modal .main input[type=range]:-ms-range-thumb:after {
           content: "";
           display: block;
           position: absolute;
@@ -563,50 +537,35 @@
           height: 0;
           border: 20px solid transparent;
           border-top-color: white; }
-      #experience-modal .main input[type=range][value="0"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="0"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="0"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="0"]:-webkit-slider-thumb:before {
         content: "‹ 1"; }
-      #experience-modal .main input[type=range][value="1"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="1"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="1"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="1"]:-webkit-slider-thumb:before {
         content: "1"; }
-      #experience-modal .main input[type=range][value="2"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="2"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="2"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="2"]:-webkit-slider-thumb:before {
         content: "2"; }
-      #experience-modal .main input[type=range][value="3"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="3"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="3"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="3"]:-webkit-slider-thumb:before {
         content: "3"; }
-      #experience-modal .main input[type=range][value="4"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="4"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="4"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="4"]:-webkit-slider-thumb:before {
         content: "4"; }
-      #experience-modal .main input[type=range][value="5"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="5"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="5"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="5"]:-webkit-slider-thumb:before {
         content: "5"; }
-      #experience-modal .main input[type=range][value="6"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="6"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="6"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="6"]:-webkit-slider-thumb:before {
         content: "6"; }
-      #experience-modal .main input[type=range][value="7"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="7"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="7"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="7"]:-webkit-slider-thumb:before {
         content: "7"; }
-      #experience-modal .main input[type=range][value="8"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="8"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="8"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="8"]:-webkit-slider-thumb:before {
         content: "8"; }
-      #experience-modal .main input[type=range][value="9"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="9"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="9"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="9"]:-webkit-slider-thumb:before {
         content: "9"; }
-      #experience-modal .main input[type=range][value="10"]:-webkit-slider-thumb:before,
-      #guru-introduction-modal .main input[type=range][value="10"]:-webkit-slider-thumb:before {
+      #experience-modal .main input[type=range][value="10"]:-webkit-slider-thumb:before, #guru-introduction-modal .main input[type=range][value="10"]:-webkit-slider-thumb:before {
         content: "10+"; }
-    #experience-modal .main #exp-input,
-    #guru-introduction-modal .main #exp-input {
+    #experience-modal .main #exp-input, #guru-introduction-modal .main #exp-input {
       height: calc(100% - 278px); }
-    #experience-modal .main #guru-intro-input,
-    #guru-introduction-modal .main #guru-intro-input {
+    #experience-modal .main #guru-intro-input, #guru-introduction-modal .main #guru-intro-input {
       height: 100%; }
-    #experience-modal .main #exp-input.removable,
-    #guru-introduction-modal .main #exp-input.removable {
+    #experience-modal .main #exp-input.removable, #guru-introduction-modal .main #exp-input.removable {
       height: calc(100% - 342px); }
-    #experience-modal .main textarea,
-    #guru-introduction-modal .main textarea {
+    #experience-modal .main textarea, #guru-introduction-modal .main textarea {
       font-size: 18px;
       height: 100%;
       resize: none; }
@@ -615,6 +574,7 @@
   #experience-modal .main textarea {
     font-size: 20px;
     height: 100%; } }
+
 .signup-modal header.third {
   background: #69B3A5; }
   .signup-modal header.third:before {
@@ -724,7 +684,7 @@
       .signup-modal #account-form #social-login button.bg-shamrock:active {
         background: #9ccdc3; }
       .signup-modal #account-form #social-login button.bg-fb:active {
-        background: #5f7ec1; }
+        background: #5f7fc1; }
 .signup-modal .account-signup #account-form {
   background: #F1F1F1; }
   .signup-modal .account-signup #account-form a {
@@ -746,9 +706,7 @@
   .terms-modal h4 {
     font-size: 16px;
     line-height: 1.25; }
-  .terms-modal p,
-  .terms-modal ol,
-  .terms-modal ul {
+  .terms-modal p, .terms-modal ol, .terms-modal ul {
     font-size: 14px;
     margin: 10px 0;
     line-height: 1.25; }
@@ -982,8 +940,7 @@
   font-weight: 300; }
   .request-modal .request-content input:not([type="text"]) {
     cursor: pointer; }
-  .request-modal .request-content input[type="text"],
-  .request-modal .request-content textarea {
+  .request-modal .request-content input[type="text"], .request-modal .request-content textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -997,36 +954,27 @@
     color: #40484B;
     font-size: 18px;
     font-weight: 300; }
-    .request-modal .request-content input[type="text"]:-ms-expand,
-    .request-modal .request-content textarea:-ms-expand {
+    .request-modal .request-content input[type="text"]:-ms-expand, .request-modal .request-content textarea:-ms-expand {
       display: none; }
-    .request-modal .request-content input[type="text"]:-webkit-input-placeholder,
-    .request-modal .request-content textarea:-webkit-input-placeholder {
+    .request-modal .request-content input[type="text"]:-webkit-input-placeholder, .request-modal .request-content textarea:-webkit-input-placeholder {
       font-weight: 300 !important;
       color: rgba(64, 72, 75, 0.5); }
-    .request-modal .request-content input[type="text"]:-moz-placeholder,
-    .request-modal .request-content textarea:-moz-placeholder {
+    .request-modal .request-content input[type="text"]:-moz-placeholder, .request-modal .request-content textarea:-moz-placeholder {
       font-weight: 300 !important;
       color: rgba(64, 72, 75, 0.5); }
-    .request-modal .request-content input[type="text"]:-moz-placeholder,
-    .request-modal .request-content textarea:-moz-placeholder {
+    .request-modal .request-content input[type="text"]:-moz-placeholder, .request-modal .request-content textarea:-moz-placeholder {
       font-weight: 300 !important;
       color: rgba(64, 72, 75, 0.5); }
-    .request-modal .request-content input[type="text"]:-ms-input-placeholder,
-    .request-modal .request-content textarea:-ms-input-placeholder {
+    .request-modal .request-content input[type="text"]:-ms-input-placeholder, .request-modal .request-content textarea:-ms-input-placeholder {
       font-weight: 300 !important;
       color: rgba(64, 72, 75, 0.5); }
-    .request-modal .request-content input[type="text"]:focus:-webkit-input-placeholder,
-    .request-modal .request-content textarea:focus:-webkit-input-placeholder {
+    .request-modal .request-content input[type="text"]:focus:-webkit-input-placeholder, .request-modal .request-content textarea:focus:-webkit-input-placeholder {
       color: #40484B; }
-    .request-modal .request-content input[type="text"]:focus:-moz-placeholder,
-    .request-modal .request-content textarea:focus:-moz-placeholder {
+    .request-modal .request-content input[type="text"]:focus:-moz-placeholder, .request-modal .request-content textarea:focus:-moz-placeholder {
       color: #40484B; }
-    .request-modal .request-content input[type="text"]:focus:-moz-placeholder,
-    .request-modal .request-content textarea:focus:-moz-placeholder {
+    .request-modal .request-content input[type="text"]:focus:-moz-placeholder, .request-modal .request-content textarea:focus:-moz-placeholder {
       color: #40484B; }
-    .request-modal .request-content input[type="text"]:focus:-ms-input-placeholder,
-    .request-modal .request-content textarea:focus:-ms-input-placeholder {
+    .request-modal .request-content input[type="text"]:focus:-ms-input-placeholder, .request-modal .request-content textarea:focus:-ms-input-placeholder {
       color: #40484B; }
   .request-modal .request-content .request-course input {
     font-size: 24px;
@@ -1079,8 +1027,6 @@
       transform: translate(-50%, -50%);
       /*filter: alpha(opacity=$opacity * 100);*/
       opacity: 0.15;
-      -webkit-filter: grayscale(1);
-      filter: grayscale(1);
       content: "";
       display: block;
       position: absolute;
@@ -1126,12 +1072,10 @@
         background-size: 30px 30px; }
       .request-modal .request-content .request-time .request-time-urgent li > span input:not(:checked) + span {
         background-color: #f8f8f8; }
-  .request-modal .request-content .request-time .request-time-needed,
-  .request-modal .request-content .request-time .request-time-avail {
+  .request-modal .request-content .request-time .request-time-needed, .request-modal .request-content .request-time .request-time-avail {
     border-left: 2px solid #F1F1F1;
     border-right: 2px solid #F1F1F1; }
-    .request-modal .request-content .request-time .request-time-needed h2,
-    .request-modal .request-content .request-time .request-time-avail h2 {
+    .request-modal .request-content .request-time .request-time-needed h2, .request-modal .request-content .request-time .request-time-avail h2 {
       font-weight: 600; }
   .request-modal .request-content .request-time .request-time-needed ul {
     border-top: 1px solid #F1F1F1;
@@ -1337,6 +1281,7 @@
 @media screen and (min-width: 375px) {
   .request-modal .request-content .request-time .request-time-needed ul li div {
     padding: 10px 0; } }
+
 .student-courses-view #course {
   background: white; }
   .student-courses-view #course header {
@@ -1381,11 +1326,9 @@
         padding-left: 15px; }
     .mobile-mode .sidebar-layout-list li div {
       width: calc(100% - 60px); }
-      .mobile-mode .sidebar-layout-list li div h3,
-      .mobile-mode .sidebar-layout-list li div span {
+      .mobile-mode .sidebar-layout-list li div h3, .mobile-mode .sidebar-layout-list li div span {
         font-weight: 400; }
-        .mobile-mode .sidebar-layout-list li div h3 b,
-        .mobile-mode .sidebar-layout-list li div span b {
+        .mobile-mode .sidebar-layout-list li div h3 b, .mobile-mode .sidebar-layout-list li div span b {
           font-weight: 600; }
       .mobile-mode .sidebar-layout-list li div h3 {
         font-size: 22px; }
@@ -1462,7 +1405,7 @@
     .mobile-balance-modal .main .sidebar-layout-list span.transaction-date {
       font-weight: 700;
       font-size: 16px;
-      opacity: .5; }
+      opacity: 0.5; }
 .mobile-balance-modal #balance-stats {
   text-align: center;
   padding: 1px; }
@@ -1678,6 +1621,7 @@
         height: 60px; }
   .credibility-view #credibility-content-wrapper .credit-content-slide > div .credit-body p {
     font-size: 22px; } }
+
 @media screen and (min-width: 414px) {
   .credibility-view #credit-slider ul li {
     font-size: 18px; }
@@ -1687,16 +1631,17 @@
       .credibility-view #credit-slider ul li a .credit-icon {
         width: 70px;
         height: 70px; } }
+
 .mobile-messages-container {
   /*#userMessagesView {*/
   /* allows the bar-footer to be elastic /*
-  	/* optionally set a max-height */
+		/* optionally set a max-height */
   /* maxlength on the textarea will prevent /*
-  	/* it from getting too large also */
+		/* it from getting too large also */
   /* allows the bar-footer to be elastic /*
-  /* optionally set a max-height */
+	/* optionally set a max-height */
   /* maxlength on the textarea will prevent /*
-  /* it from getting too large also */ }
+	/* it from getting too large also */ }
   .mobile-messages-container #messenger-content .header-close {
     width: 50% !important; }
   .mobile-messages-container #messenger-content header {
@@ -1787,222 +1732,127 @@
   .mobile-messages-container .item-input-wrapper textarea {
     width: 100%;
     border-radius: 12px; }
-  .mobile-messages-container #desktop-messaging,
-  .mobile-messages-container #messenger-content,
-  .mobile-messages-container .guru-message-container {
+  .mobile-messages-container #desktop-messaging, .mobile-messages-container #messenger-content, .mobile-messages-container .guru-message-container {
     /* fixes an ios bug bear */
     /* add this to keep your footer buttons down
-    at the bottom as the textarea resizes */ }
-    .mobile-messages-container #desktop-messaging #messenger-sidebar ul li a span.messenger-icon img,
-    .mobile-messages-container #messenger-content #messenger-sidebar ul li a span.messenger-icon img,
-    .mobile-messages-container .guru-message-container #messenger-sidebar ul li a span.messenger-icon img {
+		at the bottom as the textarea resizes */ }
+    .mobile-messages-container #desktop-messaging #messenger-sidebar ul li a span.messenger-icon img, .mobile-messages-container #messenger-content #messenger-sidebar ul li a span.messenger-icon img, .mobile-messages-container .guru-message-container #messenger-sidebar ul li a span.messenger-icon img {
       width: 50px;
       height: 50px;
       border-radius: 1000px; }
-    .mobile-messages-container #desktop-messaging .message-send-button,
-    .mobile-messages-container #messenger-content .message-send-button,
-    .mobile-messages-container .guru-message-container .message-send-button {
+    .mobile-messages-container #desktop-messaging .message-send-button, .mobile-messages-container #messenger-content .message-send-button, .mobile-messages-container .guru-message-container .message-send-button {
       position: absolute;
       background: #69B3A5;
       width: 10%;
       top: 0;
       right: 0; }
-    .mobile-messages-container #desktop-messaging .bar-footer,
-    .mobile-messages-container #messenger-content .bar-footer,
-    .mobile-messages-container .guru-message-container .bar-footer {
+    .mobile-messages-container #desktop-messaging .bar-footer, .mobile-messages-container #messenger-content .bar-footer, .mobile-messages-container .guru-message-container .bar-footer {
       overflow: visible !important; }
-    .mobile-messages-container #desktop-messaging .bar-footer textarea,
-    .mobile-messages-container #messenger-content .bar-footer textarea,
-    .mobile-messages-container .guru-message-container .bar-footer textarea {
+    .mobile-messages-container #desktop-messaging .bar-footer textarea, .mobile-messages-container #messenger-content .bar-footer textarea, .mobile-messages-container .guru-message-container .bar-footer textarea {
       resize: none;
       height: 25px; }
-    .mobile-messages-container #desktop-messaging button.ion-android-send,
-    .mobile-messages-container #messenger-content button.ion-android-send,
-    .mobile-messages-container .guru-message-container button.ion-android-send {
+    .mobile-messages-container #desktop-messaging button.ion-android-send, .mobile-messages-container #messenger-content button.ion-android-send, .mobile-messages-container .guru-message-container button.ion-android-send {
       padding-top: 2px; }
-    .mobile-messages-container #desktop-messaging .footer-btn-wrap,
-    .mobile-messages-container #messenger-content .footer-btn-wrap,
-    .mobile-messages-container .guru-message-container .footer-btn-wrap {
+    .mobile-messages-container #desktop-messaging .footer-btn-wrap, .mobile-messages-container #messenger-content .footer-btn-wrap, .mobile-messages-container .guru-message-container .footer-btn-wrap {
       position: relative;
       height: 100%;
       width: 50px;
       top: 0; }
-      .mobile-messages-container #desktop-messaging .footer-btn-wrap button,
-      .mobile-messages-container #messenger-content .footer-btn-wrap button,
-      .mobile-messages-container .guru-message-container .footer-btn-wrap button {
+      .mobile-messages-container #desktop-messaging .footer-btn-wrap button, .mobile-messages-container #messenger-content .footer-btn-wrap button, .mobile-messages-container .guru-message-container .footer-btn-wrap button {
         width: 40px;
         margin-left: 10px;
         height: 100%;
         padding: 0;
         background: transparent; }
-        .mobile-messages-container #desktop-messaging .footer-btn-wrap button svg,
-        .mobile-messages-container #messenger-content .footer-btn-wrap button svg,
-        .mobile-messages-container .guru-message-container .footer-btn-wrap button svg {
+        .mobile-messages-container #desktop-messaging .footer-btn-wrap button svg, .mobile-messages-container #messenger-content .footer-btn-wrap button svg, .mobile-messages-container .guru-message-container .footer-btn-wrap button svg {
           fill: none;
           stroke: white;
           stroke-width: 3px;
           stroke-linecap: round;
           stroke-linejoin: round;
           height: 100%; }
-    .mobile-messages-container #desktop-messaging .footer-btn,
-    .mobile-messages-container #messenger-content .footer-btn,
-    .mobile-messages-container .guru-message-container .footer-btn {
+    .mobile-messages-container #desktop-messaging .footer-btn, .mobile-messages-container #messenger-content .footer-btn, .mobile-messages-container .guru-message-container .footer-btn {
       position: absolute !important;
       bottom: 0; }
-    .mobile-messages-container #desktop-messaging img.profile-pic,
-    .mobile-messages-container #messenger-content img.profile-pic,
-    .mobile-messages-container .guru-message-container img.profile-pic {
+    .mobile-messages-container #desktop-messaging img.profile-pic, .mobile-messages-container #messenger-content img.profile-pic, .mobile-messages-container .guru-message-container img.profile-pic {
       border-radius: 1000px;
       width: 40px;
       height: 40px;
       position: absolute;
       bottom: 10px; }
-    .mobile-messages-container #desktop-messaging img.profile-pic.left,
-    .mobile-messages-container #messenger-content img.profile-pic.left,
-    .mobile-messages-container .guru-message-container img.profile-pic.left {
+    .mobile-messages-container #desktop-messaging img.profile-pic.left, .mobile-messages-container #messenger-content img.profile-pic.left, .mobile-messages-container .guru-message-container img.profile-pic.left {
       left: 10px; }
-    .mobile-messages-container #desktop-messaging img.profile-pic.right,
-    .mobile-messages-container #messenger-content img.profile-pic.right,
-    .mobile-messages-container .guru-message-container img.profile-pic.right {
+    .mobile-messages-container #desktop-messaging img.profile-pic.right, .mobile-messages-container #messenger-content img.profile-pic.right, .mobile-messages-container .guru-message-container img.profile-pic.right {
       right: 10px; }
-    .mobile-messages-container #desktop-messaging .ion-email,
-    .mobile-messages-container #messenger-content .ion-email,
-    .mobile-messages-container .guru-message-container .ion-email {
+    .mobile-messages-container #desktop-messaging .ion-email, .mobile-messages-container #messenger-content .ion-email, .mobile-messages-container .guru-message-container .ion-email {
       float: right;
       font-size: 32px;
       vertical-align: middle; }
-    .mobile-messages-container #desktop-messaging .message,
-    .mobile-messages-container #messenger-content .message,
-    .mobile-messages-container .guru-message-container .message {
+    .mobile-messages-container #desktop-messaging .message, .mobile-messages-container #messenger-content .message, .mobile-messages-container .guru-message-container .message {
       font-size: 14px; }
-    .mobile-messages-container #desktop-messaging .message-detail,
-    .mobile-messages-container #messenger-content .message-detail,
-    .mobile-messages-container .guru-message-container .message-detail {
+    .mobile-messages-container #desktop-messaging .message-detail, .mobile-messages-container #messenger-content .message-detail, .mobile-messages-container .guru-message-container .message-detail {
       white-space: nowrap;
       font-size: 14px; }
-    .mobile-messages-container #desktop-messaging .bar.item-input-inset .item-input-wrapper input,
-    .mobile-messages-container #messenger-content .bar.item-input-inset .item-input-wrapper input,
-    .mobile-messages-container .guru-message-container .bar.item-input-inset .item-input-wrapper input {
+    .mobile-messages-container #desktop-messaging .bar.item-input-inset .item-input-wrapper input, .mobile-messages-container #messenger-content .bar.item-input-inset .item-input-wrapper input, .mobile-messages-container .guru-message-container .bar.item-input-inset .item-input-wrapper input {
       width: 100% !important; }
-    .mobile-messages-container #desktop-messaging .message-wrapper,
-    .mobile-messages-container #messenger-content .message-wrapper,
-    .mobile-messages-container .guru-message-container .message-wrapper {
+    .mobile-messages-container #desktop-messaging .message-wrapper, .mobile-messages-container #messenger-content .message-wrapper, .mobile-messages-container .guru-message-container .message-wrapper {
       position: relative; }
-    .mobile-messages-container #desktop-messaging .message-wrapper:last-child,
-    .mobile-messages-container #messenger-content .message-wrapper:last-child,
-    .mobile-messages-container .guru-message-container .message-wrapper:last-child {
+    .mobile-messages-container #desktop-messaging .message-wrapper:last-child, .mobile-messages-container #messenger-content .message-wrapper:last-child, .mobile-messages-container .guru-message-container .message-wrapper:last-child {
       margin-bottom: 10px; }
-    .mobile-messages-container #desktop-messaging .chat-bubble,
-    .mobile-messages-container #messenger-content .chat-bubble,
-    .mobile-messages-container .guru-message-container .chat-bubble {
+    .mobile-messages-container #desktop-messaging .chat-bubble, .mobile-messages-container #messenger-content .chat-bubble, .mobile-messages-container .guru-message-container .chat-bubble {
       border-radius: 5px;
       display: inline-block;
       padding: 10px 18px;
       position: relative;
       margin: 10px;
       max-width: 80%; }
-    .mobile-messages-container #desktop-messaging .chat-bubble:before,
-    .mobile-messages-container #messenger-content .chat-bubble:before,
-    .mobile-messages-container .guru-message-container .chat-bubble:before {
+    .mobile-messages-container #desktop-messaging .chat-bubble:before, .mobile-messages-container #messenger-content .chat-bubble:before, .mobile-messages-container .guru-message-container .chat-bubble:before {
       content: "\00a0";
       display: block;
       height: 16px;
       width: 9px;
       position: absolute;
       bottom: -7.5px; }
-    .mobile-messages-container #desktop-messaging .chat-bubble.left,
-    .mobile-messages-container #messenger-content .chat-bubble.left,
-    .mobile-messages-container .guru-message-container .chat-bubble.left {
+    .mobile-messages-container #desktop-messaging .chat-bubble.left, .mobile-messages-container #messenger-content .chat-bubble.left, .mobile-messages-container .guru-message-container .chat-bubble.left {
       background-color: #F1F1F1;
       float: left;
       margin-left: 55px; }
-    .mobile-messages-container #desktop-messaging .chat-bubble.left:before,
-    .mobile-messages-container #messenger-content .chat-bubble.left:before,
-    .mobile-messages-container .guru-message-container .chat-bubble.left:before {
+    .mobile-messages-container #desktop-messaging .chat-bubble.left:before, .mobile-messages-container #messenger-content .chat-bubble.left:before, .mobile-messages-container .guru-message-container .chat-bubble.left:before {
       background-color: #F1F1F1;
       left: 10px;
       -webkit-transform: rotate(70deg) skew(5deg); }
-    .mobile-messages-container #desktop-messaging .chat-bubble.right,
-    .mobile-messages-container #messenger-content .chat-bubble.right,
-    .mobile-messages-container .guru-message-container .chat-bubble.right {
+    .mobile-messages-container #desktop-messaging .chat-bubble.right, .mobile-messages-container #messenger-content .chat-bubble.right, .mobile-messages-container .guru-message-container .chat-bubble.right {
       background-color: #55A4B7;
       color: white;
       float: right;
       margin-right: 55px; }
-    .mobile-messages-container #desktop-messaging .chat-bubble.right:before,
-    .mobile-messages-container #messenger-content .chat-bubble.right:before,
-    .mobile-messages-container .guru-message-container .chat-bubble.right:before {
+    .mobile-messages-container #desktop-messaging .chat-bubble.right:before, .mobile-messages-container #messenger-content .chat-bubble.right:before, .mobile-messages-container .guru-message-container .chat-bubble.right:before {
       background-color: #55A4B7;
       right: 10px;
       -webkit-transform: rotate(118deg) skew(-5deg); }
-    .mobile-messages-container #desktop-messaging .chat-bubble.right a.autolinker,
-    .mobile-messages-container #messenger-content .chat-bubble.right a.autolinker,
-    .mobile-messages-container .guru-message-container .chat-bubble.right a.autolinker {
+    .mobile-messages-container #desktop-messaging .chat-bubble.right a.autolinker, .mobile-messages-container #messenger-content .chat-bubble.right a.autolinker, .mobile-messages-container .guru-message-container .chat-bubble.right a.autolinker {
       color: white;
       font-weight: bold; }
-    .mobile-messages-container #desktop-messaging .user-messages-top-icon,
-    .mobile-messages-container #messenger-content .user-messages-top-icon,
-    .mobile-messages-container .guru-message-container .user-messages-top-icon {
+    .mobile-messages-container #desktop-messaging .user-messages-top-icon, .mobile-messages-container #messenger-content .user-messages-top-icon, .mobile-messages-container .guru-message-container .user-messages-top-icon {
       font-size: 28px;
       display: inline-block;
       vertical-align: middle;
       position: relative;
       top: -3px;
       right: 5px; }
-    .mobile-messages-container #desktop-messaging .msg-header-username,
-    .mobile-messages-container #messenger-content .msg-header-username,
-    .mobile-messages-container .guru-message-container .msg-header-username {
+    .mobile-messages-container #desktop-messaging .msg-header-username, .mobile-messages-container #messenger-content .msg-header-username, .mobile-messages-container .guru-message-container .msg-header-username {
       display: inline-block;
       vertical-align: middle;
       position: relative;
       top: -3px; }
-    .mobile-messages-container #desktop-messaging input,
-    .mobile-messages-container #desktop-messaging textarea,
-    .mobile-messages-container #desktop-messaging .item-input,
-    .mobile-messages-container #desktop-messaging .item-input-wrapper,
-    .mobile-messages-container #messenger-content input,
-    .mobile-messages-container #messenger-content textarea,
-    .mobile-messages-container #messenger-content .item-input,
-    .mobile-messages-container #messenger-content .item-input-wrapper,
-    .mobile-messages-container .guru-message-container input,
-    .mobile-messages-container .guru-message-container textarea,
-    .mobile-messages-container .guru-message-container .item-input,
-    .mobile-messages-container .guru-message-container .item-input-wrapper {
+    .mobile-messages-container #desktop-messaging input, .mobile-messages-container #desktop-messaging textarea, .mobile-messages-container #desktop-messaging .item-input, .mobile-messages-container #desktop-messaging .item-input-wrapper, .mobile-messages-container #messenger-content input, .mobile-messages-container #messenger-content textarea, .mobile-messages-container #messenger-content .item-input, .mobile-messages-container #messenger-content .item-input-wrapper, .mobile-messages-container .guru-message-container input, .mobile-messages-container .guru-message-container textarea, .mobile-messages-container .guru-message-container .item-input, .mobile-messages-container .guru-message-container .item-input-wrapper {
       background-color: #F1F1F1 !important; }
-    .mobile-messages-container #desktop-messaging .bold,
-    .mobile-messages-container #messenger-content .bold,
-    .mobile-messages-container .guru-message-container .bold {
+    .mobile-messages-container #desktop-messaging .bold, .mobile-messages-container #messenger-content .bold, .mobile-messages-container .guru-message-container .bold {
       font-weight: bold; }
-    .mobile-messages-container #desktop-messaging .cf,
-    .mobile-messages-container #messenger-content .cf,
-    .mobile-messages-container .guru-message-container .cf {
+    .mobile-messages-container #desktop-messaging .cf, .mobile-messages-container #messenger-content .cf, .mobile-messages-container .guru-message-container .cf {
       clear: both !important; }
-    .mobile-messages-container #desktop-messaging a.autolinker,
-    .mobile-messages-container #messenger-content a.autolinker,
-    .mobile-messages-container .guru-message-container a.autolinker {
+    .mobile-messages-container #desktop-messaging a.autolinker, .mobile-messages-container #messenger-content a.autolinker, .mobile-messages-container .guru-message-container a.autolinker {
       color: #55A4B7;
       text-decoration: none; }
   .mobile-messages-container body.platform-ios .mobile-messages-container #message-container {
     height: calc(100% - 120px) !important; }
-
-/*# sourceMappingURL=modals.css.map */
-
-/*# sourceMappingURL=maps/modals.css.map */
-
-/*# sourceMappingURL=maps/modals.css.map */
-
-/*# sourceMappingURL=maps/modals.css.map */
-
-/*# sourceMappingURL=maps/modals.css.map */
-
-/*# sourceMappingURL=maps/modals.css.map */
-
-/*# sourceMappingURL=maps/modals.css.map */
-
-/*# sourceMappingURL=maps/modals.css.map */
-
-/*# sourceMappingURL=maps/modals.css.map */
-
-/*# sourceMappingURL=maps/modals.css.map */
-
-/*# sourceMappingURL=maps/modals.css.map */

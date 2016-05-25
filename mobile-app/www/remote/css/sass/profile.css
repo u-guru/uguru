@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* ---------- NEW PROFILE STYLES */
 .pf-container {
   background: #40484B;
@@ -629,6 +628,7 @@
         padding: 0 !important; }
         .pf-container:not(.mobile) .pf-modal.single .pf-modal-gallery li figure {
           min-height: 500px !important; } }
+
 /* ---------- PROFILE STYLES */
 .pf-banner {
   display: block;
@@ -806,7 +806,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #467068; }
+  background: #467067; }
 
 .pf-textarea-container .pf-header-desc {
   padding: 0 5px;
@@ -871,6 +871,7 @@
     display: block; }
   .pf-contact.pf-contact-mobile {
     display: none; } }
+
 .pf-url {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1330,7 +1331,7 @@
   .pf-type .pf-list button.chip:active, .pf-type .pf-list button.chip.activated {
     /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1;
-    background: #add5ce; }
+    background: #add5cd; }
 .pf-type .pf-list .pf-list-desc {
   display: none;
   width: 100%;
@@ -1394,7 +1395,7 @@
     justify-content: center;
     height: 48px;
     border: 0;
-    background: #576267;
+    background: #576367;
     padding: 0 15px;
     color: white;
     font-size: 28px;
@@ -2009,27 +2010,27 @@
     .pf-type .pf-links li .bg-fb {
       background: #3b5998 !important; }
       .pf-type .pf-links li .bg-fb:hover, .pf-type .pf-links li .bg-fb:focus {
-        background: #5f7ec1 !important; }
+        background: #5f7fc1 !important; }
       .pf-type .pf-links li .bg-fb:active {
-        background: #344e86 !important; }
+        background: #344f86 !important; }
     .pf-type .pf-links li .bg-li {
       background: #007bb6 !important; }
       .pf-type .pf-links li .bg-li:hover, .pf-type .pf-links li .bg-li:focus {
-        background: #008cd0 !important; }
+        background: #008ed0 !important; }
       .pf-type .pf-links li .bg-li:active {
-        background: #006a9d !important; }
+        background: #006b9d !important; }
     .pf-type .pf-links li .bg-in {
       background: #517fa4 !important; }
       .pf-type .pf-links li .bg-in:hover, .pf-type .pf-links li .bg-in:focus {
-        background: #7098b8 !important; }
+        background: #7099b8 !important; }
       .pf-type .pf-links li .bg-in:active {
-        background: #497293 !important; }
+        background: #497393 !important; }
     .pf-type .pf-links li .bg-tw {
       background: #00aced !important; }
       .pf-type .pf-links li .bg-tw:hover, .pf-type .pf-links li .bg-tw:focus {
-        background: #54d0ff !important; }
+        background: #54d1ff !important; }
       .pf-type .pf-links li .bg-tw:active {
-        background: #0099d4 !important; }
+        background: #009bd3 !important; }
     .pf-type .pf-links li .guru-popup {
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;
@@ -2065,7 +2066,7 @@
         width: 0;
         height: 0;
         border: 15px solid transparent;
-        border-bottom-color: rgba(111, 125, 130, 0.95); }
+        border-bottom-color: rgba(110, 124, 130, 0.95); }
         @media screen and (min-width: 768px) {
           .pf-type .pf-links li .guru-popup:before {
             position: absolute;
@@ -2076,10 +2077,10 @@
             -o-transform: translateX(-50%);
             transform: translateX(-50%); } }
       .pf-type .pf-links li .guru-popup h1 {
-        background: rgba(111, 125, 130, 0.95);
+        background: rgba(110, 124, 130, 0.95);
         font-size: 20px; }
       .pf-type .pf-links li .guru-popup > div {
-        background: rgba(111, 125, 130, 0.95); }
+        background: rgba(110, 124, 130, 0.95); }
         .pf-type .pf-links li .guru-popup > div div {
           -ms-box-orient: horizontal;
           display: -webkit-box;
@@ -2243,18 +2244,18 @@
   opacity: 0;
   display: none;
   padding: 15px;
-  background: rgba(87, 98, 103, 0.95);
+  background: rgba(87, 98, 102, 0.95);
   text-align: center; }
 
 .pf-mobile-edit button {
-  background: rgba(87, 98, 103, 0.95);
+  background: rgba(87, 98, 102, 0.95);
   font-weight: 600; }
   .pf-mobile-edit button:hover, .pf-mobile-edit button:focus {
     /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1;
-    background: rgba(111, 125, 130, 0.95); }
+    background: rgba(110, 124, 130, 0.95); }
   .pf-mobile-edit button:active, .pf-mobile-edit button.activated {
-    background: rgba(87, 98, 103, 0.95); }
+    background: rgba(87, 98, 102, 0.95); }
 
 .pf-edit {
   background: #30373a; }
@@ -2262,7 +2263,7 @@
     position: absolute;
     margin-top: -15px;
     margin-left: -15px;
-    background: rgba(48, 55, 58, 0.95); }
+    background: rgba(47, 55, 57, 0.95); }
     .pf-edit .pf-course-list.show, .pf-edit .pf-course-none.show {
       z-index: 100; }
   .pf-edit .pf-course-list li a {
@@ -2270,7 +2271,7 @@
     .pf-edit .pf-course-list li a:hover, .pf-edit .pf-course-list li a:focus {
       background: #69B3A5; }
     .pf-edit .pf-course-list li a:active {
-      background: #576267; }
+      background: #576367; }
   .pf-edit section {
     background: none !important; }
   .pf-edit header {
@@ -2440,7 +2441,7 @@
       padding: 10px 15px; }
       .pf-edit .main .input-outline:focus {
         border-color: #69B3A5;
-        background: #576267; }
+        background: #576367; }
     .pf-edit .main .pf-title-edit.input-outline {
       display: block;
       width: 100%;
@@ -2516,7 +2517,7 @@
             background: #69B3A5;
             color: white !important; }
           .pf-edit .main .pf-tag-edit .chip.tag-auto:active {
-            background: #add5ce;
+            background: #add5cd;
             color: white !important; }
         .pf-edit .main .pf-tag-edit .chip.tag-selected {
           background: #69B3A5; }
@@ -2527,7 +2528,7 @@
             background: #40484B;
             color: rgba(255, 255, 255, 0.5) !important; }
         .pf-edit .main .pf-tag-edit .chip.tag-add {
-          background: #598881; }
+          background: #588881; }
           .pf-edit .main .pf-tag-edit .chip.tag-add:hover, .pf-edit .main .pf-tag-edit .chip.tag-add:focus {
             background: #69B3A5; }
     .pf-edit .main .pf-pricing {
@@ -2582,7 +2583,7 @@
             .pf-edit .main .pf-pricing > div > div:last-child {
               padding-top: 15px; } }
           .pf-edit .main .pf-pricing > div > div:last-child .custom-dropdown > ul li {
-            background: rgba(52, 59, 61, 0.9); }
+            background: rgba(52, 58, 61, 0.9); }
     .pf-edit .main .pf-attach-list {
       padding-top: 15px;
       height: 186px;
@@ -2715,7 +2716,7 @@
       border: 1px solid #c0c7ca; }
       .pf-event .pf-event-container .custom-dropdown > ul li {
         width: 100%;
-        background: rgba(220, 224, 225, 0.9);
+        background: rgba(219, 223, 225, 0.9);
         padding: 10px 15px !important;
         color: #6f7d82;
         font-size: 16px;
@@ -2833,7 +2834,7 @@
   .pf-event .pf-event-save:hover, .pf-event .pf-event-save:focus {
     /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1;
-    background: #576267; }
+    background: #576367; }
   .pf-event .pf-event-save:active, .pf-event .pf-event-save.activated {
     /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1;
@@ -2879,31 +2880,29 @@
     .pf-event .pf-event-container .picker:not(.active) {
       height: 30px;
       overflow: hidden; }
-
   .pf-event-save {
     position: static;
     bottom: auto;
     left: auto; } }
+
 .modal-wrapper {
   height: 100%; }
 
 @media screen and (max-width: 768px) {
   .cta-modal {
     display: none !important; } }
+
 @media screen and (min-width: 768px) {
   .pf-desktop-edit {
     /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1;
     display: block; }
-
   .pf-mobile-edit {
     /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 0;
     display: none; }
-
   .pf-list-x.ugrid-3 li {
     width: calc(100% / 6) !important; }
-
   .pf-type:not(.pf-modal) .pf-links li {
     padding: 7.5px 15px; }
   .pf-type:not(.pf-modal).pf-has-edit .pf-tab-container .pf-tab-item {
@@ -2954,7 +2953,6 @@
   .pf-type:not(.pf-modal) > section > .pf-tab-container {
     width: calc(100% / 3 * 2);
     height: 100%; }
-
   .pf-modal .pf-shop-item-header h2 {
     font-weight: 600;
     text-transform: uppercase; }
@@ -2962,7 +2960,6 @@
     margin-top: 0 !important; }
   .pf-modal .pf-shop-item-header h1 {
     font-size: 48px !important; }
-
   .pf-type .chip {
     height: 36px;
     font-size: 16px;
@@ -2999,7 +2996,7 @@
       top: 0;
       z-index: 1000; }
       .pf-type .pf-checklist .pf-checklist-full .pf-edit {
-        background: rgba(48, 55, 58, 0.95); }
+        background: rgba(47, 55, 57, 0.95); }
       .pf-type .pf-checklist .pf-checklist-full header {
         background: rgba(43, 50, 52, 0.7) !important; }
       .pf-type .pf-checklist .pf-checklist-full .pf-tab-container {
@@ -3062,6 +3059,7 @@
         width: 50%; }
     .pf-type .pf-shop-desc .pf-reviews h2 {
       font-size: 28px !important; } }
+
 .pf-modal header.third a.cta-modal-close svg {
   height: 36px;
   width: 36px; }
@@ -3411,7 +3409,7 @@
       padding: 10px 15px; }
       #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main .input-outline:focus {
         border-color: #69B3A5;
-        background: #576267; }
+        background: #576367; }
     #desktop-guru-home .pf-type .pf-tab-container .pf-shop-desc #experience-modal .main #experience-name-input.input-outline {
       display: block;
       width: 100%;
@@ -3453,25 +3451,3 @@
     margin-bottom: 15px; }
   #pf-activate div .button-group button {
     width: auto; }
-
-/*# sourceMappingURL=profile.css.map */
-
-/*# sourceMappingURL=maps/profile.css.map */
-
-/*# sourceMappingURL=maps/profile.css.map */
-
-/*# sourceMappingURL=maps/profile.css.map */
-
-/*# sourceMappingURL=maps/profile.css.map */
-
-/*# sourceMappingURL=maps/profile.css.map */
-
-/*# sourceMappingURL=maps/profile.css.map */
-
-/*# sourceMappingURL=maps/profile.css.map */
-
-/*# sourceMappingURL=maps/profile.css.map */
-
-/*# sourceMappingURL=maps/profile.css.map */
-
-/*# sourceMappingURL=maps/profile.css.map */

@@ -691,8 +691,7 @@
   .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a:hover .icon, .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a:focus .icon {
     /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1; }
-.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(1), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(2), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(3), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(4),
-.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(5), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(6), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(7), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(8) {
+.desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(1), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(2), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(3), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(4), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(5), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(6), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(7), .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li:nth-child(8) {
   display: block; }
 .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list .selected a {
   background: #637074;
@@ -708,18 +707,22 @@
 @media screen and (min-height: 750px) and (min-width: 820px) {
   .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a {
     font-size: 20px; } }
+
 @media screen and (min-height: 750px) and (min-width: 1024px) {
   .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a {
     height: 100px; } }
+
 @media screen and (min-height: 952px) {
   .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a {
     height: 125px;
     font-size: 24px; }
   .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a svg, .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li label svg {
     padding: 30px; } }
+
 @media screen and (min-height: 1000px) {
   .desktop-guru-onboarding .main .desktop-search-list .desktop-card-list li a {
     height: 150px; } }
+
 /* ---------- BECOME GURU ONBOARDING */
 .guru-onboarding-header {
   position: relative;
@@ -842,7 +845,7 @@
         #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a {
           background: #81B566; }
           #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a:hover, #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a:focus {
-            background: #e6f0e0; }
+            background: #e5f0e0; }
             #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a:hover > span, #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a:focus > span {
               color: #81B566 !important; }
               #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a:hover > span span:first-child svg path, #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(1) a:focus > span span:first-child svg path {
@@ -852,7 +855,7 @@
         #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a {
           background: #69B3A5; }
           #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a:hover, #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a:focus {
-            background: #e1f0ed; }
+            background: #e1efed; }
             #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a:hover > span, #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a:focus > span {
               color: #69B3A5 !important; }
               #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a:hover > span span:first-child svg path, #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(2) a:focus > span span:first-child svg path {
@@ -862,7 +865,7 @@
         #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a {
           background: #55A4B7; }
           #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a:hover, #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a:focus {
-            background: #ddedf1; }
+            background: #ddecf0; }
             #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a:hover > span, #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a:focus > span {
               color: #55A4B7 !important; }
               #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a:hover > span span:first-child svg path, #desktop-guru-onboarding .main #guru-onboarding-grid li:nth-child(3) a:focus > span span:first-child svg path {
@@ -982,11 +985,13 @@
     font-size: 64px; }
   #desktop-guru-onboarding .main .header h2 {
     font-size: 28px; } }
+
 @media screen and (min-width: 980px) {
   #desktop-guru-onboarding .main #guru-onboarding-grid li a > span span:last-child {
     margin-top: -10px;
     padding-bottom: 30px;
     font-size: 28px; } }
+
 @media screen and (min-height: 850px) {
   #desktop-guru-onboarding .main #guru-onboarding-grid {
     margin-top: 60px;
@@ -995,6 +1000,7 @@
       height: 270px; }
       #desktop-guru-onboarding .main #guru-onboarding-grid li a > span span:last-child {
         margin-top: 0; } }
+
 #guru-onboarding-buttons {
   position: absolute;
   left: 50%;
@@ -1012,25 +1018,3 @@
       font-weight: 600; }
     #guru-onboarding-buttons li:first-child {
       text-align: right; }
-
-/*# sourceMappingURL=onboarding.css.map */
-
-/*# sourceMappingURL=maps/onboarding.css.map */
-
-/*# sourceMappingURL=maps/onboarding.css.map */
-
-/*# sourceMappingURL=maps/onboarding.css.map */
-
-/*# sourceMappingURL=maps/onboarding.css.map */
-
-/*# sourceMappingURL=maps/onboarding.css.map */
-
-/*# sourceMappingURL=maps/onboarding.css.map */
-
-/*# sourceMappingURL=maps/onboarding.css.map */
-
-/*# sourceMappingURL=maps/onboarding.css.map */
-
-/*# sourceMappingURL=maps/onboarding.css.map */
-
-/*# sourceMappingURL=maps/onboarding.css.map */

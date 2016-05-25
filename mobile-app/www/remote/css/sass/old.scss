@@ -4786,8 +4786,8 @@
 			#info-map {
 				height: 40%;
 				background: url(../../img/map-small.png) center center / cover;
-				-webkit-filter: grayscale(.5);
-				filter: grayscale(.5);
+				//-webkit-filter: grayscale(.5);
+				//filter: grayscale(.5);
 			}
 			#info-directions, #info-hours {
 				@include flex;
@@ -6113,7 +6113,7 @@
 							height: 100%;
 						}
 						.splash-scene-map-img {
-							@include prefix(filter, grayscale(100%), webkit);
+							//@include prefix(filter, grayscale(100%), webkit);
 							background-position: center;
 							background-size: cover;
 						}

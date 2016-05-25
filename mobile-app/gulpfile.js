@@ -186,51 +186,49 @@ gulp.task('sass', function(done) {
   // });
 
 
-  gulp.src([
-            '*.scss',
-            // 'admin.scss',
-            // 'aguilar.scss',
-            // 'animate.scss',
-            // 'animation.scss',
-            // 'components-old.scss',
-            // 'components.scss',
-            // 'desktop.scss',
-            // 'essay.scss',
-            // 'home.scss',
-            // 'intercom.scss',
-            // 'ios.scss',
-            // 'loading.scss',
-            // 'magic.scss',
-            // 'material.scss',
-            // 'mixin.scss',
-            // 'modals.scss',
-            // '!new.scss',
-            // '!old.scss',
-            // '!onboarding.scss',
-            // '!powerups.scss',
-            // '!profile-color.scss',
-            // '!profile.scss',
-            // '!request.scss',
-            // '!samir.scss',
-            // '!universal.scss',
-            // '!shake.scss',
-            // '!splash-animation.scss',
-            // '!splash.scss',
-            // '!swiper.scss',
-            // '!utility.scss',
-            // 'style.scss',
-            // 'velocity.scss'
+  gulp.src([//'*.scss',
+            'admin.scss',
+            'aguilar.scss',
+            'animate.scss',
+            'animation.scss',
+            'components-old.scss',
+            'components.scss',
+            'desktop.scss',
+            'essay.scss',
+            'home.scss',
+            'intercom.scss',
+            'ios.scss',
+            'loading.scss',
+            'magic.scss',
+            'material.scss',
+            'mixin.scss',
+            'modals.scss',
+            'new.scss',
+            'old.scss',
+            'onboarding.scss',
+            'powerups.scss',
+            'profile-color.scss',
+            'profile.scss',
+            'request.scss',
+            'samir.scss',
+            'universal.scss',
+            'shake.scss',
+            'splash-animation.scss',
+            'splash.scss',
+            'swiper.scss',
+            'utility.scss',
+            'style.scss',
+            'velocity.scss'
             ], { cwd: 'www/remote/css/sass' })
     .pipe(debug())
-    // .pipe(sass().on('error',function(err) {
-    //     //If we're watching, don't exit on error
-    //     // if (IS_WATCH) {
-    //       gutil.log('MSG :'+err);
-    //     // } else {
-    //       // done(err);
-    //     // }
-    //   }))
-    // .pipe(plugins.concat('new.css'))
+    .pipe(sass().on('error',function(err) {
+        //If we're watching, don't exit on error
+        // if (IS_WATCH) {
+          gutil.log('MSG :'+err);
+        // } else {
+          // done(err);
+        // }
+      }))
     .pipe(gulp.dest('www/remote/css/sass'))
     .on('end', done);
 });
