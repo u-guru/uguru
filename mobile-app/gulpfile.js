@@ -100,6 +100,8 @@ var IS_WATCH = false;
 gulp.task('watch', function() {
   IS_WATCH = true;
   gulp.watch('www/remote/css/sass/*.scss', ['sass', 'sassy']);
+  gulp.watch('www/remote/js/**/*js', ['jsHint']);
+
 });
 
 gulp.task('sass', function(done) {
