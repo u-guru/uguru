@@ -10,7 +10,7 @@ var img_base = '';
 if (LOCAL) {
 
   BASE = 'remote/';
-  REST_URL = "http://localhost:5000";
+  REST_URL = 'http://localhost:5000';
 
 } else {
   img_base = '/static/';
@@ -69,14 +69,14 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
 
   $httpProvider.useApplyAsync(true);
 
-  if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
+  if ($ionicConfigProvider){$ionicConfigProvider.views.swipeBackEnabled(false);}
 
 
 
 
   $ionicConfigProvider.views.transition('platform');
 
-  $ionicConfigProvider.tabs.position("bottom");
+  $ionicConfigProvider.tabs.position('bottom');
   $ionicConfigProvider.views.maxCache(20);  //Default is 10
   $ionicConfigProvider.views.forwardCache(false);
   $ionicConfigProvider.scrolling.jsScrolling(false);

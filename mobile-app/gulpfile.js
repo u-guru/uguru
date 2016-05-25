@@ -100,10 +100,19 @@ var IS_WATCH = false;
 gulp.task('watch', function() {
   IS_WATCH = true;
   gulp.watch('www/remote/css/sass/*.scss', ['sass', 'sassy']);
-  gulp.watch('www/remote/js/**/*js', ['jsHint']);
+  gulp.watch('www/remote/js/**/*js', ['jshint-current']);
+
 
 });
-
+gulp.task('jshint-current',function(){
+    // Javascript change + prints log in console
+     gulp.watch('www/remote/js/**/*js').on('change', function(file) {
+         gulp.src(file.path)
+         .pipe(plugins.jshint())
+         .pipe(plugins.jshint.reporter(stylish))
+         .on('error', errorHandler);
+     });
+});
 gulp.task('sass', function(done) {
   gulp.src('www/remote/css/sass/new.scss')
     .pipe(sass({
