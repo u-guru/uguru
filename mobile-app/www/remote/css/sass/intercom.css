@@ -35,7 +35,7 @@
     -ms-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
-    filter: alpha(opacity=0);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 0;
     content: "";
     display: none;
@@ -47,7 +47,7 @@
     height: 100%;
     background: rgba(43, 50, 52, 0.7); }
   #intercom-container #intercom-messenger.intercom-messenger-active:after {
-    filter: alpha(opacity=100);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1;
     z-index: auto;
     display: block !important; }
@@ -100,7 +100,7 @@
     background-image: url(../../img/svg/intercom/no-convo.svg) !important; }
   #intercom-container .intercom-sheet-footer .intercom-conversations-new-conversation-button {
     background-image: none !important;
-    border-color: #4e9b8c !important; }
+    border-color: #4e9b8b !important; }
     #intercom-container .intercom-sheet-footer .intercom-conversations-new-conversation-button i {
       display: none !important; }
   #intercom-container .intercom-app-profile-container {
@@ -120,5 +120,3 @@
         border: 3px solid #40484B !important; }
     #intercom-container .intercom-app-profile-container .intercom-app-profile-text p {
       font-weight: 600; }
-
-/*# sourceMappingURL=intercom.css.map */

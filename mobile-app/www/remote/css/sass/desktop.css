@@ -67,17 +67,16 @@
       align-content: center;
       -webkit-align-items: center;
       align-items: center;
-      filter: alpha(opacity=50);
+      /*filter: alpha(opacity=$opacity * 100);*/
       opacity: 0.5;
       -webkit-justify-content: flex-end;
       justify-content: flex-end;
       padding-right: 10px;
       font-weight: 600; }
       .desktop-mode .desktop-header .skip-button:hover, .desktop-mode .desktop-header .skip-button:focus, .desktop-mode .desktop-header .skip-button:active {
-        filter: alpha(opacity=100);
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 1; }
-  .desktop-mode #cta-box-support,
-  .desktop-mode #cta-box-content {
+  .desktop-mode #cta-box-support, .desktop-mode #cta-box-content {
     border-radius: 1000px;
     position: fixed;
     bottom: 15px;
@@ -86,22 +85,19 @@
     height: 48px;
     padding: 6px;
     background: rgba(255, 255, 255, 0.9); }
-    .desktop-mode #cta-box-support svg,
-    .desktop-mode #cta-box-content svg {
+    .desktop-mode #cta-box-support svg, .desktop-mode #cta-box-content svg {
       fill: none;
       stroke: #2B3234;
       stroke-width: 7px;
       stroke-linecap: round;
       stroke-linejoin: round; }
-    .desktop-mode #cta-box-support:before, .desktop-mode #cta-box-support:after,
-    .desktop-mode #cta-box-content:before,
-    .desktop-mode #cta-box-content:after {
+    .desktop-mode #cta-box-support:before, .desktop-mode #cta-box-support:after, .desktop-mode #cta-box-content:before, .desktop-mode #cta-box-content:after {
       -webkit-transition: all 0.15s ease-in-out;
       -o-transition: all 0.15s ease-in-out;
       -ms-transition: all 0.15s ease-in-out;
       -moz-transition: all 0.15s ease-in-out;
       transition: all 0.15s ease-in-out;
-      filter: alpha(opacity=0);
+      /*filter: alpha(opacity=$opacity * 100);*/
       opacity: 0;
       position: absolute;
       top: 50%;
@@ -110,16 +106,14 @@
       -ms-transform: translateY(-50%);
       -o-transform: translateY(-50%);
       transform: translateY(-50%); }
-    .desktop-mode #cta-box-support:before,
-    .desktop-mode #cta-box-content:before {
+    .desktop-mode #cta-box-support:before, .desktop-mode #cta-box-content:before {
       content: "";
       right: -20px;
       width: 0;
       height: 0;
       border: 10px solid transparent;
       border-right-color: rgba(255, 255, 255, 0.9); }
-    .desktop-mode #cta-box-support:after,
-    .desktop-mode #cta-box-content:after {
+    .desktop-mode #cta-box-support:after, .desktop-mode #cta-box-content:after {
       content: "Support";
       right: -108px;
       padding: 10px 15px;
@@ -128,19 +122,12 @@
       font-weight: 600;
       text-transform: uppercase;
       color: #40484B; }
-    .desktop-mode #cta-box-support:hover, .desktop-mode #cta-box-support:focus,
-    .desktop-mode #cta-box-content:hover,
-    .desktop-mode #cta-box-content:focus {
+    .desktop-mode #cta-box-support:hover, .desktop-mode #cta-box-support:focus, .desktop-mode #cta-box-content:hover, .desktop-mode #cta-box-content:focus {
       background: #8bc4b9; }
-      .desktop-mode #cta-box-support:hover:before, .desktop-mode #cta-box-support:hover:after, .desktop-mode #cta-box-support:focus:before, .desktop-mode #cta-box-support:focus:after,
-      .desktop-mode #cta-box-content:hover:before,
-      .desktop-mode #cta-box-content:hover:after,
-      .desktop-mode #cta-box-content:focus:before,
-      .desktop-mode #cta-box-content:focus:after {
-        filter: alpha(opacity=100);
+      .desktop-mode #cta-box-support:hover:before, .desktop-mode #cta-box-support:hover:after, .desktop-mode #cta-box-support:focus:before, .desktop-mode #cta-box-support:focus:after, .desktop-mode #cta-box-content:hover:before, .desktop-mode #cta-box-content:hover:after, .desktop-mode #cta-box-content:focus:before, .desktop-mode #cta-box-content:focus:after {
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 1; }
-    .desktop-mode #cta-box-support:active,
-    .desktop-mode #cta-box-content:active {
+    .desktop-mode #cta-box-support:active, .desktop-mode #cta-box-content:active {
       background: #69B3A5; }
   .desktop-mode #cta-box-content.dark {
     background: rgba(43, 50, 52, 0.9); }
@@ -191,10 +178,10 @@
         max-width: 1280px;
         height: 100%; }
       .desktop-mode #top-bar div:nth-child(2) a:hover, .desktop-mode #top-bar div:nth-child(2) a:focus {
-        filter: alpha(opacity=80);
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 0.8; }
       .desktop-mode #top-bar div:nth-child(2) a:active {
-        filter: alpha(opacity=50);
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 0.5; }
       .desktop-mode #top-bar div:nth-child(2) .toggle {
         margin-right: 15px; }
@@ -218,7 +205,7 @@
         .desktop-mode #top-bar div:nth-child(2) #top-logo.full {
           width: calc(100% - 90px); }
       .desktop-mode #top-bar div:nth-child(2) .top-tooltip {
-        filter: alpha(opacity=100) !important;
+        /*filter: alpha(opacity=$opacity * 100)!important;*/
         opacity: 1 !important;
         position: relative;
         height: 64px;
@@ -231,7 +218,7 @@
           -ms-transition: all 0.15s ease-in-out;
           -moz-transition: all 0.15s ease-in-out;
           transition: all 0.15s ease-in-out;
-          filter: alpha(opacity=0);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0;
           position: absolute;
           left: 50%;
@@ -257,13 +244,13 @@
           text-transform: uppercase;
           color: #40484B; }
         .desktop-mode #top-bar div:nth-child(2) .top-tooltip:hover:before, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:hover:after, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:focus:before, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:focus:after {
-          filter: alpha(opacity=100);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 1; }
         .desktop-mode #top-bar div:nth-child(2) .top-tooltip:hover svg, .desktop-mode #top-bar div:nth-child(2) .top-tooltip:focus svg {
-          filter: alpha(opacity=80);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0.8; }
         .desktop-mode #top-bar div:nth-child(2) .top-tooltip:active svg {
-          filter: alpha(opacity=50);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0.5; }
         .desktop-mode #top-bar div:nth-child(2) .top-tooltip svg {
           -webkit-transition: all 0.15s ease-in-out;
@@ -321,7 +308,7 @@
           width: 40px !important;
           height: 40px !important;
           border: 3px solid white;
-          background-color: #557e78; }
+          background-color: #547d78; }
         .desktop-mode #top-bar div:nth-child(2) #top-settings svg {
           fill: none;
           stroke: white;
@@ -356,7 +343,7 @@
         -ms-transform: translateY(-500px);
         -o-transform: translateY(-500px);
         transform: translateY(-500px);
-        filter: alpha(opacity=0);
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 0;
         position: absolute;
         z-index: 11;
@@ -375,7 +362,7 @@
           -ms-transform: translateY(0);
           -o-transform: translateY(0);
           transform: translateY(0);
-          filter: alpha(opacity=100);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 1;
           overflow: visible; }
         .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul {
@@ -388,7 +375,7 @@
             width: 100%;
             height: 100%;
             padding: 0;
-            background: rgba(87, 98, 103, 0.9); }
+            background: rgba(87, 98, 102, 0.9); }
             .desktop-mode #top-bar div:nth-child(2) #top-menu-links ul li .guru-popup h2 {
               font-size: 20px;
               font-weight: 600;
@@ -496,8 +483,7 @@
     background: #69B3A5; }
     .desktop-mode .progress-bottom .progress {
       border-radius: 0; }
-      .desktop-mode .progress-bottom .progress::-webkit-progress-value,
-      .desktop-mode .progress-bottom .progress span {
+      .desktop-mode .progress-bottom .progress::-webkit-progress-value, .desktop-mode .progress-bottom .progress span {
         border-radius: 0 1000px 1000px 0; }
       .desktop-mode .progress-bottom .progress::-moz-progress-bar {
         border-radius: 0 1000px 1000px 0; }
@@ -573,7 +559,7 @@
   -ms-transition: opacity 0.15s ease-in-out;
   -moz-transition: opacity 0.15s ease-in-out;
   transition: opacity 0.15s ease-in-out;
-  filter: alpha(opacity=0);
+  /*filter: alpha(opacity=$opacity * 100);*/
   opacity: 0;
   z-index: -10;
   top: 64px;
@@ -587,7 +573,7 @@
     -ms-transition: opacity 0.15s ease-in-out;
     -moz-transition: opacity 0.15s ease-in-out;
     transition: opacity 0.15s ease-in-out;
-    filter: alpha(opacity=70);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 0.7;
     z-index: 10; }
 
@@ -765,7 +751,7 @@
                 font-size: 20px;
                 font-weight: 600; }
                 .desktop-forms .main .login-courses-container > div .login-courses ul li > span:after {
-                  filter: alpha(opacity=30);
+                  /*filter: alpha(opacity=$opacity * 100);*/
                   opacity: 0.3;
                   content: "";
                   display: block;
@@ -828,7 +814,7 @@
         font-weight: 400;
         line-height: 1.5 !important; }
     .desktop-forms aside:after {
-      filter: alpha(opacity=75);
+      /*filter: alpha(opacity=$opacity * 100);*/
       opacity: 0.75;
       content: "";
       display: block;
@@ -876,11 +862,13 @@
     display: -webkit-flex;
     display: flex;
     width: 30%; } }
+
 @media screen and (min-width: 1440px) {
   .desktop-forms .main {
     width: 75%; }
   .desktop-forms aside {
     width: 25%; } }
+
 /* ---------- DESKTOP LISTS */
 .save-button {
   position: relative;
@@ -889,11 +877,11 @@
   min-width: 300px;
   font-size: 28px !important; }
   .save-button:not(.active) {
-    filter: alpha(opacity=0);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 0;
     z-index: -10; }
   .save-button.show {
-    filter: alpha(opacity=100);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1;
     z-index: auto; }
 
@@ -957,7 +945,7 @@
       .desktop-search .main form label {
         top: 6px; }
       .desktop-search .main form label.active {
-        filter: alpha(opacity=0);
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 0;
         font-size: 24px; }
     .desktop-search .main .desktop-search-list {
@@ -1008,7 +996,7 @@
               transition: all 0.15s ease-in-out;
               cursor: pointer; }
             .desktop-search .main .desktop-search-list .desktop-card-list li a .list-item-overlay {
-              filter: alpha(opacity=0);
+              /*filter: alpha(opacity=$opacity * 100);*/
               opacity: 0;
               display: block;
               position: absolute;
@@ -1020,7 +1008,7 @@
             .desktop-search .main .desktop-search-list .desktop-card-list li a:hover {
               border-bottom-color: white !important; }
               .desktop-search .main .desktop-search-list .desktop-card-list li a:hover .list-item-overlay {
-                filter: alpha(opacity=90);
+                /*filter: alpha(opacity=$opacity * 100);*/
                 opacity: 0.9; }
 
 @media screen and (min-width: 1024px) {
@@ -1029,6 +1017,7 @@
     .desktop-search .main .desktop-search-list .desktop-card-list li {
       width: 25%;
       padding: 15px; } }
+
 @media screen and (min-height: 750px) and (min-width: 1024px) {
   .desktop-search {
     -webkit-flex-direction: row;
@@ -1039,6 +1028,7 @@
     justify-content: center; }
     .desktop-search .main:not(.skills-container) {
       min-height: 644px; } }
+
 @media screen and (min-height: 800px) {
   .desktop-search {
     -webkit-flex-direction: row;
@@ -1050,6 +1040,7 @@
     -webkit-justify-content: center;
     justify-content: center;
     padding-bottom: 0; } }
+
 .name-only span {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -1075,7 +1066,7 @@
     #desktop-courses {
       padding-bottom: 0 !important; } }
   #desktop-courses:before {
-    filter: alpha(opacity=10);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 0.1;
     content: "";
     display: block;
@@ -1148,6 +1139,7 @@
     justify-content: center;
     height: 84px;
     font-size: 22px !important; } }
+
 #desktop-courses.student-mode .input-field .prefix svg {
   stroke: #40484B; }
 #desktop-courses.student-mode .input-field input {
@@ -1184,7 +1176,7 @@
   justify-content: center;
   padding-top: 50px; }
   #desktop-skills:before, .desktop-skills:before {
-    filter: alpha(opacity=10);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 0.1;
     content: "";
     display: block;
@@ -1259,7 +1251,7 @@
             -ms-transition: all 0.15s ease-in-out;
             -moz-transition: all 0.15s ease-in-out;
             transition: all 0.15s ease-in-out;
-            filter: alpha(opacity=70);
+            /*filter: alpha(opacity=$opacity * 100);*/
             opacity: 0.7;
             position: absolute;
             content: "";
@@ -1270,7 +1262,7 @@
             border-radius: 2px;
             overflow: hidden; }
           #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover:after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus:after, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active:after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover:after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus:after, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active:after {
-            filter: alpha(opacity=30);
+            /*filter: alpha(opacity=$opacity * 100);*/
             opacity: 0.3; }
           #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .important, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus, #desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info .important, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:hover, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:focus, .desktop-skills .main #skills-list .desktop-card-list li .skill-item-info [class*="bg-"]:active {
             border-bottom-color: rgba(255, 255, 255, 0.8); }
@@ -1348,7 +1340,7 @@
           width: calc(100% / 3 - 15px);
           font-weight: 600; }
           .subcategory ul li:last-child button:hover, .subcategory ul li:last-child button:focus {
-            filter: alpha(opacity=100);
+            /*filter: alpha(opacity=$opacity * 100);*/
             opacity: 1; }
       .subcategory ul li label {
         -webkit-transition: all 0.15s ease-in-out;
@@ -1385,7 +1377,7 @@
           -ms-transition: all 0.15s ease-in-out;
           -moz-transition: all 0.15s ease-in-out;
           transition: all 0.15s ease-in-out;
-          filter: alpha(opacity=30);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0.3;
           display: block;
           position: absolute;
@@ -1403,7 +1395,7 @@
             stroke-linecap: round;
             stroke-linejoin: round; }
         .subcategory ul li label .icon {
-          filter: alpha(opacity=0);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0; }
           .subcategory ul li label .icon svg {
             -webkit-transform: rotate(45deg);
@@ -1421,10 +1413,10 @@
         .subcategory ul li input:checked + label {
           border-bottom-color: white !important; }
           .subcategory ul li input:checked + label > svg {
-            filter: alpha(opacity=100);
+            /*filter: alpha(opacity=$opacity * 100);*/
             opacity: 1; }
         .subcategory ul li input:checked:hover + label .icon, .subcategory ul li input:checked:active + label .icon {
-          filter: alpha(opacity=100);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 1; }
         .subcategory ul li input:checked:hover + label {
           background: #637074 !important; }
@@ -1436,16 +1428,16 @@
         .subcategory ul li input:hover + label {
           background: rgba(255, 255, 255, 0.2); }
           .subcategory ul li input:hover + label > svg {
-            filter: alpha(opacity=100);
+            /*filter: alpha(opacity=$opacity * 100);*/
             opacity: 1; }
         .subcategory ul li input:active + label {
           border-color: white !important; }
   .subcategory.not-selected, .subcategory:not(.selected) {
-    filter: alpha(opacity=0);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 0;
     display: none; }
   .subcategory.selected {
-    filter: alpha(opacity=100);
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1;
     position: absolute;
     top: 50%;
@@ -1459,23 +1451,22 @@
     width: 100%;
     height: 100% !important;
     border: 0; }
-    .subcategory.selected:after,
-    .subcategory.selected .skill-item-info {
+    .subcategory.selected:after, .subcategory.selected .skill-item-info {
       display: none; }
     .subcategory.selected .skill-item-content {
       display: block; }
   .subcategory:nth-child(3) ul li label {
     border-bottom-color: #F04F54; }
   .subcategory:nth-child(3) ul li input:hover + label {
-    background: #7f696e; }
+    background: #7f696d; }
     .subcategory:nth-child(3) ul li input:hover + label svg path {
-      stroke: #7f696e; }
+      stroke: #7f696d; }
   .subcategory:nth-child(3) ul li input:active + label, .subcategory:nth-child(3) ul li input:checked + label {
     background: #F04F54; }
     .subcategory:nth-child(3) ul li input:active + label svg path, .subcategory:nth-child(3) ul li input:checked + label svg path {
       stroke: #F04F54; }
   .subcategory:nth-child(3) ul li input:checked:active + label {
-    background: #7f696e !important; }
+    background: #7f696d !important; }
   .subcategory:nth-child(3) button:hover, .subcategory:nth-child(3) button:focus {
     border-color: #F04F54 !important;
     background: #F04F54 !important;
@@ -1487,15 +1478,15 @@
   .subcategory:nth-child(6) ul li label {
     border-bottom-color: #E5753C; }
   .subcategory:nth-child(6) ul li input:hover + label {
-    background: #7d7169; }
+    background: #7d7069; }
     .subcategory:nth-child(6) ul li input:hover + label svg path {
-      stroke: #7d7169; }
+      stroke: #7d7069; }
   .subcategory:nth-child(6) ul li input:active + label, .subcategory:nth-child(6) ul li input:checked + label {
     background: #E5753C; }
     .subcategory:nth-child(6) ul li input:active + label svg path, .subcategory:nth-child(6) ul li input:checked + label svg path {
       stroke: #E5753C; }
   .subcategory:nth-child(6) ul li input:checked:active + label {
-    background: #7d7169 !important; }
+    background: #7d7069 !important; }
   .subcategory:nth-child(6) button:hover, .subcategory:nth-child(6) button:focus {
     border-color: #E5753C !important;
     background: #E5753C !important;
@@ -1507,15 +1498,15 @@
   .subcategory:nth-child(2) ul li label {
     border-bottom-color: #F6C64E; }
   .subcategory:nth-child(2) ul li input:hover + label {
-    background: #80816c; }
+    background: #80806c; }
     .subcategory:nth-child(2) ul li input:hover + label svg path {
-      stroke: #80816c; }
+      stroke: #80806c; }
   .subcategory:nth-child(2) ul li input:active + label, .subcategory:nth-child(2) ul li input:checked + label {
     background: #F6C64E; }
     .subcategory:nth-child(2) ul li input:active + label svg path, .subcategory:nth-child(2) ul li input:checked + label svg path {
       stroke: #F6C64E; }
   .subcategory:nth-child(2) ul li input:checked:active + label {
-    background: #80816c !important; }
+    background: #80806c !important; }
   .subcategory:nth-child(2) button:hover, .subcategory:nth-child(2) button:focus {
     border-color: #F6C64E !important;
     background: #F6C64E !important;
@@ -1527,15 +1518,15 @@
   .subcategory:nth-child(5) ul li label {
     border-bottom-color: #81B566; }
   .subcategory:nth-child(5) ul li input:hover + label {
-    background: #697e71; }
+    background: #697d71; }
     .subcategory:nth-child(5) ul li input:hover + label svg path {
-      stroke: #697e71; }
+      stroke: #697d71; }
   .subcategory:nth-child(5) ul li input:active + label, .subcategory:nth-child(5) ul li input:checked + label {
     background: #81B566; }
     .subcategory:nth-child(5) ul li input:active + label svg path, .subcategory:nth-child(5) ul li input:checked + label svg path {
       stroke: #81B566; }
   .subcategory:nth-child(5) ul li input:checked:active + label {
-    background: #697e71 !important; }
+    background: #697d71 !important; }
   .subcategory:nth-child(5) button:hover, .subcategory:nth-child(5) button:focus {
     border-color: #81B566 !important;
     background: #81B566 !important;
@@ -1587,15 +1578,15 @@
   .subcategory:nth-child(7) ul li label {
     border-bottom-color: #9A5BC5; }
   .subcategory:nth-child(7) ul li input:hover + label {
-    background: #6e6c84; }
+    background: #6e6b84; }
     .subcategory:nth-child(7) ul li input:hover + label svg path {
-      stroke: #6e6c84; }
+      stroke: #6e6b84; }
   .subcategory:nth-child(7) ul li input:active + label, .subcategory:nth-child(7) ul li input:checked + label {
     background: #9A5BC5; }
     .subcategory:nth-child(7) ul li input:active + label svg path, .subcategory:nth-child(7) ul li input:checked + label svg path {
       stroke: #9A5BC5; }
   .subcategory:nth-child(7) ul li input:checked:active + label {
-    background: #6e6c84 !important; }
+    background: #6e6b84 !important; }
   .subcategory:nth-child(7) button:hover, .subcategory:nth-child(7) button:focus {
     border-color: #9A5BC5 !important;
     background: #9A5BC5 !important;
@@ -1607,15 +1598,15 @@
   .subcategory:nth-child(1) ul li label {
     border-bottom-color: #e6389b; }
   .subcategory:nth-child(1) ul li input:hover + label {
-    background: #7d657c; }
+    background: #7d647c; }
     .subcategory:nth-child(1) ul li input:hover + label svg path {
-      stroke: #7d657c; }
+      stroke: #7d647c; }
   .subcategory:nth-child(1) ul li input:active + label, .subcategory:nth-child(1) ul li input:checked + label {
     background: #e6389b; }
     .subcategory:nth-child(1) ul li input:active + label svg path, .subcategory:nth-child(1) ul li input:checked + label svg path {
       stroke: #e6389b; }
   .subcategory:nth-child(1) ul li input:checked:active + label {
-    background: #7d657c !important; }
+    background: #7d647c !important; }
   .subcategory:nth-child(1) button:hover, .subcategory:nth-child(1) button:focus {
     border-color: #e6389b !important;
     background: #e6389b !important;
@@ -1628,23 +1619,23 @@
 @media screen and (min-height: 750px) and (min-width: 1024px) {
   #desktop-skills .main #skills-list .desktop-card-list li a {
     height: 150px !important; }
-
   .subcategory ul li label {
     height: 100px !important; } }
+
 @media screen and (min-height: 952px) {
   #desktop-skills {
     padding-top: 0; }
     #desktop-skills .main #skills-list .desktop-card-list li a {
       height: 175px !important; }
-
   .subcategory ul li label {
     height: 125px !important; } }
+
 @media screen and (min-height: 1000px) {
   #desktop-skills .main #skills-list .desktop-card-list li a {
     height: 250px !important; }
-
   .subcategory ul li label {
     height: 150px !important; } }
+
 /* ---------- UPLOAD PHOTO */
 #desktop-upload-photo {
   -ms-box-orient: horizontal;
@@ -1738,7 +1729,7 @@
       #desktop-upload-photo .main #photo-list div {
         width: 100%; }
         #desktop-upload-photo .main #photo-list div p {
-          filter: alpha(opacity=100);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 1;
           color: white;
           font-size: 28px;
@@ -1802,6 +1793,7 @@
 @media screen and (min-height: 750px) and (min-width: 1024px) {
   #desktop-university .main .desktop-search-list .desktop-card-list li a .school-icon {
     display: block; } }
+
 @media screen and (min-height: 800px) and (min-width: 1280px) {
   #desktop-university .main .desktop-search-list .desktop-card-list li a .school-icon {
     width: 100px;
@@ -1810,9 +1802,11 @@
     display: block;
     width: 70px;
     height: 70px; } }
+
 @media screen and (min-width: 1024px) {
   #desktop-university .main .desktop-search-list .desktop-card-list li a .school-name .school-title {
     font-size: 20px; } }
+
 /* ---------- ACCESS */
 #desktop-access {
   -ms-box-orient: horizontal;
@@ -1961,10 +1955,7 @@
   background: #F1F1F1;
   color: #40484B !important;
   border-color: #40484B !important; }
-  #desktop-settings.student-mode input,
-  #desktop-settings.student-mode label,
-  #desktop-settings.student-mode a,
-  #desktop-settings.student-mode button {
+  #desktop-settings.student-mode input, #desktop-settings.student-mode label, #desktop-settings.student-mode a, #desktop-settings.student-mode button {
     color: #40484B !important; }
   #desktop-settings.student-mode button:hover {
     background: #40484B !important;
@@ -2109,7 +2100,7 @@
               height: 100%;
               background: #F1F1F1; }
               #desktop-request-calendar #calendar-container #calendar #calendar-body ul li a svg {
-                filter: alpha(opacity=0);
+                /*filter: alpha(opacity=$opacity * 100);*/
                 opacity: 0;
                 -webkit-transition: all 0.15s ease-in-out;
                 -o-transition: all 0.15s ease-in-out;
@@ -2143,7 +2134,7 @@
               #desktop-request-calendar #calendar-container #calendar #calendar-body ul li a:hover, #desktop-request-calendar #calendar-container #calendar #calendar-body ul li a:focus {
                 background: rgba(64, 72, 75, 0.4); }
                 #desktop-request-calendar #calendar-container #calendar #calendar-body ul li a:hover svg, #desktop-request-calendar #calendar-container #calendar #calendar-body ul li a:focus svg {
-                  filter: alpha(opacity=60);
+                  /*filter: alpha(opacity=$opacity * 100);*/
                   opacity: 0.6; }
 
 #request-price {
@@ -2178,8 +2169,7 @@
     max-height: 500px;
     background: white;
     text-align: center; }
-    #desktop-request-price #price-container h1,
-    #desktop-request-price #price-container h3 {
+    #desktop-request-price #price-container h1, #desktop-request-price #price-container h3 {
       color: #2B3234; }
     #desktop-request-price #price-container h1 {
       padding: 15px 15px 0;
@@ -2205,8 +2195,7 @@
           position: relative;
           font-size: 48px;
           font-weight: 600; }
-          #desktop-request-price #price-container ul li a span,
-          #desktop-request-price #price-container ul li a .add {
+          #desktop-request-price #price-container ul li a span, #desktop-request-price #price-container ul li a .add {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -2229,7 +2218,7 @@
           #desktop-request-price #price-container ul li a:hover svg rect, #desktop-request-price #price-container ul li a:focus svg rect, #desktop-request-price #price-container ul li a.active svg rect {
             fill: #81B566; }
           #desktop-request-price #price-container ul li a:active svg rect {
-            fill: #679c4c; }
+            fill: #689c4c; }
         #desktop-request-price #price-container ul li:last-child .price-fill {
           display: none;
           position: absolute;
@@ -2303,7 +2292,7 @@
           height: 100%; }
           #desktop-request-subcategories .main .request-subcategories-content ul li a div {
             height: calc(100% - 50px);
-            background-color: #d11a82;
+            background-color: #d11a85;
             background-position: center;
             background-size: cover; }
           #desktop-request-subcategories .main .request-subcategories-content ul li a span {
@@ -2531,7 +2520,7 @@
   #desktop-timer .main button {
     width: 350px;
     font-weight: 600;
-    background: #f5be36; }
+    background: #f5bb36; }
 
 /* ---------- GENERAL */
 #desktop-general {
@@ -3010,7 +2999,7 @@
   #desktop-balance .main #credit-card-mastercard {
     background: #292e2f; }
   #desktop-balance .main #credit-card-amex {
-    background: #576267; }
+    background: #576367; }
     #desktop-balance .main #credit-card-amex svg {
       width: 50px;
       height: 50px; }
@@ -3242,7 +3231,7 @@
           -ms-transition: all 0.15s ease-in-out;
           -moz-transition: all 0.15s ease-in-out;
           transition: all 0.15s ease-in-out;
-          filter: alpha(opacity=0);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0;
           content: "";
           display: block;
@@ -3255,7 +3244,7 @@
           border-radius: 2px;
           background: white; }
         #desktop-credibility .main ul li a:hover::before {
-          filter: alpha(opacity=20);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0.2; }
         #desktop-credibility .main ul li a::after {
           content: "";
@@ -3301,11 +3290,13 @@
 @media screen and (min-width: 960px) {
   #desktop-credibility .main ul {
     max-width: 975px; } }
+
 @media screen and (min-height: 857px) {
   #desktop-credibility .main ul {
     height: auto; }
     #desktop-credibility .main ul li {
       height: 310px; } }
+
 /* ---------- REFERRALS */
 #desktop-referrals .main aside {
   background: #69B3A5; }
@@ -3424,7 +3415,7 @@
         padding: 7.5px; }
         #ranking .main .ranking-top li .ranking-tile {
           position: relative;
-          background: rgba(99, 112, 116, 0.5);
+          background: rgba(99, 111, 116, 0.5);
           padding: 15px;
           border-radius: 2px; }
           #ranking .main .ranking-top li .ranking-tile h2 {
@@ -3454,7 +3445,7 @@
                 font-size: 36px;
                 font-weight: 900; }
               #ranking .main .ranking-top li .ranking-tile header div h2 {
-                filter: alpha(opacity=50);
+                /*filter: alpha(opacity=$opacity * 100);*/
                 opacity: 0.5;
                 margin: 0; }
           #ranking .main .ranking-top li .ranking-tile svg *[stroke] {
@@ -3488,7 +3479,7 @@
           #ranking .main .ranking-top li .ranking-tile.tile-auburn svg *[fill*="#"] {
             fill: #F04F54; }
     #ranking .main .ranking-list .tab-bar {
-      background: #557e78; }
+      background: #547d78; }
       #ranking .main .ranking-list .tab-bar > div a {
         text-transform: none; }
       #ranking .main .ranking-list .tab-bar.tall {
@@ -3510,7 +3501,7 @@
           font-size: 20px;
           font-weight: 600; }
         #ranking .main .ranking-list .ranking-high-score h2, #ranking .main .ranking-list .ranking-high-score h3, #ranking .main .ranking-list .ranking-next-steps h2, #ranking .main .ranking-list .ranking-next-steps h3 {
-          filter: alpha(opacity=50);
+          /*filter: alpha(opacity=$opacity * 100);*/
           opacity: 0.5;
           margin: 0;
           font-size: 16px; }
@@ -3603,7 +3594,7 @@
                   max-width: 70px;
                   margin: 0 auto; }
                   #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter svg path, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter svg path {
-                    fill: #95999a; }
+                    fill: #959899; }
                 #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter[data-impact="1"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter[data-impact="1"] svg path:nth-child(1) {
                   fill: white; }
                 #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter[data-impact="2"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(2) .impact-meter[data-impact="2"] svg path:nth-child(2), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter[data-impact="2"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(2) > div:nth-child(3) .impact-meter[data-impact="2"] svg path:nth-child(2) {
@@ -3627,12 +3618,12 @@
                 stroke-linecap: round;
                 stroke-linejoin: round; }
         #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:hover, #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:focus {
-          background: #557e78; }
+          background: #547d78; }
         #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:active {
           background: #b4d9d2;
-          color: #557e78; }
+          color: #547d78; }
           #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:active .ranking-next-steps-link svg * {
-            stroke: #557e78; }
+            stroke: #547d78; }
         #ranking .main .ranking-list .ranking-next-steps > li.ranking-next-steps-locked:after {
           content: "";
           display: block;
@@ -3665,7 +3656,7 @@
           #ranking .main .ranking-list .ranking-high-score > li:nth-child(3):before {
             background: #c5857c; }
           #ranking .main .ranking-list .ranking-high-score > li.current-score {
-            background: #576267; }
+            background: #576367; }
           #ranking .main .ranking-list .ranking-high-score > li .user-icon-32 {
             margin-top: 15px;
             margin-left: 15px; }
@@ -3680,7 +3671,7 @@
         font-size: 32px;
         font-weight: 600; }
       #ranking .main .ranking-list .ranking-high-score h2, #ranking .main .ranking-list .ranking-high-score h3, #ranking .main .ranking-list .ranking-next-steps h2, #ranking .main .ranking-list .ranking-next-steps h3 {
-        filter: alpha(opacity=50);
+        /*filter: alpha(opacity=$opacity * 100);*/
         opacity: 0.5;
         margin: 0;
         font-size: 20px; }
@@ -3755,7 +3746,7 @@
               #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter svg, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter svg {
                 width: 100%; }
                 #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter svg path, #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter svg path {
-                  fill: #95999a; }
+                  fill: #959899; }
               #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="1"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="1"] svg path:nth-child(1) {
                 fill: white; }
               #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="2"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(3) .impact-meter[data-impact="2"] svg path:nth-child(2), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="2"] svg path:nth-child(1), #ranking .main .ranking-list .ranking-next-steps > li > a > div:nth-child(4) .impact-meter[data-impact="2"] svg path:nth-child(2) {
@@ -3779,12 +3770,12 @@
                 stroke-linecap: round;
                 stroke-linejoin: round; }
         #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:hover, #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:focus {
-          background: #557e78; }
+          background: #547d78; }
         #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:active {
           background: #b4d9d2;
-          color: #557e78; }
+          color: #547d78; }
           #ranking .main .ranking-list .ranking-next-steps > li:not(.ranking-next-steps-locked) > a:active .ranking-next-steps-link svg * {
-            stroke: #557e78; }
+            stroke: #547d78; }
         #ranking .main .ranking-list .ranking-next-steps > li.ranking-next-steps-locked:after {
           content: "";
           display: block;
@@ -3817,7 +3808,7 @@
         #ranking .main .ranking-list .ranking-high-score > li:last-child {
           margin-bottom: 15px; }
         #ranking .main .ranking-list .ranking-high-score > li.current-score {
-          background: #576267; }
+          background: #576367; }
         #ranking .main .ranking-list .ranking-high-score > li .user-icon-72 {
           margin-top: 6px;
           margin-left: 30px; }
@@ -3846,17 +3837,13 @@
     #ranking .ranking-slider .slider-pager {
       bottom: 10px; }
 
-#desktop-ranking .main aside,
-#mobile-ranking .main aside {
+#desktop-ranking .main aside, #mobile-ranking .main aside {
   background: #69B3A5; }
-  #desktop-ranking .main aside .sidebar-layout-list li div,
-  #mobile-ranking .main aside .sidebar-layout-list li div {
+  #desktop-ranking .main aside .sidebar-layout-list li div, #mobile-ranking .main aside .sidebar-layout-list li div {
     width: calc(100% - 40px); }
-  #desktop-ranking .main aside .sidebar-layout-list li .chip,
-  #mobile-ranking .main aside .sidebar-layout-list li .chip {
+  #desktop-ranking .main aside .sidebar-layout-list li .chip, #mobile-ranking .main aside .sidebar-layout-list li .chip {
     min-width: 40px; }
-  #desktop-ranking .main aside .sidebar-lock,
-  #mobile-ranking .main aside .sidebar-lock {
+  #desktop-ranking .main aside .sidebar-lock, #mobile-ranking .main aside .sidebar-lock {
     fill: none;
     stroke: white;
     stroke-width: 4px;
@@ -3864,26 +3851,20 @@
     stroke-linejoin: round;
     width: 100%;
     height: 80px; }
-    #desktop-ranking .main aside .sidebar-lock + h2,
-    #mobile-ranking .main aside .sidebar-lock + h2 {
+    #desktop-ranking .main aside .sidebar-lock + h2, #mobile-ranking .main aside .sidebar-lock + h2 {
       padding-top: 0 !important; }
-  #desktop-ranking .main aside .disabled,
-  #mobile-ranking .main aside .disabled {
-    filter: alpha(opacity=70);
+  #desktop-ranking .main aside .disabled, #mobile-ranking .main aside .disabled {
+    /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 0.7;
     max-height: calc(100% - 317px); }
-    #desktop-ranking .main aside .disabled .chip,
-    #mobile-ranking .main aside .disabled .chip {
-      filter: alpha(opacity=70);
+    #desktop-ranking .main aside .disabled .chip, #mobile-ranking .main aside .disabled .chip {
+      /*filter: alpha(opacity=$opacity * 100);*/
       opacity: 0.7; }
-#desktop-ranking .main aside + div,
-#mobile-ranking .main aside + div {
+#desktop-ranking .main aside + div, #mobile-ranking .main aside + div {
   padding: 15px; }
-  #desktop-ranking .main aside + div h1,
-  #mobile-ranking .main aside + div h1 {
+  #desktop-ranking .main aside + div h1, #mobile-ranking .main aside + div h1 {
     width: 100%; }
-  #desktop-ranking .main aside + div #ranking-primary,
-  #mobile-ranking .main aside + div #ranking-primary {
+  #desktop-ranking .main aside + div #ranking-primary, #mobile-ranking .main aside + div #ranking-primary {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -3901,49 +3882,34 @@
     justify-content: center;
     width: 100%;
     padding: 15px; }
-    #desktop-ranking .main aside + div #ranking-primary li:first-child, #desktop-ranking .main aside + div #ranking-primary li:last-child,
-    #mobile-ranking .main aside + div #ranking-primary li:first-child,
-    #mobile-ranking .main aside + div #ranking-primary li:last-child {
+    #desktop-ranking .main aside + div #ranking-primary li:first-child, #desktop-ranking .main aside + div #ranking-primary li:last-child, #mobile-ranking .main aside + div #ranking-primary li:first-child, #mobile-ranking .main aside + div #ranking-primary li:last-child {
       width: 30%; }
-      #desktop-ranking .main aside + div #ranking-primary li:first-child div, #desktop-ranking .main aside + div #ranking-primary li:last-child div,
-      #mobile-ranking .main aside + div #ranking-primary li:first-child div,
-      #mobile-ranking .main aside + div #ranking-primary li:last-child div {
+      #desktop-ranking .main aside + div #ranking-primary li:first-child div, #desktop-ranking .main aside + div #ranking-primary li:last-child div, #mobile-ranking .main aside + div #ranking-primary li:first-child div, #mobile-ranking .main aside + div #ranking-primary li:last-child div {
         background: #40484B;
         padding: 15px; }
-        #desktop-ranking .main aside + div #ranking-primary li:first-child div h2, #desktop-ranking .main aside + div #ranking-primary li:last-child div h2,
-        #mobile-ranking .main aside + div #ranking-primary li:first-child div h2,
-        #mobile-ranking .main aside + div #ranking-primary li:last-child div h2 {
+        #desktop-ranking .main aside + div #ranking-primary li:first-child div h2, #desktop-ranking .main aside + div #ranking-primary li:last-child div h2, #mobile-ranking .main aside + div #ranking-primary li:first-child div h2, #mobile-ranking .main aside + div #ranking-primary li:last-child div h2 {
           font-size: 32px;
           font-weight: 700; }
-        #desktop-ranking .main aside + div #ranking-primary li:first-child div h3, #desktop-ranking .main aside + div #ranking-primary li:last-child div h3,
-        #mobile-ranking .main aside + div #ranking-primary li:first-child div h3,
-        #mobile-ranking .main aside + div #ranking-primary li:last-child div h3 {
+        #desktop-ranking .main aside + div #ranking-primary li:first-child div h3, #desktop-ranking .main aside + div #ranking-primary li:last-child div h3, #mobile-ranking .main aside + div #ranking-primary li:first-child div h3, #mobile-ranking .main aside + div #ranking-primary li:last-child div h3 {
           font-size: 22px;
           font-weight: 600; }
-    #desktop-ranking .main aside + div #ranking-primary li:nth-child(2),
-    #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) {
+    #desktop-ranking .main aside + div #ranking-primary li:nth-child(2), #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) {
       width: 40%;
       padding: 0 30px; }
-      #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) h3,
-      #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) h3 {
+      #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) h3, #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) h3 {
         padding-top: 15px;
         font-weight: 700; }
-      #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart,
-      #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart {
+      #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart, #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart {
         position: relative;
         height: 100%;
         width: 100%; }
-        #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #guru-ranking-progress-bar,
-        #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #guru-ranking-progress-bar {
+        #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #guru-ranking-progress-bar, #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #guru-ranking-progress-bar {
           height: 100%; }
-        #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart svg,
-        #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart svg {
+        #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart svg, #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart svg {
           height: 100%; }
-          #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart svg path,
-          #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart svg path {
+          #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart svg path, #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart svg path {
             stroke-linecap: round; }
-        #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile,
-        #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile {
+        #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile, #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -3952,16 +3918,14 @@
           -ms-transform: translate(-50%, -50%);
           -o-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
-          #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-ranking,
-          #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-ranking {
+          #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-ranking, #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-ranking {
             position: relative;
             margin-top: -20px;
             font-size: 96px;
             font-weight: 600;
             line-height: 1;
             text-align: center; }
-            #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-ranking::after,
-            #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-ranking::after {
+            #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-ranking::after, #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-ranking::after {
               content: "th";
               display: block;
               position: absolute;
@@ -3971,24 +3935,19 @@
               font-weight: 600;
               line-height: 28px;
               text-transform: uppercase; }
-          #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-label,
-          #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-label {
+          #desktop-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-label, #mobile-ranking .main aside + div #ranking-primary li:nth-child(2) #guru-chart #percentile #percentile-label {
             font-size: 20px;
             font-weight: 600;
             letter-spacing: 1px;
             line-height: 1.2;
             text-transform: uppercase; }
-  #desktop-ranking .main aside + div .ugrid-3,
-  #mobile-ranking .main aside + div .ugrid-3 {
+  #desktop-ranking .main aside + div .ugrid-3, #mobile-ranking .main aside + div .ugrid-3 {
     width: 100%; }
-    #desktop-ranking .main aside + div .ugrid-3 li,
-    #mobile-ranking .main aside + div .ugrid-3 li {
+    #desktop-ranking .main aside + div .ugrid-3 li, #mobile-ranking .main aside + div .ugrid-3 li {
       padding: 15px; }
-  #desktop-ranking .main aside + div > div,
-  #mobile-ranking .main aside + div > div {
+  #desktop-ranking .main aside + div > div, #mobile-ranking .main aside + div > div {
     width: 100%; }
-  #desktop-ranking .main aside + div #ranking-secondary li > div,
-  #mobile-ranking .main aside + div #ranking-secondary li > div {
+  #desktop-ranking .main aside + div #ranking-secondary li > div, #mobile-ranking .main aside + div #ranking-secondary li > div {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -4002,34 +3961,26 @@
     align-items: center;
     text-align: left;
     background: #69B3A5; }
-    #desktop-ranking .main aside + div #ranking-secondary li > div div,
-    #mobile-ranking .main aside + div #ranking-secondary li > div div {
+    #desktop-ranking .main aside + div #ranking-secondary li > div div, #mobile-ranking .main aside + div #ranking-secondary li > div div {
       padding: 15px;
       width: calc(100% - 55px);
       font-size: 16px;
       font-weight: 600; }
-      #desktop-ranking .main aside + div #ranking-secondary li > div div h4,
-      #mobile-ranking .main aside + div #ranking-secondary li > div div h4 {
+      #desktop-ranking .main aside + div #ranking-secondary li > div div h4, #mobile-ranking .main aside + div #ranking-secondary li > div div h4 {
         font-size: 28px;
         font-weight: 900; }
-    #desktop-ranking .main aside + div #ranking-secondary li > div svg,
-    #mobile-ranking .main aside + div #ranking-secondary li > div svg {
+    #desktop-ranking .main aside + div #ranking-secondary li > div svg, #mobile-ranking .main aside + div #ranking-secondary li > div svg {
       padding-right: 15px;
       width: 55px;
       height: 40px;
       stroke-linecap: round; }
-  #desktop-ranking .main aside + div #ranking-tertiary li > div,
-  #mobile-ranking .main aside + div #ranking-tertiary li > div {
+  #desktop-ranking .main aside + div #ranking-tertiary li > div, #mobile-ranking .main aside + div #ranking-tertiary li > div {
     background: #485d5d;
     padding: 15px; }
-    #desktop-ranking .main aside + div #ranking-tertiary li > div span,
-    #mobile-ranking .main aside + div #ranking-tertiary li > div span {
+    #desktop-ranking .main aside + div #ranking-tertiary li > div span, #mobile-ranking .main aside + div #ranking-tertiary li > div span {
       display: block;
       font-size: 20px;
       font-weight: 600; }
-    #desktop-ranking .main aside + div #ranking-tertiary li > div h4,
-    #mobile-ranking .main aside + div #ranking-tertiary li > div h4 {
+    #desktop-ranking .main aside + div #ranking-tertiary li > div h4, #mobile-ranking .main aside + div #ranking-tertiary li > div h4 {
       font-size: 28px;
       font-weight: 900; }
-
-/*# sourceMappingURL=desktop.css.map */

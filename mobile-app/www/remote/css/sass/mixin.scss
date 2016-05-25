@@ -5,11 +5,11 @@
 	#{$property}: $value;
 }
 @mixin opacity($opacity) {
-	filter: alpha(opacity=$opacity * 100);
+	/*filter: alpha(opacity=$opacity * 100);*/
 	opacity: $opacity;
 }
 @mixin opacity-important($opacity) {
-	filter: alpha(opacity=$opacity * 100)!important;
+	/*filter: alpha(opacity=$opacity * 100)!important;*/
 	opacity: $opacity!important;
 }
 @mixin transition($transition) {
