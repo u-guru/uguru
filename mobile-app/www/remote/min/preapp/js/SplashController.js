@@ -5,10 +5,15 @@ angular.module('uguru.preApp', ['ionic'])
   '$scope',
   '$state',
   '$timeout',
-  function($scope, $state, $timeout) {
+  '$rootScope',
+  'CategoryService',
+  'UniversityService',
+  function($scope, $state, $timeout, $rootScope) {
     // Listen for the event.
     var splash = this;
     splash.state = {};
+    splash.categories = CategoryService.getLocalCategories();
+    splash.category = splash.categories[0];
 
     portalElem.addEventListener('splashMainLoadingComplete', function (e) {
       document.querySelector('#loader-wrapper').style.visibility = "hidden"

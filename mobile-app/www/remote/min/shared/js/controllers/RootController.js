@@ -9,7 +9,10 @@ angular.module('uguru.shared.controllers')
   function($scope, $state, $timeout) {
     // Listen for the event.
     if (window.location.href.split('/').length > 5) {
-      document.querySelector('.loader-portal').style.display = 'none';
+      var loaderPortal = document.querySelector('.loader-portal');
+      var loaderWrapper = document.querySelector('#loader-wrapper');
+      loaderPortal.parentNode.removeChild(loaderPortal);
+      loaderWrapper.parentNode.removeChild(loaderWrapper);
     }
     var root = this;
     root.window = getBodyDimensions();

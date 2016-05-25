@@ -1,6 +1,35 @@
 @import '../../../../shared/css/scss/partials/mixin';
 
-/* ---------- SPLASH ADLIB TAGS */
+// animation
+.splash-guru-head {
+	.coach-fill {
+		path {
+			&.activate:nth-child(1), &.animate:nth-child(1) {
+				animation: coach-click-2 200ms ease-in 4500ms 1 forwards;
+			}
+			&.activate:nth-child(2), &.animate:nth-child(2) {
+				animation: coach-click-1 200ms ease-in 4500ms 1 forwards;
+			}
+		}
+	}
+}
+
+.splash-adlib {
+	h1 {
+		animation-delay: 500ms;
+	}
+	ul {
+		li {
+			@for $i from 1 through 8 {
+				&:nth-child(#{$i}) {
+					animation-delay: #{850ms + $i*150ms};
+				}
+			}
+		}
+	}
+}
+
+// static
 .tag-adlib:not(.blank):not(.ghost) {
 	i {
 		display: block;
@@ -11,6 +40,225 @@
 	&:hover {
 		i {
 			transform: scale(1.05)!important;
+		}
+	}
+}
+
+.splash-hero-content {
+	@include flex;
+	@include flex-wrap;
+	@include flex-center;
+	position: relative;
+	z-index: 3;
+	width: 100%;
+	margin-bottom: 75px;
+	&.pane {
+		background: $slate;
+		margin-bottom: 0;
+		height: 100%;
+	}
+	&.active {
+		transition-duration: 1000ms;
+		transition-timing-function: ease-in-out;
+		transition-delay: 200ms;
+		transform: translateY(-55%) scale(.75);
+	}
+	.splash-adlib {
+		width: 100%;
+		h1 {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			font-size: 28px;
+			font-weight: 600;
+			a {
+				margin: 0 15px;
+			}
+		}
+		.splash-mobile-cta {
+			margin: 0 15px;
+			background: $shamrock;
+			height: 54px;
+			width: calc(100% - 30px);
+			font-size: 20px;
+			font-weight: 600;
+			text-transform: uppercase;
+			&:not(.bounceInUp) {
+				visibility: hidden;
+			}
+		}
+		ul {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			margin: 15px auto;
+			padding: 7.5px;
+			width: 100%;
+			&.a {
+				li {
+					a {
+						pointer-events: none!important;
+					}
+				}
+			}
+			li {
+				width: 143px;
+				padding: 7.5px;
+				a[class*="translate-blank"] {
+					animation: none!important;
+				}
+			}
+		}
+	}
+}
+
+.splash-guru-head {
+	width: 150px;
+	position: relative;
+	> svg {
+		position: absolute;
+	}
+	.coach-fill {
+		top: 85px;
+		right: -100px;
+		width: 140px;
+		path {
+			&:nth-child(1) {
+				stroke-dasharray: 137;
+				stroke-dashoffset: 137;
+			}
+			&:nth-child(2) {
+				stroke-dasharray: 53;
+				stroke-dashoffset: 53;
+			}
+			&.animate, &.activate {
+				&:nth-child(1) {
+					animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
+				}
+				&:nth-child(2) {
+					animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
+				}
+			}
+		}
+		g g {
+			animation-delay: 3000ms;
+		}
+	}
+	.coach-help {
+		&.coach-help-desktop {
+			display: none;
+			top: -40px;
+			left: -160px;
+			width: 170px;
+		}
+		&.coach-help-mobile {
+			top: -10px;
+			left: -90px;
+			width: 114.5px;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.splash-hero-content {
+		.splash-adlib {
+			h1 {
+				line-height: 1.5;
+			}
+			ul {
+				flex-direction: column;
+				height: 250px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.splash-hero-content {
+		margin-top: -15px;
+		margin-bottom: 0;
+		.splash-guru-head {
+			.splash-logo-guru {
+				svg {
+					transform: scale(.8);
+				}
+			}
+		}
+		.splash-adlib {
+			margin-top: -10px;
+			ul {
+				margin: -10px 0 5px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.splash-hero-content {
+		transform: scale(.9);
+		.splash-adlib {
+			h1 {
+				font-size: 24px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.splash-hero-device {
+		transform: scale(.8);
+	}
+	.splash-hero-content {
+		@transform: scale(.7);
+		.splash-adlib h1 {
+			line-height: 2!important;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.coach-help {
+		&.coach-help-desktop {
+			display: block!important;
+			&.hide {
+				display: none!important;
+			}
+		}
+		&.coach-help-mobile {
+			display: none!important;
+		}
+	}
+	.splash-guru-head {
+		.coach-fill {
+			top: 80px;
+			right: -180px;
+		}
+	}
+	.splash-hero-content {
+		.splash-adlib {
+			&.animate {
+				animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+				z-index: 1;
+			}
+			h1 {
+				font-size: 40px;
+			}
+			.splash-mobile-cta {
+				display: none;
+			}
+			ul {
+				max-width: calc(172px * 4 + 30px);
+				padding: 15px;
+				margin: 0 auto 15px;
+				li {
+					width: 25%;
+					max-width: 172px;
+					padding: 15px;
+					&:nth-child(7), &:nth-child(8) {
+						display: block;
+					}
+				}
+			}
 		}
 	}
 }

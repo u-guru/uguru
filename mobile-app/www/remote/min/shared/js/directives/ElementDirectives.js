@@ -3,7 +3,7 @@ angular.module('uguru.shared.directives')
   return {
     restrict: 'A',
     link: function(scope, element, attr) {
-      elem.ready(function(){
+      element.ready(function(){
         var kvSplit = attr.onInit && attr.onInit.length && attr.onInit.split(':');
         if (kvSplit && kvSplit.length > 1) {
           onInitProperty = kvSplit[0];

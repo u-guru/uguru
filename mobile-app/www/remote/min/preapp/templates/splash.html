@@ -1,11 +1,56 @@
 <ion-view id='splash-view' class='bg-charcoal' ng-controller='SplashController as splash'>
     <ion-content class='relative'>
         <main class='splash-landing' id="home-splash">
-            <section id='splash-home' class='splash-hero' ng-if='splash.renderView'>
-                <div id='splash-madlib-container' ng-if='splash.state.madlib' ng-controller='SplashMadlibController as madlib' ng-include="img_base + BASE + 'remote/min/preapp/templates/splash.madlib.html'">
-                </div>
+            <section id='splash-home' class='splash-hero'>
+
+                <!-- 1. Nav -->
+                    <!-- Categories -->
+                    <!-- University -->
+                        <!-- UniversitySearch -->
+                        <!-- IDCard -->
+                    <!-- Sidebar Icon-->
+                    <!-- Logo -->
+
+                <!-- 3. Sidebar -->
+                    <!-- Pricing -->
+                    <!-- Team -->
+                    <!-- FAQ -->
+                    <!-- Support -->
+                    <!-- Modules -->
+                        <!-- ID Card-->
+
+                <!-- Powerups -->
+                    <!-- GPA -->
+                    <!-- Food -->
+                    <!-- Sound -->
+                    <!-- Focus -->
+
+                <!-- 4. Map -->
+
+                <!-- Transitions -->
+                    <!-- Getting Started Curtains-->
+                    <!-- Transition to Student Home-->
+
+                <!-- 2. device -->
                 <div id='splash-device-container' ng-if='splash.state.device' ng-include="img_base + BASE + 'templates/splash/container/splash.device.container.html'">
                 </div>
+
+                <!-- 0. Madlib -->
+                <div id='splash-madlib-container' ng-include="img_base + BASE + 'remote/min/preapp/templates/splash.madlib.html'">
+                </div>
+
+                <!-- 5. getting started -->
+                    <!-- Modules -->
+                        <!-- Swiper + controls -->
+                        <!-- Proejctor Screen -->
+                        <!-- Progress bar -->
+                    <!-- Getting Started -->
+                    <!-- how it works -->
+                    <!-- university confirmed -->
+                    <!-- Access -->
+                    <!-- Demographics -->
+                    <!-- Account/Signup -->
+                    <!-- Become a Guru -->
             </section>
         </main>
     </ion-content>
