@@ -1,7 +1,6 @@
 <div class="splash-hero-content" ng-class="{'a': splash.state.madlib}" activate-on-class="a" class-on-activate="active" class-on-activate-delay="1000" style='z-index:100 !important;' ng-controller='SplashMadlibController as madlib'>
     <div class="splash-guru-head">
         <div class="splash-hero-guru splash-logo-guru" activate-on-class="a" class-on-activate="fadeOut:animOut" class-on-clear="lightSpeedIn:anim" class-on-clear-delay="4000" anim ng-include="root.base_url + 'templates/svg/guru-head.html'"></div>
-        <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop  animated" viewBox="0 0 340 205">
             <g fill="none">
                 <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -33,7 +32,7 @@
             </g>
         </svg>
     </div>
-    <div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, null:inject.splash-hero-map|activate" eval-on-activate="activateMap()">
+    <div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, null:inject.splash-hero-map|activate" eval-on-activate="madlib.activateMap()">
         <div class="splash-adlib-inside a" activate-on-class="a" class-on-activate="active:keep">
             <h1 class=""
                 class-on-load="u-bounceIn-subtle" class-on-load-delay="800"
