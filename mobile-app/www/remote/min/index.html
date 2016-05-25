@@ -124,8 +124,17 @@
             'shared/js/services/UniversityService.js',
             'shared/js/services/GUtilService.js',
             'shared/js/services/ContentService.js',
+            'shared/js/services/LoadingService.js',
+            'shared/js/services/KeyboardService.js',
+            'shared/js/services/UtilitiesService.js',
+            'shared/js/services/FileService.js',
+            'admin/js/AdminAnimToolService.js',
+            'admin/js/SpecContentService.js',
+            'admin/js/SpecService.js',
             'main.js',
             'shared/js/controllers/RootController.js',
+            'admin/js/AdminController.js',
+            'admin/js/AdminActionController.js',
             'preapp/js/SplashController.js',
             'preapp/js/SplashMadlibController.js'
         ];
@@ -160,7 +169,7 @@
             var snapLoadedEvent = initEventFromName('shouldRenderSplashTransition');
             script_elem.onload = function(e) {
                 globalLoader = new SVGLoader(document.querySelector('#loader-wrapper .pageload-overlay'), {
-                    speedOut: 300,
+                    speedOut: 700,
                     easingOut: mina.easeinout
                 });
                 globalLoader.show();

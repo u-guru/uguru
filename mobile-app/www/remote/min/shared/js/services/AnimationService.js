@@ -176,8 +176,24 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
             return;
         }
         var cssClassArgs = getCSSArgs(css_class)
-
-        $timeout(function() {
+        elem.classList.remove('animated');
+        if (delay) {
+          $timeout(function() {
+              elem.classList.add('animated', cssClassArgs.class);
+              prefixedEventListener(elem,"AnimationStart",function(e){
+                elem.style.opacity = 1;
+                e.target.removeEventListener(e.type, false);
+              });
+              prefixedEventListener(elem,"AnimationEnd",function(e){
+                  if (cssClassArgs.keep) {
+                      elem.classList.remove("animated");
+                  } else {
+                      elem.classList.remove(cssClassArgs.class, "animated");
+                  }
+                  e.target.removeEventListener(e.type, false);
+              });
+          }, delay || 0);
+        } else {
             elem.classList.add('animated', cssClassArgs.class);
             prefixedEventListener(elem,"AnimationStart",function(e){
               elem.style.opacity = 1;
@@ -191,7 +207,7 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
                 }
                 e.target.removeEventListener(e.type, false);
             });
-        }, delay || 0);
+        }
     }
 
     function animateOut(elem, css_class, delay) {
@@ -201,8 +217,25 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
         }
         var cssClassArgs = getCSSArgs(css_class)
 
+        if (delay) {
+          $timeout(function() {
+              elem.classList.add('animated', cssClassArgs.class);
+              prefixedEventListener(elem,"AnimationStart",function(e){
+                  elem.style.opacity = 0;
+                  e.target.removeEventListener(e.type, false);
+              });
 
-        $timeout(function() {
+              prefixedEventListener(elem,"AnimationEnd",function(e){
+                  if (cssClassArgs.keep) {
+                          elem.classList.remove("animated");
+                  } else {
+                      elem.classList.remove(cssClassArgs.class, "animated");
+                  }
+                  e.target.removeEventListener(e.type, false);
+              })
+
+          }, delay || 0);
+        } else {
             elem.classList.add('animated', cssClassArgs.class);
             prefixedEventListener(elem,"AnimationStart",function(e){
                 elem.style.opacity = 0;
@@ -217,8 +250,7 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
                 }
                 e.target.removeEventListener(e.type, false);
             })
-
-        }, delay || 0);
+        }
     }
 
     function getCSSArgs(class_name) {

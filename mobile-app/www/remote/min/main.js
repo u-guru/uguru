@@ -2,7 +2,7 @@ var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var
 
 angular.module('uguru', ['ionic', 'restangular', 'uguru.preApp',
   'uguru.shared.directives', 'uguru.shared.services',
-  'uguru.shared.controllers'])
+  'uguru.shared.controllers', 'uguru.admin'])
 
 .run(function($ionicPlatform,
   $state, $ionicHistory, $rootScope,
@@ -47,7 +47,16 @@ angular.module('uguru', ['ionic', 'restangular', 'uguru.preApp',
   })
   .state('root.splash-madlib', {
     url:'/splash/madlib',
-    templateUrl: 'preapp/templates/splash.madlib.html'
+    templateUrl: 'preapp/templates/splash.madlib.html',
+    controller: function($scope) {
+      $scope.splash = {state: {madlib:true}};
+    },
+    templateUrl: 'preapp/templates/splash.madlib.html',
+  })
+  .state('root.admin', {
+    url:'/admin',
+    controller: 'AdminController',
+    templateUrl: 'admin/templates/index.html',
   })
 
 

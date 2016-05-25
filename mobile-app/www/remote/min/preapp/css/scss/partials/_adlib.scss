@@ -21,7 +21,7 @@
 	ul {
 		li {
 			@for $i from 1 through 8 {
-				&:nth-child(#{$i}) { 
+				&:nth-child(#{$i}) {
 					animation-delay: #{850ms + $i*150ms};
 				}
 			}

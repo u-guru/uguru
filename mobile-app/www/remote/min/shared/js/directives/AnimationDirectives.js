@@ -573,12 +573,90 @@ directive("evalOnLoad", ["$timeout", 'AnimationService', '$parse', function($tim
           }
       }
 }]).
+directive("elemStates", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              //if its not an array then not qualified
+              if (attr.elemStates.indexOf(']') === -1 || attr.elemStates.indexOf('[') === -1) return;
+              var elemStates = removeAllOccurrancesArr(attr.elemStates, ['[', ']', ' ', "'", '"']).split(',')
+              var processedElemStates = [];
+              for (var i = 0; i < elemStates.length; i++) {
+                var onEnterAttr = 'on-' + elemStates[i] + '-enter';
+                var onExitAttr = 'on-' + elemStates[i] + '-exit';
+
+                //check if you defined those attr
+                if (camelCase(onEnterAttr) in attr) {
+                  processedElemStates.push(onEnterAttr);
+                }
+                if (camelCase(onExitAttr) in attr) {
+                  processedElemStates.push(onExitAttr);
+                }
+              }
+
+              scope.$watch(function() {
+                return element.attr('class');
+              }, function(newValue, oldValue) {
+                console.log('classes have changed!', newValue, oldValue);
+                for (var i = 0; i < processedElemStates.length; i++) {
+                  if (newValue.split(' ').indexOf(processedElemStates[i]) > -1) {
+                    element[0].classList.remove(processedElemStates[i]);
+                    var elemStateValue = attr[camelCase(processedElemStates[i])];
+                    var elemStateClass = elemStateValue.split(':')[0];
+                    var elemArgDict = parseElemStateAttrValueArgs(elemStateValue.split(':').splice(1));
+                    if (elemArgDict.animateIn) {
+                      console.log('animating in', element[0].nodeName, elemStateClass, elemArgDict.delay, '\n\n', element[0])
+                      AnimationService.animateIn(element[0], elemStateClass, elemArgDict.delay);
+                    } else if (elemArgDict.animateOut) {
+                      console.log('animating out', element[0].nodeName, elemStateClass, elemArgDict.delay, '\n\n', element[0])
+                      AnimationService.animateOut(element[0], elemStateClass, elemArgDict.delay);
+                    }
+
+                  }
+                }
+              });
+
+              // for (var i = 0; i < attr.elemStates.length)
+              // element.on("click", function() {
+              //   var delay = attr.classOnClickDelay || 0;
+              //   var classes = attr.classOnClick.split(", ");
+              //   $timeout(function() {
+              //       for (var i = 0; i < classes.length; i++) {
+              //         var indexClass = classes[i].split(":")[0];
+              //         var classArgs = classes[i].split(":").slice(1);
+              //         if (classArgs.indexOf("anim") > -1) {
+              //           if (classArgs.indexOf("keep") > -1) {
+              //             indexClass = indexClass +':keep';
+              //           }
+              //         }
+              //       }
+              //   })
+              // })
+          }
+      }
+
+      function parseElemStateAttrValueArgs(arg_arr) {
+        var resultDict = {};
+        for (var i = 0; i < arg_arr.length; i++) {
+          var indexArg = arg_arr[i];
+          if (indexArg === 'anim') {
+            resultDict.animateIn = true;
+          }
+          if (indexArg.indexOf('delay-') > -1) {
+            resultDict.delay = parseInt(indexArg.replace('delay-', ''))
+          }
+          if (indexArg === 'animOut') {
+            resultDict.animateOut = true;
+          }
+        }
+        return resultDict;
+      }
+}]).
 directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
               element.on("click", function() {
-                console.log(element[0], 'clicked');
                 var delay = attr.classOnClickDelay || 0;
                 var classes = attr.classOnClick.split(", ");
                 $timeout(function() {
@@ -631,7 +709,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
           function classArgsHasInject(args) {
             var injectArg = null;
             args.filter(function(word, index) {
-              console.log(word);
               if (word.indexOf("inject") > -1) {
                 injectArg = args[index];
                 return true
@@ -691,4 +768,25 @@ function isElementInViewport (el) {
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
         rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
     );
+}
+function removeAllOccurrancesArr(str, remove_arr_str) {
+  for (var i = 0; i < remove_arr_str.length; i++) {
+    var indexRemoveStr = remove_arr_str[i];
+    str = replaceAll(str, indexRemoveStr, '');
+  }
+  return str;
+}
+
+function replaceAll(str, find, replace) {
+  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+
+  function escapeRegExp(str) {
+      return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+  }
+
+}
+function camelCase(input) {
+    return input.toLowerCase().replace(/-(.)/g, function(match, group1) {
+        return group1.toUpperCase();
+    });
 }
