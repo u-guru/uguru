@@ -1,0 +1,10 @@
+@import '../../../../shared/css/scss/partials/mixin';
+
+.splash-landing {
+	background: $slate;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	width: 100%;
+	height: 100%;
+}
