@@ -53,8 +53,7 @@ p {
 .uppercase {
   text-transform: capitalize; }
 
-.home-request-tabs-top
-a.tab-item {
+.home-request-tabs-top a.tab-item {
   text-transform: uppercase;
   font-size: 80%;
   max-width: none;
@@ -63,11 +62,9 @@ a.tab-item {
 .opacity-1-2 {
   opacity: 0.65 !important; }
 
-.white-bg .tab-item,
-.dark-bg .tab-item {
+.white-bg .tab-item, .dark-bg .tab-item {
   padding-top: 10px; }
-  .white-bg .tab-item img,
-  .dark-bg .tab-item img {
+  .white-bg .tab-item img, .dark-bg .tab-item img {
     height: 20px;
     width: 20px; }
 
@@ -178,7 +175,7 @@ textarea {
   text-transform: uppercase; }
 
 .course-divider p {
-  opacity: .8 !important;
+  opacity: 0.8 !important;
   font-family: "OpenSans-Bold";
   font-size: 66%;
   text-align: center; }
@@ -188,7 +185,7 @@ textarea {
   font-size: 87.5%; }
   .course-item .course-name {
     font-family: "OpenSans-SemiBold";
-    opacity: 1.0 !important;
+    opacity: 1 !important;
     text-transform: uppercase; }
   .course-item .course-title {
     font-family: "OpenSans-Regular";
@@ -227,7 +224,7 @@ textarea {
 .toggle input:checked + .track {
   border-color: #68A7CF;
   background-color: #68A7CF;
-  opacity: 1.0; }
+  opacity: 1; }
 
 .toggle .track {
   background-color: black;
@@ -242,17 +239,14 @@ textarea {
   float: right;
   font-size: 0.9em;
   font-family: "OpenSans-SemiBold";
-  opacity: 1.0 !important;
+  opacity: 1 !important;
   margin: 0px; }
 
-.scroll-availability-section .length-hours,
-.scroll-availability-section .length-minutes,
-.scroll-availability-section .i-think-text {
+.scroll-availability-section .length-hours, .scroll-availability-section .length-minutes, .scroll-availability-section .i-think-text {
   font-size: 1.25em;
   font-family: "OpenSans-Light";
   opacity: 0.7; }
-.scroll-availability-section .length-hours,
-.scroll-availability-section .length-minutes {
+.scroll-availability-section .length-hours, .scroll-availability-section .length-minutes {
   color: #68A7CF;
   font-family: "OpenSans-Regular"; }
 .scroll-availability-section .request-availability-container {
@@ -262,7 +256,7 @@ textarea {
 .scroll-availability-section .availability-scroller .pure-u-1 {
   font-family: "OpenSans-Light";
   padding: 0.5em;
-  padding-right: 2.0em;
+  padding-right: 2em;
   width: 150px;
   text-align: right; }
 .scroll-availability-section .length-minutes {
@@ -270,7 +264,7 @@ textarea {
   top: 0%;
   left: 90%;
   width: 150px;
-  opacity: 1.0;
+  opacity: 1;
   z-index: 100; }
   .scroll-availability-section .length-minutes .pure-u-1 {
     text-align: left; }
@@ -489,8 +483,7 @@ input.dark-search {
 .description-wrapper {
   min-height: 75px; }
 
-.questions-modal
-.description-wrapper-item {
+.questions-modal .description-wrapper-item {
   padding: 0.75em 1.25em;
   font-size: 0.85em; }
 
@@ -519,8 +512,7 @@ input.dark-search {
   color: rgba(0, 0, 0, 0.6); }
 .action-sheet .action-sheet-group {
   border-radius: 3px; }
-.action-sheet .action-sheet-cancel
-button {
+.action-sheet .action-sheet-cancel button {
   font-family: "OpenSans-SemiBold";
   text-transform: capitalize;
   font-size: 0.85em;
@@ -684,8 +676,7 @@ input.ion-google-place[readonly] {
   background-color: transparent;
   cursor: text; }
 
-.activated.cancel-active,
-.active.cancel-active {
+.activated.cancel-active, .active.cancel-active {
   background-color: inherit;
   color: inherit; }
 
@@ -715,8 +706,7 @@ img.custom-icon {
   max-width: 18px !important;
   max-height: 18px; }
 
-img.custom-icon.chevron-filled-left,
-img.custom-icon.chevron-filled-down {
+img.custom-icon.chevron-filled-left, img.custom-icon.chevron-filled-down {
   height: 18px;
   top: 39%;
   right: 0.55em; }
@@ -811,8 +801,7 @@ img.custom-icon.list-custom-icon.request-icon {
   text-transform: none;
   color: white; }
 
-.button.button-full.button-blue.active,
-.button.button-full.button-blue.activated {
+.button.button-full.button-blue.active, .button.button-full.button-blue.activated {
   background-color: #68A7CF;
   opacity: 0.7;
   color: white; }
@@ -847,12 +836,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: normal;
   font-family: "OpenSans-Light"; }
 
-#guru-home
-h2 {
+#guru-home h2 {
   font-size: 1.5em; }
 
-#guru-home .scroll:nth-child(1),
-#guru-questions .scroll:nth-child(1) {
+#guru-home .scroll:nth-child(1), #guru-questions .scroll:nth-child(1) {
   height: 100%; }
 
 #guru-home .tags-wrapper {
@@ -1076,13 +1063,11 @@ ion-list.list-inset.visible-overflow.proposal-card-request.disable-user-behavior
   font-family: OpenSans-Bold !important;
   font-size: 90% !important; }
 
-.button-footer.button.activated, button.active, .button.button-footer.active,
-.button-footer.button:focus {
+.button-footer.button.activated, button.active, .button.button-footer.active, .button-footer.button:focus {
   color: white;
   opacity: 0.85; }
 
-.button-footer.button.activated, button.active, .button.button-footer.active,
-.button-footer.button:focus, .button-footer.button:visited {
+.button-footer.button.activated, button.active, .button.button-footer.active, .button-footer.button:focus, .button-footer.button:visited {
   color: white;
   opacity: 0.85; }
 
@@ -1117,15 +1102,13 @@ p.university-header {
 .professional-width {
   width: 34%; }
 
-.platform-ios .professional-width,
-.platform-android .professional-width {
+.platform-ios .professional-width, .platform-android .professional-width {
   width: 33%; }
 
 .hs-student-width {
   width: 30%; }
 
-.platform-ios .hs-student-width,
-.platform-android .hs-student-width {
+.platform-ios .hs-student-width, .platform-android .hs-student-width {
   width: 35%; }
 
 .university-label {
@@ -1496,16 +1479,14 @@ select.current-hourly-price {
 .platform-ios .task-filter-item:nth-child(1) {
   overflow: visible; }
 
-.jp-card .jp-card-front, .jp-card .jp-card-back,
-.jp-card.jp-card-identified .jp-card-front {
+.jp-card .jp-card-front, .jp-card .jp-card-back, .jp-card.jp-card-identified .jp-card-front {
   width: 80% !important;
   margin: 0 auto !important;
   height: 70% !important;
   top: 10% !important;
   left: 10% !important; }
 
-.jp-card .jp-card-front .jp-card-lower .jp-card-number,
-.jp-card.jp-card-identified .jp-card-front .jp-card-lower .jp-card-number {
+.jp-card .jp-card-front .jp-card-lower .jp-card-number, .jp-card.jp-card-identified .jp-card-front .jp-card-lower .jp-card-number {
   font-size: 18px;
   margin-bottom: 15px; }
 
@@ -1678,8 +1659,7 @@ button.button-full.ratings-footer-button {
   .card-icons-right .ion-checkmark {
     font-size: 120%;
     padding-right: 1.5em; }
-  .card-icons-right .ion-chevron-right,
-  .card-icons-right .ion-plus {
+  .card-icons-right .ion-chevron-right, .card-icons-right .ion-plus {
     padding-right: 0.5em;
     opacity: 0.7; }
 
@@ -2195,5 +2175,3 @@ p.fake-placeholder-text {
 
 .root-ion-side-menus.pane, .ion-side-menus-content.pane {
   background-color: transparent; }
-
-/*# sourceMappingURL=components-old.css.map */

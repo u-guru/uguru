@@ -8,19 +8,7 @@
     border-color: #69B3A5;
     font-weight: 700;
     text-transform: uppercase; }
-  .guru-view button.bg-shamrock.button.guru-home-footer-button.active,
-  .guru-view button.bg-shamrock.button.guru-home-footer-button.activated,
-  .guru-view button.bg-shamrock.button.guru-home-footer-button:hover,
-  .guru-view button.bg-shamrock.button.guru-home-footer-button:visited,
-  .guru-view button.bg-shamrock.button.guru-home-footer-button:focus, .credibility-view button.bg-shamrock.button.guru-home-footer-button.active,
-  .credibility-view button.bg-shamrock.button.guru-home-footer-button.activated,
-  .credibility-view button.bg-shamrock.button.guru-home-footer-button:hover,
-  .credibility-view button.bg-shamrock.button.guru-home-footer-button:visited,
-  .credibility-view button.bg-shamrock.button.guru-home-footer-button:focus, .guru-profile-view button.bg-shamrock.button.guru-home-footer-button.active,
-  .guru-profile-view button.bg-shamrock.button.guru-home-footer-button.activated,
-  .guru-profile-view button.bg-shamrock.button.guru-home-footer-button:hover,
-  .guru-profile-view button.bg-shamrock.button.guru-home-footer-button:visited,
-  .guru-profile-view button.bg-shamrock.button.guru-home-footer-button:focus {
+  .guru-view button.bg-shamrock.button.guru-home-footer-button.active, .guru-view button.bg-shamrock.button.guru-home-footer-button.activated, .guru-view button.bg-shamrock.button.guru-home-footer-button:hover, .guru-view button.bg-shamrock.button.guru-home-footer-button:visited, .guru-view button.bg-shamrock.button.guru-home-footer-button:focus, .credibility-view button.bg-shamrock.button.guru-home-footer-button.active, .credibility-view button.bg-shamrock.button.guru-home-footer-button.activated, .credibility-view button.bg-shamrock.button.guru-home-footer-button:hover, .credibility-view button.bg-shamrock.button.guru-home-footer-button:visited, .credibility-view button.bg-shamrock.button.guru-home-footer-button:focus, .guru-profile-view button.bg-shamrock.button.guru-home-footer-button.active, .guru-profile-view button.bg-shamrock.button.guru-home-footer-button.activated, .guru-profile-view button.bg-shamrock.button.guru-home-footer-button:hover, .guru-profile-view button.bg-shamrock.button.guru-home-footer-button:visited, .guru-profile-view button.bg-shamrock.button.guru-home-footer-button:focus {
     text-decoration: none;
     height: 49px;
     line-height: 49px;
@@ -198,5 +186,3 @@
     .guru-view .guru-tabs a.tab-item.active i, .credibility-view .guru-tabs a.tab-item.active i, .guru-profile-view .guru-tabs a.tab-item.active i {
       color: #6F98B5 !important;
       opacity: 1 !important; }
-
-/*# sourceMappingURL=guru.css.map */

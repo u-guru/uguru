@@ -97,11 +97,11 @@ gulp.task('express', function() {
 
 
 var IS_WATCH = false;
-gulp.task('watch', function() {
-  IS_WATCH = true;
-  gulp.watch('www/remote/css/sass/*.scss', ['sass', 'sassy']);
-  // gulp.watch('www/remote/js/**/*js', ['jshint-current']);
-});
+// gulp.task('watch', function() {
+//   IS_WATCH = true;
+//   gulp.watch('www/remote/css/sass/*.scss', ['sass', 'sassy']);
+//   // gulp.watch('www/remote/js/**/*js', ['jshint-current']);
+// });
 gulp.task('jshint-current',function(){
      gulp.watch('www/remote/js/**/*js').on('change', function(file) {
       // plugins.livereload.changed(file.path);
@@ -112,38 +112,46 @@ gulp.task('jshint-current',function(){
          .on('error', errorHandler);
      });
 });
+
+gulp.task('sass:watch', function () {
+    IS_WATCH = true;
+  gulp.watch('www/remote/css/sass/*scss', ['sass']);
+});
+
 gulp.task('sass', function(done) {
   gulp.watch('www/remote/css/sass/**/*scss').on('change', function(file) {
    // plugins.livereload.changed(file.path);
    gutil.log(gutil.colors.yellow('CSS changed' + ' (' + file.path + ')'));
-      gulp.src(file.path)
-        .pipe(sass({
-          onError: function(err) {
-            //If we're watching, don't exit on error
-            if (IS_WATCH) {
-              console.log(gutil.colors.red(err));
-            } else {
-              done(err);
-            }
-          }
+      gulp.src('www/remote/css/sass/**/*scss')
+        // .pipe(sass({
+        //   onError: function(err) {
+        //     //If we're watching, don't exit on error
+        //     if (IS_WATCH) {
+        //       console.log(gutil.colors.red(err));
+        //     } else {
+        //       done(err);
+        //     }
+        //   }
+        // }))
+        .pipe(sass().on('error',function(error){
+          gutil.log(gutil.colors.yellow('error' + ' (' + error + ')'));
+
         }))
         .pipe(gulp.dest('www/remote/css/sass'))
         .on('end', done);
   });
 
 
-  // gulp.src('www/remote/css/sass/new.scss')
-  //   .pipe(sass({
-  //     onError: function(err) {
+  // gulp.src(['www/remote/css/sass/*scss','!www/remote/css/sass/mixin.scss'])
+  //   .pipe(sass().on('error',function(err) {
   //       //If we're watching, don't exit on error
   //       if (IS_WATCH) {
-  //         console.log(gutil.colors.red(err));
+  //         gutil.log(gutil.colors.red(err));
   //       } else {
   //         done(err);
   //       }
-  //     }
-  //   }))
-  //   .pipe(plugins.concat('new.css'))
+  //     }))
+  //   // .pipe(plugins.concat('new.css'))
   //   .pipe(gulp.dest('www/remote/css/sass'))
   //   .on('end', done);
 });

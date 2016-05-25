@@ -1,12 +1,9 @@
-.terms-modal, .faq-modal,
-.support-modal {
+.terms-modal, .faq-modal, .support-modal {
   color: #2B3234; }
-  .terms-modal p, .faq-modal p,
-  .support-modal p {
+  .terms-modal p, .faq-modal p, .support-modal p {
     font-size: 13px;
     margin: 10px 0px; }
-  .terms-modal .has-header, .faq-modal .has-header,
-  .support-modal .has-header {
+  .terms-modal .has-header, .faq-modal .has-header, .support-modal .has-header {
     top: 54px; }
 
 .faq-modal header.bg-charcoal {
@@ -14,7 +11,6 @@
   .faq-modal header.bg-charcoal h1.onboarding-message.text-center {
     width: 50%;
     margin: 0 auto; }
-
 .faq-modal iframe {
   min-height: 150%;
   top: 0;
@@ -23,7 +19,6 @@
   width: 100%; }
   .faq-modal iframe header#top {
     display: none !important; }
-
 .faq-modal .has-header.full-height {
   top: 0;
   z-index: 0; }
@@ -40,11 +35,9 @@
   .university-modal a.header-nav-back .ion-chevron-down {
     position: absolute;
     top: 0; }
-
 .university-modal .list-item.school-harvard {
   overflow: auto !important;
   overflow-y: hidden !important; }
-
 .university-modal .school-name {
   overflow-x: hidden;
   padding-right: 20px; }
@@ -58,13 +51,11 @@
   .university-modal .school-name i {
     font-size: 13px;
     font-weight: 400; }
-
 .university-modal header a .ion-close-circled {
   right: 15px;
   top: -31px;
   font-size: 18px;
   opacity: 0.7; }
-
 .university-modal .list-item.school-harvard .school-icon img {
   border: 2px solid #ee7f2d;
   border-radius: 50%;

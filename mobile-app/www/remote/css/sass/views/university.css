@@ -21,8 +21,7 @@ header a.geolocation-icon {
     right: 3px !important;
     font-size: 100% !important; }
 
-header .ion-navigate.active,
-header .ion-navigate.activated {
+header .ion-navigate.active, header .ion-navigate.activated {
   color: white !important;
   opacity: 1;
   position: absolute;
@@ -124,5 +123,3 @@ section#school header {
 
 .university-city {
   text-transform: capitalize; }
-
-/*# sourceMappingURL=university.css.map */
