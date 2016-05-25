@@ -1,7 +1,6 @@
 @font-face {
   font-family: "Impact Label";
-  src: url("../../fonts/Impact_Label-webfont.eot");
-  src: url("../../fonts/Impact_Label-webfont#iefix") format("embedded-opentype"), url("../../fonts/Impact_Label-webfont.ttf") format("truetype"), url("../../fonts/Impact_Label-webfont.woff") format("woff"), url("../../fonts/Impact_Label-webfont.svg#impact_labelregular") format("svg");
+  src: url(../../fonts/impact_label-webfont.woff2) format("woff2"), url(../../fonts/impact_label-webfont.woff) format("woff");
   font-weight: normal;
   font-style: normal; }
 @font-face {
