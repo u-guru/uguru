@@ -8,6 +8,9 @@ angular.module('uguru.shared.controllers')
   '$timeout',
   function($scope, $state, $timeout) {
     // Listen for the event.
+    if (window.location.href.split('/').length > 5) {
+      document.querySelector('.loader-portal').style.display = 'none';
+    }
     var root = this;
     root.window = getBodyDimensions();
     root.base_url = img_base + BASE;
