@@ -1,0 +1,16 @@
+@import '../../../../shared/css/scss/partials/mixin';
+
+/* ---------- SPLASH ADLIB TAGS */
+.tag-adlib:not(.blank):not(.ghost) {
+	i {
+		display: block;
+		font-style: normal;
+		transition: all 600ms cubic-bezier(.77,0,.05,1);
+		transition: all 600ms cubic-bezier(.77,-0.22,.05,1.27);
+	}
+	&:hover {
+		i {
+			transform: scale(1.05)!important;
+		}
+	}
+}
