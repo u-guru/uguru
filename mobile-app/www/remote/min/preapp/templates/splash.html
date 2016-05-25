@@ -2,8 +2,8 @@
     <ion-content class='relative'>
         <main class='splash-landing' id="home-splash">
             <section id='splash-home' class='splash-hero' ng-if='splash.renderView'>
-                <div id='splash-madlib-container' class="full-xy" ng-if='splash.state.madlib' ng-controller='SplashMadlibController as madlib' ng-include="img_base + BASE + 'remote/min/preapp/templates/splash.madlib.html'"> </div>
-                <div id='splash-device-container' ng-include="img_base + BASE + 'templates/min/preapp/templates/splash.device.html'">
+                <div id='splash-madlib-container' class="full-xy" ng-if='splash.state.madlib' ng-controller='SplashMadlibController as madlib' ng-include="'preapp/templates/splash.madlib.html'"> </div>
+                <div id='splash-device-container' ng-include="'preapp/templates/splash.device.html'">
                 </div>
                 <!-- ng-if='splash.state.device' -->
             </section>

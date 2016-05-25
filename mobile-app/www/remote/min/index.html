@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
-    <link href="remote/min/preapp/css/loader.css" rel="stylesheet">
+    <link href="preapp/css/loader.css" rel="stylesheet">
     <script>
         var timer = {
             initTime: new Date().getTime()
@@ -104,33 +104,33 @@
 
     <script>
         var files = [
-            'remote/css/ionic.app.min.css:async',
-            'remote/min/shared/css/compiled/style.css:async',
-            'remote/min/shared/css/compiled/utility.css:async',
-            'remote/min/shared/css/compiled/components.css:async',
-            'remote/min/shared/css/compiled/animation.css:async',
-            'remote/min/preapp/css/compiled/preapp.css:async',
-            'remote/min/shared/js/lib/bowser.min.js:async',
-            'remote/min/shared/js/lib/snap.svg.min.js',
-            'remote/min/shared/js/lib/ionic.bundle.min.js',
-            'remote/min/shared/js/lib/restangular.min.js',
-            'remote/min/shared/js/lib/lodash.min.js',
-            'remote/min/shared/js/directives/AnimationDirectives.js',
-            'remote/min/shared/js/directives/ElementDirectives.js',
-            'remote/min/shared/js/directives/ComponentDirectives.js',
-            'remote/min/shared/js/services/LocalStorageService.js',
-            'remote/min/shared/js/services/AnimationService.js',
-            'remote/min/shared/js/services/CategoryService.js',
-            'remote/min/shared/js/services/UniversityService.js',
-            'remote/min/shared/js/services/GUtilService.js',
-            'remote/min/shared/js/services/ContentService.js',
-            'remote/min/main.js',
-            'remote/min/shared/js/controllers/RootController.js',
-            'remote/min/preapp/js/SplashController.js',
-            'remote/min/preapp/js/SplashMadlibController.js'
+            'shared/css/ionic.app.min.css:async',
+            'shared/css/compiled/style.css:async',
+            'shared/css/compiled/utility.css:async',
+            'shared/css/compiled/components.css:async',
+            'shared/css/compiled/animation.css:async',
+            'preapp/css/compiled/preapp.css:async',
+            'shared/js/lib/bowser.min.js:async',
+            'shared/js/lib/snap.svg.min.js',
+            'shared/js/lib/ionic.bundle.min.js',
+            'shared/js/lib/restangular.min.js',
+            'shared/js/lib/lodash.min.js',
+            'shared/js/directives/AnimationDirectives.js',
+            'shared/js/directives/ElementDirectives.js',
+            'shared/js/directives/ComponentDirectives.js',
+            'shared/js/services/LocalStorageService.js',
+            'shared/js/services/AnimationService.js',
+            'shared/js/services/CategoryService.js',
+            'shared/js/services/UniversityService.js',
+            'shared/js/services/GUtilService.js',
+            'shared/js/services/ContentService.js',
+            'main.js',
+            'shared/js/controllers/RootController.js',
+            'preapp/js/SplashController.js',
+            'preapp/js/SplashMadlibController.js'
         ];
         var fileInitCB = {
-            'remote/min/shared/js/lib/snap.svg.min.js': initSnapLoadedEvent
+            '/shared/js/lib/snap.svg.min.js': initSnapLoadedEvent
         }
         var isAngularReady = false;
         for (var i = 0; i < files.length; i++) {

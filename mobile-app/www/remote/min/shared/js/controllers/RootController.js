@@ -13,7 +13,7 @@ angular.module('uguru.shared.controllers')
     }
     var root = this;
     root.window = getBodyDimensions();
-    root.base_url = img_base + BASE;
+    //root.base_url = img_base + BASE;
   }
 ]);
 
@@ -24,5 +24,3 @@ function getBodyDimensions() {
     var isDesktop = (bodyRect.height >= desktopHeightLimit && bodyRect.width >= desktopWidthLimit);
     return {height:bodyRect.height, width: bodyRect.width, desktop: isDesktop, mobile: !isDesktop}
 };
-
-
