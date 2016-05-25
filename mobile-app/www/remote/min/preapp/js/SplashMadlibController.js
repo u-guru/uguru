@@ -40,12 +40,23 @@ angular.module('uguru.preApp')
 
     //in case user switches category during map view
     madlib.returnNormalState = function() {};
+    $timeout(function() {
+        $scope.splash.category = CategoryService.getLocalCategories()[1];
+        // madlib.category  = $scope.splash.category;
+        console.log('switching categories', $scope.splash.category);
+        // elem && elem.classList.add('on-category-switch-exit');
+    }, 5000);
 
 
     $scope.$watch('splash.category', function(newVal, oldVal) {
       if (!$scope.splash.state.madlib) return;
-      var elem = document.querySelector('[on-category-switch-enter]')
-      elem && elem.classList.add('on-category-switch-enter');
+      // var elem = document.querySelector('[on-category-switch-enter]')
+      // elem && elem.classList.add('on-category-switch-enter');
+        var elems = document.querySelectorAll('[on-category-switch-exit]')
+        for (var i = 0; i < elems.length; i++) {
+          var elemIndex = elems[i];
+          elemIndex.classList.add('on-category-switch-exit');
+        }
       // madlib.category = $scope.splash.category;
       // madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
       $timeout(function() {

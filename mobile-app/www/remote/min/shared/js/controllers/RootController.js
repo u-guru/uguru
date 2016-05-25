@@ -8,7 +8,7 @@ angular.module('uguru.shared.controllers')
   '$timeout',
   function($scope, $state, $timeout) {
     // Listen for the event.
-    if (window.location.href.split('/').length > 5 || window.location.href.split('admin'.length > 1)) {
+    if (window.location.href.split('/').length > 5 || window.location.href.split('admin').length > 1) {
       var loaderPortal = document.querySelector('.loader-portal');
       var loaderWrapper = document.querySelector('#loader-wrapper');
       loaderPortal.parentNode.removeChild(loaderPortal);

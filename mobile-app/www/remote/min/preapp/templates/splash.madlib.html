@@ -1,5 +1,5 @@
 <div class="splash-hero-content z-index-100" ng-controller='SplashMadlibController as madlib'>
-    <div class="splash-guru-head" ng-if='splash.state.madlib'>
+    <div class="splash-guru-head" ng-if='splash.state.madlib' class-on-activate="pulse:anim">
         <div class="splash-hero-guru splash-logo-guru" ng-include="root.base_url + 'templates/svg/guru-head.html'"></div>
         <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop opacity-0" viewBox="0 0 340 205">
@@ -66,7 +66,7 @@
 
                     elem-states="['category-switch', 'university-switch']"
                     on-category-switch-enter="zoomIn:anim:delay-500"
-                    on-category-switch-exit="zoomIn:anim"
+                    on-category-switch-exit="zoomOut:anim"
 
                     desktop="root.window.desktop" type="splash" blank-num="1" inner-text="option" category="madlib.category"
                     ng-repeat='option in madlib.category.tags_data.blank_one_options'> </tag>
