@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <ul class='p15-grid flex-center-vertical txt-center' ng-init='layout.index = 6;'>
+                <ul class='p15-grid flex-center-vertical txt-center' ng-init='layout.index = 3;'>
                     <li>
                         <user-icon ng-if='adminUser && adminUser.profile_url' size="48" url="adminUser.profile_url"> </user-icon>
                     </li>
@@ -207,7 +207,7 @@
                     </div>
                 </div>
             </div>
-            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3' ng-include="img_base + BASE + 'templates/admin/keys.action.html'" ng-controller='AdminActionController'>
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3' ng-include="root.base_url +  'min/admin/templates/actions.html'" ng-controller='AdminActionController'>
             </div>
             <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 4'>
                 <header class="bg-slate">

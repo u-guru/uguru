@@ -11,7 +11,7 @@ angular.module('uguru.admin')
     //spec service get all
 
 
-    $scope.search = {text: getUserFirstName($scope.user) || ''};
+    $scope.search = {text: ''};
 
     $scope.team_members = SpecContentService.getTeamMembers();
 
