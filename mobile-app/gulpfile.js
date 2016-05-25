@@ -42,10 +42,104 @@ var build = args.build;
 var min = args.min;
 var uld = args.uld;
 var targetDir = path.resolve('dest');
+gulp.task('replace', function() {
+
+    var env = args.env || 'localdev';
+    var start = args.page || 'university';
+    var ip = args.ip;
+
+    var filename = env + '.json';
+    var settings = JSON.parse(fs.readFileSync('./config/' + filename, 'utf8'));
+
+    gulp.src('./www/js/constants.js/')
+      .pipe(replace({
+        patterns: [
+          {
+            match: 'local',
+            replacement: settings.local
+          },
+          {
+            match: 'startpage',
+            replacement: start
+          },
+          {
+            match: 'ipaddress',
+            replacement: ip
+          }
+        ]
+      }))
+      .pipe(gulp.dest('./www/remote/js/'));
+
+    gulp.src('./platforms/android/AndroidManifest.xml')
+      .pipe(replace({
+        patterns: [
+        {
+          match: /adjustResize/g,
+          replacement: 'adjustPan'
+        },
+        {
+          match: /android:theme="@android:style\/Theme.Black.NoTitleBar/g,
+          replacement: 'android:theme="@android:style/Theme.Translucent.NoTitleBar'
+        }
+        ]
+      }))
+      .pipe(gulp.dest('./platforms/android/'));
+});
+
+
+gulp.task('express', function() {
+  var express = require('express');
+  var app = express();
+  app.use(require('connect-livereload')({port: 4002}));
+  app.use(express.static(__dirname));
+  app.listen(4000);
+});
+
+
+var IS_WATCH = false;
+gulp.task('watch', function() {
+  IS_WATCH = true;
+  gulp.watch('www/remote/css/sass/*.scss', ['sass', 'sassy']);
+});
+
+gulp.task('sass', function(done) {
+  gulp.src('www/remote/css/sass/new.scss')
+    .pipe(sass({
+      onError: function(err) {
+        //If we're watching, don't exit on error
+        if (IS_WATCH) {
+          console.log(gutil.colors.red(err));
+        } else {
+          done(err);
+        }
+      }
+    }))
+    .pipe(plugins.concat('new.css'))
+    .pipe(gulp.dest('www/remote/css/sass'))
+    .on('end', done);
+});
+
+gulp.task('sassy', function(done) {
+  gulp.src('www/remote/css/sass/components.scss')
+    .pipe(sass({
+      onError: function(err) {
+        //If we're watching, don't exit on error
+        if (IS_WATCH) {
+          console.log(gutil.colors.red(err));
+        } else {
+          done(err);
+        }
+      }
+    }))
+    .pipe(plugins.concat('components.css'))
+    .pipe(gulp.dest('www/remote/css/sass'))
+    .on('end', done);
+});
 
 // global error handler
 var errorHandler = function(error) {
-  if (build || prePush) {
+  // if (build || prePush) {
+  if (build) {
     throw error;
   } else {
     beep(2, 170);
@@ -156,7 +250,7 @@ gulp.task('scripts', function() {
 
     .src([
       'templates.js',
-      "lib/google/webfont.js",
+      'lib/google/webfont.js',
       'lib/uguru/detect.mobile.js',
       'lib/uguru/preload.analytics.js',
       'lib/ionic/js/ionic.bundle.min.v2.js',
@@ -201,62 +295,62 @@ gulp.task('scripts', function() {
       'lib/card/card.js',
       // 'cordova.js',
       // 'plugins/*/www/*.js',
-      "js/shared/stats.js",
-      "js/main.js",
-      "js/factories/LocalStorage.js",
-      "js/factories/University.js",
-      "js/factories/*.js",
-      "js/directives/customDirectives.js",
-      "js/services/RootService.js",
-      "js/services/*.js",
-      "js/services/hardware/*.js",
-      "js/shared/GeolocationService.js",
-      "js/shared/DeviceService.js", //first shared service
-      "js/shared/Settings.js",
-      "js/shared/Utilities.js",
-      "!js/shared/*LogService.js",
-      "js/shared/uTracker.js",
-      "js/shared/RankingService.js",
+      'js/shared/stats.js',
+      'js/main.js',
+      'js/factories/LocalStorage.js',
+      'js/factories/University.js',
+      'js/factories/*.js',
+      'js/directives/customDirectives.js',
+      'js/services/RootService.js',
+      'js/services/*.js',
+      'js/services/hardware/*.js',
+      'js/shared/GeolocationService.js',
+      'js/shared/DeviceService.js', //first shared service
+      'js/shared/Settings.js',
+      'js/shared/Utilities.js',
+      '!js/shared/*LogService.js',
+      'js/shared/uTracker.js',
+      'js/shared/RankingService.js',
 
-      "js/shared/TipService.js",
-      "js/shared/Settings.js",
-      "js/directives/*.js",
-      "js/device/*.js",
-      "!js/shared/Jeselle*.js",
-      "js/shared/*.js",
+      'js/shared/TipService.js',
+      'js/shared/Settings.js',
+      'js/directives/*.js',
+      'js/device/*.js',
+      '!js/shared/Jeselle*.js',
+      'js/shared/*.js',
 
 
-      "js/university/AddUniversityCtrl.js",
-      "js/university/*.js",
-      "js/essay/*.js",
-      "js/access/*.js",
+      'js/university/AddUniversityCtrl.js',
+      'js/university/*.js',
+      'js/essay/*.js',
+      'js/access/*.js',
 
-      // "js/controllers/student/home.ctrl.js",
-      "js/controllers/student/student.ctrl.js",
-      "js/controllers/student/*.js",
-      "js/controllers/guru/guru.ctrl.js",
-      "js/controllers/guru/*.js",
-      "js/controllers/gpa/GPAController.js",
-      "js/controllers/gpa/*.js",
-      "js/controllers/food/*.js",
-      "js/controllers/sound/*.js",
-      "js/controllers/transit/*.js",
-      "!js/controllers/util/*bugs*js",
-      "js/controllers/util/*js",
-      "js/controllers/dev/util.dev.ctrl.js",
-      "js/controllers/dev/util.devtools.ctrl.js",
-      "js/controllers/desktop/SettingsCtrl.js",
-      "js/controllers/desktop/*",
-      "js/controllers/gpa/GPAController.js",
-      "js/controllers/gpa/IntroController.js",
-      "js/controllers/food/GrubHomeCtrl.js",
-      "js/controllers/food/GrubDetailsCtrl.js",
-      "js/controllers/food/GrubFiltersCtrl.js",
-      "js/controllers/food/restaurants.js",
-      "js/controllers/sound/MusicHomeCtrl.js",
-      "js/controllers/sound/*.js",
-      "js/controllers/transit/TransitHomeCtrl.js",
-      "js/controllers/transit/*.js"
+      // 'js/controllers/student/home.ctrl.js',
+      'js/controllers/student/student.ctrl.js',
+      'js/controllers/student/*.js',
+      'js/controllers/guru/guru.ctrl.js',
+      'js/controllers/guru/*.js',
+      'js/controllers/gpa/GPAController.js',
+      'js/controllers/gpa/*.js',
+      'js/controllers/food/*.js',
+      'js/controllers/sound/*.js',
+      'js/controllers/transit/*.js',
+      '!js/controllers/util/*bugs*js',
+      'js/controllers/util/*js',
+      'js/controllers/dev/util.dev.ctrl.js',
+      'js/controllers/dev/util.devtools.ctrl.js',
+      'js/controllers/desktop/SettingsCtrl.js',
+      'js/controllers/desktop/*',
+      'js/controllers/gpa/GPAController.js',
+      'js/controllers/gpa/IntroController.js',
+      'js/controllers/food/GrubHomeCtrl.js',
+      'js/controllers/food/GrubDetailsCtrl.js',
+      'js/controllers/food/GrubFiltersCtrl.js',
+      'js/controllers/food/restaurants.js',
+      'js/controllers/sound/MusicHomeCtrl.js',
+      'js/controllers/sound/*.js',
+      'js/controllers/transit/TransitHomeCtrl.js',
+      'js/controllers/transit/*.js'
       ], { cwd: 'www/remote' })
     // .src(['templates.js', 'app.js', '**/*.js'], { cwd: 'app/scripts' })
 
@@ -268,7 +362,7 @@ gulp.task('scripts', function() {
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
     .pipe(plugins.if(build, plugins.concat('app.js')))
-    .pipe(gulp.dest(dest))
+    .pipe(gulp.dest(dest));
 });
 
 
@@ -278,25 +372,25 @@ gulp.task('jsHint', function(done) {
     .src([
       // 'cordova.js',
       // 'cordova_plugins.js',
-      "js/main.js",
-      // "js/directives/*.js",
-      // "js/factories/*.js",
-      // "js/services/RootService.js",
-      // "js/services/*.js",
-      // "js/services/hardware/*.js",
-      // "js/controllers/student/student.home.ctrl.js",
-      // "js/controllers/student/*.js",
-      // "js/controllers/student/settings/*.js",
-      // "js/controllers/guru/guru.onboarding.ctrl.js",
-      // "js/controllers/guru/*.js",
-      // "js/controllers/util/util.university.ctrl.js",
-      // "js/controllers/util/*.js",
+      'js/main.js',
+      'js/directives/*.js',
+      'js/factories/*.js',
+      'js/services/RootService.js',
+      'js/services/*.js',
+      'js/services/hardware/*.js',
+      'js/controllers/student/student.home.ctrl.js',
+      'js/controllers/student/*.js',
+      'js/controllers/student/settings/*.js',
+      'js/controllers/guru/guru.onboarding.ctrl.js',
+      'js/controllers/guru/*.js',
+      'js/controllers/util/util.university.ctrl.js',
+      'js/controllers/util/*.js',
       ], { cwd: 'www/remote' })
     .pipe(plugins.jshint())
     .pipe(plugins.jshint.reporter(stylish))
 
     .on('error', errorHandler);
-    done();
+    // done();
 });
 
 // copy images
@@ -365,21 +459,21 @@ gulp.task('default', function(done) {
 gulp.task('min', function(done) {
   runSequence(
     'min-scripts'
-    )
-})
+    );
+});
 
 
 gulp.task('preprocess-regular', function() {
     return gulp.src(['js/main.js'], { cwd: 'www/remote' })
     .pipe(preprocess({context: {ADMIN:false}}))
-    .pipe(gulp.dest('www/remote/js/'))
-})
+    .pipe(gulp.dest('www/remote/js/'));
+});
 
 gulp.task('preprocess-admin', function() {
     return gulp.src(['js/main.js'], { cwd: 'www/remote' })
     .pipe(preprocess({context: {ADMIN:true}}))
-    .pipe(gulp.dest('www/remote/js/admin/'))
-})
+    .pipe(gulp.dest('www/remote/js/admin/'));
+});
 
 gulp.task('uld', function(done) {
   var runSequence = require('run-sequence').use(gulp);

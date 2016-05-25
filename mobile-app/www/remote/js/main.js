@@ -67,7 +67,6 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
     'https://uguru.me/static/**'
   ]);
 
-
   $httpProvider.useApplyAsync(true);
 
   if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
@@ -250,7 +249,7 @@ angular.module('uguru', ['ionic','ionic.utils', 'restangular', 'ngCordova',
   state('root.desktop-settings', {
     url:'/desktop-settings',
     templateUrl: BASE + 'templates/desktop.settings.html',
-    controller: "DesktopSettingsController"
+    controller: 'DesktopSettingsController'
   }).
   state('root.request', {
     url:'/request',

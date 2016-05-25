@@ -152,5 +152,14 @@ update uguru-web with the most recent main.js [gulp compile bir]
 - Organize www/remote/img (complete clusterfuck)
 - [Later] Delete/organize remainder unnecessary files in  www/remote/controllers/*/.js. ** I need now for reference
 -
-
-
+==Additional Tool Install==
+- Sublime Package
+	-  JShint
+		- install 
+			* `Ctrl+Shift+P` or `Cmd+Shift+P` in Linux/Windows/OS X
+			* type `install`, select `Package Control: Install Package`
+			* type `js gutter`, select `JSHint Gutter`
+		- set perference
+			* Ctrl+Shift+P or Cmd+Shift+P in Linux/Windows/OS X
+			* type jshint, select Set Linting Perference
+			* copy from profile from ```.jshintrc``` 
