@@ -40,9 +40,16 @@ angular.module('uguru', ['ionic', 'restangular', 'uguru.preApp',
         templateUrl: BASE + 'min/shared/templates/root.html'
   })
   .state('root.splash', {
+    parent: 'root',
+    name: 'root.splash',
     url:'/',
     templateUrl: BASE + 'min/preapp/templates/splash.html'
   })
+  .state('root.splash-madlib', {
+    url:'/splash/madlib',
+    templateUrl: BASE + 'min/preapp/templates/splash.madlib.html'
+  })
+
 
 
 
