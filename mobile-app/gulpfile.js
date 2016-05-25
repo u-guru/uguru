@@ -18,6 +18,8 @@ var minifyCSS = require('gulp-minify-css');
 var debug = require('gulp-debug');
 var autoprefixer = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+
 var rename = require('gulp-rename');
 var gutil = require('gulp-util');
 var karma = require('karma').server;
@@ -116,8 +118,50 @@ gulp.task('jshint-current',function(){
 gulp.task('sass:watch', function () {
     // IS_WATCH = true;
   gulp.watch('www/remote/css/sass/*.scss', ['sass']);
-});
+  // gulp.watch('www/remote/css/sass/*.scss', ['sass','sourcemaps']);
 
+});
+gulp.task('sourcemaps',function(done){
+  gulp.src([
+            // '*.css',
+            'admin.scss',
+            // 'aguilar.css',
+            // 'animate.css',
+            // 'animation.css',
+            // 'components-old.css',
+            // 'components.css',
+            // 'desktop.css',
+            // 'essay.css',
+            // 'home.css',
+            // 'intercom.css',
+            // 'ios.css',
+            // 'loading.css',
+            // 'magic.css',
+            // 'material.css',
+            // 'mixin.css',
+            // '!modals.css',
+            // '!new.css',
+            // '!old.css',
+            // '!onboarding.css',
+            // '!powerups.css',
+            // '!profile-color.css',
+            // '!profile.css',
+            // '!request.css',
+            // '!samir.css',
+            // '!universal.css',
+            // '!shake.css',
+            // '!splash-animation.css',
+            // '!splash.css',
+            // '!swiper.css',
+            // '!utility.css',
+            // '!style.css',
+            // '!velocity.css'
+            ], { cwd: 'www/remote/css/sass' })
+    .pipe(sourcemaps.init())
+    .pipe(sourcemaps.write('./maps',{includeContent: false}))
+    .pipe(gulp.dest('www/remote/css/sass'))
+    .on('end', done);
+});
 gulp.task('sass', function(done) {
   // gulp.watch('www/remote/css/sass/**/*scss').on('change', function(file) {
   //  // plugins.livereload.changed(file.path);
@@ -142,19 +186,50 @@ gulp.task('sass', function(done) {
   // });
 
 
-  gulp.src(['www/remote/css/sass/*.scss',
-            '!www/remote/css/sass/old.scss',
-            '!www/remote/css/sass/onboarding.scss',
-            '!www/remote/css/sass/powerups.scss'])
+  gulp.src([
+            '*.scss',
+            // 'admin.scss',
+            // 'aguilar.scss',
+            // 'animate.scss',
+            // 'animation.scss',
+            // 'components-old.scss',
+            // 'components.scss',
+            // 'desktop.scss',
+            // 'essay.scss',
+            // 'home.scss',
+            // 'intercom.scss',
+            // 'ios.scss',
+            // 'loading.scss',
+            // 'magic.scss',
+            // 'material.scss',
+            // 'mixin.scss',
+            // 'modals.scss',
+            // '!new.scss',
+            // '!old.scss',
+            // '!onboarding.scss',
+            // '!powerups.scss',
+            // '!profile-color.scss',
+            // '!profile.scss',
+            // '!request.scss',
+            // '!samir.scss',
+            // '!universal.scss',
+            // '!shake.scss',
+            // '!splash-animation.scss',
+            // '!splash.scss',
+            // '!swiper.scss',
+            // '!utility.scss',
+            // 'style.scss',
+            // 'velocity.scss'
+            ], { cwd: 'www/remote/css/sass' })
     .pipe(debug())
-    .pipe(sass().on('error',function(err) {
-        //If we're watching, don't exit on error
-        // if (IS_WATCH) {
-          gutil.log('MSG :'+err);
-        // } else {
-          // done(err);
-        // }
-      }))
+    // .pipe(sass().on('error',function(err) {
+    //     //If we're watching, don't exit on error
+    //     // if (IS_WATCH) {
+    //       gutil.log('MSG :'+err);
+    //     // } else {
+    //       // done(err);
+    //     // }
+    //   }))
     // .pipe(plugins.concat('new.css'))
     .pipe(gulp.dest('www/remote/css/sass'))
     .on('end', done);

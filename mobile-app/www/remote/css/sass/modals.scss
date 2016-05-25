@@ -1176,8 +1176,8 @@
 				&:after {
 					@include center-xy;
 					@include opacity(.15);
-					-webkit-filter: grayscale(1);
-					filter:grayscale(1);
+					//-webkit-filter: grayscale(1);
+					//filter:grayscale(1);
 					content: "";
 					display: block;
 					position: absolute;
