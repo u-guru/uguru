@@ -1,7 +1,7 @@
 {
   "name": "uguru-mobile",
   "app_id": "",
-  "gulpStartupTasks": ["sass", "watch"],
+  "gulpStartupTasks": ['sass','jshint-current'],
   
 
   "watchPatterns": [

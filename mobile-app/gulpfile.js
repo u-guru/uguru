@@ -100,13 +100,13 @@ var IS_WATCH = false;
 gulp.task('watch', function() {
   IS_WATCH = true;
   gulp.watch('www/remote/css/sass/*.scss', ['sass', 'sassy']);
-  gulp.watch('www/remote/js/**/*js', ['jshint-current']);
-
-
+  // gulp.watch('www/remote/js/**/*js', ['jshint-current']);
 });
 gulp.task('jshint-current',function(){
     // Javascript change + prints log in console
      gulp.watch('www/remote/js/**/*js').on('change', function(file) {
+      // plugins.livereload.changed(file.path);
+      // gutil.log(gutil.colors.yellow('JS changed' + ' (' + file.path + ')'));
          gulp.src(file.path)
          .pipe(plugins.jshint())
          .pipe(plugins.jshint.reporter(stylish))
