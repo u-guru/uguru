@@ -1,10 +1,8 @@
 <ion-view id='splash-view' class='bg-charcoal' ng-controller='SplashController as splash'>
     <ion-content class='relative splash-landing' id='home-splash'>
-            <div class='absolute flex-wrap-center top-0 left-0 full-xy' ng-if='splash.renderView'>
-                <div id='splash-madlib-container' ng-if='splash.state.madlib' ng-controller='SplashMadlibController as madlib' ng-include="img_base + BASE + 'remote/min/preapp/templates/splash.madlib.html'">
-                </div>
-                <div id='splash-device-container' ng-if='splash.state.device' ng-include="img_base + BASE + 'templates/splash/container/splash.device.container.html'">
-                </div>
-            </div>
+        <div class='absolute flex-wrap-center top-0 left-0 full-xy' ng-if='splash.renderView'>
+            <div id='splash-madlib-container' ng-if='splash.state.madlib' ng-controller='SplashMadlibController as madlib' ng-include="img_base + BASE + 'remote/min/preapp/templates/splash.madlib.html'"></div>
+            <div id='splash-device-container' ng-if='splash.state.device' ng-include="img_base + BASE + 'templates/splash/container/splash.device.container.html'"></div>
+        </div>
     </ion-content>
 </ion-view>
