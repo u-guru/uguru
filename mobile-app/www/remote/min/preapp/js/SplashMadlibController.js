@@ -8,7 +8,8 @@ angular.module('uguru.preApp')
   'CategoryService',
   'UniversityService',
   'ContentService',
-  function($scope, $state, $timeout, CategoryService, UniversityService, ContentService) {
+  'SpecService',
+  function($scope, $state, $timeout, CategoryService, UniversityService, ContentService, SpecService) {
     var madlib = this;
     //directives to create
     //svg
@@ -32,31 +33,45 @@ angular.module('uguru.preApp')
     madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
     madlib.university = UniversityService.getBerkeleyLocal();
 
+    //onInit
+    //onactivate
+    //onhover
+    //onClickOne
+    //onClickTwo
+    //onDeselect
+    //onCategoryChange
+    //TODO: onUniversitySwitch
+    //onBothFilled
+
+
     madlib.onEnter = function() {};
 
-    madlib.activate = function() {};
+    madlib.activate = function() {
+
+
+
+    };
 
     madlib.minifyForMap = function() {};
 
     //in case user switches category during map view
     madlib.returnNormalState = function() {};
-    $timeout(function() {
-        $scope.splash.category = CategoryService.getLocalCategories()[1];
-        // madlib.category  = $scope.splash.category;
-        console.log('switching categories', $scope.splash.category);
-        // elem && elem.classList.add('on-category-switch-exit');
-    }, 5000);
+
+
+    madlib.categorySwitch = function() {
+      var elems = document.querySelectorAll('[on-category-switch-exit]')
+      for (var i = 0; i < elems.length; i++) {
+        var elemIndex = elems[i];
+        console.log('on-category-switch-exit-elem', elems[i]);
+        elemIndex.classList.add('on-category-switch-exit');
+      }
+    }
 
 
     $scope.$watch('splash.category', function(newVal, oldVal) {
       if (!$scope.splash.state.madlib) return;
       // var elem = document.querySelector('[on-category-switch-enter]')
       // elem && elem.classList.add('on-category-switch-enter');
-        var elems = document.querySelectorAll('[on-category-switch-exit]')
-        for (var i = 0; i < elems.length; i++) {
-          var elemIndex = elems[i];
-          elemIndex.classList.add('on-category-switch-exit');
-        }
       // madlib.category = $scope.splash.category;
       // madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
       $timeout(function() {
@@ -66,7 +81,27 @@ angular.module('uguru.preApp')
 
     //todo samir
     madlib.onUniversityChanged = function() {};
+    madlib.spec = {data: {toggleDev:false, toggleSpec: false}};
+    var states = {
+      onInit: true,
+      onHover: true,
+      onClickOne: '[blank-num="1"] a',
+      onClickTwo: '[blank-num="2"] a',
+      onActivate: madlib.activate,
+      onDeselectClickOne: '[blank-num="1"] .translate-blank-1',
+      onDeselectClickTwo: '[blank-num="2"] .translate-blank-2',
+      onCategorySwitch: madlib.categorySwitch
+    }
+    SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states);
+    // $timeout(function() {
 
+    //   // console.log('scope madlib spec', madlib.spec.data)
+    //   // madlib.spec.data.toggleDev = true;
+
+    //   $timeout(function() {$scope.$apply()});
+    //   console.log('scope madlib spec', madlib.spec.data)
+
+    // }, 1000)
   }
 ])
 

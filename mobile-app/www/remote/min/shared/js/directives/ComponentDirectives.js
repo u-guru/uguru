@@ -62,4 +62,53 @@ angular.module('uguru.shared.directives')
 
             }
         }
-}]);
+}])
+.directive("dropdown", ['$timeout', function($timeout) {
+        function getTemplateURL(elem, attr) {
+            if (attr.type && attr.type === 'color') {
+                return BASE + 'templates/elements/components/inputs/dropdowns/color.tpl'
+            } else {
+                return BASE + 'min/shared/templates/components/dropdown.tpl'
+            }
+        }
+        return {
+            templateUrl: getTemplateURL,
+            scope: {
+                dropdown: '=ngModel'
+                    // tests:'=testArr',
+            },
+            replace: true,
+            restrict: 'E',
+            link: function(scope, element, attr) {
+                if (!scope.size) {
+                    scope.size = 'small';
+                }
+                if (attr.type && attr.type.toLowerCase() === 'color') {
+                    scope.type = 'color';
+                } else {
+                    scope.type = '';
+                }
+                scope.click = function(option, index) {
+
+                    scope.dropdown.selectedIndex = index;
+
+                    $timeout(function() {
+                        scope.$apply();
+                    })
+
+                    if (scope.dropdown.onOptionClick) {
+                        scope.dropdown.onOptionClick(option, index);
+                    }
+
+                    scope.toggle();
+
+                }
+                scope.toggle = function() {
+                    scope.dropdown.active = !scope.dropdown.active;
+                    if (scope.dropdown.onToggle) {
+                        scope.dropdown.onToggle(scope.dropdown.active);
+                    }
+                }
+            }
+        };
+    }])
