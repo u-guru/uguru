@@ -72,7 +72,6 @@ gulp.task('sass',function(done){
   // var sassPath = ['preapp/css/scss/loader.scss']
   var sassPath = ['preapp/css/scss/loader.scss'];
   var saveTo = sassPath[0].replace('/scss/','/compiled/');
-  gutil.log(saveTo);
   // sass(sassPath, {sourcemap: false})
   //     .on('error', sass.logError)
   //     .pipe(plugins.concat('test.css'))
@@ -153,9 +152,11 @@ gulp.task('compile-js', function(done) {
       //prepapp ctrl
       'preapp/js/SplashController.js',
       'preapp/js/*.js',
+      'templates.js'
     ]);
 
   return streamqueue({ objectMode: true }, scriptStream)
+    // .pipe(debug())
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
@@ -174,7 +175,7 @@ gulp.task('compile-temp',function(done){
           '**/*html',
           '**/*tpl',
           '**/*svg'], { cwd: '' })
-      .pipe(debug())
+      // .pipe(debug())
       .pipe(plugins.angularTemplatecache('templates.js', {
         root: '/static/remote/templates/',
         module: 'uguru',
@@ -198,7 +199,7 @@ gulp.task('default', function(done) {
     'clean',
     'compile-css',
     'compile-temp',
-    'jsHint',
+    // 'jsHint',
     'compile-js',
     // 'index',
     // build ? 'noop' : 'watchers',
