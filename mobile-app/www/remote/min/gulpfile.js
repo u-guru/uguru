@@ -104,7 +104,7 @@ gulp.task('compile-css', function(done) {
   .pipe(plugins.if(build, plugins.stripCssComments()))
   .pipe(minifyCSS({keepSpecialComments : 0}))
   .pipe(plugins.if(build, plugins.rev()))
-  .pipe(plugins.concat('app.css'))
+  .pipe(plugins.concat('app_version.css'))
   // .pipe(uncss({
   //     html: ['dest/templates/**/*html']
   // }))
@@ -191,7 +191,7 @@ gulp.task('compile-temp',function(done){
 });
 
 gulp.task('clean', function(done) {
-  del(['templates.js','app.js','app.css'], done);
+  del(['templates.js','app.js','app_version.css'], done);
 });
 
 gulp.task('default', function(done) {
