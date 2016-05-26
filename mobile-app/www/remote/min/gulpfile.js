@@ -6,7 +6,7 @@ var del = require('del');
 var beep = require('beepbeep');
 var express = require('express');
 var path = require('path');
-var open = require('open');
+var openFile = require('open');
 var stylish = require('jshint-stylish');
 var connectLr = require('connect-livereload');
 var streamqueue = require('streamqueue');
@@ -15,7 +15,9 @@ var merge = require('merge-stream');
 var minifyCSS = require('gulp-minify-css');
 var debug = require('gulp-debug');
 var autoprefixer = require('gulp-autoprefixer');
-var sass = require('gulp-sass');
+// var sass = require('gulp-sass');
+var sass = require('gulp-ruby-sass');
+
 var sourcemaps = require('gulp-sourcemaps');
 var rename = require('gulp-rename');
 var gutil = require('gulp-util');
@@ -49,12 +51,54 @@ var minifyConfig = {
 
 
 // our main sequence, with some conditional jobs depending on params
+gulp.task('sass:watch', function () {
+  // gulp.watch('**/*.scss', ['sass']);
+  gulp.watch('**/*.scss').on('change', function(file) {
+      // plugins.livereload.changed(file.path);
+      // gutil.log(path.dirname(file.path));
+      var folder = path.dirname(file.path).replace('/scss','/compiled');
+      // gutil.log(folder);
+      sass(file.path, {
+        sourcemap: true
+      })
+      .on('error', sass.logError)
+      .pipe(sourcemaps.write('../compiled'))
+      .pipe(gulp.dest(folder));
+
+  });
+});
+
+gulp.task('sass',function(done){
+  // var sassPath = ['preapp/css/scss/loader.scss']
+  var sassPath = ['preapp/css/scss/loader.scss'];
+  var saveTo = sassPath[0].replace('/scss/','/compiled/');
+  gutil.log(saveTo);
+  // sass(sassPath, {sourcemap: false})
+  //     .on('error', sass.logError)
+  //     .pipe(plugins.concat('test.css'))
+  //     .pipe(gulp.dest('preapp'));
+
+      // .pipe(debug())
+      // // for file sourcemaps
+      // .pipe(sourcemaps.write('maps', {
+      //     includeContent: false,
+      //     sourceRoot: 'source'
+      // }))
+      // .pipe(gulp.dest('../min'));
+});
+
+
+
 
 gulp.task('compile-css', function(done) {
 
   var cssStream = gulp.src([
-      'loader.css'
-    ],{cwd: 'css'}).pipe(plugins.if(!build, plugins.changed('../min')));
+      'shared/**/*.css',
+      'preapp/**/*.css'//,
+      // 'loader.css'
+    ],{cwd: ''})
+  .pipe(debug())
+  .pipe(plugins.if(!build, plugins.changed('../min')));
 
   return streamqueue({ objectMode: true }, cssStream)
   .pipe(autoprefixer('last 2 versions'))
@@ -69,17 +113,20 @@ gulp.task('compile-css', function(done) {
   .pipe(gulp.dest('../min'));
    
 });
+
 gulp.task('jsHint', function(done) {
   return gulp
     .src([
+      '!gulpfile.js',
+      '!shared/js/lib/**/*.js',
       '**/*.js',
-      ], { cwd: 'js' })
+      ], { cwd: '' })
     .pipe(plugins.jshint())
     .pipe(plugins.jshint.reporter(stylish));
 });
 
-gulp.task('jshint:watch',function(){
-     gulp.watch('**/*js').on('change', function(file) {
+gulp.task('jsHint:watch',function(){
+     gulp.watch(['**/*js']).on('change', function(file) {
       // plugins.livereload.changed(file.path);
       // gutil.log(gutil.colors.yellow('JS changed' + ' (' + file.path + ')'));
          gulp.src(file.path)
@@ -89,9 +136,23 @@ gulp.task('jshint:watch',function(){
 });
 gulp.task('compile-js', function(done) {
   var scriptStream = gulp.src([
-      'js/lib/*.js',
+      'shared/js/lib/*.js',
+      //directive
+      'shared/js/AnimationDirectives.js',
+      'shared/js/directives/*.js',
+      //services
+      'shared/js/services/LocalStorageService.js',
+      'shared/js/services/*.js',
+      //admin/service
+      'admin/js/AdminAnimToolService.js',
+      'admin/js/*.js',
       'js/main.js',
-      'js/**/*.js'
+      //shared ctrl
+      'shared/controllers/RootController.js',
+      'shared/controllers/*.js',
+      //prepapp ctrl
+      'preapp/js/SplashController.js',
+      'preapp/js/*.js',
     ]);
 
   return streamqueue({ objectMode: true }, scriptStream)
@@ -106,10 +167,14 @@ gulp.task('compile-temp',function(done){
 
     var templateStream = gulp
         .src([
-          '**/*.html',
-          '**/*.tpl'
-        ], { cwd: 'templates' })
-      // .pipe(debug())
+          // 'shared/templates/root.html',
+          // 'admin/templates/**/*.html',
+          // 'preapp/templates/**/*.html',
+          '!index.html',
+          '**/*html',
+          '**/*tpl',
+          '**/*svg'], { cwd: '' })
+      .pipe(debug())
       .pipe(plugins.angularTemplatecache('templates.js', {
         root: '/static/remote/templates/',
         module: 'uguru',

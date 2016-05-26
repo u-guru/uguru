@@ -25,7 +25,7 @@ angular.module('uguru', ['ionic', 'restangular', 'uguru.preApp',
 
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
 
-  if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
+  if ($ionicConfigProvider){$ionicConfigProvider.views.swipeBackEnabled(false);}
 
 
 
@@ -56,7 +56,7 @@ angular.module('uguru', ['ionic', 'restangular', 'uguru.preApp',
     url:'/admin',
     controller: 'AdminController',
     templateUrl: BASE + 'min/admin/templates/index.html',
-  })
+  });
 
 
 
