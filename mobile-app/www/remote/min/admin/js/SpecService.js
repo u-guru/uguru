@@ -33,6 +33,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         return function(obj) {
 
             specObj.data = obj;
+            //@gabrielle note
             specObj.data.toggleDev = false;
             specObj.data.toggleSpec = false;
             specObj.data.mobile = {width:400, height:768, show:false, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
