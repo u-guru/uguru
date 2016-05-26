@@ -202,7 +202,7 @@
     transform: scale(0.8); }
 
   .splash-hero-content {
-    @transform : scale(.7); }
+    transform: scale(0.7); }
     .splash-hero-content .splash-adlib h1 {
       line-height: 2 !important; } }
 @media screen and (min-width: 768px) {
