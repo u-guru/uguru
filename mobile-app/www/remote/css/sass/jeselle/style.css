@@ -7,8 +7,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-overflow-scrolling: touch;
-  -webkit-perspective: 1000;
-  perspective: 1000;
   height: 100%;
   line-height: 1;
 }
@@ -339,6 +337,76 @@
   border: 6px solid #9DA5BA;
 }
 
+#jeselle .project footer {
+  padding: 24px 12px;
+  text-align: center;
+  background: #9da5bb;
+  background: -moz-linear-gradient(top, #9da5bb 0%, #ecaca4 100%);
+  background: -webkit-linear-gradient(top, #9da5bb 0%, #ecaca4 100%);
+  background: linear-gradient(to bottom, #9da5bb 0%, #ecaca4 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9da5bb', endColorstr='#ecaca4',GradientType=0 );
+}
+
+#jeselle .project footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+#jeselle .project footer ul li {
+  padding: 6px;
+}
+
+#jeselle .project footer ul li a {
+  border-radius: 1000px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #757792;
+}
+
+#jeselle .project footer ul li a svg {
+  display: block;
+  width: 36px;
+  height: 36px;
+  fill: white;
+}
+
+#jeselle .project footer ul li a:hover, #jeselle .project footer ul li a:focus {
+  background: #4D496A;
+}
+
+#jeselle .project footer ul li a:active {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#jeselle .project footer ul li a:active svg {
+  fill: #4D496A;
+}
+
+#jeselle .project footer h1 {
+  padding: 24px;
+  font-family: "lulu-clean", "Lulo Clean";
+  font-size: 40px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+#jeselle .project footer div {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 #jeselle #home {
   width: 100%;
   height: 100%;
@@ -378,6 +446,8 @@
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 #jeselle #home .home-container .home-thumbs > li {
@@ -393,6 +463,7 @@
   transform-style: preserve-3d;
   transform-origin: center center;
   transition: all 150ms ease-out;
+  backface-visibility: visible !important;
 }
 
 #jeselle #home .home-container .home-thumbs > li:not(:first-child) {
@@ -415,8 +486,28 @@
   z-index: 10;
 }
 
+#jeselle #home .home-container .home-thumbs > li .cascade-title {
+  display: none;
+  position: absolute;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  top: 50%;
+  right: calc(25% - 32px);
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(65, 61, 68, 0.25);
+}
+
+#jeselle #home .home-container .home-thumbs > li .cascade-title span {
+  transform: rotate(-90deg);
+}
+
 #jeselle #home .home-container .home-thumbs > li .project {
-  overflow: auto;
+  transition: all 150ms ease-out;
+  overflow: hidden;
 }
 
 #jeselle #home .home-container .home-thumbs > li .project header h1 {
@@ -437,6 +528,10 @@
   opacity: 0;
 }
 
+#jeselle #home .home-container .home-thumbs > li.active .project {
+  overflow: auto;
+}
+
 #jeselle #home .home-container .home-thumbs > li.active .project header h1 {
   width: 100%;
 }
@@ -450,12 +545,100 @@
   opacity: 0;
 }
 
+#jeselle #home .home-container .home-thumbs.cascade > li {
+  -webkit-transition: -webkit-transform 150ms ease-out, -webkit-clip-path 150ms ease-out 300ms;
+  transition: transform 150ms ease-out, -webkit-clip-path 150ms ease-out 300ms, clip-path 150ms ease-out 300ms;
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li:after {
+  transition-delay: 300ms;
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li:nth-child(1) {
+  transform: translate3d(-125px, 0, 0);
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li:nth-child(2) {
+  transform: translate3d(0, 0, -100px);
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li:nth-child(3) {
+  transform: translate3d(125px, 0, -200px);
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li:nth-child(4) {
+  transform: translate3d(250px, 0, -300px);
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li:nth-child(5) {
+  transform: translate3d(375px, 0, -400px);
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li:nth-child(6) {
+  transform: translate3d(500px, 0, -500px);
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li:nth-child(7) {
+  transform: translate3d(625px, 0, -600px);
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li .cascade-title {
+  display: flex;
+  z-index: 100;
+  transition: all 150ms ease-out;
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li .project {
+  -webkit-transition: all 150ms ease-out 300ms;
+  transition: all 150ms ease-out 300ms;
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li .project header h1 {
+  opacity: 0;
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li .project header h1, #jeselle #home .home-container .home-thumbs.cascade > li .project header h2 {
+  transition-delay: 450ms;
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li.active {
+  z-index: 1000;
+  transform: translate3d(0, 0, 0);
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li.active .cascade-title {
+  opacity: 0;
+  z-index: -100;
+}
+
+#jeselle #home .home-container .home-thumbs.cascade > li.active .project header h1 {
+  opacity: 1;
+}
+
+#jeselle .has-cascade {
+  overflow: hidden;
+}
+
 @media all and (orientation: portrait) {
   #jeselle #home .home-container .home-thumbs > li {
     -webkit-clip-path: polygon(5% 15%, 95% 15%, 95% 85%, 5% 85%);
     clip-path: polygon(5% 15%, 95% 15%, 95% 85%, 5% 85%);
+    -webkit-clip-path: inset(15% 5% 15% 5%);
+    clip-path: inset(15% 5% 15% 5%);
+  }
+  #jeselle #home .home-container .home-thumbs > li .project {
+    -webkit-clip-path: polygon(5% 15%, 95% 15%, 95% 85%, 5% 85%);
+    clip-path: polygon(5% 15%, 95% 15%, 95% 85%, 5% 85%);
+    -webkit-clip-path: inset(15% 5% 15% 5%);
+    clip-path: inset(15% 5% 15% 5%);
   }
   #jeselle #home .home-container .home-thumbs > li:after {
+    width: 90%;
+    height: 70%;
+    left: 5%;
+    top: 15%;
+  }
+  #jeselle #home .home-container .home-thumbs > li .home-link {
     width: 90%;
     height: 70%;
     left: 5%;
@@ -464,6 +647,14 @@
   #jeselle #home .home-container .home-thumbs > li.active {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+  }
+  #jeselle #home .home-container .home-thumbs > li.active .project {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
   }
 }
 
@@ -471,8 +662,22 @@
   #jeselle #home .home-container .home-thumbs > li {
     -webkit-clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
     clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
+    -webkit-clip-path: inset(25% 25% 25% 25%);
+    clip-path: inset(25% 25% 25% 25%);
+  }
+  #jeselle #home .home-container .home-thumbs > li .project {
+    -webkit-clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
+    clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
+    -webkit-clip-path: inset(25% 25% 25% 25%);
+    clip-path: inset(25% 25% 25% 25%);
   }
   #jeselle #home .home-container .home-thumbs > li:after {
+    width: 50%;
+    height: 50%;
+    left: 25%;
+    top: 25%;
+  }
+  #jeselle #home .home-container .home-thumbs > li .home-link {
     width: 50%;
     height: 50%;
     left: 25%;
@@ -481,6 +686,14 @@
   #jeselle #home .home-container .home-thumbs > li.active {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+  }
+  #jeselle #home .home-container .home-thumbs > li.active .project {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
   }
 }
 

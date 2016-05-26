@@ -24,7 +24,7 @@ function SVGService(AnimationService) {
   function generateCSSObjFromPath(anim_name, path, shape_offset) {
     var startPoint = path.getPointAtLength(0);
     var totalPathLength = path.getTotalLength();
-    var shapeOffset = shape_offset * 6;
+    var shapeOffset = shape_offset;
     console.log(startPoint, path, shapeOffset);
     if (!startPoint || !path || (!shapeOffset && shapeOffset !== 0)) return;
 
