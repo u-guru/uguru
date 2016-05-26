@@ -1,19 +1,21 @@
 angular
 .module('uguru.shared.services')
-.factory("Utilities", [
+.factory("UtilitiesService", [
     '$rootScope',
     '$compile',
-    Utilities
+    UtilitiesService
     ]);
 
-function Utilities($rootScope, $compile) {
+function UtilitiesService($rootScope, $compile) {
 
     return {
         getNetworkSpeed: getNetworkSpeed,
         deg2rad: deg2rad,
         getDistanceInMiles: getDistanceInMiles,
         nickMatcher: nickMatcher,
+        removeAllOccurrancesArr: removeAllOccurrancesArr,
         getFileName: getFileName,
+        camelCase: camelCase,
         isElementInViewport: isElementInViewport,
         transitionEndEventName: transitionEndEventName,
         fireBeforeEnter: fireBeforeEnter,
@@ -34,6 +36,30 @@ function Utilities($rootScope, $compile) {
         numberWithCommas: numberWithCommas,
         isAdminRequest: isAdminRequest,
         compileToAngular: compileToAngular
+    }
+
+    function camelCase(input) {
+        return input.toLowerCase().replace(/-(.)/g, function(match, group1) {
+            return group1.toUpperCase();
+        });
+    }
+
+
+    function removeAllOccurrancesArr(str, remove_arr_str) {
+      for (var i = 0; i < remove_arr_str.length; i++) {
+        var indexRemoveStr = remove_arr_str[i];
+        str = replaceAll(str, indexRemoveStr, '');
+      }
+      return str;
+    }
+
+    function replaceAll(str, find, replace) {
+      return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+
+      function escapeRegExp(str) {
+          return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+      }
+
     }
 
     function sortArrObjByKey(arr, key) {

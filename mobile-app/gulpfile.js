@@ -514,7 +514,7 @@ gulp.task('images', function() {
 
 
 
-
+console.log(targetDir)
 // start watchers
 gulp.task('watchers', function() {
   plugins.livereload.listen();
@@ -526,9 +526,9 @@ gulp.task('watchers', function() {
   gulp.watch('./vendor.json', ['vendor']);
   gulp.watch('app/templates/**/*.html', ['scripts', 'index']);
   gulp.watch('app/index.html', ['index']);
-  gulp.watch(targetDir + '/**')
-    .on('change', plugins.livereload.changed)
-    .on('error', errorHandler);
+  // gulp.watch(targetDir + '/**/**')
+  //   .on('change', plugins.livereload.changed)
+  //   .on('error', errorHandler);
 });
 
 // no-op = empty function

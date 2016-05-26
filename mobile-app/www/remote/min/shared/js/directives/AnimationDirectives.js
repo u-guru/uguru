@@ -28,8 +28,40 @@ angular.module('uguru.shared.directives')
   }
 })
 
+.directive('onHover', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      var inTimeout = false;
+      var hoverAnim = attr.onHover.split(':')[0];
+      var hoverDelay = 250;
+      if (attr.onHover.split(':').length === 2 && attr.onHover.indexOf('delay-') > -1) {
+        hoverDelay = parseInt(attr.onHover.split(':')[1].replace('delay-', ''));
+      }
+      scope.$watch(function() {
+          return element.attr('class');
+        }, function(new_class) {
+          if (new_class.indexOf('activate-hover') > -1) {
+            element[0].classList.remove('activate-hover');
+            AnimationService.animateIn(element[0], hoverAnim, null);
+          }
 
-
+        })
+      element.on('mouseover', function () {
+        inTimeout = true;
+        $timeout(function () {
+          if (inTimeout) {
+            AnimationService.animateIn(element[0], hoverAnim, null);
+            scope.$apply();
+          }
+        }, 250 + hoverDelay);
+      });
+       element.on('mouseleave', function () {
+        inTimeout = false;
+      });
+    }
+  }
+}])
 .directive('tracePath', ['$timeout', 'SVGService', '$compile', '$rootScope', function ($timeout, SVGService, $compile, $rootScope) {
   return {
     restrict: 'A',
@@ -185,6 +217,87 @@ angular.module('uguru.shared.directives')
                 }
               }
           }, delay);
+          function classArgsHasInject(args) {
+            var injectArg = null;
+            args.filter(function(word, index) {
+              if (word.indexOf("inject") > -1) {
+                injectArg = args[index];
+                return true
+              };
+            })
+            return (injectArg && injectArg.replace("inject", ""));
+          }
+        }
+      })
+    }
+  }
+}])
+.directive('onActivate', ['$timeout', '$parse', 'AnimationService',
+  function ($timeout, $parse, AnimationService) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      scope.$watch(function() {
+        return element.attr('class');
+      },function() {
+        if (element[0].classList.contains('activate')) {
+
+          element[0].classList.remove('activate')
+
+          var delay = attr.onActivate || 0;
+          var classes = attr.onActivate.split(", ");
+          $timeout(function() {
+              for (var i = 0; i < classes.length; i++) {
+                var indexClass = classes[i].split(":")[0];
+                var classArgs = classes[i].split(":").slice(1);
+                if (classArgs.indexOf("anim") > -1 && indexClass !== "null") {
+                  if (classArgs.indexOf("keep") > -1) {
+                    indexClass = indexClass +':keep';
+                  }
+                  AnimationService.animateIn(element[0], indexClass);
+                } else
+                if (classArgs.indexOf("animOut") > -1 && indexClass !== "null") {
+                  if (classArgs.indexOf("keep") > -1) {
+                    indexClass = indexClass +':keep';
+                  }
+                  AnimationService.animateOut(element[0], indexClass);
+                }
+                else if (indexClass !== "null") {
+                  element[0].classList.add(indexClass);
+                }
+                if (classArgs.indexOf("unique") > -1) {
+                  var otherClassElems = document.querySelectorAll('.' + indexClass);
+                  for (var j = 0; j < otherClassElems.length; j++) {
+                    var otherElemIndex = otherClassElems[j];
+                    if (otherElemIndex !== element[0]) {
+                      otherElemIndex.classList.remove(indexClass);
+                    }
+                  }
+                }
+                if (classes[i].indexOf('inject') > -1 && classArgsHasInject(classArgs)) {
+                  var injectArgClassSplit = classArgsHasInject(classArgs).split("|")
+                  if (injectArgClassSplit.length > 1) {
+                    var classToInject = injectArgClassSplit[1];
+                    var elemToInjectSelector = injectArgClassSplit[0];
+                    var elemsToInject = document.querySelectorAll(elemToInjectSelector);
+                    for (var k = 0; k < elemsToInject.length; k++) {
+                      elemsToInject[k].classList.add(classToInject);
+                    }
+                  }
+                }
+              }
+          }, delay);
+
+          if (attr.evalOnActivate) {
+            $timeout(function() {
+              scope.$apply(function(){
+                var parsedExpr = $parse(attr.evalOnActivate)(scope);
+                console.log(parsedExpr);
+
+              })
+            })
+          }
+
           function classArgsHasInject(args) {
             var injectArg = null;
             args.filter(function(word, index) {
@@ -573,13 +686,13 @@ directive("evalOnLoad", ["$timeout", 'AnimationService', '$parse', function($tim
           }
       }
 }]).
-directive("elemStates", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
+directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', function ($timeout, AnimationService, UtilitiesService) {
       return {
           restrict: 'A',
           link: function(scope, element, attr) {
               //if its not an array then not qualified
               if (attr.elemStates.indexOf(']') === -1 || attr.elemStates.indexOf('[') === -1) return;
-              var elemStates = removeAllOccurrancesArr(attr.elemStates, ['[', ']', ' ', "'", '"']).split(',')
+              var elemStates = UtilitiesService.removeAllOccurrancesArr(attr.elemStates, ['[', ']', ' ', "'", '"']).split(',')
               var processedElemStates = [];
               for (var i = 0; i < elemStates.length; i++) {
                 var onEnterAttr = 'on-' + elemStates[i] + '-enter';
@@ -597,7 +710,6 @@ directive("elemStates", ["$timeout", 'AnimationService', function ($timeout, Ani
               scope.$watch(function() {
                 return element.attr('class');
               }, function(newValue, oldValue) {
-                console.log('classes have changed!', newValue, oldValue);
                 for (var i = 0; i < processedElemStates.length; i++) {
                   if (newValue.split(' ').indexOf(processedElemStates[i]) > -1) {
                     element[0].classList.remove(processedElemStates[i]);

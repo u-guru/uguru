@@ -7,51 +7,55 @@ angular
   '$window',
   '$compile',
   'KeyboardService',
+  'UtilitiesService',
   SpecService
   ]);
 
-function SpecService($state, $timeout, $localstorage, $window, $compile, KeyboardService) {
-    var specTokens = {'calendar': 'ddd2f97039f2fec817d52499dd3c00ac', 'jeselle': '98f138f534428eb8af27ea5c2b6944ef', 'gabrie': '9d8ddaef35241c63a3a95032485bf645'};
+function SpecService($state, $timeout, $localstorage, $window, $compile, KeyboardService, UtilitiesService) {
+    var specTokens = {'calendar': 'ddd2f97039f2fec817d52499dd3c00ac', 'madlib': 'ddd2f97039f2fec817d52499dd3c00ac', 'jeselle': '98f138f534428eb8af27ea5c2b6944ef', 'gabrie': '9d8ddaef35241c63a3a95032485bf645'};
 
     return {
         initSpec: initSpec,
         getSpec: getSpec
     }
 
-    function initSpec(scope, parent_container, param, template_path, ctrl_path) {
+    function initSpec(scope, real_scope, parent_container, param, template_path, ctrl_path, states) {
         //checks codepen environment
         if (window.location.href.split('codepen.io').length > 1) return;
-
         var specObj = getSpec(param, template_path, ctrl_path);
-        var callbackFunc = getInstantiateAndInjectFunc(scope, specObj, parent_container)
-        console.log('spec obj', specObj.url, specObj, callbackFunc)
+        var callbackFunc = getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states)
         getCodepenSpec(specObj.url, callbackFunc)
 
     }
 
-    function getInstantiateAndInjectFunc(scope, specObj, parent_container) {
+    function getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states) {
+        console.log(states);
         return function(obj) {
 
             specObj.data = obj;
             specObj.data.toggleDev = false;
             specObj.data.toggleSpec = false;
+            specObj.data.mobile = {width:400, height:768, show:false, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
             specObj.data.open = specObj.open;
+            specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
+            console.log(specObj.data.statesDropdown)
             specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path)
             specObj.data.openGDoc = openGDocSpecFunc(specObj.data.gdoc);
-            scope.spec = specObj;
+            for (specProp in specObj) {
+                scope.spec[specProp] = specObj[specProp]
+            }
             elem = document.querySelector(parent_container);
             specElem = document.createElement('spec');
             specElem.className = 'fixed bottom-0 left-0 full-x'
             KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
             KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
             KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 27, 'esc', true, null);
-            specElem.setAttribute('ng-if', 'spec && spec.data');
-            specElem.setAttribute('data', 'spec.data');
+            // specElem.setAttribute('ng-if', 'spec && spec.data');
+            specElem.setAttribute('data', param + '.spec.data');
             if (elem) {
                 elem.appendChild(specElem)
                 $timeout(function() {
-                    $compile(specElem)(scope);
-                    scope.$apply();
+                    $compile(specElem)(real_scope);
                 })
             }
 
@@ -103,9 +107,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         function loadHTMLSpec(scope, template_url, controller_url) {
 
             if (window.location.href.split(':8100').length > 1) {
-              template_url = 'http://localhost:8100/remote/templates/' + template_url;
+              template_url = 'http://localhost:8100/remote/min/' + template_url;
             } else {
-              template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/templates/' + template_url;
+              template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + template_url;
             }
 
             var xhr = new XMLHttpRequest();
@@ -113,10 +117,6 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
             xhr.onload = function () {
                 scope.spec.data.codepenData.html = wrapMinUguruHtml(xhr.responseText, controller_url);
-
-                $timeout(function() {
-                  scope.$apply();
-                });
             };
             xhr.send();
         }
@@ -147,6 +147,99 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
     }
 
+    function generateDropdownFromStates(states, parent_container, scope) {
+        var dropdownArr = [];
+        var elemUniqueStateArr = [];
+        var elemStateArr = [];
+        var parentContainer = document.querySelector(parent_container);
+        if (parentContainer) {
+            var elementsWithStates = parentContainer.querySelectorAll('[elem-states]');
+
+            for (var i = 0; i < elementsWithStates.length; i++) {
+                var indexElemWithState = elementsWithStates[i];
+                var indexElemStates = indexElemWithState.getAttribute('elem-states');
+                var elemStates = UtilitiesService.removeAllOccurrancesArr(indexElemStates, ['[', ']', ' ', "'", '"']).split(',');
+                for (var j = 0; j < elemStates.length; j++) {
+                    var indexState = elemStates[j];
+                    var onEnterState = 'on-' + indexState + '-enter';
+                    var onExitState = 'on-' + indexState + '-exit';
+                    var elemHasEnterAttribute = indexElemWithState.getAttribute(onEnterState);
+                    var elemHasExitAttribute = indexElemWithState.getAttribute(onExitState);
+                    if (elemHasEnterAttribute && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onEnterState)) === -1) {
+                        elemUniqueStateArr.push(UtilitiesService.camelCase(onEnterState));
+                        elemStateArr.push({title: UtilitiesService.camelCase(onEnterState), state: onEnterState})
+                    }
+                    if (elemHasExitAttribute  && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onExitState)) === -1) {
+                        elemUniqueStateArr.push(UtilitiesService.camelCase(onExitState));
+                        elemStateArr.push({title: UtilitiesService.camelCase(onExitState), state: onExitState})
+                    }
+                }
+            }
+        }
+        for (key in states) {
+            dropdownArr.push({title:key, state: states[key], parent_elem: parent_container, parent_scope: scope})
+        }
+        for (var i = 0; i < elemStateArr.length; i++) {
+            elemStateArr[i].parent_elem = parent_container;
+            elemStateArr[i].parent_scope = scope;
+            elemStateArr[i].is_elem_state = true;
+            dropdownArr.push(elemStateArr[i]);
+        }
+        var result = {
+            label: 'toggle states',
+            options: dropdownArr,
+            key: 'title',
+            onOptionClick: applyDropdownAction,
+            selectedIndex: getDefaultSelectedIndex(states)
+        }
+
+        return result;
+
+        function getDefaultSelectedIndex(states) {
+            return 1;
+        }
+
+        function applyDropdownAction(option, index) {
+            if (option.title === 'onInit') {
+                window.location.reload(true);
+            } else if (option.title.toLowerCase().indexOf('onclick') > -1) {
+                elem = document.querySelector(option.state);
+                $timeout(function() {
+                    angular.element(elem).triggerHandler('click');
+                    option.parent_scope.$apply();
+                })
+            }
+            else if (option.title.toLowerCase().indexOf('click') > -1) {
+                elem = document.querySelector(option.state);
+                $timeout(function() {
+                    angular.element(elem).triggerHandler('click');
+                    option.parent_scope.$apply();
+                })
+            } else if (option.title.toLowerCase() === 'onhover') {
+                parent_elem = document.querySelector(option.parent_elem);
+                onHoverElems = parent_elem.querySelectorAll('[on-hover]');
+                for (var i = 0 ; i < onHoverElems.length; i++) {
+                    onHoverElems[i].classList.add('activate-hover');
+                }
+            }
+            else if (option.title.toLowerCase() === 'onactivate') {
+                parent_elem = document.querySelector(option.parent_elem);
+                onActivateElems = parent_elem.querySelectorAll('[on-activate]');
+                for (var i = 0 ; i < onActivateElems.length; i++) {
+                    onActivateElems[i].classList.add('activate');
+                }
+            }
+            else if (option.is_elem_state) {
+                var stateElems = document.querySelectorAll('[' + option.state + ']')
+                for (var i = 0; i < stateElems.length; i++) {
+                    stateElems[i].classList.add(option.state)
+                }
+            }
+
+        }
+
+    }
+
     function getCodepenSpec(url, cb) {
       var xhr = new XMLHttpRequest();
       xhr.open( 'GET', url, true );
@@ -165,7 +258,5 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
         return
     }
-
-
 
 }

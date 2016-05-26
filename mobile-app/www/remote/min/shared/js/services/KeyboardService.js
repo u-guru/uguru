@@ -1,6 +1,6 @@
 angular.module('uguru.shared.services')
 .factory("KeyboardService", [
-    'Utilities',
+    'UtilitiesService',
     '$timeout',
     KeyboardService
     ]);

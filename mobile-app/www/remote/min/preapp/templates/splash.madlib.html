@@ -1,6 +1,6 @@
-<div class="splash-hero-content z-index-100" ng-controller='SplashMadlibController as madlib'>
-    <div class="splash-guru-head" ng-if='splash.state.madlib'>
-        <div class="splash-hero-guru splash-logo-guru" ng-include="'shared/templates/components/svg/guru-head.html'"></div>
+<div class="splash-hero-content z-index-100" ng-controller='SplashMadlibController as madlib' id='splash-madlib'>
+    <div class="splash-guru-head" ng-if='splash.state.madlib' class-on-activate="pulse:anim">
+        <div class="splash-hero-guru splash-logo-guru" ng-include="root.base_url + 'templates/svg/guru-head.html'"></div>
         <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop opacity-0" viewBox="0 0 340 205">
             <g fill="none">
@@ -60,17 +60,26 @@
                 {{madlib.category.tags_data.template.end}}
             </h1>
             <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate">
-                <tag class='adlib-tag opacity-0 activate'
-                    class-on-activate="u-bounceInUp-subtle:anim"
-                    ng-click="resetMadLibBlankIfActive"
+                <tag class='adlib-tag'
+                    on-hover="pulse"
+                    on-init="opacity:0.1"
+                    on-activate="u-bounceInUp-subtle:anim"
 
-                    elem-states="['category-switch', 'university-switch']"
-                    on-category-switch-enter="zoomIn:anim:delay-500"
-                    on-category-switch-exit="zoomIn:anim"
+                    elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
+                    on-category-switch-enter="lightSpeedIn:anim:delay-500"
+                    on-category-switch-exit="bounceOutDown:animOut"
+                    on-both-blanks-filled-enter="lightSpeedOut:anim"
+                    on-map-transition-enter="tada:anim"
+
+                    ng-click="resetMadLibBlankIfActive"
 
                     desktop="root.window.desktop" type="splash" blank-num="1" inner-text="option" category="madlib.category"
                     ng-repeat='option in madlib.category.tags_data.blank_one_options'> </tag>
-                <tag class="adlib-tag opacity-0 activate" class-on-activate="u-bounceInUp-subtle:anim"
+                <tag class="adlib-tag"
+                    on-hover="pulse"
+                    on-init="opacity:0.1"
+                    on-activate="u-bounceInUp-subtle:anim"
+
                     ng-click="resetMadLibBlankIfActive"
                     desktop="root.window.desktop" type="splash" blank-num="2" inner-text="option" category="madlib.category"
                     ng-repeat='option in madlib.category.tags_data.blank_two_options'> </tag>
