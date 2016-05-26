@@ -17,7 +17,7 @@
       background: white; }
   #billing > div > div > ul > li > div .billing-students li a {
     width: 150px;
-    background: #576267; }
+    background: #576367; }
     #billing > div > div > ul > li > div .billing-students li a:hover, #billing > div > div > ul > li > div .billing-students li a:focus {
       background: #40484B; }
     #billing > div > div > ul > li > div .billing-students li a:active {
@@ -30,12 +30,12 @@
       #billing > div > div > ul > li > div .billing-students li a {
         width: 100%; } }
   #billing > div > div > ul > li > div .billing-session h1 {
-    background: #576267;
+    background: #576367;
     height: 48px; }
   #billing > div > div > ul > li > div .billing-session input[type="tel"] {
     width: 48px;
     height: 48px;
-    background: #576267;
+    background: #576367;
     color: white; }
     #billing > div > div > ul > li > div .billing-session input[type="tel"]:hover, #billing > div > div > ul > li > div .billing-session input[type="tel"]:focus {
       background: white;
@@ -130,7 +130,7 @@
           -webkit-justify-content: center;
           justify-content: center;
           height: 48px;
-          background: #576267;
+          background: #576367;
           margin-bottom: 15px; }
         #desktop-billing .main #billing-container #billing-details > ul li:first-child > ul > li:nth-child(1), #desktop-billing .main #billing-container #billing-details > ul li:first-child > ul > li:nth-child(3) {
           padding-right: 10px; }
@@ -183,7 +183,7 @@
               font-weight: 700;
               text-align: center;
               max-width: 50px;
-              background: #576267;
+              background: #576367;
               color: white; }
               #desktop-billing .main #billing-container #billing-details > ul li > ul > li input::-webkit-input-placeholder {
                 color: rgba(255, 255, 255, 0.5); }
@@ -215,7 +215,7 @@
   #mobile-billing button:hover, #mobile-billing button:focus {
     /*filter: alpha(opacity=$opacity * 100);*/
     opacity: 1;
-    background: #4e9b8c; }
+    background: #4e9b8b; }
   #mobile-billing button:active, #mobile-billing button.activated {
     background: white;
     color: #69B3A5; }
@@ -248,7 +248,7 @@
       font-weight: 700;
       text-align: center;
       max-width: 50px;
-      background: #576267; }
+      background: #576367; }
       .mobile-billing.mobile-session-time ul input::-webkit-input-placeholder {
         color: rgba(255, 255, 255, 0.5); }
       .mobile-billing.mobile-session-time ul input:-moz-placeholder {
@@ -288,7 +288,7 @@
         font-weight: 700;
         text-align: center;
         max-width: 75px;
-        background: #576267; }
+        background: #576367; }
         .mobile-billing.mobile-billing-fix-price ul input::-webkit-input-placeholder {
           color: rgba(255, 255, 255, 0.5); }
         .mobile-billing.mobile-billing-fix-price ul input:-moz-placeholder {
@@ -347,7 +347,7 @@
           width: 28px;
           height: 28px;
           padding: 5px;
-          background: #576267; }
+          background: #576367; }
         .mobile-billing.mobile-billing-type ul li label > span:last-child {
           padding-left: 15px; }
       .mobile-billing.mobile-billing-type ul li input:checked + label > span:first-child:before {
@@ -766,7 +766,7 @@
   #messaging #message-box button {
     padding: 0; }
     #messaging #message-box button:hover svg, #messaging #message-box button:focus svg {
-      stroke: #428a74; }
+      stroke: #418974; }
     #messaging #message-box button:active svg {
       stroke: white; }
   #messaging #message-box input {
@@ -859,7 +859,7 @@
     top: 64px;
     right: 0; }
     #messaging.desktop-mode #message-nav div ul li a {
-      background: rgba(99, 112, 116, 0.95); }
+      background: rgba(99, 111, 116, 0.95); }
       #messaging.desktop-mode #message-nav div ul li a:hover, #messaging.desktop-mode #message-nav div ul li a:focus {
         background: #7c8a8f; }
         #messaging.desktop-mode #message-nav div ul li a:hover svg *, #messaging.desktop-mode #message-nav div ul li a:focus svg * {
@@ -1028,15 +1028,15 @@
 #messaging.guru {
   background: #40484B; }
   #messaging.guru #messenger-sidebar {
-    background: #58aa9b; }
+    background: #58aa9a; }
   #messaging.guru #message-nav a.active {
     background: #69B3A5; }
     #messaging.guru #message-nav a.active:hover, #messaging.guru #message-nav a.active:focus {
       background: #b4d9d2; }
       #messaging.guru #message-nav a.active:hover svg *, #messaging.guru #message-nav a.active:focus svg * {
-        stroke: #557e78; }
+        stroke: #547d78; }
     #messaging.guru #message-nav a.active:active {
-      background: #557e78; }
+      background: #547d78; }
       #messaging.guru #message-nav a.active:active svg * {
         stroke: white; }
   #messaging.guru #messages .message-single.right .message-single-content .message-single-message {
@@ -1046,25 +1046,25 @@
     #messaging.guru.mobile-mode > header + div > header > div {
       background: #2B3234; }
     #messaging.guru.mobile-mode > header + div > header a:hover, #messaging.guru.mobile-mode > header + div > header a:focus {
-      background: #95999a; }
+      background: #959899; }
       #messaging.guru.mobile-mode > header + div > header a:hover svg *, #messaging.guru.mobile-mode > header + div > header a:focus svg * {
         stroke: #2B3234 !important; }
     #messaging.guru.mobile-mode > header + div > header a:active {
-      background: #808485; }
+      background: #7f8485; }
       #messaging.guru.mobile-mode > header + div > header a:active svg * {
         stroke: white !important; }
     #messaging.guru.mobile-mode > header + div > header #message-nav {
-      background: rgba(99, 112, 116, 0.95); }
+      background: rgba(99, 111, 116, 0.95); }
   #messaging.guru.desktop-mode #messenger #messenger-content .messenger-header {
     background: #2B3234; }
     #messaging.guru.desktop-mode #messenger #messenger-content .messenger-header a {
       background: #2B3234; }
       #messaging.guru.desktop-mode #messenger #messenger-content .messenger-header a:hover, #messaging.guru.desktop-mode #messenger #messenger-content .messenger-header a:focus {
-        background: #95999a; }
+        background: #959899; }
         #messaging.guru.desktop-mode #messenger #messenger-content .messenger-header a:hover svg *, #messaging.guru.desktop-mode #messenger #messenger-content .messenger-header a:focus svg * {
           stroke: #2B3234; }
       #messaging.guru.desktop-mode #messenger #messenger-content .messenger-header a:active {
-        background: #808485; }
+        background: #7f8485; }
         #messaging.guru.desktop-mode #messenger #messenger-content .messenger-header a:active svg * {
           stroke: white; }
   #messaging.guru.desktop-mode #messenger #messenger-content #messages .messages-main:not(#messages-main) {
@@ -1074,15 +1074,15 @@
 #messaging.student {
   background: #F1F1F1; }
   #messaging.student #messenger-sidebar {
-    background: #3b9ad9; }
+    background: #3b9cd9; }
   #messaging.student #messages .message-single.right .message-single-content .message-single-message {
-    background: #cbe4f5; }
+    background: #cae4f4; }
   #messaging.student.mobile-mode > header {
     background: #50A5DD; }
     #messaging.student.mobile-mode > header + div > header > div {
       background: #637074; }
     #messaging.student.mobile-mode > header + div > header a:hover, #messaging.student.mobile-mode > header + div > header a:focus {
-      background: #b1b8ba; }
+      background: #b1b7b9; }
       #messaging.student.mobile-mode > header + div > header a:hover svg *, #messaging.student.mobile-mode > header + div > header a:focus svg * {
         stroke: #40484B !important; }
     #messaging.student.mobile-mode > header + div > header a:active {
@@ -1090,13 +1090,13 @@
       #messaging.student.mobile-mode > header + div > header a:active svg * {
         stroke: white !important; }
     #messaging.student.mobile-mode > header + div > header #message-nav {
-      background: rgba(124, 138, 143, 0.95); }
+      background: rgba(123, 137, 142, 0.95); }
   #messaging.student.desktop-mode #messenger #messenger-content .messenger-header {
     background: #40484B; }
     #messaging.student.desktop-mode #messenger #messenger-content .messenger-header a {
       background: #40484B; }
       #messaging.student.desktop-mode #messenger #messenger-content .messenger-header a:hover, #messaging.student.desktop-mode #messenger #messenger-content .messenger-header a:focus {
-        background: #a0a4a5; }
+        background: #9fa3a5; }
         #messaging.student.desktop-mode #messenger #messenger-content .messenger-header a:hover svg *, #messaging.student.desktop-mode #messenger #messenger-content .messenger-header a:focus svg * {
           stroke: #40484B; }
       #messaging.student.desktop-mode #messenger #messenger-content .messenger-header a:active {
@@ -1144,27 +1144,27 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(99, 112, 116, 0.9); }
+  background: rgba(99, 111, 116, 0.9); }
 .validate.guru [class*="section-"].section-1 {
-  background: #50736f; }
+  background: #50726f; }
 .validate.guru [class*="section-"].section-2 {
-  background: #57837d; }
+  background: #56827c; }
 .validate.guru [class*="section-"].section-3 {
-  background: #5d938a; }
+  background: #5c928a; }
 .validate.guru [class*="section-"].section-4 {
-  background: #63a398; }
+  background: #62a297; }
 .validate.guru [class*="section-"].section-5 {
-  background: #67aea1; }
+  background: #66ada0; }
 .validate.student [class*="section-"].section-1 {
   background: #466d85; }
 .validate.student [class*="section-"].section-2 {
-  background: #497b9b; }
+  background: #487b9b; }
 .validate.student [class*="section-"].section-3 {
   background: #4b89b1; }
 .validate.student [class*="section-"].section-4 {
-  background: #4e97c7; }
+  background: #4d97c7; }
 .validate.student [class*="section-"].section-5 {
-  background: #4fa0d6; }
+  background: #4fa0d5; }
 
 .sidebar-list ul li {
   min-width: 100px; }
@@ -1179,231 +1179,231 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(99, 112, 116, 0.9); }
+    background: rgba(99, 111, 116, 0.9); }
 .sidebar-list.guru {
   background: #40484B;
   color: white; }
   .sidebar-list.guru ul li.complete a .svg-white svg circle {
-    stroke: #7abcaf !important;
-    fill: #7abcaf !important; }
+    stroke: #7abcae !important;
+    fill: #7abcae !important; }
   .sidebar-list.guru ul li:nth-child(1) a {
-    background: #50736f; }
+    background: #50726f; }
     .sidebar-list.guru ul li:nth-child(1) a:hover, .sidebar-list.guru ul li:nth-child(1) a:focus {
-      background: #a8b9b7;
-      color: #485e5d; }
+      background: #a7b8b7;
+      color: #485d5d; }
       .sidebar-list.guru ul li:nth-child(1) a:hover .svg-white *, .sidebar-list.guru ul li:nth-child(1) a:focus .svg-white * {
-        stroke: #485e5d !important; }
+        stroke: #485d5d !important; }
     .sidebar-list.guru ul li:nth-child(1) a:active {
-      background: #485e5d;
+      background: #485d5d;
       color: white; }
       .sidebar-list.guru ul li:nth-child(1) a:active .svg-white * {
         stroke: white !important; }
   .sidebar-list.guru ul li:nth-child(1).complete a:hover .svg-white circle, .sidebar-list.guru ul li:nth-child(1).complete a:focus .svg-white circle {
-    fill: #485e5d !important; }
+    fill: #485d5d !important; }
   .sidebar-list.guru ul li:nth-child(1).complete a:hover .svg-white path, .sidebar-list.guru ul li:nth-child(1).complete a:focus .svg-white path {
     stroke: white !important; }
   .sidebar-list.guru ul li:nth-child(1).complete a:active .svg-white circle {
     stroke: white !important;
     fill: white !important; }
   .sidebar-list.guru ul li:nth-child(1).complete a:active .svg-white path {
-    stroke: #485e5d !important; }
+    stroke: #485d5d !important; }
   .sidebar-list.guru ul li:nth-child(2) a {
-    background: #57837d; }
+    background: #56827c; }
     .sidebar-list.guru ul li:nth-child(2) a:hover, .sidebar-list.guru ul li:nth-child(2) a:focus {
-      background: #abc1be;
-      color: #4c6664; }
+      background: #aac0bd;
+      color: #4b6563; }
       .sidebar-list.guru ul li:nth-child(2) a:hover .svg-white *, .sidebar-list.guru ul li:nth-child(2) a:focus .svg-white * {
-        stroke: #4c6664 !important; }
+        stroke: #4b6563 !important; }
     .sidebar-list.guru ul li:nth-child(2) a:active {
-      background: #4c6664;
+      background: #4b6563;
       color: white; }
       .sidebar-list.guru ul li:nth-child(2) a:active .svg-white * {
         stroke: white !important; }
   .sidebar-list.guru ul li:nth-child(2).complete a:hover .svg-white circle, .sidebar-list.guru ul li:nth-child(2).complete a:focus .svg-white circle {
-    fill: #4c6664 !important; }
+    fill: #4b6563 !important; }
   .sidebar-list.guru ul li:nth-child(2).complete a:hover .svg-white path, .sidebar-list.guru ul li:nth-child(2).complete a:focus .svg-white path {
     stroke: white !important; }
   .sidebar-list.guru ul li:nth-child(2).complete a:active .svg-white circle {
     stroke: white !important;
     fill: white !important; }
   .sidebar-list.guru ul li:nth-child(2).complete a:active .svg-white path {
-    stroke: #4c6664 !important; }
+    stroke: #4b6563 !important; }
   .sidebar-list.guru ul li:nth-child(3) a {
-    background: #5d938a; }
+    background: #5c928a; }
     .sidebar-list.guru ul li:nth-child(3) a:hover, .sidebar-list.guru ul li:nth-child(3) a:focus {
-      background: #aec9c5;
-      color: #4f6e6b; }
+      background: #adc8c4;
+      color: #4e6d6a; }
       .sidebar-list.guru ul li:nth-child(3) a:hover .svg-white *, .sidebar-list.guru ul li:nth-child(3) a:focus .svg-white * {
-        stroke: #4f6e6b !important; }
+        stroke: #4e6d6a !important; }
     .sidebar-list.guru ul li:nth-child(3) a:active {
-      background: #4f6e6b;
+      background: #4e6d6a;
       color: white; }
       .sidebar-list.guru ul li:nth-child(3) a:active .svg-white * {
         stroke: white !important; }
   .sidebar-list.guru ul li:nth-child(3).complete a:hover .svg-white circle, .sidebar-list.guru ul li:nth-child(3).complete a:focus .svg-white circle {
-    fill: #4f6e6b !important; }
+    fill: #4e6d6a !important; }
   .sidebar-list.guru ul li:nth-child(3).complete a:hover .svg-white path, .sidebar-list.guru ul li:nth-child(3).complete a:focus .svg-white path {
     stroke: white !important; }
   .sidebar-list.guru ul li:nth-child(3).complete a:active .svg-white circle {
     stroke: white !important;
     fill: white !important; }
   .sidebar-list.guru ul li:nth-child(3).complete a:active .svg-white path {
-    stroke: #4f6e6b !important; }
+    stroke: #4e6d6a !important; }
   .sidebar-list.guru ul li:nth-child(4) a {
-    background: #63a398; }
+    background: #62a297; }
     .sidebar-list.guru ul li:nth-child(4) a:hover, .sidebar-list.guru ul li:nth-child(4) a:focus {
-      background: #b1d1cc;
-      color: #527672; }
+      background: #b0d0cb;
+      color: #517571; }
       .sidebar-list.guru ul li:nth-child(4) a:hover .svg-white *, .sidebar-list.guru ul li:nth-child(4) a:focus .svg-white * {
-        stroke: #527672 !important; }
+        stroke: #517571 !important; }
     .sidebar-list.guru ul li:nth-child(4) a:active {
-      background: #527672;
+      background: #517571;
       color: white; }
       .sidebar-list.guru ul li:nth-child(4) a:active .svg-white * {
         stroke: white !important; }
   .sidebar-list.guru ul li:nth-child(4).complete a:hover .svg-white circle, .sidebar-list.guru ul li:nth-child(4).complete a:focus .svg-white circle {
-    fill: #527672 !important; }
+    fill: #517571 !important; }
   .sidebar-list.guru ul li:nth-child(4).complete a:hover .svg-white path, .sidebar-list.guru ul li:nth-child(4).complete a:focus .svg-white path {
     stroke: white !important; }
   .sidebar-list.guru ul li:nth-child(4).complete a:active .svg-white circle {
     stroke: white !important;
     fill: white !important; }
   .sidebar-list.guru ul li:nth-child(4).complete a:active .svg-white path {
-    stroke: #527672 !important; }
+    stroke: #517571 !important; }
   .sidebar-list.guru ul li:nth-child(5) a {
-    background: #67aea1; }
+    background: #66ada0; }
     .sidebar-list.guru ul li:nth-child(5) a:hover, .sidebar-list.guru ul li:nth-child(5) a:focus {
-      background: #b3d7d0;
-      color: #547b76; }
+      background: #b2d6cf;
+      color: #537a75; }
       .sidebar-list.guru ul li:nth-child(5) a:hover .svg-white *, .sidebar-list.guru ul li:nth-child(5) a:focus .svg-white * {
-        stroke: #547b76 !important; }
+        stroke: #537a75 !important; }
     .sidebar-list.guru ul li:nth-child(5) a:active {
-      background: #547b76;
+      background: #537a75;
       color: white; }
       .sidebar-list.guru ul li:nth-child(5) a:active .svg-white * {
         stroke: white !important; }
   .sidebar-list.guru ul li:nth-child(5).complete a:hover .svg-white circle, .sidebar-list.guru ul li:nth-child(5).complete a:focus .svg-white circle {
-    fill: #547b76 !important; }
+    fill: #537a75 !important; }
   .sidebar-list.guru ul li:nth-child(5).complete a:hover .svg-white path, .sidebar-list.guru ul li:nth-child(5).complete a:focus .svg-white path {
     stroke: white !important; }
   .sidebar-list.guru ul li:nth-child(5).complete a:active .svg-white circle {
     stroke: white !important;
     fill: white !important; }
   .sidebar-list.guru ul li:nth-child(5).complete a:active .svg-white path {
-    stroke: #547b76 !important; }
+    stroke: #537a75 !important; }
 .sidebar-list.student {
   background: #F1F1F1;
   color: white; }
   .sidebar-list.student header {
     color: #40484B; }
   .sidebar-list.student ul li.complete a .svg-white svg circle {
-    stroke: #65b0e1 !important;
-    fill: #65b0e1 !important; }
+    stroke: #65b2e1 !important;
+    fill: #65b2e1 !important; }
   .sidebar-list.student ul li:nth-child(1) a {
     background: #466d85; }
     .sidebar-list.student ul li:nth-child(1) a:hover, .sidebar-list.student ul li:nth-child(1) a:focus {
-      background: #a3b6c2;
-      color: #435b68; }
+      background: #a2b6c2;
+      color: #435a68; }
       .sidebar-list.student ul li:nth-child(1) a:hover .svg-white *, .sidebar-list.student ul li:nth-child(1) a:focus .svg-white * {
-        stroke: #435b68 !important; }
+        stroke: #435a68 !important; }
     .sidebar-list.student ul li:nth-child(1) a:active {
-      background: #435b68;
+      background: #435a68;
       color: white; }
       .sidebar-list.student ul li:nth-child(1) a:active .svg-white * {
         stroke: white !important; }
   .sidebar-list.student ul li:nth-child(1).complete a:hover .svg-white circle, .sidebar-list.student ul li:nth-child(1).complete a:focus .svg-white circle {
-    fill: #435b68 !important; }
+    fill: #435a68 !important; }
   .sidebar-list.student ul li:nth-child(1).complete a:hover .svg-white path, .sidebar-list.student ul li:nth-child(1).complete a:focus .svg-white path {
     stroke: white !important; }
   .sidebar-list.student ul li:nth-child(1).complete a:active .svg-white circle {
     stroke: white !important;
     fill: white !important; }
   .sidebar-list.student ul li:nth-child(1).complete a:active .svg-white path {
-    stroke: #435b68 !important; }
+    stroke: #435a68 !important; }
   .sidebar-list.student ul li:nth-child(2) a {
-    background: #497b9b; }
+    background: #487b9b; }
     .sidebar-list.student ul li:nth-child(2) a:hover, .sidebar-list.student ul li:nth-child(2) a:focus {
-      background: #a4bdcd;
-      color: #456273; }
+      background: #a3bdcd;
+      color: #446173; }
       .sidebar-list.student ul li:nth-child(2) a:hover .svg-white *, .sidebar-list.student ul li:nth-child(2) a:focus .svg-white * {
-        stroke: #456273 !important; }
+        stroke: #446173 !important; }
     .sidebar-list.student ul li:nth-child(2) a:active {
-      background: #456273;
+      background: #446173;
       color: white; }
       .sidebar-list.student ul li:nth-child(2) a:active .svg-white * {
         stroke: white !important; }
   .sidebar-list.student ul li:nth-child(2).complete a:hover .svg-white circle, .sidebar-list.student ul li:nth-child(2).complete a:focus .svg-white circle {
-    fill: #456273 !important; }
+    fill: #446173 !important; }
   .sidebar-list.student ul li:nth-child(2).complete a:hover .svg-white path, .sidebar-list.student ul li:nth-child(2).complete a:focus .svg-white path {
     stroke: white !important; }
   .sidebar-list.student ul li:nth-child(2).complete a:active .svg-white circle {
     stroke: white !important;
     fill: white !important; }
   .sidebar-list.student ul li:nth-child(2).complete a:active .svg-white path {
-    stroke: #456273 !important; }
+    stroke: #446173 !important; }
   .sidebar-list.student ul li:nth-child(3) a {
     background: #4b89b1; }
     .sidebar-list.student ul li:nth-child(3) a:hover, .sidebar-list.student ul li:nth-child(3) a:focus {
       background: #a5c4d8;
-      color: #46697e; }
+      color: #45687e; }
       .sidebar-list.student ul li:nth-child(3) a:hover .svg-white *, .sidebar-list.student ul li:nth-child(3) a:focus .svg-white * {
-        stroke: #46697e !important; }
+        stroke: #45687e !important; }
     .sidebar-list.student ul li:nth-child(3) a:active {
-      background: #46697e;
+      background: #45687e;
       color: white; }
       .sidebar-list.student ul li:nth-child(3) a:active .svg-white * {
         stroke: white !important; }
   .sidebar-list.student ul li:nth-child(3).complete a:hover .svg-white circle, .sidebar-list.student ul li:nth-child(3).complete a:focus .svg-white circle {
-    fill: #46697e !important; }
+    fill: #45687e !important; }
   .sidebar-list.student ul li:nth-child(3).complete a:hover .svg-white path, .sidebar-list.student ul li:nth-child(3).complete a:focus .svg-white path {
     stroke: white !important; }
   .sidebar-list.student ul li:nth-child(3).complete a:active .svg-white circle {
     stroke: white !important;
     fill: white !important; }
   .sidebar-list.student ul li:nth-child(3).complete a:active .svg-white path {
-    stroke: #46697e !important; }
+    stroke: #45687e !important; }
   .sidebar-list.student ul li:nth-child(4) a {
-    background: #4e97c7; }
+    background: #4d97c7; }
     .sidebar-list.student ul li:nth-child(4) a:hover, .sidebar-list.student ul li:nth-child(4) a:focus {
-      background: #a7cbe3;
-      color: #477089; }
+      background: #a6cbe3;
+      color: #466f89; }
       .sidebar-list.student ul li:nth-child(4) a:hover .svg-white *, .sidebar-list.student ul li:nth-child(4) a:focus .svg-white * {
-        stroke: #477089 !important; }
+        stroke: #466f89 !important; }
     .sidebar-list.student ul li:nth-child(4) a:active {
-      background: #477089;
+      background: #466f89;
       color: white; }
       .sidebar-list.student ul li:nth-child(4) a:active .svg-white * {
         stroke: white !important; }
   .sidebar-list.student ul li:nth-child(4).complete a:hover .svg-white circle, .sidebar-list.student ul li:nth-child(4).complete a:focus .svg-white circle {
-    fill: #477089 !important; }
+    fill: #466f89 !important; }
   .sidebar-list.student ul li:nth-child(4).complete a:hover .svg-white path, .sidebar-list.student ul li:nth-child(4).complete a:focus .svg-white path {
     stroke: white !important; }
   .sidebar-list.student ul li:nth-child(4).complete a:active .svg-white circle {
     stroke: white !important;
     fill: white !important; }
   .sidebar-list.student ul li:nth-child(4).complete a:active .svg-white path {
-    stroke: #477089 !important; }
+    stroke: #466f89 !important; }
   .sidebar-list.student ul li:nth-child(5) a {
-    background: #4fa0d6; }
+    background: #4fa0d5; }
     .sidebar-list.student ul li:nth-child(5) a:hover, .sidebar-list.student ul li:nth-child(5) a:focus {
-      background: #a7d0eb;
-      color: #487491; }
+      background: #a7cfea;
+      color: #477490; }
       .sidebar-list.student ul li:nth-child(5) a:hover .svg-white *, .sidebar-list.student ul li:nth-child(5) a:focus .svg-white * {
-        stroke: #487491 !important; }
+        stroke: #477490 !important; }
     .sidebar-list.student ul li:nth-child(5) a:active {
-      background: #487491;
+      background: #477490;
       color: white; }
       .sidebar-list.student ul li:nth-child(5) a:active .svg-white * {
         stroke: white !important; }
   .sidebar-list.student ul li:nth-child(5).complete a:hover .svg-white circle, .sidebar-list.student ul li:nth-child(5).complete a:focus .svg-white circle {
-    fill: #487491 !important; }
+    fill: #477490 !important; }
   .sidebar-list.student ul li:nth-child(5).complete a:hover .svg-white path, .sidebar-list.student ul li:nth-child(5).complete a:focus .svg-white path {
     stroke: white !important; }
   .sidebar-list.student ul li:nth-child(5).complete a:active .svg-white circle {
     stroke: white !important;
     fill: white !important; }
   .sidebar-list.student ul li:nth-child(5).complete a:active .svg-white path {
-    stroke: #487491 !important; }
+    stroke: #477490 !important; }
 
 fieldset {
   margin: 0; }
@@ -1412,7 +1412,7 @@ fieldset {
     fieldset.guru label {
       color: #69B3A5; }
     fieldset.guru input {
-      background: #576267;
+      background: #576367;
       color: white; }
       fieldset.guru input:focus {
         background: white;
@@ -1425,7 +1425,7 @@ fieldset {
       background: #F1F1F1;
       color: #40484B; }
       fieldset.student input:focus {
-        background: #eef6fc;
+        background: #edf6fb;
         color: #40484B; }
 
 /* ---------- FAQ */
@@ -1518,8 +1518,8 @@ fieldset {
       #faq .main dl a {
         display: block; }
         #faq .main dl a:hover dt, #faq .main dl a:focus dt {
-          background: #b4b1b4;
-          color: #55555a; }
+          background: #b4b0b4;
+          color: #54555a; }
           #faq .main dl a:hover dt .close-button svg, #faq .main dl a:focus dt .close-button svg {
             -webkit-transform: rotate(90deg);
             -moz-transform: rotate(90deg);
@@ -1527,7 +1527,7 @@ fieldset {
             -o-transform: rotate(90deg);
             transform: rotate(90deg); }
             #faq .main dl a:hover dt .close-button svg *, #faq .main dl a:focus dt .close-button svg * {
-              stroke: #55555a; }
+              stroke: #54555a; }
           #faq .main dl a:hover dt.active .close-button svg, #faq .main dl a:focus dt.active .close-button svg {
             -webkit-transform: rotate(135deg);
             -moz-transform: rotate(135deg);
@@ -1535,14 +1535,14 @@ fieldset {
             -o-transform: rotate(135deg);
             transform: rotate(135deg); }
         #faq .main dl a:hover + dd, #faq .main dl a:focus + dd {
-          border-color: #b4b1b4; }
+          border-color: #b4b0b4; }
         #faq .main dl a:active dt {
-          background: #55555a;
+          background: #54555a;
           color: white; }
           #faq .main dl a:active dt .close-button svg * {
             stroke: white; }
         #faq .main dl a:active + dd {
-          border-color: #55555a; }
+          border-color: #54555a; }
 
 @media screen and (min-width: 768px) {
   #faq .main {
@@ -1556,6 +1556,7 @@ fieldset {
     padding: 15px; }
     #faq .main dl {
       padding: 15px; } }
+
 /* ---------- TEAM */
 #team {
   width: 100%;
@@ -2122,33 +2123,33 @@ fieldset {
                 font-weight: 600;
                 line-height: 1.2; }
       #timeline > section > ul > li.post-milestone .post-icon .post-icon-title {
-        background: #80beb3; }
+        background: #7fbeb2; }
       #timeline > section > ul > li.post-milestone .post-icon svg, #timeline > section > ul > li.post-milestone .post-icon .post-icon-svg, #timeline > section > ul > li.post-milestone header a {
-        background: #80beb3; }
+        background: #7fbeb2; }
       #timeline > section > ul > li.post-milestone:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-milestone:focus .post-icon .post-icon-title {
         background: #69B3A5; }
       #timeline > section > ul > li.post-milestone:hover .post-icon svg, #timeline > section > ul > li.post-milestone:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-milestone:hover header a, #timeline > section > ul > li.post-milestone:focus .post-icon svg, #timeline > section > ul > li.post-milestone:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-milestone:focus header a {
         background: #69B3A5; }
       #timeline > section > ul > li.post-milestone article a:not(.txt-white) {
-        color: #80beb3; }
+        color: #7fbeb2; }
       #timeline > section > ul > li.post-milestone article a.txt-white:hover, #timeline > section > ul > li.post-milestone article a.txt-white:focus {
         background: #69B3A5; }
       #timeline > section > ul > li.post-milestone article a.txt-white:active {
-        background: #4e9b8c; }
+        background: #4e9b8b; }
       #timeline > section > ul > li.post-milestone article footer ul li:first-child span {
-        border-color: #80beb3; }
+        border-color: #7fbeb2; }
       #timeline > section > ul > li.post-milestone:nth-child(even) article header a:after {
-        border-right-color: #80beb3; }
+        border-right-color: #7fbeb2; }
       #timeline > section > ul > li.post-milestone:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-milestone:nth-child(even):focus article header a:after {
         border-right-color: #69B3A5; }
       #timeline > section > ul > li.post-milestone:nth-child(odd) article header a:after {
-        border-left-color: #80beb3; }
+        border-left-color: #7fbeb2; }
       #timeline > section > ul > li.post-milestone:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-milestone:nth-child(odd):focus article header a:after {
         border-left-color: #69B3A5; }
       #timeline > section > ul > li.post-blog .post-icon .post-icon-title {
-        background: #f7cc60; }
+        background: #f6cb5f; }
       #timeline > section > ul > li.post-blog .post-icon svg, #timeline > section > ul > li.post-blog .post-icon .post-icon-svg, #timeline > section > ul > li.post-blog header a {
-        background: #f7cc60; }
+        background: #f6cb5f; }
       #timeline > section > ul > li.post-blog:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-blog:focus .post-icon .post-icon-title {
         background: #F6C64E; }
       #timeline > section > ul > li.post-blog:hover .post-icon svg, #timeline > section > ul > li.post-blog:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-blog:hover header a, #timeline > section > ul > li.post-blog:focus .post-icon svg, #timeline > section > ul > li.post-blog:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-blog:focus header a {
@@ -2158,159 +2159,159 @@ fieldset {
       #timeline > section > ul > li.post-blog article a.txt-white:hover, #timeline > section > ul > li.post-blog article a.txt-white:focus {
         background: #F6C64E; }
       #timeline > section > ul > li.post-blog article a.txt-white:active {
-        background: #f4b61d; }
+        background: #f4b31d; }
       #timeline > section > ul > li.post-blog article footer ul li:first-child span {
         border-color: #F6C64E; }
       #timeline > section > ul > li.post-blog:nth-child(even) article header a:after {
-        border-right-color: #f7cc60; }
+        border-right-color: #f6cb5f; }
       #timeline > section > ul > li.post-blog:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-blog:nth-child(even):focus article header a:after {
         border-right-color: #F6C64E; }
       #timeline > section > ul > li.post-blog:nth-child(odd) article header a:after {
-        border-left-color: #f7cc60; }
+        border-left-color: #f6cb5f; }
       #timeline > section > ul > li.post-blog:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-blog:nth-child(odd):focus article header a:after {
         border-left-color: #F6C64E; }
       #timeline > section > ul > li.post-tutorial .post-icon .post-icon-title {
-        background: #6fb2c2; }
+        background: #6eb1c1; }
       #timeline > section > ul > li.post-tutorial .post-icon svg, #timeline > section > ul > li.post-tutorial .post-icon .post-icon-svg, #timeline > section > ul > li.post-tutorial header a {
-        background: #6fb2c2; }
+        background: #6eb1c1; }
       #timeline > section > ul > li.post-tutorial:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-tutorial:focus .post-icon .post-icon-title {
         background: #55A4B7; }
       #timeline > section > ul > li.post-tutorial:hover .post-icon svg, #timeline > section > ul > li.post-tutorial:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-tutorial:hover header a, #timeline > section > ul > li.post-tutorial:focus .post-icon svg, #timeline > section > ul > li.post-tutorial:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-tutorial:focus header a {
         background: #55A4B7; }
       #timeline > section > ul > li.post-tutorial article a:not(.chip) {
-        color: #6fb2c2; }
+        color: #6eb1c1; }
       #timeline > section > ul > li.post-tutorial article a.txt-white:hover, #timeline > section > ul > li.post-tutorial article a.txt-white:focus {
         background: #55A4B7; }
       #timeline > section > ul > li.post-tutorial article a.txt-white:active {
-        background: #418798; }
+        background: #418898; }
       #timeline > section > ul > li.post-tutorial article footer ul li:first-child span {
-        border-color: #6fb2c2; }
+        border-color: #6eb1c1; }
       #timeline > section > ul > li.post-tutorial:nth-child(even) article header a:after {
-        border-right-color: #6fb2c2; }
+        border-right-color: #6eb1c1; }
       #timeline > section > ul > li.post-tutorial:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-tutorial:nth-child(even):focus article header a:after {
         border-right-color: #55A4B7; }
       #timeline > section > ul > li.post-tutorial:nth-child(odd) article header a:after {
-        border-left-color: #6fb2c2; }
+        border-left-color: #6eb1c1; }
       #timeline > section > ul > li.post-tutorial:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-tutorial:nth-child(odd):focus article header a:after {
         border-left-color: #55A4B7; }
       #timeline > section > ul > li.post-partnership .post-icon .post-icon-title {
-        background: #f26165; }
+        background: #f16065; }
       #timeline > section > ul > li.post-partnership .post-icon svg, #timeline > section > ul > li.post-partnership .post-icon .post-icon-svg, #timeline > section > ul > li.post-partnership header a {
-        background: #f26165; }
+        background: #f16065; }
       #timeline > section > ul > li.post-partnership:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-partnership:focus .post-icon .post-icon-title {
         background: #F04F54; }
       #timeline > section > ul > li.post-partnership:hover .post-icon svg, #timeline > section > ul > li.post-partnership:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-partnership:hover header a, #timeline > section > ul > li.post-partnership:focus .post-icon svg, #timeline > section > ul > li.post-partnership:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-partnership:focus header a {
         background: #F04F54; }
       #timeline > section > ul > li.post-partnership article a:not(.chip) {
-        color: #f26165; }
+        color: #f16065; }
       #timeline > section > ul > li.post-partnership article a.txt-white:hover, #timeline > section > ul > li.post-partnership article a.txt-white:focus {
         background: #F04F54; }
       #timeline > section > ul > li.post-partnership article a.txt-white:active {
-        background: #ec2026; }
+        background: #ec2027; }
       #timeline > section > ul > li.post-partnership article footer ul li:first-child span {
-        border-color: #f26165; }
+        border-color: #f16065; }
       #timeline > section > ul > li.post-partnership:nth-child(even) article header a:after {
-        border-right-color: #f26165; }
+        border-right-color: #f16065; }
       #timeline > section > ul > li.post-partnership:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-partnership:nth-child(even):focus article header a:after {
         border-right-color: #F04F54; }
       #timeline > section > ul > li.post-partnership:nth-child(odd) article header a:after {
-        border-left-color: #f26165; }
+        border-left-color: #f16065; }
       #timeline > section > ul > li.post-partnership:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-partnership:nth-child(odd):focus article header a:after {
         border-left-color: #F04F54; }
       #timeline > section > ul > li.post-parent .post-icon .post-icon-title {
-        background: #a974ce; }
+        background: #a973cd; }
       #timeline > section > ul > li.post-parent .post-icon svg, #timeline > section > ul > li.post-parent .post-icon .post-icon-svg, #timeline > section > ul > li.post-parent header a {
-        background: #a974ce; }
+        background: #a973cd; }
       #timeline > section > ul > li.post-parent:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-parent:focus .post-icon .post-icon-title {
         background: #9A5BC5; }
       #timeline > section > ul > li.post-parent:hover .post-icon svg, #timeline > section > ul > li.post-parent:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-parent:hover header a, #timeline > section > ul > li.post-parent:focus .post-icon svg, #timeline > section > ul > li.post-parent:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-parent:focus header a {
         background: #9A5BC5; }
       #timeline > section > ul > li.post-parent article a:not(.chip) {
-        color: #a974ce; }
+        color: #a973cd; }
       #timeline > section > ul > li.post-parent article a.txt-white:hover, #timeline > section > ul > li.post-parent article a.txt-white:focus {
         background: #9A5BC5; }
       #timeline > section > ul > li.post-parent article a.txt-white:active {
-        background: #813eaf; }
+        background: #803eaf; }
       #timeline > section > ul > li.post-parent article footer ul li:first-child span {
-        border-color: #a974ce; }
+        border-color: #a973cd; }
       #timeline > section > ul > li.post-parent:nth-child(even) article header a:after {
-        border-right-color: #a974ce; }
+        border-right-color: #a973cd; }
       #timeline > section > ul > li.post-parent:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-parent:nth-child(even):focus article header a:after {
         border-right-color: #9A5BC5; }
       #timeline > section > ul > li.post-parent:nth-child(odd) article header a:after {
-        border-left-color: #a974ce; }
+        border-left-color: #a973cd; }
       #timeline > section > ul > li.post-parent:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-parent:nth-child(odd):focus article header a:after {
         border-left-color: #9A5BC5; }
       #timeline > section > ul > li.post-college-main .post-icon .post-icon-title {
-        background: #eb60af; }
+        background: #eb5faf; }
       #timeline > section > ul > li.post-college-main .post-icon svg, #timeline > section > ul > li.post-college-main .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-main header a {
-        background: #eb60af; }
+        background: #eb5faf; }
       #timeline > section > ul > li.post-college-main:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-college-main:focus .post-icon .post-icon-title {
         background: #e6389b; }
       #timeline > section > ul > li.post-college-main:hover .post-icon svg, #timeline > section > ul > li.post-college-main:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-main:hover header a, #timeline > section > ul > li.post-college-main:focus .post-icon svg, #timeline > section > ul > li.post-college-main:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-main:focus header a {
         background: #e6389b; }
       #timeline > section > ul > li.post-college-main article a:not(.chip) {
-        color: #eb60af; }
+        color: #eb5faf; }
       #timeline > section > ul > li.post-college-main article a.txt-white:hover, #timeline > section > ul > li.post-college-main article a.txt-white:focus {
         background: #e6389b; }
       #timeline > section > ul > li.post-college-main article a.txt-white:active {
-        background: #d11a82; }
+        background: #d11a85; }
       #timeline > section > ul > li.post-college-main article footer ul li:first-child span {
-        border-color: #eb60af; }
+        border-color: #eb5faf; }
       #timeline > section > ul > li.post-college-main:nth-child(even) article header a:after {
-        border-right-color: #eb60af; }
+        border-right-color: #eb5faf; }
       #timeline > section > ul > li.post-college-main:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-college-main:nth-child(even):focus article header a:after {
         border-right-color: #e6389b; }
       #timeline > section > ul > li.post-college-main:nth-child(odd) article header a:after {
-        border-left-color: #eb60af; }
+        border-left-color: #eb5faf; }
       #timeline > section > ul > li.post-college-main:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-college-main:nth-child(odd):focus article header a:after {
         border-left-color: #e6389b; }
       #timeline > section > ul > li.post-college-guru .post-icon .post-icon-title {
-        background: #94c07d; }
+        background: #93c07c; }
       #timeline > section > ul > li.post-college-guru .post-icon svg, #timeline > section > ul > li.post-college-guru .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-guru header a {
-        background: #94c07d; }
+        background: #93c07c; }
       #timeline > section > ul > li.post-college-guru:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-college-guru:focus .post-icon .post-icon-title {
         background: #81B566; }
       #timeline > section > ul > li.post-college-guru:hover .post-icon svg, #timeline > section > ul > li.post-college-guru:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-guru:hover header a, #timeline > section > ul > li.post-college-guru:focus .post-icon svg, #timeline > section > ul > li.post-college-guru:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-guru:focus header a {
         background: #81B566; }
       #timeline > section > ul > li.post-college-guru article a:not(.chip) {
-        color: #94c07d; }
+        color: #93c07c; }
       #timeline > section > ul > li.post-college-guru article a.txt-white:hover, #timeline > section > ul > li.post-college-guru article a.txt-white:focus {
         background: #81B566; }
       #timeline > section > ul > li.post-college-guru article a.txt-white:active {
-        background: #679c4c; }
+        background: #689c4c; }
       #timeline > section > ul > li.post-college-guru article footer ul li:first-child span {
-        border-color: #94c07d; }
+        border-color: #93c07c; }
       #timeline > section > ul > li.post-college-guru:nth-child(even) article header a:after {
-        border-right-color: #94c07d; }
+        border-right-color: #93c07c; }
       #timeline > section > ul > li.post-college-guru:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-college-guru:nth-child(even):focus article header a:after {
         border-right-color: #81B566; }
       #timeline > section > ul > li.post-college-guru:nth-child(odd) article header a:after {
-        border-left-color: #94c07d; }
+        border-left-color: #93c07c; }
       #timeline > section > ul > li.post-college-guru:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-college-guru:nth-child(odd):focus article header a:after {
         border-left-color: #81B566; }
       #timeline > section > ul > li.post-college-student .post-icon .post-icon-title {
-        background: #6ab3e2; }
+        background: #6ab2e2; }
       #timeline > section > ul > li.post-college-student .post-icon svg, #timeline > section > ul > li.post-college-student .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-student header a {
-        background: #6ab3e2; }
+        background: #6ab2e2; }
       #timeline > section > ul > li.post-college-student:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-college-student:focus .post-icon .post-icon-title {
         background: #50A5DD; }
       #timeline > section > ul > li.post-college-student:hover .post-icon svg, #timeline > section > ul > li.post-college-student:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-student:hover header a, #timeline > section > ul > li.post-college-student:focus .post-icon svg, #timeline > section > ul > li.post-college-student:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-college-student:focus header a {
         background: #50A5DD; }
       #timeline > section > ul > li.post-college-student article a:not(.chip) {
-        color: #6ab3e2; }
+        color: #6ab2e2; }
       #timeline > section > ul > li.post-college-student article a.txt-white:hover, #timeline > section > ul > li.post-college-student article a.txt-white:focus {
         background: #50A5DD; }
       #timeline > section > ul > li.post-college-student article a.txt-white:active {
-        background: #298ed1; }
+        background: #2991d1; }
       #timeline > section > ul > li.post-college-student article footer ul li:first-child span {
-        border-color: #6ab3e2; }
+        border-color: #6ab2e2; }
       #timeline > section > ul > li.post-college-student:nth-child(even) article header a:after {
-        border-right-color: #6ab3e2; }
+        border-right-color: #6ab2e2; }
       #timeline > section > ul > li.post-college-student:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-college-student:nth-child(even):focus article header a:after {
         border-right-color: #50A5DD; }
       #timeline > section > ul > li.post-college-student:nth-child(odd) article header a:after {
-        border-left-color: #6ab3e2; }
+        border-left-color: #6ab2e2; }
       #timeline > section > ul > li.post-college-student:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-college-student:nth-child(odd):focus article header a:after {
         border-left-color: #50A5DD; }
       #timeline > section > ul > li.post-professional .post-icon .post-icon-title {
@@ -2338,28 +2339,28 @@ fieldset {
       #timeline > section > ul > li.post-professional:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-professional:nth-child(odd):focus article header a:after {
         border-right-color: #7872e3; }
       #timeline > section > ul > li.post-high-school .post-icon .post-icon-title {
-        background: #e98a59;
+        background: #e88959;
         min-width: 160px; }
       #timeline > section > ul > li.post-high-school .post-icon svg, #timeline > section > ul > li.post-high-school .post-icon .post-icon-svg, #timeline > section > ul > li.post-high-school header a {
-        background: #e98a59; }
+        background: #e88959; }
       #timeline > section > ul > li.post-high-school:hover .post-icon .post-icon-title, #timeline > section > ul > li.post-high-school:focus .post-icon .post-icon-title {
         background: #E5753C; }
       #timeline > section > ul > li.post-high-school:hover .post-icon svg, #timeline > section > ul > li.post-high-school:hover .post-icon .post-icon-svg, #timeline > section > ul > li.post-high-school:hover header a, #timeline > section > ul > li.post-high-school:focus .post-icon svg, #timeline > section > ul > li.post-high-school:focus .post-icon .post-icon-svg, #timeline > section > ul > li.post-high-school:focus header a {
         background: #E5753C; }
       #timeline > section > ul > li.post-high-school article a:not(.chip) {
-        color: #e98a59; }
+        color: #e88959; }
       #timeline > section > ul > li.post-high-school article a.txt-white:hover, #timeline > section > ul > li.post-high-school article a.txt-white:focus {
         background: #E5753C; }
       #timeline > section > ul > li.post-high-school article a.txt-white:active {
         background: #d2591c; }
       #timeline > section > ul > li.post-high-school article footer ul li:first-child span {
-        border-color: #e98a59; }
+        border-color: #e88959; }
       #timeline > section > ul > li.post-high-school:nth-child(even) article header a:after {
-        border-right-color: #e98a59; }
+        border-right-color: #e88959; }
       #timeline > section > ul > li.post-high-school:nth-child(even):hover article header a:after, #timeline > section > ul > li.post-high-school:nth-child(even):focus article header a:after {
         border-right-color: #E5753C; }
       #timeline > section > ul > li.post-high-school:nth-child(odd) article header a:after {
-        border-left-color: #e98a59; }
+        border-left-color: #e88959; }
       #timeline > section > ul > li.post-high-school:nth-child(odd):hover article header a:after, #timeline > section > ul > li.post-high-school:nth-child(odd):focus article header a:after {
         border-left-color: #E5753C; }
   #timeline.essay-timeline > section > ul > li.post-month .post-icon {
@@ -2540,7 +2541,7 @@ fieldset {
             fill: #F6C64E; }
     #apply section#apply-perks {
       position: relative;
-      background: #fceeca; }
+      background: #fcedc9; }
       #apply section#apply-perks header {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -2697,9 +2698,9 @@ fieldset {
             transform: translateX(-50%);
             top: calc(-313% * 3 - 8px); }
             #apply section#apply-perks .main #apply-table .apply-book:nth-child(3) div svg .color {
-              fill: #3d796e !important; }
+              fill: #3d796d !important; }
             #apply section#apply-perks .main #apply-table .apply-book:nth-child(3) .apply-label {
-              color: #3d796e; }
+              color: #3d796d; }
           #apply section#apply-perks .main #apply-table .apply-book:nth-child(4) {
             position: absolute;
             left: 50%;
@@ -2725,9 +2726,9 @@ fieldset {
             top: calc(-313% * 5 - 10px);
             margin-left: 2%; }
             #apply section#apply-perks .main #apply-table .apply-book:nth-child(5) div svg .color {
-              fill: #7bbbe5 !important; }
+              fill: #7bbce5 !important; }
             #apply section#apply-perks .main #apply-table .apply-book:nth-child(5) .apply-label {
-              color: #7bbbe5; }
+              color: #7bbce5; }
 
 /* ---------- PRICING */
 #pricing {
@@ -2795,6 +2796,7 @@ fieldset {
       padding-right: 15px; }
   #pricing > div {
     padding-top: 136px; } }
+
 @media screen and (min-width: 768px) {
   #pricing > header > h1 {
     padding: 30px;
@@ -2806,6 +2808,7 @@ fieldset {
       font-size: 28px; }
     #pricing > div dl dd {
       font-size: 24px; } }
+
 @media screen and (min-width: 1070px) {
   #pricing > header > ul {
     -webkit-flex-direction: row;
@@ -2816,25 +2819,3 @@ fieldset {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center; } }
-
-/*# sourceMappingURL=universal.css.map */
-
-/*# sourceMappingURL=maps/universal.css.map */
-
-/*# sourceMappingURL=maps/universal.css.map */
-
-/*# sourceMappingURL=maps/universal.css.map */
-
-/*# sourceMappingURL=maps/universal.css.map */
-
-/*# sourceMappingURL=maps/universal.css.map */
-
-/*# sourceMappingURL=maps/universal.css.map */
-
-/*# sourceMappingURL=maps/universal.css.map */
-
-/*# sourceMappingURL=maps/universal.css.map */
-
-/*# sourceMappingURL=maps/universal.css.map */
-
-/*# sourceMappingURL=maps/universal.css.map */

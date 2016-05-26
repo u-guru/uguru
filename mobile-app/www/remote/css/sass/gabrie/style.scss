@@ -3,9 +3,9 @@
 /* Reset */
 #gabrie {
 	height: 100%;
-	background: $mint;
-	color: $grey;
-	font-family: $brandon;
+	//background: $mint;
+	//color: $grey;
+	//font-family: $brandon;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -21,7 +21,7 @@
 		}
 	}
 	button {
-		font: $brandon!important;
+		//font: $brandon!important;
 	}
 	> div[id*="page"] {
 		width: 100%;
@@ -44,7 +44,7 @@
 	a {
 		transition: all 150ms cubic-bezier(0,.5,.25,1);
 		cursor: pointer;
-		color: $grey;
+		//color: $grey;
 		text-decoration: none;
 	}
 
@@ -53,9 +53,9 @@
 		appearance: none;
 		border: 0;
 		border-radius: $padding/4;
-		background: $grey;
+		//background: $grey;
 		color: white!important;
-		font-family: $brandon;
+		//font-family: $brandon;
 	}
 
 	h1, h2, h3 {
@@ -115,13 +115,13 @@
 				&:nth-child(1) {
 					opacity: 1;
 					* {
-						fill: $pink;
+						//fill: $pink;
 					}
 				}
 				&:nth-child(2) {
 					opacity: 0;
 					* {
-						fill: $grey;
+						//fill: $grey;
 					}
 				}
 				&:nth-child(3) {
@@ -201,7 +201,7 @@
 			background: $mint;
 			.angle {
 				path {
-					fill: $grey;
+					//fill: $grey;
 				}
 			}
 			#scroll-down {
@@ -224,7 +224,7 @@
 		&#summary {
 			padding-top: $padding*4;
 			padding-bottom: $padding*9;
-			background: $grey;
+			//background: $grey;
 			color: white;
 			.angle {
 				path {
@@ -360,7 +360,7 @@
 				}
 			}
 			a {
-				color: darken($grey, 15%);
+				//color: darken($grey, 15%);
 			}
 			ul {
 				@include listless;
@@ -440,9 +440,9 @@
 						display: block;
 						padding: $padding $padding*1.5;
 						background: white;
-						color: $grey;
+						//color: $grey;
 						&:hover, &:focus {
-							background: $grey;
+							//background: $grey;
 							color: white;
 						}
 						&:active {
@@ -533,15 +533,15 @@
 			color: $mint;
 			.angle {
 				path {
-					fill: lighten($pink, 10%);
+					//fill: lighten($pink, 10%);
 				}
 			}
 		}
 		&#misc {
 			padding-top: $padding*4;
 			padding-bottom: $padding*9;
-			background: lighten($pink, 10%);
-			color: $grey;
+			//background: lighten($pink, 10%);
+			//color: $grey;
 			.angle {
 				path {
 					fill: $forest;
@@ -1044,7 +1044,7 @@
 										background: white;
 										svg {
 											* {
-												stroke: $grey;
+												//stroke: $grey;
 											}
 										}
 									}

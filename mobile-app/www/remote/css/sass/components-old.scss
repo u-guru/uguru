@@ -917,7 +917,7 @@ p.request-description {
     }
 
     .pac-item {
-        @extend .nano-text;
+       // @extend .nano-text;
         display:block;
         font-family: "OpenSans-Regular";
         line-height:1.75em;

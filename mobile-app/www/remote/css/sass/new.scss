@@ -491,7 +491,7 @@ p {
     }
   }
   .course {
-    @extend .white-text;
+    //@extend .white-text;
     background-color: rgba(0,0,0,0.3);
     line-height:1.5em;
   }
@@ -1462,7 +1462,7 @@ margin: 0;
 
 .legend-tag
     {
-      @extend .course-tag;
+      //@extend .course-tag;
       background-color: grey;
     }
 
@@ -1779,7 +1779,7 @@ padding-top-1
 }
 
 .header-bar h5 {
-  @extend .title;
+  //@extend .title;
   height: auto;
   font-size: 90% !important;
   font-family: "OpenSans-SemiBold";
