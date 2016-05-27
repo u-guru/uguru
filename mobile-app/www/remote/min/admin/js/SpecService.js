@@ -21,7 +21,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
     function initSpec(scope, real_scope, parent_container, param, template_path, ctrl_path, states) {
         //checks codepen environment
-        if (window.location.href.split('codepen.io').length > 1) return;
+        // if (window.location.href.split('codepen.io').length > 1) return;
         var specObj = getSpec(param, template_path, ctrl_path);
         var callbackFunc = getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states)
         getCodepenSpec(specObj.url, callbackFunc)
@@ -29,17 +29,17 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
     }
 
     function getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states) {
-        console.log(states);
+        // console.log(states);
         return function(obj) {
 
             specObj.data = obj;
+            calcUseCasesCompletedness(specObj.data.use_cases)
             //@gabrielle note
             specObj.data.toggleDev = false;
             specObj.data.toggleSpec = false;
             specObj.data.mobile = {width:400, height:768, show:false, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
             specObj.data.open = specObj.open;
             specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
-            console.log(specObj.data.statesDropdown)
             specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path)
             specObj.data.openGDoc = openGDocSpecFunc(specObj.data.gdoc);
             for (specProp in specObj) {
@@ -75,6 +75,45 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
         }
 
+    }
+
+    function calcUseCasesCompletedness(use_case_arr) {
+        for (var i = 0; i < use_case_arr.length; i++) {
+            var indexUseCase = use_case_arr[i];
+            if (!indexUseCase.columns) indexUseCase.columns = {};
+            var indexUseCaseColumns = indexUseCase.columns
+            for (column in indexUseCaseColumns) {
+                var indexColumnObj = indexUseCaseColumns[column];
+                var columnSumComplete = 0;
+                if (indexColumnObj.items && indexColumnObj.items.length) {
+                    var columnItems = indexColumnObj.items;
+                    for (var j = 0; j < columnItems.length; j++) {
+                        var actionItem = indexColumnObj.items[j];
+                        if (actionItem.value) columnSumComplete += 1;
+                        if (actionItem.sub_items && actionItem.sub_items.length) {
+                            var actionSum = 0;
+                            var actionSubItemTotal = actionItem.sub_items.length;
+                            for (var k = 0; k < actionItem.sub_items.length; k++) {
+                                var indexSubItem = actionItem.sub_items[k];
+                                if (indexSubItem.value) actionSum += 1;
+                            }
+                            actionItem.status = {
+                                fraction: actionSum + '/' + actionSubItemTotal,
+                                remaining: actionSubItemTotal - actionSum,
+                                total: actionSubItemTotal,
+                                percentage: (100.0 * ((actionSum * 1.0)/indexColumnObj.items.length)).toFixed(1) + '%'
+                            }
+                        }
+                    }
+                }
+                indexColumnObj.status = {
+                    fraction: columnSumComplete+'/'+indexColumnObj.items.length,
+                    remaining: indexColumnObj.items.length - columnSumComplete,
+                    total: indexColumnObj.items.length,
+                    percentage: (100.0 * ((columnSumComplete * 1.0)/indexColumnObj.items.length)).toFixed(1) + '%'
+                }
+            }
+        }
     }
 
     function getCodepenData(scope, title, template_url, ctrl_path) {

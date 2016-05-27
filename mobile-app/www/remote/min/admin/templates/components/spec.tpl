@@ -9,12 +9,14 @@
                 <li>
                     <div class="bg-moxie txt-white txt-center">
                         <h1 class='txt-20 semibold p10xy'>{{use_case.columns.static.title}}</h1>
+                        <h4 class='txt-1 opacity-50 p05xy'>{{use_case.columns.static.status.percentage}}, {{use_case.columns.static.status.fraction}} complete</h4>
                     </div>
                     <ul class="p15-grid">
                         <li ng-repeat='item in use_case.columns.static.items'>
                             <checkbox value="item.value" label="item.title" class="txt-slate flex-left checkbox-moxie"> </checkbox>
                             <ul ng-if='item.sub_items' class='nested-action-item'>
                                 <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}} </li>
+                                <li class='opacity-50'>{{item.status.percentage}}, {{item.status.fraction}} complete</li>
                             </ul>
                         </li>
                     </ul>
@@ -22,12 +24,14 @@
                 <li>
                     <div class="bg-robin txt-white txt-center">
                         <h1 class='txt-20 semibold p10xy'>{{use_case.columns.micro.title}}</h1>
+                        <h4 class='txt-1 opacity-50 p05xy'>{{use_case.columns.micro.status.percentage}}, {{use_case.columns.micro.status.fraction}} complete</h4>
                     </div>
                     <ul>
                         <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.micro.items'>
                             <checkbox value="item.value" label="item.title" class="txt-slate flex-left checkbox-robin"> </checkbox>
                             <ul ng-if='item.sub_items' class='nested-action-item'>
                                 <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}} </li>
+                                <li class='opacity-50'>{{item.status.percentage}}, {{item.status.fraction}} complete</li>
                             </ul>
                         </li>
                     </ul>
@@ -35,12 +39,14 @@
                 <li>
                     <div class="bg-azure txt-white txt-center">
                         <h1 class='txt-20 semibold p10xy'>{{use_case.columns.macro.title}}</h1>
+                        <h4 class='txt-1 opacity-50 p05xy'>{{use_case.columns.macro.status.percentage}}, {{use_case.columns.macro.status.fraction}} complete</h4>
                     </div>
                     <ul>
                         <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.macro.items'>
                             <checkbox value="item.value" label="item.title" class="txt-slate flex-left checkbox-azure"> </checkbox>
                             <ul ng-if='item.sub_items' class='nested-action-item'>
                                 <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}} </li>
+                                <li class='opacity-50'>{{item.status.percentage}}, {{item.status.fraction}} complete</li>
                             </ul>
                         </li>
                     </ul>
@@ -48,12 +54,14 @@
                 <li>
                     <div class="bg-lake txt-white txt-center">
                         <h1 class='txt-20 semibold p10xy'>{{use_case.columns.icebox.title}}</h1>
+                        <h4 class='txt-1 opacity-50 p05xy'>{{use_case.columns.icebox.status.percentage}}, {{use_case.columns.icebox.status.fraction}} complete</h4>
                     </div>
                     <ul>
                         <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}"  ng-repeat='item in use_case.columns.icebox.items'>
                             <checkbox value="item.value" label="item.title" class="txt-slate flex-left checkbox-lake"> </checkbox>
                             <ul ng-if='item.sub_items' class='nested-action-item'>
                                 <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}} </li>
+                                <li class='opacity-50'>{{item.status.percentage}}, {{item.status.fraction}} complete</li>
                             </ul>
                         </li>
                     </ul>

@@ -66,7 +66,7 @@ function KeyboardService(Utilities, $timeout) {
                 if (!immediate) {
                     delay = delay || 250;
                 }
-                console.log('command released', e);
+                // console.log('command released', e);
                 on_release && on_release(e);
                 keyupNotRecent = true;
                 $timeout(function() {
@@ -91,20 +91,19 @@ function KeyboardService(Utilities, $timeout) {
                 evt = (e) ? e : window.event
                 if (evt.ctrlKey) {
                     cmdPressed = true;
-                    console.log('CMD pressed');
+                    // console.log('CMD pressed');
                 }
             })
             window.addEventListener("keyup", function(e){
                 evt = (e) ? e : window.event; // Some cross-browser compatibility.
                 // control key
                 if (evt.ctrlKey) {
-                    console.log('ctrl key pressed');
+                    // console.log('ctrl key pressed');
                 }
                 if((evt.metaKey || evt.keyCode == 224 || evt.keyCode == 93 || evt.which == 91 )&& (evt.which == 67))
                 {
 
                     cmdPressed = false;
-                    console.log("Is Control Press?", cmdPressed);
                     return false;
                     // Manual Copy / Paste / Cut code here.
                 }

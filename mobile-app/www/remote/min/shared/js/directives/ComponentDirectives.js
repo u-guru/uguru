@@ -111,4 +111,27 @@ angular.module('uguru.shared.directives')
                 }
             }
         };
-    }])
+}])
+.directive("checkbox", function() {
+    return {
+        templateUrl: BASE + 'min/shared/templates/components/checkbox.tpl',
+        scope: {
+            onChecked: '=onChange',
+            label: '=label',
+            value: '=value',
+            checked: "=checked"
+        },
+        restrict: 'E',
+        link: function(scope, element, attr) {
+            scope.label = scope.label || attr.label;
+
+            scope.onValueChanged = function(value) {
+                scope.onChecked && scope.onChecked(value);
+            }
+            // scope.value = scope.value || attr.value;
+            // if (scope.onPropChange) {
+            //   // scope.onPropChange(scope, )
+            // }
+        }
+    }
+})
