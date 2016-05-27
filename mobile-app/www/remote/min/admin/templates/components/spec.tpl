@@ -1,5 +1,5 @@
-<div class='fixed full-xy' ng-show='spec.toggleSpec || spec.toggleDev'>
-    <div id="dev-spec" class='top-0 left-0 absolute full-x bg-smoke animated slideInDown opacity-0' ng-class="{'z-index-1000': spec.toggleSpec}" ng-hide="!spec.toggleSpec" style='height: calc(100% - 66px);'>
+<div class='fixed full-xy'>
+    <div id="dev-spec" class='top-0 left-0 absolute full-x bg-smoke animated slideInDown' ng-class="{'z-index-1000': spec.toggleSpec}" ng-if="spec.toggleSpec" style='height: calc(100% - 66px);'>
         <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">
             <div class="bg-slate txt-center">
                 <h1 class='bg-cobalt-25p p15xy txt-28 weight-600 height-64 flex-center'><span class="weight-900">{{spec.title}}:&nbsp;</span> {{use_case.title}} </h1>
@@ -92,16 +92,16 @@
             </ul>
         </div>
     </div>
-    <div ng-if='spec.mobile.show' class='top-0 left-0 bg-smoke flex-wrap-center absolute full-x animated slideInDown z-index-2000' style='height: calc(100% - 66px);'>
+    <div ng-if='spec.mobile.show' class='top-0 left-0 bg-smoke flex-wrap-center absolute full-x animated slideInDown z-index-2000' id='dev-bottom-bar' style='height: calc(100% - 66px);'>
         <iframe class='animated bounceInDown relative' style='height:{{spec.mobile.height}}px; width: {{spec.mobile.width}}px !important' > </iframe>
     </div>
-    <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate animated slideInUp' ng-hide="!spec.toggleDev">
+    <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate animated slideInUp' ng-if="spec.toggleDev">
         <!-- @samir state list -->
-        <!-- <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
-            <li>
-                <button class="height-36 txt-18 bg-robin radius-2 normal block">onDeselectClickOne</button>
+        <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
+            <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)'>
+                <button class="height-36 txt-18 bg-robin radius-2 normal block">{{state_tag.title}}</button>
             </li>
-        </ul> -->
+        </ul>
         <ul class='bg-cobalt-25p flex-center-vertical-space-between p15-grid'>
             <li class="flex">
                 <!-- <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a> -->
@@ -130,9 +130,9 @@
                 <input class="m15left radius-2 height-36 p15x txt-center" type='text' placeholder="height" size="4" ng-model='spec.mobile.height' />
                 <input class="m15left radius-2 height-36 p15x txt-center" type='text' placeholder="width" size="4" ng-model="spec.mobile.width" />
             </li>
-            <li class='opacity-50' style="width: 300px;">
+            <!-- <li class='opacity-50' style="width: 300px;">
                 <dropdown class="states-dropdown reverse hide-header height-36 dropdown-moxie full-x" ng-model="spec.statesDropdown"></dropdown>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

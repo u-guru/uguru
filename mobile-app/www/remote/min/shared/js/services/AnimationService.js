@@ -12,10 +12,13 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
         // slide: slide,
         flip: flip,
         animateIn: animateIn,
+        animate: animate,
         animateOut: animateOut,
         applyAnimateInDirective: applyAnimateInDirective,
         applyAnimateOutDirective: applyAnimateOutDirective,
-        initCSSAnimation: initCSSAnimation
+        initCSSAnimation: initCSSAnimation,
+        getCSSAnimationFromClassName: getCSSAnimationFromClassName
+
     }
 
     function getBrowserPrefix() {
@@ -34,6 +37,49 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
         return browserPrefix;
 
 
+    }
+
+    function getCSSAnimationFromClassName(anim_class) {
+      var ss = document.styleSheets;
+      for (var i = 0; i < ss.length; ++i) {
+          if (ss[i].cssRules && ss[i].cssRules.length) {
+
+              var animationName;
+              for (var j = 0; j < ss[i].cssRules.length; ++j) {
+                if (ss[i].cssRules[j].type == window.CSSRule.STYLE_RULE) {
+                  if (ss[i].cssRules[j].selectorText === '.' + anim_class) {
+                    if (ss[i].cssRules[j].style && (ss[i].cssRules[j].style.animation || ss[i].cssRules[j].style.webkitAnimation)) {
+                      console.log(ss[i].cssRules[j].style.animation);
+                      var animationString = ss[i].cssRules[j].style.animation || ss[i].cssRules[j].style.webkitAnimation
+
+                      if (animationString.split(' ').length >= 2) {
+                        animationName = animationString.split(' ')[0];
+                        animationObj = getAnimationObjFromAnimationName(animationName)
+                        if (animationObj) {
+                          return animationObj;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              // if (!animationName) return;
+              // console.log('found', animationName);
+          }
+      }
+    }
+
+    function getAnimationObjFromAnimationName(anim_name) {
+      var ss = document.styleSheets;
+      for (var i = 0; i < ss.length; ++i) {
+        for (var j = 0; j < ss[i].cssRules.length; ++j) {
+            if (ss[i].cssRules[j].type == window.CSSRule.WEBKIT_KEYFRAMES_RULE) {
+              if (ss[i].cssRules[j].name === anim_name) {
+                return ss[i].cssRules[j];
+              }
+            }
+          }
+      }
     }
 
     function initCSSAnimation(anim_name, options) {
@@ -170,6 +216,74 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
               }
         }
     }
+
+    function animate(elem, css_class, anim_obj, delay) {
+      if (delay) {
+        $timeout(function() {
+          elem.classList.add('animated', css_class);
+        }, delay)
+      } else {
+        elem.classList.add('animated', css_class);
+      }
+      prefixedEventListener(elem,"AnimationStart", animationStartListener);
+      prefixedEventListener(elem,"AnimationEnd", animationEndListener);
+      function animationStartListener(e)
+      {
+        console.log('animation has began');
+        var lastKFSorted = getLastKFsorted(anim_obj.cssRules)
+        var formattedKFCssText = lastKFSorted.cssText.split('{')[1].replace('}', '').trim();
+        elem.style.cssText +=formattedKFCssText;
+        elem.removeEventListener( e.type, animationStartListener);
+      }
+      function animationEndListener(e)
+      {
+
+        elem.classList.remove(css_class, "animated");
+        elem.removeEventListener( e.type, animationEndListener);
+      }
+    }
+
+    function getLastKFsorted(css_rules) {
+      var keyFrames = [];
+
+      for (property in css_rules) {
+        if ((property || property === 0) && css_rules[property].type === window.CSSRule.WEBKIT_KEYFRAME_RULE) {
+          keyFrames.push(css_rules[property]);
+        }
+      }
+      keyFrames.sort(function(kf_a, kf_b) {
+        return parseFloat(kf_b.keyText.replace("%")) - parseFloat(kf_b.keyText.replace("%"))
+      }).reverse()
+      if (keyFrames.length) {
+        console.log('last keyframe', keyFrames[0]);
+        return keyFrames[0]
+      }
+    }
+
+    function animateIn(elem, css_class, delay) {
+        if (!elem || !css_class) {
+            return;
+        }
+        var cssClassArgs = getCSSArgs(css_class)
+        elem.classList.remove('animated');
+        if (delay) {
+          $timeout(function() {
+              elem.classList.add('animated', cssClassArgs.class);
+              prefixedEventListener(elem,"AnimationStart",function(e){
+                elem.style.opacity = 1;
+                e.target.removeEventListener(e.type, false);
+              });
+              prefixedEventListener(elem,"AnimationEnd",function(e){
+                  if (cssClassArgs.keep) {
+                      elem.classList.remove("animated");
+                  } else {
+                      elem.classList.remove(cssClassArgs.class, "animated");
+                  }
+                  e.target.removeEventListener(e.type, false);
+              });
+          }, delay || 0);
+        }
+      }
 
     function animateIn(elem, css_class, delay) {
         if (!elem || !css_class) {

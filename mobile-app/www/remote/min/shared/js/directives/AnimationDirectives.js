@@ -180,7 +180,7 @@ angular.module('uguru.shared.directives')
               for (var i = 0; i < classes.length; i++) {
                 var indexClass = classes[i].split(":")[0];
                 var classArgs = classes[i].split(":").slice(1);
-                if (classArgs.indexOf("anim") > -1) {
+                if (classArgs.indexOf("animIn") > -1) {
                   if (classArgs.indexOf("keep") > -1) {
                     indexClass = indexClass +':keep';
                   }
@@ -237,6 +237,13 @@ angular.module('uguru.shared.directives')
   return {
     restrict: 'A',
     link: function(scope, element, attr) {
+      var activateClass = attr.onActivate;
+      var animationObj;
+      if (activateClass.split(':').length > 1 && activateClass.indexOf(':animIn') === -1 && activateClass.indexOf(':animOut') === -1 && activateClass.indexOf(':anim') > -1) {
+        animationClass = activateClass.split(':anim')[0];
+        animationObj = AnimationService.getCSSAnimationFromClassName(animationClass);
+      }
+
       scope.$watch(function() {
         return element.attr('class');
       },function() {
@@ -250,7 +257,7 @@ angular.module('uguru.shared.directives')
               for (var i = 0; i < classes.length; i++) {
                 var indexClass = classes[i].split(":")[0];
                 var classArgs = classes[i].split(":").slice(1);
-                if (classArgs.indexOf("anim") > -1 && indexClass !== "null") {
+                if (classArgs.indexOf("animIn") > -1 && indexClass !== "null") {
                   if (classArgs.indexOf("keep") > -1) {
                     indexClass = indexClass +':keep';
                   }
@@ -261,6 +268,13 @@ angular.module('uguru.shared.directives')
                     indexClass = indexClass +':keep';
                   }
                   AnimationService.animateOut(element[0], indexClass);
+                } else
+                if (classArgs.indexOf("anim") > -1 && indexClass !== "null") {
+                  if (classArgs.indexOf("keep") > -1) {
+                    indexClass = indexClass + ':keep';
+                  }
+                  console.log('applying OG animate');
+                  AnimationService.animate(element[0], indexClass, animationObj, delay);
                 }
                 else if (indexClass !== "null") {
                   element[0].classList.add(indexClass);
@@ -331,7 +345,7 @@ angular.module('uguru.shared.directives')
               for (var i = 0; i < classes.length; i++) {
                 var indexClass = classes[i].split(":")[0];
                 var classArgs = classes[i].split(":").slice(1);
-                if (classArgs.indexOf("anim") > -1 && indexClass !== "null") {
+                if (classArgs.indexOf("animIn") > -1 && indexClass !== "null") {
                   if (classArgs.indexOf("keep") > -1) {
                     indexClass = indexClass +':keep';
                   }
@@ -650,7 +664,7 @@ directive("classOnLoad", ["$timeout", 'AnimationService', function ($timeout, An
                       for (var i = 0; i < classes.length; i++) {
                         var indexClass = classes[i].split(":")[0];
                         var classArgs = classes[i].split(":").slice(1);
-                        if (classArgs.indexOf("anim") > -1) {
+                        if (classArgs.indexOf("animIn") > -1) {
                           if (classArgs.indexOf("keep") > -1) {
                             indexClass = indexClass +':keep';
                           }
@@ -736,7 +750,7 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
               //       for (var i = 0; i < classes.length; i++) {
               //         var indexClass = classes[i].split(":")[0];
               //         var classArgs = classes[i].split(":").slice(1);
-              //         if (classArgs.indexOf("anim") > -1) {
+              //         if (classArgs.indexOf("animIn") > -1) {
               //           if (classArgs.indexOf("keep") > -1) {
               //             indexClass = indexClass +':keep';
               //           }
@@ -775,7 +789,7 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                     for (var i = 0; i < classes.length; i++) {
                       var indexClass = classes[i].split(":")[0];
                       var classArgs = classes[i].split(":").slice(1);
-                      if (classArgs.indexOf("anim") > -1) {
+                      if (classArgs.indexOf("animIn") > -1) {
                         if (classArgs.indexOf("keep") > -1) {
                           indexClass = indexClass +':keep';
                         }

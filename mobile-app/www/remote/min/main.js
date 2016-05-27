@@ -59,10 +59,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     templateUrl: 'admin/templates/index.html',
   })
 
-
-
-
-
   $urlRouterProvider.otherwise('/');
 
 

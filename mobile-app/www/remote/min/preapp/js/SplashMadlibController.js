@@ -93,15 +93,9 @@ angular.module('uguru.preApp')
       onCategorySwitch: madlib.categorySwitch
     }
     SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states);
-    // $timeout(function() {
-
-    //   // console.log('scope madlib spec', madlib.spec.data)
-    //   // madlib.spec.data.toggleDev = true;
-
-    //   $timeout(function() {$scope.$apply()});
-    //   console.log('scope madlib spec', madlib.spec.data)
-
-    // }, 1000)
+    $timeout(function() {
+      console.log(madlib.spec.data)
+    }, 2000)
   }
 ])
 

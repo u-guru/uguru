@@ -35,11 +35,13 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data = obj;
             calcUseCasesCompletedness(specObj.data.use_cases)
             //@gabrielle note
-            specObj.data.toggleDev = true;
+            specObj.data.toggleDev = false;
             specObj.data.toggleSpec = false;
             specObj.data.mobile = {width:400, height:768, show:false, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
             specObj.data.open = specObj.open;
             specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
+            specObj.data.stateTags = specObj.data.statesDropdown.options;
+            specObj.data.stateTagClicked = specObj.data.statesDropdown.onOptionClick;
             specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path)
             specObj.data.openGDoc = openGDocSpecFunc(specObj.data.gdoc);
             for (specProp in specObj) {
@@ -50,7 +52,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specElem.className = 'fixed bottom-0 left-0 full-x'
             KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
             KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
-            KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 27, 'esc', true, null);
+            KeyboardService.initOptionPressedAndReleasedFunction(function() {toggleDev(true); toggleSpec(true)}, null, 27, 'esc', true, null);
             // specElem.setAttribute('ng-if', 'spec && spec.data');
             specElem.setAttribute('data', param + '.spec.data');
             if (elem) {
@@ -66,11 +68,41 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                 }
             }
 
-            function toggleDev() {
-              scope.spec.data.toggleDev = !scope.spec.data.toggleDev;
+            function toggleDev(value) {
+                var newValue = !scope.spec.data.toggleDev;
+
+              if (newValue) {
+                scope.spec.data.toggleDev = newValue;
+                return;
+              }
+              else if (!newValue) {
+                var devSpecContainer = document.querySelector('#dev-toolbar');
+                devSpecContainer.classList.remove('slideInDown');
+                $timeout(function() {
+                    devSpecContainer.classList.add('slideOutDown');
+                })
+                $timeout(function() {
+                    scope.spec.data.toggleDev = newValue;
+                }, 750);
+              }
+
             }
-            function toggleSpec() {
-              scope.spec.data.toggleSpec = !scope.spec.data.toggleSpec;
+            function toggleSpec(value) {
+              var newValue = !scope.spec.data.toggleSpec;
+              if (newValue) {
+                scope.spec.data.toggleSpec = newValue;
+                return;
+              }
+              else if (!newValue) {
+                var devSpecContainer = document.querySelector('#dev-spec');
+                devSpecContainer.classList.remove('slideInDown');
+                $timeout(function() {
+                    devSpecContainer.classList.add('fadeOutUp');
+                })
+                $timeout(function() {
+                    scope.spec.data.toggleSpec = newValue;
+                }, 750);
+              }
             }
 
         }
@@ -277,7 +309,6 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             }
 
         }
-
     }
 
     function getCodepenSpec(url, cb) {

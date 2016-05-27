@@ -515,4 +515,17 @@
       .anim-timeline .anim-controls > div .checkbox-container input:checked + span {
         background: #43cb9d; }
 
+@-webkit-keyframes samirAnim {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1; }
+  50% {
+    transform: rotate(-90deg) scaleX(1.5) scaleY(1.5); }
+  100% {
+    transform: rotate(180deg) scaleX(0.5) scaleY(0.5);
+    opacity: 5; } }
+.samir-anim {
+  animation: samirAnim 3s ease 0s 1 normal none;
+  -webkit-animation: samirAnim 3s ease 0s 1 normal none; }
+
 /*# sourceMappingURL=admin.css.map */
