@@ -12,7 +12,7 @@ angular
   ]);
 
 function SpecService($state, $timeout, $localstorage, $window, $compile, KeyboardService, UtilitiesService) {
-    var specTokens = {'calendar': 'ddd2f97039f2fec817d52499dd3c00ac', 'madlib': 'ddd2f97039f2fec817d52499dd3c00ac', 'jeselle': '98f138f534428eb8af27ea5c2b6944ef', 'gabrie': '9d8ddaef35241c63a3a95032485bf645'};
+    var specTokens = {'calendar': 'ddd2f97039f2fec817d52499dd3c00ac', 'madlib': '5c0ecd57c10973ddfe65af113522a809', 'jeselle': '98f138f534428eb8af27ea5c2b6944ef', 'gabrie': '9d8ddaef35241c63a3a95032485bf645'};
 
     return {
         initSpec: initSpec,

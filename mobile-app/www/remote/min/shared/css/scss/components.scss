@@ -10671,6 +10671,17 @@ a.category-tile {
 		}
 	}
 }
+.small .checkbox-container {
+	div {
+		span {
+			width: 20px;
+			height: 20px;
+		}
+	}
+	label {
+		font-size: 16px;
+	}
+}
 .checkbox-shamrock {
 	input:checked + span {
 		background: $shamrock!important;

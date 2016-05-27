@@ -1,5 +1,5 @@
 <div class='fixed full-xy' ng-show='spec.toggleSpec || spec.toggleDev'>
-    <div id="dev-spec" class='top-0 left-0 absolute full-x bg-smoke animated slideInDown' ng-class="{'z-index-1000': spec.toggleSpec}" ng-hide="!spec.toggleSpec" style='height: calc(100% - 66px);'>
+    <div id="dev-spec" class='top-0 left-0 absolute full-x bg-smoke animated slideInDown opacity-0' ng-class="{'z-index-1000': spec.toggleSpec}" ng-hide="!spec.toggleSpec" style='height: calc(100% - 66px);'>
         <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">
             <div class="bg-slate txt-center">
                 <h1 class='bg-cobalt-25p p15xy txt-28 weight-600 height-64 flex-center'><span class="weight-900">{{spec.title}}:&nbsp;</span> {{use_case.title}} </h1>
@@ -12,10 +12,17 @@
                     </div>
                     <ul class="p15-grid">
                         <li ng-repeat='item in use_case.columns.static.items'>
-                            <checkbox value="item.value" label="item.title" class="txt-slate flex-left checkbox-moxie"> </checkbox>
-                            <ul ng-if='item.sub_items' class='nested-action-item'>
-                                <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}} </li>
-                                <li class='opacity-50'>{{item.status.percentage}}, {{item.status.fraction}} complete</li>
+                            <div class="flex">
+                                <checkbox value="item.value" label="item.title" class="txt-slate flex-left checkbox-moxie"> </checkbox>
+                                <div ng-if="item.status" class="m15left flex-center bg-moxie radius-2 semibold txt-14 p10x">
+                                    <span ng-if="item.status.percentage">{{item.status.percentage}},</span>
+                                    <span ng-if="item.status.fraction">&nbsp;{{item.status.fraction}}&nbsp;complete</span>
+                                </div>
+                            </div>
+                            <ul ng-if='item.sub_items' class="p15left-p05right-p05y">
+                                <li ng-repeat='sub_item in item.sub_items' class="p05xy">
+                                    <checkbox value="sub_item.value" label="sub_item.text" class="small txt-slate flex-left checkbox-moxie"> </checkbox>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -28,9 +35,14 @@
                     <ul>
                         <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}" ng-repeat='item in use_case.columns.micro.items'>
                             <checkbox value="item.value" label="item.title" class="txt-slate flex-left checkbox-robin"> </checkbox>
-                            <ul ng-if='item.sub_items' class='nested-action-item'>
-                                <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}} </li>
-                                <li class='opacity-50'>{{item.status.percentage}}, {{item.status.fraction}} complete</li>
+                            <div ng-if="item.status" class="m15left flex-center bg-robin radius-2 semibold txt-14 p10x">
+                                <span ng-if="item.status.percentage">{{item.status.percentage}},</span>
+                                <span ng-if="item.status.fraction">&nbsp;{{item.status.fraction}}&nbsp;complete</span>
+                            </div>
+                            <ul ng-if='item.sub_items' class="p15left-p05right-p05y">
+                                <li ng-repeat='sub_item in item.sub_items' class="p05xy">
+                                    <checkbox value="sub_item.value" label="sub_item.text" class="small txt-slate flex-left checkbox-robin"> </checkbox>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -43,9 +55,14 @@
                     <ul>
                         <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}" ng-repeat='item in use_case.columns.macro.items'>
                             <checkbox value="item.value" label="item.title" class="txt-slate flex-left checkbox-azure"> </checkbox>
-                            <ul ng-if='item.sub_items' class='nested-action-item'>
-                                <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}} </li>
-                                <li class='opacity-50'>{{item.status.percentage}}, {{item.status.fraction}} complete</li>
+                            <div ng-if="item.status" class="m15left flex-center bg-azure radius-2 semibold txt-14 p10x">
+                                <span ng-if="item.status.percentage">{{item.status.percentage}},</span>
+                                <span ng-if="item.status.fraction">&nbsp;{{item.status.fraction}}&nbsp;complete</span>
+                            </div>
+                            <ul ng-if='item.sub_items' class="p15left-p05right-p05y">
+                                <li ng-repeat='sub_item in item.sub_items' class="p05xy">
+                                    <checkbox value="sub_item.value" label="sub_item.text" class="small txt-slate flex-left checkbox-azure"> </checkbox>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -58,9 +75,14 @@
                     <ul>
                         <li class='p10xy' ng-class="{'flex-stretch': !item.sub_items && !item.sub_items.length}" ng-repeat='item in use_case.columns.icebox.items'>
                             <checkbox value="item.value" label="item.title" class="txt-slate flex-left checkbox-lake"> </checkbox>
-                            <ul ng-if='item.sub_items' class='nested-action-item'>
-                                <li ng-repeat='sub_item in item.sub_items'> {{sub_item.text}} </li>
-                                <li class='opacity-50'>{{item.status.percentage}}, {{item.status.fraction}} complete</li>
+                            <div ng-if="item.status" class="m15left flex-center bg-lake radius-2 semibold txt-14 p10x">
+                                <span ng-if="item.status.percentage">{{item.status.percentage}},</span>
+                                <span ng-if="item.status.fraction">&nbsp;{{item.status.fraction}}&nbsp;complete</span>
+                            </div>
+                            <ul ng-if='item.sub_items' class="p15left-p05right-p05y">
+                                <li ng-repeat='sub_item in item.sub_items' class="p05xy">
+                                    <checkbox value="sub_item.value" label="sub_item.text" class="small txt-slate flex-left checkbox-lake"> </checkbox>
+                                </li>
                             </ul>
                         </li>
                     </ul>

@@ -30,13 +30,41 @@
 	}
 }
 
+// header
+.adlib-header-container {
+	position: relative;
+	height: 48px;
+	overflow: hidden;
+	.adlib-header {
+		&:first-child {
+			position: relative;
+		}
+		&:not(:first-child) {
+			margin: 0!important;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		&.inactive {
+			animation: adlib-header-first-up 1000ms linear 1850ms both;
+		}
+		&.active {
+			animation: adlib-header-up 1000ms linear both;
+			// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1);
+		}
+	}
+}
+
+// spread
 .tag-adlib rect.spread-out {
 	stroke-dasharray: 701;
 	stroke-dashoffset: -701;
 	animation: adlib-header-stroke 750ms cubic-bezier(.17,.67,.12,1) 1000ms both;
 }
 
-.adlib-header.spread-out {
+.adlib-header-container .adlib-header.active.spread-out {
 	transform: scale(0.9);
 	transform-origin: center center;
 	animation: adlib-header-main-scaleUp 1000ms ease-out both;
@@ -150,12 +178,15 @@
 	}
 }
 
-.adlib-tag.click-two {
+.adlib-tag {
 	opacity: 1!important;
-	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)!important;
+}
+
+.adlib-tag.click-two {
+	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 	.tag-adlib.ghost {
-		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)!important;
-		animation: fadeOut 1000ms ease-in-out 1350ms both!important;
+		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+		animation: fadeOut 1000ms ease-in-out 1850ms both;
 	}
 	&:nth-child(1) {
 		.tag-adlib:first-child:not(.active) {
