@@ -708,6 +708,7 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
               if (attr.elemStates.indexOf(']') === -1 || attr.elemStates.indexOf('[') === -1) return;
               var elemStates = UtilitiesService.removeAllOccurrancesArr(attr.elemStates, ['[', ']', ' ', "'", '"']).split(',')
               var processedElemStates = [];
+              var elemClassAnimDict = {};
               for (var i = 0; i < elemStates.length; i++) {
                 var onEnterAttr = 'on-' + elemStates[i] + '-enter';
                 var onExitAttr = 'on-' + elemStates[i] + '-exit';
@@ -718,6 +719,16 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                 }
                 if (camelCase(onExitAttr) in attr) {
                   processedElemStates.push(onExitAttr);
+                }
+              }
+              for (j = 0; j < processedElemStates.length; j++)  {
+                var attrName = processedElemStates[j];
+                var animClass = element[0].getAttribute(attrName);
+
+                if (animClass.indexOf(':animIn') === -1 && animClass.indexOf(':animOut') === -1 && animClass.indexOf(':anim') > -1) {
+                  animationClass = animClass.split(':anim')[0];
+                  animationObj = AnimationService.getCSSAnimationFromClassName(animationClass);
+                  elemClassAnimDict[attrName] = animationObj;
                 }
               }
 
@@ -736,6 +747,10 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                     } else if (elemArgDict.animateOut) {
                       console.log('animating out', element[0].nodeName, elemStateClass, elemArgDict.delay, '\n\n', element[0])
                       AnimationService.animateOut(element[0], elemStateClass, elemArgDict.delay);
+                    } else if (elemArgDict.animate) {
+                      console.log('animating', element[0].nodeName, elemStateClass, elemArgDict.delay, '\n\n', element[0])
+                      console.log(elemClassAnimDict);
+                      AnimationService.animate(element[0], elemStateClass, elemClassAnimDict[processedElemStates[i]], elemArgDict.delay || 0);
                     }
 
                   }
@@ -765,7 +780,7 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
         var resultDict = {};
         for (var i = 0; i < arg_arr.length; i++) {
           var indexArg = arg_arr[i];
-          if (indexArg === 'anim') {
+          if (indexArg === "animIn") {
             resultDict.animateIn = true;
           }
           if (indexArg.indexOf('delay-') > -1) {
@@ -773,6 +788,9 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
           }
           if (indexArg === 'animOut') {
             resultDict.animateOut = true;
+          }
+          if (indexArg === 'anim') {
+            resultDict.animate = true;
           }
         }
         return resultDict;
