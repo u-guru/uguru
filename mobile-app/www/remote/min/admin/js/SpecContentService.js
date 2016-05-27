@@ -172,7 +172,7 @@ function SpecContentService($state, $timeout, $localstorage) {
 
     function getRoutes(param, template_url, ctrl_url) {
     var defaultRoutes = {
-          local: 'http://localhost:8100/#/',
+          local: 'http://192.168.12.65:8100/',
           staging: 'https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/'
         }
         var localUrl = defaultRoutes.local + param;

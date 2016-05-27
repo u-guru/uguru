@@ -62,13 +62,13 @@ angular.module('uguru.shared.directives')
 
             }
         }
-}]);
+}])
 .directive("dropdown", ['$timeout', function($timeout) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'color') {
                 return BASE + 'templates/elements/components/inputs/dropdowns/color.tpl'
             } else {
-                return BASE + 'min/shared/templates/components/dropdown.tpl'
+                return 'shared/templates/components/dropdown.tpl'
             }
         }
         return {
@@ -112,4 +112,3 @@ angular.module('uguru.shared.directives')
             }
         };
     }])
->>>>>>> fed86cd7b3e2ae69d28f52ea7eed0f1ea8719ca2

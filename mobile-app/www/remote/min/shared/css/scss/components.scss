@@ -3802,6 +3802,51 @@ input[type="range"] {
 			}
 		}
 	}
+	&.height-36 {
+		height: auto!important;
+		.dropdown {
+			> div {
+				> span {
+					height: 36px;
+				}
+				a {
+					width: 36px;
+					height: 36px;
+					svg {
+						width: 36px;
+						height: 36px;
+						padding: 8px 6px 6px;
+					}
+				}
+			}
+			> ul {
+				width: 100%;
+				top: 36px;
+				li {
+					width: calc(100% - 36px);
+				}
+			}
+		}
+		&.reverse {
+			.dropdown {
+				> ul {
+					top: auto;
+					bottom: 36px;
+				}
+			}
+		}
+		&.full-x {
+			.dropdown {
+				width: 100%;
+				> div {
+					width: 100%;
+					> span {
+						width: calc(100% - 36px);
+					}
+				}
+			}
+		}
+	}
 }
 
 /* ---------- COLOR DROPDOWNS */
@@ -9778,7 +9823,7 @@ a.category-tile {
 		svg {
 			@include opacity-important(.2);
 		}
-		&:not(.active) {
+		&:not(.active-ghost) {
 			@include opacity(0);
 		}
 	}

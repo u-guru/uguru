@@ -1,5 +1,12 @@
 @import '../../../shared/css/scss/partials/mixin';
 
+.states-dropdown {
+	font-size: 18px!important;
+	* {
+		font-size: 18px!important;
+	}
+}
+
 // html
 .admin-html {
 	h2 {

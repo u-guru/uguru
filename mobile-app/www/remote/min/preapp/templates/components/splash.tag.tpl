@@ -12,7 +12,7 @@
             </svg>
             <b><i>{{innerText}}</i></b>
         </a>
-        <span class="tag-adlib ghost active">
+        <span class="tag-adlib ghost active-ghost">
             <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                 <rect x="2" y="2" width="280" height="84" rx="16"></rect>
             </svg>
@@ -22,5 +22,3 @@
         </span>
     </div>
 </li>
-
-
