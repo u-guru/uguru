@@ -53,14 +53,14 @@
     </div>
     <div class="splash-adlib" ng-if='splash.state.madlib' eval-on-activate="activateMap()"
         elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-        on-map-transition-enter="map-transition:anim">
+        on-map-transition-enter="map-transition:anim:delay-2000">
         <div class="splash-adlib-inside a" activate-on-class="a" class-on-activate="active:keep">
             <div class="adlib-header-container relative">
-                <h1 class="adlib-header active"
+                <h1 class="adlib-header active-adlib-header"
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                    on-init="opacity:1"
+                    on-init=""
                     on-activate="spread-out:animIn"
-                    on-category-switch-exit="inactive:animOut">
+                    on-category-switch-exit="inactive-adlib-header:anim">
                     <!-- class-on-activate="opacity-0, u-bounceIn-subtle:animIn" -->
                     <span>{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank">
@@ -98,7 +98,7 @@
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-init="opacity:0"
                     on-activate="spread-out:animIn"
-                    on-category-switch-enter="active:anim">
+                    on-category-switch-enter="active-adlib-header:anim">
                     <!-- class-on-activate="opacity-0, u-bounceIn-subtle:animIn" -->
                     <span>{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank">
@@ -138,7 +138,7 @@
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
 
                     on-hover="pulse"
-                    on-init="opacity:1"
+                    on-init=""
                     on-activate="spread-out:animIn"
 
                     on-category-switch-enter="spread-out:anim"
@@ -154,7 +154,7 @@
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
 
                     on-hover="pulse"
-                    on-init="opacity:1"
+                    on-init=""
                     on-activate="spread-out:animIn"
 
                     on-category-switch-enter="spread-out:anim"
