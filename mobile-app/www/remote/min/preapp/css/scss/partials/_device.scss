@@ -1,11 +1,15 @@
 @import '../../../../shared/css/scss/partials/mixin';
 
 .splash-device {
+    display: none;
     position: absolute;
     z-index: 2;
     top: 50%;
     left: 50%;
     opacity: 0.1;
+    @media screen and (min-width: 768px) {
+        display: block;
+    }
     .splash-device-svg {
         transition: all 150ms ease-in-out;
     }
