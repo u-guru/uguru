@@ -16,6 +16,8 @@ angular.module('uguru.preApp', ['ionic'])
     splash.category = splash.categories[0];
 
     portalElem.addEventListener('splashMainLoadingComplete', function (e) {
+      var loaderPortal = document.querySelector('.loader-portal');
+      loaderPortal.parentNode.removeChild(loaderPortal);
       document.querySelector('#loader-wrapper').style.visibility = "hidden"
       document.querySelector('#loader-wrapper .pageload-overlay svg.transition').style.visibility = "visible";
       globalLoader.hide();

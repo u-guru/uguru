@@ -3138,6 +3138,31 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
       width: 100%; }
       .dropdown-container.height-32.full-x .dropdown > div > span {
         width: calc(100% - 32px); }
+.dropdown-container.height-36 {
+  height: auto !important; }
+  .dropdown-container.height-36 .dropdown > div > span {
+    height: 36px; }
+  .dropdown-container.height-36 .dropdown > div a {
+    width: 36px;
+    height: 36px; }
+    .dropdown-container.height-36 .dropdown > div a svg {
+      width: 36px;
+      height: 36px;
+      padding: 8px 6px 6px; }
+  .dropdown-container.height-36 .dropdown > ul {
+    width: 100%;
+    top: 36px; }
+    .dropdown-container.height-36 .dropdown > ul li {
+      width: calc(100% - 36px); }
+  .dropdown-container.height-36.reverse .dropdown > ul {
+    top: auto;
+    bottom: 36px; }
+  .dropdown-container.height-36.full-x .dropdown {
+    width: 100%; }
+    .dropdown-container.height-36.full-x .dropdown > div {
+      width: 100%; }
+      .dropdown-container.height-36.full-x .dropdown > div > span {
+        width: calc(100% - 36px); }
 
 /* ---------- COLOR DROPDOWNS */
 .dropdown-color {
@@ -7975,7 +8000,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
     .tag-adlib.ghost svg {
       filter: alpha(opacity=20) !important;
       opacity: 0.2 !important; }
-    .tag-adlib.ghost:not(.active) {
+    .tag-adlib.ghost:not(.active-ghost) {
       filter: alpha(opacity=0);
       opacity: 0; }
   .tag-adlib:not(.blank):hover, .tag-adlib:not(.blank):focus, .tag-adlib:not(.blank).active {
@@ -8676,6 +8701,12 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
   width: 20px;
   height: 20px; }
 .checkbox-container.small label {
+  font-size: 16px; }
+
+.small .checkbox-container div span {
+  width: 20px;
+  height: 20px; }
+.small .checkbox-container label {
   font-size: 16px; }
 
 .checkbox-shamrock input:checked + span {

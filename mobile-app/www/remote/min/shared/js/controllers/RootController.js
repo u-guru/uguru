@@ -13,10 +13,11 @@ angular.module('uguru.shared.controllers')
       var loaderWrapper = document.querySelector('#loader-wrapper');
       loaderPortal.parentNode.removeChild(loaderPortal);
       loaderWrapper.parentNode.removeChild(loaderWrapper);
+      console.log(loaderWrapper, 'removed');
     }
     var root = this;
     root.window = getBodyDimensions();
-    root.base_url = img_base + BASE;
+    //root.base_url = img_base + BASE;
   }
 ]);
 
@@ -27,5 +28,3 @@ function getBodyDimensions() {
     var isDesktop = (bodyRect.height >= desktopHeightLimit && bodyRect.width >= desktopWidthLimit);
     return {height:bodyRect.height, width: bodyRect.width, desktop: isDesktop, mobile: !isDesktop}
 };
-
-

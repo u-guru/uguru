@@ -1,8 +1,8 @@
 angular.module('uguru.shared.directives')
-.directive("tag", ['$compile', '$timeout', function($compile, $timeout) {
+    .directive("tag", ['$compile', '$timeout', function($compile, $timeout) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'splash') {
-                return BASE + 'min/preapp/templates/components/splash.tag.tpl'
+                return 'preapp/templates/components/splash.tag.tpl'
             } else
             if (attr.type && attr.type === 'input') {
                 return BASE + 'templates/elements/components/inputs/text/tag.tpl'
@@ -62,13 +62,13 @@ angular.module('uguru.shared.directives')
 
             }
         }
-}])
-.directive("dropdown", ['$timeout', function($timeout) {
+    }])
+    .directive("dropdown", ['$timeout', function($timeout) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'color') {
                 return BASE + 'templates/elements/components/inputs/dropdowns/color.tpl'
             } else {
-                return BASE + 'min/shared/templates/components/dropdown.tpl'
+                return 'shared/templates/components/dropdown.tpl'
             }
         }
         return {
@@ -111,27 +111,27 @@ angular.module('uguru.shared.directives')
                 }
             }
         };
-}])
-.directive("checkbox", function() {
-    return {
-        templateUrl: BASE + 'min/shared/templates/components/checkbox.tpl',
-        scope: {
-            onChecked: '=onChange',
-            label: '=label',
-            value: '=value',
-            checked: "=checked"
-        },
-        restrict: 'E',
-        link: function(scope, element, attr) {
-            scope.label = scope.label || attr.label;
+    }])
+    .directive("checkbox", function() {
+        return {
+            templateUrl: 'shared/templates/components/checkbox.tpl',
+            scope: {
+                onChecked: '=onChange',
+                label: '=label',
+                value: '=value',
+                checked: "=checked"
+            },
+            restrict: 'E',
+            link: function(scope, element, attr) {
+                scope.label = scope.label || attr.label;
 
-            scope.onValueChanged = function(value) {
-                scope.onChecked && scope.onChecked(value);
+                scope.onValueChanged = function(value) {
+                        scope.onChecked && scope.onChecked(value);
+                    }
+                    // scope.value = scope.value || attr.value;
+                    // if (scope.onPropChange) {
+                    //   // scope.onPropChange(scope, )
+                    // }
             }
-            // scope.value = scope.value || attr.value;
-            // if (scope.onPropChange) {
-            //   // scope.onPropChange(scope, )
-            // }
         }
-    }
-})
+    })

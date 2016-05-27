@@ -2,10 +2,11 @@
   "name": "uguru-mobile",
   "app_id": "",
   "gulpStartupTasks": ["sass", "watch"],
-  
+  "documentRoot": "www/remote/min/",
 
   "watchPatterns": [
     "www/remote/**/*",
-    "!www/lib/**/*"
+    "!www/lib/**/*",
+    "www/remote/min/**/*"
   ]
 }

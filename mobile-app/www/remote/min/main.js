@@ -37,25 +37,26 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root', {
         url: '',
         abstract: true,
-        templateUrl: BASE + 'min/shared/templates/root.html'
+        templateUrl: 'shared/templates/root.html'
   })
   .state('root.splash', {
     parent: 'root',
     name: 'root.splash',
     url:'/',
-    templateUrl: BASE + 'min/preapp/templates/splash.html'
+    templateUrl: 'preapp/templates/splash.html'
   })
   .state('root.splash-madlib', {
     url:'/splash/madlib',
+    templateUrl: 'preapp/templates/splash.madlib.html',
     controller: function($scope) {
       $scope.splash = {state: {madlib:true}};
     },
-    templateUrl: BASE + 'min/preapp/templates/splash.madlib.html',
+    templateUrl: 'preapp/templates/splash.madlib.html',
   })
   .state('root.admin', {
     url:'/admin',
     controller: 'AdminController',
-    templateUrl: BASE + 'min/admin/templates/index.html',
+    templateUrl: 'admin/templates/index.html',
   })
 
 

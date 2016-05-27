@@ -32,48 +32,48 @@
                         <user-icon ng-if='adminUser && adminUser.profile_url' size="48" url="adminUser.profile_url"> </user-icon>
                     </li>
                     <li>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': !layout.index}" ng-click='layout.index = 0' ng-include="img_base + BASE + 'templates/svg/main/edit.html'">Tools</a>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': !layout.index}" ng-click='layout.index = 0' ng-include="'shared/templates/components/svg/main/edit.html'">Tools</a>
                     </li>
                     <li>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 3}" ng-click='layout.index = 3' ng-include="img_base + BASE + 'templates/svg/main/pyramid.html'">Action Items</a>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 3}" ng-click='layout.index = 3' ng-include="'shared/templates/components/svg/main/pyramid.html'">Action Items</a>
                     </li>
                     <li>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 4}" ng-click='layout.index = 4' ng-include="img_base + BASE + 'templates/svg/main/calendar.html'">Calendar</a>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 4}" ng-click='layout.index = 4' ng-include="'shared/templates/components/svg/main/calendar.html'">Calendar</a>
                     </li>
                     <li>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate urgent-icon" ng-class="{'bg-moxie': layout.index === 5}" ng-click='layout.index = 5' ng-include="img_base + BASE + 'templates/svg/main/info.html'">Bugs</a>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate urgent-icon" ng-class="{'bg-moxie': layout.index === 5}" ng-click='layout.index = 5' ng-include="'shared/templates/components/svg/main/info.html'">Bugs</a>
                     </li>
                     <li>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 6}" ng-click='layout.index = 6' ng-include="img_base + BASE + 'templates/svg/main/document.html'">Docs</a>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 6}" ng-click='layout.index = 6' ng-include="'shared/templates/components/svg/main/document.html'">Docs</a>
                     </li>
                     <li>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 7}" ng-click='layout.index = 7' ng-include="img_base + BASE + 'templates/svg/main/profile.html'">Components</a>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 7}" ng-click='layout.index = 7' ng-include="'shared/templates/components/svg/main/profile.html'">Components</a>
                     </li>
                     <li ng-if='player.status === 1'>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="img_base + BASE + 'templates/svg/main/pause.html'">Pause</a>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="'shared/templates/components/svg/main/pause.html'">Pause</a>
                     </li>
                 </ul>
                 <ul class='p15-grid flex-center-vertical txt-center' ng-if='!layout.index'>
                     <li ng-if='!player.status || player.status === 2'>
-                        <a id="play-keyframes-button" ng-disabled="player.status" class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.play()' ng-include="img_base + BASE + 'templates/svg/main/play.html'">Play</a>
+                        <a id="play-keyframes-button" ng-disabled="player.status" class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.play()' ng-include="'shared/templates/components/svg/main/play.html'">Play</a>
                     </li>
                     <li>
-                        <a ng-disabled='!player.status' id='reset-link' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.reset()' ng-include="img_base + BASE + 'templates/svg/main/switch.html'">Reset</a>
+                        <a ng-disabled='!player.status' id='reset-link' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.reset()' ng-include="'shared/templates/components/svg/main/switch.html'">Reset</a>
                     </li>
                     <li>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='clearCache()'><i class='icon ion-trash-a txt-36'></i></a>
                     </li>
                     <!-- <li>
-                        <a id='settings-button' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.toggleSettings()' ng-include="img_base + BASE + 'templates/svg/main/settings.html'"></a>
+                        <a id='settings-button' class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.toggleSettings()' ng-include="'shared/templates/components/svg/main/settings.html'"></a>
                     </li>
                     <li>
-                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-48-36 svg-stroke-6" ng-click='layout.index = 1' ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-48-36 svg-stroke-6" ng-click='layout.index = 1' ng-include="'shared/templates/components/svg/main/share.html'"></a>
                     </li>
                     <li>
-                        <a id='export-button' class="bg bg-slate radius-2 svg-white flex-center svg-48-36 svg-stroke-6" ng-click='renderAnimationCSSText(animation)'  ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                        <a id='export-button' class="bg bg-slate radius-2 svg-white flex-center svg-48-36 svg-stroke-6" ng-click='renderAnimationCSSText(animation)'  ng-include="'shared/templates/components/svg/main/share.html'"></a>
                     </li>
                     <li>
-                        <a id='save-button' class="bg bg-slate radius-2 flex-center-vertical"><span class="svg-white flex-center svg-48-36 svg-stroke-6" ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'"></span><span class="p10right">&dtrif;</span></a>
+                        <a id='save-button' class="bg bg-slate radius-2 flex-center-vertical"><span class="svg-white flex-center svg-48-36 svg-stroke-6" ng-include="'shared/templates/components/svg/main/save-simple.html'"></span><span class="p10right">&dtrif;</span></a>
                         <div class="absolute txt-left">
                             <ul>
                                 <li><a class="block radius-2 p15x-p10y bg bg-charcoal txt-18 semibold m05top">Animation</a></li>
@@ -92,7 +92,7 @@
                 </ul>
             </div>
             <div class='bg-slate flex-wrap-center relative z-index-1000' style="height: calc(100% - 68px)" ng-if='layout.index === 1'>
-                <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="'shared/templates/components/svg/main/plus.html'"></a>
                 <tabs id='import-tab-bar' class='full-x' options='["Animation", "Class", "HTML", "External"]' index="importLayoutIndex"> </tabs>
                 <div class='full-x tabs-options' style='height:calc(100% - 60px)'>
                     <!-- change to full-xy and remove style once tabs are removed -->
@@ -144,7 +144,7 @@
                     </div>
                     <div class="bg-campus-50p full-xy relative" ng-if='importLayoutIndex === 2'>
                         <div class='full-xy' ng-init="goToEditPageDom()">
-                            <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                            <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="'shared/templates/components/svg/main/plus.html'"></a>
                             <div class="full-xy ugrid-2 flex-start p15-grid relative">
                                 <div>
                                     <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Stage Name</h1>
@@ -207,14 +207,14 @@
                     </div>
                 </div>
             </div>
-            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3' ng-include="root.base_url +  'min/admin/templates/actions.html'" ng-controller='AdminActionController'>
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3' ng-include="'admin/templates/actions.html'" ng-controller='AdminActionController'>
             </div>
             <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 4'>
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Calendar</h1>
                 </header>
             </div>
-            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5' ng-include="img_base + BASE + 'templates/bugs.html'">
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5' ng-include="'admin/templates/bugs.html'">
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Bugs</h1>
                 </header>
@@ -224,7 +224,7 @@
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Docs</h1>
                 </header>
                 <div class="overflow-auto no-scrollbar admin-docs" style="height: calc(100% - 48px)">
-                    <ul class="p15-grid" ng-include="img_base + BASE + 'templates/admin/docs.html'"></ul>
+                    <ul class="p15-grid" ng-include="'admin/templates/docs.html'"></ul>
                 </div>
             </div>
             <div class='relative bg-smoke txt-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 7'>
@@ -232,11 +232,11 @@
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Components</h1>
                 </header>
                 <div class="overflow-auto no-scrollbar" style="height: calc(100% - 48px)">
-                    <div class="admin-html flex-wrap-start" ng-include="img_base + BASE + 'templates/admin/utility-classes.html'"></div>
+                    <div class="admin-html flex-wrap-start" ng-include="'admin/templates/classes.html'"></div>
                 </div>
             </div>
             <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 2' ng-init="animation.showDefaultImportedKF = false;">
-                <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="'shared/templates/components/svg/main/plus.html'"></a>
                 <div class="full-xy ugrid-2 p15-grid">
                     <div style="height: calc(100% - 15px)!important">
                         <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Your Keyframes</h1>
@@ -253,7 +253,7 @@
                 </div>
             </div>
             <div class='select-component-mode bg-slate relative z-index-1000' ng-if='stage.selectComponentMode' style="height: calc(100% - 68px); width: 100%; overflow: hidden;" ng-show='!layout.index'>
-                <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='cancelTimeStateActionComponentInputFocused()' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='cancelTimeStateActionComponentInputFocused()' ng-include="'shared/templates/components/svg/main/plus.html'"></a>
                 <div class='full-xy overflow-auto no-scrollbar'>
                     <h1 class='txt-36 txt-center semibold p15x-p15top'>
                         Select a component to animate at T={{stage.selectComponentModeTime}}
@@ -324,7 +324,7 @@
                 </ul>
             </div>
             <div class='search-animation-mode relative bg-charcoal' ng-if='stage.searchAnimationMode' class='bg-slate' style="height: calc(100% - 110px - 68px); width: 100%; overflow: hidden;">
-                <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='cancelTimeStateActionAnimationClassInputFocused()' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='cancelTimeStateActionAnimationClassInputFocused()' ng-include="'shared/templates/components/svg/main/plus.html'"></a>
                 <div>
                     <div class="p15x-p15top">
                         <h1 class='full-x txt-28 txt-white semibold lowercase m05bottom'>Search/Import Animation Classes</h1>
@@ -500,9 +500,9 @@
                                     </span>
                                     <span class="flex-center-vertical p10x bg-campus-50p semibold txt-18 height-64" style="width: calc(100% - 64px);">{{anim_element.class}}</span>
                                 </div>
-                                <a class="flex-center svg-white svg-64-48 svg-stroke-8 bg bg-moxie" ng-include="img_base + BASE + 'templates/svg/main/search.html'" ng-click='swapFocusedAnimatedElem(anim_element)'></a>
+                                <a class="flex-center svg-white svg-64-48 svg-stroke-8 bg bg-moxie" ng-include="'shared/templates/components/svg/main/search.html'" ng-click='swapFocusedAnimatedElem(anim_element)'></a>
                                 <div class="width-64 height-64 overflow-hidden radius-2-right">
-                                    <a class="flex-center close-button svg-white svg-64-48 svg-stroke-8 bg bg-crimson" ng-include="img_base + BASE + 'templates/svg/main/plus.html'" ng-click='stage.anim_elements.splice($index, 1)'></a>
+                                    <a class="flex-center close-button svg-white svg-64-48 svg-stroke-8 bg bg-crimson" ng-include="'shared/templates/components/svg/main/plus.html'" ng-click='stage.anim_elements.splice($index, 1)'></a>
                                 </div>
                             </div>
                         </li>
@@ -534,7 +534,7 @@
                                     </div>
                                     <div class='txt-1 flex-wrap-center text-center relative height-64' style="width: calc(75% - 128px);">
                                         <span ng-if='!time_state.editDescription' class='flex-wrap-center bg-slate absolute full-xy top-0 left-0 p05xy p10left weight-400 p05left text-left line-height-1-2' ng-click='time_state.editDescription = true'>
-                                        {{time_state.description || 'Time state description goes here - click to eidt'}}
+                                        {{time_state.description || 'Time state description goes here - click to edit'}}
                                         </span>
                                         <textarea ng-if='time_state.editDescription' ng-blur="time_state.editDescription = false;" class='full-xy bg-slate txt-white p05xy absolute left-0 top-0' rows="3"  ng-model='time_state.description'> </textarea>
                                     </div>
@@ -543,9 +543,9 @@
                                             Confirm?
                                         </a>
                                         <div class='flex' ng-if='!time_state.confirmRemoveTimeState'>
-                                            <a class='svg-64-48 bg-auburn-50p flex-center svg-white svg-stroke-6 close-icon z-index-1000' ng-click='time_state.confirmRemoveTimeState = true;' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                            <a class='svg-64-48 bg-auburn-50p flex-center svg-white svg-stroke-6 close-icon z-index-1000' ng-click='time_state.confirmRemoveTimeState = true;' ng-include="'shared/templates/components/svg/main/plus.html'"></a>
 
-                                            <a class='svg-64-48 bg-shamrock-50p flex-center svg-white svg-stroke-6 z-index-1000' ng-click='addActionToTimeState(time_state)' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
+                                            <a class='svg-64-48 bg-shamrock-50p flex-center svg-white svg-stroke-6 z-index-1000' ng-click='addActionToTimeState(time_state)' ng-include="'shared/templates/components/svg/main/plus.html'"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -583,16 +583,16 @@
             </div>
             <div class="full-x absolute" style="height: calc(100% - 60px);" ng-hide='asideTabIndex !== 2'>
                 <div class='bg-azure-20p flex-wrap-center relative full-x p15xy preview-container' ng-class="{'max-height-125':!animationPreview.collapsed, 'max-height-50':animationPreview.collapsed}">
-                    <div style="width: 40%">
+                    <div class="width-40p">
                         <a ng-click='animationPreview.collapsed = !animationPreview.collapsed;' class="block absolute top-0 left-0 p15x-p10y z-index-100" ng-if='animationPreview.collapsed'>
                             <i class='icon ion-chevron-down'> </i>
                         </a>
                         <a ng-click='animationPreview.collapsed = !animationPreview.collapsed;' class="block absolute top-0 left-0 p15x-p10y z-index-100" ng-if='!animationPreview.collapsed'>
                             <i class='icon ion-chevron-up'> </i>
                         </a>
-                        <div class='full-y stage-elem-clone-container'> </div>
+                        <div class='stage-elem-clone-container'> </div>
                     </div>
-                    <div class='flex-wrap-center' style="width: 60%">
+                    <div class='flex-wrap-center width-60p'>
                         <h1 class='weight-600 txt-1 p05top full-x uppercase flex-center txt-center' ng-class="{'txt-2':!animationPreview.collapsed}">
                             <span class='opacity-50'>Animated Component:</span>
                             <span>&nbsp;{{actor.id || actor.className}}</span>
@@ -649,11 +649,11 @@
                         </div>
                     </li>
                     <li class="flex-center" ng-if='!animation.edit'>
-                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8" ng-click='addNewAnimation(animation)' ng-include="img_base + BASE + 'templates/svg/main/plus.html'"></a>
-                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='saveAnimationClass(animation)' ng-include="img_base + BASE + 'templates/svg/main/save-simple.html'">Save</a>
-                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='animation.edit = true;' ng-include="img_base + BASE + 'templates/svg/main/edit.html'">Edit</a>
-                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='goToEditAnimationClass()' ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
-                        <a id='export-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='renderAnimationCSSText(animation)' ng-include="img_base + BASE + 'templates/svg/main/share.html'"></a>
+                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8" ng-click='addNewAnimation(animation)' ng-include="'shared/templates/components/svg/main/plus.html'"></a>
+                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='saveAnimationClass(animation)' ng-include="'shared/templates/components/svg/main/save-simple.html'">Save</a>
+                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='animation.edit = true;' ng-include="'shared/templates/components/svg/main/edit.html'">Edit</a>
+                        <a id='import-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='goToEditAnimationClass()' ng-include="'shared/templates/components/svg/main/share.html'"></a>
+                        <a id='export-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='renderAnimationCSSText(animation)' ng-include="'shared/templates/components/svg/main/share.html'"></a>
                         <a id='export-button' class="bg bg-slate radius-2 svg-white flex-center svg-36-24 svg-stroke-8 m15left" ng-click='renderAnimationCSSText(animation)'><i class='icon ion-trash-a txt-24'></i></a>
                     </li>
                 </ul>

@@ -12,7 +12,7 @@ angular
   ]);
 
 function SpecService($state, $timeout, $localstorage, $window, $compile, KeyboardService, UtilitiesService) {
-    var specTokens = {'calendar': 'ddd2f97039f2fec817d52499dd3c00ac', 'madlib': 'ddd2f97039f2fec817d52499dd3c00ac', 'jeselle': '98f138f534428eb8af27ea5c2b6944ef', 'gabrie': '9d8ddaef35241c63a3a95032485bf645'};
+    var specTokens = {'calendar': 'ddd2f97039f2fec817d52499dd3c00ac', 'madlib': '5c0ecd57c10973ddfe65af113522a809', 'jeselle': '98f138f534428eb8af27ea5c2b6944ef', 'gabrie': '9d8ddaef35241c63a3a95032485bf645'};
 
     return {
         initSpec: initSpec,
@@ -35,7 +35,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data = obj;
             calcUseCasesCompletedness(specObj.data.use_cases)
             //@gabrielle note
-            specObj.data.toggleDev = false;
+            specObj.data.toggleDev = true;
             specObj.data.toggleSpec = false;
             specObj.data.mobile = {width:400, height:768, show:false, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
             specObj.data.open = specObj.open;
@@ -147,7 +147,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         function loadHTMLSpec(scope, template_url, controller_url) {
 
             if (window.location.href.split(':8100').length > 1) {
-              template_url = 'http://localhost:8100/remote/min/' + template_url;
+              template_url = 'http://localhost:8100/#/remote/min/' + template_url;
             } else {
               template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + template_url;
             }

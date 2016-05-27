@@ -1,8 +1,12 @@
-<li class-on-clear="fadeOut:animOut" class-on-clear-delay="0">
+<li>
     <div class="tag-adlib-container">
         <a class="tag-adlib adlib-{{blankNum}} animated tag-{{category.hex_color}}"
             translate-on-click="translate-blank-{{blankNum}}" translate-to-elem="#blank-{{blankNum}}"
             class-on-click='translate-blank-{{blankNum}}:unique:inject.splash-adlib|blank-{{blankNum}}-filled, translate-blank-{{blankNum}}:unique:inject.splash-adlib b|blank-{{blankNum}}-filled'
+            elem-states="['spread-out', 'category-switch', 'both-blanks-filled', 'map-transition']"
+            on-both-blanks-filled-enter="click-two:animOut"
+            on-map-transition-enter="click-two:animOut"
+            on-activate="show-opacity-impt:anim"
             ng-click='click($event)'>
             <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                 <rect x="2" y="2" width="280" height="84" rx="16"></rect>
@@ -12,7 +16,7 @@
             </svg>
             <b><i>{{innerText}}</i></b>
         </a>
-        <span class="tag-adlib ghost active">
+        <span class="tag-adlib ghost active-ghost">
             <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                 <rect x="2" y="2" width="280" height="84" rx="16"></rect>
             </svg>
@@ -22,5 +26,3 @@
         </span>
     </div>
 </li>
-
-
