@@ -1,6 +1,18 @@
 <div class="splash-hero-content z-index-100" ng-controller='SplashMadlibController as madlib' id='splash-madlib'>
+    <div class="splash-device splash-device-iphone">
+        <svg class="splash-device-svg" viewBox="0 0 318 651">
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="#F0E0D0" stroke-width="3">
+                <circle cx="158.5" cy="610.5" r="25" class="activate"></circle>
+                <rect x="1.5" y="1.5" width="315" height="648" rx="40" class="activate"></rect>
+                <rect x="21.5" y="79.5" width="276" height="493" class="activate"></rect>
+            </g>
+        </svg>
+    </div>
     <div class="splash-guru-head" ng-if='splash.state.madlib' class-on-activate="pulse:animIn">
-        <div class="splash-hero-guru splash-logo-guru" ng-include="'shared/templates/components/svg/guru-head.html'"></div>
+        <div class="splash-hero-guru splash-logo-guru"
+            ng-include="'shared/templates/components/svg/guru-head.html'"
+            elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
+            on-map-transition-enter="map-transition:animOut"></div>
         <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop opacity-0" viewBox="0 0 340 205">
             <g fill="none">
@@ -39,7 +51,9 @@
             </g>
         </svg>
     </div>
-    <div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, null:inject.splash-hero-map|activate" ng-if='splash.state.madlib' eval-on-activate="activateMap()">
+    <div class="splash-adlib" ng-if='splash.state.madlib' eval-on-activate="activateMap()"
+        elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
+        on-map-transition-enter="map-transition:anim">
         <div class="splash-adlib-inside a" activate-on-class="a" class-on-activate="active:keep">
             <div class="adlib-header-container relative">
                 <h1 class="adlib-header active"
@@ -84,7 +98,7 @@
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-init="opacity:0"
                     on-activate="spread-out:animIn"
-                    on-category-switch-enter="active:animIn">
+                    on-category-switch-enter="active:anim">
                     <!-- class-on-activate="opacity-0, u-bounceIn-subtle:animIn" -->
                     <span>{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank">
@@ -127,10 +141,10 @@
                     on-init="opacity:1"
                     on-activate="spread-out:animIn"
 
-                    on-category-switch-enter="spread-out:animIn"
+                    on-category-switch-enter="spread-out:anim"
                     on-category-switch-exit="spread-in:animOut"
-                    on-both-blanks-filled-enter="click-two:animOut"
-                    on-map-transition-enter="click-two:animOut"
+                    on-both-blanks-filled-enter="click-two:anim"
+                    on-map-transition-enter="click-two:anim"
 
                     ng-click="resetMadLibBlankIfActive"
 
@@ -143,10 +157,10 @@
                     on-init="opacity:1"
                     on-activate="spread-out:animIn"
 
-                    on-category-switch-enter="spread-out:animIn"
+                    on-category-switch-enter="spread-out:anim"
                     on-category-switch-exit="spread-in:animOut"
-                    on-both-blanks-filled-enter="click-two:animOut"
-                    on-map-transition-enter="click-two:animOut"
+                    on-both-blanks-filled-enter="click-two:anim"
+                    on-map-transition-enter="click-two:anim"
 
                     ng-click="resetMadLibBlankIfActive"
 

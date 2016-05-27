@@ -1,5 +1,4 @@
 @import '../../../../shared/css/scss/partials/mixin';
-@import '../partials/animation';
 
 // animation
 .splash-guru-head {
@@ -46,13 +45,13 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-		}
-		&.inactive {
-			animation: adlib-header-first-up 1000ms linear 1850ms both;
+			transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 48, 0, 1);
 		}
 		&.active {
 			animation: adlib-header-up 1000ms linear both;
-			// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1);
+		}
+		&.inactive {
+			animation: adlib-header-first-up 1000ms linear 1850ms both!important;
 		}
 	}
 }
@@ -62,6 +61,10 @@
 	stroke-dasharray: 701;
 	stroke-dashoffset: -701;
 	animation: adlib-header-stroke 750ms cubic-bezier(.17,.67,.12,1) 1000ms both;
+}
+
+.adlib-header-container .adlib-header.spread-out:not(.active) {
+
 }
 
 .adlib-header-container .adlib-header.active.spread-out {
@@ -152,6 +155,9 @@
 .adlib-tag.spread-in {
 	opacity: 1;
 	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+	.tag-adlib.active {
+		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)!important;
+	}
 	&:nth-child(1) {
 		animation: spread-in-tag-1 1000ms linear 500ms both;
 	}
@@ -178,13 +184,72 @@
 	}
 }
 
+.splash-hero-guru.map-transition {
+	animation: guru-rotateOut 1250ms linear 500ms both;
+	.guru-head-eyebrows {
+		animation: eyebrows 150ms ease-in-out 250ms 6 alternate;
+		transform-origin: center bottom;
+	}
+}
+
+.splash-adlib.map-transition {
+	animation: adlib-translateUp 500ms cubic-bezier(.77,0,.05,1) 2000ms both;
+	animation: adlib-translateUp 500ms cubic-bezier(.77,-0.22,.05,1.27) 2000ms both;
+}
+
+.tag-adlib {
+	.tag-adlib.spread-in {
+		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+	}
+	&:nth-child(1) {
+		.tag-adlib.spread-in {
+			animation: spread-in-tag-1 1000ms linear 500ms both;
+		}
+	}
+	&:nth-child(2) {
+		.tag-adlib.spread-in {
+			animation: spread-in-tag-2 1000ms linear 550ms both;
+		}
+	}
+	&:nth-child(3) {
+		.tag-adlib.spread-in {
+			animation: spread-in-tag-3 1000ms linear 600ms both;
+		}
+	}
+	&:nth-child(4) {
+		.tag-adlib.spread-in {
+			animation: spread-in-tag-4 1000ms linear 650ms both;
+		}
+	}
+	&:nth-child(5) {
+		.tag-adlib.spread-in {
+			animation: spread-in-tag-5 1000ms linear 850ms both;
+		}
+	}
+	&:nth-child(6) {
+		.tag-adlib.spread-in {
+			animation: spread-in-tag-6 1000ms linear 800ms both;
+		}
+	}
+	&:nth-child(7) {
+		.tag-adlib.spread-in {
+			animation: spread-in-tag-7 1000ms linear 750ms both;
+		}
+	}
+	&:nth-child(8) {
+		.tag-adlib.spread-in {
+			animation: spread-in-tag-8 1000ms linear 700ms both;
+		}
+	}
+}
+
 .adlib-tag {
 	opacity: 1!important;
 }
 
 .adlib-tag.click-two {
 	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-	.tag-adlib.ghost {
+	.tag-adlib.ghost.fadeOut {
 		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
 		animation: fadeOut 1000ms ease-in-out 1850ms both;
 	}
@@ -433,10 +498,10 @@
 	}
 	.splash-hero-content {
 		.splash-adlib {
-			&.animate {
-				animation: splash-adlib 500ms ease-in 200ms 1 forwards;
-				z-index: 1;
-			}
+			// &.animate {
+			// 	animation: splash-adlib 500ms ease-in 200ms 1 forwards;
+			// 	z-index: 1;
+			// }
 			h1 {
 				font-size: 40px;
 			}
