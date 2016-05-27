@@ -1,11 +1,12 @@
 {
   "name": "uguru-mobile",
   "app_id": "",
-  "gulpStartupTasks": ["sass", "watch"],
+  "gulpStartupTasks": ["sass:watch"],
   
 
   "watchPatterns": [
     "www/remote/**/*",
+    "!www/remote/min/**/*.scss",
     "!www/lib/**/*"
   ]
 }
