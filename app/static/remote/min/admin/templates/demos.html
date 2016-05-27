@@ -1,0 +1,21 @@
+<div class="overflow-auto no-scrollbar full-x" style="height: calc(100% - 48px)" ng-controller='AdminDemosController as demos'>
+    <div class="full-xy absolute txt-18 flex-wrap-center bg-azure-50p">
+        <div class='full-x flex-stretch ugrid-3 flex-wrap-center txt-6 text-center'>
+            <div class='p10xy'>
+                <button class-on-click='activate' on-activate="samir-anim:animIn" class='full-x bg-charcoal txt-18 height-36 semibold'>
+                    Animate In
+                </button>
+            </div>
+            <div class='p10xy'>
+                <button class-on-click='on-elem-activate-enter' ng-click='demos.removeAnimation($event, "samir-anim")' elem-states="['elem-activate']" on-elem-activate-enter="samir-anim:anim:delay-1500" class='full-x bg-charcoal txt-18 height-36 semibold'>
+                    Animate
+                </button>
+            </div>
+            <div class='p10xy'>
+                <button class-on-click='activate' on-activate="samir-anim:animOut" class='full-x bg-charcoal txt-18 height-36 semibold'>
+                    Animate Out
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
