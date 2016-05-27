@@ -1678,8 +1678,9 @@ angular.module('uguru.admin')
             return null;
         }
 
-        function exportExternalCSSKeyFrameFiles(css_file_names) {
+        function exportExternalCSSKeyFrameFiles(css_file_names, external_css) {
             var ss = document.styleSheets;
+
             var allRuleObjs = [];
             var allRuleDict = {};
             var count = 0;
@@ -1687,7 +1688,8 @@ angular.module('uguru.admin')
                 var styleSheetName;
                 if (ss[i].href) {
                     var styleSheetName = ss[i].href.split('/').reverse()[0].replace('.css', '');
-                    if (!css_file_names || (css_file_names.length && css_file_names.indexOf(styleSheetName) > -1)) {
+                    console.log('adding to css rule dict', styleSheetName);
+                    if ((css_file_names.length && css_file_names.indexOf(styleSheetName) > -1)) {
                         allRuleDict[styleSheetName] = [];
                     }
                 }
@@ -1703,8 +1705,7 @@ angular.module('uguru.admin')
                                 var js_anim_obj = importAnimationFromRawCssText(rawCSSText, animationName);
                                 var final_obj = initAnimationFromAnimObj(js_anim_obj);
                                 $scope.saveAnimationClass(final_obj, styleSheetName);
-
-                                console.log(final_obj);
+                                console.log(final_obj.attr.name, 'processed');
               //                var js_anim_obj = importAnimationFromRawCssText(indexCssRule.css_text, name);
 
 
@@ -3911,7 +3912,9 @@ angular.module('uguru.admin')
 
             initAll();
             // $timeout(function() {
-            //  // exportExternalCSSKeyFrameFiles(['animation'])
+                $timeout(function() {
+                    // exportExternalCSSKeyFrameFiles(['preapp'])
+                }, 2000)
             //  // angular.element(document.querySelector('#import-button')).triggerHandler('click');
             //  // $scope.importCodepenTemplate('http://codepen.io/teamuguru/pen/29ce58caa079980bb9375afa30efcb57');
             // }, 5000)
