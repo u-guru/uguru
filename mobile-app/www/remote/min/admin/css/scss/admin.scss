@@ -1,5 +1,11 @@
 @import '../../../shared/css/scss/partials/mixin';
 
+@media screen and (max-width: 768px) {
+	#dev-toolbar-options {
+		display: none;
+	}
+}
+
 .states-dropdown {
 	font-size: 18px!important;
 	* {

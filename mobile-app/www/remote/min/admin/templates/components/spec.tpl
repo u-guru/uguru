@@ -102,7 +102,7 @@
                 <button class="height-36 txt-18 bg-robin radius-2 normal block">{{state_tag.title}}</button>
             </li>
         </ul>
-        <ul class='bg-cobalt-25p flex-center-vertical-space-between-wrap p15-grid'>
+        <ul id="dev-toolbar-options" class='bg-cobalt-25p flex-center-vertical-space-between-wrap p15-grid'>
             <li class="flex">
                 <!-- <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a> -->
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggleSpec = !spec.toggleSpec'>Spec</button>
