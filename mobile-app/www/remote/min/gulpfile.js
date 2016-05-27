@@ -100,7 +100,7 @@ gulp.task('compile-css', function(done) {
   .pipe(plugins.if(!build, plugins.changed('../min')));
 
   return streamqueue({ objectMode: true }, cssStream)
-  .pipe(autoprefixer('last 2 versions'))
+  // .pipe(autoprefixer('last 2 versions'))
   .pipe(plugins.if(build, plugins.stripCssComments()))
   .pipe(minifyCSS({keepSpecialComments : 0}))
   .pipe(plugins.if(build, plugins.rev()))
@@ -110,7 +110,7 @@ gulp.task('compile-css', function(done) {
   // }))
   // .pipe(minifyCSS())
   .pipe(gulp.dest('../min'));
-   
+
 });
 
 gulp.task('jsHint', function(done) {
@@ -135,23 +135,32 @@ gulp.task('jsHint:watch',function(){
 });
 gulp.task('compile-js', function(done) {
   var scriptStream = gulp.src([
-      'shared/js/lib/*.js',
+      // pretty much same as this 'shared/js/lib/*.js',
+
+      'shared/js/lib/bowser.min.js',
+      'shared/js/lib/snap.svg.min.js',
+      'shared/js/lib/ionic.bundle.min.js',
+      'shared/js/lib/restangular.min.js',
+      'shared/js/lib/lodash.min.js',
+
       //directive
       'shared/js/AnimationDirectives.js',
       'shared/js/directives/*.js',
       //services
       'shared/js/services/LocalStorageService.js',
       'shared/js/services/*.js',
-      //admin/service
-      'admin/js/AdminAnimToolService.js',
-      'admin/js/*.js',
-      'js/main.js',
-      //shared ctrl
-      'shared/controllers/RootController.js',
-      'shared/controllers/*.js',
+
+      'main.js',
       //prepapp ctrl
       'preapp/js/SplashController.js',
       'preapp/js/*.js',
+
+      //admin/service
+      'admin/js/AdminAnimToolService.js',
+      'admin/js/**/*.js',
+      //shared ctrl
+      'shared/js/controllers/RootController.js',
+      'shared/js/controllers/*.js',
       'templates.js'
     ]);
 
@@ -177,7 +186,7 @@ gulp.task('compile-temp',function(done){
           '**/*svg'], { cwd: '' })
       // .pipe(debug())
       .pipe(plugins.angularTemplatecache('templates.js', {
-        root: '/static/remote/templates/',
+        root: '/static/remote/min/',
         module: 'uguru',
         htmlmin: build && minifyConfig
       }));

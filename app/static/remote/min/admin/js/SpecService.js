@@ -1,0 +1,333 @@
+angular
+.module('uguru.admin')
+.factory("SpecService", [
+  '$state',
+  '$timeout',
+  '$localstorage',
+  '$window',
+  '$compile',
+  'KeyboardService',
+  'UtilitiesService',
+  SpecService
+  ]);
+
+function SpecService($state, $timeout, $localstorage, $window, $compile, KeyboardService, UtilitiesService) {
+    var specTokens = {'calendar': 'ddd2f97039f2fec817d52499dd3c00ac', 'madlib': '5c0ecd57c10973ddfe65af113522a809', 'jeselle': '98f138f534428eb8af27ea5c2b6944ef', 'gabrie': '9d8ddaef35241c63a3a95032485bf645'};
+
+    return {
+        initSpec: initSpec,
+        getSpec: getSpec
+    }
+
+    function initSpec(scope, real_scope, parent_container, param, template_path, ctrl_path, states) {
+        //checks codepen environment
+        // if (window.location.href.split('codepen.io').length > 1) return;
+        var specObj = getSpec(param, template_path, ctrl_path);
+        var callbackFunc = getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states)
+        getCodepenSpec(specObj.url, callbackFunc)
+
+    }
+
+    function getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states) {
+        // console.log(states);
+        return function(obj) {
+
+            specObj.data = obj;
+            calcUseCasesCompletedness(specObj.data.use_cases)
+            //@gabrielle note
+            specObj.data.toggleDev = false;
+            specObj.data.toggleSpec = false;
+            specObj.data.mobile = {width:400, height:768, show:false, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
+            specObj.data.open = specObj.open;
+            specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
+            specObj.data.stateTags = specObj.data.statesDropdown.options;
+            specObj.data.stateTagClicked = specObj.data.statesDropdown.onOptionClick;
+            specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path)
+            specObj.data.openGDoc = openGDocSpecFunc(specObj.data.gdoc);
+            for (specProp in specObj) {
+                scope.spec[specProp] = specObj[specProp]
+            }
+            elem = document.querySelector(parent_container);
+            specElem = document.createElement('spec');
+            specElem.className = 'fixed bottom-0 left-0 full-x'
+            KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
+            KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
+            KeyboardService.initOptionPressedAndReleasedFunction(function() {toggleDev(true); toggleSpec(true)}, null, 27, 'esc', true, null);
+            // specElem.setAttribute('ng-if', 'spec && spec.data');
+            specElem.setAttribute('data', param + '.spec.data');
+            if (elem) {
+                elem.appendChild(specElem)
+                $timeout(function() {
+                    $compile(specElem)(real_scope);
+                })
+            }
+
+            function openGDocSpecFunc(url) {
+                return function() {
+                    $window.open(url, '_blank');
+                }
+            }
+
+            function toggleDev(value) {
+                var newValue = !scope.spec.data.toggleDev;
+
+              if (newValue) {
+                scope.spec.data.toggleDev = newValue;
+                return;
+              }
+              else if (!newValue) {
+                var devSpecContainer = document.querySelector('#dev-toolbar');
+                devSpecContainer.classList.remove('slideInDown');
+                $timeout(function() {
+                    devSpecContainer.classList.add('slideOutDown');
+                })
+                $timeout(function() {
+                    scope.spec.data.toggleDev = newValue;
+                }, 750);
+              }
+
+            }
+            function toggleSpec(value) {
+              var newValue = !scope.spec.data.toggleSpec;
+              if (newValue) {
+                scope.spec.data.toggleSpec = newValue;
+                return;
+              }
+              else if (!newValue) {
+                var devSpecContainer = document.querySelector('#dev-spec');
+                devSpecContainer.classList.remove('slideInDown');
+                $timeout(function() {
+                    devSpecContainer.classList.add('fadeOutUp');
+                })
+                $timeout(function() {
+                    scope.spec.data.toggleSpec = newValue;
+                }, 750);
+              }
+            }
+
+        }
+
+    }
+
+    function calcUseCasesCompletedness(use_case_arr) {
+        for (var i = 0; i < use_case_arr.length; i++) {
+            var indexUseCase = use_case_arr[i];
+            if (!indexUseCase.columns) indexUseCase.columns = {};
+            var indexUseCaseColumns = indexUseCase.columns
+            for (column in indexUseCaseColumns) {
+                var indexColumnObj = indexUseCaseColumns[column];
+                var columnSumComplete = 0;
+                if (indexColumnObj.items && indexColumnObj.items.length) {
+                    var columnItems = indexColumnObj.items;
+                    for (var j = 0; j < columnItems.length; j++) {
+                        var actionItem = indexColumnObj.items[j];
+                        if (actionItem.value) columnSumComplete += 1;
+                        if (actionItem.sub_items && actionItem.sub_items.length) {
+                            var actionSum = 0;
+                            var actionSubItemTotal = actionItem.sub_items.length;
+                            for (var k = 0; k < actionItem.sub_items.length; k++) {
+                                var indexSubItem = actionItem.sub_items[k];
+                                if (indexSubItem.value) actionSum += 1;
+                            }
+                            actionItem.status = {
+                                fraction: actionSum + '/' + actionSubItemTotal,
+                                remaining: actionSubItemTotal - actionSum,
+                                total: actionSubItemTotal,
+                                percentage: (100.0 * ((actionSum * 1.0)/indexColumnObj.items.length)).toFixed(1) + '%'
+                            }
+                        }
+                    }
+                }
+                indexColumnObj.status = {
+                    fraction: columnSumComplete+'/'+indexColumnObj.items.length,
+                    remaining: indexColumnObj.items.length - columnSumComplete,
+                    total: indexColumnObj.items.length,
+                    percentage: (100.0 * ((columnSumComplete * 1.0)/indexColumnObj.items.length)).toFixed(1) + '%'
+                }
+            }
+        }
+    }
+
+    function getCodepenData(scope, title, template_url, ctrl_path) {
+        $timeout(function() {
+            loadHTMLSpec(scope, template_url, ctrl_path)
+        })
+        return {
+            title                 : title,
+            description           : "Most updated version",
+            private               : true, // true || false
+            tags                  : [], // an array of strings
+            editors               : "101", // Set which editors are open. In this example HTML open, CSS closed, JS open
+            layout                : "right", // top | left | right
+            html                  : '',
+            html_pre_processor    : "",
+            css                   : "html { color: red; }",
+            css_pre_processor     : "none",
+            css_starter           : "neither",
+            css_prefix            : "none",
+            js                    : "//import this extra file manually https://codepen.io/teamuguru/pen/ONePXN.js",
+            js_pre_processor      : "none",
+            html_classes          : null,
+            head                  : "<meta name='viewport' content='width=device-width'>",
+            css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/css/app_version.css",
+            js_external           : '',
+            css_pre_processor_lib : null,
+            js_modernizr : null,
+            js_library   : null,
+        }
+
+        function loadHTMLSpec(scope, template_url, controller_url) {
+
+            if (window.location.href.split(':8100').length > 1) {
+              template_url = 'http://localhost:8100/#/remote/min/' + template_url;
+            } else {
+              template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + template_url;
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open( 'GET', template_url, true );
+
+            xhr.onload = function () {
+                scope.spec.data.codepenData.html = wrapMinUguruHtml(xhr.responseText, controller_url);
+            };
+            xhr.send();
+        }
+
+        function wrapMinUguruHtml(response_html, relative_ctrl_url) {
+            return '<body ng-app="uguru" animation="slide-left-right-ios7"><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/js/u.base.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/js/main.min.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/js/' + relative_ctrl_url + '"></script><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + response_html + '</div></script></ui-view></body>'
+        }
+
+    }
+
+    function getSpecObj(spec_id, template_url, ctrl_url) {
+        var url = constructCodepenUrl(spec_id);
+        return {
+            open: openCodepenSpecFunc(url),
+            url: url + '.js',
+            ctrl_path: ctrl_url,
+            template_path: template_url,
+            data: {}
+        }
+
+        function openCodepenSpecFunc(url) {
+            return function() {
+                $window.open(url + '/?editors=0010?layout=top', '_blank');
+            }
+        }
+        function constructCodepenUrl(spec_id) {
+            return "https://codepen.io/teamuguru/pen/" + spec_id;
+        }
+    }
+
+    function generateDropdownFromStates(states, parent_container, scope) {
+        var dropdownArr = [];
+        var elemUniqueStateArr = [];
+        var elemStateArr = [];
+        var parentContainer = document.querySelector(parent_container);
+        if (parentContainer) {
+            var elementsWithStates = parentContainer.querySelectorAll('[elem-states]');
+
+            for (var i = 0; i < elementsWithStates.length; i++) {
+                var indexElemWithState = elementsWithStates[i];
+                var indexElemStates = indexElemWithState.getAttribute('elem-states');
+                var elemStates = UtilitiesService.removeAllOccurrancesArr(indexElemStates, ['[', ']', ' ', "'", '"']).split(',');
+                for (var j = 0; j < elemStates.length; j++) {
+                    var indexState = elemStates[j];
+                    var onEnterState = 'on-' + indexState + '-enter';
+                    var onExitState = 'on-' + indexState + '-exit';
+                    var elemHasEnterAttribute = indexElemWithState.getAttribute(onEnterState);
+                    var elemHasExitAttribute = indexElemWithState.getAttribute(onExitState);
+                    if (elemHasEnterAttribute && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onEnterState)) === -1) {
+                        elemUniqueStateArr.push(UtilitiesService.camelCase(onEnterState));
+                        elemStateArr.push({title: UtilitiesService.camelCase(onEnterState), state: onEnterState})
+                    }
+                    if (elemHasExitAttribute  && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onExitState)) === -1) {
+                        elemUniqueStateArr.push(UtilitiesService.camelCase(onExitState));
+                        elemStateArr.push({title: UtilitiesService.camelCase(onExitState), state: onExitState})
+                    }
+                }
+            }
+        }
+        for (key in states) {
+            dropdownArr.push({title:key, state: states[key], parent_elem: parent_container, parent_scope: scope})
+        }
+        for (var i = 0; i < elemStateArr.length; i++) {
+            elemStateArr[i].parent_elem = parent_container;
+            elemStateArr[i].parent_scope = scope;
+            elemStateArr[i].is_elem_state = true;
+            dropdownArr.push(elemStateArr[i]);
+        }
+        var result = {
+            label: 'toggle states',
+            options: dropdownArr,
+            key: 'title',
+            onOptionClick: applyDropdownAction,
+            selectedIndex: getDefaultSelectedIndex(states)
+        }
+
+        return result;
+
+        function getDefaultSelectedIndex(states) {
+            return 1;
+        }
+
+        function applyDropdownAction(option, index) {
+            if (option.title === 'onInit') {
+                window.location.reload(true);
+            } else if (option.title.toLowerCase().indexOf('onclick') > -1) {
+                elem = document.querySelector(option.state);
+                $timeout(function() {
+                    angular.element(elem).triggerHandler('click');
+                    option.parent_scope.$apply();
+                })
+            }
+            else if (option.title.toLowerCase().indexOf('click') > -1) {
+                elem = document.querySelector(option.state);
+                $timeout(function() {
+                    angular.element(elem).triggerHandler('click');
+                    option.parent_scope.$apply();
+                })
+            } else if (option.title.toLowerCase() === 'onhover') {
+                parent_elem = document.querySelector(option.parent_elem);
+                onHoverElems = parent_elem.querySelectorAll('[on-hover]');
+                for (var i = 0 ; i < onHoverElems.length; i++) {
+                    onHoverElems[i].classList.add('activate-hover');
+                }
+            }
+            else if (option.title.toLowerCase() === 'onactivate') {
+                parent_elem = document.querySelector(option.parent_elem);
+                onActivateElems = parent_elem.querySelectorAll('[on-activate]');
+                for (var i = 0 ; i < onActivateElems.length; i++) {
+                    onActivateElems[i].classList.add('activate');
+                }
+            }
+            else if (option.is_elem_state) {
+                var stateElems = document.querySelectorAll('[' + option.state + ']')
+                for (var i = 0; i < stateElems.length; i++) {
+                    stateElems[i].classList.add(option.state)
+                }
+            }
+
+        }
+    }
+
+    function getCodepenSpec(url, cb) {
+      var xhr = new XMLHttpRequest();
+      xhr.open( 'GET', url, true );
+
+      xhr.onload = function () {
+          var responseDict = JSON.parse(xhr.responseText);
+          cb(responseDict);
+      };
+      xhr.send();
+    }
+
+    function getSpec(_id, template_url, ctrl_url) {
+
+        if (Object.keys(specTokens).indexOf(_id) > -1) {
+            return getSpecObj(specTokens[_id], template_url, ctrl_url)
+        }
+        return
+    }
+
+}

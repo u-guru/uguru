@@ -1,0 +1,37 @@
+@import 'partials/mixin';
+
+body.platform-ios {
+	ul li {
+		&.active, &.activated {
+			background: rgba(white,.2);
+		}
+		::selection {
+			 background: rgba(white, .1);
+		}
+		a.active, a.activated {
+			background: rgba(white,.2);
+		}
+		a:hover, .list .list-item a:hover {
+			 background: rgba(white, .1);
+		}
+	}
+}
+
+section {
+	height: 100%;
+}
+.view-container {
+	position: inherit;
+}
+
+/* ---------- MISCELLANEOUS */
+.uguru-view {
+	* {
+		font-family: $font!important;
+	}
+	@media screen and (max-width:320px) {
+		body {
+			font-size: 20px;
+		}
+	}
+}
