@@ -32,11 +32,11 @@
                     <!-- Transition to Student Home-->
 
                 <!-- 2. device -->
-                <div id='splash-device-container' ng-if='splash.state.device' ng-include="'preapp/templates/splash.device.html'">
+                <div id='splash-device-container'  ng-if='splash.state.device' ng-include="'preapp/templates/splash.device.html'">
                 </div>
 
                 <!-- 0. Madlib -->
-                <div id='splash-madlib-container' ng-if='splash.state.madlib' ng-include="'preapp/templates/splash.madlib.html'">
+                <div id='splash-madlib-container' ng-class="{'z-index--1000 opacity-0': !splash.state.madlib}" ng-include="'preapp/templates/splash.madlib.html'">
                 </div>
 
                 <!-- 5. getting started -->

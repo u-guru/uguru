@@ -20,6 +20,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
     }
 
     function initSpec(scope, real_scope, parent_container, param, template_path, ctrl_path, states) {
+        if (window.location.href.split('/').indexOf('dev') === -1) {
+            return;
+        }
         //checks codepen environment
         // if (window.location.href.split('codepen.io').length > 1) return;
         var specObj = getSpec(param, template_path, ctrl_path);

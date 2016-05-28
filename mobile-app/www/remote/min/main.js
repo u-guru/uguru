@@ -46,7 +46,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     templateUrl: 'preapp/templates/splash.html'
   })
   .state('root.splash-madlib', {
-    url:'/splash/madlib',
+    url:'/dev/splash/madlib',
     templateUrl: 'preapp/templates/splash.madlib.html',
     controller: function($scope) {
       $scope.splash = {state: {madlib:true}};
