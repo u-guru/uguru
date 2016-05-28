@@ -6,18 +6,19 @@ angular.module('uguru.shared.controllers')
   '$scope',
   '$state',
   '$timeout',
-  function($scope, $state, $timeout) {
+  'RootService',
+  function($scope, $state, $timeout, RootService) {
     // Listen for the event.
-    if (window.location.href.split('/').length > 5 || window.location.href.split('admin').length > 1) {
-      var loaderPortal = document.querySelector('.loader-portal');
-      var loaderWrapper = document.querySelector('#loader-wrapper');
-      loaderPortal.parentNode.removeChild(loaderPortal);
-      loaderWrapper.parentNode.removeChild(loaderWrapper);
-      console.log(loaderWrapper, 'removed');
-    }
+    // if (window.location.href.split('/').length > 5 || window.location.href.split('admin').length > 1) {
+    //   var loaderPortal = document.querySelector('.loader-portal');
+    //   var loaderWrapper = document.querySelector('#loader-wrapper');
+    //   loaderPortal.parentNode.removeChild(loaderPortal);
+    //   loaderWrapper.parentNode.removeChild(loaderWrapper);
+    //   console.log(loaderWrapper, 'removed');
+    // }
     var root = this;
     root.window = getBodyDimensions();
-    //root.base_url = img_base + BASE;
+    root.base_url = RootService.getBaseUrl()
   }
 ]);
 

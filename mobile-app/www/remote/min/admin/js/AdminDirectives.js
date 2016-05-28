@@ -1,7 +1,7 @@
 angular.module('uguru.admin')
-.directive("spec", ['$timeout', function($timeout) {
+.directive("spec", ['$timeout', 'RootService', function($timeout, RootService) {
         return {
-            templateUrl: 'admin/templates/components/spec.tpl',
+            templateUrl: RootService.getBaseUrl() + 'admin/templates/components/spec.tpl',
             scope: {
                 spec: '=data'
             },
