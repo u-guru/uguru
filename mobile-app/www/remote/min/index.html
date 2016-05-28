@@ -163,14 +163,12 @@
 
         portalElem.addEventListener(((navigator.userAgent.indexOf('AppleWebKit') != -1) && 'webkitAnimationStart') || 'animationstart',
             function(e) {
-              console.log(e.animationName, e.timeStamp, e);
                 if (e.animationName === 'l-move-down') {
                     setTimeout(function() {
                         portalElem.dispatchEvent(portalEvent);
-                    }, 200)
+                    }, 500)
                 }
             }, false);
-
 
         function initSnapLoadedEvent(script_elem) {
 
