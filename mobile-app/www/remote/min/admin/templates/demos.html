@@ -2,12 +2,12 @@
     <div class="full-xy absolute txt-18 flex-wrap-center bg-azure-50p">
         <div class='full-x flex-stretch ugrid-3 flex-wrap-center txt-6 text-center'>
             <div class='p10xy'>
-                <button class-on-click='activate' elem-states="['elem-activate']" on-elem-activate-enter="samir-anim:animIn:delay-3000"   on-activate="samir-anim:animIn" class='full-x bg-charcoal txt-18 height-36 semibold button-anim'>
+                <button class-on-click='activate' elem-states="['elem-activate']" on-elem-activate-enter="samir-anim:animIn:unique:delay-1500"   on-activate="samir-anim:animIn" class='full-x bg-charcoal txt-18 height-36 semibold button-anim'>
                     Animate In
                 </button>
             </div>
             <div class='p10xy'>
-                <button class-on-click='on-elem-activate-enter' ng-click='demos.removeAnimation($event, "samir-anim")' elem-states="['elem-activate']" on-elem-activate-enter="samir-anim:anim:delay-1500" class='full-x bg-charcoal txt-18 height-36 semibold button-anim'>
+                <button class-on-click='on-elem-activate-enter' ng-click='demos.removeAnimation($event, "samir-anim")' elem-states="['elem-activate']" on-elem-activate-enter="samir-anim:anim:unique|show:delay-1500" class='full-x bg-charcoal txt-18 height-36 semibold button-anim'>
                     Animate
                 </button>
             </div>
