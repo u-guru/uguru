@@ -1,4 +1,4 @@
-<ion-view id='jeselle-view' ng-controller='JeselleController'>
+<ion-view id='jeselle-view'>
     <ion-content id="jeselle" class="null">
         <header id="top">
     		<a class="top-home" href="/">
@@ -24,8 +24,9 @@
         <main id="home">
     		<div class="home-container" style="background: #BEB9C0;">
     			<ul class="home-thumbs">
-    				<li id="project-one" class="null">
-    					<a class="home-link" class-on-click="null:inject#project-one|active"></a><h2 class="cascade-title"><span>Project Title</span></h2>
+                    <li id="project-one" class="null" class-on-click='on-elem-activate-enter' elem-states="['elem-activate']" on-elem-activate-enter="active:anim">
+    					<a class="home-link"></a>
+                        <h2 class="cascade-title"><span>Project Title</span></h2>
     					<article class="project">
     						<header style="background-image: url('http://cdn.paper4pc.com/images/hipster-wallpaper-18.jpg');">
     							<div>
@@ -186,8 +187,9 @@
     						</footer>
     					</article>
     				</li>
-    				<li id="project-two" class="null">
-    					<a class="home-link" class-on-click="null:inject#project-two|active"></a><h2 class="cascade-title"><span>Project Title</span></h2>
+    				<li id="project-two" class="null" class-on-click='on-elem-activate-enter' elem-states="['elem-activate']" on-elem-activate-enter="active:anim">
+    					<a class="home-link"></a>
+                        <h2 class="cascade-title"><span>Project Title</span></h2>
     					<article class="project">
     						<header style="background-image: url('http://widewallpaper.info/wp-content/uploads/2016/02/Hipster-Wallpaper-04.jpg');">
     							<div>

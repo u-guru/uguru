@@ -4,6 +4,44 @@
 #gabrie .nested-action-item li {
   font-size: 16px !important;
   line-height: 1.2 !important; }
+#gabrie .project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white; }
+  #gabrie .project-modal:not(.active) {
+    z-index: -100; }
+  #gabrie .project-modal.active {
+    z-index: 100; }
+  #gabrie .project-modal .project-content, #gabrie .project-modal .project-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center; }
+    #gabrie .project-modal .project-content h1, #gabrie .project-modal .project-loader h1 {
+      text-align: center;
+      color: white; }
+  #gabrie .project-modal .project-content {
+    display: none;
+    opacity: 0;
+    background: #f2faf3; }
+    #gabrie .project-modal .project-content.active {
+      display: block;
+      opacity: 1; }
+  #gabrie .project-modal .project-loader {
+    background: #F5C8BF; }
+    #gabrie .project-modal .project-loader.inactive {
+      opacity: 0;
+      display: none; }
 
 /* Reset */
 #gabrie {
@@ -12,10 +50,17 @@
   background: #f2faf3;
   color: #A6ADA7;
   font-family: "brandon-grotesque", "Brandon Grotesque", "Brandon Text", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-overflow-scrolling: touch; }
+  #gabrie .space {
+    opacity: 0; }
+  #gabrie::-webkit-scrollbar {
+    display: none; }
+  #gabrie::-moz-scrollbar {
+    display: none; }
   #gabrie button {
     font: "brandon-grotesque", "Brandon Grotesque", "Brandon Text", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important !important; }
   #gabrie > div[id*="page"] {
@@ -41,7 +86,8 @@
     border-radius: 3px;
     background: #A6ADA7;
     color: white !important;
-    font-family: "brandon-grotesque", "Brandon Grotesque", "Brandon Text", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+    font-family: "brandon-grotesque", "Brandon Grotesque", "Brandon Text", "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+    line-height: 1.2; }
   #gabrie h1, #gabrie h2, #gabrie h3 {
     width: 100%; }
   #gabrie h1 {
@@ -352,7 +398,7 @@
             #gabrie section#work .grid li > div svg {
               display: block;
               width: 100%;
-              height: 100%; }
+              height: auto; }
             #gabrie section#work .grid li > div .overlay {
               opacity: 0;
               transition: 150ms ease-in-out;
