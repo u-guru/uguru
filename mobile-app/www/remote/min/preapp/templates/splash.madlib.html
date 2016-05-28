@@ -1,9 +1,6 @@
 <div class="splash-hero-content z-index-100" ng-controller='SplashMadlibController as madlib' id='splash-madlib'>
-    <div class="splash-guru-head" ng-if='splash.state.madlib' class-on-activate="pulse:animIn">
-        <div class="splash-hero-guru splash-logo-guru"
-            ng-include="'shared/templates/components/svg/guru-head.html'"
-            elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-            on-map-transition-enter="map-transition:animOut"></div>
+    <div class="splash-guru-head" class-on-activate="pulse:animIn">
+        <div class="splash-hero-guru splash-logo-guru" ng-include="'shared/templates/components/svg/guru-head.html'"></div>
         <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop opacity-0" viewBox="0 0 340 205">
             <g fill="none">
@@ -42,15 +39,13 @@
             </g>
         </svg>
     </div>
-    <div class="splash-adlib" ng-if='splash.state.madlib' eval-on-activate="activateMap()"
-        elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-        on-map-transition-enter="map-transition:anim:delay-2000">
+    <div class="splash-adlib" eval-on-activate="activateMap()">
         <div class="splash-adlib-inside a" activate-on-class="a" class-on-activate="active:keep">
             <div class="adlib-header-container relative">
                 <h1 class="adlib-header active-adlib-header"
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-init=""
-                    on-activate="spread-out:animIn"
+                    on-activate="spread-out:animIn:delay-2000"
                     on-category-switch-exit="inactive-adlib-header:anim">
                     <span>{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank">
@@ -85,7 +80,7 @@
                 <h1 class="adlib-header"
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-init="opacity:0"
-                    on-activate="spread-out:animIn"
+                    on-activate="spread-out:animIn:delay-2000"
                     on-category-switch-enter="active-adlib-header:anim">
                     <span>{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank">
@@ -121,10 +116,10 @@
             <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate">
                 <tag class='adlib-tag'
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-
                     on-hover="pulse"
-                    on-init=""
-                    on-activate="spread-out:anim"
+
+                    on-init="opacity:0"
+                    on-activate="spread-out:animIn:delay-2000"
 
                     on-category-switch-enter="spread-out:anim"
                     on-category-switch-exit="spread-in:animOut"
@@ -139,8 +134,9 @@
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
 
                     on-hover="pulse"
-                    on-init=""
-                    on-activate="spread-out:anim"
+
+                    on-init="opacity:0"
+                    on-activate="spread-out:animIn:delay-2000"
 
                     on-category-switch-enter="spread-out:anim"
                     on-category-switch-exit="spread-in:animOut"

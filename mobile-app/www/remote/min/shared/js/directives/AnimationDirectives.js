@@ -244,6 +244,8 @@ angular.module('uguru.shared.directives')
         animationObj = AnimationService.getCSSAnimationFromClassName(animationClass);
       }
 
+
+
       scope.$watch(function() {
         return element.attr('class');
       },function() {
@@ -253,28 +255,28 @@ angular.module('uguru.shared.directives')
 
           var delay = attr.onActivate || 0;
           var classes = attr.onActivate.split(", ");
-          $timeout(function() {
+          // $timeout(function() {
               for (var i = 0; i < classes.length; i++) {
                 var indexClass = classes[i].split(":")[0];
                 var classArgs = classes[i].split(":").slice(1);
-                if (classArgs.indexOf("animIn") > -1 && indexClass !== "null") {
+                var elemArgDict = parseElemStateAttrValueArgs(classArgs);
+                if (classArgs.indexOf("animIn") > -1 && indexClass !== "null") {''
                   if (classArgs.indexOf("keep") > -1) {
                     indexClass = indexClass +':keep';
                   }
-                  AnimationService.animateIn(element[0], indexClass);
+                  AnimationService.animateIn(element[0], indexClass, elemArgDict.delay);
                 } else
                 if (classArgs.indexOf("animOut") > -1 && indexClass !== "null") {
                   if (classArgs.indexOf("keep") > -1) {
                     indexClass = indexClass +':keep';
                   }
-                  AnimationService.animateOut(element[0], indexClass);
+                  AnimationService.animateOut(element[0], indexClass, elemArgDict.delay);
                 } else
                 if (classArgs.indexOf("anim") > -1 && indexClass !== "null") {
                   if (classArgs.indexOf("keep") > -1) {
                     indexClass = indexClass + ':keep';
                   }
-                  console.log('applying OG animate');
-                  AnimationService.animate(element[0], indexClass, animationObj, delay);
+                  AnimationService.animate(element[0], indexClass, animationObj, elemArgDict.delay);
                 }
                 else if (indexClass !== "null") {
                   element[0].classList.add(indexClass);
@@ -300,7 +302,7 @@ angular.module('uguru.shared.directives')
                   }
                 }
               }
-          }, delay);
+          // }, delay);
 
           if (attr.evalOnActivate) {
             $timeout(function() {
@@ -775,26 +777,6 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
               // })
           }
       }
-
-      function parseElemStateAttrValueArgs(arg_arr) {
-        var resultDict = {};
-        for (var i = 0; i < arg_arr.length; i++) {
-          var indexArg = arg_arr[i];
-          if (indexArg === "animIn") {
-            resultDict.animateIn = true;
-          }
-          if (indexArg.indexOf('delay-') > -1) {
-            resultDict.delay = parseInt(indexArg.replace('delay-', ''))
-          }
-          if (indexArg === 'animOut') {
-            resultDict.animateOut = true;
-          }
-          if (indexArg === 'anim') {
-            resultDict.animate = true;
-          }
-        }
-        return resultDict;
-      }
 }]).
 directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, AnimationService) {
       return {
@@ -934,3 +916,23 @@ function camelCase(input) {
         return group1.toUpperCase();
     });
 }
+
+function parseElemStateAttrValueArgs(arg_arr) {
+    var resultDict = {};
+    for (var i = 0; i < arg_arr.length; i++) {
+      var indexArg = arg_arr[i];
+      if (indexArg === "animIn") {
+        resultDict.animateIn = true;
+      }
+      if (indexArg.indexOf('delay-') > -1) {
+        resultDict.delay = parseInt(indexArg.replace('delay-', ''))
+      }
+      if (indexArg === 'animOut') {
+        resultDict.animateOut = true;
+      }
+      if (indexArg === 'anim') {
+        resultDict.animate = true;
+      }
+    }
+    return resultDict;
+  }

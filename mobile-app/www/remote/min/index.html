@@ -161,9 +161,10 @@
         var portalElem = document.querySelector('.loader-portal');
         var portalEvent = initEventFromName('splashMainLoadingComplete');
 
-        portalElem.addEventListener(((navigator.userAgent.indexOf('AppleWebKit') != -1) && 'webkitAnimationEnd') || 'animationend',
+        portalElem.addEventListener(((navigator.userAgent.indexOf('AppleWebKit') != -1) && 'webkitAnimationStart') || 'animationstart',
             function(e) {
-                if (e.animationName === 'l-portal-shrink') {
+              console.log(e.animationName, e.timeStamp, e);
+                if (e.animationName === 'l-move-down') {
                     setTimeout(function() {
                         portalElem.dispatchEvent(portalEvent);
                     }, 200)
@@ -176,8 +177,8 @@
             var snapLoadedEvent = initEventFromName('shouldRenderSplashTransition');
             script_elem.onload = function(e) {
                 globalLoader = new SVGLoader(document.querySelector('#loader-wrapper .pageload-overlay'), {
-                    speedOut: 4000,
-                    easingOut: mina.linear
+                    speedOut: 2000,
+                    easingOut: mina.easeinout
                 });
                 globalLoader.show();
             }
