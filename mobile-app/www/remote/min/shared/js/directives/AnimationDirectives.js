@@ -219,7 +219,7 @@ angular.module('uguru.shared.directives')
           }, delay);
           function classArgsHasInject(args) {
             var injectArg = null;
-            args.filter(function(word, index) {
+            args.forEach.call(function(word, index) {
               if (word.indexOf("inject") > -1) {
                 injectArg = args[index];
                 return true
@@ -260,6 +260,7 @@ angular.module('uguru.shared.directives')
                 var indexClass = classes[i].split(":")[0];
                 var classArgs = classes[i].split(":").slice(1);
                 var elemArgDict = parseElemStateAttrValueArgs(classArgs);
+                console.log('onactivate', elemArgDict);
                 if (classArgs.indexOf("animIn") > -1 && indexClass !== "null") {''
                   if (classArgs.indexOf("keep") > -1) {
                     indexClass = indexClass +':keep';
@@ -290,15 +291,20 @@ angular.module('uguru.shared.directives')
                     }
                   }
                 }
-                if (classes[i].indexOf('inject') > -1 && classArgsHasInject(classArgs)) {
-                  var injectArgClassSplit = classArgsHasInject(classArgs).split("|")
-                  if (injectArgClassSplit.length > 1) {
-                    var classToInject = injectArgClassSplit[1];
-                    var elemToInjectSelector = injectArgClassSplit[0];
-                    var elemsToInject = document.querySelectorAll(elemToInjectSelector);
-                    for (var k = 0; k < elemsToInject.length; k++) {
-                      elemsToInject[k].classList.add(classToInject);
-                    }
+                // if (classes[i].indexOf('inject') > -1 && classArgsHasInject(classArgs)) {
+                //   var injectArgClassSplit = classArgsHasInject(classArgs).split("|")
+                //   if (injectArgClassSplit.length > 1) {
+                //     var classToInject = injectArgClassSplit[1];
+                //     var elemToInjectSelector = injectArgClassSplit[0];
+                //     var elemsToInject = document.querySelectorAll(elemToInjectSelector);
+                //     for (var k = 0; k < elemsToInject.length; k++) {
+                //       elemsToInject[k].classList.add(classToInject);
+                //     }
+                //   }
+                // }
+                if (elemArgDict.inject_elems) {
+                  for (var k = 0; k < elemArgDict.inject_elems.length; k++) {
+                    elemArgDict.inject_elems[k].classList.add(elemArgDict.inject_class);
                   }
                 }
               }
@@ -316,7 +322,7 @@ angular.module('uguru.shared.directives')
 
           function classArgsHasInject(args) {
             var injectArg = null;
-            args.filter(function(word, index) {
+            args.forEach.call(function(word, index) {
               if (word.indexOf("inject") > -1) {
                 injectArg = args[index];
                 return true
@@ -395,16 +401,7 @@ angular.module('uguru.shared.directives')
             })
           }
 
-          function classArgsHasInject(args) {
-            var injectArg = null;
-            args.filter(function(word, index) {
-              if (word.indexOf("inject") > -1) {
-                injectArg = args[index];
-                return true
-              };
-            })
-            return (injectArg && injectArg.replace("inject", ""));
-          }
+
         }
       })
     }
@@ -755,6 +752,12 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                       AnimationService.animate(element[0], elemStateClass, elemClassAnimDict[processedElemStates[i]], elemArgDict.delay || 0);
                     }
 
+                    if (elemArgDict.inject_elems) {
+                      for (var k = 0; k < elemArgDict.inject_elems.length; k++) {
+                        elemArgDict.inject_elems[k].classList.add(elemArgDict.inject_class);
+                      }
+                    }
+
                   }
                 }
               });
@@ -832,28 +835,6 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                       }
                     }
                 }, delay);
-          function classArgsHasInject(args) {
-            var injectArg = null;
-            args.filter(function(word, index) {
-              if (word.indexOf("inject") > -1) {
-                injectArg = args[index];
-                return true
-              };
-            })
-            return injectArg && injectArg.replace("inject", "");
-          }
-                // function classArgsHasInject(args) {
-                //   console.log('inject args', args);
-                //   if (!args || args.length) return false;
-                //   var injectArg = null;
-                //   args.filter(function(word, index) {
-                //     if (word.indexOf("inject") > -1) {
-                //       injectArg = args[index];
-                //       return true
-                //     };
-                //   })
-                //   return (args && injectArg && injectArg.replace("inject", ""));
-                // }
               });
             }
           }
@@ -917,10 +898,16 @@ function camelCase(input) {
     });
 }
 
+function classArgsHasInject(args) {
+  return args && args.length && (args.split('inject').length > 1) && args.replace("inject", "");
+}
+
 function parseElemStateAttrValueArgs(arg_arr) {
     var resultDict = {};
     for (var i = 0; i < arg_arr.length; i++) {
       var indexArg = arg_arr[i];
+      console.log(indexArg);
+      if (!indexArg || !indexArg.length) continue;
       if (indexArg === "animIn") {
         resultDict.animateIn = true;
       }
@@ -932,6 +919,22 @@ function parseElemStateAttrValueArgs(arg_arr) {
       }
       if (indexArg === 'anim') {
         resultDict.animate = true;
+      }
+
+      var hasInject = classArgsHasInject(indexArg);
+      if (hasInject && hasInject.length) {
+        var injectArgClassSplit = hasInject.split("|");
+        if (injectArgClassSplit.length > 1) {
+          var classToInject = injectArgClassSplit[1];
+          var elemToInjectSelector = injectArgClassSplit[0];
+          console.log('selecting..', elemToInjectSelector + '[' + classToInject.substring(1) + ']');
+          var elemsToInject = elemToInjectSelector && document.querySelectorAll(elemToInjectSelector + '[' + classToInject.substring(1) + ']');
+          if (elemsToInject && elemsToInject.length && elemToInjectSelector.length) {
+            resultDict.inject_elems = elemsToInject;
+            resultDict.inject_class = classToInject.substring(1);
+            console.log(resultDict.inject_elems, resultDict.inject_class);
+          }
+        }
       }
     }
     return resultDict;

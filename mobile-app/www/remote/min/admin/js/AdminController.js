@@ -3344,7 +3344,7 @@ angular.module('uguru.admin')
             }
             allTemplates = Object.keys(preAppStates);
             for (var i = 0; i < allTemplates.length; i++) {
-                var html = '<div ng-include="img_base + ' + "'" + allTemplates[i] + "'" + '" ng-controller="' + preAppStates[allTemplates[i]] + '"> </div>'
+                var html = '<div ng-include="root.base_url + ' + "'" + allTemplates[i] + "'" + '" ng-controller="' + preAppStates[allTemplates[i]] + '"> </div>'
                 preAppStates[allTemplates[i]] = {controller: preAppStates[allTemplates[i]], owner: 'samir', url: allTemplates[i] + "", html:html};
             }
             preAppStates[allTemplates[0]].name = 'Splash';

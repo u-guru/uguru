@@ -45,6 +45,11 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/',
     templateUrl: 'preapp/templates/splash.html'
   })
+  .state('root.splash-device', {
+    parent: 'root',
+    url:'/dev/splash/device',
+    templateUrl: 'preapp/templates/splash.device.html'
+  })
   .state('root.splash-madlib', {
     url:'/dev/splash/madlib',
     templateUrl: 'preapp/templates/splash.madlib.html',

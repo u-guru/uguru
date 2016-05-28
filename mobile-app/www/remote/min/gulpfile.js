@@ -47,7 +47,14 @@ var minifyConfig = {
   removeComments: true
 };
 
-
+var errorHandler = function(error) {
+  if (build || prePush) {
+    throw error;
+  } else {
+    beep(2, 170);
+    plugins.util.log(error);
+  }
+};
 
 
 // our main sequence, with some conditional jobs depending on params
@@ -104,7 +111,7 @@ gulp.task('compile-css', function(done) {
   .pipe(plugins.if(build, plugins.stripCssComments()))
   .pipe(minifyCSS({keepSpecialComments : 0}))
   .pipe(plugins.if(build, plugins.rev()))
-  .pipe(plugins.concat('app_version.css'))
+  .pipe(plugins.concat('app.css'))
   // .pipe(uncss({
   //     html: ['dest/templates/**/*html']
   // }))
@@ -151,6 +158,7 @@ gulp.task('compile-js', function(done) {
       'shared/js/services/*.js',
 
       'main.js',
+      'templates.js',
       //prepapp ctrl
       'preapp/js/SplashController.js',
       'preapp/js/*.js',
@@ -161,7 +169,6 @@ gulp.task('compile-js', function(done) {
       //shared ctrl
       'shared/js/controllers/RootController.js',
       'shared/js/controllers/*.js',
-      'templates.js'
     ]);
 
   return streamqueue({ objectMode: true }, scriptStream)
@@ -180,13 +187,12 @@ gulp.task('compile-temp',function(done){
           // 'shared/templates/root.html',
           // 'admin/templates/**/*.html',
           // 'preapp/templates/**/*.html',
-          '!index.html',
+          '!*master.index.html',
+          '!*index.html',
           '**/*html',
           '**/*tpl',
-          '**/*svg'], { cwd: '' })
-      // .pipe(debug())
-      .pipe(plugins.angularTemplatecache('templates.js', {
-        root: '/static/remote/min/',
+          '**/*svg'], { cwd: '' }).pipe(plugins.angularTemplatecache('templates.js', {
+        root: '',
         module: 'uguru',
         htmlmin: build && minifyConfig
       }));
@@ -195,21 +201,74 @@ gulp.task('compile-temp',function(done){
           .pipe(plugins.if(build, plugins.ngAnnotate()))
           .pipe(plugins.if(build, plugins.uglify()))
           .pipe(plugins.if(build, plugins.rev()))
-          .pipe(plugins.if(build, plugins.concat('templates.js')))
-          .pipe(gulp.dest('../min'));
+          .pipe(plugins.if(build, plugins.concat('templates.js'))).pipe(gulp.dest('.'));
 });
 
 gulp.task('clean', function(done) {
-  del(['templates.js','app.js','app_version.css'], done);
+  del(['templates.js', 'dest/scripts/*', 'app.js','app.css', 'dest/templates/**'], done);
+});
+
+gulp.task('templates', function() {
+  //PART ONE, MOVE ALL TEMPLATES TO RIGHT FOLDER
+  var templateLocations = ['admin/templates/**/**/**', 'shared/templates/**/**/**', 'preapp/templates/**/**/**']
+  for (var i = 0; i < templateLocations.length; i++) {
+    gulp.src([templateLocations[i]], { cwd: '' })
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest(path.join(targetDir, 'templates/' + templateLocations[i].split('/**')[0])))
+    .on('error', errorHandler);
+  }
+
+
+  // //part two create templatesjs
+  // var dest = path.join(targetDir, 'scripts');
+
+  // var minifyConfig = {
+  //   collapseWhitespace: true,
+  //   collapseBooleanAttributes: true,
+  //   removeAttributeQuotes: true,
+  //   removeComments: true
+  // };
+
+  // var templateStream = gulp.src([
+  //       'templates/admin/templates/*html',
+  //       'templates/admin/templates/components/*tpl',
+  //       'templates/shared/templates/**/**/*',
+  //       'templates/preapp/templates/**/**/*',
+  //     ], { cwd: 'dest/' })
+  //   .pipe(plugins.angularTemplatecache('templates.js', {
+  //     root: '/',
+  //     module: 'uguru',
+  //     htmlmin: build && minifyConfig
+  //   }));
+  //   return streamqueue({ objectMode: true }, templateStream)
+  //       .pipe(plugins.if(build, plugins.ngAnnotate()))
+  //       .pipe(plugins.if(build, plugins.uglify()))
+  //       .pipe(plugins.if(build, plugins.rev()))
+  //       .pipe(plugins.if(build, plugins.concat('templates.js')))
+  //       .pipe(gulp.dest('dest/scripts'))
+
+  //       .on('error', errorHandler);
+});
+
+
+
+gulp.task('copy-prod', function(){
+  // the base option sets the relative root for the set of files,
+  // preserving the folder structure
+  gulp.src(['app.js', 'app.css'], { base: './' })
+  .pipe(gulp.dest('../../../../app/static/remote/min/'));
 });
 
 gulp.task('default', function(done) {
   runSequence(
     'clean',
     'compile-css',
+    'templates',
     'compile-temp',
     // 'jsHint',
     'compile-js',
+    'copy-prod',
+    // 'clean'
     // 'index',
     // build ? 'noop' : 'watchers',
     // build ? 'noop' : 'serve',
