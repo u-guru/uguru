@@ -1,5 +1,5 @@
 <ion-view id='jeselle-view'>
-    <ion-content id="jeselle" class="null">
+    <ion-content id="jeselle" class="null" elem-states="['cascade']" on-cascade-enter="has-cascade:anim">
         <header id="top">
     		<a class="top-home" href="/">
     			<svg viewBox="0 0 350 350">
@@ -19,12 +19,21 @@
     				</g>
     			</svg>
     		</a>
-    		<a class="top-projects" class-on-click="null:inject#jeselle|has-cascade, null:inject.home-thumbs|cascade"><span>Projects</span></a>
+    		<a class="top-projects"
+                class-on-click="activate"
+                elem-states="['project']"
+                on-activate="null:inject#jeselle|.on-cascade-enter, null:inject.home-thumbs|.on-cascade-enter, on-project-exit"
+                on-project-exit="project-active:anim:unique">
+                <span>Projects</span>
+            </a>
     	</header>
         <main id="home">
     		<div class="home-container" style="background: #BEB9C0;">
-    			<ul class="home-thumbs">
-                    <li id="project-one" class="null" class-on-click='on-elem-activate-enter' elem-states="['elem-activate']" on-elem-activate-enter="active:anim">
+    			<ul class="home-thumbs" elem-states="['cascade']" on-cascade-enter="cascade:anim">
+                    <li id="project-one" class="null"
+                        class-on-click='on-project-enter'
+                        elem-states="['project']"
+                        on-project-enter="project-active:anim:unique">
     					<a class="home-link"></a>
                         <h2 class="cascade-title"><span>Project Title</span></h2>
     					<article class="project">
@@ -187,7 +196,10 @@
     						</footer>
     					</article>
     				</li>
-    				<li id="project-two" class="null" class-on-click='on-elem-activate-enter' elem-states="['elem-activate']" on-elem-activate-enter="active:anim">
+    				<li id="project-two" class="null"
+                        class-on-click='on-project-enter'
+                        elem-states="['project']"
+                        on-project-enter="project-active:anim:unique">
     					<a class="home-link"></a>
                         <h2 class="cascade-title"><span>Project Title</span></h2>
     					<article class="project">

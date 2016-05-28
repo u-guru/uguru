@@ -1,5 +1,5 @@
 <ion-view id='gabrie-view'>
-	<ion-content id="gabrie">
+	<div id="gabrie">
 		<header id="top" class="top">
 			<a>
 				<svg viewBox="0 0 400 400"  class="modal-close">
@@ -545,7 +545,9 @@
 		    <ul class="grid">
 				<li data--40-bottom="opacity: .5; transform: translate3d(0, 12px, 0)" data--140-bottom="opacity: 1; transform: translate3d(0, 0, 0)">
 		            <div>
-		                <a class="null" class-on-click='null:inject#project-modal-guild|activate'></a>
+		                <a class="null"
+							class-on-click='activate'
+							on-activate="null:inject#project-modal-guild|.on-project-enter, null:inject.project-loader|.on-project-enter"></a>
 		                <div>
 		                    <span>
 								<svg viewBox="0 0 100 100">
@@ -886,15 +888,16 @@
 		</section>
 
 		<div id="project-modal-guild" class="project-modal"
-			elem-states="['project-activate']"
-			class-on-activate="active, on-project-activate-enter"
-			on-project-activate-enter="">
+			elem-states="['project']"
+			on-project-enter="active:anim">
 			<div class="project-content" style="background: #585499;">
 				<h1>project content</h1>
 			</div>
-			<div class="project-loader">
+			<div class="project-loader"
+				elem-states="['project']"
+				on-project-enter="fadeOut:anim">
 				<h1>project loader</h1>
 			</div>
 		</div>
-	</ion-content>
+	</div>
 </ion-view>

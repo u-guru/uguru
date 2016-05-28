@@ -1,5 +1,9 @@
 @import 'partials/mixin';
 
+@keyframes z-index-100 {
+	0%, 100% { z-index: 100; }
+}
+
 #gabrie-view {
 	z-index: 1000000;
 }
@@ -23,6 +27,7 @@
 		}
 		&.active {
 			z-index: 100;
+			animation: z-index-100 1000ms ease 0ms both;
 		}
 		.project-content, .project-loader {
 			position: absolute;

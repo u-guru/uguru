@@ -1,3 +1,6 @@
+@keyframes z-index-100 {
+  0%, 100% {
+    z-index: 100; } }
 #gabrie-view {
   z-index: 1000000; }
 
@@ -14,7 +17,8 @@
   #gabrie .project-modal:not(.active) {
     z-index: -100; }
   #gabrie .project-modal.active {
-    z-index: 100; }
+    z-index: 100;
+    animation: z-index-100 1000ms ease 0ms both; }
   #gabrie .project-modal .project-content, #gabrie .project-modal .project-loader {
     position: absolute;
     top: 0;

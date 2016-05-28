@@ -369,20 +369,20 @@
               margin: 0 auto;
               text-align: center;
               width: 50%; }
-          #jeselle #home .home-container .home-thumbs > li.active {
+          #jeselle #home .home-container .home-thumbs > li.project-active {
             transform: translate3d(0, 0, 0); }
-            #jeselle #home .home-container .home-thumbs > li.active .home-link {
+            #jeselle #home .home-container .home-thumbs > li.project-active .home-link {
               z-index: -10; }
-            #jeselle #home .home-container .home-thumbs > li.active:after {
+            #jeselle #home .home-container .home-thumbs > li.project-active:after {
               opacity: 0; }
-            #jeselle #home .home-container .home-thumbs > li.active .project {
+            #jeselle #home .home-container .home-thumbs > li.project-active .project {
               overflow: auto; }
-              #jeselle #home .home-container .home-thumbs > li.active .project header h1 {
+              #jeselle #home .home-container .home-thumbs > li.project-active .project header h1 {
                 width: 100%; }
-              #jeselle #home .home-container .home-thumbs > li.active .project header h2 {
+              #jeselle #home .home-container .home-thumbs > li.project-active .project header h2 {
                 opacity: 1;
                 transition-delay: 150ms; }
-          #jeselle #home .home-container .home-thumbs > li.inactive {
+          #jeselle #home .home-container .home-thumbs > li.project-inactive {
             opacity: 0; }
         #jeselle #home .home-container .home-thumbs.cascade > li {
           -webkit-transition: -webkit-transform 150ms ease-out, -webkit-clip-path 150ms ease-out 300ms;
@@ -414,13 +414,13 @@
               opacity: 0; }
             #jeselle #home .home-container .home-thumbs.cascade > li .project header h1, #jeselle #home .home-container .home-thumbs.cascade > li .project header h2 {
               transition-delay: 450ms; }
-          #jeselle #home .home-container .home-thumbs.cascade > li.active {
+          #jeselle #home .home-container .home-thumbs.cascade > li.project-active {
             z-index: 1000;
             transform: translate3d(0, 0, 0); }
-            #jeselle #home .home-container .home-thumbs.cascade > li.active .cascade-title {
+            #jeselle #home .home-container .home-thumbs.cascade > li.project-active .cascade-title {
               opacity: 0;
               z-index: -100; }
-            #jeselle #home .home-container .home-thumbs.cascade > li.active .project header h1 {
+            #jeselle #home .home-container .home-thumbs.cascade > li.project-active .project header h1 {
               opacity: 1; }
   #jeselle .has-cascade {
     overflow: hidden; }
@@ -445,12 +445,12 @@
         height: 70%;
         left: 5%;
         top: 15%; }
-      #jeselle #home .home-container .home-thumbs > li.active {
+      #jeselle #home .home-container .home-thumbs > li.project-active {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         -webkit-clip-path: inset(0 0 0 0);
         clip-path: inset(0 0 0 0); }
-        #jeselle #home .home-container .home-thumbs > li.active .project {
+        #jeselle #home .home-container .home-thumbs > li.project-active .project {
           -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           -webkit-clip-path: inset(0 0 0 0);
@@ -476,12 +476,12 @@
         height: 50%;
         left: 25%;
         top: 25%; }
-      #jeselle #home .home-container .home-thumbs > li.active {
+      #jeselle #home .home-container .home-thumbs > li.project-active {
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         -webkit-clip-path: inset(0 0 0 0);
         clip-path: inset(0 0 0 0); }
-        #jeselle #home .home-container .home-thumbs > li.active .project {
+        #jeselle #home .home-container .home-thumbs > li.project-active .project {
           -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           -webkit-clip-path: inset(0 0 0 0);
