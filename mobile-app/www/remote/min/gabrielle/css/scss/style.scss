@@ -1,8 +1,5 @@
 @import 'partials/mixin';
-
-@keyframes z-index-100 {
-	0%, 100% { z-index: 100; }
-}
+@import 'partials/animation';
 
 #gabrie-view {
 	z-index: 1000000;
@@ -25,10 +22,6 @@
 		&:not(.active) {
 			z-index: -100;
 		}
-		&.active {
-			z-index: 100;
-			animation: z-index-100 1000ms ease 0ms both;
-		}
 		.project-content, .project-loader {
 			position: absolute;
 			top: 0;
@@ -41,26 +34,17 @@
 			align-items: center;
 			align-content: center;
 			justify-content: center;
+			overflow: auto;
 			h1 {
 				text-align: center;
 				color: white;
 			}
 		}
 		.project-content {
-			display: none;
-			opacity: 0;
 			background: $mint;
-			&.active {
-				display: block;
-				opacity: 1;
-			}
 		}
 		.project-loader {
 			background: $pink;
-			&.inactive {
-				opacity: 0;
-				display: none;
-			}
 		}
 	}
 }

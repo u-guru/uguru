@@ -1,6 +1,14 @@
-@keyframes z-index-100 {
-  0%, 100% {
-    z-index: 100; } }
+.project-enter {
+  z-index: 100;
+  animation: project-enter 500ms ease 0ms both; }
+
+@keyframes project-enter {
+  0% {
+    z-index: 0;
+    opacity: 0; }
+  100% {
+    z-index: 100;
+    opacity: 1; } }
 #gabrie-view {
   z-index: 1000000; }
 
@@ -16,9 +24,6 @@
   background: white; }
   #gabrie .project-modal:not(.active) {
     z-index: -100; }
-  #gabrie .project-modal.active {
-    z-index: 100;
-    animation: z-index-100 1000ms ease 0ms both; }
   #gabrie .project-modal .project-content, #gabrie .project-modal .project-loader {
     position: absolute;
     top: 0;
@@ -30,22 +35,15 @@
     flex-direction: row;
     align-items: center;
     align-content: center;
-    justify-content: center; }
+    justify-content: center;
+    overflow: auto; }
     #gabrie .project-modal .project-content h1, #gabrie .project-modal .project-loader h1 {
       text-align: center;
       color: white; }
   #gabrie .project-modal .project-content {
-    display: none;
-    opacity: 0;
     background: #f2faf3; }
-    #gabrie .project-modal .project-content.active {
-      display: block;
-      opacity: 1; }
   #gabrie .project-modal .project-loader {
     background: #F5C8BF; }
-    #gabrie .project-modal .project-loader.inactive {
-      opacity: 0;
-      display: none; }
 
 /* Reset */
 #gabrie {

@@ -121,8 +121,14 @@
         line-height: 1.2;
         width: 100%; }
       #jeselle .project header h1 {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
         font-size: 36px;
         font-family: "lulu-clean", "Lulo Clean"; }
+        #jeselle .project header h1 svg {
+          height: 36px;
+          width: auto; }
       #jeselle .project header h2 {
         opacity: 0;
         position: absolute;
@@ -491,6 +497,8 @@
       bottom: 48px; }
     #jeselle .project header h1 {
       font-size: 72px; }
+      #jeselle .project header h1 svg {
+        height: 72px; }
     #jeselle .project header h2 {
       font-size: 28px; }
     #jeselle .project main .project-info.mobile {

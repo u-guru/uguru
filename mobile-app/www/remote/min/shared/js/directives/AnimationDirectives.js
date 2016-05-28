@@ -262,12 +262,12 @@ angular.module('uguru.shared.directives')
                 var elemArgDict = parseElemStateAttrValueArgs(classArgs);
                 console.log('onactivate', elemArgDict);
                 if (elemArgDict.unique) {
-                  $timeout(function() {
+                //   $timeout(function() {
                     var elemsThatAlreadyHaveClass = document.querySelectorAll('.' + indexClass) || [];
                     for (var i = 0; i < elemsThatAlreadyHaveClass.length; i++) {
                       elemsThatAlreadyHaveClass[i].classList.remove(indexClass);
                     }
-                  });
+                //   });
                 }
                 if (classArgs.indexOf("animIn") > -1 && indexClass !== "null") {''
                   if (classArgs.indexOf("keep") > -1) {
@@ -750,12 +750,13 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                     var elemStateClass = elemStateValue.split(':')[0];
                     var elemArgDict = parseElemStateAttrValueArgs(elemStateValue.split(':').splice(1));
                     if (elemArgDict.unique) {
-                      $timeout(function() {
+                    //   $timeout(function() {
                         var elemsThatAlreadyHaveClass = document.querySelectorAll('.' + elemStateClass) || [];
                         for (var i = 0; i < elemsThatAlreadyHaveClass.length; i++) {
                           elemsThatAlreadyHaveClass[i].classList.remove(elemStateClass);
                         }
-                      });
+                    //   });
+                    // console.log(element[0], elemArgDict.unique, elemStateClass);
                     }
                     if (elemArgDict.animateIn) {
                       console.log('animating in', element[0].nodeName, elemStateClass, elemArgDict.delay, '\n\n', element[0])
