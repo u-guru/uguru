@@ -261,6 +261,14 @@ angular.module('uguru.shared.directives')
                 var classArgs = classes[i].split(":").slice(1);
                 var elemArgDict = parseElemStateAttrValueArgs(classArgs);
                 console.log('onactivate', elemArgDict);
+                if (elemArgDict.unique) {
+                  $timeout(function() {
+                    var elemsThatAlreadyHaveClass = document.querySelectorAll('.' + indexClass) || [];
+                    for (var i = 0; i < elemsThatAlreadyHaveClass.length; i++) {
+                      elemsThatAlreadyHaveClass[i].classList.remove(indexClass);
+                    }
+                  });
+                }
                 if (classArgs.indexOf("animIn") > -1 && indexClass !== "null") {''
                   if (classArgs.indexOf("keep") > -1) {
                     indexClass = indexClass +':keep';
@@ -282,15 +290,16 @@ angular.module('uguru.shared.directives')
                 else if (indexClass !== "null") {
                   element[0].classList.add(indexClass);
                 }
-                if (classArgs.indexOf("unique") > -1) {
-                  var otherClassElems = document.querySelectorAll('.' + indexClass);
-                  for (var j = 0; j < otherClassElems.length; j++) {
-                    var otherElemIndex = otherClassElems[j];
-                    if (otherElemIndex !== element[0]) {
-                      otherElemIndex.classList.remove(indexClass);
-                    }
-                  }
-                }
+                // if (classArgs.indexOf("unique") > -1) {
+                //   var otherClassElems = document.querySelectorAll('.' + indexClass);
+                //   for (var j = 0; j < otherClassElems.length; j++) {
+                //     var otherElemIndex = otherClassElems[j];
+                //     if (otherElemIndex !== element[0]) {
+                //       otherElemIndex.classList.remove(indexClass);
+                //     }
+                //   }
+                // }
+
                 // if (classes[i].indexOf('inject') > -1 && classArgsHasInject(classArgs)) {
                 //   var injectArgClassSplit = classArgsHasInject(classArgs).split("|")
                 //   if (injectArgClassSplit.length > 1) {
@@ -740,6 +749,14 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                     var elemStateValue = attr[camelCase(processedElemStates[i])];
                     var elemStateClass = elemStateValue.split(':')[0];
                     var elemArgDict = parseElemStateAttrValueArgs(elemStateValue.split(':').splice(1));
+                    if (elemArgDict.unique) {
+                      $timeout(function() {
+                        var elemsThatAlreadyHaveClass = document.querySelectorAll('.' + elemStateClass) || [];
+                        for (var i = 0; i < elemsThatAlreadyHaveClass.length; i++) {
+                          elemsThatAlreadyHaveClass[i].classList.remove(elemStateClass);
+                        }
+                      });
+                    }
                     if (elemArgDict.animateIn) {
                       console.log('animating in', element[0].nodeName, elemStateClass, elemArgDict.delay, '\n\n', element[0])
                       AnimationService.animateIn(element[0], elemStateClass, elemArgDict.delay);
@@ -921,6 +938,18 @@ function parseElemStateAttrValueArgs(arg_arr) {
         resultDict.animate = true;
       }
 
+      if (indexArg.indexOf('unique') > - 1) {
+        if (indexArg.split('|').length === 2) {
+          var supportedPipeArgs = ['hide', 'show', 'opacity-0'];
+          var pipeArg = indexArg.split('|')[1];
+          if (supportedPipeArgs.indexOf(pipeArg) > -1) {
+            var pipe_index = supportedPipeArgs.indexOf(pipeArg);
+            resultDict['unique_' + supportedPipeArgs[pipe_index]] = true;
+          }
+        }
+        resultDict.unique = true;
+      }
+
       var hasInject = classArgsHasInject(indexArg);
       if (hasInject && hasInject.length) {
         var injectArgClassSplit = hasInject.split("|");
@@ -932,7 +961,7 @@ function parseElemStateAttrValueArgs(arg_arr) {
           if (elemsToInject && elemsToInject.length && elemToInjectSelector.length) {
             resultDict.inject_elems = elemsToInject;
             resultDict.inject_class = classToInject.substring(1);
-            console.log(resultDict.inject_elems, resultDict.inject_class);
+            // console.log(resultDict.inject_elems, resultDict.inject_class);
           }
         }
       }
