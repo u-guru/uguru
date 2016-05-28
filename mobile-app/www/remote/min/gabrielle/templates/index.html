@@ -1,4 +1,4 @@
-<ion-view id='gabrie-view' ng-controller='GabrielleController'>
+<ion-view id='gabrie-view'>
 	<ion-content id="gabrie">
 		<header id="top" class="top">
 			<a>
@@ -545,7 +545,7 @@
 		    <ul class="grid">
 				<li data--40-bottom="opacity: .5; transform: translate3d(0, 12px, 0)" data--140-bottom="opacity: 1; transform: translate3d(0, 0, 0)">
 		            <div>
-		                <a class-on-click="bg-cobalt"></a>
+		                <a class="null" class-on-click='null:inject#project-modal-guild|activate'></a>
 		                <div>
 		                    <span>
 								<svg viewBox="0 0 100 100">
@@ -885,7 +885,10 @@
 		    </footer>
 		</section>
 
-		<div id="project-modal-guild" class="project-modal">
+		<div id="project-modal-guild" class="project-modal"
+			elem-states="['project-activate']"
+			class-on-activate="active, on-project-activate-enter"
+			on-project-activate-enter="">
 			<div class="project-content" style="background: #585499;">
 				<h1>project content</h1>
 			</div>
