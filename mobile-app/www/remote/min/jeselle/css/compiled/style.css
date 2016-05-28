@@ -1,0 +1,497 @@
+#jeselle-view {
+  z-index: 1000000; }
+
+#jeselle {
+  background: white;
+  color: #4D496A;
+  font-family: "proxima-nova", "Proxima Nova", "Open Sans", "Gill Sans MT", "Gill Sans", Corbel, Arial, sans-serif !important;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  line-height: 1; }
+  #jeselle div, #jeselle span, #jeselle applet, #jeselle object, #jeselle iframe, #jeselle h1, #jeselle h2, #jeselle h3, #jeselle h4, #jeselle h5, #jeselle h6, #jeselle p, #jeselle blockquote, #jeselle pre, #jeselle a, #jeselle abbr, #jeselle acronym, #jeselle address, #jeselle big, #jeselle cite, #jeselle code, #jeselle del, #jeselle dfn, #jeselle em, #jeselle img, #jeselle ins, #jeselle kbd, #jeselle q, #jeselle s, #jeselle samp, #jeselle small, #jeselle strike, #jeselle strong, #jeselle sub, #jeselle sup, #jeselle tt, #jeselle var, #jeselle b, #jeselle u, #jeselle i, #jeselle center, #jeselle dl, #jeselle dt, #jeselle dd, #jeselle ol, #jeselle ul, #jeselle li, #jeselle fieldset, #jeselle form, #jeselle label, #jeselle legend, #jeselle table, #jeselle caption, #jeselle tbody, #jeselle tfoot, #jeselle thead, #jeselle tr, #jeselle th, #jeselle td, #jeselle article, #jeselle aside, #jeselle canvas, #jeselle details, #jeselle embed, #jeselle figure, #jeselle figcaption, #jeselle footer, #jeselle header, #jeselle hgroup, #jeselle menu, #jeselle nav, #jeselle output, #jeselle ruby, #jeselle section, #jeselle summary, #jeselle time, #jeselle mark, #jeselle audio, #jeselle video {
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0; }
+  #jeselle article, #jeselle aside, #jeselle details, #jeselle figcaption, #jeselle figure, #jeselle footer, #jeselle header, #jeselle hgroup, #jeselle menu, #jeselle nav, #jeselle section {
+    display: block; }
+  #jeselle blockquote, #jeselle q {
+    quotes: none; }
+  #jeselle blockquote:before, #jeselle blockquote:after, #jeselle q:before, #jeselle q:after {
+    content: none; }
+  #jeselle table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+  #jeselle a {
+    cursor: pointer; }
+  #jeselle *, #jeselle *:before, #jeselle *:after {
+    box-sizing: border-box; }
+  #jeselle * {
+    backface-visibility: visible !important; }
+  #jeselle #top {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 24px; }
+    #jeselle #top .top-home {
+      display: block;
+      width: 48px;
+      height: 48px; }
+      #jeselle #top .top-home svg {
+        display: block;
+        width: 100%;
+        height: auto; }
+        #jeselle #top .top-home svg * {
+          stroke-width: 8px !important; }
+    #jeselle #top .top-projects {
+      position: relative;
+      display: block;
+      height: 48px;
+      width: 160px;
+      color: #4D496A;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 2px; }
+      #jeselle #top .top-projects span, #jeselle #top .top-projects:before {
+        transition: all 150ms ease-out;
+        border: 3px solid #4D496A;
+        width: 100%;
+        height: 100%; }
+      #jeselle #top .top-projects span {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        background: white; }
+      #jeselle #top .top-projects:before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        background: #d7d4d8; }
+      #jeselle #top .top-projects:hover:before, #jeselle #top .top-projects:focus:before {
+        transform: translate3d(6px, 6px, 0); }
+      #jeselle #top .top-projects:active {
+        color: white; }
+        #jeselle #top .top-projects:active span {
+          background: #4D496A; }
+  #jeselle .project {
+    width: 100%;
+    height: 100%; }
+    #jeselle .project header {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      flex-flow: row wrap;
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 24px;
+      text-align: center; }
+      #jeselle .project header div {
+        position: relative;
+        width: 100%; }
+      #jeselle .project header h1, #jeselle .project header h2 {
+        color: white;
+        transition: all 150ms ease-out;
+        line-height: 1.2;
+        width: 100%; }
+      #jeselle .project header h1 {
+        font-size: 36px;
+        font-family: "lulu-clean", "Lulo Clean"; }
+      #jeselle .project header h2 {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        font-size: 18px;
+        font-weight: 700; }
+    #jeselle .project main {
+      padding: 12px;
+      width: 100%;
+      overflow-x: hidden;
+      background: white; }
+      #jeselle .project main .project-info {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6px; }
+        #jeselle .project main .project-info > li {
+          padding: 6px; }
+          #jeselle .project main .project-info > li > div {
+            border: 6px solid #BEB9C0; }
+            #jeselle .project main .project-info > li > div:not(:last-child) {
+              margin-bottom: 12px; }
+            #jeselle .project main .project-info > li > div h1 {
+              display: flex;
+              align-items: center;
+              align-content: center;
+              font-size: 28px;
+              font-weight: 900;
+              border: 12px solid white;
+              padding: 12px;
+              background: #9DA5BA;
+              color: white; }
+              #jeselle .project main .project-info > li > div h1 span {
+                display: block;
+                margin-left: 12px;
+                font-size: 20px;
+                font-weight: 600; }
+            #jeselle .project main .project-info > li > div a {
+              color: #aeafbd; }
+              #jeselle .project main .project-info > li > div a:hover, #jeselle .project main .project-info > li > div a:focus {
+                color: #757792; }
+              #jeselle .project main .project-info > li > div a:active {
+                color: #929db1; }
+            #jeselle .project main .project-info > li > div ul {
+              list-style: none;
+              margin: 0;
+              padding: 0;
+              margin-top: -12px;
+              padding: 6px; }
+              #jeselle .project main .project-info > li > div ul li {
+                padding: 6px; }
+                #jeselle .project main .project-info > li > div ul li strong {
+                  font-weight: 600; }
+            #jeselle .project main .project-info > li > div div {
+              margin-top: -12px;
+              padding: 6px; }
+              #jeselle .project main .project-info > li > div div p {
+                padding: 6px;
+                line-height: 1.2; }
+          #jeselle .project main .project-info > li.project-branding > div {
+            border-color: #9DA5BA; }
+            #jeselle .project main .project-info > li.project-branding > div > svg {
+              display: block;
+              width: 100%;
+              height: auto; }
+            #jeselle .project main .project-info > li.project-branding > div > a {
+              display: block;
+              width: 100%;
+              padding: 12px;
+              border-top: 6px solid #9DA5BA;
+              font-size: 18px;
+              font-weight: 800;
+              text-align: center; }
+              #jeselle .project main .project-info > li.project-branding > div > a:hover, #jeselle .project main .project-info > li.project-branding > div > a:focus {
+                background: rgba(190, 185, 192, 0.5); }
+              #jeselle .project main .project-info > li.project-branding > div > a:active {
+                background: #9DA5BA;
+                color: white; }
+        #jeselle .project main .project-info.mobile {
+          display: block; }
+          #jeselle .project main .project-info.mobile > li > div h1 {
+            justify-content: center;
+            margin: 0 -30px;
+            text-align: center; }
+        #jeselle .project main .project-info.desktop {
+          display: none; }
+          #jeselle .project main .project-info.desktop > li {
+            width: calc(100% / 3); }
+            #jeselle .project main .project-info.desktop > li.project-details > div h1 {
+              margin-left: -36px;
+              width: calc(100% + $padding*3);
+              text-align: right; }
+            #jeselle .project main .project-info.desktop > li.project-work > div h1 {
+              margin-right: -36px;
+              width: calc(100% + $padding*3); }
+      #jeselle .project main .project-desc {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 12px; }
+        #jeselle .project main .project-desc p {
+          padding: 6px 12px;
+          font-size: 18px;
+          line-height: 1.2; }
+          #jeselle .project main .project-desc p img {
+            display: block;
+            max-width: 100%;
+            border: 6px solid #9DA5BA; }
+    #jeselle .project footer {
+      padding: 24px 12px;
+      text-align: center;
+      background: #9da5bb;
+      background: -moz-linear-gradient(top, #9da5bb 0%, #ecaca4 100%);
+      background: -webkit-linear-gradient(top, #9da5bb 0%, #ecaca4 100%);
+      background: linear-gradient(to bottom, #9da5bb 0%, #ecaca4 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9da5bb', endColorstr='#ecaca4',GradientType=0 ); }
+      #jeselle .project footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        padding: 6px; }
+        #jeselle .project footer ul li {
+          padding: 6px; }
+          #jeselle .project footer ul li a {
+            border-radius: 1000px;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: #757792; }
+            #jeselle .project footer ul li a svg {
+              display: block;
+              width: 36px;
+              height: 36px;
+              fill: white; }
+            #jeselle .project footer ul li a:hover, #jeselle .project footer ul li a:focus {
+              background: #4D496A; }
+            #jeselle .project footer ul li a:active {
+              background: rgba(255, 255, 255, 0.5); }
+              #jeselle .project footer ul li a:active svg {
+                fill: #4D496A; }
+      #jeselle .project footer h1 {
+        padding: 24px;
+        font-family: "lulu-clean", "Lulo Clean";
+        font-size: 40px;
+        text-transform: uppercase;
+        line-height: 1.2; }
+      #jeselle .project footer div {
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.2; }
+  #jeselle #home {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+    #jeselle #home .home-container {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 24px; }
+      #jeselle #home .home-container .home-coach {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        margin-left: -100px;
+        width: 200px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: white; }
+      #jeselle #home .home-container .home-thumbs {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        -webkit-perspective: 1000;
+        perspective: 1000; }
+        #jeselle #home .home-container .home-thumbs > li {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          align-items: center;
+          align-content: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          transform-origin: center center;
+          transition: all 150ms ease-out;
+          backface-visibility: visible !important; }
+          #jeselle #home .home-container .home-thumbs > li:not(:first-child) {
+            transform: translate3d(100%, 0, 0); }
+          #jeselle #home .home-container .home-thumbs > li:after {
+            content: "";
+            display: block;
+            position: absolute;
+            border: 6px solid white; }
+          #jeselle #home .home-container .home-thumbs > li .home-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10; }
+          #jeselle #home .home-container .home-thumbs > li .cascade-title {
+            display: none;
+            position: absolute;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            top: 50%;
+            right: calc(25% - 32px);
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(65, 61, 68, 0.25); }
+            #jeselle #home .home-container .home-thumbs > li .cascade-title span {
+              transform: rotate(-90deg); }
+          #jeselle #home .home-container .home-thumbs > li .project {
+            transition: all 150ms ease-out;
+            overflow: hidden; }
+            #jeselle #home .home-container .home-thumbs > li .project header h1 {
+              margin: 0 auto;
+              text-align: center;
+              width: 50%; }
+          #jeselle #home .home-container .home-thumbs > li.active {
+            transform: translate3d(0, 0, 0); }
+            #jeselle #home .home-container .home-thumbs > li.active .home-link {
+              z-index: -10; }
+            #jeselle #home .home-container .home-thumbs > li.active:after {
+              opacity: 0; }
+            #jeselle #home .home-container .home-thumbs > li.active .project {
+              overflow: auto; }
+              #jeselle #home .home-container .home-thumbs > li.active .project header h1 {
+                width: 100%; }
+              #jeselle #home .home-container .home-thumbs > li.active .project header h2 {
+                opacity: 1;
+                transition-delay: 150ms; }
+          #jeselle #home .home-container .home-thumbs > li.inactive {
+            opacity: 0; }
+        #jeselle #home .home-container .home-thumbs.cascade > li {
+          -webkit-transition: -webkit-transform 150ms ease-out, -webkit-clip-path 150ms ease-out 300ms;
+          transition: transform 150ms ease-out, -webkit-clip-path 150ms ease-out 300ms, clip-path 150ms ease-out 300ms; }
+          #jeselle #home .home-container .home-thumbs.cascade > li:after {
+            transition-delay: 300ms; }
+          #jeselle #home .home-container .home-thumbs.cascade > li:nth-child(1) {
+            transform: translate3d(-125px, 0, 0); }
+          #jeselle #home .home-container .home-thumbs.cascade > li:nth-child(2) {
+            transform: translate3d(0, 0, -100px); }
+          #jeselle #home .home-container .home-thumbs.cascade > li:nth-child(3) {
+            transform: translate3d(125px, 0, -200px); }
+          #jeselle #home .home-container .home-thumbs.cascade > li:nth-child(4) {
+            transform: translate3d(250px, 0, -300px); }
+          #jeselle #home .home-container .home-thumbs.cascade > li:nth-child(5) {
+            transform: translate3d(375px, 0, -400px); }
+          #jeselle #home .home-container .home-thumbs.cascade > li:nth-child(6) {
+            transform: translate3d(500px, 0, -500px); }
+          #jeselle #home .home-container .home-thumbs.cascade > li:nth-child(7) {
+            transform: translate3d(625px, 0, -600px); }
+          #jeselle #home .home-container .home-thumbs.cascade > li .cascade-title {
+            display: flex;
+            z-index: 100;
+            transition: all 150ms ease-out; }
+          #jeselle #home .home-container .home-thumbs.cascade > li .project {
+            -webkit-transition: all 150ms ease-out 300ms;
+            transition: all 150ms ease-out 300ms; }
+            #jeselle #home .home-container .home-thumbs.cascade > li .project header h1 {
+              opacity: 0; }
+            #jeselle #home .home-container .home-thumbs.cascade > li .project header h1, #jeselle #home .home-container .home-thumbs.cascade > li .project header h2 {
+              transition-delay: 450ms; }
+          #jeselle #home .home-container .home-thumbs.cascade > li.active {
+            z-index: 1000;
+            transform: translate3d(0, 0, 0); }
+            #jeselle #home .home-container .home-thumbs.cascade > li.active .cascade-title {
+              opacity: 0;
+              z-index: -100; }
+            #jeselle #home .home-container .home-thumbs.cascade > li.active .project header h1 {
+              opacity: 1; }
+  #jeselle .has-cascade {
+    overflow: hidden; }
+  @media all and (orientation: portrait) {
+    #jeselle #home .home-container .home-thumbs > li {
+      -webkit-clip-path: polygon(5% 15%, 95% 15%, 95% 85%, 5% 85%);
+      clip-path: polygon(5% 15%, 95% 15%, 95% 85%, 5% 85%);
+      -webkit-clip-path: inset(15% 5% 15% 5%);
+      clip-path: inset(15% 5% 15% 5%); }
+      #jeselle #home .home-container .home-thumbs > li .project {
+        -webkit-clip-path: polygon(5% 15%, 95% 15%, 95% 85%, 5% 85%);
+        clip-path: polygon(5% 15%, 95% 15%, 95% 85%, 5% 85%);
+        -webkit-clip-path: inset(15% 5% 15% 5%);
+        clip-path: inset(15% 5% 15% 5%); }
+      #jeselle #home .home-container .home-thumbs > li:after {
+        width: 90%;
+        height: 70%;
+        left: 5%;
+        top: 15%; }
+      #jeselle #home .home-container .home-thumbs > li .home-link {
+        width: 90%;
+        height: 70%;
+        left: 5%;
+        top: 15%; }
+      #jeselle #home .home-container .home-thumbs > li.active {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        -webkit-clip-path: inset(0 0 0 0);
+        clip-path: inset(0 0 0 0); }
+        #jeselle #home .home-container .home-thumbs > li.active .project {
+          -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          -webkit-clip-path: inset(0 0 0 0);
+          clip-path: inset(0 0 0 0); } }
+  @media all and (orientation: landscape) {
+    #jeselle #home .home-container .home-thumbs > li {
+      -webkit-clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
+      clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
+      -webkit-clip-path: inset(25% 25% 25% 25%);
+      clip-path: inset(25% 25% 25% 25%); }
+      #jeselle #home .home-container .home-thumbs > li .project {
+        -webkit-clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
+        clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);
+        -webkit-clip-path: inset(25% 25% 25% 25%);
+        clip-path: inset(25% 25% 25% 25%); }
+      #jeselle #home .home-container .home-thumbs > li:after {
+        width: 50%;
+        height: 50%;
+        left: 25%;
+        top: 25%; }
+      #jeselle #home .home-container .home-thumbs > li .home-link {
+        width: 50%;
+        height: 50%;
+        left: 25%;
+        top: 25%; }
+      #jeselle #home .home-container .home-thumbs > li.active {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        -webkit-clip-path: inset(0 0 0 0);
+        clip-path: inset(0 0 0 0); }
+        #jeselle #home .home-container .home-thumbs > li.active .project {
+          -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          -webkit-clip-path: inset(0 0 0 0);
+          clip-path: inset(0 0 0 0); } }
+  @media only screen and (min-width: 768px) {
+    #jeselle #home .home-container .home-coach {
+      bottom: 48px; }
+    #jeselle .project header h1 {
+      font-size: 72px; }
+    #jeselle .project header h2 {
+      font-size: 28px; }
+    #jeselle .project main .project-info.mobile {
+      display: none; }
+    #jeselle .project main .project-info.desktop {
+      display: flex; } }
+
+/*# sourceMappingURL=style.css.map */
