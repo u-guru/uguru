@@ -16,10 +16,14 @@ angular.module('uguru.preApp', ['ionic'])
     splash.category = splash.categories[0];
 
     portalElem.addEventListener('splashMainLoadingComplete', function (e) {
+
       var loaderPortal = document.querySelector('.loader-portal');
+      loaderPortal.style.display = "none";
       loaderPortal.parentNode.removeChild(loaderPortal);
-      document.querySelector('#loader-wrapper').style.visibility = "hidden"
+
+      document.querySelector('#loader-wrapper').style.visibility = "hidden";
       document.querySelector('#loader-wrapper .pageload-overlay svg.transition').style.visibility = "visible";
+
       globalLoader.hide();
       splash.renderView = true;
       splash.state.madlib = true;
@@ -39,5 +43,3 @@ angular.module('uguru.preApp', ['ionic'])
 
   }
 ])
-
-
