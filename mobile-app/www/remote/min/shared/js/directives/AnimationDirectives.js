@@ -71,6 +71,7 @@ angular.module('uguru.shared.directives')
     link: function(scope, element, attr) {
 
       var elementToTraceSelector = attr.tracePath;
+      var elementToAppendChild = attr.traceParent;
       var options = {
         duration: attr.traceDuration || '5s',
         time_function: attr.traceTimeFunc || 'linear',
@@ -82,7 +83,11 @@ angular.module('uguru.shared.directives')
       }
 
       var pathElem = document.querySelector(elementToTraceSelector);
-      console.log('path elem', pathElem);
+      var  = document.querySelector(elementToTraceSelector);
+      var parentDrawShape = findParentDrawShape(pathElem);
+      if (!pathElem || !traceParentElem) {
+        console.log('ERROR: could not find elements with selector:', !pathElem && elementToTraceSelector), !traceParentElem && elementToAppendChild)
+      }
       if (!pathElem) {
         $timeout(function() {
           console.log('trying again 1 sec later');
@@ -111,6 +116,13 @@ angular.module('uguru.shared.directives')
         }
       });
       }
+    }
+    function findParentDrawShape(elem) {
+        if (elem.nodeName === 'svg' || elem.hasAttribute('draw-shape')) {
+            return elem.hasAttribute('draw-shape') && elem;
+        } else (elem.hasAttribute('draw-shapes')) {
+          return findParentDrawShape(elem.parentNode);
+        }
     }
   }])
 
@@ -164,6 +176,7 @@ angular.module('uguru.shared.directives')
         })
       }
     }
+
 }])
 .directive('classOnClear', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
   return {
