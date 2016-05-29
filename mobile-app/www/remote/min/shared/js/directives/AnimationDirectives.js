@@ -83,27 +83,20 @@ angular.module('uguru.shared.directives')
       }
 
       var pathElem = document.querySelector(elementToTraceSelector);
-      var  = document.querySelector(elementToTraceSelector);
+      var traceParent = document.querySelector(elementToAppendChild);
       var parentDrawShape = findParentDrawShape(pathElem);
-      if (!pathElem || !traceParentElem) {
-        console.log('ERROR: could not find elements with selector:', !pathElem && elementToTraceSelector), !traceParentElem && elementToAppendChild)
-      }
-      if (!pathElem) {
-        $timeout(function() {
-          console.log('trying again 1 sec later');
-          $compile(element[0])(scope);
-        }, 1000)
+      if (!pathElem || !traceParent || !parentDrawShape) {
+        console.log('ERROR: could not find elements with selector:', !pathElem && elementToTraceSelector, !traceParent && elementToAppendChild);
         return;
       }
-      console.log('begin render');
       var animName = options.anim_name;
       var elemOffset = SVGService.getShapeWidthHeight(element[0]).width;
       var cssAnimObj = SVGService.generateCSSObjFromPath(animName, pathElem, elemOffset);
       var cssAnimObjString = [animName, options.duration, options.time_function, options.delay, options.iter_count, options.direction, options.fill_mode].join(' ');
-      $rootScope.cssText = cssAnimObj.cssText;
-      pathElem.parentNode.appendChild(element[0]);
+
+      traceParent.appendChild(element[0]);
       $timeout(function() {
-        pathElem.parentNode.classList.add('activate');
+        parentDrawShape.classList.add('activate');
         scope.$apply()
         element[0].style.animation = cssAnimObjString;
         element[0].style.webkitAnimation = cssAnimObjString;
@@ -115,17 +108,16 @@ angular.module('uguru.shared.directives')
           element[0].removeEventListener('webkitAnimationEnd', animEndCallback);
         }
       });
-      }
     }
+  }
     function findParentDrawShape(elem) {
         if (elem.nodeName === 'svg' || elem.hasAttribute('draw-shape')) {
             return elem.hasAttribute('draw-shape') && elem;
-        } else (elem.hasAttribute('draw-shapes')) {
+        } else {
           return findParentDrawShape(elem.parentNode);
         }
     }
-  }])
-
+}])
 .directive('drawShapes', ['$timeout', 'SVGService', function ($timeout, SVGService) {
   return {
     restrict: 'A',
