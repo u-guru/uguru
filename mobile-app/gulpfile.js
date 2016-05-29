@@ -63,7 +63,7 @@ gulp.task('sass:watch', function () {
       })
       .on('error', sass.logError)
       .pipe(sourcemaps.write('../compiled'))
-      .pipe(gulp.dest(folder))
+      .pipe(gulp.dest(folder));
       // .pipe(plugins.livereload.changed(file));
   });
 });
