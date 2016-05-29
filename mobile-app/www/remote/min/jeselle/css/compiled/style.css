@@ -126,6 +126,9 @@
         justify-content: center;
         font-size: 36px;
         font-family: "lulu-clean", "Lulo Clean"; }
+        #jeselle .project header h1 span {
+          display: block;
+          position: relative; }
         #jeselle .project header h1 svg {
           height: 36px;
           width: auto; }

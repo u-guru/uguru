@@ -32,8 +32,9 @@ function SVGService(AnimationService) {
     // cssAnimObj.appendRule('0% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px) rotate(' +180 + 'deg);}', i);
     console.log('starting animation obj...');
     for (var i = 0; i < 100; i++) {
-       var indexPoint = path.getPointAtLength(i/100 *totalPathLength);
-       var indexPreviousPoint = path.getPointAtLength((i+1)/100 * totalPathLength);
+        var numKeyframes = 60;
+       var indexPoint = path.getPointAtLength(i/numKeyframes *totalPathLength);
+       var indexPreviousPoint = path.getPointAtLength((i+1)/numKeyframes * totalPathLength);
 
 
        var translateX = indexPoint.x - shapeOffset;
@@ -209,9 +210,3 @@ function SVGService(AnimationService) {
       return pathLength;
   }
 }
-
-
-
-
-
-
