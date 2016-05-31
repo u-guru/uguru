@@ -55,7 +55,7 @@ gulp.task('sass:watch', function () {
   // gulp.watch('**/*.scss', ['sass']);
   gulp.watch('**/*.scss').on('change', function(file) {
       // plugins.livereload.changed(file.path);
-      // gutil.log(path.dirname(file.path));
+      gutil.log(path.dirname(file.path));
       var folder = path.dirname(file.path).replace('/scss','/compiled');
       // gutil.log(folder);
       sass(file.path, {
@@ -124,8 +124,13 @@ gulp.task('jsHint', function(done) {
     .pipe(plugins.jshint.reporter(stylish));
 });
 
-gulp.task('jsHint:watch',function(){
-     gulp.watch(['**/*js']).on('change', function(file) {
+gulp.task('jsHint:watch',function(done){
+     gulp.watch([
+      '!gulpfile.js',
+      '!shared/js/lib/**/*.js',
+      '**/*.js',
+      ],{cwd: 'www/remote/min/'}).on('change', function(file) {
+
       // plugins.livereload.changed(file.path);
       // gutil.log(gutil.colors.yellow('JS changed' + ' (' + file.path + ')'));
          gulp.src(file.path)
@@ -190,8 +195,25 @@ gulp.task('compile-temp',function(done){
           .pipe(gulp.dest('../min'));
 });
 
+
 gulp.task('clean', function(done) {
   del(['templates.js','app.js','app_version.css'], done);
+
+});
+// start watchers
+gulp.task('watchers', function() {
+  plugins.livereload.listen();
+  gulp.watch('app/styles/**/*.scss', ['styles']);
+  gulp.watch('app/fonts/**', ['fonts']);
+  gulp.watch('app/icons/**', ['iconfont']);
+  gulp.watch('app/images/**', ['images']);
+  gulp.watch('app/scripts/**/*.js', ['jsHint', 'scripts', 'index']);
+  gulp.watch('./vendor.json', ['vendor']);
+  gulp.watch('app/templates/**/*.html', ['scripts', 'index']);
+  gulp.watch('app/index.html', ['index']);
+  // gulp.watch(targetDir + '/**/**')
+  //   .on('change', plugins.livereload.changed)
+  //   .on('error', errorHandler);
 });
 
 gulp.task('default', function(done) {
@@ -205,4 +227,28 @@ gulp.task('default', function(done) {
     // build ? 'noop' : 'watchers',
     // build ? 'noop' : 'serve',
     done);
+});
+
+gulp.task('min', function(done) {
+  runSequence(
+    'min-scripts'
+    )
+})
+
+
+gulp.task('preprocess-regular', function() {
+    return gulp.src(['js/main.js'], { cwd: 'www/remote' })
+    .pipe(preprocess({context: {ADMIN:false}}))
+    .pipe(gulp.dest('www/remote/js/'))
+})
+
+gulp.task('preprocess-admin', function() {
+    return gulp.src(['js/main.js'], { cwd: 'www/remote' })
+    .pipe(preprocess({context: {ADMIN:true}}))
+    .pipe(gulp.dest('www/remote/js/admin/'))
+})
+
+gulp.task('uld', function(done) {
+  var runSequence = require('run-sequence').use(gulp);
+  runSequence(['preprocess-admin']);
 });

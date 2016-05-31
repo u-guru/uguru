@@ -410,7 +410,13 @@ def authenticate():
 def new_home_page():
     from flask import send_from_directory, send_file
     print request.remote_addr
-    return send_file('templates/web-remote/index.html')
+    return send_file('templates/web-remote/min/index.html')
+
+@app.route('/min/')
+def new_home_page_min():
+    from flask import send_from_directory, send_file
+    print request.remote_addr
+    return send_file('templates/web-remote/min/index.html')
 
 @app.route('/hs/')
 def hs_college_app():
