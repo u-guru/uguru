@@ -40,6 +40,8 @@ var build = args.build;
 var min = args.min;
 var uld = args.uld;
 var targetDir = path.resolve('dest');
+var targetPath = 'www/remote/min';
+
 var minifyConfig = {
   collapseWhitespace: true,
   collapseBooleanAttributes: true,
@@ -95,7 +97,7 @@ gulp.task('compile-css', function(done) {
       'shared/**/*.css',
       'preapp/**/*.css'//,
       // 'loader.css'
-    ],{cwd: ''})
+    ],{cwd: targetPath})
   .pipe(debug())
   .pipe(plugins.if(!build, plugins.changed('../min')));
 
@@ -109,7 +111,7 @@ gulp.task('compile-css', function(done) {
   //     html: ['dest/templates/**/*html']
   // }))
   // .pipe(minifyCSS())
-  .pipe(gulp.dest('../min'));
+  .pipe(gulp.dest(targetPath));
    
 });
 
@@ -119,7 +121,7 @@ gulp.task('jsHint', function(done) {
       '!gulpfile.js',
       '!shared/js/lib/**/*.js',
       '**/*.js',
-      ], { cwd: '' })
+      ], { cwd: 'www/remote' })
     .pipe(plugins.jshint())
     .pipe(plugins.jshint.reporter(stylish));
 });
@@ -158,7 +160,7 @@ gulp.task('compile-js', function(done) {
       'preapp/js/SplashController.js',
       'preapp/js/*.js',
       'templates.js'
-    ]);
+    ], { cwd: targetPath });
 
   return streamqueue({ objectMode: true }, scriptStream)
     // .pipe(debug())
@@ -179,7 +181,7 @@ gulp.task('compile-temp',function(done){
           '!index.html',
           '**/*html',
           '**/*tpl',
-          '**/*svg'], { cwd: '' })
+          '**/*svg'], { cwd: targetPath })
       // .pipe(debug())
       .pipe(plugins.angularTemplatecache('templates.js', {
         root: '/static/remote/templates/',
@@ -197,7 +199,12 @@ gulp.task('compile-temp',function(done){
 
 
 gulp.task('clean', function(done) {
-  del(['templates.js','app.js','app_version.css'], done);
+  // gutil.log(done);
+  del(
+    ['templates.js',
+    'app.js',
+    'app_version.css'
+    ],{ cwd: targetPath});
 
 });
 // start watchers
