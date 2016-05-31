@@ -111,8 +111,8 @@ angular.module('uguru.shared.directives')
     }
   }
     function findParentDrawShape(elem) {
-        if (elem.nodeName === 'svg' || elem.hasAttribute('draw-shape')) {
-            return elem.hasAttribute('draw-shape') && elem;
+        if (elem.nodeName === 'svg' || elem.hasAttribute('draw-shapes')) {
+            return elem.hasAttribute('draw-shapes') && elem;
         } else {
           return findParentDrawShape(elem.parentNode);
         }
