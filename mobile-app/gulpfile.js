@@ -143,38 +143,43 @@ gulp.task('jsHint:watch',function(done){
 gulp.task('compile-js', function(done) {
   var scriptStream = gulp.src([
   
-      // 'shared/js/lib/bowser.min.js',
-      // 'shared/js/lib/snap.svg.min.js',
-      // 'shared/js/lib/ionic.bundle.min.js',
-      // 'shared/js/lib/restangular.min.js',
-      // 'shared/js/lib/lodash.min.js',
-      // //directive
-      // 'shared/js/AnimationDirectives.js',
-      // 'shared/js/directives/*.js',
-      // //services
-      // 'shared/js/services/LocalStorageService.js',
-      // 'shared/js/services/*.js',
+      'shared/js/lib/bowser.min.js',
+      'shared/js/lib/snap.svg.min.js',
+      'shared/js/lib/ionic.bundle.min.js',
+      'shared/js/lib/restangular.min.js',
+      'shared/js/lib/lodash.min.js',
+      //directive
+      'shared/js/AnimationDirectives.js',
+      'shared/js/directives/*.js',
+      //services
+      'shared/js/services/LocalStorageService.js',
+      'shared/js/services/*.js',
       'main.js',
       'templates.js',
-      // //prepapp ctrl
-      // 'preapp/js/SplashController.js',
-      // 'preapp/js/*.js',
+      //prepapp ctrl
+      'preapp/js/SplashController.js',
+      'preapp/js/*.js',
 
-      // //admin/service
-      // 'admin/js/AdminAnimToolService.js',
-      // 'admin/js/**/*.js',
-      // //shared ctrl
-      // 'shared/js/controllers/RootController.js',
-      // 'shared/js/controllers/*.js',
+      //admin/service
+      'admin/js/AdminAnimToolService.js',
+      'admin/js/**/*.js',
+      //shared ctrl
+      'shared/js/controllers/RootController.js',
+      'shared/js/controllers/*.js',
     ], { cwd: targetPath });
 
   return streamqueue({ objectMode: true }, scriptStream)
     // .pipe(debug())
-    .pipe(plugins.if(build, plugins.ngAnnotate()))
-    .pipe(plugins.if(build, plugins.uglify()))
-    .pipe(plugins.if(build, plugins.rev()))
-    .pipe(plugins.if(build, plugins.concat('app.js')))
-    .pipe(gulp.dest('www/remote/min/wtf'));
+    // .pipe(plugins.if(build, plugins.ngAnnotate()))
+    // .pipe(plugins.if(build, plugins.uglify()))
+    // .pipe(plugins.if(build, plugins.rev()))
+    // .pipe(plugins.if(build, plugins.concat('app.js')))
+
+    .pipe(plugins.ngAnnotate())
+    .pipe(plugins.uglify())
+    .pipe(plugins.rev())
+    .pipe(plugins.concat('app.js'))
+    .pipe(gulp.dest(targetPath));
 });
 
 gulp.task('compile-temp',function(done){
@@ -184,7 +189,8 @@ gulp.task('compile-temp',function(done){
           // 'shared/templates/root.html',
           // 'admin/templates/**/*.html',
           // 'preapp/templates/**/*.html',
-          '!index.html',
+          '!*master.index.html',
+          '!*index.html',
           '**/*html',
           '**/*tpl',
           '**/*svg'], { cwd: targetPath })
@@ -196,11 +202,15 @@ gulp.task('compile-temp',function(done){
       }));
 
     return streamqueue({ objectMode: true }, templateStream)
-          .pipe(plugins.if(build, plugins.ngAnnotate()))
-          .pipe(plugins.if(build, plugins.uglify()))
-          .pipe(plugins.if(build, plugins.rev()))
-          .pipe(plugins.if(build, plugins.concat('templates.js')))
-          .pipe(gulp.dest('../min'));
+          // .pipe(plugins.if(build, plugins.ngAnnotate()))
+          // .pipe(plugins.if(build, plugins.uglify()))
+          // .pipe(plugins.if(build, plugins.rev()))
+          // .pipe(plugins.if(build, plugins.concat('templates.js')))
+          .pipe(plugins.ngAnnotate())
+          .pipe(plugins.uglify())
+          .pipe(plugins.rev())
+          .pipe(plugins.concat('templates.js'))
+          .pipe(gulp.dest(targetPath));
 });
 
 
@@ -210,7 +220,7 @@ gulp.task('clean', function(done) {
     ['templates.js',
     'app.js',
     'app_version.css'
-    ],{ cwd: targetPath});
+    ],{ cwd: targetPath},done);
 
 });
 // start watchers
@@ -228,6 +238,13 @@ gulp.task('watchers', function() {
   //   .on('change', plugins.livereload.changed)
   //   .on('error', errorHandler);
 });
+gulp.task('copyTo', function(){
+  // the base option sets the relative root for the set of files,
+  // preserving the folder structure
+  gulp.src(['app.js', 'app_version.css'], {  base: './' })
+  .pipe(gulp.dest('../../../app/static/remote/min/'));
+});
+
 
 gulp.task('default', function(done) {
   runSequence(
