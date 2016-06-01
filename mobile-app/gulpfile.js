@@ -105,9 +105,10 @@ gulp.task('sass',function(done){
 gulp.task('compile-css', function(done) {
 
   var cssStream = gulp.src([
+      '!preapp/css/compiled/loader.css',
+      '!preapp/css/loader.css',
       'shared/**/*.css',
-      'preapp/**/*.css'//,
-      // 'loader.css'
+      'preapp/**/*.css'
     ],{cwd: targetPath})
   .pipe(debug())
   .pipe(plugins.if(!build, plugins.changed('../min')));
@@ -180,7 +181,7 @@ gulp.task('compile-js', function(done) {
     ], { cwd: targetPath });
 
   return streamqueue({ objectMode: true }, scriptStream)
-    // .pipe(debug())
+    .pipe(debug())
     // .pipe(plugins.if(build, plugins.ngAnnotate()))
     // .pipe(plugins.if(build, plugins.uglify()))
     // .pipe(plugins.if(build, plugins.rev()))
@@ -202,10 +203,11 @@ gulp.task('compile-temp',function(done){
           // 'preapp/templates/**/*.html',
           '!*master.index.html',
           '!*index.html',
+          '!dest/**/*',
           '**/*html',
           '**/*tpl',
           '**/*svg'], { cwd: targetPath })
-      // .pipe(debug())
+      .pipe(debug())
       .pipe(plugins.angularTemplatecache('templates.js', {
         root: '/static/remote/templates/',
         module: 'uguru',
@@ -252,6 +254,11 @@ gulp.task('watchers', function() {
 gulp.task('copyTo', function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
+  gulp.src(['www/remote/min/preapp/css/compiled/loader.css',
+            'www/remote/min/preapp/css/compiled/loader.css.map'
+            ])
+  .pipe(gulp.dest('../app/static/remote/min/preapp/css/compiled/'));
+
   gulp.src(['app.js', 'app_version.css'], {  cwd: targetPath })
   .pipe(gulp.dest('../app/static/remote/min/'));
 });
@@ -265,6 +272,7 @@ gulp.task('default', function(done) {
     'compile-temp',
     // 'jsHint',
     'compile-js',
+    'copyTo',
     // 'index',
     // build ? 'noop' : 'watchers',
     // build ? 'noop' : 'serve',
