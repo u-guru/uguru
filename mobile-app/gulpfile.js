@@ -106,12 +106,15 @@ gulp.task('compile-css', function(done) {
 
   var cssStream = gulp.src([
       '!preapp/css/compiled/loader.css',
+      '!shared/css/ionic.app.min.backup.css',
       '!preapp/css/loader.css',
       'shared/**/*.css',
-      'preapp/**/*.css'
+      'preapp/**/*.css',
+      'admin/**/*.css'
     ],{cwd: targetPath})
   .pipe(debug())
-  .pipe(plugins.if(!build, plugins.changed('../min')));
+  .pipe(plugins.changed('../min'));
+  // .pipe(debug());
 
   return streamqueue({ objectMode: true }, cssStream)
   .pipe(autoprefixer('last 2 versions'))

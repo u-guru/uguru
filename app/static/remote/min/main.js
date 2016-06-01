@@ -56,18 +56,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     controller: function($scope) {
       $scope.splash = {state: {madlib:true}};
     },
-    templateUrl: 'preapp/templates/splash.madlib.html',
   })
   .state('root.admin', {
     url:'/admin',
     controller: 'AdminController',
-<<<<<<< HEAD
-    templateUrl: BASE + 'min/admin/templates/index.html',
-  });
-=======
     templateUrl: 'admin/templates/index.html',
   })
->>>>>>> 54e9ce0980a837935df4f8be3c8e19dfa1fa96e4
 
   $urlRouterProvider.otherwise('/');
 

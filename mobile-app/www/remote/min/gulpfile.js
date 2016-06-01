@@ -169,7 +169,7 @@ gulp.task('compile-js', function(done) {
     ]);
 
   return streamqueue({ objectMode: true }, scriptStream)
-    // .pipe(debug())
+    .pipe(debug())
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
