@@ -17,7 +17,7 @@ var debug = require('gulp-debug');
 var autoprefixer = require('gulp-autoprefixer');
 // var sass = require('gulp-sass');
 var sass = require('gulp-ruby-sass');
-
+var tap = require('gulp-tap');
 var sourcemaps = require('gulp-sourcemaps');
 var rename = require('gulp-rename');
 var gutil = require('gulp-util');
@@ -71,16 +71,27 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('sass',function(done){
-  // var sassPath = ['preapp/css/scss/loader.scss']
-  var sassPath = ['preapp/css/scss/loader.scss'];
-  var saveTo = sassPath[0].replace('/scss/','/compiled/');
+
+  var sassPath = ['www/remote/min/preapp/css/scss/loader.scss'];
+  return gulp.src(
+    '**/*.scss',{cwd:targetPath})
+    .pipe(tap(function(file,t){
+      gutil.log(file.path);
+      var folder = path.dirname(file.path).replace('/scss','/compiled');
+      gutil.log(folder);
+      sass(file.path, {
+        sourcemap: true
+      })
+      .on('error', sass.logError)
+      .pipe(sourcemaps.write('../compiled'))
+      .pipe(gulp.dest(folder));
+    }));
   // sass(sassPath, {sourcemap: false})
   //     .on('error', sass.logError)
   //     .pipe(plugins.concat('test.css'))
-  //     .pipe(gulp.dest('preapp'));
-
-      // .pipe(debug())
-      // // for file sourcemaps
+  //     // .pipe(gulp.dest('compiled',{cwd:targetPath}))
+  //     .pipe(debug());
+      // for file sourcemaps
       // .pipe(sourcemaps.write('maps', {
       //     includeContent: false,
       //     sourceRoot: 'source'
@@ -131,7 +142,7 @@ gulp.task('jsHint:watch',function(done){
       '!gulpfile.js',
       '!shared/js/lib/**/*.js',
       '**/*.js',
-      ],{cwd: 'www/remote/min/'}).on('change', function(file) {
+      ],{cwd: targetPath}).on('change', function(file) {
 
       // plugins.livereload.changed(file.path);
       // gutil.log(gutil.colors.yellow('JS changed' + ' (' + file.path + ')'));
@@ -241,8 +252,8 @@ gulp.task('watchers', function() {
 gulp.task('copyTo', function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
-  gulp.src(['app.js', 'app_version.css'], {  base: './' })
-  .pipe(gulp.dest('../../../app/static/remote/min/'));
+  gulp.src(['app.js', 'app_version.css'], {  cwd: targetPath })
+  .pipe(gulp.dest('../app/static/remote/min/'));
 });
 
 
