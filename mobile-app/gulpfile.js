@@ -76,9 +76,9 @@ gulp.task('sass',function(done){
   return gulp.src(
     '**/*.scss',{cwd:targetPath})
     .pipe(tap(function(file,t){
-      gutil.log(file.path);
+      // gutil.log(file.path);
       var folder = path.dirname(file.path).replace('/scss','/compiled');
-      gutil.log(folder);
+      // gutil.log(folder);
       sass(file.path, {
         sourcemap: true
       })
@@ -260,6 +260,7 @@ gulp.task('copyTo', function(){
 gulp.task('default', function(done) {
   runSequence(
     'clean',
+    'sass',
     'compile-css',
     'compile-temp',
     // 'jsHint',
