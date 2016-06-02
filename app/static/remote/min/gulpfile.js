@@ -167,13 +167,13 @@ gulp.task('compile-base-js', function(done) {
       // 'util/base.main.js',
       // 'templates.js',
       // //prepapp ctrl
-      'preapp/js/SplashController.js',
+      // 'preapp/js/SplashController.js',
       // 'preapp/js/*.js',
 
 
       //shared ctrl
-      'shared/js/controllers/RootController.js',
-      'shared/js/controllers/*.js',
+      // 'shared/js/controllers/RootController.js',
+      // 'shared/js/controllers/*.js',
     ]);
 
   return streamqueue({ objectMode: true }, scriptStream)

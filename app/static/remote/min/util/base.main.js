@@ -1,8 +1,7 @@
 var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var img_base = ''; if (LOCAL) {BASE = 'remote/';REST_URL = "http://localhost:5000";}var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var img_base = ''; if (LOCAL) {BASE = 'remote/';REST_URL = "http://localhost:5000";};
 
 angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
-  'uguru.shared.directives', 'uguru.shared.services',
-  'uguru.shared.controllers', 'uguru.admin'])
+  'uguru.shared.directives', 'uguru.shared.services','uguru.admin'])
 
 .run(function($ionicPlatform,
   $state, $ionicHistory, $rootScope,

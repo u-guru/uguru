@@ -156,12 +156,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         $timeout(function() {
             loadHTMLSpec(scope, template_url, ctrl_path)
         })
-        var base_url;
-        if (window.location.href.split(':8100').length > 1) {
-          base_url = window.location.href.split('#/')[0];
-        } else {
-          base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
-        }
+        var base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
         return {
             title                 : title,
             description           : "Most updated version",
