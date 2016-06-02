@@ -13,7 +13,9 @@ angular.module('uguru.admin')
     'KeyboardService',
     '$compile',
     'AnimationService',
-    function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, LoadingService, KeyboardService, $compile, AnimationService) {
+    'ReportService',
+    function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, 
+             LoadingService, KeyboardService, $compile, AnimationService, ReportService) {
         // (!$scope.user || !$scope.user.id) && $state.go('^.desktop-login');
 
 
@@ -26,7 +28,6 @@ angular.module('uguru.admin')
             profile_url = $scope.user.profile_url;
             $scope.adminUser.name = first_name;
             $scope.adminUser.profile_url = profile_url;
-
         })
 
         var defaults = {

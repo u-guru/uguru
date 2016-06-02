@@ -40,36 +40,36 @@ function CTAService($timeout) {
   var bindCtaToBoxElem = function(box_elem, modal_elem, show_callback, box_selector, key_triggers) {
     key_triggers = key_triggers || [];
     ctaFuncDict[box_selector] = function() {
-      ctaCloseFuncDict[box_selector]  = cta(box_elem, modal_elem, ctaOptions, function() {
+      // ctaCloseFuncDict[box_selector]  = cta(box_elem, modal_elem, ctaOptions, function() {
 
-        //show modal cta
-        showModalCTA(modal_elem);
-        // $timeout(function() { showModalCTA(modal_elem) });
+      //   //show modal cta
+      //   showModalCTA(modal_elem);
+      //   // $timeout(function() { showModalCTA(modal_elem) });
 
-        $timeout(function() {
-          show_callback && show_callback(modal_elem);
-        })
-        var modalCloseIcon = getModalCloseIcon(modal_elem);
-        if (modalCloseIcon) {
-          modalCloseIcon.addEventListener('click', function() {
+      //   $timeout(function() {
+      //     show_callback && show_callback(modal_elem);
+      //   })
+      //   var modalCloseIcon = getModalCloseIcon(modal_elem);
+      //   if (modalCloseIcon) {
+      //     modalCloseIcon.addEventListener('click', function() {
 
-            ctaCloseFuncDict[box_selector]();
-            hideModalCTA(modal_elem);
-          });
-        }
+      //       ctaCloseFuncDict[box_selector]();
+      //       hideModalCTA(modal_elem);
+      //     });
+      //   }
 
-        window.addEventListener('keydown', function(evt) {
-          evt = evt || window.event;
-          for (var i = 0; i < key_triggers.length; i++) {
-            var indexKey = key_triggers[i];
-            if (indexKey in ctaKeyCodeMappings && ctaKeyCodeMappings[indexKey] === evt.keyCode) {
-                ctaCloseFuncDict[box_selector]();
-                hideModalCTA(modal_elem);
-            }
-          }
-        });
+      //   window.addEventListener('keydown', function(evt) {
+      //     evt = evt || window.event;
+      //     for (var i = 0; i < key_triggers.length; i++) {
+      //       var indexKey = key_triggers[i];
+      //       if (indexKey in ctaKeyCodeMappings && ctaKeyCodeMappings[indexKey] === evt.keyCode) {
+      //           ctaCloseFuncDict[box_selector]();
+      //           hideModalCTA(modal_elem);
+      //       }
+      //     }
+      //   });
 
-      }, ctaParentDict[box_selector])
+      // }, ctaParentDict[box_selector])
 
     }
 
