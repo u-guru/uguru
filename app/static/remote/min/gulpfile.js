@@ -252,7 +252,7 @@ gulp.task('templates', function() {
 gulp.task('copy-prod', function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
-  gulp.src(['app.js', 'app_version.css'], { base: './' })
+  gulp.src(['app.js', 'app.css'], { base: './' })
   .pipe(gulp.dest('../../../../app/static/remote/min/'));
 });
 

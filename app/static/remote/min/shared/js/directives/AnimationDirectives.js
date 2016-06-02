@@ -271,7 +271,6 @@ angular.module('uguru.shared.directives')
                 var indexClass = classes[i].split(":")[0];
                 var classArgs = classes[i].split(":").slice(1);
                 var elemArgDict = parseElemStateAttrValueArgs(classArgs);
-                console.log('onactivate', elemArgDict);
                 if (elemArgDict.unique) {
                 //   $timeout(function() {
                     var elemsThatAlreadyHaveClass = document.querySelectorAll('.' + indexClass) || [];
@@ -935,7 +934,6 @@ function parseElemStateAttrValueArgs(arg_arr) {
     var resultDict = {};
     for (var i = 0; i < arg_arr.length; i++) {
       var indexArg = arg_arr[i];
-      console.log(indexArg);
       if (!indexArg || !indexArg.length) continue;
       if (indexArg === "animIn") {
         resultDict.animateIn = true;
@@ -968,7 +966,6 @@ function parseElemStateAttrValueArgs(arg_arr) {
         if (injectArgClassSplit.length > 1) {
           var classToInject = injectArgClassSplit[1];
           var elemToInjectSelector = injectArgClassSplit[0];
-          console.log('selecting..', elemToInjectSelector + '[' + classToInject.substring(1) + ']');
           var elemsToInject = elemToInjectSelector && document.querySelectorAll(elemToInjectSelector + '[' + classToInject.substring(1) + ']');
           if (elemsToInject && elemsToInject.length && elemToInjectSelector.length) {
             resultDict.inject_elems = elemsToInject;
