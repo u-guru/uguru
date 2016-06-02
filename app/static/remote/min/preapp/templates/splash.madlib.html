@@ -22,15 +22,15 @@
         </svg>
         <svg class="coach-fill" viewBox="0 0 280 112">
             <g fill="none">
-                <path class="null" d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+                <path class="opacity-0" d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
                     on-init="opacity:0"
-                    on-activate="animate:animIn"></path>
-                <path class="null" d="M37.0997894,99.9330039 L12.6336973,109.324657 L3.24204445,84.8585646" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+                    on-activate="animate:animIn:delay-500"></path>
+                <path class="opacity-0" d="M37.0997894,99.9330039 L12.6336973,109.324657 L3.24204445,84.8585646" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
                     on-init="opacity:0"
-                    on-activate="animate:animIn"></path>
-                <g class="null"
+                    on-activate="animate:animIn:delay-500"></path>
+                <g class="opacity-0"
                     on-init="opacity:0"
-                    on-activate="u-bounceIn-subtle:animIn">
+                    on-activate="u-bounceIn-subtle:animIn:delay-500">
                     <text transform="translate(187.228115, 32.099551) rotate(-15.000000) translate(-187.228115, -32.099551) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
                         <tspan x="146.128115" y="31.0995511">fill in</tspan>
                         <tspan x="99.7281154" y="71.0995511">the blanks</tspan>
@@ -39,82 +39,78 @@
             </g>
         </svg>
     </div>
-    <div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, null:inject.splash-hero-map|activate" eval-on-activate="activateMap()">
-        <div class="splash-adlib-inside a" activate-on-class="a" class-on-activate="active:keep">
-            <div class="adlib-header-container relative">
-                <h1 class="adlib-header active"
+    <div class="splash-adlib" eval-on-activate="activateMap()">
+        <div class="splash-adlib-inside">
+            <div class="adlib-header-container relative"
+                on-init="opacity: 0"
+                on-activate="u-bounceInUp-subtle:animIn:delay-250">
+                <h1 class="adlib-header active-adlib-header"
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                    on-init="opacity:1"
-                    on-activate="spread-out:animIn"
-                    on-category-switch-exit="inactive:animOut">
-                    <!-- class-on-activate="opacity-0, u-bounceIn-subtle:animIn" -->
+                    on-init="opacity: 0"
+                    on-activate="spread-out:animIn:delay-500"
+                    on-category-switch-exit="inactive-adlib-header:anim">
                     <span>{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank">
                         <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                             <rect class="null" x="2" y="2" width="280" height="84" rx="16"
                                 elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn"></rect>
+                                on-activate="spread-out:animIn:delay-500"></rect>
                         </svg>
                         <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                             <rect x="2" y="2" width="256" height="72" rx="16"
                                 elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn"></rect>
+                                on-activate="spread-out:animIn:delay-500"></rect>
                         </svg>
                         <b id="blank-1-text">{{madlib.category.tags_data.template.p1}}</b>
-                        <!-- class-on-activate="opacity-0, fadeIn:animIn" -->
                     </a>
                     <span>{{madlib.category.tags_data.template.middle}}</span>
                     <a id="blank-2" class="tag-adlib blank">
                         <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                             <rect class="null" x="2" y="2" width="280" height="84" rx="16"
                                 elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn"></rect>
+                                on-activate="spread-out:animIn:delay-500"></rect>
                         </svg>
                         <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                             <rect x="2" y="2" width="256" height="72" rx="16"
                                 elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn"></rect>
+                                on-activate="spread-out:animIn:delay-500"></rect>
                         </svg>
                         <b id="blank-2-text">{{madlib.category.tags_data.template.p2}}</b>
-                        <!-- class-on-activate="opacity-0, fadeIn:animIn" -->
                     </a>
                     <span>{{madlib.category.tags_data.template.end}}</span>
                 </h1>
                 <h1 class="adlib-header"
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-init="opacity:0"
-                    on-activate="spread-out:animIn"
-                    on-category-switch-enter="active:animIn">
-                    <!-- class-on-activate="opacity-0, u-bounceIn-subtle:animIn" -->
+                    on-activate="spread-out:animIn:delay-500"
+                    on-category-switch-enter="active-adlib-header:anim">
                     <span>{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank">
                         <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                             <rect class="null" x="2" y="2" width="280" height="84" rx="16"
                                 elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn"></rect>
+                                on-activate="spread-out:animIn:delay-500"></rect>
                         </svg>
                         <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                             <rect x="2" y="2" width="256" height="72" rx="16"
                                 elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn"></rect>
+                                on-activate="spread-out:animIn:delay-500"></rect>
                         </svg>
                         <b id="blank-1-text">4am</b>
-                        <!-- class-on-activate="opacity-0, fadeIn:animIn" -->
                     </a>
                     <span>{{madlib.category.tags_data.template.middle}}</span>
                     <a id="blank-2" class="tag-adlib blank">
                         <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                             <rect class="null" x="2" y="2" width="280" height="84" rx="16"
                                 elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn"></rect>
+                                on-activate="spread-out:animIn:delay-500"></rect>
                         </svg>
                         <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                             <rect x="2" y="2" width="256" height="72" rx="16"
                                 elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn"></rect>
+                                on-activate="spread-out:animIn:delay-500"></rect>
                         </svg>
                         <b id="blank-2-text">{{madlib.category.tags_data.template.p2}}</b>
-                        <!-- class-on-activate="opacity-0, fadeIn:animIn" -->
                     </a>
                     <span>{{madlib.category.tags_data.template.end}}</span>
                 </h1>
@@ -123,13 +119,14 @@
                 <tag class='adlib-tag'
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-hover="pulse"
-                    on-init="opacity:0"
-                    on-activate="spread-out:animIn:delay-3000"
 
-                    on-category-switch-enter="spread-out:animIn"
+                    on-init="opacity:0"
+                    on-activate="spread-out:animIn:delay-750"
+
+                    on-category-switch-enter="spread-out:anim"
                     on-category-switch-exit="spread-in:animOut"
-                    on-both-blanks-filled-enter="click-two:animOut"
-                    on-map-transition-enter="click-two:animOut"
+                    on-both-blanks-filled-enter="click-two:anim"
+                    on-map-transition-enter="click-two:anim"
 
                     ng-click="resetMadLibBlankIfActive"
 
@@ -139,13 +136,14 @@
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
 
                     on-hover="pulse"
-                    on-init="opacity:0"
-                    on-activate="spread-out:animIn:delay-3000"
 
-                    on-category-switch-enter="spread-out:animIn"
+                    on-init="opacity:0"
+                    on-activate="spread-out:animIn:delay-750"
+
+                    on-category-switch-enter="spread-out:anim"
                     on-category-switch-exit="spread-in:animOut"
-                    on-both-blanks-filled-enter="click-two:animOut"
-                    on-map-transition-enter="click-two:animOut"
+                    on-both-blanks-filled-enter="click-two:anim"
+                    on-map-transition-enter="click-two:anim"
 
                     ng-click="resetMadLibBlankIfActive"
 

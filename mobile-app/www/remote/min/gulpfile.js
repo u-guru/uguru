@@ -110,7 +110,7 @@ gulp.task('compile-css', function(done) {
   .pipe(plugins.if(build, plugins.stripCssComments()))
   .pipe(minifyCSS({keepSpecialComments : 0}))
   .pipe(plugins.if(build, plugins.rev()))
-  .pipe(plugins.concat('app_version.css'))
+  .pipe(plugins.concat('app.css'))
   // .pipe(uncss({
   //     html: ['dest/templates/**/*html']
   // }))
@@ -252,7 +252,7 @@ gulp.task('templates', function() {
 gulp.task('copy-prod', function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
-  gulp.src(['app.js', 'app_version.css'], { base: './' })
+  gulp.src(['app.js', 'app.css'], { base: './' })
   .pipe(gulp.dest('../../../../app/static/remote/min/'));
 });
 
@@ -264,7 +264,7 @@ gulp.task('default', function(done) {
     'compile-temp',
     // 'jsHint',
     'compile-js',
-    'copy-prod',
+    // 'copy-prod',
     // 'clean'
     // 'index',
     // build ? 'noop' : 'watchers',

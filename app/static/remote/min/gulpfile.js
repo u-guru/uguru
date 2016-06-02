@@ -169,7 +169,7 @@ gulp.task('compile-js', function(done) {
     ]);
 
   return streamqueue({ objectMode: true }, scriptStream)
-    // .pipe(debug())
+    .pipe(debug())
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
@@ -252,7 +252,7 @@ gulp.task('templates', function() {
 gulp.task('copy-prod', function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
-  gulp.src(['app.js', 'app.css'], { base: './' })
+  gulp.src(['app.js', 'app_version.css'], { base: './' })
   .pipe(gulp.dest('../../../../app/static/remote/min/'));
 });
 
@@ -264,7 +264,7 @@ gulp.task('default', function(done) {
     'compile-temp',
     // 'jsHint',
     'compile-js',
-    'copy-prod',
+    // 'copy-prod',
     // 'clean'
     // 'index',
     // build ? 'noop' : 'watchers',

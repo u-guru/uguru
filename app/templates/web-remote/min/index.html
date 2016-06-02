@@ -107,44 +107,8 @@
     <script>
 
         var files = [
-            '/static/remote/min/app_version.css:async',
+            '/static/remote/min/app.css:async',
             '/static/remote/min/app.js'
-            // 'shared/css/ionic.app.min.css:async',
-            // 'shared/css/compiled/style.css:async',
-            // 'shared/css/compiled/utility.css:async',
-            // 'shared/css/compiled/components.css:async',
-            // 'shared/css/compiled/animation.css:async',
-            // 'preapp/css/compiled/preapp.css:async',
-            // 'admin/css/compiled/admin.css:async',
-            // 'shared/js/lib/bowser.min.js:async',
-            // 'shared/js/lib/snap.svg.min.js',
-            // 'static/remote/min/shared/js/lib/ionic.bundle.min.js',
-            // 'shared/js/lib/restangular.min.js',
-            // 'shared/js/lib/lodash.min.js',
-            // 'shared/js/directives/AnimationDirectives.js',
-            // 'shared/js/directives/ElementDirectives.js',
-            // 'shared/js/directives/ComponentDirectives.js',
-            // 'shared/js/services/LocalStorageService.js',
-            // 'shared/js/services/AnimationService.js',
-            // 'shared/js/services/CategoryService.js',
-            // 'shared/js/services/UniversityService.js',
-            // 'shared/js/services/GUtilService.js',
-            // 'shared/js/services/ContentService.js',
-            // 'shared/js/services/LoadingService.js',
-            // 'shared/js/services/KeyboardService.js',
-            // 'shared/js/services/UtilitiesService.js',
-            // 'shared/js/services/FileService.js',
-            // 'admin/js/AdminAnimToolService.js',
-            // 'admin/js/SpecContentService.js',
-            // 'admin/js/AdminDirectives.js',
-            // 'admin/js/SpecService.js',
-            // '/static/remote/min/main.js',
-            // 'shared/js/controllers/RootController.js',
-            // 'admin/js/AdminController.js',
-            // 'admin/js/AdminActionController.js',
-            // 'admin/js/AdminDemosController.js',
-            // 'preapp/js/SplashController.js',
-            // 'preapp/js/SplashMadlibController.js'
         ];
         var fileInitCB = {
             '/static/remote/min/app.js': initSnapLoadedEvent
@@ -221,10 +185,20 @@
             return new_script
         }
 
-        //uncomment to show load times per page
-        // setTimeout(function() {
-        //   for (property in timer) (timer[property] !== 'initTime') && console.log(property, timer[property] - timer['initTime'] + 'ms');
-        // }, 1000);
+        var lastCharacter = window.location.href.trim().split('/').join('').split('').reverse()[0];
+        if (lastCharacter !== '#') {
+          var loaderWrapper = document.querySelector('#loader-wrapper');
+          if (loaderWrapper) {
+            loaderWrapper.style.display = 'none';
+          }
+          var loaderPortal = document.querySelector('.loader-portal');
+          if (loaderPortal) {
+            loaderPortal.style.display = 'none';
+            loaderPortal.parentNode.removeChild(loaderPortal);
+          }
+        }
+
+
     </script>
 </footer>
 
