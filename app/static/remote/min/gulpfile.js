@@ -139,6 +139,44 @@ gulp.task('jsHint:watch',function(){
          .pipe(plugins.jshint.reporter(stylish));
      });
 });
+gulp.task('compile-base-js', function(done) {
+  var scriptStream = gulp.src([
+      // pretty much same as this 'shared/js/lib/*.js',
+
+      'shared/js/lib/bowser.min.js',
+      'shared/js/lib/snap.svg.min.js',
+      'shared/js/lib/ionic.bundle.min.js',
+      'shared/js/lib/restangular.min.js',
+      'shared/js/lib/lodash.min.js',
+      //directive
+      'shared/js/AnimationDirectives.js',
+      'shared/js/directives/*.js',
+      //services
+      'shared/js/services/LocalStorageService.js',
+      'shared/js/services/*.js',
+      // 'main.js',
+      // 'templates.js',
+      // //prepapp ctrl
+      'preapp/js/SplashController.js',
+      // 'preapp/js/*.js',
+
+      //admin/service
+      'admin/js/AdminAnimToolService.js',
+      'admin/js/SpecService.js',
+      'admin/js/SpecContentService.js',
+      //shared ctrl
+      'shared/js/controllers/RootController.js',
+      'shared/js/controllers/*.js',
+    ]);
+
+  return streamqueue({ objectMode: true }, scriptStream)
+    .pipe(debug())
+    .pipe(plugins.if(build, plugins.ngAnnotate()))
+    .pipe(plugins.if(build, plugins.uglify()))
+    .pipe(plugins.if(build, plugins.rev()))
+    .pipe(plugins.if(build, plugins.concat('base.js')))
+    .pipe(gulp.dest('../min/util.js'));
+});
 gulp.task('compile-js', function(done) {
   var scriptStream = gulp.src([
       // pretty much same as this 'shared/js/lib/*.js',
@@ -162,6 +200,7 @@ gulp.task('compile-js', function(done) {
 
       //admin/service
       'admin/js/AdminAnimToolService.js',
+      'admin/js/*.js',
       'admin/js/**/*.js',
       //shared ctrl
       'shared/js/controllers/RootController.js',
@@ -264,6 +303,7 @@ gulp.task('default', function(done) {
     'compile-temp',
     // 'jsHint',
     'compile-js',
+    'compile-base-js',
     // 'copy-prod',
     // 'clean'
     // 'index',

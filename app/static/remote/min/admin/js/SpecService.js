@@ -184,10 +184,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
             if (window.location.href.split(':8100').length > 1) {
               template_url = window.location.href.split('/#/')[0] + '/#/remote/min/' + template_url;
+            } else {
+              template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + template_url;
             }
-            // } else {
-            //   template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + template_url;
-            // }
 
             var xhr = new XMLHttpRequest();
             xhr.open( 'GET', template_url, true );
@@ -199,6 +198,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
 
         function wrapMinUguruHtml(response_html, relative_ctrl_url) {
+            console.log(response_html);
             return '<body ng-app="uguru" animation="slide-left-right-ios7"><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.main.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/' + relative_ctrl_url + '"></script><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + response_html + '</div></script></ui-view></body>'
         }
 
