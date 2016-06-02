@@ -1,5 +1,5 @@
 angular.module('uguru.shared.controllers', [])
-angular.module('uguru.shared.controllers')
+// angular.module('uguru.shared.controllers')
 .controller('RootController', [
 
   //All imported packages go here

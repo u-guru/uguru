@@ -8,3 +8,14 @@
 	width: 100%;
 	height: 100%;
 }
+
+.splash-hero {
+	@include flex;
+	@include flex-center;
+	@include flex-wrap;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	background: $slate;
+	text-align: center;
+}

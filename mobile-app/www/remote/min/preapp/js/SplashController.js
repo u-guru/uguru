@@ -16,6 +16,7 @@ angular.module('uguru.preApp', ['ionic'])
     splash.category = splash.categories[0];
 
     portalElem.addEventListener('splashMainLoadingComplete', function (e) {
+
       var loaderPortal = document.querySelector('.loader-portal');
       if (loaderPortal) {
         loaderPortal.style.display = 'none';
@@ -43,5 +44,3 @@ angular.module('uguru.preApp', ['ionic'])
 
   }
 ])
-
-

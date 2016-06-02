@@ -40,7 +40,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             //@gabrielle note
             specObj.data.toggleDev = false;
             specObj.data.toggleSpec = false;
-            specObj.data.mobile = {width:400, height:768, show:false, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
+            specObj.data.mobile = {width:400, height:768, show:false, template:specObj.template_path, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
             specObj.data.open = specObj.open;
             specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
             specObj.data.stateTags = specObj.data.statesDropdown.options;
@@ -52,14 +52,15 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             }
             elem = document.querySelector(parent_container);
             specElem = document.createElement('spec');
-            specElem.className = 'fixed bottom-0 left-0 full-x'
+            specElem.className = 'fixed bottom-0 left-0 full-x';
+            specElem.style.zIndex = '100000';
             KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
             KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
             KeyboardService.initOptionPressedAndReleasedFunction(function() {toggleDev(true); toggleSpec(true)}, null, 27, 'esc', true, null);
             // specElem.setAttribute('ng-if', 'spec && spec.data');
             specElem.setAttribute('data', param + '.spec.data');
             if (elem) {
-                elem.appendChild(specElem)
+                elem.parentNode.appendChild(specElem)
                 $timeout(function() {
                     $compile(specElem)(real_scope);
                 })
@@ -172,7 +173,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             js_pre_processor      : "none",
             html_classes          : null,
             head                  : "<meta name='viewport' content='width=device-width'>",
-            css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/css/app_version.css",
+            css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css",
             js_external           : '',
             css_pre_processor_lib : null,
             js_modernizr : null,
@@ -182,11 +183,11 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         function loadHTMLSpec(scope, template_url, controller_url) {
 
             if (window.location.href.split(':8100').length > 1) {
-              template_url = 'http://localhost:8100/#/remote/min/' + template_url;
+              template_url = window.location.href.split('#/')[0] + template_url;
             } else {
               template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + template_url;
             }
-
+            console.log(template_url);
             var xhr = new XMLHttpRequest();
             xhr.open( 'GET', template_url, true );
 
@@ -197,7 +198,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
 
         function wrapMinUguruHtml(response_html, relative_ctrl_url) {
-            return '<body ng-app="uguru" animation="slide-left-right-ios7"><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/js/u.base.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/js/main.min.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/js/' + relative_ctrl_url + '"></script><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + response_html + '</div></script></ui-view></body>'
+            console.log(response_html);
+            return '<body ng-app="uguru" animation="slide-left-right-ios7"><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.main.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/' + relative_ctrl_url + '"></script><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + response_html + '</div></script></ui-view></body>'
         }
 
     }

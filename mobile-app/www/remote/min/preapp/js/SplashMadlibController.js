@@ -68,15 +68,12 @@ angular.module('uguru.preApp')
 
     $scope.$watch('splash.state.madlib', function(newVal, oldVal) {
       if (newVal) {
-        var allActivateElements = document.querySelectorAll('[on-activate]');
+        var parentViewElement = document.querySelector('#splash-madlib');
+        var allActivateElements = parentViewElement.querySelectorAll('[on-activate]');
         for (var i = 0; i < allActivateElements.length; i++) {
           allActivateElements[i].classList.add('activate');
         }
       }
-      // var elem = document.querySelector('[on-category-switch-enter]')
-      // elem && elem.classList.add('on-category-switch-enter');
-      // madlib.category = $scope.splash.category;
-      // madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
       $timeout(function() {
         $scope.$apply();
       })
@@ -96,6 +93,7 @@ angular.module('uguru.preApp')
       onCategorySwitch: madlib.categorySwitch
     }
     SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states);
+    console.log(madlib.spec);
   }
 ])
 

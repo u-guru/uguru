@@ -1794,13 +1794,12 @@ angular.module('uguru.admin')
             active = active || false;
             num_keyframes = num_keyframes || 100;
             duration = (duration || 5) + 's';
-            console.log(document.styleSheets);
 
             var lastSheet = document.styleSheets[document.styleSheets.length - 1];
             if (!lastSheet.cssRules) {
                 var lastSheet = document.styleSheets[document.styleSheets.length - 2];
             }
-            var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + anim_name + " { } ");
+            var indexOfRuleInSheet = lastSheet.insertRule("@-" + browserPrefix + "-keyframes " + anim_name + " { } ", 0);
             var anim = lastSheet.cssRules[indexOfRuleInSheet];
             initKFWithXInterval(anim, num_keyframes);
             var properties = initDictWithXProperties(anim)
@@ -2674,7 +2673,6 @@ angular.module('uguru.admin')
                     strokeDashoffset: 1
                 }
             }
-            console.log($localstorage.getObject('defaults'));
             if (!$localstorage.getObject('defaults') || ($localstorage.getObject('defaults') === [] && !$localstorage.getObject('defaults').length)) {
 
                 $localstorage.setObject('defaults', defaults)
@@ -2683,7 +2681,6 @@ angular.module('uguru.admin')
 
             } else {
                 defaults = $localstorage.getObject('defaults');
-                console.log(defaults);
                 return defaults;
             }
             $timeout(function() {

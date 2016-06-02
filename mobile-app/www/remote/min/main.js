@@ -60,7 +60,18 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/admin',
     controller: 'AdminController',
     templateUrl: 'admin/templates/index.html',
+  })
+  .state('root.jeselle', {
+    url:'/jeselle',
+    // controller: 'JeselleController',
+    templateUrl: 'jeselle/templates/index.html',
+  })
+  .state('root.gabrie', {
+    url:'/gabrie',
+    // controller: 'GabrielleController',
+    templateUrl: 'gabrielle/templates/index.html',
   });
+
   $urlRouterProvider.otherwise('/');
 
 

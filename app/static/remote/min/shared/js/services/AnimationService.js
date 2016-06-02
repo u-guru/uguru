@@ -49,7 +49,6 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
                 if (ss[i].cssRules[j].type == window.CSSRule.STYLE_RULE) {
                   if (ss[i].cssRules[j].selectorText === '.' + anim_class) {
                     if (ss[i].cssRules[j].style && (ss[i].cssRules[j].style.animation || ss[i].cssRules[j].style.webkitAnimation)) {
-                      console.log(ss[i].cssRules[j].style.animation);
                       var animationString = ss[i].cssRules[j].style.animation || ss[i].cssRules[j].style.webkitAnimation
 
                       if (animationString.split(' ').length >= 2) {

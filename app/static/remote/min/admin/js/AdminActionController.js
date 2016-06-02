@@ -19,7 +19,6 @@ angular.module('uguru.admin')
     $scope.user_workflows = [];
     $scope.user_workflows = SpecContentService.getContentSpec('preApp');
     $scope.admin_tasks = SpecContentService.getContentSpecAdmin('preApp');
-    console.log('admin spec', $scope.admin_tasks);
 
 
     function getUserFirstName(user) {

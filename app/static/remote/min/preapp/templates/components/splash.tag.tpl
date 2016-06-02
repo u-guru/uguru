@@ -16,7 +16,10 @@
             </svg>
             <b><i>{{innerText}}</i></b>
         </a>
-        <span class="tag-adlib ghost active-ghost">
+        <span class="tag-adlib ghost active-ghost"
+            elem-states="['spread-out', 'category-switch', 'both-blanks-filled', 'map-transition']"
+            on-both-blanks-filled-enter="fadeOut:animOut"
+            on-map-transition-enter="fadeOut:animOut">
             <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                 <rect x="2" y="2" width="280" height="84" rx="16"></rect>
             </svg>

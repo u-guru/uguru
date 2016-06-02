@@ -170,7 +170,7 @@ angular.module('uguru.admin')
         $scope.isEditMode = true;
         $scope.selectedBug = {
           title: null,
-          file_names:[],
+          file_names:null,
           file_type:null,
           notes:null,
           rank:null,

@@ -47,7 +47,6 @@ function RootService($timeout, $state) {
     }
 
     function getBaseUrl() {
-      console.log('base url', base_url);
       return base_url
     }
 

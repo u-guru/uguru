@@ -1,6 +1,8 @@
 'use strict';
 var appName = '<%= ngModulName %>';
 var gulp = require('gulp');
+var filter = require('gulp-filter');
+var shell = require('gulp-shell')
 var plugins = require('gulp-load-plugins')();
 var del = require('del');
 var beep = require('beepbeep');
@@ -50,33 +52,22 @@ var minifyConfig = {
 };
 
 
+gulp.task('style', function() {
+  return gulp.src(['**/css/scss/*.scss'],{cwd: targetPath})
+        .pipe(filter(noPartials))//avoid compiling SCSS partials
+        .pipe(sass())
+        .pipe(gulp.dest('preapp/css/compiled'));
+})
 
-
+gulp.task('start-sass', shell.task(['sass --watch www/remote/min/preapp/css/scss/:www/remote/min/preapp/css/compiled www/remote/min/shared/css/scss/:www/remote/min/shared/css/compiled www/remote/min/admin/css/scss/:www/remote/min/admin/css/compiled']));
 // our main sequence, with some conditional jobs depending on params
-gulp.task('sass:watch', function () {
-  // gulp.watch('**/*.scss', ['sass']);
-  gulp.watch('**/*.scss').on('change', function(file) {
-      // plugins.livereload.changed(file.path);
-      gutil.log(path.dirname(file.path));
-      var folder = path.dirname(file.path).replace('/scss','/compiled');
-      // gutil.log(folder);
-      sass(file.path, {
-        sourcemap: true
-      })
-      .on('error', sass.logError)
-      .pipe(sourcemaps.write('../compiled'))
-      .pipe(gulp.dest(folder));
-      // .pipe(plugins.livereload.changed(file));
-  });
-});
 
 gulp.task('sass',function(done){
 
   var sassPath = ['www/remote/min/preapp/css/scss/loader.scss'];
   return gulp.src(
-    '**/*.scss',{cwd:targetPath})
+    ['shared/**/*.scss', 'preapp/**/.css'],{cwd:targetPath})
     .pipe(tap(function(file,t){
-      // gutil.log(file.path);
       var folder = path.dirname(file.path).replace('/scss','/compiled');
       // gutil.log(folder);
       sass(file.path, {
@@ -127,7 +118,7 @@ gulp.task('compile-css', function(done) {
   // }))
   // .pipe(minifyCSS())
   .pipe(gulp.dest(targetPath));
-   
+
 });
 
 gulp.task('jsHint', function(done) {
@@ -157,7 +148,7 @@ gulp.task('jsHint:watch',function(done){
 });
 gulp.task('compile-js', function(done) {
   var scriptStream = gulp.src([
-  
+
       'shared/js/lib/bowser.min.js',
       'shared/js/lib/snap.svg.min.js',
       'shared/js/lib/ionic.bundle.min.js',

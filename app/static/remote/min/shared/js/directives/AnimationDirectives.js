@@ -72,6 +72,7 @@ angular.module('uguru.shared.directives')
 
       var elementToTraceSelector = attr.tracePath;
       var elementToAppendChild = attr.traceParent;
+      console.log('passed in selectors', elementToTraceSelector, elementToAppendChild)
       var options = {
         duration: attr.traceDuration || '5s',
         time_function: attr.traceTimeFunc || 'linear',
@@ -85,13 +86,18 @@ angular.module('uguru.shared.directives')
       var pathElem = document.querySelector(elementToTraceSelector);
       var traceParent = document.querySelector(elementToAppendChild);
       var parentDrawShape = findParentDrawShape(pathElem);
+      console.log('parentDrawShape', parentDrawShape);
       if (!pathElem || !traceParent || !parentDrawShape) {
         console.log('ERROR: could not find elements with selector:', !pathElem && elementToTraceSelector, !traceParent && elementToAppendChild);
         return;
       }
       var animName = options.anim_name;
       var elemOffset = SVGService.getShapeWidthHeight(element[0]).width;
+      $timeout(function() {
+
+      })
       var cssAnimObj = SVGService.generateCSSObjFromPath(animName, pathElem, elemOffset);
+      console.log(cssAnimObj.cssText);
       var cssAnimObjString = [animName, options.duration, options.time_function, options.delay, options.iter_count, options.direction, options.fill_mode].join(' ');
 
       traceParent.appendChild(element[0]);
@@ -111,8 +117,8 @@ angular.module('uguru.shared.directives')
     }
   }
     function findParentDrawShape(elem) {
-        if (elem.nodeName === 'svg' || elem.hasAttribute('draw-shape')) {
-            return elem.hasAttribute('draw-shape') && elem;
+        if (elem.nodeName === 'svg' || elem.hasAttribute('draw-shapes')) {
+            return elem.hasAttribute('draw-shapes') && elem;
         } else {
           return findParentDrawShape(elem.parentNode);
         }
@@ -265,14 +271,13 @@ angular.module('uguru.shared.directives')
                 var indexClass = classes[i].split(":")[0];
                 var classArgs = classes[i].split(":").slice(1);
                 var elemArgDict = parseElemStateAttrValueArgs(classArgs);
-                console.log('onactivate', elemArgDict);
                 if (elemArgDict.unique) {
-                  $timeout(function() {
+                //   $timeout(function() {
                     var elemsThatAlreadyHaveClass = document.querySelectorAll('.' + indexClass) || [];
                     for (var i = 0; i < elemsThatAlreadyHaveClass.length; i++) {
                       elemsThatAlreadyHaveClass[i].classList.remove(indexClass);
                     }
-                  });
+                //   });
                 }
                 if (classArgs.indexOf("animIn") > -1 && indexClass !== "null") {''
                   if (classArgs.indexOf("keep") > -1) {
@@ -755,12 +760,13 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                     var elemStateClass = elemStateValue.split(':')[0];
                     var elemArgDict = parseElemStateAttrValueArgs(elemStateValue.split(':').splice(1));
                     if (elemArgDict.unique) {
-                      $timeout(function() {
+                    //   $timeout(function() {
                         var elemsThatAlreadyHaveClass = document.querySelectorAll('.' + elemStateClass) || [];
                         for (var i = 0; i < elemsThatAlreadyHaveClass.length; i++) {
                           elemsThatAlreadyHaveClass[i].classList.remove(elemStateClass);
                         }
-                      });
+                    //   });
+                    // console.log(element[0], elemArgDict.unique, elemStateClass);
                     }
                     if (elemArgDict.animateIn) {
                       console.log('animating in', element[0].nodeName, elemStateClass, elemArgDict.delay, '\n\n', element[0])
@@ -928,7 +934,6 @@ function parseElemStateAttrValueArgs(arg_arr) {
     var resultDict = {};
     for (var i = 0; i < arg_arr.length; i++) {
       var indexArg = arg_arr[i];
-      console.log(indexArg);
       if (!indexArg || !indexArg.length) continue;
       if (indexArg === "animIn") {
         resultDict.animateIn = true;
@@ -961,7 +966,6 @@ function parseElemStateAttrValueArgs(arg_arr) {
         if (injectArgClassSplit.length > 1) {
           var classToInject = injectArgClassSplit[1];
           var elemToInjectSelector = injectArgClassSplit[0];
-          console.log('selecting..', elemToInjectSelector + '[' + classToInject.substring(1) + ']');
           var elemsToInject = elemToInjectSelector && document.querySelectorAll(elemToInjectSelector + '[' + classToInject.substring(1) + ']');
           if (elemsToInject && elemsToInject.length && elemToInjectSelector.length) {
             resultDict.inject_elems = elemsToInject;

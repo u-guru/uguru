@@ -1,5 +1,5 @@
-<div class='fixed full-xy'>
-    <div id="dev-spec" class='top-0 left-0 absolute full-x bg-smoke animated slideInDown' ng-class="{'z-index-1000': spec.toggleSpec}" ng-if="spec.toggleSpec" style='height: calc(100% - 66px);'>
+<div class='high-z-index'>
+    <div id="dev-spec" class='top-0 left-0 fixed full-x bg-smoke animated slideInDown' ng-class="{'z-index-1000': spec.toggleSpec}" ng-if="spec.toggleSpec" style='height: calc(100% - 132px);'>
         <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">
             <div class="bg-slate txt-center">
                 <h1 class='bg-cobalt-25p p15xy txt-28 weight-600 height-64 flex-center'><span class="weight-900">{{spec.title}}:&nbsp;</span> {{use_case.title}} </h1>
@@ -92,8 +92,8 @@
             </ul>
         </div>
     </div>
-    <div ng-if='spec.mobile.show' class='top-0 left-0 bg-smoke flex-wrap-center absolute full-x animated slideInDown z-index-2000' id='dev-bottom-bar' style='height: calc(100% - 66px);'>
-        <iframe class='animated bounceInDown relative' style='height:{{spec.mobile.height}}px; width: {{spec.mobile.width}}px !important' > </iframe>
+    <div ng-if='spec.mobile.show' class='top-0 left-0 bg-smoke flex-wrap-center absolute full-x animated slideInDown z-index-2000' id='dev-bottom-bar' style='height: calc(100% - 132px);'>
+        <div ng-include="spec.mobile.template" class='animated bounceInDown relative' style='height:{{spec.mobile.height}}px; width: {{spec.mobile.width}}px !important' > </div>
     </div>
     <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate animated slideInUp' ng-if="spec.toggleDev">
         <!-- @samir state list -->
@@ -102,7 +102,7 @@
                 <button class="height-36 txt-18 bg-robin radius-2 normal block">{{state_tag.title}}</button>
             </li>
         </ul>
-        <ul class='bg-cobalt-25p flex-center-vertical-space-between p15-grid'>
+        <ul id="dev-toolbar-options" class='bg-cobalt-25p flex-center-vertical-space-between-wrap p15-grid'>
             <li class="flex">
                 <!-- <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a> -->
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggleSpec = !spec.toggleSpec'>Spec</button>

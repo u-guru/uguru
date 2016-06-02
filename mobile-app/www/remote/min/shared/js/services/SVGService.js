@@ -22,6 +22,7 @@ function SVGService(AnimationService) {
   //addEventToCalendar
 
   function generateCSSObjFromPath(anim_name, path, shape_offset) {
+    var numKeyframes = 60;
     var startPoint = path.getPointAtLength(0);
     var totalPathLength = path.getTotalLength();
     var shapeOffset = shape_offset;
@@ -31,15 +32,15 @@ function SVGService(AnimationService) {
     var cssAnimObj = AnimationService.initCSSAnimation(anim_name);
     // cssAnimObj.appendRule('0% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px) rotate(' +180 + 'deg);}', i);
     console.log('starting animation obj...');
-    for (var i = 0; i < 100; i++) {
-       var indexPoint = path.getPointAtLength(i/100 *totalPathLength);
-       var indexPreviousPoint = path.getPointAtLength((i+1)/100 * totalPathLength);
+    for (var i = 0; i < numKeyframes; i++) {
+       var indexPoint = path.getPointAtLength(i/numKeyframes *totalPathLength);
+       var indexPreviousPoint = path.getPointAtLength((i+1)/numKeyframes * totalPathLength);
 
 
        var translateX = indexPoint.x - shapeOffset;
        var translateY = indexPoint.y - shapeOffset;
        var translateAng = Math.atan2(indexPoint.y - indexPreviousPoint.y, indexPoint.x - indexPreviousPoint.x) * (180/Math.PI);
-       cssAnimObj.appendRule(i + '% {transform: translate(' + translateX + 'px, ' + translateY +'px) rotate(' + (translateAng + 180) + 'deg);}', i);
+       cssAnimObj.appendRule((100/60.0 * i) + '% {transform: translate(' + translateX + 'px, ' + translateY +'px) rotate(' + (translateAng + 180) + 'deg);}', i);
     }
     cssAnimObj.appendRule('100% {transform: translate(' + (startPoint.x - shapeOffset) + 'px, ' + (startPoint.y-shapeOffset) +'px);}', i);
     return cssAnimObj;
@@ -209,9 +210,3 @@ function SVGService(AnimationService) {
       return pathLength;
   }
 }
-
-
-
-
-
-
