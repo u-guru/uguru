@@ -161,8 +161,9 @@ gulp.task('compile-base-js', function(done) {
       'admin/js/*.js',
 
       //directive
-      'shared/js/AnimationDirectives.js',
+      'shared/js/directives/AnimationDirectives.js',
       'shared/js/directives/*.js',
+      'templates.js',
       // 'util/base.main.js',
       // 'templates.js',
       // //prepapp ctrl
@@ -232,6 +233,13 @@ gulp.task('compile-temp',function(done){
           '!*master.index.html',
           '!*index.html',
           '**/*html',
+          'admin/templates/*html',
+          'admin/templates/components/*tpl',
+          'shared/templates/*html',
+          'shared/templates/components/*tpl',
+          'shared/templates/components/svg/*tpl',
+          'preapp/templates/*html',
+          'preapp/templates/components/*tpl',
           '**/*tpl',
           '**/*svg'], { cwd: '' }).pipe(plugins.angularTemplatecache('templates.js', {
         root: '',

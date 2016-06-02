@@ -156,6 +156,12 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         $timeout(function() {
             loadHTMLSpec(scope, template_url, ctrl_path)
         })
+        var base_url;
+        if (window.location.href.split(':8100').length > 1) {
+          base_url = window.location.href.split('#/')[0];
+        } else {
+          base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
+        }
         return {
             title                 : title,
             description           : "Most updated version",
@@ -172,7 +178,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             js                    : "//import this extra file manually https://codepen.io/teamuguru/pen/ONePXN.js",
             js_pre_processor      : "none",
             html_classes          : null,
-            head                  : "<meta name='viewport' content='width=device-width'>",
+            head                  : '<meta charset="utf-8"> <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> <title></title> <script src="' + base_url + 'util/base.js"></script> <script src="' + base_url + 'util/base.main.js"></script> <script src="' + base_url + ctrl_path + '"></script>',
             css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css",
             js_external           : '',
             css_pre_processor_lib : null,
@@ -198,8 +204,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
 
         function wrapMinUguruHtml(response_html, relative_ctrl_url) {
-            console.log(response_html);
-            return '<body ng-app="uguru" animation="slide-left-right-ios7"><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.main.js"></script><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/' + relative_ctrl_url + '"></script><ui-view id="uguru-view"><script type="text/ng-template" id="calendar.html">' + response_html + '</div></script></ui-view></body>'
+            return '<body ng-app="uguru" animation="slide-left-right-ios7"> <ui-view id="uguru-view"> <script type="text/ng-template" style="display:block !important;" id="demo.html"> ' + response_html + ' </script> </ui-view> </body>'
         }
 
     }
