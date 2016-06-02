@@ -20,12 +20,11 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     'https://uguru.me/static/**'
   ]);
 
-
   $httpProvider.useApplyAsync(true);
 
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
 
-  if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
+  if ($ionicConfigProvider){$ionicConfigProvider.views.swipeBackEnabled(false);}
 
 
 
@@ -55,8 +54,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     templateUrl: 'preapp/templates/splash.madlib.html',
     controller: function($scope) {
       $scope.splash = {state: {madlib:true}};
-    },
-    templateUrl: 'preapp/templates/splash.madlib.html',
+    }
   })
   .state('root.admin', {
     url:'/admin',
@@ -72,9 +70,9 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/gabrie',
     // controller: 'GabrielleController',
     templateUrl: 'gabrielle/templates/index.html',
-  })
+  });
 
   $urlRouterProvider.otherwise('/');
 
 
-})
+});

@@ -1,13 +1,13 @@
 angular.module('uguru.shared.directives')
-    .directive("tag", ['$compile', '$timeout', function($compile, $timeout) {
+    .directive("tag", ['$compile', '$timeout', 'RootService', function($compile, $timeout, RootService) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'splash') {
-                return 'preapp/templates/components/splash.tag.tpl'
+                return RootService.getBaseUrl() + 'preapp/templates/components/splash.tag.tpl'
             } else
             if (attr.type && attr.type === 'input') {
-                return BASE + 'templates/elements/components/inputs/text/tag.tpl'
+                return RootService.getBaseUrl() + 'templates/elements/components/inputs/text/tag.tpl'
             } else {
-                return BASE + 'templates/elements/components/inputs/tags/base.tpl'
+                return RootService.getBaseUrl() + 'templates/elements/components/inputs/tags/base.tpl'
             }
 
         }
@@ -63,12 +63,12 @@ angular.module('uguru.shared.directives')
             }
         }
     }])
-    .directive("dropdown", ['$timeout', function($timeout) {
+    .directive("dropdown", ['$timeout', 'RootService', function($timeout, RootService) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'color') {
-                return BASE + 'templates/elements/components/inputs/dropdowns/color.tpl'
+                return RootService.getBaseUrl() + 'templates/elements/components/inputs/dropdowns/color.tpl'
             } else {
-                return 'shared/templates/components/dropdown.tpl'
+                return RootService.getBaseUrl() + 'shared/templates/components/dropdown.tpl'
             }
         }
         return {
@@ -112,9 +112,9 @@ angular.module('uguru.shared.directives')
             }
         };
     }])
-    .directive("checkbox", function() {
+    .directive("checkbox", ['RootService', function(RootService) {
         return {
-            templateUrl: 'shared/templates/components/checkbox.tpl',
+            templateUrl: RootService.getBaseUrl() + 'shared/templates/components/checkbox.tpl',
             scope: {
                 onChecked: '=onChange',
                 label: '=label',
@@ -134,4 +134,4 @@ angular.module('uguru.shared.directives')
                     // }
             }
         }
-    })
+}])

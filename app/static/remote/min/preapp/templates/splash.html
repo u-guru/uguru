@@ -31,12 +31,15 @@
                     <!-- Getting Started Curtains-->
                     <!-- Transition to Student Home-->
 
+                <!-- <div id='splash-device-container'  ng-class="{'z-index--1000 opacity-0': !splash.state.transition}" ng-controller="SplashStateTransitionController" ng-include="root.base_url + 'preapp/templates/splash.device.html'">
+                </div> -->
+
                 <!-- 2. device -->
-                <div id='splash-device-container' ng-if='splash.state.device' ng-include="'preapp/templates/splash.device.html'">
+                <div ng-if='false' id='splash-device-container'  ng-class="{'z-index--1000 opacity-0': !splash.state.device}" ng-include="root.base_url + 'preapp/templates/splash.device.html'">
                 </div>
 
                 <!-- 0. Madlib -->
-                <div id='splash-madlib-container' ng-if='splash.state.madlib' ng-include="'preapp/templates/splash.madlib.html'">
+                <div id='splash-madlib-container' ng-class="{'z-index--1000 opacity-0': !splash.state.madlib}" ng-include="root.base_url + 'preapp/templates/splash.madlib.html'">
                 </div>
 
                 <!-- 5. getting started -->

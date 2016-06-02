@@ -25,7 +25,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
 
   RestangularProvider.setBaseUrl(REST_URL + '/api/v1');
 
-  if ($ionicConfigProvider) $ionicConfigProvider.views.swipeBackEnabled(false);
+  if ($ionicConfigProvider){$ionicConfigProvider.views.swipeBackEnabled(false);}
 
 
 
@@ -45,13 +45,17 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/',
     templateUrl: 'preapp/templates/splash.html'
   })
+  .state('root.splash-device', {
+    parent: 'root',
+    url:'/dev/splash/device',
+    templateUrl: 'preapp/templates/splash.device.html'
+  })
   .state('root.splash-madlib', {
-    url:'/splash/madlib',
+    url:'/dev/splash/madlib',
     templateUrl: 'preapp/templates/splash.madlib.html',
     controller: function($scope) {
       $scope.splash = {state: {madlib:true}};
     },
-    templateUrl: 'preapp/templates/splash.madlib.html',
   })
   .state('root.admin', {
     url:'/admin',

@@ -1,5 +1,5 @@
 <div class="splash-hero-content z-index-100" ng-controller='SplashMadlibController as madlib' id='splash-madlib'>
-    <div class="splash-guru-head" ng-if='splash.state.madlib' class-on-activate="pulse:animIn">
+    <div class="splash-guru-head" class-on-activate="pulse:animIn">
         <div class="splash-hero-guru splash-logo-guru" ng-include="'shared/templates/components/svg/guru-head.html'"></div>
         <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop opacity-0" viewBox="0 0 340 205">
@@ -39,7 +39,7 @@
             </g>
         </svg>
     </div>
-    <div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, null:inject.splash-hero-map|activate" ng-if='splash.state.madlib' eval-on-activate="activateMap()">
+    <div class="splash-adlib" activate-on-class="blank-1-filled, blank-2-filled" class-on-activate="active:keep, animated:inject.splash-hero-skip button|c, null:inject.splash-hero-map|activate" eval-on-activate="activateMap()">
         <div class="splash-adlib-inside a" activate-on-class="a" class-on-activate="active:keep">
             <div class="adlib-header-container relative">
                 <h1 class="adlib-header active"
@@ -122,10 +122,9 @@
             <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate">
                 <tag class='adlib-tag'
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-
                     on-hover="pulse"
-                    on-init="opacity:1"
-                    on-activate="spread-out:animIn"
+                    on-init="opacity:0"
+                    on-activate="spread-out:animIn:delay-3000"
 
                     on-category-switch-enter="spread-out:animIn"
                     on-category-switch-exit="spread-in:animOut"
@@ -140,8 +139,8 @@
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
 
                     on-hover="pulse"
-                    on-init="opacity:1"
-                    on-activate="spread-out:animIn"
+                    on-init="opacity:0"
+                    on-activate="spread-out:animIn:delay-3000"
 
                     on-category-switch-enter="spread-out:animIn"
                     on-category-switch-exit="spread-in:animOut"

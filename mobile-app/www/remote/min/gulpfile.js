@@ -56,7 +56,6 @@ var errorHandler = function(error) {
   }
 };
 
-
 // our main sequence, with some conditional jobs depending on params
 gulp.task('sass:watch', function () {
   // gulp.watch('**/*.scss', ['sass']);
@@ -111,7 +110,7 @@ gulp.task('compile-css', function(done) {
   .pipe(plugins.if(build, plugins.stripCssComments()))
   .pipe(minifyCSS({keepSpecialComments : 0}))
   .pipe(plugins.if(build, plugins.rev()))
-  .pipe(plugins.concat('app.css'))
+  .pipe(plugins.concat('app_version.css'))
   // .pipe(uncss({
   //     html: ['dest/templates/**/*html']
   // }))
@@ -149,14 +148,12 @@ gulp.task('compile-js', function(done) {
       'shared/js/lib/ionic.bundle.min.js',
       'shared/js/lib/restangular.min.js',
       'shared/js/lib/lodash.min.js',
-
       //directive
       'shared/js/AnimationDirectives.js',
       'shared/js/directives/*.js',
       //services
       'shared/js/services/LocalStorageService.js',
       'shared/js/services/*.js',
-
       'main.js',
       'templates.js',
       //prepapp ctrl
@@ -172,7 +169,7 @@ gulp.task('compile-js', function(done) {
     ]);
 
   return streamqueue({ objectMode: true }, scriptStream)
-    // .pipe(debug())
+    .pipe(debug())
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
@@ -210,7 +207,7 @@ gulp.task('clean', function(done) {
 
 gulp.task('templates', function() {
   //PART ONE, MOVE ALL TEMPLATES TO RIGHT FOLDER
-  var templateLocations = ['admin/templates/**/**/**', 'shared/templates/**/**/**', 'preapp/templates/**/**/**']
+  var templateLocations = ['admin/templates/**/**/**', 'shared/templates/**/**/**', 'preapp/templates/**/**/**'];
   for (var i = 0; i < templateLocations.length; i++) {
     gulp.src([templateLocations[i]], { cwd: '' })
     .pipe(htmlmin({collapseWhitespace: true}))
@@ -255,7 +252,7 @@ gulp.task('templates', function() {
 gulp.task('copy-prod', function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
-  gulp.src(['app.js', 'app.css'], { base: './' })
+  gulp.src(['app.js', 'app_version.css'], { base: './' })
   .pipe(gulp.dest('../../../../app/static/remote/min/'));
 });
 

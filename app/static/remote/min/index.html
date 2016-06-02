@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
+<<<<<<< HEAD
+    <link href="remote/min/preapp/css/compiled/loader.css" rel="stylesheet">
+=======
     <link href="preapp/css/compiled/loader.css" rel="stylesheet">
+>>>>>>> 54e9ce0980a837935df4f8be3c8e19dfa1fa96e4
     <script>
         var timer = {
             initTime: new Date().getTime()
@@ -124,6 +128,8 @@
             'shared/js/directives/ComponentDirectives.js',
             'shared/js/services/LocalStorageService.js',
             'shared/js/services/AnimationService.js',
+            'shared/js/services/SVGService.js',
+            'shared/js/services/RootService.js',
             'shared/js/services/CategoryService.js',
             'shared/js/services/UniversityService.js',
             'shared/js/services/GUtilService.js',
@@ -142,7 +148,9 @@
             'admin/js/AdminActionController.js',
             'admin/js/AdminDemosController.js',
             'preapp/js/SplashController.js',
-            'preapp/js/SplashMadlibController.js'
+            'preapp/js/SplashMadlibController.js',
+            'preapp/js/SplashDeviceController.js',
+            'preapp/js/SplashStateTransitionController.js'
         ];
         var fileInitCB = {
             'shared/js/lib/snap.svg.min.js': initSnapLoadedEvent
@@ -161,22 +169,21 @@
         var portalElem = document.querySelector('.loader-portal');
         var portalEvent = initEventFromName('splashMainLoadingComplete');
 
-        portalElem.addEventListener(((navigator.userAgent.indexOf('AppleWebKit') != -1) && 'webkitAnimationEnd') || 'animationend',
+        portalElem.addEventListener(((navigator.userAgent.indexOf('AppleWebKit') != -1) && 'webkitAnimationStart') || 'animationstart',
             function(e) {
-                if (e.animationName === 'l-portal-shrink') {
+                if (e.animationName === 'l-move-down') {
                     setTimeout(function() {
                         portalElem.dispatchEvent(portalEvent);
-                    }, 200)
+                    }, 500)
                 }
             }, false);
-
 
         function initSnapLoadedEvent(script_elem) {
 
             var snapLoadedEvent = initEventFromName('shouldRenderSplashTransition');
             script_elem.onload = function(e) {
                 globalLoader = new SVGLoader(document.querySelector('#loader-wrapper .pageload-overlay'), {
-                    speedOut: 700,
+                    speedOut: 2000,
                     easingOut: mina.easeinout
                 });
                 globalLoader.show();
@@ -217,6 +224,20 @@
                 }(src_path);
             }
             return new_script
+        }
+
+        var lastCharacter = window.location.href.trim().split('/').join('').split('').reverse()[0];
+        if (lastCharacter !== '#') {
+          var loaderWrapper = document.querySelector('#loader-wrapper');
+          if (loaderWrapper) {
+            loaderWrapper.style.display = 'none';
+          }
+          var loaderPortal = document.querySelector('.loader-portal');
+          if (loaderPortal) {
+            loaderPortal.style.display = 'none';
+            loaderPortal.parentNode.removeChild(loaderPortal);
+          }
+          console.log('please delete portal')
         }
 
         //uncomment to show load times per page

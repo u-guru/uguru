@@ -177,6 +177,10 @@ input, fieldset {
   display: none;
 }
 
+.resize-none {
+  resize: none;
+}
+
 /* ---------- LAYOUTS */
 .lyt-1-3-header > header {
   width: 100%;
