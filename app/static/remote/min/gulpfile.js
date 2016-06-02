@@ -163,7 +163,7 @@ gulp.task('compile-base-js', function(done) {
       //directive
       'shared/js/directives/AnimationDirectives.js',
       'shared/js/directives/*.js',
-      'templates.js',
+      // 'templates.js',
       // 'util/base.main.js',
       // 'templates.js',
       // //prepapp ctrl
