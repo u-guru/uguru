@@ -148,22 +148,28 @@ gulp.task('compile-base-js', function(done) {
       'shared/js/lib/ionic.bundle.min.js',
       'shared/js/lib/restangular.min.js',
       'shared/js/lib/lodash.min.js',
-      //directive
-      'shared/js/AnimationDirectives.js',
-      'shared/js/directives/*.js',
+
+
       //services
       'shared/js/services/LocalStorageService.js',
       'shared/js/services/*.js',
-      // 'main.js',
-      // 'templates.js',
-      // //prepapp ctrl
-      'preapp/js/SplashController.js',
-      // 'preapp/js/*.js',
 
       //admin/service
       'admin/js/AdminAnimToolService.js',
       'admin/js/SpecService.js',
       'admin/js/SpecContentService.js',
+      'admin/js/*.js',
+
+      //directive
+      'shared/js/AnimationDirectives.js',
+      'shared/js/directives/*.js',
+      // 'util/base.main.js',
+      // 'templates.js',
+      // //prepapp ctrl
+      'preapp/js/SplashController.js',
+      // 'preapp/js/*.js',
+
+
       //shared ctrl
       'shared/js/controllers/RootController.js',
       'shared/js/controllers/*.js',
@@ -175,7 +181,7 @@ gulp.task('compile-base-js', function(done) {
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
     .pipe(plugins.if(build, plugins.concat('base.js')))
-    .pipe(gulp.dest('../min/util.js'));
+    .pipe(gulp.dest('../min/util/'));
 });
 gulp.task('compile-js', function(done) {
   var scriptStream = gulp.src([
@@ -301,7 +307,7 @@ gulp.task('default', function(done) {
     'compile-css',
     'templates',
     'compile-temp',
-    // 'jsHint',
+    // // 'jsHint',
     'compile-js',
     'compile-base-js',
     // 'copy-prod',

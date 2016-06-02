@@ -303,12 +303,12 @@ gulp.task('copy-prod', function(){
 
 gulp.task('default', function(done) {
   runSequence(
-    // 'clean',
-    // 'compile-css',
-    // 'templates',
-    // 'compile-temp',
+    'clean',
+    'compile-css',
+    'templates',
+    'compile-temp',
     // // 'jsHint',
-    // 'compile-js',
+    'compile-js',
     'compile-base-js',
     // 'copy-prod',
     // 'clean'
