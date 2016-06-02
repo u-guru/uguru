@@ -93,6 +93,7 @@ angular.module('uguru.preApp')
       onCategorySwitch: madlib.categorySwitch
     }
     SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states);
+    console.log(madlib.spec);
   }
 ])
 

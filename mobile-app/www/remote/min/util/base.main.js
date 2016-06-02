@@ -27,13 +27,13 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   if ($ionicConfigProvider){$ionicConfigProvider.views.swipeBackEnabled(false);}
 
   $stateProvider
-  .state('calendar', {
-    url:'/calendar',
-    templateUrl: 'calendar.html'
+  .state('demo', {
+    url:'/dev/demo/page',
+    templateUrl: 'demo.html'
   });
 
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/dev/demo/page');
 
 
 });

@@ -183,11 +183,11 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         function loadHTMLSpec(scope, template_url, controller_url) {
 
             if (window.location.href.split(':8100').length > 1) {
-              template_url = window.location.href.split('/#/')[0] + '/#/remote/min/' + template_url;
+              template_url = window.location.href.split('#/')[0] + template_url;
             } else {
               template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + template_url;
             }
-
+            console.log(template_url);
             var xhr = new XMLHttpRequest();
             xhr.open( 'GET', template_url, true );
 
