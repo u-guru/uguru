@@ -3,7 +3,7 @@
 	<ion-pane id='cta-modal-selected-bug' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.detail.html'"></ion-pane>
 
 	<header class='bg-robin txt-center'>
-		<h1 ng-if="!indexOfSection" class="txt-white weight-700 txt-28">Bugs</h1>
+		<h1 ng-if="!indexOfSection && bugReport.length" class="txt-white weight-700 txt-28">Bugs</h1>
 		<h1 ng-if="indexOfSection" class="txt-white weight-700 txt-28">{{bugReport[indexOfSection].name}}</h1>
 		<div class=' p05xy bg-robin-80p full-x flex-wrap-left' >
 			<dropdown class="height-32 m15right" ng-model="availableOptions" selected-index="0" ng-if='!addSection'> </dropdown>
