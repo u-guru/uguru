@@ -26,7 +26,7 @@ angular.module('uguru.admin')
      ReportService.getBug().then(function(result){
        // alert('Success: ' + greeting);
        $scope.bugReport = result;
-       console.log('result', $scope.bugReport);
+       // console.log('result', $scope.bugReport);
       }, function(reason) {
         console.log(reason);
     });
