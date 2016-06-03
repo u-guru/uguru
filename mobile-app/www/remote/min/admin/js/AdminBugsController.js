@@ -118,13 +118,13 @@ angular.module('uguru.admin')
       FileService.postS3JsonFile(JSON.stringify($scope.bugReport), null ,
                                  'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
       function postCallback(firstName, resp) {
-          console.log('file successfully saved', resp);
           ReportService.saveBug($scope.bugReport);
+          console.log('file successfully saved', resp);
 
-          LoadingService.hide();
-          $timeout(function() {
-            LoadingService.showSuccess('Saved!', 1000);
-          });
+          // LoadingService.hide();
+          // $timeout(function() {
+          //   LoadingService.showSuccess('Saved!', 1000);
+          // });
         }
     };
     $scope.reviseBug = function(){
@@ -353,16 +353,18 @@ angular.module('uguru.admin')
     }
 
     function loadUpdatedBugsJsonFile(scope) {
-      LoadingService.showAmbig('Loading....', 10000);
+      // LoadingService.showAmbig('Loading....', 10000);
+      console.log('Loading....');
       //https://s3.amazonaws.com/uguru-admin/jason/bugs.json
       //https://s3.amazonaws.com/uguru-admin/sync/bugs.json
       FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', callbackFunc);
       function callbackFunc(name, resp) {
-        scope.bugReport = resp
-        LoadingService.hide()
-        $timeout(function() {
-         LoadingService.showSuccess(resp.length + ' bugs loaded', 1000) ;
-        })
+        scope.bugReport = resp;
+        console.log('file successfully loaded', resp);
+        // LoadingService.hide()
+        // $timeout(function() {
+        //  LoadingService.showSuccess(resp.length + ' bugs loaded', 1000) ;
+        // })
       }
     }
     function getReportIndexByID(id){
@@ -412,9 +414,6 @@ angular.module('uguru.admin')
           var section = linkReport($scope.userWorkflows[i]);
           if (section){
             $scope.bugReport.push(section);
-          }
-          else{
-            console.log('repeat!',section);
           }
         }
       }
