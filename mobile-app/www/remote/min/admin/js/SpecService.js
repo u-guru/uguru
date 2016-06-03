@@ -201,7 +201,6 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
         function wrapMinUguruHtml(response_html, relative_ctrl_url) {
             var result = '<body ng-app="uguru" animation="slide-left-right-ios7" > <ui-view id="uguru-view"> <script type="text/ng-template" id="demo.html"> ' + response_html +'</script> </ui-view> <script src="https://uguru-rest-test.herokuapp.com/static/remote/min/' + relative_ctrl_url + '"></script> </body>'
-            console.log(result);
             return result;
         }
 
