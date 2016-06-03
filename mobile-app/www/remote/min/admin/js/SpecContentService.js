@@ -205,8 +205,8 @@ function SpecContentService($state, $timeout, $localstorage) {
         count: 1,
         bugId: id,
         launchBugTab: function(scope) {
-          console.log('scope',scope)
-          // alert('coming soon');
+          // console.log('scope',scope)
+          alert('coming soon');
         }
       }
     }
