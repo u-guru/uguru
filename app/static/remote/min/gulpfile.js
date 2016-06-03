@@ -166,12 +166,12 @@ gulp.task('compile-base-js', function(done) {
       'shared/js/directives/*.js',
 
       'util/base.main.js',
-      'templates.js'
+      'templates.js',
       // 'templates.js',
       // 'util/base.main.js',
       // 'templates.js',
       // //prepapp ctrl
-      // 'preapp/js/SplashController.js',
+      'preapp/js/SplashController.js',
       // 'preapp/js/*.js',
 
 

@@ -11,36 +11,11 @@ angular.module('uguru.preApp')
   'SpecService',
   function($scope, $state, $timeout, CategoryService, UniversityService, ContentService, SpecService) {
     var madlib = this;
-    //directives to create
-    //svg
-    //onhover w/delay
-    //typewritten text
-    //activate-on-class-ar
 
-    //TO ADD Spec
-    //transitions
-    //onEnter
-    //onHoverTag
-    //onClickTag
-    //onDeselectTag
-    //onBothTagsSelected (put away the tags)
-    //onCategorySwitched (all tags)
-    //onUniversitySwitched (all tags)
-    //onMapRender
 
     madlib.category = ($scope.splash && $scope.splash.category) || CategoryService.getLocalCategories()[0];
     madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
     madlib.university = UniversityService.getBerkeleyLocal();
-
-    //onInit
-    //onactivate
-    //onhover
-    //onClickOne
-    //onClickTwo
-    //onDeselect
-    //onCategoryChange
-    //TODO: onUniversitySwitch
-    //onBothFilled
 
 
     madlib.onEnter = function() {

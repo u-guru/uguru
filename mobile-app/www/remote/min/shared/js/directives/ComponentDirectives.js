@@ -2,7 +2,7 @@ angular.module('uguru.shared.directives')
     .directive("tag", ['$compile', '$timeout', 'RootService', function($compile, $timeout, RootService) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'splash') {
-                return 'preapp/templates/components/splash.tag.tpl'
+                return RootService.getBaseUrl() + 'preapp/templates/components/splash.tag.tpl'
             } else
             if (attr.type && attr.type === 'input') {
                 return RootService.getBaseUrl() + 'templates/elements/components/inputs/text/tag.tpl'
