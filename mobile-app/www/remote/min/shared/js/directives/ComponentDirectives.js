@@ -68,7 +68,7 @@ angular.module('uguru.shared.directives')
             if (attr.type && attr.type === 'color') {
                 return RootService.getBaseUrl() + 'templates/elements/components/inputs/dropdowns/color.tpl'
             } else {
-                return 'shared/templates/components/dropdown.tpl'
+                return RootService.getBaseUrl() + 'shared/templates/components/dropdown.tpl'
             }
         }
         return {

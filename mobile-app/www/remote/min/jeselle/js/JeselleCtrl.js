@@ -1,4 +1,4 @@
-angular.module('uguru.util.controllers')
+angular.module('uguru.preApp')
 .controller('JeselleController', [
   '$scope',
   '$timeout',
@@ -16,11 +16,11 @@ function JeselleController($scope, $timeout, $state, KeyboardService, SpecServic
 
         // }
     }
-    $scope.switchState = switchState;
+    // $scope.switchState = switchState;
 
-    function pauseTimer() {
+    // function pauseTimer() {
 
-    };
+    // };
 
     // SpecService.initSpec($scope, '#jeselle-view', 'jeselle', 'jeselle/index.html', 'controllers/util/JeselleCtrl.js');
 }
