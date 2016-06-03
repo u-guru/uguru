@@ -115,7 +115,7 @@
                     <span>{{madlib.category.tags_data.template.end}}</span>
                 </h1>
             </div>
-            <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate">
+            <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate" ng-if='madlib.category.tags_data.blank_one_options.length && madlib.category.tags_data.blank_two_options.length'>
                 <tag class='adlib-tag'
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-hover="pulse"
