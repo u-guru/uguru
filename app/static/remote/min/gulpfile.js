@@ -210,6 +210,8 @@ gulp.task('compile-js', function(done) {
       //prepapp ctrl
       'preapp/js/SplashController.js',
       'preapp/js/*.js',
+      'jeselle/js/*.js',
+      'gabrielle/js/*.js',
 
       //admin/service
       'admin/js/AdminAnimToolService.js',
