@@ -68,7 +68,7 @@ angular.module('uguru.shared.directives')
             if (attr.type && attr.type === 'color') {
                 return RootService.getBaseUrl() + 'templates/elements/components/inputs/dropdowns/color.tpl'
             } else {
-                return RootService.getBaseUrl() + 'shared/templates/components/dropdown.tpl'
+                return 'shared/templates/components/dropdown.tpl'
             }
         }
         return {
@@ -114,7 +114,7 @@ angular.module('uguru.shared.directives')
     }])
     .directive("checkbox", ['RootService', function(RootService) {
         return {
-            templateUrl: RootService.getBaseUrl() + 'shared/templates/components/checkbox.tpl',
+            templateUrl: 'shared/templates/components/checkbox.tpl',
             scope: {
                 onChecked: '=onChange',
                 label: '=label',

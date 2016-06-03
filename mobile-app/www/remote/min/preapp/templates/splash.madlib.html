@@ -1,5 +1,5 @@
 <div class="splash-hero-content z-index-100" ng-controller='SplashMadlibController as madlib' id='splash-madlib'>
-    <div class="splash-guru-head" class-on-activate="pulse:animIn">
+    <div class="splash-guru-head" on-activate="pulse:animIn">
         <div class="splash-hero-guru splash-logo-guru" ng-include="'shared/templates/components/svg/guru-head.html'"></div>
         <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop opacity-0" viewBox="0 0 340 205">
@@ -115,7 +115,7 @@
                     <span>{{madlib.category.tags_data.template.end}}</span>
                 </h1>
             </div>
-            <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate">
+            <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate" ng-if='madlib.category.tags_data.blank_one_options.length && madlib.category.tags_data.blank_two_options.length'>
                 <tag class='adlib-tag'
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-hover="pulse"
@@ -131,7 +131,7 @@
                     ng-click="resetMadLibBlankIfActive"
 
                     desktop="root.window.desktop" type="splash" blank-num="1" inner-text="option" category="madlib.category"
-                    ng-repeat='option in ::madlib.category.tags_data.blank_one_options'> </tag>
+                    ng-repeat='option in madlib.category.tags_data.blank_one_options'> </tag>
                 <tag class="adlib-tag"
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
 
@@ -148,7 +148,7 @@
                     ng-click="resetMadLibBlankIfActive"
 
                     desktop="root.window.desktop" type="splash" blank-num="2" inner-text="option" category="madlib.category"
-                    ng-repeat='option in ::madlib.category.tags_data.blank_two_options'> </tag>
+                    ng-repeat='option in madlib.category.tags_data.blank_two_options'> </tag>
             </ul>
         </div>
     </div>

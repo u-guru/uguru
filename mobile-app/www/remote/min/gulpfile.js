@@ -158,11 +158,16 @@ gulp.task('compile-base-js', function(done) {
       'admin/js/AdminAnimToolService.js',
       'admin/js/SpecService.js',
       'admin/js/SpecContentService.js',
-      'admin/js/*.js',
+      'admin/js/AdminDirectives.js',
+      'admin/js/AdminActionController.js',
 
       //directive
-      'shared/js/AnimationDirectives.js',
+      'shared/js/directives/AnimationDirectives.js',
       'shared/js/directives/*.js',
+
+      'util/base.main.js',
+      'templates.js',
+      // 'templates.js',
       // 'util/base.main.js',
       // 'templates.js',
       // //prepapp ctrl
@@ -171,8 +176,8 @@ gulp.task('compile-base-js', function(done) {
 
 
       //shared ctrl
-      'shared/js/controllers/RootController.js',
-      'shared/js/controllers/*.js',
+      // 'shared/js/controllers/RootController.js',
+      // 'shared/js/controllers/*.js',
     ]);
 
   return streamqueue({ objectMode: true }, scriptStream)
@@ -232,6 +237,13 @@ gulp.task('compile-temp',function(done){
           '!*master.index.html',
           '!*index.html',
           '**/*html',
+          'admin/templates/*html',
+          'admin/templates/components/*tpl',
+          'shared/templates/*html',
+          'shared/templates/components/*tpl',
+          'shared/templates/components/svg/*tpl',
+          'preapp/templates/*html',
+          'preapp/templates/components/*tpl',
           '**/*tpl',
           '**/*svg'], { cwd: '' }).pipe(plugins.angularTemplatecache('templates.js', {
         root: '',
