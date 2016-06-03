@@ -11,8 +11,6 @@ angular
 function SpecContentService($state, $timeout, $localstorage, $window) {
     var allSpecs = {};
     var allAdminSpecs = {};
-
-
     allSpecs.preApp = {
             "workflows":[
               {
@@ -32,72 +30,65 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
               {
                 title: 'Jeselle Portfolio',
                 controller: 'JeselleController',
-                routes: getRoutes('dev/jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js'),
+                routes: getRoutes('/dev/jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js'),
                 spec: getSpec('jeselle'),
                 bugs: getBugInfo('jeselle'),
                 members: ['jeselle:priority', 'samir', 'gabrielle:complete', 'jason']
-              },
-              {
-                title: 'Gabrielle Portfolio',
-                controller: 'GabrielleController',
-                routes: getRoutes('gabrie', 'gabrie/index.html', 'controllers/util/GabrielleController.js'),
-                spec: getSpec('calendar'),
-                bugs: getBugInfo('calendar'),
-                members: ['jeselle']
-              },
-              {
-                title: 'splash',
-                dependencies: ['FakeDataService'],
-                controller: 'SplashController',
-                bugs: getBugInfo('splash')
-              },
-              {
-                title: 'GenericGuruProfile',
-                dependencies: ['FakeDataService'],
-                controller: 'GuruProfileController'
-              },
-              {
-                title: 'DeviceDemoController',
-                dependencies: ['GenericGuruProfile']
-              },
-              {
-                title: 'SplashLoaderController',
-                priority: 1
-              },
-              {
-                title: 'UniversitySearchController',
-              },
-              {
-                title: 'SplashMadLibController',
-                priority: 1
-              },
-              {
-                title: 'SplashMapController'
-              },
-              {
-                title: 'SplashTransitions',
-                description: ['Loader:SplashMadLibController']
-              },
-              {
-                title: 'HowItWorksController'
-              },
-              {
-                title: 'BecomeGuruController'
-              },
-              {
-                title: 'SignupController',
-                notes: 'Needs Refactoring'
-              },
-              {
-                title: 'AccessController'
-              },
-              {
-                title: 'DemographicsController'
-              },
-              {
-                title: 'GettingStartedController'
               }
-            ]
+              ]
+            //   {
+            //     title: 'splash',
+            //     dependencies: ['FakeDataService'],
+            //     controller: 'SplashController',
+            //     bugs: getBugInfo('splash')
+            //   },
+            //   {
+            //     title: 'GenericGuruProfile',
+            //     dependencies: ['FakeDataService'],
+            //     controller: 'GuruProfileController'
+            //   },
+            //   {
+            //     title: 'DeviceDemoController',
+            //     dependencies: ['GenericGuruProfile']
+            //   },
+            //   {
+            //     title: 'SplashLoaderController',
+            //     priority: 1
+            //   },
+            //   {
+            //     title: 'UniversitySearchController',
+            //   },
+            //   {
+            //     title: 'SplashMadLibController',
+            //     priority: 1
+            //   },
+            //   {
+            //     title: 'SplashMapController'
+            //   },
+            //   {
+            //     title: 'SplashTransitions',
+            //     description: ['Loader:SplashMadLibController']
+            //   },
+            //   {
+            //     title: 'HowItWorksController'
+            //   },
+            //   {
+            //     title: 'BecomeGuruController'
+            //   },
+            //   {
+            //     title: 'SignupController',
+            //     notes: 'Needs Refactoring'
+            //   },
+            //   {
+            //     title: 'AccessController'
+            //   },
+            //   {
+            //     title: 'DemographicsController'
+            //   },
+            //   {
+            //     title: 'GettingStartedController'
+            //   }
+            // ]
     }
 
     allAdminSpecs.preApp = [

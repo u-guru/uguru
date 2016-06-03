@@ -99,7 +99,9 @@ gulp.task('compile-css', function(done) {
 
   var cssStream = gulp.src([
       'shared/**/*.css',
-      'preapp/**/*.css'//,
+      'preapp/**/*.css',//,
+      'gabrielle/**/*.css',//,
+      'jeselle/**/*.css'//,
       // 'loader.css'
     ],{cwd: ''})
   .pipe(debug())
@@ -208,6 +210,8 @@ gulp.task('compile-js', function(done) {
       //prepapp ctrl
       'preapp/js/SplashController.js',
       'preapp/js/*.js',
+      'jeselle/js/*.js',
+      'gabrielle/js/*.js',
 
       //admin/service
       'admin/js/AdminAnimToolService.js',

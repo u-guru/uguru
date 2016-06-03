@@ -12,8 +12,11 @@ function JeselleController($scope, $timeout, $state, KeyboardService, SpecServic
 
     var jeselle = this;
     var states = {};
+
     jeselle.spec = {data: {toggleDev:false, toggleSpec: false}};
-    SpecService.initSpec(jeselle, $scope, '#jeselle-view', 'jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js', states)
+    $timeout(function() {
+      SpecService.initSpec(jeselle, $scope, '#jeselle-view', 'jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js', states)
+    })
     // $scope.switchState = switchState;
 
     // function pauseTimer() {
