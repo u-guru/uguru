@@ -101,6 +101,8 @@ angular.module('uguru.admin')
                                  'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
       function postCallback(firstName, resp) {
           console.log('file successfully saved', resp);
+          ReportService.saveBug($scope.bugReport);
+
           LoadingService.hide();
           $timeout(function() {
             LoadingService.showSuccess('Saved!', 1000);
@@ -366,6 +368,7 @@ angular.module('uguru.admin')
         $scope.indexOfSection = getReportIndexByID(document.URL.split('admin/bugs/')[1]);
         if ($scope.indexOfSection){
           $scope.openBugList($scope.bugReport[$scope.indexOfSection]);
+
         }
         else{
           $scope.openBugList($scope.bugReport[0]);
@@ -378,7 +381,6 @@ angular.module('uguru.admin')
       }
       else if(oldNames && newNames){
           console.log("Data is Update",newNames)
-
          // $scope.openBugList($scope.bugReport[$scope.bugReport.length-1]);
          $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
 

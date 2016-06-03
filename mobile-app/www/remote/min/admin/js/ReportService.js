@@ -45,6 +45,7 @@ function ReportService($timeout,FileService,LoadingService,$q) {
         }
     }
     function saveBug(newObject){
+        console.log("CHECK")
         bugReport = newObject;
 
     }
