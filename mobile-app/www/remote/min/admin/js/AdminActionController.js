@@ -19,7 +19,22 @@ angular.module('uguru.admin')
     $scope.user_workflows = [];
     $scope.user_workflows = SpecContentService.getContentSpec('preApp');
     $scope.admin_tasks = SpecContentService.getContentSpecAdmin('preApp');
+    // console.log("LOG", $scope.user_workflows[4].bugs.launchBugTab())
+    $scope.$watchCollection('$parent.bugReport', function(newNames, oldNames) {
+      if (!oldNames && newNames){
+        console.log('BUG is Update',newNames);
+      }
+      else if(oldNames && newNames){
+        console.log('BUG is Update',newNames);
+      }
+      // for(var i= 0 ; i< $scope.user_workflows.length; ++i){
+      //   console.log('check', $scope.user_workflows[i]);
+      //   for (var x =0 ; i < newNames.length; ++i)
+      //   {
 
+      //   };
+      // };
+    });
 
     function getUserFirstName(user) {
       return (user && user.name.split(' ')[0].toLowerCase()) || {name: 'jason'};

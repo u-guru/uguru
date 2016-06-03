@@ -44,7 +44,9 @@ angular.module('uguru.admin')
   'CTAService',
   '$localstorage',
   '$timeout',
-  function($scope, $state, $timeout, FileService, LoadingService,ReportService,CTAService,$localstorage, $timeout) {
+  'SpecContentService',
+  function($scope, $state, $timeout, FileService, LoadingService,ReportService,
+            CTAService,$localstorage, $timeou,SpecContentService) {
 
     $scope.openBugList=function(section){
       $scope.bugs = section.bugs;
@@ -280,8 +282,24 @@ angular.module('uguru.admin')
         $localstorage.setObject('advanceSearch', $scope.advanceSearch);
       }
     }
-
+    function genUniqueID(objName){
+      var id = 0;
+      for (var i = 0; i < objName.length ; ++ i) {
+        id += objName.charCodeAt(i);
+      }
+      return id;
+    }
+    function linkReport(object){
+      var id = genUniqueID(object.title);
+      for (var i = 0; i < $scope.bugReport.length; ++ i) {
+        if($scope.bugReport[i].bugID === id){
+          return;
+        }
+      }
+      return {name:object.title,bugID:id,bugs:[],help:{}};
+    }
     function intData(){
+    
         $scope.bugs = [];
         $scope.help = {};
         $scope.isEditMode = false;
@@ -289,23 +307,28 @@ angular.module('uguru.admin')
                                      {id: '1', name: 'All Bugs'},
                                      {id: '2', name: 'Prioritized Bugs'},
                                      {id: '3', name: 'Recently Complete'}
-                                  ]
+                                  ];
         $scope.availableOptions = {
             'selectedIndex': 0,
             'options': ['All Bugs','Prioritized Bugs','Recently Complete']
-        }
+        };
         $scope.reverse = true;
-        $scope.selectOption = $scope.availableOptions[0]
+        $scope.selectOption = $scope.availableOptions[0];
         $scope.advanceSearch ={
              'platforms' :{'list':[],'add': addPlatform, 'remove':removePlatform,'available_list':[ 'chrome','firefox','safari','android','android-chrome','ios','ios-safari']},
              'tags': {'list':[], 'add': addTag, 'remove':removeTag, 'err_msg':'', 'empty_tag': {'placeholder':"+   add a tag", 'content': ''}},
         }
 
-        if ($localstorage.getObject('advanceSearch')!='[]'){
+        if ($localstorage.getObject('advanceSearch')!=='[]'){
           var cache = $localstorage.getObject('advanceSearch');
-          $scope.advanceSearch.platforms.list = cache.platforms.list
-          $scope.advanceSearch.tags.list = cache.tags.list
-          console.log('Reset',$scope.advanceSearch)
+          $scope.advanceSearch.platforms.list = cache.platforms.list;
+          $scope.advanceSearch.tags.list = cache.tags.list;
+          console.log('Reset',$scope.advanceSearch);
+        }
+        for (var i = 0; i < $scope.bugReport.length; ++ i) {
+          if(!$scope.bugReport[i].bugID){
+           $scope.bugReport[i].bugID =  genUniqueID($scope.bugReport[i].name);
+          }
         }
     }
 
@@ -325,27 +348,48 @@ angular.module('uguru.admin')
 
     $timeout(function() {
       loadUpdatedBugsJsonFile($scope);
-    })
+    });
 
     $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
         console.log("Data is Load",newNames)
-        intData()
-        $scope.openBugList($scope.bugReport[0])
+        intData();
+        $scope.openBugList($scope.bugReport[0]);
         // $scope.openBugList({name:'',bugs:[],help:{}})
+        $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
+        
       }
       else if(oldNames && newNames){
-        console.log("Data is Update",newNames)
+          console.log("Data is Update",newNames)
 
-       $scope.openBugList($scope.bugReport[$scope.bugReport.length-1]);
+         // $scope.openBugList($scope.bugReport[$scope.bugReport.length-1]);
+         $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
+
       }
     });
 
+    $scope.$watchCollection('userWorkflows', function(newNames, oldNames) {
+      if (!oldNames && newNames){
+        for (var i = 0; i < $scope.userWorkflows.length; i++)
+        {
+          var section = linkReport($scope.userWorkflows[i]);
+          if (section){
+            $scope.bugReport.push(section);
+          }
+          else{
+            console.log('repeat!',section);
+          }
+        }
+      }
+      else if(oldNames && newNames){
+        console.log('Workflows is Update',newNames);
+      }
+    });
 
     window.onbeforeunload = function(event)
       {
         if($scope.isEditMode){
-          event.returnValue = "All file won't be saved without click save button.\n";
+          event.returnValue = 'All file won"t be saved without click save button.\n';
         }
 
       };
