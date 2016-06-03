@@ -60,7 +60,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             // specElem.setAttribute('ng-if', 'spec && spec.data');
             specElem.setAttribute('data', param + '.spec.data');
             if (elem) {
-                elem.parentNode.appendChild(specElem)
+                elem.appendChild(specElem)
                 console.log(specElem);
                 $timeout(function() {
                     $compile(specElem)(real_scope);

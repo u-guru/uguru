@@ -99,7 +99,9 @@ gulp.task('compile-css', function(done) {
 
   var cssStream = gulp.src([
       'shared/**/*.css',
-      'preapp/**/*.css'//,
+      'preapp/**/*.css',//,
+      'gabrielle/**/*.css',//,
+      'jeselle/**/*.css'//,
       // 'loader.css'
     ],{cwd: ''})
   .pipe(debug())
