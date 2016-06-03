@@ -33,10 +33,10 @@ angular.module('uguru.admin')
 
     $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
-        console.log('bugReport is load',newNames);
+        console.log('bugReport is load');
       }
       else if(oldNames && newNames){
-        console.log('bugReport is Update',newNames);
+        console.log('bugReport is Update');
       }
     });
     
@@ -46,8 +46,9 @@ angular.module('uguru.admin')
         for(var i = 0; i < $scope.bugReport.length ; ++i)
         {
           // console.log('index',i);
-          if ($scope.bugReport[i].bugID == id)
+          if ($scope.bugReport[i].bugID === id){
             return $scope.bugReport[i].bugs.length;
+          }
         }
       }
   
