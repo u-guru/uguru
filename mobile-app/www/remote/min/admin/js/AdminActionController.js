@@ -7,7 +7,8 @@ angular.module('uguru.admin')
   '$localstorage',
   '$window',
   'SpecContentService',
-  function($scope, $state, $timeout, $localstorage, $window, SpecContentService) {
+  'ReportService',
+  function($scope, $state, $timeout, $localstorage, $window, SpecContentService,ReportService) {
     //spec service get all
 
 
@@ -20,21 +21,38 @@ angular.module('uguru.admin')
     $scope.user_workflows = SpecContentService.getContentSpec('preApp');
     $scope.admin_tasks = SpecContentService.getContentSpecAdmin('preApp');
     // console.log("LOG", $scope.user_workflows[4].bugs.launchBugTab())
-    $scope.$watchCollection('$parent.bugReport', function(newNames, oldNames) {
+
+
+     ReportService.getBug().then(function(result){
+       // alert('Success: ' + greeting);
+       $scope.bugReport = result;
+       console.log('result', $scope.bugReport);
+      }, function(reason) {
+        console.log(reason);
+    });
+
+    $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
-        console.log('BUG is Update',newNames);
+        console.log('bugReport is load',newNames);
       }
       else if(oldNames && newNames){
-        console.log('BUG is Update',newNames);
+        console.log('bugReport is Update',newNames);
       }
-      // for(var i= 0 ; i< $scope.user_workflows.length; ++i){
-      //   console.log('check', $scope.user_workflows[i]);
-      //   for (var x =0 ; i < newNames.length; ++i)
-      //   {
-
-      //   };
-      // };
     });
+    
+    $scope.getBug  = function(id){
+      var counts;
+      if(id && $scope.bugReport){
+        for(var i = 0; i < $scope.bugReport.length ; ++i)
+        {
+          // console.log('index',i);
+          if ($scope.bugReport[i].bugID == id)
+            return $scope.bugReport[i].bugs.length;
+        }
+      }
+  
+      return 0;
+    };
 
     function getUserFirstName(user) {
       return (user && user.name.split(' ')[0].toLowerCase()) || {name: 'jason'};

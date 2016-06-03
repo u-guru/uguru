@@ -4,9 +4,10 @@ angular
     '$timeout',
     'FileService',
     'LoadingService',
+    '$q',
      ReportService
 ]);
-function ReportService($timeout,FileService,LoadingService) {
+function ReportService($timeout,FileService,LoadingService,$q) {
     var bugReport
     var states
     var caches 
@@ -43,15 +44,39 @@ function ReportService($timeout,FileService,LoadingService) {
             })
         }
     }
-    function getBug(){
-        if (!caches){
-            console.log("no bugCache")
-            initData('bugs','https://s3.amazonaws.com/uguru-admin/sync/bugs.json')
-        }
-        else
-            console.log("yes bugCacheg",bugReport)
-        return bugReport
+    function saveBug(newObject){
+        bugReport = newObject;
+
     }
+    function getBug(id){
+        var deferred = $q.defer();
+         setTimeout(function() {
+           if (bugReport) {
+              var found;
+              deferred.resolve(bugReport);
+              // for(var i = 0; i < bugReport.length; ++ i)
+              //   { 
+              //     if(bugReport[i].bugID === id){
+              //       found = bugReport[i];
+              //     }
+              //   }
+
+              //   if (found){
+              //       deferred.resolve(found);
+              //   }
+              //   else{
+              //       deferred.reject('Unable to lunch bug report');
+
+              //   }
+           } 
+           else {
+             deferred.reject('Unable to lunch bug report');
+           }
+         }, 2000);
+
+         return deferred.promise;
+    }
+
     function getStates(){
         if (!caches){
             console.log("no workflow cache found")
@@ -64,6 +89,7 @@ function ReportService($timeout,FileService,LoadingService) {
     return{
         initData: initData,
         getBug: getBug,
+        saveBug: saveBug,
         getStates: getStates
     }
 }

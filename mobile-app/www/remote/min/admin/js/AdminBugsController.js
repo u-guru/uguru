@@ -357,7 +357,9 @@ angular.module('uguru.admin')
         $scope.openBugList($scope.bugReport[0]);
         // $scope.openBugList({name:'',bugs:[],help:{}})
         $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
-        
+        ReportService.saveBug($scope.bugReport);
+        // console.log('Reprort',ReportService.getBug());
+
       }
       else if(oldNames && newNames){
           console.log("Data is Update",newNames)
