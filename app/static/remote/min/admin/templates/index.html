@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <ul class='p15-grid flex-center-vertical txt-center' ng-init='layout.index = 6;'>
+                <ul class='p15-grid flex-center-vertical txt-center' ng-init='layout.index = 3;'>
                     <li>
                         <user-icon ng-if='adminUser && adminUser.profile_url' size="48" url="adminUser.profile_url"> </user-icon>
                     </li>
@@ -232,16 +232,144 @@
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Docs</h1>
                 </header>
-                <div class="overflow-auto no-scrollbar admin-docs" style="height: calc(100% - 48px)">
-                    <ul class="p15-grid" ng-include="root.base_url + 'admin/templates/docs.html'"></ul>
+                <div class="tab-bar slide">
+                    <div>
+                        <a>General</a>
+                        <a>Option 2</a>
+                        <a>Option 3</a>
+                        <a>Option 4</a>
+                        <a>Option 5</a>
+                        <hr/>
+                    </div>
+                </div>
+                <div class="relative" style="height: calc(100% - 48px - 60px)">
+                    <div class="absolute top-0 left-0 full-xy overflow-auto no-scrollbar admin-docs">
+                        <ul class="p15-grid" ng-include="root.base_url + 'admin/templates/docs.html'"></ul>
+                    </div>
+
+
+
                 </div>
             </div>
             <div class='relative bg-smoke txt-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 7'>
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Components</h1>
                 </header>
-                <div class="overflow-auto no-scrollbar" style="height: calc(100% - 48px)">
-                    <div class="admin-html flex-wrap-start" ng-include="root.base_url + 'admin/templates/classes.html'"></div>
+                <div class="tab-bar slide">
+                    <div>
+                        <a>Classes</a>
+                        <a>Components</a>
+                        <hr/>
+                    </div>
+                </div>
+                <div class="relative" style="height: calc(100% - 48px - 60px)">
+                    <div class="admin-html flex-wrap-start absolute top-0 left-0 full-xy overflow-auto no-scrollbar" ng-include="root.base_url + 'admin/templates/classes.html'"></div>
+                    <!-- @samir -->
+                    <!-- I put this here because I'd prefer to have this in the components sections, but you should be able to put this into the other section safely, I left a big empty space for it above -->
+                    <div class="absolute top-0 left-0 full-xy z-index-2 bg-smoke">
+                        <div class="bg-slate relative p15xy">
+                            <fieldset class="with-icon">
+                                <input class="input-border light" type="text" placeholder="Search components">
+                                <label></label>
+                                <span class="input-icon">
+                                    <svg viewBox="0 0 100 100">
+                                        <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                                    </svg>
+                                </span>
+                                <a class="absolute top-0 right-0 flex-center z-index-100" style="height: 24px;">
+                                    <i class='icon ion-close-circled txt-slate'></i>
+                                </a>
+                            </fieldset>
+                        </div>
+                        <div class="overflow-auto no-scrollbar" style="height: calc(100% - 61px)">
+                            <ul class="ugrid-4 p15-grid">
+                                <!-- This is search result appearance -->
+                                <li class="full-x">
+                                    <div class="component-item large">
+                                        <a>
+                                            <h1 class="p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
+                                        </a>
+                                        <div class="border-2 radius-2-bottom ugrid-2">
+                                            <div class="relative fix-abs flex-center-wrap overflow-hidden">
+                                                <div class="tab-bar slide">
+                                                    <div>
+                                                        <a>Item 1</a>
+                                                        <a>Item 2</a>
+                                                        <a class="active">Item 3</a>
+                                                        <a>Item 4</a>
+                                                        <a>Item 5</a>
+                                                        <hr/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <textarea class="no-resize full-xy overflow-auto p15xy txt-14 source-code"><div class="tab-bar slide">
+    <div>
+        <a>Item 1</a>
+        <a>Item 2</a>
+        <a class="active">Item 3</a>
+        <a>Item 4</a>
+        <a>Item 5</a>
+        <hr/>
+    </div>
+</div></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- This is regular appearance -->
+                                <li>
+                                    <div class="component-item">
+                                        <a>
+                                            <h1 class="p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
+                                        </a>
+                                        <div class="relative fix-abs flex-center-wrap border-2 radius-2-bottom overflow-hidden">
+                                            <div class="tab-bar slide">
+                                                <div>
+                                                    <a>Item 1</a>
+                                                    <a>Item 2</a>
+                                                    <a class="active">Item 3</a>
+                                                    <a>Item 4</a>
+                                                    <a>Item 5</a>
+                                                    <hr/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="component-item">
+                                        <a>
+                                            <h1 class="p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
+                                        </a>
+                                        <div class="relative fix-abs border-2 border-slate bg-white radius-2-bottom">
+                                            <!-- component goes in here -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="component-item">
+                                        <a>
+                                            <h1 class="p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
+                                        </a>
+                                        <div class="relative fix-abs border-2 border-slate bg-white radius-2-bottom">
+                                            <!-- component goes in here -->
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="component-item">
+                                        <a>
+                                            <h1 class="p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
+                                        </a>
+                                        <div class="relative fix-abs border-2 border-slate bg-white radius-2-bottom">
+                                            <!-- component goes in here -->
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class='relative bg-smoke txt-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 8'>
