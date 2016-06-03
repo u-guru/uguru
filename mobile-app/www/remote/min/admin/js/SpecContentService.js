@@ -2,18 +2,13 @@ angular
 .module('uguru.admin')
 .factory("SpecContentService", [
   '$state',
-  '$window',
   '$timeout',
   '$localstorage',
   '$window',
   SpecContentService
   ]);
 
-<<<<<<< HEAD
 function SpecContentService($state, $timeout, $localstorage, $window) {
-=======
-function SpecContentService($state,$window, $timeout, $localstorage) {
->>>>>>> 710c343bc293af7624ca9c307346c7c62702ba3e
     var allSpecs = {};
     var allAdminSpecs = {};
 

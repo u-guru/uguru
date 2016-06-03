@@ -44,7 +44,7 @@
 			</h1>
 			<div class="bg-slate" ng-class="{'p15bottom': advanceSearch.tags.err_msg}" ng-if='addSection'>
 				<h1 class="semibold p15x-p15top">Name of Section</h1>
-				<input class="semibold p15x-p15top" style="height: 40px;" ng-model='newSection.name' > 
+				<input class="semibold p15x-p15top" style="height: 40px;" ng-model='newSection.name' >
 					Section
 						<button ng-click='pushNewSection(newSection)' ng-show='newSection.name'> Save</button>
 				</input>
@@ -83,7 +83,7 @@
 				</div>
 				<div class="error bg-crimson m15x p10y-p15x radius-2 txt-white semibold txt-18 hide" ng-class="{'show': advanceSearch.tags.err_msg}">{{advanceSearch.tags.err_msg}}</div>
 			</div>
-			<div ng-if='!addSection'> 
+			<div ng-if='!addSection'>
 				<ul ng-if="availableOptions.selectedIndex == 0" class="p15-grid">
 					<li ng-repeat='bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug,$index)'>
 
@@ -98,12 +98,12 @@
 					</li>
 				</ul>
 				<ul ng-if="availableOptions.selectedIndex == 2">
-					<li ng-repeat="bug in bugs | filter:{fixed:true}" | orderBy:'-fixedDate.getTime()':reverse>
+					<li ng-repeat='bug in bugs | filter:"{fixed:true}" | orderBy:"-fixedDate.getTime()":reverse'>
 						<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">{{bug.fixedDate.toUTCString()}}</span>
 						<span class="block bg-charcoal p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</span>
 					</li>
 				</ul>
-				
+
 			</div>
 				<ul class="p15-grid">
 					<li >

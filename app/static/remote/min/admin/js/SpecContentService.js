@@ -46,6 +46,12 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 members: ['jeselle']
               },
               {
+                title: 'splash',
+                dependencies: ['FakeDataService'],
+                controller: 'SplashController',
+                bugs: getBugInfo('splash')
+              },
+              {
                 title: 'GenericGuruProfile',
                 dependencies: ['FakeDataService'],
                 controller: 'GuruProfileController'
@@ -191,10 +197,19 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
     }
 
     function getBugInfo(wkflow_name) {
+      var id = 0;
+      // console.log($scope)
+      for (var i = 0; i < wkflow_name.length ; ++ i) {
+        id += wkflow_name.charCodeAt(i);
+      }
       return {
         count: 1,
+        bugID: id,
         launchBugTab: function() {
-          alert('coming soon');
+          // console.log("ID",this.bugID)
+          var url = document.URL +'/bugs/'+this.bugID;
+          $window.open(url);
+          // alert('coming soon');
         }
       }
     }
