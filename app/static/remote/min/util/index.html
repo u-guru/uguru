@@ -11,12 +11,13 @@
   <!-- <link href="util/base.main.js" rel="stylesheet"> -->
 </head>
 <body ng-app="uguru" animation="slide-left-right-ios7" >
-
+  <script src="util/base.main.js"></script>
    <ui-view id="uguru-view">
       <script type="text/ng-template" id="demo.html">
-            <div ng-cloak ng-include="'preapp/templates/splash.madlib.html'"> </div>
+            <div ng-include="'preapp/templates/splash.madlib.html'"> </div>
       </script>
    </ui-view>
+   <script src="preapp/js/SplashController.js"></script>
    <script src="preapp/js/SplashMadlibController.js"></script>
 </body>
 </html>

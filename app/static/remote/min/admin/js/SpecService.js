@@ -61,6 +61,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specElem.setAttribute('data', param + '.spec.data');
             if (elem) {
                 elem.parentNode.appendChild(specElem)
+                console.log(specElem);
                 $timeout(function() {
                     $compile(specElem)(real_scope);
                 })

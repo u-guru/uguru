@@ -29,7 +29,6 @@ angular.module('uguru.preApp')
     //onMapRender
 
     madlib.category = ($scope.splash && $scope.splash.category) || CategoryService.getLocalCategories()[0];
-
     madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
     madlib.university = UniversityService.getBerkeleyLocal();
 
@@ -44,10 +43,22 @@ angular.module('uguru.preApp')
     //onBothFilled
 
 
-    madlib.onEnter = function() {};
+    madlib.onEnter = function() {
+
+      if ($scope.splash && !$scope.splash.state) {
+        $scope.$watch('splash.state.madlib', function(newVal, oldVal) { newVal && madlib.activate() && $timeout(function() {$scope.$apply()})});
+      } else {
+        madlib.activate();
+      }
+
+    };
 
     madlib.activate = function() {
-
+      var parentViewElement = document.querySelector('#splash-madlib');
+      var allActivateElements = parentViewElement.querySelectorAll('[on-activate]');
+      for (var i = 0; i < allActivateElements.length; i++) {
+        allActivateElements[i].classList.add('activate');
+      }
     };
 
     madlib.minifyForMap = function() {};
@@ -66,19 +77,6 @@ angular.module('uguru.preApp')
     }
 
 
-    $scope.$watch('splash.state.madlib', function(newVal, oldVal) {
-      if (newVal) {
-        var parentViewElement = document.querySelector('#splash-madlib');
-        var allActivateElements = parentViewElement.querySelectorAll('[on-activate]');
-        for (var i = 0; i < allActivateElements.length; i++) {
-          allActivateElements[i].classList.add('activate');
-        }
-      }
-      $timeout(function() {
-        $scope.$apply();
-      })
-    })
-
     //todo samir
     madlib.onUniversityChanged = function() {};
     madlib.spec = {data: {toggleDev:false, toggleSpec: false}};
@@ -92,8 +90,12 @@ angular.module('uguru.preApp')
       onDeselectClickTwo: '[blank-num="2"] .translate-blank-2',
       onCategorySwitch: madlib.categorySwitch
     }
-    SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states);
-    console.log(madlib.spec);
+    $timeout(function() {
+      SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states)
+    }, 1000)
+
+    madlib.onEnter();
+
   }
 ])
 

@@ -158,11 +158,15 @@ gulp.task('compile-base-js', function(done) {
       'admin/js/AdminAnimToolService.js',
       'admin/js/SpecService.js',
       'admin/js/SpecContentService.js',
-      'admin/js/*.js',
+      'admin/js/AdminDirectives.js',
+      'admin/js/AdminActionController.js',
 
       //directive
       'shared/js/directives/AnimationDirectives.js',
       'shared/js/directives/*.js',
+
+      'util/base.main.js',
+      'templates.js'
       // 'templates.js',
       // 'util/base.main.js',
       // 'templates.js',
