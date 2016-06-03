@@ -2,12 +2,13 @@ angular
 .module('uguru.admin')
 .factory("SpecContentService", [
   '$state',
+  '$window',
   '$timeout',
   '$localstorage',
   SpecContentService
   ]);
 
-function SpecContentService($state, $timeout, $localstorage) {
+function SpecContentService($state,$window, $timeout, $localstorage) {
     var allSpecs = {};
     var allAdminSpecs = {};
 
@@ -205,7 +206,10 @@ function SpecContentService($state, $timeout, $localstorage) {
         count: 1,
         bugID: id,
         launchBugTab: function() {
-          alert('coming soon');
+          // console.log("ID",this.bugID)
+          var url = document.URL +'/bugs/'+this.bugID;
+          $window.open(url);
+          // alert('coming soon');
         }
       }
     }

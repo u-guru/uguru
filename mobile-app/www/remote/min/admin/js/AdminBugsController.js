@@ -345,6 +345,15 @@ angular.module('uguru.admin')
         })
       }
     }
+    function getReportIndexByID(id){
+        for(var i = 0; i < $scope.bugReport.length ; ++i)
+        {
+          if ($scope.bugReport[i].bugID === parseInt(id)){
+            return i;
+          }
+        }
+        return;
+    }
 
     $timeout(function() {
       loadUpdatedBugsJsonFile($scope);
@@ -354,7 +363,13 @@ angular.module('uguru.admin')
       if (!oldNames && newNames){
         console.log("Data is Load",newNames)
         intData();
-        $scope.openBugList($scope.bugReport[0]);
+        $scope.indexOfSection = getReportIndexByID(document.URL.split('admin/bugs/')[1]);
+        if ($scope.indexOfSection){
+          $scope.openBugList($scope.bugReport[$scope.indexOfSection]);
+        }
+        else{
+          $scope.openBugList($scope.bugReport[0]);
+        }        
         // $scope.openBugList({name:'',bugs:[],help:{}})
         $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
         ReportService.saveBug($scope.bugReport);
