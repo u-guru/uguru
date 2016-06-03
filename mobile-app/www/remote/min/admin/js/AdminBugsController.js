@@ -33,6 +33,24 @@ angular.module('uguru.admin')
           });
         };
 })
+.filter('selectFixed',function(){
+    return function(bugs) {
+            return bugs.filter(function(bug) {
+                //no filter if tags is empty
+
+                if (bug.fix && bug.fix.isFixed){
+                  return true;
+                }
+                // for (var i in bug.platforms) {
+                //     if (platforms.indexOf(bug.platforms[i]) !== -1) {
+                //         return true;
+                //     }
+                // }
+                return false;
+
+            });
+          };
+})
 .controller('AdminBugsController', [
   //All imported packages go here
   '$scope',

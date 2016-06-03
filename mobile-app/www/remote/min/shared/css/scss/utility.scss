@@ -187,6 +187,14 @@ input, fieldset {
 	border: 0;
 }
 
+.fix-abs {
+	* {
+		&.fixed {
+			position: absolute!important;
+		}
+	}
+}
+
 .no-scrollbar {
 	&::-webkit-scrollbar {
 		display: none;

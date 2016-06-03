@@ -1,4 +1,4 @@
-angular.module('uguru.util.controllers')
+angular.module('uguru.preApp')
 .controller('GabrielleController', [
   '$scope',
   '$timeout',

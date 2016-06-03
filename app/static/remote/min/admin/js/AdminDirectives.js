@@ -8,6 +8,7 @@ angular.module('uguru.admin')
             replace: true,
             restrict: 'E',
             link: function(scope, element, attr) {
+                return
             }
         }
     }

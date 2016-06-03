@@ -13,6 +13,42 @@
 	}
 }
 
+.component-item {
+	> div:nth-child(2) {
+		height: 200px;
+		border-top: 0;
+		border-color: mix($cobalt, $slate, 25%);
+		background: lighten($slate, 25%);
+	}
+	> a:nth-child(1) {
+		display: block;
+		h1 {
+			background: mix($cobalt, $slate, 25%);
+		}
+		&:hover, &:focus {
+			h1 {
+				background: $moxie!important;
+			}
+			+ div {
+				border-color: $moxie!important;
+			}
+		}
+		&:active {
+			h1 {
+				background: $robin!important;
+			}
+			+ div {
+				border-color: $robin!important;
+			}
+		}
+	}
+	&.large {
+		> div:nth-child(2) {
+			min-height: 300px;
+		}
+	}
+}
+
 // html
 .admin-html {
 	h2 {

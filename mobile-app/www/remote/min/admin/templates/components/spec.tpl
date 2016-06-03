@@ -1,4 +1,4 @@
-<div class='high-z-index'>
+<div class='high-z-index' style='min-height:10% !important;'>
     <div id="dev-spec" class='top-0 left-0 fixed full-x bg-smoke animated slideInDown' ng-class="{'z-index-1000': spec.toggleSpec}" ng-if="spec.toggleSpec" style='height: calc(100% - 132px);'>
         <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">
             <div class="bg-slate txt-center">

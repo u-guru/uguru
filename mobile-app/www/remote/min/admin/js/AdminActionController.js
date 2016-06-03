@@ -98,6 +98,7 @@ angular.module('uguru.admin')
     }
 
     for (var i = 0; i < $scope.user_workflows.length; i++) {
+      if (!$scope.user) break;
       var indexWF = $scope.user_workflows[i];
       if (indexWF.members && indexWF.members.length) {
         for (var j =0; j < indexWF.members.length; j++) {
