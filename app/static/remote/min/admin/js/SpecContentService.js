@@ -18,9 +18,9 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
               {
                 title: 'User selects a splash tag',
                 controller: 'SplashMadlibController',
-                routes: getRoutes('splash', 'splash.html'),
-                spec: getSpec('splash'),
-                bugs: getBugInfo('splash')
+                routes: getRoutes('dev/splash/madlib', 'preapp/templates/splash.madlib.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('madlib')
               },
               {
                 title: 'General Calendar',
@@ -32,9 +32,9 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
               {
                 title: 'Jeselle Portfolio',
                 controller: 'JeselleController',
-                routes: getRoutes('jeselle', 'jeselle/index.html', 'controllers/util/JeselleController.js'),
-                spec: getSpec('calendar'),
-                bugs: getBugInfo('calendar'),
+                routes: getRoutes('dev/jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js'),
+                spec: getSpec('jeselle'),
+                bugs: getBugInfo('jeselle'),
                 members: ['jeselle:priority', 'samir', 'gabrielle:complete', 'jason']
               },
               {
@@ -44,6 +44,12 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 spec: getSpec('calendar'),
                 bugs: getBugInfo('calendar'),
                 members: ['jeselle']
+              },
+              {
+                title: 'splash',
+                dependencies: ['FakeDataService'],
+                controller: 'SplashController',
+                bugs: getBugInfo('splash')
               },
               {
                 title: 'GenericGuruProfile',
@@ -173,7 +179,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
 
     function getRoutes(param, template_url, ctrl_url) {
     var defaultRoutes = {
-          local: 'http://192.168.12.65/',
+          local: '/#/',
           staging: 'https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/'
         }
         var localUrl = defaultRoutes.local + param;
@@ -191,10 +197,19 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
     }
 
     function getBugInfo(wkflow_name) {
+      var id = 0;
+      // console.log($scope)
+      for (var i = 0; i < wkflow_name.length ; ++ i) {
+        id += wkflow_name.charCodeAt(i);
+      }
       return {
         count: 1,
+        bugID: id,
         launchBugTab: function() {
-          alert('coming soon');
+          // console.log("ID",this.bugID)
+          var url = document.URL +'/bugs/'+this.bugID;
+          $window.open(url);
+          // alert('coming soon');
         }
       }
     }

@@ -83,7 +83,11 @@ angular.module('uguru.shared.directives')
         iter_count: attr.traceIterCount || '1',
         direction: attr.traceDirection || 'normal',
         fill_mode: attr.traceFillMode || 'forwards',
-        anim_name: attr.traceAnimName || (element[0].id + '-' + element[0].nodeName)
+        anim_name: attr.traceAnimName || (element[0].id + '-' + element[0].nodeName),
+        should_rotate: (attr.traceRotate && attr.traceRotate === 'true') || (!attr.traceRotate && true)
+      }
+      if (!options.should_rotate) {
+        console.log('element has explicitly set should rotate to false', element[0]);
       }
 
       var pathElem = document.querySelector(elementToTraceSelector);
@@ -107,7 +111,7 @@ angular.module('uguru.shared.directives')
           $timeout(function() {
 
           })
-          var cssAnimObj = SVGService.generateCSSObjFromPath(animName, pathElem, elemOffset);
+          var cssAnimObj = SVGService.generateCSSObjFromPath(animName, pathElem, elemOffset, options.should_rotate);
           console.log(cssAnimObj.cssText);
           var cssAnimObjString = [animName, options.duration, options.time_function, options.delay, options.iter_count, options.direction, options.fill_mode].join(' ');
 

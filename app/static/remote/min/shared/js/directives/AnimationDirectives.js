@@ -41,7 +41,10 @@ angular.module('uguru.shared.directives')
       scope.$watch(function() {
           return element.attr('class');
         }, function(new_class) {
-          if (new_class.indexOf('activate-hover') > -1) {
+          if (!new_class) {
+            element[0].className = ''
+          }
+          if (new_class && new_class.indexOf('activate-hover') > -1) {
             element[0].classList.remove('activate-hover');
             AnimationService.animateIn(element[0], hoverAnim, null);
           }
@@ -80,40 +83,54 @@ angular.module('uguru.shared.directives')
         iter_count: attr.traceIterCount || '1',
         direction: attr.traceDirection || 'normal',
         fill_mode: attr.traceFillMode || 'forwards',
-        anim_name: attr.traceAnimName || (element[0].id + '-' + element[0].nodeName)
+        anim_name: attr.traceAnimName || (element[0].id + '-' + element[0].nodeName),
+        should_rotate: (attr.traceRotate && attr.traceRotate === 'true') || (!attr.traceRotate && true)
+      }
+      if (!options.should_rotate) {
+        console.log('element has explicitly set should rotate to false', element[0]);
       }
 
       var pathElem = document.querySelector(elementToTraceSelector);
       var traceParent = document.querySelector(elementToAppendChild);
       var parentDrawShape = findParentDrawShape(pathElem);
-      console.log('parentDrawShape', parentDrawShape);
-      if (!pathElem || !traceParent || !parentDrawShape) {
-        console.log('ERROR: could not find elements with selector:', !pathElem && elementToTraceSelector, !traceParent && elementToAppendChild);
-        return;
-      }
-      var animName = options.anim_name;
-      var elemOffset = SVGService.getShapeWidthHeight(element[0]).width;
-      $timeout(function() {
 
-      })
-      var cssAnimObj = SVGService.generateCSSObjFromPath(animName, pathElem, elemOffset);
-      console.log(cssAnimObj.cssText);
-      var cssAnimObjString = [animName, options.duration, options.time_function, options.delay, options.iter_count, options.direction, options.fill_mode].join(' ');
-
-      traceParent.appendChild(element[0]);
-      $timeout(function() {
-        parentDrawShape.classList.add('activate');
-        scope.$apply()
-        element[0].style.animation = cssAnimObjString;
-        element[0].style.webkitAnimation = cssAnimObjString;
-        element[0].addEventListener( 'webkitAnimationEnd', animEndCallback)
-        function animEndCallback() {
-          element[0].offsetWidth = element[0].offsetWidth;
-          element[0].style.animation = null;
-          element[0].style.webkitAnimation = null;
-          element[0].removeEventListener('webkitAnimationEnd', animEndCallback);
+      scope.$watch(function() {
+          return element.attr('class');
+      }, function(new_class, old_class) {
+        if (!new_class) {
+          return;
         }
-      });
+        if (new_class.indexOf('trace-activate') > -1) {
+          element[0].classList.remove('trace-activate');
+          if (!pathElem || !traceParent || !parentDrawShape) {
+            console.log('ERROR: could not find elements with selector:', !pathElem && elementToTraceSelector, !traceParent && elementToAppendChild);
+            return;
+          }
+          var animName = options.anim_name;
+          var elemOffset = SVGService.getShapeWidthHeight(element[0]).width;
+          $timeout(function() {
+
+          })
+          var cssAnimObj = SVGService.generateCSSObjFromPath(animName, pathElem, elemOffset, options.should_rotate);
+          console.log(cssAnimObj.cssText);
+          var cssAnimObjString = [animName, options.duration, options.time_function, options.delay, options.iter_count, options.direction, options.fill_mode].join(' ');
+
+          traceParent.appendChild(element[0]);
+          $timeout(function() {
+            parentDrawShape.classList.add('activate');
+            scope.$apply()
+            element[0].style.animation = cssAnimObjString;
+            element[0].style.webkitAnimation = cssAnimObjString;
+            element[0].addEventListener( 'webkitAnimationEnd', animEndCallback)
+            function animEndCallback() {
+              element[0].offsetWidth = element[0].offsetWidth;
+              element[0].style.animation = null;
+              element[0].style.webkitAnimation = null;
+              element[0].removeEventListener('webkitAnimationEnd', animEndCallback);
+            }
+          });
+        }
+      })
     }
   }
     function findParentDrawShape(elem) {
