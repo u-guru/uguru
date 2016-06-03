@@ -166,7 +166,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             layout                : "right", // top | left | right
             html                  : '',
             html_pre_processor    : "",
-            css                   : "html { color: red; }",
+            css                   : ".scroll { height: inherit; }",
             css_pre_processor     : "none",
             css_starter           : "neither",
             css_prefix            : "none",
@@ -332,8 +332,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         var specTokens = {'calendar': 'ddd2f97039f2fec817d52499dd3c00ac', 'madlib': '5c0ecd57c10973ddfe65af113522a809', 'jeselle': '98f138f534428eb8af27ea5c2b6944ef', 'gabrie': '9d8ddaef35241c63a3a95032485bf645'};
         if (Object.keys(specTokens).indexOf(_id) > -1) {
             return getSpecObj(specTokens[_id], template_url, ctrl_url)
+        } else {
+            return getSpecObj('98f138f534428eb8af27ea5c2b6944ef', template_url, ctrl_url)
         }
-        return
     }
 
 }

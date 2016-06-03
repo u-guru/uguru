@@ -166,7 +166,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             layout                : "right", // top | left | right
             html                  : '',
             html_pre_processor    : "",
-            css                   : "html { color: red; }",
+            css                   : ".scroll { height: inherit; }",
             css_pre_processor     : "none",
             css_starter           : "neither",
             css_prefix            : "none",
@@ -333,7 +333,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         if (Object.keys(specTokens).indexOf(_id) > -1) {
             return getSpecObj(specTokens[_id], template_url, ctrl_url)
         } else {
-            return getSpecObj('5c0ecd57c10973ddfe65af113522a809', template_url, ctrl_url)
+            return getSpecObj('98f138f534428eb8af27ea5c2b6944ef', template_url, ctrl_url)
         }
     }
 
