@@ -2,13 +2,18 @@ angular
 .module('uguru.admin')
 .factory("SpecContentService", [
   '$state',
+  '$window',
   '$timeout',
   '$localstorage',
   '$window',
   SpecContentService
   ]);
 
+<<<<<<< HEAD
 function SpecContentService($state, $timeout, $localstorage, $window) {
+=======
+function SpecContentService($state,$window, $timeout, $localstorage) {
+>>>>>>> 710c343bc293af7624ca9c307346c7c62702ba3e
     var allSpecs = {};
     var allAdminSpecs = {};
 
@@ -44,6 +49,12 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 spec: getSpec('calendar'),
                 bugs: getBugInfo('calendar'),
                 members: ['jeselle']
+              },
+              {
+                title: 'splash',
+                dependencies: ['FakeDataService'],
+                controller: 'SplashController',
+                bugs: getBugInfo('splash')
               },
               {
                 title: 'GenericGuruProfile',
@@ -191,10 +202,19 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
     }
 
     function getBugInfo(wkflow_name) {
+      var id = 0;
+      // console.log($scope)
+      for (var i = 0; i < wkflow_name.length ; ++ i) {
+        id += wkflow_name.charCodeAt(i);
+      }
       return {
         count: 1,
+        bugID: id,
         launchBugTab: function() {
-          alert('coming soon');
+          // console.log("ID",this.bugID)
+          var url = document.URL +'/bugs/'+this.bugID;
+          $window.open(url);
+          // alert('coming soon');
         }
       }
     }
