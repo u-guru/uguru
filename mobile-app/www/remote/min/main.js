@@ -62,12 +62,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     templateUrl: 'admin/templates/index.html',
   })
   .state('root.jeselle', {
-    url:'/jeselle',
-    // controller: 'JeselleController',
+    url:'/dev/jeselle',
     templateUrl: 'jeselle/templates/index.html',
+    controller: 'JeselleController'
   })
   .state('root.gabrie', {
-    url:'/gabrie',
+    url:'dev/gabrie',
     // controller: 'GabrielleController',
     templateUrl: 'gabrielle/templates/index.html',
   });

@@ -4,10 +4,11 @@ angular
   '$state',
   '$timeout',
   '$localstorage',
+  '$window',
   SpecContentService
   ]);
 
-function SpecContentService($state, $timeout, $localstorage) {
+function SpecContentService($state, $timeout, $localstorage, $window) {
     var allSpecs = {};
     var allAdminSpecs = {};
 
@@ -16,7 +17,7 @@ function SpecContentService($state, $timeout, $localstorage) {
             "workflows":[
               {
                 title: 'User selects a splash tag',
-                controller: 'SplashController',
+                controller: 'SplashMadlibController',
                 routes: getRoutes('splash', 'splash.html'),
                 spec: getSpec('splash'),
                 bugs: getBugInfo('splash')

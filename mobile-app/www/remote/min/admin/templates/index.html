@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <ul class='p15-grid flex-center-vertical txt-center' ng-init='layout.index = 7;'>
+                <ul class='p15-grid flex-center-vertical txt-center' ng-init='layout.index = 3;'>
                     <li>
                         <user-icon ng-if='adminUser && adminUser.profile_url' size="48" url="adminUser.profile_url"> </user-icon>
                     </li>
@@ -51,6 +51,12 @@
                     </li>
                     <li>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 8}" ng-click='layout.index = 8'><i class='icon ion-wand txt-white txt-7'></i></a>
+                    </li>
+                    <li class='relative flex-wrap-center'>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 9}" ng-click='layout.index = 9'><i class='icon ion-code txt-white txt-7'></i></a>
+                        <span class='bg-moxie z-index-1000 round bottom-0 right-0 absolute' style='padding:3.5px 5px 3px 6px;'>
+                            <i class='icon ion-plus txt-white txt-3'></i>
+                        </span>
                     </li>
                     <li ng-if='player.status === 1'>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="root.base_url + 'shared/templates/components/svg/main/pause.html'">Pause</a>

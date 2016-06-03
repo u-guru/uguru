@@ -38,7 +38,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data = obj;
             calcUseCasesCompletedness(specObj.data.use_cases)
             //@gabrielle note
-            specObj.data.toggleDev = false;
+            specObj.data.toggleDev = true;
             specObj.data.toggleSpec = false;
             specObj.data.mobile = {width:400, height:768, show:false, template:specObj.template_path, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
             specObj.data.open = specObj.open;
@@ -61,6 +61,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specElem.setAttribute('data', param + '.spec.data');
             if (elem) {
                 elem.parentNode.appendChild(specElem)
+                console.log(specElem);
                 $timeout(function() {
                     $compile(specElem)(real_scope);
                 })
@@ -156,12 +157,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         $timeout(function() {
             loadHTMLSpec(scope, template_url, ctrl_path)
         })
-        var base_url;
-        if (window.location.href.split(':8100').length > 1) {
-          base_url = window.location.href.split('#/')[0];
-        } else {
-          base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
-        }
+        var base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
         return {
             title                 : title,
             description           : "Most updated version",
@@ -175,10 +171,10 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             css_pre_processor     : "none",
             css_starter           : "neither",
             css_prefix            : "none",
-            js                    : "//import this extra file manually https://codepen.io/teamuguru/pen/ONePXN.js",
+            js                    : "",
             js_pre_processor      : "none",
             html_classes          : null,
-            head                  : '<meta charset="utf-8"> <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> <title></title> <script src="' + base_url + 'util/base.js"></script> <script src="' + base_url + 'util/base.main.js"></script> <script src="' + base_url + ctrl_path + '"></script>',
+            head                  : '<meta charset="utf-8"><meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"><title></title><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script>',
             css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css",
             js_external           : '',
             css_pre_processor_lib : null,
@@ -204,7 +200,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
 
         function wrapMinUguruHtml(response_html, relative_ctrl_url) {
-            return '<body ng-app="uguru" animation="slide-left-right-ios7"> <ui-view id="uguru-view"> <script type="text/ng-template" style="display:block !important;" id="demo.html"> ' + response_html + ' </script> </ui-view> </body>'
+            var result = '<body ng-app="uguru" animation="slide-left-right-ios7" > <ui-view id="uguru-view"> <script type="text/ng-template" id="demo.html"> ' + response_html +'</script> </ui-view> <script src="https://uguru-rest-test.herokuapp.com/static/remote/min/' + relative_ctrl_url + '"></script> </body>'
+            console.log(result);
+            return result;
         }
 
     }

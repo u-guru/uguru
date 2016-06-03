@@ -114,7 +114,7 @@ angular.module('uguru.shared.directives')
     }])
     .directive("checkbox", ['RootService', function(RootService) {
         return {
-            templateUrl: RootService.getBaseUrl() + 'shared/templates/components/checkbox.tpl',
+            templateUrl: 'shared/templates/components/checkbox.tpl',
             scope: {
                 onChecked: '=onChange',
                 label: '=label',
