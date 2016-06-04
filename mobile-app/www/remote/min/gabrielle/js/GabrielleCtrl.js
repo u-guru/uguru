@@ -11,13 +11,11 @@ angular.module('uguru.preApp')
 function GabrielleController($scope, $timeout, $state, KeyboardService, SpecService) {
 
 
-    function switchState(index) {
+    var gabrielle = this;
+    var states = {};
 
-    }
-    $scope.switchState = switchState;
-
-    function pauseTimer() {
-
-    };
-    SpecService.initSpec($scope, '#gabrie', 'gabrie', 'gabrie/index.html', 'controllers/util/GabrielleCtrl.js');
+    gabrielle.spec = {data: {toggleDev:false, toggleSpec: false}};
+    $timeout(function() {
+      SpecService.initSpec(gabrielle, $scope, '#gabrie-view', 'gabrielle', 'gabrielle/templates/index.html', 'gabrielle/js/GabrielleController.js', states)
+    }, 1000);
 }
