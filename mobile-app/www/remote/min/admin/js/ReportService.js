@@ -11,7 +11,7 @@ function ReportService($timeout,FileService,LoadingService,$q) {
     var bugReport
     var states
     var caches 
-
+    var defaultEnvi= []
     /**
     * Redeem the data from amazons services
     *   

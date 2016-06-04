@@ -91,8 +91,15 @@ angular.module('uguru.admin')
       console.log(index);
       $scope.bugs.splice(index,1);
       $scope.saveBug();
+      $scope.editMode();
       $scope.closeBug();      
     };    
+    $scope.removeSection = function(index){
+      console.log(index);
+      $scope.bugReport.splice(index,1);
+      console.log($scope.bugReport);
+    }
+
     $scope.addBug = function(){
       function checkTitleRepeat(title,bugs){
         for (var i = 0; i< bugs.length; ++i){
@@ -106,6 +113,7 @@ angular.module('uguru.admin')
       if (!checkTitleRepeat($scope.selectedBug.title,$scope.bugs)){
         $scope.bugs.push($scope.selectedBug);
         $scope.saveBug();
+        $scope.editMode();
         $scope.closeBug();
       }
       else{
@@ -113,7 +121,6 @@ angular.module('uguru.admin')
       }
     };
     $scope.saveBug = function(){
-      $scope.editMode();
       // console.log($scope.bugReport);
       FileService.postS3JsonFile(JSON.stringify($scope.bugReport), null ,
                                  'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
@@ -386,9 +393,9 @@ angular.module('uguru.admin')
         console.log("Data is Load",newNames)
         intData();
         $scope.indexOfSection = getReportIndexByID(document.URL.split('admin/bugs/')[1]);
+        console.log( $scope.indexOfSection)
         if ($scope.indexOfSection){
           $scope.openBugList($scope.bugReport[$scope.indexOfSection]);
-
         }
         else{
           $scope.openBugList($scope.bugReport[0]);
@@ -403,7 +410,7 @@ angular.module('uguru.admin')
           console.log("Data is Update",newNames)
          // $scope.openBugList($scope.bugReport[$scope.bugReport.length-1]);
          $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
-
+         $scope.saveBug();
       }
     });
 
