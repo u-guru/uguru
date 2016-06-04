@@ -47,6 +47,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path)
             specObj.data.openGDoc = openGDocSpecFunc(specObj.data.gdoc);
             for (specProp in specObj) {
+                console.log(specObj);
                 scope.spec[specProp] = specObj[specProp]
             }
             elem = document.querySelector(parent_container);

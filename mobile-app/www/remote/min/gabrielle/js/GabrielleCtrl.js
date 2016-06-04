@@ -5,10 +5,10 @@ angular.module('uguru.preApp')
   '$state',
   'KeyboardService',
   'SpecService',
-  JeselleController
+  GabrielleController
   ]);
 
-function JeselleController($scope, $timeout, $state, KeyboardService, SpecService) {
+function GabrielleController($scope, $timeout, $state, KeyboardService, SpecService) {
 
 
     function switchState(index) {
