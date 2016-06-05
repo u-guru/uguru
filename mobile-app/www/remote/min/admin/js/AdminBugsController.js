@@ -416,8 +416,10 @@ angular.module('uguru.admin')
 
         if ($localstorage.getObject('advanceSearch')!=='[]'){
           var cache = $localstorage.getObject('advanceSearch');
-          $scope.advanceSearch.platforms.list = cache.platforms.list;
-          $scope.advanceSearch.tags.list = cache.tags.list;
+          if (cache && cache.length !== 0){
+              $scope.advanceSearch.platforms.list = cache.platforms.list;
+              $scope.advanceSearch.tags.list = cache.tags.list;
+          }
           console.log('Reset',$scope.advanceSearch);
         }
         for (var i = 0; i < $scope.bugReport.length; ++ i) {
