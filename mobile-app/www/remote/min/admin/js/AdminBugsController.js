@@ -263,7 +263,38 @@ angular.module('uguru.admin')
         $scope.selectedBug.tags.push(newTag);
       }
       return ''
-    }
+    };
+
+    $scope.isAllEnvirPassed= function(env){
+      // var env = $scope.bugReport[index].envir
+      var waitForTest = 0;
+      var failed= 0;
+
+      for (var i = 0; i < env.length; ++ i){
+        if (env[i].isPassed === -1){
+          waitForTest ++;
+        }
+        else if (env[i].isPassed === 0){
+          failed ++;
+        }
+      }
+      var str = '';
+      if (failed !== 0){
+        str += failed + ' failed';
+      }
+      if (waitForTest !==0){
+        str += waitForTest + ' need to get test';
+      }
+      if (str.length !== 0){
+        return str;
+      }
+      console.log("check",str)
+      return 'ALL PASSED';
+
+    };
+
+
+
     function setErrorMsg(desc){
       $scope.error_msg = desc;
       $timeout(function() {
@@ -316,6 +347,43 @@ angular.module('uguru.admin')
       }
       return id;
     }
+    function getDefaultEnvir(){
+          var platformsName = ['chrome','firefox','safari','android','ios','android-chrome','ios-safari'];
+          var screenSize = ['small','medium','large','extraLarge'];
+          var device = ['desktop','mobile'];
+          var environment = [];
+          for( var k = 0; k < device.length; ++k){
+            for ( var i = 0; i < platformsName.length; ++i ){
+                  if (  
+                      (device[k]!=='desktop' && platformsName[i].indexOf('ios') === 0)  ||
+                      (device[k]!=='desktop' && platformsName[i].indexOf('android') ===0)
+                      ){
+                      environment.push({
+                        name: platformsName[i],
+                        screenSize: null,
+                        device: device[k],
+                        isPassed: -1
+                      });
+                  }
+              for ( var j = 0; j < screenSize.length; ++j ){
+                  if (
+                      (device[k] === 'mobile' || screenSize[j] !== 'extraLarge') &&
+                      platformsName[i].indexOf('android') === -1 &&
+                      platformsName[i].indexOf('ios') === -1
+                      )
+                  {
+                    environment.push({
+                      name: platformsName[i],
+                      screenSize: screenSize[j],
+                      device: device[k],
+                      isPassed: -1
+                    });
+                  }
+              }
+            }
+          }
+          return environment
+    }
     function linkReport(object){
       var id = genUniqueID(object.title);
       for (var i = 0; i < $scope.bugReport.length; ++ i) {
@@ -323,7 +391,7 @@ angular.module('uguru.admin')
           return;
         }
       }
-      return {name:object.title,bugID:id,bugs:[],help:{}};
+      return {name:object.title,bugID:id,bugs:[],help:{},envir:getDefaultEnvir()};
     }
     function intData(){
     
@@ -355,6 +423,9 @@ angular.module('uguru.admin')
         for (var i = 0; i < $scope.bugReport.length; ++ i) {
           if(!$scope.bugReport[i].bugID){
            $scope.bugReport[i].bugID =  genUniqueID($scope.bugReport[i].name);
+          }
+          if(!$scope.bugReport[i].envir){
+            $scope.bugReport[i].envir = getDefaultEnvir();
           }
         }
     }

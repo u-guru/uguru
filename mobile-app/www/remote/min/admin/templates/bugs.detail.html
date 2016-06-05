@@ -72,15 +72,12 @@
 		<div class="ugrid-2" style="height: calc(100% - 54px - 158px - 66px)">
 			<ul class="bg-charcoal full-y overflow-auto p15-grid no-scrollbar">
 				<li class="flex-stretch">
-					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">file&nbsp;names</span>
-					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selectedBug.file_names}}</span>
-					<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selectedBug.file_names' ng-if='isEditMode' ></input>
+					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">step</span>
+					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selectedBug.step}}</span>
 				</li>
-
 				<li class="flex-stretch">
-					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">file&nbsp;type</span>
-					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selectedBug.file_type}}</span>
-					<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selectedBug.file_type' ng-if='isEditMode' ></input>
+					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">error&nbsp;msg</span>
+					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selectedBug.error_msg}}</span>
 				</li>
 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">notes</span>
@@ -129,10 +126,16 @@
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">impact&nbsp;file</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selectedBug.impact_file}}</span>
 				</li> -->
+				<li class="flex-stretch">
+					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">file&nbsp;names</span>
+					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selectedBug.file_names}}</span>
+					<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selectedBug.file_names' ng-if='isEditMode' ></input>
+				</li>
 
 				<li class="flex-stretch">
-					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">error&nbsp;msg</span>
-					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selectedBug.error_msg}}</span>
+					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">file&nbsp;type</span>
+					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selectedBug.file_type}}</span>
+					<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selectedBug.file_type' ng-if='isEditMode' ></input>
 				</li>
 			</ul>
 			<div class="full-y bg-slate overflow-auto no-scrollbar">
