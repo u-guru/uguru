@@ -14,18 +14,19 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
     allSpecs.preApp = {
             "workflows":[
               {
-                title: 'User selects a splash tag',
+                title: 'pre-splash',
                 controller: 'SplashMadlibController',
                 routes: getRoutes('dev/splash/madlib', 'preapp/templates/splash.madlib.html'),
                 spec: getSpec('madlib'),
                 bugs: getBugInfo('madlib')
               },
               {
-                title: 'General Calendar',
+                title: 'splash',
                 controller: 'CalendarController',
                 routes: getRoutes('calendar', 'calendar.html', 'controllers/util/CalendarCtrl.js'),
                 spec: getSpec('calendar'),
-                bugs: getBugInfo('calendar')
+                bugs: getBugInfo('calendar'),
+
               },
               {
                 title: 'Jeselle Portfolio',
