@@ -112,7 +112,7 @@ angular.module('uguru.shared.directives')
 
           })
           var cssAnimObj = SVGService.generateCSSObjFromPath(animName, pathElem, elemOffset, options.should_rotate);
-          console.log(cssAnimObj.cssText);
+
           var cssAnimObjString = [animName, options.duration, options.time_function, options.delay, options.iter_count, options.direction, options.fill_mode].join(' ');
 
           traceParent.appendChild(element[0]);
@@ -280,7 +280,7 @@ angular.module('uguru.shared.directives')
         if (element[0].classList.contains('activate')) {
 
           element[0].classList.remove('activate')
-
+          console.log('this was activated', element[0])
           var delay = attr.onActivate || 0;
           var classes = attr.onActivate.split(", ");
           // $timeout(function() {
@@ -288,6 +288,7 @@ angular.module('uguru.shared.directives')
                 var indexClass = classes[i].split(":")[0];
                 var classArgs = classes[i].split(":").slice(1);
                 var elemArgDict = parseElemStateAttrValueArgs(classArgs);
+                console.log('this was activated', classes[i], classArgs, elemArgDict);
                 if (elemArgDict.unique) {
                 //   $timeout(function() {
                     var elemsThatAlreadyHaveClass = document.querySelectorAll('.' + indexClass) || [];
@@ -338,10 +339,17 @@ angular.module('uguru.shared.directives')
                 //     }
                 //   }
                 // }
-                if (elemArgDict.inject_elems) {
+                if (elemArgDict.inject_elems && !elemArgDict.delay) {
                   for (var k = 0; k < elemArgDict.inject_elems.length; k++) {
                     elemArgDict.inject_elems[k].classList.add(elemArgDict.inject_class);
                   }
+                } else if (elemArgDict.inject_elems && elemArgDict.delay) {
+                  console.log('injecting...', elemArgDict.inject_class);
+                  $timeout(function() {
+                    for (var k = 0; k < elemArgDict.inject_elems.length; k++) {
+                      elemArgDict.inject_elems[k].classList.add(elemArgDict.inject_class);
+                    }
+                  }, parseInt(elemArgDict.delay));
                 }
               }
           // }, delay);
@@ -356,16 +364,16 @@ angular.module('uguru.shared.directives')
             })
           }
 
-          function classArgsHasInject(args) {
-            var injectArg = null;
-            args.forEach.call(function(word, index) {
-              if (word.indexOf("inject") > -1) {
-                injectArg = args[index];
-                return true
-              };
-            })
-            return (injectArg && injectArg.replace("inject", ""));
-          }
+          // function classArgsHasInject(args) {
+          //   var injectArg = null;
+          //   args.forEach.call(function(word, index) {
+          //     if (word.indexOf("inject") > -1) {
+          //       injectArg = args[index];
+          //       return true
+          //     };
+          //   })
+          //   return (injectArg && injectArg.replace("inject", ""));
+          // }
         }
       })
     }
@@ -771,11 +779,13 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                 return element.attr('class');
               }, function(newValue, oldValue) {
                 for (var i = 0; i < processedElemStates.length; i++) {
+
                   if (newValue.split(' ').indexOf(processedElemStates[i]) > -1) {
                     element[0].classList.remove(processedElemStates[i]);
                     var elemStateValue = attr[camelCase(processedElemStates[i])];
                     var elemStateClass = elemStateValue.split(':')[0];
                     var elemArgDict = parseElemStateAttrValueArgs(elemStateValue.split(':').splice(1));
+
                     if (elemArgDict.unique) {
                     //   $timeout(function() {
                         var elemsThatAlreadyHaveClass = document.querySelectorAll('.' + elemStateClass) || [];
@@ -786,15 +796,19 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                     // console.log(element[0], elemArgDict.unique, elemStateClass);
                     }
                     if (elemArgDict.animateIn) {
-                      console.log('animating in', element[0].nodeName, elemStateClass, elemArgDict.delay, '\n\n', element[0])
+
                       AnimationService.animateIn(element[0], elemStateClass, elemArgDict.delay);
                     } else if (elemArgDict.animateOut) {
-                      console.log('animating out', element[0].nodeName, elemStateClass, elemArgDict.delay, '\n\n', element[0])
+
                       AnimationService.animateOut(element[0], elemStateClass, elemArgDict.delay);
                     } else if (elemArgDict.animate) {
-                      console.log('animating', element[0].nodeName, elemStateClass, elemArgDict.delay, '\n\n', element[0])
+
                       console.log(elemClassAnimDict);
                       AnimationService.animate(element[0], elemStateClass, elemClassAnimDict[processedElemStates[i]], elemArgDict.delay || 0);
+                    }
+                    else if (elemStateClass && elemStateClass.length && elemStateClass !== 'null') {
+
+                      element[0].classList.add(elemStateClass);
                     }
 
                     if (elemArgDict.inject_elems) {
@@ -944,14 +958,17 @@ function camelCase(input) {
 }
 
 function classArgsHasInject(args) {
-  return args && args.length && (args.split('inject').length > 1) && args.replace("inject", "");
+
+  return args && args.length && (args.split('inject').length > 1);
 }
 
 function parseElemStateAttrValueArgs(arg_arr) {
     var resultDict = {};
     for (var i = 0; i < arg_arr.length; i++) {
       var indexArg = arg_arr[i];
+
       if (!indexArg || !indexArg.length) continue;
+
       if (indexArg === "animIn") {
         resultDict.animateIn = true;
       }
@@ -976,18 +993,18 @@ function parseElemStateAttrValueArgs(arg_arr) {
         }
         resultDict.unique = true;
       }
+      // var hasInject = classArgsHasInject(indexArg);
 
-      var hasInject = classArgsHasInject(indexArg);
-      if (hasInject && hasInject.length) {
-        var injectArgClassSplit = hasInject.split("|");
+      if (indexArg.indexOf('inject') > -1) {
+        indexArg = indexArg.replace("inject", "");
+        var injectArgClassSplit = indexArg.split("|");
         if (injectArgClassSplit.length > 1) {
           var classToInject = injectArgClassSplit[1];
           var elemToInjectSelector = injectArgClassSplit[0];
-          var elemsToInject = elemToInjectSelector && document.querySelectorAll(elemToInjectSelector + '[' + classToInject.substring(1) + ']');
+          var elemsToInject = elemToInjectSelector && document.querySelectorAll(elemToInjectSelector + '[' + classToInject + ']');
           if (elemsToInject && elemsToInject.length && elemToInjectSelector.length) {
             resultDict.inject_elems = elemsToInject;
-            resultDict.inject_class = classToInject.substring(1);
-            // console.log(resultDict.inject_elems, resultDict.inject_class);
+            resultDict.inject_class = classToInject;
           }
         }
       }

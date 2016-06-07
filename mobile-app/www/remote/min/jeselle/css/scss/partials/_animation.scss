@@ -60,20 +60,20 @@
 	}
 }
 
-.letter-m {
-	.letter-white-m-4,
-	.letter-color-m-4,
-	.letter-white-m-3,
-	.letter-color-m-3 {
-		stroke-dasharray: 42;
-	}
-	.letter-white-m-2,
-	.letter-color-m-2,
-	.letter-white-m-1,
-	.letter-color-m-1 {
-		stroke-dasharray: 55;
-	}
-}
+// .letter-m {
+// 	.letter-white-m-4,
+// 	.letter-color-m-4,
+// 	.letter-white-m-3,
+// 	.letter-color-m-3 {
+// 		stroke-dasharray: 42;
+// 	}
+// 	.letter-white-m-2,
+// 	.letter-color-m-2,
+// 	.letter-white-m-1,
+// 	.letter-color-m-1 {
+// 		stroke-dasharray: 55;
+// 	}
+// }
 
 .letter-n {
 	.letter-color-n-1,
@@ -199,30 +199,32 @@
 }
 .letter-m {
 	.enter-state.letter-white-m-4 {
-		stroke-dashoffset: 42;
-		animation: letter-42 1000ms cubic-bezier(0, .09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, .09, 0, 1) both;
-		animation-delay: 750ms;
+		// stroke-dashoffset: 42;
+		// animation: letter-42 1000ms cubic-bezier(0, .09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, .09, 0, 1) both;
+		// animation-delay: 750ms;
+
+
 	}
 	.enter-state.letter-white-m-3 {
-		stroke-dashoffset: 42;
-		animation: letter-42 1000ms cubic-bezier(0, .09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, .09, 0, 1) both;
-		animation-delay: 500ms;
+		// stroke-dashoffset: 42;
+		// animation: letter-42 1000ms cubic-bezier(0, .09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, .09, 0, 1) both;
+		// animation-delay: 500ms;
 	}
 	.enter-state.letter-white-m-2 {
-		animation: letter-55 1000ms cubic-bezier(0, .09, 0, 1) 250ms both, letter-opacity 1000ms cubic-bezier(0, .09, 0, 1) 250ms both;
-		stroke-dashoffset: 55;
+		// animation: letter-55 1000ms cubic-bezier(0, .09, 0, 1) 250ms both, letter-opacity 1000ms cubic-bezier(0, .09, 0, 1) 250ms both;
+		// stroke-dashoffset: 55;
 	}
 	.enter-state.letter-white-m-1 {
-		animation: letter-55 1000ms cubic-bezier(0, .09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, .09, 0, 1) both;
-		stroke-dashoffset: 55;
+		// animation: letter-55 1000ms cubic-bezier(0, .09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, .09, 0, 1) both;
+		// stroke-dashoffset: 55;
 	}
 	.enter-state.letter-m-1-mask {
 		transform: translate(23.5px, 62.6709px);
 		animation: letter-m-1-mask 1000ms cubic-bezier(0, .09, 0, 1) both;
 	}
 	.enter-state.letter-m-2-mask {
-		transform: translate(24.5229px, 62.6709px);
-		animation: letter-m-2-mask 1000ms cubic-bezier(0, .09, 0, 1) 250ms both;
+		// transform: translate(24.5229px, 62.6709px);
+		// animation: letter-m-2-mask 1000ms cubic-bezier(0, .09, 0, 1) 250ms both;
 	}
 }
 .letter-n {
@@ -286,6 +288,14 @@
 		transform: translate(42.2217px, 16.5px);
 		animation: letter-y-2-mask 1000ms cubic-bezier(0, .09, 0, 1) both;
 	}
+}
+
+.letter-55-with-opacity {
+	animation: letter-55 1000ms cubic-bezier(0, .09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, .09, 0, 1) both;
+}
+
+.letter-42-with-opacity {
+	animation: letter-42 1000ms cubic-bezier(0, .09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, .09, 0, 1) both;
 }
 
 /*---------- ON EXIT */

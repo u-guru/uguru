@@ -59,7 +59,7 @@ gulp.task('style', function() {
         .pipe(gulp.dest('preapp/css/compiled'));
 })
 
-gulp.task('start-sass', shell.task(['sass --watch www/remote/min/preapp/css/scss/:www/remote/min/preapp/css/compiled www/remote/min/shared/css/scss/:www/remote/min/shared/css/compiled www/remote/min/admin/css/scss/:www/remote/min/admin/css/compiled']));
+gulp.task('start-sass', shell.task(['sass --watch www/remote/min/preapp/css/scss/:www/remote/min/preapp/css/compiled www/remote/min/shared/css/scss/:www/remote/min/shared/css/compiled www/remote/min/gabrielle/css/scss/:www/remote/min/gabrielle/css/compiled www/remote/min/jeselle/css/scss/:www/remote/min/jeselle/css/compiled www/remote/min/admin/css/scss/:www/remote/min/admin/css/compiled']));
 // our main sequence, with some conditional jobs depending on params
 
 gulp.task('sass',function(done){

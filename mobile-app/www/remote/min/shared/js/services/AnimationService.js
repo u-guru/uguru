@@ -291,9 +291,6 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
         var cssClassArgs = getCSSArgs(css_class)
         elem.classList.remove('animated');
         if (delay) {
-          if (elem.classList.indexOf('letter-a-1-mask') > -1) {
-            alert('shouldnt be here');
-          }
           $timeout(function() {
               elem.classList.add('animated', cssClassArgs.class);
               prefixedEventListener(elem,"AnimationStart",function(e){

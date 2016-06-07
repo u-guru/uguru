@@ -40,17 +40,6 @@
 .letter-i path {
   stroke-dasharray: 14; }
 
-.letter-m .letter-white-m-4,
-.letter-m .letter-color-m-4,
-.letter-m .letter-white-m-3,
-.letter-m .letter-color-m-3 {
-  stroke-dasharray: 42; }
-.letter-m .letter-white-m-2,
-.letter-m .letter-color-m-2,
-.letter-m .letter-white-m-1,
-.letter-m .letter-color-m-1 {
-  stroke-dasharray: 55; }
-
 .letter-n .letter-color-n-1,
 .letter-n .letter-white-n-1 {
   stroke-dasharray: 70.0; }
@@ -136,26 +125,9 @@
   stroke-dashoffset: 14;
   animation: letter-i 500ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 500ms cubic-bezier(0, 0.09, 0, 1) both; }
 
-.letter-m .enter-state.letter-white-m-4 {
-  stroke-dashoffset: 42;
-  animation: letter-42 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, 0.09, 0, 1) both;
-  animation-delay: 750ms; }
-.letter-m .enter-state.letter-white-m-3 {
-  stroke-dashoffset: 42;
-  animation: letter-42 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, 0.09, 0, 1) both;
-  animation-delay: 500ms; }
-.letter-m .enter-state.letter-white-m-2 {
-  animation: letter-55 1000ms cubic-bezier(0, 0.09, 0, 1) 250ms both, letter-opacity 1000ms cubic-bezier(0, 0.09, 0, 1) 250ms both;
-  stroke-dashoffset: 55; }
-.letter-m .enter-state.letter-white-m-1 {
-  animation: letter-55 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, 0.09, 0, 1) both;
-  stroke-dashoffset: 55; }
 .letter-m .enter-state.letter-m-1-mask {
   transform: translate(23.5px, 62.6709px);
   animation: letter-m-1-mask 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
-.letter-m .enter-state.letter-m-2-mask {
-  transform: translate(24.5229px, 62.6709px);
-  animation: letter-m-2-mask 1000ms cubic-bezier(0, 0.09, 0, 1) 250ms both; }
 
 .letter-n .enter-state.letter-white-n-1 {
   stroke-dashoffset: 70.0;
@@ -200,6 +172,12 @@
 .letter-y .enter-state.letter-y-2-mask {
   transform: translate(42.2217px, 16.5px);
   animation: letter-y-2-mask 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
+
+.letter-55-with-opacity {
+  animation: letter-55 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
+
+.letter-42-with-opacity {
+  animation: letter-42 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
 
 /*---------- ON EXIT */
 @keyframes letter-opacity {

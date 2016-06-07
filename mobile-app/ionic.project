@@ -1,7 +1,7 @@
 {
   "name": "uguru-mobile",
   "app_id": "",
-  "gulpStartupTasks": ["start-sass", "watch"],
+  "gulpStartupTasks": ["start-sass"],
   "documentRoot": "www/remote/min",
 
   "watchPatterns": [
