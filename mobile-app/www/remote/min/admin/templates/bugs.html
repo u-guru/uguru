@@ -85,6 +85,7 @@
 
 					<!-- <li ng-repeat='bug in bugs  track by $index' ng-click='initAndLaunchBugCTA($event, bug,$index)'> -->
 						<a class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</a>
+						<label>{{bug.step}}</label>
 					</li>
 				</ul>
 				<ul ng-if="availableOptions.selectedIndex == 1" class="p15-grid">

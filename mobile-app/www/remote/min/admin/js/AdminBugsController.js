@@ -209,7 +209,7 @@ angular.module('uguru.admin')
           error_msg:null,
           impact_file:[],
           platforms:[],
-          tags:[]
+          tags:[],
         };
         $scope.backupBug = {};
         // $scope.selectedBug.index = -1;
@@ -392,6 +392,8 @@ angular.module('uguru.admin')
         }
       }
       return {name:object.title,bugID:id,bugs:[],help:{},envir:getDefaultEnvir()};
+      // return {name:object.title,bugID:id,bugs:[],help:{}};
+
     }
     function intData(){
     

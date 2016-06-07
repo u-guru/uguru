@@ -184,6 +184,16 @@
 					</ul>
 				</div>
 				<div class="error bg-crimson m15x p10y-p15x radius-2 txt-white semibold txt-18 hide" ng-class="{'show': error_msg}">{{error_msg}}</div>
+				<h1 class="p15x-p15top semibold">environment :</h1>
+				<div>
+					<ul>
+						<li ng-repeat="envir in selectedBug.envir">
+							{{envir.name}} {{envir.isPassed}}
+							<label>{{envir.device}}-{{envir.screenSize[0]}}</label>
+							<input style='height: 10px;width: 10px'type='checkbox'></input>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<div class="flex-space-between">
