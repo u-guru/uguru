@@ -1,30 +1,34 @@
+[class*="letter-55"] {
+  stroke-dasharray: 55;
+  animation: letter-55 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-fadeIn 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
+  [class*="letter-55"][class*="reverse"] {
+    animation: letter-55 1000ms cubic-bezier(0, 0.09, 0, 1) reverse both, letter-fadeOut 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
+
+[class*="letter-42"] {
+  stroke-dasharray: 42;
+  animation: letter-42 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-fadeIn 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
+  [class*="letter-42"][class*="reverse"] {
+    animation: letter-42 1000ms cubic-bezier(0, 0.09, 0, 1) reverse both, letter-fadeOut 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
+
+[class*="letter-14"] {
+  stroke-dasharray: 14;
+  animation: letter-14 500ms cubic-bezier(0, 0.09, 0, 1) both, letter-fadeIn 500ms cubic-bezier(0, 0.09, 0, 1) both; }
+  [class*="letter-14"][class*="reverse"] {
+    animation: letter-14 500ms cubic-bezier(0, 0.09, 0, 1) reverse both, letter-fadeOut 500ms cubic-bezier(0, 0.09, 0, 1) both; }
+
+[class*="letter-52"] {
+  stroke-dasharray: 52;
+  animation: letter-52 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-fadeIn 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
+  [class*="letter-52"][class*="reverse"] {
+    animation: letter-52 1000ms cubic-bezier(0, 0.09, 0, 1) reverse both, letter-fadeOut 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
+
+.m-1-mask-anim {
+  animation: letter-m-1-mask 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
+
+.m-2-mask-anim {
+  animation: letter-m-2-mask 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
+
 /*---------- DEFAULT */
-.letter-a .letter-white-a-3,
-.letter-a .letter-color-a-3 {
-  stroke-dasharray: 50; }
-.letter-a .letter-white-a-3,
-.letter-a .letter-color-a-3,
-.letter-a .letter-white-a-2,
-.letter-a .letter-color-a-2 {
-  stroke-dasharray: 65; }
-.letter-a .letter-white-a-1,
-.letter-a .letter-color-a-1 {
-  stroke-dasharray: 65; }
-.letter-a .letter-a-1-mask {
-  transform: translate(-1.6px, 79px); }
-.letter-a .letter-a-2-mask {
-  transform: translate(48.6003px, 79.9917px); }
-
-.letter-d .letter-color-d-1,
-.letter-d .letter-white-d-1 {
-  stroke-dasharray: 42; }
-.letter-d .letter-color-d-2,
-.letter-d .letter-white-d-2 {
-  stroke-dasharray: 51.6; }
-.letter-d .letter-color-d-3,
-.letter-d .letter-white-d-3 {
-  stroke-dasharray: 52.2; }
-
 .letter-e .letter-color-e-1,
 .letter-e .letter-white-e-1 {
   stroke-dasharray: 42.5; }
@@ -36,9 +40,6 @@
 .letter-e .letter-color-e-4,
 .letter-e .letter-white-e-4 {
   stroke-dasharray: 28.5; }
-
-.letter-i path {
-  stroke-dasharray: 14; }
 
 .letter-n .letter-color-n-1,
 .letter-n .letter-white-n-1 {
@@ -77,35 +78,6 @@
   stroke-dasharray: 11; }
 
 /*---------- ON ENTER */
-.enter-state[class*="color"], .enter-state[class*="white"] {
-  opacity: 0; }
-
-.letter-a .enter-state.letter-white-a-1 {
-  stroke-dashoffset: 65;
-  animation: letter-65 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
-.letter-a .enter-state.letter-white-a-2 {
-  stroke-dashoffset: 65;
-  animation: letter-65 1000ms cubic-bezier(0, 0.09, 0, 1) 250ms both, letter-opacity 1000ms cubic-bezier(0, 0.09, 0, 1) 250ms both; }
-.letter-a .enter-state.letter-white-a-3 {
-  stroke-dashoffset: 50;
-  animation: letter-50 1500ms cubic-bezier(0, 0.09, 0, 1) 500ms both, letter-opacity 1500ms cubic-bezier(0, 0.09, 0, 1) 500ms both; }
-.letter-a .enter-state.letter-a-1-mask {
-  transform: translate(22px, 20px);
-  animation: letter-a-1-mask 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
-.letter-a .enter-state.letter-a-2-mask {
-  transform: translate(25.0176px, 20.5px);
-  animation: letter-a-2-mask 1000ms cubic-bezier(0, 0.09, 0, 1) 250ms both; }
-
-.letter-d .enter-state.letter-white-d-1 {
-  stroke-dashoffset: 42;
-  animation: letter-42 1500ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 1500ms cubic-bezier(0, 0.09, 0, 1) both; }
-.letter-d .enter-state.letter-white-d-2 {
-  stroke-dashoffset: 51.6;
-  animation: letter-d-2 500ms cubic-bezier(0, 0.09, 0, 1) 250ms both, letter-opacity 500ms cubic-bezier(0, 0.09, 0, 1) 250ms both; }
-.letter-d .enter-state.letter-white-d-3 {
-  stroke-dashoffset: 52.2;
-  animation: letter-d-3 500ms cubic-bezier(0, 0.09, 0, 1) 350ms both, letter-opacity 500ms cubic-bezier(0, 0.09, 0, 1) 350ms both; }
-
 .letter-e .enter-state.letter-white-e-1 {
   stroke-dashoffset: 42.5;
   animation: letter-e-1 750ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 750ms cubic-bezier(0, 0.09, 0, 1) both; }
@@ -120,14 +92,6 @@
   animation-delay: 150ms; }
 .letter-e .enter-state.letter-white-e-4 {
   animation-delay: 450ms; }
-
-.letter-i path {
-  stroke-dashoffset: 14;
-  animation: letter-i 500ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 500ms cubic-bezier(0, 0.09, 0, 1) both; }
-
-.letter-m .enter-state.letter-m-1-mask {
-  transform: translate(23.5px, 62.6709px);
-  animation: letter-m-1-mask 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
 
 .letter-n .enter-state.letter-white-n-1 {
   stroke-dashoffset: 70.0;
@@ -173,18 +137,17 @@
   transform: translate(42.2217px, 16.5px);
   animation: letter-y-2-mask 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
 
-.letter-55-with-opacity {
-  animation: letter-55 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
-
-.letter-42-with-opacity {
-  animation: letter-42 1000ms cubic-bezier(0, 0.09, 0, 1) both, letter-opacity 1000ms cubic-bezier(0, 0.09, 0, 1) both; }
-
 /*---------- ON EXIT */
-@keyframes letter-opacity {
+@keyframes letter-fadeIn {
   0% {
     opacity: 0; }
   1%, 100% {
     opacity: 1; } }
+@keyframes letter-fadeOut {
+  0%, 99% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 @keyframes letter-42 {
   0% {
     stroke-dashoffset: 42; }
@@ -215,19 +178,14 @@
     stroke-dashoffset: 131; }
   100% {
     stroke-dashoffset: 0; } }
-@keyframes letter-i {
+@keyframes letter-14 {
   0% {
     stroke-dashoffset: 14; }
   100% {
     stroke-dashoffset: 0; } }
-@keyframes letter-d-2 {
+@keyframes letter-52 {
   0% {
-    stroke-dashoffset: 51.6; }
-  100% {
-    stroke-dashoffset: 0; } }
-@keyframes letter-d-3 {
-  0% {
-    stroke-dashoffset: 52.2; }
+    stroke-dashoffset: 52; }
   100% {
     stroke-dashoffset: 0; } }
 @keyframes letter-e-1 {
@@ -1130,6 +1088,8 @@
         #jeselle .project header h1 svg {
           height: 36px;
           width: auto; }
+        #jeselle .project header h1 div {
+          width: auto !important; }
       #jeselle .project header h2 {
         opacity: 0;
         position: absolute;
