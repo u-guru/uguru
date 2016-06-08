@@ -11,7 +11,7 @@ function ReportService($timeout,FileService,LoadingService,$q) {
     var bugReport
     var states
     var caches 
-
+    var defaultEnvi= []
     /**
     * Redeem the data from amazons services
     *   
@@ -73,7 +73,7 @@ function ReportService($timeout,FileService,LoadingService,$q) {
            else {
              deferred.reject('Unable to lunch bug report');
            }
-         }, 2000);
+         }, 3000);
 
          return deferred.promise;
     }

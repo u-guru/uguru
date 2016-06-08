@@ -1,0 +1,35 @@
+<div ng-init='docs = {index: 0, options: ["Notes", "CSS+Classes", "Components", "Directives", "Status/Tools"]};' ng-controller='AdminDocsController'>
+    <header class="bg-slate">
+        <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Docs</h1>
+    </header>
+    <div class="tab-bar slide">
+        <div>
+            <a ng-click='docs.index = 0;'>Notes</a>
+            <a ng-click='docs.index = 1;'>CSS+Classes</a>
+            <a ng-click='docs.index = 2;'>Components</a>
+            <a ng-click='docs.index = 3;'>Directives</a>
+            <a ng-click='docs.index = 4;'>Status/Tools</a>
+            <hr/>
+        </div>
+    </div>
+
+    <div class="absolute bottom-0 left-0 full-xy overflow-auto no-scrollbar admin-docs" style="height: calc(100% - 100px) !important;">
+
+        <!--Notes content-->
+        <ul class="p15-grid" ng-if='docs.index === 0' ng-include="root.base_url + 'admin/templates/docs/notes.html'">
+        </ul>
+
+        <ul class="p15-grid" ng-if='docs.index === 1' ng-include="root.base_url + 'admin/templates/docs/classes.html'">
+        </ul>
+
+        <ul class="p15-grid" ng-if='docs.index === 2' ng-include="root.base_url + 'admin/templates/docs/components.html'">
+        </ul>
+
+        <ul class="p15-grid" ng-if='docs.index === 2' ng-include="root.base_url + 'admin/templates/docs/directives.html'">
+        </ul>
+
+        <ul class="p15-grid" ng-if='docs.index === 2' ng-include="root.base_url + 'admin/templates/docs/status.html'">
+        </ul>
+
+    </div>
+</div>

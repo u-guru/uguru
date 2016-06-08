@@ -21,6 +21,7 @@ angular.module('uguru.preApp')
     madlib.onEnter = function() {
 
       if ($scope.splash && !$scope.splash.state) {
+        alert('yo');
         $scope.$watch('splash.state.madlib', function(newVal, oldVal) { newVal && madlib.activate() && $timeout(function() {$scope.$apply()})});
       } else {
         madlib.activate();
@@ -29,6 +30,7 @@ angular.module('uguru.preApp')
     };
 
     madlib.activate = function() {
+      madlib.activated = true;
       var parentViewElement = document.querySelector('#splash-madlib');
       var allActivateElements = parentViewElement.querySelectorAll('[on-activate]');
       for (var i = 0; i < allActivateElements.length; i++) {
@@ -67,9 +69,10 @@ angular.module('uguru.preApp')
     }
     $timeout(function() {
       SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states)
+      $timeout(function() {
+        madlib.onEnter();
+      }, 500)
     }, 1000)
-
-    madlib.onEnter();
 
   }
 ])

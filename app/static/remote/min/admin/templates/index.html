@@ -13,7 +13,7 @@
             </li>
         </ul>
     </div>
-    <main class='lyt-30-70-sidebar relative full-y'>
+    <main class='relative full-y' ng-class="{'lyt-30-70-sidebar ':layout.index === 0}">
         <section class="relative">
             <div id="keys-toolbar" class="flex-center-vertical-space-between bg-campus relative">
                 <div class='absolute animated ugrid-2 bounceInDown full-xy bg-charcoal weight-900 flex-wrap-center flex-stretch text-center  z-index-2000' ng-if='showStatusMsg'>
@@ -47,17 +47,20 @@
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 6}" ng-click='layout.index = 6' ng-include="root.base_url + 'shared/templates/components/svg/main/document.html'">Docs</a>
                     </li>
                     <li>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 7}" ng-click='layout.index = 7' ng-include="root.base_url + 'shared/templates/components/svg/main/profile.html'">Components</a>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 7}" ng-click='layout.index = 8'><i class='icon ion-wand txt-white txt-7'></i></a>
                     </li>
-                    <li>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 8}" ng-click='layout.index = 8'><i class='icon ion-wand txt-white txt-7'></i></a>
-                    </li>
+                    <!-- <li>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 9}" ng-click='layout.index = 9'>
+                            <i class='icon ion-waterdrop txt-white txt-6'></i>
+                        </a>
+                    </li> -->
                     <li class='relative flex-wrap-center'>
-                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 9}" ng-click='layout.index = 9'><i class='icon ion-code txt-white txt-7'></i></a>
+                        <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-class="{'bg-moxie': layout.index === 8}" ng-click='layout.index = 9'><i class='icon ion-code txt-white txt-7'></i></a>
                         <span class='bg-moxie z-index-1000 round bottom-0 right-0 absolute' style='padding:3.5px 5px 3px 6px;'>
                             <i class='icon ion-plus txt-white txt-3'></i>
                         </span>
                     </li>
+
                     <li ng-if='player.status === 1'>
                         <a class="svg-white flex-center svg-48-36 svg-stroke-6 radius-2 bg bg-slate" ng-click='player.pause()' ng-include="root.base_url + 'shared/templates/components/svg/main/pause.html'">Pause</a>
                     </li>
@@ -223,35 +226,18 @@
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Calendar</h1>
                 </header>
             </div>
-            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5' ng-include="root.base_url + 'admin/templates/bugs.html'" ng-controller='AdminBugsController' ng-if='false'>
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5' ng-include="root.base_url + 'admin/templates/bugs.html'" ng-controller='AdminBugsController'>
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Bugs</h1>
                 </header>
             </div>
-            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 6'>
-                <header class="bg-slate">
-                    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Docs</h1>
-                </header>
-                <div class="tab-bar slide">
-                    <div>
-                        <a>General</a>
-                        <a>Option 2</a>
-                        <a>Option 3</a>
-                        <a>Option 4</a>
-                        <a>Option 5</a>
-                        <hr/>
-                    </div>
-                </div>
-                <div class="relative" style="height: calc(100% - 48px - 60px)">
-                    <div class="absolute top-0 left-0 full-xy overflow-auto no-scrollbar admin-docs">
-                        <ul class="p15-grid" ng-include="root.base_url + 'admin/templates/docs.html'"></ul>
-                    </div>
+            <div class='relative bg-slate z-index-1000'  ng-show='layout.index === 6'>
 
-
-
+                <!-- Docs-->
+                <div class="relative" style="height: calc(100% - 48px - 60px)" ng-include="root.base_url + 'admin/templates/docs/docs.html'">
                 </div>
             </div>
-            <div class='relative bg-smoke txt-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 7'>
+            <div class='relative bg-smoke txt-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 7'>2
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Components</h1>
                 </header>
@@ -627,7 +613,7 @@
                 </div>
             </div>
         </section>
-        <aside class='bg-charcoal relative high-z-index'>
+        <aside class='bg-charcoal relative high-z-index' ng-if='layout.index === 0'>
             <div class="full-x tab-container bg-robin">
                 <tabs id="keys-aside-menu" class='full-xy' options="['Stage', 'Elements', 'Animate']" index="asideTabIndex"> </tabs>
             </div>
