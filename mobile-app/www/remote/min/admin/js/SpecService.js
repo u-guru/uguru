@@ -37,7 +37,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data = obj;
             calcUseCasesCompletedness(specObj.data.use_cases)
             //@gabrielle note
-            specObj.data.toggleDev = true;
+            specObj.data.toggleDev = false;
             specObj.data.toggleSpec = false;
             specObj.data.mobile = {width:400, height:768, show:false, template:specObj.template_path, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
             specObj.data.open = specObj.open;

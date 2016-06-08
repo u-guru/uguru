@@ -70,9 +70,8 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/jeselle',
     templateUrl: 'jeselle/templates/index.html'
   })
-  .state('root.gabrie', {
-    url:'dev/gabrie',
-    // controller: 'GabrielleController',
+  .state('root.gabrielle', {
+    url:'/dev/gabrielle',
     templateUrl: 'gabrielle/templates/index.html',
   });
 
