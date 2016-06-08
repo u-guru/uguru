@@ -242,6 +242,7 @@ gulp.task('compile-temp',function(done){
           '!*index.html',
           '**/*html',
           'admin/templates/*html',
+          '!admin/templates/*bugs.*html',
           'admin/templates/components/*tpl',
           'shared/templates/*html',
           'shared/templates/components/*tpl',
