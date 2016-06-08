@@ -20,7 +20,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 controller: 'SplashMadlibController',
                 routes: getRoutes('dev/splash/madlib', 'preapp/templates/splash.madlib.html'),
                 spec: getSpec('madlib'),
-                bugs: getBugInfo('madlib')
+                bugs: getBugInfo('User selects a splash tag')
               },
               {
                 title: 'splash',

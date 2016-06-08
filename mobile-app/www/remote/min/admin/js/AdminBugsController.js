@@ -33,6 +33,24 @@ angular.module('uguru.admin')
           });
         };
 })
+.filter('selectFixed',function(){
+    return function(bugs) {
+            return bugs.filter(function(bug) {
+                //no filter if tags is empty
+
+                if (bug.fix && bug.fix.isFixed){
+                  return true;
+                }
+                // for (var i in bug.platforms) {
+                //     if (platforms.indexOf(bug.platforms[i]) !== -1) {
+                //         return true;
+                //     }
+                // }
+                return false;
+
+            });
+          };
+})
 .controller('AdminBugsController', [
   //All imported packages go here
   '$scope',
@@ -73,8 +91,15 @@ angular.module('uguru.admin')
       console.log(index);
       $scope.bugs.splice(index,1);
       $scope.saveBug();
+      $scope.editMode();
       $scope.closeBug();      
     };    
+    $scope.removeSection = function(index){
+      console.log(index);
+      $scope.bugReport.splice(index,1);
+      console.log($scope.bugReport);
+    }
+
     $scope.addBug = function(){
       function checkTitleRepeat(title,bugs){
         for (var i = 0; i< bugs.length; ++i){
@@ -88,6 +113,7 @@ angular.module('uguru.admin')
       if (!checkTitleRepeat($scope.selectedBug.title,$scope.bugs)){
         $scope.bugs.push($scope.selectedBug);
         $scope.saveBug();
+        $scope.editMode();
         $scope.closeBug();
       }
       else{
@@ -95,18 +121,17 @@ angular.module('uguru.admin')
       }
     };
     $scope.saveBug = function(){
-      $scope.editMode();
       // console.log($scope.bugReport);
       FileService.postS3JsonFile(JSON.stringify($scope.bugReport), null ,
                                  'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
       function postCallback(firstName, resp) {
-          console.log('file successfully saved', resp);
           ReportService.saveBug($scope.bugReport);
+          console.log('file successfully saved', resp);
 
-          LoadingService.hide();
-          $timeout(function() {
-            LoadingService.showSuccess('Saved!', 1000);
-          });
+          // LoadingService.hide();
+          // $timeout(function() {
+          //   LoadingService.showSuccess('Saved!', 1000);
+          // });
         }
     };
     $scope.reviseBug = function(){
@@ -184,7 +209,7 @@ angular.module('uguru.admin')
           error_msg:null,
           impact_file:[],
           platforms:[],
-          tags:[]
+          tags:[],
         };
         $scope.backupBug = {};
         // $scope.selectedBug.index = -1;
@@ -238,7 +263,38 @@ angular.module('uguru.admin')
         $scope.selectedBug.tags.push(newTag);
       }
       return ''
-    }
+    };
+
+    $scope.isAllEnvirPassed= function(env){
+      // var env = $scope.bugReport[index].envir
+      var waitForTest = 0;
+      var failed= 0;
+
+      for (var i = 0; i < env.length; ++ i){
+        if (env[i].isPassed === -1){
+          waitForTest ++;
+        }
+        else if (env[i].isPassed === 0){
+          failed ++;
+        }
+      }
+      var str = '';
+      if (failed !== 0){
+        str += failed + ' failed';
+      }
+      if (waitForTest !==0){
+        str += waitForTest + ' need to get test';
+      }
+      if (str.length !== 0){
+        return str;
+      }
+      console.log("check",str)
+      return 'ALL PASSED';
+
+    };
+
+
+
     function setErrorMsg(desc){
       $scope.error_msg = desc;
       $timeout(function() {
@@ -291,6 +347,43 @@ angular.module('uguru.admin')
       }
       return id;
     }
+    function getDefaultEnvir(){
+          var platformsName = ['chrome','firefox','safari','android','ios','android-chrome','ios-safari'];
+          var screenSize = ['small','medium','large','extraLarge'];
+          var device = ['desktop','mobile'];
+          var environment = [];
+          for( var k = 0; k < device.length; ++k){
+            for ( var i = 0; i < platformsName.length; ++i ){
+                  if (  
+                      (device[k]!=='desktop' && platformsName[i].indexOf('ios') === 0)  ||
+                      (device[k]!=='desktop' && platformsName[i].indexOf('android') ===0)
+                      ){
+                      environment.push({
+                        name: platformsName[i],
+                        screenSize: null,
+                        device: device[k],
+                        isPassed: -1
+                      });
+                  }
+              for ( var j = 0; j < screenSize.length; ++j ){
+                  if (
+                      (device[k] === 'mobile' || screenSize[j] !== 'extraLarge') &&
+                      platformsName[i].indexOf('android') === -1 &&
+                      platformsName[i].indexOf('ios') === -1
+                      )
+                  {
+                    environment.push({
+                      name: platformsName[i],
+                      screenSize: screenSize[j],
+                      device: device[k],
+                      isPassed: -1
+                    });
+                  }
+              }
+            }
+          }
+          return environment
+    }
     function linkReport(object){
       var id = genUniqueID(object.title);
       for (var i = 0; i < $scope.bugReport.length; ++ i) {
@@ -298,7 +391,9 @@ angular.module('uguru.admin')
           return;
         }
       }
-      return {name:object.title,bugID:id,bugs:[],help:{}};
+      return {name:object.title,bugID:id,bugs:[],help:{},envir:getDefaultEnvir()};
+      // return {name:object.title,bugID:id,bugs:[],help:{}};
+
     }
     function intData(){
     
@@ -323,28 +418,35 @@ angular.module('uguru.admin')
 
         if ($localstorage.getObject('advanceSearch')!=='[]'){
           var cache = $localstorage.getObject('advanceSearch');
-          $scope.advanceSearch.platforms.list = cache.platforms.list;
-          $scope.advanceSearch.tags.list = cache.tags.list;
+          if (cache && cache.length !== 0){
+              $scope.advanceSearch.platforms.list = cache.platforms.list;
+              $scope.advanceSearch.tags.list = cache.tags.list;
+          }
           console.log('Reset',$scope.advanceSearch);
         }
         for (var i = 0; i < $scope.bugReport.length; ++ i) {
           if(!$scope.bugReport[i].bugID){
            $scope.bugReport[i].bugID =  genUniqueID($scope.bugReport[i].name);
           }
+          if(!$scope.bugReport[i].envir){
+            $scope.bugReport[i].envir = getDefaultEnvir();
+          }
         }
     }
 
     function loadUpdatedBugsJsonFile(scope) {
-      LoadingService.showAmbig('Loading....', 10000);
+      // LoadingService.showAmbig('Loading....', 10000);
+      console.log('Loading....');
       //https://s3.amazonaws.com/uguru-admin/jason/bugs.json
       //https://s3.amazonaws.com/uguru-admin/sync/bugs.json
       FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', callbackFunc);
       function callbackFunc(name, resp) {
-        scope.bugReport = resp
-        LoadingService.hide()
-        $timeout(function() {
-         LoadingService.showSuccess(resp.length + ' bugs loaded', 1000) ;
-        })
+        scope.bugReport = resp;
+        console.log('file successfully loaded', resp);
+        // LoadingService.hide()
+        // $timeout(function() {
+        //  LoadingService.showSuccess(resp.length + ' bugs loaded', 1000) ;
+        // })
       }
     }
     function getReportIndexByID(id){
@@ -366,9 +468,9 @@ angular.module('uguru.admin')
         console.log("Data is Load",newNames)
         intData();
         $scope.indexOfSection = getReportIndexByID(document.URL.split('admin/bugs/')[1]);
+        console.log( $scope.indexOfSection)
         if ($scope.indexOfSection){
           $scope.openBugList($scope.bugReport[$scope.indexOfSection]);
-
         }
         else{
           $scope.openBugList($scope.bugReport[0]);
@@ -383,7 +485,7 @@ angular.module('uguru.admin')
           console.log("Data is Update",newNames)
          // $scope.openBugList($scope.bugReport[$scope.bugReport.length-1]);
          $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
-
+         $scope.saveBug();
       }
     });
 
@@ -394,9 +496,6 @@ angular.module('uguru.admin')
           var section = linkReport($scope.userWorkflows[i]);
           if (section){
             $scope.bugReport.push(section);
-          }
-          else{
-            console.log('repeat!',section);
           }
         }
       }

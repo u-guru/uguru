@@ -23,23 +23,14 @@ angular.module('uguru.admin')
     // console.log("LOG", $scope.user_workflows[4].bugs.launchBugTab())
 
 
-    //  ReportService.getBug().then(function(result){
-    //    // alert('Success: ' + greeting);
-    //    $scope.bugReport = result;
-    //    // console.log('result', $scope.bugReport);
-    //   }, function(reason) {
-    //     console.log(reason);
-    // });
-    function updateBugsReport(){
-       ReportService.getBug().then(function(result){
-         // alert('Success: ' + greeting);
-         $scope.bugReport = result;
-         // console.log('result', $scope.bugReport);
-        }, function(reason) {
-          console.log(reason);
-      });
-    }
-    $scope.$watchCollection(updateBugsReport(), function(newNames, oldNames) {
+     ReportService.getBug().then(function(result){
+       $scope.bugReport = result;
+       console.log('result', $scope.bugReport);
+      }, function(reason) {
+        console.log(reason);
+    });
+
+    $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
         console.log('bugReport is load');
       }
@@ -98,7 +89,6 @@ angular.module('uguru.admin')
     }
 
     for (var i = 0; i < $scope.user_workflows.length; i++) {
-      if (!$scope.user) break;
       var indexWF = $scope.user_workflows[i];
       if (indexWF.members && indexWF.members.length) {
         for (var j =0; j < indexWF.members.length; j++) {
