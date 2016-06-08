@@ -4,7 +4,9 @@ angular.module('uguru.admin')
   '$scope',
   '$state',
   function($scope, $state) {
+    var docs = this;
 
+    docs.directives = {};
 
   }
 
