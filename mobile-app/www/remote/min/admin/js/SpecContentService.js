@@ -15,20 +15,20 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
     var adminToolSpec = ["strip data from spec", "univeral per-svg reference", "too many tool-switching (i.e. bounce.js", "upcoming moodbard (no implemented yet)", "todo:learn more about codepen collab", "todsicuss: dev wiki", "default codepen window size ext", "svg bit map", "more robust animation + pause tools", "normlizer"];
     allSpecs.preApp = {
             "workflows":[
-              // {
-              //   title: 'pre-splash',
-              //   controller: 'SplashMadlibController',
-              //   routes: getRoutes('dev/splash/madlib', 'preapp/templates/splash.madlib.html'),
-              //   spec: getSpec('madlib'),
-              //   bugs: getBugInfo('User selects a splash tag')
-              // },
               {
-                title: 'splash',
+                title: 'pre-splash',
                 controller: 'SplashMadlibController',
                 routes: getRoutes('dev/splash/madlib', 'preapp/templates/splash.madlib.html'),
                 spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
-                status: 'ready'
+                bugs: getBugInfo('User selects a splash tag')
+              },
+              {
+                title: 'splash',
+                controller: 'CalendarController',
+                routes: getRoutes('calendar', 'calendar.html', 'controllers/util/CalendarCtrl.js'),
+                spec: getSpec('calendar'),
+                bugs: getBugInfo('calendar'),
+
               },
               {
                 title: 'Jeselle Portfolio',

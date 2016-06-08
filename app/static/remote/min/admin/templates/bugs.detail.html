@@ -1,6 +1,9 @@
 <div class="full-xy">
 	<header class='bg-robin txt-center flex-center'>
-		<h1 class="txt-white weight-700 txt-28">Bug Detail</h1>
+		<!-- <h1 class="txt-white weight-700 txt-28">Bug Detail</h1> -->
+		<h1 class='txt-white weight-700 txt-28' ng-if='!isNewBug'>{{selectedBug.title}}</h1>
+		<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selectedBug.title' ng-if='isNewBug' ></input>
+
 		<span class="block p15x-p10y bg-white txt-moxie radius-2 caps txt-18 semibold" ng-if="selectedBug.fix.fixedDate">Fixed {{selectedBug.fix.fixedDate}}</span>
 		<a class='svg-white svg-36 svg-stroke-8 absolute top-0 right-0 close-icon m10xy' ng-if='!isEditMode || isNewBug' ng-click="closeBug()">
 			<svg viewBox="0 0 100 100">
@@ -9,8 +12,8 @@
 		</a>
 	</header>
 	<div class="bg-slate-50p" style="height: calc(100% - 58px)!important">
-		<h1 class='p15xy bg-robin-80p txt-center txt-20 semibold' ng-if='!isNewBug' >{{selectedBug.title}}</h1>
-		<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selectedBug.title' ng-if='isNewBug' ></input>
+		<!-- <h1 class='p15xy bg-robin-80p txt-center txt-20 semibold' ng-if='!isNewBug' >{{selectedBug.title}}</h1> -->
+		<!-- <input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selectedBug.title' ng-if='isNewBug' ></input> -->
 
 		<div class="full-x overflow-auto no-scrollbar">
 			<ul class="p15-grid flex">
@@ -160,7 +163,8 @@
 						<li ng-repeat="platform in selectedBug.platforms">
 							<a class="chip bg bg-robin">
 								<span ng-if='isEditMode' ng-click='removePlatform($index)'>&times;&nbsp;&nbsp;</span>
-								<span>{{platform}}</span>
+								<span>{{platform.name}} </span>
+								<span> {{platform.device}} {{platform.screenSize}} </span>
 							</a>
 						</li>
 						<li>
@@ -184,7 +188,7 @@
 					</ul>
 				</div>
 				<div class="error bg-crimson m15x p10y-p15x radius-2 txt-white semibold txt-18 hide" ng-class="{'show': error_msg}">{{error_msg}}</div>
-				<h1 class="p15x-p15top semibold">environment :</h1>
+			<!-- 	<h1 class="p15x-p15top semibold">environment :</h1>
 				<div>
 					<ul>
 						<li ng-repeat="envir in selectedBug.envir">
@@ -193,7 +197,7 @@
 							<input style='height: 10px;width: 10px'type='checkbox'></input>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="flex-space-between">
@@ -220,8 +224,17 @@
 
 			</ul>
 			<ul class="p15-grid flex">
-				<li ng-if='selectedBug.index != 0 && !isEditMode'>
-					<button class="bg-robin radius-2 height-36 txt-18" ng-click='preBug()'>Previous</button>
+
+				<li ng-if='current.index != 0 && !isEditMode'>
+					<button class="bg-robin radius-2 height-36 txt-18" ng-click='preBug()' ng-if='current.index != 0'>
+						Previous Bugs
+					</button>
+	
+				</li>
+				<li ng-if='false'>
+					<button class="bg-robin radius-2 height-36 txt-18" ng-click='preStateBug()' >
+						Previous State Bugs
+					</button>
 				</li>
 				<li>
 					<button class="bg-robin radius-2 height-36 txt-18" ng-click='saveBug();closeBug();' ng-if='isEditMode && !isNewBug'>Save & Close</button>
@@ -229,8 +242,8 @@
 				<li>
 					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='addBug();' ng-if='isEditMode && isNewBug && selectedBug.title'>Report Bug</button>
 				</li>
-				<li ng-if='selectedBug.index < bugs.length-1 && !isEditMode'>
-					<button class="bg-robin radius-2 height-36 txt-18" ng-click='nextBug()'>Next</button>
+				<li ng-if='selectedBug.index < stepBugs.length-1 && !isEditMode'>
+					<button class="bg-robin radius-2 height-36 txt-18" ng-click='nextBug()'>Next Bugs</button>
 				</li>
 
 			</ul>

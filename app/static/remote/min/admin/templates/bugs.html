@@ -81,14 +81,17 @@
 		<div class='bg-slate-50p' ng-int='reverse = false'>
 			<div ng-if='!addSection'>
 				<ul ng-if="availableOptions.selectedIndex == 0" class="p15-grid">
-					<li ng-repeat='bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug,$index)'>
+					<!-- <li ng-repeat='bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug,$index)'> -->
 
-					<!-- <li ng-repeat='bug in bugs  track by $index' ng-click='initAndLaunchBugCTA($event, bug,$index)'> -->
-						<a class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</a>
-						<label>{{bug.step}}</label>
+					<li ng-repeat='state in states' >
+						<span class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold">{{state.title}}</span>
+						<ul>
+							<li ng-repeat='stepBug in state.stepBugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list'>
+							 <a ng-click='initAndLaunchBugCTA($event, stepBug ,$index, $parent.$index)'>{{stepBug.step}}</a>
+						</ul>
 					</li>
 				</ul>
-				<ul ng-if="availableOptions.selectedIndex == 1" class="p15-grid">
+				<!-- <ul ng-if="availableOptions.selectedIndex == 1" class="p15-grid">
 					<li class="flex" ng-repeat="bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list | orderBy:'-rank':reverse">
 						<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">#{{bug.rank}}</span>
 						<span class="block bg-charcoal p10y-p15x radius-2-right txt-18 semibold full-x">{{bug.title}}</span>
@@ -99,7 +102,7 @@
 						<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">{{bug.fix.fixedDate}}</span>
 						<span class="block bg-charcoal p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</span>
 					</li>
-				</ul>
+				</ul> -->
 			</div>
 			<ul class="p15-grid" ng-if="availableOptions.selectedIndex !== 2">
 				<li >
