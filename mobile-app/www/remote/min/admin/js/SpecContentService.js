@@ -11,6 +11,8 @@ angular
 function SpecContentService($state, $timeout, $localstorage, $window) {
     var allSpecs = {};
     var allAdminSpecs = {};
+    var adminFeedbackArr = ["no docs", "Staging is down", "localhost doesnt work", "override app.css on cp", "dev-toolbar is not working"];
+    var adminToolSpec = ["strip data from spec", "univeral per-svg reference", "too many tool-switching (i.e. bounce.js", "upcoming moodbard (no implemented yet)", "todo:learn more about codepen collab", "todsicuss: dev wiki", "default codepen window size ext", "svg bit map", "more robust animation + pause tools", "normlizer"];
     allSpecs.preApp = {
             "workflows":[
               {
@@ -137,7 +139,17 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
     return {
         getContentSpec: getContentSpec,
         getContentSpecAdmin: getContentSpecAdmin,
-        getTeamMembers: getTeamMembers
+        getTeamMembers: getTeamMembers,
+        getStatusSpec: getStatusSpec
+    }
+
+    function getStatusSpec() {
+        return {
+
+            feedback: adminFeedbackArr,
+            requested_tools: adminToolSpec
+
+        }
     }
 
 

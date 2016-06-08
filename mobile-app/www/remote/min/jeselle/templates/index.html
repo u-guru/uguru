@@ -1,5 +1,8 @@
 <div id='jeselle-view' ng-controller='JeselleController as jeselle'>
     <ion-content id="jeselle" class="null" elem-states="['cascade']" on-cascade-enter="has-cascade:anim">
+    <defs>
+
+    </defs>
         <header id="top">
     		<a class="top-home" href="/">
     			<svg viewBox="0 0 350 350">
@@ -39,72 +42,42 @@
     					<article class="project">
     						<header style="background-image: url('http://cdn.paper4pc.com/images/hipster-wallpaper-18.jpg');">
     							<div>
-                                    <h1 class="flex-center-wrap activate" on-activate="null:delay-1000:inject.letter|on-draw-letter-enter">
+                                    <h1 class="flex-center-wrap activate" on-activate="null:delay-1000:inject.letter|on-draw-letters-enter">
 										<div class="flex m15x">
-											<svg class="letter-m letter m10x" viewBox="0 0 63 100" elem-states="[draw-letter]" on-draw-letter-enter="null:delay-750:inject.letter-m .line|on-draw-line-enter">
+											<svg class="letter-m letter m10x" viewBox="0 0 63 100" elem-states="[draw-letters]" on-draw-letters-enter="null:delay-000:inject.letter-m .line|on-draw-line-enter">
 												<defs>
 													<clipPath id="letter-m-clip">
-														<polygon class="letter-mask-m" points="15.328 78.16 15.328 51.736 26.992 76 36.424 76 48.088 51.736 48.088 78.16 62.416 78.16 62.416 22 47.944 22 31.672 57.496 15.472 22 1 22 1 78.16 15.328 78.16"></polygon>
+														<polygon class="letter-mask-m" fill="#D8D8D8" points="15.328 78.16 15.328 51.736 26.992 76 36.424 76 48.088 51.736 48.088 78.16 62.416 78.16 62.416 22 47.944 22 31.672 57.496 15.472 22 1 22 1 78.16 15.328 78.16"></polygon>
 													</clipPath>
 													<clipPath id="letter-m-1-clip" clip-rule="evenodd">
-    													<path d="M-100,-100 L200,-100 L200,200 L-100,200 L-100,-100 Z M-26,-26 L4,-26 L19,6 L-11,6 L-26,-26 Z"
-                                                            class="line"
-															on-init="transform:translate(23.5px, 62.6709px)"
-                                                            elem-states="[draw-line]"
-                                                            on-draw-line-enter="m-1-mask-anim:anim"></path>
+														<path class="letter-m-1-mask line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn" fill-rule="evenodd" d="M-100,-100 L200,-100 L200,200 L-100,200 L-100,-100 Z M-26,-26 L4,-26 L19,6 L-11,6 L-26,-26 Z" fill="black"></path>
 													</clipPath>
 													<clipPath id="letter-m-2-clip" clip-rule="evenodd">
-														<path d="M-100,-100 L200,-100 L200,200 L-100,200 L-100,-100 Z M34,-26 L4,-26 L-11,8 L19,8 L34,-26 Z"
-                                                            class="line"
-															on-init="transform:translate(24.5229px, 62.6709px)"
-                                                            elem-states="[draw-line]"
-                                                            on-draw-line-enter="m-2-mask-anim:anim:delay-250"></path>
+														<path class="letter-m-2-mask line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn" fill-rule="evenodd" d="M-100,-100 L200,-100 L200,200 L-100,200 L-100,-100 Z M34,-26 L4,-26 L-11,8 L19,8 L34,-26 Z" fill="black"></path>
 													</clipPath>
 												</defs>
 												<g fill="none" fill-rule="evenodd" stroke-linecap="square"  stroke-linejoin="bevel" stroke-width="15" clip-path="url(#letter-m-clip)">
 													<g stroke="#F25A5B">
-														<path d="M31,70.1708984 L7.30078125,20.4609375"
-                                                            letter-color="m-1"
-                                                            on-init="opacity:0"></path>
-														<path d="M32.0229492,70.1708984 L56.550293,20.909668"
-                                                            letter-color="m-2"
-                                                            on-init="opacity:0"></path>
-														<path d="M8,29.3839286 L8,71.3839286"
-                                                            letter-color="m-3"
-                                                            on-init="opacity:0"></path>
-														<path d="M55.5,29.3839286 L55.5,71.3839286"
-                                                            letter-color="m-4"
-                                                            on-init="opacity:0"></path>
+														<path d="M31,70.1708984 L7.30078125,20.4609375" class='opacity-0' on-init="stroke-dasharray:55"></path>
+														<path d="M32.0229492,70.1708984 L56.550293,20.909668" on-init="stroke-dasharray:55" class='opacity-0'></path>
+														<path d="M8,29.3839286 L8,71.3839286" on-init="stroke-dasharray:42"  class='opacity-0'></path>
+														<path d="M55.5,29.3839286 L55.5,71.3839286" on-init="stroke-dasharray:42"  class='opacity-0'></path>
 													</g>
 													<g stroke="#FFFFFF">
-                                                        <path d="M31,70.1708984 L7.30078125,20.4609375"
-                                                            letter-white="m-1" class='line'
-                                                            stroke-width="14" clip-path="url(#letter-m-1-clip)"
-                                                            on-init="opacity:0"
-                                                            elem-states="[draw-line]"
-                                                            on-draw-line-enter="letter-55:animIn:delay-0"
-                                                            on-draw-line-exit="letter-55-reverse:animOut:delay-0"></path>
-														<path d="M32.0229492,70.1708984 L56.550293,20.909668"
-                                                            letter-white="m-2" class='line'
-                                                            stroke-width="14" clip-path="url(#letter-m-2-clip)"
-                                                            on-init="opacity:0"
-                                                            elem-states="[draw-line]"
-                                                            on-draw-line-enter="letter-55:animIn:delay-250"></path>
-														<path d="M8,29.3839286 L8,71.3839286"
-                                                            letter-white="m-3" class="line"
-                                                            on-init="opacity:0"
-                                                            elem-states="[draw-line]"
-                                                            on-draw-line-enter="letter-42:animIn:delay-500"></path>
-														<path d="M55.5,29.3839286 L55.5,71.3839286"
-                                                            letter-white="m-4" class="line"
-                                                            on-init="opacity:0"
-                                                            elem-states="[draw-line]"
-                                                            on-draw-line-enter="letter-42:animIn:delay-750"></path>
+
+                                                        <path d="M31,70.1708984 L7.30078125,20.4609375" class='line' on-init="stroke-dasharray:55" elem-states="[draw-line]" on-draw-line-enter="letter-55-with-opacity:anim:delay-250:duration:2000" stroke-width="14" clip-path="url(#letter-m-1-clip)"></path>
+
+														<path d="M32.0229492,70.1708984 L56.550293,20.909668" on-init="stroke-dasharray:55"  elem-states="[draw-line]"  on-draw-line-enter="letter-55-with-opacity:anim:delay-250" stroke-width="14" clip-path="url(#letter-m-2-clip)"></path>
+
+														<path d="M8,29.3839286 L8,71.3839286" class="line" on-init="stroke-dasharray:55" elem-states="[draw-line]"  on-draw-line-enter="letter-55-with-opacity:anim:delay-250">
+                                                        </path>
+
+														<path d="M55.5,29.3839286 L55.5,71.3839286" class="bash line" on-init="stroke-dasharray:55"  elem-states="[draw-line]"  on-draw-line-enter="letter-55-with-opacity:anim:delay-250"></path>
 													</g>
 												</g>
 											</svg>
 
-											<svg class="letter-a letter m10x" viewBox="0 0 61 100" elem-states="[draw-letter]" on-draw-letter-enter="null:delay-1500:inject.letter-a .line|on-draw-line-enter">
+											<svg hidden class="letter-a letter m10x" viewBox="0 0 61 100" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-1500">
 												<defs>
 													<clipPath id="letter-a-clip">
 														<path d="M23.752,23 L1,79.16 L16.696,79.16 L19.792,70.952 L41.896,70.952 L44.992,79.16 L60.688,79.16 L38.008,23 L23.752,23 L23.752,23 L23.752,23 L23.752,23 L23.752,23 Z M37,57.92 L24.688,57.92 L30.88,41.432 L37,57.92 L37,57.92 L37,57.92 L37,57.92 L37,57.92 Z" class="letter-mask-a" fill="#D8D8D8"></path>
@@ -130,7 +103,7 @@
 												</g>
 											</svg>
 
-											<svg class="letter-a letter m7-5x" viewBox="0 0 61 100" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-2100">
+											<svg hidden class="letter-a letter m7-5x" viewBox="0 0 61 100" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-2100">
 												<defs>
 													<clipPath id="letter-a-clip">
 														<path d="M23.752,23 L1,79.16 L16.696,79.16 L19.792,70.952 L41.896,70.952 L44.992,79.16 L60.688,79.16 L38.008,23 L23.752,23 L23.752,23 L23.752,23 L23.752,23 L23.752,23 Z M37,57.92 L24.688,57.92 L30.88,41.432 L37,57.92 L37,57.92 L37,57.92 L37,57.92 L37,57.92 Z" class="letter-mask-a" fill="#D8D8D8"></path>
@@ -156,7 +129,7 @@
 												</g>
 											</svg>
 
-											<svg class="letter-s letter m7-5x" viewBox="0 0 48 100" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-2500">
+											<svg hidden class="letter-s letter m7-5x" viewBox="0 0 48 100" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-2500">
 												<defs>
 													<clipPath id="letter-s-clip">
 														<path d="M1,61.392 L1,62.04 C1,73.056 11.368,79.32 24.832,79.32 C37.648,79.32 47.152,73.56 47.152,62.616 C47.152,50.304 33.904,45.696 26.128,42.96 C19.432,40.656 16.84,39.504 16.84,37.272 C16.84,35.4 18.784,33.456 23.68,33.456 C29.512,33.456 32.32,36.696 32.32,39.432 L32.32,39.936 L46.36,39.936 L46.36,39.144 C46.36,27.984 36.496,21 23.392,21 C10.576,21 1.432,27.696 1.432,38.424 C1.432,50.016 13.168,54.336 22.096,57.288 C28.864,59.592 31.672,61.032 31.672,63.408 C31.672,65.064 29.944,66.864 24.544,66.864 C17.992,66.864 15.04,63.912 15.04,61.752 L15.04,61.392 L1,61.392 L1,61.392 L1,61.392 L1,61.392 Z" class="letter-mask-s" fill="#D8D8D8"></path>
@@ -172,7 +145,7 @@
 												</g>
 											</svg>
 
-											<svg class="letter-u letter m10x" viewBox="0 0 55 100" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-3000">
+											<svg hidden class="letter-u letter m10x" viewBox="0 0 55 100" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-3000">
 												<defs>
 													<clipPath id="letter-u-clip">
 														<path d="M39.296,22 L39.296,52.744 C39.296,60.88 35.336,65.344 27.776,65.344 C20.288,65.344 16.4,60.88 16.4,52.744 L16.4,22 L2,22 L2,53.608 C2,68.08 10.928,79.24 27.776,79.24 C44.552,79.24 53.624,68.08 53.624,53.608 L53.624,22 L39.296,22 L39.296,22 L39.296,22 Z" class="letter-mask-u" fill="#D8D8D8"></path>
@@ -191,10 +164,8 @@
 												</g>
 											</svg>
 										</div>
-										<div class="flex m15x">
-											<svg class="letter-i letter m10x" viewBox="0 0 16 100"
-												 elem-states="[draw-letter]"
-												 on-draw-letter-enter="null:delay-3500:inject.letter-i .line|on-draw-line-enter">
+										<div hidden class="flex m15x">
+											<svg hidden class="letter-i letter m10x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-3500" viewBox="0 0 16 100">
 												<defs>
 													<clipPath id="letter-i-clip">
 														<polygon class="letter-mask-i" fill="#D8D8D8" points="1 22 1 78.16 15.4 78.16 15.4 22 1 22"></polygon>
@@ -202,71 +173,39 @@
 												</defs>
 												<g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="15" clip-path="url(#letter-i-clip)">
 													<g stroke="#F25A5B">
-														<path d="M8,28.75 L8,42.75"
-															  letter-color="i-1" class="line"
-															  on-init="opacity:0"></path>
-														<path d="M8,71.75 L8,57.75"
-															  letter-color="i-2" class="line"
-															  on-init="opacity:0"></path>
+														<path d="M8,28.75 L8,42.75" class="letter-color-i-1 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
+														<path d="M8,71.75 L8,57.75" class="letter-color-i-2 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
 													</g>
 													<g stroke="#FFFFFF">
-														<path d="M8,28.75 L8,42.75"
-															  letter-white="i-1" class="line"
-															  on-init="opacity:0"
-															  elem-states="[draw-line]"
-															  on-draw-line-enter="letter-14:animIn:delay-0"></path>
-														<path d="M8,71.75 L8,57.75"
-															  letter-white="i-2" class="line"
-															  on-init="opacity:0"
-															  elem-states="[draw-line]"
-															  on-draw-line-enter="letter-14:animIn:delay-0"></path>
+														<path d="M8,28.75 L8,42.75" class="letter-white-i-1 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
+														<path d="M8,71.75 L8,57.75" class="letter-white-i-2 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
 													</g>
 												</g>
 											</svg>
 
-											<svg class="letter-d letter m10x" viewBox="0 0 55 100"
-												 elem-states="[draw-letter]"
-												 on-draw-letter-enter="null:delay-4000:inject.letter-d .line|on-draw-line-enter">
+											<svg hidden class="letter-d letter m10x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-4000" viewBox="0 0 55 100">
 												<defs>
 													<clipPath id="letter-d-clip">
 														<path d="M1,78.16 L27.064,78.16 C44.632,78.16 53.632,65.416 53.632,50.08 C53.632,34.816 44.632,22 27.064,22 L1,22 L1,78.16 L1,78.16 L1,78.16 Z M25.984,35.968 C34.552,35.968 39.088,41.656 39.088,50.08 C39.088,58.504 34.552,64.264 25.984,64.264 L15.4,64.264 L15.4,35.968 L25.984,35.968 L25.984,35.968 L25.984,35.968 L25.984,35.968 L25.984,35.968 Z" class="letter-mask-d" fill="#D8D8D8"></path>
+														<rect x="0" y="0" width="15" height="15" fill="black"></rect>
+														<rect x="0" y="0" width="15" height="15" fill="black"></rect>
 													</clipPath>
 												</defs>
 												<g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="15" clip-path="url(#letter-d-clip)">
 													<g stroke="#F25A5B">
-														<path d="M8,28.75 L8,70.75"
-															  letter-color="d-1" class="line"
-															  on-init="opacity:0"></path>
-														<path d="M46.5566406,49.7500001 C46.5566406,59.9745248 42.1677581,66.5010605 34.8339844,69.3144532 C23.7042873,73.5840435 8,70.75 8,70.75"
-															  letter-color="d-2" class="line"
-															  on-init="opacity:0"></path>
-														<path d="M46.2314453,52.7685547 C46.2314453,45.3427734 45.9912109,37.9726562 38.0927734,32.4628906 C30.1943359,26.953125 9.50097656,29.2685547 9.50097656,29.2685547"
-															  letter-color="d-3" class="line"
-															  on-init="opacity:0"></path>
+														<path d="M8,28.75 L8,70.75" class="letter-color-d-1 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
+														<path d="M46.5566406,49.7500001 C46.5566406,59.9745248 42.1677581,66.5010605 34.8339844,69.3144532 C23.7042873,73.5840435 8,70.75 8,70.75" class="letter-color-d-2 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
+														<path d="M46.2314453,52.7685547 C46.2314453,45.3427734 45.9912109,37.9726562 38.0927734,32.4628906 C30.1943359,26.953125 9.50097656,29.2685547 9.50097656,29.2685547" class="letter-color-d-3 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
 													</g>
 													<g stroke="#FFFFFF">
-														<path d="M8,28.75 L8,70.75"
-															  letter-white="d-1" class="line"
-															  on-init="opacity:0"
-															  elem-states="[draw-line]"
-															  on-draw-line-enter="letter-42:animIn:delay-0"></path>
-														<path d="M46.5566406,49.7500001 C46.5566406,59.9745248 42.1677581,66.5010605 34.8339844,69.3144532 C23.7042873,73.5840435 8,70.75 8,70.75"
-															  letter-white="d-2" class="line"
-															  on-init="opacity:0"
-															  elem-states="[draw-line]"
-															  on-draw-line-enter="letter-52:animIn:delay-250"></path>
-														<path d="M46.2314453,52.7685547 C46.2314453,45.3427734 45.9912109,37.9726562 38.0927734,32.4628906 C30.1943359,26.953125 9.50097656,29.2685547 9.50097656,29.2685547"
-															  letter-white="d-3" class="line"
-															  on-init="opacity:0"
-															  elem-states="[draw-line]"
-															  on-draw-line-enter="letter-52:animIn:delay-350"></path>
+														<path d="M8,28.75 L8,70.75" class="letter-white-d-1 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
+														<path d="M46.5566406,49.7500001 C46.5566406,59.9745248 42.1677581,66.5010605 34.8339844,69.3144532 C23.7042873,73.5840435 8,70.75 8,70.75" class="letter-white-d-2 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
+														<path d="M46.2314453,52.7685547 C46.2314453,45.3427734 45.9912109,37.9726562 38.0927734,32.4628906 C30.1943359,26.953125 9.50097656,29.2685547 9.50097656,29.2685547" class="letter-white-d-3 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
 													</g>
 												</g>
 											</svg>
 
-											<svg class="letter-e letter m10x" viewBox="0 0 45 100"
-												 elem-states="[draw-letter]"
-												 on-draw-letter-enter="null:delay-4500:inject.letter-e .line|on-draw-line-enter">
+											<svg hidden class="letter-e letter m10x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-4500" viewBox="0 0 45 100">
 												<defs>
 													<clipPath id="letter-e-clip">
 														<polygon class="letter-mask-e" fill="#D8D8D8" points="1 78.16 44.128 78.16 44.128 64.264 15.4 64.264 15.4 57.064 39.016 57.064 39.016 44.032 15.4 44.032 15.4 35.968 44.128 35.968 44.128 22 1 22 1 78.16"></polygon>
@@ -274,9 +213,7 @@
 												</defs>
 												<g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="15" clip-path="url(#letter-e-clip)">
 													<g stroke="#F25A5B">
-														<path d="M8.5,72 L8.5,29.5"
-															  letter-color="e-1" class="line"
-															  on-init="opacity:0"></path>
+														<path d="M8.5,72 L8.5,29.5" class="letter-color-e-1 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
 														<path d="M8.5,51 L31.5,51" class="letter-color-e-2 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
 														<path d="M37,29 L8.5,29" class="letter-color-e-3 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
 														<path d="M37,71 L8.5,71" class="letter-color-e-4 line" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn"></path>
@@ -290,7 +227,7 @@
 												</g>
 											</svg>
 
-											<svg class="letter-n letter m12x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-5000" viewBox="0 0 55 100">
+											<svg hidden class="letter-n letter m12x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-5000" viewBox="0 0 55 100">
 												<defs>
 													<clipPath id="letter-n-clip">
 														<polygon class="letter-mask-n" fill="#D8D8D8" points="16.4 78.16 16.4 46.84 41.456 78.16 53.624 78.16 53.624 22 39.296 22 39.296 53.392 14.24 22 2 22 2 78.16"></polygon>
@@ -311,7 +248,7 @@
 												</g>
 											</svg>
 
-											<svg class="letter-t letter m10x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-5500" viewBox="0 0 51 100">
+											<svg hidden class="letter-t letter m10x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-5500" viewBox="0 0 51 100">
 												<defs>
 													<clipPath id="letter-t-clip">
 														<polygon class="letter-mask-t" fill="#D8D8D8" points="1 35.968 18.496 35.968 18.496 78.16 32.896 78.16 32.896 35.968 50.392 35.968 50.392 22 1 22 1 35.968"></polygon>
@@ -329,7 +266,7 @@
 												</g>
 											</svg>
 
-											<svg class="letter-i letter m12x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-6250" viewBox="0 0 16 100">
+											<svg hidden class="letter-i letter m12x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-6250" viewBox="0 0 16 100">
 												<defs>
 													<clipPath id="letter-i-clip">
 														<polygon class="letter-mask-i" fill="#D8D8D8" points="1 22 1 78.16 15.4 78.16 15.4 22 1 22"></polygon>
@@ -347,7 +284,7 @@
 												</g>
 											</svg>
 
-											<svg class="letter-t letter m10x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-7000" viewBox="0 0 51 100">
+											<svg hidden class="letter-t letter m10x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-7000" viewBox="0 0 51 100">
 												<defs>
 													<clipPath id="letter-t-clip">
 														<polygon class="letter-mask-t" fill="#D8D8D8" points="1 35.968 18.496 35.968 18.496 78.16 32.896 78.16 32.896 35.968 50.392 35.968 50.392 22 1 22 1 35.968"></polygon>
@@ -365,7 +302,7 @@
 												</g>
 											</svg>
 
-											<svg class="letter-y letter m7-5x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-7500" viewBox="0 0 61 100">
+											<svg hidden class="letter-y letter m7-5x" on-init="opacity:0" elem-states="[draw-letters]" on-draw-letters-enter="enter-state:animIn:delay-7500" viewBox="0 0 61 100">
 												<defs>
 													<clipPath id="letter-y-clip">
 														<polygon class="letter-mask-y" fill="#D8D8D8" points="17.92 22 1 22 23.176 57.568 23.176 78.16 37.504 78.16 37.504 57.568 59.752 22 42.76 22 30.304 42.376 17.92 22 17.92 22"></polygon>
