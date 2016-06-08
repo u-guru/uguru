@@ -811,10 +811,17 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                       element[0].classList.add(elemStateClass);
                     }
 
-                    if (elemArgDict.inject_elems) {
-                      for (var k = 0; k < elemArgDict.inject_elems.length; k++) {
-                        elemArgDict.inject_elems[k].classList.add(elemArgDict.inject_class);
-                      }
+                    if (elemArgDict.inject_elems && !elemArgDict.delay) {
+
+                        for (var k = 0; k < elemArgDict.inject_elems.length; k++) {
+                          elemArgDict.inject_elems[k].classList.add(elemArgDict.inject_class);
+                        }
+                    } else if (elemArgDict.inject_elems && elemArgDict.delay) {
+                      $timeout(function() {
+                        for (var k = 0; k < elemArgDict.inject_elems.length; k++) {
+                          elemArgDict.inject_elems[k].classList.add(elemArgDict.inject_class);
+                        }
+                      }, parseInt(elemArgDict.delay))
                     }
 
                   }
