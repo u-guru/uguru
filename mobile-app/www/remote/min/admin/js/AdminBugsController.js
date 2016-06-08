@@ -24,7 +24,7 @@ angular.module('uguru.admin')
                 return true;
               }
               for (var i in bug.platforms) {
-                  if (platforms.indexOf(bug.platforms[i]) !== -1) {
+                  if (platforms.indexOf(bug.platforms[i].name) !== -1) {
                       return true;
                   }
               }
@@ -67,9 +67,12 @@ angular.module('uguru.admin')
             CTAService,$localstorage, $timeou,SpecContentService) {
 
     $scope.openBugList=function(section){
-      $scope.bugs = section.bugs;
       $scope.help = section.help;
+      $scope.states = section.states;
       $scope.name = section.name;
+      $scope.stateID = section.stateID;
+      $scope.manualBugs = section.manualBugs;
+
       if ($scope.name === ''){
         $scope.addSection = true;
         $scope.newSection ={
@@ -179,19 +182,51 @@ angular.module('uguru.admin')
     };
 
     $scope.preBug = function(){
-      var index = $scope.selectedBug.index - 1;
-      $scope.selectedBug = $scope.bugs[index];
-      $scope.selectedBug.index = index;
+      var index = $scope.current.index - 1;
+      $scope.selectedBug = $scope.stepBugs[index];
+      $scope.current.index = index;
       $scope.backupBug = angular.copy($scope.selectedBug);
+      // console.log( $scope.backupBug.step)
+    };
+    $scope.preStateBug = function(){
+      var pIndex = $scope.current.parentIndex - 1;
+      var find = false;
+      do
+      {
+        if ($scope.states[pIndex].stepBugs.length > 0)
+        {
+          find = true;
+        }
+        else{
+          -- pIndex;
+        }
+        $scope.current.parentIndex = pIndex;
+
+      }while(find !== true &&  $scope.current.parentIndex >= 0);
+      
+      $scope.current.parentIndex = pIndex;
+      $scope.current.index = $scope.states[$scope.current.parentIndex].stepBugs.length-1;
+      $scope.selectedBug = $scope.states[$scope.current.parentIndex].stepBugs[$scope.current.index];
+    }
+    $scope.isEndOfBug = function(index){
+      for (var i = index; i >= 0; -- i){
+        if ($scope.states[i].stepBugs.length > 0 ){
+          return false;
+        }
+      }
+      return true;
     };
 
-    $scope.initAndLaunchBugCTA = function($event,bug,index){
-      // console.log("Check",$event)
+
+    $scope.initAndLaunchBugCTA = function($event,bug,index,parentIndex){
       var targetElem = $event.target;
       if (bug){
         $scope.selectedBug = bug;
         $scope.backupBug = angular.copy(bug);
-        $scope.selectedBug.index = index;
+        $scope.current = {
+          parentIndex : parentIndex,
+          index: index
+        };
       }
       else
       {
@@ -397,7 +432,8 @@ angular.module('uguru.admin')
     }
     function intData(){
     
-        $scope.bugs = [];
+        $scope.states = [];
+        $scope.manualBugs = [];
         $scope.help = {};
         $scope.isEditMode = false;
         $scope.availableOptions = [
@@ -414,7 +450,7 @@ angular.module('uguru.admin')
         $scope.advanceSearch ={
              'platforms' :{'list':[],'add': addPlatform, 'remove':removePlatform,'available_list':[ 'chrome','firefox','safari','android','android-chrome','ios','ios-safari']},
              'tags': {'list':[], 'add': addTag, 'remove':removeTag, 'err_msg':'', 'empty_tag': {'placeholder':"+   add a tag", 'content': ''}},
-        }
+        };
 
         if ($localstorage.getObject('advanceSearch')!=='[]'){
           var cache = $localstorage.getObject('advanceSearch');
@@ -425,12 +461,12 @@ angular.module('uguru.admin')
           console.log('Reset',$scope.advanceSearch);
         }
         for (var i = 0; i < $scope.bugReport.length; ++ i) {
-          if(!$scope.bugReport[i].bugID){
-           $scope.bugReport[i].bugID =  genUniqueID($scope.bugReport[i].name);
+          if(!$scope.bugReport[i].stateID){
+           $scope.bugReport[i].stateID =  genUniqueID($scope.bugReport[i].name);
           }
-          if(!$scope.bugReport[i].envir){
-            $scope.bugReport[i].envir = getDefaultEnvir();
-          }
+          // if(!$scope.bugReport[i].envir){
+          //   $scope.bugReport[i].envir = getDefaultEnvir();
+          // }
         }
     }
 
@@ -465,44 +501,44 @@ angular.module('uguru.admin')
 
     $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
-        console.log("Data is Load",newNames)
+        console.log('Data is Load',newNames);
         intData();
         $scope.indexOfSection = getReportIndexByID(document.URL.split('admin/bugs/')[1]);
-        console.log( $scope.indexOfSection)
+        // console.log($scope.indexOfSection)
         if ($scope.indexOfSection){
           $scope.openBugList($scope.bugReport[$scope.indexOfSection]);
         }
         else{
           $scope.openBugList($scope.bugReport[0]);
         }        
-        // $scope.openBugList({name:'',bugs:[],help:{}})
-        $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
-        ReportService.saveBug($scope.bugReport);
+        // // $scope.openBugList({name:'',bugs:[],help:{}})
+        // $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
+        // ReportService.saveBug($scope.bugReport);
         // console.log('Reprort',ReportService.getBug());
 
       }
       else if(oldNames && newNames){
-          console.log("Data is Update",newNames)
+          console.log('Data is Update',newNames);
          // $scope.openBugList($scope.bugReport[$scope.bugReport.length-1]);
          $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
          $scope.saveBug();
       }
     });
 
-    $scope.$watchCollection('userWorkflows', function(newNames, oldNames) {
-      if (!oldNames && newNames){
-        for (var i = 0; i < $scope.userWorkflows.length; i++)
-        {
-          var section = linkReport($scope.userWorkflows[i]);
-          if (section){
-            $scope.bugReport.push(section);
-          }
-        }
-      }
-      else if(oldNames && newNames){
-        console.log('Workflows is Update',newNames);
-      }
-    });
+    // $scope.$watchCollection('userWorkflows', function(newNames, oldNames) {
+    //   if (!oldNames && newNames){
+    //     for (var i = 0; i < $scope.userWorkflows.length; i++)
+    //     {
+    //       var section = linkReport($scope.userWorkflows[i]);
+    //       if (section){
+    //         $scope.bugReport.push(section);
+    //       }
+    //     }
+    //   }
+    //   else if(oldNames && newNames){
+    //     console.log('Workflows is Update',newNames);
+    //   }
+    // });
 
     window.onbeforeunload = function(event)
       {
