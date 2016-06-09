@@ -16,22 +16,42 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
     allSpecs.preApp = {
             "workflows":[
               {
-                title: 'pre-splash',
+                title: 'App Loader Bakery',
+                routes: getRoutes('dev/splash/loader', 'preapp/templates/loaders/baking.html'),
+                spec: getSpec('loader')
+              },
+              {
+                title: 'Madlib Selection',
                 controller: 'SplashMadlibController',
                 routes: getRoutes('dev/splash/madlib', 'preapp/templates/splash.madlib.html'),
                 spec: getSpec('madlib'),
                 bugs: getBugInfo('User selects a splash tag')
               },
               {
-                title: 'splash',
-                controller: 'CalendarController',
-                routes: getRoutes('calendar', 'calendar.html', 'controllers/util/CalendarCtrl.js'),
-                spec: getSpec('calendar'),
-                bugs: getBugInfo('calendar'),
+                title: 'Nav Controller',
+                controller: 'NavController',
+                routes: getRoutes('/dev/nav/', 'preapp/templates/nav.html', 'preapp/js/SplashNavController.js'),
+                spec: getSpec('nav'),
+                bugs: getBugInfo('nav'),
 
               },
               {
-                title: 'Jeselle Portfolio',
+                title: 'Device Controller',
+                controller: 'SplashDeviceController',
+                routes: getRoutes('/dev/device/', 'preapp/templates/device.html', 'preapp/js/SplashDeviceController.js'),
+                spec: getSpec('device'),
+                bugs: getBugInfo('device'),
+              },
+              {
+                title: "Jeselle's Portfolio",
+                controller: 'JeselleController',
+                routes: getRoutes('/dev/jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js'),
+                spec: getSpec('jeselle'),
+                bugs: getBugInfo('jeselle'),
+                members: ['jeselle:priority', 'samir', 'gabrielle:complete', 'jason']
+              },
+              {
+                title: "Gabrielle's Portfolio",
                 controller: 'JeselleController',
                 routes: getRoutes('/dev/jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js'),
                 spec: getSpec('jeselle'),
@@ -184,10 +204,11 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
     function getRoutes(param, template_url, ctrl_url) {
     var defaultRoutes = {
           local: '/#/',
-          staging: 'https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/'
+          staging: 'https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/#/'
         }
         var localUrl = defaultRoutes.local + param;
-        var stagingUrl = defaultRoutes.staging;
+        var stagingUrl = defaultRoutes.staging + param;
+        console.log(param);
         return {
             local: {url: localUrl, launch: launchSeparateWindowFunc(localUrl)},
             staging: {url: stagingUrl, launch: launchSeparateWindowFunc(stagingUrl)},

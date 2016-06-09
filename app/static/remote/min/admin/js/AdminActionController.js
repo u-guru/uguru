@@ -22,23 +22,33 @@ angular.module('uguru.admin')
     $scope.admin_tasks = SpecContentService.getContentSpecAdmin('preApp');
     // console.log("LOG", $scope.user_workflows[4].bugs.launchBugTab())
 
+    if (window.location.href.split(':8100').length > 1) {
+      $timeout(function() {
+        initBugs();
+      }, 1000)
+    }
 
-     ReportService.getBug().then(function(result){
+    function initBugs () {
+      ReportService.getBug().then(function(result){
        $scope.bugReport = result;
        console.log('result', $scope.bugReport);
       }, function(reason) {
         console.log(reason);
-    });
+      });
+      $scope.$watchCollection('bugReport', function(newNames, oldNames) {
+        if (!oldNames && newNames){
+          console.log('bugReport is load');
+        }
+        else if(oldNames && newNames){
+          console.log('bugReport is Update');
+        }
+      });
+    }
 
-    $scope.$watchCollection('bugReport', function(newNames, oldNames) {
-      if (!oldNames && newNames){
-        console.log('bugReport is load');
-      }
-      else if(oldNames && newNames){
-        console.log('bugReport is Update');
-      }
-    });
-    
+
+
+
+
     $scope.getBug  = function(id){
       var counts;
       if(id && $scope.bugReport){
@@ -50,7 +60,7 @@ angular.module('uguru.admin')
           }
         }
       }
-  
+
       return 0;
     };
 
@@ -59,7 +69,14 @@ angular.module('uguru.admin')
     }
 
     $scope.parseMember = function(member_name) {
-
+      if (!member_name) {
+        return {
+          first_name: 'plz login',
+          name: 'plz-login',
+          profile_url: '',
+          priority: true
+        }
+      }
       var first_name = member_name.split(':')[0];
       var member = JSON.parse(JSON.stringify(getMemberFromFirstName(first_name)));
 

@@ -18,7 +18,8 @@ angular.module('uguru.shared.controllers', [])
     // }
     var root = this;
     root.window = getBodyDimensions();
-    root.base_url = RootService.getBaseUrl()
+    root.base_url = RootService.getBaseUrl();
+    root.local = window.location.href.split(':8100').length > 1;
   }
 ]);
 

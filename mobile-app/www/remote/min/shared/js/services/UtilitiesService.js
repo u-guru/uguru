@@ -3,11 +3,14 @@ angular
 .factory("UtilitiesService", [
     '$rootScope',
     '$compile',
+    '$timeout',
     UtilitiesService
     ]);
 
-function UtilitiesService($rootScope, $compile) {
-
+function UtilitiesService($rootScope, $compile, $timeout) {
+    $timeout(function() {
+        initSupport();
+    })
     return {
         getNetworkSpeed: getNetworkSpeed,
         deg2rad: deg2rad,
@@ -35,13 +38,35 @@ function UtilitiesService($rootScope, $compile) {
         cordovaExists: cordovaExists,
         numberWithCommas: numberWithCommas,
         isAdminRequest: isAdminRequest,
-        compileToAngular: compileToAngular
+        compileToAngular: compileToAngular,
+        initSupport: initSupport
     }
 
     function camelCase(input) {
         return input.toLowerCase().replace(/-(.)/g, function(match, group1) {
             return group1.toUpperCase();
         });
+    }
+
+    function initSupport() {
+        if (!Array.prototype.filter) {
+          Array.prototype.filter = function(fun /*, thisp*/) {
+            var len = this.length >>> 0;
+            if (typeof fun != "function")
+            throw new TypeError();
+
+            var res = [];
+            var thisp = arguments[1];
+            for (var i = 0; i < len; i++) {
+              if (i in this) {
+                var val = this[i]; // in case fun mutates this
+                if (fun.call(thisp, val, i, this))
+                res.push(val);
+              }
+            }
+            return res;
+          };
+        }
     }
 
 

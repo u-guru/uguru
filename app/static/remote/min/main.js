@@ -73,7 +73,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.gabrielle', {
     url:'/dev/gabrielle',
     templateUrl: 'gabrielle/templates/index.html',
+  })
+  .state('root.loaders', {
+    url:'/dev/splash/loaders',
+    templateUrl: 'preapp/templates/loaders/baking.html'
   });
+
 
   $urlRouterProvider.otherwise('/');
 

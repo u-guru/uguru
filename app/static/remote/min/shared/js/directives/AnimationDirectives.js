@@ -280,7 +280,6 @@ angular.module('uguru.shared.directives')
         if (element[0].classList.contains('activate')) {
 
           element[0].classList.remove('activate')
-          console.log('this was activated', element[0])
           var delay = attr.onActivate || 0;
           var classes = attr.onActivate.split(", ");
           // $timeout(function() {
@@ -288,7 +287,6 @@ angular.module('uguru.shared.directives')
                 var indexClass = classes[i].split(":")[0];
                 var classArgs = classes[i].split(":").slice(1);
                 var elemArgDict = parseElemStateAttrValueArgs(classArgs);
-                console.log('this was activated', classes[i], classArgs, elemArgDict);
                 if (elemArgDict.unique) {
                 //   $timeout(function() {
                     var elemsThatAlreadyHaveClass = document.querySelectorAll('.' + indexClass) || [];

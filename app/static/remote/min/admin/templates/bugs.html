@@ -1,12 +1,15 @@
 <!-- not sure how to transfer this over so leaving this empty file here for now to remove the console error -->
-<div class="full-xy absolute top-0 left-0 z-index-9">
-	<ion-pane id='cta-modal-selected-bug' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.detail.html'"></ion-pane>
+<div class="full-xy absolute top-0 left-0 z-index-9"  ng-controller='AdminBugsController'>
+	<header class="bg-slate">
+                    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Bugs</h1>
+     </header>
+	<ion-pane id='cta-modal-selected-bug' ng-if='false' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.detail.html'"></ion-pane>
 
 	<header class='bg-robin txt-center flex-center'>
 		<h1 ng-if="indexOfSection == null && bugReport.length" class="txt-white weight-700 txt-28">Bugs {{indexOfSection}}</h1>
 		<h1 ng-if="indexOfSection >= 0" class="txt-white weight-700 txt-28">{{bugReport[indexOfSection].name}} </h1>
 		<span ng-if="indexOfSection >= 0" class="block p15x-p10y bg-white txt-moxie radius-2 caps txt-18 semibold">{{isAllEnvirPassed(bugReport[indexOfSection].envir)}}</span>
-		
+
 	</header>
 	<div>
 		<div class=' p05xy bg-robin-80p full-x flex-wrap-left' >
@@ -23,7 +26,7 @@
 				<label for="reverse-order">Reverse</label>
 			</div>
 
-		
+
 			<div ng-class="{'p15bottom': advanceSearch.tags.err_msg}" ng-if='!addSection'>
 				<div class='tag-list'>
 					<ul>
@@ -53,7 +56,7 @@
 						</li>
 					</ul>
 					<div class="error bg-crimson m15x p10y-p15x radius-2 txt-white semibold txt-18 hide" ng-class="{'show': advanceSearch.tags.err_msg}">{{advanceSearch.tags.err_msg}}
-					</div>	
+					</div>
 				</div>
 			</div>
 	</div>
@@ -81,28 +84,16 @@
 		<div class='bg-slate-50p' ng-int='reverse = false'>
 			<div ng-if='!addSection'>
 				<ul ng-if="availableOptions.selectedIndex == 0" class="p15-grid">
-					<!-- <li ng-repeat='bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list' ng-click='initAndLaunchBugCTA($event, bug,$index)'> -->
-
 					<li ng-repeat='state in states' >
 						<span class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold">{{state.title}}</span>
 						<ul>
 							<li ng-repeat='stepBug in state.stepBugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list'>
 							 <a ng-click='initAndLaunchBugCTA($event, stepBug ,$index, $parent.$index)'>{{stepBug.step}}</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
-				<!-- <ul ng-if="availableOptions.selectedIndex == 1" class="p15-grid">
-					<li class="flex" ng-repeat="bug in bugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list | orderBy:'-rank':reverse">
-						<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">#{{bug.rank}}</span>
-						<span class="block bg-charcoal p10y-p15x radius-2-right txt-18 semibold full-x">{{bug.title}}</span>
-					</li>
-				</ul>
-				<ul ng-if="availableOptions.selectedIndex == 2">
-					<li ng-repeat="bug in bugs  | selectFixed | orderBy:'-fix.getTime':!reverse">
-						<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">{{bug.fix.fixedDate}}</span>
-						<span class="block bg-charcoal p10y-p15x radius-2 txt-18 semibold">{{bug.title}}</span>
-					</li>
-				</ul> -->
+
 			</div>
 			<ul class="p15-grid" ng-if="availableOptions.selectedIndex !== 2">
 				<li >
@@ -112,4 +103,5 @@
 		</div>
 
 	</div>
+</div>
 </div>

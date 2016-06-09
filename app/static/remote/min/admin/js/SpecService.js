@@ -37,9 +37,11 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data = obj;
             calcUseCasesCompletedness(specObj.data.use_cases)
             //@gabrielle note
-            specObj.data.toggleDev = false;
+            specObj.data.toggleDev = true;
             specObj.data.toggleSpec = false;
-            specObj.data.mobile = {width:400, height:768, show:false, template:specObj.template_path, url:window.location.href, toggle: function() {scope.spec.data.mobile.show = !scope.spec.data.mobile.show}}
+            specObj.data.toggleDocs = false;
+            specObj.data.toggleDocSearch = true;
+            specObj.data.mobile = {toggle:toggleMobileMode, width:400, height:768, show:false, template:specObj.template_path, url:window.location.href}
             specObj.data.open = specObj.open;
             specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
             specObj.data.stateTags = specObj.data.statesDropdown.options;
@@ -51,17 +53,19 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                 scope.spec[specProp] = specObj[specProp]
             }
             elem = document.querySelector(parent_container);
+            console.log('parent containeter', elem);
             specElem = document.createElement('spec');
             specElem.className = 'fixed bottom-0 left-0 full-x';
             specElem.style.zIndex = '100000';
+            specObj.data.toggles = {devBar: toggleDev, docs: toggleDocs, spec:toggleSpec};
             KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
             KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
-            KeyboardService.initOptionPressedAndReleasedFunction(function() {toggleDev(true); toggleSpec(true)}, null, 27, 'esc', true, null);
+            KeyboardService.initOptionPressedAndReleasedFunction(toggleDocs, null, 78, 'n', true, null);
+            KeyboardService.initOptionPressedAndReleasedFunction(function() {toggleDev(true); toggleSpec(true); toggleDocs(true)}, null, 27, 'esc', true, null);
             // specElem.setAttribute('ng-if', 'spec && spec.data');
             specElem.setAttribute('data', param + '.spec.data');
             if (elem) {
                 elem.appendChild(specElem)
-                console.log(specElem);
                 $timeout(function() {
                     $compile(specElem)(real_scope);
                 })
@@ -92,10 +96,35 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
               }
 
             }
+
+            function toggleMobileMode() {
+                scope.spec.data.mobile.show = !scope.spec.data.mobile.show;
+                var parent_elem = document.querySelector(parent_container);
+
+                if (scope.spec.data.mobile.show) {
+                    for (child in parent_elem.children) {
+                        var indexChild = parent_elem.children[child];
+                        if (indexChild && indexChild.nodeType && !indexChild.getAttribute('data')) {
+
+                            indexChild.style.display = 'none';
+                        }
+                    }
+                    $timeout(function() {
+                        var mobileSpecContainer = document.querySelector('#mobile-spec-container');
+                        var elemController = mobileSpecContainer.querySelector('[ng-controller]');
+                        elemController.removeAttribute('ng-controller');
+                        $compile(elemController)(real_scope);
+                    }, 100)
+                } else {
+
+                }
+            }
+
             function toggleSpec(value) {
               var newValue = !scope.spec.data.toggleSpec;
               if (newValue) {
                 scope.spec.data.toggleSpec = newValue;
+                scope.spec.data.toggleDocs = false;
                 return;
               }
               else if (!newValue) {
@@ -106,6 +135,24 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                 })
                 $timeout(function() {
                     scope.spec.data.toggleSpec = newValue;
+                }, 750);
+              }
+            }
+            function toggleDocs(value) {
+              var newValue = !scope.spec.data.toggleDocs;
+              if (newValue) {
+                scope.spec.data.toggleDocs = newValue;
+                scope.spec.data.toggleSpec = false;
+                return;
+              }
+              else if (!newValue) {
+                var docSpecContainer = document.querySelector('#dev-docs');
+                docSpecContainer.classList.remove('slideInDown');
+                $timeout(function() {
+                    docSpecContainer.classList.add('fadeOutUp');
+                })
+                $timeout(function() {
+                    scope.spec.data.toggleDocs = newValue;
                 }, 750);
               }
             }
@@ -224,6 +271,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         function constructCodepenUrl(spec_id) {
             return "https://codepen.io/teamuguru/pen/" + spec_id;
         }
+
+
     }
 
     function generateDropdownFromStates(states, parent_container, scope) {

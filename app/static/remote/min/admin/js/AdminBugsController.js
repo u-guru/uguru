@@ -95,8 +95,8 @@ angular.module('uguru.admin')
       $scope.bugs.splice(index,1);
       $scope.saveBug();
       $scope.editMode();
-      $scope.closeBug();      
-    };    
+      $scope.closeBug();
+    };
     $scope.removeSection = function(index){
       console.log(index);
       $scope.bugReport.splice(index,1);
@@ -203,7 +203,7 @@ angular.module('uguru.admin')
         $scope.current.parentIndex = pIndex;
 
       }while(find !== true &&  $scope.current.parentIndex >= 0);
-      
+
       $scope.current.parentIndex = pIndex;
       $scope.current.index = $scope.states[$scope.current.parentIndex].stepBugs.length-1;
       $scope.selectedBug = $scope.states[$scope.current.parentIndex].stepBugs[$scope.current.index];
@@ -249,7 +249,7 @@ angular.module('uguru.admin')
         $scope.backupBug = {};
         // $scope.selectedBug.index = -1;
       }
- 
+
       $scope.lastCTABoxTargetElem = targetElem;
       $scope.lastCTABoxTargetElem.id = 'cta-box-selected-bug';
       CTAService.initSingleCTA('#' + targetElem.id, '#main-bug-content');
@@ -389,7 +389,7 @@ angular.module('uguru.admin')
           var environment = [];
           for( var k = 0; k < device.length; ++k){
             for ( var i = 0; i < platformsName.length; ++i ){
-                  if (  
+                  if (
                       (device[k]!=='desktop' && platformsName[i].indexOf('ios') === 0)  ||
                       (device[k]!=='desktop' && platformsName[i].indexOf('android') ===0)
                       ){
@@ -431,7 +431,7 @@ angular.module('uguru.admin')
 
     }
     function intData(){
-    
+
         $scope.states = [];
         $scope.manualBugs = [];
         $scope.help = {};
@@ -496,7 +496,9 @@ angular.module('uguru.admin')
     }
 
     $timeout(function() {
-      loadUpdatedBugsJsonFile($scope);
+      if (window.location.href.split('8100').length > 1) {
+        loadUpdatedBugsJsonFile($scope);
+      }
     });
 
     $scope.$watchCollection('bugReport', function(newNames, oldNames) {
@@ -510,7 +512,7 @@ angular.module('uguru.admin')
         }
         else{
           $scope.openBugList($scope.bugReport[0]);
-        }        
+        }
         // // $scope.openBugList({name:'',bugs:[],help:{}})
         // $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
         // ReportService.saveBug($scope.bugReport);
