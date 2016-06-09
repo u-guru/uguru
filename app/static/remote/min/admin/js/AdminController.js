@@ -13,9 +13,8 @@ angular.module('uguru.admin')
     'KeyboardService',
     '$compile',
     'AnimationService',
-    'ReportService',
-    function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService, 
-             LoadingService, KeyboardService, $compile, AnimationService, ReportService) {
+    function($scope, $state, $stateParams, $timeout, $localstorage, $interval, FileService,
+             LoadingService, KeyboardService, $compile, AnimationService) {
         // (!$scope.user || !$scope.user.id) && $state.go('^.desktop-login');
 
 
@@ -28,6 +27,13 @@ angular.module('uguru.admin')
             profile_url = $scope.user.profile_url;
             $scope.adminUser.name = first_name;
             $scope.adminUser.profile_url = profile_url;
+            $timeout(function() {
+                if (!$scope.layout.index) {
+                    // initAll();
+                    //     importLastAnimation();
+                    //     importLastStage();
+                }
+            }, 2000)
         })
 
         var defaults = {
@@ -2572,6 +2578,7 @@ angular.module('uguru.admin')
         // - i cant see where i'm at
 
         function initAll() {
+
             initView()
             initKeyboardListeners();
         }
@@ -3901,23 +3908,7 @@ angular.module('uguru.admin')
                 focusedElement.classList.add('animated', 'tada');
             }, 1000)
         }
-        $timeout(function() {
-            importLastAnimation();
-            importLastStage();
-        }, 3000);
 
-        $timeout(function() {
-
-            initAll();
-            // $timeout(function() {
-                $timeout(function() {
-                    // exportExternalCSSKeyFrameFiles(['preapp'])
-                }, 2000)
-            //  // angular.element(document.querySelector('#import-button')).triggerHandler('click');
-            //  // $scope.importCodepenTemplate('http://codepen.io/teamuguru/pen/29ce58caa079980bb9375afa30efcb57');
-            // }, 5000)
-
-        }, 500)
 
     }
 

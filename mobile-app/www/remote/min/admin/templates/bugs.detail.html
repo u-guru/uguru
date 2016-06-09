@@ -1,4 +1,4 @@
-<div class="full-xy">
+<div class="full-xy" ng-if='false'>
 	<header class='bg-robin txt-center flex-center'>
 		<!-- <h1 class="txt-white weight-700 txt-28">Bug Detail</h1> -->
 		<h1 class='txt-white weight-700 txt-28' ng-if='!isNewBug'>{{selectedBug.title}}</h1>
@@ -229,7 +229,7 @@
 					<button class="bg-robin radius-2 height-36 txt-18" ng-click='preBug()' ng-if='current.index != 0'>
 						Previous Bugs
 					</button>
-	
+
 				</li>
 				<li ng-if='false'>
 					<button class="bg-robin radius-2 height-36 txt-18" ng-click='preStateBug()' >

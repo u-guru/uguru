@@ -101,7 +101,8 @@ gulp.task('compile-css', function(done) {
       'shared/**/*.css',
       'preapp/**/*.css',//,
       'gabrielle/**/*.css',//,
-      'jeselle/**/*.css'//,
+      'jeselle/**/*.css',
+      'admin/**/*.css'//,
       // 'loader.css'
     ],{cwd: ''})
   .pipe(debug())
@@ -244,6 +245,7 @@ gulp.task('compile-temp',function(done){
           'admin/templates/*html',
           'admin/templates/*bugs.*html',
           'admin/templates/components/*tpl',
+          'admin/templates/docs/*html',
           'shared/templates/*html',
           'shared/templates/components/*tpl',
           'shared/templates/components/svg/*tpl',
