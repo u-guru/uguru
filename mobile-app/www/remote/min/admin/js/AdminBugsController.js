@@ -7,7 +7,7 @@ angular.module('uguru.admin')
                 return true;
               }
               for (var i in bug.tags) {
-                  if (tags.indexOf(bug.tags[i]) !== -1) {
+                  if (bug.tags[i].indexOf(tags) !== -1) {
                       return true;
                   }
               }
@@ -24,7 +24,8 @@ angular.module('uguru.admin')
                 return true;
               }
               for (var i in bug.platforms) {
-                  if (platforms.indexOf(bug.platforms[i].name) !== -1) {
+                  if (platforms.indexOf(bug.platforms[i].name) !== -1 ||
+                   platforms.indexOf(bug.platforms[i].name+'-'+bug.platforms[i].device) !== -1 ) {
                       return true;
                   }
               }

@@ -80,7 +80,9 @@
 				</li>
 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">error&nbsp;msg</span>
-					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selectedBug.error_msg}}</span>
+					<ul>
+					<li class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-repeat='msg in selectedBug.error_msg'>{{msg}}</li>
+					</ul>
 				</li>
 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">notes</span>
