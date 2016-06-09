@@ -24,9 +24,13 @@ angular.module('uguru.admin')
                 return true;
               }
               for (var i in bug.platforms) {
-                  if (platforms.indexOf(bug.platforms[i].name) !== -1 ||
-                   platforms.indexOf(bug.platforms[i].name+'-'+bug.platforms[i].device) !== -1 ) {
+                  if (platforms.indexOf(bug.platforms[i].name) !== -1)
+                    {
                       return true;
+                    }
+                  else if (platforms.indexOf(bug.platforms[i].name+'-'+bug.platforms[i].device) !== -1 )
+                  {
+                    return true
                   }
               }
               return false;
