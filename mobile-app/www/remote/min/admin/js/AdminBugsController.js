@@ -265,7 +265,7 @@ angular.module('uguru.admin')
         // angular.element(targetElem).triggerHandler('click');
         var modalElem = document.querySelector('#cta-modal-selected-bug');
         // CTAService.showModalCTA(modalElem);
-
+        console.log("check",targetElem)
         modalElem.classList.add('show');
       });
     };
@@ -453,7 +453,7 @@ angular.module('uguru.admin')
         $scope.reverse = true;
         $scope.selectOption = $scope.availableOptions[0];
         $scope.advanceSearch ={
-             'platforms' :{'list':[],'add': addPlatform, 'remove':removePlatform,'available_list':[ 'chrome','firefox','safari','android','android-chrome','ios','ios-safari']},
+             'platforms' :{'list':[],'add': addPlatform, 'remove':removePlatform,'available_list':[ 'chrome','firefox','safari','android-app','android-chrome','ios-app','ios-safari']},
              'tags': {'list':[], 'add': addTag, 'remove':removeTag, 'err_msg':'', 'empty_tag': {'placeholder':"+   add a tag", 'content': ''}},
         };
 

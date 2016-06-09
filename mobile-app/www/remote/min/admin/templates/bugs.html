@@ -3,7 +3,7 @@
 	<header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Bugs</h1>
      </header>
-	<ion-pane id='cta-modal-selected-bug' ng-if='false' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.detail.html'"></ion-pane>
+	<ion-pane id='cta-modal-selected-bug' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.detail.html'"></ion-pane>
 
 	<header class='bg-robin txt-center flex-center'>
 		<h1 ng-if="indexOfSection == null && bugReport.length" class="txt-white weight-700 txt-28">Bugs {{indexOfSection}}</h1>
