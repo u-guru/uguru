@@ -1,4 +1,4 @@
-<div ng-controller='AdminDocsController as docs'>
+<div>
 <header class="bg-slate">
     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Docs</h1>
 </header>
@@ -10,9 +10,9 @@
 </div>
 
 <div class="absolute bottom-0 left-0 full-xy overflow-auto no-scrollbar admin-docs" style="height: calc(100% - 100px) !important;">
-    <div ng-if='docs.main.index === 0' ng-include="root.base_url + 'admin/templates/docs/notes.html'">
+    <div ng-if='docs.main.index === 0 && !docs.searchText.length' ng-include="root.base_url + 'admin/templates/docs/notes.html'">
     </div>
-    <div ng-if='docs.main.index === 1' class='admin-html flex-wrap-start absolute top-0 left-0 full-xy overflow-auto no-scrollbar' ng-include="root.base_url + 'admin/templates/docs/classes.html'">
+    <div ng-if='docs.main.index === 1' class='admin-html relative flex-wrap-start absolute top-0 left-0 full-xy overflow-auto no-scrollbar' style='margin-bottom:10%;' ng-include="root.base_url + 'admin/templates/docs/classes.html'">
     </div>
     <ul class="p15-grid" ng-if='docs.main.index === 2' ng-include="root.base_url + 'admin/templates/docs/components.html'">
     </ul>

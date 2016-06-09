@@ -17,7 +17,9 @@ angular.module('uguru.admin')
              LoadingService, KeyboardService, $compile, AnimationService) {
         // (!$scope.user || !$scope.user.id) && $state.go('^.desktop-login');
 
-
+        $timeout(function() {
+            $scope.layout = {index:3};
+        })
         $scope.$on('$ionicView.enter', function() {
             if (!$scope.user) {
                 $scope.user = {name: 'jason', profile_url: 'https://uguru.me/static/web/images/team/jason.png'}

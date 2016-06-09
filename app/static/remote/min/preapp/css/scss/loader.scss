@@ -1,4 +1,6 @@
+@import 'partials/bakery-loader';
 @import '../../../shared/css/scss/partials/mixin';
+
 
 .loader-portal {
   @include flex;
