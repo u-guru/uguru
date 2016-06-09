@@ -250,7 +250,7 @@ gulp.task('compile-temp',function(done){
           'shared/templates/components/*tpl',
           'shared/templates/components/svg/*tpl',
           'preapp/templates/*html',
-          'preapp/templates/components/*tpl',
+          // 'preapp/templates/components/*tpl',
           '**/*tpl',
           '**/*svg'], { cwd: '' }).pipe(plugins.angularTemplatecache('templates.js', {
         root: '',
