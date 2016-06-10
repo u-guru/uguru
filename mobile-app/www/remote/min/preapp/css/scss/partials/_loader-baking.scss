@@ -10,6 +10,172 @@
 				}
 			}
 		}
+        &.active {
+            .guru.baking {
+                > div:not(.baking-props-container) {
+                    animation: l-move-up 1500ms linear 1500ms both, reach-rotate-right 500ms ease-in-out 1250ms forwards, reach-rotate-left 500ms ease-in-out 3250ms forwards, l-head-hover 1000ms linear 2500ms 10 forwards, l-move-down 1000ms linear 7500ms forwards;
+                    > svg {
+                        animation: off-center-guru 1000ms linear 5000ms forwards, off-center-guru 1000ms linear 6250ms reverse forwards;
+                    }
+                    .smiles-expression {
+                        animation: smile 250ms linear 5000ms forwards;
+                    }
+                    .normal-expression {
+                        animation: fadeOut 150ms linear 5000ms forwards;
+                    }
+                    .arm-right {
+                        animation: right-arm-rotate 500ms ease-in-out 1250ms forwards;
+                    }
+                    .reach-right {
+                        animation: flip-reach-left 250ms ease-in-out 1350ms forwards;
+                    }
+                    .arm-left {
+                        animation: left-arm-rotate 500ms ease-in-out 3000ms forwards;
+                    }
+                    .reach-left {
+                        animation: flip-reach-right 250ms ease-in-out 3250ms forwards;
+                    }
+                }
+                .baking-props-container {
+                    animation: l-head-hover 1000ms linear 2500ms 3 forwards, l-move-down 1000ms linear 6500ms forwards;
+                    .baking-tool {
+                        .frosting-tool {
+                            animation: prop-reveal 250ms ease-in-out 3250ms forwards, fadeOut 250ms linear 5000ms forwards;
+                        }
+                        .frosting-line {
+                            animation: frosting-line 1500ms ease 4500ms forwards;
+                        }
+                    }
+                    .baking-cake-container {
+                        animation: off-center 500ms cubic-bezier(0,.43,0,.99) 5000ms forwards;
+                    }
+                    .baking-cake {
+                        animation: cake-scale 500ms cubic-bezier(0,.43,0,.99) 5000ms forwards, cake-scale 1000ms linear 6500ms reverse forwards;
+                        .bday-plate {
+                            animation: prop-reveal 250ms ease-in-out 1550ms forwards;
+                        }
+                        .bday-tier-1 {
+                            animation: tier-1-landing 500ms ease-out 1650ms forwards;
+                        }
+                        .bday-tier-2 {
+                            animation: tier-rotate 2000ms ease-in 1850ms forwards;
+                        }
+                        .bday-tier-3 {
+                            animation: tier-landing-hard 1550ms ease-in 2000ms forwards;
+                        }
+                        .bday-frosting-1 {
+                            animation: frosting-enter 1000ms ease-in 4000ms forwards;
+                        }
+                        .bday-frosting-2 {
+                            animation: frosting-enter 1000ms ease-in 4250ms forwards;
+                        }
+                        .bday-frosting-3 {
+                            animation: frosting-enter 1000ms ease-in 4500ms forwards;
+                        }
+                        .candle-1, .candle-3 {
+                            animation: candle-enter 500ms ease-out 5500ms forwards;
+                        }
+                        .candle-2 {
+                            animation: candle-enter 500ms ease-out 5850ms forwards;
+                        }
+                        .bday-flame-1 {
+                            animation: flames 3000ms ease-in-out 4750ms 20 alternate;
+                        }
+                        .bday-flame-2 {
+                            animation: flames 3000ms ease-in-out 5000ms 20 alternate-reverse;
+                        }
+                        .bday-flame-3 {
+                            animation: flames 2750ms ease-in-out 4500ms 20 alternate;
+                        }
+                    }
+                    .sda-0-6 {
+                        animation: sda-0-6 6ms ease-in-out forwards;
+                    }
+                    .sda-5 {
+                        animation: sda-5 59ms ease-in-out forwards;
+                    }
+                    .sda-8 {
+                        animation: sda-8 80ms ease-in-out forwards;
+                    }
+                    .sda-11 {
+                        animation: sda-11 110ms ease-in-out forwards;
+                    }
+                    .sda-14 {
+                        animation: sda-14 140ms ease-in-out forwards;
+                    }
+                    .sda-21 {
+                        animation: sda-21 210ms ease-in-out forwards;
+                    }
+                    .sda-25 {
+                        animation: sda-25 250ms ease-in-out forwards;
+                    }
+                    .sda-26 {
+                        animation: sda-26 260ms ease-in-out forwards;
+                    }
+                    .sda-31 {
+                        animation: sda-31 310ms ease-in-out forwards;
+                    }
+                    .sda-32 {
+                        animation: sda-32 320ms ease-in-out forwards;
+                    }
+                    .sda-45 {
+                        animation: sda-45 450ms ease-in-out forwards;
+                    }
+
+                    .hash-1 {
+                        animation-delay: 3000ms;
+                    }
+                    .hash-2 {
+                        animation-delay: 3080ms;
+                    }
+                    .hash-3 {
+                        animation-delay: 3160ms;
+                    }
+                    .hash-4 {
+                        animation-delay: 3210ms;
+                    }
+                    .number-one {
+                        animation-delay: 3260ms;
+                    }
+                    .letter-b-1 {
+                        animation-delay: 3400ms;
+                    }
+                    .letter-b-2 {
+                        animation-delay: 3540ms;
+                    }
+                    .letter-a-1 {
+                        animation-delay: 3650ms;
+                    }
+                    .letter-a-2 {
+                        animation-delay: 3790ms;
+                    }
+                    .letter-k {
+                        animation-delay: 3870ms;
+                    }
+                    .letters-ers {
+                        animation-delay: 4180ms;
+                    }
+                    .letter-i, .letter-i-dot {
+                        animation-delay: 4630ms;
+                    }
+                    .letter-n:not(:last-child) {
+                        animation-delay: 4740ms;
+                    }
+                    .letter-t {
+                        animation-delay: 5000ms;
+                    }
+                    .letter-o {
+                        animation-delay: 5310ms;
+                    }
+                    .letter-w {
+                        animation-delay: 5560ms;
+                    }
+                    .letter-n:last-child {
+                        animation-delay: 5880ms;
+                    }
+                }
+            }
+        }
 	}
 }
 
@@ -21,45 +187,26 @@
     > div:not(.baking-props-container) {
         width: 100%;
         height: 100%;
-        // transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 350, 0, 1);
-        // animation: l-move-up 1500ms linear 1500ms both, reach-rotate-right 500ms ease-in-out 1250ms forwards, reach-rotate-left 500ms ease-in-out 3250ms forwards, l-head-hover 1000ms linear 2500ms 10 forwards, l-move-down 1000ms linear 7500ms forwards;
         > svg {
-            // animation: off-center-guru 1000ms linear 5000ms forwards, off-center-guru 1000ms linear 6250ms reverse forwards;
             transform-origin: center center;
         }
         .smiles-expression {
             opacity: 0;
-            // animation: smile 250ms linear 5000ms forwards;
             transform-origin: left bottom;
         }
-        .normal-expression {
-            // animation: fadeOut 150ms linear 5000ms forwards;
-        }
-        .arm-right {
+        .arm-right, .reach-right {
             transform-origin: left top;
-            // animation: right-arm-rotate 500ms ease-in-out 1250ms forwards;
         }
-        .reach-right {
-            transform-origin: left top;
-            // animation: flip-reach-left 250ms ease-in-out 1350ms forwards;
-        }
-        .arm-left {
+        .arm-left, .reach-left {
             transform-origin: right top;
-            // animation: left-arm-rotate 500ms ease-in-out 3000ms forwards;
-        }
-        .reach-left {
-            transform-origin: right top;
-            // animation: flip-reach-right 250ms ease-in-out 3250ms forwards;
         }
     }
     .baking-props-container {
-        opacity: 0;
         position: absolute;
         top: calc(50% - 122px);
         left: calc(50% - 72px);
         width: 144px;
         height: 244px;
-        animation: l-head-hover 1000ms linear 2500ms 3 forwards, l-move-down 1000ms linear 6500ms forwards;
         .baking-tool {
             position: absolute;
             top: -102px;
@@ -67,78 +214,41 @@
             .frosting-tool {
                 opacity: 0;
                 transform-origin: right bottom;
-                animation: prop-reveal 250ms ease-in-out 3250ms forwards, fadeOut 250ms linear 5000ms forwards;
             }
             .frosting-line {
                 opacity: 0;
                 stroke-dasharray: 570;
-                animation: frosting-line 1500ms ease 4500ms forwards;
             }
-        }
-        .baking-cake-container {
-            animation: off-center 500ms cubic-bezier(0,.43,0,.99) 5000ms forwards;
         }
         .baking-cake {
             position: absolute;
             top: 30px;
             left: 116px;
             transform-origin: 50% 70%;
-            animation: cake-scale 500ms cubic-bezier(0,.43,0,.99) 5000ms forwards, cake-scale 1000ms linear 6500ms reverse forwards;
             .bday-plate {
                 opacity: 0;
                 transform-origin: left top;
-                animation: prop-reveal 250ms ease-in-out 1550ms forwards;
             }
             .bday-tier-1 {
                 opacity: 0;
                 transform-origin: center bottom;
-                animation: tier-1-landing 500ms ease-out 1650ms forwards;
             }
             .bday-tier-2 {
                 opacity: 0;
                 transform-origin: center top;
-                animation: tier-rotate 2000ms ease-in 1850ms forwards;
             }
             .bday-tier-3 {
                 opacity: 0;
-                animation: tier-landing-hard 1550ms ease-in 2000ms forwards;
             }
-            .bday-frosting-1 {
+            .bday-frosting-1, .bday-frosting-2, .bday-frosting-3 {
                 opacity: 0;
                 transform-origin: left center;
-                animation: frosting-enter 1000ms ease-in 4000ms forwards;
             }
-            .bday-frosting-2 {
+            .candle-1, .candle-3, .candle-2 {
                 opacity: 0;
-                transform-origin: left center;
-                animation: frosting-enter 1000ms ease-in 4250ms forwards;
-            }
-            .bday-frosting-3 {
-                opacity: 0;
-                transform-origin: left center;
-                animation: frosting-enter 1000ms ease-in 4500ms forwards;
-            }
-            .candle-1,
-            .candle-3 {
-                opacity:0;
                 transform-origin: center center;
-                animation: candle-enter 500ms ease-out 5500ms forwards;
             }
-            .candle-2 {
-                opacity:0;
-                transform-origin: center center;
-                animation: candle-enter 500ms ease-out 5850ms forwards;
-            }
-            .bday-flame-1 {
-                animation: flames 3000ms ease-in-out 4750ms 20 alternate;
-                transform-origin: center bottom;
-            }
-            .bday-flame-2 {
-                animation: flames 3000ms ease-in-out 5000ms 20 alternate-reverse;
-                transform-origin: center bottom;
-            }
-            .bday-flame-3 {
-                animation: flames 2750ms ease-in-out 4500ms 20 alternate;
+            .bday-flame-1, .bday-flame-2, .bday-flame-3 {
                 transform-origin: center bottom;
             }
         }
@@ -147,99 +257,36 @@
         }
         .sda-0-6 {
             stroke-dasharray: 0.6;
-            animation: sda-0-6 6ms ease-in-out forwards;
         }
         .sda-5 {
             stroke-dasharray: 5;
-            animation: sda-5 59ms ease-in-out forwards;
         }
         .sda-8 {
             stroke-dasharray: 8;
-            animation: sda-8 80ms ease-in-out forwards;
         }
         .sda-11 {
             stroke-dasharray: 11;
-            animation: sda-11 110ms ease-in-out forwards;
         }
         .sda-14 {
             stroke-dasharray: 14;
-            animation: sda-14 140ms ease-in-out forwards;
         }
         .sda-21 {
             stroke-dasharray: 21;
-            animation: sda-21 210ms ease-in-out forwards;
         }
         .sda-25 {
             stroke-dasharray: 25;
-            animation: sda-25 250ms ease-in-out forwards;
         }
         .sda-26 {
             stroke-dasharray: 26;
-            animation: sda-26 260ms ease-in-out forwards;
         }
         .sda-31 {
             stroke-dasharray: 31;
-            animation: sda-31 310ms ease-in-out forwards;
         }
         .sda-32 {
             stroke-dasharray: 32;
-            animation: sda-32 320ms ease-in-out forwards;
         }
         .sda-45 {
             stroke-dasharray: 45;
-            animation: sda-45 450ms ease-in-out forwards;
-        }
-
-        .hash-1 {
-            animation-delay: 3000ms;
-        }
-        .hash-2 {
-            animation-delay: 3080ms;
-        }
-        .hash-3 {
-            animation-delay: 3160ms;
-        }
-        .hash-4 {
-            animation-delay: 3210ms;
-        }
-        .number-one {
-            animation-delay: 3260ms;
-        }
-        .letter-b-1 {
-            animation-delay: 3400ms;
-        }
-        .letter-b-2 {
-            animation-delay: 3540ms;
-        }
-        .letter-a-1 {
-            animation-delay: 3650ms;
-        }
-        .letter-a-2 {
-            animation-delay: 3790ms;
-        }
-        .letter-k {
-            animation-delay: 3870ms;
-        }
-        .letters-ers {
-            animation-delay: 4180ms;
-        }
-        .letter-i, .letter-i-dot {
-            animation-delay: 4630ms;
-        }
-        .letter-n:not(:last-child) {
-            animation-delay: 4740ms;
-        }
-        .letter-t {
-            animation-delay: 5000ms;
-        }
-        .letter-o {
-            animation-delay: 5310ms;
-        }
-        .letter-w {
-            animation-delay: 5560ms;
-        }
-        .letter-n:last-child {
-            animation-delay: 5880ms;
         }
     }
 }
