@@ -46,7 +46,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
             specObj.data.stateTags = specObj.data.statesDropdown.options;
             specObj.data.stateTagClicked = specObj.data.statesDropdown.onOptionClick;
-            specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path, specObj.css_path);
+            $timeout(function() {
+                specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path, specObj.css_path);
+            })
             specObj.data.openGDoc = openGDocSpecFunc(specObj.data.gdoc);
             for (specProp in specObj) {
                 scope.spec[specProp] = specObj[specProp]
@@ -213,15 +215,15 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
     function getCodepenData(scope, title, template_url, ctrl_path, css_path) {
         console.log(template_url, ctrl_path);
-        $timeout(function() {
-            loadHTMLSpec(scope, template_url, ctrl_path)
-        })
-        $timeout(function() {
-            loadJsSpec(scope, template_url, ctrl_path)
-        })
-        $timeout(function() {
-            loadCssSpec(scope, css_path);
-        })
+        // $timeout(function() {
+        //     loadHTMLSpec(scope, template_url, ctrl_path)
+        // })
+        // $timeout(function() {
+        //     loadJsSpec(scope, template_url, ctrl_path)
+        // })
+        // $timeout(function() {
+        //     loadCssSpec(scope, css_path);
+        // })
         var base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
         return {
             title                 : title,
