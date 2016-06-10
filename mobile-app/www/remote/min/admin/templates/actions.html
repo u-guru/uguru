@@ -40,7 +40,7 @@
                 </div>
             </div>
         </li>
-        <li ng-repeat='flow in user_workflows | filter:search.text:strict'>
+        <li ng-repeat='flow in user_workflows | filter:search.text:strict' ng-if='flow.ready'>
             <div class="bg-white-10p radius-2 flex-space-between-center-vertical">
                 <h2 class="p15xy txt-18 semibold">{{flow.title}}</h2>
                 <ul class="flex p15-grid">
@@ -49,7 +49,7 @@
                             <user-icon url="member.profile_url" size="36"> </user-icon>
                         </div>
                     </li>
-                    <li>
+                    <li ng-if='root.local'>
                         <button class="bg-moxie height-36 txt-18 radius-2" ng-click='flow.routes.staging.launch()'>Master</button>
                     </li>
                     <li>

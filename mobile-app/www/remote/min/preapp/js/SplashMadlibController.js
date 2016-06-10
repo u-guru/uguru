@@ -21,7 +21,6 @@ angular.module('uguru.preApp')
     madlib.onEnter = function() {
 
       if ($scope.splash && !$scope.splash.state) {
-        alert('yo');
         $scope.$watch('splash.state.madlib', function(newVal, oldVal) { newVal && madlib.activate() && $timeout(function() {$scope.$apply()})});
       } else {
         madlib.activate();
