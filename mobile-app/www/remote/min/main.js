@@ -76,12 +76,8 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   })
   .state('root.loaders', {
     url:'/dev/splash/loaders',
-    templateUrl: 'preapp/templates/loaders/baking.html'
-  })
-  .state('root.swiper', {
-    url:'/dev/shared/swiper',
-    templateUrl: 'shared/templates/components/swiper.tpl'
-  })
+    templateUrl: 'preapp/templates/loaders/main.html'
+  });
 
 
   $urlRouterProvider.otherwise('/');

@@ -18,7 +18,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         getSpec: getSpec
     }
 
-    function initSpec(scope, real_scope, parent_container, param, template_path, ctrl_path, states) {
+    function initSpec(scope, real_scope, parent_container, param, template_path, ctrl_path, states, css_path) {
         if (window.location.href.split('/').indexOf('dev') === -1) {
             return;
         }
@@ -46,10 +46,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
             specObj.data.stateTags = specObj.data.statesDropdown.options;
             specObj.data.stateTagClicked = specObj.data.statesDropdown.onOptionClick;
-            specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path)
+            specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path, specObj.css_path);
             specObj.data.openGDoc = openGDocSpecFunc(specObj.data.gdoc);
             for (specProp in specObj) {
-                console.log(specObj);
                 scope.spec[specProp] = specObj[specProp]
             }
             elem = document.querySelector(parent_container);
@@ -212,9 +211,16 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
     }
 
-    function getCodepenData(scope, title, template_url, ctrl_path) {
+    function getCodepenData(scope, title, template_url, ctrl_path, css_path) {
+        console.log(template_url, ctrl_path);
         $timeout(function() {
             loadHTMLSpec(scope, template_url, ctrl_path)
+        })
+        $timeout(function() {
+            loadJsSpec(scope, template_url, ctrl_path)
+        })
+        $timeout(function() {
+            loadCssSpec(scope, template_url, ctrl_path)
         })
         var base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
         return {
@@ -226,7 +232,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             layout                : "right", // top | left | right
             html                  : '',
             html_pre_processor    : "",
-            css                   : ".scroll { height: inherit; }",
+            css                   : ".scroll { height: inherit; } ",
             css_pre_processor     : "none",
             css_starter           : "neither",
             css_prefix            : "none",
@@ -258,6 +264,39 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             xhr.send();
         }
 
+        function loadJsSpec(scope, template_url, controller_url) {
+
+            if (window.location.href.split(':8100').length > 1) {
+              template_url = window.location.href.split('#/')[0] + controller_url;
+            } else {
+              template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + controller_url;
+            }
+            console.log(template_url);
+            var xhr = new XMLHttpRequest();
+            xhr.open( 'GET', template_url, true );
+
+            xhr.onload = function () {
+                scope.spec.data.codepenData.js = xhr.responseText;
+            };
+            xhr.send();
+        }
+
+        function loadCssSpec(scope, css_url) {
+
+            if (window.location.href.split(':8100').length > 1) {
+              template_url = window.location.href.split('#/')[0] + css_url;
+            } else {
+              template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + css_url;
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open( 'GET', template_url, true );
+
+            xhr.onload = function () {
+                scope.spec.data.codepenData.css += xhr.responseText;
+            };
+            xhr.send();
+        }
+
         function wrapMinUguruHtml(response_html, relative_ctrl_url) {
             var result = '<body ng-app="uguru" animation="slide-left-right-ios7" > <ui-view id="uguru-view"> <script type="text/ng-template" id="demo.html"> ' + response_html +'</script> </ui-view> <script src="https://uguru-rest-test.herokuapp.com/static/remote/min/' + relative_ctrl_url + '"></script> </body>'
             return result;
@@ -265,12 +304,13 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
     }
 
-    function getSpecObj(spec_id, template_url, ctrl_url) {
+    function getSpecObj(spec_id, template_url, ctrl_url, css_url) {
         var url = constructCodepenUrl(spec_id);
         return {
             open: openCodepenSpecFunc(url),
             url: url + '.js',
             ctrl_path: ctrl_url,
+            css_path: css_url,
             template_path: template_url,
             data: {}
         }

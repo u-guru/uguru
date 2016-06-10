@@ -76,7 +76,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   })
   .state('root.loaders', {
     url:'/dev/splash/loaders',
-    templateUrl: 'preapp/templates/loaders/baking.html'
+    templateUrl: 'preapp/templates/loaders/main.html'
   });
 
 

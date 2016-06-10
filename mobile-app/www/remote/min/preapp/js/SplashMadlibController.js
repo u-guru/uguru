@@ -70,7 +70,7 @@ angular.module('uguru.preApp')
       SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states)
       $timeout(function() {
         madlib.onEnter();
-      }, 500)
+      }, 1500)
     }, 1000)
 
   }

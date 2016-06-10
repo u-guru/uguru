@@ -10,7 +10,7 @@ angular.module('uguru.preApp')
     var loader = this;
 
     loader.spec = {data: {toggleDev:false, toggleSpec: false}};
-    SpecService.initSpec(loader, $scope, '#bakery-loader', 'loader', 'preapp/templates/loaders/baking.html', 'preapp/js/SplashLoaderController.js', {});
+    SpecService.initSpec(loader, $scope, '#bakery-loader', 'loader', 'preapp/templates/loaders/main.html', 'preapp/js/SplashLoaderController.js', {});
   }
 ])
 
