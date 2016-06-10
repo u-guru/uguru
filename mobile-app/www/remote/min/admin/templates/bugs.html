@@ -4,6 +4,7 @@
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Bugs</h1>
      </header>
 	<ion-pane id='cta-modal-selected-bug' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.detail.html'"></ion-pane>
+	<ion-pane id='cta-modal-state-platforms' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.states.html'"></ion-pane>
 
 	<header class='bg-robin txt-center flex-center'>
 		<h1 ng-if="indexOfSection == null && bugReport.length" class="txt-white weight-700 txt-28">Bugs {{indexOfSection}}</h1>
@@ -85,7 +86,13 @@
 			<div ng-if='!addSection'>
 				<ul ng-if="availableOptions.selectedIndex == 0" class="p15-grid">
 					<li ng-repeat='state in states' >
-						<span class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold">{{state.title}}</span>
+						<span class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold">
+							{{state.title}}
+				<!-- 			<span class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold">
+								1
+							</span> -->
+						</span>
+
 						<ul>
 							<li ng-repeat='stepBug in state.stepBugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list'>
 							 <a ng-click='initAndLaunchBugCTA($event, stepBug ,$index, $parent.$index)'>{{stepBug.step}}</a>
