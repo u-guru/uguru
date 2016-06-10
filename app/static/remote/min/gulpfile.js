@@ -271,7 +271,7 @@ gulp.task('clean', function(done) {
 
 gulp.task('templates', function() {
   //PART ONE, MOVE ALL TEMPLATES TO RIGHT FOLDER
-  var templateLocations = ['admin/templates/**/**/**', 'shared/templates/**/**/**', 'preapp/templates/**/**/**'];
+  var templateLocations = ['admin/templates/**/**/**', 'shared/templates/**/**/**', 'preapp/templates/**/**/**', 'jeselle/templates/**/**/**', 'gabrielle/templates/**/**/**'];
   for (var i = 0; i < templateLocations.length; i++) {
     gulp.src([templateLocations[i]], { cwd: '' })
     .pipe(htmlmin({collapseWhitespace: true}))

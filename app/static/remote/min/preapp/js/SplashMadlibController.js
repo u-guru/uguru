@@ -17,11 +17,10 @@ angular.module('uguru.preApp')
     madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
     madlib.university = UniversityService.getBerkeleyLocal();
 
-
+    $scope.path_1 = "M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741"
     madlib.onEnter = function() {
 
       if ($scope.splash && !$scope.splash.state) {
-        alert('yo');
         $scope.$watch('splash.state.madlib', function(newVal, oldVal) { newVal && madlib.activate() && $timeout(function() {$scope.$apply()})});
       } else {
         madlib.activate();
