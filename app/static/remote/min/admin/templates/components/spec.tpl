@@ -160,7 +160,7 @@
                     <button class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='spec.open()'>CP Spec</button>
                 </div>
             </li>
-            <li class='opacity-50 flex-wrap-center' ng-if='false'>
+            <li class='opacity-50 flex-wrap-center'>
                 <div>
                     <button class='full-x bg-moxie txt-18 height-36 semibold' ng-click='spec.mobile.toggle()'>
                         <span ng-if='!spec.mobile.show'>Mobile</span>
