@@ -17,15 +17,17 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
             "workflows":[
               {
                 title: 'App Loader Bakery',
-                routes: getRoutes('dev/splash/loaders', 'preapp/templates/loaders/baking.html'),
-                spec: getSpec('loader')
+                routes: getRoutes('dev/splash/loaders', 'preapp/templates/loaders/baking.html', 'preapp/css/scss/partials/_bakery-loader.scss'),
+                spec: getSpec('loader'),
+                ready:true
               },
               {
                 title: 'Madlib Selection',
                 controller: 'SplashMadlibController',
                 routes: getRoutes('dev/splash/madlib', 'preapp/templates/splash.madlib.html'),
                 spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag')
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
               },
               {
                 title: 'Nav Controller',
@@ -45,18 +47,18 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
               {
                 title: "Jeselle's Portfolio",
                 controller: 'JeselleController',
-                routes: getRoutes('/dev/jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js'),
+                routes: getRoutes('dev/jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js'),
                 spec: getSpec('jeselle'),
                 bugs: getBugInfo('jeselle'),
-                members: ['jeselle:priority', 'samir', 'gabrielle:complete', 'jason']
+                ready:true
               },
               {
                 title: "Gabrielle's Portfolio",
-                controller: 'JeselleController',
-                routes: getRoutes('/dev/jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js'),
-                spec: getSpec('jeselle'),
-                bugs: getBugInfo('jeselle'),
-                members: ['jeselle:priority', 'samir', 'gabrielle:complete', 'jason']
+                controller: 'GabrielleController',
+                routes: getRoutes('dev/gabrielle', 'gabrielle/templates/index.html', 'gabrielle/templates/GabrielleCtrl.js'),
+                spec: getSpec('gabrielle'),
+                bugs: getBugInfo('gabrielle'),
+                ready:true
               }
               ]
             //   {

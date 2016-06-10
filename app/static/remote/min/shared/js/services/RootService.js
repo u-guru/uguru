@@ -42,9 +42,6 @@ function RootService($timeout, $state) {
       if (window.location.href.split(':5000').length > 1 || window.location.href.split('uguru').length > 1) {
         base_url = '/static/remote/min/'
       }
-      else if (window.location.href.split('codepen').length > 1) {
-        base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
-      }
       else  {
         base_url = '';
       }
