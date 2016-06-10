@@ -215,15 +215,15 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
     function getCodepenData(scope, title, template_url, ctrl_path, css_path) {
         console.log(template_url, ctrl_path);
-        // $timeout(function() {
-        //     loadHTMLSpec(scope, template_url, ctrl_path)
-        // })
-        // $timeout(function() {
-        //     loadJsSpec(scope, template_url, ctrl_path)
-        // })
-        // $timeout(function() {
-        //     loadCssSpec(scope, css_path);
-        // })
+        $timeout(function() {
+            loadHTMLSpec(scope, template_url, ctrl_path)
+        })
+        $timeout(function() {
+            loadJsSpec(scope, template_url, ctrl_path)
+        })
+        $timeout(function() {
+            loadCssSpec(scope, css_path);
+        })
         var base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
         return {
             title                 : title,

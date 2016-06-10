@@ -74,6 +74,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/gabrielle',
     templateUrl: 'gabrielle/templates/index.html',
   })
+  .state('root.demos', {
+    url:'/demos',
+    templateUrl: 'admin/templates/demos.html',
+  })
   .state('root.loaders', {
     url:'/dev/splash/loaders',
     templateUrl: 'preapp/templates/loaders/main.html'
