@@ -19,12 +19,12 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
     }
 
     function initSpec(scope, real_scope, parent_container, param, template_path, ctrl_path, states, css_path) {
-        if (window.location.href.split('/').indexOf('dev') === -1) {
+        if ((window.location.href.split('/').indexOf('dev') === -1) && window.location.href.split('codepen').length === 1) {
             return;
         }
         //checks codepen environment
         // if (window.location.href.split('codepen.io').length > 1) return;
-        var specObj = getSpec(param, template_path, ctrl_path);
+        var specObj = getSpec(param, template_path, ctrl_path, css_path);
         var callbackFunc = getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states)
         getCodepenSpec(specObj.url, callbackFunc)
 
@@ -220,7 +220,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             loadJsSpec(scope, template_url, ctrl_path)
         })
         $timeout(function() {
-            loadCssSpec(scope, template_url, ctrl_path)
+            loadCssSpec(scope, css_path);
         })
         var base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
         return {
@@ -282,7 +282,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
 
         function loadCssSpec(scope, css_url) {
-
+            if (!css_url) {
+                return '';
+            }
             if (window.location.href.split(':8100').length > 1) {
               template_url = window.location.href.split('#/')[0] + css_url;
             } else {
@@ -430,12 +432,12 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
       xhr.send();
     }
 
-    function getSpec(_id, template_url, ctrl_url) {
+    function getSpec(_id, template_url, ctrl_url, css_path) {
         var specTokens = {'calendar': 'ddd2f97039f2fec817d52499dd3c00ac', 'madlib': '5c0ecd57c10973ddfe65af113522a809', 'jeselle': '98f138f534428eb8af27ea5c2b6944ef', 'gabrie': '9d8ddaef35241c63a3a95032485bf645'};
         if (Object.keys(specTokens).indexOf(_id) > -1) {
-            return getSpecObj(specTokens[_id], template_url, ctrl_url)
+            return getSpecObj(specTokens[_id], template_url, ctrl_url, css_path)
         } else {
-            return getSpecObj('98f138f534428eb8af27ea5c2b6944ef', template_url, ctrl_url)
+            return getSpecObj('98f138f534428eb8af27ea5c2b6944ef', template_url, ctrl_url, css_path)
         }
     }
 
