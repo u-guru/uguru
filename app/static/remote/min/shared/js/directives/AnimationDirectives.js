@@ -75,7 +75,7 @@ angular.module('uguru.shared.directives')
 
       var elementToTraceSelector = attr.tracePath;
       var elementToAppendChild = attr.traceParent;
-      console.log('passed in selectors', elementToTraceSelector, elementToAppendChild)
+      // console.log('passed in selectors', elementToTraceSelector, elementToAppendChild)
       var options = {
         duration: attr.traceDuration || '5s',
         time_function: attr.traceTimeFunc || 'linear',
@@ -112,7 +112,7 @@ angular.module('uguru.shared.directives')
 
           })
           var cssAnimObj = SVGService.generateCSSObjFromPath(animName, pathElem, elemOffset, options.should_rotate);
-
+          console.log(cssAnimObj);
           var cssAnimObjString = [animName, options.duration, options.time_function, options.delay, options.iter_count, options.direction, options.fill_mode].join(' ');
 
           traceParent.appendChild(element[0]);

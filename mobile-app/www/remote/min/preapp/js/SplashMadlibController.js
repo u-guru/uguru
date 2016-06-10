@@ -71,7 +71,7 @@ angular.module('uguru.preApp')
       if (window.location.href.split('codepen').length > 1) {
         extraDelay = 1500;
       }
-        SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states, 'preapp/css/scss/partials/_splash.scss')
+        SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states, 'preapp/css/scss/partials/_adlib.scss');
         $timeout(function() {
           madlib.onEnter();
         }, extraDelay);

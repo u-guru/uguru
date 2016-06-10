@@ -228,21 +228,21 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         return {
             title                 : title,
             description           : "Most updated version",
-            private               : true, // true || false
+            private               : false, // true || false
             tags                  : [], // an array of strings
-            editors               : "101", // Set which editors are open. In this example HTML open, CSS closed, JS open
+            editors               : "111", // Set which editors are open. In this example HTML open, CSS closed, JS open
             layout                : "right", // top | left | right
             html                  : '',
             html_pre_processor    : "",
-            css                   : ".scroll { height: inherit; } ",
-            css_pre_processor     : "none",
+            css                   : "",
+            css_pre_processor     : "scss",
             css_starter           : "neither",
             css_prefix            : "none",
             js                    : "",
             js_pre_processor      : "none",
             html_classes          : null,
             head                  : '<meta charset="utf-8"><meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"><title></title><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script>',
-            css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css",
+            css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css;http://codepen.io/teamuguru/pen/ce57163cc68d7c34cc4bc84c985ed993",
             js_external           : '',
             css_pre_processor_lib : null,
             js_modernizr : null,
@@ -296,7 +296,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             xhr.open( 'GET', template_url, true );
 
             xhr.onload = function () {
-                scope.spec.data.codepenData.css += xhr.responseText;
+                scope.spec.data.codepenData.css += xhr.responseText.replace('@import', '//@import');
             };
             xhr.send();
         }
