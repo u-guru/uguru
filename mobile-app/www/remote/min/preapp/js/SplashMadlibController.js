@@ -67,10 +67,10 @@ angular.module('uguru.preApp')
       onCategorySwitch: madlib.categorySwitch
     }
     $timeout(function() {
-      SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states)
+      SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states, 'preapp/css/scss/partials/_splash.scss')
       $timeout(function() {
         madlib.onEnter();
-      }, 500)
+      }, 1500)
     }, 1000)
 
   }

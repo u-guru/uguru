@@ -17,7 +17,7 @@ angular.module('uguru.preApp')
     madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
     madlib.university = UniversityService.getBerkeleyLocal();
 
-    $scope.path_1 = "M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741"
+
     madlib.onEnter = function() {
 
       if ($scope.splash && !$scope.splash.state) {
@@ -67,10 +67,10 @@ angular.module('uguru.preApp')
       onCategorySwitch: madlib.categorySwitch
     }
     $timeout(function() {
-      SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states)
+      SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states, 'preapp/css/scss/partials/_splash.scss')
       $timeout(function() {
         madlib.onEnter();
-      }, 500)
+      }, 1500)
     }, 1000)
 
   }
