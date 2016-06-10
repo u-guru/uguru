@@ -12,12 +12,12 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
     var allSpecs = {};
     var allAdminSpecs = {};
     var adminFeedbackArr = ["no docs", "Staging is down", "localhost doesnt work", "override app.css on cp", "dev-toolbar is not working"];
-    var adminToolSpec = ["strip data from spec", "univeral per-svg reference", "too many tool-switching (i.e. bounce.js", "upcoming moodbard (no implemented yet)", "todo:learn more about codepen collab", "todsicuss: dev wiki", "default codepen window size ext", "svg bit map", "more robust animation + pause tools", "normlizer"];
+    var adminToolSpec = ["searchable docs", "", "strip data from spec", "univeral per-svg reference", "too many tool-switching (i.e. bounce.js", "upcoming moodbard (no implemented yet)", "todo:learn more about codepen collab", "todsicuss: dev wiki", "default codepen window size ext", "svg bit map", "more robust animation + pause tools", "normlizer"];
     allSpecs.preApp = {
             "workflows":[
               {
                 title: 'App Loader Bakery',
-                routes: getRoutes('dev/splash/loader', 'preapp/templates/loaders/baking.html'),
+                routes: getRoutes('dev/splash/loaders', 'preapp/templates/loaders/baking.html'),
                 spec: getSpec('loader')
               },
               {
@@ -275,7 +275,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
       function getLaunchCB($event) {
         return function() {
           $timeout(function() {
-            $scope.$apply();
+            // $scope.$apply();
             var elem = $event.querySelectorAll('input');
             elem[0].click();
             elem[1].click();
@@ -304,7 +304,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
             flow.codepenData.html = wrapMinUguruHtml(xhr.responseText, flow.routes.codepen.ctrl_url);
 
             $timeout(function() {
-              $scope.$apply();
+              // $scope.$apply();
               $timeout(function() {
                 cb && cb()
               }, 500);

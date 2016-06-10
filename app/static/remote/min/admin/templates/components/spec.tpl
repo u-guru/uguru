@@ -151,7 +151,7 @@
             <li class="flex">
                 <!-- <li class='flex-wrap-center ugrid-2' ng-class='{"bg-azure": dev.toggleSpec}'> -->
                 <div class="m15right" ng-if='spec.codepenData'>
-                    <form action="http://codepen.io/pen/define" method="POST" target="_blank">
+                    <form action="https://codepen.io/pen/define" method="POST" target="_blank">
                         <input type="hidden" name="data" value='{{spec.codepenData}}'>
                         <input class="bg bg-moxie txt-18 height-36 semibold radius-2 p15x" type="submit" id='codepen-input' value="Edit in Codepen">
                     </form>

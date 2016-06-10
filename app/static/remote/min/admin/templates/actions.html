@@ -55,7 +55,7 @@
                     <li>
                         <button class="bg-robin height-36 txt-18 radius-2" ng-click='flow.routes.local.launch()'>Local</button>
                     </li>
-                    <li>
+                    <li ng-if='false'>
                         <form action="http://codepen.io/pen/define" method="POST" target="_blank" ng-if='flow.codepenData.html && flow.codepenData.html.length'>
                           <input class='opacity-0 invisible' type="hidden" name="data" value='{{flow.codepenData}}'>
                           <input class="bg-azure height-36 txt-18 radius-2 semibold p15x"  id='codepen-input' type="submit" value="Codepen">

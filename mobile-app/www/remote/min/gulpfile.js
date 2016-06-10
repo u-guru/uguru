@@ -242,15 +242,15 @@ gulp.task('compile-temp',function(done){
           '!*master.index.html',
           '!*index.html',
           '**/*html',
-          'admin/templates/*html',
-          'admin/templates/*bugs.*html',
-          'admin/templates/components/*tpl',
-          'admin/templates/docs/*html',
-          'shared/templates/*html',
-          'shared/templates/components/*tpl',
-          'shared/templates/components/svg/*tpl',
-          'preapp/templates/*html',
-          'preapp/templates/components/*tpl',
+          // 'admin/templates/*html',
+          // 'admin/templates/*bugs.*html',
+          // 'admin/templates/components/*tpl',
+          // 'admin/templates/docs/*html',
+          // 'shared/templates/*html',
+          // 'shared/templates/components/*tpl',
+          // 'shared/templates/components/svg/*tpl',
+          // 'preapp/templates/*html',
+          // 'preapp/templates/components/*tpl',
           '**/*tpl',
           '**/*svg'], { cwd: '' }).pipe(plugins.angularTemplatecache('templates.js', {
         root: '',
@@ -271,7 +271,7 @@ gulp.task('clean', function(done) {
 
 gulp.task('templates', function() {
   //PART ONE, MOVE ALL TEMPLATES TO RIGHT FOLDER
-  var templateLocations = ['admin/templates/**/**/**', 'shared/templates/**/**/**', 'preapp/templates/**/**/**'];
+  var templateLocations = ['admin/templates/**/**/**', 'shared/templates/**/**/**', 'preapp/templates/**/**/**', 'jeselle/templates/**/**/**', 'gabrielle/templates/**/**/**'];
   for (var i = 0; i < templateLocations.length; i++) {
     gulp.src([templateLocations[i]], { cwd: '' })
     .pipe(htmlmin({collapseWhitespace: true}))
