@@ -130,7 +130,7 @@
             </ul>
         </div>
     </div>
-    <div ng-if='spec.mobile.show' class='top-0 left-0 bg-smoke flex-wrap-center fixed bg-slate flex-wrap-center full-xy animated slideInDown z-index-2000' id='dev-bottom-bar' style='height: calc(100% - 132px);'>
+    <div ng-if='false' class='top-0 left-0 bg-smoke flex-wrap-center fixed bg-slate flex-wrap-center full-xy animated slideInDown z-index-2000' id='dev-bottom-bar' style='height: calc(100% - 132px);'>
         <div class='bg-slate' ng-include="spec.mobile.template" style='width:{{spec.mobile.width}}px !important; height: {{spec.mobile.height}}px !important;' class='animated bounceInDown relative' id='mobile-spec-container' > </div>
     </div>
     <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate animated slideInUp' ng-if="spec.toggleDev">
@@ -161,18 +161,24 @@
                 </div>
             </li>
             <li class='opacity-50 flex-wrap-center'>
-                <div>
-                    <button class='full-x bg-moxie txt-18 height-36 semibold' ng-click='spec.mobile.toggle()'>
+                <div class='ugrid-5'>
+                    <button ng-class='{"full-x bg-moxie":!spec.mobile.show, "bg-auburn":spec.mobile.show}'class='txt-14 height-36 semibold' ng-click='spec.mobile.toggle()'>
                         <span ng-if='!spec.mobile.show'>Mobile</span>
-                        <span ng-if='spec.mobile.show'>Close Mobile</span>
-                        <span ng-if='spec.mobile.show'>iPhone 4</span>
-                        <span ng-if='spec.mobile.show'>iPhone 5</span>
-                        <span ng-if='spec.mobile.show'>iPhone 6</span>
-                        <span ng-if='spec.mobile.show'>iPhone 6s</span>
+                        <span ng-if='spec.mobile.show'>Desktop</span>
+                    </button>
+                    <button ng-if='spec.mobile.show' ng-class="{'bg-moxie': spec.mobile.height === 480}" class='txt-14 bg-slate height-36 semibold' ng-click='spec.mobile.height = 480; spec.mobile.width = 320; spec.mobile.toggle(true)'>iPhone 4
+                    </button>
+                    <button ng-if='spec.mobile.show' ng-class="{'bg-moxie': spec.mobile.height === 568}" class='bg-slate txt-14 height-36 semibold' ng-click='spec.mobile.height = 568; spec.mobile.width = 320;spec.mobile.toggle(true)'>
+                        iPhone 5
+                    </button>
+                    <button ng-if='spec.mobile.show' ng-class="{'bg-moxie': spec.mobile.height === 667}" class='txt-14 bg-slate height-36 semibold' ng-click='spec.mobile.height = 667; spec.mobile.width = 375;spec.mobile.toggle(true)'>
+                        iPhone 6
+                    </button>
+                    <button ng-if='spec.mobile.show' ng-class="{'bg-moxie': spec.mobile.height === 736}" class='txt-14 bg-slate height-36 semibold' ng-click='spec.mobile.height = 736; spec.mobile.width = 414;spec.mobile.toggle(true)'>iPhone 6
                     </button>
                 </div>
-                <input class="m15left radius-2 height-36 p15x txt-center" type='text' placeholder="height" size="4" ng-model='spec.mobile.height' />
-                <input class="m15left radius-2 height-36 p15x txt-center" type='text' placeholder="width" size="4" ng-model="spec.mobile.width" />
+                <input class="m15left radius-2 height-36 p15x txt-center" type='text' placeholder="height" size="4" ng-change='spec.mobile.height.length > 2 && spec.mobile.toggle(true)' ng-model='spec.mobile.height' />
+                <input class="m15left radius-2 height-36 p15x txt-center" type='text' placeholder="width" size="4" ng-change='spec.mobile.width.length > 2 && spec.mobile.toggle(true)' ng-model="spec.mobile.width" />
             </li>
             <!-- <li class='opacity-50' style="width: 300px;">
                 <dropdown class="states-dropdown reverse hide-header height-36 dropdown-moxie full-x" ng-model="spec.statesDropdown"></dropdown>

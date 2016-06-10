@@ -97,26 +97,38 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
             }
 
-            function toggleMobileMode() {
-                scope.spec.data.mobile.show = !scope.spec.data.mobile.show;
-                var parent_elem = document.querySelector(parent_container);
-
-                if (scope.spec.data.mobile.show) {
-                    for (child in parent_elem.children) {
-                        var indexChild = parent_elem.children[child];
-                        if (indexChild && indexChild.nodeType && !indexChild.getAttribute('data')) {
-
-                            indexChild.style.display = 'none';
-                        }
-                    }
-                    $timeout(function() {
-                        var mobileSpecContainer = document.querySelector('#mobile-spec-container');
-                        var elemController = mobileSpecContainer.querySelector('[ng-controller]');
-                        elemController.removeAttribute('ng-controller');
-                        $compile(elemController)(real_scope);
-                    }, 100)
+            function toggleMobileMode(value) {
+                if (value) {
+                    scope.spec.data.mobile.show = value;
                 } else {
+                    scope.spec.data.mobile.show = !scope.spec.data.mobile.show;
+                }
+                var parent_elem = document.querySelector(parent_container);
+                var spec_elem = parent_elem.querySelector(parent_container + ' > div[data]');
+                if (scope.spec.data.mobile.show) {
+                    if (!scope.spec.data.mobile.initDimensions) {
+                        var computedDimensionsView = window.getComputedStyle(parent_elem.parentNode);
+                        var computedDimensionsSpec = window.getComputedStyle(spec_elem);
+                        scope.spec.data.mobile.initDimensions = {view: {}, devTools: {}};
+                        scope.spec.data.mobile.initDimensions.view = {height: computedDimensionsView.height, width: computedDimensionsView.width}
+                        scope.spec.data.mobile.initDimensions.devTools = {height: computedDimensionsSpec.height, width: computedDimensionsSpec.width}
+                    }
+                    parent_elem.parentNode.style.width = scope.spec.data.mobile.width + 'px';
+                    parent_elem.parentNode.style.height = scope.spec.data.mobile.height + 'px';
+                    spec_elem.classList.remove('full-x', 'bottom-0');
+                    spec_elem.style.width = scope.spec.data.mobile.initDimensions.devTools.width;
+                    var devToolHeightInt = parseInt(scope.spec.data.mobile.initDimensions.devTools.height.replace('px', ''));
+                    var viewHeightInt = parseInt(scope.spec.data.mobile.initDimensions.view.height.replace('px', ''));
+                    var bottomOffset = 0 - (viewHeightInt - scope.spec.data.mobile.height);
 
+                    spec_elem.style.bottom =  bottomOffset + 'px';
+                    parent_elem.style.overflow = 'visible';
+                } else {
+                    parent_elem.parentNode.style.width = scope.spec.data.mobile.initDimensions.view.width;
+                    parent_elem.parentNode.style.height = scope.spec.data.mobile.initDimensions.view.height;
+                    spec_elem.classList.add('full-x', 'bottom-0');
+                    spec_elem.style.width = '';
+                    parent_elem.style.overflow = 'hidden';
                 }
             }
 
