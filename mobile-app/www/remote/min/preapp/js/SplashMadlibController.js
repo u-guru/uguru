@@ -66,16 +66,15 @@ angular.module('uguru.preApp')
       onDeselectClickTwo: '[blank-num="2"] .translate-blank-2',
       onCategorySwitch: madlib.categorySwitch
     }
+    SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states, 'preapp/css/scss/partials/_adlib.scss');
     $timeout(function() {
-      var extraDelay = 0;
-      if (window.location.href.split('codepen').length > 1) {
-        extraDelay = 1500;
-      }
-        SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states, 'preapp/css/scss/partials/_adlib.scss');
-        $timeout(function() {
           madlib.onEnter();
-        }, extraDelay);
-    }, 1000)
+    }, 0);
+
+    $timeout(function() {
+      console.log(madlib.spec.data.settings);
+    }, 3000)
+
 
   }
 ])

@@ -722,25 +722,7 @@ directive("classOnLoad", ["$timeout", 'AnimationService', function ($timeout, An
           }
       };
 }]).
-directive("evalOnLoad", ["$timeout", 'AnimationService', '$parse', function($timeout, AnimationService, $parse) {
-      return {
-          restrict: 'A',
-          link: function(scope, element, attr) {
-              $timeout(function() {
-                scope.$watch('root.loader.body.hide', function(value) {
-                    if (value) {
-                      $timeout(function() {
-                        scope.$apply(function(){
-                          var func = $parse(attr.evalOnLoad);
-                          func(scope);
-                        })
-                      })
-                    }
-                })
-              })
-          }
-      }
-}]).
+
 directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', function ($timeout, AnimationService, UtilitiesService) {
       return {
           restrict: 'A',
