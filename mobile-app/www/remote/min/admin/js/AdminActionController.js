@@ -24,6 +24,7 @@ angular.module('uguru.admin')
 
     if (window.location.href.split(':8100').length > 1) {
       $timeout(function() {
+        console.log("ACTION")
         initBugs();
       }, 1000)
     }
@@ -44,8 +45,59 @@ angular.module('uguru.admin')
         }
       });
     }
+    $scope.updateStatus = function(){
+        console.log($scope.manualBugs);
+    }
+    $scope.openManualPlatform = function(stateID){
+        // $scope.currentStatePlatforms = state.platforms;
+        var targetElem = document.querySelector('#cta-box-selected-bug');
+        var modalElem = document.querySelector('#cta-modal-action-platforms');
+        modalElem.classList.add('show');
 
-
+        for(var i = 0; i < $scope.bugReport.length ; ++i)
+        {
+          if ($scope.bugReport[i].stateID === stateID){
+            $scope.manualBugs = $scope.bugReport[i].manualState;
+            var options = [];
+            for (var j = 0; j < $scope.manualBugs.length; ++j ){
+              options.push($scope.manualBugs[j].title);
+            }
+            $scope.availableState = {
+              'selectedIndex': 0,
+              'options': options
+            };
+            return;
+          }
+        }
+    };
+    $scope.availableOptions = {
+        'selectedIndex': 0,
+        'options': ['All Bugs','Prioritized Bugs','Recently Complete']
+    };
+    $scope.getManualState = function(stateID){
+      function countFailt(eachState)
+      {
+        var count = 0;
+        for (var i = 0; i < eachState.platforms.length; ++i){
+          if (eachState.platforms[i].isPassed === 1){
+             ++ count;
+          }
+        }
+        return count;
+      }
+      for(var i = 0; i < $scope.bugReport.length ; ++i)
+      {
+        if ($scope.bugReport[i].stateID === stateID){
+          var totalPass = 0;
+          for (var j = 0; j < $scope.bugReport[i].manualState.length; ++j)
+          {
+            totalPass += countFailt($scope.bugReport[i].manualState[j]);
+          }
+          return totalPass/($scope.bugReport[i].manualState.length * 25) * 100 ;
+        }
+      }
+      return null;
+    };
 
 
 

@@ -70,6 +70,10 @@ angular.module('uguru.admin')
   'SpecContentService',
   function($scope, $state, $timeout, FileService, LoadingService,ReportService,
             CTAService,$localstorage, $timeou,SpecContentService) {
+    $scope.updateStatus = function(){
+      $scope.isSync = false;
+      console.log('CHeck',$scope.isSync);
+    };
 
     $scope.openBugList=function(section){
       $scope.help = section.help;
@@ -134,14 +138,24 @@ angular.module('uguru.admin')
                                  'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
       function postCallback(firstName, resp) {
           ReportService.saveBug($scope.bugReport);
-          console.log('file successfully saved', resp);
-
+          console.log('file successfully saved', resp);          
           // LoadingService.hide();
           // $timeout(function() {
           //   LoadingService.showSuccess('Saved!', 1000);
           // });
         }
+      $scope.isSync = true;
+
     };
+
+    $scope.activePlatforms = function(state){
+        $scope.currentStatePlatforms = state.platforms;
+        console.log($scope.currentStatePlatforms.length)
+        var targetElem = document.querySelector('#cta-box-selected-bug');
+        var modalElem = document.querySelector('#cta-modal-state-platforms');
+        modalElem.classList.add('show');
+    };
+
     $scope.reviseBug = function(){
       $scope.selectedBug = angular.copy($scope.backupBug);
       $scope.editMode();
@@ -441,6 +455,7 @@ angular.module('uguru.admin')
         $scope.manualBugs = [];
         $scope.help = {};
         $scope.isEditMode = false;
+        $scope.isSync = true;
         $scope.availableOptions = [
                                      {id: '1', name: 'All Bugs'},
                                      {id: '2', name: 'Prioritized Bugs'},
@@ -469,9 +484,22 @@ angular.module('uguru.admin')
           if(!$scope.bugReport[i].stateID){
            $scope.bugReport[i].stateID =  genUniqueID($scope.bugReport[i].name);
           }
+          if (!$scope.bugReport[i].manualState){
+            $scope.bugReport[i].manualState = [];
+            console.log('NO',$scope.bugReport[i].states);
+            for (var j = 0; j < $scope.bugReport[i].states.length; ++j){
+                var title = angular.copy($scope.bugReport[i].states[j].title);
+                var platforms = angular.copy($scope.bugReport[i].states[j].platforms);
+                $scope.bugReport[i].manualState.push({
+                  'title' : title,
+                  'platforms' : platforms
+                });
+            }
+          }
           // if(!$scope.bugReport[i].envir){
           //   $scope.bugReport[i].envir = getDefaultEnvir();
           // }
+
         }
     }
 
@@ -520,6 +548,8 @@ angular.module('uguru.admin')
         }
         // // $scope.openBugList({name:'',bugs:[],help:{}})
         // $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
+        // console.log("CHECK",$scope.bugReport);
+        $scope.saveBug();
         // ReportService.saveBug($scope.bugReport);
         // console.log('Reprort',ReportService.getBug());
 
@@ -530,6 +560,7 @@ angular.module('uguru.admin')
          $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
          $scope.saveBug();
       }
+
     });
 
     // $scope.$watchCollection('userWorkflows', function(newNames, oldNames) {
@@ -549,7 +580,7 @@ angular.module('uguru.admin')
 
     window.onbeforeunload = function(event)
       {
-        if($scope.isEditMode){
+        if($scope.isEditMode || !$scope.isSync){
           event.returnValue = 'All file won"t be saved without click save button.\n';
         }
 

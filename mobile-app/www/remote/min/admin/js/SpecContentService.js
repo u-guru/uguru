@@ -19,6 +19,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 title: 'App Loader Bakery',
                 routes: getRoutes('dev/splash/loaders', 'preapp/templates/loaders/baking.html', 'preapp/css/scss/partials/_bakery-loader.scss'),
                 spec: getSpec('loader'),
+                bugs: getBugInfo('loader'),
                 ready:true
               },
               {
@@ -231,16 +232,16 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
       }
       return {
         count: 1,
-        bugID: id,
+        stateID: id,
         launchBugTab: function() {
           // console.log("ID",this.bugID)
-          var url = document.URL +'/bugs/'+this.bugID;
+          var url = document.URL +'/bugs/'+this.stateID;
           $window.open(url);
           // alert('coming soon');
         }
       }
     }
-
+    
     function getSpec(wkflow_name) {
       // codepenSpecUrl.replace('.js','') + '/?editors=0010'
       return {launch: wkflow_name, progress:'78%'};
