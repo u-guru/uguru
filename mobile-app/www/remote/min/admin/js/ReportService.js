@@ -44,10 +44,18 @@ function ReportService($timeout,FileService,LoadingService,$q) {
             })
         }
     }
-    function saveBug(newObject){
-        console.log("CHECK")
-        bugReport = newObject;
 
+    function saveBug(newObject){
+        bugReport = newObject;
+    }
+
+    function syncReport(newObject){
+      FileService.postS3JsonFile(JSON.stringify(newObject), null ,
+                                 'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
+      function postCallback(firstName, resp) {
+          saveBug(newObject);
+          console.log('file successfully saved', resp);          
+        }
     }
     function getBug(id){
         var deferred = $q.defer();
@@ -91,6 +99,7 @@ function ReportService($timeout,FileService,LoadingService,$q) {
         initData: initData,
         getBug: getBug,
         saveBug: saveBug,
-        getStates: getStates
+        getStates: getStates,
+        syncReport:syncReport
     }
 }

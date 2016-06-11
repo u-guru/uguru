@@ -46,8 +46,11 @@ angular.module('uguru.admin')
       });
     }
     $scope.updateStatus = function(){
-        console.log($scope.manualBugs);
-    }
+        // console.log($scope.manualBugs.platforms);
+        // console.log($scope.bugReport[1].manualState);
+        ReportService.syncReport($scope.bugReport);
+    };
+
     $scope.openManualPlatform = function(stateID){
         // $scope.currentStatePlatforms = state.platforms;
         var targetElem = document.querySelector('#cta-box-selected-bug');
@@ -93,7 +96,8 @@ angular.module('uguru.admin')
           {
             totalPass += countFailt($scope.bugReport[i].manualState[j]);
           }
-          return totalPass/($scope.bugReport[i].manualState.length * 25) * 100 ;
+          var digit = totalPass/($scope.bugReport[i].manualState.length * 25)* 100;
+          return digit.toFixed(2);
         }
       }
       return null;
