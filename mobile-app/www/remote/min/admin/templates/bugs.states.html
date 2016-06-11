@@ -25,8 +25,8 @@
                                     ng-checked="checkbox == 1"
                                     ng-model="platform.isPassed" 
                                     ng-change="updateStatus()"/>
-
-                            <span>
+                        -->
+                            <span ng-if='isAutoState'>
                                 <svg viewBox="0 0 100 100" ng-if="platform.isPassed == -1">
                                     <path d="M14,50 L86,50"></path>
                                 </svg>
@@ -36,8 +36,8 @@
                                 <svg viewBox="0 0 100 100" ng-if="platform.isPassed == 1">
                                     <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
                                 </svg>
-                            </span> -->
-                                <a ng-click='updateStatus($index)'>Is Passed: {{platform.isPassed}}</a>
+                            </span> 
+                            <a ng-if='!isAutoState' ng-click='updateStatus($index)'>Is Passed: {{platform.isPassed}}</a>
                         </div>
                     </div>
                 </li>

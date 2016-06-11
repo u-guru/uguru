@@ -82,35 +82,18 @@ angular.module('uguru.admin')
       modalElem.classList.remove('show');
     };
 
-    $scope.openManualPlatform = function(stateID){
-        // $scope.currentStatePlatforms = state.platforms;
-        var targetElem = document.querySelector('#cta-box-selected-bug');
-        var modalElem = document.querySelector('#cta-modal-action-platforms');
-        modalElem.classList.add('show');
-
-        for(var i = 0; i < $scope.bugReport.length ; ++i)
-        {
-          if ($scope.bugReport[i].stateID === stateID){
-            $scope.manualBugs = $scope.bugReport[i].manualState;
-            var options = [];
-            for (var j = 0; j < $scope.manualBugs.length; ++j ){
-              options.push($scope.manualBugs[j].title);
-            }
-            $scope.availableState = {
-              'selectedIndex': 0,
-              'options': options
-            };
-            return;
-          }
-        }
-    };
 
     $scope.openPlatform = function(stateID,key){
         // $scope.currentStatePlatforms = state.platforms;
         var targetElem = document.querySelector('#cta-box-selected-bug');
         var modalElem = document.querySelector('#cta-modal-action-platforms');
         modalElem.classList.add('show');
-
+        if (key === 'states'){
+          $scope.isAutoState = true;
+        }
+        else{
+          $scope.isAutoState = false;
+        }
         for(var i = 0; i < $scope.bugReport.length ; ++i)
         {
           if ($scope.bugReport[i].stateID === stateID){
