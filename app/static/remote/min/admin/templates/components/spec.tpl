@@ -1,4 +1,4 @@
-<div class='high-z-index' style='min-height:10% !important;'>
+<div class='spec-template-wrapper high-z-index' style='min-height:10% !important;' eval-on-init="spec.ready()">
     <div id="dev-docs" ng-if="false && spec.toggleDocs" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
         <div style='height: calc(100% - 132px) !important;' class='top-0 left-0 absolute full-xy bg-cerise animated slideInDown' ng-class="{'z-index-1000': spec.toggleDocs}" >
             <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">
@@ -139,9 +139,23 @@
                 Settings
             </li>
             <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-30p'>
-                <div class='p10x'>Apply State</div>
+                <div class='p10x'>Auto Apply State</div>
                 <div>
-                    <checkbox value='true'>
+                    <checkbox value='spec.settings.cache.autoApplyState' on-change="spec.settings.updateProperty">
+                    </checkbox>
+                </div>
+            </li>
+            <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-30p'>
+                <div class='p10x'>Auto Show Mobile</div>
+                <div>
+                    <checkbox value='spec.settings.cache.autoShowMobile' on-change="spec.settings.updateProperty">
+                    </checkbox>
+                </div>
+            </li>
+            <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-30p'>
+                <div class='p10x'>Auto Show ToolBar</div>
+                <div>
+                    <checkbox value='spec.settings.cache.autoShowDevBar' on-change="spec.settings.updateProperty">
                     </checkbox>
                 </div>
             </li>
@@ -150,18 +164,38 @@
                     <span class='p10x'>Default State</span>
                 </div>
                 <div>
-                    <button class="height-36 txt-18 bg-robin radius-2 normal block">onActivate</button>
+                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-if='spec.settings.cache.defaultState.index'>{{spec.stateTags[spec.settings.cache.defaultState.index].title}}</button>
+                </div>
+            </li>
+            <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-50p'>
+                <div>
+                    <span class='p10x'>Default Delay</span>
+                </div>
+                <div>
+                    <input ng-change="spec.settings.updateProperty()" ng-model="spec.settings.cache.autoApplyDelay"> </input>
+                </div>
+            </li>
+            <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-50p'>
+                <div>
+                    <span class='p10x'>Clear Cache</span>
+                </div>
+                <div>
+                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.settings.clear()'>clear</button>
                 </div>
             </li>
         </ul>
         <ul id='dev-bar-shortcuts' class="bg-cobalt-30p flex-center-vertical p15-grid full-x animated overflow-x no-scrollbar" ng-if='spec.showShortcuts' ng-class='{"lightSpeedIn": spec.showShortcuts}'>
-            <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)'>
-                <button class="height-36 txt-18 bg-robin radius-2 normal block">{{state_tag.title}}</button>
+            <li class='p15-grid text-center weight-500 bg-charcoal uppercase txt-2  flex-wrap-center'>
+                Keyboard shortcuts
+            </li>
+            <li class='p15-grid' ng-repeat='shortcut in spec.shortcuts_list' ng-click='spec.stateTagClicked(state_tag, $index)'>
+
+                <span class='txt-1 weight-500'>Press <span class='weight-900 txt-5'>{{shortcut.key}}</span> to {{shortcut.action}}</span>
             </li>
         </ul>
         <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
-            <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)'>
-                <button class="height-36 txt-18 bg-robin radius-2 normal block">{{state_tag.title}}</button>
+            <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)' on-hold="spec.settings.updateDefaultState($event, $index, state_tag)">
+                <button ng-class="{'bg-robin':spec.settings.cache.defaultState.index === $index }" class="height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
             </li>
         </ul>
         <ul id="dev-toolbar-options" class='bg-cobalt-25p flex-center-vertical-space-between-wrap p15-grid'>

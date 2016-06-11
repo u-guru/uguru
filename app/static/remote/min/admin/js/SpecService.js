@@ -19,14 +19,21 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
     }
 
     function initSpec(scope, real_scope, parent_container, param, template_path, ctrl_path, states, css_path) {
-        if ((window.location.href.split('/dev/').length === 1) && window.location.href.split('codepen').length === 1) {
-            return;
+        var extraDelay = 0;
+        if (window.location.href.split('codepen').length > 1) {
+            extraDelay = 1500;
         }
-        //checks codepen environment
-        // if (window.location.href.split('codepen.io').length > 1) return;
-        var specObj = getSpec(param, template_path, ctrl_path, css_path);
-        var callbackFunc = getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states)
-        getCodepenSpec(specObj.url, callbackFunc)
+        $timeout(function() {
+          if ((window.location.href.split('/dev/').length === 1) && window.location.href.split('codepen').length === 1) {
+                return;
+            }
+            //checks codepen environment
+            // if (window.location.href.split('codepen.io').length > 1) return;
+            var specObj = getSpec(param, template_path, ctrl_path, css_path);
+            var callbackFunc = getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states)
+            getCodepenSpec(specObj.url, callbackFunc)
+
+        }, extraDelay);
 
     }
 
@@ -37,10 +44,11 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data = obj;
             calcUseCasesCompletedness(specObj.data.use_cases)
             //@gabrielle note
-            specObj.data.toggleDev = true;
+            specObj.data.toggleDev = false;
             specObj.data.toggleSpec = false;
             specObj.data.toggleDocs = false;
             specObj.data.toggleShortcuts = false;
+
             specObj.data.toggleSettings = true;
             specObj.data.docs = {launch:launchDocs}
             specObj.data.mobile = {toggle:toggleMobileMode, width:400, height:768, show:false, template:specObj.template_path, url:window.location.href}
@@ -49,13 +57,16 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data.stateTags = specObj.data.statesDropdown.options;
             specObj.data.stateTagClicked = specObj.data.statesDropdown.onOptionClick;
             specObj.data.initCodepenData = launchNewCodepen(scope);
+            specObj.data.shortcuts_list  = getKeyboardShortcuts()
             $timeout(function() {
                 specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path, specObj.css_path);
             })
             specObj.data.openGDoc = openGDocSpecFunc(specObj.data.gdoc);
+            specObj.data.ready = loadLocalStorageSettings(scope);
             for (specProp in specObj) {
                 scope.spec[specProp] = specObj[specProp]
             }
+
             elem = document.querySelector(parent_container);
             console.log('parent containeter', elem);
             specElem = document.createElement('spec');
@@ -86,6 +97,17 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                 KeyboardService.initOptionPressedAndReleasedFunction(launchDocs, null, 78, 'n', false, 750);
                 KeyboardService.initOptionPressedAndReleasedFunction(toggleMobileMode, null, 77, 'm', true, null);
                 // KeyboardService.initOptionPressedAndReleasedFunction(function() {toggleDev(true); toggleSpec(true);}, null, 27, 'esc', true, null);
+            }
+
+            function getKeyboardShortcuts() {
+                return [
+                    {key: 'd', action: 'toggle toolbar'},
+                    {key: 's', action: 'show pull down spec'},
+                    {key: 'z', action: 'toggle settings'},
+                    {key: 'k', action: 'show shortcuts'},
+                    {key: 'm', action: 'toggle mobile'},
+                    {key: 'n', action: 'launch docs'}
+                ]
             }
 
             function toggleDev(value) {
@@ -339,6 +361,98 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
     }
 
+    function loadLocalStorageSettings(scope) {
+        var localStorageSettings = $localstorage.getObject('adminSpecSettings');
+
+        if (!localStorageSettings.toString().length) {
+            localStorageSettings = initAdminSpecSettings();
+            $localstorage.setObject('adminSpecSettings', localStorageSettings);
+        }
+        return function() {
+
+            scope.spec.data.settings = {cache: localStorageSettings, clear: clearLocalStorage(scope), updateProperty:updateSettingCacheLocalStorage(scope), updateDefaultState:updateDefaultStateLocalStorage(scope)}
+            scope.spec.data.settings.cache.autoApplyState = true;
+
+            if (scope.spec.data.settings.cache.defaultState.index < 0) {
+                scope.spec.data.settings.cache.defaultState.index = 1;
+                scope.spec.data.settings.cache.defaultState.state = scope.spec.data.stateTags[1];
+            }
+
+            if (scope.spec.data.settings.cache.autoShowMobile) {
+                scope.spec.data.mobile.toggle();
+            }
+
+            if (scope.spec.data.settings.cache.autoApplyState) {
+
+
+                var defaultIndex = scope.spec.data.settings.cache.defaultState.index;
+                var defaultState = scope.spec.data.stateTags[defaultIndex];
+                var delayBeforeActivate = scope.spec.data.settings.cache.autoApplyDelay;
+                console.log('should activate this state', defaultState, delayBeforeActivate);
+                if (delayBeforeActivate) {
+                    scope.spec.data.stateTagClicked(defaultState, defaultIndex);
+                } else {
+
+                    $timeout(function() {
+                        scope.spec.data.stateTagClicked(defaultState, defaultIndex)
+                    }, delayBeforeActivate)
+                }
+            }
+
+            scope.spec.data.toggleDev = scope.spec.data.settings.cache.autoShowDevBar;
+
+        }
+    }
+
+    function updateSettingCacheLocalStorage(scope) {
+        return function(value) {
+
+                $timeout(function() {
+                    console.log('updating cache', scope.spec.data.settings.cache);
+                    scope.spec.data.settings.cache.defaultState.state = null;
+                    $localstorage.setObject('adminSpecSettings', scope.spec.data.settings.cache);
+                })
+        }
+    }
+
+    function updateDefaultStateLocalStorage(scope) {
+        return function($event, index, state) {
+            if (scope.spec.data.settings.cache.defaultState.index >= 0) {
+                scope.spec.data.stateTags[scope.spec.data.settings.cache.defaultState.index].default = false;
+            }
+            state.default = true;
+            scope.spec.data.settings.cache.defaultState.index = index;
+            scope.spec.data.settings.cache.defaultState.state = null;
+            $localstorage.setObject('adminSpecSettings', scope.spec.data.settings.cache);
+            $timeout(function() {
+                scope.spec.data.settings.cache.defaultState.state = state;
+            }, 100)
+        }
+    }
+
+
+
+    function clearLocalStorage(scope) {
+        return function() {
+            scope.spec.data.settings.cache = initAdminSpecSettings();
+            $localstorage.removeObject('adminSpecSettings');
+            $timeout(function() {
+                localStorageSettings = initAdminSpecSettings();
+                $localstorage.setObject('adminSpecSettings', localStorageSettings);
+            })
+        }
+    }
+
+    function initAdminSpecSettings() {
+        return {
+            autoApplyState: true,
+            autoApplyDelay: 1000,
+            defaultState: {index: -1, state: null},
+            autoShowMobile: false,
+            autoShowDevBar: true,
+        }
+    }
+
     function getCodepenData(scope, title, template_url, ctrl_path, css_path) {
         console.log(template_url, ctrl_path);
         $timeout(function() {
@@ -374,6 +488,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             js_modernizr : null,
             js_library   : null,
         }
+
+
 
 
 
