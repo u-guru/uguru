@@ -363,15 +363,16 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
     function loadLocalStorageSettings(scope) {
         var localStorageSettings = $localstorage.getObject('adminSpecSettings');
-
+        var recentlySet = false;
         if (!localStorageSettings.toString().length) {
             localStorageSettings = initAdminSpecSettings();
             $localstorage.setObject('adminSpecSettings', localStorageSettings);
+            recentlySet = true;
         }
         return function() {
 
             scope.spec.data.settings = {cache: localStorageSettings, clear: clearLocalStorage(scope), updateProperty:updateSettingCacheLocalStorage(scope), updateDefaultState:updateDefaultStateLocalStorage(scope)}
-            scope.spec.data.settings.cache.autoApplyState = true;
+            // scope.spec.data.settings.cache.autoApplyState = true;
 
             if (scope.spec.data.settings.cache.defaultState.index < 0) {
                 scope.spec.data.settings.cache.defaultState.index = 1;
@@ -382,7 +383,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                 scope.spec.data.mobile.toggle();
             }
 
-            if (scope.spec.data.settings.cache.autoApplyState) {
+            if (scope.spec.data.settings.cache.autoApplyState && !recentlySet) {
 
 
                 var defaultIndex = scope.spec.data.settings.cache.defaultState.index;
@@ -445,7 +446,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
     function initAdminSpecSettings() {
         return {
-            autoApplyState: true,
+            autoApplyState: false,
             autoApplyDelay: 1000,
             defaultState: {index: -1, state: null},
             autoShowMobile: false,

@@ -17,7 +17,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
             "workflows":[
               {
                 title: 'App Loader Bakery',
-                routes: getRoutes('dev/splash/loaders', 'preapp/templates/loaders/main.html', 'preapp/css/scss/loaders.scss'),
+                routes: getRoutes('dev/splash/loaders', 'preapp/templates/loaders/main.html', 'preapp/css/scss/loader.scss'),
                 spec: getSpec('loader'),
                 ready:true
               },
