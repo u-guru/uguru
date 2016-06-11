@@ -29,6 +29,17 @@ angular.module('uguru.admin')
       }, 1000)
     }
 
+    function countFailt(eachState)
+    {
+      var count = 0;
+      for (var i = 0; i < eachState.platforms.length; ++i){
+        if (eachState.platforms[i].isPassed === 1){
+           ++ count;
+        }
+      }
+      return count;
+    }
+
     function initBugs () {
       ReportService.getBug().then(function(result){
        $scope.bugReport = result;
@@ -49,15 +60,15 @@ angular.module('uguru.admin')
         // console.log($scope.manualBugs.platforms);
         // console.log($scope.bugReport[1].manualState);
         // console.log($scope.manualBugs[$scope.availableState.selectedIndex].platforms[index])
-        switch($scope.manualBugs[$scope.availableState.selectedIndex].platforms[index].isPassed){
+        switch( $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed){
           case 1:
-            $scope.manualBugs[$scope.availableState.selectedIndex].platforms[index].isPassed = -1;
+            $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed = -1;
             break;
           case -1:
-            $scope.manualBugs[$scope.availableState.selectedIndex].platforms[index].isPassed = 0;
+            $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed = 0;
             break;
           case 0:
-            $scope.manualBugs[$scope.availableState.selectedIndex].platforms[index].isPassed = 1;
+            $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed = 1;
             break;
         }
         // console.log($scope.manualBugs[0].platforms);
@@ -70,7 +81,7 @@ angular.module('uguru.admin')
       var modalElem = document.querySelector('#cta-modal-action-platforms');
       modalElem.classList.remove('show');
     };
-    
+
     $scope.openManualPlatform = function(stateID){
         // $scope.currentStatePlatforms = state.platforms;
         var targetElem = document.querySelector('#cta-box-selected-bug');
@@ -93,36 +104,50 @@ angular.module('uguru.admin')
           }
         }
     };
+
+    $scope.openPlatform = function(stateID,key){
+        // $scope.currentStatePlatforms = state.platforms;
+        var targetElem = document.querySelector('#cta-box-selected-bug');
+        var modalElem = document.querySelector('#cta-modal-action-platforms');
+        modalElem.classList.add('show');
+
+        for(var i = 0; i < $scope.bugReport.length ; ++i)
+        {
+          if ($scope.bugReport[i].stateID === stateID){
+            $scope.statePlatforms = $scope.bugReport[i][key];
+            var options = [];
+            for (var j = 0; j <  $scope.statePlatforms.length; ++j ){
+              options.push( $scope.statePlatforms[j].title);
+            }
+            $scope.availableState = {
+              'selectedIndex': 0,
+              'options': options
+            };
+            return;
+          }
+        }
+    };
+
     $scope.availableOptions = {
         'selectedIndex': 0,
         'options': ['All Bugs','Prioritized Bugs','Recently Complete']
     };
-    $scope.getManualState = function(stateID){
-      function countFailt(eachState)
-      {
-        var count = 0;
-        for (var i = 0; i < eachState.platforms.length; ++i){
-          if (eachState.platforms[i].isPassed === 1){
-             ++ count;
-          }
-        }
-        return count;
-      }
+
+    $scope.calState = function(stateID,key){
       for(var i = 0; i < $scope.bugReport.length ; ++i)
       {
         if ($scope.bugReport[i].stateID === stateID){
           var totalPass = 0;
-          for (var j = 0; j < $scope.bugReport[i].manualState.length; ++j)
+          for (var j = 0; j < $scope.bugReport[i][key].length; ++j)
           {
-            totalPass += countFailt($scope.bugReport[i].manualState[j]);
+            totalPass += countFailt($scope.bugReport[i][key][j]);
           }
-          var digit = totalPass/($scope.bugReport[i].manualState.length * 25)* 100;
-          return digit.toFixed(2);
+          var digit = totalPass/($scope.bugReport[i][key].length * 25)* 100;
+          return parseFloat(digit.toFixed(2));
         }
       }
       return null;
     };
-
 
 
     $scope.getBug  = function(id){

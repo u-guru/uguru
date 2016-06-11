@@ -66,13 +66,19 @@
                     <li ng-if='false'>
                         <button class="bg-lake height-36 txt-18 radius-2" ng-click='flow.spec.launch()'>Spec</button>
                     </li>
-                    <li>
+                    <li ng-if='false'>
                         <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='flow.spec.progress'>78%</span>
                     </li>
                     <li>
-                        <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='openManualPlatform(flow.bugs.stateID)' ng-if='bugReport' >{{getManualState(flow.bugs.stateID)}}%</span>
+                        <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='openPlatform(flow.bugs.stateID,"manualState")' ng-if='bugReport' >{{calState(flow.bugs.stateID,"manualState")}}%</span>
                         <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-if='!bugReport' >Load</span>
                     </li>
+
+                    <li>
+                        <span class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold" ng-click='openPlatform(flow.bugs.stateID,"states")' ng-if='bugReport' >{{calState(flow.bugs.stateID,"states")}}%</span>
+                        <span class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold" ng-if='!bugReport' >Load</span>
+                    </li>
+
                     <li ng-if='false'>
                         <span class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold" ng-click='flow.bugs.launchBugTab()'>{{getBug(flow.bugs.bugID)}}</span>
                     </li>
