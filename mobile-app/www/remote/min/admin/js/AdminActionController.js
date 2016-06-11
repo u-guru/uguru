@@ -65,7 +65,12 @@ angular.module('uguru.admin')
 
         ReportService.syncReport($scope.bugReport);
     };
-
+    $scope.closePlatform = function(){
+      var targetElem = document.querySelector('#cta-box-selected-bug');
+      var modalElem = document.querySelector('#cta-modal-action-platforms');
+      modalElem.classList.remove('show');
+    };
+    
     $scope.openManualPlatform = function(stateID){
         // $scope.currentStatePlatforms = state.platforms;
         var targetElem = document.querySelector('#cta-box-selected-bug');
