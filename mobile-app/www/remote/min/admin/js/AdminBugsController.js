@@ -490,6 +490,10 @@ angular.module('uguru.admin')
             for (var j = 0; j < $scope.bugReport[i].states.length; ++j){
                 var title = angular.copy($scope.bugReport[i].states[j].title);
                 var platforms = angular.copy($scope.bugReport[i].states[j].platforms);
+                for (var k = 0; k< platforms.length; ++k)
+                {
+                  platforms[k].isPassed = 0;
+                }
                 $scope.bugReport[i].manualState.push({
                   'title' : title,
                   'platforms' : platforms
