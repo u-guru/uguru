@@ -470,8 +470,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             description           : "Most updated version",
             private               : false, // true || false
             tags                  : [], // an array of strings
-            editors               : "111", // Set which editors are open. In this example HTML open, CSS closed, JS open
-            layout                : "right", // top | left | right
+            editors               : "1100", // Set which editors are open. In this example HTML open, CSS closed, JS open
+            layout                : "left", // top | left | right
             html                  : '',
             html_pre_processor    : "",
             css                   : "",
