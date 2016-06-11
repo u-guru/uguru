@@ -3,11 +3,11 @@
     <a class='absolute top-0 left-0 bg-charcoal p20xy'> Close </a>
 </div>
 <div class="admin-states-container no-scrollbar full-xy flex-wrap flex-wrap-center absolute left-0 flex-stretch" style='height:95% !important; top:7.5%;'>
-    <div>
+    <!-- <div>
         <span>fail : -1;</span>
         <span>haven't test : 0;</span>
         <span>passed: 1;</span>
-    </div>
+    </div> -->
     <ul ng-if='manualBugs'>
         <dropdown class="height-32 full-x " ng-model="availableState" selected-index="0"> </dropdown>
         <div ng-model='manualBugs[availableState.selectedIndex]'>
@@ -37,7 +37,7 @@
                                     <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
                                 </svg>
                             </span> -->
-                                <button ng-click='updateStatus($index)'>Is Passed: {{platform.isPassed}}</button>
+                                <a ng-click='updateStatus($index)'>Is Passed: {{platform.isPassed}}</a>
                         </div>
                     </div>
                 </li>
