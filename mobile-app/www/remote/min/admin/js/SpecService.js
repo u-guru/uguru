@@ -198,6 +198,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                 }
                 var parent_elem = document.querySelector(parent_container);
                 var spec_elem = parent_elem.querySelector(parent_container + ' > div[data]');
+                var hasFullXy = (' ' + parent_elem.className + ' ').indexOf(' ' + 'full-xy' + ' ') > -1;
+
                 if (scope.spec.data.mobile.show) {
                     if (!scope.spec.data.mobile.initDimensions) {
                         var computedDimensionsView = window.getComputedStyle(parent_elem.parentNode);
@@ -215,8 +217,13 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
                     spec_elem.style.width = scope.spec.data.mobile.initDimensions.devTools.width;
                     spec_elem.style.left = (0 - parent_elem.getBoundingClientRect().left) + 'px';
+
                     spec_elem.classList.remove('full-x', 'left-0', 'top-0');
+                    if (hasFullXy) {
+                        parent_elem.classList.remove('full-xy');
+                    }
                     spec_elem.classList.remove('relative');
+
                     var mobileSpecOptionsBar = spec_elem.querySelector('#spec-mobile-options');
                     if (mobileSpecOptionsBar) {
                         mobileSpecOptionsBar.classList.add('absolute', 'left-0', 'full-x');
@@ -243,6 +250,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                     // spec_elem.classList.add('full-x', 'bottom-0');
                     spec_elem.classList.add('full-x', 'left-0', 'bottom-0', 'relative');
                     spec_elem.style.width = '';
+                    if (hasFullXy) {
+                        parent_elem.classList.add('full-xy');
+                    }
                     parent_elem.style.overflow = 'hidden';
                     parent_elem.classList.remove('mobile');
                     var mobileSpecOptionsBar = spec_elem.querySelector('#spec-mobile-options');
