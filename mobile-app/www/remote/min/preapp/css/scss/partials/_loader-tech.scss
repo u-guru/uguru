@@ -13,6 +13,66 @@
 				}
 			}
 		}
+        &.active {
+            .guru.tech {
+                > div {
+                    animation: l-move-up 1000ms linear 1500ms forwards, l-head-hover 1000ms linear 2500ms 4 forwards, l-move-down 1000ms linear 5500ms forwards;
+                    .tech-laptop {
+            			animation: tech-lap-enter 1000ms ease-in 1750ms both, fadeOut 250ms linear 3000ms forwards, fadeIn 10ms linear 5000ms forwards;
+            		}
+            		.guru-face-eyes-normal {
+            			animation: fadeOut 150ms ease-in 2500ms forwards, fadeIn 250ms ease-in 4500ms forwards;
+            		}
+            		.guru-face-eyes-focus {
+            			animation: fadeIn 250ms ease-in 2500ms forwards, fadeOut 150ms ease-in 4500ms forwards;
+            		}
+                }
+            }
+            .tech-props-container {
+                animation: l-head-hover 1000ms linear 2500ms infinite forwards, fadeOut 10ms linear 5900ms forwards;
+                .tech-props {
+            		.tech-laptop {
+            			animation: fadeIn 250ms linear 2250ms forwards, fadeOut 10ms linear 5000ms forwards;
+            		}
+            		.code-editor {
+            			animation: fadeIn 250ms linear 2250ms forwards, fadeOut 50ms linear 3100ms forwards;
+            		}
+            		.tech-watch {
+            			animation: fadeIn 10ms linear 3250ms forwards, watch-scale 350ms ease-in-out 5000ms forwards;
+            		}
+            		.small-watch {
+            			animation: fadeIn 50ms ease-in 5350ms forwards;
+            			.small-heart {
+            				animation: pulse-heart 1000ms infinite forwards;
+            			}
+            		}
+            		.lap-spotlight {
+            			animation: laptop-fadeOut 500ms ease-in-out 5000ms forwards;
+            		}
+            		.code-lines g {
+        				animation: code-line 1000ms ease-in-out 2600ms forwards;
+            		}
+            		.watch-screen-top-right, .watch-screen-top-left, .watch-screen-btm-right, .watch-screen-btm-left {
+            			animation: watch-screen 500ms cubic-bezier(0, .09, 0, 1) 3600ms forwards;
+            		}
+            		.watch-band-top-right, .watch-band-top-left, .watch-band-btm-right, .watch-band-btm-left {
+            			animation: watch-band 500ms cubic-bezier(0, .09, 0, 1) 3850ms forwards;
+            		}
+            		.watch-face-fill, .watch-screen-fill, .watch-knob, .watch-band-btm-fill, .watch-band-top-fill {
+            			animation: fadeIn 250ms cubic-bezier(0, .09, 0, 1) 4100ms forwards;
+            		}
+            		.watch-heart-container {
+            			animation: fadeIn 500ms cubic-bezier(0, .09, 0, 1) 4350ms forwards;
+            			.watch-heart {
+            				animation: pulse-heart 1000ms infinite forwards;
+            			}
+            		}
+            	}
+            	.code-fake {
+            		animation: fadeIn 10ms ease 2600ms forwards, code-to-watch 150ms linear 3100ms forwards, code-to-watch-size 750ms linear 3100ms forwards, fadeOut 10ms ease 3850ms forwards;
+            	}
+            }
+        }
 	}
 }
 
@@ -24,33 +84,26 @@
     > div {
 		width: 100%;
 		height: 100%;
-		// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 350, 0, 1);
-		// animation: l-move-up 1000ms linear 1500ms forwards, l-head-hover 1000ms linear 2500ms 4 forwards, l-move-down 1000ms linear 5500ms forwards;
 		.tech-laptop {
 			position: absolute;
 			bottom: 66px;
 			left: -24px;
 			transform-origin: center center;
-			// animation: tech-lap-enter 1000ms ease-in 1750ms both, fadeOut 250ms linear 3000ms forwards, fadeIn 10ms linear 5000ms forwards;
-			// opacity: 0;
-		}
-		.guru-face-eyes-normal {
-			// animation: fadeOut 150ms ease-in 2500ms forwards, fadeIn 250ms ease-in 4500ms forwards;
+			opacity: 0;
 		}
 		.guru-face-eyes-focus {
 			opacity: 0;
-			// animation: fadeIn 250ms ease-in 2500ms forwards, fadeOut 150ms ease-in 4500ms forwards;
 		}
 	}
 }
 
 .tech-props-container {
 	position: absolute;
+    z-index: 10;
 	width: 130px;
 	height: 204px;
 	top: calc(50% - 102px + 24px);
 	left: calc(50% - 66px);
-	// animation: l-head-hover 1000ms linear 2500ms infinite forwards, fadeOut 10ms linear 5900ms forwards;
 	&.back {
 		z-index: 0;
 	}
@@ -59,66 +112,30 @@
 		position: absolute;
 		top: -133px;
 		left: -51px;
-		.tech-laptop {
+		.tech-laptop, .code-editor, .tech-watch, .small-watch, .code-lines g, .watch-face-fill, .watch-screen-fill, .watch-knob, .watch-band-btm-fill, .watch-band-top-fill, .watch-heart-container {
 			opacity: 0;
-			// animation: fadeIn 250ms linear 2250ms forwards, fadeOut 10ms linear 5000ms forwards;
-		}
-		.code-editor {
-			opacity: 0;
-			// animation: fadeIn 250ms linear 2250ms forwards, fadeOut 50ms linear 3100ms forwards;
 		}
 		.tech-watch {
 			transform-origin: center center;
-			opacity: 0;
-			// animation: fadeIn 10ms linear 3250ms forwards, watch-scale 350ms ease-in-out 5000ms forwards;
 		}
 		.small-watch {
-			opacity: 0;
 			transform-origin: center center;
 			transform: scale(0.18) translate3d(200px, 1170px, 0) rotate(15deg);
-			// animation: fadeIn 50ms ease-in 5350ms forwards;
 			.small-heart {
 				transform-origin: center center;
-				// animation: pulse-heart 1000ms infinite forwards;
 			}
 		}
-		.lap-spotlight {
-			// animation: laptop-fadeOut 500ms ease-in-out 5000ms forwards;
-		}
-		.code-lines {
-			g {
-				opacity: 0;
-				// animation: code-line 1000ms ease-in-out 2600ms forwards;
-			}
-		}
-		.watch-screen-top-right,
-		.watch-screen-top-left,
-		.watch-screen-btm-right,
-		.watch-screen-btm-left{
+		.watch-screen-top-right, .watch-screen-top-left, .watch-screen-btm-right, .watch-screen-btm-left {
 			opacity: 0;
 			stroke-dasharray: 67;
-			// animation: watch-screen 500ms cubic-bezier(0, .09, 0, 1) 3600ms forwards;
 		}
-		.watch-band-top-right,
-		.watch-band-top-left,
-		.watch-band-btm-right,
-		.watch-band-btm-left{
+		.watch-band-top-right, .watch-band-top-left, .watch-band-btm-right, .watch-band-btm-left {
 			opacity: 0;
 			stroke-dasharray: 51;
-			// animation: watch-band 500ms cubic-bezier(0, .09, 0, 1) 3850ms forwards;
 		}
-		.watch-face-fill, .watch-screen-fill, .watch-knob, .watch-band-btm-fill, .watch-band-top-fill {
-			opacity: 0;
-			// animation: fadeIn 250ms cubic-bezier(0, .09, 0, 1) 4100ms forwards;
-		}
-		.watch-heart-container {
-			opacity: 0;
-			// animation: fadeIn 500ms cubic-bezier(0, .09, 0, 1) 4350ms forwards;
-			.watch-heart {
-				transform-origin: center center;
-				// animation: pulse-heart 1000ms infinite forwards;
-			}
-		}
+        .watch-heart {
+            transform-origin: center center;
+        }
 	}
 	.code-fake {
 		position: absolute;
@@ -129,7 +146,6 @@
 		background: $charcoal;
 		border-radius: 6px;
 		opacity: 0;
-		// animation: fadeIn 10ms ease 2600ms forwards, code-to-watch 150ms linear 3100ms forwards, code-to-watch-size 750ms linear 3100ms forwards, fadeOut 10ms ease 3850ms forwards;
 	}
 }
 

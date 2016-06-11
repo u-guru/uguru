@@ -16,11 +16,43 @@
         &.active {
             .guru.academic {
                 > div {
-            		animation: l-move-up 1000ms linear 1500ms forwards, l-head-hover 1000ms linear 2500ms infinite forwards, l-move-down 1000ms linear 10500ms forwards!important;
+            		animation: l-move-up 1000ms linear 1500ms forwards, l-head-hover 1000ms linear 2500ms infinite forwards, l-move-down 1000ms linear 7500ms forwards;
+            	}
+                .back-bp {
+            		animation: back-bp 500ms ease-in-out 2000ms forwards;
+            	}
+            	.front-bp {
+            		animation: straps 250ms ease-out 2000ms forwards;
+            	}
+                .aca-icon {
+                    animation: paper-rotate-2 500ms ease-out 6650ms forwards;
+                }
+            }
+            .academic-props-container {
+            	.academic-props {
+            		.airplane {
+            			animation: fadeIn 10ms linear 2500ms forwards, airplane-fly-over 1000ms ease-out 2500ms forwards, airplane-fly-return 1500ms ease-in 3400ms forwards, airplane-rotate 1750ms cubic-bezier(.58,-0.11,1,.44) 4900ms forwards;
+            		}
             	}
             }
         }
 	}
+}
+
+.close-up {
+    &.throw {
+        animation: aca-enter 750ms ease-in 500ms forwards, hand-ready 500ms cubic-bezier(.41,-0.34,1,.99) 1250ms forwards, hand-set 250ms cubic-bezier(.41,-0.34,1,.99) 1750ms forwards, hand-out 750ms cubic-bezier(0,.01,.38,1) 2000ms forwards, l-fadeOut 10ms linear 2750ms forwards;
+    }
+    .launch-airplane {
+        &.throw {
+            animation: fadeOut 10ms linear 2000ms forwards;
+        }
+    }
+}
+.flying-plane {
+    &.throw {
+        animation: airplane-fly-right 1000ms cubic-bezier(0,.01,.38,1) 2000ms forwards;
+    }
 }
 
 .guru.academic {
@@ -35,11 +67,9 @@
 	.back-bp {
 		opacity: 0;
 		transform-origin: center center;
-		animation: back-bp 500ms ease-in-out 2000ms forwards;
 	}
 	.front-bp {
 		opacity: 0;
-		animation: straps 250ms ease-out 2000ms forwards;
 		transform-origin: center top;
 	}
 	.aca-icon {
@@ -50,8 +80,7 @@
 		padding: 10px 5px;
 		border: 2px solid #50A5DD;
 		border-radius: 2px;
-		// transform: rotateY(90deg);
-		// animation: paper-rotate 50ms ease-out 10200ms forwards;
+		transform: rotateY(90deg);
 		svg {
 			display: block;
 			width: 30px;
@@ -70,6 +99,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
+    z-index: 10;
 	.academic-props {
 		position: absolute;
 		width: 130px;
@@ -77,10 +107,12 @@
 		left: calc(50% - 65px);
 		top: calc(50% - 105px + 25px);
 		.airplane {
-			transform: translate3d(20px, 100px, 0);
+            display: block;
+            width: 100%;
+            height: auto;
 			opacity: 0;
-			// animation: fadeIn 10ms linear 5500ms forwards, airplane-fly-over 1000ms ease-out 5500ms forwards, airplane-fly-return 1800ms ease-in 6400ms forwards, airplane-rotate 2000ms cubic-bezier(.58,-0.11,1,.44) 8200ms forwards;
 			transform-origin: center center;
+			transform: translate3d(20px, 100px, 0);
 		}
 	}
 	.close-up {
@@ -91,19 +123,13 @@
 		top: 50%;
 		transform-origin: center bottom;
 		opacity: 0;
-		// animation: aca-enter 750ms ease-in 500ms forwards, hand-ready 500ms ease-in 1250ms forwards, hand-set 250ms ease-in 1750ms forwards, hand-out 750ms ease-out 2000ms forwards, fadeOut 10ms linear 2750ms forwards;
-		// .launch-airplane {
-		// 	animation: fadeOut 10ms linear 2000ms forwards;
-		// }
 	}
-
 	.flying-plane {
 		position: absolute;
 		width: 650px;
 		height: 445px;
 		transform-origin: center bottom;
 		opacity: 0;
-		// animation: airplane-fly-right 1000ms ease-out 2000ms forwards;
 	}
 }
 
@@ -115,6 +141,20 @@
 @keyframes paper-rotate {
 	0% { transform: rotateY(90deg); }
 	100% { transform: rotateY(0deg); }
+}
+
+/* http://goo.gl/rDqQbq */
+@keyframes paper-rotate-2 {
+  0% { transform: matrix3d(0, 0.5, 0, 0, -0.5, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  4.3% { transform: matrix3d(0.547, 0.523, 0, 0, -0.523, 0.547, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  8.61% { transform: matrix3d(0.922, 0.178, 0, 0, -0.178, 0.922, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  12.91% { transform: matrix3d(1.023, -0.084, 0, 0, 0.084, 1.023, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  17.22% { transform: matrix3d(1.035, -0.153, 0, 0, 0.153, 1.035, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  28.33% { transform: matrix3d(1.01, -0.033, 0, 0, 0.033, 1.01, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  39.44% { transform: matrix3d(0.997, 0.01, 0, 0, -0.01, 0.997, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  61.66% { transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  83.98% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 }
 
 /*  http://goo.gl/nD4lJA */
@@ -153,8 +193,8 @@
 }
 
 @keyframes airplane-fly-over {
-	0% { transform: translate3d(500%, -350%, 0) rotateX(180deg) rotateY(180deg) scale(0.2); }
-	100% { transform: translate3d(-400%, -200%, 0) rotateX(180deg) rotateY(0) scale(0.8); }
+	0% { transform: translate3d(500%, -350%, 0) rotateX(180deg) rotateY(180deg) scale(0.2); opacity: 1; }
+	100% { transform: translate3d(-400%, -200%, 0) rotateX(180deg) rotateY(0) scale(0.8); opacity: 1; }
 }
 
 @keyframes airplane-fly-right {
