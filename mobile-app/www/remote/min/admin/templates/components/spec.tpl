@@ -201,17 +201,11 @@
         <ul id="dev-toolbar-options" class='bg-cobalt-25p flex-center-vertical-space-between-wrap p15-grid'>
             <li class="flex">
                 <!-- <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a> -->
-<<<<<<< HEAD
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.spec()'>Spec</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.openGDoc()'>gDoc</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.docs.launch()'>Docs</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.settings()'>Settings</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.shortcuts()'>Keyboard</button>
-=======
-                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggleSpec = !spec.toggleSpec'>Spec</button>
-                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.openGDoc()'>gDoc</button>
-                <button class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='spec.toggles.docs()'>Docs</button>
->>>>>>> c581f9636279d27cf5dd67a8add1c1e98b21f684
                 <button ng-if='false' class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='spec.toggleDocSearch = !spec.toggleDocSearch'>Search</button>
             </li>
             <li class="flex">

@@ -1,16 +1,12 @@
-<<<<<<< HEAD
+
 <div class='absolute full-xy top-0 left-0' ng-controller='SplashLoaderController as loader' id='splash-preapp-loader'>
-    <div class="loader-portal-container academic active">
-        <div class="loader-portal">
-=======
-<div class='absolute full-xy top-0 left-0' ng-controller='SplashLoaderController as loader'>
     <div class="loader-portal-container activate"
         on-activate="academic, null:delay-500:inject.loader-portal|on-loader-begin-enter">
         <div class="loader-portal"
             on-init="opacity:0"
             elem-states="[loader-begin]"
             on-loader-begin-enter="portal-enter:animIn:delay-50, null:inject.portal-anim|on-portal-enter">
->>>>>>> c581f9636279d27cf5dd67a8add1c1e98b21f684
+
             <div class="portal">
                 <div class="portal-anim"
                     on-init="opacity:0"
@@ -39,13 +35,8 @@
             <div class="guru tech" ng-include="'preapp/templates/loaders/guru/tech.html'"></div>
             <div class="guru household" ng-include="'preapp/templates/loaders/guru/household.html'"></div>
         </div>
-<<<<<<< HEAD
-        <div class="academic-props-container" style='display:block !important;' ng-include="'preapp/templates/loaders/props/academic.html'"></div>
-        <div class="tech-props-container"  ng-include="'preapp/templates/loaders/props/tech.html'"></div>
-=======
         <div class="academic-props-container" ng-include="'preapp/templates/loaders/props/academic.html'"></div>
         <div class="tech-props-container" ng-include="'preapp/templates/loaders/props/tech.html'"></div>
->>>>>>> c581f9636279d27cf5dd67a8add1c1e98b21f684
         <div class="household-props-container" ng-include="'preapp/templates/loaders/props/household.html'"></div>
     </div>
 </div>
