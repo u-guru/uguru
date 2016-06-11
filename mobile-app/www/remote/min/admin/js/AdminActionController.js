@@ -45,9 +45,24 @@ angular.module('uguru.admin')
         }
       });
     }
-    $scope.updateStatus = function(){
+    $scope.updateStatus = function(index){
         // console.log($scope.manualBugs.platforms);
         // console.log($scope.bugReport[1].manualState);
+        // console.log($scope.manualBugs[$scope.availableState.selectedIndex].platforms[index])
+        switch($scope.manualBugs[$scope.availableState.selectedIndex].platforms[index].isPassed){
+          case 1:
+            $scope.manualBugs[$scope.availableState.selectedIndex].platforms[index].isPassed = -1;
+            break;
+          case -1:
+            $scope.manualBugs[$scope.availableState.selectedIndex].platforms[index].isPassed = 0;
+            break;
+          case 0:
+            $scope.manualBugs[$scope.availableState.selectedIndex].platforms[index].isPassed = 1;
+            break;
+        }
+        // console.log($scope.manualBugs[0].platforms);
+        // console.log($scope.bugReport[1].manualState);
+
         ReportService.syncReport($scope.bugReport);
     };
 
