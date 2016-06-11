@@ -859,16 +859,6 @@
   .adlib-header-container .adlib-header.inactive-adlib-header {
     animation: adlib-header-mobile-first-up 1000ms linear 1850ms both !important; }
 
-@media screen and (min-width: 768px) {
-  .adlib-header-container {
-    height: 48px;
-    max-width: none; }
-    .adlib-header-container .adlib-header:not(:first-child) {
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 48, 0, 1); }
-    .adlib-header-container .adlib-header.active-adlib-header {
-      animation: adlib-header-up 1000ms linear both; }
-    .adlib-header-container .adlib-header.inactive-adlib-header {
-      animation: adlib-header-first-up 1000ms linear 1850ms both !important; } }
 .tag-adlib rect.spread-out {
   stroke-dasharray: 701;
   stroke-dashoffset: -701;
@@ -886,40 +876,20 @@
 .adlib-header-container .adlib-header.active-adlib-header.spread-out span:nth-child(1) {
   transform: translate3d(48px, 0, 0);
   animation: adlib-header-mobile-1-translate 500ms ease-out 750ms both; }
-  @media screen and (min-width: 768px) {
-    .adlib-header-container .adlib-header.active-adlib-header.spread-out span:nth-child(1) {
-      transform: translate3d(40px, 0, 0);
-      animation: adlib-header-1-translate 500ms ease-out 750ms both; } }
 .adlib-header-container .adlib-header.active-adlib-header.spread-out a.tag-adlib:nth-child(2) {
   background: transparent;
   transform: scale(1.4);
   animation: adlib-header-mobile-scale 500ms ease-out 750ms both; }
-  @media screen and (min-width: 768px) {
-    .adlib-header-container .adlib-header.active-adlib-header.spread-out a.tag-adlib:nth-child(2) {
-      transform: translate3d(0, 0, 0) scale(1.7);
-      animation: adlib-header-scale 500ms ease-out 750ms both; } }
 .adlib-header-container .adlib-header.active-adlib-header.spread-out span:nth-child(3) {
   transform: translate3d(-48px, 0, 0);
   animation: adlib-header-mobile-3-translate 500ms ease-out 750ms both; }
-  @media screen and (min-width: 768px) {
-    .adlib-header-container .adlib-header.active-adlib-header.spread-out span:nth-child(3) {
-      transform: translate3d(-40px, 0, 0);
-      animation: adlib-header-3-translate 500ms ease-out 750ms both; } }
 .adlib-header-container .adlib-header.active-adlib-header.spread-out a.tag-adlib:nth-child(4) {
   background: transparent;
   transform: scale(1.4) translate3d(-2px, 0, 0);
   animation: adlib-header-mobile-4-translate 500ms ease-out 750ms both; }
-  @media screen and (min-width: 768px) {
-    .adlib-header-container .adlib-header.active-adlib-header.spread-out a.tag-adlib:nth-child(4) {
-      transform: translate3d(-37.5px, 0, 0) scale(1.7);
-      animation: adlib-header-4-translate 500ms ease-out 750ms both; } }
 .adlib-header-container .adlib-header.active-adlib-header.spread-out span:nth-child(5) {
   transform: translate3d(-23px, 0, 0);
   animation: adlib-header-mobile-5-translate 500ms ease-out 750ms both; }
-  @media screen and (min-width: 768px) {
-    .adlib-header-container .adlib-header.active-adlib-header.spread-out span:nth-child(5) {
-      transform: translate3d(-35px, 0, 0);
-      animation: adlib-header-5-translate 500ms ease-out 750ms both; } }
 
 .adlib-tag.spread-out {
   opacity: 0; }
@@ -943,31 +913,6 @@
     animation: spread-out-tag-mobile-right 1000ms linear 1600ms both; }
   .adlib-tag.spread-out:nth-child(8) {
     animation: spread-out-tag-mobile-right 1000ms linear 1650ms both; }
-  @media screen and (min-width: 768px) {
-    .adlib-tag.spread-out:nth-child(1) {
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 12, -76, 0, 1);
-      animation: spread-out-tag-1 1000ms linear 1500ms both; }
-    .adlib-tag.spread-out:nth-child(2) {
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -160, -76, 0, 1);
-      animation: spread-out-tag-2 1000ms linear 1550ms both; }
-    .adlib-tag.spread-out:nth-child(3) {
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -332, -76, 0, 1);
-      animation: spread-out-tag-3 1000ms linear 1600ms both; }
-    .adlib-tag.spread-out:nth-child(4) {
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -504, -76, 0, 1);
-      animation: spread-out-tag-4 1000ms linear 1650ms both; }
-    .adlib-tag.spread-out:nth-child(5) {
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 389, -150, 0, 1);
-      animation: spread-out-tag-5 1000ms linear 1850ms both; }
-    .adlib-tag.spread-out:nth-child(6) {
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 217, -150, 0, 1);
-      animation: spread-out-tag-6 1000ms linear 1800ms both; }
-    .adlib-tag.spread-out:nth-child(7) {
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 45, -150, 0, 1);
-      animation: spread-out-tag-7 1000ms linear 1750ms both; }
-    .adlib-tag.spread-out:nth-child(8) {
-      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 45, -150, 0, 1);
-      animation: spread-out-tag-8 1000ms linear 1700ms both; } }
 
 .adlib-tag.spread-in .tag-adlib.active {
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) !important; }
@@ -987,23 +932,6 @@
   animation: spread-in-tag-mobile-right 1000ms linear 550ms both; }
 .adlib-tag.spread-in:nth-child(8) {
   animation: spread-in-tag-mobile-right 1000ms linear 500ms both; }
-@media screen and (min-width: 768px) {
-  .adlib-tag.spread-in:nth-child(1) {
-    animation: spread-in-tag-1 1000ms linear 500ms both; }
-  .adlib-tag.spread-in:nth-child(2) {
-    animation: spread-in-tag-2 1000ms linear 550ms both; }
-  .adlib-tag.spread-in:nth-child(3) {
-    animation: spread-in-tag-3 1000ms linear 600ms both; }
-  .adlib-tag.spread-in:nth-child(4) {
-    animation: spread-in-tag-4 1000ms linear 650ms both; }
-  .adlib-tag.spread-in:nth-child(5) {
-    animation: spread-in-tag-5 1000ms linear 850ms both; }
-  .adlib-tag.spread-in:nth-child(6) {
-    animation: spread-in-tag-6 1000ms linear 800ms both; }
-  .adlib-tag.spread-in:nth-child(7) {
-    animation: spread-in-tag-7 1000ms linear 750ms both; }
-  .adlib-tag.spread-in:nth-child(8) {
-    animation: spread-in-tag-8 1000ms linear 700ms both; } }
 
 .adlib-tag.click-two {
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
@@ -1026,23 +954,6 @@
     animation: spread-in-tag-mobile-right 1000ms linear 550ms both; }
   .adlib-tag.click-two:nth-child(8) .tag-adlib:first-child:not(.active) {
     animation: spread-in-tag-mobile-right 1000ms linear 500ms both; }
-  @media screen and (min-width: 768px) {
-    .adlib-tag.click-two:nth-child(1) .tag-adlib:first-child:not(.active) {
-      animation: spread-in-tag-1 1000ms linear 500ms both; }
-    .adlib-tag.click-two:nth-child(2) .tag-adlib:first-child:not(.active) {
-      animation: spread-in-tag-2 1000ms linear 550ms both; }
-    .adlib-tag.click-two:nth-child(3) .tag-adlib:first-child:not(.active) {
-      animation: spread-in-tag-3 1000ms linear 600ms both; }
-    .adlib-tag.click-two:nth-child(4) .tag-adlib:first-child:not(.active) {
-      animation: spread-in-tag-4 1000ms linear 650ms both; }
-    .adlib-tag.click-two:nth-child(5) .tag-adlib:first-child:not(.active) {
-      animation: spread-in-tag-5 1000ms linear 850ms both; }
-    .adlib-tag.click-two:nth-child(6) .tag-adlib:first-child:not(.active) {
-      animation: spread-in-tag-6 1000ms linear 800ms both; }
-    .adlib-tag.click-two:nth-child(7) .tag-adlib:first-child:not(.active) {
-      animation: spread-in-tag-7 1000ms linear 750ms both; }
-    .adlib-tag.click-two:nth-child(8) .tag-adlib:first-child:not(.active) {
-      animation: spread-in-tag-8 1000ms linear 700ms both; } }
 
 .splash-hero-guru.map-transition {
   animation: guru-rotateOut 1250ms linear 500ms both; }
@@ -1216,31 +1127,139 @@
     .splash-hero-content .splash-adlib h1 {
       line-height: 2 !important; } }
 @media screen and (min-width: 768px) {
-  .coach-help.coach-help-desktop {
+  .splash-hero-content:not(.mobile) .coach-help.coach-help-desktop {
     display: block !important; }
-    .coach-help.coach-help-desktop.hide {
+    .splash-hero-content:not(.mobile) .coach-help.coach-help-desktop.hide {
       display: none !important; }
-  .coach-help.coach-help-mobile {
+  .splash-hero-content:not(.mobile) .coach-help.coach-help-mobile {
     display: none !important; }
-
-  .splash-guru-head .coach-fill {
+  .splash-hero-content:not(.mobile) .splash-guru-head .coach-fill {
     top: 80px;
     right: -180px; }
-
-  .splash-hero-content .splash-adlib h1 {
+  .splash-hero-content:not(.mobile) .splash-adlib h1 {
     font-size: 40px; }
-  .splash-hero-content .splash-adlib .splash-mobile-cta {
+  .splash-hero-content:not(.mobile) .splash-adlib .splash-mobile-cta {
     display: none; }
-  .splash-hero-content .splash-adlib ul {
+  .splash-hero-content:not(.mobile) .splash-adlib ul {
     max-width: calc(172px * 4 + 30px);
     padding: 15px;
     margin: 0 auto 15px; }
-    .splash-hero-content .splash-adlib ul li {
+    .splash-hero-content:not(.mobile) .splash-adlib ul li {
       width: 25%;
       max-width: 172px;
       padding: 15px; }
-      .splash-hero-content .splash-adlib ul li:nth-child(7), .splash-hero-content .splash-adlib ul li:nth-child(8) {
-        display: block; } }
+      .splash-hero-content:not(.mobile) .splash-adlib ul li:nth-child(7), .splash-hero-content:not(.mobile) .splash-adlib ul li:nth-child(8) {
+        display: block; }
+  .splash-hero-content:not(.mobile) .adlib-header-container {
+    height: 48px;
+    max-width: none; }
+    .splash-hero-content:not(.mobile) .adlib-header-container .adlib-header:not(:first-child) {
+      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 48, 0, 1); }
+    .splash-hero-content:not(.mobile) .adlib-header-container .adlib-header.active-adlib-header {
+      animation: adlib-header-up 1000ms linear both; }
+    .splash-hero-content:not(.mobile) .adlib-header-container .adlib-header.inactive-adlib-header {
+      animation: adlib-header-first-up 1000ms linear 1850ms both !important; }
+  .splash-hero-content:not(.mobile) .adlib-header-container .adlib-header.active-adlib-header.spread-out span:nth-child(1) {
+    transform: translate3d(40px, 0, 0);
+    animation: adlib-header-1-translate 500ms ease-out 750ms both; }
+  .splash-hero-content:not(.mobile) .adlib-header-container .adlib-header.active-adlib-header.spread-out a.tag-adlib:nth-child(2) {
+    transform: translate3d(0, 0, 0) scale(1.7);
+    animation: adlib-header-scale 500ms ease-out 750ms both; }
+  .splash-hero-content:not(.mobile) .adlib-header-container .adlib-header.active-adlib-header.spread-out span:nth-child(3) {
+    transform: translate3d(-40px, 0, 0);
+    animation: adlib-header-3-translate 500ms ease-out 750ms both; }
+  .splash-hero-content:not(.mobile) .adlib-header-container .adlib-header.active-adlib-header.spread-out a.tag-adlib:nth-child(4) {
+    transform: translate3d(-37.5px, 0, 0) scale(1.7);
+    animation: adlib-header-4-translate 500ms ease-out 750ms both; }
+  .splash-hero-content:not(.mobile) .adlib-header-container .adlib-header.active-adlib-header.spread-out span:nth-child(5) {
+    transform: translate3d(-35px, 0, 0);
+    animation: adlib-header-5-translate 500ms ease-out 750ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-out:nth-child(1) {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 12, -76, 0, 1);
+    animation: spread-out-tag-1 1000ms linear 1500ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-out:nth-child(2) {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -160, -76, 0, 1);
+    animation: spread-out-tag-2 1000ms linear 1550ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-out:nth-child(3) {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -332, -76, 0, 1);
+    animation: spread-out-tag-3 1000ms linear 1600ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-out:nth-child(4) {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -504, -76, 0, 1);
+    animation: spread-out-tag-4 1000ms linear 1650ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-out:nth-child(5) {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 389, -150, 0, 1);
+    animation: spread-out-tag-5 1000ms linear 1850ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-out:nth-child(6) {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 217, -150, 0, 1);
+    animation: spread-out-tag-6 1000ms linear 1800ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-out:nth-child(7) {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 45, -150, 0, 1);
+    animation: spread-out-tag-7 1000ms linear 1750ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-out:nth-child(8) {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 45, -150, 0, 1);
+    animation: spread-out-tag-8 1000ms linear 1700ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-in:nth-child(1) {
+    animation: spread-in-tag-1 1000ms linear 500ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-in:nth-child(2) {
+    animation: spread-in-tag-2 1000ms linear 550ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-in:nth-child(3) {
+    animation: spread-in-tag-3 1000ms linear 600ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-in:nth-child(4) {
+    animation: spread-in-tag-4 1000ms linear 650ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-in:nth-child(5) {
+    animation: spread-in-tag-5 1000ms linear 850ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-in:nth-child(6) {
+    animation: spread-in-tag-6 1000ms linear 800ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-in:nth-child(7) {
+    animation: spread-in-tag-7 1000ms linear 750ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.spread-in:nth-child(8) {
+    animation: spread-in-tag-8 1000ms linear 700ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.click-two:nth-child(1) .tag-adlib:first-child:not(.active) {
+    animation: spread-in-tag-1 1000ms linear 500ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.click-two:nth-child(2) .tag-adlib:first-child:not(.active) {
+    animation: spread-in-tag-2 1000ms linear 550ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.click-two:nth-child(3) .tag-adlib:first-child:not(.active) {
+    animation: spread-in-tag-3 1000ms linear 600ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.click-two:nth-child(4) .tag-adlib:first-child:not(.active) {
+    animation: spread-in-tag-4 1000ms linear 650ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.click-two:nth-child(5) .tag-adlib:first-child:not(.active) {
+    animation: spread-in-tag-5 1000ms linear 850ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.click-two:nth-child(6) .tag-adlib:first-child:not(.active) {
+    animation: spread-in-tag-6 1000ms linear 800ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.click-two:nth-child(7) .tag-adlib:first-child:not(.active) {
+    animation: spread-in-tag-7 1000ms linear 750ms both; }
+  .splash-hero-content:not(.mobile) .adlib-tag.click-two:nth-child(8) .tag-adlib:first-child:not(.active) {
+    animation: spread-in-tag-8 1000ms linear 700ms both; } }
+
+.splash-hero-content.mobile .tag-adlib {
+  width: 130px;
+  height: 38px;
+  font-size: 20px; }
+  .splash-hero-content.mobile .tag-adlib svg.desktop {
+    display: none; }
+  .splash-hero-content.mobile .tag-adlib svg.mobile {
+    display: block; }
+.splash-hero-content.mobile.max-768 .splash-hero-guru {
+  margin-bottom: 10px; }
+.splash-hero-content.mobile.max-768 .splash-adlib {
+  margin-top: -10px; }
+  .splash-hero-content.mobile.max-768 .splash-adlib h1 {
+    line-height: 1.75; }
+  .splash-hero-content.mobile.max-768 .splash-adlib ul {
+    margin: -10px 0 5px;
+    flex-direction: column;
+    height: 250px; }
+.splash-hero-content.mobile.max-414 .splash-guru-head .splash-logo-guru svg {
+  transform: scale(0.8); }
+.splash-hero-content.mobile.max-360 {
+  transform: scale(0.9); }
+  .splash-hero-content.mobile.max-360 .splash-adlib h1 {
+    font-size: 24px; }
+.splash-hero-content.mobile.max-320 {
+  transform: scale(0.7); }
+  .splash-hero-content.mobile.max-320 .splash-adlib h1 {
+    line-height: 2 !important; }
+
 .splash-device {
   display: none;
   position: absolute;
