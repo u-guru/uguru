@@ -61,6 +61,11 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     controller: 'AdminController',
     templateUrl: 'admin/templates/index.html',
   })
+  .state('root.admin-docs', {
+    url:'/admin/docs',
+    controller: 'AdminDocsController as docs',
+    templateUrl: 'admin/templates/docs/docs.html',
+  })
   .state('root.bugs', {
     url:'/admin/bugs/:id',
     controller: 'AdminBugsController',

@@ -19,7 +19,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
     }
 
     function initSpec(scope, real_scope, parent_container, param, template_path, ctrl_path, states, css_path) {
-        if ((window.location.href.split('/').indexOf('dev') === -1) && window.location.href.split('codepen').length === 1) {
+        if ((window.location.href.split('/dev/').length === 1) && window.location.href.split('codepen').length === 1) {
             return;
         }
         //checks codepen environment
@@ -40,12 +40,15 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data.toggleDev = true;
             specObj.data.toggleSpec = false;
             specObj.data.toggleDocs = false;
-            specObj.data.toggleDocSearch = true;
+            specObj.data.toggleShortcuts = false;
+            specObj.data.toggleSettings = true;
+            specObj.data.docs = {launch:launchDocs}
             specObj.data.mobile = {toggle:toggleMobileMode, width:400, height:768, show:false, template:specObj.template_path, url:window.location.href}
             specObj.data.open = specObj.open;
             specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
             specObj.data.stateTags = specObj.data.statesDropdown.options;
             specObj.data.stateTagClicked = specObj.data.statesDropdown.onOptionClick;
+            specObj.data.initCodepenData = launchNewCodepen(scope);
             $timeout(function() {
                 specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path, specObj.css_path);
             })
@@ -58,11 +61,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specElem = document.createElement('spec');
             specElem.className = 'fixed bottom-0 left-0 full-x';
             specElem.style.zIndex = '100000';
-            specObj.data.toggles = {devBar: toggleDev, docs: toggleDocs, spec:toggleSpec};
-            KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
-            KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
-            KeyboardService.initOptionPressedAndReleasedFunction(toggleDocs, null, 78, 'n', true, null);
-            KeyboardService.initOptionPressedAndReleasedFunction(function() {toggleDev(true); toggleSpec(true); toggleDocs(true)}, null, 27, 'esc', true, null);
+            specObj.data.toggles = {devBar: toggleDev, docs: toggleDocs, spec:toggleSpec, settings:toggleSettings, shortcuts:toggleShortcuts};
+            specObj.data.keyboardListeners = initKeyboardFunction();
             // specElem.setAttribute('ng-if', 'spec && spec.data');
             specElem.setAttribute('data', param + '.spec.data');
             if (elem) {
@@ -76,6 +76,16 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                 return function() {
                     $window.open(url, '_blank');
                 }
+            }
+
+            function initKeyboardFunction() {
+                KeyboardService.initOptionPressedAndReleasedFunction(toggleDev, null, 68, 'd', true, null);
+                KeyboardService.initOptionPressedAndReleasedFunction(toggleSpec, null, 83, 's', true, null);
+                KeyboardService.initOptionPressedAndReleasedFunction(toggleSettings, null, 90, 'z', true, null);
+                KeyboardService.initOptionPressedAndReleasedFunction(toggleShortcuts, null, 75, 'k', true, null);
+                KeyboardService.initOptionPressedAndReleasedFunction(launchDocs, null, 78, 'n', false, 750);
+                KeyboardService.initOptionPressedAndReleasedFunction(toggleMobileMode, null, 77, 'm', true, null);
+                // KeyboardService.initOptionPressedAndReleasedFunction(function() {toggleDev(true); toggleSpec(true);}, null, 27, 'esc', true, null);
             }
 
             function toggleDev(value) {
@@ -97,9 +107,69 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
               }
 
             }
+            function toggleShortcuts() {
+                var newValue = !scope.spec.data.showShortcuts;
+                if (newValue  && scope.spec.data.toggleDev) {
+                    scope.spec.data.showShortcuts = newValue;
+                    return;
+                }
+                else if (newValue && !scope.spec.data.toggleDev) {
+                    scope.spec.data.toggleDev = true;
+                    $timeout(function() {
+                        scope.spec.data.showShortcuts = newValue;
+                    }, 750)
+                }
+                else if (!newValue) {
+                    var showShortcutsContainer = document.querySelector('#dev-bar-shortcuts');
+                    showShortcutsContainer.classList.remove('lightSpeedIn');
+                    $timeout(function() {
+                        showShortcutsContainer.classList.add('lightSpeedOut');
+                    })
+                    $timeout(function() {
+                        scope.spec.data.showShortcuts = newValue;
+                        showShortcutsContainer.classList.add('lightSpeedOut');
+                    }, 750);
+                }
+            }
+
+            function toggleSettings() {
+                var newValue = !scope.spec.data.showSettings;
+                if (newValue  && scope.spec.data.toggleDev) {
+                    scope.spec.data.showSettings = newValue;
+                    return;
+                }
+                else if (newValue && !scope.spec.data.toggleDev) {
+                    scope.spec.data.toggleDev = true;
+                    $timeout(function() {
+                        scope.spec.data.showSettings = newValue;
+                    }, 750)
+                }
+                else if (!newValue) {
+                    var showSettingsContainer = document.querySelector('#dev-bar-settings');
+                    showSettingsContainer.classList.remove('lightSpeedIn');
+                    $timeout(function() {
+                        showSettingsContainer.classList.add('lightSpeedOut');
+                    })
+                    $timeout(function() {
+                        scope.spec.data.showSettings = newValue;
+                        showSettingsContainer.classList.add('lightSpeedOut');
+                    }, 750);
+                }
+            }
+
+            function launchDocs() {
+                var url = 'https://uguru-rest-test.herokuapp.com/#/admin/docs';
+                if (window.location.href.split(':81').length > 1 || window.location.href.split(':5000').length > 1) {
+                    url = window.location.href.split('/#/')[0] + '/#/admin/docs';
+                }
+                $window.open(url, '_blank');
+            }
 
             function toggleMobileMode(value) {
-                if (value) {
+                //flex-center --> ion-nav-view
+                //set the width and height to ion-nav-view-first-child
+
+                if (value && typeof(value) === 'boolean') {
                     scope.spec.data.mobile.show = value;
                 } else {
                     scope.spec.data.mobile.show = !scope.spec.data.mobile.show;
@@ -114,22 +184,50 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                         scope.spec.data.mobile.initDimensions.view = {height: computedDimensionsView.height, width: computedDimensionsView.width}
                         scope.spec.data.mobile.initDimensions.devTools = {height: computedDimensionsSpec.height, width: computedDimensionsSpec.width}
                     }
-                    parent_elem.parentNode.style.width = scope.spec.data.mobile.width + 'px';
-                    parent_elem.parentNode.style.height = scope.spec.data.mobile.height + 'px';
-                    spec_elem.classList.remove('full-x', 'bottom-0');
-                    spec_elem.style.width = scope.spec.data.mobile.initDimensions.devTools.width;
-                    var devToolHeightInt = parseInt(scope.spec.data.mobile.initDimensions.devTools.height.replace('px', ''));
-                    var viewHeightInt = parseInt(scope.spec.data.mobile.initDimensions.view.height.replace('px', ''));
-                    var bottomOffset = 0 - (viewHeightInt - scope.spec.data.mobile.height);
+                    parent_elem.parentNode.classList.add('flex-center');
+                    parent_elem.style.width = scope.spec.data.mobile.width + 'px';
+                    parent_elem.style.height = scope.spec.data.mobile.height + 'px';
+                    var parentElemMarginTop = (0 - parent_elem.getBoundingClientRect().top);
+                    parent_elem.style.marginTop =  parentElemMarginTop + 'px';
+                    spec_elem.style.marginBottom = (parentElemMarginTop - parent_elem.getBoundingClientRect().top ) + 'px';
 
-                    spec_elem.style.bottom =  bottomOffset + 'px';
+                    spec_elem.style.width = scope.spec.data.mobile.initDimensions.devTools.width;
+                    spec_elem.style.left = (0 - parent_elem.getBoundingClientRect().left) + 'px';
+                    spec_elem.classList.remove('full-x', 'left-0', 'top-0');
+                    spec_elem.classList.remove('relative');
+                    var mobileSpecOptionsBar = spec_elem.querySelector('#spec-mobile-options');
+                    if (mobileSpecOptionsBar) {
+                        mobileSpecOptionsBar.classList.add('absolute', 'left-0', 'full-x');
+                        mobileSpecOptionsBar.style.top = (0 - spec_elem.getBoundingClientRect().height + mobileSpecOptionsBar.getBoundingClientRect().height * 0.5) + 'px';
+                    }
+                    // var devToolHeightInt = parseInt(scope.spec.data.mobile.initDimensions.devTools.height.replace('px', ''));
+                    // var viewHeightInt = parseInt(scope.spec.data.mobile.initDimensions.view.height.replace('px', ''));
+                    // var bottomOffset = 0 - (viewHeightInt - scope.spec.data.mobile.height);
+
+                    // spec_elem.style.bottom =  bottomOffset + 'px';
                     parent_elem.style.overflow = 'visible';
+                    $timeout(function() {
+                        real_scope.$apply();
+                        parent_elem.classList.add('mobile');
+                    }, 100)
+
                 } else {
-                    parent_elem.parentNode.style.width = scope.spec.data.mobile.initDimensions.view.width;
-                    parent_elem.parentNode.style.height = scope.spec.data.mobile.initDimensions.view.height;
-                    spec_elem.classList.add('full-x', 'bottom-0');
+                    parent_elem.parentNode.classList.remove('flex-center');
+                    parent_elem.classList.remove('mobile');
+                    parent_elem.style.width = scope.spec.data.mobile.initDimensions.view.width;
+                    parent_elem.style.height = scope.spec.data.mobile.initDimensions.view.height;
+                    spec_elem.style.marginBottom = 'initial';
+                    parent_elem.style.marginTop = 'auto';
+                    // spec_elem.classList.add('full-x', 'bottom-0');
+                    spec_elem.classList.add('full-x', 'left-0', 'bottom-0', 'relative');
                     spec_elem.style.width = '';
                     parent_elem.style.overflow = 'hidden';
+                    parent_elem.classList.remove('mobile');
+                    var mobileSpecOptionsBar = spec_elem.querySelector('#spec-mobile-options');
+                    if (mobileSpecOptionsBar) {
+                        mobileSpecOptionsBar.classList.remove('absolute', 'left-0', 'full-x');
+                        mobileSpecOptionsBar.style.top = 'initial'
+                    }
                 }
             }
 
@@ -213,16 +311,44 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
     }
 
+    function launchNewCodepen(scope) {
+            var title = 'New Uguru Codepen';
+            var base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
+            return {
+                title                 : title,
+                description           : "Most updated version",
+                private               : false, // true || false
+                tags                  : [], // an array of strings
+                editors               : "101", // Set which editors are open. In this example HTML open, CSS closed, JS open
+                layout                : "right", // top | left | right
+                html                  : "<body ng-app='uguru' animation='slide-left-right-ios7' > <ui-view id='uguru-view'> <script type='text/ng-template' id='demo.html'><div class='splash-hero-content full-xy z-index-100' ng-controller='NewCodepenController as codepen' id='codepen-view' ng-show='true'> <div class='splash-guru-head' on-activate='pulse:animIn'> <div class='splash-hero-guru splash-logo-guru' ng-include='" + '"shared/templates/components/svg/guru-head.html"' +"'></div> </div> <h1 class='flex-wrap-center full-x'> Aint nothin here to see *yet* </h1> </div></script></ui-view></body>",
+                html_pre_processor    : "",
+                css                   : "//@import 'mixins' already included within codepen\n\n#codepen-view{@extends .full-xy}",
+                css_pre_processor     : "scss",
+                css_starter           : "neither",
+                css_prefix            : "none",
+                js                    : "angular.module('uguru.preApp') .controller('NewCodepenController', ['$scope', '$state', '$timeout', 'SpecService', function($scope, $state, $timeout, SpecService) { var codepen = this; var states = {}; SpecService.initSpec(codepen, $scope, '#codepen-view', 'demo', null, null, states, null);} ])",
+                js_pre_processor      : "none",
+                html_classes          : null,
+                head                  : '<meta charset="utf-8"><meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"><title></title><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script>',
+                css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css;http://codepen.io/teamuguru/pen/ce57163cc68d7c34cc4bc84c985ed993",
+                js_external           : '',
+                css_pre_processor_lib : null,
+                js_modernizr : null,
+                js_library   : null,
+        }
+    }
+
     function getCodepenData(scope, title, template_url, ctrl_path, css_path) {
         console.log(template_url, ctrl_path);
         $timeout(function() {
-            loadHTMLSpec(scope, template_url, ctrl_path)
+            template_url && loadHTMLSpec(scope, template_url, ctrl_path)
         })
         $timeout(function() {
-            loadJsSpec(scope, template_url, ctrl_path)
+            ctrl_path && loadJsSpec(scope, template_url, ctrl_path)
         })
         $timeout(function() {
-            loadCssSpec(scope, css_path);
+            css_path && loadCssSpec(scope, css_path);
         })
         var base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
         return {
@@ -242,12 +368,14 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             js_pre_processor      : "none",
             html_classes          : null,
             head                  : '<meta charset="utf-8"><meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"><title></title><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script>',
-            css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css;https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/shared/css/scss/partials/_mixin.scss",
+            css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css;http://codepen.io/teamuguru/pen/ce57163cc68d7c34cc4bc84c985ed993",
             js_external           : '',
             css_pre_processor_lib : null,
             js_modernizr : null,
             js_library   : null,
         }
+
+
 
         function loadHTMLSpec(scope, template_url, controller_url) {
 
@@ -309,7 +437,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
     }
 
     function getSpecObj(spec_id, template_url, ctrl_url, css_url) {
-        var url = constructCodepenUrl(spec_id);
+        var url = template_url && constructCodepenUrl(spec_id);
         return {
             open: openCodepenSpecFunc(url),
             url: url + '.js',
@@ -320,6 +448,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         }
 
         function openCodepenSpecFunc(url) {
+            if (!url) return function() {};
             return function() {
                 $window.open(url + '/?editors=0010?layout=top', '_blank');
             }
