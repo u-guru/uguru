@@ -54,9 +54,6 @@ angular.module('uguru.admin')
       });
     }
     $scope.updateStatus = function(index){
-        // console.log($scope.manualBugs.platforms);
-        // console.log($scope.bugReport[1].manualState);
-        // console.log($scope.manualBugs[$scope.availableState.selectedIndex].platforms[index])
         switch( $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed){
           case 1:
             $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed = -1;
@@ -131,7 +128,6 @@ angular.module('uguru.admin')
       if(id && $scope.bugReport){
         for(var i = 0; i < $scope.bugReport.length ; ++i)
         {
-          // console.log('index',i);
           if ($scope.bugReport[i].bugID === id){
             return $scope.bugReport[i].bugs.length;
           }

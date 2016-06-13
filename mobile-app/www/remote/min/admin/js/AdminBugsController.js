@@ -341,7 +341,6 @@ angular.module('uguru.admin')
       if (str.length !== 0){
         return str;
       }
-      console.log("check",str)
       return 'ALL PASSED';
 
     };
