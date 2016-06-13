@@ -20,13 +20,11 @@ angular.module('uguru.admin')
     $scope.user_workflows = [];
     $scope.user_workflows = SpecContentService.getContentSpec('preApp');
     $scope.admin_tasks = SpecContentService.getContentSpecAdmin('preApp');
-    // console.log("LOG", $scope.user_workflows[4].bugs.launchBugTab())
 
     if (window.location.href.split(':8100').length > 1) {
       $timeout(function() {
-        console.log("ACTION")
         initBugs();
-      }, 1000)
+      }, 1000);
     }
 
     function countFailt(eachState)
@@ -43,17 +41,16 @@ angular.module('uguru.admin')
     function initBugs () {
       ReportService.getBug().then(function(result){
        $scope.bugReport = result;
-       console.log('result', $scope.bugReport);
       }, function(reason) {
         console.log(reason);
       });
       $scope.$watchCollection('bugReport', function(newNames, oldNames) {
-        if (!oldNames && newNames){
-          console.log('bugReport is load');
-        }
-        else if(oldNames && newNames){
-          console.log('bugReport is Update');
-        }
+        // if (!oldNames && newNames){
+        //   console.log('bugReport is load');
+        // }
+        // else if(oldNames && newNames){
+        //   console.log('bugReport is Update');
+        // }
       });
     }
     $scope.updateStatus = function(index){
@@ -71,9 +68,6 @@ angular.module('uguru.admin')
             $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed = 1;
             break;
         }
-        // console.log($scope.manualBugs[0].platforms);
-        // console.log($scope.bugReport[1].manualState);
-
         ReportService.syncReport($scope.bugReport);
     };
     $scope.closePlatform = function(){
@@ -84,7 +78,6 @@ angular.module('uguru.admin')
 
 
     $scope.openPlatform = function(stateID,key){
-        // $scope.currentStatePlatforms = state.platforms;
         var targetElem = document.querySelector('#cta-box-selected-bug');
         var modalElem = document.querySelector('#cta-modal-action-platforms');
         modalElem.classList.add('show');

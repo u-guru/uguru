@@ -88,12 +88,9 @@ function ReportService($timeout,FileService,LoadingService,$q) {
 
     function getStates(){
         if (!caches){
-            console.log("no workflow cache found")
-            initData('states','https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json')
+            initData('states','https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json');
         }
-        else
-            console.log("yes cacheg")
-        return bugReport
+        return bugReport;
     }
     return{
         initData: initData,
@@ -101,5 +98,5 @@ function ReportService($timeout,FileService,LoadingService,$q) {
         saveBug: saveBug,
         getStates: getStates,
         syncReport:syncReport
-    }
+    };
 }

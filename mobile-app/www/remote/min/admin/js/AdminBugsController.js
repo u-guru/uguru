@@ -121,7 +121,7 @@ angular.module('uguru.admin')
         }
         return false;
       }
-      console.log('CHECK', $scope.selectedBug);
+
       if (!checkTitleRepeat($scope.selectedBug.title,$scope.bugs)){
         $scope.bugs.push($scope.selectedBug);
         $scope.saveBug();
@@ -138,7 +138,7 @@ angular.module('uguru.admin')
                                  'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
       function postCallback(firstName, resp) {
           ReportService.saveBug($scope.bugReport);
-          console.log('file successfully saved', resp);          
+          // console.log('file successfully saved', resp);          
           // LoadingService.hide();
           // $timeout(function() {
           //   LoadingService.showSuccess('Saved!', 1000);
@@ -205,7 +205,6 @@ angular.module('uguru.admin')
       $scope.selectedBug = $scope.stepBugs[index];
       $scope.current.index = index;
       $scope.backupBug = angular.copy($scope.selectedBug);
-      // console.log( $scope.backupBug.step)
     };
     $scope.preStateBug = function(){
       var pIndex = $scope.current.parentIndex - 1;
@@ -478,7 +477,6 @@ angular.module('uguru.admin')
               $scope.advanceSearch.platforms.list = cache.platforms.list;
               $scope.advanceSearch.tags.list = cache.tags.list;
           }
-          console.log('Reset',$scope.advanceSearch);
         }
         for (var i = 0; i < $scope.bugReport.length; ++ i) {
           if(!$scope.bugReport[i].stateID){
@@ -500,22 +498,15 @@ angular.module('uguru.admin')
                 });
             }
           }
-          // if(!$scope.bugReport[i].envir){
-          //   $scope.bugReport[i].envir = getDefaultEnvir();
-          // }
 
         }
     }
 
     function loadUpdatedBugsJsonFile(scope) {
-      // LoadingService.showAmbig('Loading....', 10000);
-      console.log('Loading....');
-      //https://s3.amazonaws.com/uguru-admin/jason/bugs.json
-      //https://s3.amazonaws.com/uguru-admin/sync/bugs.json
       FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', callbackFunc);
       function callbackFunc(name, resp) {
         scope.bugReport = resp;
-        console.log('file successfully loaded', resp);
+        // console.log('file successfully loaded', resp);
         // LoadingService.hide()
         // $timeout(function() {
         //  LoadingService.showSuccess(resp.length + ' bugs loaded', 1000) ;
@@ -540,7 +531,6 @@ angular.module('uguru.admin')
 
     $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
-        console.log('Data is Load',newNames);
         intData();
         $scope.indexOfSection = getReportIndexByID(document.URL.split('admin/bugs/')[1]);
         // console.log($scope.indexOfSection)
