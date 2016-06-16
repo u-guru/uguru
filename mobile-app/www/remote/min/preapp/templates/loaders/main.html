@@ -1,12 +1,10 @@
-
-<div class='absolute full-xy top-0 left-0' ng-controller='SplashLoaderController as loader' id='splash-preapp-loader'>
+<div class='absolute full-xy top-0 left-0' ng-controller='SplashLoaderController as loader'>
     <div class="loader-portal-container activate"
-        on-activate="academic, null:delay-500:inject.loader-portal|on-loader-begin-enter">
+        on-activate="academic, null:delay-500:inject.loader-portal|on-loader-begin-enter, null:delay-500:inject.guru.academic|on-loader-academic-enter">
         <div class="loader-portal"
             on-init="opacity:0"
             elem-states="[loader-begin]"
             on-loader-begin-enter="portal-enter:animIn:delay-50, null:inject.portal-anim|on-portal-enter">
-
             <div class="portal">
                 <div class="portal-anim"
                     on-init="opacity:0"
@@ -29,7 +27,9 @@
                 on-init="opacity:0"
                 elem-states="[portal]"
                 on-portal-enter="portal-enter:animIn:delay-1000"></div>
-            <div class="guru academic" ng-include="'preapp/templates/loaders/guru/academic.html'"></div>
+            <div class="guru academic guru-academic" ng-include="'preapp/templates/loaders/guru/academic.html'"
+                elem-states="[loader-academic]"
+                on-loader-academic-enter="null:inject.academic-anim|on-loader-academic-anim-enter"></div>
             <div class="guru baking" ng-include="'preapp/templates/loaders/guru/baking.html'"></div>
             <div class="guru photo" ng-include="'preapp/templates/loaders/guru/photo.html'"></div>
             <div class="guru tech" ng-include="'preapp/templates/loaders/guru/tech.html'"></div>
