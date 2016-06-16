@@ -55,7 +55,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data.toggleShortcuts = false;
 
             specObj.data.toggleSettings = true;
-            specObj.data.animTools = {stage: {parentElem: parent_container}, show:true}
+            specObj.data.animTools = {stage: {parentElem: parent_container}, show:false}
             specObj.data.docs = {launch:launchDocs}
             specObj.data.mobile = {toggle:toggleMobileMode, width:400, height:768, show:false, template:specObj.template_path, url:window.location.href}
             specObj.data.open = specObj.open;
