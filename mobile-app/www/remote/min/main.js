@@ -71,6 +71,16 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     controller: 'AdminBugsController',
     templateUrl: 'admin/templates/bugs.html',
   })
+  .state('root.profiles', {
+    url:'/dev/admin/profiles/:categoryName',
+    templateUrl: 'shared/templates/guru.profile.html',
+    resolve: {categoryName: function($stateParams) {
+      return $stateParams.categoryName;
+    }},
+    controller: function($scope, categoryName, CategoryService) {
+      $scope.category = CategoryService.getLocalCategories().filter(function(el) {return el.name === categoryName})[0];
+    }
+  })
   .state('root.jeselle', {
     url:'/dev/jeselle',
     templateUrl: 'jeselle/templates/index.html'

@@ -8,7 +8,7 @@ function ContentService(Category) {
     var STATIC_BASE = "https://uguru-rest-test.herokuapp.com/static/remote/";
 
     var splashCategoryOptions = {
-        Academic: {
+        academic: {
             madlib: {
                 _class: "academic-madlib",
                 template: {
@@ -22,7 +22,7 @@ function ContentService(Category) {
                 blank_two_options: ['paper', 'speech', 'report', 'project']
             }
         },
-        Household: {
+        household: {
             madlib: {
                 _class: "household-madlib",
                 template: {
@@ -36,7 +36,7 @@ function ContentService(Category) {
                 blank_two_options: ["the dishes", "vacuuming", "cleaned the bathroom", "ironed"]
             }
         },
-        Tech: {
+        tech: {
             madlib: {
                 _class: "tech-madlib",
                 template: {
@@ -50,7 +50,7 @@ function ContentService(Category) {
                 blank_two_options: ['virus', '1hr battery life', 'replacement', 'charger'],
             }
         },
-        Photography: {
+        photography: {
             madlib: {
                 _class: 'photography-madlib',
                 template: {
@@ -64,7 +64,7 @@ function ContentService(Category) {
                 blank_two_options: ['virus', '1hr battery life', 'replacement', 'charger']
             }
         },
-        Baking: {
+        baking: {
             madlib: {
                 _class: 'bakery-madlib',
                 template: {

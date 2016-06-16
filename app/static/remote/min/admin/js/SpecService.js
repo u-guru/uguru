@@ -27,6 +27,11 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
           if ((window.location.href.split('/dev/').length === 1) && window.location.href.split('codepen').length === 1) {
                 return;
             }
+
+            if (!scope.spec) {
+                scope.spec = {data: {}};
+            }
+
             //checks codepen environment
             // if (window.location.href.split('codepen.io').length > 1) return;
             var specObj = getSpec(param, template_path, ctrl_path, css_path);
@@ -50,6 +55,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data.toggleShortcuts = false;
 
             specObj.data.toggleSettings = true;
+            specObj.data.animTools = {stage: {parentElem: parent_container}, show:true}
             specObj.data.docs = {launch:launchDocs}
             specObj.data.mobile = {toggle:toggleMobileMode, width:400, height:768, show:false, template:specObj.template_path, url:window.location.href}
             specObj.data.open = specObj.open;
@@ -198,6 +204,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                 }
                 var parent_elem = document.querySelector(parent_container);
                 var spec_elem = parent_elem.querySelector(parent_container + ' > div[data]');
+                var hasFullXy = (' ' + parent_elem.className + ' ').indexOf(' ' + 'full-xy' + ' ') > -1;
+
                 if (scope.spec.data.mobile.show) {
                     if (!scope.spec.data.mobile.initDimensions) {
                         var computedDimensionsView = window.getComputedStyle(parent_elem.parentNode);
@@ -215,8 +223,13 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
 
                     spec_elem.style.width = scope.spec.data.mobile.initDimensions.devTools.width;
                     spec_elem.style.left = (0 - parent_elem.getBoundingClientRect().left) + 'px';
+
                     spec_elem.classList.remove('full-x', 'left-0', 'top-0');
+                    if (hasFullXy) {
+                        parent_elem.classList.remove('full-xy');
+                    }
                     spec_elem.classList.remove('relative');
+
                     var mobileSpecOptionsBar = spec_elem.querySelector('#spec-mobile-options');
                     if (mobileSpecOptionsBar) {
                         mobileSpecOptionsBar.classList.add('absolute', 'left-0', 'full-x');
@@ -243,6 +256,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                     // spec_elem.classList.add('full-x', 'bottom-0');
                     spec_elem.classList.add('full-x', 'left-0', 'bottom-0', 'relative');
                     spec_elem.style.width = '';
+                    if (hasFullXy) {
+                        parent_elem.classList.add('full-xy');
+                    }
                     parent_elem.style.overflow = 'hidden';
                     parent_elem.classList.remove('mobile');
                     var mobileSpecOptionsBar = spec_elem.querySelector('#spec-mobile-options');
@@ -688,5 +704,6 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             return getSpecObj('98f138f534428eb8af27ea5c2b6944ef', template_url, ctrl_url, css_path)
         }
     }
+
 
 }

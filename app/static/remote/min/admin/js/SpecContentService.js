@@ -30,6 +30,46 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 ready:true
               },
               {
+                title: 'Academic Guru Profile',
+                controller: 'GuruProfileController',
+                routes: getRoutes('dev/admin/profiles/academic', 'shared/templates/guru.profile.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
+              },
+              {
+                title: 'Tech Guru Profile',
+                controller: 'GuruProfileController',
+                routes: getRoutes('dev/admin/profiles/tech', 'shared/templates/guru.profile.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
+              },
+              {
+                title: 'Baking Guru Profile',
+                controller: 'GuruProfileController',
+                routes: getRoutes('dev/admin/profiles/baking', 'shared/templates/guru.profile.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
+              },
+              {
+                title: 'Household Guru Profile',
+                controller: 'GuruProfileController',
+                routes: getRoutes('dev/admin/profiles/household', 'shared/templates/guru.profile.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
+              },
+              {
+                title: 'Photography Guru Profile',
+                controller: 'GuruProfileController',
+                routes: getRoutes('dev/admin/profiles/photo', 'shared/templates/guru.profile.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
+              },
+              {
                 title: 'Nav Controller',
                 controller: 'NavController',
                 routes: getRoutes('/dev/nav/', 'preapp/templates/nav.html', 'preapp/js/SplashNavController.js'),
