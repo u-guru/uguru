@@ -80,7 +80,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     templateUrl: 'gabrielle/templates/index.html',
   })
   .state('root.demos', {
-    url:'/demos',
+    url:'/dev/demos',
     templateUrl: 'admin/templates/demos.html',
   })
   .state('root.loaders', {

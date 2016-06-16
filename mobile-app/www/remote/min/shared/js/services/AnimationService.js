@@ -17,7 +17,8 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
         applyAnimateInDirective: applyAnimateInDirective,
         applyAnimateOutDirective: applyAnimateOutDirective,
         initCSSAnimation: initCSSAnimation,
-        getCSSAnimationFromClassName: getCSSAnimationFromClassName
+        getCSSAnimationFromClassName: getCSSAnimationFromClassName,
+        getAnimationObjFromAnimationName: getAnimationObjFromAnimationName
 
     }
 
@@ -222,16 +223,20 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
     function animate(elem, css_class, anim_obj, delay) {
       if (delay) {
         $timeout(function() {
+          console.log('DELAY: ' + delay + ' applying w/ delay', elem, css_class, anim_obj, 'n\n\n\n');
+          prefixedEventListener(elem,"AnimationStart", animationStartListener);
+          prefixedEventListener(elem,"AnimationEnd", animationEndListener);
           elem.classList.add('animated', css_class);
         }, delay)
       } else {
+        prefixedEventListener(elem,"AnimationStart", animationStartListener);
+        prefixedEventListener(elem,"AnimationEnd", animationEndListener);
         elem.classList.add('animated', css_class);
       }
-      prefixedEventListener(elem,"AnimationStart", animationStartListener);
-      prefixedEventListener(elem,"AnimationEnd", animationEndListener);
+
       function animationStartListener(e)
       {
-        console.log('animation has began');
+        // console.log('animation has began');
         var lastKFSorted = getLastKFsorted(anim_obj.cssRules)
         var formattedKFCssText = lastKFSorted.cssText.split('{')[1].replace('}', '').trim();
         elem.style.cssText +=formattedKFCssText;
@@ -257,7 +262,7 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
         return parseFloat(kf_b.keyText.replace("%")) - parseFloat(kf_b.keyText.replace("%"))
       }).reverse()
       if (keyFrames.length) {
-        console.log('last keyframe', keyFrames[0]);
+        // console.log('last keyframe', keyFrames[0]);
         return keyFrames[0]
       }
     }

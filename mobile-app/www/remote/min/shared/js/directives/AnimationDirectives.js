@@ -92,7 +92,7 @@ angular.module('uguru.shared.directives')
 
       var pathElem = document.querySelector(elementToTraceSelector);
       var traceParent = document.querySelector(elementToAppendChild);
-      var parentDrawShape = findParentDrawShape(pathElem);
+      var parentDrawShape = pathElem && findParentDrawShape(pathElem);
 
       scope.$watch(function() {
           return element.attr('class');
@@ -103,8 +103,13 @@ angular.module('uguru.shared.directives')
         if (new_class.indexOf('trace-activate') > -1) {
           element[0].classList.remove('trace-activate');
           if (!pathElem || !traceParent || !parentDrawShape) {
-            console.log('ERROR: could not find elements with selector:', !pathElem && elementToTraceSelector, !traceParent && elementToAppendChild);
-            return;
+            var pathElem = document.querySelector(elementToTraceSelector);
+            var traceParent = document.querySelector(elementToAppendChild);
+            var parentDrawShape = findParentDrawShape(pathElem);
+            if (!pathElem || !traceParent || !parentDrawShape) {
+              console.log('ERROR: could not find elements with selector:', !pathElem && elementToTraceSelector, !traceParent && elementToAppendChild);
+              return;
+            }
           }
           var animName = options.anim_name;
           var elemOffset = SVGService.getShapeWidthHeight(element[0]).width;
@@ -134,11 +139,58 @@ angular.module('uguru.shared.directives')
     }
   }
     function findParentDrawShape(elem) {
+
         if (elem.nodeName === 'svg' || elem.hasAttribute('draw-shapes')) {
             return elem.hasAttribute('draw-shapes') && elem;
         } else {
           return findParentDrawShape(elem.parentNode);
         }
+    }
+}])
+.directive('kf', ['$timeout', 'SVGService', function ($timeout, SVGService) {
+  return {
+      restrict: 'A',
+      scope: {
+            state: '=kfMode',
+      },
+      link: function(scope, element, attr) {
+        scope.$watch('state', function(newValue, oldValue){
+
+          var requestFrameHandle;
+          if (!scope.state) {
+            scope.state = 'stop';
+            window.cancelAnimationFrame(requestFrameHandle);
+          } else if (scope.state === 'paused') {
+            window.cancelAnimationFrame(requestFrameHandle);
+          } else if (scope.state === 'play' || scope.state === 'resume') {
+            drawShape();
+            if (!requestFrameHandle) {
+              requestFrameHandle = 0;
+            }
+
+            var parentWidth = element[0].parentNode.getBoundingClientRect.width;
+            var total_frames = ((parseInt(attr.kfDuration.replace('ms', ''))/1000).toFixed(2) * 60) || 60;
+            var current_frame = total_frames * (parseInt(attr.cx.replace('%', ''))/100.0).toFixed(2) || 0;
+
+            function drawShape() {
+              var progress = current_frame/total_frames;
+                if (progress >= 1) {
+                   scope.state = 'stop';
+                   element[0].style.cx = '0%';
+                   window.cancelAnimationFrame(requestFrameHandle);
+                }
+                else if (scope.state === 'paused') {
+                    window.cancelAnimationFrame(requestFrameHandle);
+                }
+                else {
+                  current_frame++;
+                  element[0].style.cx = (progress * 100) + '%';
+                  requestFrameHandle = window.requestAnimationFrame(drawShape);
+                }
+              }
+          }
+        })
+      }
     }
 }])
 .directive('drawShapes', ['$timeout', 'SVGService', function ($timeout, SVGService) {
@@ -754,8 +806,12 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                   elemClassAnimDict[attrName] = animationObj;
                 }
               }
+              if (!element.attr('class')) {
 
+                element[0].setAttribute('class', '');
+              }
               scope.$watch(function() {
+
                 return element.attr('class');
               }, function(newValue, oldValue) {
                 for (var i = 0; i < processedElemStates.length; i++) {
@@ -783,7 +839,7 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                       AnimationService.animateOut(element[0], elemStateClass, elemArgDict.delay);
                     } else if (elemArgDict.animate) {
 
-                      console.log(elemClassAnimDict);
+                      console.log(element[0], elemArgDict, elemStateClass, elemClassAnimDict);
                       AnimationService.animate(element[0], elemStateClass, elemClassAnimDict[processedElemStates[i]], elemArgDict.delay || 0);
                     }
                     else if (elemStateClass && elemStateClass.length && elemStateClass !== 'null') {
