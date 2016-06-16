@@ -27,6 +27,11 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
           if ((window.location.href.split('/dev/').length === 1) && window.location.href.split('codepen').length === 1) {
                 return;
             }
+
+            if (!scope.spec) {
+                scope.spec = {data: {}};
+            }
+
             //checks codepen environment
             // if (window.location.href.split('codepen.io').length > 1) return;
             var specObj = getSpec(param, template_path, ctrl_path, css_path);
@@ -50,6 +55,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data.toggleShortcuts = false;
 
             specObj.data.toggleSettings = true;
+            specObj.data.animTools = {stage: {parentElem: parent_container}, show:true}
             specObj.data.docs = {launch:launchDocs}
             specObj.data.mobile = {toggle:toggleMobileMode, width:400, height:768, show:false, template:specObj.template_path, url:window.location.href}
             specObj.data.open = specObj.open;
@@ -698,5 +704,6 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             return getSpecObj('98f138f534428eb8af27ea5c2b6944ef', template_url, ctrl_url, css_path)
         }
     }
+
 
 }

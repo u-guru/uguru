@@ -18,8 +18,8 @@ function RootService($timeout, $state) {
         applyAnimateOutDirective: applyAnimateOutDirective,
         initCSSAnimation: initCSSAnimation,
         getBaseUrl: getBaseUrl,
-        getCSSAnimationFromClassName: getCSSAnimationFromClassName
-
+        getCSSAnimationFromClassName: getCSSAnimationFromClassName,
+        getBrowserPrefix:getBrowserPrefix
     }
 
     function getBrowserPrefix() {
