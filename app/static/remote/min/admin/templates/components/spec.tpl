@@ -1,4 +1,5 @@
 <div class='spec-template-wrapper high-z-index' style='min-height:10% !important;' eval-on-init="spec.ready()">
+    <anim-tools ng-class="{'animated slideInDown':spec.animTools.show, 'animated slideOutUp':!spec.animTools.show}" active="spec.animTools.show" ng-model="spec.animTools.stage"> </anim-tools>
     <div id="dev-docs" ng-if="false && spec.toggleDocs" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
         <div style='height: calc(100% - 132px) !important;' class='top-0 left-0 absolute full-xy bg-cerise animated slideInDown' ng-class="{'z-index-1000': spec.toggleDocs}" >
             <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">

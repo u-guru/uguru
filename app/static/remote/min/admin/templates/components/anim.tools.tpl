@@ -1,4 +1,4 @@
-<div class='fixed top-0 left-0 full-x' id='admin-anim-tools' ng-if='false'>
+<div class='fixed top-0 left-0 full-x' id='admin-anim-tools'>
     <!-- Top bar -->
     <div ng-if='stage.status.active' class='absolute full-x p10xy weight-900 text-center txt-white z-index-1000'>
         {{stage.status.msg}}

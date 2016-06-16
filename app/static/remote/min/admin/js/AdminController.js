@@ -1288,7 +1288,6 @@ angular.module('uguru.admin')
             function toggleSettings() {
                 $scope.player.settings = !$scope.player.settings;
             }
-
             function constructAnimationString(animation) {
                 var attr = animation.attr;
                 if (!attr) {
@@ -1319,7 +1318,6 @@ angular.module('uguru.admin')
                     if (indexAnimation.active) {
                         count += 1
                     }
-
                 }
                 return count;
             }
