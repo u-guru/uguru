@@ -132,6 +132,12 @@
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white">{{selectedBug.impact_file}}</span>
 				</li> -->
 				<li class="flex-stretch">
+
+					<span class="block bg-rocket p10y-p15x txt-18 semibold" ng-class="{'radius-2-left': !isEditMode, 'radius-2': isEditMode}">Speed</span>
+					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selectedBug.speed}}
+					</span>
+				</li>
+				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">file&nbsp;names</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode'>{{selectedBug.file_names}}</span>
 					<input class="full-x flex-center-vertical p15x radius-2-right txt-18 semibold" style="height: 40px;"  ng-model='selectedBug.file_names' ng-if='isEditMode' ></input>
