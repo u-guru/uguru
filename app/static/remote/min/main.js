@@ -76,10 +76,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     templateUrl: 'shared/templates/guru.profile.html',
     resolve: {categoryName: function($stateParams) {
       return $stateParams.categoryName;
-    }},
-    controller: function($scope, categoryName, CategoryService) {
-      $scope.category = CategoryService.getLocalCategories().filter(function(el) {return el.name === categoryName})[0];
-    }
+    }}
   })
   .state('root.jeselle', {
     url:'/dev/jeselle',

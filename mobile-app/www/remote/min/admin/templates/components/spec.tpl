@@ -1,6 +1,6 @@
 <div class='spec-template-wrapper high-z-index' style='min-height:10% !important;' eval-on-init="spec.ready()">
-    <anim-tools ng-if='spec.animTools.stage' ng-class="{'animated slideInDown':spec.animTools.show, 'animated slideOutUp':!spec.animTools.show}" active="spec.animTools.show" ng-model="spec.animTools.stage"> </anim-tools>
-    <div id="dev-docs" ng-if="false && spec.toggleDocs" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
+    <anim-tools ng-if='spec.animTools.show' ng-class="{'animated slideInDown':spec.animTools.show, 'animated slideOutUp':!spec.animTools.show}" active="spec.animTools.show" ng-model="spec.animTools.stage"> </anim-tools>
+    <div id="dev-docs" ng-if="spec.toggleDocs" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
         <div style='height: calc(100% - 132px) !important;' class='top-0 left-0 absolute full-xy bg-cerise animated slideInDown' ng-class="{'z-index-1000': spec.toggleDocs}" >
             <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">
                 <div class="bg-slate txt-center">
@@ -202,10 +202,11 @@
         <ul id="dev-toolbar-options" class='bg-cobalt-25p flex-center-vertical-space-between-wrap p15-grid'>
             <li class="flex">
                 <!-- <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a> -->
-                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.spec()'>Spec</button>
+                <button ng-if='false' class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.spec()'>Spec</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.openGDoc()'>gDoc</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.docs.launch()'>Docs</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.settings()'>Settings</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.record()'>Record</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.shortcuts()'>Keyboard</button>
                 <button ng-if='false' class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='spec.toggleDocSearch = !spec.toggleDocSearch'>Search</button>
             </li>
