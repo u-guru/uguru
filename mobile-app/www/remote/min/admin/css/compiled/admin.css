@@ -30,12 +30,18 @@
     background: #4e5371; }
   .component-item > a:nth-child(1):hover h1, .component-item > a:nth-child(1):focus h1 {
     background: #43cb9d !important; }
+    .component-item > a:nth-child(1):hover h1 span, .component-item > a:nth-child(1):focus h1 span {
+      background: rgba(255, 255, 255, 0.2) !important; }
   .component-item > a:nth-child(1):hover ~ div, .component-item > a:nth-child(1):focus ~ div {
     border-color: #43cb9d !important; }
   .component-item > a:nth-child(1):active h1 {
     background: #2BB3B8 !important; }
+    .component-item > a:nth-child(1):active h1 span {
+      background: rgba(255, 255, 255, 0.2) !important; }
   .component-item > a:nth-child(1):active ~ div {
     border-color: #2BB3B8 !important; }
+.component-item.short > div:nth-child(3) {
+  height: 200px; }
 
 .component-item-nav {
   width: 100%; }

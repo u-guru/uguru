@@ -46,6 +46,9 @@
 		&:hover, &:focus {
 			h1 {
 				background: $moxie!important;
+				span {
+					background: rgba(white, .2)!important;
+				}
 			}
 			~ div {
 				border-color: $moxie!important;
@@ -54,9 +57,19 @@
 		&:active {
 			h1 {
 				background: $robin!important;
+				span {
+					background: rgba(white, .2)!important;
+				}
 			}
 			~ div {
 				border-color: $robin!important;
+			}
+		}
+	}
+	&.short {
+		> div {
+			&:nth-child(3) {
+				height: 200px;
 			}
 		}
 	}
