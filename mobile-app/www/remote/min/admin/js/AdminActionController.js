@@ -119,7 +119,7 @@ angular.module('uguru.admin')
           return parseFloat(digit.toFixed(2));
         }
       }
-      return null;
+      return " - ";
     };
 
 

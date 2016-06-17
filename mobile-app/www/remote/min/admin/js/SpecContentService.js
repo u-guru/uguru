@@ -35,7 +35,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 controller: 'GuruProfileController',
                 routes: getRoutes('dev/admin/profiles/academic', 'shared/templates/guru.profile.html'),
                 spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
+                bugs: getBugInfo('academic'),
                 ready:true
               },
               {
