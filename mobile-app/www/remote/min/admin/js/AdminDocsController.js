@@ -7,7 +7,7 @@ angular.module('uguru.admin')
     var docs = this;
 
     docs.directives = {};
-    docs.main  = {index: 1, options: ["Notes", "CSS+Classes", "Components", "Directives", "Status/Tools"]};
+    docs.main  = {index: 2, options: ["Notes", "Utility", "Components", "Directives", "Status/Tools"]};
 
 
 

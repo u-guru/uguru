@@ -14,11 +14,29 @@
 }
 
 .component-item {
-	> div:nth-child(2) {
-		height: 200px;
-		border-top: 0;
-		border-color: mix($cobalt, $slate, 25%);
-		background: lighten($slate, 25%);
+	> div {
+		&:nth-child(2) {
+			border-top: 0;
+			border-bottom: 0;
+			border-color: mix($cobalt, $slate, 25%);
+			background: lighten(mix($cobalt, $slate, 25%), 20%);
+		}
+		&:nth-child(3) {
+			height: 400px;
+			border-top: 0;
+			border-color: mix($cobalt, $slate, 25%);
+			background: lighten($slate, 25%);
+			> div {
+				position: relative;
+				textarea, .fix-abs {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: calc(100% - 30px);
+				}
+			}
+		}
 	}
 	> a:nth-child(1) {
 		display: block;
@@ -29,7 +47,7 @@
 			h1 {
 				background: $moxie!important;
 			}
-			+ div {
+			~ div {
 				border-color: $moxie!important;
 			}
 		}
@@ -37,14 +55,46 @@
 			h1 {
 				background: $robin!important;
 			}
-			+ div {
+			~ div {
 				border-color: $robin!important;
 			}
 		}
 	}
-	&.large {
-		> div:nth-child(2) {
-			min-height: 300px;
+}
+.component-item-nav {
+	width: 100%;
+	ul {
+		@include flex;
+		background: lighten($slate, 35%);
+		width: 100%;
+	}
+	a {
+		display: block;
+		text-align: center;
+		padding: 5px 10px;
+		background: lighten($slate, 35%);
+		color: white;
+		font-size: 16px;
+		font-weight: 600;
+		&:hover, &:focus {
+			background: lighten($slate, 20%);
+		}
+		&:active, &.active {
+			background: $moxie;
+		}
+	}
+	&.states {
+		ul {
+			background: lighten($slate, 20%);
+		}
+		a {
+			background: lighten($slate, 20%);
+			&:hover, &:focus {
+				background: lighten($slate, 15%);
+			}
+			&:active, &.active {
+				background: $robin;
+			}
 		}
 	}
 }
