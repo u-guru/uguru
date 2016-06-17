@@ -50,10 +50,10 @@
                             <user-icon url="member.profile_url" size="36"> </user-icon>
                         </div>
                     </li>
-                    <li ng-if='root.local'>
+                    <li >
                         <button class="bg-moxie height-36 txt-18 radius-2" ng-click='flow.routes.staging.launch()'>Master</button>
                     </li>
-                    <li>
+                    <li ng-if='root.local'>
                         <button class="bg-robin height-36 txt-18 radius-2" ng-click='flow.routes.local.launch()'>Local</button>
                     </li>
                     <li ng-if='false'>

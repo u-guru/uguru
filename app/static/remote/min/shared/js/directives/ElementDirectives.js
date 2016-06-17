@@ -19,6 +19,42 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.
+directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($timeout, AnimationService, $parse) {
+      return {
+          restrict: 'A',
+          link: function(scope, element, attr) {
+              element.ready(function(){
+                console.log(element[0].nodeName, 'is ready');
+                scope.$apply(function(){
+                  var func = $parse(attr.evalOnInit);
+                  func(scope);
+                })
+              })
+          }
+      }
+}])
+.directive('classOnInit', ['$timeout', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      element.ready(function(){
+
+        if (attr.classOnInit && attr.classOnInit.length) {
+          var args = attr.classOnInit.split(':');
+          if (args.length > 1 && args[1].split('delay').length > 1) {
+            var delay = parseInt(args[1].replace('delay-', ''));
+            var className = args[0];
+            console.log('initializing elem after', delay, 'oninit');
+            $timeout(function() { element[0].classList.add(className); }, delay)
+          }
+          element[0].classList.add(attr.classOnInit)
+        }
+        return;
+      })
+    }
+  }
+}])
 .directive('parallaxParent', ['$state', '$timeout', function ($state, $timeout) {
     // TODO --> provide support bool | integer
     return {

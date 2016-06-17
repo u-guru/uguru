@@ -3,11 +3,10 @@ angular
 .factory("FileService", [
   'LoadingService',
   'Restangular',
-  'DevToolService',
   FileService
     ]);
 
-function FileService(LoadingService, Restangular, DevToolService) {
+function FileService(LoadingService, Restangular) {
     var DropzoneDict = {}
     var dropZoneUiEvents = ['drop', 'dragstart', 'dragend', 'dragenter', 'dragover', 'dragleave']; //event first param
     var dropZoneFileEvents = ["totaluploadprogress", "queuecomplete", "maxfilesreached", "complete", "success", "uploadprogress", "thumbnail"]
@@ -87,7 +86,7 @@ function FileService(LoadingService, Restangular, DevToolService) {
                     console.log(indexFile.name, resp)
                     resp.full_template_url = splash_files[0].url;
                     console.log(resp.full_template_url);
-                    DevToolService.initCurrentFile(_scope, resp);
+                    // DevToolService.initCurrentFile(_scope, resp);
                     _scope.status.show = false;
                 };
                 xhr.send();

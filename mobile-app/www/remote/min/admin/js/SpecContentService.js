@@ -17,7 +17,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
             "workflows":[
               {
                 title: 'App Loader Bakery',
-                routes: getRoutes('dev/splash/loaders', 'preapp/templates/loaders/baking.html', 'preapp/css/scss/partials/_bakery-loader.scss'),
+                routes: getRoutes('dev/splash/loaders', 'preapp/templates/loaders/main.html', 'preapp/css/scss/loader.scss'),
                 spec: getSpec('loader'),
                 bugs: getBugInfo('loader'),
                 ready:true
@@ -26,6 +26,46 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 title: 'Madlib Selection',
                 controller: 'SplashMadlibController',
                 routes: getRoutes('dev/splash/madlib', 'preapp/templates/splash.madlib.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
+              },
+              {
+                title: 'Academic Guru Profile',
+                controller: 'GuruProfileController',
+                routes: getRoutes('dev/admin/profiles/academic', 'shared/templates/guru.profile.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
+              },
+              {
+                title: 'Tech Guru Profile',
+                controller: 'GuruProfileController',
+                routes: getRoutes('dev/admin/profiles/tech', 'shared/templates/guru.profile.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
+              },
+              {
+                title: 'Baking Guru Profile',
+                controller: 'GuruProfileController',
+                routes: getRoutes('dev/admin/profiles/baking', 'shared/templates/guru.profile.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
+              },
+              {
+                title: 'Household Guru Profile',
+                controller: 'GuruProfileController',
+                routes: getRoutes('dev/admin/profiles/household', 'shared/templates/guru.profile.html'),
+                spec: getSpec('madlib'),
+                bugs: getBugInfo('User selects a splash tag'),
+                ready:true
+              },
+              {
+                title: 'Photography Guru Profile',
+                controller: 'GuruProfileController',
+                routes: getRoutes('dev/admin/profiles/photo', 'shared/templates/guru.profile.html'),
                 spec: getSpec('madlib'),
                 bugs: getBugInfo('User selects a splash tag'),
                 ready:true

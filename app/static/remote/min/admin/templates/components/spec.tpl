@@ -1,5 +1,6 @@
-<div class='high-z-index' style='min-height:10% !important;'>
-    <div id="dev-docs" ng-if="spec.toggleDocs" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
+<div class='spec-template-wrapper high-z-index' style='min-height:10% !important;' eval-on-init="spec.ready()">
+    <anim-tools ng-class="{'animated slideInDown':spec.animTools.show, 'animated slideOutUp':!spec.animTools.show}" active="spec.animTools.show" ng-model="spec.animTools.stage"> </anim-tools>
+    <div id="dev-docs" ng-if="false && spec.toggleDocs" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
         <div style='height: calc(100% - 132px) !important;' class='top-0 left-0 absolute full-xy bg-cerise animated slideInDown' ng-class="{'z-index-1000': spec.toggleDocs}" >
             <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">
                 <div class="bg-slate txt-center">
@@ -130,49 +131,120 @@
             </ul>
         </div>
     </div>
-    <div ng-if='spec.mobile.show' class='top-0 left-0 bg-smoke flex-wrap-center fixed bg-slate flex-wrap-center full-xy animated slideInDown z-index-2000' id='dev-bottom-bar' style='height: calc(100% - 132px);'>
+    <div ng-if='false' class='top-0 left-0 bg-smoke flex-wrap-center fixed bg-slate flex-wrap-center full-xy animated slideInDown z-index-2000' id='dev-bottom-bar' style='height: calc(100% - 132px);'>
         <div class='bg-slate' ng-include="spec.mobile.template" style='width:{{spec.mobile.width}}px !important; height: {{spec.mobile.height}}px !important;' class='animated bounceInDown relative' id='mobile-spec-container' > </div>
     </div>
     <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate animated slideInUp' ng-if="spec.toggleDev">
+        <ul id='dev-bar-settings' class="flex-center-vertical full-x overflow-x no-scrollbar animated flex-wrap-center flex-stretch" ng-if='spec.showSettings' ng-class='{"lightSpeedIn": spec.showSettings}'>
+            <li class='p15-grid text-center weight-500 uppercase txt-2 bg-transparent flex-wrap-center bg-cobalt-30p'>
+                Settings
+            </li>
+            <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-30p'>
+                <div class='p10x'>Auto Apply State</div>
+                <div>
+                    <checkbox value='spec.settings.cache.autoApplyState' on-change="spec.settings.updateProperty">
+                    </checkbox>
+                </div>
+            </li>
+            <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-30p'>
+                <div class='p10x'>Auto Show Mobile</div>
+                <div>
+                    <checkbox value='spec.settings.cache.autoShowMobile' on-change="spec.settings.updateProperty">
+                    </checkbox>
+                </div>
+            </li>
+            <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-30p'>
+                <div class='p10x'>Auto Show ToolBar</div>
+                <div>
+                    <checkbox value='spec.settings.cache.autoShowDevBar' on-change="spec.settings.updateProperty">
+                    </checkbox>
+                </div>
+            </li>
+            <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-50p'>
+                <div>
+                    <span class='p10x'>Default State</span>
+                </div>
+                <div>
+                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-if='spec.settings.cache.defaultState.index'>{{spec.stateTags[spec.settings.cache.defaultState.index].title}}</button>
+                </div>
+            </li>
+            <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-50p'>
+                <div>
+                    <span class='p10x'>Default Delay</span>
+                </div>
+                <div>
+                    <input ng-change="spec.settings.updateProperty()" ng-model="spec.settings.cache.autoApplyDelay"> </input>
+                </div>
+            </li>
+            <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-50p'>
+                <div>
+                    <span class='p10x'>Clear Cache</span>
+                </div>
+                <div>
+                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.settings.clear()'>clear</button>
+                </div>
+            </li>
+        </ul>
+        <ul id='dev-bar-shortcuts' class="bg-cobalt-30p flex-center-vertical p15-grid full-x animated overflow-x no-scrollbar" ng-if='spec.showShortcuts' ng-class='{"lightSpeedIn": spec.showShortcuts}'>
+            <li class='p15-grid text-center weight-500 bg-charcoal uppercase txt-2  flex-wrap-center'>
+                Keyboard shortcuts
+            </li>
+            <li class='p15-grid' ng-repeat='shortcut in spec.shortcuts_list' ng-click='spec.stateTagClicked(state_tag, $index)'>
 
+                <span class='txt-1 weight-500'>Press <span class='weight-900 txt-5'>{{shortcut.key}}</span> to {{shortcut.action}}</span>
+            </li>
+        </ul>
         <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
-            <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)'>
-                <button class="height-36 txt-18 bg-robin radius-2 normal block">{{state_tag.title}}</button>
+            <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)' on-hold="spec.settings.updateDefaultState($event, $index, state_tag)">
+                <button ng-class="{'bg-robin':spec.settings.cache.defaultState.index === $index }" class="height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
             </li>
         </ul>
         <ul id="dev-toolbar-options" class='bg-cobalt-25p flex-center-vertical-space-between-wrap p15-grid'>
             <li class="flex">
                 <!-- <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a> -->
-                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggleSpec = !spec.toggleSpec'>Spec</button>
-                <button class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='spec.openGDoc()'>gDoc</button>
-                <button class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='spec.toggles.docs()'>Docs</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.spec()'>Spec</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.openGDoc()'>gDoc</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.docs.launch()'>Docs</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.settings()'>Settings</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.shortcuts()'>Keyboard</button>
                 <button ng-if='false' class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='spec.toggleDocSearch = !spec.toggleDocSearch'>Search</button>
             </li>
             <li class="flex">
-                <!-- <li class='flex-wrap-center ugrid-2' ng-class='{"bg-azure": dev.toggleSpec}'> -->
                 <div class="m15right" ng-if='spec.codepenData'>
                     <form action="https://codepen.io/pen/define" method="POST" target="_blank">
                         <input type="hidden" name="data" value='{{spec.codepenData}}'>
                         <input class="bg bg-moxie txt-18 height-36 semibold radius-2 p15x" type="submit" id='codepen-input' value="Edit in Codepen">
                     </form>
                 </div>
+                <div class="m15right" ng-if='spec.initCodepenData'>
+                    <form action="https://codepen.io/pen/define" method="POST" target="_blank">
+                        <input type="hidden" name="data" value='{{spec.initCodepenData}}'>
+                        <input class="bg bg-moxie txt-18 height-36 semibold radius-2 p15x" type="submit" id='codepen-input' value="+ Uguru CP">
+                    </form>
+                </div>
                 <div>
                     <button class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='spec.open()'>CP Spec</button>
                 </div>
             </li>
-            <li class='opacity-50 flex-wrap-center'>
-                <div>
-                    <button class='full-x bg-moxie txt-18 height-36 semibold' ng-click='spec.mobile.toggle()'>
+            <li class='opacity-50 flex-wrap-center' id='spec-mobile-options'>
+                <div class='ugrid-5'>
+                    <button ng-class='{"full-x bg-moxie":!spec.mobile.show, "bg-auburn":spec.mobile.show}'class='txt-14 height-36 semibold' ng-click='spec.mobile.toggle()'>
                         <span ng-if='!spec.mobile.show'>Mobile</span>
-                        <span ng-if='spec.mobile.show'>Close Mobile</span>
-                        <span ng-if='spec.mobile.show'>iPhone 4</span>
-                        <span ng-if='spec.mobile.show'>iPhone 5</span>
-                        <span ng-if='spec.mobile.show'>iPhone 6</span>
-                        <span ng-if='spec.mobile.show'>iPhone 6s</span>
+                        <span ng-if='spec.mobile.show'>Desktop</span>
+                    </button>
+                    <button ng-if='spec.mobile.show' ng-class="{'bg-moxie': spec.mobile.height === 480}" class='txt-14 bg-slate height-36 semibold' ng-click='spec.mobile.height = 480; spec.mobile.width = 320; spec.mobile.toggle(true)'>iPhone 4
+                    </button>
+                    <button ng-if='spec.mobile.show' ng-class="{'bg-moxie': spec.mobile.height === 568}" class='bg-slate txt-14 height-36 semibold' ng-click='spec.mobile.height = 568; spec.mobile.width = 320;spec.mobile.toggle(true)'>
+                        iPhone 5
+                    </button>
+                    <button ng-if='spec.mobile.show' ng-class="{'bg-moxie': spec.mobile.height === 667}" class='txt-14 bg-slate height-36 semibold' ng-click='spec.mobile.height = 667; spec.mobile.width = 375;spec.mobile.toggle(true)'>
+                        iPhone 6
+                    </button>
+                    <button ng-if='spec.mobile.show' ng-class="{'bg-moxie': spec.mobile.height === 736}" class='txt-14 bg-slate height-36 semibold' ng-click='spec.mobile.height = 736; spec.mobile.width = 414;spec.mobile.toggle(true)'>iPhone 6
                     </button>
                 </div>
-                <input class="m15left radius-2 height-36 p15x txt-center" type='text' placeholder="height" size="4" ng-model='spec.mobile.height' />
-                <input class="m15left radius-2 height-36 p15x txt-center" type='text' placeholder="width" size="4" ng-model="spec.mobile.width" />
+                <input class="m15left radius-2 height-36 p15x txt-center" type='text' placeholder="height" size="4" ng-change='spec.mobile.height.length > 2 && spec.mobile.toggle(true)' ng-model='spec.mobile.height' />
+                <input class="m15left radius-2 height-36 p15x txt-center" type='text' placeholder="width" size="4" ng-change='spec.mobile.width.length > 2 && spec.mobile.toggle(true)' ng-model="spec.mobile.width" />
             </li>
             <!-- <li class='opacity-50' style="width: 300px;">
                 <dropdown class="states-dropdown reverse hide-header height-36 dropdown-moxie full-x" ng-model="spec.statesDropdown"></dropdown>

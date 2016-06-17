@@ -61,10 +61,25 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     controller: 'AdminController',
     templateUrl: 'admin/templates/index.html',
   })
+  .state('root.admin-docs', {
+    url:'/admin/docs',
+    controller: 'AdminDocsController as docs',
+    templateUrl: 'admin/templates/docs/docs.html',
+  })
   .state('root.bugs', {
     url:'/admin/bugs/:id',
     controller: 'AdminBugsController',
     templateUrl: 'admin/templates/bugs.html',
+  })
+  .state('root.profiles', {
+    url:'/dev/admin/profiles/:categoryName',
+    templateUrl: 'shared/templates/guru.profile.html',
+    resolve: {categoryName: function($stateParams) {
+      return $stateParams.categoryName;
+    }},
+    controller: function($scope, categoryName, CategoryService) {
+      $scope.category = CategoryService.getLocalCategories().filter(function(el) {return el.name === categoryName})[0];
+    }
   })
   .state('root.jeselle', {
     url:'/dev/jeselle',
@@ -74,9 +89,13 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/gabrielle',
     templateUrl: 'gabrielle/templates/index.html',
   })
+  .state('root.demos', {
+    url:'/dev/demos',
+    templateUrl: 'admin/templates/demos.html',
+  })
   .state('root.loaders', {
     url:'/dev/splash/loaders',
-    templateUrl: 'preapp/templates/loaders/baking.html'
+    templateUrl: 'preapp/templates/loaders/main.html'
   });
 
 

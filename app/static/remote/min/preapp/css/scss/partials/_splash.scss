@@ -233,10 +233,6 @@
 		right: 0;
 		top: 4px;
 		z-index: 2000;
-		@media screen and (min-width: 860px) {
-			right: 57px;
-			top: 14px;
-		}
 		&:before {
 			display: none!important;
 		}
@@ -326,9 +322,6 @@
 			margin: 0 15px 0 0!important;
 		}
 	}
-	@media screen and (min-width: 860px) {
-		margin: 0 15px 0 0!important;
-	}
 }
 
 .onboarding-success {
@@ -388,9 +381,6 @@
 	h1 {
 		font-size: 36px;
 		font-weight: 900;
-		@media screen and (min-width: 768px) {
-			font-size: 48px;
-		}
 	}
 	h2 {
 		margin-top: 0!important;
@@ -426,9 +416,8 @@
 	overflow-x: hidden;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
+
 	button:not([class*="btn-ghost"]) {
-		// padding-left: 0!important;
-		// padding-right: 0!important;
 		@media screen and (max-width: 768px) {
 			font-size: 22px!important;
 		}
@@ -516,15 +505,6 @@
 						line-height: 1;
 					}
 				}
-			}
-		}
-		@media screen and (min-width: 768px) {
-			.next-device {
-				@include flex;
-			}
-			.next-content {
-				width: calc(100% - 320px);
-				padding-left: 15px;
 			}
 		}
 	}
@@ -707,9 +687,6 @@
 		overflow: auto;
 		background: rgba($slate, .95);
 		text-align: center;
-		@media screen and (min-width: 768px) {
-			display: none!important;
-		}
 		h1 {
 			padding-top: 15px;
 			font-size: 28px;
@@ -960,43 +937,6 @@
 			}
 		}
 	}
-	@media screen and (min-width: 860px) {
-		.splash-hero-nav {
-			&.desktop {
-				@include flex-important;
-			}
-			&.mobile {
-				display: none!important;
-			}
-		}
-		.splash-header {
-			height: 70px;
-			.splash-nav-link {
-				padding: 25px 15px;
-				&:not(.highlight) {
-					width: 165px;
-				}
-			}
-			div[class*="ugrid-"] {
-				@include flex;
-			}
-			.splash-logo {
-				height: 100%!important;
-				margin: 0 15px!important;
-			}
-			.right {
-				@include flex;
-				@include flex-center-vertical;
-				@include center-y;
-				right: 0;
-				.splash-nav-link {
-					@include reset-pos;
-					right: auto;
-					height: auto;
-				}
-			}
-		}
-	}
 	.splash-toast {
 		@include prefix(backspace-visibility, hidden, webkit);
 		@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
@@ -1052,42 +992,6 @@
 				}
 			}
 		}
-		@media screen and (min-width: 768px) {
-			@include flex-center;
-			padding: 30px 15px 15px;
-			margin-top: -15px!important;
-			text-align: center;
-			a {
-				top: calc(50% + 7.5px);
-    			margin-top: -25px;
-			}
-			h1 {
-				padding: 0 15px 15px !important;
-				font-size: 28px!important;
-			}
-			button {
-				@include round;
-				margin: 0 15px;
-				width: auto;
-				padding: 15px 30px!important;
-			}
-		}
-		@media screen and (min-width: 1106px) {
-			h1 {
-				padding: 0 15px !important;
-			}
-		}
-	}
-	@media screen and (min-width: 768px) {
-		.splash-header.active {
-			@include prefix(transition, all .3s ease-in-out, webkit moz ms o);
-			@include opacity(1);
-			@include prefix(transform, translateY(0), webkit moz ms o);
-			@include animation-name(toast-pop);
-			@include animation-duration(.4s);
-			@include animation-iteration-count(1);
-			margin-top: 94px;
-		}
 	}
 
 	// BOTTOM LINKS
@@ -1117,18 +1021,6 @@
 			font-size: 28px;
 			font-weight: 600;
 			color: $shamrock;
-		}
-		@media screen and (min-width: 768px) {
-			.backpack, .support {
-				display: block;
-				+ .splash-footer-icon {
-					@include center-x;
-					top: 19%;
-					width: 36px;
-					height: 36px;
-					stroke-width: 10px;
-				}
-			}
 		}
 		&:before, &:after {
 			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
@@ -1401,29 +1293,6 @@
 				}
 			}
 		}
-		@media screen and (min-width: 768px) {
-			.splash-sidebar-menu {
-				width: calc(100% / 3);
-				position: relative;
-				z-index: 10;
-			}
-			.splash-sidebar-content {
-				@include flex;
-				position: relative;
-				z-index: 9;
-			}
-		}
-		@media screen and (min-width: 860px) {
-			.splash-sidebar-menu {
-				header {
-					height: 70px;
-					.splash-logo {
-						height: 100%!important;
-						margin: 0 15px!important;
-					}
-				}
-			}
-		}
 	}
 	#cta-modal-sidebar {
 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
@@ -1446,17 +1315,6 @@
 		&.show-sidebar-cta {
 			z-index: 1000;
 		}
-		// &.show {
-		// 	@include prefix(animation, 1s bounceInLeft forwards, webkit moz ms o);
-		// }
-		// &:not(.show) {
-		// 	@include prefix(transition, all 1000ms ease-in-out, webkit moz ms o);
-		// 	@include prefix(animation, 1s bounceOutLeft forwards, webkit moz ms o);
-		// 	&.hide-display {
-		// 		display: block!important;
-		// 		z-index: -1000;
-		// 	}
-		// }
 	}
 
 	// CONTENT SECTIONS
@@ -1510,20 +1368,6 @@
 				}
 			}
 		}
-		@media screen and (min-width: 768px) {
-			button {
-				max-width: 300px;
-			}
-			> header {
-				height: 25%!important;
-				h1 {
-					font-size: 36px;
-					font-weight: 600;
-					text-transform: none!important;
-				}
-			}
-		}
-		// HERO header
 
 		// HERO
 		&.splash-hero {
@@ -1540,9 +1384,6 @@
 				height: 50px!important;
 				// width: 100%;
 				width:inherit;
-				@media screen and (min-width: 860px) {
-					height: 70px!important;
-				}
 			}
 
 			.splash-hero-map {
@@ -2577,99 +2418,6 @@
 					}
 				}
 			}
-			@media screen and (min-width: 768px) {
-				.splash-hero-markers {
-					.splash-hero-marker {
-						&:first-child {
-							// right: 10%;
-							// margin-right: 0;
-							// bottom: 10%;
-						}
-						&:last-child {
-							display: none;
-						}
-						&:not(.splash-hero-marker-mobile) {
-							display: block;
-						}
-						&:nth-child(1) {
-							@include prefix(animation-delay, 1700ms, webkit moz ms o);
-						}
-						&.first {
-							@include prefix(transition-delay, 3500ms, webkit moz ms o);
-							* {
-								@include prefix(transition-delay, 3500ms, webkit moz ms o);
-							}
-						}
-						&.not-first {
-							@include prefix(transition-delay, 3500ms, webkit moz ms o);
-							@include opacity(.5);
-						}
-					}
-				}
-				.coach-scroll {
-					bottom: -70px;
-				}
-				.coach-help {
-					&.coach-help-desktop {
-						display: block!important;
-						&.hide {
-							display: none!important;
-						}
-					}
-					&.coach-help-mobile {
-						display: none!important;
-					}
-				}
-				.splash-hero-nav {
-					top: 15px;
-					right: 72px;
-					&.desktop {
-						@include flex;
-					}
-					&.mobile {
-						display: none;
-					}
-					> div:first-child, > div:first-child + h2 {
-						@include flex;
-					}
-				}
-				.splash-device {
-					display: block!important;
-				}
-				.splash-guru-head {
-					.coach-fill {
-						top: 80px;
-		    			right: -180px;
-					}
-				}
-				.splash-hero-content {
-					.splash-adlib {
-						&.animate {
-							@include prefix(animation, splash-adlib 500ms ease-in 200ms 1 forwards, webkit moz ms o);
-							z-index: 1;
-						}
-						h1 {
-							font-size: 40px;
-						}
-						.splash-mobile-cta {
-							display: none;
-						}
-						ul {
-							max-width: calc(172px * 4 + 30px);
-							padding: 15px;
-							margin: 0 auto 15px;
-							li {
-								width: 25%;
-								max-width: 172px;
-								padding: 15px;
-								&:nth-child(7), &:nth-child(8) {
-									display: block;
-								}
-							}
-						}
-					}
-				}
-			}
 		}
 
 		// PROJECTOR
@@ -2930,12 +2678,12 @@
 					height: 100%!important;
 					div.swiper-slide {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						&:not(.slideshow-thumb-getting-started) {
-							width: 33%!important;
-						}
 						height: 80px!important;
 						margin: 0!important;
 						text-align: center;
+						&:not(.slideshow-thumb-getting-started) {
+							width: 33%!important;
+						}
 						.progress-step {
 							@include flex;
 							@include flex-center;
@@ -3038,55 +2786,6 @@
 								}
 							}
 						}
-						&.swiper-slide-prev {
-							// .onboarding-step {
-							// 	.onboarding-icon {
-							// 		background: $shamrock;
-							// 	}
-							// 	.onboarding-status {
-							// 		.top, .bottom {
-							// 			@include opacity(1);
-							// 			stroke-dashoffset: 0;
-							// 		}
-							// 	}
-							// }
-						}
-						// &.swiper-slide-active {
-						// 	.progress-step {
-						// 		.progress-step-icon {
-						// 			svg {
-						// 				.bg {
-						// 					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						// 					fill: $shamrock!important;
-						// 				}
-						// 				*:not(.bg) {
-						// 					fill: rgba($slate, .5);
-						// 				}
-						// 			}
-						// 		}
-						// 	}
-						// 	.onboarding-step {
-						// 		.onboarding-icon {
-						// 			background: $shamrock;
-						// 		}
-						// 		.onboarding-status {
-						// 			.top, .bottom {
-						// 				@include prefix(transition, stroke-dashoffset 150ms ease-in-out, webkit moz ms o);
-						// 				@include opacity(1);
-						// 				stroke-dashoffset: 110;
-						// 			}
-						// 		}
-						// 	}
-						// }
-						// &:not(.swiper-slide-active) {
-						// 	.progress-step {
-						// 		.progress-step-icon {
-						// 			svg {
-						// 				@include opacity(.5);
-						// 			}
-						// 		}
-						// 	}
-						// }
 					}
 				}
 			}
@@ -3159,24 +2858,6 @@
 				.projector-content {
 				    left: 5%;
 				    width: 90%;
-				}
-			}
-			@media screen and (min-width: 768px) {
-				// .swiper-front-gallery-thumbs#swiper-gallery-tab {
-				// 	@include opacity(0);
-				// 	z-index: -9;
-				// 	visibility: hidden;
-				// }
-				.splash-projector-message {
-					&.desktop {
-						display: block;
-					}
-					&.mobile {
-						display: none;
-					}
-				}
-				.projector-content {
-					padding: 15px;
 				}
 			}
 		}
@@ -3328,56 +3009,6 @@
 					}
 				}
 			}
-			@media screen and (min-width: 768px) {
-				.splash-zoom {
-					display: none;
-				}
-				> header {
-					display: none!important;
-				}
-				.splash-school-search-form {
-					display: block;
-				}
-				.splash-map-stats {
-					@include flex;
-					@include flex-center-vertical;
-					@include prefix(justify-content, flex-end, webkit);
-					position: absolute;
-					bottom: 0;
-					right: 0;
-					width: 100%;
-					> * {
-						h1 {
-							font-size: 36px;
-							font-weight: 600;
-						}
-						h4 {
-							span {
-								display: block!important;
-								&:first-child {
-									font-size: 18px;
-								}
-								&:last-child {
-									font-size: 24px;
-								}
-							}
-						}
-						h2 {
-							font-size: 28px;
-							font-weight: 700;
-						}
-					}
-					> div {
-						padding: 15px;
-					}
-					> ul {
-						padding: 7.5px;
-						li {
-							padding: 7.5px;
-						}
-					}
-				}
-			}
 		}
 
 		// POSTITS
@@ -3515,27 +3146,6 @@
 					display: none!important;
 				}
 			}
-			@media screen and (min-width: 768px) {
-				> header {
-					height: auto!important;
-					h1 {
-						padding-top: 0;
-						font-size: 36px;
-					}
-				}
-				.main {
-					.mobile-postits {
-						display: none;
-					}
-					.desktop-postit-list {
-						@include flex;
-						li {
-							width: calc(100% / 3);
-							height: 50%;
-						}
-					}
-				}
-			}
 		}
 
 		// HOW IT WORKS
@@ -3600,114 +3210,6 @@
 								}
 								*[opacity="0.5"], *[fill-opacity="0.5"]{
 									fill: $moola;
-								}
-							}
-						}
-					}
-				}
-			}
-			@media screen and (min-width: 768px) {
-				.main {
-					ul {
-						li {
-							&:nth-child(1) {
-								> div {
-									@include prefix(transform, rotate(5deg) translate(30px, 20px), webkit moz ms o);
-								}
-								.tape {
-									display: none;
-								}
-							}
-							&:nth-child(2) {
-								z-index: 10;
-								> div {
-									@include prefix(transform, rotate(-7deg) translate(-25px, 60px), webkit moz ms o);
-								}
-								.tape {
-									&:nth-child(1) {
-										@include rotate(45);
-										left: 22.5px;
-										top: -15px;
-									}
-									&:nth-child(2) {
-										@include rotate(-45);
-										top: -15px;
-										right: 22.5px;
-									}
-									&.animate {
-										&:nth-child(1) {
-											@include animation-name(tape-1);
-										}
-										&:nth-child(2) {
-											@include animation-name(tape-2);
-											@include animation-delay(.25s);
-										}
-									}
-								}
-							}
-							&:nth-child(3) {
-								> div {
-									@include prefix(transform, rotate(7deg) translate(0px, 20px), webkit moz ms o);
-								}
-								.tape {
-									&:nth-child(1) {
-										display: none;
-									}
-									&:nth-child(2) {
-										@include rotate(90);
-										top: -35px;
-										left: 50%;
-										margin-left: -15px;
-									}
-									&.animate {
-										&:nth-child(2) {
-											@include animation-name(tape-3);
-											@include animation-delay(.5s);
-										}
-									}
-								}
-							}
-							&:nth-child(4) {
-								> div {
-									@include prefix(transform, rotate(-2deg) translate(-20px, 5px), webkit moz ms o);
-								}
-								.tape {
-									&:nth-child(1) {
-										@include rotate(45);
-										left: 22.5px;
-										top: -15px;
-									}
-									&:nth-child(2) {
-										@include rotate(45);
-										bottom: -15px;
-										right: 22.5px;
-									}
-									&.animate {
-										&:nth-child(1) {
-											@include animation-name(tape-1);
-											@include animation-delay(.5s);
-										}
-										&:nth-child(2) {
-											@include animation-name(tape-4);
-											@include animation-delay(.75s);
-										}
-									}
-								}
-							}
-							&:nth-child(5) {
-								> div {
-									@include prefix(transform, rotate(20deg) translate(-10px, -10px), webkit moz ms o);
-								}
-								.tape {
-									display: none;
-								}
-							}
-							&:nth-child(6) {
-								> div {
-									@include prefix(transform, rotate(-5deg), webkit moz ms o);
-								}
-								.tape {
-									display: none;
 								}
 							}
 						}
@@ -3803,113 +3305,6 @@
 					}
 				}
 			}
-			@media screen and (min-width: 768px) {
-				.main {
-					ul {
-						li {
-							&:nth-child(1) {
-								> div {
-									@include prefix(transform, rotate(7deg) translate(0px, 40px), webkit moz ms o);
-								}
-								.tape {
-									&:nth-child(1) {
-										display: none;
-									}
-									&:nth-child(2) {
-										@include rotate(90);
-										top: -35px;
-										left: 50%;
-										margin-left: -15px;
-									}
-									&.animate {
-										&:nth-child(2) {
-											@include animation-name(tape-3);
-											@include animation-delay(.5s);
-										}
-									}
-								}
-							}
-							&:nth-child(2) {
-								> div {
-									@include prefix(transform, rotate(-7deg) translate(-25px, 60px), webkit moz ms o);
-								}
-								.tape {
-									&:nth-child(1) {
-										@include rotate(45);
-										left: 22.5px;
-										top: -15px;
-									}
-									&:nth-child(2) {
-										@include rotate(-45);
-										top: -20px;
-										right: 30px;
-									}
-									&.animate {
-										&:nth-child(1) {
-											@include animation-name(tape-1);
-										}
-										&:nth-child(2) {
-											@include animation-name(tape-2);
-											@include animation-delay(.25s);
-										}
-									}
-								}
-							}
-							&:nth-child(3) {
-								> div {
-									@include prefix(transform, rotate(5deg) translate(30px, 40px), webkit moz ms o);
-								}
-								.tape {
-									display: none;
-								}
-							}
-							&:nth-child(4) {
-								> div {
-									@include prefix(transform, rotate(20deg) translate(-10px, 10px), webkit moz ms o);
-								}
-								.tape {
-									display: none;
-								}
-							}
-							&:nth-child(5) {
-								> div {
-									@include prefix(transform, rotate(5deg) translate(0px, 20px), webkit moz ms o);
-								}
-								.tape {
-									display: none;
-								}
-							}
-							&:nth-child(6) {
-								> div {
-									@include prefix(transform, rotate(-2deg) translate(-20px, 15px), webkit moz ms o);
-								}
-								.tape {
-									&:nth-child(1) {
-										@include rotate(45);
-										left: 22.5px;
-										top: -15px;
-									}
-									&:nth-child(2) {
-										@include rotate(45);
-										bottom: -15px;
-										right: 22.5px;
-									}
-									&.animate {
-										&:nth-child(1) {
-											@include animation-name(tape-1);
-											@include animation-delay(.5s);
-										}
-										&:nth-child(2) {
-											@include animation-name(tape-4);
-											@include animation-delay(.75s);
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
 		}
 
 		&#splash-footer {
@@ -3957,27 +3352,6 @@
 					}
 					span:last-child svg {
 						@include animation-delay(.6s);
-					}
-				}
-			}
-		}
-		@media screen and (min-width: 768px) {
-			&#splash-footer {
-				padding: 36px 15px 72px;
-				ul {
-					li {
-						font-size: 36px;
-						&:first-child, &:last-child {
-							width: calc(100% - 84px / 2);
-						}
-						&:nth-child(2) {
-							width: 84px;
-							height: 84px;
-						}
-						svg {
-							width: 72px;
-							height: 72px;
-						}
 					}
 				}
 			}
@@ -5528,13 +4902,6 @@
 	width: calc(100% / 3 * 2) !important;
 	position: fixed !important;
 }
-@media screen and (min-width: 768px) {
-	#cta-modal-team {
-		ul {
-			height:100% !important;
-		}
-	}
-}
 @media screen and (max-width: 768px) {
 	#intercom-conversation {
 		width: 100%!important;
@@ -5624,16 +4991,6 @@
 				}
 			}
 		}
-		@media screen and (min-width: 414px) {
-			.school-id-card {
-				@include scale(1.2);
-			}
-		}
-		@media screen and (min-width: 768px) {
-			.school-id-card {
-				@include scale(1.5);
-			}
-		}
 	}
 }
 #splash-access {
@@ -5681,13 +5038,6 @@
 			padding-top: 5px;
 			color: white;
 			font-weight: 300;
-			@media screen and (min-width: 768px) {
-				max-width: 652px;
-				height: 119px;
-				font-size: 48px;
-				padding-top: 0;
-				padding-bottom: 10px;
-			}
 			@include placeholder {
 				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 			}
@@ -5708,16 +5058,6 @@
 					}
 					path {
 						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-					}
-				}
-				@media screen and (min-width: 768px) {
-					.splash-access-bubble {
-						&.mobile {
-							display: none;
-						}
-						&.desktop {
-							display: block;
-						}
 					}
 				}
 				button {
@@ -6168,57 +5508,6 @@
 			}
 		}
 	}
-	@media screen and (min-width: 768px) {
-		.splash-desktop-buttons {
-			@include flex;
-		}
-		.splash-content {
-			padding: 150px 30px 15px;
-		}
-		.splash-signup-buttons, .splash-signup-buttons-mobile {
-			display: none;
-		}
-		fieldset {
-			svg {
-				@include svg-stroke(white, 4);
-				top: 5px;
-				width: 50px;
-				height: 50px;
-			}
-			.form-error {
-				margin-top: -25px; //to be close to the input form
-				background: $crimson;
-			    color: white!important;
-			    padding: 3px 5px;
-			    border-radius: 2px;
-			    margin-top: -25px;
-				font-size: 14px;
-			}
-		}
-		.splash-login-content {
-			.splash-login-inside {
-				fieldset {
-					&:not(:first-child) {
-						margin-top: 25px;
-					}
-				}
-			}
-		}
-		.splash-signup-content {
-			.splash-signup-inside {
-				.splash-signup-form {
-					width: calc(100% - 240px);
-					height: auto!important;
-					fieldset {
-						margin-left: 30px;
-						&:not(:first-child) {
-							margin-top: 25px;
-						}
-					}
-				}
-			}
-		}
-	}
 }
 
 
@@ -6361,31 +5650,5 @@
 		.info-demographic-button {
 			padding-bottom: 15px;
 		}
-		@media screen and (min-width: 768px) {
-			ul {
-				margin-top: 60px!important;
-				max-width: 100%!important;
-				li {
-					padding: 15px;
-					a {
-						width: 150px;
-						height: 150px;
-						font-size: 20px!important;
-					}
-				}
-				&.demo-3 {
-					margin-top: 0!important;
-					li {
-						a {
-							width: 200px;
-							height: 200px;
-							padding: 15px;
-							font-size: 24px!important;
-						}
-					}
-				}
-			}
-		}
 	}
 }
-

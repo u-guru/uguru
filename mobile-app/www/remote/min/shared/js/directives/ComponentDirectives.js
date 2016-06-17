@@ -14,6 +14,7 @@ angular.module('uguru.shared.directives')
 
         return {
             templateUrl: getTemplateURL,
+            args:'abc',
             scope: {
                 innerText: '=',
                 category: '=',

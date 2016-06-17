@@ -33,7 +33,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
         return function(obj) {
 
             specObj.data = obj;
-            specObj.data.toggleDev = false;
+            specObj.data.toggleDev = true;
             specObj.data.toggleSpec = false;
             specObj.data.open = specObj.open;
             specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path)
