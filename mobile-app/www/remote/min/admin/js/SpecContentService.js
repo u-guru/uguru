@@ -35,7 +35,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 controller: 'GuruProfileController',
                 routes: getRoutes('dev/admin/profiles/academic', 'shared/templates/guru.profile.html'),
                 spec: getSpec('madlib'),
-                bugs: getBugInfo('academic'),
+                bugs: getBugInfo('profiles/academic'),
                 ready:true
               },
               {
@@ -43,7 +43,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 controller: 'GuruProfileController',
                 routes: getRoutes('dev/admin/profiles/tech', 'shared/templates/guru.profile.html'),
                 spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
+                bugs: getBugInfo('profiles/tech'),
                 ready:true
               },
               {
@@ -51,7 +51,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 controller: 'GuruProfileController',
                 routes: getRoutes('dev/admin/profiles/baking', 'shared/templates/guru.profile.html'),
                 spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
+                bugs: getBugInfo('profiles/baking'),
                 ready:true
               },
               {
@@ -59,7 +59,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 controller: 'GuruProfileController',
                 routes: getRoutes('dev/admin/profiles/household', 'shared/templates/guru.profile.html'),
                 spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
+                bugs: getBugInfo('profiles/household'),
                 ready:true
               },
               {
@@ -67,7 +67,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 controller: 'GuruProfileController',
                 routes: getRoutes('dev/admin/profiles/photo', 'shared/templates/guru.profile.html'),
                 spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
+                bugs: getBugInfo('profiles/photo'),
                 ready:true
               },
               {
