@@ -49,13 +49,13 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data = obj;
             calcUseCasesCompletedness(specObj.data.use_cases)
             //@gabrielle note
-            specObj.data.toggleDev = false;
+            specObj.data.toggleDev = true;
             specObj.data.toggleSpec = false;
             specObj.data.toggleDocs = false;
             specObj.data.toggleShortcuts = false;
 
             specObj.data.toggleSettings = true;
-            specObj.data.animTools = {stage: {parentElem: parent_container}, show:true}
+            specObj.data.animTools = {stage: {parentElem: parent_container}, show:false}
             specObj.data.docs = {launch:launchDocs}
             specObj.data.mobile = {toggle:toggleMobileMode, width:400, height:768, show:false, template:specObj.template_path, url:window.location.href}
             specObj.data.open = specObj.open;
@@ -78,7 +78,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specElem = document.createElement('spec');
             specElem.className = 'fixed bottom-0 left-0 full-x';
             specElem.style.zIndex = '100000';
-            specObj.data.toggles = {devBar: toggleDev, docs: toggleDocs, spec:toggleSpec, settings:toggleSettings, shortcuts:toggleShortcuts};
+            specObj.data.toggles = {devBar: toggleDev, record:toggleAnimRecorder, spec:toggleSpec, settings:toggleSettings, shortcuts:toggleShortcuts};
             specObj.data.keyboardListeners = initKeyboardFunction();
             // specElem.setAttribute('ng-if', 'spec && spec.data');
             specElem.setAttribute('data', param + '.spec.data');
@@ -287,22 +287,29 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                 }, 750);
               }
             }
-            function toggleDocs(value) {
-              var newValue = !scope.spec.data.toggleDocs;
+
+
+
+            function toggleAnimRecorder(value) {
+
+              var newValue = !scope.spec.data.animTools.show;
               if (newValue) {
-                scope.spec.data.toggleDocs = newValue;
+
+                scope.spec.data.animTools.show = newValue;
                 scope.spec.data.toggleSpec = false;
+                scope.spec.data.toggleDocSearch = false;
                 return;
               }
               else if (!newValue) {
-                var docSpecContainer = document.querySelector('#dev-docs');
-                docSpecContainer.classList.remove('slideInDown');
+
+                var animRecorderContainer = document.querySelector('#admin-anim-tools');
+                animRecorderContainer.classList.remove('slideInDown');
                 $timeout(function() {
-                    docSpecContainer.classList.add('fadeOutUp');
+                    animRecorderContainer.classList.add('fadeOutUp');
                 })
                 $timeout(function() {
-                    scope.spec.data.toggleDocs = newValue;
-                }, 750);
+                    scope.spec.data.animTools.show = newValue;
+                }, 1000);
               }
             }
 

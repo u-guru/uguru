@@ -276,6 +276,7 @@ function AnimToolService($state, $timeout, $localstorage, $interval, RootService
         stage.player = player;
         stage.player.globals = {jump_only:false, speed: 1, showTweener: false, offset: {beginning:0}};
         stage.player.start_offset = '0';
+        return stage;
     };
 
     function updatePlayerStartOffset(total_time_ms, offset_ms) {

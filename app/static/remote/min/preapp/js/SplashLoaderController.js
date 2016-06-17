@@ -13,5 +13,3 @@ angular.module('uguru.preApp')
     SpecService.initSpec(loader, $scope, '#splash-preapp-loader', 'loader', 'preapp/templates/loaders/main.html', 'preapp/js/SplashLoaderController.js', {}, 'preapp/css/compiled/loader.css');
   }
 ])
-
-
