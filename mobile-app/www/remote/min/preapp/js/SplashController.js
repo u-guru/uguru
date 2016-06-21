@@ -14,7 +14,7 @@ angular.module('uguru.preApp', ['ionic'])
     splash.state = {};
     splash.categories = CategoryService.getLocalCategories();
     splash.category = splash.categories[0];
-
+    console.log(splash.category);
     portalElem.addEventListener('splashMainLoadingComplete', function (e) {
 
       var loaderPortal = document.querySelector('.loader-portal');
