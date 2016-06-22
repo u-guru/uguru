@@ -134,7 +134,9 @@ angular.module('uguru.admin')
     };
     $scope.saveBug = function(){
       // console.log($scope.bugReport);
-      FileService.postS3JsonFile(JSON.stringify($scope.bugReport), null ,
+      // console.log('CHECK',angular.toJson($scope.bugReport[0]),4);
+
+      FileService.postS3JsonFile(angular.toJson($scope.bugReport), null ,
                                  'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
       function postCallback(firstName, resp) {
           ReportService.saveBug($scope.bugReport);
