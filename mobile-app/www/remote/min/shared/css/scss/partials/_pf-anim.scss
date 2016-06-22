@@ -58,6 +58,15 @@
 	animation: pf-tc-OutUp 500ms cubic-bezier(.33,-0.54,1,1.68) both;
 }
 
+.pf-font-fadeIn {
+    animation: pf-font-fadeIn 500ms ease-out forwards;
+}
+
+@keyframes pf-font-fadeIn {
+    0% { color: rgba(255,255,255,0); }
+    100% { color: rgba(255,255,255,1); }
+}
+
 @keyframes pf-tc-OutUp  {
 	0% { transform: translateY(0) scale(1); opacity: 1; }
 	99% { opacity: 1; }

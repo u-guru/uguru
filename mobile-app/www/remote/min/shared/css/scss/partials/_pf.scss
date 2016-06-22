@@ -113,10 +113,10 @@
             background-position: center;
             background-size: cover;
         }
-        *:not(.pf-aside-bg) {
-            position: relative;
-            z-index: 2;
-        }
+        *:not([class*="aside-bg"]) {
+			position: relative;
+			z-index: 2;
+		}
         .pf-aside-widget {
             margin-top: 47px;
         }
@@ -225,17 +225,19 @@
                         @include opacity(1);
                     }
                 }
-                &:after {
-                    @include round;
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    bottom: -1px;
-                    left: 15px;
-                    height: 2px;
-                    width: calc(100% - 30px);
-                    background: rgba(white, .2);
-                }
+                hr {
+					@include round;
+					display: block;
+					position: absolute;
+					bottom: -1px;
+					left: 15px;
+					height: 2px;
+					width: calc(100% - 30px);
+					margin: 0;
+					background: rgba(white, .2);
+					border: 0!important;
+					transform-origin: left center;
+				}
             }
             .pf-items {
                 @include listless;
