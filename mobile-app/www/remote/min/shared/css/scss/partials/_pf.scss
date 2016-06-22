@@ -1,5 +1,12 @@
 @import 'mixin';
 
+.pf-aside {
+	transform-origin: right center;
+}
+.pf-rest {
+	transform-origin: center bottom;
+}
+
 .pf-container {
     height: 100%;
     width: 100%;
