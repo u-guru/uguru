@@ -1,7 +1,33 @@
 @import '../../../shared/css/scss/partials/mixin';
 
+.equip {
+	animation: back-bp 500ms ease-in-out forwards;
+}
+.strap-in {
+	animation: straps 250ms ease-out forwards;
+}
+.twirl {
+	animation: paper-rotate-2 500ms ease-out forwards;
+}
+.airplane-fly {
+	animation: airplane-fly-combo 5000ms forwards;
+	transform-origin: center center;
+}
+.throwing {
+	animation: aca-enter 750ms ease-in forwards;
+}
+.throwing-ready {
+	animation: hand-combo 2750ms forwards;
+}
+.throw-fade {
+	animation: fadeOut 10ms linear forwards;
+}
+.throw-out {
+	animation: airplane-fly-right 1000ms cubic-bezier(0,.01,.38,1)forwards;
+}
+
 .loader-portal-container {
-    &.academic {
+	&.academic {
 		background: mix($cerise, white, 30%);
 		.academic-props-container {
 			display: block!important;
@@ -13,63 +39,22 @@
 				}
 			}
 		}
-        &.active {
-            .guru.academic {
-                > div {
-            		animation: l-move-up 1000ms linear 1500ms forwards, l-head-hover 1000ms linear 2500ms infinite forwards, l-move-down 1000ms linear 7500ms forwards;
-            	}
-                .back-bp {
-            		animation: back-bp 500ms ease-in-out 2000ms forwards;
-            	}
-            	.front-bp {
-            		animation: straps 250ms ease-out 2000ms forwards;
-            	}
-                .aca-icon {
-                    animation: paper-rotate-2 500ms ease-out 6650ms forwards;
-                }
-            }
-            .academic-props-container {
-            	.academic-props {
-            		.airplane {
-            			animation: fadeIn 10ms linear 2500ms forwards, airplane-fly-over 1000ms ease-out 2500ms forwards, airplane-fly-return 1500ms ease-in 3400ms forwards, airplane-rotate 1750ms cubic-bezier(.58,-0.11,1,.44) 4900ms forwards;
-            		}
-            	}
-            }
-        }
 	}
 }
 
-.close-up {
-    &.throw {
-        animation: aca-enter 750ms ease-in 500ms forwards, hand-ready 500ms cubic-bezier(.41,-0.34,1,.99) 1250ms forwards, hand-set 250ms cubic-bezier(.41,-0.34,1,.99) 1750ms forwards, hand-out 750ms cubic-bezier(0,.01,.38,1) 2000ms forwards, l-fadeOut 10ms linear 2750ms forwards;
-    }
-    .launch-airplane {
-        &.throw {
-            animation: fadeOut 10ms linear 2000ms forwards;
-        }
-    }
-}
-.flying-plane {
-    &.throw {
-        animation: airplane-fly-right 1000ms cubic-bezier(0,.01,.38,1) 2000ms forwards;
-    }
-}
-
 .guru.academic {
-    left: calc(50% - 65px);
+	left: calc(50% - 65px);
 	bottom: 41px;
 	width: 130px;
 	height: 210px;
-    > div {
+	> div {
 		width: 100%;
 		height: 100%;
 	}
 	.back-bp {
-		opacity: 0;
 		transform-origin: center center;
 	}
 	.front-bp {
-		opacity: 0;
 		transform-origin: center top;
 	}
 	.aca-icon {
@@ -99,7 +84,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-    z-index: 10;
+	z-index: 10;
 	.academic-props {
 		position: absolute;
 		width: 130px;
@@ -107,11 +92,9 @@
 		left: calc(50% - 65px);
 		top: calc(50% - 105px + 25px);
 		.airplane {
-            display: block;
-            width: 100%;
-            height: auto;
-			opacity: 0;
-			transform-origin: center center;
+			display: block;
+			width: 100%;
+			height: auto;
 			transform: translate3d(20px, 100px, 0);
 		}
 	}
@@ -133,11 +116,6 @@
 	}
 }
 
-@keyframes airplane-rotate {
-	0% { transform: translate3d(0,100px,0) rotateY(0deg) rotateZ(0deg) scale(0.5); }
-	100% { transform: translate3d(0,100px,0) rotateY(630deg) rotateZ(-50deg) scale(0.5); }
-}
-
 @keyframes paper-rotate {
 	0% { transform: rotateY(90deg); }
 	100% { transform: rotateY(0deg); }
@@ -145,16 +123,16 @@
 
 /* http://goo.gl/rDqQbq */
 @keyframes paper-rotate-2 {
-  0% { transform: matrix3d(0, 0.5, 0, 0, -0.5, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  4.3% { transform: matrix3d(0.547, 0.523, 0, 0, -0.523, 0.547, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  8.61% { transform: matrix3d(0.922, 0.178, 0, 0, -0.178, 0.922, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  12.91% { transform: matrix3d(1.023, -0.084, 0, 0, 0.084, 1.023, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  17.22% { transform: matrix3d(1.035, -0.153, 0, 0, 0.153, 1.035, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  28.33% { transform: matrix3d(1.01, -0.033, 0, 0, 0.033, 1.01, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  39.44% { transform: matrix3d(0.997, 0.01, 0, 0, -0.01, 0.997, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  61.66% { transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  83.98% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	0% { transform: matrix3d(0, 0.5, 0, 0, -0.5, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	4.3% { transform: matrix3d(0.547, 0.523, 0, 0, -0.523, 0.547, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	8.61% { transform: matrix3d(0.922, 0.178, 0, 0, -0.178, 0.922, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	12.91% { transform: matrix3d(1.023, -0.084, 0, 0, 0.084, 1.023, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	17.22% { transform: matrix3d(1.035, -0.153, 0, 0, 0.153, 1.035, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	28.33% { transform: matrix3d(1.01, -0.033, 0, 0, 0.033, 1.01, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	39.44% { transform: matrix3d(0.997, 0.01, 0, 0, -0.01, 0.997, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	61.66% { transform: matrix3d(1, -0.001, 0, 0, 0.001, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	83.98% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 }
 
 /*  http://goo.gl/nD4lJA */
@@ -172,29 +150,39 @@
 	100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1; }
 }
 
-@keyframes hand-out {
-	0% { transform: rotate(0deg) translate3d(30px, -20px, 0); }
+
+@keyframes hand-combo {
+	0% {
+		transform: rotate(0deg);
+		animation-timing-function: cubic-bezier(.41,-0.34,1,.99);
+	}
+	18.2%, 	36.4%  { transform: rotate(-15deg); }
+	36.4%  { animation-timing-function: cubic-bezier(.41,-0.34,1,.99); }
+	45.5% { transform: rotate(-10deg) translate3d(30px, -20px, 0); }
+	72.7% {
+		transform: rotate(0deg) translate3d(30px, -20px, 0);
+		animation-timing-function:cubic-bezier(0,.01,.38,1);
+	}
 	100% { transform: rotate(95deg) translate3d(30px, 0px, 0); }
 }
 
-@keyframes hand-set {
-	0% { transform: rotate(-15deg) translate3d(0, 0, 0); }
-	100% { transform: rotate(-10deg) translate3d(30px, -20px, 0); }
-}
-
-@keyframes hand-ready {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(-15deg); }
-}
-
-@keyframes airplane-fly-return {
-	0% { transform: translate3d(-400%, -200%, 0) rotateX(180deg) scale(1); }
-	100% { transform: translate3d(0,100px,0) rotateX(0) rotateZ(0deg) scale(0.5); }
-}
-
-@keyframes airplane-fly-over {
-	0% { transform: translate3d(500%, -350%, 0) rotateX(180deg) rotateY(180deg) scale(0.2); opacity: 1; }
-	100% { transform: translate3d(-400%, -200%, 0) rotateX(180deg) rotateY(0) scale(0.8); opacity: 1; }
+@keyframes airplane-fly-combo {
+	0% {
+		transform: translate3d(500%, -350%, 0) rotateX(180deg) rotateY(180deg) scale(0.2);
+		opacity: 1;
+		animation-timing-function:ease-in;
+	}
+	15% { transform: translate3d(-400%, -200%, 0) rotateX(180deg) rotateY(0) scale(0.8); }
+	28.6% {
+		transform: translate3d(-400%, -200%, 0) rotateX(180deg) scale(1);
+		animation-timing-function: ease-out;
+	}
+	51.1% { transform: translate3d(0,100px,0) rotateX(0) rotateZ(0deg) scale(0.5); }
+	73.7% {
+		transform: translate3d(0,100px,0) rotateY(0deg) rotateZ(0deg) scale(0.5);
+		animation-timing-function: cubic-bezier(.58,-0.11,1,.44);
+	}
+	100% { transform: translate3d(0,100px,0) rotateY(630deg) rotateZ(-50deg) scale(0.5); opacity: 1; }
 }
 
 @keyframes airplane-fly-right {
