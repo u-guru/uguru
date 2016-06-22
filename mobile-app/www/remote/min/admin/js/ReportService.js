@@ -79,7 +79,7 @@ function ReportService($timeout,FileService,LoadingService,$q) {
               //   }
            } 
            else {
-             deferred.reject('Unable to lunch bug report');
+             deferred.reject('Unable to lunch bug report',bugReport);
            }
          }, 3000);
 
