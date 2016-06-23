@@ -15,16 +15,13 @@
     </div>
     <div class="overflow-auto no-scrollbar" style="height: calc(100% - 61px)">
         <ul class="ugrid-2 p15-grid">
-
             <doc-item keywords="id, card, university">
                 <doc-title>ID Card</doc-title>
-
                 <doc-description>University ID card prominent throughout the splash experience</doc-description>
-
                 <doc-demo>
                     <doc-states>
                         <doc-state default>
-                            <div class="student-card" on-activate="slideInUp:animIn" elem-states="[id-card-right]" on-id-card-right-enter="lightSpeedIn:animIn" on-id-card-right-exit="lightSpeedOut:animOut">
+                            <div class="student-card" on-activate="slideInUp:animIn" elem-states="[id-card]" on-id-card-enter="lightSpeedIn:animIn" on-id-card-exit="lightSpeedOut:animOut">
                                 <svg viewBox="0 0 240 150">
                                     <rect x="0" y="0" width="240" height="150" fill="none"></rect>
                                 </svg>
@@ -47,200 +44,250 @@
                                 </div>
                             </div>
                         </doc-state>
-                        <doc-state inherit todo name="onActivate">
-                        </doc-state>
-                        <doc-state inherit name="onIdCardRightEnter">
-                        </doc-state>
-                        <doc-state inherit name="onIdCardRightExit">
-                        </doc-state>
-
+                        <doc-state inherit todo name="onActivate"></doc-state>
+                        <doc-state inherit todo name="onIdCardEnter"></doc-state>
+                        <doc-state inherit todo name="onIdCardExit"></doc-state>
                     </doc-states>
                     <doc-snippets>
-                        <doc-snippet default type="html">
-                            yo
-                        </doc-snippet>
-                        <doc-snippet type="css">
-                            .anim {
-                                display:none;
-                            }
-                        </doc-snippet>
-                    </doc-snippets>
-                </doc-demo>
-
-                <div class="border-2 radius-2-bottom ugrid-2" ng-if='false'>
-                    <div>
-                        <div class="component-item-nav states">
-                            <ul>
-                                <li><a class="active">Default</a></li>
-                                <li><a>onEnter</a></li>
-                                <li><a>onExit</a></li>
-                            </ul>
-                        </div>
-                        <div class="fix-abs flex-center-wrap overflow-hidden">
-
-                        </div>
-                    </div>
-
-                </div>
-            </doc-item>
-            <li>
-                <div class="component-item">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">ID Card</h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
-                            </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <div class="student-card">
-                    				<svg viewBox="0 0 240 150">
-                    					<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-                    				</svg>
-                    				<div class="school-id-inside">
-                    					<div class="school-id-top" style="background: #003262;">
-                    						<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
-                    					</div>
-                    					<div class="school-id-bottom">
-                    						<div>
-                    							<h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
-                    							<h2 style="color: #003262;">Cal Freshman</h2>
-                    							<h2 style="color: #003262;">email@school.edu</h2>
-                    						</div>
-                    						<h3>
-                    							<span style="color: #003262;">SELECTED COURSES</span>
-                    							<span style="background: #003262;">9</span>
-                    							<a>Edit</a>
-                    						</h3>
-                    					</div>
-                    				</div>
-                    			</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
-                            </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="component-item">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">School Card</h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
-                            </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <div class="university-card">
-                                	<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
-                                		<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-                                	</svg>
-                                	<input type="checkbox" />
-                                	<div class="school-card-inside">
-                                		<div class="school-card-border" style="border-color: #FDB515;"></div>
-                                		<div class="school-card-top" style="background-color: #003262;">
-                                			<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;">
-                                				<span class="school-card-icon-bg" style="background-color: #003262;"></span>
-                                				<span class="school-card-state">
-                                					<svg viewBox="0 0 100 100">
-                                						<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-                                					</svg>
-                                				</span>
-                                				<span class="school-card-state">
-                                					<svg viewBox="0 0 100 100">
-                                						<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                                					</svg>
-                                				</span>
-                                			</span>
-                                		</div>
-                                		<div class="school-card-main no-footer">
-                                			<div class="school-card-map"></div>
-                                			<div class="school-card-color" style="background-color: #003262;"></div>
-                                			<div class="school-card-info" style="color: #003262;">
-                                				<h1 style="color: #003262;">UC Berkeley</h1>
-                                				<h1>UC Berkeley</h1>
-                                				<h2 style="color: #003262;">Berkeley, CA</h2>
-                                			</div>
-                                		</div>
-                                	</div>
+                        <doc-snippet default type="html"><div class="student-card" on-activate="slideInUp:animIn" elem-states="[id-card-right]" on-id-card-right-enter="lightSpeedIn:animIn" on-id-card-right-exit="lightSpeedOut:animOut">
+                            <svg viewBox="0 0 240 150">
+                                <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                            </svg>
+                            <div class="school-id-inside">
+                                <div class="school-id-top" style="background: #003262;">
+                                    <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+                                </div>
+                                <div class="school-id-bottom">
+                                    <div>
+                                        <h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
+                                        <h2 style="color: #003262;">Cal Freshman</h2>
+                                        <h2 style="color: #003262;">email@school.edu</h2>
+                                    </div>
+                                    <h3>
+                                        <span style="color: #003262;">SELECTED COURSES</span>
+                                        <span style="background: #003262;">9</span>
+                                        <a>Edit</a>
+                                    </h3>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
+                        </div></doc-snippet>
+                        <doc-snippet type="css">.student-card {
+                            position: relative;
+                            width: 100%;
+                            max-width: 240px;
+                            &.with-hover {
+                            	.school-id-hover {
+                            		@include opacity(0);
+                            		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+                            		position: absolute;
+                            		z-index: 10;
+                            		top: 0;
+                            		left: 0;
+                            		width: 100%;
+                            		height: 100%;
+                            		&:hover, &:focus {
+                            			@include opacity(1);
+                            		}
+                            		> span {
+                            			@include opacity(.95);
+                            			position: absolute;
+                            			top: 0;
+                            			left: 0;
+                            			width: 100%;
+                            			height: 100%;
+                            			border-radius: 10px;
+                            			color: white;
+                            		}
+                            		> div {
+                            			@include flex;
+                            			@include flex-wrap;
+                            			@include flex-center;
+                            			width: 100%;
+                            			height: 100%;
+                            			padding: 15px;
+                            			font-size: 18px;
+                            			font-weight: 600;
+                            		}
+                            	}
+                            }
+                            > svg {
+                            	display: block;
+                            	width: 100%;
+                            	max-width: 100%;
+                            	height: auto;
+                            }
+                            .school-id-inside {
+                            	position: absolute;
+                            	top: 0;
+                            	left: 0;
+                            	width: 100%;
+                            	height: 100%;
+                            	.school-id-top {
+                            		position: relative;
+                            		z-index: 10;
+                            		height: 30%;
+                            		border-top-left-radius: 10px;
+                            		border-top-right-radius: 10px;
+                            		background-color: $shamrock;
+                            		.user-icon {
+                            			position: absolute;
+                            			bottom: -32px;
+                            			left: 15px;
+                            			width: 64px;
+                            			height: 64px;
+                            			border-width: 2px;
+                            			background-color: white;
+                            		}
+                            	}
+                            	.school-id-bottom {
+                            		@include flex;
+                            		@include flex-wrap;
+                            		height: 70%;
+                            		background: rgba(white, .8);
+                            		border-bottom-left-radius: 10px;
+                            		border-bottom-right-radius: 10px;
+                            		padding: 10px 15px;
+                            		text-align: right;
+                            		line-height: 1.1;
+                            		* {
+                            			color: $slate;
+                            		}
+                            		h1, h2 {
+                            			width: 100%;
+                            			margin: 0!important;
+                            		}
+                            		h1 {
+                            			font-size: 20px;
+                            			font-weight: 600;
+                            		}
+                            		h2 {
+                            			font-size: 14px;
+                            			font-weight: 600;
+                            			+ h2 {
+                            				font-weight: 400;
+                            			}
+                            		}
+                            		h3 {
+                            			@include flex;
+                            			@include flex-center;
+                            			@include prefix(align-self, flex-end, webkit);
+                            			width: 100%;
+                            			font-size: 16px;
+                            			font-weight: 600;
+                            			margin: 0!important;
+                            			span:first-child {
+                            				display: block;
+                            				white-space: nowrap;
+                            				width: 150px;
+                            			}
+                            			span:nth-child(2) {
+                            				@include round;
+                            				@include flex;
+                            				@include flex-center;
+                            				width: 25px;
+                            				height: 24px;
+                            				background: $shamrock;
+                            				color: white;
+                            				font-size: 12px;
+                            				margin: 0 10px;
+                            			}
+                            			a {
+                            				@include opacity(.5);
+                            				display: block;
+                            				width: 26px;
+                            				font-size: 14px;
+                            				&:hover, &:focus {
+                            					@include opacity(1);
+                            				}
+                            			}
+                            		}
+                            		> div {
+                            			@include prefix(align-self, flex-start, webkit);
+                            			width: 100%;
+                            		}
+                            	}
+                            }
+                        }</doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+            </doc-item>
+            <doc-item keywords="school, card, university">
+                <doc-title>School Card</doc-title>
+                <doc-description>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</doc-description>
+                <doc-demo>
+                    <doc-states>
+                        <doc-state default>
+                            <div class="university-card" on-activate="" elem-states="[school-card]" on-school-card-enter="" on-school-card-exit="">
+                                <svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
+                                    <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                </svg>
+                                <input type="checkbox" />
+                                <div class="school-card-inside">
+                                    <div class="school-card-border" style="border-color: #FDB515;"></div>
+                                    <div class="school-card-top" style="background-color: #003262;">
+                                        <span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;">
+                                            <span class="school-card-icon-bg" style="background-color: #003262;"></span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                                </svg>
+                                            </span>
+                                            <span class="school-card-state">
+                                                <svg viewBox="0 0 100 100">
+                                                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="school-card-main no-footer">
+                                        <div class="school-card-map"></div>
+                                        <div class="school-card-color" style="background-color: #003262;"></div>
+                                        <div class="school-card-info" style="color: #003262;">
+                                            <h1 style="color: #003262;">UC Berkeley</h1>
+                                            <h1>UC Berkeley</h1>
+                                            <h2 style="color: #003262;">Berkeley, CA</h2>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="component-item">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Course Card</h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
+                        </doc-state>
+                        <doc-state inherit todo name="onActivate"></doc-state>
+                        <doc-state inherit todo name="onSchoolCardEnter"></doc-state>
+                        <doc-state inherit todo name="onSchoolCardExit"></doc-state>
+                    </doc-states>
+                    <doc-snippets>
+                        <doc-snippet default type="html"></doc-snippet>
+                        <doc-snippet type="css"></doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+            </doc-item>
+            <doc-item keywords="school, course, card, university">
+                <doc-title>Course Card</doc-title>
+                <doc-description>Course card description goes here</doc-description>
+                <doc-demo>
+                    <doc-states>
+                        <doc-state default>
+                            <div class="course-card" on-activate="" elem-states="[course-card]" on-course-card-enter="" on-course-card-exit="">
+                                <svg width="240px" height="150px" viewBox="0 0 240 150">
+                                    <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                </svg>
+                                <div class="course-card-inside">
+                                    <h2 style="color: #003262;">BIO 1A</h2>
+                                    <h1 style="color: #003262;">Introduction to Biology</h1>
+                                </div>
+                                <div class="course-card-border" style="background: #003262;"></div>
                             </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <div class="course-card">
-                    				<svg width="240px" height="150px" viewBox="0 0 240 150">
-                    					<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-                    				</svg>
-                    				<div class="course-card-inside">
-                    					<h2 style="color: #003262;">BIO 1A</h2>
-                    					<h1 style="color: #003262;">Introduction to Biology</h1>
-                    				</div>
-                    				<div class="course-card-border" style="background: #003262;"></div>
-                    			</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
-                            </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
+                        </doc-state>
+                        <doc-state inherit todo name="onActivate"></doc-state>
+                        <doc-state inherit todo name="onCourseCardEnter"></doc-state>
+                        <doc-state inherit todo name="onCourseCardExit"></doc-state>
+                    </doc-states>
+                    <doc-snippets>
+                        <doc-snippet default type="html"></doc-snippet>
+                        <doc-snippet type="css"></doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+            </doc-item>
             <li>
                 <div class="component-item">
                     <a>

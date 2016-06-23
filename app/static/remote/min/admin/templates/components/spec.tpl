@@ -12,13 +12,9 @@
                 <li class='full-x bg-charcoal' ng-repeat='item in spec.docs.items | filter:spec.docs.searchText:strict track by $index'>
                     <div class='ugrid-2'>
                         <div>
-                            <h1>
-                                {{item.title}}
-                            </h1>
+                            <h1>{{item.title}}</h1>
                         </div>
-                        <div>
-                            {{item}}
-                        </div>
+                        <div class="height-128 overflow-hidden">{{item}}</div>
                     </div>
                 </li>
                 <li ng-if='!spec.docs.items.length && spec.docs.searchText.length'>
@@ -32,7 +28,7 @@
             <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
                 <li class='full-x ugrid-2'>
                     <fieldset class="with-icon">
-                        <input autofocus ng-model='spec.docs.searchText' class="input-border bg-smoke" type="text" placeholder="Search components">
+                        <input autofocus ng-model='spec.docs.searchText' class="input-border light" type="text" placeholder="Search components">
                         <label></label>
                         <span class="input-icon">
                             <svg viewBox="0 0 100 100">
@@ -40,7 +36,7 @@
                             </svg>
                         </span>
                         <a class="absolute top-0 right-0 flex-center z-index-100" style="height: 24px;">
-                            <i class='icon ion-close-circled txt-slate'></i>
+                            <i class='icon ion-close-circled txt-white'></i>
                         </a>
                     </fieldset>
                 </li>
