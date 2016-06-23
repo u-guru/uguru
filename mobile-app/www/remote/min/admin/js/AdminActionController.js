@@ -106,7 +106,9 @@ angular.module('uguru.admin')
         'options': ['All Bugs','Prioritized Bugs','Recently Complete']
     };
 
-    $scope.calState = function(title,key){
+    // $scope.calState = function(title,key){
+    $scope.calState = function(id,key){
+
       // console.log('check', stateID)
       function convertTitle(str){
           var id = 0;
@@ -115,7 +117,7 @@ angular.module('uguru.admin')
           }
           return id;
       }
-      var stateID = convertTitle(title);
+      var stateID = id;
       // console.log("CHECK",title,stateID)
       for(var i = 0; i < $scope.bugReport.length ; ++i)
       {
