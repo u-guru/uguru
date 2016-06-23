@@ -6,12 +6,14 @@ angular
   '$localstorage',
   '$window',
   '$compile',
+  '$sce',
   'KeyboardService',
   'UtilitiesService',
+  'RootService',
   SpecService
   ]);
 
-function SpecService($state, $timeout, $localstorage, $window, $compile, KeyboardService, UtilitiesService) {
+function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, KeyboardService, UtilitiesService, RootService) {
 
     return {
         initSpec: initSpec,
@@ -52,6 +54,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             specObj.data.toggleDev = true;
             specObj.data.toggleSpec = false;
             specObj.data.toggleDocs = false;
+            specObj.data.toggleDocSearch = false;
+            specObj.data.toggleGoogleDoc = false;
             specObj.data.toggleShortcuts = false;
 
             specObj.data.toggleSettings = true;
@@ -67,7 +71,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             $timeout(function() {
                 specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path, specObj.css_path);
             })
-            specObj.data.openGDoc = openGDocSpecFunc(specObj.data.gdoc);
+            specObj.data.iframeGDoc = iframeGdocFunc($sce.trustAsResourceUrl(specObj.data.gdoc));
+            specObj.data.openGDoc = openGDocSpecFunc($sce.trustAsResourceUrl(specObj.data.gdoc));
             specObj.data.ready = loadLocalStorageSettings(scope);
             for (specProp in specObj) {
                 scope.spec[specProp] = specObj[specProp]
@@ -87,6 +92,12 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                 $timeout(function() {
                     $compile(specElem)(real_scope);
                 })
+            }
+
+            function iframeGdocFunc(url) {
+                return function() {
+
+                }
             }
 
             function openGDocSpecFunc(url) {
@@ -112,7 +123,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
                     {key: 'z', action: 'toggle settings'},
                     {key: 'k', action: 'show shortcuts'},
                     {key: 'm', action: 'toggle mobile'},
-                    {key: 'n', action: 'launch docs'}
+                    {key: 'n', action: 'launch docs'},
+                    {key: 'hold gDoc', action: 'launch gdoc external'},
                 ]
             }
 
@@ -393,7 +405,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, Keyboar
             recentlySet = true;
         }
         return function() {
-
+            scope.spec.data.docs = {items: RootService.getDocItems(), searchText: ''};
+            console.log('data docs', scope.spec.data.docs);
             scope.spec.data.settings = {cache: localStorageSettings, clear: clearLocalStorage(scope), updateProperty:updateSettingCacheLocalStorage(scope), updateDefaultState:updateDefaultStateLocalStorage(scope)}
             // scope.spec.data.settings.cache.autoApplyState = true;
 
