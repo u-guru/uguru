@@ -42,6 +42,7 @@
 		display: block;
 		h1 {
 			background: mix($cobalt, $slate, 25%);
+			height: 50px;
 		}
 		&:hover, &:focus {
 			h1 {

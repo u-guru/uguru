@@ -27,7 +27,8 @@
 .component-item > a:nth-child(1) {
   display: block; }
   .component-item > a:nth-child(1) h1 {
-    background: #4e5371; }
+    background: #4e5371;
+    height: 50px; }
   .component-item > a:nth-child(1):hover h1, .component-item > a:nth-child(1):focus h1 {
     background: #43cb9d !important; }
     .component-item > a:nth-child(1):hover h1 span, .component-item > a:nth-child(1):focus h1 span {

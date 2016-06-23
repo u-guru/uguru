@@ -188,10 +188,8 @@ input, fieldset {
 }
 
 .fix-abs {
-	* {
-		&.fixed {
-			position: absolute!important;
-		}
+	.fixed {
+		position: absolute!important;
 	}
 }
 
