@@ -198,7 +198,7 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
               },
               {
                 title: "Gabrielle's Portfolio",
-                identifier: 'profile',
+                identifier: 'gabrielle',
                 reference: {
                     controller: 'GabrielleController',
                     templateUrl: 'gabrielle/templates/index.html',
@@ -207,7 +207,7 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
               },
               {
                 title: "Jeselle's Portfolio",
-                identifier: 'profile',
+                identifier: 'jeselle',
                 reference: {
                     controller: 'GabrielleController',
                     templateUrl: 'gabrielle/templates/index.html',
@@ -218,6 +218,7 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
 
         for (var i = 0; i < workflows.length; i++) {
             workflows[i]['id'] = i + 1;
+            console.log(workflows[i]);
         }
         console.log(workflows.length, 'workflows rendered');
         return workflows;
