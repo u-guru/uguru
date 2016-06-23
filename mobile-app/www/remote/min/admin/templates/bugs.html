@@ -85,7 +85,9 @@
 		<div class='bg-slate-70p' ng-int='reverse = false'>
 			<div ng-if='!addSection'>
 				<ul ng-if="availableOptions.selectedIndex == 0" class="p15-grid">
-					<li ng-repeat='state in states' >
+					<li ng-repeat='state in states' ng-init='expendAll = false'>
+						<!-- <a ng-click= 'expendAll = !expendAll' >View ALL</a> -->
+
 						<ul class="flex" ng-init="isExpend = false">
 							<li>
 								<a class="flex-center width-36 height-36 txt-14 border-3 semibold" ng-click='isExpend = !isExpend' >
