@@ -39,12 +39,12 @@ angular.module('uguru.admin')
         transclude:true,
         replace:true,
         restrict: 'E',
+        scope:true,
         link: function(scope, element, attr) {
-
+            scope.doc = {onSnippetClicked: onSnippedClicked(scope, element), onStateClicked: onStateClicked(scope, element), keywords: keywordArr, states: [], snippets: [], stateIndex: 0, snippetIndex:0};
             if ('keywords' in attr && attr['keywords']) {
                 var keywords = attr['keywords'];
                 var keywordArr = keywords.split(', ');
-                scope.doc = {onSnippetClicked: onSnippedClicked(scope, element), onStateClicked: onStateClicked(scope, element), keywords: keywordArr, states: [], snippets: [], stateIndex: 0, snippetIndex:0};
                 RootService.appendDocItem(scope.doc);
             }
             return;
@@ -117,8 +117,10 @@ angular.module('uguru.admin')
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.demo.tpl',
         transclude:true,
         replace:true,
+        scope:false,
         restrict: 'E',
         link: function(scope, element, attr) {
+            console.log(scope.doc);
         }
     }
 }])
@@ -128,13 +130,13 @@ angular.module('uguru.admin')
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.state.tpl',
         transclude:true,
         replace:true,
-        scope:true,
+        scope:false,
         restrict: 'E',
         link: function(scope, element, attr) {
             var title = attr.name;
             var inherit = false;
             var html;
-            if ('default' in attr && 'doc' in scope) {
+            if ('default' in attr && 'doc' in scope.$parent) {
                 scope.doc.stateIndex = scope.doc.states.length
                 title = 'Default';
             }
@@ -193,6 +195,7 @@ angular.module('uguru.admin')
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.states.tpl',
         transclude:true,
         replace:true,
+        scope:false,
         restrict: 'E',
         link: function(scope, element, attr) {
             return;

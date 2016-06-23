@@ -5,15 +5,27 @@ angular
   '$timeout',
   '$localstorage',
   '$window',
+  'AdminWorkflowService',
   SpecContentService
   ]);
 
-function SpecContentService($state, $timeout, $localstorage, $window) {
+function SpecContentService($state, $timeout, $localstorage, $window, AdminWorkflowService) {
     var allSpecs = {};
     var allAdminSpecs = {};
     var adminFeedbackArr = ["no docs", "Staging is down", "localhost doesnt work", "override app.css on cp", "dev-toolbar is not working"];
     var adminToolSpec = ["searchable docs", "", "strip data from spec", "univeral per-svg reference", "too many tool-switching (i.e. bounce.js", "upcoming moodbard (no implemented yet)", "todo:learn more about codepen collab", "todsicuss: dev wiki", "default codepen window size ext", "svg bit map", "more robust animation + pause tools", "normlizer"];
-    allSpecs.preApp =  {
+
+    function loadWorkflows() {
+        var workflows = AdminWorkflowService.getWorkflows();
+        for (wkflw in workflows) {
+            workflows[wkflw]['spec'] = getSpec(workflows[wkflw]['id']);
+            workflows[wkflw]['ready'] = true;
+            workflows[wkflw]['routes'] = getRoutes(workflows[wkflw]['reference'].routeUrl, workflows[wkflw]['reference'].templateUrl, workflows[wkflw]['reference'].cssUrl)
+        }
+        return {"workflows": workflows}
+    }
+
+    allSpecs.preApp =  loadWorkflows() || {
             "workflows":[
               {
                 title: 'App Loader Bakery',
@@ -101,61 +113,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 ready:true
               }
               ]
-            //   {
-            //     title: 'splash',
-            //     dependencies: ['FakeDataService'],
-            //     controller: 'SplashController',
-            //     bugs: getBugInfo('splash')
-            //   },
-            //   {
-            //     title: 'GenericGuruProfile',
-            //     dependencies: ['FakeDataService'],
-            //     controller: 'GuruProfileController'
-            //   },
-            //   {
-            //     title: 'DeviceDemoController',
-            //     dependencies: ['GenericGuruProfile']
-            //   },
-            //   {
-            //     title: 'SplashLoaderController',
-            //     priority: 1
-            //   },
-            //   {
-            //     title: 'UniversitySearchController',
-            //   },
-            //   {
-            //     title: 'SplashMadLibController',
-            //     priority: 1
-            //   },
-            //   {
-            //     title: 'SplashMapController'
-            //   },
-            //   {
-            //     title: 'SplashTransitions',
-            //     description: ['Loader:SplashMadLibController']
-            //   },
-            //   {
-            //     title: 'HowItWorksController'
-            //   },
-            //   {
-            //     title: 'BecomeGuruController'
-            //   },
-            //   {
-            //     title: 'SignupController',
-            //     notes: 'Needs Refactoring'
-            //   },
-            //   {
-            //     title: 'AccessController'
-            //   },
-            //   {
-            //     title: 'DemographicsController'
-            //   },
-            //   {
-            //     title: 'GettingStartedController'
-            //   }
-            // ]
     }
-
     allAdminSpecs.preApp = [
         {
             title: 'Organize', description: 'depth first pre-app', priority: 1
@@ -250,7 +208,6 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
         }
         var localUrl = defaultRoutes.local + param;
         var stagingUrl = defaultRoutes.staging + param;
-        console.log(param);
         return {
             local: {url: localUrl, launch: launchSeparateWindowFunc(localUrl)},
             staging: {url: stagingUrl, launch: launchSeparateWindowFunc(stagingUrl)},
