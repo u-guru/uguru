@@ -6991,9 +6991,173 @@ a.course-card {
 }
 
 // profile tile
-.pf-tile {
+.pf-tile-container {
+	-webkit-perspective: 1000;
+	perspective: 1000;
+	position: relative;
 	width: 100%;
 	max-width: 400px;
+	a {
+		display: block;
+		position: absolute;
+		z-index: 2;
+		width: 50%;
+		height: 50%;
+		cursor: pointer;
+		&:hover, &:focus {
+			~ .bg-academic {
+				.pf-tile-border {
+					transform: translateZ(20px);
+				}
+				.pf-tile-top {
+					.pf-pricing {
+						transform: translateZ(40px);
+					}
+				}
+			}
+			~ .bg-tech {
+				.pf-tile-top {
+					&:after {
+						opacity: 1;
+						transform: translateZ(20px);
+					}
+					.pf-pricing {
+						transform: translateZ(20px);
+					}
+				}
+				.pf-tile-bottom {
+					transform: translateZ(20px);
+					background: $azure;
+					h1 {
+						color: white;
+					}
+				}
+				.border-corner {
+					transform: translateZ(20px);
+					span {
+						&:nth-child(1) {
+							transform: scaleY(0);
+							transition: all 500ms cubic-bezier(0,.66,.47,1.09) 250ms;
+						}
+						&:nth-child(2) {
+							transform: scaleX(0);
+							transition: all 500ms cubic-bezier(0,.66,.47,1.09) 250ms;
+						}
+					}
+				}
+				.border-outside {
+					transform: translateZ(20px);
+					span {
+						&:nth-child(1) {
+							transform: scaleX(0);
+							transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+						}
+						&:nth-child(2) {
+							transform: scaleX(0);
+							transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+						}
+						&:nth-child(3) {
+							transform: scaleY(0);
+							transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+						}
+						&:nth-child(4) {
+							transform: scaleX(0);
+							transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+						}
+						&:nth-child(5) {
+							transform: scaleX(0);
+							transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+						}
+						&:nth-child(6) {
+							transform: scaleY(0);
+							transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+						}
+					}
+				}
+				.border-top {
+					transform: translateZ(20px);
+					span {
+						&:nth-child(1) {
+							transform: scaleX(0);
+							transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+						}
+						&:nth-child(2) {
+							transform: scaleX(0);
+							transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+						}
+					}
+				}
+			}
+		}
+		&:active {
+			~ .bg-tech {
+				.pf-tile-top {
+					&:after {
+						background: rgba(mix($azure, $slate), 0.5);
+						transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
+					}
+				}
+				.pf-tile-bottom {
+					background: mix($azure, $slate);
+					h1 {
+						color: $azure;
+					}
+				}
+			}
+		}
+		&:nth-child(1) {
+			top: 0;
+			left: 0;
+			&:hover, &:focus {
+				~ .pf-tile {
+					transform-origin: bottom right;
+					transform: rotateX(5deg) rotateY(-5deg);
+				}
+			}
+		}
+		&:nth-child(2) {
+			top: 0;
+			right: 0;
+			&:hover, &:focus {
+				~ .pf-tile {
+					transform-origin: bottom left;
+					transform: rotateX(5deg) rotateY(5deg);
+				}
+			}
+		}
+		&:nth-child(3) {
+			bottom: 0;
+			right: 0;
+			&:hover, &:focus {
+				~ .pf-tile {
+					transform-origin: top left;
+					transform: rotateX(-5deg) rotateY(5deg);
+				}
+			}
+		}
+		&:nth-child(4) {
+			bottom: 0;
+			left: 0;
+			&:hover, &:focus {
+				~ .pf-tile {
+					transform-origin: top right;
+					transform: rotateX(-5deg) rotateY(-5deg);
+				}
+			}
+		}
+	}
+}
+.pf-tile {
+	position: relative;
+	z-index: 1;
+	display: block;
+	width: 100%;
+	max-width: 400px;
+	transition: all 500ms ease-out;
+	transform-style: preserve-3d;
+	// * {
+	// 	transform-style: preserve-3d;
+	// }
 	.pf-tile-top {
 		@include flex;
 		@include flex-wrap;
@@ -7054,7 +7218,110 @@ a.course-card {
 			padding: 0!important;
 			svg {
 				width: 100%;
-				height: auto;
+				height: 100%;
+			}
+		}
+	}
+	&.bg-academic {
+		transform-origin: left top;
+		.pf-tile-border {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			z-index: 10;
+			width: calc(100% - 20px);
+			height: calc(100% - 20px);
+			opacity: 0.5;
+			transition: all 500ms ease-out;
+			div {
+				@include round;
+				position: absolute;
+				background: white;
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 2px;
+				}
+				&:nth-child(2) {
+					top: 0;
+					right: 0;
+					width: 2px;
+					height: 100%;
+				}
+				&:nth-child(3) {
+					bottom: 0;
+					right: 0;
+					width: 100%;
+					height: 2px;
+				}
+				&:nth-child(4) {
+					bottom: 0;
+					left: 0;
+					width: 2px;
+					height: 100%;
+				}
+			}
+		}
+		.pf-tile-top {
+			background: lighten($slate, 15%);
+			.pf-pricing {
+				position: absolute;
+				top: 25px;
+				z-index: 11;
+				right: 0;
+				background: $cerise;
+				height: 40px;
+				padding: 10px 15px 10px 0;
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				color: white;
+				font-size: 16px;
+				font-weight: 700;
+				transition: all 500ms ease-out;
+				&:before {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: -20px;
+					width: 0;
+					height: 0;
+					border: 20px solid $cerise;
+					border-left-width: 10px;
+					border-right-width: 10px;
+					border-left-color: transparent;
+				}
+			}
+		}
+		.pf-tile-bottom {
+			background: $cerise;
+			padding-bottom: 25px;
+			.pf-review-count {
+				width: 100%;
+			}
+		}
+	}
+	&.bg-baking {
+		.pf-tile-top {
+			position: relative;
+			background-color: mix($gold, $slate);
+			border-radius: 2px 2px 0 0;
+			.pf-pricing {
+				position: absolute;
+				bottom: 15px;
+				right: 0;
+				padding: 10px 15px;
+				font-size: 18px;
+				font-weight: 900;
+				background: $gold;
+				border-radius: 4px 0 0 4px;
+			}
+		}
+		.pf-tile-bottom {
+			background: white;
+			border-radius: 0 0 2px 2px;
+			h1 {
+				color: $gold;
 			}
 		}
 	}
@@ -7088,27 +7355,171 @@ a.course-card {
 			}
 		}
 	}
-	&.bg-baking {
+	&.bg-tech {
+		border: 0;
+		border-radius: 2px;
+		background: mix($azure, $slate);
+		span:empty {
+			@include round;
+			display: block;
+			position: absolute;
+			background: $azure;
+		}
+		.border-corner {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			span {
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+					width: 2px;
+					height: 100%;
+					transform-origin: left top;
+					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				}
+				&:nth-child(2) {
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 2px;
+					transform-origin: right center;
+					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				}
+			}
+		}
+		.border-top {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			span {
+				&:nth-child(1) {
+					border-radius: 1000px 0 0 1000px;
+					top: 0;
+					left: 0;
+					width: 50%;
+					height: 2px;
+					transform-origin: left center;
+					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				}
+				&:nth-child(2) {
+					border-radius: 0 1000px 1000px 0;
+					top: 0;
+					right: 0;
+					width: 50%;
+					height: 2px;
+					transform-origin: right center;
+					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				}
+			}
+		}
+		.border-outside {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			span {
+				&:nth-child(1) {
+					border-radius: 1000px 0 0 1000px;
+					top: 0;
+					left: 0;
+					width: 50%;
+					height: 2px;
+					transform-origin: right center;
+					transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+				}
+				&:nth-child(2) {
+					border-radius: 0 1000px 1000px 0;
+					top: 0;
+					right: 0;
+					width: 50%;
+					height: 2px;
+					transform-origin: left center;
+					transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+				}
+				&:nth-child(3) {
+					top: 0;
+					right: 0;
+					width: 2px;
+					height: 100%;
+					transform-origin: center top;
+					transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+				}
+				&:nth-child(4) {
+					border-radius: 1000px 0 0 1000px;
+					bottom: 0;
+					left: 0;
+					width: 50%;
+					height: 2px;
+					transform-origin: left center;
+					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				}
+				&:nth-child(5) {
+					border-radius: 0 1000px 1000px 0;
+					bottom: 0;
+					right: 0;
+					width: 50%;
+					height: 2px;
+					transform-origin: right center;
+					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				}
+				&:nth-child(6) {
+					bottom: 0;
+					left: 0;
+					width: 2px;
+					height: 100%;
+					transform-origin: center top;
+					transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+				}
+			}
+		}
 		.pf-tile-top {
-			position: relative;
-			background-color: mix($gold, $slate);
-			border-radius: 2px 2px 0 0;
+			background-color: mix($azure, $slate);
+			overflow: visible;
+			height: 198px;
+			&:after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba($azure,0.5);
+				opacity: 0;
+				transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
+			}
 			.pf-pricing {
 				position: absolute;
-				bottom: 15px;
+				top: 0;
 				right: 0;
-				padding: 10px 15px;
+				padding: 12px 17px;
 				font-size: 18px;
-				font-weight: 900;
-				background: $gold;
-				border-radius: 4px 0 0 4px;
+				font-weight: 700;
+				border: 0;
+				border-radius: 0 2px 0 2px;
+				background: $charcoal;
+				&.bg-moxie {
+					background: $moxie!important;
+				}
+				&.bg-crimson {
+					background: $crimson!important;
+				}
 			}
 		}
 		.pf-tile-bottom {
-			background: white;
-			border-radius: 0 0 2px 2px;
+			height: 68px;
+			background: $charcoal;
+			border: 0;
+			transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
 			h1 {
-				color: $gold;
+				color: $azure;
+				transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
 			}
 		}
 	}
@@ -7152,89 +7563,6 @@ a.course-card {
 				color: $cobalt;
 				font-size: 16px;
 				font-weight: 600;
-			}
-		}
-	}
-	&.bg-tech {
-		border: 2px solid $azure;
-		border-radius: 2px;
-		.pf-tile-top {
-			background-color: mix($azure, $slate);
-			overflow: hidden;
-			height: 198px;
-			.pf-pricing {
-				position: absolute;
-				top: -2px;
-				right: -2px;
-				padding: 10px 15px;
-				font-size: 18px;
-				font-weight: 700;
-				border: 2px solid $azure;
-				border-radius: 0 2px 0 2px;
-				background: $charcoal;
-				&.bg-moxie {
-					background: $moxie!important;
-				}
-				&.bg-crimson {
-					background: $crimson!important;
-				}
-			}
-		}
-		.pf-tile-bottom {
-			height: 68px;
-			background: $charcoal;
-			border-top: 2px solid $azure;
-			h1 {
-				color: $azure;
-			}
-		}
-	}
-	&.bg-academic {
-		position: relative;
-		.pf-tile-border {
-			position: absolute;
-			top: 10px;
-			left: 10px;
-			z-index: 10;
-			width: calc(100% - 20px);
-			height: calc(100% - 20px);
-			border: 2px solid rgba(white, .5);
-			border-radius: 2px;
-		}
-		.pf-tile-top {
-			background: lighten($slate, 15%);
-			.pf-pricing {
-				position: absolute;
-				top: 25px;
-				z-index: 11;
-				right: 0;
-				background: $cerise;
-				height: 40px;
-				padding: 10px 15px 10px 0;
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-				color: white;
-				font-size: 16px;
-				font-weight: 700;
-				&:before {
-					content: "";
-					position: absolute;
-					top: 0;
-					left: -20px;
-					width: 0;
-					height: 0;
-					border: 20px solid $cerise;
-					border-left-width: 10px;
-					border-right-width: 10px;
-					border-left-color: transparent;
-				}
-			}
-		}
-		.pf-tile-bottom {
-			background: $cerise;
-			padding-bottom: 25px;
-			.pf-review-count {
-				width: 100%;
 			}
 		}
 	}

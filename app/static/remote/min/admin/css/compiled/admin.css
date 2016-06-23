@@ -54,7 +54,12 @@
     display: -webkit-flex;
     display: flex;
     background: #97a2a6;
-    width: 100%; }
+    width: 100%;
+    overflow-x: auto; }
+    .component-item-nav ul::-webkit-scrollbar {
+      display: none; }
+    .component-item-nav ul::-moz-scrollbar {
+      display: none; }
   .component-item-nav a {
     display: block;
     text-align: center;

@@ -33,7 +33,7 @@ angular.module('uguru.admin')
        $scope.bugReport = result;
        console.log('result', $scope.bugReport);
       }, function(reason) {
-        console.log(reason);
+        // console.log(reason);
       });
       $scope.$watchCollection('bugReport', function(newNames, oldNames) {
         if (!oldNames && newNames){

@@ -5,157 +5,32 @@ angular
   '$timeout',
   '$localstorage',
   '$window',
+  'AdminWorkflowService',
   SpecContentService
   ]);
 
-function SpecContentService($state, $timeout, $localstorage, $window) {
+function SpecContentService($state, $timeout, $localstorage, $window, AdminWorkflowService) {
     var allSpecs = {};
     var allAdminSpecs = {};
     var adminFeedbackArr = ["no docs", "Staging is down", "localhost doesnt work", "override app.css on cp", "dev-toolbar is not working"];
     var adminToolSpec = ["searchable docs", "", "strip data from spec", "univeral per-svg reference", "too many tool-switching (i.e. bounce.js", "upcoming moodbard (no implemented yet)", "todo:learn more about codepen collab", "todsicuss: dev wiki", "default codepen window size ext", "svg bit map", "more robust animation + pause tools", "normlizer"];
-    allSpecs.preApp =  {
-            "workflows":[
-              {
-                title: 'App Loader Bakery',
-                routes: getRoutes('dev/splash/loaders', 'preapp/templates/loaders/main.html', 'preapp/css/scss/loader.scss'),
-                spec: getSpec('loader'),
-                ready:true
-              },
-              {
-                title: 'Madlib Selection',
-                controller: 'SplashMadlibController',
-                routes: getRoutes('dev/splash/madlib', 'preapp/templates/splash.madlib.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
-                ready:true
-              },
-              {
-                title: 'Academic Guru Profile',
-                controller: 'GuruProfileController',
-                routes: getRoutes('dev/admin/profiles/academic', 'shared/templates/guru.profile.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
-                ready:true
-              },
-              {
-                title: 'Tech Guru Profile',
-                controller: 'GuruProfileController',
-                routes: getRoutes('dev/admin/profiles/tech', 'shared/templates/guru.profile.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
-                ready:true
-              },
-              {
-                title: 'Baking Guru Profile',
-                controller: 'GuruProfileController',
-                routes: getRoutes('dev/admin/profiles/baking', 'shared/templates/guru.profile.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
-                ready:true
-              },
-              {
-                title: 'Household Guru Profile',
-                controller: 'GuruProfileController',
-                routes: getRoutes('dev/admin/profiles/household', 'shared/templates/guru.profile.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
-                ready:true
-              },
-              {
-                title: 'Photography Guru Profile',
-                controller: 'GuruProfileController',
-                routes: getRoutes('dev/admin/profiles/photo', 'shared/templates/guru.profile.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
-                ready:true
-              },
-              {
-                title: 'Nav Controller',
-                controller: 'NavController',
-                routes: getRoutes('/dev/nav/', 'preapp/templates/nav.html', 'preapp/js/SplashNavController.js'),
-                spec: getSpec('nav'),
-                bugs: getBugInfo('nav'),
 
-              },
-              {
-                title: 'Device Controller',
-                controller: 'SplashDeviceController',
-                routes: getRoutes('/dev/device/', 'preapp/templates/device.html', 'preapp/js/SplashDeviceController.js'),
-                spec: getSpec('device'),
-                bugs: getBugInfo('device'),
-              },
-              {
-                title: "Jeselle's Portfolio",
-                controller: 'JeselleController',
-                routes: getRoutes('dev/jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js'),
-                spec: getSpec('jeselle'),
-                bugs: getBugInfo('jeselle'),
-                ready:true
-              },
-              {
-                title: "Gabrielle's Portfolio",
-                controller: 'GabrielleController',
-                routes: getRoutes('dev/gabrielle', 'gabrielle/templates/index.html', 'gabrielle/templates/GabrielleCtrl.js'),
-                spec: getSpec('gabrielle'),
-                // bugs: getBugInfo('gabrielle'),
-                ready:true
-              }
-              ]
-            //   {
-            //     title: 'splash',
-            //     dependencies: ['FakeDataService'],
-            //     controller: 'SplashController',
-            //     bugs: getBugInfo('splash')
-            //   },
-            //   {
-            //     title: 'GenericGuruProfile',
-            //     dependencies: ['FakeDataService'],
-            //     controller: 'GuruProfileController'
-            //   },
-            //   {
-            //     title: 'DeviceDemoController',
-            //     dependencies: ['GenericGuruProfile']
-            //   },
-            //   {
-            //     title: 'SplashLoaderController',
-            //     priority: 1
-            //   },
-            //   {
-            //     title: 'UniversitySearchController',
-            //   },
-            //   {
-            //     title: 'SplashMadLibController',
-            //     priority: 1
-            //   },
-            //   {
-            //     title: 'SplashMapController'
-            //   },
-            //   {
-            //     title: 'SplashTransitions',
-            //     description: ['Loader:SplashMadLibController']
-            //   },
-            //   {
-            //     title: 'HowItWorksController'
-            //   },
-            //   {
-            //     title: 'BecomeGuruController'
-            //   },
-            //   {
-            //     title: 'SignupController',
-            //     notes: 'Needs Refactoring'
-            //   },
-            //   {
-            //     title: 'AccessController'
-            //   },
-            //   {
-            //     title: 'DemographicsController'
-            //   },
-            //   {
-            //     title: 'GettingStartedController'
-            //   }
-            // ]
+    function loadWorkflows() {
+        var workflows = AdminWorkflowService.getWorkflows();
+        for (wkflw in workflows) {
+            workflows[wkflw]['spec'] = getSpec(workflows[wkflw]['id']);
+            workflows[wkflw]['ready'] = true;
+            workflows[wkflw]['routes'] = getRoutes(workflows[wkflw]['reference'].routeUrl, workflows[wkflw]['reference'].templateUrl, workflows[wkflw]['reference'].cssUrl)
+        }
+        return {"workflows": workflows}
     }
 
+    function prioritizeWorkflows(workflows, user_name) {
+
+        return workflows
+    }
+
+    allSpecs.preApp =  prioritizeWorkflows(loadWorkflows());
     allAdminSpecs.preApp = [
         {
             title: 'Organize', description: 'depth first pre-app', priority: 1
@@ -250,7 +125,6 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
         }
         var localUrl = defaultRoutes.local + param;
         var stagingUrl = defaultRoutes.staging + param;
-        console.log(param);
         return {
             local: {url: localUrl, launch: launchSeparateWindowFunc(localUrl)},
             staging: {url: stagingUrl, launch: launchSeparateWindowFunc(stagingUrl)},
