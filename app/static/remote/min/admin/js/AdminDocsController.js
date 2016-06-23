@@ -3,19 +3,27 @@ angular.module('uguru.admin')
 .controller('AdminDocsController', [
   '$scope',
   '$state',
-  function($scope, $state) {
+  'RootService',
+  '$timeout',
+  function($scope, $state, RootService, $timeout) {
     var docs = this;
 
     docs.directives = {};
-    docs.main  = {index: 1, options: ["Notes", "CSS+Classes", "Components", "Directives", "Status/Tools"]};
+    docs.items = [];
 
+    docs.main  = {index: 2, options: ["Notes", "Utility", "Components", "Directives", "Status/Tools"]};
 
+    docs.search = function(letters) {
+        console.log(letters);
+    }
 
-    docs.search = function(words) {
-
+    docs.getSearchTerms = function() {
+      docs.items = RootService.getDocItems();
     }
 
     docs.searchText = '';
+
+
 
   }
 

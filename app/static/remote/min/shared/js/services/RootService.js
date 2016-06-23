@@ -7,6 +7,7 @@ angular.module('uguru.shared.services')
 
 function RootService($timeout, $state) {
     var base_url = '';
+    var docItems = [];
     initBaseUrlByEnv();
     return {
         // slide: slide,
@@ -18,9 +19,21 @@ function RootService($timeout, $state) {
         applyAnimateOutDirective: applyAnimateOutDirective,
         initCSSAnimation: initCSSAnimation,
         getBaseUrl: getBaseUrl,
+        getDocItems: getDocItems,
         getCSSAnimationFromClassName: getCSSAnimationFromClassName,
-        getBrowserPrefix:getBrowserPrefix
+        getBrowserPrefix:getBrowserPrefix,
+        appendDocItem: appendDocItem
     }
+
+    function appendDocItem(item) {
+      docItems.push(item);
+      console.log(docItems);
+    }
+
+    function getDocItems() {
+      return docItems;
+    }
+
 
     function getBrowserPrefix() {
         var browserPrefix;
