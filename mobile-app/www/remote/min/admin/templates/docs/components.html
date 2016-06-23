@@ -261,47 +261,33 @@
                     </doc-snippets>
                 </doc-demo>
             </doc-item>
-            <li>
-                <div class="component-item">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Course Card</h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
+            <doc-item keywords="school, course, card, university">
+                <doc-title>Course Card</doc-title>
+                <doc-description>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</doc-description>
+                <doc-demo>
+                    <doc-states>
+                        <doc-state default>
+                            <div class="course-card" on-activate="" elem-states="[course-card]" on-course-card-enter="" on-course-card-exit="">
+                                <svg width="240px" height="150px" viewBox="0 0 240 150">
+                                    <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                </svg>
+                                <div class="course-card-inside">
+                                    <h2 style="color: #003262;">BIO 1A</h2>
+                                    <h1 style="color: #003262;">Introduction to Biology</h1>
+                                </div>
+                                <div class="course-card-border" style="background: #003262;"></div>
                             </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <div class="course-card">
-                    				<svg width="240px" height="150px" viewBox="0 0 240 150">
-                    					<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-                    				</svg>
-                    				<div class="course-card-inside">
-                    					<h2 style="color: #003262;">BIO 1A</h2>
-                    					<h1 style="color: #003262;">Introduction to Biology</h1>
-                    				</div>
-                    				<div class="course-card-border" style="background: #003262;"></div>
-                    			</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
-                            </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
+                        </doc-state>
+                        <doc-state inherit todo name="onActivate"></doc-state>
+                        <doc-state inherit todo name="onCourseCardEnter"></doc-state>
+                        <doc-state inherit todo name="onCourseCardExit"></doc-state>
+                    </doc-states>
+                    <doc-snippets>
+                        <doc-snippet default type="html"></doc-snippet>
+                        <doc-snippet type="css"></doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+            </doc-item>
             <li>
                 <div class="component-item">
                     <a>
