@@ -13,7 +13,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
     var allAdminSpecs = {};
     var adminFeedbackArr = ["no docs", "Staging is down", "localhost doesnt work", "override app.css on cp", "dev-toolbar is not working"];
     var adminToolSpec = ["searchable docs", "", "strip data from spec", "univeral per-svg reference", "too many tool-switching (i.e. bounce.js", "upcoming moodbard (no implemented yet)", "todo:learn more about codepen collab", "todsicuss: dev wiki", "default codepen window size ext", "svg bit map", "more robust animation + pause tools", "normlizer"];
-    allSpecs.preApp = {
+    allSpecs.preApp =  {
             "workflows":[
               {
                 title: 'App Loader Bakery',
@@ -97,7 +97,7 @@ function SpecContentService($state, $timeout, $localstorage, $window) {
                 controller: 'GabrielleController',
                 routes: getRoutes('dev/gabrielle', 'gabrielle/templates/index.html', 'gabrielle/templates/GabrielleCtrl.js'),
                 spec: getSpec('gabrielle'),
-                bugs: getBugInfo('gabrielle'),
+                // bugs: getBugInfo('gabrielle'),
                 ready:true
               }
               ]

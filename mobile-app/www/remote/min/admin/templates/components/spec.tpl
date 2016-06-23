@@ -1,21 +1,38 @@
 <div class='spec-template-wrapper high-z-index' style='min-height:10% !important;' eval-on-init="spec.ready()">
     <anim-tools ng-if='spec.animTools.show' ng-class="{'animated slideInDown':spec.animTools.show, 'animated slideOutUp':!spec.animTools.show}" active="spec.animTools.show" ng-model="spec.animTools.stage"> </anim-tools>
-    <div id="dev-docs" ng-if="spec.toggleDocs" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
-        <div style='height: calc(100% - 132px) !important;' class='top-0 left-0 absolute full-xy bg-cerise animated slideInDown' ng-class="{'z-index-1000': spec.toggleDocs}" >
-            <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">
-                <div class="bg-slate txt-center">
-                    <h1 class='bg-cobalt-25p p15xy txt-28 weight-600 height-64 flex-center'><span class="weight-900">{{spec.title}} +&nbsp;</span> General Docs </h1>
-                </div>
-                <div class='absolute full-xy bg-charcoal' ng-include='root.base_url + "admin/templates/docs/docs.html"' style='height:calc(100% - 75px) !important;'>
-                </div>
-            </div>
+    <div id="dev-docs" ng-if="spec.toggleGoogleDoc" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);'>
+        <div class='relative full-xy'>
+            <iframe class='absolute full-xy animated' src="{{spec.gdoc}}" style='opacity-0' on-init="opacity:1:delay-500" on-init-class="slideInDown"> </iframe>
         </div>
-        <div id="dev-toolbar" style='z-index:10000; bottom: 0px;' class='full-x left-0 absolute bg-slate animated slideInUp' ng-if="spec.toggleDocSearch" ng-if='false'>
+    </div>
+    <div id="dev-docs" ng-if="spec.toggleDocSearch" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
+        <div id="dev-toolbar" style='z-index:10000; bottom: 0px;' class='full-x left-0 absolute bg-slate animated slideInUp' ng-if="spec.toggleDocSearch">
         <!-- @samir state list -->
+            <ul class="bg-charcoal-50p flex-center-vertical p15-grid full-x" ng-show="spec.docs.searchText.length" ng-controller='AdminDocsController as docs'>
+                <li class='full-x bg-charcoal' ng-repeat='item in spec.docs.items | filter:spec.docs.searchText:strict track by $index'>
+                    <div class='ugrid-2'>
+                        <div>
+                            <h1>
+                                {{item.title}}
+                            </h1>
+                        </div>
+                        <div>
+                            {{item}}
+                        </div>
+                    </div>
+                </li>
+                <li ng-if='!spec.docs.items.length && spec.docs.searchText.length'>
+                    No results found for <span class='weight-600'>{{spec.docs.searchText.length}}</span>
+                </li>
+                <li hidden>
+                    <div class='absolute full-xy bg-charcoal' ng-include='root.base_url + "admin/templates/docs/docs.html"' style='height:calc(100% - 75px) !important;'>
+                    </div>
+                </li>
+            </ul>
             <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
-                <div class='full-x ugrid-2'>
+                <li class='full-x ugrid-2'>
                     <fieldset class="with-icon">
-                        <input autofocus ng-model='docs.searchText' class="input-border bg-smoke" type="text" placeholder="Search components">
+                        <input autofocus ng-model='spec.docs.searchText' class="input-border bg-smoke" type="text" placeholder="Search components">
                         <label></label>
                         <span class="input-icon">
                             <svg viewBox="0 0 100 100">
@@ -26,7 +43,7 @@
                             <i class='icon ion-close-circled txt-slate'></i>
                         </a>
                     </fieldset>
-                </div>
+                </li>
             </ul>
             <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
                 &nbsp;
@@ -135,7 +152,7 @@
         <div class='bg-slate' ng-include="spec.mobile.template" style='width:{{spec.mobile.width}}px !important; height: {{spec.mobile.height}}px !important;' class='animated bounceInDown relative' id='mobile-spec-container' > </div>
     </div>
     <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate animated slideInUp' ng-if="spec.toggleDev">
-        <ul id='dev-bar-settings' class="flex-center-vertical full-x overflow-x no-scrollbar animated flex-wrap-center flex-stretch" ng-if='spec.showSettings' ng-class='{"lightSpeedIn": spec.showSettings}'>
+        <ul id='dev-bar-settings' class="flex-center-vertical full-x overflow-x no-scrollbar animated flex-wrap-center flex-stretch" ng-if='spec.showSettings' >
             <li class='p15-grid text-center weight-500 uppercase txt-2 bg-transparent flex-wrap-center bg-cobalt-30p'>
                 Settings
             </li>
@@ -185,7 +202,7 @@
                 </div>
             </li>
         </ul>
-        <ul id='dev-bar-shortcuts' class="bg-cobalt-30p flex-center-vertical p15-grid full-x animated overflow-x no-scrollbar" ng-if='spec.showShortcuts' ng-class='{"lightSpeedIn": spec.showShortcuts}'>
+        <ul id='dev-bar-shortcuts' class="bg-cobalt-30p flex-center-vertical p15-grid full-x animated overflow-x no-scrollbar" ng-if='spec.showShortcuts'>
             <li class='p15-grid text-center weight-500 bg-charcoal uppercase txt-2  flex-wrap-center'>
                 Keyboard shortcuts
             </li>
@@ -203,12 +220,12 @@
             <li class="flex">
                 <!-- <a ng-click='dev.toggleSpec = !dev.toggleSpec' ng-class='{"bg-azure": dev.toggleSpec}'>View Spec</a> -->
                 <button ng-if='false' class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.spec()'>Spec</button>
-                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.openGDoc()'>gDoc</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggleGoogleDoc = !spec.toggleGoogleDoc;' on-hold='spec.openGDoc()'>gDoc</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.docs.launch()'>Docs</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.settings()'>Settings</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.record()'>Record</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.shortcuts()'>Keyboard</button>
-                <button ng-if='false' class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='spec.toggleDocSearch = !spec.toggleDocSearch'>Search</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block" ng-click='spec.toggleDocSearch = !spec.toggleDocSearch'>Search</button>
             </li>
             <li class="flex">
                 <div class="m15right" ng-if='spec.codepenData'>

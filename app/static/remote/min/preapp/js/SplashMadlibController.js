@@ -57,8 +57,6 @@ angular.module('uguru.preApp')
     madlib.onUniversityChanged = function() {};
     madlib.spec = {data: {toggleDev:false, toggleSpec: false}};
     var states = {
-      onInit: true,
-      onHover: true,
       onClickOne: '[blank-num="1"] a',
       onClickTwo: '[blank-num="2"] a',
       onActivate: madlib.activate,
@@ -71,9 +69,7 @@ angular.module('uguru.preApp')
           madlib.onEnter();
     }, 2000);
 
-    $timeout(function() {
-      console.log(madlib.spec.data.settings);
-    }, 3000)
+
 
 
   }

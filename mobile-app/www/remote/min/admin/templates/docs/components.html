@@ -15,6 +15,74 @@
     </div>
     <div class="overflow-auto no-scrollbar" style="height: calc(100% - 61px)">
         <ul class="ugrid-2 p15-grid">
+
+            <doc-item keywords="id, card, university">
+                <doc-title>ID Card</doc-title>
+
+                <doc-description>University ID card prominent throughout the splash experience</doc-description>
+
+                <doc-demo>
+                    <doc-states>
+                        <doc-state default>
+                            <div class="student-card" on-activate="slideInUp:animIn" elem-states="[id-card-right]" on-id-card-right-enter="lightSpeedIn:animIn" on-id-card-right-exit="lightSpeedOut:animOut">
+                                <svg viewBox="0 0 240 150">
+                                    <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                </svg>
+                                <div class="school-id-inside">
+                                    <div class="school-id-top" style="background: #003262;">
+                                        <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+                                    </div>
+                                    <div class="school-id-bottom">
+                                        <div>
+                                            <h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
+                                            <h2 style="color: #003262;">Cal Freshman</h2>
+                                            <h2 style="color: #003262;">email@school.edu</h2>
+                                        </div>
+                                        <h3>
+                                            <span style="color: #003262;">SELECTED COURSES</span>
+                                            <span style="background: #003262;">9</span>
+                                            <a>Edit</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </doc-state>
+                        <doc-state inherit todo name="onActivate">
+                        </doc-state>
+                        <doc-state inherit name="onIdCardRightEnter">
+                        </doc-state>
+                        <doc-state inherit name="onIdCardRightExit">
+                        </doc-state>
+
+                    </doc-states>
+                    <doc-snippets>
+                        <doc-snippet default type="html">
+                            yo
+                        </doc-snippet>
+                        <doc-snippet type="css">
+                            .anim {
+                                display:none;
+                            }
+                        </doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+
+                <div class="border-2 radius-2-bottom ugrid-2" ng-if='false'>
+                    <div>
+                        <div class="component-item-nav states">
+                            <ul>
+                                <li><a class="active">Default</a></li>
+                                <li><a>onEnter</a></li>
+                                <li><a>onExit</a></li>
+                            </ul>
+                        </div>
+                        <div class="fix-abs flex-center-wrap overflow-hidden">
+
+                        </div>
+                    </div>
+
+                </div>
+            </doc-item>
             <li>
                 <div class="component-item">
                     <a>

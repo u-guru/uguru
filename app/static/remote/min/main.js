@@ -17,7 +17,8 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
 
    $sceDelegateProvider.resourceUrlWhitelist([
     'self',
-    'https://uguru.me/static/**'
+    'https://uguru.me/static/**',
+    'https://docs.google.com/**'
   ]);
 
   $httpProvider.useApplyAsync(true);

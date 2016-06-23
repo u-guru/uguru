@@ -1,41 +1,1055 @@
-<div class="absolute top-0 left-0 full-xy z-index-2 bg-smoke" style='top:20px !important;'>
-                        <div class="bg-slate relative p15xy">
-                            <fieldset class="with-icon">
-                                <input class="input-border bg-smoke" type="text" placeholder="Search components">
-                                <label></label>
-                                <span class="input-icon">
-                                    <svg viewBox="0 0 100 100">
-                                        <path stroke="white" d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
-                                    </svg>
-                                </span>
-                                <a class="absolute top-0 right-0 flex-center z-index-100" style="height: 24px;">
-                                    <i class='icon ion-close-circled txt-slate'></i>
-                                </a>
-                            </fieldset>
+<div class="absolute top-0 left-0 full-xy z-index-2 bg-smoke">
+    <div class="bg-slate-10p relative p15xy">
+        <fieldset class="with-icon">
+            <input class="input-border dark" type="text" placeholder="Search components">
+            <label></label>
+            <span class="input-icon">
+                <svg viewBox="0 0 100 100">
+                    <path stroke="white" d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                </svg>
+            </span>
+            <a class="absolute top-0 right-0 flex-center z-index-100" style="height: 24px;">
+                <i class='icon ion-close-circled txt-slate'></i>
+            </a>
+        </fieldset>
+    </div>
+    <div class="overflow-auto no-scrollbar" style="height: calc(100% - 61px)">
+        <ul class="ugrid-2 p15-grid">
+
+            <doc-item keywords="id, card, university">
+                <doc-title>ID Card</doc-title>
+
+                <doc-description>University ID card prominent throughout the splash experience</doc-description>
+
+                <doc-demo>
+                    <doc-states>
+                        <doc-state default>
+                            <div class="student-card" on-activate="slideInUp:animIn" elem-states="[id-card-right]" on-id-card-right-enter="lightSpeedIn:animIn" on-id-card-right-exit="lightSpeedOut:animOut">
+                                <svg viewBox="0 0 240 150">
+                                    <rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                </svg>
+                                <div class="school-id-inside">
+                                    <div class="school-id-top" style="background: #003262;">
+                                        <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+                                    </div>
+                                    <div class="school-id-bottom">
+                                        <div>
+                                            <h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
+                                            <h2 style="color: #003262;">Cal Freshman</h2>
+                                            <h2 style="color: #003262;">email@school.edu</h2>
+                                        </div>
+                                        <h3>
+                                            <span style="color: #003262;">SELECTED COURSES</span>
+                                            <span style="background: #003262;">9</span>
+                                            <a>Edit</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </doc-state>
+                        <doc-state inherit todo name="onActivate">
+                        </doc-state>
+                        <doc-state inherit name="onIdCardRightEnter">
+                        </doc-state>
+                        <doc-state inherit name="onIdCardRightExit">
+                        </doc-state>
+
+                    </doc-states>
+                    <doc-snippets>
+                        <doc-snippet default type="html">
+                            yo
+                        </doc-snippet>
+                        <doc-snippet type="css">
+                            .anim {
+                                display:none;
+                            }
+                        </doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+
+                <div class="border-2 radius-2-bottom ugrid-2" ng-if='false'>
+                    <div>
+                        <div class="component-item-nav states">
+                            <ul>
+                                <li><a class="active">Default</a></li>
+                                <li><a>onEnter</a></li>
+                                <li><a>onExit</a></li>
+                            </ul>
                         </div>
-                        <div class="overflow-auto no-scrollbar" style="height: calc(100% - 61px)">
-                            <ul class="ugrid-4 p15-grid">
-                                <!-- This is search result appearance -->
-                                <li class="full-x">
-                                    <div class="component-item large">
-                                        <a>
-                                            <h1 class="p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
-                                        </a>
-                                        <div class="border-2 radius-2-bottom ugrid-2">
-                                            <div class="relative fix-abs flex-center-wrap overflow-hidden">
-                                                <div class="tab-bar slide">
-                                                    <div>
-                                                        <a>Item 1</a>
-                                                        <a>Item 2</a>
-                                                        <a class="active">Item 3</a>
-                                                        <a>Item 4</a>
-                                                        <a>Item 5</a>
-                                                        <hr/>
-                                                    </div>
-                                                </div>
+                        <div class="fix-abs flex-center-wrap overflow-hidden">
+
+                        </div>
+                    </div>
+
+                </div>
+            </doc-item>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">ID Card</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="student-card">
+                    				<svg viewBox="0 0 240 150">
+                    					<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                    				</svg>
+                    				<div class="school-id-inside">
+                    					<div class="school-id-top" style="background: #003262;">
+                    						<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+                    					</div>
+                    					<div class="school-id-bottom">
+                    						<div>
+                    							<h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
+                    							<h2 style="color: #003262;">Cal Freshman</h2>
+                    							<h2 style="color: #003262;">email@school.edu</h2>
+                    						</div>
+                    						<h3>
+                    							<span style="color: #003262;">SELECTED COURSES</span>
+                    							<span style="background: #003262;">9</span>
+                    							<a>Edit</a>
+                    						</h3>
+                    					</div>
+                    				</div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">School Card</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="university-card">
+                                	<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
+                                		<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                                	</svg>
+                                	<input type="checkbox" />
+                                	<div class="school-card-inside">
+                                		<div class="school-card-border" style="border-color: #FDB515;"></div>
+                                		<div class="school-card-top" style="background-color: #003262;">
+                                			<span class="school-card-icon" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg'); border-color: #003262;">
+                                				<span class="school-card-icon-bg" style="background-color: #003262;"></span>
+                                				<span class="school-card-state">
+                                					<svg viewBox="0 0 100 100">
+                                						<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                					</svg>
+                                				</span>
+                                				<span class="school-card-state">
+                                					<svg viewBox="0 0 100 100">
+                                						<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                                					</svg>
+                                				</span>
+                                			</span>
+                                		</div>
+                                		<div class="school-card-main no-footer">
+                                			<div class="school-card-map"></div>
+                                			<div class="school-card-color" style="background-color: #003262;"></div>
+                                			<div class="school-card-info" style="color: #003262;">
+                                				<h1 style="color: #003262;">UC Berkeley</h1>
+                                				<h1>UC Berkeley</h1>
+                                				<h2 style="color: #003262;">Berkeley, CA</h2>
+                                			</div>
+                                		</div>
+                                	</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Course Card</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="course-card">
+                    				<svg width="240px" height="150px" viewBox="0 0 240 150">
+                    					<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+                    				</svg>
+                    				<div class="course-card-inside">
+                    					<h2 style="color: #003262;">BIO 1A</h2>
+                    					<h1 style="color: #003262;">Introduction to Biology</h1>
+                    				</div>
+                    				<div class="course-card-border" style="background: #003262;"></div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Tile <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Academic</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-tile bg-academic">
+                    				<div class="pf-tile-border"></div>
+                    				<div class="pf-tile-top">
+                    					<div class="pf-pricing">$10/hr</div>
+                    					<div class="pf-tile-icon">
+                    						<svg viewBox="0 0 100 100">
+                    							<g>
+                    								<path d="M61.993,18 L25.006,18 C23.334,18 22,19.344 22,21.001 L22,30 L25.002,30 C26.658,30 28,31.346 28,33 C28,34.657 26.658,36 25.002,36 L22,36 L22,47 L25.002,47 C26.658,47 28,48.346 28,50 C28,51.657 26.658,53 25.002,53 L22,53 L22,64 L25.002,64 C26.658,64 28,65.346 28,67 C28,68.657 26.658,70 25.002,70 L22,70 L22,78.999 C22,80.663 23.346,82 25.006,82 L61.993,82 C63.666,82 65,80.656 65,78.999 L65,21.001 C65,19.337 63.654,18 61.993,18 L61.993,18 Z"></path>
+                    								<path d="M70,70 L74,77 L78,70 L78,17.9999998 L70,17.9999998 L70,70 Z"></path>
+                    								<path d="M70.4117647,81 L83.5882353,81"></path>
+                    								<rect x="16" y="64" width="12" height="6" rx="3"></rect>
+                    								<rect x="16" y="47" width="12" height="6" rx="3"></rect>
+                    								<rect x="16" y="30" width="12" height="6" rx="3"></rect>
+                    							</g>
+                    						</svg>
+                    					</div>
+                    					<h1>Chem 133</h1>
+                    					<h2>Organic Chemistry</h2>
+                    				</div>
+                    				<div class="pf-tile-bottom">
+                    					<ul class="rating-stars" data-rating="4" data-half="true">
+                    						<li>
+                    							<svg viewBox="0 0 100 100">
+                    								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                    								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<svg viewBox="0 0 100 100">
+                    								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                    								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<svg viewBox="0 0 100 100">
+                    								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                    								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<svg viewBox="0 0 100 100">
+                    								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                    								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<svg viewBox="0 0 100 100">
+                    								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                    								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                    							</svg>
+                    						</li>
+                    					</ul>
+                    					<h3 class="pf-review-count">5 Reviews</h3>
+                    				</div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Tile <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Baking</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-tile bg-baking">
+                    				<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');">
+                    					<div class="pf-pricing">$10/dozen</div>
+                    				</div>
+                    				<div class="pf-tile-bottom">
+                    					<h1>Peach Pancakes</h1>
+                    				</div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Tile <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Photography</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-tile bg-photography">
+                    				<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');">
+                    				</div>
+                    				<div class="pf-tile-bottom">
+                    					<h1>Professional Headshots</h1>
+                    					<div class="pf-pricing">$10/hr</div>
+                    				</div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Tile <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Tech</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-tile bg-tech">
+                                    <div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');">
+                                        <div class="pf-pricing">
+                                            <div>$10/hr</div>
+                                            <div class="border border-corner">
+                                                <span></span>
+                                                <span></span>
                                             </div>
-                                            <div>
-                                                <textarea class="no-resize full-xy overflow-auto p15xy txt-14 source-code"><div class="tab-bar slide">
+                                        </div>
+                                    </div>
+                                    <div class="pf-tile-bottom">
+                                        <h1>Water Damage</h1>
+                                        <div class="border border-top">
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="border border-outside">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Tile <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Household</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-tile bg-household">
+                    				<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"></div>
+                    				<div class="pf-tile-bottom">
+                    					<div>
+                    						<h1>Furniture Care</h1>
+                    						<ul class="rating-stars" data-rating="4" data-half="true">
+                    							<li>
+                    								<svg viewBox="0 0 100 100">
+                    									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                    									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                    								</svg>
+                    							</li>
+                    							<li>
+                    								<svg viewBox="0 0 100 100">
+                    									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                    									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                    								</svg>
+                    							</li>
+                    							<li>
+                    								<svg viewBox="0 0 100 100">
+                    									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                    									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                    								</svg>
+                    							</li>
+                    							<li>
+                    								<svg viewBox="0 0 100 100">
+                    									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                    									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                    								</svg>
+                    							</li>
+                    							<li>
+                    								<svg viewBox="0 0 100 100">
+                    									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                    									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                    								</svg>
+                    							</li>
+                    						</ul>
+                    					</div>
+                    					<div class="pf-pricing">$10/hr</div>
+                    				</div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Cardlet <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Default</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-cardlet highlight">
+                    				<div class="pf-cardlet-front" style="background-image: url('http://cdn1.pri.org/sites/default/files/styles/story_main/public/story/images/leonardo_da_vinci_studi_di_carri_dassalto_falcati_0.jpg?itok=V1_nRmK3');">
+                    				</div>
+                    				<div class="pf-cardlet-back" style="background-image: url('http://cdn1.pri.org/sites/default/files/styles/story_main/public/story/images/leonardo_da_vinci_studi_di_carri_dassalto_falcati_0.jpg?itok=V1_nRmK3');"></div>
+                    				<div class="pf-cardlet-bottom">
+                    					<h1>Leonardo da Vinci</h1>
+                    					<div>
+                    						<h3>Created</h3>
+                    						<h2>03/28/2016</h2>
+                    					</div>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon">
+                    					<svg viewBox="0 0 100 100">
+                    						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+                    					</svg>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon-edge"></div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Cardlet <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Academic</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-cardlet highlight bg-academic">
+                    				<div class="pf-cardlet-front" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');">
+                    				</div>
+                    				<div class="pf-cardlet-back" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
+                    				<div class="pf-cardlet-bottom">
+                    					<h1>Master the Cerebral Cortex</h1>
+                    					<div>
+                    						<h2>03/28/2016</h2>
+                    					</div>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon">
+                    					<svg viewBox="0 0 100 100">
+                    						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+                    					</svg>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon-edge"></div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Cardlet <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Baking</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-cardlet highlight bg-baking">
+                    				<div class="pf-cardlet-front"></div>
+                    				<div class="pf-cardlet-back" style="background: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
+                    				<div class="pf-cardlet-bottom">
+                    					<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
+                    					<h1>Four-Star Strawberry Cake on a Budget</h1>
+                    					<div>
+                    						<h2>03/28/2016</h2>
+                    					</div>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon">
+                    					<svg viewBox="0 0 100 100">
+                    						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+                    					</svg>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon-edge"></div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Cardlet <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Photography</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-cardlet highlight bg-photography">
+                    				<div class="pf-cardlet-front" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');">
+                    				</div>
+                    				<div class="pf-cardlet-bottom">
+                    					<h1>2016 Camera Models</h1>
+                    					<div>
+                    						<h2>03/28/2016</h2>
+                    					</div>
+                    				</div>
+                    				<div class="pf-cardlet-back"></div>
+                    				<div class="pf-cardlet-ribbon">
+                    					<svg viewBox="0 0 100 100">
+                    						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+                    					</svg>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon-edge"></div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Cardlet <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Tech</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-cardlet highlight bg-tech">
+                    				<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');"></div>
+                    				<div class="pf-cardlet-back"></div>
+                    				<div class="pf-cardlet-bottom">
+                    					<h1>When to Replace Your Phone</h1>
+                    					<div>
+                    						<h2>03/28/2016</h2>
+                    					</div>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon">
+                    					<svg viewBox="0 0 100 100">
+                    						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+                    					</svg>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon-edge"></div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Cardlet <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Household</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-cardlet highlight bg-household">
+                    				<div class="pf-cardlet-front" style="background-image: url('http://www.kinfolk.com/wp-content/uploads/2013/11/Kinfolk-City-Guide-Portland-Oregon-Pistils-Nursery-3.jpg');"></div>
+                    				<div class="pf-cardlet-back"></div>
+                    				<div class="pf-cardlet-bottom">
+                    					<h1>How to Make Your Plants Live Longer</h1>
+                    					<div>
+                    						<h2>03/28/2016</h2>
+                    					</div>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon">
+                    					<svg viewBox="0 0 100 100">
+                    						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+                    					</svg>
+                    				</div>
+                    				<div class="pf-cardlet-ribbon-edge"></div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Profile Widget</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="pf-aside-widget">
+                            		<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+                            		<div>
+                            			<h1 class="pf-name verified">
+                            				<span>Gabrielle Wee</span>
+                            				<span>
+                            					<svg preserveAspectRatio="xMidYMax meet" width="100px" height="100px" viewBox="0 0 100 100">
+                            						<path d="M95.588027,38.378 C97.014027,35.692 97.112027,32.487 95.858027,29.716 C94.603027,26.944 92.136027,24.922 89.189027,24.248 C85.056027,23.304 82.013027,19.762 81.674027,15.504 C81.433027,12.467 79.797027,9.716 77.255027,8.069 C74.712027,6.422 71.554027,6.065 68.714027,7.105 C64.730027,8.563 60.272027,7.242 57.704027,3.845 C55.871027,1.423 53.021027,0 50.000027,0 C46.978027,0 44.129027,1.423 42.296027,3.846 C39.728027,7.242 35.268027,8.563 31.287027,7.105 C28.446027,6.065 25.286027,6.422 22.745027,8.069 C20.202027,9.716 18.567027,12.466 18.325027,15.504 C17.986027,19.762 14.942027,23.303 10.811027,24.248 C7.86302696,24.922 5.39602696,26.944 4.14102696,29.717 C2.88502696,32.488 2.98502696,35.692 4.41102696,38.379 C6.40902696,42.146 5.74602696,46.784 2.77702696,49.831 C0.659026961,52.005 -0.331973037,55.05 0.0990269614,58.067 C0.529026961,61.083 2.33002696,63.723 4.97002696,65.208 C8.67002696,67.288 10.601027,71.55 9.737027,75.731 C9.121027,78.713 9.921027,81.815 11.900027,84.12 C13.879027,86.423 16.811027,87.663 19.828027,87.472 C24.057027,87.204 27.966027,89.738 29.480027,93.728 C30.562027,96.574 32.898027,98.746 35.798027,99.605 C38.697027,100.464 41.829027,99.908 44.264027,98.103 C47.678027,95.574 52.326027,95.574 55.738027,98.103 C58.175027,99.908 61.304027,100.464 64.205027,99.605 C67.104027,98.746 69.441027,96.574 70.522027,93.728 C72.037027,89.738 75.947027,87.205 80.175027,87.472 C83.191027,87.663 86.122027,86.423 88.101027,84.12 C90.081027,81.815 90.880027,78.714 90.265027,75.731 C89.401027,71.549 91.330027,67.288 95.031027,65.208 C97.672027,63.724 99.474027,61.083 99.902027,58.067 C100.331027,55.049 99.341027,52.004 97.221027,49.83 C94.253027,46.784 93.591027,42.145 95.588027,38.378 Z" fill="#000000"></path>
+                            						<path d="M66.75725,32.75725 L41.35225,58.16125 L33.24225,50.05125 C30.89925,47.70825 27.10025,47.70825 24.75725,50.05125 C22.41425,52.39425 22.41425,56.19325 24.75725,58.53625 L37.11025,70.88925 C39.45325,73.23225 43.25225,73.23225 45.59525,70.88925 L75.24225,41.24225 C77.58525,38.89925 77.58525,35.10025 75.24225,32.75725 C72.89925,30.41425 69.10025,30.41425 66.75725,32.75725 Z" fill="#FFFFFF"></path>
+                            					</svg>
+                            				</span>
+                            			</h1>
+                            			<h2 class="pf-school-name">Ex'pression College for Digital Arts</h2>
+                            			<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
+                            				<li>
+                            					<svg viewBox="0 0 100 100">
+                            						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                            					</svg>
+                            				</li>
+                            				<li>
+                            					<svg viewBox="0 0 100 100">
+                            						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                            					</svg>
+                            				</li>
+                            				<li>
+                            					<svg viewBox="0 0 100 100">
+                            						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                            					</svg>
+                            				</li>
+                            				<li>
+                            					<svg viewBox="0 0 100 100">
+                            						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                            					</svg>
+                            				</li>
+                            				<li>
+                            					<svg viewBox="0 0 100 100">
+                            						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                            					</svg>
+                            				</li>
+                            			</ul>
+                            			<h3 class="pf-reviews"><span>72</span> reviews</h3>
+                            		</div>
+                            		<button class="bg-academic normal">Contact Guru</button>
+                            	</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Color Dropdown</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="dropdown-color">
+                    				<a class="bg-robin">
+                                        <!-- active -->
+                    					<span>Color Dropdown</span>
+                    					<svg viewBox="0 0 100 100">
+                    						<path d="M14,32 L50,68 L86,32"></path>
+                    					</svg>
+                    				</a>
+                    				<div class="">
+                                        <!-- visible -->
+                    					<svg viewBox="0 0 396 38">
+                    						<path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+                    					</svg>
+                    					<ul>
+                    						<li>
+                    							<a class="active bg-delivery">
+                    								<span>Delivery</span>
+                    							</a>
+                    							<svg class="arrow" viewBox="0 0 60 30">
+                    								<path d="M4,26 L30,0 L56,26"></path>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<a class="active bg-freelancing">
+                    								<span>Academic</span>
+                    							</a>
+                    							<svg class="arrow" viewBox="0 0 60 30">
+                    								<path d="M4,26 L30,0 L56,26"></path>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<a class="active bg-baking">
+                    								<span>Baking</span>
+                    							</a>
+                    							<svg class="arrow" viewBox="0 0 60 30">
+                    								<path d="M4,26 L30,0 L56,26"></path>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<a class="active bg-photography">
+                    								<span>Photography</span>
+                    							</a>
+                    							<svg class="arrow" viewBox="0 0 60 30">
+                    								<path d="M4,26 L30,0 L56,26"></path>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<a class="active bg-tech">
+                    								<span>Tech</span>
+                    							</a>
+                    							<svg class="arrow" viewBox="0 0 60 30">
+                    								<path d="M4,26 L30,0 L56,26"></path>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<a class="active bg-household">
+                    								<span>Household</span>
+                    							</a>
+                    							<svg class="arrow" viewBox="0 0 60 30">
+                    								<path d="M4,26 L30,0 L56,26"></path>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<a class="active bg-athletic">
+                    								<span>Athletic</span>
+                    							</a>
+                    							<svg class="arrow" viewBox="0 0 60 30">
+                    								<path d="M4,26 L30,0 L56,26"></path>
+                    							</svg>
+                    						</li>
+                    						<li>
+                    							<a class="active bg-academic">
+                    								<span>Academic</span>
+                    							</a>
+                    							<svg class="arrow" viewBox="0 0 60 30">
+                    								<path d="M4,26 L30,0 L56,26"></path>
+                    							</svg>
+                    						</li>
+                    					</ul>
+                    				</div>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Tab Bar</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="tab-bar slide">
+                                    <div>
+                                        <a>Item 1</a>
+                                        <a>Item 2</a>
+                                        <a class="active">Item 3</a>
+                                        <a>Item 4</a>
+                                        <a>Item 5</a>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"><div class="tab-bar slide">
     <div>
         <a>Item 1</a>
         <a>Item 2</a>
@@ -45,60 +1059,567 @@
         <hr/>
     </div>
 </div></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- This is regular appearance -->
-                                <li>
-                                    <div class="component-item">
-                                        <a>
-                                            <h1 class="p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
-                                        </a>
-                                        <div class="relative fix-abs flex-center-wrap border-2 radius-2-bottom overflow-hidden">
-                                            <div class="tab-bar slide">
-                                                <div>
-                                                    <a>Item 1</a>
-                                                    <a>Item 2</a>
-                                                    <a class="active">Item 3</a>
-                                                    <a>Item 4</a>
-                                                    <a>Item 5</a>
-                                                    <hr/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="component-item">
-                                        <a>
-                                            <h1 class="p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
-                                        </a>
-                                        <div class="relative fix-abs border-2 border-slate bg-white radius-2-bottom">
-                                            <!-- component goes in here -->
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="component-item">
-                                        <a>
-                                            <h1 class="p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
-                                        </a>
-                                        <div class="relative fix-abs border-2 border-slate bg-white radius-2-bottom">
-                                            <!-- component goes in here -->
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="component-item">
-                                        <a>
-                                            <h1 class="p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
-                                        </a>
-                                        <div class="relative fix-abs border-2 border-slate bg-white radius-2-bottom">
-                                            <!-- component goes in here -->
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Button <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Default</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <button>Button</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Button <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Ghost</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <button class="btn-ghost-white">Ghost Button</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Input <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Basic</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <fieldset class="input-basic">
+                    				<label>Label</label>
+                    				<input type="text" placeholder="This is an basic input" />
+                    			</fieldset>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Input <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Outline</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <fieldset>
+                					<input class="input-border light" type="text" placeholder="This is an outline input" onclick="this.select()" value="This is an outline input with select"/>
+                					<label></label>
+                				</fieldset>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Input <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Search</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <fieldset class="with-icon">
+                					<input class="input-border light" type="text" placeholder="A small light search input" />
+                					<label></label>
+                					<span class="input-icon">
+                						<svg viewBox="0 0 100 100">
+                							<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                						</svg>
+                					</span>
+                				</fieldset>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Checkbox</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="checkbox-container">
+                    				<div>
+                    					<input type="checkbox" id="checkbox-item"/>
+                    					<span>
+                    						<svg viewBox="0 0 100 100">
+                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                    						</svg>
+                    					</span>
+                    				</div>
+                    				<label for="checkbox-item">Checkbox Item</label>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Radio</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="radio-container">
+                    				<div>
+                    					<input type="radio" id="radio-item" />
+                    					<span>
+                    						<svg viewBox="0 0 100 100">
+                    							<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                    						</svg>
+                    					</span>
+                    				</div>
+                    				<label for="radio-item">Radio Item</label>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Tag <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Chip</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <span class="chip bg-cobalt">cobalt</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Tag <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Input</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <input tabindex="1" class='chip tag-add bg-slate' placeholder="tag input" size="7">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Tag <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Adlib</span></h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <a class="tag-adlib">
+                                    <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+                                        <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+                                    </svg>
+                                    <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+                                        <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+                                    </svg>
+                                    <b>midnight</b>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Toggle</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="toggle">
+                    				<input type="checkbox" checked />
+                    				<label>
+                    					<svg class="square" viewBox="0 0 100 100">
+                    						<rect x="0" y="0" width="100" height="100"></rect>
+                    					</svg>
+                    					<svg class="square" viewBox="0 0 100 100">
+                    						<rect x="0" y="0" width="100" height="100"></rect>
+                    					</svg>
+                    				</label>
+                    			</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Copy URL</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <div class="copy-url">
+                            		<input id="copy-url-1" type="text" value="uguru.me/r/user/referral?1234567"/>
+                            		<label for="copy-url-1">
+                            			<svg viewBox="0 0 100 100">
+                            				<path d="M82,38 L82,78.9930191 C82,80.6537288 80.663269,82 78.9989882,82 L21.0010118,82 C19.3435988,82 18,80.663269 18,78.9989882 L18,21.0010118 C18,19.3435988 19.3408574,18 21.0069809,18 L62,18 M88.9559283,10.8111066 L57.9878833,42.132705 M69.2453268,10.8994949 L89.0443166,10.8994949 L89.0443166,30.6984848" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                            			</svg>
+                            		</label>
+                            	</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="component-item short">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Rating</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden">
+                                <ul class="rating-stars" data-rating="4" data-half="true">
+                            		<li>
+                            			<svg viewBox="0 0 100 100">
+                            				<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            				<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                            			</svg>
+                            		</li>
+                            		<li>
+                            			<svg viewBox="0 0 100 100">
+                            				<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            				<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                            			</svg>
+                            		</li>
+                            		<li>
+                            			<svg viewBox="0 0 100 100">
+                            				<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            				<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                            			</svg>
+                            		</li>
+                            		<li>
+                            			<svg viewBox="0 0 100 100">
+                            				<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            				<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                            			</svg>
+                            		</li>
+                            		<li>
+                            			<svg viewBox="0 0 100 100">
+                            				<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+                            				<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+                            			</svg>
+                            		</li>
+                            	</ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- This is search result appearance -->
+            <!-- <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
+                    </a>
+                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class="border-2 radius-2-bottom ugrid-2">
+                        <div>
+                            <div class="component-item-nav states">
+                                <ul>
+                                    <li><a class="active">Default</a></li>
+                                    <li><a>onEnter</a></li>
+                                    <li><a>onExit</a></li>
+                                </ul>
+                            </div>
+                            <div class="fix-abs flex-center-wrap overflow-hidden"></div>
+                        </div>
+                        <div>
+                            <div class="component-item-nav">
+                                <ul>
+                                    <li><a class="active">HTML</a></li>
+                                    <li><a>CSS</a></li>
+                                    <li><a>JS</a></li>
+                                </ul>
+                            </div>
+                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li> -->
+            <!-- This is regular appearance -->
+            <!-- <li>
+                <div class="component-item">
+                    <a>
+                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Component</h1>
+                    </a>
+                    <div class="relative fix-abs flex-center-wrap border-2 radius-2-bottom overflow-hidden">
+                        <div class="tab-bar slide">
+                            <div>
+                                <a>Item 1</a>
+                                <a>Item 2</a>
+                                <a class="active">Item 3</a>
+                                <a>Item 4</a>
+                                <a>Item 5</a>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li> -->
+        </ul>
+    </div>
+</div>
