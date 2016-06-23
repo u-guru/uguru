@@ -49,7 +49,8 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                 reference: {
                     templateUrl: 'preapp/templates/splash.nav.html',
                     routeUrl: 'dev/splash/nav',
-                }
+                },
+                status: {css: false}
               },
               {
                 title: 'Splash Map',
@@ -58,7 +59,8 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     controller: 'SplashMapController',
                     templateUrl: 'preapp/templates/splash.map.html',
                     routeUrl: 'dev/splash/map',
-                }
+                },
+                status: {css: false}
               },
               {
                 title: 'Splash Sidebar',
@@ -156,7 +158,7 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                 identifier: 'projector',
                 reference: {
                     controller: 'SplashProjectorSwiperView',
-                    templateUrl: 'preapp/templates/getting-started.html',
+                    templateUrl: 'preapp/templates/started/getting-started.html',
                     routeUrl: 'dev/splash/projector'
                 }
               },
@@ -183,16 +185,16 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                 identifier: 'u_search',
                 reference: {
                     controller: 'SplashSearchUniversityController',
-                    templateUrl: 'preapp/templates/university-search.html',
+                    templateUrl: 'preapp/templates/started/university-search.html',
                     routeUrl: 'dev/splash/university-search'
                 }
               },
               {
                 title: "University Courses Slide",
-                identifier: 'u_search',
+                identifier: 'u_courses',
                 reference: {
                     controller: 'SplashUniversityCoursesController',
-                    templateUrl: 'preapp/templates/university-courses.html',
+                    templateUrl: 'preapp/templates/started/university-courses.html',
                     routeUrl: 'dev/splash/university-courses'
                 }
               },
@@ -202,23 +204,22 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                 reference: {
                     controller: 'GabrielleController',
                     templateUrl: 'gabrielle/templates/index.html',
-                    routeUrl: 'dev/splash/gabrielle'
+                    routeUrl: 'dev/gabrielle'
                 }
               },
               {
                 title: "Jeselle's Portfolio",
                 identifier: 'jeselle',
                 reference: {
-                    controller: 'GabrielleController',
+                    controller: 'JeselleController',
                     templateUrl: 'gabrielle/templates/index.html',
-                    routeUrl: 'dev/splash/gabrielle'
+                    routeUrl: 'dev/jeselle'
                 }
               }
             ]
 
         for (var i = 0; i < workflows.length; i++) {
             workflows[i]['id'] = i + 1;
-            console.log(workflows[i]);
         }
         console.log(workflows.length, 'workflows rendered');
         return workflows;
