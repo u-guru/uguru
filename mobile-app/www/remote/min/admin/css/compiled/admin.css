@@ -24,6 +24,8 @@
       left: 0;
       width: 100%;
       height: calc(100% - 30px); }
+    .component-item > div:nth-child(3) > div .fix-abs {
+      padding: 5px; }
 .component-item > a:nth-child(1) {
   display: block; }
   .component-item > a:nth-child(1) h1 {
@@ -43,6 +45,8 @@
     border-color: #2BB3B8 !important; }
 .component-item.short > div:nth-child(3) {
   height: 200px; }
+.component-item.tall > div:nth-child(3) {
+  height: 600px; }
 
 .component-item-nav {
   width: 100%; }

@@ -11115,6 +11115,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
   background: white;
   border-radius: 2px;
   padding: 15px;
+  width: 100%;
   max-width: 500px; }
   .form-popup h1 {
     color: #40484B;
@@ -11154,7 +11155,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
         justify-content: flex-start;
         background: rgba(117, 117, 117, 0.1);
         color: rgba(64, 72, 75, 0.5);
-        font-size: 18px;
+        font-size: 16px;
         padding-left: 15px;
         padding-right: 15px; }
       .form-popup form fieldset .dropdown > div a svg {
@@ -11169,7 +11170,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
         text-align: left;
         background: rgba(241, 241, 241, 0.9);
         color: rgba(64, 72, 75, 0.5);
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         padding-left: 15px !important;
         padding-right: 15px !important; }
@@ -12884,22 +12885,22 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
     .ticket-slider-inside.guru .ticket-slider-content .ticket-slider-inside .ticket-slider-icon svg *[stroke="#000000"] {
       stroke: white !important; }
   .ticket-slider-inside.guru .ticket-slider-bg div {
-    background: url(../../img/ticket/center-guru.svg) repeat-x center center/contain, url(/static/remote/img/ticket/center-guru.svg) repeat-x center center/contain; }
+    background: url(http://elletricity.com/uguru/ticket/center-guru.svg) repeat-x center center/contain; }
   .ticket-slider-inside.guru .ticket-slider-bg:before {
-    background: url(../../img/ticket/left-guru.svg) no-repeat center left/contain, url(/static/remote/img/ticket/left-guru.svg) no-repeat center left/contain; }
+    background: url(http://elletricity.com/uguru/ticket/left-guru.svg) no-repeat center left/contain; }
   .ticket-slider-inside.guru .ticket-slider-bg:after {
-    background: url(../../img/ticket/right-guru.svg) no-repeat center right/contain, url(/static/remote/img/ticket/right-guru.svg) no-repeat center right/contain; }
+    background: url(http://elletricity.com/uguru/ticket/right-guru.svg) no-repeat center right/contain; }
   .ticket-slider-inside.student .ticket-slider-content {
     border: 3px solid #F1B99D;
     background: white; }
     .ticket-slider-inside.student .ticket-slider-content .ticket-slider-inside .ticket-slider-icon svg *[stroke="#000000"] {
       stroke: #40484B !important; }
   .ticket-slider-inside.student .ticket-slider-bg div {
-    background: url(../../img/ticket/center.svg) repeat-x center center/contain, url(/static/remote/img/ticket/center.svg) repeat-x center center/contain; }
+    background: url(http://elletricity.com/uguru/ticket/center.svg) repeat-x center center/contain; }
   .ticket-slider-inside.student .ticket-slider-bg:before {
-    background: url(../../img/ticket/left.svg) no-repeat center left/contain, url(/static/remote/img/ticket/left.svg) no-repeat center left/contain; }
+    background: url(http://elletricity.com/uguru/ticket/left.svg) no-repeat center left/contain; }
   .ticket-slider-inside.student .ticket-slider-bg:after {
-    background: url(../../img/ticket/right.svg) no-repeat center right/contain, url(/static/remote/img/ticket/right.svg) no-repeat center right/contain; }
+    background: url(http://elletricity.com/uguru/ticket/right.svg) no-repeat center right/contain; }
 
 /* ---------- MISC */
 [class*="ribbon-"] {
