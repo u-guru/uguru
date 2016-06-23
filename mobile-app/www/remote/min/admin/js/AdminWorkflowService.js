@@ -69,7 +69,138 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     controller: 'SplashSidebarController',
                     templateUrl: 'preapp/templates/splash.sidebar.html',
                     routeUrl: 'dev/splash/sidebar',
-                }
+                },
+                status: {css: false}
+              },
+              {
+                title: 'Splash Powerups',
+                identifier: 'powerup',
+                reference: {
+                    controller: 'SplashPowerupsController',
+                    templateUrl: 'preapp/templates/powerups.html',
+                    routeUrl: 'dev/splash/powerups'
+                },
+                status: {css: false}
+              },
+              {
+                title: "FAQ",
+                identifier: 'faq',
+                reference: {
+                    controller: 'SplashFAQController',
+                    templateUrl: 'preapp/templates/sidebar/faq.html',
+                    routeUrl: 'dev/splash/faq'
+                },
+                status: {css: false}
+              },
+              {
+                title: "Pricing Page",
+                identifier: 'pricing',
+                reference: {
+                    controller: 'SplashPricingController',
+                    templateUrl: 'preapp/templates/sidebar/pricing.html',
+                    routeUrl: 'dev/splash/pricing'
+                },
+                status: {css: false}
+              },
+              {
+                title: "Team Page",
+                identifier: 'team',
+                reference: {
+                    controller: 'SplashTeamController',
+                    templateUrl: 'preapp/templates/sidebar/team.html',
+                    routeUrl: 'dev/splash/team'
+                },
+                status: {css: false}
+              },
+              {
+                title: "About Page",
+                identifier: 'about',
+                reference: {
+                    controller: 'SplashAboutController',
+                    templateUrl: 'preapp/templates/sidebar/about.html',
+                    routeUrl: 'dev/splash/about'
+                },
+                status: {css: false}
+              },
+              {
+                title: "How it works",
+                identifier: 'hiw',
+                reference: {
+                    controller: 'SplashHIWController',
+                    templateUrl: 'preapp/templates/hiw.html',
+                    routeUrl: 'dev/splash/hiw'
+                },
+                status: {css: false}
+              },
+              {
+                title: "Splash Tour Guide",
+                identifier: 'tour',
+                reference: {
+                    controller: 'SplashTourController',
+                    templateUrl: 'preapp/templates/tour.html',
+                    routeUrl: 'dev/splash/tour'
+                },
+                status: {css: false}
+              },
+              {
+                title: "Access",
+                identifier: 'access',
+                reference: {
+                    controller: 'SplashAccessController',
+                    templateUrl: 'preapp/templates/started/access.html',
+                    routeUrl: 'dev/splash/access'
+                },
+                status: {css: false}
+              },
+              {
+                title: "Projector-Only Swiper View",
+                identifier: 'projector',
+                reference: {
+                    controller: 'SplashProjectorSwiperView',
+                    templateUrl: 'preapp/templates/started/getting-started.html',
+                    routeUrl: 'dev/splash/projector'
+                },
+                status: {css: false}
+              },
+              {
+                title: "Demographics Slide",
+                identifier: 'demographics',
+                reference: {
+                    controller: 'SplashAccessController',
+                    templateUrl: 'preapp/templates/started/access.html',
+                    routeUrl: 'dev/splash/demographic'
+                },
+                status: {css: false}
+              },
+              {
+                title: "Account Slide",
+                identifier: 'account',
+                reference: {
+                    controller: 'SplashAccountController',
+                    templateUrl: 'preapp/templates/started/account.html',
+                    routeUrl: 'dev/splash/account'
+                },
+                status: {css: false}
+              },
+              {
+                title: "University Search Page",
+                identifier: 'u_search',
+                reference: {
+                    controller: 'SplashSearchUniversityController',
+                    templateUrl: 'preapp/templates/started/university-search.html',
+                    routeUrl: 'dev/splash/university-search'
+                },
+                status: {css: false}
+              },
+              {
+                title: "University Courses Slide",
+                identifier: 'u_courses',
+                reference: {
+                    controller: 'SplashUniversityCoursesController',
+                    templateUrl: 'preapp/templates/started/university-courses.html',
+                    routeUrl: 'dev/splash/university-courses'
+                },
+                status: {css: false}
               },
               {
                 title: 'Guru Profiles',
@@ -79,123 +210,6 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     controller: 'GuruProfileController',
                     templateUrl: 'shared/templates/guru.profile.html',
                     routeUrl: ['dev/admin/profiles/academic', 'dev/admin/profiles/tech', 'dev/admin/profiles/baking', 'dev/admin/profiles/photography', 'dev/admin/profiles/household']
-                }
-              },
-              {
-                title: 'Splash Powerups',
-                identifier: 'powerup',
-                reference: {
-                    controller: 'SplashPowerupsController',
-                    templateUrl: 'preapp/templates/powerups.html',
-                    routeUrl: 'dev/splash/powerups'
-                }
-              },
-              {
-                title: "FAQ",
-                identifier: 'faq',
-                reference: {
-                    controller: 'SplashFAQController',
-                    templateUrl: 'preapp/templates/sidebar/faq.html',
-                    routeUrl: 'dev/splash/faq'
-                }
-              },
-              {
-                title: "Pricing Page",
-                identifier: 'pricing',
-                reference: {
-                    controller: 'SplashPricingController',
-                    templateUrl: 'preapp/templates/sidebar/pricing.html',
-                    routeUrl: 'dev/splash/pricing'
-                }
-              },
-              {
-                title: "Team Page",
-                identifier: 'team',
-                reference: {
-                    controller: 'SplashTeamController',
-                    templateUrl: 'preapp/templates/sidebar/team.html',
-                    routeUrl: 'dev/splash/team'
-                }
-              },
-              {
-                title: "About Page",
-                identifier: 'about',
-                reference: {
-                    controller: 'SplashAboutController',
-                    templateUrl: 'preapp/templates/sidebar/about.html',
-                    routeUrl: 'dev/splash/about'
-                }
-              },
-              {
-                title: "How it works",
-                identifier: 'hiw',
-                reference: {
-                    controller: 'SplashHIWController',
-                    templateUrl: 'preapp/templates/hiw.html',
-                    routeUrl: 'dev/splash/hiw'
-                }
-              },
-              {
-                title: "Splash Tour Guide",
-                identifier: 'tour',
-                reference: {
-                    controller: 'SplashTourController',
-                    templateUrl: 'preapp/templates/tour.html',
-                    routeUrl: 'dev/splash/tour'
-                }
-              },
-              {
-                title: "Access",
-                identifier: 'access',
-                reference: {
-                    controller: 'SplashAccessController',
-                    templateUrl: 'preapp/templates/started/access.html',
-                    routeUrl: 'dev/splash/access'
-                }
-              },
-              {
-                title: "Projector-Only Swiper View",
-                identifier: 'projector',
-                reference: {
-                    controller: 'SplashProjectorSwiperView',
-                    templateUrl: 'preapp/templates/started/getting-started.html',
-                    routeUrl: 'dev/splash/projector'
-                }
-              },
-              {
-                title: "Demographics Slide",
-                identifier: 'demographics',
-                reference: {
-                    controller: 'SplashAccessController',
-                    templateUrl: 'preapp/templates/started/access.html',
-                    routeUrl: 'dev/splash/demographic'
-                }
-              },
-              {
-                title: "Account Slide",
-                identifier: 'account',
-                reference: {
-                    controller: 'SplashAccountController',
-                    templateUrl: 'preapp/templates/started/account.html',
-                    routeUrl: 'dev/splash/account'
-                }
-              },
-              {
-                title: "University Search Page",
-                identifier: 'u_search',
-                reference: {
-                    controller: 'SplashSearchUniversityController',
-                    templateUrl: 'preapp/templates/started/university-search.html',
-                    routeUrl: 'dev/splash/university-search'
-                }
-              },
-              {
-                title: "University Courses Slide",
-                identifier: 'u_courses',
-                reference: {
-                    controller: 'SplashUniversityCoursesController',
-                    templateUrl: 'preapp/templates/started/university-courses.html',
-                    routeUrl: 'dev/splash/university-courses'
                 }
               },
               {
