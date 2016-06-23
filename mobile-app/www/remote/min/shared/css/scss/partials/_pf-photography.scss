@@ -96,7 +96,7 @@
     .pf-main {
         > div {
             .pf-main-subheader {
-                &:after {
+                hr {
                     background: rgba($moola, .2);
                 }
             }

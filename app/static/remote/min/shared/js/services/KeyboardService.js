@@ -40,6 +40,10 @@ function KeyboardService(Utilities, $timeout) {
             var delay = delay || 0;
             window.addEventListener("keydown", function(e){
 
+                if (document.activeElement && document.activeElement.nodeName.toLowerCase() === 'input') {
+                    return;
+                }
+
                 if (!immediate) {
                     delay = delay || 250;
                 }
@@ -63,7 +67,9 @@ function KeyboardService(Utilities, $timeout) {
 
         // if (on_release) {
             document.addEventListener('keyup', function (e){
-
+                if (document.activeElement && document.activeElement.nodeName.toLowerCase() === 'input') {
+                    return;
+                }
                 if (((key && evt[key])||true) && e.keyCode === code && !keyupNotRecent) {
                     var delay = 0;
                     if (!immediate) {

@@ -54,7 +54,7 @@
     </div>
     <div class='relative full-x bg-slate' ng-if='stage.animStats.startEvents.length'>
         <ul class='flex-center-vertical p15-grid full-x overflow-x no-scrollbar'>
-            <li ng-click='stage.player.jumpTo(event.delay/stage.player.total_time*0.1)' style='white-space:nowrap; left: {{event.delay*0.1}}px !important; width: {{event.duration}}px !important; top: {{$index * 40}}px !important;' ng-repeat='event in stage.animations' class='absolute animated lightSpeedIn'>
+            <li ng-click='stage.player.jumpTo(event.delay/stage.player.total_time*0.1)' style='white-space:nowrap; left: {{event.delay*0.1}}px !important; width: {{event.duration}}px !important; top: {{$index * 40}}px !important;' ng-repeat='event in stage.animations' class='absolute'>
                 <button class='height-36 txt-18 radius-2 normal block'>{{event.name}}|{{event.delay}}ms|{{event.duration}}ms </button>
             </li>
         </ul>

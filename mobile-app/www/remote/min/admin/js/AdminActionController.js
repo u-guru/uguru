@@ -42,7 +42,7 @@ angular.module('uguru.admin')
       ReportService.getBug().then(function(result){
        $scope.bugReport = result;
       }, function(reason) {
-        console.log(reason);
+        // console.log(reason);
       });
       $scope.$watchCollection('bugReport', function(newNames, oldNames) {
         // if (!oldNames && newNames){
@@ -106,7 +106,17 @@ angular.module('uguru.admin')
         'options': ['All Bugs','Prioritized Bugs','Recently Complete']
     };
 
-    $scope.calState = function(stateID,key){
+    $scope.calState = function(title,key){
+      // console.log('check', stateID)
+      function convertTitle(str){
+          var id = 0;
+          for (var i = 0; i < str.length ; ++ i) {
+            id += str.charCodeAt(i);
+          }
+          return id;
+      }
+      var stateID = convertTitle(title);
+      // console.log("CHECK",title,stateID)
       for(var i = 0; i < $scope.bugReport.length ; ++i)
       {
         if ($scope.bugReport[i].stateID === stateID){

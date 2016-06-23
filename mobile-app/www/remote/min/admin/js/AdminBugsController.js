@@ -478,6 +478,7 @@ angular.module('uguru.admin')
               $scope.advanceSearch.platforms.list = cache.platforms.list;
               $scope.advanceSearch.tags.list = cache.tags.list;
           }
+          // console.log('Reset',$scope.advanceSearch);
         }
         for (var i = 0; i < $scope.bugReport.length; ++ i) {
           if(!$scope.bugReport[i].stateID){
@@ -504,6 +505,10 @@ angular.module('uguru.admin')
     }
 
     function loadUpdatedBugsJsonFile(scope) {
+      // LoadingService.showAmbig('Loading....', 10000);
+      // console.log('Loading....');
+      //https://s3.amazonaws.com/uguru-admin/jason/bugs.json
+      //https://s3.amazonaws.com/uguru-admin/sync/bugs.json
       FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', callbackFunc);
       function callbackFunc(name, resp) {
         scope.bugReport = resp;
@@ -532,6 +537,7 @@ angular.module('uguru.admin')
 
     $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
+        // console.log('Data is Load',newNames);
         intData();
         $scope.indexOfSection = getReportIndexByID(document.URL.split('admin/bugs/')[1]);
         // console.log($scope.indexOfSection)
@@ -550,7 +556,7 @@ angular.module('uguru.admin')
 
       }
       else if(oldNames && newNames){
-          console.log('Data is Update',newNames);
+          // console.log('Data is Update',newNames);
          // $scope.openBugList($scope.bugReport[$scope.bugReport.length-1]);
          $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
          $scope.saveBug();
