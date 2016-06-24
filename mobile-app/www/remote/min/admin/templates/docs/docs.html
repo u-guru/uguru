@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="absolute z-index-9 bottom-0 left-0 full-x" style="height: calc(100% - 110px);">
+    <div class="absolute z-index-9 bottom-0 left-0 full-x" style="height: calc(100% - 110px);" ng-init="docs.main.index = 5;">
         <div ng-if='docs.main.index === 0 && !docs.searchText.length' ng-include="root.base_url + 'admin/templates/docs/notes.html'"
             class='admin-docs absolute top-0 left-0 full-xy overflow-auto no-scrollbar bg-smoke txt-charcoal'></div>
         <div ng-if='docs.main.index === 1' ng-include="root.base_url + 'admin/templates/docs/classes.html'"
@@ -20,5 +20,7 @@
             class="absolute top-0 left-0 full-xy overflow-auto no-scrollbar bg-smoke txt-charcoal"></div>
         <div ng-if='docs.main.index === 4' ng-include="root.base_url + 'admin/templates/docs/notes.html'"
             class='admin-docs absolute top-0 left-0 full-xy overflow-auto no-scrollbar bg-smoke txt-charcoal'></div>
+        <div ng-if='docs.main.index === 5' ng-include="root.base_url + 'admin/templates/docs/research.html'"
+            class='absolute top-0 left-0 full-xy overflow-auto no-scrollbar bg-smoke txt-charcoal'></div>
     </div>
 </div>

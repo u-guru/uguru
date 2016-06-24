@@ -873,11 +873,17 @@ button, input, textarea {
 .width-10p {
   width: 10% !important; }
 
+.width-20p {
+  width: 20% !important; }
+
 .width-25p {
   width: 25% !important; }
 
 .width-33p {
   width: calc(100% / 3) !important; }
+
+.width-40p {
+  width: 40% !important; }
 
 .width-50p {
   width: 50% !important; }
@@ -1023,6 +1029,9 @@ button, input, textarea {
 .flex-column-impt {
   -webkit-flex-direction: column !important;
   flex-direction: column !important; }
+
+.radius-0 {
+  border-radius: 0 !important; }
 
 .radius-2 {
   border-radius: 2px !important; }

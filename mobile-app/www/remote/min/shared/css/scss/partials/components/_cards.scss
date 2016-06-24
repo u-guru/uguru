@@ -69,10 +69,10 @@
 			margin: 0;
 			max-width: none;
 			.pf-hover {
-				@include transition(.15s ease-in-out);
 				@include opacity(0);
 				@include flex;
 				@include flex-center;
+				transition: all 150ms ease-in-out;
 				position: absolute;
 				z-index: 10;
 				top: 0;
@@ -182,18 +182,18 @@
 }
 // credit card
 .credit-card-flip {
-	@include prefix(backface-visibility, hidden, webkit moz ms o);
+	backface-visibility: hidden;
 	position: relative;
 	display: block;
 	* {
-		@include prefix(transition, all 300ms ease-in-out, webkit moz ms o);
+		transition: all 300ms ease-in-out;
 	}
 	&:hover, &:focus {
 		.credit-card {
-			@include prefix(transform, rotateY(180deg), webkit moz ms o);
+			transform: rotateY(180deg);
 		}
 		.credit-card-back {
-			@include prefix(transform, rotateY(0deg), webkit moz ms o);
+			transform: rotateY(0deg);
 			ul {
 				li {
 					button {
@@ -205,8 +205,8 @@
 	}
 }
 .credit-card, .credit-card-back {
-	@include prefix(backface-visibility, hidden, webkit moz ms o);
-	@include prefix(transform-style, preserve-3d, webkit moz ms o);
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
 }
 .credit-card {
 	padding: 0!important;
@@ -226,11 +226,11 @@
 		.credit-card-row {
 			@include flex;
 			@include flex-wrap;
-			@include prefix(justify-content, space-between, webkit);
+			justify-content: space-between;
 			width: 100%;
 		}
 		> .credit-card-row:last-child {
-			@include prefix(align-self, flex-end, webkit);
+			align-self: flex-end;
 		}
 		.credit-card-logo {
 			display: block;
@@ -310,7 +310,7 @@
 	}
 }
 .credit-card-back {
-	@include prefix(transform, rotateY(180deg), webkit moz ms o);
+	transform: rotateY(180deg);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -327,7 +327,7 @@
 	}
 	ul {
 		@include flex;
-		@include prefix(align-items, flex-end, webkit);
+		align-items: flex-end;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -382,7 +382,7 @@
 	&.with-hover {
 		.school-card-hover {
 			@include opacity(0);
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			transition: all 150ms ease-in-out;
 			position: absolute;
 			z-index: 7;
 			top: 0;
@@ -433,8 +433,8 @@
 		width: 100%;
 		height: 100%;
 		.school-card-border {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 			@include opacity(0);
+			transition: all 150ms ease-in-out;
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -467,9 +467,9 @@
 				background-color: white;
 				border: 3px solid $slate;
 				.school-card-icon-bg {
-					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					@include opacity(0);
 					@include round;
+					transition: all 150ms ease-in-out;
 					display: block;
 					position: absolute;
 					z-index: 6;
@@ -479,8 +479,8 @@
 					height: 100%;
 				}
 				.school-card-state {
-					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					@include opacity(0);
+					transition: all 150ms ease-in-out;
 					position: absolute;
 					z-index: 7;
 					top: 0;
@@ -488,8 +488,8 @@
 					width: 100%;
 					height: 100%;
 					svg {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 						@include round;
+						transition: all 150ms ease-in-out;
 						display: block;
 						width: 100%;
 						height: 100%;
@@ -501,14 +501,14 @@
 					&:last-child {
 						svg {
 							@include opacity(0);
-							@include rotate(45);
+							transform: rotate(45deg);
 						}
 					}
 				}
 			}
 			&:after {
-				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				@include opacity(0);
+				transition: all 150ms ease-in-out;
 				content: "";
 				position: absolute;
 				z-index: 4;
@@ -545,8 +545,8 @@
 				}
 			}
 			.school-card-color {
-				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				@include opacity(.1);
+				transition: all 150ms ease-in-out;
 				position: absolute;
 				z-index: 1;
 				top: 0;
@@ -563,11 +563,10 @@
 			}
 			.school-card-footer {
 				@include listless;
-				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 				@include opacity(0);
 				@include flex;
 				@include flex-center;
-				-webkit-align-self: flex-end;
+				transition: all 150ms ease-in-out;
 				align-self: flex-end;
 				position: relative;
 				z-index: 4;
@@ -598,7 +597,7 @@
 				}
 			}
 			h1, h2 {
-				@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+				transition: all 150ms ease-in-out;
 				text-align: center;
 				margin: 0 !important;
 			}
@@ -869,10 +868,10 @@
 		width: 96px;
 		height: 96px;
 		.pf-card-link {
-			@include transition(.15s ease-in-out);
 			@include opacity(0);
 			@include flex;
 			@include flex-center;
+			transition: all 150ms ease-in-out;
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -1476,7 +1475,7 @@
 	&.with-hover {
 		.school-id-hover {
 			@include opacity(0);
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			transition: all 150ms ease-in-out;
 			position: absolute;
 			z-index: 10;
 			top: 0;
@@ -1568,7 +1567,7 @@
 			h3 {
 				@include flex;
 				@include flex-center;
-				@include prefix(align-self, flex-end, webkit);
+				align-self: flex-end;
 				width: 100%;
 				font-size: 16px;
 				font-weight: 600;
@@ -1600,7 +1599,7 @@
 				}
 			}
 			> div {
-				@include prefix(align-self, flex-start, webkit);
+				align-self: flex-start;
 				width: 100%;
 			}
 		}
@@ -1672,7 +1671,7 @@
 					}
 					.pf-course {
 						@include round;
-						@include prefix(animation, 500ms course-border ease-in forwards, webkit moz ms o);
+						animation: 500ms course-border ease-in forwards;
 						display: block;
 						position: relative;
 						padding: 5px 10px;
@@ -1682,7 +1681,7 @@
 						overflow: none;
 						&:before {
 							@include round;
-							@include prefix(animation, 500ms course-highlight ease-in forwards, webkit moz ms o);
+							animation: 500ms course-highlight ease-in forwards;
 							content: "";
 							display: block;
 							position: absolute;
@@ -1737,7 +1736,7 @@
 		}
 	}
 	.course-card-hover {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		transition: all 150ms ease-in-out;
 		display: none;
 		position: absolute;
 		z-index: 1;
@@ -1748,7 +1747,7 @@
 		border-radius: 2px;
 	}
 	.course-card-border {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		transition: all 150ms ease-in-out;
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -1758,9 +1757,9 @@
 		border-radius: 0 0 2px 2px;
 	}
 	.course-card-count {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		@include flex;
 		@include flex-center;
+		transition: all 150ms ease-in-out;
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -1827,7 +1826,7 @@
 	&.with-hover {
 		.course-card-hover {
 			@include opacity(0);
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			transition: all 150ms ease-in-out;
 			display: block;
 			position: absolute;
 			z-index: 7;
@@ -2755,7 +2754,7 @@ a.course-card {
 		}
 	}
 	.pf-cardlet-ribbon-edge {
-		@include prefix(transform, rotate(45deg), webkit moz ms o);
+		transform: rotate(45deg);
 		position: absolute;
 		z-index: 1;
 		top: 50px;
@@ -2785,7 +2784,7 @@ a.course-card {
 			background: white;
 		}
 		.pf-cardlet-bottom {
-			@include prefix(justify-content, flex-start, webkit);
+			justify-content: flex-start;
 			position: relative;
 			top: auto;
 			right: auto;
@@ -3036,7 +3035,7 @@ a.course-card {
 			div {
 				@include flex;
 				@include flex-center;
-				@include prefix(transform, rotate(-90deg), webkit moz ms o);
+				transform: rotate(-90deg);
 				position: absolute;
 				width: 120px;
 				top: 43px;
@@ -3070,10 +3069,10 @@ a.course-card {
 	background-position: center center;
 	background-size: cover;
 	.category-tile-inside {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 		@include flex;
 		@include flex-wrap;
 		@include flex-center;
+		transition: all 150ms ease-in-out;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -3094,7 +3093,7 @@ a.course-card {
 			}
 		}
 		h1 {
-			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			transition: all 150ms ease-in-out;
 			margin-top: 2px;
 			text-align: center;
 			width: 100%;
@@ -3104,7 +3103,7 @@ a.course-card {
 		}
 	}
 	.category-tile-count {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		transition: all 150ms ease-in-out;
 		@include flex;
 		@include flex-center;
 		position: absolute;
@@ -4905,7 +4904,7 @@ a.category-tile {
 	max-width: 256px;
 	position: relative;
 	* {
-		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		transition: all 150ms ease-in-out;
 	}
 	.album-echo {
 		@include opacity(0);
@@ -4926,7 +4925,7 @@ a.category-tile {
 		position: relative;
 		z-index: 2;
 		&.animate {
-				@include prefix(animation, album-fade 300ms ease-in-out forwards);
+				animation: album-fade 300ms ease-in-out forwards;
 			}
 		> svg {
 			max-width: 100%;
@@ -4964,7 +4963,7 @@ a.category-tile {
 		z-index: 1;
 		h1, h2 {
 			@include opacity(0);
-			@include prefix(transform, translateY(-100%) translateZ(0), webkit moz ms o);
+			transform: translateY(-100%) translateZ(0);
 			padding: 5px;
 			margin: 0;
 			font-size: 14px;
@@ -4976,14 +4975,14 @@ a.category-tile {
 			@include flex-center;
 			min-height: 48px;
 			&.animate {
-				@include prefix(animation, album-title 300ms ease-in-out 450ms forwards);
+				animation: album-title 300ms ease-in-out 450ms forwards;
 			}
 		}
 		h2 {
 			border-bottom-left-radius: 2px;
 			border-bottom-right-radius: 2px;
 			&.animate {
-				@include prefix(animation, album-genre 300ms ease-in-out 750ms forwards);
+				animation: album-genre 300ms ease-in-out 750ms forwards;
 			}
 		}
 		@media screen and (min-width: 768px) {
@@ -5020,7 +5019,7 @@ a.category-tile {
 	}
 }
 
-@include keyframes(album-fade) {
+@keyframes album-fade {
 	0% {
 		@include opacity(0);
 	}
@@ -5029,24 +5028,354 @@ a.category-tile {
 	}
 }
 
-@include keyframes(album-title) {
+@keyframes album-title {
 	0% {
 		@include opacity(0);
-		@include prefix(transform, translateY(-100%) translateZ(0), webkit moz ms o);
+		transform: translateY(-100%) translateZ(0);
 	}
 	100% {
 		@include opacity(1);
-		@include prefix(transform, translateY(0) translateZ(0), webkit moz ms o);
+		transform: translateY(0) translateZ(0);
 	}
 }
 
-@include keyframes(album-genre) {
+@keyframes album-genre {
 	0% {
 		@include opacity(0);
-		@include prefix(transform, translateY(-100%) translateZ(0), webkit moz ms o);
+		transform: translateY(-100%) translateZ(0);
 	}
 	100% {
 		@include opacity(.5);
-		@include prefix(transform, translateY(0) translateZ(0), webkit moz ms o);
+		transform: translateY(0) translateZ(0);
+	}
+}
+
+// university marker
+.university-place-marker {
+	transition: all 150ms ease-in-out;
+	position: relative;
+	cursor: pointer;
+	max-width: 262px;
+	&.visible {
+		@include opacity-important(1);
+		z-index: 9;
+	}
+	&.bg-academic {
+		.marker-circle {
+			background: $auburn;
+		}
+		.marker-guru {
+			background: rgba($auburn, .3);
+			&:hover, &:focus {
+				background: $auburn;
+			}
+		}
+	}
+	&.bg-freelancing {
+		.marker-circle {
+			background: $orange;
+		}
+		.marker-guru {
+			background: rgba($orange, .3);
+			&:hover, &:focus {
+				background: $orange;
+			}
+		}
+	}
+	&.bg-baking {
+		.marker-circle {
+			background: $gold;
+		}
+		.marker-guru {
+			background: rgba($gold, .3);
+			&:hover, &:focus {
+				background: $gold;
+			}
+		}
+	}
+	&.bg-photography {
+		.marker-circle {
+			background: $moola;
+		}
+		.marker-guru {
+			background: rgba($moola, .3);
+			&:hover, &:focus {
+				background: $moola;
+			}
+		}
+	}
+	&.bg-tech {
+		.marker-circle {
+			background: $azure;
+		}
+		.marker-guru {
+			background: rgba($azure, .3);
+			&:hover, &:focus {
+				background: $azure;
+			}
+		}
+	}
+	&.bg-household {
+		.marker-circle {
+			background: $cobalt;
+		}
+		.marker-guru {
+			background: rgba($cobalt, .3);
+			&:hover, &:focus {
+				background: $cobalt;
+			}
+		}
+	}
+	&.bg-athletic {
+		.marker-circle {
+			background: $eggplant;
+		}
+		.marker-guru {
+			background: rgba($eggplant, .3);
+			&:hover, &:focus {
+				background: $eggplant;
+			}
+		}
+	}
+	&.bg-academic {
+		.marker-circle {
+			background: $cerise;
+		}
+		.marker-guru {
+			background: rgba($cerise, .3);
+			&:hover, &:focus {
+				background: $cerise;
+			}
+		}
+	}
+	.marker-normal {
+		position: relative;
+		.marker-normal-window {
+			.open {
+				transition: stroke-dashoffset 150ms ease-in-out, opacity 150ms ease-in-out 150ms;
+				stroke-dasharray: 80, 80;
+				stroke-dashoffset: 0;
+			}
+			.side {
+				transition: stroke-dashoffset 200ms ease-in-out 650ms;
+				stroke-dasharray: 278, 278;
+				stroke-dashoffset: 0;
+			}
+		}
+		.marker-normal-content {
+			@include flex;
+			@include flex-wrap;
+			transition: all 150ms ease-in-out 350ms;
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: calc(100% - 4px);
+			height: calc(100% - 26px);
+			svg {
+				@include svg-stroke(white, 3);
+				transition: all 150ms ease-in-out 350ms;
+				position: absolute;
+				top: 50%;
+				margin-top: -24px;
+				left: 50%;
+				margin-left: -24px;
+				z-index: 2;
+				width: 48px;
+				height: 48px;
+			}
+			.marker-guru {
+				// @include opacity(0);
+				@include round;
+				@include flex;
+				@include flex-center-vertical;
+				@include center-xy;
+				transition: all 150ms ease-in-out 350ms;
+				margin-top: 6px;
+				height: 30px;
+				width: 74px;
+				padding-left: 28px;
+				border: 2px solid white;
+				font-size: 10px;
+				font-weight: 600;
+				line-height: 1;
+				text-align: center;
+				.user-icon {
+					position: absolute;
+					top: -2px;
+					left: -2px;
+					width: 30px;
+					height: 30px;
+					border-width: 2px;
+				}
+				.marker-guru-course {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+		&.move {
+			.marker-normal-window {
+				.open {
+					stroke-dashoffset: 80;
+				}
+			}
+			.marker-normal-content {
+				svg {
+					transform: translateY(-36px);
+				}
+			}
+		}
+		&.hidden {
+			.marker-normal-window {
+				.open {
+					stroke-dashoffset: 80;
+					opacity: 0;
+				}
+			}
+		}
+	}
+	.marker-expanded {
+		position: absolute;
+		z-index: -1;
+		bottom: 0;
+		left: 50%;
+		margin-left: -131px;
+		.marker-expanded-window {
+			.sides {
+				transition: stroke-dashoffset 300ms ease-in-out 150ms;
+				stroke-dasharray: 936, 936;
+				stroke-dashoffset: 936;
+			}
+		}
+		.marker-expanded-content {
+			@include opacity(0);
+			transition: all 150ms ease-in-out 350ms;
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: calc(100% - 4px);
+			height: calc(100% - 26px);
+			// &.active {
+			// 	@include opacity-important(1);
+			// }
+			.marker-expanded-icon {
+				svg {
+					@include svg-stroke(white, 1.5);
+					@include center-x;
+					top: -50%;
+					margin-top: 75px;
+					width: 100px;
+					height: 100px;
+				}
+			}
+			.marker-location {
+				padding: 40px 0 15px 0;
+				text-align: center;
+				h1 {
+					font-size: 18px;
+					font-weight: 600;
+				}
+				h4 {
+					font-size: 14px;
+					font-weight: 600;
+				}
+			}
+			.marker-guru {
+				@include flex;
+				position: relative;
+				padding: 10px 15px;
+				.user-icon {
+					width: 48px;
+					height: 48px;
+					border-width: 2px;
+				}
+				div {
+					width: calc(100% - 48px);
+					padding-left: 15px;
+					text-align: left;
+				}
+				h1 {
+					font-size: 20px;
+					font-weight: 600;
+				}
+				h3 {
+					@include opacity(.5);
+					margin-top: 0!important;
+					font-size: 14px;
+					font-weight: 600;
+				}
+				svg {
+					@include svg-stroke(white, 8);
+					@include center-y;
+					right: 2px;
+					height: 24px;
+				}
+			}
+			.marker-message {
+				@include flex;
+				@include flex-center-vertical;
+				height: calc(100% - 96px - 68px);
+				padding: 0 15px;
+				p {
+					margin: 0;
+					font-size: 16px;
+					font-weight: 400;
+					text-align: left;
+				}
+			}
+		}
+	}
+	.marker-circle {
+		@include round;
+		@include center-x;
+		margin-top: 3px;
+		width: 10px;
+		height: 10px;
+		border: 2px solid white;
+	}
+	.marker-label {
+		position: absolute;
+		width: 100%;
+		bottom: -35px;
+		font-weight: 600;
+		font-size: 14px;
+	}
+	&.active {
+		.marker-normal {
+			.marker-normal-window {
+				.side {
+					transition: stroke-dashoffset 200ms ease-in-out 150ms;
+					stroke-dashoffset: 278;
+				}
+			}
+			.marker-normal-content {
+				@include opacity(0);
+				transition: all 150ms ease-in-out 0ms;
+				svg, .marker-guru {
+					transition: all 150ms ease-in-out 0ms;
+				}
+			}
+			&.move {
+				.marker-normal-content {
+					transition: all 150ms ease-in-out 0ms;
+					svg, .marker-guru {
+						transition: all 150ms ease-in-out 0ms;
+					}
+				}
+			}
+		}
+		.marker-expanded {
+			z-index: 2;
+			.marker-expanded-window {
+				.sides {
+					transition: stroke-dashoffset 300ms ease-in-out 350ms;
+					stroke-dashoffset: 0;
+				}
+			}
+			.marker-expanded-content {
+				@include opacity(1);
+				transition: all 150ms ease-in-out 650ms;
+			}
+		}
 	}
 }

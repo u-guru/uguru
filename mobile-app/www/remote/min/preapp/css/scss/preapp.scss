@@ -1,8 +1,15 @@
 @import '../../../shared/css/scss/partials/mixin';
 @import 'partials/animation';
-@import 'partials/adlib';
-@import 'partials/adlib-responsive';
-@import 'partials/splash-headers';
-@import 'partials/device';
 @import 'partials/main';
+
+@import 'partials/adlib/main';
+
+@import 'partials/splash/headers';
+@import 'partials/splash/sidebar';
+
+@import 'partials/device';
+
 @import 'partials/hiw';
+
+@import 'partials/pages/pricing';
+@import 'partials/pages/team';
