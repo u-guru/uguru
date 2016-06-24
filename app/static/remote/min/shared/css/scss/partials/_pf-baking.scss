@@ -99,7 +99,7 @@
                 background: $gold;
             }
             .pf-main-subheader {
-                &:after {
+                hr {
                     background: rgba($gold, .2);
                 }
             }

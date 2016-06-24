@@ -79,6 +79,77 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       return $stateParams.categoryName;
     }}
   })
+  // -- start DEV states
+  .state('root.dev-splash-loader', {
+    url:'/dev/splash/loader',
+    templateUrl: 'preapp/templates/loaders/main.html',
+    controller: 'SplashLoaderController'
+  })
+  .state('root.dev-splash-nav', {
+    url:'/dev/splash/nav',
+    templateUrl: 'preapp/templates/splash.nav.html'
+  })
+  .state('root.dev-splash-map', {
+    url:'/dev/splash/map',
+    templateUrl: 'preapp/templates/splash.map.html'
+  })
+  .state('root.dev-splash-sidebar', {
+    url:'/dev/splash/sidebar',
+    templateUrl: 'preapp/templates/splash.sidebar.html'
+  })
+  .state('root.dev-splash-faq', {
+    url:'/dev/splash/faq',
+    templateUrl: 'preapp/templates/sidebar/faq.html'
+  })
+  .state('root.dev-splash-pricing', {
+    url:'/dev/splash/pricing',
+    templateUrl: 'preapp/templates/sidebar/pricing.html'
+  })
+  .state('root.dev-splash-team', {
+    url:'/dev/splash/team',
+    templateUrl: 'preapp/templates/sidebar/team.html'
+  })
+  .state('root.dev-splash-about', {
+    url:'/dev/splash/about',
+    templateUrl: 'preapp/templates/sidebar/about.html'
+  })
+  .state('root.dev-splash-powerups', {
+    url:'/dev/splash/powerups',
+    templateUrl: 'preapp/templates/splash.powerups.html'
+  })
+  .state('root.dev-splash-tour', {
+    url:'/dev/splash/tour',
+    templateUrl: 'preapp/templates/splash.tour.html'
+  })
+  .state('root.dev-projector', {
+    url:'/dev/splash/projector',
+    templateUrl: 'preapp/templates/started/getting-started.html'
+  })
+  .state('root.dev-splash-access', {
+    url:'/dev/splash/access',
+    templateUrl: 'preapp/templates/started/access.html'
+  })
+  .state('root.dev-splash-accounts', {
+    url:'/dev/splash/account',
+    templateUrl: 'preapp/templates/started/account.html'
+  })
+  .state('root.dev-splash-demographic', {
+    url:'/dev/splash/demographic',
+    templateUrl: 'preapp/templates/started/demographics.html'
+  })
+  .state('root.dev-splash-university-search', {
+    url:'/dev/splash/university-search',
+    templateUrl: 'preapp/templates/started/university-search.html'
+  })
+  .state('root.dev-splash-university-courses', {
+    url:'/dev/splash/university-courses',
+    templateUrl: 'preapp/templates/started/university-courses.html'
+  })
+  .state('root.dev-splash-hiw', {
+    url:'/dev/splash/hiw',
+    templateUrl: 'preapp/templates/splash.hiw.html'
+  })
+  // -- end dev states
   .state('root.jeselle', {
     url:'/dev/jeselle',
     templateUrl: 'jeselle/templates/index.html'

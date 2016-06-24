@@ -50,6 +50,9 @@
                             <user-icon url="member.profile_url" size="36"> </user-icon>
                         </div>
                     </li>
+                    <li ng-if='flow.status && !flow.status.css'>
+                        <button class="bg-auburn height-36 txt-18 radius-2" ng-click='flow.routes.staging.launch()'>CSS/HTML refactoring</button>
+                    </li>
                     <li >
                         <button class="bg-moxie height-36 txt-18 radius-2" ng-click='flow.routes.staging.launch()'>Master</button>
                     </li>
@@ -66,7 +69,7 @@
                     <li ng-if='false'>
                         <button class="bg-lake height-36 txt-18 radius-2" ng-click='flow.spec.launch()'>Spec</button>
                     </li>
-                    <li ng-if='false'>
+                    <li >
                         <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='flow.spec.progress'>78%</span>
                     </li>
                     <li>

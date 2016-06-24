@@ -25,96 +25,11 @@ function SpecContentService($state, $timeout, $localstorage, $window, AdminWorkf
         return {"workflows": workflows}
     }
 
-    allSpecs.preApp =  loadWorkflows() || {
-            "workflows":[
-              {
-                title: 'App Loader Bakery',
-                routes: getRoutes('dev/splash/loaders', 'preapp/templates/loaders/main.html', 'preapp/css/scss/loader.scss'),
-                spec: getSpec('loader'),
-                bugs: getBugInfo('loader'),
-                ready:true
-              },
-              {
-                title: 'Madlib Selection',
-                controller: 'SplashMadlibController',
-                routes: getRoutes('dev/splash/madlib', 'preapp/templates/splash.madlib.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('User selects a splash tag'),
-                ready:true
-              },
-              {
-                title: 'Academic Guru Profile',
-                controller: 'GuruProfileController',
-                routes: getRoutes('dev/admin/profiles/academic', 'shared/templates/guru.profile.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('profiles/academic'),
-                ready:true
-              },
-              {
-                title: 'Tech Guru Profile',
-                controller: 'GuruProfileController',
-                routes: getRoutes('dev/admin/profiles/tech', 'shared/templates/guru.profile.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('profiles/tech'),
-                ready:true
-              },
-              {
-                title: 'Baking Guru Profile',
-                controller: 'GuruProfileController',
-                routes: getRoutes('dev/admin/profiles/baking', 'shared/templates/guru.profile.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('profiles/baking'),
-                ready:true
-              },
-              {
-                title: 'Household Guru Profile',
-                controller: 'GuruProfileController',
-                routes: getRoutes('dev/admin/profiles/household', 'shared/templates/guru.profile.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('profiles/household'),
-                ready:true
-              },
-              {
-                title: 'Photography Guru Profile',
-                controller: 'GuruProfileController',
-                routes: getRoutes('dev/admin/profiles/photo', 'shared/templates/guru.profile.html'),
-                spec: getSpec('madlib'),
-                bugs: getBugInfo('profiles/photo'),
-                ready:true
-              },
-              {
-                title: 'Nav Controller',
-                controller: 'NavController',
-                routes: getRoutes('/dev/nav/', 'preapp/templates/nav.html', 'preapp/js/SplashNavController.js'),
-                spec: getSpec('nav'),
-                bugs: getBugInfo('nav'),
-
-              },
-              {
-                title: 'Device Controller',
-                controller: 'SplashDeviceController',
-                routes: getRoutes('/dev/device/', 'preapp/templates/device.html', 'preapp/js/SplashDeviceController.js'),
-                spec: getSpec('device'),
-                bugs: getBugInfo('device'),
-              },
-              {
-                title: "Jeselle's Portfolio",
-                controller: 'JeselleController',
-                routes: getRoutes('dev/jeselle', 'jeselle/templates/index.html', 'jeselle/js/JeselleCtrl.js'),
-                spec: getSpec('jeselle'),
-                bugs: getBugInfo('jeselle'),
-                ready:true
-              },
-              {
-                title: "Gabrielle's Portfolio",
-                controller: 'GabrielleController',
-                routes: getRoutes('dev/gabrielle', 'gabrielle/templates/index.html', 'gabrielle/templates/GabrielleCtrl.js'),
-                spec: getSpec('gabrielle'),
-                // bugs: getBugInfo('gabrielle'),
-                ready:true
-              }
-              ]
+    function prioritizeWorkflows(workflows, user_name) {
+        return workflows
     }
+
+    allSpecs.preApp =  prioritizeWorkflows(loadWorkflows());
     allAdminSpecs.preApp = [
         {
             title: 'Organize', description: 'depth first pre-app', priority: 1

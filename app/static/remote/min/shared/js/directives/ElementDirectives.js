@@ -45,7 +45,6 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
           if (args.length > 1 && args[1].split('delay').length > 1) {
             var delay = parseInt(args[1].replace('delay-', ''));
             var className = args[0];
-            console.log('initializing elem after', delay, 'oninit');
             $timeout(function() { element[0].classList.add(className); }, delay)
           }
           element[0].classList.add(attr.classOnInit)

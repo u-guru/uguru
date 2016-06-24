@@ -80,6 +80,13 @@
 		@include flex;
 		background: lighten($slate, 35%);
 		width: 100%;
+		overflow-x: auto;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		&::-moz-scrollbar {
+			display: none;
+		}
 	}
 	a {
 		display: block;
