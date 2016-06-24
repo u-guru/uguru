@@ -176,6 +176,12 @@ a[disabled], .noselect {
 input, fieldset {
   border: 0; }
 
+button, input, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
 .fix-abs .fixed {
   position: absolute !important; }
 

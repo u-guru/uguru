@@ -185,6 +185,10 @@ a[disabled], .noselect {
 input, fieldset {
 	border: 0;
 }
+button, input, textarea {
+	@include appearance;
+	font-family: $font;
+}
 
 .fix-abs {
 	.fixed {
