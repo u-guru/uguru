@@ -40,13 +40,16 @@ angular.module('uguru.admin')
         replace:true,
         restrict: 'E',
         scope:true,
-        link: function(scope, element, attr) {
+        link: function(scope, element, attr, ctrl, transclude) {
             scope.doc = {onSnippetClicked: onSnippedClicked(scope, element), onStateClicked: onStateClicked(scope, element), keywords: keywordArr, states: [], snippets: [], stateIndex: 0, snippetIndex:0};
             if ('keywords' in attr && attr['keywords']) {
                 var keywords = attr['keywords'];
                 var keywordArr = keywords.split(', ');
                 RootService.appendDocItem(scope.doc);
             }
+            transclude(scope, function(clone, scope) {
+                // element.append(clone);
+            });
             return;
         }
     }
@@ -90,6 +93,7 @@ angular.module('uguru.admin')
         transclude:true,
         replace:true,
         restrict: 'E',
+        scope:false,
         link: function(scope, element, attr) {
             if ('doc' in scope) {
                 scope.doc.title = element[0].querySelector('ng-transclude > span').innerHTML.trim();
@@ -104,6 +108,7 @@ angular.module('uguru.admin')
         transclude:true,
         replace:true,
         restrict: 'E',
+        scope:false,
         link: function(scope, element, attr) {
             if ('doc' in scope) {
                 scope.doc.description = element[0].querySelector('ng-transclude > span').innerHTML.trim();
@@ -117,10 +122,12 @@ angular.module('uguru.admin')
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.demo.tpl',
         transclude:true,
         replace:true,
-        scope:false,
+        scope:{doc:'='},
         restrict: 'E',
         link: function(scope, element, attr) {
-            console.log(scope.doc);
+            $timeout(function() {
+                console.log('doc demo update', scope.doc);
+            }, 1000)
         }
     }
 }])
@@ -150,7 +157,6 @@ angular.module('uguru.admin')
 
 
             }
-            console.log('inner html', element[0]);
             scope.state = {
                 title: title,
                 id: scope.doc.states.length,
@@ -166,7 +172,7 @@ angular.module('uguru.admin')
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.snippet.tpl',
         replace:true,
-        scope:true,
+        scope:false,
         transclude:true,
         restrict: 'E',
         link: function(scope, element, attr) {
@@ -183,7 +189,6 @@ angular.module('uguru.admin')
                 text: text || element[0].innerHTML
             }
             if (scope.snippet.type === 'css') {
-                console.log(scope.snippet.text);
                 scope.snippet.text = scope.snippet.text.replace('<span>', '').replace('}', '\n}').replace('</span>', '').trim();
             }
             scope.doc.snippets.push(scope.snippet);
@@ -198,6 +203,9 @@ angular.module('uguru.admin')
         scope:false,
         restrict: 'E',
         link: function(scope, element, attr) {
+            $timeout(function() {
+                console.log(scope.doc);
+            })
             return;
         }
     }
@@ -207,9 +215,9 @@ angular.module('uguru.admin')
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.snippets.tpl',
         transclude:true,
         replace:true,
+        scope:false,
         restrict: 'E',
         link: function(scope, element, attr) {
-            console.log('snippet index rendered', element[0])
             return;
         }
     }
