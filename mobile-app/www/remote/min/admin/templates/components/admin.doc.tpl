@@ -1,4 +1,4 @@
-<li doc="doc">
+<li>
     <ng-transclude class="component-item">
 
     </ng-transclude>

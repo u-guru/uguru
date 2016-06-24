@@ -27,7 +27,6 @@ function RootService($timeout, $state) {
 
     function appendDocItem(item) {
       docItems.push(item);
-      console.log(docItems);
     }
 
     function getDocItems() {

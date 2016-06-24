@@ -365,7 +365,7 @@ angular.module('uguru.shared.directives')
                   }
                   AnimationService.animate(element[0], indexClass, animationObj, elemArgDict.delay);
                 }
-                else if (indexClass !== "null") {
+                else if (indexClass !== "null" && indexClass.length) {
                   element[0].classList.add(indexClass);
                 }
                 // if (classArgs.indexOf("unique") > -1) {
