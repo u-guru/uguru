@@ -24453,278 +24453,2384 @@
                     </doc-snippets>
                 </doc-demo>
             </doc-item>
-            <doc-item keywords="tag" class="short">
-                <doc-title></doc-title>
+            <doc-item keywords="visual, ribbon" class="short">
+                <doc-title>Ribbon <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Default</span></doc-title>
                 <doc-description>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</doc-description>
                 <doc-demo>
                     <doc-states>
                         <doc-state default>
-                            <div on-activate="u-bounceInUp-subtle:animIn" elem-states="[pf-card]" on-pf-card-enter="u-bounceIn-subtle:animIn" on-pf-card-exit="bounceOut:animOut"></div>
+                            <div></div>
+                            <div class="ribbon-48 bg-robin" on-activate="u-bounceInUp-subtle:animIn" elem-states="[ribbon]" on-ribbon-enter="u-bounceIn-subtle:animIn" on-ribbon-exit="bounceOut:animOut">Robin</div>
                         </doc-state>
                         <doc-state inherit todo name="onActivate"></doc-state>
-                        <doc-state inherit todo name="onCreditTileEnter"></doc-state>
-                        <doc-state inherit todo name="onCreditTileExit"></doc-state>
+                        <doc-state inherit todo name="onRibbonEnter"></doc-state>
+                        <doc-state inherit todo name="onRibbonExit"></doc-state>
                     </doc-states>
                     <doc-snippets>
                         <doc-snippet default type="html"></doc-snippet>
-                        <doc-snippet type="css"></doc-snippet>
+                        <doc-snippet type="css">[class*="ribbon-"] {
+                        	@include flex;
+                        	@include flex-center;
+                        	position: relative;
+                        	font-weight: 600;
+                        	&:before, &:after {
+                        		content: "";
+                        		position: absolute;
+                        		top: 0;
+                        	}
+                        	&[class*="-left"] {
+                        		padding-right: 15px;
+                        		&:after {
+                        			display: none;
+                        		}
+                        	}
+                        	&[class*="-right"] {
+                        		padding-left: 15px;
+                        		&:before {
+                        			display: none;
+                        		}
+                        	}
+                        	&[class*="ribbon-32"] {
+                        		height: 32px;
+                        		font-size: 18px;
+                        		&:before, &:after {
+                        			border: 16px solid;
+                        			border-left-width: 12px;
+                        			border-right-width: 12px;
+                        		}
+                        		&:before {
+                        			left: -24px;
+                        		}
+                        		&:after {
+                        			right: -24px;
+                        		}
+                        	}
+                        	&[class*="ribbon-48"] {
+                        		height: 48px;
+                        		font-size: 24px;
+                        		&:before, &:after {
+                        			border: 24px solid;
+                        			border-left-width: 16px;
+                        			border-right-width: 16px;
+                        		}
+                        		&:before {
+                        			left: -32px;
+                        		}
+                        		&:after {
+                        			right: -32px;
+                        		}
+                        	}
+                        	&[class*="ribbon-64"] {
+                        		height: 64px;
+                        		font-size: 28px;
+                        		&:before, &:after {
+                        			border: 32px solid;
+                        			border-left-width: 24px;
+                        			border-right-width: 24px;
+                        		}
+                        		&:before {
+                        			left: -48px;
+                        		}
+                        		&:after {
+                        			right: -48px;
+                        		}
+                        	}
+                        	&.bg-charcoal {
+                        		&:before, &:after {
+                        			border-color: $charcoal;
+                        		}
+                        	}
+                        	&.bg-slate {
+                        		&:before, &:after {
+                        			border-color: $slate;
+                        		}
+                        	}
+                        	&.bg-taupe {
+                        		&:before, &:after {
+                        			border-color: $taupe;
+                        		}
+                        	}
+                        	&.bg-campus {
+                        		&:before, &:after {
+                        			border-color: $campus;
+                        		}
+                        	}
+                        	&.bg-smoke {
+                        		color: $slate;
+                        		&:before, &:after {
+                        			border-color: $smoke;
+                        		}
+                        	}
+                        	&.bg-white {
+                        		color: $slate;
+                        		&:before, &:after {
+                        			border-color: white;
+                        		}
+                        	}
+                        	&.bg-shamrock {
+                        		&:before, &:after {
+                        			border-color: $shamrock;
+                        		}
+                        	}
+                        	&.bg-robin {
+                        		background: $robin;
+                        		&:before, &:after {
+                        			border-color: $robin;
+                        		}
+                        	}
+                        	&.bg-lake {
+                        		&:before, &:after {
+                        			border-color: $lake;
+                        		}
+                        	}
+                        	&.bg-moxie {
+                        		&:before, &:after {
+                        			border-color: $moxie;
+                        		}
+                        	}
+                        	&.bg-crimson {
+                        		&:before, &:after {
+                        			border-color: $crimson;
+                        		}
+                        	}
+                        	&.bg-auburn, &.bg-delivery {
+                        		background: $auburn;
+                        		&:before, &:after {
+                        			border-color: $auburn;
+                        		}
+                        	}
+                        	&.bg-orange, &.bg-freelancing {
+                        		background: $orange;
+                        		&:before, &:after {
+                        			border-color: $orange;
+                        		}
+                        	}
+                        	&.bg-gold, &.bg-baking {
+                        		background: $gold;
+                        		&:before, &:after {
+                        			border-color: $gold;
+                        		}
+                        	}
+                        	&.bg-moola, &.bg-photography {
+                        		background: $moola;
+                        		&:before, &:after {
+                        			border-color: $moola;
+                        		}
+                        	}
+                        	&.bg-azure, &.bg-tech {
+                        		background: $azure;
+                        		&:before, &:after {
+                        			border-color: $azure;
+                        		}
+                        	}
+                        	&.bg-cobalt, &.bg-household {
+                        		background: $cobalt;
+                        		&:before, &:after {
+                        			border-color: $cobalt;
+                        		}
+                        	}
+                        	&.bg-eggplant, &.bg-athletic {
+                        		background: $eggplant;
+                        		&:before, &:after {
+                        			border-color: $eggplant;
+                        		}
+                        	}
+                        	&.bg-cerise, &.bg-academic {
+                        		background: $cerise;
+                        		&:before, &:after {
+                        			border-color: $cerise;
+                        		}
+                        	}
+                        	&:before {
+                        		border-left-color: transparent!important;
+                        	}
+                        	&:after {
+                        		border-right-color: transparent!important;
+                        	}
+                        }</doc-snippet>
                     </doc-snippets>
                 </doc-demo>
             </doc-item>
-            <li>
-                <div class="component-item short">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Ribbon <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Default</span></h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
-                            </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <div class="ribbon-48 bg-robin">Robin</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
-                            </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="component-item short">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Ribbon <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Left</span></h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
-                            </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <div class="ribbon-32-left bg-cobalt">Cobalt</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
-                            </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="component-item short">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Ribbon <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Right</span></h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
-                            </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <div class="ribbon-64-right bg-orange">Orange</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
-                            </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <doc-item keywords="tag" class="short">
-                <doc-title></doc-title>
+            <doc-item keywords="visual, ribbon" class="short">
+                <doc-title>Ribbon <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Left</span></doc-title>
                 <doc-description>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</doc-description>
                 <doc-demo>
                     <doc-states>
                         <doc-state default>
-                            <div on-activate="u-bounceInUp-subtle:animIn" elem-states="[pf-card]" on-pf-card-enter="u-bounceIn-subtle:animIn" on-pf-card-exit="bounceOut:animOut"></div>
+                            <div></div>
+                            <div class="ribbon-32-left bg-cobalt" on-activate="u-bounceInUp-subtle:animIn" elem-states="[ribbon]" on-ribbon-enter="u-bounceIn-subtle:animIn" on-ribbon-exit="bounceOut:animOut">Cobalt</div>
                         </doc-state>
                         <doc-state inherit todo name="onActivate"></doc-state>
-                        <doc-state inherit todo name="onCreditTileEnter"></doc-state>
-                        <doc-state inherit todo name="onCreditTileExit"></doc-state>
+                        <doc-state inherit todo name="onRibbonEnter"></doc-state>
+                        <doc-state inherit todo name="onRibbonExit"></doc-state>
                     </doc-states>
                     <doc-snippets>
                         <doc-snippet default type="html"></doc-snippet>
-                        <doc-snippet type="css"></doc-snippet>
+                        <doc-snippet type="css">[class*="ribbon-"] {
+                        	@include flex;
+                        	@include flex-center;
+                        	position: relative;
+                        	font-weight: 600;
+                        	&:before, &:after {
+                        		content: "";
+                        		position: absolute;
+                        		top: 0;
+                        	}
+                        	&[class*="-left"] {
+                        		padding-right: 15px;
+                        		&:after {
+                        			display: none;
+                        		}
+                        	}
+                        	&[class*="-right"] {
+                        		padding-left: 15px;
+                        		&:before {
+                        			display: none;
+                        		}
+                        	}
+                        	&[class*="ribbon-32"] {
+                        		height: 32px;
+                        		font-size: 18px;
+                        		&:before, &:after {
+                        			border: 16px solid;
+                        			border-left-width: 12px;
+                        			border-right-width: 12px;
+                        		}
+                        		&:before {
+                        			left: -24px;
+                        		}
+                        		&:after {
+                        			right: -24px;
+                        		}
+                        	}
+                        	&[class*="ribbon-48"] {
+                        		height: 48px;
+                        		font-size: 24px;
+                        		&:before, &:after {
+                        			border: 24px solid;
+                        			border-left-width: 16px;
+                        			border-right-width: 16px;
+                        		}
+                        		&:before {
+                        			left: -32px;
+                        		}
+                        		&:after {
+                        			right: -32px;
+                        		}
+                        	}
+                        	&[class*="ribbon-64"] {
+                        		height: 64px;
+                        		font-size: 28px;
+                        		&:before, &:after {
+                        			border: 32px solid;
+                        			border-left-width: 24px;
+                        			border-right-width: 24px;
+                        		}
+                        		&:before {
+                        			left: -48px;
+                        		}
+                        		&:after {
+                        			right: -48px;
+                        		}
+                        	}
+                        	&.bg-charcoal {
+                        		&:before, &:after {
+                        			border-color: $charcoal;
+                        		}
+                        	}
+                        	&.bg-slate {
+                        		&:before, &:after {
+                        			border-color: $slate;
+                        		}
+                        	}
+                        	&.bg-taupe {
+                        		&:before, &:after {
+                        			border-color: $taupe;
+                        		}
+                        	}
+                        	&.bg-campus {
+                        		&:before, &:after {
+                        			border-color: $campus;
+                        		}
+                        	}
+                        	&.bg-smoke {
+                        		color: $slate;
+                        		&:before, &:after {
+                        			border-color: $smoke;
+                        		}
+                        	}
+                        	&.bg-white {
+                        		color: $slate;
+                        		&:before, &:after {
+                        			border-color: white;
+                        		}
+                        	}
+                        	&.bg-shamrock {
+                        		&:before, &:after {
+                        			border-color: $shamrock;
+                        		}
+                        	}
+                        	&.bg-robin {
+                        		background: $robin;
+                        		&:before, &:after {
+                        			border-color: $robin;
+                        		}
+                        	}
+                        	&.bg-lake {
+                        		&:before, &:after {
+                        			border-color: $lake;
+                        		}
+                        	}
+                        	&.bg-moxie {
+                        		&:before, &:after {
+                        			border-color: $moxie;
+                        		}
+                        	}
+                        	&.bg-crimson {
+                        		&:before, &:after {
+                        			border-color: $crimson;
+                        		}
+                        	}
+                        	&.bg-auburn, &.bg-delivery {
+                        		background: $auburn;
+                        		&:before, &:after {
+                        			border-color: $auburn;
+                        		}
+                        	}
+                        	&.bg-orange, &.bg-freelancing {
+                        		background: $orange;
+                        		&:before, &:after {
+                        			border-color: $orange;
+                        		}
+                        	}
+                        	&.bg-gold, &.bg-baking {
+                        		background: $gold;
+                        		&:before, &:after {
+                        			border-color: $gold;
+                        		}
+                        	}
+                        	&.bg-moola, &.bg-photography {
+                        		background: $moola;
+                        		&:before, &:after {
+                        			border-color: $moola;
+                        		}
+                        	}
+                        	&.bg-azure, &.bg-tech {
+                        		background: $azure;
+                        		&:before, &:after {
+                        			border-color: $azure;
+                        		}
+                        	}
+                        	&.bg-cobalt, &.bg-household {
+                        		background: $cobalt;
+                        		&:before, &:after {
+                        			border-color: $cobalt;
+                        		}
+                        	}
+                        	&.bg-eggplant, &.bg-athletic {
+                        		background: $eggplant;
+                        		&:before, &:after {
+                        			border-color: $eggplant;
+                        		}
+                        	}
+                        	&.bg-cerise, &.bg-academic {
+                        		background: $cerise;
+                        		&:before, &:after {
+                        			border-color: $cerise;
+                        		}
+                        	}
+                        	&:before {
+                        		border-left-color: transparent!important;
+                        	}
+                        	&:after {
+                        		border-right-color: transparent!important;
+                        	}
+                        }</doc-snippet>
                     </doc-snippets>
                 </doc-demo>
             </doc-item>
-            <li>
-                <div class="component-item short">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Badge <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Left Hover</span></h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
+            <doc-item keywords="visual, ribbon" class="short">
+                <doc-title>Ribbon <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Right</span></doc-title>
+                <doc-description>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</doc-description>
+                <doc-demo>
+                    <doc-states>
+                        <doc-state default>
+                            <div></div>
+                            <div class="ribbon-64-right bg-orange" on-activate="u-bounceInUp-subtle:animIn" elem-states="[ribbon]" on-ribbon-enter="u-bounceIn-subtle:animIn" on-ribbon-exit="bounceOut:animOut">Orange</div>
+                        </doc-state>
+                        <doc-state inherit todo name="onActivate"></doc-state>
+                        <doc-state inherit todo name="onRibbonEnter"></doc-state>
+                        <doc-state inherit todo name="onRibbonExit"></doc-state>
+                    </doc-states>
+                    <doc-snippets>
+                        <doc-snippet default type="html"></doc-snippet>
+                        <doc-snippet type="css">[class*="ribbon-"] {
+                        	@include flex;
+                        	@include flex-center;
+                        	position: relative;
+                        	font-weight: 600;
+                        	&:before, &:after {
+                        		content: "";
+                        		position: absolute;
+                        		top: 0;
+                        	}
+                        	&[class*="-left"] {
+                        		padding-right: 15px;
+                        		&:after {
+                        			display: none;
+                        		}
+                        	}
+                        	&[class*="-right"] {
+                        		padding-left: 15px;
+                        		&:before {
+                        			display: none;
+                        		}
+                        	}
+                        	&[class*="ribbon-32"] {
+                        		height: 32px;
+                        		font-size: 18px;
+                        		&:before, &:after {
+                        			border: 16px solid;
+                        			border-left-width: 12px;
+                        			border-right-width: 12px;
+                        		}
+                        		&:before {
+                        			left: -24px;
+                        		}
+                        		&:after {
+                        			right: -24px;
+                        		}
+                        	}
+                        	&[class*="ribbon-48"] {
+                        		height: 48px;
+                        		font-size: 24px;
+                        		&:before, &:after {
+                        			border: 24px solid;
+                        			border-left-width: 16px;
+                        			border-right-width: 16px;
+                        		}
+                        		&:before {
+                        			left: -32px;
+                        		}
+                        		&:after {
+                        			right: -32px;
+                        		}
+                        	}
+                        	&[class*="ribbon-64"] {
+                        		height: 64px;
+                        		font-size: 28px;
+                        		&:before, &:after {
+                        			border: 32px solid;
+                        			border-left-width: 24px;
+                        			border-right-width: 24px;
+                        		}
+                        		&:before {
+                        			left: -48px;
+                        		}
+                        		&:after {
+                        			right: -48px;
+                        		}
+                        	}
+                        	&.bg-charcoal {
+                        		&:before, &:after {
+                        			border-color: $charcoal;
+                        		}
+                        	}
+                        	&.bg-slate {
+                        		&:before, &:after {
+                        			border-color: $slate;
+                        		}
+                        	}
+                        	&.bg-taupe {
+                        		&:before, &:after {
+                        			border-color: $taupe;
+                        		}
+                        	}
+                        	&.bg-campus {
+                        		&:before, &:after {
+                        			border-color: $campus;
+                        		}
+                        	}
+                        	&.bg-smoke {
+                        		color: $slate;
+                        		&:before, &:after {
+                        			border-color: $smoke;
+                        		}
+                        	}
+                        	&.bg-white {
+                        		color: $slate;
+                        		&:before, &:after {
+                        			border-color: white;
+                        		}
+                        	}
+                        	&.bg-shamrock {
+                        		&:before, &:after {
+                        			border-color: $shamrock;
+                        		}
+                        	}
+                        	&.bg-robin {
+                        		background: $robin;
+                        		&:before, &:after {
+                        			border-color: $robin;
+                        		}
+                        	}
+                        	&.bg-lake {
+                        		&:before, &:after {
+                        			border-color: $lake;
+                        		}
+                        	}
+                        	&.bg-moxie {
+                        		&:before, &:after {
+                        			border-color: $moxie;
+                        		}
+                        	}
+                        	&.bg-crimson {
+                        		&:before, &:after {
+                        			border-color: $crimson;
+                        		}
+                        	}
+                        	&.bg-auburn, &.bg-delivery {
+                        		background: $auburn;
+                        		&:before, &:after {
+                        			border-color: $auburn;
+                        		}
+                        	}
+                        	&.bg-orange, &.bg-freelancing {
+                        		background: $orange;
+                        		&:before, &:after {
+                        			border-color: $orange;
+                        		}
+                        	}
+                        	&.bg-gold, &.bg-baking {
+                        		background: $gold;
+                        		&:before, &:after {
+                        			border-color: $gold;
+                        		}
+                        	}
+                        	&.bg-moola, &.bg-photography {
+                        		background: $moola;
+                        		&:before, &:after {
+                        			border-color: $moola;
+                        		}
+                        	}
+                        	&.bg-azure, &.bg-tech {
+                        		background: $azure;
+                        		&:before, &:after {
+                        			border-color: $azure;
+                        		}
+                        	}
+                        	&.bg-cobalt, &.bg-household {
+                        		background: $cobalt;
+                        		&:before, &:after {
+                        			border-color: $cobalt;
+                        		}
+                        	}
+                        	&.bg-eggplant, &.bg-athletic {
+                        		background: $eggplant;
+                        		&:before, &:after {
+                        			border-color: $eggplant;
+                        		}
+                        	}
+                        	&.bg-cerise, &.bg-academic {
+                        		background: $cerise;
+                        		&:before, &:after {
+                        			border-color: $cerise;
+                        		}
+                        	}
+                        	&:before {
+                        		border-left-color: transparent!important;
+                        	}
+                        	&:after {
+                        		border-right-color: transparent!important;
+                        	}
+                        }</doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+            </doc-item>
+            <doc-item keywords="badge, notification" class="short">
+                <doc-title>Badge <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Left Hover</span></doc-title>
+                <doc-description>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</doc-description>
+                <doc-demo>
+                    <doc-states>
+                        <doc-state default>
+                            <a class="badge-container click" on-activate="u-bounceInUp-subtle:animIn" elem-states="[badge]" on-badge-enter="u-bounceIn-subtle:animIn" on-badge-exit="bounceOut:animOut">
+                                <span class="badge-left bg-moxie">1</span>
+                                <span>Messages</span>
+                            </a>
+                        </doc-state>
+                        <doc-state inherit todo name="onActivate"></doc-state>
+                        <doc-state inherit todo name="onBadgeEnter"></doc-state>
+                        <doc-state inherit todo name="onBadgeExit"></doc-state>
+                    </doc-states>
+                    <doc-snippets>
+                        <doc-snippet default type="html"></doc-snippet>
+                        <doc-snippet type="css">.badge-container {
+                        	@include flex;
+                        	@include flex-center;
+                        	position: relative;
+                        	font-size: 18px;
+                        	font-weight: 600;
+                        	[class*="badge"] {
+                        		@include flex;
+                        		@include flex-center;
+                        		position: relative;
+                        		top: auto;
+                        		left: auto;
+                        		right: auto;
+                        		border-radius: 2px;
+                        		min-width: 0;
+                        		width: 36px;
+                        		height: 32px;
+                        		color: white;
+                        		font-size: 18px;
+                        		font-weight: 600;
+                        		&:after {
+                        			content: "";
+                        			display: block;
+                        			position: absolute;
+                        			height: 0;
+                        			width: 0;
+                        			border: 6px solid transparent;
+                        		}
+                        		&.badge-top {
+                        			@include center-x;
+                        			top: -40px;
+                        			&:after {
+                        				bottom: -12px;
+                        				left: 50%;
+                        				margin-left: -6px;
+                        				border-bottom-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-bottom {
+                        			@include center-x;
+                        			bottom: -40px;
+                        			&:after {
+                        				top: -12px;
+                        				left: 50%;
+                        				margin-left: -6px;
+                        				border-top-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-left {
+                        			margin-right: 12px;
+                        			&:after {
+                        				top: 50%;
+                        				margin-top: -6px;
+                        				right: -12px;
+                        				border-top-color: transparent!important;
+                        				border-bottom-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-right {
+                        			margin-left: 12px;
+                        			&:after {
+                        				top: 50%;
+                        				margin-top: -6px;
+                        				left: -12px;
+                        				border-top-color: transparent!important;
+                        				border-bottom-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        			}
+                        		}
+                        		&.bg-charcoal {
+                        			background: $charcoal;
+                        			&:after {
+                        				border-color: $charcoal;
+                        			}
+                        		}
+                        		&.bg-slate {
+                        			background: $slate;
+                        			&:after {
+                        				border-color: $slate;
+                        			}
+                        		}
+                        		&.bg-taupe {
+                        			background: $taupe;
+                        			&:after {
+                        				border-color: $taupe;
+                        			}
+                        		}
+                        		&.bg-campus {
+                        			background: $campus;
+                        			&:after {
+                        				border-color: $campus;
+                        			}
+                        		}
+                        		&.bg-shamrock {
+                        			background: $shamrock;
+                        			&:after {
+                        				border-color: $shamrock;
+                        			}
+                        		}
+                        		&.bg-robin {
+                        			background: $robin;
+                        			&:after {
+                        				border-color: $robin;
+                        			}
+                        		}
+                        		&.bg-lake {
+                        			background: $lake;
+                        			&:after {
+                        				border-color: $lake;
+                        			}
+                        		}
+                        		&.bg-moxie {
+                        			background: $moxie;
+                        			&:after {
+                        				border-color: $moxie;
+                        			}
+                        		}
+                        		&.bg-crimson {
+                        			background: $crimson;
+                        			&:after {
+                        				border-color: $crimson;
+                        			}
+                        		}
+                        		&.bg-auburn, &.bg-delivery {
+                        			background: $auburn;
+                        			&:after {
+                        				border-color: $auburn;
+                        			}
+                        		}
+                        		&.bg-orange, &.bg-freelancing {
+                        			background: $orange;
+                        			&:after {
+                        				border-color: $orange;
+                        			}
+                        		}
+                        		&.bg-gold, &.bg-baking {
+                        			background: $gold;
+                        			&:after {
+                        				border-color: $gold;
+                        			}
+                        		}
+                        		&.bg-moola, &.bg-photography {
+                        			background: $moola;
+                        			&:after {
+                        				border-color: $moola;
+                        			}
+                        		}
+                        		&.bg-azure, &.bg-tech {
+                        			background: $azure;
+                        			&:after {
+                        				border-color: $azure;
+                        			}
+                        		}
+                        		&.bg-cobalt, &.bg-household {
+                        			background: $cobalt;
+                        			&:after {
+                        				border-color: $cobalt;
+                        			}
+                        		}
+                        		&.bg-eggplant, &.bg-athletic {
+                        			background: $eggplant;
+                        			&:after {
+                        				border-color: $eggplant;
+                        			}
+                        		}
+                        		&.bg-cerise, &.bg-academic {
+                        			background: $cerise;
+                        			&:after {
+                        				border-color: $cerise;
+                        			}
+                        		}
+                        	}
+                        	&[class*="click"] {
+                        		&:hover, &:focus {
+                        			[class*="badge"] {
+                        				&.bg-charcoal {
+                        					background: mix($charcoal, white);
+                        					color: $charcoal;
+                        					&:after {
+                        						border-color: mix($charcoal, white);
+                        					}
+                        				}
+                        				&.bg-slate {
+                        					background: mix($slate, white);
+                        					color: $slate;
+                        					&:after {
+                        						border-color: mix($slate, white);
+                        					}
+                        				}
+                        				&.bg-taupe {
+                        					background: mix($taupe, white);
+                        					color: mix($taupe, $slate);
+                        					&:after {
+                        						border-color: mix($taupe, white);
+                        					}
+                        				}
+                        				&.bg-campus {
+                        					background: mix($campus, white);
+                        					color: mix($campus, $slate);
+                        					&:after {
+                        						border-color: mix($campus, white);
+                        					}
+                        				}
+                        				&.bg-shamrock {
+                        					background: mix($shamrock, white);
+                        					color: mix($shamrock, $slate);
+                        					&:after {
+                        						border-color: mix($shamrock, white);
+                        					}
+                        				}
+                        				&.bg-robin {
+                        					background: mix($robin, white);
+                        					color: mix($robin, $slate);
+                        					&:after {
+                        						border-color: mix($robin, white);
+                        					}
+                        				}
+                        				&.bg-lake {
+                        					background: mix($lake, white);
+                        					color: mix($lake, $slate);
+                        					&:after {
+                        						border-color: mix($lake, white);
+                        					}
+                        				}
+                        				&.bg-moxie {
+                        					background: mix($moxie, white);
+                        					color: mix($moxie, $slate);
+                        					&:after {
+                        						border-color: mix($moxie, white);
+                        					}
+                        				}
+                        				&.bg-crimson {
+                        					background: mix($crimson, white);
+                        					color: mix($crimson, $slate);
+                        					&:after {
+                        						border-color: mix($crimson, white);
+                        					}
+                        				}
+                        				&.bg-auburn, &.bg-delivery {
+                        					background: mix($auburn, white);
+                        					color: mix($auburn, $slate);
+                        					&:after {
+                        						border-color: mix($auburn, white);
+                        					}
+                        				}
+                        				&.bg-orange, &.bg-freelancing {
+                        					background: mix($orange, white);
+                        					color: mix($orange, $slate);
+                        					&:after {
+                        						border-color: mix($orange, white);
+                        					}
+                        				}
+                        				&.bg-gold, &.bg-baking {
+                        					background: mix($gold, white);
+                        					color: mix($gold, $slate);
+                        					&:after {
+                        						border-color: mix($gold, white);
+                        					}
+                        				}
+                        				&.bg-moola, &.bg-photography {
+                        					background: mix($moola, white);
+                        					color: mix($moola, $slate);
+                        					&:after {
+                        						border-color: mix($moola, white);
+                        					}
+                        				}
+                        				&.bg-azure, &.bg-tech {
+                        					background: mix($azure, white);
+                        					color: mix($azure, $slate);
+                        					&:after {
+                        						border-color: mix($azure, white);
+                        					}
+                        				}
+                        				&.bg-cobalt, &.bg-household {
+                        					background: mix($cobalt, white);
+                        					color: mix($cobalt, $slate);
+                        					&:after {
+                        						border-color: mix($cobalt, white);
+                        					}
+                        				}
+                        				&.bg-eggplant, &.bg-athletic {
+                        					background: mix($eggplant, white);
+                        					color: mix($eggplant, $slate);
+                        					&:after {
+                        						border-color: mix($eggplant, white);
+                        					}
+                        				}
+                        				&.bg-cerise, &.bg-academic {
+                        					background: mix($cerise, white);
+                        					color: mix($cerise, $slate);
+                        					&:after {
+                        						border-color: mix($cerise, white);
+                        					}
+                        				}
+                        			}
+                        		}
+                        		&:active {
+                        			[class*="badge"] {
+                        				&.bg-charcoal {
+                        					background: mix($slate, white, 75%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($slate, white, 75%);
+                        					}
+                        				}
+                        				&.bg-slate {
+                        					background: mix($slate, white, 70%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($slate, white, 70%);
+                        					}
+                        				}
+                        				&.bg-taupe {
+                        					background: mix($taupe, white, 75%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($taupe, white, 75%);
+                        					}
+                        				}
+                        				&.bg-campus {
+                        					background: mix($campus, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($campus, $slate);
+                        					}
+                        				}
+                        				&.bg-shamrock {
+                        					background: mix($shamrock, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($shamrock, $slate);
+                        					}
+                        				}
+                        				&.bg-robin {
+                        					background: mix($robin, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($robin, $slate);
+                        					}
+                        				}
+                        				&.bg-lake {
+                        					background: mix($lake, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($lake, $slate);
+                        					}
+                        				}
+                        				&.bg-moxie {
+                        					background: mix($moxie, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($moxie, $slate);
+                        					}
+                        				}
+                        				&.bg-crimson {
+                        					background: mix($crimson, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($crimson, $slate);
+                        					}
+                        				}
+                        				&.bg-auburn, &.bg-delivery {
+                        					background: mix($auburn, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($auburn, $slate);
+                        					}
+                        				}
+                        				&.bg-orange, &.bg-freelancing {
+                        					background: mix($orange, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($orange, $slate);
+                        					}
+                        				}
+                        				&.bg-gold, &.bg-baking {
+                        					background: mix($gold, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($gold, $slate);
+                        					}
+                        				}
+                        				&.bg-moola, &.bg-photography {
+                        					background: mix($moola, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($moola, $slate);
+                        					}
+                        				}
+                        				&.bg-azure, &.bg-tech {
+                        					background: mix($azure, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($azure, $slate);
+                        					}
+                        				}
+                        				&.bg-cobalt, &.bg-household {
+                        					background: mix($cobalt, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($cobalt, $slate);
+                        					}
+                        				}
+                        				&.bg-eggplant, &.bg-athletic {
+                        					background: mix($eggplant, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($eggplant, $slate);
+                        					}
+                        				}
+                        				&.bg-cerise, &.bg-academic {
+                        					background: mix($cerise, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($cerise, $slate);
+                        					}
+                        				}
+                        			}
+                        		}
+                        	}
+                        }</doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+            </doc-item>
+            <doc-item keywords="badge, notification" class="short">
+                <doc-title>Badge <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Bottom Hover</span></doc-title>
+                <doc-description>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</doc-description>
+                <doc-demo>
+                    <doc-states>
+                        <doc-state default>
+                            <a class="badge-container click" on-activate="u-bounceInUp-subtle:animIn" elem-states="[badge]" on-badge-enter="u-bounceIn-subtle:animIn" on-badge-exit="bounceOut:animOut">
+                                <span>Students</span>
+                                <span class="badge-bottom bg-robin">4</span>
+                            </a>
+                        </doc-state>
+                        <doc-state inherit todo name="onActivate"></doc-state>
+                        <doc-state inherit todo name="onBadgeEnter"></doc-state>
+                        <doc-state inherit todo name="onBadgeExit"></doc-state>
+                    </doc-states>
+                    <doc-snippets>
+                        <doc-snippet default type="html"></doc-snippet>
+                        <doc-snippet type="css">.badge-container {
+                        	@include flex;
+                        	@include flex-center;
+                        	position: relative;
+                        	font-size: 18px;
+                        	font-weight: 600;
+                        	[class*="badge"] {
+                        		@include flex;
+                        		@include flex-center;
+                        		position: relative;
+                        		top: auto;
+                        		left: auto;
+                        		right: auto;
+                        		border-radius: 2px;
+                        		min-width: 0;
+                        		width: 36px;
+                        		height: 32px;
+                        		color: white;
+                        		font-size: 18px;
+                        		font-weight: 600;
+                        		&:after {
+                        			content: "";
+                        			display: block;
+                        			position: absolute;
+                        			height: 0;
+                        			width: 0;
+                        			border: 6px solid transparent;
+                        		}
+                        		&.badge-top {
+                        			@include center-x;
+                        			top: -40px;
+                        			&:after {
+                        				bottom: -12px;
+                        				left: 50%;
+                        				margin-left: -6px;
+                        				border-bottom-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-bottom {
+                        			@include center-x;
+                        			bottom: -40px;
+                        			&:after {
+                        				top: -12px;
+                        				left: 50%;
+                        				margin-left: -6px;
+                        				border-top-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-left {
+                        			margin-right: 12px;
+                        			&:after {
+                        				top: 50%;
+                        				margin-top: -6px;
+                        				right: -12px;
+                        				border-top-color: transparent!important;
+                        				border-bottom-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-right {
+                        			margin-left: 12px;
+                        			&:after {
+                        				top: 50%;
+                        				margin-top: -6px;
+                        				left: -12px;
+                        				border-top-color: transparent!important;
+                        				border-bottom-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        			}
+                        		}
+                        		&.bg-charcoal {
+                        			background: $charcoal;
+                        			&:after {
+                        				border-color: $charcoal;
+                        			}
+                        		}
+                        		&.bg-slate {
+                        			background: $slate;
+                        			&:after {
+                        				border-color: $slate;
+                        			}
+                        		}
+                        		&.bg-taupe {
+                        			background: $taupe;
+                        			&:after {
+                        				border-color: $taupe;
+                        			}
+                        		}
+                        		&.bg-campus {
+                        			background: $campus;
+                        			&:after {
+                        				border-color: $campus;
+                        			}
+                        		}
+                        		&.bg-shamrock {
+                        			background: $shamrock;
+                        			&:after {
+                        				border-color: $shamrock;
+                        			}
+                        		}
+                        		&.bg-robin {
+                        			background: $robin;
+                        			&:after {
+                        				border-color: $robin;
+                        			}
+                        		}
+                        		&.bg-lake {
+                        			background: $lake;
+                        			&:after {
+                        				border-color: $lake;
+                        			}
+                        		}
+                        		&.bg-moxie {
+                        			background: $moxie;
+                        			&:after {
+                        				border-color: $moxie;
+                        			}
+                        		}
+                        		&.bg-crimson {
+                        			background: $crimson;
+                        			&:after {
+                        				border-color: $crimson;
+                        			}
+                        		}
+                        		&.bg-auburn, &.bg-delivery {
+                        			background: $auburn;
+                        			&:after {
+                        				border-color: $auburn;
+                        			}
+                        		}
+                        		&.bg-orange, &.bg-freelancing {
+                        			background: $orange;
+                        			&:after {
+                        				border-color: $orange;
+                        			}
+                        		}
+                        		&.bg-gold, &.bg-baking {
+                        			background: $gold;
+                        			&:after {
+                        				border-color: $gold;
+                        			}
+                        		}
+                        		&.bg-moola, &.bg-photography {
+                        			background: $moola;
+                        			&:after {
+                        				border-color: $moola;
+                        			}
+                        		}
+                        		&.bg-azure, &.bg-tech {
+                        			background: $azure;
+                        			&:after {
+                        				border-color: $azure;
+                        			}
+                        		}
+                        		&.bg-cobalt, &.bg-household {
+                        			background: $cobalt;
+                        			&:after {
+                        				border-color: $cobalt;
+                        			}
+                        		}
+                        		&.bg-eggplant, &.bg-athletic {
+                        			background: $eggplant;
+                        			&:after {
+                        				border-color: $eggplant;
+                        			}
+                        		}
+                        		&.bg-cerise, &.bg-academic {
+                        			background: $cerise;
+                        			&:after {
+                        				border-color: $cerise;
+                        			}
+                        		}
+                        	}
+                        	&[class*="click"] {
+                        		&:hover, &:focus {
+                        			[class*="badge"] {
+                        				&.bg-charcoal {
+                        					background: mix($charcoal, white);
+                        					color: $charcoal;
+                        					&:after {
+                        						border-color: mix($charcoal, white);
+                        					}
+                        				}
+                        				&.bg-slate {
+                        					background: mix($slate, white);
+                        					color: $slate;
+                        					&:after {
+                        						border-color: mix($slate, white);
+                        					}
+                        				}
+                        				&.bg-taupe {
+                        					background: mix($taupe, white);
+                        					color: mix($taupe, $slate);
+                        					&:after {
+                        						border-color: mix($taupe, white);
+                        					}
+                        				}
+                        				&.bg-campus {
+                        					background: mix($campus, white);
+                        					color: mix($campus, $slate);
+                        					&:after {
+                        						border-color: mix($campus, white);
+                        					}
+                        				}
+                        				&.bg-shamrock {
+                        					background: mix($shamrock, white);
+                        					color: mix($shamrock, $slate);
+                        					&:after {
+                        						border-color: mix($shamrock, white);
+                        					}
+                        				}
+                        				&.bg-robin {
+                        					background: mix($robin, white);
+                        					color: mix($robin, $slate);
+                        					&:after {
+                        						border-color: mix($robin, white);
+                        					}
+                        				}
+                        				&.bg-lake {
+                        					background: mix($lake, white);
+                        					color: mix($lake, $slate);
+                        					&:after {
+                        						border-color: mix($lake, white);
+                        					}
+                        				}
+                        				&.bg-moxie {
+                        					background: mix($moxie, white);
+                        					color: mix($moxie, $slate);
+                        					&:after {
+                        						border-color: mix($moxie, white);
+                        					}
+                        				}
+                        				&.bg-crimson {
+                        					background: mix($crimson, white);
+                        					color: mix($crimson, $slate);
+                        					&:after {
+                        						border-color: mix($crimson, white);
+                        					}
+                        				}
+                        				&.bg-auburn, &.bg-delivery {
+                        					background: mix($auburn, white);
+                        					color: mix($auburn, $slate);
+                        					&:after {
+                        						border-color: mix($auburn, white);
+                        					}
+                        				}
+                        				&.bg-orange, &.bg-freelancing {
+                        					background: mix($orange, white);
+                        					color: mix($orange, $slate);
+                        					&:after {
+                        						border-color: mix($orange, white);
+                        					}
+                        				}
+                        				&.bg-gold, &.bg-baking {
+                        					background: mix($gold, white);
+                        					color: mix($gold, $slate);
+                        					&:after {
+                        						border-color: mix($gold, white);
+                        					}
+                        				}
+                        				&.bg-moola, &.bg-photography {
+                        					background: mix($moola, white);
+                        					color: mix($moola, $slate);
+                        					&:after {
+                        						border-color: mix($moola, white);
+                        					}
+                        				}
+                        				&.bg-azure, &.bg-tech {
+                        					background: mix($azure, white);
+                        					color: mix($azure, $slate);
+                        					&:after {
+                        						border-color: mix($azure, white);
+                        					}
+                        				}
+                        				&.bg-cobalt, &.bg-household {
+                        					background: mix($cobalt, white);
+                        					color: mix($cobalt, $slate);
+                        					&:after {
+                        						border-color: mix($cobalt, white);
+                        					}
+                        				}
+                        				&.bg-eggplant, &.bg-athletic {
+                        					background: mix($eggplant, white);
+                        					color: mix($eggplant, $slate);
+                        					&:after {
+                        						border-color: mix($eggplant, white);
+                        					}
+                        				}
+                        				&.bg-cerise, &.bg-academic {
+                        					background: mix($cerise, white);
+                        					color: mix($cerise, $slate);
+                        					&:after {
+                        						border-color: mix($cerise, white);
+                        					}
+                        				}
+                        			}
+                        		}
+                        		&:active {
+                        			[class*="badge"] {
+                        				&.bg-charcoal {
+                        					background: mix($slate, white, 75%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($slate, white, 75%);
+                        					}
+                        				}
+                        				&.bg-slate {
+                        					background: mix($slate, white, 70%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($slate, white, 70%);
+                        					}
+                        				}
+                        				&.bg-taupe {
+                        					background: mix($taupe, white, 75%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($taupe, white, 75%);
+                        					}
+                        				}
+                        				&.bg-campus {
+                        					background: mix($campus, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($campus, $slate);
+                        					}
+                        				}
+                        				&.bg-shamrock {
+                        					background: mix($shamrock, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($shamrock, $slate);
+                        					}
+                        				}
+                        				&.bg-robin {
+                        					background: mix($robin, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($robin, $slate);
+                        					}
+                        				}
+                        				&.bg-lake {
+                        					background: mix($lake, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($lake, $slate);
+                        					}
+                        				}
+                        				&.bg-moxie {
+                        					background: mix($moxie, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($moxie, $slate);
+                        					}
+                        				}
+                        				&.bg-crimson {
+                        					background: mix($crimson, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($crimson, $slate);
+                        					}
+                        				}
+                        				&.bg-auburn, &.bg-delivery {
+                        					background: mix($auburn, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($auburn, $slate);
+                        					}
+                        				}
+                        				&.bg-orange, &.bg-freelancing {
+                        					background: mix($orange, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($orange, $slate);
+                        					}
+                        				}
+                        				&.bg-gold, &.bg-baking {
+                        					background: mix($gold, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($gold, $slate);
+                        					}
+                        				}
+                        				&.bg-moola, &.bg-photography {
+                        					background: mix($moola, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($moola, $slate);
+                        					}
+                        				}
+                        				&.bg-azure, &.bg-tech {
+                        					background: mix($azure, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($azure, $slate);
+                        					}
+                        				}
+                        				&.bg-cobalt, &.bg-household {
+                        					background: mix($cobalt, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($cobalt, $slate);
+                        					}
+                        				}
+                        				&.bg-eggplant, &.bg-athletic {
+                        					background: mix($eggplant, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($eggplant, $slate);
+                        					}
+                        				}
+                        				&.bg-cerise, &.bg-academic {
+                        					background: mix($cerise, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($cerise, $slate);
+                        					}
+                        				}
+                        			}
+                        		}
+                        	}
+                        }</doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+            </doc-item>
+            <doc-item keywords="badge, notification" class="short">
+                <doc-title>Badge <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Top Default</span></doc-title>
+                <doc-description>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</doc-description>
+                <doc-demo>
+                    <doc-states>
+                        <doc-state default>
+                            <div class="badge-container" on-activate="u-bounceInUp-subtle:animIn" elem-states="[badge]" on-badge-enter="u-bounceIn-subtle:animIn" on-badge-exit="bounceOut:animOut">
+                                <span class="badge-top bg-orange">6</span>
+                                <span>Reviews</span>
                             </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <a class="badge-container click">
-                    				<span class="badge-left bg-moxie">1</span>
-                    				<span>Messages</span>
-                    			</a>
+                        </doc-state>
+                        <doc-state inherit todo name="onActivate"></doc-state>
+                        <doc-state inherit todo name="onBadgeEnter"></doc-state>
+                        <doc-state inherit todo name="onBadgeExit"></doc-state>
+                    </doc-states>
+                    <doc-snippets>
+                        <doc-snippet default type="html"></doc-snippet>
+                        <doc-snippet type="css">.badge-container {
+                        	@include flex;
+                        	@include flex-center;
+                        	position: relative;
+                        	font-size: 18px;
+                        	font-weight: 600;
+                        	[class*="badge"] {
+                        		@include flex;
+                        		@include flex-center;
+                        		position: relative;
+                        		top: auto;
+                        		left: auto;
+                        		right: auto;
+                        		border-radius: 2px;
+                        		min-width: 0;
+                        		width: 36px;
+                        		height: 32px;
+                        		color: white;
+                        		font-size: 18px;
+                        		font-weight: 600;
+                        		&:after {
+                        			content: "";
+                        			display: block;
+                        			position: absolute;
+                        			height: 0;
+                        			width: 0;
+                        			border: 6px solid transparent;
+                        		}
+                        		&.badge-top {
+                        			@include center-x;
+                        			top: -40px;
+                        			&:after {
+                        				bottom: -12px;
+                        				left: 50%;
+                        				margin-left: -6px;
+                        				border-bottom-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-bottom {
+                        			@include center-x;
+                        			bottom: -40px;
+                        			&:after {
+                        				top: -12px;
+                        				left: 50%;
+                        				margin-left: -6px;
+                        				border-top-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-left {
+                        			margin-right: 12px;
+                        			&:after {
+                        				top: 50%;
+                        				margin-top: -6px;
+                        				right: -12px;
+                        				border-top-color: transparent!important;
+                        				border-bottom-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-right {
+                        			margin-left: 12px;
+                        			&:after {
+                        				top: 50%;
+                        				margin-top: -6px;
+                        				left: -12px;
+                        				border-top-color: transparent!important;
+                        				border-bottom-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        			}
+                        		}
+                        		&.bg-charcoal {
+                        			background: $charcoal;
+                        			&:after {
+                        				border-color: $charcoal;
+                        			}
+                        		}
+                        		&.bg-slate {
+                        			background: $slate;
+                        			&:after {
+                        				border-color: $slate;
+                        			}
+                        		}
+                        		&.bg-taupe {
+                        			background: $taupe;
+                        			&:after {
+                        				border-color: $taupe;
+                        			}
+                        		}
+                        		&.bg-campus {
+                        			background: $campus;
+                        			&:after {
+                        				border-color: $campus;
+                        			}
+                        		}
+                        		&.bg-shamrock {
+                        			background: $shamrock;
+                        			&:after {
+                        				border-color: $shamrock;
+                        			}
+                        		}
+                        		&.bg-robin {
+                        			background: $robin;
+                        			&:after {
+                        				border-color: $robin;
+                        			}
+                        		}
+                        		&.bg-lake {
+                        			background: $lake;
+                        			&:after {
+                        				border-color: $lake;
+                        			}
+                        		}
+                        		&.bg-moxie {
+                        			background: $moxie;
+                        			&:after {
+                        				border-color: $moxie;
+                        			}
+                        		}
+                        		&.bg-crimson {
+                        			background: $crimson;
+                        			&:after {
+                        				border-color: $crimson;
+                        			}
+                        		}
+                        		&.bg-auburn, &.bg-delivery {
+                        			background: $auburn;
+                        			&:after {
+                        				border-color: $auburn;
+                        			}
+                        		}
+                        		&.bg-orange, &.bg-freelancing {
+                        			background: $orange;
+                        			&:after {
+                        				border-color: $orange;
+                        			}
+                        		}
+                        		&.bg-gold, &.bg-baking {
+                        			background: $gold;
+                        			&:after {
+                        				border-color: $gold;
+                        			}
+                        		}
+                        		&.bg-moola, &.bg-photography {
+                        			background: $moola;
+                        			&:after {
+                        				border-color: $moola;
+                        			}
+                        		}
+                        		&.bg-azure, &.bg-tech {
+                        			background: $azure;
+                        			&:after {
+                        				border-color: $azure;
+                        			}
+                        		}
+                        		&.bg-cobalt, &.bg-household {
+                        			background: $cobalt;
+                        			&:after {
+                        				border-color: $cobalt;
+                        			}
+                        		}
+                        		&.bg-eggplant, &.bg-athletic {
+                        			background: $eggplant;
+                        			&:after {
+                        				border-color: $eggplant;
+                        			}
+                        		}
+                        		&.bg-cerise, &.bg-academic {
+                        			background: $cerise;
+                        			&:after {
+                        				border-color: $cerise;
+                        			}
+                        		}
+                        	}
+                        	&[class*="click"] {
+                        		&:hover, &:focus {
+                        			[class*="badge"] {
+                        				&.bg-charcoal {
+                        					background: mix($charcoal, white);
+                        					color: $charcoal;
+                        					&:after {
+                        						border-color: mix($charcoal, white);
+                        					}
+                        				}
+                        				&.bg-slate {
+                        					background: mix($slate, white);
+                        					color: $slate;
+                        					&:after {
+                        						border-color: mix($slate, white);
+                        					}
+                        				}
+                        				&.bg-taupe {
+                        					background: mix($taupe, white);
+                        					color: mix($taupe, $slate);
+                        					&:after {
+                        						border-color: mix($taupe, white);
+                        					}
+                        				}
+                        				&.bg-campus {
+                        					background: mix($campus, white);
+                        					color: mix($campus, $slate);
+                        					&:after {
+                        						border-color: mix($campus, white);
+                        					}
+                        				}
+                        				&.bg-shamrock {
+                        					background: mix($shamrock, white);
+                        					color: mix($shamrock, $slate);
+                        					&:after {
+                        						border-color: mix($shamrock, white);
+                        					}
+                        				}
+                        				&.bg-robin {
+                        					background: mix($robin, white);
+                        					color: mix($robin, $slate);
+                        					&:after {
+                        						border-color: mix($robin, white);
+                        					}
+                        				}
+                        				&.bg-lake {
+                        					background: mix($lake, white);
+                        					color: mix($lake, $slate);
+                        					&:after {
+                        						border-color: mix($lake, white);
+                        					}
+                        				}
+                        				&.bg-moxie {
+                        					background: mix($moxie, white);
+                        					color: mix($moxie, $slate);
+                        					&:after {
+                        						border-color: mix($moxie, white);
+                        					}
+                        				}
+                        				&.bg-crimson {
+                        					background: mix($crimson, white);
+                        					color: mix($crimson, $slate);
+                        					&:after {
+                        						border-color: mix($crimson, white);
+                        					}
+                        				}
+                        				&.bg-auburn, &.bg-delivery {
+                        					background: mix($auburn, white);
+                        					color: mix($auburn, $slate);
+                        					&:after {
+                        						border-color: mix($auburn, white);
+                        					}
+                        				}
+                        				&.bg-orange, &.bg-freelancing {
+                        					background: mix($orange, white);
+                        					color: mix($orange, $slate);
+                        					&:after {
+                        						border-color: mix($orange, white);
+                        					}
+                        				}
+                        				&.bg-gold, &.bg-baking {
+                        					background: mix($gold, white);
+                        					color: mix($gold, $slate);
+                        					&:after {
+                        						border-color: mix($gold, white);
+                        					}
+                        				}
+                        				&.bg-moola, &.bg-photography {
+                        					background: mix($moola, white);
+                        					color: mix($moola, $slate);
+                        					&:after {
+                        						border-color: mix($moola, white);
+                        					}
+                        				}
+                        				&.bg-azure, &.bg-tech {
+                        					background: mix($azure, white);
+                        					color: mix($azure, $slate);
+                        					&:after {
+                        						border-color: mix($azure, white);
+                        					}
+                        				}
+                        				&.bg-cobalt, &.bg-household {
+                        					background: mix($cobalt, white);
+                        					color: mix($cobalt, $slate);
+                        					&:after {
+                        						border-color: mix($cobalt, white);
+                        					}
+                        				}
+                        				&.bg-eggplant, &.bg-athletic {
+                        					background: mix($eggplant, white);
+                        					color: mix($eggplant, $slate);
+                        					&:after {
+                        						border-color: mix($eggplant, white);
+                        					}
+                        				}
+                        				&.bg-cerise, &.bg-academic {
+                        					background: mix($cerise, white);
+                        					color: mix($cerise, $slate);
+                        					&:after {
+                        						border-color: mix($cerise, white);
+                        					}
+                        				}
+                        			}
+                        		}
+                        		&:active {
+                        			[class*="badge"] {
+                        				&.bg-charcoal {
+                        					background: mix($slate, white, 75%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($slate, white, 75%);
+                        					}
+                        				}
+                        				&.bg-slate {
+                        					background: mix($slate, white, 70%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($slate, white, 70%);
+                        					}
+                        				}
+                        				&.bg-taupe {
+                        					background: mix($taupe, white, 75%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($taupe, white, 75%);
+                        					}
+                        				}
+                        				&.bg-campus {
+                        					background: mix($campus, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($campus, $slate);
+                        					}
+                        				}
+                        				&.bg-shamrock {
+                        					background: mix($shamrock, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($shamrock, $slate);
+                        					}
+                        				}
+                        				&.bg-robin {
+                        					background: mix($robin, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($robin, $slate);
+                        					}
+                        				}
+                        				&.bg-lake {
+                        					background: mix($lake, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($lake, $slate);
+                        					}
+                        				}
+                        				&.bg-moxie {
+                        					background: mix($moxie, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($moxie, $slate);
+                        					}
+                        				}
+                        				&.bg-crimson {
+                        					background: mix($crimson, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($crimson, $slate);
+                        					}
+                        				}
+                        				&.bg-auburn, &.bg-delivery {
+                        					background: mix($auburn, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($auburn, $slate);
+                        					}
+                        				}
+                        				&.bg-orange, &.bg-freelancing {
+                        					background: mix($orange, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($orange, $slate);
+                        					}
+                        				}
+                        				&.bg-gold, &.bg-baking {
+                        					background: mix($gold, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($gold, $slate);
+                        					}
+                        				}
+                        				&.bg-moola, &.bg-photography {
+                        					background: mix($moola, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($moola, $slate);
+                        					}
+                        				}
+                        				&.bg-azure, &.bg-tech {
+                        					background: mix($azure, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($azure, $slate);
+                        					}
+                        				}
+                        				&.bg-cobalt, &.bg-household {
+                        					background: mix($cobalt, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($cobalt, $slate);
+                        					}
+                        				}
+                        				&.bg-eggplant, &.bg-athletic {
+                        					background: mix($eggplant, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($eggplant, $slate);
+                        					}
+                        				}
+                        				&.bg-cerise, &.bg-academic {
+                        					background: mix($cerise, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($cerise, $slate);
+                        					}
+                        				}
+                        			}
+                        		}
+                        	}
+                        }</doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+            </doc-item>
+            <doc-item keywords="badge, notification" class="short">
+                <doc-title>Badge <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Right Default</span></doc-title>
+                <doc-description>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</doc-description>
+                <doc-demo>
+                    <doc-states>
+                        <doc-state default>
+                            <div class="badge-container" on-activate="u-bounceInUp-subtle:animIn" elem-states="[badge]" on-badge-enter="u-bounceIn-subtle:animIn" on-badge-exit="bounceOut:animOut">
+                                <span>Gurus</span>
+                                <span class="badge-right bg-cobalt">3</span>
                             </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
-                            </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="component-item short">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Badge <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Bottom Hover</span></h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
-                            </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <a class="badge-container click">
-                    				<span>Students</span>
-                    				<span class="badge-bottom bg-robin">4</span>
-                    			</a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
-                            </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="component-item short">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Badge <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Top Default</span></h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
-                            </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <div class="badge-container">
-                    				<span class="badge-top bg-orange">6</span>
-                    				<span>Reviews</span>
-                    			</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
-                            </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="component-item short">
-                    <a>
-                        <h1 class="flex-center p15x-p10y semibold txt-20 txt-center radius-2-top">Badge <span class="block radius-2 bg-moxie txt-16 p10x-p05y-m10left">Right Default</span></h1>
-                    </a>
-                    <div class="border-2 semibold txt-14 txt-center p10x-p05y">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-                    <div class="border-2 radius-2-bottom ugrid-2">
-                        <div>
-                            <div class="component-item-nav states">
-                                <ul>
-                                    <li><a class="active">Default</a></li>
-                                    <li><a>onEnter</a></li>
-                                    <li><a>onExit</a></li>
-                                </ul>
-                            </div>
-                            <div class="fix-abs flex-center-wrap overflow-hidden">
-                                <div class="badge-container">
-                    				<span>Gurus</span>
-                    				<span class="badge-right bg-cobalt">3</span>
-                    			</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="component-item-nav">
-                                <ul>
-                                    <li><a class="active">HTML</a></li>
-                                    <li><a>CSS</a></li>
-                                    <li><a>JS</a></li>
-                                </ul>
-                            </div>
-                            <textarea class="no-resize full-x overflow-auto p15xy txt-14 source-code" placeholder="&lt;div&gt;&lt;/div&gt;"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </li>
+                        </doc-state>
+                        <doc-state inherit todo name="onActivate"></doc-state>
+                        <doc-state inherit todo name="onBadgeEnter"></doc-state>
+                        <doc-state inherit todo name="onBadgeExit"></doc-state>
+                    </doc-states>
+                    <doc-snippets>
+                        <doc-snippet default type="html"></doc-snippet>
+                        <doc-snippet type="css">.badge-container {
+                        	@include flex;
+                        	@include flex-center;
+                        	position: relative;
+                        	font-size: 18px;
+                        	font-weight: 600;
+                        	[class*="badge"] {
+                        		@include flex;
+                        		@include flex-center;
+                        		position: relative;
+                        		top: auto;
+                        		left: auto;
+                        		right: auto;
+                        		border-radius: 2px;
+                        		min-width: 0;
+                        		width: 36px;
+                        		height: 32px;
+                        		color: white;
+                        		font-size: 18px;
+                        		font-weight: 600;
+                        		&:after {
+                        			content: "";
+                        			display: block;
+                        			position: absolute;
+                        			height: 0;
+                        			width: 0;
+                        			border: 6px solid transparent;
+                        		}
+                        		&.badge-top {
+                        			@include center-x;
+                        			top: -40px;
+                        			&:after {
+                        				bottom: -12px;
+                        				left: 50%;
+                        				margin-left: -6px;
+                        				border-bottom-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-bottom {
+                        			@include center-x;
+                        			bottom: -40px;
+                        			&:after {
+                        				top: -12px;
+                        				left: 50%;
+                        				margin-left: -6px;
+                        				border-top-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-left {
+                        			margin-right: 12px;
+                        			&:after {
+                        				top: 50%;
+                        				margin-top: -6px;
+                        				right: -12px;
+                        				border-top-color: transparent!important;
+                        				border-bottom-color: transparent!important;
+                        				border-right-color: transparent!important;
+                        			}
+                        		}
+                        		&.badge-right {
+                        			margin-left: 12px;
+                        			&:after {
+                        				top: 50%;
+                        				margin-top: -6px;
+                        				left: -12px;
+                        				border-top-color: transparent!important;
+                        				border-bottom-color: transparent!important;
+                        				border-left-color: transparent!important;
+                        			}
+                        		}
+                        		&.bg-charcoal {
+                        			background: $charcoal;
+                        			&:after {
+                        				border-color: $charcoal;
+                        			}
+                        		}
+                        		&.bg-slate {
+                        			background: $slate;
+                        			&:after {
+                        				border-color: $slate;
+                        			}
+                        		}
+                        		&.bg-taupe {
+                        			background: $taupe;
+                        			&:after {
+                        				border-color: $taupe;
+                        			}
+                        		}
+                        		&.bg-campus {
+                        			background: $campus;
+                        			&:after {
+                        				border-color: $campus;
+                        			}
+                        		}
+                        		&.bg-shamrock {
+                        			background: $shamrock;
+                        			&:after {
+                        				border-color: $shamrock;
+                        			}
+                        		}
+                        		&.bg-robin {
+                        			background: $robin;
+                        			&:after {
+                        				border-color: $robin;
+                        			}
+                        		}
+                        		&.bg-lake {
+                        			background: $lake;
+                        			&:after {
+                        				border-color: $lake;
+                        			}
+                        		}
+                        		&.bg-moxie {
+                        			background: $moxie;
+                        			&:after {
+                        				border-color: $moxie;
+                        			}
+                        		}
+                        		&.bg-crimson {
+                        			background: $crimson;
+                        			&:after {
+                        				border-color: $crimson;
+                        			}
+                        		}
+                        		&.bg-auburn, &.bg-delivery {
+                        			background: $auburn;
+                        			&:after {
+                        				border-color: $auburn;
+                        			}
+                        		}
+                        		&.bg-orange, &.bg-freelancing {
+                        			background: $orange;
+                        			&:after {
+                        				border-color: $orange;
+                        			}
+                        		}
+                        		&.bg-gold, &.bg-baking {
+                        			background: $gold;
+                        			&:after {
+                        				border-color: $gold;
+                        			}
+                        		}
+                        		&.bg-moola, &.bg-photography {
+                        			background: $moola;
+                        			&:after {
+                        				border-color: $moola;
+                        			}
+                        		}
+                        		&.bg-azure, &.bg-tech {
+                        			background: $azure;
+                        			&:after {
+                        				border-color: $azure;
+                        			}
+                        		}
+                        		&.bg-cobalt, &.bg-household {
+                        			background: $cobalt;
+                        			&:after {
+                        				border-color: $cobalt;
+                        			}
+                        		}
+                        		&.bg-eggplant, &.bg-athletic {
+                        			background: $eggplant;
+                        			&:after {
+                        				border-color: $eggplant;
+                        			}
+                        		}
+                        		&.bg-cerise, &.bg-academic {
+                        			background: $cerise;
+                        			&:after {
+                        				border-color: $cerise;
+                        			}
+                        		}
+                        	}
+                        	&[class*="click"] {
+                        		&:hover, &:focus {
+                        			[class*="badge"] {
+                        				&.bg-charcoal {
+                        					background: mix($charcoal, white);
+                        					color: $charcoal;
+                        					&:after {
+                        						border-color: mix($charcoal, white);
+                        					}
+                        				}
+                        				&.bg-slate {
+                        					background: mix($slate, white);
+                        					color: $slate;
+                        					&:after {
+                        						border-color: mix($slate, white);
+                        					}
+                        				}
+                        				&.bg-taupe {
+                        					background: mix($taupe, white);
+                        					color: mix($taupe, $slate);
+                        					&:after {
+                        						border-color: mix($taupe, white);
+                        					}
+                        				}
+                        				&.bg-campus {
+                        					background: mix($campus, white);
+                        					color: mix($campus, $slate);
+                        					&:after {
+                        						border-color: mix($campus, white);
+                        					}
+                        				}
+                        				&.bg-shamrock {
+                        					background: mix($shamrock, white);
+                        					color: mix($shamrock, $slate);
+                        					&:after {
+                        						border-color: mix($shamrock, white);
+                        					}
+                        				}
+                        				&.bg-robin {
+                        					background: mix($robin, white);
+                        					color: mix($robin, $slate);
+                        					&:after {
+                        						border-color: mix($robin, white);
+                        					}
+                        				}
+                        				&.bg-lake {
+                        					background: mix($lake, white);
+                        					color: mix($lake, $slate);
+                        					&:after {
+                        						border-color: mix($lake, white);
+                        					}
+                        				}
+                        				&.bg-moxie {
+                        					background: mix($moxie, white);
+                        					color: mix($moxie, $slate);
+                        					&:after {
+                        						border-color: mix($moxie, white);
+                        					}
+                        				}
+                        				&.bg-crimson {
+                        					background: mix($crimson, white);
+                        					color: mix($crimson, $slate);
+                        					&:after {
+                        						border-color: mix($crimson, white);
+                        					}
+                        				}
+                        				&.bg-auburn, &.bg-delivery {
+                        					background: mix($auburn, white);
+                        					color: mix($auburn, $slate);
+                        					&:after {
+                        						border-color: mix($auburn, white);
+                        					}
+                        				}
+                        				&.bg-orange, &.bg-freelancing {
+                        					background: mix($orange, white);
+                        					color: mix($orange, $slate);
+                        					&:after {
+                        						border-color: mix($orange, white);
+                        					}
+                        				}
+                        				&.bg-gold, &.bg-baking {
+                        					background: mix($gold, white);
+                        					color: mix($gold, $slate);
+                        					&:after {
+                        						border-color: mix($gold, white);
+                        					}
+                        				}
+                        				&.bg-moola, &.bg-photography {
+                        					background: mix($moola, white);
+                        					color: mix($moola, $slate);
+                        					&:after {
+                        						border-color: mix($moola, white);
+                        					}
+                        				}
+                        				&.bg-azure, &.bg-tech {
+                        					background: mix($azure, white);
+                        					color: mix($azure, $slate);
+                        					&:after {
+                        						border-color: mix($azure, white);
+                        					}
+                        				}
+                        				&.bg-cobalt, &.bg-household {
+                        					background: mix($cobalt, white);
+                        					color: mix($cobalt, $slate);
+                        					&:after {
+                        						border-color: mix($cobalt, white);
+                        					}
+                        				}
+                        				&.bg-eggplant, &.bg-athletic {
+                        					background: mix($eggplant, white);
+                        					color: mix($eggplant, $slate);
+                        					&:after {
+                        						border-color: mix($eggplant, white);
+                        					}
+                        				}
+                        				&.bg-cerise, &.bg-academic {
+                        					background: mix($cerise, white);
+                        					color: mix($cerise, $slate);
+                        					&:after {
+                        						border-color: mix($cerise, white);
+                        					}
+                        				}
+                        			}
+                        		}
+                        		&:active {
+                        			[class*="badge"] {
+                        				&.bg-charcoal {
+                        					background: mix($slate, white, 75%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($slate, white, 75%);
+                        					}
+                        				}
+                        				&.bg-slate {
+                        					background: mix($slate, white, 70%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($slate, white, 70%);
+                        					}
+                        				}
+                        				&.bg-taupe {
+                        					background: mix($taupe, white, 75%);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($taupe, white, 75%);
+                        					}
+                        				}
+                        				&.bg-campus {
+                        					background: mix($campus, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($campus, $slate);
+                        					}
+                        				}
+                        				&.bg-shamrock {
+                        					background: mix($shamrock, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($shamrock, $slate);
+                        					}
+                        				}
+                        				&.bg-robin {
+                        					background: mix($robin, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($robin, $slate);
+                        					}
+                        				}
+                        				&.bg-lake {
+                        					background: mix($lake, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($lake, $slate);
+                        					}
+                        				}
+                        				&.bg-moxie {
+                        					background: mix($moxie, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($moxie, $slate);
+                        					}
+                        				}
+                        				&.bg-crimson {
+                        					background: mix($crimson, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($crimson, $slate);
+                        					}
+                        				}
+                        				&.bg-auburn, &.bg-delivery {
+                        					background: mix($auburn, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($auburn, $slate);
+                        					}
+                        				}
+                        				&.bg-orange, &.bg-freelancing {
+                        					background: mix($orange, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($orange, $slate);
+                        					}
+                        				}
+                        				&.bg-gold, &.bg-baking {
+                        					background: mix($gold, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($gold, $slate);
+                        					}
+                        				}
+                        				&.bg-moola, &.bg-photography {
+                        					background: mix($moola, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($moola, $slate);
+                        					}
+                        				}
+                        				&.bg-azure, &.bg-tech {
+                        					background: mix($azure, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($azure, $slate);
+                        					}
+                        				}
+                        				&.bg-cobalt, &.bg-household {
+                        					background: mix($cobalt, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($cobalt, $slate);
+                        					}
+                        				}
+                        				&.bg-eggplant, &.bg-athletic {
+                        					background: mix($eggplant, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($eggplant, $slate);
+                        					}
+                        				}
+                        				&.bg-cerise, &.bg-academic {
+                        					background: mix($cerise, $slate);
+                        					color: white;
+                        					&:after {
+                        						border-color: mix($cerise, $slate);
+                        					}
+                        				}
+                        			}
+                        		}
+                        	}
+                        }</doc-snippet>
+                    </doc-snippets>
+                </doc-demo>
+            </doc-item>
             <!-- This is search result appearance -->
             <!-- <li>
                 <div class="component-item">
