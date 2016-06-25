@@ -3086,6 +3086,140 @@ a[class*="-container"]:hover .map-stadium-outside {
     #hiw-sky-clouds.active .hiw-sky-cloud-20 {
       animation: hiw-cloud-fall 4000 ms linear 3000 ms 2, hiw-cloud-fall-end 4000 ms ease-out 3200 ms forwards; }
 
+.projector-access .projector-access-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 200px 15px 15px; }
+  .projector-access .projector-access-content .projector-access-inside {
+    position: relative;
+    width: 100%;
+    max-width: 652px; }
+    @media screen and (min-width: 768px) {
+      .projector-access .projector-access-content .projector-access-inside {
+        height: 119px; } }
+  .projector-access .projector-access-content .projector-access-code {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    background: none;
+    border: 0;
+    width: 100%;
+    max-width: 347px;
+    height: 64px;
+    margin: 0 auto;
+    font-size: 28px;
+    text-align: center;
+    line-height: 1.2;
+    padding-top: 5px;
+    color: white;
+    font-weight: 300; }
+    .projector-access .projector-access-content .projector-access-code::-webkit-input-placeholder {
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out; }
+    .projector-access .projector-access-content .projector-access-code:-moz-placeholder {
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out; }
+    .projector-access .projector-access-content .projector-access-code::-moz-placeholder {
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out; }
+    .projector-access .projector-access-content .projector-access-code:-ms-input-placeholder {
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out; }
+    .projector-access .projector-access-content .projector-access-code + div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; }
+      .projector-access .projector-access-content .projector-access-code + div .projector-access-bubble.mobile {
+        display: block;
+        max-width: 347px;
+        margin: 0 auto; }
+      .projector-access .projector-access-content .projector-access-code + div .projector-access-bubble.desktop {
+        display: none;
+        max-width: 100%; }
+      .projector-access .projector-access-content .projector-access-code + div .projector-access-bubble path {
+        -webkit-transition: all 150ms ease-in-out;
+        -moz-transition: all 150ms ease-in-out;
+        -ms-transition: all 150ms ease-in-out;
+        -o-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out; }
+      .projector-access .projector-access-content .projector-access-code + div button {
+        display: block;
+        margin: 15px auto; }
+      .projector-access .projector-access-content .projector-access-code + div .btn-access-activate {
+        background: #69B3A5; }
+        .projector-access .projector-access-content .projector-access-code + div .btn-access-activate:hover, .projector-access .projector-access-content .projector-access-code + div .btn-access-activate:focus {
+          background: white;
+          color: #69B3A5; }
+      .projector-access .projector-access-content .projector-access-code + div .btn-access-skip {
+        background: #637074; }
+        .projector-access .projector-access-content .projector-access-code + div .btn-access-skip:hover, .projector-access .projector-access-content .projector-access-code + div .btn-access-skip:focus {
+          background: white;
+          color: #69B3A5; }
+    .projector-access .projector-access-content .projector-access-code:focus::-webkit-input-placeholder {
+      color: white; }
+    .projector-access .projector-access-content .projector-access-code:focus:-moz-placeholder {
+      color: white; }
+    .projector-access .projector-access-content .projector-access-code:focus::-moz-placeholder {
+      color: white; }
+    .projector-access .projector-access-content .projector-access-code:focus:-ms-input-placeholder {
+      color: white; }
+    .projector-access .projector-access-content .projector-access-code:focus + div .projector-access-bubble path {
+      fill: #637074; }
+
+@media screen and (min-width: 768px) {
+  .projector-access .projector-access-content .projector-access-code {
+    max-width: 652px;
+    height: 119px;
+    font-size: 48px;
+    padding-top: 0;
+    padding-bottom: 10px; }
+    .projector-access .projector-access-content .projector-access-code + div .projector-access-bubble.mobile {
+      display: none; }
+    .projector-access .projector-access-content .projector-access-code + div .projector-access-bubble.desktop {
+      display: block; } }
 /* ---------- PRICING */
 #pricing {
   width: 100%;

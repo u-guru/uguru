@@ -502,28 +502,45 @@
 		font-weight: 600;
 		line-height: 1.2;
 		.projector-guru {
+			position: absolute;
+			top: -75px;
+			left: 50%;
+			margin-left: -75px;
+			width: 150px;
+			height: 150px;
+			.user-icon {
+				position: absolute;
+				z-index: 1;
+				top: 50%;
+				left: 50%;
+				margin-top: -48px;
+				margin-left: -48px;
+				width: 96px;
+				height: 96px;
+				border-width: 3px;
+			}
 			.guru-head {
 				@include flex;
 				@include flex-center;
+				z-index: 2;
 				position: absolute;
-				left: 0!important;
-				top: -75px;
-				width: 100%!important;
+				left: 0;
+				top: 0;
 				@media screen and (max-width: 320px) {
-					transform: scale(0.75) translateY(-60%);
+					transform: scale(0.75);
 				}
 				.guru-head {
 					transform: rotate(-7deg);
 					transform-origin: center center
 				}
-				.coach {
-					transition: all 150ms ease-in-out;
-					position: absolute;
-					top: -40px;
-					margin-left: -15px;
-					&:not(.active) {
-						@include opacity(0);
-					}
+			}
+			.coach {
+				transition: all 150ms ease-in-out;
+				position: absolute;
+				top: -30px;
+				right: -90px;
+				&:not(.active) {
+					@include opacity(0);
 				}
 			}
 		}

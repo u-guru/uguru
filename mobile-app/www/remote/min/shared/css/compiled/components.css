@@ -12510,38 +12510,55 @@ input[type="range"][size="large"]::-ms-track, input[type="range"][size="10"]::-m
     font-size: 20px;
     font-weight: 600;
     line-height: 1.2; }
-    .projector-slide .projector-content .projector-guru .guru-head {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
+    .projector-slide .projector-content .projector-guru {
       position: absolute;
-      left: 0 !important;
       top: -75px;
-      width: 100% !important; }
-      @media screen and (max-width: 320px) {
-        .projector-slide .projector-content .projector-guru .guru-head {
-          transform: scale(0.75) translateY(-60%); } }
-      .projector-slide .projector-content .projector-guru .guru-head .guru-head {
-        transform: rotate(-7deg);
-        transform-origin: center center; }
-      .projector-slide .projector-content .projector-guru .guru-head .coach {
+      left: 50%;
+      margin-left: -75px;
+      width: 150px;
+      height: 150px; }
+      .projector-slide .projector-content .projector-guru .user-icon {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        margin-top: -48px;
+        margin-left: -48px;
+        width: 96px;
+        height: 96px;
+        border-width: 3px; }
+      .projector-slide .projector-content .projector-guru .guru-head {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        top: 0; }
+        @media screen and (max-width: 320px) {
+          .projector-slide .projector-content .projector-guru .guru-head {
+            transform: scale(0.75); } }
+        .projector-slide .projector-content .projector-guru .guru-head .guru-head {
+          transform: rotate(-7deg);
+          transform-origin: center center; }
+      .projector-slide .projector-content .projector-guru .coach {
         transition: all 150ms ease-in-out;
         position: absolute;
-        top: -40px;
-        margin-left: -15px; }
-        .projector-slide .projector-content .projector-guru .guru-head .coach:not(.active) {
+        top: -30px;
+        right: -90px; }
+        .projector-slide .projector-content .projector-guru .coach:not(.active) {
           filter: alpha(opacity=0);
           opacity: 0; }
   .projector-slide .projector-handle {
