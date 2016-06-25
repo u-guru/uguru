@@ -6,6 +6,12 @@
   .states-dropdown * {
     font-size: 18px !important; }
 
+.short .component-item > div:nth-child(3) {
+  height: 200px; }
+
+.tall .component-item > div:nth-child(3) {
+  height: 600px; }
+
 .component-item h1 ng-transclude {
   -ms-box-orient: horizontal;
   display: -webkit-box;

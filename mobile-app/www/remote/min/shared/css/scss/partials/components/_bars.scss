@@ -11,194 +11,163 @@
 }
 .tab-bar {
 	background: $charcoal;
-	ul {
-		@include listless;
+	// sliding tab bar
+	@include flex;
+	@include flex-center;
+	> div {
 		@include flex;
-		padding: 0 7.5px;
-		li {
-			width: 100%;
+		position: relative;
+		margin: 0 7.5px;
+		a {
+			@include flex;
+			@include flex-center;
+			width: 165px;
 			text-align: center;
 			padding: 0 7.5px;
-			a {
-				@include flex;
-				@include flex-center;
-				border-top: 5px solid transparent;
-				border-bottom: 5px solid transparent;
-				height: 60px;
-				font-size: 18px;
-				font-weight: 600;
-				text-transform: uppercase;
+			height: 60px;
+			font-size: 18px;
+			font-weight: 600;
+			text-transform: uppercase;
+			&:nth-child(1) {
 				&.active {
-					border-bottom-color: $shamrock;
+					~ hr {
+						@include translate-x(0);
+						border-color: white;
+					}
 				}
+			}
+			&:nth-child(2) {
+				&.active {
+					~ hr {
+						@include translate-x(165px);
+						border-color: white;
+					}
+				}
+			}
+			&:nth-child(3) {
+				&.active {
+					~ hr {
+						@include translate-x(330px);
+						border-color: white;
+					}
+				}
+			}
+			&:nth-child(4) {
+				&.active {
+					~ hr {
+						@include translate-x(495px);
+						border-color: white;
+					}
+				}
+			}
+			&:nth-child(5) {
+				&.active {
+					~ hr {
+						@include translate-x(660px);
+						border-color: white;
+					}
+				}
+			}
+			&:nth-child(6) {
+				&.active {
+					~ hr {
+						@include translate-x(825px);
+						border-color: white;
+					}
+				}
+			}
+
+			&:nth-child(1) {
 				&:hover, &:focus {
-					border-bottom-color: rgba(white, .2);
+					~ hr {
+						@include translate-x(0);
+						border-color: rgba(white, .7);
+					}
 				}
-				&:visited {
-					background: none!important;
+				&:active {
+					~ hr {
+						border-color: white;
+					}
+				}
+			}
+			&:nth-child(2) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(165px);
+						border-color: rgba(white, .7);
+					}
+				}
+				&:active {
+					~ hr {
+						border-color: white;
+					}
+				}
+			}
+			&:nth-child(3) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(330px);
+						border-color: rgba(white, .7);
+					}
+				}
+				&:active {
+					~ hr {
+						border-color: white;
+					}
+				}
+			}
+			&:nth-child(4) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(495px);
+						border-color: rgba(white, .7);
+					}
+				}
+				&:active {
+					~ hr {
+						border-color: white;
+					}
+				}
+			}
+			&:nth-child(5) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(660px);
+						border-color: rgba(white, .7);
+					}
+				}
+				&:active {
+					~ hr {
+						border-color: white;
+					}
+				}
+			}
+			&:nth-child(6) {
+				&:hover, &:focus {
+					~ hr {
+						@include translate-x(825px);
+						border-color: rgba(white, .7);
+					}
+				}
+				&:active {
+					~ hr {
+						border-color: white;
+					}
 				}
 			}
 		}
-	}
-	// sliding tab bar
-	&.slide {
-		@include flex;
-		@include flex-center;
-		> div {
-			@include flex;
-			position: relative;
-			margin: 0 7.5px;
-			a {
-				@include flex;
-				@include flex-center;
-				width: 165px;
-				text-align: center;
-				padding: 0 7.5px;
-				height: 60px;
-				font-size: 18px;
-				font-weight: 600;
-				text-transform: uppercase;
-				&:nth-child(1) {
-					&.active {
-						~ hr {
-							@include translate-x(0);
-							border-color: white;
-						}
-					}
-				}
-				&:nth-child(2) {
-					&.active {
-						~ hr {
-							@include translate-x(165px);
-							border-color: white;
-						}
-					}
-				}
-				&:nth-child(3) {
-					&.active {
-						~ hr {
-							@include translate-x(330px);
-							border-color: white;
-						}
-					}
-				}
-				&:nth-child(4) {
-					&.active {
-						~ hr {
-							@include translate-x(495px);
-							border-color: white;
-						}
-					}
-				}
-				&:nth-child(5) {
-					&.active {
-						~ hr {
-							@include translate-x(660px);
-							border-color: white;
-						}
-					}
-				}
-				&:nth-child(6) {
-					&.active {
-						~ hr {
-							@include translate-x(825px);
-							border-color: white;
-						}
-					}
-				}
-
-				&:nth-child(1) {
-					&:hover, &:focus {
-						~ hr {
-							@include translate-x(0);
-							border-color: rgba(white, .7);
-						}
-					}
-					&:active {
-						~ hr {
-							border-color: white;
-						}
-					}
-				}
-				&:nth-child(2) {
-					&:hover, &:focus {
-						~ hr {
-							@include translate-x(165px);
-							border-color: rgba(white, .7);
-						}
-					}
-					&:active {
-						~ hr {
-							border-color: white;
-						}
-					}
-				}
-				&:nth-child(3) {
-					&:hover, &:focus {
-						~ hr {
-							@include translate-x(330px);
-							border-color: rgba(white, .7);
-						}
-					}
-					&:active {
-						~ hr {
-							border-color: white;
-						}
-					}
-				}
-				&:nth-child(4) {
-					&:hover, &:focus {
-						~ hr {
-							@include translate-x(495px);
-							border-color: rgba(white, .7);
-						}
-					}
-					&:active {
-						~ hr {
-							border-color: white;
-						}
-					}
-				}
-				&:nth-child(5) {
-					&:hover, &:focus {
-						~ hr {
-							@include translate-x(660px);
-							border-color: rgba(white, .7);
-						}
-					}
-					&:active {
-						~ hr {
-							border-color: white;
-						}
-					}
-				}
-				&:nth-child(6) {
-					&:hover, &:focus {
-						~ hr {
-							@include translate-x(825px);
-							border-color: rgba(white, .7);
-						}
-					}
-					&:active {
-						~ hr {
-							border-color: white;
-						}
-					}
-				}
-			}
-			hr {
-				@include transition(.15s ease-in-out);
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 165px;
-				height: 0;
-				border-top: 5px solid white;
-				border-bottom: 0;
-				border-left: 0;
-				border-right: 0;
-				margin: 0;
-			}
+		hr {
+			@include transition(.15s ease-in-out);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 165px;
+			height: 0;
+			border-top: 5px solid white;
+			border-bottom: 0;
+			border-left: 0;
+			border-right: 0;
+			margin: 0;
 		}
 	}
 	// arrow bar

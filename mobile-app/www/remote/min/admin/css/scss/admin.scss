@@ -13,6 +13,25 @@
 	}
 }
 
+.short {
+	.component-item {
+		> div {
+			&:nth-child(3) {
+				height: 200px;
+			}
+		}
+	}
+}
+.tall {
+	.component-item {
+		> div {
+			&:nth-child(3) {
+				height: 600px;
+			}
+		}
+	}
+}
+
 .component-item {
 	h1 {
 		ng-transclude {
