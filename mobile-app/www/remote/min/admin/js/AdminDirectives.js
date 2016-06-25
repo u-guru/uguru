@@ -137,7 +137,7 @@ angular.module('uguru.admin')
         replace:true,
         scope:{doc:'='},
         restrict: 'E',
-        link: function(scope, element, attr) {
+        link: function(scope, element, attr, ctrl, transcludeFn) {
             scope.doc = scope.$parent.doc_item;
             var type = attr.type;
             var text;
@@ -155,6 +155,14 @@ angular.module('uguru.admin')
                 scope.snippet.text = scope.snippet.text.replace('<span>', '').replace('}', '\n}').replace('</span>', '').trim();
             }
             scope.doc && scope.doc.snippets.push(scope.snippet);
+
+            // transcludeFn(function(transEl, transScope) {
+            //     var preBlock = document.createElement('pre');
+            //     preBlock.appendChild(transEl);
+            //     element.append(preBlock);
+            //     preBlock.firstChild.innerHTML = transEl.contents();
+            // });
+
         }
     }
 }])
