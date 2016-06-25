@@ -234,6 +234,8 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
 
         for (var i = 0; i < workflows.length; i++) {
             workflows[i]['id'] = i + 1;
+            console.log(workflows[i]['title'],workflows[i]['id']);
+
         }
         console.log(workflows.length, 'workflows rendered');
         return workflows;
