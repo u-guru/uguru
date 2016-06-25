@@ -49,6 +49,32 @@
                             <user-icon url="member.profile_url" size="36"> </user-icon>
                         </div>
                     </li>
+                    <li ng-if='flow.states && flow.states.length' class='flex-wrap-center'>
+                        <div class='flex-wrap-center'>
+                            <div class='txt-1 txt-smoke text-center uppercase full-x weight-700 opacity-50'>
+                                Functional
+                            </div>
+                            <div class='txt-5 weight-600'>
+                                {{flow.stateAnalysis.functional||0}}/{{flow.states.length}}
+                            </div>
+                        </div>
+                        <div class='flex-wrap-center'>
+                            <div class='txt-1 text-center txt-smoke uppercase full-x weight-700 opacity-50'>
+                                Animated
+                            </div>
+                            <div class='txt-5 weight-600'>
+                                {{flow.stateAnalysis.animated || 0}}/{{flow.states.length}}
+                            </div>
+                        </div>
+                        <div class='flex-wrap-center'>
+                            <div class='txt-1 text-center uppercase txt-smoke full-x weight-700 opacity-50'>
+                                Tested
+                            </div>
+                            <div class='txt-5 weight-600'>
+                                {{flow.stateAnalysis.tested || 0}}/{{flow.states.length}}
+                            </div>
+                        </div>
+                    </li>
                     <li ng-if='flow.status && !flow.status.css'>
                         <button class="bg-auburn height-36 txt-18 radius-2" ng-click='flow.routes.staging.launch()'>CSS/HTML refactoring</button>
                     </li>
