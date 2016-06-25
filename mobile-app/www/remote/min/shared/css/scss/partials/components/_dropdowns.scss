@@ -31,15 +31,15 @@
 			width: 48px;
 			height: 48px;
 			svg {
-				@include transition(.15s ease-in-out);
+				transition: all 150ms ease-in-out;
 				@include svg-stroke(white, 8);
 				background: $shamrock;
 				padding: 12px 10px 8px;
 				width: 48px;
 				height: 48px;
 				path {
-					@include prefix(transform-origin, 50% 50%, webkit moz ms o);
-					@include prefix(transform, rotate(0deg), webkit moz ms o);
+					transform-origin: 50% 50%;
+					transform: rotate(0deg);
 				}
 			}
 			&:hover, &:focus {
@@ -55,14 +55,14 @@
 			&.active {
 				svg {
 					path {
-						@include prefix(transform, rotate(180deg), webkit moz ms o);
+						transform: rotate(180deg);
 					}
 				}
 			}
 		}
 	}
 	> ul {
-		@include transition(.15s ease-in-out);
+		transition: all 150ms ease-in-out;
 		@include listless;
 		@include opacity(0);
 		position: absolute;
@@ -76,7 +76,7 @@
 			z-index: 99;
 		}
 		li {
-			@include transition(.15s ease-in-out);
+			transition: all 150ms ease-in-out;
 			width: calc(100% - 48px);
 			background: rgba(lighten($slate, 5%), .95);
 			padding: 15px 0 !important;
@@ -149,7 +149,7 @@
 		width: 250px;
 		> div {
 			span, input {
-				@include prefix(justify-content, flex-start, webkit);
+				justify-content: flex-start;
 				font-size: 20px;
 				text-align: left;
 			}
@@ -159,7 +159,7 @@
 			> li {
 				@include flex;
 				@include flex-center-vertical;
-				@include prefix(justify-content, space-between, webkit);
+				justify-content: space-between;
 				width: 100%;
 				position: relative;
 				text-align: left;
@@ -191,10 +191,9 @@
 					}
 				}
 				.dropdown-info {
-					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-					@include prefix(transition-delay, 0ms, webkit moz ms o);
-					@include prefix(transform, translateZ(0) scale(0), webkit moz ms o);
-					@include prefix(transform-origin, 0% 24px, webkit moz ms o);
+					transition: all 150ms ease-in-out 0ms;
+					transform: translateZ(0) scale(0);
+					transform-origin: 0% 24px;
 					z-index: -10;
 					position: absolute;
 					left: 250px;
@@ -229,8 +228,8 @@
 			.dropdown-popup:hover + .dropdown-info,
 			.dropdown-popup:focus + .dropdown-info,
 			.dropdown-info:hover {
-				@include prefix(transition-delay, 600ms, webkit moz ms o);
-				@include prefix(transform, translateZ(0) scale(1)!important, webkit moz ms o);
+				transition: all 150ms ease-in-out 600ms;
+				transform: translateZ(0) scale(1)!important;
 				z-index: auto!important;
 			}
 		}
@@ -450,11 +449,11 @@
 		z-index: -1;
 	}
 	* {
-		@include prefix(transition, all 150ms cubic-bezier(.77,0,.05,1), webkit moz ms o);
-		@include prefix(transition, all 150ms cubic-bezier(.77,-0.22,.05,1.27), webkit moz ms o);
+		transition: all 150ms cubic-bezier(.77,0,.05,1);
+		transition: all 150ms cubic-bezier(.77,-0.22,.05,1.27);
 	}
 	> a {
-		@include prefix(justify-content, space-between, webkit);
+		justify-content: space-between;
 		z-index: 1;
 		padding: 0 12px 0 15px;
 		border: 2px solid white;
@@ -468,7 +467,7 @@
 		}
 		&.active {
 			svg {
-				@include prefix(transform, rotate(180deg), webkit mox ms o);
+				transform: rotate(180deg);
 			}
 		}
 	}
@@ -890,7 +889,7 @@
 		}
 	}
 	> div {
-		@include prefix(transform-origin, top center, webkit moz ms o);
+		transform-origin: top center;
 		position: absolute;
 		top: 58px;
 		width: 198px;

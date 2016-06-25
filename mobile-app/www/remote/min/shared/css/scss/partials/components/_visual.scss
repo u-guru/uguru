@@ -184,26 +184,17 @@
 			}
 		}
 		.ticket-slider-bg {
-			// div {
-			// 	background: url(../../img/ticket/center-guru.svg) repeat-x center center / contain,
-			// 				url(/static/remote/img/ticket/center-guru.svg) repeat-x center center / contain;
-			// }
-			// &:before {
-			// 	background: url(../../img/ticket/left-guru.svg) no-repeat center left / contain,
-			// 				url(/static/remote/img/ticket/left-guru.svg) no-repeat center left / contain;
-			// }
-			// &:after {
-			// 	background: url(../../img/ticket/right-guru.svg) no-repeat center right / contain,
-			// 				url(/static/remote/img/ticket/right-guru.svg) no-repeat center right / contain;
-			// }
 			div {
-				background: url(http://elletricity.com/uguru/ticket/center-guru.svg) repeat-x center center / contain,
+				background: url(../../img/ticket/center-guru.svg) repeat-x center center / contain,
+							url(/static/remote/img/ticket/center-guru.svg) repeat-x center center / contain;
 			}
 			&:before {
-				background: url(http://elletricity.com/uguru/ticket/left-guru.svg) no-repeat center left / contain;
+				background: url(../../img/ticket/left-guru.svg) no-repeat center left / contain,
+							url(/static/remote/img/ticket/left-guru.svg) no-repeat center left / contain;
 			}
 			&:after {
-				background: url(http://elletricity.com/uguru/ticket/right-guru.svg) no-repeat center right / contain;
+				background: url(../../img/ticket/right-guru.svg) no-repeat center right / contain,
+							url(/static/remote/img/ticket/right-guru.svg) no-repeat center right / contain;
 			}
 		}
 	}
@@ -222,26 +213,17 @@
 			}
 		}
 		.ticket-slider-bg {
-			// div {
-			// 	background: url(../../img/ticket/center.svg) repeat-x center center / contain,
-			// 				url(/static/remote/img/ticket/center.svg) repeat-x center center / contain;
-			// }
-			// &:before {
-			// 	background: url(../../img/ticket/left.svg) no-repeat center left / contain,
-			// 				url(/static/remote/img/ticket/left.svg) no-repeat center left / contain;
-			// }
-			// &:after {
-			// 	background: url(../../img/ticket/right.svg) no-repeat center right / contain,
-			// 				url(/static/remote/img/ticket/right.svg) no-repeat center right / contain;
-			// }
 			div {
-				background: url(http://elletricity.com/uguru/ticket/center.svg) repeat-x center center / contain,
+				background: url(../../img/ticket/center.svg) repeat-x center center / contain,
+							url(/static/remote/img/ticket/center.svg) repeat-x center center / contain;
 			}
 			&:before {
-				background: url(http://elletricity.com/uguru/ticket/left.svg) no-repeat center left / contain;
+				background: url(../../img/ticket/left.svg) no-repeat center left / contain,
+							url(/static/remote/img/ticket/left.svg) no-repeat center left / contain;
 			}
 			&:after {
-				background: url(http://elletricity.com/uguru/ticket/right.svg) no-repeat center right / contain;
+				background: url(../../img/ticket/right.svg) no-repeat center right / contain,
+							url(/static/remote/img/ticket/right.svg) no-repeat center right / contain;
 			}
 		}
 	}
@@ -480,14 +462,12 @@
 			right: -1%;
 		}
 	}
-
 	.projector-line {
 		position: absolute;
 		left: 50%;
 		margin-left: -1px;
 		top: -196px;
 	}
-
 	.projector-content {
 		position: absolute;
 		top: 3.2%;
@@ -545,7 +525,6 @@
 			}
 		}
 	}
-
 	.projector-handle {
 		transition: all 150ms ease-in-out;
 		position: absolute;
