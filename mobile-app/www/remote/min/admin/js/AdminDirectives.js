@@ -33,7 +33,7 @@ angular.module('uguru.admin')
         }
     }
 }])
-.directive("docItem", ['RootService', '$timeout', function(RootService, $timeout) {
+.directive("docItem", ['RootService', '$timeout', '$filter', function(RootService, $timeout, $filter) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.tpl',
         transclude:true,
@@ -42,8 +42,31 @@ angular.module('uguru.admin')
         scope:true,
         controller: 'AdminDocItemController',
         controllerAs: 'doc_item',
-        link: function preLink(scope, element, attr, ctrl, transclude) {
+        link: function preLink(scope, element, attr, ctrl, transcludeFn) {
             ctrl.element = element;
+            element[0].setAttribute('doc-item-id', ctrl.id);
+            scope.hide = false;
+            if ('keywords' in attr) {
+                ctrl.keywords = attr.keywords.split(', ');
+            }
+            $timeout(function() {
+                var docItems = RootService.getDocItems();
+            }, 1000)
+
+            scope.$watch(function() {
+              return element.attr('class');
+            }, function(new_value, old_value) {
+                $timeout(function() {
+                    if (new_value && new_value.indexOf('hide-doc-item') > -1) {
+                        element[0].classList.remove('hide-doc-item');
+                        scope.hide = true;
+                    }
+                    if (new_value && new_value.indexOf('show-doc-item') > -1) {
+                        element[0].classList.remove('show-doc-item');
+                        scope.hide = false;
+                    }
+                })
+            });
         }
     }
 
@@ -54,11 +77,16 @@ angular.module('uguru.admin')
         transclude:true,
         replace:true,
         restrict: 'E',
+        require:'^docItem',
         scope:false,
         link: function(scope, element, attr) {
-            if ('doc' in scope) {
-                scope.doc.title = element[0].querySelector('ng-transclude > span').innerHTML.trim();
+            scope.doc_item = scope.$parent.doc_item;
+            var elementTitle = element[0].querySelector('ng-transclude span:last-child');
+            if (!elementTitle) {
+                console.log('missing doc title', element[0]);
+                return;
             }
+            scope.doc_item.title = elementTitle.innerHTML.trim();
             return;
         }
     }
@@ -69,11 +97,17 @@ angular.module('uguru.admin')
         transclude:true,
         replace:true,
         restrict: 'E',
+        require:'^docItem',
         scope:false,
         link: function(scope, element, attr) {
-            if ('doc' in scope) {
-                scope.doc.description = element[0].querySelector('ng-transclude > span').innerHTML.trim();
+            scope.doc_item = scope.$parent.doc_item;
+            var elementDescription = element[0].querySelector('ng-transclude span:last-child');
+            if (!elementDescription) {
+                console.log('missing doc title', element[0]);
+                return;
             }
+            scope.doc_item.description = elementDescription.innerHTML.trim();
+            return;
             return;
         }
     }
@@ -137,7 +171,7 @@ angular.module('uguru.admin')
         replace:true,
         scope:{doc:'='},
         restrict: 'E',
-        link: function(scope, element, attr) {
+        link: function(scope, element, attr, ctrl, transcludeFn) {
             scope.doc = scope.$parent.doc_item;
             var type = attr.type;
             var text;
@@ -155,6 +189,14 @@ angular.module('uguru.admin')
                 scope.snippet.text = scope.snippet.text.replace('<span>', '').replace('}', '\n}').replace('</span>', '').trim();
             }
             scope.doc && scope.doc.snippets.push(scope.snippet);
+
+            // transcludeFn(function(transEl, transScope) {
+            //     var preBlock = document.createElement('pre');
+            //     preBlock.appendChild(transEl);
+            //     element.append(preBlock);
+            //     preBlock.firstChild.innerHTML = transEl.contents();
+            // });
+
         }
     }
 }])
