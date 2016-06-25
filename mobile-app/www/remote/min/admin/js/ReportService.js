@@ -48,8 +48,9 @@ function ReportService($timeout,FileService,LoadingService,$q) {
     function saveBug(newObject){
         bugReport = newObject;
     }
-
+    
     function syncReport(newObject){
+      
       FileService.postS3JsonFile(JSON.stringify(newObject), null ,
                                  'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
       function postCallback(firstName, resp) {

@@ -8,7 +8,8 @@ angular.module('uguru.admin')
   '$window',
   'SpecContentService',
   'ReportService',
-  function($scope, $state, $timeout, $localstorage, $window, SpecContentService,ReportService) {
+  '$interval',
+  function($scope, $state, $timeout, $localstorage, $window, SpecContentService,ReportService,$interval) {
     //spec service get all
 
 
@@ -21,10 +22,13 @@ angular.module('uguru.admin')
     $scope.user_workflows = SpecContentService.getContentSpec('preApp');
     $scope.admin_tasks = SpecContentService.getContentSpecAdmin('preApp');
 
+  
+    $interval(initBugs, 5000);
+
     if (window.location.href.split(':8100').length > 1) {
       $timeout(function() {
         initBugs();
-      }, 1000);
+      }, 500);
     }
 
     function countFailt(eachState)
@@ -40,19 +44,40 @@ angular.module('uguru.admin')
 
     function initBugs () {
       ReportService.getBug().then(function(result){
-       $scope.bugReport = result;
+       if(!$scope.bugReport){
+          $scope.bugReport = result['workflows'];
+          $scope.lastReportUpdate = result['lastUpdate'];
+       }
+       else {
+          // console.log("check", $scope.lastReportUpdate , result['lastUpdate'])
+          classList = document.querySelector('#cta-modal-action-platforms').classList
+          if (result['lastUpdate'] > $scope.lastReportUpdate && !classList.contains('show')){
+            console.log("UPDATED")
+            $scope.bugReport = result['workflows'];
+            $scope.lastReportUpdate = result['lastUpdate'];
+          }
+          // else
+          // {
+          //   console.log("No data need to updated");
+          // }
+       }
+     
       }, function(reason) {
         // console.log(reason);
       });
-      $scope.$watchCollection('bugReport', function(newNames, oldNames) {
-        // if (!oldNames && newNames){
-        //   console.log('bugReport is load');
-        // }
-        // else if(oldNames && newNames){
-        //   console.log('bugReport is Update');
-        // }
-      });
     }
+    
+    $scope.$watchCollection('bugReport', function(newNames, oldNames) {
+      if (!oldNames && newNames){
+        console.log('bugReport is load',$scope.lastReportUpdate);
+        
+      }
+      if(oldNames && newNames){
+        console.log('bugReport is Updated');
+      }
+    });
+
+
     $scope.updateStatus = function(index){
         switch( $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed){
           case 1:
@@ -65,7 +90,12 @@ angular.module('uguru.admin')
             $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed = 1;
             break;
         }
-        ReportService.syncReport($scope.bugReport);
+        var report = {
+           'workflows': $scope.bugReport,
+           'lastUpdate': new Date().getTime()
+
+         }
+        ReportService.syncReport(report);
     };
     $scope.closePlatform = function(){
       var targetElem = document.querySelector('#cta-box-selected-bug');
@@ -118,7 +148,7 @@ angular.module('uguru.admin')
           return id;
       }
       var stateID = id;
-      // console.log("CHECK",title,stateID)
+      // console.log("CHECK",$scope.bugReport)
       for(var i = 0; i < $scope.bugReport.length ; ++i)
       {
         if ($scope.bugReport[i].stateID === stateID){
@@ -131,7 +161,7 @@ angular.module('uguru.admin')
           return parseFloat(digit.toFixed(2));
         }
       }
-      return " - ";
+      return ' - ';
     };
 
 

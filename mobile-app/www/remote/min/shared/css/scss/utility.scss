@@ -1,5 +1,4 @@
 @import 'partials/mixin';
-@import 'partials/material';
 
 @font-face {
 	font-family: "Impact Label";
@@ -188,10 +187,8 @@ input, fieldset {
 }
 
 .fix-abs {
-	* {
-		&.fixed {
-			position: absolute!important;
-		}
+	.fixed {
+		position: absolute!important;
 	}
 }
 

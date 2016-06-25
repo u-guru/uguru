@@ -68,8 +68,9 @@ angular.module('uguru.admin')
   '$localstorage',
   '$timeout',
   'SpecContentService',
+  '$interval',
   function($scope, $state, $timeout, FileService, LoadingService,ReportService,
-            CTAService,$localstorage, $timeou,SpecContentService) {
+            CTAService,$localstorage, $timeou,SpecContentService,$interval) {
     $scope.updateStatus = function(){
       $scope.isSync = false;
       console.log('CHeck',$scope.isSync);
@@ -135,11 +136,19 @@ angular.module('uguru.admin')
     $scope.saveBug = function(){
       // console.log($scope.bugReport);
       // console.log('CHECK',angular.toJson($scope.bugReport[0]),4);
+      // console.log('update')
+     var report = {
+        'workflows': $scope.bugReport,
+        // 'lastUpdate': new Date().getTime()
+        'lastUpdate': $scope.lastReportUpdate
 
-      FileService.postS3JsonFile(angular.toJson($scope.bugReport), null ,
+      }
+
+      FileService.postS3JsonFile(angular.toJson(report), null ,
                                  'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
       function postCallback(firstName, resp) {
-          ReportService.saveBug($scope.bugReport);
+         
+          ReportService.saveBug(report);
           // console.log('file successfully saved', resp);          
           // LoadingService.hide();
           // $timeout(function() {
@@ -486,7 +495,7 @@ angular.module('uguru.admin')
           }
           if (!$scope.bugReport[i].manualState){
             $scope.bugReport[i].manualState = [];
-            console.log('NO',$scope.bugReport[i].states);
+            console.log('NO manualState ',$scope.bugReport[i].name);
             for (var j = 0; j < $scope.bugReport[i].states.length; ++j){
                 var title = angular.copy($scope.bugReport[i].states[j].title);
                 var platforms = angular.copy($scope.bugReport[i].states[j].platforms);
@@ -511,12 +520,24 @@ angular.module('uguru.admin')
       //https://s3.amazonaws.com/uguru-admin/sync/bugs.json
       FileService.getS3JsonFile(null, 'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', callbackFunc);
       function callbackFunc(name, resp) {
-        scope.bugReport = resp;
-        // console.log('file successfully loaded', resp);
-        // LoadingService.hide()
-        // $timeout(function() {
-        //  LoadingService.showSuccess(resp.length + ' bugs loaded', 1000) ;
-        // })
+      
+        if(!scope.bugReport){
+            scope.bugReport = resp['workflows'];
+            scope.lastReportUpdate = resp['lastUpdate'];
+        }
+        else {
+           // console.log(resp['lastUpdate'] , scope.lastReportUpdate);
+           if (resp['lastUpdate'] > scope.lastReportUpdate){
+               // console.log("DETECT",resp['lastUpdate'], scope.lastReportUpdate)
+               scope.bugReport = resp['workflows'];
+               scope.lastReportUpdate = resp['lastUpdate'];
+               // ReportService.saveBug(resp);
+           }
+           // else
+           // {
+           //    console.log("NOTHING NEED TO UDPATED")
+           // }
+        }
       }
     }
     function getReportIndexByID(id){
@@ -528,16 +549,21 @@ angular.module('uguru.admin')
         }
         return;
     }
+    function updateBugs(){
+      // console.log("START");
+      loadUpdatedBugsJsonFile($scope)
+    }
+   
 
-    $timeout(function() {
-      if (window.location.href.split('8100').length > 1) {
-        loadUpdatedBugsJsonFile($scope);
-      }
-    });
+    if (window.location.href.split('8100').length > 1) {
+        $timeout(function() {
+            loadUpdatedBugsJsonFile($scope);
+        },100);
+    }
 
     $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
-        // console.log('Data is Load',newNames);
+        // console.log('Data is Load',newNames,$scope.lastReportUpdate);
         intData();
         $scope.indexOfSection = getReportIndexByID(document.URL.split('admin/bugs/')[1]);
         // console.log($scope.indexOfSection)
@@ -553,12 +579,12 @@ angular.module('uguru.admin')
         $scope.saveBug();
         // ReportService.saveBug($scope.bugReport);
         // console.log('Reprort',ReportService.getBug());
-
+        $interval(updateBugs, 5000);
       }
       else if(oldNames && newNames){
           // console.log('Data is Update',newNames);
          // $scope.openBugList($scope.bugReport[$scope.bugReport.length-1]);
-         $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
+         // $scope.userWorkflows = SpecContentService.getContentSpec('preApp');
          $scope.saveBug();
       }
 

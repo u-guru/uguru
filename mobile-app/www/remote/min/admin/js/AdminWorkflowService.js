@@ -23,7 +23,10 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/loaders/main.html',
                     routeUrl: 'dev/splash/loader',
                     cssUrl: 'preapp/css/scss/loader.scss'
-                }
+                },
+                states: [
+                    {title: 'onLoaderSwitch', functional: false, animated: false, tested: false}
+                ]
               },
               {
                 title: 'Madlib Selection',
@@ -32,7 +35,19 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     controller: 'SplashMadlibController',
                     templateUrl: 'preapp/templates/splash.madlib.html',
                     routeUrl: 'dev/splash/madlib',
-                }
+                },
+                states: [
+                    {state: 'onEnter', functional: true, animated: false, tested: false},
+                    {state: 'onTagOneClicked', selector: '[blank-num="1"] a', functional: true, animated: false, tested: false},
+                    {state: 'onTagTwoClicked', selector: '[blank-num="2"] a',functional: true, animated: false, tested: false},
+                    {state: 'onTagDeselected', selector: '[blank-num="1"] .translate-blank-1', functional: true, animated: false, tested: false},
+                    {state: 'onBothBlanksFilled', selector: '[blank-num="2"] .translate-blank-2',  functional: true, animated: false, tested: false},
+                    {state: 'onUniversityChanged', functional: false, animated: false, tested: false},
+                    {state: 'onCategoryChanged', functional: false, animated: false, tested: false},
+                    {state: 'onDeviceButtonSelected', functional: false, animated: false, tested: false},
+                    {state: 'onMapFullScreenTransition', functional: false, animated: false, tested: false},
+                    {state: 'onExit', functional: false, animated: false, tested: false}
+                ]
               },
               {
                 title: 'Device States',
@@ -234,7 +249,7 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
 
         for (var i = 0; i < workflows.length; i++) {
             workflows[i]['id'] = i + 1;
-            console.log(workflows[i]['title'],workflows[i]['id']);
+            // console.log(workflows[i]['title'],workflows[i]['id']);
 
         }
         console.log(workflows.length, 'workflows rendered');
