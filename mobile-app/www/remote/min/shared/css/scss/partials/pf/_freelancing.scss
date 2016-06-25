@@ -1,10 +1,10 @@
-@import 'mixin';
+@import '../mixin';
 
-.pf-container.pf-household {
+.pf-container.pf-freelancing {
     .verified {
         span svg {
             path:first-child {
-                fill: $cobalt;
+                fill: $orange;
             }
         }
     }
@@ -15,28 +15,28 @@
                     &:nth-child(1) {
                         &.active {
                             ~ hr {
-                                border-color: mix($cobalt, white);
+                                border-color: mix($orange, white);
                             }
                         }
                     }
                     &:nth-child(2) {
                         &.active {
                             ~ hr {
-                                border-color: mix($cobalt, white);
+                                border-color: mix($orange, white);
                             }
                         }
                     }
                     &:nth-child(3) {
                         &.active {
                             ~ hr {
-                                border-color: mix($cobalt, white);
+                                border-color: mix($orange, white);
                             }
                         }
                     }
                     &:nth-child(4) {
                         &.active {
                             ~ hr {
-                                border-color: mix($cobalt, white);
+                                border-color: mix($orange, white);
                             }
                         }
                     }
@@ -44,48 +44,48 @@
                     &:nth-child(1) {
                         &:hover, &:focus {
                             ~ hr {
-                                border-color: rgba(mix($cobalt, white), .7);
+                                border-color: rgba(mix($orange, white), .7);
                             }
                         }
                         &:active {
                             ~ hr {
-                                border-color: mix($cobalt, white);
+                                border-color: mix($orange, white);
                             }
                         }
                     }
                     &:nth-child(2) {
                         &:hover, &:focus {
                             ~ hr {
-                                border-color: rgba(mix($cobalt, white), .7);
+                                border-color: rgba(mix($orange, white), .7);
                             }
                         }
                         &:active {
                             ~ hr {
-                                border-color: mix($cobalt, white);
+                                border-color: mix($orange, white);
                             }
                         }
                     }
                     &:nth-child(3) {
                         &:hover, &:focus {
                             ~ hr {
-                                border-color: rgba(mix($cobalt, white), .7);
+                                border-color: rgba(mix($orange, white), .7);
                             }
                         }
                         &:active {
                             ~ hr {
-                                border-color: mix($cobalt, white);
+                                border-color: mix($orange, white);
                             }
                         }
                     }
                     &:nth-child(4) {
                         &:hover, &:focus {
                             ~ hr {
-                                border-color: rgba(mix($cobalt, white), .7);
+                                border-color: rgba(mix($orange, white), .7);
                             }
                         }
                         &:active {
                             ~ hr {
-                                border-color: mix($cobalt, white);
+                                border-color: mix($orange, white);
                             }
                         }
                     }
@@ -96,32 +96,32 @@
     .pf-main {
         > div {
             .pf-main-subheader {
-                hr {
-                    background: rgba($cobalt, .2);
+                &:after {
+                    background: rgba($orange, .2);
                 }
             }
             &.pf-about {
                 .pf-about-section {
                     header {
                         h2 {
-                            background: $cobalt;
+                            background: $orange;
                         }
                     }
                     .pf-url {
                         li {
                             &:last-child {
                                 a {
-                                    background: $cobalt!important;
+                                    background: $orange!important;
                                     &:hover, &:focus {
-                                        background: mix($cobalt, white)!important;
+                                        background: mix($orange, white)!important;
                                         svg {
                                             * {
-                                                stroke: mix($cobalt, $slate);
+                                                stroke: mix($orange, $slate);
                                             }
                                         }
                                     }
                                     &:active {
-                                        background: mix($cobalt, $slate)!important;
+                                        background: mix($orange, $slate)!important;
                                         svg {
                                             * {
                                                 stroke: white;
@@ -137,13 +137,13 @@
         }
     }
     .pf-mobile-cta {
-        background: rgba($cobalt, .95);
+        background: rgba($orange, .95);
         &:hover, &:focus {
-            background: mix($cobalt, white);
-            color: mix($cobalt, $slate);
+            background: mix($orange, white);
+            color: mix($orange, $slate);
         }
         &:active {
-            background: mix($cobalt, $slate);
+            background: mix($orange, $slate);
             color: white;
         }
     }

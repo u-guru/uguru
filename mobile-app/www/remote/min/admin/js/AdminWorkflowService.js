@@ -64,6 +64,7 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                 reference: {
                     templateUrl: 'preapp/templates/splash.nav.html',
                     routeUrl: 'dev/splash/nav',
+                    cssUrl: 'preapp/css/scss/partials/_splash-headers.scss'
                 },
                 status: {css: false}
               },

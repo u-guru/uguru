@@ -1,10 +1,10 @@
-@import 'mixin';
+@import '../mixin';
 
-.pf-container.pf-photography {
+.pf-container.pf-baking {
     .verified {
         span svg {
             path:first-child {
-                fill: $moola;
+                fill: $gold;
             }
         }
     }
@@ -15,28 +15,28 @@
                     &:nth-child(1) {
                         &.active {
                             ~ hr {
-                                border-color: mix($moola, white);
+                                border-color: white;
                             }
                         }
                     }
                     &:nth-child(2) {
                         &.active {
                             ~ hr {
-                                border-color: mix($moola, white);
+                                border-color: white;
                             }
                         }
                     }
                     &:nth-child(3) {
                         &.active {
                             ~ hr {
-                                border-color: mix($moola, white);
+                                border-color: white;
                             }
                         }
                     }
                     &:nth-child(4) {
                         &.active {
                             ~ hr {
-                                border-color: mix($moola, white);
+                                border-color: white;
                             }
                         }
                     }
@@ -44,48 +44,48 @@
                     &:nth-child(1) {
                         &:hover, &:focus {
                             ~ hr {
-                                border-color: rgba(mix($moola, white), .7);
+                                border-color: rgba(white, .7);
                             }
                         }
                         &:active {
                             ~ hr {
-                                border-color: mix($moola, white);
+                                border-color: white;
                             }
                         }
                     }
                     &:nth-child(2) {
                         &:hover, &:focus {
                             ~ hr {
-                                border-color: rgba(mix($moola, white), .7);
+                                border-color: rgba(white, .7);
                             }
                         }
                         &:active {
                             ~ hr {
-                                border-color: mix($moola, white);
+                                border-color: white;
                             }
                         }
                     }
                     &:nth-child(3) {
                         &:hover, &:focus {
                             ~ hr {
-                                border-color: rgba(mix($moola, white), .7);
+                                border-color: rgba(white, .7);
                             }
                         }
                         &:active {
                             ~ hr {
-                                border-color: mix($moola, white);
+                                border-color: white;
                             }
                         }
                     }
                     &:nth-child(4) {
                         &:hover, &:focus {
                             ~ hr {
-                                border-color: rgba(mix($moola, white), .7);
+                                border-color: rgba(white, .7);
                             }
                         }
                         &:active {
                             ~ hr {
-                                border-color: mix($moola, white);
+                                border-color: white;
                             }
                         }
                     }
@@ -95,33 +95,36 @@
     }
     .pf-main {
         > div {
+            .pf-main-header {
+                background: $gold;
+            }
             .pf-main-subheader {
                 hr {
-                    background: rgba($moola, .2);
+                    background: rgba($gold, .2);
                 }
             }
             &.pf-about {
                 .pf-about-section {
                     header {
                         h2 {
-                            background: $moola;
+                            background: $gold;
                         }
                     }
                     .pf-url {
                         li {
                             &:last-child {
                                 a {
-                                    background: $moola!important;
+                                    background: $gold!important;
                                     &:hover, &:focus {
-                                        background: mix($moola, white)!important;
+                                        background: mix($gold, white)!important;
                                         svg {
                                             * {
-                                                stroke: mix($moola, $slate);
+                                                stroke: mix($gold, $slate);
                                             }
                                         }
                                     }
                                     &:active {
-                                        background: mix($moola, $slate)!important;
+                                        background: mix($gold, $slate)!important;
                                         svg {
                                             * {
                                                 stroke: white;
@@ -137,13 +140,13 @@
         }
     }
     .pf-mobile-cta {
-        background: rgba($moola, .95);
+        background: rgba($gold, .95);
         &:hover, &:focus {
-            background: mix($moola, white);
-            color: mix($moola, $slate);
+            background: mix($gold, white);
+            color: mix($gold, $slate);
         }
         &:active {
-            background: mix($moola, $slate);
+            background: mix($gold, $slate);
             color: white;
         }
     }
