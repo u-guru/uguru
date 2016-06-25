@@ -10,6 +10,7 @@
 	}
 }
 .tab-bar {
+	position: relative;
 	background: $charcoal;
 	// sliding tab bar
 	@include flex;
@@ -1405,9 +1406,6 @@ input[type=range] {
 	&:focus::-ms-fill-upper {
 		background: rgba(white,.4);
 	}
-}
-
-input[type="range"] {
 	&[size="small"], &[size="2"] {
 		&::-webkit-slider-runnable-track {
 			height: 2px;
