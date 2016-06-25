@@ -8,27 +8,12 @@
     <div id="dev-docs" ng-if="spec.toggleDocSearch" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
         <div id="dev-toolbar" style='z-index:10000; bottom: 0px;' class='full-x left-0 absolute bg-slate animated slideInUp' ng-if="spec.toggleDocSearch">
         <!-- @samir state list -->
-            <ul class="bg-charcoal-50p flex-center-vertical p15-grid full-x" ng-show="spec.docs.searchText.length" ng-controller='AdminDocsController as docs'>
-                <li class='full-x bg-charcoal' ng-repeat='item in spec.docs.items | filter:spec.docs.searchText:strict track by $index'>
-                    <div class='ugrid-2'>
-                        <div>
-                            <h1>{{item.title}}</h1>
-                        </div>
-                        <div class="height-128 overflow-hidden">{{item}}</div>
-                    </div>
-                </li>
-                <li ng-if='!spec.docs.items.length && spec.docs.searchText.length'>
-                    No results found for <span class='weight-600'>{{spec.docs.searchText.length}}</span>
-                </li>
-                <li hidden>
-                    <div class='absolute full-xy bg-charcoal' ng-include='root.base_url + "admin/templates/docs/docs.html"' style='height:calc(100% - 75px) !important;'>
-                    </div>
-                </li>
-            </ul>
-            <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
-                <li class='full-x ugrid-2'>
+        <div id='components-container' class='fixed top-0 left-0 full-xy' ng-include='root.base_url + "admin/templates/docs/components.html"' ng-if='spec.toggleDocSearch'>
+        </div>
+            <ul class="bg-cobalt-50p flex-center-vertical bg-charcoal full-x overflow-x no-scrollbar">
+                <li style='margin-bottom:27px !important; z-index:10000 !important;' class='full-x ugrid-2 bg-charcoal flex-wrap-center p15xy' style='margin-bottom:-15px;'>
                     <fieldset class="with-icon">
-                        <input autofocus ng-model='spec.docs.searchText' class="input-border light" type="text" placeholder="Search components">
+                        <input autofocus ng-model='root.docs.searchText' class="input-border light" type="text" placeholder="Search components">
                         <label></label>
                         <span class="input-icon">
                             <svg viewBox="0 0 100 100">
@@ -39,6 +24,9 @@
                             <i class='icon ion-close-circled txt-white'></i>
                         </a>
                     </fieldset>
+                    <div ng-if='root.docs.resultItems.length' class='flex-wrap-center'>
+                        {{root.docs.resultItems.length}} results found
+                    </div>
                 </li>
             </ul>
             <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
