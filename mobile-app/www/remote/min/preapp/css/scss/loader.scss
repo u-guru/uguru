@@ -1,9 +1,9 @@
 @import '../../../shared/css/scss/partials/mixin';
-@import 'partials/loader-academic';
-@import 'partials/loader-baking';
-@import 'partials/loader-photo';
-@import 'partials/loader-tech';
-@import 'partials/loader-household';
+@import 'partials/loader/academic';
+@import 'partials/loader/baking';
+@import 'partials/loader/photo';
+@import 'partials/loader/tech';
+@import 'partials/loader/household';
 
 .loader-bob {
 	animation: l-head-hover 1000ms linear infinite forwards;

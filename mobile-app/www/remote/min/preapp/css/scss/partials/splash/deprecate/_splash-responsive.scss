@@ -65,9 +65,7 @@
 		> section {
 			&.splash-hero {
 				.splash-header {
-					@media screen and (min-width: 860px) {
-						height: 70px!important;
-					}
+					height: 70px!important;
 				}
 			}
 		}

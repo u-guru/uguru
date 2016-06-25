@@ -21,6 +21,7 @@ angular.module('uguru.shared.controllers', [])
     root.base_url = RootService.getBaseUrl();
     root.local = window.location.href.split(':8100').length > 1;
     root.browserPrefix = RootService.getBrowserPrefix();
+    root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
   }
 ]);
 
