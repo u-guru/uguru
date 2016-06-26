@@ -1,0 +1,36 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+/* ---------- TEAM */
+#team {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background: $slate;
+	header {
+		@include flex;
+		@include flex-center;
+		background: $shamrock;
+	}
+	.main {
+		.pf-card-group {
+			max-width: 615px;
+			> li {
+				.pf-card {
+					.pf-card-top {
+						height: 80px;
+						> ul {
+							li {
+								&:first-child {
+									width: 70%;
+								}
+								&:last-child {
+									width: 30%;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

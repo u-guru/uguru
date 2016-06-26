@@ -11,10 +11,10 @@
     <div id="dev-docs" ng-if="spec.toggleDocSearch" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
         <div id="dev-toolbar" style='z-index:10000; bottom: 0px;' class='full-x left-0 absolute bg-slate animated slideInUp' ng-if="spec.toggleDocSearch">
         <!-- @samir state list -->
-        <div id='components-container' class='fixed top-0 left-0 full-xy' ng-include='root.base_url + "admin/templates/docs/components.html"' ng-if='spec.toggleDocSearch'>
+        <div id='components-container' class='fixed left-0 full-x' ng-include='root.base_url + "admin/templates/docs/components.html"' ng-if='spec.toggleDocSearch' ng-show='root.docs.resultItems.length'>
         </div>
-            <ul class="bg-cobalt-50p flex-center-vertical bg-charcoal full-x overflow-x no-scrollbar">
-                <li style='margin-bottom:27px !important; z-index:10000 !important;' class='full-x ugrid-2 bg-charcoal flex-wrap-center p15xy' style='margin-bottom:-15px;'>
+            <ul style='bottom:65px !important;' class="absolute bg-cobalt-50p flex-center-vertical bg-charcoal full-x overflow-x no-scrollbar">
+                <li style='z-index:10000 !important;' class='full-x ugrid-2 bg-charcoal flex-wrap-center p15xy'>
                     <fieldset class="with-icon">
                         <input autofocus ng-model='root.docs.searchText' class="input-border light" type="text" placeholder="Search components">
                         <label></label>
@@ -230,7 +230,7 @@
 
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.settings()'>Settings</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.record()'>Record</button>
-                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggleDocSearch = !spec.toggleDocSearch'>Search Docs</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggleDocSearchFunc(spec)'>Search Docs</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggleGoogleDoc = !spec.toggleGoogleDoc;'>Spec</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block " ng-click='spec.toggleAllToolsBar = !spec.toggleAllToolsBar;'>Tools</button>
             </li>

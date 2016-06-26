@@ -1,0 +1,150 @@
+@import '../mixin';
+
+.pf-container.pf-academic {
+    .verified {
+        span svg {
+            path:first-child {
+                fill: $cerise;
+            }
+        }
+    }
+    .tab-bar {
+        &.slide {
+            > div {
+                a {
+                    &:nth-child(1) {
+                        &.active {
+                            ~ hr {
+                                border-color: mix($cerise, white);
+                            }
+                        }
+                    }
+                    &:nth-child(2) {
+                        &.active {
+                            ~ hr {
+                                border-color: mix($cerise, white);
+                            }
+                        }
+                    }
+                    &:nth-child(3) {
+                        &.active {
+                            ~ hr {
+                                border-color: mix($cerise, white);
+                            }
+                        }
+                    }
+                    &:nth-child(4) {
+                        &.active {
+                            ~ hr {
+                                border-color: mix($cerise, white);
+                            }
+                        }
+                    }
+
+                    &:nth-child(1) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                border-color: rgba(mix($cerise, white), .7);
+                            }
+                        }
+                        &:active {
+                            ~ hr {
+                                border-color: mix($cerise, white);
+                            }
+                        }
+                    }
+                    &:nth-child(2) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                border-color: rgba(mix($cerise, white), .7);
+                            }
+                        }
+                        &:active {
+                            ~ hr {
+                                border-color: mix($cerise, white);
+                            }
+                        }
+                    }
+                    &:nth-child(3) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                border-color: rgba(mix($cerise, white), .7);
+                            }
+                        }
+                        &:active {
+                            ~ hr {
+                                border-color: mix($cerise, white);
+                            }
+                        }
+                    }
+                    &:nth-child(4) {
+                        &:hover, &:focus {
+                            ~ hr {
+                                border-color: rgba(mix($cerise, white), .7);
+                            }
+                        }
+                        &:active {
+                            ~ hr {
+                                border-color: mix($cerise, white);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pf-main {
+        > div {
+            .pf-main-subheader {
+                hr {
+                    background: rgba($cerise, .2);
+                }
+            }
+            &.pf-about {
+                .pf-about-section {
+                    header {
+                        h2 {
+                            background: $cerise;
+                        }
+                    }
+                    .pf-url {
+                        li {
+                            &:last-child {
+                                a {
+                                    background: $cerise!important;
+                                    &:hover, &:focus {
+                                        background: mix($cerise, white)!important;
+                                        svg {
+                                            * {
+                                                stroke: mix($cerise, $slate);
+                                            }
+                                        }
+                                    }
+                                    &:active {
+                                        background: mix($cerise, $slate)!important;
+                                        svg {
+                                            * {
+                                                stroke: white;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pf-mobile-cta {
+        background: rgba($cerise, .95);
+        &:hover, &:focus {
+            background: mix($cerise, white);
+            color: mix($cerise, $slate);
+        }
+        &:active {
+            background: mix($cerise, $slate);
+            color: white;
+        }
+    }
+}

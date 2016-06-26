@@ -33,56 +33,43 @@ angular.module('uguru.admin')
         }
     }
 }])
-.directive("docItem", ['RootService', '$timeout', function(RootService, $timeout) {
+.directive("docItem", ['RootService', '$timeout', '$filter', function(RootService, $timeout, $filter) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.tpl',
         transclude:true,
         replace:true,
         restrict: 'E',
         scope:true,
-        link: function(scope, element, attr) {
-            scope.doc = {onSnippetClicked: onSnippedClicked(scope, element), onStateClicked: onStateClicked(scope, element), keywords: keywordArr, states: [], snippets: [], stateIndex: 0, snippetIndex:0};
-            if ('keywords' in attr && attr['keywords']) {
-                var keywords = attr['keywords'];
-                var keywordArr = keywords.split(', ');
-                RootService.appendDocItem(scope.doc);
+        controller: 'AdminDocItemController',
+        controllerAs: 'doc_item',
+        link: function preLink(scope, element, attr, ctrl, transcludeFn) {
+            ctrl.element = element;
+            element[0].setAttribute('doc-item-id', ctrl.id);
+            scope.hide = false;
+            if ('keywords' in attr) {
+                ctrl.keywords = attr.keywords.split(', ');
             }
-            return;
-        }
-    }
-    function onSnippedClicked(scope, element) {
-        return function(index) {
-            scope.doc.snippetIndex = index;
-        }
-    }
-    function onStateClicked(scope, element) {
-        return function(index) {
-            var nextState = scope.doc.states[index];
-            if (!scope.doc.states[index].inherit) {
-                scope.doc.stateIndex = index;
-                scope.doc.inheritedIndex = false;
-                console.log(scope.doc.stateIndex, 'state index clicked');
-            } else {
-                // scope.doc.stateIndex = index;
-                scope.doc.states[scope.doc.stateIndex].inheritedIndex = true;
-                console.log(nextState);
-                var dashedAttribute = nextState.title.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();});
-                console.log(dashedAttribute);
-                var selectedAttrElems = element[0].parentNode.querySelectorAll('[' + dashedAttribute + ']');
-                if (selectedAttrElems.length) {
-                    for (var i = 0; i < selectedAttrElems.length; i++) {
-                        if (dashedAttribute.split('activate').length > 1) {
-                            selectedAttrElems[i].classList.add('activate');
-                        } else {
-                            selectedAttrElems[i].classList.add(dashedAttribute);
-                        }
+            $timeout(function() {
+                var docItems = RootService.getDocItems();
+            }, 1000)
+
+            scope.$watch(function() {
+              return element.attr('class');
+            }, function(new_value, old_value) {
+                $timeout(function() {
+                    if (new_value && new_value.indexOf('hide-doc-item') > -1) {
+                        element[0].classList.remove('hide-doc-item');
+                        scope.hide = true;
                     }
-                }
-
-            }
+                    if (new_value && new_value.indexOf('show-doc-item') > -1) {
+                        element[0].classList.remove('show-doc-item');
+                        scope.hide = false;
+                    }
+                })
+            });
         }
-
     }
+
 }])
 .directive("docTitle", ['RootService', '$timeout', function(RootService, $timeout) {
     return {
@@ -90,10 +77,16 @@ angular.module('uguru.admin')
         transclude:true,
         replace:true,
         restrict: 'E',
+        require:'^docItem',
+        scope:false,
         link: function(scope, element, attr) {
-            if ('doc' in scope) {
-                scope.doc.title = element[0].querySelector('ng-transclude > span').innerHTML.trim();
+            scope.doc_item = scope.$parent.doc_item;
+            var elementTitle = element[0].querySelector('ng-transclude span:last-child');
+            if (!elementTitle) {
+                console.log('missing doc title', element[0]);
+                return;
             }
+            scope.doc_item.title = elementTitle.innerHTML.trim();
             return;
         }
     }
@@ -104,10 +97,17 @@ angular.module('uguru.admin')
         transclude:true,
         replace:true,
         restrict: 'E',
+        require:'^docItem',
+        scope:false,
         link: function(scope, element, attr) {
-            if ('doc' in scope) {
-                scope.doc.description = element[0].querySelector('ng-transclude > span').innerHTML.trim();
+            scope.doc_item = scope.$parent.doc_item;
+            var elementDescription = element[0].querySelector('ng-transclude span:last-child');
+            if (!elementDescription) {
+                console.log('missing doc title', element[0]);
+                return;
             }
+            scope.doc_item.description = elementDescription.innerHTML.trim();
+            return;
             return;
         }
     }
@@ -119,8 +119,9 @@ angular.module('uguru.admin')
         replace:true,
         scope:false,
         restrict: 'E',
-        link: function(scope, element, attr) {
-            console.log(scope.doc);
+        require:'^docItem',
+        link: function(scope, element, attr, parent_controller) {
+            scope.doc_item = scope.$parent.doc_item;
         }
     }
 }])
@@ -130,46 +131,48 @@ angular.module('uguru.admin')
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.state.tpl',
         transclude:true,
         replace:true,
-        scope:false,
+        scope:{doc:'='},
         restrict: 'E',
-        link: function(scope, element, attr) {
-            var title = attr.name;
-            var inherit = false;
-            var html;
-            if ('default' in attr && 'doc' in scope.$parent) {
-                scope.doc.stateIndex = scope.doc.states.length
-                title = 'Default';
-            }
-            if ('inherit' in attr && 'doc' in scope && scope.doc.states.length) {
-                html = scope.doc.states[0].html;
-                inherit = true;
-            }
-            if (attr.name && !('default' in attr)) {
-                var dashedAttribute = attr.name.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();});
-                var selectedAttrElems = element[0].parentNode.querySelectorAll('[' + dashedAttribute + ']');
+        link: {
+            post: function(scope, element, attr) {
+                scope.doc = scope.$parent.doc_item;
 
-
+                var title = attr.name;
+                var inherit = false;
+                var html;
+                if ('default' in attr) {
+                    scope.doc.stateIndex = scope.doc.states.length
+                    title = 'Default';
+                }
+                if ('inherit' in attr && scope.doc.states.length) {
+                    html = scope['doc'].states[0].html;
+                    inherit = true;
+                }
+                if (attr.name && !('default' in attr)) {
+                    var dashedAttribute = attr.name.replace(/([A-Z])/g, function($1){return "-"+$1.toLowerCase();});
+                    var selectedAttrElems = element[0].parentNode.querySelectorAll('[' + dashedAttribute + ']');
+                }
+                scope.state = {
+                    title: title,
+                    id: scope.doc && scope.doc.states.length,
+                    html: html || element[0].innerHTML,
+                    inherit: inherit
+                }
+                scope.doc && scope.doc.states.push(scope.state);
+                // $compile(element[0])(scope);
             }
-            console.log('inner html', element[0]);
-            scope.state = {
-                title: title,
-                id: scope.doc.states.length,
-                html: html || element[0].innerHTML,
-                inherit: inherit
-            }
-            scope.doc.states.push(scope.state);
-            // $compile(element[0])(scope);
         }
     }
 }])
 .directive("docSnippet", ['RootService', '$timeout', '$compile', function(RootService, $timeout, $compile) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.snippet.tpl',
-        replace:true,
-        scope:true,
         transclude:true,
+        replace:true,
+        scope:{doc:'='},
         restrict: 'E',
-        link: function(scope, element, attr) {
+        link: function(scope, element, attr, ctrl, transcludeFn) {
+            scope.doc = scope.$parent.doc_item;
             var type = attr.type;
             var text;
 
@@ -183,10 +186,17 @@ angular.module('uguru.admin')
                 text: text || element[0].innerHTML
             }
             if (scope.snippet.type === 'css') {
-                console.log(scope.snippet.text);
                 scope.snippet.text = scope.snippet.text.replace('<span>', '').replace('}', '\n}').replace('</span>', '').trim();
             }
-            scope.doc.snippets.push(scope.snippet);
+            scope.doc && scope.doc.snippets.push(scope.snippet);
+
+            // transcludeFn(function(transEl, transScope) {
+            //     var preBlock = document.createElement('pre');
+            //     preBlock.appendChild(transEl);
+            //     element.append(preBlock);
+            //     preBlock.firstChild.innerHTML = transEl.contents();
+            // });
+
         }
     }
 }])
@@ -198,7 +208,8 @@ angular.module('uguru.admin')
         scope:false,
         restrict: 'E',
         link: function(scope, element, attr) {
-            return;
+            scope.doc_item = scope.$parent.doc_item;
+            scope.doc = scope.doc_item;
         }
     }
 }])
@@ -207,9 +218,11 @@ angular.module('uguru.admin')
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.snippets.tpl',
         transclude:true,
         replace:true,
+        scope:false,
         restrict: 'E',
         link: function(scope, element, attr) {
-            console.log('snippet index rendered', element[0])
+            scope.doc_item = scope.$parent.doc_item;
+            scope.doc = scope.doc_item;
             return;
         }
     }
