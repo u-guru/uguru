@@ -124,7 +124,7 @@ angular.module('uguru.shared.directives')
             },
             restrict: 'E',
             link: function(scope, element, attr) {
-                scope.label = scope.label || attr.label;
+                scope.label = attr.label || scope.label;
 
                 scope.onValueChanged = function(value) {
                         scope.onChecked && scope.onChecked(value);
