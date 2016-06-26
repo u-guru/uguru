@@ -44,6 +44,21 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
 
     }
 
+    function getAllThirdPartyTools() {
+        var thirdPartyTools = [
+            {name:'bouncejs', ref:'bouncejs', src:'http://bouncejs.com', show:false},
+            {name:'cubic bezier', src: 'http://cubic-bezier.com', ref:'cb', show:false}
+        ]
+        return thirdPartyTools;
+    }
+
+    function showThirdPartyToolIframe(spec) {
+        return function(tool) {
+            tool.show = !tool.show;
+        }
+
+    }
+
     function getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states) {
         // console.log(states);
         return function(obj) {
@@ -57,6 +72,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             specObj.data.toggleDocSearch = false;
             specObj.data.toggleGoogleDoc = false;
             specObj.data.toggleShortcuts = false;
+            specObj.data.toggleAllToolsBar = false;
+            specObj.data.tools = getAllThirdPartyTools();
+            specObj.data.showThirdPartyToolIframe = showThirdPartyToolIframe(specObj.data);
 
             specObj.data.toggleSettings = true;
             specObj.data.animTools = {stage: {parentElem: parent_container}, show:false}

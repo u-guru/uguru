@@ -1,8 +1,11 @@
 <div class='spec-template-wrapper high-z-index' style='min-height:10% !important;' eval-on-init="spec.ready()">
     <anim-tools ng-if='spec.animTools.show' ng-class="{'animated slideInDown':spec.animTools.show, 'animated slideOutUp':!spec.animTools.show}" active="spec.animTools.show" ng-model="spec.animTools.stage"> </anim-tools>
-    <div id="dev-docs" ng-if="spec.toggleGoogleDoc" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);'>
+    <div id="dev-docs" ng-if="spec.toggleGoogleDoc || spec.toggleAllToolsBar" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);'>
+        <div class='relative full-xy' ng-if='spec.toggleGoogleDoc'>
+            <iframe class='absolute full-xy animated opacity-0' src="{{spec.gdoc}}" on-init="opacity:1:delay-500" class-on-init="slideInDown"> </iframe>
+        </div>
         <div class='relative full-xy'>
-            <iframe class='absolute full-xy animated' src="{{spec.gdoc}}" style='opacity-0' on-init="opacity:1:delay-500" on-init-class="slideInDown"> </iframe>
+            <iframe ng-repeat='tool in spec.tools' class='absolute full-xy top-0 left-0'  src="{{tool.src}}" ng-if='tool.show'> </iframe>
         </div>
     </div>
     <div id="dev-docs" ng-if="spec.toggleDocSearch" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
@@ -208,7 +211,14 @@
                 </div>
             </li>
         </ul>
-
+        <ul ng-if='spec.toggleAllToolsBar' class='bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar'>
+            <li class='txt-7 white uppercase'>
+                <h1 class='weight-600'> 3rd Party Tools </h1>
+            </li>
+            <li ng-repeat='tool in spec.tools' ng-click="spec.showThirdPartyToolIframe(tool)">
+                <button class="height-36 txt-18 radius-2 normal block">{{tool.name}}</button>
+            </li>
+        </ul>
         <ul ng-if='spec.showStates' class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
             <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)' on-hold="spec.settings.updateDefaultState($event, $index, state_tag)">
                 <button ng-class="{'bg-robin':spec.settings.cache.defaultState.index === $index }" class="height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
@@ -221,7 +231,8 @@
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.settings()'>Settings</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggles.record()'>Record</button>
                 <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggleDocSearch = !spec.toggleDocSearch'>Search Docs</button>
-                <button class="height-36 txt-18 bg-moxie radius-2 normal block " ng-click='spec.toggleGoogleDoc = !spec.toggleGoogleDoc;'>Spec</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block m15right" ng-click='spec.toggleGoogleDoc = !spec.toggleGoogleDoc;'>Spec</button>
+                <button class="height-36 txt-18 bg-moxie radius-2 normal block " ng-click='spec.toggleAllToolsBar = !spec.toggleAllToolsBar;'>Tools</button>
             </li>
             <li class="flex">
                 <div class="m15right" ng-if='spec.codepenData'>
