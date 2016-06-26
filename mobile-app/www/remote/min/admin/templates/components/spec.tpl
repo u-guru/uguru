@@ -3,7 +3,7 @@
     <anim-tools ng-if='spec.animTools.show' ng-class="{'animated slideInDown':spec.animTools.show, 'animated slideOutUp':!spec.animTools.show}" active="spec.animTools.show" ng-model="spec.animTools.stage"> </anim-tools>
 
     <!-- EXTERNAL -->
-    <div id="dev-docs" ng-if="spec.toggleGoogleDoc || spec.toggleAllToolsBar" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);'>
+    <div id="dev-docs" ng-if="spec.toggleGoogleDoc || spec.toggleAllToolsBar" class='fixed full-x top-0 left-0 animated' style='height: calc(100% - 66px);'>
         <div class='relative full-xy' ng-if='spec.toggleGoogleDoc'>
             <iframe class='absolute full-xy animated opacity-0' src="{{spec.gdoc}}" on-init="opacity:1:delay-500" class-on-init="slideInDown"> </iframe>
         </div>
@@ -13,44 +13,32 @@
     </div>
 
     <!-- SEARCH DOCS (?) -->
-    <div id="dev-docs" ng-if="spec.toggleDocSearch" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);' ng-controller='AdminDocsController as docs'>
-        <div id="dev-toolbar" style='z-index:10000; bottom: 0px;' class='full-x left-0 absolute bg-slate animated slideInUp' ng-if="spec.toggleDocSearch">
+    <div id="dev-docs" ng-if="spec.toggleDocSearch" class='fixed full-x top-0 left-0 animated' style='height: calc(100% - 66px);' ng-controller='AdminDocsController as docs'>
         <!-- @samir state list -->
-        <div id='components-container' class='fixed top-0 left-0 full-xy' ng-include='root.base_url + "admin/templates/docs/components.html"' ng-if='spec.toggleDocSearch'>
-        </div>
-            <ul class="bg-cobalt-50p flex-center-vertical bg-charcoal full-x overflow-x no-scrollbar">
-                <li style='margin-bottom:27px !important; z-index:10000 !important;' class='full-x ugrid-2 bg-charcoal flex-wrap-center p15xy' style='margin-bottom:-15px;'>
-                    <fieldset class="with-icon">
-                        <input autofocus ng-model='root.docs.searchText' class="input-border light" type="text" placeholder="Search components">
-                        <label></label>
-                        <span class="input-icon">
-                            <svg viewBox="0 0 100 100">
-                                <path stroke="white" d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
-                            </svg>
-                        </span>
-                        <a class="absolute top-0 right-0 flex-center z-index-100" ng-click='root.docs.searchText = "";' style="height: 24px;">
-                            <i class='icon ion-close-circled txt-white'></i>
-                        </a>
-                    </fieldset>
-                    <div ng-if='root.docs.resultItems.length' class='flex-wrap-center'>
-                        {{root.docs.resultItems.length}} results found
-                    </div>
-                </li>
-            </ul>
-            <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
-                &nbsp;
-            </ul>
-            <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
-                &nbsp;
-            </ul>
-            <ul class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
-                &nbsp;
-            </ul>
-        </div>
+        <div id='components-container' class='absolute top-0 left-0 full-x' ng-include='root.base_url + "admin/templates/docs/components.html"' ng-show='root.docs.resultItems.length' style="height: calc(100% - 66px)"></div>
+        <ul class="absolute bottom-0 left-0 flex-center-vertical bg-charcoal full-x p15-grid ugrid-2">
+            <li class='bg-charcoal flex-wrap-center'>
+                <fieldset class="with-icon">
+                    <input autofocus ng-model='root.docs.searchText' class="input-border light" type="text" placeholder="Search components">
+                    <label></label>
+                    <span class="input-icon">
+                        <svg viewBox="0 0 100 100">
+                            <path stroke="white" d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+                        </svg>
+                    </span>
+                    <a class="absolute top-0 right-0 flex-center z-index-100" ng-click='root.docs.searchText = "";' style="height: 24px;">
+                        <i class='icon ion-close-circled txt-white'></i>
+                    </a>
+                </fieldset>
+            </li>
+            <li ng-if='root.docs.resultItems.length' class='flex-wrap-center'>
+                {{root.docs.resultItems.length}} results found
+            </li>
+        </ul>
     </div>
 
     <!-- SPEC -->
-    <div id="dev-spec" class='top-0 left-0 fixed full-x bg-smoke animated slideInDown' ng-class="{'z-index-1000': spec.toggleSpec}" ng-if="spec.toggleSpec" style='height: calc(100% - 132px);'>
+    <div id="dev-spec" class='top-0 left-0 fixed full-x bg-smoke animated slideInDown' ng-class="{'z-index-1000': spec.toggleSpec}" ng-if="spec.toggleSpec" style='height: calc(100% - 66px);'>
         <div class='full-xy overflow-auto' ng-repeat="use_case in spec.use_cases">
             <div class="bg-slate txt-center">
                 <h1 class='bg-cobalt-25p p15xy txt-28 weight-600 height-64 flex-center'><span class="weight-900">{{spec.title}}:&nbsp;</span> {{use_case.title}} </h1>
@@ -144,7 +132,7 @@
     </div>
 
     <!-- MOBILE -->
-    <div ng-if='false' class='top-0 left-0 bg-smoke flex-wrap-center fixed bg-slate flex-wrap-center full-xy animated slideInDown z-index-2000' id='dev-bottom-bar' style='height: calc(100% - 132px);'>
+    <div ng-if='false' class='top-0 left-0 bg-smoke flex-wrap-center fixed bg-slate flex-wrap-center full-xy animated slideInDown z-index-2000' id='dev-bottom-bar' style='height: calc(100% - 66px);'>
         <div class='bg-slate' ng-include="spec.mobile.template" style='width:{{spec.mobile.width}}px !important; height: {{spec.mobile.height}}px !important;' class='animated bounceInDown relative' id='mobile-spec-container' > </div>
     </div>
 

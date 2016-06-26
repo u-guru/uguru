@@ -26,7 +26,20 @@ function SpecContentService($state, $timeout, $localstorage, $window, AdminWorkf
     }
 
     function prioritizeWorkflows(workflows, user_name) {
-
+        for (wkflw in workflows['workflows']) {
+            var flow = workflows['workflows'][wkflw];
+            if (flow.states && flow.states.length) {
+                var flowStateAnalysis = {animated: 0, functional:0, tested:0 };
+                for (state_id in flow.states) {
+                    var state = flow.states[state_id];
+                    flowStateAnalysis.functional += (state.functional && 1) || 0;
+                    flowStateAnalysis.animated += (state.animated && 1) || 0;
+                    flowStateAnalysis.tested += (state.animated && 1) || 0;
+                }
+                flow['stateAnalysis'] = flowStateAnalysis;
+                console.log('successfully analyzed', flow.title);
+            }
+        }
         return workflows
     }
 

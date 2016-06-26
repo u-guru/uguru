@@ -56,7 +56,19 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
         return function(tool) {
             tool.show = !tool.show;
         }
+    }
 
+    function toggleDocSearchFunc(_window) {
+        return function(spec) {
+            spec.toggleDocSearch = !spec.toggleDocSearch;
+            if (spec.toggleDocSearch) {
+                $timeout(function() {
+                    var componentsContainer = document.querySelector('#components-container');
+                    componentsContainer.style.top = (_window.height * -1 + 130) + 'px';
+                    componentsContainer.style.height = (_window.height - 130) + 'px';
+                }, 100)
+            }
+        }
     }
 
     function getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states) {
@@ -70,6 +82,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             specObj.data.toggleSpec = false;
             specObj.data.toggleDocs = false;
             specObj.data.toggleDocSearch = false;
+            specObj.data.toggleDocSearchFunc = toggleDocSearchFunc(real_scope.root.window);
             specObj.data.toggleGoogleDoc = false;
             specObj.data.toggleShortcuts = false;
             specObj.data.toggleAllToolsBar = false;
