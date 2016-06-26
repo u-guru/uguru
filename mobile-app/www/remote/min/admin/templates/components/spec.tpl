@@ -2,10 +2,13 @@
     <!-- ANIM TOOLS -->
     <anim-tools ng-if='spec.animTools.show' ng-class="{'animated slideInDown':spec.animTools.show, 'animated slideOutUp':!spec.animTools.show}" active="spec.animTools.show" ng-model="spec.animTools.stage"> </anim-tools>
 
-    <!-- GOOGLE DOCS -->
-    <div id="dev-gdocs" ng-if="spec.toggleGoogleDoc" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);'>
+    <!-- EXTERNAL -->
+    <div id="dev-docs" ng-if="spec.toggleGoogleDoc || spec.toggleAllToolsBar" class='fixed full-xy top-0 left-0 animated' style='height: calc(100% - 132px);'>
+        <div class='relative full-xy' ng-if='spec.toggleGoogleDoc'>
+            <iframe class='absolute full-xy animated opacity-0' src="{{spec.gdoc}}" on-init="opacity:1:delay-500" class-on-init="slideInDown"> </iframe>
+        </div>
         <div class='relative full-xy'>
-            <iframe class='absolute full-xy animated' src="{{spec.gdoc}}" style='opacity-0' on-init="opacity:1:delay-500" on-init-class="slideInDown"> </iframe>
+            <iframe ng-repeat='tool in spec.tools' class='absolute full-xy top-0 left-0'  src="{{tool.src}}" ng-if='tool.show'> </iframe>
         </div>
     </div>
 
@@ -147,34 +150,53 @@
 
     <!-- DEV TOOLBAR -->
     <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate u-bounceInUp-subtle' ng-if="spec.toggleDev">
-        <ul id='dev-bar-shortcuts' class="bg-cobalt-30p flex-center-vertical p15-grid full-x animated overflow-x no-scrollbar" ng-if='spec.showShortcuts'>
-            <li class='p15-grid text-center weight-500 bg-charcoal uppercase txt-2  flex-wrap-center'>
-                Keyboard shortcuts
-            </li>
-            <li class='p15-grid' ng-repeat='shortcut in spec.shortcuts_list' ng-click='spec.stateTagClicked(state_tag, $index)'>
+        <!-- SHORTCUTS -->
+        <div id='dev-bar-shortcuts' class="flex full-x animated" ng-if='spec.showShortcuts'>
+            <div class="bg-cobalt p15xy flex-center-vertical width-128">
+                <h2 class="txt-18 semibold">Shortcuts</h2>
+            </div>
+            <ul class="flex-center-vertical p15-grid overflow-x no-scrollbar" style="width: calc(100% - 128px);">
+                <li class="flex-center-vertical txt-16 semibold" ng-repeat='shortcut in spec.shortcuts_list' ng-click='spec.stateTagClicked(state_tag, $index)'>
+                    <span class='bg-cobalt flex-center width-36 height-36 radius-2 txt-18'>{{shortcut.key}}</span>
+                    <span class="block m10left">{{shortcut.action}}</span>
+                </li>
+            </ul>
+        </div>
 
-                <span class='txt-1 weight-500'>Press <span class='weight-900 txt-5'>{{shortcut.key}}</span> to {{shortcut.action}}</span>
-            </li>
-        </ul>
+        <!-- TOOLS -->
+        <div class="flex bg-campus-75p full-x" ng-if='spec.toggleAllToolsBar'>
+            <div class="bg-lake p15xy flex-center-vertical width-128">
+                <h2 class="txt-18 semibold">Tools</h2>
+            </div>
+            <ul class='flex-center-vertical p15-grid overflow-x no-scrollbar' style="width: calc(100% - 128px);">
+                <li ng-repeat='tool in spec.tools' ng-click="spec.showThirdPartyToolIframe(tool)">
+                    <button class="bg-lake height-36 txt-18 radius-2 normal block">{{tool.name}}</button>
+                </li>
+            </ul>
+        </div>
 
-        <ul ng-if='spec.showStates' class="bg-cobalt-50p flex-center-vertical p15-grid full-x overflow-x no-scrollbar">
-            <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)' on-hold="spec.settings.updateDefaultState($event, $index, state_tag)">
-                <button ng-class="{'bg-robin':spec.settings.cache.defaultState.index === $index }" class="height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
-            </li>
-        </ul>
+        <div class="flex bg-campus-50p full-x" ng-if='spec.showStates'>
+            <div class="bg-shamrock p15xy flex-center-vertical width-128">
+                <h2 class="txt-18 semibold">States</h2>
+            </div>
+            <ul class="flex-center-vertical p15-grid overflow-x no-scrollbar" style="width: calc(100% - 128px);">
+                <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)' on-hold="spec.settings.updateDefaultState($event, $index, state_tag)">
+                    <button ng-class="{'bg-robin':spec.settings.cache.defaultState.index === $index }" class="height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
+                </li>
+            </ul>
+        </div>
 
         <!-- SETTINGS -->
-        <div id='dev-bar-settings' class="animated flex bg-campus-25p">
-            <!--  ng-if='spec.showSettings' -->
-            <div class="bg-moxie p15xy flex-center-vertical">
+        <div id='dev-bar-settings' class="animated flex bg-campus-25p" ng-if='spec.showSettings'>
+            <div class="bg-moxie p15xy flex-center-vertical width-128">
                 <h2 class="txt-18 semibold">Settings</h2>
             </div>
-            <ul class="flex-center-vertical-wrap p15-grid full-x">
+            <ul class="flex-center-vertical-wrap p15-grid overflow-x no-scrollbar" style="width: calc(100% - 128px)">
                 <li>
                     <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.docs.launch()'>External Docs</button>
                 </li>
                 <li>
-                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.toggles.shortcuts()'>Keyboard Shortcuts</button>
+                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.toggles.shortcuts()'>Shortcuts</button>
                 </li>
                 <li ng-if='false'>
                     <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.toggles.spec()'>Spec</button>
@@ -194,40 +216,35 @@
                 <li>
                     <div class="flex-center-vertical">
                         <checkbox class="checkbox-moxie" value='spec.settings.cache.autoApplyState' on-change="spec.settings.updateProperty"></checkbox>
-                        <div class="p15left txt-20 semibold">Auto Apply State</div>
+                        <div class="p15left txt-18 semibold">Auto Apply State</div>
                     </div>
                 </li>
                 <li>
                     <div class="flex-center-vertical">
                         <checkbox class="checkbox-moxie" value='spec.settings.cache.autoShowMobile' on-change="spec.settings.updateProperty"></checkbox>
-                        <div class="p15left txt-20 semibold">Auto Show Mobile</div>
+                        <div class="p15left txt-18 semibold">Auto Show Mobile</div>
                     </div>
                 </li>
                 <li>
                     <div class="flex-center-vertical">
                         <checkbox class="checkbox-moxie" value='spec.settings.cache.autoShowDevBar' on-change="spec.settings.updateProperty"></checkbox>
-                        <div class="p15left txt-20 semibold">Auto Show Toolbar</div>
+                        <div class="p15left txt-18 semibold">Auto Show Toolbar</div>
                     </div>
                 </li>
                 <li>
                     <div class="flex-center-vertical">
                         <span class="height-36 txt-18 bg-robin radius-2 p10x flex-center semibold" ng-if='spec.settings.cache.defaultState.index'>{{spec.stateTags[spec.settings.cache.defaultState.index].title || '-'}}</span>
-                        <div class="p15left txt-20 semibold">Default State</div>
+                        <div class="p15left txt-18 semibold">Default State</div>
                     </div>
                 </li>
                 <li>
                     <div class="flex-center-vertical">
-                        <input class="radius-2 height-36 p15x txt-center txt-18" ng-change="spec.settings.updateProperty()" ng-model="spec.settings.cache.autoApplyDelay" size="10"/>
-                        <div class="p15left txt-20 semibold">Default Delay</div>
+                        <input class="radius-2 height-36 p15x txt-center txt-16" ng-change="spec.settings.updateProperty()" ng-model="spec.settings.cache.autoApplyDelay" size="5"/>
+                        <div class="p15left txt-18 semibold">Default Delay</div>
                     </div>
                 </li>
-                <li class='p15-grid text-center weight-500 uppercase txt-6 flex-wrap-center bg-cobalt-50p'>
-                    <div>
-                        <span class='p10x'>Clear Cache</span>
-                    </div>
-                    <div>
-                        <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.settings.clear()'>clear</button>
-                    </div>
+                <li>
+                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.settings.clear()'>Clear Cache</button>
                 </li>
             </ul>
         </div>
@@ -247,6 +264,9 @@
                 <a class="flex-center bg bg-moxie radius-2 svg-stroke-6 svg-36-24" ng-click='spec.toggleGoogleDoc = !spec.toggleGoogleDoc;' ng-include="root.base_url + 'shared/templates/components/svg/main/transcript.html'"></a>
             </li>
             <li>
+                <a class="flex-center bg bg-moxie radius-2 svg-stroke-6 svg-36-24" ng-click='spec.toggleAllToolsBar = !spec.toggleAllToolsBar;' ng-include="root.base_url + 'shared/templates/components/svg/main/star.html'"></a>
+            </li>
+            <li>
                 <a class="flex-center bg bg-moxie radius-2 svg-stroke-6 svg-36-24" ng-click='spec.showStates = !spec.showStates' ng-include="root.base_url + 'shared/templates/components/svg/main/timeline.html'"></a>
             </li>
             <li class="flex">
@@ -263,6 +283,7 @@
             </li>
             <li ng-if='spec.mobile.show'>
                 <a ng-class="{'bg-moxie': spec.mobile.height === 667}" class='txt-18 bg bg-slate height-36 semibold radius-2 flex-center p10x' ng-click='spec.mobile.height = 667; spec.mobile.width = 375;spec.mobile.toggle(true)'>iP6</a>
+            </li>
             </li>
             <li ng-if='spec.mobile.show'>
                 <a ng-class="{'bg-moxie': spec.mobile.height === 736}" class='txt-18 bg bg-slate height-36 semibold radius-2 flex-center p10x' ng-click='spec.mobile.height = 736; spec.mobile.width = 414;spec.mobile.toggle(true)'>iP6+</a>
