@@ -9,6 +9,11 @@ angular.module('uguru.admin')
   function($scope, $state, RootService, $timeout, $filter) {
     var docs = this;
 
+    if (!$scope.root||!$scope.root.docs) {
+      $scope.root = {};
+      $scope.root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
+    }
+
     docs.directives = {};
     docs.items = [];
 
