@@ -73,7 +73,7 @@ angular.module('uguru.admin')
             CTAService,$localstorage, $timeou,SpecContentService,$interval) {
     $scope.updateStatus = function(){
       $scope.isSync = false;
-      console.log('CHeck',$scope.isSync);
+      // console.log('CHeck',$scope.isSync);
     };
 
     $scope.openBugList=function(section){
@@ -81,8 +81,8 @@ angular.module('uguru.admin')
       $scope.states = section.states;
       $scope.name = section.name;
       $scope.stateID = section.stateID;
-      $scope.manualBugs = section.manualBugs;
-
+      $scope.currentManualBugs = section.manualBugs;
+      // $scope.currentManualBugs = []
       if ($scope.name === ''){
         $scope.addSection = true;
         $scope.newSection ={
@@ -100,11 +100,10 @@ angular.module('uguru.admin')
       // console.log($scope.bugReport);
       // $scope.addSection = false;
     };
-    $scope.removeBug = function(index){
+    $scope.removeBug = function(index,scopeList){
       console.log(index);
-      $scope.bugs.splice(index,1);
+      scopeList.splice(index,1);
       $scope.saveBug();
-      $scope.editMode();
       $scope.closeBug();
     };
     $scope.removeSection = function(index){
@@ -129,12 +128,20 @@ angular.module('uguru.admin')
         $scope.editMode();
         $scope.closeBug();
       }
+      else if($scope.selectedBug.title.length < 1)
+      {
+        window.alert('Where is the title of bug');
+      }
       else{
-        alert('THIS BUG HAS BEEN ALREADY FILED');
+        window.alert('THIS BUG HAS BEEN ALREADY FILED');
       }
     };
+
+ 
+
     $scope.saveBug = function(){
-      // console.log($scope.bugReport);
+      // console.log($scope.bugReport[0].manualBugs);
+      // $scope.bugReport[0].manualBugs = []
       // console.log('CHECK',angular.toJson($scope.bugReport[0]),4);
       // console.log('update')
      var report = {
@@ -142,14 +149,14 @@ angular.module('uguru.admin')
         // 'lastUpdate': new Date().getTime()
         'lastUpdate': $scope.lastReportUpdate
 
-      }
+      };
 
       FileService.postS3JsonFile(angular.toJson(report), null ,
                                  'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
       function postCallback(firstName, resp) {
          
           ReportService.saveBug(report);
-          // console.log('file successfully saved', resp);          
+          console.log('file successfully saved', resp);          
           // LoadingService.hide();
           // $timeout(function() {
           //   LoadingService.showSuccess('Saved!', 1000);
@@ -159,6 +166,45 @@ angular.module('uguru.admin')
 
     };
 
+    $scope.fileManualBug = function(){
+
+        function checkTitleRepeat(title,bugs){
+          for (var i = 0; i< bugs.length; ++i){
+              if(bugs[i].title === title) {
+                return true;
+              }
+          }
+          return false;
+        }
+        // console.log($scope.selectedBug.title,$scope.currentManualBugs);
+        if($scope.currentManualBugs.length < 1){
+          $scope.currentManualBugs.push(angular.copy($scope.selectedBug));
+
+          $scope.saveBug();
+          // $scope.editMode();
+          $scope.closeBug();
+          $scope.fileManul = false;
+          $scope.isNewBug = false;
+          $scope.isEditMode = false;
+        }
+        else{
+          if (!checkTitleRepeat($scope.selectedBug.title, $scope.currentManualBugs)){
+            $scope.currentManualBugs.push(angular.copy($scope.selectedBug));
+            $scope.saveBug();
+            // $scope.editMode();
+            $scope.closeBug();
+            $scope.fileManul = false;
+            $scope.isNewBug = false;
+            $scope.isEditMode = false;
+          }
+          else{
+            window.alert('THIS BUG HAS BEEN ALREADY FILED');
+          }
+        }
+
+        console.log('current',$scope.currentManualBugs);
+
+    };
     $scope.activePlatforms = function(state){
         $scope.currentStatePlatforms = state.platforms;
         console.log($scope.currentStatePlatforms.length)
@@ -174,6 +220,7 @@ angular.module('uguru.admin')
     $scope.editMode = function(){
       $scope.isEditMode = !$scope.isEditMode;
 
+
     };
     $scope.order = function() {
       $scope.reverse = !$scope.reverse;
@@ -185,10 +232,12 @@ angular.module('uguru.admin')
         element.className = className;
         var target = document.querySelector('#cta-box-selected-bug');
         target.removeAttribute('id');
+        console.log(element.className)
         $scope.isEditMode = false;
         $scope.isNewBug = false;
 
     };
+
     $scope.nextBug = function(){
       console.log($scope.selectedBug.index);
       var index = $scope.selectedBug.index + 1;
@@ -249,6 +298,13 @@ angular.module('uguru.admin')
 
     $scope.initAndLaunchBugCTA = function($event,bug,index,parentIndex){
       var targetElem = $event.target;
+      if(!parentIndex)
+        $scope.fileManul = true;
+      else
+        $scope.fileManul = false;
+      $scope.isNewBug = false;
+      $scope.isEditMode = false;
+
       if (bug){
         $scope.selectedBug = bug;
         $scope.backupBug = angular.copy(bug);
@@ -259,8 +315,10 @@ angular.module('uguru.admin')
       }
       else
       {
+        $scope.fileManul = true;
         $scope.isNewBug = true;
-        $scope.isEditMode = true;
+        $scope.isEditMode = false;
+
         $scope.selectedBug = {
           title: null,
           file_names:null,
@@ -270,9 +328,9 @@ angular.module('uguru.admin')
           element:null,
           priority:null,
           difficulty:null,
-          error_msg:null,
+          error_msg:[],
           impact_file:[],
-          platforms:[],
+          platforms: getDefaultEnvir(),
           tags:[],
         };
         $scope.backupBug = {};
@@ -312,6 +370,26 @@ angular.module('uguru.admin')
       }
       return '';
     };
+
+    $scope.closePlatform = function(){
+      // var targetElem = document.querySelector('#cta-box-selected-bug');
+      var modalElem = document.querySelector('#cta-modal-platforms-list');
+      modalElem.classList.remove('show');
+    };
+
+
+    $scope.openPlatform = function(){
+        // var targetElem = document.querySelector('#cta-box-selected-bug');
+        var modalElem = document.querySelector('#cta-modal-platforms-list');
+        modalElem.classList.add('show');
+
+    }
+
+    $scope.addPlatforms = function(existPlatform){
+       // console.log(existPlatform,getDefaultEnvir()) 
+       $scope.platformList = existPlatform
+       $scope.openPlatform()
+    }
 
     $scope.removeTag = function(index){
       if ($scope.selectedBug.tags && $scope.selectedBug.tags.length) {
@@ -425,7 +503,7 @@ angular.module('uguru.admin')
                         name: platformsName[i],
                         screenSize: null,
                         device: device[k],
-                        isPassed: -1
+                        isPassed: 0
                       });
                   }
               for ( var j = 0; j < screenSize.length; ++j ){
@@ -439,7 +517,7 @@ angular.module('uguru.admin')
                       name: platformsName[i],
                       screenSize: screenSize[j],
                       device: device[k],
-                      isPassed: -1
+                      isPassed: 0
                     });
                   }
               }
@@ -461,7 +539,7 @@ angular.module('uguru.admin')
     function intData(){
 
         $scope.states = [];
-        $scope.manualBugs = [];
+        // $scope.manualBugs = [];
         $scope.help = {};
         $scope.isEditMode = false;
         $scope.isSync = true;
@@ -563,7 +641,7 @@ angular.module('uguru.admin')
 
     $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
-        // console.log('Data is Load',newNames,$scope.lastReportUpdate);
+        console.log('Data is Load',$scope.bugReport);
         intData();
         $scope.indexOfSection = getReportIndexByID(document.URL.split('admin/bugs/')[1]);
         // console.log($scope.indexOfSection)
