@@ -4145,12 +4145,6 @@ a.category-tile {
 				@include flex-center;
 				height: 100%;
 				padding: 15px;
-				&:hover, &:focus {
-					background: rgba($slate, .2);
-				}
-				&:active {
-					background: rgba($slate, .4);
-				}
 				.badge-top {
 					top: -20px;
 				}
@@ -4186,6 +4180,14 @@ a.category-tile {
 					text-align: center;
 				}
 			}
+			a.tile {
+				&:hover, &:focus {
+					background: rgba($slate, .2);
+				}
+				&:active {
+					background: rgba($slate, .4);
+				}
+			}
 		}
 		&.bg-slate {
 			&:after {
@@ -4197,7 +4199,7 @@ a.category-tile {
 						background: mix($slate, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:hover, &:focus {
 						background: rgba(white, .1);
 					}
@@ -4229,7 +4231,7 @@ a.category-tile {
 						background: mix($taupe, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:hover, &:focus {
 						background: rgba(white, .1);
 					}
@@ -4261,7 +4263,7 @@ a.category-tile {
 						background: mix($campus, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: $campus;
 						background: mix($campus, white);
@@ -4292,6 +4294,8 @@ a.category-tile {
 				}
 				.tile {
 					color: lighten($slate, 15%);
+				}
+				a.tile {
 					svg {
 						* {
 							stroke: lighten($slate, 15%);
@@ -4321,6 +4325,35 @@ a.category-tile {
 				}
 			}
 		}
+		&.bg-rocket {
+			&:after {
+				background: mix($rocket, white, 75%);
+			}
+			li {
+				&:not(:last-child) {
+					&:after {
+						background: mix($rocket, white, 75%);
+					}
+				}
+				a.tile {
+					&:active {
+						color: mix($rocket, $slate);
+						background: mix($rocket, white);
+						svg {
+							* {
+								stroke: mix($rocket, $slate);
+								&:not(.line) {
+									fill: rgba(mix($rocket, $slate), .3);
+								}
+							}
+						}
+						h1, h2 {
+							color: mix($rocket, $slate);
+						}
+					}
+				}
+			}
+		}
 		&.bg-shamrock {
 			&:after {
 				background: mix($shamrock, white, 75%);
@@ -4331,7 +4364,7 @@ a.category-tile {
 						background: mix($shamrock, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($shamrock, $slate);
 						background: mix($shamrock, white);
@@ -4360,7 +4393,7 @@ a.category-tile {
 						background: mix($robin, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($robin, $slate);
 						background: mix($robin, white);
@@ -4389,7 +4422,7 @@ a.category-tile {
 						background: mix($lake, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($lake, $slate);
 						background: mix($lake, white);
@@ -4418,7 +4451,7 @@ a.category-tile {
 						background: mix($moxie, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($moxie, $slate);
 						background: mix($moxie, white);
@@ -4447,7 +4480,7 @@ a.category-tile {
 						background: mix($crimson, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($crimson, $slate);
 						background: mix($crimson, white);
@@ -4476,7 +4509,7 @@ a.category-tile {
 						background: mix($auburn, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($auburn, $slate);
 						background: mix($auburn, white);
@@ -4505,7 +4538,7 @@ a.category-tile {
 						background: mix($orange, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($orange, $slate);
 						background: mix($orange, white);
@@ -4534,7 +4567,7 @@ a.category-tile {
 						background: mix($gold, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($gold, $slate);
 						background: mix($gold, white);
@@ -4563,7 +4596,7 @@ a.category-tile {
 						background: mix($moola, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($moola, $slate);
 						background: mix($moola, white);
@@ -4592,7 +4625,7 @@ a.category-tile {
 						background: mix($azure, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($azure, $slate);
 						background: mix($azure, white);
@@ -4621,7 +4654,7 @@ a.category-tile {
 						background: mix($cobalt, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($cobalt, $slate);
 						background: mix($cobalt, white);
@@ -4650,7 +4683,7 @@ a.category-tile {
 						background: mix($eggplant, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($eggplant, $slate);
 						background: mix($eggplant, white);
@@ -4679,7 +4712,7 @@ a.category-tile {
 						background: mix($cerise, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($cerise, $slate);
 						background: mix($cerise, white);
