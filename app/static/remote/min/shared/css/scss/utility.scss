@@ -1,5 +1,4 @@
 @import 'partials/mixin';
-@import 'partials/material';
 
 @font-face {
 	font-family: "Impact Label";
@@ -186,12 +185,14 @@ a[disabled], .noselect {
 input, fieldset {
 	border: 0;
 }
+button, input, textarea {
+	@include appearance;
+	font-family: $font;
+}
 
 .fix-abs {
-	* {
-		&.fixed {
-			position: absolute!important;
-		}
+	.fixed {
+		position: absolute!important;
 	}
 }
 
@@ -967,11 +968,17 @@ input, fieldset {
 .width-10p {
 	width: 10%!important;
 }
+.width-20p {
+	width: 20%!important;
+}
 .width-25p {
 	width: 25%!important;
 }
 .width-33p {
 	width: calc(100% / 3)!important;
+}
+.width-40p {
+	width: 40%!important;
 }
 .width-50p {
 	width: 50%!important;
@@ -1109,6 +1116,10 @@ input, fieldset {
 	flex-direction: column !important;
 }
 // radius
+.radius-0 {
+	border-radius: 0!important;
+}
+
 .radius-2 {
 	border-radius: 2px!important;
 }
