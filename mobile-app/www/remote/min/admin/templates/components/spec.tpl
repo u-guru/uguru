@@ -140,12 +140,12 @@
     <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate u-bounceInUp-subtle' ng-if="spec.toggleDev">
         <!-- SHORTCUTS -->
         <div id='dev-bar-shortcuts' class="flex full-x animated" ng-if='spec.showShortcuts'>
-            <div class="bg-cobalt p15xy flex-center-vertical width-128">
+            <div class="bg-lake p15xy flex-center-vertical width-128">
                 <h2 class="txt-18 semibold">Shortcuts</h2>
             </div>
             <ul class="flex-center-vertical p15-grid overflow-x no-scrollbar" style="width: calc(100% - 128px);">
                 <li class="flex-center-vertical txt-16 semibold" ng-repeat='shortcut in spec.shortcuts_list' ng-click='spec.stateTagClicked(state_tag, $index)'>
-                    <span class='bg-cobalt flex-center width-36 height-36 radius-2 txt-18'>{{shortcut.key}}</span>
+                    <span class='bg-lake flex-center width-36 height-36 radius-2 txt-18'>{{shortcut.key}}</span>
                     <span class="block m10left">{{shortcut.action}}</span>
                 </li>
             </ul>
@@ -153,75 +153,75 @@
 
         <!-- TOOLS -->
         <div class="flex bg-campus-75p full-x" ng-if='spec.toggleAllToolsBar'>
-            <div class="bg-lake p15xy flex-center-vertical width-128">
+            <div class="bg-robin p15xy flex-center-vertical width-128">
                 <h2 class="txt-18 semibold">Tools</h2>
             </div>
             <ul class='flex-center-vertical p15-grid overflow-x no-scrollbar' style="width: calc(100% - 128px);">
                 <li ng-repeat='tool in spec.tools' ng-click="spec.showThirdPartyToolIframe(tool)">
-                    <button class="bg-lake height-36 txt-18 radius-2 normal block">{{tool.name}}</button>
+                    <button class="bg-robin height-36 txt-18 radius-2 normal block">{{tool.name}}</button>
                 </li>
             </ul>
         </div>
 
         <div class="flex bg-campus-50p full-x" ng-if='spec.showStates'>
-            <div class="bg-shamrock p15xy flex-center-vertical width-128">
+            <div class="bg-moxie p15xy flex-center-vertical width-128">
                 <h2 class="txt-18 semibold">States</h2>
             </div>
             <ul class="flex-center-vertical p15-grid overflow-x no-scrollbar" style="width: calc(100% - 128px);">
                 <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)' on-hold="spec.settings.updateDefaultState($event, $index, state_tag)">
-                    <button ng-class="{'bg-robin':spec.settings.cache.defaultState.index === $index }" class="height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
+                    <button ng-class="{'bg-auburn':spec.settings.cache.defaultState.index === $index }" class="bg-moxie height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
                 </li>
             </ul>
         </div>
 
         <!-- SETTINGS -->
         <div id='dev-bar-settings' class="animated flex bg-campus-25p" ng-if='spec.showSettings'>
-            <div class="bg-moxie p15xy flex-center-vertical width-128">
+            <div class="bg-shamrock p15xy flex-center-vertical width-128">
                 <h2 class="txt-18 semibold">Settings</h2>
             </div>
             <ul class="flex-center-vertical-wrap p15-grid overflow-x no-scrollbar" style="width: calc(100% - 128px)">
                 <li>
-                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.docs.launch()'>External Docs</button>
+                    <button class="height-36 txt-18 bg-shamrock radius-2 normal block" ng-click='spec.docs.launch()'>External Docs</button>
                 </li>
                 <li>
-                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.toggles.shortcuts()'>Shortcuts</button>
+                    <button class="height-36 txt-18 bg-shamrock radius-2 normal block" ng-click='spec.toggles.shortcuts()'>Shortcuts</button>
                 </li>
                 <li ng-if='false'>
-                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.toggles.spec()'>Spec</button>
+                    <button class="height-36 txt-18 bg-shamrock radius-2 normal block" ng-click='spec.toggles.spec()'>Spec</button>
                 </li>
                 <li>
-                    <button class='height-36 txt-18 bg-robin radius-2 normal block' ng-click='spec.openGDoc()'>External Spec</button>
+                    <button class='height-36 txt-18 bg-shamrock radius-2 normal block' ng-click='spec.openGDoc()'>External Spec</button>
                 </li>
                 <li>
-                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.open()'>CP Spec</button>
+                    <button class="height-36 txt-18 bg-shamrock radius-2 normal block" ng-click='spec.open()'>CP Spec</button>
                 </li>
                 <li>
                     <form ng-if='spec.initCodepenData' action="https://codepen.io/pen/define" method="POST" target="_blank">
                         <input type="hidden" name="data" value='{{spec.initCodepenData}}'>
-                        <input class="bg bg-moxie txt-18 height-36 semibold radius-2 p15x" type="submit" id='codepen-input' value="+ Uguru CP">
+                        <input class="bg bg-shamrock txt-18 height-36 semibold radius-2 p15x" type="submit" id='codepen-input' value="+ Uguru CP">
                     </form>
                 </li>
                 <li>
                     <div class="flex-center-vertical">
-                        <checkbox class="checkbox-moxie" value='spec.settings.cache.autoApplyState' on-change="spec.settings.updateProperty"></checkbox>
+                        <checkbox value='spec.settings.cache.autoApplyState' on-change="spec.settings.updateProperty"></checkbox>
                         <div class="p15left txt-18 semibold">Auto Apply State</div>
                     </div>
                 </li>
                 <li>
                     <div class="flex-center-vertical">
-                        <checkbox class="checkbox-moxie" value='spec.settings.cache.autoShowMobile' on-change="spec.settings.updateProperty"></checkbox>
+                        <checkbox value='spec.settings.cache.autoShowMobile' on-change="spec.settings.updateProperty"></checkbox>
                         <div class="p15left txt-18 semibold">Auto Show Mobile</div>
                     </div>
                 </li>
                 <li>
                     <div class="flex-center-vertical">
-                        <checkbox class="checkbox-moxie" value='spec.settings.cache.autoShowDevBar' on-change="spec.settings.updateProperty"></checkbox>
+                        <checkbox value='spec.settings.cache.autoShowDevBar' on-change="spec.settings.updateProperty"></checkbox>
                         <div class="p15left txt-18 semibold">Auto Show Toolbar</div>
                     </div>
                 </li>
                 <li>
                     <div class="flex-center-vertical">
-                        <span class="height-36 txt-18 bg-robin radius-2 p10x flex-center semibold" ng-if='spec.settings.cache.defaultState.index'>{{spec.stateTags[spec.settings.cache.defaultState.index].title || '-'}}</span>
+                        <span class="height-36 txt-18 bg-shamrock radius-2 p10x flex-center semibold" ng-if='spec.settings.cache.defaultState.index'>{{spec.stateTags[spec.settings.cache.defaultState.index].title || '-'}}</span>
                         <div class="p15left txt-18 semibold">Default State</div>
                     </div>
                 </li>
@@ -232,7 +232,7 @@
                     </div>
                 </li>
                 <li>
-                    <button class="height-36 txt-18 bg-robin radius-2 normal block" ng-click='spec.settings.clear()'>Clear Cache</button>
+                    <button class="height-36 txt-18 bg-shamrock radius-2 normal block" ng-click='spec.settings.clear()'>Clear Cache</button>
                 </li>
             </ul>
         </div>
