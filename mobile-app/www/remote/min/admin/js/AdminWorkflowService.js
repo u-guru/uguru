@@ -11,7 +11,21 @@ angular
 function AdminWorkflowService($state, $timeout, $localstorage, $window) {
 
 
-    return {getWorkflows: getWorkflows}
+    return {
+      getWorkflows: getWorkflows,
+      getSingleWorkflow: getSingleWorkflow
+    }
+
+    function getSingleWorkflow(arg) {
+      console.log(arg);
+      var workflows = getWorkflows();
+      for (var i = 0; i < workflows.length; i++) {
+        if (workflows[i].identifier.toLowerCase() === arg.toLowerCase()) {
+          return workflows[i];
+        }
+      }
+      return
+    }
 
     function getWorkflows() {
         var workflows = [
@@ -31,22 +45,25 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
               {
                 title: 'Madlib Selection',
                 identifier: 'madlib',
+                parentId: '#splash-madlib',
                 reference: {
                     controller: 'SplashMadlibController',
+                    controllerUrl: 'preapp/js/SplashMadlibController.js',
                     templateUrl: 'preapp/templates/splash.madlib.html',
                     routeUrl: 'dev/splash/madlib',
+                    cssUrl: 'preapp/css/scss/partials/adlib/_main.scss'
                 },
                 states: [
-                    {state: 'onEnter', functional: true, animated: false, tested: false},
-                    {state: 'onTagOneClicked', selector: '[blank-num="1"] a', functional: true, animated: false, tested: false},
-                    {state: 'onTagTwoClicked', selector: '[blank-num="2"] a',functional: true, animated: false, tested: false},
-                    {state: 'onTagDeselected', selector: '[blank-num="1"] .translate-blank-1', functional: true, animated: false, tested: false},
-                    {state: 'onBothBlanksFilled', selector: '[blank-num="2"] .translate-blank-2',  functional: true, animated: false, tested: false},
-                    {state: 'onUniversityChanged', functional: false, animated: false, tested: false},
-                    {state: 'onCategoryChanged', functional: false, animated: false, tested: false},
-                    {state: 'onDeviceButtonSelected', functional: false, animated: false, tested: false},
-                    {state: 'onMapFullScreenTransition', functional: false, animated: false, tested: false},
-                    {state: 'onExit', functional: false, animated: false, tested: false}
+                    {title: 'onEnter', functional: true, animated: false, tested: false},
+                    {title: 'onTagOneClicked', selector: '[blank-num="1"] a', functional: true, animated: false, tested: false},
+                    {title: 'onTagTwoClicked', selector: '[blank-num="2"] a',functional: true, animated: false, tested: false},
+                    {title: 'onTagDeselected', selector: '[blank-num="1"] .translate-blank-1', functional: true, animated: false, tested: false},
+                    {title: 'onBothBlanksFilled', selector: '[blank-num="2"] .translate-blank-2',  functional: true, animated: false, tested: false},
+                    {title: 'onUniversityChanged', functional: false, animated: false, tested: false},
+                    {title: 'onCategoryChanged', functional: false, animated: false, tested: false},
+                    {title: 'onDeviceButtonSelected', functional: false, animated: false, tested: false},
+                    {title: 'onMapFullScreenTransition', functional: false, animated: false, tested: false},
+                    {title: 'onExit', functional: false, animated: false, tested: false}
                 ]
               },
               {
