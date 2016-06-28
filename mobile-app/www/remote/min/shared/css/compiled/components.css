@@ -5456,10 +5456,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
         justify-content: center;
         height: 100%;
         padding: 15px; }
-        .tile-group ul li .tile:hover, .tile-group ul li .tile:focus {
-          background: rgba(64, 72, 75, 0.2); }
-        .tile-group ul li .tile:active {
-          background: rgba(64, 72, 75, 0.4); }
         .tile-group ul li .tile .badge-top {
           top: -20px; }
         .tile-group ul li .tile .badge-bottom {
@@ -5492,48 +5488,52 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
           font-size: 16px;
           font-weight: 600;
           text-align: center; }
+      .tile-group ul li a.tile:hover, .tile-group ul li a.tile:focus {
+        background: rgba(64, 72, 75, 0.2); }
+      .tile-group ul li a.tile:active {
+        background: rgba(64, 72, 75, 0.4); }
     .tile-group ul.bg-slate:after {
       background: #707678; }
     .tile-group ul.bg-slate li:not(:last-child):after {
       background: #707678; }
-    .tile-group ul.bg-slate li .tile:hover, .tile-group ul.bg-slate li .tile:focus {
+    .tile-group ul.bg-slate li a.tile:hover, .tile-group ul.bg-slate li a.tile:focus {
       background: rgba(255, 255, 255, 0.1); }
-    .tile-group ul.bg-slate li .tile:active {
+    .tile-group ul.bg-slate li a.tile:active {
       color: #40484B;
       background: #a0a4a5; }
-      .tile-group ul.bg-slate li .tile:active svg * {
+      .tile-group ul.bg-slate li a.tile:active svg * {
         stroke: #40484B; }
-        .tile-group ul.bg-slate li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-slate li a.tile:active svg *:not(.line) {
           fill: rgba(64, 72, 75, 0.3); }
-      .tile-group ul.bg-slate li .tile:active h1, .tile-group ul.bg-slate li .tile:active h2 {
+      .tile-group ul.bg-slate li a.tile:active h1, .tile-group ul.bg-slate li a.tile:active h2 {
         color: #40484B; }
     .tile-group ul.bg-taupe:after {
       background: #989898; }
     .tile-group ul.bg-taupe li:not(:last-child):after {
       background: #989898; }
-    .tile-group ul.bg-taupe li .tile:hover, .tile-group ul.bg-taupe li .tile:focus {
+    .tile-group ul.bg-taupe li a.tile:hover, .tile-group ul.bg-taupe li a.tile:focus {
       background: rgba(255, 255, 255, 0.1); }
-    .tile-group ul.bg-taupe li .tile:active {
+    .tile-group ul.bg-taupe li a.tile:active {
       color: #757575;
       background: #bababa; }
-      .tile-group ul.bg-taupe li .tile:active svg * {
+      .tile-group ul.bg-taupe li a.tile:active svg * {
         stroke: #757575; }
-        .tile-group ul.bg-taupe li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-taupe li a.tile:active svg *:not(.line) {
           fill: rgba(117, 117, 117, 0.3); }
-      .tile-group ul.bg-taupe li .tile:active h1, .tile-group ul.bg-taupe li .tile:active h2 {
+      .tile-group ul.bg-taupe li a.tile:active h1, .tile-group ul.bg-taupe li a.tile:active h2 {
         color: #757575; }
     .tile-group ul.bg-campus:after {
       background: #a7b6ba; }
     .tile-group ul.bg-campus li:not(:last-child):after {
       background: #a7b6ba; }
-    .tile-group ul.bg-campus li .tile:active {
+    .tile-group ul.bg-campus li a.tile:active {
       color: #8A9EA3;
       background: #c5cfd1; }
-      .tile-group ul.bg-campus li .tile:active svg * {
+      .tile-group ul.bg-campus li a.tile:active svg * {
         stroke: #657377; }
-        .tile-group ul.bg-campus li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-campus li a.tile:active svg *:not(.line) {
           fill: rgba(101, 115, 119, 0.3); }
-      .tile-group ul.bg-campus li .tile:active h1, .tile-group ul.bg-campus li .tile:active h2 {
+      .tile-group ul.bg-campus li a.tile:active h1, .tile-group ul.bg-campus li a.tile:active h2 {
         color: #657377; }
     .tile-group ul.bg-smoke:after, .tile-group ul.bg-white:after {
       background: #c5c7c8; }
@@ -5541,189 +5541,202 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
       background: #c5c7c8; }
     .tile-group ul.bg-smoke li .tile, .tile-group ul.bg-white li .tile {
       color: #637074; }
-      .tile-group ul.bg-smoke li .tile svg *, .tile-group ul.bg-white li .tile svg * {
-        stroke: #637074; }
-        .tile-group ul.bg-smoke li .tile svg *:not(.line), .tile-group ul.bg-white li .tile svg *:not(.line) {
-          fill: rgba(99, 112, 116, 0.3); }
-      .tile-group ul.bg-smoke li .tile h1, .tile-group ul.bg-smoke li .tile h2, .tile-group ul.bg-white li .tile h1, .tile-group ul.bg-white li .tile h2 {
-        color: #637074; }
-      .tile-group ul.bg-smoke li .tile:active, .tile-group ul.bg-white li .tile:active {
-        color: white;
-        background: #707678; }
-        .tile-group ul.bg-smoke li .tile:active svg *, .tile-group ul.bg-white li .tile:active svg * {
-          stroke: white; }
-          .tile-group ul.bg-smoke li .tile:active svg *:not(.line), .tile-group ul.bg-white li .tile:active svg *:not(.line) {
-            fill: rgba(255, 255, 255, 0.3); }
-        .tile-group ul.bg-smoke li .tile:active h1, .tile-group ul.bg-smoke li .tile:active h2, .tile-group ul.bg-white li .tile:active h1, .tile-group ul.bg-white li .tile:active h2 {
-          color: white; }
+    .tile-group ul.bg-smoke li a.tile svg *, .tile-group ul.bg-white li a.tile svg * {
+      stroke: #637074; }
+      .tile-group ul.bg-smoke li a.tile svg *:not(.line), .tile-group ul.bg-white li a.tile svg *:not(.line) {
+        fill: rgba(99, 112, 116, 0.3); }
+    .tile-group ul.bg-smoke li a.tile h1, .tile-group ul.bg-smoke li a.tile h2, .tile-group ul.bg-white li a.tile h1, .tile-group ul.bg-white li a.tile h2 {
+      color: #637074; }
+    .tile-group ul.bg-smoke li a.tile:active, .tile-group ul.bg-white li a.tile:active {
+      color: white;
+      background: #707678; }
+      .tile-group ul.bg-smoke li a.tile:active svg *, .tile-group ul.bg-white li a.tile:active svg * {
+        stroke: white; }
+        .tile-group ul.bg-smoke li a.tile:active svg *:not(.line), .tile-group ul.bg-white li a.tile:active svg *:not(.line) {
+          fill: rgba(255, 255, 255, 0.3); }
+      .tile-group ul.bg-smoke li a.tile:active h1, .tile-group ul.bg-smoke li a.tile:active h2, .tile-group ul.bg-white li a.tile:active h1, .tile-group ul.bg-white li a.tile:active h2 {
+        color: white; }
+    .tile-group ul.bg-rocket:after {
+      background: #8f898f; }
+    .tile-group ul.bg-rocket li:not(:last-child):after {
+      background: #8f898f; }
+    .tile-group ul.bg-rocket li a.tile:active {
+      color: #55555a;
+      background: #b4b1b4; }
+      .tile-group ul.bg-rocket li a.tile:active svg * {
+        stroke: #55555a; }
+        .tile-group ul.bg-rocket li a.tile:active svg *:not(.line) {
+          fill: rgba(85, 85, 90, 0.3); }
+      .tile-group ul.bg-rocket li a.tile:active h1, .tile-group ul.bg-rocket li a.tile:active h2 {
+        color: #55555a; }
     .tile-group ul.bg-shamrock:after {
       background: #8fc6bc; }
     .tile-group ul.bg-shamrock li:not(:last-child):after {
       background: #8fc6bc; }
-    .tile-group ul.bg-shamrock li .tile:active {
+    .tile-group ul.bg-shamrock li a.tile:active {
       color: #557e78;
       background: #b4d9d2; }
-      .tile-group ul.bg-shamrock li .tile:active svg * {
+      .tile-group ul.bg-shamrock li a.tile:active svg * {
         stroke: #557e78; }
-        .tile-group ul.bg-shamrock li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-shamrock li a.tile:active svg *:not(.line) {
           fill: rgba(85, 126, 120, 0.3); }
-      .tile-group ul.bg-shamrock li .tile:active h1, .tile-group ul.bg-shamrock li .tile:active h2 {
+      .tile-group ul.bg-shamrock li a.tile:active h1, .tile-group ul.bg-shamrock li a.tile:active h2 {
         color: #557e78; }
     .tile-group ul.bg-robin:after {
       background: #60c6ca; }
     .tile-group ul.bg-robin li:not(:last-child):after {
       background: #60c6ca; }
-    .tile-group ul.bg-robin li .tile:active {
+    .tile-group ul.bg-robin li a.tile:active {
       color: #367e82;
       background: #95d9dc; }
-      .tile-group ul.bg-robin li .tile:active svg * {
+      .tile-group ul.bg-robin li a.tile:active svg * {
         stroke: #367e82; }
-        .tile-group ul.bg-robin li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-robin li a.tile:active svg *:not(.line) {
           fill: rgba(54, 126, 130, 0.3); }
-      .tile-group ul.bg-robin li .tile:active h1, .tile-group ul.bg-robin li .tile:active h2 {
+      .tile-group ul.bg-robin li a.tile:active h1, .tile-group ul.bg-robin li a.tile:active h2 {
         color: #367e82; }
     .tile-group ul.bg-lake:after {
       background: #7cbce6; }
     .tile-group ul.bg-lake li:not(:last-child):after {
       background: #7cbce6; }
-    .tile-group ul.bg-lake li .tile:active {
+    .tile-group ul.bg-lake li a.tile:active {
       color: #487794;
       background: #a8d2ee; }
-      .tile-group ul.bg-lake li .tile:active svg * {
+      .tile-group ul.bg-lake li a.tile:active svg * {
         stroke: #487794; }
-        .tile-group ul.bg-lake li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-lake li a.tile:active svg *:not(.line) {
           fill: rgba(72, 119, 148, 0.3); }
-      .tile-group ul.bg-lake li .tile:active h1, .tile-group ul.bg-lake li .tile:active h2 {
+      .tile-group ul.bg-lake li a.tile:active h1, .tile-group ul.bg-lake li a.tile:active h2 {
         color: #487794; }
     .tile-group ul.bg-moxie:after {
       background: #72d8b6; }
     .tile-group ul.bg-moxie li:not(:last-child):after {
       background: #72d8b6; }
-    .tile-group ul.bg-moxie li .tile:active {
+    .tile-group ul.bg-moxie li a.tile:active {
       color: #428a74;
       background: #a1e5ce; }
-      .tile-group ul.bg-moxie li .tile:active svg * {
+      .tile-group ul.bg-moxie li a.tile:active svg * {
         stroke: #428a74; }
-        .tile-group ul.bg-moxie li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-moxie li a.tile:active svg *:not(.line) {
           fill: rgba(66, 138, 116, 0.3); }
-      .tile-group ul.bg-moxie li .tile:active h1, .tile-group ul.bg-moxie li .tile:active h2 {
+      .tile-group ul.bg-moxie li a.tile:active h1, .tile-group ul.bg-moxie li a.tile:active h2 {
         color: #428a74; }
     .tile-group ul.bg-crimson:after {
       background: #de5b61; }
     .tile-group ul.bg-crimson li:not(:last-child):after {
       background: #de5b61; }
-    .tile-group ul.bg-crimson li .tile:active {
+    .tile-group ul.bg-crimson li a.tile:active {
       color: #8a363c;
       background: #e99296; }
-      .tile-group ul.bg-crimson li .tile:active svg * {
+      .tile-group ul.bg-crimson li a.tile:active svg * {
         stroke: #8a363c; }
-        .tile-group ul.bg-crimson li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-crimson li a.tile:active svg *:not(.line) {
           fill: rgba(138, 54, 60, 0.3); }
-      .tile-group ul.bg-crimson li .tile:active h1, .tile-group ul.bg-crimson li .tile:active h2 {
+      .tile-group ul.bg-crimson li a.tile:active h1, .tile-group ul.bg-crimson li a.tile:active h2 {
         color: #8a363c; }
     .tile-group ul.bg-auburn:after, .tile-group ul.bg-delivery:after {
       background: #f47b7f; }
     .tile-group ul.bg-auburn li:not(:last-child):after, .tile-group ul.bg-delivery li:not(:last-child):after {
       background: #f47b7f; }
-    .tile-group ul.bg-auburn li .tile:active, .tile-group ul.bg-delivery li .tile:active {
+    .tile-group ul.bg-auburn li a.tile:active, .tile-group ul.bg-delivery li a.tile:active {
       color: #984c50;
       background: #f8a7aa; }
-      .tile-group ul.bg-auburn li .tile:active svg *, .tile-group ul.bg-delivery li .tile:active svg * {
+      .tile-group ul.bg-auburn li a.tile:active svg *, .tile-group ul.bg-delivery li a.tile:active svg * {
         stroke: #984c50; }
-        .tile-group ul.bg-auburn li .tile:active svg *:not(.line), .tile-group ul.bg-delivery li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-auburn li a.tile:active svg *:not(.line), .tile-group ul.bg-delivery li a.tile:active svg *:not(.line) {
           fill: rgba(152, 76, 80, 0.3); }
-      .tile-group ul.bg-auburn li .tile:active h1, .tile-group ul.bg-auburn li .tile:active h2, .tile-group ul.bg-delivery li .tile:active h1, .tile-group ul.bg-delivery li .tile:active h2 {
+      .tile-group ul.bg-auburn li a.tile:active h1, .tile-group ul.bg-auburn li a.tile:active h2, .tile-group ul.bg-delivery li a.tile:active h1, .tile-group ul.bg-delivery li a.tile:active h2 {
         color: #984c50; }
     .tile-group ul.bg-orange:after, .tile-group ul.bg-freelancing:after {
       background: #ec986d; }
     .tile-group ul.bg-orange li:not(:last-child):after, .tile-group ul.bg-freelancing li:not(:last-child):after {
       background: #ec986d; }
-    .tile-group ul.bg-orange li .tile:active, .tile-group ul.bg-freelancing li .tile:active {
+    .tile-group ul.bg-orange li a.tile:active, .tile-group ul.bg-freelancing li a.tile:active {
       color: #935f44;
       background: #f2ba9e; }
-      .tile-group ul.bg-orange li .tile:active svg *, .tile-group ul.bg-freelancing li .tile:active svg * {
+      .tile-group ul.bg-orange li a.tile:active svg *, .tile-group ul.bg-freelancing li a.tile:active svg * {
         stroke: #935f44; }
-        .tile-group ul.bg-orange li .tile:active svg *:not(.line), .tile-group ul.bg-freelancing li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-orange li a.tile:active svg *:not(.line), .tile-group ul.bg-freelancing li a.tile:active svg *:not(.line) {
           fill: rgba(147, 95, 68, 0.3); }
-      .tile-group ul.bg-orange li .tile:active h1, .tile-group ul.bg-orange li .tile:active h2, .tile-group ul.bg-freelancing li .tile:active h1, .tile-group ul.bg-freelancing li .tile:active h2 {
+      .tile-group ul.bg-orange li a.tile:active h1, .tile-group ul.bg-orange li a.tile:active h2, .tile-group ul.bg-freelancing li a.tile:active h1, .tile-group ul.bg-freelancing li a.tile:active h2 {
         color: #935f44; }
     .tile-group ul.bg-gold:after, .tile-group ul.bg-baking:after {
       background: #f8d47a; }
     .tile-group ul.bg-gold li:not(:last-child):after, .tile-group ul.bg-baking li:not(:last-child):after {
       background: #f8d47a; }
-    .tile-group ul.bg-gold li .tile:active, .tile-group ul.bg-baking li .tile:active {
+    .tile-group ul.bg-gold li a.tile:active, .tile-group ul.bg-baking li a.tile:active {
       color: #9b874d;
       background: #fbe3a7; }
-      .tile-group ul.bg-gold li .tile:active svg *, .tile-group ul.bg-baking li .tile:active svg * {
+      .tile-group ul.bg-gold li a.tile:active svg *, .tile-group ul.bg-baking li a.tile:active svg * {
         stroke: #9b874d; }
-        .tile-group ul.bg-gold li .tile:active svg *:not(.line), .tile-group ul.bg-baking li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-gold li a.tile:active svg *:not(.line), .tile-group ul.bg-baking li a.tile:active svg *:not(.line) {
           fill: rgba(155, 135, 77, 0.3); }
-      .tile-group ul.bg-gold li .tile:active h1, .tile-group ul.bg-gold li .tile:active h2, .tile-group ul.bg-baking li .tile:active h1, .tile-group ul.bg-baking li .tile:active h2 {
+      .tile-group ul.bg-gold li a.tile:active h1, .tile-group ul.bg-gold li a.tile:active h2, .tile-group ul.bg-baking li a.tile:active h1, .tile-group ul.bg-baking li a.tile:active h2 {
         color: #9b874d; }
     .tile-group ul.bg-moola:after, .tile-group ul.bg-photography:after {
       background: #a1c88c; }
     .tile-group ul.bg-moola li:not(:last-child):after, .tile-group ul.bg-photography li:not(:last-child):after {
       background: #a1c88c; }
-    .tile-group ul.bg-moola li .tile:active, .tile-group ul.bg-photography li .tile:active {
+    .tile-group ul.bg-moola li a.tile:active, .tile-group ul.bg-photography li a.tile:active {
       color: #617f59;
       background: #c0dab3; }
-      .tile-group ul.bg-moola li .tile:active svg *, .tile-group ul.bg-photography li .tile:active svg * {
+      .tile-group ul.bg-moola li a.tile:active svg *, .tile-group ul.bg-photography li a.tile:active svg * {
         stroke: #617f59; }
-        .tile-group ul.bg-moola li .tile:active svg *:not(.line), .tile-group ul.bg-photography li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-moola li a.tile:active svg *:not(.line), .tile-group ul.bg-photography li a.tile:active svg *:not(.line) {
           fill: rgba(97, 127, 89, 0.3); }
-      .tile-group ul.bg-moola li .tile:active h1, .tile-group ul.bg-moola li .tile:active h2, .tile-group ul.bg-photography li .tile:active h1, .tile-group ul.bg-photography li .tile:active h2 {
+      .tile-group ul.bg-moola li a.tile:active h1, .tile-group ul.bg-moola li a.tile:active h2, .tile-group ul.bg-photography li a.tile:active h1, .tile-group ul.bg-photography li a.tile:active h2 {
         color: #617f59; }
     .tile-group ul.bg-azure:after, .tile-group ul.bg-tech:after {
       background: #80bbc9; }
     .tile-group ul.bg-azure li:not(:last-child):after, .tile-group ul.bg-tech li:not(:last-child):after {
       background: #80bbc9; }
-    .tile-group ul.bg-azure li .tile:active, .tile-group ul.bg-tech li .tile:active {
+    .tile-group ul.bg-azure li a.tile:active, .tile-group ul.bg-tech li a.tile:active {
       color: #4b7681;
       background: #aad2db; }
-      .tile-group ul.bg-azure li .tile:active svg *, .tile-group ul.bg-tech li .tile:active svg * {
+      .tile-group ul.bg-azure li a.tile:active svg *, .tile-group ul.bg-tech li a.tile:active svg * {
         stroke: #4b7681; }
-        .tile-group ul.bg-azure li .tile:active svg *:not(.line), .tile-group ul.bg-tech li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-azure li a.tile:active svg *:not(.line), .tile-group ul.bg-tech li a.tile:active svg *:not(.line) {
           fill: rgba(75, 118, 129, 0.3); }
-      .tile-group ul.bg-azure li .tile:active h1, .tile-group ul.bg-azure li .tile:active h2, .tile-group ul.bg-tech li .tile:active h1, .tile-group ul.bg-tech li .tile:active h2 {
+      .tile-group ul.bg-azure li a.tile:active h1, .tile-group ul.bg-azure li a.tile:active h2, .tile-group ul.bg-tech li a.tile:active h1, .tile-group ul.bg-tech li a.tile:active h2 {
         color: #4b7681; }
     .tile-group ul.bg-cobalt:after, .tile-group ul.bg-household:after {
       background: #9a95ea; }
     .tile-group ul.bg-cobalt li:not(:last-child):after, .tile-group ul.bg-household li:not(:last-child):after {
       background: #9a95ea; }
-    .tile-group ul.bg-cobalt li .tile:active, .tile-group ul.bg-household li .tile:active {
+    .tile-group ul.bg-cobalt li a.tile:active, .tile-group ul.bg-household li a.tile:active {
       color: #5c5d97;
       background: #bcb9f1; }
-      .tile-group ul.bg-cobalt li .tile:active svg *, .tile-group ul.bg-household li .tile:active svg * {
+      .tile-group ul.bg-cobalt li a.tile:active svg *, .tile-group ul.bg-household li a.tile:active svg * {
         stroke: #5c5d97; }
-        .tile-group ul.bg-cobalt li .tile:active svg *:not(.line), .tile-group ul.bg-household li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-cobalt li a.tile:active svg *:not(.line), .tile-group ul.bg-household li a.tile:active svg *:not(.line) {
           fill: rgba(92, 93, 151, 0.3); }
-      .tile-group ul.bg-cobalt li .tile:active h1, .tile-group ul.bg-cobalt li .tile:active h2, .tile-group ul.bg-household li .tile:active h1, .tile-group ul.bg-household li .tile:active h2 {
+      .tile-group ul.bg-cobalt li a.tile:active h1, .tile-group ul.bg-cobalt li a.tile:active h2, .tile-group ul.bg-household li a.tile:active h1, .tile-group ul.bg-household li a.tile:active h2 {
         color: #5c5d97; }
     .tile-group ul.bg-eggplant:after, .tile-group ul.bg-athletic:after {
       background: #b384d4; }
     .tile-group ul.bg-eggplant li:not(:last-child):after, .tile-group ul.bg-athletic li:not(:last-child):after {
       background: #b384d4; }
-    .tile-group ul.bg-eggplant li .tile:active, .tile-group ul.bg-athletic li .tile:active {
+    .tile-group ul.bg-eggplant li a.tile:active, .tile-group ul.bg-athletic li a.tile:active {
       color: #6d5288;
       background: #cdade2; }
-      .tile-group ul.bg-eggplant li .tile:active svg *, .tile-group ul.bg-athletic li .tile:active svg * {
+      .tile-group ul.bg-eggplant li a.tile:active svg *, .tile-group ul.bg-athletic li a.tile:active svg * {
         stroke: #6d5288; }
-        .tile-group ul.bg-eggplant li .tile:active svg *:not(.line), .tile-group ul.bg-athletic li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-eggplant li a.tile:active svg *:not(.line), .tile-group ul.bg-athletic li a.tile:active svg *:not(.line) {
           fill: rgba(109, 82, 136, 0.3); }
-      .tile-group ul.bg-eggplant li .tile:active h1, .tile-group ul.bg-eggplant li .tile:active h2, .tile-group ul.bg-athletic li .tile:active h1, .tile-group ul.bg-athletic li .tile:active h2 {
+      .tile-group ul.bg-eggplant li a.tile:active h1, .tile-group ul.bg-eggplant li a.tile:active h2, .tile-group ul.bg-athletic li a.tile:active h1, .tile-group ul.bg-athletic li a.tile:active h2 {
         color: #6d5288; }
     .tile-group ul.bg-cerise:after, .tile-group ul.bg-academic:after {
       background: #ec6ab4; }
     .tile-group ul.bg-cerise li:not(:last-child):after, .tile-group ul.bg-academic li:not(:last-child):after {
       background: #ec6ab4; }
-    .tile-group ul.bg-cerise li .tile:active, .tile-group ul.bg-academic li .tile:active {
+    .tile-group ul.bg-cerise li a.tile:active, .tile-group ul.bg-academic li a.tile:active {
       color: #934073;
       background: #f39ccd; }
-      .tile-group ul.bg-cerise li .tile:active svg *, .tile-group ul.bg-academic li .tile:active svg * {
+      .tile-group ul.bg-cerise li a.tile:active svg *, .tile-group ul.bg-academic li a.tile:active svg * {
         stroke: #934073; }
-        .tile-group ul.bg-cerise li .tile:active svg *:not(.line), .tile-group ul.bg-academic li .tile:active svg *:not(.line) {
+        .tile-group ul.bg-cerise li a.tile:active svg *:not(.line), .tile-group ul.bg-academic li a.tile:active svg *:not(.line) {
           fill: rgba(147, 64, 115, 0.3); }
-      .tile-group ul.bg-cerise li .tile:active h1, .tile-group ul.bg-cerise li .tile:active h2, .tile-group ul.bg-academic li .tile:active h1, .tile-group ul.bg-academic li .tile:active h2 {
+      .tile-group ul.bg-cerise li a.tile:active h1, .tile-group ul.bg-cerise li a.tile:active h2, .tile-group ul.bg-academic li a.tile:active h1, .tile-group ul.bg-academic li a.tile:active h2 {
         color: #934073; }
   .tile-group.links ul {
     overflow: visible;
