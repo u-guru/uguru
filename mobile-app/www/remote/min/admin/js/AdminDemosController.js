@@ -49,15 +49,15 @@ angular.module('uguru.admin')
       }
     }
 
-    $timeout(function() {
-      var svgParent = document.querySelector('#demos-view');
-      svgParent.addEventListener( 'webkitAnimationStart', animStartCallback)
-      svgParent.addEventListener( 'webkitAnimationEnd', animEndCallback)
-    })
+    // $timeout(function() {
+    //   var svgParent = document.querySelector('#demos-view');
+    //   svgParent.addEventListener( 'webkitAnimationStart', animStartCallback)
+    //   svgParent.addEventListener( 'webkitAnimationEnd', animEndCallback)
+    // })
 
-    $timeout(function() {
-      SpecService.initSpec(demos, $scope, '#demos-view', 'demos', 'admin/templates/demos.html', 'admin/js/AdminDemosController.js', {}, '');
-    })
+    // $timeout(function() {
+    //   SpecService.initSpec(demos, $scope, '#demos-view', 'demos', 'admin/templates/demos.html', 'admin/js/AdminDemosController.js', {}, '');
+    // })
 
     demos.removeAnimation = function($event, animation_str) {
       // var p = $interval(function() {
