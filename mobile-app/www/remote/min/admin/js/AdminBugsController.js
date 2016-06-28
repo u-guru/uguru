@@ -298,10 +298,13 @@ angular.module('uguru.admin')
 
     $scope.initAndLaunchBugCTA = function($event,bug,index,parentIndex){
       var targetElem = $event.target;
-      if(!parentIndex)
+      // console.log("CHECK", !parentIndex)
+      if(parentIndex < 0){
         $scope.fileManul = true;
-      else
+      }
+      else{
         $scope.fileManul = false;
+      }
       $scope.isNewBug = false;
       $scope.isEditMode = false;
 
@@ -312,6 +315,7 @@ angular.module('uguru.admin')
           parentIndex : parentIndex,
           index: index
         };
+        console.log( $scope.current)
       }
       else
       {

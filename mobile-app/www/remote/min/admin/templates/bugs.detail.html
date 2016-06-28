@@ -248,20 +248,20 @@
 		</div>
 		<!--This is Manuel Bug Tool Bar -->
 		<div class="flex-space-between">
-			{{isSync}} {{isEditMode}} {{isNewBug}} 
-			<ul class="p15-grid flex" ng-if='fileManul'>
+			<!-- {{isSync}} {{isEditMode}} {{isNewBug}}  -->
+			<ul class="p15-grid flex">
 				<li>		
-					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='editMode()' ng-if='!isEditMode && !isNewBug'>Edit Bug</button>	
+					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='editMode()' ng-if='fileManul && !isEditMode && !isNewBug'>Edit Bug</button>	
 				</li>
 				<li>
-					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='saveBug();editMode();' ng-if='isEditMode && !isNewBug'>Update Bug</button>
+					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='saveBug();editMode();' ng-if='fileManul &&  isEditMode && !isNewBug'>Update Bug</button>
 				</li>
 				<li>
-					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='fileManualBug()' ng-if='isNewBug'> Save Bug</button>
+					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='fileManualBug()' ng-if='fileManul && isNewBug'> Save Bug</button>
 				</li>
 
 				<li>
-					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='removeBug(current.index,currentManualBugs)' ng-if='!isEditMode && !isNewBug'> Remove Bug</button>
+					<button class="bg-moxie radius-2 height-36 txt-18" ng-click='removeBug(current.index,currentManualBugs)' ng-if='fileManul && !isEditMode && !isNewBug'> Remove Bug</button>
 				</li>
 
 				<li>

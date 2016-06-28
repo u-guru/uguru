@@ -101,9 +101,9 @@
 						</ul>
 
 						<ul >
-							<li ng-repeat='bug in currentManualBugs' ng-show='isExpend'>
+							<li ng-repeat='bug in currentManualBugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list'  ng-show='isExpend'>
 								<span class="caps">[ {{stepBug.speed}} ] </span>
-								<a ng-click='initAndLaunchBugCTA($event, bug ,$index, $parent.$index)'>{{bug.title}}</a>
+								<a ng-click='initAndLaunchBugCTA($event, bug ,$index, -1)'>{{bug.title}}</a>
 							</li>
 
 							<li>

@@ -117,19 +117,47 @@ angular.module('uguru.admin')
         for(var i = 0; i < $scope.bugReport.length ; ++i)
         {
           if ($scope.bugReport[i].stateID === stateID){
-            $scope.statePlatforms = $scope.bugReport[i][key];
-            var options = [];
-            for (var j = 0; j <  $scope.statePlatforms.length; ++j ){
-              options.push( $scope.statePlatforms[j].title);
+            // $scope.statePlatforms = $scope.bugReport[i][key];
+            $scope.autoReport =  $scope.bugReport[i][key];
+            if(key === 'manualState'){
+              $scope.manualFound = $scope.bugReport[i]['manualBugs'];
+              // console.log('CHECK RESULT',$scope.manualFound);
             }
-            $scope.availableState = {
-              'selectedIndex': 0,
-              'options': options
-            };
+
+            // var options = [];
+
+            // for (var j = 0; j <  $scope.statePlatforms.length; ++j ){
+            //   options.push( $scope.statePlatforms[j].title);
+            // }
+            // for (var j = 0; j <  $scope.manualFound.length; ++j ){
+            //   options.push( $scope.manualFound[j].title);
+            // }
+            $scope.statePlatforms = $scope.autoReport;
+            setOptions($scope.statePlatforms)
+            console.log($scope.statePlatforms,$scope.availableState)
+            // $scope.availableState = {
+            //   'selectedIndex': 0,
+            //   'options': options
+            // };
             return;
           }
         }
     };
+    $scope.switchSates = function(obj){
+      $scope.statePlatforms = obj;
+      setOptions($scope.statePlatforms);
+    }
+
+    function setOptions(object){
+      var options = [];
+      for (var j = 0; j <  object.length; ++j ){
+        options.push( object[j].title);
+      }
+      $scope.availableState = {
+        'selectedIndex': 0,
+        'options': options
+      };
+    }
 
     $scope.availableOptions = {
         'selectedIndex': 0,
@@ -157,7 +185,17 @@ angular.module('uguru.admin')
           {
             totalPass += countFailt($scope.bugReport[i][key][j]);
           }
-          var digit = totalPass/($scope.bugReport[i][key].length * 25)* 100;
+          if (key ==='manualState'){
+            for (var k = 0; k < $scope.bugReport[i]['manualBugs'].length; ++k)
+            {
+              totalPass += countFailt($scope.bugReport[i]['manualBugs'][k]);
+            }
+            var digit = totalPass/($scope.bugReport[i][key].length * 25 + 
+              $scope.bugReport[i]['manualBugs'].length*25)* 100;
+          }
+          else{
+            var digit = totalPass/($scope.bugReport[i][key].length * 25)* 100;
+          };
           return parseFloat(digit.toFixed(2));
         }
       }
