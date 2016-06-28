@@ -11,6 +11,14 @@
         <span>passed: 1;</span>
     </div> -->
     <ul ng-if='statePlatforms'>
+        <div class='bg-slate-50p'>
+            <a>Auto Bug Status</a>
+        </div>
+        
+        <div class='bg-slate-50p'>
+            <a>Manual Bugs Status</a>
+        </div>
+
         <dropdown class="height-32 full-x " ng-model="availableState" selected-index="0"> </dropdown>
         <div ng-model='statePlatforms[availableState.selectedIndex]'>
             <!-- <span>{{manualBugs[availableState.selectedIndex].title}}</span> -->
