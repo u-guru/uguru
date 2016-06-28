@@ -224,7 +224,7 @@
 					<ul>
 						<li ng-repeat="tag in selectedBug.tags">
 							<a class="chip bg bg-robin" >
-								<span ng-if='isEditMode'ng-click='removeTag($index)'>&times;&nbsp;&nbsp;</span>
+								<span ng-if='isEditMode || isNewBug'ng-click='removeTag($index)'>&times;&nbsp;&nbsp;</span>
 								<span>{{tag}}</span>
 							</a>
 						</li>
