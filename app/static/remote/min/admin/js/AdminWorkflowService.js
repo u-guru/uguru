@@ -30,6 +30,19 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
     function getWorkflows() {
         var workflows = [
               {
+                title: 'Base Components',
+                identifier: 'base_comp',
+                parentId: '#base-components-view',
+                reference: {
+                    controller: 'AdminComponentController',
+                    controllerUrl: 'admin/js/AdminComponentController.js',
+                    templateUrl: 'admin/templates/components/base.tpl',
+                    routeUrl: 'dev/admin/components/base',
+                    cssUrl: 'admin/css/scss/partials/_base_components.scss'
+                },
+                states: []
+              },
+              {
                 title: 'App Loader',
                 identifier: 'loader',
                 reference: {
