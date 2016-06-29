@@ -10,17 +10,26 @@ angular
   'KeyboardService',
   'UtilitiesService',
   'RootService',
+  'AdminWorkflowService',
   SpecService
   ]);
 
-function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, KeyboardService, UtilitiesService, RootService) {
+function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, KeyboardService, UtilitiesService, RootService, AdminWorkflowService) {
 
     return {
         initSpec: initSpec,
         getSpec: getSpec
     }
 
-    function initSpec(scope, real_scope, parent_container, param, template_path, ctrl_path, states, css_path) {
+    function initSpec(param, real_scope) {
+        var workflowObj = AdminWorkflowService.getSingleWorkflow(param);
+        var scope = real_scope[param];
+        var template_path = workflowObj.reference.templateUrl;
+        var ctrl_path = workflowObj.reference.controllerUrl;
+        var states = workflowObj.states;
+        var css_path = workflowObj.reference.cssUrl;
+        var parent_container = workflowObj.parentId;
+        console.log(css_path, parent_container, states, ctrl_path, template_path, scope);
         var extraDelay = 0;
         if (window.location.href.split('codepen').length > 1) {
             extraDelay = 1500;
@@ -82,6 +91,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             specObj.data.toggleSpec = false;
             specObj.data.toggleDocs = false;
             specObj.data.toggleDocSearch = false;
+            specObj.data.toggleStatus = false;
             specObj.data.toggleDocSearchFunc = toggleDocSearchFunc(real_scope.root.window);
             specObj.data.toggleGoogleDoc = false;
             specObj.data.toggleShortcuts = false;
@@ -94,7 +104,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             specObj.data.docs = {launch:launchDocs}
             specObj.data.mobile = {toggle:toggleMobileMode, width:400, height:768, show:false, template:specObj.template_path, url:window.location.href}
             specObj.data.open = specObj.open;
-            specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
+            specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope, param);
             specObj.data.stateTags = specObj.data.statesDropdown.options;
             specObj.data.stateTagClicked = specObj.data.statesDropdown.onOptionClick;
             specObj.data.initCodepenData = launchNewCodepen(scope);
@@ -518,6 +528,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             defaultState: {index: -1, state: null},
             autoShowMobile: false,
             autoShowDevBar: true,
+            showStatus: true
         }
     }
 
@@ -644,37 +655,37 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
 
     }
 
-    function generateDropdownFromStates(states, parent_container, scope) {
+    function generateDropdownFromStates(states, parent_container, scope, param) {
         var dropdownArr = [];
         var elemUniqueStateArr = [];
         var elemStateArr = [];
         var parentContainer = document.querySelector(parent_container);
         if (parentContainer) {
-            var elementsWithStates = parentContainer.querySelectorAll('[elem-states]');
+            // var elementsWithStates = parentContainer.querySelectorAll('[elem-states]');
 
-            for (var i = 0; i < elementsWithStates.length; i++) {
-                var indexElemWithState = elementsWithStates[i];
-                var indexElemStates = indexElemWithState.getAttribute('elem-states');
-                var elemStates = UtilitiesService.removeAllOccurrancesArr(indexElemStates, ['[', ']', ' ', "'", '"']).split(',');
-                for (var j = 0; j < elemStates.length; j++) {
-                    var indexState = elemStates[j];
-                    var onEnterState = 'on-' + indexState + '-enter';
-                    var onExitState = 'on-' + indexState + '-exit';
-                    var elemHasEnterAttribute = indexElemWithState.getAttribute(onEnterState);
-                    var elemHasExitAttribute = indexElemWithState.getAttribute(onExitState);
-                    if (elemHasEnterAttribute && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onEnterState)) === -1) {
-                        elemUniqueStateArr.push(UtilitiesService.camelCase(onEnterState));
-                        elemStateArr.push({title: UtilitiesService.camelCase(onEnterState), state: onEnterState})
-                    }
-                    if (elemHasExitAttribute  && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onExitState)) === -1) {
-                        elemUniqueStateArr.push(UtilitiesService.camelCase(onExitState));
-                        elemStateArr.push({title: UtilitiesService.camelCase(onExitState), state: onExitState})
-                    }
-                }
-            }
+            // for (var i = 0; i < elementsWithStates.length; i++) {
+            //     var indexElemWithState = elementsWithStates[i];
+            //     var indexElemStates = indexElemWithState.getAttribute('elem-states');
+            //     var elemStates = UtilitiesService.removeAllOccurrancesArr(indexElemStates, ['[', ']', ' ', "'", '"']).split(',');
+            //     for (var j = 0; j < elemStates.length; j++) {
+            //         var indexState = elemStates[j];
+            //         var onEnterState = 'on-' + indexState + '-enter';
+            //         var onExitState = 'on-' + indexState + '-exit';
+            //         var elemHasEnterAttribute = indexElemWithState.getAttribute(onEnterState);
+            //         var elemHasExitAttribute = indexElemWithState.getAttribute(onExitState);
+            //         if (elemHasEnterAttribute && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onEnterState)) === -1) {
+            //             elemUniqueStateArr.push(UtilitiesService.camelCase(onEnterState));
+            //             elemStateArr.push({title: UtilitiesService.camelCase(onEnterState), state: onEnterState})
+            //         }
+            //         if (elemHasExitAttribute  && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onExitState)) === -1) {
+            //             elemUniqueStateArr.push(UtilitiesService.camelCase(onExitState));
+            //             elemStateArr.push({title: UtilitiesService.camelCase(onExitState), state: onExitState})
+            //         }
+            //     }
+            // }
         }
         for (key in states) {
-            dropdownArr.push({title:key, state: states[key], parent_elem: parent_container, parent_scope: scope})
+            dropdownArr.push({title:states[key]['title'], state: states[key], parent_elem: parent_container, parent_scope: scope})
         }
         for (var i = 0; i < elemStateArr.length; i++) {
             elemStateArr[i].parent_elem = parent_container;
@@ -686,7 +697,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             label: 'toggle states',
             options: dropdownArr,
             key: 'title',
-            onOptionClick: applyDropdownAction,
+            onOptionClick: applyDropdownAction(param),
             selectedIndex: getDefaultSelectedIndex(states)
         }
 
@@ -696,43 +707,66 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             return 1;
         }
 
-        function applyDropdownAction(option, index) {
-            if (option.title === 'onInit') {
-                window.location.reload(true);
-            } else if (option.title.toLowerCase().indexOf('onclick') > -1) {
-                elem = document.querySelector(option.state);
-                $timeout(function() {
-                    angular.element(elem).triggerHandler('click');
-                    option.parent_scope.$apply();
-                })
-            }
-            else if (option.title.toLowerCase().indexOf('click') > -1) {
-                elem = document.querySelector(option.state);
-                $timeout(function() {
-                    angular.element(elem).triggerHandler('click');
-                    option.parent_scope.$apply();
-                })
-            } else if (option.title.toLowerCase() === 'onhover') {
-                parent_elem = document.querySelector(option.parent_elem);
-                onHoverElems = parent_elem.querySelectorAll('[on-hover]');
-                for (var i = 0 ; i < onHoverElems.length; i++) {
-                    onHoverElems[i].classList.add('activate-hover');
+        function applyDropdownAction(param) {
+            return function(option, index) {
+                if (option.title === 'onInit') {
+                    window.location.reload(true);
+                } else if (option.title.toLowerCase().indexOf('onclick') > -1) {
+                    elem = document.querySelector(option.state.selector);
+                    $timeout(function() {
+                        angular.element(elem).triggerHandler('click');
+                        option.parent_scope.$apply();
+                    })
+                }
+                else if (option.title.toLowerCase().indexOf('click') > -1) {
+                    elem = document.querySelector(option.state.selector);
+                    $timeout(function() {
+                        angular.element(elem).triggerHandler('click');
+                        option.parent_scope.$apply();
+                    })
+                } else if (option.title.toLowerCase() === 'onhover') {
+                    parent_elem = document.querySelector(option.parent_elem);
+                    onHoverElems = parent_elem.querySelectorAll('[on-hover]');
+                    for (var i = 0 ; i < onHoverElems.length; i++) {
+                        onHoverElems[i].classList.add('activate-hover');
+                    }
+                }
+                else if (option.title.toLowerCase() === 'onactivate') {
+                    parent_elem = document.querySelector(option.parent_elem);
+                    onActivateElems = parent_elem.querySelectorAll('[on-activate]');
+                    for (var i = 0 ; i < onActivateElems.length; i++) {
+                        onActivateElems[i].classList.add('activate');
+                    }
+                }
+                else if (option.is_elem_state) {
+                    var stateElems = document.querySelectorAll('[' + option.state.selector + ']')
+                    for (var i = 0; i < stateElems.length; i++) {
+                        stateElems[i].classList.add(option.state)
+                    }
+                }
+                if (scope[param].spec.data.settings.cache.showStatus) {
+                    var statusBarElem = document.querySelector('#spec-status-bar');
+                    if (statusBarElem) {
+                        statusBarElem.classList.add('animated', 'slideInDown');
+                        scope[param].spec.data.status_msg = option.title + ' is running...';
+                        console.log(scope[param].spec.data.status_msg);
+                        $timeout(function() {
+                            scope.$apply();
+                            scope[param].spec.data.toggleStatus = true;
+                        })
+                        $timeout(function() {
+                            statusBarElem.classList.remove('animated', 'slideInDown');
+                        }, 1000)
+                        $timeout(function() {
+                                statusBarElem.classList.add('animated', 'slideOutUp');
+                                $timeout(function() {
+                                    scope[param].spec.data.toggleStatus = false;
+                                    statusBarElem.classList.remove('animated', 'slideOutUp');
+                                }, 1000);
+                        }, 3000);
+                    }
                 }
             }
-            else if (option.title.toLowerCase() === 'onactivate') {
-                parent_elem = document.querySelector(option.parent_elem);
-                onActivateElems = parent_elem.querySelectorAll('[on-activate]');
-                for (var i = 0 ; i < onActivateElems.length; i++) {
-                    onActivateElems[i].classList.add('activate');
-                }
-            }
-            else if (option.is_elem_state) {
-                var stateElems = document.querySelectorAll('[' + option.state + ']')
-                for (var i = 0; i < stateElems.length; i++) {
-                    stateElems[i].classList.add(option.state)
-                }
-            }
-
         }
     }
 

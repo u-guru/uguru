@@ -50,7 +50,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.splash-device', {
     parent: 'root',
     url:'/dev/splash/device',
-    templateUrl: 'preapp/templates/splash.device.html'
+    template: '<ion-view> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.device.html" + "'" + '"></div></ion-content></ion-view>'
   })
   .state('root.splash-madlib', {
     url:'/dev/splash/madlib',
@@ -80,6 +80,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     resolve: {categoryName: function($stateParams) {
       return $stateParams.categoryName;
     }}
+  })
+  .state('root.base-components', {
+    url:'/dev/admin/components/base',
+    templateUrl: 'admin/templates/components/base.tpl'
   })
   // -- start DEV states
   .state('root.dev-splash-loader', {

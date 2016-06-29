@@ -11,10 +11,37 @@ angular
 function AdminWorkflowService($state, $timeout, $localstorage, $window) {
 
 
-    return {getWorkflows: getWorkflows}
+    return {
+      getWorkflows: getWorkflows,
+      getSingleWorkflow: getSingleWorkflow
+    }
+
+    function getSingleWorkflow(arg) {
+      console.log(arg);
+      var workflows = getWorkflows();
+      for (var i = 0; i < workflows.length; i++) {
+        if (workflows[i].identifier.toLowerCase() === arg.toLowerCase()) {
+          return workflows[i];
+        }
+      }
+      return
+    }
 
     function getWorkflows() {
         var workflows = [
+              {
+                title: 'Base Components',
+                identifier: 'base_comp',
+                parentId: '#base-components-view',
+                reference: {
+                    controller: 'AdminComponentController',
+                    controllerUrl: 'admin/js/AdminComponentController.js',
+                    templateUrl: 'admin/templates/components/base.tpl',
+                    routeUrl: 'dev/admin/components/base',
+                    cssUrl: 'admin/css/scss/partials/_base_components.scss'
+                },
+                states: []
+              },
               {
                 title: 'App Loader',
                 identifier: 'loader',
@@ -31,32 +58,54 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
               {
                 title: 'Madlib Selection',
                 identifier: 'madlib',
+                parentId: '#splash-madlib',
                 reference: {
                     controller: 'SplashMadlibController',
+                    controllerUrl: 'preapp/js/SplashMadlibController.js',
                     templateUrl: 'preapp/templates/splash.madlib.html',
                     routeUrl: 'dev/splash/madlib',
+                    cssUrl: 'preapp/css/scss/partials/adlib/_main.scss'
                 },
                 states: [
-                    {state: 'onEnter', functional: true, animated: false, tested: false},
-                    {state: 'onTagOneClicked', selector: '[blank-num="1"] a', functional: true, animated: false, tested: false},
-                    {state: 'onTagTwoClicked', selector: '[blank-num="2"] a',functional: true, animated: false, tested: false},
-                    {state: 'onTagDeselected', selector: '[blank-num="1"] .translate-blank-1', functional: true, animated: false, tested: false},
-                    {state: 'onBothBlanksFilled', selector: '[blank-num="2"] .translate-blank-2',  functional: true, animated: false, tested: false},
-                    {state: 'onUniversityChanged', functional: false, animated: false, tested: false},
-                    {state: 'onCategoryChanged', functional: false, animated: false, tested: false},
-                    {state: 'onDeviceButtonSelected', functional: false, animated: false, tested: false},
-                    {state: 'onMapFullScreenTransition', functional: false, animated: false, tested: false},
-                    {state: 'onExit', functional: false, animated: false, tested: false}
+                    {title: 'onEnter', functional: true, animated: false, tested: false},
+                    {title: 'onTagOneClicked', selector: '[blank-num="1"] a', functional: true, animated: false, tested: false},
+                    {title: 'onTagTwoClicked', selector: '[blank-num="2"] a',functional: true, animated: false, tested: false},
+                    {title: 'onTagDeselected', selector: '[blank-num="1"] .translate-blank-1', functional: true, animated: false, tested: false},
+                    {title: 'onBothBlanksFilled', selector: '[blank-num="2"] .translate-blank-2',  functional: true, animated: false, tested: false},
+                    {title: 'onUniversityChanged', functional: false, animated: false, tested: false},
+                    {title: 'onCategoryChanged', functional: false, animated: false, tested: false},
+                    {title: 'onDeviceButtonSelected', functional: false, animated: false, tested: false},
+                    {title: 'onMapFullScreenTransition', functional: false, animated: false, tested: false},
+                    {title: 'onExit', functional: false, animated: false, tested: false}
                 ]
               },
               {
                 title: 'Device States',
                 identifier: 'device',
+                parentId: '#splash-device',
                 reference: {
                     controller: 'SplashDeviceController',
+                    controllerUrl: 'preapp/js/SplashDeviceController.js',
                     templateUrl: 'preapp/templates/splash.device.html',
                     routeUrl: 'dev/splash/device',
-                }
+                    cssUrl: 'preapp/css/scss/partials/_device.scss'
+                },
+                states: [
+                  {title: 'drawOnInit', description: 'Should draw itself in while Splash Madlib state is activating', functional:true, animated:false, tested:false},
+                  {title: 'onUniversityChange', description: 'Should redraw, burst, maintain indication of university color in some way + return back to original size & position', functional:false, animated:false, tested:false},
+                  {title: 'onSearchStart', description: 'Should signal that its searching for tutors', functional:false, animated:false, tested:false},
+                  {title: 'onSearchStartPropogateWaves', description: 'As search state conveys something is loading, propogate the circular loader outside the bounds in an incremental fashion until screen is taken over', functional:false, animated:false, tested:false},
+                  {title: 'onCounterStart', description: 'Inner device screen should start counting to a particular number', functional:false, animated:false, tested:false},
+                  {title: 'onCounterIncrement', description: 'This state occurs each time the number changes in the counter, signaling other animations with the results completed so far', functional:false, animated:false, tested:false},
+                  {title: 'onCounterCompleteCounterExit', description: 'Inner device screen should transition from a counter to a state highlighting the gurus available', functional:false, animated:false, tested:false},
+                  {title: 'onCounterCompleteGuruEject', description: 'Inner device screen should simultaneous init/prepare to eject gurus as ', functional:false, animated:false, tested:false},
+                  {title: 'onSingleGuruEnter', description: 'How an available Guru w/ course enters the device for each number in the counter', functional:false, animated:false, tested:false},
+                  {title: 'onSingleGuruEject', description: 'Inner device screen should transition from a counter to a state highlighting the gurus available', functional:false, animated:false, tested:false},
+                  {title: 'onGuruProfileEnter', description: 'The transition of a guru profile into the mobile device/laptop', functional:false, animated:false, tested:false},
+                  {title: 'onGuruProfileExit', description: 'The exiting transition of a guru profile into the mobile device/laptop', functional:false, animated:false, tested:false},
+                  {title: 'onGuruProfileMorph', description: 'The interrim state of a Guru profile given the user selects the morph device icon/button', functional:false, animated:false, tested:false},
+                  {title: 'onGuruDeviceMorph', description: 'The transition of a mobile device to laptop or vice versa', functional:false, animated:false, tested:false}
+                ]
               },
               {
                 title: 'Splash Header Nav',

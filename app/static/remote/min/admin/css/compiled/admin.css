@@ -1,10 +1,23 @@
 @media screen and (max-width: 768px) {
-  #dev-toolbar-options {
+  #dev-toolbar {
     display: none; } }
-.states-dropdown {
-  font-size: 18px !important; }
-  .states-dropdown * {
-    font-size: 18px !important; }
+#codepen-edit {
+  padding: 0 !important;
+  position: absolute;
+  top: -24px;
+  right: 15px;
+  width: 48px;
+  height: 48px; }
+  #codepen-edit span {
+    transition: all 150ms ease-in-out; }
+  #codepen-edit #codepen-input:hover + span, #codepen-edit #codepen-input:focus + span {
+    background: #a1e5ce; }
+    #codepen-edit #codepen-input:hover + span svg *, #codepen-edit #codepen-input:focus + span svg * {
+      stroke: #428a74 !important; }
+  #codepen-edit #codepen-input:active + span {
+    background: #428a74; }
+    #codepen-edit #codepen-input:active + span svg * {
+      stroke: white !important; }
 
 .short .component-item > div:nth-child(3) {
   height: 200px; }
@@ -132,98 +145,7 @@
     .component-item-nav.states a:active, .component-item-nav.states a.active {
       background: #2BB3B8; }
 
-.admin-html h2 {
-  width: 100%;
-  padding: 15px 15px 5px;
-  font-weight: 600;
-  font-size: 24px; }
-.admin-html ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  width: 100%;
-  padding: 7.5px;
-  margin-top: -15px; }
-  .admin-html ul:last-child {
-    margin-bottom: 15px; }
-  .admin-html ul.no-input li span {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    height: 34px;
-    font-family: "Source Code Pro", monospace !important;
-    font-size: 14px;
-    font-weight: 600; }
-  .admin-html ul.border li span:not(.inside) {
-    position: relative; }
-    .admin-html ul.border li span:not(.inside) > input {
-      position: relative;
-      z-index: 10; }
-    .admin-html ul.border li span:not(.inside) .inside {
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: calc(100% - 4px);
-      height: calc(100% - 4px);
-      border-width: 2px;
-      border-style: solid;
-      border-radius: 2px; }
-  .admin-html ul li {
-    padding: 7.5px; }
-    .admin-html ul li > div:not(.size-auto) {
-      position: relative;
-      height: 120px;
-      border-radius: 2px; }
-    .admin-html ul li span:not(.inside) {
-      display: block;
-      padding: 5px 10px;
-      color: #40484B;
-      border-radius: 2px; }
-      .admin-html ul li span:not(.inside):not([class*="bg-"]) {
-        background: white; }
-      .admin-html ul li span:not(.inside)[class*="flex"] {
-        -ms-box-orient: horizontal !important;
-        display: -webkit-box !important;
-        display: -moz-box !important;
-        display: -ms-flexbox !important;
-        display: -moz-flex !important;
-        display: -webkit-flex !important;
-        display: flex !important; }
-      .admin-html ul li span:not(.inside)[class*="bg-"] {
-        color: white; }
-        .admin-html ul li span:not(.inside)[class*="bg-"] input {
-          color: white; }
-      .admin-html ul li span:not(.inside).bg-smoke {
-        border: 1px solid #d1d9db; }
-      .admin-html ul li span:not(.inside):not([class*="weight-"]) {
-        weight: 600; }
-        .admin-html ul li span:not(.inside):not([class*="weight-"]) input {
-          font-weight: 600; }
-    .admin-html ul li input {
-      background: none;
-      font-family: "Source Code Pro", monospace !important;
-      cursor: text; }
-
-.admin-definition-list dl div {
+.checkbox-container, .radio-container {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -238,39 +160,532 @@
   -webkit-align-content: center;
   align-content: center;
   -webkit-justify-content: center;
-  justify-content: center;
-  position: relative;
-  padding: 7.5px; }
-  .admin-definition-list dl div[deprecate] {
-    color: rgba(93, 172, 193, 0.3); }
-  .admin-definition-list dl div dt {
-    width: calc(100% / 3);
-    padding: 7.5px;
-    font-size: 28px;
+  justify-content: center; }
+  .checkbox-container div, .radio-container div {
+    position: relative; }
+    .checkbox-container div input:not([text]), .radio-container div input:not([text]) {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      position: absolute;
+      z-index: 12;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+    .checkbox-container div span, .radio-container div span {
+      display: block;
+      background: #40484B; }
+  .checkbox-container label, .radio-container label {
+    padding-left: 15px;
+    color: white;
+    font-size: 20px;
     font-weight: 600; }
-  .admin-definition-list dl div dd {
-    width: calc(100% / 3 * 2);
-    padding: 7.5px;
-    font-size: 18px;
-    font-weight: 400; }
-  .admin-definition-list dl div:not(:last-child):after {
-    border-radius: 1000px;
-    content: "";
+
+.checkbox-container div span {
+  border-radius: 3px;
+  width: 32px;
+  height: 32px; }
+  .checkbox-container div span svg {
+    fill: none;
+    stroke: #6f7d82;
+    stroke-width: 10px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    padding: 4px;
+    width: 100%;
+    height: 100%; }
+.checkbox-container div input:checked + span {
+  background: #69B3A5; }
+  .checkbox-container div input:checked + span svg {
+    stroke: white; }
+.checkbox-container.small div span {
+  width: 20px;
+  height: 20px; }
+.checkbox-container.small label {
+  font-size: 16px; }
+
+.small .checkbox-container div span {
+  width: 20px;
+  height: 20px; }
+.small .checkbox-container label {
+  font-size: 16px; }
+
+.checkbox-shamrock input:checked + span {
+  background: #69B3A5 !important; }
+
+.checkbox-robin input:checked + span {
+  background: #2BB3B8 !important; }
+
+.checkbox-lake input:checked + span {
+  background: #50A5DD !important; }
+
+.checkbox-moxie input:checked + span {
+  background: #43cb9d !important; }
+
+.checkbox-crimson input:checked + span {
+  background: #d3242c !important; }
+
+.checkbox-auburn input:checked + span, .checkbox-delivery input:checked + span {
+  background: #F04F54 !important; }
+
+.checkbox-orange input:checked + span, .checkbox-freelancing input:checked + span {
+  background: #E5753C !important; }
+
+.checkbox-gold input:checked + span, .checkbox-baking input:checked + span {
+  background: #F6C64E !important; }
+
+.checkbox-moola input:checked + span, .checkbox-photography input:checked + span {
+  background: #81B566 !important; }
+
+.checkbox-azure input:checked + span, .checkbox-tech input:checked + span {
+  background: #55A4B7 !important; }
+
+.checkbox-cobalt input:checked + span, .checkbox-household input:checked + span {
+  background: #7872e3 !important; }
+
+.checkbox-eggplant input:checked + span, .checkbox-athletic input:checked + span {
+  background: #9A5BC5 !important; }
+
+.checkbox-cerise input:checked + span, .checkbox-academic input:checked + span {
+  background: #e6389b !important; }
+
+body, html {
+  height: 100%; }
+
+body {
+  perspective: 1000;
+  background: #2B3234;
+  color: white;
+  font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+
+body > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+* {
+  box-sizing: border-box !important; }
+
+*:focus {
+  outline: none; }
+
+input {
+  appearance: none;
+  border: 0;
+  padding: 0; }
+
+body > div > ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 15px; }
+  body > div > ul > li {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 50%;
+    padding: 15px; }
+    body > div > ul > li .checkbox-container {
+      margin-right: 15px; }
+
+fieldset {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 18px;
+  font-weight: 400;
+  width: 100%;
+  max-width: 400px;
+  min-height: 30px; }
+  fieldset * {
+    transition: all 150ms ease-in-out; }
+  fieldset input {
     display: block;
+    width: 100%;
+    font-size: 16px; }
+    fieldset input::-webkit-input-placeholder {
+      transition: all 150ms ease-in-out;
+      font-weight: 400;
+      font-size: 16px; }
+    fieldset input:-moz-placeholder {
+      transition: all 150ms ease-in-out;
+      font-weight: 400;
+      font-size: 16px; }
+    fieldset input::-moz-placeholder {
+      transition: all 150ms ease-in-out;
+      font-weight: 400;
+      font-size: 16px; }
+    fieldset input:-ms-input-placeholder {
+      transition: all 150ms ease-in-out;
+      font-weight: 400;
+      font-size: 16px; }
+
+.input-border {
+  position: relative;
+  z-index: 9;
+  background: none;
+  width: 100%;
+  padding: 15px 0;
+  transition: all 300ms linear; }
+  .input-border:focus::selection {
+    background: white;
+    color: #40484B; }
+  .input-border:focus::-moz-selection {
+    background: white;
+    color: #40484B; }
+  .input-border.light {
+    color: white; }
+    .input-border.light::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.2); }
+    .input-border.light:-moz-placeholder {
+      color: rgba(255, 255, 255, 0.2); }
+    .input-border.light::-moz-placeholder {
+      color: rgba(255, 255, 255, 0.2); }
+    .input-border.light:-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.2); }
+    .input-border.light:focus::-webkit-input-placeholder {
+      color: white; }
+    .input-border.light:focus:-moz-placeholder {
+      color: white; }
+    .input-border.light:focus::-moz-placeholder {
+      color: white; }
+    .input-border.light:focus:-ms-input-placeholder {
+      color: white; }
+  .input-border + label:not(:empty) {
     position: absolute;
-    bottom: -1px;
-    left: 15px;
-    width: calc(100% - 30px);
-    height: 2px;
-    background: rgba(93, 172, 193, 0.2); }
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .input-border + label:not(:empty):after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 1000px; }
+    .input-border + label:not(:empty) svg {
+      position: absolute;
+      top: 15px; }
+      .input-border + label:not(:empty) svg * {
+        stroke-width: 8px; }
+    .input-border + label:not(:empty) span {
+      position: absolute;
+      top: 15px;
+      display: block;
+      font-size: 16px;
+      transition: all 250ms ease-out 300ms;
+      padding-left: 39px; }
+    .input-border + label:not(:empty) > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      transform: rotateX(90deg);
+      transition: all 300ms linear;
+      transform-origin: center bottom;
+      opacity: 0; }
+      .input-border + label:not(:empty) > div div {
+        border-radius: 1000px;
+        position: absolute;
+        background: white;
+        opacity: 0; }
+        .input-border + label:not(:empty) > div div:nth-child(1) {
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          transform: scaleX(0);
+          transform-origin: right center;
+          transition: all 300ms ease-in-out 750ms; }
+        .input-border + label:not(:empty) > div div:nth-child(2) {
+          top: 0;
+          right: 0;
+          width: 2px;
+          height: 100%;
+          transform: scaleX(0);
+          transform-origin: center bottom;
+          transition: all 100ms ease-in-out 650ms; }
+        .input-border + label:not(:empty) > div div:nth-child(3) {
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 2px;
+          transform: scaleX(0);
+          transform-origin: left center;
+          transition: all 300ms ease-in-out 500ms; }
+        .input-border + label:not(:empty) > div div:nth-child(4) {
+          bottom: 0;
+          left: 0;
+          width: 2px;
+          height: 100%;
+          transform: scaleY(0);
+          transform-origin: center top;
+          transition: all 100ms ease-in-out 400ms; }
 
-.preview-container {
-  position: relative !important;
-  overflow: hidden !important; }
-  .preview-container .fixed {
-    position: absolute !important; }
+.activate.state-onload + label span {
+  opacity: 0; }
+.activate.state-onload + label svg {
+  opacity: 0; }
+.activate.state-onload + label:after {
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: scaleInX 1000ms ease both; }
+.activate.state-empty-focus + label > div {
+  transform-origin: center bottom;
+  animation: upput-rotate 1000ms ease both; }
 
-/* ---------- KEYFRAMES */
+@keyframes scaleInX {
+  0% {
+    transform: scaleX(0); }
+  100% {
+    transform: scaleX(1); } }
+@keyframes upput-rotate {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 1; }
+  100% {
+    transform: rotateX(0);
+    opacity: 1; } }
+.upput:hover + label > div {
+  opacity: 0.2; }
+.upput:focus + label .email-icon .success-1, .upput:valid + label .email-icon .success-1 {
+  animation: input-icon-success-1 250ms ease-out 500ms both, input-icon-moxie 250ms ease-out 250ms both; }
+.upput:focus + label .email-icon .success-2, .upput:valid + label .email-icon .success-2 {
+  animation: input-icon-success-2 500ms ease-out 750ms both, input-icon-moxie 250ms ease-out 250ms both; }
+.upput:focus + label .email-icon .email, .upput:valid + label .email-icon .email {
+  animation: input-icon-email 1000ms ease-out both, input-icon-moxie 250ms ease-out 250ms both; }
+.upput:focus + label .email-icon .name, .upput:valid + label .email-icon .name {
+  animation: input-icon-email 1000ms ease-out both, input-icon-moxie 250ms ease-out 250ms both; }
+.upput:focus + label .name-icon .error-1, .upput:valid + label .name-icon .error-1 {
+  animation: input-icon-error 350ms ease-out 500ms both, input-icon-crimson 250ms ease-out 250ms both; }
+.upput:focus + label .name-icon .error-2, .upput:valid + label .name-icon .error-2 {
+  animation: input-icon-error 350ms ease-out 750ms both, input-icon-crimson 250ms ease-out 250ms both; }
+.upput:focus + label .name-icon .email, .upput:valid + label .name-icon .email {
+  animation: input-icon-email 1000ms ease-out both, input-icon-crimson 250ms ease-out 250ms both; }
+.upput:focus + label .name-icon .name, .upput:valid + label .name-icon .name {
+  animation: input-icon-email 1000ms ease-out both, input-icon-crimson 250ms ease-out 250ms both; }
+.upput:focus + label span, .upput:valid + label span {
+  transform: translateY(-24px);
+  font-size: 12px;
+  transition: all 250ms ease-out; }
+.upput:focus + label > div, .upput:valid + label > div {
+  transform: rotateX(0);
+  opacity: 1;
+  transform-origin: center bottom; }
+  .upput:focus + label > div div, .upput:valid + label > div div {
+    opacity: 1; }
+    .upput:focus + label > div div:nth-child(1), .upput:valid + label > div div:nth-child(1) {
+      transform: scaleX(1); }
+    .upput:focus + label > div div:nth-child(2), .upput:valid + label > div div:nth-child(2) {
+      transform: scaleX(1); }
+    .upput:focus + label > div div:nth-child(3), .upput:valid + label > div div:nth-child(3) {
+      transform: scaleX(1); }
+    .upput:focus + label > div div:nth-child(4), .upput:valid + label > div div:nth-child(4) {
+      transform: scaleY(1); }
+
+.input-icon {
+  width: 24px;
+  height: 24px; }
+  .input-icon path {
+    stroke: #637074; }
+  .input-icon .template {
+    stroke-dasharray: 220.3; }
+  .input-icon .success-1 {
+    stroke-dasharray: 19.8;
+    opacity: 0; }
+  .input-icon .success-2 {
+    stroke-dasharray: 50.2;
+    opacity: 0; }
+  .input-icon .error-1, .input-icon .error-2 {
+    stroke: #d3242c;
+    stroke-dasharray: 39.6;
+    opacity: 0; }
+  .input-icon .email {
+    transform-origin: center center;
+    stroke-dasharray: 365.6; }
+  .input-icon .name {
+    transform-origin: center center;
+    stroke-dasharray: 365.6; }
+  .input-icon.email-icon .name {
+    opacity: 0; }
+  .input-icon.name-icon .email {
+    opacity: 0; }
+  .input-icon.valid:not(.invalidated) .success-1 {
+    animation: input-icon-success-1 250ms ease-out 500ms both, input-icon-moxie 250ms ease-out 250ms both; }
+  .input-icon.valid:not(.invalidated) .success-2 {
+    animation: input-icon-success-2 500ms ease-out 750ms both, input-icon-moxie 250ms ease-out 250ms both; }
+  .input-icon.valid:not(.invalidated) .email {
+    animation: input-icon-email 1000ms ease-out both, input-icon-moxie 250ms ease-out 250ms both; }
+  .input-icon.valid:not(.invalidated) .name {
+    animation: input-icon-email 1000ms ease-out both, input-icon-moxie 250ms ease-out 250ms both; }
+  .input-icon.error:not(.validated) .error-1 {
+    animation: input-icon-error 350ms ease-out 500ms both, input-icon-crimson 250ms ease-out 250ms both; }
+  .input-icon.error:not(.validated) .error-2 {
+    animation: input-icon-error 350ms ease-out 750ms both, input-icon-crimson 250ms ease-out 250ms both; }
+  .input-icon.error:not(.validated) .email {
+    animation: input-icon-email 1000ms ease-out both, input-icon-crimson 250ms ease-out 250ms both; }
+  .input-icon.error:not(.validated) .name {
+    animation: input-icon-email 1000ms ease-out both, input-icon-crimson 250ms ease-out 250ms both; }
+  .input-icon.validated .email {
+    stroke: #43cb9d;
+    stroke-dasharray: 365.6;
+    stroke-dashoffset: -145.3;
+    transform: rotate(-67.5deg); }
+  .input-icon.validated .name {
+    stroke: #43cb9d;
+    stroke-dasharray: 365.6;
+    stroke-dashoffset: -145.3;
+    transform: rotate(-67.5deg); }
+  .input-icon.validated .success-1, .input-icon.validated .success-2 {
+    stroke: #43cb9d;
+    stroke-dashoffset: 0;
+    opacity: 1; }
+  .input-icon.validated.normal .success-1 {
+    animation: input-icon-success-1 250ms ease-in 500ms reverse both, input-icon-moxie 250ms ease-in 500ms reverse both; }
+  .input-icon.validated.normal .success-2 {
+    animation: input-icon-success-2 500ms ease-in reverse both, input-icon-moxie 250ms ease-in 500ms reverse both; }
+  .input-icon.validated.normal .email {
+    animation: input-icon-email 1000ms ease-in reverse 750ms both, input-icon-moxie 250ms ease-in 500ms reverse both; }
+  .input-icon.validated.normal .name {
+    animation: input-icon-email 1000ms ease-in reverse 750ms both, input-icon-moxie 250ms ease-in 500ms reverse both; }
+  .input-icon.validated.error .success-1 {
+    animation: input-icon-success-1 250ms ease-out 250ms reverse both, input-icon-moxie-crimson 250ms ease-out 500ms both; }
+  .input-icon.validated.error .success-2 {
+    animation: input-icon-success-2 500ms ease-out reverse both, input-icon-moxie-crimson 250ms ease-out 500ms both; }
+  .input-icon.validated.error .error-1 {
+    animation: input-icon-error 350ms ease-out 500ms both, input-icon-moxie-crimson 250ms ease-out 500ms both; }
+  .input-icon.validated.error .error-2 {
+    animation: input-icon-error 350ms ease-out 750ms both, input-icon-moxie-crimson 250ms ease-out 500ms both; }
+  .input-icon.validated.error .email {
+    animation: input-icon-moxie-crimson 250ms ease-out 500ms both; }
+  .input-icon.validated.error .name {
+    animation: input-icon-moxie-crimson 250ms ease-out 500ms both; }
+  .input-icon.invalidated .email {
+    stroke: #d3242c;
+    stroke-dasharray: 365.6;
+    stroke-dashoffset: -145.3;
+    transform: rotate(-67.5deg); }
+  .input-icon.invalidated .name {
+    stroke: #d3242c;
+    stroke-dasharray: 365.6;
+    stroke-dashoffset: -145.3;
+    transform: rotate(-67.5deg); }
+  .input-icon.invalidated .error-1, .input-icon.invalidated .error-2 {
+    stroke: #d3242c;
+    stroke-dashoffset: 0;
+    opacity: 1; }
+  .input-icon.invalidated.normal .error-1 {
+    animation: input-icon-error 350ms ease-out 250ms reverse both, input-icon-crimson 250ms ease-out 500ms reverse both; }
+  .input-icon.invalidated.normal .error-2 {
+    animation: input-icon-error 350ms ease-out reverse both, input-icon-crimson 250ms ease-out 500ms reverse both; }
+  .input-icon.invalidated.normal .email {
+    animation: input-icon-email 1000ms ease-out 750ms reverse both, input-icon-crimson 250ms ease-out 500ms reverse both; }
+  .input-icon.invalidated.normal .name {
+    animation: input-icon-email 1000ms ease-out 750ms reverse both, input-icon-crimson 250ms ease-out 500ms reverse both; }
+  .input-icon.invalidated.valid .success-1 {
+    animation: input-icon-success-1 250ms ease-out 500ms both, input-icon-moxie-crimson 250ms ease-out 500ms reverse both; }
+  .input-icon.invalidated.valid .success-2 {
+    animation: input-icon-success-2 500ms ease-out 750ms both, input-icon-moxie-crimson 250ms ease-out 500ms reverse both; }
+  .input-icon.invalidated.valid .error-1 {
+    animation: input-icon-error 350ms ease-out 250ms reverse both, input-icon-moxie-crimson 250ms ease-out 500ms reverse both; }
+  .input-icon.invalidated.valid .error-2 {
+    animation: input-icon-error 350ms ease-out reverse both, input-icon-moxie-crimson 250ms ease-out 500ms reverse both; }
+  .input-icon.invalidated.valid .email {
+    animation: input-icon-moxie-crimson 250ms ease-out 500ms reverse both; }
+  .input-icon.invalidated.valid .name {
+    animation: input-icon-moxie-crimson 250ms ease-out 500ms reverse both; }
+
+@keyframes input-icon-crimson {
+  0% {
+    stroke: #637074; }
+  100% {
+    stroke: #d3242c; } }
+@keyframes input-icon-moxie {
+  0% {
+    stroke: #637074; }
+  100% {
+    stroke: #43cb9d; } }
+@keyframes input-icon-moxie-crimson {
+  0% {
+    stroke: #43cb9d; }
+  100% {
+    stroke: #d3242c; } }
+@keyframes input-icon-error {
+  0% {
+    stroke-dashoffset: 39.6;
+    opacity: 1; }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1; } }
+@keyframes input-icon-email {
+  0% {
+    stroke-dasharray: 365.6;
+    stroke-dashoffset: 0;
+    transform: rotate(0deg); }
+  50% {
+    stroke-dasharray: 265.6;
+    transform: rotate(0deg); }
+  100% {
+    stroke-dasharray: 365.6;
+    stroke-dashoffset: -145.3;
+    transform: rotate(-67.5deg); } }
+@keyframes input-icon-success-1 {
+  0% {
+    stroke-dashoffset: 19.8;
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1; } }
+@keyframes input-icon-success-2 {
+  0% {
+    stroke-dashoffset: 50.2;
+    opacity: 0; }
+  10% {
+    opacity: 1; }
+  90% {
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dashoffset: 4;
+    opacity: 1; } }
 #keys-keyframe-attr {
   height: calc(100% - 130px); }
   #keys-keyframe-attr.active {
@@ -643,6 +1058,144 @@
         font-size: 16px; }
       .anim-timeline .anim-controls > div .checkbox-container input:checked + span {
         background: #43cb9d; }
+
+.admin-html h2 {
+  width: 100%;
+  padding: 15px 15px 5px;
+  font-weight: 600;
+  font-size: 24px; }
+.admin-html ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  width: 100%;
+  padding: 7.5px;
+  margin-top: -15px; }
+  .admin-html ul:last-child {
+    margin-bottom: 15px; }
+  .admin-html ul.no-input li span {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 34px;
+    font-family: "Source Code Pro", monospace !important;
+    font-size: 14px;
+    font-weight: 600; }
+  .admin-html ul.border li span:not(.inside) {
+    position: relative; }
+    .admin-html ul.border li span:not(.inside) > input {
+      position: relative;
+      z-index: 10; }
+    .admin-html ul.border li span:not(.inside) .inside {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: calc(100% - 4px);
+      height: calc(100% - 4px);
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 2px; }
+  .admin-html ul li {
+    padding: 7.5px; }
+    .admin-html ul li > div:not(.size-auto) {
+      position: relative;
+      height: 120px;
+      border-radius: 2px; }
+    .admin-html ul li span:not(.inside) {
+      display: block;
+      padding: 5px 10px;
+      color: #40484B;
+      border-radius: 2px; }
+      .admin-html ul li span:not(.inside):not([class*="bg-"]) {
+        background: white; }
+      .admin-html ul li span:not(.inside)[class*="flex"] {
+        -ms-box-orient: horizontal !important;
+        display: -webkit-box !important;
+        display: -moz-box !important;
+        display: -ms-flexbox !important;
+        display: -moz-flex !important;
+        display: -webkit-flex !important;
+        display: flex !important; }
+      .admin-html ul li span:not(.inside)[class*="bg-"] {
+        color: white; }
+        .admin-html ul li span:not(.inside)[class*="bg-"] input {
+          color: white; }
+      .admin-html ul li span:not(.inside).bg-smoke {
+        border: 1px solid #d1d9db; }
+      .admin-html ul li span:not(.inside):not([class*="weight-"]) {
+        weight: 600; }
+        .admin-html ul li span:not(.inside):not([class*="weight-"]) input {
+          font-weight: 600; }
+    .admin-html ul li input {
+      background: none;
+      font-family: "Source Code Pro", monospace !important;
+      cursor: text; }
+
+.admin-definition-list dl div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  padding: 7.5px; }
+  .admin-definition-list dl div[deprecate] {
+    color: rgba(93, 172, 193, 0.3); }
+  .admin-definition-list dl div dt {
+    width: calc(100% / 3);
+    padding: 7.5px;
+    font-size: 28px;
+    font-weight: 600; }
+  .admin-definition-list dl div dd {
+    width: calc(100% / 3 * 2);
+    padding: 7.5px;
+    font-size: 18px;
+    font-weight: 400; }
+  .admin-definition-list dl div:not(:last-child):after {
+    border-radius: 1000px;
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 15px;
+    width: calc(100% - 30px);
+    height: 2px;
+    background: rgba(93, 172, 193, 0.2); }
+
+.preview-container {
+  position: relative !important;
+  overflow: hidden !important; }
+  .preview-container .fixed {
+    position: absolute !important; }
 
 @-webkit-keyframes samirAnim {
   0% {

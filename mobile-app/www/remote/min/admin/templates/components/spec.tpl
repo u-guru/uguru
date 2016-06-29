@@ -1,4 +1,8 @@
+
 <div class='spec-template-wrapper high-z-index' style='min-height:10% !important;' eval-on-init="spec.ready()">
+    <div id="spec-status-bar" style='z-index:10000;' class-on-init="activate" on-activate="slideInDown:animIn" elem-states="[close-status]" on-close-status-exit="slideOutUp:animOut" ng-show="spec.toggleStatus" class='bg-azure full-x fixed top-0 p15-grid left-0 animated opacity-0'>
+        <h4> {{spec.status_msg || 'status goes here'}} </h4>
+    </div>
     <!-- ANIM TOOLS -->
     <anim-tools ng-if='spec.animTools.show' ng-class="{'animated slideInDown':spec.animTools.show, 'animated slideOutUp':!spec.animTools.show}" active="spec.animTools.show" ng-model="spec.animTools.stage"> </anim-tools>
 
@@ -11,7 +15,6 @@
             <iframe ng-repeat='tool in spec.tools' class='absolute full-xy top-0 left-0'  src="{{tool.src}}" ng-if='tool.show'> </iframe>
         </div>
     </div>
-
     <!-- SEARCH DOCS (?) -->
     <div id="dev-docs" ng-if="spec.toggleDocSearch" class='fixed full-x top-0 left-0 animated' style='height: calc(100% - 66px);' ng-controller='AdminDocsController as docs'>
         <!-- @samir state list -->

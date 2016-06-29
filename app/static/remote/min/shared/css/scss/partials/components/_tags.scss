@@ -333,48 +333,318 @@
 				}
 			}
 		}
-		&[class*="bg-cerise"] {
+		&[class*="bg-rocket"] {
 			svg {
-				fill: $cerise;
+				fill: $rocket;
 			}
 			&[class*="-05p"] {
 				svg {
-					fill: rgba($cerise, .05);
+					fill: rgba($rocket, .05);
 				}
 			}
 			&[class*="-10p"] {
 				svg {
-					fill: rgba($cerise, .1);
+					fill: rgba($rocket, .1);
 				}
 			}
 			&[class*="-20p"] {
 				svg {
-					fill: rgba($cerise, .2);
+					fill: rgba($rocket, .2);
 				}
 			}
 			&[class*="-25p"] {
 				svg {
-					fill: rgba($cerise, .25);
+					fill: rgba($rocket, .25);
 				}
 			}
 			&[class*="-50p"] {
 				svg {
-					fill: rgba($cerise, .5);
+					fill: rgba($rocket, .5);
 				}
 			}
 			&[class*="-75p"] {
 				svg {
-					fill: rgba($cerise, .75);
+					fill: rgba($rocket, .75);
 				}
 			}
 			&[class*="-80p"] {
 				svg {
-					fill: rgba($cerise, .8);
+					fill: rgba($rocket, .8);
 				}
 			}
 			&[class*="-90p"] {
 				svg {
-					fill: rgba($cerise, .9);
+					fill: rgba($rocket, .9);
+				}
+			}
+		}
+		&[class*="bg-shamrock"] {
+			svg {
+				fill: $shamrock;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($shamrock, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($shamrock, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($shamrock, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($shamrock, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($shamrock, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($shamrock, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($shamrock, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($shamrock, .9);
+				}
+			}
+		}
+		&[class*="bg-robin"] {
+			svg {
+				fill: $robin;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($robin, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($robin, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($robin, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($robin, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($robin, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($robin, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($robin, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($robin, .9);
+				}
+			}
+		}
+		&[class*="bg-lake"] {
+			svg {
+				fill: $lake;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($lake, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($lake, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($lake, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($lake, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($lake, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($lake, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($lake, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($lake, .9);
+				}
+			}
+		}
+		&[class*="bg-moxie"] {
+			svg {
+				fill: $moxie;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($moxie, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($moxie, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($moxie, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($moxie, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($moxie, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($moxie, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($moxie, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($moxie, .9);
+				}
+			}
+		}
+		&[class*="bg-crimson"] {
+			svg {
+				fill: $crimson;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($crimson, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($crimson, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($crimson, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($crimson, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($crimson, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($crimson, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($crimson, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($crimson, .9);
+				}
+			}
+		}
+		&[class*="bg-auburn"] {
+			svg {
+				fill: $auburn;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($auburn, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($auburn, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($auburn, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($auburn, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($auburn, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($auburn, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($auburn, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($auburn, .9);
 				}
 			}
 		}
@@ -513,51 +783,6 @@
 				}
 			}
 		}
-		&[class*="bg-shamrock"] {
-			svg {
-				fill: $shamrock;
-			}
-			&[class*="-05p"] {
-				svg {
-					fill: rgba($shamrock, .05);
-				}
-			}
-			&[class*="-10p"] {
-				svg {
-					fill: rgba($shamrock, .1);
-				}
-			}
-			&[class*="-20p"] {
-				svg {
-					fill: rgba($shamrock, .2);
-				}
-			}
-			&[class*="-25p"] {
-				svg {
-					fill: rgba($shamrock, .25);
-				}
-			}
-			&[class*="-50p"] {
-				svg {
-					fill: rgba($shamrock, .5);
-				}
-			}
-			&[class*="-75p"] {
-				svg {
-					fill: rgba($shamrock, .75);
-				}
-			}
-			&[class*="-80p"] {
-				svg {
-					fill: rgba($shamrock, .8);
-				}
-			}
-			&[class*="-90p"] {
-				svg {
-					fill: rgba($shamrock, .9);
-				}
-			}
-		}
 		&[class*="bg-azure"] {
 			svg {
 				fill: $azure;
@@ -603,51 +828,6 @@
 				}
 			}
 		}
-		&[class*="bg-lake"] {
-			svg {
-				fill: $lake;
-			}
-			&[class*="-05p"] {
-				svg {
-					fill: rgba($lake, .05);
-				}
-			}
-			&[class*="-10p"] {
-				svg {
-					fill: rgba($lake, .1);
-				}
-			}
-			&[class*="-20p"] {
-				svg {
-					fill: rgba($lake, .2);
-				}
-			}
-			&[class*="-25p"] {
-				svg {
-					fill: rgba($lake, .25);
-				}
-			}
-			&[class*="-50p"] {
-				svg {
-					fill: rgba($lake, .5);
-				}
-			}
-			&[class*="-75p"] {
-				svg {
-					fill: rgba($lake, .75);
-				}
-			}
-			&[class*="-80p"] {
-				svg {
-					fill: rgba($lake, .8);
-				}
-			}
-			&[class*="-90p"] {
-				svg {
-					fill: rgba($lake, .9);
-				}
-			}
-		}
 		&[class*="bg-eggplant"] {
 			svg {
 				fill: $eggplant;
@@ -690,6 +870,51 @@
 			&[class*="-90p"] {
 				svg {
 					fill: rgba($eggplant, .9);
+				}
+			}
+		}
+		&[class*="bg-cerise"] {
+			svg {
+				fill: $cerise;
+			}
+			&[class*="-05p"] {
+				svg {
+					fill: rgba($cerise, .05);
+				}
+			}
+			&[class*="-10p"] {
+				svg {
+					fill: rgba($cerise, .1);
+				}
+			}
+			&[class*="-20p"] {
+				svg {
+					fill: rgba($cerise, .2);
+				}
+			}
+			&[class*="-25p"] {
+				svg {
+					fill: rgba($cerise, .25);
+				}
+			}
+			&[class*="-50p"] {
+				svg {
+					fill: rgba($cerise, .5);
+				}
+			}
+			&[class*="-75p"] {
+				svg {
+					fill: rgba($cerise, .75);
+				}
+			}
+			&[class*="-80p"] {
+				svg {
+					fill: rgba($cerise, .8);
+				}
+			}
+			&[class*="-90p"] {
+				svg {
+					fill: rgba($cerise, .9);
 				}
 			}
 		}

@@ -2300,4 +2300,10 @@ button, input, textarea {
   .guru-head.guru-academic [stroke="#33534D"], .guru-head svg.guru-academic [stroke="#33534D"] {
     stroke: #473343; }
 
+.scroll > div {
+  height: 100% !important; }
+
+#intercom-container {
+  z-index: auto !important; }
+
 /*# sourceMappingURL=utility.css.map */

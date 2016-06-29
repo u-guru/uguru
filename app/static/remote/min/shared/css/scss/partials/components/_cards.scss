@@ -836,143 +836,6 @@
 	}
 }
 
-// mini profile card [deprecate]
-.pf-card-mini {
-	@include flex;
-	@include flex-wrap;
-	@include flex-center;
-	position: relative;
-	width: 50px;
-	height: 50px;
-	background: white;
-	border-radius: 2px;
-	overflow: hidden;
-	.pf-card-mini-banner {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: calc(100% / 3);
-		background: $shamrock;
-		border-top-left-radius: 2px;
-		border-top-right-radius: 2px;
-	}
-	.user-icon {
-		position: relative;
-		z-index: 10;
-		width: 32px;
-		height: 32px;
-		border-width: 3px;
-	}
-	&.large {
-		width: 96px;
-		height: 96px;
-		.pf-card-link {
-			@include opacity(0);
-			@include flex;
-			@include flex-center;
-			transition: all 150ms ease-in-out;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 15;
-			background: $shamrock;
-			border-radius: 2px;
-			svg {
-				display: block;
-				width: 48px;
-				height: 48px;
-				path {
-					@include svg-stroke(white, 5);
-				}
-			}
-		}
-		&:hover,
-		&:focus {
-			.pf-card-link {
-				@include opacity(1);
-			}
-		}
-		.user-icon {
-			width: 64px;
-			height: 64px;
-		}
-	}
-	&.pf-card-mini-delivery {
-		.user-icon,
-		.pf-card-mini-banner {
-			background-color: $auburn;
-		}
-		&.large .pf-card-link {
-			background: rgba($auburn,.9);
-		}
-	}
-	&.pf-card-mini-freelancing {
-		.user-icon,
-		.pf-card-mini-banner {
-			background-color: $orange;
-		}
-		&.large .pf-card-link {
-			background: rgba($orange,.9);
-		}
-	}
-	&.pf-card-mini-baking {
-		.user-icon,
-		.pf-card-mini-banner {
-			background-color: $gold;
-		}
-		&.large .pf-card-link {
-			background: rgba($gold,.9);
-		}
-	}
-	&.pf-card-mini-photography {
-		.user-icon,
-		.pf-card-mini-banner {
-			background-color: $moola;
-		}
-		&.large .pf-card-link {
-			background: rgba($moola,.9);
-		}
-	}
-	&.pf-card-mini-tech {
-		.user-icon,
-		.pf-card-mini-banner {
-			background-color: $azure;
-		}
-		&.large .pf-card-link {
-			background: rgba($azure,.9);
-		}
-	}
-	&.pf-card-mini-household {
-		.user-icon,
-		.pf-card-mini-banner {
-			background-color: $cobalt;
-		}
-		&.large .pf-card-link {
-			background: rgba($cobalt,.9);
-		}
-	}
-	&.pf-card-mini-athletic {
-		.user-icon,
-		.pf-card-mini-banner {
-			background-color: $eggplant;
-		}
-		&.large .pf-card-link {
-			background: rgba($eggplant,.9);
-		}
-	}
-	&.pf-card-mini-academic {
-		.user-icon,
-		.pf-card-mini-banner {
-			background-color: $cerise;
-		}
-		&.large .pf-card-link {
-			background: rgba($cerise,.9);
-		}
-	}
-}
 // profile card
 .pf-card {
 	width: 100%;
@@ -4282,12 +4145,6 @@ a.category-tile {
 				@include flex-center;
 				height: 100%;
 				padding: 15px;
-				&:hover, &:focus {
-					background: rgba($slate, .2);
-				}
-				&:active {
-					background: rgba($slate, .4);
-				}
 				.badge-top {
 					top: -20px;
 				}
@@ -4323,6 +4180,14 @@ a.category-tile {
 					text-align: center;
 				}
 			}
+			a.tile {
+				&:hover, &:focus {
+					background: rgba($slate, .2);
+				}
+				&:active {
+					background: rgba($slate, .4);
+				}
+			}
 		}
 		&.bg-slate {
 			&:after {
@@ -4334,7 +4199,7 @@ a.category-tile {
 						background: mix($slate, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:hover, &:focus {
 						background: rgba(white, .1);
 					}
@@ -4366,7 +4231,7 @@ a.category-tile {
 						background: mix($taupe, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:hover, &:focus {
 						background: rgba(white, .1);
 					}
@@ -4398,7 +4263,7 @@ a.category-tile {
 						background: mix($campus, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: $campus;
 						background: mix($campus, white);
@@ -4429,6 +4294,8 @@ a.category-tile {
 				}
 				.tile {
 					color: lighten($slate, 15%);
+				}
+				a.tile {
 					svg {
 						* {
 							stroke: lighten($slate, 15%);
@@ -4458,6 +4325,35 @@ a.category-tile {
 				}
 			}
 		}
+		&.bg-rocket {
+			&:after {
+				background: mix($rocket, white, 75%);
+			}
+			li {
+				&:not(:last-child) {
+					&:after {
+						background: mix($rocket, white, 75%);
+					}
+				}
+				a.tile {
+					&:active {
+						color: mix($rocket, $slate);
+						background: mix($rocket, white);
+						svg {
+							* {
+								stroke: mix($rocket, $slate);
+								&:not(.line) {
+									fill: rgba(mix($rocket, $slate), .3);
+								}
+							}
+						}
+						h1, h2 {
+							color: mix($rocket, $slate);
+						}
+					}
+				}
+			}
+		}
 		&.bg-shamrock {
 			&:after {
 				background: mix($shamrock, white, 75%);
@@ -4468,7 +4364,7 @@ a.category-tile {
 						background: mix($shamrock, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($shamrock, $slate);
 						background: mix($shamrock, white);
@@ -4497,7 +4393,7 @@ a.category-tile {
 						background: mix($robin, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($robin, $slate);
 						background: mix($robin, white);
@@ -4526,7 +4422,7 @@ a.category-tile {
 						background: mix($lake, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($lake, $slate);
 						background: mix($lake, white);
@@ -4555,7 +4451,7 @@ a.category-tile {
 						background: mix($moxie, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($moxie, $slate);
 						background: mix($moxie, white);
@@ -4584,7 +4480,7 @@ a.category-tile {
 						background: mix($crimson, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($crimson, $slate);
 						background: mix($crimson, white);
@@ -4613,7 +4509,7 @@ a.category-tile {
 						background: mix($auburn, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($auburn, $slate);
 						background: mix($auburn, white);
@@ -4642,7 +4538,7 @@ a.category-tile {
 						background: mix($orange, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($orange, $slate);
 						background: mix($orange, white);
@@ -4671,7 +4567,7 @@ a.category-tile {
 						background: mix($gold, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($gold, $slate);
 						background: mix($gold, white);
@@ -4700,7 +4596,7 @@ a.category-tile {
 						background: mix($moola, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($moola, $slate);
 						background: mix($moola, white);
@@ -4729,7 +4625,7 @@ a.category-tile {
 						background: mix($azure, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($azure, $slate);
 						background: mix($azure, white);
@@ -4758,7 +4654,7 @@ a.category-tile {
 						background: mix($cobalt, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($cobalt, $slate);
 						background: mix($cobalt, white);
@@ -4787,7 +4683,7 @@ a.category-tile {
 						background: mix($eggplant, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($eggplant, $slate);
 						background: mix($eggplant, white);
@@ -4816,7 +4712,7 @@ a.category-tile {
 						background: mix($cerise, white, 75%);
 					}
 				}
-				.tile {
+				a.tile {
 					&:active {
 						color: mix($cerise, $slate);
 						background: mix($cerise, white);

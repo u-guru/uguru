@@ -1001,8 +1001,8 @@ function camelCase(input) {
 }
 
 function classArgsHasInject(args) {
-
-  return args && args.length && (args.split('inject').length > 1);
+  console.log(args);
+  return (args && args.length && (args.split('inject').length > 1)) || "";
 }
 
 function parseElemStateAttrValueArgs(arg_arr) {
