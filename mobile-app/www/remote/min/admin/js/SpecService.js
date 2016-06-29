@@ -104,7 +104,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             specObj.data.docs = {launch:launchDocs}
             specObj.data.mobile = {toggle:toggleMobileMode, width:400, height:768, show:false, template:specObj.template_path, url:window.location.href}
             specObj.data.open = specObj.open;
-            specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope);
+            specObj.data.statesDropdown = generateDropdownFromStates(states, parent_container, real_scope, param);
             specObj.data.stateTags = specObj.data.statesDropdown.options;
             specObj.data.stateTagClicked = specObj.data.statesDropdown.onOptionClick;
             specObj.data.initCodepenData = launchNewCodepen(scope);
@@ -655,7 +655,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
 
     }
 
-    function generateDropdownFromStates(states, parent_container, scope) {
+    function generateDropdownFromStates(states, parent_container, scope, param) {
         var dropdownArr = [];
         var elemUniqueStateArr = [];
         var elemStateArr = [];
@@ -697,7 +697,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             label: 'toggle states',
             options: dropdownArr,
             key: 'title',
-            onOptionClick: applyDropdownAction,
+            onOptionClick: applyDropdownAction(param),
             selectedIndex: getDefaultSelectedIndex(states)
         }
 
@@ -707,62 +707,64 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             return 1;
         }
 
-        function applyDropdownAction(option, index) {
-            if (option.title === 'onInit') {
-                window.location.reload(true);
-            } else if (option.title.toLowerCase().indexOf('onclick') > -1) {
-                elem = document.querySelector(option.state.selector);
-                $timeout(function() {
-                    angular.element(elem).triggerHandler('click');
-                    option.parent_scope.$apply();
-                })
-            }
-            else if (option.title.toLowerCase().indexOf('click') > -1) {
-                elem = document.querySelector(option.state.selector);
-                $timeout(function() {
-                    angular.element(elem).triggerHandler('click');
-                    option.parent_scope.$apply();
-                })
-            } else if (option.title.toLowerCase() === 'onhover') {
-                parent_elem = document.querySelector(option.parent_elem);
-                onHoverElems = parent_elem.querySelectorAll('[on-hover]');
-                for (var i = 0 ; i < onHoverElems.length; i++) {
-                    onHoverElems[i].classList.add('activate-hover');
-                }
-            }
-            else if (option.title.toLowerCase() === 'onactivate') {
-                parent_elem = document.querySelector(option.parent_elem);
-                onActivateElems = parent_elem.querySelectorAll('[on-activate]');
-                for (var i = 0 ; i < onActivateElems.length; i++) {
-                    onActivateElems[i].classList.add('activate');
-                }
-            }
-            else if (option.is_elem_state) {
-                var stateElems = document.querySelectorAll('[' + option.state.selector + ']')
-                for (var i = 0; i < stateElems.length; i++) {
-                    stateElems[i].classList.add(option.state)
-                }
-            }
-            if (scope.madlib.spec.data.settings.cache.showStatus) {
-                var statusBarElem = document.querySelector('#spec-status-bar');
-                if (statusBarElem) {
-                    statusBarElem.classList.add('animated', 'slideInDown');
-                    scope.madlib.spec.data.status_msg = option.title + ' is running...';
-                    console.log(scope.madlib.spec.data.status_msg);
+        function applyDropdownAction(param) {
+            return function(option, index) {
+                if (option.title === 'onInit') {
+                    window.location.reload(true);
+                } else if (option.title.toLowerCase().indexOf('onclick') > -1) {
+                    elem = document.querySelector(option.state.selector);
                     $timeout(function() {
-                        scope.$apply();
-                        scope.madlib.spec.data.toggleStatus = true;
+                        angular.element(elem).triggerHandler('click');
+                        option.parent_scope.$apply();
                     })
+                }
+                else if (option.title.toLowerCase().indexOf('click') > -1) {
+                    elem = document.querySelector(option.state.selector);
                     $timeout(function() {
-                        statusBarElem.classList.remove('animated', 'slideInDown');
-                    }, 1000)
-                    $timeout(function() {
-                            statusBarElem.classList.add('animated', 'slideOutUp');
-                            $timeout(function() {
-                                scope.madlib.spec.data.toggleStatus = false;
-                                statusBarElem.classList.remove('animated', 'slideOutUp');
-                            }, 1000);
-                    }, 3000);
+                        angular.element(elem).triggerHandler('click');
+                        option.parent_scope.$apply();
+                    })
+                } else if (option.title.toLowerCase() === 'onhover') {
+                    parent_elem = document.querySelector(option.parent_elem);
+                    onHoverElems = parent_elem.querySelectorAll('[on-hover]');
+                    for (var i = 0 ; i < onHoverElems.length; i++) {
+                        onHoverElems[i].classList.add('activate-hover');
+                    }
+                }
+                else if (option.title.toLowerCase() === 'onactivate') {
+                    parent_elem = document.querySelector(option.parent_elem);
+                    onActivateElems = parent_elem.querySelectorAll('[on-activate]');
+                    for (var i = 0 ; i < onActivateElems.length; i++) {
+                        onActivateElems[i].classList.add('activate');
+                    }
+                }
+                else if (option.is_elem_state) {
+                    var stateElems = document.querySelectorAll('[' + option.state.selector + ']')
+                    for (var i = 0; i < stateElems.length; i++) {
+                        stateElems[i].classList.add(option.state)
+                    }
+                }
+                if (scope[param].spec.data.settings.cache.showStatus) {
+                    var statusBarElem = document.querySelector('#spec-status-bar');
+                    if (statusBarElem) {
+                        statusBarElem.classList.add('animated', 'slideInDown');
+                        scope[param].spec.data.status_msg = option.title + ' is running...';
+                        console.log(scope[param].spec.data.status_msg);
+                        $timeout(function() {
+                            scope.$apply();
+                            scope[param].spec.data.toggleStatus = true;
+                        })
+                        $timeout(function() {
+                            statusBarElem.classList.remove('animated', 'slideInDown');
+                        }, 1000)
+                        $timeout(function() {
+                                statusBarElem.classList.add('animated', 'slideOutUp');
+                                $timeout(function() {
+                                    scope[param].spec.data.toggleStatus = false;
+                                    statusBarElem.classList.remove('animated', 'slideOutUp');
+                                }, 1000);
+                        }, 3000);
+                    }
                 }
             }
         }

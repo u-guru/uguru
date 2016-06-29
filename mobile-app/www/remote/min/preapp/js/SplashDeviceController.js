@@ -21,8 +21,7 @@ angular.module('uguru.preApp')
       })
     })
 
-
-    SpecService.initSpec(device, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', {});
+    SpecService.initSpec('device', $scope);
   }
 ])
 

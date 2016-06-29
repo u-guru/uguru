@@ -69,11 +69,30 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
               {
                 title: 'Device States',
                 identifier: 'device',
+                parentId: '#splash-device',
                 reference: {
                     controller: 'SplashDeviceController',
+                    controllerUrl: 'preapp/js/SplashDeviceController.js',
                     templateUrl: 'preapp/templates/splash.device.html',
                     routeUrl: 'dev/splash/device',
-                }
+                    cssUrl: 'preapp/css/scss/partials/_device.scss'
+                },
+                states: [
+                  {title: 'drawOnInit', description: 'Should draw itself in while Splash Madlib state is activating', functional:true, animated:false, tested:false},
+                  {title: 'onUniversityChange', description: 'Should redraw, burst, maintain indication of university color in some way + return back to original size & position', functional:false, animated:false, tested:false},
+                  {title: 'onSearchStart', description: 'Should signal that its searching for tutors', functional:false, animated:false, tested:false},
+                  {title: 'onSearchStartPropogateWaves', description: 'As search state conveys something is loading, propogate the circular loader outside the bounds in an incremental fashion until screen is taken over', functional:false, animated:false, tested:false},
+                  {title: 'onCounterStart', description: 'Inner device screen should start counting to a particular number', functional:false, animated:false, tested:false},
+                  {title: 'onCounterIncrement', description: 'This state occurs each time the number changes in the counter, signaling other animations with the results completed so far', functional:false, animated:false, tested:false},
+                  {title: 'onCounterCompleteCounterExit', description: 'Inner device screen should transition from a counter to a state highlighting the gurus available', functional:false, animated:false, tested:false},
+                  {title: 'onCounterCompleteGuruEject', description: 'Inner device screen should simultaneous init/prepare to eject gurus as ', functional:false, animated:false, tested:false},
+                  {title: 'onSingleGuruEnter', description: 'How an available Guru w/ course enters the device for each number in the counter', functional:false, animated:false, tested:false},
+                  {title: 'onSingleGuruEject', description: 'Inner device screen should transition from a counter to a state highlighting the gurus available', functional:false, animated:false, tested:false},
+                  {title: 'onGuruProfileEnter', description: 'The transition of a guru profile into the mobile device/laptop', functional:false, animated:false, tested:false},
+                  {title: 'onGuruProfileExit', description: 'The exiting transition of a guru profile into the mobile device/laptop', functional:false, animated:false, tested:false},
+                  {title: 'onGuruProfileMorph', description: 'The interrim state of a Guru profile given the user selects the morph device icon/button', functional:false, animated:false, tested:false},
+                  {title: 'onGuruDeviceMorph', description: 'The transition of a mobile device to laptop or vice versa', functional:false, animated:false, tested:false}
+                ]
               },
               {
                 title: 'Splash Header Nav',

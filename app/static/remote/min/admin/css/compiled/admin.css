@@ -1,10 +1,23 @@
 @media screen and (max-width: 768px) {
-  #dev-toolbar-options {
+  #dev-toolbar {
     display: none; } }
-.states-dropdown {
-  font-size: 18px !important; }
-  .states-dropdown * {
-    font-size: 18px !important; }
+#codepen-edit {
+  padding: 0 !important;
+  position: absolute;
+  top: -24px;
+  right: 15px;
+  width: 48px;
+  height: 48px; }
+  #codepen-edit span {
+    transition: all 150ms ease-in-out; }
+  #codepen-edit #codepen-input:hover + span, #codepen-edit #codepen-input:focus + span {
+    background: #a1e5ce; }
+    #codepen-edit #codepen-input:hover + span svg *, #codepen-edit #codepen-input:focus + span svg * {
+      stroke: #428a74 !important; }
+  #codepen-edit #codepen-input:active + span {
+    background: #428a74; }
+    #codepen-edit #codepen-input:active + span svg * {
+      stroke: white !important; }
 
 .short .component-item > div:nth-child(3) {
   height: 200px; }
@@ -132,145 +145,6 @@
     .component-item-nav.states a:active, .component-item-nav.states a.active {
       background: #2BB3B8; }
 
-.admin-html h2 {
-  width: 100%;
-  padding: 15px 15px 5px;
-  font-weight: 600;
-  font-size: 24px; }
-.admin-html ul {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  width: 100%;
-  padding: 7.5px;
-  margin-top: -15px; }
-  .admin-html ul:last-child {
-    margin-bottom: 15px; }
-  .admin-html ul.no-input li span {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    height: 34px;
-    font-family: "Source Code Pro", monospace !important;
-    font-size: 14px;
-    font-weight: 600; }
-  .admin-html ul.border li span:not(.inside) {
-    position: relative; }
-    .admin-html ul.border li span:not(.inside) > input {
-      position: relative;
-      z-index: 10; }
-    .admin-html ul.border li span:not(.inside) .inside {
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: calc(100% - 4px);
-      height: calc(100% - 4px);
-      border-width: 2px;
-      border-style: solid;
-      border-radius: 2px; }
-  .admin-html ul li {
-    padding: 7.5px; }
-    .admin-html ul li > div:not(.size-auto) {
-      position: relative;
-      height: 120px;
-      border-radius: 2px; }
-    .admin-html ul li span:not(.inside) {
-      display: block;
-      padding: 5px 10px;
-      color: #40484B;
-      border-radius: 2px; }
-      .admin-html ul li span:not(.inside):not([class*="bg-"]) {
-        background: white; }
-      .admin-html ul li span:not(.inside)[class*="flex"] {
-        -ms-box-orient: horizontal !important;
-        display: -webkit-box !important;
-        display: -moz-box !important;
-        display: -ms-flexbox !important;
-        display: -moz-flex !important;
-        display: -webkit-flex !important;
-        display: flex !important; }
-      .admin-html ul li span:not(.inside)[class*="bg-"] {
-        color: white; }
-        .admin-html ul li span:not(.inside)[class*="bg-"] input {
-          color: white; }
-      .admin-html ul li span:not(.inside).bg-smoke {
-        border: 1px solid #d1d9db; }
-      .admin-html ul li span:not(.inside):not([class*="weight-"]) {
-        weight: 600; }
-        .admin-html ul li span:not(.inside):not([class*="weight-"]) input {
-          font-weight: 600; }
-    .admin-html ul li input {
-      background: none;
-      font-family: "Source Code Pro", monospace !important;
-      cursor: text; }
-
-.admin-definition-list dl div {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position: relative;
-  padding: 7.5px; }
-  .admin-definition-list dl div[deprecate] {
-    color: rgba(93, 172, 193, 0.3); }
-  .admin-definition-list dl div dt {
-    width: calc(100% / 3);
-    padding: 7.5px;
-    font-size: 28px;
-    font-weight: 600; }
-  .admin-definition-list dl div dd {
-    width: calc(100% / 3 * 2);
-    padding: 7.5px;
-    font-size: 18px;
-    font-weight: 400; }
-  .admin-definition-list dl div:not(:last-child):after {
-    border-radius: 1000px;
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: -1px;
-    left: 15px;
-    width: calc(100% - 30px);
-    height: 2px;
-    background: rgba(93, 172, 193, 0.2); }
-
-.preview-container {
-  position: relative !important;
-  overflow: hidden !important; }
-  .preview-container .fixed {
-    position: absolute !important; }
-
-/* ---------- KEYFRAMES */
 #keys-keyframe-attr {
   height: calc(100% - 130px); }
   #keys-keyframe-attr.active {
@@ -643,6 +517,144 @@
         font-size: 16px; }
       .anim-timeline .anim-controls > div .checkbox-container input:checked + span {
         background: #43cb9d; }
+
+.admin-html h2 {
+  width: 100%;
+  padding: 15px 15px 5px;
+  font-weight: 600;
+  font-size: 24px; }
+.admin-html ul {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  width: 100%;
+  padding: 7.5px;
+  margin-top: -15px; }
+  .admin-html ul:last-child {
+    margin-bottom: 15px; }
+  .admin-html ul.no-input li span {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 34px;
+    font-family: "Source Code Pro", monospace !important;
+    font-size: 14px;
+    font-weight: 600; }
+  .admin-html ul.border li span:not(.inside) {
+    position: relative; }
+    .admin-html ul.border li span:not(.inside) > input {
+      position: relative;
+      z-index: 10; }
+    .admin-html ul.border li span:not(.inside) .inside {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: calc(100% - 4px);
+      height: calc(100% - 4px);
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 2px; }
+  .admin-html ul li {
+    padding: 7.5px; }
+    .admin-html ul li > div:not(.size-auto) {
+      position: relative;
+      height: 120px;
+      border-radius: 2px; }
+    .admin-html ul li span:not(.inside) {
+      display: block;
+      padding: 5px 10px;
+      color: #40484B;
+      border-radius: 2px; }
+      .admin-html ul li span:not(.inside):not([class*="bg-"]) {
+        background: white; }
+      .admin-html ul li span:not(.inside)[class*="flex"] {
+        -ms-box-orient: horizontal !important;
+        display: -webkit-box !important;
+        display: -moz-box !important;
+        display: -ms-flexbox !important;
+        display: -moz-flex !important;
+        display: -webkit-flex !important;
+        display: flex !important; }
+      .admin-html ul li span:not(.inside)[class*="bg-"] {
+        color: white; }
+        .admin-html ul li span:not(.inside)[class*="bg-"] input {
+          color: white; }
+      .admin-html ul li span:not(.inside).bg-smoke {
+        border: 1px solid #d1d9db; }
+      .admin-html ul li span:not(.inside):not([class*="weight-"]) {
+        weight: 600; }
+        .admin-html ul li span:not(.inside):not([class*="weight-"]) input {
+          font-weight: 600; }
+    .admin-html ul li input {
+      background: none;
+      font-family: "Source Code Pro", monospace !important;
+      cursor: text; }
+
+.admin-definition-list dl div {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  padding: 7.5px; }
+  .admin-definition-list dl div[deprecate] {
+    color: rgba(93, 172, 193, 0.3); }
+  .admin-definition-list dl div dt {
+    width: calc(100% / 3);
+    padding: 7.5px;
+    font-size: 28px;
+    font-weight: 600; }
+  .admin-definition-list dl div dd {
+    width: calc(100% / 3 * 2);
+    padding: 7.5px;
+    font-size: 18px;
+    font-weight: 400; }
+  .admin-definition-list dl div:not(:last-child):after {
+    border-radius: 1000px;
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 15px;
+    width: calc(100% - 30px);
+    height: 2px;
+    background: rgba(93, 172, 193, 0.2); }
+
+.preview-container {
+  position: relative !important;
+  overflow: hidden !important; }
+  .preview-container .fixed {
+    position: absolute !important; }
 
 @-webkit-keyframes samirAnim {
   0% {
