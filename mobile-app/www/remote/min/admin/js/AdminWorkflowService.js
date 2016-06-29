@@ -67,7 +67,8 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     cssUrl: 'preapp/css/scss/partials/adlib/_main.scss'
                 },
                 states: [
-                    {title: 'onEnter', functional: true, animated: false, tested: false},
+                    {title: 'onActivate', functional: true, animated: false, tested: false},
+                    {title: 'onTagOneInit', selector: '[blank-num="1"] a', testing: {'css': ['stroke-dasharray']}, functional: true, animated: false, tested: false},
                     {title: 'onTagOneClicked', selector: '[blank-num="1"] a', functional: true, animated: false, tested: false},
                     {title: 'onTagTwoClicked', selector: '[blank-num="2"] a',functional: true, animated: false, tested: false},
                     {title: 'onTagDeselected', selector: '[blank-num="1"] .translate-blank-1', functional: true, animated: false, tested: false},
