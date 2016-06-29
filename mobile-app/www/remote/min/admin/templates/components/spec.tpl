@@ -139,13 +139,13 @@
     <!-- DEV TOOLBAR -->
     <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate u-bounceInUp-subtle' ng-if="spec.toggleDev">
         <!-- SHORTCUTS -->
-        <div id='dev-bar-shortcuts' class="flex full-x animated" ng-if='spec.showShortcuts'>
+        <div id='dev-bar-shortcuts' class="flex full-x animated bg-campus" ng-if='spec.showShortcuts'>
             <div class="bg-lake p15xy flex-center-vertical width-128">
                 <h2 class="txt-18 semibold">Shortcuts</h2>
             </div>
             <ul class="flex-center-vertical p15-grid overflow-x no-scrollbar" style="width: calc(100% - 128px);">
                 <li class="flex-center-vertical txt-16 semibold" ng-repeat='shortcut in spec.shortcuts_list' ng-click='spec.stateTagClicked(state_tag, $index)'>
-                    <span class='bg-lake flex-center width-36 height-36 radius-2 txt-18'>{{shortcut.key}}</span>
+                    <span class='bg-lake flex-center p15x height-36 radius-2 txt-18'>{{shortcut.key}}</span>
                     <span class="block m10left">{{shortcut.action}}</span>
                 </li>
             </ul>
@@ -221,12 +221,6 @@
                 </li>
                 <li>
                     <div class="flex-center-vertical">
-                        <span class="height-36 txt-18 bg-shamrock radius-2 p10x flex-center semibold" ng-if='spec.settings.cache.defaultState.index'>{{spec.stateTags[spec.settings.cache.defaultState.index].title || '-'}}</span>
-                        <div class="p15left txt-18 semibold">Default State</div>
-                    </div>
-                </li>
-                <li>
-                    <div class="flex-center-vertical">
                         <input class="radius-2 height-36 p15x txt-center txt-16" ng-change="spec.settings.updateProperty()" ng-model="spec.settings.cache.autoApplyDelay" size="5"/>
                         <div class="p15left txt-18 semibold">Default Delay</div>
                     </div>
@@ -281,6 +275,9 @@
             </li>
             <li ng-if='spec.mobile.show'>
                 <input class="radius-2 height-36 p15x txt-center txt-18" type='text' placeholder="width" size="4" ng-change='spec.mobile.width.length > 2 && spec.mobile.toggle(true)' ng-model="spec.mobile.width" />
+            </li>
+            <li ng-if='spec.settings.cache.defaultState.index'>
+                <span class="height-36 txt-18 bg-white txt-moxie radius-2 p10x flex-center semibold">{{spec.stateTags[spec.settings.cache.defaultState.index].title || '-'}}</span>
             </li>
             <li id="codepen-edit" ng-if='spec.codepenData'>
                 <form action="https://codepen.io/pen/define" method="POST" target="_blank">
