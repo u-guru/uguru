@@ -3671,6 +3671,71 @@ a[class*="-container"]:hover .map-stadium-outside {
         height: 200px;
         padding: 15px;
         font-size: 24px !important; } }
+.projector-account .projector-account-switch-desktop {
+  display: none; }
+.projector-account .projector-account-content {
+  padding-top: 80px; }
+.projector-account .projector-account-inside {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  align-content: space-between; }
+.projector-account .projector-account-buttons.mobile {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex; }
+.projector-account .projector-account-buttons.desktop {
+  display: none;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+
+@media screen and (min-width: 768px) {
+  .projector-account .projector-account-switch-desktop {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; }
+  .projector-account .projector-account-buttons.mobile {
+    display: none; }
+  .projector-account .projector-account-buttons.desktop {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; } }
 #faq .main {
   -ms-box-orient: horizontal;
   display: -webkit-box;
