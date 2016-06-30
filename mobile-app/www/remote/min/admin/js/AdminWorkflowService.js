@@ -111,58 +111,89 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
               {
                 title: 'Splash Header Nav',
                 identifier: 'splash_nav',
+                parentId:'#splash-nav-bar',
                 reference: {
+                    controller: 'SplashNavController',
+                    controllerUrl: 'preapp/js/SplashNavController.js',
                     templateUrl: 'preapp/templates/splash.nav.html',
                     routeUrl: 'dev/splash/nav',
-                    cssUrl: 'preapp/css/scss/partials/_splash-headers.scss'
+                    cssUrl: 'preapp/css/scss/partials/splash/_headers.scss'
                 },
-                status: {css: false}
+                states: [
+                  {title: 'onEnterSidebarIcon', description: 'Entrance of sidebar icon', functional:false, animated:false, tested:false},
+                  {title: 'onEnterCategoriesDropdown', description: 'Entrance of categories dropdown', functional:false, animated:false, tested:false},
+                  {title: 'onEnterUniversitiesDropdown', description: 'Entrance of universities dropdown', functional:false, animated:false, tested:false},
+                  {title: 'onClickSideBarIcon', description: 'sidebar icon is clicked', functional:false, animated:false, tested:false},
+                  {title: 'onClickPowerupsIcon', description: 'Powerup button is clicked and the view is initialized', functional:false, animated:false, tested:false},
+                  {title: 'onClickUniversityDropdown', description: 'Universities dropdown is clicked.', functional:false, animated:false, tested:false},
+                  {title: 'onClickCategoriesDropdown', description: 'Categories dropdown is clicked.', functional:false, animated:false, tested:false},
+                  {title: 'onHoverSideBarIcon', description: 'Sidebar icon is hovered while in Splash madlib view', functional:false, animated:false, tested:false},
+                  {title: 'onHoverPowerupsIcon', description: 'Powerup icon is hovered while in Splash madlib view', functional:false, animated:false, tested:false},
+                  {title: 'onHoverUniversityDropdown', description: 'Entire universities dropdown is hovered while in "compressed" mode', functional:false, animated:false, tested:false},
+                  {title: 'onHoverCategoriesDropdown', description: 'Entire categories dropdown is hovered while in "compressed" mode', functional:false, animated:false, tested:false},
+                  {title: 'onExitPowerupsIcon', description: 'Exit of sidebar icon', functional:false, animated:false, tested:false},
+                  {title: 'onExitSidebarIcon', description: 'Exit of sidebar icon', functional:false, animated:false, tested:false},
+                ]
               },
               {
-                title: 'Splash Map',
-                identifier: 'splash_map',
+                title: 'Splash Maps',
+                identifier: 'splash_maps',
+                parentId: '#splash-map-view',
                 reference: {
-                    controller: 'SplashMapController',
+                    controller: 'SplashMapsController',
+                    controllerUrl: 'preapp/js/SplashMapsController.js',
                     templateUrl: 'preapp/templates/splash.map.html',
                     routeUrl: 'dev/splash/map',
+                    cssUrl: 'preapp/css/scss/partials/splash/_maps.scss'
                 },
-                status: {css: false}
+                states: []
               },
               {
                 title: 'Splash Sidebar',
                 identifier: 'sidebar',
+                parentId: '#splash-sidebar',
                 reference: {
                     controller: 'SplashSidebarController',
+                    controllerUrl: 'preapp/js/SplashSidebarController.js',
                     templateUrl: 'preapp/templates/splash.sidebar.html',
                     routeUrl: 'dev/splash/sidebar',
+                    cssUrl: 'preapp/css/scss/partials/splash/_sidebar.scss'
                 },
-                status: {css: false}
+                states: []
               },
               {
                 title: 'Splash Powerups',
-                identifier: 'powerup',
+                identifier: 'powerups',
+                parentId: '#splash-powerups',
                 reference: {
                     controller: 'SplashPowerupsController',
-                    templateUrl: 'preapp/templates/powerups.html',
-                    routeUrl: 'dev/splash/powerups'
+                    controllerUrl: 'preapp/js/SplashPowerupsController.js',
+                    templateUrl: 'preapp/templates/splash.powerups.html',
+                    routeUrl: 'dev/splash/powerups',
+                    cssUrl: 'preapp/css/scss/partials/splash/_powerups.scss'
                 },
-                status: {css: false}
+                states: []
               },
               {
                 title: "FAQ",
                 identifier: 'faq',
+                parentId:'#splash-sidebar-faq',
                 reference: {
-                    controller: 'SplashFAQController',
+                    controller: 'SplashFaqController',
+                    controllerUrl: 'preapp/js/menu/SplashFaqController.js',
                     templateUrl: 'preapp/templates/sidebar/faq.html',
-                    routeUrl: 'dev/splash/faq'
+                    routeUrl: 'dev/splash/faq',
+                    cssUrl: null
                 },
-                status: {css: false}
+                states:[]
               },
               {
                 title: "Pricing Page",
                 identifier: 'pricing',
+                parentId: '#splash-sidebar-pricing',
                 reference: {
                     controller: 'SplashPricingController',
+                    controllerUrl: 'preapp/js/menu/SplashPricingController.js',
                     templateUrl: 'preapp/templates/sidebar/pricing.html',
                     routeUrl: 'dev/splash/pricing'
                 },
@@ -171,8 +202,10 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
               {
                 title: "Team Page",
                 identifier: 'team',
+                parentId: '#splash-sidebar-team',
                 reference: {
                     controller: 'SplashTeamController',
+                    controllerUrl: 'preapp/js/menu/SplashTeamController.js',
                     templateUrl: 'preapp/templates/sidebar/team.html',
                     routeUrl: 'dev/splash/team'
                 },
