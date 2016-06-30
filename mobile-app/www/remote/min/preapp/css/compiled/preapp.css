@@ -1832,11 +1832,9 @@
     transform: scale(1); }
 
 @media screen and (min-width: 860px) {
-  .splash-burger {
-    margin: 0 15px 0 0 !important; }
-    .splash-burger#cta-box-powerups {
-      right: 57px;
-      top: 14px; }
+  #cta-box-powerups {
+    right: 67px;
+    top: 14px; }
 
   .splash-hero-nav.desktop {
     -ms-box-orient: horizontal !important;
@@ -2218,8 +2216,7 @@
   position: absolute;
   z-index: 2;
   top: 50%;
-  left: 50%;
-  opacity: 0.1; }
+  left: 50%; }
   @media screen and (min-width: 768px) {
     .splash-device {
       display: block; } }
@@ -2239,6 +2236,294 @@
       .splash-device.splash-device-iphone .splash-device-content .coach-click, .splash-device.splash-device-iphone .splash-device-profile .coach-click {
         bottom: 65px !important;
         right: -90px !important; }
+
+.splash-device-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  position: absolute; }
+  .splash-device-content .splash-device-search {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%; }
+    .splash-device-content .splash-device-search .splash-device-found {
+      margin-bottom: 10px; }
+    .splash-device-content .splash-device-search .splash-device-search-inside {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      height: 100%; }
+    .splash-device-content .splash-device-search h1 {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      border-radius: 1000px;
+      margin-top: 15px;
+      width: 110px;
+      height: 110px;
+      border: 3px solid white;
+      background: rgba(64, 72, 75, 0.5);
+      font-size: 72px;
+      font-weight: 600; }
+    .splash-device-content .splash-device-search p {
+      width: 100%;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 5px 0 0; }
+    .splash-device-content .splash-device-search ul {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap; }
+      .splash-device-content .splash-device-search ul.splash-device-search-gurus li {
+        -webkit-transition: all 150ms ease-in-out;
+        -moz-transition: all 150ms ease-in-out;
+        -ms-transition: all 150ms ease-in-out;
+        -o-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        width: calc(100% / 3);
+        padding: 8px 0; }
+        .splash-device-content .splash-device-search ul.splash-device-search-gurus li div {
+          -webkit-transition: all 150ms ease-in-out;
+          -moz-transition: all 150ms ease-in-out;
+          -ms-transition: all 150ms ease-in-out;
+          -o-transition: all 150ms ease-in-out;
+          transition: all 150ms ease-in-out; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li div.splash-marker-guru-first {
+            -webkit-transition-delay: 4500ms;
+            -moz-transition-delay: 4500ms;
+            -ms-transition-delay: 4500ms;
+            -o-transition-delay: 4500ms;
+            transition-delay: 4500ms;
+            filter: alpha(opacity=0) !important;
+            opacity: 0 !important; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li div.splash-marker-guru-active {
+            filter: alpha(opacity=0);
+            opacity: 0; }
+        .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru {
+          -webkit-transition: all 150ms ease-in-out;
+          -moz-transition: all 150ms ease-in-out;
+          -ms-transition: all 150ms ease-in-out;
+          -o-transition: all 150ms ease-in-out;
+          transition: all 150ms ease-in-out;
+          border-radius: 1000px;
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-content: center;
+          align-content: center;
+          -webkit-align-items: center;
+          align-items: center;
+          position: relative;
+          height: 30px;
+          width: 74px;
+          padding-left: 28px;
+          border: 2px solid white;
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 1;
+          text-align: center; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic {
+            background: rgba(240, 79, 84, 0.3); }
+            .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic:focus {
+              background: #F04F54; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-freelancing {
+            background: rgba(229, 117, 60, 0.3); }
+            .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-freelancing:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-freelancing:focus {
+              background: #E5753C; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-baking {
+            background: rgba(246, 198, 78, 0.3); }
+            .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-baking:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-baking:focus {
+              background: #F6C64E; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-photography {
+            background: rgba(129, 181, 102, 0.3); }
+            .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-photography:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-photography:focus {
+              background: #81B566; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-tech {
+            background: rgba(85, 164, 183, 0.3); }
+            .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-tech:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-tech:focus {
+              background: #55A4B7; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-household {
+            background: rgba(120, 114, 227, 0.3); }
+            .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-household:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-household:focus {
+              background: #7872e3; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-athletic {
+            background: rgba(154, 91, 197, 0.3); }
+            .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-athletic:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-athletic:focus {
+              background: #9A5BC5; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic {
+            background: rgba(230, 56, 155, 0.3); }
+            .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic:hover, .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru.bg-academic:focus {
+              background: #e6389b; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru .user-icon {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 30px;
+            height: 30px;
+            border-width: 2px; }
+          .splash-device-content .splash-device-search ul.splash-device-search-gurus li .marker-guru .marker-guru-course {
+            display: block;
+            width: 100%; }
+      .splash-device-content .splash-device-search ul.splash-device-search-courses {
+        margin-top: -15px; }
+        .splash-device-content .splash-device-search ul.splash-device-search-courses li {
+          width: 50%; }
+          .splash-device-content .splash-device-search ul.splash-device-search-courses li span {
+            -ms-box-orient: horizontal;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-align-content: center;
+            align-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            border-radius: 1000px;
+            width: 100%;
+            max-width: 105px;
+            margin: 0 auto;
+            height: 36px;
+            border: 2px solid white;
+            font-size: 18px;
+            font-weight: 600; }
+            .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-delivery {
+              background: rgba(240, 79, 84, 0.25); }
+            .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-freelancing {
+              background: rgba(229, 117, 60, 0.25); }
+            .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-baking {
+              background: rgba(246, 198, 78, 0.25); }
+            .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-photography {
+              background: rgba(129, 181, 102, 0.25); }
+            .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-tech {
+              background: rgba(85, 164, 183, 0.25); }
+            .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-household {
+              background: rgba(120, 114, 227, 0.25); }
+            .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-athletic {
+              background: rgba(154, 91, 197, 0.25); }
+            .splash-device-content .splash-device-search ul.splash-device-search-courses li span.bg-academic {
+              background: rgba(230, 56, 155, 0.25); }
+  .splash-device-content .splash-device-button {
+    -webkit-align-self: flex-end;
+    align-self: flex-end;
+    width: 100%; }
+  .splash-device-content button {
+    width: 100%;
+    height: 54px;
+    font-weight: 600;
+    text-transform: uppercase; }
+    .splash-device-content button.opacity-0 {
+      visibility: hidden; }
+      .splash-device-content button.opacity-0:hover, .splash-device-content button.opacity-0:focus {
+        filter: alpha(opacity=0) !important;
+        opacity: 0 !important; }
+    .splash-device-content button.animated {
+      -webkit-animation-delay: 1000ms;
+      -moz-animation-delay: 1000ms;
+      -ms-animation-delay: 1000ms;
+      -o-animation-delay: 1000ms;
+      animation-delay: 1000ms; }
+
+.coach-click {
+  display: block;
+  position: absolute;
+  width: 106px; }
+  .coach-click path:nth-child(1) {
+    stroke-dasharray: 137;
+    stroke-dashoffset: 137; }
+  .coach-click path:nth-child(2) {
+    stroke-dasharray: 53;
+    stroke-dashoffset: 53; }
+  .coach-click path.animate:nth-child(1) {
+    -webkit-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+    -moz-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+    -ms-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+    -o-animation: coach-click-2 200ms ease-in 1500ms 1 forwards;
+    animation: coach-click-2 200ms ease-in 1500ms 1 forwards; }
+  .coach-click path.animate:nth-child(2) {
+    -webkit-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+    -moz-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+    -ms-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+    -o-animation: coach-click-1 100ms ease-in 1700ms 1 forwards;
+    animation: coach-click-1 100ms ease-in 1700ms 1 forwards; }
+  .coach-click g g {
+    -webkit-animation-delay: 2000ms;
+    -moz-animation-delay: 2000ms;
+    -ms-animation-delay: 2000ms;
+    -o-animation-delay: 2000ms;
+    animation-delay: 2000ms; }
 
 .projector-slide .hiw-svg {
   width: 100%;
