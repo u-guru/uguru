@@ -20,7 +20,7 @@
         <!-- activate-on-class="a" on-activate="fadeIn:anim, high-z-index:keep" -->
         <div class="splash-device-content">
             <!-- activate-on-class="a" on-activate="fadeOut:animOut" -->
-            <div class="splash-device-search">
+            <div class="splash-device-search" on-init="opacity:0">
                 <!-- on-activate="fadeIn:anim" on-activate-delay="6000" class-on-clear="slideOutDown:animOut" class-on-clear-delay="1500" -->
                 <div class="splash-device-search-inside">
                     <!-- activate-on-class="a" on-activate="bounceInUp:anim, null:inject.splash-device-adlib|a, null:inject.splash-device-search-inside h1.device-counter|activate, null:inject.splash-device-search-inside p|a, null:inject.splash-device-search-gurus li|a, null:inject.splash-device-search-courses li|a, null:inject.splash-device-found|a, null:inject.map-guru-icon|a" class-on-clear="null:inject.splash-device-adlib|clear, null:inject.splash-device-search-inside p|clear, null:inject.splash-device-search-gurus li|clear, null:inject.splash-device-search-courses li|clear, null:inject.splash-device-found|a, null:inject.map-guru-icon|clear" -->
@@ -32,7 +32,7 @@
                         <!--activate-on-class="a" on-activate="bounceInUp:anim" class-on-clear="fadeOutDown:animOut" class-on-clear-delay="500" -->
                     </div>
                     <ul class="splash-device-search-gurus">
-                        <li>
+                        <li on-init="opacity:0">
                             <!--activate-on-class="a" on-activate="bounceIn:anim:inject#map-icon-{{$index+1}}-translate a|activate" on-activate-delay="{{$index * 1000 + 4000 }}" ng-repeat="marker in selectedUniversity.map.markers" class-on-clear="fadeOutDown:animOut", class-on-clear-delay="{{$index * 100}}" -->
                             <div>
                                 <!-- id="map-icon-{{$index + 1}}-translate" -->
@@ -43,7 +43,7 @@
                                 </a>
                             </div>
                         </li>
-                        <li>
+                        <li on-init="opacity:0">
                             <div>
                                 <a class="marker-guru bg-academic">
                                     <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
@@ -51,7 +51,7 @@
                                 </a>
                             </div>
                         </li>
-                        <li>
+                        <li on-init="opacity:0">
                             <div>
                                 <a class="marker-guru bg-academic">
                                     <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
@@ -59,7 +59,7 @@
                                 </a>
                             </div>
                         </li>
-                        <li>
+                        <li on-init="opacity:0">
                             <div>
                                 <a class="marker-guru bg-academic">
                                     <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
@@ -67,7 +67,7 @@
                                 </a>
                             </div>
                         </li>
-                        <li>
+                        <li on-init="opacity:0">
                             <div>
                                 <a class="marker-guru bg-academic">
                                     <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
@@ -75,7 +75,7 @@
                                 </a>
                             </div>
                         </li>
-                        <li>
+                        <li on-init="opacity:0">
                             <div>
                                 <a class="marker-guru bg-academic">
                                     <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
@@ -83,7 +83,7 @@
                                 </a>
                             </div>
                         </li>
-                        <li>
+                        <li on-init="opacity:0">
                             <div>
                                 <a class="marker-guru bg-academic">
                                     <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
@@ -91,7 +91,7 @@
                                 </a>
                             </div>
                         </li>
-                        <li>
+                        <li on-init="opacity:0">
                             <div>
                                 <a class="marker-guru bg-academic">
                                     <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
@@ -99,7 +99,7 @@
                                 </a>
                             </div>
                         </li>
-                        <li>
+                        <li on-init="opacity:0">
                             <div>
                                 <a class="marker-guru bg-academic">
                                     <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
@@ -110,7 +110,7 @@
                     </ul>
                 </div>
             </div>
-            <svg class="coach-click" viewBox="0 0 212 75">
+            <svg class="coach-click" viewBox="0 0 212 75" on-init="opacity:0">
                 <!-- class="parallax-auto" parallax-parent-ref="p1" parallax-child="0.2" -->
                 <g fill="none">
                     <path class="coach-click-path-1" d="M126.402476,42.2902799 C126.402476,42.2902799 41.4492178,9.17968707 3.56286124,70.6500409" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -123,7 +123,7 @@
                     </g>
                 </g>
             </svg>
-            <div class="splash-device-button relative" on-init="opacity:0">
+            <div class="splash-device-button">
                 <button id='desktop-find-guru-button' class="button-find-guru splash-desktop-cta">Find My Guru</button>
                 <!-- ng-click='lockFilledBlanksAndgetUniversityPlaces(selectedUniversity)' class="button-find-guru splash-desktop-cta opacity-0x animated" class-on-click="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, a:inject.splash-device-search|activate, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a" on-activate="null:inject.splash-device-button|bounceOutDown, null:inject.splash-mobile-cta|bounceOutDown, null:inject.coach-click|hide, null:inject.splash-hero-map|opacity-50, null:inject.splash-hero-markers|a, null:inject.splash-device|a, null:inject.coach-help|hide, null:inject.splash-hero-content|a, null:inject.splash-adlib ul|clear, null:inject.splash-logo-guru|a" -->
             </div>
