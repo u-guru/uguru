@@ -30,6 +30,19 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
     function getWorkflows() {
         var workflows = [
               {
+                title: 'Base Components',
+                identifier: 'base_comp',
+                parentId: '#base-components-view',
+                reference: {
+                    controller: 'AdminComponentController',
+                    controllerUrl: 'admin/js/AdminComponentController.js',
+                    templateUrl: 'admin/templates/components/base.tpl',
+                    routeUrl: 'dev/admin/components/base',
+                    cssUrl: 'admin/css/scss/partials/_base_components.scss'
+                },
+                states: []
+              },
+              {
                 title: 'App Loader',
                 identifier: 'loader',
                 reference: {
@@ -54,7 +67,8 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     cssUrl: 'preapp/css/scss/partials/adlib/_main.scss'
                 },
                 states: [
-                    {title: 'onEnter', functional: true, animated: false, tested: false},
+                    {title: 'onActivate', functional: true, animated: false, tested: false},
+                    {title: 'onTagOneInit', selector: '[blank-num="1"] a', testing: {'css': ['stroke-dasharray']}, functional: true, animated: false, tested: false},
                     {title: 'onTagOneClicked', selector: '[blank-num="1"] a', functional: true, animated: false, tested: false},
                     {title: 'onTagTwoClicked', selector: '[blank-num="2"] a',functional: true, animated: false, tested: false},
                     {title: 'onTagDeselected', selector: '[blank-num="1"] .translate-blank-1', functional: true, animated: false, tested: false},

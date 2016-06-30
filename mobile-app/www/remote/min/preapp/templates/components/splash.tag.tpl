@@ -1,4 +1,4 @@
-<li>
+<li id='splash-nav-bar'>
     <div class="tag-adlib-container">
         <a class="tag-adlib adlib-{{blankNum}} animated tag-{{category.hex_color}}"
             translate-on-click="translate-blank-{{blankNum}}" translate-to-elem="#blank-{{blankNum}}"

@@ -81,6 +81,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       return $stateParams.categoryName;
     }}
   })
+  .state('root.base-components', {
+    url:'/dev/admin/components/base',
+    templateUrl: 'admin/templates/components/base.tpl'
+  })
   // -- start DEV states
   .state('root.dev-splash-loader', {
     url:'/dev/splash/loader',
