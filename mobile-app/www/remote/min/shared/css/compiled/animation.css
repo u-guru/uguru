@@ -2281,5 +2281,98 @@
   100% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 1; } }
+@keyframes ping {
+  0% {
+    transform: scale(2, 2);
+    opacity: 0.0; }
+  40% {
+    opacity: 0.6; }
+  100% {
+    transform: scale(2.9, 2.9);
+    opacity: 0.0; } }
+@keyframes echo-loader-main {
+  0% {
+    stroke-dashoffset: 629;
+    stroke: #74bbae; }
+  10% {
+    stroke: #31bbc0; }
+  20% {
+    stroke: #60adbf; }
+  30% {
+    stroke: #5baee1; }
+  40% {
+    stroke: #847de7; }
+  50% {
+    stroke: #a466cc; }
+  60% {
+    stroke: #e940a5; }
+  70% {
+    stroke: #d82932; }
+  80% {
+    stroke: #f25a5e; }
+  90% {
+    stroke: #e88144; }
+  100% {
+    stroke-dashoffset: 0;
+    stroke: #f7cd58; } }
+@keyframes echo-loader-main-small {
+  0% {
+    stroke-dashoffset: 346;
+    stroke: #74bbae; }
+  10% {
+    stroke: #31bbc0; }
+  20% {
+    stroke: #60adbf; }
+  30% {
+    stroke: #5baee1; }
+  40% {
+    stroke: #847de7; }
+  50% {
+    stroke: #a466cc; }
+  60% {
+    stroke: #e940a5; }
+  70% {
+    stroke: #d82932; }
+  80% {
+    stroke: #f25a5e; }
+  90% {
+    stroke: #e88144; }
+  100% {
+    stroke-dashoffset: 0;
+    stroke: #f7cd58; } }
+@keyframes echo-loader-ping {
+  0% {
+    stroke: #69B3A5;
+    fill: #69B3A5; }
+  10% {
+    stroke: #2BB3B8;
+    fill: #2BB3B8; }
+  20% {
+    stroke: #55A4B7;
+    fill: #55A4B7; }
+  30% {
+    stroke: #50A5DD;
+    fill: #50A5DD; }
+  40% {
+    stroke: #7872e3;
+    fill: #7872e3; }
+  50% {
+    stroke: #9A5BC5;
+    fill: #9A5BC5; }
+  60% {
+    stroke: #e6389b;
+    fill: #e6389b; }
+  70% {
+    stroke: #d3242c;
+    fill: #d3242c; }
+  80% {
+    stroke: #F04F54;
+    fill: #F04F54; }
+  90% {
+    stroke: #E5753C;
+    fill: #E5753C; }
+  100% {
+    stroke: #F6C64E;
+    fill: #F6C64E; } }
 
 /*# sourceMappingURL=animation.css.map */

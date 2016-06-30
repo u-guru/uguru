@@ -2226,8 +2226,34 @@
     margin-left: -150px;
     margin-top: -306px; }
     .splash-device.splash-device-iphone .splash-device-svg {
-      width: 100%;
-      max-width: 320px; }
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      transition: all 150ms ease-in-out;
+      width: 100%; }
+      .splash-device.splash-device-iphone .splash-device-svg .iphone-left, .splash-device.splash-device-iphone .splash-device-svg .iphone-right {
+        display: block;
+        height: 100%;
+        max-height: 655.09px;
+        width: 50%;
+        max-width: 160px; }
+      .splash-device.splash-device-iphone .splash-device-svg .sheen {
+        display: block;
+        height: 100%;
+        width: 275px;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -137.5px;
+        margin-top: -246.5px; }
+        .splash-device.splash-device-iphone .splash-device-svg .sheen path {
+          transform: translate3d(-10px, -10px, 0);
+          opacity: 0.5; }
     .splash-device.splash-device-iphone .splash-device-content, .splash-device.splash-device-iphone .splash-device-profile {
       top: 12.6%;
       left: 7.3%;
@@ -2282,35 +2308,8 @@
       -webkit-justify-content: center;
       justify-content: center;
       height: 100%; }
-    .splash-device-content .splash-device-search h1 {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      border-radius: 1000px;
-      margin-top: 15px;
-      width: 110px;
-      height: 110px;
-      border: 3px solid white;
-      background: rgba(64, 72, 75, 0.5);
-      font-size: 72px;
-      font-weight: 600; }
-    .splash-device-content .splash-device-search p {
-      width: 100%;
-      font-size: 18px;
-      font-weight: 600;
-      margin: 5px 0 0; }
+    .splash-device-content .splash-device-search .echo-loader-small * {
+      transform-origin: center center; }
     .splash-device-content .splash-device-search ul {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -3505,6 +3504,287 @@ a[class*="-container"]:hover .map-stadium-outside {
       display: none; }
     .projector-access .projector-access-content .projector-access-code + div .projector-access-bubble.desktop {
       display: block; } }
+.projector-demo {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  padding: 15px;
+  height: 100%; }
+  .projector-demo ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-top: 20px !important;
+    padding: 7.5px;
+    width: 100%; }
+    .projector-demo ul:not(.active) {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      z-index: -10; }
+    .projector-demo ul li {
+      padding: 7.5px; }
+      .projector-demo ul li a {
+        border-radius: 1000px;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        border: 2px solid white;
+        font-size: 16px !important;
+        padding: 15px; }
+        .projector-demo ul li a.demo-freshman {
+          background: rgba(80, 165, 221, 0.5); }
+          .projector-demo ul li a.demo-freshman:hover, .projector-demo ul li a.demo-freshman:focus {
+            background: #50A5DD; }
+          .projector-demo ul li a.demo-freshman:active {
+            background: #6f7d82; }
+        .projector-demo ul li a.demo-sophomore {
+          background: rgba(86, 169, 207, 0.5); }
+          .projector-demo ul li a.demo-sophomore:hover, .projector-demo ul li a.demo-sophomore:focus {
+            background: #56a9cf; }
+          .projector-demo ul li a.demo-sophomore:active {
+            background: #6f7d82; }
+        .projector-demo ul li a.demo-jr {
+          background: rgba(93, 172, 193, 0.5); }
+          .projector-demo ul li a.demo-jr:hover, .projector-demo ul li a.demo-jr:focus {
+            background: #5dacc1; }
+          .projector-demo ul li a.demo-jr:active {
+            background: #6f7d82; }
+        .projector-demo ul li a.demo-sr {
+          background: rgba(99, 176, 179, 0.5); }
+          .projector-demo ul li a.demo-sr:hover, .projector-demo ul li a.demo-sr:focus {
+            background: #63b0b3; }
+          .projector-demo ul li a.demo-sr:active {
+            background: #6f7d82; }
+        .projector-demo ul li a.demo-postgrad {
+          background: rgba(105, 179, 165, 0.5); }
+          .projector-demo ul li a.demo-postgrad:hover, .projector-demo ul li a.demo-postgrad:focus {
+            background: #69B3A5; }
+          .projector-demo ul li a.demo-postgrad:active {
+            background: #6f7d82; }
+        .projector-demo ul li a.demo-college {
+          background: rgba(231, 75, 164, 0.5); }
+          .projector-demo ul li a.demo-college:hover, .projector-demo ul li a.demo-college:focus {
+            background: #e74ba4; }
+          .projector-demo ul li a.demo-college:active {
+            background: #6f7d82; }
+        .projector-demo ul li a.demo-alum {
+          background: rgba(132, 127, 228, 0.5); }
+          .projector-demo ul li a.demo-alum:hover, .projector-demo ul li a.demo-alum:focus {
+            background: #847fe4; }
+          .projector-demo ul li a.demo-alum:active {
+            background: #6f7d82; }
+        .projector-demo ul li a.demo-hs {
+          background: rgba(230, 129, 78, 0.5); }
+          .projector-demo ul li a.demo-hs:hover, .projector-demo ul li a.demo-hs:focus {
+            background: #e6814e; }
+          .projector-demo ul li a.demo-hs:active {
+            background: #6f7d82; }
+        .projector-demo ul li a.demo-parent {
+          background: rgba(43, 179, 184, 0.5); }
+          .projector-demo ul li a.demo-parent:hover, .projector-demo ul li a.demo-parent:focus {
+            background: #2bb3b8; }
+          .projector-demo ul li a.demo-parent:active {
+            background: #6f7d82; }
+        .projector-demo ul li a.demo-other {
+          background: rgba(99, 112, 116, 0.5); }
+          .projector-demo ul li a.demo-other:hover, .projector-demo ul li a.demo-other:focus {
+            background: #637074; }
+          .projector-demo ul li a.demo-other:active {
+            background: #6f7d82; }
+    .projector-demo ul.demo-3 {
+      margin-top: 0 !important; }
+      .projector-demo ul.demo-3 li a {
+        width: 200px;
+        height: 200px;
+        font-size: 24px !important; }
+  .projector-demo .info-demographic-button {
+    padding-bottom: 15px; }
+
+@media screen and (min-width: 768px) {
+  .projector-demo ul {
+    margin-top: 60px !important;
+    max-width: 100% !important; }
+    .projector-demo ul li {
+      padding: 15px; }
+      .projector-demo ul li a {
+        width: 150px;
+        height: 150px;
+        font-size: 20px !important; }
+    .projector-demo ul.demo-3 {
+      margin-top: 0 !important; }
+      .projector-demo ul.demo-3 li a {
+        width: 200px;
+        height: 200px;
+        padding: 15px;
+        font-size: 24px !important; } }
+#faq .main {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap; }
+#faq dl {
+  width: 100%;
+  margin-bottom: 0 !important; }
+  #faq dl dt {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background: #696269;
+    border-radius: 2px 2px 0 0;
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: 700; }
+    #faq dl dt .close-button {
+      display: block;
+      width: 40px;
+      height: 40px;
+      padding-left: 10px; }
+      #faq dl dt .close-button svg {
+        -webkit-transition: all 150ms ease-in-out;
+        -moz-transition: all 150ms ease-in-out;
+        -ms-transition: all 150ms ease-in-out;
+        -o-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out;
+        width: 100%;
+        height: 100%; }
+        #faq dl dt .close-button svg * {
+          stroke-width: 7px; }
+    #faq dl dt:not(.active) {
+      border-radius: 2px; }
+      #faq dl dt:not(.active) .close-button svg {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg); }
+    #faq dl dt span {
+      display: block;
+      width: calc(100% - 40px); }
+  #faq dl dd {
+    -webkit-transition: all 150ms ease-in-out;
+    -moz-transition: all 150ms ease-in-out;
+    -ms-transition: all 150ms ease-in-out;
+    -o-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    -webkit-transform-origin: top center;
+    -moz-transform-origin: top center;
+    -ms-transform-origin: top center;
+    -o-transform-origin: top center;
+    transform-origin: top center;
+    background: white;
+    border: 2px solid #696269;
+    border-top: 0;
+    border-radius: 0 0 2px 2px;
+    padding: 10px 15px;
+    color: #40484B;
+    font-size: 16px;
+    font-weight: 600; }
+  #faq dl a {
+    display: block; }
+    #faq dl a:hover dt, #faq dl a:focus dt {
+      background: #b4b1b4;
+      color: #55555a; }
+      #faq dl a:hover dt .close-button svg, #faq dl a:focus dt .close-button svg {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg); }
+        #faq dl a:hover dt .close-button svg *, #faq dl a:focus dt .close-button svg * {
+          stroke: #55555a; }
+      #faq dl a:hover dt.active .close-button svg, #faq dl a:focus dt.active .close-button svg {
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg); }
+    #faq dl a:hover + dd, #faq dl a:focus + dd {
+      border-color: #b4b1b4; }
+    #faq dl a:active dt {
+      background: #55555a;
+      color: white; }
+      #faq dl a:active dt .close-button svg * {
+        stroke: white; }
+    #faq dl a:active + dd {
+      border-color: #55555a; }
+
+@media screen and (min-width: 768px) {
+  #faq .main {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 15px; }
+  #faq dl {
+    width: 50%;
+    padding: 15px; } }
 /* ---------- PRICING */
 #pricing {
   width: 100%;
