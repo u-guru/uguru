@@ -561,12 +561,9 @@
 // end bose scale hover
 
 @media screen and (min-width: 860px) {
-	.splash-burger {
-		margin: 0 15px 0 0!important;
-		&#cta-box-powerups {
-			right: 57px;
-			top: 14px;
-		}
+	#cta-box-powerups {
+		right: 67px;
+		top: 14px;
 	}
 	.splash-hero-nav {
 		&.desktop {

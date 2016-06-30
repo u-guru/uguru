@@ -82,7 +82,7 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
               {
                 title: 'Device States',
                 identifier: 'device',
-                parentId: '#splash-device',
+                parentId: '#splash-device-container',
                 reference: {
                     controller: 'SplashDeviceController',
                     controllerUrl: 'preapp/js/SplashDeviceController.js',
