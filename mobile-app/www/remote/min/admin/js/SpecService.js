@@ -685,7 +685,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             // }
         }
         for (key in states) {
-            dropdownArr.push({title:states[key]['title'], state: states[key], parent_elem: parent_container, parent_scope: scope})
+            dropdownArr.push({title:states[key]['title'], state: states[key], selector:states[key]['selector'] || '', testing: states[key]['testing'] || '', parent_elem: parent_container, parent_scope: scope})
         }
         for (var i = 0; i < elemStateArr.length; i++) {
             elemStateArr[i].parent_elem = parent_container;
