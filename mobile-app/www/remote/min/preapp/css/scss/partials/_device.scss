@@ -80,13 +80,14 @@
         	* {
         		transform-origin: center center;
         	}
-        	// .echo-loader-echo {
-        	// 	animation: ping 1500ms ease-in-out infinite, echo-loader-main 5s ease-in-out forwards;
-        	// }
-        	// .echo-loader-main {
-        	// 	stroke-dasharray: 629;
-        	// 	animation: echo-loader-main 5s ease-in-out forwards;
-        	// }
+        	.echo-loader-echo {
+        		// animation: ping 1500ms ease-in-out infinite, echo-loader-main 5s ease-in-out forwards;
+        	}
+        	.echo-loader-main {
+                transform: rotateY(180deg);
+        		// stroke-dasharray: 346;
+        		// animation: echo-loader-main-small 5s ease-in-out forwards;
+        	}
         }
         ul {
             @include flex;
