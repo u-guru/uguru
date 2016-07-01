@@ -3945,6 +3945,107 @@ a[class*="-container"]:hover .map-stadium-outside {
       padding: 7.5px; }
       .projector-school-search .projector-map-stats > ul li {
         padding: 7.5px; } }
+.projector-courses {
+  padding-top: 50px; }
+  .projector-courses .backpack {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    display: block;
+    width: 100px;
+    height: 100px; }
+  .projector-courses form {
+    width: 100%;
+    padding: 0 15px; }
+  .projector-courses ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    padding: 7.5px;
+    width: 100%; }
+    .projector-courses ul li {
+      padding: 7.5px; }
+  .projector-courses .course-search {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center; }
+  .projector-courses .course-selected li a {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    border: 2px solid white;
+    border-radius: 2px; }
+    .projector-courses .course-selected li a > span {
+      -webkit-transition: all 150ms ease-in-out;
+      -moz-transition: all 150ms ease-in-out;
+      -ms-transition: all 150ms ease-in-out;
+      -o-transition: all 150ms ease-in-out;
+      transition: all 150ms ease-in-out;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      padding: 5px 8px 5px 10px;
+      border-bottom-width: 5px;
+      border-bottom-style: solid;
+      font-size: 18px; }
+      .projector-courses .course-selected li a > span svg {
+        -webkit-transition: all 150ms ease-in-out;
+        -moz-transition: all 150ms ease-in-out;
+        -ms-transition: all 150ms ease-in-out;
+        -o-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        fill: none;
+        stroke: white;
+        stroke-width: 9px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        display: block;
+        width: 18px;
+        height: 18px;
+        margin-left: 5px; }
+    .projector-courses .course-selected li a:hover, .projector-courses .course-selected li a:active {
+      background: white; }
+      .projector-courses .course-selected li a:hover > span, .projector-courses .course-selected li a:active > span {
+        color: #40484B; }
+        .projector-courses .course-selected li a:hover > span svg, .projector-courses .course-selected li a:active > span svg {
+          stroke: #40484B; }
+
 #faq .main {
   -ms-box-orient: horizontal;
   display: -webkit-box;
