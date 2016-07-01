@@ -1055,7 +1055,7 @@ fieldset.with-icon input {
     stroke: #40484B; }
 @media screen and (min-width: 768px) {
   fieldset.large {
-    min-height: 58px;
+    min-height: 64px;
     max-width: none; }
     fieldset.large .input-border {
       font-size: 36px;

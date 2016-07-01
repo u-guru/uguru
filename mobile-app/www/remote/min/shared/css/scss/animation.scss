@@ -44,3 +44,90 @@
   84.68% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.076, 0, 1); opacity: 1; }
   100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1; }
 }
+
+@keyframes ping {
+	0% {
+		transform: scale(2,2);
+		opacity: 0.0;
+	}
+	40% {
+		opacity: 0.6;
+	}
+	100% {
+		transform: scale(2.9, 2.9);
+		opacity: 0.0;
+	}
+}
+
+@keyframes echo-loader-main {
+	0% { stroke-dashoffset: 629; stroke: rgb(116, 187, 174); }
+	10% { stroke: rgb(49, 187, 192); }
+	20% { stroke: rgb(96, 173, 191); }
+	30% { stroke: rgb(91, 174, 225); }
+	40% { stroke: rgb(132, 125, 231); }
+	50% { stroke: rgb(164, 102, 204); }
+	60% { stroke: rgb(233, 64, 165); }
+	70% { stroke: rgb(216, 41, 50); }
+	80% { stroke: rgb(242, 90, 94); }
+	90% { stroke: rgb(232, 129, 68); }
+	100% { stroke-dashoffset: 0; stroke: rgb(247, 205, 88); }
+}
+@keyframes echo-loader-main-small {
+	0% { stroke-dashoffset: 346; stroke: rgb(116, 187, 174); }
+	10% { stroke: rgb(49, 187, 192); }
+	20% { stroke: rgb(96, 173, 191); }
+	30% { stroke: rgb(91, 174, 225); }
+	40% { stroke: rgb(132, 125, 231); }
+	50% { stroke: rgb(164, 102, 204); }
+	60% { stroke: rgb(233, 64, 165); }
+	70% { stroke: rgb(216, 41, 50); }
+	80% { stroke: rgb(242, 90, 94); }
+	90% { stroke: rgb(232, 129, 68); }
+	100% { stroke-dashoffset: 0; stroke: rgb(247, 205, 88); }
+}
+@keyframes echo-loader-ping {
+	0% {
+		stroke: $shamrock;
+		fill: $shamrock;
+	}
+	10% {
+		stroke: $robin;
+		fill: $robin;
+	}
+	20% {
+		stroke: $azure;
+		fill: $azure;
+	}
+	30% {
+		stroke: $lake;
+		fill: $lake;
+	}
+	40% {
+		stroke: $cobalt;
+		fill: $cobalt;
+	}
+	50% {
+		stroke: $eggplant;
+		fill: $eggplant;
+	}
+	60% {
+		stroke: $cerise;
+		fill: $cerise;
+	}
+	70% {
+		stroke: $crimson;
+		fill: $crimson;
+	}
+	80% {
+		stroke: $auburn;
+		fill: $auburn;
+	}
+	90% {
+		stroke: $orange;
+		fill: $orange;
+	}
+	100% {
+		stroke: $gold;
+		fill: $gold;
+	}
+}
