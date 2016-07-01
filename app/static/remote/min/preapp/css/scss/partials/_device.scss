@@ -6,7 +6,6 @@
     z-index: 2;
     top: 50%;
     left: 50%;
-    opacity: 0.1;
     @media screen and (min-width: 768px) {
         display: block;
     }
@@ -16,10 +15,33 @@
     &.splash-device-iphone {
         margin-left: -150px;
         margin-top: -306px;
-        svg {
-            width: 100%;
-            max-width: 320px;
-        }
+        .splash-device-svg {
+            @include flex;
+			transition: all 150ms ease-in-out;
+			width: 100%;
+			.iphone-left, .iphone-right {
+				display: block;
+				height: 100%;
+                max-height: 655.09px;
+				width: 50%;
+				max-width: 160px;
+			}
+			.sheen {
+				display: block;
+				height: 100%;
+				width: 275px;
+				height: auto;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -137.5px;
+				margin-top: -246.5px;
+				path {
+					transform: translate3d(-10px,-10px,0);
+					opacity: 0.5;
+				}
+			}
+		}
         .splash-device-content, .splash-device-profile {
             top: 12.6%;
             left: 7.3%;
@@ -30,5 +52,238 @@
                 right: -90px!important;
             }
         }
+    }
+}
+
+.splash-device-content {
+    @include flex;
+    @include flex-wrap;
+    position: absolute;
+    .splash-device-search {
+        @include center-xy;
+        width: 100%;
+        height: 100%;
+        .splash-device-found {
+            margin-bottom: 10px;
+            // &.active {
+            // 	@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+            // 	@include prefix(transform, translateY(100%), webkit moz ms o);
+            // }
+        }
+        .splash-device-search-inside {
+            @include flex;
+            @include flex-wrap;
+            @include flex-center;
+            height: 100%;
+        }
+        .echo-loader-small {
+        	* {
+        		transform-origin: center center;
+        	}
+        	.echo-loader-echo {
+        		// animation: ping 1500ms ease-in-out infinite, echo-loader-main 5s ease-in-out forwards;
+        	}
+        	.echo-loader-main {
+                transform: rotateY(180deg);
+        		// stroke-dasharray: 346;
+        		// animation: echo-loader-main-small 5s ease-in-out forwards;
+        	}
+        }
+        ul {
+            @include flex;
+            @include flex-wrap;
+            &.splash-device-search-gurus {
+                li {
+                    @include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+                    @include flex;
+                    @include flex-center;
+                    width: calc(100% / 3);
+                    padding: 8px 0;
+                    div {
+                        @include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+                        &.splash-marker-guru-first {
+                            @include prefix(transition-delay, 4500ms, webkit moz ms o);
+                            @include opacity-important(0);
+                        }
+                        &.splash-marker-guru-active {
+                            @include opacity(0);
+                        }
+                    }
+                    .marker-guru {
+                        @include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+                        @include round;
+                        @include flex;
+                        @include flex-center-vertical;
+                        position: relative;
+                        height: 30px;
+                        width: 74px;
+                        padding-left: 28px;
+                        border: 2px solid white;
+                        font-size: 10px;
+                        font-weight: 600;
+                        line-height: 1;
+                        text-align: center;
+                        &.bg-academic {
+                            background: rgba($auburn, .3);
+                            &:hover, &:focus {
+                                background: $auburn;
+                            }
+                        }
+                        &.bg-freelancing {
+                            background: rgba($orange, .3);
+                            &:hover, &:focus {
+                                background: $orange;
+                            }
+                        }
+                        &.bg-baking {
+                            background: rgba($gold, .3);
+                            &:hover, &:focus {
+                                background: $gold;
+                            }
+                        }
+                        &.bg-photography {
+                            background: rgba($moola, .3);
+                            &:hover, &:focus {
+                                background: $moola;
+                            }
+                        }
+                        &.bg-tech {
+                            background: rgba($azure, .3);
+                            &:hover, &:focus {
+                                background: $azure;
+                            }
+                        }
+                        &.bg-household {
+                            background: rgba($cobalt, .3);
+                            &:hover, &:focus {
+                                background: $cobalt;
+                            }
+                        }
+                        &.bg-athletic {
+                            background: rgba($eggplant, .3);
+                            &:hover, &:focus {
+                                background: $eggplant;
+                            }
+                        }
+                        &.bg-academic {
+                            background: rgba($cerise, .3);
+                            &:hover, &:focus {
+                                background: $cerise;
+                            }
+                        }
+                        .user-icon {
+                            position: absolute;
+                            top: -2px;
+                            left: -2px;
+                            width: 30px;
+                            height: 30px;
+                            border-width: 2px;
+                        }
+                        .marker-guru-course {
+                            display: block;
+                            width: 100%;
+                        }
+                    }
+                }
+                // li {
+                // 	width: calc(100% / 3);
+                // 	.user-icon {
+                // 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+                // 		width: 64px;
+                // 		height: 64px;
+                // 		border-width: 2px;
+                // 		background-color: $shamrock;
+                // 	}
+                // }
+            }
+            &.splash-device-search-courses {
+                margin-top: -15px;
+                li {
+                    width: 50%;
+                    span {
+                        @include flex;
+                        @include flex-center;
+                        @include round;
+                        width: 100%;
+                        max-width: 105px;
+                        margin: 0 auto;
+                        height: 36px;
+                        border: 2px solid white;
+                        font-size: 18px;
+                        font-weight: 600;
+                        &.bg-delivery {
+                            background: rgba($auburn, .25);
+                        }
+                        &.bg-freelancing {
+                            background: rgba($orange, .25);
+                        }
+                        &.bg-baking {
+                            background: rgba($gold, .25);
+                        }
+                        &.bg-photography {
+                            background: rgba($moola, .25);
+                        }
+                        &.bg-tech {
+                            background: rgba($azure, .25);
+                        }
+                        &.bg-household {
+                            background: rgba($cobalt, .25);
+                        }
+                        &.bg-athletic {
+                            background: rgba($eggplant, .25);
+                        }
+                        &.bg-academic {
+                            background: rgba($cerise, .25);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .splash-device-button {
+        @include prefix(align-self, flex-end, webkit);
+        width: 100%;
+    }
+    button {
+        width: 100%;
+        height: 54px;
+        font-weight: 600;
+        text-transform: uppercase;
+        &.opacity-0 {
+            visibility: hidden;
+            &:hover, &:focus {
+                @include opacity-important(0);
+            }
+        }
+        &.animated {
+            @include prefix(animation-delay, 1000ms, webkit moz ms o);
+        }
+    }
+}
+
+.coach-click {
+    display: block;
+    position: absolute;
+    width: 106px;
+    path {
+        &:nth-child(1) {
+            stroke-dasharray: 137;
+            stroke-dashoffset: 137;
+        }
+        &:nth-child(2) {
+            stroke-dasharray: 53;
+            stroke-dashoffset: 53;
+        }
+        &.animate {
+            &:nth-child(1) {
+                @include prefix(animation, coach-click-2 200ms ease-in 1500ms 1 forwards, webkit moz ms o);
+            }
+            &:nth-child(2) {
+                @include prefix(animation, coach-click-1 100ms ease-in 1700ms 1 forwards, webkit moz ms o);
+            }
+        }
+    }
+    g g {
+        @include prefix(animation-delay, 2000ms, webkit moz ms o);
     }
 }

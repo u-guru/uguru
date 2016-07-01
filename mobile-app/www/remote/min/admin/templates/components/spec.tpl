@@ -172,8 +172,8 @@
             </div>
             <ul class="flex-center-vertical p15-grid overflow-x no-scrollbar" style="width: calc(100% - 128px);">
                 <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)' on-hold="spec.settings.updateDefaultState($event, $index, state_tag)">
-                    <button ng-if="!state_tag.selector.length && !state_tag.selector.length" ng-class="{'bg-auburn':spec.settings.cache.defaultState.index === $index }" class="bg-moxie height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
-                    <button ng-if="state_tag.selector.length" style='border: 4px dashed white;' data-attr-testing-params="{{state_tag.testing}}" data-attr-selector="{{state_tag.selector}}" ng-class="{'bg-auburn':spec.settings.cache.defaultState.index === $index }" class="bg-moxie height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
+                    <button ng-if="!state_tag.selector.length && !state_tag.selector.length" ng-class="{'reverse':spec.settings.cache.defaultState.index === $index }" class="bg-moxie height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
+                    <button ng-if="state_tag.selector.length" style='border: 4px dashed white;' data-attr-testing-params="{{state_tag.testing}}" data-attr-selector="{{state_tag.selector}}" ng-class="{'reverse':spec.settings.cache.defaultState.index === $index }" class="bg-moxie height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
                 </li>
 
             </ul>

@@ -19,3 +19,28 @@
 	background: $slate;
 	text-align: center;
 }
+
+.splash-hero-skip {
+	padding: 15px;
+	button {
+		@include opacity(.5);
+		@include rotate(-15);
+		@include round;
+		width: 64px;
+		height: 64px;
+		background: none;
+		border: 2px solid white;
+		padding: 0!important;
+		font-size: 20px;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: white!important;
+		white-space: nowrap;
+		&:hover, &:focus {
+			@include opacity(.75);
+		}
+		&:active {
+			@include opacity(1);
+		}
+	}
+}

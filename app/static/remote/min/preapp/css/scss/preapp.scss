@@ -6,12 +6,22 @@
 
 @import 'partials/splash/headers';
 @import 'partials/splash/sidebar';
+@import 'partials/splash/powerups';
+@import 'partials/splash/maps';
 
 @import 'partials/device';
 
 @import 'partials/hiw';
 
 @import 'partials/projector/access';
+@import 'partials/projector/demographic';
+@import 'partials/projector/account';
+@import 'partials/projector/school';
+@import 'partials/projector/courses';
 
+@import 'partials/pages/faq';
 @import 'partials/pages/pricing';
 @import 'partials/pages/team';
+
+@import 'partials/powerups/main';
+@import 'partials/powerups/animation';
