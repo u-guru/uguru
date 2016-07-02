@@ -37,6 +37,16 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
       $scope.root.browserPrefix = RootService.getBrowserPrefix();
       $scope.root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
       $scope.root.devMode = window.location.href.split('/dev/').length > 1;
+
+
+    function getBodyDimensions() {
+        var desktopHeightLimit = 690;
+        var desktopWidthLimit= 767;
+        var bodyRect = document.body.getBoundingClientRect();
+        var isDesktop = (bodyRect.height >= desktopHeightLimit && bodyRect.width >= desktopWidthLimit);
+        return {height:bodyRect.height, width: bodyRect.width, desktop: isDesktop, mobile: !isDesktop}
+    };
+
     }
   });
 
