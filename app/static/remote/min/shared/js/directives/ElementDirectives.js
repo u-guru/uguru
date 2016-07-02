@@ -2,8 +2,8 @@ angular.module('uguru.shared.directives')
 .directive('onInit', ['$timeout', function ($timeout) {
   return {
     restrict: 'A',
-    link: function(scope, element, attr) {
-      element.ready(function(){
+    link: {pre: function(scope, element, attr) {
+      // element.ready(function(){
         var kvSplit = attr.onInit && attr.onInit.length && attr.onInit.split(':');
         if (kvSplit && kvSplit.length > 1) {
           onInitProperty = kvSplit[0];
@@ -15,7 +15,8 @@ angular.module('uguru.shared.directives')
             })
           }
         }
-      })
+      // })
+      }
     }
   }
 }])
@@ -23,14 +24,18 @@ angular.module('uguru.shared.directives')
 directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($timeout, AnimationService, $parse) {
       return {
           restrict: 'A',
-          link: function(scope, element, attr) {
-              element.ready(function(){
-                console.log(element[0].nodeName, 'is ready');
-                scope.$apply(function(){
-                  var func = $parse(attr.evalOnInit);
-                  func(scope);
+          link: {pre: function(scope, element, attr) {
+              // element.ready(function(){
+
+                var func = $parse(attr.evalOnInit);
+                func(scope);
+                $timeout(function() {
+                  scope.$apply();
                 })
-              })
+                // scope.$apply(function(){
+                // })
+              // })
+              }
           }
       }
 }])
@@ -113,3 +118,16 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       }
     }
 }])
+.directive('includeReplace', function () {
+    return {
+        require: 'ngInclude',
+        restrict: 'A',
+        replace: true,
+        compile: function (tElement, tAttrs) {
+            tElement.replaceWith(tElement.children());
+            return {
+                post : angular.noop
+            };
+        }
+    };
+});

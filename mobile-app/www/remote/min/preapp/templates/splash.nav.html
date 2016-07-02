@@ -1,4 +1,4 @@
-<ion-view ng-controller="SplashNavController as splash_nav" id='splash-nav-bar'>
+<div ng-controller="SplashNavController as nav" id='splash-nav-bar' class='invisible' on-activate="visible">
     <div id='splash-desktop-nav' class='full-x'>
         <!-- Dropdown overlays -->
         <!-- <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0 z-index-5' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()'> </a> -->
@@ -7,7 +7,7 @@
         <!-- Desktop Nav-->
         <header class='splash-header' id='home-nav-header'>
         <!-- <header class='splash-header fixed top-0 left-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim"> -->
-            <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
+            <a class="splash-logo svg-logo"  ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
             <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="0"
             class-on-clear="fadeOutUp:animOut"
             class-on-activate="fadeInDown:anim" -->
@@ -15,7 +15,8 @@
                 <div class="splash-hero-nav desktop m15right">
                     <!-- class-on-activate="u-slideInDown:anim" -->
                     <div class="splash-hero-nav-container">
-                        <div id="dropdown-categories" class="dropdown-color">
+                        <dropdown ng-model='nav.categoriesDropdown' type="color"> </dropdown>
+                        <div id="dropdown-categories" class="dropdown-color" ng-if='false'>
                             <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="150" -->
                             <!-- <a name='category' class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()' ng-class="{'active':page.dropdowns.category.active}">
                     			<span>
@@ -128,7 +129,7 @@
                     <div class="full-xy flex-center relative" ng-include="root.base_url + 'shared/templates/components/svg/main/lightning-circle.html'" translate-on-click></div>
                     <!-- translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" -->
                 </a>
-                <a name='sidebar' id='cta-box-sidebar' class="icon-round-stroke"
+                <a ng-click="nav.activateSidebar()" name='sidebar' id='cta-box-sidebar' class="icon-round-stroke"
                     ng-include="root.base_url + 'shared/templates/components/svg/main/menu-circle.html'"></a>
                 <!-- ng-click='initCTASplash()' class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="750" -->
             </div>
@@ -170,4 +171,4 @@
         </div>
         <!-- End Mobile Nav-->
     </div>
-</ion-view>
+</div>

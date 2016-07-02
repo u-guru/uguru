@@ -47,6 +47,11 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/',
     templateUrl: 'preapp/templates/splash.html'
   })
+  .state('root.dev-splash', {
+    parent: 'root',
+    url:'/dev/splash',
+    templateUrl:'preapp/templates/splash.html'
+  })
   .state('root.splash-device', {
     parent: 'root',
     url:'/dev/splash/device',
@@ -93,7 +98,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   })
   .state('root.dev-splash-nav', {
     url:'/dev/splash/nav',
-    templateUrl: 'preapp/templates/splash.nav.html'
+    template: '<ion-view ng-controller="SplashController as splash"> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.nav.html" + "'" + '"></div></ion-content></ion-view>'
   })
   .state('root.dev-splash-map', {
     url:'/dev/splash/map',

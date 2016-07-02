@@ -1,4 +1,4 @@
-<div class="splash-hero-content z-index-100" ng-controller='SplashMadlibController as madlib' id='splash-madlib'>
+<div class="splash-hero-content z-index-100" ng-controller='SplashMadlibController as madlib' id='splash-madlib' ng-class="{'z-index--1000 opacity-0': !splash.state.madlib}">
     <div class="splash-guru-head"  on-activate="pulse:animIn">
         <div class="splash-hero-guru splash-logo-guru" ng-include="'shared/templates/components/svg/logo/guru-head.html'"></div>
         <!-- parallax-parent-ref="p1" parallax-child="0.4" -->

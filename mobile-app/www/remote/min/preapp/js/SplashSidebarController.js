@@ -7,9 +7,17 @@ angular.module('uguru.preApp')
   '$timeout',
   'SpecService',
   function($scope, $state, $timeout, SpecService) {
-    var device = this;
+    var sidebar = this;
+
+    sidebar.close = sidebarCloseFunc;
+    sidebar.activate = true;
 
     SpecService.initSpec('sidebar', $scope);
+
+    function sidebarCloseFunc() {
+        var splashSidebarParent = document.querySelector('#splash-sidebar')
+        var elemStatesAttr = splashSidebarParent.classList.add('on-sidebar-exit');
+    }
   }
 ])
 

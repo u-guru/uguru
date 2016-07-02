@@ -810,6 +810,7 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
 
                 element[0].setAttribute('class', '');
               }
+
               scope.$watch(function() {
 
                 return element.attr('class');
@@ -845,6 +846,15 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                     else if (elemStateClass && elemStateClass.length && elemStateClass !== 'null') {
 
                       element[0].classList.add(elemStateClass);
+                      if (elemArgDict.remove && elemArgDict.remove.length) {
+                        if (elemArgDict.delay) {
+                          $timeout(function() {
+                            element[0].classList.remove(elemArgDict.remove);
+                          }, elemArgDict.delay);
+                        } else {
+                          element[0].classList.remove(elemArgDict.remove);
+                        }
+                      }
                     }
 
                     if (elemArgDict.inject_elems && !elemArgDict.delay) {
@@ -1021,6 +1031,11 @@ function parseElemStateAttrValueArgs(arg_arr) {
       if (indexArg === 'animOut') {
         resultDict.animateOut = true;
       }
+
+      if (indexArg.indexOf('remove|') > -1) {
+        resultDict.remove = indexArg.replace('remove|', '');
+      }
+
       if (indexArg === 'anim') {
         resultDict.animate = true;
       }

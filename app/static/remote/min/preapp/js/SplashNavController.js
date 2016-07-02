@@ -7,9 +7,22 @@ angular.module('uguru.preApp')
   '$timeout',
   'SpecService',
   function($scope, $state, $timeout, SpecService) {
-    var device = this;
+    var nav = this;
 
-    SpecService.initSpec('splash_nav', $scope);
+    nav.activateSidebar = navActivateSidebarFunc;
+
+    nav.categoriesDropdown = {selectedIndex: 0, key:'name', options: $scope.splash.categories, onOptionClick: updateSelectedCategories};
+
+    SpecService.initSpec('nav', $scope);
+
+    function navActivateSidebarFunc() {
+        var splashSidebarParent = document.querySelector('#splash-sidebar')
+        splashSidebarParent.classList.add('on-sidebar-enter');
+    }
+
+    function updateSelectedCategories() {
+      console.log('updating selected categories');
+    }
   }
 ])
 

@@ -67,7 +67,7 @@ angular.module('uguru.shared.directives')
     .directive("dropdown", ['$timeout', 'RootService', function($timeout, RootService) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'color') {
-                return RootService.getBaseUrl() + 'templates/elements/components/inputs/dropdowns/color.tpl'
+                return RootService.getBaseUrl() + 'shared/templates/components/templates/nav/color.tpl'
             } else {
                 return RootService.getBaseUrl() + 'shared/templates/components/dropdown.tpl'
             }

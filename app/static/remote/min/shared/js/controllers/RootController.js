@@ -8,20 +8,13 @@ angular.module('uguru.shared.controllers', [])
   '$timeout',
   'RootService',
   function($scope, $state, $timeout, RootService) {
-    // Listen for the event.
-    // if (window.location.href.split('/').length > 5 || window.location.href.split('admin').length > 1) {
-    //   var loaderPortal = document.querySelector('.loader-portal');
-    //   var loaderWrapper = document.querySelector('#loader-wrapper');
-    //   loaderPortal.parentNode.removeChild(loaderPortal);
-    //   loaderWrapper.parentNode.removeChild(loaderWrapper);
-    //   console.log(loaderWrapper, 'removed');
-    // }
     var root = this;
     root.window = getBodyDimensions();
     root.base_url = RootService.getBaseUrl();
     root.local = window.location.href.split(':8100').length > 1;
     root.browserPrefix = RootService.getBrowserPrefix();
     root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
+    root.devMode = window.location.href.split('/dev/').length > 1;
   }
 ]);
 

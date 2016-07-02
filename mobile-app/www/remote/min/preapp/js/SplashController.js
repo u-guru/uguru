@@ -8,33 +8,17 @@ angular.module('uguru.preApp', ['ionic'])
   '$rootScope',
   'CategoryService',
   'UniversityService',
-  function($scope, $state, $timeout, $rootScope) {
+  'SpecService',
+  function($scope, $state, $timeout, $rootScope, CategoryService, UniversityService, SpecService) {
     // Listen for the event.
     var splash = this;
     splash.state = {};
+    splash.activate = {};
     splash.categories = CategoryService.getLocalCategories();
     splash.category = splash.categories[0];
+    splash.universities = UniversityService.getTargetted().splice(0, 10);
+    splash.university = splash.universities[0];
 
-
-    portalElem.addEventListener('splashMainLoadingComplete', function (e) {
-      var loaderPortal = document.querySelector('.loader-portal');
-      if (loaderPortal) {
-        loaderPortal.style.display = 'none';
-        loaderPortal.parentNode.removeChild(loaderPortal);
-
-      }
-
-      document.querySelector('#loader-wrapper .pageload-overlay svg.transition').style.visibility = "visible";
-      document.querySelector('#loader-wrapper').style.visibility = "hidden"
-      globalLoader.hide();
-      splash.renderView = true;
-      splash.state.madlib = true;
-      splash.state.device = false;
-      $timeout(function() {
-
-        $scope.$apply();
-      }, 100)
-    }, false);
 
 
     $scope.$watchCollection(angular.bind(this, function () {
@@ -42,6 +26,46 @@ angular.module('uguru.preApp', ['ionic'])
     }), function (newVal, oldVal) {
       // now we will pickup changes to newVal and oldVal
     });
+
+    splash.activate = splashActivateFunction
+
+
+    function splashActivateFunction() {
+
+      if ($scope.root.devMode) {
+          splash.state.madlib = true;
+          splash.state.device = true;
+          SpecService.initSpec('splash', $scope);
+          return;
+      }
+
+      portalElem.addEventListener('splashMainLoadingComplete', function (e) {
+
+
+        console.log('is NOT in dev mode');
+
+        var loaderPortal = document.querySelector('.loader-portal');
+        if (loaderPortal) {
+          loaderPortal.style.display = 'none';
+          loaderPortal.parentNode.removeChild(loaderPortal);
+
+        }
+
+        document.querySelector('#loader-wrapper .pageload-overlay svg.transition').style.visibility = "visible";
+        document.querySelector('#loader-wrapper').style.visibility = "hidden"
+        globalLoader.hide();
+        splash.renderView = true;
+        splash.state.madlib = true;
+        splash.state.device = false;
+        $timeout(function() {
+
+          $scope.$apply();
+        }, 100)
+      }, false);
+
+    }
+
+
 
   }
 ])

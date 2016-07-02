@@ -30,19 +30,6 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
     function getWorkflows() {
         var workflows = [
               {
-                title: 'Base Components',
-                identifier: 'base_comp',
-                parentId: '#base-components-view',
-                reference: {
-                    controller: 'AdminComponentController',
-                    controllerUrl: 'admin/js/AdminComponentController.js',
-                    templateUrl: 'admin/templates/components/base.tpl',
-                    routeUrl: 'dev/admin/components/base',
-                    cssUrl: 'admin/css/scss/partials/_base_components.scss'
-                },
-                states: []
-              },
-              {
                 title: 'App Loader',
                 identifier: 'loader',
                 reference: {
@@ -110,7 +97,7 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
               },
               {
                 title: 'Splash Header Nav',
-                identifier: 'splash_nav',
+                identifier: 'nav',
                 parentId:'#splash-nav-bar',
                 reference: {
                     controller: 'SplashNavController',
@@ -328,6 +315,36 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'gabrielle/templates/index.html',
                     routeUrl: 'dev/jeselle'
                 }
+              },
+              {
+                title: 'Base Components',
+                identifier: 'base_comp',
+                parentId: '#base-components-view',
+                reference: {
+                    controller: 'AdminComponentController',
+                    controllerUrl: 'admin/js/AdminComponentController.js',
+                    templateUrl: 'admin/templates/components/base.tpl',
+                    routeUrl: 'dev/admin/components/base',
+                    cssUrl: 'admin/css/scss/partials/_base_components.scss'
+                },
+                states: []
+              },
+              {
+                title:'Splash',
+                identifier: 'splash',
+                parentId: '#splash-view',
+                reference: {
+                  controller: 'SplashController',
+                  controllerUrl: 'preapp/js/SplashController.js',
+                  templateUrl: 'preapp/templates/splash.html',
+                  routeUrl: 'dev/splash',
+                  cssUrl: 'preapp/css/scss/preapp.scss'
+                },
+                states: [
+                  {title: 'onActivateSplashMadlib', selector:'#splash-madlib', description: 'Activate splash madlib',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
+                  {title: 'onActivateSplashDevice', selector:'#splash-device-container', description: 'Activate splash device',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
+                  {title: 'onActivateSplashNav', selector:'#splash-nav-bar', description: 'Activate splash nav',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
+                ]
               }
             ]
 

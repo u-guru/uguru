@@ -21,16 +21,23 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
         getSpec: getSpec
     }
 
+    function isParamLastPartUrl(param) {
+        var wHref = window.location.href
+        var lastUrlParam = wHref.split('/').reverse()[0].toLowerCase();
+        return wHref.split('/' + param).length > 1 &&  (lastUrlParam=== param)
+    }
+
     function initSpec(param, real_scope) {
         var extraDelay = 0;
         if (window.location.href.split('codepen').length > 1) {
             extraDelay = 1500;
         }
-        if ((window.location.href.split('/dev/').length === 1) && window.location.href.split('codepen').length === 1) {
+        if (!isParamLastPartUrl(param) || (window.location.href.split('/dev/').length === 1) && window.location.href.split('codepen').length === 1) {
             return;
         }
         $timeout(function() {
             var workflowObj = AdminWorkflowService.getSingleWorkflow(param);
+
             var scope = real_scope[param];
             var template_path = workflowObj.reference.templateUrl;
             var ctrl_path = workflowObj.reference.controllerUrl;
@@ -40,7 +47,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             console.log(css_path, parent_container, states, ctrl_path, template_path, scope);
 
             if (!scope.spec) {
-                scope.spec = {data: {}};
+                scope.spec = {data: {toggleDev:false, toggleSpec:false}};
             }
 
 
@@ -121,7 +128,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             }
 
             elem = document.querySelector(parent_container);
-            console.log('parent containeter', elem);
+            console.log('parent containeter', elem, parent_container);
             specElem = document.createElement('spec');
             specElem.className = 'fixed bottom-0 left-0 full-x';
             specElem.style.zIndex = '100000';
@@ -732,11 +739,18 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
                         onHoverElems[i].classList.add('activate-hover');
                     }
                 }
-                else if (option.title.toLowerCase() === 'onactivate') {
+                else if (option.title.toLowerCase() === 'onactivate' || option.title.toLowerCase().indexOf('onactivate') > -1) {
+
+
                     parent_elem = document.querySelector(option.parent_elem);
-                    onActivateElems = parent_elem.querySelectorAll('[on-activate]');
+                    if (option.selector) {
+                        onActivateElems = parent_elem.querySelectorAll( option.selector+'[on-activate]');
+                    } else {
+                        onActivateElems = parent_elem.querySelectorAll('[on-activate]');
+                    }
                     for (var i = 0 ; i < onActivateElems.length; i++) {
                         onActivateElems[i].classList.add('activate');
+                        onActivateElems[i].classList.remove('invisible');
                     }
                 }
                 else if (option.is_elem_state) {
@@ -748,21 +762,20 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
                 if (scope[param].spec.data.settings.cache.showStatus) {
                     var statusBarElem = document.querySelector('#spec-status-bar');
                     if (statusBarElem) {
-                        statusBarElem.classList.add('animated', 'slideInDown');
+                        statusBarElem.classList.add('animated', 'slideInUp');
                         scope[param].spec.data.status_msg = option.title + ' is running...';
-                        console.log(scope[param].spec.data.status_msg);
                         $timeout(function() {
                             scope.$apply();
                             scope[param].spec.data.toggleStatus = true;
                         })
                         $timeout(function() {
-                            statusBarElem.classList.remove('animated', 'slideInDown');
+                            statusBarElem.classList.remove('animated', 'slideInUp');
                         }, 1000)
                         $timeout(function() {
-                                statusBarElem.classList.add('animated', 'slideOutUp');
+                                statusBarElem.classList.add('animated', 'slideOutDown');
                                 $timeout(function() {
                                     scope[param].spec.data.toggleStatus = false;
-                                    statusBarElem.classList.remove('animated', 'slideOutUp');
+                                    statusBarElem.classList.remove('animated', 'slideOutDown');
                                 }, 1000);
                         }, 3000);
                     }

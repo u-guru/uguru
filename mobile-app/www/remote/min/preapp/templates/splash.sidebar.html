@@ -1,4 +1,4 @@
-<ion-view ng-controller='SplashSidebarController as sidebar' id='splash-sidebar'>
+<div ng-controller='SplashSidebarController as sidebar'  id='splash-sidebar' elem-states="[sidebar]" on-sidebar-enter="show" on-init="display:none" on-sidebar-exit="hide:delay-250:remove|show">
     <aside class="splash-sidebar-full">
         <!-- class-on-activate="fadeIn:anim, null:inject.splash-sidebar-menu|activate, null:inject.splash-sidebar-links a[class-on-activate]|activate" class-on-clear="fadeOut:animOut" -->
         <nav class="splash-sidebar-menu">
@@ -7,7 +7,7 @@
                 <header>
                     <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
                     <!-- ng-click='page.sidebar.toggle()' -->
-                    <a class="icon-round-stroke close" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"></a>
+                    <a class="icon-round-stroke close" ng-click="sidebar.close()" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"></a>
                     <!-- ng-click='hideSideBar()' -->
                 </header>
                 <ul class="splash-sidebar-links">
@@ -110,4 +110,4 @@
             <ion-pane id='cta-modal-become-guru' ng-if='desktopMode' class='full-xy hide-display cta-modal absolute top-0 left-0 sidebar-modal' ng-if='user.university && user.university.id' ng-include="::img_base + BASE + 'templates/desktop.guru.onboarding.html'" ng-controller='DesktopBecomeGuruController'> </ion-pane> -->
         </section>
     </aside>
-</ion-view>
+</div>
