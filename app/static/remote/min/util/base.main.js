@@ -28,7 +28,16 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
   $stateProvider
   .state('demo', {
     url:'/',
-    templateUrl: 'demo.html'
+    templateUrl: 'demo.html',
+    controller: function($scope, RootService) {
+      $scope.root = {devMode: true};
+      $scope.root.window = getBodyDimensions();
+      $scope.root.base_url = RootService.getBaseUrl();
+      $scope.root.local = window.location.href.split(':8100').length > 1;
+      $scope.root.browserPrefix = RootService.getBrowserPrefix();
+      $scope.root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
+      $scope.root.devMode = window.location.href.split('/dev/').length > 1;
+    }
   });
 
 
