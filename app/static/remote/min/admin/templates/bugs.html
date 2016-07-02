@@ -3,7 +3,8 @@
 	<header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Bugs</h1>
      </header>
-	<ion-pane id='cta-modal-selected-bug' ng-if='false' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.detail.html'"></ion-pane>
+	<ion-pane id='cta-modal-selected-bug' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.detail.html'"></ion-pane>
+
 
 	<header class='bg-robin txt-center flex-center'>
 		<h1 ng-if="indexOfSection == null && bugReport.length" class="txt-white weight-700 txt-28">Bugs {{indexOfSection}}</h1>
@@ -62,12 +63,12 @@
 	</div>
 
 	<div id="main-bug-content" class='full-x overflow-auto' ng-class="{'lyt-1-3-sidebar':indexOfSection == null }" style="height: calc(100% - 58px)!important">
-		<aside class='bg-charcoal-50p'  ng-if='indexOfSection == null && bugReport.length'>
+		<aside class='bg-charcoal-30p'  ng-if='indexOfSection == null && bugReport.length'>
 			<div>
 				<ul class="p15-grid">
-					<li  ng-repeat='section in bugReport'>
+					<li  ng-repeat="section in bugReport | orderBy:'-stateID':true">
 						<button class="bg-shamrock radius-2" ng-click="openBugList(section)">{{section.name}}</button>
-						<button class="bg-shamrock radius-2" ng-click="removeSection($index)" >Remove</button>
+						<!-- <button class="bg-shamrock radius-2" ng-click="removeSection($index)" >Remove</button> -->
 					</li>
 				</ul>
 			</div>
@@ -81,13 +82,61 @@
 		</aside>
 
 
-		<div class='bg-slate-50p' ng-int='reverse = false'>
+		<div class='bg-slate-70p' ng-int='reverse = false'>
 			<div ng-if='!addSection'>
 				<ul ng-if="availableOptions.selectedIndex == 0" class="p15-grid">
-					<li ng-repeat='state in states' >
-						<span class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold">{{state.title}}</span>
-						<ul>
-							<li ng-repeat='stepBug in state.stepBugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list'>
+					<li>
+						<ul class="flex" ng-init="isExpend = false">
+							<li>
+								<a class="flex-center width-36 height-36 txt-14 border-3 semibold"  ng-click='isExpend = !isExpend'>
+									+ {{currentManualBugs.length}}
+								</a>
+							</li>
+
+							</li>
+								<span class="block bg bg-rocket p10y-p15x height-36 radius-2 txt-18 semibold" >
+									Manual Bugs 
+								</span>
+							</li>
+						</ul>
+
+						<ul >
+							<li ng-repeat='bug in currentManualBugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list'  ng-show='isExpend'>
+								<span class="caps">[ {{stepBug.speed}} ] </span>
+								<a ng-click='initAndLaunchBugCTA($event, bug ,$index, -1)'>{{bug.title}}</a>
+							</li>
+
+							<li>
+								 <a ng-click='initAndLaunchBugCTA($event)'>+ File a New Bug</a>
+							</li>
+						</ul>
+
+					</li>
+
+					<li ng-repeat='state in states' ng-init='expendAll = false'>
+
+						<ul class="flex" ng-init="isExpend = false">
+							<li>
+								<a class="flex-center width-36 height-36 txt-14 border-3 semibold" ng-click='isExpend = !isExpend' >
+									+ {{state.stepBugs.length}}
+								</a>
+							</li>
+
+							<li>
+								<span class="block bg bg-rocket p10y-p15x height-36 radius-2 txt-18 semibold">
+									{{state.title}}
+								</span>
+							</li>
+						<!-- 	<li>
+								<a class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold" ng-click="activePlatforms(state)">
+									{{state.platforms.length}}
+								</a>
+							</li> -->
+						</ul>
+
+						<ul >
+							<li ng-repeat='stepBug in state.stepBugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list' ng-show='isExpend'>
+							<span class="caps">[ {{stepBug.speed}} ] </span>
 							 <a ng-click='initAndLaunchBugCTA($event, stepBug ,$index, $parent.$index)'>{{stepBug.step}}</a>
 							</li>
 						</ul>
@@ -95,11 +144,7 @@
 				</ul>
 
 			</div>
-			<ul class="p15-grid" ng-if="availableOptions.selectedIndex !== 2">
-				<li >
-					<a class="block bg bg-rocket p10y-p15x radius-2 txt-18 semibold" ng-click='initAndLaunchBugCTA($event)'>+ File a New Bug</a>
-				</li>
-			</ul>
+
 		</div>
 
 	</div>

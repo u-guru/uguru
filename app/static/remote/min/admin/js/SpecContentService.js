@@ -158,16 +158,16 @@ function SpecContentService($state, $timeout, $localstorage, $window, AdminWorkf
       }
       return {
         count: 1,
-        bugID: id,
+        stateID: id,
         launchBugTab: function() {
           // console.log("ID",this.bugID)
-          var url = document.URL +'/bugs/'+this.bugID;
+          var url = document.URL +'/bugs/'+this.stateID;
           $window.open(url);
           // alert('coming soon');
         }
       }
     }
-
+    
     function getSpec(wkflow_name) {
       // codepenSpecUrl.replace('.js','') + '/?editors=0010'
       return {launch: wkflow_name, progress:'78%'};

@@ -98,12 +98,17 @@ gulp.task('sass',function(done){
 gulp.task('compile-css', function(done) {
 
   var cssStream = gulp.src([
-      'shared/**/*.css',
-      'preapp/**/*.css',//,
-      '!preapp/**/loader.css',//,
-      'gabrielle/**/*.css',//,
-      'jeselle/**/*.css',
-      'admin/**/*.css'//,
+      'shared/css/ionic.app.min.css',
+      'shared/css/compiled/style.css',
+      'shared/css/compiled/utility.css',
+      'shared/css/compiled/components.css',
+      'shared/css/compiled/animation.css',
+      'shared/css/compiled/profile.css',
+      'preapp/css/compiled/preapp.css',
+      'admin/css/compiled/admin.css',
+      'shared/css/lib/prism.css',
+      'jeselle/css/compiled/*.css',
+      'gabrielle/css/compiled/*.css'
       // 'loader.css'
     ],{cwd: ''})
   .pipe(debug())
@@ -267,7 +272,7 @@ gulp.task('compile-temp',function(done){
 });
 
 gulp.task('clean', function(done) {
-  del(['templates.js', 'dest/scripts/*', 'app.js','app.css', 'dest/templates/**'], done);
+    del(['templates.js', 'dest/scripts/*', 'app.js','app.css', 'dest/templates/**'], done);
 });
 
 gulp.task('templates', function() {
@@ -330,8 +335,8 @@ gulp.task('default', function(done) {
     // // 'jsHint',
     'compile-js',
     'compile-base-js',
-    // 'copy-prod',
-    // 'clean'
+    'copy-prod',
+    // 'clean',
     // 'index',
     // build ? 'noop' : 'watchers',
     // build ? 'noop' : 'serve',

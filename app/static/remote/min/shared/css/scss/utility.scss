@@ -2567,6 +2567,10 @@ button, input, textarea {
 .scroll > div {
 	height: 100%!important;
 }
+ion-content > div.scroll {
+	height:100% !important;
+	width:100% !important;
+}
 #intercom-container {
 	z-index: auto!important;
 }

@@ -231,7 +231,7 @@
            }
 
            var lastCharacter = window.location.href.trim().split('/').join('').split('').reverse()[0];
-           if (lastCharacter !== '#') {
+           if (lastCharacter !== '#' && lastCharacter !== '0') {
              var loaderWrapper = document.querySelector('#loader-wrapper');
              if (loaderWrapper) {
                loaderWrapper.style.display = 'none';

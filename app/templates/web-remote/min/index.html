@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
+
     <link href="/static/remote/min/preapp/css/compiled/loader.css" rel="stylesheet">
     <script>
         var timer = {
@@ -13,7 +14,7 @@
 </head>
 
 <body animation="slide-left-right-ios7" onload="timer.body = new Date().getTime()" ng-app="uguru">
-    <div class="loader-portal bg-transparent">
+    <div class="loader-portal default bg-transparent">
         <div class="loader-portal-inside">
           <div class="portal">
               <div>
@@ -141,6 +142,7 @@
 
             var snapLoadedEvent = initEventFromName('shouldRenderSplashTransition');
             script_elem.onload = function(e) {
+
                 globalLoader = new SVGLoader(document.querySelector('#loader-wrapper .pageload-overlay'), {
                     speedOut: 700,
                     easingOut: mina.easeinout
@@ -186,7 +188,8 @@
         }
 
         var lastCharacter = window.location.href.trim().split('/').join('').split('').reverse()[0];
-        if (lastCharacter !== '#') {
+        console.log('last character', lastCharacter);
+        if (lastCharacter !== '#' && lastCharacter !== '0') {
           var loaderWrapper = document.querySelector('#loader-wrapper');
           if (loaderWrapper) {
             loaderWrapper.style.display = 'none';

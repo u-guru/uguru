@@ -22,26 +22,27 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
     }
 
     function initSpec(param, real_scope) {
-        var workflowObj = AdminWorkflowService.getSingleWorkflow(param);
-        var scope = real_scope[param];
-        var template_path = workflowObj.reference.templateUrl;
-        var ctrl_path = workflowObj.reference.controllerUrl;
-        var states = workflowObj.states;
-        var css_path = workflowObj.reference.cssUrl;
-        var parent_container = workflowObj.parentId;
-        console.log(css_path, parent_container, states, ctrl_path, template_path, scope);
         var extraDelay = 0;
         if (window.location.href.split('codepen').length > 1) {
             extraDelay = 1500;
         }
+        if ((window.location.href.split('/dev/').length === 1) && window.location.href.split('codepen').length === 1) {
+            return;
+        }
         $timeout(function() {
-          if ((window.location.href.split('/dev/').length === 1) && window.location.href.split('codepen').length === 1) {
-                return;
-            }
+            var workflowObj = AdminWorkflowService.getSingleWorkflow(param);
+            var scope = real_scope[param];
+            var template_path = workflowObj.reference.templateUrl;
+            var ctrl_path = workflowObj.reference.controllerUrl;
+            var states = workflowObj.states;
+            var css_path = workflowObj.reference.cssUrl;
+            var parent_container = workflowObj.parentId;
+            console.log(css_path, parent_container, states, ctrl_path, template_path, scope);
 
             if (!scope.spec) {
                 scope.spec = {data: {}};
             }
+
 
             //checks codepen environment
             // if (window.location.href.split('codepen.io').length > 1) return;

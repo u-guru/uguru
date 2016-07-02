@@ -23,7 +23,7 @@ import sys
 
 def _force_https(app):
     def wrapper(environ, start_response):
-        environ['wsgi.url_scheme'] = 'https'
+        # environ['wsgi.url_scheme'] = 'https'
         return app(environ, start_response)
     return wrapper
 
@@ -40,12 +40,12 @@ root.addHandler(ch)
 
 app = Flask(__name__, static_folder='static')
 app.config.from_object('config')
-sslify = SSLify(app)
+# sslify = SSLify(app)
 mandrill = MandrillWebhooks(app)
 
-app.config.update(dict(
-  PREFERRED_URL_SCHEME = 'https',
-))
+# app.config.update(dict(
+#   PREFERRED_URL_SCHEME = 'https',
+# ))
 
 app.config.setdefault('MANDRILL_WEBHOOKS_KEY', 'Byu1r2LQpLmaxGvIoydqQw')
 app.config.setdefault('MANDRILL_WEBHOOKS_URL', 'https://uguru-rest-test.herokuapp.com/mandrill')

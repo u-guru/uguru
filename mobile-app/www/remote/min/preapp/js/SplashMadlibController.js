@@ -67,7 +67,7 @@ angular.module('uguru.preApp')
     // SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states, 'preapp/css/scss/partials/adlib/_main.scss');
     SpecService.initSpec('madlib', $scope);
     $timeout(function() {
-          // madlib.onEnter();
+          madlib.onEnter();
     }, 2000);
 
 

@@ -42,7 +42,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
         templateUrl: 'shared/templates/root.html'
   })
   .state('root.splash', {
-    parent: 'root',
+    // parent: 'root',
     name: 'root.splash',
     url:'/',
     templateUrl: 'preapp/templates/splash.html'

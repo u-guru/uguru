@@ -8,7 +8,8 @@ angular.module('uguru.admin')
   '$window',
   'SpecContentService',
   'ReportService',
-  function($scope, $state, $timeout, $localstorage, $window, SpecContentService,ReportService) {
+  '$interval',
+  function($scope, $state, $timeout, $localstorage, $window, SpecContentService,ReportService,$interval) {
     //spec service get all
 
 
@@ -20,33 +21,186 @@ angular.module('uguru.admin')
     $scope.user_workflows = [];
     $scope.user_workflows = SpecContentService.getContentSpec('preApp');
     $scope.admin_tasks = SpecContentService.getContentSpecAdmin('preApp');
-    // console.log("LOG", $scope.user_workflows[4].bugs.launchBugTab())
+
+  
+    $interval(initBugs, 5000);
 
     if (window.location.href.split(':8100').length > 1) {
       $timeout(function() {
         initBugs();
-      }, 1000)
+      }, 500);
+    }
+
+    function countFailt(eachState)
+    {
+      var count = 0;
+      for (var i = 0; i < eachState.platforms.length; ++i){
+        if (eachState.platforms[i].isPassed === 1){
+           ++ count;
+        }
+      }
+      return count;
     }
 
     function initBugs () {
       ReportService.getBug().then(function(result){
-       $scope.bugReport = result;
-       console.log('result', $scope.bugReport);
+       if(!$scope.bugReport){
+          $scope.bugReport = result['workflows'];
+          $scope.lastReportUpdate = result['lastUpdate'];
+       }
+       else {
+          // console.log("check", $scope.lastReportUpdate , result['lastUpdate'])
+          classList = document.querySelector('#cta-modal-action-platforms').classList
+          if (result['lastUpdate'] > $scope.lastReportUpdate && !classList.contains('show')){
+            console.log("UPDATED")
+            $scope.bugReport = result['workflows'];
+            $scope.lastReportUpdate = result['lastUpdate'];
+          }
+          // else
+          // {
+          //   console.log("No data need to updated");
+          // }
+       }
+     
       }, function(reason) {
         // console.log(reason);
       });
-      $scope.$watchCollection('bugReport', function(newNames, oldNames) {
-        if (!oldNames && newNames){
-          console.log('bugReport is load');
+    }
+    
+    $scope.$watchCollection('bugReport', function(newNames, oldNames) {
+      if (!oldNames && newNames){
+        console.log('bugReport is load',$scope.lastReportUpdate);
+        
+      }
+      if(oldNames && newNames){
+        console.log('bugReport is Updated');
+      }
+    });
+
+
+    $scope.updateStatus = function(index){
+        switch( $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed){
+          case 1:
+            $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed = -1;
+            break;
+          case -1:
+            $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed = 0;
+            break;
+          case 0:
+            $scope.statePlatforms[$scope.availableState.selectedIndex].platforms[index].isPassed = 1;
+            break;
         }
-        else if(oldNames && newNames){
-          console.log('bugReport is Update');
+        var report = {
+           'workflows': $scope.bugReport,
+           'lastUpdate': new Date().getTime()
+
+         }
+        ReportService.syncReport(report);
+    };
+    $scope.closePlatform = function(){
+      var targetElem = document.querySelector('#cta-box-selected-bug');
+      var modalElem = document.querySelector('#cta-modal-action-platforms');
+      modalElem.classList.remove('show');
+    };
+
+
+    $scope.openPlatform = function(stateID,key){
+        var targetElem = document.querySelector('#cta-box-selected-bug');
+        var modalElem = document.querySelector('#cta-modal-action-platforms');
+        modalElem.classList.add('show');
+        if (key === 'states'){
+          $scope.isAutoState = true;
         }
-      });
+        else{
+          $scope.isAutoState = false;
+        }
+        for(var i = 0; i < $scope.bugReport.length ; ++i)
+        {
+          if ($scope.bugReport[i].stateID === stateID){
+            // $scope.statePlatforms = $scope.bugReport[i][key];
+            $scope.autoReport =  $scope.bugReport[i][key];
+            if(key === 'manualState'){
+              $scope.manualFound = $scope.bugReport[i]['manualBugs'];
+              // console.log('CHECK RESULT',$scope.manualFound);
+            }
+
+            // var options = [];
+
+            // for (var j = 0; j <  $scope.statePlatforms.length; ++j ){
+            //   options.push( $scope.statePlatforms[j].title);
+            // }
+            // for (var j = 0; j <  $scope.manualFound.length; ++j ){
+            //   options.push( $scope.manualFound[j].title);
+            // }
+            $scope.statePlatforms = $scope.autoReport;
+            setOptions($scope.statePlatforms)
+            console.log($scope.statePlatforms,$scope.availableState)
+            // $scope.availableState = {
+            //   'selectedIndex': 0,
+            //   'options': options
+            // };
+            return;
+          }
+        }
+    };
+    $scope.switchSates = function(obj){
+      $scope.statePlatforms = obj;
+      setOptions($scope.statePlatforms);
     }
 
+    function setOptions(object){
+      var options = [];
+      for (var j = 0; j <  object.length; ++j ){
+        options.push( object[j].title);
+      }
+      $scope.availableState = {
+        'selectedIndex': 0,
+        'options': options
+      };
+    }
 
+    $scope.availableOptions = {
+        'selectedIndex': 0,
+        'options': ['All Bugs','Prioritized Bugs','Recently Complete']
+    };
 
+    // $scope.calState = function(title,key){
+    $scope.calState = function(id,key){
+
+      // console.log('check', stateID)
+      function convertTitle(str){
+          var id = 0;
+          for (var i = 0; i < str.length ; ++ i) {
+            id += str.charCodeAt(i);
+          }
+          return id;
+      }
+      var stateID = id;
+      // console.log("CHECK",$scope.bugReport)
+      for(var i = 0; i < $scope.bugReport.length ; ++i)
+      {
+        if ($scope.bugReport[i].stateID === stateID){
+          var totalPass = 0;
+          for (var j = 0; j < $scope.bugReport[i][key].length; ++j)
+          {
+            totalPass += countFailt($scope.bugReport[i][key][j]);
+          }
+          if (key ==='manualState'){
+            for (var k = 0; k < $scope.bugReport[i]['manualBugs'].length; ++k)
+            {
+              totalPass += countFailt($scope.bugReport[i]['manualBugs'][k]);
+            }
+            var digit = totalPass/($scope.bugReport[i][key].length * 25 + 
+              $scope.bugReport[i]['manualBugs'].length*25)* 100;
+          }
+          else{
+            var digit = totalPass/($scope.bugReport[i][key].length * 25)* 100;
+          };
+          return parseFloat(digit.toFixed(2));
+        }
+      }
+      return ' - ';
+    };
 
 
     $scope.getBug  = function(id){
@@ -54,7 +208,6 @@ angular.module('uguru.admin')
       if(id && $scope.bugReport){
         for(var i = 0; i < $scope.bugReport.length ; ++i)
         {
-          // console.log('index',i);
           if ($scope.bugReport[i].bugID === id){
             return $scope.bugReport[i].bugs.length;
           }

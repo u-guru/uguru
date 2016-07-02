@@ -1,3 +1,4 @@
+<ion-pane id='cta-modal-action-platforms' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.states.html'"></ion-pane>
 <header class="bg-slate flex-wrap-center full-x relative">
     <h1 class='full-x bg-cobalt-25p txt-18 p15xy txt-center'>Action Items</h1>
 </header>
@@ -97,6 +98,16 @@
                     <li >
                         <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='flow.spec.progress'>78%</span>
                     </li>
+                    <li>
+                        <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-click='openPlatform(flow.id,"manualState")' ng-if='bugReport' >{{calState(flow.id,"manualState")}}%</span>
+                        <span class="round flex-center width-36 height-36 txt-14 border-moxie border-3 semibold" ng-if='!bugReport' >Load</span>
+                    </li>
+
+                    <li>
+                        <span class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold" ng-click='openPlatform(flow.id,"states")' ng-if='bugReport' >{{calState(flow.id,"states")}}%</span>
+                        <span class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold" ng-if='!bugReport' >Load</span>
+                    </li>
+
                     <li ng-if='false'>
                         <span class="round flex-center width-36 height-36 txt-14 border-auburn border-3 semibold" ng-click='flow.bugs.launchBugTab()'>{{getBug(flow.bugs.bugID)}}</span>
                     </li>
