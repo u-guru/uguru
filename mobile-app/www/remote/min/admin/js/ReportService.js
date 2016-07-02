@@ -44,10 +44,19 @@ function ReportService($timeout,FileService,LoadingService,$q) {
             })
         }
     }
-    function saveBug(newObject){
-        console.log("CHECK")
-        bugReport = newObject;
 
+    function saveBug(newObject){
+        bugReport = newObject;
+    }
+    
+    function syncReport(newObject){
+      
+      FileService.postS3JsonFile(JSON.stringify(newObject), null ,
+                                 'https://s3.amazonaws.com/uguru-admin/sync/bugs.json', postCallback);
+      function postCallback(firstName, resp) {
+          saveBug(newObject);
+          console.log('file successfully saved', resp);          
+        }
     }
     function getBug(id){
         var deferred = $q.defer();
@@ -71,7 +80,7 @@ function ReportService($timeout,FileService,LoadingService,$q) {
               //   }
            } 
            else {
-             deferred.reject('Unable to lunch bug report');
+             deferred.reject('Unable to lunch bug report',bugReport);
            }
          }, 3000);
 
@@ -80,17 +89,15 @@ function ReportService($timeout,FileService,LoadingService,$q) {
 
     function getStates(){
         if (!caches){
-            console.log("no workflow cache found")
-            initData('states','https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json')
+            initData('states','https://s3.amazonaws.com/uguru-admin/master/layouts/splash.json');
         }
-        else
-            console.log("yes cacheg")
-        return bugReport
+        return bugReport;
     }
     return{
         initData: initData,
         getBug: getBug,
         saveBug: saveBug,
-        getStates: getStates
-    }
+        getStates: getStates,
+        syncReport:syncReport
+    };
 }
