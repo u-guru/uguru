@@ -541,9 +541,13 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
     }
 
     function getCodepenData(scope, title, template_url, ctrl_path, css_path) {
-        console.log(template_url, ctrl_path);
+        console.log(template_url, ctrl_path, css_path);
         $timeout(function() {
-            template_url && loadHTMLSpec(scope, template_url, ctrl_path)
+            if (css_path.split(',').length > 1) {
+
+            } else {
+                template_url && loadHTMLSpec(scope, template_url, ctrl_path);
+            }
         })
         $timeout(function() {
             ctrl_path && loadJsSpec(scope, template_url, ctrl_path)
@@ -775,7 +779,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
                                 statusBarElem.classList.add('animated', 'slideOutDown');
                                 $timeout(function() {
                                     scope[param].spec.data.toggleStatus = false;
-                                    statusBarElem.classList.remove('animated', 'slideOutDown');
+                                    statusBarElem.classList.remove('animated', 'slideOut');
                                 }, 1000);
                         }, 3000);
                     }
