@@ -165,6 +165,7 @@ gulp.task('compile-base-js', function(done) {
 
       //admin/service
       'admin/js/AdminAnimToolService.js',
+      'admin/js/AdminWorkflowService.js',
       'admin/js/SpecService.js',
       'admin/js/SpecContentService.js',
       'admin/js/AdminDirectives.js',
