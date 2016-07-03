@@ -30,6 +30,11 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
     url:'/',
     templateUrl: 'demo.html',
     controller: function($scope, RootService) {
+
+      if (typeof portalElem !== 'undefined') {
+        var portalElem;
+      };
+
       $scope.root = {devMode: true};
       $scope.root.window = getBodyDimensions();
       $scope.root.base_url = RootService.getBaseUrl();
@@ -37,7 +42,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
       $scope.root.browserPrefix = RootService.getBrowserPrefix();
       $scope.root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
       $scope.root.devMode = window.location.href.split('/dev/').length > 1;
-
 
     function getBodyDimensions() {
         var desktopHeightLimit = 690;

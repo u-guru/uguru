@@ -30,6 +30,8 @@ angular.module('uguru.preApp', ['ionic'])
     splash.activate = splashActivateFunction
 
 
+
+
     function splashActivateFunction() {
 
       if ($scope.root.devMode) {

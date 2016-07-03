@@ -182,7 +182,7 @@ gulp.task('compile-base-js', function(done) {
       // 'templates.js',
       // //prepapp ctrl
       'preapp/js/SplashController.js',
-      // 'preapp/js/*.js',
+      'preapp/js/*.js'
 
 
       //shared ctrl
