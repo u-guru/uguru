@@ -31,10 +31,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
     templateUrl: 'demo.html',
     controller: function($scope, RootService) {
 
-      if (typeof portalElem !== 'undefined') {
-        var portalElem;
-      };
-
       $scope.root = {devMode: true};
       $scope.root.window = getBodyDimensions();
       $scope.root.base_url = RootService.getBaseUrl();
