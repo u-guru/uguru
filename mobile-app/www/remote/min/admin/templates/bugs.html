@@ -66,7 +66,7 @@
 		<aside class='bg-charcoal-30p'  ng-if='indexOfSection == null && bugReport.length'>
 			<div>
 				<ul class="p15-grid">
-					<li  ng-repeat="section in bugReport | orderBy:'-stateID':true">
+					<li  ng-repeat="section in bugReport | orderBy:'-stateID':false">
 						<button class="bg-shamrock radius-2" ng-click="openBugList(section)">{{section.name}}</button>
 						<!-- <button class="bg-shamrock radius-2" ng-click="removeSection($index)" >Remove</button> -->
 					</li>
