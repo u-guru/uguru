@@ -200,7 +200,7 @@ gulp.task('compile-base-js', function(done) {
       //services
       'shared/js/services/LocalStorageService.js',
       'shared/js/services/*.js',
-      'base.main.js',
+      'util/base.main.js',
       'templates.js',
       //prepapp ctrl
       'preapp/js/SplashController.js',
