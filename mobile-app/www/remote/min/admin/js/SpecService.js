@@ -32,7 +32,11 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
         if (window.location.href.split('codepen').length > 1) {
             extraDelay = 1500;
         }
-        if (!isParamLastPartUrl(param) || (window.location.href.split('/dev/').length === 1 && (window.location.href.split('codepen').length === 1))) {
+        //if its not codepen, it doesn't have dev in it
+        if (
+            window.location.href.split('codepen').length === 1 &&
+            (window.location.href.split('/dev/').length === 1)
+            ) {
             return;
         }
         $timeout(function() {
