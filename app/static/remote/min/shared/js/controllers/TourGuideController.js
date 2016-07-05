@@ -1,4 +1,4 @@
-angular.module('uguru.shared')
+angular.module('uguru.shared.controllers')
 .controller('TourGuideController', [
 
   //All imported packages go here

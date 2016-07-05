@@ -18,16 +18,19 @@
                 </a>
             </fieldset>
         </div>
-        <ul class="flex p15-grid">
-            <li>
-                <a ng-click='search.text = user.first_name'><user-icon url="user.profile_url"> </user-icon> </a>
-            </li>
-            <li ng-repeat='member in team_members' ng-if='member.name.toLowerCase() !== user.name.split(" ")[0].toLowerCase()'>
-                <a ng-click='search.text = member.first_name'>
-                    <user-icon url="member.profile_url"> </user-icon>
-                </a>
-            </li>
-        </ul>
+        <div class="relative p15xy width-50p bg-cerise">
+            <ul class="flex p15-grid">
+                <li>
+                    <a ng-click='search.text = user.first_name'><user-icon url="user.profile_url"> </user-icon> </a>
+                </li>
+                <li ng-repeat='member in team_members'>
+                    <a ng-click='search.text = member.first_name'>
+                        {{member.name}}
+                        <user-icon url="member.profile_url"> </user-icon>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
     <ul class="p15-grid">
         <li ng-repeat='task in admin_tasks' class='bg-slate' ng-if='user.name === "Samir Makhani"'>

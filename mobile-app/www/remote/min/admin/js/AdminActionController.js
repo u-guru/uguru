@@ -17,12 +17,14 @@ angular.module('uguru.admin')
 
     $scope.team_members = SpecContentService.getTeamMembers();
 
+    $timeout(function() {console.log($scope.team_members)});
+
 
     $scope.user_workflows = [];
     $scope.user_workflows = SpecContentService.getContentSpec('preApp');
     $scope.admin_tasks = SpecContentService.getContentSpecAdmin('preApp');
 
-  
+
     $interval(initBugs, 5000);
 
     if (window.location.href.split(':8100').length > 1) {
@@ -61,16 +63,16 @@ angular.module('uguru.admin')
           //   console.log("No data need to updated");
           // }
        }
-     
+
       }, function(reason) {
         // console.log(reason);
       });
     }
-    
+
     $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
         console.log('bugReport is load',$scope.lastReportUpdate);
-        
+
       }
       if(oldNames && newNames){
         console.log('bugReport is Updated');
@@ -190,7 +192,7 @@ angular.module('uguru.admin')
             {
               totalPass += countFailt($scope.bugReport[i]['manualBugs'][k]);
             }
-            var digit = totalPass/($scope.bugReport[i][key].length * 25 + 
+            var digit = totalPass/($scope.bugReport[i][key].length * 25 +
               $scope.bugReport[i]['manualBugs'].length*25)* 100;
           }
           else{
