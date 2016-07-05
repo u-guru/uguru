@@ -184,7 +184,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/sidebar/pricing.html',
                     routeUrl: 'dev/splash/pricing'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Team Page",
@@ -196,7 +198,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/sidebar/team.html',
                     routeUrl: 'dev/splash/team'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "About Page",
@@ -206,7 +210,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/sidebar/about.html',
                     routeUrl: 'dev/splash/about'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "How it works",
@@ -216,7 +222,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/hiw.html',
                     routeUrl: 'dev/splash/hiw'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Splash Tour Guide",
@@ -226,7 +234,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/tour.html',
                     routeUrl: 'dev/splash/tour'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Access",
@@ -236,7 +246,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/access.html',
                     routeUrl: 'dev/splash/access'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Projector-Only Swiper View",
@@ -246,7 +258,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/getting-started.html',
                     routeUrl: 'dev/splash/projector'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Demographics Slide",
@@ -256,7 +270,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/access.html',
                     routeUrl: 'dev/splash/demographic'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Account Slide",
@@ -266,7 +282,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/account.html',
                     routeUrl: 'dev/splash/account'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "University Search Page",
@@ -276,7 +294,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/university-search.html',
                     routeUrl: 'dev/splash/university-search'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "University Courses Slide",
@@ -286,7 +306,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/university-courses.html',
                     routeUrl: 'dev/splash/university-courses'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: 'Guru Profiles',
