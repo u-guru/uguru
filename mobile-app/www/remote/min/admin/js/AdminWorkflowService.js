@@ -283,7 +283,13 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     routeUrl: 'dev/splash/account'
                 },
                 states: [
-
+                  //@gabrielle-note: example of transitions to account for
+                  {title: 'beforeAccountProjectorAnimComplete', functional: false, animated: false, tested: false},
+                  {title: 'onAccountProjectorAnimComplete', functional: false, animated: false, tested: false},
+                  {title: 'onAccountValidateButtonClicked', functional: false, animated: false, tested: false},
+                  {title: 'onAccountValidate', functional: false, animated: false, tested: false},
+                  {title: 'onAccountSuccess', functional: false, animated: false, tested: false},
+                  {title: 'onAccountError', functional: false, animated: false, tested: false}
                 ]
               },
               {
@@ -295,7 +301,12 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     routeUrl: 'dev/splash/university-search'
                 },
                 states: [
-
+                  {title: 'onViewInit', functional: false, animated: false, tested: false},
+                  {title: 'onViewEnterComplete', functional: false, animated: false, tested: false},
+                  {title: 'onInputFocused', functional: false, animated: false, tested: false},
+                  {title: 'onSearchResultChange', functional: false, animated: false, tested: false},
+                  {title: 'onNoSearchResults', functional: false, animated: false, tested: false},
+                  {title: 'onSearchResultClicked', functional: false, animated: false, tested: false}
                 ]
               },
               {
@@ -307,7 +318,17 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     routeUrl: 'dev/splash/university-courses'
                 },
                 states: [
-
+                  {title: 'onViewInit', functional: false, animated: false, tested: false},
+                  {title: 'asSlideEnterTransition', functional: false, animated: false, tested: false},
+                  {title: 'onSlideEnterTransitionComplete', functional: false, animated: false, tested: false},
+                  {title: 'onSlideExitTransition', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSearchInputFocused', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSearchKeypress', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSearchInputBackspace', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSearchInputClear', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSearchResultExists', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSelected', functional: false, animated: false, tested: false},
+                  {title: 'onCourseRemoved', functional: false, animated: false, tested: false},
                 ]
               },
               {
@@ -318,7 +339,8 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     controller: 'GuruProfileController',
                     templateUrl: 'shared/templates/guru.profile.html',
                     routeUrl: ['dev/admin/profiles/academic', 'dev/admin/profiles/tech', 'dev/admin/profiles/baking', 'dev/admin/profiles/photography', 'dev/admin/profiles/household']
-                }
+                },
+
               },
               {
                 title: "Gabrielle's Portfolio",
