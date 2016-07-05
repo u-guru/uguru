@@ -315,7 +315,7 @@ angular.module('uguru.admin')
           parentIndex : parentIndex,
           index: index
         };
-        console.log( $scope.current)
+        // console.log( $scope.current)
       }
       else
       {
@@ -351,7 +351,7 @@ angular.module('uguru.admin')
         // angular.element(targetElem).triggerHandler('click');
         var modalElem = document.querySelector('#cta-modal-selected-bug');
         // CTAService.showModalCTA(modalElem);
-        console.log("check",targetElem)
+        // console.log("check",targetElem)
         modalElem.classList.add('show');
       });
     };
@@ -474,7 +474,7 @@ angular.module('uguru.admin')
 
           $scope.advanceSearch.tags.list.push(content);
           $scope.advanceSearch.tags.empty_tag.content = '';
-          console.log($scope.advanceSearch)
+          // console.log($scope.advanceSearch)
           $localstorage.setObject('advanceSearch', $scope.advanceSearch);
         }
 

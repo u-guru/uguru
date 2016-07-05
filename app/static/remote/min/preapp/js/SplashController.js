@@ -41,7 +41,7 @@ angular.module('uguru.preApp', ['ionic'])
           return;
       }
 
-      portalElem.addEventListener('splashMainLoadingComplete', function (e) {
+      portalElem && portalElem.addEventListener('splashMainLoadingComplete', function (e) {
 
 
         console.log('is NOT in dev mode');
@@ -70,4 +70,4 @@ angular.module('uguru.preApp', ['ionic'])
 
 
   }
-])
+]);

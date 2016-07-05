@@ -184,7 +184,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/sidebar/pricing.html',
                     routeUrl: 'dev/splash/pricing'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Team Page",
@@ -196,7 +198,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/sidebar/team.html',
                     routeUrl: 'dev/splash/team'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "About Page",
@@ -206,7 +210,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/sidebar/about.html',
                     routeUrl: 'dev/splash/about'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "How it works",
@@ -216,7 +222,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/hiw.html',
                     routeUrl: 'dev/splash/hiw'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Splash Tour Guide",
@@ -226,7 +234,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/tour.html',
                     routeUrl: 'dev/splash/tour'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Access",
@@ -236,7 +246,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/access.html',
                     routeUrl: 'dev/splash/access'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Projector-Only Swiper View",
@@ -246,7 +258,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/getting-started.html',
                     routeUrl: 'dev/splash/projector'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Demographics Slide",
@@ -256,7 +270,9 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/access.html',
                     routeUrl: 'dev/splash/demographic'
                 },
-                status: {css: false}
+                states: [
+
+                ]
               },
               {
                 title: "Account Slide",
@@ -266,7 +282,15 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/account.html',
                     routeUrl: 'dev/splash/account'
                 },
-                status: {css: false}
+                states: [
+                  //@gabrielle-note: example of transitions to account for
+                  {title: 'beforeAccountProjectorAnimComplete', functional: false, animated: false, tested: false},
+                  {title: 'onAccountProjectorAnimComplete', functional: false, animated: false, tested: false},
+                  {title: 'onAccountValidateButtonClicked', functional: false, animated: false, tested: false},
+                  {title: 'onAccountValidate', functional: false, animated: false, tested: false},
+                  {title: 'onAccountSuccess', functional: false, animated: false, tested: false},
+                  {title: 'onAccountError', functional: false, animated: false, tested: false}
+                ]
               },
               {
                 title: "University Search Page",
@@ -276,7 +300,14 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/university-search.html',
                     routeUrl: 'dev/splash/university-search'
                 },
-                status: {css: false}
+                states: [
+                  {title: 'onViewInit', functional: false, animated: false, tested: false},
+                  {title: 'onViewEnterComplete', functional: false, animated: false, tested: false},
+                  {title: 'onInputFocused', functional: false, animated: false, tested: false},
+                  {title: 'onSearchResultChange', functional: false, animated: false, tested: false},
+                  {title: 'onNoSearchResults', functional: false, animated: false, tested: false},
+                  {title: 'onSearchResultClicked', functional: false, animated: false, tested: false}
+                ]
               },
               {
                 title: "University Courses Slide",
@@ -286,7 +317,19 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     templateUrl: 'preapp/templates/started/university-courses.html',
                     routeUrl: 'dev/splash/university-courses'
                 },
-                status: {css: false}
+                states: [
+                  {title: 'onViewInit', functional: false, animated: false, tested: false},
+                  {title: 'asSlideEnterTransition', functional: false, animated: false, tested: false},
+                  {title: 'onSlideEnterTransitionComplete', functional: false, animated: false, tested: false},
+                  {title: 'onSlideExitTransition', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSearchInputFocused', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSearchKeypress', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSearchInputBackspace', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSearchInputClear', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSearchResultExists', functional: false, animated: false, tested: false},
+                  {title: 'onCourseSelected', functional: false, animated: false, tested: false},
+                  {title: 'onCourseRemoved', functional: false, animated: false, tested: false},
+                ]
               },
               {
                 title: 'Guru Profiles',
@@ -296,7 +339,8 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     controller: 'GuruProfileController',
                     templateUrl: 'shared/templates/guru.profile.html',
                     routeUrl: ['dev/admin/profiles/academic', 'dev/admin/profiles/tech', 'dev/admin/profiles/baking', 'dev/admin/profiles/photography', 'dev/admin/profiles/household']
-                }
+                },
+
               },
               {
                 title: "Gabrielle's Portfolio",

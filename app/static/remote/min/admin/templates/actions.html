@@ -43,7 +43,7 @@
         </li>
         <li ng-repeat='flow in user_workflows | filter:search.text:strict' ng-if='flow.ready'>
             <div class="bg-white-10p radius-2 flex-space-between-center-vertical">
-                <h2 class="p15xy txt-18 semibold">{{flow.title}}</h2>
+                <h2 class="p15xy txt-18 semibold">{{flow.id}}. {{flow.title}}</h2>
                 <ul class="flex p15-grid">
                     <li ng-repeat='member in flow.members | filter:member.value'>
                         <div class="user-icon-container" ng-class='{"border-auburn": member.priority, "border-shamrock": member.complete,"border-gold": !member.complete && !member.priority }'>
