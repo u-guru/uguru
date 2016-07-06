@@ -20,8 +20,8 @@ angular.module('uguru.preApp')
         splashSidebarParent.classList.add('on-sidebar-enter');
     }
 
-    function updateSelectedCategories() {
-      console.log('updating selected categories');
+    function updateSelectedCategories(option, index) {
+      console.log('updating selected categories', option, index);
     }
   }
 ])

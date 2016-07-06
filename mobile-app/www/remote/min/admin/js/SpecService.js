@@ -48,7 +48,6 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             var states = workflowObj.states;
             var css_path = workflowObj.reference.cssUrl;
             var parent_container = workflowObj.parentId;
-            console.log(css_path, parent_container, states, ctrl_path, template_path, scope);
 
             if (!scope.spec) {
                 scope.spec = {data: {toggleDev:false, toggleSpec:false}};
@@ -132,7 +131,6 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             }
 
             elem = document.querySelector(parent_container);
-            console.log('parent containeter', elem, parent_container);
             specElem = document.createElement('spec');
             specElem.className = 'fixed bottom-0 left-0 full-x';
             specElem.style.zIndex = '100000';
@@ -545,7 +543,6 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
     }
 
     function getCodepenData(scope, title, template_url, ctrl_path, css_path) {
-        console.log(template_url, ctrl_path, css_path);
         $timeout(function() {
             if (css_path.split(',').length > 1) {
 
@@ -709,6 +706,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             elemStateArr[i].is_elem_state = true;
             dropdownArr.push(elemStateArr[i]);
         }
+        dropdownArr.sort(function(state_1, state_2) {
+            return (state_2.priority) - (state_1.priority || 0)
+        })
         var result = {
             label: 'toggle states',
             options: dropdownArr,

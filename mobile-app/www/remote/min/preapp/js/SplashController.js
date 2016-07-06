@@ -35,6 +35,7 @@ angular.module('uguru.preApp', ['ionic'])
     function splashActivateFunction() {
 
       if ($scope.root.devMode) {
+          splash.state.nav = true;
           splash.state.madlib = true;
           splash.state.device = true;
           SpecService.initSpec('splash', $scope);

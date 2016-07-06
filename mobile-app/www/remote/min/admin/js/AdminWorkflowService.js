@@ -17,7 +17,6 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
     }
 
     function getSingleWorkflow(arg) {
-      console.log(arg);
       var workflows = getWorkflows();
       for (var i = 0; i < workflows.length; i++) {
         if (workflows[i].identifier.toLowerCase() === arg.toLowerCase()) {
@@ -182,7 +181,8 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     controller: 'SplashPricingController',
                     controllerUrl: 'preapp/js/menu/SplashPricingController.js',
                     templateUrl: 'preapp/templates/sidebar/pricing.html',
-                    routeUrl: 'dev/splash/pricing'
+                    routeUrl: 'dev/splash/pricing',
+                    cssUrl: 'preapp/css/scss/partials/pages/_pricing.scss'
                 },
                 states: [
 
@@ -397,7 +397,6 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
             // console.log(workflows[i]['title'],workflows[i]['id']);
 
         }
-        console.log(workflows.length, 'workflows rendered');
         return workflows;
     }
 
