@@ -873,23 +873,6 @@ directive("elemStates", ["$timeout", 'AnimationService', 'UtilitiesService', fun
                   }
                 }
               });
-
-              // for (var i = 0; i < attr.elemStates.length)
-              // element.on("click", function() {
-              //   var delay = attr.classOnClickDelay || 0;
-              //   var classes = attr.classOnClick.split(", ");
-              //   $timeout(function() {
-              //       for (var i = 0; i < classes.length; i++) {
-              //         var indexClass = classes[i].split(":")[0];
-              //         var classArgs = classes[i].split(":").slice(1);
-              //         if (classArgs.indexOf("animIn") > -1) {
-              //           if (classArgs.indexOf("keep") > -1) {
-              //             indexClass = indexClass +':keep';
-              //           }
-              //         }
-              //       }
-              //   })
-              // })
           }
       }
 }]).
@@ -951,25 +934,7 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
             }
           }
 }])
-.directive("animEnterDown", ["AnimationService", "$timeout", function (AnimationService, $timeout) {
-      return {
-          restrict: 'A',
-          link: function(scope, element, attr) {
-            if (!scope.page.waypoints[attr.animEnterDown]) {
-                scope.page.waypoints[attr.animEnterDown] = {};
-            }
-            $timeout(function() {
-              scope.$watch('page.waypoints.' + attr.animEnterDown + '.activated', function(isActive) {
-                var hasFirstTimeEnter = scope.page.waypoints[attr.animEnterDown].hasFirstTimeEnter;
-                var firstTimeActivated = scope.page.waypoints[attr.animEnterDown].firstTimeEnterActivated;
-                if (isActive && scope.page.waypoints[attr.animEnterDown].direction === 'down' && (!hasFirstTimeEnter || firstTimeActivated)) {
-                  AnimationService.applyAnimateInDirective(element[0], 'enter-down');
-                }
-              })
-            }, 100);
-          }
-      };
-}]);
+
 
 
 function isElementInViewport (el) {
