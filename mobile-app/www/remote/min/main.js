@@ -175,6 +175,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.loaders', {
     url:'/dev/splash/loaders',
     templateUrl: 'preapp/templates/loaders/main.html'
+  })
+  .state('root.loaders-tech', {
+    url:'/dev/splash/loaders/tech',
+    templateUrl: 'preapp/templates/loaders/tech.html'
   });
 
 
