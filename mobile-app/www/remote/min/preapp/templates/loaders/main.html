@@ -7,7 +7,7 @@
 		on-portal-photo-enter="photo"
 		on-portal-tech-enter="tech"
 		on-portal-household-enter="household">
-        <div class="loader-portal"
+        <div class="loader-portal on-loader-begin-enter"
 			on-init="opacity:0"
 			elem-states="[loader-begin]"
 			on-loader-begin-enter="portal-fadeIn:animIn:delay-50, null:inject.portal-anim|on-portal-enter">
@@ -38,10 +38,10 @@
                 on-portal-enter="portal-logo-move-up:animIn:delay-1000"
                 on-portal-exit="portal-logo-move-down:animOut"></div>
 
-            <div class="guru-academic"
+            <div class="guru-academic on-loader-academic-enter"
                 elem-states="[loader-academic]"
                 on-loader-academic-enter="null:inject.loader-portal-container|on-portal-academic-enter"></div>
-            <div class="guru academic guru-academic" ng-include="'preapp/templates/loaders/guru/academic.html'"
+            <div class="guru academic guru-academic on-loader-academic-enter" ng-include="'preapp/templates/loaders/guru/academic.html'"
                 elem-states="[loader-academic]"
                 on-loader-academic-enter="null:inject.academic-anim|on-loader-academic-anim-enter"></div>
 
