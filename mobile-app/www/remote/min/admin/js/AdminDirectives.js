@@ -49,6 +49,9 @@ angular.module('uguru.admin')
             if ('keywords' in attr) {
                 ctrl.keywords = attr.keywords.split(', ');
             }
+            if ('type' in attr) {
+                ctrl.type = attr.type;
+            }
             $timeout(function() {
                 var docItems = RootService.getDocItems();
             }, 1000)
@@ -161,6 +164,25 @@ angular.module('uguru.admin')
                 scope.doc && scope.doc.states.push(scope.state);
                 // $compile(element[0])(scope);
             }
+        }
+    }
+}])
+.directive("docSpec", ['RootService', '$timeout', '$compile', function(RootService, $timeout, $compile) {
+    return {
+        templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.spec.tpl',
+        transclude:true,
+        replace:true,
+        scope:{doc:'=', spec:'='},
+        restrict: 'E',
+        link: function(scope, element, attr, ctrl, transcludeFn) {
+            scope.doc = scope.$parent.doc_item;
+
+            if ('spec' in attr && 'doc' in scope) {
+                scope.doc.snippetIndex = scope.doc.snippets.length || 0;
+                title = 'Default';
+            }
+            console.log(scope.spec);
+            scope.doc && scope.doc.snippets.push(scope.spec);
         }
     }
 }])

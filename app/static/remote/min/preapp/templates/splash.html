@@ -1,21 +1,25 @@
 <ion-view id='splash-view' class='bg-charcoal' ng-controller='SplashController as splash'>
     <!-- <ion-content class='relative full-xy' > -->
-        <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()">
+        <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()" elem-states="[category-change]">
             <section id='splash-home' class='splash-hero'>
 
-                <div ng-include src="root.base_url + 'preapp/templates/splash.nav.html'" include-replace>
+                <div on-init="opacity:0" ng-if="splash.state.nav" ng-include src="root.base_url + 'preapp/templates/splash.nav.html'" include-replace>
                 </div>
 
-                <div ng-include src="root.base_url + 'preapp/templates/splash.sidebar.html'" include-replace>
+                <div ng-if="splash.state.sidebar" ng-include src="root.base_url + 'preapp/templates/splash.sidebar.html'" include-replace>
                 </div>
 
 
                 <!-- device -->
-                <div  ng-include src="root.base_url + 'preapp/templates/splash.device.html'" include-replace>
+                <div ng-if="splash.state.device"  ng-include src="root.base_url + 'preapp/templates/splash.device.html'" include-replace>
                 </div>
 
                 <!-- Madlib -->
-                <div ng-include src="root.base_url + 'preapp/templates/splash.madlib.html'" include-replace>
+                <div ng-if="splash.state.madlib" ng-include src="root.base_url + 'preapp/templates/splash.madlib.html'" include-replace>
+                </div>
+
+                <!-- Map -->
+                <div ng-if="splash.state.map" ng-include src="root.base_url + 'preapp/templates/splash.map.html'" include-replace>
                 </div>
 
             </section>

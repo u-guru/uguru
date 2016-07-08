@@ -93,8 +93,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   // -- start DEV states
   .state('root.dev-splash-loader', {
     url:'/dev/splash/loader',
-    templateUrl: 'preapp/templates/loaders/main.html',
-    controller: 'SplashLoaderController'
+    templateUrl: 'preapp/templates/loaders/main.html'
   })
   .state('root.dev-splash-nav', {
     url:'/dev/splash/nav',

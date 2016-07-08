@@ -212,6 +212,8 @@ angular.module('uguru.admin')
                 ctrl: ctrlShortcuts
         }
 
+
+
         function onChangeIntervalState(count) {
 
             $timeout(function() {

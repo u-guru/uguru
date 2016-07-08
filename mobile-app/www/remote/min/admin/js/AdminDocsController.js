@@ -6,7 +6,8 @@ angular.module('uguru.admin')
   'RootService',
   '$timeout',
   '$filter',
-  function($scope, $state, RootService, $timeout, $filter) {
+  'AdminDirectiveService',
+  function($scope, $state, RootService, $timeout, $filter, AdminDirectiveService) {
     var docs = this;
 
     if (!$scope.root||!$scope.root.docs) {
@@ -14,14 +15,15 @@ angular.module('uguru.admin')
       $scope.root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
     }
 
-    docs.directives = {};
     docs.items = [];
 
-    docs.main  = {index: 2, options: ["Notes", "Utility", "Components", "Directives", "Status/Tools", "Research"]};
+    docs.main  = {index: 0, options: ["Notes", "Utility", "Components", "Directives", "Status/Tools", "Research"]};
 
     docs.search = function(letters) {
         console.log(letters);
     }
+
+    docs.directives = AdminDirectiveService.getAllDirectives()
 
     docs.getSearchTerms = function() {
       docs.items = RootService.getDocItems();

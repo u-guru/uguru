@@ -136,3 +136,42 @@ angular.module('uguru.shared.directives')
             }
         }
 }])
+.directive("userIcon", ['$compile', function($compile) {
+        return {
+            templateUrl: BASE + 'templates/elements/components/info/user.icon.tpl',
+            scope: {
+                url: '=url',
+                size: '=size'
+            },
+            replace: true,
+            restrict: 'E',
+            link: function(scope, element, attr) {
+                scope.size =  scope.size || attr.size || 'small';
+                scope.url =  scope.url || attr.url || 'https://uguru.me/static/remote/img/avatar.svg';
+                if (scope.size && scope.size === 'small') {
+                    scope.size = '32'
+                } else if (scope.size && scope.size === 'medium') {
+                    scope.size = '64'
+                }
+                if (!scope.url || !scope.url.length) {
+                    scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
+                }
+                var request = new XMLHttpRequest();
+                request.open('GET', scope.url, true);
+                request.onreadystatechange = function() {
+                    if (request.readyState === 4) {
+                        if (request.status === 404) {
+                            scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
+                            // element.attr('url',scope.url);
+                            // $compile(element.contents())(scope);
+                            // scope.$apply();
+                            // console.log('Check',scope.url, typeof(scope.url))
+
+                        }
+                    }
+                };
+                // request.send()
+
+            }
+        };
+    }])

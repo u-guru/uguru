@@ -1,6 +1,163 @@
 <ul class="p15-grid">
     <li class="admin-definition-list">
         <div class="bg-white radius-2">
+            <h2 class="p10y-p15x bg-robin txt-white txt-24 semibold txt-center radius-2-top">Higher Level Directives Notes<h2>
+            <dl class="txt-slate">
+                <div>
+                    <dt>states > types</dt>
+                    <dd>
+                        <div class='flex-wrap-center'>
+                            <ul class='full-x'>
+                                <li class='full-x flex-stretch flex-wrap'>
+                                    <div class='grid'>
+                                        <h1 class='weight-700 txt-left'> Internal: </h1>
+                                        <div> Default/custom states defined specific to the component, i.e. on-click</div>
+                                    </div>
+                                </li>
+                                <li class='full-x flex-stretch flex-wrap'>
+                                    <div class='grid'>
+                                        <h1 class='weight-700 txt-left'> External: </h1>
+                                        <div>
+                                            States defined by a component to react based on external components emitting messages
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class='full-x flex-stretch'>
+                                    <div class='grid'>
+                                        <h1 class='weight-700 txt-left'> Synchronous: </h1>
+                                        <div> As one element's properties/animations/states are changing over time</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </div>
+                <div>
+                    <dt>states > args </dt>
+                    <dd>
+
+                        <div class='flex-wrap-center'>
+                            <ul class='full-x'>
+                                <li>
+                                    <div>
+                                    When a component responds to a state (modifies its own propertes in reaction to an internal/external/synchronous state msg)
+                                    <br>
+                                    <br>
+                                    When a particular state activates, it can respond through these pre-defined means:
+                                    </div>
+                                </li>
+                                <li class='full-x flex-stretch flex-wrap'>
+                                    <div class='grid'>
+                                        <h1 class='weight-700 txt-left m15right'>1. class(es)<br> <span class='txt-2'>[pre-defined] </span></h1>
+                                        <div>One to many classes injected into, each with configurable properties (see next section)</div>
+                                    </div>
+                                </li>
+                                <li class='full-x flex-stretch flex-wrap'>
+                                    <div class='grid'>
+                                        <h1 class='weight-700 txt-left m15right'>2. animation(s)<br> <span class='txt-2'>[pre-defined]</span> </h1>
+                                        <div>One to many animations injected into, each with configurable properties (i.e time-state-func)</div>
+                                    </div>
+                                </li>
+                                <li class='full-x flex-stretch flex-wrap'>
+                                    <div class='grid'>
+                                        <h1 class='weight-700 txt-left m15right'>3. custom CSS property tween(s)<br> <span class='txt-2'>[via html attr]</span> </h1>
+                                        <div class='relative'>
+                                            <div class='block'> Clarifying 1-many properties to change over-time <pre class='bg-charcoal-80p txt-smoke weight-600 p20x p10y m05y'>tween:opacity|from:0,to:100,step:0.1</pre>
+                                                or immediately
+
+                                                <pre class='bg-charcoal-80p txt-smoke weight-600 p20x p10y m05y'>set:opacity:0.5</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class='full-x flex-stretch flex-wrap'>
+                                    <div class='grid'>
+                                        <h1 class='weight-700 txt-left m15right'>4. Messaging<br> <span class='txt-2'>[communicating]</span> </h1>
+                                        <div class='m15right'>
+                                            <br>
+                                            <div class='block'> Communicating via our protocol to other elements [parents, children, siblings] via.
+                                                <ul class='full-x weight-600'>
+                                                    <li class='p20x txt-2'>*the message you received (routing)
+                                                    </li>
+                                                    <li class='p20x txt-2'>
+                                                        *the initiation/progress/completion of your reaction to the state received.
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </div>
+                <div>
+                    <dt>states > defaults </dt>
+                    <dd>
+
+                        <div class='flex-wrap-center'>
+                            <ul class='full-x'>
+                                <li class='p0xy'>
+                                    - <span class='weight-600'>render</span> [default, its pretty much a comment until you clarify to render]
+                                </li>
+                                <li>
+                                    - <span class='weight-600'>
+                                        while-render
+                                    </span>
+                                    [i.e loaders]
+                                </li>
+                                <li> -
+                                    <span class='weight-600'>
+                                        on-init
+                                    </span>
+                                        [after layout + paint is complete from opacity = 0, z-index:-1000]</li>
+                                <li> -
+                                    <span class='weight-600'>
+                                        on-enter
+                                    </span>
+                                    [how to enter the view port]
+                                </li>
+                                <li> -
+                                    <span class='weight-600'>
+                                        on-exit
+                                    </span>
+                                    [how to exit to view port]
+                                </li>
+                                <li> -
+                                    <span class='weight-600'>
+                                        destroy
+                                    </span>
+                                    [how to exit the DOM, back to comment]
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+                <div class='bg-auburn txt-white'>
+                    <dt>states > args > properties [unfinished] </dt>
+                    <dd>
+                        <div class='flex-wrap-center full-x'>
+                            <ul class='full-x'>
+                                <li class='full-x txt-left'>
+                                    Each state arg comes with modifieable properties
+                                </li>
+                                <li>
+                                    <h4> General </h4>
+                                    <ul class='full-x'>
+                                        <li>Css overrides</li>
+                                        <li>Delays</li>
+                                        <li>Send Msg</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </div>
+
+            </dl>
+        </div>
+    </li>
+    <li class="admin-definition-list">
+        <div class="bg-white radius-2">
             <h2 class="p10y-p15x bg-robin txt-white txt-24 semibold txt-center radius-2-top">&lt;head&gt;</h2>
             <dl class="txt-slate">
                 <div>
