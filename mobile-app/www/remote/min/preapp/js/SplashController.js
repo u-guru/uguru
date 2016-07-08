@@ -36,8 +36,8 @@ angular.module('uguru.preApp', ['ionic'])
 
       if ($scope.root.devMode) {
           splash.state.nav = true;
-          splash.state.madlib = true;
-          splash.state.device = true;
+          splash.state.madlib = false;
+          splash.state.device = false;
           SpecService.initSpec('splash', $scope);
           return;
       }

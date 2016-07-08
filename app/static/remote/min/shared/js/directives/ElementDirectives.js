@@ -1,21 +1,65 @@
 angular.module('uguru.shared.directives')
-.directive('onInit', ['$timeout', function ($timeout) {
+.directive('onInit', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',
-    link: {pre: function(scope, element, attr) {
-      // element.ready(function(){
-        var kvSplit = attr.onInit && attr.onInit.length && attr.onInit.split(':');
-        if (kvSplit && kvSplit.length > 1) {
-          onInitProperty = kvSplit[0];
-          onInitPropertyValue = kvSplit[1];
-          if (onInitProperty in element[0].style) {
-            element[0].style[onInitProperty] = onInitPropertyValue;
-            $timeout(function() {
-              scope.$apply();
-            })
+    scope: {},
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onInit);
+        var supportedCommands = DirectiveService.supportedCommands;
+        for (key in elemArgs) {
+          if (supportedCommands.indexOf(key) > -1) {
+            DirectiveService.activateArg(key, elemArgs[key], scope, element);
           }
         }
-      // })
+      }
+    }
+  }
+}])
+.directive('onEnter', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onInit);
+        var supportedCommands = DirectiveService.supportedCommands;
+        for (key in elemArgs) {
+          if (supportedCommands.indexOf(key) > -1) {
+            DirectiveService.activateArg(key, elemArgs[key], scope, element);
+          }
+        }
+      }
+    }
+  }
+}])
+.directive('onExit', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    scope: {},
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onInit);
+        var supportedCommands = DirectiveService.supportedCommands;
+        for (key in elemArgs) {
+          if (supportedCommands.indexOf(key) > -1) {
+            DirectiveService.activateArg(key, elemArgs[key], scope, element);
+          }
+        }
+      }
+    }
+  }
+}])
+.directive('customStates', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'E',
+    scope: {},
+    link: {
+      pre: function(scope, element, attr) {
+        var customStateDict = DirectiveService.parseCustomStateAttr(attr);
+        console.log(customStateDict);
+        element.ready(function() {
+
+        })
       }
     }
   }
@@ -25,16 +69,11 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       return {
           restrict: 'A',
           link: {pre: function(scope, element, attr) {
-              // element.ready(function(){
-
                 var func = $parse(attr.evalOnInit);
                 func(scope);
                 $timeout(function() {
                   scope.$apply();
                 })
-                // scope.$apply(function(){
-                // })
-              // })
               }
           }
       }

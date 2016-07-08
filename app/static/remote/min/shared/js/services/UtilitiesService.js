@@ -17,6 +17,7 @@ function UtilitiesService($rootScope, $compile, $timeout) {
         getDistanceInMiles: getDistanceInMiles,
         nickMatcher: nickMatcher,
         removeAllOccurrancesArr: removeAllOccurrancesArr,
+        replaceAll: replaceAll,
         getFileName: getFileName,
         camelCase: camelCase,
         isElementInViewport: isElementInViewport,

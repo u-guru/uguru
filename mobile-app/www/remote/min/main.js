@@ -2,7 +2,7 @@ var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var
 
 angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   'uguru.shared.directives', 'uguru.shared.services',
-  'uguru.shared.controllers', 'uguru.admin'])
+  'uguru.shared.directives.components', 'uguru.shared.controllers', 'uguru.admin'])
 
 .run(function($ionicPlatform,
   $state, $ionicHistory, $rootScope,
@@ -167,6 +167,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.gabrielle', {
     url:'/dev/gabrielle',
     templateUrl: 'gabrielle/templates/index.html',
+  })
+  .state('root.playground', {
+    url:'/dev/admin/playground',
+    templateUrl: 'admin/templates/playground.html',
   })
   .state('root.demos', {
     url:'/dev/demos',

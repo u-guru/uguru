@@ -1,5 +1,5 @@
 <div class="dropdown-color">
-    <a class="bg-robin" ng-click="toggle()" ng-class='{"active": dropdown.active }'>
+    <a ng-class="{'bg-robin':!colorKey || !colorKey.length}" ng-style='{"background-color":dropdown.options[dropdown.selectedIndex][colorKey[0]]}' ng-click="toggle()" ng-class='{"active": dropdown.active }'>
         <span ng-if='!dropdown.key'>{{dropdown.options[dropdown.selectedIndex]}}</span>
         <span ng-if='dropdown.key'>{{dropdown.options[dropdown.selectedIndex][dropdown.key]}}</span>
         <svg viewBox="0 0 100 100">
@@ -12,7 +12,7 @@
         </svg>
         <ul>
             <li tabindex ng-if='$index !== dropdown.selectedIndex' ng-repeat='option in dropdown.options'>
-                <a class="active bg-robin" ng-click="click(option, $index)">
+                <a class="active" ng-class="{'bg-robin': !colorKey || !colorKey.length}" ng-style="{'background-color': (dropdown.options[$index][colorKey[0]] || dropdown.options[$index][colorKey[1]])}" ng-click="click(option, $index)">
                     <span>{{(dropdown.key && option[dropdown.key]) || option}}</span>
                 </a>
                 <svg class="arrow" viewBox="0 0 60 30">
