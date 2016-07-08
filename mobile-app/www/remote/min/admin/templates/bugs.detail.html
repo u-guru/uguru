@@ -19,51 +19,32 @@
 
 		<div class="full-x overflow-auto no-scrollbar">
 			<ul class="p15-grid flex">
-				<li>
-					<a class="block" href="http://data.whicdn.com/images/64354977/original.jpg"><img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/></a>
+			<!-- 	<li>
+					<a class="block" href="http://data.whicdn.com/images/64354977/original.jpg">
+						<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
+					</a>
 				</li>
 				<li>
+					<img class="block height-128"  src="https://docs.google.com/uc?id=0BxJwaSrDlwyNSVBlVGhwXzlsWTg"/>
+				</li>
+				<li>
+					<a href="https://www.flickr.com/photos/144837895@N04/27876082770" title="2016-04-12 17:49:41">
+						<img class="block height-128" src="https://c3.staticflickr.com/8/7452/27876082770_95cd8662c8_b.jpg" >
+					</a>																	
+				</li> -->
+				<li ng-repeat='shot in selectedBug.screenshot'>
+					<a ng-click='newTab(shot);'>
+						<img class="block height-128" ng-src='{{shot}}'>
+					</a>
+				</li>
+
+			<!-- 	<li>
 					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
 				</li>
 				<li>
 					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
-				<li>
-					<img class="block height-128" src="http://data.whicdn.com/images/64354977/original.jpg"/>
-				</li>
+				</li> -->
+				
 				<!-- <li ng-repeat='shot in selectedBug.screenshot'>
 					<a src ='{{shot}}'>
 						<img src ='{{shot}}'></img>
@@ -76,6 +57,12 @@
 		</div>
 		<div class="ugrid-2" style="height: calc(100% - 54px - 158px - 66px)">
 			<ul class="bg-charcoal full-y overflow-auto p15-grid no-scrollbar">
+				<li class="flex-stretch">
+					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">server</span>
+					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode && !isNewBug'>{{selectedBug.serverg}}</span>
+					<input class="full-x p10y-p15x radius-2-right txt-18 semibold" ng-model='selectedBug.step' ng-if='isEditMode || isNewBug'></input>
+
+				</li>
 				<li class="flex-stretch">
 					<span class="block bg-rocket p10y-p15x radius-2-left txt-18 semibold">step</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode && !isNewBug'>{{selectedBug.step}}</span>

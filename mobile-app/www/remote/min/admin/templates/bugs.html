@@ -15,7 +15,9 @@
 	<div>
 		<div class=' p05xy bg-robin-80p full-x flex-wrap-left' >
 			<dropdown class="height-32 m15right" ng-model="availableOptions" selected-index="0" ng-if='!addSection'> </dropdown>
+			<!-- <div class="checkbox-container"> -->
 			<div class="checkbox-container" ng-if='availableOptions.selectedIndex > 0 && !addSection'>
+
 				<div>
 					<input type="checkbox" id="reverse-order" ng-click="order()" />
 					<span>
@@ -136,6 +138,7 @@
 
 						<ul >
 							<li ng-repeat='stepBug in state.stepBugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list' ng-show='isExpend'>
+							<span class="caps">[ {{stepBug.server}} ] </span>
 							<span class="caps">[ {{stepBug.speed}} ] </span>
 							 <a ng-click='initAndLaunchBugCTA($event, stepBug ,$index, $parent.$index)'>{{stepBug.step}}</a>
 							</li>
