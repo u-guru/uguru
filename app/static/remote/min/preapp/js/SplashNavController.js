@@ -15,7 +15,6 @@ angular.module('uguru.preApp')
     nav.universitiesDropdown = {selectedIndex: 0, key:'name', options: processUniversityNames($scope.splash.universities), onOptionClick: updateSelectedUniversity};
     SpecService.initSpec('nav', $scope);
 
-    console.log($scope.splash.category)
 
     function navActivateSidebarFunc() {
         var splashSidebarParent = document.querySelector('#splash-sidebar')

@@ -20,6 +20,7 @@ function UtilitiesService($rootScope, $compile, $timeout) {
         replaceAll: replaceAll,
         getFileName: getFileName,
         camelCase: camelCase,
+        camelToDash: camelToDash,
         isElementInViewport: isElementInViewport,
         transitionEndEventName: transitionEndEventName,
         fireBeforeEnter: fireBeforeEnter,
@@ -48,6 +49,11 @@ function UtilitiesService($rootScope, $compile, $timeout) {
             return group1.toUpperCase();
         });
     }
+
+    function camelToDash(str) {
+      return str.replace(/\W+/g, '-')
+                .replace(/([a-z\d])([A-Z])/g, '$1-$2');
+   }
 
     function initSupport() {
         //cross platform filter

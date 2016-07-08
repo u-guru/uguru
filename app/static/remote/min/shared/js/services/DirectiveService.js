@@ -4,22 +4,63 @@ angular.module('uguru.shared.services')
     '$timeout',
     '$state',
     'UtilitiesService',
+    'AnimationService',
     DirectiveService
         ]);
 
-function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService) {
+function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService) {
     var argNames = ['prop', 'anim', 'send', 'tween', 'class', 'trigger'];
     var argShortNames = ['p', 'a', 's', 't', 'c', 't'];
     var cssPropertyMappings = {
       'o': 'opacity',
     }
     var defaultArgProps = ['delay', 'send', 'post', 'trigger'];
+    var defaults = {
+      activate: {hover: 250}
+    }
     return {
         // slide: slide,
         parseArgs: parseArgs,
         activateArg: activateArg,
         supportedCommands: argNames,
-        parseCustomStateAttr: parseCustomStateAttr
+        parseCustomStateAttr: parseCustomStateAttr,
+        detectExternalStates: detectExternalStates,
+        initCustomStateWatcher: initCustomStateWatcher,
+        defaults: defaults
+    }
+
+    function initCustomStateWatcher(scope, element, type, args, attr_value) {
+      if (!(type in scope.root.public.customStates)) {
+              scope.root.public.customStates[type] = {};
+      }
+      var watchState = 'root.public.customStates.' + type + '.' + args.camel;
+
+      scope.$watch(watchState, function(new_value, old_value) {
+        if (new_value) {
+          // console.log(type, args, attr_value, 'activated');
+          var elemArgs = parseArgs(attr_value);
+          for (key in elemArgs) {
+            if ((argNames || supportedCommands).indexOf(key) > -1) {
+              activateArg(key, elemArgs[key], scope, element);
+            }
+          }
+        }
+      })
+    }
+
+    function detectExternalStates(attr_dict) {
+      var resultArr = [];
+      var supportedExternalStates = ['when', 'as'];
+      for (attr in attr_dict) {
+        for (var i = 0; i < supportedExternalStates.length; i++) {
+          var indexSupportState = supportedExternalStates[i] + '-';
+          var dashedAttr = UtilitiesService.camelToDash(attr).toLowerCase();
+          if (dashedAttr.indexOf(indexSupportState) > -1) {
+            resultArr.push({type: indexSupportState.replace('-', ''), attr: {camel: attr, dashed: dashedAttr}})
+          }
+        }
+      }
+      return resultArr
     }
 
     function parseCustomStateAttr(attr) {
@@ -74,6 +115,16 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           break;
         case("class"):
           evalClassArgs(arg_dict, scope, elem);
+          break
+        case("send"):
+          evalSendArgs(arg_dict, scope, elem);
+          break;
+        case("anim"):
+          evalAnimArgs(arg_dict, scope, elem);
+          break;
+        case("trigger"):
+          evalTriggerArgs(arg_dict, scope, elem);
+          break
       }
     }
 
@@ -85,19 +136,42 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           break;
 
         case ("class"):
-          return formatAndProcessArgs(type, string_args, {classes:[]}, 'classes', processClassSecondaryArgs, ['add', 'remove', ]);
+          return formatAndProcessArgs(type, string_args, {classes:[]}, 'classes', processClassSecondaryArgs, ['add', 'remove']);
           break;
 
         case ("send"):
-          return formatSendArgs(string_args);
+          return formatAndProcessArgs(type, string_args, {messages:[]}, 'messages', processSendSecondaryArgs, ['public', 'children']);
           break;
 
         case ("anim"):
-          return formatAnimArgs(string_args);
+          return formatAndProcessArgs(type, string_args, {animations:[]}, 'animations', processAnimSecondaryArgs, ['type', 'force']);
           break;
 
         case ("tween"):
           return formatTweenArgs(string_args);
+          break;
+
+        case ("trigger"):
+          return formatAndProcessArgs(type, string_args, {states:[]}, 'states', processTriggerSecondaryArgs, ['state'])
+      }
+
+      function processAnimSecondaryArgs(msg_name, arg) {
+        if (!arg) {
+          arg = 'obj';
+        }
+        return arg
+      }
+
+      function processTriggerSecondaryArgs(trigger_name, arg) {
+        if (!arg) {
+          arg = 'self'
+        }
+        return arg.trim();
+      }
+
+      function processSendSecondaryArgs(msg_name, arg) {
+
+        return arg.trim();
       }
 
       function processClassSecondaryArgs(class_name, arg) {
@@ -130,12 +204,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       if (isFirstArgAnArr(string_args)) {
         //array case
         var stringPropArgs = processStrArrToObj(string_args);
+
         for (var i = 0; i < stringPropArgs.length; i++) {
           var parsedPropDict = {};
 
           var kvPairSplit = stringPropArgs[i].split(':');
           var key = kvPairSplit[0];
           var value = kvPairSplit[1];
+
           parsedPropDict[key] = custom_func(key, value);
 
           (kvPairSplit.length > 2) && processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
@@ -203,6 +279,143 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     }
 
+    function evalTriggerArgs(arg_dict, scope, elem) {
+      // console.log('should be evaluating trigger', arg_dict, scope, elem);
+      if (arg_dict.delay) {
+        $timeout(function() {
+          processTriggerArr(arg_dict.states, scope, elem);
+        })
+      } else {
+          processTriggerArr(arg_dict.states, scope, elem);
+      }
+    }
+
+    function processTriggerArr(state_arr, scope, elem) {
+      for (var i = 0; i < state_arr.length; i++) {
+        var indexStateObj = state_arr[i];
+        var delay = indexStateObj.delay || 0;
+        delete indexStateObj['delay'];
+        var stateName = Object.keys(indexStateObj)[0];
+        var stateScope = indexStateObj[stateName];
+        triggerStateWithinScope(stateName, stateScope, delay, scope, elem);
+        // sendMessageWithinScope(formatMessage(messageName), messageScope, delay, scope, elem)
+      }
+
+      function triggerStateWithinScope(stateName, stateScope, delay, scope, elem) {
+        if (delay) {
+          $timeout(function() {
+            dispatchTrigger(stateName, stateScope, elem);
+            $timeout(function() {
+              scope.$apply();
+            })
+          }, delay)
+        } else {
+          dispatchTrigger(stateName, stateScope, elem);
+
+          $timeout(function() {
+              scope.$apply();
+          })
+        }
+
+        function dispatchTrigger(trig_name, trigger_scope, elem) {
+          if (trigger_scope === 'self') {
+            // console.log('dispatching', trig_name, 'on self');
+            elem[0].classList.add(trig_name);
+          }
+        }
+     }
+  }
+
+    function evalSendArgs(arg_dict, scope, elem) {
+      if (arg_dict.delay) {
+        $timeout(function() {
+          processMessagesArr(arg_dict.messages, scope, elem);
+        })
+      } else {
+        processMessageArr(arg_dict.messages, scope, elem);
+      }
+    }
+
+    function processMessageArr(message_arr, scope, elem) {
+      for (var i = 0; i < message_arr.length; i++) {
+        var indexMessageObj = message_arr[i];
+        var delay = indexMessageObj.delay || 0;
+        delete indexMessageObj['delay'];
+        var messageName = Object.keys(indexMessageObj)[0];
+        var messageScope = indexMessageObj[messageName];
+        sendMessageWithinScope(formatMessage(messageName), messageScope, delay, scope, elem)
+      }
+
+      function formatMessage(message_name) {
+        return UtilitiesService.camelCase('when-' + message_name);
+      }
+
+      function sendMessageWithinScope(msg_name, msg_scope, delay, scope, elem) {
+        // console.log('sending..', msg_name, 'with scope', msg_scope, delay, scope.root.public.customStates);
+        if (delay) {
+          $timeout(function() {
+            activateScopedMessageState(msg_name, msg_scope, scope);
+            $timeout(function() {
+              scope.$apply();
+            })
+          }, delay)
+        } else {
+          activateScopedMessageState(msg_name, msg_scope, scope);
+          $timeout(function() {
+              scope.$apply();
+          })
+        }
+        function activateScopedMessageState(msg_name, env, scope) {
+          var msgType = UtilitiesService.camelToDash(msg_name).toLowerCase().split('-')[0];
+          if (!(msgType in scope.root.public.customStates)) {
+            scope.root.public.customStates[msgType] = {};
+          }
+          scope.root.public.customStates[msgType][msg_name] = true;
+        }
+      }
+
+    }
+
+    function evalAnimArgs(arg_dict, scope, elem) {
+      if (arg_dict.delay) {
+        $timeout(function() {
+          processAnimArr(arg_dict.animations, scope, elem);
+        })
+      } else {
+        processAnimArr(arg_dict.animations, scope, elem);
+      }
+
+      console.log('supposed to be animating', arg_dict.type, 'with', arg_dict.animations.length, 'animation')
+    }
+
+    function processAnimArr(anim_arr, scope, elem) {
+      for (var i = 0; i < anim_arr.length; i++) {
+        var indexAnimObj = anim_arr[i];
+        var delay = indexAnimObj.delay || 0;
+        delete indexAnimObj['delay'];
+        var animName = Object.keys(indexAnimObj)[0];
+        var animType = indexAnimObj[animName];
+        runOneAnimation(animName, animType, delay, scope, elem);
+      }
+
+      function runOneAnimation(anim_name, anim_type, delay, scope, elem) {
+        if (animType === 'obj') {
+          var animObj = AnimationService.getAnimationObjFromAnimationName(anim_name);
+          if (animObj) {
+            console.log(animObj, anim_name, anim_type);
+            $timeout(function() {
+              elem[0].style.opacity = 1;
+            })
+            AnimationService.animate(elem[0], anim_name, animObj, delay);
+          }
+          return;
+        }
+        // if (animType === 'class') {
+        //   var animClass = AnimationService.
+        // }
+      }
+    }
+
     function evalClassArgs(arg_dict, scope, elem) {
       if (arg_dict.delay) {
         $timeout(function() {
@@ -225,9 +438,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       function applyClassActionWithValue(actionName, className, delay, scope, elem) {
         if (['add', 'remove'].indexOf(actionName) > -1) {
           if (delay) {
-            console.log(actionName + 'ing class', className, 'after', typeof delay);
+            // console.log(actionName + 'ing class', className, 'after', typeof delay);
             $timeout(function() {
-              console.log(elem[0].classList, className, delay);
+              // console.log(elem[0].classList, className, delay);
               elem[0].classList.add(className);
               scope.$apply();
             }, delay)
