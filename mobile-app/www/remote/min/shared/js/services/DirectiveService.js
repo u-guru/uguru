@@ -186,7 +186,11 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         value = value.trim();
         var propertiesToConvertInt = ['opacity', 'z-index'];
         if (propertiesToConvertInt.indexOf(name) > -1 && typeof(name) === 'string') {
-          return parseInt(value);
+          if (value.indexOf('.') > -1) {
+            return parseFloat(value);
+          } else {
+            return parseInt(value);
+          }
         }
         return value
       }
