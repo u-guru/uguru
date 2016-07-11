@@ -1,22 +1,46 @@
+// todo now
+// - animName: in, out, set, before, after, send, setTemp
+// - anim
+// - tween
+// - verify trigger
+
+// todo later
+// - trigger args
+// - replace trigger scope.watch for 'on' states with a class that initiates the watcher (to prevent future watchers)
+
 angular.module('uguru.shared.directives')
 .directive('initWith', ['DirectiveService', function(DirectiveService) {
   return {
     restrict: 'A',
       link: {
         pre: function(scope, element, attr) {
-          var elemArgs = DirectiveService.parseArgs(attr.initWith);
-          var listenerArgs = DirectiveService.detectExternalStates(attr);
-          console.log(elemArgs, listenerArgs)
-          var supportedCommands = DirectiveService.supportedCommands;
-          for (key in elemArgs) {
-            if (supportedCommands.indexOf(key) > -1) {
-                DirectiveService.activateArg(key, elemArgs[key], scope, element);
-            }
+          if (attr.initLater) {
+            scope.$watch(function() {
+              return element.attr('class');
+            }, function(new_classes, old_classes) {
+              if (new_classes.indexOf('init-with') > -1) {
+                element[0].classList.remove('init-with');
+                execInitWith();
+              }
+            })
+          } else {
+            execInitWith();
           }
-          for (key in listenerArgs) {
-            var type = listenerArgs[key].type
-            var _attr = listenerArgs[key].attr;
-            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+
+          function execInitWith() {
+            var elemArgs = DirectiveService.parseArgs(attr.initWith);
+            var listenerArgs = DirectiveService.detectExternalStates(attr);
+            var supportedCommands = DirectiveService.supportedCommands;
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+            for (key in listenerArgs) {
+              var type = listenerArgs[key].type
+              var _attr = listenerArgs[key].attr;
+              DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+            }
           }
         }
       }
@@ -58,6 +82,20 @@ angular.module('uguru.shared.directives')
     link: {
       pre: function(scope, element, attr) {
         element.ready(function() {
+          onInitReadyFunc();
+        })
+
+
+        scope.$watch(function() {
+              return element.attr('class');
+        }, function(new_classes, old_classes) {
+          if (new_classes && new_classes.indexOf('on-init') > -1) {
+            element[0].classList.remove('on-init');
+            onInitReadyFunc();
+          }
+        })
+
+        function onInitReadyFunc() {
           var elemArgs = DirectiveService.parseArgs(attr.onInit);
           var listenerArgs = DirectiveService.detectExternalStates(attr);
 
@@ -73,7 +111,8 @@ angular.module('uguru.shared.directives')
             var _attr = listenerArgs[key].attr;
             DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
           }
-        })
+        }
+
       }
     }
   }
@@ -83,6 +122,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+
         var elemArgs = DirectiveService.parseArgs(attr.onEnter);
         var supportedCommands = DirectiveService.supportedCommands;
         scope.$watch(function() {
@@ -161,7 +201,6 @@ angular.module('uguru.shared.directives')
       pre: function(scope, element, attr) {
         var elemArgs = DirectiveService.parseArgs(attr.onClick);
         var supportedCommands = DirectiveService.supportedCommands;
-        console.log(element)
         element.on('click', function () {
             for (key in elemArgs) {
               if (supportedCommands.indexOf(key) > -1) {

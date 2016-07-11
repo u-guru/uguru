@@ -1,7 +1,7 @@
 var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var img_base = ''; if (LOCAL) {BASE = 'remote/';REST_URL = "http://localhost:5000";}var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var img_base = ''; if (LOCAL) {BASE = 'remote/';REST_URL = "http://localhost:5000";};
 
 angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
-  'uguru.shared.directives', 'uguru.shared.services','uguru.admin', 'uguru.preApp'])
+  'uguru.shared.directives', 'uguru.shared.services','uguru.admin', 'uguru.preApp', 'uguru.shared.controllers', 'uguru.admin'])
 
 .run(function($ionicPlatform,
   $state, $ionicHistory, $rootScope,
@@ -16,7 +16,8 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
 
    $sceDelegateProvider.resourceUrlWhitelist([
     'self',
-    'https://uguru.me/static/**'
+    'https://uguru.me/static/**',
+    'http://uguru-rest-test.herokuapp.com/static/**',
   ]);
 
   $httpProvider.useApplyAsync(true);
@@ -38,6 +39,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
       $scope.root.browserPrefix = RootService.getBrowserPrefix();
       $scope.root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
       $scope.root.devMode = window.location.href.split('/dev/').length > 1;
+      $scope.root.public = {customStates: []};
 
     function getBodyDimensions() {
         var desktopHeightLimit = 690;

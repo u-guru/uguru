@@ -21,6 +21,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     'https://docs.google.com/**',
     'http://bouncejs.com/**',
     'http://cubic-bezier.com/**',
+    'http://codepen.io/**'
   ]);
 
   $httpProvider.useApplyAsync(true);

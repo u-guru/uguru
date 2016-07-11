@@ -878,6 +878,12 @@
 .opacity-0-impt {
   opacity: 0 !important; }
 
+.opacity-1-impt {
+  opacity: 1 !important; }
+
+.opacity-1 {
+  opacity: 1; }
+
 @media screen and (min-width: 768px) {
   .splash-hero-content:not(.mobile) .coach-help.coach-help-desktop {
     display: block !important; }

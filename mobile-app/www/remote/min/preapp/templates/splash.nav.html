@@ -1,4 +1,4 @@
-<div ng-controller="SplashNavController as nav" id='splash-nav-bar' on-init="send:[nav-init:children:delay-500]">
+<div ng-controller="SplashNavController as nav" id='splash-nav-bar' on-init="send:[nav-init:delay-500]">
     <custom-states when="nav-init">
     </custom-states>
     <div id='splash-desktop-nav' class='full-x'>
@@ -8,7 +8,7 @@
         <!-- Desktop Nav-->
         <header class='splash-header' id='home-nav-header'>
         <!-- <header class='splash-header fixed top-0 left-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim"> -->
-            <a class="splash-logo svg-logo" init-with="prop:[opacity:0]" when-nav-init="trigger:[on-enter]" on-enter="prop:[opacity:1:delay-5000]" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
+            <a class="splash-logo svg-logo" init-with="prop:[opacity:0]" when-nav-init="trigger:[on-enter]" on-enter="class:[bg-cerise:add:set:(opacity:1)] | trigger:[on-click:siblings]" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
             <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="0"
             class-on-clear="fadeOutUp:animOut"
             class-on-activate="fadeInDown:anim" -->
@@ -124,7 +124,7 @@
                         </a>
                     </div>
                 </div>
-                <a id='cta-box-powerups' class="icon-round-stroke" init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown]" on-mouse-enter="prop:[opacity:0]">
+                <a id='cta-box-powerups' class="icon-round-stroke" init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[opacity:0]">
                     <!-- ng-click='activatePowerups()'
                     class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="600"
                     class-on-click="powerup-activated, null:inject#cta-box-powerups svg|activate, null:inject#cta-modal-powerups|activate"

@@ -16,7 +16,8 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
 
    $sceDelegateProvider.resourceUrlWhitelist([
     'self',
-    'https://uguru.me/static/**'
+    'https://uguru.me/static/**',
+    'http://uguru-rest-test.herokuapp.com/static/**',
   ]);
 
   $httpProvider.useApplyAsync(true);
@@ -38,6 +39,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
       $scope.root.browserPrefix = RootService.getBrowserPrefix();
       $scope.root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
       $scope.root.devMode = window.location.href.split('/dev/').length > 1;
+      $scope.root.public = {customStates: []};
 
     function getBodyDimensions() {
         var desktopHeightLimit = 690;
