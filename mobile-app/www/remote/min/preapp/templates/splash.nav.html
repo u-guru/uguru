@@ -12,9 +12,10 @@
             <div class="right">
                 <div class="splash-hero-nav desktop m15right">
                     <div class="splash-hero-nav-container">
-                        <dropdown on-hover="prop:[opacity:0]" on-hover-delay="1000" ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"> </dropdown>
+                        <dropdown ng-model='nav.categoriesDropdown' color-key="hex_color" type="color" when-nav-init="trigger:[on-enter]" on-enter="trigger:[on-enter:children]"> </dropdown>
+						<!-- on-hover="prop:[opacity:0]" on-hover-delay="1000" -->
                         <h2>@</h2>
-                        <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'> </dropdown>
+                        <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]' when-nav-init="trigger:[on-enter]" on-enter="trigger:[on-enter:children]"> </dropdown>
                     </div>
                 </div>
                 <div class="splash-hero-nav mobile">
