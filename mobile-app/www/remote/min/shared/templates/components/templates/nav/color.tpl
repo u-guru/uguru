@@ -1,19 +1,39 @@
 <div class="dropdown-color" on-init="send:[dropdown-init:children]">
-    <a class="color" ng-click="toggle()" ng-class='{"active": dropdown.active }' on-enter="trigger:[on-enter:children]">
+    <a class="color" ng-click="toggle()" ng-class='{"active": dropdown.active }'>
 		<!-- @samir -->
-		<div class="null" when-dropdown-init="trigger:[on-enter]" init-with="prop:[transform:scaleX(0)]"
+		<div class="null"
+			init-with="prop:[transform:scaleX(0), transition:all 250ms ease-out 450ms]"
+			when-dropdown-init="trigger:[on-enter]"
 			on-enter="prop:[transform:scaleX(1)]"></div>
-		<div when-dropdown-init="trigger:[on-enter]" class="null" init-with="prop:[transform:scaleY(0)]"
+		<div class="null"
+			init-with="prop:[transform:scaleY(0), transition:all 250ms ease-out 300ms]"
+			when-dropdown-init="trigger:[on-enter]"
 			on-enter="prop:[transform:scaleY(1)]"></div>
-		<div when-dropdown-init="trigger:[on-enter]" class="null" init-with="prop:[transform:scaleX(0)]"
+		<div class="null"
+			init-with="prop:[transform:scaleX(0), transition:all 250ms ease-out 150ms]"
+			when-dropdown-init="trigger:[on-enter]"
 			on-enter="prop:[transform:scaleX(1)]"></div>
-		<div when-dropdown-init="trigger:[on-enter]" class="null" init-with="prop:[transform:scaleY(0)]"
+		<div class="null"
+			init-with="prop:[transform:scaleY(0), transition:all 250ms ease-out]"
+			when-dropdown-init="trigger:[on-enter]"
 			on-enter="prop:[transform:scaleY(1)]"></div>
-		<div class="dropdown-color-bg" ng-style='{"background-color":dropdown.options[dropdown.selectedIndex][colorKey[0]]}'></div>
-        <span ng-if='!dropdown.key'>{{dropdown.options[dropdown.selectedIndex]}}</span>
-        <span ng-if='dropdown.key'>{{dropdown.options[dropdown.selectedIndex][dropdown.key]}}</span>
+		<div class="dropdown-color-bg" ng-style='{"background-color":dropdown.options[dropdown.selectedIndex][colorKey[0]]}'
+			init-with="prop:[opacity:0, transition:all 250ms ease-out 750ms]"
+			when-dropdown-init="trigger:[on-enter]"
+			on-enter="prop:[opacity:1]"></div>
+        <span ng-if='!dropdown.key'
+			init-with="prop:[opacity:0]"
+			when-dropdown-init="trigger:[on-enter]"
+			on-enter="prop:[opacity:1, transition:all 250ms ease-out 750ms]">{{dropdown.options[dropdown.selectedIndex]}}</span>
+        <span ng-if='dropdown.key'
+			init-with="prop:[opacity:0]"
+			when-dropdown-init="trigger:[on-enter]"
+			on-enter="prop:[opacity:1, transition:all 250ms ease-out 750ms]">{{dropdown.options[dropdown.selectedIndex][dropdown.key]}}</span>
         <svg viewBox="0 0 100 100">
-            <path d="M14,32 L50,68 L86,32"></path>
+            <path d="M14,32 L50,68 L86,32"
+				init-with="prop:[stroke-dashoffset:103, transition:all 250ms ease-out 750ms]"
+				when-dropdown-init="trigger:[on-enter]"
+				on-enter="prop:[stroke-dashoffset:0]"></path>
         </svg>
     </a>
     <div ng-class='{"visible": dropdown.active }'>

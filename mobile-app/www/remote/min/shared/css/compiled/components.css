@@ -1562,7 +1562,8 @@ fieldset.no-border * {
       display: block;
       margin-left: 5px;
       width: 24px;
-      height: 24px; }
+      height: 24px;
+      stroke-dasharray: 103; }
     .dropdown-color > a div:not(.dropdown-color-bg) {
       position: absolute;
       background: white;

@@ -7,7 +7,7 @@
 
         <!-- Desktop Nav-->
         <header class='splash-header' id='home-nav-header'>
-            <a class="splash-logo svg-logo" init-with="prop:[opacity:0]" when-nav-init="trigger:[on-enter]" on-enter="class:[bg-cerise:add:set:(opacity:1)] | trigger:[on-enter:children]" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
+            <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
 
             <div class="right">
                 <div class="splash-hero-nav desktop m15right">
@@ -15,7 +15,7 @@
                     <dropdown ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"> </dropdown>
 						<!-- on-hover="prop:[opacity:0]" on-hover-delay="1000" -->
                         <h2>@</h2>
-                        <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]' when-nav-init="trigger:[on-enter]" on-enter="trigger:[on-enter:children]"> </dropdown>
+                        <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'> </dropdown>
                     </div>
                 </div>
                 <div class="splash-hero-nav mobile">
@@ -32,9 +32,9 @@
                         </a>
                     </div>
                 </div>
-                <a id='cta-box-powerups' class="icon-round-stroke" init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[opacity:0]">
+                <a id='cta-box-powerups' class="icon-round-stroke">
+					<!-- init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[opacity:0]" -->
                     <!-- ng-click='activatePowerups()'
-                    class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="600"
                     class-on-click="powerup-activated, null:inject#cta-box-powerups svg|activate, null:inject#cta-modal-powerups|activate"
                     class-on-activate="powerup-activated" class-on-activate-delay="500" -->
                     <div class="full-xy flex-center relative" ng-include="root.base_url + 'shared/templates/components/svg/main/lightning-circle.html'" translate-on-click></div>
