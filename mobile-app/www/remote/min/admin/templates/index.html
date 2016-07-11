@@ -103,7 +103,7 @@
                     </li>
                 </ul>
             </div>
-           
+
             <div class='bg-slate flex-wrap-center relative z-index-1000' style="height: calc(100% - 68px)" ng-if='layout.index === 1' ng-if='false'>
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'"></a>
                 <tabs id='import-tab-bar' class='full-x' options='["Animation", "Class", "HTML", "External"]' index="importLayoutIndex"> </tabs>
@@ -220,19 +220,29 @@
                     </div>
                 </div>
             </div>
-            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3' ng-include="root.base_url + 'admin/templates/actions.html'" ng-controller='AdminActionController'>
-            </div>
+
+			<!-- Action Items -->
+			<div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3' ng-include="root.base_url + 'admin/templates/actions.html'" ng-controller='AdminActionController'> </div>
+
+			<!-- Calendar -->
             <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 4'>
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Calendar</h1>
                 </header>
             </div>
-            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5' ng-include="root.base_url + 'admin/templates/bugs.html'">
-            </div>
-            <div class='relative bg-slate z-index-1000 full-xy'  ng-show='layout.index === 6' ng-include="root.base_url + 'admin/templates/docs/docs.html'">
 
-            </div>
+			<!-- Bugs -->
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5' ng-include="root.base_url + 'admin/templates/bugs.html'"> </div>
 
+			<!-- Docs -->
+            <div class='relative bg-slate z-index-1000 full-xy' ng-show='layout.index === 6'>
+				<!-- ng-include="root.base_url + 'admin/templates/docs/docs.html'" -->
+				<header class="bg-slate">
+                    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>see /admin/docs</h1>
+                </header>
+			</div>
+
+			<!-- Demos -->
             <div class='relative bg-smoke txt-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 7'>
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Demos</h1>
@@ -241,6 +251,7 @@
                     <div class="admin-html flex-wrap-start" ng-include="root.base_url + 'admin/templates/demos.html'"></div>
                 </div>
             </div>
+
             <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 2' ng-init="animation.showDefaultImportedKF = false;">
                 <a class='absolute top-0 right-0 flex-center svg-48-36 svg-white svg-stroke-6 close-icon z-index-1000' ng-click='layout.index = 0;' ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'"></a>
                 <div class="full-xy ugrid-2 p15-grid">

@@ -4,7 +4,7 @@
 </header>
 <div class="overflow-auto no-scrollbar" style="height: calc(100% - 48px)">
     <div class="flex-center-vertical-space-between bg-charcoal-50p">
-        <div class="relative p15xy width-50p">
+        <div class="relative p15xy full-x">
             <fieldset class="with-icon">
                 <input class="input-border light" ng-model="search.text" type="text" placeholder="Search actions">
                 <label></label>
@@ -18,16 +18,16 @@
                 </a>
             </fieldset>
         </div>
-        <div class="relative p15xy width-50p bg-cerise">
-            <ul class="flex p15-grid">
-                <li>
+        <div class="relative bg-shamrock-10p">
+            <ul class="flex p15-grid flex-center-vertical">
+                <!-- <li>
                     <a ng-click='search.text = user.first_name'><user-icon url="user.profile_url"> </user-icon> </a>
-                </li>
+                </li> -->
                 <li ng-repeat='member in team_members'>
-                    <a ng-click='search.text = member.first_name'>
+                    <button class="txt-18 semibold height-36 bg-shamrock radius-2" ng-click='search.text = member.first_name'>
                         {{member.name}}
-                        <user-icon url="member.profile_url"> </user-icon>
-                    </a>
+                        <!-- <user-icon url="member.profile_url"> </user-icon> -->
+                    </button>
                 </li>
             </ul>
         </div>
