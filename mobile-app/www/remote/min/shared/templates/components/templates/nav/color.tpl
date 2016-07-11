@@ -1,4 +1,4 @@
-<div class="dropdown-color" on-enter="trigger:[on-enter:children]">
+<div class="dropdown-color">
     <a class="color" ng-click="toggle()" ng-class='{"active": dropdown.active }' on-enter="trigger:[on-enter:children]">
 		<!-- @samir -->
 		<div class="null" init-with="prop:[transform:scaleX(0)]"
