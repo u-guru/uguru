@@ -76,12 +76,13 @@ angular.module('uguru.shared.directives.components')
         return {
             templateUrl: getTemplateURL,
             scope: {
-                dropdown: '=ngModel'
+                dropdown: '=ngModel',
                     // tests:'=testArr',
             },
             replace: true,
             restrict: 'E',
-            link: function(scope, element, attr) {
+            link: {pre: function(scope, element, attr) {
+                scope.root = scope.$parent.root;
                 if (!scope.size) {
                     scope.size = 'small';
                 }
@@ -121,6 +122,7 @@ angular.module('uguru.shared.directives.components')
                         scope.dropdown.onToggle(scope.dropdown.active);
                     }
                 }
+            }
             }
         };
     }])

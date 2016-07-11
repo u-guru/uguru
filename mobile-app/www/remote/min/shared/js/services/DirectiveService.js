@@ -5,10 +5,11 @@ angular.module('uguru.shared.services')
     '$state',
     'UtilitiesService',
     'AnimationService',
+    'RootService',
     DirectiveService
         ]);
 
-function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService) {
+function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService, RootService) {
     var argNames = ['prop', 'anim', 'send', 'tween', 'class', 'trigger'];
     var argShortNames = ['p', 'a', 's', 't', 'c', 't'];
     var cssPropertyMappings = {
@@ -455,7 +456,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processAnimArr(anim_arr, scope, elem) {
       for (var i = 0; i < anim_arr.length; i++) {
         var indexAnimObj = anim_arr[i];
-        console.log('processing animation', indexAnimObj)
         var delay = indexAnimObj.delay || 0;
         delete indexAnimObj['delay'];
 
@@ -465,7 +465,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (custom) {
           processAnimCustomArgs(custom, customDict);
         }
-        console.log(customDict);
         var animName = Object.keys(indexAnimObj)[0];
         var animType = indexAnimObj[animName];
         runOneAnimation(animName, animType, delay, scope, elem, customDict);
@@ -507,9 +506,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (animType === 'obj') {
           var animObj = AnimationService.getAnimationObjFromAnimationName(anim_name);
           if (animObj) {
-            console.log('anim custom', custom_args)
             if (custom_args && custom_args.set && (!custom_args.after || custom_args.before)) {
+              console.log('properties to set', custom_args.set);
               var propDict = {properties:custom_args.set};
+
               evalPropertyArgs(propDict, scope, elem);
             }
             if (custom_args.in) {
@@ -532,15 +532,56 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
                 evalPropertyArgs(propDict, scope, elem);
               }
             }
-            AnimationService.animate(elem[0], anim_name, animObj, delay, animStartCb, animEndCb);
+            execAnimation(elem, anim_name, animObj, delay, animStartCb, animEndCb )
+
+            // AnimationService.animate(elem[0], anim_name, animObj, delay, animStartCb, animEndCb);
           }
           return;
         }
-        // if (animType === 'class') {
-        //   var animClass = AnimationService.
-        // }
       }
+
+      function execAnimation(elem, anim_name, anim_obj, delay, start_cb, end_cb) {
+        var browser_prefix = RootService.getBrowserPrefix();
+        if (start_cb) {
+          initAndTriggerAndRemoveAnimStartFunc(elem, browser_prefix, start_cb);
+        }
+        var end_cb = function() {};
+        if (end_cb) {
+          initAndTriggerAndRemoveAnimEndFunc(elem, browser_prefix, end_cb)
+        }
+        elem.css('animation-name', anim_name);
+      }
+
+      function getAnimEventName(prefix, _type) {
+        if (['ms', 'moz', 'webkit', 'o'].indexOf(prefix.toLowerCase()) > -1) {
+            return prefix + 'Animation' + _type
+        }
+        return "animation" + _type.toLowerCase();
+      }
+
+      function initAndTriggerAndRemoveAnimStartFunc(elem, browser_prefix, start_cb) {
+        var animStartEventName = getAnimEventName(browser_prefix, 'Start');
+          var animStartFunc = function(e) {
+            console.log(e.animationName, 'started', e);
+            start_cb();
+            elem[0].removeEventListener(animStartEventName, animStartFunc);
+          }
+          elem[0].addEventListener(animStartEventName, animStartFunc);
+      }
+
+      function initAndTriggerAndRemoveAnimEndFunc(elem, browser_prefix, end_cb) {
+        var animEndEventName = getAnimEventName(browser_prefix, 'End');
+          var animEndFunc = function(e) {
+            console.log(e.animationName, 'ended', e);
+            end_cb();
+            elem[0].removeEventListener(animEndEventName, animEndFunc);
+          }
+          elem[0].addEventListener(animEndEventName, animEndFunc);
+      }
+
     }
+
+
 
     function evalClassArgs(arg_dict, scope, elem) {
       if (arg_dict.delay) {

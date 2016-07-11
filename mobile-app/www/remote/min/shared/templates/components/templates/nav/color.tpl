@@ -1,13 +1,13 @@
-<div class="dropdown-color">
+<div class="dropdown-color" on-init="send:[dropdown-init:children]">
     <a class="color" ng-click="toggle()" ng-class='{"active": dropdown.active }' on-enter="trigger:[on-enter:children]">
 		<!-- @samir -->
-		<div class="null" init-with="prop:[transform:scaleX(0)]"
+		<div class="null" when-dropdown-init="trigger:[on-enter]" init-with="prop:[transform:scaleX(0)]"
 			on-enter="prop:[transform:scaleX(1)]"></div>
-		<div class="null" init-with="prop:[transform:scaleY(0)]"
+		<div when-dropdown-init="trigger:[on-enter]" class="null" init-with="prop:[transform:scaleY(0)]"
 			on-enter="prop:[transform:scaleY(1)]"></div>
-		<div class="null" init-with="prop:[transform:scaleX(0)]"
+		<div when-dropdown-init="trigger:[on-enter]" class="null" init-with="prop:[transform:scaleX(0)]"
 			on-enter="prop:[transform:scaleX(1)]"></div>
-		<div class="null" init-with="prop:[transform:scaleY(0)]"
+		<div when-dropdown-init="trigger:[on-enter]" class="null" init-with="prop:[transform:scaleY(0)]"
 			on-enter="prop:[transform:scaleY(1)]"></div>
 		<div class="dropdown-color-bg" ng-style='{"background-color":dropdown.options[dropdown.selectedIndex][colorKey[0]]}'></div>
         <span ng-if='!dropdown.key'>{{dropdown.options[dropdown.selectedIndex]}}</span>
