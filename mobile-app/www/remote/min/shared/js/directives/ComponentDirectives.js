@@ -12,7 +12,6 @@ angular.module('uguru.shared.directives.components')
             }
 
         }
-
         return {
             templateUrl: getTemplateURL,
             args:'abc',

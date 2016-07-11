@@ -12,7 +12,7 @@
             <div class="right">
                 <div class="splash-hero-nav desktop m15right">
                     <div class="splash-hero-nav-container">
-                        <dropdown ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"> </dropdown>
+                    <dropdown ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"> </dropdown>
 						<!-- on-hover="prop:[opacity:0]" on-hover-delay="1000" -->
                         <h2>@</h2>
                         <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]' when-nav-init="trigger:[on-enter]" on-enter="trigger:[on-enter:children]"> </dropdown>
@@ -42,6 +42,9 @@
                 </a>
                 <a ng-click="nav.activateSidebar()" name='sidebar' id='cta-box-sidebar' class="icon-round-stroke"
                     ng-include="root.base_url + 'shared/templates/components/svg/main/menu-circle.html'"></a>
+                <a id="temp-tween-example" id='cta-box-sidebar'>
+                    <svg draw-shapes width="100px" class='activate' draw-shapes-delay="2000" draw-duration="5s"  height="100px" viewBox="0 0 100 100"><path  fill="none" stroke="white" stroke-width="5px" d="M66.75725,32.75725 L41.35225,58.16125 L33.24225,50.05125 C30.89925,47.70825 27.10025,47.70825 24.75725,50.05125 C22.41425,52.39425 22.41425,56.19325 24.75725,58.53625 L37.11025,70.88925 C39.45325,73.23225 43.25225,73.23225 45.59525,70.88925 L75.24225,41.24225 C77.58525,38.89925 77.58525,35.10025 75.24225,32.75725 C72.89925,30.41425 69.10025,30.41425 66.75725,32.75725 Z" fill="#FFFFFF"></path></svg>
+                </a>
                 <!-- ng-click='initCTASplash()' class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="750" -->
             </div>
         </header>
