@@ -1,13 +1,14 @@
-<div ng-controller="SplashNavController as nav" id='splash-nav-bar'  on-init="opacity:0" class-on-init="activate" on-activate="lightSpeedIn:animIn:delay-500">
+<div ng-controller="SplashNavController as nav" id='splash-nav-bar' on-init="send:[nav-init:children:delay-500]">
+    <custom-states when="nav-init">
+    </custom-states>
     <div id='splash-desktop-nav' class='full-x'>
         <!-- Dropdown overlays -->
         <!-- <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0 z-index-5' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()'> </a> -->
-        <!-- End Dropdown overlays-->
 
         <!-- Desktop Nav-->
-        <header class='splash-header' id='home-nav-header' on-init="opacity:0" class-on-init="activate" on-activate="slideInDown:animIn">
+        <header class='splash-header' id='home-nav-header'>
         <!-- <header class='splash-header fixed top-0 left-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim"> -->
-            <a class="splash-logo svg-logo"  ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
+            <a class="splash-logo svg-logo" init-with="prop:[opacity:0]" when-nav-init="trigger:[on-enter]" on-enter="prop:[opacity:1:delay-5000]" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
             <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="0"
             class-on-clear="fadeOutUp:animOut"
             class-on-activate="fadeInDown:anim" -->
@@ -15,7 +16,7 @@
                 <div class="splash-hero-nav desktop m15right">
                     <!-- class-on-activate="u-slideInDown:anim" -->
                     <div class="splash-hero-nav-container">
-                        <dropdown ng-model='nav.categoriesDropdown' type="color"> </dropdown>
+                        <dropdown on-hover="prop:[opacity:0]" on-hover-delay="1000" ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"> </dropdown>
                         <div id="dropdown-categories" class="dropdown-color" ng-if='false'>
                             <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="150" -->
                             <!-- <a name='category' class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()' ng-class="{'active':page.dropdowns.category.active}">
@@ -57,7 +58,9 @@
                         </div>
                         <h2>@</h2>
                         <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="300" -->
-                        <div id='dropdown-university' class="dropdown-color">
+                        <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'> </dropdown>
+                        <div id='dropdown-university' class="dropdown-color" ng-if='false'>
+
                             <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="450" -->
                             <!-- <a class="color" name='university' ng-click="page.dropdowns.university.toggle()" ng-class="{'active':page.dropdowns.university.active}">
                                 <div class="dropdown-color-bg" style='background-color: {{selectedUniversity.school_color_dark}}'></div>
@@ -121,7 +124,7 @@
                         </a>
                     </div>
                 </div>
-                <a id='cta-box-powerups' class="icon-round-stroke">
+                <a id='cta-box-powerups' class="icon-round-stroke" init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown]" on-mouse-enter="prop:[opacity:0]">
                     <!-- ng-click='activatePowerups()'
                     class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="600"
                     class-on-click="powerup-activated, null:inject#cta-box-powerups svg|activate, null:inject#cta-modal-powerups|activate"

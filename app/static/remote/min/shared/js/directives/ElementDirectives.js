@@ -1,21 +1,239 @@
 angular.module('uguru.shared.directives')
-.directive('onInit', ['$timeout', function ($timeout) {
+.directive('initWith', ['DirectiveService', function(DirectiveService) {
   return {
     restrict: 'A',
-    link: {pre: function(scope, element, attr) {
-      // element.ready(function(){
-        var kvSplit = attr.onInit && attr.onInit.length && attr.onInit.split(':');
-        if (kvSplit && kvSplit.length > 1) {
-          onInitProperty = kvSplit[0];
-          onInitPropertyValue = kvSplit[1];
-          if (onInitProperty in element[0].style) {
-            element[0].style[onInitProperty] = onInitPropertyValue;
-            $timeout(function() {
-              scope.$apply();
-            })
+      link: {
+        pre: function(scope, element, attr) {
+          var elemArgs = DirectiveService.parseArgs(attr.initWith);
+          var listenerArgs = DirectiveService.detectExternalStates(attr);
+          console.log(elemArgs, listenerArgs)
+          var supportedCommands = DirectiveService.supportedCommands;
+          for (key in elemArgs) {
+            if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+            }
+          }
+          for (key in listenerArgs) {
+            var type = listenerArgs[key].type
+            var _attr = listenerArgs[key].attr;
+            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
           }
         }
-      // })
+      }
+    }
+}])
+.directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
+  return {
+    restrict: 'A',
+      link: {
+        pre: function(scope, element, attr) {
+          element[0].setAttribute('ng-if', false);
+          scope.ngInclude = element[0].getAttribute('ng-include');
+          scope.includeReplace = 'includeReplace' in attr;
+          if (scope.includeReplace) {
+            element[0].removeAttribute('include-replace');
+          }
+          element[0].removeAttribute('ng-include');
+          $compile(element[0])(scope);
+          scope.$watch(function() {
+            return element.attr('class');
+          }, function(new_classes, old_classes) {
+            new_classes = new_classes || '';
+            if (new_classes.indexOf('init-later') > -1) {
+              element[0].classList.remove('init-later');
+              for (key in elemArgs) {
+                if (supportedCommands.indexOf(key) > -1) {
+                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                }
+              }
+            }
+          })
+      }
+    }
+  }
+}])
+.directive('onInit', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        element.ready(function() {
+          var elemArgs = DirectiveService.parseArgs(attr.onInit);
+          var listenerArgs = DirectiveService.detectExternalStates(attr);
+
+          var supportedCommands = DirectiveService.supportedCommands;
+          for (key in elemArgs) {
+            if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+            }
+          }
+
+          for (key in listenerArgs) {
+            var type = listenerArgs[key].type
+            var _attr = listenerArgs[key].attr;
+            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+          }
+        })
+      }
+    }
+  }
+}])
+.directive('onEnter', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onEnter);
+        var supportedCommands = DirectiveService.supportedCommands;
+        scope.$watch(function() {
+          return element.attr('class');
+        }, function(new_classes, old_classes) {
+          if (new_classes.indexOf('on-enter') > -1) {
+            element[0].classList.remove('on-enter');
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+          }
+        });
+      }
+    }
+  }
+}])
+.directive('onExit', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onExit);
+        var supportedCommands = DirectiveService.supportedCommands;
+        scope.$watch(function() {
+          return element.attr('class');
+        }, function(new_classes, old_classes) {
+          if (new_classes.indexOf('on-exit') > -1) {
+            element[0].classList.remove('on-exit');
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+          }
+        });
+      }
+    }
+  }
+}])
+
+.directive('onHover', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onHover);
+        var supportedCommands = DirectiveService.supportedCommands;
+        var inTimeout = false;
+        var hoverDelay = parseInt(attr.onHoverDelay || DirectiveService.defaults.activate.hover);
+        element.on('mouseover', function () {
+          inTimeout = true;
+          $timeout(function () {
+            if (inTimeout) {
+              for (key in elemArgs) {
+                if (supportedCommands.indexOf(key) > -1) {
+                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                }
+              }
+              scope.$apply();
+            }
+          }, 250 + hoverDelay);
+        });
+         element.on('mouseleave', function () {
+          inTimeout = false;
+        });
+      }
+    }
+  }
+}])
+.directive('onClick', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onClick);
+        var supportedCommands = DirectiveService.supportedCommands;
+        console.log(element)
+        element.on('click', function () {
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+        });
+      }
+    }
+  }
+}])
+.directive('onMouseEnter', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onMouseEnter);
+        var supportedCommands = DirectiveService.supportedCommands;
+        element.on('mouseover', function () {
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+        });
+      }
+    }
+  }
+}])
+.directive('onMouseLeave', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onMouseLeave);
+        var supportedCommands = DirectiveService.supportedCommands;
+        element.on('mouseleave', function () {
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+        });
+      }
+    }
+  }
+}])
+.directive('customStates', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
+  return {
+    restrict: 'E',
+    link: {
+      pre: function(scope, element, attr) {
+        var customStateDict = DirectiveService.parseCustomStateAttr(attr);
+
+          for (key in customStateDict) {
+            if (!(key in scope.root.public.customStates)) {
+              scope.root.public.customStates[key] = {};
+            }
+            //if not arr
+            if (!customStateDict[key].length) continue;
+
+            var customKeyStates = customStateDict[key];
+            for (var i = 0; i < customKeyStates.length; i++) {
+              var camelCaseCustomState = UtilitiesService.camelCase(customKeyStates[i]);
+              var watchState = 'root.public.customStates.' + key + '.' + camelCaseCustomState;
+              scope.root.public.customStates[key][camelCaseCustomState] = false;
+              scope.$watch(watchState, function(new_value) {
+                // console.log('watching..', camelCaseCustomState, watchState, new_value);
+              });
+              // scope.$watch
+            }
+          }
       }
     }
   }
@@ -25,16 +243,11 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       return {
           restrict: 'A',
           link: {pre: function(scope, element, attr) {
-              // element.ready(function(){
-
                 var func = $parse(attr.evalOnInit);
                 func(scope);
                 $timeout(function() {
                   scope.$apply();
                 })
-                // scope.$apply(function(){
-                // })
-              // })
               }
           }
       }

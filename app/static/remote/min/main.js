@@ -2,7 +2,7 @@ var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var
 
 angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   'uguru.shared.directives', 'uguru.shared.services',
-  'uguru.shared.controllers', 'uguru.admin'])
+  'uguru.shared.directives.components', 'uguru.shared.controllers', 'uguru.admin'])
 
 .run(function($ionicPlatform,
   $state, $ionicHistory, $rootScope,
@@ -93,8 +93,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   // -- start DEV states
   .state('root.dev-splash-loader', {
     url:'/dev/splash/loader',
-    templateUrl: 'preapp/templates/loaders/main.html',
-    controller: 'SplashLoaderController'
+    templateUrl: 'preapp/templates/loaders/main.html'
   })
   .state('root.dev-splash-nav', {
     url:'/dev/splash/nav',
@@ -169,6 +168,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/gabrielle',
     templateUrl: 'gabrielle/templates/index.html',
   })
+  .state('root.playground', {
+    url:'/dev/admin/playground',
+    templateUrl: 'admin/templates/playground.html',
+  })
   .state('root.demos', {
     url:'/dev/demos',
     templateUrl: 'admin/templates/demos.html',
@@ -176,6 +179,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.loaders', {
     url:'/dev/splash/loaders',
     templateUrl: 'preapp/templates/loaders/main.html'
+  })
+  .state('root.loaders-tech', {
+    url:'/dev/splash/loaders/tech',
+    templateUrl: 'preapp/templates/loaders/tech.html'
   });
 
 
