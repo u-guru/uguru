@@ -201,7 +201,7 @@
                     <button class="height-36 txt-18 bg-shamrock radius-2 normal block" ng-click='spec.open()'>CP Spec</button>
                 </li>
                 <li>
-                    <form ng-if='spec.initCodepenData' action="https://codepen.io/pen/define" method="POST" target="_blank">
+                    <form ng-if='spec.initCodepenData' action="http://codepen.io/pen/define" method="POST" target="_blank">
                         <input type="hidden" name="data" value='{{spec.initCodepenData}}'>
                         <input class="bg bg-shamrock txt-18 height-36 semibold radius-2 p15x" type="submit" id='codepen-input' value="+ Uguru CP">
                     </form>
@@ -285,7 +285,7 @@
                 <span class="height-36 txt-18 bg-white txt-moxie radius-2 p10x flex-center semibold">{{spec.stateTags[spec.settings.cache.defaultState.index].title || '-'}}</span>
             </li>
             <li id="codepen-edit" ng-if='spec.codepenData'>
-                <form action="https://codepen.io/pen/define" method="POST" target="_blank">
+                <form action="http://codepen.io/pen/define" method="POST" target="_blank">
                     <input type="hidden" name="data" value='{{spec.codepenData}}'/>
                     <input class="absolute top-0 left-0 z-index-10 opacity-0 height-48 width-48 round" type="submit" id='codepen-input' value=""/>
                     <span class="round bg-moxie svg-white svg-48-36 flex-center svg-stroke-5" ng-include="root.base_url + 'shared/templates/components/svg/main/edit.html'"></span>

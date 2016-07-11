@@ -18,15 +18,35 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     var defaults = {
       activate: {hover: 250}
     }
+    var defaultSecondaryArgs = {
+      _class: ['add', 'remove', 'set']
+    }
     return {
         // slide: slide,
         parseArgs: parseArgs,
         activateArg: activateArg,
         supportedCommands: argNames,
+        getSupportedOnStates: getSupportedOnStates,
+        getSupportedAsStates: getSupportedAsStates,
         parseCustomStateAttr: parseCustomStateAttr,
         detectExternalStates: detectExternalStates,
         initCustomStateWatcher: initCustomStateWatcher,
         defaults: defaults
+    }
+
+    function getSupportedOnStates() {
+      return ['on-init', 'on-enter', 'on-exit', 'init-with', 'init-later', 'on-click', 'on-mouse-enter', 'on-mouse-leave']
+    }
+    function getSupportedAsStates() {
+      return ['as-init', 'as-enter', 'as-exit', 'as-init-later', 'as-click', 'as-mouse-enter', 'as-mouse-leave'];
+    }
+
+    function getDefaultSecondaryArgs(arg_type) {
+      switch (arg_type) {
+        case("class"):
+          return defaultSecondaryArgs['_class'];
+          break
+      }
     }
 
     function initCustomStateWatcher(scope, element, type, args, attr_value) {
@@ -136,7 +156,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           break;
 
         case ("class"):
-          return formatAndProcessArgs(type, string_args, {classes:[]}, 'classes', processClassSecondaryArgs, ['add', 'remove']);
+
+          return formatAndProcessArgs(type, string_args, {classes:[]}, 'classes', processClassSecondaryArgs, ['add', 'remove', 'set']);
           break;
 
         case ("send"):
@@ -177,24 +198,22 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       function processClassSecondaryArgs(class_name, arg) {
         class_name = class_name.trim();
         arg = arg.trim();
-        console.log(class_name, arg)
         return arg;
       }
+    }
 
-      function processCSSPropValue(name, value) {
-        name = name.trim();
-        value = value.trim();
-        var propertiesToConvertInt = ['opacity', 'z-index'];
-        if (propertiesToConvertInt.indexOf(name) > -1 && typeof(name) === 'string') {
-          if (value.indexOf('.') > -1) {
-            return parseFloat(value);
-          } else {
-            return parseInt(value);
-          }
+    function processCSSPropValue(name, value) {
+      name = name.trim();
+      value = value.trim();
+      var propertiesToConvertInt = ['opacity', 'z-index'];
+      if (propertiesToConvertInt.indexOf(name) > -1 && typeof(name) === 'string') {
+        if (value.indexOf('.') > -1) {
+          return parseFloat(value);
+        } else {
+          return parseInt(value);
         }
-        return value
       }
-
+      return value
     }
 
 
@@ -219,7 +238,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           parsedPropDict[key] = custom_func(key, value);
 
           (kvPairSplit.length > 2) && processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
-
           propDict[base_dict_key].push(parsedPropDict);
         }
       }
@@ -254,6 +272,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function processGeneralArgsArray(type, arg_arr, result_dict, custom_args) {
       var resultDict = result_dict || {};
+      var notProcessed = [];
       for (var i = 0; i < arg_arr.length; i++) {
         var indexArg = arg_arr[i];
         if (indexArg && indexArg.length) {
@@ -262,7 +281,13 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             indexArg = indexArg.replace('delay-', '');
             resultDict.delay = parseInt(indexArg);
           }
+          else {
+            notProcessed.push(indexArg);
+          }
         }
+      }
+      if (notProcessed && notProcessed.length) {
+        resultDict.custom = notProcessed.join(":");
       }
       if (Object.keys(resultDict).length) {
         return resultDict;
@@ -388,8 +413,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       } else {
         processAnimArr(arg_dict.animations, scope, elem);
       }
-
-      console.log('supposed to be animating', arg_dict.type, 'with', arg_dict.animations.length, 'animation')
     }
 
     function processAnimArr(anim_arr, scope, elem) {
@@ -435,27 +458,87 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var indexClassObj = class_arr[i];
         var delay = indexClassObj.delay || 0;
         delete indexClassObj['delay']
-        var actionName = Object.keys(indexClassObj)[0];
-        var className = indexClassObj[actionName]
-        applyClassActionWithValue(actionName, className, delay, scope, elem);
+
+        var custom = indexClassObj.custom;
+        var customDict = {};
+        delete indexClassObj['custom'];
+        if (custom) {
+          processClassCustomArgs(custom, customDict);
+        }
+
+        var className = Object.keys(indexClassObj)[0];
+        var actionName = indexClassObj[className]
+        applyClassActionWithValue(className, actionName, delay, scope, elem, customDict);
+        if (delay) {
+          indexClassObj['delay'] = delay;
+        }
+        if (custom) {
+          indexClassObj['custom'] = custom;
+        }
       }
-      function applyClassActionWithValue(actionName, className, delay, scope, elem) {
-        if (['add', 'remove'].indexOf(actionName) > -1) {
+
+
+
+      function applyClassActionWithValue(className, actionName, delay, scope, elem, customArgs) {
+        var defaultClassArgs = getDefaultSecondaryArgs('class');
+        if (defaultClassArgs.indexOf(actionName) > -1) {
           if (delay) {
             // console.log(actionName + 'ing class', className, 'after', typeof delay);
             $timeout(function() {
               // console.log(elem[0].classList, className, delay);
-              elem[0].classList.add(className);
+              execClassAction(className, actionName, scope, elem, customArgs);
               scope.$apply();
             }, delay)
           } else {
-            elem[0].classList[actionName](className);
+            execClassAction(className, actionName, scope, elem, customArgs);
             $timeout(function() {
               scope.$apply();
             })
           }
         }
+
+        function execClassAction(class_name, action_name, scope, elem, custom_args) {
+          if (custom_args && custom_args.set) {
+            var propDict = {properties:custom_args.set};
+            evalPropertyArgs(propDict, scope, elem);
+          }
+          if (action_name === 'add') {
+            elem[0].classList.add(class_name);
+          } else if (action_name === 'remove') {
+            elem[0].classList.remove(class_name);
+          }
+        }
+
       }
+
+      function processClassCustomArgs(custom_str, custom_dict) {
+        if (custom_str.indexOf('set:') > -1) {
+          custom_dict.set = processSetExtraArgs(custom_str.replace('set:', ''));
+        }
+      }
+    }
+
+    function processSetExtraArgs(set_str) {
+      set_str = UtilitiesService.removeAllOccurrancesArr(set_str, ['(', ')'])
+      set_str = UtilitiesService.replaceAll(set_str, ', ', '');
+      var setPropertyArr = set_str.split('#');
+      var resultArr = [];
+      for (var i = 0; i < setPropertyArr.length; i++)  {
+        var setPropIndex = setPropertyArr[i];
+        var propDict = {};
+        if (setPropIndex.indexOf(':impt') > -1) {
+          setPropIndex = setPropIndex.replace(':impt', '');
+          propDict.important = true;
+        }
+        setPropIndexSplit = setPropIndex.split(':');
+        if (setPropIndexSplit.length === 2) {
+          var name = setPropIndexSplit[0];
+          var value = setPropIndexSplit[1]
+          propDict[name] = processCSSPropValue(name, value);
+        }
+        resultArr.push(propDict);
+      }
+      return resultArr;
     }
 
     function evalPropertyArgs(arg_dict, scope, elem) {
@@ -471,23 +554,46 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processCSSPropArr(prop_arr, scope, elem)  {
       for (var i = 0; i < prop_arr.length; i++) {
         var indexPropDict = prop_arr[i];
+        if (indexPropDict.custom) {
+          processCSSCustomArgs(indexPropDict.custom, indexPropDict);
+          delete indexPropDict['custom'];
+        }
         var delay = indexPropDict.delay;
+        var important = indexPropDict.important || false;
         delete indexPropDict['delay'];
+        delete indexPropDict['important'];
         var propName = Object.keys(indexPropDict)[0];
         var propValue = indexPropDict[propName];
-        setCSSProperty(propName, propValue, delay, scope, elem)
+        setCSSProperty(propName, propValue, delay, important, scope, elem)
+        if (delay)  {
+          indexPropDict['delay'] = delay;
+        }
+        if (important) {
+          indexPropDict['important'] = important;
+        }
       }
 
-      function setCSSProperty(prop, value, delay, scope, elem) {
+      function processCSSCustomArgs(custom_str, indexPropDict) {
+        if (custom_str.indexOf('impt') > -1) {
+          indexPropDict.important = true;
+        }
+        console.log(indexPropDict);
+      }
+
+      function setCSSProperty(prop, value, delay, impt, scope, elem) {
+        var priority;
+        if (impt) {
+          priority = 'important';
+        }
         if (delay) {
           $timeout(function() {
-            elem.css(prop, value);
+            elem.css(prop, value, priority);
             $timeout(function() {
               scope.$apply();
             })
           }, delay)
         } else {
-          elem.css(prop, value);
+          elem.css(prop, value, priority);
           $timeout(function() {
               scope.$apply();
           })

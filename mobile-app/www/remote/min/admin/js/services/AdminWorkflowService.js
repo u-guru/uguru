@@ -103,7 +103,8 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     controllerUrl: 'preapp/js/SplashNavController.js',
                     templateUrl: 'preapp/templates/splash.nav.html',
                     routeUrl: 'dev/splash/nav',
-                    cssUrl: 'preapp/css/scss/partials/splash/_headers.scss'
+                    cssUrl: 'preapp/css/scss/partials/splash/_headers.scss',
+                    parentController: 'SplashController as splash'
                 },
                 states: [
                   {title: 'onEnterSidebarIcon', description: 'Entrance of sidebar icon', functional:false, animated:false, tested:false},
