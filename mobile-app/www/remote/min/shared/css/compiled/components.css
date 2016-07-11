@@ -1545,13 +1545,13 @@ fieldset.no-border * {
     border-radius: 2px;
     z-index: -1; }
   .dropdown-color * {
-    transition: all 150ms cubic-bezier(0.77, 0, 0.05, 1);
-    transition: all 150ms cubic-bezier(0.77, -0.22, 0.05, 1.27); }
+    transition: all 150ms ease-in-out; }
   .dropdown-color > a {
+    display: block;
     justify-content: space-between;
     z-index: 1;
     padding: 0 12px 0 15px;
-    border: 2px solid white;
+    position: relative;
     border-radius: 2px; }
     .dropdown-color > a svg {
       fill: none;
@@ -1563,6 +1563,34 @@ fieldset.no-border * {
       margin-left: 5px;
       width: 24px;
       height: 24px; }
+    .dropdown-color > a div:not(.dropdown-color-bg) {
+      position: absolute;
+      background: white;
+      border-radius: 1000px; }
+      .dropdown-color > a div:not(.dropdown-color-bg):nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: right center; }
+      .dropdown-color > a div:not(.dropdown-color-bg):nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center bottom; }
+      .dropdown-color > a div:not(.dropdown-color-bg):nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: left center; }
+      .dropdown-color > a div:not(.dropdown-color-bg):nth-child(4) {
+        bottom: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center top; }
     .dropdown-color > a.active svg {
       transform: rotate(180deg); }
   .dropdown-color a {
@@ -1581,43 +1609,12 @@ fieldset.no-border * {
     padding: 0 10px;
     height: 48px;
     font-weight: 600;
-    font-size: 18px; }
-    .dropdown-color a span:not(.dropdown-color-icon) {
-      display: block;
-      height: 20px;
-      overflow: hidden;
-      white-space: nowrap; }
-    .dropdown-color a .dropdown-color-icon {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px; }
-      .dropdown-color a .dropdown-color-icon svg {
-        display: block;
-        width: 24px;
-        height: 24px;
-        margin-left: 0 !important; }
-        .dropdown-color a .dropdown-color-icon svg * {
-          fill: none;
-          stroke: white;
-          stroke-width: 8px;
-          stroke-linecap: round;
-          stroke-linejoin: round; }
+    font-size: 18px;
+    color: white;
+    cursor: pointer; }
+    .dropdown-color a span:first-letter {
+      text-transform: uppercase; }
     .dropdown-color a.color .dropdown-color-bg {
-      filter: alpha(opacity=80);
       opacity: 0.8;
       display: block;
       position: absolute;
@@ -1627,19 +1624,14 @@ fieldset.no-border * {
       height: 100%;
       z-index: -1; }
     .dropdown-color a.color + .arrow {
-      filter: alpha(opacity=80);
       opacity: 0.8; }
     .dropdown-color a.color:hover .dropdown-color-bg, .dropdown-color a.color:focus .dropdown-color-bg, .dropdown-color a.color.active .dropdown-color-bg {
-      filter: alpha(opacity=100);
       opacity: 1; }
     .dropdown-color a.color:hover + .arrow, .dropdown-color a.color:focus + .arrow, .dropdown-color a.color.active + .arrow {
-      filter: alpha(opacity=100);
       opacity: 1; }
     .dropdown-color a.color.active:hover .dropdown-color-bg, .dropdown-color a.color.active:focus .dropdown-color-bg {
-      filter: alpha(opacity=80);
       opacity: 0.8; }
     .dropdown-color a.color.active:hover + .arrow, .dropdown-color a.color.active:focus + .arrow {
-      filter: alpha(opacity=80);
       opacity: 0.8; }
     .dropdown-color a.color:active .dropdown-color-bg {
       background: #6f7d82 !important; }
@@ -1890,12 +1882,12 @@ fieldset.no-border * {
     left: 50%;
     margin-left: -99px; }
     .dropdown-color > div:not(.visible) {
-      filter: alpha(opacity=0);
+      transform: translateY(-50%) translateZ(0) scaleY(0);
       opacity: 0;
       visibility: hidden;
       z-index: -1; }
     .dropdown-color > div.visible {
-      filter: alpha(opacity=100);
+      transform: translateY(0) translateZ(0) scale(1);
       opacity: 1;
       visibility: visible;
       z-index: 0; }
@@ -1906,26 +1898,50 @@ fieldset.no-border * {
       width: 100%;
       height: auto; }
     .dropdown-color > div ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       position: relative;
       z-index: 4;
       margin-top: -4px; }
       .dropdown-color > div ul li {
         position: relative;
         height: 48px;
-        border: 2px solid white;
         border-top: 0;
         font-size: 18px;
-        font-weight: 600; }
+        font-weight: 600;
+        color: white; }
+        .dropdown-color > div ul li:not(:first-child) a + .arrow {
+          display: none; }
         .dropdown-color > div ul li:first-child {
           border-topleft-radius: 2px;
           border-top-right-radius: 2px; }
         .dropdown-color > div ul li:last-child {
           border-bottom-left-radius: 2px;
           border-bottom-right-radius: 2px; }
-          .dropdown-color > div ul li:last-child a {
-            padding: 0 !important; }
-        .dropdown-color > div ul li:not(:first-child) a + .arrow {
-          display: none; }
+        .dropdown-color > div ul li > div {
+          position: absolute;
+          background: white;
+          border-radius: 1000px;
+          z-index: 10; }
+          .dropdown-color > div ul li > div:nth-child(1) {
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            transform-origin: center bottom; }
+          .dropdown-color > div ul li > div:nth-child(2) {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            transform-origin: left center; }
+          .dropdown-color > div ul li > div:nth-child(3) {
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            transform-origin: center top; }
         .dropdown-color > div ul li a {
           -ms-box-orient: horizontal;
           display: -webkit-box;
