@@ -31,7 +31,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
     function initSpec(param, real_scope) {
         var extraDelay = 0;
         if (window.location.href.split('codepen').length > 1) {
-            extraDelay = 1500;
+            extraDelay = 2500;
         }
         //if its not codepen, it doesn't have dev in it
         if (
