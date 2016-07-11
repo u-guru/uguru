@@ -24,10 +24,10 @@ angular.module('uguru.shared.directives')
               }
             })
           } else {
-            execInitWith();
+            execInitWith(scope);
           }
 
-          function execInitWith() {
+          function execInitWith(scope) {
             var elemArgs = DirectiveService.parseArgs(attr.initWith);
             var listenerArgs = DirectiveService.detectExternalStates(attr);
             var supportedCommands = DirectiveService.supportedCommands;
