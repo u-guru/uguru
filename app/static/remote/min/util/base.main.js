@@ -39,7 +39,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate',
       $scope.root.browserPrefix = RootService.getBrowserPrefix();
       $scope.root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
       $scope.root.devMode = window.location.href.split('/dev/').length > 1;
-      root.public = {customStates: []};
+      $scope.root.public = {customStates: []};
 
     function getBodyDimensions() {
         var desktopHeightLimit = 690;
