@@ -1,19 +1,17 @@
 <!-- not sure how to transfer this over so leaving this empty file here for now to remove the console error -->
 <div class="full-xy absolute top-0 left-0 z-index-9"  ng-controller='AdminBugsController'>
-	<header class="bg-slate">
-                    <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Bugs</h1>
-     </header>
 	<ion-pane id='cta-modal-selected-bug' class='absolute full-xy hide-display cta-modal bg-charcoal z-index-10 hide' ng-include="root.base_url + 'admin/templates/bugs.detail.html'"></ion-pane>
 
-
-	<header class='bg-robin txt-center flex-center'>
-		<h1 ng-if="indexOfSection == null && bugReport.length" class="txt-white weight-700 txt-28">Bugs {{indexOfSection}}</h1>
-		<h1 ng-if="indexOfSection >= 0" class="txt-white weight-700 txt-28">{{bugReport[indexOfSection].name}} </h1>
-		<span ng-if="indexOfSection >= 0" class="block p15x-p10y bg-white txt-moxie radius-2 caps txt-18 semibold">{{isAllEnvirPassed(bugReport[indexOfSection].envir)}}</span>
-
+	<header class='bg-slate'>
+		<div class="bg-cobalt-25p txt-center flex-center">
+			<h1 ng-if="indexOfSection == null && bugReport.length" class="txt-white txt-18 p15xy">Bugs {{indexOfSection}}</h1>
+			<h1 ng-if="indexOfSection >= 0" class="txt-white txt-18 p15xy">{{bugReport[indexOfSection].name}} </h1>
+			<span ng-if="indexOfSection >= 0" class="block p15x-p10y bg-white txt-moxie radius-2 caps txt-16 semibold">{{isAllEnvirPassed(bugReport[indexOfSection].envir)}}</span>
+		</div>
 	</header>
+
 	<div>
-		<div class=' p05xy bg-robin-80p full-x flex-wrap-left' >
+		<div class='p05xy bg-robin-80p full-x flex-wrap'>
 			<dropdown class="height-32 m15right" ng-model="availableOptions" selected-index="0" ng-if='!addSection'> </dropdown>
 			<div class="checkbox-container" ng-if='availableOptions.selectedIndex > 0 && !addSection'>
 				<div>
@@ -95,7 +93,7 @@
 
 							</li>
 								<span class="block bg bg-rocket p10y-p15x height-36 radius-2 txt-18 semibold" >
-									Manual Bugs 
+									Manual Bugs
 								</span>
 							</li>
 						</ul>
