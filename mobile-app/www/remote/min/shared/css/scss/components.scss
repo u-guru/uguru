@@ -11,6 +11,10 @@
 @import 'partials/components/svg';
 @import 'partials/components/visual';
 
+.test-jeselle {
+	border: white;
+}
+
 // verified
 .verified {
 	@include flex;
