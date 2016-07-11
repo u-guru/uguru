@@ -32,9 +32,9 @@
                         </a>
                     </div>
                 </div>
-                <a id='cta-box-powerups' class="icon-round-stroke" init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[opacity:0]">
+                <a id='cta-box-powerups' class="icon-round-stroke">
+					<!-- init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[opacity:0]" -->
                     <!-- ng-click='activatePowerups()'
-                    class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="600"
                     class-on-click="powerup-activated, null:inject#cta-box-powerups svg|activate, null:inject#cta-modal-powerups|activate"
                     class-on-activate="powerup-activated" class-on-activate-delay="500" -->
                     <div class="full-xy flex-center relative" ng-include="root.base_url + 'shared/templates/components/svg/main/lightning-circle.html'" translate-on-click></div>
