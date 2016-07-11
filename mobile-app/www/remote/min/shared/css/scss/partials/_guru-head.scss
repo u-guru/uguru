@@ -1,0 +1,11 @@
+@import 'mixin';
+
+.guru-head-switcher {
+	width: 400px;
+	height: 400px;
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
