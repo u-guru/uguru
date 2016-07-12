@@ -3019,6 +3019,354 @@
 		}
 	}
 
+	/*----- COLOR DROPDOWNS */
+	// base
+	// .dropdown-color {
+	// 	> div {
+	// 		opacity: 0;
+	// 		transform: translate3d(0-50%,0);
+	// 		visibility: hidden;
+	// 		z-index: -1;
+	// 		transition: all 250ms ease-in-out 400ms;
+	// 		ul {
+	// 			li {
+	// 				&:not(:first-child) {
+	// 					transform: translate3d(0,-100%,0);
+	// 					opacity: 0;
+	// 				}
+	// 				&:nth-child(2) {
+	// 					transition: all 250ms ease-in-out 300ms;
+	// 				}
+	// 				&:nth-child(3) {
+	// 					transition: all 250ms ease-in-out 200ms;
+	// 				}
+	// 				&:nth-child(4) {
+	// 					transition: all 250ms ease-in-out 100ms;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	&.activate {
+	// 		> div {
+	// 			opacity: 1;
+	// 			transform: translate3d(0,0,0);
+	// 			visibility: visible;
+	// 			z-index: 10;
+	// 			transition: all 250ms ease-in-out;
+	// 			ul {
+	// 				li {
+	// 					&:not(:first-child) {
+	// 						transform: translate3d(0,0,0);
+	// 						opacity: 1;
+	// 					}
+	// 					&:nth-child(2) {
+	// 						transition: all 250ms ease-in-out 100ms;
+	// 					}
+	// 					&:nth-child(3) {
+	// 						transition: all 250ms ease-in-out 200ms;
+	// 					}
+	// 					&:nth-child(4) {
+	// 						transition: all 250ms ease-in-out 300ms;
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// states
+	.dropdown-color {
+		&.state-onload {
+			> a {
+				&.bg-robin {
+					background: rgba($robin, 0);
+				}
+				span {
+					opacity: 0;
+				}
+				svg {
+					opacity: 0;
+				}
+				div {
+					background: rgba($robin, 0.8);
+					&:nth-child(1) {
+						transform: scaleX(0);
+						transition: all 250ms ease-out;
+					}
+					&:nth-child(2) {
+						transform: scaleY(0);
+						transition: all 250ms ease-out 150ms;
+					}
+					&:nth-child(3) {
+						transform: scaleX(0);
+						transition: all 250ms ease-out 300ms;
+					}
+					&:nth-child(4) {
+						transform: scaleY(0);
+						transition: all 250ms ease-out 450ms;
+					}
+				}
+			}
+		}
+		&.state-onenter {
+			> a {
+				div {
+					background: rgba($robin, 0.8);
+					transition: all 250ms ease-out;
+				}
+				&.bg-robin {
+					background: rgba($robin, 0);
+					transition: all 250ms ease-out 250ms;
+				}
+				span {
+					opacity: 0;
+					transition: all 250ms ease-out 250ms;
+				}
+				svg {
+					stroke-dasharray: 103;
+					stroke-dashoffset: 103;
+					transition: all 250ms ease-out 250ms;
+				}
+			}
+		}
+		&.state-onexit {
+			> a {
+				opacity: 1;
+				transition: all 450ms ease-in;
+			}
+		}
+		&.state-hover {
+			> a {
+				&.bg-robin {
+					background: rgba($robin, 0.8);
+					transition: all 250ms ease-out;
+				}
+				svg {
+					transform: scale(1);
+					transition: scale 500ms ease-out;
+					transform-origin: center center;
+				}
+			}
+		}
+		&.state-active {
+			> a {
+				&.bg-robin {
+					background: mix($robin, $slate, 60%);
+					transition: all 250ms ease-out;
+				}
+				svg {
+					transform: scale(1.1);
+					transition: all 250ms ease-out;
+				}
+			}
+		}
+		&.state-disabled {
+			> a {
+				transition: all 250ms ease-out;
+			}
+		}
+		&.state-onclose {
+			> a {
+				svg {
+					transform: rotate(180deg);
+				}
+			}
+			> div:not(.visible) {
+				transform: translateY(0) translateZ(0) scale(1);
+				opacity: 1;
+				visibility: visible;
+				z-index: 0;
+			}
+		}
+		&.state-option-hover {
+			> a {
+				svg {
+					transform: rotate(180deg);
+				}
+			}
+			> div:not(.visible) {
+				transform: translateY(0) translateZ(0) scale(1);
+				opacity: 1;
+				visibility: visible;
+				z-index: 0;
+				a {
+					&.bg-household {
+						transition: all 250ms ease-out
+					}
+				}
+			}
+		}
+		&.state-option-active {
+			> a {
+				svg {
+					transform: rotate(180deg);
+				}
+			}
+			> div:not(.visible) {
+				transform: translateY(0) translateZ(0) scale(1);
+				opacity: 1;
+				visibility: visible;
+				z-index: 0;
+				a {
+					&.bg-household {
+						background: $cobalt;
+						transition: all 250ms ease-out
+					}
+				}
+			}
+		}
+		&.state-option-disabled {
+			> a {
+				svg {
+					transform: rotate(180deg);
+				}
+			}
+			> div:not(.visible) {
+				transform: translateY(0) translateZ(0) scale(1);
+				opacity: 1;
+				visibility: visible;
+				z-index: 0;
+				a {
+					&.bg-household {
+						transition: all 250ms ease-out
+					}
+				}
+			}
+		}
+	}
+	// activated states
+	.dropdown-color.activate {
+		&.state-onload {
+			> a {
+				div {
+					&:nth-child(1) {
+						transform: scaleX(1);
+						transition: all 250ms ease-out 450ms;
+					}
+					&:nth-child(2) {
+						transform: scaleY(1);
+						transition: all 250ms ease-out 300ms;
+					}
+					&:nth-child(3) {
+						transform: scaleX(1);
+						transition: all 250ms ease-out 150ms;
+					}
+					&:nth-child(4) {
+						transform: scaleY(1);
+						transition: all 250ms ease-out;
+					}
+				}
+			}
+		}
+		&.state-onenter {
+			> a {
+				div {
+					background: white;
+				}
+				&.bg-robin {
+					background: rgba($robin, 0.8);
+				}
+				span {
+					opacity: 1;
+				}
+				svg {
+					stroke-dashoffset: 0;
+				}
+			}
+		}
+		&.state-onexit {
+			> a {
+				opacity: 0;
+			}
+		}
+		&.state-hover {
+			> a {
+				&.bg-robin {
+					background: mix($robin, $slate, 60%);
+				}
+				svg {
+					transform: scale(1.1);
+					path { animation: wiggle 750ms ease-in-out both;}
+				}
+			}
+		}
+		&.state-active {
+			> a {
+				&.bg-robin {
+					background: mix($robin, $slate, 20%);
+					transition: all 250ms ease-out;
+				}
+				svg {
+					transform: scale(0.9);
+					transition: all 250ms ease-out;
+				}
+			}
+		}
+		&.state-disabled {
+			> a {
+				opacity: 0.2;
+			}
+		}
+		&.state-onopen {
+			> a {
+				svg {
+					transform: rotate(180deg);
+				}
+			}
+			> div {
+				transform: translateY(0) translateZ(0) scale(1);
+				opacity: 1;
+				visibility: visible;
+				z-index: 0;
+			}
+		}
+		&.state-onclose {
+			> a {
+				svg {
+					transform: rotate(0deg);
+				}
+			}
+			> div:not(.visible) {
+				transform: translateY(0) translateZ(0) scale(1);
+				opacity: 0;
+				visibility: hidden;
+				z-index: 0;
+			}
+		}
+		&.state-option-hover {
+			> div:not(.visible) {
+				transform: translateY(0) translateZ(0) scale(1);
+				opacity: 1;
+				visibility: visible;
+				z-index: 0;
+				a {
+					&.bg-household {
+						background: $cobalt;
+					}
+				}
+			}
+		}
+		&.state-option-active {
+			> div:not(.visible) {
+				a {
+					&.bg-household {
+						background: mix($cobalt, white);
+						color: mix($cobalt, $slate);
+					}
+				}
+			}
+		}
+		&.state-option-disabled {
+			> div:not(.visible) {
+				a {
+					&.bg-household {
+						background: mix($cobalt,lighten($slate, 15%), 20%);
+						color: rgba(white, 0.5);
+					}
+				}
+			}
+		}
+	}
+
 	/*----- tooltips */
 	// base
 	.tooltips {
@@ -4060,501 +4408,3 @@
 	50% { transform: translateY(-10px); }
 	100% { transform: translateY(0); }
 }
-
-// // NOT IN TEMPLATES
-// // color dropdowns
-// .dropdown-color {
-// 	@include flex;
-// 	position: relative;
-// 	&:after {
-// 		content: "";
-// 		display: block;
-// 		position: absolute;
-// 		top: 0;
-// 		left: 0;
-// 		width: 100%;
-// 		height: 48px;
-// 		background: $slate;
-// 		border-radius: 2px;
-// 		z-index: -1;
-// 	}
-// 	* {
-// 		transition: all 150ms ease-in-out;
-// 	}
-// 	> a {
-// 		display: block;
-// 		justify-content: space-between;
-// 		z-index: 1;
-// 		padding: 0 12px 0 15px;
-// 		position: relative;
-// 		border-radius: 2px;
-// 		svg {
-// 			@include svg-stroke(white, 10);
-// 			display: block;
-// 			margin-left: 5px;
-// 			width: 24px;
-// 			height: 24px;
-// 		}
-// 		div {
-// 			position: absolute;
-// 			background: white;
-// 			border-radius: 1000px;
-// 			&:nth-child(1) {
-// 				top: 0;
-// 				left: 0;
-// 				width: 100%;
-// 				height: 2px;
-// 				transform-origin: right center;
-// 				// transform: scaleX(0);
-// 			}
-// 			&:nth-child(2) {
-// 				top: 0;
-// 				right: 0;
-// 				width: 2px;
-// 				height: 100%;
-// 				transform-origin: center bottom;
-// 				// transform: scaleY(0);
-// 			}
-// 			&:nth-child(3) {
-// 				bottom: 0;
-// 				right: 0;
-// 				width: 100%;
-// 				height: 2px;
-// 				transform-origin: left center;
-// 				// transform: scaleX(0);
-// 			}
-// 			&:nth-child(4) {
-// 				bottom: 0;
-// 				left: 0;
-// 				width: 2px;
-// 				height: 100%;
-// 				transform-origin: center top;
-// 				// transform: scaleY(0);
-// 			}
-// 		}
-// 		&.active {
-// 			svg {
-// 				transform: rotate(180deg);
-// 			}
-// 		}
-// 	}
-// 	a {
-// 		@include flex;
-// 		@include flex-center-vertical;
-// 		position: relative;
-// 		padding: 0 10px;
-// 		height: 48px;
-// 		font-weight: 600;
-// 		font-size: 18px;
-// 		color: white;
-// 		cursor: pointer;
-// 	}
-// 	> div {
-// 		transform-origin: top center;
-// 		position: absolute;
-// 		top: 58px;
-// 		width: 198px;
-// 		left: 50%;
-// 		margin-left: -99px;
-// 		&:not(.visible) {
-// 			transform: translateY(-50%) translateZ(0) scaleY(0);
-// 			opacity: 0;
-// 			visibility: hidden;
-// 			z-index: -1;
-// 		}
-// 		&.visible {
-// 			transform: translateY(0) translateZ(0) scale(1);
-// 			opacity: 1;
-// 			visibility: visible;
-// 			z-index: 0;
-// 		}
-// 		> svg {
-// 			display: block;
-// 			position: relative;
-// 			z-index: 5;
-// 			width: 100%;
-// 			height: auto;
-// 		}
-// 		ul {
-// 			@include listless;
-// 			position: relative;
-// 			z-index: 4;
-// 			margin-top: -4px;
-// 			li {
-// 				position: relative;
-// 				height: 48px;
-// 				// border: 2px solid white;
-// 				border-top: 0;
-// 				font-size: 18px;
-// 				font-weight: 600;
-// 				color: white;
-// 				&:not(:first-child) {
-// 					a + .arrow {
-// 						display: none;
-// 					}
-// 				}
-// 				&:first-child {
-// 					border-topleft-radius: 2px;
-// 					border-top-right-radius: 2px;
-// 				}
-// 				&:last-child {
-// 					border-bottom-left-radius: 2px;
-// 					border-bottom-right-radius: 2px;
-// 				}
-// 				> div {
-// 					position: absolute;
-// 					background: white;
-// 					border-radius: 1000px;
-// 					z-index: 10;
-// 					&:nth-child(1) {
-// 						top: 0;
-// 						right: 0;
-// 						width: 2px;
-// 						height: 100%;
-// 						transform-origin: center bottom;
-// 						// transform: scaleY(0);
-// 					}
-// 					&:nth-child(2) {
-// 						bottom: 0;
-// 						right: 0;
-// 						width: 100%;
-// 						height: 2px;
-// 						transform-origin: left center;
-// 						// transform: scaleX(0);
-// 					}
-// 					&:nth-child(3) {
-// 						bottom: 0;
-// 						left: 0;
-// 						width: 2px;
-// 						height: 100%;
-// 						transform-origin: center top;
-// 						// transform: scaleY(0);
-// 					}
-// 				}
-// 				a {
-// 					@include flex;
-// 					@include flex-center;
-// 					height: 100%;
-// 					width: 100%;
-// 					padding: 0 15px;
-// 					text-align: center;
-// 					svg {
-// 						@include svg-stroke(white, 10);
-// 						display: none;
-// 						margin-left: 5px;
-// 						width: 24px;
-// 						height: 24px;
-// 					}
-// 					+ .arrow {
-// 						position: absolute;
-// 						left: 50%;
-// 						margin-left: -15px;
-// 						display: block;
-// 						top: -13px;
-// 						width: 30px;
-// 						height: 15px;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-//
-// // EDIT
-// .state-onload {
-// 	> a {
-// 		&.bg-robin {
-// 			background: rgba($robin, 0);
-// 		}
-// 		span {
-// 			opacity: 0;
-// 		}
-// 		svg {
-// 			opacity: 0;
-// 		}
-// 		div {
-// 			background: rgba($robin, 0.8);
-// 			&:nth-child(1) {
-// 				transform: scaleX(0);
-// 				transition: all 250ms ease-out;
-// 			}
-// 			&:nth-child(2) {
-// 				transform: scaleY(0);
-// 				transition: all 250ms ease-out 150ms;
-// 			}
-// 			&:nth-child(3) {
-// 				transform: scaleX(0);
-// 				transition: all 250ms ease-out 300ms;
-// 			}
-// 			&:nth-child(4) {
-// 				transform: scaleY(0);
-// 				transition: all 250ms ease-out 450ms;
-// 			}
-// 		}
-// 	}
-// }
-// .state-onenter {
-// 	> a {
-// 		div {
-// 			background: rgba($robin, 0.8);
-// 			transition: all 250ms ease-out;
-// 		}
-// 		&.bg-robin {
-// 			background: rgba($robin, 0);
-// 			transition: all 250ms ease-out 250ms;
-// 		}
-// 		span {
-// 			opacity: 0;
-// 			transition: all 250ms ease-out 250ms;
-// 		}
-// 		svg {
-// 			stroke-dasharray: 103;
-// 			stroke-dashoffset: 103;
-// 			transition: all 250ms ease-out 250ms;
-// 		}
-// 	}
-// }
-// .state-onexit {
-// 	> a {
-// 		opacity: 1;
-// 		transition: all 450ms ease-in;
-// 	}
-// }
-// .state-hover {
-// 	> a {
-// 		&.bg-robin {
-// 			background: rgba($robin, 0.8);
-// 			transition: all 250ms ease-out;
-// 		}
-// 		svg {
-// 			transform: scale(1);
-// 			transition: scale 500ms ease-out;
-// 			transform-origin: center center;
-// 		}
-// 	}
-// }
-// .state-active {
-// 	> a {
-// 		&.bg-robin {
-// 			background: mix($robin, $slate, 60%);
-// 			transition: all 250ms ease-out;
-// 		}
-// 		svg {
-// 			transform: scale(1.1);
-// 			transition: all 250ms ease-out;
-// 		}
-// 	}
-// }
-// .state-disabled {
-// 	> a {
-// 		transition: all 250ms ease-out;
-// 	}
-// }
-// .state-onclose {
-// 	> a {
-// 		svg {
-// 			transform: rotate(180deg);
-// 		}
-// 	}
-// 	> div:not(.visible) {
-// 		transform: translateY(0) translateZ(0) scale(1);
-// 		opacity: 1;
-// 		visibility: visible;
-// 		z-index: 0;
-// 	}
-// }
-// .state-option-hover {
-// 	> a {
-// 		svg {
-// 			transform: rotate(180deg);
-// 		}
-// 	}
-// 	> div:not(.visible) {
-// 		transform: translateY(0) translateZ(0) scale(1);
-// 		opacity: 1;
-// 		visibility: visible;
-// 		z-index: 0;
-// 		a {
-// 			&.bg-household {
-// 				transition: all 250ms ease-out
-// 			}
-// 		}
-// 	}
-// }
-// .state-option-active {
-// 	> a {
-// 		svg {
-// 			transform: rotate(180deg);
-// 		}
-// 	}
-// 	> div:not(.visible) {
-// 		transform: translateY(0) translateZ(0) scale(1);
-// 		opacity: 1;
-// 		visibility: visible;
-// 		z-index: 0;
-// 		a {
-// 			&.bg-household {
-// 				background: $cobalt;
-// 				transition: all 250ms ease-out
-// 			}
-// 		}
-// 	}
-// }
-// .state-option-disabled{
-// 	> a {
-// 		svg {
-// 			transform: rotate(180deg);
-// 		}
-// 	}
-// 	> div:not(.visible) {
-// 		transform: translateY(0) translateZ(0) scale(1);
-// 		opacity: 1;
-// 		visibility: visible;
-// 		z-index: 0;
-// 		a {
-// 			&.bg-household {
-// 				transition: all 250ms ease-out
-// 			}
-// 		}
-// 	}
-// }
-//
-// .activate {
-// 	&.state-onload {
-// 		> a {
-// 			div {
-// 				&:nth-child(1) {
-// 					transform: scaleX(1);
-// 					transition: all 250ms ease-out 450ms;
-// 				}
-// 				&:nth-child(2) {
-// 					transform: scaleY(1);
-// 					transition: all 250ms ease-out 300ms;
-// 				}
-// 				&:nth-child(3) {
-// 					transform: scaleX(1);
-// 					transition: all 250ms ease-out 150ms;
-// 				}
-// 				&:nth-child(4) {
-// 					transform: scaleY(1);
-// 					transition: all 250ms ease-out;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	&.state-onenter {
-// 		> a {
-// 			div {
-// 				background: white;
-// 			}
-// 			&.bg-robin {
-// 				background: rgba($robin, 0.8);
-// 			}
-// 			span {
-// 				opacity: 1;
-// 			}
-// 			svg {
-// 				stroke-dashoffset: 0;
-// 			}
-// 		}
-// 	}
-// 	&.state-onexit {
-// 		> a {
-// 			opacity: 0;
-// 		}
-// 	}
-// 	&.state-hover {
-// 		> a {
-// 			&.bg-robin {
-// 				background: mix($robin, $slate, 60%);
-// 			}
-// 			svg {
-// 				transform: scale(1.1);
-// 				path { animation: wiggle 750ms ease-in-out both;}
-// 			}
-// 		}
-// 	}
-// 	&.state-active {
-// 		> a {
-// 			&.bg-robin {
-// 				background: mix($robin, $slate, 20%);
-// 				transition: all 250ms ease-out;
-// 			}
-// 			svg {
-// 				transform: scale(0.9);
-// 				transition: all 250ms ease-out;
-// 			}
-// 		}
-// 	}
-// 	&.state-disabled {
-// 		> a {
-// 			opacity: 0.2;
-// 		}
-// 	}
-// 	&.state-onopen {
-// 		> a {
-// 			svg {
-// 				transform: rotate(180deg);
-// 			}
-// 		}
-// 		> div {
-// 			transform: translateY(0) translateZ(0) scale(1);
-// 			opacity: 1;
-// 			visibility: visible;
-// 			z-index: 0;
-// 		}
-// 	}
-// 	&.state-onclose {
-// 		> a {
-// 			svg {
-// 				transform: rotate(0deg);
-// 			}
-// 		}
-// 		> div:not(.visible) {
-// 			transform: translateY(0) translateZ(0) scale(1);
-// 			opacity: 0;
-// 			visibility: hidden;
-// 			z-index: 0;
-// 		}
-// 	}
-// 	&.state-option-hover {
-// 		> div:not(.visible) {
-// 			transform: translateY(0) translateZ(0) scale(1);
-// 			opacity: 1;
-// 			visibility: visible;
-// 			z-index: 0;
-// 			a {
-// 				&.bg-household {
-// 					background: $cobalt;
-// 				}
-// 			}
-// 		}
-// 	}
-// 	&.state-option-active {
-// 		> div:not(.visible) {
-// 			a {
-// 				&.bg-household {
-// 					background: mix($cobalt, white);
-// 					color: mix($cobalt, $slate);
-// 				}
-// 			}
-// 		}
-// 	}
-// 	&.state-option-disabled {
-// 		> div:not(.visible) {
-// 			a {
-// 				&.bg-household {
-// 					background: mix($cobalt,lighten($slate, 15%), 20%);
-// 					color: rgba(white, 0.5);
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-//
-// // KEYFRAMES
-// @keyframes wiggle {
-// 	15%,45%,75% { transform: translateX(-2px); }
-// 	30%,60% { transform: translateX(2px); }
-// 	100% {transform: none;}
-// }

@@ -12179,6 +12179,7 @@ input[type=range] {
   /*----- TOGGLES */
   /*----- BUTTONS */
   /*----- DROPDOWNS */
+  /*----- COLOR DROPDOWNS */
   /*----- tooltips */ }
   .base-components .checkbox-container {
     -ms-box-orient: horizontal;
@@ -14479,6 +14480,155 @@ input[type=range] {
       .base-components .dropdown.activate.state-info-hover > ul li:nth-child(1) .dropdown-info {
         transform: translateZ(0) scale(1) !important;
         z-index: auto !important; }
+  .base-components .dropdown-color.state-onload > a.bg-robin {
+    background: rgba(43, 179, 184, 0); }
+  .base-components .dropdown-color.state-onload > a span {
+    opacity: 0; }
+  .base-components .dropdown-color.state-onload > a svg {
+    opacity: 0; }
+  .base-components .dropdown-color.state-onload > a div {
+    background: rgba(43, 179, 184, 0.8); }
+    .base-components .dropdown-color.state-onload > a div:nth-child(1) {
+      transform: scaleX(0);
+      transition: all 250ms ease-out; }
+    .base-components .dropdown-color.state-onload > a div:nth-child(2) {
+      transform: scaleY(0);
+      transition: all 250ms ease-out 150ms; }
+    .base-components .dropdown-color.state-onload > a div:nth-child(3) {
+      transform: scaleX(0);
+      transition: all 250ms ease-out 300ms; }
+    .base-components .dropdown-color.state-onload > a div:nth-child(4) {
+      transform: scaleY(0);
+      transition: all 250ms ease-out 450ms; }
+  .base-components .dropdown-color.state-onenter > a div {
+    background: rgba(43, 179, 184, 0.8);
+    transition: all 250ms ease-out; }
+  .base-components .dropdown-color.state-onenter > a.bg-robin {
+    background: rgba(43, 179, 184, 0);
+    transition: all 250ms ease-out 250ms; }
+  .base-components .dropdown-color.state-onenter > a span {
+    opacity: 0;
+    transition: all 250ms ease-out 250ms; }
+  .base-components .dropdown-color.state-onenter > a svg {
+    stroke-dasharray: 103;
+    stroke-dashoffset: 103;
+    transition: all 250ms ease-out 250ms; }
+  .base-components .dropdown-color.state-onexit > a {
+    opacity: 1;
+    transition: all 450ms ease-in; }
+  .base-components .dropdown-color.state-hover > a.bg-robin {
+    background: rgba(43, 179, 184, 0.8);
+    transition: all 250ms ease-out; }
+  .base-components .dropdown-color.state-hover > a svg {
+    transform: scale(1);
+    transition: scale 500ms ease-out;
+    transform-origin: center center; }
+  .base-components .dropdown-color.state-active > a.bg-robin {
+    background: #33888c;
+    transition: all 250ms ease-out; }
+  .base-components .dropdown-color.state-active > a svg {
+    transform: scale(1.1);
+    transition: all 250ms ease-out; }
+  .base-components .dropdown-color.state-disabled > a {
+    transition: all 250ms ease-out; }
+  .base-components .dropdown-color.state-onclose > a svg {
+    transform: rotate(180deg); }
+  .base-components .dropdown-color.state-onclose > div:not(.visible) {
+    transform: translateY(0) translateZ(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+    z-index: 0; }
+  .base-components .dropdown-color.state-option-hover > a svg {
+    transform: rotate(180deg); }
+  .base-components .dropdown-color.state-option-hover > div:not(.visible) {
+    transform: translateY(0) translateZ(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+    z-index: 0; }
+    .base-components .dropdown-color.state-option-hover > div:not(.visible) a.bg-household {
+      transition: all 250ms ease-out; }
+  .base-components .dropdown-color.state-option-active > a svg {
+    transform: rotate(180deg); }
+  .base-components .dropdown-color.state-option-active > div:not(.visible) {
+    transform: translateY(0) translateZ(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+    z-index: 0; }
+    .base-components .dropdown-color.state-option-active > div:not(.visible) a.bg-household {
+      background: #7872e3;
+      transition: all 250ms ease-out; }
+  .base-components .dropdown-color.state-option-disabled > a svg {
+    transform: rotate(180deg); }
+  .base-components .dropdown-color.state-option-disabled > div:not(.visible) {
+    transform: translateY(0) translateZ(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+    z-index: 0; }
+    .base-components .dropdown-color.state-option-disabled > div:not(.visible) a.bg-household {
+      transition: all 250ms ease-out; }
+  .base-components .dropdown-color.activate.state-onload > a div:nth-child(1) {
+    transform: scaleX(1);
+    transition: all 250ms ease-out 450ms; }
+  .base-components .dropdown-color.activate.state-onload > a div:nth-child(2) {
+    transform: scaleY(1);
+    transition: all 250ms ease-out 300ms; }
+  .base-components .dropdown-color.activate.state-onload > a div:nth-child(3) {
+    transform: scaleX(1);
+    transition: all 250ms ease-out 150ms; }
+  .base-components .dropdown-color.activate.state-onload > a div:nth-child(4) {
+    transform: scaleY(1);
+    transition: all 250ms ease-out; }
+  .base-components .dropdown-color.activate.state-onenter > a div {
+    background: white; }
+  .base-components .dropdown-color.activate.state-onenter > a.bg-robin {
+    background: rgba(43, 179, 184, 0.8); }
+  .base-components .dropdown-color.activate.state-onenter > a span {
+    opacity: 1; }
+  .base-components .dropdown-color.activate.state-onenter > a svg {
+    stroke-dashoffset: 0; }
+  .base-components .dropdown-color.activate.state-onexit > a {
+    opacity: 0; }
+  .base-components .dropdown-color.activate.state-hover > a.bg-robin {
+    background: #33888c; }
+  .base-components .dropdown-color.activate.state-hover > a svg {
+    transform: scale(1.1); }
+    .base-components .dropdown-color.activate.state-hover > a svg path {
+      animation: wiggle 750ms ease-in-out both; }
+  .base-components .dropdown-color.activate.state-active > a.bg-robin {
+    background: #3c5d61;
+    transition: all 250ms ease-out; }
+  .base-components .dropdown-color.activate.state-active > a svg {
+    transform: scale(0.9);
+    transition: all 250ms ease-out; }
+  .base-components .dropdown-color.activate.state-disabled > a {
+    opacity: 0.2; }
+  .base-components .dropdown-color.activate.state-onopen > a svg {
+    transform: rotate(180deg); }
+  .base-components .dropdown-color.activate.state-onopen > div {
+    transform: translateY(0) translateZ(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+    z-index: 0; }
+  .base-components .dropdown-color.activate.state-onclose > a svg {
+    transform: rotate(0deg); }
+  .base-components .dropdown-color.activate.state-onclose > div:not(.visible) {
+    transform: translateY(0) translateZ(0) scale(1);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 0; }
+  .base-components .dropdown-color.activate.state-option-hover > div:not(.visible) {
+    transform: translateY(0) translateZ(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+    z-index: 0; }
+    .base-components .dropdown-color.activate.state-option-hover > div:not(.visible) a.bg-household {
+      background: #7872e3; }
+  .base-components .dropdown-color.activate.state-option-active > div:not(.visible) a.bg-household {
+    background: #bcb9f1;
+    color: #5c5d97; }
+  .base-components .dropdown-color.activate.state-option-disabled > div:not(.visible) a.bg-household {
+    background: #67708a;
+    color: rgba(255, 255, 255, 0.5); }
   .base-components .tooltips {
     display: flex;
     position: relative;
