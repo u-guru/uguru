@@ -2,7 +2,7 @@
 
 git fetch
 # git log -10 --pretty=format:'"branch":"%Cred%d%Creset"%n"commit":"%H"%n"date": "%ad"%n"message": "%f" %n "test:"%D" '  --all --branches --no-merges 
-git log -10 --pretty=format:'"branch":"%Cred%d%Creset"%n"commit":"%H"%n"date": "%ad"%n"message": "%f" %n'  --all --branches 
+git fetch && git log -10 --pretty=format:'"branch":"%Cred%d%Creset"%n"commit":"%H"%n"date": "%ad"%n"message": "%f" %n'  --all --branches 
 # git log --all --decorate --branches --no-merges 
 
 
