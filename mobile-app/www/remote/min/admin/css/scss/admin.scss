@@ -5,6 +5,19 @@
 @import 'partials/keyframes';
 @import 'partials/docs';
 
+// bugs
+.bug-tag-list {
+	ul {
+		padding: 7.5px!important;
+		li {
+			padding: 7.5px!important;
+			.chip {
+				margin: 0!important;
+			}
+		}
+	}
+}
+
 // preview default
 .preview-container {
 	position: relative!important;

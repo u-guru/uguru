@@ -650,6 +650,13 @@
     height: 2px;
     background: rgba(93, 172, 193, 0.2); }
 
+.bug-tag-list ul {
+  padding: 7.5px !important; }
+  .bug-tag-list ul li {
+    padding: 7.5px !important; }
+    .bug-tag-list ul li .chip {
+      margin: 0 !important; }
+
 .preview-container {
   position: relative !important;
   overflow: hidden !important; }
