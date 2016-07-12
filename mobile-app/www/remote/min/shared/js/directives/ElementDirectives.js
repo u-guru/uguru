@@ -151,7 +151,7 @@ angular.module('uguru.shared.directives')
         scope.$watch(function() {
           return element.attr('class');
         }, function(new_classes, old_classes) {
-          if (new_classes.indexOf('on-exit') > -1) {
+          if (new_classes && new_classes.indexOf('on-exit') > -1) {
             element[0].classList.remove('on-exit');
             for (key in elemArgs) {
               if (supportedCommands.indexOf(key) > -1) {
