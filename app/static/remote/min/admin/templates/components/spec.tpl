@@ -140,7 +140,7 @@
     </div>
 
     <!-- DEV TOOLBAR -->
-    <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate u-bounceInUp-subtle' ng-if="spec.toggleDev">
+    <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate bounceInUp-subtle' ng-if="spec.toggleDev">
         <!-- SHORTCUTS -->
         <div id='dev-bar-shortcuts' class="flex full-x animated bg-campus" ng-if='spec.showShortcuts'>
             <div class="bg-lake p15xy flex-center-vertical width-128">
@@ -166,14 +166,25 @@
             </ul>
         </div>
 
+        <div class="flex bg-campus-50p full-x" ng-if='spec.selectedState.active'>
+            <div class="bg-charcoal p15xy flex-center-vertical width-128">
+                <h2 class="txt-18 weight-700"><span class='weight-400'>State:</span class='weight-400'> {{spec.selectedState.stateName}}</h2>
+            </div>
+            <ul class="flex-center-vertical p15-grid overflow-x no-scrollbar" style="width: calc(100% - 128px);">
+                <li ng-repeat='element in spec.selectedState.elements' ng-click='spec.stateTagClicked(state_tag, $index)' on-hold="spec.settings.updateDefaultState($event, $index, state_tag)">
+                    <div ng-class="{'reverse':spec.settings.cache.defaultState.index === $index }" class="bg-moxie height-36 txt-18 radius-2 normal block">{{element.elem.nodeName + ' ' +  element.elem.className}}</div>
+                </li>
+
+            </ul>
+        </div>
         <div class="flex bg-campus-50p full-x" ng-if='spec.showStates'>
             <div class="bg-moxie p15xy flex-center-vertical width-128">
                 <h2 class="txt-18 semibold">States</h2>
             </div>
             <ul class="flex-center-vertical p15-grid overflow-x no-scrollbar" style="width: calc(100% - 128px);">
                 <li ng-repeat='state_tag in spec.stateTags' ng-click='spec.stateTagClicked(state_tag, $index)' on-hold="spec.settings.updateDefaultState($event, $index, state_tag)">
-                    <button ng-if="!state_tag.selector.length && !state_tag.selector.length" ng-class="{'reverse':spec.settings.cache.defaultState.index === $index }" class="bg-moxie height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
-                    <button ng-if="state_tag.selector.length" style='border: 4px dashed white;' data-attr-testing-params="{{state_tag.testing}}" data-attr-selector="{{state_tag.selector}}" ng-class="{'reverse':spec.settings.cache.defaultState.index === $index }" class="bg-moxie height-36 txt-18 radius-2 normal block">{{state_tag.title}}</button>
+                    <button ng-if="!state_tag.selector.length && !state_tag.selector.length" ng-class="{'reverse':spec.settings.cache.defaultState.index === $index }" class="bg-moxie height-36 txt-18 radius-2 normal block">{{state_tag.stateName}} - {{state_tag.elements.length}}</button>
+                    <button ng-if="state_tag.selector.length" style='border: 4px dashed white;' data-attr-testing-params="{{state_tag.testing}}" data-attr-selector="{{state_tag.selector}}" ng-class="{'reverse':spec.settings.cache.defaultState.index === $index }" class="bg-moxie height-36 txt-18 radius-2 normal block">{{state_tag.stateName}} - {{state_tag.elements.length}}</button>
                 </li>
 
             </ul>

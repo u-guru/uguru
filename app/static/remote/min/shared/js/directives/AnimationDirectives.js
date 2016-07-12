@@ -200,7 +200,7 @@ angular.module('uguru.shared.directives')
                 }
               }
               draw()
-            }, delay);
+            }, drawShapesDelay);
           }
         })
       }

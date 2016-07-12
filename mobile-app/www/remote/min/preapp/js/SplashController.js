@@ -22,8 +22,9 @@ angular.module('uguru.preApp', ['ionic'])
 
 
     $scope.$watchCollection(angular.bind(this, function () {
-      return this.state; // `this` IS the `this` above!!
+      return this; // `this` IS the `this` above!!
     }), function (newVal, oldVal) {
+
       // now we will pickup changes to newVal and oldVal
     });
 
@@ -36,7 +37,7 @@ angular.module('uguru.preApp', ['ionic'])
 
       if ($scope.root.devMode) {
           splash.state.nav = true;
-          splash.state.madlib = false;
+          splash.state.madlib = true;
           splash.state.device = false;
           SpecService.initSpec('splash', $scope);
           return;
@@ -44,8 +45,6 @@ angular.module('uguru.preApp', ['ionic'])
 
       portalElem && portalElem.addEventListener('splashMainLoadingComplete', function (e) {
 
-
-        console.log('is NOT in dev mode');
 
         var loaderPortal = document.querySelector('.loader-portal');
         if (loaderPortal) {
@@ -59,6 +58,7 @@ angular.module('uguru.preApp', ['ionic'])
         globalLoader.hide();
         splash.renderView = true;
         splash.state.madlib = true;
+        splash.state.nav = true;
         splash.state.device = false;
         $timeout(function() {
 

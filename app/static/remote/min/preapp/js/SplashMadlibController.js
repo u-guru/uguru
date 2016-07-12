@@ -43,14 +43,20 @@ angular.module('uguru.preApp')
     madlib.returnNormalState = function() {};
 
 
-    madlib.categorySwitch = function() {
-      var elems = document.querySelectorAll('[on-category-switch-exit]')
-      for (var i = 0; i < elems.length; i++) {
-        var elemIndex = elems[i];
-        console.log('on-category-switch-exit-elem', elems[i]);
-        elemIndex.classList.add('on-category-switch-exit');
-      }
-    }
+    // madlib.categorySwitch = function() {
+
+    //   // var elems = document.querySelectorAll('[on-category-switch-exit]')
+    //   // for (var i = 0; i < elems.length; i++) {
+    //   //   var elemIndex = elems[i];
+
+    //   //   elemIndex.classList.add('on-category-switch-exit');
+    //   // }
+    // }
+
+    $scope.$watch('splash.category', function(newVal, oldVal) {
+        madlib.category = newVal;
+        madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
+    })
 
 
     //todo samir

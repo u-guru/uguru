@@ -4,14 +4,39 @@ angular
   '$state',
   '$timeout',
   '$localstorage',
+  'RootService',
   AdminDirectiveService
   ]);
 
-function AdminDirectiveService($state, $timeout, $localstorage) {
+function AdminDirectiveService($state, $timeout, $localstorage, RootService) {
 
 
     return {
-        getAllDirectives: getAllDirectives
+        getAllDirectives: getAllDirectives,
+        getBaseComponents: getBaseComponents,
+        getBaseComponentHtml: getBaseComponentHtml
+    }
+
+    function getBaseComponents() {
+        //todo
+        var baseComponentDict = {
+            input: ['hover', 'focus', 'blur', 'disabled', 'typing', 'typing:valid', 'typing:invalid', 'selected', 'valid', 'invalid', 'invalid:clear', 'default', 'onEnter', 'onExit', 'empty:hover', 'empty:focus', 'empty:blur', 'empty:invalid'],
+            checkbox: ['onLoad', 'onEnter', 'unchecked:hover', 'unchecked:active', 'checked', 'checked:hover', 'checked:active', 'disabled'],
+            radio: ['onExit', 'onLoad', 'onEnter', 'unchecked:hover', 'unchecked:active', 'checked', 'checked:hover', 'checked:active', 'disabled'],
+            toggle: ['default', 'onLoad', 'onEnter', 'onExit', 'checked', 'hover', 'active', 'disabled'],
+            dropdowns: ['info:hover', 'option:active', 'option:disabled', 'option:hover', 'onClose', 'onOpen', ':disabled', ':active', ':hover', 'onExit', 'onEnter', 'onLoad', 'default'],
+            body: ['default', 'onLoad', 'onEnter', 'onEnter-short', 'onExit', 'onExit-short'],
+            header: ['default', 'onEnter', 'onExit', 'onExit-alt'],
+            image: ['default', 'onLoad', 'onEnter', 'onExit', 'broken'],
+            tooltip: ['defaultTop', 'onEnterTop', 'onExitTop', 'onCompleteTop', 'onSwitchTop', 'defaultRight', 'onEnterRight', 'onExitRight', 'onCompleteRight', 'onSwitchRight', 'defaultBottom', 'onEnterBottom', 'onExitBottom', 'onCompleteBottom', 'onSwitchBottom', 'defaultLeft', 'onEnterLeft', 'onExitLeft', 'onCompleteLeft', 'onSwitchLeft'],
+            button: ['default', 'onDrawEnter', 'onEnter', 'onExit', 'onHover', 'onActive', 'defaultLine', 'onDrawEnterLine', 'onEnterLine', 'onExitLine', 'onHoverLine', 'activeLine']
+        }
+        return baseComponentDict
+    }
+
+    function getBaseComponentHtml(input_name) {
+        var base_url = RootService.getBaseUrl() + 'shared/templates/components/base/' + input_name.toLowerCase() + '.tpl';
+        return "<ion-view class='flex-wrap-center full-xy absolute'> <u-" + input_name.toLowerCase() + "></u-" + input_name.toLowerCase() + "> </ion-view>"
     }
 
     function getAllDirectives() {

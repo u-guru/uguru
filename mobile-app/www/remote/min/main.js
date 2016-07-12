@@ -2,7 +2,7 @@ var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var
 
 angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   'uguru.shared.directives', 'uguru.shared.services',
-  'uguru.shared.directives.components', 'uguru.shared.controllers', 'uguru.admin'])
+  'uguru.shared.directives.components', 'uguru.shared.directives.base.components', 'uguru.shared.controllers', 'uguru.admin'])
 
 .run(function($ionicPlatform,
   $state, $ionicHistory, $rootScope,
@@ -86,10 +86,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     resolve: {categoryName: function($stateParams) {
       return $stateParams.categoryName;
     }}
-  })
-  .state('root.base-components', {
-    url:'/dev/admin/components/base',
-    templateUrl: 'admin/templates/components/base.tpl'
   })
   // -- start DEV states
   .state('root.dev-splash-loader', {
@@ -188,7 +184,18 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.loaders-tech', {
     url:'/dev/splash/loaders/tech',
     templateUrl: 'preapp/templates/loaders/tech.html'
-  });
+  })
+  .state('root.base-components', {
+    url:'/dev/base/components/:baseCompName',
+    templateProvider: function(AdminDirectiveService, $stateParams) {
+      var completedComponents = Object.keys(AdminDirectiveService.getBaseComponents());
+      var urlComponentParam = $stateParams.baseCompName;
+      if (completedComponents.indexOf(urlComponentParam.toLowerCase()) > -1) {
+        return AdminDirectiveService.getBaseComponentHtml(urlComponentParam);
+      }
+      return '<div> <span class="weight-700">' +  urlComponentParam + '</span> is not a base component </div>'
+    }
+  })
 
 
   $urlRouterProvider.otherwise('/');

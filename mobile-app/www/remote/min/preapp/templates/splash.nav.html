@@ -1,4 +1,4 @@
-<div ng-controller="SplashNavController as nav" id='splash-nav-bar' on-init="send:[nav-init:delay-500]">
+<div ng-controller="SplashNavController as nav" id='splash-nav-bar' on-init="send:[nav-init:delay-1500]">
     <custom-states when="nav-init">
     </custom-states>
     <div id='splash-desktop-nav' class='full-x'>
@@ -6,13 +6,13 @@
         <!-- <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0 z-index-5' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()'> </a> -->
 
         <!-- Desktop Nav-->
-        <header class='splash-header' id='home-nav-header'>
+        <header class='splash-header' id='home-nav-header' on-init="trigger:[on-enter]" on-enter="prop:[stroke-opacity:1, fill:#CA5497, transition:stroke-opacity 500ms ease-out,fill 2000ms ease-out]">
             <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
 
             <div class="right">
                 <div class="splash-hero-nav desktop m15right">
                     <div class="splash-hero-nav-container">
-                        <dropdown ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"> </dropdown>
+                    <dropdown ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"> </dropdown>
 						<!-- on-hover="prop:[opacity:0]" on-hover-delay="1000" -->
                         <h2>@</h2>
                         <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'> </dropdown>

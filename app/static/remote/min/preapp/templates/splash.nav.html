@@ -1,118 +1,25 @@
-<div ng-controller="SplashNavController as nav" id='splash-nav-bar' on-init="send:[nav-init:children:delay-500]">
+<div ng-controller="SplashNavController as nav" id='splash-nav-bar' on-init="send:[nav-init:delay-1500]">
     <custom-states when="nav-init">
     </custom-states>
     <div id='splash-desktop-nav' class='full-x'>
         <!-- Dropdown overlays -->
         <!-- <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0 z-index-5' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()'> </a> -->
-        <!-- End Dropdown overlays-->
 
         <!-- Desktop Nav-->
         <header class='splash-header' id='home-nav-header'>
-        <!-- <header class='splash-header fixed top-0 left-0 high-z-index magictime opacity-0' id='home-nav-header' class-on-load="vanishIn:anim"> -->
-            <a class="splash-logo svg-logo" init-with="prop:[opacity:0:impt]" when-nav-init="trigger:[on-enter]" on-enter="class:[opacity-1:add:set:(background-color:black)]" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
-            <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="0"
-            class-on-clear="fadeOutUp:animOut"
-            class-on-activate="fadeInDown:anim" -->
+            <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
+
             <div class="right">
                 <div class="splash-hero-nav desktop m15right">
-                    <!-- class-on-activate="u-slideInDown:anim" -->
                     <div class="splash-hero-nav-container">
-                        <dropdown on-hover="prop:[opacity:0]" on-hover-delay="1000" ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"> </dropdown>
-                        <div id="dropdown-categories" class="dropdown-color" ng-if='false'>
-                            <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="150" -->
-                            <!-- <a name='category' class="bg-{{selectedCategory.hex_color}}" ng-click='page.dropdowns.category.toggle()' ng-class="{'active':page.dropdowns.category.active}">
-                    			<span>
-                                    <span>{{selectedCategory.name}}</span>
-                                    <span>{{selectedCategory.name}}</span>
-                                </span>
-                    			<svg viewBox="0 0 100 100">
-                    				<path d="M14,32 L50,68 L86,32"></path>
-                    			</svg>
-                    		</a> -->
-                            <a name='category' class="bg-academic" ng-click='page.dropdowns.category.toggle()' ng-class="{'active':page.dropdowns.category.active}">
-                    			<span>
-                                    <span>Academic</span>
-                                    <span>Academic</span>
-                                </span>
-                    			<svg viewBox="0 0 100 100">
-                    				<path d="M14,32 L50,68 L86,32"></path>
-                    			</svg>
-                    		</a>
-                            <div class="" ng-class="{'u-scaleInDown visible':page.dropdowns.category.active}">
-                                <svg viewBox="0 0 396 38">
-            						<path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
-            					</svg>
-                                <ul>
-                                    <li ng-repeat='category in categories' ng-if='category.id !== selectedCategory.id'>
-                                        <a class="bg-{{category.hex_color}}" ng-click='demoSwitchCategory(category, selectedUniversity)'>
-                                            <span>
-                                                <span>{{category.name}}</span>
-                                                <span>{{category.name}}</span>
-                                            </span>
-                                        </a>
-                                        <svg class="arrow" viewBox="0 0 60 30">
-                                            <path d="M4,26 L30,0 L56,26"></path>
-                                        </svg>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                    <dropdown ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"> </dropdown>
+						<!-- on-hover="prop:[opacity:0]" on-hover-delay="1000" -->
                         <h2>@</h2>
-                        <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="300" -->
                         <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'> </dropdown>
-                        <div id='dropdown-university' class="dropdown-color" ng-if='false'>
-
-                            <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="450" -->
-                            <!-- <a class="color" name='university' ng-click="page.dropdowns.university.toggle()" ng-class="{'active':page.dropdowns.university.active}">
-                                <div class="dropdown-color-bg" style='background-color: {{selectedUniversity.school_color_dark}}'></div>
-                                <span>
-                                    <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
-                                    <span>{{selectedUniversity.short_name || selectedUniversity.name}}</span>
-                                </span>
-                    			<svg viewBox="0 0 100 100">
-                    				<path d="M14,32 L50,68 L86,32"></path>
-                    			</svg>
-                    		</a> -->
-                            <a class="color" name='university' ng-click="page.dropdowns.university.toggle()" ng-class="{'active':page.dropdowns.university.active}">
-                                <div class="dropdown-color-bg" style='background-color: #003262;'></div>
-                                <span>
-                                    <span>UC Berkeley</span>
-                                    <span>UC Berkeley</span>
-                                </span>
-                    			<svg viewBox="0 0 100 100">
-                    				<path d="M14,32 L50,68 L86,32"></path>
-                    			</svg>
-                    		</a>
-                            <div class="" ng-class="{'u-scaleInDown visible':page.dropdowns.university.active}">
-                                <svg viewBox="0 0 396 38">
-            						<path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
-            					</svg>
-                                <ul>
-                                    <li ng-repeat='university in featured_universities' ng-if='selectedUniversity.id !== university.id'>
-                                        <a class="color" ng-click='refreshUniversityState(university)'>
-                                            <div class="dropdown-color-bg" style='background-color: {{university.school_color_dark}}'></div>
-                                            <span>
-                                                <span>{{university.short_name || university.name}}</span>
-                                                <span>{{university.short_name || university.name}}</span>
-                                            </span>
-                                        </a>
-                                        <svg class="arrow" viewBox="0 0 60 30">
-                                            <path d="M4,26 L30,0 L56,26" fill="{{university.school_color_dark}}"></path>
-                                        </svg>
-                                    </li>
-                                    <li>
-                                        <a class="bg-charcoal relative" ng-click="activateUniversitySearch()" class-on-click="null:inject.splash-school-loader-counter|activate, null:inject.splash-school-loader-container|activate, null:inject.adlib-tag|clear">
-                                            <span class="dropdown-color-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/search.html'"></span>
-                                            <span class="p10right"><span>Find Your College</span></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="splash-hero-nav mobile">
-                    <!-- class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="450"
+                    <!-- class-on-load="slideInDown" class-on-load-delay="450"
                     class-on-clear="fadeOutUp:animOut"
                     class-on-activate="fadeInDown:anim" -->
                     <div class="splash-hero-nav-container">
@@ -125,9 +32,9 @@
                         </a>
                     </div>
                 </div>
-                <a id='cta-box-powerups' class="icon-round-stroke" init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown]" on-mouse-enter="prop:[opacity:0]">
+                <a id='cta-box-powerups' class="icon-round-stroke">
+					<!-- init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[opacity:0]" -->
                     <!-- ng-click='activatePowerups()'
-                    class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="600"
                     class-on-click="powerup-activated, null:inject#cta-box-powerups svg|activate, null:inject#cta-modal-powerups|activate"
                     class-on-activate="powerup-activated" class-on-activate-delay="500" -->
                     <div class="full-xy flex-center relative" ng-include="root.base_url + 'shared/templates/components/svg/main/lightning-circle.html'" translate-on-click></div>
