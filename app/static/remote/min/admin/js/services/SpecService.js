@@ -11,10 +11,11 @@ angular
   'UtilitiesService',
   'RootService',
   'AdminWorkflowService',
+  'DirectiveService',
   SpecService
   ]);
 
-function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, KeyboardService, UtilitiesService, RootService, AdminWorkflowService) {
+function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, KeyboardService, UtilitiesService, RootService, AdminWorkflowService, DirectiveService) {
 
     return {
         initSpec: initSpec,
@@ -30,7 +31,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
     function initSpec(param, real_scope) {
         var extraDelay = 0;
         if (window.location.href.split('codepen').length > 1) {
-            extraDelay = 1500;
+            extraDelay = 2500;
         }
         //if its not codepen, it doesn't have dev in it
         if (
@@ -40,6 +41,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             return;
         }
         $timeout(function() {
+
             var workflowObj = AdminWorkflowService.getSingleWorkflow(param);
 
             var scope = real_scope[param];
@@ -47,6 +49,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             var ctrl_path = workflowObj.reference.controllerUrl;
             var states = workflowObj.states;
             var css_path = workflowObj.reference.cssUrl;
+            var parent_controller = workflowObj.reference.parentController;
             var parent_container = workflowObj.parentId;
 
             if (!scope.spec) {
@@ -56,7 +59,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
 
             //checks codepen environment
             // if (window.location.href.split('codepen.io').length > 1) return;
-            var specObj = getSpec(param, template_path, ctrl_path, css_path);
+            var specObj = getSpec(param, template_path, ctrl_path, css_path, parent_controller);
             var callbackFunc = getInstantiateAndInjectFunc(scope, real_scope, specObj, parent_container, param, states)
             getCodepenSpec(specObj.url, callbackFunc)
 
@@ -99,6 +102,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             calcUseCasesCompletedness(specObj.data.use_cases)
             //@gabrielle note
             specObj.data.toggleDev = true;
+            specObj.data.selectedState;
             specObj.data.toggleSpec = false;
             specObj.data.toggleDocs = false;
             specObj.data.toggleDocSearch = false;
@@ -121,7 +125,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             specObj.data.initCodepenData = launchNewCodepen(scope);
             specObj.data.shortcuts_list  = getKeyboardShortcuts()
             $timeout(function() {
-                specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path, specObj.css_path);
+                specObj.data.codepenData = getCodepenData(scope, specObj.data.title, specObj.template_path, specObj.ctrl_path, specObj.css_path, specObj.parent_controller);
             })
             specObj.data.iframeGDoc = iframeGdocFunc($sce.trustAsResourceUrl(specObj.data.gdoc));
             specObj.data.openGDoc = openGDocSpecFunc($sce.trustAsResourceUrl(specObj.data.gdoc));
@@ -249,7 +253,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             }
 
             function launchDocs() {
-                var url = 'https://uguru-rest-test.herokuapp.com/#/admin/docs';
+                var url = 'http://uguru-rest-test.herokuapp.com/#/admin/docs';
                 if (window.location.href.split(':81').length > 1 || window.location.href.split(':5000').length > 1) {
                     url = window.location.href.split('/#/')[0] + '/#/admin/docs';
                 }
@@ -421,7 +425,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
 
     function launchNewCodepen(scope) {
             var title = 'New Uguru Codepen';
-            var base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
+            var base_url = 'http://uguru-rest-test.herokuapp.com/static/remote/min/';
             return {
                 title                 : title,
                 description           : "Most updated version",
@@ -438,8 +442,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
                 js                    : "angular.module('uguru.preApp') .controller('NewCodepenController', ['$scope', '$state', '$timeout', 'SpecService', function($scope, $state, $timeout, SpecService) { var codepen = this; var states = {}; SpecService.initSpec(codepen, $scope, '#codepen-view', 'demo', null, null, states, null);} ])",
                 js_pre_processor      : "none",
                 html_classes          : null,
-                head                  : '<meta charset="utf-8"><meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"><title></title><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script>',
-                css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css;http://codepen.io/teamuguru/pen/ce57163cc68d7c34cc4bc84c985ed993",
+                head                  : '<meta charset="utf-8"><meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"><title></title><script src="http://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script>',
+                css_external          : "http://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css;http://codepen.io/teamuguru/pen/ce57163cc68d7c34cc4bc84c985ed993",
                 js_external           : '',
                 css_pre_processor_lib : null,
                 js_modernizr : null,
@@ -457,7 +461,6 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
         }
         return function() {
             scope.spec.data.docs = {items: RootService.getDocItems(), searchText: ''};
-            console.log('data docs', scope.spec.data.docs);
             scope.spec.data.settings = {cache: localStorageSettings, clear: clearLocalStorage(scope), updateProperty:updateSettingCacheLocalStorage(scope), updateDefaultState:updateDefaultStateLocalStorage(scope)}
             // scope.spec.data.settings.cache.autoApplyState = true;
 
@@ -476,7 +479,6 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
                 var defaultIndex = scope.spec.data.settings.cache.defaultState.index;
                 var defaultState = scope.spec.data.stateTags[defaultIndex];
                 var delayBeforeActivate = scope.spec.data.settings.cache.autoApplyDelay;
-                console.log('should activate this state', defaultState, delayBeforeActivate);
                 if (delayBeforeActivate) {
                     scope.spec.data.stateTagClicked(defaultState, defaultIndex);
                 } else {
@@ -542,12 +544,12 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
         }
     }
 
-    function getCodepenData(scope, title, template_url, ctrl_path, css_path) {
+    function getCodepenData(scope, title, template_url, ctrl_path, css_path, parent_controller) {
         $timeout(function() {
             if (css_path.split(',').length > 1) {
 
             } else {
-                template_url && loadHTMLSpec(scope, template_url, ctrl_path);
+                template_url && loadHTMLSpec(scope, template_url, ctrl_path, parent_controller);
             }
         })
         $timeout(function() {
@@ -556,7 +558,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
         $timeout(function() {
             css_path && loadCssSpec(scope, css_path);
         })
-        var base_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/';
+        var base_url = 'http://uguru-rest-test.herokuapp.com/static/remote/min/';
         return {
             title                 : title,
             description           : "Most updated version",
@@ -573,8 +575,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             js                    : "",
             js_pre_processor      : "none",
             html_classes          : null,
-            head                  : '<meta charset="utf-8"><meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"><title></title><script src="https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script>',
-            css_external          : "https://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css;http://codepen.io/teamuguru/pen/ce57163cc68d7c34cc4bc84c985ed993",
+            head                  : '<meta charset="utf-8"><meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"><title></title><script src="http://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/util/base.js"></script>',
+            css_external          : "http://uguru_admin:wetrackeverything@uguru-rest-test.herokuapp.com/static/remote/min/app.css;http://codepen.io/teamuguru/pen/ce57163cc68d7c34cc4bc84c985ed993",
             js_external           : '',
             css_pre_processor_lib : null,
             js_modernizr : null,
@@ -585,19 +587,18 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
 
 
 
-        function loadHTMLSpec(scope, template_url, controller_url) {
+        function loadHTMLSpec(scope, template_url, controller_url, parent_controller) {
 
             if (window.location.href.split(':8100').length > 1) {
               template_url = window.location.href.split('#/')[0] + template_url;
             } else {
-              template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + template_url;
+              template_url = 'http://uguru-rest-test.herokuapp.com/static/remote/min/' + template_url;
             }
-            console.log(template_url);
             var xhr = new XMLHttpRequest();
             xhr.open( 'GET', template_url, true );
 
             xhr.onload = function () {
-                scope.spec.data.codepenData.html = wrapMinUguruHtml(xhr.responseText, controller_url);
+                scope.spec.data.codepenData.html = wrapMinUguruHtml(xhr.responseText, controller_url, parent_controller);
             };
             xhr.send();
         }
@@ -607,9 +608,8 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             if (window.location.href.split(':8100').length > 1) {
               template_url = window.location.href.split('#/')[0] + controller_url;
             } else {
-              template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + controller_url;
+              template_url = 'http://uguru-rest-test.herokuapp.com/static/remote/min/' + controller_url;
             }
-            console.log(template_url);
             var xhr = new XMLHttpRequest();
             xhr.open( 'GET', template_url, true );
 
@@ -626,7 +626,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             if (window.location.href.split(':8100').length > 1) {
               template_url = window.location.href.split('#/')[0] + css_url;
             } else {
-              template_url = 'https://uguru-rest-test.herokuapp.com/static/remote/min/' + css_url;
+              template_url = 'http://uguru-rest-test.herokuapp.com/static/remote/min/' + css_url;
             }
             var xhr = new XMLHttpRequest();
             xhr.open( 'GET', template_url, true );
@@ -637,14 +637,17 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             xhr.send();
         }
 
-        function wrapMinUguruHtml(response_html, relative_ctrl_url) {
-            var result = '<body ng-app="uguru" animation="slide-left-right-ios7" > <script>var portalElem;</script> <ui-view id="uguru-view"> <script type="text/ng-template" id="demo.html"> ' + response_html +'</script> </ui-view> <script src="https://uguru-rest-test.herokuapp.com/static/remote/min/' + relative_ctrl_url + '"></script> </body>'
+        function wrapMinUguruHtml(response_html, relative_ctrl_url, parent_controller) {
+            if (parent_controller) {
+                response_html = '<div class="full-xy" ng-controller="' + parent_controller + '">' + response_html + '</div>'
+            }
+            var result = '<body ng-app="uguru" animation="slide-left-right-ios7" > <script>var portalElem;</script> <ui-view id="uguru-view"> <script type="text/ng-template" id="demo.html"> ' + response_html +'</script> </ui-view> <script src="http://uguru-rest-test.herokuapp.com/static/remote/min/' + relative_ctrl_url + '"></script> </body>'
             return result;
         }
 
     }
 
-    function getSpecObj(spec_id, template_url, ctrl_url, css_url) {
+    function getSpecObj(spec_id, template_url, ctrl_url, css_url, parent_controller) {
         var url = template_url && constructCodepenUrl(spec_id);
         return {
             open: openCodepenSpecFunc(url),
@@ -652,6 +655,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             ctrl_path: ctrl_url,
             css_path: css_url,
             template_path: template_url,
+            parent_controller: parent_controller,
             data: {}
         }
 
@@ -662,10 +666,44 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             }
         }
         function constructCodepenUrl(spec_id) {
-            return "https://codepen.io/teamuguru/pen/" + spec_id;
+            return "http://codepen.io/teamuguru/pen/" + spec_id;
         }
 
 
+    }
+
+    function parseCustomStates(parent_container) {
+        var defaultOnStates = DirectiveService.getSupportedOnStates().slice()
+        var defaultAsStates = DirectiveService.getSupportedAsStates().slice();
+        var defaultCustomStates = ['when', 'as'];
+        var queryStates = defaultOnStates.concat(defaultAsStates);
+
+        var customStatesElem = parent_container.parentNode.querySelectorAll('custom-states');
+        for (var i = 0; i < customStatesElem.length; i++) {
+            var indexCustomElem = customStatesElem[i];
+            for (var j = 0; j < defaultCustomStates.length; j++) {
+                    customStateAttr = angular.element(indexCustomElem).attr(defaultCustomStates[j]);
+                    if (customStateAttr) {
+                        queryStates.push(defaultCustomStates[j] + '-' + customStateAttr);
+                    }
+            }
+        }
+        var uniqueElemArr = {};
+        var stateDict = {};
+        for (var i = 0; i < queryStates.length; i++) {
+            var indexQuery = queryStates[i];
+            var indexDict = {};
+            var queryArr = [];
+            var elements = parent_container.parentNode.querySelectorAll('[' + indexQuery + ']');
+            if (elements && elements.length) {
+                stateDict[indexQuery] = [];
+                for (var j = 0; j < elements.length; j++) {
+                    var indexElement = elements[j];
+                    stateDict[indexQuery].push({elem: indexElement, attr: {key: indexQuery, attrValue: indexElement.getAttribute(indexQuery)}})
+                }
+            }
+        }
+        return stateDict;
     }
 
     function generateDropdownFromStates(states, parent_container, scope, param) {
@@ -674,7 +712,10 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
         var elemStateArr = [];
         var parentContainer = document.querySelector(parent_container);
         if (parentContainer) {
-            // var elementsWithStates = parentContainer.querySelectorAll('[elem-states]');
+            var elementsWithStates = parseCustomStates(parentContainer)|| [];
+            for (state in elementsWithStates) {
+                dropdownArr.push({stateName: state, elements: elementsWithStates[state]})
+            }
 
             // for (var i = 0; i < elementsWithStates.length; i++) {
             //     var indexElemWithState = elementsWithStates[i];
@@ -697,18 +738,18 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             //     }
             // }
         }
-        for (key in states) {
-            dropdownArr.push({title:states[key]['title'], state: states[key], selector:states[key]['selector'] || '', testing: states[key]['testing'] || '', parent_elem: parent_container, parent_scope: scope})
-        }
+        // for (key in states) {
+        //     dropdownArr.push({title:states[key]['title'], state: states[key], selector:states[key]['selector'] || '', testing: states[key]['testing'] || '', parent_elem: parent_container, parent_scope: scope})
+        // }
         for (var i = 0; i < elemStateArr.length; i++) {
             elemStateArr[i].parent_elem = parent_container;
             elemStateArr[i].parent_scope = scope;
             elemStateArr[i].is_elem_state = true;
             dropdownArr.push(elemStateArr[i]);
         }
-        dropdownArr.sort(function(state_1, state_2) {
-            return (state_2.priority) - (state_1.priority || 0)
-        })
+        // dropdownArr.sort(function(state_1, state_2) {
+        //     return (state_2.priority) - (state_1.priority || 0)
+        // })
         var result = {
             label: 'toggle states',
             options: dropdownArr,
@@ -725,6 +766,11 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
 
         function applyDropdownAction(param) {
             return function(option, index) {
+                scope[param]['spec'].data.selectedState = option;
+                scope[param]['spec'].data.selectedState.active = true;
+                console.log(scope[param]['spec'].data.selectedState.elements);
+                scope[param]['spec'].data.showStateElememts = true;
+                return;
                 if (option.title === 'onInit') {
                     window.location.reload(true);
                 } else if (option.title.toLowerCase().indexOf('onclick') > -1) {
@@ -803,12 +849,12 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
       xhr.send();
     }
 
-    function getSpec(_id, template_url, ctrl_url, css_path) {
+    function getSpec(_id, template_url, ctrl_url, css_path, parent_controller) {
         var specTokens = {'calendar': 'ddd2f97039f2fec817d52499dd3c00ac', 'madlib': '5c0ecd57c10973ddfe65af113522a809', 'jeselle': '98f138f534428eb8af27ea5c2b6944ef', 'gabrie': '9d8ddaef35241c63a3a95032485bf645'};
         if (Object.keys(specTokens).indexOf(_id) > -1) {
-            return getSpecObj(specTokens[_id], template_url, ctrl_url, css_path)
+            return getSpecObj(specTokens[_id], template_url, ctrl_url, css_path, parent_controller)
         } else {
-            return getSpecObj('98f138f534428eb8af27ea5c2b6944ef', template_url, ctrl_url, css_path)
+            return getSpecObj('98f138f534428eb8af27ea5c2b6944ef', template_url, ctrl_url, css_path, parent_controller)
         }
     }
 

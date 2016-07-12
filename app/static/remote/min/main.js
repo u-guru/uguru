@@ -2,7 +2,7 @@ var LOCAL = true; _startpage = 'calendar'; var FIRST_PAGE='^.' + _startpage; var
 
 angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   'uguru.shared.directives', 'uguru.shared.services',
-  'uguru.shared.controllers', 'uguru.admin'])
+  'uguru.shared.directives.components', 'uguru.shared.directives.base.components', 'uguru.shared.controllers', 'uguru.admin'])
 
 .run(function($ionicPlatform,
   $state, $ionicHistory, $rootScope,
@@ -21,6 +21,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     'https://docs.google.com/**',
     'http://bouncejs.com/**',
     'http://cubic-bezier.com/**',
+    'http://codepen.io/**'
   ]);
 
   $httpProvider.useApplyAsync(true);
@@ -86,15 +87,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       return $stateParams.categoryName;
     }}
   })
-  .state('root.base-components', {
-    url:'/dev/admin/components/base',
-    templateUrl: 'admin/templates/components/base.tpl'
-  })
   // -- start DEV states
   .state('root.dev-splash-loader', {
     url:'/dev/splash/loader',
-    templateUrl: 'preapp/templates/loaders/main.html',
-    controller: 'SplashLoaderController'
+    templateUrl: 'preapp/templates/loaders/main.html'
   })
   .state('root.dev-splash-nav', {
     url:'/dev/splash/nav',
@@ -169,14 +165,37 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/gabrielle',
     templateUrl: 'gabrielle/templates/index.html',
   })
+  .state('root.playground', {
+    url:'/dev/admin/playground',
+    templateUrl: 'admin/templates/playground.html',
+  })
   .state('root.demos', {
     url:'/dev/demos',
     templateUrl: 'admin/templates/demos.html',
   })
+  .state('root.guru-head', {
+    url:'/dev/guru-head',
+    templateUrl: 'shared/templates/components/guru-head/main.html',
+  })
   .state('root.loaders', {
     url:'/dev/splash/loaders',
     templateUrl: 'preapp/templates/loaders/main.html'
-  });
+  })
+  .state('root.loaders-tech', {
+    url:'/dev/splash/loaders/tech',
+    templateUrl: 'preapp/templates/loaders/tech.html'
+  })
+  .state('root.base-components', {
+    url:'/dev/base/components/:baseCompName',
+    templateProvider: function(AdminDirectiveService, $stateParams) {
+      var completedComponents = Object.keys(AdminDirectiveService.getBaseComponents());
+      var urlComponentParam = $stateParams.baseCompName;
+      if (completedComponents.indexOf(urlComponentParam.toLowerCase()) > -1) {
+        return AdminDirectiveService.getBaseComponentHtml(urlComponentParam);
+      }
+      return '<div> <span class="weight-700">' +  urlComponentParam + '</span> is not a base component </div>'
+    }
+  })
 
 
   $urlRouterProvider.otherwise('/');

@@ -1,5 +1,9 @@
 @import '../../../../../shared/css/scss/partials/mixin';
 
+.impact-label {
+	transform-origin: left center;
+}
+
 .splash-up-circle {
 	@include flex;
 	@include flex-center;

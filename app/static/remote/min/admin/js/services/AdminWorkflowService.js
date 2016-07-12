@@ -103,7 +103,8 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                     controllerUrl: 'preapp/js/SplashNavController.js',
                     templateUrl: 'preapp/templates/splash.nav.html',
                     routeUrl: 'dev/splash/nav',
-                    cssUrl: 'preapp/css/scss/partials/splash/_headers.scss'
+                    cssUrl: 'preapp/css/scss/partials/splash/_headers.scss',
+                    parentController: 'SplashController as splash'
                 },
                 states: [
                   {title: 'onEnterSidebarIcon', description: 'Entrance of sidebar icon', functional:false, animated:false, tested:false},
@@ -385,9 +386,12 @@ function AdminWorkflowService($state, $timeout, $localstorage, $window) {
                   cssUrl: 'preapp/css/scss/preapp.scss'
                 },
                 states: [
-                  {title: 'onActivateSplashMadlib', selector:'#splash-madlib', description: 'Activate splash madlib',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
-                  {title: 'onActivateSplashDevice', selector:'#splash-device-container', description: 'Activate splash device',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
-                  {title: 'onActivateSplashNav', selector:'#splash-nav-bar', description: 'Activate splash nav',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
+                  {title: 'onInit', selector:'#splash-madlib', description: 'Activate splash madlib',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
+                  {title: 'onEnter', selector:'#splash-madlib', description: 'Check splash madlib is visible',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
+                  {title: 'onInit', selector:'#splash-device-container', description: 'Activate splash device',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
+                  {title: 'onEnter', selector:'#splash-device-container', description: 'Check splash device is visible',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
+                  {title: 'onInit', selector:'#splash-nav-bar', description: 'Activate splash nav',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}},
+                  {title: 'onEnter', selector:'#splash-nav-bar', description: 'Check splash nav is visible',  functional:false, animated:{micro: false, macro:false}, tested:{init: false, activated: false, properties:false}}
                 ]
               }
             ]

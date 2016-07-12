@@ -209,7 +209,7 @@ gulp.task('compile-base-js', function(done) {
       'gabrielle/js/*.js',
 
       //admin/service
-      'admin/js/AdminAnimToolService.js',
+      'admin/js/services/AdminAnimToolService.js',
       'admin/js/*.js',
       'admin/js/**/*.js',
       //shared ctrl
@@ -249,7 +249,7 @@ gulp.task('compile-js', function(done) {
       'gabrielle/js/*.js',
 
       //admin/service
-      'admin/js/AdminAnimToolService.js',
+      'admin/js/services/AdminAnimToolService.js',
       'admin/js/*.js',
       'admin/js/**/*.js',
       //shared ctrl

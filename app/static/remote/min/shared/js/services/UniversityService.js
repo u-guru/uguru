@@ -158,7 +158,7 @@ angular.module('uguru.shared.services')
             }, 0);
         },
         getTargetted: function() {
-            return targettedUniversities.sort(function(a, b){return a.rank-b.rank});;
+            return targettedUniversities.sort(function(a, b){ return a.rank-b.rank});;
         },
         getTargettedAccessCodes: function(){
             var allAccessCodes = [];

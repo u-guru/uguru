@@ -27,44 +27,6 @@ angular.module('uguru.shared.directives')
     }
   }
 })
-
-.directive('onHover', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
-  return {
-    restrict: 'A',
-    link: function(scope, element, attr) {
-      var inTimeout = false;
-      var hoverAnim = attr.onHover.split(':')[0];
-      var hoverDelay = 250;
-      if (attr.onHover.split(':').length === 2 && attr.onHover.indexOf('delay-') > -1) {
-        hoverDelay = parseInt(attr.onHover.split(':')[1].replace('delay-', ''));
-      }
-      scope.$watch(function() {
-          return element.attr('class');
-        }, function(new_class) {
-          if (!new_class) {
-            element[0].className = ''
-          }
-          if (new_class && new_class.indexOf('activate-hover') > -1) {
-            element[0].classList.remove('activate-hover');
-            AnimationService.animateIn(element[0], hoverAnim, null);
-          }
-
-        })
-      element.on('mouseover', function () {
-        inTimeout = true;
-        $timeout(function () {
-          if (inTimeout) {
-            AnimationService.animateIn(element[0], hoverAnim, null);
-            scope.$apply();
-          }
-        }, 250 + hoverDelay);
-      });
-       element.on('mouseleave', function () {
-        inTimeout = false;
-      });
-    }
-  }
-}])
 .directive('tracePath', ['$timeout', 'SVGService', '$compile', '$rootScope', function ($timeout, SVGService, $compile, $rootScope) {
   return {
     restrict: 'A',
@@ -238,7 +200,7 @@ angular.module('uguru.shared.directives')
                 }
               }
               draw()
-            }, delay);
+            }, drawShapesDelay);
           }
         })
       }
@@ -934,6 +896,43 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
             }
           }
 }])
+// .directive('onHover', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
+//   return {
+//     restrict: 'A',
+//     link: function(scope, element, attr) {
+//       var inTimeout = false;
+//       var hoverAnim = attr.onHover.split(':')[0];
+//       var hoverDelay = 250;
+//       if (attr.onHover.split(':').length === 2 && attr.onHover.indexOf('delay-') > -1) {
+//         hoverDelay = parseInt(attr.onHover.split(':')[1].replace('delay-', ''));
+//       }
+//       scope.$watch(function() {
+//           return element.attr('class');
+//         }, function(new_class) {
+//           if (!new_class) {
+//             element[0].className = ''
+//           }
+//           if (new_class && new_class.indexOf('activate-hover') > -1) {
+//             element[0].classList.remove('activate-hover');
+//             AnimationService.animateIn(element[0], hoverAnim, null);
+//           }
+
+//         })
+//       element.on('mouseover', function () {
+//         inTimeout = true;
+//         $timeout(function () {
+//           if (inTimeout) {
+//             AnimationService.animateIn(element[0], hoverAnim, null);
+//             scope.$apply();
+//           }
+//         }, 250 + hoverDelay);
+//       });
+//        element.on('mouseleave', function () {
+//         inTimeout = false;
+//       });
+//     }
+//   }
+// }])
 
 
 
@@ -1034,3 +1033,4 @@ function parseElemStateAttrValueArgs(arg_arr) {
     }
     return resultDict;
   }
+

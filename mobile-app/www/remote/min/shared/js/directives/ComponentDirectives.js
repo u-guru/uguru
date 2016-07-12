@@ -1,4 +1,5 @@
-angular.module('uguru.shared.directives')
+angular.module('uguru.shared.directives.components', []);
+angular.module('uguru.shared.directives.components')
     .directive("tag", ['$compile', '$timeout', 'RootService', function($compile, $timeout, RootService) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'splash') {
@@ -11,7 +12,6 @@ angular.module('uguru.shared.directives')
             }
 
         }
-
         return {
             templateUrl: getTemplateURL,
             args:'abc',
@@ -64,7 +64,7 @@ angular.module('uguru.shared.directives')
             }
         }
     }])
-    .directive("dropdown", ['$timeout', 'RootService', function($timeout, RootService) {
+    .directive("dropdown", ['$timeout', 'RootService', 'UtilitiesService', function($timeout, RootService, UtilitiesService) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'color') {
                 return RootService.getBaseUrl() + 'shared/templates/components/templates/nav/color.tpl'
@@ -75,12 +75,13 @@ angular.module('uguru.shared.directives')
         return {
             templateUrl: getTemplateURL,
             scope: {
-                dropdown: '=ngModel'
+                dropdown: '=ngModel',
                     // tests:'=testArr',
             },
             replace: true,
             restrict: 'E',
-            link: function(scope, element, attr) {
+            link: {pre: function(scope, element, attr) {
+                scope.root = scope.$parent.root;
                 if (!scope.size) {
                     scope.size = 'small';
                 }
@@ -88,6 +89,16 @@ angular.module('uguru.shared.directives')
                     scope.type = 'color';
                 } else {
                     scope.type = '';
+                }
+                if ('colorKey' in attr && attr.colorKey.length) {
+                    var stripCharArr = ['[', ']', "'", '"', " "];
+                    var strippedColorKeys = UtilitiesService.removeAllOccurrancesArr(attr.colorKey, stripCharArr)
+                    if (strippedColorKeys && strippedColorKeys.length) {
+                        strippedColorKeys = strippedColorKeys.split(',');
+                    }
+                    if (strippedColorKeys) {
+                        scope.colorKey = strippedColorKeys;
+                    }
                 }
                 scope.click = function(option, index) {
 
@@ -110,6 +121,7 @@ angular.module('uguru.shared.directives')
                         scope.dropdown.onToggle(scope.dropdown.active);
                     }
                 }
+            }
             }
         };
     }])
@@ -136,42 +148,42 @@ angular.module('uguru.shared.directives')
             }
         }
 }])
-.directive("userIcon", ['$compile', function($compile) {
-        return {
-            templateUrl: BASE + 'templates/elements/components/info/user.icon.tpl',
-            scope: {
-                url: '=url',
-                size: '=size'
-            },
-            replace: true,
-            restrict: 'E',
-            link: function(scope, element, attr) {
-                scope.size =  scope.size || attr.size || 'small';
-                scope.url =  scope.url || attr.url || 'https://uguru.me/static/remote/img/avatar.svg';
-                if (scope.size && scope.size === 'small') {
-                    scope.size = '32'
-                } else if (scope.size && scope.size === 'medium') {
-                    scope.size = '64'
-                }
-                if (!scope.url || !scope.url.length) {
-                    scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
-                }
-                var request = new XMLHttpRequest();
-                request.open('GET', scope.url, true);
-                request.onreadystatechange = function() {
-                    if (request.readyState === 4) {
-                        if (request.status === 404) {
-                            scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
-                            // element.attr('url',scope.url);
-                            // $compile(element.contents())(scope);
-                            // scope.$apply();
-                            // console.log('Check',scope.url, typeof(scope.url))
+// .directive("userIcon", ['$compile', function($compile) {
+//         return {
+//             templateUrl: BASE + 'templates/elements/components/info/user.icon.tpl',
+//             scope: {
+//                 url: '=url',
+//                 size: '=size'
+//             },
+//             replace: true,
+//             restrict: 'E',
+//             link: function(scope, element, attr) {
+//                 scope.size =  scope.size || attr.size || 'small';
+//                 scope.url =  scope.url || attr.url || 'https://uguru.me/static/remote/img/avatar.svg';
+//                 if (scope.size && scope.size === 'small') {
+//                     scope.size = '32'
+//                 } else if (scope.size && scope.size === 'medium') {
+//                     scope.size = '64'
+//                 }
+//                 if (!scope.url || !scope.url.length) {
+//                     scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
+//                 }
+//                 var request = new XMLHttpRequest();
+//                 request.open('GET', scope.url, true);
+//                 request.onreadystatechange = function() {
+//                     if (request.readyState === 4) {
+//                         if (request.status === 404) {
+//                             scope.url = 'https://uguru.me/static/remote/img/avatar.svg';
+//                             // element.attr('url',scope.url);
+//                             // $compile(element.contents())(scope);
+//                             // scope.$apply();
+//                             // console.log('Check',scope.url, typeof(scope.url))
 
-                        }
-                    }
-                };
-                // request.send()
+//                         }
+//                     }
+//                 };
+//                 // request.send()
 
-            }
-        };
-    }])
+//             }
+//         };
+//     }])

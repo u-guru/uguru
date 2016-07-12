@@ -1,0 +1,49 @@
+<ion-view id='splash-view' class='bg-charcoal' ng-controller='SplashController as splash'>
+    <!-- <ion-content class='relative full-xy' > -->
+        <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()" elem-states="[category-change]">
+            <section id='splash-home' class='splash-hero'>
+
+                <div on-init="opacity:0" ng-if="splash.state.nav" ng-include src="root.base_url + 'preapp/templates/splash.nav.html'" include-replace>
+                </div>
+
+                <div ng-if="splash.state.sidebar" ng-include src="root.base_url + 'preapp/templates/splash.sidebar.html'" include-replace>
+                </div>
+
+
+                <!-- device -->
+                <div  ng-if="splash.state.device"  ng-include src="root.base_url + 'preapp/templates/splash.device.html'" include-replace>
+                </div>
+
+                <!-- Madlib -->
+                <div dont-render ng-if="splash.state.madlib" ng-include src="root.base_url + 'preapp/templates/splash.madlib.html'" include-replace>
+                </div>
+
+                <!-- Map -->
+                <div dont-render ng-if="splash.state.map" ng-include src="root.base_url + 'preapp/templates/splash.map.html'" include-replace>
+                </div>
+
+            </section>
+        </main>
+    <!-- </ion-content> -->
+</ion-view>
+
+<!-- <ion-view class='flex-vertical flex-stretch flex-wrap full-xy bg-smoke' ng-controller='AdminPlaygroundController as playground'>
+    <header class='p15-grid bg-charcoal full-x flex-stretch'>
+        <a ng-repeat='section in playground.sections' class='p20xy' ng-class='{"bg-moxie weight-700":playground.activeSection.id === $index, "opacity-50": playground.activeSection.id === $index}' ng-click="playground.updateActiveSection(section)">
+                {{section.title}}
+        </a>
+    </header>
+    <main class='flex-wrap-center full-x'>
+        <div class='width-50p full-y txt-charcoal flex-vertical flex-stretch flex-wrap'>
+            <div class='full-x'>
+                {{playground.activeSection}}
+            </div>
+            <div class='bg-azure full-x'>
+                <h1 class='full-x p15-grid txt-6 txt-center weight-700'> Code </h1>
+                <div> </div>
+            </div>
+        </div>
+        <div class='width-50p'>
+        </div>
+    </main>
+</ion-view> -->
