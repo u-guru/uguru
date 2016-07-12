@@ -6,7 +6,7 @@
         <!-- <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0 z-index-5' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()'> </a> -->
 
         <!-- Desktop Nav-->
-        <header class='splash-header' id='home-nav-header'>
+        <header class='splash-header' id='home-nav-header' on-init="trigger:[on-enter]" on-enter="prop:[stroke-opacity:1, fill:#CA5497, transition:stroke-opacity 500ms ease-out,fill 2000ms ease-out]">
             <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
 
             <div class="right">

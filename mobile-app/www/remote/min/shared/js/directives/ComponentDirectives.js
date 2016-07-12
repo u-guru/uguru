@@ -76,6 +76,7 @@ angular.module('uguru.shared.directives.components')
             templateUrl: getTemplateURL,
             scope: {
                 dropdown: '=ngModel',
+                onClick: '=onClickEval'
                     // tests:'=testArr',
             },
             replace: true,

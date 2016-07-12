@@ -46,8 +46,6 @@ angular.module('uguru.preApp', ['ionic'])
       portalElem && portalElem.addEventListener('splashMainLoadingComplete', function (e) {
 
 
-        console.log('is NOT in dev mode');
-
         var loaderPortal = document.querySelector('.loader-portal');
         if (loaderPortal) {
           loaderPortal.style.display = 'none';
