@@ -546,7 +546,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
 
     function getCodepenData(scope, title, template_url, ctrl_path, css_path, parent_controller) {
         $timeout(function() {
-            if (css_path.split(',').length > 1) {
+            if (css_path && css_path.split(',').length > 1) {
 
             } else {
                 template_url && loadHTMLSpec(scope, template_url, ctrl_path, parent_controller);

@@ -198,7 +198,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function processSendSecondaryArgs(msg_name, arg) {
-
+        if (!arg) {
+          arg = 'public'
+        }
         return arg.trim();
       }
 
@@ -210,7 +212,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function processCSSPropValue(name, value, prop_dict, orig_str) {
-      if (value && value.indexOf('#') > -1) {
+      //2nd arg of if --> fill:#;
+      if (value && value.indexOf('#') > -1 && value.indexOf(':#') === -1) {
         value = value && UtilitiesService.replaceAll(value, '#', ',');
       }
       name = (name && name.trim()) || '';
