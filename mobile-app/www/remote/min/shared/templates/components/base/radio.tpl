@@ -1,6 +1,6 @@
-<div class="absolute full-xy top-0 left-0 flex-center-wrap">
-    <ul>
-        <li>
+<div class="base-components absolute full-xy top-0 left-0 flex-center-wrap bg-charcoal overflow-auto">
+	<ul class="p15xy">
+        <li class="flex">
             <div class="checkbox-container">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
@@ -26,7 +26,7 @@
                 <label for="radio-item">Default</label>
             </div>
         </li>
-        <li>
+        <li class="flex">
             <div class="checkbox-container">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
@@ -52,7 +52,7 @@
                 <label for="radio-item">onLoad</label>
             </div>
         </li>
-        <li>
+        <li class="flex">
             <div class="checkbox-container">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
@@ -78,7 +78,7 @@
                 <label for="radio-item">onEnter</label>
             </div>
         </li>
-        <li>
+        <li class="flex">
             <div class="checkbox-container">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
@@ -104,7 +104,7 @@
                 <label for="radio-item">onExit</label>
             </div>
         </li>
-        <li>
+        <li class="flex">
             <div class="checkbox-container">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
@@ -130,7 +130,7 @@
                 <label for="radio-item">:unchecked:hover</label>
             </div>
         </li>
-        <li>
+        <li class="flex">
             <div class="checkbox-container">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
@@ -156,7 +156,7 @@
                 <label for="radio-item">:unchecked:active</label>
             </div>
         </li>
-        <li>
+        <li class="flex">
             <div class="checkbox-container">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
@@ -182,7 +182,7 @@
                 <label for="radio-item">:checked</label>
             </div>
         </li>
-        <li>
+        <li class="flex">
             <div class="checkbox-container">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
@@ -208,7 +208,7 @@
                 <label for="radio-item">:checked:hover</label>
             </div>
         </li>
-        <li>
+        <li class="flex">
             <div class="checkbox-container">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
@@ -234,7 +234,7 @@
                 <label for="radio-item">:checked:active</label>
             </div>
         </li>
-        <li>
+        <li class="flex">
             <div class="checkbox-container">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>

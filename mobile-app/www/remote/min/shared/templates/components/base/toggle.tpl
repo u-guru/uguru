@@ -1,7 +1,7 @@
-<div class="absolute full-xy top-0 left-0 flex-center-wrap">
-    <ul>
-        <li>
-            <div class="checkbox-container">
+<div class="base-components absolute full-xy top-0 left-0 flex-center-wrap bg-charcoal overflow-auto">
+	<ul class="p15-grid">
+        <li class="flex">
+            <div class="checkbox-container m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -38,8 +38,8 @@
                 <div class="toggle-label">Default</div>
             </div>
         </li>
-        <li>
-            <div class="checkbox-container">
+        <li class="flex">
+            <div class="checkbox-container m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -75,8 +75,8 @@
                 <div class="toggle-label">onLoad</div>
             </div>
         </li>
-        <li>
-            <div class="checkbox-container">
+        <li class="flex">
+            <div class="checkbox-container m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -112,8 +112,8 @@
                 <div class="toggle-label">onEnter</div>
             </div>
         </li>
-        <li>
-            <div class="checkbox-container">
+        <li class="flex">
+            <div class="checkbox-container m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -149,8 +149,8 @@
                 <div class="toggle-label">onExit</div>
             </div>
         </li>
-        <li>
-            <div class="checkbox-container">
+        <li class="flex">
+            <div class="checkbox-container m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -186,8 +186,8 @@
                 <div class="toggle-label">:checked</div>
             </div>
         </li>
-        <li>
-            <div class="checkbox-container">
+        <li class="flex">
+            <div class="checkbox-container m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -223,8 +223,8 @@
                 <div class="toggle-label">:hover</div>
             </div>
         </li>
-        <li>
-            <div class="checkbox-container">
+        <li class="flex">
+            <div class="checkbox-container m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -260,8 +260,8 @@
                 <div class="toggle-label">:active</div>
             </div>
         </li>
-        <li>
-            <div class="checkbox-container">
+        <li class="flex">
+            <div class="checkbox-container m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
