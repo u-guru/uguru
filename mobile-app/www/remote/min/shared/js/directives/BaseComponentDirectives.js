@@ -88,7 +88,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive("uRadioInput", ["RootService", function(RootService) {
+    .directive("uRadio", ["RootService", function(RootService) {
         return {
             templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/radio.tpl',
             restrict: 'E',
