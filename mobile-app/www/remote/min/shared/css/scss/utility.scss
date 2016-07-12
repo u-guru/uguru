@@ -524,7 +524,7 @@ button, input, textarea {
 	}
 }
 [class*="padding-none"] {
-	padding: 0;
+	padding: 0!important;
 }
 [class*="padding-15-half"], [class*="p7-5"] {
 	padding: 7.5px;
@@ -1089,6 +1089,9 @@ button, input, textarea {
 	}
 	&[class*="-space-between"] {
 		@include prefix(justify-content, space-between!important, webkit);
+	}
+	&[class*="-stretch-y"] {
+		@include prefix(align-content, stretch!important, webkit);
 	}
 }
 .flex-grow {

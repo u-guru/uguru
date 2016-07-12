@@ -6,38 +6,37 @@
                 <h2 class="p10y-p15x bg-robin txt-white txt-24 semibold txt-center radius-2-top">Directive Notes</h2>
                 <dl class="txt-slate">
                     <div>
-                        <h1 class="semibold txt-center p15xy flex-center">
-                            <span>
-                                <h2> Default States: </h2>
-                            </span>
-                            <span ng-repeat="state in docs.stateDirectives.states" class="block p05y-p10x radius-2 txt-3 m15-right bg-charcoal m20x txt-white">{{state.name}}</span>
-                        </h1>
+                        <div class="semibold txt-center p15xy flex-center">
+                            <h2>Default States:</h2>
+                            <ul class="flex-wrap p15-grid">
+								<li ng-repeat="state in docs.stateDirectives.states"><span class="block p10y-p15x radius-2 txt-3 bg-slate txt-white">{{state.name}}</span></li>
+							</ul>
+                        </div>
                     </div>
-                    <div ng-repeat="arg in docs.stateDirectives.state_args">
-                        <dt class="flex-stretch">
-                            <div class="block p05y-p10x radius-2 bg-azure txt-white m10right weight-800">
-                                {{arg.name}}:
+                    <div class="flex-start" ng-repeat="arg in docs.stateDirectives.state_args">
+                        <dt>
+                            <div class="radius-2 bg-slate padding-none full-x">
+								<div class="bg-cobalt-25p radius-2 flex-center-vertical-left full-x">
+									<h2 class="black txt-24" style="padding: 7.5px 0px 7.5px 7.5px">{{arg.name}}:</h2>
+									<ul class="flex-wrap p15-grid">
+										<li class="flex-center" ng-repeat="option in arg.options">
+											<span class="p10x-p05y txt-2 radius-2 bg-moxie semibold">{{option}}</span>
+										</li>
+									</ul>
+								</div>
                             </div>
-                            <div class='full-x'>
-                                <div class="p05xy txt-2 radius-2 bg-azure txt-white m10right" ng-repeat="option in arg.options">
-                                    {{option}}
-                                </div>
-                            </div>
-
                         </dt>
                         <dd>
-                            <div class='flex-stretch full-x bg-slate-20p'>
-                                <div class='full-x txt-slate flex-stretch'>
-                                    <div class='flex-wrap-center'>
-                                        <h1 class='txt-4 uppercase weight-700'> {{arg.full_name}}:</h1>
-                                    </div>
-                                    <div class='flex-wrap-center txt-left full-x'>
-                                         {{arg.description}}
-                                    </div>
+                            <div class='bg-slate-05p radius-2-top flex-start txt-slate'>
+                                <div>
+                                    <h1 class='txt-4 uppercase weight-700'> {{arg.full_name}}:</h1>
+                                </div>
+                                <div class='flex-wrap txt-left full-x'>
+                                     {{arg.description}}
                                 </div>
                             </div>
-                            <div class='full-x txt-slate flex-stretch block bg-charcoal txt-moxie'>
-                                    <pre class='text-center weight-600'> {{arg.syntax}} </pre>
+                            <div class='bg-charcoal txt-moxie flex-left radius-2-bottom'>
+                                <pre class='source-code txt-14 weight-600'> {{arg.syntax}} </pre>
                             </div>
                         </dd>
                     </div>
