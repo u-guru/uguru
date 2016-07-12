@@ -198,7 +198,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function processSendSecondaryArgs(msg_name, arg) {
-
+        if (!arg) {
+          arg = 'public'
+        }
         return arg.trim();
       }
 
