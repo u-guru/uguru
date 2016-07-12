@@ -102,6 +102,7 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             calcUseCasesCompletedness(specObj.data.use_cases)
             //@gabrielle note
             specObj.data.toggleDev = true;
+            specObj.data.selectedState;
             specObj.data.toggleSpec = false;
             specObj.data.toggleDocs = false;
             specObj.data.toggleDocSearch = false;
@@ -712,28 +713,30 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
         var parentContainer = document.querySelector(parent_container);
         if (parentContainer) {
             var elementsWithStates = parseCustomStates(parentContainer)|| [];
-            console.log(elementsWithStates);
-
-            for (var i = 0; i < elementsWithStates.length; i++) {
-                var indexElemWithState = elementsWithStates[i];
-                var indexElemStates = indexElemWithState.getAttribute('elem-states');
-                var elemStates = UtilitiesService.removeAllOccurrancesArr(indexElemStates, ['[', ']', ' ', "'", '"']).split(',');
-                for (var j = 0; j < elemStates.length; j++) {
-                    var indexState = elemStates[j];
-                    var onEnterState = 'on-' + indexState + '-enter';
-                    var onExitState = 'on-' + indexState + '-exit';
-                    var elemHasEnterAttribute = indexElemWithState.getAttribute(onEnterState);
-                    var elemHasExitAttribute = indexElemWithState.getAttribute(onExitState);
-                    if (elemHasEnterAttribute && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onEnterState)) === -1) {
-                        elemUniqueStateArr.push(UtilitiesService.camelCase(onEnterState));
-                        elemStateArr.push({title: UtilitiesService.camelCase(onEnterState), state: onEnterState})
-                    }
-                    if (elemHasExitAttribute  && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onExitState)) === -1) {
-                        elemUniqueStateArr.push(UtilitiesService.camelCase(onExitState));
-                        elemStateArr.push({title: UtilitiesService.camelCase(onExitState), state: onExitState})
-                    }
-                }
+            for (state in elementsWithStates) {
+                dropdownArr.push({stateName: state, elements: elementsWithStates[state]})
             }
+
+            // for (var i = 0; i < elementsWithStates.length; i++) {
+            //     var indexElemWithState = elementsWithStates[i];
+            //     var indexElemStates = indexElemWithState.getAttribute('elem-states');
+            //     var elemStates = UtilitiesService.removeAllOccurrancesArr(indexElemStates, ['[', ']', ' ', "'", '"']).split(',');
+            //     for (var j = 0; j < elemStates.length; j++) {
+            //         var indexState = elemStates[j];
+            //         var onEnterState = 'on-' + indexState + '-enter';
+            //         var onExitState = 'on-' + indexState + '-exit';
+            //         var elemHasEnterAttribute = indexElemWithState.getAttribute(onEnterState);
+            //         var elemHasExitAttribute = indexElemWithState.getAttribute(onExitState);
+            //         if (elemHasEnterAttribute && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onEnterState)) === -1) {
+            //             elemUniqueStateArr.push(UtilitiesService.camelCase(onEnterState));
+            //             elemStateArr.push({title: UtilitiesService.camelCase(onEnterState), state: onEnterState})
+            //         }
+            //         if (elemHasExitAttribute  && elemUniqueStateArr.indexOf(UtilitiesService.camelCase(onExitState)) === -1) {
+            //             elemUniqueStateArr.push(UtilitiesService.camelCase(onExitState));
+            //             elemStateArr.push({title: UtilitiesService.camelCase(onExitState), state: onExitState})
+            //         }
+            //     }
+            // }
         }
         // for (key in states) {
         //     dropdownArr.push({title:states[key]['title'], state: states[key], selector:states[key]['selector'] || '', testing: states[key]['testing'] || '', parent_elem: parent_container, parent_scope: scope})
@@ -744,9 +747,9 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
             elemStateArr[i].is_elem_state = true;
             dropdownArr.push(elemStateArr[i]);
         }
-        dropdownArr.sort(function(state_1, state_2) {
-            return (state_2.priority) - (state_1.priority || 0)
-        })
+        // dropdownArr.sort(function(state_1, state_2) {
+        //     return (state_2.priority) - (state_1.priority || 0)
+        // })
         var result = {
             label: 'toggle states',
             options: dropdownArr,
@@ -763,6 +766,11 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
 
         function applyDropdownAction(param) {
             return function(option, index) {
+                scope[param]['spec'].data.selectedState = option;
+                scope[param]['spec'].data.selectedState.active = true;
+                console.log(scope[param]['spec'].data.selectedState.elements);
+                scope[param]['spec'].data.showStateElememts = true;
+                return;
                 if (option.title === 'onInit') {
                     window.location.reload(true);
                 } else if (option.title.toLowerCase().indexOf('onclick') > -1) {

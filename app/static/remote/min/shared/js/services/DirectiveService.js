@@ -5,10 +5,11 @@ angular.module('uguru.shared.services')
     '$state',
     'UtilitiesService',
     'AnimationService',
+    'RootService',
     DirectiveService
         ]);
 
-function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService) {
+function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService, RootService) {
     var argNames = ['prop', 'anim', 'send', 'tween', 'class', 'trigger'];
     var argShortNames = ['p', 'a', 's', 't', 'c', 't'];
     var cssPropertyMappings = {
@@ -107,7 +108,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       for (secondary_arg in processedArgResults) {
         var _type = processedArgResults[secondary_arg].type;
         var _value = processedArgResults[secondary_arg].value;
-        processedArgResults[secondary_arg] = processSecondaryArgsByType(_type, _value);
+        processedArgResults[secondary_arg] = processSecondaryArgsByType(_type, _value, processedArgResults[secondary_arg]);
         processedArgDict[_type] = processedArgResults[secondary_arg];
       }
       return processedArgDict;
@@ -176,9 +177,11 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           return formatAndProcessArgs(type, string_args, {states:[]}, 'states', processTriggerSecondaryArgs, ['state'])
       }
 
-      function processAnimSecondaryArgs(msg_name, arg) {
-        if (!arg) {
+      function processAnimSecondaryArgs(msg_name, arg, prop_dict, orig_str) {
+        console.log(orig_str)
+        if (!arg || arg.indexOf('set') > -1 || arg.indexOf('delay-') > -1 || arg.indexOf('before') > -1 || arg.indexOf('after') > -1) {
           arg = 'obj';
+          prop_dict.custom = orig_str[0].replace(msg_name + ':', '');
         }
         return arg
       }
@@ -235,9 +238,12 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var key = kvPairSplit[0];
           var value = kvPairSplit[1];
 
-          parsedPropDict[key] = custom_func(key, value);
+          parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs);
 
-          (kvPairSplit.length > 2) && processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
+          if (kvPairSplit.length > 2) {
+            parsedPropDict = processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
+            processCustomArgsArray(type, parsedPropDict, custom_args);
+          }
           propDict[base_dict_key].push(parsedPropDict);
         }
       }
@@ -245,6 +251,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       processGeneralArgs(type, string_args, propDict, custom_args);
       return propDict
 
+    }
+
+    function processCustomArgsArray(type, arg_dict, d_custom_args) {
+      return arg_dict;
     }
 
     function processGeneralArgs(type,string_args, prop_dict, custom_args) {
@@ -286,7 +296,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           }
         }
       }
-      if (notProcessed && notProcessed.length) {
+      if (notProcessed && notProcessed.length && !resultDict.custom) {
         resultDict.custom = notProcessed.join(":");
       }
       if (Object.keys(resultDict).length) {
@@ -349,7 +359,35 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         function dispatchTrigger(trig_name, trigger_scope, elem) {
           if (trigger_scope === 'self') {
             // console.log('dispatching', trig_name, 'on self');
-            elem[0].classList.add(trig_name);
+            // elem[0].classList.add(trig_name);
+            triggerActionOnElem(trig_name, elem[0]);
+          } else if (trigger_scope === 'parent') {
+            triggerActionOnElem(trig_name, elem[0].parentNode);
+            // elem[0].parentNode.classList.add(trig_name);
+          } else if (trigger_scope === 'children') {
+            var children = elem[0].children;
+            for (var i = 0; i < children.length; i++) {
+              var indexChild = children[i];
+              indexChild && triggerActionOnElem(trig_name, indexChild)
+            }
+          } else if (trigger_scope === 'siblings') {
+
+            var siblings = elem[0].parentNode.children;
+            for (var i = 0; i < siblings.length; i++) {
+              var indexSibling = siblings[i];
+              if (indexSibling !== elem[0]) {
+                indexSibling && triggerActionOnElem(trig_name, indexSibling);
+              }
+            }
+          }
+
+          function triggerActionOnElem(trig_name, elem) {
+            var implementedTriggers = ['on-click', 'on-hover', 'on-mouse-leave', 'on-mouse-enter'];
+            if (implementedTriggers.indexOf(trig_name) > -1) {
+              angular.element(elem).triggerHandler(trig_name);
+            } else {
+              elem.classList.add(trig_name);
+            }
           }
         }
      }
@@ -420,28 +458,130 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var indexAnimObj = anim_arr[i];
         var delay = indexAnimObj.delay || 0;
         delete indexAnimObj['delay'];
+
+        var custom = indexAnimObj.custom;
+        var customDict = {};
+        delete indexAnimObj['custom'];
+        if (custom) {
+          processAnimCustomArgs(custom, customDict);
+        }
         var animName = Object.keys(indexAnimObj)[0];
         var animType = indexAnimObj[animName];
-        runOneAnimation(animName, animType, delay, scope, elem);
+        runOneAnimation(animName, animType, delay, scope, elem, customDict);
+
+        if (delay) {
+          indexAnimObj['delay'] = delay;
+        }
+        if (custom) {
+          indexAnimObj['custom'] = customDict;
+        }
+
+        function processAnimCustomArgs(custom_str, custom_dict) {
+          if (custom_str.indexOf('set:') > -1) {
+            var setString = custom_str + "";
+            setString = setString.split('set:(')[1];
+            var endParenthesis = setString.indexOf(')');
+            setString = setString.substring(0, endParenthesis);
+            custom_dict.set = processSetExtraArgs(setString);
+
+          }
+          if (custom_str.indexOf(':before') > -1) {
+            custom_dict.before = true;
+          }
+          if (custom_str.indexOf(':after') > -1) {
+            custom_dict.after = true;
+          }
+          if (custom_str.indexOf(':in') > -1) {
+            custom_dict.in = true;
+          }
+          if (custom_str.indexOf(':out') > -1) {
+            custom_dict.out = true;
+          }
+        }
       }
 
-      function runOneAnimation(anim_name, anim_type, delay, scope, elem) {
+      function runOneAnimation(anim_name, anim_type, delay, scope, elem, custom_args) {
+        var animStartCb;
+        var animEndCb;
         if (animType === 'obj') {
           var animObj = AnimationService.getAnimationObjFromAnimationName(anim_name);
           if (animObj) {
-            console.log(animObj, anim_name, anim_type);
-            $timeout(function() {
-              elem[0].style.opacity = 1;
-            })
-            AnimationService.animate(elem[0], anim_name, animObj, delay);
+            if (custom_args && custom_args.set && (!custom_args.after || custom_args.before)) {
+              console.log('properties to set', custom_args.set);
+              var propDict = {properties:custom_args.set};
+
+              evalPropertyArgs(propDict, scope, elem);
+            }
+            if (custom_args.in) {
+              animStartCb = function() {
+                $timeout(function() {
+                  elem[0].style.opacity = 1;
+                })
+              }
+            }
+            if (custom_args.out) {
+              animStartCb = function() {
+                $timeout(function() {
+                  elem[0].style.opacity = 0;
+                })
+              }
+            }
+            if (custom_args.after) {
+              var propDict = {properties:custom_args.set};
+              animEndCb = function() {
+                evalPropertyArgs(propDict, scope, elem);
+              }
+            }
+            execAnimation(elem, anim_name, animObj, delay, animStartCb, animEndCb )
+
+            // AnimationService.animate(elem[0], anim_name, animObj, delay, animStartCb, animEndCb);
           }
           return;
         }
-        // if (animType === 'class') {
-        //   var animClass = AnimationService.
-        // }
       }
+
+      function execAnimation(elem, anim_name, anim_obj, delay, start_cb, end_cb) {
+        var browser_prefix = RootService.getBrowserPrefix();
+        if (start_cb) {
+          initAndTriggerAndRemoveAnimStartFunc(elem, browser_prefix, start_cb);
+        }
+        var end_cb = function() {};
+        if (end_cb) {
+          initAndTriggerAndRemoveAnimEndFunc(elem, browser_prefix, end_cb)
+        }
+        elem.css('animation-name', anim_name);
+      }
+
+      function getAnimEventName(prefix, _type) {
+        if (['ms', 'moz', 'webkit', 'o'].indexOf(prefix.toLowerCase()) > -1) {
+            return prefix + 'Animation' + _type
+        }
+        return "animation" + _type.toLowerCase();
+      }
+
+      function initAndTriggerAndRemoveAnimStartFunc(elem, browser_prefix, start_cb) {
+        var animStartEventName = getAnimEventName(browser_prefix, 'Start');
+          var animStartFunc = function(e) {
+            console.log(e.animationName, 'started', e);
+            start_cb();
+            elem[0].removeEventListener(animStartEventName, animStartFunc);
+          }
+          elem[0].addEventListener(animStartEventName, animStartFunc);
+      }
+
+      function initAndTriggerAndRemoveAnimEndFunc(elem, browser_prefix, end_cb) {
+        var animEndEventName = getAnimEventName(browser_prefix, 'End');
+          var animEndFunc = function(e) {
+            console.log(e.animationName, 'ended', e);
+            end_cb();
+            elem[0].removeEventListener(animEndEventName, animEndFunc);
+          }
+          elem[0].addEventListener(animEndEventName, animEndFunc);
+      }
+
     }
+
+
 
     function evalClassArgs(arg_dict, scope, elem) {
       if (arg_dict.delay) {
