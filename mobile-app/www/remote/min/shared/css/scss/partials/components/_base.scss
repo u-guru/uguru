@@ -287,6 +287,290 @@
 		}
 	}
 
+	/*----- HEADERS */
+	// base
+	header {
+		h1 {
+			margin: 0;
+			font-size: 36px;
+			font-weight: 900;
+			display: flex;
+			flex-flow: row wrap;
+			span {
+				display: block;
+			}
+		}
+	}
+	// states
+	// @samir needs character splitter like lettering.js to work
+	header {
+		&.state-onenter {
+			@for $i from 1 through 27 {
+				.char#{$i} {
+					transform: rotateX(90deg);
+					transition: all 300ms ease-out #{$i * 10}ms;
+					transform-origin: center top;
+					opacity: 0;
+				}
+			}
+		}
+		&.state-onexit {
+			opacity: 1;
+			transition: all 450ms ease-in;
+		}
+		&.state-onexit-alt {
+			@for $i from 1 through 27 {
+				.char#{$i} {
+					transform: rotateX(0deg);
+					transition: all 300ms ease-out #{$i * 10}ms;
+					transform-origin: center top;
+					opacity: 1;
+				}
+			}
+		}
+	}
+	// activated states
+	header.activate {
+		&.state-onenter {
+			@for $i from 1 through 27 {
+				.char#{$i} {
+					transform: rotateX(0deg);
+					opacity:1;
+				}
+			}
+		}
+		&.state-onexit {
+			opacity: 0;
+		}
+		&.state-onexit-alt {
+			@for $i from 1 through 27 {
+				.char#{$i} {
+					transform: rotateX(90deg);
+					opacity:0;
+				}
+			}
+		}
+	}
+
+	/*----- IMAGES */
+	// base
+	figure {
+		position: relative;
+		margin: 0;
+		padding: 0;
+		border-radius: 2px;
+		overflow: hidden;
+		img {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+		}
+		.figure-loading {
+			display: flex;
+			align-items: center;
+			align-content: center;
+			justify-content: center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: lighten($slate, 55%);
+			opacity: 0;
+			z-index: -10;
+			border-radius: 2px;
+			svg {
+				display: block;
+				width: 100px;
+				height: 100px;
+				.photo {
+					rect {
+						transform-origin: center center;
+						transform: rotate(180deg);
+						stroke-dasharray: 280;
+					}
+					circle {
+						stroke-dasharray: 37.7;
+					}
+					path {
+						stroke-dasharray: 157.8;
+					}
+					&:nth-child(1) {
+						stroke-opacity: 0.25;
+					}
+					&:nth-child(2) {
+						rect, circle, path {
+							opacity: 0;
+						}
+						rect {
+							stroke-dashoffset: 280;
+						}
+						circle {
+							stroke-dashoffset: 37.7;
+						}
+						path {
+							stroke-dashoffset: 157.8;
+						}
+					}
+				}
+				.broken {
+					path {
+						opacity: 0;
+						&:nth-child(1) {
+							stroke-dasharray: 109.8;
+							stroke-dashoffset: 109.8;
+						}
+						&:nth-child(2) {
+							stroke-dasharray: 109.8;
+							stroke-dashoffset: 109.8;
+						}
+						&:nth-child(3) {
+							stroke-dasharray: 117.8;
+							stroke-dashoffset: 117.8;
+						}
+						&:nth-child(4) {
+							stroke-dasharray: 117.8;
+							stroke-dashoffset: 117.8;
+						}
+					}
+				}
+			}
+		}
+	}
+	// states
+	figure {
+		&.state-onload {
+			opacity: 0;
+			transition: all 150ms ease-in-out;
+			.figure-loading {
+				opacity: 1;
+				z-index: 10;
+				svg {
+					.photo {
+						&:nth-child(2) {
+							rect {
+								transition: stroke-dashoffset 900ms ease-in-out 450ms, opacity 75ms ease-in-out 450ms;
+							}
+							circle {
+								transition: stroke-dashoffset 150ms ease-in-out 300ms, opacity 75ms ease-in-out 300ms;
+							}
+							path {
+								transition: stroke-dashoffset 300ms ease-in-out 150ms, opacity 75ms ease-in-out 150ms;
+							}
+						}
+					}
+				}
+			}
+		}
+		&.state-onenter {
+			.figure-loading {
+				transition: opacity 450ms ease-in-out 150ms, z-index 50ms ease;
+				opacity: 1;
+				z-index: 10;
+				svg {
+					.photo {
+						&:nth-child(2) {
+							rect, circle, path {
+								opacity: 1;
+								stroke-dashoffset: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+		&.state-onexit {
+			transition: opacity 450ms ease-in-out 150ms;
+		}
+		&.state-broken {
+			.figure-loading {
+				opacity: 1;
+				z-index: 10;
+				transition: all 150ms ease-in-out 450ms;
+				.photo {
+					rect {
+						transition: stroke-dashoffset 900ms ease-in-out 900ms, opacity 75ms ease-in-out 900ms;
+					}
+					circle {
+						transition: stroke-dashoffset 150ms ease-in-out 750ms, opacity 75ms ease-in-out 750ms;
+					}
+					path {
+						transition: stroke-dashoffset 300ms ease-in-out 600ms, opacity 75ms ease-in-out 600ms;
+					}
+					&:nth-child(2) {
+						rect, circle, path {
+							opacity: 1;
+							stroke-dashoffset: 0;
+						}
+					}
+				}
+				.broken {
+					path {
+						transition: stroke-dashoffset 450ms ease-in-out, opacity 50ms ease 400ms;
+					}
+				}
+			}
+		}
+	}
+	// activated states
+	figure.activate {
+		&.state-onload {
+			opacity: 1;
+			.figure-loading {
+				svg {
+					.photo {
+						rect, circle, path {
+							opacity: 1;
+							stroke-dashoffset: 0;
+						}
+					}
+				}
+			}
+		}
+		&.state-onenter {
+			.figure-loading {
+				transition: opacity 450ms ease-in-out 150ms, z-index 50ms ease 600ms;
+				opacity: 0;
+				z-index: -10;
+			}
+		}
+		&.state-onexit {
+			opacity: 0;
+		}
+		&.state-broken {
+			.figure-loading {
+				background: $crimson;
+				transition: all 150ms ease-in-out 1350ms;
+				svg {
+					.photo {
+						rect, circle, path {
+							opacity: 0;
+						}
+						rect {
+							transition: stroke-dashoffset 900ms ease-in-out 450ms, opacity 75ms ease-in-out 450ms;
+							stroke-dashoffset: 280;
+						}
+						circle {
+							transition: stroke-dashoffset 150ms ease-in-out 300ms, opacity 75ms ease-in-out 300ms;
+							stroke-dashoffset: 37.7;
+						}
+						path {
+							transition: stroke-dashoffset 300ms ease-in-out 150ms, opacity 75ms ease-in-out 150ms;
+							stroke-dashoffset: 157.8;
+						}
+					}
+					.broken {
+						path {
+							transition: stroke-dashoffset 450ms ease-in-out 1350ms, opacity 50ms ease 1350ms;
+							stroke-dashoffset: 0;
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	/*----- INPUT */
 	// base
 	fieldset {
@@ -1289,7 +1573,7 @@
 		}
 	}
 
-	/* ----- CHECKBOXES */
+	/*----- CHECKBOXES */
 	// base
 	.checkbox-container.state {
 		div {
@@ -1610,6 +1894,616 @@
 							stroke: white;
 						}
 					}
+				}
+			}
+		}
+	}
+
+	/*----- TOGGLES */
+	// base
+	.toggle-container {
+		@include flex;
+		@include flex-center-vertical;
+		.toggle-label {
+			padding-left: 15px;
+			color: white;
+			font-size: 20px;
+			font-weight: 600;
+		}
+	}
+	.toggle {
+		label {
+			> div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				div {
+					position: absolute;
+					background: mix($lake, $slate, 30%);
+					border-radius: 1000px;
+					&:nth-child(1) {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: right center;
+						transform: scaleX(0);
+					}
+					&:nth-child(2) {
+						top: 0;
+						right: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center bottom;
+						transform: scaleY(0);
+					}
+					&:nth-child(3) {
+						bottom: 0;
+						right: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: left center;
+						transform: scaleX(0);
+					}
+					&:nth-child(4) {
+						bottom: 0;
+						left: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center top;
+						transform: scaleY(0);
+					}
+				}
+			}
+			.square rect {
+				stroke: white;
+				stroke-width: 2px;
+				stroke-linejoin: round;
+				stroke-linecap: round;
+			}
+			.square:nth-child(2) {
+				opacity: 0;
+			}
+		}
+	}
+	// states
+	.toggle-container {
+		&.state-onload {
+			.toggle.am-pm {
+				input + label {
+					background: rgba(mix($lake, $slate, 30%), 0);
+					transition: all 250ms ease-out 500ms;
+					span {
+						opacity:0;
+					}
+					svg:first-child {
+						opacity:0;
+					}
+				}
+				label {
+					> div {
+						div {
+							&:nth-child(1) {
+								transition: all 250ms ease-out;
+							}
+							&:nth-child(2) {
+								transition: all 250ms ease-out 150ms;
+							}
+							&:nth-child(3) {
+								transition: all 250ms ease-out 300ms;
+							}
+							&:nth-child(4) {
+								transition: all 250ms ease-out 450ms;
+							}
+						}
+					}
+				}
+			}
+		}
+		&.state-onenter {
+			.toggle.am-pm {
+				input + label {
+					background: rgba(mix($lake, $slate, 30%), 0);
+					transition: all 250ms ease-out;
+					span {
+						opacity: 0;
+						transition: all 250ms ease-out;
+					}
+					.square rect {
+						stroke-dashoffset: 107;
+						stroke-dasharray: 107;
+						fill-opacity: 0;
+						transition: stroke-dashoffset 250ms ease-in, fill-opacity 450ms ease-in 250ms;
+					}
+				}
+				label {
+					> div {
+						div {
+							&:nth-child(1) {
+								transform: scaleX(1);
+							}
+							&:nth-child(2) {
+								transform: scaleY(1);
+							}
+							&:nth-child(3) {
+								transform: scaleX(1);
+							}
+							&:nth-child(4) {
+								transform: scaleY(1);
+							}
+						}
+					}
+				}
+			}
+		}
+		&.state-onexit {
+			opacity: 1;
+			transition: all 450ms cubic-bezier(0,.53,.05,.98);
+		}
+		&.state-hover {
+			.toggle.am-pm {
+				input + label {
+					transition: background 450ms ease-out;
+				}
+			}
+		}
+		&.state-active {
+			.toggle.am-pm {
+				input + label {
+					background: mix($lake, $slate, 15%);
+					span {
+						opacity: 1;
+					}
+					.am {
+						opacity: 0;
+					}
+				}
+			}
+		}
+	}
+	// activated states
+	.toggle-container.activate {
+		&.state-onload {
+			.toggle.am-pm {
+				label {
+					> div {
+						div {
+							opacity: 0.6;
+							&:nth-child(1) {
+								transform: scaleX(1);
+								transition: all 250ms ease-out 450ms;
+							}
+							&:nth-child(2) {
+								transform: scaleY(1);
+								transition: all 250ms ease-out 300ms;
+							}
+							&:nth-child(3) {
+								transform: scaleX(1);
+								transition: all 250ms ease-out 150ms;
+							}
+							&:nth-child(4) {
+								transform: scaleY(1);
+								transition: all 250ms ease-out;
+							}
+						}
+					}
+				}
+			}
+		}
+		&.state-onenter {
+			.toggle.am-pm {
+				input + label {
+					background: mix($lake, $slate, 30%);
+					.square rect {
+						stroke-dashoffset: 0;
+						fill-opacity: 1;
+					}
+					span {
+						opacity: 1;
+					}
+					.am {
+						opacity: 0;
+					}
+				}
+				label {
+					> div {
+						div {
+							opacity: 0;
+						}
+					}
+				}
+			}
+		}
+		&.state-onexit {
+			transform: translateX(300px);
+			opacity: 0;
+		}
+		&.state-checked {
+			.toggle.am-pm {
+				input + label {
+					background: $gold!important;
+					span {
+						transform: translateX(-26px);
+					}
+					svg:first-child {
+						transform: translateX(36px);
+					}
+					.am {
+						opacity: 1;
+					}
+					.pm {
+						opacity: 0;
+					}
+				}
+			}
+		}
+		&.state-hover {
+			.toggle.am-pm {
+				input + label {
+					background: mix($lake, $slate, 15%);
+					span {
+						opacity: 1;
+					}
+					.am {
+						opacity: 0;
+					}
+				}
+			}
+		}
+		&.state-active {
+			.toggle.am-pm {
+				input + label {
+					background: mix($lake, $slate);
+					span {
+						opacity: 1;
+					}
+					.am {
+						opacity: 0;
+					}
+				}
+			}
+		}
+		&.state-disabled {
+			.toggle.am-pm {
+				input + label {
+					opacity: 0.2;
+				}
+			}
+		}
+	}
+
+	/*----- BUTTONS */
+	// base {
+	.btn {
+		position: relative;
+		overflow: hidden;
+		pointer-events: none;
+		border: 0!important;
+		span {
+			display: block;
+		}
+	}
+	.btn-default {
+		span {
+			font-size: 24px;
+			&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+				position: absolute;
+				background: $moxie;
+				border-radius: 1000px;
+			}
+			&:nth-child(1) {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				transform-origin: right center;
+				transform: scaleX(0);
+			}
+			&:nth-child(2) {
+				top: 0;
+				right: 0;
+				width: 2px;
+				height: 100%;
+				transform-origin: center bottom;
+				transform: scaleY(0);
+			}
+			&:nth-child(3) {
+				bottom: 0;
+				right: 0;
+				width: 100%;
+				height: 2px;
+				transform-origin: left center;
+				transform: scaleX(0);
+			}
+			&:nth-child(4) {
+				bottom: 0;
+				left: 0;
+				width: 2px;
+				height: 100%;
+				transform-origin: center top;
+				transform: scaleY(0);
+			}
+			&:nth-child(5) {
+				position: absolute;
+				top: 50%;
+				margin-top: -5px;
+				left: 50%;
+				margin-left: -5px;
+				width: 10px;
+				height: 10px;
+				border-radius: 1000px;
+				background: mix($slate, $shamrock);
+				transform-origin: center center;
+				transform: scale(0) translateZ(0);
+			}
+			&:nth-child(6) {
+				position: relative;
+				z-index: 10;
+			}
+		}
+	}
+	.btn-ghost-states {
+		border-radius: 2px;
+		padding: 14px 24px;
+		border: 0;
+		overflow: hidden;
+		span {
+			display: block;
+			line-height: 1;
+			&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+				position: absolute;
+				background: white;
+				border-radius: 1000px;
+			}
+			&:nth-child(1) {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				transform-origin: right center;
+			}
+			&:nth-child(2) {
+				top: 0;
+				right: 0;
+				width: 2px;
+				height: 100%;
+				transform-origin: center bottom;
+			}
+			&:nth-child(3) {
+				bottom: 0;
+				right: 0;
+				width: 100%;
+				height: 2px;
+				transform-origin: left center;
+			}
+			&:nth-child(4) {
+				bottom: 0;
+				left: 0;
+				width: 2px;
+				height: 100%;
+				transform-origin: center top;
+			}
+			&:nth-child(5) {
+				position: absolute;
+				top: 50%;
+				margin-top: -5px;
+				left: 50%;
+				margin-left: -5px;
+				width: 10px;
+				height: 10px;
+				border-radius: 1000px;
+				background: lighten($slate, 15%);
+				transform-origin: center center;
+				transform: scale(0) translateZ(0);
+			}
+			&:nth-child(6) {
+				position: relative;
+				z-index: 10;
+			}
+		}
+	}
+	// states
+	.btn-ghost-states {
+		&.state-onload {
+			span {
+				&:nth-child(1) {
+					transition: all 250ms ease-out;
+					transform: scaleX(0);
+				}
+				&:nth-child(2) {
+					transition: all 250ms ease-out 150ms;
+					transform: scaleY(0);
+				}
+				&:nth-child(3) {
+					transition: all 250ms ease-out 300ms;
+					transform: scaleX(0);
+				}
+				&:nth-child(4) {
+					transition: all 250ms ease-out 450ms;
+					transform: scaleY(0);
+				}
+				&:nth-child(6) {
+					opacity: 0;
+				}
+			}
+		}
+		&.state-onenter {
+			span {
+				&:nth-child(6) {
+					opacity: 0;
+					transition: all 250ms ease-out;
+				}
+			}
+		}
+		&.state-onexit {
+			transition: all 450ms ease-in-out;
+		}
+		&.state-hover {
+			transition: all 150ms ease-in-out;
+		}
+		&.state-active {
+			background: white;
+			color: $charcoal;
+			transition: background 10ms ease 250ms, color 250ms ease-in-out;
+			span {
+				&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+					opacity: 0;
+				}
+				&:nth-child(5) {
+					transition: transform 250ms ease-in-out, opacity 50ms ease 260ms;
+				}
+			}
+		}
+	}
+	.btn-default {
+		&.state-onload {
+			background: rgba($moxie, 0)!important;
+			span {
+				&:nth-child(1) {
+					transition: all 250ms ease-out;
+				}
+				&:nth-child(2) {
+					transition: all 250ms ease-out 150ms;
+				}
+				&:nth-child(3) {
+					transition: all 250ms ease-out 300ms;
+				}
+				&:nth-child(4) {
+					transition: all 250ms ease-out 450ms;
+				}
+				&:nth-child(6) {
+					opacity: 0;
+				}
+			}
+		}
+		&.state-onenter {
+			background: rgba($moxie, 0)!important;
+			transition: all 250ms ease-in-out 250ms;
+			span {
+				&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+					transform: none!important;
+				}
+				&:nth-child(6) {
+					opacity: 0;
+					transition: all 250ms ease-in-out;
+				}
+			}
+		}
+		&.state-onexit {
+			transition: all 450ms ease-in-out;
+		}
+		&.state-hover {
+			transition: all 150ms ease-in-out;
+		}
+		&.state-active {
+			background: mix(white, $moxie)!important;
+			color: mix($slate, $moxie);
+			transition: background 10ms ease 250ms, color 250ms ease-in-out;
+			span {
+				&:nth-child(5) {
+					transition: transform 250ms ease-in-out, opacity 50ms ease 260ms;
+				}
+			}
+		}
+	}
+	// activated states
+	.btn-ghost-states.activate {
+		&.state-onload {
+			span {
+				&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+					transform: none!important;
+				}
+				&:nth-child(1) {
+					transition: all 250ms ease-out 450ms;
+				}
+				&:nth-child(2) {
+					transition: all 250ms ease-out 300ms;
+				}
+				&:nth-child(3) {
+					transition: all 250ms ease-out 150ms;
+				}
+				&:nth-child(4) {
+					transition: all 250ms ease-out;
+				}
+			}
+		}
+		&.state-onenter {
+			span {
+				&:nth-child(6) {
+					opacity: 1;
+				}
+			}
+		}
+		&.state-onexit {
+			opacity: 0;
+		}
+		&.state-hover {
+			background: white;
+			color: $charcoal;
+			span {
+				&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+					opacity: 0;
+					transition: all 50ms ease 150ms;
+				}
+			}
+		}
+		&.state-active {
+			background: lighten($slate, 15%);
+			color: white;
+			span {
+				&:nth-child(5) {
+					transform: scale(100) translateZ(0);
+					opacity: 0;
+				}
+			}
+		}
+	}
+	.btn-default.activate {
+		&.state-onload {
+			span {
+				&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+					transform: none!important;
+				}
+				&:nth-child(1) {
+					transition: all 250ms ease-out 450ms;
+				}
+				&:nth-child(2) {
+					transition: all 250ms ease-out 300ms;
+				}
+				&:nth-child(3) {
+					transition: all 250ms ease-out 150ms;
+				}
+				&:nth-child(4) {
+					transition: all 250ms ease-out;
+				}
+			}
+		}
+		&.state-onenter {
+			background: rgba($moxie, 1)!important;
+			transition: all 250ms ease-in-out;
+			span {
+				&:nth-child(6) {
+					opacity: 1;
+					transition: all 250ms ease-in-out 250ms;
+				}
+			}
+		}
+		&.state-onexit {
+			opacity: 0;
+		}
+		&.state-hover {
+			background: mix(white, $moxie);
+			color: mix($slate, $moxie);
+		}
+		&.state-active {
+			background: mix($slate, $moxie)!important;
+			color: white;
+			span {
+				&:nth-child(5) {
+					transform: scale(100) translateZ(0);
+					opacity: 0;
 				}
 			}
 		}

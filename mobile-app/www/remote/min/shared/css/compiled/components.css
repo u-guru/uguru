@@ -12172,8 +12172,12 @@ input[type=range] {
   -webkit-perspective: 1000;
   perspective: 1000;
   /*----- BODY TEXT */
+  /*----- HEADERS */
+  /*----- IMAGES */
   /*----- INPUT */
-  /* ----- CHECKBOXES */ }
+  /*----- CHECKBOXES */
+  /*----- TOGGLES */
+  /*----- BUTTONS */ }
   .base-components .checkbox-container {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -12362,6 +12366,576 @@ input[type=range] {
     opacity: 1; }
   .base-components .body-text.activate.state-onexit-short > span {
     animation: lightSpeedOut 250ms ease-out both; }
+  .base-components header h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 900;
+    display: flex;
+    flex-flow: row wrap; }
+    .base-components header h1 span {
+      display: block; }
+  .base-components header.state-onenter .char1 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 10ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char2 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 20ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char3 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 30ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char4 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 40ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char5 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 50ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char6 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 60ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char7 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 70ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char8 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 80ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char9 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 90ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char10 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 100ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char11 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 110ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char12 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 120ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char13 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 130ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char14 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 140ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char15 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 150ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char16 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 160ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char17 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 170ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char18 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 180ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char19 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 190ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char20 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 200ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char21 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 210ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char22 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 220ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char23 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 230ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char24 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 240ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char25 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 250ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char26 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 260ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onenter .char27 {
+    transform: rotateX(90deg);
+    transition: all 300ms ease-out 270ms;
+    transform-origin: center top;
+    opacity: 0; }
+  .base-components header.state-onexit {
+    opacity: 1;
+    transition: all 450ms ease-in; }
+  .base-components header.state-onexit-alt .char1 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 10ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char2 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 20ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char3 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 30ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char4 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 40ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char5 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 50ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char6 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 60ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char7 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 70ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char8 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 80ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char9 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 90ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char10 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 100ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char11 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 110ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char12 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 120ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char13 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 130ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char14 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 140ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char15 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 150ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char16 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 160ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char17 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 170ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char18 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 180ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char19 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 190ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char20 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 200ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char21 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 210ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char22 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 220ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char23 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 230ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char24 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 240ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char25 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 250ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char26 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 260ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.state-onexit-alt .char27 {
+    transform: rotateX(0deg);
+    transition: all 300ms ease-out 270ms;
+    transform-origin: center top;
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char1 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char2 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char3 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char4 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char5 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char6 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char7 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char8 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char9 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char10 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char11 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char12 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char13 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char14 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char15 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char16 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char17 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char18 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char19 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char20 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char21 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char22 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char23 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char24 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char25 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char26 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onenter .char27 {
+    transform: rotateX(0deg);
+    opacity: 1; }
+  .base-components header.activate.state-onexit {
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char1 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char2 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char3 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char4 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char5 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char6 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char7 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char8 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char9 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char10 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char11 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char12 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char13 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char14 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char15 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char16 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char17 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char18 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char19 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char20 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char21 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char22 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char23 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char24 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char25 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char26 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components header.activate.state-onexit-alt .char27 {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  .base-components figure {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border-radius: 2px;
+    overflow: hidden; }
+    .base-components figure img {
+      display: block;
+      width: 100%;
+      max-width: 100%; }
+    .base-components figure .figure-loading {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ced3d5;
+      opacity: 0;
+      z-index: -10;
+      border-radius: 2px; }
+      .base-components figure .figure-loading svg {
+        display: block;
+        width: 100px;
+        height: 100px; }
+        .base-components figure .figure-loading svg .photo rect {
+          transform-origin: center center;
+          transform: rotate(180deg);
+          stroke-dasharray: 280; }
+        .base-components figure .figure-loading svg .photo circle {
+          stroke-dasharray: 37.7; }
+        .base-components figure .figure-loading svg .photo path {
+          stroke-dasharray: 157.8; }
+        .base-components figure .figure-loading svg .photo:nth-child(1) {
+          stroke-opacity: 0.25; }
+        .base-components figure .figure-loading svg .photo:nth-child(2) rect, .base-components figure .figure-loading svg .photo:nth-child(2) circle, .base-components figure .figure-loading svg .photo:nth-child(2) path {
+          opacity: 0; }
+        .base-components figure .figure-loading svg .photo:nth-child(2) rect {
+          stroke-dashoffset: 280; }
+        .base-components figure .figure-loading svg .photo:nth-child(2) circle {
+          stroke-dashoffset: 37.7; }
+        .base-components figure .figure-loading svg .photo:nth-child(2) path {
+          stroke-dashoffset: 157.8; }
+        .base-components figure .figure-loading svg .broken path {
+          opacity: 0; }
+          .base-components figure .figure-loading svg .broken path:nth-child(1) {
+            stroke-dasharray: 109.8;
+            stroke-dashoffset: 109.8; }
+          .base-components figure .figure-loading svg .broken path:nth-child(2) {
+            stroke-dasharray: 109.8;
+            stroke-dashoffset: 109.8; }
+          .base-components figure .figure-loading svg .broken path:nth-child(3) {
+            stroke-dasharray: 117.8;
+            stroke-dashoffset: 117.8; }
+          .base-components figure .figure-loading svg .broken path:nth-child(4) {
+            stroke-dasharray: 117.8;
+            stroke-dashoffset: 117.8; }
+  .base-components figure.state-onload {
+    opacity: 0;
+    transition: all 150ms ease-in-out; }
+    .base-components figure.state-onload .figure-loading {
+      opacity: 1;
+      z-index: 10; }
+      .base-components figure.state-onload .figure-loading svg .photo:nth-child(2) rect {
+        transition: stroke-dashoffset 900ms ease-in-out 450ms, opacity 75ms ease-in-out 450ms; }
+      .base-components figure.state-onload .figure-loading svg .photo:nth-child(2) circle {
+        transition: stroke-dashoffset 150ms ease-in-out 300ms, opacity 75ms ease-in-out 300ms; }
+      .base-components figure.state-onload .figure-loading svg .photo:nth-child(2) path {
+        transition: stroke-dashoffset 300ms ease-in-out 150ms, opacity 75ms ease-in-out 150ms; }
+  .base-components figure.state-onenter .figure-loading {
+    transition: opacity 450ms ease-in-out 150ms, z-index 50ms ease;
+    opacity: 1;
+    z-index: 10; }
+    .base-components figure.state-onenter .figure-loading svg .photo:nth-child(2) rect, .base-components figure.state-onenter .figure-loading svg .photo:nth-child(2) circle, .base-components figure.state-onenter .figure-loading svg .photo:nth-child(2) path {
+      opacity: 1;
+      stroke-dashoffset: 0; }
+  .base-components figure.state-onexit {
+    transition: opacity 450ms ease-in-out 150ms; }
+  .base-components figure.state-broken .figure-loading {
+    opacity: 1;
+    z-index: 10;
+    transition: all 150ms ease-in-out 450ms; }
+    .base-components figure.state-broken .figure-loading .photo rect {
+      transition: stroke-dashoffset 900ms ease-in-out 900ms, opacity 75ms ease-in-out 900ms; }
+    .base-components figure.state-broken .figure-loading .photo circle {
+      transition: stroke-dashoffset 150ms ease-in-out 750ms, opacity 75ms ease-in-out 750ms; }
+    .base-components figure.state-broken .figure-loading .photo path {
+      transition: stroke-dashoffset 300ms ease-in-out 600ms, opacity 75ms ease-in-out 600ms; }
+    .base-components figure.state-broken .figure-loading .photo:nth-child(2) rect, .base-components figure.state-broken .figure-loading .photo:nth-child(2) circle, .base-components figure.state-broken .figure-loading .photo:nth-child(2) path {
+      opacity: 1;
+      stroke-dashoffset: 0; }
+    .base-components figure.state-broken .figure-loading .broken path {
+      transition: stroke-dashoffset 450ms ease-in-out, opacity 50ms ease 400ms; }
+  .base-components figure.activate.state-onload {
+    opacity: 1; }
+    .base-components figure.activate.state-onload .figure-loading svg .photo rect, .base-components figure.activate.state-onload .figure-loading svg .photo circle, .base-components figure.activate.state-onload .figure-loading svg .photo path {
+      opacity: 1;
+      stroke-dashoffset: 0; }
+  .base-components figure.activate.state-onenter .figure-loading {
+    transition: opacity 450ms ease-in-out 150ms, z-index 50ms ease 600ms;
+    opacity: 0;
+    z-index: -10; }
+  .base-components figure.activate.state-onexit {
+    opacity: 0; }
+  .base-components figure.activate.state-broken .figure-loading {
+    background: #d3242c;
+    transition: all 150ms ease-in-out 1350ms; }
+    .base-components figure.activate.state-broken .figure-loading svg .photo rect, .base-components figure.activate.state-broken .figure-loading svg .photo circle, .base-components figure.activate.state-broken .figure-loading svg .photo path {
+      opacity: 0; }
+    .base-components figure.activate.state-broken .figure-loading svg .photo rect {
+      transition: stroke-dashoffset 900ms ease-in-out 450ms, opacity 75ms ease-in-out 450ms;
+      stroke-dashoffset: 280; }
+    .base-components figure.activate.state-broken .figure-loading svg .photo circle {
+      transition: stroke-dashoffset 150ms ease-in-out 300ms, opacity 75ms ease-in-out 300ms;
+      stroke-dashoffset: 37.7; }
+    .base-components figure.activate.state-broken .figure-loading svg .photo path {
+      transition: stroke-dashoffset 300ms ease-in-out 150ms, opacity 75ms ease-in-out 150ms;
+      stroke-dashoffset: 157.8; }
+    .base-components figure.activate.state-broken .figure-loading svg .broken path {
+      transition: stroke-dashoffset 450ms ease-in-out 1350ms, opacity 50ms ease 1350ms;
+      stroke-dashoffset: 0;
+      opacity: 1; }
   .base-components fieldset {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -13275,6 +13849,384 @@ input[type=range] {
     .base-components .checkbox-container.activate.state-checked-active div > span svg .check-stroke {
       opacity: 0.2;
       stroke: white; }
+  .base-components .toggle-container {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center; }
+    .base-components .toggle-container .toggle-label {
+      padding-left: 15px;
+      color: white;
+      font-size: 20px;
+      font-weight: 600; }
+  .base-components .toggle label > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .base-components .toggle label > div div {
+      position: absolute;
+      background: #456477;
+      border-radius: 1000px; }
+      .base-components .toggle label > div div:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: right center;
+        transform: scaleX(0); }
+      .base-components .toggle label > div div:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center bottom;
+        transform: scaleY(0); }
+      .base-components .toggle label > div div:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: left center;
+        transform: scaleX(0); }
+      .base-components .toggle label > div div:nth-child(4) {
+        bottom: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center top;
+        transform: scaleY(0); }
+  .base-components .toggle label .square rect {
+    stroke: white;
+    stroke-width: 2px;
+    stroke-linejoin: round;
+    stroke-linecap: round; }
+  .base-components .toggle label .square:nth-child(2) {
+    opacity: 0; }
+  .base-components .toggle-container.state-onload .toggle.am-pm input + label {
+    background: rgba(69, 100, 119, 0);
+    transition: all 250ms ease-out 500ms; }
+    .base-components .toggle-container.state-onload .toggle.am-pm input + label span {
+      opacity: 0; }
+    .base-components .toggle-container.state-onload .toggle.am-pm input + label svg:first-child {
+      opacity: 0; }
+  .base-components .toggle-container.state-onload .toggle.am-pm label > div div:nth-child(1) {
+    transition: all 250ms ease-out; }
+  .base-components .toggle-container.state-onload .toggle.am-pm label > div div:nth-child(2) {
+    transition: all 250ms ease-out 150ms; }
+  .base-components .toggle-container.state-onload .toggle.am-pm label > div div:nth-child(3) {
+    transition: all 250ms ease-out 300ms; }
+  .base-components .toggle-container.state-onload .toggle.am-pm label > div div:nth-child(4) {
+    transition: all 250ms ease-out 450ms; }
+  .base-components .toggle-container.state-onenter .toggle.am-pm input + label {
+    background: rgba(69, 100, 119, 0);
+    transition: all 250ms ease-out; }
+    .base-components .toggle-container.state-onenter .toggle.am-pm input + label span {
+      opacity: 0;
+      transition: all 250ms ease-out; }
+    .base-components .toggle-container.state-onenter .toggle.am-pm input + label .square rect {
+      stroke-dashoffset: 107;
+      stroke-dasharray: 107;
+      fill-opacity: 0;
+      transition: stroke-dashoffset 250ms ease-in, fill-opacity 450ms ease-in 250ms; }
+  .base-components .toggle-container.state-onenter .toggle.am-pm label > div div:nth-child(1) {
+    transform: scaleX(1); }
+  .base-components .toggle-container.state-onenter .toggle.am-pm label > div div:nth-child(2) {
+    transform: scaleY(1); }
+  .base-components .toggle-container.state-onenter .toggle.am-pm label > div div:nth-child(3) {
+    transform: scaleX(1); }
+  .base-components .toggle-container.state-onenter .toggle.am-pm label > div div:nth-child(4) {
+    transform: scaleY(1); }
+  .base-components .toggle-container.state-onexit {
+    opacity: 1;
+    transition: all 450ms cubic-bezier(0, 0.53, 0.05, 0.98); }
+  .base-components .toggle-container.state-hover .toggle.am-pm input + label {
+    transition: background 450ms ease-out; }
+  .base-components .toggle-container.state-active .toggle.am-pm input + label {
+    background: #425661; }
+    .base-components .toggle-container.state-active .toggle.am-pm input + label span {
+      opacity: 1; }
+    .base-components .toggle-container.state-active .toggle.am-pm input + label .am {
+      opacity: 0; }
+  .base-components .toggle-container.activate.state-onload .toggle.am-pm label > div div {
+    opacity: 0.6; }
+    .base-components .toggle-container.activate.state-onload .toggle.am-pm label > div div:nth-child(1) {
+      transform: scaleX(1);
+      transition: all 250ms ease-out 450ms; }
+    .base-components .toggle-container.activate.state-onload .toggle.am-pm label > div div:nth-child(2) {
+      transform: scaleY(1);
+      transition: all 250ms ease-out 300ms; }
+    .base-components .toggle-container.activate.state-onload .toggle.am-pm label > div div:nth-child(3) {
+      transform: scaleX(1);
+      transition: all 250ms ease-out 150ms; }
+    .base-components .toggle-container.activate.state-onload .toggle.am-pm label > div div:nth-child(4) {
+      transform: scaleY(1);
+      transition: all 250ms ease-out; }
+  .base-components .toggle-container.activate.state-onenter .toggle.am-pm input + label {
+    background: #456477; }
+    .base-components .toggle-container.activate.state-onenter .toggle.am-pm input + label .square rect {
+      stroke-dashoffset: 0;
+      fill-opacity: 1; }
+    .base-components .toggle-container.activate.state-onenter .toggle.am-pm input + label span {
+      opacity: 1; }
+    .base-components .toggle-container.activate.state-onenter .toggle.am-pm input + label .am {
+      opacity: 0; }
+  .base-components .toggle-container.activate.state-onenter .toggle.am-pm label > div div {
+    opacity: 0; }
+  .base-components .toggle-container.activate.state-onexit {
+    transform: translateX(300px);
+    opacity: 0; }
+  .base-components .toggle-container.activate.state-checked .toggle.am-pm input + label {
+    background: #F6C64E !important; }
+    .base-components .toggle-container.activate.state-checked .toggle.am-pm input + label span {
+      transform: translateX(-26px); }
+    .base-components .toggle-container.activate.state-checked .toggle.am-pm input + label svg:first-child {
+      transform: translateX(36px); }
+    .base-components .toggle-container.activate.state-checked .toggle.am-pm input + label .am {
+      opacity: 1; }
+    .base-components .toggle-container.activate.state-checked .toggle.am-pm input + label .pm {
+      opacity: 0; }
+  .base-components .toggle-container.activate.state-hover .toggle.am-pm input + label {
+    background: #425661; }
+    .base-components .toggle-container.activate.state-hover .toggle.am-pm input + label span {
+      opacity: 1; }
+    .base-components .toggle-container.activate.state-hover .toggle.am-pm input + label .am {
+      opacity: 0; }
+  .base-components .toggle-container.activate.state-active .toggle.am-pm input + label {
+    background: #487794; }
+    .base-components .toggle-container.activate.state-active .toggle.am-pm input + label span {
+      opacity: 1; }
+    .base-components .toggle-container.activate.state-active .toggle.am-pm input + label .am {
+      opacity: 0; }
+  .base-components .toggle-container.activate.state-disabled .toggle.am-pm input + label {
+    opacity: 0.2; }
+  .base-components .btn {
+    position: relative;
+    overflow: hidden;
+    pointer-events: none;
+    border: 0 !important; }
+    .base-components .btn span {
+      display: block; }
+  .base-components .btn-default span {
+    font-size: 24px; }
+    .base-components .btn-default span:nth-child(1), .base-components .btn-default span:nth-child(2), .base-components .btn-default span:nth-child(3), .base-components .btn-default span:nth-child(4) {
+      position: absolute;
+      background: #43cb9d;
+      border-radius: 1000px; }
+    .base-components .btn-default span:nth-child(1) {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transform-origin: right center;
+      transform: scaleX(0); }
+    .base-components .btn-default span:nth-child(2) {
+      top: 0;
+      right: 0;
+      width: 2px;
+      height: 100%;
+      transform-origin: center bottom;
+      transform: scaleY(0); }
+    .base-components .btn-default span:nth-child(3) {
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 2px;
+      transform-origin: left center;
+      transform: scaleX(0); }
+    .base-components .btn-default span:nth-child(4) {
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      transform-origin: center top;
+      transform: scaleY(0); }
+    .base-components .btn-default span:nth-child(5) {
+      position: absolute;
+      top: 50%;
+      margin-top: -5px;
+      left: 50%;
+      margin-left: -5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 1000px;
+      background: #557e78;
+      transform-origin: center center;
+      transform: scale(0) translateZ(0); }
+    .base-components .btn-default span:nth-child(6) {
+      position: relative;
+      z-index: 10; }
+  .base-components .btn-ghost-states {
+    border-radius: 2px;
+    padding: 14px 24px;
+    border: 0;
+    overflow: hidden; }
+    .base-components .btn-ghost-states span {
+      display: block;
+      line-height: 1; }
+      .base-components .btn-ghost-states span:nth-child(1), .base-components .btn-ghost-states span:nth-child(2), .base-components .btn-ghost-states span:nth-child(3), .base-components .btn-ghost-states span:nth-child(4) {
+        position: absolute;
+        background: white;
+        border-radius: 1000px; }
+      .base-components .btn-ghost-states span:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: right center; }
+      .base-components .btn-ghost-states span:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center bottom; }
+      .base-components .btn-ghost-states span:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: left center; }
+      .base-components .btn-ghost-states span:nth-child(4) {
+        bottom: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center top; }
+      .base-components .btn-ghost-states span:nth-child(5) {
+        position: absolute;
+        top: 50%;
+        margin-top: -5px;
+        left: 50%;
+        margin-left: -5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 1000px;
+        background: #637074;
+        transform-origin: center center;
+        transform: scale(0) translateZ(0); }
+      .base-components .btn-ghost-states span:nth-child(6) {
+        position: relative;
+        z-index: 10; }
+  .base-components .btn-ghost-states.state-onload span:nth-child(1) {
+    transition: all 250ms ease-out;
+    transform: scaleX(0); }
+  .base-components .btn-ghost-states.state-onload span:nth-child(2) {
+    transition: all 250ms ease-out 150ms;
+    transform: scaleY(0); }
+  .base-components .btn-ghost-states.state-onload span:nth-child(3) {
+    transition: all 250ms ease-out 300ms;
+    transform: scaleX(0); }
+  .base-components .btn-ghost-states.state-onload span:nth-child(4) {
+    transition: all 250ms ease-out 450ms;
+    transform: scaleY(0); }
+  .base-components .btn-ghost-states.state-onload span:nth-child(6) {
+    opacity: 0; }
+  .base-components .btn-ghost-states.state-onenter span:nth-child(6) {
+    opacity: 0;
+    transition: all 250ms ease-out; }
+  .base-components .btn-ghost-states.state-onexit {
+    transition: all 450ms ease-in-out; }
+  .base-components .btn-ghost-states.state-hover {
+    transition: all 150ms ease-in-out; }
+  .base-components .btn-ghost-states.state-active {
+    background: white;
+    color: #2B3234;
+    transition: background 10ms ease 250ms, color 250ms ease-in-out; }
+    .base-components .btn-ghost-states.state-active span:nth-child(1), .base-components .btn-ghost-states.state-active span:nth-child(2), .base-components .btn-ghost-states.state-active span:nth-child(3), .base-components .btn-ghost-states.state-active span:nth-child(4) {
+      opacity: 0; }
+    .base-components .btn-ghost-states.state-active span:nth-child(5) {
+      transition: transform 250ms ease-in-out, opacity 50ms ease 260ms; }
+  .base-components .btn-default.state-onload {
+    background: rgba(67, 203, 157, 0) !important; }
+    .base-components .btn-default.state-onload span:nth-child(1) {
+      transition: all 250ms ease-out; }
+    .base-components .btn-default.state-onload span:nth-child(2) {
+      transition: all 250ms ease-out 150ms; }
+    .base-components .btn-default.state-onload span:nth-child(3) {
+      transition: all 250ms ease-out 300ms; }
+    .base-components .btn-default.state-onload span:nth-child(4) {
+      transition: all 250ms ease-out 450ms; }
+    .base-components .btn-default.state-onload span:nth-child(6) {
+      opacity: 0; }
+  .base-components .btn-default.state-onenter {
+    background: rgba(67, 203, 157, 0) !important;
+    transition: all 250ms ease-in-out 250ms; }
+    .base-components .btn-default.state-onenter span:nth-child(1), .base-components .btn-default.state-onenter span:nth-child(2), .base-components .btn-default.state-onenter span:nth-child(3), .base-components .btn-default.state-onenter span:nth-child(4) {
+      transform: none !important; }
+    .base-components .btn-default.state-onenter span:nth-child(6) {
+      opacity: 0;
+      transition: all 250ms ease-in-out; }
+  .base-components .btn-default.state-onexit {
+    transition: all 450ms ease-in-out; }
+  .base-components .btn-default.state-hover {
+    transition: all 150ms ease-in-out; }
+  .base-components .btn-default.state-active {
+    background: #a1e5ce !important;
+    color: #428a74;
+    transition: background 10ms ease 250ms, color 250ms ease-in-out; }
+    .base-components .btn-default.state-active span:nth-child(5) {
+      transition: transform 250ms ease-in-out, opacity 50ms ease 260ms; }
+  .base-components .btn-ghost-states.activate.state-onload span:nth-child(1), .base-components .btn-ghost-states.activate.state-onload span:nth-child(2), .base-components .btn-ghost-states.activate.state-onload span:nth-child(3), .base-components .btn-ghost-states.activate.state-onload span:nth-child(4) {
+    transform: none !important; }
+  .base-components .btn-ghost-states.activate.state-onload span:nth-child(1) {
+    transition: all 250ms ease-out 450ms; }
+  .base-components .btn-ghost-states.activate.state-onload span:nth-child(2) {
+    transition: all 250ms ease-out 300ms; }
+  .base-components .btn-ghost-states.activate.state-onload span:nth-child(3) {
+    transition: all 250ms ease-out 150ms; }
+  .base-components .btn-ghost-states.activate.state-onload span:nth-child(4) {
+    transition: all 250ms ease-out; }
+  .base-components .btn-ghost-states.activate.state-onenter span:nth-child(6) {
+    opacity: 1; }
+  .base-components .btn-ghost-states.activate.state-onexit {
+    opacity: 0; }
+  .base-components .btn-ghost-states.activate.state-hover {
+    background: white;
+    color: #2B3234; }
+    .base-components .btn-ghost-states.activate.state-hover span:nth-child(1), .base-components .btn-ghost-states.activate.state-hover span:nth-child(2), .base-components .btn-ghost-states.activate.state-hover span:nth-child(3), .base-components .btn-ghost-states.activate.state-hover span:nth-child(4) {
+      opacity: 0;
+      transition: all 50ms ease 150ms; }
+  .base-components .btn-ghost-states.activate.state-active {
+    background: #637074;
+    color: white; }
+    .base-components .btn-ghost-states.activate.state-active span:nth-child(5) {
+      transform: scale(100) translateZ(0);
+      opacity: 0; }
+  .base-components .btn-default.activate.state-onload span:nth-child(1), .base-components .btn-default.activate.state-onload span:nth-child(2), .base-components .btn-default.activate.state-onload span:nth-child(3), .base-components .btn-default.activate.state-onload span:nth-child(4) {
+    transform: none !important; }
+  .base-components .btn-default.activate.state-onload span:nth-child(1) {
+    transition: all 250ms ease-out 450ms; }
+  .base-components .btn-default.activate.state-onload span:nth-child(2) {
+    transition: all 250ms ease-out 300ms; }
+  .base-components .btn-default.activate.state-onload span:nth-child(3) {
+    transition: all 250ms ease-out 150ms; }
+  .base-components .btn-default.activate.state-onload span:nth-child(4) {
+    transition: all 250ms ease-out; }
+  .base-components .btn-default.activate.state-onenter {
+    background: #43cb9d !important;
+    transition: all 250ms ease-in-out; }
+    .base-components .btn-default.activate.state-onenter span:nth-child(6) {
+      opacity: 1;
+      transition: all 250ms ease-in-out 250ms; }
+  .base-components .btn-default.activate.state-onexit {
+    opacity: 0; }
+  .base-components .btn-default.activate.state-hover {
+    background: #a1e5ce;
+    color: #428a74; }
+  .base-components .btn-default.activate.state-active {
+    background: #428a74 !important;
+    color: white; }
+    .base-components .btn-default.activate.state-active span:nth-child(5) {
+      transform: scale(100) translateZ(0);
+      opacity: 0; }
 
 /*----- ANIMATIONS */
 /* http://goo.gl/yuYTOx */
