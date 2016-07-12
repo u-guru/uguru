@@ -140,7 +140,7 @@
     </div>
 
     <!-- DEV TOOLBAR -->
-    <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate u-bounceInUp-subtle' ng-if="spec.toggleDev">
+    <div id="dev-toolbar" class='full-x bottom-0 left-0 absolute bg-slate bounceInUp-subtle' ng-if="spec.toggleDev">
         <!-- SHORTCUTS -->
         <div id='dev-bar-shortcuts' class="flex full-x animated bg-campus" ng-if='spec.showShortcuts'>
             <div class="bg-lake p15xy flex-center-vertical width-128">
