@@ -12177,7 +12177,9 @@ input[type=range] {
   /*----- INPUT */
   /*----- CHECKBOXES */
   /*----- TOGGLES */
-  /*----- BUTTONS */ }
+  /*----- BUTTONS */
+  /*----- DROPDOWNS */
+  /*----- tooltips */ }
   .base-components .checkbox-container {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -14227,6 +14229,874 @@ input[type=range] {
     .base-components .btn-default.activate.state-active span:nth-child(5) {
       transform: scale(100) translateZ(0);
       opacity: 0; }
+  .base-components .dropdown > div {
+    position: relative; }
+    .base-components .dropdown > div div {
+      position: absolute;
+      background: #576267;
+      border-radius: 1000px; }
+      .base-components .dropdown > div div:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: right center;
+        transform: scaleX(0); }
+      .base-components .dropdown > div div:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center bottom;
+        transform: scaleY(0); }
+      .base-components .dropdown > div div:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: left center;
+        transform: scaleX(0); }
+      .base-components .dropdown > div div:nth-child(4) {
+        bottom: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center top;
+        transform: scaleY(0); }
+    .base-components .dropdown > div span {
+      border-radius: 2px 0 0 2px; }
+    .base-components .dropdown > div a svg {
+      border-radius: 0 2px 2px 0; }
+  .base-components .dropdown > ul li:last-child {
+    border-radius: 0 0 2px 2px; }
+  .base-components .dropdown.activate > div span {
+    border-radius: 2px 0 0 0; }
+  .base-components .dropdown.activate > div a svg {
+    border-radius: 0 2px 0 0; }
+  .base-components .dropdown.state-onload > div div:nth-child(1) {
+    transition: all 250ms ease-out; }
+  .base-components .dropdown.state-onload > div div:nth-child(2) {
+    transition: all 250ms ease-out 150ms; }
+  .base-components .dropdown.state-onload > div div:nth-child(3) {
+    transition: all 250ms ease-out 300ms; }
+  .base-components .dropdown.state-onload > div div:nth-child(4) {
+    transition: all 250ms ease-out 450ms; }
+  .base-components .dropdown.state-onload > div span, .base-components .dropdown.state-onload > div a {
+    opacity: 0; }
+  .base-components .dropdown.state-onenter > div div {
+    transform: none !important;
+    transition: all 250ms ease-out; }
+  .base-components .dropdown.state-onenter > div span, .base-components .dropdown.state-onenter > div a {
+    opacity: 0;
+    transition: all 250ms ease-out; }
+  .base-components .dropdown.state-onenter > div a svg {
+    stroke-dasharray: 103;
+    stroke-dashoffset: 103;
+    transition: all 250ms ease-out 250ms; }
+  .base-components .dropdown.state-onexit {
+    transition: all 450ms ease-in; }
+  .base-components .dropdown.state-hover > div * {
+    transition: all 150ms ease-in-out; }
+  .base-components .dropdown.state-hover > div a svg path {
+    transform-origin: center center; }
+  .base-components .dropdown.state-active > div span {
+    transition: all 150ms ease-in-out;
+    background: #6f7d82; }
+  .base-components .dropdown.state-active > div a svg {
+    background: #b4d9d2; }
+    .base-components .dropdown.state-active > div a svg path {
+      stroke: #557e78;
+      animation: hover 1000ms linear infinite both; }
+  .base-components .dropdown.state-disabled {
+    transition: all 150ms ease-in-out; }
+  .base-components .dropdown.state-onopen > div a svg path {
+    transition: all 150ms ease-in-out; }
+  .base-components .dropdown.state-onopen > ul {
+    opacity: 1;
+    z-index: -1; }
+    .base-components .dropdown.state-onopen > ul li {
+      transform-origin: center top;
+      opacity: 0; }
+      .base-components .dropdown.state-onopen > ul li:nth-child(odd) {
+        transform: rotateX(90deg) translateZ(0); }
+      .base-components .dropdown.state-onopen > ul li:nth-child(even) {
+        transform: rotateX(-90deg) translateZ(0); }
+      .base-components .dropdown.state-onopen > ul li:nth-child(1) {
+        transition: all 250ms ease-in-out 750ms, background 150ms ease-in-out; }
+      .base-components .dropdown.state-onopen > ul li:nth-child(2) {
+        transition: all 250ms ease-in-out 500ms, background 150ms ease-in-out; }
+      .base-components .dropdown.state-onopen > ul li:nth-child(3) {
+        transition: all 250ms ease-in-out 250ms, background 150ms ease-in-out; }
+  .base-components .dropdown.state-onclose > div a svg path {
+    transform: rotate(180deg);
+    transition: all 150ms ease-in-out; }
+  .base-components .dropdown.state-onclose > ul {
+    opacity: 1;
+    z-index: 99; }
+    .base-components .dropdown.state-onclose > ul li {
+      transform: translateZ(0) !important;
+      opacity: 1; }
+      .base-components .dropdown.state-onclose > ul li:nth-child(1) {
+        transition: all 250ms ease-in-out 250ms, background 150ms ease-in-out; }
+      .base-components .dropdown.state-onclose > ul li:nth-child(2) {
+        transition: all 250ms ease-in-out 500ms, background 150ms ease-in-out; }
+      .base-components .dropdown.state-onclose > ul li:nth-child(3) {
+        transition: all 250ms ease-in-out 750ms, background 150ms ease-in-out; }
+  .base-components .dropdown.state-option-hover > div a svg path {
+    transform: rotate(180deg); }
+  .base-components .dropdown.state-option-hover > ul {
+    opacity: 1;
+    z-index: 99; }
+    .base-components .dropdown.state-option-hover > ul li:nth-child(1) {
+      transition: all 150ms ease-in-out; }
+  .base-components .dropdown.state-option-active > div a svg path {
+    transform: rotate(180deg); }
+  .base-components .dropdown.state-option-active > ul {
+    opacity: 1;
+    z-index: 99; }
+    .base-components .dropdown.state-option-active > ul li:nth-child(1) {
+      background: #557e78;
+      transition: all 150ms ease-in-out; }
+      .base-components .dropdown.state-option-active > ul li:nth-child(1) svg * {
+        transition: all 150ms ease-in-out; }
+  .base-components .dropdown.state-option-disabled > div a svg path {
+    transform: rotate(180deg); }
+  .base-components .dropdown.state-option-disabled > ul {
+    opacity: 1;
+    z-index: 99; }
+    .base-components .dropdown.state-option-disabled > ul li:nth-child(1) {
+      transition: all 150ms ease-in-out; }
+      .base-components .dropdown.state-option-disabled > ul li:nth-child(1) svg * {
+        transition: all 150ms ease-in-out; }
+  .base-components .dropdown.state-info-hover > div a svg path {
+    transform: rotate(180deg); }
+  .base-components .dropdown.state-info-hover > ul {
+    opacity: 1;
+    z-index: 99; }
+    .base-components .dropdown.state-info-hover > ul li:nth-child(1) {
+      background: #557e78;
+      transition: all 150ms ease-in-out; }
+      .base-components .dropdown.state-info-hover > ul li:nth-child(1) svg {
+        transition: all 150ms ease-in-out; }
+      .base-components .dropdown.state-info-hover > ul li:nth-child(1) .dropdown-info {
+        transition: all 150ms ease-in-out 300ms; }
+  .base-components .dropdown.activate.state-onload > div div {
+    transform: none !important; }
+    .base-components .dropdown.activate.state-onload > div div:nth-child(1) {
+      transition: all 250ms ease-out 450ms; }
+    .base-components .dropdown.activate.state-onload > div div:nth-child(2) {
+      transition: all 250ms ease-out 300ms; }
+    .base-components .dropdown.activate.state-onload > div div:nth-child(3) {
+      transition: all 250ms ease-out 150ms; }
+    .base-components .dropdown.activate.state-onload > div div:nth-child(4) {
+      transition: all 250ms ease-out; }
+  .base-components .dropdown.activate.state-onenter > div div {
+    opacity: 0; }
+  .base-components .dropdown.activate.state-onenter > div span, .base-components .dropdown.activate.state-onenter > div a {
+    opacity: 1; }
+  .base-components .dropdown.activate.state-onenter > div a svg {
+    stroke-dashoffset: 0; }
+  .base-components .dropdown.activate.state-onexit {
+    opacity: 0; }
+  .base-components .dropdown.activate.state-hover > div span {
+    background: #6f7d82; }
+  .base-components .dropdown.activate.state-hover > div a svg {
+    background: #b4d9d2; }
+    .base-components .dropdown.activate.state-hover > div a svg path {
+      stroke: #557e78;
+      animation: hover 1000ms linear infinite both; }
+  .base-components .dropdown.activate.state-active > div span {
+    background: #343b3d; }
+  .base-components .dropdown.activate.state-active > div a svg {
+    background: #557e78; }
+    .base-components .dropdown.activate.state-active > div a svg path {
+      stroke: white;
+      animation: none; }
+  .base-components .dropdown.activate.state-disabled {
+    opacity: 0.2; }
+  .base-components .dropdown.activate.state-onopen > div a svg path {
+    transform: rotate(180deg); }
+  .base-components .dropdown.activate.state-onopen > ul {
+    z-index: 99; }
+    .base-components .dropdown.activate.state-onopen > ul li {
+      transform: translateZ(0) !important;
+      opacity: 1; }
+      .base-components .dropdown.activate.state-onopen > ul li:nth-child(1) {
+        transition: all 250ms ease-in-out 250ms, background 150ms ease-in-out; }
+      .base-components .dropdown.activate.state-onopen > ul li:nth-child(2) {
+        transition: all 250ms ease-in-out 500ms, background 150ms ease-in-out; }
+      .base-components .dropdown.activate.state-onopen > ul li:nth-child(3) {
+        transition: all 250ms ease-in-out 750ms, background 150ms ease-in-out; }
+  .base-components .dropdown.activate.state-onclose > div a svg path {
+    transform: rotate(0); }
+  .base-components .dropdown.activate.state-onclose > ul {
+    opacity: 1;
+    z-index: -1; }
+    .base-components .dropdown.activate.state-onclose > ul li {
+      transform-origin: center top;
+      opacity: 0; }
+      .base-components .dropdown.activate.state-onclose > ul li:nth-child(odd) {
+        transform: rotateX(90deg) translateZ(0); }
+      .base-components .dropdown.activate.state-onclose > ul li:nth-child(even) {
+        transform: rotateX(-90deg) translateZ(0); }
+      .base-components .dropdown.activate.state-onclose > ul li:nth-child(1) {
+        transition: all 250ms ease-in-out 750ms, background 150ms ease-in-out; }
+      .base-components .dropdown.activate.state-onclose > ul li:nth-child(2) {
+        transition: all 250ms ease-in-out 500ms, background 150ms ease-in-out; }
+      .base-components .dropdown.activate.state-onclose > ul li:nth-child(3) {
+        transition: all 250ms ease-in-out 250ms, background 150ms ease-in-out; }
+  .base-components .dropdown.activate.state-option-hover > ul {
+    opacity: 1;
+    z-index: 99; }
+    .base-components .dropdown.activate.state-option-hover > ul li:nth-child(1) {
+      background: #557e78; }
+  .base-components .dropdown.activate.state-option-active > ul {
+    opacity: 1;
+    z-index: 99; }
+    .base-components .dropdown.activate.state-option-active > ul li:nth-child(1) {
+      background: #b4d9d2;
+      color: #557e78 !important; }
+      .base-components .dropdown.activate.state-option-active > ul li:nth-child(1) svg * {
+        stroke: #557e78 !important; }
+  .base-components .dropdown.activate.state-option-disabled > ul {
+    opacity: 1;
+    z-index: 99; }
+    .base-components .dropdown.activate.state-option-disabled > ul li:nth-child(1) {
+      background: #839c9d;
+      color: rgba(255, 255, 255, 0.5); }
+      .base-components .dropdown.activate.state-option-disabled > ul li:nth-child(1) svg * {
+        stroke: rgba(255, 255, 255, 0.5); }
+  .base-components .dropdown.activate.state-info-hover > ul {
+    opacity: 1;
+    z-index: 99; }
+    .base-components .dropdown.activate.state-info-hover > ul li:nth-child(1) {
+      background: #557e78; }
+      .base-components .dropdown.activate.state-info-hover > ul li:nth-child(1) svg circle {
+        fill: white !important;
+        stroke: transparent !important; }
+      .base-components .dropdown.activate.state-info-hover > ul li:nth-child(1) svg path {
+        stroke: #40484B !important; }
+      .base-components .dropdown.activate.state-info-hover > ul li:nth-child(1) .dropdown-info {
+        transform: translateZ(0) scale(1) !important;
+        z-index: auto !important; }
+  .base-components .tooltips {
+    display: flex;
+    position: relative;
+    z-index: 99;
+    width: 300px;
+    height: 208px; }
+    .base-components .tooltips > span {
+      position: relative;
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      background: #43cb9d; }
+      .base-components .tooltips > span:after {
+        content: "";
+        display: block;
+        position: absolute;
+        background: #43cb9d;
+        border-radius: 1000px; }
+    .base-components .tooltips.tooltips-top, .base-components .tooltips.tooltips-bot {
+      justify-content: center; }
+      .base-components .tooltips.tooltips-top > span:after, .base-components .tooltips.tooltips-bot > span:after {
+        left: 50%;
+        margin-left: -1px;
+        width: 2px;
+        height: 100px; }
+      .base-components .tooltips.tooltips-top > div, .base-components .tooltips.tooltips-bot > div {
+        left: 50%;
+        margin-left: -100px; }
+    .base-components .tooltips.tooltips-top > span {
+      align-self: flex-start; }
+      .base-components .tooltips.tooltips-top > span:after {
+        top: 0; }
+    .base-components .tooltips.tooltips-top > div {
+      top: 100px; }
+    .base-components .tooltips.tooltips-bot > span {
+      align-self: flex-end; }
+      .base-components .tooltips.tooltips-bot > span:after {
+        bottom: 0; }
+    .base-components .tooltips.tooltips-bot > div {
+      bottom: 100px; }
+    .base-components .tooltips.tooltips-left, .base-components .tooltips.tooltips-right {
+      align-items: center;
+      align-content: center; }
+      .base-components .tooltips.tooltips-left > span:after, .base-components .tooltips.tooltips-right > span:after {
+        top: 50%;
+        margin-top: -1px;
+        width: 100px;
+        height: 2px; }
+      .base-components .tooltips.tooltips-left > div, .base-components .tooltips.tooltips-right > div {
+        top: 50%;
+        margin-top: -57px; }
+    .base-components .tooltips.tooltips-left {
+      justify-content: flex-start; }
+      .base-components .tooltips.tooltips-left > span:after {
+        left: 0; }
+      .base-components .tooltips.tooltips-left > div {
+        left: 100px; }
+    .base-components .tooltips.tooltips-right {
+      justify-content: flex-end; }
+      .base-components .tooltips.tooltips-right > span:after {
+        right: 0; }
+      .base-components .tooltips.tooltips-right > div {
+        right: 100px; }
+    .base-components .tooltips > div {
+      position: absolute;
+      width: 200px;
+      height: 98px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 2px;
+      color: #40484B;
+      font-size: 18px;
+      font-weight: 600;
+      overflow: hidden; }
+      .base-components .tooltips > div > span {
+        display: block;
+        padding: 10px 15px; }
+      .base-components .tooltips > div > div {
+        position: absolute;
+        background: #43cb9d;
+        border-radius: 1000px; }
+        .base-components .tooltips > div > div:nth-child(1) {
+          top: 0;
+          left: 0;
+          width: 50%;
+          height: 2px;
+          border-radius: 1000px 0 0 1000px; }
+        .base-components .tooltips > div > div:nth-child(2) {
+          top: 0;
+          right: 0;
+          width: 50%;
+          height: 2px;
+          border-radius: 0 1000px 1000px 0; }
+        .base-components .tooltips > div > div:nth-child(3) {
+          top: 0;
+          right: 0;
+          width: 2px;
+          height: 50%;
+          border-radius: 1000px 1000px 0 0; }
+        .base-components .tooltips > div > div:nth-child(4) {
+          bottom: 0;
+          right: 0;
+          width: 2px;
+          height: 50%;
+          border-radius: 0 0 1000px 1000px; }
+        .base-components .tooltips > div > div:nth-child(5) {
+          bottom: 0;
+          right: 0;
+          width: 50%;
+          height: 2px;
+          border-radius: 0 1000px 1000px 0; }
+        .base-components .tooltips > div > div:nth-child(6) {
+          bottom: 0;
+          left: 0;
+          width: 50%;
+          height: 2px;
+          border-radius: 1000px 0 0 1000px; }
+        .base-components .tooltips > div > div:nth-child(7) {
+          bottom: 0;
+          left: 0;
+          width: 2px;
+          height: 50%;
+          border-radius: 1000px 1000px 0 0; }
+        .base-components .tooltips > div > div:nth-child(8) {
+          top: 0;
+          left: 0;
+          width: 2px;
+          height: 50%;
+          border-radius: 0 0 1000px 1000px; }
+    .base-components .tooltips button {
+      height: auto;
+      padding: 10px 15px;
+      font-size: 18px;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+      line-height: 1; }
+  .base-components .tooltips-top > div > div:nth-child(1) {
+    transform-origin: right center; }
+  .base-components .tooltips-top > div > div:nth-child(2) {
+    transform-origin: left center; }
+  .base-components .tooltips-top > div > div:nth-child(3) {
+    transform-origin: center top; }
+  .base-components .tooltips-top > div > div:nth-child(4) {
+    transform-origin: center top; }
+  .base-components .tooltips-top > div > div:nth-child(5) {
+    transform-origin: right center; }
+  .base-components .tooltips-top > div > div:nth-child(6) {
+    transform-origin: left center; }
+  .base-components .tooltips-top > div > div:nth-child(7) {
+    transform-origin: center top; }
+  .base-components .tooltips-top > div > div:nth-child(8) {
+    transform-origin: center top; }
+  .base-components .tooltips-right > div > div:nth-child(1) {
+    transform-origin: right center; }
+  .base-components .tooltips-right > div > div:nth-child(2) {
+    transform-origin: right center; }
+  .base-components .tooltips-right > div > div:nth-child(3) {
+    transform-origin: center bottom; }
+  .base-components .tooltips-right > div > div:nth-child(4) {
+    transform-origin: center top; }
+  .base-components .tooltips-right > div > div:nth-child(5) {
+    transform-origin: right center; }
+  .base-components .tooltips-right > div > div:nth-child(6) {
+    transform-origin: right center; }
+  .base-components .tooltips-right > div > div:nth-child(7) {
+    transform-origin: center bottom; }
+  .base-components .tooltips-right > div > div:nth-child(8) {
+    transform-origin: center top; }
+  .base-components .tooltips-left > div > div:nth-child(1) {
+    transform-origin: left center; }
+  .base-components .tooltips-left > div > div:nth-child(2) {
+    transform-origin: left center; }
+  .base-components .tooltips-left > div > div:nth-child(3) {
+    transform-origin: center top; }
+  .base-components .tooltips-left > div > div:nth-child(4) {
+    transform-origin: center bottom; }
+  .base-components .tooltips-left > div > div:nth-child(5) {
+    transform-origin: left center; }
+  .base-components .tooltips-left > div > div:nth-child(6) {
+    transform-origin: left center; }
+  .base-components .tooltips-left > div > div:nth-child(7) {
+    transform-origin: center top; }
+  .base-components .tooltips-left > div > div:nth-child(8) {
+    transform-origin: center bottom; }
+  .base-components .tooltips-top.state-onenter > span {
+    transform: scale(0);
+    transition: all 150ms ease-out; }
+  .base-components .tooltips-top.state-onenter > div {
+    background: rgba(255, 255, 255, 0);
+    transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-top.state-onenter > div > div:nth-child(1) {
+      transform: scaleX(0);
+      transition: all 250ms ease-in-out 250ms; }
+    .base-components .tooltips-top.state-onenter > div > div:nth-child(2) {
+      transform: scaleX(0);
+      transition: all 250ms ease-in-out 250ms; }
+    .base-components .tooltips-top.state-onenter > div > div:nth-child(3) {
+      transform: scaleY(0);
+      transition: all 100ms ease-out 450ms; }
+    .base-components .tooltips-top.state-onenter > div > div:nth-child(4) {
+      transform: scaleY(0);
+      transition: all 125ms ease-in 570ms; }
+    .base-components .tooltips-top.state-onenter > div > div:nth-child(5) {
+      transform: scaleX(0);
+      transition: all 250ms ease-in-out 750ms; }
+    .base-components .tooltips-top.state-onenter > div > div:nth-child(6) {
+      transform: scaleX(0);
+      transition: all 250ms ease-in 750ms; }
+    .base-components .tooltips-top.state-onenter > div > div:nth-child(7) {
+      transform: scaleY(0);
+      transition: all 125ms ease-in 570ms; }
+    .base-components .tooltips-top.state-onenter > div > div:nth-child(8) {
+      transform: scaleY(0);
+      transition: all 100ms ease-out 450ms; }
+    .base-components .tooltips-top.state-onenter > div span {
+      opacity: 0;
+      transform: translateY(-10%);
+      transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-top.state-onenter > div button {
+      opacity: 0;
+      transform: translateY(-10%);
+      transition: 300ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 650ms; }
+  .base-components .tooltips-top.state-onexit.tooltips {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 450ms cubic-bezier(0.71, 0.06, 0.47, 0.63); }
+  .base-components .tooltips-top.state-oncomplete > span {
+    transform: scale(1);
+    transition: all 450ms cubic-bezier(0.39, 0.22, 0.3, 0.89) 750ms; }
+  .base-components .tooltips-top.state-oncomplete > div {
+    background: rgba(255, 255, 255, 0.9);
+    transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-top.state-oncomplete > div > div:nth-child(1) {
+      transform: scaleX(1);
+      transition: all 250ms ease-in-out 750ms; }
+    .base-components .tooltips-top.state-oncomplete > div > div:nth-child(2) {
+      transform: scaleX(1);
+      transition: all 250ms ease-in-out 750ms; }
+    .base-components .tooltips-top.state-oncomplete > div > div:nth-child(3) {
+      transform: scaleY(1);
+      transition: all 100ms ease-in 570ms; }
+    .base-components .tooltips-top.state-oncomplete > div > div:nth-child(4) {
+      transform: scaleY(1);
+      transition: all 125ms ease-in 450ms; }
+    .base-components .tooltips-top.state-oncomplete > div > div:nth-child(5) {
+      transform: scaleX(1);
+      transition: all 250ms ease-in-out; }
+    .base-components .tooltips-top.state-oncomplete > div > div:nth-child(6) {
+      transform: scaleX(1);
+      transition: all 250ms ease-out; }
+    .base-components .tooltips-top.state-oncomplete > div > div:nth-child(7) {
+      transform: scaleY(1);
+      transition: all 125ms ease-out 450ms; }
+    .base-components .tooltips-top.state-oncomplete > div > div:nth-child(8) {
+      transform: scaleY(1);
+      transition: all 100ms ease-in 570ms; }
+    .base-components .tooltips-top.state-oncomplete > div span {
+      opacity: 1;
+      transform: translateY(0);
+      transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-top.state-oncomplete > div button {
+      opacity: 1;
+      transform: translateY(0);
+      transition: 300ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 250ms; }
+  .base-components .tooltips-top.state-onswitch.tooltips {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 300ms cubic-bezier(0, 0.4, 0.01, 1.01); }
+  .base-components .activate.tooltips-top.state-onenter > span {
+    transform: scale(1); }
+  .base-components .activate.tooltips-top.state-onenter > div {
+    background: rgba(255, 255, 255, 0.9); }
+    .base-components .activate.tooltips-top.state-onenter > div > div:nth-child(1) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-top.state-onenter > div > div:nth-child(2) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-top.state-onenter > div > div:nth-child(3) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-top.state-onenter > div > div:nth-child(4) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-top.state-onenter > div > div:nth-child(5) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-top.state-onenter > div > div:nth-child(6) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-top.state-onenter > div > div:nth-child(7) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-top.state-onenter > div > div:nth-child(8) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-top.state-onenter > div span {
+      opacity: 1;
+      transform: translateY(0); }
+    .base-components .activate.tooltips-top.state-onenter > div button {
+      opacity: 1;
+      transform: translateY(0); }
+  .base-components .activate.tooltips-top.state-onexit.tooltips {
+    transform: translateY(-10%);
+    opacity: 0; }
+  .base-components .activate.tooltips-top.state-oncomplete > span {
+    transform: scale(0); }
+  .base-components .activate.tooltips-top.state-oncomplete > div {
+    background: rgba(255, 255, 255, 0); }
+    .base-components .activate.tooltips-top.state-oncomplete > div > div:nth-child(1) {
+      transform: scaleX(0);
+      transition: all 250ms ease-in-out 250ms; }
+    .base-components .activate.tooltips-top.state-oncomplete > div > div:nth-child(2) {
+      transform: scaleX(0);
+      transition: all 250ms ease-in-out 250ms; }
+    .base-components .activate.tooltips-top.state-oncomplete > div > div:nth-child(3) {
+      transform: scaleY(0);
+      transition: all 100ms ease-out 450ms; }
+    .base-components .activate.tooltips-top.state-oncomplete > div > div:nth-child(4) {
+      transform: scaleY(0);
+      transition: all 125ms ease-in 570ms; }
+    .base-components .activate.tooltips-top.state-oncomplete > div > div:nth-child(5) {
+      transform: scaleX(0);
+      transition: all 250ms ease-in-out 750ms; }
+    .base-components .activate.tooltips-top.state-oncomplete > div > div:nth-child(6) {
+      transform: scaleX(0);
+      transition: all 250ms ease-in 750ms; }
+    .base-components .activate.tooltips-top.state-oncomplete > div > div:nth-child(7) {
+      transform: scaleY(0);
+      transition: all 125ms ease-in 570ms; }
+    .base-components .activate.tooltips-top.state-oncomplete > div > div:nth-child(8) {
+      transform: scaleY(0);
+      transition: all 100ms ease-out 450ms; }
+    .base-components .activate.tooltips-top.state-oncomplete > div span {
+      opacity: 0;
+      transform: translateY(-10%); }
+    .base-components .activate.tooltips-top.state-oncomplete > div button {
+      opacity: 0;
+      transform: translateY(-10%); }
+  .base-components .activate.tooltips-top.state-onswitch.tooltips {
+    transform: translateY(-10%);
+    opacity: 0; }
+  .base-components .tooltips-right.state-onenter > span {
+    transform: scale(0);
+    transition: all 150ms ease-out; }
+  .base-components .tooltips-right.state-onenter > div {
+    background: rgba(255, 255, 255, 0);
+    transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-right.state-onenter > div > div:nth-child(1) {
+      transform: scaleX(0);
+      transition: all 125ms ease-out 570ms; }
+    .base-components .tooltips-right.state-onenter > div > div:nth-child(2) {
+      transform: scaleX(0);
+      transition: all 125ms ease-in 450ms; }
+    .base-components .tooltips-right.state-onenter > div > div:nth-child(3) {
+      transform: scaleY(0);
+      transition: all 250ms ease-in-out 250ms; }
+    .base-components .tooltips-right.state-onenter > div > div:nth-child(4) {
+      transform: scaleY(0);
+      transition: all 250ms ease-in-out 250ms; }
+    .base-components .tooltips-right.state-onenter > div > div:nth-child(5) {
+      transform: scaleX(0);
+      transition: all 125ms ease-in 450ms; }
+    .base-components .tooltips-right.state-onenter > div > div:nth-child(6) {
+      transform: scaleX(0);
+      transition: all 125ms ease-out 570ms; }
+    .base-components .tooltips-right.state-onenter > div > div:nth-child(7) {
+      transform: scaleY(0);
+      transition: all 250ms ease-in-out 750ms; }
+    .base-components .tooltips-right.state-onenter > div > div:nth-child(8) {
+      transform: scaleY(0);
+      transition: all 250ms ease-in-out 750ms; }
+    .base-components .tooltips-right.state-onenter > div span {
+      opacity: 0;
+      transform: translateX(10%);
+      transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-right.state-onenter > div button {
+      opacity: 0;
+      transform: translateX(10%);
+      transition: 300ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 650ms; }
+  .base-components .tooltips-right.state-onexit.tooltips {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 450ms cubic-bezier(0.39, 0.22, 0.19, 1.01); }
+  .base-components .tooltips-right.state-oncomplete > span {
+    transform: scale(1);
+    transition: all 250ms ease-out 750ms; }
+  .base-components .tooltips-right.state-oncomplete > div {
+    background: rgba(255, 255, 255, 0.9);
+    transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-right.state-oncomplete > div > div:nth-child(1) {
+      transform: scaleX(1);
+      transition: all 125ms ease-in 250ms; }
+    .base-components .tooltips-right.state-oncomplete > div > div:nth-child(2) {
+      transform: scaleX(1);
+      transition: all 125ms ease-out 375ms; }
+    .base-components .tooltips-right.state-oncomplete > div > div:nth-child(3) {
+      transform: scaleY(1);
+      transition: all 250ms ease-in-out 500ms; }
+    .base-components .tooltips-right.state-oncomplete > div > div:nth-child(4) {
+      transform: scaleY(1);
+      transition: all 250ms ease-in-out 500ms; }
+    .base-components .tooltips-right.state-oncomplete > div > div:nth-child(5) {
+      transform: scaleX(1);
+      transition: all 125ms ease-out 375ms; }
+    .base-components .tooltips-right.state-oncomplete > div > div:nth-child(6) {
+      transform: scaleX(1);
+      transition: all 125ms ease-in 250ms; }
+    .base-components .tooltips-right.state-oncomplete > div > div:nth-child(7) {
+      transform: scaleY(1);
+      transition: all 250ms ease-in-out; }
+    .base-components .tooltips-right.state-oncomplete > div > div:nth-child(8) {
+      transform: scaleY(1);
+      transition: all 250ms ease-in-out; }
+    .base-components .tooltips-right.state-oncomplete > div span {
+      opacity: 1;
+      transform: translateX(0%);
+      transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-right.state-oncomplete > div button {
+      opacity: 1;
+      transform: translateX(0%);
+      transition: 300ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 650ms; }
+  .base-components .tooltips-right.state-onswitch.tooltips {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 300ms cubic-bezier(0, 0.4, 0.01, 1.01); }
+  .base-components .activate.tooltips-right.state-onenter > span {
+    transform: scale(1); }
+  .base-components .activate.tooltips-right.state-onenter > div {
+    background: rgba(255, 255, 255, 0.9); }
+    .base-components .activate.tooltips-right.state-onenter > div > div:nth-child(1) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-right.state-onenter > div > div:nth-child(2) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-right.state-onenter > div > div:nth-child(3) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-right.state-onenter > div > div:nth-child(4) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-right.state-onenter > div > div:nth-child(5) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-right.state-onenter > div > div:nth-child(6) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-right.state-onenter > div > div:nth-child(7) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-right.state-onenter > div > div:nth-child(8) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-right.state-onenter > div span {
+      opacity: 1;
+      transform: translateX(0); }
+    .base-components .activate.tooltips-right.state-onenter > div button {
+      opacity: 1;
+      transform: translateX(0); }
+  .base-components .activate.tooltips-right.state-onexit.tooltips {
+    transform: translateX(10%);
+    opacity: 0; }
+  .base-components .activate.tooltips-right.state-oncomplete > span {
+    transform: scale(0); }
+  .base-components .activate.tooltips-right.state-oncomplete > div {
+    background: rgba(255, 255, 255, 0); }
+    .base-components .activate.tooltips-right.state-oncomplete > div > div:nth-child(1) {
+      transform: scaleX(0); }
+    .base-components .activate.tooltips-right.state-oncomplete > div > div:nth-child(2) {
+      transform: scaleX(0); }
+    .base-components .activate.tooltips-right.state-oncomplete > div > div:nth-child(3) {
+      transform: scaleY(0); }
+    .base-components .activate.tooltips-right.state-oncomplete > div > div:nth-child(4) {
+      transform: scaleY(0); }
+    .base-components .activate.tooltips-right.state-oncomplete > div > div:nth-child(5) {
+      transform: scaleX(0); }
+    .base-components .activate.tooltips-right.state-oncomplete > div > div:nth-child(6) {
+      transform: scaleX(0); }
+    .base-components .activate.tooltips-right.state-oncomplete > div > div:nth-child(7) {
+      transform: scaleY(0); }
+    .base-components .activate.tooltips-right.state-oncomplete > div > div:nth-child(8) {
+      transform: scaleY(0); }
+    .base-components .activate.tooltips-right.state-oncomplete > div span {
+      opacity: 0;
+      transform: translateX(10%); }
+    .base-components .activate.tooltips-right.state-oncomplete > div button {
+      opacity: 0;
+      transform: translateX(10%); }
+  .base-components .activate.tooltips-right.state-onswitch.tooltips {
+    transform: translateX(10%);
+    opacity: 0; }
+  .base-components .tooltips-left.state-onenter > span {
+    transform: scale(0);
+    transition: all 150ms ease-out; }
+  .base-components .tooltips-left.state-onenter > div {
+    background: rgba(255, 255, 255, 0);
+    transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-left.state-onenter > div > div:nth-child(1) {
+      transform: scaleX(0);
+      transition: all 125ms ease-in 250ms; }
+    .base-components .tooltips-left.state-onenter > div > div:nth-child(2) {
+      transform: scaleX(0);
+      transition: all 125ms ease-out 375ms; }
+    .base-components .tooltips-left.state-onenter > div > div:nth-child(3) {
+      transform: scaleY(0);
+      transition: all 250ms ease-in-out 570ms; }
+    .base-components .tooltips-left.state-onenter > div > div:nth-child(4) {
+      transform: scaleY(0);
+      transition: all 250ms ease-in-out 570ms; }
+    .base-components .tooltips-left.state-onenter > div > div:nth-child(5) {
+      transform: scaleX(0);
+      transition: all 125ms ease-out 375ms; }
+    .base-components .tooltips-left.state-onenter > div > div:nth-child(6) {
+      transform: scaleX(0);
+      transition: all 125ms ease-in 250ms; }
+    .base-components .tooltips-left.state-onenter > div > div:nth-child(7) {
+      transform: scaleY(0);
+      transition: all 250ms ease-in-out; }
+    .base-components .tooltips-left.state-onenter > div > div:nth-child(8) {
+      transform: scaleY(0);
+      transition: all 250ms ease-in-out; }
+    .base-components .tooltips-left.state-onenter > div span {
+      opacity: 0;
+      transform: translateX(-10%);
+      transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-left.state-onenter > div button {
+      opacity: 0;
+      transform: translateX(-10%);
+      transition: 300ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 650ms; }
+  .base-components .tooltips-left.state-onexit.tooltips {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 450ms cubic-bezier(0.39, 0.22, 0.19, 1.01); }
+  .base-components .tooltips-left.state-oncomplete > span {
+    transform: scale(1);
+    transition: all 450ms cubic-bezier(0.39, 0.22, 0.3, 0.89) 750ms; }
+  .base-components .tooltips-left.state-oncomplete > div {
+    background: rgba(255, 255, 255, 0.9);
+    transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-left.state-oncomplete > div > div:nth-child(1) {
+      transform: scaleX(1);
+      transition: all 125ms ease-out 375ms; }
+    .base-components .tooltips-left.state-oncomplete > div > div:nth-child(2) {
+      transform: scaleX(1);
+      transition: all 125ms ease-in 250ms; }
+    .base-components .tooltips-left.state-oncomplete > div > div:nth-child(3) {
+      transform: scaleY(1);
+      transition: all 250ms ease-in-out; }
+    .base-components .tooltips-left.state-oncomplete > div > div:nth-child(4) {
+      transform: scaleY(1);
+      transition: all 250ms ease-in-out; }
+    .base-components .tooltips-left.state-oncomplete > div > div:nth-child(5) {
+      transform: scaleX(1);
+      transition: all 125ms ease-in 250ms; }
+    .base-components .tooltips-left.state-oncomplete > div > div:nth-child(6) {
+      transform: scaleX(1);
+      transition: all 125ms ease-out 375ms; }
+    .base-components .tooltips-left.state-oncomplete > div > div:nth-child(7) {
+      transform: scaleY(1);
+      transition: all 250ms ease-in-out 500ms; }
+    .base-components .tooltips-left.state-oncomplete > div > div:nth-child(8) {
+      transform: scaleY(1);
+      transition: all 250ms ease-in-out 500ms; }
+    .base-components .tooltips-left.state-oncomplete > div span {
+      opacity: 1;
+      transform: translateY(0);
+      transition: 500ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 450ms; }
+    .base-components .tooltips-left.state-oncomplete > div button {
+      opacity: 1;
+      transform: translateY(0);
+      transition: 300ms cubic-bezier(0.71, 0.06, 0.47, 0.63) 250ms; }
+  .base-components .tooltips-left.state-onswitch.tooltips {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 300ms cubic-bezier(0, 0.4, 0.01, 1.01); }
+  .base-components .activate.tooltips-left.state-onenter > span {
+    transform: scale(1); }
+  .base-components .activate.tooltips-left.state-onenter > div {
+    background: rgba(255, 255, 255, 0.9); }
+    .base-components .activate.tooltips-left.state-onenter > div > div:nth-child(1) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-left.state-onenter > div > div:nth-child(2) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-left.state-onenter > div > div:nth-child(3) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-left.state-onenter > div > div:nth-child(4) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-left.state-onenter > div > div:nth-child(5) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-left.state-onenter > div > div:nth-child(6) {
+      transform: scaleX(1); }
+    .base-components .activate.tooltips-left.state-onenter > div > div:nth-child(7) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-left.state-onenter > div > div:nth-child(8) {
+      transform: scaleY(1); }
+    .base-components .activate.tooltips-left.state-onenter > div span {
+      opacity: 1;
+      transform: translateY(0); }
+    .base-components .activate.tooltips-left.state-onenter > div button {
+      opacity: 1;
+      transform: translateY(0); }
+  .base-components .activate.tooltips-left.state-onexit.tooltips {
+    transform: translateX(-10%);
+    opacity: 0; }
+  .base-components .activate.tooltips-left.state-oncomplete > span {
+    transform: scale(0); }
+  .base-components .activate.tooltips-left.state-oncomplete > div {
+    background: rgba(255, 255, 255, 0); }
+    .base-components .activate.tooltips-left.state-oncomplete > div > div:nth-child(1) {
+      transform: scaleX(0); }
+    .base-components .activate.tooltips-left.state-oncomplete > div > div:nth-child(2) {
+      transform: scaleX(0); }
+    .base-components .activate.tooltips-left.state-oncomplete > div > div:nth-child(3) {
+      transform: scaleY(0); }
+    .base-components .activate.tooltips-left.state-oncomplete > div > div:nth-child(4) {
+      transform: scaleY(0); }
+    .base-components .activate.tooltips-left.state-oncomplete > div > div:nth-child(5) {
+      transform: scaleX(0); }
+    .base-components .activate.tooltips-left.state-oncomplete > div > div:nth-child(6) {
+      transform: scaleX(0); }
+    .base-components .activate.tooltips-left.state-oncomplete > div > div:nth-child(7) {
+      transform: scaleY(0); }
+    .base-components .activate.tooltips-left.state-oncomplete > div > div:nth-child(8) {
+      transform: scaleY(0); }
+    .base-components .activate.tooltips-left.state-oncomplete > div span {
+      opacity: 0;
+      transform: translateX(-10%); }
+    .base-components .activate.tooltips-left.state-oncomplete > div button {
+      opacity: 0;
+      transform: translateX(-10%); }
+  .base-components .activate.tooltips-left.state-onswitch.tooltips {
+    transform: translateX(-10%);
+    opacity: 0; }
 
 /*----- ANIMATIONS */
 /* http://goo.gl/yuYTOx */

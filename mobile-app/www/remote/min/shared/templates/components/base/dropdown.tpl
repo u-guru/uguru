@@ -1,7 +1,7 @@
-<div class="absolute full-xy top-0 left-0 flex-center-wrap">
-    <ul>
-        <li>
-            <div>
+<div class="base-components absolute full-xy top-0 left-0 overflow-auto bg-charcoal">
+    <ul class="flex-wrap p15-grid">
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-default">
                     <div>
                         <div></div><div></div>
@@ -55,7 +55,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -65,12 +65,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">Default</label>
+                    <label class="txt-white" for="checkbox-item">Default</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-onload">
                     <div>
                         <div></div><div></div>
@@ -124,7 +124,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -134,12 +134,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">onLoad</label>
+                    <label class="txt-white" for="checkbox-item">onLoad</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-onenter">
                     <div>
                         <div></div><div></div>
@@ -193,7 +193,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -203,12 +203,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">onEnter</label>
+                    <label class="txt-white" for="checkbox-item">onEnter</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-onexit">
                     <div>
                         <div></div><div></div>
@@ -262,7 +262,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -272,12 +272,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">onExit</label>
+                    <label class="txt-white" for="checkbox-item">onExit</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-hover">
                     <div>
                         <div></div><div></div>
@@ -331,7 +331,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -341,12 +341,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">:hover</label>
+                    <label class="txt-white" for="checkbox-item">:hover</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-active">
                     <div>
                         <div></div><div></div>
@@ -400,7 +400,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -410,12 +410,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">:active</label>
+                    <label class="txt-white" for="checkbox-item">:active</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-disabled">
                     <div>
                         <div></div><div></div>
@@ -469,7 +469,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -479,12 +479,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">:disabled</label>
+                    <label class="txt-white" for="checkbox-item">:disabled</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-onopen">
                     <div>
                         <div></div><div></div>
@@ -538,7 +538,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -548,12 +548,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">onOpen</label>
+                    <label class="txt-white" for="checkbox-item">onOpen</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-onclose">
                     <div>
                         <div></div><div></div>
@@ -607,7 +607,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -617,12 +617,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">onClose</label>
+                    <label class="txt-white" for="checkbox-item">onClose</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-option-hover">
                     <div>
                         <div></div><div></div>
@@ -676,7 +676,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -686,12 +686,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">option:hover</label>
+                    <label class="txt-white" for="checkbox-item">option:hover</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-option-active">
                     <div>
                         <div></div><div></div>
@@ -745,7 +745,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -755,12 +755,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">option:active</label>
+                    <label class="txt-white" for="checkbox-item">option:active</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-option-disabled">
                     <div>
                         <div></div><div></div>
@@ -814,7 +814,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -824,12 +824,12 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">option:disabled</label>
+                    <label class="txt-white" for="checkbox-item">option:disabled</label>
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p height-33p" style="min-height: 272px;">
+            <div class="bg-slate-25p p15xy full-xy relative flex-middle">
                 <div class="dropdown auto info state-info-hover">
                     <div>
                         <div></div><div></div>
@@ -883,7 +883,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -893,7 +893,7 @@
                             </svg>
                         </span>
                     </div>
-                    <label for="checkbox-item">info:hover</label>
+                    <label class="txt-white" for="checkbox-item">info:hover</label>
                 </div>
             </div>
         </li>
