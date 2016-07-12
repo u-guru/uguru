@@ -39,6 +39,9 @@
                             <div class='full-x txt-slate flex-stretch block bg-charcoal txt-moxie'>
                                     <pre class='text-center weight-600'> {{arg.syntax}} </pre>
                             </div>
+                            <div class='full-x txt-slate flex-stretch block bg-smoke txt-auburn' ng-if='arg.special_notes'>
+                                <span class='weight-700'> Special Notes: </span> <span ng-bind-html="arg.special_notes[0]"> </span>
+                            </div>
                         </dd>
                     </div>
                 </dl>

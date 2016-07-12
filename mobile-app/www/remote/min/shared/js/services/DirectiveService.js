@@ -207,7 +207,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processCSSPropValue(name, value, prop_dict, orig_str) {
       if (value && value.indexOf('#') > -1) {
         value = value && UtilitiesService.replaceAll(value, '#', ',');
-        console.log(value);
       }
       name = (name && name.trim()) || '';
       value = (value && value.trim()) || '';
