@@ -55,11 +55,15 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
               scope.root.public.customStates[type] = {};
       }
       var watchState = 'root.public.customStates.' + type + '.' + args.camel;
-
+      console.log('watching', watchState)
       scope.$watch(watchState, function(new_value, old_value) {
         if (new_value) {
+          $timeout(function() {
+            scope.root.public.customStates[type][args.camel] = false;
+          })
           // console.log(type, args, attr_value, 'activated');
           var elemArgs = parseArgs(attr_value);
+
           for (key in elemArgs) {
             if ((argNames || supportedCommands).indexOf(key) > -1) {
               activateArg(key, elemArgs[key], scope, element);
@@ -138,6 +142,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           evalClassArgs(arg_dict, scope, elem);
           break
         case("send"):
+
           evalSendArgs(arg_dict, scope, elem);
           break;
         case("anim"):
@@ -178,7 +183,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function processAnimSecondaryArgs(msg_name, arg, prop_dict, orig_str) {
-        console.log(orig_str)
         if (!arg || arg.indexOf('set') > -1 || arg.indexOf('delay-') > -1 || arg.indexOf('before') > -1 || arg.indexOf('after') > -1) {
           arg = 'obj';
           prop_dict.custom = orig_str[0].replace(msg_name + ':', '');
@@ -205,9 +209,12 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
     }
 
-    function processCSSPropValue(name, value) {
-      name = name.trim();
-      value = value.trim();
+    function processCSSPropValue(name, value, prop_dict, orig_str) {
+      if (value && value.indexOf('#') > -1) {
+        value = value && UtilitiesService.replaceAll(value, '#', ',');
+      }
+      name = (name && name.trim()) || '';
+      value = (value && value.trim()) || '';
       var propertiesToConvertInt = ['opacity', 'z-index'];
       if (propertiesToConvertInt.indexOf(name) > -1 && typeof(name) === 'string') {
         if (value.indexOf('.') > -1) {
@@ -276,7 +283,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function processStrArrToObj(string_args) {
       var propArrEndIndex = string_args.indexOf(']');
+
       var stringPropArgs = string_args.substring(1, propArrEndIndex).split(',');
+
       return stringPropArgs;
     }
 
@@ -437,6 +446,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (!(msgType in scope.root.public.customStates)) {
             scope.root.public.customStates[msgType] = {};
           }
+          console.log('setting', env, scope.root.public.customStates)
           scope.root.public.customStates[msgType][msg_name] = true;
         }
       }
@@ -507,7 +517,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var animObj = AnimationService.getAnimationObjFromAnimationName(anim_name);
           if (animObj) {
             if (custom_args && custom_args.set && (!custom_args.after || custom_args.before)) {
-              console.log('properties to set', custom_args.set);
               var propDict = {properties:custom_args.set};
 
               evalPropertyArgs(propDict, scope, elem);
@@ -562,7 +571,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       function initAndTriggerAndRemoveAnimStartFunc(elem, browser_prefix, start_cb) {
         var animStartEventName = getAnimEventName(browser_prefix, 'Start');
           var animStartFunc = function(e) {
-            console.log(e.animationName, 'started', e);
             start_cb();
             elem[0].removeEventListener(animStartEventName, animStartFunc);
           }
@@ -572,7 +580,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       function initAndTriggerAndRemoveAnimEndFunc(elem, browser_prefix, end_cb) {
         var animEndEventName = getAnimEventName(browser_prefix, 'End');
           var animEndFunc = function(e) {
-            console.log(e.animationName, 'ended', e);
             end_cb();
             elem[0].removeEventListener(animEndEventName, animEndFunc);
           }

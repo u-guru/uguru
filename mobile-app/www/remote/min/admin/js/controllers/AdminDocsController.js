@@ -41,7 +41,8 @@ angular.module('uguru.admin')
           full_name: 'Properties',
           description:'setting 1 to several properties when a state occurs',
           syntax: '<div on-init="prop:[opacity:1:delay-100, opacity:0.5:delay-500, ...]:delay-1000"><div>',
-          options: ['delay']
+          options: ['delay'],
+          special_notes: ['For situations where there is an extra comma within the VALUE of the CSS property, use a <b>"#"</b>']
         },
         {
           name: 'class',
