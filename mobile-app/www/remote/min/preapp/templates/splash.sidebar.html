@@ -1,4 +1,6 @@
 <div ng-controller='SplashSidebarController as sidebar'  id='splash-sidebar' when-sidebar-icon-clicked="trigger:[on-enter]" when-sidebar-close-clicked="trigger:[on-exit]" on-exit="prop:[opacity:0]" on-enter="prop:[opacity:1]" init-with="prop:[opacity:0]">
+    <custom-states when="faq-clicked">
+    </custom-states>
     <aside class="splash-sidebar-full">
         <!-- class-on-activate="fadeIn:anim, null:inject.splash-sidebar-menu|activate, null:inject.splash-sidebar-links a[class-on-activate]|activate" class-on-clear="fadeOut:animOut" -->
         <nav class="splash-sidebar-menu">
@@ -14,7 +16,7 @@
                 </header>
                 <ul class="splash-sidebar-links">
                     <li>
-                        <a>
+                        <a on-click="send:[faq-clicked:public]">
                             <!-- id='cta-box-FAQ' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="50" class-on-clear="bounceOut:animOut" class-on-click="null:inject#cta-modal-FAQ|activate" ng-click='(!desktopMode && page.modals.faq.show()) || clearAllCTAExcept("FAQ")' -->
                             <span>FAQ</span>
                         </a>
@@ -97,8 +99,9 @@
 
         <section class='splash-sidebar-content'>
             <div class="splash-sidebar-empty"></div>
+                <div ng-include src="root.base_url + 'preapp/templates/sidebar/faq.html'" include-replace>
+                </div>
             <!-- class-on-activate="show-sidebar-cta:unique:keep" -->
-on-init="opacity:0" class-on-init="activate"
             <!-- <ion-pane id='cta-modal-FAQ' ng-if='desktopMode' class='full-xy hide-display cta-modal absolute top-0 left-0 sidebar-modal opacity-0' ng-include="::img_base + BASE + 'templates/faq.html'" class-on-activate="show-sidebar-cta:unique:keep, bounceInLeft:anim, null:inject#faq|activate" class-on-clear="bounceOutLeft:animOut"> </ion-pane>
 
             <ion-pane id='cta-modal-pricing' ng-if='desktopMode' class='full-xy hide-display cta-modal absolute top-0 left-0 sidebar-modal opacity-0' ng-include="::img_base + BASE + 'templates/pricing.html'" class-on-activate="show-sidebar-cta:unique:keep, bounceInLeft:anim, null:inject#pricing|activate" class-on-clear="bounceOutLeft:animOut"> </ion-pane>
