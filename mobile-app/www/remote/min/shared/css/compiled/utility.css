@@ -446,7 +446,7 @@ button, input, textarea {
     padding: 7.5px; }
 
 [class*="padding-none"] {
-  padding: 0; }
+  padding: 0 !important; }
 
 [class*="padding-15-half"], [class*="p7-5"] {
   padding: 7.5px; }
@@ -1005,6 +1005,9 @@ button, input, textarea {
   [class*="flex"][class*="-space-between"] {
     -webkit-justify-content: space-between !important;
     justify-content: space-between !important; }
+  [class*="flex"][class*="-stretch-y"] {
+    -webkit-align-content: stretch !important;
+    align-content: stretch !important; }
 
 .flex-grow {
   -webkit-flex-grow: 1;
