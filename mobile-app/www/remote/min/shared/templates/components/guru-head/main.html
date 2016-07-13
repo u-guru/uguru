@@ -17,16 +17,14 @@
 				<path d="M90.5288326,120.164053 C92.7258698,119.933136 94.3197243,117.964889 94.0888064,115.767852 C93.8578885,113.570815 91.7417349,111.688246 89.5880769,111.213356 C86.4999827,110.53242 84.5109385,110.741477 81.6319013,112.049584 C78.7528641,113.357691 76.1874123,117.649364 76.1874123,117.649364 L78.2593359,118.228857 C82.7309517,112.939577 85.9235743,114.615036 86.1326312,116.60408 C86.3635491,118.801117 88.3317955,120.394971 90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 Z M128.289054,115.838813 C130.486092,115.607895 132.079946,113.639649 131.849028,111.442611 C131.61811,109.245574 129.501957,107.363006 127.348299,106.888116 C124.260205,106.207179 122.27116,106.416236 119.392123,107.724344 C116.513086,109.032451 113.947634,113.324124 113.947634,113.324124 L116.019558,113.903616 C120.491173,108.614337 123.683796,110.289795 123.892853,112.278839 C124.123771,114.475876 126.092017,116.069731 128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 Z" class="eyes" fill="#33534D"></path>
 			</g>
 		</svg>
-		<svg class="aca-head absolute top-0 left-0" viewBox="0 0 200 200"
-			init-with="prop:[opacity:0]">
+		<svg class="aca-head absolute top-0 left-0" viewBox="0 0 200 200">
 			<g stroke-width="1" stroke="#CA5497" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 				<!-- @samir, error here with setting custom states with on-mid and on-exit -->
 		        <g class="5-minus"
 					init-with="prop:[opacity:0]"
 					when-head-init="trigger:[on-enter]"
-					on-enter="anim:[prop-down:set(animation-duration:1000ms#animation-timing-function:linear):delay-1000:in, prop-hover:set:(animation-duration:1000ms#animation-timing-function:linear#animation-iteration-count:infinite#animation-direction:alternate):delay-2000:in] | trigger:[on-exit]"
-					on-mid="class:[prop-hover:add:delay-2000] | trigger:[on-exit]"
-					on-exit="prop:[opacity:0]">
+					on-enter="anim:[prop-down:set:(animation-duration:1000ms#animation-timing-function:linear):delay-1000:in, prop-hover:set:(animation-duration:1000ms#animation-timing-function:linear#animation-iteration-count:infinite#animation-direction:alternate):delay-2000:in] | trigger:[on-exit]"
+					on-exit="prop:[opacity:0, transition: all 450ms ease-out]">
 		            <rect class="5-minus-bg" fill="#E9BAD5" x="39" y="66" width="10" height="10" rx="2"></rect>
 		            <path d="M41.5,71 L46.5,71" class="5-minus-dash"></path>
 		        </g>
