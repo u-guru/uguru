@@ -213,7 +213,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function processCSSPropValue(name, value, prop_dict, orig_str) {
       //2nd arg of if --> fill:#;
-      if (value && value.indexOf('#') > -1 && value.indexOf(':#') === -1) {
+      if (value && value.indexOf('#') > -1 && value.indexOf('#') > 0) {
         value = value && UtilitiesService.replaceAll(value, '#', ',');
       }
       name = (name && name.trim()) || '';
@@ -585,6 +585,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var animEndFunc = function(e) {
             end_cb();
             elem[0].removeEventListener(animEndEventName, animEndFunc);
+            elem[0].css('animation-name', '');
+            elem[0].css('animation-name', null);
           }
           elem[0].addEventListener(animEndEventName, animEndFunc);
       }

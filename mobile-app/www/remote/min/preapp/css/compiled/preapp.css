@@ -1405,14 +1405,14 @@
       width: 70px;
       height: 70px; } }
 
-#cta-box-powerups {
+#powerups-link {
   position: fixed;
   right: 0;
   top: 4px;
   z-index: 2000; }
-  #cta-box-powerups:before {
+  #powerups-link:before {
     display: none !important; }
-  #cta-box-powerups div[translate-on-click] {
+  #powerups-link div[translate-on-click] {
     -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
     -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
     -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
@@ -1424,7 +1424,7 @@
     -o-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1.27) !important;
     transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1.27) !important;
     position: relative; }
-    #cta-box-powerups div[translate-on-click]:before {
+    #powerups-link div[translate-on-click]:before {
       -webkit-transform: scale(0);
       -moz-transform: scale(0);
       -ms-transform: scale(0);
@@ -1457,46 +1457,46 @@
       width: 30px;
       height: 30px;
       background: #F6C64E; }
-  #cta-box-powerups:hover div[translate-on-click]:before, #cta-box-powerups:focus div[translate-on-click]:before {
+  #powerups-link:hover div[translate-on-click]:before, #powerups-link:focus div[translate-on-click]:before {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1); }
-  #cta-box-powerups svg {
+  #powerups-link svg {
     position: relative;
     z-index: 2; }
-    #cta-box-powerups svg circle {
+    #powerups-link svg circle {
       stroke: #F6C64E; }
-    #cta-box-powerups svg path {
+    #powerups-link svg path {
       fill: #F6C64E;
       stroke: #F6C64E; }
-  #cta-box-powerups:hover svg circle, #cta-box-powerups:focus svg circle {
+  #powerups-link:hover svg circle, #powerups-link:focus svg circle {
     stroke: #F6C64E; }
-  #cta-box-powerups:hover svg path, #cta-box-powerups:focus svg path {
+  #powerups-link:hover svg path, #powerups-link:focus svg path {
     fill: white;
     stroke: white; }
-  #cta-box-powerups.powerup-activated div[translate-on-click]:before, #cta-box-powerups.powerup-activated:hover div[translate-on-click]:before, #cta-box-powerups.powerup-activated:focus div[translate-on-click]:before, #cta-box-powerups.powerup-activated:active div[translate-on-click]:before {
+  #powerups-link.powerup-activated div[translate-on-click]:before, #powerups-link.powerup-activated:hover div[translate-on-click]:before, #powerups-link.powerup-activated:focus div[translate-on-click]:before, #powerups-link.powerup-activated:active div[translate-on-click]:before {
     -webkit-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
     -moz-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
     -ms-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
     -o-animation: powerup-before-scaleUp 1000ms ease-in-out forwards;
     animation: powerup-before-scaleUp 1000ms ease-in-out forwards; }
-  #cta-box-powerups.powerup-activated svg circle, #cta-box-powerups.powerup-activated:hover svg circle, #cta-box-powerups.powerup-activated:focus svg circle, #cta-box-powerups.powerup-activated:active svg circle {
+  #powerups-link.powerup-activated svg circle, #powerups-link.powerup-activated:hover svg circle, #powerups-link.powerup-activated:focus svg circle, #powerups-link.powerup-activated:active svg circle {
     fill: #F6C64E !important;
     stroke: #F6C64E !important; }
-  #cta-box-powerups.powerup-activated svg path, #cta-box-powerups.powerup-activated:hover svg path, #cta-box-powerups.powerup-activated:focus svg path, #cta-box-powerups.powerup-activated:active svg path {
+  #powerups-link.powerup-activated svg path, #powerups-link.powerup-activated:hover svg path, #powerups-link.powerup-activated:focus svg path, #powerups-link.powerup-activated:active svg path {
     fill: white !important;
     stroke: white !important; }
 
-#cta-box-sidebar {
+#sidebar-link {
   position: absolute;
   top: 50%;
   left: 50%;
   margin-left: -21px;
   margin-top: -21px; }
   @media screen and (min-width: 860px) {
-    #cta-box-sidebar {
+    #sidebar-link {
       position: relative !important;
       top: auto !important;
       left: auto !important;
@@ -1553,7 +1553,7 @@
   right: 0;
   width: 100%;
   height: 50px;
-  z-index: 999; }
+  z-index: 9; }
   .splash-header:before {
     filter: alpha(opacity=0) !important;
     opacity: 0 !important; }
@@ -1902,7 +1902,7 @@
     transform: scale(1); }
 
 @media screen and (min-width: 860px) {
-  #cta-box-powerups {
+  #powerups-link {
     right: 67px;
     top: 14px; }
 
@@ -2026,6 +2026,22 @@
       display: -moz-flex;
       display: -webkit-flex;
       display: flex; } }
+.sidebar-scale {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -5px;
+  margin-left: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  z-index: 99999; }
+  @media screen and (min-width: 860px) {
+    .sidebar-scale {
+      top: 0;
+      right: 0;
+      margin: 0; } }
+
 .splash-sidebar-full {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -2035,7 +2051,7 @@
   display: -webkit-flex;
   display: flex;
   position: fixed;
-  z-index: 9999;
+  z-index: 999;
   top: 0;
   left: 0;
   width: 100%;
@@ -2092,7 +2108,8 @@
     .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-links {
       padding: 7.5px; }
       .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-links li {
-        padding: 7.5px; }
+        padding: 7.5px;
+        transform-origin: center top; }
         .splash-sidebar-full .splash-sidebar-menu .splash-sidebar-links li a {
           position: relative;
           display: block;
