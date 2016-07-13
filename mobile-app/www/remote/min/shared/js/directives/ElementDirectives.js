@@ -374,7 +374,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
     return {
         require: 'ngInclude',
         restrict: 'A',
-        replace: true,
+
         compile: function (tElement, tAttrs) {
             tElement.replaceWith(tElement.children());
             return {
