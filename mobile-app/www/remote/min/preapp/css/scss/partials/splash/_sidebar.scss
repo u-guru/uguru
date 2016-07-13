@@ -1,10 +1,27 @@
 @import '../../../../../shared/css/scss/partials/mixin';
 
+.sidebar-scale {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -5px;
+	margin-left: -5px;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	z-index: 99999;
+	@media screen and (min-width: 860px) {
+		top: 0;
+		right: 0;
+		margin: 0;
+	}
+}
+
 // SIDEBAR
 .splash-sidebar-full {
 	@include flex;
 	position: fixed;
-	z-index: 9999;
+	z-index: 999;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -23,6 +40,7 @@
 			@include prefix(justify-content, space-between, webkit);
 			height: 50px;
 			width: 100%;
+			padding-right: 7px;
 			.splash-logo {
 				height: 50px!important;
 				margin: 5px;
@@ -48,54 +66,81 @@
 			margin: 15px auto;
 		}
 		.splash-sidebar-links {
+			padding: 7.5px;
 			li {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
+				padding: 7.5px;
+				transform-origin: center top;
 				a {
 					position: relative;
-					padding: 20px 0;
-					width: calc(100% - 34px);
-					font-size: 24px;
-					font-weight: 600;
-					text-align: center;
-					text-transform: uppercase;
-					&:before {
-						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-						@include prefix(transform, scaleX(0), webkit moz ms o);
-						@include prefix(transform-origin, left center, webkit moz ms o);
-						content: "";
+					display: block;
+					background: white;
+					border-radius: 2px;
+					overflow: hidden;
+					> span {
 						display: block;
-						position: absolute;
-						top: 0;
-						left: 0;
+						padding: 15px;
+						border-radius: 2px;
 						width: 100%;
-						height: 100%;
-						background: $shamrock;
-					}
-					span {
-						position: relative;
-						z-index: 10;
-					}
-					&:hover, &:focus {
-						&:before {
-							@include prefix(transform, scaleX(1), webkit moz ms o);
+						font-size: 18px;
+						font-weight: 600;
+						span:not(:empty) {
+							position: relative;
+							z-index: 2;
 						}
-					}
-					&:active {
-						color: mix($shamrock, $slate);
-						&:before {
-							background: mix($shamrock, white);
+						span:empty {
+							content: "";
+							display: block;
+							position: absolute;
+							z-index: 1;
+							top: 50%;
+							left: 50%;
+							margin-top: -5px;
+							margin-left: -5px;
+							width: 10px;
+							height: 10px;
+							border-radius: 100%;
 						}
 					}
 				}
-				&:not(:last-child):after {
-					@include round;
-					content: "";
-					display: block;
-					width: calc(100% - 30px);
-					height: 2px;
-					background: rgba(white, .2);
+				&:nth-child(1) {
+					a > span {
+						background: mix($moxie, $robin, 80%);
+						span:empty {
+							background: mix(mix($moxie, $robin, 80%), white);
+						}
+					}
+				}
+				&:nth-child(2) {
+					a > span {
+						background: mix($moxie, $robin, 60%);
+						span:empty {
+							background: mix(mix($moxie, $robin, 60%), white);
+						}
+					}
+				}
+				&:nth-child(3) {
+					a > span {
+						background: mix($moxie, $robin, 40%);
+						span:empty {
+							background: mix(mix($moxie, $robin, 40%), white);
+						}
+					}
+				}
+				&:nth-child(4) {
+					a > span {
+						background: mix($moxie, $robin, 20%);
+						span:empty {
+							background: mix(mix($moxie, $robin, 20%), white);
+						}
+					}
+				}
+				&:nth-child(5) {
+					a > span {
+						background: $robin;
+						span:empty {
+							background: mix($robin, white);
+						}
+					}
 				}
 			}
 		}

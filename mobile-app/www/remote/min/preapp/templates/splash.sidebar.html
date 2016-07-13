@@ -1,6 +1,11 @@
-<div ng-controller='SplashSidebarController as sidebar'  id='splash-sidebar' when-sidebar-icon-clicked="trigger:[on-enter]" when-sidebar-close-clicked="trigger:[on-exit]" on-exit="prop:[opacity:0]" on-enter="prop:[opacity:1]" init-with="prop:[opacity:0]">
-    <!-- <custom-states when="faq-clicked, pricing-clicked">
-    </custom-states> -->
+<div class="sidebar-scale"
+	init-with="prop:[transform:scale(0), transition:all 1000ms ease-out, opacity:1, display:block, background:#ffffff]"
+	when-sidebar-icon-clicked="trigger:[on-enter]"
+	on-enter="prop:[transform:scale(1000), background:#40484b] | trigger:[on-exit]"
+	on-exit="prop:[opacity:0:delay-500, transition:all 500ms ease-out, display:none:delay-2000]"></div>
+<div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar' when-sidebar-icon-clicked="trigger:[on-enter]" when-sidebar-close-clicked="trigger:[on-exit]" on-exit="prop:[opacity:0]" on-enter="prop:[opacity:1:delay-500]" init-with="prop:[opacity:0]">
+	<!-- on-init="trigger:[on-enter]" -->
+    <!-- <custom-states when="faq-clicked, pricing-clicked"></custom-states> -->
     <aside class="splash-sidebar-full">
         <!-- class-on-activate="fadeIn:anim, null:inject.splash-sidebar-menu|activate, null:inject.splash-sidebar-links a[class-on-activate]|activate" class-on-clear="fadeOut:animOut" -->
         <nav class="splash-sidebar-menu">
@@ -15,42 +20,101 @@
                     <!-- ng-click='hideSideBar()' -->
                 </header>
                 <ul class="splash-sidebar-links">
-                    <li>
+                    <li init-with="prop:[transform:rotateX(90deg) translateZ(0)]"
+						when-sidebar-icon-clicked="trigger:[on-enter]"
+						on-enter="prop:[transform:rotateX(0) translateZ(0), transition:all 250ms ease-in-out]:delay-2000">
                         <a on-click="send:[faq-clicked]">
                             <!-- id='cta-box-FAQ' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="50" class-on-clear="bounceOut:animOut" class-on-click="null:inject#cta-modal-FAQ|activate" ng-click='(!desktopMode && page.modals.faq.show()) || clearAllCTAExcept("FAQ")' -->
-                            <span>FAQ</span>
+                            <span
+								on-mouse-enter="prop:[transform:translate3d(5px#0#0), transition:all 150ms cubic-bezier(.5#0#1#.75)]"
+								on-mouse-leave="prop:[transform:translate3d(0#0#0)]">
+								<span>FAQ</span>
+								<!-- @samir -->
+								<span when-faq-clicked="trigger:[on-enter]"
+									init-with="prop:[transform:scale(0) translateZ(0), opacity:1]"
+									on-enter="prop:[transform:scale(100) translateZ(0), transition:all 300ms ease-out] | trigger:[on-exit]"
+									on-exit="prop:[opacity:0:delay-150]"></span>
+							</span>
                         </a>
                     </li>
-                    <li>
+                    <li init-with="prop:[transform:rotateX(-90deg) translateZ(0)]"
+						when-sidebar-icon-clicked="trigger:[on-enter]"
+						on-enter="prop:[transform:rotateX(0) translateZ(0), transition:all 250ms ease-in-out 250ms]:delay-2000">
                         <a on-click="send:[pricing-clicked]">
                             <!-- id='cta-box-pricing' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="100" class-on-clear="bounceOut:animOut" class-on-click="null:inject#cta-modal-pricing|activate" ng-click='(!desktopMode && page.modals.pricing.show()) || clearAllCTAExcept("pricing")' -->
-                            <span>Pricing</span>
+                            <span
+								on-mouse-enter="prop:[transform:translate3d(5px#0#0), transition:all 300ms cubic-bezier(.5#0#.4#1.25)]"
+								on-mouse-leave="prop:[transform:translate3d(0#0#0)]">
+								<span>Pricing</span>
+								<span when-pricing-clicked="trigger:[on-enter]"
+									init-with="prop:[transform:scale(0) translateZ(0), opacity:1]"
+									on-enter="prop:[transform:scale(100) translateZ(0), transition:all 300ms ease-out] | trigger:[on-exit]"
+									on-exit="prop:[opacity:0:delay-150]"></span>
+							</span>
                         </a>
                     </li>
-                    <li>
+                    <li init-with="prop:[transform:rotateX(90deg) translateZ(0)]"
+						when-sidebar-icon-clicked="trigger:[on-enter]"
+						on-enter="prop:[transform:rotateX(0) translateZ(0), transition:all 250ms ease-in-out 500ms]:delay-2000">
                         <a on-click="send:[about-clicked]">
                             <!-- id='cta-box-intercom' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="150" class-on-clear="bounceOut:animOut"  class-on-click="null:inject#cta-modal-intercom|activate" ng-click='(!desktopMode && page.modals.support() || clearAllCTAExcept("support"))'-->
-                            <span>About</span>
+                            <span
+								on-mouse-enter="prop:[transform:translate3d(5px#0#0), transition:all 300ms cubic-bezier(.5#0#.4#1.25)]"
+								on-mouse-leave="prop:[transform:translate3d(0#0#0)]">
+								<span>Support</span>
+								<span when-about-clicked="trigger:[on-enter]"
+									init-with="prop:[transform:scale(0) translateZ(0), opacity:1]"
+									on-enter="prop:[transform:scale(100) translateZ(0), transition:all 300ms ease-out] | trigger:[on-exit]"
+									on-exit="prop:[opacity:0:delay-150]"></span>
+							</span>
                         </a>
                     </li>
-                    <li>
+                    <li init-with="prop:[transform:rotateX(-90deg) translateZ(0)]"
+						when-sidebar-icon-clicked="trigger:[on-enter]"
+						on-enter="prop:[transform:rotateX(0) translateZ(0), transition:all 250ms ease-in-out 750ms]:delay-2000">
                         <a on-click="send:[team-clicked]">
                             <!-- id='cta-box-team' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="200" class-on-clear="bounceOut:animOut"  class-on-click="null:inject#cta-modal-team|activate" ng-click='(!desktopMode && page.modals.team.show()) || clearAllCTAExcept("team")' -->
-                            <span>Team</span>
+                            <span
+								on-mouse-enter="prop:[transform:translate3d(5px#0#0), transition:all 300ms cubic-bezier(.5#0#.4#1.25)]"
+								on-mouse-leave="prop:[transform:translate3d(0#0#0)]">
+								<span>Team</span>
+								<span when-team-clicked="trigger:[on-enter]"
+									init-with="prop:[transform:scale(0) translateZ(0), opacity:1]"
+									on-enter="prop:[transform:scale(100) translateZ(0), transition:all 300ms ease-out] | trigger:[on-exit]"
+									on-exit="prop:[opacity:0:delay-150]"></span>
+							</span>
                         </a>
                     </li>
-                    <li ng-if='false'>
+                    <li init-with="prop:[transform:rotateX(90deg) translateZ(0)]"
+						when-sidebar-icon-clicked="trigger:[on-enter]"
+						on-enter="prop:[transform:rotateX(0) translateZ(0), transition:all 250ms ease-in-out 1000ms]:delay-2000">
                         <!-- ng-click='clearAllCTAExcept()' ng-if='!user || !user.id' -->
                         <a on-click="send:[login-clicked]">
                             <!-- id='cta-box-account' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="250" class-on-clear="bounceOut:animOut" ng-click="showSidebarLogin()" -->
-                            <span>Login</span>
+                            <span
+								on-mouse-enter="prop:[transform:translate3d(5px#0#0), transition:all 300ms cubic-bezier(.5#0#.4#1.25)]"
+								on-mouse-leave="prop:[transform:translate3d(0#0#0)]">
+								<span>Login</span>
+								<span when-login-clicked="trigger:[on-enter]"
+									init-with="prop:[transform:scale(0) translateZ(0), opacity:1]"
+									on-enter="prop:[transform:scale(100) translateZ(0), transition:all 300ms ease-out] | trigger:[on-exit]"
+									on-exit="prop:[opacity:0:delay-150]"></span>
+							</span>
                         </a>
                     </li>
-                    <li ng-if='false'>
+                    <li ng-if="false">
                         <!-- ng-if='user && user.id' -->
                         <a on-click="send:[logout-clicked]">
                             <!-- id='cta-box-intercom' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="300" class-on-clear="bounceOut:animOut" ng-click='logoutUser(true)' -->
-                            <span>Logout</span>
+                            <span
+								on-mouse-enter="prop:[transform:translate3d(5px#0#0), transition:all 300ms cubic-bezier(.5#0#.4#1.25)]"
+								on-mouse-leave="prop:[transform:translate3d(0#0#0)]">
+								<span>Logout</span>
+								<span when-logout-clicked="trigger:[on-enter]"
+									init-with="prop:[transform:scale(0) translateZ(0), opacity:1]"
+									on-enter="prop:[transform:scale(100) translateZ(0), transition:all 300ms ease-out] | trigger:[on-exit]"
+									on-exit="prop:[opacity:0:delay-150]"></span>
+							</span>
                         </a>
                     </li>
                 </ul>
@@ -81,10 +145,12 @@
                     </div>
                 </div>
 
-                <button class="btn-ghost-white">Get Started</button>
-                <!-- activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" class-on-click="null:inject.splash-sidebar-full|clear, null:inject.splash-sidebar-menu|clear" ng-click='sidebarGetStarted()' ng-if='!user || !user.id' -->
-                <button class="btn-ghost-white">Go to Dashboard</button>
-                <!-- activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" class-on-click="null:inject.splash-sidebar-full|clear, null:inject.splash-sidebar-menu|clear" ng-click='goToStudentMode()' ng-if='user && user.id' -->
+                <div>
+					<button class="btn-ghost-white">Get Started</button>
+	                <!-- activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" class-on-click="null:inject.splash-sidebar-full|clear, null:inject.splash-sidebar-menu|clear" ng-click='sidebarGetStarted()' ng-if='!user || !user.id' -->
+	                <!-- <button class="btn-ghost-white">Go to Dashboard</button> -->
+	                <!-- activate-on-class="a" class-on-activate="bounceIn:anim" class-on-activate-delay="700" class-on-click="null:inject.splash-sidebar-full|clear, null:inject.splash-sidebar-menu|clear" ng-click='goToStudentMode()' ng-if='user && user.id' -->
+				</div>
 
                 <!-- <ul class="splash-sidebar-platforms" ng-if='false'>
                     <li>
