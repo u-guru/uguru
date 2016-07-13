@@ -12,6 +12,7 @@ angular.module('uguru.shared.services')
 function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService, RootService) {
     var argNames = ['prop', 'anim', 'send', 'tween', 'class', 'trigger'];
     var argShortNames = ['p', 'a', 's', 't', 'c', 't'];
+    var shortcuts;
     var cssPropertyMappings = {
       'o': 'opacity',
     }
@@ -27,12 +28,22 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         parseArgs: parseArgs,
         activateArg: activateArg,
         supportedCommands: argNames,
+        setShortcutDict: setShortcutDict,
+        getShortcuts: getShortcuts,
         getSupportedOnStates: getSupportedOnStates,
         getSupportedAsStates: getSupportedAsStates,
         parseCustomStateAttr: parseCustomStateAttr,
         detectExternalStates: detectExternalStates,
         initCustomStateWatcher: initCustomStateWatcher,
         defaults: defaults
+    }
+
+    function setShortcutDict(_shortcuts) {
+      shortcuts = _shortcuts
+    }
+
+    function getShortcuts() {
+      return shortcuts;
     }
 
     function getSupportedOnStates() {
@@ -64,9 +75,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var elemArgs = parseArgs(attr_value);
           for (key in elemArgs) {
             if ((argNames || supportedCommands).indexOf(key) > -1) {
-              if (key === 'send') {
-                console.log('activating', elemArgs[key])
-              }
               activateArg(key, elemArgs[key], scope, element);
             }
           }
@@ -257,9 +265,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var value = kvPairSplit[1];
 
           parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs, i);
-          var kvPairSplit = stringPropArgs[i].split(':');
-          var key = kvPairSplit[0];
-          var value = kvPairSplit[1];
+
 
           if (kvPairSplit.length > 2) {
             parsedPropDict = processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
@@ -417,7 +423,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
   }
 
     function evalSendArgs(arg_dict, scope, elem) {
-      console.log('evaluating send', arg_dict)
       if (arg_dict.delay) {
         $timeout(function() {
           processMessagesArr(arg_dict.messages, scope, elem);
@@ -461,7 +466,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (!(msgType in scope.root.public.customStates)) {
             scope.root.public.customStates[msgType] = {};
           }
-          console.log('setting', env, scope.root.public.customStates)
           scope.root.public.customStates[msgType][msg_name] = true;
         }
       }
@@ -761,6 +765,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function setCSSProperty(prop, value, delay, impt, scope, elem) {
+        if (prop in shortcuts.cssProps) {
+          prop = shortcuts.cssProps[prop];
+        }
         var priority;
         if (impt) {
           priority = 'important';
@@ -785,6 +792,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function getSupportedArg(indexArg) {
       if (indexArg && typeof(indexArg) === 'string') {
         indexArg = indexArg.trim();
+        if (indexArg in shortcuts.cmds) {
+          console.log('detected command', indexArg, shortcuts.cmds[indexArg])
+          indexArg = shortcuts.cmds[indexArg]
+        }
       }
 
       var indexArgSplit = indexArg.split(':');
@@ -792,12 +803,11 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var argName = indexArgSplit[0];
         var argValues = indexArgSplit.splice(1);
         if (argName.length) {
+          if (argName in shortcuts.args) {
+            argName = shortcuts.args[argName];
+          }
           var supportedArgIndex = argNames.indexOf(argName);
           var supportedShorthandArgIndex = argShortNames.indexOf(argName);
-          if (supportedShorthandArgIndex > -1) {
-            argName = argNames[supportedShorthandArgIndex];
-            supportedArgIndex = argNames.indexOf(argName);
-          }
           if (supportedArgIndex > -1) {
             return {type: argName, value: argValues.join(":")}
           }
