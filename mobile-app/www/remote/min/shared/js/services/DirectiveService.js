@@ -230,6 +230,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processCSSPropValue(name, value, prop_dict, orig_str) {
       //2nd arg of if --> fill:#;
       if (value && value.indexOf('#') > -1 && value.indexOf('#') > 0) {
+        if (value.indexOf('cubic') > -1) {
+          console.log(name, value)
+        }
         value = value && UtilitiesService.replaceAll(value, '#', ',');
       }
       name = (name && name.trim()) || '';
@@ -515,7 +518,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (custom_str.indexOf('set:') > -1) {
             var setString = custom_str + "";
             setString = setString.split('set:(')[1];
-            var endParenthesis = setString.indexOf(')');
+            var endParenthesis = setString.indexOf('):');
             setString = setString.substring(0, endParenthesis);
             custom_dict.set = processSetExtraArgs(setString);
 
@@ -697,15 +700,23 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function processClassCustomArgs(custom_str, custom_dict) {
+        //todo refactor
         if (custom_str.indexOf('set:') > -1) {
-          custom_dict.set = processSetExtraArgs(custom_str.replace('set:', ''));
+          var setString = custom_str + "";
+          setString = setString.split('set:(')[1];
+          var endParenthesis = setString.indexOf('):');
+          setString = setString.substring(0, endParenthesis);
+          custom_dict.set = processSetExtraArgs(setString);
         }
       }
     }
 
     function processSetExtraArgs(set_str) {
-      set_str = UtilitiesService.removeAllOccurrancesArr(set_str, ['(', ')'])
+      if (!(set_str.split('(').length > 1)) {
+          set_str = UtilitiesService.removeAllOccurrancesArr(set_str, ['(', ')'])
+      }
       set_str = UtilitiesService.replaceAll(set_str, ', ', '');
+      set_str = UtilitiesService.replaceAll(set_str, '##', ',');
       var setPropertyArr = set_str.split('#');
       var resultArr = [];
       for (var i = 0; i < setPropertyArr.length; i++)  {
@@ -749,7 +760,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         delete indexPropDict['important'];
         var propName = Object.keys(indexPropDict)[0];
         var propValue = indexPropDict[propName];
-        setCSSProperty(propName, propValue, delay, important, scope, elem)
+        if (typeof(propValue) === 'string' && propValue.indexOf('cubic') > -1) {
+          console.log('cubic', propName, propValue);
+        }
+        if ((propName && propValue) || (propName && propValue === 0)) {
+          setCSSProperty(propName, propValue, delay, important, scope, elem)
+        } else {
+          console.log('ERROR: css propValue or css propName not defined', propName, propValue, '\nelem:', elem)
+        }
         if (delay)  {
           indexPropDict['delay'] = delay;
         }
@@ -781,6 +799,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             })
           }, delay)
         } else {
+          if (!prop && !value) {
+            console.log(prop, value, delay, impt, scope, elem);
+          }
+          // console.log(prop, value);
           elem.css(prop, value, priority);
           $timeout(function() {
               scope.$apply();
