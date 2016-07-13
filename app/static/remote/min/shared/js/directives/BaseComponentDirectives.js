@@ -22,6 +22,17 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("uButton", ["RootService", function(RootService) {
+        return {
+            templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/button.tpl',
+            restrict: 'E',
+            link: {
+                pre: function(scope, element, attr) {
+                    return
+                }
+            }
+        }
+    }])
     .directive("uBody", ["RootService", function(RootService) {
         return {
             templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/body.tpl',
@@ -77,7 +88,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive("uRadioInput", ["RootService", function(RootService) {
+    .directive("uRadio", ["RootService", function(RootService) {
         return {
             templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/radio.tpl',
             restrict: 'E',

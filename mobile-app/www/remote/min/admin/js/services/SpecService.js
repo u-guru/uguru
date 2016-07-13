@@ -692,9 +692,14 @@ function SpecService($state, $timeout, $localstorage, $window, $compile, $sce, K
         var stateDict = {};
         for (var i = 0; i < queryStates.length; i++) {
             var indexQuery = queryStates[i];
+            if (indexQuery.split(',').length > 1) {
+                indexQuery = '[' + UtilitiesService.replaceAll(indexQuery, ',', '],[') + ']'
+            } else {
+                indexQuery = '[' + indexQuery + ']'
+            }
             var indexDict = {};
             var queryArr = [];
-            var elements = parent_container.parentNode.querySelectorAll('[' + indexQuery + ']');
+            var elements = parent_container.parentNode.querySelectorAll(indexQuery);
             if (elements && elements.length) {
                 stateDict[indexQuery] = [];
                 for (var j = 0; j < elements.length; j++) {

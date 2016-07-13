@@ -1,4 +1,4 @@
-<ion-view id='splash-powerups' ng-controller="SplashPowerupsController as powerups">
+<ion-view id='splash-powerups' ng-controller="SplashPowerupsController as powerups" init-with="prop:[opacity:0, z-index:-1000]" when-powerups-clicked="prop:[opacity:1, z-index:10000]|anim:[bounceInDown:in]" when-close-powerups="prop:[opacity:0, z-index:-1000]|anim:[bounceOutUp:out:set:(animation-duration:1s)]">
     <div id='powerups' class="full-xy bg-slate">
 
         <!-- class-on-activate="fadeIn:anim, null:inject#powerup-icons li|activate"  class-on-activate-delay="" --->
@@ -49,6 +49,6 @@
         </div>
     </div>
     <div class="splash-hero-skip absolute bottom-0 right-0">
-       <button ng-click='activate.powerups = !activate.powerups'>Back</button>
+       <button on-click="send:[close-powerups]">Back</button>
     </div>
 </ion-view>

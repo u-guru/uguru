@@ -47,6 +47,33 @@
             </div>
     </li>
 
+    <li class="admin-definition-list full-x">
+            <div class="bg-white radius-2">
+                <h2 class="p10y-p15x bg-robin txt-white txt-24 semibold txt-center radius-2-top">Special States</h2>
+                <dl class="txt-slate">
+                    <div class="flex-start" ng-repeat="state in docs.stateDirectives.states" ng-if='state.description'>
+                        <dt>
+                            <div class="radius-2 bg-slate padding-none full-x">
+                                <div class="bg-cobalt-25p radius-2 flex-center-vertical-left full-x">
+                                    <h2 class="black txt-24" style="padding: 7.5px 0px 7.5px 7.5px">{{state.name}}:</h2>
+                                </div>
+                            </div>
+                        </dt>
+                        <dd>
+                            <div class='bg-slate-05p radius-2-top flex-start txt-slate'>
+                                <div>
+                                    <h1 class='txt-4 weight-700'> {{state.description}}</h1>
+                                </div>
+                            </div>
+                            <div class='bg-charcoal txt-moxie flex-left radius-2-bottom'>
+                                <pre class='source-code txt-14 weight-600'> {{state.syntax}} </pre>
+                            </div>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+    </li>
+
     </ul>
     <ul class="ugrid-2 p15-grid">
         <doc-item keywords="{{dir.keywords}}" type="directive" ng-repeat="dir in docs.directives">

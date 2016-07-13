@@ -417,11 +417,6 @@
   100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 130, -38, 0, 1); opacity: 0; }
 }
 
-@keyframes adlib-header-stroke {
-	0% { stroke-dashoffset: -701; stroke-dasharray: 701, 701; }
-	100% { stroke-dashoffset: 0; stroke-dasharray: 16, 14; }
-}
-
 /* http://goo.gl/4Umz4M */
 @keyframes adlib-header-main-scaleUp {
 	0% { transform: matrix3d(0.9, 0, 0, 0, 0, 0.9, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
@@ -437,11 +432,6 @@
 	63.26% { transform: matrix3d(1.001, 0, 0, 0, 0, 1.001, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 	85.49% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 	100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-}
-
-@keyframes adlib-header-weight {
-	0% { font-weight: 600; }
-	100% { font-weight: 700; }
 }
 
 @keyframes adlib-header-mobile-1-translate {

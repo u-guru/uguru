@@ -193,7 +193,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       if (completedComponents.indexOf(urlComponentParam.toLowerCase()) > -1) {
         return AdminDirectiveService.getBaseComponentHtml(urlComponentParam);
       }
-      return '<div> <span class="weight-700">' +  urlComponentParam + '</span> is not a base component </div>'
+      return '<div> <span class="weight-700">' +  urlComponentParam + '</span> is not a base component </div> <div> <span class="weight-700">' +  completedComponents.join(', ') + '</span> </div>'
     }
   })
 

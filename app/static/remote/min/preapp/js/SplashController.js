@@ -38,15 +38,16 @@ angular.module('uguru.preApp', ['ionic'])
       if ($scope.root.devMode) {
           splash.state.nav = true;
           splash.state.madlib = true;
-          splash.state.device = false;
+          splash.state.sidebar = true;
+          splash.state.device = true;
+          splash.state.powerups = true;
+          splash.state.universitySearch = true;
           SpecService.initSpec('splash', $scope);
           return;
       }
 
       portalElem && portalElem.addEventListener('splashMainLoadingComplete', function (e) {
 
-
-        console.log('is NOT in dev mode');
 
         var loaderPortal = document.querySelector('.loader-portal');
         if (loaderPortal) {
@@ -61,7 +62,10 @@ angular.module('uguru.preApp', ['ionic'])
         splash.renderView = true;
         splash.state.madlib = true;
         splash.state.nav = true;
-        splash.state.device = false;
+        splash.state.sidebar = true;
+        splash.state.device = true;
+        splash.state.powerups = true;
+        splash.state.universitySearch = true;
         $timeout(function() {
 
           $scope.$apply();

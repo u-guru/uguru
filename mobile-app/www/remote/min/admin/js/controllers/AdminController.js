@@ -18,7 +18,7 @@ angular.module('uguru.admin')
         // (!$scope.user || !$scope.user.id) && $state.go('^.desktop-login');
 
         $timeout(function() {
-            $scope.layout = {index:5};
+            $scope.layout = {index:3};
         })
         $scope.$on('$ionicView.enter', function() {
             if (!$scope.user) {

@@ -49,16 +49,15 @@ angular.module('uguru.shared.directives')
 .directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
   return {
     restrict: 'A',
+    priority: 10000,
+    terminal: true,
       link: {
         pre: function(scope, element, attr) {
-          element[0].setAttribute('ng-if', false);
-          scope.ngInclude = element[0].getAttribute('ng-include');
-          scope.includeReplace = 'includeReplace' in attr;
-          if (scope.includeReplace) {
-            element[0].removeAttribute('include-replace');
-          }
-          element[0].removeAttribute('ng-include');
+          attr.$set('ngHide', true);
+          attr.$set('initLater', null);
           $compile(element[0])(scope);
+
+
           scope.$watch(function() {
             return element.attr('class');
           }, function(new_classes, old_classes) {
@@ -151,7 +150,7 @@ angular.module('uguru.shared.directives')
         scope.$watch(function() {
           return element.attr('class');
         }, function(new_classes, old_classes) {
-          if (new_classes.indexOf('on-exit') > -1) {
+          if (new_classes && new_classes.indexOf('on-exit') > -1) {
             element[0].classList.remove('on-exit');
             for (key in elemArgs) {
               if (supportedCommands.indexOf(key) > -1) {
@@ -254,7 +253,7 @@ angular.module('uguru.shared.directives')
     link: {
       pre: function(scope, element, attr) {
         var customStateDict = DirectiveService.parseCustomStateAttr(attr);
-
+        console.log(customStateDict)
           for (key in customStateDict) {
             if (!(key in scope.root.public.customStates)) {
               scope.root.public.customStates[key] = {};
@@ -374,7 +373,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
     return {
         require: 'ngInclude',
         restrict: 'A',
-        replace: true,
+
         compile: function (tElement, tAttrs) {
             tElement.replaceWith(tElement.children());
             return {
