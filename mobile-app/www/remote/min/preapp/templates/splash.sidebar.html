@@ -28,9 +28,9 @@
                         </a>
                     </li>
                     <li>
-                        <a on-click="send:[support-clicked]">
+                        <a on-click="send:[about-clicked]">
                             <!-- id='cta-box-intercom' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="150" class-on-clear="bounceOut:animOut"  class-on-click="null:inject#cta-modal-intercom|activate" ng-click='(!desktopMode && page.modals.support() || clearAllCTAExcept("support"))'-->
-                            <span>Support</span>
+                            <span>About</span>
                         </a>
                     </li>
                     <li>
@@ -39,14 +39,14 @@
                             <span>Team</span>
                         </a>
                     </li>
-                    <li>
+                    <li ng-if='false'>
                         <!-- ng-click='clearAllCTAExcept()' ng-if='!user || !user.id' -->
                         <a on-click="send:[login-clicked]">
                             <!-- id='cta-box-account' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="250" class-on-clear="bounceOut:animOut" ng-click="showSidebarLogin()" -->
                             <span>Login</span>
                         </a>
                     </li>
-                    <li>
+                    <li ng-if='false'>
                         <!-- ng-if='user && user.id' -->
                         <a on-click="send:[logout-clicked]">
                             <!-- id='cta-box-intercom' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="300" class-on-clear="bounceOut:animOut" ng-click='logoutUser(true)' -->
@@ -102,6 +102,10 @@
                 <div ng-include src="root.base_url + 'preapp/templates/sidebar/faq.html'" include-replace>
                 </div>
                 <div ng-include src="root.base_url + 'preapp/templates/sidebar/pricing.html'" include-replace>
+                </div>
+                <div ng-include src="root.base_url + 'preapp/templates/sidebar/team.html'" include-replace>
+                </div>
+                <div ng-include src="root.base_url + 'preapp/templates/sidebar/about.html'" include-replace>
                 </div>
             <!-- class-on-activate="show-sidebar-cta:unique:keep" -->
             <!-- <ion-pane id='cta-modal-FAQ' ng-if='desktopMode' class='full-xy hide-display cta-modal absolute top-0 left-0 sidebar-modal opacity-0' ng-include="::img_base + BASE + 'templates/faq.html'" class-on-activate="show-sidebar-cta:unique:keep, bounceInLeft:anim, null:inject#faq|activate" class-on-clear="bounceOutLeft:animOut"> </ion-pane>
