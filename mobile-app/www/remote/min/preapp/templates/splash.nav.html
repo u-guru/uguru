@@ -60,10 +60,13 @@
 					</div>
                     <!-- translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" -->
                 </a>
+                <!--
+                    init-with="prop:[opacity:0]"
+                    when-nav-init="trigger:[on-enter]"
+                    on-enter="prop:[opacity:1] | send:[sidebar-icon-clicked:public]:delay-2000" -->
                 <a name='sidebar' id='sidebar-link' class="icon-round-stroke"
-					init-with="prop:[opacity:0]"
-					when-nav-init="trigger:[on-enter]"
-					on-enter="prop:[opacity:1] | send:[sidebar-icon-clicked:public]:delay-2000"
+
+
 					on-click="send:[sidebar-icon-clicked:public]">
 					<div class="full-xy flex-center relative">
 						<svg viewBox="0 0 100 100">
