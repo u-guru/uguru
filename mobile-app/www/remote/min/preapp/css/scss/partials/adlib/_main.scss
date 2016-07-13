@@ -2,18 +2,18 @@
 @import 'responsive';
 
 // animation
-.splash-guru-head {
-	.coach-fill {
-		path {
-			&.activate:nth-child(1), &.animate:nth-child(1) {
-				animation: coach-click-2 200ms ease-in 4500ms 1 forwards;
-			}
-			&.activate:nth-child(2), &.animate:nth-child(2) {
-				animation: coach-click-1 200ms ease-in 4500ms 1 forwards;
-			}
-		}
-	}
-}
+// .splash-guru-head {
+// 	.coach-fill {
+// 		path {
+// 			&.activate:nth-child(1), &.animate:nth-child(1) {
+// 				animation: coach-click-2 200ms ease-in 4500ms 1 forwards;
+// 			}
+// 			&.activate:nth-child(2), &.animate:nth-child(2) {
+// 				animation: coach-click-1 200ms ease-in 4500ms 1 forwards;
+// 			}
+// 		}
+// 	}
+// }
 
 .splash-adlib {
 	h1 {
@@ -321,28 +321,6 @@
 	> svg {
 		position: absolute;
 	}
-	.coach-fill {
-		top: 85px;
-		right: -100px;
-		width: 140px;
-		path {
-			&.animate, &.activate {
-				&:nth-child(1) {
-					stroke-dasharray: 137;
-					stroke-dashoffset: 137;
-					animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
-				}
-				&:nth-child(2) {
-					stroke-dasharray: 53;
-					stroke-dashoffset: 53;
-					animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
-				}
-			}
-		}
-		g g {
-			animation-delay: 3000ms;
-		}
-	}
 	.coach-help {
 		&.coach-help-desktop {
 			display: none;
@@ -354,6 +332,20 @@
 			top: -10px;
 			left: -90px;
 			width: 114.5px;
+		}
+	}
+}
+
+.coach-fill {
+	top: 85px;
+	right: -100px;
+	width: 140px;
+	path {
+		&:nth-child(1) {
+			stroke-dasharray: 137;
+		}
+		&:nth-child(2) {
+			stroke-dasharray: 53;
 		}
 	}
 }

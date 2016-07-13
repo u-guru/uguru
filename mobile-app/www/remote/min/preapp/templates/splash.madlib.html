@@ -1,6 +1,6 @@
 <div class="splash-hero-content"  ng-controller='SplashMadlibController as madlib' id='splash-madlib' ng-class="{'z-index--1000 opacity-0': !splash.state.madlib}">
-    <div class="splash-guru-head"  on-activate="pulse:animIn">
-        <div class="splash-hero-guru splash-logo-guru" ng-include="'shared/templates/components/svg/logo/guru-head.html'"></div>
+    <div class="splash-guru-head">
+        <div class="splash-hero-guru splash-logo-guru" on-activate="pulse:animIn" ng-include="'shared/templates/components/svg/logo/guru-head.html'"></div>
         <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop opacity-0" viewBox="0 0 340 205">
             <g fill="none">
@@ -22,15 +22,17 @@
         </svg>
         <svg class="coach-fill" viewBox="0 0 280 112">
             <g fill="none">
-                <path class="opacity-0" d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-                    on-init="opacity:0"
-                    on-activate="animate:animIn:delay-500"></path>
-                <path class="opacity-0" d="M37.0997894,99.9330039 L12.6336973,109.324657 L3.24204445,84.8585646" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-                    on-init="opacity:0"
-                    on-activate="animate:animIn:delay-500"></path>
-                <g class="opacity-0"
-                    on-init="opacity:0"
-                    on-activate="u-bounceIn-subtle:animIn:delay-500">
+                <path d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+                    init-with="prop:[opacity:0]"
+					when-nav-init="trigger:[on-enter]"
+                    on-enter="anim:[coach-click-2:set:(animation-duration:150ms#animation-timing-function:ease-in):delay-4500:in]"></path>
+                <path d="M37.0997894,99.9330039 L12.6336973,109.324657 L3.24204445,84.8585646" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+                    init-with="prop:[opacity:0]"
+					when-nav-init="trigger:[on-enter]"
+                    on-enter="anim:[coach-click-1:set:(animation-duration:150ms#animation-timing-function:ease-in):delay-4500:in]"></path>
+                <g init-with="prop:[opacity:0, transform-origin:center center]"
+					when-nav-init="trigger:[on-enter]"
+                    on-enter="anim:[bounceIn-subtle:set:(animation-duration:1000ms#animation-timing-function:linear):delay-4500:in]">
                     <text transform="translate(187.228115, 32.099551) rotate(-15.000000) translate(-187.228115, -32.099551) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
                         <tspan x="146.128115" y="31.0995511">fill in</tspan>
                         <tspan x="99.7281154" y="71.0995511">the blanks</tspan>
@@ -42,11 +44,11 @@
     <div class="splash-adlib" eval-on-activate="activateMap()">
         <div class="splash-adlib-inside">
             <div class="adlib-header-container relative"
-                on-init="opacity: 0"
-                on-activate="u-bounceInUp-subtle:animIn:delay-250">
+                on-init="opacity:0"
+                on-activate="bounceInUp-subtle:animIn:delay-250">
                 <h1 class="adlib-header active-adlib-header"
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                    on-init="opacity: 0"
+                    on-init="opacity:0"
                     on-activate="spread-out:animIn:delay-500"
                     on-category-switch-exit="inactive-adlib-header:anim">
                     <span>{{madlib.category.tags_data.template.beginning}}</span>

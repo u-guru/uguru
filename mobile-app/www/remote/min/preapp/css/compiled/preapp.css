@@ -1048,11 +1048,6 @@
   .splash-hero-content.mobile.max-320 .splash-adlib h1 {
     line-height: 2 !important; }
 
-.splash-guru-head .coach-fill path.activate:nth-child(1), .splash-guru-head .coach-fill path.animate:nth-child(1) {
-  animation: coach-click-2 200ms ease-in 4500ms 1 forwards; }
-.splash-guru-head .coach-fill path.activate:nth-child(2), .splash-guru-head .coach-fill path.animate:nth-child(2) {
-  animation: coach-click-1 200ms ease-in 4500ms 1 forwards; }
-
 .splash-adlib h1 {
   animation-delay: 500ms; }
 .splash-adlib ul li:nth-child(1) {
@@ -1309,20 +1304,6 @@
   position: relative; }
   .splash-guru-head > svg {
     position: absolute; }
-  .splash-guru-head .coach-fill {
-    top: 85px;
-    right: -100px;
-    width: 140px; }
-    .splash-guru-head .coach-fill path.animate:nth-child(1), .splash-guru-head .coach-fill path.activate:nth-child(1) {
-      stroke-dasharray: 137;
-      stroke-dashoffset: 137;
-      animation: coach-click-2 200ms ease-in 2500ms 1 forwards; }
-    .splash-guru-head .coach-fill path.animate:nth-child(2), .splash-guru-head .coach-fill path.activate:nth-child(2) {
-      stroke-dasharray: 53;
-      stroke-dashoffset: 53;
-      animation: coach-click-1 100ms ease-in 2700ms 1 forwards; }
-    .splash-guru-head .coach-fill g g {
-      animation-delay: 3000ms; }
   .splash-guru-head .coach-help.coach-help-desktop {
     display: none;
     top: -40px;
@@ -1332,6 +1313,15 @@
     top: -10px;
     left: -90px;
     width: 114.5px; }
+
+.coach-fill {
+  top: 85px;
+  right: -100px;
+  width: 140px; }
+  .coach-fill path:nth-child(1) {
+    stroke-dasharray: 137; }
+  .coach-fill path:nth-child(2) {
+    stroke-dasharray: 53; }
 
 @media screen and (max-width: 768px) {
   .splash-hero-content .splash-hero-guru {
@@ -1394,7 +1384,8 @@
       stroke: white;
       stroke-width: 4px;
       stroke-linecap: round;
-      stroke-linejoin: round; }
+      stroke-linejoin: round;
+      transition: all 150ms ease-in-out; }
     .splash-up-circle svg circle {
       fill: rgba(64, 72, 75, 0.9); }
   @media screen and (min-width: 768px) {
