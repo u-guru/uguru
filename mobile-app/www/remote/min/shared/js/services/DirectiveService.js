@@ -55,7 +55,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
               scope.root.public.customStates[type] = {};
       }
       var watchState = 'root.public.customStates.' + type + '.' + args.camel;
-      console.log('watching', watchState)
       scope.$watch(watchState, function(new_value, old_value) {
         if (new_value) {
           $timeout(function() {
@@ -63,9 +62,11 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           })
           // console.log(type, args, attr_value, 'activated');
           var elemArgs = parseArgs(attr_value);
-
           for (key in elemArgs) {
             if ((argNames || supportedCommands).indexOf(key) > -1) {
+              if (key === 'send') {
+                console.log('activating', elemArgs[key])
+              }
               activateArg(key, elemArgs[key], scope, element);
             }
           }
@@ -200,9 +201,13 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         return arg.trim();
       }
 
-      function processSendSecondaryArgs(msg_name, arg) {
-        if (!arg) {
+      function processSendSecondaryArgs(msg_name, arg, prop_dict, orig_str) {
+        if (!arg || !arg.length) {
           arg = 'public'
+        }
+        if (arg.indexOf('delay-') > -1) {
+          arg = 'public'
+          console.log(prop_dict, orig_str)
         }
         return arg.trim();
       }
@@ -252,6 +257,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var value = kvPairSplit[1];
 
           parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs, i);
+          var kvPairSplit = stringPropArgs[i].split(':');
+          var key = kvPairSplit[0];
+          var value = kvPairSplit[1];
 
           if (kvPairSplit.length > 2) {
             parsedPropDict = processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
@@ -409,6 +417,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
   }
 
     function evalSendArgs(arg_dict, scope, elem) {
+      console.log('evaluating send', arg_dict)
       if (arg_dict.delay) {
         $timeout(function() {
           processMessagesArr(arg_dict.messages, scope, elem);

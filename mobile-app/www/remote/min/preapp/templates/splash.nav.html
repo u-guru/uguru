@@ -1,4 +1,4 @@
-<div ng-controller="SplashNavController as nav" id='splash-nav-bar' init-with="prop:[opacity:0]" on-init="prop:[opacity:1] | send:[nav-init:delay-1500]">
+<div ng-controller="SplashNavController as nav" id='splash-nav-bar' init-with="prop:[opacity:0]" on-init="prop:[opacity:1] | send:[nav-init:public]">
     <custom-states when="nav-init, powerups-clicked"></custom-states>
     <div id='splash-desktop-nav' class='full-x'>
         <!-- Dropdown overlays -->
@@ -18,7 +18,7 @@
                         <h2>@</h2>
                         <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'
 							init-with="prop:[opacity:0]"
-							when-nav-init="prop:[opacity:1] | send:[dropdown-init:children:delay-5000]"> </dropdown>
+							when-nav-init="prop:[opacity:1:delay-1000] | send:[dropdown-init:children:delay-5000]"> </dropdown>
                     </div>
                 </div>
                 <div class="splash-hero-nav mobile">
