@@ -3,7 +3,12 @@
 	when-sidebar-icon-clicked="trigger:[on-enter]"
 	on-enter="prop:[transform:scale(1000), background:#40484b] | trigger:[on-exit]"
 	on-exit="prop:[opacity:0:delay-500, transition:all 500ms ease-out, display:none:delay-2000]"></div>
-<div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar' when-sidebar-icon-clicked="trigger:[on-enter]" when-sidebar-close-clicked="trigger:[on-exit]" on-exit="prop:[opacity:0]" on-enter="prop:[opacity:1:delay-500]" init-with="prop:[opacity:0]">
+<div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar'
+	init-with="prop:[opacity:0]"
+ 	when-sidebar-icon-clicked="trigger:[on-enter]"
+	on-enter="prop:[opacity:1:delay-500]"
+	when-sidebar-close-clicked="trigger:[on-exit]"
+	on-exit="prop:[opacity:0]">
 	<!-- on-init="trigger:[on-enter]" -->
     <!-- <custom-states when="faq-clicked, pricing-clicked"></custom-states> -->
     <aside class="splash-sidebar-full">

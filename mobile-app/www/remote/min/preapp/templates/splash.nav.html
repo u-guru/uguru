@@ -39,7 +39,8 @@
                         </a>
                     </div>
                 </div>
-                <a id='powerups-link' class="icon-round-stroke" on-click="send:[powerups-clicked] | class:[powerups-link:add]">
+                <a id='powerups-link' class="icon-round-stroke"
+					on-click="send:[powerups-clicked] | class:[powerups-link:add]">
 					<!-- init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[opacity:0]" -->
                     <!-- ng-click='activatePowerups()'
                     class-on-click="powerup-activated, null:inject#powerups-link svg|activate, null:inject#cta-modal-powerups|activate"
@@ -60,7 +61,10 @@
 					</div>
                     <!-- translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" -->
                 </a>
-                <a name='sidebar' id='sidebar-link' on-click="send:[sidebar-icon-clicked:public]" class="icon-round-stroke">
+				<!-- on-click="send:[sidebar-icon-clicked:public]" -->
+                <a name='sidebar' id='sidebar-link' class="icon-round-stroke"
+					when-nav-init="trigger:[on-enter]"
+					on-enter="send:[sidebar-icon-clicked:public]">
 					<div class="full-xy flex-center relative">
 						<svg viewBox="0 0 100 100">
 						    <g>
