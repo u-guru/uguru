@@ -65,7 +65,8 @@ angular.module('uguru.admin')
           full_name: 'send',
           description: 'The communication protocol between two html elements. Sends a message to 1 to several elements of a particular scope (optional to clarify, public for now).',
           syntax: '<div on-enter="send:[div-has-entered:children:delay-500, div-has-entered:parent:delay-1000]"></div>',
-          options: ['delay', 'children', 'parent', 'siblings'],
+          options: ['public', 'delay', 'children', 'parent', 'siblings'],
+          special_notes: ['Must include <i>at least</i> one <b>SCOPE-SPECIFIC</b> (either children, parent, siblings, parent) option'],
           upcoming: ['send to multiple scoped audiences with () syntax vs repeating', 'left neighbor', 'right neighbor', 'stagger-ed sending', 'N-th levels up', 'public']
         },
         {
