@@ -21,6 +21,7 @@
                         <h2 init-with="prop:[opacity:0]"
 							when-nav-init="trigger:[on-enter]"
 							on-enter="prop:[opacity:1, transition:all 1000ms ease-out]:delay-1000">@</h2>
+						<!-- @samir delays for send are not working as expected -->
                         <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'
 							init-with="prop:[opacity:0]"
 							when-nav-init="prop:[opacity:1]:delay-1000 | send:[dropdown-init:children]:delay-1000"> </dropdown>
