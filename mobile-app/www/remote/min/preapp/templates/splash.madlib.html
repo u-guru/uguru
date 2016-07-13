@@ -149,6 +149,7 @@
                 </h1> -->
             </div>
             <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate" ng-if='madlib.category.tags_data.blank_one_options.length && madlib.category.tags_data.blank_two_options.length'>
+				<!-- @samir how do I separate the individual animations for each tag since they're only referenced one time here for all of them? I tried adding the class instead of animating but it didn't get rid of the opacity -->
                 <tag class='adlib-tag'
 					init-with="prop:[opacity:0]"
 					when-madlib-init="trigger:[on-enter]"
