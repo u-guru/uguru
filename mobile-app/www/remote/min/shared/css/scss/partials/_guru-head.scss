@@ -14,9 +14,19 @@
 }
 
 //EDITS
-
+.prop-hover {
+	animation: prop-hover 1000ms linear alternate both;
+}
 
 //KEYFRAMES
+@keyframes prop-hover {
+    0% {
+        transform: translateY(3px)
+    }
+    100% {
+        transform: translateY(-3px)
+    }
+}
 
 /* http://goo.gl/zuWAa0 */
 @keyframes hat-down {

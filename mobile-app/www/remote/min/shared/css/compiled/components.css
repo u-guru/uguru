@@ -14376,6 +14376,14 @@ input[type=range] {
   .guru-head-switcher * {
     transform-origin: center center; }
 
+.prop-hover {
+  animation: prop-hover 1000ms linear alternate both; }
+
+@keyframes prop-hover {
+  0% {
+    transform: translateY(3px); }
+  100% {
+    transform: translateY(-3px); } }
 /* http://goo.gl/zuWAa0 */
 @keyframes hat-down {
   0% {
