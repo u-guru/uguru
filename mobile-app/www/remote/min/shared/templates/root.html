@@ -4,9 +4,13 @@
             (when it comes to shortcuts)
     -->
     <custom-shortcuts>
+    <!-- check splash.nav.html for shortcut examples -->
+        <!-- for prop, send, anim trigger-->
         <arg-shortcut replace="prop" with="p"/>
+        <arg-shortcut replace="trigger" with="t"/>
         <arg-shortcut replace="prop" with="set"/>
 
+        <!-- For css properties only -->
         <prop-shortcut replace="opacity" with="op"/>
         <prop-shortcut replace="transition" with="t"/>
 
@@ -16,7 +20,7 @@
 
         <command-shortcut replace="p:[op:0, z-index:-1000]" with="backstage"/>
          -->
-        <cmd-shortcut replace="prop:[opacity:0, z-index:-1000]" with="backstage"/>
+        <cmd-shortcut replace="prop:[op:0, z-index:-1000]" with="backstage"/>
     </custom-shortcuts>
 </ion-nav-view>
 

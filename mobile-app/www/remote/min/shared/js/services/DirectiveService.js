@@ -425,8 +425,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function evalSendArgs(arg_dict, scope, elem) {
       if (arg_dict.delay) {
         $timeout(function() {
-          processMessagesArr(arg_dict.messages, scope, elem);
-        })
+          console.log('sending w/ delay', arg_dict);
+          processMessageArr(arg_dict.messages, scope, elem);
+        }, arg_dict.delay)
       } else {
         processMessageArr(arg_dict.messages, scope, elem);
       }
