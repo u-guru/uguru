@@ -182,10 +182,13 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           return formatAndProcessArgs(type, string_args, {states:[]}, 'states', processTriggerSecondaryArgs, ['state'])
       }
 
-      function processAnimSecondaryArgs(msg_name, arg, prop_dict, orig_str) {
+      function processAnimSecondaryArgs(msg_name, arg, prop_dict, orig_str, i) {
+
         if (!arg || arg.indexOf('set') > -1 || arg.indexOf('delay-') > -1 || arg.indexOf('before') > -1 || arg.indexOf('after') > -1) {
           arg = 'obj';
-          prop_dict.custom = orig_str[0].replace(msg_name + ':', '');
+
+            prop_dict.custom = orig_str[i].replace(msg_name + ':', '');
+
         }
         return arg
       }
@@ -248,7 +251,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var key = kvPairSplit[0];
           var value = kvPairSplit[1];
 
-          parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs);
+          parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs, i);
 
           if (kvPairSplit.length > 2) {
             parsedPropDict = processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
@@ -457,11 +460,13 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function evalAnimArgs(arg_dict, scope, elem) {
+
       if (arg_dict.delay) {
         $timeout(function() {
           processAnimArr(arg_dict.animations, scope, elem);
         })
       } else {
+        console.log(arg_dict.animations)
         processAnimArr(arg_dict.animations, scope, elem);
       }
     }
@@ -478,9 +483,13 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (custom) {
           processAnimCustomArgs(custom, customDict);
         }
+
         var animName = Object.keys(indexAnimObj)[0];
         var animType = indexAnimObj[animName];
         runOneAnimation(animName, animType, delay, scope, elem, customDict);
+        if (animName === 'prop-hover') {
+          console.log(custom)
+        }
 
         if (delay) {
           indexAnimObj['delay'] = delay;
@@ -519,11 +528,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (animType === 'obj') {
           var animObj = AnimationService.getAnimationObjFromAnimationName(anim_name);
           if (animObj) {
-            if (custom_args && custom_args.set && (!custom_args.after || custom_args.before)) {
-              var propDict = {properties:custom_args.set};
-
-              evalPropertyArgs(propDict, scope, elem);
-            }
             if (custom_args.in) {
               animStartCb = function() {
                 $timeout(function() {
@@ -539,13 +543,32 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
               }
             }
             if (custom_args.after) {
-              var propDict = {properties:custom_args.set};
+
               animEndCb = function() {
+                var propDict = {properties:custom_args.set};
                 evalPropertyArgs(propDict, scope, elem);
+                console.log(propDict);
               }
             }
-            execAnimation(elem, anim_name, animObj, delay, animStartCb, animEndCb )
 
+            if (delay) {
+              $timeout(function() {
+                if (custom_args && custom_args.set && (!custom_args.after || custom_args.before)) {
+                  var propDict = {properties:custom_args.set};
+                  if (elem[0].classList.value.indexOf('5-minus') > -1) {
+                    console.log(delay, custom_args.set);
+                  }
+                  evalPropertyArgs(propDict, scope, elem);
+                }
+                execAnimation(elem, anim_name, animObj, delay, animStartCb, animEndCb )
+              }, delay)
+              return;
+            }
+            if (custom_args && custom_args.set && (!custom_args.after || custom_args.before)) {
+              var propDict = {properties:custom_args.set};
+              evalPropertyArgs(propDict, scope, elem);
+            }
+            execAnimation(elem, anim_name, animObj, delay, animStartCb, animEndCb)
             // AnimationService.animate(elem[0], anim_name, animObj, delay, animStartCb, animEndCb);
           }
           return;
@@ -562,6 +585,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           initAndTriggerAndRemoveAnimEndFunc(elem, browser_prefix, end_cb)
         }
         elem.css('animation-name', anim_name);
+
       }
 
       function getAnimEventName(prefix, _type) {
@@ -583,10 +607,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       function initAndTriggerAndRemoveAnimEndFunc(elem, browser_prefix, end_cb) {
         var animEndEventName = getAnimEventName(browser_prefix, 'End');
           var animEndFunc = function(e) {
+
             end_cb();
             elem[0].removeEventListener(animEndEventName, animEndFunc);
-            elem[0].css('animation-name', '');
-            elem[0].css('animation-name', null);
           }
           elem[0].addEventListener(animEndEventName, animEndFunc);
       }

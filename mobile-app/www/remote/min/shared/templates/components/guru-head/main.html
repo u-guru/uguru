@@ -24,8 +24,7 @@
 		        <g class="5-minus"
 					init-with="prop:[opacity:0]"
 					when-head-init="trigger:[on-enter]"
-					on-enter="anim:[prop-down:set(animation-duration:1000ms#animation-timing-function:linear):delay-1000:in, prop-hover:set:(animation-duration:1000ms#animation-timing-function:linear#animation-iteration-count:infinite#animation-direction:alternate):delay-2000:in] | class:[prop-hover:add:delay-2000]|trigger:[on-exit]"
-					on-mid="class:[prop-hover:add:delay-2000]|trigger:[on-exit]"
+					on-enter="anim:[prop-down:set:(animation-duration:1000ms#animation-timing-function:linear):delay-1000:in, prop-hover:set:(animation-duration:1000ms#animation-timing-function:linear#animation-iteration-count:infinite#animation-direction:alternate):delay-2000:in] | trigger:[on-exit]"
 					on-exit="prop:[opacity:0, transition: all 450ms ease-out]">
 		            <rect class="5-minus-bg" fill="#E9BAD5" x="39" y="66" width="10" height="10" rx="2"></rect>
 		            <path d="M41.5,71 L46.5,71" class="5-minus-dash"></path>
