@@ -92,7 +92,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       var customStateDict = {}
       if ('when' in attr) {
         customStateDict.when = [];
-        var whenAttr = attr.when;
+        var whenAttr = attr.when && attr.when.replace(', ', ',');
         var whenAttrArr = whenAttr.split(',');
         for (var i = 0; i < whenAttrArr.length; i++) {
           var indexWhenAttr = whenAttrArr[i];

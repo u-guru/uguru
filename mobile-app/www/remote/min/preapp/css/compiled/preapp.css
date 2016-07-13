@@ -2566,6 +2566,199 @@
       -o-animation-delay: 1000ms;
       animation-delay: 1000ms; }
 
+.iphone-device {
+  animation: device-rotate-in 750ms cubic-bezier(0.2, 0.79, 0.11, 1.97) 1000ms forwards;
+  transform-origin: center center;
+  transform: rotate(30deg); }
+
+.iphone-left {
+  animation: left-device-slide-in 750ms cubic-bezier(0.2, 0.79, 0.11, 1.97) 1000ms forwards;
+  stroke-opacity: 0;
+  opacity: 0.2;
+  transform-style: preserve-3d; }
+
+.iphone-right {
+  animation: right-device-slide-in 750ms cubic-bezier(0.2, 0.79, 0.11, 1.97) 1000ms forwards;
+  opacity: 0.2;
+  stroke-opacity: 0;
+  transform-style: preserve-3d; }
+
+.default-color {
+  opacity: 0; }
+
+.screen-left,
+.screen-right {
+  animation: device-screen 750ms cubic-bezier(0.89, 0.01, 1, 0.12) 2050ms forwards;
+  stroke-dasharray: 789;
+  stroke-dashoffset: 789; }
+
+.backing-left,
+.backing-right {
+  animation: backing 750ms cubic-bezier(0.89, 0.01, 1, 0.12) 1900ms forwards;
+  stroke-dasharray: 929;
+  stroke-dashoffset: 929; }
+
+.home-btn-left,
+.home-btn-right {
+  animation: home-btn 750ms cubic-bezier(0.89, 0.01, 1, 0.12) 2150ms forwards;
+  stroke-dasharray: 79;
+  stroke-dashoffset: 79; }
+
+.sheen path {
+  animation: sheen 200ms cubic-bezier(0.6, 0.19, 1, 0.61) 4000ms forwards;
+  transform-origin: center center; }
+
+.u-scaleIn-bounceDown {
+  animation: u-scaleIn-bounceDown 1000ms ease-out both; }
+
+/* http://goo.gl/5IAZLh */
+@keyframes u-scaleIn-bounceDown {
+  0% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 0; }
+  2.1% {
+    transform: matrix3d(0.26, 0, 0, 0, 0, 0.26, 0, 0, 0, 0, 1, 0, 0, -44.509, 0, 1); }
+  4.1% {
+    transform: matrix3d(0.493, 0, 0, 0, 0, 0.493, 0, 0, 0, 0, 1, 0, 0, -72.206, 0, 1); }
+  4.3% {
+    transform: matrix3d(0.514, 0, 0, 0, 0, 0.514, 0, 0, 0, 0, 1, 0, 0, -74.248, 0, 1); }
+  8.21% {
+    transform: matrix3d(0.853, 0, 0, 0, 0, 0.853, 0, 0, 0, 0, 1, 0, 0, -91.965, 0, 1); }
+  8.61% {
+    transform: matrix3d(0.879, 0, 0, 0, 0, 0.879, 0, 0, 0, 0, 1, 0, 0, -91.781, 0, 1); }
+  11.41% {
+    transform: matrix3d(1.011, 0, 0, 0, 0, 1.011, 0, 0, 0, 0, 1, 0, 0, -83.235, 0, 1); }
+  12.91% {
+    transform: matrix3d(1.052, 0, 0, 0, 0, 1.052, 0, 0, 0, 0, 1, 0, 0, -74.858, 0, 1); }
+  14.51% {
+    transform: matrix3d(1.079, 0, 0, 0, 0, 1.079, 0, 0, 0, 0, 1, 0, 0, -64.253, 0, 1); }
+  17.22% {
+    transform: matrix3d(1.093, 0, 0, 0, 0, 1.093, 0, 0, 0, 0, 1, 0, 0, -44.824, 0, 1); }
+  20.72% {
+    transform: matrix3d(1.078, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, 0, -21.211, 0, 1); }
+  27.03% {
+    transform: matrix3d(1.029, 0, 0, 0, 0, 1.029, 0, 0, 0, 0, 1, 0, 0, 6.461, 0, 1); }
+  28.33% {
+    transform: matrix3d(1.021, 0, 0, 0, 0, 1.021, 0, 0, 0, 0, 1, 0, 0, 9.434, 0, 1); }
+  33.23% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 13.755, 0, 1); }
+  39.44% {
+    transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, 0, 9.688, 0, 1); }
+  45.75% {
+    transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 0, 3.15, 0, 1); }
+  58.26% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -2.057, 0, 1); }
+  61.66% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -1.834, 0, 1); }
+  83.28% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.308, 0, 1); }
+  83.98% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.306, 0, 1); }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; } }
+/* http://goo.gl/cZwvpL */
+@keyframes u-scaleIn-bounceUp {
+  0% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 0; }
+  2.1% {
+    transform: matrix3d(0.26, 0, 0, 0, 0, 0.26, 0, 0, 0, 0, 1, 0, 0, 44.509, 0, 1); }
+  4.1% {
+    transform: matrix3d(0.493, 0, 0, 0, 0, 0.493, 0, 0, 0, 0, 1, 0, 0, 72.206, 0, 1); }
+  4.3% {
+    transform: matrix3d(0.514, 0, 0, 0, 0, 0.514, 0, 0, 0, 0, 1, 0, 0, 74.248, 0, 1); }
+  8.21% {
+    transform: matrix3d(0.853, 0, 0, 0, 0, 0.853, 0, 0, 0, 0, 1, 0, 0, 91.965, 0, 1); }
+  8.61% {
+    transform: matrix3d(0.879, 0, 0, 0, 0, 0.879, 0, 0, 0, 0, 1, 0, 0, 91.781, 0, 1); }
+  11.41% {
+    transform: matrix3d(1.011, 0, 0, 0, 0, 1.011, 0, 0, 0, 0, 1, 0, 0, 83.235, 0, 1); }
+  12.91% {
+    transform: matrix3d(1.052, 0, 0, 0, 0, 1.052, 0, 0, 0, 0, 1, 0, 0, 74.858, 0, 1); }
+  14.51% {
+    transform: matrix3d(1.079, 0, 0, 0, 0, 1.079, 0, 0, 0, 0, 1, 0, 0, 64.253, 0, 1); }
+  17.22% {
+    transform: matrix3d(1.093, 0, 0, 0, 0, 1.093, 0, 0, 0, 0, 1, 0, 0, 44.824, 0, 1); }
+  20.72% {
+    transform: matrix3d(1.078, 0, 0, 0, 0, 1.078, 0, 0, 0, 0, 1, 0, 0, 21.211, 0, 1); }
+  27.03% {
+    transform: matrix3d(1.029, 0, 0, 0, 0, 1.029, 0, 0, 0, 0, 1, 0, 0, -6.461, 0, 1); }
+  28.33% {
+    transform: matrix3d(1.021, 0, 0, 0, 0, 1.021, 0, 0, 0, 0, 1, 0, 0, -9.434, 0, 1); }
+  33.23% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -13.755, 0, 1); }
+  39.44% {
+    transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, 0, -9.688, 0, 1); }
+  45.75% {
+    transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 0, -3.15, 0, 1); }
+  58.26% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2.057, 0, 1); }
+  61.66% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1.834, 0, 1); }
+  83.28% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.308, 0, 1); }
+  83.98% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.306, 0, 1); }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; } }
+@keyframes sheen {
+  0% {
+    transform: translate3d(-10px, -10px, 0); }
+  100% {
+    transform: translate3d(625px, 1018px, 0); } }
+@keyframes home-btn {
+  0% {
+    stroke-dashoffset: 79;
+    opacity: 1;
+    stroke-opacity: 1; }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    stroke-opacity: 1; } }
+@keyframes backing {
+  0% {
+    stroke-dashoffset: 929;
+    opacity: 1;
+    stroke-opacity: 1; }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    stroke-opacity: 1; } }
+@keyframes device-screen {
+  0% {
+    stroke-dashoffset: 789;
+    opacity: 1;
+    stroke-opacity: 1; }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    stroke-opacity: 1; } }
+@keyframes device-color {
+  0% {
+    fill: #2b2324; }
+  50% {
+    fill: #003057; }
+  100% {
+    fill: #2b2324; } }
+@keyframes right-device-slide-in {
+  0% {
+    transform: translate3d(0, -30%, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes left-device-slide-in {
+  0% {
+    transform: translate3d(0, 30%, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes device-rotate-in {
+  0% {
+    transform: rotateZ(30deg) rotateY(-90deg);
+    opacity: 1; }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1; } }
 .coach-click {
   display: block;
   position: absolute;

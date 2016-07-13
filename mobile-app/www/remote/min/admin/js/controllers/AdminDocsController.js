@@ -26,6 +26,7 @@ angular.module('uguru.admin')
     docs.directives = AdminDirectiveService.getAllDirectives()
     docs.stateDirectives = {
       states: [
+        {name: 'init-later', tags: ['internal'], syntax:'<ELEM init-later>', description: 'Dont even bother rendering it until later, treat it like a comment or a display:none'},
         {name: 'init-with', tags: ['internal']},
         {name: 'on-init', tags: ['internal']},
         {name: 'on-click', type: ['internal', 'default']},

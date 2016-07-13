@@ -102,8 +102,9 @@ angular.module('uguru.shared.directives.components')
                     }
                 }
                 scope.click = function(option, index) {
-
-                    scope.dropdown.selectedIndex = index;
+                    if (!option.skip) {
+                        scope.dropdown.selectedIndex = index;
+                    }
 
                     $timeout(function() {
                         scope.$apply();

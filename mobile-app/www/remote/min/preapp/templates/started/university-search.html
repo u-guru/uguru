@@ -1,4 +1,4 @@
-<ion-view class="flex-center">
+<div id='university-search' class="absolute full-xy top-0 left-0 flex-center bg-charcoal" init-with="prop:[opacity:0, z-index:-1000]" when-search-university-clicked="prop:[opacity:1, z-index:1000]" when-close-search-university="prop:[opacity:0, z-index:-1000]">
     <div class="projector-slide">
         <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
             <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
@@ -51,9 +51,9 @@
                 						<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
                 					</svg>
                 				</span>
-                                <!-- <a class="side-icon desktop-input-close-icon activated" ng-click="search_text.university = '';" ng-if="search_text.university.trim().length > 0">
+                                <a class="side-icon desktop-input-close-icon activated" ng-click="search_text.university = '';" ng-if="search_text.university.trim().length > 0">
                                     <i class="icon ion-close-circled txt-white"></i>
-                                </a> -->
+                                </a>
                             </fieldset>
                         </form>
                     </div>
@@ -258,4 +258,7 @@
             </div>
         </div>
     </div>
-</ion-view>
+    <div class='flex-center full-x fixed top-0 right-0' init-with="prop:[z-index:1000]">
+        <button on-click="send:[close-search-university]" class="btn-login-fb btn-ghost-white m15xy absolute top-0 right-0">Cancel</button>
+    </div>
+</div>

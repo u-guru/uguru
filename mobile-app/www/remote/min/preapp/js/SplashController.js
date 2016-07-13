@@ -39,7 +39,9 @@ angular.module('uguru.preApp', ['ionic'])
           splash.state.nav = true;
           splash.state.madlib = true;
           splash.state.sidebar = true;
-          splash.state.device = false;
+          splash.state.device = true;
+          splash.state.powerups = true;
+          splash.state.universitySearch = true;
           SpecService.initSpec('splash', $scope);
           return;
       }
@@ -61,7 +63,9 @@ angular.module('uguru.preApp', ['ionic'])
         splash.state.madlib = true;
         splash.state.nav = true;
         splash.state.sidebar = true;
-        splash.state.device = false;
+        splash.state.device = true;
+        splash.state.powerups = true;
+        splash.state.universitySearch = true;
         $timeout(function() {
 
           $scope.$apply();

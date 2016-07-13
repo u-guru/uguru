@@ -26,7 +26,12 @@ angular.module('uguru.preApp')
     }
 
     function updateSelectedUniversity(option, index) {
-      $scope.splash.university = option;
+      if (index === nav.universitiesDropdown.options.length - 1) {
+        $scope.root.public.customStates.when.whenSearchUniversityClicked = true;
+
+      } else {
+        $scope.splash.university = option;
+      }
     }
 
     function processUniversityNames(uni_arr) {
@@ -38,6 +43,7 @@ angular.module('uguru.preApp')
           uni_arr[i].name = uni_arr[i].school_casual_name || uni_arr[i].name.substring(0, 17) + '...';
         }
       }
+      uni_arr.push({name: 'Search your school', skip:true})
       return uni_arr
     }
 
