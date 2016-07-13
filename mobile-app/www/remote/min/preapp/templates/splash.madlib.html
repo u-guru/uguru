@@ -7,7 +7,7 @@
         <div class="splash-hero-guru splash-logo-guru" ng-include="'shared/templates/components/svg/logo/guru-head.html'"
 			init-with="prop:[opacity:0]"
 			when-madlib-init="trigger:[on-enter]"
-			on-enter="anim:[bounceIn-subtle:set:(animation-duration:1000ms):in]"></div>
+			on-enter="anim:[bounceIn-subtle:set:(animation-duration:1000ms#animation-timing-function:linear):in]"></div>
         <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop" init-with="prop:[opacity:0]" viewBox="0 0 340 205">
             <g fill="none">
@@ -156,8 +156,7 @@
 					when-madlib-init="trigger:[on-enter]"
 					on-activate="spread-out:animIn:delay-2500"
                     on-hover="pulse"
-                    on-click-guru-samir=""
-                    when-color-dropdown-clicked="class:[opacity:0]"
+                    when-color-dropdown-clicked="prop:[opacity:0]"
 
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-category-switch-enter="spread-out:anim"

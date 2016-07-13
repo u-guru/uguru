@@ -56,59 +56,59 @@
 			}
 		}
 
-		.adlib-header-container .adlib-header.active-adlib-header.spread-out {
-			span:nth-child(1) {
-				transform: translate3d(40px,0,0);
-				animation: adlib-header-1-translate 500ms ease-out 750ms both;
-			}
-			a.tag-adlib:nth-child(2) {
-				transform: translate3d(0,0,0) scale(1.7);
-				animation: adlib-header-scale 500ms ease-out 750ms both;
-			}
-			span:nth-child(3) {
-				transform: translate3d(-40px,0,0);
-				animation: adlib-header-3-translate 500ms ease-out 750ms both;
-			}
-			a.tag-adlib:nth-child(4) {
-				transform: translate3d(-37.5px,0,0) scale(1.7);
-				animation: adlib-header-4-translate 500ms ease-out 750ms both;
-			}
-			span:nth-child(5) {
-				transform: translate3d(-35px,0,0);
-				animation: adlib-header-5-translate 500ms ease-out 750ms both;
-			}
-		}
+		// .adlib-header-container .adlib-header.active-adlib-header.spread-out {
+		// 	span:nth-child(1) {
+		// 		transform: translate3d(40px,0,0);
+		// 		animation: adlib-header-1-translate 500ms ease-out 750ms both;
+		// 	}
+		// 	a.tag-adlib:nth-child(2) {
+		// 		transform: translate3d(0,0,0) scale(1.7);
+		// 		animation: adlib-header-scale 500ms ease-out 750ms both;
+		// 	}
+		// 	span:nth-child(3) {
+		// 		transform: translate3d(-40px,0,0);
+		// 		animation: adlib-header-3-translate 500ms ease-out 750ms both;
+		// 	}
+		// 	a.tag-adlib:nth-child(4) {
+		// 		transform: translate3d(-37.5px,0,0) scale(1.7);
+		// 		animation: adlib-header-4-translate 500ms ease-out 750ms both;
+		// 	}
+		// 	span:nth-child(5) {
+		// 		transform: translate3d(-35px,0,0);
+		// 		animation: adlib-header-5-translate 500ms ease-out 750ms both;
+		// 	}
+		// }
 		.adlib-tag.spread-out {
 			&:nth-child(1) {
-				transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 12, -76, 0, 1);
+				// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 12, -76, 0, 1);
 				animation: spread-out-tag-1 1000ms linear 1500ms both;
 			}
 			&:nth-child(2) {
-				transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -160, -76, 0, 1);
+				// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -160, -76, 0, 1);
 				animation: spread-out-tag-2 1000ms linear 1550ms both;
 			}
 			&:nth-child(3) {
-				transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -332, -76, 0, 1);
+				// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -332, -76, 0, 1);
 				animation: spread-out-tag-3 1000ms linear 1600ms both;
 			}
 			&:nth-child(4) {
-				transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -504, -76, 0, 1);
+				// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -504, -76, 0, 1);
 				animation: spread-out-tag-4 1000ms linear 1650ms both;
 			}
 			&:nth-child(5) {
-				transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 389, -150, 0, 1);
+				// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 389, -150, 0, 1);
 				animation: spread-out-tag-5 1000ms linear 1850ms both;
 			}
 			&:nth-child(6) {
-				transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 217, -150, 0, 1);
+				// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 217, -150, 0, 1);
 				animation: spread-out-tag-6 1000ms linear 1800ms both;
 			}
 			&:nth-child(7) {
-				transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 45, -150, 0, 1);
+				// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 45, -150, 0, 1);
 				animation: spread-out-tag-7 1000ms linear 1750ms both;
 			}
 			&:nth-child(8) {
-				transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 45, -150, 0, 1);
+				// transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 45, -150, 0, 1);
 				animation: spread-out-tag-8 1000ms linear 1700ms both;
 			}
 		}
