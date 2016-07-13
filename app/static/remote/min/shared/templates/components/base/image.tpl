@@ -1,7 +1,7 @@
-<div class="absolute full-xy top-0 left-0 flex-center-wrap">
-    <ul>
-        <li>
-            <div>
+<div class="base-components absolute full-xy top-0 left-0 overflow-auto bg-smoke">
+    <ul class="flex-wrap p15-grid">
+        <li class="width-33p">
+            <div class="bg-white txt-slate p15xy full-x relative">
                 <figure class="state-default">
                     <img src="http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png"/>
                     <div class="figure-loading">
@@ -21,7 +21,7 @@
                         </svg>
                     </div>
                 </figure>
-                <div class="checkbox-container">
+                <div class="checkbox-container m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -35,8 +35,8 @@
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p">
+            <div class="bg-white txt-slate p15xy full-x relative">
                 <figure class="state-onload">
                     <img src="http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png"/>
                     <div class="figure-loading">
@@ -56,7 +56,7 @@
                         </svg>
                     </div>
                 </figure>
-                <div class="checkbox-container">
+                <div class="checkbox-container m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -70,8 +70,8 @@
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p">
+            <div class="bg-white txt-slate p15xy full-x relative">
                 <figure class="state-onenter">
                     <img src="http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png"/>
                     <div class="figure-loading">
@@ -91,7 +91,7 @@
                         </svg>
                     </div>
                 </figure>
-                <div class="checkbox-container">
+                <div class="checkbox-container m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -105,8 +105,8 @@
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p">
+            <div class="bg-white txt-slate p15xy full-x relative">
                 <figure class="state-onexit">
                     <img src="http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png"/>
                     <div class="figure-loading">
@@ -126,7 +126,7 @@
                         </svg>
                     </div>
                 </figure>
-                <div class="checkbox-container">
+                <div class="checkbox-container m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -140,8 +140,8 @@
                 </div>
             </div>
         </li>
-        <li>
-            <div>
+        <li class="width-33p">
+            <div class="bg-white txt-slate p15xy full-x relative">
                 <figure class="state-broken">
                     <img src="http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png"/>
                     <div class="figure-loading">
@@ -167,7 +167,7 @@
                         </svg>
                     </div>
                 </figure>
-                <div class="checkbox-container">
+                <div class="checkbox-container m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>

@@ -355,9 +355,6 @@ angular.module('uguru.admin')
         modalElem.classList.add('show');
       });
     };
-    $scope.newTab = function(url) {
-        window.open(url, '_blank');
-    };
 
     $scope.removePlatform = function(index){
       if ($scope.selectedBug.platforms && $scope.selectedBug.platforms.length) {

@@ -8,6 +8,10 @@ angular.module('uguru.preApp')
   'SpecService',
   function($scope, $state, $timeout, SpecService) {
     var device = this;
+
+
+
+
     $scope.$watch('splash.state.device', function(newVal, oldVal) {
       if (newVal) {
         var parentViewElement = document.querySelector('#splash-madlib');

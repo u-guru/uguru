@@ -11,9 +11,10 @@
 	</header>
 
 	<div>
-		<div class='bg-robin-80p full-x flex-wrap'>
+		<div class='bg-robin-80p full-x flex-center-vertical-wrap'>
 			<dropdown class="height-32" ng-model="availableOptions" selected-index="0" ng-if='!addSection'> </dropdown>
 			<div class="checkbox-container" ng-if='availableOptions.selectedIndex > 0 && !addSection'>
+
 				<div>
 					<input type="checkbox" id="reverse-order" ng-click="order()" />
 					<span>
@@ -24,9 +25,10 @@
 				</div>
 				<label for="reverse-order">Reverse</label>
 			</div>
-			<div ng-class="{'p15bottom': advanceSearch.tags.err_msg}" ng-if='!addSection'>
-				<div class='tag-list'>
-					<ul>
+			<div ng-if='!addSection'>
+				<!-- ng-class="{'p15bottom': advanceSearch.tags.err_msg}" -->
+				<div class="tag-list bug-tag-list">
+					<ul class="flex-wrap p15-grid">
 						<li ng-repeat="name in advanceSearch.platforms.available_list">
 							<a class="chip" ng-if='advanceSearch.platforms.list.indexOf(name) < 0' ng-click='advanceSearch.platforms.add(name)'>
 								<span>+&nbsp;&nbsp;</span>
@@ -37,10 +39,6 @@
 								<span>{{name}}</span>
 							</a>
 						</li>
-					</ul>
-				</div>
-				<div class='tag-list'>
-					<ul>
 						<li ng-repeat="tag in advanceSearch.tags.list">
 							<a class="chip bg-robin" ng-click='advanceSearch.tags.remove($index)'>
 								<span>&times;&nbsp;&nbsp;</span>
@@ -51,9 +49,8 @@
 							<input tabindex="1" class='chip tag-add' ng-model='advanceSearch.tags.empty_tag.content' ng-blur='advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)'  ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && advanceSearch.tags.add(advanceSearch.tags.empty_tag.content)" placeholder="+ add a tag" size="{{advanceSearch.tags.empty_tag.content.length || 10}}">
 						</li>
 					</ul>
-					<div class="error bg-crimson m15x p10y-p15x radius-2 txt-white semibold txt-18 hide" ng-class="{'show': advanceSearch.tags.err_msg}">{{advanceSearch.tags.err_msg}}
-					</div>
 				</div>
+				<div class="error bg-crimson m15x-m15bottom p10y-p15x radius-2 txt-white semibold txt-18 hide" ng-class="{'show': advanceSearch.tags.err_msg}">{{advanceSearch.tags.err_msg}}</div>
 			</div>
 		</div>
 	</div>
@@ -62,7 +59,7 @@
 		<aside class='bg-charcoal-30p'  ng-if='indexOfSection == null && bugReport.length'>
 			<div>
 				<ul class="p15-grid">
-					<li  ng-repeat="section in bugReport | orderBy:'-stateID':false">
+					<li  ng-repeat="section in bugReport | orderBy:'-stateID':true">
 						<button class="bg-shamrock radius-2" ng-click="openBugList(section)">{{section.name}}</button>
 						<!-- <button class="bg-shamrock radius-2" ng-click="removeSection($index)" >Remove</button> -->
 					</li>
@@ -132,6 +129,7 @@
 
 						<ul >
 							<li ng-repeat='stepBug in state.stepBugs | selectedPlatforms: advanceSearch.platforms.list | selectedTags:advanceSearch.tags.list' ng-show='isExpend'>
+							<span class="caps">[ {{stepBug.server}} ] </span>
 							<span class="caps">[ {{stepBug.speed}} ] </span>
 							 <a ng-click='initAndLaunchBugCTA($event, stepBug ,$index, $parent.$index)'>{{stepBug.step}}</a>
 							</li>

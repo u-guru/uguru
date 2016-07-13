@@ -1,4 +1,4 @@
-<ion-view id='splash-sidebar-pricing' ng-controller='SplashPricingController as pricing'>
+<div class='full-y right-0 width-66 absolute top-0 left-0 sidebar-modal' id='splash-sidebar-pricing' ng-controller='SplashPricingController as pricing' init-with="prop:[opacity:0]" when-pricing-clicked="trigger:[on-enter] | send:[faq-closed, about-closed, team-closed]" when-pricing-closed="trigger:[on-exit]" on-exit="prop:[opacity:0]" on-enter="prop:[opacity:1]">
     <main id="pricing">
         <!-- class-on-activate="null:inject#pricing header h1|activate, null:inject#pricing header ul li|activate, null:inject#pricing dl|activate" -->
         <header>
@@ -69,4 +69,4 @@
     		</dl>
     	</div>
     </main>
-</ion-view>
+</div>

@@ -24,7 +24,7 @@ function AdminDirectiveService($state, $timeout, $localstorage, RootService) {
             checkbox: ['onLoad', 'onEnter', 'unchecked:hover', 'unchecked:active', 'checked', 'checked:hover', 'checked:active', 'disabled'],
             radio: ['onExit', 'onLoad', 'onEnter', 'unchecked:hover', 'unchecked:active', 'checked', 'checked:hover', 'checked:active', 'disabled'],
             toggle: ['default', 'onLoad', 'onEnter', 'onExit', 'checked', 'hover', 'active', 'disabled'],
-            dropdowns: ['info:hover', 'option:active', 'option:disabled', 'option:hover', 'onClose', 'onOpen', ':disabled', ':active', ':hover', 'onExit', 'onEnter', 'onLoad', 'default'],
+            dropdown: ['info:hover', 'option:active', 'option:disabled', 'option:hover', 'onClose', 'onOpen', ':disabled', ':active', ':hover', 'onExit', 'onEnter', 'onLoad', 'default'],
             body: ['default', 'onLoad', 'onEnter', 'onEnter-short', 'onExit', 'onExit-short'],
             header: ['default', 'onEnter', 'onExit', 'onExit-alt'],
             image: ['default', 'onLoad', 'onEnter', 'onExit', 'broken'],

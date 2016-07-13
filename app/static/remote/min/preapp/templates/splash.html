@@ -1,4 +1,6 @@
 <ion-view id='splash-view' class='bg-charcoal' ng-controller='SplashController as splash'>
+    <custom-states when="sidebar-icon-clicked">
+    </custom-states>
     <!-- <ion-content class='relative full-xy' > -->
         <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()" elem-states="[category-change]">
             <section id='splash-home' class='splash-hero'>
@@ -26,6 +28,21 @@
 
                 <!-- Map -->
                 <div ng-if="splash.state.map" ng-include src="root.base_url + 'preapp/templates/splash.map.html'" include-replace>
+                </div>
+
+                <!-- Powerups -->
+                <div ng-if="splash.state.powerups" ng-include src="root.base_url + 'preapp/templates/splash.powerups.html'" include-replace>
+                </div>
+
+                <!-- Powerups -->
+                <div ng-if="splash.state.universitySearch" ng-include src="root.base_url + 'preapp/templates/started/university-search.html'" include-replace>
+                </div>
+
+                <!-- Controls -->
+                <div class='absolute' init-with="prop:[opacity:0]">
+                    <div class="splash-hero-skip opacity-0 rollIn animated">
+                        <button>Skip</button>
+                    </div>
                 </div>
 
             </section>
