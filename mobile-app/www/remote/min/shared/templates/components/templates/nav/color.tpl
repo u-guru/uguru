@@ -1,4 +1,4 @@
-<div class="dropdown-color" on-init="send:[dropdown-init:children]">
+<div class="dropdown-color">
     <a class="color" ng-click="toggle()" ng-class='{"active": dropdown.active }'>
 		<!-- @samir -->
 		<div class="null"
