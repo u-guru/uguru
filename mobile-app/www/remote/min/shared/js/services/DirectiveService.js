@@ -466,7 +466,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           processAnimArr(arg_dict.animations, scope, elem);
         })
       } else {
-        console.log(arg_dict.animations)
         processAnimArr(arg_dict.animations, scope, elem);
       }
     }
@@ -555,9 +554,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
               $timeout(function() {
                 if (custom_args && custom_args.set && (!custom_args.after || custom_args.before)) {
                   var propDict = {properties:custom_args.set};
-                  if (elem[0].classList.value.indexOf('5-minus') > -1) {
-                    console.log(delay, custom_args.set);
-                  }
                   evalPropertyArgs(propDict, scope, elem);
                 }
                 execAnimation(elem, anim_name, animObj, delay, animStartCb, animEndCb )
