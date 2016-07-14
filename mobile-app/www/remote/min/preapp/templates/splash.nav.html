@@ -1,5 +1,6 @@
 
 <div id="splash-nav-bar"
+
 	ng-controller="SplashNavController as nav"
     init-with="backstage"
 	on-init="p:[op:1, z-index:1000] | send:[nav-init:public]">
@@ -17,7 +18,10 @@
                     <div class="splash-hero-nav-container">
                     	<dropdown ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
 							init-with="prop:[opacity:0]"
-							when-nav-init="prop:[opacity:1] | send:[dropdown-init:children:delay-750]"> </dropdown>
+
+                            prefix="category"
+							when-nav-init="prop:[opacity:1] | send:[dropdown-init:children:delay-750]">
+                        </dropdown>
 						<!-- on-hover="prop:[opacity:0]" on-hover-delay="1000" -->
                         <h2 init-with="prop:[opacity:0]"
 							when-nav-init="trigger:[on-enter]"

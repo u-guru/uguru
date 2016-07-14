@@ -74,6 +74,65 @@
             </div>
     </li>
 
+    <li class="admin-definition-list full-x">
+            <div class="bg-white radius-2">
+                <h2 class="p10y-p15x bg-robin txt-white txt-24 semibold txt-center radius-2-top">Argument Options: Special Cases</h2>
+                <dl class="txt-slate">
+                    <div class="flex-start" ng-repeat="option in docs.stateDirectives.arg_options">
+                        <dt>
+                            <div class="radius-2 bg-slate padding-none full-x">
+                                <div class="bg-cobalt-25p radius-2 flex-center-vertical-left full-x">
+                                    <h2 class="black txt-24" style="padding: 7.5px 0px 7.5px 7.5px">{{option.name}}:</h2>
+                                </div>
+                            </div>
+                        </dt>
+                        <dd>
+                            <div class='bg-slate-05p radius-2-top flex-start txt-slate'>
+                                <div ng-repeat='case in option.cases'>
+                                    <h1 class='txt-4 weight-600' ng-bind-html="case"</h1>
+                                </div>
+                            </div>
+                            <div class='bg-charcoal txt-moxie flex-left radius-2-bottom'>
+                                <pre class='source-code txt-14 weight-600'> {{option.syntax}} </pre>
+                            </div>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+    </li>
+
+    <li class="admin-definition-list full-x">
+            <div class="bg-white radius-2">
+                <h2 class="p10y-p15x bg-robin txt-white txt-24 semibold txt-center radius-2-top">Shortcut Syntax</h2>
+                <dl class="txt-slate">
+                    <div class="flex-start" ng-repeat="shortcut in docs.stateDirectives.shortcuts">
+                        <dt>
+                            <div class="radius-2 bg-slate padding-none full-x">
+                                <div class="bg-cobalt-25p radius-2 flex-center-vertical-left full-x">
+                                    <h2 class="black txt-24" style="padding: 7.5px 0px 7.5px 7.5px">{{shortcut.name}}:</h2>
+                                    <ul class="flex-wrap p15-grid">
+                                        <li class="flex-center" ng-repeat="option in shortcut.options">
+                                            <span class="p10x-p05y txt-2 radius-2 bg-moxie semibold">{{option}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </dt>
+                        <dd>
+                            <div class='bg-slate-05p radius-2-top flex-start txt-slate'>
+                                <div class='flex-wrap txt-left full-x'>
+                                     {{shortcut.description}}
+                                </div>
+                            </div>
+                            <div class='bg-charcoal txt-moxie flex-left radius-2-bottom'>
+                                <pre class='source-code txt-14 weight-600'> {{shortcut.syntax}} </pre>
+                            </div>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+    </li>
+
     </ul>
     <ul class="ugrid-2 p15-grid">
         <doc-item keywords="{{dir.keywords}}" type="directive" ng-repeat="dir in docs.directives">

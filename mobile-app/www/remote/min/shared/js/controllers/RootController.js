@@ -10,6 +10,7 @@ angular.module('uguru.shared.controllers', [])
   function($scope, $state, $timeout, RootService) {
     var root = this;
     root.window = getBodyDimensions();
+    console.log(root.window);
     root.base_url = RootService.getBaseUrl();
     root.local = window.location.href.split(':8100').length > 1;
     root.browserPrefix = RootService.getBrowserPrefix();

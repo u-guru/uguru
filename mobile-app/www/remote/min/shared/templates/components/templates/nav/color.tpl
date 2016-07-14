@@ -1,4 +1,4 @@
-<div class="dropdown-color">
+<div class="dropdown-color" ng-attr_on-init="{{'send:[' + prefix + '-dropdown-init:public]'}}">
     <a class="color" ng-click="toggle()" ng-class='{"active": dropdown.active }'>
 		<!-- @samir -->
 		<div class="null"

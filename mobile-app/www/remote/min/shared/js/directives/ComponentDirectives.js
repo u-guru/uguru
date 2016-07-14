@@ -76,12 +76,14 @@ angular.module('uguru.shared.directives.components')
             templateUrl: getTemplateURL,
             scope: {
                 dropdown: '=ngModel',
-                onClick: '=onClickEval'
+                prefix: '@prefix'
                     // tests:'=testArr',
             },
             replace: true,
             restrict: 'E',
             link: {pre: function(scope, element, attr) {
+                scope.prefix = 'on_university_dropdown_clicked';
+                scope.onUniversityDropdown = 'yo-yo';
                 scope.root = scope.$parent.root;
                 if (!scope.size) {
                     scope.size = 'small';
