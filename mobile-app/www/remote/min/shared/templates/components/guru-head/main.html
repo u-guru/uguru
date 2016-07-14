@@ -1,9 +1,9 @@
-<div class="guru-head-switcher" on-init="send:[head-init:public:delay-500]" ng-if='false'>
+<div class="guru-head-switcher" init-default when-category-dropdown-hover="send:[academic-init:public]">
 	<custom-states when="head-init">
 	</custom-states>
 	<svg class="default-head absolute top-0 left-0" viewBox="0 0 200 200"
 		init-with="prop:[opacity:1,transform: rotate(0deg) translateY(0px), transform-origin: center center]"
-		when-head-init="trigger:[on-enter]"
+		when-academic-init="trigger:[on-enter]"
 		on-enter="prop:[opacity:0, transform: rotate(30deg) translateY(50px), transition:all 250ms ease-in]">
 		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" >
 			<path d="M61.0066708,114 C61.0066708,114 57.0066708,114 55.0066708,118 C53.0066708,122 53.9817687,128.312012 57.9768858,130.79248 C61.972003,133.272949 65.006671,130 65.0066708,130 C68.9783507,137.0625 76.4168292,156.488446 109.512697,154.99722 C135.632645,153.820313 147.647784,135.905274 147.006671,120 C147.006671,120 152.002276,122.307617 154.525714,118.708496 C157.049151,115.109375 158.006671,111 156.006671,107 C154.006671,103 151.006671,102 147.006671,104 C150.006671,91.0000006 132.006671,78 132.006671,78 C120.006671,82 108.006671,74 97.0066708,74 C86.0066708,74 57.0066708,80 61.0066708,114" class="face" stroke="#33534D" stroke-width="2" fill="#F9ECE5"></path>
@@ -17,48 +17,48 @@
 		</g>
 	</svg>
 	<svg class="aca-head absolute top-0 left-0" viewBox="0 0 200 200"
-		init-with="prop:[opacity:0]">
+		init-with="prop:[display:block]">
 		<g stroke-width="1" stroke="#CA5497" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<!-- @samir, error here with setting custom states with on-mid and on-exit -->
-	        <g class="5-minus"
+			<g class="5-minus"
 				init-with="prop:[opacity:0]"
-				when-head-init="trigger:[on-enter]"
+				when-academic-init="trigger:[on-enter]"
 				on-enter="anim:[prop-down:set:(animation-duration:1000ms#animation-timing-function:linear):delay-1000:in, prop-hover:set:(animation-duration:1000ms#animation-timing-function:ease-in-out#animation-iteration-count:infinite#animation-direction:alternate):delay-2000:in] | trigger:[on-exit]"
 				on-exit="prop:[opacity:0:delay-5000, transition: all 250ms ease-out]">
-	            <rect class="5-minus-bg" fill="#E9BAD5" x="39" y="66" width="10" height="10" rx="2"></rect>
-	            <path d="M41.5,71 L46.5,71" class="5-minus-dash"></path>
-	        </g>
-	        <g class="4-multiply"
+				<rect class="5-minus-bg" fill="#E9BAD5" x="39" y="66" width="10" height="10" rx="2"></rect>
+				<path d="M41.5,71 L46.5,71" class="5-minus-dash"></path>
+			</g>
+			<g class="4-multiply"
 				init-with="prop:[opacity:0]"
-				when-head-init="trigger:[on-enter]"
+				when-academic-init="trigger:[on-enter]"
 				on-enter="anim:[prop-down:set:(animation-duration:1000ms#animation-timing-function:linear):delay-1000:in, prop-hover:set:(animation-duration:800ms#animation-timing-function:ease-in-out#animation-iteration-count:infinite#animation-direction:alternate):delay-2000:in] |  trigger:[on-exit]"
 				 on-exit="prop:[opacity:0:delay-5000, transition: all 250ms ease-out]">
-	            <rect class="4-multiply-bg" fill="#E9BAD5" x="148" y="89" width="12" height="12" rx="2"></rect>
-	            <path d="M156.12132,92.8786797 L151.87868,97.1213203" class="4-multiply-right"></path>
-	            <path d="M156.12132,97.1213203 L151.87868,92.8786797" class="4-multiply-left"></path>
-	        </g>
-	    </g>
+				<rect class="4-multiply-bg" fill="#E9BAD5" x="148" y="89" width="12" height="12" rx="2"></rect>
+				<path d="M156.12132,92.8786797 L151.87868,97.1213203" class="4-multiply-right"></path>
+				<path d="M156.12132,97.1213203 L151.87868,92.8786797" class="4-multiply-left"></path>
+			</g>
+		</g>
 		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
 			init-with="prop:[opacity:0,transform: rotate(30deg) translateY(50px), transform-origin: center center]"
-			when-head-init="trigger:[on-enter]"
+			when-academic-init="trigger:[on-enter]"
 			on-enter="prop:[opacity:1:delay-800, transform: rotate(0deg) translateY(0):delay-650, transition:all 250ms ease-out] | trigger:[on-enter:children, on-exit]"
 			on-exit="prop:[opacity:0:delay-5500, transform: rotate(30deg) translateY(50px):delay-5500, transition:all 250ms ease-in]">
 			<path d="M61.0066708,114 C61.0066708,114 57.0066708,114 55.0066708,118 C53.0066708,122 53.9817687,128.312012 57.9768858,130.79248 C61.972003,133.272949 65.006671,130 65.0066708,130 C68.9783507,137.0625 76.4168292,156.488446 109.512697,154.99722 C135.632645,153.820313 147.647784,135.905274 147.006671,120 C147.006671,120 152.002276,122.307617 154.525714,118.708496 C157.049151,115.109375 158.006671,111 156.006671,107 C154.006671,103 151.006671,102 147.006671,104 C150.006671,91.0000006 132.006671,78 132.006671,78 C120.006671,82 108.006671,74 97.0066708,74 C86.0066708,74 57.0066708,80 61.0066708,114" class="face" stroke="#503349" stroke-width="2" fill="#F9ECE5"></path>
 			<path d="M70,95 L92,96 L92,93 L72,89 L70,95 L70,95 L70,95 L70,95 L70,95 Z M134.752203,90.6040853 L112.923075,93.5177063 L112.661608,90.5291222 L132.236879,84.8012286 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 Z" class="eyebrows" stroke="#503349" stroke-width="2"
 			init-with="prop:[fill:#69B3A5]"
-			when-head-init="trigger:[on-enter]"
+			when-academic-init="trigger:[on-enter]"
 			on-enter="prop:[fill:#CA5497, transition:all 1000ms cubic-bezier(0##.37##.24##1)]"></path>
 			<path d="M55,96 C44.8095703,97.2685547 36.9628907,83 46.0712891,72.8300781 C46.0712892,78 50.0009767,83 55.9999994,83 C43.9804688,75.9570312 49.8095704,48.3339844 67.3525396,44.9365234 C63.5996099,52.453125 74.4423812,56 78,56 C78,56 79,48 86,46 C80,62 122,47 134,67 C134,67 135,74 132,78 C120,82 108,74 97,74 C86,74 57,80 61,114 C61,114 51,110 55,96 L55,96 L55,96 L55,96 Z M132,78 C132,78 150,91.0000006 147,104 C163,86.9999994 140.78,64 134,67 C134,67 135,74 132,78 L132,78 L132,78 L132,78 Z" class="hair-before" stroke="#33534D" stroke-width="2" fill="#69B3A5"
 					init-with="prop:[opacity:1]"
-					when-head-init="trigger:[on-enter]"
+					when-academic-init="trigger:[on-enter]"
 					on-enter="prop:[opacity:0, transition:opacity 1000ms ease]" ></path>
 			<path d="M55,96 C44.8095703,97.2685547 36.9628907,83 46.0712891,72.8300781 C46.0712892,78 50.0009767,83 55.9999994,83 C43.9804688,75.9570312 49.8095704,48.3339844 67.3525396,44.9365234 C63.5996099,52.453125 74.4423812,56 78,56 C78,56 79,48 86,46 C80,62 122,47 134,67 C134,67 135,74 132,78 C120,82 108,74 97,74 C86,74 57,80 61,114 C61,114 51,110 55,96 L55,96 L55,96 L55,96 Z M132,78 C132,78 150,91.0000006 147,104 C163,86.9999994 140.78,64 134,67 C134,67 135,74 132,78 L132,78 L132,78 L132,78 Z" class="hair" stroke="#503349" stroke-width="2" fill="#CA5497"
 				init-with="prop:[fill:#69B3A5]"
-				when-head-init="trigger:[on-enter]"
+				when-academic-init="trigger:[on-enter]"
 				on-enter="prop:[fill:#CA5497, transition:all 250ms ease-out]"></path>
 			<path d="M129.027828,85.1185541 L131.156331,89.8041971 L152.717939,108.198245 L154.933298,104.343988 L133.371389,85.952143 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 Z M128,84 L129.434654,85.2492751 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 Z M153.130382,108.193338 L154.207004,109.130159 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 Z M154.875819,105.092884 L155.95181,106.029841 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 Z M157.274708,106.453586 L158.240392,104.738223 C158.240392,104.738223 150.476086,97.9771809 150.386557,97.8992214 M154.43656,103.948342 L155.402243,102.23298 M131.14962,89.6046224 L133.312965,85.7618295 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 Z M156.240574,111.561597 L158.529172,107.579921 L156.616727,105.948602 L154.32813,109.930278 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 Z" class="academic-pencil" stroke="#2B3234" stroke-width="2" fill="#F6C64E"
 				init-with="prop:[opacity:0]"
-				when-head-init="trigger:[on-enter]"
+				when-academic-init="trigger:[on-enter]"
 				on-enter="anim:[prop-down:set:(animation-duration:500ms#animation-timing-function:cubic-bezier(0.37##.24##.99)):delay-2000:in]"></path>
 			<path d="M147,119.983534 C147,119.983534 151.84622,122.288917 154.294199,118.693281 C156.742177,115.097646 157.671064,110.992251 155.73087,106.996126 C153.790677,103 150.880387,102.000968 147,103.999031" class="ear" stroke="#503349" stroke-width="2" fill="#F9EDE6"></path>
 			<path d="M103.574667,101.347451 C99.5891604,101.700595 98.2136606,103.933569 98.3857487,104.176455 C99.4389701,105.656063 100.262491,107.336058 100.791631,109.181043 C103.295147,117.913236 98.2459966,127.022376 89.5138811,129.526779 C80.7808023,132.030373 71.6716623,126.981222 69.1672601,118.249106 C67.5744394,112.693202 62.199641,113.00992 62.199641,113.00992 L62.0757398,109.645196 C62.0757398,109.645196 64.3423669,109.048822 66.9589013,107.320448 C69.7727831,105.460564 72.9707958,102.441588 73.5525427,101.878377 C75.4279684,100.064896 77.7624199,98.6726953 80.4458954,97.9032938 C86.1323387,96.2722764 91.978569,97.8448642 96.0568783,101.551765 C96.234315,101.712963 97.5871447,99.2208686 103.344546,98.7171612 C108.659071,98.2522005 110.424096,100.471518 110.570845,100.281958 C113.943499,95.9231818 119.427835,93.359298 125.311111,93.978096 C128.087424,94.2698279 130.628163,95.2355046 132.790005,96.6957706 C133.460714,97.1494056 137.134381,99.5671879 140.228479,100.910191 C143.105392,102.15795 145.441143,102.351669 145.441143,102.351669 L145.903402,105.686789 C145.903402,105.686789 140.555262,106.308207 139.951412,112.056296 C139.001374,121.090636 130.907398,127.644864 121.872249,126.695788 C112.837909,125.745749 106.283681,117.651774 107.232834,108.617511 C107.433556,106.708671 107.952838,104.911196 108.733128,103.271177 C108.860425,103.002098 107.11807,101.041901 103.13179,101.386198 L103.574667,101.347451 L103.574667,101.347451 L103.574667,101.347451 L103.574667,101.347451 Z M86.70313,127.841647 C94.0409571,127.19967 99.4690164,120.730761 98.8270397,113.392934 C98.185063,106.055107 91.7161539,100.627048 84.3783268,101.269024 C77.0404997,101.911001 71.6124404,108.37991 72.2544171,115.717737 C72.8963938,123.055564 79.3653029,128.483624 86.70313,127.841647 L86.70313,127.841647 L86.70313,127.841647 L86.70313,127.841647 Z M124.347679,124.548176 C117.009852,125.190152 110.540942,119.762093 109.898966,112.424266 C109.256989,105.086439 114.685048,98.6175297 122.022875,97.975553 C129.360703,97.3335763 135.829612,102.761636 136.471588,110.099463 C137.113565,117.43729 131.685506,123.906199 124.347679,124.548176 L124.347679,124.548176 L124.347679,124.548176 L124.347679,124.548176 Z" class="glasses" stroke="#503349" fill="#503349"></path>
@@ -68,59 +68,59 @@
 			<path d="M90.5288326,120.164053 C92.7258698,119.933136 94.3197243,117.964889 94.0888064,115.767852 C93.8578885,113.570815 91.7417349,111.688246 89.5880769,111.213356 C86.4999827,110.53242 84.5109385,110.741477 81.6319013,112.049584 C78.7528641,113.357691 76.1874123,117.649364 76.1874123,117.649364 L78.2593359,118.228857 C82.7309517,112.939577 85.9235743,114.615036 86.1326312,116.60408 C86.3635491,118.801117 88.3317955,120.394971 90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 Z M128.289054,115.838813 C130.486092,115.607895 132.079946,113.639649 131.849028,111.442611 C131.61811,109.245574 129.501957,107.363006 127.348299,106.888116 C124.260205,106.207179 122.27116,106.416236 119.392123,107.724344 C116.513086,109.032451 113.947634,113.324124 113.947634,113.324124 L116.019558,113.903616 C120.491173,108.614337 123.683796,110.289795 123.892853,112.278839 C124.123771,114.475876 126.092017,116.069731 128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 Z" class="eyes" fill="#503349"></path>
 		</g>
 		<g stroke-width="1" stroke="#CA5497" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-	        <g class="3-plus"
+			<g class="3-plus"
 				init-with="prop:[opacity:0]"
-				when-head-init="trigger:[on-enter]"
+				when-academic-init="trigger:[on-enter]"
 				on-enter="anim:[prop-down:set:(animation-duration:800ms#animation-timing-function:linear):delay-1000:in, prop-hover:set:(animation-duration:1000ms#animation-timing-function:ease-in-out#animation-iteration-count:infinite#animation-direction:alternate):delay-1800:in] | trigger:[on-enter:children,on-exit]"
 				on-exit="prop:[opacity:0:delay-5000, transition: all 250ms ease-out]">
-	            <rect class="3-plus-bg" fill="#E9BAD5" x="141" y="44" width="14" height="14" rx="2"
+				<rect class="3-plus-bg" fill="#E9BAD5" x="141" y="44" width="14" height="14" rx="2"
 					init-with="prop:[stroke-dasharray:56, stroke-dashoffset:56, transform:rotate(0deg),transform-origin:center center]"
 					on-enter="prop:[stroke-dashoffset:0:delay-1450, transform:rotate(360deg):delay-2000, transition:all 500ms ease-out]"></rect>
-	            <path d="M148,47 L148,55" class="3-plus-y" stroke="#CA5497"
+				<path d="M148,47 L148,55" class="3-plus-y" stroke="#CA5497"
 					init-with="prop:[stroke-dasharray:8, stroke-dashoffset:8]"
 					on-enter="prop:[stroke-dashoffset:0:delay-1450, transition:all 500ms ease-out]"></path>
-	            <path d="M152,51 L144,51" class="3-plus-x"
+				<path d="M152,51 L144,51" class="3-plus-x"
 					init-with="prop:[stroke-dasharray:8, stroke-dashoffset:8]"
 					on-enter="prop:[stroke-dashoffset:0:delay-1000, transition:all 500ms ease-out]"
 					></path>
-	        </g>
-	        <g class="2-divide"
+			</g>
+			<g class="2-divide"
 				init-with="prop:[opacity:0]"
-				when-head-init="trigger:[on-enter]"
+				when-academic-init="trigger:[on-enter]"
 				on-enter="anim:[prop-down:set:(animation-duration:800ms#animation-timing-function:linear):delay-900:in, prop-hover:set:(animation-duration:1000ms#animation-timing-function:ease-in-out#animation-iteration-count:infinite#animation-direction:alternate):delay-2000:in] | trigger:[on-enter:children,on-exit]"
 				on-exit="prop:[opacity:0:delay-5000, transition: all 250ms ease-out]">
-	            <rect class="2-divide-bg" fill="#E9BAD5" x="148" y="145" width="28" height="28" rx="3"
+				<rect class="2-divide-bg" fill="#E9BAD5" x="148" y="145" width="28" height="28" rx="3"
 					init-with="prop:[stroke-dasharray:112, stroke-dashoffset:-112, transform:rotate(-90deg),transform-origin:center center]"
 					on-enter="prop:[stroke-dashoffset:0:delay-1450, transform:rotate(0deg):delay-2000, transition:all 500ms ease-out]"></rect>
-	            <path d="M155,159 L169,159" class="2-divide-mid"
+				<path d="M155,159 L169,159" class="2-divide-mid"
 					init-with="prop:[stroke-dasharray:14, stroke-dashoffset:14]"
 					on-enter="prop:[stroke-dashoffset:0, transition:all 500ms ease-out 1250ms]"></path>
-	            <circle class="2-divide-bot" fill="#CA5497" cx="162" cy="152.5" r="0.5"
+				<circle class="2-divide-bot" fill="#CA5497" cx="162" cy="152.5" r="0.5"
 					init-with="prop:[opacity:0]"
 					on-enter="prop:[opacity:1, transition:all 250ms ease 1000ms]"></circle>
-	            <circle class="2-divide-top" fill="#CA5497" cx="162" cy="165.5" r="0.5"
+				<circle class="2-divide-top" fill="#CA5497" cx="162" cy="165.5" r="0.5"
 					init-with="prop:[opacity:0]"
 					on-enter="prop:[opacity:1, transition:all 250ms ease 1000ms]"></circle>
-	        </g>
-	        <g class="1-equal"
+			</g>
+			<g class="1-equal"
 				init-with="prop:[opacity:0]"
-				when-head-init="trigger:[on-enter]"
+				when-academic-init="trigger:[on-enter]"
 				on-enter="anim:[prop-down:set:(animation-duration:800ms#animation-timing-function:linear):delay-900:in, prop-hover:set:(animation-duration:800ms#animation-timing-function:ease-in-out#animation-iteration-count:infinite#animation-direction:alternate):delay-2000:in] | trigger:[on-enter:children,on-exit]"
 				on-exit="prop:[opacity:0:delay-5000, transition: all 250ms ease-out]">
-	            <rect class="1-equal-bg" fill="#E9BAD5" x="33" y="134" width="22" height="22" rx="3"
+				<rect class="1-equal-bg" fill="#E9BAD5" x="33" y="134" width="22" height="22" rx="3"
 					init-with="prop:[stroke-dasharray:88, stroke-dashoffset:88, transform:rotate(90deg),transform-origin:center center]"
 					on-enter="prop:[stroke-dashoffset:0:delay-1450, transform:rotate(0deg):delay-1200, transition:all 250ms ease-in-out]"></rect>
-	            <path d="M38.5,142 L49.5,142" class="1-equal-top"
+				<path d="M38.5,142 L49.5,142" class="1-equal-top"
 					init-with="prop:[stroke-dasharray:11, stroke-dashoffset:11]"
 					on-enter="prop:[stroke-dashoffset:0, transition:all 500ms ease-out 1000ms]"></path>
-	            <path d="M38.5,148 L49.5,148" class="1-equal-bot"
+				<path d="M38.5,148 L49.5,148" class="1-equal-bot"
 					init-with="prop:[stroke-dasharray:11, stroke-dashoffset:-11]"
 					on-enter="prop:[stroke-dashoffset:0, transition:all 500ms ease-out 1000ms]"></path>
-	        </g>
-	    </g>
+			</g>
+		</g>
 	</svg>
 	<svg class="bk-head absolute top-0 left-0" viewBox="0 0 200 200"
-		init-with="prop:[opacity:0]">
+		init-with="prop:[display:none]">
 		<g stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 	        <g class="5-cookie"
 				init-with="prop:[opacity:0]"
@@ -218,7 +218,7 @@
     	</g>
    </svg>
 	<svg class="ph-head absolute top-0 left-0" viewBox="0 0 200 200"
-		init-with="prop:[opacity:0]">
+		init-with="prop:[display:none]">
 		<g stroke="#E4FFD6" stroke-width="2" fill="#FFFFFF" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="5-flash"
 				init-with="prop:[opacity:0]"
@@ -328,7 +328,7 @@
 	    </g>
 	</svg>
 	<svg class="tech-head absolute top-0 left-0" viewBox="0 0 200 200"
-		init-with="prop:[opacity:0]">
+		init-with="prop:[display:none]">
 		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="5-code"
 				init-with="prop:[opacity:0]"
@@ -438,7 +438,7 @@
 		</g>
 	</svg>
 	<svg class="hh-head absolute top-0 left-0" viewBox="0 0 200 200"
-		init-with="prop:[opacity:1]">
+		init-with="prop:[display:none]">
 		<g stroke-width="1" stroke="#D3D0FA" fill="#FFFFFF" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 	        <g class="5-pop"
 				init-with="prop:[opacity:0]"
