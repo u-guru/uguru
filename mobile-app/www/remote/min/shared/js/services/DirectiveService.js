@@ -51,11 +51,16 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       var camelMsg = UtilitiesService.camelCase('when-' + message);
       var dataAttrName = UtilitiesService.camelCase(event_name.toLowerCase() + '-data');
       if (dataAttrName in attr) {
-          UtilitiesService.replaceAll(attr[dataAttrName] + "", '_', '-');
-          var keyFormatted =  UtilitiesService.camelCase(attr[dataAttrName]);
-          console.log(camelMsg, scope.dropdown.options[index])
+          var sendVars = UtilitiesService.replaceAll(attr[dataAttrName], ' ', '').split(',')
+          if (sendVars.length > 1) {
+            console.log('send vars', sendVars)
+          }
           scope.root.public.customStates['when'][camelMsg] = {};
-          scope.root.public.customStates['when'][camelMsg][keyFormatted] = scope.dropdown.options[index][attr[dataAttrName]];
+          for (var i = 0; i < sendVars.length; i++) {
+            UtilitiesService.replaceAll(attr[dataAttrName] + "", '_', '-');
+            var indexKeyFormatted =  UtilitiesService.camelCase(sendVars[i]);
+            scope.root.public.customStates['when'][camelMsg][indexKeyFormatted] = scope.dropdown.options[index][sendVars[i]];
+          }
       } else {
           scope.root.public.customStates['when'][camelMsg] =scope.dropdown.options[index][attr[dataAttrName]];
       }
@@ -531,9 +536,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var animName = Object.keys(indexAnimObj)[0];
         var animType = indexAnimObj[animName];
         runOneAnimation(animName, animType, delay, scope, elem, customDict);
-        if (animName === 'prop-hover') {
-          console.log(custom)
-        }
 
         if (delay) {
           indexAnimObj['delay'] = delay;
@@ -543,7 +545,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         }
 
         function processAnimCustomArgs(custom_str, custom_dict) {
-          if (custom_str.indexOf('set:') > -1) {
+          if (typeof custom_str === 'object') {
+            return;
+          }
+          if (custom_str && custom_str.indexOf('set:') > -1) {
             var setString = custom_str + "";
             setString = setString.split('set:(')[1];
             var endParenthesis = setString.indexOf('):') || setString.indexOf('),');
@@ -551,16 +556,16 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             custom_dict.set = processSetExtraArgs(setString);
 
           }
-          if (custom_str.indexOf(':before') > -1) {
+          if (custom_str &&  custom_str.indexOf(':before') > -1) {
             custom_dict.before = true;
           }
-          if (custom_str.indexOf(':after') > -1) {
+          if (custom_str && custom_str.indexOf(':after') > -1) {
             custom_dict.after = true;
           }
-          if (custom_str.indexOf(':in') > -1) {
+          if (custom_str && custom_str.indexOf(':in') > -1) {
             custom_dict.in = true;
           }
-          if (custom_str.indexOf(':out') > -1) {
+          if (custom_str && custom_str.indexOf(':out') > -1) {
             custom_dict.out = true;
           }
         }
