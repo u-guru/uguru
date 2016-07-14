@@ -7,7 +7,7 @@ angular.module('uguru.admin')
                 return true;
               }
               for (var i in bug.tags) {
-                  if (bug.tags[i].indexOf(tags) !== -1) {
+                  if (tags.indexOf(bug.tags[i]) !== -1) {
                       return true;
                   }
               }
