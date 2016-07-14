@@ -21,12 +21,12 @@ angular.module('uguru.preApp', ['ionic'])
 
 
 
-    $scope.$watchCollection(angular.bind(this, function () {
-      return this; // `this` IS the `this` above!!
-    }), function (newVal, oldVal) {
+    // $scope.$watchCollection(angular.bind(this, function () {
+    //   return this; // `this` IS the `this` above!!
+    // }), function (newVal, oldVal) {
 
-      // now we will pickup changes to newVal and oldVal
-    });
+    //   // now we will pickup changes to newVal and oldVal
+    // });
 
     splash.activate = splashActivateFunction
 

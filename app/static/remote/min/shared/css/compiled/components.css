@@ -3028,7 +3028,9 @@ fieldset.no-border * {
 .student-card {
   position: relative;
   width: 100%;
-  max-width: 240px; }
+  max-width: 240px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
   .student-card.with-hover .school-id-hover {
     filter: alpha(opacity=0);
     opacity: 0;
@@ -3087,6 +3089,14 @@ fieldset.no-border * {
     left: 0;
     width: 100%;
     height: 100%; }
+    .student-card .school-id-inside .school-id-bg {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px; }
     .student-card .school-id-inside .school-id-top {
       position: relative;
       z-index: 10;
@@ -3113,6 +3123,8 @@ fieldset.no-border * {
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
+      position: relative;
+      z-index: 1;
       height: 70%;
       background: rgba(255, 255, 255, 0.8);
       border-bottom-left-radius: 10px;

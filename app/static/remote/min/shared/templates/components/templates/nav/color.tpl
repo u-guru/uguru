@@ -1,5 +1,6 @@
-<div class="dropdown-color" on-init="send:[dropdown-init:children]">
-    <a class="color" ng-click="toggle()" ng-class='{"active": dropdown.active }'>
+<div class="dropdown-color"
+    init-with="prop:[opacity:1]">
+    <a class="color" ng-click="toggle()" ng-class='{"active": dropdown.active }' on-init init-with="prop:[opacity:1]" on-mouse-enter="send:[{{prefix}}-dropdown-hover:public]">
 		<!-- @samir -->
 		<div class="null"
 			init-with="prop:[transform:scaleX(0), transition:all 250ms ease-out 450ms]"

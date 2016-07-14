@@ -71,8 +71,17 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           $timeout(function() {
             scope.root.public.customStates[type][args.camel] = false;
           })
-          // console.log(type, args, attr_value, 'activated');
-          var elemArgs = parseArgs(attr_value);
+          var formattedAttrValue = attr_value + "";
+          if (typeof(new_value) === "object") {
+            for (objKey in new_value) {
+              var formattedObjKey = '^' + objKey;
+              if (formattedAttrValue.indexOf(formattedObjKey) > -1) {
+                formattedAttrValue = formattedAttrValue.replace(formattedObjKey, new_value[objKey])
+              }
+            }
+          }
+
+          var elemArgs = parseArgs(formattedAttrValue);
           for (key in elemArgs) {
             if ((argNames || supportedCommands).indexOf(key) > -1) {
               activateArg(key, elemArgs[key], scope, element);
@@ -151,7 +160,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           evalClassArgs(arg_dict, scope, elem);
           break
         case("send"):
-
           evalSendArgs(arg_dict, scope, elem);
           break;
         case("anim"):
@@ -230,9 +238,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processCSSPropValue(name, value, prop_dict, orig_str) {
       //2nd arg of if --> fill:#;
       if (value && value.indexOf('#') > -1 && value.indexOf('#') > 0) {
-        if (value.indexOf('cubic') > -1) {
-          console.log(name, value)
-        }
         value = value && UtilitiesService.replaceAll(value, '#', ',');
       }
       name = (name && name.trim()) || '';
@@ -470,6 +475,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (!(msgType in scope.root.public.customStates)) {
             scope.root.public.customStates[msgType] = {};
           }
+
           scope.root.public.customStates[msgType][msg_name] = true;
         }
       }
@@ -760,9 +766,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         delete indexPropDict['important'];
         var propName = Object.keys(indexPropDict)[0];
         var propValue = indexPropDict[propName];
-        if (typeof(propValue) === 'string' && propValue.indexOf('cubic') > -1) {
-          console.log('cubic', propName, propValue);
-        }
         if ((propName && propValue) || (propName && propValue === 0)) {
           setCSSProperty(propName, propValue, delay, important, scope, elem)
         } else {
@@ -816,7 +819,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       if (indexArg && typeof(indexArg) === 'string') {
         indexArg = indexArg.trim();
         if (indexArg in shortcuts.cmds) {
-          console.log('detected command', indexArg, shortcuts.cmds[indexArg])
           indexArg = shortcuts.cmds[indexArg]
         }
       }

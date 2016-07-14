@@ -30,11 +30,20 @@ angular.module('uguru.admin')
         {name: 'init-with', tags: ['internal']},
         {name: 'on-init', tags: ['internal']},
         {name: 'on-click', type: ['internal', 'default']},
-        {name: 'on-hover', type: ['internal', 'default']},
+        {name: 'on-hover', type: ['internal', 'default'], syntax:'<button on-hover="...." on-hover-delay="1000"/>', description: 'A <b>on-hover-delay</b> directive extension (extension is when the original directive, i.e. on-hover, must also be present for the extension to function.'},
         {name: 'on-mouse-enter', type: ['internal', ]},
         {name: 'on-mouse-leave', type: ['internal', 'default']},
         {name: 'on-exit', type: external},
         {name: 'on-enter', type: external}
+      ],
+      arg_options: [
+        {name: 'set', cases: ['Only applies to states that change (or could change) property over a period of time (class, anim).<br><br> Must be within parentheticals, multiple properties separated with "#", and property values that contain commas (such as "Cubic-bezier") should replace each comma with "##" (2nd layer of nesting)'], syntax:'<ELEM on-init="anim:[bounceInUp:set(opacity:0#animation-timing-function:cubic-bezier(1.0##0.0##0.5))]"'},
+        {name: 'send', cases: ['For now everything is public. Might as well clarify with public when you are not sure since at least one scope is required'], syntax: '<ELEM on-init="anim:[bounceInUp:set(opacity:0#animation-timing-function:cubic-bezier(1.0##0.0##0.5))]'}
+      ],
+      shortcuts: [
+        {name: 'arg-shortcut', options: ['replace', 'with'], description: 'Enables shortcut creation for state arguments such as [anim, trigger, send, class, prop], with a word or letter of your choice.', syntax: '<arg-shortcut replace="prop" with="p"/>'},
+        {name: 'prop-shortcut', options: ['replace', 'with'], description: 'Enables shortcut creation for CSS property names, such as [opacity-0, animation-timing-function, background-color], with a word or letter of your choice.', syntax: '<prop-shortcut replace="opacity" with="o"/>'},
+        {name: 'cmd-shortcut', options: ['replace', 'with'], description: 'Enables shortcut creation for enter state values, such as anything in quotations after the default applicable states.', syntax: '<cmd-shortcut replace="prop:[opacity:0, z-index:-1000]" with="backstage"/>'}
       ],
       state_args: [
         {
@@ -65,7 +74,8 @@ angular.module('uguru.admin')
           full_name: 'send',
           description: 'The communication protocol between two html elements. Sends a message to 1 to several elements of a particular scope (optional to clarify, public for now).',
           syntax: '<div on-enter="send:[div-has-entered:children:delay-500, div-has-entered:parent:delay-1000]"></div>',
-          options: ['delay', 'children', 'parent', 'siblings'],
+          options: ['public', 'delay', 'children', 'parent', 'siblings'],
+          special_notes: ['Must include <i>at least</i> one <b>SCOPE-SPECIFIC</b> (either children, parent, siblings, parent) option'],
           upcoming: ['send to multiple scoped audiences with () syntax vs repeating', 'left neighbor', 'right neighbor', 'stagger-ed sending', 'N-th levels up', 'public']
         },
         {

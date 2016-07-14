@@ -116,6 +116,22 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive('initDefault', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+
+          var listenerArgs = DirectiveService.detectExternalStates(attr);
+
+          for (key in listenerArgs) {
+            var type = listenerArgs[key].type
+            var _attr = listenerArgs[key].attr;
+
+            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+          }
+    }
+  }
+}])
 .directive('onEnter', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',
@@ -179,6 +195,7 @@ angular.module('uguru.shared.directives')
             if (inTimeout) {
               for (key in elemArgs) {
                 if (supportedCommands.indexOf(key) > -1) {
+                  console.log(scope.root.public.customStates.when.whenCategoryDropdownHover);
                   DirectiveService.activateArg(key, elemArgs[key], scope, element);
                 }
               }
@@ -283,7 +300,6 @@ angular.module('uguru.shared.directives')
             scope.root.public.customShortcuts.cssProps[attr.with] = attr.replace;
           }
         }
-        console.log('css shortcuts', DirectiveService.getShortcuts().cssProps)
     }
   }
 }])
@@ -297,7 +313,6 @@ angular.module('uguru.shared.directives')
             scope.root.public.customShortcuts.cmds[attr.with] = attr.replace;
           }
         }
-        console.log('cmd shortcuts', DirectiveService.getShortcuts().cmds)
     }
   }
 }])
@@ -307,7 +322,6 @@ angular.module('uguru.shared.directives')
     link: {
       pre: function(scope, element, attr) {
         var customStateDict = DirectiveService.parseCustomStateAttr(attr);
-        console.log(customStateDict)
           for (key in customStateDict) {
             if (!(key in scope.root.public.customStates)) {
               scope.root.public.customStates[key] = {};
