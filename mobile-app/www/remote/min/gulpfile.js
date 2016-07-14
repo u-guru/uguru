@@ -245,6 +245,8 @@ gulp.task('compile-js', function(done) {
       //prepapp ctrl
       'preapp/js/SplashController.js',
       'preapp/js/*.js',
+      'preapp/js/menu/*.js',
+      'preapp/js/started/*.js',
       'jeselle/js/*.js',
       'gabrielle/js/*.js',
 

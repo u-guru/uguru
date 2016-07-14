@@ -1,6 +1,6 @@
 <li>
     <div class="tag-adlib-container">
-        <a class="tag-adlib adlib-{{blankNum}} animated tag-{{category.hex_color}}"
+        <a class="tag-adlib adlib-{{blankNum}} animated tag-{{category.bg_hex_color}}"
             translate-on-click="translate-blank-{{blankNum}}" translate-to-elem="#blank-{{blankNum}}"
             class-on-click='translate-blank-{{blankNum}}:unique:inject.splash-adlib|blank-{{blankNum}}-filled, translate-blank-{{blankNum}}:unique:inject.splash-adlib b|blank-{{blankNum}}-filled'
             elem-states="['spread-out', 'category-switch', 'both-blanks-filled', 'map-transition']"
