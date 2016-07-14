@@ -1,6 +1,7 @@
-<div id="splash-device-container" class="full-xy"
+<div id="splash-device-container" class="splash-device-container"
 	ng-controller='SplashDeviceController as device'
-	on-init="send:[device-init:public]">
+	on-init="send:[device-init:public]"
+	ng-if="root.window.desktop">
 	<custom-states when="device-init"></custom-states>
     <div class="splash-device splash-device-iphone">
         <div class="splash-device-svg iphone-device"

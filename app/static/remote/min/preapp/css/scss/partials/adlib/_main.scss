@@ -2,23 +2,7 @@
 @import 'responsive';
 
 // animation
-.splash-guru-head {
-	.coach-fill {
-		path {
-			&.activate:nth-child(1), &.animate:nth-child(1) {
-				animation: coach-click-2 200ms ease-in 4500ms 1 forwards;
-			}
-			&.activate:nth-child(2), &.animate:nth-child(2) {
-				animation: coach-click-1 200ms ease-in 4500ms 1 forwards;
-			}
-		}
-	}
-}
-
 .splash-adlib {
-	h1 {
-		animation-delay: 500ms;
-	}
 	ul {
 		li {
 			@for $i from 1 through 8 {
@@ -30,115 +14,36 @@
 	}
 }
 
-// header
-.adlib-header-container {
-	position: relative;
-	overflow: hidden;
-	height: 98px;
-	max-width: 500px;
-	margin: 0 auto;
-	.adlib-header {
-		&:first-child {
-			position: relative;
-		}
-		&:not(:first-child) {
-			margin: 0!important;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 98, 0, 1);
-		}
-		&.active-adlib-header {
-			animation: adlib-header-mobile-up 1000ms linear both;
-		}
-		&.inactive-adlib-header {
-			animation: adlib-header-mobile-first-up 1000ms linear 1850ms both!important;
-		}
-	}
-}
-
-// spread
 .tag-adlib rect.spread-out {
 	stroke-dasharray: 701;
 	stroke-dashoffset: -701;
 	animation: adlib-header-stroke 750ms cubic-bezier(.17,.67,.12,1) 1000ms both;
 }
-.adlib-header-container .adlib-header.active-adlib-header.spread-out {
-	// transform: scale(0.9);
-	// transform-origin: center center;
-	// animation: adlib-header-main-scaleUp 1000ms ease-out both!important;
-	* {
-		transform-origin: center center;
-	}
-	a.tag-adlib {
-		svg {
-			rect {
-				stroke-dasharray: 701;
-				stroke-dashoffset: -701;
-				animation: adlib-header-stroke 750ms cubic-bezier(.17,.67,.12,1) 1000ms both;
-			}
-		}
-		b {
-			font-weight: 600;
-			animation: adlib-header-weight 500ms ease-out 750ms both;
-		}
-	}
-	span:nth-child(1) {
-		transform: translate3d(48px,0,0);
-		animation: adlib-header-mobile-1-translate 500ms ease-out 750ms both;
-	}
-	a.tag-adlib:nth-child(2) {
-		background: transparent;
-		transform: scale(1.4);
-		animation: adlib-header-mobile-scale 500ms ease-out 750ms both;
-	}
-	span:nth-child(3) {
-		transform: translate3d(-48px,0,0);
-		animation: adlib-header-mobile-3-translate 500ms ease-out 750ms both;
-	}
-	a.tag-adlib:nth-child(4) {
-		background: transparent;
-		transform: scale(1.4) translate3d(-2px,0,0);
-		animation: adlib-header-mobile-4-translate 500ms ease-out 750ms both;
-	}
-	span:nth-child(5) {
-		transform: translate3d(-23px,0,0);
-		animation: adlib-header-mobile-5-translate 500ms ease-out 750ms both;
-	}
-}
+
 .adlib-tag.spread-out {
-	opacity: 0;
-	&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
-		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -130, -38, 0, 1);
-	}
-	&:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
-		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 130, -38, 0, 1);
-	}
 	&:nth-child(1) {
-		animation: spread-out-tag-mobile-left 1000ms linear 1500ms both;
+		animation: spread-out-tag-mobile-left 1000ms linear 1500ms 1 both;
 	}
 	&:nth-child(2) {
-		animation: spread-out-tag-mobile-left 1000ms linear 1550ms both;
+		animation: spread-out-tag-mobile-left 1000ms linear 1550ms 1 both;
 	}
 	&:nth-child(3) {
-		animation: spread-out-tag-mobile-left 1000ms linear 1600ms both;
+		animation: spread-out-tag-mobile-left 1000ms linear 1600ms 1 both;
 	}
 	&:nth-child(4) {
-		animation: spread-out-tag-mobile-left 1000ms linear 1650ms both;
+		animation: spread-out-tag-mobile-left 1000ms linear 1650ms 1 both;
 	}
 	&:nth-child(5) {
-		animation: spread-out-tag-mobile-right 1000ms linear 1500ms both;
+		animation: spread-out-tag-mobile-right 1000ms linear 1500ms 1 both;
 	}
 	&:nth-child(6) {
-		animation: spread-out-tag-mobile-right 1000ms linear 1550ms both;
+		animation: spread-out-tag-mobile-right 1000ms linear 1550ms 1 both;
 	}
 	&:nth-child(7) {
-		animation: spread-out-tag-mobile-right 1000ms linear 1600ms both;
+		animation: spread-out-tag-mobile-right 1000ms linear 1600ms 1 both;
 	}
 	&:nth-child(8) {
-		animation: spread-out-tag-mobile-right 1000ms linear 1650ms both;
+		animation: spread-out-tag-mobile-right 1000ms linear 1650ms 1 both;
 	}
 }
 .adlib-tag.spread-in {
@@ -233,6 +138,19 @@
 }
 
 // static
+.adlib-header-container {
+	position: relative;
+	overflow: hidden;
+	height: 98px;
+	max-width: 500px;
+	margin: 0 auto;
+	.adlib-header {
+		position: relative;
+		* {
+			transform-origin: center center;
+		}
+	}
+}
 .tag-adlib:not(.blank):not(.ghost) {
 	i {
 		display: block;
@@ -321,26 +239,18 @@
 	> svg {
 		position: absolute;
 	}
-	.coach-fill {
-		top: 85px;
-		right: -100px;
-		width: 140px;
-		path {
-			&.animate, &.activate {
-				&:nth-child(1) {
-					stroke-dasharray: 137;
-					stroke-dashoffset: 137;
-					animation: coach-click-2 200ms ease-in 2500ms 1 forwards;
-				}
-				&:nth-child(2) {
-					stroke-dasharray: 53;
-					stroke-dashoffset: 53;
-					animation: coach-click-1 100ms ease-in 2700ms 1 forwards;
-				}
-			}
-		}
-		g g {
-			animation-delay: 3000ms;
+	.splash-hero-guru {
+		position: relative;
+		width: 150px;
+		height: 150px;
+		.guru-head-switcher {
+			position: absolute;
+			top: 50%;
+			margin-top: -100px;
+			left: 50%;
+			margin-left: -100px;
+			width: 200px;
+			height: 200px;
 		}
 	}
 	.coach-help {
@@ -354,6 +264,20 @@
 			top: -10px;
 			left: -90px;
 			width: 114.5px;
+		}
+	}
+}
+
+.coach-fill {
+	top: 85px;
+	right: -100px;
+	width: 140px;
+	path {
+		&:nth-child(1) {
+			stroke-dasharray: 137;
+		}
+		&:nth-child(2) {
+			stroke-dasharray: 53;
 		}
 	}
 }

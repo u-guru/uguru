@@ -1,5 +1,6 @@
-<div class="dropdown-color" on-init="send:[dropdown-init:children]">
-    <a class="color" ng-click="toggle()" ng-class='{"active": dropdown.active }'>
+<div class="dropdown-color"
+    init-with="prop:[opacity:1]">
+    <a class="color" ng-click="toggle()" ng-class='{"active": dropdown.active }' on-init init-with="prop:[opacity:1]" >
 		<!-- @samir -->
 		<div class="null"
 			init-with="prop:[transform:scaleX(0), transition:all 250ms ease-out 450ms]"
@@ -28,7 +29,9 @@
         <span ng-if='dropdown.key'
 			init-with="prop:[opacity:0]"
 			when-dropdown-init="trigger:[on-enter]"
-			on-enter="prop:[opacity:1, transition:all 250ms ease-out 750ms]">{{dropdown.options[dropdown.selectedIndex][dropdown.key]}}</span>
+			on-enter="prop:[opacity:1, transition:all 250ms ease-out 750ms]"
+            ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', dropdown.selectedIndex)"
+            >{{dropdown.options[dropdown.selectedIndex][dropdown.key]}}</span>
         <svg viewBox="0 0 100 100">
             <path d="M14,32 L50,68 L86,32"
 				init-with="prop:[stroke-dashoffset:103, transition:all 250ms ease-out 750ms]"
@@ -44,7 +47,7 @@
             <li ng-if='$index !== dropdown.selectedIndex' ng-repeat='option in dropdown.options'>
 				<div></div><div></div>
 				<div></div><div></div>
-                <a class="color" ng-click="click(option, $index)" >
+                <a class="color" ng-click="click(option, $index)" ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', $index)" on-click="send:[{{prefix}}-dropdown-hover]">
 					<div class="dropdown-color-bg" ng-style="{'background-color': (dropdown.options[$index][colorKey[0]] || dropdown.options[$index][colorKey[1]])}"></div>
                     <span>{{(dropdown.key && option[dropdown.key]) || option}}</span>
                 </a>

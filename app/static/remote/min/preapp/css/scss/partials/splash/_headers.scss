@@ -19,6 +19,7 @@
 		height: 42px;
 		* {
 			@include svg-stroke(white, 4);
+			transition: all 150ms ease-in-out
 		}
 		circle {
 			fill: rgba($slate, .9);
@@ -33,7 +34,16 @@
 	}
 }
 
-#powerups-link {
+.powerups-link, .sidebar-link {
+	&.mobile {
+		@include flex;
+	}
+	&.desktop {
+		display: none;
+	}
+}
+
+.powerups-link {
 	position: fixed;
 	right: 0;
 	top: 4px;
@@ -111,18 +121,12 @@
 		}
 	}
 }
-#sidebar-link {
+.sidebar-link {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	margin-left: -21px;
 	margin-top: -21px;
-	@media screen and (min-width: 860px) {
-		position: relative!important;
-		top: auto!important;
-		left: auto!important;
-		margin: 0 15px 0 0!important;
-	}
 }
 
 #dropdown-university, #dropdown-categories {
@@ -565,9 +569,23 @@
 // end bose scale hover
 
 @media screen and (min-width: 860px) {
-	#powerups-link {
+	.powerups-link {
 		right: 67px;
 		top: 14px;
+	}
+	.sidebar-link {
+		position: relative!important;
+		top: auto!important;
+		left: auto!important;
+		margin: 0 15px 0 0!important;
+	}
+	.powerups-link, .sidebar-link {
+		&.mobile {
+			display: none;
+		}
+		&.desktop {
+			@include flex;
+		}
 	}
 	.splash-hero-nav {
 		&.desktop {

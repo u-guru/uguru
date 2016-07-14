@@ -228,7 +228,7 @@
 			}
 		}
 	}
-	&#powerups-link {
+	&.powerups-link {
 		position: fixed;
 		right: 0;
 		top: 4px;
@@ -309,7 +309,7 @@
 			}
 		}
 	}
-	&#sidebar-link {
+	&.sidebar-link {
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -1836,33 +1836,6 @@
 					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
 					display: block;
 					width: 100%;
-					&.animate {
-						@include opacity-important(.2);
-						circle {
-							@include prefix(animation, device-drawIn-1 1250ms ease-in-out 2500ms forwards, webkit moz ms o);
-							stroke-dasharray: 158;
-							stroke-dashoffset: 158;
-						}
-						rect {
-							&:nth-child(2) {
-								@include prefix(animation, device-drawIn-2 2000ms ease-in-out 2000ms forwards, webkit moz ms o);
-								stroke-dasharray: 1926;
-								stroke-dashoffset: 1926;
-							}
-							&:nth-child(3) {
-								@include prefix(animation, device-drawIn-3 1750ms ease-in-out 2250ms forwards, webkit moz ms o);
-								stroke-dasharray: 1538;
-								stroke-dashoffset: 1538;
-							}
-						}
-					}
-					&.active {
-						@include opacity-important(.8);
-					}
-					.rotated {
-						@include prefix(transform-origin, center center, webkit moz ms o);
-						@include prefix(transform, rotate(180deg), webkit mos ms o);
-					}
 				}
 				&.splash-device-iphone {
 					svg {
@@ -5652,4 +5625,3 @@
 		}
 	}
 }
-

@@ -1,3 +1,46 @@
 <ion-nav-view id='root-nav' animation="slide-left-right">
-</ion-nav-view>
+    <!-- Warnings: be careful with spaces, those are treated like characters
+            i.e. opacity: 0 !== opacity:0
+            (when it comes to shortcuts)
+    -->
+    <custom-shortcuts>
+    <!-- check splash.nav.html for shortcut examples -->
+        <!-- for prop, send, anim trigger-->
+        <arg-shortcut replace="prop" with="p"/>
+        <arg-shortcut replace="trigger" with="t"/>
+        <arg-shortcut replace="send" with="s"/>
+        <arg-shortcut replace="class" with="c"/>
+        <arg-shortcut replace="anim" with="a"/>
 
+        <arg-shortcut replace="prop" with="set"/>
+
+        <!-- For css properties only -->
+        <prop-shortcut replace="opacity" with="op"/>
+        <prop-shortcut replace="transform" with="tr"/>
+        <prop-shortcut replace="background" with="bg"/>
+        <prop-shortcut replace="transition" with="t"/>
+
+        <prop-shortcut replace="fill" with="f"/>
+        <prop-shortcut replace="fill-opacity" with="fop"/>
+        <prop-shortcut replace="stroke" with="s"/>
+        <prop-shortcut replace="stroke-opacity" with="sop"/>
+        <prop-shortcut replace="stroke-dashoffset" with="sdo"/>
+        <prop-shortcut replace="stroke-dasharray" with="sda"/>
+
+        <prop-shortcut replace="animation-duration" with="ad"/>
+        <prop-shortcut replace="animation-duration" with="dur"/>
+        <prop-shortcut replace="animation-timing-function" with="atf"/>
+        <prop-shortcut replace="animation-timing-function" with="func"/>
+        <prop-shortcut replace="animation-iteration-count" with="aic"/>
+        <prop-shortcut replace="animation-iteration-count" with="count"/>
+
+        <!--Most general-->
+        <!-- Since p->prop is defined already (since rendered top-to-bottom), this would work too:
+
+        <command-shortcut replace="p:[op:0, z-index:-1000]" with="backstage"/>
+         -->
+        <cmd-shortcut replace="prop:[op:0, z-index:-1000]" with="backstage"/>
+		<cmd-shortcut replace="prop:[op:0]" with="p-op"/>
+		<cmd-shortcut replace="trigger:[on-enter]" with="t-enter"/>
+    </custom-shortcuts>
+</ion-nav-view>
