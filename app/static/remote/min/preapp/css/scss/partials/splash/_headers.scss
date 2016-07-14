@@ -19,6 +19,7 @@
 		height: 42px;
 		* {
 			@include svg-stroke(white, 4);
+			transition: all 150ms ease-in-out
 		}
 		circle {
 			fill: rgba($slate, .9);

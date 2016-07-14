@@ -247,13 +247,64 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive('customShortcuts', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
+  return {
+    restrict: 'E',
+    priority: 10,
+    link : {
+      pre: function(scope, element, attr) {
+        attr.$set('ngHide', true);
+        scope.root.public.customShortcuts = {state: {}, args: {}, cssProps:{}, cmds:{}};
+        DirectiveService.setShortcutDict(scope.root.public.customShortcuts);
+      }
+    }
+  }
+}])
+.directive('argShortcut', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
+  return {
+    restrict: 'E',
+    priority: 10,
+    link : function(scope, element, attr) {
+        if ('replace' in attr && 'with' in attr) {
+          if (!(attr.replace in scope.root.public.customShortcuts.args)) {
+            scope.root.public.customShortcuts.args[attr.with] = attr.replace;
+          }
+        }
+    }
+  }
+}])
+.directive('propShortcut', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
+  return {
+    restrict: 'E',
+    priority: 10,
+    link : function(scope, element, attr) {
+        if ('replace' in attr && 'with' in attr) {
+          if (!(attr.replace in scope.root.public.customShortcuts.cssProps)) {
+            scope.root.public.customShortcuts.cssProps[attr.with] = attr.replace;
+          }
+        }
+    }
+  }
+}])
+.directive('cmdShortcut', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
+  return {
+    restrict: 'E',
+    priority: 10,
+    link : function(scope, element, attr) {
+        if ('replace' in attr && 'with' in attr) {
+          if (!(attr.replace in scope.root.public.customShortcuts.cmds)) {
+            scope.root.public.customShortcuts.cmds[attr.with] = attr.replace;
+          }
+        }
+    }
+  }
+}])
 .directive('customStates', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
   return {
     restrict: 'E',
     link: {
       pre: function(scope, element, attr) {
         var customStateDict = DirectiveService.parseCustomStateAttr(attr);
-        console.log(customStateDict)
           for (key in customStateDict) {
             if (!(key in scope.root.public.customStates)) {
               scope.root.public.customStates[key] = {};

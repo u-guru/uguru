@@ -3,7 +3,12 @@
 	when-sidebar-icon-clicked="trigger:[on-enter]"
 	on-enter="prop:[transform:scale(1000), background:#40484b] | trigger:[on-exit]"
 	on-exit="prop:[opacity:0:delay-500, transition:all 500ms ease-out, display:none:delay-2000]"></div>
-<div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar' when-sidebar-icon-clicked="trigger:[on-enter]" when-sidebar-close-clicked="trigger:[on-exit]" on-exit="prop:[opacity:0]" on-enter="prop:[opacity:1:delay-500]" init-with="prop:[opacity:0]">
+<div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar'
+	init-with="prop:[opacity:0]"
+ 	when-sidebar-icon-clicked="trigger:[on-enter]"
+	on-enter="prop:[opacity:1:delay-500]"
+	when-sidebar-close-clicked="trigger:[on-exit]"
+	on-exit="prop:[opacity:0]">
 	<!-- on-init="trigger:[on-enter]" -->
     <!-- <custom-states when="faq-clicked, pricing-clicked"></custom-states> -->
     <aside class="splash-sidebar-full">
@@ -15,14 +20,31 @@
                     <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
                     <!-- ng-click='page.sidebar.toggle()' -->
                     <!-- <a class="icon-round-stroke close" ng-click="sidebar.close()" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"></a> -->
-                    <a class="icon-round-stroke close" on-click="send:[sidebar-close-clicked:public]" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"></a>
+                    <a class="icon-round-stroke close" on-click="send:[sidebar-close-clicked:public]">
+						<svg viewBox="0 0 100 100">
+							<circle cx="50" cy="50" r="36"
+								init-with="prop:[stroke-dasharray:226.2, stroke-dashoffset:226.2]"
+								when-sidebar-icon-clicked="trigger:[on-enter]"
+								on-enter="prop:[stroke-dashoffset:0:delay-3500]"></circle>
+							<g>
+					            <path d="M50,32 L50,68"
+									init-with="prop:[stroke-dasharray:36, stroke-dashoffset:36]"
+									when-sidebar-icon-clicked="trigger:[on-enter]"
+									on-enter="prop:[stroke-dashoffset:0:delay-3550]"></path>
+					            <path d="M32,50 L68,50"
+									init-with="prop:[stroke-dasharray:36, stroke-dashoffset:36]"
+									when-sidebar-icon-clicked="trigger:[on-enter]"
+									on-enter="prop:[stroke-dashoffset:0:delay-3600]"></path>
+							</g>
+						</svg>
+					</a>
 
                     <!-- ng-click='hideSideBar()' -->
                 </header>
                 <ul class="splash-sidebar-links">
                     <li init-with="prop:[transform:rotateX(90deg) translateZ(0)]"
 						when-sidebar-icon-clicked="trigger:[on-enter]"
-						on-enter="prop:[transform:rotateX(0) translateZ(0), transition:all 250ms ease-in-out]:delay-2000">
+						on-enter="prop:[transform:rotateX(0) translateZ(0):delay-2000, transition:all 250ms ease-out]">
                         <a on-click="send:[faq-clicked]">
                             <!-- id='cta-box-FAQ' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="50" class-on-clear="bounceOut:animOut" class-on-click="null:inject#cta-modal-FAQ|activate" ng-click='(!desktopMode && page.modals.faq.show()) || clearAllCTAExcept("FAQ")' -->
                             <span
@@ -39,7 +61,7 @@
                     </li>
                     <li init-with="prop:[transform:rotateX(-90deg) translateZ(0)]"
 						when-sidebar-icon-clicked="trigger:[on-enter]"
-						on-enter="prop:[transform:rotateX(0) translateZ(0), transition:all 250ms ease-in-out 250ms]:delay-2000">
+						on-enter="prop:[transform:rotateX(0) translateZ(0):delay-2250, transition:all 250ms ease-out]">
                         <a on-click="send:[pricing-clicked]">
                             <!-- id='cta-box-pricing' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="100" class-on-clear="bounceOut:animOut" class-on-click="null:inject#cta-modal-pricing|activate" ng-click='(!desktopMode && page.modals.pricing.show()) || clearAllCTAExcept("pricing")' -->
                             <span
@@ -55,7 +77,7 @@
                     </li>
                     <li init-with="prop:[transform:rotateX(90deg) translateZ(0)]"
 						when-sidebar-icon-clicked="trigger:[on-enter]"
-						on-enter="prop:[transform:rotateX(0) translateZ(0), transition:all 250ms ease-in-out 500ms]:delay-2000">
+						on-enter="prop:[transform:rotateX(0) translateZ(0):delay-2500, transition:all 250ms ease-out]">
                         <a on-click="send:[about-clicked]">
                             <!-- id='cta-box-intercom' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="150" class-on-clear="bounceOut:animOut"  class-on-click="null:inject#cta-modal-intercom|activate" ng-click='(!desktopMode && page.modals.support() || clearAllCTAExcept("support"))'-->
                             <span
@@ -71,7 +93,7 @@
                     </li>
                     <li init-with="prop:[transform:rotateX(-90deg) translateZ(0)]"
 						when-sidebar-icon-clicked="trigger:[on-enter]"
-						on-enter="prop:[transform:rotateX(0) translateZ(0), transition:all 250ms ease-in-out 750ms]:delay-2000">
+						on-enter="prop:[transform:rotateX(0) translateZ(0):delay-2750, transition:all 250ms ease-out]">
                         <a on-click="send:[team-clicked]">
                             <!-- id='cta-box-team' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="200" class-on-clear="bounceOut:animOut"  class-on-click="null:inject#cta-modal-team|activate" ng-click='(!desktopMode && page.modals.team.show()) || clearAllCTAExcept("team")' -->
                             <span
@@ -87,7 +109,7 @@
                     </li>
                     <li init-with="prop:[transform:rotateX(90deg) translateZ(0)]"
 						when-sidebar-icon-clicked="trigger:[on-enter]"
-						on-enter="prop:[transform:rotateX(0) translateZ(0), transition:all 250ms ease-in-out 1000ms]:delay-2000">
+						on-enter="prop:[transform:rotateX(0) translateZ(0):delay-3000, transition:all 250ms ease-out]">
                         <!-- ng-click='clearAllCTAExcept()' ng-if='!user || !user.id' -->
                         <a on-click="send:[login-clicked]">
                             <!-- id='cta-box-account' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="250" class-on-clear="bounceOut:animOut" ng-click="showSidebarLogin()" -->
@@ -120,21 +142,34 @@
                 </ul>
             </div>
             <div>
-                <div class="student-card margin-auto">
+                <div class="student-card margin-auto"
+					init-with="prop:[transform:rotateX(90deg) translateZ(0), transform-origin:center top, transition:all 250ms ease-out]"
+					when-sidebar-icon-clicked="trigger:[on-enter]"
+					on-enter="prop:[transform:rotateX(0) translateZ(0)]:delay-3250">
                     <!-- ng-if='user && user.name' -->
                     <svg viewBox="0 0 240 160">
                         <rect x="0" y="0" width="300" height="175" fill="none"></rect>
                     </svg>
                     <div class="school-id-inside">
-                        <div class="school-id-top" style="background: #003262;">
+						<div class="school-id-bg" style="background: #003262;"
+							init-with="prop:[opacity:1]"
+							when-sidebar-icon-clicked="trigger:[on-enter]"
+							on-enter="prop:[opacity:0]:delay-4000"></div>
+                        <div class="school-id-top" style="background: #003262;"
+							 init-with="prop:[opacity:0]"
+							 when-sidebar-icon-clicked="trigger:[on-enter]"
+							 on-enter="anim:[fadeIn:set:(animation-duration:250ms#animation-timing-function:ease-out#animation-delay:3750ms):in]">
                             <span class="user-icon" style="border-color: #003262;">
                                 <svg viewBox="0 0 100 100">
-        							 <circle fill="#B8B8BF" cx="50" cy="50" r="50"></circle>
-        							 <path d="M50,100 C64.0354871,100 76.7202586,94.2168993 85.8014664,84.903546 C84.3573333,71.9293333 76.6973333,61.0293333 65.5093333,55.8933333 C69.9226667,51.7493333 72.6986667,45.8826667 72.6986667,39.3653333 C72.6986667,26.8493333 62.516,16.6666667 50,16.6666667 C37.484,16.6666667 27.3013333,26.8493333 27.3013333,39.3653333 C27.3013333,45.8826667 30.0773333,51.7493333 34.4906667,55.8933333 C23.3026667,61.0293333 15.7036269,71.9488808 14.2036269,84.9035475 C23.2844841,94.2190612 35.9671367,100 50,100 Z" fill="#EBEBEF"></path>
+        							<circle fill="#B8B8BF" cx="50" cy="50" r="50"></circle>
+        							<path d="M50,100 C64.0354871,100 76.7202586,94.2168993 85.8014664,84.903546 C84.3573333,71.9293333 76.6973333,61.0293333 65.5093333,55.8933333 C69.9226667,51.7493333 72.6986667,45.8826667 72.6986667,39.3653333 C72.6986667,26.8493333 62.516,16.6666667 50,16.6666667 C37.484,16.6666667 27.3013333,26.8493333 27.3013333,39.3653333 C27.3013333,45.8826667 30.0773333,51.7493333 34.4906667,55.8933333 C23.3026667,61.0293333 15.7036269,71.9488808 14.2036269,84.9035475 C23.2844841,94.2190612 35.9671367,100 50,100 Z" fill="#EBEBEF"></path>
         						</svg>
                             </span>
                         </div>
-                        <div class="school-id-bottom">
+                        <div class="school-id-bottom"
+							init-with="prop:[opacity:0]"
+							when-sidebar-icon-clicked="trigger:[on-enter]"
+							on-enter="anim:[fadeIn:set:(animation-duration:250ms#animation-timing-function:ease-out#animation-delay:3750ms):in]">
                             <div>
                                 <h1 style="color: #003262;">Gabrielle Wee</h1>
                                 <h2 style="color: #003262;">UC Berkeley</h2>
