@@ -145,6 +145,7 @@
                 <tag class='adlib-tag'
 					init-with="prop:[opacity:0]"
 					when-madlib-init="trigger:[on-enter]"
+                    on-enter="anim:[slideInLeft:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
 					on-activate="spread-out:animIn:delay-2500"
                     on-hover="pulse"
                     when-color-dropdown-clicked="prop:[opacity:0]"
@@ -162,6 +163,7 @@
                 <tag class="adlib-tag"
                     init-with="prop:[opacity:0]"
 					when-madlib-init="trigger:[on-enter]"
+                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3500]"
 					on-activate="spread-out:animIn:delay-2500"
                     on-hover="pulse"
 

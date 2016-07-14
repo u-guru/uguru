@@ -71,8 +71,18 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           $timeout(function() {
             scope.root.public.customStates[type][args.camel] = false;
           })
-          // console.log(type, args, attr_value, 'activated');
-          var elemArgs = parseArgs(attr_value);
+          var formattedAttrValue = attr_value + "";
+          if (typeof(new_value) === "object") {
+            for (objKey in new_value) {
+              var formattedObjKey = '^' + objKey;
+              if (formattedAttrValue.indexOf(formattedObjKey) > -1) {
+                formattedAttrValue = formattedAttrValue.replace(formattedObjKey, new_value[objKey])
+              }
+
+            }
+          }
+
+          var elemArgs = parseArgs(formattedAttrValue);
           for (key in elemArgs) {
             if ((argNames || supportedCommands).indexOf(key) > -1) {
               activateArg(key, elemArgs[key], scope, element);
@@ -151,7 +161,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           evalClassArgs(arg_dict, scope, elem);
           break
         case("send"):
-
           evalSendArgs(arg_dict, scope, elem);
           break;
         case("anim"):
@@ -467,6 +476,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (!(msgType in scope.root.public.customStates)) {
             scope.root.public.customStates[msgType] = {};
           }
+
           scope.root.public.customStates[msgType][msg_name] = true;
         }
       }

@@ -3942,7 +3942,6 @@ class AdminUniversityDeptCoursesView(restful.Resource):
         if not auth_token in APPROVED_ADMIN_TOKENS:
             return "UNAUTHORIZED", 401
 
-
         if auth_token and auth_token in APPROVED_ADMIN_TOKENS:
 
             u = University.query.get(uni_id)
