@@ -239,6 +239,20 @@
 	> svg {
 		position: absolute;
 	}
+	.splash-hero-guru {
+		position: relative;
+		width: 150px;
+		height: 150px;
+		.guru-head-switcher {
+			position: absolute;
+			top: 50%;
+			margin-top: -100px;
+			left: 50%;
+			margin-left: -100px;
+			width: 200px;
+			height: 200px;
+		}
+	}
 	.coach-help {
 		&.coach-help-desktop {
 			display: none;

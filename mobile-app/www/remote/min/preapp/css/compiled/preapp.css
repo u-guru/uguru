@@ -1241,6 +1241,18 @@
   position: relative; }
   .splash-guru-head > svg {
     position: absolute; }
+  .splash-guru-head .splash-hero-guru {
+    position: relative;
+    width: 150px;
+    height: 150px; }
+    .splash-guru-head .splash-hero-guru .guru-head-switcher {
+      position: absolute;
+      top: 50%;
+      margin-top: -100px;
+      left: 50%;
+      margin-left: -100px;
+      width: 200px;
+      height: 200px; }
   .splash-guru-head .coach-help.coach-help-desktop {
     display: none;
     top: -40px;
