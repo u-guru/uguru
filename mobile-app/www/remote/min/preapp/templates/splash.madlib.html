@@ -54,7 +54,7 @@
                 init-with="prop:[opacity:0]"
 				when-madlib-init="trigger:[on-enter]"
                 on-enter="anim:[bounceInUp-subtle:set:(animation-duration:1000ms):delay-1250:in]">
-                <h1 class="adlib-header active-adlib-header">
+                <h1 class="adlib-header desktop">
 					<!-- elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
 					on-category-switch-exit="inactive-adlib-header:anim" -->
                     <span init-with="prop:[transform:translate3d(40px#0#0)]"
@@ -69,14 +69,6 @@
 								init-with="prop:[stroke-dashoffset:-701, stroke-dasharray:701]"
 								when-madlib-init="trigger:[on-enter]"
 								on-enter="prop:[stroke-dashoffset:0, stroke-dasharray:16#14, transition:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-3250"></rect>
-								<!-- elem-states="['category-switch', 'both-blanks-filled', 'map-transition']" -->
-                        </svg>
-                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                            <rect x="2" y="2" width="256" height="72" rx="16"
-								init-with="prop:[stroke-dashoffset:-701, stroke-dasharray:701]"
-								when-madlib-init="trigger:[on-enter]"
-								on-enter="prop:[stroke-dashoffset:0, stroke-dasharray:16#14, transition:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-3250"></rect>
-								<!-- elem-states="['category-switch', 'both-blanks-filled', 'map-transition']" -->
                         </svg>
                         <b id="blank-1-text"
 							init-with="prop:[font-weight:600]"
@@ -95,14 +87,6 @@
 								init-with="prop:[stroke-dashoffset:-701, stroke-dasharray:701]"
 								when-madlib-init="trigger:[on-enter]"
 								on-enter="prop:[stroke-dashoffset:0, stroke-dasharray:16#14, transition:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-3250"></rect>
-								<!-- elem-states="['category-switch', 'both-blanks-filled', 'map-transition']" -->
-                        </svg>
-                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                            <rect x="2" y="2" width="256" height="72" rx="16"
-								init-with="prop:[stroke-dashoffset:-701, stroke-dasharray:701]"
-								when-madlib-init="trigger:[on-enter]"
-								on-enter="prop:[stroke-dashoffset:0, stroke-dasharray:16#14, transition:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-3250"></rect>
-								<!-- elem-states="['category-switch', 'both-blanks-filled', 'map-transition']" -->
                         </svg>
                         <b id="blank-2-text"
 							init-with="prop:[font-weight:600]"
@@ -113,44 +97,51 @@
 						when-madlib-init="trigger:[on-enter]"
 						on-enter="prop:[transform:none, transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.end}}</span>
                 </h1>
-                <!-- <h1 class="adlib-header"
-                    elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                    init-with="prop:[opacity:0]"
-                    on-activate="spread-out:animIn:delay-500"
-                    on-category-switch-enter="active-adlib-header:anim">
-                    <span>{{madlib.category.tags_data.template.beginning}}</span>
-                    <a id="blank-1" class="tag-adlib blank">
-                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                            <rect class="null" x="2" y="2" width="280" height="84" rx="16"
-                                elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn:delay-1500"></rect>
-                        </svg>
+				<h1 class="adlib-header mobile">
+					<!-- elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
+					on-category-switch-exit="inactive-adlib-header:anim" -->
+                    <span init-with="prop:[transform:translate3d(48px#0#0)]"
+						when-madlib-init="trigger:[on-enter]"
+						on-enter="prop:[transform:translate3d(0#0#0), transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.beginning}}</span>
+                    <a id="blank-1" class="tag-adlib blank"
+						init-with="prop:[background:rgba(64#72#75#0), transform:translate3d(0#0#0) scale(1.4)]"
+						when-madlib-init="trigger:[on-enter]"
+						on-enter="prop:[background:rgba(64#72#75#.5), transform:none, transition:all 500ms ease-out]:delay-2500">
                         <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                             <rect x="2" y="2" width="256" height="72" rx="16"
-                                elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn:delay-1500"></rect>
+								init-with="prop:[stroke-dashoffset:-701, stroke-dasharray:701]"
+								when-madlib-init="trigger:[on-enter]"
+								on-enter="prop:[stroke-dashoffset:0, stroke-dasharray:16#14, transition:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-3250"></rect>
                         </svg>
-                        <b id="blank-1-text">4am</b>
+                        <b id="blank-1-text"
+							init-with="prop:[font-weight:600]"
+							when-madlib-init="trigger:[on-enter]"
+							on-enter="prop:[font-weight:700, transition:all 750ms ease-out]:delay-3250">{{madlib.category.tags_data.template.p1}}</b>
                     </a>
-                    <span>{{madlib.category.tags_data.template.middle}}</span>
-                    <a id="blank-2" class="tag-adlib blank">
-                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                            <rect class="null" x="2" y="2" width="280" height="84" rx="16"
-                                elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn:delay-1500"></rect>
-                        </svg>
+                    <span init-with="prop:[transform:translate3d(-48px#0#0)]"
+						when-madlib-init="trigger:[on-enter]"
+						on-enter="prop:[transform:none, transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.middle}}</span>
+                    <a id="blank-2" class="tag-adlib blank"
+						init-with="prop:[background:rgba(64#72#75#0), transform:translate3d(-2px#0#0) scale(1.4)]"
+						when-madlib-init="trigger:[on-enter]"
+						on-enter="prop:[background:rgba(64#72#75#.5), transform:none, transition:all 500ms ease-out]:delay-2500">
                         <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                             <rect x="2" y="2" width="256" height="72" rx="16"
-                                elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                                on-activate="spread-out:animIn:delay-1500"></rect>
+								init-with="prop:[stroke-dashoffset:-701, stroke-dasharray:701]"
+								when-madlib-init="trigger:[on-enter]"
+								on-enter="prop:[stroke-dashoffset:0, stroke-dasharray:16#14, transition:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-3250"></rect>
                         </svg>
-                        <b id="blank-2-text">{{madlib.category.tags_data.template.p2}}</b>
+                        <b id="blank-2-text"
+							init-with="prop:[font-weight:600]"
+							when-madlib-init="trigger:[on-enter]"
+							on-enter="prop:[font-weight:700, transition:all 750ms ease-out]:delay-3250">{{madlib.category.tags_data.template.p2}}</b>
                     </a>
-                    <span>{{madlib.category.tags_data.template.end}}</span>
-                </h1> -->
+                    <span init-with="prop:[transform:translate3d(-23px#0#0)]"
+						when-madlib-init="trigger:[on-enter]"
+						on-enter="prop:[transform:none, transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.end}}</span>
+                </h1>
             </div>
             <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate" ng-if='madlib.category.tags_data.blank_one_options.length && madlib.category.tags_data.blank_two_options.length'>
-				<!-- @samir how do I separate the individual animations for each tag since they're only referenced one time here for all of them? I tried adding the class instead of animating but it didn't get rid of the opacity -->
                 <tag class='adlib-tag'
 					init-with="prop:[opacity:0]"
 					when-madlib-init="trigger:[on-enter]"
@@ -187,5 +178,4 @@
             </ul>
         </div>
     </div>
-    <!-- mobile-->
 </div>
