@@ -12,6 +12,7 @@ angular.module('uguru.shared.services')
 function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService, RootService) {
     var argNames = ['prop', 'anim', 'send', 'tween', 'class', 'trigger'];
     var argShortNames = ['p', 'a', 's', 't', 'c', 't'];
+    var shortcuts;
     var cssPropertyMappings = {
       'o': 'opacity',
     }
@@ -27,12 +28,22 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         parseArgs: parseArgs,
         activateArg: activateArg,
         supportedCommands: argNames,
+        setShortcutDict: setShortcutDict,
+        getShortcuts: getShortcuts,
         getSupportedOnStates: getSupportedOnStates,
         getSupportedAsStates: getSupportedAsStates,
         parseCustomStateAttr: parseCustomStateAttr,
         detectExternalStates: detectExternalStates,
         initCustomStateWatcher: initCustomStateWatcher,
         defaults: defaults
+    }
+
+    function setShortcutDict(_shortcuts) {
+      shortcuts = _shortcuts
+    }
+
+    function getShortcuts() {
+      return shortcuts;
     }
 
     function getSupportedOnStates() {
@@ -55,7 +66,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
               scope.root.public.customStates[type] = {};
       }
       var watchState = 'root.public.customStates.' + type + '.' + args.camel;
-      console.log('watching', watchState)
       scope.$watch(watchState, function(new_value, old_value) {
         if (new_value) {
           $timeout(function() {
@@ -63,7 +73,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           })
           // console.log(type, args, attr_value, 'activated');
           var elemArgs = parseArgs(attr_value);
-
           for (key in elemArgs) {
             if ((argNames || supportedCommands).indexOf(key) > -1) {
               activateArg(key, elemArgs[key], scope, element);
@@ -200,9 +209,13 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         return arg.trim();
       }
 
-      function processSendSecondaryArgs(msg_name, arg) {
-        if (!arg) {
+      function processSendSecondaryArgs(msg_name, arg, prop_dict, orig_str) {
+        if (!arg || !arg.length) {
           arg = 'public'
+        }
+        if (arg.indexOf('delay-') > -1) {
+          arg = 'public'
+          console.log(prop_dict, orig_str)
         }
         return arg.trim();
       }
@@ -252,6 +265,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var value = kvPairSplit[1];
 
           parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs, i);
+
 
           if (kvPairSplit.length > 2) {
             parsedPropDict = processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
@@ -411,8 +425,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function evalSendArgs(arg_dict, scope, elem) {
       if (arg_dict.delay) {
         $timeout(function() {
-          processMessagesArr(arg_dict.messages, scope, elem);
-        })
+          console.log('sending w/ delay', arg_dict);
+          processMessageArr(arg_dict.messages, scope, elem);
+        }, arg_dict.delay)
       } else {
         processMessageArr(arg_dict.messages, scope, elem);
       }
@@ -452,7 +467,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (!(msgType in scope.root.public.customStates)) {
             scope.root.public.customStates[msgType] = {};
           }
-          console.log('setting', env, scope.root.public.customStates)
           scope.root.public.customStates[msgType][msg_name] = true;
         }
       }
@@ -501,7 +515,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (custom_str.indexOf('set:') > -1) {
             var setString = custom_str + "";
             setString = setString.split('set:(')[1];
-            var endParenthesis = setString.indexOf(')');
+            var endParenthesis = setString.indexOf('):') || setString.indexOf('),');
             setString = setString.substring(0, endParenthesis);
             custom_dict.set = processSetExtraArgs(setString);
 
@@ -683,15 +697,23 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function processClassCustomArgs(custom_str, custom_dict) {
+        //todo refactor
         if (custom_str.indexOf('set:') > -1) {
-          custom_dict.set = processSetExtraArgs(custom_str.replace('set:', ''));
+          var setString = custom_str + "";
+          setString = setString.split('set:(')[1];
+          var endParenthesis = setString.indexOf('):') || setString.indexOf('),');
+          setString = setString.substring(0, endParenthesis);
+          custom_dict.set = processSetExtraArgs(setString);
         }
       }
     }
 
     function processSetExtraArgs(set_str) {
-      set_str = UtilitiesService.removeAllOccurrancesArr(set_str, ['(', ')'])
+      if (!(set_str.split('(').length > 1)) {
+          set_str = UtilitiesService.removeAllOccurrancesArr(set_str, ['(', ')'])
+      }
       set_str = UtilitiesService.replaceAll(set_str, ', ', '');
+      set_str = UtilitiesService.replaceAll(set_str, '##', ',');
       var setPropertyArr = set_str.split('#');
       var resultArr = [];
       for (var i = 0; i < setPropertyArr.length; i++)  {
@@ -735,7 +757,11 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         delete indexPropDict['important'];
         var propName = Object.keys(indexPropDict)[0];
         var propValue = indexPropDict[propName];
-        setCSSProperty(propName, propValue, delay, important, scope, elem)
+        if ((propName && propValue) || (propName && propValue === 0)) {
+          setCSSProperty(propName, propValue, delay, important, scope, elem)
+        } else {
+          console.log('ERROR: css propValue or css propName not defined', propName, propValue, '\nelem:', elem)
+        }
         if (delay)  {
           indexPropDict['delay'] = delay;
         }
@@ -752,6 +778,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function setCSSProperty(prop, value, delay, impt, scope, elem) {
+        if (prop in shortcuts.cssProps) {
+          prop = shortcuts.cssProps[prop];
+        }
         var priority;
         if (impt) {
           priority = 'important';
@@ -764,6 +793,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             })
           }, delay)
         } else {
+          if (!prop && !value) {
+            console.log(prop, value, delay, impt, scope, elem);
+          }
+          // console.log(prop, value);
           elem.css(prop, value, priority);
           $timeout(function() {
               scope.$apply();
@@ -776,6 +809,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function getSupportedArg(indexArg) {
       if (indexArg && typeof(indexArg) === 'string') {
         indexArg = indexArg.trim();
+        if (indexArg in shortcuts.cmds) {
+          indexArg = shortcuts.cmds[indexArg]
+        }
       }
 
       var indexArgSplit = indexArg.split(':');
@@ -783,12 +819,11 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var argName = indexArgSplit[0];
         var argValues = indexArgSplit.splice(1);
         if (argName.length) {
+          if (argName in shortcuts.args) {
+            argName = shortcuts.args[argName];
+          }
           var supportedArgIndex = argNames.indexOf(argName);
           var supportedShorthandArgIndex = argShortNames.indexOf(argName);
-          if (supportedShorthandArgIndex > -1) {
-            argName = argNames[supportedShorthandArgIndex];
-            supportedArgIndex = argNames.indexOf(argName);
-          }
           if (supportedArgIndex > -1) {
             return {type: argName, value: argValues.join(":")}
           }
