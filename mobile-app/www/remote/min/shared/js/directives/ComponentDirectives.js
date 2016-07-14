@@ -64,7 +64,7 @@ angular.module('uguru.shared.directives.components')
             }
         }
     }])
-    .directive("dropdown", ['$timeout', 'RootService', 'UtilitiesService', function($timeout, RootService, UtilitiesService) {
+    .directive("dropdown", ['$timeout', 'RootService', 'UtilitiesService', 'DirectiveService', function($timeout, RootService, UtilitiesService, DirectiveService) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'color') {
                 return RootService.getBaseUrl() + 'shared/templates/components/templates/nav/color.tpl'
@@ -121,35 +121,26 @@ angular.module('uguru.shared.directives.components')
                         scope.dropdown.onOptionClick(option, index);
                     }
 
+                    if (scope.states && scope.states.indexOf('click') > -1) {
+                        DirectiveService.sendMessage(scope, 'send', 'click', attr, scope.prefix + '-dropdown-click', scope.dropdown.selectedIndex);
+                    }
+
                     scope.toggle();
                 }
 
                 if (scope.states && scope.states.indexOf('hover') > -1) {
-                    console.log('registering hover with data', scope.dropdown)
                     scope.hover = function($event, arg_type, message, index) {
-                        if (arg_type && arg_type.length && message && message.length) {
-                            var camelMsg = UtilitiesService.camelCase('when-' + message);
-                            if (attr.hoverData) {
-                                UtilitiesService.replaceAll(attr.hoverData + "", '_', '-');
-                                var keyFormatted =  UtilitiesService.camelCase(attr.hoverData);
-                                scope.root.public.customStates['when'][camelMsg] = {};
-                                scope.root.public.customStates['when'][camelMsg][keyFormatted] = scope.dropdown.options[index][attr.hoverData];
-                            } else {
-                                scope.root.public.customStates['when'][camelMsg] =scope.dropdown.options[index][attr.hoverData];
-                            }
-
-                            console.log('sending message', message, 'with data format', scope.root.public.customStates['when'][camelMsg])
-
-                            // $timeout(function() {
-                            //     scope.root.public.customStates['when'][camelMsg] = false;
-                            //     scope.$parent.$apply();
-                            // })
-                        }
+                        DirectiveService.sendMessage(scope, arg_type, 'hover', attr, message, index);
                     }
                 }
 
-                scope.toggle = function() {
+                scope.toggle = function($event, index) {
                     scope.dropdown.active = !scope.dropdown.active;
+                    if (scope.dropdown.active) {
+                        DirectiveService.sendMessage(scope, 'send', 'toggle-on', attr, scope.prefix + '-dropdown-toggle-on', scope.dropdown.selectedIndex);
+                    } else {
+                        DirectiveService.sendMessage(scope, 'send', 'toggle-off', attr, scope.prefix + '-dropdown-toggle-off', scope.dropdown.selectedIndex);
+                    }
                     if (scope.dropdown.onToggle) {
                         scope.dropdown.onToggle(scope.dropdown.active);
                     }

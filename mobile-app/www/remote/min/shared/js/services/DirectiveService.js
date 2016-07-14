@@ -28,6 +28,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         parseArgs: parseArgs,
         activateArg: activateArg,
         supportedCommands: argNames,
+        sendMessage: sendMessage,
         setShortcutDict: setShortcutDict,
         getShortcuts: getShortcuts,
         getSupportedOnStates: getSupportedOnStates,
@@ -40,6 +41,26 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function setShortcutDict(_shortcuts) {
       shortcuts = _shortcuts
+    }
+
+    function sendMessage(scope, arg_type, event_name, attr, message, index) {
+      if (!arg_type) arg_type = 'send';
+      if (arg_type !== 'send') return;
+      if (!arg_type || !arg_type.length || !message || !message.length) return;
+
+      var camelMsg = UtilitiesService.camelCase('when-' + message);
+      var dataAttrName = UtilitiesService.camelCase(event_name.toLowerCase() + '-data');
+      if (dataAttrName in attr) {
+          UtilitiesService.replaceAll(attr[dataAttrName] + "", '_', '-');
+          var keyFormatted =  UtilitiesService.camelCase(attr[dataAttrName]);
+          console.log(camelMsg, scope.dropdown.options[index])
+          scope.root.public.customStates['when'][camelMsg] = {};
+          scope.root.public.customStates['when'][camelMsg][keyFormatted] = scope.dropdown.options[index][attr[dataAttrName]];
+      } else {
+          scope.root.public.customStates['when'][camelMsg] =scope.dropdown.options[index][attr[dataAttrName]];
+      }
+
+      console.log('sending message', dataAttrName, message, 'with data format', scope.root.public.customStates['when'][camelMsg])
     }
 
     function getShortcuts() {
