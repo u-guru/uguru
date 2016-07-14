@@ -76,19 +76,20 @@ angular.module('uguru.shared.directives.components')
             templateUrl: getTemplateURL,
             scope: {
                 dropdown: '=ngModel',
-                prefix: '@prefix'
+                prefix: '@prefix',
+                states: '@states'
                     // tests:'=testArr',
             },
             replace: true,
             restrict: 'E',
             link: {pre: function(scope, element, attr) {
-                attr.$set('initWith', attr.initWith)
-                scope.prefix = 'on_university_dropdown_clicked';
-                scope.onUniversityDropdown = 'yo-yo';
+                if (scope.states && attr.states.length) {
+                    scope.states = UtilitiesService.removeAllOccurrancesArr(scope.states, ['[', ']', ' '])
+                    scope.states = scope.states && scope.states.split(',')
+                }
+                attr.$set('initWith', attr.initWith);
                 scope.root = scope.$parent.root;
-                $timeout(function() {
-                    console.log(scope.$parent.root.public.customStates)
-                }, 1000)
+
                 if (!scope.size) {
                     scope.size = 'small';
                 }
@@ -121,8 +122,32 @@ angular.module('uguru.shared.directives.components')
                     }
 
                     scope.toggle();
-
                 }
+
+                if (scope.states && scope.states.indexOf('hover') > -1) {
+                    console.log('registering hover with data', scope.dropdown)
+                    scope.hover = function($event, arg_type, message, index) {
+                        if (arg_type && arg_type.length && message && message.length) {
+                            var camelMsg = UtilitiesService.camelCase('when-' + message);
+                            if (attr.hoverData) {
+                                UtilitiesService.replaceAll(attr.hoverData + "", '_', '-');
+                                var keyFormatted =  UtilitiesService.camelCase(attr.hoverData);
+                                scope.root.public.customStates['when'][camelMsg] = {};
+                                scope.root.public.customStates['when'][camelMsg][keyFormatted] = scope.dropdown.options[index][attr.hoverData];
+                            } else {
+                                scope.root.public.customStates['when'][camelMsg] =scope.dropdown.options[index][attr.hoverData];
+                            }
+
+                            console.log('sending message', message, 'with data format', scope.root.public.customStates['when'][camelMsg])
+
+                            // $timeout(function() {
+                            //     scope.root.public.customStates['when'][camelMsg] = false;
+                            //     scope.$parent.$apply();
+                            // })
+                        }
+                    }
+                }
+
                 scope.toggle = function() {
                     scope.dropdown.active = !scope.dropdown.active;
                     if (scope.dropdown.onToggle) {

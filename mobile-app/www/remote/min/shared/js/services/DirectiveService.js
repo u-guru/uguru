@@ -78,6 +78,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
               if (formattedAttrValue.indexOf(formattedObjKey) > -1) {
                 formattedAttrValue = formattedAttrValue.replace(formattedObjKey, new_value[objKey])
               }
+
             }
           }
 

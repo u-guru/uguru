@@ -116,6 +116,22 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive('initDefault', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+
+          var listenerArgs = DirectiveService.detectExternalStates(attr);
+
+          for (key in listenerArgs) {
+            var type = listenerArgs[key].type
+            var _attr = listenerArgs[key].attr;
+
+            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+          }
+    }
+  }
+}])
 .directive('onEnter', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',
@@ -179,6 +195,7 @@ angular.module('uguru.shared.directives')
             if (inTimeout) {
               for (key in elemArgs) {
                 if (supportedCommands.indexOf(key) > -1) {
+                  console.log(scope.root.public.customStates.when.whenCategoryDropdownHover);
                   DirectiveService.activateArg(key, elemArgs[key], scope, element);
                 }
               }
