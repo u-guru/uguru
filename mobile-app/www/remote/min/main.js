@@ -177,6 +177,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/guru-head',
     templateUrl: 'shared/templates/components/guru-head/main.html',
   })
+  .state('root.cal', {
+    url:'/cal',
+    templateUrl: 'shared/templates/calendar.html'
+  })
   .state('root.loaders', {
     url:'/dev/splash/loaders',
     templateUrl: 'preapp/templates/loaders/main.html'
