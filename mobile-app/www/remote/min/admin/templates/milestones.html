@@ -16,21 +16,33 @@
 	<main class='full-x flex-center flex-stretch flex-wrap bg-slate'>
 		<div ng-if='$index === ms.typeIndex' ng-repeat='type in ms.types' class='full-x'>
 			<ul class='full-x flex-wrap'>
-				<li class='weight-700 txt-moxie p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x ugrid-3 text-center'>
-					<div class='txt-5 uppercase opacity-50'>Group Name</div>
+				<li class='weight-700 txt-moxie p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x ugrid-6 text-center flex-stretch'>
+					<div class='txt-5 uppercase opacity-50'>Name</div>
+					<div> Progress </div>
+					<div> Priority </div>
 					<div> Time </div>
-					<div> Items </div>
+					<div> Phase </div>
+					<div> Tested </div>
 				</li>
-				<li ng-repeat="milestone in ms[type]" class='p15-grid full-x flex-stretch flex-center'>
-					<span>
-						<h1> {{milestone.group}} </h1>
-					</span>
-					<span>
-						{{milestone.time}}
-					</span>
-					<span class='relative'>
-						<div class='p10xy full-x' ng-repeat='item in milestone.items'>{{$index + 1 + '.' + item}}<br></div>
-					</span>
+				<li ng-repeat="milestone in ms[type]" class='p15-grid full-x ugrid-6 flex-stretch flex-center txt-center'>
+					<div>
+						<h1 class='txt-5 txt-smoke uppercase'> {{milestone.group}} </h1>
+					</div>
+					<div class='relative'>
+						<div class='p10xy txt-3 txt-left full-x' ng-repeat='item in milestone.items'>{{$index + 1 + '.' + item}}<br></div>
+					</div>
+					<div>
+						{{milestone.priority}}
+					</div>
+					<div>
+						{{milestone.time.hours + ' hours'}}
+					</div>
+					<div>
+						{{milestone.tested}}
+					</div>
+					<div>
+						{{milestone.phase}}
+					</div>
 				</li>
 			</ul>
 		</div>
