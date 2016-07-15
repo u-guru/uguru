@@ -12,7 +12,8 @@
         <header class='splash-header' id='home-nav-header' on-init="trigger:[on-enter]">
             <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
 				init-default
-				when-category-dropdown-hover="prop:[opacity:0.25, transition:all 1000ms ease-in-out]"></a>
+				when-category-dropdown-hover="prop:[opacity:0.25:delay-2000, transition:all 500ms ease-in-out]"
+				when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"></a>
 
             <div class="right">
                 <div class="splash-hero-nav desktop m15right">
@@ -29,14 +30,16 @@
                         </dropdown>
 						<!-- on-hover="prop:[opacity:0]" on-hover-delay="1000" -->
                         <h2 init-default
-		                    when-category-dropdown-hover="prop:[opacity:0.25, transition:all 1000ms ease-in-out]"
+		                    when-category-dropdown-hover="prop:[opacity:0.25:delay-250, transition:all 500ms ease-in-out]"
+							when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 							init-with="prop:[opacity:0]"
 							when-nav-init="trigger:[on-enter]"
 							on-enter="prop:[opacity:1, transition:all 1000ms ease-out]:delay-750">@</h2>
 						<!-- @samir delays for send are not working as expected -->
                         <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'
 							init-default
-		                    when-category-dropdown-hover="prop:[opacity:0.25, transition:all 1000ms ease-in-out]"
+		                    when-category-dropdown-hover="prop:[opacity:0.25:delay-500, transition:all 500ms ease-in-out]"
+							when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 		                    when-category-dropdown-toggle-off="prop:[opacity:1]"
 							init-with="prop:[opacity:0]"
 							when-nav-init="prop:[opacity:1]"> </dropdown>
@@ -44,7 +47,8 @@
                 </div>
 				<div class="splash-hero-nav mobile"
 					init-default
-					when-category-dropdown-hover="prop:[opacity:0.25, transition:all 1000ms ease-in-out]"
+					when-category-dropdown-hover="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+					when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 					init-with="prop:[opacity:0]"
 					when-nav-init="trigger:[on-enter]"
 					on-enter="prop:[opacity:1, transition:all 1000ms ease-out]:delay-1500">
@@ -61,7 +65,8 @@
                 </div>
                 <a class="powerups-link icon-round-stroke mobile"
 					init-default
-					when-category-dropdown-hover="prop:[opacity:0.25, transition:all 1000ms ease-in-out]"
+					when-category-dropdown-hover="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+					when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 					on-click="send:[powerups-clicked] | class:[powerups-link:add]">
 					<!-- init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[opacity:0]" -->
                     <!-- ng-click='activatePowerups()'
@@ -83,7 +88,8 @@
                 </a>
 				<a class="powerups-link icon-round-stroke desktop"
 					init-default
-					when-category-dropdown-hover="prop:[opacity:0.25, transition:all 1000ms ease-in-out]"
+					when-category-dropdown-hover="prop:[opacity:0.25:delay-750, transition:all 500ms ease-in-out]"
+					when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 					on-click="send:[powerups-clicked] | class:[powerups-link:add]">
 					<!-- init-with="prop:[opacity:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[opacity:0]" -->
                     <!-- ng-click='activatePowerups()'
@@ -105,7 +111,8 @@
                 </a>
                 <a class="sidebar-link icon-round-stroke mobile"
 					init-default
-					when-category-dropdown-hover="prop:[opacity:0.25, transition:all 1000ms ease-in-out]"
+					when-category-dropdown-hover="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+					when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 					on-click="send:[sidebar-icon-clicked:public]">
 					<!-- init-with="prop:[opacity:0]"
 					when-nav-init="trigger:[on-enter]"
@@ -136,7 +143,8 @@
 				</a>
 				<a class="sidebar-link icon-round-stroke desktop"
 					init-default
-					when-category-dropdown-hover="prop:[opacity:0.25, transition:all 1000ms ease-in-out]"
+					when-category-dropdown-hover="prop:[opacity:0.25:delay-1000, transition:all 500ms ease-in-out]"
+					when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 					on-click="send:[sidebar-icon-clicked:public]">
 					<!-- init-with="prop:[opacity:0]"
 					when-nav-init="trigger:[on-enter]"
