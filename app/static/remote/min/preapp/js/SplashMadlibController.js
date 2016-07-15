@@ -40,6 +40,7 @@ angular.module('uguru.preApp')
     };
 
     madlib.updateOptionByIndex = function(category, index, cb) {
+      index = (index && parseInt(index)) || 0
       var blankNum = 'one';
       if (index > 3) {
         blankNum = 'two';

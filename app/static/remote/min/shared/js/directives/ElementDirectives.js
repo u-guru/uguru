@@ -174,7 +174,7 @@ angular.module('uguru.shared.directives')
             // element[0].style.opacity = 0;
             var formattedAttrOnChange = (attr.onChange + "").replace('[', '').replace(']', '');
             var func = $parse(elemArgs.eval.functions[0].custom);
-            element[0].style.opacity = 0;
+            // element[0].style.opacity = 0;
             element[0].style.display = 'none';
             func(scope);
             // $compile(element)(scope);

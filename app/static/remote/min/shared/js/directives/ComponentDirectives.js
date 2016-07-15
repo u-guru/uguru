@@ -101,6 +101,7 @@ angular.module('uguru.shared.directives.components')
                     scope.states = UtilitiesService.removeAllOccurrancesArr(scope.states, ['[', ']', ' '])
                     scope.states = scope.states && scope.states.split(',')
                 }
+                scope.dropdown.active = false;
                 attr.$set('initWith', attr.initWith);
                 scope.dropdown.selectedRecentlyChanged = false;
                 scope.root = scope.$parent.root;
@@ -158,10 +159,11 @@ angular.module('uguru.shared.directives.components')
                 }
 
                 scope.toggle = function($event, index) {
-                    $timeout(function() {
+                    // $timeout(function() {
                         scope.dropdown.active = !scope.dropdown.active;
 
                         if (scope.dropdown.selectedRecentlyChanged) {
+                            DirectiveService.sendMessage(scope, 'send', 'toggle-off', attr, scope.prefix + '-dropdown-toggle-off', scope.dropdown.selectedIndex);
                             return false;
                         }
 
@@ -173,7 +175,7 @@ angular.module('uguru.shared.directives.components')
                         if (scope.dropdown.onToggle) {
                             scope.dropdown.onToggle(scope.dropdown.active);
                         }
-                    })
+                    // })
                 }
             }
             }

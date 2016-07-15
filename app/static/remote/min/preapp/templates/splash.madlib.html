@@ -191,14 +191,13 @@
                 when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
                     when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
                 <tag class='adlib-tag'
-					init-default
-					init-with="prop:[opacity:0]"
-					when-madlib-init="trigger:[on-enter]"
+                    init-default
+                    init-with="prop:[opacity:0]"
+                    when-madlib-init="trigger:[on-enter]"
                     on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-1000]"
                     when-category-dropdown-click="trigger:[on-exit]"
-                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 3)]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 0)]"
                     on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
-
                     ng-click="resetMadLibBlankIfActive"
                     type="splash" blank-num="1" inner-text="madlib.options.one[0]">
                 </tag>
@@ -212,7 +211,7 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-1000]"
                     when-category-dropdown-click="trigger:[on-exit]"
-                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 3)]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 1)]"
                     on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
                     ng-click="resetMadLibBlankIfActive"
                     type="splash" blank-num="1" inner-text="madlib.options.one[1]">
@@ -228,7 +227,7 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-1000]"
                     when-category-dropdown-click="trigger:[on-exit:self]"
-                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 3)]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 2)]"
                     on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
                     ng-click="resetMadLibBlankIfActive"
                     type="splash" blank-num="1" inner-text="madlib.options.one[2]">
