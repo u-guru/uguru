@@ -25,7 +25,7 @@ angular.module('uguru.preApp')
       })
     })
 
-    SpecService.initSpec('device', $scope);
+    // SpecService.initSpec('device', $scope);
   }
 ])
 
