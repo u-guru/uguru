@@ -5,11 +5,11 @@
 	<custom-states when="madlib-init"></custom-states>
     <div class="splash-guru-head">
         <div class="splash-hero-guru splash-logo-guru" ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"
-			init-with="prop:[opacity:0]"
+			init-with="prop:[op:0]"
 			when-madlib-init="trigger:[on-enter]"
 			on-enter="anim:[bounceIn-subtle:set:(animation-duration:1000ms#animation-timing-function:linear):in]"></div>
         <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
-        <svg class="coach-help coach-help-desktop" init-with="prop:[opacity:0]" viewBox="0 0 340 205">
+        <svg class="coach-help coach-help-desktop" init-with="prop:[op:0]" viewBox="0 0 340 205">
             <g fill="none">
                 <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
                 <text transform="translate(173.347656, 110.679688) rotate(-19.000000) translate(-173.347656, -110.679688) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
@@ -18,7 +18,7 @@
                 </text>
             </g>
         </svg>
-        <svg class="coach-help coach-help-mobile" init-with="prop:[opacity:0]" viewBox="0 0 229 196">
+        <svg class="coach-help coach-help-mobile" init-with="prop:[op:0]" viewBox="0 0 229 196">
             <g fill="none">
                 <path d="M180.350646,159.695545 C180.350646,159.695544 181.232899,177.999995 205.232902,189.000001 C165.52585,201.901604 151.232897,186.999998 142.038937,178.7445 C81.8973532,198.285685 20.829672,176.230522 5.64045374,129.482915 C-9.5487645,82.7353086 26.8923282,28.9976249 87.0339124,9.45643967 C147.175497,-10.0847456 208.243178,11.9704169 223.432396,58.7180238 C235.030692,94.4139086 216.525122,134.185468 180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 L180.350646,159.695545 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
                 <text transform="translate(113.624918, 91.749311) rotate(-21) translate(-113.624918, -91.749311) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
@@ -33,11 +33,11 @@
 			when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]">
             <g fill="none">
                 <path d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-                    init-with="prop:[opacity:0]"
+                    init-with="prop:[op:0]"
 					when-madlib-init="trigger:[on-enter]"
                     on-enter="anim:[coach-click-2:set:(animation-duration:150ms#animation-timing-function:ease-in):delay-6500:in]"></path>
                 <path d="M37.0997894,99.9330039 L12.6336973,109.324657 L3.24204445,84.8585646" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
-                    init-with="prop:[opacity:0]"
+                    init-with="prop:[op:0]"
 					when-madlib-init="trigger:[on-enter]"
                     on-enter="anim:[coach-click-1:set:(animation-duration:150ms#animation-timing-function:ease-in):delay-6500:in]"></path>
                 <g init-with="prop:[opacity:0, transform-origin:center center]"
@@ -54,7 +54,7 @@
     <div class="splash-adlib" eval-on-activate="activateMap()">
         <div class="splash-adlib-inside">
             <div class="adlib-header-container relative"
-                init-with="prop:[opacity:0]"
+                init-with="prop:[op:0]"
 				when-madlib-init="trigger:[on-enter]"
                 on-enter="anim:[bounceInUp-subtle:set:(animation-duration:1000ms):delay-1250:in]">
                 <h1 class="adlib-header desktop" ng-if='root.window.desktop'>
@@ -174,12 +174,12 @@
 						on-enter="prop:[transform:none, transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.end}}</span>
                 </h1>
             </div>
-            <ul >
-                <!--
-                    on-activate="spread-out:animIn:delay-2500"
-                    on-hover="pulse"
-                    when-color-dropdown-clicked="prop:[opacity:0]"
+            <ul>
+                <!-- on-activate="spread-out:animIn:delay-2500"
+                on-hover="pulse"
+                when-color-dropdown-clicked="prop:[op:0]"
 
+<<<<<<< HEAD
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-category-switch-enter="spread-out:anim"
                     on-category-switch-exit="spread-in:animOut"
@@ -198,147 +198,393 @@
                     when-category-dropdown-click="trigger:[on-exit]"
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 0)]"
                     on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
-                    ng-click="resetMadLibBlankIfActive"
-                    type="splash" blank-num="1" inner-text="madlib.options.one[0]">
-                </tag>
-                <!--
-                    commenteded for debug purposes
-                when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
-                    when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
-                <tag class='adlib-tag'
-					init-default
-                    init-with="prop:[opacity:0]"
+=======
+                elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
+                on-category-switch-enter="spread-out:anim"
+                on-category-switch-exit="spread-in:animOut"
+                on-both-blanks-filled-enter="click-two:anim"
+                on-map-transition-enter="click-two:anim" -->
+
+				<li class='adlib-tag'
+                    init-default
+                    init-with="prop:[op:0,t:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
-                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-1000]"
+                    on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 0)]"
+                    type="splash" blank-num="1">
+                    <div class="tag-adlib-container">
+						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
+	                        translate-on-click="translate-blank-1" translate-to-elem="#blank-1"
+	                        class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                        <b><i>{{madlib.options.one[0]}}</i></b>
+	                    </a>
+	                    <span class="tag-adlib ghost active-ghost"
+	                        on-both-blanks-filled-enter="fadeOut:animOut"
+	                        on-map-transition-enter="fadeOut:animOut">
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                    </span>
+	                </div>
+	            </li>
+            	<!-- commented for debug purposes
+            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
+                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
+                <!-- <tag class='adlib-tag'
+					init-default
+					init-with="prop:[op:0]"
+					when-madlib-init="trigger:[on-enter]"
+                    on-enter="prop:[op:1,t:all 150ms ease-in-out] | prop:[opacity:1:delay-1000]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 3)]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)] | prop:[opacity:0:delay-1000"
+>>>>>>> 0862a17d743d1f6dedfab22a56fab0c728ecb2bf
+                    ng-click="resetMadLibBlankIfActive"
+                    type="splash" blank-num="1" inner-text="madlib.options.one[0]"></tag> -->
+
+				<li class='adlib-tag'
+                    init-default
+                    init-with="prop:[op:0,t:all 1000ms ease-in-out]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="prop:[op:1]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):after:(trigger:on-change:self:delay-1000)]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 1)]"
+                    type="splash" blank-num="1">
+                    <div class="tag-adlib-container">
+						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
+	                        translate-on-click="translate-blank-1" translate-to-elem="#blank-1"
+	                        class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                        <b><i>{{madlib.options.one[1]}}</i></b>
+	                    </a>
+	                    <span class="tag-adlib ghost active-ghost"
+	                        on-both-blanks-filled-enter="fadeOut:animOut"
+	                        on-map-transition-enter="fadeOut:animOut">
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                    </span>
+	                </div>
+	            </li>
+                <!-- commented for debug purposes
+            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
+                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
+                <!-- <tag class='adlib-tag'
+					init-default
+                    init-with="prop:[op:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="prop:[op:1,t:all 150ms ease-in-out] | prop:[opacity:1:delay-1000]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+<<<<<<< HEAD
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 1)]"
                     on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
+=======
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 3)]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)] | prop:[opacity:0:delay-1000"
+>>>>>>> 0862a17d743d1f6dedfab22a56fab0c728ecb2bf
                     ng-click="resetMadLibBlankIfActive"
-                    type="splash" blank-num="1" inner-text="madlib.options.one[1]">
-                </tag>
-                <!--
-                    commenteded for debug purposes
-                when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
-                    when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
-                <tag class='adlib-tag'
-					init-default
+                    type="splash" blank-num="1" inner-text="madlib.options.one[1]"></tag> -->
 
-                    init-with="prop:[opacity:0]"
+				<li class='adlib-tag'
+                    init-default
+                    init-with="prop:[op:0,t:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
-                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-1000]"
+                    on-enter="prop:[op:1]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 2)]"
+                    type="splash" blank-num="1">
+                    <div class="tag-adlib-container">
+						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
+	                        translate-on-click="translate-blank-1" translate-to-elem="#blank-1"
+	                        class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                        <b><i>{{madlib.options.one[2]}}</i></b>
+	                    </a>
+	                    <span class="tag-adlib ghost active-ghost"
+	                        on-both-blanks-filled-enter="fadeOut:animOut"
+	                        on-map-transition-enter="fadeOut:animOut">
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                    </span>
+	                </div>
+	            </li>
+                <!-- commented for debug purposes
+            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
+                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
+                <!-- <tag class='adlib-tag'
+					init-default
+                    init-with="prop:[op:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="prop:[op:1,t:all 150ms ease-in-out] | prop:[opacity:1:delay-1000]"
                     when-category-dropdown-click="trigger:[on-exit:self]"
+<<<<<<< HEAD
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 2)]"
                     on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
+=======
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 3)]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)] | prop:[opacity:0:delay-1000"
+>>>>>>> 0862a17d743d1f6dedfab22a56fab0c728ecb2bf
                     ng-click="resetMadLibBlankIfActive"
-                    type="splash" blank-num="1" inner-text="madlib.options.one[2]">
-                </tag>
-            <!--     <li class='adlib-tag'
+                    type="splash" blank-num="1" inner-text="madlib.options.one[2]"></tag> -->
+
+				<li class='adlib-tag'
                     init-default
-
-                    init-with="prop:[opacity:0]"
+                    init-with="prop:[op:0,t:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
-                    on-enter="anim:[bounceIn-subtle:set:(animation-duration:1s):in]"
+                    on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)]"
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 3)]"
-
                     type="splash" blank-num="1">
-
                     <div class="tag-adlib-container">
-                    <a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
-                        translate-on-click="translate-blank-1" translate-to-elem="#blank-1"
-                        class-on-click='translate-blank-{{blankNum}}:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'
-                        on-map-transition-enter="click-two:animOut">
-                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
-                        </svg>
-                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
-                        </svg>
-                        <b><i>madlib.options.one[3]}}</i>b>
-                    </a>
-                    <span class="tag-adlib ghost active-ghost"
-                        on-both-blanks-filled-enter="fadeOut:animOut"
-                        on-map-transition-enter="fadeOut:animOut">
-                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
-                        </svg>
-                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
-                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
-                        </svg>
-                    </span>
-                </div>
-            </li> -->
-            <!--
-                    commenteded for debug purposes
-                when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
-                    when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
-                <tag class='adlib-tag'
+						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
+	                        translate-on-click="translate-blank-1" translate-to-elem="#blank-1"
+	                        class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                        <b><i>{{madlib.options.one[3]}}</i></b>
+	                    </a>
+	                    <span class="tag-adlib ghost active-ghost"
+	                        on-both-blanks-filled-enter="fadeOut:animOut"
+	                        on-map-transition-enter="fadeOut:animOut">
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                    </span>
+	                </div>
+	            </li>
+            	<!-- commented for debug purposes
+            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
+                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
+                <!-- <tag class='adlib-tag'
 					init-default
-
-                    init-with="prop:[opacity:0]"
+                    init-with="prop:[op:0]"
                     when-madlib-init="trigger:[on-enter]"
-                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-1000]"
+                    on-enter="prop:[op:1,t:all 150ms ease-in-out] | prop:[opacity:1:delay-1000]"
                     when-category-dropdown-click="trigger:[on-exit]"
-                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)] | prop:[opacity:0:delay-1000]"
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 3)]"
+                    type="splash" blank-num="1" inner-text="madlib.options.one[3]"></tag> -->
 
-                    type="splash" blank-num="1" inner-text="madlib.options.one[3]">
-                </tag>
-
-                <!--
-                    commenteded for debug purposes
-                when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
-                    when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
-                <tag class='adlib-tag'
-					init-default
-                    init-with="prop:[opacity:0]"
+				<li class='adlib-tag'
+                    init-default
+                    init-with="prop:[op:0,t:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
-                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-1000]"
+                    on-enter="prop:[op:1]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 4)]"
+                    type="splash" blank-num="2">
+                    <div class="tag-adlib-container">
+						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
+	                        translate-on-click="translate-blank-2" translate-to-elem="#blank-2"
+	                        class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b|blank-2-filled'>
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                        <b><i>{{madlib.options.two[0]}}</i></b>
+	                    </a>
+	                    <span class="tag-adlib ghost active-ghost"
+	                        on-both-blanks-filled-enter="fadeOut:animOut"
+	                        on-map-transition-enter="fadeOut:animOut">
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                    </span>
+	                </div>
+	            </li>
+                <!-- commented for debug purposes
+            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
+                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
+                <!-- <tag class='adlib-tag'
+					init-default
+                    init-with="prop:[op:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="prop:[op:1,t:all 150ms ease-in-out] | prop:[opacity:1:delay-1000]"
                     when-category-dropdown-click="trigger:[on-exit]"
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 4)]"
-                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)] | prop:[opacity:0:delay-1000"
 
                     ng-click="resetMadLibBlankIfActive"
-                    type="splash" blank-num="2" inner-text="madlib.options.two[0]">
-                </tag>
-                <!--
-                    commenteded for debug purposes
-                when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
-                    when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
-                <tag class='adlib-tag'
-					init-default
-                    init-with="prop:[opacity:0]"
+                    type="splash" blank-num="2" inner-text="madlib.options.two[0]"></tag> -->
+
+				<li class='adlib-tag'
+                    init-default
+                    init-with="prop:[op:0,t:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
-                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-1000]"
+                    on-enter="prop:[op:1]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 5)]"
+                    type="splash" blank-num="2">
+                    <div class="tag-adlib-container">
+						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
+	                        translate-on-click="translate-blank-2" translate-to-elem="#blank-2"
+	                        class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b|blank-2-filled'>
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                        <b><i>{{madlib.options.two[1]}}</i></b>
+	                    </a>
+	                    <span class="tag-adlib ghost active-ghost"
+	                        on-both-blanks-filled-enter="fadeOut:animOut"
+	                        on-map-transition-enter="fadeOut:animOut">
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                    </span>
+	                </div>
+	            </li>
+                <!-- commented for debug purposes
+            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
+                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
+                <!-- <tag class='adlib-tag'
+					init-default
+                    init-with="prop:[op:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="prop:[op:1,t:all 150ms ease-in-out] | prop:[opacity:1:delay-1000]"
                     when-category-dropdown-click="trigger:[on-exit]"
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 5)]"
-                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)] | prop:[opacity:0:delay-1000"
                     ng-click="resetMadLibBlankIfActive"
-                    type="splash" blank-num="2" inner-text="madlib.options.two[1]">
-                </tag>
-                <tag class='adlib-tag'
-					init-default
-                    init-with="prop:[opacity:0]"
+                    type="splash" blank-num="2" inner-text="madlib.options.two[1]"></tag> -->
+
+				<li class='adlib-tag'
+                    init-default
+                    init-with="prop:[op:0,t:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
-                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-1000]"
+                    on-enter="prop:[op:1]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 6)]"
+                    type="splash" blank-num="2">
+                    <div class="tag-adlib-container">
+						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
+	                        translate-on-click="translate-blank-2" translate-to-elem="#blank-2"
+	                        class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b|blank-2-filled'>
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                        <b><i>{{madlib.options.two[2]}}</i></b>
+	                    </a>
+	                    <span class="tag-adlib ghost active-ghost"
+	                        on-both-blanks-filled-enter="fadeOut:animOut"
+	                        on-map-transition-enter="fadeOut:animOut">
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                    </span>
+	                </div>
+	            </li>
+                <!-- <tag class='adlib-tag'
+					init-default
+                    init-with="prop:[op:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="prop:[op:1,t:all 150ms ease-in-out] | prop:[opacity:1:delay-1000]"
                     when-category-dropdown-click="trigger:[on-exit]"
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 6)]"
-                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)] | prop:[opacity:0:delay-1000"
                     ng-click="resetMadLibBlankIfActive"
-                    type="splash" blank-num="2" inner-text="madlib.options.two[2]">
-                </tag>
-                <tag class='adlib-tag'
-					init-default
-                    init-with="prop:[opacity:0]"
+                    type="splash" blank-num="2" inner-text="madlib.options.two[2]"></tag> -->
+
+				<li class='adlib-tag'
+                    init-default
+                    init-with="prop:[op:0,t:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
-                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-1000]"
+                    on-enter="prop:[op:1]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)]"
+                    on-change="eval:[madlib.updateOptionByIndex(splash.category, 7)]"
+                    type="splash" blank-num="2">
+                    <div class="tag-adlib-container">
+						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
+	                        translate-on-click="translate-blank-2" translate-to-elem="#blank-2"
+	                        class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b|blank-2-filled'>
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                        <b><i>{{madlib.options.two[3]}}</i></b>
+	                    </a>
+	                    <span class="tag-adlib ghost active-ghost"
+	                        on-both-blanks-filled-enter="fadeOut:animOut"
+	                        on-map-transition-enter="fadeOut:animOut">
+	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        </svg>
+	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
+	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>
+	                        </svg>
+	                    </span>
+	                </div>
+	            </li>
+                <!-- <tag class='adlib-tag'
+					init-default
+                    init-with="prop:[op:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="prop:[op:1,t:all 150ms ease-in-out] | prop:[opacity:1:delay-1000]"
                     when-category-dropdown-click="trigger:[on-exit]"
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 7)]"
-                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)] | prop:[opacity:0:delay-1000"
                     ng-click="resetMadLibBlankIfActive"
-                    type="splash" blank-num="2" inner-text="madlib.options.two[3]">
-                </tag>
+                    type="splash" blank-num="2" inner-text="madlib.options.two[3]"></tag> -->
             </ul>
         </div>
     </div>

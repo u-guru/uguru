@@ -10967,8 +10967,18 @@ input[type=range] {
         stroke-width: 8px;
         width: 24px;
         height: 24px; }
-      .calendar .cal-week > div .cal-month span:nth-child(2) {
+      .calendar .cal-week > div .cal-month > span:nth-child(2) {
         display: block !important; }
+      .calendar .cal-week > div .cal-month > span {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex; }
+        .calendar .cal-week > div .cal-month > span span {
+          display: block; }
     .calendar .cal-week > div .cal-month.has-link {
       padding: 0; }
       .calendar .cal-week > div .cal-month.has-link a {
@@ -10982,7 +10992,7 @@ input[type=range] {
           background: #40484B; }
     .calendar .cal-week > div .cal-time {
       width: 80px;
-      padding-top: 30px; }
+      padding-top: 76px; }
       .calendar .cal-week > div .cal-time > li {
         position: relative;
         height: 50px; }
@@ -11009,7 +11019,7 @@ input[type=range] {
         display: flex;
         width: 100%;
         min-width: 720px;
-        height: 30px;
+        height: 76px;
         padding: 0 1px; }
         .calendar .cal-week > div .cal-main .cal-date > li {
           width: calc(100% / 7);
@@ -11026,6 +11036,9 @@ input[type=range] {
             display: -moz-flex;
             display: -webkit-flex;
             display: flex;
+            -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
             -webkit-flex-direction: row;
             flex-direction: row;
             -webkit-align-items: center;
@@ -11035,9 +11048,15 @@ input[type=range] {
             -webkit-justify-content: center;
             justify-content: center;
             border-radius: 2px;
-            height: 30px;
+            padding: 10px;
             width: 100%;
             background: #637074; }
+            .calendar .cal-week > div .cal-main .cal-date > li > span .cal-date-num {
+              display: block;
+              width: 100%;
+              font-size: 36px;
+              line-height: 1;
+              font-weight: 900; }
           .calendar .cal-week > div .cal-main .cal-date > li.not-available > span {
             background: #d3242c; }
       .calendar .cal-week > div .cal-main .cal-events {
@@ -11315,8 +11334,6 @@ input[type=range] {
       font-weight: 600; }
     .calendar .cal-week .cal-main {
       overflow-x: auto; }
-      .calendar .cal-week .cal-main .cal-date li > span span:nth-child(2), .calendar .cal-week .cal-main .cal-date li > span span:nth-child(3) {
-        display: none !important; }
       .calendar .cal-week .cal-main .cal-events {
         -ms-box-orient: horizontal;
         display: -webkit-box;
