@@ -29,7 +29,7 @@
         </svg>
         <svg class="coach-fill" viewBox="0 0 280 112"
 			init-default
-			when-category-dropdown-hover="prop:[opacity:0.25:delay-750, transition:all 500ms ease-in-out]"
+			when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-750, transition:all 500ms ease-in-out]"
 			when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]">
             <g fill="none">
                 <path d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
@@ -62,13 +62,15 @@
 					on-category-switch-exit="inactive-adlib-header:anim" -->
                     <span init-with="prop:[transform:translate3d(40px#0#0)]"
 						init-default
-						when-category-dropdown-hover="prop:[opacity:0.25:delay-1500, transition:all 500ms ease-in-out]"
+						when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1500, transition:all 500ms ease-in-out]"
+		                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-madlib-init="trigger:[on-enter]"
 						on-enter="prop:[transform:translate3d(0#0#0), transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank"
 						init-default
-						when-category-dropdown-hover="prop:[opacity:0.25:delay-1250, transition:all 500ms ease-in-out]"
+						when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1250, transition:all 500ms ease-in-out]"
+		                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						init-with="prop:[background:rgba(64#72#75#0), transform:translate3d(0#0#0) scale(1.7)]"
 						when-madlib-init="trigger:[on-enter]"
@@ -86,13 +88,15 @@
                     </a>
                     <span init-with="prop:[transform:translate3d(-40px#0#0)]"
 						init-default
-						when-category-dropdown-hover="prop:[opacity:0.25:delay-1000, transition:all 500ms ease-in-out]"
+						when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1000, transition:all 500ms ease-in-out]"
+		                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-madlib-init="trigger:[on-enter]"
 						on-enter="prop:[transform:none, transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.middle}}</span>
                     <a id="blank-2" class="tag-adlib blank"
 						init-default
-						when-category-dropdown-hover="prop:[opacity:0.25:delay-750, transition:all 500ms ease-in-out]"
+						when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-750, transition:all 500ms ease-in-out]"
+		                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						init-with="prop:[background:rgba(64#72#75#0), transform:translate3d(-37.5px#0#0) scale(1.7)]"
 						when-madlib-init="trigger:[on-enter]"
@@ -110,7 +114,8 @@
                     </a>
                     <span init-with="prop:[transform:translate3d(-35px#0#0)]"
 						init-default
-						when-category-dropdown-hover="prop:[opacity:0.25:delay-500, transition:all 500ms ease-in-out]"
+						when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-500, transition:all 500ms ease-in-out]"
+		                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-madlib-init="trigger:[on-enter]"
 						on-enter="prop:[transform:none, transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.end}}</span>
@@ -120,13 +125,15 @@
 					on-category-switch-exit="inactive-adlib-header:anim" -->
                     <span init-with="prop:[transform:translate3d(48px#0#0)]"
 						init-default
-						when-category-dropdown-hover="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+						when-category-dropdown-mouse-enter="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+		                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-madlib-init="trigger:[on-enter]"
 						on-enter="prop:[transform:translate3d(0#0#0), transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank"
 						init-default
-						when-category-dropdown-hover="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+						when-category-dropdown-mouse-enter="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+		                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						init-with="prop:[background:rgba(64#72#75#0), transform:translate3d(0#0#0) scale(1.4)]"
 						when-madlib-init="trigger:[on-enter]"
@@ -144,13 +151,15 @@
                     </a>
                     <span init-with="prop:[transform:translate3d(-48px#0#0)]"
 						init-default
-						when-category-dropdown-hover="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+						when-category-dropdown-mouse-enter="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+		                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-madlib-init="trigger:[on-enter]"
 						on-enter="prop:[transform:none, transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.middle}}</span>
                     <a id="blank-2" class="tag-adlib blank"
 						init-default
-						when-category-dropdown-hover="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+						when-category-dropdown-mouse-enter="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+		                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						init-with="prop:[background:rgba(64#72#75#0), transform:translate3d(-2px#0#0) scale(1.4)]"
 						when-madlib-init="trigger:[on-enter]"
@@ -168,7 +177,8 @@
                     </a>
                     <span init-with="prop:[transform:translate3d(-23px#0#0)]"
 						init-default
-						when-category-dropdown-hover="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+						when-category-dropdown-mouse-enter="prop:[opacity:0.25, transition:all 500ms ease-in-out]"
+		                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
 						when-madlib-init="trigger:[on-enter]"
 						on-enter="prop:[transform:none, transition:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.end}}</span>
@@ -191,7 +201,7 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-	            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1500, transition:all 500ms ease-in-out]"
+	            	when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1500, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
                     on-exit="anim:[fadeOut:set:(animation-duration:500ms#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-500)]"
@@ -238,7 +248,7 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-	            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1250, transition:all 500ms ease-in-out]"
+	            	when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1250, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
                     on-exit="anim:[fadeOut:set:(animation-duration:500ms#animation-timing-function:ease-in-out):after:(trigger:on-change:self:delay-500)]"
@@ -285,7 +295,7 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-	            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1000, transition:all 500ms ease-in-out]"
+	            	when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1000, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
                     on-exit="anim:[fadeOut:set:(animation-duration:500ms#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-500)]"
@@ -332,7 +342,7 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-	            	when-category-dropdown-hover="prop:[opacity:0.25:delay-750, transition:all 500ms ease-in-out]"
+	            	when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-750, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
                     on-exit="anim:[fadeOut:set:(animation-duration:500ms#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-500)]"
@@ -378,7 +388,7 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-	            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
+	            	when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
                     on-exit="anim:[fadeOut:set:(animation-duration:500ms#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-500)]"
@@ -426,7 +436,7 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-	            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1500, transition:all 500ms ease-in-out]"
+	            	when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1500, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
                     on-exit="anim:[fadeOut:set:(animation-duration:500ms#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-500)]"
@@ -457,7 +467,7 @@
 	                </div>
 	            </li>
                 <!-- commented for debug purposes
-            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
+            	when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
                 when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
                 <!-- <tag class='adlib-tag'
 					init-default
@@ -476,7 +486,7 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-	            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1250, transition:all 500ms ease-in-out]"
+	            	when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1250, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
                     on-exit="anim:[fadeOut:set:(animation-duration:500ms#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-500)]"
@@ -523,7 +533,7 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-	            	when-category-dropdown-hover="prop:[opacity:0.25:delay-1000, transition:all 500ms ease-in-out]"
+	            	when-category-dropdown-mouse-enter="prop:[opacity:0.25:delay-1000, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="prop:[opacity:1, transition:all 500ms ease-in-out]"
 	                when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]"
                     on-exit="anim:[fadeOut:set:(animation-duration:500ms#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-500)]"

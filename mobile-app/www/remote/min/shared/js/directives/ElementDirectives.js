@@ -175,17 +175,17 @@ angular.module('uguru.shared.directives')
             var formattedAttrOnChange = (attr.onChange + "").replace('[', '').replace(']', '');
             var func = $parse(elemArgs.eval.functions[0].custom);
             // element[0].style.opacity = 0;
+            var temp = element[0].style.display + '';
             element[0].style.display = 'none';
             func(scope);
             // $compile(element)(scope);
-            element[0].style.display = 'inherit';
+            element[0].style.display = temp;
             $timeout(function() {
               // element[0].style.opacity = 1;
             // $compile(element)(scope);
-
               element[0].classList.add('on-enter');
               // element[0].style.opacity= 1;
-            }, 100)
+            });
 
             // $timeout(function() {
 

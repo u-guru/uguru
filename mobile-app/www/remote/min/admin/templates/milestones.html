@@ -1,0 +1,26 @@
+<div class='absolute full-xy flex-wrap flex-vertical-center' ng-controller='AdminMilestoneController as ms'>
+	<header class='full-x text-center'>
+		<h1 class='txt-7 uppercase weight-600'>
+			Milestones
+		</h1>
+		<div class='full-x flex-stretch ugrid-{{ms.types.length}} p15-grid flex-center'>
+			<a class='bg-charcoal border-1 border-slate weight-400 p15-grid flex-wrap-center'
+			ng-repeat="type in ms.types"
+			ng-class="{'border-smoke border-dashed txt-white weight-600 bg-moxie-50p': $index === ms.typeIndex}"
+			ng-click="ms.typeIndex = $index"
+			style='width:33%;'>
+				{{type}}
+			</a>
+		</div>
+	</header>
+	<main class='full-x flex-center flex-stretch flex-wrap bg-cerise'>
+		<div ng-if='$index === ms.typeIndex' ng-repeat='type in ms.types'>
+			<ul>
+				<li ng-repeat="milestone in ms[type]['actions']" class='p15-grid bg-smoke'>
+					{{milestone.group}}
+				</li>
+			</ul>
+		</div>
+	</main>
+
+</div>

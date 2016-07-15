@@ -39,7 +39,7 @@
 				on-enter="prop:[stroke-dashoffset:0]"></path>
         </svg>
     </a>
-    <div ng-class='{"visible": dropdown.active }'>
+    <div ng-class='{"visible": dropdown.active }' >
         <svg viewBox="0 0 396 38">
             <path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
