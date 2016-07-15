@@ -2,7 +2,7 @@
     <custom-states when="sidebar-icon-clicked">
     </custom-states>
     <!-- <ion-content class='relative full-xy' > -->
-        <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()" elem-states="[category-change]">
+        <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()">
             <section id='splash-home' class='splash-hero'>
 
                 <!-- @gabrielle-note, study this complex example to see what's goign on-->
@@ -14,16 +14,24 @@
                 include-replace>
                 </div>
 
-                <div ng-if="splash.state.sidebar" ng-include src="root.base_url + 'preapp/templates/splash.sidebar.html'" include-replace>
+                <div  ng-if="splash.state.sidebar" ng-include src="root.base_url + 'preapp/templates/splash.sidebar.html'" include-replace>
                 </div>
 
 
                 <!-- device -->
-                <div ng-if="splash.state.device"  ng-include src="root.base_url + 'preapp/templates/splash.device.html'" include-replace>
+                <div
+                    init-default
+                    when-category-dropdown-toggle-on="prop:[opacity:0.5, transition: transform 500ms linear, transform:scaleX(0.5)scaleY(0.5)]"
+                    when-category-dropdown-toggle-off="prop:[opacity:1, transform:scaleX(1)scaleY(1)]"
+                    ng-if="splash.state.device" ng-include src="root.base_url + 'preapp/templates/splash.device.html'" include-replace>
                 </div>
 
                 <!-- Madlib -->
-                <div ng-if="splash.state.madlib" ng-include src="root.base_url + 'preapp/templates/splash.madlib.html'" include-replace>
+                <div
+                    init-default
+                    when-category-dropdown-toggle-on="prop:[opacity:0.5, transition: transform 500ms linear, transform:scale(1)]"
+                    when-category-dropdown-toggle-off="prop:[opacity:1, transform:scaleX(1)scaleY(1)]"
+                 ng-if="splash.state.madlib" ng-include src="root.base_url + 'preapp/templates/splash.madlib.html'" include-replace>
                 </div>
 
                 <!-- Map -->

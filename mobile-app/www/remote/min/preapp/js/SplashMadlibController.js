@@ -15,7 +15,9 @@ angular.module('uguru.preApp')
 
     madlib.category = ($scope.splash && $scope.splash.category) || CategoryService.getLocalCategories()[0];
     madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
+    madlib.options = {one: madlib.category.tags_data.blank_one_options, two: madlib.category.tags_data.blank_two_options}
     madlib.university = UniversityService.getBerkeleyLocal();
+
 
 
     madlib.onEnter = function() {
