@@ -52,9 +52,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       var dataAttrName = UtilitiesService.camelCase(event_name.toLowerCase() + '-data');
       if (dataAttrName in attr) {
           var sendVars = UtilitiesService.replaceAll(attr[dataAttrName], ' ', '').split(',')
-          if (sendVars.length > 1) {
-            console.log('send vars', sendVars)
-          }
           scope.root.public.customStates['when'][camelMsg] = {};
           for (var i = 0; i < sendVars.length; i++) {
             UtilitiesService.replaceAll(attr[dataAttrName] + "", '_', '-');
@@ -559,7 +556,15 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             custom_dict.before = true;
           }
           if (custom_str && custom_str.indexOf(':after') > -1) {
-            custom_dict.after = true;
+            var afterArgs = custom_str.split(':after:')
+            if (afterArgs.length > 1 && afterArgs[1].length && afterArgs[1].indexOf('(') > -1 && afterArgs[1].indexOf(')') > -1) {
+              afterArgs = UtilitiesService.removeAllOccurrancesArr(afterArgs[1], ['(', ')']);
+              var afterArgsType = afterArgs.split(':')[0];
+              custom_dict.after = {value: true, type: afterArgsType, func: parseAfterArgs(afterArgs)}
+
+            } else {
+              custom_dict.after = {value: true, type: 'set' in custom_dict};
+            }
           }
           if (custom_str && custom_str.indexOf(':in') > -1) {
             custom_dict.in = true;
@@ -567,6 +572,21 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (custom_str && custom_str.indexOf(':out') > -1) {
             custom_dict.out = true;
           }
+        }
+      }
+
+      function parseAfterArgs(arg_string) {
+        var argSplit = arg_string.split(':')
+        if (argSplit.length > 1) {
+          var argName = argSplit[0];
+          switch(argName.toLowerCase()) {
+            case('trigger'):
+              var argValue = argSplit.splice(1).join(":")
+              var processedValue = processSecondaryArgsByType('trigger', argValue);
+              console.log(processedValue);
+            case('send'):
+          }
+
         }
       }
 
@@ -590,8 +610,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
                 })
               }
             }
-            if (custom_args.after) {
-
+            if (custom_args.after && custom_args.after.value) {
+              console.log('after args', custom_args)
               animEndCb = function() {
                 var propDict = {properties:custom_args.set};
                 evalPropertyArgs(propDict, scope, elem);
@@ -601,7 +621,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
             if (delay) {
               $timeout(function() {
-                if (custom_args && custom_args.set && (!custom_args.after || custom_args.before)) {
+                if (custom_args && custom_args.set && (!custom_args.after || !custom_args.after.value || custom_args.before)) {
                   var propDict = {properties:custom_args.set};
                   evalPropertyArgs(propDict, scope, elem);
                 }

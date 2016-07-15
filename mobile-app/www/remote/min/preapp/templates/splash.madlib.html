@@ -185,7 +185,8 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="anim:[slideInLeft:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
                     when-category-dropdown-click="trigger:[on-exit]"
-                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out]"
+                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:public:delay-500)]"
+                    on-change="trigger:[on-enter]"
                     ng-click="resetMadLibBlankIfActive"
                     type="splash" blank-num="1" inner-text="madlib.options.one[3]">
                 </tag>
