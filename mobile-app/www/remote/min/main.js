@@ -189,6 +189,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/loaders/tech',
     templateUrl: 'preapp/templates/loaders/tech.html'
   })
+  .state('root.milestones', {
+    url:'/dev/milestones',
+    templateUrl: 'admin/templates/milestones.html'
+  })
   .state('root.base-components', {
     url:'/dev/base/components/:baseCompName',
     templateProvider: function(AdminDirectiveService, $stateParams) {

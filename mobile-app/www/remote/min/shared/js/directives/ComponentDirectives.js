@@ -158,6 +158,24 @@ angular.module('uguru.shared.directives.components')
                     }
                 }
 
+                if (scope.states && scope.states.indexOf('mouse-enter') > -1) {
+                    scope.mouseEnter = function($event, index) {
+                        arg_type =  'send'
+                        message = scope.prefix + '-dropdown-mouse-enter';
+                        index = index || 0;
+                        DirectiveService.sendMessage(scope, arg_type, 'mouse-enter', attr, message, index);
+                    }
+                }
+
+                if (scope.states && scope.states.indexOf('mouse-leave') > -1) {
+                    scope.mouseLeave = function($event, index) {
+                        arg_type =  'send'
+                        message =  scope.prefix + '-dropdown-mouse-leave';
+                        index = index || 0;
+                        DirectiveService.sendMessage(scope, arg_type, 'mouse-leave', attr, message, index);
+                    }
+                }
+
                 scope.toggle = function($event, index) {
                     // $timeout(function() {
                         scope.dropdown.active = !scope.dropdown.active;

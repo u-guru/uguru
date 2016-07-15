@@ -179,7 +179,6 @@
                 on-hover="pulse"
                 when-color-dropdown-clicked="prop:[op:0]"
 
-<<<<<<< HEAD
                     elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                     on-category-switch-enter="spread-out:anim"
                     on-category-switch-exit="spread-in:animOut"
@@ -190,7 +189,7 @@
                     commenteded for debug purposes
                 when-category-dropdown-hover="prop:[opacity:0.25:delay-1750, transition:all 500ms ease-in-out]"
                     when-category-dropdown-toggle-off="prop:[opacity:1, transition:all 500ms ease-in-out]" -->
-                <tag class='adlib-tag'
+                <!--<tag class='adlib-tag'
                     init-default
                     init-with="prop:[opacity:0]"
                     when-madlib-init="trigger:[on-enter]"
@@ -198,16 +197,14 @@
                     when-category-dropdown-click="trigger:[on-exit]"
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 0)]"
                     on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:self)] | prop:[opacity:0:delay-1000"
-=======
                 elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
                 on-category-switch-enter="spread-out:anim"
                 on-category-switch-exit="spread-in:animOut"
                 on-both-blanks-filled-enter="click-two:anim"
-                on-map-transition-enter="click-two:anim" -->
+                on-map-transition-enter="click-two:anim"> -->
 
 				<li class='adlib-tag'
-                    init-default
-                    init-with="prop:[op:0,t:all 1000ms ease-in-out]"
+                    init-with="prop:[op:0,transition:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
@@ -254,7 +251,6 @@
                     type="splash" blank-num="1" inner-text="madlib.options.one[0]"></tag> -->
 
 				<li class='adlib-tag'
-                    init-default
                     init-with="prop:[op:0,t:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
@@ -306,12 +302,11 @@
                     type="splash" blank-num="1" inner-text="madlib.options.one[1]"></tag> -->
 
 				<li class='adlib-tag'
-                    init-default
                     init-with="prop:[op:0,t:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1500)]"
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 2)]"
                     type="splash" blank-num="1">
                     <div class="tag-adlib-container">
@@ -358,12 +353,11 @@
                     type="splash" blank-num="1" inner-text="madlib.options.one[2]"></tag> -->
 
 				<li class='adlib-tag'
-                    init-default
                     init-with="prop:[op:0,t:all 1000ms ease-in-out]"
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
-                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1000)]"
+                    on-exit="anim:[fadeOut:set:(animation-duration:1s#animation-timing-function:ease-in-out):out:after:(trigger:on-change:self:delay-1500)]"
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 3)]"
                     type="splash" blank-num="1">
                     <div class="tag-adlib-container">
