@@ -142,11 +142,8 @@
                 </h1>
             </div>
             <ul class-on-clear="null:inject li[class-on-clear]|clear" class-on-activate="null:inject li[class-on-activate]|activate" ng-if='madlib.category.tags_data.blank_one_options.length && madlib.category.tags_data.blank_two_options.length'>
-                <tag class='adlib-tag'
-					init-with="prop:[opacity:0]"
-					when-madlib-init="trigger:[on-enter]"
-                    on-enter="anim:[slideInLeft:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
-					on-activate="spread-out:animIn:delay-2500"
+                <!--
+                    on-activate="spread-out:animIn:delay-2500"
                     on-hover="pulse"
                     when-color-dropdown-clicked="prop:[opacity:0]"
 
@@ -155,28 +152,81 @@
                     on-category-switch-exit="spread-in:animOut"
                     on-both-blanks-filled-enter="click-two:anim"
                     on-map-transition-enter="click-two:anim"
-
-                    ng-click="resetMadLibBlankIfActive"
-
-                    desktop="root.window.desktop" type="splash" blank-num="1" inner-text="option" category="madlib.category"
-                    ng-repeat='option in madlib.category.tags_data.blank_one_options'> </tag>
-                <tag class="adlib-tag"
-                    init-with="prop:[opacity:0]"
+                -->
+                <tag class='adlib-tag'
+					init-with="prop:[opacity:0]"
 					when-madlib-init="trigger:[on-enter]"
-                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3500]"
-					on-activate="spread-out:animIn:delay-2500"
-                    on-hover="pulse"
-
-                    elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-                    on-category-switch-enter="spread-out:anim"
-                    on-category-switch-exit="spread-in:animOut"
-                    on-both-blanks-filled-enter="click-two:anim"
-                    on-map-transition-enter="click-two:anim"
-
+                    on-enter="anim:[slideInLeft:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out]"
                     ng-click="resetMadLibBlankIfActive"
+                    type="splash" blank-num="1" inner-text="madlib.options.one[0]">
+                </tag>
+                <tag class='adlib-tag'
+                    init-with="prop:[opacity:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="anim:[slideInLeft:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out]"
+                    ng-click="resetMadLibBlankIfActive"
+                    type="splash" blank-num="1" inner-text="madlib.options.one[1]" >
+                </tag>
+                <tag class='adlib-tag'
+                    init-with="prop:[opacity:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="anim:[slideInLeft:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out]"
+                    ng-click="resetMadLibBlankIfActive"
+                    type="splash" blank-num="1" inner-text="madlib.options.one[2]">
+                </tag>
+                <tag class='adlib-tag'
+                    init-with="prop:[opacity:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="anim:[slideInLeft:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out]"
+                    ng-click="resetMadLibBlankIfActive"
+                    type="splash" blank-num="1" inner-text="madlib.options.one[3]">
+                </tag>
 
-                    desktop="root.window.desktop" type="splash" blank-num="2" inner-text="option" category="madlib.category"
-                    ng-repeat='option in madlib.category.tags_data.blank_two_options'> </tag>
+
+                <tag class='adlib-tag'
+                    init-with="prop:[opacity:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out]"
+                    ng-click="resetMadLibBlankIfActive"
+                    type="splash" blank-num="1" inner-text="madlib.options.two[0]">
+                </tag>
+                <tag class='adlib-tag'
+                    init-with="prop:[opacity:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out]"
+                    ng-click="resetMadLibBlankIfActive"
+                    type="splash" blank-num="1" inner-text="madlib.options.two[1]">
+                </tag>
+                <tag class='adlib-tag'
+                    init-with="prop:[opacity:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out]"
+                    ng-click="resetMadLibBlankIfActive"
+                    type="splash" blank-num="1" inner-text="madlib.options.two[2]">
+                </tag>
+                <tag class='adlib-tag'
+                    init-with="prop:[opacity:0]"
+                    when-madlib-init="trigger:[on-enter]"
+                    on-enter="anim:[slideInRight:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
+                    when-category-dropdown-click="trigger:[on-exit]"
+                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out]"
+                    ng-click="resetMadLibBlankIfActive"
+                    type="splash" blank-num="1" inner-text="madlib.options.two[3]">
+                </tag>
             </ul>
         </div>
     </div>

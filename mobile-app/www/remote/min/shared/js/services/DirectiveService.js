@@ -64,7 +64,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       } else {
           scope.root.public.customStates['when'][camelMsg] =scope.dropdown.options[index][attr[dataAttrName]];
       }
-
       console.log('sending message', dataAttrName, message, 'with data format', scope.root.public.customStates['when'][camelMsg])
     }
 
