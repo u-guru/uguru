@@ -19,19 +19,13 @@
 
 
                 <!-- device -->
-                <div
-                    init-default
-                    when-category-dropdown-toggle-on="prop:[opacity:0.5, transition: transform 500ms linear]"
-                    when-category-dropdown-toggle-off="prop:[opacity:1]"
-                    ng-if="splash.state.device" ng-include src="root.base_url + 'preapp/templates/splash.device.html'" include-replace>
+                <div ng-if="splash.state.device" ng-include src="root.base_url + 'preapp/templates/splash.device.html'" include-replace
+					init-default
+					when-category-dropdown-hover="prop:[opacity:0.25, transition:all 1000ms ease-in-out]">
                 </div>
 
                 <!-- Madlib -->
-                <div
-                    init-default
-                    when-category-dropdown-toggle-on="prop:[opacity:0.5, transition: transform 500ms linear]"
-                    when-category-dropdown-toggle-off="prop:[opacity:1]"
-                 ng-if="splash.state.madlib" ng-include src="root.base_url + 'preapp/templates/splash.madlib.html'" include-replace>
+                <div ng-if="splash.state.madlib" ng-include src="root.base_url + 'preapp/templates/splash.madlib.html'" include-replace>
                 </div>
 
                 <!-- Map -->
