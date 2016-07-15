@@ -35,7 +35,7 @@ angular.module('uguru.shared.directives.components')
                 }, function(new_classes, old_classes) {
                   if (new_classes && new_classes.indexOf('on-exit') > -1 || new_classes && new_classes.indexOf('on-enter') > -1 || new_classes && new_classes.indexOf('on-change') > -1) {
                     element[0].classList.remove('on-exit', 'on-change', 'on-enter');
-                    $compile(element)(scope.$parent);
+                    // $compile(element)(scope.$parent);
                   }
                 })
 
