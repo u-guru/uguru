@@ -156,6 +156,74 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive('onChange', ['$timeout', 'DirectiveService', '$parse', '$compile', function ($timeout, DirectiveService, $parse, $compile) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+
+
+        var elemArgs = DirectiveService.parseArgs(attr.onChange);
+
+        scope.$watch(function() {
+          return element.attr('class');
+        }, function(new_classes, old_classes) {
+          if (new_classes && new_classes.indexOf('on-change') > -1) {
+            console.log('onChange elem args', attr.onChange, elemArgs)
+            element[0].classList.remove('on-change');
+            // element[0].style.opacity = 0;
+            var formattedAttrOnChange = (attr.onChange + "").replace('[', '').replace(']', '');
+            var func = $parse(elemArgs.eval.functions[0].custom);
+            // element[0].style.opacity = 0;
+            element[0].style.display = 'none';
+            func(scope);
+            // $compile(element)(scope);
+            element[0].style.display = 'inherit';
+            $timeout(function() {
+              // element[0].style.opacity = 1;
+            // $compile(element)(scope);
+
+              element[0].classList.add('on-enter');
+              // element[0].style.opacity= 1;
+            }, 100)
+
+            // $timeout(function() {
+
+            //   // scope.$apply();
+
+            // })
+            // $timeout(function() {
+            //   element[0].style.opacity = 1;
+            // }, 100)
+            // $timeout(function() {
+            //   // scope.$apply();
+            //   element[0].style.opacity = 1;
+            // })
+            // for (key in elemArgs) {
+            //   if (supportedCommands.indexOf(key) > -1) {
+            //     DirectiveService.activateArg(key, elemArgs[key], scope, element);
+            //   }
+            // }
+          }
+        });
+        // var elemArgs = DirectiveService.parseArgs(attr.onChange);
+        // var supportedCommands = DirectiveService.supportedCommands;
+        // scope.$watch(function() {
+        //   return element.attr('class');
+        // }, function(new_classes, old_classes) {
+        //   if (new_classes && new_classes.indexOf('on-enter') > -1) {
+        //     element[0].classList.remove('on-enter');
+        //     for (key in elemArgs) {
+        //       if (supportedCommands.indexOf(key) > -1) {
+        //         DirectiveService.activateArg(key, elemArgs[key], scope, element);
+        //       }
+        //     }
+        //   }
+        // });
+      }
+    }
+  }
+}])
 .directive('onExit', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',

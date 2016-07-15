@@ -12,20 +12,20 @@ angular.module('uguru.preApp')
 
 
 
-    $scope.$watch('splash.state.device', function(newVal, oldVal) {
-      if (newVal) {
-        var parentViewElement = document.querySelector('#splash-madlib');
-        var allActivateElements = parentViewElement.querySelectorAll('[on-activate]');
-        for (var i = 0; i < allActivateElements.length; i++) {
-          allActivateElements[i].classList.add('activate');
-        }
-      }
-      $timeout(function() {
-        $scope.$apply();
-      })
-    })
+    // $scope.$watch('splash.state.device', function(newVal, oldVal) {
+    //   if (newVal) {
+    //     var parentViewElement = document.querySelector('#splash-madlib');
+    //     var allActivateElements = parentViewElement.querySelectorAll('[on-activate]');
+    //     for (var i = 0; i < allActivateElements.length; i++) {
+    //       allActivateElements[i].classList.add('activate');
+    //     }
+    //   }
+    //   $timeout(function() {
+    //     $scope.$apply();
+    //   })
+    // })
 
-    SpecService.initSpec('device', $scope);
+    // SpecService.initSpec('device', $scope);
   }
 ])
 

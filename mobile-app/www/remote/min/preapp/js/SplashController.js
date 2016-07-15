@@ -53,7 +53,6 @@ angular.module('uguru.preApp', ['ionic'])
         if (loaderPortal) {
           loaderPortal.style.display = 'none';
           loaderPortal.parentNode.removeChild(loaderPortal);
-
         }
 
         document.querySelector('#loader-wrapper .pageload-overlay svg.transition').style.visibility = "visible";
