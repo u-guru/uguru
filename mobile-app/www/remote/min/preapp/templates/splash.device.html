@@ -73,9 +73,11 @@
 			</svg>
 			<svg class="sheen" width="275px" height="493px" viewBox="0 0 275 493">
 				<path d="M126.105593,-284.632628 L-361.549102,340.662617 L-427.177151,289.34977 L60.4775445,-335.945475 L126.105593,-284.632628 L126.105593,-284.632628 L126.105593,-284.632628 Z M192.493543,-232.764677 L-295.356199,392.378181 L-337.538971,359.382791 L150.31077,-265.760066 L192.493543,-232.764677 L192.493543,-232.764677 L192.493543,-232.764677 Z M48.5411353,-345.232624 L-439.562167,279.712131 L-451.26608,270.529436 L36.8372219,-354.415319 L48.5411353,-345.232624 L48.5411353,-345.232624 L48.5411353,-345.232624 Z" fill="#FFFFFF"
-					init-with="prop:[transform:translate3d(-10px#-10px#0), transition:250ms cubic-bezier(.6#.19#1#.61)]"
+					init-with="prop:[tr:translate3d(-10px#-10px#0), t:250ms cubic-bezier(.6#.19#1#.61)]"
 					when-device-init="trigger:[on-enter]"
-					on-enter="prop:[transform:translate3d(625px#1018px#0)]:delay-4900"></path>
+					on-enter="prop:[tr:translate3d(625px#1018px#0)]:delay-4900"
+					when-category-dropdown-hover="prop:[tr:translate3d(-10px#-10px#0):delay-50, t:0ms]"
+					when-category-dropdown-toggle-off="prop:[tr:translate3d(625px#1018px#0):delay-150, t:250ms cubic-bezier(.6#.19#1#.61)]"></path>
 			</svg>
         </div>
         <div class="splash-device-profile" ng-if="false" ng-include="root.base_url + 'shared/templates/guru.profile.html'"></div>

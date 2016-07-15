@@ -125,6 +125,13 @@
 	100% { transform: scale(2.9, 2.9); opacity: 0; }
 }
 
+@keyframes reverb {
+	10%, 90% { transform: translate3d(-1px, 0, 0); }
+	20%, 80% { transform: translate3d(2px, 0, 0);  }
+	30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+	40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
 @keyframes echo-loader-main {
 	0% { stroke-dashoffset: 629; stroke: rgb(116, 187, 174); }
 	10% { stroke: rgb(49, 187, 192); }

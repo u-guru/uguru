@@ -5,6 +5,13 @@
         <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()">
             <section id='splash-home' class='splash-hero'>
 
+				<div class="absolute top-0 left-0 full-xy">
+					<div class="full-xy"
+						init-default
+						init-with="prop:[op:.25, bg:transparent, t:all 150ms ease-in-out]"
+						when-category-dropdown-click="prop:[bg:^hex_color]"></div>
+				</div>
+
                 <!-- @gabrielle-note, study this complex example to see what's goign on-->
                 <!-- <div
                     on-init="prop:[opacity:0, z-index:1000, transition:opacity 1500ms ease:delay-1500, opacity:1:delay-2000]:delay-1000 | class:[add:opacity-0-impt:delay-5500]"
