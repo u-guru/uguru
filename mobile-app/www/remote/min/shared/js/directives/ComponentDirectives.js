@@ -26,7 +26,20 @@ angular.module('uguru.shared.directives.components')
             restrict: 'E',
             replace: true,
             link: {pre: function(scope, element, attr) {
-                scope.innerText == attr.innerText;
+                // scope.innerText == attr.innerText;
+                scope.root = scope.$parent.root;
+
+                // scope.watch()
+                scope.$parent.$watch(function() {
+                  return element.attr('class');
+                }, function(new_classes, old_classes) {
+                  if (new_classes && new_classes.indexOf('on-exit') > -1 || new_classes && new_classes.indexOf('on-enter') > -1 || new_classes && new_classes.indexOf('on-change') > -1) {
+                    element[0].classList.remove('on-exit', 'on-change', 'on-enter');
+                    $compile(element)(scope.$parent);
+                  }
+                })
+
+
                 if (attr.type && attr.type.toLowerCase() === 'splash') {
                     scope.type = 'splash';
                 }
@@ -115,8 +128,9 @@ angular.module('uguru.shared.directives.components')
                         scope.dropdown.selectedIndex = index;
                     }
 
-                    if (index !== scope.dropdownIndex) {
+                    if (index !== scope.dropdown.selectedIndex) {
                         scope.dropdown.selectedRecentlyChanged = true;
+                        scope.toggle();
                         $timeout(function() {
                             scope.dropdown.selectedRecentlyChanged = false;
                         }, 1000)
@@ -135,7 +149,6 @@ angular.module('uguru.shared.directives.components')
                         DirectiveService.sendMessage(scope, 'send', 'click', attr, scope.prefix + '-dropdown-click', scope.dropdown.selectedIndex);
                     }
 
-                    scope.toggle();
                 }
 
                 if (scope.states && scope.states.indexOf('hover') > -1) {
