@@ -47,7 +47,7 @@
             <li ng-if='$index !== dropdown.selectedIndex' ng-repeat='option in dropdown.options'>
 				<div></div><div></div>
 				<div></div><div></div>
-                <a class="color" ng-click="click(option, $index)" ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', $index)" on-click="send:[{{prefix}}-dropdown-hover]">
+                <a class="color" ng-click="click(option, $index)" ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', $index)">
 					<div class="dropdown-color-bg" ng-style="{'background-color': (dropdown.options[$index][colorKey[0]] || dropdown.options[$index][colorKey[1]])}"></div>
                     <span>{{(dropdown.key && option[dropdown.key]) || option}}</span>
                 </a>

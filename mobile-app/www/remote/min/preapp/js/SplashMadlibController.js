@@ -20,15 +20,15 @@ angular.module('uguru.preApp')
 
 
 
-    madlib.onEnter = function() {
+    // madlib.onEnter = function() {
 
-      if ($scope.splash && !$scope.splash.state) {
-        $scope.$watch('splash.state.madlib', function(newVal, oldVal) { newVal && madlib.activate() && $timeout(function() {$scope.$apply()})});
-      } else {
-        madlib.activate();
-      }
+    //   if ($scope.splash && !$scope.splash.state) {
+    //     $scope.$watch('splash.state.madlib', function(newVal, oldVal) { newVal && madlib.activate() && $timeout(function() {$scope.$apply()})});
+    //   } else {
+    //     madlib.activate();
+    //   }
 
-    };
+    // };
 
     madlib.activate = function() {
       madlib.activated = true;
@@ -38,6 +38,16 @@ angular.module('uguru.preApp')
         allActivateElements[i].classList.add('activate');
       }
     };
+
+    madlib.updateOptionByIndex = function(category, index, cb) {
+      var blankNum = 'one';
+      if (index > 3) {
+        blankNum = 'two';
+        index = index - 4
+      }
+      var newElem = ContentService.splashCategoryOptions[category.name].madlib['blank_' + blankNum + '_options'][index];
+      madlib.options[blankNum][index] = newElem;
+    }
 
     madlib.minifyForMap = function() {};
 
@@ -55,10 +65,10 @@ angular.module('uguru.preApp')
     //   // }
     // }
 
-    $scope.$watch('splash.category', function(newVal, oldVal) {
-        madlib.category = newVal;
-        madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
-    })
+    // $scope.$watch('splash.category', function(newVal, oldVal) {
+    //     madlib.category = newVal;
+    //     madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
+    // })
 
 
     //todo samir
@@ -74,9 +84,9 @@ angular.module('uguru.preApp')
     }
     // SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states, 'preapp/css/scss/partials/adlib/_main.scss');
     SpecService.initSpec('madlib', $scope);
-    $timeout(function() {
-          $scope.root.devMode && madlib.onEnter();
-    }, 2000);
+    // $timeout(function() {
+    //       $scope.root.devMode && madlib.onEnter();
+    // }, 2000);
 
 
 
