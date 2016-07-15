@@ -230,12 +230,8 @@
                     when-madlib-init="trigger:[on-enter]"
                     on-enter="anim:[bounceIn-subtle:set:(animation-duration:1s):in] | prop:[opacity:1:delay-3000]"
                     when-category-dropdown-click="trigger:[on-exit]"
-<<<<<<< HEAD
-                    on-exit="anim:[zoomOut:set:(animation-duration:1s):out:after:(trigger:on-change:public:delay-500)]"
+                    on-exit="anim:[bounceOut-subtle:set:(animation-duration:1s):out:after:(trigger:on-change:public:delay-500)]"
                     on-change="trigger:[on-enter]"
-=======
-                    on-exit="anim:[bounceOut-subtle:set:(animation-duration:1s):out]"
->>>>>>> 3097561ed115c91f448a8f034488685aced485b7
                     ng-click="resetMadLibBlankIfActive"
                     type="splash" blank-num="1" inner-text="madlib.options.one[3]">
                 </tag>
