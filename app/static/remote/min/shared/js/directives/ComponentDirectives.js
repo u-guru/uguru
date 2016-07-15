@@ -22,11 +22,24 @@ angular.module('uguru.shared.directives.components')
                 animArgs: '=',
                 placeholder: '@',
                 desktopMode: '=desktop',
-                click: "=ngClick"
             },
             restrict: 'E',
             replace: true,
-            link: function(scope, element, attr) {
+            link: {pre: function(scope, element, attr) {
+                // scope.innerText == attr.innerText;
+                scope.root = scope.$parent.root;
+
+                // scope.watch()
+                scope.$parent.$watch(function() {
+                  return element.attr('class');
+                }, function(new_classes, old_classes) {
+                  if (new_classes && new_classes.indexOf('on-exit') > -1 || new_classes && new_classes.indexOf('on-enter') > -1 || new_classes && new_classes.indexOf('on-change') > -1) {
+                    element[0].classList.remove('on-exit', 'on-change', 'on-enter');
+                    $compile(element)(scope.$parent);
+                  }
+                })
+
+
                 if (attr.type && attr.type.toLowerCase() === 'splash') {
                     scope.type = 'splash';
                 }
@@ -62,6 +75,7 @@ angular.module('uguru.shared.directives.components')
                 }
 
             }
+            }
         }
     }])
     .directive("dropdown", ['$timeout', 'RootService', 'UtilitiesService', 'DirectiveService', function($timeout, RootService, UtilitiesService, DirectiveService) {
@@ -88,6 +102,7 @@ angular.module('uguru.shared.directives.components')
                     scope.states = scope.states && scope.states.split(',')
                 }
                 attr.$set('initWith', attr.initWith);
+                scope.dropdown.selectedRecentlyChanged = false;
                 scope.root = scope.$parent.root;
 
                 if (!scope.size) {
@@ -113,6 +128,14 @@ angular.module('uguru.shared.directives.components')
                         scope.dropdown.selectedIndex = index;
                     }
 
+                    if (index !== scope.dropdown.selectedIndex) {
+                        scope.dropdown.selectedRecentlyChanged = true;
+                        scope.toggle();
+                        $timeout(function() {
+                            scope.dropdown.selectedRecentlyChanged = false;
+                        }, 1000)
+                    }
+
                     $timeout(function() {
                         scope.$apply();
                     })
@@ -122,10 +145,10 @@ angular.module('uguru.shared.directives.components')
                     }
 
                     if (scope.states && scope.states.indexOf('click') > -1) {
+                        console.log('sending click message', element)
                         DirectiveService.sendMessage(scope, 'send', 'click', attr, scope.prefix + '-dropdown-click', scope.dropdown.selectedIndex);
                     }
 
-                    scope.toggle();
                 }
 
                 if (scope.states && scope.states.indexOf('hover') > -1) {
@@ -135,15 +158,22 @@ angular.module('uguru.shared.directives.components')
                 }
 
                 scope.toggle = function($event, index) {
-                    scope.dropdown.active = !scope.dropdown.active;
-                    if (scope.dropdown.active) {
-                        DirectiveService.sendMessage(scope, 'send', 'toggle-on', attr, scope.prefix + '-dropdown-toggle-on', scope.dropdown.selectedIndex);
-                    } else {
-                        DirectiveService.sendMessage(scope, 'send', 'toggle-off', attr, scope.prefix + '-dropdown-toggle-off', scope.dropdown.selectedIndex);
-                    }
-                    if (scope.dropdown.onToggle) {
-                        scope.dropdown.onToggle(scope.dropdown.active);
-                    }
+                    $timeout(function() {
+                        scope.dropdown.active = !scope.dropdown.active;
+
+                        if (scope.dropdown.selectedRecentlyChanged) {
+                            return false;
+                        }
+
+                        if (scope.dropdown.active) {
+                            DirectiveService.sendMessage(scope, 'send', 'toggle-on', attr, scope.prefix + '-dropdown-toggle-on', scope.dropdown.selectedIndex);
+                        } else {
+                            DirectiveService.sendMessage(scope, 'send', 'toggle-off', attr, scope.prefix + '-dropdown-toggle-off', scope.dropdown.selectedIndex);
+                        }
+                        if (scope.dropdown.onToggle) {
+                            scope.dropdown.onToggle(scope.dropdown.active);
+                        }
+                    })
                 }
             }
             }
