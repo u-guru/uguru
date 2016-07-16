@@ -3952,57 +3952,42 @@ a[class*="-container"]:hover .map-stadium-outside {
     display: none !important; }
   .projector-school-search .projector-school-search-form {
     display: block; } }
-/* http://goo.gl/OuZtZw */
+/* http://goo.gl/QGYxZQ */
 @keyframes projectorInDown {
   0% {
     transform: matrix3d(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 0; }
-  4.3% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0.408, 0, 0, 0, 0, 1, 0, 0, -19.838, 0, 1); }
   4.7% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, -19.95, 0, 1); }
-  8.61% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0.82, 0, 0, 0, 0, 1, 0, 0, -9.955, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, -24.747, 0, 1); }
   9.41% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, -6.691, 0, 1); }
-  12.91% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1.094, 0, 0, 0, 0, 1, 0, 0, 5.721, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, -10.296, 0, 1); }
   14.11% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 8.423, 0, 1); }
-  17.22% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1.205, 0, 0, 0, 0, 1, 0, 0, 11.25, 0, 1);
-    opacity: 1; }
+    transform: matrix3d(1, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 16.076, 0, 1); }
   18.72% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 10.909, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 25.71, 0, 1);
+    opacity: 1; }
   24.32% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 5.685, 0, 1); }
-  28.33% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1.075, 0, 0, 0, 0, 1, 0, 0, 2.218, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 17.321, 0, 1); }
   29.93% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 1.266, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 4.985, 0, 1); }
   35.54% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, -0.396, 0, 1); }
-  39.44% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0.962, 0, 0, 0, 0, 1, 0, 0, -0.599, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, -2.015, 0, 1); }
   41.04% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, -0.575, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, -3.764, 0, 1); }
   52.15% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, -0.08, 0, 1); }
-  61.66% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0.042, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, -0.871, 0, 1); }
   63.26% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0.04, 0, 1); }
-  83.98% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, -0.003, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0.729, 0, 1); }
   85.49% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, -0.003, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, -0.134, 0, 1); }
   100% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 1; } }
 /* http://goo.gl/auuhcg */
 @keyframes projectorIn {
   0% {
-    transform: matrix3d(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 0; }
   4.7% {
     transform: matrix3d(1, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   9.41% {
@@ -4010,7 +3995,8 @@ a[class*="-container"]:hover .map-stadium-outside {
   14.11% {
     transform: matrix3d(1, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   18.72% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; }
   24.32% {
     transform: matrix3d(1, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   29.93% {
@@ -4026,7 +4012,8 @@ a[class*="-container"]:hover .map-stadium-outside {
   85.49% {
     transform: matrix3d(1, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   100% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; } }
 /* http://goo.gl/rOvdIb */
 @keyframes guru-proj-enter {
   0% {
@@ -4434,11 +4421,6 @@ a[class*="-container"]:hover .map-stadium-outside {
         width: 30%; }
 
 #powerups {
-  -webkit-animation-duration: 250ms !important;
-  -moz-animation-duration: 250ms !important;
-  -ms-animation-duration: 250ms !important;
-  -o-animation-duration: 250ms !important;
-  animation-duration: 250ms !important;
   overflow: auto; }
   #powerups header span svg circle {
     fill: #F6C64E;
@@ -4456,12 +4438,6 @@ a[class*="-container"]:hover .map-stadium-outside {
       padding-bottom: 35px; }
       #powerups ul li a {
         position: relative; }
-        #powerups ul li a.fadeOut {
-          -webkit-animation-duration: 500ms !important;
-          -moz-animation-duration: 500ms !important;
-          -ms-animation-duration: 500ms !important;
-          -o-animation-duration: 500ms !important;
-          animation-duration: 500ms !important; }
         #powerups ul li a:before {
           border-radius: 1000px;
           content: "";
@@ -4490,25 +4466,6 @@ a[class*="-container"]:hover .map-stadium-outside {
             transition: all 150ms ease-in-out;
             position: absolute;
             bottom: -35px; }
-          #powerups ul li a > div [class*="container-outline-track"] {
-            -webkit-transform-origin: center;
-            -moz-transform-origin: center;
-            -ms-transform-origin: center;
-            -o-transform-origin: center;
-            transform-origin: center;
-            -webkit-transform: rotateY(180deg);
-            -moz-transform: rotateY(180deg);
-            -ms-transform: rotateY(180deg);
-            -o-transform: rotateY(180deg);
-            transform: rotateY(180deg); }
-            #powerups ul li a > div [class*="container-outline-track"].active {
-              -webkit-animation: powerup-loader 2000ms ease-in-out forwards;
-              -moz-animation: powerup-loader 2000ms ease-in-out forwards;
-              -ms-animation: powerup-loader 2000ms ease-in-out forwards;
-              -o-animation: powerup-loader 2000ms ease-in-out forwards;
-              animation: powerup-loader 2000ms ease-in-out forwards;
-              stroke-dasharray: 378;
-              stroke-dashoffset: 378; }
         #powerups ul li a#powerup-gpa-container:before {
           background: #79c5cd; }
         #powerups ul li a#powerup-munchies-container:before {
@@ -4961,6 +4918,21 @@ a[class*="-container"]:hover .map-stadium-outside {
     background: #637074;
     border: #637074; }
 
+@keyframes powerup-loader {
+  0% {
+    stroke: white;
+    stroke-dashoffset: 378; }
+  20% {
+    stroke: #70b2ba; }
+  40% {
+    stroke: #d68677; }
+  60% {
+    stroke: #9c89cb; }
+  80% {
+    stroke: #85be9a; }
+  100% {
+    stroke: white;
+    stroke-dashoffset: 0; } }
 @keyframes sign-equal-hover {
   0% {
     transform: rotate(0deg); }
