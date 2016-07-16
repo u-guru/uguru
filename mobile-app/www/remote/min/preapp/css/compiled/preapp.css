@@ -3892,24 +3892,6 @@ a[class*="-container"]:hover .map-stadium-outside {
       .projector-school-search .projector-school-search-form .projector-school-results li {
         width: 25%;
         padding: 15px; }
-  .projector-school-search .projector-map-stats {
-    z-index: 2;
-    background: -moz-linear-gradient(top, rgba(64, 72, 75, 0) 0%, #40484b 50%, #40484b 100%);
-    background: -webkit-linear-gradient(top, rgba(64, 72, 75, 0) 0%, #40484b 50%, #40484b 100%);
-    background: linear-gradient(to bottom, rgba(64, 72, 75, 0) 0%, #40484b 50%, #40484b 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0040484b', endColorstr='$slate',GradientType=0 ); }
-    .projector-school-search .projector-map-stats > ul {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex; }
-      .projector-school-search .projector-map-stats > ul li h4 {
-        color: #b3bbbe;
-        font-weight: 600;
-        text-transform: uppercase; }
   @media screen and (max-width: 768px) {
     .projector-school-search header {
       position: absolute;
@@ -3958,28 +3940,7 @@ a[class*="-container"]:hover .map-stadium-outside {
         width: 0;
         height: 0;
         border: 15px solid transparent;
-        border-bottom: 15px solid rgba(99, 112, 116, 0.9); }
-    .projector-school-search .projector-map-stats {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 20px 0 0; }
-      .projector-school-search .projector-map-stats > div {
-        display: none; }
-      .projector-school-search .projector-map-stats > ul {
-        padding: 7.5px; }
-        .projector-school-search .projector-map-stats > ul li {
-          width: 50%;
-          padding: 7.5px;
-          text-align: center; }
-          .projector-school-search .projector-map-stats > ul li h4 {
-            font-size: 12px; }
-            .projector-school-search .projector-map-stats > ul li h4 span:first-child {
-              display: none !important; }
-          .projector-school-search .projector-map-stats > ul li h2 {
-            font-size: 18px;
-            font-weight: 600; } }
+        border-bottom: 15px solid rgba(99, 112, 116, 0.9); } }
   @media screen and (max-width: 320px) {
     .projector-school-search header h1 {
       font-size: 18px; } }
@@ -3990,43 +3951,7 @@ a[class*="-container"]:hover .map-stadium-outside {
   .projector-school-search > header {
     display: none !important; }
   .projector-school-search .projector-school-search-form {
-    display: block; }
-  .projector-school-search .projector-map-stats {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: flex-end;
-    justify-content: flex-end;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%; }
-    .projector-school-search .projector-map-stats > * h1 {
-      font-size: 36px;
-      font-weight: 600; }
-    .projector-school-search .projector-map-stats > * h4 span {
-      display: block !important; }
-      .projector-school-search .projector-map-stats > * h4 span:first-child {
-        font-size: 18px; }
-      .projector-school-search .projector-map-stats > * h4 span:last-child {
-        font-size: 24px; }
-    .projector-school-search .projector-map-stats > * h2 {
-      font-size: 28px;
-      font-weight: 700; }
-    .projector-school-search .projector-map-stats > div {
-      padding: 15px; }
-    .projector-school-search .projector-map-stats > ul {
-      padding: 7.5px; }
-      .projector-school-search .projector-map-stats > ul li {
-        padding: 7.5px; } }
+    display: block; } }
 .projector-courses {
   padding-top: 50px; }
   .projector-courses .backpack {

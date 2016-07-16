@@ -61,7 +61,7 @@
                 init-with="prop:[op:0]"
 				when-madlib-init="t-enter"
                 on-enter="anim:[bounceInUp-subtle:set:(dur:1000ms):delay-1250:in]">
-                <h1 class="adlib-header desktop" ng-if='root.window.desktop'>
+                <h1 class="adlib-header desktop">
 					<!-- elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
 					on-category-switch-exit="inactive-adlib-header:anim" -->
                     <span init-with="prop:[tr:translate3d(40px#0#0)]"
@@ -134,7 +134,7 @@
 						when-madlib-init="t-enter"
 						on-enter="prop:[tr:none, t:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.end}}</span>
                 </h1>
-				<h1 class="adlib-header mobile" ng-if='root.window.mobile'>
+				<h1 class="adlib-header mobile">
 					<!-- elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
 					on-category-switch-exit="inactive-adlib-header:anim" -->
                     <span init-with="prop:[tr:translate3d(48px#0#0)]"

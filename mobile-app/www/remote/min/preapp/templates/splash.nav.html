@@ -67,16 +67,10 @@
                     </div>
                 </div>
 				<div class="splash-hero-nav mobile"
-					init-default
-					when-category-dropdown-mouse-enter="prop:[op:0.25, t:all 250ms ease-in-out]"
-	                when-category-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
-					when-category-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]"
-					when-university-dropdown-mouse-enter="prop:[op:0.1, t:all 250ms ease-in-out]"
-					when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
-					when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]"
 					init-with="p-op"
 					when-nav-init="t-enter"
-					on-enter="prop:[op:1, t:all 1000ms ease-out]:delay-1500">
+					on-enter="prop:[op:1, t:all 1000ms ease-out]:delay-1500"
+					on-click="send:[mobile-switch-init:public]">
                     <!-- class-on-load="slideInDown" class-on-load-delay="450" -->
                     <div class="splash-hero-nav-container">
                         <a class-on-click="a:inject.splash-hero-nav-schools|a" ng-click='page.dropdowns.university.toggle()'>
@@ -218,12 +212,15 @@
         </header>
 
          <!--Mobile Nav-->
-         <div id="splash-hero-nav-mobile" ng-class="{'visible z-index-999':page.dropdowns.university.active, 'invisible': !page.dropdowns.university.active}">
+         <div id="splash-hero-nav-mobile"
+		 	init-with="prop:[op:0]"
+			when-mobile-switch-init="t-enter"
+			on-enter="">
             <div class="splash-hero-nav-category">
                 <h1>Category</h1>
                 <ul>
                     <li ng-repeat='category in categories'>
-                        <a class="bg-{{category.hex_color}}" ng-click='demoSwitchCategory(category, selectedUniversity)' ng-class="{'active':category.id == selectedCategory.id}">
+                        <a class="bg-{{category.bg_hex_color}}" ng-click='demoSwitchCategory(category, selectedUniversity)' ng-class="{'active':category.id == selectedCategory.id}">
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
                             <span>{{category.name}}</span>
                         </a>
