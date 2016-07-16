@@ -73,100 +73,100 @@
 				// }
 			}
 		}
-		.adlib-tag.spread-out {
-			&:nth-child(1) {
-				animation: spread-out-tag-1 1000ms linear 1500ms both;
-			}
-			&:nth-child(2) {
-				animation: spread-out-tag-2 1000ms linear 1550ms both;
-			}
-			&:nth-child(3) {
-				animation: spread-out-tag-3 1000ms linear 1600ms both;
-			}
-			&:nth-child(4) {
-				animation: spread-out-tag-4 1000ms linear 1650ms both;
-			}
-			&:nth-child(5) {
-				animation: spread-out-tag-5 1000ms linear 1850ms both;
-			}
-			&:nth-child(6) {
-				animation: spread-out-tag-6 1000ms linear 1800ms both;
-			}
-			&:nth-child(7) {
-				animation: spread-out-tag-7 1000ms linear 1750ms both;
-			}
-			&:nth-child(8) {
-				animation: spread-out-tag-8 1000ms linear 1700ms both;
-			}
-		}
-		.adlib-tag.spread-in {
-			&:nth-child(1) {
-				animation: spread-in-tag-1 1000ms linear 500ms both;
-			}
-			&:nth-child(2) {
-				animation: spread-in-tag-2 1000ms linear 550ms both;
-			}
-			&:nth-child(3) {
-				animation: spread-in-tag-3 1000ms linear 600ms both;
-			}
-			&:nth-child(4) {
-				animation: spread-in-tag-4 1000ms linear 650ms both;
-			}
-			&:nth-child(5) {
-				animation: spread-in-tag-5 1000ms linear 850ms both;
-			}
-			&:nth-child(6) {
-				animation: spread-in-tag-6 1000ms linear 800ms both;
-			}
-			&:nth-child(7) {
-				animation: spread-in-tag-7 1000ms linear 750ms both;
-			}
-			&:nth-child(8) {
-				animation: spread-in-tag-8 1000ms linear 700ms both;
-			}
-		}
-		.adlib-tag.click-two {
-			&:nth-child(1) {
-				.tag-adlib:first-child:not(.active) {
-					animation: spread-in-tag-1 1000ms linear 500ms both;
-				}
-			}
-			&:nth-child(2) {
-				.tag-adlib:first-child:not(.active) {
-					animation: spread-in-tag-2 1000ms linear 550ms both;
-				}
-			}
-			&:nth-child(3) {
-				.tag-adlib:first-child:not(.active) {
-					animation: spread-in-tag-3 1000ms linear 600ms both;
-				}
-			}
-			&:nth-child(4) {
-				.tag-adlib:first-child:not(.active) {
-					animation: spread-in-tag-4 1000ms linear 650ms both;
-				}
-			}
-			&:nth-child(5) {
-				.tag-adlib:first-child:not(.active) {
-					animation: spread-in-tag-5 1000ms linear 850ms both;
-				}
-			}
-			&:nth-child(6) {
-				.tag-adlib:first-child:not(.active) {
-					animation: spread-in-tag-6 1000ms linear 800ms both;
-				}
-			}
-			&:nth-child(7) {
-				.tag-adlib:first-child:not(.active) {
-					animation: spread-in-tag-7 1000ms linear 750ms both;
-				}
-			}
-			&:nth-child(8) {
-				.tag-adlib:first-child:not(.active) {
-					animation: spread-in-tag-8 1000ms linear 700ms both;
-				}
-			}
-		}
+		// .adlib-tag.spread-out {
+		// 	&:nth-child(1) {
+		// 		animation: spread-out-tag-1 1000ms linear 1500ms both;
+		// 	}
+		// 	&:nth-child(2) {
+		// 		animation: spread-out-tag-2 1000ms linear 1550ms both;
+		// 	}
+		// 	&:nth-child(3) {
+		// 		animation: spread-out-tag-3 1000ms linear 1600ms both;
+		// 	}
+		// 	&:nth-child(4) {
+		// 		animation: spread-out-tag-4 1000ms linear 1650ms both;
+		// 	}
+		// 	&:nth-child(5) {
+		// 		animation: spread-out-tag-5 1000ms linear 1850ms both;
+		// 	}
+		// 	&:nth-child(6) {
+		// 		animation: spread-out-tag-6 1000ms linear 1800ms both;
+		// 	}
+		// 	&:nth-child(7) {
+		// 		animation: spread-out-tag-7 1000ms linear 1750ms both;
+		// 	}
+		// 	&:nth-child(8) {
+		// 		animation: spread-out-tag-8 1000ms linear 1700ms both;
+		// 	}
+		// }
+		// .adlib-tag.spread-in {
+		// 	&:nth-child(1) {
+		// 		animation: spread-in-tag-1 1000ms linear 500ms both;
+		// 	}
+		// 	&:nth-child(2) {
+		// 		animation: spread-in-tag-2 1000ms linear 550ms both;
+		// 	}
+		// 	&:nth-child(3) {
+		// 		animation: spread-in-tag-3 1000ms linear 600ms both;
+		// 	}
+		// 	&:nth-child(4) {
+		// 		animation: spread-in-tag-4 1000ms linear 650ms both;
+		// 	}
+		// 	&:nth-child(5) {
+		// 		animation: spread-in-tag-5 1000ms linear 850ms both;
+		// 	}
+		// 	&:nth-child(6) {
+		// 		animation: spread-in-tag-6 1000ms linear 800ms both;
+		// 	}
+		// 	&:nth-child(7) {
+		// 		animation: spread-in-tag-7 1000ms linear 750ms both;
+		// 	}
+		// 	&:nth-child(8) {
+		// 		animation: spread-in-tag-8 1000ms linear 700ms both;
+		// 	}
+		// }
+		// .adlib-tag.click-two {
+		// 	&:nth-child(1) {
+		// 		.tag-adlib:first-child:not(.active) {
+		// 			animation: spread-in-tag-1 1000ms linear 500ms both;
+		// 		}
+		// 	}
+		// 	&:nth-child(2) {
+		// 		.tag-adlib:first-child:not(.active) {
+		// 			animation: spread-in-tag-2 1000ms linear 550ms both;
+		// 		}
+		// 	}
+		// 	&:nth-child(3) {
+		// 		.tag-adlib:first-child:not(.active) {
+		// 			animation: spread-in-tag-3 1000ms linear 600ms both;
+		// 		}
+		// 	}
+		// 	&:nth-child(4) {
+		// 		.tag-adlib:first-child:not(.active) {
+		// 			animation: spread-in-tag-4 1000ms linear 650ms both;
+		// 		}
+		// 	}
+		// 	&:nth-child(5) {
+		// 		.tag-adlib:first-child:not(.active) {
+		// 			animation: spread-in-tag-5 1000ms linear 850ms both;
+		// 		}
+		// 	}
+		// 	&:nth-child(6) {
+		// 		.tag-adlib:first-child:not(.active) {
+		// 			animation: spread-in-tag-6 1000ms linear 800ms both;
+		// 		}
+		// 	}
+		// 	&:nth-child(7) {
+		// 		.tag-adlib:first-child:not(.active) {
+		// 			animation: spread-in-tag-7 1000ms linear 750ms both;
+		// 		}
+		// 	}
+		// 	&:nth-child(8) {
+		// 		.tag-adlib:first-child:not(.active) {
+		// 			animation: spread-in-tag-8 1000ms linear 700ms both;
+		// 		}
+		// 	}
+		// }
 	}
 }
 

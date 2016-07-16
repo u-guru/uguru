@@ -33,6 +33,8 @@
         <prop-shortcut replace="animation-timing-function" with="func"/>
         <prop-shortcut replace="animation-iteration-count" with="aic"/>
         <prop-shortcut replace="animation-iteration-count" with="count"/>
+        <prop-shortcut replace="animation-direction" with="ad"/>
+        <prop-shortcut replace="animation-direction" with="dir"/>
 
         <!--Most general-->
         <!-- Since p->prop is defined already (since rendered top-to-bottom), this would work too:
@@ -42,5 +44,7 @@
         <cmd-shortcut replace="prop:[op:0, z-index:-1000]" with="backstage"/>
 		<cmd-shortcut replace="prop:[op:0]" with="p-op"/>
 		<cmd-shortcut replace="trigger:[on-enter]" with="t-enter"/>
+		<cmd-shortcut replace="trigger:[on-exit]" with="t-exit"/>
+		<cmd-shortcut replace="prop:[op:1, t:all 500ms ease-in-out]" with "p-fadereturn"/>
     </custom-shortcuts>
 </ion-nav-view>
