@@ -565,7 +565,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (custom_str && custom_str.indexOf('set:') > -1) {
             var setString = custom_str + "";
             setString = setString.split('set:(')[1];
-            var endParenthesis = setString.indexOf('):') || setString.indexOf('),');
+            var endParenthesis = setString.indexOf('):') || setString.indexOf('),') || setString.indexOf(')');
             setString = setString.substring(0, endParenthesis);
             custom_dict.set = processSetExtraArgs(setString);
 
@@ -786,7 +786,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (custom_str.indexOf('set:') > -1) {
           var setString = custom_str + "";
           setString = setString.split('set:(')[1];
-          var endParenthesis = setString.indexOf('):') || setString.indexOf('),');
+          var endParenthesis = setString.indexOf('):') || setString.indexOf('),') || setString.indexOf(')');
           setString = setString.substring(0, endParenthesis);
           custom_dict.set = processSetExtraArgs(setString);
         }
