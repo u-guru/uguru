@@ -15422,6 +15422,17 @@ input[type=range] {
     transform: translateY(-10px); }
   100% {
     transform: translateY(0); } }
+.guru-head {
+  position: relative; }
+  .guru-head .guru-head-switcher {
+    position: absolute;
+    top: 50%;
+    margin-top: -100px;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
+    height: 200px; }
+
 .guru-head-switcher {
   width: 200px;
   height: 200px; }
