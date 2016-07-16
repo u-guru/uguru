@@ -5,15 +5,20 @@
 	<custom-states when="device-init"></custom-states>
     <div class="splash-device splash-device-iphone">
         <div class="splash-device-svg iphone-device"
-			init-with="prop:[opacity:0, transform:rotateZ(30deg) rotateY(-90deg), transition:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
-			when-device-init="trigger:[on-enter]"
-			on-enter="prop:[opacity:1, transform:rotateZ(0deg) rotateY(0deg)]:delay-1000">
+			init-with="prop:[op:0, tr:rotateZ(30deg) rotateY(-90deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
+			when-device-init="t-enter"
+			on-enter="prop:[op:1, tr:rotateZ(0deg) rotateY(0deg)]:delay-1000"
+			when-university-dropdown-mouse-enter="anim:[bounce-rotate:set:(dur:1000ms#func:linear):a]">
             <!-- http://codepen.io/teamuguru/pen/3f4edcf309f72f85bb19f7a780aef8bd?editors=0100 -->
             <svg class="iphone-left" viewBox="0 0 159 651"
-				init-with="prop:[opacity:0.2, transform:translate3d(0#30%#0), transition:all 750ms cubic-bezier(.2#.79#.11#1.97)]"
-				when-device-init="trigger:[on-enter]"
-				on-enter="prop:[transform:none]:delay-1000">
-				<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="school-gradient-left">
+				init-with="prop:[op:0.2, tr:translate3d(0#30%#0), t:all 750ms cubic-bezier(.2#.79#.11#1.97)]"
+				when-device-init="t-enter"
+				on-enter="prop:[tr:none]:delay-1000"
+				when-university-dropdown-mouse-enter="prop:[op:1:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-mouse-leave="prop:[op:0.2:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-toggle-on="prop:[op:1:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-toggle-off="prop:[op:0.2:delay-50, t:all 250ms ease-in-out]">
+				<!-- <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="school-gradient-left">
 					<stop class="stop-1" stop-color="#003057" offset="0%"></stop>
 					<stop class="stop-2" stop-color="#003057" offset="0%">
 						<animate attributeName="offset" dur="500ms" begin="3.75s" fill="freeze" values="0;1" repeatCount="1" />
@@ -22,29 +27,34 @@
 						<animate attributeName="offset" dur="500ms" begin="3.5s" fill="freeze" values="0;1" repeatCount="1" />
 					</stop>
 					<stop class="stop-4" stop-color="#2b2324" offset="100%"></stop>
-				</linearGradient>
+				</linearGradient> -->
 				<g stroke="#F0E0D0" stroke-width="3" fill="#2b2324" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 					<!-- school color specific -->
-					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" fill="url(#school-gradient-left)" class="school-color"
-						init-with="prop:[stroke-opacity:0, stroke-dasharray:929, stroke-dashoffset:929, transition:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
-						when-device-init="trigger:[on-enter]"
-						on-enter="prop:[stroke-opacity:1, stroke-dashoffset:0]:delay-1900"></path>
-					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" fill="#2b2324" class="default-color" init-with="prop:[opacity:0]"></path>
+					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" style="fill:#003057" class="school-color"
+						init-with="prop:[stroke-op:0, stroke-dasharray:929, stroke-dashoffset:929, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="prop:[stroke-op:1, stroke-dashoffset:0]:delay-1900"
+						when-university-dropdown-hover="prop:[fill:^school_color_dark]"></path>
+					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" fill="#2b2324" class="default-color" init-with="prop:[op:0]"></path>
 					<polyline class="screen-left" points="159 80 21 80 21 573 159 573"
-						init-with="prop:[stroke-dasharray:789, stroke-dashoffset:879, stroke-opacity:0, transition:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
-						when-device-init="trigger:[on-enter]"
-						on-enter="prop:[stroke-dashoffset:0, stroke-opacity:1]:delay-2050"></polyline>
+						init-with="prop:[stroke-dasharray:789, stroke-dashoffset:879, stroke-op:0, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="prop:[stroke-dashoffset:0, stroke-op:1]:delay-2050"></polyline>
 					<path d="M159,586 C145.192881,586 134,597.192881 134,611 C134,624.807119 145.192881,636 159,636" class="home-btn-left"
-						init-with="prop:[stroke-dasharray:79, stroke-dashoffset:79, stroke-opacity:0, transition:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
-						when-device-init="trigger:[on-enter]"
-						on-enter="prop:[stroke-dashoffset:0, stroke-opacity:1]:delay-2150"></path>
+						init-with="prop:[stroke-dasharray:79, stroke-dashoffset:79, stroke-op:0, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="prop:[stroke-dashoffset:0, stroke-op:1]:delay-2150"></path>
 				</g>
 			</svg>
 			<svg class="iphone-right" viewBox="0 0 159 651"
-				init-with="prop:[opacity:0.2, transform:translate3d(0#-30%#0), transition:all 750ms cubic-bezier(.2#.79#.11#1.97)]"
-				when-device-init="trigger:[on-enter]"
-				on-enter="prop:[transform:none]:delay-1000">
-				<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="school-gradient-right">
+				init-with="prop:[op:0.2, tr:translate3d(0#-30%#0), t:all 750ms cubic-bezier(.2#.79#.11#1.97)]"
+				when-device-init="t-enter"
+				on-enter="prop:[tr:none]:delay-1000"
+				when-university-dropdown-mouse-enter="prop:[op:1:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-mouse-leave="prop:[op:0.2:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-toggle-on="prop:[op:1:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-toggle-off="prop:[op:0.2:delay-50, t:all 250ms ease-in-out]">
+				<!-- <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="school-gradient-right">
 					<stop class="stop-1" stop-color="#003057" offset="0%"></stop>
 					<stop class="stop-2" stop-color="#003057" offset="0%">
 						<animate attributeName="offset" dur="500ms" begin="3.75s" fill="freeze" values="0;1" repeatCount="1" />
@@ -53,35 +63,38 @@
 						<animate attributeName="offset" dur="500ms" begin="3.5s" fill="freeze" values="0;1" repeatCount="1" />
 					</stop>
 					<stop class="stop-4" stop-color="#2b2324" offset="100%"></stop>
-				</linearGradient>
+				</linearGradient> -->
 				<g stroke="#F0E0D0" stroke-width="3" fill="#2b2324" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 					<!-- school color specific -->
-					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="school-color" fill="url(#school-gradient-right)"
-						init-with="prop:[stroke-opacity:0, stroke-dasharray:929, stroke-dashoffset:929, transition:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
-						when-device-init="trigger:[on-enter]"
-						on-enter="prop:[stroke-opacity:1, stroke-dashoffset:0]:delay-1900"></path>
-					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="default-color" fill="#2b2324" init-with="prop:[opacity:0]"></path>
+					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="school-color" style="fill:#003057"
+						init-with="prop:[stroke-op:0, stroke-dasharray:929, stroke-dashoffset:929, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="prop:[stroke-op:1, stroke-dashoffset:0]:delay-1900"
+						when-university-dropdown-hover="prop:[fill:^school_color_dark]"></path>
+					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="default-color" fill="#2b2324" init-with="prop:[op:0]"></path>
 					<polyline class="screen-right" points="0 80 138 80 138 573 0 573"
-						init-with="prop:[stroke-dasharray:789, stroke-dashoffset:879, stroke-opacity:0, transition:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
-						when-device-init="trigger:[on-enter]"
-						on-enter="prop:[stroke-dashoffset:0, stroke-opacity:1]:delay-2050"></polyline>
+						init-with="prop:[stroke-dasharray:789, stroke-dashoffset:879, stroke-op:0, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="prop:[stroke-dashoffset:0, stroke-op:1]:delay-2050"></polyline>
 					<path d="M0,586 C13.8071187,586 25,597.192881 25,611 C25,624.807119 13.8071187,636 0,636" class="home-btn-right"
-						init-with="prop:[stroke-dasharray:79, stroke-dashoffset:79, stroke-opacity:0, transition:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
-						when-device-init="trigger:[on-enter]"
-						on-enter="prop:[stroke-dashoffset:0, stroke-opacity:1]:delay-2150"></path>
+						init-with="prop:[stroke-dasharray:79, stroke-dashoffset:79, stroke-op:0, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="prop:[stroke-dashoffset:0, stroke-op:1]:delay-2150"></path>
 				</g>
 			</svg>
 			<svg class="sheen" width="275px" height="493px" viewBox="0 0 275 493">
 				<path d="M126.105593,-284.632628 L-361.549102,340.662617 L-427.177151,289.34977 L60.4775445,-335.945475 L126.105593,-284.632628 L126.105593,-284.632628 L126.105593,-284.632628 Z M192.493543,-232.764677 L-295.356199,392.378181 L-337.538971,359.382791 L150.31077,-265.760066 L192.493543,-232.764677 L192.493543,-232.764677 L192.493543,-232.764677 Z M48.5411353,-345.232624 L-439.562167,279.712131 L-451.26608,270.529436 L36.8372219,-354.415319 L48.5411353,-345.232624 L48.5411353,-345.232624 L48.5411353,-345.232624 Z" fill="#FFFFFF"
-					init-with="prop:[transform:translate3d(-10px#-10px#0), transition:250ms cubic-bezier(.6#.19#1#.61)]"
-					when-device-init="trigger:[on-enter]"
-					on-enter="prop:[transform:translate3d(625px#1018px#0)]:delay-4900"></path>
+					init-with="prop:[tr:translate3d(-10px#-10px#0), t:250ms cubic-bezier(.6#.19#1#.61)]"
+					when-device-init="t-enter"
+					on-enter="prop:[tr:translate3d(625px#1018px#0)]:delay-4900"
+					when-category-dropdown-mouse-enter="prop:[tr:translate3d(-10px#-10px#0):delay-50, t:0ms]"
+					when-category-dropdown-toggle-off="prop:[tr:translate3d(625px#1018px#0):delay-150, t:250ms cubic-bezier(.6#.19#1#.61)]"></path>
 			</svg>
         </div>
         <div class="splash-device-profile" ng-if="false" ng-include="root.base_url + 'shared/templates/guru.profile.html'"></div>
         <div class="splash-device-content">
             <div class="splash-device-search" init-later>
-                <!-- on-init="opacity:0" -->
+                <!-- on-init="op:0" -->
                 <div class="splash-device-search-inside">
                     <div class="splash-device-found">
                         <svg class="echo-loader-small" width="200px" height="200px" viewBox="0 0 200 200">
@@ -100,7 +113,7 @@
 
                     </div>
                     <ul class="splash-device-search-gurus">
-                        <!-- on-init="opacity:0" -->
+                        <!-- on-init="op:0" -->
                         <li>
                             <div>
                                 <a class="marker-guru bg-academic">
@@ -176,7 +189,7 @@
                     </ul>
                 </div>
             </div>
-            <svg class="coach-click" viewBox="0 0 212 75" init-with="prop:[opacity:0]">
+            <svg class="coach-click" viewBox="0 0 212 75" init-with="prop:[op:0]">
                 <!-- class="parallax-auto" parallax-parent-ref="p1" parallax-child="0.2" -->
                 <g fill="none">
                     <path class="coach-click-path-1" d="M126.402476,42.2902799 C126.402476,42.2902799 41.4492178,9.17968707 3.56286124,70.6500409" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -189,7 +202,7 @@
                     </g>
                 </g>
             </svg>
-            <div class="splash-device-button" init-with="prop:[opacity:0]">
+            <div class="splash-device-button" init-with="prop:[op:0]">
                 <button id='desktop-find-guru-button' class="button-find-guru splash-desktop-cta">Find My Guru</button>
             </div>
         </div>

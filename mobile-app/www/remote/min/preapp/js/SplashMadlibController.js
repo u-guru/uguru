@@ -51,7 +51,8 @@ angular.module('uguru.preApp')
       // $timeout(function() {
       //   console.log(clickedElem, clickedElem.className);
       // }, 1000)
-        var hasActive =  clickedElem.className.indexOf('active') > -1 ;
+
+        var hasActive =  clickedElem.className.indexOf('active') > -1  && (clickedElem.className.indexOf('activated') > -1) ;
         var hasRecentActive = clickedElem.className.indexOf('recently-active') > -1;
         if (hasActive && !hasRecentActive) {
           clickedElem.classList.remove('translate-blank-1', 'tag-active', 'active',  'translate-blank-2');
