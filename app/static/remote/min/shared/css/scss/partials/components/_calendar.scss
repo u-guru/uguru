@@ -441,8 +441,14 @@
 					width: 24px;
 					height: 24px;
 				}
-				span:nth-child(2) {
+				> span:nth-child(2) {
 					display: block!important;
+				}
+				> span {
+					@include flex;
+					span {
+						display: block;
+					}
 				}
 			}
 			.cal-month.has-link {
@@ -462,7 +468,7 @@
 			}
 			.cal-time {
 				width: 80px;
-				padding-top: 30px;
+				padding-top: 76px;
 				> li {
 					position: relative;
 					height: 50px;
@@ -488,7 +494,7 @@
 					width: 100%;
 					// min-width: 770px;
 					min-width: 720px;
-					height: 30px;
+					height: 76px;
 					padding: 0 1px;
 					> li {
 						width: calc(100% / 7);
@@ -500,11 +506,20 @@
 						padding: 0 1px;
 						> span {
 							@include flex;
+							@include flex-wrap;
 							@include flex-center;
 							border-radius: 2px;
-							height: 30px;
+							// height: 30px;
+							padding: 10px;
 							width: 100%;
 							background: lighten($slate, 15%);
+							.cal-date-num {
+								display: block;
+								width: 100%;
+								font-size: 36px;
+								line-height: 1;
+								font-weight: 900;
+							}
 						}
 						&.not-available {
 							> span {
@@ -902,15 +917,6 @@
 			}
 			.cal-main {
 				overflow-x: auto;
-				.cal-date {
-					li {
-						> span {
-							span:nth-child(2), span:nth-child(3) {
-								display: none!important;
-							}
-						}
-					}
-				}
 				.cal-events {
 					@include flex;
 					@include flex-center;

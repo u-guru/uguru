@@ -630,14 +630,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
                 evalPropertyArgs(propDict, scope, elem);
               }
             }
-
+            var start_cb = animStartCb(elem, custom_args)
             if (delay) {
               $timeout(function() {
                 if (custom_args && custom_args.set && (!custom_args.after || !custom_args.after.value || custom_args.before)) {
                   var propDict = {properties:custom_args.set};
                   evalPropertyArgs(propDict, scope, elem);
                 }
-                var start_cb = (custom_args.in && animStartCb(elem, custom_args.in))
+
                 execAnimation(elem, anim_name, animObj, delay, start_cb, animEndCb)
               }, delay)
               return;
@@ -646,33 +646,31 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
               var propDict = {properties:custom_args.set};
               evalPropertyArgs(propDict, scope, elem);
             }
-            var start_cb = (custom_args.in && animStartCb(elem, custom_args.in))
             execAnimation(elem, anim_name, animObj, delay, start_cb, animEndCb)
             // AnimationService.animate(elem[0], anim_name, animObj, delay, animStartCb, animEndCb);
           }
           return;
         }
-        function animStartCb(elem, bool) {
-          if (bool) {
+        function animStartCb(elem, custom_args) {
+
             return function() {
-              elem[0].style.opacity = 1;
-           }
-          }
+              if (custom_args.in) {
+                elem[0].style.opacity = 1;
+              }
+              if (custom_args.out){
+                elem[0].style.opacity = 0;
+              }
+            }
         }
       }
 
       function execAnimation(elem, anim_name, anim_obj, delay, start_cb, end_cb) {
         var browser_prefix = RootService.getBrowserPrefix();
-        if (start_cb) {
           initAndTriggerAndRemoveAnimStartFunc(elem, browser_prefix, start_cb);
-        }
-        if (end_cb) {
           initAndTriggerAndRemoveAnimEndFunc(elem, browser_prefix, end_cb)
-        }
         if (browser_prefix === 'webkit') {
           browser_prefix = '-' + browser_prefix + '-'
         }
-        elem.css('animation-name', null);
         elem.css('animation-name', anim_name);
 
       }
@@ -687,7 +685,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       function initAndTriggerAndRemoveAnimStartFunc(elem, browser_prefix, start_cb) {
         var animStartEventName = getAnimEventName(browser_prefix, 'Start');
           var animStartFunc = function(e) {
-            start_cb();
+            start_cb && start_cb();
             elem[0].removeEventListener(animStartEventName, animStartFunc);
           }
           elem[0].addEventListener(animStartEventName, animStartFunc);
@@ -698,7 +696,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var animEndEventName = getAnimEventName(browser_prefix, 'End');
           var animEndFunc = function(e) {
 
-            end_cb();
+            end_cb && end_cb();
             elem[0].removeEventListener(animEndEventName, animEndFunc);
             elem[0].offsetWidth = elem[0].offsetWidth;
             if (!browser_prefix) {

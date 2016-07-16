@@ -61,7 +61,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       } else {
           scope.root.public.customStates['when'][camelMsg] =scope.dropdown.options[index][attr[dataAttrName]];
       }
-      // console.log('sending message', dataAttrName, message, 'with data format', scope.root.public.customStates['when'][camelMsg])
+      console.log('sending message', dataAttrName, message, 'with data format', scope.root.public.customStates['when'][camelMsg])
     }
 
     function getShortcuts() {
@@ -669,7 +669,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (end_cb) {
           initAndTriggerAndRemoveAnimEndFunc(elem, browser_prefix, end_cb)
         }
-
+        if (browser_prefix === 'webkit') {
+          browser_prefix = '-' + browser_prefix + '-'
+        }
         elem.css('animation-name', null);
         elem.css('animation-name', anim_name);
 
@@ -698,6 +700,13 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
             end_cb();
             elem[0].removeEventListener(animEndEventName, animEndFunc);
+            elem[0].offsetWidth = elem[0].offsetWidth;
+            if (!browser_prefix) {
+              elem[0].style.animationName = null;
+            } else {
+               var animationNameFormatted = UtilitiesService.camelCase(browser_prefix + '-animation-name')
+               elem[0].style[animationNameFormatted] = null;
+            }
           }
           elem[0].addEventListener(animEndEventName, animEndFunc);
       }

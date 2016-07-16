@@ -177,6 +177,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/guru-head',
     templateUrl: 'shared/templates/components/guru-head/main.html',
   })
+  .state('root.cal', {
+    url:'/cal',
+    templateUrl: 'shared/templates/calendar.html'
+  })
   .state('root.loaders', {
     url:'/dev/splash/loaders',
     templateUrl: 'preapp/templates/loaders/main.html'
@@ -184,6 +188,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.loaders-tech', {
     url:'/dev/splash/loaders/tech',
     templateUrl: 'preapp/templates/loaders/tech.html'
+  })
+  .state('root.milestones', {
+    url:'/dev/milestones',
+    templateUrl: 'admin/templates/milestones.html'
   })
   .state('root.base-components', {
     url:'/dev/base/components/:baseCompName',

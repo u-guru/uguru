@@ -35,7 +35,7 @@ angular.module('uguru.shared.directives.components')
                 }, function(new_classes, old_classes) {
                   if (new_classes && new_classes.indexOf('on-exit') > -1 || new_classes && new_classes.indexOf('on-enter') > -1 || new_classes && new_classes.indexOf('on-change') > -1) {
                     element[0].classList.remove('on-exit', 'on-change', 'on-enter');
-                    $compile(element)(scope.$parent);
+                    // $compile(element)(scope.$parent);
                   }
                 })
 
@@ -155,6 +155,24 @@ angular.module('uguru.shared.directives.components')
                 if (scope.states && scope.states.indexOf('hover') > -1) {
                     scope.hover = function($event, arg_type, message, index) {
                         DirectiveService.sendMessage(scope, arg_type, 'hover', attr, message, index);
+                    }
+                }
+
+                if (scope.states && scope.states.indexOf('mouse-enter') > -1) {
+                    scope.mouseEnter = function($event, index) {
+                        arg_type =  'send'
+                        message = scope.prefix + '-dropdown-mouse-enter';
+                        index = index || 0;
+                        DirectiveService.sendMessage(scope, arg_type, 'mouse-enter', attr, message, index);
+                    }
+                }
+
+                if (scope.states && scope.states.indexOf('mouse-leave') > -1) {
+                    scope.mouseLeave = function($event, index) {
+                        arg_type =  'send'
+                        message =  scope.prefix + '-dropdown-mouse-leave';
+                        index = index || 0;
+                        DirectiveService.sendMessage(scope, arg_type, 'mouse-leave', attr, message, index);
                     }
                 }
 
