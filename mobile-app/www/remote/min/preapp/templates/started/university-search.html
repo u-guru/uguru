@@ -1,5 +1,11 @@
-<div id='university-search' class="absolute full-xy top-0 left-0 flex-center bg-charcoal" init-with="prop:[opacity:0, z-index:-1000]" when-search-university-clicked="prop:[opacity:1, z-index:1000]" when-close-search-university="prop:[opacity:0, z-index:-1000]">
-    <div class="projector-slide">
+<div id='university-search' class="absolute full-xy top-0 left-0 flex-center bg-charcoal"
+	init-with="prop:[opacity:0, z-index:-1000, t:all 600ms ease-in-out]"
+	when-search-university-clicked="prop:[opacity:1:delay-600, z-index:1000]"
+	when-close-search-university="prop:[opacity:0:delay-600, z-index:-1000]">
+    <div class="projector-slide"
+		init-default
+		init-with="prop:[tr:translateY(-100%)]"
+		when-search-university-clicked="prop:[tr:translateY(0)]">
         <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
             <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
         </svg>
