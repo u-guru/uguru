@@ -1,11 +1,9 @@
-<ion-view>
-<ion-content>
-<div class='absolute full-xy flex-wrap flex-vertical-center' ng-controller='AdminMilestoneController as ms'>
-	<header class='full-x text-center'>
-		<h1 class='txt-7 uppercase weight-600'>
+<div class='absolute top-0 left-0 full-xy overflow-auto no-scrollbar' ng-controller='AdminMilestoneController as ms'>
+	<header class='full-x text-center flex-wrap flex-stretch p20xy m20xy' style='min-height:30%'>
+		<h1 class='txt-7 uppercase weight-600 flex-wrap flex-center'>
 			Milestones
 		</h1>
-		<div class='full-x flex-stretch ugrid-{{ms.types.length}} p15-grid flex-center'>
+		<div class='full-x flex-stretch ugrid-{{ms.types.length}} p20xy p15-grid flex-center flex-wrap-center'>
 			<a class='bg-charcoal border-1 border-slate weight-400 p15-grid flex-wrap-center'
 			ng-repeat="type in ms.types"
 			ng-class="{'border-smoke border-dashed txt-white weight-600 bg-moxie-50p': $index === ms.typeIndex}"
@@ -58,8 +56,6 @@
 			</ul>
 		</div>
 	</main>
-</div>
-</ion-content>
 </ion-view>
 <action-item items="[cross platform, testing]" group="testing" priority="1" tested="true" time="10hr" phase="1" type="minimal" />
 <action-item items="[profiles, courses, categories, university]" group="sneak-preview" priority="1" tested="true" time="5hr" phase="1" type="minimal" />
