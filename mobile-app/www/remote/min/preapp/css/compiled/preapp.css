@@ -3876,9 +3876,9 @@ a[class*="-container"]:hover .map-stadium-outside {
           width: 100%;
           height: auto; }
         .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-top .school-card-icon {
-          width: 48px;
-          height: 48px;
-          margin-left: -24px; }
+          width: 40px;
+          height: 40px;
+          margin-left: -20px; }
           .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg {
             padding: 10px; }
         .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-main .school-card-info h1 {
@@ -3952,6 +3952,81 @@ a[class*="-container"]:hover .map-stadium-outside {
     display: none !important; }
   .projector-school-search .projector-school-search-form {
     display: block; } }
+/* http://goo.gl/OuZtZw */
+@keyframes projectorInDown {
+  0% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 0; }
+  4.3% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.408, 0, 0, 0, 0, 1, 0, 0, -19.838, 0, 1); }
+  4.7% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, -19.95, 0, 1); }
+  8.61% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.82, 0, 0, 0, 0, 1, 0, 0, -9.955, 0, 1); }
+  9.41% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, -6.691, 0, 1); }
+  12.91% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.094, 0, 0, 0, 0, 1, 0, 0, 5.721, 0, 1); }
+  14.11% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 8.423, 0, 1); }
+  17.22% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.205, 0, 0, 0, 0, 1, 0, 0, 11.25, 0, 1);
+    opacity: 1; }
+  18.72% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 10.909, 0, 1); }
+  24.32% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 5.685, 0, 1); }
+  28.33% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.075, 0, 0, 0, 0, 1, 0, 0, 2.218, 0, 1); }
+  29.93% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 1.266, 0, 1); }
+  35.54% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, -0.396, 0, 1); }
+  39.44% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.962, 0, 0, 0, 0, 1, 0, 0, -0.599, 0, 1); }
+  41.04% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, -0.575, 0, 1); }
+  52.15% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, -0.08, 0, 1); }
+  61.66% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0.042, 0, 1); }
+  63.26% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0.04, 0, 1); }
+  83.98% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, -0.003, 0, 1); }
+  85.49% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, -0.003, 0, 1); }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; } }
+/* http://goo.gl/auuhcg */
+@keyframes projectorIn {
+  0% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  4.7% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  9.41% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  14.11% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  18.72% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  24.32% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  29.93% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  35.54% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  41.04% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  52.15% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  63.26% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  85.49% {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
 .projector-courses {
   padding-top: 50px; }
   .projector-courses .backpack {
