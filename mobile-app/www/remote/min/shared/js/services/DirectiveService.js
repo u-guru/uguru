@@ -842,6 +842,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         delete indexPropDict['important'];
         var propName = Object.keys(indexPropDict)[0];
         var propValue = indexPropDict[propName];
+        var propValShortcut;
+        if (propName in shortcuts.cssPropValues) {
+          propValShortcut = shortcuts.cssPropValues[propName];
+          if (propValShortcut.split(':').length > 1) {
+            propName = propValShortcut.split(':')[0]
+            propValue = propValShortcut.split(':')[1]
+          }
+        }
         if ((propName && propValue) || (propName && propValue === 0)) {
           setCSSProperty(propName, propValue, delay, important, scope, elem)
         } else {
@@ -862,6 +870,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function setCSSProperty(prop, value, delay, impt, scope, elem) {
+
         if (prop in shortcuts.cssProps) {
           prop = shortcuts.cssProps[prop];
         }

@@ -339,7 +339,7 @@ angular.module('uguru.shared.directives')
     link : {
       pre: function(scope, element, attr) {
         attr.$set('ngHide', true);
-        scope.root.public.customShortcuts = {state: {}, args: {}, cssProps:{}, cmds:{}};
+        scope.root.public.customShortcuts = {state: {}, args: {}, cssProps:{}, cssPropValues:{}, cmds:{}};
         DirectiveService.setShortcutDict(scope.root.public.customShortcuts);
       }
     }
@@ -371,6 +371,19 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive('propValueShortcut', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
+  return {
+    restrict: 'E',
+    priority: 10,
+    link : function(scope, element, attr) {
+        if ('replace' in attr && 'with' in attr) {
+          if (!(attr.replace in scope.root.public.customShortcuts.cssPropValues)) {
+            scope.root.public.customShortcuts.cssPropValues[attr.with] = attr.replace;
+          }
+        }
+    }
+  }
+}])
 .directive('cmdShortcut', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
   return {
     restrict: 'E',
@@ -384,6 +397,7 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+
 .directive('customStates', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
   return {
     restrict: 'E',
