@@ -17,7 +17,7 @@ angular.module('uguru.admin')
 
     docs.items = [];
 
-    docs.main  = {index: 3, options: ["Notes", "Utility", "Components", "Directives", "Status/Tools", "Research"]};
+    docs.main  = {index: 0, options: ["Notes", "Utility", "Components", "Directives", "Status/Tools", "Research"]};
 
     docs.search = function(letters) {
         console.log(letters);
