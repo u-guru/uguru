@@ -603,7 +603,7 @@
 				when-baking-init="t-exit"
 				when-photography-init="t-exit"
 				when-household-init="t-exit"
-				on-enter="prop:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1400:in trigger:[on-enter:children]"
+				on-enter="prop:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1400:in] | trigger:[on-enter:children]"
 				on-exit="prop:[op:0, t:all 250ms ease-out] | trigger:[on-exit:children]">
 				<g
 					on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):in] | trigger:[on-enter:children]">

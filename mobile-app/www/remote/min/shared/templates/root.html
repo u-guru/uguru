@@ -37,14 +37,29 @@
         <prop-shortcut replace="animation-direction" with="dir"/>
 
         <!--Most general-->
-        <!-- Since p->prop is defined already (since rendered top-to-bottom), this would work too:
+        <!--
+			Since p -> prop is defined already (since rendered top-to-bottom), this would work too:
+        	<command-shortcut replace="p:[op:0, z-index:-1000]" with="backstage"/>
+        -->
 
-        <command-shortcut replace="p:[op:0, z-index:-1000]" with="backstage"/>
-         -->
         <cmd-shortcut replace="prop:[op:0, z-index:-1000]" with="backstage"/>
 		<cmd-shortcut replace="prop:[op:0]" with="p-op"/>
+		<cmd-shortcut replace="prop:[op:0]" with="p-o-0"/>
+		<cmd-shortcut replace="prop:[op:1]" with="p-o-1"/>
 		<cmd-shortcut replace="trigger:[on-enter]" with="t-enter"/>
 		<cmd-shortcut replace="trigger:[on-exit]" with="t-exit"/>
 		<cmd-shortcut replace="prop:[op:1, t:all 500ms ease-in-out]" with="p-fadereturn"/>
+
+		<!--
+			<cmd-value replate="op:0" with="o-0"/>
+			<cmd-value replate="op:1" with="o-1"/>
+			<cmd-value replate="stroke-dashoffset:0" with="sdo-0"/>
+			<cmd-value replace="t:all 250ms ease-in-out" with="t-250-eio"/>
+			<cmd-value replace="t:all 250ms ease-in" with="t-250-ei"/>
+			<cmd-value replace="t:all 250ms ease-out" with="t-250-eo"/>
+			<cmd-value replace="t:all 150ms ease-in-out" with="t-150-eio"/>
+			<cmd-value replace="t:all 150ms ease-in" with="t-150-ei"/>
+			<cmd-value replace="t:all 150ms ease-out" with="t-150-eo"/>
+		-->
     </custom-shortcuts>
 </ion-nav-view>
