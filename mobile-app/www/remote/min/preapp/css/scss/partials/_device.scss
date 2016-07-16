@@ -23,6 +23,8 @@
     &.splash-device-iphone {
         margin-left: -160px;
         margin-top: -306px;
+		// background: $charcoal;
+		// border-radius: 40px;
         .splash-device-svg {
             @include flex;
 			transition: all 150ms ease-in-out;
