@@ -8,16 +8,16 @@
 			init-with="prop:[op:0, tr:rotateZ(30deg) rotateY(-90deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 			when-device-init="t-enter"
 			on-enter="prop:[op:1, tr:rotateZ(0deg) rotateY(0deg)]:delay-1000"
-			when-university-dropdown-click="anim:[bounce-rotate:set:(dur:1000ms#func:linear)]">
+			when-university-dropdown-mouse-enter="anim:[bounce-rotate:set:(dur:1000ms#func:linear)]">
             <!-- http://codepen.io/teamuguru/pen/3f4edcf309f72f85bb19f7a780aef8bd?editors=0100 -->
             <svg class="iphone-left" viewBox="0 0 159 651"
 				init-with="prop:[op:0.2, tr:translate3d(0#30%#0), t:all 750ms cubic-bezier(.2#.79#.11#1.97)]"
 				when-device-init="t-enter"
 				on-enter="prop:[tr:none]:delay-1000"
-				when-university-dropdown-mouse-enter="prop:[op:0.8:delay-250, t:all 500ms ease-in-out]"
-				when-university-dropdown-mouse-leave="prop:[op:0.2:delay-250, t:all 500ms ease-in-out]"
-				when-university-dropdown-toggle-on="prop:[op:0.8:delay-250, t:all 500ms ease-in-out]"
-				when-university-dropdown-toggle-off="prop:[op:0.2:delay-250, t:all 500ms ease-in-out]">
+				when-university-dropdown-mouse-enter="prop:[op:1:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-mouse-leave="prop:[op:0.2:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-toggle-on="prop:[op:1:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-toggle-off="prop:[op:0.2:delay-50, t:all 250ms ease-in-out]">
 				<!-- <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="school-gradient-left">
 					<stop class="stop-1" stop-color="#003057" offset="0%"></stop>
 					<stop class="stop-2" stop-color="#003057" offset="0%">
@@ -50,10 +50,10 @@
 				init-with="prop:[op:0.2, tr:translate3d(0#-30%#0), t:all 750ms cubic-bezier(.2#.79#.11#1.97)]"
 				when-device-init="t-enter"
 				on-enter="prop:[tr:none]:delay-1000"
-				when-university-dropdown-mouse-enter="prop:[op:0.8:delay-250, t:all 500ms ease-in-out]"
-				when-university-dropdown-mouse-leave="prop:[op:0.2:delay-250, t:all 500ms ease-in-out]"
-				when-university-dropdown-toggle-on="prop:[op:0.8:delay-250, t:all 500ms ease-in-out]"
-				when-university-dropdown-toggle-off="prop:[op:0.2:delay-250, t:all 500ms ease-in-out]">
+				when-university-dropdown-mouse-enter="prop:[op:1:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-mouse-leave="prop:[op:0.2:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-toggle-on="prop:[op:1:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-toggle-off="prop:[op:0.2:delay-50, t:all 250ms ease-in-out]">
 				<!-- <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="school-gradient-right">
 					<stop class="stop-1" stop-color="#003057" offset="0%"></stop>
 					<stop class="stop-2" stop-color="#003057" offset="0%">
