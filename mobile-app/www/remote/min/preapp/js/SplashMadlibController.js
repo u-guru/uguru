@@ -9,7 +9,9 @@ angular.module('uguru.preApp')
   'UniversityService',
   'ContentService',
   'SpecService',
-  function($scope, $state, $timeout, CategoryService, UniversityService, ContentService, SpecService) {
+  'RootService',
+  'UtilitiesService',
+  function($scope, $state, $timeout, CategoryService, UniversityService, ContentService, SpecService, RootService, UtilitiesService) {
     var madlib = this;
 
 
@@ -38,6 +40,32 @@ angular.module('uguru.preApp')
         allActivateElements[i].classList.add('activate');
       }
     };
+
+    madlib.tagClicked = function($event) {
+      var clickedElem = $event.target.parentNode
+      if (clickedElem.nodeName.toLowerCase() !== 'a') {
+        clickedElem = clickedElem.parentNode;
+      }
+      console.log(clickedElem);
+      // console.log(clickedElem, clickedElem.className);
+      // $timeout(function() {
+      //   console.log(clickedElem, clickedElem.className);
+      // }, 1000)
+        var hasActive =  clickedElem.className.indexOf('active') > -1 ;
+        var hasRecentActive = clickedElem.className.indexOf('recently-active') > -1;
+        if (hasActive && !hasRecentActive) {
+          clickedElem.classList.remove('translate-blank-1', 'tag-active', 'active',  'translate-blank-2');
+          var browser_prefix = RootService.getBrowserPrefix();
+          console.log(UtilitiesService.camelCase(browser_prefix + '-transform'), 'null')
+          if (browser_prefix) {
+            clickedElem.style[UtilitiesService.camelCase(browser_prefix + '-transform')] = null;
+          } else {
+            clickedElem.style[UtilitiesService.camelCase('transform')] = null;
+          }
+        } else {
+          clickedElem.classList.add('tag-active');
+        }
+    }
 
     madlib.updateOptionByIndex = function(category, index, cb) {
       index = (index && parseInt(index)) || 0
