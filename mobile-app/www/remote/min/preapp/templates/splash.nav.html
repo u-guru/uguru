@@ -238,8 +238,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="bg-find" ng-click="activateUniversitySearch()"
-                            class-on-click="null:inject.splash-projector-bg|activate, null:inject.splash-projector-bg|activate">
+                        <a class="bg-find"
+							init-default
+							on-click="send:[search-university-clicked:public]">
                             <span></span>
                             <span>Find your College</span>
                             <span></span>
