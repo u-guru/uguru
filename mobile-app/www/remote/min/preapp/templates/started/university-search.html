@@ -1,6 +1,6 @@
 <div id='university-search' class="absolute full-xy top-0 left-0 flex-center bg-charcoal"
 	init-with="prop:[opacity:0, z-index:-1000, t:all 600ms ease-in-out]"
-	when-search-university-clicked="prop:[opacity:1:delay-600, z-index:1000] | send:[search-university-init:public:delay-1600]"
+	when-search-university-clicked="prop:[opacity:1:delay-600, z-index:1000] | send:[search-university-init:public:delay-1600]"\
 	when-close-search-university="prop:[opacity:0:delay-600, z-index:-1000]">
     <div class="projector-slide"
 		init-with="prop:[op:0, tro:center top]"
@@ -317,9 +317,15 @@
             </div>
 
             <div class="absolute bottom-0 left-0 z-index-1000">
-                <div id="projector-school-search-guru" class="guru-head" ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"></div>
+                <div id="projector-school-search-guru" class="guru-head" ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"
+					init-with="prop:[op:0, transform-origin:center center]"
+					when-search-university-init="t-enter"
+					on-enter="anim:[guru-proj-enter:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):delay-2000:in]"></div>
                 <!-- class-on-activate="u-rotateScaleUpLeft" class-on-activate-delay="8000" -->
-                <svg class="coach-support absolute" viewBox="0 0 340 205" style="top: -40px; left: -160px; width: 170px;">
+                <svg class="coach-support absolute" viewBox="0 0 340 205" style="top: -40px; left: -160px; width: 170px;"
+					init-with="prop:[op:0, tr:scaleX(0) rotate(-90deg), transform-origin:right bottom]"
+					when-search-university-init="t-enter"
+					on-enter="prop:[op:1, tr:scaleX(1) rotate(0deg), t:all 500ms ease-out 2750ms]">
                     <!-- class-on-activate="u-bounceIn-subtle" class-on-activate-delay="8500" -->
                     <g stroke="none" fill="none">
                         <path class="coach-support-bubble" d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 L197.223004,186.289595 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.5" fill="#40484b"></path>
