@@ -33,6 +33,28 @@ angular.module('uguru.admin')
         }
     }
 }])
+.directive('actionItem', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
+  return {
+    restrict: 'E',
+    priority: 10,
+    link : function(scope, element, attr) {
+        var actionObj = constructObjFromAttr(attr);
+        scope.$parent.root.milestones.push(actionObj);
+        attr.$set('ngIf', 'false')
+     }
+    }
+    function constructObjFromAttr(attr) {
+        return {
+            items: attr.items && UtilitiesService.removeAllOccurrancesArr(attr.items, ['[', ']', '"', "'"]),
+            priority: parseInt(attr.priority),
+            tested: attr.tested === 'true',
+            time: attr.time,
+            phase: attr.phase,
+            type: attr.type,
+            group: attr.group
+        }
+    }
+}])
 .directive("docItem", ['RootService', '$timeout', '$filter', function(RootService, $timeout, $filter) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.tpl',
