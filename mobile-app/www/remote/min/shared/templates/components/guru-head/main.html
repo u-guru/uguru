@@ -1,7 +1,9 @@
 <div class="guru-head-switcher" init-default
 	when-category-dropdown-click="send:[^name-init:public, head-init:public]"
 	when-category-dropdown-toggle-on="send:[htilt-init:public]"
-	when-category-dropdown-toggle-off="send:[hreset-init:public]">
+	when-category-dropdown-toggle-off="send:[hreset-init:public]"
+	when-university-dropdown-toggle-on="send:[htilt-init:public]"
+	when-university-dropdown-toggle-off="send:[hreset-init:public]">
 	<custom-states when="head-init, htilt-init, hreset-init">
 	</custom-states>
 	<svg class="default-head absolute top-0 left-0" viewBox="0 0 200 200"
@@ -47,7 +49,7 @@
 			<!-- @samir, error here with setting custom states with on-mid and on-exit -->
 			<g class="5-minus"
 				init-with="prop:[op:0]"
-				when-academic-init="trigger:[on-enter]"
+				when-academic-init="t-enter"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -59,7 +61,7 @@
 			</g>
 			<g class="4-multiply"
 				init-with="prop:[op:0]"
-				when-academic-init="trigger:[on-enter]"
+				when-academic-init="t-enter"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -73,7 +75,7 @@
 		</g>
 		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
 			init-with="prop:[op:0, tr:rotate(30deg) translateY(50px), transform-origin:center center]"
-			when-academic-init="trigger:[on-enter]"
+			when-academic-init="t-enter"
 			when-baking-init="trigger:[on-exit]"
 			when-photography-init="trigger:[on-exit]"
 			when-tech-init="trigger:[on-exit]"
@@ -83,7 +85,7 @@
 			<path d="M61.0066708,114 C61.0066708,114 57.0066708,114 55.0066708,118 C53.0066708,122 53.9817687,128.312012 57.9768858,130.79248 C61.972003,133.272949 65.006671,130 65.0066708,130 C68.9783507,137.0625 76.4168292,156.488446 109.512697,154.99722 C135.632645,153.820313 147.647784,135.905274 147.006671,120 C147.006671,120 152.002276,122.307617 154.525714,118.708496 C157.049151,115.109375 158.006671,111 156.006671,107 C154.006671,103 151.006671,102 147.006671,104 C150.006671,91.0000006 132.006671,78 132.006671,78 C120.006671,82 108.006671,74 97.0066708,74 C86.0066708,74 57.0066708,80 61.0066708,114" class="face" stroke="#503349" stroke-width="2" fill="#F9ECE5"></path>
 			<path d="M70,95 L92,96 L92,93 L72,89 L70,95 L70,95 L70,95 L70,95 L70,95 Z M134.752203,90.6040853 L112.923075,93.5177063 L112.661608,90.5291222 L132.236879,84.8012286 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 Z" class="eyebrows" stroke="#503349" stroke-width="2"
 				init-with="prop:[fill:#69B3A5]"
-				when-academic-init="trigger:[on-enter]"
+				when-academic-init="t-enter"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -95,7 +97,7 @@
 				when-category-dropdown-toggle-off="prop:[fill:#CA5497]"></path>
 			<path d="M55,96 C44.8095703,97.2685547 36.9628907,83 46.0712891,72.8300781 C46.0712892,78 50.0009767,83 55.9999994,83 C43.9804688,75.9570312 49.8095704,48.3339844 67.3525396,44.9365234 C63.5996099,52.453125 74.4423812,56 78,56 C78,56 79,48 86,46 C80,62 122,47 134,67 C134,67 135,74 132,78 C120,82 108,74 97,74 C86,74 57,80 61,114 C61,114 51,110 55,96 L55,96 L55,96 L55,96 Z M132,78 C132,78 150,91.0000006 147,104 C163,86.9999994 140.78,64 134,67 C134,67 135,74 132,78 L132,78 L132,78 L132,78 Z" class="hair-before" stroke="#33534D" stroke-width="2" fill="#69B3A5"
 				init-with="prop:[op:0]"
-				when-academic-init="trigger:[on-enter]"
+				when-academic-init="t-enter"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -107,7 +109,7 @@
 				when-category-dropdown-toggle-off="prop:[fill:#CA5497]"></path>
 			<path d="M55,96 C44.8095703,97.2685547 36.9628907,83 46.0712891,72.8300781 C46.0712892,78 50.0009767,83 55.9999994,83 C43.9804688,75.9570312 49.8095704,48.3339844 67.3525396,44.9365234 C63.5996099,52.453125 74.4423812,56 78,56 C78,56 79,48 86,46 C80,62 122,47 134,67 C134,67 135,74 132,78 C120,82 108,74 97,74 C86,74 57,80 61,114 C61,114 51,110 55,96 L55,96 L55,96 L55,96 Z M132,78 C132,78 150,91.0000006 147,104 C163,86.9999994 140.78,64 134,67 C134,67 135,74 132,78 L132,78 L132,78 L132,78 Z" class="hair" stroke="#503349" stroke-width="2" fill="#CA5497"
 				init-with="prop:[fill:#69B3A5]"
-				when-academic-init="trigger:[on-enter]"
+				when-academic-init="t-enter"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -116,7 +118,7 @@
 				on-exit="prop:[fill:#69B3A5, t:all 250ms ease-out]"></path>
 			<path d="M129.027828,85.1185541 L131.156331,89.8041971 L152.717939,108.198245 L154.933298,104.343988 L133.371389,85.952143 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 Z M128,84 L129.434654,85.2492751 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 Z M153.130382,108.193338 L154.207004,109.130159 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 Z M154.875819,105.092884 L155.95181,106.029841 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 Z M157.274708,106.453586 L158.240392,104.738223 C158.240392,104.738223 150.476086,97.9771809 150.386557,97.8992214 M154.43656,103.948342 L155.402243,102.23298 M131.14962,89.6046224 L133.312965,85.7618295 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 Z M156.240574,111.561597 L158.529172,107.579921 L156.616727,105.948602 L154.32813,109.930278 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 Z" class="academic-pencil" stroke="#2B3234" stroke-width="2" fill="#F6C64E"
 				init-with="prop:[op:0]"
-				when-academic-init="trigger:[on-enter]"
+				when-academic-init="t-enter"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -133,7 +135,7 @@
 		<g stroke-width="1" stroke="#CA5497" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="3-plus"
 				init-with="prop:[op:0]"
-				when-academic-init="trigger:[on-enter]"
+				when-academic-init="t-enter"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -155,7 +157,7 @@
 			</g>
 			<g class="2-divide"
 				init-with="prop:[op:0]"
-				when-academic-init="trigger:[on-enter]"
+				when-academic-init="t-enter"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -181,7 +183,7 @@
 			</g>
 			<g class="1-equal"
 				init-with="prop:[op:0]"
-				when-academic-init="trigger:[on-enter]"
+				when-academic-init="t-enter"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -208,7 +210,7 @@
 		<g stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="5-cookie"
 				init-with="prop:[op:0]"
-				when-baking-init="trigger:[on-enter]"
+				when-baking-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -220,7 +222,7 @@
 			</g>
 			<g class="4-cookie"
 				init-with="prop:[op:0]"
-				when-baking-init="trigger:[on-enter]"
+				when-baking-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -233,7 +235,7 @@
 		</g>
 		<g stroke-linecap="round" stroke-linejoin="round" fill="none" fill-rule="evenodd"
 			init-with="prop:[op:0, tr:rotate(30deg) translateY(50px), transform-origin:center center]"
-			when-baking-init="trigger:[on-enter]"
+			when-baking-init="t-enter"
 			when-academic-init="trigger:[on-exit]"
 			when-photography-init="trigger:[on-exit]"
 			when-tech-init="trigger:[on-exit]"
@@ -243,7 +245,7 @@
 			<path d="M61,113 C61,113 57,113 55,117 C53,121 53.9750979,127.312012 57.970215,129.79248 C61.9653322,132.272949 65.0000002,129 65,129 C68.9716799,136.0625 76.4101584,155.488446 109.506026,153.99722 C135.625974,152.820313 147.641113,134.905274 147,119 C147,119 151.995605,121.307617 154.519043,117.708496 C157.04248,114.109375 158,110 156,106 C154,102 151,101 147,103 C150,90.0000006 132,77 132,77 C120,81 108,73 97,73 C86,73 57,79 61,113" class="face" stroke="#3E4137" stroke-width="2"  fill="#F9ECE5"></path>
 			<path d="M55,96 C44.8095703,97.2685547 36.9628907,83 46.0712891,72.8300781 C46.0712892,78 50.0009767,83 55.9999994,83 C43.9804688,75.9570312 49.8095704,48.3339844 67.3525396,44.9365234 C63.5996099,52.453125 74.4423812,56 78,56 C78,56 79,48 86,46 C80,62 122,47 134,67 C134,67 135,74 132,78 C120,82 108,74 97,74 C86,74 57,80 61,114 C61,114 51,110 55,96 L55,96 L55,96 L55,96 Z M132,78 C132,78 150,91.0000006 147,104 C163,86.9999994 140.78,64 134,67 C134,67 135,74 132,78 L132,78 L132,78 L132,78 Z" class="hair" stroke="#3E4137" stroke-width="2" fill="#E8C05C"
 				init-with="prop:[fill:#69B3A5]"
-				when-baking-init="trigger:[on-enter]"
+				when-baking-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -261,7 +263,7 @@
 			<path d="M70,95 L92,96 L92,93 L72,89 L70,95 L70,95 L70,95 L70,95 L70,95 Z M134.752203,90.6040853 L112.923075,93.5177063 L112.661608,90.5291222 L132.236879,84.8012286 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 Z" class="eyebrows" stroke="#3E4137"
 				stroke-width="2"
 				init-with="prop:[fill:#69B3A5]"
-				when-baking-init="trigger:[on-enter]"
+				when-baking-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -273,7 +275,7 @@
 				when-category-dropdown-toggle-off="prop:[fill:#E8C05C]"></path>
 			<g class="chef-hat"
 				init-with="prop:[op:0]"
-				when-baking-init="trigger:[on-enter]"
+				when-baking-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -287,7 +289,7 @@
 		<g stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="3-cookie"
 				init-with="prop:[op:0]"
-				when-baking-init="trigger:[on-enter]"
+				when-baking-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -295,7 +297,7 @@
 				on-enter="prop:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):in]:delay-1500 | trigger:[on-enter:children]"
 				on-exit="prop:[op:0, t:all 250ms ease-out] | trigger:[on-exit:children]">
 				<g
-					when-baking-init="trigger:[on-enter]"
+					when-baking-init="t-enter"
 					on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-100:in]">
 					<path d="M148,58 C144.134007,58 141,54.8659932 141,51 C141,47.1340068 144.134007,44 148,44 C151.865993,44 155,47.1340068 155,51 C155,54.8659932 151.865993,58 148,58 L148,58 Z" class="3-cookie-whole" stroke="#C99D61" fill="#F1C687"></path>
 					<path d="M148.37251,47.9754671 C148.321996,47.4948653 148.670652,47.0643114 149.151254,47.0137981 C149.631856,46.9632848 150.06241,47.3119405 150.112923,47.7925423 C150.163436,48.2731442 149.814781,48.7036981 149.334179,48.7542114 C148.853577,48.8047247 148.423023,48.456069 148.37251,47.9754671 L148.37251,47.9754671 L148.37251,47.9754671 Z M144.236111,49.8055556 C143.752862,49.8055556 143.361111,49.4138047 143.361111,48.9305556 C143.361111,48.4473064 143.752862,48.0555556 144.236111,48.0555556 C144.71936,48.0555556 145.111111,48.4473064 145.111111,48.9305556 C145.111111,49.4138047 144.71936,49.8055556 144.236111,49.8055556 L144.236111,49.8055556 L144.236111,49.8055556 Z M150.17298,53.1717172 C149.689731,53.1717172 149.29798,52.7799663 149.29798,52.2967172 C149.29798,51.813468 149.689731,51.4217172 150.17298,51.4217172 C150.656229,51.4217172 151.04798,51.813468 151.04798,52.2967172 C151.04798,52.7799663 150.656229,53.1717172 150.17298,53.1717172 L150.17298,53.1717172 L150.17298,53.1717172 Z M146.030303,55.8787879 C145.327395,55.8787879 144.757576,55.3445822 144.757576,54.6856061 C144.757576,54.0266299 145.327395,53.4924242 146.030303,53.4924242 C146.733211,53.4924242 147.30303,54.0266299 147.30303,54.6856061 C147.30303,55.3445822 146.733211,55.8787879 146.030303,55.8787879 L146.030303,55.8787879 L146.030303,55.8787879 Z" class="3-chips" stroke="#623609" fill="#7D5329"></path>
@@ -303,7 +305,7 @@
 			</g>
 			<g class="2-cookie"
 				init-with="prop:[op:0]"
-				when-baking-init="trigger:[on-enter]"
+				when-baking-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -311,13 +313,13 @@
 				on-enter="prop:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1400:in] | trigger:[on-enter:children]"
 				on-exit="prop:[op:0, t:all 250ms ease-out] | trigger:[on-exit:children]">
 				<g
-					when-baking-init="trigger:[on-enter]"
+					when-baking-init="t-enter"
 					on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):in] | trigger:[on-enter:children]"
 					on-exit="trigger:[on-exit:children]">
 					<path d="M159.50031,145.222515 C160.31141,145.076323 161.146792,145 162,145 C169.731986,145 176,151.268014 176,159 C176,166.731986 169.731986,173 162,173 C154.268014,173 148,166.731986 148,159 C148,158.659334 148.012168,158.321511 148.036092,157.98694 C148.604977,158.609487 149.423551,159 150.333333,159 C152.051553,159 153.444444,157.607108 153.444444,155.888889 C153.444444,155.582283 153.400092,155.286036 153.317452,155.006215 C153.802532,155.318693 154.380093,155.5 155,155.5 C156.718219,155.5 158.111111,154.107108 158.111111,152.388889 C158.111111,152.115616 158.075878,151.850572 158.009706,151.598052 C158.107168,151.606696 158.205846,151.611111 158.305556,151.611111 C160.131163,151.611111 161.611111,150.131163 161.611111,148.305556 C161.611111,146.901255 160.735419,145.701483 159.50031,145.222515 L159.50031,145.222515 Z" class="2-cookie-bit" stroke="#C99D61" fill="#F1C687"></path>
 					<circle class="2-cookie-whole" stroke="#C99D61" fill="#F1C687" cx="162" cy="159" r="14"
 						init-with="prop:[op:0]"
-						when-baking-init="trigger:[on-enter]"
+						when-baking-init="t-enter"
 						on-enter="prop:[op:1:delay-2000, t:all 500ms linear]"
 						on-exit="prop:[op:0]"></circle>
 					<path d="M157.254981,152.950934 C157.356007,151.989731 156.658696,151.128623 155.697492,151.027596 C154.736289,150.92657 153.875181,151.623881 153.774154,152.585085 C153.673128,153.546288 154.370439,154.407396 155.331643,154.508423 C156.292846,154.609449 157.153954,153.912138 157.254981,152.950934 L157.254981,152.950934 Z" class="2-cookie-wchip" stroke="#623609" fill="#7D5329"></path>
@@ -326,7 +328,7 @@
 			</g>
 			<g class="1-cookie"
 				init-with="prop:[op:0]"
-				when-baking-init="trigger:[on-enter]"
+				when-baking-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -352,7 +354,7 @@
 		<g stroke="#E4FFD6" stroke-width="2" fill="#FFFFFF" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="5-flash"
 				init-with="prop:[op:0]"
-				when-photography-init="trigger:[on-enter]"
+				when-photography-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -361,7 +363,7 @@
 				on-exit="prop:[op:0, t:all 250ms ease-out]">
 				<path d="M45,66 C45,66 45.9411765,69.0588235 46.9411765,70.0588235 C47.9411765,71.0588235 51,72 51,72 C51,72 47.9411765,72.9411765 46.9411765,73.9411765 C45.9411765,74.9411765 45,78 45,78 C45,78 44.0588235,74.9411765 43.0588235,73.9411765 C42.0588235,72.9411765 39,72 39,72 C39,72 42.0588235,71.0588235 43.0588235,70.0588235 C44.0588235,69.0588235 45,66 45,66 Z" class="5-flash-bg"
 					init-with="prop:[transform-origin:center center]"
-					when-photography-init="trigger:[on-enter]"
+					when-photography-init="t-enter"
 					when-academic-init="trigger:[on-exit]"
 					when-baking-init="trigger:[on-exit]"
 					when-tech-init="trigger:[on-exit]"
@@ -370,7 +372,7 @@
 			</g>
 			<g class="4-flash"
 				init-with="prop:[op:0]"
-				when-photography-init="trigger:[on-enter]"
+				when-photography-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -379,7 +381,7 @@
 				on-exit="prop:[op:0, t:all 250ms ease-out]">
 				<path d="M153,89 C153,89 153.784314,91.5490196 154.617647,92.3823529 C155.45098,93.2156863 158,94 158,94 C158,94 155.45098,94.7843137 154.617647,95.6176471 C153.784314,96.4509804 153,99 153,99 C153,99 152.215686,96.4509804 151.382353,95.6176471 C150.54902,94.7843137 148,94 148,94 C148,94 150.54902,93.2156863 151.382353,92.3823529 C152.215686,91.5490196 153,89 153,89 Z" class="4-flash-bg"
 					init-with="prop:[transform-origin:center center]"
-					when-photography-init="trigger:[on-enter]"
+					when-photography-init="t-enter"
 					when-academic-init="trigger:[on-exit]"
 					when-baking-init="trigger:[on-exit]"
 					when-tech-init="trigger:[on-exit]"
@@ -389,7 +391,7 @@
 		</g>
 		<g stroke-linecap="round" stroke-linejoin="round" stroke-width="1" fill="none" fill-rule="evenodd"
 			init-with="prop:[op:0, tr:rotate(30deg) translateY(50px), transform-origin:center center]"
-			when-photography-init="trigger:[on-enter]"
+			when-photography-init="t-enter"
 			when-academic-init="trigger:[on-exit]"
 			when-baking-init="trigger:[on-exit]"
 			when-tech-init="trigger:[on-exit]"
@@ -438,7 +440,7 @@
 		<g stroke="#E4FFD6" stroke-width="2" fill="#FFFFFF" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="3-flash"
 				init-with="prop:[op:0]"
-				when-photography-init="trigger:[on-enter]"
+				when-photography-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -454,7 +456,7 @@
 			</g>
 			<g class="2-flash"
 				init-with="prop:[op:0]"
-				when-photography-init="trigger:[on-enter]"
+				when-photography-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -470,7 +472,7 @@
 			</g>
 			<g class="1-flash"
 				init-with="prop:[op:0]"
-				when-photography-init="trigger:[on-enter]"
+				when-photography-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-tech-init="trigger:[on-exit]"
@@ -491,7 +493,7 @@
 		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="5-code"
 				init-with="prop:[op:0]"
-				when-tech-init="trigger:[on-enter]"
+				when-tech-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
@@ -500,7 +502,7 @@
 				on-exit="prop:[op:0, t:all 250ms ease-out]">
 				<path d="M49,66 L49,76 L39,76 L39,66 L49,66 L49,66 Z M39,68.3994856 L49,68.3994856 L39,68.3994856 L39,68.3994856 Z M40.1805556,67.446829 C40.2956149,67.446829 40.3888889,67.3388678 40.3888889,67.2056909 C40.3888889,67.0725139 40.2956149,66.9645527 40.1805556,66.9645527 C40.0654962,66.9645527 39.9722222,67.0725139 39.9722222,67.2056909 C39.9722222,67.3388678 40.0654962,67.446829 40.1805556,67.446829 L40.1805556,67.446829 Z M41.5694444,67.446829 C41.6845038,67.446829 41.7777778,67.3388678 41.7777778,67.2056909 C41.7777778,67.0725139 41.6845038,66.9645527 41.5694444,66.9645527 C41.4543851,66.9645527 41.3611111,67.0725139 41.3611111,67.2056909 C41.3611111,67.3388678 41.4543851,67.446829 41.5694444,67.446829 L41.5694444,67.446829 Z M42.9583333,67.446829 C43.0733927,67.446829 43.1666667,67.3388678 43.1666667,67.2056909 C43.1666667,67.0725139 43.0733927,66.9645527 42.9583333,66.9645527 C42.843274,66.9645527 42.75,67.0725139 42.75,67.2056909 C42.75,67.3388678 42.843274,67.446829 42.9583333,67.446829 L42.9583333,67.446829 Z" class="5-browser" stroke="#55A4B7" stroke-width="0.5" fill="#CDEFF7"
 					init-with="prop:[op:0]"
-					when-tech-init="trigger:[on-enter]"
+					when-tech-init="t-enter"
 					when-academic-init="trigger:[on-exit]"
 					when-baking-init="trigger:[on-exit]"
 					when-photography-init="trigger:[on-exit]"
@@ -510,7 +512,7 @@
 			</g>
 			<g class="4-code"
 				init-with="prop:[op:0]"
-				when-tech-init="trigger:[on-enter]"
+				when-tech-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
@@ -519,7 +521,7 @@
 				on-exit="prop:[op:0, t:all 250ms ease-out]">
 				<path d="M162.4,89 L162.4,101 L148,101 L148,89 L162.4,89 L162.4,89 Z M148,91.8793827 L162.4,91.8793827 L148,91.8793827 L148,91.8793827 Z M155.7814,93.9959971 L154.647,98.4553171 L155.7814,93.9959971 L155.7814,93.9959971 Z M149.7,90.7361948 C149.865685,90.7361948 150,90.6066414 150,90.446829 C150,90.2870167 149.865685,90.1574632 149.7,90.1574632 C149.534315,90.1574632 149.4,90.2870167 149.4,90.446829 C149.4,90.6066414 149.534315,90.7361948 149.7,90.7361948 L149.7,90.7361948 Z M151.7,90.7361948 C151.865685,90.7361948 152,90.6066414 152,90.446829 C152,90.2870167 151.865685,90.1574632 151.7,90.1574632 C151.534315,90.1574632 151.4,90.2870167 151.4,90.446829 C151.4,90.6066414 151.534315,90.7361948 151.7,90.7361948 L151.7,90.7361948 Z M153.7,90.7361948 C153.865685,90.7361948 154,90.6066414 154,90.446829 C154,90.2870167 153.865685,90.1574632 153.7,90.1574632 C153.534315,90.1574632 153.4,90.2870167 153.4,90.446829 C153.4,90.6066414 153.534315,90.7361948 153.7,90.7361948 L153.7,90.7361948 Z" class="4-browser" stroke="#55A4B7" stroke-width="0.5" fill="#CDEFF7"
 					init-with="prop:[op:0]"
-					when-tech-init="trigger:[on-enter]"
+					when-tech-init="t-enter"
 					when-academic-init="trigger:[on-exit]"
 					when-baking-init="trigger:[on-exit]"
 					when-photography-init="trigger:[on-exit]"
@@ -530,7 +532,7 @@
 		</g>
 		<g stroke-linecap="round" stroke-linejoin="round" fill="none" fill-rule="evenodd"
 			init-with="prop:[op:0, tr:rotate(30deg) translateY(50px), transform-origin:center center]"
-			when-tech-init="trigger:[on-enter]"
+			when-tech-init="t-enter"
 			when-academic-init="trigger:[on-exit]"
 			when-baking-init="trigger:[on-exit]"
 			when-photography-init="trigger:[on-exit]"
@@ -574,7 +576,7 @@
 		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="3-code"
 				init-with="prop:[op:0]"
-				when-tech-init="trigger:[on-enter]"
+				when-tech-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
@@ -591,7 +593,7 @@
 			</g>
 			<g class="2-code"
 				init-with="prop:[op:0]"
-				when-tech-init="trigger:[on-enter]"
+				when-tech-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
@@ -608,7 +610,7 @@
 			</g>
 			<g class="1-code"
 				init-with="prop:[op:0]"
-				when-tech-init="trigger:[on-enter]"
+				when-tech-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
@@ -630,7 +632,7 @@
 		<g stroke-width="1" stroke="#D3D0FA" fill="#FFFFFF" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="5-pop"
 				init-with="prop:[op:0]"
-				when-household-init="trigger:[on-enter]"
+				when-household-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
@@ -643,7 +645,7 @@
 			</g>
 			<g class="4-pop"
 				init-with="prop:[op:0]"
-				when-household-init="trigger:[on-enter]"
+				when-household-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
@@ -657,7 +659,7 @@
 		</g>
 		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
 			init-with="prop:[op:0, tr:rotate(30deg) translateY(50px), transform-origin:center center]"
-			when-household-init="trigger:[on-enter]"
+			when-household-init="t-enter"
 			when-academic-init="trigger:[on-exit]"
 			when-baking-init="trigger:[on-exit]"
 			when-photography-init="trigger:[on-exit]"
@@ -694,7 +696,7 @@
 		<g stroke-width="1" stroke="#D3D0FA" fill="#FFFFFF" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<g class="3-pop"
 				init-with="prop:[op:0]"
-				when-household-init="trigger:[on-enter]"
+				when-household-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
@@ -711,7 +713,7 @@
 			</g>
 			<g class="2-pop"
 				init-with="prop:[op:0]"
-				when-household-init="trigger:[on-enter]"
+				when-household-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
@@ -727,7 +729,7 @@
 			</g>
 			<g class="1-pop"
 				init-with="prop:[op:0]"
-				when-household-init="trigger:[on-enter]"
+				when-household-init="t-enter"
 				when-academic-init="trigger:[on-exit]"
 				when-baking-init="trigger:[on-exit]"
 				when-photography-init="trigger:[on-exit]"
