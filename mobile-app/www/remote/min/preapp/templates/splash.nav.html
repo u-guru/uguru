@@ -2,7 +2,7 @@
 <div id="splash-nav-bar"
 	ng-controller="SplashNavController as nav"
     init-with="backstage"
-	on-init="p:[op:1, z-index:1000] | send:[nav-init:public]">
+	on-init="p:[op:1, z-index:1000] | send:[nav-init:public, search-university-clicked:public]">
     <custom-states when="nav-init, powerups-clicked"></custom-states>
     <div id='splash-desktop-nav' class='full-x'>
         <!-- Dropdown overlays -->
@@ -213,10 +213,10 @@
 
          <!--Mobile Nav-->
          <div id="splash-hero-nav-mobile"
-		 	init-with="prop:[op:0]"
+		 	init-with="prop:[op:0, t:all 250ms ease-in-out]"
 			when-mobile-switch-init="t-enter"
-			on-enter="">
-            <div class="splash-hero-nav-category">
+			on-enter="prop:[op:1, z-index:999]">
+            <div class="splash-hero-nav-category full-x">
                 <h1>Category</h1>
                 <ul>
                     <li ng-repeat='category in categories'>
@@ -227,7 +227,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="splash-hero-nav-school" id='dropdown-university'>
+            <div class="splash-hero-nav-school full-x">
                 <h1>University</h1>
                 <ul>
                     <li ng-repeat='university in featured_universities'>
@@ -238,8 +238,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="bg-find" ng-click="activateUniversitySearch()"
-                            class-on-click="null:inject.splash-projector-bg|activate, null:inject.splash-projector-bg|activate">
+                        <a class="bg-find"
+							init-default
+							on-click="send:[search-university-clicked:public]">
                             <span></span>
                             <span>Find your College</span>
                             <span></span>
