@@ -2309,6 +2309,14 @@
         max-height: 655.09px;
         width: 50%;
         max-width: 160px; }
+      .splash-device.splash-device-iphone .splash-device-svg .iphone-center {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        max-height: 655.09px;
+        width: 100%;
+        max-width: 320px; }
       .splash-device.splash-device-iphone .splash-device-svg .sheen {
         display: block;
         height: 100%;
