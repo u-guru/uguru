@@ -1,6 +1,6 @@
 <ion-view id='splash-powerups' ng-controller="SplashPowerupsController as powerups"
 	init-with="prop:[op:0, z-index:-1, t:all 1000ms ease-in-out]"
-	when-powerups-clicked="prop:[op:1:delay-250, z-index:1000], send:[powerups-init:public]"
+	when-powerups-clicked="prop:[op:1:delay-250, z-index:1000] | send:[powerups-init:public]"
 	when-close-powerups="prop:[op:0, z-index:-1:delay-250]">
     <div id='powerups' class="full-xy bg-slate">
         <!-- class-on-activate="fadeIn:anim" --->

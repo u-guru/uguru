@@ -664,7 +664,7 @@
 }
 
 @media screen and (max-width:768px) {
-    .pf-container:not(.mobile) {
+    .pf-container {
         overflow: auto;
         background: $slate;
         .pf-aside {

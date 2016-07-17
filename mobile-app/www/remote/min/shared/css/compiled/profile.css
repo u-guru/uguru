@@ -623,17 +623,17 @@
     left: 0; }
 
 @media screen and (max-width: 768px) {
-  .pf-container:not(.mobile) {
+  .pf-container {
     overflow: auto;
     background: #40484B; }
-    .pf-container:not(.mobile) .pf-aside .pf-aside-mobile .pf-name {
+    .pf-container .pf-aside .pf-aside-mobile .pf-name {
       margin-top: 5px; }
-    .pf-container:not(.mobile) .pf-rest {
+    .pf-container .pf-rest {
       height: auto; }
-    .pf-container:not(.mobile) .pf-main > div {
+    .pf-container .pf-main > div {
       height: auto;
       overflow: visible; }
-    .pf-container:not(.mobile) .pf-main .pf-main-subheader {
+    .pf-container .pf-main .pf-main-subheader {
       max-width: 430px; } }
 @media screen and (min-width: 414px) and (min-height: 700px) {
   .pf-container:not(.mobile) .pf-aside .pf-aside-mobile .user-icon {

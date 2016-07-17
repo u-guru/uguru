@@ -1,14 +1,17 @@
 <div id="splash-device-container" class="splash-device-container"
 	ng-controller='SplashDeviceController as device'
 	on-init="send:[device-init:public]"
+	init-with="prop:[tro:center center, tr:rotateY(180deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
+	when-university-dropdown-mouse-enter="prop:[tr:rotateY(0)]"
+	when-university-dropdown-mouse-leave="prop:[tr:rotateY(180deg):delay-50]"
+	when-university-dropdown-toggle-off="prop:[tr:rotateY(180deg):delay-50]"
 	ng-if="root.window.desktop">
 	<custom-states when="device-init"></custom-states>
     <div class="splash-device splash-device-iphone">
         <div class="splash-device-svg iphone-device"
 			init-with="prop:[op:0, tr:rotateZ(30deg) rotateY(-90deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 			when-device-init="t-enter"
-			on-enter="prop:[op:1, tr:rotateZ(0deg) rotateY(0deg)]:delay-1000"
-			when-university-dropdown-mouse-enter="anim:[bounce-rotate:set:(dur:1000ms#func:linear):a]">
+			on-enter="prop:[op:1, tr:rotateZ(0deg) rotateY(0deg)]:delay-1000">
             <!-- http://codepen.io/teamuguru/pen/3f4edcf309f72f85bb19f7a780aef8bd?editors=0100 -->
 			<svg class="iphone-center" viewBox="0 0 318 651"
 				init-with="p-op"
@@ -19,37 +22,18 @@
 				when-university-dropdown-toggle-on="prop:[op:1:delay-50, t:all 250ms ease-in-out]"
 				when-university-dropdown-toggle-off="prop:[op:0.2:delay-50, t:all 250ms ease-in-out]">
 			    <g fill="#2b2324" fill-rule="evenodd" stroke-width="3" stroke="#F0E0D0" stroke-linecap="round" stroke-linejoin="round">
-					<g class="school-color" style="fill:#003057"
+		            <path d="M159.5,650 L41.9985987,650 C19.9162684,650 2,632.091135 2,609.999431 L2,42.0005693 C2,19.9012788 19.9079826,2 41.9985987,2 L159.5,2 L276.628381,2 C298.648868,2 316.5,19.9012788 316.5,42.0005693 L316.5,609.999431 C316.5,632.091135 298.640609,650 276.628381,650 L159.5,650" class="school-color" style="fill:#003057"
 						init-default
-						when-university-dropdown-hover="prop:[fill:^school_color_dark:delay-150, t:all 250ms ease-out]">
-						<path d="M159,1.5 L41.4985987,1.5 C19.4079826,1.5 1.5,19.4012788 1.5,41.5005693 L1.5,609.499431 C1.5,631.591135 19.4162684,649.5 41.4985987,649.5 L159,649.5"></path>
-						<path d="M158.5,1.5 L276.001401,1.5 C298.092017,1.5 316,19.4012788 316,41.5005693 L316,609.499431 C316,631.591135 298.083732,649.5 276.001401,649.5 L158.5,649.5"></path>
-					</g>
-			        <g class="screen">
-						<polyline points="158.5 79.5 20.5 79.5 20.5 572.5 158.5 572.5"></polyline>
-						<polyline points="158.5 79.5 296.5 79.5 296.5 572.5 158.5 572.5"></polyline>
-					</g>
-					<g class="home-btn">
-				        <path d="M158.5,585.5 C144.692881,585.5 133.5,596.692881 133.5,610.5 C133.5,624.307119 144.692881,635.5 158.5,635.5"></path>
-				        <path d="M158.5,585.5 C172.307119,585.5 183.5,596.692881 183.5,610.5 C183.5,624.307119 172.307119,635.5 158.5,635.5"></path>
-					</g>
+						when-university-dropdown-hover="prop:[fill:^school_color_dark:delay-150, t:all 250ms ease-out]"></path>
+		            <polygon class="screen" fill="#2B2324" points="21 573 21 80 297 80 297 573"></polygon>
+		            <path d="M159,636 C145.192881,636 134,624.807119 134,611 C134,597.192881 145.192881,586 159,586 C172.807119,586 184,597.192881 184,611 C184,624.807119 172.807119,636 159,636" class="home-btn" fill="#2B2324"></path>
 			    </g>
 			</svg>
 
             <svg class="iphone-left" viewBox="0 0 159 651"
-				init-with="prop:[op:0.2, tr:translate3d(0#30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
+				init-with="prop:[op:0.2, tr:translate3d(0#-30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 				when-device-init="t-enter"
 				on-enter="prop:[tr:none:delay-1000, op:0:delay-3000]">
-				<!-- <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="school-gradient-left">
-					<stop class="stop-1" stop-color="#003057" offset="0%"></stop>
-					<stop class="stop-2" stop-color="#003057" offset="0%">
-						<animate attributeName="offset" dur="500ms" begin="3.75s" fill="freeze" values="0;1" repeatCount="1" />
-					</stop>
-					<stop class="stop-3" stop-color="#2b2324" offset="0%">
-						<animate attributeName="offset" dur="500ms" begin="3.5s" fill="freeze" values="0;1" repeatCount="1" />
-					</stop>
-					<stop class="stop-4" stop-color="#2b2324" offset="100%"></stop>
-				</linearGradient> -->
 				<g fill="#2b2324" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
 					<!-- school color specific -->
 					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" style="fill:#003057" class="school-color"
@@ -70,19 +54,9 @@
 			</svg>
 
 			<svg class="iphone-right" viewBox="0 0 159 651"
-				init-with="prop:[op:0.2, tr:translate3d(0#-30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
+				init-with="prop:[op:0.2, tr:translate3d(0#30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 				when-device-init="t-enter"
 				on-enter="prop:[tr:none:delay-1000, op:0:delay-3000]">
-				<!-- <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="school-gradient-right">
-					<stop class="stop-1" stop-color="#003057" offset="0%"></stop>
-					<stop class="stop-2" stop-color="#003057" offset="0%">
-						<animate attributeName="offset" dur="500ms" begin="3.75s" fill="freeze" values="0;1" repeatCount="1" />
-					</stop>
-					<stop class="stop-3" stop-color="#2b2324" offset="0%">
-						<animate attributeName="offset" dur="500ms" begin="3.5s" fill="freeze" values="0;1" repeatCount="1" />
-					</stop>
-					<stop class="stop-4" stop-color="#2b2324" offset="100%"></stop>
-				</linearGradient> -->
 				<g fill="#2b2324" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
 					<!-- school color specific -->
 					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="school-color" style="fill:#003057"
@@ -111,8 +85,18 @@
 					when-category-dropdown-toggle-off="prop:[tr:translate3d(625px#1018px#0):delay-150, t:250ms cubic-bezier(.6#.19#1#.61)]"></path>
 			</svg>
         </div>
-        <div class="splash-device-profile" ng-if="false" ng-include="root.base_url + 'shared/templates/guru.profile.html'"></div>
-        <div class="splash-device-content">
+        <div class="splash-device-content"
+			init-with="prop:[op:0, t:opacity 250ms ease-in-out]"
+			when-university-dropdown-mouse-enter="prop:[op:1:delay-50]"
+			when-university-dropdown-mouse-leave="prop:[op:0, t:opacity 50ms ease-out]"
+			when-university-dropdown-toggle-off="prop:[op:0, t:opacity 50ms ease-out]">
+			<div class="splash-device-profile mobile">
+				<div class="absolute full-xy" ng-include="root.base_url + 'shared/templates/guru.profile.demo.html'"
+					init-with="prop:[op:0, z-index:-1, t:opacity 250ms ease-in-out]"
+					when-university-dropdown-mouse-enter="prop:[op:1:delay-1000, z-index:99]"
+					when-university-dropdown-mouse-leave="prop:[op:0, z-index:-1:delay-50, t:opacity 50ms ease-out]"
+					when-university-dropdown-toggle-off="prop:[op:0, z-index:-1:delay-50, t:opacity 50ms ease-out]"></div>
+			</div>
             <div class="splash-device-search" init-later>
                 <!-- on-init="op:0" -->
                 <div class="splash-device-search-inside">
