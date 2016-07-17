@@ -11,8 +11,8 @@
         </header>
         <div class="flex-center-wrap z-index-2">
             <ul class="powerup-icons flex-center-wrap">
-                <li>
-                    <!-- class-on-activate="active, bounceIn-subtle" class-on-activate-delay="1000" -->
+                <li init-with="p-op"
+					when-powerups-init="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in] | send:[powerup-icon-gpa-init]">
                     <a id="powerup-gpa-container" class="block relative high-z-index">
                         <div id="powerup-gpa-icon" class="block loader-powerup-gpa" ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
                         <div id="powerup-gpa-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold">Lorem Ipsum</div>
