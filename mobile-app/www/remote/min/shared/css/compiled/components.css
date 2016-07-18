@@ -11252,7 +11252,9 @@ input[type=range] {
               top: 1px;
               left: 1px;
               width: calc(100% - 2px);
-              height: calc(100% - 2px); }
+              height: calc(100% - 2px);
+              padding-left: 10px;
+              padding-right: 10px; }
               .calendar .cal-week > div .cal-main .cal-events .cal-day > li .event div:empty {
                 position: absolute;
                 background: #69B3A5;

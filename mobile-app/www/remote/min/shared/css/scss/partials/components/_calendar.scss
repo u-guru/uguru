@@ -677,6 +677,8 @@
 								left: 1px;
 								width: calc(100% - 2px);
 								height: calc(100% - 2px);
+								padding-left: 10px;
+								padding-right: 10px;
 								div:empty {
 									position: absolute;
 									background: $shamrock;
