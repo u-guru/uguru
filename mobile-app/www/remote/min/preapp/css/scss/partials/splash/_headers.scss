@@ -4,6 +4,37 @@
 	transform-origin: left center;
 }
 
+.sidebar-scale {
+	position: fixed;
+	top: 30px;
+	right: 50%;
+	margin-right: -5px;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	z-index: 99999;
+	@media screen and (min-width: 860px) {
+		top: 30px;
+		right: 30px;
+		margin: 0;
+	}
+}
+
+.powerups-scale {
+	position: fixed;
+	top: 30px;
+	right: 30px;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	z-index: 99999;
+	@media screen and (min-width: 860px) {
+		top: 30px;
+		right: 90px;
+		margin: 0;
+	}
+}
+
 .splash-up-circle {
 	@include flex;
 	@include flex-center;
