@@ -470,7 +470,9 @@
 											</div>
 										</li>
 										<li init-with="p-op" class="has-event event-household">
-											<span>
+											<span></span>
+											<span class="event">
+												<div></div><div></div><div></div><div></div>
 												<h1 init-with="p-op">Jeselle</h1>
 												<span init-with="p-op">6am-7am</span>
 												<a class="close-icon">
@@ -939,7 +941,9 @@
 											</div>
 										</li>
 										<li init-with="p-op" class="has-event event-academic">
-											<a>
+											<span></span>
+											<a class="event">
+												<div></div><div></div><div></div><div></div>
 												<h1 init-with="p-op">Gabrielle</h1>
 												<span init-with="p-op">12am-1pm</span>
 											</a>
@@ -1772,6 +1776,21 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="cal-add"
+				init-with="p-op"
+				when-cal-init="trigger:[on-enter]"
+				on-enter="prop:[op:1,t:all 300ms ease-in-out]:delay-300">
+				<a>
+					<svg viewBox="0 0 100 100"
+						init-with="prop:[op:0, sdo:212, sda:212]"
+						when-cal-init="trigger:[on-enter]"
+						on-enter="prop:[op:1, sdo:0, t:all 500ms ease-in]:delay-500">
+						<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+					</svg>
+				</a>
+			</div>
+
 			<div class="cal-search" class-on-click="active, null:inject.calendar-container|has-filters"
 				init-with="p-op"
 				when-cal-init="trigger:[on-enter]"
