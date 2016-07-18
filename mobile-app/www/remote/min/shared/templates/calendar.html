@@ -13,21 +13,23 @@
 							<span>
 								<span init-with="prop:[op:0, tr:rotateX(90deg), t:all 150ms ease-out]"
 									when-cal-enter="trigger:[on-enter]"
-									on-enter="prop:[op:1, tr:rotateX(0)]">J</span>
+									on-enter="prop:[op:1, tr:rotateX(0)]:delay-150">J</span>
 								<span init-with="prop:[op:0, tr:rotateX(90deg), t:all 150ms ease-out]"
 									when-cal-enter="trigger:[on-enter]"
-									on-enter="prop:[op:1, tr:rotateX(0)]:delay-100">u</span>
+									on-enter="prop:[op:1, tr:rotateX(0)]:delay-300">u</span>
 								<span init-with="prop:[op:0, tr:rotateX(90deg), t:all 150ms ease-out]"
 									when-cal-enter="trigger:[on-enter]"
-									on-enter="prop:[op:1, tr:rotateX(0)]:delay-200">l</span>
+									on-enter="prop:[op:1, tr:rotateX(0)]:delay-450">l</span>
 								<span init-with="prop:[op:0, tr:rotateX(90deg), t:all 150ms ease-out]"
 									when-cal-enter="trigger:[on-enter]"
-									on-enter="prop:[op:1, tr:rotateX(0)]:delay-300">y</span>
+									on-enter="prop:[op:1, tr:rotateX(0)]:delay-600">y</span>
 							</span>
 						</h1>
 						<div class="cal-day-container flex">
 							<ul class="cal-time"
-								init-with="p-op">
+								init-with="p:[op:0, transform-origin:left center]"
+								when-cal-enter="trigger:[on-enter]"
+								on-enter="anim:[bounceIn-subtle:set:(dur:1000ms):in]:delay-100">
 								<li>
 									<span>All Day</span>
 								</li>
@@ -1776,7 +1778,9 @@
 					<input id="search-events" type="search" placeholder="Search"/>
 					<label for="search-events">
 						<svg viewBox="0 0 100 100"
-							init-with="p-op">
+							init-with="prop:[op:0, sdo:212, sda:212]"
+							when-cal-init="trigger:[on-enter]"
+							on-enter="prop:[op:1, sdo:0, t:all 500ms ease-in]:delay-500">
 							<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 						</svg>
 					</label>
