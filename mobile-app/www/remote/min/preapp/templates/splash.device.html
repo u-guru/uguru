@@ -6,6 +6,7 @@
 	when-university-dropdown-mouse-leave="prop:[tr:rotateY(180deg):delay-50]"
 	when-university-dropdown-toggle-on="prop:[tr:rotateY(0)]"
 	when-university-dropdown-toggle-off="prop:[tr:rotateY(180deg):delay-50]"
+	on-hover="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]"
 	ng-if="root.window.desktop">
 	<custom-states when="device-init"></custom-states>
     <div class="splash-device splash-device-iphone">
