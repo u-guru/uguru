@@ -5,6 +5,31 @@
 	@include flex;
 	width: 100%;
 	background: $slate;
+	.cal-add {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 64px;
+		height: 64px;
+		a {
+			@include flex;
+			@include flex-center;
+			@include round;
+			width: 34px;
+			height: 34px;
+			background: white;
+			svg {
+				display: block;
+				width: 24px;
+				height: 24px;
+				* {
+					@include svg-stroke(rgba(lighten($slate, 15%), .5), 8);
+				}
+			}
+		}
+	}
 	.cal-search {
 		@include flex;
 		@include flex-center;
