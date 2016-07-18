@@ -1896,7 +1896,8 @@ fieldset.no-border * {
       height: 40px;
       left: 0;
       margin-left: 0;
-      top: 50px; }
+      top: 50px;
+      visibility: visible; }
     .dropdown-color > div.visible {
       transform: translateY(0) translateZ(0) scale(1);
       opacity: 1;

@@ -934,6 +934,7 @@
 			left: 0;
 			margin-left: 0;
 			top: 50px;
+			visibility: visible;
 		}
 		&.visible {
 			transform: translateY(0) translateZ(0) scale(1);

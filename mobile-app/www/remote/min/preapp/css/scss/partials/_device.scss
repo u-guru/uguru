@@ -7,6 +7,9 @@
 	@media screen and (min-width: 768px) {
         display: block;
     }
+	* {
+		backface-visibility: visible!important;
+	}
 }
 .splash-device {
     display: none;
@@ -22,17 +25,22 @@
     }
     &.splash-device-iphone {
         margin-left: -160px;
-        margin-top: -306px;
+        margin-top: -327.54px;
+		height: 100%;
+		max-height: 655.08px;
+		width: 100%;
+		max-width: 320px;
 		// background: $charcoal;
 		// border-radius: 40px;
         .splash-device-svg {
             @include flex;
 			transition: all 150ms ease-in-out;
 			width: 100%;
+			height: 100%;
 			.iphone-left, .iphone-right {
 				display: block;
 				height: 100%;
-                max-height: 655.09px;
+                max-height: 655.08px;
 				width: 50%;
 				max-width: 160px;
 			}
@@ -41,7 +49,7 @@
 				top: 0;
 				left: 0;
 				height: 100%;
-                max-height: 655.09px;
+                max-height: 655.08px;
 				width: 100%;
 				max-width: 320px;
 			}
