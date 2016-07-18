@@ -29,7 +29,7 @@
 							<ul class="cal-time"
 								init-with="p:[op:0, transform-origin:left center]"
 								when-cal-enter="trigger:[on-enter]"
-								on-enter="anim:[bounceIn-subtle:set:(dur:1000ms):in]:delay-100">
+								on-enter="anim:[bounceIn-subtle:set:(dur:1200ms):in]:delay-1000">
 								<li>
 									<span>All Day</span>
 								</li>
@@ -208,8 +208,10 @@
 									</li>
 								</ul>
 								<div class="cal-events">
-									<ul class='cal-day'>
-										<li init-with="p-op" class="all-day">
+									<ul class='cal-day'
+										when-cal-enter="trigger:[on-enter:children]">
+										<li init-with="p:[op:1, transform-origin:center center]" class="all-day"
+											on-enter="p:[op:1] | anim:[bounceIn-subtle:set:(dur:1000ms):in]:delay-1000">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
