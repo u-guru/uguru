@@ -11654,26 +11654,10 @@ input[type=range] {
   height: 42px;
   position: relative; }
   .icon-round-stroke:before {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    -ms-transform: scale(0);
-    -o-transform: scale(0);
     transform: scale(0);
-    -webkit-transform-origin: center center;
-    -moz-transform-origin: center center;
-    -ms-transform-origin: center center;
-    -o-transform-origin: center center;
     transform-origin: center center;
-    -webkit-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-    -moz-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-    -ms-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-    -o-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
     transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-    -webkit-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-    -moz-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-    -ms-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-    -o-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-    transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+    transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1.27);
     border-radius: 1000px;
     content: "";
     display: block;
@@ -11686,63 +11670,31 @@ input[type=range] {
     height: 30px;
     background: white; }
   .icon-round-stroke * {
-    -webkit-transform-origin: center center;
-    -moz-transform-origin: center center;
-    -ms-transform-origin: center center;
-    -o-transform-origin: center center;
     transform-origin: center center; }
   .icon-round-stroke svg {
-    -webkit-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-    -moz-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-    -ms-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-    -o-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
     transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-    -webkit-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-    -moz-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-    -ms-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-    -o-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-    transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+    transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1.27);
     height: 100%;
     width: auto;
     position: relative;
     z-index: 10; }
     .icon-round-stroke svg g, .icon-round-stroke svg circle, .icon-round-stroke svg path {
-      -webkit-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-      -moz-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-      -ms-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-      -o-transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
       transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1);
-      -webkit-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-      -moz-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-      -ms-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-      -o-transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
-      transition: all 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
+      transition: all 300ms cubic-bezier(0.77, 0, 0.05, 1.27);
       fill: none;
       stroke: white;
       stroke-width: 4px;
       stroke-linecap: round;
       stroke-linejoin: round; }
     .icon-round-stroke svg g:not(.path) > path, .icon-round-stroke svg .path {
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
       transform: rotate(0deg); }
   .icon-round-stroke:hover, .icon-round-stroke:focus {
     background: none; }
     .icon-round-stroke:hover svg g:not(.path) > path, .icon-round-stroke:hover svg .path, .icon-round-stroke:focus svg g:not(.path) > path, .icon-round-stroke:focus svg .path {
-      -webkit-transform: rotate(180deg);
-      -moz-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-      -o-transform: rotate(180deg);
       transform: rotate(180deg); }
     .icon-round-stroke:hover svg path, .icon-round-stroke:focus svg path {
       stroke: #40484B; }
     .icon-round-stroke:hover:before, .icon-round-stroke:focus:before {
-      -webkit-transform: scale(1);
-      -moz-transform: scale(1);
-      -ms-transform: scale(1);
-      -o-transform: scale(1);
       transform: scale(1); }
   .icon-round-stroke:active:before {
     background: #637074; }
@@ -11751,16 +11703,8 @@ input[type=range] {
   .icon-round-stroke:active svg path {
     stroke: white; }
   .icon-round-stroke.close svg {
-    -webkit-transform: rotate(225deg);
-    -moz-transform: rotate(225deg);
-    -ms-transform: rotate(225deg);
-    -o-transform: rotate(225deg);
     transform: rotate(225deg); }
   .icon-round-stroke.close:hover svg, .icon-round-stroke.close:focus svg {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
     transform: rotate(45deg); }
 
 .ticket-slider-container {

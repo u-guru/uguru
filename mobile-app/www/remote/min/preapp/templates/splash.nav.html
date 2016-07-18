@@ -39,7 +39,6 @@
 			                when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
 							when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]">
                         </dropdown>
-						<!-- on-hover="prop:[op:0]" on-hover-delay="1000" -->
                         <h2 init-with="p-op"
 							when-nav-init="t-enter"
 							on-enter="prop:[op:1, t:all 1000ms ease-out]:delay-750"
@@ -49,7 +48,6 @@
 							when-university-dropdown-mouse-enter="prop:[op:0.1:delay-50, t:all 250ms ease-in-out]"
 			                when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
 							when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]">@</h2>
-						<!-- @samir delays for send are not working as expected -->
                         <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'
                             prefix="university"
 							init-with="p-op"
@@ -72,7 +70,6 @@
 					when-nav-init="t-enter"
 					on-enter="prop:[op:1, t:all 1000ms ease-out]:delay-1500"
 					on-click="send:[mobile-switch-init:public]">
-                    <!-- class-on-load="slideInDown" class-on-load-delay="450" -->
                     <div class="splash-hero-nav-container">
                         <a class-on-click="a:inject.splash-hero-nav-schools|a" ng-click='page.dropdowns.university.toggle()'>
                             <span style='background-color: {{selectedUniversity.school_color_dark}}'></span>
@@ -91,6 +88,7 @@
 					when-university-dropdown-mouse-enter="prop:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 					when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
 					when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]"
+					on-hover="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]"
 					on-click="send:[powerups-clicked] | class:[powerups-link:add]">
 					<!-- init-with="prop:[op:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[op:0]" -->
                     <!-- ng-click='activatePowerups()'
@@ -103,6 +101,7 @@
 								when-nav-init="t-enter"
 								on-enter="prop:[sdo:0]:delay-1500"></circle>
 							<path d="M56.3084499,25.2719891 L34.0938203,54.734855 C33.8309226,55.1111739 34.1593498,55.7098274 34.5985529,55.7098274 L47.6390638,55.7098274 L42.1080688,74.2068066 C42.0199162,74.4951345 42.1735982,74.8274579 42.4372761,74.9382324 C42.700954,75.0710046 43.0301614,74.9830135 43.2056866,74.7386812 L65.9032056,44.9874874 C66.1661034,44.6111685 65.8587392,44.0133006 65.3984731,44.0133006 L52.0076918,44.0133006 L57.4076279,25.8038637 C57.5379067,25.4047613 57.1431699,24.9396657 56.7476531,25.0064446 C56.5721278,25.0284424 56.3966026,25.1172191 56.3084499,25.2719891 Z"
+								class="path"
 								init-with="prop:[fop:0, sda:145.2, sdo:145.2]"
 								when-nav-init="t-enter"
 								on-enter="prop:[sdo:0:delay-1500, fop:1:delay-1750]"></path>
@@ -118,6 +117,7 @@
 					when-university-dropdown-mouse-enter="prop:[op:0.1:delay-50, t:all 250ms ease-in-out]"
 					when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
 					when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]"
+					on-hover="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]"
 					on-click="send:[powerups-clicked] | class:[powerups-link:add]">
 					<!-- init-with="prop:[op:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="prop:[op:0]" -->
                     <!-- ng-click='activatePowerups()'
@@ -130,6 +130,7 @@
 								when-nav-init="t-enter"
 								on-enter="prop:[sdo:0]:delay-1500"></circle>
 							<path d="M56.3084499,25.2719891 L34.0938203,54.734855 C33.8309226,55.1111739 34.1593498,55.7098274 34.5985529,55.7098274 L47.6390638,55.7098274 L42.1080688,74.2068066 C42.0199162,74.4951345 42.1735982,74.8274579 42.4372761,74.9382324 C42.700954,75.0710046 43.0301614,74.9830135 43.2056866,74.7386812 L65.9032056,44.9874874 C66.1661034,44.6111685 65.8587392,44.0133006 65.3984731,44.0133006 L52.0076918,44.0133006 L57.4076279,25.8038637 C57.5379067,25.4047613 57.1431699,24.9396657 56.7476531,25.0064446 C56.5721278,25.0284424 56.3966026,25.1172191 56.3084499,25.2719891 Z"
+								class="path"
 								init-with="prop:[fop:0, sda:145.2, sdo:145.2]"
 								when-nav-init="t-enter"
 								on-enter="prop:[sdo:0:delay-1500, fop:1:delay-1750]"></path>
@@ -145,6 +146,7 @@
 					when-university-dropdown-mouse-enter="prop:[op:0.1, t:all 250ms ease-in-out]"
 					when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
 					when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]"
+					on-hover="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]"
 					on-click="send:[sidebar-icon-clicked:public]">
 					<!-- init-with="p-op"
 					when-nav-init="t-enter"
@@ -181,6 +183,7 @@
 					when-university-dropdown-mouse-enter="prop:[op:0.1:delay-100, t:all 250ms ease-in-out]"
 					when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
 					when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]"
+					on-hover="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]"
 					on-click="send:[sidebar-icon-clicked:public]">
 					<!-- init-with="p-op"
 					when-nav-init="t-enter"
