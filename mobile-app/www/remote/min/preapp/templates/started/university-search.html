@@ -1,23 +1,37 @@
 <div id='university-search' class="absolute full-xy top-0 left-0 flex-center bg-charcoal"
 	init-with="prop:[opacity:0, z-index:-1000, t:all 600ms ease-in-out]"
-	when-search-university-clicked="prop:[opacity:1:delay-600, z-index:1000] | send:[search-university-init:public:delay-1600]"\
+	when-search-university-clicked="prop:[opacity:1:delay-600, z-index:1000] | send:[search-university-projector-init:public:delay-1600]"
 	when-close-search-university="prop:[opacity:0:delay-600, z-index:-1000]">
+	<!--  | send:[search-university-init:public:delay-1600] -->
     <div class="projector-slide"
 		init-with="prop:[op:0, tro:center top]"
-		when-search-university-init="anim:[projectorInDown:set:(dur:1000ms#func:linear):in:delay-250]">
+		when-search-university-projector-init="anim:[projectorInDown:set:(dur:1000ms#func:linear):in:delay-250]">
         <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
             <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
         </svg>
         <div class="projector-top"></div>
         <div class="projector-content projector-school"
 			init-with="prop:[op:0, tro:center top]"
-			when-search-university-init="anim:[projectorIn:set:(dur:2000ms#func:linear):in:delay-500]">
-            <div class="projector-school-loader absolute top-0 left-0 full-xy flex-center" on-init="opacity:0">
+			when-search-university-projector-init="anim:[projectorIn:set:(dur:2000ms#func:linear):in:delay-500]">
+            <div class="projector-school-loader absolute top-0 left-0 full-xy flex-center"
+				init-with="prop:[tro:center center]"
+				when-search-university-projector-init="prop:[op:1:delay-250, t:all 250ms ease-in-out] | trigger:[on-exit]"
+				on-exit="anim:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:delay-5500] | send:[search-university-init:public:delay-5500]">
                 <svg class="echo-loader" width="300px" height="300px" viewBox="0 0 300 300">
                     <g fill="none">
-                        <circle class="echo-loader-echo" stroke="#69B3A5" fill-opacity="0.2" fill="#69B3A5" cx="150" cy="150" r="50"></circle>
+						<g init-with="prop:[tro:center center]"
+							when-search-university-projector-init="t-enter"
+							on-enter="anim:[ping:set:(dur:1500ms#func:ease-in-out#count:infinite):a:delay-500]">
+	                        <circle class="echo-loader-echo" stroke="#69B3A5" fill-opacity="0.2" fill="#69B3A5" cx="150" cy="150" r="50"
+								init-default
+								when-search-university-projector-init="t-enter"
+								on-enter="anim:[echo-loader-main:set:(dur:5000ms#func:ease#count:infinite):a:delay-500]"></circle>
+						</g>
                         <circle class="echo-loader-track" stroke-opacity="0.4" stroke="#FFFFFF" stroke-width="2" fill="#40484B" cx="150" cy="150" r="100"></circle>
-                        <path d="M150,250 C205.228475,250 250,205.228475 250,150 C250,94.771525 205.228475,50 150,50 C94.771525,50 50,94.771525 50,150 C50,205.228475 94.771525,250 150,250 L150,250 Z" class="echo-loader-main" stroke="#69B3A5" stroke-width="2"></path>
+                        <path d="M150,250 C205.228475,250 250,205.228475 250,150 C250,94.771525 205.228475,50 150,50 C94.771525,50 50,94.771525 50,150 C50,205.228475 94.771525,250 150,250 L150,250 Z" class="echo-loader-main" stroke="#69B3A5" stroke-width="2"
+							init-with="prop:[sda:629, sdo:629]"
+							when-search-university-projector-init="t-enter"
+							on-enter="anim:[echo-loader-main:set:(dur:5000ms#func:ease#count:infinite):a:delay-500]"></path>
                         <text class="echo-loader-number" font-family="Source Sans Pro" font-size="48" font-weight="600" fill="#FFFFFF" text-anchor="middle">
                             <tspan x="150" y="149">0</tspan>
                         </text>
@@ -28,7 +42,10 @@
                 </svg>
             </div>
 
-            <div id='projector-university' class='projector-school-search absolute left-0 top-0 full-xy flex-wrap-center'>
+            <div id='projector-university' class='projector-school-search absolute left-0 top-0 full-xy flex-wrap-center'
+				init-with="p-op"
+				when-search-university-init="t-enter"
+				on-enter="anim:[fadeIn:set:(dur:1000ms#func:ease-in-out):in]">
                 <!-- class-on-clear="slideOutUp:animOut" activate-on-class="show-projector-university" class-on-activate="opacity-1-impt:inject#projector-university [class-on-activate]|activate, opacity-1-impt:inject" class-on-activate-delay="1500" -->
 				<header class="p15xy semibold"><h1 class="caps">Search 196 Supported Schools</h1></header>
                 <div class='projector-map bg-slate full-xy'>
@@ -104,12 +121,12 @@
                                         <div class="school-card-info" style="color: #003262;"
 											on-enter="t-enter-child">
                                             <h1 style="color: #003262;"
-												on-init="p-op"
+												init-with="p-op"
 												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
-                                            <h1 on-init="p-op"
+                                            <h1 init-with="p-op"
 											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
                                             <h2 style="color: #003262;"
-												on-init="p-op"
+												init-with="p-op"
 												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-450]">Berkeley, CA</h2>
                                         </div>
                                     </div>
@@ -153,12 +170,12 @@
                                         <div class="school-card-info" style="color: #003262;"
 											on-enter="t-enter-child">
                                             <h1 style="color: #003262;"
-												on-init="p-op"
+												init-with="p-op"
 												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
-                                            <h1 on-init="p-op"
+                                            <h1 init-with="p-op"
 											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
                                             <h2 style="color: #003262;"
-												on-init="p-op"
+												init-with="p-op"
 												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-450]">Berkeley, CA</h2>
                                         </div>
                                     </div>
@@ -202,12 +219,12 @@
                                         <div class="school-card-info" style="color: #003262;"
 											on-enter="t-enter-child">
                                             <h1 style="color: #003262;"
-												on-init="p-op"
+												init-with="p-op"
 												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
-                                            <h1 on-init="p-op"
+                                            <h1 init-with="p-op"
 											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
                                             <h2 style="color: #003262;"
-												on-init="p-op"
+												init-with="p-op"
 												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-450]">Berkeley, CA</h2>
                                         </div>
                                     </div>
@@ -251,12 +268,12 @@
                                         <div class="school-card-info" style="color: #003262;"
 											on-enter="t-enter-child">
                                             <h1 style="color: #003262;"
-												on-init="p-op"
+												init-with="p-op"
 												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
-                                            <h1 on-init="p-op"
+                                            <h1 init-with="p-op"
 											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
                                             <h2 style="color: #003262;"
-												on-init="p-op"
+												init-with="p-op"
 												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-450]">Berkeley, CA</h2>
                                         </div>
                                     </div>
@@ -300,12 +317,12 @@
                                         <div class="school-card-info" style="color: #003262;"
 											on-enter="t-enter-child">
                                             <h1 style="color: #003262;"
-												on-init="p-op"
+												init-with="p-op"
 												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
-                                            <h1 on-init="p-op"
+                                            <h1 init-with="p-op"
 											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-350]">UC Berkeley</h1>
                                             <h2 style="color: #003262;"
-												on-init="p-op"
+												init-with="p-op"
 												on-enter="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-450]">Berkeley, CA</h2>
                                         </div>
                                     </div>
