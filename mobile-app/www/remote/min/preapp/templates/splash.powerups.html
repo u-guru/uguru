@@ -1,12 +1,12 @@
 <div class="powerups-scale"
-	init-with="prop:[transform:scale(0), transition:all 1000ms ease-out, opacity:1, display:block, background:#F6C64E]"
+	init-with="p:[transform:scale(0), transition:all 1000ms ease-out, opacity:1, display:block, background:#F6C64E]"
 	when-powerups-clicked="trigger:[on-enter]"
-	on-enter="prop:[transform:scale(1000), background:#F6C64E] | trigger:[on-exit]"
-	on-exit="prop:[opacity:0:delay-500, transition:all 500ms ease-out, display:none:delay-2000]"></div>
+	on-enter="p:[transform:scale(1000), background:#F6C64E] | trigger:[on-exit]"
+	on-exit="p:[opacity:0:delay-500, transition:all 500ms ease-out, display:none:delay-2000]"></div>
 <ion-view id='splash-powerups' ng-controller="SplashPowerupsController as powerups"
-	init-with="prop:[op:0, z-index:-1, t:all 750ms ease-in-out]"
-	when-powerups-clicked="prop:[op:1:delay-250, z-index:1000] | send:[powerups-init:public]:delay-3000"
-	when-close-powerups="prop:[op:0, z-index:-1:delay-250]">
+	init-with="p:[op:0, z-index:-1, t:all 750ms ease-in-out]"
+	when-powerups-clicked="p:[op:1:delay-250, z-index:1000] | send:[powerups-init:public]:delay-3000"
+	when-close-powerups="p:[op:0, z-index:-1:delay-250]">
     <div id='powerups' class="full-xy bg-slate">
         <header class="flex-center-wrap p15xy relative z-index-0">
             <span id="powerup-all-icon" class="svg-128" ng-include="root.base_url + 'shared/templates/components/svg/main/lightning-circle.html'"></span>
@@ -20,8 +20,8 @@
 					when-powerups-init="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-1000] | send:[powerup-icon-gpa-init:public:delay-1000]">
                     <a id="powerup-gpa-container" class="block relative high-z-index"
 						init-default
-						on-mouse-enter="send:[gpa-mouse-enter-init:public]"
-						on-mouse-leave="send:[gpa-mouse-leave-init:public]">
+						on-mouse-enter="send:[gpa-mouse-enter:public]"
+						on-mouse-leave="send:[gpa-mouse-leave:public]">
                         <div id="powerup-gpa-icon" class="block loader-powerup-gpa" ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
                         <div id="powerup-gpa-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
 							init-with="p-op"
@@ -32,8 +32,8 @@
 					when-powerups-init="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-1500] | send:[powerup-icon-munchies-init:public:delay-1500]">
                     <a id="powerup-munchies-container" class="block relative"
 						init-default
-						on-mouse-enter="send:[munchies-mouse-enter-init:public]"
-						on-mouse-leave="send:[munchies-mouse-leave-init:public]">
+						on-mouse-enter="send:[munchies-mouse-enter:public]"
+						on-mouse-leave="send:[munchies-mouse-leave:public]">
                         <div id="powerup-munchies-icon" class="block loader-powerup-munchies" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies-card.html'"></div>
                         <div id="powerup-munchies-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
 							init-with="p-op"
@@ -62,9 +62,9 @@
         </div>
     </div>
     <div class="splash-hero-skip absolute bottom-0 right-0"
-		init-with="prop:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
+		init-with="p:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
 		when-powerups-init="t-enter"
-		on-enter="prop:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
+		on-enter="p:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
        <button on-click="send:[close-powerups]">Back</button>
     </div>
 </ion-view>
