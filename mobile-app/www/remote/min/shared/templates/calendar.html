@@ -13,21 +13,23 @@
 							<span>
 								<span init-with="prop:[op:0, tr:rotateX(90deg), t:all 150ms ease-out]"
 									when-cal-enter="trigger:[on-enter]"
-									on-enter="prop:[op:1, tr:rotateX(0)]">J</span>
+									on-enter="prop:[op:1, tr:rotateX(0)]:delay-150">J</span>
 								<span init-with="prop:[op:0, tr:rotateX(90deg), t:all 150ms ease-out]"
 									when-cal-enter="trigger:[on-enter]"
-									on-enter="prop:[op:1, tr:rotateX(0)]:delay-100">u</span>
+									on-enter="prop:[op:1, tr:rotateX(0)]:delay-300">u</span>
 								<span init-with="prop:[op:0, tr:rotateX(90deg), t:all 150ms ease-out]"
 									when-cal-enter="trigger:[on-enter]"
-									on-enter="prop:[op:1, tr:rotateX(0)]:delay-200">l</span>
+									on-enter="prop:[op:1, tr:rotateX(0)]:delay-450">l</span>
 								<span init-with="prop:[op:0, tr:rotateX(90deg), t:all 150ms ease-out]"
 									when-cal-enter="trigger:[on-enter]"
-									on-enter="prop:[op:1, tr:rotateX(0)]:delay-300">y</span>
+									on-enter="prop:[op:1, tr:rotateX(0)]:delay-600">y</span>
 							</span>
 						</h1>
 						<div class="cal-day-container flex">
 							<ul class="cal-time"
-								init-with="p-op">
+								init-with="p:[op:0, transform-origin:left center]"
+								when-cal-enter="trigger:[on-enter]"
+								on-enter="anim:[bounceIn-subtle:set:(dur:1200ms):in]:delay-1000">
 								<li>
 									<span>All Day</span>
 								</li>
@@ -207,7 +209,10 @@
 								</ul>
 								<div class="cal-events">
 									<ul class='cal-day'>
-										<li init-with="p-op" class="all-day">
+										<li class="all-day"
+											init-with="p:[op:0, tro:center center]"
+											when-cal-enter="trigger:[on-enter]:delay-1000"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms):in] | send:[cal-day-2-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -215,7 +220,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p:[op:0, tro:center center]"
+											when-cal-day-2-init="trigger:[on-enter]"
+											on-enter="anim:[bounceIn-subtle:set:(dur:1000ms):in] | send:[cal-day-3-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -466,7 +473,9 @@
 											</div>
 										</li>
 										<li init-with="p-op" class="has-event event-household">
-											<span>
+											<span></span>
+											<span class="event">
+												<div></div><div></div><div></div><div></div>
 												<h1 init-with="p-op">Jeselle</h1>
 												<span init-with="p-op">6am-7am</span>
 												<a class="close-icon">
@@ -935,7 +944,9 @@
 											</div>
 										</li>
 										<li init-with="p-op" class="has-event event-academic">
-											<a>
+											<span></span>
+											<a class="event">
+												<div></div><div></div><div></div><div></div>
 												<h1 init-with="p-op">Gabrielle</h1>
 												<span init-with="p-op">12am-1pm</span>
 											</a>
@@ -1768,6 +1779,21 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="cal-add"
+				init-with="p-op"
+				when-cal-init="trigger:[on-enter]"
+				on-enter="prop:[op:1,t:all 300ms ease-in-out]:delay-300">
+				<a>
+					<svg viewBox="0 0 100 100"
+						init-with="prop:[op:0, sdo:212, sda:212]"
+						when-cal-init="trigger:[on-enter]"
+						on-enter="prop:[op:1, sdo:0, t:all 500ms ease-in]:delay-500">
+						<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+					</svg>
+				</a>
+			</div>
+
 			<div class="cal-search" class-on-click="active, null:inject.calendar-container|has-filters"
 				init-with="p-op"
 				when-cal-init="trigger:[on-enter]"
@@ -1776,7 +1802,9 @@
 					<input id="search-events" type="search" placeholder="Search"/>
 					<label for="search-events">
 						<svg viewBox="0 0 100 100"
-							init-with="p-op">
+							init-with="prop:[op:0, sdo:212, sda:212]"
+							when-cal-init="trigger:[on-enter]"
+							on-enter="prop:[op:1, sdo:0, t:all 500ms ease-in]:delay-500">
 							<path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
 						</svg>
 					</label>
