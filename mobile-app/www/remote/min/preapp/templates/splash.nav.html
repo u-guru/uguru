@@ -20,8 +20,8 @@
 				when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 				when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"></a>
 
-            <div class="right" desktop>
-                <div class="splash-hero-nav desktop m15right">
+            <div class="right">
+                <div class="splash-hero-nav desktop m15right" desktop>
                     <div class="splash-hero-nav-container">
                     	<dropdown debug-id="1" ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
                             prefix="category"
@@ -216,15 +216,22 @@
         </header>
 
          <!--Mobile Nav-->
-         <div mobile id="splash-hero-nav-mobile"
-		 	init-with="prop:[op:1, z-index:999, t:all 250ms ease-in-out]"
+         <div mobile id="splash-hero-nav-mobile" class="no-scrollbar"
+		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
 			when-mobile-switch-init="t-enter"
-			on-enter="prop:[op:1, z-index:999]">
+			on-enter="p:[op:1, z-index:999]">
             <div class="splash-hero-nav-category full-x">
-                <h1>Category</h1>
+                <h1 init-with="p-op"
+					when-mobile-switch-init="t-enter"
+					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">Category</h1>
                 <ul>
-                    <li ng-repeat='category in categories'>
-                        <a class="bg-{{category.bg_hex_color}}" ng-click='demoSwitchCategory(category, selectedUniversity)' ng-class="{'active':category.id == selectedCategory.id}">
+                    <li ng-repeat='category in nav.categoriesDropdown.options'
+						init-with="p-op"
+						when-mobile-switch-init="t-enter"
+						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
+                        <a class="bg-{{category.bg_hex_color}}"
+							ng-class="{'active':category.id == selectedCategory.id}"
+							ng-click='demoSwitchCategory(category, selectedUniversity)'>
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
                             <span>{{category.name}}</span>
                         </a>
@@ -232,22 +239,19 @@
                 </ul>
             </div>
             <div class="splash-hero-nav-school full-x">
-                <h1>University</h1>
+                <h1 init-with="p-op"
+					when-mobile-switch-init="t-enter"
+					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">University</h1>
                 <ul>
-                    <li ng-repeat='university in featured_universities'>
-                        <a ng-click='refreshUniversityState(university)' ng-class="{'active':university.id == selectedUniversity.id}" style="border-color: {{university.school_color_dark}}">
+                    <li ng-repeat='university in nav.universitiesDropdown.options' class='txt-white weight-600'
+						init-with="p-op"
+						when-mobile-switch-init="t-enter"
+						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
+                        <a ng-class="{'active':university.id == selectedUniversity.id}"
+							ng-click='demoSwitchCategory(category, selectedUniversity)'>
                             <span style="background: {{university.school_color_dark}}"></span>
                             <span>{{university.short_name || university.name}}</span>
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="bg-find"
-							init-default
-							on-click="send:[search-university-clicked:public]">
-                            <span></span>
-                            <span>Find your College</span>
-                            <span></span>
                         </a>
                     </li>
                 </ul>
