@@ -364,8 +364,6 @@ angular.module('uguru.shared.directives')
         return element.attr('class');
       }, function(new_value) {
         if (new_value && new_value.indexOf('activate') > -1) {
-
-
             if (element[0].nodeName !== 'path') {
               var path = SVGService.svgShapeToPath(element[0])[0];
               var elem = path
