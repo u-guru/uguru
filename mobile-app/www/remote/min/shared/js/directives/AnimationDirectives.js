@@ -205,7 +205,6 @@ angular.module('uguru.shared.directives')
         })
       }
     }
-
 }])
 .directive('classOnClear', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
   return {

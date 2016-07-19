@@ -8,7 +8,7 @@ angular.module('uguru.admin')
   function($scope, $state, $timeout, SpecService) {
 
     var ms = this;
-    ms.types = ['minimal', 'hifi'];
+    ms.types = ['ugh', 'eh', 'ah', 'aha'];
     ms.typeIndex = 0;
 
     $scope.$watch('root.milestones', function(new_val) {
