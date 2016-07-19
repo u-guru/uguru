@@ -100,7 +100,7 @@ angular.module('uguru.shared.directives')
 .directive('desktop', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
   return {
     restrict: 'A',
-    priority: 10000,
+    priority: 1000,
     require: '^?RootController',
       link: {
         pre: function(scope, element, attr) {
@@ -118,7 +118,7 @@ angular.module('uguru.shared.directives')
   return {
     restrict: 'A',
     require: '^?RootController',
-    priority: 10000,
+    priority: 1000,
       link: {
         pre: function(scope, element, attr) {
           if (!scope.root.window.mobile) {

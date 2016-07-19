@@ -4,8 +4,8 @@
 	init-with="p:[tro:center center, tr:rotateY(180deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 	when-university-dropdown-mouse-enter="p:[tr:rotateY(0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 	when-university-dropdown-mouse-leave="p:[tr:rotateY(180deg):delay-50, t:none]"
-	when-university-dropdown-toggle-off="p:[tr:rotateY(180deg):delay-50, t:none]">
-	<!-- ng-if="root.window.desktop" -->
+	when-university-dropdown-toggle-off="p:[tr:rotateY(180deg):delay-50, t:none]"
+	desktop>
 	<custom-states when="device-init"></custom-states>
     <div class="splash-device splash-device-iphone">
         <div class="splash-device-svg iphone-device"
@@ -31,7 +31,7 @@
 			</svg>
 
             <svg class="iphone-left" viewBox="0 0 159 651"
-				init-with="p:[op:0, tr:translate3d(0#-30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
+				init-with="p:[op:0, tr:translate3d(0#-30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)#opacity 750ms ease]"
 				when-device-init="t-enter"
 				on-enter="p:[op:0.2, tr:none, op:0:delay-3000, display:none:delay-3000]">
 				<g fill="#2b2324" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -54,7 +54,7 @@
 			</svg>
 
 			<svg class="iphone-right" viewBox="0 0 159 651"
-				init-with="p:[op:0, tr:translate3d(0#30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
+				init-with="p:[op:0, tr:translate3d(0#30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)#opacity 750ms ease]"
 				when-device-init="t-enter"
 				on-enter="p:[op:0.2, tr:none, op:0:delay-3000, display:none:delay-3000]">
 				<g fill="#2b2324" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">

@@ -21,8 +21,7 @@
 				when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"></a>
 
             <div class="right">
-                <div class="splash-hero-nav desktop m15right">
-					<!-- desktop -->
+                <div class="splash-hero-nav desktop m15right" desktop>
                     <div class="splash-hero-nav-container">
                     	<dropdown ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
                             prefix="category"
@@ -66,7 +65,7 @@
 		                    when-university-dropdown-mouse-enter="p:[op:1, t:all 250ms ease-in-out]"> </dropdown>
                     </div>
                 </div>
-				<div class="splash-hero-nav mobile"
+				<div class="splash-hero-nav mobile" mobile
 					init-with="p-op"
 					when-nav-init="t-enter"
 					on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1500"
@@ -81,7 +80,7 @@
                         </a>
                     </div>
                 </div>
-                <a class="powerups-link icon-round-stroke mobile"
+                <a class="powerups-link icon-round-stroke mobile" mobile
 					init-default
 					when-category-dropdown-mouse-enter="p:[op:0.25, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
@@ -106,7 +105,7 @@
 					</div>
                     <!-- translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" -->
                 </a>
-				<a class="powerups-link icon-round-stroke desktop"
+				<a class="powerups-link icon-round-stroke desktop" desktop
 					init-default
 					when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
@@ -131,7 +130,7 @@
 					</div>
                     <!-- translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" -->
                 </a>
-                <a class="sidebar-link icon-round-stroke mobile"
+                <a class="sidebar-link icon-round-stroke mobile" mobile
 					init-default
 					when-category-dropdown-mouse-enter="p:[op:0.25, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
@@ -164,7 +163,7 @@
 						</svg>
 					</div>
 				</a>
-				<a class="sidebar-link icon-round-stroke desktop"
+				<a class="sidebar-link icon-round-stroke desktop" desktop
 					init-default
 					when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
@@ -201,7 +200,7 @@
         </header>
 
          <!--Mobile Nav-->
-         <div mobile id="splash-hero-nav-mobile" class="no-scrollbar"
+         <div mobile id="splash-hero-nav-mobile" class="no-scrollbar" mobile
 		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
 			when-mobile-switch-init="t-enter"
 			on-enter="p:[op:1, z-index:999]">
