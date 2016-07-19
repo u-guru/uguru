@@ -216,7 +216,12 @@
                 </h1>
             </div>
             <ul init-default
-				when-madlib-init="trigger:[on-enter:children:delay-3500]">
+				when-madlib-init="trigger:[on-enter:children:delay-3500]"
+                switches="rowOne:[change-delay:250, active-limit:1, data:madlib.switches.rowOne]|rowTwo:[change-delay:250, active-limit:1, data:madlib.switches.rowTwo]"
+                on-switch-row-one-change=""
+                on-switch-row-two-change=""
+                on-switch-row-one-reset=""
+                on-switch-row-two-reset="">
                 <!-- on-activate="spread-out:animIn:delay-2500"
                 on-hover="pulse"
                 when-color-dropdown-clicked="prop:[op:0]"
@@ -242,9 +247,12 @@
                     type="splash" blank-num="1">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
-	                        translate-on-click="translate-blank-1" translate-to-elem="#blank-1"
-                            ng-click="madlib.tagClicked($event)"
-	                        class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
+
+                            switch="rowOne"
+                            on-switch-row-one-active="transform:[to:(#blank-1), scale:(1.5, 1.5), duration:250, delay:500]"
+                            on-switch-row-one-inactive="transform:[clear:translate]"
+                            on-click="trigger:[on-switch-row-one-change]"
+	                        >
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -278,7 +286,8 @@
 
 				<li class='adlib-tag'
                     init-with="prop:[op:0,t:all 250ms ease-in-out]"
-                    on-enter="anim:[bounceIn-subtle:set:(dur:1000ms):in]:delay-150"
+                    when-madlib-init="t-enter"
+                    on-enter="prop:[op:1]"
                     when-category-dropdown-click="trigger:[on-exit]"
 	            	when-category-dropdown-mouse-enter="prop:[op:0.25:delay-250, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
@@ -291,9 +300,11 @@
                     type="splash" blank-num="1">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
-	                        translate-on-click="translate-blank-1" translate-to-elem="#blank-1"
-                            ng-click="madlib.tagClicked($event)"
-	                        class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
+                            switch="rowOne"
+                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500]"
+                            on-switch-row-one-inactive="transform:[clear:translate]"
+                            on-click="trigger:[on-switch-row-one-change]"
+                            >
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -340,9 +351,11 @@
                     type="splash" blank-num="1">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
-	                        translate-on-click="translate-blank-1" translate-to-elem="#blank-1"
-                            ng-click="madlib.tagClicked($event)"
-	                        class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
+	                        switch="rowOne"
+                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500]"
+                            on-switch-row-one-inactive="transform:[clear:translate]"
+                            on-click="trigger:[on-switch-row-one-change]"
+                            >
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -389,9 +402,12 @@
                     type="splash" blank-num="1">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
-	                        translate-on-click="translate-blank-1" translate-to-elem="#blank-1"
-                            ng-click="madlib.tagClicked($event)"
-	                        class-on-click='translate-blank-1:unique:inject.splash-adlib|blank-1-filled, translate-blank-1:unique:inject.splash-adlib b|blank-1-filled'>
+	                        switch="rowOne"
+                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500]"
+                            on-switch-row-one-inactive="transform:[clear:translate]"
+                            on-click="trigger:[on-switch-row-one-change]"
+
+                            >
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -436,10 +452,15 @@
                     on-change="eval:[madlib.updateOptionByIndex(splash.category, 4)]"
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
-						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        translate-on-click="translate-blank-2" translate-to-elem="#blank-2"
+                        <!-- translate-on-click="translate-blank-2" translate-to-elem="#blank-2"
                             ng-click="madlib.tagClicked($event)"
-	                        class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b|blank-2-filled'>
+                            class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b|blank-2-filled'> -->
+						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
+	                        switch="rowTwo"
+                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500]"
+                            on-switch-row-two-inactive="transform:[clear:translate]"
+                            on-click="trigger:[on-switch-row-two-change]">
+
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -487,9 +508,10 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        translate-on-click="translate-blank-2" translate-to-elem="#blank-2"
-                            ng-click="madlib.tagClicked($event)"
-	                        class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b|blank-2-filled'>
+	                        switch="rowTwo"
+                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500]"
+                            on-switch-row-two-inactive="transform:[clear:translate]"
+                            on-click="trigger:[on-switch-row-two-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -539,9 +561,10 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        translate-on-click="translate-blank-2" translate-to-elem="#blank-2"
-                            ng-click="madlib.tagClicked($event)"
-	                        class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b|blank-2-filled'>
+	                        switch="rowTwo"
+                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500]"
+                            on-switch-row-two-inactive="transform:[clear:translate]"
+                            on-click="trigger:[on-switch-row-two-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -588,11 +611,12 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        translate-on-click="translate-blank-2" translate-to-elem="#blank-2"
-                            ng-click="madlib.tagClicked($event)"
-	                        class-on-click='translate-blank-2:unique:inject.splash-adlib|blank-2-filled, translate-blank-2:unique:inject.splash-adlib b|blank-2-filled'>
-	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
-	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
+	                        switch="rowTwo"
+                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500]"
+                            on-switch-row-two-inactive="transform:[clear:translate]"
+                            on-click="trigger:[on-switch-row-two-change]">
+	                        <svg init-with="class:[activate:add]" class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
+	                            <rect draw x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
 	                        <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
 	                            <rect x="2" y="2" width="256" height="72" rx="16"></rect>

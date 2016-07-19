@@ -9,11 +9,14 @@
 // - replace trigger scope.watch for 'on' states with a class that initiates the watcher (to prevent future watchers)
 
 angular.module('uguru.shared.directives')
-.directive('initWith', ['DirectiveService', function(DirectiveService) {
+.directive('initWith', ['DirectiveService', 'UtilitiesService', function(DirectiveService, UtilitiesService) {
   return {
     restrict: 'A',
       link: {
         pre: function(scope, element, attr) {
+          var switchDict;
+          var switchName = attr.switch && attr.switch.split(':')[0];
+          var switchId = 'switch-id' in attr && attr['switch-id'] && parseInt(attr['switch-id'])
           if (attr.initLater) {
             scope.$watch(function() {
               return element.attr('class');
@@ -24,18 +27,37 @@ angular.module('uguru.shared.directives')
               }
             })
           } else {
-            execInitWith(scope);
+            if ('switch' in attr && 'switch-id' in attr) {
+              switchId = parseInt(attr['switch-id'])
+              var scopeSwitches = scope.switchDict[switchName].switches;
+              var switchRef = scopeSwitches[switchId - 1];
+              if ('default' in switchRef) {
+                var defaultArgAttrName = 'on-switch-' + UtilitiesService.camelToDash(switchName).toLowerCase() + '-' + switchRef['default'];
+                var defaultStateArgs = UtilitiesService.camelCase(defaultArgAttrName)
+                switchDict = DirectiveService.parseArgs(attr[defaultStateArgs]);
+              }
+
+            }
+            execInitWith(scope, switchDict);
           }
 
-          function execInitWith(scope) {
+          function execInitWith(scope, has_switch_default) {
             var elemArgs = DirectiveService.parseArgs(attr.initWith);
             var listenerArgs = DirectiveService.detectExternalStates(attr);
             var supportedCommands = DirectiveService.supportedCommands;
             for (key in elemArgs) {
-              if (supportedCommands.indexOf(key) > -1) {
+              var switch_interference = has_switch_default && (key in has_switch_default)
+              if (supportedCommands.indexOf(key) > -1 && !switch_interference) {
                   DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              } else if (switch_interference) {
+                DirectiveService.activateArg(key, has_switch_default[key], scope, element)
+                var switchObjRef = scope.switchDict[switchName].switches[switchId - 1]
+                if (switchId && switchObjRef && switchObjRef.active && switchObjRef.default === 'active') {
+                  scope.switchDict[switchName]['activeSwitches'].push(switchId)
+                }
               }
             }
+
             for (key in listenerArgs) {
               var type = listenerArgs[key].type
               var _attr = listenerArgs[key].attr;
@@ -119,14 +141,14 @@ angular.module('uguru.shared.directives')
 .directive('initDefault', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',
-    link: function(scope, element, attr) {
-
+    link: function(scope, element, attr, controller) {
           var listenerArgs = DirectiveService.detectExternalStates(attr);
-
+          if ('switch' in attr) {
+            console.log('initializing', attr.switch)
+          }
           for (key in listenerArgs) {
             var type = listenerArgs[key].type
             var _attr = listenerArgs[key].attr;
-
             DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
           }
     }
@@ -313,6 +335,105 @@ angular.module('uguru.shared.directives')
       }
     }
   }
+}])
+.directive('draw', ['$timeout', 'SVGService', '$compile', function ($timeout, SVGService, $compile) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      var clonedElem = element[0].cloneNode(true);
+      var currentFrame = parseInt(attr.initFrame) || 0;
+      var delay = attr.drawDelay || 0;
+      var totalFrames = SVGService.computeDrawDuration(attr.drawDuration) || 60;
+      var svgPaths = element[0].querySelectorAll('path:not([draw]):not([draw-ignore]), line:not([draw]):not([draw-ignore]), circle:not([draw]):not([draw-ignore]), rect:not([draw]):not([draw-ignore]), polygon:not([draw]):not([draw-ignore])');
+      // var pathLengths = new Array();
+      // var drawShapesDelay = parseInt(attr.drawShapesDelay) || 0;
+      // for (var i = 0; i < svgPaths.length; i++) {
+      //   var indexPathElem = svgPaths[i];
+
+      //   var pathLength = SVGService.getTotalPathLength(indexPathElem);
+
+      //   // var pathLength = indexPathElem.getTotalLength();
+      //   pathLengths[i] = pathLength;
+      //   indexPathElem.style.strokeDasharray = '';
+      //   indexPathElem.style.strokeDashoffset = pathLength;
+      // }
+      $timeout(function() {
+        element[0].classList.add('activate');
+      }, 1000)
+      scope.$watch(function() {
+        return element.attr('class');
+      }, function(new_value) {
+        if (new_value && new_value.indexOf('activate') > -1) {
+
+
+            if (element[0].nodeName !== 'path') {
+              var path = SVGService.svgShapeToPath(element[0])[0];
+              var elem = path
+              var pathAttr = path.getAttribute('d');
+              element[0].parentNode.appendChild(elem);
+              elem.classList.add('absolute', 'full-xy')
+              elem.parentNode.classList.add('relative');
+              elem.setAttribute('d', pathAttr);
+            }
+            // path = document.createElement('path');
+            // var pathStr = 'M 18 2 H 266 A16,16,0,0,1,282,18 V 70 A 16,16,0,0,1,266,86 H 18 A16,16,0,0,1,2,70 V 18 A 16,16,0,0,1,18,2 Z';
+            // path.setAttribute('d', pathStr.split(',').join(' '))
+            // // element[0].appendChild(path);
+            // // path.setAttribute('d', 'M18,2 H266 A16,16,0,0,1,282,18 V70 A16,16,0,0,1,266,86 H18 A16,16,0,0,1,2,70 V18 A16,16,0,0,1,18,2 Z');
+            // $timeout(function() {
+            //   scope.$apply()
+            //   console.log(pathStr.split(',').join(' '))
+            // }, 0)
+
+
+            // var pathNew = document.createElement('path');
+            // pathNew.setAttribute('d', path.getAttribute('d'));
+
+
+
+
+
+
+
+
+          // pathLength = SVGService.getTotalPathLength(path[0]);
+          // SVGService.drawOneShape(path, 0, path.getTotalLength(), path.getTotalLength())
+          // element[0].style.strokeWidth = '5';
+          // element[0].style.fill = 'none';
+          // element[0].style.strokeDashoffset = pathLength;
+          // element[0].style.strokeDasharray = pathLength;
+          // var transitionStr = ['stroke-dashoffset', attr.drawDuration || '250ms', 'ease'].join(' ');
+          // element.css('-webkit-transition', transitionStr);
+          // element[0].style.strokeDashoffset = 0;
+        }
+
+        // element[0].style.stroke = 'blue';
+        // if (element[0].classList.contains('activate') || (attr.drawOnClass && element[0].classList.contains(attr.drawOnClass))) {
+        //     console.log(attr.drawDuration, pathLength/2, totalFrames)
+        //     $timeout(function() {
+        //       //concurrent case
+        //       var startTime = new Date().getTime();
+        //       var requestFrameHandle = 0;
+        //       function draw() {
+        //         var progress = currentFrame/totalFrames;
+        //         if (progress > 1) {
+        //           var endTime = new Date().getTime();
+        //            window.cancelAnimationFrame(requestFrameHandle);
+        //         } else {
+        //           currentFrame++;
+        //           for(var j=0; j<svgPaths.length;j++){
+        //             svgPaths[j].style.strokeDasharray += ' ' + pathLength;
+        //           }
+        //           requestFrameHandle = window.requestAnimationFrame(draw);
+        //         }
+        //       }
+        //       draw()
+        //     }, drawShapesDelay);
+        //   }
+
+        })
+      }
+    }
 }])
 .directive('onMouseLeave', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
@@ -501,6 +622,154 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       }
     }
 }])
+.directive("switches", ['$timeout', 'RootService', 'DirectiveService', 'UtilitiesService',
+        function($timeout, RootService, DirectiveService, UtilitiesService) {
+            return {
+              restrict: 'A',
+              priority:1,
+              link: {
+                pre: function(scope, element, attr) {
+                  scope.switchDict = {};
+                  var switches = DirectiveService.parseSwitchesAttr(scope, element, attr);
+                  for (var i = 0; i < switches.length; i++) {
+                    var indexSwitch = switches[i];
+                    var switchesName = indexSwitch.name
+                    delete indexSwitch['name']
+                    scope.switchDict[switchesName] = indexSwitch
+                  }
+                },
+                post: function(scope, element, attr) {
+                  for (key in scope.switchDict) {
+                    // console.log('detected', scope.switchDict[key].switches.length, 'switches for', key);
+                  }
+
+                  scope.checkIfSiblingExiting = function(switch_obj) {
+                      var switchesObj = scope.switchDict[switch_obj.name];
+                      if (switchesObj.activeSwitches.length < switchesObj.activeLimit) {
+                        switchesObj.activeSwitches.push(switch_obj.id);
+                        return false;
+                      }
+                      if (switchesObj.activeSwitches.length === switchesObj.activeLimit) {
+                        //if its already part of it
+                        if (switchesObj.activeSwitches.indexOf(switch_obj.id) > -1) {
+                          var switchIndex = switchesObj.activeSwitches.indexOf(switch_obj.id);
+                          switchesObj.activeSwitches.splice(switchesObj[switchIndex] - 1, 1);
+                          return false;
+                        } else {
+                          var switchIdToRemove = switchesObj.activeSwitches.splice(0, 1)[0] - 1;
+
+                          switchesObj.activeSwitches.splice(switchIdToRemove, 1);
+                          // switchesObj.activeSwitches.push(switch_obj.id);
+                          var formattedAttr = 'on-switch-' + UtilitiesService.camelToDash(switch_obj.name).toLowerCase() + '-change';
+                          // var elemToInactive = scope.switchDict[switch_obj.name].switches[switchIdToRemove];
+                          var childQuery = '[switch-id="' + (parseInt(switchIdToRemove) + 1) + '"][switch="' + switch_obj.name +'"]';
+                          var childElem = element[0].querySelector(childQuery);
+                          childElem.classList.add(formattedAttr);
+                          return true;
+                        }
+
+                      }
+                  }
+
+                }
+              }
+
+            }
+        }
+])
+.directive("switch", ['$timeout', 'RootService', 'DirectiveService', 'UtilitiesService', 'SwitchService',
+        function($timeout, RootService, DirectiveService, UtilitiesService, SwitchService) {
+            return {
+              restrict: 'A',
+              scope: {},
+              require:'^?switches',
+              priority: 1,
+              link: {
+                pre: function(scope, element, attr) {
+
+                  scope.switch = SwitchService.parseElemAttrs(scope, element, attr);
+                  var switchEvents = ['active', 'inactive', 'change'];
+                  if (scope.$parent.switchDict) {
+
+                    for (switchName in scope.$parent.switchDict) {
+                      if (switchName === scope.switch.name) {
+                        attr.$set('switch-id', scope.$parent.switchDict[switchName].switches.length + 1)
+                        var switchesParent = scope.$parent.switchDict[scope.switch.name]
+                        var parentHasDelay = 'changeDelay' in scope.$parent.switchDict[switchName];
+                        scope.switch.dashedName = UtilitiesService.camelToDash(scope.switch.name).toLowerCase();
+                        if (parentHasDelay) {
+                          scope.switch.parentDelay = scope.$parent.switchDict[switchName]['changeDelay'];
+                        }
+                        scope.switch.states = {};
+                        scope.switch.classes = [];
+                        scope.switch.id = scope.$parent.switchDict[scope.switch.name].switches.length + 1
+                        for (var i = 0; i < switchEvents.length; i++) {
+                          var indexEventDashed = 'on-switch-' + scope.switch.dashedName + '-' + switchEvents[i];
+                          var indexEventCamel = UtilitiesService.camelCase(indexEventDashed);
+                          if (indexEventCamel in attr) {
+                            scope.switch.states[switchEvents[i]] = {args: DirectiveService.parseArgs(attr[indexEventCamel]), className: indexEventDashed};
+                            scope.switch.classes.push(indexEventDashed)
+                          }
+                        }
+                        switchesParent.switches.push(scope.switch);
+                      }
+                    }
+                  }
+
+                  scope.$watch(function() {
+                    return element.attr('class');
+                  }, function(new_classes, old_classes) {
+                    for (var i = 0; i < switchEvents.length; i++) {
+                      var indexClass = 'on-switch-' + scope.switch.dashedName+ '-' + switchEvents[i];
+                      if (new_classes && new_classes.indexOf(indexClass) > -1) {
+                        element[0].classList.remove(indexClass);
+                        var stateName = indexClass.split('-').reverse()[0];
+                        if (stateName === 'change') {
+                          scope.switch.active = !scope.switch.active;
+                          if (scope.switch.active && 'active' in scope.switch.states) {
+                            var activeArgs = scope.switch.states['active']['args'];
+                            for (key in activeArgs) {
+                              var shouldSwitchDelayBeforeActive = scope.$parent.checkIfSiblingExiting(scope.switch);
+                              if (shouldSwitchDelayBeforeActive) {
+
+
+                                var callback = function() {
+                                  scope.$parent.switchDict[scope.switch.name].activeSwitches.push(attr['switch-id']);
+                                }
+                                DirectiveService.activateArgDelay(key, activeArgs[key], scope, element, scope.switch.parentDelay, callback);
+
+                              } else {
+                                DirectiveService.activateArg(key, activeArgs[key], scope, element);
+                              }
+
+                            }
+                            // DirectiveService.activateArg
+                          } else {
+                            var inactiveArgs = scope.switch.states['inactive']['args'];
+                            var activeSwitches = scope.$parent.switchDict[scope.switch.name].activeSwitches;
+                            var indexSwitchActive = activeSwitches.indexOf(attr['switch-id']);
+                            activeSwitches.splice(indexSwitchActive, 1);
+
+                            for (key in inactiveArgs) {
+                              DirectiveService.activateArg(key, inactiveArgs[key], scope, element);
+                            }
+                          }
+                        }
+                      }
+                    }
+                  });
+                  // for (var i = 0; i < switches.length; i++) {
+                  //   var indexSwitch = switches[i];
+                  //   var switchesName = indexSwitch.name
+                  //   delete indexSwitch['name']
+                  //   scope.switchDict[switchesName] = indexSwitch
+                  // }
+                }
+              }
+
+            }
+        }
+])
 .directive('parallaxChild', ['$state', '$timeout', function ($state, $timeout) {
     return {
       restrict: 'A',

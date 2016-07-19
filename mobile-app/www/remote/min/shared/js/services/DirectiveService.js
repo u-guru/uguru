@@ -6,11 +6,12 @@ angular.module('uguru.shared.services')
     'UtilitiesService',
     'AnimationService',
     'RootService',
+    'TransformService',
     DirectiveService
         ]);
 
-function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService, RootService) {
-    var argNames = ['prop', 'anim', 'send', 'tween', 'class', 'trigger', 'eval'];
+function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService, RootService, TransformService) {
+    var argNames = ['prop', 'anim', 'send', 'tween', 'class', 'trigger', 'eval', 'transform'];
     var argShortNames = ['p', 'a', 's', 't', 'c', 't'];
     var shortcuts;
     var cssPropertyMappings = {
@@ -27,6 +28,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         // slide: slide,
         parseArgs: parseArgs,
         activateArg: activateArg,
+        activateArgDelay: activateArgDelay,
         supportedCommands: argNames,
         sendMessage: sendMessage,
         setShortcutDict: setShortcutDict,
@@ -36,7 +38,90 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         parseCustomStateAttr: parseCustomStateAttr,
         detectExternalStates: detectExternalStates,
         initCustomStateWatcher: initCustomStateWatcher,
-        defaults: defaults
+        defaults: defaults,
+        parseSwitchesAttr: parseSwitchesAttr,
+        parseSwitchAttr: parseSwitchAttr
+    }
+    function parseSwitchAttr(scope, element, attr) {
+      if (attr && attr.switch) {
+        console.log(attr.switch);
+        var switch_arr_str = attr.switch.split('|');
+        var switchObj = {};
+        for (var i = 0; i < switch_arr_str.length; i++) {
+          var indexSwitchStr = switch_arr_str[0];
+          var indexSwitchSplit = indexSwitchStr.split(':')
+
+          var switchName = indexSwitchSplit[0];
+          switchObj.name = switchName;
+          switchObj.active = false;
+          if (indexSwitchSplit.length > 1) {
+            var switchValue = indexSwitchSplit.splice(1);
+          }
+        }
+        return switchObj;
+      }
+    }
+    function parseSwitchesAttr(scope, element, attr) {
+      if (!('switches' in attr)) return;
+      var switches_str = attr.switches
+      var switches_arr_str = attr.switches.split('|')
+      var switch_objs = [];
+      if (switches_arr_str.length >= 1) {
+        for (var i = 0; i < switches_arr_str.length; i++) {
+          var indexSwitchStr = switches_arr_str[i];
+          var indexSwitchObj = parseSwitchStrToObj(indexSwitchStr)
+          if (indexSwitchObj) {
+            switch_objs.push(indexSwitchObj)
+          }
+        }
+      }
+      return switch_objs;
+      function parseSwitchStrToObj(switch_str) {
+        resultObj = {};
+        var switch_str_split = switch_str.split(':');
+        if (switch_str_split.length > 1) {
+          var name = switch_str_split[0];
+          var value = switch_str_split.splice(1).join(":")
+          if (value.indexOf(']') > -1 && value.indexOf('[') > -1) {
+            value = UtilitiesService.removeAllOccurrancesArr(value, ['[', ']']);
+            if (value.indexOf(', ') > -1) UtilitiesService.replaceAll(value, ', ', ',');
+            value = value.split(',')
+            for (var i = 0; i < value.length; i++) {
+              var indexVal = value[i];
+              var indexValSplit = indexVal.split(':');
+              if (indexVal && indexVal.length && indexValSplit.length > 1) {
+                var argName = indexValSplit[0].trim();
+                var argValue = indexValSplit[1].trim();
+                var argResult = parseSwitchValueArg(scope, element, argName, argValue);
+                if (argResult && argResult.key && argResult.value) {
+                  resultObj[argResult.key] = argResult.value;
+                }
+              }
+            }
+            if (Object.keys(resultObj) && Object.keys(resultObj).length) {
+              resultObj.name = name;
+              resultObj.switches = [];
+              resultObj.activeSwitches = [];
+              return resultObj;
+            }
+          }
+        }
+        return
+      }
+
+      function parseSwitchValueArg(scope, element, arg, value) {
+        switch(arg) {
+          case ("change-delay"):
+            return {key: 'changeDelay', value: parseInt(value)};
+            break;
+          case ("active-limit"):
+            return {key: 'activeLimit', value: parseInt(value)};
+            break;
+          case ("data"):
+            return {key: 'data', value: value};
+            break;
+        }
+      }
     }
 
     function setShortcutDict(_shortcuts) {
@@ -61,7 +146,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       } else {
           scope.root.public.customStates['when'][camelMsg] =scope.dropdown.options[index][attr[dataAttrName]];
       }
-      console.log('sending message', dataAttrName, message, 'with data format', scope.root.public.customStates['when'][camelMsg])
+      // console.log('sending message', dataAttrName, message, 'with data format', scope.root.public.customStates['when'][camelMsg])
     }
 
     function getShortcuts() {
@@ -178,6 +263,18 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       return resultArr;
     }
 
+    function activateArgDelay(arg_type, arg_dict, scope, elem, delay, cb) {
+      $timeout(function() {
+        console.log('triggering after', delay, 'delay', typeof delay);
+        activateArg(arg_type, arg_dict, scope, elem)
+        cb && cb();
+        $timeout(function() {
+
+          console.log('current switches active', scope.$parent.switchDict[scope.switch.name].activeSwitches);
+        }, 1000)
+      }, delay)
+    }
+
     function activateArg(arg_type, arg_dict, scope, elem) {
       switch(arg_type) {
         case("prop"):
@@ -197,13 +294,130 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           break
         case("eval"):
           evalArgsWithScope(arg_dict, scope, elem);
+          break
+        case("transform"):
+          var response = evalTransformArgs(arg_dict, scope, elem);
+
+          if (!response || !response.length) {
+            $timeout(function() {
+                console.log(evalTransformArgs(arg_dict, scope, elem));
+                scope.$apply();
+            })
+          }
       }
+    }
+
+    function evalTransformArgs(arg_dict, scope, elem) {
+      var transformArr = arg_dict.transforms;
+      var resultArr = [];
+      for (var i = 0; i < transformArr.length; i++) {
+        var indexTransform = transformArr[i];
+
+        var resultPropDict = {properties:[], type:'prop'};
+        var transformPrefix = formatBrowserCSSProperty('transform');
+        var transitionObj = {duration: 0, properties:[], timingFunction: 'ease'};
+        var transformPropDict = TransformService.parseTransformArgs(indexTransform, elem);
+        if (!transformPropDict) return;
+        if (transformPropDict.duration) {
+          transitionObj.duration = transformPropDict.duration;
+          delete transformPropDict['duration'];
+        }
+
+        //break if none exist;
+
+
+        if (Object.keys(transformPropDict).length) {
+          var transformValueStr = '';
+          for (key in transformPropDict) {
+            if (transformPropDict[key] && transformPropDict[key].length)
+            transformValueStr += key + '(' + transformPropDict[key] + ') ';
+          }
+          var browserProperty = formatBrowserCSSProperty('transform');
+          var transformDict = {};
+          transformDict[browserProperty] = transformValueStr;
+          resultPropDict.properties.push(transformDict);
+        }
+
+        if (transitionObj.duration) {
+          var transitionDict = formatTransitionString(transitionObj);
+          resultPropDict.properties.push(transitionDict);
+        }
+        if (resultPropDict.properties && resultPropDict.properties.length) {
+          evalPropertyArgs(resultPropDict, scope, elem);
+          resultArr.push(resultPropDict);
+        }
+      }
+
+      return resultArr;
+    }
+
+    function formatBrowserCSSProperty(property) {
+      var dashedPrefixedProps = ['transition', 'transform']
+      var browserPrefix = RootService.getBrowserPrefix();
+      if (browserPrefix && browserPrefix.length && dashedPrefixedProps.indexOf(property.toLowerCase()) > -1) {
+        property = '-' + browserPrefix + '-' + property
+      }
+      return property
+    }
+
+    function formatTransitionString(obj) {
+      var properties = obj.properties.join(" ") || 'all';
+      var propName = formatBrowserCSSProperty('transition');
+      var propDelay = obj.delay && (obj.delay + 'ms');
+      var propDuration = (obj.duration && (obj.duration + 'ms')) || '1000ms';
+      var propTimingFunc = obj.timingFunction || 'ease'
+
+      var valueString = [properties, propDuration, propTimingFunc, propDelay].join(" ").trim()
+      var resultDict = {};
+      resultDict[propName] = valueString
+      return resultDict;
+    }
+
+    function findReplaceParens(string_args) {
+      var resultDict = {}
+      var parentheticalArr = string_args.match(/\((.*?)\)/g);
+      parentheticalArr.forEach(function(value, index) {resultDict[index + ""] = UtilitiesService.removeAllOccurrancesArr(value, ['(', ')']); string_args = UtilitiesService.replaceAll(string_args, value, '<<>>')});
+      return resultDict
+    }
+
+    function processTransformArgs(string_args) {
+      var resultDict = {};
+      var parentheticalArr = string_args.match(/\((.*?)\)/g);
+      var supportedKeys = ['to', 'duration', 'delay', 'clear', 'scale', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ'];
+      var hasParens = parentheticalArr;
+      var parenthesisDict = hasParens && findReplaceParens(string_args);
+      string_args = UtilitiesService.removeAllOccurrancesArr(string_args, ['[', ']']);
+      string_args = UtilitiesService.replaceAll(string_args, ', ', ',');
+      var kvPairs = string_args.split(',');
+      for (var i = 0; i < kvPairs.length; i++) {
+        var kvIndexSplit = kvPairs[i].split(':')
+        if (hasParens) {
+          var paramString =  ((i + '') in parenthesisDict && parenthesisDict[i + '']) || ''
+          var kvIndexSplit = UtilitiesService.replaceAll(kvPairs[i], '<<>>', paramString ).split(':');
+        }
+        var indexKey = kvIndexSplit[0];
+        var indexValue;
+        if (kvIndexSplit.length > 1) {
+          indexValue = kvIndexSplit[1];
+          indexValue = UtilitiesService.removeAllOccurrancesArr(indexValue, ['(', ')']);
+          if (supportedKeys.indexOf(indexKey.toLowerCase()) > -1) {
+            if (indexKey === 'delay' || indexKey === 'duration') {
+              indexValue = parseInt(indexValue);
+            }
+            resultDict[indexKey] = indexValue;
+          }
+        }
+      }
+      return {type: 'transform', transforms: [resultDict]}
     }
 
     function processSecondaryArgsByType(type, string_args) {
       switch(type) {
-
+        case ("transform"):
+          return processTransformArgs(string_args)
+          break;
         case ("prop"):
+
           return formatAndProcessArgs(type, string_args, {properties:[]}, 'properties', processCSSPropValue, ['transition']);
           break;
 
@@ -593,7 +807,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function parseAfterArgs(arg_string, scope, elem) {
-        var argSplit = arg_string.split(':')
+        var argSplit = arg_string.split(':');
+
         if (argSplit.length > 1) {
           var argName = argSplit[0].toLowerCase();
           var argValue = '[' + argSplit.splice(1).join(":") + ']'
