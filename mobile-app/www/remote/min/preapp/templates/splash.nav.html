@@ -23,7 +23,7 @@
             <div class="right">
                 <div class="splash-hero-nav desktop m15right">
                     <div class="splash-hero-nav-container">
-                    	<dropdown ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
+                    	<dropdown debug-id="1" ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
                             prefix="category"
                             init-with="p-op"
                             when-nav-init="prop:[op:1] | send:[dropdown-init:children:delay-750]"
@@ -39,7 +39,7 @@
 			                when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
 							when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]">
                         </dropdown>
-                        <h2 init-with="p-op"
+                        <h2 debug-id="2" init-with="p-op"
 							when-nav-init="t-enter"
 							on-enter="prop:[op:1, t:all 1000ms ease-out]:delay-750"
 							when-category-dropdown-mouse-enter="prop:[op:0.25:delay-50, t:all 250ms ease-in-out]"
@@ -255,4 +255,5 @@
         </div>
         <!-- End Mobile Nav-->
     </div>
+    <debug highlight> </debug>
 </div>
