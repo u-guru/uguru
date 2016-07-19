@@ -209,9 +209,9 @@
 							</ul>
 							<div class="cal-events">
 								<ul class='cal-day'>
-									<li init-with="p:[op:0, transform-origin:center center]" class="all-day"
+									<li init-with="p:[op:0, tro:center center]" class="all-day"
 									when-cal-enter="trigger:[on-enter]"
-										on-enter="anim:[bounceIn-subtle:set:(dur:1000ms):delay-1000:in]">
+										on-enter="anim:[bounceIn-subtle:set:(dur:1000ms):delay-1000:in] | send">
 										<a></a>
 										<div>
 											<svg viewBox="0 0 100 100">
