@@ -265,6 +265,7 @@ angular.module('uguru.admin')
         link: {
             pre: function(scope, element, attr) {
                 attr.highlight && AdminDebugService.applyHighlight(rootViewElem);
+
                 var rootViewElem = element[0].parentNode;
                 var parentScopeName = AdminDebugService.getParentScope(rootViewElem)
                 if (parentScopeName) {
@@ -274,7 +275,7 @@ angular.module('uguru.admin')
                     scope.parent.debug.states = AdminDebugService.getAllDebugElems(element[0].parentNode);
                     console.log(scope.parent.debug.states);
                     if (scope.parent.debug.states.length) {
-                        scope.parent.debug.showToolbar = true;
+                        scope.parent.debug.showToolbar = true && !('hide' in attr);
                     }
                 }
             // AnimToolService.setStage(scope.stage);

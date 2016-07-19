@@ -20,7 +20,7 @@
 				when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
 				when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]"></a>
 
-            <div class="right">
+            <div class="right" desktop>
                 <div class="splash-hero-nav desktop m15right">
                     <div class="splash-hero-nav-container">
                     	<dropdown debug-id="1" ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
@@ -216,10 +216,50 @@
         </header>
 
          <!--Mobile Nav-->
-         <div id="splash-hero-nav-mobile"
+         <div mobile id="splash-hero-nav-mobile"
 		 	init-with="prop:[op:0, t:all 250ms ease-in-out]"
-			when-mobile-switch-init="t-enter"
-			on-enter="prop:[op:1, z-index:999]">
+			on-enter="prop:[op:1, z-index:999]"
+            >
+            <dropdown debug-id="1" ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
+                            prefix="category"
+                            init-with="p-op"
+                            when-nav-init="prop:[op:1] | send:[dropdown-init:children:delay-750]"
+                            states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]"
+                            hover-data="name, hex_color"
+                            mouse-enter-data="name, hex_color"
+                            mouse-leave-data="name, hex_color"
+                            toggle-on-data="name, hex_color"
+                            toggle-off-data="name, hex_color"
+                            click-data="name, hex_color"
+                            when-category-dropdown-mouse-enter="prop:[op:1: t:all 250ms ease-in-out]"
+                            when-university-dropdown-mouse-enter="prop:[op:0.1:delay-150, t:all 250ms ease-in-out]"
+                            when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
+                            when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]">
+                        </dropdown>
+                        <h2 debug-id="2" init-with="p-op"
+                            when-nav-init="t-enter"
+                            on-enter="prop:[op:1, t:all 1000ms ease-out]:delay-750"
+                            when-category-dropdown-mouse-enter="prop:[op:0.25:delay-50, t:all 250ms ease-in-out]"
+                            when-category-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
+                            when-category-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]"
+                            when-university-dropdown-mouse-enter="prop:[op:0.1:delay-50, t:all 250ms ease-in-out]"
+                            when-university-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
+                            when-university-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]">@</h2>
+                        <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'
+                            prefix="university"
+                            init-with="p-op"
+                            when-nav-init="prop:[o-1] | send:[dropdown-init:children:delay-750]"
+                            states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]"
+                            hover-data="name, school_color_dark"
+                            mouse-enter-data="name, school_color_dark"
+                            mouse-leave-data="name, school_color_dark"
+                            toggle-on-data="name, school_color_dark"
+                            toggle-off-data="name, school_color_dark"
+                            click-data="name, school_color_dark"
+                            when-category-dropdown-mouse-enter="prop:[op:0.25:delay-100, t:all 250ms ease-in-out]"
+                            when-category-dropdown-mouse-leave="prop:[op:1, t:all 250ms ease-in-out]"
+                            when-category-dropdown-toggle-off="prop:[op:1, t:all 250ms ease-in-out]"
+                            when-university-dropdown-mouse-enter="prop:[op:1, t:all 250ms ease-in-out]"> </dropdown>
             <div class="splash-hero-nav-category full-x">
                 <h1>Category</h1>
                 <ul>
@@ -255,5 +295,5 @@
         </div>
         <!-- End Mobile Nav-->
     </div>
-    <debug highlight> </debug>
+    <debug highlight hide> </debug>
 </div>
