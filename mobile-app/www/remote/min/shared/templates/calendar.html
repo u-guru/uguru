@@ -209,9 +209,11 @@
 								</ul>
 								<div class="cal-events">
 									<ul class='cal-day'
-										when-cal-enter="trigger:[on-enter:children]">
-										<li init-with="p:[op:1, transform-origin:center center]" class="all-day"
-											on-enter="p:[op:1] | anim:[bounceIn-subtle:set:(dur:1000ms):in]:delay-1000">
+										when-cal-enter="send:[cal-day-1-init:public:delay-1000]">
+										<li class="all-day"
+											init-with="p:[op:1, transform-origin:center center]"
+											when-cal-day-1-init="trigger:[on-enter:delay-1000]"
+											on-enter="p:[op:1] | anim:[bounceIn-subtle:set:(dur:1000ms):in] | send:[cal-day-2-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -219,7 +221,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p:[op:1, transform-origin:center center]"
+											when-cal-day-2-init="trigger:[on-enter:delay-1000]"
+											on-enter="p:[op:1] | anim:[bounceIn-subtle:set:(dur:1000ms):in] | send:[cal-day-3-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
