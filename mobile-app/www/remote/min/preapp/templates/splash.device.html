@@ -4,14 +4,14 @@
 	init-with="p:[tro:center center, tr:rotateY(180deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 	when-university-dropdown-mouse-enter="p:[tr:rotateY(0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 	when-university-dropdown-mouse-leave="p:[tr:rotateY(180deg):delay-50, t:none]"
-	when-university-dropdown-toggle-off="p:[tr:rotateY(180deg):delay-50, t:none]"
-	ng-if="root.window.desktop">
+	when-university-dropdown-toggle-off="p:[tr:rotateY(180deg):delay-50, t:none]">
+	<!-- ng-if="root.window.desktop" -->
 	<custom-states when="device-init"></custom-states>
     <div class="splash-device splash-device-iphone">
         <div class="splash-device-svg iphone-device"
 			init-with="p:[op:0, tr:rotateZ(30deg) rotateY(-90deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 			when-device-init="t-enter"
-			on-enter="p:[op:1, tr:rotateZ(0deg) rotateY(0deg)]:delay-1000">
+			on-enter="p:[op:1, tr:rotateZ(0deg) rotateY(0deg)]">
             <!-- http://codepen.io/teamuguru/pen/3f4edcf309f72f85bb19f7a780aef8bd?editors=0100 -->
 			<svg class="iphone-center" viewBox="0 0 318 651"
 				init-with="p-op"
@@ -31,9 +31,9 @@
 			</svg>
 
             <svg class="iphone-left" viewBox="0 0 159 651"
-				init-with="p:[op:0.2, tr:translate3d(0#-30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
+				init-with="p:[op:0, tr:translate3d(0#-30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 				when-device-init="t-enter"
-				on-enter="p:[tr:none:delay-1000, op:0:delay-3000, display:none:delay-3000]">
+				on-enter="p:[op:0.2, tr:none, op:0:delay-3000, display:none:delay-3000]">
 				<g fill="#2b2324" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
 					<!-- school color specific -->
 					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" style="fill:#003057" class="school-color"
@@ -54,9 +54,9 @@
 			</svg>
 
 			<svg class="iphone-right" viewBox="0 0 159 651"
-				init-with="p:[op:0.2, tr:translate3d(0#30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
+				init-with="p:[op:0, tr:translate3d(0#30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
 				when-device-init="t-enter"
-				on-enter="p:[tr:none:delay-1000, op:0:delay-3000, display:none:delay-3000]">
+				on-enter="p:[op:0.2, tr:none, op:0:delay-3000, display:none:delay-3000]">
 				<g fill="#2b2324" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
 					<!-- school color specific -->
 					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="school-color" style="fill:#003057"
