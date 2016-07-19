@@ -97,6 +97,40 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive('desktop', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
+  return {
+    restrict: 'A',
+    priority: 10000,
+    require: '^?RootController',
+      link: {
+        pre: function(scope, element, attr) {
+          if (!scope.root.window.desktop) {
+            attr.$set('ngIf', scope.root.window.desktop);
+            $compile(element[0])(scope);
+          } else {
+            attr.$set('desktop', null);
+          }
+      }
+    }
+  }
+}])
+.directive('mobile', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
+  return {
+    restrict: 'A',
+    require: '^?RootController',
+    priority: 10000,
+      link: {
+        pre: function(scope, element, attr) {
+          if (!scope.root.window.mobile) {
+            attr.$set('ngIf', scope.root.window.mobile);
+            $compile(element[0])(scope);
+          } else {
+            attr.$set('mobile', null);
+          }
+      }
+    }
+  }
+}])
 .directive('onInit', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',
