@@ -2,10 +2,9 @@
 	ng-controller='SplashDeviceController as device'
 	on-init="send:[device-init:public]"
 	init-with="prop:[tro:center center, tr:rotateY(180deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
-	when-university-dropdown-mouse-enter="prop:[tr:rotateY(0)]"
-	when-university-dropdown-mouse-leave="prop:[tr:rotateY(180deg):delay-50]"
-	when-university-dropdown-toggle-off="prop:[tr:rotateY(180deg):delay-50]"
-	on-hover="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]"
+	when-university-dropdown-mouse-enter="prop:[tr:rotateY(0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
+	when-university-dropdown-mouse-leave="prop:[tr:rotateY(180deg):delay-50, t:none]"
+	when-university-dropdown-toggle-off="prop:[tr:rotateY(180deg):delay-50, t:none]"
 	ng-if="root.window.desktop">
 	<custom-states when="device-init"></custom-states>
     <div class="splash-device splash-device-iphone">
@@ -89,9 +88,9 @@
         <div class="splash-device-content"
 			init-with="prop:[op:0, t:opacity 250ms ease-in-out]"
 			when-university-dropdown-mouse-enter="prop:[op:1]"
-			when-university-dropdown-mouse-leave="prop:[op:0, t:opacity 50ms ease-out]"
+			when-university-dropdown-mouse-leave="prop:[op:0, t:opacity 25ms ease-out]"
 			when-university-dropdown-toggle-on="prop:[op:1]"
-			when-university-dropdown-toggle-off="prop:[op:0, t:opacity 50ms ease-out]">
+			when-university-dropdown-toggle-off="prop:[op:0, t:opacity 25ms ease-out]">
 			<div class="splash-device-profile mobile">
 				<div class="absolute full-xy" ng-include="root.base_url + 'shared/templates/guru.profile.demo.html'"
 					init-with="prop:[op:0, z-index:-1, t:opacity 250ms ease-in-out]"

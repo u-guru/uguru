@@ -3860,21 +3860,23 @@ a[class*="-container"]:hover .map-stadium-outside {
       .projector-school-search .projector-school-search-form .projector-school-desktop li {
         width: 20%;
         padding: 7.5px; }
-        .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .rect {
-          width: 100%;
-          height: auto; }
-        .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-top .school-card-icon {
-          width: 40px;
-          height: 40px;
-          margin-left: -20px; }
-          .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg {
-            padding: 10px; }
-        .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-main .school-card-info h1 {
-          padding-top: 5px;
-          font-size: 16px;
-          font-weight: 700; }
-        .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-main .school-card-info h2 {
-          font-size: 12px; }
+        .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card {
+          transform-origin: center top; }
+          .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .rect {
+            width: 100%;
+            height: auto; }
+          .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-top .school-card-icon {
+            width: 40px;
+            height: 40px;
+            margin-left: -20px; }
+            .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg {
+              padding: 10px; }
+          .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-main .school-card-info h1 {
+            padding-top: 5px;
+            font-size: 16px;
+            font-weight: 700; }
+          .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-main .school-card-info h2 {
+            font-size: 12px; }
     .projector-school-search .projector-school-search-form .projector-school-results {
       padding: 15px; }
       .projector-school-search .projector-school-search-form .projector-school-results li {
