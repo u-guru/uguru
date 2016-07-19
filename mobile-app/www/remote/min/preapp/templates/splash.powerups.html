@@ -18,7 +18,9 @@
             <ul class="powerup-icons flex-center-wrap">
                 <li init-with="p-op"
 					when-powerups-init="anim:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-1000] | send:[powerup-icon-gpa-init:public:delay-1000]">
-                    <a id="powerup-gpa-container" class="block relative high-z-index">
+                    <a id="powerup-gpa-container" class="block relative high-z-index"
+						init-default
+						on-mouse-enter="send:[gpa-mouse-enter-init:public]">
                         <div id="powerup-gpa-icon" class="block loader-powerup-gpa" ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
                         <div id="powerup-gpa-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
 							init-with="p-op"

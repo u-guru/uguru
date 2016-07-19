@@ -121,56 +121,14 @@
   100% { stroke: white; stroke-dashoffset: 0; }
 }
 
-@keyframes sign-equal-hover {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(180deg);
-	}
+@keyframes prop-hover {
+    0% {
+        transform: translateY(3px)
+    }
+    100% {
+        transform: translateY(-3px)
+    }
 }
-@keyframes equal-pulse {
-	0% {
-		transform: scale(1);
-	}
-	100% {
-		transform: scale(1.1);
-	}
-}
-
-@keyframes bob-hover {
-	0% {
-		transform: translateY(0);
-	}
-	100% {
-		transform: translateY(20%);
-	}
-}
-
-@keyframes sign-divide-hover {
-	0% {
-		transform: rotate(0deg) scale(1);
-	}
-	50% {
-		transform: rotate(-180deg) scale(1.2);
-	}
-	100% {
-		transform: rotate(-360deg) scale(1);
-	}
-}
-
-@keyframes btn-divide-hover {
-	0% {
-		transform: rotate(0deg) scale(1);
-	}
-	50% {
-		transform: rotate(180deg) scale(0.8);
-	}
-	100% {
-		transform: rotate(360deg) scale(1);
-	}
-}
-
 
 /* http://goo.gl/OCzpPF */
 @keyframes sound-note {
