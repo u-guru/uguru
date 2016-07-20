@@ -22,7 +22,7 @@
 
                 <li class='absolute top-0 right-0 m20x  full-y flex-wrap-center' >
                     <a ng-click='playAllStates()' ng-class="{'opacity-1': debug.options.toggles.play}" class="flex-center bg bg-transparent flex-right radius-2 svg-stroke-8 svg-48-36 opacity-50" ng-include="root.base_url + 'shared/templates/components/svg/main/play.html'"></a>
-                    <a init-with="prop:[opacity:0.5]" class="flex-center bg bg-transparent radius-2 m05left p10left svg-stroke-6 svg-48" ng-click='spec.toggles.record()' ng-include="root.base_url + 'shared/templates/components/svg/main/record.html'"></a>
+                    <!-- <a init-with="prop:[opacity:0.5]" class="flex-center bg bg-transparent radius-2 m05left p10left svg-stroke-6 svg-48" ng-click='spec.toggles.record()' ng-include="root.base_url + 'shared/templates/components/svg/main/record.html'"></a> -->
                     <a ng-click='debug.options.toggles.settings = !debug.options.toggles.settings' ng-class="{'opacity-1': debug.options.toggles.settings}" class="flex-center bg bg-transparent flex-right radius-2 svg-stroke-8 svg-48-36 opacity-50" ng-click='spec.toggles.settings()' ng-include="root.base_url + 'shared/templates/components/svg/main/settings.html'"></a>
                 </li>
             </ul>
