@@ -6,8 +6,8 @@
 			<g class="transit-left-lamp"
 				init-with="p:[op:0, tr:scale(2), tro:left center]"
 				when-powerup-icon-transit-init="t-enter"
-				on-enter="p:[op:1, tr:scaleX(1):delay-450, t:all 350ms ease-out]"
-				when-transit-mouse-enter="p:[play:running, tro:right bottom] | a:[transit-lamp:set:(dur:4000ms#func:ease-in-out#count:infinite):in]"
+				on-enter="p:[op:0.5, tr:scale(0.7):delay-450, t:all 350ms ease-out]"
+				when-transit-mouse-enter="p:[play:running, tro:right bottom] | a:[transit-lamp:set:(dur:2500ms#func:ease-in-out#count:infinite#start:-1250ms):in]"
 				when-transit-mouse-leave="p:[play:paused]">
 				<path d="M58.5,97 C55.4624339,97 53,94.5375661 53,91.5 C53,88.4624339 55.4624339,86 58.5,86 C61.5375661,86 64,88.4624339 64,91.5 C64,94.5375661 61.5375661,97 58.5,97 L58.5,97 Z" class="transit-l-lamp-bulb" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#F6C64E"></path>
 				<path d="M40,77 L38.5,77 L40,77 L40,72.75 L40,77 L40,77 L40,77 Z M40,77 L58.5,77 L40,77 L40,140.25 L40,77 L40,77 L40,77 Z M58.5,77.5 L58.5,82.5 L58.5,77.5 L58.5,77.5 L58.5,77.5 Z" class="transit-l-lamp-post" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -16,7 +16,7 @@
 			<g class="transit-right-lamp"
 				init-with="p:[op:0, tr:scale(2), tro:right center]"
 				when-powerup-icon-transit-init="t-enter"
-				on-enter="p:[op:1, tr:scaleX(1):delay-450, t:all 350ms ease-out]"
+				on-enter="p:[op:1, tr:scale(1):delay-450, t:all 350ms ease-out]"
 				when-transit-mouse-enter="p:[play:running, tro:left bottom] | a:[transit-lamp:set:(dur:2500ms#func:ease-int#count:infinite):in]"
 				when-transit-mouse-leave="p:[play:paused]">
 				<circle class="transit-lamp-bulb" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#F6C64E" cx="142.5" cy="91.5" r="5.5"></circle>
