@@ -1,7 +1,7 @@
 <div class="powerups-scale"
 	init-with="p:[transform:scale(0), transition:all 1000ms ease-out, opacity:1, display:block, background:#F6C64E]"
 	when-powerups-clicked="t:[on-enter]"
-	on-enter="p:[transform:scale(1000), background:#F6C64E] | t:[on-exit]"
+	on-enter="p:[transform:scale(1000)] | t:[on-exit]"
 	on-exit="p:[opacity:0:delay-500, transition:all 500ms ease-out, display:none:delay-2000]"></div>
 <ion-view id='splash-powerups' ng-controller="SplashPowerupsController as powerups"
 	init-with="p:[op:0, z-index:-1, t:all 750ms ease-in-out]"
