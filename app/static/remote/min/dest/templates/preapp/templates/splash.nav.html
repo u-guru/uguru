@@ -13,4 +13,22 @@
 					on-enter="p:[op:1] | send:[sidebar-icon-clicked:public]:delay-2000" --><!-- ng-click='initCTASplash()' class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="750" --><div class="full-xy flex-center relative"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" init-with="p:[sda:226.2, sdo:226.2, t:all 150ms ease-in-out]" when-nav-init="t-enter" on-enter="p:[sdo:0]:delay-1750"></circle><g class="path"><path d="M31,35.5 L69,35.5" init-with="p:[sda:38, sdo:38]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-2000]"></path><path d="M31,50.5 L69,50.5" init-with="p:[sda:38, sdo:38]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-2050]"></path><path d="M31,65.5 L69,65.5" init-with="p:[sda:38, sdo:38]" when-nav-init="t-enter" on-enter="p:[sdo:0:delay-2100]"></path></g></svg></div></a></div></header><!--Mobile Nav--><!-- init-with="prop:[op:0, t:all 250ms ease-in-out]" --><div mobile id="splash-hero-nav-mobile" init-with="prop:[op:1, z-index:999]"><!-- <div id="splash-hero-nav-mobile"
 		 	init-with="p:[op:0, t:all 250ms ease-in-out]"
 			when-mobile-switch-init="t-enter"
-			on-enter="p:[op:1, z-index:999]"> --><div class="splash-hero-nav-category full-x"><h1>Category</h1><ul><li ng-repeat="category in nav.categoriesDropdown.options"><a class="bg-{{category.bg_hex_color}}" ng-click="demoSwitchCategory(category, selectedUniversity)" ng-class="{'active':category.id == selectedCategory.id}"><span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span> <span>{{category.name}}</span></a></li></ul></div><div class="splash-hero-nav-school full-x"><h1>University</h1><ul><li ng-repeat="university in nav.universitiesDropdown.options" class="txt-white weight-600"><a ng-class="{'active':university.id == selectedUniversity.id}"><span style="background: {{university.school_color_dark}}"></span> <span>{{university.short_name || university.name}}</span> <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span></a></li><li><a class="bg-find" init-default on-click="send:[search-university-clicked:public]"><span></span> <span>Find your College</span> <span></span></a></li></ul></div></div><!-- End Mobile Nav--></div><debug highlight autoplay autorecord delay-btwn="250" pause-at="2" speed="fast"></debug></div>
+			on-enter="p:[op:1, z-index:999]"> --><div class="splash-hero-nav-category full-x"><h1>Category</h1><ul><li ng-repeat="category in nav.categoriesDropdown.options"><a class="bg-{{category.bg_hex_color}}" ng-click="demoSwitchCategory(category, selectedUniversity)" ng-class="{'active':category.id == selectedCategory.id}"><span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span> <span>{{category.name}}</span></a></li></ul></div><div class="splash-hero-nav-school full-x"><h1>University</h1><ul><li ng-repeat="university in nav.universitiesDropdown.options" class="txt-white weight-600"><a ng-class="{'active':university.id == selectedUniversity.id}"><span style="background: {{university.school_color_dark}}"></span> <span>{{university.short_name || university.name}}</span> <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span></a></li><li><a class="bg-find" init-default on-click="send:[search-university-clicked:public]"><span></span> <span>Find your College</span> <span></span></a></li></ul></div></div><!-- End Mobile Nav--></div><!--
+    ====implemented=====
+        [autoplay]: play onrefresh,
+        [delay-between = N]: gap time N milliseconds b/w sequential states
+        [hide]: remove this to show the bar
+        [pause-at = N]: play all states until state N (inclusive)
+        [speed]: a pseudonym for 'pause-at=250', more usage later later
+    ====coming soon (in order)=====
+        > onStateButtonClick: Reset if already active (turn white => into green)
+        > onDebugElement=>Inspect specific properties like opacity and watch the dynamic values [read-only]
+        > record button (multi-animation player) with tween-ability property values
+        > docs button to access state arguments
+        > include transform functionality (90% complete)
+        > include draw functionality (70% complete)
+        > single animation player (isolate, inspect, tween a single animation)
+        > <debug [highlight = N]: aside from the elements specified with debug attributes, keep them at opacity = N
+        > onHover[start:end]: ability to specify different commands based on hoverAbility
+        > init-when: like init-with, but allows clarification to specify WHEN (i.e. one argument = N = levels of parents, grandparents must be completed first);
+    --><debug autoplay delay-btwn="250" hide pause-at="2" speed="fast"></debug></div>

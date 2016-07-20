@@ -266,5 +266,24 @@
         </div>
         <!-- End Mobile Nav-->
     </div>
-    <debug highlight autoplay autorecord delay-btwn="250" pause-at="2" speed='fast'> </debug>
+    <!--
+    ====implemented=====
+        [autoplay]: play onrefresh,
+        [delay-between = N]: gap time N milliseconds b/w sequential states
+        [hide]: remove this to show the bar
+        [pause-at = N]: play all states until state N (inclusive)
+        [speed]: a pseudonym for 'pause-at=250', more usage later later
+    ====coming soon (in order)=====
+        > onStateButtonClick: Reset if already active (turn white => into green)
+        > onDebugElement=>Inspect specific properties like opacity and watch the dynamic values [read-only]
+        > record button (multi-animation player) with tween-ability property values
+        > docs button to access state arguments
+        > include transform functionality (90% complete)
+        > include draw functionality (70% complete)
+        > single animation player (isolate, inspect, tween a single animation)
+        > <debug [highlight = N]: aside from the elements specified with debug attributes, keep them at opacity = N
+        > onHover[start:end]: ability to specify different commands based on hoverAbility
+        > init-when: like init-with, but allows clarification to specify WHEN (i.e. one argument = N = levels of parents, grandparents must be completed first);
+    -->
+    <debug autoplay delay-btwn="250" hide pause-at="2" speed='fast'> </debug>
 </div>
