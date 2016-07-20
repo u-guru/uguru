@@ -257,6 +257,51 @@ angular.module('uguru.admin')
         }
     }
 }])
+.directive("debug", ['$timeout', 'RootService',  '$compile', 'AdminDebugService', function($timeout, RootService, $compile, AdminDebugService) {
+    return {
+        templateUrl: RootService.getBaseUrl() + 'admin/templates/components/debug.tpl',
+        priority: 10,
+        restrict: 'E',
+        link: {
+            pre: function(scope, element, attr) {
+                attr.highlight && AdminDebugService.applyHighlight(rootViewElem);
+
+                var rootViewElem = element[0].parentNode;
+                var parentScopeName = AdminDebugService.getParentScope(rootViewElem)
+                if (parentScopeName) {
+                    scope.parent = scope[parentScopeName];
+                    scope.parent.name = parentScopeName;
+                    scope.debug = {states:[], options: AdminDebugService.processOptions(attr)};
+                    console.log(scope.debug.options.toggles);
+                    scope.debug.states = AdminDebugService.getAllDebugElems(element[0].parentNode);
+                    console.log(scope.debug.states);
+                    if (scope.debug.states.length) {
+                        scope.debug.options.showToolbar = true && !('hide' in attr);
+                    }
+                }
+                scope.playAllStates = function() {
+                    AdminDebugService.playAllStates(scope.debug.states, scope.debug.options, scope);
+                }
+
+                scope.playState = function(state) {
+                    AdminDebugService.playState(state, scope);
+                }
+
+                if ('autoplay' in attr) {
+                    element.ready(function() {
+                        scope.playAllStates()
+                    })
+                }
+            // AnimToolService.setStage(scope.stage);
+
+            // scope.stage.recorder = AnimToolService.initRecorder(scope.stage, scope);
+
+            // scope.stage.player = AnimToolService.initPlayer(scope.stage);
+            // scope.stage.recorder.start(scope.stage.recorder);
+            }
+        }
+    }
+}])
 .directive("docSnippets", ['RootService', '$timeout', function(RootService, $timeout) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.snippets.tpl',

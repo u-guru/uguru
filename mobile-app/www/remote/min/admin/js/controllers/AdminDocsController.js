@@ -23,6 +23,14 @@ angular.module('uguru.admin')
         console.log(letters);
     }
 
+    docs.debugDirectives = {};
+    docs.debugDirectives.debug_args = [
+      {name: 'highlight'},
+      {name: 'hide'},
+      {name: 'pause-at'},
+      {name: 'speed'}
+    ]
+
     docs.directives = AdminDirectiveService.getAllDirectives()
     docs.stateDirectives = {
       states: [
