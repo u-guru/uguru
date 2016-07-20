@@ -57,9 +57,91 @@
 		</div>
 	</main>
 </ion-view>
-<action-item items="[cross platform, testing]" group="testing" priority="1" tested="true" time="10hr" phase="1" type="minimal" />
-<action-item items="[profiles, courses, categories, university]" group="sneak-preview" priority="1" tested="true" time="5hr" phase="1" type="minimal" />
-<action-item items="[sidemenu functionality, pricing content, how it works, about]" group="sidebar" priority="1" tested="true" time="5hr" phase="1" type="minimal" />
-<action-item items="[data mining, refresh course data, semest start/end dates]" group="data stuff" priority="1" tested="true" time="10hr" phase="1" type="minimal" />
-<action-item items="[accounts, access codes, login/logout, db-linking]" group="server related" priority="1" tested="true" time="10hr" phase="1" type="minimal" />
-<action-item items="[madlib-interactions, device, map, transition]" group="splash info" priority="1" tested="true" time="1hr" phase="1" type="minimal" />
+<!-- ugh actions -->
+<action-item items="[cross platform, testing]" group="testing" priority="1" tested="true" time="10hr" phase="1" type="ugh" />
+<action-item items="[profiles, courses, categories, university]" group="sneak-preview" priority="1" tested="true" time="5hr" phase="1" type="ugh" />
+<action-item items="[sidemenu functionality, pricing content, how it works, about]" group="sidebar" priority="1" tested="true" time="5hr" phase="1" type="ugh" />
+<action-item items="[data mining, refresh course data, semest start/end dates]" group="data stuff" priority="1" tested="true" time="10hr" phase="1" type="ugh" />
+<action-item items="[accounts, access codes, login/logout, db-linking]" group="server related" priority="1" tested="true" time="10hr" phase="1" type="ugh" />
+<action-item items="[madlib-interactions, device, map, transition]" group="splash info" priority="1" tested="true" time="1hr" phase="1" type="ugh" />
+<action-item items="[madlib-interactions, device, map, transition]" group="splash info" priority="1" tested="true" time="1hr" phase="1" type="ugh" />
+
+<!--
+	ideal
+	<module name='First Time Experience' progress="0000" dimensions="1111">
+		<user-workflow name='Splash Madlib'/>
+			<base-setup directives="switch, transform">
+				- apply default active/inactive for [on-init, init-default, on-enter]
+				- map func-story to auto-inherit dimensions
+				- default progress to zero
+			</base-setup>
+			<user-stories>
+				<func-story "All elements rendered with no blips">
+					<ui-story desc="splash enters"/>
+				<func-story desc="user clicks splash" test-vars="row one, row two" dimensions="0111"/>
+					<ui-states>
+					</ui-states>
+				</func-story>
+				<func-story desc="selected + deselect to reset" />
+					<ui-state stage="hi-fi" >
+				</func-story>
+				<func-story desc="user clicks [r1, i0] + boot previous" dimensions="0111" vars="r1:[0], r2: [0,3] />
+				<func-story desc="user clicks [r1, i0], blank is filled" dimensions="0111" vars="r1:[0], r2: [0,3] />
+				<func-story desc="category is changed, switch" dimensions="0111"/>
+				<func-story desc="university is changed, switch efficiently" dimensions="0111"/>
+				<func-story desc="both are filled, activate map, device, self-transition out" dimensions="0111"/>
+				<func-story desc="both are filled, one is deselected, dispatch events" dimensions="0111"/>
+				<func-story desc="device is activated" dimensions="0111"/>
+				<func-story desc="map is activated" dimensions="0111"/>
+
+			</user-stories>
+			<post-func>
+				<func-item type="urgent" todo="modularize switch code to auto initialize"]/>
+				<func-item todo="[reformat syntax switches -> switchset]/>
+				<func-item type="spec" desc="spec out hifi ui-states"/>
+				<func-item type="generate tests" desc="generate tests"/>
+				<func-item type="directive" desc="cleanup all console.logs"/>
+				<abstract-spec desc="syntax-only directive feature"/>
+				<func-item type="reflection" desc="marking a directive, setting one that's still clearly incomplete, but has some of it 100% functioning"/>
+				<func-item type="reflection" desc="create integration queue"/>
+		</user-workflows>
+
+		<user-workflow name='Splash Device'/>
+		<user-workflow name='Splash Map'/>
+		<user-workflow name='Splash Tour'/>
+		<user-workflow name='Splash University'/>
+		<user-workflow name='Splash Categories'/>
+	</module>
+-->
+<!--
+	To turn into syntax-only, not implemented directive, but still has docs
+	<elem attr="transform[to:(#selector::mid::near), in:, tween:()]"
+-->
+
+<!-- To turn into syntax [pre-app only]-->
+<!--
+	1. Format [dimensions[0000], progress[0000], relevant phase[0000], date[horizontal], transclude functions, items[action-streams/components]]
+	2. Progress pipeline, action-item -> module, stream-> user-story, action stream
+	3. add to current spec & compile the attr data
+	4. wrap functions into ui-optimal fashion
+	5. bind
+	6. Complete with formatted data below
+	=====
+	Func Spec: [getting started, login/logout/accounts, map, server-side communication, fake data spec, analytics/user-data, animation framework]
+	Milestone -> components [Profile Cards, University Card, FAQ item, Base Item]
+	Element Components: [base, profiles, cards, loaders]
+	Data: [Fake data service, get fall start dates] later: mine chegg properly
+	Anim: [multi-animation, hover, move]
+	Refactor: [Go over their code, Code cleanup]
+	Modules: [Getting Started, Next Steps, Analytics, Object Tracking, Theme/Tour Guiding, placeholders]
+	Static Specs: [faq, team, about, pricing, how it works]
+	Spec + View: [] in-active state
+-->
+<!-- Phase 2:
+	Become a Guru
+	Apps
+-->
+
+
+<!-- eh actions todo streams-->
+<action-item items="[tag-hover:inactive, tag-hover:active, tag-hover-click:active, tag-hover-click:inactive, tag-transition-madlib-blank:after]" group="splash:madlib" priority="1" tested="true" time="10hr" phase="1" type="eh" />

@@ -17,11 +17,19 @@ angular.module('uguru.admin')
 
     docs.items = [];
 
-    docs.main  = {index: 3, options: ["Notes", "Utility", "Components", "Directives", "Status/Tools", "Research"]};
+    docs.main  = {index: 0, options: ["Notes", "Utility", "Components", "Directives", "Status/Tools", "Research"]};
 
     docs.search = function(letters) {
         console.log(letters);
     }
+
+    docs.debugDirectives = {};
+    docs.debugDirectives.debug_args = [
+      {name: 'highlight'},
+      {name: 'hide'},
+      {name: 'pause-at'},
+      {name: 'speed'}
+    ]
 
     docs.directives = AdminDirectiveService.getAllDirectives()
     docs.stateDirectives = {
@@ -43,6 +51,7 @@ angular.module('uguru.admin')
       shortcuts: [
         {name: 'arg-shortcut', options: ['replace', 'with'], description: 'Enables shortcut creation for state arguments such as [anim, trigger, send, class, prop], with a word or letter of your choice.', syntax: '<arg-shortcut replace="prop" with="p"/>'},
         {name: 'prop-shortcut', options: ['replace', 'with'], description: 'Enables shortcut creation for CSS property names, such as [opacity-0, animation-timing-function, background-color], with a word or letter of your choice.', syntax: '<prop-shortcut replace="opacity" with="o"/>'},
+        {name: 'prop-value-shortcut', options: ['replace', 'with'], description: 'Enables shortcut creation for <b>ONE</b> {property:value} CSS pairing', syntax: '<prop-value-shortcut replace="op:0" with="o-0"/>'},
         {name: 'cmd-shortcut', options: ['replace', 'with'], description: 'Enables shortcut creation for enter state values, such as anything in quotations after the default applicable states.', syntax: '<cmd-shortcut replace="prop:[opacity:0, z-index:-1000]" with="backstage"/>'}
       ],
       state_args: [
