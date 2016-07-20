@@ -193,6 +193,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/milestones',
     templateUrl: 'admin/templates/milestones.html'
   })
+  .state('root.svg-test', {
+    url:'/svg-test',
+    templateUrl: 'shared/templates/svg-test.html'
+  })
   .state('root.base-components', {
     url:'/dev/base/components/:baseCompName',
     templateProvider: function(AdminDirectiveService, $stateParams) {
