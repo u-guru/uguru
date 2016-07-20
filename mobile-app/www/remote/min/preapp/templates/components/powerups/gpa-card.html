@@ -10,7 +10,7 @@
 				when-gpa-mouse-enter="p:[play:running] | a:[prop-hover:set:(dur:800ms#func:ease-in-out#count:infinite#dir:alternate):delay-500:a]"
 				when-gpa-mouse-leave="p:[play:paused]">
 			    <g init-with="p:[tro:center center]"
-					when-gpa-mouse-enter="p:[play:running] | a:[prop-rotate:set:(dur:1000ms#func:ease-in-out#count:infinite):delay-500:a]"
+					when-gpa-mouse-enter="p:[play:running] | a:[prop-rotate:set:(dur:1000ms#func:cubic-bezier(.96##-0.23##.37##1.3)#count:infinite):delay-500:a]"
 					when-gpa-mouse-leave="p:[play:paused]">
 					<path d="M140.92268,97.5425659 C140.92268,96.2157282 141.99804,95.1401136 143.318903,95.1401136 L149.957033,95.1401136 C151.280431,95.1401136 152.353257,96.2182699 152.353257,97.5425659 L152.353257,104.197951 C152.353257,105.524789 151.277896,106.600403 149.957033,106.600403 L143.318903,106.600403 C141.995505,106.600403 140.92268,105.522247 140.92268,104.197951 L140.92268,97.5425659 L140.92268,97.5425659 Z" class="5-bg" stroke="#78898C" stroke-linecap="round" stroke-linejoin="round" fill="#B6C3C5"></path>
 				    <path d="M146.637968,100.870259 L148.658628,98.8443464 L146.637968,100.870259 L144.617308,98.8443464 L146.637968,100.870259 L146.637968,100.870259 L146.637968,100.870259 L146.637968,100.870259 L146.637968,100.870259 L146.637968,100.870259 L146.637968,100.870259 Z M146.637968,100.870259 L144.617308,102.896171 L146.637968,100.870259 L148.658628,102.896171 L146.637968,100.870259 L146.637968,100.870259 L146.637968,100.870259 L146.637968,100.870259 L146.637968,100.870259 L146.637968,100.870259 L146.637968,100.870259 Z" class="5-icon" stroke="#78898C" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -53,10 +53,10 @@
 				init-with="p:[op:0, tr:scale(0) translateX(-20px) translateY(20px), tro:left bottom]"
 				when-powerup-icon-gpa-init="t-enter"
 				on-enter="p:[op:1, tr:scale(1) translateX(0) translateY(0px), t:all 700ms cubic-bezier(.5#.04#.95#.16)]:delay-1000"
-				when-gpa-mouse-enter="p:[play:running] | a:[prop-hover:set:(dur:800ms#func:ease-in-out#count:infinite#dir:alternate):delay-350:a]"
+				when-gpa-mouse-enter="p:[play:running] | a:[prop-hover:set:(dur:1250ms#func:ease-in-out#count:infinite#dir:alternate):delay-350:a]"
 				when-gpa-mouse-leave="p:[play:paused]">
 				<g init-with="p:[tro:center center]"
-					when-gpa-mouse-enter="p:[play:running] | a:[prop-rotate:set:(dur:900ms#func:ease-in-out#count:infinite):delay-450:a]"
+					when-gpa-mouse-enter="p:[play:running] | a:[prop-rotate:set:(dur:1200ms#func:linear#count:infinite):delay-450:a]"
 					when-gpa-mouse-leave="p:[play:paused]">
 				    <path d="M124.819187,58.0834319 C124.819187,56.4999092 126.111549,55.2162105 127.696351,55.2162105 L136.50494,55.2162105 C138.093953,55.2162105 139.382103,56.5119315 139.382103,58.0834319 L139.382103,66.9497599 C139.382103,68.5332826 138.089742,69.8169814 136.50494,69.8169814 L127.696351,69.8169814 C126.107337,69.8169814 124.819187,68.5212604 124.819187,66.9497599 L124.819187,58.0834319 L124.819187,58.0834319 Z" class="3-bg" stroke="#78898C" stroke-linecap="round" stroke-linejoin="round" fill="#B6C3C5"
 						init-with="p:[tr:rotate(-30deg), tro:center center]"
@@ -69,10 +69,10 @@
 				init-with="p:[op:0, tr:scale(0) translateX(30px), tro:right center]"
 				when-powerup-icon-gpa-init="t-enter"
 				on-enter="p:[op:1, tr:scale(1) translateX(0), t:all 700ms cubic-bezier(.5#.04#.95#.16)]:delay-1000"
-				when-gpa-mouse-enter="p:[play:running] | a:[prop-hover:set:(dur:800ms#func:ease-in-out#count:infinite#dir:alternate):delay-350:a]"
+				when-gpa-mouse-enter="p:[play:running] | a:[prop-hover:set:(dur:900ms#func:ease-in-out#count:infinite#dir:alternate):delay-350:a]"
 				when-gpa-mouse-leave="p:[play:paused]">
 				<g init-with="p:[tro:center center]"
-					when-gpa-mouse-enter="p:[play:running] | a:[prop-rotate:set:(dur:1000ms#func:ease-in-out#count:infinite):delay-650:a]"
+					when-gpa-mouse-enter="p:[play:running] | a:[prop-rotate:set:(dur:1000ms#func:linear#count:infinite):delay-650:a]"
 					when-gpa-mouse-leave="p:[play:paused]">
 					<path d="M33,136.682847 C33,135.101549 34.2849121,133.819653 35.8782333,133.819653 L51.9661411,133.819653 C53.5557454,133.819653 54.8443744,135.107905 54.8443744,136.682847 L54.8443744,152.857616 C54.8443744,154.438914 53.5594623,155.72081 51.9661411,155.72081 L35.8782333,155.72081 C34.2886289,155.72081 33,154.432558 33,152.857616 L33,136.682847 L33,136.682847 Z" class="2-bg" stroke="#78898C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#B6C3C5"
 						init-with="p:[tr:rotate(90deg), tro:center center]"
@@ -88,13 +88,16 @@
 				when-gpa-mouse-enter="p:[play:running] | a:[prop-hover:set:(dur:800ms#func:ease-in-out#count:infinite#dir:alternate):delay-350:a]"
 				when-gpa-mouse-leave="p:[play:paused]">
 				<g init-with="p:[tro:center center]"
-					when-gpa-mouse-enter="p:[play:running] | a:[prop-rotate:set:(dur:1800ms#func:linear#count:infinite):delay-250:a]"
+					when-gpa-mouse-enter="p:[play:running] | a:[prop-rotate:set:(dur:1800ms#func:cubic-bezier(.96##-0.23##.37##1.3)#count:infinite):delay-250:a]"
 					when-gpa-mouse-leave="p:[play:paused]">
 				    <path d="M139.382103,140.03665 C139.382103,138.448389 140.659495,137.160849 142.250449,137.160849 L164.547372,137.160849 C166.131515,137.160849 167.415717,138.441561 167.415717,140.03665 L167.415717,162.391532 C167.415717,163.979793 166.138325,165.267333 164.547372,165.267333 L142.250449,165.267333 C140.666305,165.267333 139.382103,163.986621 139.382103,162.391532 L139.382103,140.03665 L139.382103,140.03665 Z" class="1-bg" stroke="#78898C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#B6C3C5"
 						init-with="p:[tr:rotate(-90deg), tro:center center]"
 						when-powerup-icon-gpa-init="t-enter"
 						on-enter="p:[tr:rotate(0), t:all 700ms cubic-bezier(.5#.04#.95#.16)]:delay-1000"></path>
-				    <path d="M152.519067,146.529677 C153.164173,146.529677 153.687135,146.005356 153.687135,145.358573 C153.687135,144.711791 153.164173,144.18747 152.519067,144.18747 C151.873962,144.18747 151.351,144.711791 151.351,145.358573 C151.351,146.005356 151.873962,146.529677 152.519067,146.529677 L152.519067,146.529677 L152.519067,146.529677 L152.519067,146.529677 L152.519067,146.529677 Z M152.519067,158.240712 C153.164173,158.240712 153.687135,157.716391 153.687135,157.069609 C153.687135,156.422826 153.164173,155.898505 152.519067,155.898505 C151.873962,155.898505 151.351,156.422826 151.351,157.069609 C151.351,157.716391 151.873962,158.240712 152.519067,158.240712 L152.519067,158.240712 L152.519067,158.240712 L152.519067,158.240712 L152.519067,158.240712 Z M146.024613,152.150974 L159.480748,152.150974 C159.635573,152.150974 159.761084,151.836381 159.761084,151.448312 C159.761084,151.060242 159.635573,150.74565 159.480748,150.74565 L146.024613,150.74565 C145.869788,150.74565 145.744277,151.060242 145.744277,151.448312 C145.744277,151.836381 145.869788,152.150974 146.024613,152.150974 L146.024613,152.150974 L146.024613,152.150974 L146.024613,152.150974 L146.024613,152.150974 L146.024613,152.150974 Z" class="1-icon" fill="#78898C"></path>
+				    <path d="M152.519067,146.529677 C153.164173,146.529677 153.687135,146.005356 153.687135,145.358573 C153.687135,144.711791 153.164173,144.18747 152.519067,144.18747 C151.873962,144.18747 151.351,144.711791 151.351,145.358573 C151.351,146.005356 151.873962,146.529677 152.519067,146.529677 L152.519067,146.529677 L152.519067,146.529677 L152.519067,146.529677 L152.519067,146.529677 Z M152.519067,158.240712 C153.164173,158.240712 153.687135,157.716391 153.687135,157.069609 C153.687135,156.422826 153.164173,155.898505 152.519067,155.898505 C151.873962,155.898505 151.351,156.422826 151.351,157.069609 C151.351,157.716391 151.873962,158.240712 152.519067,158.240712 L152.519067,158.240712 L152.519067,158.240712 L152.519067,158.240712 L152.519067,158.240712 Z M146.024613,152.150974 L159.480748,152.150974 C159.635573,152.150974 159.761084,151.836381 159.761084,151.448312 C159.761084,151.060242 159.635573,150.74565 159.480748,150.74565 L146.024613,150.74565 C145.869788,150.74565 145.744277,151.060242 145.744277,151.448312 C145.744277,151.836381 145.869788,152.150974 146.024613,152.150974 L146.024613,152.150974 L146.024613,152.150974 L146.024613,152.150974 L146.024613,152.150974 L146.024613,152.150974 Z" class="1-icon" fill="#78898C"
+						init-with="p:[tro:center center]"
+						when-gpa-mouse-enter="p:[play:running] | a:[prop-rotate:set:(dur:1900ms#func:cubic-bezier(.96##-0.23##.37##1.3)#count:infinite):delay-250:a]"
+						when-gpa-mouse-leave="p:[play:paused]"></path>
 				</g>
 			</g>
 		</g>
