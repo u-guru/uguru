@@ -271,12 +271,26 @@ angular.module('uguru.admin')
                 if (parentScopeName) {
                     scope.parent = scope[parentScopeName];
                     scope.parent.name = parentScopeName;
-                    scope.parent.debug = {states:[]};
-                    scope.parent.debug.states = AdminDebugService.getAllDebugElems(element[0].parentNode);
-                    console.log(scope.parent.debug.states);
-                    if (scope.parent.debug.states.length) {
-                        scope.parent.debug.showToolbar = true && !('hide' in attr);
+                    scope.debug = {states:[], options: AdminDebugService.processOptions(attr)};
+                    console.log(scope.debug.options.toggles);
+                    scope.debug.states = AdminDebugService.getAllDebugElems(element[0].parentNode);
+                    console.log(scope.debug.states);
+                    if (scope.debug.states.length) {
+                        scope.debug.options.showToolbar = true && !('hide' in attr);
                     }
+                }
+                scope.playAllStates = function() {
+                    AdminDebugService.playAllStates(scope.debug.states, scope.debug.options, scope);
+                }
+
+                scope.playState = function(state) {
+                    AdminDebugService.playState(state, scope);
+                }
+
+                if ('autoplay' in attr) {
+                    element.ready(function() {
+                        scope.playAllStates()
+                    })
                 }
             // AnimToolService.setStage(scope.stage);
 
