@@ -9,7 +9,7 @@
 						<h1 class="cal-month"
 							init-with="p-op"
 							when-cal-init="t:[on-enter]"
-							on-enter="p:[op:1,t:all 300ms ease-in-out]:delay-150">
+							on-enter="p:[op:1, tr:scale(1), t:all 300ms ease-in-out]:delay-150">
 							<span>
 								<span init-with="p:[op:0, tr:rotateX(90deg), t:all 150ms ease-out]"
 									when-cal-enter="t:[on-enter]"
@@ -28,241 +28,243 @@
 						<div class="cal-day-container flex">
 							<ul class="cal-time"
 								init-default
-								when-cal-enter="s:[cal-time-1:public]:delay-1000">
+								when-cal-enter="s:[cal-time-1-init:public:delay-100]0">
 								<li init-with="p-op"
-									when-cal-time-1="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-2:public]:delay-100">
+									when-cal-time-1-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-2-init:public:delay-100]">
 									<span>All Day</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-2="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-3:public]:delay-100">
+									when-cal-time-2-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-3-init:public:delay-100]">
 									<span>12am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-3="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-4:public]:delay-100">
+									when-cal-time-3-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-4-init:public:delay-100]">
 									<span>1am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-4="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-5:public]:delay-100">
+									when-cal-time-4-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-5-init:public:delay-100]">
 									<span>2am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-5="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-6:public]:delay-100">
+									when-cal-time-5-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-6-init:public:delay-100]">
 									<span>3am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-6="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-7:public]:delay-100">
+									when-cal-time-6-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-7-init:public:delay-100]">
 									<span>4am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-7="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-8:public]:delay-100">
+									when-cal-time-7-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-8-init:public:delay-100]">
 									<span>5am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-8="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-9:public]:delay-100">
+									when-cal-time-8-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-9-init:public:delay-100]">
 									<span>6am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-9="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-10:public]:delay-100">
+									when-cal-time-9-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-10-init:public:delay-100]">
 									<span>7am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-10="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-11:public]:delay-100">
+									when-cal-time-10-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-11-init:public:delay-100]">
 									<span>8am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-11="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-12:public]:delay-100">
+									when-cal-time-11-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-12-init:public:delay-100]">
 									<span>9am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-12="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-13:public]:delay-100">
+									when-cal-time-12-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-13-init:public:delay-100]">
 									<span>10am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-13="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-14:public]:delay-100">
+									when-cal-time-13-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-14-init:public:delay-100]">
 									<span>11am</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-14="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-15:public]:delay-100">
+									when-cal-time-14-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-15-init:public:delay-100]">
 									<span>Noon</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-15="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-16:public]:delay-100">
+									when-cal-time-15-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-16-init:public:delay-100]">
 									<span>1pm</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-16="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-17:public]:delay-100">
+									when-cal-time-16-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-17-init:public:delay-100]">
 									<span>2pm</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-17="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-18:public]:delay-100">
+									when-cal-time-17-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-18-init:public:delay-100]">
 									<span>3pm</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-18="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-19:public]:delay-100">
+									when-cal-time-18-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-19-init:public:delay-100]">
 									<span>4pm</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-19="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-20:public]:delay-100">
+									when-cal-time-19-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-20-init:public:delay-100]">
 									<span>5pm</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-20="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-21:public]:delay-100">
+									when-cal-time-20-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-21-init:public:delay-100]">
 									<span>6pm</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-21="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-22:public]:delay-100">
+									when-cal-time-21-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-22-init:public:delay-100]">
 									<span>7pm</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-22="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-23:public]:delay-100">
+									when-cal-time-22-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-23-init:public:delay-100]">
 									<span>8pm</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-23="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-24:public]:delay-100">
+									when-cal-time-23-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-24-init:public:delay-100]">
 									<span>9pm</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-24="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-25:public]:delay-100">
+									when-cal-time-24-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-25-init:public:delay-100]">
 									<span>10pm</span>
 								</li>
 								<li init-with="p-op"
-									when-cal-time-25="t-enter"
-									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-26:public]:delay-100">
+									when-cal-time-25-init="t-enter"
+									on-enter="a:[bounceInLeft-subtle:set:(dur:1000ms):in] | s:[cal-time-26-init:public:delay-100]">
 									<span>11pm</span>
 								</li>
 							</ul>
 							<div class="cal-main">
-								<ul class="cal-date">
+								<ul class="cal-date"
+									init-default
+									when-cal-init="s:[cal-date-1-init:public]:delay-450">
 									<li init-with="p-op"
-										when-cal-init="t:[on-enter]"
-										on-enter="p:[op:1,t:all 300ms ease-in-out]:delay-450">
+										when-cal-date-1-init="t-enter"
+										on-enter="a:[scaleIn-subtle:set:(dur:1000ms):in] | t:[on-enter:children] | s:[cal-date-2-init:public:delay-100]">
 										<span>
 											<span class="cal-date-name"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]">Sun</span>
+												when-cal-date-1-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-500]">Sun</span>
 											<span class="cal-date-num"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-100">22</span>
+												when-cal-date-1-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-600]">22</span>
 										</span>
 									</li>
 									<li init-with="p-op"
-										when-cal-init="t:[on-enter]"
-										on-enter="p:[op:1,t:all 300ms ease-in-out]:delay-550">
+										when-cal-date-2-init="t-enter"
+										on-enter="a:[scaleIn-subtle:set:(dur:1000ms):in] | t:[on-enter:children] | s:[cal-date-3-init:public:delay-100]">
 										<span>
 											<span class="cal-date-name"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-200">Mon</span>
+												when-cal-date-2-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-500]">Mon</span>
 											<span class="cal-date-num"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-300">23</span>
+												when-cal-date-2-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-600]">23</span>
 										</span>
 									</li>
 									<li init-with="p-op"
-										when-cal-init="t:[on-enter]"
-										on-enter="p:[op:1,t:all 300ms ease-in-out]:delay-650">
+										when-cal-date-3-init="t-enter"
+										on-enter="a:[scaleIn-subtle:set:(dur:1000ms):in] | t:[on-enter:children] | s:[cal-date-4-init:public:delay-100]">
 										<span>
 											<span class="cal-date-name"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-400">Tue</span>
+												when-cal-date-3-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-500]">Tue</span>
 											<span class="cal-date-num"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-500">24</span>
-										</span>
-									</li>
-									<li init-with="p-op" class="active"
-										when-cal-init="t:[on-enter]"
-										on-enter="p:[op:1,t:all 300ms ease-in-out]:delay-750">
-										<span>
-											<span class="cal-date-name"
-												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-600">Wed</span>
-											<span class="cal-date-num"
-												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-700">25</span>
+												when-cal-date-3-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-600]">24</span>
 										</span>
 									</li>
 									<li init-with="p-op"
-										when-cal-init="t:[on-enter]"
-										on-enter="p:[op:1,t:all 300ms ease-in-out]:delay-850">
+										when-cal-date-4-init="t-enter"
+										on-enter="a:[scaleIn-subtle:set:(dur:1000ms):in] | t:[on-enter:children] | s:[cal-date-5-init:public:delay-100]">
 										<span>
 											<span class="cal-date-name"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-800">Thu</span>
+												when-cal-date-4-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-500]">Wed</span>
 											<span class="cal-date-num"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-900">26</span>
+												when-cal-date-4-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-600]">25</span>
 										</span>
 									</li>
 									<li init-with="p-op"
-										when-cal-init="t:[on-enter]"
-										on-enter="p:[op:1,t:all 300ms ease-in-out]:delay-950">
+										when-cal-date-5-init="t-enter"
+										on-enter="a:[scaleIn-subtle:set:(dur:1000ms):in] | t:[on-enter:children] | s:[cal-date-6-init:public:delay-100]">
 										<span>
 											<span class="cal-date-name"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-1000">Fri</span>
+												when-cal-date-5-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-500]">Thu</span>
 											<span class="cal-date-num"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-1100">27</span>
+												when-cal-date-5-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-600]">26</span>
 										</span>
 									</li>
 									<li init-with="p-op"
-										when-cal-init="t:[on-enter]"
-										on-enter="p:[op:1,t:all 300ms ease-in-out]:delay-1050 | send:[cal-enter:public]:delay-1050">
+										when-cal-date-6-init="t-enter"
+										on-enter="a:[scaleIn-subtle:set:(dur:1000ms):in] | t:[on-enter:children] | s:[cal-date-7-init:public:delay-100]">
 										<span>
 											<span class="cal-date-name"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-1200">Sat</span>
+												when-cal-date-6-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-500]">Fri</span>
 											<span class="cal-date-num"
 												init-with="p-op"
-												when-cal-enter="t:[on-enter]"
-												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-1300">28</span>
+												when-cal-date-6-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-600]">27</span>
+										</span>
+									</li>
+									<li init-with="p-op"
+										when-cal-date-7-init="t-enter"
+										on-enter="a:[scaleIn-subtle:set:(dur:1000ms):in] | t:[on-enter:children] | s:[cal-date-8-init:public:delay-100, cal-enter:public:delay-1050]">
+										<span>
+											<span class="cal-date-name"
+												init-with="p-op"
+												when-cal-date-7-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-500]">Sat</span>
+											<span class="cal-date-num"
+												init-with="p-op"
+												when-cal-date-7-init="t-enter"
+												on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-600]">28</span>
 										</span>
 									</li>
 								</ul>
 								<div class="cal-events">
 									<ul class='cal-day'
 										init-default
-										when-cal-enter="s:[cal-day-1-init:public]:delay-1000">
+										when-cal-enter="s:[cal-day-1-init:public:delay-100]0">
 										<li class="all-day"
 											init-with="p-op"
-											when-cal-day-1-init="t:[on-enter]"
+											when-cal-day-1-init="t-enter"
 											on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in] | send:[cal-day-2-init:public:delay-150]">
 											<a></a>
 											<div>
@@ -272,7 +274,7 @@
 											</div>
 										</li>
 										<li init-with="p-op"
-											when-cal-day-2-init="t:[on-enter]"
+											when-cal-day-2-init="t-enter"
 											on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in] | send:[cal-day-3-init:public:delay-150]">
 											<a></a>
 											<div>
@@ -1834,7 +1836,7 @@
 			<div class="cal-add"
 				init-with="p-op"
 				when-cal-init="t:[on-enter]"
-				on-enter="p:[op:1,t:all 300ms ease-in-out]:delay-300">
+				on-enter="p:[op:1, tr:scale(1), t:all 300ms ease-in-out]:delay-300">
 				<a>
 					<svg viewBox="0 0 100 100"
 						init-with="p:[op:0, sdo:212, sda:212]"
@@ -1848,7 +1850,7 @@
 			<div class="cal-search" class-on-click="active, null:inject.calendar-container|has-filters"
 				init-with="p-op"
 				when-cal-init="t:[on-enter]"
-				on-enter="p:[op:1,t:all 300ms ease-in-out]:delay-300">
+				on-enter="p:[op:1, tr:scale(1), t:all 300ms ease-in-out]:delay-300">
 				<div>
 					<input id="search-events" type="search" placeholder="Search"/>
 					<label for="search-events">
