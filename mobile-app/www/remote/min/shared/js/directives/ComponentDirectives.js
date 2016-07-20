@@ -125,9 +125,7 @@ angular.module('uguru.shared.directives.components')
                     }
                 }
                 scope.click = function(option, index) {
-                    if (!option.skip) {
-                        scope.dropdown.selectedIndex = index;
-                    }
+
 
                     if (index !== scope.dropdown.selectedIndex) {
                         scope.dropdown.selectedRecentlyChanged = true;
@@ -135,6 +133,10 @@ angular.module('uguru.shared.directives.components')
                         $timeout(function() {
                             scope.dropdown.selectedRecentlyChanged = false;
                         }, 1000)
+                    }
+
+                    if (!option.skip) {
+                        scope.dropdown.selectedIndex = index;
                     }
 
                     $timeout(function() {

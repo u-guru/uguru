@@ -408,10 +408,11 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        switch="rowTwo"
+	                        init-with="prop:[o:1]"
+                            switch="rowTwo:active"
                             on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500] | c:[active:add]"
                             on-switch-row-two-inactive="transform:[clear:translate] | c:[active:remove]"
-							on-click="t:[on-switch-row-two-change]">
+							on-click="trigger:[on-switch-row-two-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -448,7 +449,8 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        switch="rowTwo"
+	                        init-with="prop:[o:1]"
+                            switch="rowTwo:active"
                             on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500] | c:[active:add]"
                             on-switch-row-two-inactive="transform:[clear:translate] | c:[active:remove]"
 							on-click="t:[on-switch-row-two-change]">
@@ -488,7 +490,8 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        switch="rowTwo"
+	                        init-with="prop:[o:1]"
+                            switch="rowTwo:active"
                             on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500] | c:[active:add]"
                             on-switch-row-two-inactive="transform:[clear:translate] | c:[active:remove]"
                             on-click="t:[on-switch-row-two-change]">
@@ -528,9 +531,10 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        switch="rowTwo"
-                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500] | c:[active:add]"
-                            on-switch-row-two-inactive="transform:[clear:translate] | c:[active:remove]"
+	                        init-with="prop:[o:1]"
+                            switch="rowTwo:active"
+                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500]"
+                            on-switch-row-two-inactive="transform:[clear:translate]"
 							on-click="t:[on-switch-row-two-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>

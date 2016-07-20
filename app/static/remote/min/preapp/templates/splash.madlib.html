@@ -6,13 +6,14 @@
 	<custom-states when="madlib-init"></custom-states>
     <div class="splash-guru-head">
         <div class="splash-hero-guru splash-logo-guru" ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"
-			init-with="p:[op:0]"
-			when-madlib-init="t-enter"
-			on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]"
+			init-default
 			when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 			when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 			when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"></div>
-        <!-- parallax-parent-ref="p1" parallax-child="0.4" -->
+			<!-- init-with="p:[op:0]"
+			when-madlib-init="t-enter"
+			on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]" -->
+        	<!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop" init-with="p:[op:0]" viewBox="0 0 340 205">
             <g fill="none">
                 <path d="M197.223004,186.289595 C230.124127,175.599372 259.195925,160.754252 282.227028,143.962428 C294.858905,154.565768 305.000002,166.999998 337.99999,161.000007 C324.999989,152 314.999992,138.000007 315.855826,113.112054 C334.099853,91.2130052 341.862051,68.3669818 335.358834,48.3521367 C320.254948,1.86715683 233.921194,-11.7431829 142.526996,17.9525921 C51.1327982,47.648367 -10.7127194,109.405071 4.39116616,155.890051 C19.4950517,202.375031 105.828806,215.98537 197.223004,186.289595 L197.223004,186.289595 Z" fill="#40484b" fill-opacity="0.5" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -67,7 +68,8 @@
                 on-enter="a:[bounceInUp-subtle:set:(dur:1000ms):delay-1250:in]">
 				<!-- elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
 				on-category-switch-exit="inactive-adlib-header:anim" -->
-                <h1 class="adlib-header desktop" ng-if="root.window.desktop">
+                <h1 class="adlib-header desktop">
+					<!--  ng-if="root.window.desktop" -->
                     <span init-with="p:[tr:translate3d(40px#0#0)]"
 						when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
 		                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
@@ -138,7 +140,8 @@
 						when-madlib-init="t-enter"
 						on-enter="p:[tr:none, t:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.end}}</span>
                 </h1>
-				<h1 class="adlib-header mobile" ng-if="root.window.mobile">
+				<h1 class="adlib-header mobile">
+					<!-- ng-if="root.window.mobile" -->
                     <span init-with="p:[tr:translate3d(48px#0#0)]"
 						init-default
 						when-category-dropdown-mouse-enter="p:[op:0.25, t:all 250ms ease-in-out]"
@@ -231,7 +234,7 @@
                 on-map-transition-enter="click-two:anim" -->
 
 				<li class='adlib-tag adlib-tag-1'
-                    init-with="p:[op:0,t:all 250ms ease-in-out]"
+                    init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]"
                     when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
@@ -311,7 +314,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-3'
-                    init-with="p:[op:0,t:all 250ms ease-in-out]"
+                    init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-300"
                     when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
@@ -351,7 +354,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-4'
-                    init-with="p:[op:0,t:all 250ms ease-in-out]"
+                    init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-450"
                     when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
@@ -391,7 +394,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-5'
-                    init-with="p:[op:0,t:all 250ms ease-in-out]"
+                    init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-600"
                     when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-350, t:all 250ms ease-in-out]"
@@ -405,10 +408,11 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        switch="rowTwo"
+	                        init-with="prop:[o:1]"
+                            switch="rowTwo:active"
                             on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500] | c:[active:add]"
                             on-switch-row-two-inactive="transform:[clear:translate] | c:[active:remove]"
-							on-click="t:[on-switch-row-two-change]">
+							on-click="trigger:[on-switch-row-two-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -431,7 +435,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-6'
-                    init-with="p:[op:0,t:all 250ms ease-in-out]"
+                    init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-750"
                     when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
@@ -445,7 +449,8 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        switch="rowTwo"
+	                        init-with="prop:[o:1]"
+                            switch="rowTwo:active"
                             on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500] | c:[active:add]"
                             on-switch-row-two-inactive="transform:[clear:translate] | c:[active:remove]"
 							on-click="t:[on-switch-row-two-change]">
@@ -471,7 +476,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-7'
-                    init-with="p:[op:0,t:all 250ms ease-in-out]"
+                    init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-900"
                     when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-250, t:all 250ms ease-in-out]"
@@ -485,7 +490,8 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        switch="rowTwo"
+	                        init-with="prop:[o:1]"
+                            switch="rowTwo:active"
                             on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500] | c:[active:add]"
                             on-switch-row-two-inactive="transform:[clear:translate] | c:[active:remove]"
                             on-click="t:[on-switch-row-two-change]">
@@ -511,7 +517,7 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-8'
-                    init-with="p:[op:0,t:all 250ms ease-in-out]"
+                    init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[bounceIn-subtle:set:(dur:1000ms):in]:delay-1050"
                     when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
@@ -525,9 +531,10 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        switch="rowTwo"
-                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500] | c:[active:add]"
-                            on-switch-row-two-inactive="transform:[clear:translate] | c:[active:remove]"
+	                        init-with="prop:[o:1]"
+                            switch="rowTwo:active"
+                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500]"
+                            on-switch-row-two-inactive="transform:[clear:translate]"
 							on-click="t:[on-switch-row-two-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
