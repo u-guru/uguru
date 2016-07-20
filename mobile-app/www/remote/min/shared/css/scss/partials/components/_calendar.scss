@@ -5,6 +5,9 @@
 	@include flex;
 	width: 100%;
 	background: $slate;
+	* {
+		transform-origin: center center;
+	}
 	.cal-add {
 		@include flex;
 		@include flex-center;
@@ -484,6 +487,7 @@
 				> li {
 					position: relative;
 					height: 50px;
+					transform-origin: left center;
 					&:first-child {
 						height: 36px;
 					}
