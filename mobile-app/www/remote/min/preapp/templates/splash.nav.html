@@ -74,11 +74,11 @@
 					init-with="p-op"
 					when-nav-init="t-enter"
 					on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1500"
-					on-click="send:[mobile-switch-init:public]">
+					on-click="send:[mobile-sw-init:public]">
                     <div class="splash-hero-nav-container">
                         <a class-on-click="a:inject.splash-hero-nav-schools|a" ng-click='page.dropdowns.university.toggle()'>
                             <span style='background-color: {{selectedUniversity.school_color_dark}}'></span>
-                            <span>@ {{selectedUniversity.school_tiny_name}}</span>
+                            <span>@ {{splash.university.school_tiny_name}}</span>
                             <svg viewBox="0 0 100 100">
                                 <path d="M14,32 L50,68 L86,32"></path>
                             </svg>
@@ -207,20 +207,20 @@
          <!--Mobile Nav-->
          <div mobile id="splash-hero-nav-mobile" class="no-scrollbar" mobile
 		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
-			when-mobile-switch-init="t-enter"
+			when-mobile-sw-init="t-enter"
 			on-enter="p:[op:1, z-index:999]">
             <div class="splash-hero-nav-category full-x">
                 <h1 init-with="p-op"
-					when-mobile-switch-init="t-enter"
+					when-mobile-sw-init="t-enter"
 					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">Category</h1>
                 <ul>
                     <li ng-repeat='category in nav.categoriesDropdown.options'
 						init-with="p-op"
-						when-mobile-switch-init="t-enter"
+						when-mobile-sw-init="t-enter"
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
                         <a class="bg-{{category.bg_hex_color}}"
 							ng-class="{'active':category.id == selectedCategory.id}"
-							ng-click='demoSwitchCategory(category, selectedUniversity)'>
+							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'>
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
                             <span>{{category.name}}</span>
                         </a>
@@ -229,15 +229,15 @@
             </div>
             <div class="splash-hero-nav-school full-x">
                 <h1 init-with="p-op"
-					when-mobile-switch-init="t-enter"
+					when-mobile-sw-init="t-enter"
 					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">University</h1>
                 <ul>
                     <li ng-repeat='university in nav.universitiesDropdown.options' class='txt-white weight-600'
 						init-with="p-op"
-						when-mobile-switch-init="t-enter"
+						when-mobile-sw-init="t-enter"
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
                         <a ng-class="{'active':university.id == selectedUniversity.id}"
-							ng-click='demoSwitchCategory(category, selectedUniversity)'>
+							ng-click='nav.universitiesDropdown.onOptionClick(university, $index)'>
                             <span style="background: {{university.school_color_dark}}"></span>
                             <span>{{university.short_name || university.name}}</span>
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>

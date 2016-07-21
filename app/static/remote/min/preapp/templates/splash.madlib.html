@@ -244,13 +244,13 @@
 	                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
-                    on-change="e:[madlib.updateOptionByIndex(splash.category, 0)]"
-                    type="splash" blank-num="1">
+                    on-change="e:[madlib.updateOptionByIndex(splash.category, 0)]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
-							switch="rowOne"
-							on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500] | c:[active:add]"
-							on-switch-row-one-inactive="transform:[clear:translate] | c:[active:remove]"
+							init-with="prop:[opacity:1]"
+                            switch="rowOne"
+							on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500]"
+							on-switch-row-one-inactive="transform:[clear:translate]"
 							on-click="t:[on-switch-row-one-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
@@ -289,8 +289,8 @@
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
                             switch="rowOne"
-                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500] | c:[active:add]"
-                            on-switch-row-one-inactive="transform:[clear:translate] | c:[active:remove]"
+                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500]"
+                            on-switch-row-one-inactive="transform:[clear:translate]"
 							on-click="t:[on-switch-row-one-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>

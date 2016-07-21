@@ -35,9 +35,11 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
               resultDict.translateY = '0px';
             case ('clearX'):
               resultDict.translateX = '0px';
-            case ('clear' && transform_dict[key] === 'translate'):
+            case ('clear'):
+
               resultDict.translateX = '0px';
               resultDict.translateY = '0px';
+              break;
             case ('clear' && transform_dict[key] === 'scale'):
               resultDict.scaleX = '0px';
               resultDict.scaleY = '0px';
