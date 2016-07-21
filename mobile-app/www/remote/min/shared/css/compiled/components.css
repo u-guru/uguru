@@ -6726,6 +6726,11 @@ input.chip:hover {
   font-size: 20px;
   font-weight: 600;
   background: rgba(64, 72, 75, 0.5); }
+  @media screen and (max-width: 320px) {
+    .tag-adlib {
+      width: 96px;
+      height: 28px;
+      font-size: 16px; } }
   .tag-adlib svg {
     -webkit-transition: all 150ms ease-in-out;
     -moz-transition: all 150ms ease-in-out;
