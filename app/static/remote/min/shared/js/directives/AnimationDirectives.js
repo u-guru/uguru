@@ -205,7 +205,6 @@ angular.module('uguru.shared.directives')
         })
       }
     }
-
 }])
 .directive('classOnClear', ['$timeout', 'AnimationService', function ($timeout, AnimationService) {
   return {
@@ -872,8 +871,9 @@ directive("classOnClick", ["$timeout", 'AnimationService', function ($timeout, A
                           }
                         }
                       }
-                      if (classArgsHasInject(classArgs)) {
-                        var injectArgClassSplit = classArgsHasInject(classArgs).split("|")
+                      if (indexClass.indexOf('inject') > -1) {
+
+                        var injectArgClassSplit = indexClass.split("|")
                         if (injectArgClassSplit.length > 1) {
                           var classToInject = injectArgClassSplit[1];
                           var elemToInjectSelector = injectArgClassSplit[0];

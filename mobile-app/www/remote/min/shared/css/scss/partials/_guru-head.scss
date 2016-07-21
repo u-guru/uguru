@@ -1,5 +1,18 @@
 @import 'mixin';
 
+.guru-head {
+	position: relative;
+	.guru-head-switcher {
+		position: absolute;
+		top: 50%;
+		margin-top: -100px;
+		left: 50%;
+		margin-left: -100px;
+		width: 200px;
+		height: 200px;
+	}
+}
+
 .guru-head-switcher {
 	width: 200px;
 	height: 200px;

@@ -1,6 +1,8 @@
 <div class="dropdown-color"
-    init-with="prop:[opacity:1]">
-    <a class="color" ng-click="toggle($event)" ng-class='{"active": dropdown.active }' on-init init-with="prop:[opacity:1]" >
+    init-with="prop:[opacity:1]"
+	ng-mouseenter="mouseEnter($event, $index)" ng-mouseleave="mouseLeave($event, $index)">
+	<div init-with='prop:[visibility:hidden]'></div>
+    <a class="color" ng-click="toggle($event)" ng-class='{"active": dropdown.active }' on-init init-with="prop:[opacity:1]">
 		<!-- @samir -->
 		<div class="null"
 			init-with="prop:[transform:scaleX(0), transition:all 250ms ease-out 450ms]"
@@ -25,13 +27,13 @@
         <span ng-if='!dropdown.key'
 			init-with="prop:[opacity:0]"
 			when-dropdown-init="trigger:[on-enter]"
-			on-enter="prop:[opacity:1, transition:all 250ms ease-out 750ms]">{{dropdown.options[dropdown.selectedIndex]}}</span>
+			on-enter="prop:[opacity:1, transition:all 250ms ease-out 750ms]"
+			ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', dropdown.selectedIndex)">{{dropdown.options[dropdown.selectedIndex]}}</span>
         <span ng-if='dropdown.key'
 			init-with="prop:[opacity:0]"
 			when-dropdown-init="trigger:[on-enter]"
 			on-enter="prop:[opacity:1, transition:all 250ms ease-out 750ms]"
-            ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', dropdown.selectedIndex)"
-            >{{dropdown.options[dropdown.selectedIndex][dropdown.key]}}</span>
+            ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', dropdown.selectedIndex)">{{dropdown.options[dropdown.selectedIndex][dropdown.key]}}</span>
         <svg viewBox="0 0 100 100">
             <path d="M14,32 L50,68 L86,32"
 				init-with="prop:[stroke-dashoffset:103, transition:all 250ms ease-out 750ms]"

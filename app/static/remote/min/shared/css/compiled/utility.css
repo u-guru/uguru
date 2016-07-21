@@ -1384,6 +1384,66 @@ button, input, textarea {
 .svg-stroke-10 * {
   stroke-width: 10px !important; }
 
+.stroke-charcoal * {
+  stroke: #2B3234 !important; }
+
+.stroke-slate * {
+  stroke: #40484B !important; }
+
+.stroke-taupe * {
+  stroke: #757575 !important; }
+
+.stroke-campus * {
+  stroke: #8A9EA3 !important; }
+
+.stroke-smoke * {
+  stroke: #F1F1F1 !important; }
+
+.stroke-white * {
+  stroke: white !important; }
+
+.stroke-rocket * {
+  stroke: #696269 !important; }
+
+.stroke-shamrock * {
+  stroke: #69B3A5 !important; }
+
+.stroke-robin * {
+  stroke: #2BB3B8 !important; }
+
+.stroke-lake * {
+  stroke: #50A5DD !important; }
+
+.stroke-moxie * {
+  stroke: #43cb9d !important; }
+
+.stroke-crimson * {
+  stroke: #d3242c !important; }
+
+.stroke-auburn *, .stroke-delivery * {
+  stroke: #F04F54 !important; }
+
+.stroke-orange *, .stroke-freelacing * {
+  stroke: #E5753C !important; }
+
+.stroke-gold *, .stroke-baking * {
+  stroke: #F6C64E !important; }
+
+.stroke-moola *, .stroke-photography * {
+  stroke: #81B566 !important; }
+
+.stroke-azure *, .stroke-tech * {
+  stroke: #55A4B7 !important; }
+
+.stroke-cobalt *, .stroke-household * {
+  stroke: #7872e3 !important; }
+
+.stroke-eggplant *, .stroke-athletic * {
+  stroke: #9A5BC5 !important; }
+
+.stroke-cerise *, .stroke-academic * {
+  stroke: #e6389b !important; }
+
 .underline-dashed {
   text-decoration: none;
   border-bottom: 2px dashed; }
@@ -2312,5 +2372,14 @@ ion-content > div.scroll {
 
 #intercom-container {
   z-index: auto !important; }
+
+.opacity-0 {
+  opacity: 0; }
+
+.opacity-50 {
+  opacity: 0.5; }
+
+.opacity-1 {
+  opacity: 1; }
 
 /*# sourceMappingURL=utility.css.map */

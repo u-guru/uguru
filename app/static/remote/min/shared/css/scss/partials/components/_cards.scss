@@ -4002,11 +4002,47 @@ a.category-tile {
 
 // calendar tile
 .calendar-tile {
-	border: 2px solid $shamrock;
-	border-left-width: 5px;
+	// border: 2px solid $shamrock;
+	// border-left-width: 5px;
+	border: 0;
+	position: relative;
 	border-radius: 2px;
-	background: white!important;
-	padding: 15px;
+	background: white;
+	padding: 14px 19px;
+	padding-left: 22px;
+	div:empty {
+		position: absolute;
+		background: $shamrock;
+		border-radius: 2px;
+		&:nth-child(1) {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			transform-origin: right center;
+		}
+		&:nth-child(2) {
+			top: 0;
+			right: 0;
+			width: 2px;
+			height: 100%;
+			transform-origin: center bottom;
+		}
+		&:nth-child(3) {
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			height: 2px;
+			transform-origin: left center;
+		}
+		&:nth-child(4) {
+			bottom: 0;
+			left: 0;
+			width: 5px;
+			height: 100%;
+			transform-origin: center top;
+		}
+	}
 	h1 {
 		color: $shamrock;
 		font-size: 24px;
@@ -4019,13 +4055,17 @@ a.category-tile {
 		font-weight: 600;
 	}
 	&.bg-slate {
-		border-color: $slate;
+		div:empty {
+			background: $slate;
+		}
 		h1 {
 			color: $slate;
 		}
 	}
 	&.bg-taupe {
-		border-color: $taupe;
+		div:empty {
+			background: $taupe;
+		}
 		h1 {
 			color: $taupe;
 		}
@@ -4034,85 +4074,113 @@ a.category-tile {
 		}
 	}
 	&.bg-campus {
-		border-color: $campus;
+		div:empty {
+			background: $campus;
+		}
 		h1 {
 			color: $campus;
 		}
 	}
 	&.bg-shamrock {
-		border-color: $shamrock;
+		div:empty {
+			background: $shamrock;
+		}
 		h1 {
 			color: $shamrock;
 		}
 	}
 	&.bg-robin {
-		border-color: $robin;
+		div:empty {
+			background: $robin;
+		}
 		h1 {
 			color: $robin;
 		}
 	}
 	&.bg-lake {
-		border-color: $lake;
+		div:empty {
+			background: $lake;
+		}
 		h1 {
 			color: $lake;
 		}
 	}
 	&.bg-moxie {
-		border-color: $moxie;
+		div:empty {
+			background: $moxie;
+		}
 		h1 {
 			color: $moxie;
 		}
 	}
 	&.bg-crimson {
-		border-color: $crimson;
+		div:empty {
+			background: $crimson;
+		}
 		h1 {
 			color: $crimson;
 		}
 	}
 	&.bg-auburn, &.bg-delivery {
-		border-color: $auburn;
+		div:empty {
+			background: $auburn;
+		}
 		h1 {
 			color: $auburn;
 		}
 	}
 	&.bg-orange, &.bg-freelancing {
-		border-color: $orange;
+		div:empty {
+			background: $orange;
+		}
 		h1 {
 			color: $orange;
 		}
 	}
 	&.bg-gold, &.bg-baking {
-		border-color: $gold;
+		div:empty {
+			background: $gold;
+		}
 		h1 {
 			color: $gold;
 		}
 	}
 	&.bg-moola, &.bg-photography {
-		border-color: $moola;
+		div:empty {
+			background: $moola;
+		}
 		h1 {
 			color: $moola;
 		}
 	}
 	&.bg-azure, &.bg-tech {
-		border-color: $azure;
+		div:empty {
+			background: $azure;
+		}
 		h1 {
 			color: $azure;
 		}
 	}
 	&.bg-cobalt, &.bg-household {
-		border-color: $cobalt;
+		div:empty {
+			background: $cobalt;
+		}
 		h1 {
 			color: $cobalt;
 		}
 	}
 	&.bg-eggplant, &.bg-athletic {
-		border-color: $eggplant;
+		div:empty {
+			background: $eggplant;
+		}
 		h1 {
 			color: $eggplant;
 		}
 	}
 	&.bg-cerise, &.bg-academic {
-		border-color: $cerise;
+		div:empty {
+			background: $cerise;
+		}
 		h1 {
 			color: $cerise;
 		}

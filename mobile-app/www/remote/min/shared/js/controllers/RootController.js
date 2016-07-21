@@ -15,6 +15,7 @@ angular.module('uguru.shared.controllers', [])
     root.browserPrefix = RootService.getBrowserPrefix();
     root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
     root.devMode = window.location.href.split('/dev/').length > 1;
+    root.milestones = [];
     root.public = {customStates: []};
   }
 ]);

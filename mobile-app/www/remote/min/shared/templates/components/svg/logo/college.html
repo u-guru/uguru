@@ -9,8 +9,12 @@
 			init-with="prop:[opacity:0]"
 			when-nav-init="trigger:[on-enter]"
 			when-academic-init="trigger:[on-exit]"
+			when-baking-init="trigger:[on-exit]"
+			when-photography-init="trigger:[on-exit]"
+			when-tech-init="trigger:[on-exit]"
+			when-household-init="trigger:[on-exit]"
 			on-enter="anim:[bounceInX:set:(animation-duration:1000ms#animation-timing-function:linear):in]:delay-750"
-			on-exit="anim:[fadeOut:set:(animation-duration:800ms#animation-timing-function:ease-in-out):out]">
+			on-exit="prop:[op:0, t:all 800ms ease-in-out]">
         	<tspan x="427" y="114" style="white-space:pre;" class='uppercase'>  college  </tspan>
     	</text>
 	</g>
@@ -18,31 +22,65 @@
 		<text class="impact-label" font-family="Impact Label" font-size="48" font-weight="normal" fill="#2B3234" text-anchor="end"
 			init-with="prop:[opacity:0]"
 			when-academic-init="trigger:[on-enter]"
-			on-enter="anim:[fadeIn:set:(animation-duration:800ms#animation-timing-function:ease-in-out):in]">
+			when-baking-init="trigger:[on-exit]"
+			when-photography-init="trigger:[on-exit]"
+			when-tech-init="trigger:[on-exit]"
+			when-household-init="trigger:[on-exit]"
+			on-enter="anim:[fadeIn:set:(animation-duration:800ms#animation-timing-function:ease-in-out):in]"
+			on-exit="prop:[op:0, t:all 800ms ease-in-out]">
         	<tspan x="427" y="114" style="white-space:pre;" class='uppercase'>  academic  </tspan>
     	</text>
 	</g>
 	<g transform="translate(267.892006, 104.422814) rotate(-6.000000) translate(-267.892006, -104.422814)">
 		<text class="impact-label" font-family="Impact Label" font-size="48" font-weight="normal" fill="#2B3234" text-anchor="end"
-			init-with="prop:[opacity:0]">
+			init-with="prop:[opacity:0]"
+			when-baking-init="trigger:[on-enter]"
+			when-academic-init="trigger:[on-exit]"
+			when-photography-init="trigger:[on-exit]"
+			when-tech-init="trigger:[on-exit]"
+			when-household-init="trigger:[on-exit]"
+			on-enter="anim:[fadeIn:set:(animation-duration:800ms#animation-timing-function:ease-in-out):in]"
+			on-exit="prop:[op:0, t:all 800ms ease-in-out]">
         	<tspan x="427" y="114" style="white-space:pre;" class='uppercase'>    baking   </tspan>
     	</text>
 	</g>
 	<g transform="translate(267.892006, 104.422814) rotate(-6.000000) translate(-267.892006, -104.422814)">
 		<text class="impact-label" font-family="Impact Label" font-size="48" font-weight="normal" fill="#2B3234" text-anchor="end"
-			init-with="prop:[opacity:0]">
+			init-with="prop:[opacity:0]"
+			when-photography-init="trigger:[on-enter]"
+			when-academic-init="trigger:[on-exit]"
+			when-baking-init="trigger:[on-exit]"
+			when-tech-init="trigger:[on-exit]"
+			when-household-init="trigger:[on-exit]"
+			on-enter="anim:[fadeIn:set:(animation-duration:800ms#animation-timing-function:ease-in-out):in]"
+			on-exit="prop:[op:0, t:all 800ms ease-in-out]">
         	<tspan x="427" y="114" style="white-space:pre;" class='uppercase'> photography </tspan>
     	</text>
 	</g>
 	<g transform="translate(267.892006, 104.422814) rotate(-6.000000) translate(-267.892006, -104.422814)">
 		<text class="impact-label" font-family="Impact Label" font-size="48" font-weight="normal" fill="#2B3234" text-anchor="end"
-			init-with="prop:[opacity:0]">
+			init-with="prop:[opacity:0]"
+			when-tech-init="trigger:[on-enter]"
+			when-academic-init="trigger:[on-exit]"
+			when-baking-init="trigger:[on-exit]"
+			when-photography-init="trigger:[on-exit]"
+			when-household-init="trigger:[on-exit]"
+			on-enter="anim:[fadeIn:set:(animation-duration:800ms#animation-timing-function:ease-in-out):in]"
+			on-exit="prop:[op:0, t:all 800ms ease-in-out]">
         	<tspan x="427" y="114" style="white-space:pre;" class='uppercase'>     tech    </tspan>
     	</text>
 	</g>
-	<g transform="translate(267.892006, 104.422814) rotate(-6.000000) translate(-267.892006, -104.422814)">
+	<g transform="translate(267.892006, 104.422814) rotate(-6.000000) translate(-267.892006, -104.422814)"
+	on-exit="prop:[op:0, t:all 800ms ease-in-out]">
 		<text class="impact-label" font-family="Impact Label" font-size="48" font-weight="normal" fill="#2B3234" text-anchor="end"
-			init-with="prop:[opacity:0]">
+			init-with="prop:[opacity:0]"
+			when-household-init="trigger:[on-enter]"
+			when-academic-init="trigger:[on-exit]"
+			when-baking-init="trigger:[on-exit]"
+			when-photography-init="trigger:[on-exit]"
+			when-tech-init="trigger:[on-exit]"
+			on-enter="anim:[fadeIn:set:(animation-duration:800ms#animation-timing-function:ease-in-out):in]"
+			on-exit="prop:[op:0, t:all 800ms ease-in-out]">
         	<tspan x="427" y="114" style="white-space:pre;" class='uppercase'>  household  </tspan>
     	</text>
 	</g>

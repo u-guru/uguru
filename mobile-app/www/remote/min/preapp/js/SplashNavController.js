@@ -13,7 +13,7 @@ angular.module('uguru.preApp')
 
     nav.categoriesDropdown = {selectedIndex: 0, key:'name', options: $scope.splash.categories, onOptionClick: updateSelectedCategory};
     nav.universitiesDropdown = {selectedIndex: 0, key:'name', options: processUniversityNames($scope.splash.universities), onOptionClick: updateSelectedUniversity};
-    SpecService.initSpec('nav', $scope);
+    // SpecService.initSpec('nav', $scope);
 
 
     function navActivateSidebarFunc() {
@@ -22,6 +22,7 @@ angular.module('uguru.preApp')
     }
 
     function updateSelectedCategory(option, index) {
+      console.log('updating select category', option);
       $scope.splash.category = option;
     }
 

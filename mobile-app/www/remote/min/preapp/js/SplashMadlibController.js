@@ -9,7 +9,9 @@ angular.module('uguru.preApp')
   'UniversityService',
   'ContentService',
   'SpecService',
-  function($scope, $state, $timeout, CategoryService, UniversityService, ContentService, SpecService) {
+  'RootService',
+  'UtilitiesService',
+  function($scope, $state, $timeout, CategoryService, UniversityService, ContentService, SpecService, RootService, UtilitiesService) {
     var madlib = this;
 
 
@@ -17,7 +19,7 @@ angular.module('uguru.preApp')
     madlib.category.tags_data = ContentService.splashCategoryOptions[madlib.category.name].madlib;
     madlib.options = {one: madlib.category.tags_data.blank_one_options, two: madlib.category.tags_data.blank_two_options}
     madlib.university = UniversityService.getBerkeleyLocal();
-
+    madlib.switches = {};
 
 
     // madlib.onEnter = function() {
@@ -39,6 +41,33 @@ angular.module('uguru.preApp')
       }
     };
 
+    madlib.tagClicked = function($event) {
+      var clickedElem = $event.target.parentNode
+      if (clickedElem.nodeName.toLowerCase() !== 'a') {
+        clickedElem = clickedElem.parentNode;
+      }
+      console.log(clickedElem);
+      // console.log(clickedElem, clickedElem.className);
+      // $timeout(function() {
+      //   console.log(clickedElem, clickedElem.className);
+      // }, 1000)
+
+        var hasActive =  clickedElem.className.indexOf('active') > -1  && (clickedElem.className.indexOf('activated') > -1) ;
+        var hasRecentActive = clickedElem.className.indexOf('recently-active') > -1;
+        if (hasActive && !hasRecentActive) {
+          clickedElem.classList.remove('translate-blank-1', 'tag-active', 'active',  'translate-blank-2');
+          var browser_prefix = RootService.getBrowserPrefix();
+          console.log(UtilitiesService.camelCase(browser_prefix + '-transform'), 'null')
+          if (browser_prefix) {
+            clickedElem.style[UtilitiesService.camelCase(browser_prefix + '-transform')] = null;
+          } else {
+            clickedElem.style[UtilitiesService.camelCase('transform')] = null;
+          }
+        } else {
+          clickedElem.classList.add('tag-active');
+        }
+    }
+
     madlib.updateOptionByIndex = function(category, index, cb) {
       index = (index && parseInt(index)) || 0
       var blankNum = 'one';
@@ -46,6 +75,7 @@ angular.module('uguru.preApp')
         blankNum = 'two';
         index = index - 4
       }
+      console.log('switching to...', category.name)
       var newElem = ContentService.splashCategoryOptions[category.name].madlib['blank_' + blankNum + '_options'][index];
       madlib.options[blankNum][index] = newElem;
     }
@@ -84,7 +114,7 @@ angular.module('uguru.preApp')
       onCategorySwitch: madlib.categorySwitch
     }
     // SpecService.initSpec(madlib, $scope, '#splash-madlib', 'madlib', 'preapp/templates/splash.madlib.html', 'preapp/js/SplashMadlibController.js', states, 'preapp/css/scss/partials/adlib/_main.scss');
-    SpecService.initSpec('madlib', $scope);
+    // SpecService.initSpec('madlib', $scope);
     // $timeout(function() {
     //       $scope.root.devMode && madlib.onEnter();
     // }, 2000);
