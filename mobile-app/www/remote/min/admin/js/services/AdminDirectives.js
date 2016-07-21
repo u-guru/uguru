@@ -55,6 +55,90 @@ angular.module('uguru.admin')
         }
     }
 }])
+.directive('module', [function () {
+  return {
+    restrict: 'E',
+    scope: true,
+    controller: function($scope) {
+      $scope.module = {name: '', dimensions:'', workflows: []};
+      $scope.$watchCollection('module',
+        function(m) {
+            console.log(m.workflows.length, 'workflows');
+        });
+    },
+    link : function preLink(scope, element, attr, ctrl, transcludeFn) {
+        ctrl.element = element;
+        if (!attr.name || !attr.dimensions) return;
+        scope.module.name = attr.name
+        scope.module.dimensions = attr.dimensions;
+        // scope.$parent.root.milestones.push(scope.module);
+     }
+    }
+}])
+.directive('userWorkflow', [function () {
+  return {
+    replace: true,
+    restrict: 'E',
+    require: '^module',
+    scope: true,
+    link: function preLink(scope, element, attr, ctrl) {
+        if (!attr.name) return;
+        scope.workflow = {
+            id: scope.module.workflows.length + 1,
+            name: attr.name,
+            setup: {
+                base: {},
+                post: {},
+            },
+            stories:[]
+        }
+        scope.module.workflows.push(scope.workflow);
+     }
+    }
+}])
+.directive('userStories', ['$timeout', function ($timeout) {
+  return {
+    replace: true,
+    restrict: 'E',
+    require: '^module',
+    scope: true,
+    link : function(scope, element, attr) {
+        // scope.stories = scope.$parent.workflow;
+        scope.stories = [];
+        $timeout(function() {
+            scope.$parent.workflow.stories = scope.stories;
+            scope.$apply();
+        })
+     }
+    }
+}])
+.directive('story', ['$timeout', function ($timeout) {
+  return {
+    replace: true,
+    restrict: 'E',
+    require: '^module',
+    scope: true,
+    link : function(scope, element, attr) {
+        scope.story = {name: attr.name, desc:attr.desc, progress: null, func: attr.func === 'true', uiStreams: ''}
+        $timeout(function() {
+            scope.$parent.stories.push(scope.story)
+            scope.$apply();
+        })
+     }
+    }
+}])
+.directive('setup', [function () {
+  return {
+    replace: true,
+    restrict: 'E',
+    require: '^module',
+    scope: false,
+    link : function(scope, element, attr) {
+        if (!attr.name) return;
+        scope.module.userExp.push({id: scope.module.userExp.length + 1, name: attr.name})
+     }
+    }
+}])
 .directive("docItem", ['RootService', '$timeout', '$filter', function(RootService, $timeout, $filter) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/admin.doc.tpl',

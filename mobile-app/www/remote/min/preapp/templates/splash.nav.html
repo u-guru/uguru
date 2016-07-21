@@ -269,7 +269,7 @@
         > onHover[start:end]: ability to specify different commands based on hoverAbility
         > init-when: like init-with, but allows clarification to specify WHEN (i.e. one argument = N = levels of parents, grandparents must be completed first);
     -->
-    <!-- <debug delay-btwn="250" pause-at="2" speed='fast'> </debug> -->
+    <debug autoplay delay-btwn="250" pause-at="2" speed='fast'> </debug>
 </div>
 
 <div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
@@ -281,7 +281,7 @@
 
 <div class="splash-hero-pennant absolute left-0 z-index-999 p15xy" style="bottom: -65px"
 	init-with="p:[op:0, tro:left bottom, tr:translateY(50%) rotate(-90deg), t:all 500ms ease-out]"
-	when-madlib-init="s:[when-pennant-enter]:delay-5500"
+	when-madlib-init="s:[pennant-enter]:delay-5500"
 	on-enter="p:[op:1, tr:translateY(0) rotate(0)]"
 	when-pennant-enter="p:[op:1, tr:translateY(0) rotate(0)]"
 	when-pennant-exit="p:[op:0, tr:translateY(50%) rotate(-90deg)]">
