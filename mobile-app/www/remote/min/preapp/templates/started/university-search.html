@@ -47,7 +47,13 @@
 				when-search-university-init="t-enter"
 				on-enter="anim:[fadeIn:set:(dur:1000ms#func:ease-in-out):in]">
                 <!-- class-on-clear="slideOutUp:animOut" activate-on-class="show-projector-university" class-on-activate="opacity-1-impt:inject#projector-university [class-on-activate]|activate, opacity-1-impt:inject" class-on-activate-delay="1500" -->
-				<header class="p15xy semibold"><h1 class="caps">Search 196 Supported Schools</h1></header>
+				<header class="p15xy semibold">
+					<h1>
+						<span>Search</span>
+						<span>Search</span>
+						<span>196 Supported Schools</span>
+					</h1>
+				</header>
                 <div class='projector-map bg-slate full-xy'>
                     <!-- class="zoom-{{uniSearch.layout.map.zoom}}" style="height:calc(100%);" class-on-activate="fadeIn:anim" class-on-activate-delay="400" -->
                     <!-- <ui-gmap-google-map id="projector-google-map" class='full-xy absolute top-0 left-0' center="uniSearch.layout.map.center" refresh='uniSearch.layout.map.refresh' bounds="mapBounds" bounces="uniSearch.layout.map.bounds" events="uniSearch.layout.map.events"
@@ -338,8 +344,7 @@
 					init-with="prop:[op:0, transform-origin:center center]"
 					when-search-university-init="t-enter"
 					on-enter="anim:[guru-proj-enter:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):delay-2000:in]"></div>
-				<svg class="coach-support absolute" width="114px" height="98px" viewBox="0 0 228 196"
-					style="top: -40px; right: -104px;"
+				<svg class="coach-support" width="114px" height="98px" viewBox="0 0 228 196"
 					init-with="prop:[op:0, tr:scaleX(0) rotate(90deg), tro:left bottom, t:all 500ms ease-out]"
 					when-search-university-init="t-enter"
 					on-enter="prop:[op:1, tr:scaleX(1) rotate(0deg)]:delay-2750">
@@ -353,7 +358,7 @@
             </div>
         </div>
     </div>
-	<div class="splash-hero-skip absolute bottom-0 right-0"
+	<div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
 		init-with="prop:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
 		when-search-university-init="t-enter"
 		on-enter="prop:[op:1, tr:translateX(0) rotate(0)]:delay-500">
