@@ -67,7 +67,6 @@
 				<div class="splash-hero-nav mobile" mobile
 					init-with="p-op"
 					when-nav-init="t-enter"
-
 					on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1500">
                     <div class="splash-hero-nav-container">
                         <a init-default
@@ -201,19 +200,23 @@
 
          <div mobile id="splash-hero-nav-mobile" class="no-scrollbar" mobile
 		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
-			when-mobile-sw-init="t-enter"
-			on-enter="p:[op:1, z-index:999]">
+			when-mobile-switch-init="t-enter"
+			when-mobile-switch-exit="p:[op:0, z-index:-1]"
+			on-enter="p:[op:1, z-index:9999]">
 			<div class="absolute top-0 right-0 p10xy">
-				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'"></a>
+				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon"
+					ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'"
+					init-default
+					on-click="s:[mobile-switch-exit]"></a>
 			</div>
             <div class="splash-hero-nav-category full-x">
                 <h1 init-with="p-op"
-					when-mobile-sw-init="t-enter"
+					when-mobile-switch-init="t-enter"
 					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">Category</h1>
                 <ul>
                     <li ng-repeat='category in nav.categoriesDropdown.options'
 						init-with="p-op"
-						when-mobile-sw-init="t-enter"
+						when-mobile-switch-init="t-enter"
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
                         <a class="bg-{{category.bg_hex_color}}"
 							ng-class="{'active':category.id == selectedCategory.id}"
@@ -226,12 +229,12 @@
             </div>
             <div class="splash-hero-nav-school full-x">
                 <h1 init-with="p-op"
-					when-mobile-sw-init="t-enter"
+					when-mobile-switch-init="t-enter"
 					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">University</h1>
                 <ul>
                     <li ng-repeat='university in nav.universitiesDropdown.options' class='txt-white weight-600'
 						init-with="p-op"
-						when-mobile-sw-init="t-enter"
+						when-mobile-switch-init="t-enter"
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
                         <a ng-class="{'active':university.id == selectedUniversity.id}"
 							ng-click='nav.universitiesDropdown.onOptionClick(university, $index)'
@@ -276,10 +279,9 @@
    <button>Skip</button>
 </div>
 
-<!-- @samir -->
 <div class="splash-hero-pennant absolute left-0 z-index-999 p15xy" style="bottom: -65px"
 	init-with="p:[op:0, tro:left bottom, tr:translateY(50%) rotate(-90deg), t:all 500ms ease-out]"
-	when-madlib-init="s:[pennant-enter:self]:delay-5500"
+	when-madlib-init="s:[pennant-enter]:delay-5500"
 	on-enter="p:[op:1, tr:translateY(0) rotate(0)]"
 	when-pennant-enter="p:[op:1, tr:translateY(0) rotate(0)]"
 	when-pennant-exit="p:[op:0, tr:translateY(50%) rotate(-90deg)]">
@@ -292,8 +294,3 @@
 	    </text>
 	</svg>
 </div>
-<!--
-when-university-dropdown-mouse-enter="t:[pennant-enter]"
-when-university-dropdown-mouse-leave="t:[]"
-when-university-dropdown-toggle-on="prop:[z-index:5:delay-50, t:all 500ms ease-in-out]"
-when-university-dropdown-toggle-off="prop:[z-index:0:delay-50, t:all 500ms ease-in-out]" -->
