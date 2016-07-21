@@ -36,7 +36,6 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
             case ('clearX'):
               resultDict.translateX = '0px';
             case ('clear'):
-
               resultDict.translateX = '0px';
               resultDict.translateY = '0px';
               break;

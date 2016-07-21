@@ -201,9 +201,13 @@
          <div mobile id="splash-hero-nav-mobile" class="no-scrollbar" mobile
 		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
 			when-mobile-switch-init="t-enter"
+			when-mobile-switch-exit="p:[op:0, z-index:-1]"
 			on-enter="p:[op:1, z-index:9999]">
 			<div class="absolute top-0 right-0 p10xy">
-				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'"></a>
+				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon"
+					ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'"
+					init-default
+					on-click="s:[mobile-switch-exit]"></a>
 			</div>
             <div class="splash-hero-nav-category full-x">
                 <h1 init-with="p-op"
@@ -265,7 +269,7 @@
         > onHover[start:end]: ability to specify different commands based on hoverAbility
         > init-when: like init-with, but allows clarification to specify WHEN (i.e. one argument = N = levels of parents, grandparents must be completed first);
     -->
-    <debug hide delay-btwn="250" pause-at="2" speed='fast'> </debug>
+    <!-- <debug delay-btwn="250" pause-at="2" speed='fast'> </debug> -->
 </div>
 
 <div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
