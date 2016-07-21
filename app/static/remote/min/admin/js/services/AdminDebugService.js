@@ -201,7 +201,6 @@ function AdminDebugService($state, $timeout, $localstorage, RootService, Utiliti
                 var indexName = indexDebugPropSplit[0];
                 var indexValue = indexDebugPropSplit[1];
                 if (supportedPropNames.indexOf(indexName) > -1) {
-                    console.log('set it');
                     resultDict['id'] = id;
                     resultDict[indexName] = indexValue;
                     resultDict.elem = elem;
