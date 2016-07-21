@@ -234,12 +234,8 @@
 						when-mobile-sw-init="t-enter"
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
                         <a ng-class="{'active':university.id == selectedUniversity.id}"
-<<<<<<< HEAD
-							ng-click='nav.universitiesDropdown.onOptionClick(university, $index)'>
-=======
-							ng-click='demoSwitchCategory(category, selectedUniversity)'
+							ng-click='nav.universitiesDropdown.onOptionClick(university, $index)'
 							style="border-color: {{university.school_color_dark}}">
->>>>>>> 73efdd6b8660dcb13a6203637f7772ad22e706e5
                             <span style="background: {{university.school_color_dark}}"></span>
                             <span>{{university.short_name || university.name}}</span>
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
