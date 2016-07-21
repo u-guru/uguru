@@ -1,21 +1,15 @@
-<div id="splash-device-container" class="splash-device-container"
+<div id="splash-device-container" class="splash-device-container" desktop
 	ng-controller='SplashDeviceController as device'
-	on-init="s:[device-init:public]"
-	init-with="p:[tro:center center, tr:rotateY(180deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
-	when-university-dropdown-toggle-on="p:[tr:rotateY(0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
-	when-university-dropdown-toggle-off="p:[tr:rotateY(180deg):delay-50, t:none]"
-	desktop>
+	on-init="s:[device-init:public]">
 	<custom-states when="device-init"></custom-states>
     <div class="splash-device splash-device-iphone">
         <div class="splash-device-svg iphone-device"
 			init-with="p:[op:0, tr:rotateZ(30deg) rotateY(-90deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
-			when-device-init="t-enter"
+			when-university-dropdown-toggle-on="t-enter"
 			on-enter="p:[op:1, tr:rotateZ(0deg) rotateY(0deg)]">
             <!-- http://codepen.io/teamuguru/pen/3f4edcf309f72f85bb19f7a780aef8bd?editors=0100 -->
-			<svg class="iphone-center" viewBox="0 0 318 651"
+			<!-- <svg class="iphone-center" viewBox="0 0 318 651"
 				init-with="p-op"
-				when-device-init="t-enter"
-				on-enter="p:[op:0.2:delay-3000]"
 				when-university-dropdown-mouse-leave="p:[op:0.2:delay-50, t:all 250ms ease-in-out]"
 				when-university-dropdown-toggle-on="p:[op:1:delay-50, t:all 250ms ease-in-out]"
 				when-university-dropdown-toggle-off="p:[op:0.2:delay-50, t:all 250ms ease-in-out]">
@@ -26,12 +20,14 @@
 		            <polygon class="screen" fill="#2B2324" points="21 573 21 80 297 80 297 573"></polygon>
 		            <path d="M159,636 C145.192881,636 134,624.807119 134,611 C134,597.192881 145.192881,586 159,586 C172.807119,586 184,597.192881 184,611 C184,624.807119 172.807119,636 159,636" class="home-btn" fill="#2B2324"></path>
 			    </g>
-			</svg>
+			</svg> -->
 
             <svg class="iphone-left" viewBox="0 0 159 651"
 				init-with="p:[op:0, tr:translate3d(0#-30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)#opacity 750ms ease]"
-				when-device-init="t-enter"
-				on-enter="p:[op:0.2, tr:none, op:0:delay-3000, display:none:delay-3000]">
+				when-university-dropdown-toggle-on="p:[op:1, tr:none]"
+				when-university-dropdown-toggle-off="p:[op:0.2]"
+				when-university-dropdown-mouse-enter="p:[op:1, tr:none]"
+				when-university-dropdown-mouse-leave="p:[op:0.2]">
 				<g fill="#2b2324" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
 					<!-- school color specific -->
 					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" style="fill:#003057" class="school-color"
@@ -53,8 +49,10 @@
 
 			<svg class="iphone-right" viewBox="0 0 159 651"
 				init-with="p:[op:0, tr:translate3d(0#30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)#opacity 750ms ease]"
-				when-device-init="t-enter"
-				on-enter="p:[op:0.2, tr:none, op:0:delay-3000, display:none:delay-3000]">
+				when-university-dropdown-toggle-on="p:[op:1, tr:none]"
+				when-university-dropdown-toggle-off="p:[op:0.2]"
+				when-university-dropdown-mouse-enter="p:[op:1, tr:none]"
+				when-university-dropdown-mouse-leave="p:[op:0.2]">
 				<g fill="#2b2324" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
 					<!-- school color specific -->
 					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="school-color" style="fill:#003057"

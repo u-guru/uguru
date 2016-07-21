@@ -1,7 +1,7 @@
 <div class="dropdown-color"
     init-with="prop:[opacity:1]"
 	ng-mouseenter="mouseEnter($event, $index)" ng-mouseleave="mouseLeave($event, $index)">
-	<div></div>
+	<div init-with='prop:[visibility:hidden]'></div>
     <a class="color" ng-click="toggle($event)" ng-class='{"active": dropdown.active }' on-init init-with="prop:[opacity:1]">
 		<!-- @samir -->
 		<div class="null"

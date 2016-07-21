@@ -1,15 +1,10 @@
-
 <div id="splash-nav-bar"
 	ng-controller="SplashNavController as nav"
     init-with="backstage"
 	on-init="p:[op:1, z-index:1000] | send:[nav-init:public]">
-	<!-- powerups-clicked:public, search-university-clicked:public, nav-init:public -->
+	<!-- powerups-clicked:public, search-university-clicked:public, nav-init:public, mobile-switch-init:public, sidebar-icon-clicked:public -->
     <custom-states when="nav-init, powerups-clicked"></custom-states>
     <div id='splash-desktop-nav' class='full-x'>
-        <!-- Dropdown overlays -->
-        <!-- <a ng-if='page.dropdowns.university.active' class='bg-transparent absolute full-xy top-0 left-0 z-index-5' id='splash-nav-bg-overlay' ng-click='page.dropdowns.closeAll()'> </a> -->
-
-        <!-- Desktop Nav-->
         <header class='splash-header' id='home-nav-header' on-init="t-enter">
             <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
 				init-default
@@ -19,18 +14,15 @@
 				when-university-dropdown-mouse-enter="p:[op:0.1:delay-400, t:all 250ms ease-in-out]"
 				when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 				when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"></a>
-
-            <div class="right" desktop>
-                <div class="splash-hero-nav desktop m15right">
+            <div class="right">
+                <div class="splash-hero-nav desktop m15right" desktop>
                     <div class="splash-hero-nav-container">
-
                         <dropdown debug-id="
-                        1:[trigger:click,select:a]|
-                        2:[trigger:mouseover]|
-                        3:[trigger:mouseleave]|
-                        4:[trigger:click,select:a]"
-
-                        ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
+	                        1:[trigger:click,select:a]|
+	                        2:[trigger:mouseover]|
+	                        3:[trigger:mouseleave]|
+	                        4:[trigger:click,select:a]"
+                        	ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
                             prefix="category"
                             init-with="p-op"
                             when-nav-init="p:[op:1] | send:[dropdown-init:children:delay-750]"
@@ -46,9 +38,9 @@
 			                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 							when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]">
                         </dropdown>
-                        <h2 debug-id="2" init-with="p-op"
+                        <h2 init-with="p-op"
 							when-nav-init="t-enter"
-							on-enter="p:[op:1, t:all 1000ms ease-out]:delay-750"
+							on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1000"
 							when-category-dropdown-mouse-enter="p:[op:0.25:delay-50, t:all 250ms ease-in-out]"
 			                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 							when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
@@ -58,7 +50,7 @@
                         <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'
                             prefix="university"
 							init-with="p-op"
-							when-nav-init="p:[o-1] | send:[dropdown-init:children:delay-750]"
+							when-nav-init="p:[o-1] | send:[dropdown-init:children:delay-1250]"
 							states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]"
                             hover-data="name, school_color_dark"
                             mouse-enter-data="name, school_color_dark"
@@ -72,22 +64,23 @@
 		                    when-university-dropdown-mouse-enter="p:[op:1, t:all 250ms ease-in-out]"> </dropdown>
                     </div>
                 </div>
-				<div class="splash-hero-nav mobile"
+				<div class="splash-hero-nav mobile" mobile
 					init-with="p-op"
 					when-nav-init="t-enter"
-					on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1500"
-					on-click="send:[mobile-switch-init:public]">
+
+					on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1500">
                     <div class="splash-hero-nav-container">
-                        <a class-on-click="a:inject.splash-hero-nav-schools|a" ng-click='page.dropdowns.university.toggle()'>
-                            <span style='background-color: {{selectedUniversity.school_color_dark}}'></span>
-                            <span>@ {{selectedUniversity.school_tiny_name}}</span>
+                        <a init-default
+							on-click="send:[mobile-switch-init:public]">
+                            <span style='background-color: {{selectedUniversity.school_color_dark || "#003057"}}'></span>
+                            <span>@ {{selectedUniversity.school_tiny_name || "Cal"}}</span>
                             <svg viewBox="0 0 100 100">
                                 <path d="M14,32 L50,68 L86,32"></path>
                             </svg>
                         </a>
                     </div>
                 </div>
-                <a class="powerups-link icon-round-stroke mobile"
+                <a class="powerups-link icon-round-stroke mobile" mobile
 					init-default
 					when-category-dropdown-mouse-enter="p:[op:0.25, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
@@ -97,10 +90,6 @@
 					when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 					on-mouse-enter="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]"
 					on-click="send:[powerups-clicked] | class:[powerups-link:add]">
-					<!-- init-with="p:[op:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="p:[op:0]" -->
-                    <!-- ng-click='activatePowerups()'
-                    class-on-click="powerup-activated, null:inject#powerups-link svg|activate, null:inject#cta-modal-powerups|activate"
-                    class-on-activate="powerup-activated" class-on-activate-delay="500" -->
                     <div class="full-xy flex-center relative">
 						<svg viewBox="0 0 100 100">
 							<circle cx="50" cy="50" r="36"
@@ -116,7 +105,7 @@
 					</div>
                     <!-- translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" -->
                 </a>
-				<a class="powerups-link icon-round-stroke desktop"
+				<a class="powerups-link icon-round-stroke desktop" desktop
 					init-default
 					when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
@@ -126,10 +115,6 @@
 					when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 					on-mouse-enter="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]"
 					on-click="send:[powerups-clicked] | class:[powerups-link:add]">
-					<!-- init-with="p:[op:0.5]" when-nav-init="anim:[bounceInDown:set:(animation-duration:5s#animation-iteration-count:2):after]" on-mouse-enter="p:[op:0]" -->
-                    <!-- ng-click='activatePowerups()'
-                    class-on-click="powerup-activated, null:inject#powerups-link svg|activate, null:inject#cta-modal-powerups|activate"
-                    class-on-activate="powerup-activated" class-on-activate-delay="500" -->
                     <div class="full-xy flex-center relative">
 						<svg viewBox="0 0 100 100">
 							<circle cx="50" cy="50" r="36"
@@ -145,7 +130,7 @@
 					</div>
                     <!-- translate-on-click scale-x-on-click="3.0476" scale-y-on-click="3.0476" translate-x-offset="42" translate-y-offset="42" translate-to-elem="#powerup-all-icon" -->
                 </a>
-                <a class="sidebar-link icon-round-stroke mobile"
+                <a class="sidebar-link icon-round-stroke mobile" mobile
 					init-default
 					when-category-dropdown-mouse-enter="p:[op:0.25, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
@@ -155,10 +140,6 @@
 					when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 					on-mouse-enter="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]"
 					on-click="send:[sidebar-icon-clicked:public]">
-					<!-- init-with="p-op"
-					when-nav-init="t-enter"
-					on-enter="p:[op:1] | send:[sidebar-icon-clicked:public]:delay-2000" -->
-	                <!-- ng-click='initCTASplash()' class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="750" -->
 					<div class="full-xy flex-center relative">
 						<svg viewBox="0 0 100 100">
 							<circle cx="50" cy="50" r="36"
@@ -182,7 +163,7 @@
 						</svg>
 					</div>
 				</a>
-				<a class="sidebar-link icon-round-stroke desktop"
+				<a class="sidebar-link icon-round-stroke desktop" desktop
 					init-default
 					when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
@@ -192,10 +173,6 @@
 					when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 					on-mouse-enter="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]"
 					on-click="send:[sidebar-icon-clicked:public]">
-					<!-- init-with="p-op"
-					when-nav-init="t-enter"
-					on-enter="p:[op:1] | send:[sidebar-icon-clicked:public]:delay-2000" -->
-	                <!-- ng-click='initCTASplash()' class-on-load="show-opacity-impt, u-slideInDown" class-on-load-delay="750" -->
 					<div class="full-xy flex-center relative">
 						<svg viewBox="0 0 100 100">
 							<circle cx="50" cy="50" r="36"
@@ -222,20 +199,25 @@
             </div>
         </header>
 
-         <!--Mobile Nav-->
-         <!-- init-with="prop:[op:0, t:all 250ms ease-in-out]" -->
-         <div mobile id="splash-hero-nav-mobile"
-			init-with="prop:[op:1, z-index:999]"
-            >
-         <!-- <div id="splash-hero-nav-mobile"
-		 	init-with="p:[op:0, t:all 250ms ease-in-out]"
-			when-mobile-switch-init="t-enter"
-			on-enter="p:[op:1, z-index:999]"> -->
+         <div mobile id="splash-hero-nav-mobile" class="no-scrollbar" mobile
+		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
+			when-mobile-sw-init="t-enter"
+			on-enter="p:[op:1, z-index:999]">
+			<div class="absolute top-0 right-0 p10xy">
+				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'"></a>
+			</div>
             <div class="splash-hero-nav-category full-x">
-                <h1>Category</h1>
+                <h1 init-with="p-op"
+					when-mobile-sw-init="t-enter"
+					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">Category</h1>
                 <ul>
-                    <li ng-repeat='category in nav.categoriesDropdown.options'>
-                        <a class="bg-{{category.bg_hex_color}}" ng-click='demoSwitchCategory(category, selectedUniversity)' ng-class="{'active':category.id == selectedCategory.id}">
+                    <li ng-repeat='category in nav.categoriesDropdown.options'
+						init-with="p-op"
+						when-mobile-sw-init="t-enter"
+						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
+                        <a class="bg-{{category.bg_hex_color}}"
+							ng-class="{'active':category.id == selectedCategory.id}"
+							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'>
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
                             <span>{{category.name}}</span>
                         </a>
@@ -243,22 +225,20 @@
                 </ul>
             </div>
             <div class="splash-hero-nav-school full-x">
-                <h1>University</h1>
+                <h1 init-with="p-op"
+					when-mobile-sw-init="t-enter"
+					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">University</h1>
                 <ul>
-                    <li ng-repeat='university in nav.universitiesDropdown.options' class='txt-white weight-600'>
-                        <a ng-class="{'active':university.id == selectedUniversity.id}">
+                    <li ng-repeat='university in nav.universitiesDropdown.options' class='txt-white weight-600'
+						init-with="p-op"
+						when-mobile-sw-init="t-enter"
+						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
+                        <a ng-class="{'active':university.id == selectedUniversity.id}"
+							ng-click='nav.universitiesDropdown.onOptionClick(university, $index)'
+							style="border-color: {{university.school_color_dark}}">
                             <span style="background: {{university.school_color_dark}}"></span>
                             <span>{{university.short_name || university.name}}</span>
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="bg-find"
-							init-default
-							on-click="send:[search-university-clicked:public]">
-                            <span></span>
-                            <span>Find your College</span>
-                            <span></span>
                         </a>
                     </li>
                 </ul>
@@ -275,6 +255,7 @@
         [speed]: a pseudonym for 'pause-at=250', more usage later later
     ====coming soon (in order)=====
         > onStateButtonClick: Reset if already active (turn white => into green)
+        > <debug disable> a better way to disable it
         > onDebugElement=>Inspect specific properties like opacity and watch the dynamic values [read-only]
         > record button (multi-animation player) with tween-ability property values
         > docs button to access state arguments
@@ -285,5 +266,5 @@
         > onHover[start:end]: ability to specify different commands based on hoverAbility
         > init-when: like init-with, but allows clarification to specify WHEN (i.e. one argument = N = levels of parents, grandparents must be completed first);
     -->
-    <debug autoplay delay-btwn="250" hide pause-at="2" speed='fast'> </debug>
+    <debug hide delay-btwn="250" pause-at="2" speed='fast'> </debug>
 </div>

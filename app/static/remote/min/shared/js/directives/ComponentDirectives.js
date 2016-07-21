@@ -1,83 +1,83 @@
 angular.module('uguru.shared.directives.components', []);
 angular.module('uguru.shared.directives.components')
-    .directive("tag", ['$compile', '$timeout', 'RootService', function($compile, $timeout, RootService) {
-        function getTemplateURL(elem, attr) {
-            if (attr.type && attr.type === 'splash') {
-                return RootService.getBaseUrl() + 'preapp/templates/components/splash.tag.tpl'
-            } else
-            if (attr.type && attr.type === 'input') {
-                return RootService.getBaseUrl() + 'templates/elements/components/inputs/text/tag.tpl'
-            } else {
-                return RootService.getBaseUrl() + 'templates/elements/components/inputs/tags/base.tpl'
-            }
+    // .directive("tag", ['$compile', '$timeout', 'RootService', function($compile, $timeout, RootService) {
+    //     function getTemplateURL(elem, attr) {
+    //         if (attr.type && attr.type === 'splash') {
+    //             return RootService.getBaseUrl() + 'preapp/templates/components/splash.tag.tpl'
+    //         } else
+    //         if (attr.type && attr.type === 'input') {
+    //             return RootService.getBaseUrl() + 'templates/elements/components/inputs/text/tag.tpl'
+    //         } else {
+    //             return RootService.getBaseUrl() + 'templates/elements/components/inputs/tags/base.tpl'
+    //         }
 
-        }
-        return {
-            templateUrl: getTemplateURL,
-            args:'abc',
-            scope: {
-                innerText: '=',
-                category: '=',
-                blankNum: '=',
-                animArgs: '=',
-                placeholder: '@',
-                desktopMode: '=desktop',
-            },
-            restrict: 'E',
-            replace: true,
-            link: {pre: function(scope, element, attr) {
-                // scope.innerText == attr.innerText;
-                scope.root = scope.$parent.root;
+    //     }
+    //     return {
+    //         templateUrl: getTemplateURL,
+    //         args:'abc',
+    //         scope: {
+    //             innerText: '=',
+    //             category: '=',
+    //             blankNum: '=',
+    //             animArgs: '=',
+    //             placeholder: '@',
+    //             desktopMode: '=desktop',
+    //         },
+    //         restrict: 'E',
+    //         replace: true,
+    //         link: {pre: function(scope, element, attr) {
+    //             // scope.innerText == attr.innerText;
+    //             scope.root = scope.$parent.root;
 
-                // scope.watch()
-                scope.$parent.$watch(function() {
-                  return element.attr('class');
-                }, function(new_classes, old_classes) {
-                  if (new_classes && new_classes.indexOf('on-exit') > -1 || new_classes && new_classes.indexOf('on-enter') > -1 || new_classes && new_classes.indexOf('on-change') > -1) {
-                    element[0].classList.remove('on-exit', 'on-change', 'on-enter');
-                    // $compile(element)(scope.$parent);
-                  }
-                })
+    //             // scope.watch()
+    //             scope.$parent.$watch(function() {
+    //               return element.attr('class');
+    //             }, function(new_classes, old_classes) {
+    //               if (new_classes && new_classes.indexOf('on-exit') > -1 || new_classes && new_classes.indexOf('on-enter') > -1 || new_classes && new_classes.indexOf('on-change') > -1) {
+    //                 element[0].classList.remove('on-exit', 'on-change', 'on-enter');
+    //                 // $compile(element)(scope.$parent);
+    //               }
+    //             })
 
 
-                if (attr.type && attr.type.toLowerCase() === 'splash') {
-                    scope.type = 'splash';
-                }
+    //             if (attr.type && attr.type.toLowerCase() === 'splash') {
+    //                 scope.type = 'splash';
+    //             }
 
-                if (scope.blankNum && scope.blankNum.length) {
-                    scope.blankNum = 1
-                }
+    //             if (scope.blankNum && scope.blankNum.length) {
+    //                 scope.blankNum = 1
+    //             }
 
-                scope.click = function($event) {
-                    var childElemLink = element[0].querySelector('a');
-                    var splashAdlibContainerLink = document.querySelector('.splash-adlib');
-                    if (childElemLink && childElemLink.className.indexOf('recently-active') > -1) {
-                        return;
-                    }
-                    if (childElemLink && childElemLink.className.indexOf('translate-blank-1') > -1) {
-                        childElemLink.classList.remove('translate-blank-1', 'active');
-                        splashAdlibContainerLink.classList.remove('blank-1-filled');
-                        $timeout(function() {
-                            splashAdlibContainerLink.classList.remove('blank-1-filled');
-                        }, 100)
-                    }
-                    if (childElemLink && childElemLink.className.indexOf('translate-blank-2') > -1) {
-                        childElemLink.classList.remove('translate-blank-2', 'active');
-                        $timeout(function() {
-                            splashAdlibContainerLink.classList.remove('blank-2-filled');
-                        }, 100)
-                    }
-                    childElemLink.style.webkitTransform = null;
-                    childElemLink.style.MozTransform = null;
-                    childElemLink.style.msTransform = null;
-                    childElemLink.style.OTransform = null;
-                    childElemLink.style.transform = null;
-                }
+    //             scope.click = function($event) {
+    //                 var childElemLink = element[0].querySelector('a');
+    //                 var splashAdlibContainerLink = document.querySelector('.splash-adlib');
+    //                 if (childElemLink && childElemLink.className.indexOf('recently-active') > -1) {
+    //                     return;
+    //                 }
+    //                 if (childElemLink && childElemLink.className.indexOf('translate-blank-1') > -1) {
+    //                     childElemLink.classList.remove('translate-blank-1', 'active');
+    //                     splashAdlibContainerLink.classList.remove('blank-1-filled');
+    //                     $timeout(function() {
+    //                         splashAdlibContainerLink.classList.remove('blank-1-filled');
+    //                     }, 100)
+    //                 }
+    //                 if (childElemLink && childElemLink.className.indexOf('translate-blank-2') > -1) {
+    //                     childElemLink.classList.remove('translate-blank-2', 'active');
+    //                     $timeout(function() {
+    //                         splashAdlibContainerLink.classList.remove('blank-2-filled');
+    //                     }, 100)
+    //                 }
+    //                 childElemLink.style.webkitTransform = null;
+    //                 childElemLink.style.MozTransform = null;
+    //                 childElemLink.style.msTransform = null;
+    //                 childElemLink.style.OTransform = null;
+    //                 childElemLink.style.transform = null;
+    //             }
 
-            }
-            }
-        }
-    }])
+    //         }
+    //         }
+    //     }
+    // }])
     .directive("dropdown", ['$timeout', 'RootService', 'UtilitiesService', 'DirectiveService', function($timeout, RootService, UtilitiesService, DirectiveService) {
         function getTemplateURL(elem, attr) {
             if (attr.type && attr.type === 'color') {
@@ -125,9 +125,7 @@ angular.module('uguru.shared.directives.components')
                     }
                 }
                 scope.click = function(option, index) {
-                    if (!option.skip) {
-                        scope.dropdown.selectedIndex = index;
-                    }
+
 
                     if (index !== scope.dropdown.selectedIndex) {
                         scope.dropdown.selectedRecentlyChanged = true;
@@ -135,6 +133,10 @@ angular.module('uguru.shared.directives.components')
                         $timeout(function() {
                             scope.dropdown.selectedRecentlyChanged = false;
                         }, 1000)
+                    }
+
+                    if (!option.skip) {
+                        scope.dropdown.selectedIndex = index;
                     }
 
                     $timeout(function() {
