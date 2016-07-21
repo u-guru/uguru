@@ -1,147 +1,8 @@
 @import '../../../../../shared/css/scss/partials/mixin';
 @import 'responsive';
 
-// animation
-// .splash-adlib {
-// 	ul {
-// 		li {
-// 			@for $i from 1 through 8 {
-// 				&:nth-child(#{$i}) {
-// 					animation-delay: #{850ms + $i*150ms};
-// 				}
-// 			}
-// 		}
-// 	}
-// }
-
-// .tag-adlib rect.spread-out {
-// 	stroke-dasharray: 701;
-// 	stroke-dashoffset: -701;
-// 	animation: adlib-header-stroke 750ms cubic-bezier(.17,.67,.12,1) 1000ms both;
-// }
-
-// .adlib-tag.spread-out {
-// 	&:nth-child(1) {
-// 		animation: spread-out-tag-mobile-left 1000ms linear 1500ms 1 both;
-// 	}
-// 	&:nth-child(2) {
-// 		animation: spread-out-tag-mobile-left 1000ms linear 1550ms 1 both;
-// 	}
-// 	&:nth-child(3) {
-// 		animation: spread-out-tag-mobile-left 1000ms linear 1600ms 1 both;
-// 	}
-// 	&:nth-child(4) {
-// 		animation: spread-out-tag-mobile-left 1000ms linear 1650ms 1 both;
-// 	}
-// 	&:nth-child(5) {
-// 		animation: spread-out-tag-mobile-right 1000ms linear 1500ms 1 both;
-// 	}
-// 	&:nth-child(6) {
-// 		animation: spread-out-tag-mobile-right 1000ms linear 1550ms 1 both;
-// 	}
-// 	&:nth-child(7) {
-// 		animation: spread-out-tag-mobile-right 1000ms linear 1600ms 1 both;
-// 	}
-// 	&:nth-child(8) {
-// 		animation: spread-out-tag-mobile-right 1000ms linear 1650ms 1 both;
-// 	}
-// }
-// .adlib-tag.spread-in {
-// 	.tag-adlib.active {
-// 		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)!important;
-// 	}
-// 	&:nth-child(1) {
-// 		animation: spread-in-tag-mobile-left 1000ms linear 650ms both;
-// 	}
-// 	&:nth-child(2) {
-// 		animation: spread-in-tag-mobile-left 1000ms linear 600ms both;
-// 	}
-// 	&:nth-child(3) {
-// 		animation: spread-in-tag-mobile-left 1000ms linear 550ms both;
-// 	}
-// 	&:nth-child(4) {
-// 		animation: spread-in-tag-mobile-left 1000ms linear 500ms both;
-// 	}
-// 	&:nth-child(5) {
-// 		animation: spread-in-tag-mobile-right 1000ms linear 650ms both;
-// 	}
-// 	&:nth-child(6) {
-// 		animation: spread-in-tag-mobile-right 1000ms linear 600ms both;
-// 	}
-// 	&:nth-child(7) {
-// 		animation: spread-in-tag-mobile-right 1000ms linear 550ms both;
-// 	}
-// 	&:nth-child(8) {
-// 		animation: spread-in-tag-mobile-right 1000ms linear 500ms both;
-// 	}
-// }
-//
-// .adlib-tag.click-two {
-// 	transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-// 	.tag-adlib.ghost.fadeOut {
-// 		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-// 		animation: fadeOut 1000ms ease-in-out 1850ms both;
-// 	}
-// 	&:nth-child(1) {
-// 		.tag-adlib:first-child:not(.active) {
-// 			animation: spread-in-tag-mobile-left 1000ms linear 650ms both;
-// 		}
-// 	}
-// 	&:nth-child(2) {
-// 		.tag-adlib:first-child:not(.active) {
-// 			animation: spread-in-tag-mobile-left 1000ms linear 600ms both;
-// 		}
-// 	}
-// 	&:nth-child(3) {
-// 		.tag-adlib:first-child:not(.active) {
-// 			animation: spread-in-tag-mobile-left 1000ms linear 550ms both;
-// 		}
-// 	}
-// 	&:nth-child(4) {
-// 		.tag-adlib:first-child:not(.active) {
-// 			animation: spread-in-tag-mobile-left 1000ms linear 500ms both;
-// 		}
-// 	}
-// 	&:nth-child(5) {
-// 		.tag-adlib:first-child:not(.active) {
-// 			animation: spread-in-tag-mobile-right 1000ms linear 650ms both;
-// 		}
-// 	}
-// 	&:nth-child(6) {
-// 		.tag-adlib:first-child:not(.active) {
-// 			animation: spread-in-tag-mobile-right 1000ms linear 600ms both;
-// 		}
-// 	}
-// 	&:nth-child(7) {
-// 		.tag-adlib:first-child:not(.active) {
-// 			animation: spread-in-tag-mobile-right 1000ms linear 550ms both;
-// 		}
-// 	}
-// 	&:nth-child(8) {
-// 		.tag-adlib:first-child:not(.active) {
-// 			animation: spread-in-tag-mobile-right 1000ms linear 500ms both;
-// 		}
-// 	}
-// }
-//
-// .splash-hero-guru.map-transition {
-// 	animation: guru-rotateOut 1250ms linear 500ms both;
-// 	.guru-head-eyebrows {
-// 		animation: eyebrows 150ms ease-in-out 250ms 6 alternate;
-// 		transform-origin: center bottom;
-// 	}
-// }
-//
-// .splash-adlib.map-transition {
-// 	animation: adlib-translateUp 500ms cubic-bezier(.77,0,.05,1) both;
-// 	animation: adlib-translateUp 500ms cubic-bezier(.77,-0.22,.05,1.27) both;
-// }
-
-// static
 .adlib-header-container {
 	position: relative;
-	overflow: hidden;
-	height: 98px;
 	max-width: 500px;
 	margin: 0 auto;
 	.adlib-header {
@@ -151,6 +12,7 @@
 		}
 	}
 }
+
 .tag-adlib:not(.blank):not(.ghost) {
 	i {
 		display: block;
@@ -172,7 +34,6 @@
 	position: relative;
 	z-index: 3;
 	width: 100%;
-	margin-bottom: 75px;
 	&.pane {
 		background: $slate;
 		margin-bottom: 0;
@@ -269,7 +130,7 @@
 }
 
 .coach-fill {
-	top: 85px;
+	top: 115px;
 	right: -100px;
 	width: 140px;
 	path {
@@ -285,29 +146,17 @@
 @media screen and (max-width: 768px) {
 	.splash-hero-content {
 		.splash-hero-guru {
+			margin-top: 20px;
 			margin-bottom: 10px;
 		}
 		.splash-adlib {
-			margin-top: -10px;
 			h1 {
-				line-height: 1.75;
+				line-height: 2;
 			}
 			ul {
 				margin: -10px 0 5px;
 				flex-direction: column;
 				height: 250px;
-			}
-		}
-	}
-}
-
-@media screen and (max-width: 414px) {
-	.splash-hero-content {
-		.splash-guru-head {
-			.splash-logo-guru {
-				svg {
-					transform: scale(.8);
-				}
 			}
 		}
 	}
