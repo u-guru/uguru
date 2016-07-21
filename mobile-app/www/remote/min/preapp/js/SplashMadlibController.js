@@ -75,6 +75,7 @@ angular.module('uguru.preApp')
         blankNum = 'two';
         index = index - 4
       }
+      console.log('switching to...', category.name)
       var newElem = ContentService.splashCategoryOptions[category.name].madlib['blank_' + blankNum + '_options'][index];
       madlib.options[blankNum][index] = newElem;
     }

@@ -1399,6 +1399,68 @@ button, input, textarea {
 		stroke-width: 10px!important;
 	}
 }
+
+.stroke-charcoal * {
+	stroke: $charcoal!important;
+}
+.stroke-slate * {
+	stroke: $slate!important;
+}
+.stroke-taupe * {
+	stroke: $taupe!important;
+}
+.stroke-campus * {
+	stroke: $campus!important;
+}
+.stroke-smoke * {
+	stroke: $smoke!important;
+}
+.stroke-white * {
+	stroke: white!important;
+}
+.stroke-rocket * {
+	stroke: $rocket!important;
+}
+.stroke-shamrock * {
+	stroke: $shamrock!important;
+}
+.stroke-robin * {
+	stroke: $robin!important;
+}
+.stroke-lake * {
+	stroke: $lake!important;
+}
+.stroke-moxie * {
+	stroke: $moxie!important;
+}
+.stroke-crimson * {
+	stroke: $crimson!important;
+}
+.stroke-auburn *, .stroke-delivery * {
+	stroke: $auburn!important;
+}
+.stroke-orange *, .stroke-freelacing * {
+	stroke: $orange!important;
+}
+.stroke-gold *, .stroke-baking * {
+	stroke: $gold!important;
+}
+.stroke-moola *, .stroke-photography * {
+	stroke: $moola!important;
+}
+.stroke-azure *, .stroke-tech * {
+	stroke: $azure!important;
+}
+.stroke-cobalt *, .stroke-household * {
+	stroke: $cobalt!important;
+}
+.stroke-eggplant *, .stroke-athletic * {
+	stroke: $eggplant!important;
+}
+.stroke-cerise *, .stroke-academic * {
+	stroke: $cerise!important;
+}
+
 // TEXT STYLES
 .underline-dashed {
 	text-decoration: none;
