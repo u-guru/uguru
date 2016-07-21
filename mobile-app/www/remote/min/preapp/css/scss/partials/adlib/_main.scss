@@ -86,6 +86,9 @@
 			li {
 				width: 143px;
 				padding: 7.5px;
+				@media screen and (max-width: 320px) {
+					width: 111px;
+				}
 				a[class*="translate-blank"] {
 					animation: none!important;
 				}
@@ -129,10 +132,30 @@
 	}
 }
 
+@media screen and (max-width: 768px) {
+	.splash-guru-head {
+		width: 120px;
+		.splash-hero-guru {
+			width: 120px;
+			height: 120px;
+			.guru-head-switcher {
+				margin-top: -80px;
+				margin-left: -80px;
+				width: 160px;
+				height: 160px;
+			}
+		}
+	}
+}
+
 .coach-fill {
 	top: 115px;
 	right: -100px;
 	width: 140px;
+	@media screen and (max-width: 320px) {
+		right: -80px;
+		width: 105px;
+	}
 	path {
 		&:nth-child(1) {
 			stroke-dasharray: 137;
@@ -157,6 +180,9 @@
 				margin: -10px 0 5px;
 				flex-direction: column;
 				height: 250px;
+				@media screen and (max-width: 320px) {
+					height: 200px;
+				}
 			}
 		}
 	}
@@ -164,7 +190,6 @@
 
 @media screen and (max-width: 360px) {
 	.splash-hero-content {
-		transform: scale(.9);
 		.splash-adlib {
 			h1 {
 				font-size: 24px;
@@ -174,11 +199,7 @@
 }
 
 @media screen and (max-width: 320px) {
-	.splash-hero-device {
-		transform: scale(.8);
-	}
 	.splash-hero-content {
-		transform: scale(.7);
 		.splash-adlib h1 {
 			line-height: 2!important;
 		}
