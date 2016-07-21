@@ -26,8 +26,10 @@ angular.module('uguru.shared.directives')
                 execInitWith();
               }
             })
-          } else {
-            if ('switch' in attr && 'switch-id' in attr) {
+            return
+          }
+
+          if ('switch' in attr && 'switch-id' in attr) {
               switchId = parseInt(attr['switch-id'])
               var scopeSwitches = scope.switchDict[switchName].switches;
               var switchRef = scopeSwitches[switchId - 1];
@@ -36,10 +38,9 @@ angular.module('uguru.shared.directives')
                 var defaultStateArgs = UtilitiesService.camelCase(defaultArgAttrName)
                 switchDict = DirectiveService.parseArgs(attr[defaultStateArgs]);
               }
-
-            }
-            execInitWith(scope, switchDict);
           }
+
+          execInitWith(scope, switchDict);
 
           function execInitWith(scope, has_switch_default) {
             var elemArgs = DirectiveService.parseArgs(attr.initWith);
@@ -669,33 +670,44 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
                     delete indexSwitch['name']
                     scope.switchDict[switchesName] = indexSwitch
                   }
+
                 },
                 post: function(scope, element, attr) {
-                  for (key in scope.switchDict) {
-                    // console.log('detected', scope.switchDict[key].switches.length, 'switches for', key);
-                  }
-
+                  console.log(scope.switchDict['rowOne'].switches, scope.switchDict['rowOne'].activeSwitches);
+                  $timeout(function() {
+                    console.log(scope.switchDict['rowOne'].switches, scope.switchDict['rowOne'].activeSwitches);
+                  }, 5000)
                   scope.checkIfSiblingExiting = function(switch_obj) {
                       var switchesObj = scope.switchDict[switch_obj.name];
                       if (switchesObj.activeSwitches.length < switchesObj.activeLimit) {
+                        console.log(switch_obj, switchesObj.switches)
                         switchesObj.activeSwitches.push(switch_obj.id);
                         return false;
-                      }
+                      } else
                       if (switchesObj.activeSwitches.length === switchesObj.activeLimit) {
-                        //if its already part of it
+
                         if (switchesObj.activeSwitches.indexOf(switch_obj.id) > -1) {
                           var switchIndex = switchesObj.activeSwitches.indexOf(switch_obj.id);
-                          switchesObj.activeSwitches.splice(switchesObj[switchIndex] - 1, 1);
+                          var activeSwitchIndex = switchesObj[switchIndex] - 1
+                          console.log('active switch:', switch_obj.id, switchesObj, 'removing', switchesObj.activeSwitches[activeSwitchIndex]);
+                          switchesObj.activeSwitches.splice(activeSwitchIndex, 1);
+                          console.log('active switch:', switch_obj.id, switchesObj.activeSwitches);
                           return false;
                         } else {
-                          var switchIdToRemove = switchesObj.activeSwitches.splice(0, 1)[0] - 1;
 
-                          switchesObj.activeSwitches.splice(switchIdToRemove, 1);
+                          //notify the first one that it needs to go
+
+                          console.log('we need to kick out some switch', switchesObj.activeSwitches);;
+                          //remove previous
+                          var switchIdToRemove = switchesObj.activeSwitches.splice(switchesObj.activeLimit - 1, 1)[0] - 1;
+                          // switchesObj.activeSwitches.splice(switchIdToRemove, 1);
                           // switchesObj.activeSwitches.push(switch_obj.id);
                           var formattedAttr = 'on-switch-' + UtilitiesService.camelToDash(switch_obj.name).toLowerCase() + '-change';
-                          // var elemToInactive = scope.switchDict[switch_obj.name].switches[switchIdToRemove];
-                          var childQuery = '[switch-id="' + (parseInt(switchIdToRemove) + 1) + '"][switch="' + switch_obj.name +'"]';
+                          var elemToInactive = scope.switchDict[switch_obj.name].switches[switchIdToRemove];
+                          var childQuery = '[switch-id="' + (parseInt(switchIdToRemove) + 1) + '"][switch="' + switch_obj.name + '"]';
+                          console.log(childQuery)
                           var childElem = element[0].querySelector(childQuery);
+                          console.log('disabling switch #', switchIdToRemove, switchesObj.activeSwitches, 'by injecitng', formattedAttr, 'on elem', childElem);
                           childElem.classList.add(formattedAttr);
                           return true;
                         }
@@ -766,7 +778,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
 
 
                                 var callback = function() {
-                                  scope.$parent.switchDict[scope.switch.name].activeSwitches.push(attr['switch-id']);
+                                  scope.$parent.switchDict[scope.switch.name].activeSwitches.push(parseInt(attr['switch-id']));
                                 }
                                 DirectiveService.activateArgDelay(key, activeArgs[key], scope, element, scope.switch.parentDelay, callback);
 
@@ -778,10 +790,11 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
                             // DirectiveService.activateArg
                           } else {
                             var inactiveArgs = scope.switch.states['inactive']['args'];
+
                             var activeSwitches = scope.$parent.switchDict[scope.switch.name].activeSwitches;
                             var indexSwitchActive = activeSwitches.indexOf(attr['switch-id']);
                             activeSwitches.splice(indexSwitchActive, 1);
-
+                            console.log(indexSwitchActive, activeSwitches, inactiveArgs)
                             for (key in inactiveArgs) {
                               DirectiveService.activateArg(key, inactiveArgs[key], scope, element);
                             }

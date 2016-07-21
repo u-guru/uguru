@@ -300,7 +300,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
           if (!response || !response.length) {
             $timeout(function() {
-                console.log(evalTransformArgs(arg_dict, scope, elem));
+                evalTransformArgs(arg_dict, scope, elem);
                 scope.$apply();
             })
           }
