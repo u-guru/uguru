@@ -17,11 +17,7 @@
             <div class="right">
                 <div class="splash-hero-nav desktop m15right" desktop>
                     <div class="splash-hero-nav-container">
-                        <dropdown debug-id="
-                            1:[trigger:click,select:a]|
-                            2:[trigger:mouseover]|
-                            3:[trigger:mouseleave]|
-                            4:[trigger:click,select:a]"
+                        <dropdown
                             ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
                             prefix="category"
                             init-with="p-op"
@@ -71,7 +67,8 @@
                     on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1500">
                     <div class="splash-hero-nav-container">
                         <a init-default
-                            on-click="send:[mobile-switch-init:public]">
+                            on-click="send:[mobile-switch-init:public]"
+                            >
                             <span style='background-color: {{selectedUniversity.school_color_dark || "#003057"}}'></span>
                             <span>@ {{selectedUniversity.school_tiny_name || "Cal"}}</span>
                             <svg viewBox="0 0 100 100">
