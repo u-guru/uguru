@@ -217,6 +217,7 @@
                 </h1>
             </div>
             <ul init-default
+
 				when-madlib-init="t:[on-enter:children:delay-2750]"
                 switches="rowOne:[change-delay:250, active-limit:1, data:madlib.switches.rowOne]|rowTwo:[change-delay:250, active-limit:1, data:madlib.switches.rowTwo]"
                 on-switch-row-one-change=""
@@ -248,7 +249,7 @@
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
                             switch="rowOne"
-							on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500]"
+							on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:50]"
 							on-switch-row-one-inactive="transform:[clear:translate]"
 							on-click="t:[on-switch-row-one-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
@@ -288,7 +289,7 @@
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
                             switch="rowOne"
-                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500]"
+                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:50]"
                             on-switch-row-one-inactive="transform:[clear:translate]"
 							on-click="t:[on-switch-row-one-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
@@ -328,7 +329,7 @@
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
 	                        switch="rowOne"
-                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500]"
+                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:50]"
                             on-switch-row-one-inactive="transform:[clear:translate]"
 							on-click="t:[on-switch-row-one-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
@@ -368,7 +369,7 @@
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
 	                        switch="rowOne"
-                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:500]"
+                            on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:50]"
                             on-switch-row-one-inactive="transform:[clear:translate]"
 							on-click="t:[on-switch-row-one-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
@@ -409,7 +410,7 @@
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
 	                        init-with="prop:[o:1]"
                             switch="rowTwo"
-                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500]"
+                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:50]"
                             on-switch-row-two-inactive="transform:[clear:translate]"
 							on-click="trigger:[on-switch-row-two-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
@@ -450,7 +451,7 @@
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
 	                        init-with="prop:[o:1]"
                             switch="rowTwo"
-                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500]"
+                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:50]"
                             on-switch-row-two-inactive="transform:[clear:translate]"
 							on-click="t:[on-switch-row-two-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
@@ -491,8 +492,8 @@
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
 	                        init-with="prop:[o:1]"
                             switch="rowTwo"
-                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500]"
-                            on-switch-row-two-inactive="transform:[clear:translate]"
+                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:50]"
+                            on-switch-row-two-inactive="transform:[clearX:translate]"
                             on-click="t:[on-switch-row-two-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
@@ -532,7 +533,7 @@
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
 	                        init-with="prop:[o:1]"
                             switch="rowTwo"
-                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:500]"
+                            on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:50]"
                             on-switch-row-two-inactive="transform:[clear:translate]"
 							on-click="t:[on-switch-row-two-change]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">

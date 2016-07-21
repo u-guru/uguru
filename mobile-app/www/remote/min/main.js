@@ -96,6 +96,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/nav',
     template: '<ion-view ng-controller="SplashController as splash"> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.nav.html" + "'" + '"></div></ion-content></ion-view>'
   })
+  .state('root.dev-splash-nav-mobile', {
+    url:'/dev/splash/nav/mobile',
+    template: '<ion-view ng-controller="SplashController as splash"> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.nav.html" + "'" + '"></div></ion-content></ion-view>'
+  })
   .state('root.dev-splash-map', {
     url:'/dev/splash/map',
     templateUrl: 'preapp/templates/splash.map.html'

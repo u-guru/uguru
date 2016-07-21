@@ -340,6 +340,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
         if (transitionObj.duration) {
           var transitionDict = formatTransitionString(transitionObj);
+          console.log(transitionDict)
           resultPropDict.properties.push(transitionDict);
         }
         if (resultPropDict.properties && resultPropDict.properties.length) {
@@ -396,6 +397,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var kvIndexSplit = UtilitiesService.replaceAll(kvPairs[i], '<<>>', paramString ).split(':');
         }
         var indexKey = kvIndexSplit[0];
+
         var indexValue;
         if (kvIndexSplit.length > 1) {
           indexValue = kvIndexSplit[1];

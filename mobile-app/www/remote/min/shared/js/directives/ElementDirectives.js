@@ -689,15 +689,11 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
                         if (switchesObj.activeSwitches.indexOf(switch_obj.id) > -1) {
                           var switchIndex = switchesObj.activeSwitches.indexOf(switch_obj.id);
                           var activeSwitchIndex = switchesObj[switchIndex] - 1
-                          console.log('active switch:', switch_obj.id, switchesObj, 'removing', switchesObj.activeSwitches[activeSwitchIndex]);
                           switchesObj.activeSwitches.splice(activeSwitchIndex, 1);
-                          console.log('active switch:', switch_obj.id, switchesObj.activeSwitches);
                           return false;
                         } else {
 
                           //notify the first one that it needs to go
-
-                          console.log('we need to kick out some switch', switchesObj.activeSwitches);;
                           //remove previous
                           var switchIdToRemove = switchesObj.activeSwitches.splice(switchesObj.activeLimit - 1, 1)[0] - 1;
                           // switchesObj.activeSwitches.splice(switchIdToRemove, 1);
@@ -705,9 +701,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
                           var formattedAttr = 'on-switch-' + UtilitiesService.camelToDash(switch_obj.name).toLowerCase() + '-change';
                           var elemToInactive = scope.switchDict[switch_obj.name].switches[switchIdToRemove];
                           var childQuery = '[switch-id="' + (parseInt(switchIdToRemove) + 1) + '"][switch="' + switch_obj.name + '"]';
-                          console.log(childQuery)
                           var childElem = element[0].querySelector(childQuery);
-                          console.log('disabling switch #', switchIdToRemove, switchesObj.activeSwitches, 'by injecitng', formattedAttr, 'on elem', childElem);
                           childElem.classList.add(formattedAttr);
                           return true;
                         }
