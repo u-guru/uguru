@@ -1249,6 +1249,9 @@
       .splash-hero-content .splash-adlib ul li {
         width: 143px;
         padding: 7.5px; }
+        @media screen and (max-width: 320px) {
+          .splash-hero-content .splash-adlib ul li {
+            width: 111px; } }
         .splash-hero-content .splash-adlib ul li a[class*="translate-blank"] {
           animation: none !important; }
 
@@ -1279,10 +1282,25 @@
     left: -90px;
     width: 114.5px; }
 
+@media screen and (max-width: 768px) {
+  .splash-guru-head {
+    width: 120px; }
+    .splash-guru-head .splash-hero-guru {
+      width: 120px;
+      height: 120px; }
+      .splash-guru-head .splash-hero-guru .guru-head-switcher {
+        margin-top: -80px;
+        margin-left: -80px;
+        width: 160px;
+        height: 160px; } }
 .coach-fill {
   top: 115px;
   right: -100px;
   width: 140px; }
+  @media screen and (max-width: 320px) {
+    .coach-fill {
+      right: -80px;
+      width: 105px; } }
   .coach-fill path:nth-child(1) {
     stroke-dasharray: 137; }
   .coach-fill path:nth-child(2) {
@@ -1298,19 +1316,16 @@
     margin: -10px 0 5px;
     flex-direction: column;
     height: 250px; } }
-@media screen and (max-width: 360px) {
-  .splash-hero-content {
-    transform: scale(0.9); }
-    .splash-hero-content .splash-adlib h1 {
-      font-size: 24px; } }
-@media screen and (max-width: 320px) {
-  .splash-hero-device {
-    transform: scale(0.8); }
+  @media screen and (max-width: 768px) and (max-width: 320px) {
+    .splash-hero-content .splash-adlib ul {
+      height: 200px; } }
 
-  .splash-hero-content {
-    transform: scale(0.7); }
-    .splash-hero-content .splash-adlib h1 {
-      line-height: 2 !important; } }
+@media screen and (max-width: 360px) {
+  .splash-hero-content .splash-adlib h1 {
+    font-size: 24px; } }
+@media screen and (max-width: 320px) {
+  .splash-hero-content .splash-adlib h1 {
+    line-height: 2 !important; } }
 .impact-label {
   transform-origin: left center; }
 
@@ -1924,7 +1939,8 @@
       top: auto;
       left: auto;
       height: 100% !important;
-      margin: 0 15px !important; }
+      margin: 0 15px !important;
+      padding: 0 !important; }
     .splash-header .right {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -3883,12 +3899,20 @@ a[class*="-container"]:hover .map-stadium-outside {
             margin-left: -20px; }
             .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg {
               padding: 10px; }
+            @media screen and (max-width: 900px) {
+              .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-top .school-card-icon {
+                width: 32px;
+                height: 32px;
+                margin-left: -16px; } }
           .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-main .school-card-info h1 {
             padding-top: 5px;
             font-size: 16px;
             font-weight: 700; }
           .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-main .school-card-info h2 {
             font-size: 12px; }
+            @media screen and (max-width: 900px) {
+              .projector-school-search .projector-school-search-form .projector-school-desktop li .university-card .school-card-inside .school-card-main .school-card-info h2 {
+                display: none; } }
     .projector-school-search .projector-school-search-form .projector-school-results {
       padding: 15px; }
       .projector-school-search .projector-school-search-form .projector-school-results li {

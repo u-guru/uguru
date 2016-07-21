@@ -67,6 +67,11 @@
 								.school-card-state svg {
 									padding: 10px;
 								}
+								@media screen and (max-width: 900px) {
+									width: 32px;
+									height: 32px;
+									margin-left: -16px;
+								}
 							}
 						}
 						.school-card-main {
@@ -78,6 +83,9 @@
 								}
 								h2 {
 									font-size: 12px;
+									@media screen and (max-width: 900px) {
+										display: none;
+									}
 								}
 							}
 						}
