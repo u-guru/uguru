@@ -8,8 +8,9 @@ angular.module('uguru.admin')
   function($scope, $state, $timeout, SpecService) {
 
     var ms = this;
-    ms.types = ['ugh', 'eh', 'ah', 'aha'];
+    ms.types = ['ugh']//, 'eh', 'ah', 'aha'];
     ms.typeIndex = 0;
+    $scope.modules = [];
 
     $scope.$watch('root.milestones', function(new_val) {
       for (type in ms.types) {
@@ -23,6 +24,11 @@ angular.module('uguru.admin')
     })
     // ms.minimal = getAllMilestonesOfType($scope.root.milestones);
 
+
+    // --> roles involved
+    function parseDimensions(dimen_str) {
+      return dimen_str
+    }
 
     function getAllMilestonesOfType(ms_arr, type) {
         var resultArr = [];
