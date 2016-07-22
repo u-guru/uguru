@@ -1241,4 +1241,8 @@
   #jeselle .svg-stroke-10 * {
     stroke-width: 10px !important; }
 
+.extra-transition-delay {
+  -webkit-transition-delay: 1500ms !important;
+  transition-delay: 1500ms !important; }
+
 /*# sourceMappingURL=utility.css.map */

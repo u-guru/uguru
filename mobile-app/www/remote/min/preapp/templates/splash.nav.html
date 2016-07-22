@@ -202,6 +202,7 @@
 						init-with="p-op"
 						when-mobile-switch-init="t-enter"
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-1500"
+                        ng-class="{'extra-transition-delay': category.id === splash.category.id}"
 						when-mobile-switch-exit="p:[op:0:delay-450, tr:translateY(15%), t:all 500ms ease-out]">
                         <!-- debug-id="2:[trigger:click,select:.bg-baking]" -->
 
