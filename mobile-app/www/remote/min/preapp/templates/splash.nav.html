@@ -215,8 +215,7 @@
 						ng-repeat='category in nav.categoriesDropdown.options'
 						init-with="p-op"
 						when-mobile-switch-init="t-enter"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
-						on-exit="p-op">
+						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
                         <a class="bg-{{category.bg_hex_color}}"
 							ng-class="{'active':category.id == selectedCategory.id}"
 							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'
