@@ -349,7 +349,8 @@ angular.module('uguru.admin')
         link: {
             pre: function(scope, element, attr) {
                 attr.highlight && AdminDebugService.applyHighlight(rootViewElem);
-
+                element.css({height: '10%', position: 'fixed', width: '100%'});
+                element[0].firstChild.style.cssText = element[0].style.cssText;
                 var rootViewElem = element[0].parentNode;
                 var parentScopeName = AdminDebugService.getParentScope(rootViewElem)
                 if (parentScopeName) {

@@ -2,7 +2,7 @@
     <custom-states when="sidebar-icon-clicked">
     </custom-states>
     <!-- <ion-content class='relative full-xy' > -->
-        <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()">
+        <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()" >
             <section id='splash-home' class='splash-hero'>
 
 				<div class="absolute top-0 left-0 full-xy">
@@ -20,7 +20,8 @@
                 <div ng-if="splash.state.nav" ng-include src="root.base_url + 'preapp/templates/splash.nav.html'"
                 include-replace
 					when-search-university-clicked="prop:[opacity:0.5, t:all 600ms ease-in-out]"
-					when-close-search-university="prop:[opacity:1]">
+					when-close-search-university="prop:[opacity:1]"
+                    >
                 </div>
 
                 <div ng-if="splash.state.sidebar" ng-include src="root.base_url + 'preapp/templates/splash.sidebar.html'" include-replace>
