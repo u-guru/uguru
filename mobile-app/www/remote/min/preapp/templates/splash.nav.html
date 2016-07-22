@@ -198,7 +198,7 @@
 						ng-repeat='category in nav.categoriesDropdown.options'
 						init-with="p-op"
 						when-mobile-switch-init="t-enter"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
+						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-1500"
 						when-mobile-switch-exit="p:[op:0:delay-450, tr:translateY(15%), t:all 500ms ease-out]">
                         <!-- debug-id="2:[trigger:click,select:.bg-baking]" -->
 
@@ -207,9 +207,11 @@
                             id='bg-{{category.bg_hex_color}}-category-link'
 							ng-class="{'active':category.id == splash.category.id}"
 							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'
-							on-click='p:[background-color:{{category.bg_hex_color}}:delay-500, tr:scale(2)] | s:[mobile-categories-exit:public:data:(category.hex_color#category.bg_hex_color), mobile-categories-bg-{{splash.category.bg_hex_color}}-exit]' >
-                            <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
-                            <span>{{category.name}}</span>
+							on-click='p:[background-color:{{category.bg_hex_color}}:delay-500] | s:[mobile-categories-exit:public:data:(category.hex_color#category.bg_hex_color), mobile-categories-bg-{{splash.category.bg_hex_color}}-exit]'>
+                            <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"
+								when-mobile-switch-exit="p:[ tr:translateY(-15%), t:all 500ms ease-out]"></span>
+                            <span
+								when-mobile-switch-exit="p:[ tr:translateY(-15%), t:all 500ms ease-out]">{{category.name}}</span>
                         </a>
                     </li>
                 </ul>
