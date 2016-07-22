@@ -339,6 +339,7 @@
 #splash-hero-nav-mobile {
 	@include flex;
 	@include flex-wrap;
+	@include prefix(align-content, flex-start, webkit);
 	position: fixed;
 	top: 0;
 	left: 0;

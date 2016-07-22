@@ -159,7 +159,7 @@
 	}
 }
 
-@media screen and (max-height: 736px) {
+@media screen and (max-height: 736px) and (max-width: 414px) {
 	.coach-fill {
 		top: 85px;
 		right: -80px;
