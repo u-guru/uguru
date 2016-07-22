@@ -33,6 +33,9 @@
 	                    	when-category-dropdown-mouse-enter="p:[op:1: t:all 250ms ease-in-out]"
 		                    when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 			                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+                            mouse-leave-delay="5000"
+                            mouse-enter-delay="500"
+                            mouse-over-delay="1000"
 							when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]">
                         </dropdown>
                         <h2 init-with="p-op"
@@ -225,7 +228,6 @@
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
                         debug-id="2:[trigger:click,select:.bg-baking]"
 						when-mobile-switch-exit="p:[op:0:delay-450, tr:translateY(15%), t:all 500ms ease-out]">
-
                         <a class="bg-{{category.bg_hex_color}}"
                             id='bg-{{category.bg_hex_color}}-category-link'
 							ng-class="{'active':category.id == splash.category.id}"
