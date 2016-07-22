@@ -1629,29 +1629,30 @@
     stroke-dasharray: 53; }
 
 @media screen and (max-width: 768px) {
-  .coach-fill {
-    top: 85px;
-    right: -80px;
-    width: 105px; }
-
-  .splash-hero-content .splash-guru-head {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    width: 120px; }
-    .splash-hero-content .splash-guru-head .splash-hero-guru {
-      width: 120px;
-      height: 120px; }
-      .splash-hero-content .splash-guru-head .splash-hero-guru .guru-head-switcher {
-        margin-top: -80px;
-        margin-left: -80px;
-        width: 160px;
-        height: 160px; }
   .splash-hero-content .splash-adlib h1 {
     line-height: 2; }
   .splash-hero-content .splash-adlib ul {
     margin: -10px 0 5px;
     flex-direction: column;
     height: 250px; } }
+@media screen and (max-height: 736px) {
+  .coach-fill {
+    top: 85px;
+    right: -80px;
+    width: 105px; }
+
+  .splash-guru-head {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 120px; }
+    .splash-guru-head .splash-hero-guru {
+      width: 120px;
+      height: 120px; }
+      .splash-guru-head .splash-hero-guru .guru-head-switcher {
+        margin-top: -80px;
+        margin-left: -80px;
+        width: 160px;
+        height: 160px; } }
 @media screen and (max-width: 320px) {
   .splash-hero-content .splash-adlib ul {
     height: 200px; } }

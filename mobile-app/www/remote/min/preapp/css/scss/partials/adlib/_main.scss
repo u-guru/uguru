@@ -145,27 +145,7 @@
 }
 
 @media screen and (max-width: 768px) {
-	.coach-fill {
-		top: 85px;
-		right: -80px;
-		width: 105px;
-	}
 	.splash-hero-content {
-		.splash-guru-head {
-			margin-top: 20px;
-			margin-bottom: 10px;
-			width: 120px;
-			.splash-hero-guru {
-				width: 120px;
-				height: 120px;
-				.guru-head-switcher {
-					margin-top: -80px;
-					margin-left: -80px;
-					width: 160px;
-					height: 160px;
-				}
-			}
-		}
 		.splash-adlib {
 			h1 {
 				line-height: 2;
@@ -174,6 +154,29 @@
 				margin: -10px 0 5px;
 				flex-direction: column;
 				height: 250px;
+			}
+		}
+	}
+}
+
+@media screen and (max-height: 736px) {
+	.coach-fill {
+		top: 85px;
+		right: -80px;
+		width: 105px;
+	}
+	.splash-guru-head {
+		margin-top: 20px;
+		margin-bottom: 10px;
+		width: 120px;
+		.splash-hero-guru {
+			width: 120px;
+			height: 120px;
+			.guru-head-switcher {
+				margin-top: -80px;
+				margin-left: -80px;
+				width: 160px;
+				height: 160px;
 			}
 		}
 	}
