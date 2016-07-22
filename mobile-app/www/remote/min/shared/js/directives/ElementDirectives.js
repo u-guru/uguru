@@ -330,7 +330,7 @@ angular.module('uguru.shared.directives')
         var elemArgs = DirectiveService.parseArgs(attr.onMouseEnter);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
-        var mouseEnterDelay = parseInt(attr.mouseEnterDelay) || 250;
+        var mouseEnterDelay = parseInt(attr.onMouseEnterDelay) || 250;
 
         element.on('mouseenter', function () {
             var inTimeout = true;
@@ -361,7 +361,7 @@ angular.module('uguru.shared.directives')
         var elemArgs = DirectiveService.parseArgs(attr.onMouseOver);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
-        var hoverDelay = parseInt(attr.mouseOverDelay || DirectiveService.defaults.activate.hover) || 250;
+        var hoverDelay = parseInt(attr.onMouseOverDelay || DirectiveService.defaults.activate.hover) || 500;
         element.on('mouseover', function () {
           inTimeout = true;
           $timeout(function () {
@@ -390,7 +390,7 @@ angular.module('uguru.shared.directives')
         var elemArgs = DirectiveService.parseArgs(attr.onMouseLeave);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
-        var mouseLeaveDelay = parseInt(attr.mouseLeaveDelay) || 250;
+        var mouseLeaveDelay = parseInt(attr.onMouseLeaveDelay) || 250;
 
 
         element.on('mouseleave', function () {
