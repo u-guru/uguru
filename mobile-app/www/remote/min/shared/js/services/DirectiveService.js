@@ -495,6 +495,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function processCSSPropValue(name, value, prop_dict, orig_str) {
       //2nd arg of if --> fill:#;
+
       if (value && value.indexOf('#') > -1 && value.indexOf('#') > 0) {
         value = value && UtilitiesService.replaceAll(value, '#', ',');
       }
@@ -764,7 +765,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (!(msgType in scope.root.public.customStates)) {
             scope.root.public.customStates[msgType] = {};
           }
-
           scope.root.public.customStates[msgType][msg_name] = msg_data ||true;
         }
       }
@@ -1091,6 +1091,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         delete indexPropDict['important'];
         var propName = Object.keys(indexPropDict)[0];
         var propValue = indexPropDict[propName];
+
         var propValShortcut;
         if (propName in shortcuts.cssPropValues) {
           propValShortcut = shortcuts.cssPropValues[propName];

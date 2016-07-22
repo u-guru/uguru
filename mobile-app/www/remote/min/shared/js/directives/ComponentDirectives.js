@@ -106,7 +106,6 @@ angular.module('uguru.shared.directives.components')
                 if (attr.mouseOverDelay) scope.mouseDelays.over = parseInt(attr.mouseOverDelay);
                 if (attr.mouseEnterDelay) scope.mouseDelays.enter = parseInt(attr.mouseEnterDelay);
                 if (attr.mouseLeaveDelay) scope.mouseDelays.leave = parseInt(attr.mouseLeaveDelay);
-                console.log('mouse delays', scope.mouseDelays);
 
                 scope.dropdown.active = false;
                 attr.$set('initWith', attr.initWith);

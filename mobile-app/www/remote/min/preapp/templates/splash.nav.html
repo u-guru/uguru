@@ -28,17 +28,11 @@
                             toggle-on-data="name, hex_color"
                             toggle-off-data="name, hex_color"
                             click-data="name, hex_color"
-<<<<<<< HEAD
 	                    	when-category-dropdown-mouse-enter="p:[op:1: t:all 250ms ease-in-out]"
 		                    when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 			                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
-                            mouse-leave-delay="5000"
-                            mouse-enter-delay="500"
-                            mouse-over-delay="1000"
-=======
 	                    	when-category-dropdown-toggle-on="p:[op:1: t:all 250ms ease-in-out]"
 		                    when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
->>>>>>> b68010e038368b2f3fdf39e34dac5d13c5895009
 							when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]">
                         </dropdown>
                         <h2 init-with="p-op"
@@ -189,7 +183,7 @@
 			when-mobile-switch-init="t-enter"
 			when-mobile-switch-exit="p:[z-index:-1]"]
             ng-class="'bg-' + splash.category.bg_hex_color"
-            when-mobile-categories-exit='s:[mobile-switch-exit:public] | p:[bg:^category.hex_color, tr:all 2000ms ease-in, opacity:0:delay-1500]'
+            when-mobile-categories-exit='s:[mobile-switch-exit:public] | p:[bg:^category.rgb_color, tr:all 2000ms ease-in, opacity:0:delay-1500]'
 			on-enter="p:[op:1, z-index:999]">
 			<div class="absolute top-0 right-0 p10xy">
 				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon"
@@ -202,24 +196,20 @@
 					when-mobile-switch-init="t-enter"
 					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
 					when-mobile-switch-exit="p:[op:0, t:all 500ms ease-out]">Category</h1>
-                <ul>
+                <ul >
                     <li
 						ng-repeat='category in nav.categoriesDropdown.options'
 						init-with="p-op"
 						when-mobile-switch-init="t-enter"
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-1500"
 						when-mobile-switch-exit="p:[op:0:delay-450, tr:translateY(15%), t:all 500ms ease-out]">
-<<<<<<< HEAD
-=======
                         <!-- debug-id="2:[trigger:click,select:.bg-baking]" -->
 
-
->>>>>>> b68010e038368b2f3fdf39e34dac5d13c5895009
                         <a class="bg-{{category.bg_hex_color}}"
                             id='bg-{{category.bg_hex_color}}-category-link'
 							ng-class="{'active':category.id == splash.category.id}"
 							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'
-							on-click='p:[background-color:{{category.bg_hex_color}}:delay-500] | s:[mobile-categories-exit:public:data:(category.hex_color#category.bg_hex_color), mobile-categories-bg-{{splash.category.bg_hex_color}}-exit]'>
+							on-click='p:[background-color:{{category.bg_hex_color}}:delay-500] | s:[mobile-categories-exit:public:data:(category.rgb_color#category.bg_hex_color), mobile-categories-bg-{{splash.category.bg_hex_color}}-exit]'>
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"
 								when-mobile-switch-exit="p:[ tr:translateY(-15%), t:all 500ms ease-out]"></span>
                             <span
