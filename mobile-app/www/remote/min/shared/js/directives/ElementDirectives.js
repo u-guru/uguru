@@ -304,37 +304,6 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-
-.directive('onHover', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
-  return {
-    restrict: 'A',
-    link: {
-      pre: function(scope, element, attr) {
-        var elemArgs = DirectiveService.parseArgs(attr.onHover);
-        var supportedCommands = DirectiveService.supportedCommands;
-        var inTimeout = false;
-        var hoverDelay = parseInt(attr.onHoverDelay || DirectiveService.defaults.activate.hover);
-        element.on('mouseover', function () {
-          inTimeout = true;
-          $timeout(function () {
-            if (inTimeout) {
-              for (key in elemArgs) {
-                if (supportedCommands.indexOf(key) > -1) {
-                  console.log(scope.root.public.customStates.when.whenCategoryDropdownHover);
-                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
-                }
-              }
-              scope.$apply();
-            }
-          }, 250 + hoverDelay);
-        });
-         element.on('mouseleave', function () {
-          inTimeout = false;
-        });
-      }
-    }
-  }
-}])
 .directive('onClick', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',
@@ -360,15 +329,86 @@ angular.module('uguru.shared.directives')
       pre: function(scope, element, attr) {
         var elemArgs = DirectiveService.parseArgs(attr.onMouseEnter);
         var supportedCommands = DirectiveService.supportedCommands;
-
-
+        var inTimeout = false;
+        var mouseEnterDelay = parseInt(attr.mouseEnterDelay) || 250;
 
         element.on('mouseenter', function () {
-            for (key in elemArgs) {
-              if (supportedCommands.indexOf(key) > -1) {
-                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+            var inTimeout = true;
+            $timeout(function () {
+              if (inTimeout) {
+                for (key in elemArgs) {
+                  if (supportedCommands.indexOf(key) > -1) {
+                    DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                  }
+                }
+                scope.$apply();
               }
+            }, mouseEnterDelay);
+        });
+
+        element.on('mouseleave', function () {
+          inTimeout = false;
+        });
+      }
+    }
+  }
+}])
+.directive('onMouseOver', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onMouseOver);
+        var supportedCommands = DirectiveService.supportedCommands;
+        var inTimeout = false;
+        var hoverDelay = parseInt(attr.mouseOverDelay || DirectiveService.defaults.activate.hover) || 250;
+        element.on('mouseover', function () {
+          inTimeout = true;
+          $timeout(function () {
+            if (inTimeout) {
+              for (key in elemArgs) {
+                if (supportedCommands.indexOf(key) > -1) {
+                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                }
+              }
+              scope.$apply();
             }
+          }, hoverDelay);
+        });
+         element.on('mouseleave', function () {
+          inTimeout = false;
+        });
+      }
+    }
+  }
+}])
+.directive('onMouseLeave', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onMouseLeave);
+        var supportedCommands = DirectiveService.supportedCommands;
+        var inTimeout = false;
+        var mouseLeaveDelay = parseInt(attr.mouseLeaveDelay) || 250;
+
+
+        element.on('mouseleave', function () {
+            var inTimeout = true;
+            $timeout(function () {
+              if (inTimeout) {
+                for (key in elemArgs) {
+                  if (supportedCommands.indexOf(key) > -1) {
+                    DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                  }
+                }
+                scope.$apply();
+              }
+            }, mouseLeaveDelay);
+        });
+
+        element.on('mouseenter', function () {
+          inTimeout = false;
         });
       }
     }
@@ -471,24 +511,7 @@ angular.module('uguru.shared.directives')
       }
     }
 }])
-.directive('onMouseLeave', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
-  return {
-    restrict: 'A',
-    link: {
-      pre: function(scope, element, attr) {
-        var elemArgs = DirectiveService.parseArgs(attr.onMouseLeave);
-        var supportedCommands = DirectiveService.supportedCommands;
-        element.on('mouseleave', function () {
-            for (key in elemArgs) {
-              if (supportedCommands.indexOf(key) > -1) {
-                DirectiveService.activateArg(key, elemArgs[key], scope, element);
-              }
-            }
-        });
-      }
-    }
-  }
-}])
+
 .directive('customShortcuts', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
   return {
     restrict: 'E',
