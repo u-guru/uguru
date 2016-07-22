@@ -201,9 +201,9 @@
          <div mobile id="splash-hero-nav-mobile" class="no-scrollbar" mobile
 		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
 			when-mobile-switch-init="t-enter"
-			when-mobile-switch-exit="p:[op:0, z-index:-1]"
+			when-mobile-switch-exit="p:[op:0, z-index:-1, tr: all 1000ms ease-in]:delay-1000"
             ng-class="'bg-' + splash.category.bg_hex_color"
-            when-mobile-categories-exit='p:[opacity:0.50, background:{{splash.category.bg_hex_color}}]'
+            when-mobile-categories-exit='s:[mobile-switch-exit:public]'
 			on-enter="p:[op:1, z-index:9999]">
 			<div class="absolute top-0 right-0 p10xy">
 				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon"
@@ -222,7 +222,7 @@
 						when-mobile-switch-init="t-enter"
                         when-mobile-categories-bg-academic-exit="p:[opacity:0]"
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
-						on-exit="p-op">
+						when-mobile-switch-exit="p:[op:0:delay-450, tr:translateY(15%), t:all 500ms ease-out]">
                         <a class="bg-{{category.bg_hex_color}}"
 							ng-class="{'active':category.id == selectedCategory.id}"
 							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'
@@ -241,7 +241,8 @@
                     <li ng-repeat='university in nav.universitiesDropdown.options' class='txt-white weight-600'
 						init-with="p-op"
 						when-mobile-switch-init="t-enter"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
+						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
+						when-mobile-switch-exit="p:[op:0:delay-250, tr:translateY(15%), t:all 500ms ease-out]">
                         <a ng-class="{'active':university.id == selectedUniversity.id}"
 							ng-click='nav.universitiesDropdown.onOptionClick(university, $index)'
 							style="border-color: {{university.school_color_dark}}">
