@@ -130,30 +130,10 @@
 	}
 }
 
-@media screen and (max-width: 768px) {
-	.splash-guru-head {
-		width: 120px;
-		.splash-hero-guru {
-			width: 120px;
-			height: 120px;
-			.guru-head-switcher {
-				margin-top: -80px;
-				margin-left: -80px;
-				width: 160px;
-				height: 160px;
-			}
-		}
-	}
-}
-
 .coach-fill {
 	top: 115px;
 	right: -100px;
 	width: 140px;
-	@media screen and (max-width: 768px) {
-		right: -80px;
-		width: 105px;
-	}
 	path {
 		&:nth-child(1) {
 			stroke-dasharray: 137;
@@ -165,10 +145,25 @@
 }
 
 @media screen and (max-width: 768px) {
+	.coach-fill {
+		right: -80px;
+		width: 105px;
+	}
 	.splash-hero-content {
-		.splash-hero-guru {
+		.splash-guru-head {
 			margin-top: 20px;
 			margin-bottom: 10px;
+			width: 120px;
+			.splash-hero-guru {
+				width: 120px;
+				height: 120px;
+				.guru-head-switcher {
+					margin-top: -80px;
+					margin-left: -80px;
+					width: 160px;
+					height: 160px;
+				}
+			}
 		}
 		.splash-adlib {
 			h1 {
@@ -178,12 +173,32 @@
 				margin: -10px 0 5px;
 				flex-direction: column;
 				height: 250px;
-				@media screen and (max-width: 320px) {
-					height: 200px;
-				}
-				@media screen and (max-height: 568px) {
-					height: 180px;
-				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.splash-hero-content {
+		.splash-adlib {
+			ul {
+				height: 200px;
+			}
+		}
+	}
+}
+@media screen and (max-height: 568px) {
+	.coach-fill {
+		top: -75px
+	}
+	.splash-hero-content {
+		.splash-guru-head {
+			margin-top: 0;
+			margin-bottom: -5px;
+		}
+		.splash-adlib {
+			ul {
+				height: 150px;
 			}
 		}
 	}

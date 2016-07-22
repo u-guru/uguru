@@ -17,11 +17,7 @@
             <div class="right">
                 <div class="splash-hero-nav desktop m15right" desktop>
                     <div class="splash-hero-nav-container">
-                        <dropdown debug-id="
-	                        1:[trigger:click,select:a]|
-	                        2:[trigger:mouseover]|
-	                        3:[trigger:mouseleave]|
-	                        4:[trigger:click,select:a]"
+                        <dropdown
                         	ng-model='nav.categoriesDropdown' color-key="hex_color" type="color"
                             prefix="category"
                             init-with="p-op"
@@ -215,13 +211,15 @@
 					when-mobile-switch-init="t-enter"
 					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">Category</h1>
                 <ul>
-                    <li ng-repeat='category in nav.categoriesDropdown.options'
+                    <li debug-id="2:[trigger:click, select:a.bg-baking]"
+						ng-repeat='category in nav.categoriesDropdown.options'
 						init-with="p-op"
 						when-mobile-switch-init="t-enter"
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
                         <a class="bg-{{category.bg_hex_color}}"
 							ng-class="{'active':category.id == selectedCategory.id}"
-							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'>
+							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'
+							on-click='p:[background-color:{{category.bg_hex_color}}' >
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
                             <span>{{category.name}}</span>
                         </a>
@@ -270,7 +268,7 @@
         > onHover[start:end]: ability to specify different commands based on hoverAbility
         > init-when: like init-with, but allows clarification to specify WHEN (i.e. one argument = N = levels of parents, grandparents must be completed first);
     -->
-    <!-- <debug autoplay delay-btwn="250" pause-at="2" speed='fast'> </debug> -->
+    <!-- <debug autoplay delay-btwn="1000" pause-at="3" speed='fast'> </debug> -->
 </div>
 
 <div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
