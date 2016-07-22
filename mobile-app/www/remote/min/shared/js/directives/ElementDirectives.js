@@ -360,7 +360,10 @@ angular.module('uguru.shared.directives')
       pre: function(scope, element, attr) {
         var elemArgs = DirectiveService.parseArgs(attr.onMouseEnter);
         var supportedCommands = DirectiveService.supportedCommands;
-        element.on('mouseover', function () {
+
+
+
+        element.on('mouseenter', function () {
             for (key in elemArgs) {
               if (supportedCommands.indexOf(key) > -1) {
                 DirectiveService.activateArg(key, elemArgs[key], scope, element);
