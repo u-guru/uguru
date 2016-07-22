@@ -102,20 +102,16 @@
 							on-enter="p:[font-weight:700, t:all 750ms ease-out]:delay-2000">{{madlib.category.tags_data.template.p1}}</b>
                     </a>
                     <span init-with="p:[tr:translate3d(-40px#0#0)]"
-						when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
-		                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-toggle-on="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
 						when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
-						when-university-dropdown-mouse-enter="p:[op:0.1:delay-200, t:all 250ms ease-in-out]"
-		                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-toggle-on="p:[op:0.1:delay-200, t:all 250ms ease-in-out]"
 						when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 						when-madlib-init="t-enter"
 						on-enter="p:[tr:none, t:all 500ms ease-out]:delay-1250">{{madlib.category.tags_data.template.middle}}</span>
                     <a id="blank-2" class="tag-adlib blank"
-						when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
-		                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-toggle-on="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
 						when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
-						when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
-		                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 						when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 						init-with="p:[background:rgba(64#72#75#0), tr:translate3d(-37.5px#0#0) scale(1.7)]"
 						when-madlib-init="t-enter"
@@ -132,11 +128,9 @@
 							on-enter="p:[font-weight:700, t:all 750ms ease-out]:delay-2000">{{madlib.category.tags_data.template.p2}}</b>
                     </a>
                     <span init-with="p:[tr:translate3d(-35px#0#0)]"
-						when-category-dropdown-mouse-enter="p:[op:0.25:delay-100, t:all 250ms ease-in-out]"
-		                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-toggle-on="p:[op:0.25:delay-100, t:all 250ms ease-in-out]"
 						when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
-						when-university-dropdown-mouse-enter="p:[op:0.1:delay-100, t:all 250ms ease-in-out]"
-		                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-toggle-on="p:[op:0.1:delay-100, t:all 250ms ease-in-out]"
 						when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 						when-madlib-init="t-enter"
 						on-enter="p:[tr:none, t:all 500ms ease-out]:delay-1250">{{madlib.category.tags_data.template.end}}</span>
@@ -227,7 +221,7 @@
 				<li class='adlib-tag adlib-tag-1'
                     init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[portal-tag-1:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]"
-                    when-category-dropdown-click=""
+                    when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
@@ -266,7 +260,7 @@
 				<li class='adlib-tag adlib-tag-2'
 					init-with="p:[op:0,t:all 250ms ease-in-out]"
 					on-enter="a:[portal-tag-2:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-250"
-                    when-category-dropdown-click=""
+                    when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-250, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
@@ -306,7 +300,7 @@
 				<li class='adlib-tag adlib-tag-3'
                     init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[portal-tag-3:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-450"
-                    when-category-dropdown-click=""
+                    when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
@@ -346,7 +340,7 @@
 				<li class='adlib-tag adlib-tag-4'
                     init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[portal-tag-4:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-600"
-                    when-category-dropdown-click=""
+                    when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
@@ -386,7 +380,7 @@
 				<li class='adlib-tag adlib-tag-5'
                     init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[portal-tag-5:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-900"
-                    when-category-dropdown-click=""
+                    when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-350, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
@@ -427,7 +421,7 @@
 				<li class='adlib-tag adlib-tag-6'
                     init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[portal-tag-6:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-1250"
-                    when-category-dropdown-click=""
+                    when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
@@ -468,7 +462,7 @@
 				<li class='adlib-tag adlib-tag-7'
                     init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[portal-tag-7:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-1750"
-                    when-category-dropdown-click=""
+                    when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-250, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
@@ -509,7 +503,7 @@
 				<li class='adlib-tag adlib-tag-8'
                     init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[portal-tag-8:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-2000"
-                    when-category-dropdown-click=""
+                    when-category-dropdown-click="t:[on-exit]"
 	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
 	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
