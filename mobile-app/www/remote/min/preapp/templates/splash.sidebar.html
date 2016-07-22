@@ -1,14 +1,12 @@
 <div class="sidebar-scale"
-	init-with="p:[tr:scale(0), t:all 1000ms ease-out, op:1, display:block, background:#ffffff]"
+	init-with="p:[tr:scale(0), op:1, display:block, background:#ffffff]"
 	when-sidebar-icon-clicked="t:[on-enter]"
-	on-enter="p:[tr:scale(1000), background:#40484b] | t:[on-exit]"
-	on-exit="p:[op:0:delay-500, t:all 500ms ease-out, display:none:delay-2000]"></div>
+	on-enter="p:[tr:scale(1000), background:#40484b, op:1, display:block, t:all 1000ms ease-out] | t:[on-exit]"
+	on-exit="p:[tr:scale(0):delay-2000, background:#ffffff:delay-2000, op:0:delay-500, display:none:delay-2000, t:all 500ms ease-out]"></div>
 <div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar'
 	init-with="p:[op:0]"
- 	when-sidebar-icon-clicked="t:[on-enter]"
-	on-enter="p:[op:1:delay-500]"
-	when-sidebar-close-clicked="t:[on-exit]"
-	on-exit="p:[op:0]">
+ 	when-sidebar-icon-clicked="p:[op:1:delay-500]"
+	when-sidebar-close-clicked="p:[op:0]">
 	<!-- on-init="t:[on-enter]" -->
     <!-- <custom-states when="faq-clicked, pricing-clicked"></custom-states> -->
     <aside class="splash-sidebar-full">
