@@ -30,7 +30,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         activateArg: activateArg,
         activateArgDelay: activateArgDelay,
         supportedCommands: argNames,
-        sendMessage: sendMessage,
+        sendMessage: sendMessageViaDropdown,
         setShortcutDict: setShortcutDict,
         getShortcuts: getShortcuts,
         getSupportedOnStates: getSupportedOnStates,
@@ -128,7 +128,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       shortcuts = _shortcuts
     }
 
-    function sendMessage(scope, arg_type, event_name, attr, message, index) {
+    function sendMessageViaDropdown(scope, arg_type, event_name, attr, message, index) {
+      console.log(arg_type, event_name, attr, message, index);
       if (!arg_type) arg_type = 'send';
       if (arg_type !== 'send') return;
       if (!arg_type || !arg_type.length || !message || !message.length) return;
@@ -180,6 +181,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           })
           var formattedAttrValue = attr_value + "";
           if (typeof(new_value) === "object") {
+            console.log(new_value)
             for (objKey in new_value) {
               var formattedObjKey = '^' + objKey;
               if (formattedAttrValue.indexOf(formattedObjKey) > -1) {
@@ -429,7 +431,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           break;
 
         case ("send"):
-          return formatAndProcessArgs(type, string_args, {messages:[]}, 'messages', processSendSecondaryArgs, ['public', 'children']);
+          var sendArgs = formatAndProcessArgs(type, string_args, {messages:[]}, 'messages', processSendSecondaryArgs, ['public', 'children']);
+
+          return sendArgs
           break;
 
         case ("anim"):
@@ -480,7 +484,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         }
         if (arg.indexOf('delay-') > -1) {
           arg = 'public'
-          console.log(prop_dict, orig_str)
         }
         return arg.trim();
       }
@@ -690,7 +693,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function evalSendArgs(arg_dict, scope, elem) {
       if (arg_dict.delay) {
         $timeout(function() {
-          console.log('sending w/ delay', arg_dict);
           processMessageArr(arg_dict.messages, scope, elem);
         }, arg_dict.delay)
       } else {
@@ -701,39 +703,71 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processMessageArr(message_arr, scope, elem) {
       for (var i = 0; i < message_arr.length; i++) {
         var indexMessageObj = message_arr[i];
+        var dataDict;
+        if (indexMessageObj.custom && indexMessageObj.custom.indexOf('data:') === 0) {
+          var dataVar = UtilitiesService.removeAllOccurrancesArr(indexMessageObj.custom.split('data:')[1], ['(', ')']);
+          var dataVarArgs = dataVar.split('#');
+          for (var j = 0; j < dataVarArgs.length; j++) {
+            var dataVarArr = dataVarArgs[j].split('.')
+            var resultDict = {};
+            if (dataVarArr.length > 1 && dataVarArr[0] in scope) {
+              var nextDict = scope[dataVarArr.splice(0, 1)];
+
+              for (var k = 0; k < dataVarArr.length; k++) {
+                indexVar = dataVarArr[k];
+                if (indexVar in nextDict) {
+                  nextDict = nextDict[indexVar];
+                } else {
+                  break;
+                }
+              }
+              if (nextDict && typeof nextDict === 'string') {
+                // scope.root.public.customStates['when'][camelMsg][indexKeyFormatted]
+                // console.log(scope.root.public.customStates)
+                if (!dataDict) dataDict = {};
+                dataDict[dataVarArgs[j]] = nextDict
+              }
+
+            }
+          }
+          delete indexMessageObj['custom']
+        }
+
         var delay = indexMessageObj.delay || 0;
         delete indexMessageObj['delay'];
         var messageName = Object.keys(indexMessageObj)[0];
         var messageScope = indexMessageObj[messageName];
-        sendMessageWithinScope(formatMessage(messageName), messageScope, delay, scope, elem)
+        sendMessageWithinScope(formatMessage(messageName), messageScope, dataDict, delay, scope, elem)
       }
 
       function formatMessage(message_name) {
         return UtilitiesService.camelCase('when-' + message_name);
       }
 
-      function sendMessageWithinScope(msg_name, msg_scope, delay, scope, elem) {
+      function sendMessageWithinScope(msg_name, msg_scope, msg_data, delay, scope, elem) {
         // console.log('sending..', msg_name, 'with scope', msg_scope, delay, scope.root.public.customStates);
+
         if (delay) {
           $timeout(function() {
-            activateScopedMessageState(msg_name, msg_scope, scope);
+            activateScopedMessageState(msg_name, msg_data,msg_scope, scope);
             $timeout(function() {
               scope.$apply();
             })
           }, delay)
         } else {
-          activateScopedMessageState(msg_name, msg_scope, scope);
+          activateScopedMessageState(msg_name, msg_data, msg_scope, scope);
           $timeout(function() {
               scope.$apply();
           })
         }
-        function activateScopedMessageState(msg_name, env, scope) {
+        function activateScopedMessageState(msg_name, msg_data, env, scope) {
           var msgType = UtilitiesService.camelToDash(msg_name).toLowerCase().split('-')[0];
+          //
           if (!(msgType in scope.root.public.customStates)) {
             scope.root.public.customStates[msgType] = {};
           }
 
-          scope.root.public.customStates[msgType][msg_name] = true;
+          scope.root.public.customStates[msgType][msg_name] = msg_data ||true;
         }
       }
 
