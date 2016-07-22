@@ -1658,11 +1658,13 @@
   .coach-fill {
     top: 75px; }
 
-  .splash-hero-content .splash-guru-head {
-    margin-top: 0;
-    margin-bottom: -5px; }
-  .splash-hero-content .splash-adlib ul {
-    height: 150px; } }
+  .splash-hero-content {
+    margin-top: -20px; }
+    .splash-hero-content .splash-guru-head {
+      margin-top: 0;
+      margin-bottom: -5px; }
+    .splash-hero-content .splash-adlib ul {
+      height: 150px; } }
 @media screen and (max-width: 360px) {
   .splash-hero-content .splash-adlib h1 {
     font-size: 24px; } }
