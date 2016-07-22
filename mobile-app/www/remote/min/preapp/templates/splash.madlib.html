@@ -197,6 +197,12 @@
             <ul init-default
 				when-madlib-init="t:[on-enter:children:delay-2750]"
                 switches="rowOne:[change-delay:250, active-limit:1, data:madlib.switches.rowOne]|rowTwo:[change-delay:250, active-limit:1, data:madlib.switches.rowTwo]"
+                on-mouse-enter="prop:[op:0.25]"
+                on-mouse-enter-delay="1000"
+                on-mouse-over="prop:[op:0.75]"
+                on-mouse-over-delay="2500"
+                on-mouse-leave="prop:[op:1]"
+                on-mouse-leave-args="100"
                 on-switch-row-one-change=""
                 on-switch-row-two-change=""
                 on-switch-row-one-reset=""

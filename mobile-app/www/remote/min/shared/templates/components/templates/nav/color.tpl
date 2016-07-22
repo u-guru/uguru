@@ -1,8 +1,15 @@
+
 <div class="dropdown-color"
     init-with="prop:[opacity:1]"
-	ng-mouseenter="mouseEnter($event, $index)" ng-mouseleave="mouseLeave($event, $index)">
+
+	>
+    <!-- ng-mouseenter="mouseEnter($event, $index, 500)" ng-mouseover="mouseOver($event, $index, 500)" ng-mouseleave="mouseLeave($event, $index)" -->
 	<div init-with='prop:[visibility:hidden]'></div>
-    <a class="color" ng-click="toggle($event)" ng-class='{"active": dropdown.active }' on-init init-with="prop:[opacity:1]">
+    <a class="color" ng-click="toggle($event)" ng-class='{"active": dropdown.active }' on-init init-with="prop:[opacity:1]"
+    on-mouse-enter="s:[{{prefix}}-dropdown-mouse-enter:public|prop:[opacity:0.5]"
+    on-mouse-enter-delay="500"
+    on-mouse-leave="s:[{{prefix}}-dropdown-mouse-enter:public|prop:[opacity:1]]"
+    on-mouse-leave-delay="500">
 		<!-- @samir -->
 		<div class="null"
 			init-with="prop:[transform:scaleX(0), transition:all 250ms ease-out 450ms]"
@@ -50,7 +57,14 @@
 				<div></div><div></div>
 				<div></div><div></div>
 
-                <a class="color" ng-click="click(option, $index)" ng-mouseenter="mouseEnter($event, 'send', prefix + '-dropdown-hover', $index)" ng-mouseover="mouseOver($event, 'send', prefix + '-dropdown-hover', $index)">
+                <!-- ng-mouseenter="mouseEnter($event, 'send', prefix + '-dropdown-hover', $index)"
+                ng-mouseover="mouseOver($event, 'send', prefix + '-dropdown-hover', $index)" -->
+                <a class="color" ng-click="click(option, $index)"
+                    init-default
+                    on-mouse-enter="s:[{{prefix}}-dropdown-mouse-enter-option:public:data({{option.dataMouseEnter}})]|prop:[opacity:0.5]]"
+                    on-mouse-enter-delay="500"
+                    on-mouse-leave="s:[{{prefix}}-dropdown-mouse-enter-option:public:data({{option.dataMouseLeave}})]|prop:[opacity:1]]"
+                    on-mouse-leave-delay="500">
 					<div class="dropdown-color-bg" ng-style="{'background-color': (dropdown.options[$index][colorKey[0]] || dropdown.options[$index][colorKey[1]])}"></div>
                     <span>{{(dropdown.key && option[dropdown.key]) || option}}</span>
                 </a>

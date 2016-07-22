@@ -101,14 +101,37 @@ angular.module('uguru.shared.directives.components')
                     scope.states = UtilitiesService.removeAllOccurrancesArr(scope.states, ['[', ']', ' '])
                     scope.states = scope.states && scope.states.split(',')
                 }
-                scope.mouse = {over: false, enter: false, leave: false};
-                scope.mouseDelays = {over: 250, enter: 250, leave: 250};
-                if (attr.mouseOverDelay) scope.mouseDelays.over = parseInt(attr.mouseOverDelay);
-                if (attr.mouseEnterDelay) scope.mouseDelays.enter = parseInt(attr.mouseEnterDelay);
-                if (attr.mouseLeaveDelay) scope.mouseDelays.leave = parseInt(attr.mouseLeaveDelay);
+                // scope.mouse = {over: false, enter: false, leave: false};
+                // scope.mouseDelays = {over: 250, enter: 250, leave: 250};
+                // if (attr.mouseOverDelay) scope.mouseDelays.over = parseInt(attr.mouseOverDelay);
+                // if (attr.mouseEnterDelay) scope.mouseDelays.enter = parseInt(attr.mouseEnterDelay);
+                // if (attr.mouseLeaveDelay) scope.mouseDelays.leave = parseInt(attr.mouseLeaveDelay);
+
+                // if (attr.mouseEnterData && attr.mouseEnterData.length) {
+                //     var enterData = attr.mouseEnterData + '';
+                //     enterData = UtilitiesService.replaceAll(enterData ,', ', ',');
+                //     enterDataSplit = enterData.split(',');
+                //     var resultDict = {};
+                //     for (var i = 0; i < enterDataSplit.length; i++) {
+
+                //     }
+                //     scope.dropdown.data.mouseEnter = resultDict;
+                // }
+                for (var i = 0; i < scope.dropdown.options.length; i++) {
+                    if ('mouseEnterData' in attr) {
+                        scope.dropdown.options[i].mouseEnterData = UtilitiesService.replaceAll(attr['mouseEnterData'], ', ', ',').split(',').join('#');
+                    }
+                    if ('mouseOverData' in attr) {
+                        scope.dropdown.options[i].mouseOverData = UtilitiesService.replaceAll(attr['mouseOverData'], ', ', ',').split(',').join('#');
+                    }
+                    if ('mouseLeaveData' in attr) {
+                        scope.dropdown.options[i].mouseLeaveData = UtilitiesService.replaceAll(attr['mouseLeaveData'], ', ', ',').split(',').join('#');
+                    }
+                }
 
                 scope.dropdown.active = false;
                 attr.$set('initWith', attr.initWith);
+                // attr.$set('onMouseEnter', attr.onMouseEnter);
                 scope.dropdown.selectedRecentlyChanged = false;
                 scope.root = scope.$parent.root;
 
