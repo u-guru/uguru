@@ -199,6 +199,8 @@
 		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
 			when-mobile-switch-init="t-enter"
 			when-mobile-switch-exit="p:[op:0, z-index:-1]"
+            ng-class="'bg-' + splash.category.bg_hex_color"
+            when-mobile-categories-exit='p:[opacity:0.50, background:{{splash.category.bg_hex_color}}]'
 			on-enter="p:[op:1, z-index:9999]">
 			<div class="absolute top-0 right-0 p10xy">
 				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon"
@@ -215,11 +217,13 @@
 						ng-repeat='category in nav.categoriesDropdown.options'
 						init-with="p-op"
 						when-mobile-switch-init="t-enter"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500">
+                        when-mobile-categories-bg-academic-exit="p:[opacity:0]"
+						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
+						on-exit="p-op">
                         <a class="bg-{{category.bg_hex_color}}"
 							ng-class="{'active':category.id == selectedCategory.id}"
 							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'
-							on-click='p:[background-color:{{category.bg_hex_color}}' >
+							on-click='p:[background-color:{{category.bg_hex_color}}:delay-500] | s:[mobile-categories-exit:public, mobile-categories-bg-{{splash.category.bg_hex_color}}-exit]' >
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
                             <span>{{category.name}}</span>
                         </a>
