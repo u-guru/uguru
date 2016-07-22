@@ -301,7 +301,7 @@
 			padding: 0 5px;
 			border-radius: 2px;
 			border: 2px solid white;
-			span {
+			> span {
 				font-size: 18px;
 				font-weight: 600;
 				&:first-child {
@@ -313,19 +313,24 @@
 					height: 100%;
 				}
 				&:not(:first-child) {
+					@include flex;
+					@include flex-center-vertical;
 					position: relative;
 					z-index: 1;
+					span:first-child {
+						font-size: 14px;
+					}
 				}
 			}
 			svg {
 				position: relative;
 				z-index: 2;
 				display: block;
-				width: 20px;
+				width: 14px;
 				height: 20px;
 				margin-left: 5px;
 				path {
-					@include svg-stroke(white, 10);
+					@include svg-stroke(white, 16);
 				}
 			}
 		}
