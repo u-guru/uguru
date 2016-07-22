@@ -129,7 +129,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function sendMessageViaDropdown(scope, arg_type, event_name, attr, message, index) {
-      console.log(arg_type, event_name, attr, message, index);
       if (!arg_type) arg_type = 'send';
       if (arg_type !== 'send') return;
       if (!arg_type || !arg_type.length || !message || !message.length) return;
@@ -181,7 +180,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           })
           var formattedAttrValue = attr_value + "";
           if (typeof(new_value) === "object") {
-            console.log(new_value)
             for (objKey in new_value) {
               var formattedObjKey = '^' + objKey;
               if (formattedAttrValue.indexOf(formattedObjKey) > -1) {
@@ -497,6 +495,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function processCSSPropValue(name, value, prop_dict, orig_str) {
       //2nd arg of if --> fill:#;
+
       if (value && value.indexOf('#') > -1 && value.indexOf('#') > 0) {
         value = value && UtilitiesService.replaceAll(value, '#', ',');
       }
@@ -766,7 +765,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (!(msgType in scope.root.public.customStates)) {
             scope.root.public.customStates[msgType] = {};
           }
-
           scope.root.public.customStates[msgType][msg_name] = msg_data ||true;
         }
       }
@@ -1093,6 +1091,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         delete indexPropDict['important'];
         var propName = Object.keys(indexPropDict)[0];
         var propValue = indexPropDict[propName];
+
         var propValShortcut;
         if (propName in shortcuts.cssPropValues) {
           propValShortcut = shortcuts.cssPropValues[propName];
@@ -1104,7 +1103,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if ((propName && propValue) || (propName && propValue === 0)) {
           setCSSProperty(propName, propValue, delay, important, scope, elem)
         } else {
-          console.log('ERROR: css propValue or css propName not defined', propName, propValue, '\nelem:', elem)
+          // console.log('ERROR: css propValue or css propName not defined', propName, propValue, '\nelem:', elem)
+          continue;
         }
         if (delay)  {
           indexPropDict['delay'] = delay;
