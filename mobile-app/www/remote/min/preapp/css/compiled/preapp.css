@@ -2335,12 +2335,6 @@
         right: auto;
         height: auto; }
 
-  .splash-sidebar-full .splash-sidebar-menu header {
-    height: 70px; }
-    .splash-sidebar-full .splash-sidebar-menu header .splash-logo {
-      height: 100% !important;
-      margin: 0 15px !important; }
-
   .splash-header {
     height: 70px !important; } }
 @media screen and (min-width: 768px) {
@@ -2448,7 +2442,8 @@
       .splash-sidebar-full .splash-sidebar-menu header .splash-logo {
         height: 50px !important;
         margin: 5px;
-        width: inherit; }
+        width: inherit;
+        padding: 2px; }
     .splash-sidebar-full .splash-sidebar-menu div {
       width: 100%; }
     .splash-sidebar-full .splash-sidebar-menu ul {
@@ -2590,6 +2585,13 @@
     .splash-sidebar-full .splash-sidebar-content #desktop-guru-onboarding .desktop-header {
       display: none; }
 
+@media screen and (min-width: 860px) {
+  .splash-sidebar-full .splash-sidebar-menu header {
+    height: 70px; }
+    .splash-sidebar-full .splash-sidebar-menu header .splash-logo {
+      padding: 0 !important;
+      height: 100% !important;
+      margin: 0 15px !important; } }
 #cta-modal-sidebar {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;

@@ -30,6 +30,7 @@
 				height: 50px!important;
 				margin: 5px;
 				width: inherit;
+				padding: 2px;
 			}
 		}
 		div {
@@ -184,6 +185,20 @@
 		#desktop-guru-onboarding {
 			.desktop-header {
 				display:none;
+			}
+		}
+	}
+}
+@media screen and (min-width: 860px) {
+	.splash-sidebar-full {
+		.splash-sidebar-menu {
+			header {
+				height: 70px;
+				.splash-logo {
+					padding: 0!important;
+					height: 100%!important;
+					margin: 0 15px!important;
+				}
 			}
 		}
 	}
