@@ -513,11 +513,10 @@
 												</svg>
 											</div>
 										</li>
-
 									</ul>
 									<ul class='cal-day'
 										init-default
-										when-cal-enter="t-enter">
+										when-cal-enter="s:[cal-day-27-init:public:delay-1150]">
 										 <li init-with="p-op" class="all-day"
 											when-cal-day-27-init="t-enter"
 	 										on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-28-init:public:delay-150]">
