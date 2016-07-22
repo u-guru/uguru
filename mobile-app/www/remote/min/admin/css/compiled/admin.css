@@ -650,6 +650,12 @@
     height: 2px;
     background: rgba(93, 172, 193, 0.2); }
 
+@media screen and (max-width: 768px) {
+  #admin-anim-tools > div {
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap; } }
+
 .bug-tag-list ul {
   padding: 7.5px !important; }
   .bug-tag-list ul li {

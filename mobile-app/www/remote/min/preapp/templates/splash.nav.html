@@ -204,7 +204,7 @@
 			when-mobile-switch-exit="p:[op:0, z-index:-1]"
             ng-class="'bg-' + splash.category.bg_hex_color"
             when-mobile-categories-exit='p:[opacity:0.50, background:{{splash.category.bg_hex_color}}]'
-			on-enter="p:[op:1, z-index:9999]">
+			on-enter="p:[op:1, z-index:999]">
 			<div class="absolute top-0 right-0 p10xy">
 				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon"
 					ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'"
@@ -275,7 +275,7 @@
         > onHover[start:end]: ability to specify different commands based on hoverAbility
         > init-when: like init-with, but allows clarification to specify WHEN (i.e. one argument = N = levels of parents, grandparents must be completed first);
     -->
-    <!-- <debug autoplay delay-btwn="1000" pause-at="3" speed='fast'> </debug> -->
+    <debug delay-btwn="1000" pause-at="3" speed='fast'> </debug>
 </div>
 
 <div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
