@@ -138,6 +138,9 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .transition-150-linear {
   transition: all 150ms linear; }
 
+.delay-450 {
+  transition-delay: 450ms !important; }
+
 [translate-to-elem] {
   transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
   transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important; }

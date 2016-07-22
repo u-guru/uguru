@@ -178,11 +178,11 @@
         </header>
 
          <div mobile id="splash-hero-nav-mobile" class="no-scrollbar" mobile
+		 	ng-class="'bg-' + splash.category.bg_hex_color"
 		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
 			when-mobile-switch-init="t-enter"
-			when-mobile-switch-exit="p:[z-index:-1]"]
-            ng-class="'bg-' + splash.category.bg_hex_color"
-            when-mobile-categories-exit='s:[mobile-switch-exit:public] | p:[bg:^category.rgb_color, tr:all 2000ms ease-in, opacity:0:delay-1500]'
+			when-mobile-bg-exit="p:[z-index:-1, op:0]"]
+            when-mobile-categories-exit='p:[bg:^category.rgb_color, tr:all 1000ms ease-in]'
 			on-enter="p:[op:1, z-index:999]">
 			<div class="absolute top-0 right-0 p10xy">
 				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon"
@@ -201,19 +201,17 @@
 						init-with="p-op"
 						when-mobile-switch-init="t-enter"
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-1500"
-                        ng-class="{'extra-transition-delay': category.id === splash.category.id}"
-						when-mobile-switch-exit="p:[op:0:delay-450, tr:translateY(15%), t:all 500ms ease-out]">
+                        ng-class="{'delay-450': category.id === splash.category.id}"
+						when-mobile-switch-exit="p:[op:0:delay-150, tr:translateY(15%), t:opacity 450ms ease-out#transform 250ms ease-out]">
                         <!-- debug-id="2:[trigger:click,select:.bg-baking]" -->
 
                         <a class="bg-{{category.bg_hex_color}}"
                             id='bg-{{category.bg_hex_color}}-category-link'
 							ng-class="{'active':category.id == splash.category.id}"
 							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'
-							on-click='p:[background-color:{{category.bg_hex_color}}:delay-500] | s:[mobile-categories-exit:public:data:(category.rgb_color#category.bg_hex_color), mobile-categories-bg-{{splash.category.bg_hex_color}}-exit]'>
-                            <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"
-								when-mobile-switch-exit="p:[ tr:translateY(-15%), t:all 500ms ease-out]"></span>
-                            <span
-								when-mobile-switch-exit="p:[ tr:translateY(-15%), t:all 500ms ease-out]">{{category.name}}</span>
+							on-click='p:[background-color:{{category.bg_hex_color}}:delay-500] | s:[mobile-switch-exit:public, mobile-categories-exit:public:data:(category.rgb_color#category.bg_hex_color):delay-250, mobile-categories-bg-{{splash.category.bg_hex_color}}-exit:delay-250]'>
+                            <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
+                            <span>{{category.name}}</span>
                         </a>
                     </li>
                 </ul>
@@ -222,7 +220,7 @@
                 <h1 init-with="p-op"
 					when-mobile-switch-init="t-enter"
 					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
-					when-mobile-switch-exit="p:[op:0, t:all 500ms ease-out]:delay-250">University</h1>
+					when-mobile-switch-exit="p:[op:0, t:all 500ms ease-out]:delay-250 | s:[mobile-bg-exit:public:delay-1000]">University</h1>
                 <ul>
                     <li ng-repeat='university in nav.universitiesDropdown.options' class='txt-white weight-600'
 						init-with="p-op"
