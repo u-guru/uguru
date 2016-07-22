@@ -76,18 +76,16 @@
 			margin: 15px auto;
 			padding: 7.5px;
 			width: 100%;
-			&.a {
-				li {
-					a {
-						pointer-events: none!important;
-					}
-				}
-			}
 			li {
 				width: 143px;
 				padding: 7.5px;
 				@media screen and (max-width: 320px) {
 					width: 111px;
+				}
+				@media screen and (max-height: 568px) {
+					&:nth-child(4), &:nth-child(8) {
+						display: none;
+					}
 				}
 				a[class*="translate-blank"] {
 					animation: none!important;
@@ -182,6 +180,9 @@
 				height: 250px;
 				@media screen and (max-width: 320px) {
 					height: 200px;
+				}
+				@media screen and (max-height: 568px) {
+					height: 180px;
 				}
 			}
 		}

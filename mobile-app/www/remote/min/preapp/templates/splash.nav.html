@@ -5,7 +5,7 @@
 	<!-- powerups-clicked:public, search-university-clicked:public, nav-init:public, mobile-switch-init:public, sidebar-icon-clicked:public -->
     <custom-states when="nav-init, powerups-clicked"></custom-states>
     <div id='splash-desktop-nav' class='full-x'>
-        <header class='splash-header' id='home-nav-header' on-init="t-enter">
+        <header class='splash-header' on-init="t-enter">
             <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
 				init-default
 				when-category-dropdown-mouse-enter="p:[op:0.25:delay-400, t:all 250ms ease-in-out]"
@@ -282,13 +282,17 @@
 
 <div class="splash-hero-pennant absolute left-0 z-index-999 p15xy" style="bottom: -65px"
 	init-with="p:[op:0, tro:left bottom, tr:translateY(50%) rotate(-90deg), t:all 500ms ease-out]"
-	when-madlib-init="s:[pennant-enter]:delay-5500"
+	when-madlib-init="s:[pennant-enter:public]:delay-5500"
 	on-enter="p:[op:1, tr:translateY(0) rotate(0)]"
 	when-pennant-enter="p:[op:1, tr:translateY(0) rotate(0)]"
-	when-pennant-exit="p:[op:0, tr:translateY(50%) rotate(-90deg)]">
+	when-pennant-exit="p:[op:0, tr:translateY(50%) rotate(-90deg)] | s:[pennant-enter:public]:delay-500"
+	when-university-dropdown-hover="s:[pennant-exit:public]">
 	<svg width="110px" height="137px" viewBox="0 0 73 91">
 	    <path d="M4.5,85.4013441 L4.5,5.59865586 C5.39670243,5.07993868 6,4.11042319 6,3 C6,1.34314575 4.65685425,0 3,0 C1.34314575,0 0,1.34314575 0,3 C0,4.11042319 0.60329757,5.07993868 1.49999916,5.59865293 L1.5,85.4013441 C0.60329757,85.9200613 0,86.8895768 0,88 C0,89.6568542 1.34314575,91 3,91 C4.65685425,91 6,89.6568542 6,88 C6,86.8895768 5.39670243,85.9200613 4.50000084,85.4013471 Z" id="pole" fill="#D8D8D8"></path>
-	    <path d="M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z" id="flag" opacity="0.9" fill="#69B3A5"></path>
+	    <path d="M63.071575,27.5 L72.2393802,32.9924931 L0,48 L1.42108547e-14,7 L71.7272013,22.1343641 L63.071575,27.5 Z"
+			id="flag" opacity="0.9" style="fill:#69B3A5"
+			init-default
+			when-university-dropdown-hover="prop:[fill:^school_color_dark]:delay-500"></path>
 	    <path d="M0,7 L0,48 L6.261,46.7 L6.261,8.321 L0,7 L0,7 Z" id="border" fill="#2B3234"></path>
 	    <text fill="#FFFFFF" font-family="Source Sans Pro" font-size="12.7286934" font-weight="bold">
 	        <tspan x="10" y="32" fill="#FFFFFF">Cal</tspan>
