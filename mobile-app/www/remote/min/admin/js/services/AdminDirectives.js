@@ -114,7 +114,7 @@ angular.module('uguru.admin')
             scope.workflow.active = true;
         }
         scope.$watch('module.activePerson', function(new_person) {
-            sortWorkflows();
+            // sortWorkflows();
         })
 
         function sortWorkflows() {
@@ -149,7 +149,6 @@ angular.module('uguru.admin')
                     scope.$watch('module.activePerson', function(new_person, old_person) {
                     if (new_person in scope.personDict) {
                         scope.personDict[new_person].sort(sortStoryByPriority(new_person));
-                        console.log(scope.personDict[new_person])
                         scope.stories = scope.personDict[new_person];
                         scope.$parent.workflow.stories = scope.stories;
                     }

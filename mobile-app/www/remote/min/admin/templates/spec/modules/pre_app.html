@@ -50,20 +50,28 @@
                 <setup type="base">
                 </setup>
                 <user-stories>
-                    <story  type="gesture" desc="User enters splash madlib" func='true' tested='false' cp='false' responsive='false'>
-                        <ui-stream desc="page transitions into guru phase">
+                    <story type="gesture" desc="User enters splash madlib" func='true' tested='false' cp='false' responsive='false'>
+                        <ui-stream desc="Page transitions into guru phase">
                             <ui-state name="Warp zooms out" desc="Warp zooms out" func="false" >
-                                <bug type='UI' open by="Samir" description="very slow"></bug>
+                                <bug type='UI' open by="Samir" description="Very slow"/>
                             </ui-state>
+							<ui-state name="Guru head crashes in" desc="Guru head crashes against the screen, then bounces back and readjusts itself"></ui-state>
                             <ui-state name="Title animates in" desc="Warp zooms out" func="false">
-
+								<bug type="" open by="Gabrielle" description="Madlib header letters overlap with each other on smallest screen size, needs tiny mobile attr." platform="mobile"/>
                             </ui-state>
                             <ui-state name="User switches category">
 
                             </ui-state>
+							<ui-state name="Tags animate in" desc="Tags fall in from the warp in a random, staggered manner, then readjust themselves"></ui-state>
                         </ui-stream>
                     </story>
                     <story type="gesture" desc="User selects splash tag" func='true' tested='false' cp='false' responsive='false'>
+						<ui-stream>
+							<ui-state name="User selects one splash tag" desc="" func="true">
+								<bug type="" open by="Gabrielle" description="Tags need .active added when selected and removed when deselected - if added currently, tags are selected properly but don’t translate back when another tag is clicked." platform=""/>
+								<bug type="" open by="Gabrielle" description="Row 2 Tag 3 doesn't move back into place after being deselected." platform=""/>
+							</ui-state>
+						</ui-stream>
                     </story>
                 </user-stories>
             <user-workflow/>
@@ -77,14 +85,42 @@
                     </story>
 
                     <story name="Category">
-                        <ui-stream name="Category Dropdown Desktop">
-                            <ui-state name='Close Dropdown'>
-                                <bug by="sm" name="Close Dropdown when Click Outside of it" platform="desktop" />
+                        <ui-stream name="Desktop user selects a category">
+							<ui-state name="Mouse enter dropdown" desc="User's mouse enters the dropdown space and the guru's hair changes color if different from the current" func="true">
+								<bug type="static" open by="Gabrielle" flag="[Jeselle, Gabrielle]" description="Hair needs to be diluted version of category colors" platform="all" time="15" reference="true" reference-name="Guru hair color"/>
+							</ui-state>
+
+							<ui-state name="Mouse over dropdown" desc="Staggered opacity drop starting from the category dropdown">
+								<bug type="animation" open by="Gabrielle" flag="[Gabrielle]" description="Hover needs to be put back in" platform="desktop" time="25"/>
+							</ui-state>
+
+							<ui-state name="Click on dropdown" desc="Staggered opacity drop if not already triggered; dropdown options slideInDown; guru head tilts">
+								<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Would prefer to have the option to stagger color.tpl options" url="http://codepen.io/teamuguru/pen/e1d55abb071ad8db0845cefd76f7c48f"/>
+							</ui-state>
+
+							<ui-state name="Mouse enter dropdown option" desc="Guru hair changes to category color">
+								<bug reference-from="Guru hair color"/>
+								<bug type="animation" open by="Gabrielle" flag="[Gabrielle]" description="Remove opacity mouseover example from color.tpl" time="5"/>
+							</ui-state>
+
+							<ui-state name="Click on dropdown option" desc="Dropdown closes; guru switches out, tags switch out">
+								<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Tags flicker when switching categories - appear and then re-animate in" platform="all"/>
+							</ui-state>
+
+                            <ui-state name="Close dropdown" desc="Dropdown closes">
+                                <bug type="functional" open by="Samir" flag="[Samir]" name="Close dropdown when click outside of it" platform="desktop"/>
                             </ui-state>
                         </ui-stream>
+						<!-- for when we do mobile -->
+						<!-- <bug type="functional" open by="Gabrielle" flag="[Samir]" description="Mobile switcher does not work as expected - the onExit animates out all at the same time, then the selected university/category reappears and animates out again. In Jeselle's version, the previous selection was prioritized with the delay over the current selection." platform="mobile"/> -->
                     </story>
 
                     <story name="University Change">
+						<ui-stream name="Desktop user selects a university">
+							<ui-state name="Open dropdown">
+								<bug type="" open by="Gabrielle" description="Search link needs to be separated from both the mobile and desktop dropdowns" platform=""/>
+							</ui-state>
+						</ui-stream>
                     </story>
 
                     <story name="Sidebar Entrance Transition">

@@ -38,9 +38,11 @@
                             click-data="name, hex_color"
 
                             when-category-dropdown-mouse-enter="p:[op:1: t:all 250ms ease-in-out]"
+	                    	when-category-dropdown-toggle-on="p:[op:1: t:all 250ms ease-in-out]"
+
 		                    when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 			                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
-	                    	when-category-dropdown-toggle-on="p:[op:1: t:all 250ms ease-in-out]"
+							
 		                    when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 							when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]">
                         </dropdown>
@@ -206,8 +208,8 @@
 						ng-repeat='category in nav.categoriesDropdown.options'
 						init-with="p-op"
                         ng-class="{'delay-450': category.id === splash.category.id}"
-						when-mobile-switch-init="p:[tr:translateY(0)] | a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-1500"
-						when-mobile-switch-exit="p:[op:0:delay-150, tr:translateY(15%), t:opacity 450ms ease-out#transform 250ms ease-out]">
+						when-mobile-switch-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-1500"
+						when-mobile-switch-exit="a:[slideOutDown-subtle:set:(dur:450ms#func:ease-in-out):out]">
                         <!-- debug-id="2:[trigger:click,select:.bg-baking]" -->
                         <a class="bg-{{category.bg_hex_color}}"
                             id='bg-{{category.bg_hex_color}}-category-link'
@@ -229,7 +231,7 @@
 						ng-class="{'delay-450':university.id === splash.university.id}"
 						init-with="p-op"
 						when-mobile-switch-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
-						when-mobile-switch-exit="p:[op:0:delay-250, tr:translateY(15%), t:opacity 450ms ease-out#transform 250ms ease-out]:delay-250">
+						when-mobile-switch-exit="a:[slideOutDown-subtle:set:(dur:450ms#func:ease-in-out):out]">
                         <a ng-class="{'active':university.id === splash.university.id}"
 							ng-click='nav.universitiesDropdown.onOptionClick(university, $index)'
 							init-with="border-color: {{university.school_color_dark}}"
