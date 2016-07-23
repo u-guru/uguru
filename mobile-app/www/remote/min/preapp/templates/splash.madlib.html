@@ -197,16 +197,16 @@
             <ul init-default
 				when-madlib-init="t:[on-enter:children:delay-2750]"
                 switches="rowOne:[change-delay:250, active-limit:1, data:madlib.switches.rowOne]|rowTwo:[change-delay:250, active-limit:1, data:madlib.switches.rowTwo]"
-                on-mouse-enter="prop:[op:0.25]"
-                on-mouse-enter-delay="1000"
-                on-mouse-over="prop:[op:0.75]"
-                on-mouse-over-delay="2500"
-                on-mouse-leave="prop:[op:1]"
                 on-mouse-leave-delay="100"
                 on-switch-row-one-change=""
                 on-switch-row-two-change=""
                 on-switch-row-one-reset=""
                 on-switch-row-two-reset="">
+				<!-- on-mouse-enter="p:[op:0.25]"
+                on-mouse-enter-delay="1000"
+                on-mouse-over="p:[op:0.75]"
+                on-mouse-over-delay="2500"
+                on-mouse-leave="p:[op:1]" -->
 				<li class='adlib-tag adlib-tag-1'
                     init-with="p:[op:0, t:all 250ms ease-in-out]"
                     on-enter="a:[portal-tag-1:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]"
@@ -371,7 +371,7 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        init-with="prop:[o:1]"
+	                        init-with="p:[o:1]"
                             switch="rowTwo"
                             on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:0]"
                             on-switch-row-two-inactive="transform:[clear:translate]"
@@ -410,7 +410,7 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        init-with="prop:[o:1]"
+	                        init-with="p:[o:1]"
                             switch="rowTwo"
                             on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:0]"
                             on-switch-row-two-inactive="transform:[clear:translate]"
@@ -449,7 +449,7 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        init-with="prop:[o:1]"
+	                        init-with="p:[o:1]"
                             switch="rowTwo"
                             on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:0]"
                             on-switch-row-two-inactive="transform:[clearX:translate]"
@@ -488,7 +488,7 @@
                     type="splash" blank-num="2">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
-	                        init-with="prop:[o:1]"
+	                        init-with="p:[o:1]"
                             switch="rowTwo"
                             on-switch-row-two-active="transform:[to:(#blank-2), duration:250, delay:0]"
                             on-switch-row-two-inactive="transform:[clear:translate]"
