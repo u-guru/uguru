@@ -160,6 +160,7 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	transition: all 150ms linear;
 }
 .delay-450 {
+	animation-delay: 450ms!important;
 	transition-delay: 450ms!important;
 }
 [translate-to-elem] {
