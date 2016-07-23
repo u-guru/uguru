@@ -6,14 +6,20 @@ angular.module('uguru.admin')
   '$timeout',
   '$window',
   'SpecService',
-  function($scope, $state, $timeout, $window, SpecService) {
+  '$stateParams',
+  function($scope, $state, $timeout, $window, SpecService, $stateParams) {
 
     var ms = this;
+    var allowed_params = ['initial', 'filter']
     ms.types = ['ugh']//, 'eh', 'ah', 'aha'];
     ms.typeIndex = 0;
     ms.modules = [];
     ms.toggleAll = toggleAll;
     ms.setActivePerson = setActivePerson;
+    ms.parseStateParamFilters = parseStateParamFilters;
+    $timeout(function() {
+      ms.parseStateParamFilters($stateParams, allowed_params);
+    }, 100)
 
 
     // $scope.$watch('root.milestones', function(new_val) {
@@ -43,12 +49,31 @@ angular.module('uguru.admin')
       }
     }
 
+    function parseStateParamFilters(params, allowed) {
+      for (key in params) {
+        if (allowed.indexOf(key) > -1) {
+          var value = params[key].toUpperCase();
+          if (ms.activeModule.teamArr.indexOf(value) > -1) {
+              ms.setActivePerson(params[key].toUpperCase());
+          } else {
+            var workflows = ms.activeModule.workflows;
+            var valueLower = value.toLowerCase();
+            for (var i = 0; i < workflows.length; i++) {
+              var iWorkflow = workflows[i];
+              var activeIndex = iWorkflow.filter.options.indexOf(valueLower);
+              if (activeIndex > -1) {
+                iWorkflow.filter.activeIndex = activeIndex;
+              }
+            }
+          }
+
+        }
+      }
+    }
+
     function setActivePerson(initial) {
       ms.activeModule.activePerson = initial;
       $timeout(function() {$scope.$apply();})
-      for (var i = 0; i < ms.activeModule.workflows; i++) {
-
-      }
     }
 
     ms.open = function(url) {

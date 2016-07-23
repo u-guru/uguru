@@ -101,6 +101,7 @@ angular.module('uguru.admin')
         scope.workflow = {
             id: scope.module.workflows.length + 1,
             name: attr.name,
+            filter: {options: ['none', 'test-ready', 'streams', 'bugs', 'states'], activeIndex: 0},
             url: attr.url,
             setup: {
                 base: {},

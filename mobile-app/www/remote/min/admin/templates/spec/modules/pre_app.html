@@ -1,5 +1,5 @@
-<module name='First Time Experience' columns="name,func,tested,hifi,reference" progress="0000" dimensions="1111" active="GW">
-            <user-workflow name='Milestones' priority="9">
+<module name='First Time Experience' columns="name,filters,info/options,progress" progress="0000" dimensions="1111" active="SM">
+            <user-workflow name='Milestones' priority="9" access="SM">
                 <user-stories>
                     <story priority="SM:1|GW:4" name="Ordering" desc="make sure shit is ordered properly"/>
                     <story priority="GW:0.5" name="Fix up the milestones" desc="make sure shit is ordered properly"/>
@@ -27,6 +27,23 @@
                     <story name="Import" desc="bugs"/>
                     <story name="Calendar" desc="4 weeks view"/>
                     <story name="Priority" desc="prioritize by story/ui-streams/"/>
+                    <story name="Show streams" desc="prioritize by story/ui-streams/"/>
+                    <story name="Access - deny milestones" desc="prioritize by story/ui-streams/"/>
+                    <story name="Active module via url" desc="prioritize by story/ui-streams/"/>
+                    <story name="Jason Test + update" priority="SM:0.5" desc="prioritize by story/ui-streams/">
+                        <ui-stream name='URL Passdown bugs/only args --> JH'>
+                        </ui-stream>
+                        <ui-stream name='Write out all the tests for splash madlib'>
+                        </ui-stream>
+                        <ui-stream name='Write out all the tests for splash madlib test ready'>
+                        </ui-stream>
+                        <ui-stream name='Go over it'>
+                        </ui-stream>
+                        <ui-stream name='Counter for platforms'>
+                        </ui-stream>
+                        <ui-stream name='Show only [bugs, stories, workflows, ]'>
+                        </ui-stream>
+                    </story>
                 </user-stories>
             </user-workflow>
             <user-workflow name='Base Components' priority="10">

@@ -193,8 +193,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/loaders/tech',
     templateUrl: 'preapp/templates/loaders/tech.html'
   })
-  .state('root.milestones', {
+  .state('root.base-milestones', {
     url:'/dev/milestones',
+    templateUrl: 'admin/templates/milestones.html'
+  })
+  .state('root.milestones', {
+    url:'/dev/milestones/:initial/:filter',
     templateUrl: 'admin/templates/milestones.html'
   })
   .state('root.svg-test', {
