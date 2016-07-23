@@ -64,10 +64,14 @@ angular.module('uguru.admin')
             }
             for (var i = 0; i < workflows.length; i++) {
               var iWorkflow = workflows[i];
-              console.log(value);
+
               var activeIndex = iWorkflow.filter.options.indexOf(value);
               if (activeIndex > -1) {
                 iWorkflow.filter.activeIndex = activeIndex;
+                ms.activeFilter = iWorkflow.filter.options[activeIndex];
+                ms.activeFilterFormatted = UtilitiesService.camelToDash(ms.activeFilter).split('-')
+                ms.activeFilterFormatted.forEach(function(word, index) {return word.substring(0,1).toUpperCase() + word[index].substring(1)})
+                ms.activeFilterFormatted = ms.activeFilterFormatted.join(" ");
               }
             }
           }

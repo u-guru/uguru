@@ -54,33 +54,37 @@
 						</li>
 					</ul>
 					<div class='full-x p15-grid bg-cerise' ng-if='workflow.active'>
-						<ul class='full-x flex-wrap flex-stretch flex-start'>
-							<li class='full-x p15-grid txt-3 txt-white txt-center weight-700 ugrid-5' ng-init='firstStory = workflow.stories[0]'>
-								<div ng-repeat='column in ["name", "priority", "#streams", "#bugs", "progress"]'>
+						<ul class='full-x flex-wrap flex-stretch flex-start' ng-init="activeFilter = workflow.filter.options[workflow.filter.activeIndex]">
+							<li class='full-x p15-grid txt-3 txt-white txt-center weight-700 ugrid-5'>
+								<div ng-if='!ms.activeFilter' ng-repeat='column in workflow["columns"][activeFilter]'>
 									{{column}}
 								</div>
+								<div ng-if='ms.activeFilter' ng-repeat='column in workflow["columns"][ms.activeFilter]'>
+									{{ms.activeFilterFormatted}} {{column}}
+								</div>
 							</li>
-							<li class='weight-500 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x text-center flex-stretch' ng-repeat='story in workflow.stories track by $index'>
+							<li class='weight-500 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x text-center flex-stretch' ng-if='ms.activeFilter' ng-repeat='item in workflow[ms.activeFilter] track by $index'>
 								<div class='ugrid-5 p05-grid txt-3 full-x'>
 									<div class='text-left weight-600'>
-										{{story.name}}
+										{{item.name}} {{activeFilter}}
 										<br>
 										<span class='txt-1 weight-400 txt-smoke opacity-50'>
-											{{story.desc}}
+											{{item.desc}}
 										</span>
 									</div>
 									<div>
-										<span ng-repeat='(key, value) in story.priority'> {{key + ':' + value}}
+										<span ng-if='item.priority' ng-repeat='(key, value) in item.priority'> {{key + ':' + value}}
 										</span>
+										<span ng-if='!item.priority'> NA </span>
 									</div>
 									<div>
-										{{story.streams.length}}
+										{{item.stories && item.stories.length}}
 									</div>
 									<div>
-										{{story.bugs.length}}
+										{{item.bugs && item.bugs.length}}
 									</div>
 									<div>
-										{{story.cp}}
+										{{item && item.cp}}
 									</div>
 								</div>
 							</li>

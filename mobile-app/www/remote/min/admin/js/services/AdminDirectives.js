@@ -103,12 +103,15 @@ angular.module('uguru.admin')
             name: attr.name,
             filter: {options: ['stories','testReady', 'streams', 'bugs', 'states'], activeIndex: 0},
             columns: {
-                bugs: ['name', 'platform'],
+                bugs: ['name', 'description', 'state name'],
                 streams: ['name', 'description', 'num states'],
                 stories: ['name', 'priority', 'streams', 'bugs', 'progress'],
                 testReady: ['name', 'description', 'state', 'stream', 'story'],
                 states: ['name', 'descrpition', 'story', 'stream', 'num bugs', 'test-ready']
             },
+            bugs:[],
+            streams: [],
+            states: [],
             url: attr.url,
             setup: {
                 base: {},
