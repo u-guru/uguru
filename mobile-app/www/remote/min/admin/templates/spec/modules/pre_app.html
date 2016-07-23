@@ -1,0 +1,89 @@
+<module name='First Time Experience' columns="name,func,tested,hifi,reference" progress="0000" dimensions="1111">
+            <user-workflow name='Milestones' priority="9">
+                <user-stories>
+                    <story name="Ordering" desc="make sure shit is ordered properly"/>
+                    <story name="Headers" desc="make sure shit is ordered properly"/>
+                    <story name="Date" desc="some indication of time"/>
+                    <story name="Sort/by Column Names" desc="i.e. View only bugs, by person"/>
+                    <story name="Filters" desc="i.e. View only bugs, by person"/>
+                    <story name="Import" desc="bugs"/>
+                    <story name="Calendar" desc="4 weeks view"/>
+                </user-stories>
+            </user-workflow>
+            <user-workflow name='Base Components' priority="10">
+                <user-stories>
+                    <story name="Base Components" desc="base html components have been 100% created" tested='false' func='false' cp="false" response="false">
+                    </story>
+                    <story name="MVP Spec" desc="base html components have been 100% created" tested='false' func='false' cp="false" response="false">
+                    </story>
+                    <story name="HiFi Specs" desc="base html components have been 100% created" tested='false' func='false' cp="false" response="false">
+                    </story>
+                </user-stories>
+            </user-workflow>
+            <user-workflow name='Animation Stuff' priority="11">
+                <user-stories>
+                    <story name="Inspect Animation">
+                    </story>
+                    <story name="Toolbar">
+                    </story>
+                </user-stories>
+            </user-workflow>
+            <user-workflow name='Splash Madlib' url='/#/dev/splash/madlib/' priority="12">
+                <setup type="base">
+                </setup>
+                <user-stories>
+                    <story  type="gesture" desc="User enters splash madlib" func='true' tested='false' cp='false' responsive='false'>
+                        <ui-stream desc="page transitions into guru phase">
+                            <ui-state name="Warp zooms out" desc="Warp zooms out" func="false" >
+                                <bug type='UI' open by="Samir" description="very slow"></bug>
+                            </ui-state>
+                            <ui-state name="Title animates in" desc="Warp zooms out" func="false">
+
+                            </ui-state>
+                        </ui-stream>
+                    </story>
+                    <story type="gesture" desc="User selects splash tag" func='true' tested='false' cp='false' responsive='false'>
+                    </story>
+                </user-stories>
+            <user-workflow/>
+            <user-workflow name='Splash Nav & Utilities' url='/#/dev/splash/nav/' priority="13">
+                <user-stories>
+
+                    <story name="On enter splash">
+                    </story>
+
+                    <story desc="On transition getting started">
+                    </story>
+
+                    <story name="Category Change">
+                    </story>
+
+                    <story name="University Change">
+                    </story>
+
+                    <story name="Sidebar Entrance Transition">
+                    <story name="Sidebar exit Transition">
+                </user-stories>
+            </user>
+            <user-workflow name='Splash Sidebar' priority="14" url='/#/dev/splash/sidebar/'>
+                <setup type="base">
+                </setup>
+                <user-stories>
+                    <story type="transition" desc="sidebar opens" platforms="[desktop, mobile]">
+                        <ui-stream desc="user opens sidebar on mobile" type="mobile">
+                        </ul-stream>
+                        <ui-stream desc="user opens sidebar" type="desktop">
+                            <ui-state gesture='click'>
+                            </ui-state>
+                            <ui-state type="gesture" gesture="hover" name="sidebar icon hover">
+                            </ui-state>
+                            <ui-state type="transition" name="sidebar ">
+                            </ui-state>
+                        </ul-stream>
+                    </story>
+                </user-stories>
+            </user-workflow>
+            <user-workflow name='Splash Device'><user-workflow priority="15" />
+            <user-workflow name='Splash Map' priority="16"><user-workflow/ >
+            <user-workflow name='Splash Tour' priority="17"><user-workflow/>
+        </module>
