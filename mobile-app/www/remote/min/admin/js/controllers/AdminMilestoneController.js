@@ -7,7 +7,8 @@ angular.module('uguru.admin')
   '$window',
   'SpecService',
   '$stateParams',
-  function($scope, $state, $timeout, $window, SpecService, $stateParams) {
+  'UtilitiesService',
+  function($scope, $state, $timeout, $window, SpecService, $stateParams, UtilitiesService) {
 
     var ms = this;
     var allowed_params = ['initial', 'filter']
@@ -57,10 +58,14 @@ angular.module('uguru.admin')
               ms.setActivePerson(params[key].toUpperCase());
           } else {
             var workflows = ms.activeModule.workflows;
-            var valueLower = value.toLowerCase();
+            var value = value.toLowerCase();
+            if (value.indexOf('-') > -1) {
+              var value = UtilitiesService.camelCase(value);
+            }
             for (var i = 0; i < workflows.length; i++) {
               var iWorkflow = workflows[i];
-              var activeIndex = iWorkflow.filter.options.indexOf(valueLower);
+              console.log(value);
+              var activeIndex = iWorkflow.filter.options.indexOf(value);
               if (activeIndex > -1) {
                 iWorkflow.filter.activeIndex = activeIndex;
               }

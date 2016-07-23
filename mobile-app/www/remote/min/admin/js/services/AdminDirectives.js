@@ -101,7 +101,14 @@ angular.module('uguru.admin')
         scope.workflow = {
             id: scope.module.workflows.length + 1,
             name: attr.name,
-            filter: {options: ['none', 'test-ready', 'streams', 'bugs', 'states'], activeIndex: 0},
+            filter: {options: ['stories','testReady', 'streams', 'bugs', 'states'], activeIndex: 0},
+            columns: {
+                bugs: ['name', 'platform'],
+                streams: ['name', 'description', 'num states'],
+                stories: ['name', 'priority', 'streams', 'bugs', 'progress'],
+                testReady: ['name', 'description', 'state', 'stream', 'story'],
+                states: ['name', 'descrpition', 'story', 'stream', 'num bugs', 'test-ready']
+            },
             url: attr.url,
             setup: {
                 base: {},
@@ -217,7 +224,8 @@ angular.module('uguru.admin')
     link : function postLink(scope, element, attr) {
         scope.bug = {
             desc: attr.desc,
-            type: attr.type
+            type: attr.type,
+            by: attr.by
         }
         $timeout(function() {
             scope.$parent.story.bugs.push(scope.bug);

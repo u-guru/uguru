@@ -1,15 +1,10 @@
 <module name='First Time Experience' columns="name,filters,info/options,progress" progress="0000" dimensions="1111" active="SM">
             <user-workflow name='Milestones' priority="9" access="SM">
                 <user-stories>
-<<<<<<< HEAD
-                    <story priority="SM:1|GW:4" name="Ordering" desc="make sure shit is ordered properly"/>
+                    <story priority="SM:1|GW:4|JH:1" name="Ordering" desc="make sure shit is ordered properly"/>
                     <story priority="GW:0.5" name="Fix up the milestones" desc="make sure shit is ordered properly"/>
-=======
-                    <story priority="GW:0.5" name="Milestones" desc="fix up milestones"/>
-                    <story priority="SM:1|GW:4" name="Headers" desc="make sure shit is ordered properly"/>
->>>>>>> 0cd5902b448d12218bf1caf3fe21dda8fb3d7adc
-                    <story priority="SM:2|GW:1" name="Headers" desc="make sure shit is ordered properly"/>
-                    <story priority="SM:10|GW:3" name="Date" desc="some indication of time">
+                    <story priority="SM:2|GW:1|JH:4" name="Headers" desc="make sure shit is ordered properly"/>
+                    <story priority="SM:10|GW:3|JH:0.99" name="Date" desc="some indication of time">
                         <ui-stream name="Date Directive" priority="SM:1|GW:10">
                             <ui-state> </ui-state>
                             <ui-state> </ui-state>
@@ -74,8 +69,8 @@
                 </setup>
                 <user-stories>
                     <story type="gesture" desc="User enters splash madlib" func='true' tested='false' cp='false' responsive='false'>
-                        <ui-stream desc="Page transitions into guru phase">
-                            <ui-state name="Warp zooms out" desc="Warp zooms out" func="false" >
+                        <ui-stream desc="Page transitions into guru face" test-ready="true" tested="false">
+                            <ui-state  name="Warp zooms out" desc="Warp zooms out" func="true">
                                 <bug type='UI' open by="Samir" description="Very slow"/>
                             </ui-state>
 							<ui-state name="Guru head crashes in" desc="Guru head crashes against the screen, then bounces back and readjusts itself"></ui-state>
