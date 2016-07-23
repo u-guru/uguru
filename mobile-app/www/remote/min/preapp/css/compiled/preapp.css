@@ -1629,28 +1629,30 @@
     stroke-dasharray: 53; }
 
 @media screen and (max-width: 768px) {
-  .coach-fill {
-    right: -80px;
-    width: 105px; }
-
-  .splash-hero-content .splash-guru-head {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    width: 120px; }
-    .splash-hero-content .splash-guru-head .splash-hero-guru {
-      width: 120px;
-      height: 120px; }
-      .splash-hero-content .splash-guru-head .splash-hero-guru .guru-head-switcher {
-        margin-top: -80px;
-        margin-left: -80px;
-        width: 160px;
-        height: 160px; }
   .splash-hero-content .splash-adlib h1 {
     line-height: 2; }
   .splash-hero-content .splash-adlib ul {
     margin: -10px 0 5px;
     flex-direction: column;
     height: 250px; } }
+@media screen and (max-height: 736px) and (max-width: 414px) {
+  .coach-fill {
+    top: 85px;
+    right: -80px;
+    width: 105px; }
+
+  .splash-guru-head {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 120px; }
+    .splash-guru-head .splash-hero-guru {
+      width: 120px;
+      height: 120px; }
+      .splash-guru-head .splash-hero-guru .guru-head-switcher {
+        margin-top: -80px;
+        margin-left: -80px;
+        width: 160px;
+        height: 160px; } }
 @media screen and (max-width: 320px) {
   .splash-hero-content .splash-adlib ul {
     height: 200px; } }
@@ -2031,6 +2033,8 @@
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
   position: fixed;
   top: 0;
   left: 0;
@@ -2331,12 +2335,6 @@
         right: auto;
         height: auto; }
 
-  .splash-sidebar-full .splash-sidebar-menu header {
-    height: 70px; }
-    .splash-sidebar-full .splash-sidebar-menu header .splash-logo {
-      height: 100% !important;
-      margin: 0 15px !important; }
-
   .splash-header {
     height: 70px !important; } }
 @media screen and (min-width: 768px) {
@@ -2444,7 +2442,8 @@
       .splash-sidebar-full .splash-sidebar-menu header .splash-logo {
         height: 50px !important;
         margin: 5px;
-        width: inherit; }
+        width: inherit;
+        padding: 2px; }
     .splash-sidebar-full .splash-sidebar-menu div {
       width: 100%; }
     .splash-sidebar-full .splash-sidebar-menu ul {
@@ -2586,6 +2585,13 @@
     .splash-sidebar-full .splash-sidebar-content #desktop-guru-onboarding .desktop-header {
       display: none; }
 
+@media screen and (min-width: 860px) {
+  .splash-sidebar-full .splash-sidebar-menu header {
+    height: 70px; }
+    .splash-sidebar-full .splash-sidebar-menu header .splash-logo {
+      padding: 0 !important;
+      height: 100% !important;
+      margin: 0 15px !important; } }
 #cta-modal-sidebar {
   -webkit-transition: all 150ms ease-in-out;
   -moz-transition: all 150ms ease-in-out;

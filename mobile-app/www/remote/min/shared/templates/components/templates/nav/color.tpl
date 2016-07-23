@@ -1,16 +1,13 @@
 
 <div class="dropdown-color"
-    init-with="prop:[opacity:1]"
-
-	>
+    init-with="prop:[opacity:1]">
     <!-- ng-mouseenter="mouseEnter($event, $index, 500)" ng-mouseover="mouseOver($event, $index, 500)" ng-mouseleave="mouseLeave($event, $index)" -->
 	<div init-with='prop:[visibility:hidden]'></div>
     <a class="color" ng-click="toggle($event)" ng-class='{"active": dropdown.active }' on-init init-with="prop:[opacity:1]"
-    on-mouse-enter="s:[{{prefix}}-dropdown-mouse-enter:public|prop:[opacity:0.5]"
-    on-mouse-enter-delay="500"
-    on-mouse-leave="s:[{{prefix}}-dropdown-mouse-enter:public|prop:[opacity:1]]"
-    on-mouse-leave-delay="500">
-		<!-- @samir -->
+	    on-mouse-enter="s:[{{prefix}}-dropdown-mouse-enter:public|prop:[opacity:0.5]"
+	    on-mouse-enter-delay="500"
+	    on-mouse-leave="s:[{{prefix}}-dropdown-mouse-enter:public|prop:[opacity:1]]"
+	    on-mouse-leave-delay="500">
 		<div class="null"
 			init-with="prop:[transform:scaleX(0), transition:all 250ms ease-out 450ms]"
 			when-dropdown-init="trigger:[on-enter]"
@@ -56,7 +53,6 @@
             <li ng-if='$index !== dropdown.selectedIndex' ng-repeat='option in dropdown.options'>
 				<div></div><div></div>
 				<div></div><div></div>
-
                 <!-- ng-mouseenter="mouseEnter($event, 'send', prefix + '-dropdown-hover', $index)"
                 ng-mouseover="mouseOver($event, 'send', prefix + '-dropdown-hover', $index)" -->
                 <a class="color" ng-click="click(option, $index)"

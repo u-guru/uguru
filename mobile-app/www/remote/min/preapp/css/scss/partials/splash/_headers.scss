@@ -339,6 +339,7 @@
 #splash-hero-nav-mobile {
 	@include flex;
 	@include flex-wrap;
+	@include prefix(align-content, flex-start, webkit);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -686,17 +687,6 @@
 				@include reset-pos;
 				right: auto;
 				height: auto;
-			}
-		}
-	}
-	.splash-sidebar-full {
-		.splash-sidebar-menu {
-			header {
-				height: 70px;
-				.splash-logo {
-					height: 100%!important;
-					margin: 0 15px!important;
-				}
 			}
 		}
 	}
