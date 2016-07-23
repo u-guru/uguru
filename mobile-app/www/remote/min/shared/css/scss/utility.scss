@@ -1706,6 +1706,161 @@ button, input, textarea {
 	background: transparent!important;
 }
 
+[class*="bg-academic-slate"] {
+	background: mix($cerise, $slate, 20%)!important;
+	&[class*="-05p"] {
+		background: rgba(mix($cerise, $slate, 20%), .05)!important;
+	}
+	&[class*="-10p"] {
+		background: rgba(mix($cerise, $slate, 20%), .1)!important;
+	}
+	&[class*="-20p"] {
+		background: rgba(mix($cerise, $slate, 20%), .2)!important;
+	}
+	&[class*="-25p"] {
+		background: rgba(mix($cerise, $slate, 20%), .25)!important;
+	}
+	&[class*="-50p"] {
+		background: rgba(mix($cerise, $slate, 20%), .5)!important;
+	}
+	&[class*="-75p"] {
+		background: rgba(mix($cerise, $slate, 20%), .75)!important;
+	}
+	&[class*="-80p"] {
+		background: rgba(mix($cerise, $slate, 20%), .8)!important;
+	}
+	&[class*="-90p"] {
+		background: rgba(mix($cerise, $slate, 20%), .9)!important;
+	}
+	&[class*="-95p"] {
+		background: rgba(mix($cerise, $slate, 20%), .95)!important;
+	}
+}
+
+[class*="bg-baking-slate"] {
+	background: mix($gold, $slate, 20%)!important;
+	&[class*="-05p"] {
+		background: rgba(mix($gold, $slate, 20%), .05)!important;
+	}
+	&[class*="-10p"] {
+		background: rgba(mix($gold, $slate, 20%), .1)!important;
+	}
+	&[class*="-20p"] {
+		background: rgba(mix($gold, $slate, 20%), .2)!important;
+	}
+	&[class*="-25p"] {
+		background: rgba(mix($gold, $slate, 20%), .25)!important;
+	}
+	&[class*="-50p"] {
+		background: rgba(mix($gold, $slate, 20%), .5)!important;
+	}
+	&[class*="-75p"] {
+		background: rgba(mix($gold, $slate, 20%), .75)!important;
+	}
+	&[class*="-80p"] {
+		background: rgba(mix($gold, $slate, 20%), .8)!important;
+	}
+	&[class*="-90p"] {
+		background: rgba(mix($gold, $slate, 20%), .9)!important;
+	}
+	&[class*="-95p"] {
+		background: rgba(mix($gold, $slate, 20%), .95)!important;
+	}
+}
+
+[class*="bg-photography-slate"] {
+	background: mix($moola, $slate, 20%)!important;
+	&[class*="-05p"] {
+		background: rgba(mix($moola, $slate, 20%), .05)!important;
+	}
+	&[class*="-10p"] {
+		background: rgba(mix($moola, $slate, 20%), .1)!important;
+	}
+	&[class*="-20p"] {
+		background: rgba(mix($moola, $slate, 20%), .2)!important;
+	}
+	&[class*="-25p"] {
+		background: rgba(mix($moola, $slate, 20%), .25)!important;
+	}
+	&[class*="-50p"] {
+		background: rgba(mix($moola, $slate, 20%), .5)!important;
+	}
+	&[class*="-75p"] {
+		background: rgba(mix($moola, $slate, 20%), .75)!important;
+	}
+	&[class*="-80p"] {
+		background: rgba(mix($moola, $slate, 20%), .8)!important;
+	}
+	&[class*="-90p"] {
+		background: rgba(mix($moola, $slate, 20%), .9)!important;
+	}
+	&[class*="-95p"] {
+		background: rgba(mix($moola, $slate, 20%), .95)!important;
+	}
+}
+
+[class*="bg-tech-slate"] {
+	background: mix($azure, $slate, 20%)!important;
+	&[class*="-05p"] {
+		background: rgba(mix($azure, $slate, 20%), .05)!important;
+	}
+	&[class*="-10p"] {
+		background: rgba(mix($azure, $slate, 20%), .1)!important;
+	}
+	&[class*="-20p"] {
+		background: rgba(mix($azure, $slate, 20%), .2)!important;
+	}
+	&[class*="-25p"] {
+		background: rgba(mix($azure, $slate, 20%), .25)!important;
+	}
+	&[class*="-50p"] {
+		background: rgba(mix($azure, $slate, 20%), .5)!important;
+	}
+	&[class*="-75p"] {
+		background: rgba(mix($azure, $slate, 20%), .75)!important;
+	}
+	&[class*="-80p"] {
+		background: rgba(mix($azure, $slate, 20%), .8)!important;
+	}
+	&[class*="-90p"] {
+		background: rgba(mix($azure, $slate, 20%), .9)!important;
+	}
+	&[class*="-95p"] {
+		background: rgba(mix($azure, $slate, 20%), .95)!important;
+	}
+}
+
+[class*="bg-household-slate"] {
+	background: mix($cobalt, $slate, 20%)!important;
+	&[class*="-05p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .05)!important;
+	}
+	&[class*="-10p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .1)!important;
+	}
+	&[class*="-20p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .2)!important;
+	}
+	&[class*="-25p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .25)!important;
+	}
+	&[class*="-50p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .5)!important;
+	}
+	&[class*="-75p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .75)!important;
+	}
+	&[class*="-80p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .8)!important;
+	}
+	&[class*="-90p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .9)!important;
+	}
+	&[class*="-95p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .95)!important;
+	}
+}
+
 [class*="bg-white"] {
 	background: white;
 	color: white;
