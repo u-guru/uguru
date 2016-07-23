@@ -61,7 +61,7 @@
 									{{column}}
 								</div>
 							</li>
-							<li class='weight-500 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x text-center flex-stretch' ng-repeat='story in workflow.stories'>
+							<li class='weight-500 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x text-center flex-stretch' ng-repeat='story in workflow.stories track by $index'>
 								<div class='ugrid-5 p05-grid txt-3 full-x'>
 									<div class='text-left weight-600'>
 										{{story.name}}

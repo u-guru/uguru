@@ -114,7 +114,7 @@ angular.module('uguru.admin')
             scope.workflow.active = true;
         }
         scope.$watch('module.activePerson', function(new_person) {
-            // sortWorkflows();
+            scope.module.workflows.sort(function(w1, w2) {return w2.priority - w1.priority}).reverse();
         })
 
         function sortWorkflows() {
@@ -166,7 +166,7 @@ angular.module('uguru.admin')
     scope: true,
     link : function(scope, element, attr) {
         scope.story = {
-            name: attr.name,
+            name: attr.name ||attr.desc,
             desc:attr.desc,
             progress: null,
             func: attr.func === 'true',
@@ -177,6 +177,7 @@ angular.module('uguru.admin')
             priority: parsePriority(attr.priority) || {SM:100},
             bugs: []
         }
+        if (!attr.name) scope.story.desc = '';
         // scope.$watchCollection('story', function(story, old_story) {
         //     scope.story.bugsLength
         // })
