@@ -13,6 +13,7 @@ angular.module('uguru.admin')
     ms.typeIndex = 0;
     ms.modules = [];
     ms.toggleAll = toggleAll;
+    ms.setActivePerson = setActivePerson;
 
 
     // $scope.$watch('root.milestones', function(new_val) {
@@ -39,6 +40,14 @@ angular.module('uguru.admin')
     function toggleAll(module) {
       for (var i = 0; i < module.workflows.length; i++) {
         module.workflows[i].active = false;
+      }
+    }
+
+    function setActivePerson(initial) {
+      ms.activeModule.activePerson = initial;
+      $timeout(function() {$scope.$apply();})
+      for (var i = 0; i < ms.activeModule.workflows; i++) {
+
       }
     }
 

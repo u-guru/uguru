@@ -1,13 +1,31 @@
-<module name='First Time Experience' columns="name,func,tested,hifi,reference" progress="0000" dimensions="1111">
+<module name='First Time Experience' columns="name,func,tested,hifi,reference" progress="0000" dimensions="1111" active="GW">
             <user-workflow name='Milestones' priority="9">
                 <user-stories>
-                    <story name="Ordering" desc="make sure shit is ordered properly"/>
-                    <story name="Headers" desc="make sure shit is ordered properly"/>
-                    <story name="Date" desc="some indication of time"/>
+                    <story priority="SM:1|GW:4" name="Ordering" desc="make sure shit is ordered properly"/>
+                    <story priority="SM:2|GW:1" name="Headers" desc="make sure shit is ordered properly"/>
+                    <story priority="SM:10|GW:3" name="Date" desc="some indication of time">
+                        <ui-stream name="Date Directive" priority="SM:1|GW:10">
+                            <ui-state> </ui-state>
+                            <ui-state> </ui-state>
+                            <ui-state> </ui-state>
+                            <ui-state> </ui-state>
+                        </ui-stream>
+                        <ui-stream name="Week Directive" priority="SM:5|GW:13">
+                            <ui-state> </ui-state>
+                            <ui-state> </ui-state>
+                            <ui-state> </ui-state>
+                        </ui-stream>
+                        <ui-stream name="Calendar Directive" priority="GW:10">
+                            <ui-state> </ui-state>
+                            <ui-state> </ui-state>
+                            <ui-state> </ui-state>
+                        </ui-stream>
+                    </story>
                     <story name="Sort/by Column Names" desc="i.e. View only bugs, by person"/>
                     <story name="Filters" desc="i.e. View only bugs, by person"/>
                     <story name="Import" desc="bugs"/>
                     <story name="Calendar" desc="4 weeks view"/>
+                    <story name="Priority" desc="prioritize by story/ui-streams/"/>
                 </user-stories>
             </user-workflow>
             <user-workflow name='Base Components' priority="10">
@@ -40,6 +58,9 @@
 							<ui-state name="Guru head crashes in" desc="Guru head crashes against the screen, then bounces back and readjusts itself"></ui-state>
                             <ui-state name="Title animates in" desc="Warp zooms out" func="false">
 								<bug type="" open by="Gabrielle" description="Madlib header letters overlap with each other on smallest screen size, needs tiny mobile attr." platform="mobile"/>
+                            </ui-state>
+                            <ui-state name="User switches category">
+
                             </ui-state>
 							<ui-state name="Tags animate in" desc="Tags fall in from the warp in a random, staggered manner, then readjust themselves"></ui-state>
                         </ui-stream>
