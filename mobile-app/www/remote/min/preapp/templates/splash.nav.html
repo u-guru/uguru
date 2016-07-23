@@ -217,10 +217,11 @@
 					when-mobile-switch-exit="p:[op:0, t:all 500ms ease-out]:delay-250 | s:[mobile-bg-exit:public:delay-1000]">University</h1>
                 <ul>
                     <li ng-repeat='university in nav.universitiesDropdown.options' class='txt-white weight-600'
+						ng-class="{'delay-450':university.id === splash.university.id}"
 						init-with="p-op"
 						when-mobile-switch-init="p:[tr:translateY(0)] | a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
-						when-mobile-switch-exit="p:[op:0:delay-250, tr:translateY(15%), t:all 500ms ease-out]:delay-250">
-                        <a ng-class="{'active delay-450':university.id === splash.university.id}"
+						when-mobile-switch-exit="p:[op:0:delay-250, tr:translateY(15%), t:opacity 450ms ease-out#transform 250ms ease-out]:delay-250">
+                        <a ng-class="{'active':university.id === splash.university.id}"
 							ng-click='nav.universitiesDropdown.onOptionClick(university, $index)'
 							init-with="border-color: {{university.school_color_dark}}"
 							style="border-color: {{university.school_color_dark}}"
