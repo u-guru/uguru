@@ -32,17 +32,23 @@
                 <setup type="base">
                 </setup>
                 <user-stories>
-                    <story  type="gesture" desc="User enters splash madlib" func='true' tested='false' cp='false' responsive='false'>
+                    <story type="gesture" desc="User enters splash madlib" func='true' tested='false' cp='false' responsive='false'>
                         <ui-stream desc="page transitions into guru phase">
                             <ui-state name="Warp zooms out" desc="Warp zooms out" func="false" >
-                                <bug type='UI' open by="Samir" description="very slow"></bug>
+                                <bug type='UI' open by="Samir" description="Very slow"></bug>
                             </ui-state>
                             <ui-state name="Title animates in" desc="Warp zooms out" func="false">
-
+								<bug type="" open by="Gabrielle" description="Madlib header letters overlap with each other on smallest screen size, needs tiny mobile attr." platform="mobile"></bug>
                             </ui-state>
                         </ui-stream>
                     </story>
                     <story type="gesture" desc="User selects splash tag" func='true' tested='false' cp='false' responsive='false'>
+						<ui-stream>
+							<ui-state name="User selects one splash tag" desc="" func="true">
+								<bug type="" open by="Gabrielle" description="Tags need .active added when selected and removed when deselected - if added currently, tags are selected properly but don’t translate back when another tag is clicked." platform=""></bug>
+								<bug type="" open by="Gabrielle" description="Row 2 Tag 3 doesn't move back into place after being deselected." platform=""></bug>
+							</ui-state>
+						</ui-stream>
                     </story>
                 </user-stories>
             <user-workflow/>
@@ -57,13 +63,23 @@
 
                     <story name="Category">
                         <ui-stream name="Category Dropdown Desktop">
+							<ui-state name="Hover over Dropdown">
+								<bug type="animation" open by="Gabrielle" description="Hover needs to be put back in" platform="desktop"></bug>
+							</ui-state>
                             <ui-state name='Close Dropdown'>
-                                <bug by="sm" name="Close Dropdown when Click Outside of it" platform="desktop" />
+                                <bug by="Samir" name="Close dropdown when click outside of it" platform="desktop" />
+								<bug type="" open by="Gabrielle" description="Tags flicker when switching categories" platform=""></bug>
+								<bug type="" open by="Gabrielle" description="Mobile switcher does not work as expected - the onExit animates out all at the same time, then the selected university/category reappears and animates out again. In Jeselle's version, the previous selection was prioritized with the delay over the current selection." platform="mobile"></bug>
                             </ui-state>
                         </ui-stream>
                     </story>
 
                     <story name="University Change">
+						<ui-stream name="University Dropdown Desktop">
+							<ui-state name="Open Dropdown">
+								<bug type="" open by="Gabrielle" description="Search link needs to be separated from both the mobile and desktop dropdowns" platform=""></bug>
+							</ui-state>
+						</ui-stream>
                     </story>
 
                     <story name="Sidebar Entrance Transition">
