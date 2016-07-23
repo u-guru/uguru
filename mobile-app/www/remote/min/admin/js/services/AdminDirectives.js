@@ -183,7 +183,7 @@ angular.module('uguru.admin')
         // })
         $timeout(function() {
             scope.$parent.stories.push(scope.story)
-            scope.$apply();
+            // scope.$apply();
             scope.story.priority && updateUserStoriesPriority(scope.$parent, scope.story, scope.module.activePerson);
 
         })
