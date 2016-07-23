@@ -9,8 +9,16 @@
         <header class='splash-header' on-init="t-enter">
             <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
 				init-default
+
+				when-category-dropdown-mouse-enter="p:[op:0.25:delay-400, t:all 250ms ease-in-out]"
+				when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+
 				when-category-dropdown-toggle-on="p:[op:0.25:delay-400, t:all 250ms ease-in-out]"
 				when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+
+				when-university-dropdown-mouse-enter="p:[op:0.1:delay-400, t:all 250ms ease-in-out]"
+				when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+
 				when-university-dropdown-toggle-on="p:[op:0.1:delay-400, t:all 250ms ease-in-out]"
 				when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"></a>
             <div class="right">
@@ -22,7 +30,9 @@
                             init-with="p-op"
                             when-nav-init="p:[op:1] | send:[dropdown-init:children:delay-750]"
                             states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]"
-                            hover-data="name, hex_color"
+
+							hover-data="name, hex_color"
+							click-data="name, hex_color"
 
                             mouse-enter-data="name, hex_color"
                             mouse-enter-delay="500"
@@ -30,27 +40,34 @@
                             mouse-over-delay="1000"
                             mouse-over-data="name, hex_color"
 
-                            mouse-leave-delay="500"
+                            mouse-leave-delay="250"
                             mouse-leave-data="name, hex_color"
 
                             toggle-on-data="name, hex_color"
                             toggle-off-data="name, hex_color"
-                            click-data="name, hex_color"
-
-                            when-category-dropdown-mouse-enter="p:[op:1: t:all 250ms ease-in-out]"
-	                    	when-category-dropdown-toggle-on="p:[op:1: t:all 250ms ease-in-out]"
 
 		                    when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 			                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
-							
+
 		                    when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
-							when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]">
+							when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+
+							when-category-dropdown-mouse-enter="p:[op:1, t:all 250ms ease-in-out]"
+							when-category-dropdown-toggle-on="p:[op:1, t:all 250ms ease-in-out]">
                         </dropdown>
                         <h2 init-with="p-op"
 							when-nav-init="t-enter"
 							on-enter="p:[op:1, t:all 1000ms ease-out]:delay-1000"
+
+							when-category-dropdown-mouse-enter="p:[op:0.25:delay-50, t:all 250ms ease-in-out]"
+							when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+
 							when-category-dropdown-toggle-on="p:[op:0.25:delay-50, t:all 250ms ease-in-out]"
 							when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+
+							when-university-dropdown-mouse-enter="p:[op:0.1:delay-50, t:all 250ms ease-in-out]"
+							when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+
 							when-university-dropdown-toggle-on="p:[op:0.1:delay-50, t:all 250ms ease-in-out]"
 							when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]">@</h2>
                         <dropdown type="color" ng-model="nav.universitiesDropdown" color-key='["school_color_dark", "school_color_one"]'
@@ -58,15 +75,30 @@
 							init-with="p-op"
 							when-nav-init="p:[o-1] | send:[dropdown-init:children:delay-1250]"
 							states="[hover, mouse-enter, mouse-leave, toggle-on, toggle-off, click]"
+
                             hover-data="name, school_color_dark"
+							click-data="name, school_color_dark"
+
                             mouse-enter-data="name, school_color_dark"
+							mouse-enter-delay="500"
+
+							mouse-over-delay="1000"
+							mouse-over-data="name, school_color_dark"
+
+							mouse-leave-delay="250"
                             mouse-leave-data="name, school_color_dark"
+
                             toggle-on-data="name, school_color_dark"
                             toggle-off-data="name, school_color_dark"
-                            click-data="name, school_color_dark"
+
+							when-category-dropdown-mouse-enter="p:[op:0.25:delay-100, t:all 250ms ease-in-out]"
+							when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+
 		                    when-category-dropdown-toggle-on="p:[op:0.25:delay-100, t:all 250ms ease-in-out]"
 							when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
-		                    when-university-dropdown-toggle-on="p:[op:1, t:all 250ms ease-in-out]"> </dropdown>
+
+							when-university-dropdown-mouse-enter="p:[op:1, t:all 250ms ease-in-out]"
+							when-university-dropdown-toggle-on="p:[op:1, t:all 250ms ease-in-out]"> </dropdown>
                     </div>
                 </div>
 				<div class="splash-hero-nav mobile" mobile
@@ -109,10 +141,19 @@
                 </a>
 				<a class="powerups-link icon-round-stroke desktop" desktop
 					init-default
+
+					when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
+					when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+
 					when-category-dropdown-toggle-on="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
 					when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+
+					when-university-dropdown-mouse-enter="p:[op:0.1:delay-50, t:all 250ms ease-in-out]"
+					when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+
 					when-university-dropdown-toggle-on="p:[op:0.1:delay-50, t:all 250ms ease-in-out]"
 					when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+
 					on-click="send:[powerups-clicked] | class:[powerups-link:add]">
                     <div class="full-xy flex-center relative">
 						<svg viewBox="0 0 100 100">
@@ -157,10 +198,19 @@
 				</a>
 				<a class="sidebar-link icon-round-stroke desktop" desktop
 					init-default
+
+					when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
+					when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+
 					when-category-dropdown-toggle-on="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
 					when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+
+					when-university-dropdown-mouse-enter="p:[op:0.1:delay-100, t:all 250ms ease-in-out]"
+					when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+
 					when-university-dropdown-toggle-on="p:[op:0.1:delay-100, t:all 250ms ease-in-out]"
 					when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+
 					on-click="send:[sidebar-icon-clicked:public]">
 					<div class="full-xy flex-center relative">
 						<svg viewBox="0 0 100 100">

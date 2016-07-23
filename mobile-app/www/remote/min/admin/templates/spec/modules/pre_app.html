@@ -1,8 +1,13 @@
 <module name='First Time Experience' columns="name,filters,info/options,progress" progress="0000" dimensions="1111" active="SM">
             <user-workflow name='Milestones' priority="9" access="SM">
                 <user-stories>
+<<<<<<< HEAD
                     <story priority="SM:1|GW:4" name="Ordering" desc="make sure shit is ordered properly"/>
                     <story priority="GW:0.5" name="Fix up the milestones" desc="make sure shit is ordered properly"/>
+=======
+                    <story priority="GW:0.5" name="Milestones" desc="fix up milestones"/>
+                    <story priority="SM:1|GW:4" name="Headers" desc="make sure shit is ordered properly"/>
+>>>>>>> 0cd5902b448d12218bf1caf3fe21dda8fb3d7adc
                     <story priority="SM:2|GW:1" name="Headers" desc="make sure shit is ordered properly"/>
                     <story priority="SM:10|GW:3" name="Date" desc="some indication of time">
                         <ui-stream name="Date Directive" priority="SM:1|GW:10">
@@ -102,32 +107,33 @@
                     <story desc="On transition getting started">
                     </story>
 
-                    <story name="Category">
-                        <ui-stream name="Desktop user selects a category">
-							<ui-state name="Mouse enter dropdown" desc="User's mouse enters the dropdown space and the guru's hair changes color if different from the current" func="true">
-								<bug type="static" open by="Gabrielle" flag="[Jeselle, Gabrielle]" description="Hair needs to be diluted version of category colors" platform="all" time="15" reference="true" reference-name="Guru hair color"/>
-								<bug type="functional" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Variable for category name only works once, i.e. guru-fill-^name outputs guru-fill-academic but afterwards keeps outputting guru-fill-^name" platform="all" time="15" reference="true" reference-name="Category name variable"/>
+                    <story name="Category" priority="GW:1">
+                        <ui-stream name="Desktop user selects a category" priority="GW:1">
+							<ui-state name="Mouse enter dropdown" desc="User's mouse enters the dropdown space and the guru's hair changes color if different from the current" func="true" priority="GW:1">
+								<bug type="static" open by="Gabrielle" flag="[Jeselle, Gabrielle]" description="Hair needs to be diluted version of category colors" platform="all" time="15" reference="true" reference-name="Guru hair color"  priority="GW:2"/>
+								<bug type="functional" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Variable for category name only works once, i.e. guru-fill-^name outputs guru-fill-academic but afterwards keeps outputting guru-fill-^name" platform="all" time="15" reference="true" reference-name="Category name variable" priority="GW:1"/>
 							</ui-state>
 
-							<ui-state name="Mouse over dropdown" desc="Staggered opacity drop starting from the category dropdown">
+							<ui-state name="Mouse over dropdown" desc="Staggered opacity drop starting from the category dropdown" priority="GW:2">
 								<bug type="animation" open by="Gabrielle" flag="[Gabrielle]" description="Hover needs to be put back in" platform="desktop" time="25"/>
 							</ui-state>
 
-							<ui-state name="Click on dropdown" desc="Staggered opacity drop if not already triggered; dropdown options slideInDown; guru head tilts">
+							<ui-state name="Click on dropdown" desc="Staggered opacity drop if not already triggered; dropdown options slideInDown; guru head tilts" priority="GW:3">
 								<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Would prefer to have the option to stagger color.tpl options" url="http://codepen.io/teamuguru/pen/e1d55abb071ad8db0845cefd76f7c48f"/>
 							</ui-state>
 
-							<ui-state name="Mouse enter dropdown option" desc="Guru hair changes to category color">
+							<ui-state name="Mouse enter dropdown option" desc="Guru hair changes to category color" priority="GW:4">
 								<bug reference-from="Guru hair color"/>
 								<bug reference-from="Category name variable"/>
-								<bug type="animation" open by="Gabrielle" flag="[Gabrielle]" description="Remove opacity mouseover example from color.tpl" time="5"/>
+								<bug type="animation" open by="Gabrielle" flag="[Gabrielle]" description="Remove opacity mouseover example from color.tpl" time="5" priority="GW:3"/>
 							</ui-state>
 
-							<ui-state name="Click on dropdown option" desc="Dropdown closes; guru switches out, tags switch out">
+							<ui-state name="Click on dropdown option" desc="Dropdown closes; guru switches out, tags switch out" priority="SM:1">
 								<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Tags flicker when switching categories - appear and then re-animate in" platform="all"/>
 							</ui-state>
 
-                            <ui-state name="Close dropdown" desc="Dropdown closes">
+                            <ui-state name="Close dropdown" desc="Dropdown closes" priority="SM:2">
+								<bug type="animation" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Mouse-leave doesn't work" platform="desktop"/>
                                 <bug type="functional" open by="Samir" flag="[Samir]" name="Close dropdown when click outside of it" platform="desktop"/>
                             </ui-state>
                         </ui-stream>
@@ -135,8 +141,8 @@
 						<!-- <bug type="functional" open by="Gabrielle" flag="[Samir]" description="Mobile switcher does not work as expected - the onExit animates out all at the same time, then the selected university/category reappears and animates out again. In Jeselle's version, the previous selection was prioritized with the delay over the current selection." platform="mobile"/> -->
                     </story>
 
-                    <story name="University Change">
-						<ui-stream name="Desktop user selects a university">
+                    <story name="University Change" priority="GW:2">
+						<ui-stream name="Desktop user selects a university" priority="GW:1">
 							<ui-state name="Open dropdown">
 								<bug type="" open by="Gabrielle" description="Search link needs to be separated from both the mobile and desktop dropdowns" platform=""/>
 							</ui-state>
