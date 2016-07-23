@@ -55,23 +55,36 @@ angular.module('uguru.admin')
         }
     }
 }])
-.directive('module', [function () {
+.directive('module', ['$timeout', function ($timeout) {
   return {
     restrict: 'E',
+    replace: true,
     scope: true,
     controller: function($scope) {
       $scope.module = {name: '', dimensions:'', workflows: []};
-      $scope.$watchCollection('module',
-        function(m) {
-            console.log(m.workflows.length, 'workflows');
-        });
     },
     link : function preLink(scope, element, attr, ctrl, transcludeFn) {
         ctrl.element = element;
         if (!attr.name || !attr.dimensions) return;
+        if (attr.columns) {
+            scope.module.columns = attr.columns.split(',')
+        }
         scope.module.name = attr.name
         scope.module.dimensions = attr.dimensions;
-        // scope.$parent.root.milestones.push(scope.module);
+        scope.module.toggleActivate = toggleActivate;
+        $timeout(function() {
+            scope.$parent.ms.modules.push(scope.module)
+            scope.$parent.ms.activeModule = scope.module
+        })
+        function toggleActivate(workflow, module) {
+            workflow.active = !workflow.active;
+            for (var i = 0; i < module.workflows.length; i++) {
+                var indexWorkflow = module.workflows[i];
+                if (module.workflow !== indexWorkflow) {
+                    indexWorkflow.active = false;
+                }
+            }
+        }
      }
     }
 }])
@@ -83,16 +96,27 @@ angular.module('uguru.admin')
     scope: true,
     link: function preLink(scope, element, attr, ctrl) {
         if (!attr.name) return;
+
         scope.workflow = {
             id: scope.module.workflows.length + 1,
             name: attr.name,
+            url: attr.url,
             setup: {
                 base: {},
                 post: {},
             },
-            stories:[]
+            stories:[],
+            priority: parseFloat(attr.priority || 100.0),
+            toggleActivate: scope.module.toggleActivate
+        }
+        if (!scope.module.workflows.length) {
+            scope.workflow.active = true;
         }
         scope.module.workflows.push(scope.workflow);
+        scope.module.workflows.sort(function(w1, w2) {return w2.priority - w1.priority}).reverse();
+        scope.module.workflows.forEach(function(option, index) {option.pID = index + 1})
+        // scope.module.workflows.reverse()
+
      }
     }
 }])
@@ -102,6 +126,9 @@ angular.module('uguru.admin')
     restrict: 'E',
     require: '^module',
     scope: true,
+    controller: function($scope) {
+        $scope.workflow = $scope.$parent.workflow;
+    },
     link : function(scope, element, attr) {
         // scope.stories = scope.$parent.workflow;
         scope.stories = [];
@@ -119,7 +146,20 @@ angular.module('uguru.admin')
     require: '^module',
     scope: true,
     link : function(scope, element, attr) {
-        scope.story = {name: attr.name, desc:attr.desc, progress: null, func: attr.func === 'true', uiStreams: ''}
+        scope.story = {
+            name: attr.name,
+            desc:attr.desc,
+            progress: null,
+            func: attr.func === 'true',
+            tested: attr.tested === 'true',
+            cross_platform: attr.crossPlatform === 'true',
+            responsive: attr.responsive === 'true',
+            streams: [],
+            bugs: []
+        }
+        // scope.$watchCollection('story', function(story, old_story) {
+        //     scope.story.bugsLength
+        // })
         $timeout(function() {
             scope.$parent.stories.push(scope.story)
             scope.$apply();
@@ -127,15 +167,53 @@ angular.module('uguru.admin')
      }
     }
 }])
-.directive('setup', [function () {
+.directive('uiStream', ['$timeout', function ($timeout) {
   return {
     replace: true,
     restrict: 'E',
-    require: '^module',
+    require: ['^module'],
+    scope: true,
+    link : function postLink(scope, element, attr) {
+        scope.stream = {
+            desc: attr.desc
+        }
+        $timeout(function() {
+            scope.$parent.story.streams.push(scope.stream);
+        })
+
+     }
+    }
+}])
+.directive('bug', ['$timeout', function ($timeout) {
+  return {
+    replace: true,
+    restrict: 'E',
+    require: ['^module'],
+    scope: true,
+    link : function postLink(scope, element, attr) {
+        scope.bug = {
+            desc: attr.desc,
+            type: attr.type
+        }
+        $timeout(function() {
+            scope.$parent.story.bugs.push(scope.bug);
+        })
+
+     }
+    }
+}])
+.directive('setup', ['$timeout', function ($timeout) {
+  return {
+    replace: true,
+    restrict: 'E',
+    require: ['^module'],
     scope: false,
-    link : function(scope, element, attr) {
-        if (!attr.name) return;
-        scope.module.userExp.push({id: scope.module.userExp.length + 1, name: attr.name})
+    link : function postLink(scope, element, attr) {
+        var type = attr.type;
+        scope[type] = {components:[], directives: [], specs: []}
+        $timeout(function() {
+            scope.workflow.setup.base = scope[type];
+        })
      }
     }
 }])

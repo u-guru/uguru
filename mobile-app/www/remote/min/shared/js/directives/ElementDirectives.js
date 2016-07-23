@@ -423,61 +423,40 @@ angular.module('uguru.shared.directives')
       var delay = attr.drawDelay || 0;
       var totalFrames = SVGService.computeDrawDuration(attr.drawDuration) || 60;
       var svgPaths = element[0].querySelectorAll('path:not([draw]):not([draw-ignore]), line:not([draw]):not([draw-ignore]), circle:not([draw]):not([draw-ignore]), rect:not([draw]):not([draw-ignore]), polygon:not([draw]):not([draw-ignore])');
-      // var pathLengths = new Array();
-      // var drawShapesDelay = parseInt(attr.drawShapesDelay) || 0;
-      // for (var i = 0; i < svgPaths.length; i++) {
-      //   var indexPathElem = svgPaths[i];
 
-      //   var pathLength = SVGService.getTotalPathLength(indexPathElem);
-
-      //   // var pathLength = indexPathElem.getTotalLength();
-      //   pathLengths[i] = pathLength;
-      //   indexPathElem.style.strokeDasharray = '';
-      //   indexPathElem.style.strokeDashoffset = pathLength;
-      // }
       $timeout(function() {
         element[0].classList.add('activate');
-      }, 1000)
+      }, 2000)
       scope.$watch(function() {
         return element.attr('class');
       }, function(new_value) {
         if (new_value && new_value.indexOf('activate') > -1) {
             if (element[0].nodeName !== 'path') {
               var path = SVGService.svgShapeToPath(element[0])[0];
-              var elem = path
-              var pathAttr = path.getAttribute('d');
-              element[0].parentNode.appendChild(elem);
-              elem.classList.add('absolute', 'full-xy')
-              elem.parentNode.classList.add('relative');
-              elem.setAttribute('d', pathAttr);
+              element[0].parentNode.replaceChild(path, element[0]);
+            } else {
+              var path = element[0];
             }
-            // path = document.createElement('path');
-            // var pathStr = 'M 18 2 H 266 A16,16,0,0,1,282,18 V 70 A 16,16,0,0,1,266,86 H 18 A16,16,0,0,1,2,70 V 18 A 16,16,0,0,1,18,2 Z';
-            // path.setAttribute('d', pathStr.split(',').join(' '))
-            // // element[0].appendChild(path);
-            // // path.setAttribute('d', 'M18,2 H266 A16,16,0,0,1,282,18 V70 A16,16,0,0,1,266,86 H18 A16,16,0,0,1,2,70 V18 A16,16,0,0,1,18,2 Z');
-            // $timeout(function() {
-            //   scope.$apply()
-            //   console.log(pathStr.split(',').join(' '))
-            // }, 0)
 
-
-            // var pathNew = document.createElement('path');
-            // pathNew.setAttribute('d', path.getAttribute('d'));
-
-
-
-
-
+            var pathLength = path.getTotalLength()
+            var _default = path.style.fill;
+            path.style.fill = 'none';
+            path.style.strokeDashoffset = pathLength;
+            path.style.strokeDasharray = pathLength;
+            path.style.webkitTransition = 'all 3000ms ease-out';
+            $timeout(function() {
+              path.style.strokeDashoffset = 0;
+              path.style.strokeDasharray = 0;
+              path.style.fill = _default;
+              // path.style.strokeWidth = '5';
+              // path.style.fill = defaultPath;
+            }, 1000)
+            // SVGService.drawOneShape(path, 50, pathLength, pathLength)
 
 
 
           // pathLength = SVGService.getTotalPathLength(path[0]);
-          // SVGService.drawOneShape(path, 0, path.getTotalLength(), path.getTotalLength())
-          // element[0].style.strokeWidth = '5';
-          // element[0].style.fill = 'none';
-          // element[0].style.strokeDashoffset = pathLength;
-          // element[0].style.strokeDasharray = pathLength;
+
           // var transitionStr = ['stroke-dashoffset', attr.drawDuration || '250ms', 'ease'].join(' ');
           // element.css('-webkit-transition', transitionStr);
           // element[0].style.strokeDashoffset = 0;

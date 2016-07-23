@@ -1,9 +1,9 @@
 <div class='absolute top-0 left-0 full-xy overflow-auto no-scrollbar' ng-controller='AdminMilestoneController as ms'>
-	<header class='full-x text-center flex-wrap flex-stretch p20xy m20xy' style='min-height:30%'>
-		<h1 class='txt-7 uppercase weight-600 flex-wrap flex-center'>
-			Milestones
+	<header class='relative full-x text-center flex-wrap flex-stretch p20xy m20xy' style='min-height:30%'>
+		<h1 class='txt-5 uppercase weight-600 flex-wrap flex-center'>
+			{{ms.activeModule.name}} <br> Milestones
 		</h1>
-		<div class='full-x flex-stretch ugrid-{{ms.types.length}} p20xy p15-grid flex-center flex-wrap-center'>
+		<!-- <div class='full-x flex-stretch ugrid-{{ms.types.length}} p20xy p15-grid flex-center flex-wrap-center'>
 			<a class='bg-charcoal border-1 border-slate weight-400 p15-grid flex-wrap-center'
 			ng-repeat="type in ms.types"
 			ng-class="{'border-smoke border-dashed txt-white weight-600 bg-moxie-50p': $index === ms.typeIndex}"
@@ -11,50 +11,80 @@
 			style='width:33%;'>
 				{{type}}
 			</a>
+		</div> -->
+		<div class='toolbar full-x absolute p15-grid bottom-0 left-0 txt-right flex-center'>
+			<div class='inline' ng-click='ms.toggleAll(ms.modules[0])'>Off</div>
 		</div>
 	</header>
 	<main class='full-x flex-center flex-stretch flex-wrap bg-slate'>
-		<div ng-if='$index === ms.typeIndex' ng-repeat='type in ms.types' class='full-x'>
-			<ul class='full-x flex-wrap'>
-				<li class='weight-700 txt-moxie p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x ugrid-5 text-center flex-stretch'>
-					<div class='txt-5 uppercase opacity-50'>Name</div>
-					<div> Progress </div>
-					<!-- <div> Priority </div> -->
-					<div> Time </div>
-					<div> Phase </div>
-					<div> Tested </div>
+		<section ng-repeat='module in ms.modules' ng-init="m = module">
+			<ul class='full-x flex-wrap flex-stretch flex-start'>
+				<li class='weight-700 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x ugrid-5 text-center flex-stretch'>
+					<div ng-repeat='c_name in m.columns' class='txt-5 uppercase opacity-50'>{{c_name}}</div>
 				</li>
-				<li ng-repeat="milestone in ms[type]" ng-class="{'bg-charcoal-50p': $index % 2 === 1}" class='p15-grid full-x ugrid-5 flex-stretch flex-center txt-center'>
-					<div>
-						<h1 class='txt-5 txt-smoke uppercase'> {{milestone.group}} </h1>
-					</div>
-					<div class='relative'>
-						<div class='p10xy txt-3 txt-left full-x' ng-repeat='item in milestone.items'>
-							<div class='block p10y weight-700'>
-								<div>
-									<span class='weight-300'>{{$index + 1 + '.'}}</span>
-									<span>
-									{{item}} &nbsp;<span style='opacity:0.5'> {{(((item.length - $index)/item.length) *100).toFixed(0)}}%</span>
-									</span>
+				<li ng-repeat="workflow in ms.activeModule.workflows" ng-class="{'bg-charcoal-50p': $index % 2 === 1}" class='p15-grid full-x ugrid-5 flex-stretch txt-left flex-vertical-center flex-center txt-4'>
+					<ul ng-click='workflow.active = !workflow.active' class='full-x flex-wrap flex-stretch flex-center ugrid-5'>
+						<li>
+							<h1 class='txt-5 txt-smoke uppercase'> <a ng-click="ms.open(workflow.url)"><span class='opacity-50 weight-100'>#{{workflow.pID}} &nbsp;</span>{{workflow.name}} </a></h1>
+						</li>
+						<li class='relative'>
+							<div class='txt-3 txt-left full-x' ng-repeat='item in milestone.items'>
+								<div class='block p10y weight-700'>
+									<div>
+										<span class='weight-300'>{{$index + 1 + '.'}}</span>
+										<span>
+										{{item}} &nbsp;<span style='opacity:0.5'> {{(((item.length - $index)/item.length) *100).toFixed(0)}}%</span>
+										</span>
+									</div>
 								</div>
-							</div>
-							<div class='absolute bg-moxie p05xy block' style='width:{{((item.length - $index)/item.length) *100}}%;'></div></div>
-					</div>
-					<!-- <div>
-						{{milestone.priority}}
-					</div> -->
-					<div>
-						{{milestone.time.hours + ' hours'}}
-					</div>
-					<div>
-						{{milestone.tested}}
-					</div>
-					<div>
-						{{milestone.phase}}
+								<div class='absolute bg-moxie p05xy block' style='width:{{((item.length - $index)/item.length) *100}}%;'></div></div>
+						</li>
+						<!-- <div>
+							{{milestone.priority}}
+						</div> -->
+						<li>
+							{{milestone.time.hours + ' hours'}}
+						</li>
+						<li>
+							{{milestone.tested}}
+						</li>
+						<li>
+							{{milestone.phase}}
+						</li>
+					</ul>
+					<div class='full-x p15-grid bg-cerise' ng-if='workflow.active'>
+						<ul class='full-x flex-wrap flex-stretch flex-start'>
+							<li class='full-x p15-grid txt-3 txt-white txt-center weight-700 ugrid-5' ng-init='firstStory = workflow.stories[0]'>
+								<div ng-repeat='column in ["name", "functional", "x-platform", "responsive", "fluid"]'>
+									{{column}}
+								</div>
+							</li>
+							<li class='weight-500 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x text-center flex-stretch' ng-repeat='story in workflow.stories'>
+								<div class='ugrid-5 p05-grid txt-3 full-x'>
+									<div class='text-left weight-600'>
+										{{story.name}}
+										<br>
+										<span class='txt-1 weight-400 txt-smoke opacity-50'>
+											{{story.desc}}
+										</span>
+									</div>
+									<div>
+										{{story.func}}
+									</div>
+									<div>
+										{{story.func}}
+									</div>
+									<div>
+										{{story.cp}}
+									</div>
+								</div>
+							</li>
+						</ul>
 					</div>
 				</li>
 			</ul>
-		</div>
+		</section>
+		<div ng-include='root.base_url + "admin/templates/spec/modules/pre_app.html"'> </div> </div>
 	</main>
 </ion-view>
 <!-- ugh actions -->
@@ -142,20 +172,6 @@
 	Become a Guru
 	Apps
 -->
-<module name='First Time Experience' progress="0000" dimensions="1111">
-
-	<user-workflow name='Splash Madlib'>
-		<user-stories>
-			<story name="Enter" desc="User enters splash madlib" func='true' tested='false'>
-
-			</story>
-		</user-stories>
-	<user-workflow/>
-	<!-- <user-workflow name='Splash Device'><user-workflow/>
-	<user-workflow name='Splash Map'><user-workflow/>
-	<user-workflow name='Splash Tour'><user-workflow/>
-	<user-workflow name='Splash University'><user-workflow/>
-	<user-workflow name='Splash Categories'><user-workflow/> -->
 
 
 <!-- 	<base-setup directives="switch, transform">

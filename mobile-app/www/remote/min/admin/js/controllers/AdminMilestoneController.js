@@ -4,30 +4,47 @@ angular.module('uguru.admin')
   '$scope',
   '$state',
   '$timeout',
+  '$window',
   'SpecService',
-  function($scope, $state, $timeout, SpecService) {
+  function($scope, $state, $timeout, $window, SpecService) {
 
     var ms = this;
     ms.types = ['ugh']//, 'eh', 'ah', 'aha'];
     ms.typeIndex = 0;
-    $scope.modules = [];
+    ms.modules = [];
+    ms.toggleAll = toggleAll;
 
-    $scope.$watch('root.milestones', function(new_val) {
-      for (type in ms.types) {
-        var indexType = ms.types[type];
-        ms[indexType] = getAllMilestonesOfType(new_val, indexType)
-        console.log(ms[indexType]);
-        $timeout(function() {
-          $scope.$apply();
-        })
-      }
-    })
+
+    // $scope.$watch('root.milestones', function(new_val) {
+    //   for (type in ms.types) {
+    //     var indexType = ms.types[type];
+    //     ms[indexType] = getAllMilestonesOfType(new_val, indexType)
+    //     console.log(ms[indexType]);
+    //     $timeout(function() {
+    //       $scope.$apply();
+    //     })
+    //   }
+    // })
     // ms.minimal = getAllMilestonesOfType($scope.root.milestones);
+    //- list out all the workflows
+    //- templates
+    //- how to calculate progress
 
 
     // --> roles involved
     function parseDimensions(dimen_str) {
       return dimen_str
+    }
+
+    function toggleAll(module) {
+      for (var i = 0; i < module.workflows.length; i++) {
+        module.workflows[i].active = false;
+      }
+    }
+
+    ms.open = function(url) {
+      var base = window.location.href.split('/#/');
+      $window.open(base + url, '_blank');
     }
 
     function getAllMilestonesOfType(ms_arr, type) {
