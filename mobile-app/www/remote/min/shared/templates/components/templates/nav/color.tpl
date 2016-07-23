@@ -59,7 +59,7 @@
                     init-default
                     on-mouse-enter="s:[{{prefix}}-dropdown-mouse-enter-option:public:data({{option.dataMouseEnter}})]|prop:[opacity:0.5]]"
                     on-mouse-enter-delay="500"
-                    on-mouse-leave="s:[{{prefix}}-dropdown-mouse-enter-option:public:data({{option.dataMouseLeave}})]|prop:[opacity:1]]"
+                    on-mouse-leave="s:[{{prefix}}-dropdown-mouse-leave-option:public:data({{option.dataMouseLeave}})]|prop:[opacity:1]]"
                     on-mouse-leave-delay="500">
 					<div class="dropdown-color-bg" ng-style="{'background-color': (dropdown.options[$index][colorKey[0]] || dropdown.options[$index][colorKey[1]])}"></div>
                     <span>{{(dropdown.key && option[dropdown.key]) || option}}</span>

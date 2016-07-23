@@ -2419,6 +2419,51 @@ button, input, textarea {
     .link-logo:hover svg text, .link-logo:focus svg text {
       fill: #F1F1F1; }
 
+.guru-fill-cerise, .guru-fill-academic {
+  fill: #ca5497; }
+
+.guru-stroke-cerise-char, .guru-stroke-academic-char {
+  stroke: #503349; }
+
+.guru-fill-cerise-char, .guru-fill-academic-char {
+  fill: #503349; }
+
+.guru-fill-gold, .guru-fill-baking {
+  fill: #e8c05c; }
+
+.guru-stroke-gold-char, .guru-stroke-baking-char {
+  stroke: #3f4137; }
+
+.guru-fill-gold-char, .guru-fill-baking-char {
+  fill: #3f4137; }
+
+.guru-fill-moola, .guru-fill-photography {
+  fill: #86a477; }
+
+.guru-stroke-moola-char, .guru-stroke-photography-char {
+  stroke: #3c4c3e; }
+
+.guru-fill-moola-char, .guru-fill-photography-char {
+  fill: #3c4c3e; }
+
+.guru-fill-azure, .guru-fill-tech {
+  fill: #6799a5; }
+
+.guru-stroke-azure-char, .guru-stroke-tech-char {
+  stroke: #33494e; }
+
+.guru-fill-azure-char, .guru-fill-tech-char {
+  fill: #33494e; }
+
+.guru-fill-cobalt, .guru-fill-household {
+  fill: #8783d2; }
+
+.guru-stroke-cobalt-char, .guru-stroke-household-char {
+  stroke: #3a3f57; }
+
+.guru-fill-cobalt-char, .guru-fill-household-char {
+  fill: #343a49; }
+
 .guru-head, .guru-head svg {
   display: block;
   width: 150px;

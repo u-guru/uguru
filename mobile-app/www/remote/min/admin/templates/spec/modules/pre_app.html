@@ -67,6 +67,7 @@
                         <ui-stream name="Desktop user selects a category">
 							<ui-state name="Mouse enter dropdown" desc="User's mouse enters the dropdown space and the guru's hair changes color if different from the current" func="true">
 								<bug type="static" open by="Gabrielle" flag="[Jeselle, Gabrielle]" description="Hair needs to be diluted version of category colors" platform="all" time="15" reference="true" reference-name="Guru hair color"/>
+								<bug type="functional" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Variable for category name only works once, i.e. guru-fill-^name outputs guru-fill-academic but afterwards keeps outputting guru-fill-^name" platform="all" time="15" reference="true" reference-name="Category name variable"/>
 							</ui-state>
 
 							<ui-state name="Mouse over dropdown" desc="Staggered opacity drop starting from the category dropdown">
@@ -79,6 +80,7 @@
 
 							<ui-state name="Mouse enter dropdown option" desc="Guru hair changes to category color">
 								<bug reference-from="Guru hair color"/>
+								<bug reference-from="Category name variable"/>
 								<bug type="animation" open by="Gabrielle" flag="[Gabrielle]" description="Remove opacity mouseover example from color.tpl" time="5"/>
 							</ui-state>
 
