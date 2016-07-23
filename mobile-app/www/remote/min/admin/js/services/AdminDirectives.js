@@ -61,7 +61,7 @@ angular.module('uguru.admin')
     replace: true,
     scope: true,
     controller: function($scope) {
-      $scope.module = {name: '', dimensions:'', workflows: []};
+      $scope.module = {name: '', dimensions:'', workflows: [], teamArr: ['SM', 'GW', 'JO', 'JH']};
     },
     link : function preLink(scope, element, attr, ctrl, transcludeFn) {
         ctrl.element = element;
@@ -70,6 +70,7 @@ angular.module('uguru.admin')
             scope.module.columns = attr.columns.split(',')
         }
         scope.module.name = attr.name
+        scope.module.activePerson = attr.active;
         scope.module.dimensions = attr.dimensions;
         scope.module.toggleActivate = toggleActivate;
         $timeout(function() {
@@ -112,9 +113,17 @@ angular.module('uguru.admin')
         if (!scope.module.workflows.length) {
             scope.workflow.active = true;
         }
-        scope.module.workflows.push(scope.workflow);
-        scope.module.workflows.sort(function(w1, w2) {return w2.priority - w1.priority}).reverse();
-        scope.module.workflows.forEach(function(option, index) {option.pID = index + 1})
+        scope.$watch('module.activePerson', function(new_person) {
+            sortWorkflows();
+        })
+
+        function sortWorkflows() {
+            scope.module.workflows.push(scope.workflow);
+            scope.module.workflows.sort(function(w1, w2) {return w2.priority - w1.priority}).reverse();
+            scope.module.workflows.forEach(function(option, index) {option.pID = index + 1})
+        }
+
+        sortWorkflows();
         // scope.module.workflows.reverse()
 
      }
@@ -132,10 +141,21 @@ angular.module('uguru.admin')
     link : function(scope, element, attr) {
         // scope.stories = scope.$parent.workflow;
         scope.stories = [];
+        scope.personDict = {};
         $timeout(function() {
             scope.$parent.workflow.stories = scope.stories;
             scope.$apply();
-        })
+                $timeout(function() {
+                    scope.$watch('module.activePerson', function(new_person, old_person) {
+                    if (new_person in scope.personDict) {
+                        scope.personDict[new_person].sort(sortStoryByPriority(new_person));
+                        console.log(scope.personDict[new_person])
+                        scope.stories = scope.personDict[new_person];
+                        scope.$parent.workflow.stories = scope.stories;
+                    }
+                })
+            }, 1000)
+        });
      }
     }
 }])
@@ -155,6 +175,7 @@ angular.module('uguru.admin')
             cross_platform: attr.crossPlatform === 'true',
             responsive: attr.responsive === 'true',
             streams: [],
+            priority: parsePriority(attr.priority) || {SM:100},
             bugs: []
         }
         // scope.$watchCollection('story', function(story, old_story) {
@@ -163,6 +184,8 @@ angular.module('uguru.admin')
         $timeout(function() {
             scope.$parent.stories.push(scope.story)
             scope.$apply();
+            scope.story.priority && updateUserStoriesPriority(scope.$parent, scope.story, scope.module.activePerson);
+
         })
      }
     }
@@ -479,3 +502,55 @@ angular.module('uguru.admin')
         }
     }
 }])
+
+function parsePriority(str) {
+    var resultDict = {};
+    if (str && str.length) {
+        var strArr = str.split('|')
+        for (var i = 0; i < strArr.length; i++) {
+            var indexPriority = strArr[i];
+            if (indexPriority.indexOf(':') > -1) {
+                indexPrioritySplit = indexPriority.split(':');
+                personName = indexPrioritySplit[0];
+                personPriority = parseFloat(indexPrioritySplit[1]);
+                resultDict[personName] = personPriority;
+            }
+            else {
+                personName = 'SM';
+                personPriority = parseFloat(indexPriority);
+                resultDict[personName] = personPriority;
+            }
+        }
+        return resultDict;
+    }
+
+}
+
+function updateUserStoriesPriority(parent, story, initial) {
+    storiesArr = parent.stories;
+    personDict = parent.personDict;
+    priority = story.priority;
+    for (person in priority) {
+        if (!(person in personDict)) {
+            personDict[person] = [story];
+        } else {
+            personDict[person].push(story);
+            personDict[person].sort(sortStoryByPriority(person))
+        }
+
+        person_initial = initial || 'SM';
+        if (person_initial) {
+            if (!('default' in parent.personDict)) {
+                parent.personDict['default'] = parent.stories;
+            }
+            parent.stories = parent.personDict[person];
+        }
+    }
+
+}
+
+function sortStoryByPriority(person) {
+    return function(story_2, story_1) {
+        return (story_2.priority[person] || 100) - (story_1.priority[person] || 100)
+    }
+}

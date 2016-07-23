@@ -64,10 +64,7 @@
                 init-with="p:[op:0]"
 				when-madlib-init="t-enter"
                 on-enter="a:[adlib-header-smash:set:(dur:1000ms):in]">
-				<!-- elem-states="['category-switch', 'both-blanks-filled', 'map-transition']"
-				on-category-switch-exit="inactive-adlib-header:anim" -->
                 <h1 class="adlib-header desktop" desktop>
-					<!--  ng-if="root.window.desktop" -->
                     <span init-with="p:[tr:translate3d(40px#0#0)]"
 						when-category-dropdown-toggle-on="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
 						when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
@@ -197,12 +194,7 @@
             <ul init-default
 				when-madlib-init="t:[on-enter:children:delay-2750]"
                 switches="rowOne:[change-delay:250, active-limit:1, data:madlib.switches.rowOne]|rowTwo:[change-delay:250, active-limit:1, data:madlib.switches.rowTwo]"
-                on-mouse-enter="prop:[op:0.25]"
-                on-mouse-enter-delay="1000"
-                on-mouse-over="prop:[op:0.75]"
-                on-mouse-over-delay="2500"
-                on-mouse-leave="prop:[op:1]"
-                on-mouse-leave-delay="100"
+
                 on-switch-row-one-change=""
                 on-switch-row-two-change=""
                 on-switch-row-one-reset=""
