@@ -181,7 +181,7 @@
 		 	ng-class="'bg-' + splash.category.bg_hex_color + '-slate-95p'"
 		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
 			when-mobile-switch-init="p:[op:1, z-index:999]"
-			when-mobile-bg-exit="p:[z-index:-1, op:0]"]>
+			when-mobile-bg-exit="p:[z-index:-1, op:0]:delay-500"]>
 			<div class="absolute top-0 right-0 p10xy">
 				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon"
 					ng-include="root.base_url + 'shared/templates/components/svg/main/plus.html'"
@@ -198,7 +198,7 @@
 						init-with="p-op"
                         ng-class="{'delay-450': category.id === splash.category.id}"
 						when-mobile-switch-init="p:[tr:translateY(0)] | a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-1500"
-						when-mobile-switch-exit="p:[op:0:delay-150, tr:translateY(15%), t:opacity 450ms ease-out#transform 250ms ease-out]">
+						when-mobile-switch-exit="p:[op:0, tr:translateY(15%), t:opacity 450ms ease-out#transform 500ms ease-out]">
                         <!-- debug-id="2:[trigger:click,select:.bg-baking]" -->
                         <a class="bg-{{category.bg_hex_color}}"
                             id='bg-{{category.bg_hex_color}}-category-link'
@@ -220,7 +220,7 @@
 						ng-class="{'delay-450':university.id === splash.university.id}"
 						init-with="p-op"
 						when-mobile-switch-init="p:[tr:translateY(0)] | a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-500"
-						when-mobile-switch-exit="p:[op:0:delay-250, tr:translateY(15%), t:opacity 450ms ease-out#transform 250ms ease-out]:delay-250">
+						when-mobile-switch-exit="p:[op:0, tr:translateY(15%), t:opacity 250ms ease-out#transform 450ms ease-out]">
                         <a ng-class="{'active':university.id === splash.university.id}"
 							ng-click='nav.universitiesDropdown.onOptionClick(university, $index)'
 							init-with="border-color: {{university.school_color_dark}}"
