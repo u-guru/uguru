@@ -178,11 +178,10 @@
         </header>
 
          <div mobile id="splash-hero-nav-mobile" class="no-scrollbar" mobile
-		 	ng-class="'bg-' + splash.category.bg_hex_color"
+		 	ng-class="'bg-' + splash.category.bg_hex_color + '-slate-95p'"
 		 	init-with="p:[op:0, z-index:-1, t:all 250ms ease-in-out]"
 			when-mobile-switch-init="t-enter"
 			when-mobile-bg-exit="p:[z-index:-1, op:0]"]
-            when-mobile-categories-exit='p:[bg:^category.rgb_color, tr:all 1000ms ease-in]'
 			on-enter="p:[op:1, z-index:999]">
 			<div class="absolute top-0 right-0 p10xy">
 				<a class="flex-center svg-white svg-32 svg-stroke-8 close-icon"
