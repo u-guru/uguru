@@ -204,7 +204,7 @@
                             id='bg-{{category.bg_hex_color}}-category-link'
 							ng-class="{'active':category.id == splash.category.id}"
 							ng-click='nav.categoriesDropdown.onOptionClick(category, $index)'
-							on-click='p:[background-color:{{category.bg_hex_color}}:delay-500] | s:[mobile-switch-exit:public, mobile-categories-exit:public:data:(category.rgb_color#category.bg_hex_color):delay-250, mobile-categories-bg-{{splash.category.bg_hex_color}}-exit:delay-250]'>
+							on-click='p:[background-color:{{category.bg_hex_color}}:delay-500] | s:[mobile-switch-exit:public, mobile-categories-exit:public:data:(category.rgb_color#category.bg_hex_color):delay-250, {{splash.category.name}}-init:public:delay-250]'>
                             <span ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
                             <span>{{category.name}}</span>
                         </a>
