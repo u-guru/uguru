@@ -1,44 +1,48 @@
+
 <div class="dropdown-color"
-    init-with="prop:[opacity:1]"
-	ng-mouseenter="mouseEnter($event, $index)" ng-mouseleave="mouseLeave($event, $index)">
-	<div init-with='prop:[visibility:hidden]'></div>
-    <a class="color" ng-click="toggle($event)" ng-class='{"active": dropdown.active }' on-init init-with="prop:[opacity:1]">
-		<!-- @samir -->
+    init-with="p:[op:1]">
+    <!-- ng-mouseenter="mouseEnter($event, $index, 500)" ng-mouseover="mouseOver($event, $index, 500)" ng-mouseleave="mouseLeave($event, $index)" -->
+    <a class="color" ng-click="toggle($event)" ng-class='{"active": dropdown.active }'
+		init-default on-init
+	    on-mouse-enter="s:[{{prefix}}-dropdown-mouse-enter:public]"
+	    on-mouse-enter-delay="500"
+	    on-mouse-leave="s:[{{prefix}}-dropdown-mouse-enter:public]"
+	    on-mouse-leave-delay="250">
 		<div class="null"
-			init-with="prop:[transform:scaleX(0), transition:all 250ms ease-out 450ms]"
-			when-dropdown-init="trigger:[on-enter]"
-			on-enter="prop:[transform:scaleX(1)]"></div>
+			init-with="p:[tr:scaleX(0), t:all 250ms ease-out 450ms]"
+			when-dropdown-init="t:[on-enter]"
+			on-enter="p:[tr:scaleX(1)]"></div>
 		<div class="null"
-			init-with="prop:[transform:scaleY(0), transition:all 250ms ease-out 300ms]"
-			when-dropdown-init="trigger:[on-enter]"
-			on-enter="prop:[transform:scaleY(1)]"></div>
+			init-with="p:[tr:scaleY(0), t:all 250ms ease-out 300ms]"
+			when-dropdown-init="t:[on-enter]"
+			on-enter="p:[tr:scaleY(1)]"></div>
 		<div class="null"
-			init-with="prop:[transform:scaleX(0), transition:all 250ms ease-out 150ms]"
-			when-dropdown-init="trigger:[on-enter]"
-			on-enter="prop:[transform:scaleX(1)]"></div>
+			init-with="p:[tr:scaleX(0), t:all 250ms ease-out 150ms]"
+			when-dropdown-init="t:[on-enter]"
+			on-enter="p:[tr:scaleX(1)]"></div>
 		<div class="null"
-			init-with="prop:[transform:scaleY(0), transition:all 250ms ease-out]"
-			when-dropdown-init="trigger:[on-enter]"
-			on-enter="prop:[transform:scaleY(1)]"></div>
+			init-with="p:[tr:scaleY(0), t:all 250ms ease-out]"
+			when-dropdown-init="t:[on-enter]"
+			on-enter="p:[tr:scaleY(1)]"></div>
 		<div class="dropdown-color-bg" ng-style='{"background-color":dropdown.options[dropdown.selectedIndex][colorKey[0]]}'
-			init-with="prop:[opacity:0, transition:all 250ms ease-out 750ms]"
-			when-dropdown-init="trigger:[on-enter]"
-			on-enter="prop:[opacity:1]"></div>
+			init-with="p:[op:0, t:all 250ms ease-out 750ms]"
+			when-dropdown-init="t:[on-enter]"
+			on-enter="p:[op:1]"></div>
         <span ng-if='!dropdown.key'
-			init-with="prop:[opacity:0]"
-			when-dropdown-init="trigger:[on-enter]"
-			on-enter="prop:[opacity:1, transition:all 250ms ease-out 750ms]"
+			init-with="p:[op:0]"
+			when-dropdown-init="t:[on-enter]"
+			on-enter="p:[op:1, t:all 250ms ease-out 750ms]"
 			ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', dropdown.selectedIndex)">{{dropdown.options[dropdown.selectedIndex]}}</span>
         <span ng-if='dropdown.key'
-			init-with="prop:[opacity:0]"
-			when-dropdown-init="trigger:[on-enter]"
-			on-enter="prop:[opacity:1, transition:all 250ms ease-out 750ms]"
+			init-with="p:[op:0]"
+			when-dropdown-init="t:[on-enter]"
+			on-enter="p:[op:1, t:all 250ms ease-out 750ms]"
             ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', dropdown.selectedIndex)">{{dropdown.options[dropdown.selectedIndex][dropdown.key]}}</span>
         <svg viewBox="0 0 100 100">
             <path d="M14,32 L50,68 L86,32"
-				init-with="prop:[stroke-dashoffset:103, transition:all 250ms ease-out 750ms]"
-				when-dropdown-init="trigger:[on-enter]"
-				on-enter="prop:[stroke-dashoffset:0]"></path>
+				init-with="p:[stroke-dashoffset:103, t:all 250ms ease-out 750ms]"
+				when-dropdown-init="t:[on-enter]"
+				on-enter="p:[stroke-dashoffset:0]"></path>
         </svg>
     </a>
     <div ng-class='{"visible": dropdown.active }' >
@@ -49,7 +53,14 @@
             <li ng-if='$index !== dropdown.selectedIndex' ng-repeat='option in dropdown.options'>
 				<div></div><div></div>
 				<div></div><div></div>
-                <a class="color" ng-click="click(option, $index)" ng-mouseover="hover($event, 'send', prefix + '-dropdown-hover', $index)">
+                <!-- ng-mouseenter="mouseEnter($event, 'send', prefix + '-dropdown-hover', $index)"
+                ng-mouseover="mouseOver($event, 'send', prefix + '-dropdown-hover', $index)" -->
+                <a class="color" ng-click="click(option, $index)"
+                    init-default
+                    on-mouse-enter="s:[{{prefix}}-dropdown-mouse-enter-option:public:data({{option.dataMouseEnter}})]"
+                    on-mouse-enter-delay="500"
+                    on-mouse-leave="s:[{{prefix}}-dropdown-mouse-leave-option:public:data({{option.dataMouseLeave}})]"
+                    on-mouse-leave-delay="250">
 					<div class="dropdown-color-bg" ng-style="{'background-color': (dropdown.options[$index][colorKey[0]] || dropdown.options[$index][colorKey[1]])}"></div>
                     <span>{{(dropdown.key && option[dropdown.key]) || option}}</span>
                 </a>

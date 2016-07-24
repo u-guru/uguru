@@ -159,6 +159,10 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 .transition-150-linear {
 	transition: all 150ms linear;
 }
+.delay-450 {
+	animation-delay: 450ms!important;
+	transition-delay: 450ms!important;
+}
 [translate-to-elem] {
 	transition: all 600ms cubic-bezier(.77,0,.05,1)!important;
 	transition: all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important;
@@ -1703,6 +1707,161 @@ button, input, textarea {
 	background: transparent!important;
 }
 
+[class*="bg-academic-slate"] {
+	background: mix($cerise, $slate, 20%)!important;
+	&[class*="-05p"] {
+		background: rgba(mix($cerise, $slate, 20%), .05)!important;
+	}
+	&[class*="-10p"] {
+		background: rgba(mix($cerise, $slate, 20%), .1)!important;
+	}
+	&[class*="-20p"] {
+		background: rgba(mix($cerise, $slate, 20%), .2)!important;
+	}
+	&[class*="-25p"] {
+		background: rgba(mix($cerise, $slate, 20%), .25)!important;
+	}
+	&[class*="-50p"] {
+		background: rgba(mix($cerise, $slate, 20%), .5)!important;
+	}
+	&[class*="-75p"] {
+		background: rgba(mix($cerise, $slate, 20%), .75)!important;
+	}
+	&[class*="-80p"] {
+		background: rgba(mix($cerise, $slate, 20%), .8)!important;
+	}
+	&[class*="-90p"] {
+		background: rgba(mix($cerise, $slate, 20%), .9)!important;
+	}
+	&[class*="-95p"] {
+		background: rgba(mix($cerise, $slate, 20%), .95)!important;
+	}
+}
+
+[class*="bg-baking-slate"] {
+	background: mix($gold, $slate, 20%)!important;
+	&[class*="-05p"] {
+		background: rgba(mix($gold, $slate, 20%), .05)!important;
+	}
+	&[class*="-10p"] {
+		background: rgba(mix($gold, $slate, 20%), .1)!important;
+	}
+	&[class*="-20p"] {
+		background: rgba(mix($gold, $slate, 20%), .2)!important;
+	}
+	&[class*="-25p"] {
+		background: rgba(mix($gold, $slate, 20%), .25)!important;
+	}
+	&[class*="-50p"] {
+		background: rgba(mix($gold, $slate, 20%), .5)!important;
+	}
+	&[class*="-75p"] {
+		background: rgba(mix($gold, $slate, 20%), .75)!important;
+	}
+	&[class*="-80p"] {
+		background: rgba(mix($gold, $slate, 20%), .8)!important;
+	}
+	&[class*="-90p"] {
+		background: rgba(mix($gold, $slate, 20%), .9)!important;
+	}
+	&[class*="-95p"] {
+		background: rgba(mix($gold, $slate, 20%), .95)!important;
+	}
+}
+
+[class*="bg-photography-slate"] {
+	background: mix($moola, $slate, 20%)!important;
+	&[class*="-05p"] {
+		background: rgba(mix($moola, $slate, 20%), .05)!important;
+	}
+	&[class*="-10p"] {
+		background: rgba(mix($moola, $slate, 20%), .1)!important;
+	}
+	&[class*="-20p"] {
+		background: rgba(mix($moola, $slate, 20%), .2)!important;
+	}
+	&[class*="-25p"] {
+		background: rgba(mix($moola, $slate, 20%), .25)!important;
+	}
+	&[class*="-50p"] {
+		background: rgba(mix($moola, $slate, 20%), .5)!important;
+	}
+	&[class*="-75p"] {
+		background: rgba(mix($moola, $slate, 20%), .75)!important;
+	}
+	&[class*="-80p"] {
+		background: rgba(mix($moola, $slate, 20%), .8)!important;
+	}
+	&[class*="-90p"] {
+		background: rgba(mix($moola, $slate, 20%), .9)!important;
+	}
+	&[class*="-95p"] {
+		background: rgba(mix($moola, $slate, 20%), .95)!important;
+	}
+}
+
+[class*="bg-tech-slate"] {
+	background: mix($azure, $slate, 20%)!important;
+	&[class*="-05p"] {
+		background: rgba(mix($azure, $slate, 20%), .05)!important;
+	}
+	&[class*="-10p"] {
+		background: rgba(mix($azure, $slate, 20%), .1)!important;
+	}
+	&[class*="-20p"] {
+		background: rgba(mix($azure, $slate, 20%), .2)!important;
+	}
+	&[class*="-25p"] {
+		background: rgba(mix($azure, $slate, 20%), .25)!important;
+	}
+	&[class*="-50p"] {
+		background: rgba(mix($azure, $slate, 20%), .5)!important;
+	}
+	&[class*="-75p"] {
+		background: rgba(mix($azure, $slate, 20%), .75)!important;
+	}
+	&[class*="-80p"] {
+		background: rgba(mix($azure, $slate, 20%), .8)!important;
+	}
+	&[class*="-90p"] {
+		background: rgba(mix($azure, $slate, 20%), .9)!important;
+	}
+	&[class*="-95p"] {
+		background: rgba(mix($azure, $slate, 20%), .95)!important;
+	}
+}
+
+[class*="bg-household-slate"] {
+	background: mix($cobalt, $slate, 20%)!important;
+	&[class*="-05p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .05)!important;
+	}
+	&[class*="-10p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .1)!important;
+	}
+	&[class*="-20p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .2)!important;
+	}
+	&[class*="-25p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .25)!important;
+	}
+	&[class*="-50p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .5)!important;
+	}
+	&[class*="-75p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .75)!important;
+	}
+	&[class*="-80p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .8)!important;
+	}
+	&[class*="-90p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .9)!important;
+	}
+	&[class*="-95p"] {
+		background: rgba(mix($cobalt, $slate, 20%), .95)!important;
+	}
+}
+
 [class*="bg-white"] {
 	background: white;
 	color: white;
@@ -2533,6 +2692,56 @@ button, input, textarea {
 			}
 		}
 	}
+}
+
+.guru-fill-cerise, .guru-fill-academic {
+	fill: desaturate($cerise, 25%);
+}
+.guru-stroke-cerise-char, .guru-stroke-academic-char {
+	stroke: mix($cerise, $charcoal, 20%);
+}
+.guru-fill-cerise-char, .guru-fill-academic-char {
+	fill: mix($cerise, $charcoal, 20%);
+}
+
+.guru-fill-gold, .guru-fill-baking {
+	fill: desaturate($gold, 15%);
+}
+.guru-stroke-gold-char, .guru-stroke-baking-char {
+	stroke: mix($gold, $charcoal, 10%);
+}
+.guru-fill-gold-char, .guru-fill-baking-char {
+	fill: mix($gold, $charcoal, 10%);
+}
+
+.guru-fill-moola, .guru-fill-photography {
+	fill: desaturate($moola, 15%);
+}
+.guru-stroke-moola-char, .guru-stroke-photography-char {
+	stroke: mix($moola, $charcoal, 20%);
+}
+.guru-fill-moola-char, .guru-fill-photography-char {
+	fill: mix($moola, $charcoal, 20%);
+}
+
+.guru-fill-azure, .guru-fill-tech {
+	fill: desaturate($azure, 15%);
+}
+.guru-stroke-azure-char, .guru-stroke-tech-char {
+	stroke: mix($azure, $charcoal, 20%);
+}
+.guru-fill-azure-char, .guru-fill-tech-char {
+	fill: mix($azure, $charcoal, 20%);
+}
+
+.guru-fill-cobalt, .guru-fill-household {
+	fill: desaturate($cobalt, 20%);
+}
+.guru-stroke-cobalt-char, .guru-stroke-household-char {
+	stroke: mix($cobalt, $charcoal, 20%);
+}
+.guru-fill-cobalt-char, .guru-fill-household-char {
+	fill: mix($cobalt, $charcoal, 20%);
 }
 
 .guru-head, .guru-head svg {

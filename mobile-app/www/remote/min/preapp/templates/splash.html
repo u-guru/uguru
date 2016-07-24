@@ -2,7 +2,7 @@
     <custom-states when="sidebar-icon-clicked">
     </custom-states>
     <!-- <ion-content class='relative full-xy' > -->
-        <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()">
+        <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()" >
             <section id='splash-home' class='splash-hero'>
 
 				<div class="absolute top-0 left-0 full-xy">
@@ -20,14 +20,15 @@
                 <div ng-if="splash.state.nav" ng-include src="root.base_url + 'preapp/templates/splash.nav.html'"
                 include-replace
 					when-search-university-clicked="prop:[opacity:0.5, t:all 600ms ease-in-out]"
-					when-close-search-university="prop:[opacity:1]">
+					when-close-search-university="prop:[opacity:1]"
+                    >
                 </div>
 
                 <div ng-if="splash.state.sidebar" ng-include src="root.base_url + 'preapp/templates/splash.sidebar.html'" include-replace>
                 </div>
 
                 <!-- Madlib -->
-                <div ng-if="splash.state.madlib" ng-include src="root.base_url + 'preapp/templates/splash.madlib.html'" include-replace
+                <div ng-if="splash.state.madlib"  ng-include src="root.base_url + 'preapp/templates/splash.madlib.html'" include-replace
 					when-search-university-clicked="prop:[opacity:0.5, t:all 600ms ease-in-out]"
 					when-close-search-university="prop:[opacity:1]">
                 </div>
@@ -37,17 +38,12 @@
 					ng-if="splash.state.device" ng-include src="root.base_url + 'preapp/templates/splash.device.html'" include-replace
 					init-default
 					on-init="prop:[z-index:0]"
-					when-category-dropdown-mouse-enter="prop:[op:0.25:delay-50, t:all 500ms ease-in-out]"
-					when-category-dropdown-mouse-leave="prop:[op:1, t:all 500ms ease-in-out]"
 					when-category-dropdown-toggle-on="prop:[op:0.25:delay-50, t:all 500ms ease-in-out]"
 					when-category-dropdown-toggle-off="prop:[op:1, t:all 500ms ease-in-out]"
-					when-university-dropdown-mouse-enter="prop:[z-index:5:delay-100, t:all 500ms ease-in-out]"
-					when-university-dropdown-mouse-leave="prop:[z-index:0:delay-50, t:all 500ms ease-in-out]"
 					when-university-dropdown-toggle-on="prop:[z-index:5:delay-50, t:all 500ms ease-in-out]"
 					when-university-dropdown-toggle-off="prop:[z-index:0:delay-50, t:all 500ms ease-in-out]"
 					when-search-university-clicked="prop:[opacity:0.5, t:all 600ms ease-in-out]"
-					when-close-search-university="prop:[opacity:1]"
-					on-mouse-enter="send:[university-dropdown-mouse-leave:public, category-dropdown-mouse-leave:public]">
+					when-close-search-university="prop:[opacity:1]">
                 </div>
 
                 <!-- Map -->

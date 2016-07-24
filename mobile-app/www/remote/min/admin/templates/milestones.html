@@ -1,9 +1,9 @@
 <div class='absolute top-0 left-0 full-xy overflow-auto no-scrollbar' ng-controller='AdminMilestoneController as ms'>
-	<header class='full-x text-center flex-wrap flex-stretch p20xy m20xy' style='min-height:30%'>
-		<h1 class='txt-7 uppercase weight-600 flex-wrap flex-center'>
-			Milestones
+	<header class='relative full-x text-center flex-wrap flex-stretch p20xy m20xy' style='min-height:30%'>
+		<h1 class='txt-5 uppercase weight-600 flex-wrap flex-center'>
+			{{ms.activeModule.name}} <br> Milestones
 		</h1>
-		<div class='full-x flex-stretch ugrid-{{ms.types.length}} p20xy p15-grid flex-center flex-wrap-center'>
+		<!-- <div class='full-x flex-stretch ugrid-{{ms.types.length}} p20xy p15-grid flex-center flex-wrap-center'>
 			<a class='bg-charcoal border-1 border-slate weight-400 p15-grid flex-wrap-center'
 			ng-repeat="type in ms.types"
 			ng-class="{'border-smoke border-dashed txt-white weight-600 bg-moxie-50p': $index === ms.typeIndex}"
@@ -11,50 +11,89 @@
 			style='width:33%;'>
 				{{type}}
 			</a>
+		</div> -->
+		<div class='toolbar full-x absolute p15-grid ugrid-5 flex-wrap-center bottom-0 left-0 flex-center'>
+			<div ng-click='ms.toggleAll(ms.modules[0])'>Off</div>
+			<div ng-repeat= 'initial in ms.modules[0].teamArr' ng-class="{'border-1-bottom border-smoke':ms.modules[0].activePerson === initial}" ng-click='ms.setActivePerson(initial)'>{{initial}}</div>
+			<!-- <div class='border-1-bottom border-smoke' ng-click='ms.setActivePerson(person)'>{{ms.modules[0].activePerson}}</div> -->
 		</div>
 	</header>
 	<main class='full-x flex-center flex-stretch flex-wrap bg-slate'>
-		<div ng-if='$index === ms.typeIndex' ng-repeat='type in ms.types' class='full-x'>
-			<ul class='full-x flex-wrap'>
-				<li class='weight-700 txt-moxie p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x ugrid-5 text-center flex-stretch'>
-					<div class='txt-5 uppercase opacity-50'>Name</div>
-					<div> Progress </div>
-					<!-- <div> Priority </div> -->
-					<div> Time </div>
-					<div> Phase </div>
-					<div> Tested </div>
+		<section ng-repeat='module in ms.modules' ng-init="m = module">
+			<ul class='full-x flex-wrap flex-stretch flex-start'>
+				<li class='weight-700 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x ugrid-{{ms.activeModule.columns.length}} text-center flex-stretch'>
+					<div ng-repeat='c_name in m.columns' class='txt-5 uppercase opacity-50'>{{c_name}}</div>
 				</li>
-				<li ng-repeat="milestone in ms[type]" ng-class="{'bg-charcoal-50p': $index % 2 === 1}" class='p15-grid full-x ugrid-5 flex-stretch flex-center txt-center'>
-					<div>
-						<h1 class='txt-5 txt-smoke uppercase'> {{milestone.group}} </h1>
-					</div>
-					<div class='relative'>
-						<div class='p10xy txt-3 txt-left full-x' ng-repeat='item in milestone.items'>
-							<div class='block p10y weight-700'>
-								<div>
-									<span class='weight-300'>{{$index + 1 + '.'}}</span>
-									<span>
-									{{item}} &nbsp;<span style='opacity:0.5'> {{(((item.length - $index)/item.length) *100).toFixed(0)}}%</span>
-									</span>
-								</div>
+				<li ng-repeat="workflow in ms.activeModule.workflows track by $index" ng-class="{'bg-charcoal-50p': $index % 2 === 1}" class='p15-grid full-x ugrid-{{ms.activeModule.columns.length}} flex-stretch txt-left flex-vertical-center flex-center txt-4'>
+					<ul  class='full-x flex-wrap flex-stretch flex-center ugrid-{{ms.activeModule.columns.length}} text-center'>
+						<li ng-click='workflow.active = !workflow.active'>
+							<h1 class='txt-5 txt-smoke uppercase'> <a ng-click="ms.open(workflow.url)"><span class='opacity-50 weight-100'>#{{workflow.pID}} &nbsp;</span>{{workflow.name}} </a></h1>
+						</li>
+						<li class='flex-wrap-center relative ugrid-5'>
+							<div class='txt-1 weight-600' ng-repeat='_filter in workflow.filter.options' ng-click='workflow.filter.activeIndex = $index'>
+								<span ng-class='{"border-1-bottom border-dashed border-azure": workflow.filter.activeIndex === $index}'>{{_filter}}</span>
 							</div>
-							<div class='absolute bg-moxie p05xy block' style='width:{{((item.length - $index)/item.length) *100}}%;'></div></div>
-					</div>
-					<!-- <div>
-						{{milestone.priority}}
-					</div> -->
-					<div>
-						{{milestone.time.hours + ' hours'}}
-					</div>
-					<div>
-						{{milestone.tested}}
-					</div>
-					<div>
-						{{milestone.phase}}
+						</li>
+						<li>
+
+						</li>
+						<li>
+							TBI
+							<!-- <li class='relative'>
+							<div class='txt-3 txt-left full-x' ng-repeat='item in milestone.items'>
+								<div class='block p10y weight-700'>
+									<div>
+										<span class='weight-300'>{{$index + 1 + '.'}}</span>
+										<span>
+										{{item}} &nbsp;<span style='opacity:0.5'> {{(((item.length - $index)/item.length) *100).toFixed(0)}}%</span>
+										</span>
+									</div>
+								</div>
+								<div class='absolute bg-moxie p05xy block' style='width:{{((item.length - $index)/item.length) *100}}%;'></div></div>
+							</li>-->
+						</li>
+					</ul>
+					<div class='full-x p15-grid bg-cerise' ng-if='workflow.active'>
+						<ul class='full-x flex-wrap flex-stretch flex-start' ng-init="activeFilter = workflow.filter.options[workflow.filter.activeIndex]">
+							<li class='full-x p15-grid txt-3 txt-white txt-center weight-700 ugrid-5'>
+								<div ng-if='!ms.activeFilter' ng-repeat='column in workflow["columns"][activeFilter]'>
+									{{column}}
+								</div>
+								<div ng-if='ms.activeFilter' ng-repeat='column in workflow["columns"][ms.activeFilter]'>
+									{{ms.activeFilterFormatted}} {{column}}
+								</div>
+							</li>
+							<li class='weight-500 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x text-center flex-stretch' ng-if='ms.activeFilter' ng-repeat='item in workflow[ms.activeFilter] track by $index'>
+								<div class='ugrid-5 p05-grid txt-3 full-x'>
+									<div class='text-left weight-600'>
+										{{item.name}} {{activeFilter}}
+										<br>
+										<span class='txt-1 weight-400 txt-smoke opacity-50'>
+											{{item.desc}}
+										</span>
+									</div>
+									<div>
+										<span ng-if='item.priority' ng-repeat='(key, value) in item.priority'> {{key + ':' + value}}
+										</span>
+										<span ng-if='!item.priority'> NA </span>
+									</div>
+									<div>
+										{{item.stories && item.stories.length}}
+									</div>
+									<div>
+										{{item.bugs && item.bugs.length}}
+									</div>
+									<div>
+										{{item && item.cp}}
+									</div>
+								</div>
+							</li>
+						</ul>
 					</div>
 				</li>
 			</ul>
-		</div>
+		</section>
+		<div ng-include='root.base_url + "admin/templates/spec/modules/pre_app.html"'> </div> </div>
 	</main>
 </ion-view>
 <!-- ugh actions -->
@@ -143,6 +182,20 @@
 	Apps
 -->
 
+
+<!-- 	<base-setup directives="switch, transform">
+		- apply default active/inactive for [on-init, init-default, on-enter]
+		- map func-story to auto-inherit dimensions
+		- default progress to zero
+	</base-setup>
+	<user-stories>
+		<func-story "Switches has data ">
+		<func-story "All elements rendered with no blips">
+			<ui-story desc="splash enters"/>
+		<func-story desc="user clicks splash" test-vars="row one, row two" dimensions="0111"/>
+			<ui-states>
+			</ui-states> -->
+<module/>
 
 <!-- eh actions todo streams-->
 <action-item items="[tag-hover:inactive, tag-hover:active, tag-hover-click:active, tag-hover-click:inactive, tag-transition-madlib-blank:after]" group="splash:madlib" priority="1" tested="true" time="10hr" phase="1" type="eh" />

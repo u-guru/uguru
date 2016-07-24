@@ -24,6 +24,7 @@
                     <a id="powerup-gpa-container" class="block relative high-z-index"
 						init-default
 						on-mouse-enter="s:[gpa-mouse-enter:public]"
+						on-click="s:[gpa-on-click:public]"
 						on-mouse-leave="s:[gpa-mouse-leave:public]">
                         <div id="powerup-gpa-icon" class="block loader-powerup-gpa" ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
                         <div id="powerup-gpa-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
@@ -36,6 +37,7 @@
                     <a id="powerup-munchies-container" class="block relative"
 						init-default
 						on-mouse-enter="s:[munchies-mouse-enter:public]"
+						on-click="s:[munchies-on-click:public]"
 						on-mouse-leave="s:[munchies-mouse-leave:public]">
                         <div id="powerup-munchies-icon" class="block loader-powerup-munchies" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies-card.html'"></div>
                         <div id="powerup-munchies-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
@@ -48,6 +50,7 @@
                     <a id="powerup-sound-container" class="block relative"
 						init-default
 						on-mouse-enter="send:[sound-mouse-enter:public]"
+						on-click="s:[sound-on-click:public]"
 						on-mouse-leave="send:[sound-mouse-leave:public]">
                         <div id="powerup-sound-icon" class="block loader-powerup-sound" ng-include="root.base_url + 'preapp/templates/components/powerups/sound-card.html'"></div>
                         <div id="powerup-sound-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
@@ -60,6 +63,7 @@
                     <a id="powerup-transit-container" class="block relative"
 						init-default
 						on-mouse-enter="send:[transit-mouse-enter:public]"
+						on-click="s:[transit-on-click:public]"
 						on-mouse-leave="send:[transit-mouse-leave:public]">
                         <div id="powerup-transit-icon" class="block loader-powerup-transit" ng-include="root.base_url + 'preapp/templates/components/powerups/transit-card.html'"></div>
                         <div id="powerup-transit-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
@@ -70,7 +74,7 @@
             </ul>
         </div>
     </div>
-    <div class="splash-hero-skip absolute bottom-0 right-0"
+    <div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
 		init-with="p:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
 		when-powerups-init="t-enter"
 		on-enter="p:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
