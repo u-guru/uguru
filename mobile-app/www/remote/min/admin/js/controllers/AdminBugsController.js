@@ -638,9 +638,17 @@ angular.module('uguru.admin')
     function updateBugs(){
       // console.log("START");
       loadUpdatedBugsJsonFile($scope)
-    }
-   
 
+    }
+    // FileService.getS3JsonFile(null, 'https://d4s90fnvxd.execute-api.us-west-2.amazonaws.com/dev', callbackFunc);
+    // function callbackFunc(name, resp) {
+    //  if(!$scope.test){
+    //      $scope.test = resp
+    //      console.log('CHECK',$scope.test)
+
+    //  }      
+    // }
+    
     if (window.location.href.split('8100').length > 1) {
         $timeout(function() {
             loadUpdatedBugsJsonFile($scope);
