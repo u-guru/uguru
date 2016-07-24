@@ -106,7 +106,7 @@
 /* ---------- DEFAULT STYLES */
 * {
 	@include prefix(box-sizing, border-box, webkit moz);
-	@include prefix(backface-visibility, hidden, webkit moz ms o);
+	// @include prefix(backface-visibility, hidden, webkit moz ms o);
 	-ms-overflow-style: none;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
