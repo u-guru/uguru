@@ -1,5 +1,5 @@
 <module name='First Time Experience' columns="name,filters,info/options,progress" progress="0000" dimensions="1111" active="SM">
-            <user-workflow name='Milestones' priority="9" access="SM" bug-wkfw-id="15">
+            <user-workflow name='Milestones' ng-if='false' priority="9" access="SM" bug-wkfw-id="15">
                 <user-stories>
                     <story priority="SM:1|GW:4|JH:1" name="Ordering" desc="make sure shit is ordered properly"/>
                     <story priority="GW:0.5" name="Fix up the milestones" desc="make sure shit is ordered properly"/>
@@ -75,7 +75,7 @@
                             </ui-state>
 							<ui-state name="Guru head crashes in" desc="Guru head crashes against the screen, then bounces back and readjusts itself"></ui-state>
                             <ui-state name="Title animates in" desc="Warp zooms out" func="false">
-								<bug type="" open by="Gabrielle" description="Madlib header letters overlap with each other on smallest screen size, needs tiny mobile attr." platform="mobile"/>
+								<bug type="functional" open by="Gabrielle" description="Madlib header letters overlap with each other on smallest screen size, needs tiny mobile attr." platform="mobile"/>
                             </ui-state>
                             <ui-state name="User switches category">
 
@@ -85,33 +85,41 @@
                     </story>
                     <story type="gesture" desc="User selects splash tag" func='true' tested='false' cp='false' responsive='false'>
 						<ui-stream>
-							<ui-state  name="User selects one splash tag part1" desc="" func="true">
-								<bug type="" open by="Gabrielle" description="Tags need .active added when selected and removed when deselected - if added currently, tags are selected properly but don’t translate back when another tag is clicked." platform=""/>
-								<bug type="" open by="Gabrielle" description="Row 2 Tag 3 doesn't move back into place after being deselected." platform=""/>
-							</ui-state>
 
+							<ui-state name="User selects one splash tag" desc="" func="false">
+								<bug type="functional" open by="Gabrielle" description="Tags need .active added when selected and removed when deselected - if added currently, tags are selected properly but don’t translate back when another tag is clicked." platform=""/>
+								<bug type="functional" open by="Gabrielle" description="Row 2 Tag 3 doesn't move back into place after being deselected." platform=""/>
+							</ui-state>
+							<ui-state name="User selects two different splash tagsfrom two different rows"></ui-state>
+							<ui-state name="User selects a splash tag whose roe already jas a flash tag"></ui-state>
 						</ui-stream>
                     </story>
                 </user-stories>
             <user-workflow/>
             <user-workflow name='Splash Nav & Utilities' url='/#/dev/splash/nav/' priority="13">
                 <user-stories>
-
                     <story name="On enter splash">
+						<ui-stream name="Navigation animates in">
+							<ui-state name="Uguru logo animates in" desc="Logo jellyIn; label scaleInX"></ui-state>
+							<ui-state name="Category dropdown animates in" desc="drawIn"></ui-state>
+							<ui-state name="@ sign animates in" desc="drawIn"></ui-state>
+							<ui-state name="School dropdown animates in" desc="drawIn"></ui-state>
+							<ui-state name="Powerup link animates in" desc="drawIn"></ui-state>
+							<ui-state name="Sidebar link animates in" desc="drawIn"></ui-state>
+							<ui-state name="Pennant animates in" desc="rotateIn"></ui-state>
+							<ui-state name="Skip button animates in" desc="rollIn"></ui-state>
+						</ui-stream>
                     </story>
 
-                    <story desc="On transition getting started">
-                    </story>
-
-                    <story name="Category" priority="GW:1">
+                    <story name="Select category" priority="GW:1">
                         <ui-stream name="Desktop user selects a category" priority="GW:1">
-							<ui-state name="Mouse enter dropdown" desc="User's mouse enters the dropdown space and the guru's hair changes color if different from the current" func="true" priority="GW:1">
+							<ui-state name="Mouse enter dropdown" desc="User's mouse enters the dropdown space and the guru's hair changes color if different from the current" func="false" priority="GW:1">
 								<bug type="static" open by="Gabrielle" flag="[Jeselle, Gabrielle]" description="Hair needs to be diluted version of category colors" platform="all" time="15" reference="true" reference-name="Guru hair color"  priority="GW:2"/>
 								<bug type="functional" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Variable for category name only works once, i.e. guru-fill-^name outputs guru-fill-academic but afterwards keeps outputting guru-fill-^name" platform="all" time="15" reference="true" reference-name="Category name variable" priority="GW:1"/>
 							</ui-state>
 
 							<ui-state name="Mouse over dropdown" desc="Staggered opacity drop starting from the category dropdown" priority="GW:2">
-								<bug type="animation" open by="Gabrielle" flag="[Gabrielle]" description="Hover needs to be put back in" platform="desktop" time="25"/>
+								<bug type="animation" open by="Gabrielle" flag="[Gabrielle]" description="Hover needs to be put back in" platform="desktop" time="25" reference="true" reference-name="Staggered opacity"/>
 							</ui-state>
 
 							<ui-state name="Click on dropdown" desc="Staggered opacity drop if not already triggered; dropdown options slideInDown; guru head tilts" priority="GW:3">
@@ -129,45 +137,83 @@
 							</ui-state>
 
                             <ui-state name="Close dropdown" desc="Dropdown closes" priority="SM:2">
-								<bug type="animation" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Mouse-leave doesn't work" platform="desktop"/>
-                                <bug type="functional" open by="Samir" flag="[Samir]" name="Close dropdown when click outside of it" platform="desktop"/>
+								<bug type="animation" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Mouse-leave doesn't work" platform="desktop" reference="true" reference-name="Dropdown mouse-leave"/>
+                                <bug type="functional" open by="Samir" flag="[Samir]" name="Close dropdown when click outside of it" platform="desktop" reference="true" reference-name="Outside dropdown click"/>
                             </ui-state>
                         </ui-stream>
-						<!-- for when we do mobile -->
-						<!-- <bug type="functional" open by="Gabrielle" flag="[Samir]" description="Mobile switcher does not work as expected - the onExit animates out all at the same time, then the selected university/category reappears and animates out again. In Jeselle's version, the previous selection was prioritized with the delay over the current selection." platform="mobile"/> -->
-                    </story>
 
-                    <story name="University Change" priority="GW:2">
-						<ui-stream name="Desktop user selects a university" priority="GW:1">
-							<ui-state name="Open dropdown">
-								<bug type="" open by="Gabrielle" description="Search link needs to be separated from both the mobile and desktop dropdowns" platform=""/>
+						<ui-stream name="Mobile user selects a category">
+							<ui-state name="Click on dropdown" desc="Dropdown options bounceIn-subtle staggered"></ui-state>
+
+							<ui-state name="Click on dropdown option" desc="Dropdown closes; guru switches out, tags switch out">
+								<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Mobile switcher does not work as expected - the onExit animates out all at the same time, then the selected university/category reappears and animates out again. In Jeselle's version, the previous selection was prioritized with the delay over the current selection." platform="mobile" reference="true" reference-name="Mobile switch exit"/>
 							</ui-state>
+
+                            <ui-state name="Close dropdown" desc="Dropdown closes" priority="SM:2">
+								<bug reference-from="Mobile switch exit"/>
+                            </ui-state>
 						</ui-stream>
                     </story>
 
-                    <story name="Sidebar Entrance Transition"/>
-                    <story name="Sidebar exit Transition"/>
+                    <story name="Change university" priority="GW:2">
+						<ui-stream name="Desktop user selects a university" priority="GW:1">
+							<ui-state name="Mouse enter dropdown" desc="User's mouse enters the dropdown space and the guru's hair changes color if different from the current" func="false" priority="GW:1">
+								<bug type="static" open by="Gabrielle" flag="[Jeselle, Gabrielle]" description="Hair needs to be diluted version of category colors" platform="all" time="15" reference="true" reference-name="Guru hair color"  priority="GW:2"/>
+								<bug type="functional" open by="Gabrielle" flag="[Samir, Gabrielle]" description="Variable for category name only works once, i.e. guru-fill-^name outputs guru-fill-academic but afterwards keeps outputting guru-fill-^name" platform="all" time="15" reference="true" reference-name="Category name variable" priority="GW:1"/>
+							</ui-state>
+
+							<ui-state name="Mouse over dropdown" desc="Staggered opacity drop starting from the category dropdown" priority="GW:2">
+								<bug reference-from="Staggered opacity"/>
+							</ui-state>
+
+							<ui-state name="Click on dropdown" desc="Staggered opacity drop if not already triggered; dropdown options slideInDown; phone transitions in">
+								<bug type="functional" open by="Gabrielle" description="Search link needs to be separated from both the mobile and desktop dropdowns" platform=""/>
+							</ui-state>
+
+							<ui-state name="Mouse enter dropdown option" desc="Device and pennant change to school color"></ui-state>
+
+							<ui-state name="Click on dropdown option" desc="Dropdown closes; pennant changes name"></ui-state>
+
+                            <ui-state name="Close dropdown" desc="Dropdown closes" priority="SM:2">
+								<bug reference-from="Dropdown mouse-leave"/>
+                                <bug reference-name="Outside dropdown click"/>
+                            </ui-state>
+						</ui-stream>
+
+
+						<ui-stream name="Mobile user selects a university">
+							<ui-state name="Click on dropdown" desc="Dropdown options bounceIn-subtle staggered"></ui-state>
+
+							<ui-state name="Click on dropdown option" desc="Dropdown closes; guru switches out, tags switch out">
+								<bug reference-from="Mobile switch exit"/>
+							</ui-state>
+
+                            <ui-state name="Close dropdown" desc="Dropdown closes" priority="SM:2">
+								<bug reference-from="Mobile switch exit"/>
+                            </ui-state>
+						</ui-stream>
+                    </story>
                 </user-stories>
             </user>
             <user-workflow name='Splash Sidebar' priority="14" url='/#/dev/splash/sidebar/'>
                 <setup type="base">
                 </setup>
                 <user-stories>
-                    <story type="transition" desc="sidebar opens" platforms="[desktop, mobile]">
-                        <ui-stream desc="user opens sidebar on mobile" type="mobile">
-                        </ul-stream>
-                        <ui-stream desc="user opens sidebar" type="desktop">
-                            <ui-state gesture='click'>
-                            </ui-state>
-                            <ui-state type="gesture" gesture="hover" name="sidebar icon hover">
-                            </ui-state>
-                            <ui-state type="transition" name="sidebar ">
-                            </ui-state>
-                        </ul-stream>
+                    <story type="transition" desc="Sidebar opens" platforms="[desktop, mobile]">
+                        <ui-stream desc="User opens sidebar" type="desktop">
+							<ui-state name="Elements transition in" desc="Links rotate in from opposite angles; close button drawIn"></ui-state>
+                            <ui-state name="Sidebar icon mouse-enter" type="gesture" gesture="hover"></ui-state>
+                            <ui-state name="Link mouse-enter"></ui-state>
+							<ui-state name="Link mouse-leave"></ui-state>
+							<ui-state name="Link click"></ui-state>
+							<ui-state name="Modal opens"></ui-state>
+                            <!-- <ui-state gesture='click'></ui-state>
+                            <ui-state type="transition" name="sidebar"></ui-state> -->
+                        </ui-stream>
                     </story>
                 </user-stories>
             </user-workflow>
-            <user-workflow name='Splash Device'><user-workflow priority="15" />
-            <user-workflow name='Splash Map' priority="16"><user-workflow/ >
-            <user-workflow name='Splash Tour' priority="17"><user-workflow/>
+            <user-workflow name='Splash Device' priority="15"></user-workflow>
+            <user-workflow name='Splash Map' priority="16"></user-workflow>
+            <user-workflow name='Splash Tour' priority="17"></user-workflow>
         </module>

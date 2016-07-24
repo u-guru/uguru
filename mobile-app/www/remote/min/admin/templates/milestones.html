@@ -53,9 +53,9 @@
 							</li>-->
 						</li>
 					</ul>
-					<div class='full-x p15-grid bg-cerise' ng-if='workflow.active'>
+					<div class='full-x p15-grid bg-cerise' ng-if='workflow.active || (ms.activeFilter && workflow[ms.activeFilter].length)'>
 						<ul class='full-x flex-wrap flex-stretch flex-start' ng-init="activeFilter = workflow.filter.options[workflow.filter.activeIndex]">
-							<li class='full-x p15-grid txt-3 txt-white txt-center weight-700 ugrid-5'>
+							<li class='full-x p15-grid txt-3 txt-white txt-center weight-700 ugrid-6'>
 								<div ng-if='!ms.activeFilter' ng-repeat='column in workflow["columns"][activeFilter]'>
 									{{column}}
 								</div>
@@ -64,27 +64,24 @@
 								</div>
 							</li>
 							<li class='weight-500 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x text-center flex-stretch' ng-if='ms.activeFilter' ng-repeat='item in workflow[ms.activeFilter] track by $index'>
-								<div class='ugrid-5 p05-grid txt-3 full-x'>
-									<div class='text-left weight-600'>
-										{{item.name}} {{activeFilter}}
-										<br>
-										<span class='txt-1 weight-400 txt-smoke opacity-50'>
-											{{item.desc}}
-										</span>
+								<div class='ugrid-6 p05-grid txt-3 full-x'>
+									<div>
+										#{{item.id}}
 									</div>
 									<div>
-										<span ng-if='item.priority' ng-repeat='(key, value) in item.priority'> {{key + ':' + value}}
-										</span>
-										<span ng-if='!item.priority'> NA </span>
+										{{item.name}}
 									</div>
 									<div>
-										{{item.stories && item.stories.length}}
+										{{item.desc}}
 									</div>
 									<div>
-										{{item.bugs && item.bugs.length}}
+										{{item.platform}}
 									</div>
 									<div>
-										{{item && item.cp}}
+										{{item.tested}}
+									</div>
+									<div>
+										{{item.by}}
 									</div>
 								</div>
 							</li>

@@ -103,7 +103,7 @@ angular.module('uguru.admin')
             name: attr.name,
             filter: {options: ['stories','testReady', 'streams', 'bugs', 'states'], activeIndex: 0},
             columns: {
-                bugs: ['name', 'description', 'state name'],
+                bugs: ['id', 'name', 'description', 'platform', 'by', 'tested'],
                 streams: ['name', 'description', 'num states'],
                 stories: ['name', 'priority', 'streams', 'bugs', 'progress'],
                 testReady: ['name', 'description', 'state', 'stream', 'story'],
@@ -154,7 +154,8 @@ angular.module('uguru.admin')
         scope.stories = [];
         scope.personDict = {};
         $timeout(function() {
-            scope.$parent.workflow.stories = scope.stories;
+            scope.workflow = scope.$parent.workflow;
+            scope.workflow.stories = scope.stories;
             scope.$apply();
                 $timeout(function() {
                     scope.$watch('module.activePerson', function(new_person, old_person) {
@@ -192,8 +193,11 @@ angular.module('uguru.admin')
         // scope.$watchCollection('story', function(story, old_story) {
         //     scope.story.bugsLength
         // })
+
         $timeout(function() {
-            scope.$parent.stories.push(scope.story)
+
+            scope.stories = scope.$parent.stories;
+            scope.stories.push(scope.story)
             // scope.$apply();
             scope.story.priority && updateUserStoriesPriority(scope.$parent, scope.story, scope.module.activePerson);
 
@@ -209,10 +213,39 @@ angular.module('uguru.admin')
     scope: true,
     link : function postLink(scope, element, attr) {
         scope.stream = {
-            desc: attr.desc
+            desc: attr.desc,
+            states:[],
+            bugs: []
         }
         $timeout(function() {
-            scope.$parent.story.streams.push(scope.stream);
+            scope.story = scope.$parent.story;
+            scope.story.streams.push(scope.stream);
+            scope.$watch('stream.bugs', function(bug_arr, old_bug_arr) {
+                // if (bug_arr.length) {
+                //     scope.storybug_arr[bug_arr.length - 1])
+                // }
+            })
+        })
+
+     }
+    }
+}])
+.directive('uiState', ['$timeout', function ($timeout) {
+  return {
+    replace: true,
+    restrict: 'E',
+    require: ['^module'],
+    scope: true,
+    link : function postLink(scope, element, attr) {
+        scope.state = {
+            desc: attr.desc,
+            name: attr.name,
+            bugs:[]
+        }
+        $timeout(function() {
+            scope.stream = scope.$parent.stream;
+            scope.stream.states.push(scope.state);
+
         })
 
      }
@@ -225,13 +258,29 @@ angular.module('uguru.admin')
     require: ['^module'],
     scope: true,
     link : function postLink(scope, element, attr) {
+        var supportedTypes = ['functional', 'static', 'animation'];
         scope.bug = {
-            desc: attr.desc,
+            desc: attr.desc || attr.description,
             type: attr.type,
-            by: attr.by
+            platform: attr.platform,
+            by: attr.by,
+            tested: attr.tested === 'true',
+            open: 'open' in attr,
+            tested: ('tested' in attr && attr.tested === 'true') || false,
         }
         $timeout(function() {
+            scope.state = scope.$parent.state;
+            scope.state.bugs.push(scope.bug);
+            scope.$parent.stream.bugs.push(scope.bug);
             scope.$parent.story.bugs.push(scope.bug);
+            $timeout(function() {
+                if (scope.bug.type === 'functional') {
+                    scope.bug.id = scope.$parent.$parent.workflow.bugs.length + 1;
+                    scope.bug.name = (scope.$parent.stream.name || '') + ' ' + scope.state.name;
+                    scope.$parent.$parent.workflow.bugs.push(scope.bug);
+                }
+            })
+
         })
 
      }
@@ -416,9 +465,8 @@ angular.module('uguru.admin')
             scope.doc = scope.$parent.doc_item;
             var type = attr.type;
             var text;
-
             if ('default' in attr && 'doc' in scope) {
-                scope.doc.snippetIndex = scope.doc.snippets.length
+                scope.doc.snippetIndex = scope.doc.snippets.length;
                 title = 'Default';
             }
             scope.snippet = {
