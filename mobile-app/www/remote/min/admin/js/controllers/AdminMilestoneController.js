@@ -6,14 +6,21 @@ angular.module('uguru.admin')
   '$timeout',
   '$window',
   'SpecService',
-  function($scope, $state, $timeout, $window, SpecService) {
+  '$stateParams',
+  'UtilitiesService',
+  function($scope, $state, $timeout, $window, SpecService, $stateParams, UtilitiesService) {
 
     var ms = this;
+    var allowed_params = ['initial', 'filter']
     ms.types = ['ugh']//, 'eh', 'ah', 'aha'];
     ms.typeIndex = 0;
     ms.modules = [];
     ms.toggleAll = toggleAll;
     ms.setActivePerson = setActivePerson;
+    ms.parseStateParamFilters = parseStateParamFilters;
+    $timeout(function() {
+      ms.parseStateParamFilters($stateParams, allowed_params);
+    }, 100)
 
 
     // $scope.$watch('root.milestones', function(new_val) {
@@ -43,12 +50,39 @@ angular.module('uguru.admin')
       }
     }
 
+    function parseStateParamFilters(params, allowed) {
+      for (key in params) {
+        if (allowed.indexOf(key) > -1) {
+          var value = params[key].toUpperCase();
+          if (ms.activeModule.teamArr.indexOf(value) > -1) {
+              ms.setActivePerson(params[key].toUpperCase());
+          } else {
+            var workflows = ms.activeModule.workflows;
+            var value = value.toLowerCase();
+            if (value.indexOf('-') > -1) {
+              var value = UtilitiesService.camelCase(value);
+            }
+            for (var i = 0; i < workflows.length; i++) {
+              var iWorkflow = workflows[i];
+
+              var activeIndex = iWorkflow.filter.options.indexOf(value);
+              if (activeIndex > -1) {
+                iWorkflow.filter.activeIndex = activeIndex;
+                ms.activeFilter = iWorkflow.filter.options[activeIndex];
+                ms.activeFilterFormatted = UtilitiesService.camelToDash(ms.activeFilter).split('-')
+                ms.activeFilterFormatted.forEach(function(word, index) {return word.substring(0,1).toUpperCase() + word[index].substring(1)})
+                ms.activeFilterFormatted = ms.activeFilterFormatted.join(" ");
+              }
+            }
+          }
+
+        }
+      }
+    }
+
     function setActivePerson(initial) {
       ms.activeModule.activePerson = initial;
       $timeout(function() {$scope.$apply();})
-      for (var i = 0; i < ms.activeModule.workflows; i++) {
-
-      }
     }
 
     ms.open = function(url) {
