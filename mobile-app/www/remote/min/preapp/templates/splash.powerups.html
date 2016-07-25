@@ -1,5 +1,9 @@
+<!-- @gabrielle, @jeselle, hacked this line below
+    on-init='trigger:[on-enter] | send:[powerups-clicked]'
+-->
 <div class="powerups-scale"
 	init-with="p:[transform:scale(0), transition:all 1000ms ease-out, opacity:1, display:block, background:#F6C64E]"
+    on-init='trigger:[on-enter] | send:[powerups-clicked]'
 	when-powerups-clicked="t:[on-enter]"
 	on-enter="p:[transform:scale(1000)] | t:[on-exit]"
 	on-exit="p:[opacity:0:delay-750, transition:all 500ms ease-out, display:none:delay-2000]"></div>

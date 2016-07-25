@@ -12,6 +12,8 @@ angular.module('uguru.admin')
 
     var ms = this;
     var allowed_params = ['initial', 'filter']
+    var teamDefaultDict = {JH: 'testReady', GW: 'states', SM:'stories', JO:'states'};
+    var teamDefaultFilter = {JH: 'func', GW: 'func', SM:'func', JO:'func'};
     ms.types = ['ugh']//, 'eh', 'ah', 'aha'];
     ms.typeIndex = 0;
     ms.modules = [];
@@ -19,8 +21,8 @@ angular.module('uguru.admin')
     ms.setActivePerson = setActivePerson;
     ms.parseStateParamFilters = parseStateParamFilters;
     $timeout(function() {
-      ms.parseStateParamFilters($stateParams, allowed_params);
-    }, 100)
+      ms.parseStateParamFilters($stateParams);
+    }, 500)
 
 
     // $scope.$watch('root.milestones', function(new_val) {
@@ -44,27 +46,34 @@ angular.module('uguru.admin')
       return dimen_str
     }
 
+
+
     function toggleAll(module) {
       for (var i = 0; i < module.workflows.length; i++) {
         module.workflows[i].active = false;
       }
     }
 
-    function parseStateParamFilters(params, allowed) {
+    function parseStateParamFilters(params, workflow) {
+      var allowed = allowed_params
       for (key in params) {
         if (allowed.indexOf(key) > -1) {
           var value = params[key].toUpperCase();
           if (ms.activeModule.teamArr.indexOf(value) > -1) {
-              ms.setActivePerson(params[key].toUpperCase());
+            ms.activeModule.activePerson = value;
+            $timeout(function() {$scope.$apply();})
+
           } else {
             var workflows = ms.activeModule.workflows;
             var value = value.toLowerCase();
             if (value.indexOf('-') > -1) {
               var value = UtilitiesService.camelCase(value);
             }
+            if (workflow) {
+              var workflows = [workflow];
+            }
             for (var i = 0; i < workflows.length; i++) {
               var iWorkflow = workflows[i];
-
               var activeIndex = iWorkflow.filter.options.indexOf(value);
               if (activeIndex > -1) {
                 iWorkflow.filter.activeIndex = activeIndex;
@@ -72,6 +81,7 @@ angular.module('uguru.admin')
                 ms.activeFilterFormatted = UtilitiesService.camelToDash(ms.activeFilter).split('-')
                 ms.activeFilterFormatted.forEach(function(word, index) {return word.substring(0,1).toUpperCase() + word[index].substring(1)})
                 ms.activeFilterFormatted = ms.activeFilterFormatted.join(" ");
+                iWorkflow.active = iWorkflow[iWorkflow.filter.options[activeIndex]].length > 0
               }
             }
           }
@@ -82,7 +92,8 @@ angular.module('uguru.admin')
 
     function setActivePerson(initial) {
       ms.activeModule.activePerson = initial;
-      $timeout(function() {$scope.$apply();})
+      // $timeout(function() {$scope.$apply()})
+      $state.go('^.milestones', {initial: initial, filter: teamDefaultDict[initial]})
     }
 
     ms.open = function(url) {
