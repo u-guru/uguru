@@ -84,4 +84,6 @@
 		on-enter="p:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
        <button on-click="s:[close-powerups]">Back</button>
     </div>
+    <div init-later when-gpa-on-click="trigger:[init-with]" init-with="send:[gpa-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/gpa.html'">
+    </div>
 </ion-view>
