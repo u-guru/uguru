@@ -7,7 +7,7 @@
                 <ui-stream desc='powerups transition in'>
                     <ui-state type="gesture" desc="User clicks powerup icon" func="true">
                     </ui-state>
-                    <ui-state type="gesture, transition" desc="Full view transition from [splash madlib, ]" func="true">
+                    <ui-state type="gesture, transition" desc="Full view transition from [splash madlib]" func="true">
                     </ui-state>
                     <ui-state type="gesture, transition" desc="Once view transition is complete, initiate the on enter of the powerup cards" func="true">
                     </ui-state>
@@ -51,8 +51,8 @@
 						<bug type="functional" open by="Gabrielle" description="Tags need .active added when selected and removed when deselected - if added currently, tags are selected properly but don’t translate back when another tag is clicked." platform=""/>
 						<bug type="functional" open by="Gabrielle" description="Row 2 Tag 3 doesn't move back into place after being deselected." platform=""/>
 					</ui-state>
-					<ui-state name="User selects two different splash tagsfrom two different rows"></ui-state>
-					<ui-state name="User selects a splash tag whose roe already jas a flash tag"></ui-state>
+					<ui-state name="User selects two different splash tags from two different rows"></ui-state>
+					<ui-state name="User selects a splash tag whose row already has a splash tag"></ui-state>
 				</ui-stream>
                 <ui-stream name="User selects/deselects one tag, another already exists">
                 </ui-stream>
