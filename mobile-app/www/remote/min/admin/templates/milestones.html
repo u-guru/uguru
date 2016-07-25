@@ -141,7 +141,7 @@
 							</li>
 							<li class='weight-500 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x text-center flex-stretch' ng-if='ms.activeFilter' ng-repeat='item in workflow[ms.activeFilter] track by $index' ng-if="!item.inactive">
 								<div class='txt-3 full-x'>
-									<div ng-show="ms.activeFilter === 'stories'" class='flex-wrap-center ugrid-4 full-x'>
+									<div ng-show="ms.activeFilter === 'stories'" class='flex-wrap-center ugrid-3 full-x'>
 											<div class='flex-wrap-center txt-left'>
 												<div class='block full-x'>
 													<h1 class='txt-left txt-4 weight-600'>
@@ -157,12 +157,14 @@
 													{{item.type}}
 												</div>
 											</div>
-											<div class='ugrid-3' ng-init='show={};'>
-												<div ng-repeat='child in item.children' ng-init='show[child] = false;'>
-													<button class='bg-transparent height-24 p05xy m05right border-white radius-2 txt-2 weight-400 txt-left'  ng-class="{'border-1-bottom':show[child]}" ng-click='show[child] = true'>
-														{{child}}
-													</button>
-												</div>
+											<div class='flex-wrap flex-vertical-center' class='txt-1'>
+												<span  class='p05xy m10y'  ng-repeat='tag in item.tags' ng-class='{"opacity-50": !tag.active}'>
+													<span class='txt-1 p05xy border-1 border-white' ng-if='tag.type || tag.func'>
+													<span ng-if='tag.type'>type</span>
+													<span ng-if='tag.func'>functional</span>
+													:{{tag.type || tag.func}}
+													</span>
+												</span>
 											</div>
 											<div class='ugrid-3'>
 												<span>{{item.streams.length}} streams</span>
@@ -202,6 +204,43 @@
 												<span class='txt-1 p05xy border-1 border-white'>
 													<span class='weight-600'>{{item_val}}</span>: {{item[item_val]}}</span>
 
+													</span>
+												</span>
+											</span>
+										</div>
+									</div>
+									<div ng-show="ms.activeFilter === 'streams'" class='ugrid-3 full-x p15-grid' >
+										<div class='txt-left relative'>
+											<div class='block full-x'>
+												<h1 class='txt-left txt-4 weight-600'>
+													{{item.name}}
+												</h1>
+											</div>
+											<div class='txt-1 full-x' ng-if='item.desc'>
+												{{item.desc}}
+											</div>
+											<div class='txt-1 opacity-50' ng-if='item.type'>
+												<span class='weight-800'>type:
+												</span>
+												{{item.type}}
+											</div>
+										</div>
+										<div class='flex-wrap flex-vertical-center' class='txt-1'>
+											<span  class='p05xy m10y'  ng-repeat='tag in item.tags' ng-class='{"opacity-50": !tag.active}'>
+												<span class='txt-1 p05xy border-1 border-white' ng-if='tag.type || tag.func'>
+												<span ng-if='tag.type'>type</span>
+												<span ng-if='tag.func'>functional</span>
+												:{{tag.type || tag.func}}
+												</span>
+											</span>
+										</div>
+										<div class='flex-wrap flex-vertical-center' class='txt-1' ng-init='item.options = ["func", "cp", "tested", "smooth"]'>
+											<span  class='p05xy m10y'  ng-repeat='item_val in item.options' ng-class='{"opacity-50": !item[item_val]}'>
+												<span class='txt-1 p05xy border-1 border-white'>
+													<span class='weight-600'>{{item_val}}</span>:
+													<span ng-if='item[item_val].length'>
+													{{item[item_val]}}</span>
+													<span ng-if='!item[item_val].length'>TBA</span>
 													</span>
 												</span>
 											</span>

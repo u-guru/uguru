@@ -4,7 +4,7 @@
     <user-workflow priority="5" name='Powerups View' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/powerups/' priority="10">
         <user-stories>
             <story type="func, transition" desc="user enters power-ups screen & learns details">
-                <ui-stream desc='Powerups transition in'>
+                <ui-stream desc='Powerups transition in' type='func, gesture'>
                     <ui-state name="User clicks powerups icon" desc="Icon zooms to center" type="gesture, transition" func="true">
                     </ui-state>
                     <ui-state name="Full view transition" desc="Gold background expands, then fades into the slate" type="transition" func="true">

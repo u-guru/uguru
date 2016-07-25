@@ -114,8 +114,8 @@ angular.module('uguru.admin')
             sort_tags: {functional: false, cp: false},
             columns: {
                 bugs: ['id', 'name', 'description', 'platform', 'by', 'tested'],
-                streams: ['name', 'description', 'num states'],
-                stories: ['about', 'view', 'info', 'status'],
+                streams: ['name', 'tags/status', 'progress'],
+                stories: ['name', 'tags/status', 'progress'],
                 states: ['name', 'tags/status', 'progress']
             },
             bugs:[],
@@ -201,7 +201,6 @@ angular.module('uguru.admin')
                 var activeFilterArr = scope.workflow[activeFilterName];
                 var activeTags = [];
                 scope.workflow.filter.tags.forEach(function(tag, index) {if (tag.active) activeTags.push(tag.kvStr)});
-                console.log(activeTags)
 
                 for (var i = 0; i < activeFilterArr.length; i++) {
                     var iFilterObj = activeFilterArr[i];
@@ -344,6 +343,9 @@ angular.module('uguru.admin')
             states:[],
             bugs: [],
             progress:{},
+            type: 'type' in attr && attr['type'],
+            cp: ('cp' in attr && attr['cp']) || false,
+            func: ('func' in attr && attr['func']) || false,
             calculateProgress: calcStreamProgress
         }
         $timeout(function() {
@@ -351,8 +353,11 @@ angular.module('uguru.admin')
             scope.story.streams.push(scope.stream);
             scope.stream.id = scope.story.streams.length + 1;
             scope.story_id = scope.story.id;
-            scope.$watch('stream.states', function(states) {
+            $timeout(function() {
 
+                scope.$parent.workflow.streams.push(scope.stream);
+                // console.log();
+                // scope.$parent.workflow.states.push(scope.state);
             })
         })
 
@@ -834,8 +839,10 @@ function getCommonTagsAndFunc(workflow, attr_tags, person) {
         if (!iFilterObj) continue;
         iFilterObj.tags = [];
         //going through type =
+
         for (var j = 0; j < defaultFilterAttr.length; j++) {
             var iFilterAttr = defaultFilterAttr[j];
+            console.log(iFilterAttr in iFilterObj)
             if (iFilterAttr in iFilterObj && (typeof(iFilterObj[iFilterAttr]) === 'boolean' || (iFilterObj[iFilterAttr] && iFilterObj[iFilterAttr].length))) {;
                 if (typeof(iFilterObj[iFilterAttr]) === 'string') {
                     var tagAttrSplit = iFilterObj[iFilterAttr].split(',');
