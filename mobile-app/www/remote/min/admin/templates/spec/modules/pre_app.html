@@ -52,18 +52,30 @@
 					<ui-state name="Selected tile bg expands" desc="Bg color scaleUp to full page from origin center" type="transition" func="true">
                 </ui-stream>
 				<ui-stream desc="Loader transitions to landing page tile">
+					<ui-state name="Circle border is reemphasized" desc="Border is drawn over" type="transition" func="true">
+					<ui-state name="Hover animation plays" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true">
 				</ui-stream>
 				<ui-stream desc="Rest of the landing page onEnter">
+					<ui-state name="Guru circle becomes header" desc="Scales down, translateY up" type="transition" func="true">
+					<ui-state name="Header text enters" desc="BounceUpIn subtle" type="transition" func="true">
+					<ui-state name="Content card bg peak enters" desc="BounceUpIn subtle" type="transition" func="true">
 				</ui-stream>
 			</story>
-			<story type="func, transition" desc="User transitions to powerups page from a specific powerup">
-                <ui-stream desc='User hovers over back button'>
+			<story type="func, transition" desc="User transitions to powerups page from a specific powerup page">
+                <ui-stream desc='User hovers over close button'>
+					<ui-state name="Close button mouseEnter state" desc="Color darkens" type="gesture, transition" func="true">
                 </ui-stream>
 				<ui-stream desc='User clicks on back button'>
+					<ui-state name="Close button mouseClick state" desc="Color lightens" type="gesture, transition" func="true">
                 </ui-stream>
 				<ui-stream desc='Landing page transitions out'>
+					<ui-state name="Content card bg peak exits" desc="fadeDownOut" type="transition" func="true">
+					<ui-state name="Header text exits" desc="fadeDownOut" type="transition" func="true">
+					<ui-state name="Powerup bg color fades" desc="Color fadeOut to charcoal. Meanwhile, tile bg 'remains' with bounceIn" type="transition" func="true">
                 </ui-stream>
 				<ui-stream desc='Powerups page transitions in'>
+					<ui-state name="Guru circle header transforms back into tile" desc="Translates to respective spot with ease-out" type="transition" func="true">
+					<ui-state name="Other powerup tiles enter" desc="See respective tile onEnter animations in the 'user enters power-ups screen & learns details' stream. Remaining tiles stagger in from left to right" type="transition" func="true">
                 </ui-stream>
             </story>
 
