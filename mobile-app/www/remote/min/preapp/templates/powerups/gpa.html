@@ -1,21 +1,29 @@
-<div class='full-xy bg-azure txt-smoke txt-48 absolute left-0 flex-wrap-center' init-with="p:[opacity:0, top:-100%]" on-enter="p:[transition:all 1000ms ease, top:0, opacity:1, z-index:10000]" when-gpa-triggered="trigger:[on-enter]" when-close-gpa="p:[opacity:0, top:-100%, z-index:default:delay-1000]">
-	<div id="powerup-gpa-title-container" class="fixed top-0 left-0 full-xy" ng-include="img_base + 'templates/dev/gpa/title.html'"></div>
-	<!-- class="z-index--1000 opacity-0" class-on-activate="fadeIn:anim, z-index-1000:keep, null:inject#powerup-gpa-title|activate" class-on-activate-delay="" -->
-	<div class="landing-gpa landing-container full-xy p15xy overflow-auto txt-center" class-on-activate="null:inject.landing-gpa .landing-demo|activate, null:inject.landing-gpa .coach|activate, null:inject.gpa-guru-eyebrow-right|activate, null:inject.gpa-guru-eyebrow-left|activate" class-on-activate-delay="4250">
-		<div id="powerup-landing-icon" class="powerup-icon margin-auto" class-on-activate="active" class-on-activate-delay="500"><div class="loader-powerup-gpa" ng-include="img_base + 'templates/elements/assets/powerups/gpa-card.tpl'"></div></div>
+<div class='full-xy bg-azure txt-smoke txt-48 absolute left-0 flex-wrap-center'
+	init-with="p:[op:0, tr:translateY(-100%)]"
+	on-enter="p:[t:all 1000ms ease, tr:translateY(0), op:1, z-index:10000]"
+	when-gpa-triggered="t-enter"
+	when-close-gpa="p:[op:0, tr:translateY(-100%), z-index:default:delay-1000]">
+	<div class="landing-gpa landing-container full-xy p15xy overflow-auto txt-center">
+		<!-- class-on-activate="null:inject.landing-gpa .landing-demo|activate, null:inject.landing-gpa .coach|activate, null:inject.gpa-guru-eyebrow-right|activate, null:inject.gpa-guru-eyebrow-left|activate" class-on-activate-delay="4250" -->
+		<div id="powerup-landing-icon" class="powerup-icon margin-auto active">
+			<!-- class-on-activate="active" class-on-activate-delay="500" -->
+			<div class="loader-powerup-gpa" ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
+		</div>
 		<h1 class="powerup-header txt-48 black m15top">GPA Guru</h1>
 		<h2 class="powerup-header txt-28 semibold margin-none">Organize and calculate your grades the easy way.</h2>
 		<div class="relative z-index-2">
-			<div class="landing-demo relative z-index-3 margin-auto m30top opacity-0" class-on-activate="u-bounceInUp-subtle:anim">
+			<div class="landing-demo relative z-index-3 margin-auto m30top">
+				<!-- class-on-activate="u-bounceInUp-subtle:anim" -->
 				<svg viewBox="0 0 318 651">
 					<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
 					<circle cx="158.5" cy="610.5" r="25"></circle>
 					<rect x="21.5" y="79.5" width="276" height="493"></rect>
 				</svg>
-				<svg class="coach absolute top-0 opacity-0" class-on-activate="u-bounceIn-subtle:anim" class-on-activate-delay="1000" style="right: -250px;" width="228px" height="196px" viewBox="0 0 228 196">
+				<svg class="coach absolute top-0" style="right: -250px;" width="228px" height="196px" viewBox="0 0 228 196">
+					<!-- class-on-activate="u-bounceIn-subtle:anim" class-on-activate-delay="1000" -->>
 				    <g fill="none">
 				        <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558086,58.4656181 C-6.12740225,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" id="Shape" stroke="#40484B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF" opacity="0.9"></path>
-				        <text transform="translate(116.893351, 93.627807) rotate(24.000000) translate(-116.893351, -93.627807) " font-family="Source Sans Pro" font-size="36" font-weight="500" line-spacing="36" fill="#2B3234">
+				        <text transform="translate(116.893351, 93.627807) rotate(24.000000) translate(-116.893351, -93.627807)" font-family="Source Sans Pro" font-size="36" font-weight="500" line-spacing="36" fill="#2B3234">
 				            <tspan x="58.3933507" y="110.627807">Try me!</tspan>
 				        </text>
 				    </g>
@@ -79,25 +87,26 @@
 				<h1 class="txt-white txt-48 semibold">Featured Actions</h1>
 				<ul class="ugrid-3 p15-grid">
 					<li class="flex-center-wrap">
-						<span class="svg-white svg-stroke-4 svg-128" ng-include="img_base + 'templates/svg/main/grades-a.html'"></span>
+						<span class="svg-white svg-stroke-4 svg-128" ng-include="root.base_url + 'shared/templates/components/svg/main/grades-a.html'"></span>
 						<h2 class="full-x txt-white txt-28 semibold line-height-1-2">
 							Search From<br/>University Courses
 						</h2>
 					</li>
 					<li class="flex-center-wrap">
-						<span class="svg-white svg-stroke-4 svg-128" ng-include="img_base + 'templates/svg/main/grades-a.html'"></span>
+						<span class="svg-white svg-stroke-4 svg-128" ng-include="root.base_url + 'shared/templates/components/svg/main/grades-a.html'"></span>
 						<h2 class="full-x txt-white txt-28 semibold line-height-1-2">
 							Calculate<br/>Course Grades
 						</h2>
 					</li>
 					<li class="flex-center-wrap">
-						<span class="svg-white svg-stroke-4 svg-128" ng-include="img_base + 'templates/svg/main/grades-a.html'"></span>
+						<span class="svg-white svg-stroke-4 svg-128" ng-include="root.base_url + 'shared/templates/components/svg/main/grades-a.html'"></span>
 						<h2 class="full-x txt-white txt-28 semibold line-height-1-2">
 							Track Your<br/>Cumulative GPA
 						</h2>
 					</li>
 				</ul>
-				<button id="gpa-try-button" class="m30y bg-azure reverse radius-2 normal p30x" class-on-click="null:inject#powerup-gpa-title-container|activate">Try It Now on Desktop</button>
+				<button id="gpa-try-button" class="m30y bg-azure reverse radius-2 normal p30x">Try It Now on Desktop</button>
+				<!-- class-on-click="null:inject#powerup-gpa-title-container|activate" -->
 				<ul class="flex-center p15-grid full-x line-height-1-2">
 					<li class="txt-24 semibold">
 						Android<br/>Play Store
@@ -108,11 +117,12 @@
 				</ul>
 			</div>
 		</div>
+		<div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
+	        init-with="p:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
+	        when-powerups-init="t-enter"
+			on-init="t-enter"
+	        on-enter="p:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
+	       <button on-click="s:[close-gpa:public]">Back</button>
+	    </div>
 	</div>
-    <div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
-        init-with="p:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
-        when-powerups-init="t-enter"
-        on-enter="p:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
-       <button on-click="s:[close-gpa:public]">Back</button>
-    </div>
 </div>
