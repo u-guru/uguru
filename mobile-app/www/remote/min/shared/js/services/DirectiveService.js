@@ -1133,7 +1133,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           $timeout(function() {
             elem.css(prop, value, priority);
             $timeout(function() {
-              scope.$apply();
+              scope && scope.$apply();
             })
           }, delay)
         } else {
@@ -1143,7 +1143,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           // console.log(prop, value);
           elem.css(prop, value, priority);
           $timeout(function() {
-              scope.$apply();
+              scope && scope.$apply();
           })
         }
       }
