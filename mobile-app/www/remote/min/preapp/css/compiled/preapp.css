@@ -4887,16 +4887,30 @@ a[class*="-container"]:hover .map-stadium-outside {
 
 .landing-container {
   overflow-x: hidden !important; }
+  .landing-container .splash-hero-skip {
+    display: none; }
   .landing-container .powerup-icon {
     width: 100%;
     height: 100%;
     max-width: 300px;
-    max-height: 300px; }
+    max-height: 300px;
+    margin: -50px auto 0; }
     .landing-container .powerup-icon .hanger {
       display: none !important; }
+  .landing-container .powerup-header {
+    margin-top: -15px;
+    font-size: 36px;
+    font-weight: 900; }
+  .landing-container .powerup-subheader {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 0 !important;
+    margin-bottom: 15px; }
   .landing-container .landing-demo {
+    display: none;
     position: relative;
-    width: 318px; }
+    width: 318px;
+    margin: 30px auto 0; }
     .landing-container .landing-demo > svg:not(.coach) {
       width: 318px;
       stroke-width: 3px;
@@ -4910,32 +4924,31 @@ a[class*="-container"]:hover .map-stadium-outside {
       margin-top: -245.5px;
       width: 273.5px;
       height: 490px; }
-  @media screen and (max-width: 768px) {
-    .landing-container .powerup-icon {
-      margin-top: -50px; }
-    .landing-container h1.powerup-header {
-      margin-top: 0;
-      font-size: 28px !important; }
-    .landing-container h2.powerup-header {
-      margin-top: 0;
-      font-size: 20px !important; }
-    .landing-container .landing-demo {
-      width: 200px; }
-      .landing-container .landing-demo > svg:not(.coach) {
-        width: 200px; }
-      .landing-container .landing-demo > div {
-        margin-left: -86px;
-        margin-top: -155px;
-        width: 172px;
-        height: 310px; }
-      .landing-container .landing-demo .coach {
-        display: none; } }
   .landing-container .landing-content {
-    margin-top: -120px;
-    padding-top: 135px; }
-    @media screen and (max-width: 768px) {
+    position: relative;
+    border-radius: 2px;
+    background: white;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #40484B; }
+    .landing-container .landing-content h1 {
+      padding: 15px;
+      font-size: 28px;
+      font-weight: 600; }
+  @media screen and (min-width: 768px) {
+    .landing-container .splash-hero-skip, .landing-container .landing-demo {
+      display: block; }
+    .landing-container .powerup-header {
+      font-size: 48px; }
+    .landing-container .powerup-subheader {
+      font-size: 28px;
+      margin-bottom: 0; }
+    .landing-container .landing-content {
+      margin-top: -120px;
+      padding-top: 135px;
+      border-radius: 4px; }
       .landing-container .landing-content h1 {
-        font-size: 28px !important; } }
+        font-size: 36px; } }
   @media screen and (max-width: 768px) {
     .landing-container .landing-action .ugrid-3 li {
       width: 100%; }
@@ -4948,124 +4961,119 @@ a[class*="-container"]:hover .map-stadium-outside {
         padding-top: 0;
         text-align: left;
         font-size: 20px !important; } }
-  .landing-container.landing-gpa {
-    background: #79c5cd; }
-    .landing-container.landing-gpa .landing-demo > svg:not(.coach) * {
-      stroke: #637074; }
-    .landing-container.landing-gpa .landing-demo > svg:not(.coach) circle {
+
+.landing-gpa {
+  background: #79c5cd; }
+  .landing-gpa .landing-demo > svg:not(.coach) * {
+    stroke: #637074; }
+  .landing-gpa .landing-demo > svg:not(.coach) circle {
+    fill: #6c9298; }
+  .landing-gpa .landing-demo > svg:not(.coach) rect:first-child {
+    fill: #72acb2; }
+  .landing-gpa .landing-demo > svg:not(.coach) rect:last-child {
+    fill: white; }
+  .landing-gpa .gpa-landing-hands {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 2px;
+    margin-left: -1px;
+    left: 50%;
+    margin-bottom: 15px; }
+    .landing-gpa .gpa-landing-hands svg:first-child {
+      left: 80px; }
+    .landing-gpa .gpa-landing-hands svg:last-child {
+      right: 80px;
+      -webkit-backface-visibility: visible;
+      -moz-backface-visibility: visible;
+      -ms-backface-visibility: visible;
+      -o-backface-visibility: visible;
+      backface-visibility: visible;
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+      -webkit-transform-origin: center;
+      -moz-transform-origin: center;
+      -ms-transform-origin: center;
+      -o-transform-origin: center;
+      transform-origin: center; }
+    @media screen and (min-width: 768px) {
+      .landing-gpa .gpa-landing-hands {
+        display: block; } }
+  .landing-gpa .gpa-landing-preview li:first-child, .landing-gpa .gpa-landing-preview li:last-child {
+    filter: alpha(opacity=75);
+    opacity: 0.75;
+    -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+    -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+    -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+    -o-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+    transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+    -webkit-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+    -moz-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+    -ms-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+    -o-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+    transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important; }
+  .landing-gpa .gpa-landing-preview li:first-child {
+    transform: translateX(100%); }
+  .landing-gpa .gpa-landing-preview li:last-child {
+    transform: translateX(-100%); }
+  .landing-gpa .gpa-landing-preview svg {
+    width: calc(318px * 0.75);
+    height: calc(651px * 0.75); }
+    @media screen and (max-width: 768px) {
+      .landing-gpa .gpa-landing-preview svg {
+        width: calc(318px * 0.5);
+        height: calc(651px * 0.5); } }
+    .landing-gpa .gpa-landing-preview svg * {
+      stroke: #637074;
+      stroke-width: 3px; }
+    .landing-gpa .gpa-landing-preview svg circle {
       fill: #6c9298; }
-    .landing-container.landing-gpa .landing-demo > svg:not(.coach) rect:first-child {
+    .landing-gpa .gpa-landing-preview svg rect:first-child {
       fill: #72acb2; }
-    .landing-container.landing-gpa .landing-demo > svg:not(.coach) rect:last-child {
+    .landing-gpa .gpa-landing-preview svg rect:last-child {
       fill: white; }
-    .landing-container.landing-gpa .gpa-landing-hands {
-      width: 2px;
-      margin-left: -1px;
-      left: 50%; }
-      .landing-container.landing-gpa .gpa-landing-hands svg:first-child {
-        left: 80px; }
-      .landing-container.landing-gpa .gpa-landing-hands svg:last-child {
-        right: 80px;
-        -webkit-backface-visibility: visible;
-        -moz-backface-visibility: visible;
-        -ms-backface-visibility: visible;
-        -o-backface-visibility: visible;
-        backface-visibility: visible;
-        -webkit-transform: rotateY(180deg);
-        -moz-transform: rotateY(180deg);
-        -ms-transform: rotateY(180deg);
-        -o-transform: rotateY(180deg);
-        transform: rotateY(180deg);
-        -webkit-transform-origin: center;
-        -moz-transform-origin: center;
-        -ms-transform-origin: center;
-        -o-transform-origin: center;
-        transform-origin: center; }
-      @media screen and (max-width: 768px) {
-        .landing-container.landing-gpa .gpa-landing-hands svg:first-child {
-          max-height: 200px;
-          left: -200px; }
-        .landing-container.landing-gpa .gpa-landing-hands svg:last-child {
-          max-height: 200px;
-          right: -200px; } }
-      @media screen and (max-width: 414px) {
-        .landing-container.landing-gpa .gpa-landing-hands svg:first-child, .landing-container.landing-gpa .gpa-landing-hands svg:last-child {
-          max-height: 100px;
-          top: -250px;
-          bottom: auto !important; }
-        .landing-container.landing-gpa .gpa-landing-hands svg:first-child {
-          left: -360px; }
-        .landing-container.landing-gpa .gpa-landing-hands svg:last-child {
-          right: -360px; } }
-    .landing-container.landing-gpa .gpa-landing-preview li:first-child, .landing-container.landing-gpa .gpa-landing-preview li:last-child {
-      filter: alpha(opacity=75);
-      opacity: 0.75;
-      -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
-      -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
-      -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
-      -o-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
-      transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
-      -webkit-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
-      -moz-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
-      -ms-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
-      -o-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
-      transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important; }
-    .landing-container.landing-gpa .gpa-landing-preview li:first-child {
-      transform: translateX(100%); }
-    .landing-container.landing-gpa .gpa-landing-preview li:last-child {
-      transform: translateX(-100%); }
-    .landing-container.landing-gpa .gpa-landing-preview svg {
-      width: calc(318px * 0.75);
-      height: calc(651px * 0.75); }
-      @media screen and (max-width: 768px) {
-        .landing-container.landing-gpa .gpa-landing-preview svg {
-          width: calc(318px * 0.5);
-          height: calc(651px * 0.5); } }
-      .landing-container.landing-gpa .gpa-landing-preview svg * {
-        stroke: #637074;
-        stroke-width: 3px; }
-      .landing-container.landing-gpa .gpa-landing-preview svg circle {
-        fill: #6c9298; }
-      .landing-container.landing-gpa .gpa-landing-preview svg rect:first-child {
-        fill: #72acb2; }
-      .landing-container.landing-gpa .gpa-landing-preview svg rect:last-child {
-        fill: white; }
-    .landing-container.landing-gpa .landing-action {
-      background: #6c9298; }
-  .landing-container.landing-transit {
-    background: #91d3a8; }
-    .landing-container.landing-transit .landing-demo > svg:not(.coach) * {
-      stroke: #637074; }
-    .landing-container.landing-transit .landing-demo > svg:not(.coach) circle {
-      fill: #759889; }
-    .landing-container.landing-transit .landing-demo > svg:not(.coach) rect:first-child {
-      fill: #83b598; }
-    .landing-container.landing-transit .landing-demo > svg:not(.coach) rect:last-child {
-      fill: white; }
-  .landing-container.landing-munchies {
-    background: #f1917f; }
-    .landing-container.landing-munchies .landing-demo > svg:not(.coach) * {
-      stroke: white; }
-    .landing-container.landing-munchies .landing-demo > svg:not(.coach) circle {
-      fill: #fbe0da; }
-    .landing-container.landing-munchies .landing-demo > svg:not(.coach) rect:first-child {
-      fill: #f5b1a4; }
-    .landing-container.landing-munchies .landing-demo > svg:not(.coach) rect:last-child {
-      fill: white; }
-    .landing-container.landing-munchies .landing-content {
+  .landing-gpa .landing-action {
+    background: #6c9298; }
+
+.landing-transit {
+  background: #91d3a8; }
+  .landing-transit .landing-demo > svg:not(.coach) * {
+    stroke: #637074; }
+  .landing-transit .landing-demo > svg:not(.coach) circle {
+    fill: #759889; }
+  .landing-transit .landing-demo > svg:not(.coach) rect:first-child {
+    fill: #83b598; }
+  .landing-transit .landing-demo > svg:not(.coach) rect:last-child {
+    fill: white; }
+
+.landing-munchies {
+  background: #f1917f; }
+  .landing-munchies .landing-demo > svg:not(.coach) * {
+    stroke: white; }
+  .landing-munchies .landing-demo > svg:not(.coach) circle {
+    fill: #fbe0da; }
+  .landing-munchies .landing-demo > svg:not(.coach) rect:first-child {
+    fill: #f5b1a4; }
+  .landing-munchies .landing-demo > svg:not(.coach) rect:last-child {
+    fill: white; }
+  .landing-munchies .landing-content {
+    background: #a68787; }
+    .landing-munchies .landing-content .landing-color {
       background: #a68787; }
-      .landing-container.landing-munchies .landing-content .landing-color {
-        background: #a68787; }
-  .landing-container.landing-sound {
-    background: #ac95e1; }
-    .landing-container.landing-sound .landing-demo > svg:not(.coach) * {
-      stroke: #637074; }
-    .landing-container.landing-sound .landing-demo > svg:not(.coach) circle {
-      fill: #807fa0; }
-    .landing-container.landing-sound .landing-demo > svg:not(.coach) rect:first-child {
-      fill: #968ac0; }
-    .landing-container.landing-sound .landing-demo > svg:not(.coach) rect:last-child {
-      fill: white; }
+
+.landing-sound {
+  background: #ac95e1; }
+  .landing-sound .landing-demo > svg:not(.coach) * {
+    stroke: #637074; }
+  .landing-sound .landing-demo > svg:not(.coach) circle {
+    fill: #807fa0; }
+  .landing-sound .landing-demo > svg:not(.coach) rect:first-child {
+    fill: #968ac0; }
+  .landing-sound .landing-demo > svg:not(.coach) rect:last-child {
+    fill: white; }
 
 .powerup-title {
   overflow: hidden !important; }
