@@ -17,21 +17,39 @@
                     </ui-state>
                     <ui-state type="transition" name="Sound tile onEnter" desc="Body translateUp, head scaleDown to size; headphones slideInDown while notes bounceIn" func="true">
                     </ui-state>
-                    <ui-state type="transition" name="Transit tile onEnter" desc="jellyIn, staggered" func="true">
+                    <ui-state type="transition" name="Transit tile onEnter" desc="Tracks drawIn. Lamps scaleDown to size. jellyIn, staggered" func="true">
                     </ui-state>
                     <!-- add more here, any sequential animations should be a state. Sequential, as in, when one enters, it has an agenda to achieve XYZ in orderly fashion. -->
                 </ui-stream>
                 <ui-stream desc='User hovers over one powerup'>
-                    <ui-state name="Mouse enter state"> </ui-state>
+					<ui-state name="Mouse enter state" type="gesture, transition" func="true">
+                    </ui-state>
+					<ui-state type="transition" name="GPA tile mouseEnter" desc="Guru eyebrows wiggle. Button props rotate." func="true">
+					</ui-state>
+					<ui-state type="transition" name="Munchies tile mouseEnter" desc="Guru head rotates bottom center. Cake tiers jelly staggered; frosting color tweens" func="true">
+					</ui-state>
+					<ui-state type="transition" name="Sound tile mouseEnter" desc="Guru head bobs up and down. Headphone muffs scaleY up and down; wire rotateY back and forth. Notes floats with translateY, fadeIn and fadeOut." func="true">
+					</ui-state>
+					<ui-state type="transition" name="Transit tile mouseEnter" desc="jellyIn, staggered" func="true">
+					</ui-state>
                 </ui-stream>
                 <ui-stream desc='User hovers from one to another'>
-                    <ui-state name="Mouse leave state"> </ui-state>
+                    <ui-state name="Mouse leave state" desc="mouseEnter animation pauses" type="gesture, transition" func="true"> </ui-state>
+					<ui-state name="New mouse enter state" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true">
+					</ui-state>
                 </ui-stream>
                 <ui-stream desc='User returns to the first and clicks on it'>
+					<ui-state name="Mouse leave state" desc="mouseEnter animation pauses" type="gesture, transition" func="true"> </ui-state>
+					<ui-state name="New mouse enter state" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true">
+					<ui-state name="Mouse clickOn state" desc="Tile scaleDown" type="gesture, transition" func="true">
+					<ui-state name="Mouse clickOff state" desc="Tile scaleUp to original size" type="gesture, transition" func="true">
 				</ui-stream>
             </story>
             <story type="func, transition" desc="User transitions from powerups page to a specific powerup">
                 <ui-stream desc='Selected powerup tile becomes the loader'>
+					<ui-state name="Unchosen tiles exit" desc="Tiles fadeOut" type="transition" func="true">
+					<ui-state name="Selected tile goes to the forefront" desc="Translates to horizontal center" type="transition" func="true">
+					<ui-state name="Selected tile bg expands" desc="Bg color scaleUp to full page from origin center" type="transition" func="true">
                 </ui-stream>
 				<ui-stream desc="Loader transitions to landing page tile">
 				</ui-stream>
