@@ -106,7 +106,7 @@
 /* ---------- DEFAULT STYLES */
 * {
 	@include prefix(box-sizing, border-box, webkit moz);
-	@include prefix(backface-visibility, hidden, webkit moz ms o);
+	// @include prefix(backface-visibility, hidden, webkit moz ms o);
 	-ms-overflow-style: none;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -160,6 +160,7 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
 	transition: all 150ms linear;
 }
 .delay-450 {
+	animation-delay: 450ms!important;
 	transition-delay: 450ms!important;
 }
 [translate-to-elem] {
@@ -2691,6 +2692,56 @@ button, input, textarea {
 			}
 		}
 	}
+}
+
+.guru-fill-cerise, .guru-fill-academic {
+	fill: desaturate($cerise, 25%);
+}
+.guru-stroke-cerise-char, .guru-stroke-academic-char {
+	stroke: mix($cerise, $charcoal, 20%);
+}
+.guru-fill-cerise-char, .guru-fill-academic-char {
+	fill: mix($cerise, $charcoal, 20%);
+}
+
+.guru-fill-gold, .guru-fill-baking {
+	fill: desaturate($gold, 15%);
+}
+.guru-stroke-gold-char, .guru-stroke-baking-char {
+	stroke: mix($gold, $charcoal, 10%);
+}
+.guru-fill-gold-char, .guru-fill-baking-char {
+	fill: mix($gold, $charcoal, 10%);
+}
+
+.guru-fill-moola, .guru-fill-photography {
+	fill: desaturate($moola, 15%);
+}
+.guru-stroke-moola-char, .guru-stroke-photography-char {
+	stroke: mix($moola, $charcoal, 20%);
+}
+.guru-fill-moola-char, .guru-fill-photography-char {
+	fill: mix($moola, $charcoal, 20%);
+}
+
+.guru-fill-azure, .guru-fill-tech {
+	fill: desaturate($azure, 15%);
+}
+.guru-stroke-azure-char, .guru-stroke-tech-char {
+	stroke: mix($azure, $charcoal, 20%);
+}
+.guru-fill-azure-char, .guru-fill-tech-char {
+	fill: mix($azure, $charcoal, 20%);
+}
+
+.guru-fill-cobalt, .guru-fill-household {
+	fill: desaturate($cobalt, 20%);
+}
+.guru-stroke-cobalt-char, .guru-stroke-household-char {
+	stroke: mix($cobalt, $charcoal, 20%);
+}
+.guru-fill-cobalt-char, .guru-fill-household-char {
+	fill: mix($cobalt, $charcoal, 20%);
 }
 
 .guru-head, .guru-head svg {

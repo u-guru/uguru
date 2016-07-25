@@ -19,14 +19,6 @@
 		height: 0;
 		border: 15px solid transparent;
 	}
-	// &:not(.active) {
-	// 	opacity: 0;
-	// 	z-index: -100;
-	// 	transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-	// }
-	// &.active {
-	// 	animation: unfold 1000ms linear forwards;
-	// }
 }
 .cal-edit {
 	margin-left: -150px;
@@ -326,7 +318,7 @@
 			}
 		}
 	}
-	.calendar {
+	.calendar-week {
 		transition: width 300ms cubic-bezier(0.77, 0, 0.05, 1);
 		transition: width 300ms cubic-bezier(0.77, -0.22, 0.05, 1.27);
 	}
@@ -355,7 +347,7 @@
 	&.has-filters {
 		overflow: hidden;
 		height: 100%;
-		.calendar {
+		.calendar-week {
 			height: 100%;
 			.cal-week {
 				height: 100%;
@@ -376,7 +368,7 @@
 			}
 		}
 		@media screen and (max-width: 768px) {
-			.calendar {
+			.calendar-week {
 				width: 100%!important;
 			}
 		}
@@ -622,75 +614,114 @@
 	}
 }
 
-.calendar {
+.cal-month {
+	@include flex;
+	@include flex-center;
+	background: $shamrock;
 	width: 100%;
-	background: $slate;
-	color: white;
-	.cal-week {
-		&:not(.active) {
-			.cal-time, .cal-main {
-				display: none;
-			}
+	height: 64px;
+	padding: 15px;
+	font-size: 28px;
+	font-weight: 700;
+	text-align: center;
+	text-transform: none;
+	svg {
+		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+		@include prefix(transform-origin, center, webkit moz ms o);
+		@include svg-stroke(white, 4);
+		display: block;
+		margin: 0 auto;
+		stroke-width: 8px;
+		width: 24px;
+		height: 24px;
+	}
+	> span:nth-child(2) {
+		display: block!important;
+	}
+	> span {
+		@include flex;
+		span {
+			display: block;
 		}
-		&.active {
-			.cal-month {
-				svg {
-					&:last-child {
-						@include rotate(180);
+	}
+}
+.cal-month.has-link {
+	padding: 0;
+	a {
+		display: block;
+		padding: 10px 15px;
+		background: $shamrock;
+		color: white!important;
+		&:hover, &:focus {
+			background: mix($shamrock, $slate);
+		}
+		&:active, &.active {
+			background: $slate;
+		}
+	}
+}
+
+.calendar-month {
+	width: 100%;
+	background: $smoke;
+	h1 {
+		color: white;
+	}
+	.cal-day-container {
+		height: 100%;
+		> ul {
+			@include flex;
+			@include flex-wrap;
+			width: 100%;
+			li {
+				width: calc(100% / 7);
+				padding: 1px;
+				div {
+					border-radius: 2px;
+					height: 100%;
+				}
+			}
+			&.cal-labels {
+				height: 48px;
+				padding: 1px 1px 0;
+				li {
+					height: 100%;
+					div {
+						@include flex;
+						@include flex-center;
+						width: 100%;
+						background: mix($shamrock, white, 70%);
+						font-size: 24px;
+						font-weight: 600;
+					}
+				}
+			}
+			&.cal-days {
+				padding: 0 1px 1px;
+				height: 100%;
+				li {
+					height: calc(100% / 6);
+					div {
+						background: white;
 					}
 				}
 			}
 		}
+	}
+}
+
+.calendar-week {
+	width: 100%;
+	background: $slate;
+	color: white;
+	.cal-week {
 		> div {
 			@include flex;
 			@include flex-wrap;
 			width: 100%;
 			.cal-month {
-				@include flex;
-				@include flex-center;
 				margin: 0 0 2px;
 				width: calc(100% + 4px);
-				background: $shamrock;
-				height: 64px;
-				padding: 15px;
-				font-size: 28px;
-				font-weight: 700;
-				text-align: center;
-				text-transform: none;
-				svg {
-					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
-					@include prefix(transform-origin, center, webkit moz ms o);
-					@include svg-stroke(white, 4);
-					display: block;
-					margin: 0 auto;
-					stroke-width: 8px;
-					width: 24px;
-					height: 24px;
-				}
-				> span:nth-child(2) {
-					display: block!important;
-				}
-				> span {
-					@include flex;
-					span {
-						display: block;
-					}
-				}
-			}
-			.cal-month.has-link {
-				padding: 0;
-				a {
-					display: block;
-					padding: 10px 15px;
-					background: $shamrock;
-					color: white!important;
-					&:hover, &:focus {
-						background: mix($shamrock, $slate);
-					}
-					&:active, &.active {
-						background: $slate;
-					}
-				}
 			}
 			.cal-time {
 				width: 80px;

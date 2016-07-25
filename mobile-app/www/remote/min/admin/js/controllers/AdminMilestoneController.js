@@ -4,30 +4,90 @@ angular.module('uguru.admin')
   '$scope',
   '$state',
   '$timeout',
+  '$window',
   'SpecService',
-  function($scope, $state, $timeout, SpecService) {
+  '$stateParams',
+  'UtilitiesService',
+  function($scope, $state, $timeout, $window, SpecService, $stateParams, UtilitiesService) {
 
     var ms = this;
+    var allowed_params = ['initial', 'filter']
     ms.types = ['ugh']//, 'eh', 'ah', 'aha'];
     ms.typeIndex = 0;
-    $scope.modules = [];
+    ms.modules = [];
+    ms.toggleAll = toggleAll;
+    ms.setActivePerson = setActivePerson;
+    ms.parseStateParamFilters = parseStateParamFilters;
+    $timeout(function() {
+      ms.parseStateParamFilters($stateParams, allowed_params);
+    }, 100)
 
-    $scope.$watch('root.milestones', function(new_val) {
-      for (type in ms.types) {
-        var indexType = ms.types[type];
-        ms[indexType] = getAllMilestonesOfType(new_val, indexType)
-        console.log(ms[indexType]);
-        $timeout(function() {
-          $scope.$apply();
-        })
-      }
-    })
+
+    // $scope.$watch('root.milestones', function(new_val) {
+    //   for (type in ms.types) {
+    //     var indexType = ms.types[type];
+    //     ms[indexType] = getAllMilestonesOfType(new_val, indexType)
+    //     console.log(ms[indexType]);
+    //     $timeout(function() {
+    //       $scope.$apply();
+    //     })
+    //   }
+    // })
     // ms.minimal = getAllMilestonesOfType($scope.root.milestones);
+    //- list out all the workflows
+    //- templates
+    //- how to calculate progress
 
 
     // --> roles involved
     function parseDimensions(dimen_str) {
       return dimen_str
+    }
+
+    function toggleAll(module) {
+      for (var i = 0; i < module.workflows.length; i++) {
+        module.workflows[i].active = false;
+      }
+    }
+
+    function parseStateParamFilters(params, allowed) {
+      for (key in params) {
+        if (allowed.indexOf(key) > -1) {
+          var value = params[key].toUpperCase();
+          if (ms.activeModule.teamArr.indexOf(value) > -1) {
+              ms.setActivePerson(params[key].toUpperCase());
+          } else {
+            var workflows = ms.activeModule.workflows;
+            var value = value.toLowerCase();
+            if (value.indexOf('-') > -1) {
+              var value = UtilitiesService.camelCase(value);
+            }
+            for (var i = 0; i < workflows.length; i++) {
+              var iWorkflow = workflows[i];
+
+              var activeIndex = iWorkflow.filter.options.indexOf(value);
+              if (activeIndex > -1) {
+                iWorkflow.filter.activeIndex = activeIndex;
+                ms.activeFilter = iWorkflow.filter.options[activeIndex];
+                ms.activeFilterFormatted = UtilitiesService.camelToDash(ms.activeFilter).split('-')
+                ms.activeFilterFormatted.forEach(function(word, index) {return word.substring(0,1).toUpperCase() + word[index].substring(1)})
+                ms.activeFilterFormatted = ms.activeFilterFormatted.join(" ");
+              }
+            }
+          }
+
+        }
+      }
+    }
+
+    function setActivePerson(initial) {
+      ms.activeModule.activePerson = initial;
+      $timeout(function() {$scope.$apply();})
+    }
+
+    ms.open = function(url) {
+      var base = window.location.href.split('/#/');
+      $window.open(base + url, '_blank');
     }
 
     function getAllMilestonesOfType(ms_arr, type) {

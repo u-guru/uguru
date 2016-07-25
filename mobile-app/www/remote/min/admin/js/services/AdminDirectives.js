@@ -55,23 +55,37 @@ angular.module('uguru.admin')
         }
     }
 }])
-.directive('module', [function () {
+.directive('module', ['$timeout', function ($timeout) {
   return {
     restrict: 'E',
+    replace: true,
     scope: true,
     controller: function($scope) {
-      $scope.module = {name: '', dimensions:'', workflows: []};
-      $scope.$watchCollection('module',
-        function(m) {
-            console.log(m.workflows.length, 'workflows');
-        });
+      $scope.module = {name: '', dimensions:'', workflows: [], teamArr: ['SM', 'GW', 'JO', 'JH']};
     },
     link : function preLink(scope, element, attr, ctrl, transcludeFn) {
         ctrl.element = element;
         if (!attr.name || !attr.dimensions) return;
+        if (attr.columns) {
+            scope.module.columns = attr.columns.split(',')
+        }
         scope.module.name = attr.name
+        scope.module.activePerson = attr.active;
         scope.module.dimensions = attr.dimensions;
-        // scope.$parent.root.milestones.push(scope.module);
+        scope.module.toggleActivate = toggleActivate;
+        $timeout(function() {
+            scope.$parent.ms.modules.push(scope.module)
+            scope.$parent.ms.activeModule = scope.module
+        })
+        function toggleActivate(workflow, module) {
+            workflow.active = !workflow.active;
+            for (var i = 0; i < module.workflows.length; i++) {
+                var indexWorkflow = module.workflows[i];
+                if (module.workflow !== indexWorkflow) {
+                    indexWorkflow.active = false;
+                }
+            }
+        }
      }
     }
 }])
@@ -83,16 +97,46 @@ angular.module('uguru.admin')
     scope: true,
     link: function preLink(scope, element, attr, ctrl) {
         if (!attr.name) return;
+
         scope.workflow = {
             id: scope.module.workflows.length + 1,
             name: attr.name,
+            filter: {options: ['stories','testReady', 'streams', 'bugs', 'states'], activeIndex: 0},
+            columns: {
+                bugs: ['id', 'name', 'description', 'platform', 'by', 'tested'],
+                streams: ['name', 'description', 'num states'],
+                stories: ['name', 'priority', 'streams', 'bugs', 'progress'],
+                testReady: ['name', 'description', 'state', 'stream', 'story'],
+                states: ['name', 'descrpition', 'story', 'stream', 'num bugs', 'test-ready']
+            },
+            bugs:[],
+            streams: [],
+            states: [],
+            url: attr.url,
             setup: {
                 base: {},
                 post: {},
             },
-            stories:[]
+            stories:[],
+            priority: parseFloat(attr.priority || 100.0),
+            toggleActivate: scope.module.toggleActivate
         }
-        scope.module.workflows.push(scope.workflow);
+        if (!scope.module.workflows.length) {
+            scope.workflow.active = true;
+        }
+        scope.$watch('module.activePerson', function(new_person) {
+            scope.module.workflows.sort(function(w1, w2) {return w2.priority - w1.priority}).reverse();
+        })
+
+        function sortWorkflows() {
+            scope.module.workflows.push(scope.workflow);
+            scope.module.workflows.sort(function(w1, w2) {return w2.priority - w1.priority}).reverse();
+            scope.module.workflows.forEach(function(option, index) {option.pID = index + 1})
+        }
+
+        sortWorkflows();
+        // scope.module.workflows.reverse()
+
      }
     }
 }])
@@ -102,13 +146,27 @@ angular.module('uguru.admin')
     restrict: 'E',
     require: '^module',
     scope: true,
+    controller: function($scope) {
+        $scope.workflow = $scope.$parent.workflow;
+    },
     link : function(scope, element, attr) {
         // scope.stories = scope.$parent.workflow;
         scope.stories = [];
+        scope.personDict = {};
         $timeout(function() {
-            scope.$parent.workflow.stories = scope.stories;
+            scope.workflow = scope.$parent.workflow;
+            scope.workflow.stories = scope.stories;
             scope.$apply();
-        })
+                $timeout(function() {
+                    scope.$watch('module.activePerson', function(new_person, old_person) {
+                    if (new_person in scope.personDict) {
+                        scope.personDict[new_person].sort(sortStoryByPriority(new_person));
+                        scope.stories = scope.personDict[new_person];
+                        scope.$parent.workflow.stories = scope.stories;
+                    }
+                })
+            }, 1000)
+        });
      }
     }
 }])
@@ -119,23 +177,127 @@ angular.module('uguru.admin')
     require: '^module',
     scope: true,
     link : function(scope, element, attr) {
-        scope.story = {name: attr.name, desc:attr.desc, progress: null, func: attr.func === 'true', uiStreams: ''}
+        scope.story = {
+            name: attr.name ||attr.desc,
+            desc:attr.desc,
+            progress: null,
+            func: attr.func === 'true',
+            tested: attr.tested === 'true',
+            cross_platform: attr.crossPlatform === 'true',
+            responsive: attr.responsive === 'true',
+            streams: [],
+            priority: parsePriority(attr.priority) || {SM:100},
+            bugs: []
+        }
+        if (!attr.name) scope.story.desc = '';
+        // scope.$watchCollection('story', function(story, old_story) {
+        //     scope.story.bugsLength
+        // })
+
         $timeout(function() {
-            scope.$parent.stories.push(scope.story)
-            scope.$apply();
+
+            scope.stories = scope.$parent.stories;
+            scope.stories.push(scope.story)
+            // scope.$apply();
+            scope.story.priority && updateUserStoriesPriority(scope.$parent, scope.story, scope.module.activePerson);
+
         })
      }
     }
 }])
-.directive('setup', [function () {
+.directive('uiStream', ['$timeout', function ($timeout) {
   return {
     replace: true,
     restrict: 'E',
-    require: '^module',
+    require: ['^module'],
+    scope: true,
+    link : function postLink(scope, element, attr) {
+        scope.stream = {
+            desc: attr.desc,
+            states:[],
+            bugs: []
+        }
+        $timeout(function() {
+            scope.story = scope.$parent.story;
+            scope.story.streams.push(scope.stream);
+            scope.$watch('stream.bugs', function(bug_arr, old_bug_arr) {
+                // if (bug_arr.length) {
+                //     scope.storybug_arr[bug_arr.length - 1])
+                // }
+            })
+        })
+
+     }
+    }
+}])
+.directive('uiState', ['$timeout', function ($timeout) {
+  return {
+    replace: true,
+    restrict: 'E',
+    require: ['^module'],
+    scope: true,
+    link : function postLink(scope, element, attr) {
+        scope.state = {
+            desc: attr.desc,
+            name: attr.name,
+            bugs:[]
+        }
+        $timeout(function() {
+            scope.stream = scope.$parent.stream;
+            scope.stream.states.push(scope.state);
+
+        })
+
+     }
+    }
+}])
+.directive('bug', ['$timeout', function ($timeout) {
+  return {
+    replace: true,
+    restrict: 'E',
+    require: ['^module'],
+    scope: true,
+    link : function postLink(scope, element, attr) {
+        var supportedTypes = ['functional', 'static', 'animation'];
+        scope.bug = {
+            desc: attr.desc || attr.description,
+            type: attr.type,
+            platform: attr.platform,
+            by: attr.by,
+            tested: attr.tested === 'true',
+            open: 'open' in attr,
+            tested: ('tested' in attr && attr.tested === 'true') || false,
+        }
+        $timeout(function() {
+            scope.state = scope.$parent.state;
+            scope.state.bugs.push(scope.bug);
+            scope.$parent.stream.bugs.push(scope.bug);
+            scope.$parent.story.bugs.push(scope.bug);
+            $timeout(function() {
+                if (scope.bug.type === 'functional') {
+                    scope.bug.id = scope.$parent.$parent.workflow.bugs.length + 1;
+                    scope.bug.name = (scope.$parent.stream.name || '') + ' ' + scope.state.name;
+                    scope.$parent.$parent.workflow.bugs.push(scope.bug);
+                }
+            })
+
+        })
+
+     }
+    }
+}])
+.directive('setup', ['$timeout', function ($timeout) {
+  return {
+    replace: true,
+    restrict: 'E',
+    require: ['^module'],
     scope: false,
-    link : function(scope, element, attr) {
-        if (!attr.name) return;
-        scope.module.userExp.push({id: scope.module.userExp.length + 1, name: attr.name})
+    link : function postLink(scope, element, attr) {
+        var type = attr.type;
+        scope[type] = {components:[], directives: [], specs: []}
+        $timeout(function() {
+            scope.workflow.setup.base = scope[type];
+        })
      }
     }
 }])
@@ -303,9 +465,8 @@ angular.module('uguru.admin')
             scope.doc = scope.$parent.doc_item;
             var type = attr.type;
             var text;
-
             if ('default' in attr && 'doc' in scope) {
-                scope.doc.snippetIndex = scope.doc.snippets.length
+                scope.doc.snippetIndex = scope.doc.snippets.length;
                 title = 'Default';
             }
             scope.snippet = {
@@ -401,3 +562,55 @@ angular.module('uguru.admin')
         }
     }
 }])
+
+function parsePriority(str) {
+    var resultDict = {};
+    if (str && str.length) {
+        var strArr = str.split('|')
+        for (var i = 0; i < strArr.length; i++) {
+            var indexPriority = strArr[i];
+            if (indexPriority.indexOf(':') > -1) {
+                indexPrioritySplit = indexPriority.split(':');
+                personName = indexPrioritySplit[0];
+                personPriority = parseFloat(indexPrioritySplit[1]);
+                resultDict[personName] = personPriority;
+            }
+            else {
+                personName = 'SM';
+                personPriority = parseFloat(indexPriority);
+                resultDict[personName] = personPriority;
+            }
+        }
+        return resultDict;
+    }
+
+}
+
+function updateUserStoriesPriority(parent, story, initial) {
+    storiesArr = parent.stories;
+    personDict = parent.personDict;
+    priority = story.priority;
+    for (person in priority) {
+        if (!(person in personDict)) {
+            personDict[person] = [story];
+        } else {
+            personDict[person].push(story);
+            personDict[person].sort(sortStoryByPriority(person))
+        }
+
+        person_initial = initial || 'SM';
+        if (person_initial) {
+            if (!('default' in parent.personDict)) {
+                parent.personDict['default'] = parent.stories;
+            }
+            parent.stories = parent.personDict[person];
+        }
+    }
+
+}
+
+function sortStoryByPriority(person) {
+    return function(story_2, story_1) {
+        return (story_2.priority[person] || 100) - (story_1.priority[person] || 100)
+    }
+}
