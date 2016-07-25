@@ -4,28 +4,48 @@
     <user-workflow priority="5" name='Powerups View' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/powerups/' priority="10">
         <user-stories>
             <story type="func, transition" desc="user enters power-ups screen & learns details">
-                <ui-stream desc='powerups transition in'>
-                    <ui-state type="gesture" desc="User clicks powerup icon" func="true">
+                <ui-stream desc='Powerups transition in'>
+                    <ui-state name="User clicks powerups icon" desc="Icon zooms to center" type="gesture, transition" func="true">
                     </ui-state>
-                    <ui-state type="gesture, transition" desc="Full view transition from [splash madlib]" func="true">
+                    <ui-state name="Full view transition" desc="Gold background expands, then fades into the slate" type="transition" func="true">
                     </ui-state>
-                    <ui-state type="gesture, transition" desc="Once view transition is complete, initiate the on enter of the powerup cards" func="true">
+					<ui-state type="transition" name="Title/subtitle animate in" desc="bounceInUp-subtle" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="GPA tile onEnter" desc="Guru bounces in and buttons spread out from the center" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="Munchies tile onEnter" desc="Guru bounces in and cake tiers slideInLeft" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="Sound tile onEnter" desc="Body translateUp, head scaleDown to size; headphones slideInDown while notes bounceIn" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="Transit tile onEnter" desc="jellyIn, staggered" func="true">
                     </ui-state>
                     <!-- add more here, any sequential animations should be a state. Sequential, as in, when one enters, it has an agenda to achieve XYZ in orderly fashion. -->
                 </ui-stream>
                 <ui-stream desc='User hovers over one powerup'>
-                    <ui-state> </ui-state>
+                    <ui-state name="Mouse enter state"> </ui-state>
                 </ui-stream>
-                <ui-stream desc='Given that user has just hovered over one, they hover-off (mouse-leave) and then hover over another one'>
-                    <ui-state> </ui-state>
+                <ui-stream desc='User hovers from one to another'>
+                    <ui-state name="Mouse leave state"> </ui-state>
                 </ui-stream>
-                <ui-stream desc='Hover-off #2, go back to number one (mouse-leave + hover-on #1) and then click'>
-                </ui-stream>
+                <ui-stream desc='User returns to the first and clicks on it'>
+				</ui-stream>
             </story>
-            <story type="func, transition" desc="user transitions from/to power-ups page from/to a specific power-up">
-                <ui-stream desc='States relevant to transition from hover => view-transition from powerups into specific'>
+            <story type="func, transition" desc="User transitions from powerups page to a specific powerup">
+                <ui-stream desc='Selected powerup tile becomes the loader'>
                 </ui-stream>
-                <ui-stream desc='User enters back by closing out of a specific powerups page'>
+				<ui-stream desc="Loader transitions to landing page tile">
+				</ui-stream>
+				<ui-stream desc="Rest of the landing page onEnter">
+				</ui-stream>
+			</story>
+			<story type="func, transition" desc="User transitions to powerups page from a specific powerup">
+                <ui-stream desc='User hovers over back button'>
+                </ui-stream>
+				<ui-stream desc='User clicks on back button'>
+                </ui-stream>
+				<ui-stream desc='Landing page transitions out'>
+                </ui-stream>
+				<ui-stream desc='Powerups page transitions in'>
                 </ui-stream>
             </story>
 
