@@ -187,8 +187,11 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     templateUrl: 'gabrielle/templates/index.html',
   })
   .state('root.playground', {
-    url:'/dev/admin/playground',
+    url:'/dev/playground/:name',
     templateUrl: 'admin/templates/playground.html',
+    controller: function($scope, $stateParams) {
+      $scope.name = $stateParams.name
+    }
   })
   .state('root.demos', {
     url:'/dev/demos',

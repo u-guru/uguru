@@ -9,33 +9,110 @@ angular.module('uguru.shared.services')
         ]);
 
 function TransformService($timeout, $state, UtilitiesService, AnimationService, RootService) {
-      /*todo
-             --> notify siblings + delay
-             --> refactor code + apply to on-enter, etc
-             --> does delay work?
-             --> docs+demo
-      */
+
+      // ---- transform ----
+      // multiple transitions at once
+      // coordinates of type
+      // support all current arguments: (translateXYZ, scale XYZ, skew (deg), rotateXYZ, perspective)
+      // consecutive
+      // clear just one
+
+
+
+      // multiple animations at once
+
       return {
         getElemPosition: getElemPosition,
         getTranslateToCoords: getTranslateToCoords,
-        parseTransformArgs: parseTransformArgs
+        parseTransformArgs: parseTransformArgs,
+        getSupported: getSupported
+      }
+
+      function getSupported() {
+          return ['to', 'translate', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
+      }
+
+      function parse2d(coord_string) {
+
+      }
+
+      function detectTransformDictKey(str) {
+        if (['sc', 'scale'].indexOf(str) > -1) {
+          return "scale"
+        }
+        if ('p' === str) {
+          return 'perspective'
+        }
+        if ('sk' === str) {
+          return 'skew'
+        }
+        if (['tr', 'translate'].indexOf(str) > -1) {
+          return "translate"
+        }
+        if (['r', 'rotate', 'ro'].indexOf(str) > -1) {
+          return "rotate";
+        }
+        return str;
+      }
+      function parseTransformDictKey(key, str, resultDict) {
+        var strSplit = str.split(',');
+        if (key === 'scale') {
+          var args = ['X', 'Y', 'Z'];
+          strSplit.forEach(function(arg, index) {
+            resultDict['scale' + args[index]] = parseFloat(arg)
+          })
+        }
+        if (key === 'translate') {
+          var args = ['X', 'Y', 'Z'];
+          strSplit.forEach(function(arg, index) {
+            resultDict['translate' + args[index]] = arg
+          })
+        }
+        if (key === 'rotate') {
+          var args = ['X', 'Y', 'Z'];
+          strSplit.forEach(function(arg, index) {
+            resultDict['rotate' + args[index]] = arg
+          })
+        }
+        if (key === 'skew') {
+          var args = ['X', 'Y'];
+          strSplit.forEach(function(arg, index) {
+            resultDict['skew' + args[index]] = arg
+          })
+        }
       }
 
       function parseTransformArgs(transform_dict, elem) {
         var resultDict = {};
         for (key in transform_dict) {
-          switch (key) {
+
+          parsedKey = detectTransformDictKey(key);
+          console.log(parsedKey);
+          switch (parsedKey) {
             case ('delay'):
               resultDict.delay = parseInt(transform_dict[key]);
               break;
             case ('scale'):
-              resultDict.scaleX = transform_dict[key].replace('(', '').replace(')', '').split(',');
-              resultDict.scaleY = transform_dict[key].replace('(', '').replace(')', '').split(',');
+              parseTransformDictKey(parsedKey, transform_dict[key], resultDict)
+              break;
+            case ('perspective'):
+              resultDict['perspective'] = transform_dict[key];
+              break;
+            case ('skew'):
+              parseTransformDictKey(parsedKey, transform_dict[key], resultDict)
+            case ('translate'):
+              console.log(parsedKey)
+              parseTransformDictKey(parsedKey, transform_dict[key], resultDict);
+              break;
+            case ('rotate'):
+              console.log(parsedKey);
+              parseTransformDictKey(parsedKey, transform_dict[key], resultDict);
             case ('clearY'):
               resultDict.translateY = '0px';
             case ('clearX'):
               resultDict.translateX = '0px';
             case ('clear'):
+              console.log(transform_dict);
               resultDict.translateX = '0px';
               resultDict.translateY = '0px';
               break;
@@ -56,6 +133,7 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
           }
 
         }
+        console.log(resultDict);
         return resultDict
       }
 
