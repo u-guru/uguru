@@ -10,10 +10,30 @@ angular.module('uguru.admin')
   'AnimationService',
   'SpecService',
   function($scope, $state, $timeout, $interval, $localstorage, $window, AnimationService, SpecService) {
-    var playground = this;
-    playground.sections = processPlaygrounds(playgroundDict);
-    playground.activeSection = playground.sections[0];
-    playground.updateActiveSection = updateActiveSection
+    var apc = this;
+    apc.options = {
+      transform: {
+        args: [
+          {name: 'scale'},
+          {name: 'translate'},
+          {name: 'rotate'},
+          {name: 'skew', value: 'coord'},
+          {name: 'origin', value:'coord'},
+          {name: 'perspective'},
+          {name: 'to', value: 'selector'},
+          {name: 'clear', value: ['arg', 'all']},
+        ],
+        options: {
+          coords: ['px', 'vp', '%', 'deg'],
+          time: ['s'],
+          func: ['timing func']
+        }
+      }
+    }
+    console.log('name', $scope.name)
+    // playground.sections = processPlaygrounds(playgroundDict);
+    // playground.activeSection = playground.sections[0];
+    // playground.updateActiveSection = updateActiveSection
 
     function updateActiveSection(section) {
       playground.activeSection = section;
@@ -38,18 +58,3 @@ angular.module('uguru.admin')
 
 ])
 
-var playgroundDict = {
-  'on-state': {
-    examples: [
-      { name: 'on-state'},
-      { name: 'as-state'},
-      { name: 'when-state'}
-    ]
-  },
-  'when-state': {
-
-  },
-  'as-state': {
-
-  }
-}

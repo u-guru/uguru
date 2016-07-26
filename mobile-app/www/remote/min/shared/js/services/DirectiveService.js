@@ -297,7 +297,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           break
         case("transform"):
           var response = evalTransformArgs(arg_dict, scope, elem);
-
+          console.log(response);
           if (!response || !response.length) {
             $timeout(function() {
                 evalTransformArgs(arg_dict, scope, elem);
@@ -317,21 +317,27 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var transformPrefix = formatBrowserCSSProperty('transform');
         var transitionObj = {duration: 0, properties:[], timingFunction: 'ease'};
         var transformPropDict = TransformService.parseTransformArgs(indexTransform, elem);
+
         if (!transformPropDict) return;
         if (transformPropDict.duration) {
           transitionObj.duration = transformPropDict.duration;
           delete transformPropDict['duration'];
         }
 
-        //break if none exist;
 
+
+        //break if none exist;
 
         if (Object.keys(transformPropDict).length) {
           var transformValueStr = '';
           for (key in transformPropDict) {
-            if (transformPropDict[key] && transformPropDict[key].length)
-            transformValueStr += key + '(' + transformPropDict[key] + ') ';
+            console.log(key, typeof transformPropDict[key])
+            if (transformPropDict[key] && (transformPropDict[key].length) || typeof(transformPropDict[key]) === 'number' ) {
+              transformValueStr += key + '(' + transformPropDict[key] + ') ';
+            }
+
           }
+
           var browserProperty = formatBrowserCSSProperty('transform');
           var transformDict = {};
           transformDict[browserProperty] = transformValueStr;
@@ -384,12 +390,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processTransformArgs(string_args) {
       var resultDict = {};
       var parentheticalArr = string_args.match(/\((.*?)\)/g);
-      var supportedKeys = ['to', 'duration', 'delay', 'clear', 'scale', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ'];
+      var supportedKeys = TransformService.getSupported();
       var hasParens = parentheticalArr;
       var parenthesisDict = hasParens && findReplaceParens(string_args);
+
       string_args = UtilitiesService.removeAllOccurrancesArr(string_args, ['[', ']']);
       string_args = UtilitiesService.replaceAll(string_args, ', ', ',');
       var kvPairs = string_args.split(',');
+
       for (var i = 0; i < kvPairs.length; i++) {
         var kvIndexSplit = kvPairs[i].split(':')
         if (hasParens) {
@@ -401,15 +409,24 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var indexValue;
         if (kvIndexSplit.length > 1) {
           indexValue = kvIndexSplit[1];
+
+
           indexValue = UtilitiesService.removeAllOccurrancesArr(indexValue, ['(', ')']);
           if (supportedKeys.indexOf(indexKey.toLowerCase()) > -1) {
             if (indexKey === 'delay' || indexKey === 'duration') {
               indexValue = parseInt(indexValue);
             }
             resultDict[indexKey] = indexValue;
+
           }
         }
       }
+      for (key in resultDict) {
+        if (['rotate', 'scale', 'translate'].indexOf(key) > -1) {
+          resultDict[key] = UtilitiesService.removeAllOccurrancesArr(hasParens[0], ['(', ')']);
+        }
+      }
+      console.log(resultDict);
       return {type: 'transform', transforms: [resultDict]}
     }
 

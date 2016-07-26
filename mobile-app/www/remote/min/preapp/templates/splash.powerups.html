@@ -97,8 +97,13 @@
 		on-enter="p:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
        <button on-click="s:[close-powerups]">Back</button>
     </div>
+<<<<<<< HEAD
     <div init-later when-gpa-on-click="t:[init-with]" init-with="s:[gpa-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/gpa.html'"></div>
     <div init-later when-munchies-on-click="t:[init-with]" init-with="s:[munchies-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/munchies.html'"></div>
     <div init-later when-sound-on-click="t:[init-with]" init-with="s:[sound-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/sound.html'"></div>
     <div init-later when-transit-on-click="t:[init-with]" init-with="s:[transit-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/transit.html'"></div>
+=======
+    <div init-later when-gpa-on-click="trigger:[init-with:self]" init-with="p:[opacity:0]" ng-include src="root.base_url + 'preapp/templates/powerups/gpa.html'" include-replace>
+    </div>
+>>>>>>> f29a32a526404236b1c5412d53a0d60b2a3593ec
 </ion-view>
