@@ -16,14 +16,14 @@ angular.module('uguru.admin')
     apc.options = {
       transform: {
         args: [
-          {name: 'scale'},
-          {name: 'translate'},
-          {name: 'rotate'},
-          {name: 'skew', value: 'coord'},
-          {name: 'origin', value:'coord'},
-          {name: 'perspective'},
-          {name: 'to', value: 'selector'},
-          {name: 'clear', value: ['arg', 'all']},
+          {name: 'scale[XYZ]'},
+          {name: 'translate[XYZ]'},
+          {name: 'rotate[XYZ]'},
+          {name: 'skew[XY]', value: 'coord'},
+          // {name: 'origin', value:'coord'},
+          {name: 'perspective(VAL)'},
+          {name: 'to(#select)', value: 'selector'},
+          // {name: 'clear', value: ['arg', 'all']},
         ],
         options: {
           coords: ['px', 'vp', '%', 'deg'],
