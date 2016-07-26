@@ -96,6 +96,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/nav',
     template: '<ion-view ng-controller="SplashController as splash"> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.nav.html" + "'" + '"></div></ion-content></ion-view>'
   })
+  .state('root.dev-splash-nav-mobile', {
+    url:'/dev/splash/nav/mobile',
+    template: '<ion-view ng-controller="SplashController as splash"> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.nav.mobile.html" + "'" + '"></div></ion-content></ion-view>'
+  })
   .state('root.dev-splash-map', {
     url:'/dev/splash/map',
     templateUrl: 'preapp/templates/splash.map.html'
@@ -122,7 +126,24 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   })
   .state('root.dev-splash-powerups', {
     url:'/dev/splash/powerups',
-    templateUrl: 'preapp/templates/splash.powerups.html'
+    template: '<ion-view ng-controller="SplashController as splash"> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.nav.html" + "'" + '"></div><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.powerups.html" + "'" + '"></div></ion-content></ion-view>'
+  })
+  //@gabrielle --
+  .state('root.dev-splash-powerups-gpa', {
+    url: '/dev/splash/powerups/gpa',
+    template: '<div init-with="send:[gpa-triggered:public:delay-250]" ng-include src="root.base_url + ' + "'" + "preapp/templates/powerups/gpa.html'" + '"></div>'
+  })
+  .state('root.dev-splash-powerups-munchies', {
+    url: '/dev/splash/powerups/munchies',
+    template: '<div init-with="send:[munchies-triggered:public:delay-250]" ng-include src="root.base_url + ' + "'" + "preapp/templates/powerups/munchies.html'" + '"></div>'
+  })
+  .state('root.dev-splash-powerups-sound', {
+    url: '/dev/splash/powerups/sound',
+    template: '<div init-with="send:[sound-triggered:public:delay-250]" ng-include src="root.base_url + ' + "'" + "preapp/templates/powerups/sound.html'" + '"></div>'
+  })
+  .state('root.dev-splash-powerups-transit', {
+    url: '/dev/splash/powerups/transit',
+    template: '<div init-with="send:[transit-triggered:public:delay-250]" ng-include src="root.base_url + ' + "'" + "preapp/templates/powerups/transit.html'" + '"></div>'
   })
   .state('root.dev-splash-tour', {
     url:'/dev/splash/tour',
@@ -189,8 +210,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/loaders/tech',
     templateUrl: 'preapp/templates/loaders/tech.html'
   })
-  .state('root.milestones', {
+  .state('root.base-milestones', {
     url:'/dev/milestones',
+    templateUrl: 'admin/templates/milestones.html'
+  })
+  .state('root.milestones', {
+    url:'/dev/milestones/:initial/:filter',
     templateUrl: 'admin/templates/milestones.html'
   })
   .state('root.svg-test', {

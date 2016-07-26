@@ -1,5 +1,216 @@
 @import '../mixin';
 
+// popup
+.cal-popup {
+	position: absolute;
+	top: 70px;
+	left: 50%;
+	z-index: 100;
+	transform-origin: 50% -15px;
+	transition: all 300ms ease-in-out;
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: -30px;
+		left: 50%;
+		margin-left: -15px;
+		width: 0;
+		height: 0;
+		border: 15px solid transparent;
+	}
+	// &:not(.active) {
+	// 	opacity: 0;
+	// 	z-index: -100;
+	// 	transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+	// }
+	// &.active {
+	// 	animation: unfold 1000ms linear forwards;
+	// }
+}
+.cal-edit {
+	margin-left: -150px;
+	width: 300px;
+	&:before {
+		border-bottom-color: $shamrock;
+	}
+	header {
+		@include flex;
+		justify-content: center;
+		padding: 15px 15px 13px;
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		background: $shamrock;
+		[class*="user-icon"] {
+			margin: 0;
+			&:last-child {
+				margin-left: -5px;
+			}
+		}
+	}
+	> ul {
+		@include flex;
+		@include flex-wrap;
+		background: $smoke;
+		border: 2px solid $shamrock;
+		border-top-width: 0;
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		padding: 5px;
+		li {
+			padding: 5px;
+			input {
+				border-radius: 2px;
+				color: $slate;
+				font-size: 16px;
+				font-weight: 600;
+				@include placeholder {
+					font-weight: 400;
+				}
+				&:focus, &:active {
+					background: white!important;
+				}
+			}
+			&.title, &.location {
+				width: 100%;
+				input {
+					display: block;
+					height: 40px;
+					background: darken($smoke, 5%);
+					width: 100%;
+					padding: 0 10px;
+				}
+			}
+			&.notes {
+				width: 100%;
+				textarea {
+					width: 100%;
+					padding: 10px;
+					background: darken($smoke, 5%);
+					border-radius: 2px;
+					border: 0;
+					font-size: 16px;
+					color: $slate;
+					resize: none;
+					&:focus, &:active {
+						background: white;
+					}
+				}
+			}
+			&.date, &.time {
+				width: calc(100% / 3)!important;
+				> div {
+					@include flex;
+					@include flex-center;
+					height: 40px;
+					background: darken($smoke, 5%);
+					color: $slate;
+					border-radius: 2px;
+					span, input {
+						@include flex;
+						@include flex-center;
+						background: none;
+						text-align: center;
+						font-size: 16px;
+						&:not(:first-child) {
+							margin-left: -3px;
+						}
+					}
+					span {
+						position: relative;
+						z-index: 2;
+					}
+				}
+			}
+			&.attachments {
+				.attach-list {
+					ul {
+						margin: -20px -10px -10px;
+						padding: 5px;
+						li {
+							padding: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.cal-confirm {
+	margin-left: -125px;
+	width: 250px;
+	&:before {
+		border-bottom-color: rgba(lighten($slate, 15%), .95);
+	}
+	> div:not(.ugrid-2) {
+		background: rgba(lighten($slate, 15%), .95);
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		padding: 15px;
+	}
+	.cal-confirm-time {
+		@include flex;
+		@include flex-center-vertical;
+		background: lighten($slate, 25%);
+		padding: 0 10px;
+		height: 36px;
+		border-radius: 2px;
+		font-size: 18px;
+		font-weight: 600;
+	}
+	button {
+		height: 48px;
+		font-size: 20px;
+		padding: 0;
+		&.bg-crimson {
+			&:hover, &:focus {
+				svg {
+					* {
+						stroke: mix($crimson, $slate);
+					}
+				}
+			}
+			&:active {
+				svg {
+					* {
+						stroke: white;
+					}
+				}
+			}
+		}
+		&.bg-moxie {
+			&:hover, &:focus {
+				svg {
+					* {
+						stroke: mix($moxie, $slate);
+					}
+				}
+			}
+			&:active {
+				svg {
+					* {
+						stroke: white;
+					}
+				}
+			}
+		}
+	}
+	.ugrid-2 {
+		div {
+			&:first-child {
+				button {
+					border-bottom-left-radius: 2px;
+				}
+			}
+			&:last-child {
+				button {
+					border-bottom-right-radius: 2px;
+				}
+			}
+		}
+	}
+}
+
 /* ---------- CALENDAR */
 .calendar-container {
 	@include flex;
@@ -579,7 +790,7 @@
 							&.hours-8 {
 								height: 400px;
 							}
-							> a, > span {
+							> span, > a {
 								display: block;
 								width: 100%;
 								height: 100%;
@@ -601,6 +812,48 @@
 									font-size: 14px;
 									line-height: 1.1;
 									color: lighten($slate, 15%)!important;
+								}
+							}
+							> span {
+								a {
+									opacity: 0;
+									display: block;
+									position: absolute;
+									right: 5px;
+									svg {
+										width: 20px;
+										height: 20px;
+										* {
+											@include svg-stroke(rgba($slate, .3), 10);
+										}
+									}
+									&.close-icon {
+										top: 4px;
+									}
+									&.info-icon {
+										bottom: 2px;
+									}
+									&:hover, &:focus {
+										opacity: 1;
+										svg {
+											* {
+												stroke: rgba($slate, .4);
+											}
+										}
+									}
+									&:active {
+										opacity: 1;
+										svg {
+											* {
+												stroke: rgba($slate, .5);
+											}
+										}
+									}
+								}
+								&:hover {
+									a {
+										opacity: 1;
+									}
 								}
 							}
 							&:not(.has-event), &:not(.match), &:not(.guru-available), &:not(.student-available), &:not(.not-available) {
