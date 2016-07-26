@@ -11,11 +11,21 @@ angular.module('uguru.shared.services')
 function TransformService($timeout, $state, UtilitiesService, AnimationService, RootService) {
 
       // ---- transform ----
-      // multiple transitions at once
-      // coordinates of type
-      // support all current arguments: (translateXYZ, scale XYZ, skew (deg), rotateXYZ, perspective)
+      // backface-visibility
+      // perspective-origin
+      // transform-box
+      // transform-origin
+      // transform-style
+
+      // shorthand syntax
+      // timing state
+      // clear
+      // special coordinates
+      // special element properties
+      // tweener
       // consecutive
-      // clear just one
+      // animation directive
+
 
 
 
@@ -29,7 +39,7 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
       }
 
       function getSupported() {
-          return ['to', 'translate', 'perspective-origin', 'p-origin', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
+          return ['to', 'translate', 'p-o', 'perspective-origin', 'transform-box', 't-b', 'transform-origin', 'transform-style', 't-s', 't-o',  'backface-visibility', 'b-v', 'perspective-origin', 'p-origin', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
       }
 
       function parse2d(coord_string) {
@@ -45,6 +55,21 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
         }
         if ('sk' === str) {
           return 'skew'
+        }
+        if ('p-o' === str) {
+          return 'perspective-origin'
+        }
+        if ('t-b' === str) {
+          return 'transform-box'
+        }
+        if ('b-v' === str)  {
+          return 'backface-visibility'
+        }
+        if ('t-o' === str) {
+          return 'transform-origin'
+        }
+        if ('t-s' === str) {
+          return 'transform-style'
         }
         if (['tr', 'translate'].indexOf(str) > -1) {
           return "translate"
@@ -84,8 +109,8 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
 
       function parseTransformArgs(transform_dict, elem) {
         var resultDict = {};
+        var extra_args = ['t-s', 'transform-style', 'transform-box', 't-b', 'b-v', 'backface-visibility', 't-o', 'transform-origin', 't-s', 'transform-style', 'p-o', 'perspective-origin']
         for (key in transform_dict) {
-
           parsedKey = detectTransformDictKey(key);
           switch (parsedKey) {
             case ('delay'):
@@ -123,6 +148,15 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
             case ('duration'):
               resultDict.duration = transform_dict[key]
               break;
+          }
+
+          if (extra_args.indexOf(key) > -1) {
+            var formattedArg = detectTransformDictKey(key);
+            console.log(formattedArg);
+            if (!('ext' in resultDict)) {
+              resultDict.ext = {};
+            }
+            resultDict.ext[formattedArg] = transform_dict[key];
           }
 
         }

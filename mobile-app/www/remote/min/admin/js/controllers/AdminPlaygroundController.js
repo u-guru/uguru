@@ -33,6 +33,10 @@ angular.module('uguru.admin')
         clear: getClearingFunction,
         examples: [
           {
+            args: ['backface-visibility'],
+            str: 'transform:[b-v:default, t-o:default, t-s:default, p-o:default, t-b:default]'
+          },
+          {
             args: ['skewX', 'skewY'],
             str: 'transform:[skew:(0.5rad, 30deg), duration:1000]'
           },
