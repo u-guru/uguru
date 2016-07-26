@@ -243,7 +243,7 @@ angular.module('uguru.shared.directives')
             // element[0].style.opacity = 0;
             var temp = element[0].style.display + '';
             element[0].style.display = 'none';
-            func(scope);
+            func(scope.$parent);
             // $compile(element)(scope);
             element[0].style.display = temp;
             $timeout(function() {

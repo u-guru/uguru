@@ -23,7 +23,11 @@ angular.module('uguru.preApp')
 
     function updateSelectedCategory(option, index) {
       console.log('updating select category', option);
-      $scope.splash.category = option;
+      $scope.splash.category = $scope.splash.categories[index];
+      $timeout(function() {
+        $scope.$apply()
+      });
+
     }
 
     function updateSelectedUniversity(option, index) {
