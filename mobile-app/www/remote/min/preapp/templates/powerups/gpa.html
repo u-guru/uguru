@@ -5,7 +5,8 @@
 	when-close-gpa="p:[op:0, z-index:default:delay-1000]">
 	<div class="landing-gpa landing-container">
 		<!-- class-on-activate="null:inject.landing-gpa .landing-demo|activate, null:inject.landing-gpa .coach|activate, null:inject.gpa-guru-eyebrow-right|activate, null:inject.gpa-guru-eyebrow-left|activate" class-on-activate-delay="4250" -->
-		<div class="powerup-icon">
+		<div class="powerup-icon"
+			init-with="p:[tr:translate3d(0#100%#0)]">
 			<!-- class-on-activate="active" class-on-activate-delay="500" -->
 			<div ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
 		</div>
