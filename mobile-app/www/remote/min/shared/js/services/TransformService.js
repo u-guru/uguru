@@ -29,7 +29,7 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
       }
 
       function getSupported() {
-          return ['to', 'translate', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
+          return ['to', 'translate', 'perspective-origin', 'p-origin', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
       }
 
       function parse2d(coord_string) {
@@ -87,7 +87,6 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
         for (key in transform_dict) {
 
           parsedKey = detectTransformDictKey(key);
-          console.log(parsedKey);
           switch (parsedKey) {
             case ('delay'):
               resultDict.delay = parseInt(transform_dict[key]);
@@ -107,33 +106,27 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
             case ('rotate'):
               console.log(parsedKey);
               parseTransformDictKey(parsedKey, transform_dict[key], resultDict);
-            case ('clearY'):
-              resultDict.translateY = '0px';
-            case ('clearX'):
-              resultDict.translateX = '0px';
             case ('clear'):
-              console.log(transform_dict);
               resultDict.translateX = '0px';
               resultDict.translateY = '0px';
               break;
             case ('clear' && transform_dict[key] === 'scale'):
               resultDict.scaleX = '0px';
               resultDict.scaleY = '0px';
-            case ('duration'):
-              resultDict.duration = transform_dict[key]
-              break;
             case ('to'):
               resultDict.duration = transform_dict[key]
               var translateCoords = xyToElem(elem, transform_dict[key]);
               for (coordName in translateCoords) {
                 resultDict[coordName] = translateCoords[coordName];
               }
-              if (!translateCoords)  return;
+              break;
+            case ('duration'):
+              resultDict.duration = transform_dict[key]
               break;
           }
 
         }
-        console.log(resultDict);
+
         return resultDict
       }
 

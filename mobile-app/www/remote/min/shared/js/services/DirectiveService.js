@@ -317,7 +317,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var transformPrefix = formatBrowserCSSProperty('transform');
         var transitionObj = {duration: 0, properties:[], timingFunction: 'ease'};
         var transformPropDict = TransformService.parseTransformArgs(indexTransform, elem);
-
+        if (transformPropDict.delay) {
+          resultPropDict.delay = transformPropDict.delay;
+          delete transformPropDict['delay']
+        }
         if (!transformPropDict) return;
         if (transformPropDict.duration) {
           transitionObj.duration = transformPropDict.duration;
@@ -422,7 +425,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         }
       }
       for (key in resultDict) {
-        if (['rotate', 'scale', 'translate'].indexOf(key) > -1) {
+        if (['rotate', 'scale', 'translate', 'to'].indexOf(key) > -1) {
           resultDict[key] = UtilitiesService.removeAllOccurrancesArr(hasParens[0], ['(', ')']);
         }
       }
