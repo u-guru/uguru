@@ -62,7 +62,7 @@
 				}
 				&#powerup-munchies-container {
 					.powerups-bg {
-						background: mix(white, mix($auburn, $orange), 30%);
+						background: mix(white, $munchies, 30%);
 					}
 				}
 				&#powerup-sound-container {
@@ -393,18 +393,18 @@
 	}
 }
 .landing-transit {
-	background: mix(white, mix($moola, $moxie), 30%);
+	background: mix(white, $transit, 30%);
 	.landing-demo {
 		> svg:not(.coach) {
 			* {
 				stroke: lighten($slate, 15%);
 			}
 			circle {
-				fill: mix(mix(white, mix($moola, $moxie), 30%), lighten($slate, 15%), 40%);
+				fill: mix(mix(white, $transit, 30%), lighten($slate, 15%), 40%);
 			}
 			rect {
 				&:first-child {
-					fill: mix(mix(white, mix($moola, $moxie), 30%), lighten($slate, 15%), 70%);
+					fill: mix(mix(white, $transit, 30%), lighten($slate, 15%), 70%);
 				}
 				&:last-child {
 					fill: white;
@@ -414,18 +414,18 @@
 	}
 }
 .landing-munchies {
-	background: mix(white, mix($auburn, $orange), 30%);
+	background: mix(white, $munchies, 30%);
 	.landing-demo {
 		> svg:not(.coach) {
 			* {
 				stroke: white;
 			}
 			circle {
-				fill: mix(white, mix($auburn, $orange), 80%);
+				fill: mix(white, $munchies, 80%);
 			}
 			rect {
 				&:first-child {
-					fill: mix(white, mix($auburn, $orange), 50%);
+					fill: mix(white, $munchies, 50%);
 				}
 				&:last-child {
 					fill: white;
@@ -441,18 +441,18 @@
 	}
 }
 .landing-sound {
-	background: mix(white, mix($cobalt, $eggplant), 30%);
+	background: mix(white, $sound, 30%);
 	.landing-demo {
 		> svg:not(.coach) {
 			* {
 				stroke: lighten($slate, 15%);
 			}
 			circle {
-				fill: mix(mix(white, mix($cobalt, $eggplant), 30%), lighten($slate, 15%), 40%);
+				fill: mix(mix(white, $sound, 30%), lighten($slate, 15%), 40%);
 			}
 			rect {
 				&:first-child {
-					fill: mix(mix(white, mix($cobalt, $eggplant), 30%), lighten($slate, 15%), 70%);
+					fill: mix(mix(white, $sound, 30%), lighten($slate, 15%), 70%);
 				}
 				&:last-child {
 					fill: white;
