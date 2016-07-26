@@ -1,7 +1,7 @@
 <module name='First Time Experience' columns="workflow,status,progress" progress="0000" dimensions="1111" active="{{ms.activeModule.activePerson || 'SM'}}">
 
     <!-- @jeselle, @gabrielle-->
-    <user-workflow priority="5" name='Powerups View' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/powerups/' priority="10">
+    <user-workflow name='Powerups View' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/powerups/' priority="15">
         <user-stories>
             <story type="func, transition" desc="user enters power-ups screen & learns details">
                 <ui-stream desc='Powerups transition in' type='func, gesture'>
@@ -81,8 +81,23 @@
 
     </user-workflow>
 
-    <user-workflow name='Splash Madlib' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/madlib/' priority="10">
+    <user-workflow name='Splash Madlib' default-filters="SM:[type:func|func:true], JH:[type:func|func:true], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/madlib/' priority="1">
         <user-stories>
+            <story type='setup' desc="splash madlib bugs and fixes">
+                <ui-stream desc="Splash madlib optimal setup" type='setup'>
+                    <ui-state name="Write out all the states">
+                    </ui-state>
+                    <ui-state name="fix switches">
+                    </ui-state>
+                    <ui-state name="fix data change">
+                    </ui-state>
+                    <ui-state name="progress">
+                    </ui-state>
+                    <ui-state name="Previous Bugs">
+                        <bug desc="inject class when activated">
+                    </ui-state>
+                </ui-stream>
+            </story>
             <story type="gesture" desc="User enters splash madlib" func='true' tested='false' cp='false' responsive='false'>
                 <ui-stream desc="Page transitions into guru phase">
                     <ui-state name="Warp zooms out" desc="Warp zooms out" func="false" cp='true' >
@@ -93,10 +108,11 @@
 						<bug type="functional" open by="Gabrielle" description="Madlib header letters overlap with each other on smallest screen size, needs tiny mobile attr." platform="mobile"></bug>
                     </ui-state>
 					<ui-state name="Tags animate in" desc="Tags fall in from the warp in a random, staggered manner, then readjust themselves"></ui-state>
+                    <ui-state func='true' type='func' desc="Verify all elements exist after the on-enter madlib transition"></ui-state>
                 </ui-stream>
             </story>
             <story type="gesture, func" desc="User selects/deselects splash tag" func='true' tested='false' cp='false' responsive='false'>
-				<ui-stream name="User selects/deselects one tag for the first time">
+				<ui-stream desc="User selects/deselects one tag for the first time">
 					<ui-state name="User selects one splash tag" desc="" func="true">
 						<bug type="functional" open by="Gabrielle" description="Tags need .active added when selected and removed when deselected - if added currently, tags are selected properly but don’t translate back when another tag is clicked." platform=""/>
 						<bug type="functional" open by="Gabrielle" description="Row 2 Tag 3 doesn't move back into place after being deselected." platform=""/>
@@ -104,8 +120,90 @@
 					<ui-state name="User selects two different splash tags from two different rows"></ui-state>
 					<ui-state name="User selects a splash tag whose row already has a splash tag"></ui-state>
 				</ui-stream>
-                <ui-stream name="User selects/deselects one tag, another already exists">
+                <ui-stream desc="User selects/deselects one tag, another already exists">
                 </ui-stream>
+            </story>
+            <story type="gesture, func" desc="User selects/deselects tags to fill/empty both blanks" tested='false' cp='false' responsive='false'>
+                <ui-stream desc='Filling in both blanks'>
+                    <ui-state func='true' desc="User selects tag from row one">
+                    </ui-state>
+                    <ui-state func='true' desc="User selects tag from row two">
+                    </ui-state>
+                    <ui-state func='true' type='func, gesture' desc="Both blanks filled activates a new splash, madlib state[same state]">
+                    </ui-state>
+                    <ui-state func='false' type='func, gesture' desc="Both blanks filled initiates next splash device state">
+                    </ui-state>
+                    <ui-state func='false' type='func, gesture' desc="Both blanks filled initiates next splash device state">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream desc='Removing a blank + reversing both-blanks activation' func='true' type='func, gesture'>
+                    <ui-state func='true' desc='Select tag from row 1 when both tags already selected & both blanks are filled' type='func, gesture'>
+                    </ui-state>
+                    <ui-state func='false' desc='Deactivate currently progress-ed activated device state' type='func, gesture'>
+                    <ui-state func='false' desc='Deactivate currently progress-ed activated map state' type='func, gesture'>
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story desc="User clicks skip" type='func'>
+                <ui-stream desc="Option 1:">
+                    <ui-state func='false' desc="Both blanks quickly finish and activate the next steps in a 'fast-forward-y manner">
+                    </ui-state>
+                    <ui-state func='false' desc="Once the device has the 'action button', auto trigger the click (show the button as if being pressed) + activate the splash madlib less active state + activate the map/device next steps">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream desc="Option 2: we scroll back down to getting started">
+                    <ui-state func='false' desc="Splash madlib view transitions to less active state en route to Getting Started Workflow">
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story desc="Given that both blanks are filled, next steps" type='func, gesture'>
+                <ui-stream desc="Splash madlib transitions to idle state">
+                    <ui-state func='false' desc='User clicks the "Go" action button'>
+                    </ui-state>
+                    <ui-state func='false' desc='Splash madlib view/container initiates its transition state'>
+                    </ui-state>
+                    <ui-state desc='Splash madlib view transitions to a less emphasized, idly, read-only state'>
+                    </ui-state>
+                </ui-stream>
+                <ui-stream desc="Splash madlib transitions back to active state">
+                    <ui-state func='false' desc="User clicks one of the blanks in splash madlib container while the map is the main active state">
+                    </ui-state>
+                    <ui-state func='false' desc="Map view transitions to less active while splash madlib transitions back to active">
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story type="gesture, func" desc="User selects a new category" tested='false' cp='false' responsive='false'>
+                <ui-stream desc="User selects a category with both blanks empty">
+                    <ui-state func='true' desc='Transition the tags out'>
+                    </ui-state>
+                    <ui-state func='true' desc='Transition new category tags back in'>
+                    </ui-state>
+                </ui-stream>
+                <ui-stream desc="User selects a category with 1/2 blanks empty" type='func, gesture' tested='false' cp='false'>
+                    <ui-state func='false' desc='Transition the filled transition tags back to the their original position'>
+                    </ui-state>
+                    <ui-state func='true' desc='Transition the tags with on-exit tag transition'>
+                    </ui-state>
+                    <ui-state func='true' desc='Transition new category tags back in'>
+                    </ui-state>
+                </ui-stream>
+
+                <ui-stream desc="User selects a category with both blanks filled" func='false' type='func, gesture' tested='false' cp='false'>>
+                    <ui-state func='false' desc='Transition the filled transition tags back to the their original position'>
+                    </ui-state>
+                    <ui-state func='true' desc='Transition the tags with on-exit tag transition'>
+                    </ui-state>
+                    <ui-state func='true' desc='Transition new category tags back in'>
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story type="gesture, func" desc="User selects a new university" tested='false' cp='false' responsive='false'>
+                <ui-state func='false' desc='Transition the filled transition tags back to the their original position'>
+                </ui-state>
+                <ui-state func='true' desc='Transition/Trigger the tags with on-exit tag transition'>
+                </ui-state>
+                <ui-state func='true' desc='Transition/Trigger new category tags back in'>
+                </ui-state>
             </story>
         </user-stories>
     </user-workflow>
