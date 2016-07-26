@@ -312,11 +312,19 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       var resultArr = [];
       for (var i = 0; i < transformArr.length; i++) {
         var indexTransform = transformArr[i];
-
+        var extensions = [];
         var resultPropDict = {properties:[], type:'prop'};
         var transformPrefix = formatBrowserCSSProperty('transform');
         var transitionObj = {duration: 0, properties:[], timingFunction: 'ease'};
         var transformPropDict = TransformService.parseTransformArgs(indexTransform, elem);
+        if (transformPropDict.ext) {
+          for (key in transformPropDict['ext']) {
+            var propDict = {};
+            propDict[key] = transformPropDict['ext'][key];
+            extensions.push(propDict);
+          }
+          delete transformPropDict['ext']
+        }
         if (transformPropDict.delay) {
           resultPropDict.delay = transformPropDict.delay;
           delete transformPropDict['delay']
@@ -346,6 +354,18 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           transformDict[browserProperty] = transformValueStr;
           resultPropDict.properties.push(transformDict);
         }
+
+        if (extensions && extensions.length) {
+          for (var i = 0; i < extensions.length; i++) {
+            var key = Object.keys(extensions[i])[0];
+            var value = extensions[i][key];
+            var keyBrowserFormatted = formatBrowserCSSProperty(key);
+            var propDict = {};
+            propDict[keyBrowserFormatted] = value;
+            resultPropDict.properties.push(propDict);
+          }
+        }
+        console.log(resultPropDict);
 
         if (transitionObj.duration) {
           var transitionDict = formatTransitionString(transitionObj);
