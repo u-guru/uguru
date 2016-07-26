@@ -194,17 +194,18 @@
 					@include flex;
 					@include flex-center;
 					@include flex-wrap;
-					background: rgba(white, .25);
+					background: rgba(white, .7);
 					border-radius: 2px;
 					padding: 15px;
 					svg {
 						width: 64px;
 						height: 64px;
 						* {
-							@include svg-stroke(white, 4);
+							@include svg-stroke(white, 2);
 						}
 					}
 					h2 {
+						color: lighten($slate, 15%);
 						width: 100%;
 						font-size: 20px;
 						font-weight: 600;
@@ -251,16 +252,13 @@
 				li {
 					width: calc(100% / 3);
 					div {
-						background: none;
-						padding: 0;
+						border-radius: 4px;
 						svg {
 							width: 128px;
 							height: 128px;
 						}
 						h2 {
 							font-size: 28px;
-							width: 100%;
-							text-align: center;
 						}
 					}
 				}
@@ -284,6 +282,11 @@
 }
 .landing-gpa {
 	background: mix(white, $gpa, 30%);
+	.powerup-icon {
+		.card-bg, .circle-mask {
+			fill: none!important;
+		}
+	}
 	.landing-demo {
 		> svg:not(.coach) {
 			* {
@@ -362,6 +365,15 @@
 	}
 	.landing-action {
 		background: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
+		ul {
+			li {
+				div {
+					h2 {
+						color: $gpa;
+					}
+				}
+			}
+		}
 		.landing-try-button {
 			background: rgba($gpa, .95);
 			color: white;

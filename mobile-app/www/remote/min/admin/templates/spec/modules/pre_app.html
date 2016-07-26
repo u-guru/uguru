@@ -47,35 +47,37 @@
             </story>
             <story type="func, transition" desc="User transitions from powerups page to a specific powerup">
                 <ui-stream desc='Selected powerup tile becomes the loader'>
-					<ui-state name="Hover continues" desc="The animation from hover continues playing throughout the transition" type="transition" func="true">
+					<ui-state name="Hover continues" desc="The animation from hover continues playing throughout the transition" type="transition" func="true" static="true">
 						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="on-mouse-leave is overriding on-click and preventing the animation from continuing when it's been clicked but the mouse-leave is triggered" platform="all"/>
 					</ui-state>
-					<ui-state name="Unchosen tiles exit" desc="Tiles fadeOut" type="transition" func="true"></ui-state>
-					<ui-state name="Selected tile goes to the forefront" desc="Translates to horizontal center" type="transition" func="true"></ui-state>
-					<ui-state name="Selected tile bg expands" desc="Bg color scaleUp to full page from origin center" type="transition" func="true"></ui-state>
+					<ui-state name="Unchosen tiles exit" desc="Tiles fadeOut" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Selected tile goes to the forefront" desc="Translates to horizontal center" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Selected tile bg expands" desc="Bg color scaleUp to full page from origin center" type="transition" func="true" static="true"></ui-state>
                 </ui-stream>
 				<ui-stream desc="Loader transitions to landing page tile">
-					<ui-state name="Circle border is reemphasized" desc="Border is drawn over" type="transition" func="true"></ui-state>
-					<ui-state name="Hover animation plays" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true"></ui-state>
+					<ui-state name="Circle border is reemphasized" desc="Border is drawn over" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Hover animation plays" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true" static="true"></ui-state>
 				</ui-stream>
 				<ui-stream desc="Rest of the landing page onEnter">
-					<ui-state name="Guru circle becomes header" desc="translateY up" type="transition" func="true">
+					<ui-state name="Guru circle becomes header" desc="translateY up" type="transition" func="true" static="true">
 						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Guru tile from powerups page needs to replace guru tile in GPA landing page exactly in the DOM" platform="all"/>
 					</ui-state>
-					<ui-state name="Header text enters" desc="bounceInUp-subtle" type="transition" func="true"></ui-state>
-					<ui-state name="GPA content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="false"></ui-state>
+					<ui-state name="Header text enters" desc="bounceInUp-subtle" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="GPA content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="true"></ui-state>
 					<ui-state name="Munchies content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="false"></ui-state>
-					<ui-state name="Munchies content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="false"></ui-state>
-					<ui-state name="Munchies content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="false"></ui-state>
+					<ui-state name="Sound content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="false"></ui-state>
+					<ui-state name="Transit content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="false"></ui-state>
 				</ui-stream>
 			</story>
 			<story type="func" desc="User scrolls to demo">
 				<ui-state name="Outside phone screenshots slide out from underneath center screenshot" desc="" type="transition" func="true">
 					<bug type="functional" open by="Gabrielle" flag="[Samir]" description="ion-scroll is interfering with actual scroll - should discuss best practices until ionic is removed" platform="all"/>
 				</ui-state>
-				<ui-state name="Search courses icon animates in" desc="" type="transition" func="true"></ui-state>
-				<ui-state name="Calculate grades icon animates in" desc="" type="transition" func="true"></ui-state>
-				<ui-state name="Track GPA icon animates in" desc="" type="transition" func="true"></ui-state>
+				<ui-state name="Search courses icon animates in" desc="Circle already exists - tablet and person bounceInUp and lines drawIn and scroll" type="transition" func="false" static="false"></ui-state>
+				<ui-state name="Calculate grades icon animates in" desc="Circle already exists - calculator bounceInUp and numbers countUp" type="transition" func="false" static="false">
+					<bug type="functional" open by="Gabrielle" flag="[Gabrielle]" description="Get countUp directory from old codebase" platform="all"/>
+				</ui-state>
+				<ui-state name="Track GPA icon animates in" desc="Circle already exists - projector bounceInUp and arrow drawIn" type="transition" func="false" static="false"></ui-state>
 			</story>
 			<story type="func, transition" desc="User transitions to powerups page from a specific powerup page">
                 <ui-stream desc='User hovers over close button'>
@@ -341,21 +343,6 @@
             </story>
         </user-stories>
     </user-workflow>
-
-	<user-workflow name="Powerups" url='/#/dev/splash/powerups/'>
-		<setup type="base">
-        </setup>
-        <user-stories>
-			<story name="Powerups activate">
-				<ui-stream desc="User activates powerups">
-					<ui-state name="Mouse enter powerups link"></ui-state>
-					<ui-state name="Mouse leave powerups link"></ui-state>
-					<ui-state name="Click powerups link"></ui-state>
-					<ui-state name="Powerup tiles transition in"></ui-state>
-				</ui-stream>
-			</story>
-		</user-stories>
-	</user-workflow>
 
 	<user-workflow name="University Search" url='/#/dev/splash/university-search/'>
 		<setup type="base">
