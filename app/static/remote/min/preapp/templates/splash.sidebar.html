@@ -1,17 +1,15 @@
 <div class="sidebar-scale"
-	init-with="p:[tr:scale(0), t:all 1000ms ease-out, opacity:1, display:block, background:#ffffff]"
+	init-with="p:[tr:scale(0), op:1, display:block, background:#ffffff]"
 	when-sidebar-icon-clicked="t:[on-enter]"
-	on-enter="p:[tr:scale(1000), background:#40484b] | t:[on-exit]"
-	on-exit="p:[opacity:0:delay-500, t:all 500ms ease-out, display:none:delay-2000]"></div>
+	on-enter="p:[tr:scale(1000), background:#40484b, op:1, display:block, t:all 1000ms ease-out] | t:[on-exit]"
+	on-exit="p:[tr:scale(0):delay-2000, background:#ffffff:delay-2000, op:0:delay-500, display:none:delay-2000, t:all 500ms ease-out]"></div>
 <div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar'
-	init-with="p:[opacity:0]"
- 	when-sidebar-icon-clicked="t:[on-enter]"
-	on-enter="p:[opacity:1:delay-500]"
-	when-sidebar-close-clicked="t:[on-exit]"
-	on-exit="p:[opacity:0]">
+	init-with="p:[op:0]"
+ 	when-sidebar-icon-clicked="p:[op:1:delay-500]"
+	when-sidebar-close-clicked="p:[op:0]">
 	<!-- on-init="t:[on-enter]" -->
     <!-- <custom-states when="faq-clicked, pricing-clicked"></custom-states> -->
-    <aside class="splash-sidebar-full">
+    <aside class="splash-sidebar-full overflow-auto no-scrollbar">
         <!-- class-on-activate="fadeIn:anim, null:inject.splash-sidebar-menu|activate, null:inject.splash-sidebar-links a[class-on-activate]|activate" class-on-clear="fadeOut:animOut" -->
         <nav class="splash-sidebar-menu">
             <!-- class-on-activate="bounceInLeft:anim" class-on-clear="bounceOutLeft:animOut" -->
@@ -43,99 +41,83 @@
                 </header>
                 <ul class="splash-sidebar-links">
                     <li init-with="p:[tr:rotateX(90deg) translateZ(0), op:0]"
-						when-sidebar-icon-clicked="t:[on-enter]"
-						on-enter="p:[op:1:delay-2000, tr:rotateX(0) translateZ(0):delay-2000, t:transform 250ms ease-out]">
-                        <a on-click="s:[faq-clicked]">
-                            <!-- id='cta-box-FAQ' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="50" class-on-clear="bounceOut:animOut" class-on-click="null:inject#cta-modal-FAQ|activate" ng-click='(!desktopMode && page.modals.faq.show()) || clearAllCTAExcept("FAQ")' -->
-                            <span
+						when-sidebar-icon-clicked="p:[op:1:delay-2000, tr:rotateX(0) translateZ(0):delay-2000, t:transform 250ms ease-out]">
+                        <a on-click="s:[faq-clicked:public]">
+                            <span init-default
 								on-mouse-enter="p:[tr:translate3d(5px#0#0), t:all 150ms cubic-bezier(.5#0#1#.75)]"
 								on-mouse-leave="p:[tr:translate3d(0#0#0)]">
 								<span>FAQ</span>
-								<!-- @samir -->
-								<span when-faq-clicked="t:[on-enter]"
-									init-with="p:[tr:scale(0) translateZ(0), opacity:1]"
-									on-enter="p:[tr:scale(100) translateZ(0), t:all 300ms ease-out] | t:[on-exit]"
-									on-exit="p:[opacity:0:delay-150]"></span>
+								<span init-with="p:[tr:scale(0) translateZ(0), op:1]"
+									when-faq-clicked="p:[tr:scale(100) translateZ(0), op:1, t:transform 300ms ease-out] | s:[faq-link-exit:public]"
+									when-faq-link-exit="p:[tr:scale(0) translateZ(0):delay-450, op:0:delay-150]"></span>
 							</span>
                         </a>
                     </li>
                     <li init-with="p:[tr:rotateX(-90deg) translateZ(0), op:0]"
 						when-sidebar-icon-clicked="t:[on-enter]"
 						on-enter="p:[op:1:delay-2250, tr:rotateX(0) translateZ(0):delay-2250, t:transform 250ms ease-out]">
-                        <a on-click="s:[pricing-clicked]">
-                            <!-- id='cta-box-pricing' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="100" class-on-clear="bounceOut:animOut" class-on-click="null:inject#cta-modal-pricing|activate" ng-click='(!desktopMode && page.modals.pricing.show()) || clearAllCTAExcept("pricing")' -->
+                        <a on-click="s:[pricing-clicked:public]">
                             <span
 								on-mouse-enter="p:[tr:translate3d(5px#0#0), t:all 300ms cubic-bezier(.5#0#.4#1.25)]"
 								on-mouse-leave="p:[tr:translate3d(0#0#0)]">
 								<span>Pricing</span>
-								<span when-pricing-clicked="t:[on-enter]"
-									init-with="p:[tr:scale(0) translateZ(0), opacity:1]"
-									on-enter="p:[tr:scale(100) translateZ(0), t:all 300ms ease-out] | t:[on-exit]"
-									on-exit="p:[opacity:0:delay-150]"></span>
+								<span init-with="p:[tr:scale(0) translateZ(0), op:1]"
+									when-pricing-clicked="p:[tr:scale(100) translateZ(0), op:1, t:transform 300ms ease-out] | s:[pricing-link-exit]"
+									when-pricing-link-exit="p:[tr:scale(0) translateZ(0):delay-450, op:0:delay-150]"></span>
 							</span>
                         </a>
                     </li>
                     <li init-with="p:[tr:rotateX(90deg) translateZ(0), op:0]"
 						when-sidebar-icon-clicked="t:[on-enter]"
 						on-enter="p:[op:1:delay-2500, tr:rotateX(0) translateZ(0):delay-2500, t:transform 250ms ease-out]">
-                        <a on-click="s:[about-clicked]">
-                            <!-- id='cta-box-intercom' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="150" class-on-clear="bounceOut:animOut"  class-on-click="null:inject#cta-modal-intercom|activate" ng-click='(!desktopMode && page.modals.support() || clearAllCTAExcept("support"))'-->
+                        <a on-click="s:[about-clicked:public]">
                             <span
 								on-mouse-enter="p:[tr:translate3d(5px#0#0), t:all 300ms cubic-bezier(.5#0#.4#1.25)]"
 								on-mouse-leave="p:[tr:translate3d(0#0#0)]">
 								<span>Support</span>
-								<span when-about-clicked="t:[on-enter]"
-									init-with="p:[tr:scale(0) translateZ(0), opacity:1]"
-									on-enter="p:[tr:scale(100) translateZ(0), t:all 300ms ease-out] | t:[on-exit]"
-									on-exit="p:[opacity:0:delay-150]"></span>
+								<span init-with="p:[tr:scale(0) translateZ(0), op:1]"
+									when-about-clicked="p:[tr:scale(100) translateZ(0), op:1, t:translate 300ms ease-out] | s:[about-link-exit:public]"
+									when-about-link-exit="p:[tr:scale(0) translateZ(0):delay-450, op:0:delay-150]"></span>
 							</span>
                         </a>
                     </li>
                     <li init-with="p:[tr:rotateX(-90deg) translateZ(0), op:0]"
 						when-sidebar-icon-clicked="t:[on-enter]"
 						on-enter="p:[op:1:delay-2750, tr:rotateX(0) translateZ(0):delay-2750, t:transform 250ms ease-out]">
-                        <a on-click="s:[team-clicked]">
-                            <!-- id='cta-box-team' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="200" class-on-clear="bounceOut:animOut"  class-on-click="null:inject#cta-modal-team|activate" ng-click='(!desktopMode && page.modals.team.show()) || clearAllCTAExcept("team")' -->
+                        <a on-click="s:[team-clicked:public]">
                             <span
 								on-mouse-enter="p:[tr:translate3d(5px#0#0), t:all 300ms cubic-bezier(.5#0#.4#1.25)]"
 								on-mouse-leave="p:[tr:translate3d(0#0#0)]">
 								<span>Team</span>
-								<span when-team-clicked="t:[on-enter]"
-									init-with="p:[tr:scale(0) translateZ(0), opacity:1]"
-									on-enter="p:[tr:scale(100) translateZ(0), t:all 300ms ease-out] | t:[on-exit]"
-									on-exit="p:[opacity:0:delay-150]"></span>
+								<span init-with="p:[tr:scale(0) translateZ(0), op:1]"
+									when-team-clicked="p:[tr:scale(100) translateZ(0), op:1, t:translate 300ms ease-out] | s:[team-link-exit]"
+									when-team-link-exit="p:[tr:scale(0) translateZ(0):delay-450, op:0:delay-150]"></span>
 							</span>
                         </a>
                     </li>
                     <li init-with="p:[tr:rotateX(90deg) translateZ(0), op:0]"
 						when-sidebar-icon-clicked="t:[on-enter]"
 						on-enter="p:[op:1:delay-3000, tr:rotateX(0) translateZ(0):delay-3000, t:transform 250ms ease-out]">
-                        <!-- ng-click='clearAllCTAExcept()' ng-if='!user || !user.id' -->
-                        <a on-click="s:[login-clicked]">
-                            <!-- id='cta-box-account' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="250" class-on-clear="bounceOut:animOut" ng-click="showSidebarLogin()" -->
+                        <a on-click="s:[login-clicked:public]">
                             <span
 								on-mouse-enter="p:[tr:translate3d(5px#0#0), t:all 300ms cubic-bezier(.5#0#.4#1.25)]"
 								on-mouse-leave="p:[tr:translate3d(0#0#0)]">
 								<span>Login</span>
-								<span when-login-clicked="t:[on-enter]"
-									init-with="p:[tr:scale(0) translateZ(0), opacity:1]"
-									on-enter="p:[tr:scale(100) translateZ(0), t:all 300ms ease-out] | t:[on-exit]"
-									on-exit="p:[opacity:0:delay-150]"></span>
+								<span init-with="p:[tr:scale(0) translateZ(0), op:1]"
+									when-login-clicked="p:[tr:scale(100) translateZ(0), op:1, t:translate 300ms ease-out] | s:[when-login-clicked:public]"
+									when-login-link-exit="p:[tr:scale(0) translateZ(0):delay-450, op:0:delay-150]"></span>
 							</span>
                         </a>
                     </li>
                     <li ng-if="false">
-                        <!-- ng-if='user && user.id' -->
-                        <a on-click="s:[logout-clicked]">
-                            <!-- id='cta-box-intercom' class="opacity-0" class-on-activate="bounceInLeft:anim" class-on-activate-delay="300" class-on-clear="bounceOut:animOut" ng-click='logoutUser(true)' -->
+                        <a on-click="s:[logout-clicked:public]">
                             <span
 								on-mouse-enter="p:[tr:translate3d(5px#0#0), t:all 300ms cubic-bezier(.5#0#.4#1.25)]"
 								on-mouse-leave="p:[tr:translate3d(0#0#0)]">
 								<span>Logout</span>
-								<span when-logout-clicked="t:[on-enter]"
-									init-with="p:[tr:scale(0) translateZ(0), opacity:1]"
-									on-enter="p:[tr:scale(100) translateZ(0), t:all 300ms ease-out] | t:[on-exit]"
-									on-exit="p:[opacity:0:delay-150]"></span>
+								<span init-with="p:[tr:scale(0) translateZ(0), op:1]"
+									when-logout-clicked="p:[tr:scale(100) translateZ(0), op:1, t:translate 300ms ease-out] | s:[when-login-link-exit]"
+									when-login-link-exit="p:[tr:scale(0) translateZ(0):delay-450, op:0:delay-150]"></span>
 							</span>
                         </a>
                     </li>
@@ -152,11 +134,11 @@
                     </svg>
                     <div class="school-id-inside">
 						<div class="school-id-bg" style="background: #003262;"
-							init-with="p:[opacity:1]"
+							init-with="p:[op:1]"
 							when-sidebar-icon-clicked="t:[on-enter]"
-							on-enter="p:[opacity:0]:delay-4000"></div>
+							on-enter="p:[op:0]:delay-4000"></div>
                         <div class="school-id-top" style="background: #003262;"
-							 init-with="p:[opacity:0]"
+							 init-with="p:[op:0]"
 							 when-sidebar-icon-clicked="t:[on-enter]"
 							 on-enter="anim:[fadeIn:set:(animation-duration:250ms#animation-timing-function:ease-out#animation-delay:3750ms):in]">
                             <span class="user-icon" style="border-color: #003262;">
@@ -167,7 +149,7 @@
                             </span>
                         </div>
                         <div class="school-id-bottom"
-							init-with="p:[opacity:0]"
+							init-with="p:[op:0]"
 							when-sidebar-icon-clicked="t:[on-enter]"
 							on-enter="anim:[fadeIn:set:(animation-duration:250ms#animation-timing-function:ease-out#animation-delay:3750ms):in]">
                             <div>

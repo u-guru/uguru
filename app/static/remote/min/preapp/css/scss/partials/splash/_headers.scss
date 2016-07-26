@@ -301,7 +301,7 @@
 			padding: 0 5px;
 			border-radius: 2px;
 			border: 2px solid white;
-			span {
+			> span {
 				font-size: 18px;
 				font-weight: 600;
 				&:first-child {
@@ -313,19 +313,24 @@
 					height: 100%;
 				}
 				&:not(:first-child) {
+					@include flex;
+					@include flex-center-vertical;
 					position: relative;
 					z-index: 1;
+					span:first-child {
+						font-size: 14px;
+					}
 				}
 			}
 			svg {
 				position: relative;
 				z-index: 2;
 				display: block;
-				width: 20px;
+				width: 14px;
 				height: 20px;
 				margin-left: 5px;
 				path {
-					@include svg-stroke(white, 10);
+					@include svg-stroke(white, 16);
 				}
 			}
 		}
@@ -334,6 +339,7 @@
 #splash-hero-nav-mobile {
 	@include flex;
 	@include flex-wrap;
+	@include prefix(align-content, flex-start, webkit);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -681,17 +687,6 @@
 				@include reset-pos;
 				right: auto;
 				height: auto;
-			}
-		}
-	}
-	.splash-sidebar-full {
-		.splash-sidebar-menu {
-			header {
-				height: 70px;
-				.splash-logo {
-					height: 100%!important;
-					margin: 0 15px!important;
-				}
 			}
 		}
 	}

@@ -21,14 +21,16 @@
 }
 
 .splash-hero-skip {
-	padding: 15px;
+	margin: 15px;
+	@include round;
+	background: rgba($slate, .5);
 	button {
-		@include opacity(.5);
+		// @include opacity(.5);
 		@include rotate(-15);
 		@include round;
+		background: rgba(white, .6);
 		width: 64px;
 		height: 64px;
-		background: none;
 		border: 2px solid white;
 		padding: 0!important;
 		font-size: 20px;
@@ -37,10 +39,10 @@
 		color: white!important;
 		white-space: nowrap;
 		&:hover, &:focus {
-			@include opacity(.75);
+			background: rgba(mix($robin, white), .6);
 		}
 		&:active {
-			@include opacity(1);
+			background: rgba(mix($shamrock, white), .6);
 		}
 	}
 }

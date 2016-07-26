@@ -5,6 +5,14 @@
 @import 'partials/keyframes';
 @import 'partials/docs';
 
+#admin-anim-tools {
+	> div {
+		@media screen and (max-width: 768px) {
+			@include flex-wrap;
+		}
+	}
+}
+
 // bugs
 .bug-tag-list {
 	ul {

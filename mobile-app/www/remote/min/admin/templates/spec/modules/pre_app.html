@@ -1,7 +1,7 @@
 <module name='First Time Experience' columns="workflow,status,progress" progress="0000" dimensions="1111" active="{{ms.activeModule.activePerson || 'SM'}}">
 
     <!-- @jeselle, @gabrielle-->
-    <user-workflow name='Powerups View' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/powerups/' priority="15">
+    <user-workflow name='Powerups View' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/powerups/' priority="5">
         <user-stories>
             <story type="func, transition" desc="user enters power-ups screen & learns details">
                 <ui-stream desc='powerups transition in'>
@@ -31,19 +31,19 @@
 
     </user-workflow>
 
-    <user-workflow name='Splash Madlib' default-filters="SM:[type:func|func:true], JH:[type:func|func:true], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/madlib/' priority="1">
+    <user-workflow name='Splash Madlib' default-filters="SM:[type:func|func:true], JH:[type:func|func:true], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/madlib/' priority="10">
         <user-stories>
             <story type='setup' desc="splash madlib bugs and fixes">
                 <ui-stream desc="Splash madlib optimal setup" type='setup'>
-                    <ui-state name="Write out all the states">
+                    <ui-state name="Write out all the states" test-id="">
                     </ui-state>
-                    <ui-state name="fix switches">
+                    <ui-state name="fix switches" test-id="">
                     </ui-state>
-                    <ui-state name="fix data change">
+                    <ui-state name="fix data change" test-id="">
                     </ui-state>
-                    <ui-state name="progress">
+                    <ui-state name="progress" test-id="">
                     </ui-state>
-                    <ui-state name="Previous Bugs">
+                    <ui-state name="Previous Bugs" test-id="">
                         <bug desc="inject class when activated">
                     </ui-state>
                 </ui-stream>
