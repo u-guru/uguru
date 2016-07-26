@@ -128,7 +128,38 @@
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):delay-1750:in]"
 						when-gpa-landing-enter="t-enter">
 						<div>
-							<span ng-include="root.base_url + 'shared/templates/components/svg/main/grades-a.html'"></span>
+							<span>
+								<svg viewBox="0 0 150 150">
+									<defs>
+										<clipPath id="line-scroll-clip">
+											<path d="M80,57.2748707 L80,45 L39,45 L39,101 L80,101 L80,100.392265 C76.3053982,98.9591207 73.6001162,95.2964096 73.6001162,91.0476063 L73.5217162,87.5021841 L70.9111829,87.5021841 C69.8957162,87.5021841 68.9707829,86.963746 68.4378496,86.0945397 C67.9030496,85.2253333 67.8554496,84.1503365 68.3099829,83.2360254 L72.8347829,73.0620825 C72.9141162,69.6115683 73.5058496,66.5829714 74.5941162,64.0618032 C74.6417162,63.9452825 75.0943829,62.8759238 75.5022496,62.2632508 C76.3282496,60.8227175 77.4174496,59.5203175 78.7241162,58.4152508 C79.1364567,58.017243 79.5620903,57.6369774 80,57.2748707 L80,57.2748707 Z" class="tab-screen" stroke="#79C5CD"></path>
+										</clipPath>
+										<clipPath id="search-course-clip"><circle class="circle-container" stroke="#79C5CD" cx="75" cy="75" r="72"></circle></clipPath>
+									</defs>
+								    <g class="search-course" stroke-width="2.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+										<circle class="circle-container" stroke="#79C5CD" cx="75" cy="75" r="72"></circle>
+								        <g clip-path="url(#search-course-clip)">
+											<g class="line-scroll" clip-path="url(#line-scroll-clip)">
+									            <path d="M46.4092742,148 L70.9657258,148" class="line-10" stroke="#C18973"></path>
+									            <path d="M46.4092742,140 L70.9657258,140" class="line-9" stroke="#C18973"></path>
+									            <path d="M46.4092742,132 L70.9657258,132" class="line-8" stroke="#C18973"></path>
+									            <path d="M46.4092742,124 L70.9657258,124" class="line-7" stroke="#C18973"></path>
+									            <path d="M46.4092742,116 L70.9657258,116" class="line-6" stroke="#C18973"></path>
+									            <path d="M46.4092742,108 L70.9657258,108" class="line-5" stroke="#C18973"></path>
+									            <path d="M46.4092742,100 L70.9657258,100" class="line-4" stroke="#C18973"></path>
+									            <path d="M46.4092742,92 L70.9657258,92" class="line-3" stroke="#C18973"></path>
+									            <path d="M46.4778226,84 L67.6471774,84" class="line-2" stroke="#C18973"></path>
+									            <path d="M46.5342742,76 L71.0907258,76" class="line-1" stroke="#C18973"></path>
+												<path d="M47.875,57.7772449 L59.8745947,54 L71.875,57.7772449 L59.8745947,61.6670594 L47.875,57.7772449 L47.875,57.7772449 L47.875,57.7772449 Z M52.8756664,59.7262929 L52.8756664,65.7532676 C52.8756664,65.7532676 55.3856667,67 59.622333,67 C63.8589994,67 66.5423337,65.7532676 66.5423337,65.7532676 L66.5423337,59.7262929" class="cap" stroke="#C18973"></path>
+											</g>
+								            <path d="M85.0740741,54.1273045 L85.0740741,42.6570415 C85.0740741,40.6318382 83.4346538,39 81.4123263,39 L36.6617478,39 C34.6444802,39 33,40.6373132 33,42.6570415 L33,109.342959 C33,111.368162 34.6394203,113 36.6617478,113 L81.4123263,113 C81.7429057,113 82.0634738,112.95603 82.3684343,112.873613 L81.9795829,112.873613 L81.9795829,100.92461 C77.3129162,100.198235 73.6001162,96.0251048 73.6001162,91.0476063 L73.5217162,87.5021841 L70.9111829,87.5021841 C69.8957162,87.5021841 68.9707829,86.963746 68.4378496,86.0945397 C67.9030496,85.2253333 67.8554496,84.1503365 68.3099829,83.2360254 L72.8347829,73.0620825 C72.9141162,69.6115683 73.5058496,66.5829714 74.5941162,64.0618032 C74.6417162,63.9452825 75.0943829,62.8759238 75.5022496,62.2632508 C76.3282496,60.8227175 77.4174496,59.5203175 78.7241162,58.4152508 C80.5980427,56.6064609 82.7465194,55.1641081 85.0740741,54.1273045 L85.0740741,54.1273045 Z" class="tab-base" stroke="#79C5CD"></path>
+								            <path d="M80,57.2748707 L80,45 L39,45 L39,101 L80,101 L80,100.392265 C76.3053982,98.9591207 73.6001162,95.2964096 73.6001162,91.0476063 L73.5217162,87.5021841 L70.9111829,87.5021841 C69.8957162,87.5021841 68.9707829,86.963746 68.4378496,86.0945397 C67.9030496,85.2253333 67.8554496,84.1503365 68.3099829,83.2360254 L72.8347829,73.0620825 C72.9141162,69.6115683 73.5058496,66.5829714 74.5941162,64.0618032 C74.6417162,63.9452825 75.0943829,62.8759238 75.5022496,62.2632508 C76.3282496,60.8227175 77.4174496,59.5203175 78.7241162,58.4152508 C79.1364567,58.017243 79.5620903,57.6369774 80,57.2748707 L80,57.2748707 Z" class="tab-screen" stroke="#79C5CD"></path>
+								            <path d="M59.90625,109.916667 C58.5770833,109.916667 57.5,108.832256 57.5,107.494048 C57.5,106.155839 58.5770833,105.071429 59.90625,105.071429 C61.2354167,105.071429 62.3125,106.155839 62.3125,107.494048 C62.3125,108.832256 61.2354167,109.916667 59.90625,109.916667 L59.90625,109.916667 Z" class="home-btn" stroke="#79C5CD"></path>
+								            <path d="M81.9795829,100.92461 C77.3129162,100.198235 73.6001162,96.0251048 73.6001162,91.0476063 L73.5217162,87.5021841 L70.9111829,87.5021841 C69.8957162,87.5021841 68.9707829,86.963746 68.4378496,86.0945397 C67.9030496,85.2253333 67.8554496,84.1503365 68.3099829,83.2360254 L72.8347829,73.0620825 C72.9141162,69.6115683 73.5058496,66.5829714 74.5941162,64.0618032 C74.6417162,63.9452825 75.0943829,62.8759238 75.5022496,62.2632508 C76.3282496,60.8227175 77.4174496,59.5203175 78.7241162,58.4152508 C82.8615829,54.4216 88.3374496,52.2142857 94.1241162,52.2142857 C106.469316,52.2142857 116.515716,62.3252698 116.515716,74.7553905 C116.515716,81.8218032 113.711983,89.3091937 109.045316,93.4597714 L109.045316,112.873613 L81.9795829,112.873613 L81.9795829,100.92461 Z" class="head" stroke="#79C5CD"></path>
+								        </g>
+								    </g>
+								</svg>
+							</span>
 							<h2>Search From<br/>University Courses</h2>
 						</div>
 					</li>
@@ -137,7 +168,46 @@
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):delay-1750:in]"
 						when-gpa-landing-enter="t-enter">
 						<div>
-							<span ng-include="root.base_url + 'shared/templates/components/svg/main/grades-a.html'"></span>
+							<span>
+								<svg viewBox="0 0 150 150">
+								<defs>
+									<clipPath id="calculate-grade-clip"><circle class="circle-container" stroke="#79C5CD" cx="75" cy="75" r="72"></circle></clipPath>
+								</defs>
+							    <g class="calculate-grade" stroke="none" stroke-width="2.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+									<circle class="circle-container" stroke="#79C5CD" cx="75" cy="75" r="72"></circle>
+									<g>
+							            <rect class="base" stroke="#79C5CD" x="47" y="33" width="57" height="84" rx="1.71428571"></rect>
+							            <rect class="screen" stroke="#79C5CD" x="53.9090909" y="40.7142857" width="44.0454545" height="18" rx="1.71428571"></rect>
+									<g class="btns-4">
+							            <rect class="gpa-btn-midr-4" stroke="#79C5CD" x="78.0909091" y="102.428571" width="6.90909091" height="6.85714286"></rect>
+							            <rect class="gpa-btn-midl-4" stroke="#79C5CD" x="66" y="102.428571" width="6.90909091" height="6.85714286"></rect>
+							            <rect class="gpa-btn-left-4" stroke="#79C5CD" x="53.9090909" y="102.428571" width="6.90909091" height="6.85714286"></rect>
+									</g>
+									<g class="btns-3">
+							            <rect class="gpa-btn-r-3" stroke="#79C5CD" x="90.1818182" y="90.4285714" width="6.90909091" height="18"></rect>
+							            <rect class="gpa-btn-midr-3" stroke="#79C5CD" x="78.0909091" y="90.4285714" width="6.90909091" height="6.85714286"></rect>
+							            <rect class="gpa-btn-midl-3" stroke="#79C5CD" x="66" y="90.4285714" width="6.90909091" height="6.85714286"></rect>
+							            <rect class="gpa-btn-left-3" stroke="#79C5CD" x="53.9090909" y="90.4285714" width="6.90909091" height="6.85714286"></rect>
+									</g>
+									<g class="btns-2">
+							            <rect class="gpa-btn-r-2" stroke="#79C5CD" x="90.1818182" y="78.4285714" width="6.90909091" height="6.85714286"></rect>
+							            <rect class="gpa-btn-midr-2" stroke="#79C5CD" x="78.0909091" y="78.4285714" width="6.90909091" height="6.85714286"></rect>
+							            <rect class="gpa-btn-midl-2" stroke="#79C5CD" x="66" y="78.4285714" width="6.90909091" height="6.85714286"></rect>
+							            <rect class="gpa-btn-left-2" stroke="#79C5CD" x="53.9090909" y="78.4285714" width="6.90909091" height="6.85714286"></rect>
+									</g>
+									<g class="btns-1">
+							            <rect class="gpa-btn-r-1" stroke="#79C5CD" x="90.1818182" y="66.4285714" width="6.90909091" height="6.85714286"></rect>
+							            <rect class="gpa-btn-midr-1" stroke="#79C5CD" x="78.0909091" y="66.4285714" width="6.90909091" height="6.85714286"></rect>
+							            <rect class="gpa-btn-midl-1" stroke="#79C5CD"  x="66" y="66.4285714" width="6.90909091" height="6.85714286"></rect>
+							            <rect class="gpa-btn-left-1" stroke="#79C5CD" x="53.9090909" y="66.4285714" width="6.90909091" height="6.85714286"></rect>
+									</g>
+							            <text class="2.0" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="12" font-weight="500" fill="#C18973">
+							                <tspan x="68.1258182" y="53.7142857">2.0</tspan>
+							            </text>
+									</g>
+							    </g>
+							</svg>
+						</span>
 							<h2>Calculate<br/>Course Grades</h2>
 						</div>
 					</li>
@@ -146,7 +216,24 @@
 						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):delay-1750:in]"
 						when-gpa-landing-enter="t-enter">
 						<div>
-							<span ng-include="root.base_url + 'shared/templates/components/svg/main/grades-a.html'"></span>
+							<span><svg viewBox="0 0 150 150">
+								<defs>
+									<clipPath id="track-clip"><circle class="circle-container" stroke="#79C5CD" cx="75" cy="75" r="72"></circle></clipPath>
+								</defs>
+								<g class="track" stroke-width="2.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+									<circle class="circle-container" stroke="#79C5CD" cx="75" cy="75" r="72"></circle>
+									<g clip-path="url(#track-clip)">
+								        <path d="M76.1506849,96.6954689 L103.767123,115.193136" class="stand-right" stroke="#79C5CD"></path>
+								        <path d="M73.8493151,96.6954689 L46.2328767,115.193136" class="stand-left" stroke="#79C5CD"></path>
+								        <path d="M75,96.1174168 L75,115.193136" class="stand-mid" stroke="#79C5CD"></path>
+								        <path d="M75,36 L75,42.3585729" class="stand-top" stroke="#79C5CD"></path>
+								        <path d="M112.39726,42.8943848 L112.39726,44.6527959 L112.39726,93.9858836 C112.39726,94.9570272 111.60789,95.7442947 110.640393,95.7442947 L39.359607,95.7442947 C38.389316,95.7442947 37.6027397,94.9561877 37.6027397,93.9858836 L37.6027397,42.8943848 M33.56,42.3585729 L116.44,42.3585729" class="projector" stroke="#79C5CD"></path>
+								        <polyline class="arrow-line" stroke="#C18973" points="97.1310615 57.0989011 80.3721867 73.9367032 71.0128625 64.5333006 54 81.6262865"></polyline>
+								        <polyline class="arrow-head" stroke="#C18973" points="89.4748115 57.0989011 97.1273337 57.0989011 97.1273337 64.7912088"></polyline>
+									</g>
+							    </g>
+							</svg>
+						</span>
 							<h2>Track Your<br/>Cumulative GPA</h2>
 						</div>
 					</li>

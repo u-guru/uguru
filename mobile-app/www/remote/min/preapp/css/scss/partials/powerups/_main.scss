@@ -194,14 +194,14 @@
 					@include flex;
 					@include flex-center;
 					@include flex-wrap;
-					background: rgba(white, .7);
+					background: rgba($smoke, .8);
 					border-radius: 2px;
 					padding: 15px;
 					svg {
 						width: 64px;
 						height: 64px;
-						* {
-							@include svg-stroke(white, 2);
+						circle {
+							fill: rgba(white, .5);
 						}
 					}
 					h2 {
