@@ -22,8 +22,8 @@ angular.module('uguru.admin')
           {name: 'skew', value: 'coord'},
           {name: 'origin', value:'coord'},
           {name: 'perspective'},
-          // {name: 'to', value: 'selector'},
-          // {name: 'clear', value: ['arg', 'all']},
+          {name: 'to', value: 'selector'},
+          {name: 'clear', value: ['arg', 'all']},
         ],
         options: {
           coords: ['px', 'vp', '%', 'deg'],
@@ -35,6 +35,10 @@ angular.module('uguru.admin')
           {
             args: ['skewX', 'skewY'],
             str: 'transform:[skew:(0.5rad, 30deg), duration:1000]'
+          },
+          {
+            args: ['to', 'duration', 'delay'],
+            str: 'transform:[to:(#title), duration:250, delay:500]'
           },
           {
             args: ['rotateX', 'rotateY', 'rotateZ'],
