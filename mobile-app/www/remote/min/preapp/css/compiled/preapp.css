@@ -4976,18 +4976,14 @@ a[class*="-container"]:hover .map-stadium-outside {
           -ms-flex-flow: row wrap;
           -webkit-flex-flow: row wrap;
           flex-flow: row wrap;
-          background: rgba(255, 255, 255, 0.7);
+          background: rgba(241, 241, 241, 0.8);
           border-radius: 2px;
           padding: 15px; }
           .landing-container .landing-action ul li div svg {
             width: 64px;
             height: 64px; }
-            .landing-container .landing-action ul li div svg * {
-              fill: none;
-              stroke: white;
-              stroke-width: 2px;
-              stroke-linecap: round;
-              stroke-linejoin: round; }
+            .landing-container .landing-action ul li div svg circle {
+              fill: rgba(255, 255, 255, 0.5); }
           .landing-container .landing-action ul li div h2 {
             color: #637074;
             width: 100%;
