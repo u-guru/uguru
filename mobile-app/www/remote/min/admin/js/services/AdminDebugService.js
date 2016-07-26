@@ -26,7 +26,34 @@ function AdminDebugService($state, $timeout, $localstorage, RootService, Utiliti
         processOptions: processOptions,
         initAnimToolPlayer: initAnimToolPlayer,
         getAllOptions: getAllOptions,
-        getAllCustomStates: getAllCustomStates
+        getAllCustomStates: getAllCustomStates,
+        getTestStateObj: getTestStateObj
+    }
+
+    //@jason
+    function getTestStateObj(test_id, state_obj) {
+        console.log(test_id, state_obj);
+        var testStateObj;
+        //place your stuff here
+
+        // 1. get test_obj
+        // --- if you can get it immediately, return it
+        // --- if you cant .. call this callback
+
+        $timeout(function() {
+            state_obj.testObj = yourFunctionThatWillReturnTestObjWithID(test_id, state_obj)
+        })
+
+        function yourFunctionThatWillReturnTestObjWithID(test_id, state_obj) {
+            var testObj;
+            //add code here
+            return testObj;
+        }
+        // 2. set state_obj
+
+
+
+        return testStateObj;
     }
 
     function getAllCustomStates(elem) {

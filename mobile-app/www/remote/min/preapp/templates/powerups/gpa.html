@@ -1,12 +1,14 @@
-<div class='full-xy absolute left-0 flex-wrap-center'
-	init-with="p:[op:0, tr:translateY(-100%)]"
-	on-enter="p:[t:all 1000ms ease, tr:translateY(0), op:1, z-index:10000]"
-	when-gpa-triggered="t-enter | s:[gpa-landing-enter:public]:delay-500 "
-	when-close-gpa="p:[op:0, tr:translateY(-100%), z-index:default:delay-1000]">
+<div class='full-xy absolute top-0 left-0 flex-wrap-center'
+	init-with="p:[op:0]"
+	on-enter="p:[t:all 500ms ease, op:1, z-index:10000]"
+	when-gpa-triggered="t-enter | s:[gpa-landing-enter:public]:delay-3000"
+	when-close-gpa="p:[op:0, z-index:default:delay-1000]">
 	<div class="landing-gpa landing-container">
 		<!-- class-on-activate="null:inject.landing-gpa .landing-demo|activate, null:inject.landing-gpa .coach|activate, null:inject.gpa-guru-eyebrow-right|activate, null:inject.gpa-guru-eyebrow-left|activate" class-on-activate-delay="4250" -->
 		<div class="powerup-icon"
-			init-with="p:[tr:translate3d(0#100%#0)]">
+			init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
+			on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2500"
+			when-gpa-triggered="t-enter">
 			<!-- class-on-activate="active" class-on-activate-delay="500" -->
 			<div ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
 		</div>
@@ -16,7 +18,7 @@
 			when-gpa-landing-enter="t-enter">GPA Guru</h1>
 		<h2 class="powerup-subheader"
 			init-with="p-op"
-			on-enter=" a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
+			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
 			when-gpa-landing-enter="t-enter">Organize and calculate your grades the easy way.</h2>
 		<div class="relative z-index-2">
 			<div class="landing-demo z-index-3">
@@ -68,7 +70,10 @@
 				</svg>
 			</div>
 		</div>
-		<div class="landing-content z-index-1">
+		<div class="landing-content z-index-1"
+			init-with="p-op"
+			on-enter="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]"
+			when-gpa-landing-enter="t-enter">
 			<h1
 				init-with="p-op"
 				on-enter=" a:[gpa-enter:set:(dur:1000ms#func:linear):delay-1500:in]"
