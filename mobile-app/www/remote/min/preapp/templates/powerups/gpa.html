@@ -18,7 +18,7 @@
 			init-with="p-op"
 			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
 			when-gpa-landing-enter="t-enter">Organize and calculate your grades the easy way.</h2>
-		<div class="relative z-index-2">
+		<!-- <div class="relative z-index-2">
 			<div class="landing-demo z-index-3">
 				<svg viewBox="0 0 318 651"
 					init-with="p-op"
@@ -34,7 +34,7 @@
 					when-gpa-landing-enter="t-enter">
 				    <g fill="none">
 				        <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558086,58.4656181 C-6.12740225,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#40484B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF" opacity="0.9"></path>
-				        <text transform="translate(116.893351, 93.627807) rotate(24.000000) translate(-116.893351, -93.627807)" font-family="Source Sans Pro" font-size="36" font-weight="500" line-spacing="36" fill="#2B3234">
+				        <text transform="translate(116.893351, 93.627807) rotate(24.000000) translate(-116.893351, -93.627807)" font-family="Source Sans Pro" font-size="36" font-weight="600" line-spacing="36" fill="#2B3234">
 				            <tspan x="58.3933507" y="110.627807">Try me!</tspan>
 				        </text>
 				    </g>
@@ -44,8 +44,6 @@
 				</div>
 			</div>
 			<div class="gpa-landing-hands">
-				<!-- @samir -->
-				<!-- translateX(-200px) to translateX(0) -->
 				<svg class="absolute bottom-0" width="1284px" height="306px" viewBox="0 0 1284 306"
 					init-with="p:[op:0, tr:translateX(100%)]"
 					on-enter="p:[t:all 1250ms ease, tr:translateX(0), op:1]:delay-500"
@@ -55,7 +53,6 @@
 				    </g>
 				</svg>
 
-				<!-- translateX(200px) to translateX(0) -->
 				<svg class="absolute bottom-0" width="1284px" height="306px" viewBox="0 0 1284 306">
 				    <g stroke-width="6" stroke="#33534D" fill="#88BFCC"
 						init-with="p:[op:0, tr:translateX(100%)]"
@@ -65,7 +62,7 @@
 				    </g>
 				</svg>
 			</div>
-		</div>
+		</div> -->
 		<div class="landing-content z-index-1"
 			init-with="p-op"
 			on-enter="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]"
@@ -74,8 +71,7 @@
 				init-with="p-op"
 				on-enter="a:[gpa-enter:set:(dur:1000ms#func:linear):delay-1500:in]"
 				when-gpa-landing-enter="t-enter">Preview the App</h1>
-			<ul class="gpa-landing-preview">
-				<!-- active slides them to the correct position -->
+			<!-- <ul class="gpa-landing-preview">
 				<li
 					init-with="p:[op:0, tr:translateX(100%)]"
 					on-enter="p:[op:1, tr:translateX(0), t:all 450ms ease-out]:delay-1500"
@@ -112,7 +108,7 @@
 						</svg>
 					</div>
 				</li>
-			</ul>
+			</ul> -->
 			<div class="landing-action">
 				<h1
 					init-with="p-op"
@@ -197,8 +193,13 @@
 							            <rect class="gpa-btn-midl-1" stroke="#79C5CD"  x="66" y="66.4285714" width="6.90909091" height="6.85714286"></rect>
 							            <rect class="gpa-btn-left-1" stroke="#79C5CD" x="53.9090909" y="66.4285714" width="6.90909091" height="6.85714286"></rect>
 									</g>
-							            <text class="2.0" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="12" font-weight="500" fill="#C18973">
-							                <tspan x="68.1258182" y="53.7142857">2.0</tspan>
+							            <text class="2.0" font-family="Source Sans Pro" font-size="12" font-weight="600" fill="#C18973" text-anchor="middle">
+							                <tspan x="75" y="53.7142857">
+												<tspan>2</tspan>
+												<!-- class="activate" counter init-on-class="counter:activate" counter-max="5" counter-min="2" counter-duration=".5" counter-delay="1000" -->
+												<tspan>.</tspan>
+												<tspan>0</tspan>
+											</tspan>
 							            </text>
 									</g>
 							    </g>
