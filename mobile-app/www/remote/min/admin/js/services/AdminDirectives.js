@@ -364,7 +364,7 @@ angular.module('uguru.admin')
      }
     }
 }])
-.directive('uiState', ['$timeout', function ($timeout) {
+.directive('uiState', ['$timeout', 'AdminDebugService', function ($timeout, AdminDebugService) {
   return {
     replace: true,
     restrict: 'E',
@@ -374,7 +374,9 @@ angular.module('uguru.admin')
         scope.state = {
             desc: attr.desc,
             name: attr.name,
+            testId: attr.testId,
             bugs:[],
+            testObj: null,
             tags: [],
             type: 'type' in attr && attr['type'],
             func: 'func' in attr && (attr['func'] === 'true' || attr['functional'] === 'true'),
@@ -384,21 +386,49 @@ angular.module('uguru.admin')
         }
         $timeout(function() {
             scope.stream = scope.$parent.stream;
-            if (!scope.state.type && scope.stream.type) {
+            if (!scope.state.type && scope.stream && scope.stream.type) {
                 scope.state.type = scope.stream.type;
             }
-            if (!scope.state.type && !scope.stream.type) {
+            else if (!scope.state.type && (!scope.stream || !scope.stream.type)) {
                 scope.state.type = scope.$parent.story.type;
             }
-            scope.state.id = scope.stream.states.length + 1;
-            scope.state.stream_id = scope.stream.id;
-            scope.stream.states.push(scope.state);
+            $timeout(function() {
+                if (scope.stream && scope.stream.states) {
+                    scope.state.id = scope.stream.states.length + 1;
+                    scope.state.stream_id = scope.stream.id;
+                    scope.stream.states.push(scope.state);
+                }
+            })
+
+
             $timeout(function() {
                 scope.$parent.story.states.push(scope.state);
                 scope.$parent.workflow.states.push(scope.state);
-                // console.log();
-                // scope.$parent.workflow.states.push(scope.state);
             })
+            //@jason
+            if ('testId' in attr && attr.testId.length) {
+                // passes the scope so you can update it immediately (you pulled all the bugs locally)
+                scope.state.testObj = AdminDebugService.getTestStateObj(parseInt(attr.testId), scope.state);
+
+                // three checks in the if statement?
+                //check 1, does it return something immediately
+                //check 2, does it return a dictionary
+                //check 3, does the dictionary have the ID in it
+                if (scope.state.testObj && typeof(scope.state.testObj) === 'object' && 'id' in scope.state.testObj) {
+                    attr.testId = scope.state.testObj.id;
+                    console.log('test state id', attr.testId, scope.state.testObj);
+                } else {
+                    //if it doesnt return something immediately, b/c i passed u the scope, if you make a server request to get the object,
+                    scope.$watch('state.testObj', function(updated_obj) {
+                        if (updated_obj && typeof(updated_obj) === 'object' && 'id' in updated_obj) {
+                            attr.testId = updated_obj.id;
+                            console.log('test state id', attr.testId, scope.state.testObj);
+                        } else {
+                            console.log('returned object from BugService getTestStateObj', updated_obj);
+                        }
+                    })
+                }
+            }
 
         })
 
@@ -418,6 +448,7 @@ angular.module('uguru.admin')
             type: attr.type,
             platform: attr.platform,
             by: attr.by,
+            id: attr.id,
             tested: attr.tested === 'true',
             open: 'open' in attr,
             tested: ('tested' in attr && attr.tested === 'true') || false,
