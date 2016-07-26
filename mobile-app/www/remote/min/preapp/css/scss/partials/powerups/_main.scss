@@ -106,7 +106,18 @@
 
 // GENERAL
 .landing-container {
-	overflow-x: hidden!important;
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+	text-align: center;
+	overflow-y: auto;
+	overflow-x: hidden;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&::-moz-scrollbar {
+		display: none;
+	}
 	.splash-hero-skip {
 		display: none;
 	}
@@ -142,6 +153,12 @@
 			stroke-linecap: round;
 			stroke-linejoin: round;
 		}
+		.coach {
+			display: block;
+			right: -200px;
+			width: 170px!important;
+			top: -10px;
+		}
 		> div {
 			position: absolute;
 			top: 50%;
@@ -157,12 +174,51 @@
 		border-radius: 2px;
 		background: white;
 		max-width: 1000px;
-		margin: 0 auto;
+		margin: 0 auto 64px;
 		color: $slate;
 		h1 {
 			padding: 15px;
 			font-size: 28px;
 			font-weight: 600;
+		}
+	}
+	.landing-action {
+		color: white;
+		border-radius: 0 0 2px 2px;
+		ul {
+			margin-top: -15px;
+			padding: 7.5px;
+			li {
+				padding: 7.5px;
+				div {
+					@include flex;
+					@include flex-center;
+					@include flex-wrap;
+					background: rgba(white, .25);
+					border-radius: 2px;
+					padding: 15px;
+					svg {
+						width: 64px;
+						height: 64px;
+						* {
+							@include svg-stroke(white, 4);
+						}
+					}
+					h2 {
+						width: 100%;
+						font-size: 20px;
+						font-weight: 600;
+					}
+				}
+			}
+		}
+		.landing-try-button {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+		}
+		.landing-platforms {
+			display: none;
 		}
 	}
 	@media screen and (min-width: 768px) {
@@ -177,33 +233,51 @@
 			margin-bottom: 0;
 		}
 		.landing-content {
-			margin-top: -120px;
+			margin: -120px auto 0;
 			padding-top: 135px;
 			border-radius: 4px;
 			h1 {
 				font-size: 36px;
 			}
 		}
-	}
-	.landing-action {
-		@media screen and (max-width:768px) {
-			.ugrid-3 {
+		.landing-action {
+			padding: 15px;
+			border-radius: 0 0 4px 4px;
+			ul {
+				@include flex;
+				@include flex-center;
+				margin-top: 0;
+				margin-bottom: 15px;
 				li {
-					width: 100%;
-					.svg-128 {
+					width: calc(100% / 3);
+					div {
+						background: none;
+						padding: 0;
 						svg {
-							width: 64px;
-							height: 64px;
+							width: 128px;
+							height: 128px;
 						}
-						+ h2 {
-							width: calc(100% - 64px)!important;
-							margin-top: 0;
-							padding-top: 0;
-							text-align: left;
-							font-size: 20px!important;
+						h2 {
+							font-size: 28px;
+							width: 100%;
+							text-align: center;
 						}
 					}
 				}
+			}
+			.landing-try-button {
+				position: static;
+				left: auto;
+				bottom: auto;
+				width: auto;
+				padding-left: 30px;
+				padding-right: 30px;
+				border-radius: 2px;
+				margin-bottom: 15px;
+			}
+			.landing-platforms {
+				@include flex;
+				@include flex-center;
 			}
 		}
 	}
@@ -252,26 +326,23 @@
 		}
 	}
 	.gpa-landing-preview {
+		@include flex;
+		@include flex-center;
+		padding: 7.5px;
+		@media screen and (min-width: 768px) {
+			margin-bottom: 15px;
+		}
 		li {
+			padding: 7.5px;
 			&:first-child, &:last-child {
 				@include opacity(0.75);
 				@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
 				@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important, webkit moz ms o);
 			}
-			&:first-child {
-				transform: translateX(100%);
-			}
-			&:last-child {
-				transform: translateX(-100%);
-			}
 		}
 		svg {
 			width: calc(318px * 0.75);
 			height: calc(651px * 0.75);
-			@media screen and (max-width:768px) {
-				width: calc(318px * 0.5);
-				height: calc(651px * 0.5);
-			}
 			* {
 				stroke: lighten($slate, 15%);
 				stroke-width: 3px;
@@ -291,6 +362,22 @@
 	}
 	.landing-action {
 		background: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
+		.landing-try-button {
+			background: rgba($gpa, .95);
+			color: white;
+			@media screen and (min-width: 768px) {
+				background: white;
+				color: $gpa;
+			}
+			&:hover, &:focus {
+				background: mix($gpa, white);
+				color: mix($gpa, $slate);
+			}
+			&:active {
+				background: mix($gpa, $slate);
+				color: white;
+			}
+		}
 	}
 }
 .landing-transit {

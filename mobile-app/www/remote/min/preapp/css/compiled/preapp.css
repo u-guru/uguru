@@ -4886,7 +4886,16 @@ a[class*="-container"]:hover .map-stadium-outside {
     opacity: 0; }
 
 .landing-container {
-  overflow-x: hidden !important; }
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden; }
+  .landing-container::-webkit-scrollbar {
+    display: none; }
+  .landing-container::-moz-scrollbar {
+    display: none; }
   .landing-container .splash-hero-skip {
     display: none; }
   .landing-container .powerup-icon {
@@ -4916,6 +4925,11 @@ a[class*="-container"]:hover .map-stadium-outside {
       stroke-width: 3px;
       stroke-linecap: round;
       stroke-linejoin: round; }
+    .landing-container .landing-demo .coach {
+      display: block;
+      right: -200px;
+      width: 170px !important;
+      top: -10px; }
     .landing-container .landing-demo > div {
       position: absolute;
       top: 50%;
@@ -4929,12 +4943,61 @@ a[class*="-container"]:hover .map-stadium-outside {
     border-radius: 2px;
     background: white;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 0 auto 64px;
     color: #40484B; }
     .landing-container .landing-content h1 {
       padding: 15px;
       font-size: 28px;
       font-weight: 600; }
+  .landing-container .landing-action {
+    color: white;
+    border-radius: 0 0 2px 2px; }
+    .landing-container .landing-action ul {
+      margin-top: -15px;
+      padding: 7.5px; }
+      .landing-container .landing-action ul li {
+        padding: 7.5px; }
+        .landing-container .landing-action ul li div {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
+          background: rgba(255, 255, 255, 0.25);
+          border-radius: 2px;
+          padding: 15px; }
+          .landing-container .landing-action ul li div svg {
+            width: 64px;
+            height: 64px; }
+            .landing-container .landing-action ul li div svg * {
+              fill: none;
+              stroke: white;
+              stroke-width: 4px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
+          .landing-container .landing-action ul li div h2 {
+            width: 100%;
+            font-size: 20px;
+            font-weight: 600; }
+    .landing-container .landing-action .landing-try-button {
+      position: fixed;
+      bottom: 0;
+      left: 0; }
+    .landing-container .landing-action .landing-platforms {
+      display: none; }
   @media screen and (min-width: 768px) {
     .landing-container .splash-hero-skip, .landing-container .landing-demo {
       display: block; }
@@ -4944,23 +5007,69 @@ a[class*="-container"]:hover .map-stadium-outside {
       font-size: 28px;
       margin-bottom: 0; }
     .landing-container .landing-content {
-      margin-top: -120px;
+      margin: -120px auto 0;
       padding-top: 135px;
       border-radius: 4px; }
       .landing-container .landing-content h1 {
-        font-size: 36px; } }
-  @media screen and (max-width: 768px) {
-    .landing-container .landing-action .ugrid-3 li {
-      width: 100%; }
-      .landing-container .landing-action .ugrid-3 li .svg-128 svg {
-        width: 64px;
-        height: 64px; }
-      .landing-container .landing-action .ugrid-3 li .svg-128 + h2 {
-        width: calc(100% - 64px) !important;
+        font-size: 36px; }
+    .landing-container .landing-action {
+      padding: 15px;
+      border-radius: 0 0 4px 4px; }
+      .landing-container .landing-action ul {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
         margin-top: 0;
-        padding-top: 0;
-        text-align: left;
-        font-size: 20px !important; } }
+        margin-bottom: 15px; }
+        .landing-container .landing-action ul li {
+          width: calc(100% / 3); }
+          .landing-container .landing-action ul li div {
+            background: none;
+            padding: 0; }
+            .landing-container .landing-action ul li div svg {
+              width: 128px;
+              height: 128px; }
+            .landing-container .landing-action ul li div h2 {
+              font-size: 28px;
+              width: 100%;
+              text-align: center; }
+      .landing-container .landing-action .landing-try-button {
+        position: static;
+        left: auto;
+        bottom: auto;
+        width: auto;
+        padding-left: 30px;
+        padding-right: 30px;
+        border-radius: 2px;
+        margin-bottom: 15px; }
+      .landing-container .landing-action .landing-platforms {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center; } }
 
 .landing-gpa {
   background: #79c5cd; }
@@ -5002,41 +5111,68 @@ a[class*="-container"]:hover .map-stadium-outside {
     @media screen and (min-width: 768px) {
       .landing-gpa .gpa-landing-hands {
         display: block; } }
-  .landing-gpa .gpa-landing-preview li:first-child, .landing-gpa .gpa-landing-preview li:last-child {
-    filter: alpha(opacity=75);
-    opacity: 0.75;
-    -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
-    -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
-    -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
-    -o-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
-    transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
-    -webkit-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
-    -moz-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
-    -ms-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
-    -o-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
-    transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important; }
-  .landing-gpa .gpa-landing-preview li:first-child {
-    transform: translateX(100%); }
-  .landing-gpa .gpa-landing-preview li:last-child {
-    transform: translateX(-100%); }
-  .landing-gpa .gpa-landing-preview svg {
-    width: calc(318px * 0.75);
-    height: calc(651px * 0.75); }
-    @media screen and (max-width: 768px) {
-      .landing-gpa .gpa-landing-preview svg {
-        width: calc(318px * 0.5);
-        height: calc(651px * 0.5); } }
-    .landing-gpa .gpa-landing-preview svg * {
-      stroke: #637074;
-      stroke-width: 3px; }
-    .landing-gpa .gpa-landing-preview svg circle {
-      fill: #6c9298; }
-    .landing-gpa .gpa-landing-preview svg rect:first-child {
-      fill: #72acb2; }
-    .landing-gpa .gpa-landing-preview svg rect:last-child {
-      fill: white; }
+  .landing-gpa .gpa-landing-preview {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 7.5px; }
+    @media screen and (min-width: 768px) {
+      .landing-gpa .gpa-landing-preview {
+        margin-bottom: 15px; } }
+    .landing-gpa .gpa-landing-preview li {
+      padding: 7.5px; }
+      .landing-gpa .gpa-landing-preview li:first-child, .landing-gpa .gpa-landing-preview li:last-child {
+        filter: alpha(opacity=75);
+        opacity: 0.75;
+        -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+        -moz-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+        -ms-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+        -o-transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+        transition: all 600ms cubic-bezier(0.77, 0, 0.05, 1) !important;
+        -webkit-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+        -moz-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+        -ms-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+        -o-transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important;
+        transition: all 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27) !important; }
+    .landing-gpa .gpa-landing-preview svg {
+      width: calc(318px * 0.75);
+      height: calc(651px * 0.75); }
+      .landing-gpa .gpa-landing-preview svg * {
+        stroke: #637074;
+        stroke-width: 3px; }
+      .landing-gpa .gpa-landing-preview svg circle {
+        fill: #6c9298; }
+      .landing-gpa .gpa-landing-preview svg rect:first-child {
+        fill: #72acb2; }
+      .landing-gpa .gpa-landing-preview svg rect:last-child {
+        fill: white; }
   .landing-gpa .landing-action {
     background: #6c9298; }
+    .landing-gpa .landing-action .landing-try-button {
+      background: rgba(64, 172, 184, 0.95);
+      color: white; }
+      @media screen and (min-width: 768px) {
+        .landing-gpa .landing-action .landing-try-button {
+          background: white;
+          color: #40acb8; } }
+      .landing-gpa .landing-action .landing-try-button:hover, .landing-gpa .landing-action .landing-try-button:focus {
+        background: #a0d6dc;
+        color: #407a82; }
+      .landing-gpa .landing-action .landing-try-button:active {
+        background: #407a82;
+        color: white; }
 
 .landing-transit {
   background: #91d3a8; }
