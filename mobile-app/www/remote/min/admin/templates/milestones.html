@@ -1,88 +1,255 @@
 <div class='absolute top-0 left-0 full-xy overflow-auto no-scrollbar' ng-controller='AdminMilestoneController as ms'>
-	<header class='relative full-x text-center flex-wrap flex-stretch p20xy m20xy' style='min-height:30%'>
-		<h1 class='txt-5 uppercase weight-600 flex-wrap flex-center'>
-			{{ms.activeModule.name}} <br> Milestones
-		</h1>
-		<!-- <div class='full-x flex-stretch ugrid-{{ms.types.length}} p20xy p15-grid flex-center flex-wrap-center'>
-			<a class='bg-charcoal border-1 border-slate weight-400 p15-grid flex-wrap-center'
-			ng-repeat="type in ms.types"
-			ng-class="{'border-smoke border-dashed txt-white weight-600 bg-moxie-50p': $index === ms.typeIndex}"
-			ng-click="ms.typeIndex = $index"
-			style='width:33%;'>
-				{{type}}
-			</a>
-		</div> -->
-		<div class='toolbar full-x absolute p15-grid ugrid-5 flex-wrap-center bottom-0 left-0 flex-center'>
-			<div ng-click='ms.toggleAll(ms.modules[0])'>Off</div>
-			<div ng-repeat= 'initial in ms.modules[0].teamArr' ng-class="{'border-1-bottom border-smoke':ms.modules[0].activePerson === initial}" ng-click='ms.setActivePerson(initial)'>{{initial}}</div>
-			<!-- <div class='border-1-bottom border-smoke' ng-click='ms.setActivePerson(person)'>{{ms.modules[0].activePerson}}</div> -->
+	<header class='txt-center bg-slate'>
+		<div class="flex-center-vertical full-x overflow-x no-scrollbar flex-stretch">
+			<week num="2"> </week>
+		</div>
+		<div class="bg-cobalt-25p">
+			<h1 class='txt-5 uppercase weight-600 p15x-p15top'>
+				<span class="block">{{ms.activeModule.name}}</span>
+				<span class="block txt-36 weight-900">Milestones</span>
+			</h1>
+			<!-- <div class='full-x flex-stretch ugrid-{{ms.types.length}} p20xy p15-grid flex-center flex-wrap-center'>
+				<a class='bg-charcoal border-1 border-slate weight-400 p15-grid flex-wrap-center'
+				ng-repeat="type in ms.types"
+				ng-class="{'border-smoke border-dashed txt-white weight-600 bg-moxie-50p': $index === ms.typeIndex}"
+				ng-click="ms.typeIndex = $index"
+				style='width:33%;'>{{type}}</a>
+			</div> -->
+			<ul class='full-x ugrid-4 p15-grid txt-3'>
+				<li class='flex-center p15-grid flex-wrap-center'>
+					<div ng-repeat='initial in ms.modules[0].teamArr'>
+						<a class="txt-24 semibold radius-2 round p05xy"
+							ng-class="{'bg bg-moxie':ms.modules[0].activePerson === initial}"
+							ng-click='ms.setActivePerson(initial)'>{{initial}}</a>
+					</div>
+				</li>
+				<li>
+				</li>
+				<li>
+
+				</li>
+				<!-- <div class='border-1-bottom border-smoke' ng-click='ms.setActivePerson(person)'>{{ms.modules[0].activePerson}}</div> -->
+			</ul>
 		</div>
 	</header>
-	<main class='full-x flex-center flex-stretch flex-wrap bg-slate'>
+	<footer class="fixed bottom-0 right-0 p15xy z-index-99">
+		<a class="height-48 width-48 flex-center round bg bg-moxie txt-18 semibold" ng-click='ms.toggleAll(ms.activeModule)'>Off</a>
+	</footer>
+	<main class='full-x bg-slate'>
 		<section ng-repeat='module in ms.modules' ng-init="m = module">
-			<ul class='full-x flex-wrap flex-stretch flex-start'>
+			<ul>
 				<li class='weight-700 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x ugrid-{{ms.activeModule.columns.length}} text-center flex-stretch'>
 					<div ng-repeat='c_name in m.columns' class='txt-5 uppercase opacity-50'>{{c_name}}</div>
 				</li>
-				<li ng-repeat="workflow in ms.activeModule.workflows track by $index" ng-class="{'bg-charcoal-50p': $index % 2 === 1}" class='p15-grid full-x ugrid-{{ms.activeModule.columns.length}} flex-stretch txt-left flex-vertical-center flex-center txt-4'>
-					<ul  class='full-x flex-wrap flex-stretch flex-center ugrid-{{ms.activeModule.columns.length}} text-center'>
-						<li ng-click='workflow.active = !workflow.active'>
-							<h1 class='txt-5 txt-smoke uppercase'> <a ng-click="ms.open(workflow.url)"><span class='opacity-50 weight-100'>#{{workflow.pID}} &nbsp;</span>{{workflow.name}} </a></h1>
-						</li>
-						<li class='flex-wrap-center relative ugrid-5'>
-							<div class='txt-1 weight-600' ng-repeat='_filter in workflow.filter.options' ng-click='workflow.filter.activeIndex = $index'>
-								<span ng-class='{"border-1-bottom border-dashed border-azure": workflow.filter.activeIndex === $index}'>{{_filter}}</span>
+				<li ng-hide='workflow.access' ng-repeat="workflow in ms.activeModule.workflows track by $index" ng-class="{'bg-charcoal-50p': $index % 2 === 1}" class='p15-grid full-x ugrid-{{ms.activeModule.columns.length}} flex-stretch txt-left flex-vertical-center flex-center txt-4'>
+
+					<ul class='full-x flex-wrap flex-stretch flex-center ugrid-{{ms.activeModule.columns.length}} text-center'>
+						<li style='width:66.6%' class='relative'>
+							<div class='txt-3 p05xy text-left full-x txt-white uppercase'>
+
+								<span class='m05right' ng-class="{'opacity-50':!workflow.active}" ng-click="workflow.active = !workflow.active; workflow.filter.showTags = false; workflow.filter.showOptions = false;">
+							        <svg viewBox="0 0 100 100" on-init="p:[width:25px, height:25px, transition:all 500ms ease, margin-bottom:-5px, padding-top:4px, transform:rotate(0deg)]|send:[dropdown-init:public]"
+							        >
+							            <path fill="white" d="M14,32 L50,68 L86,32"
+											init-with="p:[stroke-dashoffset:103, t:all 250ms ease-out 750ms]"
+											when-dropdown-init="t:[on-enter]"
+											on-enter="p:[stroke-dashoffset:0]"></path>
+							        </svg>
+							    </span>
+								<span class='weight-100 m05right txt-smoke round'>#{{workflow.pID}}</span>
+								<span>
+									{{workflow.name}}
+									<span ng-click='workflow.filter.showOptions = !workflow.filter.showOptions' class='weight-900 border-dashed border-2-bottom m05left border-azure' ng-if='workflow.filter.options[workflow.filter.activeIndex] && workflow.active'>{{workflow.filter.options[workflow.filter.activeIndex]}}</span>
+								</span>
+								<span class='relative' ng-hide="!workflow.filter.showTags && !workflow.active">
+										<span ng-if='!workflow.filter.selectedTags.length' init-with="p:[opacity:0.25]">
+										&nbsp; with &nbsp;
+										</span>
+										<span ng-if='workflow.filter.selectedTags.length'>
+										&nbsp; with &nbsp;
+										</span>
+										<span init-with="p:[opacity:0.25]" ng-if='!workflow.filter.selectedTags.length' ng-repeat='tag in workflow.filter.tags.slice(0,2)' class='m05x'>
+						                    <button style='display:inline-flex;' class="height-24 txt-1 radius-2 normal flex-center padding-none" ng-class="{'bg-moxie reverse':!tag.active, 'bg-moxie':tag.active}">
+												<span class="flex-center height-24 radius-2-left p10x" ng-class="{'bg-moxie txt-white weight-600':!tag.active, 'bg-white txt-moxie':tag.active}">{{tag.count}}</span>
+												<span class="flex-center height-24 p10left p05right weight-400">{{tag.name}}:</span>
+												<span class="flex-center height-24 p10right weight-800">{{tag.value}}</span>
+						                        <span ng-if='state.played' class='svg-36-24 svg-stroke-10 stroke-moxie' style="margin-left: -10px" ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
+						                    </button>
+						                </span>
+						                <span ng-if='tag.active' ng-repeat='tag in workflow.filter.tags'  class='m05x'>
+						                    <button style='display:inline-flex;' ng-click='tag.active = !tag.active; workflow.filter.tagsUpdated = true;' class="height-24 txt-1 radius-2 normal flex-center padding-none" ng-class="{'bg-moxie reverse':!tag.active, 'bg-moxie':tag.active}">
+												<span class="flex-center height-24 p10left p05right weight-400">{{tag.name}}:</span>
+												<span class="flex-center height-24 p10right weight-800">{{tag.value}}</span>
+						                        <span ng-if='state.played' class='svg-36-24 svg-stroke-10 stroke-moxie' style="margin-left: -10px" ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
+						                    </button>
+						                </span>
+							            <a ng-click='workflow.filter.showTags = !workflow.filter.showTags'>
+							            	<svg viewBox="0 0 100 100" on-init="p:[width:25px, height:25px, transition:all 500ms ease, margin-bottom:-5px, padding-top:4px, transform:rotate(0deg)]|send:[dropdown-init:public]">
+								            	<path fill="white" d="M14,32 L50,68 L86,32"
+												init-with="p:[stroke-dashoffset:103, t:all 250ms ease-out 750ms]"
+												when-dropdown-init="t:[on-enter]"
+												on-enter="p:[stroke-dashoffset:0]"></path>
+								        	</svg>
+								        </a>
+								</span>
+
+								<ul ng-if='workflow.filter.showTags' class="relative full-x flex-wrap-center flex-center-vertical-wrap p15-grid">
+									<li ng-repeat='tag in workflow.filter.tags' ng-click='tag.active = !tag.active; workflow.filter.tagsUpdated = true;' ng-if='!tag.active'>
+					                    <button class="height-24 txt-2 radius-2 normal flex-center padding-none" ng-class="{'bg-moxie reverse':!tag.active, 'bg-moxie':tag.active}">
+											<span class="flex-center height-24 radius-2-left p10x" ng-class="{'bg-moxie txt-white weight-600':!tag.active, 'bg-white txt-moxie':tag.active}">{{tag.count}}</span>
+											<span class="flex-center height-24 p10left p05right weight-400">{{tag.name}}:</span>
+											<span class="flex-center height-24 p10right weight-800">{{tag.value}}</span>
+					                        <span ng-if='state.played' class='svg-36-24 svg-stroke-10 stroke-moxie' style="margin-left: -10px" ng-include="root.base_url + 'shared/templates/components/svg/main/check.html'"></span>
+					                    </button>
+					                </li>
+							</ul>
+							</div>
+
+							<div ng-if='workflow.filter.showOptions' class='flex-wrap-center full-x relative ugrid-6 flex-start text-left'>
+								<div class='txt-3 txt-center weight-500 txt-smoke'>Filters:</div>
+								<div class='text-center txt-1 weight-600' ng-repeat='_filter in workflow.filter.options' ng-click='workflow.filter.activeIndex = $index; ms.parseStateParamFilters({initial: ms.activeModule.activePerson, filter: workflow.filter.options[$index]}, workflow)'>
+									<span style='font-size:10px;'ng-class='{"border-1-bottom border-solid opacity-1 border-azure": workflow.filter.activeIndex === $index, "opacity-50":workflow.filter.activeIndex !== $index}'>{{_filter}}</span>
+								</div>
 							</div>
 						</li>
-						<li>
-
-						</li>
-						<li>
-							TBI
-							<!-- <li class='relative'>
-							<div class='txt-3 txt-left full-x' ng-repeat='item in milestone.items'>
-								<div class='block p10y weight-700'>
-									<div>
-										<span class='weight-300'>{{$index + 1 + '.'}}</span>
-										<span>
-										{{item}} &nbsp;<span style='opacity:0.5'> {{(((item.length - $index)/item.length) *100).toFixed(0)}}%</span>
-										</span>
-									</div>
+						<li class='flex-wrap-center relative width-1-3'>
+							<!-- <div class='flex-wrap-center full-x relative ugrid-3 flex-start text-left'>
+								<div  ng-if='key !== total' ng-repeat='(key, value) in workflow.progress track by $index' class='txt-3 txt-center weight-500 txt-smoke ugrid-{{Object.keys(workflow.progress).length - 1}}'>
+									{{key}}
+									{{value}}
 								</div>
-								<div class='absolute bg-moxie p05xy block' style='width:{{((item.length - $index)/item.length) *100}}%;'></div></div>
-							</li>-->
+							</div> -->
+							<div class='flex-wrap flex-vertical-center' class='txt-1'>
+								<span ng-if='filter !== "streams"' class='p05xy m10y'  ng-repeat='filter in workflow.filter.options' ng-class='{"opacity-50": !tag.active}'>
+									<span class='txt-1 p05xy border-1 border-white'>
+									{{filter + ': ' + workflow[workflow.filter.options[$index]].length}}
+									</span>
+								</span>
+							</div>
 						</li>
 					</ul>
-					<div class='full-x p15-grid bg-cerise' ng-if='workflow.active || (ms.activeFilter && workflow[ms.activeFilter].length)'>
+
+					<div class='full-x p15-grid bg-auburn' ng-if='workflow[ms.activeFilter].length && workflow.active'>
 						<ul class='full-x flex-wrap flex-stretch flex-start' ng-init="activeFilter = workflow.filter.options[workflow.filter.activeIndex]">
-							<li class='full-x p15-grid txt-3 txt-white txt-center weight-700 ugrid-6'>
-								<div ng-if='!ms.activeFilter' ng-repeat='column in workflow["columns"][activeFilter]'>
+							<li class='full-x p15-grid txt-3 txt-white txt-center weight-700 ugrid-{{workflow["columns"][ms.activeFilter].length}}'>
+								<div class='weight-100' ng-if='!ms.activeFilter' ng-repeat='column in workflow["columns"][activeFilter]'>
 									{{column}}
 								</div>
-								<div ng-if='ms.activeFilter' ng-repeat='column in workflow["columns"][ms.activeFilter]'>
-									{{ms.activeFilterFormatted}} {{column}}
+								<div ng-if='ms.activeFilter' class='weight-100' ng-repeat='column in workflow["columns"][ms.activeFilter]'>
+									<span class='uppercase weight-700'>{{column}}</span>
 								</div>
 							</li>
-							<li class='weight-500 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x text-center flex-stretch' ng-if='ms.activeFilter' ng-repeat='item in workflow[ms.activeFilter] track by $index'>
-								<div class='ugrid-6 p05-grid txt-3 full-x'>
-									<div>
-										#{{item.id}}
+							<li class='weight-500 txt-white p20xy bg-charcoal-50p border-1-bottom border-dashed border-smoke full-x text-center flex-stretch' ng-if='ms.activeFilter' ng-repeat='item in workflow[ms.activeFilter] track by $index' ng-if="!item.inactive">
+								<div class='txt-3 full-x'>
+									<div ng-show="ms.activeFilter === 'stories'" class='flex-wrap-center ugrid-3 full-x'>
+											<div class='flex-wrap-center txt-left'>
+												<div class='block full-x'>
+													<h1 class='txt-left txt-4 weight-600'>
+														{{item.name}}
+													</h1>
+												</div>
+												<div class='txt-1 full-x' ng-if='item.desc && item.desc.length > item.name.length'>
+													{{item.desc}}
+												</div>
+												<div class='txt-1 opacity-50' ng-if='item.type'>
+													<span class='weight-800'>type:
+													</span>
+													{{item.type}}
+												</div>
+											</div>
+											<div class='flex-wrap flex-vertical-center' class='txt-1'>
+												<span  class='p05xy m10y'  ng-repeat='tag in item.tags' ng-class='{"opacity-50": !tag.active}'>
+													<span class='txt-1 p05xy border-1 border-white' ng-if='tag.type || tag.func'>
+													<span ng-if='tag.type'>type</span>
+													<span ng-if='tag.func'>functional</span>
+													:{{tag.type || tag.func}}
+													</span>
+												</span>
+											</div>
+											<div class='ugrid-3'>
+												<span>{{item.streams.length}} streams</span>
+												<span>{{item.states.length || 0}} states</span>
+												<span>{{item.bugs.length}} bugs</span>
+											</div>
+											<div>
+											</div>
 									</div>
-									<div>
-										{{item.name}}
+									<div ng-show="ms.activeFilter === 'states'" class='ugrid-3 full-x p15-grid' >
+										<div class='txt-left relative'>
+											<div class='block full-x'>
+												<h1 class='txt-left txt-4 weight-600'>
+													{{item.name || item.desc}}
+												</h1>
+											</div>
+											<div class='txt-1 full-x' ng-if='item.desc && item.desc.length > item.name.length'>
+													{{item.desc}}
+											</div>
+											<div class='txt-1 opacity-50' ng-if='item.type'>
+												<span class='weight-800'>type:
+												</span>
+												{{item.type}}
+											</div>
+										</div>
+										<div class='flex-wrap flex-vertical-center' class='txt-1'>
+											<span  class='p05xy m10y'  ng-repeat='tag in item.tags' ng-class='{"opacity-50": !tag.active}'>
+												<span class='txt-1 p05xy border-1 border-white' ng-if='tag.type || tag.func'>
+												<span ng-if='tag.type'>type</span>
+												<span ng-if='tag.func'>functional</span>
+												:{{tag.type || tag.func}}
+												</span>
+											</span>
+										</div>
+										<div class='flex-wrap flex-vertical-center' class='txt-1' ng-init='item.options = ["func", "cp", "tested", "smooth"]'>
+											<span  class='p05xy m10y'  ng-repeat='item_val in item.options' ng-class='{"opacity-50": !item[item_val]}'>
+												<span class='txt-1 p05xy border-1 border-white'>
+													<span class='weight-600'>{{item_val}}</span>: {{item[item_val]}}</span>
+
+													</span>
+												</span>
+											</span>
+										</div>
 									</div>
-									<div>
-										{{item.desc}}
+									<div ng-show="ms.activeFilter === 'streams'" class='ugrid-3 full-x p15-grid' >
+										<div class='txt-left relative'>
+											<div class='block full-x'>
+												<h1 class='txt-left txt-4 weight-600'>
+													{{item.name}}
+												</h1>
+											</div>
+											<div class='txt-1 full-x' ng-if='item.desc'>
+												{{item.desc}}
+											</div>
+											<div class='txt-1 opacity-50' ng-if='item.type'>
+												<span class='weight-800'>type:
+												</span>
+												{{item.type}}
+											</div>
+										</div>
+										<div class='flex-wrap flex-vertical-center' class='txt-1'>
+											<span  class='p05xy m10y'  ng-repeat='tag in item.tags' ng-class='{"opacity-50": !tag.active}'>
+												<span class='txt-1 p05xy border-1 border-white' ng-if='tag.type || tag.func'>
+												<span ng-if='tag.type'>type</span>
+												<span ng-if='tag.func'>functional</span>
+												:{{tag.type || tag.func}}
+												</span>
+											</span>
+										</div>
+										<div class='flex-wrap flex-vertical-center' class='txt-1' ng-init='item.options = ["func", "cp", "tested", "smooth"]'>
+											<span  class='p05xy m10y'  ng-repeat='item_val in item.options' ng-class='{"opacity-50": !item[item_val]}'>
+												<span class='txt-1 p05xy border-1 border-white'>
+													<span class='weight-600'>{{item_val}}</span>:
+													<span ng-if='item[item_val].length'>
+													{{item[item_val]}}</span>
+													<span ng-if='!item[item_val].length'>TBA</span>
+													</span>
+												</span>
+											</span>
+										</div>
 									</div>
-									<div>
-										{{item.platform}}
-									</div>
-									<div>
-										{{item.tested}}
-									</div>
-									<div>
-										{{item.by}}
-									</div>
+								</div>
+
+								<div ng-if='false' class='ugrid-{{workflow["columns"][ms.activeFilter].length}} p05-grid txt-3 full-x'>
+									<div ng-show="ms.activeFilter === 'stories'" ng-repeat='column_name in workflow["columns"][ms.activeFilter]'>
 								</div>
 							</li>
 						</ul>
@@ -90,7 +257,7 @@
 				</li>
 			</ul>
 		</section>
-		<div ng-include='root.base_url + "admin/templates/spec/modules/pre_app.html"'> </div> </div>
+		<div ng-include='root.base_url + "admin/templates/spec/modules/pre_app.html"'> </div>
 	</main>
 </ion-view>
 <!-- ugh actions -->
@@ -196,3 +363,19 @@
 
 <!-- eh actions todo streams-->
 <action-item items="[tag-hover:inactive, tag-hover:active, tag-hover-click:active, tag-hover-click:inactive, tag-transition-madlib-blank:after]" group="splash:madlib" priority="1" tested="true" time="10hr" phase="1" type="eh" />
+
+
+<!--
+<li class='relative'>
+	<div class='txt-3 txt-left full-x' ng-repeat='item in milestone.items'>
+	<div class='block p10y weight-700'>
+		<div>
+			<span class='weight-300'>{{$index + 1 + '.'}}</span>
+			<span>
+			{{item}} &nbsp;<span style='opacity:0.5'> {{(((item.length - $index)/item.length) *100).toFixed(0)}}%</span>
+			</span>
+		</div>
+	</div>
+	<div class='absolute bg-moxie p05xy block' style='width:{{((item.length - $index)/item.length) *100}}%;'></div></div>
+</li>
+-->

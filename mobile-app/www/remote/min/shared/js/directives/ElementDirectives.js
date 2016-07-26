@@ -15,17 +15,31 @@ angular.module('uguru.shared.directives')
       link: {
         pre: function(scope, element, attr) {
           var switchDict;
+          var elemArgs = DirectiveService.parseArgs(attr.initWith);
+          var listenerArgs = DirectiveService.detectExternalStates(attr);
+          for (key in listenerArgs) {
+            var type = listenerArgs[key].type
+            var _attr = listenerArgs[key].attr;
+            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+          }
           var switchName = attr.switch && attr.switch.split(':')[0];
           var switchId = 'switch-id' in attr && attr['switch-id'] && parseInt(attr['switch-id'])
-          if (attr.initLater) {
+          if ('initLater' in attr) {
+
             scope.$watch(function() {
               return element.attr('class');
             }, function(new_classes, old_classes) {
-              if (new_classes.indexOf('init-with') > -1) {
+              console.log('classes changed', new_classes);
+              if (new_classes && new_classes.indexOf('init-with') > -1) {
+                console.log('initializing');
                 element[0].classList.remove('init-with');
-                execInitWith();
+                execInitWith(scope);
               }
             })
+
+
+
+
             return
           }
 
@@ -43,8 +57,7 @@ angular.module('uguru.shared.directives')
           execInitWith(scope, switchDict);
 
           function execInitWith(scope, has_switch_default) {
-            var elemArgs = DirectiveService.parseArgs(attr.initWith);
-            var listenerArgs = DirectiveService.detectExternalStates(attr);
+
             var supportedCommands = DirectiveService.supportedCommands;
             for (key in elemArgs) {
               var switch_interference = has_switch_default && (key in has_switch_default)
@@ -59,45 +72,41 @@ angular.module('uguru.shared.directives')
               }
             }
 
-            for (key in listenerArgs) {
-              var type = listenerArgs[key].type
-              var _attr = listenerArgs[key].attr;
-              DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
-            }
+
           }
         }
       }
     }
 }])
-.directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
-  return {
-    restrict: 'A',
-    priority: 10000,
-    terminal: true,
-      link: {
-        pre: function(scope, element, attr) {
-          attr.$set('ngHide', true);
-          attr.$set('initLater', null);
-          $compile(element[0])(scope);
+// .directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
+//   return {
+//     restrict: 'A',
+//     priority: 10000,
+//     terminal: true,
+//       link: {
+//         pre: function(scope, element, attr) {
+//           attr.$set('ngHide', true);
+//           attr.$set('initLater', null);
+//           $compile(element[0])(scope);
 
 
-          scope.$watch(function() {
-            return element.attr('class');
-          }, function(new_classes, old_classes) {
-            new_classes = new_classes || '';
-            if (new_classes.indexOf('init-later') > -1) {
-              element[0].classList.remove('init-later');
-              for (key in elemArgs) {
-                if (supportedCommands.indexOf(key) > -1) {
-                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
-                }
-              }
-            }
-          })
-      }
-    }
-  }
-}])
+//           scope.$watch(function() {
+//             return element.attr('class');
+//           }, function(new_classes, old_classes) {
+//             new_classes = new_classes || '';
+//             if (new_classes.indexOf('init-later') > -1) {
+//               element[0].classList.remove('init-later');
+//               for (key in elemArgs) {
+//                 if (supportedCommands.indexOf(key) > -1) {
+//                   DirectiveService.activateArg(key, elemArgs[key], scope, element);
+//                 }
+//               }
+//             }
+//           })
+//       }
+//     }
+//   }
+// }])
 .directive('desktop', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
   return {
     restrict: 'A',

@@ -7,9 +7,9 @@ angular.module('uguru.preApp')
   '$timeout',
   'SpecService',
   function($scope, $state, $timeout, SpecService) {
-    var device = this;
+    var powerups = this;
+    // SpecService.initSpec('powerups', $scope);
 
-    SpecService.initSpec('powerups', $scope);
   }
 ])
 
