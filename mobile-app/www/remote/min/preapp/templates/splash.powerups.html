@@ -28,8 +28,9 @@
                     <a id="powerup-gpa-container" class="block relative high-z-index"
 						init-default
 						on-mouse-enter="s:[gpa-mouse-enter:public]"
-						on-click="s:[gpa-on-click:public]"
+						on-click="s:[gpa-on-click:public, gpa-mouse-enter:public]"
 						on-mouse-leave="s:[gpa-mouse-leave:public]">
+						<div class="powerups-bg"></div>
                         <div id="powerup-gpa-icon" class="block loader-powerup-gpa" ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
                         <div id="powerup-gpa-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
 							init-with="p-op"
@@ -41,8 +42,9 @@
                     <a id="powerup-munchies-container" class="block relative"
 						init-default
 						on-mouse-enter="s:[munchies-mouse-enter:public]"
-						on-click="s:[munchies-on-click:public]"
+						on-click="s:[munchies-on-click:public, munchies-mouse-enter:public]"
 						on-mouse-leave="s:[munchies-mouse-leave:public]">
+						<div class="powerups-bg"></div>
                         <div id="powerup-munchies-icon" class="block loader-powerup-munchies" ng-include="root.base_url + 'preapp/templates/components/powerups/munchies-card.html'"></div>
                         <div id="powerup-munchies-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
 							init-with="p-op"
@@ -54,8 +56,9 @@
                     <a id="powerup-sound-container" class="block relative"
 						init-default
 						on-mouse-enter="send:[sound-mouse-enter:public]"
-						on-click="s:[sound-on-click:public]"
+						on-click="s:[sound-on-click:public, sound-mouse-enter:public]"
 						on-mouse-leave="send:[sound-mouse-leave:public]">
+						<div class="powerups-bg"></div>
                         <div id="powerup-sound-icon" class="block loader-powerup-sound" ng-include="root.base_url + 'preapp/templates/components/powerups/sound-card.html'"></div>
                         <div id="powerup-sound-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
 							init-with="p-op"
@@ -67,8 +70,9 @@
                     <a id="powerup-transit-container" class="block relative"
 						init-default
 						on-mouse-enter="send:[transit-mouse-enter:public]"
-						on-click="s:[transit-on-click:public]"
+						on-click="s:[transit-on-click:public, transit-mouse-enter:public]"
 						on-mouse-leave="send:[transit-mouse-leave:public]">
+						<div class="powerups-bg"></div>
                         <div id="powerup-transit-icon" class="block loader-powerup-transit" ng-include="root.base_url + 'preapp/templates/components/powerups/transit-card.html'"></div>
                         <div id="powerup-transit-label" class="powerup-icon-tag block lowercase txt-center txt-28 semibold"
 							init-with="p-op"
@@ -84,12 +88,8 @@
 		on-enter="p:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
        <button on-click="s:[close-powerups]">Back</button>
     </div>
-    <div init-later when-gpa-on-click="trigger:[init-with]" init-with="send:[gpa-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/gpa.html'">
-    </div>
-    <div init-later when-munchies-on-click="trigger:[init-with]" init-with="send:[munchies-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/munchies.html'">
-    </div>
-    <div init-later when-sound-on-click="trigger:[init-with]" init-with="send:[sound-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/sound.html'">
-    </div>
-    <div init-later when-transit-on-click="trigger:[init-with]" init-with="send:[transit-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/transit.html'">
-    </div>
+    <div init-later when-gpa-on-click="trigger:[init-with]" init-with="send:[gpa-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/gpa.html'"></div>
+    <div init-later when-munchies-on-click="trigger:[init-with]" init-with="send:[munchies-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/munchies.html'"></div>
+    <div init-later when-sound-on-click="trigger:[init-with]" init-with="send:[sound-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/sound.html'"></div>
+    <div init-later when-transit-on-click="trigger:[init-with]" init-with="send:[transit-triggered:public:delay-250]" ng-include src="root.base_url + 'preapp/templates/powerups/transit.html'"></div>
 </ion-view>

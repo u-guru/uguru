@@ -4834,18 +4834,6 @@ a[class*="-container"]:hover .map-stadium-outside {
       padding-bottom: 35px; }
       #powerups ul li a {
         position: relative; }
-        #powerups ul li a:before {
-          border-radius: 1000px;
-          content: "";
-          display: block;
-          position: absolute;
-          z-index: 1;
-          top: 50%;
-          left: 50%;
-          margin-top: -26px;
-          margin-left: -50px;
-          width: 100px;
-          height: 100px; }
         #powerups ul li a > div {
           z-index: 2;
           width: 100%; }
@@ -4862,13 +4850,24 @@ a[class*="-container"]:hover .map-stadium-outside {
             transition: all 150ms ease-in-out;
             position: absolute;
             bottom: -35px; }
-        #powerups ul li a#powerup-gpa-container:before {
+        #powerups ul li a .powerups-bg {
+          border-radius: 1000px;
+          display: block;
+          position: absolute;
+          z-index: 1;
+          top: 50%;
+          left: 50%;
+          margin-top: -26px;
+          margin-left: -50px;
+          width: 100px;
+          height: 100px; }
+        #powerups ul li a#powerup-gpa-container .powerups-bg {
           background: #79c5cd; }
-        #powerups ul li a#powerup-munchies-container:before {
+        #powerups ul li a#powerup-munchies-container .powerups-bg {
           background: #f1917f; }
-        #powerups ul li a#powerup-sound-container:before {
+        #powerups ul li a#powerup-sound-container .powerups-bg {
           background: #ac95e1; }
-        #powerups ul li a#powerup-transit-container:before {
+        #powerups ul li a#powerup-transit-container .powerups-bg {
           background: #91d3a8; }
         #powerups ul li a.active:before {
           -webkit-animation: powerup-before-scaleUp 1000ms ease-in-out 3500ms forwards;
