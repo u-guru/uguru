@@ -39,7 +39,7 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
       }
 
       function getSupported() {
-          return ['to', 'translate', 'p-o', 'perspective-origin', 'transform-box', 't-b', 'transform-origin', 'transform-style', 't-s', 't-o',  'backface-visibility', 'b-v', 'perspective-origin', 'p-origin', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
+          return ['to', 'translate', 'sk-x', 'sk-y', 'sky', 'skx', 'sx', 'sc-x', 's-x', 'sy', 'sc-y', 's-y', 'sz', 'sc-z', 's-z', 'tr', 'tr-z', 'tr-x', 'tr-y', 't-z', 't-x', 'tr-y', 'tx', 'ty','tz', 'rx', 'rz', 'r-x', 'ro-x', 'r-y', 'ry', 'ro-y', 'r-z', 'ro-z', 'p-o', 'perspective-origin', 'transform-box', 't-b', 'transform-origin', 'transform-style', 't-s', 't-o',  'backface-visibility', 'b-v', 'perspective-origin', 'p-origin', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
       }
 
       function parse2d(coord_string) {
@@ -55,6 +55,40 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
         }
         if ('sk' === str) {
           return 'skew'
+        }
+        if (['tr-z', 'tz', 't-z'].indexOf(str) > -1) {
+          return 'translateZ'
+        }
+        if (['tr-y', 'ty', 't-y'].indexOf(str) > -1) {
+          return 'translateY'
+        }
+        if (['tr-x', 'tx', 't-x'].indexOf(str) > -1) {
+          return 'translateX'
+        }
+        if (['ro-z', 'rz', 'r-z'].indexOf(str) > -1) {
+          console.log('found rotate z')
+          return 'rotateZ'
+        }
+        if (['ro-y', 'ry', 'r-y'].indexOf(str) > -1) {
+          return 'rotateY'
+        }
+        if (['ro-x', 'rx', 'r-x'].indexOf(str) > -1) {
+          return 'rotateX'
+        }
+        if (['sc-x', 'sx', 's-x'].indexOf(str) > -1) {
+          return 'scaleX'
+        }
+        if (['sk-x', 'sk'].indexOf(str) > -1) {
+          return 'skewX'
+        }
+        if (['sk-y', 'sky'].indexOf(str) > -1) {
+          return 'skewY'
+        }
+        if (['sc-y', 'sy', 's-y'].indexOf(str) > -1) {
+          return 'scaleY'
+        }
+        if (['sc-z', 'sz', 's-z'].indexOf(str) > -1) {
+          return 'scaleZ'
         }
         if ('p-o' === str) {
           return 'perspective-origin'
@@ -87,19 +121,19 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
             resultDict['scale' + args[index]] = parseFloat(arg)
           })
         }
-        if (key === 'translate') {
+        if (key === 'translate' || key === 't' || key === 'tr') {
           var args = ['X', 'Y', 'Z'];
           strSplit.forEach(function(arg, index) {
             resultDict['translate' + args[index]] = arg
           })
         }
-        if (key === 'rotate') {
+        if (key === 'rotate' || key === 'r' || key === 'ro') {
           var args = ['X', 'Y', 'Z'];
           strSplit.forEach(function(arg, index) {
             resultDict['rotate' + args[index]] = arg
           })
         }
-        if (key === 'skew') {
+        if (key === 'skew' || key === 'sk') {
           var args = ['X', 'Y'];
           strSplit.forEach(function(arg, index) {
             resultDict['skew' + args[index]] = arg
@@ -124,12 +158,50 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
               break;
             case ('skew'):
               parseTransformDictKey(parsedKey, transform_dict[key], resultDict)
+            case ('sk'):
+              parseTransformDictKey(parsedKey, transform_dict[key], resultDict)
+            case ('t'):
+              parseTransformDictKey(parsedKey, transform_dict[key], resultDict)
+            case ('tr'):
+              parseTransformDictKey(parsedKey, transform_dict[key], resultDict)
             case ('translate'):
               console.log(parsedKey)
               parseTransformDictKey(parsedKey, transform_dict[key], resultDict);
               break;
+            case ('rotateX'):
+              resultDict['rotateX'] = transform_dict[key];
+              break
+            case ('rotateY'):
+              resultDict['rotateY'] = transform_dict[key];
+              break;
+            case ('rotateZ'):
+              resultDict['rotateZ'] = transform_dict[key];
+              break;
+            case ('skewX'):
+              resultDict['skewX'] = transform_dict[key];
+              break;
+            case ('skewY'):
+              resultDict['skewY'] = transform_dict[key];
+              break;
+            case ('translateX'):
+              resultDict['translateX'] = transform_dict[key];
+              break
+            case ('translateY'):
+              resultDict['translateY'] = transform_dict[key];
+              break;
+            case ('translateZ'):
+              resultDict['translateZ'] = transform_dict[key];
+              break;
+            case ('scaleX'):
+              resultDict['scaleX'] = transform_dict;
+              break
+            case ('scaleY'):
+              resultDict['scaleY'] = transform_dict;
+              break;
+            case ('scaleZ'):
+              resultDict['scaleZ'] = transform_dict;
+              break;
             case ('rotate'):
-              console.log(parsedKey);
               parseTransformDictKey(parsedKey, transform_dict[key], resultDict);
             case ('clear'):
               resultDict.translateX = '0px';
