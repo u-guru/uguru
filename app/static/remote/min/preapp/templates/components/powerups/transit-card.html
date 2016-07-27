@@ -1,32 +1,38 @@
 <svg viewBox="0 0 200 200">
+	<defs>
+		<clipPath id="transit-clip">
+			<path d="M100,175 C133.137085,175 160,148.137085 160,115 C160,81.862915 133.137085,55 100,55 C66.862915,55 40,81.862915 40,115 C40,148.137085 66.862915,175 100,175 Z"></path>
+		</clipPath>
+	</defs>
 	<g class="transit-card" fill="none" fill-rule="evenodd"
 		init-with="p:[tro:center center]"
 		when-transit-on-click="p:[tr:scale(0.95), t:all 25ms ease-out] | s:[transit-on-click-resize:public:delay-100]"
 		when-transit-on-click-resize="p:[tr:scale(1), t:all 125ms ease-in]">
+		<path d="M15,33.0047042 C15,31.3452519 16.343635,30 18.0047042,30 L181.995296,30 C183.654748,30 185,31.343635 185,33.0047042 L185,196.995296 C185,198.654748 183.656365,200 181.995296,200 L18.0047042,200 C16.3452519,200 15,198.656365 15,196.995296 L15,33.0047042 L15,33.0047042 Z" class="transit-card-bg" fill="#91d3a8"></path>
 		<g>
-			<path d="M15,33.0047042 C15,31.3452519 16.343635,30 18.0047042,30 L181.995296,30 C183.654748,30 185,31.343635 185,33.0047042 L185,196.995296 C185,198.654748 183.656365,200 181.995296,200 L18.0047042,200 C16.3452519,200 15,198.656365 15,196.995296 L15,33.0047042 L15,33.0047042 Z" class="transit-card-bg" fill="#9CD9B0"></path>
             <path d="M100,175 C133.137085,175 160,148.137085 160,115 C160,81.862915 133.137085,55 100,55 C66.862915,55 40,81.862915 40,115 C40,148.137085 66.862915,175 100,175 Z" class="transit-container-fill" fill-opacity="0.4" fill="#637074"></path>
-			<g class="transit-left-lamp"
-				init-with="p:[op:0, tr:scale(2), tro:left center]"
-				when-powerup-icon-transit-init="t-enter"
-				on-enter="p:[op:0.5, tr:scale(0.7):delay-450, t:all 350ms ease-out]"
-				when-transit-mouse-enter="p:[play:running, tro:right bottom] | a:[transit-lamp:set:(dur:2500ms#func:ease-in-out#count:infinite#start:-1250ms):in]"
-				when-transit-mouse-leave="p:[play:paused]">
-				<path d="M58.5,97 C55.4624339,97 53,94.5375661 53,91.5 C53,88.4624339 55.4624339,86 58.5,86 C61.5375661,86 64,88.4624339 64,91.5 C64,94.5375661 61.5375661,97 58.5,97 L58.5,97 Z" class="transit-l-lamp-bulb" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#F6C64E"></path>
-				<path d="M40,77 L38.5,77 L40,77 L40,72.75 L40,77 L40,77 L40,77 Z M40,77 L58.5,77 L40,77 L40,140.25 L40,77 L40,77 L40,77 Z M58.5,77.5 L58.5,82.5 L58.5,77.5 L58.5,77.5 L58.5,77.5 Z" class="transit-l-lamp-post" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-				<path d="M45,128.994561 C45,127.892996 44.1125667,127 43.000385,127 L36.999615,127 C35.8952581,127 35,127.902344 35,128.994561 L35,148 L45,148 L45,128.994561 L45,128.994561 L45,128.994561 Z M47,148 L33,148 L33,152 L47,152 L47,148 L47,148 L47,148 Z M50,92 C50,87.0294373 53.8055796,83 58.5,83 C63.1944204,83 67,87.0294373 67,92 L50,92 L50,92 L50,92 Z M40,73 C38.8954305,73 38,72.1045695 38,71 C38,69.8954305 38.8954305,69 40,69 C41.1045695,69 42,69.8954305 42,71 C42,72.1045695 41.1045695,73 40,73 L40,73 L40,73 Z" class="transit-l-lamp-metal" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#8A9EA3"></path>
+			<g clip-path="url(#transit-clip)">
+				<g class="transit-left-lamp"
+					init-with="p:[op:0, tr:scale(2), tro:left center]"
+					when-powerup-icon-transit-init="t-enter"
+					on-enter="p:[op:0.5, tr:scale(0.7):delay-450, t:all 350ms ease-out]"
+					when-transit-mouse-enter="p:[play:running, tro:right bottom] | a:[transit-lamp:set:(dur:2500ms#func:ease-in-out#count:infinite#start:-1250ms):in]"
+					when-transit-mouse-leave="p:[play:paused]">
+					<path d="M58.5,97 C55.4624339,97 53,94.5375661 53,91.5 C53,88.4624339 55.4624339,86 58.5,86 C61.5375661,86 64,88.4624339 64,91.5 C64,94.5375661 61.5375661,97 58.5,97 L58.5,97 Z" class="transit-l-lamp-bulb" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#F6C64E"></path>
+					<path d="M40,77 L38.5,77 L40,77 L40,72.75 L40,77 L40,77 L40,77 Z M40,77 L58.5,77 L40,77 L40,140.25 L40,77 L40,77 L40,77 Z M58.5,77.5 L58.5,82.5 L58.5,77.5 L58.5,77.5 L58.5,77.5 Z" class="transit-l-lamp-post" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+					<path d="M45,128.994561 C45,127.892996 44.1125667,127 43.000385,127 L36.999615,127 C35.8952581,127 35,127.902344 35,128.994561 L35,148 L45,148 L45,128.994561 L45,128.994561 L45,128.994561 Z M47,148 L33,148 L33,152 L47,152 L47,148 L47,148 L47,148 Z M50,92 C50,87.0294373 53.8055796,83 58.5,83 C63.1944204,83 67,87.0294373 67,92 L50,92 L50,92 L50,92 Z M40,73 C38.8954305,73 38,72.1045695 38,71 C38,69.8954305 38.8954305,69 40,69 C41.1045695,69 42,69.8954305 42,71 C42,72.1045695 41.1045695,73 40,73 L40,73 L40,73 Z" class="transit-l-lamp-metal" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#8A9EA3"></path>
+				</g>
+				<g class="transit-right-lamp"
+					init-with="p:[op:0, tr:scale(2), tro:right center]"
+					when-powerup-icon-transit-init="t-enter"
+					on-enter="p:[op:1, tr:scale(1):delay-450, t:all 350ms ease-out]"
+					when-transit-mouse-enter="p:[play:running, tro:left bottom] | a:[transit-lamp:set:(dur:2500ms#func:ease-int#count:infinite):in]"
+					when-transit-mouse-leave="p:[play:paused]">
+					<circle class="transit-lamp-bulb" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#F6C64E" cx="142.5" cy="91.5" r="5.5"></circle>
+					<path d="M161,77 L162.5,77 L161,77 L161,72.75 L161,77 L161,77 Z M161,77 L142.5,77 L161,77 L161,140.25 L161,77 L161,77 Z M142.5,77.5 L142.5,82.5 L142.5,77.5 L142.5,77.5 Z" class="transit-lamp-post" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+					<path d="M156,128.994561 C156,127.892996 156.887433,127 157.999615,127 L164.000385,127 C165.104742,127 166,127.902344 166,128.994561 L166,148 L156,148 L156,128.994561 L156,128.994561 Z M154,148 L168,148 L168,152 L154,152 L154,148 L154,148 Z M151,92 C151,87.0294373 147.19442,83 142.5,83 C137.80558,83 134,87.0294373 134,92 L151,92 L151,92 Z M161,73 C162.104569,73 163,72.1045695 163,71 C163,69.8954305 162.104569,69 161,69 C159.895431,69 159,69.8954305 159,71 C159,72.1045695 159.895431,73 161,73 L161,73 Z" class="transit-lamp-metal" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#8A9EA3"></path>
+				</g>
 			</g>
-			<g class="transit-right-lamp"
-				init-with="p:[op:0, tr:scale(2), tro:right center]"
-				when-powerup-icon-transit-init="t-enter"
-				on-enter="p:[op:1, tr:scale(1):delay-450, t:all 350ms ease-out]"
-				when-transit-mouse-enter="p:[play:running, tro:left bottom] | a:[transit-lamp:set:(dur:2500ms#func:ease-int#count:infinite):in]"
-				when-transit-mouse-leave="p:[play:paused]">
-				<circle class="transit-lamp-bulb" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#F6C64E" cx="142.5" cy="91.5" r="5.5"></circle>
-				<path d="M161,77 L162.5,77 L161,77 L161,72.75 L161,77 L161,77 Z M161,77 L142.5,77 L161,77 L161,140.25 L161,77 L161,77 Z M142.5,77.5 L142.5,82.5 L142.5,77.5 L142.5,77.5 Z" class="transit-lamp-post" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-				<path d="M156,128.994561 C156,127.892996 156.887433,127 157.999615,127 L164.000385,127 C165.104742,127 166,127.902344 166,128.994561 L166,148 L156,148 L156,128.994561 L156,128.994561 Z M154,148 L168,148 L168,152 L154,152 L154,148 L154,148 Z M151,92 C151,87.0294373 147.19442,83 142.5,83 C137.80558,83 134,87.0294373 134,92 L151,92 L151,92 Z M161,73 C162.104569,73 163,72.1045695 163,71 C163,69.8954305 162.104569,69 161,69 C159.895431,69 159,69.8954305 159,71 C159,72.1045695 159.895431,73 161,73 L161,73 Z" class="transit-lamp-metal" stroke="#2B3234" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#8A9EA3"></path>
-			</g>
-			<path d="M15,33.0047042 C15,31.3452519 16.343635,30 18.0047042,30 L181.995296,30 C183.654748,30 185,31.343635 185,33.0047042 L185,196.995296 C185,198.654748 183.656365,200 181.995296,200 L18.0047042,200 C16.3452519,200 15,198.656365 15,196.995296 L15,33.0047042 L15,33.0047042 L15,33.0047042 Z M100,175 C133.137085,175 160,148.137085 160,115 C160,81.862915 133.137085,55 100,55 C66.862915,55 40,81.862915 40,115 C40,148.137085 66.862915,175 100,175 L100,175 L100,175 Z" class="transit-mask" fill="#9CD9B0"></path>
             <path d="M62.5,160 L139,160" class="line-front" stroke="#2B3234" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
 				init-with="p:[op:0, tr:scaleX(0), tro:center center]"
 				when-powerup-icon-transit-init="t-enter"

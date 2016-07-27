@@ -27,9 +27,8 @@
 			padding-bottom: 35px;
 			a {
 				position: relative;
-				&:before {
+				.powerups-bg {
 					@include round;
-					content: "";
 					display: block;
 					position: absolute;
 					z-index: 1;
@@ -41,6 +40,7 @@
 					height: 100px;
 				}
 				> div {
+					position: relative;
 					z-index: 2;
 					width: 100%;
 					&:first-child {
@@ -56,22 +56,22 @@
 					}
 				}
 				&#powerup-gpa-container {
-					&:before {
+					.powerups-bg {
 						background: mix(white, $gpa, 30%);
 					}
 				}
 				&#powerup-munchies-container {
-					&:before {
-						background: mix(white, mix($auburn, $orange), 30%);
+					.powerups-bg {
+						background: mix(white, $munchies, 30%);
 					}
 				}
 				&#powerup-sound-container {
-					&:before {
+					.powerups-bg {
 						background: mix(white, mix($eggplant, $cobalt), 30%);
 					}
 				}
 				&#powerup-transit-container {
-					&:before {
+					.powerups-bg {
 						background: mix(white, mix($moxie, $moola), 30%);
 					}
 				}
@@ -106,24 +106,61 @@
 
 // GENERAL
 .landing-container {
-	overflow-x: hidden!important;
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+	text-align: center;
+	overflow-y: auto;
+	overflow-x: hidden;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&::-moz-scrollbar {
+		display: none;
+	}
+	.splash-hero-skip {
+		display: none;
+	}
 	.powerup-icon {
 		width: 100%;
 		height: 100%;
 		max-width: 300px;
 		max-height: 300px;
+		margin: -50px auto 0;
 		.hanger {
 			display: none!important;
 		}
+		[class*="card-bg"] {
+			fill: none!important;
+		}
+	}
+	.powerup-header {
+		margin-top: -15px;
+		font-size: 36px;
+		font-weight: 900;
+	}
+	.powerup-subheader {
+		font-size: 20px;
+		font-weight: 600;
+		margin-top: 0!important;
+		margin-bottom: 15px;
 	}
 	.landing-demo {
+		display: none;
 		position: relative;
 		width: 318px;
+		margin: 30px auto 0;
 		> svg:not(.coach) {
 			width: 318px;
 			stroke-width: 3px;
 			stroke-linecap: round;
 			stroke-linejoin: round;
+		}
+		.coach {
+			display: block;
+			right: -200px;
+			width: 170px!important;
+			top: -10px;
 		}
 		> div {
 			position: absolute;
@@ -135,232 +172,498 @@
 			height: 490px;
 		}
 	}
-	@media screen and (max-width:768px) {
-		.powerup-icon {
-			margin-top: -50px;
+	.landing-content {
+		position: relative;
+		border-radius: 2px;
+		background: white;
+		max-width: 1000px;
+		margin: 0 auto 64px;
+		color: $slate;
+		h1 {
+			padding: 15px;
+			font-size: 28px;
+			font-weight: 600;
 		}
-		h1.powerup-header {
-			margin-top: 0;
-			font-size: 28px!important;
-		}
-		h2.powerup-header {
-			margin-top: 0;
-			font-size: 20px!important;
-		}
-		.landing-demo {
-			width: 200px;
-			> svg:not(.coach) {
-				width: 200px;
+	}
+	.landing-action {
+		color: white;
+		border-radius: 0 0 2px 2px;
+		ul {
+			margin-top: -15px;
+			padding: 7.5px;
+			li {
+				padding: 7.5px;
+				div {
+					@include flex;
+					@include flex-center;
+					@include flex-wrap;
+					background: rgba($smoke, .8);
+					border-radius: 2px;
+					padding: 15px;
+					svg {
+						width: 64px;
+						height: 64px;
+						circle {
+							fill: rgba(white, .5);
+						}
+					}
+					h2 {
+						color: lighten($slate, 15%);
+						width: 100%;
+						font-size: 20px;
+						font-weight: 600;
+					}
+				}
 			}
-			> div {
-				margin-left: -86px;
-				margin-top: -155px;
-				width: 172px;
-				height: 310px;
+		}
+		.landing-try-button {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+		}
+		.landing-platforms {
+			display: none;
+		}
+	}
+	@media screen and (min-width: 768px) {
+		.splash-hero-skip, .landing-demo {
+			display: block;
+		}
+		.powerup-header {
+			font-size: 48px;
+		}
+		.powerup-subheader {
+			font-size: 28px;
+			margin-bottom: 0;
+		}
+		.landing-content {
+			margin: -120px auto 0;
+			padding-top: 135px;
+			border-radius: 4px;
+			h1 {
+				font-size: 36px;
 			}
-			.coach {
-				display: none;
+		}
+		.landing-action {
+			padding: 15px;
+			border-radius: 0 0 4px 4px;
+			ul {
+				@include flex;
+				@include flex-center;
+				margin-top: 0;
+				margin-bottom: 15px;
+				li {
+					width: calc(100% / 3);
+					div {
+						border-radius: 4px;
+						svg {
+							width: 128px;
+							height: 128px;
+						}
+						h2 {
+							font-size: 28px;
+						}
+					}
+				}
+			}
+			.landing-try-button {
+				position: static;
+				left: auto;
+				bottom: auto;
+				width: auto;
+				padding-left: 30px;
+				padding-right: 30px;
+				border-radius: 2px;
+				margin-bottom: 15px;
+			}
+			.landing-platforms {
+				@include flex;
+				@include flex-center;
 			}
 		}
 	}
-	.landing-content {
-		margin-top: -120px;
-		padding-top: 135px;
-		@media screen and (max-width:768px) {
-			h1 {
-				font-size: 28px!important;
+}
+.landing-gpa {
+	background: mix(white, $gpa, 30%);
+	.landing-demo {
+		> svg:not(.coach) {
+			* {
+				stroke: lighten($slate, 15%);
+			}
+			circle {
+				fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
+			}
+			rect {
+				&:first-child {
+					fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 70%);
+				}
+				&:last-child {
+					fill: white;
+				}
+			}
+		}
+	}
+	.gpa-landing-hands {
+		display: none;
+		position: absolute;
+		bottom: 0;
+		width: 2px;
+		margin-left: -1px;
+		left: 50%;
+		margin-bottom: 15px;
+		svg {
+			&:first-child {
+				left: 80px;
+			}
+			&:last-child {
+				right: 80px;
+				@include prefix(backface-visibility, visible, webkit moz ms o);
+				@include prefix(transform, rotateY(180deg), webkit moz ms o);
+				@include prefix(transform-origin, center, webkit moz ms o);
+			}
+		}
+		@media screen and (min-width: 768px) {
+			display: block;
+		}
+	}
+	.gpa-landing-preview {
+		@include flex;
+		@include flex-center;
+		padding: 7.5px;
+		@media screen and (min-width: 768px) {
+			margin-bottom: 15px;
+		}
+		li {
+			padding: 7.5px;
+			&:first-child, &:last-child {
+				@include opacity(0.75);
+				@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
+				@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important, webkit moz ms o);
+			}
+		}
+		svg {
+			width: calc(318px * 0.75);
+			height: calc(651px * 0.75);
+			* {
+				stroke: lighten($slate, 15%);
+				stroke-width: 3px;
+			}
+			circle {
+				fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
+			}
+			rect {
+				&:first-child {
+					fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 70%);
+				}
+				&:last-child {
+					fill: white;
+				}
 			}
 		}
 	}
 	.landing-action {
-		@media screen and (max-width:768px) {
-			.ugrid-3 {
-				li {
-					width: 100%;
-					.svg-128 {
-						svg {
-							width: 64px;
-							height: 64px;
-						}
-						+ h2 {
-							width: calc(100% - 64px)!important;
-							margin-top: 0;
-							padding-top: 0;
-							text-align: left;
-							font-size: 20px!important;
-						}
+		background: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
+		ul {
+			li {
+				div {
+					h2 {
+						color: $gpa;
 					}
+				}
+			}
+		}
+		.landing-try-button {
+			background: rgba($gpa, .95);
+			color: white;
+			@media screen and (min-width: 768px) {
+				background: white;
+				color: $gpa;
+			}
+			&:hover, &:focus {
+				background: mix($gpa, white);
+				color: mix($gpa, $slate);
+			}
+			&:active {
+				background: mix($gpa, $slate);
+				color: white;
+			}
+		}
+	}
+}
+.landing-transit {
+	background: mix(white, $transit, 30%);
+	.landing-demo {
+		> svg:not(.coach) {
+			* {
+				stroke: lighten($slate, 15%);
+			}
+			circle {
+				fill: mix(mix(white, $transit, 30%), lighten($slate, 15%), 40%);
+			}
+			rect {
+				&:first-child {
+					fill: mix(mix(white, $transit, 30%), lighten($slate, 15%), 70%);
+				}
+				&:last-child {
+					fill: white;
 				}
 			}
 		}
 	}
-	&.landing-gpa {
-		background: mix(white, $gpa, 30%);
-		.landing-demo {
-			> svg:not(.coach) {
-				* {
-					stroke: lighten($slate, 15%);
-				}
-				circle {
-					fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
-				}
-				rect {
-					&:first-child {
-						fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 70%);
-					}
-					&:last-child {
-						fill: white;
-					}
-				}
+}
+.landing-munchies {
+	background: mix(white, $munchies, 30%);
+	.landing-demo {
+		> svg:not(.coach) {
+			* {
+				stroke: white;
 			}
-		}
-		.gpa-landing-hands {
-			width: 2px;
-    		margin-left: -1px;
-    		left: 50%;
-			svg {
+			circle {
+				fill: mix(white, $munchies, 80%);
+			}
+			rect {
 				&:first-child {
-					left: 80px;
+					fill: mix(white, $munchies, 50%);
 				}
 				&:last-child {
-					right: 80px;
-					@include prefix(backface-visibility, visible, webkit moz ms o);
-					@include prefix(transform, rotateY(180deg), webkit moz ms o);
-					@include prefix(transform-origin, center, webkit moz ms o);
-				}
-				@media screen and (max-width:768px) {
-					&:first-child {
-						max-height: 200px;
-    					left: -200px;
-					}
-					&:last-child {
-						max-height: 200px;
-    					right: -200px;
-					}
-				}
-				@media screen and (max-width:414px) {
-					&:first-child, &:last-child {
-						max-height: 100px;
-						top: -250px;
-						bottom: auto!important;
-					}
-					&:first-child {
-						left: -360px;
-					}
-					&:last-child {
-						right: -360px;
-					}
+					fill: white;
 				}
 			}
 		}
-		.gpa-landing-preview {
+	}
+	.landing-content {
+		background: #a68787;
+		.landing-color {
+			background: #a68787;
+		}
+	}
+}
+.landing-sound {
+	background: mix(white, $sound, 30%);
+	.landing-demo {
+		> svg:not(.coach) {
+			* {
+				stroke: lighten($slate, 15%);
+			}
+			circle {
+				fill: mix(mix(white, $sound, 30%), lighten($slate, 15%), 40%);
+			}
+			rect {
+				&:first-child {
+					fill: mix(mix(white, $sound, 30%), lighten($slate, 15%), 70%);
+				}
+				&:last-child {
+					fill: white;
+				}
+			}
+		}
+	}
+	.landing-content {
+		background: $smoke;
+	}
+	.landing-action {
+		color: $sound;
+		.sound-equalizer {
+			position: relative;
+			margin-bottom: 15px;
+			height: 105px;
+			svg {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				margin-left: -523px;
+			}
+		}
+		.landing-try-button {
+			background: rgba($sound, .95);
+			color: white;
+			@media screen and (min-width: 768px) {
+				background: $sound;
+				color: white;
+			}
+			&:hover, &:focus {
+				background: mix($sound, white);
+				color: mix($sound, $slate);
+			}
+			&:active {
+				background: mix($sound, $slate);
+				color: white;
+			}
+		}
+	}
+	.sound-record-list {
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+			width: 100%;
+		}
+	}
+	@media screen and (min-width: 768px) {
+		.sound-record-list {
+			padding: 15px;
 			li {
-				&:first-child, &:last-child {
-					@include opacity(0.75);
-					@include prefix(transition, all 600ms cubic-bezier(.77,0,.05,1)!important, webkit moz ms o);
-					@include prefix(transition, all 600ms cubic-bezier(.77,-0.22,.05,1.27)!important, webkit moz ms o);
-				}
-				&:first-child {
-					transform: translateX(100%);
-				}
-				&:last-child {
-					transform: translateX(-100%);
-				}
-			}
-			svg {
-				width: calc(318px * 0.75);
-				height: calc(651px * 0.75);
-				@media screen and (max-width:768px) {
-					width: calc(318px * 0.5);
-					height: calc(651px * 0.5);
-				}
-				* {
-					stroke: lighten($slate, 15%);
-					stroke-width: 3px;
-				}
-				circle {
-					fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
-				}
-				rect {
-					&:first-child {
-						fill: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 70%);
-					}
-					&:last-child {
-						fill: white;
-					}
-				}
+				width: 50%;
+				padding: 15px;
 			}
 		}
 		.landing-action {
-			background: mix(mix(white, $gpa, 30%), lighten($slate, 15%), 40%);
+			.sound-equalizer {
+				margin-bottom: 45px;
+			}
 		}
 	}
-	&.landing-transit {
-		background: mix(white, mix($moola, $moxie), 30%);
-		.landing-demo {
-			> svg:not(.coach) {
-				* {
-					stroke: lighten($slate, 15%);
+}
+
+.record-tile-container {
+	.record-tile {
+		position: relative;
+		width: 85%;
+		svg {
+			fill: none;
+		}
+		.record-tile-front, .record-tile-back {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+		.record-tile-front {
+			left: 0;
+		}
+		.record-tile-back {
+			right: -15%;
+		}
+		.record-tile-front {
+			@include flex;
+			@include flex-center;
+			background: $sound;
+			border-radius: 4px;
+			padding: 15px;
+			h1 {
+				color: white;
+				font-size: 36px;
+				font-weight: 900;
+				letter-spacing: 8px;
+				text-transform: uppercase;
+				@media screen and (min-width: 768px) {
+					font-size: 54px;
 				}
-				circle {
-					fill: mix(mix(white, mix($moola, $moxie), 30%), lighten($slate, 15%), 40%);
+			}
+			div:empty {
+				position: absolute;
+				background: white;
+				border-radius: 4px;
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 15px;
+					transform-origin: right center;
 				}
-				rect {
-					&:first-child {
-						fill: mix(mix(white, mix($moola, $moxie), 30%), lighten($slate, 15%), 70%);
-					}
-					&:last-child {
-						fill: white;
-					}
+				&:nth-child(2) {
+					top: 0;
+					right: 0;
+					width: 15px;
+					height: 100%;
+					transform-origin: center top;
+				}
+				&:nth-child(3) {
+					bottom: 0;
+					right: 0;
+					width: 100%;
+					height: 15px;
+					transform-origin: left center;
+				}
+				&:nth-child(4) {
+					bottom: 0;
+					left: 0;
+					width: 15px;
+					height: 100%;
+					transform-origin: center bottom;
+				}
+			}
+		}
+		.record-tile-back {
+			border-radius: 100%;
+			background: $charcoal;
+		}
+	}
+	.record-info {
+		margin-bottom: 30px;
+		h3 {
+			padding: 15px 0;
+			font-size: 18px;
+			font-weight: 900;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+		}
+		button {
+			position: relative;
+			width: auto;
+			padding-left: 15px;
+			padding-right: 15px;
+			background: transparent;
+			color: $charcoal;
+			text-transform: uppercase;
+			font-weight: 700;
+			span:empty {
+				position: absolute;
+				background: $charcoal;
+				border-radius: 4px;
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 4px;
+					transform-origin: right center;
+				}
+				&:nth-child(2) {
+					top: 0;
+					right: 0;
+					width: 4px;
+					height: 100%;
+					transform-origin: center bottom;
+				}
+				&:nth-child(3) {
+					bottom: 0;
+					right: 0;
+					width: 100%;
+					height: 4px;
+					transform-origin: left center;
+				}
+				&:nth-child(4) {
+					bottom: 0;
+					left: 0;
+					width: 4px;
+					height: 100%;
+					transform-origin: center top;
+				}
+			}
+			&:hover, &:focus {
+				background: $sound;
+				color: white;
+				span:empty {
+					background: $sound;
+				}
+			}
+			&:active {
+				background: $charcoal;
+				color: white;
+				span:empty {
+					background: $charcoal;
 				}
 			}
 		}
 	}
-	&.landing-munchies {
-		background: mix(white, mix($auburn, $orange), 30%);
-		.landing-demo {
-			> svg:not(.coach) {
-				* {
-					stroke: white;
-				}
-				circle {
-					fill: mix(white, mix($auburn, $orange), 80%);
-				}
-				rect {
-					&:first-child {
-						fill: mix(white, mix($auburn, $orange), 50%);
-					}
-					&:last-child {
-						fill: white;
-					}
-				}
-			}
-		}
-		.landing-content {
-			background: #a68787;
-			.landing-color {
-				background: #a68787;
-			}
-		}
-	}
-	&.landing-sound {
-		background: mix(white, mix($cobalt, $eggplant), 30%);
-		.landing-demo {
-			> svg:not(.coach) {
-				* {
-					stroke: lighten($slate, 15%);
-				}
-				circle {
-					fill: mix(mix(white, mix($cobalt, $eggplant), 30%), lighten($slate, 15%), 40%);
-				}
-				rect {
-					&:first-child {
-						fill: mix(mix(white, mix($cobalt, $eggplant), 30%), lighten($slate, 15%), 70%);
-					}
-					&:last-child {
-						fill: white;
-					}
-				}
+	@media screen and (min-width: 768px) {
+		.record-info {
+			margin-bottom: 45px;
+			h3 {
+				padding: 30px 0;
+				font-size: 20px;
 			}
 		}
 	}
