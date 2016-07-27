@@ -95,7 +95,6 @@ angular.module('uguru.admin')
         var report = {
            'workflows': $scope.bugReport,
            'lastUpdate': new Date().getTime()
-
          }
         ReportService.syncReport(report);
     };
@@ -106,7 +105,7 @@ angular.module('uguru.admin')
     };
 
 
-    $scope.openPlatform = function(stateID,key){
+    $scope.openPlatform = function(workFlowID,key){
         var targetElem = document.querySelector('#cta-box-selected-bug');
         var modalElem = document.querySelector('#cta-modal-action-platforms');
         modalElem.classList.add('show');
@@ -118,7 +117,7 @@ angular.module('uguru.admin')
         }
         for(var i = 0; i < $scope.bugReport.length ; ++i)
         {
-          if ($scope.bugReport[i].stateID === stateID){
+          if ($scope.bugReport[i].workFlowID === workFlowID){
             // $scope.statePlatforms = $scope.bugReport[i][key];
             $scope.autoReport =  $scope.bugReport[i][key];
             if(key === 'manualState'){
@@ -177,11 +176,11 @@ angular.module('uguru.admin')
           }
           return id;
       }
-      var stateID = id;
+      var workFlowID = id;
       // console.log("CHECK",$scope.bugReport)
       for(var i = 0; i < $scope.bugReport.length ; ++i)
       {
-        if ($scope.bugReport[i].stateID === stateID){
+        if ($scope.bugReport[i].workFlowID === workFlowID){
           var totalPass = 0;
           for (var j = 0; j < $scope.bugReport[i][key].length; ++j)
           {

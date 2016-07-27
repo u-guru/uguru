@@ -80,7 +80,7 @@ angular.module('uguru.admin')
       $scope.help = section.help;
       $scope.states = section.states;
       $scope.name = section.name;
-      $scope.stateID = section.stateID;
+      $scope.workFlowID = section.workFlowID;
       $scope.currentManualBugs = section.manualBugs;
       // $scope.currentManualBugs = []
       if ($scope.name === ''){
@@ -576,8 +576,8 @@ angular.module('uguru.admin')
           // console.log('Reset',$scope.advanceSearch);
         }
         for (var i = 0; i < $scope.bugReport.length; ++ i) {
-          if(!$scope.bugReport[i].stateID){
-           $scope.bugReport[i].stateID =  genUniqueID($scope.bugReport[i].name);
+          if(!$scope.bugReport[i].workFlowID){
+           $scope.bugReport[i].workFlowID =  genUniqueID($scope.bugReport[i].name);
           }
           if (!$scope.bugReport[i].manualState){
             $scope.bugReport[i].manualState = [];
