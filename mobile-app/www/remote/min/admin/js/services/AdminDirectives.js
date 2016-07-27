@@ -13,6 +13,17 @@ angular.module('uguru.admin')
         }
     }
 ])
+.directive("player", ['$timeout', 'RootService', function($timeout, RootService) {
+    return {
+        templateUrl: RootService.getBaseUrl() + 'admin/templates/components/player.tpl',
+        restrict: 'E',
+        scope: {state:'=state', startOffset:'=startOffset', duration: '=duration', play:'=play', pause:'=pause', update: '=update'},
+        replace: true,
+        link: function(scope, element, attr) {
+            scope.playerPos = scope.startOffset;
+        }
+    }
+}])
 .directive("animTools", ['$timeout', 'RootService', 'AnimToolService', function($timeout, RootService, AnimToolService) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/anim.tools.tpl',
@@ -81,9 +92,13 @@ angular.module('uguru.admin')
                     for (var i = 0; i < workflows.length; i++) {
                         var iWorkflow = workflows[i];
                         iWorkflow.progress = iWorkflow.calculateProgress(iWorkflow.stories);
+
                     }
 
-                    scope.module.progress = calcModuleProgress(scope.module.workflows);
+                    $timeout(function() {
+                        scope.module.progress = calcModuleProgress(scope.module.workflows);
+                    })
+
                 })
             })
         })
@@ -817,15 +832,47 @@ function sortStoryByPriority(person) {
 }
 
 function calcModuleProgress(workflows) {
-    var resultDict = {func: 0, total: workflows.length, cp: 0, responsive:0, tested: 0};
+    var resultDict = {workflows: { func: 0, total: workflows.length, cp: 0, responsive:0, tested: 0}, states: {}};
+    resultDict.states.total = 0;
+    resultDict.states.func = {total: 0, complete: 0, bugs: 0};
+    resultDict.states.cp = 0;
+    resultDict.states.tested = 0;
+    resultDict.states.mTested = 0;
     for (var i = 0; i < workflows.length; i++) {
         var iWorkflow = workflows[i];
-        if (iWorkflow.func) resultDict.func += 1;
-        if (iWorkflow.tested) resultDict.tested += 1;
-        if (iWorkflow.cp) resultDict.cp += 1;
-        if (iWorkflow.response) resultDict.responsive += 1;
+        if (iWorkflow.func) resultDict.workflows.func += 1;
+        if (iWorkflow.tested) resultDict.workflows.tested += 1;
+        if (iWorkflow.cp) resultDict.workflows.cp += 1;
+        if (iWorkflow.response) resultDict.workflows.responsive += 1;
+        console.log(iWorkflow.states.length)
+        iWorkflow.states.forEach(
+            function(state, index)
+            {
+                if (isStateOfType(state, 'func'))  {
+                        resultDict.states.func.total += 1;
+                    if (state['func']) {
+                        resultDict.states.func.complete += 1;
+                    }
+                    if (state.bugs && state.bugs.length) {
+                        state.bugs.forEach(function(bug, index) {
+                            if (bug && isStateOfType(bug, 'func')) {
+                                resultDict.states.func.bugs += 1;
+                            }
+                        })
+                    }
+                }
+            }
+        )
     }
+    console.log(resultDict.states);
+
     return resultDict;
+}
+
+function isStateOfType(state, _type) {
+    if (_type === 'func') {
+        return ('func' in state || ('type' in state && state['type'] && state['type'].indexOf('func') > -1))
+    }
 }
 
 function calcStreamProgress(state_arr) {
@@ -873,7 +920,6 @@ function getCommonTagsAndFunc(workflow, attr_tags, person) {
 
         for (var j = 0; j < defaultFilterAttr.length; j++) {
             var iFilterAttr = defaultFilterAttr[j];
-            console.log(iFilterAttr in iFilterObj)
             if (iFilterAttr in iFilterObj && (typeof(iFilterObj[iFilterAttr]) === 'boolean' || (iFilterObj[iFilterAttr] && iFilterObj[iFilterAttr].length))) {;
                 if (typeof(iFilterObj[iFilterAttr]) === 'string') {
                     var tagAttrSplit = iFilterObj[iFilterAttr].split(',');
