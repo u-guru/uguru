@@ -6,7 +6,6 @@
 	</defs>
 	<g fill="none" fill-rule="evenodd">
 		<g class="munchies-card"
-			clip-path="url(#munchies-clip)"
 			init-with="p:[tro:center center]"
 			when-munchies-on-click="p:[tr:scale(0.95), t:all 25ms ease-out] | s:[munchies-on-click-resize:public:delay-100]"
 			when-munchies-on-click-resize="p:[tr:scale(1), t:all 125ms ease-in]">
@@ -14,6 +13,7 @@
 			<path d="M99.5454545,174.543478 C132.68254,174.543478 159.545455,147.680563 159.545455,114.543478 C159.545455,81.4063933 132.68254,54.5434783 99.5454545,54.5434783 C66.4083696,54.5434783 39.5454545,81.4063933 39.5454545,114.543478 C39.5454545,147.680563 66.4083696,174.543478 99.5454545,174.543478 Z" class="munchies-container-fill-clone" fill="#f1917f"></path>
 			<path d="M99.5454545,174.543478 C132.68254,174.543478 159.545455,147.680563 159.545455,114.543478 C159.545455,81.4063933 132.68254,54.5434783 99.5454545,54.5434783 C66.4083696,54.5434783 39.5454545,81.4063933 39.5454545,114.543478 C39.5454545,147.680563 66.4083696,174.543478 99.5454545,174.543478 Z" class="munchies-container-fill" fill-opacity="0.4" fill="#637074"></path>
 			<g class="chef"
+				clip-path="url(#munchies-clip)"
 				init-with="p:[op:0, tro:center bottom]"
 				when-powerup-icon-munchies-init="t-enter"
 				on-enter="a:[gpa-enter:set:(dur:1200ms#func:linear):delay-500:in]">

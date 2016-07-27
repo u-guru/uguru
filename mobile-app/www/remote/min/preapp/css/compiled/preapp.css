@@ -5267,9 +5267,12 @@ a[class*="-container"]:hover .map-stadium-outside {
   .record-tile-container .record-tile .record-tile-front, .record-tile-container .record-tile .record-tile-back {
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100%; }
+  .record-tile-container .record-tile .record-tile-front {
+    left: 0; }
+  .record-tile-container .record-tile .record-tile-back {
+    right: -15%; }
   .record-tile-container .record-tile .record-tile-front {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -5286,9 +5289,9 @@ a[class*="-container"]:hover .map-stadium-outside {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    border: 15px solid white;
     background: #8967d4;
-    border-radius: 4px; }
+    border-radius: 4px;
+    padding: 15px; }
     .record-tile-container .record-tile .record-tile-front h1 {
       color: white;
       font-size: 36px;
@@ -5298,6 +5301,34 @@ a[class*="-container"]:hover .map-stadium-outside {
       @media screen and (min-width: 768px) {
         .record-tile-container .record-tile .record-tile-front h1 {
           font-size: 54px; } }
+    .record-tile-container .record-tile .record-tile-front div:empty {
+      position: absolute;
+      background: white;
+      border-radius: 4px; }
+      .record-tile-container .record-tile .record-tile-front div:empty:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 15px;
+        transform-origin: right center; }
+      .record-tile-container .record-tile .record-tile-front div:empty:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 15px;
+        height: 100%;
+        transform-origin: center top; }
+      .record-tile-container .record-tile .record-tile-front div:empty:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 15px;
+        transform-origin: left center; }
+      .record-tile-container .record-tile .record-tile-front div:empty:nth-child(4) {
+        bottom: 0;
+        left: 0;
+        width: 15px;
+        height: 100%;
+        transform-origin: center bottom; }
   .record-tile-container .record-tile .record-tile-back {
     border-radius: 100%;
     background: #2B3234; }
@@ -5610,6 +5641,28 @@ a[class*="-container"]:hover .map-stadium-outside {
     background: #637074;
     border: #637074; }
 
+/* Generated with Bounce.js. Edit at http://goo.gl/auaf79 */
+@keyframes rotate-record {
+  0% {
+    transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  4.1% {
+    transform: matrix3d(0.79, -0.613, 0, 0, 0.613, 0.79, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  8.11% {
+    transform: matrix3d(0.986, -0.165, 0, 0, 0.165, 0.986, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  12.11% {
+    transform: matrix3d(1, 0.029, 0, 0, -0.029, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  16.12% {
+    transform: matrix3d(0.998, 0.068, 0, 0, -0.068, 0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  27.23% {
+    transform: matrix3d(1, 0.012, 0, 0, -0.012, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  38.34% {
+    transform: matrix3d(1, -0.002, 0, 0, 0.002, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  60.56% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  82.78% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
 /* http://goo.gl/I9Ktue */
 @keyframes prop-stand-leg {
   0% {
@@ -5642,7 +5695,8 @@ a[class*="-container"]:hover .map-stadium-outside {
 /* http://goo.gl/0cmyxz */
 @keyframes prop-scroll-search {
   0% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; }
   5.01% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -55.281, 0, 1); }
   10.01% {
@@ -5661,8 +5715,11 @@ a[class*="-container"]:hover .map-stadium-outside {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -149.993, 0, 1); }
   70.27% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -149.481, 0, 1); }
+  99.99% {
+    opacity: 1; }
   100% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -150, 0, 1); } }
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -150, 0, 1);
+    opacity: 0; } }
 /* http://goo.gl/fdWrNX */
 @keyframes powerup-prop-bounceInUp {
   0% {
@@ -6104,7 +6161,7 @@ a[class*="-container"]:hover .map-stadium-outside {
 @keyframes gpa-enter {
   0% {
     transform: matrix3d(0.8, 0, 0, 0, 0, 0.8, 0, 0, 0, 0, 1, 0, 0, 38.4, 0, 1);
-    opacity: 1; }
+    opacity: 0; }
   3.4% {
     transform: matrix3d(0.863, 0, 0, 0, 0, 0.881, 0, 0, 0, 0, 1, 0, 0, 24.777, 0, 1); }
   4.3% {

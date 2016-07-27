@@ -527,16 +527,21 @@
 		.record-tile-front, .record-tile-back {
 			position: absolute;
 			top: 0;
-			left: 0;
 			width: 100%;
 			height: 100%;
 		}
 		.record-tile-front {
+			left: 0;
+		}
+		.record-tile-back {
+			right: -15%;
+		}
+		.record-tile-front {
 			@include flex;
 			@include flex-center;
-			border: 15px solid white;
 			background: $sound;
 			border-radius: 4px;
+			padding: 15px;
 			h1 {
 				color: white;
 				font-size: 36px;
@@ -545,6 +550,39 @@
 				text-transform: uppercase;
 				@media screen and (min-width: 768px) {
 					font-size: 54px;
+				}
+			}
+			div:empty {
+				position: absolute;
+				background: white;
+				border-radius: 4px;
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 15px;
+					transform-origin: right center;
+				}
+				&:nth-child(2) {
+					top: 0;
+					right: 0;
+					width: 15px;
+					height: 100%;
+					transform-origin: center top;
+				}
+				&:nth-child(3) {
+					bottom: 0;
+					right: 0;
+					width: 100%;
+					height: 15px;
+					transform-origin: left center;
+				}
+				&:nth-child(4) {
+					bottom: 0;
+					left: 0;
+					width: 15px;
+					height: 100%;
+					transform-origin: center bottom;
 				}
 			}
 		}
