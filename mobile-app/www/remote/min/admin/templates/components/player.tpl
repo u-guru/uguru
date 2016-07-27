@@ -8,7 +8,7 @@
     <span class='p10xy'>
         {{startOffset}}
     </span>
-    <input type='range' ng-model="startOffset" min="0" max="{{duration}}" > </input>
+    <input type='range' ng-model="startOffset" ng-mouseup="update(startOffset)" min="0" max="{{duration}}" > </input>
     <span class='p10xy'>
         {{duration}}
     </span>
