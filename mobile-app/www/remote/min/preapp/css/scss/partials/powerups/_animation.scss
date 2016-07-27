@@ -15,6 +15,7 @@
 // 	}
 // }
 
+//Sound
 .album-slideRight {
 	animation: album-slideRight 1000ms linear forwards;
 }
@@ -51,6 +52,14 @@
   100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 }
 
+//GPA
+.prop-scroll-search {
+	animation: prop-scroll-search 3500ms cubic-bezier(.93,0,1,.05) forwards;
+}
+
+.prop-stand-leg {
+	animation: prop-stand-leg 1000ms linear forwards;
+}
 /* http://goo.gl/I9Ktue */
 @keyframes prop-stand-leg {
   0% { transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity:1;}
