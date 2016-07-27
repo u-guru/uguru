@@ -886,9 +886,25 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
         }
       }
 
-      function getUpdateFunction(element, attr, props, state) {
-        return function() {
-          console.log('user dragged');
+      function getUpdateFunction(element, attr, props, state, scope) {
+        return function(value) {
+          state.timer.pause = true;
+          state.play = false;
+          state.timer.pause = value;
+          attr.$set('style', null);
+          $timeout(function() {
+            scope.$apply();
+            attr.$set('style', props.style);
+            element.css('transition-delay', (state.timer.pause * -1) + 'ms');
+            element.css('-webkit-transition-delay', (state.timer.pause * -1) + 'ms');
+            computedStyle = window.getComputedStyle(element[0]);
+            element.css('transform', computedStyle.getPropertyValue('transform') || computedStyle.getPropertyValue('webkit-transform'));
+            $timeout(function() {
+              scope.$apply();
+              element.css('transition', null);
+              element.css('-webkit-transition', null);
+            })
+          })
         }
       }
 
