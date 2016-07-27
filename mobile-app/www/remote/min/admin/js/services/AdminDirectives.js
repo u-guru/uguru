@@ -17,10 +17,11 @@ angular.module('uguru.admin')
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/player.tpl',
         restrict: 'E',
-        scope: {state:'=state', startOffset:'=startOffset', duration: '=duration', play:'=play', pause:'=pause', update: '=update'},
+        scope: {state:'=state', startOffset:'=startOffset', duration: '=duration', props:'=props', play:'=play', pause:'=pause', update: '=update'},
         replace: true,
         link: function(scope, element, attr) {
             scope.playerPos = scope.startOffset;
+            console.log(scope.props);
         }
     }
 }])
