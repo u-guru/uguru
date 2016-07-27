@@ -80,6 +80,22 @@ angular.module('uguru.admin')
       $timeout(function() {
         apc.example.play();
       })
+      $scope.$watch('apc.exampleIndex', function(value) {
+        var elem = document.querySelector('svg rect');
+        var player = document.querySelector('#transition-player');
+        if (player) {
+
+          player.parentNode.removeChild(player);
+          $timeout(function() {
+            apc.example.play();
+            elem.parentNode.classList.remove('inspect');
+            elem.parentNode.classList.add('inspect');
+            $compile(elem)($scope);
+            $scope.$apply();
+
+          })
+        }
+      })
 
     function initPlaygroundVars(name, index) {
       if (name in apc.options) {

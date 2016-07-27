@@ -839,14 +839,14 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
 
 
 
-            initPlayer(scope)
 
 
-            scope.$watch('playerPos', function(value) {
-              element.css('transition-delay', (value*-1) + 'ms');
-              element.css('transition', scope.originalTransition);
-              attr.$set('style', scope.originalStyle);
-            })
+
+            // scope.$watch('playerPos', function(value) {
+            //   element.css('transition-delay', (value*-1) + 'ms');
+            //   element.css('transition', scope.originalTransition);
+            //   attr.$set('style', scope.originalStyle);
+            // })
 
             scope.state = {play: false, pause: false, complete: false, timer: {start:0, pause:0}};
 
@@ -902,7 +902,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
             $timeout(function() {
               scope.$apply();
               element.css('transition', null);
-              element.css('-webkit-transition', null);
+              element.css('webkit-transition', null);
             })
           })
         }
@@ -948,15 +948,23 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       }
 
       function initPlayer(scope) {
-          var div = document.createElement('div');
+          var div = document.querySelector('#transition-player');
           scope.name = 'player'
-          div.classList.add('p15-grid', 'full-x', 'fixed', 'top-0', 'left-0', 'bg-auburn', 'animated', 'slideInDown');
-          div.style.zIndex = 100000;
-          div.innerHTML = '<player play=play pause=pause state=state update=update props=props start-offset=state.timer.pause duration=duration></player>'
-          document.querySelector('ui-view').appendChild(div)
+          if (!div) {
+            div = document.createElement('div');
+            div.classList.add('p15-grid', 'full-x', 'fixed', 'top-0', 'left-0', 'bg-auburn', 'animated', 'slideInDown');
+            div.style.zIndex = 100000;
+            div.id = 'transition-player';
+            div.innerHTML = '<player play=play pause=pause state=state update=update props=props start-offset=state.timer.pause duration=duration></player>'
+            document.querySelector('ui-view').appendChild(div)
+          }
+
           scope.playerPos = 0
-          scope.duration = 2000
+          scope.duration = 2000;
           $compile(div)(scope)
+          $timeout(function() {
+            scope.$apply();
+          })
       }
 
       function getDuration(element) {
