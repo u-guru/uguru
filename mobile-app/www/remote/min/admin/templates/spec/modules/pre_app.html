@@ -3,29 +3,105 @@
     <!-- @jeselle, @gabrielle-->
     <user-workflow name='Powerups View' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/powerups/' priority="5">
         <user-stories>
-            <story type="func, transition" desc="user enters power-ups screen & learns details">
-                <ui-stream desc='powerups transition in'>
-                    <ui-state type="gesture" desc="User clicks powerup icon" func="true">
+            <story type="func, transition" desc="User enters power-ups screen and learns details">
+                <ui-stream desc='Powerups transition in' type='func, gesture'>
+                    <ui-state name="User clicks powerups icon" desc="Icon zooms to center" type="gesture, transition" func="true">
                     </ui-state>
-                    <ui-state type="gesture, transition" desc="Full view transition from [splash madlib, ]" func="true">
+                    <ui-state name="Full view transition" desc="Gold background expands, then fades into the slate" type="transition" func="true">
                     </ui-state>
-                    <ui-state type="gesture, transition" desc="Once view transition is complete, initiate the on enter of the powerup cards" func="true">
+					<ui-state type="transition" name="Title/subtitle animate in" desc="bounceInUp-subtle" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="GPA tile onEnter" desc="Guru bounces in and buttons spread out from the center" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="Munchies tile onEnter" desc="Guru bounces in and cake tiers slideInLeft" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="Sound tile onEnter" desc="Body translateUp, head scaleDown to size; headphones slideInDown while notes bounceIn" func="true">
+                    </ui-state>
+                    <ui-state type="transition" name="Transit tile onEnter" desc="Tracks drawIn. Lamps scaleDown to size. jellyIn, staggered" func="true">
                     </ui-state>
                     <!-- add more here, any sequential animations should be a state. Sequential, as in, when one enters, it has an agenda to achieve XYZ in orderly fashion. -->
                 </ui-stream>
                 <ui-stream desc='User hovers over one powerup'>
-                    <ui-state desc="mouse enter state"> </ui-state>
+					<ui-state name="Mouse enter state" type="gesture, transition" func="true">
+                    </ui-state>
+					<ui-state type="transition" name="GPA tile mouseEnter" desc="Guru eyebrows wiggle. Button props rotate." func="true">
+					</ui-state>
+					<ui-state type="transition" name="Munchies tile mouseEnter" desc="Guru head rotates bottom center. Cake tiers jelly staggered; frosting color tweens" func="true">
+					</ui-state>
+					<ui-state type="transition" name="Sound tile mouseEnter" desc="Guru head bobs up and down. Headphone muffs scaleY up and down; wire rotateY back and forth. Notes floats with translateY, fadeIn and fadeOut." func="true">
+					</ui-state>
+					<ui-state type="transition" name="Transit tile mouseEnter" desc="jellyIn, staggered" func="true">
+					</ui-state>
                 </ui-stream>
-                <ui-stream desc='Given that user has just hovered over one, they hover-off (mouse-leave) and then hover over another one'>
-                    <ui-state> </ui-state>
+                <ui-stream desc='User hovers from one to another'>
+                    <ui-state name="Mouse leave state" desc="mouseEnter animation pauses" type="gesture, transition" func="true"> </ui-state>
+					<ui-state name="New mouse enter state" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true">
+					</ui-state>
                 </ui-stream>
-                <ui-stream desc='Hover-off #2, go back to number one (mouse-leave + hover-on #1) and then click'>
-                </ui-stream>
+                <ui-stream desc='User returns to the first and clicks on it'>
+					<ui-state name="Mouse leave state" desc="mouseEnter animation pauses" type="gesture, transition" func="true"> </ui-state>
+					<ui-state name="New mouse enter state" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true"></ui-state>
+					<ui-state name="Mouse clickOn state" desc="Tile scaleDown" type="gesture, transition" func="true"></ui-state>
+					<ui-state name="Mouse clickOff state" desc="Tile scaleUp to original size" type="gesture, transition" func="true"></ui-state>
+				</ui-stream>
             </story>
-            <story type="func, transition" desc="user transitions from/to power-ups page from/to a specific power-up">
-                <ui-stream desc='States relevant to transition from hover => view-transition from powerups into specific'>
+            <story type="func, transition" desc="User transitions from powerups page to a specific powerup">
+                <ui-stream desc='Selected powerup tile becomes the loader'>
+					<ui-state name="Hover continues" desc="The animation from hover continues playing throughout the transition" type="transition" func="true" static="true">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="on-mouse-leave is overriding on-click and preventing the animation from continuing when it's been clicked but the mouse-leave is triggered" platform="all"/>
+					</ui-state>
+					<ui-state name="Unchosen tiles exit" desc="Tiles fadeOut" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Selected tile goes to the forefront" desc="Translates to horizontal center" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Selected tile bg expands" desc="Bg color scaleUp to full page from origin center" type="transition" func="true" static="true"></ui-state>
                 </ui-stream>
-                <ui-stream desc='User enters back by closing out of a specific powerups page'>
+				<ui-stream desc="Loader transitions to landing page tile">
+					<ui-state name="Circle border is reemphasized" desc="Border is drawn over" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Hover animation plays" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true" static="true"></ui-state>
+				</ui-stream>
+				<ui-stream desc="Rest of the landing page onEnter">
+					<ui-state name="Guru circle becomes header" desc="translateY up" type="transition" func="true" static="true">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Guru tile from powerups page needs to replace guru tile in GPA landing page exactly in the DOM" platform="all"/>
+					</ui-state>
+					<ui-state name="Header text enters" desc="bounceInUp-subtle" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="GPA content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="true"></ui-state>
+					<ui-state name="Munchies content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="false"></ui-state>
+					<ui-state name="Sound content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="false"></ui-state>
+					<ui-state name="Transit content card bg peek enters" desc="bounceInUp-subtle" type="transition" func="true" static="false"></ui-state>
+				</ui-stream>
+			</story>
+			<story type="func" desc="User scrolls to demo">
+				<ui-stream desc="User scrolls to GPA demo">
+					<ui-state name="Outside phone screenshots slide out from underneath center screenshot" desc="" type="transition" func="true">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="ion-scroll is interfering with actual scroll - should discuss best practices until ionic is removed" platform="all"/>
+					</ui-state>
+					<ui-state name="Search courses icon animates in" desc="Circle already exists - tablet and person bounceInUp and lines drawIn and scroll" type="transition" func="false" static="true"></ui-state>
+					<ui-state name="Calculate grades icon animates in" desc="Circle already exists - calculator bounceInUp and numbers countUp" type="transition" func="false" static="true">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Needs countUp directive" platform="all"/>
+					</ui-state>
+					<ui-state name="Track GPA icon animates in" desc="Circle already exists - projector bounceInUp and arrow drawIn" type="transition" func="false" static="true"></ui-state>
+				</ui-stream>
+				<ui-stream desc="User scrolls to sound demo">
+					<ui-state name="Records animate in" desc="rotateInLeft" type="transition" func="false" static="false"></ui-state>
+					<ui-state name="Equalizer starts infinite animation" desc="scaleY up and down, staggered randomly" type="transition" func="false" static="false">
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Needs a randomizer for duration and delay" platform="all"/>
+					</ui-state>
+				</ui-stream>
+			</story>
+			<story type="func, transition" desc="User transitions to powerups page from a specific powerup page">
+                <ui-stream desc='User hovers over close button'>
+					<ui-state name="Close button mouseEnter state" desc="Color darkens" type="gesture, transition" func="true"></ui-state>
+                </ui-stream>
+				<ui-stream desc='User clicks on back button'>
+					<ui-state name="Close button mouseClick state" desc="Color lightens" type="gesture, transition" func="true"></ui-state>
+                </ui-stream>
+				<ui-stream desc='Landing page transitions out'>
+					<ui-state name="Content card bg peak exits" desc="fadeDownOut" type="transition" func="true"></ui-state>
+					<ui-state name="Header text exits" desc="fadeDownOut" type="transition" func="true"></ui-state>
+					<ui-state name="Powerup bg color fades" desc="Color fadeOut to charcoal. Meanwhile, tile bg 'remains' with bounceIn" type="transition" func="true"></ui-state>
+                </ui-stream>
+				<ui-stream desc='Powerups page transitions in'>
+					<ui-state name="Guru circle header transforms back into tile" desc="Translates to respective spot with ease-out" type="transition" func="true"></ui-state>
+					<ui-state name="Other powerup tiles enter" desc="See respective tile onEnter animations in the 'user enters power-ups screen and learns details' stream. Remaining tiles stagger in from left to right" type="transition" func="true"></ui-state>
                 </ui-stream>
             </story>
 
@@ -37,11 +113,11 @@
                 <ui-stream desc="Splash madlib optimal setup" type='setup'>
                     <ui-state name="Write out all the states" test-id="">
                     </ui-state>
-                    <ui-state name="fix switches" test-id="">
+                    <ui-state name="Fix switches">
                     </ui-state>
-                    <ui-state name="fix data change" test-id="">
+                    <ui-state name="Fix data change">
                     </ui-state>
-                    <ui-state name="progress" test-id="">
+                    <ui-state name="Progress">
                     </ui-state>
                     <ui-state name="Previous Bugs" test-id="">
                         <bug desc="inject class when activated">
@@ -67,8 +143,8 @@
 						<bug type="functional" open by="Gabrielle" description="Tags need .active added when selected and removed when deselected - if added currently, tags are selected properly but don’t translate back when another tag is clicked." platform=""/>
 						<bug type="functional" open by="Gabrielle" description="Row 2 Tag 3 doesn't move back into place after being deselected." platform=""/>
 					</ui-state>
-					<ui-state func='true' name="User selects two different splash tagsfrom two different rows"></ui-state>
-					<ui-state func='true' name="User selects a splash tag whose already has a flash tag"></ui-state>
+					<ui-state name="User selects two different splash tags from two different rows"></ui-state>
+					<ui-state name="User selects a splash tag whose row already has a splash tag"></ui-state>
 				</ui-stream>
                 <ui-stream desc="User selects/deselects one tag, another already exists">
                 </ui-stream>
@@ -275,21 +351,6 @@
             </story>
         </user-stories>
     </user-workflow>
-
-	<user-workflow name="Powerups" url='/#/dev/splash/powerups/'>
-		<setup type="base">
-        </setup>
-        <user-stories>
-			<story name="Powerups activate">
-				<ui-stream desc="User activates powerups">
-					<ui-state name="Mouse enter powerups link"></ui-state>
-					<ui-state name="Mouse leave powerups link"></ui-state>
-					<ui-state name="Click powerups link"></ui-state>
-					<ui-state name="Powerup tiles transition in"></ui-state>
-				</ui-stream>
-			</story>
-		</user-stories>
-	</user-workflow>
 
 	<user-workflow name="University Search" url='/#/dev/splash/university-search/'>
 		<setup type="base">
