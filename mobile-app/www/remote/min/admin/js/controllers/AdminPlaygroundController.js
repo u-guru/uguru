@@ -39,7 +39,7 @@ angular.module('uguru.admin')
         examples: [
           {
             args: ['rotate-z', 'translate-x', 'scale-y'],
-            str: 'transform:[ro-z:-0.75turn, tx:100%, sc-y:2.0, t-o:75% 25% -125px, duration:250, p:500px, tf:cb(0.230,1.000, 0.320,1.000)]'
+            str: 'transform:[ro-z:-0.75turn, tx:100%, sc-y:2.0, t-o:75% 25% -125px, duration:2000, p:500px, tf:cb(0.230,1.000, 0.320,1.000)]'
           },
           {
             args: ['sk-z', 'sk-x', 'ro-z', 't-o'],
@@ -77,6 +77,9 @@ angular.module('uguru.admin')
     // $timeout(function() {
       initPlaygroundVars($scope.name, apc);
     // }, 1000)
+      $timeout(function() {
+        apc.example.play();
+      })
 
     function initPlaygroundVars(name, index) {
       if (name in apc.options) {
@@ -96,7 +99,6 @@ angular.module('uguru.admin')
         }
       }
     }
-
 
     function getPlayingFunction(example_obj, element) {
       return function() {

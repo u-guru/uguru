@@ -66,7 +66,6 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
           return 'translateX'
         }
         if (['ro-z', 'rz', 'r-z'].indexOf(str) > -1) {
-          console.log('found rotate z')
           return 'rotateZ'
         }
         if (['ro-y', 'ry', 'r-y'].indexOf(str) > -1) {
@@ -222,7 +221,6 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
             case ('timing-function'):
               resultDict.timingFunction = transform_dict[key];
               if (['cb', 'cubic-bezier'].indexOf(resultDict.timingFunction) > -1) {
-                  console.log('found cubic bezier', resultDict.timingFunction)
               }
               break;
             case ('duration'):
@@ -232,7 +230,6 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
 
           if (extra_args.indexOf(key) > -1) {
             var formattedArg = detectTransformDictKey(key);
-            console.log(formattedArg);
             if (!('ext' in resultDict)) {
               resultDict.ext = {};
             }
