@@ -3,7 +3,10 @@
 	on-enter="p:[t:all 1000ms ease, op:1, z-index:10000]"
 	when-sound-triggered="t-enter | s:[sound-landing-enter:public]:delay-2000"
 	when-close-sound="p:[op:0, tr:translateY(-100%), z-index:default:delay-1000]">
-	<div class="landing-sound landing-container">
+	<div class="landing-sound landing-container"
+		init-with="p:[background:#ac95e1]"
+		on-enter="p:[background:#504464, t:all 450ms ease-in]"
+		when-sound-landing-enter="t-enter">
 		<div class="powerup-icon"
 			init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
 			on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2500"
