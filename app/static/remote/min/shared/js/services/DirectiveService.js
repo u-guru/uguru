@@ -30,7 +30,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         activateArg: activateArg,
         activateArgDelay: activateArgDelay,
         supportedCommands: argNames,
-        sendMessage: sendMessage,
+        sendMessage: sendMessageViaDropdown,
         setShortcutDict: setShortcutDict,
         getShortcuts: getShortcuts,
         getSupportedOnStates: getSupportedOnStates,
@@ -128,7 +128,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       shortcuts = _shortcuts
     }
 
-    function sendMessage(scope, arg_type, event_name, attr, message, index) {
+    function sendMessageViaDropdown(scope, arg_type, event_name, attr, message, index) {
       if (!arg_type) arg_type = 'send';
       if (arg_type !== 'send') return;
       if (!arg_type || !arg_type.length || !message || !message.length) return;
@@ -297,7 +297,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           break
         case("transform"):
           var response = evalTransformArgs(arg_dict, scope, elem);
-
+          console.log(response);
           if (!response || !response.length) {
             $timeout(function() {
                 evalTransformArgs(arg_dict, scope, elem);
@@ -312,35 +312,70 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       var resultArr = [];
       for (var i = 0; i < transformArr.length; i++) {
         var indexTransform = transformArr[i];
-
+        var extensions = [];
         var resultPropDict = {properties:[], type:'prop'};
         var transformPrefix = formatBrowserCSSProperty('transform');
         var transitionObj = {duration: 0, properties:[], timingFunction: 'ease'};
         var transformPropDict = TransformService.parseTransformArgs(indexTransform, elem);
+        if (transformPropDict.ext) {
+          for (key in transformPropDict['ext']) {
+            var propDict = {};
+            propDict[key] = transformPropDict['ext'][key];
+            extensions.push(propDict);
+          }
+          delete transformPropDict['ext']
+        }
+        if (transformPropDict.delay) {
+          resultPropDict.delay = transformPropDict.delay;
+          delete transformPropDict['delay']
+        }
+
+
         if (!transformPropDict) return;
         if (transformPropDict.duration) {
           transitionObj.duration = transformPropDict.duration;
           delete transformPropDict['duration'];
         }
+        if (transformPropDict.timingFunction) {
+          transitionObj.timingFunction = transformPropDict.timingFunction;
+          delete transformPropDict['timingFunction'];
+        }
+
+
 
         //break if none exist;
-
 
         if (Object.keys(transformPropDict).length) {
           var transformValueStr = '';
           for (key in transformPropDict) {
-            if (transformPropDict[key] && transformPropDict[key].length)
-            transformValueStr += key + '(' + transformPropDict[key] + ') ';
+            if (transformPropDict[key] && (transformPropDict[key].length) || typeof(transformPropDict[key]) === 'number' ) {
+              transformValueStr += key + '(' + transformPropDict[key] + ') ';
+            }
+
           }
+
           var browserProperty = formatBrowserCSSProperty('transform');
           var transformDict = {};
           transformDict[browserProperty] = transformValueStr;
           resultPropDict.properties.push(transformDict);
         }
 
-        if (transitionObj.duration) {
+        if (extensions && extensions.length) {
+          for (var i = 0; i < extensions.length; i++) {
+            var key = Object.keys(extensions[i])[0];
+            var value = extensions[i][key];
+            var keyBrowserFormatted = RootService.formatBrowserCSSProperty(key);
+            var propDict = {};
+            propDict[keyBrowserFormatted] = value;
+            resultPropDict.properties.push(propDict);
+          }
+        }
+
+
+        if (transitionObj.duration || transitionObj.timingFunction) {
+
           var transitionDict = formatTransitionString(transitionObj);
-          console.log(transitionDict)
+          console.log(transitionDict);
           resultPropDict.properties.push(transitionDict);
         }
         if (resultPropDict.properties && resultPropDict.properties.length) {
@@ -384,12 +419,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processTransformArgs(string_args) {
       var resultDict = {};
       var parentheticalArr = string_args.match(/\((.*?)\)/g);
-      var supportedKeys = ['to', 'duration', 'delay', 'clear', 'scale', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ'];
+      var supportedKeys = TransformService.getSupported();
       var hasParens = parentheticalArr;
       var parenthesisDict = hasParens && findReplaceParens(string_args);
+
       string_args = UtilitiesService.removeAllOccurrancesArr(string_args, ['[', ']']);
       string_args = UtilitiesService.replaceAll(string_args, ', ', ',');
       var kvPairs = string_args.split(',');
+
       for (var i = 0; i < kvPairs.length; i++) {
         var kvIndexSplit = kvPairs[i].split(':')
         if (hasParens) {
@@ -401,13 +438,26 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var indexValue;
         if (kvIndexSplit.length > 1) {
           indexValue = kvIndexSplit[1];
+
+
           indexValue = UtilitiesService.removeAllOccurrancesArr(indexValue, ['(', ')']);
           if (supportedKeys.indexOf(indexKey.toLowerCase()) > -1) {
             if (indexKey === 'delay' || indexKey === 'duration') {
               indexValue = parseInt(indexValue);
             }
             resultDict[indexKey] = indexValue;
+
           }
+        }
+      }
+      for (key in resultDict) {
+        if (['rotate', 'scale', 'translate', 'to', 'timingFunc', 'tf'].indexOf(key) > -1) {
+          if (key === 'timingFunc' || key === 'tf') {
+            resultDict[key] = resultDict[key].replace('cb', 'cubic-bezier').replace('cubic-bezier', 'cubic-bezier ').split(' ')[0] + hasParens[0];
+          } else {
+            resultDict[key] = UtilitiesService.removeAllOccurrancesArr(hasParens[0], ['(', ')']);
+          }
+
         }
       }
       return {type: 'transform', transforms: [resultDict]}
@@ -429,7 +479,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           break;
 
         case ("send"):
-          return formatAndProcessArgs(type, string_args, {messages:[]}, 'messages', processSendSecondaryArgs, ['public', 'children']);
+          var sendArgs = formatAndProcessArgs(type, string_args, {messages:[]}, 'messages', processSendSecondaryArgs, ['public', 'children']);
+
+          return sendArgs
           break;
 
         case ("anim"):
@@ -480,7 +532,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         }
         if (arg.indexOf('delay-') > -1) {
           arg = 'public'
-          console.log(prop_dict, orig_str)
         }
         return arg.trim();
       }
@@ -494,6 +545,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function processCSSPropValue(name, value, prop_dict, orig_str) {
       //2nd arg of if --> fill:#;
+
       if (value && value.indexOf('#') > -1 && value.indexOf('#') > 0) {
         value = value && UtilitiesService.replaceAll(value, '#', ',');
       }
@@ -690,7 +742,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function evalSendArgs(arg_dict, scope, elem) {
       if (arg_dict.delay) {
         $timeout(function() {
-          console.log('sending w/ delay', arg_dict);
           processMessageArr(arg_dict.messages, scope, elem);
         }, arg_dict.delay)
       } else {
@@ -701,39 +752,70 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processMessageArr(message_arr, scope, elem) {
       for (var i = 0; i < message_arr.length; i++) {
         var indexMessageObj = message_arr[i];
+        var dataDict;
+        if (indexMessageObj.custom && indexMessageObj.custom.indexOf('data:') === 0) {
+          var dataVar = UtilitiesService.removeAllOccurrancesArr(indexMessageObj.custom.split('data:')[1], ['(', ')']);
+          var dataVarArgs = dataVar.split('#');
+          for (var j = 0; j < dataVarArgs.length; j++) {
+            var dataVarArr = dataVarArgs[j].split('.')
+            var resultDict = {};
+            if (dataVarArr.length > 1 && dataVarArr[0] in scope) {
+              var nextDict = scope[dataVarArr.splice(0, 1)];
+
+              for (var k = 0; k < dataVarArr.length; k++) {
+                indexVar = dataVarArr[k];
+                if (indexVar in nextDict) {
+                  nextDict = nextDict[indexVar];
+                } else {
+                  break;
+                }
+              }
+              if (nextDict && typeof nextDict === 'string') {
+                // scope.root.public.customStates['when'][camelMsg][indexKeyFormatted]
+                // console.log(scope.root.public.customStates)
+                if (!dataDict) dataDict = {};
+                dataDict[dataVarArgs[j]] = nextDict
+              }
+
+            }
+          }
+          delete indexMessageObj['custom']
+        }
+
         var delay = indexMessageObj.delay || 0;
         delete indexMessageObj['delay'];
         var messageName = Object.keys(indexMessageObj)[0];
         var messageScope = indexMessageObj[messageName];
-        sendMessageWithinScope(formatMessage(messageName), messageScope, delay, scope, elem)
+        sendMessageWithinScope(formatMessage(messageName), messageScope, dataDict, delay, scope, elem)
       }
 
       function formatMessage(message_name) {
         return UtilitiesService.camelCase('when-' + message_name);
       }
 
-      function sendMessageWithinScope(msg_name, msg_scope, delay, scope, elem) {
+      function sendMessageWithinScope(msg_name, msg_scope, msg_data, delay, scope, elem) {
         // console.log('sending..', msg_name, 'with scope', msg_scope, delay, scope.root.public.customStates);
+
         if (delay) {
           $timeout(function() {
-            activateScopedMessageState(msg_name, msg_scope, scope);
+            activateScopedMessageState(msg_name, msg_data,msg_scope, scope);
             $timeout(function() {
               scope.$apply();
             })
           }, delay)
         } else {
-          activateScopedMessageState(msg_name, msg_scope, scope);
+          activateScopedMessageState(msg_name, msg_data, msg_scope, scope);
           $timeout(function() {
               scope.$apply();
           })
         }
-        function activateScopedMessageState(msg_name, env, scope) {
+        function activateScopedMessageState(msg_name, msg_data, env, scope) {
           var msgType = UtilitiesService.camelToDash(msg_name).toLowerCase().split('-')[0];
+          //
           if (!(msgType in scope.root.public.customStates)) {
             scope.root.public.customStates[msgType] = {};
           }
-
-          scope.root.public.customStates[msgType][msg_name] = true;
+          scope.root.public.customStates[msgType][msg_name] = msg_data ||true;
         }
       }
 
@@ -1059,6 +1141,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         delete indexPropDict['important'];
         var propName = Object.keys(indexPropDict)[0];
         var propValue = indexPropDict[propName];
+
         var propValShortcut;
         if (propName in shortcuts.cssPropValues) {
           propValShortcut = shortcuts.cssPropValues[propName];
@@ -1070,7 +1153,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if ((propName && propValue) || (propName && propValue === 0)) {
           setCSSProperty(propName, propValue, delay, important, scope, elem)
         } else {
-          console.log('ERROR: css propValue or css propName not defined', propName, propValue, '\nelem:', elem)
+          // console.log('ERROR: css propValue or css propName not defined', propName, propValue, '\nelem:', elem)
+          continue;
         }
         if (delay)  {
           indexPropDict['delay'] = delay;
@@ -1099,7 +1183,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           $timeout(function() {
             elem.css(prop, value, priority);
             $timeout(function() {
-              scope.$apply();
+              scope && scope.$apply();
             })
           }, delay)
         } else {
@@ -1109,7 +1193,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           // console.log(prop, value);
           elem.css(prop, value, priority);
           $timeout(function() {
-              scope.$apply();
+              scope && scope.$apply();
           })
         }
       }

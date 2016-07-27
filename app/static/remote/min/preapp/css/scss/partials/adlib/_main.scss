@@ -76,18 +76,16 @@
 			margin: 15px auto;
 			padding: 7.5px;
 			width: 100%;
-			&.a {
-				li {
-					a {
-						pointer-events: none!important;
-					}
-				}
-			}
 			li {
 				width: 143px;
 				padding: 7.5px;
 				@media screen and (max-width: 320px) {
 					width: 111px;
+				}
+				@media screen and (max-height: 568px) {
+					&:nth-child(4), &:nth-child(8) {
+						display: none;
+					}
 				}
 				a[class*="translate-blank"] {
 					animation: none!important;
@@ -132,8 +130,44 @@
 	}
 }
 
+.coach-fill {
+	top: 115px;
+	right: -100px;
+	width: 140px;
+	path {
+		&:nth-child(1) {
+			stroke-dasharray: 137;
+		}
+		&:nth-child(2) {
+			stroke-dasharray: 53;
+		}
+	}
+}
+
 @media screen and (max-width: 768px) {
+	.splash-hero-content {
+		.splash-adlib {
+			h1 {
+				line-height: 2;
+			}
+			ul {
+				margin: -10px 0 5px;
+				flex-direction: column;
+				height: 250px;
+			}
+		}
+	}
+}
+
+@media screen and (max-height: 736px) and (max-width: 414px) {
+	.coach-fill {
+		top: 85px;
+		right: -80px;
+		width: 105px;
+	}
 	.splash-guru-head {
+		margin-top: 20px;
+		margin-bottom: 10px;
 		width: 120px;
 		.splash-hero-guru {
 			width: 120px;
@@ -148,41 +182,28 @@
 	}
 }
 
-.coach-fill {
-	top: 115px;
-	right: -100px;
-	width: 140px;
-	@media screen and (max-width: 320px) {
-		right: -80px;
-		width: 105px;
-	}
-	path {
-		&:nth-child(1) {
-			stroke-dasharray: 137;
-		}
-		&:nth-child(2) {
-			stroke-dasharray: 53;
+@media screen and (max-width: 320px) {
+	.splash-hero-content {
+		.splash-adlib {
+			ul {
+				height: 200px;
+			}
 		}
 	}
 }
-
-@media screen and (max-width: 768px) {
+@media screen and (max-height: 568px) {
+	.coach-fill {
+		top: 75px;
+	}
 	.splash-hero-content {
-		.splash-hero-guru {
-			margin-top: 20px;
-			margin-bottom: 10px;
+		margin-top: -20px;
+		.splash-guru-head {
+			margin-top: 0;
+			margin-bottom: -5px;
 		}
 		.splash-adlib {
-			h1 {
-				line-height: 2;
-			}
 			ul {
-				margin: -10px 0 5px;
-				flex-direction: column;
-				height: 250px;
-				@media screen and (max-width: 320px) {
-					height: 200px;
-				}
+				height: 150px;
 			}
 		}
 	}
@@ -201,7 +222,7 @@
 @media screen and (max-width: 320px) {
 	.splash-hero-content {
 		.splash-adlib h1 {
-			line-height: 2!important;
+			line-height: 1.75!important;
 		}
 	}
 }

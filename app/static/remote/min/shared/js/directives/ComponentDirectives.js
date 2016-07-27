@@ -101,8 +101,37 @@ angular.module('uguru.shared.directives.components')
                     scope.states = UtilitiesService.removeAllOccurrancesArr(scope.states, ['[', ']', ' '])
                     scope.states = scope.states && scope.states.split(',')
                 }
+                // scope.mouse = {over: false, enter: false, leave: false};
+                // scope.mouseDelays = {over: 250, enter: 250, leave: 250};
+                // if (attr.mouseOverDelay) scope.mouseDelays.over = parseInt(attr.mouseOverDelay);
+                // if (attr.mouseEnterDelay) scope.mouseDelays.enter = parseInt(attr.mouseEnterDelay);
+                // if (attr.mouseLeaveDelay) scope.mouseDelays.leave = parseInt(attr.mouseLeaveDelay);
+
+                // if (attr.mouseEnterData && attr.mouseEnterData.length) {
+                //     var enterData = attr.mouseEnterData + '';
+                //     enterData = UtilitiesService.replaceAll(enterData ,', ', ',');
+                //     enterDataSplit = enterData.split(',');
+                //     var resultDict = {};
+                //     for (var i = 0; i < enterDataSplit.length; i++) {
+
+                //     }
+                //     scope.dropdown.data.mouseEnter = resultDict;
+                // }
+                for (var i = 0; i < scope.dropdown.options.length; i++) {
+                    if ('mouseEnterData' in attr) {
+                        scope.dropdown.options[i].mouseEnterData = UtilitiesService.replaceAll(attr['mouseEnterData'], ', ', ',').split(',').join('#');
+                    }
+                    if ('mouseOverData' in attr) {
+                        scope.dropdown.options[i].mouseOverData = UtilitiesService.replaceAll(attr['mouseOverData'], ', ', ',').split(',').join('#');
+                    }
+                    if ('mouseLeaveData' in attr) {
+                        scope.dropdown.options[i].mouseLeaveData = UtilitiesService.replaceAll(attr['mouseLeaveData'], ', ', ',').split(',').join('#');
+                    }
+                }
+
                 scope.dropdown.active = false;
                 attr.$set('initWith', attr.initWith);
+                // attr.$set('onMouseEnter', attr.onMouseEnter);
                 scope.dropdown.selectedRecentlyChanged = false;
                 scope.root = scope.$parent.root;
 
@@ -162,19 +191,50 @@ angular.module('uguru.shared.directives.components')
 
                 if (scope.states && scope.states.indexOf('mouse-enter') > -1) {
                     scope.mouseEnter = function($event, index) {
-                        arg_type =  'send'
-                        message = scope.prefix + '-dropdown-mouse-enter';
-                        index = index || 0;
-                        DirectiveService.sendMessage(scope, arg_type, 'mouse-enter', attr, message, index);
+                        scope.mouse.enter = true;
+                        scope.mouse.leave = false;
+                        console.log('checking mouse enter is still true after', scope.mouseDelays.enter, 'ms')
+                        $timeout(function() {
+                            if (scope.mouse.enter) {
+                                console.log('firing event', scope.prefix + '-dropdown-mouse-enter');
+                                arg_type =  'send'
+                                message = scope.prefix + '-dropdown-mouse-enter';
+                                index = index || 0;
+                                DirectiveService.sendMessage(scope, arg_type, 'mouse-enter', attr, message, index);
+                            }
+                        }, scope.mouseDelays.enter);
                     }
                 }
 
                 if (scope.states && scope.states.indexOf('mouse-leave') > -1) {
                     scope.mouseLeave = function($event, index) {
-                        arg_type =  'send'
-                        message =  scope.prefix + '-dropdown-mouse-leave';
-                        index = index || 0;
-                        DirectiveService.sendMessage(scope, arg_type, 'mouse-leave', attr, message, index);
+                        scope.mouse.enter = false;
+                        scope.mouse.leave = true;
+                        console.log('checking mouse leave is still true after', scope.mouseDelays.leave, 'ms');
+                        $timeout(function() {
+                            if (scope.mouse.leave) {
+                                console.log('firing event', scope.prefix + '-dropdown-mouse-leave');
+                                arg_type =  'send'
+                                message =  scope.prefix + '-dropdown-mouse-leave';
+                                index = index || 0;
+                                DirectiveService.sendMessage(scope, arg_type, 'mouse-leave', attr, message, index);
+                            }
+                        }, scope.mouseDelays.leave)
+                    }
+                }
+
+                if (scope.states && scope.states.indexOf('mouse-leave') > -1) {
+                    scope.mouseOver = function($event, index) {
+                        console.log('waiting', scope.mouseDelays.over + 'ms');
+                        $timeout(function() {
+                            if (scope.mouse.enter) {
+                                scope.mouse.over = true;
+                                arg_type =  'send'
+                                message =  scope.prefix + '-dropdown-mouse-over';
+                                index = index || 0;
+                                DirectiveService.sendMessage(scope, arg_type, 'mouse-over', attr, message, index);
+                            }
+                        }, scope.mouseDelays.over)
                     }
                 }
 

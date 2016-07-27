@@ -15,17 +15,30 @@ angular.module('uguru.shared.directives')
       link: {
         pre: function(scope, element, attr) {
           var switchDict;
+          var elemArgs = DirectiveService.parseArgs(attr.initWith);
+          var listenerArgs = DirectiveService.detectExternalStates(attr);
+          for (key in listenerArgs) {
+            var type = listenerArgs[key].type
+            var _attr = listenerArgs[key].attr;
+            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+          }
           var switchName = attr.switch && attr.switch.split(':')[0];
           var switchId = 'switch-id' in attr && attr['switch-id'] && parseInt(attr['switch-id'])
-          if (attr.initLater) {
+          if ('initLater' in attr) {
+
             scope.$watch(function() {
               return element.attr('class');
             }, function(new_classes, old_classes) {
-              if (new_classes.indexOf('init-with') > -1) {
+              if (new_classes && new_classes.indexOf('init-with') > -1) {
+                console.log('initializing');
                 element[0].classList.remove('init-with');
-                execInitWith();
+                execInitWith(scope);
               }
             })
+
+
+
+
             return
           }
 
@@ -43,8 +56,7 @@ angular.module('uguru.shared.directives')
           execInitWith(scope, switchDict);
 
           function execInitWith(scope, has_switch_default) {
-            var elemArgs = DirectiveService.parseArgs(attr.initWith);
-            var listenerArgs = DirectiveService.detectExternalStates(attr);
+
             var supportedCommands = DirectiveService.supportedCommands;
             for (key in elemArgs) {
               var switch_interference = has_switch_default && (key in has_switch_default)
@@ -59,45 +71,129 @@ angular.module('uguru.shared.directives')
               }
             }
 
-            for (key in listenerArgs) {
-              var type = listenerArgs[key].type
-              var _attr = listenerArgs[key].attr;
-              DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
-            }
+
           }
         }
       }
     }
 }])
-.directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
-  return {
-    restrict: 'A',
-    priority: 10000,
-    terminal: true,
-      link: {
-        pre: function(scope, element, attr) {
-          attr.$set('ngHide', true);
-          attr.$set('initLater', null);
-          $compile(element[0])(scope);
+// .directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
+//   return {
+//     restrict: 'A',
+//     priority: 10000,
+//     terminal: true,
+//       link: {
+//         pre: function(scope, element, attr) {
+//           attr.$set('ngHide', true);
+//           attr.$set('initLater', null);
+//           $compile(element[0])(scope);
 
 
-          scope.$watch(function() {
-            return element.attr('class');
-          }, function(new_classes, old_classes) {
-            new_classes = new_classes || '';
-            if (new_classes.indexOf('init-later') > -1) {
-              element[0].classList.remove('init-later');
-              for (key in elemArgs) {
-                if (supportedCommands.indexOf(key) > -1) {
-                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
-                }
-              }
-            }
-          })
-      }
-    }
-  }
-}])
+//           scope.$watch(function() {
+//             return element.attr('class');
+//           }, function(new_classes, old_classes) {
+//             new_classes = new_classes || '';
+//             if (new_classes.indexOf('init-later') > -1) {
+//               element[0].classList.remove('init-later');
+//               for (key in elemArgs) {
+//                 if (supportedCommands.indexOf(key) > -1) {
+//                   DirectiveService.activateArg(key, elemArgs[key], scope, element);
+//                 }
+//               }
+//             }
+//           })
+//       }
+//     }
+//   }
+// }])
+// .directive('counter', ['$timeout', '$interval', function ($timeout, $interval) {
+//   return {
+//     restrict: 'A',
+//     link: function(scope, element, attr) {
+//       var counterMax = attr.counterMax;
+//       var counterMin = attr.counterMin || 0;
+//       var counterSuffix = attr.counterSuffix || '';
+//       var counterPrefix = attr.counterPrefix || '';
+//       var counterDuration = attr.counterDuration || '';
+//       if (attr.initOnClass && attr.initOnClass.indexOf('counter:') > -1 && counterMax) {
+//         var initOnClassArgs = attr.initOnClass.split(', ');
+//         var initCounterClassIndex = getClassArgIndex('counter', initOnClassArgs)
+//         var initCounterClassArr = initOnClassArgs[initCounterClassIndex].split(':')
+//         if (initCounterClassArr.length === 2) {
+//           initCounterClass = initCounterClassArr[1];
+//         }
+//         if (initCounterClass) {
+//           scope.$watch(function() {
+//             counterMax = attr.counterMax;
+//             var counterDuration = attr.counterDuration || '';
+//             return (element.attr('class') && element.attr('class').indexOf(initCounterClass) > -1) || "";
+//
+//           },function(elem_has_init_counter_class) {
+//             if (elem_has_init_counter_class) {
+//               $timeout(function() {
+//                 scope.$apply(function() {
+//                   element[0].classList.remove(elem_has_init_counter_class);
+//                 })
+//               });
+//               if (!element[0].id) {
+//                 var numCounterElems = document.querySelectorAll('[counter]').length + 1
+//                 element[0].id = 'counter-' + numCounterElems;
+//               }
+//               var counterArgs = {
+//                   useEasing : false,
+//                   useGrouping : false,
+//                   separator : ',',
+//                   decimal : '.',
+//                   prefix : counterPrefix ,
+//                   suffix : counterSuffix
+//               }
+//               var counterDelay = attr.counterDelay;
+//               var counterInfinite = attr.counterInfinite;
+//               var counterDuration = attr.counterDuration;
+//               if ('counterInfinite' in attr) {
+//                 var counterTimeBetween = attr.counterInfiniteInBtwn || 0;
+//                 if (counterDelay) {
+//                   $timeout(function() {
+//                     $interval(function() {
+//                       var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                       countUpInstance.start();
+//                     }, parseInt(counterDuration) * 1000 + parseInt(counterTimeBetween) * 1000 + 1000)
+//                   }, parseInt(counterDelay))
+//                 } else {
+//                   $interval(function() {
+//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                     countUpInstance.start();
+//                   }, parseInt(counterDuration) * 1000 + parseInt(counterTimeBetween) * 1000);
+//                 }
+//
+//               } else {
+//                 if (counterDelay) {
+//                   $timeout(function() {
+//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                     countUpInstance.start();
+//                   }, parseInt(counterDelay))
+//                 } else {
+//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                     countUpInstance.start();
+//                 }
+//               }
+//             }
+//           })
+//         }
+//       }
+//
+//       function getClassArgIndex(arg_name, class_arr) {
+//         for (var i = 0; i < class_arr.length; i++) {
+//           var indexClass = class_arr[i];
+//           if (indexClass.indexOf(arg_name + ':') > -1) {
+//             return i;
+//           }
+//         }
+//       }
+//
+//     }
+//   }
+// }])
 .directive('desktop', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
   return {
     restrict: 'A',
@@ -111,6 +207,18 @@ angular.module('uguru.shared.directives')
           } else {
             attr.$set('desktop', null);
           }
+      }
+    }
+  }
+}])
+.directive('square', ['SVGService', function(SVGService) {
+  return {
+    restrict: 'E',
+    replace: true,
+    template: '<svg width="100" height="100" viewBox="0, 0, 100, 100"> <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="97" rx="10"></rect> </svg>',
+    link: {
+      pre: function(scope, element, attr) {
+
       }
     }
   }
@@ -234,7 +342,7 @@ angular.module('uguru.shared.directives')
             // element[0].style.opacity = 0;
             var temp = element[0].style.display + '';
             element[0].style.display = 'none';
-            func(scope);
+            func(scope.$parent);
             // $compile(element)(scope);
             element[0].style.display = temp;
             $timeout(function() {
@@ -304,37 +412,6 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-
-.directive('onHover', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
-  return {
-    restrict: 'A',
-    link: {
-      pre: function(scope, element, attr) {
-        var elemArgs = DirectiveService.parseArgs(attr.onHover);
-        var supportedCommands = DirectiveService.supportedCommands;
-        var inTimeout = false;
-        var hoverDelay = parseInt(attr.onHoverDelay || DirectiveService.defaults.activate.hover);
-        element.on('mouseover', function () {
-          inTimeout = true;
-          $timeout(function () {
-            if (inTimeout) {
-              for (key in elemArgs) {
-                if (supportedCommands.indexOf(key) > -1) {
-                  console.log(scope.root.public.customStates.when.whenCategoryDropdownHover);
-                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
-                }
-              }
-              scope.$apply();
-            }
-          }, 250 + hoverDelay);
-        });
-         element.on('mouseleave', function () {
-          inTimeout = false;
-        });
-      }
-    }
-  }
-}])
 .directive('onClick', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',
@@ -360,12 +437,86 @@ angular.module('uguru.shared.directives')
       pre: function(scope, element, attr) {
         var elemArgs = DirectiveService.parseArgs(attr.onMouseEnter);
         var supportedCommands = DirectiveService.supportedCommands;
-        element.on('mouseover', function () {
-            for (key in elemArgs) {
-              if (supportedCommands.indexOf(key) > -1) {
-                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+        var inTimeout = false;
+        var mouseEnterDelay = parseInt(attr.onMouseEnterDelay) || 250;
+
+        element.on('mouseenter', function () {
+            var inTimeout = true;
+            $timeout(function () {
+              if (inTimeout) {
+                for (key in elemArgs) {
+                  if (supportedCommands.indexOf(key) > -1) {
+                    DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                  }
+                }
+                scope.$apply();
               }
+            }, mouseEnterDelay);
+        });
+
+        element.on('mouseleave', function () {
+          inTimeout = false;
+        });
+      }
+    }
+  }
+}])
+.directive('onMouseOver', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onMouseOver);
+        var supportedCommands = DirectiveService.supportedCommands;
+        var inTimeout = false;
+        var hoverDelay = parseInt(attr.onMouseOverDelay || DirectiveService.defaults.activate.hover) || 500;
+        element.on('mouseover', function () {
+          inTimeout = true;
+          $timeout(function () {
+            if (inTimeout) {
+              for (key in elemArgs) {
+                if (supportedCommands.indexOf(key) > -1) {
+                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                }
+              }
+              scope.$apply();
             }
+          }, hoverDelay);
+        });
+         element.on('mouseleave', function () {
+          inTimeout = false;
+        });
+      }
+    }
+  }
+}])
+.directive('onMouseLeave', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        var elemArgs = DirectiveService.parseArgs(attr.onMouseLeave);
+        var supportedCommands = DirectiveService.supportedCommands;
+        var inTimeout = false;
+        var mouseLeaveDelay = parseInt(attr.onMouseLeaveDelay) || 250;
+
+
+        element.on('mouseleave', function () {
+            var inTimeout = true;
+            $timeout(function () {
+              if (inTimeout) {
+                for (key in elemArgs) {
+                  if (supportedCommands.indexOf(key) > -1) {
+                    DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                  }
+                }
+                scope.$apply();
+              }
+            }, mouseLeaveDelay);
+        });
+
+        element.on('mouseenter', function () {
+          inTimeout = false;
         });
       }
     }
@@ -380,61 +531,40 @@ angular.module('uguru.shared.directives')
       var delay = attr.drawDelay || 0;
       var totalFrames = SVGService.computeDrawDuration(attr.drawDuration) || 60;
       var svgPaths = element[0].querySelectorAll('path:not([draw]):not([draw-ignore]), line:not([draw]):not([draw-ignore]), circle:not([draw]):not([draw-ignore]), rect:not([draw]):not([draw-ignore]), polygon:not([draw]):not([draw-ignore])');
-      // var pathLengths = new Array();
-      // var drawShapesDelay = parseInt(attr.drawShapesDelay) || 0;
-      // for (var i = 0; i < svgPaths.length; i++) {
-      //   var indexPathElem = svgPaths[i];
 
-      //   var pathLength = SVGService.getTotalPathLength(indexPathElem);
-
-      //   // var pathLength = indexPathElem.getTotalLength();
-      //   pathLengths[i] = pathLength;
-      //   indexPathElem.style.strokeDasharray = '';
-      //   indexPathElem.style.strokeDashoffset = pathLength;
-      // }
       $timeout(function() {
         element[0].classList.add('activate');
-      }, 1000)
+      }, 2000)
       scope.$watch(function() {
         return element.attr('class');
       }, function(new_value) {
         if (new_value && new_value.indexOf('activate') > -1) {
             if (element[0].nodeName !== 'path') {
               var path = SVGService.svgShapeToPath(element[0])[0];
-              var elem = path
-              var pathAttr = path.getAttribute('d');
-              element[0].parentNode.appendChild(elem);
-              elem.classList.add('absolute', 'full-xy')
-              elem.parentNode.classList.add('relative');
-              elem.setAttribute('d', pathAttr);
+              element[0].parentNode.replaceChild(path, element[0]);
+            } else {
+              var path = element[0];
             }
-            // path = document.createElement('path');
-            // var pathStr = 'M 18 2 H 266 A16,16,0,0,1,282,18 V 70 A 16,16,0,0,1,266,86 H 18 A16,16,0,0,1,2,70 V 18 A 16,16,0,0,1,18,2 Z';
-            // path.setAttribute('d', pathStr.split(',').join(' '))
-            // // element[0].appendChild(path);
-            // // path.setAttribute('d', 'M18,2 H266 A16,16,0,0,1,282,18 V70 A16,16,0,0,1,266,86 H18 A16,16,0,0,1,2,70 V18 A16,16,0,0,1,18,2 Z');
-            // $timeout(function() {
-            //   scope.$apply()
-            //   console.log(pathStr.split(',').join(' '))
-            // }, 0)
 
-
-            // var pathNew = document.createElement('path');
-            // pathNew.setAttribute('d', path.getAttribute('d'));
-
-
-
-
-
+            var pathLength = path.getTotalLength()
+            var _default = path.style.fill;
+            path.style.fill = 'none';
+            path.style.strokeDashoffset = pathLength;
+            path.style.strokeDasharray = pathLength;
+            path.style.webkitTransition = 'all 3000ms ease-out';
+            $timeout(function() {
+              path.style.strokeDashoffset = 0;
+              path.style.strokeDasharray = 0;
+              path.style.fill = _default;
+              // path.style.strokeWidth = '5';
+              // path.style.fill = defaultPath;
+            }, 1000)
+            // SVGService.drawOneShape(path, 50, pathLength, pathLength)
 
 
 
           // pathLength = SVGService.getTotalPathLength(path[0]);
-          // SVGService.drawOneShape(path, 0, path.getTotalLength(), path.getTotalLength())
-          // element[0].style.strokeWidth = '5';
-          // element[0].style.fill = 'none';
-          // element[0].style.strokeDashoffset = pathLength;
-          // element[0].style.strokeDasharray = pathLength;
+
           // var transitionStr = ['stroke-dashoffset', attr.drawDuration || '250ms', 'ease'].join(' ');
           // element.css('-webkit-transition', transitionStr);
           // element[0].style.strokeDashoffset = 0;
@@ -468,24 +598,7 @@ angular.module('uguru.shared.directives')
       }
     }
 }])
-.directive('onMouseLeave', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
-  return {
-    restrict: 'A',
-    link: {
-      pre: function(scope, element, attr) {
-        var elemArgs = DirectiveService.parseArgs(attr.onMouseLeave);
-        var supportedCommands = DirectiveService.supportedCommands;
-        element.on('mouseleave', function () {
-            for (key in elemArgs) {
-              if (supportedCommands.indexOf(key) > -1) {
-                DirectiveService.activateArg(key, elemArgs[key], scope, element);
-              }
-            }
-        });
-      }
-    }
-  }
-}])
+
 .directive('customShortcuts', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
   return {
     restrict: 'E',
@@ -715,6 +828,137 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
             }
         }
 ])
+.directive("inspect", ['$timeout', 'RootService', '$compile', 'AdminInspectService',
+  function($timeout, RootService, $compile, AdminInspectService) {
+      return {
+        restrict: 'C',
+        scope: {},
+        priority: 1,
+        link: {
+          pre: function(scope, element, attr) {
+
+            scope.state = {play: false, pause: false, complete: false, timer: {start:0, pause:0}};
+
+            scope.$watch(function() {
+              return element.attr('style');
+            }, function(new_style, old_classes) {
+              if (new_style && !scope.play) {
+                scope.originalStyle = new_style;
+
+                scope.origProp = {duration: getDuration(element), transition: (element[0].style.webkitTransition || element[0].style.webkitTransition)}
+                scope.props = {arr: AdminInspectService.getPropArr(new_style), duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
+
+                scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
+                scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
+                scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope);
+                attr.$set('style', null);
+                initPlayer(scope);
+              }
+            })
+          }
+        }
+      }
+
+      function getPauseFunction(element, attr, props, state) {
+        return function() {
+          state.pause = true;
+          state.play = false;
+          state.timer.pause = state.timer.pause + (new Date().getTime() - state.timer.start);
+          computedStyle = window.getComputedStyle(element[0]);
+          props.arr = AdminInspectService.getPropArr('transform:' + computedStyle.getPropertyValue('transform') +';' +element[0].getAttribute('style'))
+          state.playerPos = state.timer.pause
+          element.css('transform', computedStyle.getPropertyValue('transform') || computedStyle.getPropertyValue('webkit-transform'));
+          element.css('transition', null);
+          element.css('webkit-transition', null);
+          console.log(state.pause, state.play, state.timer.pause)
+        }
+      }
+
+      function getUpdateFunction(element, attr, props, state, scope) {
+        return function(value) {
+          state.timer.pause = true;
+          state.play = false;
+          state.timer.pause = value;
+          attr.$set('style', null);
+          $timeout(function() {
+            scope.$apply();
+            attr.$set('style', props.style);
+            element.css('transition-delay', (state.timer.pause * -1) + 'ms');
+            element.css('-webkit-transition-delay', (state.timer.pause * -1) + 'ms');
+            computedStyle = window.getComputedStyle(element[0]);
+            element.css('transform', computedStyle.getPropertyValue('transform') || computedStyle.getPropertyValue('webkit-transform'));
+            $timeout(function() {
+              scope.$apply();
+              element.css('transition', null);
+              element.css('webkit-transition', null);
+            })
+          })
+        }
+      }
+
+      function getPlayFunction(element, attr, props, state, scope) {
+        return function() {
+
+
+
+
+          if (state.pause && state.timer.pause) {
+            var durationOffset = props.duration - state.timer.pause;
+            console.log(durationOffset)
+            attr.$set('style', props.style);
+            element.css('transition-duration', durationOffset + 'ms');
+            element.css('webkit-transition-duration', durationOffset + 'ms');
+            bindElementWithTransitionEnd();
+          } else {
+            bindElementWithTransitionEnd();
+            attr.$set('style', props.style);
+          }
+          state.timer.start = new Date().getTime();
+          state.play = true;
+
+          function bindElementWithTransitionEnd()  {
+            element.bind('webkitTransitionEnd', function() {
+              state.play = false;
+              state.pause = false;
+              state.complete = true;
+              state.timer.start = 0;
+              state.timer.pause = 0;
+              attr.$set('style', null);
+              $timeout(function() {
+                scope.$apply()
+              })
+              // attr.$set('style', props.style);
+
+            })
+          }
+
+        }
+      }
+
+      function initPlayer(scope) {
+          var div = document.querySelector('#transition-player');
+          scope.name = 'player'
+          if (!div) {
+            div = document.createElement('div');
+            div.classList.add('p15-grid', 'full-x', 'fixed', 'top-0', 'left-0', 'bg-auburn', 'animated', 'slideInDown');
+            div.style.zIndex = 100000;
+            div.id = 'transition-player';
+            div.innerHTML = '<player play=play pause=pause state=state update=update props=props start-offset=state.timer.pause duration=duration></player>'
+            document.querySelector('ui-view').appendChild(div)
+          }
+
+          scope.playerPos = 0
+          scope.duration = 2000;
+          $compile(div)(scope)
+          $timeout(function() {
+            scope.$apply();
+          })
+      }
+
+      function getDuration(element) {
+        return parseFloat((element[0].style.webkitTransitionDuration || element[0].style.transitionDuration).split('ms')[0]);
+      }
+}])
 .directive("switch", ['$timeout', 'RootService', 'DirectiveService', 'UtilitiesService', 'SwitchService',
         function($timeout, RootService, DirectiveService, UtilitiesService, SwitchService) {
             return {

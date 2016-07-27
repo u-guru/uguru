@@ -348,7 +348,7 @@ function pathify(elem, root) {
   }
 
   function polygon() {
-    for (var i = 0, l = [], pts = elem.points, p; i < pth.numberOfItems; i++) {
+    for (var i = 0, l = [], pts = elem.points, p; i < path.numberOfItems; i++) {
       p = pts.getItem(i);
       l[i] = p.x+','+p.y;
     }

@@ -6,7 +6,7 @@
     <div class="splash-guru-head">
         <div class="splash-hero-guru splash-logo-guru" ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"
 			init-default
-			
+
 			when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 			when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 
@@ -251,7 +251,7 @@
 	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-300, t:all 250ms ease-in-out]"
 	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 
-                    when-category-dropdown-click="t:[on-exit]"
+                    when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
                     on-change="e:[madlib.updateOptionByIndex(splash.category, 0)]">
                     <div class="tag-adlib-container">
@@ -297,7 +297,7 @@
 	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-250, t:all 250ms ease-in-out]"
 	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 
-                    when-category-dropdown-click="t:[on-exit]"
+                    when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
                     on-change="e:[madlib.updateOptionByIndex(splash.category, 1)]">
                     <div class="tag-adlib-container">
@@ -343,7 +343,7 @@
 	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-200, t:all 250ms ease-in-out]"
 	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 
-                    when-category-dropdown-click="t:[on-exit]"
+                    when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
                     on-change="e:[madlib.updateOptionByIndex(splash.category, 2)]">
                     <div class="tag-adlib-container">
@@ -389,7 +389,7 @@
 	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 
-                    when-category-dropdown-click="t:[on-exit]"
+                    when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
                     on-change="e:[madlib.updateOptionByIndex(splash.category, 3)]">
                     <div class="tag-adlib-container">
@@ -435,7 +435,7 @@
 	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-350, t:all 250ms ease-in-out]"
 	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 
-                    when-category-dropdown-click="t:[on-exit]"
+                    when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
                     on-change="e:[madlib.updateOptionByIndex(splash.category, 4)]">
                     <div class="tag-adlib-container">
@@ -482,7 +482,7 @@
 	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-300, t:all 250ms ease-in-out]"
 	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 
-                    when-category-dropdown-click="t:[on-exit]"
+                    when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
                     on-change="e:[madlib.updateOptionByIndex(splash.category, 5)]">
                     <div class="tag-adlib-container">
@@ -529,7 +529,7 @@
 	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-250, t:all 250ms ease-in-out]"
 	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 
-                    when-category-dropdown-click="t:[on-exit]"
+                    when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
                     on-change="e:[madlib.updateOptionByIndex(splash.category, 6)]">
                     <div class="tag-adlib-container">
@@ -576,7 +576,7 @@
 	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-200, t:all 250ms ease-in-out]"
 	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 
-                    when-category-dropdown-click="t:[on-exit]"
+                    when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
                     on-change="e:[madlib.updateOptionByIndex(splash.category, 7)]"
                     type="splash" blank-num="2">

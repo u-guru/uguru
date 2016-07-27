@@ -3,7 +3,122 @@
 		on-init="send:[cal-init:public]">
 		<custom-states when="cal-init"></custom-states>
 		<section class="calendar-container student">
-			<div class='calendar student relative'>
+			<div class="calendar-month student relative">
+				<h1 class="cal-month">
+					<span>
+						<span>J</span>
+						<span>u</span>
+						<span>l</span>
+						<span>y</span>
+					</span>
+				</h1>
+				<div class="cal-day-container">
+					<ul class="cal-labels">
+						<li><div>Sun</div></li>
+						<li><div>Mon</div></li>
+						<li><div>Tue</div></li>
+						<li><div>Wed</div></li>
+						<li><div>Thu</div></li>
+						<li><div>Fri</div></li>
+						<li><div>Sat</div></li>
+					</ul>
+					<ul class="cal-days">
+						<li><div></div></li>
+						<li><div></div></li>
+						<li>
+							<div>
+								<div class="cal-month-tile"
+									init-default
+									when-cal-init="t-enter"
+									on-enter="transform:[rotate:(2turn,0deg,0), p:1500px, duration:1500]">
+									<div></div><div></div><div></div><div></div>
+									<span>Jeselle Obina</span>
+								</div>
+								<div class="cal-month-tile bg-academic"
+									init-default
+									when-cal-init="t-enter"
+									on-enter="transform:[rotate:(0deg,2turn,0), p:1500px, duration:1500, delay:500]">
+									<div></div><div></div><div></div><div></div>
+									<span>Jeselle Obina</span>
+								</div>
+								<div class="cal-month-tile bg-moxie"
+									init-default
+									when-cal-init="t-enter"
+									on-enter="transform:[rotate:(25deg,-28deg,4turn), p:1500px, duration:1500, delay:1000]">
+									<div></div><div></div><div></div><div></div>
+									<span>Jeselle Obina</span>
+								</div>
+							</div>
+						</li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li>
+							<div>
+								<div class="cal-month-tile"
+									init-default
+									when-cal-init="t-enter"
+									on-enter="transform:[ro-z:-0.75turn, sk-x:10deg, sk-y:-10deg, t-o:75% 25% 125px, duration:2000, p:500px]">
+									<div></div><div></div><div></div><div></div>
+									<span>Jeselle Obina</span>
+								</div>
+								<div class="cal-month-tile bg-academic"
+									init-default
+									when-cal-init="t-enter"
+									on-enter="transform:[to:(#header), duration:250, delay:500]">
+									<div></div><div></div><div></div><div></div>
+									<span>Jeselle Obina</span>
+								</div>
+								<div class="cal-month-tile bg-moxie"
+									init-default
+									when-cal-init="t-enter"
+									on-enter="transform:[rotate:(0deg,2turn,0),scale:(1.5,3,0.9):delay-250, p:500px, duration:1500,delay:1000]">
+									<div></div><div></div><div></div><div></div>
+									<span>Jeselle Obina</span>
+								</div>
+							</div>
+						</li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+						<li><div></div></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="calendar-container student" ng-if="false">
+			<div class='calendar-week student relative'>
 				<div class="cal-week active">
 					<div>
 						<h1 class="cal-month"
@@ -513,12 +628,13 @@
 												</svg>
 											</div>
 										</li>
-
 									</ul>
 									<ul class='cal-day'
-										when-cal-day-27-init="t-enter"
-										on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-28-init:public:delay-150]">
-										 <li init-with="p-op" class="all-day">
+										init-default
+										when-cal-enter="s:[cal-day-27-init:public:delay-1150]">
+										 <li init-with="p-op" class="all-day"
+											when-cal-day-27-init="t-enter"
+	 										on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-28-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -576,13 +692,15 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op" class="has-event event-household">
+										<li init-with="p-op" class="has-event event-household"
+											when-cal-day-33-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-34-init:public:delay-150]">
 											<span></span>
 											<span class="event">
 												<div></div><div></div><div></div><div></div>
 												<h1 init-with="p-op">Jeselle</h1>
 												<span init-with="p-op">6am-7am</span>
-												<a class="close-icon">
+												<!-- <a class="close-icon">
 													<svg viewBox="0 0 100 100">
 														<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
 													</svg>
@@ -594,7 +712,7 @@
 															<path d="M50,40 L50,70 M50,30 L50,30.5"></path>
 														</g>
 													</svg>
-												</a>
+												</a> -->
 											</span>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -699,7 +817,9 @@
 												</ul>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-34-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-35-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -707,7 +827,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-35-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-36-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -715,7 +837,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-36-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-37-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -723,7 +847,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-37-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-38-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -731,7 +857,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-38-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-39-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -739,7 +867,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-39-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-40-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -747,7 +877,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-40-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-41-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -755,7 +887,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-41-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-42-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -763,7 +897,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-42-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-43-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -771,7 +907,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-43-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-44-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -779,7 +917,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-44-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-45-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -787,7 +927,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-45-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-46-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -795,7 +937,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-46-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-47-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -803,7 +947,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-47-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-48-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -811,7 +957,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-48-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-49-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -819,7 +967,9 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-49-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-50-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">
@@ -827,7 +977,19 @@
 												</svg>
 											</div>
 										</li>
-										<li init-with="p-op">
+										<li init-with="p-op"
+											when-cal-day-50-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-51-init:public:delay-150]">
+											<a></a>
+											<div>
+												<svg viewBox="0 0 100 100">
+													<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+												</svg>
+											</div>
+										</li>
+										<li init-with="p-op"
+											when-cal-day-51-init="t-enter"
+											on-enter="a:[bounceInDown-subtle:set:(dur:1000ms):in] | send:[cal-day-52-init:public:delay-150]">
 											<a></a>
 											<div>
 												<svg viewBox="0 0 100 100">

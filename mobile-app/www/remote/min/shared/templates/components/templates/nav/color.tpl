@@ -6,7 +6,7 @@
 		init-default on-init
 	    on-mouse-enter="s:[{{prefix}}-dropdown-mouse-enter:public]"
 	    on-mouse-enter-delay="500"
-	    on-mouse-leave="s:[{{prefix}}-dropdown-mouse-enter:public]"
+	    on-mouse-leave="s:[{{prefix}}-dropdown-mouse-leave:public]"
 	    on-mouse-leave-delay="250">
 		<div class="null"
 			init-with="p:[tr:scaleX(0), t:all 250ms ease-out 450ms]"
