@@ -857,9 +857,9 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
                 scope.originalStyle = new_style;
                 scope.origProp = {duration: getDuration(element), transition: (element[0].style.webkitTransition || element[0].style.webkitTransition)}
                 scope.props = {duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
-                scope.play = getPlayFunction(element, attr, scope.props, scope.state)
-                scope.pause = getPauseFunction(element, attr, scope.props, scope.state)
-                scope.update = getUpdateFunction(element, attr, scope.props, scope.state)
+                scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
+                scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
+                scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope)
                 attr.$set('style', null);
                 initPlayer(scope);
                 // $timeout(function() {
@@ -892,7 +892,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
         }
       }
 
-      function getPlayFunction(element, attr, props, state) {
+      function getPlayFunction(element, attr, props, state, scope) {
         return function() {
 
 
@@ -908,7 +908,6 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
           } else {
             bindElementWithTransitionEnd();
             attr.$set('style', props.style);
-            bindElementWithTransitionEnd();
           }
           state.timer.start = new Date().getTime();
           state.play = true;
@@ -921,6 +920,9 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
               state.timer.start = 0;
               state.timer.pause = 0;
               attr.$set('style', null);
+              $timeout(function() {
+                scope.$apply()
+              })
               // attr.$set('style', props.style);
 
             })
