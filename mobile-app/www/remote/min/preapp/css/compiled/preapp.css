@@ -5646,9 +5646,9 @@ a[class*="-container"]:hover .map-stadium-outside {
 
 @keyframes album-slideRight {
   0% {
-    transform: translate3d(0, 0, 0); }
+    transform: translate3d(5%, 0, 0); }
   100% {
-    transform: translate3d(-5%, 0, 0); } }
+    transform: translate3d(0, 0, 0); } }
 @keyframes record-slideLeft {
   0% {
     transform: translate3d(-15%, 0, 0); }
@@ -5677,7 +5677,7 @@ a[class*="-container"]:hover .map-stadium-outside {
   100% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
 .prop-scroll-search {
-  animation: prop-scroll-search 3500ms cubic-bezier(0.93, 0, 1, 0.05) forwards; }
+  animation: prop-scroll-search 3000ms ease-in forwards; }
 
 .prop-stand-leg {
   animation: prop-stand-leg 1000ms linear forwards; }
