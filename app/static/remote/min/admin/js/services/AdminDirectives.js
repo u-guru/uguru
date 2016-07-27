@@ -13,6 +13,18 @@ angular.module('uguru.admin')
         }
     }
 ])
+.directive("player", ['$timeout', 'RootService', function($timeout, RootService) {
+    return {
+        templateUrl: RootService.getBaseUrl() + 'admin/templates/components/player.tpl',
+        restrict: 'E',
+        scope: {state:'=state', startOffset:'=startOffset', duration: '=duration', props:'=props', play:'=play', pause:'=pause', update: '=update'},
+        replace: true,
+        link: function(scope, element, attr) {
+            scope.playerPos = scope.startOffset;
+            console.log(scope.props);
+        }
+    }
+}])
 .directive("animTools", ['$timeout', 'RootService', 'AnimToolService', function($timeout, RootService, AnimToolService) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/anim.tools.tpl',
@@ -81,9 +93,13 @@ angular.module('uguru.admin')
                     for (var i = 0; i < workflows.length; i++) {
                         var iWorkflow = workflows[i];
                         iWorkflow.progress = iWorkflow.calculateProgress(iWorkflow.stories);
+
                     }
 
-                    scope.module.progress = calcModuleProgress(scope.module.workflows);
+                    $timeout(function() {
+                        scope.module.progress = calcModuleProgress(scope.module.workflows);
+                    })
+
                 })
             })
         })
@@ -364,7 +380,7 @@ angular.module('uguru.admin')
      }
     }
 }])
-.directive('uiState', ['$timeout', function ($timeout) {
+.directive('uiState', ['$timeout', 'AdminDebugService', function ($timeout, AdminDebugService) {
   return {
     replace: true,
     restrict: 'E',
@@ -374,7 +390,9 @@ angular.module('uguru.admin')
         scope.state = {
             desc: attr.desc,
             name: attr.name,
+            testId: attr.testId,
             bugs:[],
+            testObj: null,
             tags: [],
             type: 'type' in attr && attr['type'],
             func: 'func' in attr && (attr['func'] === 'true' || attr['functional'] === 'true'),
@@ -384,21 +402,49 @@ angular.module('uguru.admin')
         }
         $timeout(function() {
             scope.stream = scope.$parent.stream;
-            if (!scope.state.type && scope.stream.type) {
+            if (!scope.state.type && scope.stream && scope.stream.type) {
                 scope.state.type = scope.stream.type;
             }
-            if (!scope.state.type && !scope.stream.type) {
+            else if (!scope.state.type && (!scope.stream || !scope.stream.type)) {
                 scope.state.type = scope.$parent.story.type;
             }
-            scope.state.id = scope.stream.states.length + 1;
-            scope.state.stream_id = scope.stream.id;
-            scope.stream.states.push(scope.state);
+            $timeout(function() {
+                if (scope.stream && scope.stream.states) {
+                    scope.state.id = scope.stream.states.length + 1;
+                    scope.state.stream_id = scope.stream.id;
+                    scope.stream.states.push(scope.state);
+                }
+            })
+
+
             $timeout(function() {
                 scope.$parent.story.states.push(scope.state);
                 scope.$parent.workflow.states.push(scope.state);
-                // console.log();
-                // scope.$parent.workflow.states.push(scope.state);
             })
+            //@jason
+            if ('testId' in attr && attr.testId.length) {
+                // passes the scope so you can update it immediately (you pulled all the bugs locally)
+                scope.state.testObj = AdminDebugService.getTestStateObj(parseInt(attr.testId), scope.state);
+
+                // three checks in the if statement?
+                //check 1, does it return something immediately
+                //check 2, does it return a dictionary
+                //check 3, does the dictionary have the ID in it
+                if (scope.state.testObj && typeof(scope.state.testObj) === 'object' && 'id' in scope.state.testObj) {
+                    attr.testId = scope.state.testObj.id;
+                    console.log('test state id', attr.testId, scope.state.testObj);
+                } else {
+                    //if it doesnt return something immediately, b/c i passed u the scope, if you make a server request to get the object,
+                    scope.$watch('state.testObj', function(updated_obj) {
+                        if (updated_obj && typeof(updated_obj) === 'object' && 'id' in updated_obj) {
+                            attr.testId = updated_obj.id;
+                            console.log('test state id', attr.testId, scope.state.testObj);
+                        } else {
+                            console.log('returned object from BugService getTestStateObj', updated_obj);
+                        }
+                    })
+                }
+            }
 
         })
 
@@ -418,6 +464,7 @@ angular.module('uguru.admin')
             type: attr.type,
             platform: attr.platform,
             by: attr.by,
+            id: attr.id,
             tested: attr.tested === 'true',
             open: 'open' in attr,
             tested: ('tested' in attr && attr.tested === 'true') || false,
@@ -786,15 +833,47 @@ function sortStoryByPriority(person) {
 }
 
 function calcModuleProgress(workflows) {
-    var resultDict = {func: 0, total: workflows.length, cp: 0, responsive:0, tested: 0};
+    var resultDict = {workflows: { func: 0, total: workflows.length, cp: 0, responsive:0, tested: 0}, states: {}};
+    resultDict.states.total = 0;
+    resultDict.states.func = {total: 0, complete: 0, bugs: 0};
+    resultDict.states.cp = 0;
+    resultDict.states.tested = 0;
+    resultDict.states.mTested = 0;
     for (var i = 0; i < workflows.length; i++) {
         var iWorkflow = workflows[i];
-        if (iWorkflow.func) resultDict.func += 1;
-        if (iWorkflow.tested) resultDict.tested += 1;
-        if (iWorkflow.cp) resultDict.cp += 1;
-        if (iWorkflow.response) resultDict.responsive += 1;
+        if (iWorkflow.func) resultDict.workflows.func += 1;
+        if (iWorkflow.tested) resultDict.workflows.tested += 1;
+        if (iWorkflow.cp) resultDict.workflows.cp += 1;
+        if (iWorkflow.response) resultDict.workflows.responsive += 1;
+        console.log(iWorkflow.states.length)
+        iWorkflow.states.forEach(
+            function(state, index)
+            {
+                if (isStateOfType(state, 'func'))  {
+                        resultDict.states.func.total += 1;
+                    if (state['func']) {
+                        resultDict.states.func.complete += 1;
+                    }
+                    if (state.bugs && state.bugs.length) {
+                        state.bugs.forEach(function(bug, index) {
+                            if (bug && isStateOfType(bug, 'func')) {
+                                resultDict.states.func.bugs += 1;
+                            }
+                        })
+                    }
+                }
+            }
+        )
     }
+    console.log(resultDict.states);
+
     return resultDict;
+}
+
+function isStateOfType(state, _type) {
+    if (_type === 'func') {
+        return ('func' in state || ('type' in state && state['type'] && state['type'].indexOf('func') > -1))
+    }
 }
 
 function calcStreamProgress(state_arr) {
@@ -842,7 +921,6 @@ function getCommonTagsAndFunc(workflow, attr_tags, person) {
 
         for (var j = 0; j < defaultFilterAttr.length; j++) {
             var iFilterAttr = defaultFilterAttr[j];
-            console.log(iFilterAttr in iFilterObj)
             if (iFilterAttr in iFilterObj && (typeof(iFilterObj[iFilterAttr]) === 'boolean' || (iFilterObj[iFilterAttr] && iFilterObj[iFilterAttr].length))) {;
                 if (typeof(iFilterObj[iFilterAttr]) === 'string') {
                     var tagAttrSplit = iFilterObj[iFilterAttr].split(',');

@@ -828,25 +828,14 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
             }
         }
 ])
-.directive("inspect", ['$timeout', 'RootService', '$compile',
-  function($timeout, RootService, $compile) {
+.directive("inspect", ['$timeout', 'RootService', '$compile', 'AdminInspectService',
+  function($timeout, RootService, $compile, AdminInspectService) {
       return {
         restrict: 'C',
         scope: {},
         priority: 1,
         link: {
           pre: function(scope, element, attr) {
-
-
-
-
-
-
-            // scope.$watch('playerPos', function(value) {
-            //   element.css('transition-delay', (value*-1) + 'ms');
-            //   element.css('transition', scope.originalTransition);
-            //   attr.$set('style', scope.originalStyle);
-            // })
 
             scope.state = {play: false, pause: false, complete: false, timer: {start:0, pause:0}};
 
@@ -855,17 +844,15 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
             }, function(new_style, old_classes) {
               if (new_style && !scope.play) {
                 scope.originalStyle = new_style;
+
                 scope.origProp = {duration: getDuration(element), transition: (element[0].style.webkitTransition || element[0].style.webkitTransition)}
-                scope.props = {duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
+                scope.props = {arr: AdminInspectService.getPropArr(new_style), duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
+
                 scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
                 scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
-                scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope)
+                scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope);
                 attr.$set('style', null);
                 initPlayer(scope);
-                // $timeout(function() {
-                //   scope.play = true;
-                //   // attr.$set('style', "transform: rotateZ(-0.75turn) translateX(100%) perspective(500px); transform-origin: 75% 25% -125px; transition: all 2000ms cubic-bezier(0.23, 1, 0.32, 1) -1000ms");
-                // }, 2000);
               }
             })
           }
@@ -878,6 +865,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
           state.play = false;
           state.timer.pause = state.timer.pause + (new Date().getTime() - state.timer.start);
           computedStyle = window.getComputedStyle(element[0]);
+          props.arr = AdminInspectService.getPropArr('transform:' + computedStyle.getPropertyValue('transform') +';' +element[0].getAttribute('style'))
           state.playerPos = state.timer.pause
           element.css('transform', computedStyle.getPropertyValue('transform') || computedStyle.getPropertyValue('webkit-transform'));
           element.css('transition', null);

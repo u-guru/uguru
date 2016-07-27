@@ -4,7 +4,7 @@
 			<week num="2"> </week>
 		</div>
 		<div class="bg-cobalt-25p">
-			<h1 class='txt-5 uppercase weight-600 p15x-p15top'>
+			<h1 class='txt-5 uppercase weight-600 p15x-p15top '>
 				<span class="block">{{ms.activeModule.name}}</span>
 				<span class="block txt-36 weight-900">Milestones</span>
 			</h1>
@@ -15,7 +15,7 @@
 				ng-click="ms.typeIndex = $index"
 				style='width:33%;'>{{type}}</a>
 			</div> -->
-			<ul class='full-x ugrid-4 p15-grid txt-3'>
+			<ul class='full-x ugrid-4 p15-grid txt-3 bg-charcoal-80p m20top'>
 				<li class='flex-center p15-grid flex-wrap-center'>
 					<div ng-repeat='initial in ms.modules[0].teamArr'>
 						<a class="txt-24 semibold radius-2 round p05xy"
@@ -23,10 +23,59 @@
 							ng-click='ms.setActivePerson(initial)'>{{initial}}</a>
 					</div>
 				</li>
-				<li>
-				</li>
-				<li>
 
+				<li class='ugrid-3 txt-3' style='width:75% !important;'>
+					<div ng-if='ms.activeModule.progress.states.func'>
+						<h1 class='txt-5 weight-800'> Functional </h1>
+						<div class='ugrid-2 txt-3 weight-600'>
+							<div class='flex-wrap-center flex-stretch'>
+								<div class='full-x'> States</div>
+								<div class='full-x'>
+									{{ms.activeModule.progress.states.func.complete}}/{{ms.activeModule.progress.states.func.total}}
+								</div>
+							</div>
+							<div class='flex-wrap-center flex-stretch'>
+								<div class='full-x'> Bugs </div>
+								<div class='full-x'>
+									{{ms.activeModule.progress.states.func.bugs}}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<h1 class='txt-5 weight-800'> Base Fluid </h1>
+						<div class='ugrid-2 txt-3 weight-600'>
+							<div class='flex-wrap-center flex-stretch'>
+								<div class='full-x'> States</div>
+								<div class='full-x'>
+									???
+								</div>
+							</div>
+							<div class='flex-wrap-center flex-stretch'>
+								<div class='full-x'> Bugs </div>
+								<div class='full-x'>
+									???
+								</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<h1 class='txt-5 weight-800'> *Famous* </h1>
+						<div class='ugrid-2 txt-3 weight-600'>
+							<div class='flex-wrap-center flex-stretch'>
+								<div class='full-x'> States</div>
+								<div class='full-x'>
+									???
+								</div>
+							</div>
+							<div class='flex-wrap-center flex-stretch'>
+								<div class='full-x'> Bugs </div>
+								<div class='full-x'>
+									???
+								</div>
+							</div>
+						</div>
+					</div>
 				</li>
 				<!-- <div class='border-1-bottom border-smoke' ng-click='ms.setActivePerson(person)'>{{ms.modules[0].activePerson}}</div> -->
 			</ul>
@@ -129,7 +178,7 @@
 						</li>
 					</ul>
 
-					<div class='full-x p15-grid bg-auburn' ng-if='workflow[ms.activeFilter].length && workflow.active'>
+					<div class='full-x p15-grid bg-campus' ng-if='workflow[ms.activeFilter].length && workflow.active'>
 						<ul class='full-x flex-wrap flex-stretch flex-start' ng-init="activeFilter = workflow.filter.options[workflow.filter.activeIndex]">
 							<li class='full-x p15-grid txt-3 txt-white txt-center weight-700 ugrid-{{workflow["columns"][ms.activeFilter].length}}'>
 								<div class='weight-100' ng-if='!ms.activeFilter' ng-repeat='column in workflow["columns"][activeFilter]'>
