@@ -42,7 +42,9 @@
 				init-with="p-op"
 				on-enter="a:[gpa-enter:set:(dur:1000ms#func:linear):delay-1500:in]"
 				when-sound-landing-enter="t-enter">Preview the App</h1>
-			<ul class="sound-record-list">
+			<ul class="sound-record-list"
+				init-default
+				when-sound-landing-enter="s:[record-tile-init:public:delay-2000]">
 				<li>
 					<div class="record-tile-container">
 						<div class="record-tile">
@@ -50,35 +52,42 @@
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
 							<div class="record-tile-back"
-								init-with="p-op"></div>
-							<div class="record-tile-front inspect"
-								init-with="p:[bg:transparent, tr:translateX(7.5%), t:all 250ms ease-out]"
-								when-sound-landing-enter="s:[record-tile-init:public:delay-2000]"
-								when-record-tile-init="p:[bg:#8967d4]:delay-1000">
-								<!-- <div></div><div></div><div></div><div></div>
-								<div class="record-art"></div>
-								<h1 class="record-label">Top 40</h1> -->
-								<div init-with="p-op"
+								init-with="p:[op:0, tr:translate3d(-15%#0#0), t:transform 1000ms ease-out#opacity 250ms ease-out]"
+								when-record-tile-init="t:[on-enter]"
+								on-enter="p:[op:1:delay-250, tr:translate3d(0#0#0)]:delay-750">
+								<div init-default
+									on-enter="a:[rotate-record:set:(dur:1000ms#func:linear):delay-750:in]">
+									<!-- @jeselle -->
+								</div>
+							</div>
+							<div class="record-tile-front"
+								init-with="p:[bg:transparent, tr:translateX(7.5%), t:transform 1000ms ease-out#background 250ms ease-out]"
+								when-record-tile-init="p:[tr:none:delay-750, bg:#8967d4:delay-250]">
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
 									when-record-tile-init="t-enter"
-									on-enter="a:[scaleInX-subtle:set:(dur:1000ms#func:ease-in):in]"></div>
-								<div init-with="p-op"
+									on-enter="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
 									when-record-tile-init="t-enter"
-									on-enter="a:[scaleInY-subtle:set:(dur:1000ms#func:ease-in):in]"></div>
-								<div init-with="p-op"
+									on-enter="p:[tr:scaleY(1)]"></div>
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
 									when-record-tile-init="t-enter"
-									on-enter="a:[scaleInX-subtle:set:(dur:1000ms#func:ease-in):in]"></div>
-								<div init-with="p-op"
+									on-enter="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
 									when-record-tile-init="t-enter"
-									on-enter="a:[scaleInY-subtle:set:(dur:1000ms#func:ease-in):in]"></div>
+									on-enter="p:[tr:scaleY(1)]"></div>
 								<div class="record-art"
-									init-with="p-op"></div>
+									init-with="p-op"
+									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
 								<h1 class="record-label"
-									init-with="p-op">Top 40</h1>
+									init-with="p-op"
+									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Top 40</h1>
 							</div>
 						</div>
 						<div class="record-info">
-							<h3>Top 40 - 2016</h3>
-							<button>
+							<h3 init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Top 40 - 2016</h3>
+							<button init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
 								<span></span><span></span><span></span><span></span>
 								<span>Listen Now</span>
 							</button>
@@ -91,16 +100,43 @@
 							<svg viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div class="record-tile-back"></div>
-							<div class="record-tile-front">
-								<div></div><div></div><div></div><div></div>
-								<div class="record-art"></div>
-								<h1 class="record-label">Chill Out</h1>
+							<div class="record-tile-back"
+								init-with="p:[op:0, tr:translate3d(-15%#0#0), t:transform 1000ms ease-out#opacity 250ms ease-out]"
+								when-record-tile-init="t:[on-enter]"
+								on-enter="p:[op:1:delay-250, tr:translate3d(0#0#0)]:delay-750">
+								<div init-default
+									on-enter="a:[rotate-record:set:(dur:1000ms#func:linear):delay-750:in]">
+									<!-- @jeselle -->
+								</div>
+							</div>
+							<div class="record-tile-front"
+								init-with="p:[bg:transparent, tr:translateX(7.5%), t:transform 1000ms ease-out#background 250ms ease-out]"
+								when-record-tile-init="p:[tr:none:delay-750, bg:#8967d4:delay-250]">
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleY(1)]"></div>
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleY(1)]"></div>
+								<div class="record-art"
+									init-with="p-op"
+									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
+								<h1 class="record-label"
+									init-with="p-op"
+									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Chill Out</h1>
 							</div>
 						</div>
 						<div class="record-info">
-							<h3>Chill Out</h3>
-							<button>
+							<h3 init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Chill Out</h3>
+							<button init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
 								<span></span><span></span><span></span><span></span>
 								<span>Listen Now</span>
 							</button>
@@ -113,16 +149,43 @@
 							<svg viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div class="record-tile-back"></div>
-							<div class="record-tile-front">
-								<div></div><div></div><div></div><div></div>
-								<div class="record-art"></div>
-								<h1 class="record-label">Upbeat EDM</h1>
+							<div class="record-tile-back"
+								init-with="p:[op:0, tr:translate3d(-15%#0#0), t:transform 1000ms ease-out#opacity 250ms ease-out]"
+								when-record-tile-init="t:[on-enter]"
+								on-enter="p:[op:1:delay-250, tr:translate3d(0#0#0)]:delay-750">
+								<div init-default
+									on-enter="a:[rotate-record:set:(dur:1000ms#func:linear):delay-750:in]">
+									<!-- @jeselle -->
+								</div>
+							</div>
+							<div class="record-tile-front"
+								init-with="p:[bg:transparent, tr:translateX(7.5%), t:transform 1000ms ease-out#background 250ms ease-out]"
+								when-record-tile-init="p:[tr:none:delay-750, bg:#8967d4:delay-250]">
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleY(1)]"></div>
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleY(1)]"></div>
+								<div class="record-art"
+									init-with="p-op"
+									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
+								<h1 class="record-label"
+									init-with="p-op"
+									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Upbeat EDM</h1>
 							</div>
 						</div>
 						<div class="record-info">
-							<h3>Upbeat EDM</h3>
-							<button>
+							<h3 init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Upbeat EDM</h3>
+							<button init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
 								<span></span><span></span><span></span><span></span>
 								<span>Listen Now</span>
 							</button>
@@ -135,16 +198,43 @@
 							<svg viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div class="record-tile-back"></div>
-							<div class="record-tile-front">
-								<div></div><div></div><div></div><div></div>
-								<div class="record-art"></div>
-								<h1 class="record-label">Guitar Melodies</h1>
+							<div class="record-tile-back"
+								init-with="p:[op:0, tr:translate3d(-15%#0#0), t:transform 1000ms ease-out#opacity 250ms ease-out]"
+								when-record-tile-init="t:[on-enter]"
+								on-enter="p:[op:1:delay-250, tr:translate3d(0#0#0)]:delay-750">
+								<div init-default
+									on-enter="a:[rotate-record:set:(dur:1000ms#func:linear):delay-750:in]">
+									<!-- @jeselle -->
+								</div>
+							</div>
+							<div class="record-tile-front"
+								init-with="p:[bg:transparent, tr:translateX(7.5%), t:transform 1000ms ease-out#background 250ms ease-out]"
+								when-record-tile-init="p:[tr:none:delay-750, bg:#8967d4:delay-250]">
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleY(1)]"></div>
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="t-enter"
+									on-enter="p:[tr:scaleY(1)]"></div>
+								<div class="record-art"
+									init-with="p-op"
+									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
+								<h1 class="record-label"
+									init-with="p-op"
+									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Guitar Melodies</h1>
 							</div>
 						</div>
 						<div class="record-info">
-							<h3>Guitar Melodies</h3>
-							<button>
+							<h3 init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Guitar Melodies</h3>
+							<button init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
 								<span></span><span></span><span></span><span></span>
 								<span>Listen Now</span>
 							</button>
