@@ -6,7 +6,7 @@
 	<div class="landing-gpa landing-container">
 		<div class="powerup-icon"
 			init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
-			on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2500"
+			on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2000"
 			when-gpa-triggered="t-enter">
 			<div ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
 		</div>
