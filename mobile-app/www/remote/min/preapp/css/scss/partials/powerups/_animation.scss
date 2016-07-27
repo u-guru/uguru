@@ -15,8 +15,17 @@
 // 	}
 // }
 
+@keyframes slideLeft-record {
+  0%{
+    transform: translate3d(-15%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 /* Generated with Bounce.js. Edit at http://goo.gl/auaf79 */
-@keyframes rotate-record { 
+@keyframes rotate-record {
   0% { transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   4.1% { transform: matrix3d(0.79, -0.613, 0, 0, 0.613, 0.79, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   8.11% { transform: matrix3d(0.986, -0.165, 0, 0, 0.165, 0.986, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }

@@ -5641,6 +5641,11 @@ a[class*="-container"]:hover .map-stadium-outside {
     background: #637074;
     border: #637074; }
 
+@keyframes slideLeft-record {
+  0% {
+    transform: translate3d(-15%, 0, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
 /* Generated with Bounce.js. Edit at http://goo.gl/auaf79 */
 @keyframes rotate-record {
   0% {
