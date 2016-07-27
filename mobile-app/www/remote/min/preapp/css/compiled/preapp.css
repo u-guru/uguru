@@ -5273,6 +5273,13 @@ a[class*="-container"]:hover .map-stadium-outside {
     left: 0; }
   .record-tile-container .record-tile .record-tile-back {
     right: -15%; }
+    .record-tile-container .record-tile .record-tile-back div {
+      width: 100%;
+      height: 100%; }
+      .record-tile-container .record-tile .record-tile-back div svg {
+        display: block;
+        width: 100%;
+        height: 100%; }
   .record-tile-container .record-tile .record-tile-front {
     -ms-box-orient: horizontal;
     display: -webkit-box;
