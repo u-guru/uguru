@@ -51,7 +51,8 @@
 							</svg>
 							<div class="record-tile-back"
 								init-with="p:[tr:translate3d(0#0#0)] | t-enter"
-								on-enter="p:[tr:translate3d(15%#0#0)]"></div>
+								on-enter="p:[tr:translate3d(15%#0#0):delay-1750, t:all 1000ms ease-out] | a:[rotate-record:set:(dur:1000ms#func:linear):delay-1750:in]">
+							</div>
 							<div class="record-tile-front">
 								<div></div><div></div><div></div><div></div>
 								<div class="record-art"></div>
