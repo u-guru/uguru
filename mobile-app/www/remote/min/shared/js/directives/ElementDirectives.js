@@ -107,6 +107,94 @@ angular.module('uguru.shared.directives')
 //     }
 //   }
 // }])
+// .directive('counter', ['$timeout', '$interval', function ($timeout, $interval) {
+//   return {
+//     restrict: 'A',
+//     link: function(scope, element, attr) {
+//       var counterMax = attr.counterMax;
+//       var counterMin = attr.counterMin || 0;
+//       var counterSuffix = attr.counterSuffix || '';
+//       var counterPrefix = attr.counterPrefix || '';
+//       var counterDuration = attr.counterDuration || '';
+//       if (attr.initOnClass && attr.initOnClass.indexOf('counter:') > -1 && counterMax) {
+//         var initOnClassArgs = attr.initOnClass.split(', ');
+//         var initCounterClassIndex = getClassArgIndex('counter', initOnClassArgs)
+//         var initCounterClassArr = initOnClassArgs[initCounterClassIndex].split(':')
+//         if (initCounterClassArr.length === 2) {
+//           initCounterClass = initCounterClassArr[1];
+//         }
+//         if (initCounterClass) {
+//           scope.$watch(function() {
+//             counterMax = attr.counterMax;
+//             var counterDuration = attr.counterDuration || '';
+//             return (element.attr('class') && element.attr('class').indexOf(initCounterClass) > -1) || "";
+//
+//           },function(elem_has_init_counter_class) {
+//             if (elem_has_init_counter_class) {
+//               $timeout(function() {
+//                 scope.$apply(function() {
+//                   element[0].classList.remove(elem_has_init_counter_class);
+//                 })
+//               });
+//               if (!element[0].id) {
+//                 var numCounterElems = document.querySelectorAll('[counter]').length + 1
+//                 element[0].id = 'counter-' + numCounterElems;
+//               }
+//               var counterArgs = {
+//                   useEasing : false,
+//                   useGrouping : false,
+//                   separator : ',',
+//                   decimal : '.',
+//                   prefix : counterPrefix ,
+//                   suffix : counterSuffix
+//               }
+//               var counterDelay = attr.counterDelay;
+//               var counterInfinite = attr.counterInfinite;
+//               var counterDuration = attr.counterDuration;
+//               if ('counterInfinite' in attr) {
+//                 var counterTimeBetween = attr.counterInfiniteInBtwn || 0;
+//                 if (counterDelay) {
+//                   $timeout(function() {
+//                     $interval(function() {
+//                       var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                       countUpInstance.start();
+//                     }, parseInt(counterDuration) * 1000 + parseInt(counterTimeBetween) * 1000 + 1000)
+//                   }, parseInt(counterDelay))
+//                 } else {
+//                   $interval(function() {
+//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                     countUpInstance.start();
+//                   }, parseInt(counterDuration) * 1000 + parseInt(counterTimeBetween) * 1000);
+//                 }
+//
+//               } else {
+//                 if (counterDelay) {
+//                   $timeout(function() {
+//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                     countUpInstance.start();
+//                   }, parseInt(counterDelay))
+//                 } else {
+//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                     countUpInstance.start();
+//                 }
+//               }
+//             }
+//           })
+//         }
+//       }
+//
+//       function getClassArgIndex(arg_name, class_arr) {
+//         for (var i = 0; i < class_arr.length; i++) {
+//           var indexClass = class_arr[i];
+//           if (indexClass.indexOf(arg_name + ':') > -1) {
+//             return i;
+//           }
+//         }
+//       }
+//
+//     }
+//   }
+// }])
 .directive('desktop', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
   return {
     restrict: 'A',

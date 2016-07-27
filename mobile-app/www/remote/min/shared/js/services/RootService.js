@@ -22,11 +22,21 @@ function RootService($timeout, $state) {
         getDocItems: getDocItems,
         getCSSAnimationFromClassName: getCSSAnimationFromClassName,
         getBrowserPrefix:getBrowserPrefix,
-        appendDocItem: appendDocItem
+        appendDocItem: appendDocItem,
+        formatBrowserCSSProperty: formatBrowserCSSProperty
     }
 
     function appendDocItem(item) {
       docItems.push(item);
+    }
+
+    function formatBrowserCSSProperty(property) {
+      var dashedPrefixedProps = ['transition', 'transform', 'backface-visibility', 'perspective', 'perspective-origin', 'transform-style', 'transform-origin', 'animation-timing-function', 'animation-duration', 'animation-delay', 'transition-delay', 'transition-timing-function']
+      var browserPrefix = getBrowserPrefix();
+      if (browserPrefix && browserPrefix.length && dashedPrefixedProps.indexOf(property.toLowerCase()) > -1) {
+        property = '-' + browserPrefix + '-' + property
+      }
+      return property
     }
 
     function getDocItems() {

@@ -18,11 +18,16 @@ angular.module('uguru.admin')
         args: [
           {name: 'scale[XYZ]'},
           {name: 'translate[XYZ]'},
-          {name: 'rotate[XYZ]'},
+          {name: 'rotate[XYZ]', shortNames:['r[xyz]', 'r-[xyz]', 'ro-[xyz]']},
           {name: 'skew[XY]', value: 'coord'},
           // {name: 'origin', value:'coord'},
           {name: 'perspective(VAL)'},
           {name: 'to(#select)', value: 'selector'},
+          {name: 'backface-visibility', shortNames: ['b-v'], valueType: 'string', animatable:false, default:'visible', range: {values: ['visible', 'hidden']}},
+          {name: 'perspective-origin', shortNames: ['p-o'], valueType: 'string', animatable:true, default:'50% 50%', range: {values:['*-x-position', '*-y-position'], description: 'one-value, two-value syntax of x/y position'}},
+          {name: 'transform-style', shortNames: ['t-s'], valueType: 'string', animatable:false, default:'flat', range: {values:['flat', 'preserve-3d', 'initial', 'inherit'], description: 'let the transformed child preserve the 3d transformation'}},
+          {name: 'transform-origin', shortNames: ['t-o'], valueType: 'string', animatable:true, default:'50% 50% 0', range: {values:['*-x-position', '*-y-position', 'z|length|!%'], description: "Set a rotated element's base placement"}},
+
           // {name: 'clear', value: ['arg', 'all']},
         ],
         options: {
@@ -33,8 +38,16 @@ angular.module('uguru.admin')
         clear: getClearingFunction,
         examples: [
           {
+            args: ['rotate-z', 'translate-x', 'scale-y'],
+            str: 'transform:[ro-z:-0.75turn, tx:100%, sc-y:2.0, t-o:75% 25% -125px, duration:250, p:500px, tf:cb(0.230,1.000, 0.320,1.000)]'
+          },
+          {
+            args: ['sk-z', 'sk-x', 'ro-z', 't-o'],
+            str: 'transform:[ro-z:-0.75turn, sk-x:100deg, sk-y:-100deg, t-o:75% 25% 125px, duration:1000, p:500px]'
+          },
+          {
             args: ['backface-visibility'],
-            str: 'transform:[b-v:default, t-o:default, t-s:default, p-o:default, t-b:default]'
+            str: 'transform:[b-v:visible, t-o:50% 50% 0, t-s:preserve-3d, p-o:50% 50%]'
           },
           {
             args: ['skewX', 'skewY'],

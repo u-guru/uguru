@@ -34,7 +34,7 @@
 					when-gpa-landing-enter="t-enter">
 				    <g fill="none">
 				        <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558086,58.4656181 C-6.12740225,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#40484B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF" opacity="0.9"></path>
-				        <text transform="translate(116.893351, 93.627807) rotate(24.000000) translate(-116.893351, -93.627807)" font-family="Source Sans Pro" font-size="36" font-weight="500" line-spacing="36" fill="#2B3234">
+				        <text transform="translate(116.893351, 93.627807) rotate(24.000000) translate(-116.893351, -93.627807)" font-family="Source Sans Pro" font-size="36" font-weight="600" line-spacing="36" fill="#2B3234">
 				            <tspan x="58.3933507" y="110.627807">Try me!</tspan>
 				        </text>
 				    </g>
@@ -134,11 +134,10 @@
 											on-enter="a:[powerup-prop-bounceInUp:set:(dur:1000ms#func:cubic-bezier(0##.55##.25##1)):delay-2000:in]"
 											when-gpa-landing-enter="t-enter">
 											<g class="line-scroll" clip-path="url(#line-scroll-clip)">
-												<g
-													init-with="p-op"
-													on-enter="p:[op:1, t:opacity 250ms ease-out]:delay-2500 | a:[prop-scroll-search:set:(dur:3000ms#func:ease-in):delay-2750:in]"
+												<g init-with="p-op"
+													on-enter="p:[op:1, t:opacity 250ms ease-out]:delay-2500 | a:[prop-scroll-search:set:(dur:3000ms#func:ease-in):delay-2750:out]"
 													when-gpa-landing-enter="t-enter">
-										            <path d="M46.4092742,148 L70.9657258,148" class="line-10" stroke="#C18973"></path>
+													<path d="M46.4092742,148 L70.9657258,148" class="line-10" stroke="#C18973"></path>
 										            <path d="M46.4092742,140 L70.9657258,140" class="line-9" stroke="#C18973"></path>
 										            <path d="M46.4092742,132 L70.9657258,132" class="line-8" stroke="#C18973"></path>
 										            <path d="M46.4092742,124 L70.9657258,124" class="line-7" stroke="#C18973"></path>
@@ -169,83 +168,84 @@
 						<div>
 							<span>
 								<svg viewBox="0 0 150 150">
-								<defs>
-									<clipPath id="calculate-grade-clip"><circle class="circle-container" stroke="#79C5CD" cx="75" cy="75" r="72"></circle></clipPath>
-								</defs>
-							    <g class="calculate-grade" stroke="none" stroke-width="2.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-									<circle class="circle-container" stroke="#79C5CD" cx="75" cy="75" r="72"></circle>
-									<g  clip-path="url(#calculate-grade-clip)"
-										init-with="p:[op:0, tro: center]"
-										on-enter="a:[powerup-prop-bounceInUp:set:(dur:1000ms#func:cubic-bezier(0##.55##.25##1)):delay-2000:in]"
-										when-gpa-landing-enter="t-enter">
-							            <rect class="base" stroke="#79C5CD" x="47" y="33" width="57" height="84" rx="1.71428571"></rect>
-							            <rect class="screen" stroke="#79C5CD" x="53.9090909" y="40.7142857" width="44.0454545" height="18" rx="1.71428571"></rect>
-										<g class="btns-4">
-								            <rect class="gpa-btn-midr-4" stroke="#79C5CD" x="78.0909091" y="102.428571" width="6.90909091" height="6.85714286"></rect>
-								            <rect class="gpa-btn-midl-4" stroke="#79C5CD" x="66" y="102.428571" width="6.90909091" height="6.85714286"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
-												when-gpa-landing-enter="t-enter"></rect>
-								            <rect class="gpa-btn-left-4" stroke="#79C5CD" x="53.9090909" y="102.428571" width="6.90909091" height="6.85714286"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
-												when-gpa-landing-enter="t-enter"></rect>
+									<defs>
+										<clipPath id="calculate-grade-clip"><circle class="circle-container" stroke="#79C5CD" cx="75" cy="75" r="72"></circle></clipPath>
+									</defs>
+								    <g class="calculate-grade" stroke="none" stroke-width="2.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+										<circle class="circle-container" stroke="#79C5CD" cx="75" cy="75" r="72"></circle>
+										<g  clip-path="url(#calculate-grade-clip)"
+											init-with="p:[op:0, tro: center]"
+											on-enter="a:[powerup-prop-bounceInUp:set:(dur:1000ms#func:cubic-bezier(0##.55##.25##1)):delay-2000:in]"
+											when-gpa-landing-enter="t-enter">
+								            <rect class="base" stroke="#79C5CD" x="47" y="33" width="57" height="84" rx="1.71428571"></rect>
+								            <rect class="screen" stroke="#79C5CD" x="53.9090909" y="40.7142857" width="44.0454545" height="18" rx="1.71428571"></rect>
+											<g class="btns-4">
+									            <rect class="gpa-btn-midr-4" stroke="#79C5CD" x="78.0909091" y="102.428571" width="6.90909091" height="6.85714286"></rect>
+									            <rect class="gpa-btn-midl-4" stroke="#79C5CD" x="66" y="102.428571" width="6.90909091" height="6.85714286"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+									            <rect class="gpa-btn-left-4" stroke="#79C5CD" x="53.9090909" y="102.428571" width="6.90909091" height="6.85714286"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+											</g>
+											<g class="btns-3">
+									            <rect class="gpa-btn-r-3" stroke="#79C5CD" x="90.1818182" y="90.4285714" width="6.90909091" height="18"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:900ms#func:ease-in-out):delay-2650:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+									            <rect class="gpa-btn-midr-3" stroke="#79C5CD" x="78.0909091" y="90.4285714" width="6.90909091" height="6.85714286"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+									            <rect class="gpa-btn-midl-3" stroke="#79C5CD" x="66" y="90.4285714" width="6.90909091" height="6.85714286"></rect>
+									            <rect class="gpa-btn-left-3" stroke="#79C5CD" x="53.9090909" y="90.4285714" width="6.90909091" height="6.85714286"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+											</g>
+											<g class="btns-2">
+									            <rect class="gpa-btn-r-2" stroke="#79C5CD" x="90.1818182" y="78.4285714" width="6.90909091" height="6.85714286"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+									            <rect class="gpa-btn-midr-2" stroke="#79C5CD" x="78.0909091" y="78.4285714" width="6.90909091" height="6.85714286"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+									            <rect class="gpa-btn-midl-2" stroke="#79C5CD" x="66" y="78.4285714" width="6.90909091" height="6.85714286"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+									            <rect class="gpa-btn-left-2" stroke="#79C5CD" x="53.9090909" y="78.4285714" width="6.90909091" height="6.85714286"></rect>
+											</g>
+											<g class="btns-1">
+									            <rect class="gpa-btn-r-1" stroke="#79C5CD" x="90.1818182" y="66.4285714" width="6.90909091" height="6.85714286"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+									            <rect class="gpa-btn-midr-1" stroke="#79C5CD" x="78.0909091" y="66.4285714" width="6.90909091" height="6.85714286"></rect>
+									            <rect class="gpa-btn-midl-1" stroke="#79C5CD"  x="66" y="66.4285714" width="6.90909091" height="6.85714286"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+									            <rect class="gpa-btn-left-1" stroke="#79C5CD" x="53.9090909" y="66.4285714" width="6.90909091" height="6.85714286"
+													init-default
+													on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
+													when-gpa-landing-enter="t-enter"></rect>
+											</g>
+									            <text class="4.0" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="12" font-weight="500" fill="#C18973"
+													init-with="p:[op:0]"
+													on-enter="p:[op:1, t: all 750ms cubic-bezier(.8##.1##1##.05)]:delay-3300"
+													when-gpa-landing-enter="t-enter">
+									                <tspan x="68.1258182" y="53.7142857">2.0</tspan>
+									            </text>
+											</g>
 										</g>
-										<g class="btns-3">
-								            <rect class="gpa-btn-r-3" stroke="#79C5CD" x="90.1818182" y="90.4285714" width="6.90909091" height="18"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:900ms#func:ease-in-out):delay-2650:in]"
-												when-gpa-landing-enter="t-enter"></rect>
-								            <rect class="gpa-btn-midr-3" stroke="#79C5CD" x="78.0909091" y="90.4285714" width="6.90909091" height="6.85714286"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
-												when-gpa-landing-enter="t-enter"></rect>
-								            <rect class="gpa-btn-midl-3" stroke="#79C5CD" x="66" y="90.4285714" width="6.90909091" height="6.85714286"></rect>
-								            <rect class="gpa-btn-left-3" stroke="#79C5CD" x="53.9090909" y="90.4285714" width="6.90909091" height="6.85714286"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
-												when-gpa-landing-enter="t-enter"></rect>
-										</g>
-										<g class="btns-2">
-								            <rect class="gpa-btn-r-2" stroke="#79C5CD" x="90.1818182" y="78.4285714" width="6.90909091" height="6.85714286"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
-												when-gpa-landing-enter="t-enter"></rect>
-								            <rect class="gpa-btn-midr-2" stroke="#79C5CD" x="78.0909091" y="78.4285714" width="6.90909091" height="6.85714286"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
-												when-gpa-landing-enter="t-enter"></rect>
-								            <rect class="gpa-btn-midl-2" stroke="#79C5CD" x="66" y="78.4285714" width="6.90909091" height="6.85714286"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
-												when-gpa-landing-enter="t-enter"></rect>
-								            <rect class="gpa-btn-left-2" stroke="#79C5CD" x="53.9090909" y="78.4285714" width="6.90909091" height="6.85714286"></rect>
-										</g>
-										<g class="btns-1">
-								            <rect class="gpa-btn-r-1" stroke="#79C5CD" x="90.1818182" y="66.4285714" width="6.90909091" height="6.85714286"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
-												when-gpa-landing-enter="t-enter"></rect>
-								            <rect class="gpa-btn-midr-1" stroke="#79C5CD" x="78.0909091" y="66.4285714" width="6.90909091" height="6.85714286"></rect>
-								            <rect class="gpa-btn-midl-1" stroke="#79C5CD"  x="66" y="66.4285714" width="6.90909091" height="6.85714286"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
-												when-gpa-landing-enter="t-enter"></rect>
-								            <rect class="gpa-btn-left-1" stroke="#79C5CD" x="53.9090909" y="66.4285714" width="6.90909091" height="6.85714286"
-												init-default
-												on-enter="a:[prop-calculate:set:(dur:450ms#func:ease-in-out):delay-2750:in]"
-												when-gpa-landing-enter="t-enter"></rect>
-										</g>
-								            <text class="4.0" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="12" font-weight="500" fill="#C18973"
-												init-with="p:[op:0]"
-												on-enter="p:[op:1, t: all 750ms cubic-bezier(.8##.1##1##.05)]:delay-3300"
-												when-gpa-landing-enter="t-enter">
-								                <tspan x="68.1258182" y="53.7142857">2.0</tspan>
-								            </text>
-									</g>
-							    </g>
-							</svg>
-						</span>
+								    </g>
+								</svg>
+							</span>
 							<h2>Calculate<br/>Course Grades</h2>
 						</div>
 					</li>
@@ -298,7 +298,6 @@
 					init-with="p:[op:0, tro: center]"
 					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):delay-2150:in]"
 					when-gpa-landing-enter="t-enter">Try It Now on Desktop</button>
-				<!-- class-on-click="null:inject#powerup-gpa-title-container|activate" -->
 				<ul class="landing-platforms p15-grid full-x line-height-1-2">
 					<li class="txt-24 semibold"
 						init-with="p-op"
