@@ -341,13 +341,46 @@
         </user-stories>
     </user-workflow>
 
-    <user-workflow name='Animation Stuff' priority="11">
+    <user-workflow name='Animation Stuff' priority="50">
         <user-stories>
-            <story name="Directives">
+            <story desc="Property-specific shortcuts/enhancements">
+                <ui-state desc="Remainder of the animation-specific attributes"> </ui-state>
+                <ui-state desc="property specific transitions applied to particular properties"> </ui-state>
+                <ui-state desc="clearing/modifying/reversing particular properties, or subproperties (i.e. transform)"> </ui-state>
+                <ui-state desc="Interfacing properties with switches"> </ui-state>
             </story>
-            <story name="Inspect Animation">
+            <story desc="Accessing Element Internal Attributes">
+                <ui-state desc="Scroll"> </ui-state>
+                <ui-state desc="Accessing this.x, this.y current coordinates + applying mathematical operation"></ui-state>
+                <ui-state desc="Accessing this.x, this.y current coordinates + applying mathematical operation"></ui-state>
+                <ui-state desc="Relative vs Absolute vs Fixed Transforms"></ui-state>
+                <ui-state desc="Math operations"></ui-state>
             </story>
-            <story name="Toolbar">
+            <story desc="Animation Tool/Animation/Tween Inspector">
+                <ui-state desc="base animation/transition with one svg square">
+                </ui-state>
+                <ui-state desc="property-specific inputs">
+                </ui-state>
+                <ui-state desc="play">
+                </ui-state>
+                <ui-state desc="refresh">
+                </ui-state>
+                <ui-state desc="Verify it works with previous draw stuff">
+                </ui-state>
+            </story>
+            <story desc="Animation Ease Tool/Playground">
+            </story>
+            <story desc="Concurrent/Sequential transitions/animations">
+                <ui-state desc='simultaneous animations'></ui-state>
+                <ui-state desc='simultaneous transitions'></ui-state>
+            </story>
+            <story desc="Animation recorder">
+            </story>
+            <story desc="Animation draw">
+            </story>
+
+            <story desc="Prioritized directives">
+                <ui-state> Counter </ui-state>
             </story>
         </user-stories>
     </user-workflow>
