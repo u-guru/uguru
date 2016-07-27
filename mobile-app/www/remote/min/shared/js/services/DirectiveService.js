@@ -348,7 +348,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (Object.keys(transformPropDict).length) {
           var transformValueStr = '';
           for (key in transformPropDict) {
-            console.log(key, typeof transformPropDict[key])
             if (transformPropDict[key] && (transformPropDict[key].length) || typeof(transformPropDict[key]) === 'number' ) {
               transformValueStr += key + '(' + transformPropDict[key] + ') ';
             }
@@ -461,7 +460,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
         }
       }
-      console.log(resultDict);
       return {type: 'transform', transforms: [resultDict]}
     }
 
