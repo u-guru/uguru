@@ -5313,7 +5313,7 @@ a[class*="-container"]:hover .map-stadium-outside {
         right: 0;
         width: 15px;
         height: 100%;
-        transform-origin: center bottom; }
+        transform-origin: center top; }
       .record-tile-container .record-tile .record-tile-front div:empty:nth-child(3) {
         bottom: 0;
         right: 0;
@@ -5325,7 +5325,7 @@ a[class*="-container"]:hover .map-stadium-outside {
         left: 0;
         width: 15px;
         height: 100%;
-        transform-origin: center top; }
+        transform-origin: center bottom; }
   .record-tile-container .record-tile .record-tile-back {
     border-radius: 100%;
     background: #2B3234; }

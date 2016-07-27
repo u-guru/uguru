@@ -563,7 +563,7 @@
 					right: 0;
 					width: 15px;
 					height: 100%;
-					transform-origin: center bottom;
+					transform-origin: center top;
 				}
 				&:nth-child(3) {
 					bottom: 0;
@@ -577,7 +577,7 @@
 					left: 0;
 					width: 15px;
 					height: 100%;
-					transform-origin: center top;
+					transform-origin: center bottom;
 				}
 			}
 		}
