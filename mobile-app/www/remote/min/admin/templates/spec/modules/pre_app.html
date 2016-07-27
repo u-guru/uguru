@@ -7,9 +7,9 @@
                 <ui-stream desc='powerups transition in' test-id='2017'>
                     <ui-state type="gesture" desc="User clicks powerup icon" func="true">
                     </ui-state>
-                    <ui-state type="gesture, transition" desc="Full view transition from [splash madlib, ]" func="true">
+                    <ui-state type="gesture, transition" desc="Full view transition from [splash madlib, ]" func="true" j-unsure='true'>
                     </ui-state>
-                    <ui-state type="gesture, transition" desc="Once view transition is complete, initiate the on enter of the powerup cards" func="true">
+                    <ui-state type="gesture, transition" desc="Once view transition is complete, initiate the on enter of the powerup cards" func="true" j-unsure='true'>
                     </ui-state>
                     <!-- add more here, any sequential animations should be a state. Sequential, as in, when one enters, it has an agenda to achieve XYZ in orderly fashion. -->
                 </ui-stream>
@@ -50,14 +50,14 @@
             </story>
             <story type="gesture" desc="User enters splash madlib" func='true' tested='false' cp='false' responsive='false'>
                 <ui-stream desc="Page transitions into guru phase" test-id="1263">
-                    <ui-state name="Warp zooms out" desc="Warp zooms out" func="false" cp='true' >
+                    <ui-state name="Warp zooms out" desc="Warp zooms out" func="false" cp='true' j-unsure='true' >
                         <bug type='functional' open by="Samir" description="Very slow"/>
                     </ui-state>
-					<ui-state name="Guru head crashes in" desc="Guru head crashes against the screen, then bounces back and readjusts itself"></ui-state>
-                    <ui-state name="Title animates in" desc="Warp zooms out" func="false">
+					<ui-state name="Guru head crashes in" desc="Guru head crashes against the screen, then bounces back and readjusts itself" j-unsure='true'></ui-state>
+                    <ui-state name="Title animates in" desc="Warp zooms out" func="false" j-unsure='true'>
 						<bug type="functional" open by="Gabrielle" description="Madlib header letters overlap with each other on smallest screen size, needs tiny mobile attr." platform="mobile"></bug>
                     </ui-state>
-					<ui-state name="Tags animate in" desc="Tags fall in from the warp in a random, staggered manner, then readjust themselves"></ui-state>
+					<ui-state name="Tags animate in" desc="Tags fall in from the warp in a random, staggered manner, then readjust themselves" j-unsure='true'></ui-state>
                     <ui-state func='true' type='func' desc="Verify all elements exist after the on-enter madlib transition" ></ui-state>
                 </ui-stream>
             </story>
@@ -81,9 +81,9 @@
                     </ui-state>
                     <ui-state func='true' type='func, gesture' desc="Both blanks filled activates a new splash, madlib state[same state]">
                     </ui-state>
-                    <ui-state func='false' type='func, gesture' desc="Both blanks filled initiates next splash device state">
+                    <ui-state func='false' type='func, gesture' desc="Both blanks filled initiates next splash device state" j-unsure='true'>
                     </ui-state>
-                    <ui-state func='false' type='func, gesture' desc="Both blanks filled initiates next splash device state">
+                    <ui-state func='false' type='func, gesture' desc="Both blanks filled initiates next splash device state" j-unsure='true'>
                     </ui-state>
                 </ui-stream>
                 <ui-stream desc='Removing a blank + reversing both-blanks activation' func='true' type='func, gesture' test-id='4856'>
@@ -96,13 +96,13 @@
             </story>
             <story desc="User clicks skip" type='func'>
                 <ui-stream desc="Option 1:" test-id='2462'>
-                    <ui-state func='false' desc="Both blanks quickly finish and activate the next steps in a 'fast-forward-y manner">
+                    <ui-state func='false' desc="Both blanks quickly finish and activate the next steps in a 'fast-forward-y manner" j-unsure='true'>
                     </ui-state>
-                    <ui-state func='false' desc="Once the device has the 'action button', auto trigger the click (show the button as if being pressed) + activate the splash madlib less active state + activate the map/device next steps">
+                    <ui-state func='false' desc="Once the device has the 'action button', auto trigger the click (show the button as if being pressed) + activate the splash madlib less active state + activate the map/device next steps" j-unsure='true'>
                     </ui-state>
                 </ui-stream>
                 <ui-stream desc="Option 2: we scroll back down to getting started" test-id='4454'>
-                    <ui-state func='false' desc="Splash madlib view transitions to less active state en route to Getting Started Workflow">
+                    <ui-state func='false' desc="Splash madlib view transitions to less active state en route to Getting Started Workflow" j-unsure='true'>
                     </ui-state>
                 </ui-stream>
             </story>
@@ -124,31 +124,31 @@
             </story>
             <story type="gesture, func" desc="User selects a new category" tested='false' cp='false' responsive='false'>
                 <ui-stream desc="User selects a category with both blanks empty"  test-id='4421'>
-                    <ui-state func='true' desc='Transition the tags out'>
+                    <ui-state func='true' desc='Transition the tags out' j-unsure='true'>
                     </ui-state>
-                    <ui-state func='true' desc='Transition new category tags back in'>
+                    <ui-state func='true' desc='Transition new category tags back in' j-unsure='true'>
                     </ui-state>
                 </ui-stream>
                 <ui-stream desc="User selects a category with 1/2 blanks empty" type='func, gesture' tested='false' cp='false' test-id='4138'>
                     <ui-state func='false' desc='Transition the filled transition tags back to the their original position'>
                     </ui-state>
-                    <ui-state func='true' desc='Transition the tags with on-exit tag transition'>
+                    <ui-state func='true' desc='Transition the tags with on-exit tag transition' j-unsure='true'>
                     </ui-state>
-                    <ui-state func='true' desc='Transition new category tags back in'>
+                    <ui-state func='true' desc='Transition new category tags back in' j-unsure='true'>
                     </ui-state>
                 </ui-stream>
 
                 <ui-stream desc="User selects a category with both blanks filled" func='false' type='func, gesture' tested='false' cp='false' test-id='4486'>
                     <ui-state func='false' desc='Transition the filled transition tags back to the their original position'>
                     </ui-state>
-                    <ui-state func='true' desc='Transition the tags with on-exit tag transition'>
+                    <ui-state func='true' desc='Transition the tags with on-exit tag transition' j-unsure='true'>
                     </ui-state>
-                    <ui-state func='true' desc='Transition new category tags back in' >
+                    <ui-state func='true' desc='Transition new category tags back in' j-unsure='true'>
                     </ui-state>
                 </ui-stream>
             </story>
             <story type="gesture, func" desc="User selects a new university" tested='false' cp='false' responsive='false' >
-                <ui-state func='false' desc='Transition the filled transition tags back to the their original position' test-id=''>
+                <ui-state func='false' desc='Transition the filled transition tags back to the their original position' >
                 </ui-state>
                 <ui-state func='true' desc='Transition/Trigger the tags with on-exit tag transition'>
                 </ui-state>
@@ -159,17 +159,17 @@
     </user-workflow>
 
     <user-workflow name='Splash Nav & Utilities' url='/#/dev/splash/nav/' priority="13">
-        <user-stories>
+        <user-stories> 
             <story name="On enter splash">
 				<ui-stream name="Navigation animates in" test-id='1263'>
-					<ui-state name="Uguru logo animates in" desc="Logo jellyIn; label scaleInX"></ui-state>
-					<ui-state name="Category dropdown animates in" desc="drawIn"></ui-state>
-					<ui-state name="@ sign animates in" desc="drawIn"></ui-state>
-					<ui-state name="School dropdown animates in" desc="drawIn"></ui-state>
-					<ui-state name="Powerup link animates in" desc="drawIn"></ui-state>
-					<ui-state name="Sidebar link animates in" desc="drawIn"></ui-state>
-					<ui-state name="Pennant animates in" desc="rotateIn"></ui-state>
-					<ui-state name="Skip button animates in" desc="rollIn"></ui-state>
+					<ui-state name="Uguru logo animates in" desc="Logo jellyIn; label scaleInX" j-hard='true'></ui-state>
+					<ui-state name="Category dropdown animates in" desc="drawIn" j-hard='true'></ui-state>
+					<ui-state name="@ sign animates in" desc="drawIn" j-hard='true'></ui-state>
+					<ui-state name="School dropdown animates in" desc="drawIn" j-hard='true'></ui-state>
+					<ui-state name="Powerup link animates in" desc="drawIn" j-hard='true'></ui-state>
+					<ui-state name="Sidebar link animates in" desc="drawIn" j-hard='true'></ui-state>
+					<ui-state name="Pennant animates in" desc="rotateIn" j-hard='true'></ui-state>
+					<ui-state name="Skip button animates in" desc="rollIn" j-hard='true'></ui-state>
 				</ui-stream>
             </story>
 
