@@ -39,7 +39,7 @@ angular.module('uguru.admin')
         examples: [
           {
             args: ['rotate-z', 'translate-x', 'scale-y'],
-            str: 'transform:[ro-z:-0.75turn, tx:100%, sc-y:2.0, t-o:75% 25% -125px, duration:1000, p:500px]'
+            str: 'transform:[ro-z:-0.75turn, tx:100%, sc-y:2.0, t-o:75% 25% -125px, duration:250, p:500px, tf:cb(0.230,1.000, 0.320,1.000)]'
           },
           {
             args: ['sk-z', 'sk-x', 'ro-z', 't-o'],

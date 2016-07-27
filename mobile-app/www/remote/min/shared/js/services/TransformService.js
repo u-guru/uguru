@@ -39,7 +39,7 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
       }
 
       function getSupported() {
-          return ['to', 'translate', 'sk-x', 'sk-y', 'sky', 'skx', 'sx', 'sc-x', 's-x', 'sy', 'sc-y', 's-y', 'sz', 'sc-z', 's-z', 'tr', 'tr-z', 'tr-x', 'tr-y', 't-z', 't-x', 'tr-y', 'tx', 'ty','tz', 'rx', 'rz', 'r-x', 'ro-x', 'r-y', 'ry', 'ro-y', 'r-z', 'ro-z', 'p-o', 'perspective-origin', 'transform-box', 't-b', 'transform-origin', 'transform-style', 't-s', 't-o',  'backface-visibility', 'b-v', 'perspective-origin', 'p-origin', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
+          return ['to', 'tf', 'timing-function', 'translate', 'sk-x', 'sk-y', 'sky', 'skx', 'sx', 'sc-x', 's-x', 'sy', 'sc-y', 's-y', 'sz', 'sc-z', 's-z', 'tr', 'tr-z', 'tr-x', 'tr-y', 't-z', 't-x', 'tr-y', 'tx', 'ty','tz', 'rx', 'rz', 'r-x', 'ro-x', 'r-y', 'ry', 'ro-y', 'r-z', 'ro-z', 'p-o', 'perspective-origin', 'transform-box', 't-b', 'transform-origin', 'transform-style', 't-s', 't-o',  'backface-visibility', 'b-v', 'perspective-origin', 'p-origin', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
       }
 
       function parse2d(coord_string) {
@@ -96,6 +96,9 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
         if ('t-b' === str) {
           return 'transform-box'
         }
+        if ('tf' === str) {
+          return 'timing-function';
+        }
         if ('b-v' === str)  {
           return 'backface-visibility'
         }
@@ -141,9 +144,9 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
         }
       }
 
-      function parseTransformArgs(transform_dict, elem) {
+      function parseTransformArgs(transform_dict, elem, browser_prefix) {
         var resultDict = {};
-        var extra_args = ['t-s', 'transform-style', 'transform-box', 't-b', 'b-v', 'backface-visibility', 't-o', 'transform-origin', 't-s', 'transform-style', 'p-o', 'perspective-origin']
+        var extra_args = ['tf', 'timing-function', 't-s', 'transform-style', 'transform-box', 't-b', 'b-v', 'backface-visibility', 't-o', 'transform-origin', 't-s', 'transform-style', 'p-o', 'perspective-origin']
         for (key in transform_dict) {
           parsedKey = detectTransformDictKey(key);
           switch (parsedKey) {
@@ -165,7 +168,6 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
             case ('tr'):
               parseTransformDictKey(parsedKey, transform_dict[key], resultDict)
             case ('translate'):
-              console.log(parsedKey)
               parseTransformDictKey(parsedKey, transform_dict[key], resultDict);
               break;
             case ('rotateX'):
@@ -215,6 +217,12 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
               var translateCoords = xyToElem(elem, transform_dict[key]);
               for (coordName in translateCoords) {
                 resultDict[coordName] = translateCoords[coordName];
+              }
+              break;
+            case ('timing-function'):
+              resultDict.timingFunction = transform_dict[key];
+              if (['cb', 'cubic-bezier'].indexOf(resultDict.timingFunction) > -1) {
+                  console.log('found cubic bezier', resultDict.timingFunction)
               }
               break;
             case ('duration'):
