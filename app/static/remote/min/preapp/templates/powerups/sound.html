@@ -1,5 +1,252 @@
-<div class='full-xy bg-charcoal txt-smoke txt-48 absolute left-0 flex-wrap-center' init-with="p:[opacity:0, top:-100%]" on-enter="p:[transition:all 1000ms ease, top:0, opacity:1, z-index:10000]" when-sound-triggered="trigger:[on-enter]" when-close-sound="p:[opacity:0, top:-100%, z-index:default:delay-1000]">
-    Sound Page
+<div class='full-xy absolute left-0 flex-wrap-center'
+	init-with="p:[op:0]"
+	on-enter="p:[t:all 1000ms ease, op:1, z-index:10000]"
+	when-sound-triggered="t-enter | s:[sound-landing-enter:public]:delay-2000"
+	when-close-sound="p:[op:0, tr:translateY(-100%), z-index:default:delay-1000]">
+	<div class="landing-sound landing-container"
+		init-with="p:[background:#ac95e1]"
+		on-enter="p:[background:#504464, t:all 450ms ease-in]"
+		when-sound-landing-enter="t-enter">
+		<div class="powerup-icon"
+			init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
+			on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2500"
+			when-sound-triggered="t-enter">
+			<div ng-include="root.base_url + 'preapp/templates/components/powerups/sound-card.html'"></div>
+		</div>
+		<h1 class="powerup-header"
+			init-with="p-op"
+			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-250:in]"
+			when-sound-landing-enter="t-enter">Sound Guru</h1>
+		<h2 class="powerup-subheader"
+			init-with="p-op"
+			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
+			when-sound-landing-enter="t-enter">Curated mixtapes for a focused study session.</h2>
+		<!-- <div class="landing-demo z-index-3">
+			<svg viewBox="0 0 318 651"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:1200ms#func:ease-out):delay-750:in]"
+				when-sound-landing-enter="t-enter">
+				<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+				<circle cx="158.5" cy="610.5" r="25"></circle>
+				<rect x="21.5" y="79.5" width="276" height="493"></rect>
+			</svg>
+			<div>
+
+			</div>
+		</div> -->
+		<div class="landing-content z-index-1"
+			init-with="p-op"
+			on-enter="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]"
+			when-sound-landing-enter="t-enter">
+			<h1
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:1000ms#func:linear):delay-1500:in]"
+				when-sound-landing-enter="t-enter">Preview the App</h1>
+			<ul class="sound-record-list">
+				<li>
+					<div class="record-tile-container">
+						<div class="record-tile">
+							<svg viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div class="record-tile-back"
+								init-with="p-op"></div>
+							<div class="record-tile-front"
+								init-with="p:[bg:transparent, tr:translateX(7.5%), t:all 250ms ease-out]"
+								when-sound-landing-enter="s:[record-tile-init:public:delay-2000]"
+								when-record-tile-init="p:[bg:#8967d4]:delay-1000">
+								<!-- <div></div><div></div><div></div><div></div>
+								<div class="record-art"></div>
+								<h1 class="record-label">Top 40</h1> -->
+								<div init-with="p-op"
+									when-record-tile-init="t-enter"
+									on-enter="a:[scaleInX-subtle:set:(dur:1000ms#func:ease-in):in]"></div>
+								<div init-with="p-op"
+									when-record-tile-init="t-enter"
+									on-enter="a:[scaleInY-subtle:set:(dur:1000ms#func:ease-in):in]"></div>
+								<div init-with="p-op"
+									when-record-tile-init="t-enter"
+									on-enter="a:[scaleInX-subtle:set:(dur:1000ms#func:ease-in):in]"></div>
+								<div init-with="p-op"
+									when-record-tile-init="t-enter"
+									on-enter="a:[scaleInY-subtle:set:(dur:1000ms#func:ease-in):in]"></div>
+								<div class="record-art"
+									init-with="p-op"></div>
+								<h1 class="record-label"
+									init-with="p-op">Top 40</h1>
+							</div>
+						</div>
+						<div class="record-info">
+							<h3>Top 40 - 2016</h3>
+							<button>
+								<span></span><span></span><span></span><span></span>
+								<span>Listen Now</span>
+							</button>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="record-tile-container">
+						<div class="record-tile">
+							<svg viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div class="record-tile-back"></div>
+							<div class="record-tile-front">
+								<div></div><div></div><div></div><div></div>
+								<div class="record-art"></div>
+								<h1 class="record-label">Chill Out</h1>
+							</div>
+						</div>
+						<div class="record-info">
+							<h3>Chill Out</h3>
+							<button>
+								<span></span><span></span><span></span><span></span>
+								<span>Listen Now</span>
+							</button>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="record-tile-container">
+						<div class="record-tile">
+							<svg viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div class="record-tile-back"></div>
+							<div class="record-tile-front">
+								<div></div><div></div><div></div><div></div>
+								<div class="record-art"></div>
+								<h1 class="record-label">Upbeat EDM</h1>
+							</div>
+						</div>
+						<div class="record-info">
+							<h3>Upbeat EDM</h3>
+							<button>
+								<span></span><span></span><span></span><span></span>
+								<span>Listen Now</span>
+							</button>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="record-tile-container">
+						<div class="record-tile">
+							<svg viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div class="record-tile-back"></div>
+							<div class="record-tile-front">
+								<div></div><div></div><div></div><div></div>
+								<div class="record-art"></div>
+								<h1 class="record-label">Guitar Melodies</h1>
+							</div>
+						</div>
+						<div class="record-info">
+							<h3>Guitar Melodies</h3>
+							<button>
+								<span></span><span></span><span></span><span></span>
+								<span>Listen Now</span>
+							</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="landing-action">
+				<div class="sound-equalizer">
+					<svg width="1046px" height="105px" viewBox="0 0 1046 105">
+					    <g fill="none" stroke-linecap="round" opacity="0.5" stroke-linejoin="round" stroke="#7872E3" stroke-width="6">
+					        <path d="M3,19.3366337 L3,86.6633663" class="line-66"></path>
+					        <path d="M1043,44.0891089 L1043,61.9108911" class="line-65"></path>
+					        <path d="M1027,37.1534653 L1027,67.8465347" class="line-64"></path>
+					        <path d="M1011,48.049505 L1011,57.950495" class="line-63"></path>
+					        <path d="M995,9.43069307 L995,95.5693069" class="line-62"></path>
+					        <path d="M979,45.0742574 L979,59.9257426" class="line-61"></path>
+					        <path d="M963,9.43564356 L963,96.5643564" class="line-60"></path>
+					        <path d="M947,21.3118812 L947,83.6881188" class="line-59"></path>
+					        <path d="M931,25.2722772 L931,79.7277228" class="line-58"></path>
+					        <path d="M915,23.2970297 L915,82.7029703" class="line-57"></path>
+					        <path d="M899,29.2326733 L899,75.7673267" class="line-56"></path>
+					        <path d="M883,21.3118812 L883,83.6881188" class="line-55"></path>
+					        <path d="M867,26.2673267 L867,79.7326733" class="line-54"></path>
+					        <path d="M851,6.46039604 L851,98.539604" class="line-53"></path>
+					        <path d="M835,27.2574257 L835,78.7425743" class="line-52"></path>
+					        <path d="M819,16.3613861 L819,88.6386139" class="line-51"></path>
+					        <path d="M803,44.0841584 L803,60.9158416" class="line-50"></path>
+					        <path d="M787,39.1386139 L787,66.8613861" class="line-49"></path>
+					        <path d="M771,21.3168317 L771,84.6831683" class="line-48"></path>
+					        <path d="M755,31.2178218 L755,74.7821782" class="line-47"></path>
+					        <path d="M739,31.2178218 L739,74.7821782" class="line-46"></path>
+					        <path d="M723,32.2079208 L723,73.7920792" class="line-45"></path>
+					        <path d="M707,41.1188119 L707,64.8811881" class="line-44"></path>
+					        <path d="M691,39.1336634 L691,65.8663366" class="line-43"></path>
+					        <path d="M675,5.47524752 L675,100.524752" class="line-42"></path>
+					        <path d="M659,35.1732673 L659,69.8267327" class="line-41"></path>
+					        <path d="M643,47.0594059 L643,58.9405941" class="line-40"></path>
+					        <path d="M627,23.2970297 L627,82.7029703" class="line-39"></path>
+					        <path d="M611,23.2920792 L611,81.7079208" class="line-38"></path>
+					        <path d="M595,14.3861386 L595,91.6138614" class="line-37"></path>
+					        <path d="M579,34.1881188 L579,71.8118812" class="line-36"></path>
+					        <path d="M563,29.2376238 L563,76.7623762" class="line-35"></path>
+					        <path d="M547,11.4108911 L547,93.5891089" class="line-34"></path>
+					        <path d="M483,47.0594059 L483,58.9405941" class="line-33"></path>
+					        <path d="M499,41.1188119 L499,64.8811881" class="line-32"></path>
+					        <path d="M515,30.2277228 L515,75.7722772" class="line-31"></path>
+					        <path d="M531,44.0891089 L531,61.9108911" class="line-30"></path>
+					        <path d="M467,6.46039604 L467,98.539604" class="line-29"></path>
+					        <path d="M195,33.1930693 L195,71.8069307" class="line-28"></path>
+					        <path d="M227,47.0594059 L227,58.9405941" class="line-27"></path>
+					        <path d="M259,26.2673267 L259,79.7326733" class="line-26"></path>
+					        <path d="M243,10.4207921 L243,94.5792079" class="line-25"></path>
+					        <path d="M275,46.0693069 L275,59.9306931" class="line-24"></path>
+					        <path d="M339,28.2475248 L339,77.7524752" class="line-23"></path>
+					        <path d="M307,26.2623762 L307,78.7376238" class="line-22"></path>
+					        <path d="M323,7.45544554 L323,98.5445545" class="line-21"></path>
+					        <path d="M291,38.1485149 L291,67.8514851" class="line-20"></path>
+					        <path d="M371,47.0544554 L371,57.9455446" class="line-19"></path>
+					        <path d="M355,6.46039604 L355,98.539604" class="line-18"></path>
+					        <path d="M387,6.46534653 L387,99.5346535" class="line-17"></path>
+					        <path d="M419,3.49009901 L419,101.509901" class="line-16"></path>
+					        <path d="M403,18.3465347 L403,87.6534653" class="line-15"></path>
+					        <path d="M435,37.1584158 L435,68.8415842" class="line-14"></path>
+					        <path d="M451,15.3712871 L451,89.6287129" class="line-13"></path>
+					        <path d="M211,19.3366337 L211,86.6633663" class="line-12"></path>
+					        <path d="M67,27.2574257 L67,78.7425743" class="line-11"></path>
+					        <path d="M51,36.1683168 L51,69.8316832" class="line-10"></path>
+					        <path d="M99,44.0891089 L99,61.9108911" class="line-9"></path>
+					        <path d="M83,38.1485149 L83,67.8514851" class="line-8"></path>
+					        <path d="M163,30.2277228 L163,75.7722772" class="line-7"></path>
+					        <path d="M115,38.1485149 L115,67.8514851" class="line-6"></path>
+					        <path d="M19,19.3366337 L19,86.6633663" class="line-5"></path>
+					        <path d="M147,42.1039604 L147,62.8960396" class="line-4"></path>
+					        <path d="M179,41.1188119 L179,64.8811881" class="line-3"></path>
+					        <path d="M131,34.1881188 L131,71.8118812" class="line-2"></path>
+					        <path d="M35,35.1782178 L35,70.8217822" class="line-1"></path>
+					    </g>
+					</svg>
+				</div>
+				<button class="landing-try-button"
+					init-with="p:[op:0, tro: center]"
+					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):delay-2150:in]"
+					when-sound-landing-enter="t-enter">Try It Now on Desktop</button>
+				<ul class="landing-platforms p15-grid full-x line-height-1-2">
+					<li class="txt-24 semibold"
+						init-with="p-op"
+						on-enter="p:[op:1, t:all 750 ease-out]:delay-2150"
+						when-sound-landing-enter="t-enter">
+						Android<br/>Play Store
+					</li>
+					<li class="txt-24 semibold"
+						init-with="p-op"
+						on-enter="p:[op:1, t:all 750 ease-out]:delay-2150"
+						when-sound-landing-enter="t-enter">
+						iOS<br/>Coming Soon
+					</li>
+				</ul>
+			</div>
+		</div>
+		</div>
+	</div>
     <div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
         init-with="p:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
         when-powerups-init="t-enter"
