@@ -11,6 +11,23 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("bar", ["RootService", function(RootService) {
+        return {
+            templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/grid/bar.tpl',
+            restrict: 'E',
+            scope: {
+                overflowX:'=',
+                options: '=ngModel',
+                title: 'title',
+                key: 'key',
+            },
+            link: {
+                pre: function(scope, element, attr) {
+                    return
+                }
+            }
+        }
+    }])
     .directive("uBody", ["RootService", function(RootService) {
         return {
             templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/body.tpl',

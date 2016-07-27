@@ -329,10 +329,16 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           resultPropDict.delay = transformPropDict.delay;
           delete transformPropDict['delay']
         }
+
+
         if (!transformPropDict) return;
         if (transformPropDict.duration) {
           transitionObj.duration = transformPropDict.duration;
           delete transformPropDict['duration'];
+        }
+        if (transformPropDict.timingFunction) {
+          transitionObj.timingFunction = transformPropDict.timingFunction;
+          delete transformPropDict['timingFunction'];
         }
 
 
@@ -342,7 +348,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (Object.keys(transformPropDict).length) {
           var transformValueStr = '';
           for (key in transformPropDict) {
-            console.log(key, typeof transformPropDict[key])
             if (transformPropDict[key] && (transformPropDict[key].length) || typeof(transformPropDict[key]) === 'number' ) {
               transformValueStr += key + '(' + transformPropDict[key] + ') ';
             }
@@ -359,17 +364,18 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           for (var i = 0; i < extensions.length; i++) {
             var key = Object.keys(extensions[i])[0];
             var value = extensions[i][key];
-            var keyBrowserFormatted = formatBrowserCSSProperty(key);
+            var keyBrowserFormatted = RootService.formatBrowserCSSProperty(key);
             var propDict = {};
             propDict[keyBrowserFormatted] = value;
             resultPropDict.properties.push(propDict);
           }
         }
-        console.log(resultPropDict);
 
-        if (transitionObj.duration) {
+
+        if (transitionObj.duration || transitionObj.timingFunction) {
+
           var transitionDict = formatTransitionString(transitionObj);
-          console.log(transitionDict)
+          console.log(transitionDict);
           resultPropDict.properties.push(transitionDict);
         }
         if (resultPropDict.properties && resultPropDict.properties.length) {
@@ -445,11 +451,15 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         }
       }
       for (key in resultDict) {
-        if (['rotate', 'scale', 'translate', 'to'].indexOf(key) > -1) {
-          resultDict[key] = UtilitiesService.removeAllOccurrancesArr(hasParens[0], ['(', ')']);
+        if (['rotate', 'scale', 'translate', 'to', 'timingFunc', 'tf'].indexOf(key) > -1) {
+          if (key === 'timingFunc' || key === 'tf') {
+            resultDict[key] = resultDict[key].replace('cb', 'cubic-bezier').replace('cubic-bezier', 'cubic-bezier ').split(' ')[0] + hasParens[0];
+          } else {
+            resultDict[key] = UtilitiesService.removeAllOccurrancesArr(hasParens[0], ['(', ')']);
+          }
+
         }
       }
-      console.log(resultDict);
       return {type: 'transform', transforms: [resultDict]}
     }
 

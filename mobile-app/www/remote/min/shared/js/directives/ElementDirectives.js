@@ -29,7 +29,6 @@ angular.module('uguru.shared.directives')
             scope.$watch(function() {
               return element.attr('class');
             }, function(new_classes, old_classes) {
-              console.log('classes changed', new_classes);
               if (new_classes && new_classes.indexOf('init-with') > -1) {
                 console.log('initializing');
                 element[0].classList.remove('init-with');
@@ -104,6 +103,94 @@ angular.module('uguru.shared.directives')
 //             }
 //           })
 //       }
+//     }
+//   }
+// }])
+// .directive('counter', ['$timeout', '$interval', function ($timeout, $interval) {
+//   return {
+//     restrict: 'A',
+//     link: function(scope, element, attr) {
+//       var counterMax = attr.counterMax;
+//       var counterMin = attr.counterMin || 0;
+//       var counterSuffix = attr.counterSuffix || '';
+//       var counterPrefix = attr.counterPrefix || '';
+//       var counterDuration = attr.counterDuration || '';
+//       if (attr.initOnClass && attr.initOnClass.indexOf('counter:') > -1 && counterMax) {
+//         var initOnClassArgs = attr.initOnClass.split(', ');
+//         var initCounterClassIndex = getClassArgIndex('counter', initOnClassArgs)
+//         var initCounterClassArr = initOnClassArgs[initCounterClassIndex].split(':')
+//         if (initCounterClassArr.length === 2) {
+//           initCounterClass = initCounterClassArr[1];
+//         }
+//         if (initCounterClass) {
+//           scope.$watch(function() {
+//             counterMax = attr.counterMax;
+//             var counterDuration = attr.counterDuration || '';
+//             return (element.attr('class') && element.attr('class').indexOf(initCounterClass) > -1) || "";
+//
+//           },function(elem_has_init_counter_class) {
+//             if (elem_has_init_counter_class) {
+//               $timeout(function() {
+//                 scope.$apply(function() {
+//                   element[0].classList.remove(elem_has_init_counter_class);
+//                 })
+//               });
+//               if (!element[0].id) {
+//                 var numCounterElems = document.querySelectorAll('[counter]').length + 1
+//                 element[0].id = 'counter-' + numCounterElems;
+//               }
+//               var counterArgs = {
+//                   useEasing : false,
+//                   useGrouping : false,
+//                   separator : ',',
+//                   decimal : '.',
+//                   prefix : counterPrefix ,
+//                   suffix : counterSuffix
+//               }
+//               var counterDelay = attr.counterDelay;
+//               var counterInfinite = attr.counterInfinite;
+//               var counterDuration = attr.counterDuration;
+//               if ('counterInfinite' in attr) {
+//                 var counterTimeBetween = attr.counterInfiniteInBtwn || 0;
+//                 if (counterDelay) {
+//                   $timeout(function() {
+//                     $interval(function() {
+//                       var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                       countUpInstance.start();
+//                     }, parseInt(counterDuration) * 1000 + parseInt(counterTimeBetween) * 1000 + 1000)
+//                   }, parseInt(counterDelay))
+//                 } else {
+//                   $interval(function() {
+//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                     countUpInstance.start();
+//                   }, parseInt(counterDuration) * 1000 + parseInt(counterTimeBetween) * 1000);
+//                 }
+//
+//               } else {
+//                 if (counterDelay) {
+//                   $timeout(function() {
+//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                     countUpInstance.start();
+//                   }, parseInt(counterDelay))
+//                 } else {
+//                     var countUpInstance = new CountUp(element[0].id, parseInt(counterMin), parseInt(counterMax), 0, parseInt(counterDuration), counterArgs);
+//                     countUpInstance.start();
+//                 }
+//               }
+//             }
+//           })
+//         }
+//       }
+//
+//       function getClassArgIndex(arg_name, class_arr) {
+//         for (var i = 0; i < class_arr.length; i++) {
+//           var indexClass = class_arr[i];
+//           if (indexClass.indexOf(arg_name + ':') > -1) {
+//             return i;
+//           }
+//         }
+//       }
+//
 //     }
 //   }
 // }])
@@ -741,6 +828,137 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
             }
         }
 ])
+.directive("inspect", ['$timeout', 'RootService', '$compile', 'AdminInspectService',
+  function($timeout, RootService, $compile, AdminInspectService) {
+      return {
+        restrict: 'C',
+        scope: {},
+        priority: 1,
+        link: {
+          pre: function(scope, element, attr) {
+
+            scope.state = {play: false, pause: false, complete: false, timer: {start:0, pause:0}};
+
+            scope.$watch(function() {
+              return element.attr('style');
+            }, function(new_style, old_classes) {
+              if (new_style && !scope.play) {
+                scope.originalStyle = new_style;
+
+                scope.origProp = {duration: getDuration(element), transition: (element[0].style.webkitTransition || element[0].style.webkitTransition)}
+                scope.props = {arr: AdminInspectService.getPropArr(new_style), duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
+
+                scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
+                scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
+                scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope);
+                attr.$set('style', null);
+                initPlayer(scope);
+              }
+            })
+          }
+        }
+      }
+
+      function getPauseFunction(element, attr, props, state) {
+        return function() {
+          state.pause = true;
+          state.play = false;
+          state.timer.pause = state.timer.pause + (new Date().getTime() - state.timer.start);
+          computedStyle = window.getComputedStyle(element[0]);
+          props.arr = AdminInspectService.getPropArr('transform:' + computedStyle.getPropertyValue('transform') +';' +element[0].getAttribute('style'))
+          state.playerPos = state.timer.pause
+          element.css('transform', computedStyle.getPropertyValue('transform') || computedStyle.getPropertyValue('webkit-transform'));
+          element.css('transition', null);
+          element.css('webkit-transition', null);
+          console.log(state.pause, state.play, state.timer.pause)
+        }
+      }
+
+      function getUpdateFunction(element, attr, props, state, scope) {
+        return function(value) {
+          state.timer.pause = true;
+          state.play = false;
+          state.timer.pause = value;
+          attr.$set('style', null);
+          $timeout(function() {
+            scope.$apply();
+            attr.$set('style', props.style);
+            element.css('transition-delay', (state.timer.pause * -1) + 'ms');
+            element.css('-webkit-transition-delay', (state.timer.pause * -1) + 'ms');
+            computedStyle = window.getComputedStyle(element[0]);
+            element.css('transform', computedStyle.getPropertyValue('transform') || computedStyle.getPropertyValue('webkit-transform'));
+            $timeout(function() {
+              scope.$apply();
+              element.css('transition', null);
+              element.css('webkit-transition', null);
+            })
+          })
+        }
+      }
+
+      function getPlayFunction(element, attr, props, state, scope) {
+        return function() {
+
+
+
+
+          if (state.pause && state.timer.pause) {
+            var durationOffset = props.duration - state.timer.pause;
+            console.log(durationOffset)
+            attr.$set('style', props.style);
+            element.css('transition-duration', durationOffset + 'ms');
+            element.css('webkit-transition-duration', durationOffset + 'ms');
+            bindElementWithTransitionEnd();
+          } else {
+            bindElementWithTransitionEnd();
+            attr.$set('style', props.style);
+          }
+          state.timer.start = new Date().getTime();
+          state.play = true;
+
+          function bindElementWithTransitionEnd()  {
+            element.bind('webkitTransitionEnd', function() {
+              state.play = false;
+              state.pause = false;
+              state.complete = true;
+              state.timer.start = 0;
+              state.timer.pause = 0;
+              attr.$set('style', null);
+              $timeout(function() {
+                scope.$apply()
+              })
+              // attr.$set('style', props.style);
+
+            })
+          }
+
+        }
+      }
+
+      function initPlayer(scope) {
+          var div = document.querySelector('#transition-player');
+          scope.name = 'player'
+          if (!div) {
+            div = document.createElement('div');
+            div.classList.add('p15-grid', 'full-x', 'fixed', 'top-0', 'left-0', 'bg-auburn', 'animated', 'slideInDown');
+            div.style.zIndex = 100000;
+            div.id = 'transition-player';
+            div.innerHTML = '<player play=play pause=pause state=state update=update props=props start-offset=state.timer.pause duration=duration></player>'
+            document.querySelector('ui-view').appendChild(div)
+          }
+
+          scope.playerPos = 0
+          scope.duration = 2000;
+          $compile(div)(scope)
+          $timeout(function() {
+            scope.$apply();
+          })
+      }
+
+      function getDuration(element) {
+        return parseFloat((element[0].style.webkitTransitionDuration || element[0].style.transitionDuration).split('ms')[0]);
+      }
+}])
 .directive("switch", ['$timeout', 'RootService', 'DirectiveService', 'UtilitiesService', 'SwitchService',
         function($timeout, RootService, DirectiveService, UtilitiesService, SwitchService) {
             return {
