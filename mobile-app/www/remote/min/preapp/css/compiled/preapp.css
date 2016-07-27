@@ -5286,9 +5286,9 @@ a[class*="-container"]:hover .map-stadium-outside {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    border: 15px solid white;
     background: #8967d4;
-    border-radius: 4px; }
+    border-radius: 4px;
+    padding: 15px; }
     .record-tile-container .record-tile .record-tile-front h1 {
       color: white;
       font-size: 36px;
@@ -5298,6 +5298,34 @@ a[class*="-container"]:hover .map-stadium-outside {
       @media screen and (min-width: 768px) {
         .record-tile-container .record-tile .record-tile-front h1 {
           font-size: 54px; } }
+    .record-tile-container .record-tile .record-tile-front div:empty {
+      position: absolute;
+      background: white;
+      border-radius: 4px; }
+      .record-tile-container .record-tile .record-tile-front div:empty:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 15px;
+        transform-origin: right center; }
+      .record-tile-container .record-tile .record-tile-front div:empty:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 15px;
+        height: 100%;
+        transform-origin: center bottom; }
+      .record-tile-container .record-tile .record-tile-front div:empty:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 15px;
+        transform-origin: left center; }
+      .record-tile-container .record-tile .record-tile-front div:empty:nth-child(4) {
+        bottom: 0;
+        left: 0;
+        width: 15px;
+        height: 100%;
+        transform-origin: center top; }
   .record-tile-container .record-tile .record-tile-back {
     border-radius: 100%;
     background: #2B3234; }
