@@ -5641,7 +5641,15 @@ a[class*="-container"]:hover .map-stadium-outside {
     background: #637074;
     border: #637074; }
 
-@keyframes slideLeft-record {
+.album-slideRight {
+  animation: album-slideRight 1000ms linear forwards; }
+
+@keyframes album-slideRight {
+  0% {
+    transform: translate3d(0, 0, 0); }
+  100% {
+    transform: translate3d(-5%, 0, 0); } }
+@keyframes record-slideLeft {
   0% {
     transform: translate3d(-15%, 0, 0); }
   100% {

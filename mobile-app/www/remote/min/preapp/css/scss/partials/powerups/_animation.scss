@@ -15,13 +15,26 @@
 // 	}
 // }
 
-@keyframes slideLeft-record {
-  0%{
-    transform: translate3d(-15%, 0, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
+.album-slideRight {
+	animation: album-slideRight 1000ms linear forwards;
+}
+
+@keyframes album-slideRight {
+	0% {
+		transform: translate3d(0,0,0);
+	}
+	100% {
+		transform: translate3d(-5%,0,0);
+	}
+}
+
+@keyframes record-slideLeft {
+	0% {
+		transform: translate3d(-15%,0,0);
+	}
+	100% {
+		transform: translate3d(0,0,0);
+	}
 }
 
 /* Generated with Bounce.js. Edit at http://goo.gl/auaf79 */
