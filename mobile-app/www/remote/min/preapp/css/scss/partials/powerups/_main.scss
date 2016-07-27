@@ -130,6 +130,9 @@
 		.hanger {
 			display: none!important;
 		}
+		[class*="card-bg"] {
+			fill: none!important;
+		}
 	}
 	.powerup-header {
 		margin-top: -15px;
@@ -282,11 +285,6 @@
 }
 .landing-gpa {
 	background: mix(white, $gpa, 30%);
-	.powerup-icon {
-		.card-bg, .circle-mask {
-			fill: none!important;
-		}
-	}
 	.landing-demo {
 		> svg:not(.coach) {
 			* {
@@ -457,6 +455,177 @@
 				&:last-child {
 					fill: white;
 				}
+			}
+		}
+	}
+	.landing-content {
+		background: $smoke;
+	}
+	.landing-action {
+		color: $sound;
+		.sound-equalizer {
+			position: relative;
+			margin-bottom: 15px;
+			height: 105px;
+			svg {
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				margin-left: -523px;
+			}
+		}
+		.landing-try-button {
+			background: rgba($sound, .95);
+			color: white;
+			@media screen and (min-width: 768px) {
+				background: $sound;
+				color: white;
+			}
+			&:hover, &:focus {
+				background: mix($sound, white);
+				color: mix($sound, $slate);
+			}
+			&:active {
+				background: mix($sound, $slate);
+				color: white;
+			}
+		}
+	}
+	.sound-record-list {
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		li {
+			padding: 7.5px;
+			width: 100%;
+		}
+	}
+	@media screen and (min-width: 768px) {
+		.sound-record-list {
+			padding: 15px;
+			li {
+				width: 50%;
+				padding: 15px;
+			}
+		}
+		.landing-action {
+			.sound-equalizer {
+				margin-bottom: 45px;
+			}
+		}
+	}
+}
+
+.record-tile-container {
+	.record-tile {
+		position: relative;
+		width: 85%;
+		svg {
+			fill: none;
+		}
+		.record-tile-front, .record-tile-back {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		.record-tile-front {
+			@include flex;
+			@include flex-center;
+			border: 15px solid white;
+			background: $sound;
+			border-radius: 4px;
+			h1 {
+				color: white;
+				font-size: 36px;
+				font-weight: 900;
+				letter-spacing: 8px;
+				text-transform: uppercase;
+				@media screen and (min-width: 768px) {
+					font-size: 54px;
+				}
+			}
+		}
+		.record-tile-back {
+			border-radius: 100%;
+			background: $charcoal;
+		}
+	}
+	.record-info {
+		margin-bottom: 30px;
+		h3 {
+			padding: 15px 0;
+			font-size: 18px;
+			font-weight: 900;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+		}
+		button {
+			position: relative;
+			width: auto;
+			padding-left: 15px;
+			padding-right: 15px;
+			background: transparent;
+			color: $charcoal;
+			text-transform: uppercase;
+			font-weight: 700;
+			span:empty {
+				position: absolute;
+				background: $charcoal;
+				border-radius: 4px;
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 4px;
+					transform-origin: right center;
+				}
+				&:nth-child(2) {
+					top: 0;
+					right: 0;
+					width: 4px;
+					height: 100%;
+					transform-origin: center bottom;
+				}
+				&:nth-child(3) {
+					bottom: 0;
+					right: 0;
+					width: 100%;
+					height: 4px;
+					transform-origin: left center;
+				}
+				&:nth-child(4) {
+					bottom: 0;
+					left: 0;
+					width: 4px;
+					height: 100%;
+					transform-origin: center top;
+				}
+			}
+			&:hover, &:focus {
+				background: $sound;
+				color: white;
+				span:empty {
+					background: $sound;
+				}
+			}
+			&:active {
+				background: $charcoal;
+				color: white;
+				span:empty {
+					background: $charcoal;
+				}
+			}
+		}
+	}
+	@media screen and (min-width: 768px) {
+		.record-info {
+			margin-bottom: 45px;
+			h3 {
+				padding: 30px 0;
+				font-size: 20px;
 			}
 		}
 	}

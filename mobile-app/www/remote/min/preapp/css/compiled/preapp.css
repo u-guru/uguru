@@ -4906,6 +4906,8 @@ a[class*="-container"]:hover .map-stadium-outside {
     margin: -50px auto 0; }
     .landing-container .powerup-icon .hanger {
       display: none !important; }
+    .landing-container .powerup-icon [class*="card-bg"] {
+      fill: none !important; }
   .landing-container .powerup-header {
     margin-top: -15px;
     font-size: 36px;
@@ -5067,8 +5069,6 @@ a[class*="-container"]:hover .map-stadium-outside {
 
 .landing-gpa {
   background: #79c5cd; }
-  .landing-gpa .powerup-icon .card-bg, .landing-gpa .powerup-icon .circle-mask {
-    fill: none !important; }
   .landing-gpa .landing-demo > svg:not(.coach) * {
     stroke: #637074; }
   .landing-gpa .landing-demo > svg:not(.coach) circle {
@@ -5208,6 +5208,160 @@ a[class*="-container"]:hover .map-stadium-outside {
     fill: #968ac0; }
   .landing-sound .landing-demo > svg:not(.coach) rect:last-child {
     fill: white; }
+  .landing-sound .landing-content {
+    background: #F1F1F1; }
+  .landing-sound .landing-action {
+    color: #8967d4; }
+    .landing-sound .landing-action .sound-equalizer {
+      position: relative;
+      margin-bottom: 15px;
+      height: 105px; }
+      .landing-sound .landing-action .sound-equalizer svg {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -523px; }
+    .landing-sound .landing-action .landing-try-button {
+      background: rgba(137, 103, 212, 0.95);
+      color: white; }
+      @media screen and (min-width: 768px) {
+        .landing-sound .landing-action .landing-try-button {
+          background: #8967d4;
+          color: white; } }
+      .landing-sound .landing-action .landing-try-button:hover, .landing-sound .landing-action .landing-try-button:focus {
+        background: #c4b3ea;
+        color: #655890; }
+      .landing-sound .landing-action .landing-try-button:active {
+        background: #655890;
+        color: white; }
+  .landing-sound .sound-record-list {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    padding: 7.5px; }
+    .landing-sound .sound-record-list li {
+      padding: 7.5px;
+      width: 100%; }
+  @media screen and (min-width: 768px) {
+    .landing-sound .sound-record-list {
+      padding: 15px; }
+      .landing-sound .sound-record-list li {
+        width: 50%;
+        padding: 15px; }
+    .landing-sound .landing-action .sound-equalizer {
+      margin-bottom: 45px; } }
+
+.record-tile-container .record-tile {
+  position: relative;
+  width: 85%; }
+  .record-tile-container .record-tile svg {
+    fill: none; }
+  .record-tile-container .record-tile .record-tile-front, .record-tile-container .record-tile .record-tile-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  .record-tile-container .record-tile .record-tile-front {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    border: 15px solid white;
+    background: #8967d4;
+    border-radius: 4px; }
+    .record-tile-container .record-tile .record-tile-front h1 {
+      color: white;
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: 8px;
+      text-transform: uppercase; }
+      @media screen and (min-width: 768px) {
+        .record-tile-container .record-tile .record-tile-front h1 {
+          font-size: 54px; } }
+  .record-tile-container .record-tile .record-tile-back {
+    border-radius: 100%;
+    background: #2B3234; }
+.record-tile-container .record-info {
+  margin-bottom: 30px; }
+  .record-tile-container .record-info h3 {
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase; }
+  .record-tile-container .record-info button {
+    position: relative;
+    width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: transparent;
+    color: #2B3234;
+    text-transform: uppercase;
+    font-weight: 700; }
+    .record-tile-container .record-info button span:empty {
+      position: absolute;
+      background: #2B3234;
+      border-radius: 4px; }
+      .record-tile-container .record-info button span:empty:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        transform-origin: right center; }
+      .record-tile-container .record-info button span:empty:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 4px;
+        height: 100%;
+        transform-origin: center bottom; }
+      .record-tile-container .record-info button span:empty:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 4px;
+        transform-origin: left center; }
+      .record-tile-container .record-info button span:empty:nth-child(4) {
+        bottom: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        transform-origin: center top; }
+    .record-tile-container .record-info button:hover, .record-tile-container .record-info button:focus {
+      background: #8967d4;
+      color: white; }
+      .record-tile-container .record-info button:hover span:empty, .record-tile-container .record-info button:focus span:empty {
+        background: #8967d4; }
+    .record-tile-container .record-info button:active {
+      background: #2B3234;
+      color: white; }
+      .record-tile-container .record-info button:active span:empty {
+        background: #2B3234; }
+@media screen and (min-width: 768px) {
+  .record-tile-container .record-info {
+    margin-bottom: 45px; }
+    .record-tile-container .record-info h3 {
+      padding: 30px 0;
+      font-size: 20px; } }
 
 .powerup-title {
   overflow: hidden !important; }
