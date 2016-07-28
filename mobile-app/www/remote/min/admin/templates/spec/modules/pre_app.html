@@ -19,6 +19,8 @@
                     </ui-state>
                     <ui-state type="transition" name="Transit tile onEnter" desc="Tracks drawIn. Lamps scaleDown to size. jellyIn, staggered" func="true">
                     </ui-state>
+					<ui-state type="transition" name="Hanger onEnter" desc="Hanger swings in on top of tile" func="false" static-"true"></ui-state>
+					<ui-state type="transition" name="Highlight new apps" desc="Hanger swings out and new app sign drops in" func="false" static="false"></ui-state>
                     <!-- add more here, any sequential animations should be a state. Sequential, as in, when one enters, it has an agenda to achieve XYZ in orderly fashion. -->
                 </ui-stream>
                 <ui-stream desc='User hovers over one powerup'>
@@ -71,7 +73,7 @@
 				<ui-stream desc="GPA onEnter">
 					<ui-state name="Hands enter" desc="Slide in from left and right" type="transition" func="true" static="true"></ui-state>
 				</ui-stream>
-				<ui-stream desc="Munchies onEnter"></ui-stream>
+				<ui-stream desc="Munchies onEnter" static="false"></ui-stream>
 				<ui-stream desc="Sound onEnter">
 					<ui-state name="Background fades to darker color" desc="" type="transition" func="true" static="true"></ui-state>
 					<ui-state name="Records animate in" desc="Diagonal scaleOut, record rotateInLeft, text fadeIn" type="transition" func="true" static="true">
