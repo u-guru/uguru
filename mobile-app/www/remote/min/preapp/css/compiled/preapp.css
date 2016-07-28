@@ -4931,12 +4931,14 @@ a[class*="-container"]:hover .map-stadium-outside {
   .landing-container .powerup-header {
     margin-top: -15px;
     font-size: 36px;
-    font-weight: 900; }
+    font-weight: 900;
+    width: 100%; }
   .landing-container .powerup-subheader {
     font-size: 20px;
     font-weight: 600;
     margin-top: 0 !important;
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+    width: 100%; }
   .landing-container .landing-demo {
     display: none;
     position: relative;
