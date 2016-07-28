@@ -76,6 +76,7 @@
 					<ui-state name="Background fades to darker color" desc="" type="transition" func="true" static="true"></ui-state>
 					<ui-state name="Records animate in" desc="Diagonal scaleOut, record rotateInLeft, text fadeIn" type="transition" func="true" static="true">
 						<bug reference-from="Record texture"/>
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="The properties for the transform directives are all 1000ms ease even if specified otherwise" platform="all" reference="true" reference-name="Default transform directive properties"/>
 					</ui-state>
 				</ui-stream>
 				<ui-stream desc="Transit onEnter"></ui-stream>
