@@ -78,7 +78,7 @@ angular.module('uguru.admin')
       initPlaygroundVars($scope.name, apc);
     // }, 1000)
       $timeout(function() {
-        apc.example.play();
+        // apc.example.play();
       })
       $scope.$watch('apc.exampleIndex', function(value) {
         var elem = document.querySelector('svg rect');

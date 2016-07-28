@@ -375,7 +375,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (transitionObj.duration || transitionObj.timingFunction) {
 
           var transitionDict = formatTransitionString(transitionObj);
-          console.log(transitionDict);
           resultPropDict.properties.push(transitionDict);
         }
         if (resultPropDict.properties && resultPropDict.properties.length) {

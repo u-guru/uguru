@@ -833,12 +833,11 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       return {
         restrict: 'C',
         scope: {},
-        priority: 1,
+        priority: 1000,
         link: {
           pre: function(scope, element, attr) {
 
             scope.state = {play: false, pause: false, complete: false, timer: {start:0, pause:0}};
-
             scope.$watch(function() {
               return element.attr('style');
             }, function(new_style, old_classes) {
@@ -847,11 +846,13 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
 
                 scope.origProp = {duration: getDuration(element), transition: (element[0].style.webkitTransition || element[0].style.webkitTransition)}
                 scope.props = {arr: AdminInspectService.getPropArr(new_style), duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
-
+                scope.parsedAttr = AdminInspectService.getAttrDict(scope, element, attr, new_style);
                 scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
                 scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
                 scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope);
-                attr.$set('style', null);
+                // attr.$set('style', null);
+                scope.props.attr = scope.parsedAttr;
+
                 initPlayer(scope);
               }
             })
@@ -904,7 +905,6 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
 
           if (state.pause && state.timer.pause) {
             var durationOffset = props.duration - state.timer.pause;
-            console.log(durationOffset)
             attr.$set('style', props.style);
             element.css('transition-duration', durationOffset + 'ms');
             element.css('webkit-transition-duration', durationOffset + 'ms');
