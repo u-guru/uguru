@@ -21,7 +21,25 @@ angular.module('uguru.admin')
         replace: true,
         link: function(scope, element, attr) {
             scope.playerPos = scope.startOffset;
-            console.log(scope.props);
+            scope.activeAttrIndex = -1
+            scope.activateAttr = function($index, key) {
+
+                scope.activeAttrIndex = $index;
+                scope.activeAttrArr = scope.props.attr[key].arr;
+                console.log(scope.activeAttrArr);
+                if (key !== 'style') {
+                    scope.activeAttrArr = scope.activeAttrArr[0];
+                }
+
+
+                $timeout(function() {
+                    scope.$apply();
+                });
+            }
+            scope.goBackOneLevel = function() {
+                scope.activeAttrIndex = -1;
+                scope.activeAttrArr = null;
+            }
         }
     }
 }])
