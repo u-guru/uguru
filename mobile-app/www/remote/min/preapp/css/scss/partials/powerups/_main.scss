@@ -121,12 +121,18 @@
 	.splash-hero-skip {
 		display: none;
 	}
+	.landing-header {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		height: 100%;
+	}
 	.powerup-icon {
 		width: 100%;
 		height: 100%;
 		max-width: 300px;
 		max-height: 300px;
-		margin: -50px auto 0;
+		margin: -75px auto 0;
 		.hanger {
 			display: none!important;
 		}
@@ -138,12 +144,14 @@
 		margin-top: -15px;
 		font-size: 36px;
 		font-weight: 900;
+		width: 100%;
 	}
 	.powerup-subheader {
 		font-size: 20px;
 		font-weight: 600;
 		margin-top: 0!important;
 		margin-bottom: 15px;
+		width: 100%;
 	}
 	.landing-demo {
 		display: none;
@@ -177,13 +185,20 @@
 		border-radius: 2px;
 		background: white;
 		max-width: 1000px;
-		margin: 0 auto 64px;
+		margin: 15px auto 64px;
 		color: $slate;
 		h1 {
 			padding: 15px;
 			font-size: 28px;
 			font-weight: 600;
 		}
+	}
+	.landing-try-button.mobile {
+		position: fixed;
+		display: block;
+		bottom: 0;
+		left: 0;
+		z-index: 99;
 	}
 	.landing-action {
 		color: white;
@@ -217,17 +232,30 @@
 			}
 		}
 		.landing-try-button {
-			position: fixed;
-			bottom: 0;
-			left: 0;
+			display: none;
+			position: static;
+			left: auto;
+			bottom: auto;
+			width: auto;
+			padding-left: 30px;
+			padding-right: 30px;
+			border-radius: 2px;
+			margin-bottom: 15px;
 		}
 		.landing-platforms {
 			display: none;
 		}
 	}
 	@media screen and (min-width: 768px) {
+		.landing-header {
+			display: block;
+			height: auto;
+		}
 		.splash-hero-skip, .landing-demo {
 			display: block;
+		}
+		.powerup-icon {
+			margin: -50px auto 0;
 		}
 		.powerup-header {
 			font-size: 48px;
@@ -235,6 +263,9 @@
 		.powerup-subheader {
 			font-size: 28px;
 			margin-bottom: 0;
+		}
+		.landing-try-button.mobile {
+			display: none;
 		}
 		.landing-content {
 			margin: -120px auto 0;
@@ -267,14 +298,7 @@
 				}
 			}
 			.landing-try-button {
-				position: static;
-				left: auto;
-				bottom: auto;
-				width: auto;
-				padding-left: 30px;
-				padding-right: 30px;
-				border-radius: 2px;
-				margin-bottom: 15px;
+				display: block;
 			}
 			.landing-platforms {
 				@include flex;
@@ -372,21 +396,21 @@
 				}
 			}
 		}
-		.landing-try-button {
-			background: rgba($gpa, .95);
+	}
+	.landing-try-button {
+		background: rgba($gpa, .95);
+		color: white;
+		@media screen and (min-width: 768px) {
+			background: white;
+			color: $gpa;
+		}
+		&:hover, &:focus {
+			background: mix($gpa, white);
+			color: mix($gpa, $slate);
+		}
+		&:active {
+			background: mix($gpa, $slate);
 			color: white;
-			@media screen and (min-width: 768px) {
-				background: white;
-				color: $gpa;
-			}
-			&:hover, &:focus {
-				background: mix($gpa, white);
-				color: mix($gpa, $slate);
-			}
-			&:active {
-				background: mix($gpa, $slate);
-				color: white;
-			}
 		}
 	}
 }
@@ -410,9 +434,42 @@
 			}
 		}
 	}
+	.landing-try-button {
+		background: rgba($transit, .95);
+		color: white;
+		@media screen and (min-width: 768px) {
+			background: $transit;
+			color: white;
+		}
+		&:hover, &:focus {
+			background: mix($transit, white);
+			color: mix($transit, $slate);
+		}
+		&:active {
+			background: mix($transit, $slate);
+			color: white;
+		}
+	}
+}
+#landing-munchies {
+	overflow-x: auto;
+	width: 100%;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&::-moz-scrollbar {
+		display: none;
+	}
 }
 .landing-munchies {
+	@include flex;
+	width: 400%;
+	overflow-y: hidden;
 	background: mix(white, $munchies, 30%);
+	padding: 0;
+	.landing-header {
+		width: 25%;
+	}
 	.landing-demo {
 		> svg:not(.coach) {
 			* {
@@ -435,6 +492,89 @@
 		background: #a68787;
 		.landing-color {
 			background: #a68787;
+		}
+		&.mobile {
+			@include flex;
+			margin: 0;
+			background: rgba($slate, .15);
+			width: 75%;
+			.landing-section {
+				width: calc(100% / 3);
+				padding: 15px;
+				.landing-section-header {
+					margin-bottom: 30px;
+				}
+				.landing-section-demo {
+					position: relative;
+					margin: 0 auto;
+					max-width: 75%;
+					svg {
+						* {
+							stroke: white;
+						}
+						circle {
+							fill: mix(white, $munchies, 80%);
+						}
+						rect {
+							&:first-child {
+								fill: mix(white, $munchies, 50%);
+							}
+							&:last-child {
+								fill: white;
+							}
+						}
+					}
+					div {
+						position: absolute;
+						top: 12.2%;
+						left: 6.5%;
+						width: 87%;
+						height: 75.6%;
+						background: $robin
+					}
+				}
+			}
+		}
+		&.desktop {
+			display: none;
+		}
+	}
+	.landing-try-button {
+		background: rgba($munchies, .95);
+		color: white;
+		@media screen and (min-width: 768px) {
+			background: $munchies;
+			color: white;
+		}
+		&:hover, &:focus {
+			background: mix($munchies, white);
+			color: mix($munchies, $slate);
+		}
+		&:active {
+			background: mix($munchies, $slate);
+			color: white;
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	#landing-munchies {
+		overflow-x: hidden;
+	}
+	.landing-munchies {
+		display: block;
+		width: 100%;
+		overflow-y: auto;
+		padding: 15px;
+		.landing-header {
+			width: auto;
+		}
+		.landing-content {
+			&.mobile {
+				display: none;
+			}
+			&.desktop {
+				display: block;
+			}
 		}
 	}
 }
@@ -475,22 +615,6 @@
 				margin-left: -960px;
 			}
 		}
-		.landing-try-button {
-			background: rgba($sound, .95);
-			color: white;
-			@media screen and (min-width: 768px) {
-				background: $sound;
-				color: white;
-			}
-			&:hover, &:focus {
-				background: mix($sound, white);
-				color: mix($sound, $slate);
-			}
-			&:active {
-				background: mix($sound, $slate);
-				color: white;
-			}
-		}
 	}
 	.sound-record-list {
 		@include flex;
@@ -499,6 +623,22 @@
 		li {
 			padding: 7.5px;
 			width: 100%;
+		}
+	}
+	.landing-try-button {
+		background: rgba($sound, .95);
+		color: white;
+		@media screen and (min-width: 768px) {
+			background: $sound;
+			color: white;
+		}
+		&:hover, &:focus {
+			background: mix($sound, white);
+			color: mix($sound, $slate);
+		}
+		&:active {
+			background: mix($sound, $slate);
+			color: white;
 		}
 	}
 	@media screen and (min-width: 768px) {
