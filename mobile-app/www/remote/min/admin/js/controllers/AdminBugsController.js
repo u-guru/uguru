@@ -7,7 +7,7 @@ angular.module('uguru.admin')
                 return true;
               }
               for (var i in bug.tags) {
-                  if (bug.tags[i].indexOf(tags) !== -1) {
+                  if (tags.indexOf(bug.tags[i]) !== -1) {
                       return true;
                   }
               }
@@ -30,7 +30,7 @@ angular.module('uguru.admin')
                     }
                   else if (platforms.indexOf(bug.platforms[i].name+'-'+bug.platforms[i].device) !== -1 )
                   {
-                    return true
+                    return true;
                   }
               }
               return false;
@@ -80,7 +80,7 @@ angular.module('uguru.admin')
       $scope.help = section.help;
       $scope.states = section.states;
       $scope.name = section.name;
-      $scope.stateID = section.stateID;
+      $scope.workFlowID = section.workFlowID;
       $scope.currentManualBugs = section.manualBugs;
       // $scope.currentManualBugs = []
       if ($scope.name === ''){
@@ -398,6 +398,7 @@ angular.module('uguru.admin')
     $scope.removeTag = function(index){
       if ($scope.selectedBug.tags && $scope.selectedBug.tags.length) {
         $scope.selectedBug.tags.splice(index, 1);
+        $scope.saveBug()
       }
     }
     $scope.addNewTag = function(newTag){
@@ -407,6 +408,7 @@ angular.module('uguru.admin')
           return setErrorMsg('Repeating Tag')
         }
         $scope.selectedBug.tags.push(newTag);
+        $scope.saveBug();
       }
       return ''
     };
@@ -559,21 +561,23 @@ angular.module('uguru.admin')
         $scope.reverse = true;
         $scope.selectOption = $scope.availableOptions[0];
         $scope.advanceSearch ={
+             'workflowsSearch':'',
              'platforms' :{'list':[],'add': addPlatform, 'remove':removePlatform,'available_list':[ 'chrome','firefox','safari','android-app','android-chrome','ios-app','ios-safari']},
-             'tags': {'list':[], 'add': addTag, 'remove':removeTag, 'err_msg':'', 'empty_tag': {'placeholder':"+   add a tag", 'content': ''}},
+             'tags': {'list':[], 'add': addTag, 'remove':removeTag, 'err_msg':'','available_list':[ 'css','major'],'empty_tag': {'placeholder':"+  additional tag", 'content': ''}},
         };
-
-        if ($localstorage.getObject('advanceSearch')!=='[]'){
-          var cache = $localstorage.getObject('advanceSearch');
+        // console.log("Check",$localstorage.getObject('advanceSearch'))
+        var cache = $localstorage.getObject('advanceSearch');
+        if (cache!=='[]'){
           if (cache && cache.length !== 0){
+              $scope.advanceSearch.workflowsSearch = cache.workflowsSearch;
               $scope.advanceSearch.platforms.list = cache.platforms.list;
               $scope.advanceSearch.tags.list = cache.tags.list;
           }
           // console.log('Reset',$scope.advanceSearch);
         }
         for (var i = 0; i < $scope.bugReport.length; ++ i) {
-          if(!$scope.bugReport[i].stateID){
-           $scope.bugReport[i].stateID =  genUniqueID($scope.bugReport[i].name);
+          if(!$scope.bugReport[i].workFlowID){
+           $scope.bugReport[i].workFlowID =  genUniqueID($scope.bugReport[i].name);
           }
           if (!$scope.bugReport[i].manualState){
             $scope.bugReport[i].manualState = [];
@@ -634,15 +638,29 @@ angular.module('uguru.admin')
     function updateBugs(){
       // console.log("START");
       loadUpdatedBugsJsonFile($scope)
-    }
-   
 
+    }
+    // FileService.getS3JsonFile(null, 'https://d4s90fnvxd.execute-api.us-west-2.amazonaws.com/dev', callbackFunc);
+    // function callbackFunc(name, resp) {
+    //  if(!$scope.test){
+    //      $scope.test = resp
+    //      console.log('CHECK',$scope.test)
+
+    //  }      
+    // }
+    
     if (window.location.href.split('8100').length > 1) {
         $timeout(function() {
             loadUpdatedBugsJsonFile($scope);
         },100);
     }
 
+
+    $scope.$watchCollection('advanceSearch', function(newNames, oldNames) {
+      if (oldNames && newNames){
+        $localstorage.setObject('advanceSearch', newNames);
+      }
+    });
     $scope.$watchCollection('bugReport', function(newNames, oldNames) {
       if (!oldNames && newNames){
         console.log('Data is Load',$scope.bugReport);
