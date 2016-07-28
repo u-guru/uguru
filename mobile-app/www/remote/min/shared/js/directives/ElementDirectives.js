@@ -940,7 +940,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
           scope.name = 'player'
           if (!div) {
             div = document.createElement('div');
-            div.classList.add('p15-grid', 'full-x', 'fixed', 'top-0', 'left-0', 'bg-auburn', 'animated', 'slideInDown');
+            div.classList.add('full-x', 'fixed', 'top-0', 'left-0', 'animated', 'slideInDown');
             div.style.zIndex = 100000;
             div.id = 'transition-player';
             div.innerHTML = '<player play=play pause=pause state=state update=update props=props start-offset=state.timer.pause duration=duration></player>'
