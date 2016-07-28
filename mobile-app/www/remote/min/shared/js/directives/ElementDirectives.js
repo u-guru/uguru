@@ -850,7 +850,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
                 scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
                 scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
                 scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope);
-                // attr.$set('style', null);
+                attr.$set('style', null);
                 scope.props.attr = scope.parsedAttr;
 
                 initPlayer(scope);

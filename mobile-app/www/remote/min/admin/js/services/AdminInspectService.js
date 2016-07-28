@@ -7,10 +7,11 @@ angular
   'RootService',
   'UtilitiesService',
   'DirectiveService',
+  '$compile',
   AdminInspectService
   ]);
 
-function AdminInspectService($state, $timeout, $localstorage, RootService, UtilitiesService, DirectiveService) {
+function AdminInspectService($state, $timeout, $localstorage, RootService, UtilitiesService, DirectiveService, $compile) {
     return {
         getPropArr:getPropArr,
         getAttrDict: getAttrDict
@@ -31,12 +32,24 @@ function AdminInspectService($state, $timeout, $localstorage, RootService, Utili
                 var rawString = attr[strKey].substring();
 
                 var obj = (rawString && rawString.length && DirectiveService.parseArgs(rawString + ''))
+
                 var firstKey = Object.keys(obj)[0]
-                var secondKey = Object.keys(obj[firstKey])[1];
-                console.log();
+                var secondKey;
+                for (key in obj[firstKey]) {
+                    if (key.indexOf(firstKey) > -1) {
+                        secondKey = key;
+                    }
+                }
+                console.log(firstKey, secondKey)
+                // var secondKey = Object.keys(obj[firstKey])[1];
 
 
-                resultDict[strKey] = {raw: rawString, type: firstKey, arr:obj[firstKey][secondKey] , activate: getActivateFunc(scope, element, obj)};
+                if (firstKey === 'transform' || firstKey === 'anim') {
+                    resultDict[strKey] = {raw: rawString, type: firstKey, arr:obj[firstKey][secondKey] , activate: getActivateFunc(scope, element, obj)};
+                } else {
+                    resultDict[strKey] = {raw: rawString, type: firstKey, arr:obj[firstKey] , activate: getActivateFunc(scope, element, obj)};
+                }
+
             }
         }
         resultDict.style = {raw: style, arr: getPropArr(style), type:'css', activate: null}
@@ -67,8 +80,27 @@ function AdminInspectService($state, $timeout, $localstorage, RootService, Utili
             var supportedCommands = DirectiveService.supportedCommands;
             for (key in obj) {
                 if (supportedCommands.indexOf(key) > -1) {
-                    console.log('activating');
+
                     DirectiveService.activateArg(key, obj[key], scope, element);
+                    element.bind('webkitAnimationEnd', function() {
+                        console.log('animation ended')
+                    })
+                    element.bind('webkitTransitionEnd', function() {
+                        var cssEditedArr = [];
+                        element.css('transition').split(',').forEach(function(str, index) { cssEditedArr.push(str.split(' ')[0]) }) ;
+                        for (var i = 0; i < cssEditedArr.length; i++) {
+                            var cssPropName = cssEditedArr[i];
+                            if (cssPropName.trim() === 'all') {
+                                element[0].setAttribute('style', '');
+                            } else {
+                                element.css(cssPropName, 'initial');
+                                element.css(cssPropName, 'unset');
+                            }
+                        }
+                        element.css('webkit-transition', '');
+                        element.css('transition', '');
+
+                    })
                 }
             }
         }

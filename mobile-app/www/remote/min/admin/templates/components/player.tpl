@@ -6,7 +6,9 @@
 			</div>
 	        <ul class="p15-grid flex-center-vertical overflow-auto no-scrollbar" style="width: calc(100% - 128px);">
 				<li ng-repeat='(key, value) in props.attr track by $index' ng-if='props.attr'>
-					<span class='block radius-2 p10x-p05y bg-charcoal txt-1 weight-600' ng-click='activateAttr($index, key);' ng-class='{"txt-rocket bg-smoke":activeAttrIndex === $index, "txt-rocket bg-smoke opacity-50":activeAttrIndex && activeAttrIndex !== $index}' style="white-space: nowrap;">
+					<span class='block radius-2 p10x-p05y bg-charcoal txt-1 weight-600' ng-class='{"txt-rocket bg-smoke":activeAttrIndex === $index, "txt-rocket bg-smoke opacity-50":activeAttrIndex >= $index}' style="white-space: nowrap;"
+						ng-click='activateAttr($index, key);'
+						on-hold="value.activate && value.activate()">
 			            <span class='opacity-50'>{{key}}</span>:&nbsp;{{value.type}}
 			        </span>
 				</li>
@@ -37,7 +39,9 @@
 			</div>
 	        <ul class="p15-grid flex-center-vertical overflow-auto no-scrollbar" style="width: calc(100% - 128px);">
 				<li ng-repeat='(key, value) in props.attr track by $index' ng-if='props.attr'>
-					<span class='block radius-2 p10x-p05y bg-charcoal txt-1 weight-600' ng-click='activateAttr($index, key);' ng-class='{"txt-rocket bg-smoke":activeAttrIndex === $index, "txt-rocket bg-smoke opacity-50":activeAttrIndex && activeAttrIndex !== $index}' style="white-space: nowrap;">
+					<span class='block radius-2 p10x-p05y bg-charcoal txt-1 weight-600' ng-class='{"txt-rocket bg-smoke":activeAttrIndex === $index, "txt-rocket bg-smoke opacity-50":activeAttrIndex >= $index}' style="white-space: nowrap;"
+						ng-click='activateAttr($index, key);'
+						on-hold="value.activate && value.activate()">
 			            <span class='opacity-50'>{{key}}</span>:&nbsp;{{value.type}}
 			        </span>
 				</li>
@@ -64,7 +68,9 @@
 			</div>
 	        <ul class="p15-grid flex-center-vertical overflow-auto no-scrollbar" style="width: calc(100% - 128px);">
 				<li ng-repeat='(key, value) in props.attr track by $index' ng-if='props.attr'>
-					<span class='block radius-2 p10x-p05y bg-charcoal txt-1 weight-600' ng-click='activateAttr($index, key);' ng-class='{"txt-rocket bg-smoke":activeAttrIndex === $index, "txt-rocket bg-smoke opacity-50":activeAttrIndex && activeAttrIndex !== $index}' style="white-space: nowrap;">
+					<span class='block radius-2 p10x-p05y bg-charcoal txt-1 weight-600' ng-class='{"txt-rocket bg-smoke":activeAttrIndex === $index, "txt-rocket bg-smoke opacity-50":activeAttrIndex >= $index}' style="white-space: nowrap;"
+						ng-click='activateAttr($index, key);'
+						on-hold="value.activate && value.activate()">
 			            <span class='opacity-50'>{{key}}</span>:&nbsp;{{value.type}}
 			        </span>
 				</li>
