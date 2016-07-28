@@ -1,4 +1,4 @@
-<div class='full-xy absolute left-0 flex-wrap-center'
+<div class='full-xy absolute top-0 left-0'
 	init-with="p:[op:0]"
 	on-enter="p:[t:all 1000ms ease, op:1, z-index:10000]"
 	when-sound-triggered="t-enter | s:[sound-landing-enter:public]:delay-2000"
@@ -7,20 +7,22 @@
 		init-with="p:[background:#ac95e1]"
 		on-enter="p:[background:#504464, t:all 450ms ease-in]"
 		when-sound-landing-enter="t-enter">
-		<div class="powerup-icon"
-			init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
-			on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2500"
-			when-sound-triggered="t-enter">
-			<div ng-include="root.base_url + 'preapp/templates/components/powerups/sound-card.html'"></div>
+		<div class="landing-header">
+			<div class="powerup-icon"
+				init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
+				on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2500"
+				when-sound-triggered="t-enter">
+				<div ng-include="root.base_url + 'preapp/templates/components/powerups/sound-card.html'"></div>
+			</div>
+			<h1 class="powerup-header"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-250:in]"
+				when-sound-landing-enter="t-enter">Sound Guru</h1>
+			<h2 class="powerup-subheader"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
+				when-sound-landing-enter="t-enter">Curated mixtapes for a focused study session.</h2>
 		</div>
-		<h1 class="powerup-header"
-			init-with="p-op"
-			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-250:in]"
-			when-sound-landing-enter="t-enter">Sound Guru</h1>
-		<h2 class="powerup-subheader"
-			init-with="p-op"
-			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
-			when-sound-landing-enter="t-enter">Curated mixtapes for a focused study session.</h2>
 		<div class="landing-demo z-index-3">
 			<svg viewBox="0 0 318 651"
 				init-with="p-op"

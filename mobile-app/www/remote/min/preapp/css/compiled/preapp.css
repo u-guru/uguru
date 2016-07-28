@@ -4865,7 +4865,7 @@ a[class*="-container"]:hover .map-stadium-outside {
         #powerups ul li a#powerup-gpa-container .powerups-bg {
           background: #79c5cd; }
         #powerups ul li a#powerup-munchies-container .powerups-bg {
-          background: #f1917f; }
+          background: #f28b83; }
         #powerups ul li a#powerup-sound-container .powerups-bg {
           background: #ac95e1; }
         #powerups ul li a#powerup-transit-container .powerups-bg {
@@ -4898,12 +4898,32 @@ a[class*="-container"]:hover .map-stadium-outside {
     display: none; }
   .landing-container .splash-hero-skip {
     display: none; }
+  .landing-container .landing-header {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 100%; }
   .landing-container .powerup-icon {
     width: 100%;
     height: 100%;
     max-width: 300px;
     max-height: 300px;
-    margin: -50px auto 0; }
+    margin: -75px auto 0; }
     .landing-container .powerup-icon .hanger {
       display: none !important; }
     .landing-container .powerup-icon [class*="card-bg"] {
@@ -4945,12 +4965,18 @@ a[class*="-container"]:hover .map-stadium-outside {
     border-radius: 2px;
     background: white;
     max-width: 1000px;
-    margin: 0 auto 64px;
+    margin: 15px auto 64px;
     color: #40484B; }
     .landing-container .landing-content h1 {
       padding: 15px;
       font-size: 28px;
       font-weight: 600; }
+  .landing-container .landing-try-button.mobile {
+    position: fixed;
+    display: block;
+    bottom: 0;
+    left: 0;
+    z-index: 99; }
   .landing-container .landing-action {
     color: white;
     border-radius: 0 0 2px 2px; }
@@ -4992,19 +5018,32 @@ a[class*="-container"]:hover .map-stadium-outside {
             font-size: 20px;
             font-weight: 600; }
     .landing-container .landing-action .landing-try-button {
-      position: fixed;
-      bottom: 0;
-      left: 0; }
+      display: none;
+      position: static;
+      left: auto;
+      bottom: auto;
+      width: auto;
+      padding-left: 30px;
+      padding-right: 30px;
+      border-radius: 2px;
+      margin-bottom: 15px; }
     .landing-container .landing-action .landing-platforms {
       display: none; }
   @media screen and (min-width: 768px) {
+    .landing-container .landing-header {
+      display: block;
+      height: auto; }
     .landing-container .splash-hero-skip, .landing-container .landing-demo {
       display: block; }
+    .landing-container .powerup-icon {
+      margin: -50px auto 0; }
     .landing-container .powerup-header {
       font-size: 48px; }
     .landing-container .powerup-subheader {
       font-size: 28px;
       margin-bottom: 0; }
+    .landing-container .landing-try-button.mobile {
+      display: none; }
     .landing-container .landing-content {
       margin: -120px auto 0;
       padding-top: 135px;
@@ -5042,14 +5081,7 @@ a[class*="-container"]:hover .map-stadium-outside {
             .landing-container .landing-action ul li div h2 {
               font-size: 28px; }
       .landing-container .landing-action .landing-try-button {
-        position: static;
-        left: auto;
-        bottom: auto;
-        width: auto;
-        padding-left: 30px;
-        padding-right: 30px;
-        border-radius: 2px;
-        margin-bottom: 15px; }
+        display: block; }
       .landing-container .landing-action .landing-platforms {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -5158,19 +5190,19 @@ a[class*="-container"]:hover .map-stadium-outside {
     background: #6c9298; }
     .landing-gpa .landing-action ul li div h2 {
       color: #40acb8; }
-    .landing-gpa .landing-action .landing-try-button {
-      background: rgba(64, 172, 184, 0.95);
+  .landing-gpa .landing-try-button {
+    background: rgba(64, 172, 184, 0.95);
+    color: white; }
+    @media screen and (min-width: 768px) {
+      .landing-gpa .landing-try-button {
+        background: white;
+        color: #40acb8; } }
+    .landing-gpa .landing-try-button:hover, .landing-gpa .landing-try-button:focus {
+      background: #a0d6dc;
+      color: #407a82; }
+    .landing-gpa .landing-try-button:active {
+      background: #407a82;
       color: white; }
-      @media screen and (min-width: 768px) {
-        .landing-gpa .landing-action .landing-try-button {
-          background: white;
-          color: #40acb8; } }
-      .landing-gpa .landing-action .landing-try-button:hover, .landing-gpa .landing-action .landing-try-button:focus {
-        background: #a0d6dc;
-        color: #407a82; }
-      .landing-gpa .landing-action .landing-try-button:active {
-        background: #407a82;
-        color: white; }
 
 .landing-transit {
   background: #91d3a8; }
@@ -5182,22 +5214,120 @@ a[class*="-container"]:hover .map-stadium-outside {
     fill: #83b598; }
   .landing-transit .landing-demo > svg:not(.coach) rect:last-child {
     fill: white; }
+  .landing-transit .landing-try-button {
+    background: rgba(98, 192, 130, 0.95);
+    color: white; }
+    @media screen and (min-width: 768px) {
+      .landing-transit .landing-try-button {
+        background: #62c082;
+        color: white; } }
+    .landing-transit .landing-try-button:hover, .landing-transit .landing-try-button:focus {
+      background: #b1e0c1;
+      color: #518467; }
+    .landing-transit .landing-try-button:active {
+      background: #518467;
+      color: white; }
+
+#landing-munchies {
+  overflow-x: auto;
+  width: 100%; }
+  #landing-munchies::-webkit-scrollbar {
+    display: none; }
+  #landing-munchies::-moz-scrollbar {
+    display: none; }
 
 .landing-munchies {
-  background: #f1917f; }
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 400%;
+  overflow-y: hidden;
+  background: #f28b83;
+  padding: 0; }
+  .landing-munchies .landing-header {
+    width: 25%; }
   .landing-munchies .landing-demo > svg:not(.coach) * {
     stroke: white; }
   .landing-munchies .landing-demo > svg:not(.coach) circle {
-    fill: #fbe0da; }
+    fill: #fbdedc; }
   .landing-munchies .landing-demo > svg:not(.coach) rect:first-child {
-    fill: #f5b1a4; }
+    fill: #f6aca7; }
   .landing-munchies .landing-demo > svg:not(.coach) rect:last-child {
     fill: white; }
   .landing-munchies .landing-content {
     background: #a68787; }
     .landing-munchies .landing-content .landing-color {
       background: #a68787; }
+    .landing-munchies .landing-content.mobile {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      margin: 0;
+      background: rgba(64, 72, 75, 0.15);
+      width: 75%; }
+      .landing-munchies .landing-content.mobile .landing-section {
+        width: calc(100% / 3);
+        padding: 15px; }
+        .landing-munchies .landing-content.mobile .landing-section .landing-section-header {
+          margin-bottom: 30px; }
+        .landing-munchies .landing-content.mobile .landing-section .landing-section-demo {
+          position: relative;
+          margin: 0 auto;
+          max-width: 75%; }
+          .landing-munchies .landing-content.mobile .landing-section .landing-section-demo svg * {
+            stroke: white; }
+          .landing-munchies .landing-content.mobile .landing-section .landing-section-demo svg circle {
+            fill: #fbdedc; }
+          .landing-munchies .landing-content.mobile .landing-section .landing-section-demo svg rect:first-child {
+            fill: #f6aca7; }
+          .landing-munchies .landing-content.mobile .landing-section .landing-section-demo svg rect:last-child {
+            fill: white; }
+          .landing-munchies .landing-content.mobile .landing-section .landing-section-demo div {
+            position: absolute;
+            top: 12.2%;
+            left: 6.5%;
+            width: 87%;
+            height: 75.6%;
+            background: #2BB3B8; }
+    .landing-munchies .landing-content.desktop {
+      display: none; }
+  .landing-munchies .landing-try-button {
+    background: rgba(237, 89, 78, 0.95);
+    color: white; }
+    @media screen and (min-width: 768px) {
+      .landing-munchies .landing-try-button {
+        background: #ed594e;
+        color: white; } }
+    .landing-munchies .landing-try-button:hover, .landing-munchies .landing-try-button:focus {
+      background: #f6aca7;
+      color: #97514d; }
+    .landing-munchies .landing-try-button:active {
+      background: #97514d;
+      color: white; }
 
+@media screen and (min-width: 768px) {
+  #landing-munchies {
+    overflow-x: hidden; }
+
+  .landing-munchies {
+    display: block;
+    width: 100%;
+    overflow-y: auto;
+    padding: 15px; }
+    .landing-munchies .landing-header {
+      width: auto; }
+    .landing-munchies .landing-content.mobile {
+      display: none; }
+    .landing-munchies .landing-content.desktop {
+      display: block; } }
 .landing-sound {
   background: #ac95e1; }
   .landing-sound .landing-demo > svg:not(.coach) * {
@@ -5222,19 +5352,6 @@ a[class*="-container"]:hover .map-stadium-outside {
         top: 0;
         left: 50%;
         margin-left: -523px; }
-    .landing-sound .landing-action .landing-try-button {
-      background: rgba(137, 103, 212, 0.95);
-      color: white; }
-      @media screen and (min-width: 768px) {
-        .landing-sound .landing-action .landing-try-button {
-          background: #8967d4;
-          color: white; } }
-      .landing-sound .landing-action .landing-try-button:hover, .landing-sound .landing-action .landing-try-button:focus {
-        background: #c4b3ea;
-        color: #655890; }
-      .landing-sound .landing-action .landing-try-button:active {
-        background: #655890;
-        color: white; }
   .landing-sound .sound-record-list {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -5250,6 +5367,19 @@ a[class*="-container"]:hover .map-stadium-outside {
     .landing-sound .sound-record-list li {
       padding: 7.5px;
       width: 100%; }
+  .landing-sound .landing-try-button {
+    background: rgba(137, 103, 212, 0.95);
+    color: white; }
+    @media screen and (min-width: 768px) {
+      .landing-sound .landing-try-button {
+        background: #8967d4;
+        color: white; } }
+    .landing-sound .landing-try-button:hover, .landing-sound .landing-try-button:focus {
+      background: #c4b3ea;
+      color: #655890; }
+    .landing-sound .landing-try-button:active {
+      background: #655890;
+      color: white; }
   @media screen and (min-width: 768px) {
     .landing-sound .sound-record-list {
       padding: 15px; }
@@ -6032,7 +6162,7 @@ a[class*="-container"]:hover .map-stadium-outside {
   20% {
     stroke: #40acb8; }
   40% {
-    stroke: #eb6248; }
+    stroke: #ed594e; }
   60% {
     stroke: #8967d4; }
   80% {

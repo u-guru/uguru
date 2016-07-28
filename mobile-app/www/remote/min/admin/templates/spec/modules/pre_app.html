@@ -12,12 +12,14 @@
 					<ui-state type="transition" name="Title/subtitle animate in" desc="bounceInUp-subtle" func="true">
                     </ui-state>
                     <ui-state type="transition" name="GPA tile onEnter" desc="Guru bounces in and buttons spread out from the center" func="true">
+						<bug type="static" open by="Gabrielle" flag="[Samir, Jeselle, Gabrielle]" description="Clips aren't working even though they were working as of 7/27" platform="all" reference="true" reference-name="Clip path"/>
                     </ui-state>
                     <ui-state type="transition" name="Munchies tile onEnter" desc="Guru bounces in and cake tiers slideInLeft" func="true">
                     </ui-state>
                     <ui-state type="transition" name="Sound tile onEnter" desc="Body translateUp, head scaleDown to size; headphones slideInDown while notes bounceIn" func="true">
                     </ui-state>
                     <ui-state type="transition" name="Transit tile onEnter" desc="Tracks drawIn. Lamps scaleDown to size. jellyIn, staggered" func="true">
+						<bug reference-from="Clip path"/>
                     </ui-state>
 					<ui-state type="transition" name="Hanger onEnter" desc="Hanger swings in on top of tile" func="false" static-"true"></ui-state>
 					<ui-state type="transition" name="Highlight new apps" desc="Hanger swings out and new app sign drops in" func="false" static="false"></ui-state>
