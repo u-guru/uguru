@@ -77,35 +77,36 @@ angular.module('uguru.shared.directives')
       }
     }
 }])
-// .directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
-//   return {
-//     restrict: 'A',
-//     priority: 10000,
-//     terminal: true,
-//       link: {
-//         pre: function(scope, element, attr) {
-//           attr.$set('ngHide', true);
-//           attr.$set('initLater', null);
-//           $compile(element[0])(scope);
+.directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
+  return {
+    restrict: 'A',
+    priority: 999,
+    terminal: true,
+      link: {
+        pre: function(scope, element, attr) {
+          console.log('detected init later')
+          attr.$set('ngHide', true);
+          attr.$set('initLater', null);
+          $compile(element[0])(scope);
 
 
-//           scope.$watch(function() {
-//             return element.attr('class');
-//           }, function(new_classes, old_classes) {
-//             new_classes = new_classes || '';
-//             if (new_classes.indexOf('init-later') > -1) {
-//               element[0].classList.remove('init-later');
-//               for (key in elemArgs) {
-//                 if (supportedCommands.indexOf(key) > -1) {
-//                   DirectiveService.activateArg(key, elemArgs[key], scope, element);
-//                 }
-//               }
-//             }
-//           })
-//       }
-//     }
-//   }
-// }])
+          scope.$watch(function() {
+            return element.attr('class');
+          }, function(new_classes, old_classes) {
+            new_classes = new_classes || '';
+            if (new_classes.indexOf('init-later') > -1) {
+              element[0].classList.remove('init-later');
+              for (key in elemArgs) {
+                if (supportedCommands.indexOf(key) > -1) {
+                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                }
+              }
+            }
+          })
+      }
+    }
+  }
+}])
 // .directive('counter', ['$timeout', '$interval', function ($timeout, $interval) {
 //   return {
 //     restrict: 'A',
@@ -833,12 +834,12 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       return {
         restrict: 'C',
         scope: {},
-        priority: 1,
+        priority: 1000,
         link: {
           pre: function(scope, element, attr) {
+            console.log('detected an inspect');
 
             scope.state = {play: false, pause: false, complete: false, timer: {start:0, pause:0}};
-
             scope.$watch(function() {
               return element.attr('style');
             }, function(new_style, old_classes) {
@@ -847,11 +848,13 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
 
                 scope.origProp = {duration: getDuration(element), transition: (element[0].style.webkitTransition || element[0].style.webkitTransition)}
                 scope.props = {arr: AdminInspectService.getPropArr(new_style), duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
-
+                scope.parsedAttr = AdminInspectService.getAttrDict(scope, element, attr, new_style);
                 scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
                 scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
                 scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope);
                 attr.$set('style', null);
+                scope.props.attr = scope.parsedAttr;
+
                 initPlayer(scope);
               }
             })
@@ -904,7 +907,6 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
 
           if (state.pause && state.timer.pause) {
             var durationOffset = props.duration - state.timer.pause;
-            console.log(durationOffset)
             attr.$set('style', props.style);
             element.css('transition-duration', durationOffset + 'ms');
             element.css('webkit-transition-duration', durationOffset + 'ms');
