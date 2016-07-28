@@ -76,6 +76,7 @@
 					<ui-state name="Background fades to darker color" desc="" type="transition" func="true" static="true"></ui-state>
 					<ui-state name="Records animate in" desc="Diagonal scaleOut, record rotateInLeft, text fadeIn" type="transition" func="true" static="true">
 						<bug reference-from="Record texture"/>
+						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="The properties for the transform directives are all 1000ms ease even if specified otherwise" platform="all" reference="true" reference-name="Default transform directive properties"/>
 					</ui-state>
 				</ui-stream>
 				<ui-stream desc="Transit onEnter"></ui-stream>
@@ -86,11 +87,16 @@
 					<ui-state name="Outside phone screenshots slide out from underneath center screenshot" desc="" type="transition" func="true">
 						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="ion-scroll is interfering with actual scroll - should discuss best practices until ionic is removed" platform="all"/>
 					</ui-state>
-					<ui-state name="Search courses icon animates in" desc="Circle already exists - tablet and person bounceInUp and lines drawIn and scroll" type="transition" func="false" static="true"></ui-state>
+					<ui-state name="Search courses icon animates in" desc="Circle already exists - tablet and person bounceInUp and lines drawIn and scroll" type="transition" func="false" static="true">
+						<bug type="functional" open bg="Gabrielle" flag="[Samir]" description=":a for anim: is not working as expected - it should either keep the animation or put the properties from the last keyframe into the element but is doing neither." platform="all" reference="true" reference-name="Keeping animation"/>
+					</ui-state>
 					<ui-state name="Calculate grades icon animates in" desc="Circle already exists - calculator bounceInUp and numbers countUp" type="transition" func="false" static="true">
+						<bug reference-from="Keeping animation"/>
 						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Needs countUp directive" platform="all"/>
 					</ui-state>
-					<ui-state name="Track GPA icon animates in" desc="Circle already exists - projector bounceInUp and arrow drawIn" type="transition" func="false" static="true"></ui-state>
+					<ui-state name="Track GPA icon animates in" desc="Circle already exists - projector bounceInUp and arrow drawIn" type="transition" func="false" static="true">
+						<bug reference-from="Keeping animation"/>
+					</ui-state>
 				</ui-stream>
 				<ui-stream desc="User scrolls to sound demo" priority="1">
 					<ui-state name="Records animate in" desc="rotateInLeft" type="transition" func="false" static="false">

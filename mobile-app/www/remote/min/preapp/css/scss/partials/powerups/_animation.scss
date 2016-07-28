@@ -1,24 +1,10 @@
 @import '../../../../../shared/css/scss/partials/mixin';
 
-// #powerup-landing-icon {
-// 	.gpa-guru-eyebrow-right {
-// 		transform-origin: right top;
-// 		&.wiggle {
-// 			animation: wiggle-right 100ms ease alternate 6 forwards;
-// 		}
-// 	}
-// 	.gpa-guru-eyebrow-left {
-// 		transform-origin: left top;
-// 		&.wiggle {
-// 			animation: wiggle-left 100ms ease alternate 6 forwards;
-// 		}
-// 	}
-// }
-
-/* Generated with Bounce.js. Edit at http://goo.gl/auaf79 */
-@keyframes rotate-record { 
-  0% { transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  4.1% { transform: matrix3d(0.79, -0.613, 0, 0, 0.613, 0.79, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+// sound
+/* http://goo.gl/auaf79 */
+@keyframes rotate-record {
+  0% { transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 0; }
+  4.1% { transform: matrix3d(0.79, -0.613, 0, 0, 0.613, 0.79, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1; }
   8.11% { transform: matrix3d(0.986, -0.165, 0, 0, 0.165, 0.986, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   12.11% { transform: matrix3d(1, 0.029, 0, 0, -0.029, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   16.12% { transform: matrix3d(0.998, 0.068, 0, 0, -0.068, 0.998, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
@@ -26,7 +12,16 @@
   38.34% { transform: matrix3d(1, -0.002, 0, 0, 0.002, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   60.56% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   82.78% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1; }
+}
+
+// GPA
+.prop-scroll-search {
+	animation: prop-scroll-search 3000ms ease-in forwards;
+}
+
+.prop-stand-leg {
+	animation: prop-stand-leg 1000ms linear forwards;
 }
 
 /* http://goo.gl/I9Ktue */

@@ -5,6 +5,13 @@
 @import 'partials/keyframes';
 @import 'partials/docs';
 
+.bg-cobalt-slate-campus-25p {
+	background: mix($campus, mix($cobalt, $slate, 25%), 25%)!important;
+}
+.bg-cobalt-slate-campus-50p {
+	background: mix($campus, mix($cobalt, $slate, 25%), 50%)!important;
+}
+
 #admin-anim-tools {
 	> div {
 		@media screen and (max-width: 768px) {

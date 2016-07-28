@@ -650,6 +650,12 @@
     height: 2px;
     background: rgba(93, 172, 193, 0.2); }
 
+.bg-cobalt-slate-campus-25p {
+  background: #5d667e !important; }
+
+.bg-cobalt-slate-campus-50p {
+  background: #6c798a !important; }
+
 @media screen and (max-width: 768px) {
   #admin-anim-tools > div {
     -ms-flex-flow: row wrap;
