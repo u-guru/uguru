@@ -107,6 +107,18 @@
 						<bug type="functional" open by="Gabrielle" flag="[Samir]" description="Needs a randomizer for duration and delay" platform="all"/>
 					</ui-state>
 				</ui-stream>
+				<ui-stream desc="User views Guru Munchies on mobile" priority="1">
+					<ui-state name="Title screen enters" desc="Guru animation, header text, CTA btn, and bread crumbs enter." type="transition" func="false" static="false">
+					</ui-state>
+					<ui-state name="Title screen breadcrumbs hint" desc="After entrance animation enters, the screen slightly shifts up and down with the breadcrumbs transitioning in correspondence." type="functional, transition" func="false" static="false">
+					</ui-state>
+				</ui-stream>
+				<ui-stream desc="User scrolls through the different pages on Guru Munchies on mobile" priority="1">
+					<ui-state name="Title screen to first info page" desc="Scroll snaps to the full page view of the first info page 'Find the best food on campus'." type="transition" func="false" static="false">
+					</ui-state>
+					<ui-state name="Transitioning between info pages" desc="Scroll triggers onExit information and onEnter information for the next screen." type="functional, transition" func="false" static="false">
+					</ui-state>
+				</ui-stream>
 			</story>
 
 			<story type="func, transition" desc="User transitions to powerups page from a specific powerup page">
