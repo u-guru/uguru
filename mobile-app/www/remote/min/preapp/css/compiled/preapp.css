@@ -5651,9 +5651,11 @@ a[class*="-container"]:hover .map-stadium-outside {
 /* http://goo.gl/auaf79 */
 @keyframes rotate-record {
   0% {
-    transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+    transform: matrix3d(0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 0; }
   4.1% {
-    transform: matrix3d(0.79, -0.613, 0, 0, 0.613, 0.79, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+    transform: matrix3d(0.79, -0.613, 0, 0, 0.613, 0.79, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; }
   8.11% {
     transform: matrix3d(0.986, -0.165, 0, 0, 0.165, 0.986, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   12.11% {
@@ -5669,7 +5671,8 @@ a[class*="-container"]:hover .map-stadium-outside {
   82.78% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   100% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; } }
 .prop-scroll-search {
   animation: prop-scroll-search 3000ms ease-in forwards; }
 
