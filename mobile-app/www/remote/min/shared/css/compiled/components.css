@@ -9207,6 +9207,18 @@ input[type=range] {
     height: 2px; }
   input[type=range][size="small"]::-ms-track, input[type=range][size="2"]::-ms-track {
     height: 2px; }
+  input[type=range][size="small"]::-webkit-slider-thumb, input[type=range][size="2"]::-webkit-slider-thumb {
+    margin-top: -8px;
+    height: 18px;
+    width: 4px; }
+  input[type=range][size="small"]::-moz-range-thumb, input[type=range][size="2"]::-moz-range-thumb {
+    margin-top: -8px;
+    height: 18px;
+    width: 4px; }
+  input[type=range][size="small"]::-ms-range-thumb, input[type=range][size="2"]::-ms-range-thumb {
+    margin-top: -8px;
+    height: 18px;
+    width: 4px; }
   input[type=range][size="medium"]::-webkit-slider-runnable-track, input[type=range][size="5"]::-webkit-slider-runnable-track {
     height: 5px; }
   input[type=range][size="medium"]::-moz-range-track, input[type=range][size="5"]::-moz-range-track {

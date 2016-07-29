@@ -5,13 +5,39 @@
             <span class='weight-900'>&nbsp;{{name}} </span>
         </h1>
     </header>
-    <div class='relative full-x flex-wrap-center bg-slate overflow-visible' style='height:75%;'>
-        <square class='inspect animated' on-click="anim:[bounceInDown:set(animation-duration:5s)]" init-with="{{apc.example.str}}"> </square>
+    <div class='absolute left-0 full-x flex-wrap-center bg-slate overflow-visible' style='height:75%; top:10%;'>
+        <div ng-if='apc.type' class='full-xy flex-center relative'>
+            <div>
+                <animation size="100"
+		            stroke='white'
+		            import="bounceInUp"
+		            duration="2000"
+		            fill="forwards"
+		            delay="0s"
+					play="true"
+		            func="cb(0.68, -1, 0.265, 1.55)"
+		            template="shared/templates/components/svg/main/play.html">
+            	</animation>
+            </div>
+            <div>
+	            <animation size="100"
+	            	stroke='white'
+		            import="bounceInDown"
+		            duration="2000"
+		            fill="forwards"
+		            delay="0s"
+					play="true"
+		            func="cb(0.68, -1, 0.265, 1.55)"
+		            template="shared/templates/components/svg/main/play.html">
+	            </animation>
+            </div>
+        </div>
+        <!-- <square ng-if='apc.type && apc.type !== animation' class='inspect animated' on-click="anim:[bounceInDown:set(-webkit-animation-duration:20s)]" init-with="{{apc.example.str}}"> </square> -->
         <!-- <square on-init="transform:[sc:(1.5, 1.9, 1.9)]"> </square> -->
     </div>
     <footer class="fixed bottom-0 left-0 full-x">
         <div class='txt-white'>
-            <ul class='flex-center-vertical full-x bg-campus-20p p15-grid txt-3'>
+            <ul class='flex-center-vertical full-x bg-campus p15-grid txt-3'>
                 <li class="width-40p">
                     <pre class="txt-16">{{apc.example.str}}</pre>
                 </li>

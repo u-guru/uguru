@@ -14,6 +14,9 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
       link: {
         pre: function(scope, element, attr) {
+
+          scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
+
           var switchDict;
           var elemArgs = DirectiveService.parseArgs(attr.initWith);
           var listenerArgs = DirectiveService.detectExternalStates(attr);
@@ -84,7 +87,9 @@ angular.module('uguru.shared.directives')
     terminal: true,
       link: {
         pre: function(scope, element, attr) {
-          console.log('detected init later')
+
+
+
           attr.$set('ngHide', true);
           attr.$set('initLater', null);
           $compile(element[0])(scope);
@@ -212,18 +217,6 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('square', ['SVGService', function(SVGService) {
-  return {
-    restrict: 'E',
-    replace: true,
-    template: '<svg width="100" height="100" viewBox="0, 0, 100, 100"> <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="97" rx="10"></rect> </svg>',
-    link: {
-      pre: function(scope, element, attr) {
-
-      }
-    }
-  }
-}])
 .directive('mobile', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
   return {
     restrict: 'A',
@@ -246,6 +239,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
         element.ready(function() {
           onInitReadyFunc();
         })
@@ -261,6 +255,7 @@ angular.module('uguru.shared.directives')
         })
 
         function onInitReadyFunc() {
+
           var elemArgs = DirectiveService.parseArgs(attr.onInit);
           var listenerArgs = DirectiveService.detectExternalStates(attr);
 
@@ -304,6 +299,7 @@ angular.module('uguru.shared.directives')
     link: {
       pre: function(scope, element, attr) {
 
+        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onEnter);
         var supportedCommands = DirectiveService.supportedCommands;
         scope.$watch(function() {
@@ -329,6 +325,7 @@ angular.module('uguru.shared.directives')
       pre: function(scope, element, attr) {
 
 
+        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onChange);
 
         scope.$watch(function() {
@@ -372,6 +369,7 @@ angular.module('uguru.shared.directives')
             // }
           }
         });
+
         // var elemArgs = DirectiveService.parseArgs(attr.onChange);
         // var supportedCommands = DirectiveService.supportedCommands;
         // scope.$watch(function() {
@@ -395,6 +393,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onExit);
         var supportedCommands = DirectiveService.supportedCommands;
         scope.$watch(function() {
@@ -418,9 +417,11 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onClick);
         var supportedCommands = DirectiveService.supportedCommands;
         element.on('click', function () {
+          console.log('click activated');
             for (key in elemArgs) {
               if (supportedCommands.indexOf(key) > -1) {
                 DirectiveService.activateArg(key, elemArgs[key], scope, element);
@@ -436,6 +437,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onMouseEnter);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
@@ -467,6 +469,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onMouseOver);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
@@ -496,6 +499,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onMouseLeave);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
@@ -833,31 +837,71 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
   function($timeout, RootService, $compile, AdminInspectService) {
       return {
         restrict: 'C',
-        scope: {},
-        priority: 1000,
+        scope: false,
+        priority: 10000,
+        replace: true,
         link: {
           pre: function(scope, element, attr) {
-            console.log('detected an inspect');
+            'initLater' in attr && element.removeAttr('init-later');
 
-            scope.state = {play: false, pause: false, complete: false, timer: {start:0, pause:0}};
-            scope.$watch(function() {
-              return element.attr('style');
-            }, function(new_style, old_classes) {
-              if (new_style && !scope.play) {
-                scope.originalStyle = new_style;
 
-                scope.origProp = {duration: getDuration(element), transition: (element[0].style.webkitTransition || element[0].style.webkitTransition)}
-                scope.props = {arr: AdminInspectService.getPropArr(new_style), duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
-                scope.parsedAttr = AdminInspectService.getAttrDict(scope, element, attr, new_style);
-                scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
-                scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
-                scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope);
-                attr.$set('style', null);
-                scope.props.attr = scope.parsedAttr;
+            if (scope.root.inspectCount) {
+              scope.root.inspectCount += 1;
+            } else {
+              scope.root.inspectCount = 1;
+            }
 
-                initPlayer(scope);
+            var inspect_index = element[0].classList && element[0].classList.value.indexOf('inspect-');
+
+            if (inspect_index > -1) {
+
+              var stateToTrigger = element[0].classList.value.split('inspect-')[1];
+              stateToTrigger = stateToTrigger.split(' ')[0];
+
+              //inspect requirement
+              if (stateToTrigger.indexOf('on-') > -1) {
+                element[0].classList.add(stateToTrigger);
+                element.ready(function() {
+                  element.triggerHandler(stateToTrigger.replace('on-', ''));
+                })
               }
-            })
+
+
+
+            } else {
+              //inspect main
+              scope.root.inspect = true;
+              console.log('set to true', scope.root.inspect = true);
+              element.ready(function() {
+                initInspector();
+              })
+            }
+
+
+            // document.body.addEventListener()
+
+            // console.log('initializing inspector')
+            function initInspector() {
+              scope.state = {play: false, pause: false, complete: false, timer: {start:0, pause:0}};
+              scope.$watch(function() {
+                return element.attr('style');
+              }, function(new_style, old_classes) {
+                if (new_style && !scope.play) {
+                  scope.originalStyle = new_style;
+
+                  scope.origProp = {duration: getDuration(element), transition: (element[0].style.webkitTransition || element[0].style.webkitTransition)}
+                  scope.props = {arr: AdminInspectService.getPropArr(new_style), duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
+                  scope.parsedAttr = AdminInspectService.getAttrDict(scope, element, attr, new_style);
+                  scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
+                  scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
+                  scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope);
+                  attr.$set('style', null);
+                  scope.props.attr = scope.parsedAttr;
+                  initPlayer(scope);
+                }
+              })
+            }
+            // }
           }
         }
       }
@@ -945,7 +989,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
             div.classList.add('full-x', 'fixed', 'top-0', 'left-0', 'animated', 'slideInDown');
             div.style.zIndex = 100000;
             div.id = 'transition-player';
-            div.innerHTML = '<player play=play pause=pause state=state update=update props=props start-offset=state.timer.pause duration=duration></player>'
+            div.innerHTML = '<player play=play root=root pause=pause state=state update=update props=props start-offset=state.timer.pause duration=duration></player>'
             document.querySelector('ui-view').appendChild(div)
           }
 
@@ -970,7 +1014,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
               priority: 1,
               link: {
                 pre: function(scope, element, attr) {
-
+                  scope.root && wscope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
                   scope.switch = SwitchService.parseElemAttrs(scope, element, attr);
                   var switchEvents = ['active', 'inactive', 'change'];
                   if (scope.$parent.switchDict) {
@@ -991,6 +1035,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
                           var indexEventDashed = 'on-switch-' + scope.switch.dashedName + '-' + switchEvents[i];
                           var indexEventCamel = UtilitiesService.camelCase(indexEventDashed);
                           if (indexEventCamel in attr) {
+
                             scope.switch.states[switchEvents[i]] = {args: DirectiveService.parseArgs(attr[indexEventCamel]), className: indexEventDashed};
                             scope.switch.classes.push(indexEventDashed)
                           }

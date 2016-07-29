@@ -284,6 +284,66 @@ angular.module('uguru.shared.directives.components')
             }
         }
 }])
+.directive('square', ['SVGService', function(SVGService) {
+  return {
+    restrict: 'E',
+    replace: true,
+    template: '<svg width="100" height="100" viewBox="0, 0, 100, 100"> <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="97" rx="10"></rect> </svg>',
+    link: {
+      pre: function(scope, element, attr) {
+
+      }
+    }
+  }
+}])
+.directive('animation', ['RootService', 'AnimationService', '$timeout', '$compile', function(RootService, AnimationService, $timeout, $compile) {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: AnimationService.getAnimatableTemplateFunc,
+    scope: {
+        name: '@name',
+        template: '@template',
+        obj: '@import',
+        stroke: '@stroke'
+    },
+    link: {
+      pre: function(scope, element, attr) {
+        console.log(element[0]);
+        $compile(element)(scope);
+        var anim = AnimationService.initAnimationObj();
+        scope.anim = anim;
+        scope.anim.element = element;
+
+        //if attr.template
+        anim.template = RootService.getBaseUrl() + attr.template;
+
+
+        //if attr.import
+        anim.obj = AnimationService.getAnimationObjFromAnimationName(attr.import);
+        // for (key in anim.obj.cssRules) console.log(anim.obj.cssRules[key]);
+
+        anim.duration = attr.duration && parseFloat(attr.duration) || 3000;
+        anim.direction = attr.direction;
+        anim.func = attr.func.replace('cb', 'cubic-bezier');
+        anim.delay = attr.delay|| 0;
+        anim.css = anim.obj.cssText;
+        anim.playState = (((attr.play === 'true') && "running") || "paused");
+        anim.iter = attr.iter;
+        anim.fillMode = attr.fillMode;
+        anim.listeners = {start: AnimationService.getStartListener(scope.anim, element[0]), end: AnimationService.getEndListener(scope.anim, element[0])}
+        anim.name = attr.import;
+        var cb = function(element) {
+            $compile(element)(scope);
+            $timeout(function() {
+                scope.$apply();
+            })
+        }
+        AnimationService.injectAnimationWithPlayer(scope.anim, element, cb);
+      }
+    }
+  }
+}])
 // .directive("userIcon", ['$compile', function($compile) {
 //         return {
 //             templateUrl: BASE + 'templates/elements/components/info/user.icon.tpl',
