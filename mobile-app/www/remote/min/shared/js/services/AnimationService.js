@@ -169,7 +169,7 @@ function AnimationService($ionicViewSwitcher, $timeout, $state, RootService) {
 
     function injectAnimationWithPlayer(anim_obj, elem, cb) {
         div = document.createElement('div');
-        div.classList.add('animated', 'slideInUp');
+        div.classList.add('relative', 'animated', 'slideInUp');
         div.style.zIndex = 100000;
         div.innerHTML = '<animation-player anim=anim></player>'
         elem[0].parentNode.appendChild(div);
