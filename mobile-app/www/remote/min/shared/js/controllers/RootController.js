@@ -16,6 +16,7 @@ angular.module('uguru.shared.controllers', [])
     root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
     root.devMode = window.location.href.split('/dev/').length > 1;
     root.milestones = [];
+    root.inspectAnimations = [];
     root.public = {customStates: []};
     root.pauseElement = pauseElement(root);
     RootService.setPauseElementFunc(root.pauseElement);

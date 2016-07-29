@@ -296,6 +296,34 @@ angular.module('uguru.shared.directives.components')
     }
   }
 }])
+.directive('animationGroup', ['RootService', 'AnimationService', '$timeout', '$compile', function(RootService, AnimationService, $timeout, $compile) {
+    return {
+        restrict: 'E',
+        replace: false,
+        templateUrl: 'admin/templates/components/animation.group.player.tpl',
+        scope: {
+            animations: '=animations'
+        },
+        link: function(scope, element, attr) {
+            scope.$watch('animations',  function(new_animations) {
+                if (new_animations.length) {
+                    scope.animations = new_animations;
+                }
+
+            })
+            scope.mappings = {
+                'func': 'Timing Function',
+                'direction': 'Direction',
+                'delay': 'Delay',
+                'playState': 'Play State',
+                'iter': 'Iterations',
+                'name': 'Anim Name',
+                'duration': 'Duration'
+            }
+        }
+
+    }
+}])
 .directive('animation', ['RootService', 'AnimationService', '$timeout', '$compile', function(RootService, AnimationService, $timeout, $compile) {
   return {
     restrict: 'E',
@@ -309,7 +337,6 @@ angular.module('uguru.shared.directives.components')
     },
     link: {
       pre: function(scope, element, attr) {
-        console.log(element[0]);
         $compile(element)(scope);
         var anim = AnimationService.initAnimationObj();
         scope.anim = anim;
@@ -339,6 +366,7 @@ angular.module('uguru.shared.directives.components')
                 scope.$apply();
             })
         }
+        scope.$parent.root.inspectAnimations.push(anim);
         AnimationService.injectAnimationWithPlayer(scope.anim, element, cb);
       }
     }
