@@ -15,7 +15,7 @@ angular.module('uguru.shared.directives')
       link: {
         pre: function(scope, element, attr) {
 
-          scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
+          scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
 
           var switchDict;
           var elemArgs = DirectiveService.parseArgs(attr.initWith);
@@ -239,7 +239,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
-        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         element.ready(function() {
           onInitReadyFunc();
         })
@@ -299,7 +299,7 @@ angular.module('uguru.shared.directives')
     link: {
       pre: function(scope, element, attr) {
 
-        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onEnter);
         var supportedCommands = DirectiveService.supportedCommands;
         scope.$watch(function() {
@@ -325,7 +325,7 @@ angular.module('uguru.shared.directives')
       pre: function(scope, element, attr) {
 
 
-        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onChange);
 
         scope.$watch(function() {
@@ -417,7 +417,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
-        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onClick);
         var supportedCommands = DirectiveService.supportedCommands;
         element.on('click', function () {
@@ -437,7 +437,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
-        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onMouseEnter);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
@@ -469,7 +469,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
-        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onMouseOver);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
@@ -499,7 +499,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
-        scope.root && wscope.root.inspect && scope.root.pauseElement(element, attr);
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onMouseLeave);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
@@ -1014,7 +1014,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
               priority: 1,
               link: {
                 pre: function(scope, element, attr) {
-                  scope.root && wscope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
+                  scope.root && scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
                   scope.switch = SwitchService.parseElemAttrs(scope, element, attr);
                   var switchEvents = ['active', 'inactive', 'change'];
                   if (scope.$parent.switchDict) {
