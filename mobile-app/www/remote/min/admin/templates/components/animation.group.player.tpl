@@ -5,11 +5,11 @@
                 <h1 class="semibold txt-20">{{animation.name}}</h1>
             </div>
             <ul class="p15-grid flex-center-vertical overflow-auto no-scrollbar" style="width: calc(100% - 128px);">
-                <li ng-repeat='(key, value) in animation track by $index'>
+                <li ng-repeat='(key, value) in animation track by $index' ng-if='["css", "listeners",  "element", "template", "obj"].indexOf(key) === -1'>
                     <span class='block radius-2 p10x-p05y bg-charcoal txt-1 weight-600' ng-class='{"txt-rocket bg-smoke":activeAttrIndex === $index, "txt-rocket bg-smoke opacity-50":activeAttrIndex >= $index}' style="white-space: nowrap;"
                         ng-click='activateAttr($index, key);'
                         on-hold="value.activate && value.activate()">
-                        <span class='opacity-50'>{{key}}</span>:&nbsp;{{value}}
+                        <span class='opacity-50'>{{mappings[key]}}</span>:&nbsp;{{value}}
                     </span>
                 </li>
                 <li ng-if='activeAttrIndex >= 0' ng-repeat='(k,v) in activeAttrArr track by $index'>

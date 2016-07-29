@@ -309,8 +309,17 @@ angular.module('uguru.shared.directives.components')
                 if (new_animations.length) {
                     scope.animations = new_animations;
                 }
-                console.log(scope.animations);
+
             })
+            scope.mappings = {
+                'func': 'Timing Function',
+                'direction': 'Direction',
+                'delay': 'Delay',
+                'playState': 'Play State',
+                'iter': 'Iterations',
+                'name': 'Anim Name',
+                'duration': 'Duration'
+            }
         }
 
     }
