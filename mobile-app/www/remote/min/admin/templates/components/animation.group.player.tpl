@@ -1,6 +1,6 @@
 <div id='transition-player' class="bg-slate fixed top-0 left-0 full-x z-index-1000">
     <div class="bg-cobalt-25p">
-        <div class='flex-stretch full-x bg-cobalt-slate-campus-50p overflow-hidden relative z-index-9' ng-repeat='animation in animations'>
+        <div class='flex-stretch full-x bg-cobalt-slate-campus-50p overflow-hidden relative z-index-9 hide' ng-repeat='animation in animations'>
             <div class="bg-moxie width-128 flex-center-vertical p15x overflow-hidden">
                 <h1 class="semibold txt-20">{{animation.name}}</h1>
             </div>
