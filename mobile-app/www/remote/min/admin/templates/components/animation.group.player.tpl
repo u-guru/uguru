@@ -106,9 +106,10 @@
                         init-default
                         on-click="s:[click-shrink]"> </a>
                 </li> -->
-                <li ng-if='!state.play'>
-                    <a ng-click='play()' class="flex-center svg-white svg-stroke-8 svg-36 opacity-50" ng-include="root.base_url + 'shared/templates/components/svg/main/play.html'"> </a>
+                <li>
+                    <a ng-click='playAll()' class="flex-center svg-white svg-stroke-8 svg-36 opacity-50" ng-include="root.base_url + 'shared/templates/components/svg/main/play.html'"> </a>
                 </li>
+
                 <li ng-if='state.play && state.play'>
                     <a ng-click='pause()' class="flex-center svg-white svg-stroke-8 svg-36 opacity-50" ng-include="root.base_url + 'shared/templates/components/svg/main/pause.html'"> </a>
                 </li>
