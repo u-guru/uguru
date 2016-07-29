@@ -307,7 +307,7 @@ angular.module('uguru.shared.directives.components')
         link: function(scope, element, attr) {
             scope.$watch('animations',  function(new_animations) {
                 if (new_animations.length) {
-                    scope.animations = new_animations;
+                    // scope.animations = new_animations;
                 }
 
             })
@@ -319,6 +319,23 @@ angular.module('uguru.shared.directives.components')
                 'iter': 'Iterations',
                 'name': 'Anim Name',
                 'duration': 'Duration'
+            }
+            scope.playAll = function() {
+                for (var i = 0; i < scope.animations.length; i++) {
+                    var animationIndex = scope.animations[i];
+                    scope.play(animationIndex);
+                }
+            }
+
+            scope.play = function(anim) {
+
+                anim.element.css('-webkit-animation-name', '');
+                anim.playState = 'running';
+
+                $timeout(function() {
+                    anim.element.css('-webkit-animation-name', anim.name);
+                    scope.$apply();
+                })
             }
         }
 
