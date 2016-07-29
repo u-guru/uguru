@@ -5,7 +5,7 @@
         <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()" >
             <section id='splash-home' class='splash-hero'>
 
-				<div class="absolute top-0 left-0 full-xy">
+                <div class="absolute top-0 left-0 full-xy">
 					<div class="full-xy"
 						init-default
 						init-with="prop:[op:.25, bg:transparent, t:all 150ms ease-in-out]"
@@ -22,6 +22,9 @@
 					when-search-university-clicked="prop:[opacity:0.5, t:all 600ms ease-in-out]"
 					when-close-search-university="prop:[opacity:1]"
                     >
+                </div>
+
+                <div ng-if="splash.state.powerups" init-later ng-include src="root.base_url + 'preapp/templates/splash.powerups.html'" include-replace>
                 </div>
 
                 <div ng-if="splash.state.sidebar" ng-include src="root.base_url + 'preapp/templates/splash.sidebar.html'" include-replace>
@@ -47,12 +50,10 @@
                 </div>
 
                 <!-- Map -->
-                <div ng-if="splash.state.map" ng-include src="root.base_url + 'preapp/templates/splash.map.html'" include-replace>
+                <div ng-if="splash.state.map" init-later ng-include src="root.base_url + 'preapp/templates/splash.map.html'" include-replace>
                 </div>
 
                 <!-- Powerups -->
-                <div ng-if="splash.state.powerups" ng-include src="root.base_url + 'preapp/templates/splash.powerups.html'" include-replace>
-                </div>
 
                 <!-- School Search -->
                 <div ng-if="splash.state.universitySearch" ng-include src="root.base_url + 'preapp/templates/started/university-search.html'" include-replace>
