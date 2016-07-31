@@ -1005,101 +1005,18 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
         return parseFloat((element[0].style.webkitTransitionDuration || element[0].style.transitionDuration).split('ms')[0]);
       }
 }])
-.directive("switch", ['$timeout', 'RootService', 'DirectiveService', 'UtilitiesService', 'SwitchService',
-        function($timeout, RootService, DirectiveService, UtilitiesService, SwitchService) {
-            return {
-              restrict: 'A',
-              scope: {},
-              require:'^?switches',
-              priority: 1,
-              link: {
-                pre: function(scope, element, attr) {
-                  scope.root && scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
-                  scope.switch = SwitchService.parseElemAttrs(scope, element, attr);
-                  var switchEvents = ['active', 'inactive', 'change'];
-                  if (scope.$parent.switchDict) {
+.directive('switch', ['$state', '$timeout', function($state, $timeout) {
+    return {
+      restrict: 'A',
+      scope: {},
+      link: function(scope, element, attr) {
+        if ('switch' in attr && !attr['switch']) {
+          scope.switch = {name: null, value:false};
 
-                    for (switchName in scope.$parent.switchDict) {
-                      if (switchName === scope.switch.name) {
-                        attr.$set('switch-id', scope.$parent.switchDict[switchName].switches.length + 1)
-                        var switchesParent = scope.$parent.switchDict[scope.switch.name]
-                        var parentHasDelay = 'changeDelay' in scope.$parent.switchDict[switchName];
-                        scope.switch.dashedName = UtilitiesService.camelToDash(scope.switch.name).toLowerCase();
-                        if (parentHasDelay) {
-                          scope.switch.parentDelay = scope.$parent.switchDict[switchName]['changeDelay'];
-                        }
-                        scope.switch.states = {};
-                        scope.switch.classes = [];
-                        scope.switch.id = scope.$parent.switchDict[scope.switch.name].switches.length + 1
-                        for (var i = 0; i < switchEvents.length; i++) {
-                          var indexEventDashed = 'on-switch-' + scope.switch.dashedName + '-' + switchEvents[i];
-                          var indexEventCamel = UtilitiesService.camelCase(indexEventDashed);
-                          if (indexEventCamel in attr) {
-
-                            scope.switch.states[switchEvents[i]] = {args: DirectiveService.parseArgs(attr[indexEventCamel]), className: indexEventDashed};
-                            scope.switch.classes.push(indexEventDashed)
-                          }
-                        }
-                        switchesParent.switches.push(scope.switch);
-                      }
-                    }
-                  }
-
-                  scope.$watch(function() {
-                    return element.attr('class');
-                  }, function(new_classes, old_classes) {
-                    for (var i = 0; i < switchEvents.length; i++) {
-                      var indexClass = 'on-switch-' + scope.switch.dashedName+ '-' + switchEvents[i];
-                      if (new_classes && new_classes.indexOf(indexClass) > -1) {
-                        element[0].classList.remove(indexClass);
-                        var stateName = indexClass.split('-').reverse()[0];
-                        if (stateName === 'change') {
-                          scope.switch.active = !scope.switch.active;
-                          if (scope.switch.active && 'active' in scope.switch.states) {
-                            var activeArgs = scope.switch.states['active']['args'];
-                            for (key in activeArgs) {
-                              var shouldSwitchDelayBeforeActive = scope.$parent.checkIfSiblingExiting(scope.switch);
-                              if (shouldSwitchDelayBeforeActive) {
-
-
-                                var callback = function() {
-                                  scope.$parent.switchDict[scope.switch.name].activeSwitches.push(parseInt(attr['switch-id']));
-                                }
-                                DirectiveService.activateArgDelay(key, activeArgs[key], scope, element, scope.switch.parentDelay, callback);
-
-                              } else {
-                                DirectiveService.activateArg(key, activeArgs[key], scope, element);
-                              }
-
-                            }
-                            // DirectiveService.activateArg
-                          } else {
-                            var inactiveArgs = scope.switch.states['inactive']['args'];
-
-                            var activeSwitches = scope.$parent.switchDict[scope.switch.name].activeSwitches;
-                            var indexSwitchActive = activeSwitches.indexOf(attr['switch-id']);
-                            activeSwitches.splice(indexSwitchActive, 1);
-                            console.log(indexSwitchActive, activeSwitches, inactiveArgs)
-                            for (key in inactiveArgs) {
-                              DirectiveService.activateArg(key, inactiveArgs[key], scope, element);
-                            }
-                          }
-                        }
-                      }
-                    }
-                  });
-                  // for (var i = 0; i < switches.length; i++) {
-                  //   var indexSwitch = switches[i];
-                  //   var switchesName = indexSwitch.name
-                  //   delete indexSwitch['name']
-                  //   scope.switchDict[switchesName] = indexSwitch
-                  // }
-                }
-              }
-
-            }
         }
-])
+      }
+    }
+}])
 .directive('parallaxChild', ['$state', '$timeout', function ($state, $timeout) {
     return {
       restrict: 'A',
@@ -1114,6 +1031,17 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
               scope.root.parallax[attr.parallaxParentRef] && scope.root.parallax[attr.parallaxParentRef].updateLayers();
             }
           }, 1000)
+        }
+      }
+    }
+}])
+.directive('rootAnimation', [function () {
+    return {
+      restrict: 'E',
+      scope: false,
+      link: function(scope, element, attr) {
+        if (attr.off) {
+          scope.root.animStatus.off = true;
         }
       }
     }

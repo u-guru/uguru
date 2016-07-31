@@ -1,7 +1,7 @@
 <module name='First Time Experience' columns="workflow,status,progress" progress="0000" dimensions="1111" active="{{ms.activeModule.activePerson || 'SM'}}">
 
     <!-- @jeselle, @gabrielle-->
-    <user-workflow name='Powerups View' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/powerups/' priority="5">
+    <user-workflow name='Powerups View' default-filters="SM:[func:false|type:func], JH:[func:true|type:func], GW:[type:gesture], JO:[type:gesture]"  url='/#/dev/splash/powerups/' priority="SM:15">
         <user-stories>
             <story type="func, transition" desc="User enters powerups screen">
                 <ui-stream desc='Powerups transition in' type='func, gesture' test-id='2017'>
@@ -269,7 +269,7 @@
     </user-workflow>
 
     <user-workflow name='Splash Nav & Utilities' url='/#/dev/splash/nav/' priority="13">
-        <user-stories> 
+        <user-stories>
             <story name="On enter splash">
 				<ui-stream name="Navigation animates in" test-id='1263'>
 					<ui-state name="Uguru logo animates in" desc="Logo jellyIn; label scaleInX" j-hard='true'></ui-state>
@@ -435,14 +435,24 @@
             </story>
         </user-stories>
     </user-workflow>
-
-    <user-workflow name='Dashboard Related' priority="-2">
+    <div ng-include src="'admin/templates/spec/modules/mvp.pre_app.html'" include-replace> </div>
+    <user-workflow name='Dashboard Related' priority="20">
         <user-stories>
-            <story desc="State reference">
+            <story desc="Quick" type='func'>
+                <ui-stream>
+                    <ui-state desc="Show priorities + number the workflows" complete>
+                    </ui-state>
+                    <ui-state desc="Overall progress + width based">
+                    </ui-state>
+                    <ui-state desc="Collapse only the first one" complete>
+                    </ui-state>
+                    <ui-state desc="Backgrounds" complete>
+                    </ui-state>
+                </ui-stream>
             </story>
             <story desc="Allow Streams to be skippable">
             </story>
-            <story desc="Priority on the state/stream story level">
+            <story desc="Priority on the state/stream story level" priority="1">
             </story>
             <story desc="Global priority">
             </story>
@@ -495,7 +505,7 @@
             </story>
 
             <story desc="Prioritized directives">
-                <ui-state> Counter </ui-state>
+                <!-- <ui-state> Counter </ui-state> -->
             </story>
         </user-stories>
     </user-workflow>

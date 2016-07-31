@@ -16,6 +16,7 @@ angular.module('uguru.shared.controllers', [])
     root.docs = {items: RootService.getDocItems(), searchText:'', resultIds: [], resultItems:[]};
     root.devMode = window.location.href.split('/dev/').length > 1;
     root.milestones = [];
+    root.animStatus = {off: false};
     root.inspectAnimations = [];
     root.public = {customStates: []};
     root.pauseElement = pauseElement(root);
@@ -25,11 +26,9 @@ angular.module('uguru.shared.controllers', [])
 
 function pauseElement(scope) {
   return function(element, attr) {
-    if (element[0].id === 'transition-player') {
-      return;
-    }
     var animStartEvent = 'animation';
     var cssPrefix = ''
+
     if (scope.browserPrefix) {
       cssPrefix = '-' + scope.browserPrefix + '-';
       animStartEvent = 'webkitAnimation';

@@ -215,6 +215,7 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
             case ('to'):
               resultDict.duration = transform_dict[key]
               var translateCoords = xyToElem(elem, transform_dict[key]);
+              console.log(translateCoords)
               for (coordName in translateCoords) {
                 resultDict[coordName] = translateCoords[coordName];
               }

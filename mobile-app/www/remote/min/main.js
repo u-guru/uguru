@@ -221,6 +221,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/milestones/:initial/:filter',
     templateUrl: 'admin/templates/milestones.html'
   })
+  .state('root.milestones-filter', {
+    url:'/dev/milestones/:initial/:filter/:type',
+    templateUrl: 'admin/templates/milestones.html'
+  })
   .state('root.svg-test', {
     url:'/svg-test',
     templateUrl: 'shared/templates/svg-test.html'
