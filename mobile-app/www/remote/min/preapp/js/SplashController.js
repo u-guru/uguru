@@ -55,12 +55,18 @@ angular.module('uguru.preApp', ['ionic'])
           loaderPortal.parentNode.removeChild(loaderPortal);
         }
 
-        document.querySelector('#loader-wrapper .pageload-overlay svg.transition').style.visibility = "visible";
+        document.querySelector('#loader-wrapper .pageload-overlay svg.transition').style.visibility = "hidden";
         document.querySelector('#loader-wrapper').style.visibility = "hidden"
+        $scope.showScaleOutLoader = true;
+
         globalLoader.hide();
         splash.renderView = true;
-        splash.state.madlib = true;
-        splash.state.nav = true;
+        $timeout(function() {
+          splash.state.madlib = true;
+        }, 2500)
+        $timeout(function() {
+          splash.state.nav = true;
+        }, 1000)
         splash.state.sidebar = true;
         splash.state.device = true;
         splash.state.powerups = true;

@@ -284,6 +284,141 @@ angular.module('uguru.shared.directives.components')
             }
         }
 }])
+.directive('square', ['SVGService', function(SVGService) {
+  return {
+    restrict: 'E',
+    replace: true,
+    template: '<svg width="100" height="100" viewBox="0, 0, 100, 100"> <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="97" rx="10"></rect> </svg>',
+    link: {
+      pre: function(scope, element, attr) {
+
+      }
+    }
+  }
+}])
+.directive('animationGroup', ['RootService', 'AnimationService', '$timeout', '$compile', function(RootService, AnimationService, $timeout, $compile) {
+    return {
+        restrict: 'E',
+        replace: false,
+        templateUrl: 'admin/templates/components/animation.group.player.tpl',
+        scope: {
+            animations: '=animations'
+        },
+        link: function(scope, element, attr) {
+            scope.animInfoDict = {stagger: 100};
+            scope.$watch('animations',  function(new_animations) {
+                scope.animations = new_animations;
+                for (var i = 0; i < scope.animations.length; i++) {
+
+                }
+
+            })
+            scope.mappings = {
+                'func': 'Timing Function',
+                'direction': 'Direction',
+                'delay': 'Delay',
+                'playState': 'Play State',
+                'iter': 'Iterations',
+                'name': 'Anim Name',
+                'duration': 'Duration'
+            }
+            scope.playAll = function() {
+                for (var i = 0; i < scope.animations.length; i++) {
+                    var animationIndex = scope.animations[i];
+                    scope.play(animationIndex, i);
+                }
+            }
+
+            scope.play = function(anim, index) {
+
+                anim.element.css('-webkit-animation-name', '');
+                anim.playState = 'running';
+                if (scope.animInfoDict.stagger) {
+                    anim.delay = scope.animInfoDict.stagger * i;
+                }
+
+                $timeout(function() {
+                    anim.element.css('-webkit-animation-name', anim.name);
+                    scope.$apply();
+                })
+            }
+        }
+
+    }
+}])
+.directive('projector', [function() {
+    return {
+        restrict: 'E',
+        replace: true,
+        transclude: true,
+        templateUrl: 'shared/templates/components/containers/projector.tpl'
+    }
+}])
+.directive('slides', [function() {
+    return {
+        retrict: 'E',
+        replace: true,
+        transclude: true,
+        template: '<ion-slides  options="options" slider="data.slider"><ion-slide-page><div class="box blue"><h1>BLUE</h1></div></ion-slide-page><ion-slide-page>',
+        controller: 'SwiperController',
+        scope: {
+            slides: '=slides'
+        },
+        link: {
+            pre: function(scope, element, attr) {
+
+            }
+        }
+    }
+}])
+.directive('animation', ['RootService', 'AnimationService', '$timeout', '$compile', function(RootService, AnimationService, $timeout, $compile) {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: AnimationService.getAnimatableTemplateFunc,
+    scope: {
+        name: '@name',
+        template: '@template',
+        obj: '@import',
+        stroke: '@stroke'
+    },
+    link: {
+      pre: function(scope, element, attr) {
+        $compile(element)(scope);
+        var anim = AnimationService.initAnimationObj();
+        scope.anim = anim;
+        scope.anim.element = element;
+
+        //if attr.template
+        anim.template = RootService.getBaseUrl() + attr.template;
+
+
+        //if attr.import
+        anim.obj = AnimationService.getAnimationObjFromAnimationName(attr.import);
+        // for (key in anim.obj.cssRules) console.log(anim.obj.cssRules[key]);
+
+        anim.duration = attr.duration && parseFloat(attr.duration) || 3000;
+        anim.direction = attr.direction;
+        anim.func = attr.func.replace('cb', 'cubic-bezier');
+        anim.delay = attr.delay|| 0;
+        anim.css = anim.obj.cssText;
+        anim.playState = (((attr.play === 'true') && "running") || "paused");
+        anim.iter = attr.iter;
+        anim.fillMode = attr.fillMode;
+        anim.listeners = {start: AnimationService.getStartListener(scope.anim, element[0]), end: AnimationService.getEndListener(scope.anim, element[0])}
+        anim.name = attr.import;
+        var cb = function(element) {
+            $compile(element)(scope);
+            $timeout(function() {
+                scope.$apply();
+            })
+        }
+        scope.$parent.root.inspectAnimations.push(anim);
+        AnimationService.injectAnimationWithPlayer(scope.anim, element, cb);
+      }
+    }
+  }
+}])
 // .directive("userIcon", ['$compile', function($compile) {
 //         return {
 //             templateUrl: BASE + 'templates/elements/components/info/user.icon.tpl',

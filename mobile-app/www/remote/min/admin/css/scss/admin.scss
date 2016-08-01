@@ -5,6 +5,13 @@
 @import 'partials/keyframes';
 @import 'partials/docs';
 
+.bg-cobalt-slate-campus-25p {
+	background: mix($campus, mix($cobalt, $slate, 25%), 25%)!important;
+}
+.bg-cobalt-slate-campus-50p {
+	background: mix($campus, mix($cobalt, $slate, 25%), 50%)!important;
+}
+
 #admin-anim-tools {
 	> div {
 		@media screen and (max-width: 768px) {
@@ -44,4 +51,25 @@
 .samir-anim {
     animation: samirAnim 3s ease 0s 1 normal none;
     -webkit-animation: samirAnim 3s ease 0s 1 normal none;
+}
+
+
+.samir-transition {
+	-webkit-transition-duration: 2s !important;
+}
+
+animation svg {
+	width:100px;
+	height:100px;
+	> path {
+		stroke:white;
+	}
+}
+
+// * {
+// 	-webkit-animation-duration: 1ms !important;
+// }
+
+.width-2-3 {
+	width:66%;
 }
