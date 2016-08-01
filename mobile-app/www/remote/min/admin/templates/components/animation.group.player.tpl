@@ -1,7 +1,7 @@
-<div id='transition-player' class="bg-slate">
+<div id='transition-player' class="bg-slate fixed top-0 left-0 full-x z-index-1000">
     <div class="bg-cobalt-25p">
-        <div class='flex-stretch full-x bg-cobalt-slate-campus-50p overflow-hidden relative z-index-9' ng-repeat='animation in animations'>
-            <div class="bg-moxie width-128 flex-center-vertical p15x bg">
+        <div class='flex-stretch full-x bg-cobalt-slate-campus-50p overflow-hidden relative z-index-9 hide' ng-repeat='animation in animations'>
+            <div class="bg-moxie width-128 flex-center-vertical p15x overflow-hidden">
                 <h1 class="semibold txt-20">{{animation.name}}</h1>
             </div>
             <ul class="p15-grid flex-center-vertical overflow-auto no-scrollbar" style="width: calc(100% - 128px);">
@@ -28,7 +28,7 @@
         <!-- @samir -->
         <!-- This is what repeated elements would look like -->
         <!-- Clicking on one expands it; I would like a switch so that clicking it again would shrink it -->
-        <div class='flex-stretch full-x bg-cobalt-slate-campus-25p overflow-hidden relative z-index-8' style="height: 60px;"
+        <div ng-if="false" class='flex-stretch full-x bg-cobalt-slate-campus-25p overflow-hidden relative z-index-8' style="height: 60px;"
             init-with="p:[margin-top:-50px, t:all 150ms ease-out]" ng-repeat='animation in animations'
             on-click="p:[margin-top:0]">
             <!--  I commented this out because it was expanding by default, see the @samir-2 section -->
@@ -57,7 +57,7 @@
                 <a ng-click='goBackOneLevel()' class="flex-center svg-white svg-stroke-8 svg-48-36" ng-include="root.base_url + 'shared/templates/components/svg/main/left.html'"> </a>
             </div>
         </div>
-        <div class='flex-stretch full-x bg-cobalt-slate-campus-50p overflow-hidden relative z-index-7' style="height: 60px;"
+        <div ng-if="false" class='flex-stretch full-x bg-cobalt-slate-campus-50p overflow-hidden relative z-index-7' style="height: 60px;"
             init-with="p:[margin-top:-50px, t:all 150ms ease-out]"
             on-click="p:[margin-top:0]">
             <!--  I commented this out because it was expanding by default, see the @samir-2 section -->
