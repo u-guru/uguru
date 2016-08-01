@@ -13,15 +13,62 @@ angular.module('uguru.admin')
         }
     }
 ])
+.directive("animationPlayer", ['$timeout', 'RootService', function($timeout, RootService) {
+    return {
+        templateUrl: RootService.getBaseUrl() + 'admin/templates/components/animation.player.tpl',
+        restrict: 'E',
+        scope: {anim:'=anim'},
+        replace: true,
+        link: function(scope, element, attr) {
+            var browserPrefix = RootService.getBrowserPrefix() || '';
+            scope.player = {idle: true, playing:false, refreshable: false};
+            var startListener = scope.anim.listeners.start();
+            // var endListener = scope.anim.listeners.end(function() {scope.anim.playState = 'paused';});
+            scope.play = function() {
+                console.log('clicked');
+                scope.anim.element.css('-webkit-animation-name', '');
+                scope.anim.playState = 'running';
+
+                $timeout(function() {
+                    scope.anim.element.css('-webkit-animation-name', scope.anim.name);
+                    scope.$apply();
+                })
+            }
+
+            var animStartEvent = 'animation';
+            if (browserPrefix) {
+                animStartEvent = browserPrefix.toLowerCase() + 'Animation'
+            }
+        }
+    }
+}])
 .directive("player", ['$timeout', 'RootService', function($timeout, RootService) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/player.tpl',
         restrict: 'E',
-        scope: {state:'=state', startOffset:'=startOffset', duration: '=duration', props:'=props', play:'=play', pause:'=pause', update: '=update'},
+        scope: {root:'=root', state:'=state', startOffset:'=startOffset', duration: '=duration', props:'=props', play:'=play', pause:'=pause', update: '=update'},
         replace: true,
         link: function(scope, element, attr) {
             scope.playerPos = scope.startOffset;
-            console.log(scope.props);
+            scope.activeAttrIndex = -1
+            scope.activateAttr = function($index, key) {
+
+                scope.activeAttrIndex = $index;
+                scope.activeAttrArr = scope.props.attr[key].arr;
+                console.log(scope.activeAttrArr);
+                if (key !== 'style') {
+                    scope.activeAttrArr = scope.activeAttrArr[0];
+                }
+
+
+                $timeout(function() {
+                    scope.$apply();
+                });
+            }
+            scope.goBackOneLevel = function() {
+                scope.activeAttrIndex = -1;
+                scope.activeAttrArr = null;
+            }
         }
     }
 }])
@@ -67,7 +114,7 @@ angular.module('uguru.admin')
         }
     }
 }])
-.directive('module', ['$timeout', function ($timeout) {
+.directive('module', ['$timeout', '$stateParams', function ($timeout, $stateParams) {
   return {
     restrict: 'E',
     replace: true,
@@ -82,6 +129,8 @@ angular.module('uguru.admin')
             scope.module.columns = attr.columns.split(',')
         }
         scope.module.name = attr.name
+
+        scope.module.typeFilter = $stateParams.type;
         scope.module.activePerson = attr.active;
         scope.module.dimensions = attr.dimensions;
         scope.module.toggleActivate = toggleActivate;
@@ -90,15 +139,15 @@ angular.module('uguru.admin')
             scope.$parent.ms.activeModule = scope.module;
             $timeout(function() {
                 scope.$watch('module.workflows', function(workflows) {
+
                     for (var i = 0; i < workflows.length; i++) {
                         var iWorkflow = workflows[i];
                         iWorkflow.progress = iWorkflow.calculateProgress(iWorkflow.stories);
-
                     }
-
                     $timeout(function() {
                         scope.module.progress = calcModuleProgress(scope.module.workflows);
                     })
+
 
                 })
             })
@@ -115,7 +164,7 @@ angular.module('uguru.admin')
      }
     }
 }])
-.directive('userWorkflow', ['UtilitiesService','$timeout', function (UtilitiesService, $timeout) {
+.directive('userWorkflow', ['UtilitiesService','$timeout', '$stateParams', function (UtilitiesService, $timeout, $stateParams) {
   return {
     replace: true,
     restrict: 'E',
@@ -139,17 +188,22 @@ angular.module('uguru.admin')
             streams: [],
             states: [],
             url: attr.url,
+            completed: 'completed' in attr,
             setup: {
                 base: {},
                 post: {},
             },
+            complete: 'complete' in attr,
+            priority: ('priority' in attr && parseFloat(attr.priority)) || 100,
             stories:[],
             calculateProgress: calcWorkflowProgress,
             progress: {},
             personDict: {},
+            enabled: $stateParams.type && $stateParams.type === attr.type,
             priority: parseFloat(attr.priority || 100.0),
             toggleActivate: scope.module.toggleActivate
         }
+
         if (!scope.module.workflows.length) {
             scope.workflow.active = true;
         };
@@ -238,7 +292,13 @@ angular.module('uguru.admin')
                     }
                 }
                 scope.workflow[activeFilterName].sort(function(item_1, item_2) {return item_2.activeTagCount - item_1.activeTagCount});
+            });
+            $timeout(function() {
+
+                scope.workflow.filter.tagsUpdated = false;
+                scope.workflow.filter.tagsUpdated = true;
             })
+
         })
 
 
@@ -246,7 +306,15 @@ angular.module('uguru.admin')
         function sortWorkflows() {
             scope.module.workflows.push(scope.workflow);
             scope.module.workflows.sort(function(w1, w2) {if (w2.access) w2.priority = 10000; if (w1.access) w1.priority = 10000; return w2.priority - w1.priority}).reverse();
-            scope.module.workflows.forEach(function(option, index) {option.pID = index + 1})
+            var filterdWorkflows = scope.module.workflows.filter(function(w, i) {return w.enabled && !w.completed})
+            filterdWorkflows.forEach(function(option, index) {option.pID = index + 1})
+            scope.module.workflows = filterdWorkflows;
+            for (var i = 0; i < scope.module.workflows.length; i++) {
+                var iWorkflow = scope.module.workflows[i];
+                var length1 = iWorkflow.stories.length;
+                iWorkflow.stories = iWorkflow.stories && iWorkflow.stories.filter(function(s, i) { return !('type' in s) || s['type'] === $stateParams.type})
+                var length2 = iWorkflow.stories.length;
+            }
         }
 
         function checkInitialAccess(module, workflow_id, initial) {
@@ -292,7 +360,34 @@ angular.module('uguru.admin')
                         for (var i = 0; i < scope.workflow.stories.length; i++) {
                             var iStory = scope.workflow.stories[i];
                             iStory.progress = iStory.calculateProgress(iStory.streams);
+                            for (var j = 0; j < iStory.streams.length; j ++) {
+                                var jStream = iStory.streams[j];
+                                scope.workflow.states.sort(function(s1, s2) {
+                                    s1 = parseFloat(s1);
+                                    s2 = parseFloat(s2);
+                                    if (s1.complete) {
+                                        s1.priority = 101;
+                                    }
+                                    if (s2.complete) {
+                                        s2.priority = 101;
+                                    }
+                                    return s2.priority - s1.priority;
+                                }).reverse();
+                                scope.workflow.states.forEach(function(s, i) {s.pID = i+1})
+                            }
                         }
+                        if (scope.workflow.progress && scope.workflow.stories.length) {
+                            scope.workflow.progress.stories = {total: scope.workflow.stories.length, complete : scope.workflow.stories.filter(function(s, i) {return s.complete}).length}
+                            var workflowStateProgress = {total: 0, complete: 0};
+
+                            scope.workflow.stories && scope.workflow.stories.forEach(function(s, i) {
+                                workflowStateProgress.total += (s.states && s.states.length) || 0;
+                                workflowStateProgress.complete += (s.states && s.states.length && s.states.filter(function(st, i) {return st.complete}).length) || 0;
+                            })
+                            scope.workflow.progress.states = workflowStateProgress;
+
+                        }
+                        scope.workflow.stories.forEach(function(s, i) {s.pID = i + 1})
                     })
                 })
             }, 1000)
@@ -317,11 +412,18 @@ angular.module('uguru.admin')
             responsive: attr.responsive === 'true',
             children: ['streams', 'states', 'bugs'],
             streams: [],
+            priority: 'priority' in attr && parseFloat(attr['priority']) || 100,
             progress: {},
+            complete: 'complete' in attr,
             states: [],
-            type: attr.type,
+            type: 'type' in attr && attr.type || null,
             priority: parsePriority(attr.priority) || {SM:100},
             bugs: []
+        }
+        if (scope.story.complete) {
+            scope.story.progress = scope.story.calculateProgress(scope.story.streams);
+            scope.story.progress.states.total = 1;
+            scope.story.progress.states.complete = 1;
         }
         if (!attr.name) scope.story.desc = '';
         // scope.$watchCollection('story', function(story, old_story) {
@@ -374,6 +476,13 @@ angular.module('uguru.admin')
                 scope.$parent.workflow.streams.push(scope.stream);
                 // console.log();
                 // scope.$parent.workflow.states.push(scope.state);
+                scope.$watch('stream.states', function(states) {
+                    states.forEach(function(s, index) { if (s.complete) {s.priority = 101; }});
+                    states && states.sort(function(s1, s2) {
+                        return s2.priority - s1.priority;
+                    })
+                    states && states.forEach(function(s, index) { s.pID = index + 1;})
+                })
             })
         })
 
@@ -392,13 +501,15 @@ angular.module('uguru.admin')
             name: attr.name,
             testId: attr.testId,
             bugs:[],
+            complete: 'complete' in attr,
             testObj: null,
             tags: [],
             type: 'type' in attr && attr['type'],
             func: 'func' in attr && (attr['func'] === 'true' || attr['functional'] === 'true'),
             cp: 'cp' in attr && attr['cp'] === 'true',
             tested: 'tested' in attr && attr['test'] === 'true',
-            priority: 'priority' in attr && attr['priority']
+            priority: 'priority' in attr && parseFloat(attr['priority']) || 100,
+
         }
         $timeout(function() {
             scope.stream = scope.$parent.stream;
@@ -412,14 +523,21 @@ angular.module('uguru.admin')
                 if (scope.stream && scope.stream.states) {
                     scope.state.id = scope.stream.states.length + 1;
                     scope.state.stream_id = scope.stream.id;
+                    scope.stream.progress = scope.stream.calculateProgress(scope.stream.states);
                     scope.stream.states.push(scope.state);
                 }
             })
 
 
             $timeout(function() {
+                if (scope.$parent.workflow.type) {
+                    console.log('has type');
+                    scope.state.type = scope.$parent.story.type;
+                }
                 scope.$parent.story.states.push(scope.state);
                 scope.$parent.workflow.states.push(scope.state);
+
+                scope.$parent.story.progress = scope.$parent.story.calculateProgress(scope.story.streams);
             })
             //@jason
             if ('testId' in attr && attr.testId.length) {
@@ -470,16 +588,18 @@ angular.module('uguru.admin')
             tested: ('tested' in attr && attr.tested === 'true') || false,
         }
         $timeout(function() {
+
             scope.state = scope.$parent.state;
+
             scope.state.bugs.push(scope.bug);
-            scope.$parent.stream.bugs.push(scope.bug);
-            scope.$parent.story.bugs.push(scope.bug);
+            // scope.state.stream.bugs.push(scope.bug);
+            // scope.state.story.bugs.push(scope.bug);
             $timeout(function() {
                 if (scope.bug.type === 'functional') {
                     scope.bug.id = scope.$parent.$parent.workflow.bugs.length + 1;
                     scope.bug.state_id = scope.state.id;
                     scope.bug.stream_id = scope.state.stream_id;
-                    scope.bug.name = (scope.$parent.stream.name || '') + ' ' + scope.state.name;
+                    // scope.bug.name = (scope.$parent.stream.name || '') + ' ' + scope.state.name;
                     scope.$parent.$parent.workflow.bugs.push(scope.bug);
                 }
             })
@@ -845,7 +965,6 @@ function calcModuleProgress(workflows) {
         if (iWorkflow.tested) resultDict.workflows.tested += 1;
         if (iWorkflow.cp) resultDict.workflows.cp += 1;
         if (iWorkflow.response) resultDict.workflows.responsive += 1;
-        console.log(iWorkflow.states.length)
         iWorkflow.states.forEach(
             function(state, index)
             {
@@ -890,7 +1009,7 @@ function calcStreamProgress(state_arr) {
 }
 
 function calcStoryProgress(stream_arr) {
-    var resultDict = {func: 0, cp: 0, tested: 0, responsive: 0, total: stream_arr.length};
+    var resultDict = {func: 0, cp: 0, tested: 0, responsive: 0, total: stream_arr.length, states: {total:0, complete:0}};
     for (var i = 0; i < stream_arr.length; i++) {
         var iStream = stream_arr[i];
         if (iStream.progress && iStream.progress.total > 0) {
@@ -898,6 +1017,8 @@ function calcStoryProgress(stream_arr) {
             resultDict.cp += iStream.progress.cp;
             resultDict.tested += iStream.progress.tested;
             resultDict.responsive += iStream.progress.responsive;
+            resultDict.states.total += iStream.states.length;
+            resultDict.states.complete += iStream.states.filter(function(s, i) { return s.complete}).length
         }
     }
     return resultDict;

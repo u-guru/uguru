@@ -14,6 +14,14 @@ angular.module('uguru.admin')
   function($scope, $state, $timeout, $interval, $localstorage, $window, AnimationService, SpecService, $compile, DirectiveService) {
     var apc = this;
     apc.options = {
+      animation: {
+        args: [
+          {name: 'template'},
+          {name: 'name', default: 'bounceInUp'},
+          {name: 'duration', default: '1500ms'},
+          {name: 'func', default: 'func'}
+        ]
+      },
       transform: {
         args: [
           {name: 'scale[XYZ]'},
@@ -39,7 +47,7 @@ angular.module('uguru.admin')
         examples: [
           {
             args: ['rotate-z', 'translate-x', 'scale-y'],
-            str: 'transform:[ro-z:-0.75turn, tx:100%, sc-y:2.0, t-o:75% 25% -125px, duration:2000, p:500px, tf:cb(0.230,1.000, 0.320,1.000)]'
+            str: 'transform:[rotatez:-0.75turn, tx:100%, sc-y:2.0, t-o:75% 25% -125px, duration:20000, p:500px, tf:cb(0.230,1.000, 0.320,1.000)]'
           },
           {
             args: ['sk-z', 'sk-x', 'ro-z', 't-o'],
@@ -78,7 +86,7 @@ angular.module('uguru.admin')
       initPlaygroundVars($scope.name, apc);
     // }, 1000)
       $timeout(function() {
-        apc.example.play();
+        apc.example && apc.example.play();
       })
       $scope.$watch('apc.exampleIndex', function(value) {
         var elem = document.querySelector('svg rect');
@@ -98,6 +106,8 @@ angular.module('uguru.admin')
       })
 
     function initPlaygroundVars(name, index) {
+      apc.type = name;
+
       if (name in apc.options) {
         var examples = apc.options[name]['examples'];
         var element = document.querySelector('#playground-view rect');

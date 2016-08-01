@@ -94,6 +94,7 @@
                'preapp/css/compiled/preapp.css:async',
                'admin/css/compiled/admin.css:async',
                'shared/css/lib/prism.css:async',
+               'shared/css/lib/swiper.css:async',
                'jeselle/css/compiled/style.css:async',
                'jeselle/css/compiled/utility.css:async',
                'gabrielle/css/compiled/style.css:async',
@@ -103,6 +104,7 @@
                'shared/js/lib/restangular.min.js',
                'shared/js/lib/lodash.min.js',
                'shared/js/lib/prism.min.js',
+               'shared/js/lib/swiper.min.js',
                'shared/js/directives/AnimationDirectives.js',
                'shared/js/directives/CalendarDirectives.js',
                'shared/js/directives/ElementDirectives.js',
@@ -140,6 +142,7 @@
                'main.js',
                'shared/js/controllers/RootController.js',
                'shared/js/controllers/GuruProfileController.js',
+               'shared/js/controllers/SwiperController.js',
                'admin/js/controllers/AdminController.js',
                'admin/js/controllers/AdminActionController.js',
                'admin/js/controllers/AdminDemosController.js',
@@ -165,8 +168,7 @@
                'preapp/js/started/SplashAccountController.js',
                'preapp/js/started/SplashCourseController.js',
                'preapp/js/started/SplashDemographicsController.js',
-               'shared/js/controllers/SwiperController.js',
-             'preapp/js/SplashTransitionsController.js'
+              'preapp/js/SplashTransitionsController.js'
            ];
            var fileInitCB = {
                'shared/js/lib/snap.svg.min.js': initSnapLoadedEvent
@@ -199,7 +201,7 @@
                var snapLoadedEvent = initEventFromName('shouldRenderSplashTransition');
                script_elem.onload = function(e) {
                    globalLoader = new SVGLoader(document.querySelector('#loader-wrapper .pageload-overlay'), {
-                       speedOut: 2000,
+                       speedOut: 300,
                        easingOut: mina.easeinout
                    });
                    globalLoader.show();
