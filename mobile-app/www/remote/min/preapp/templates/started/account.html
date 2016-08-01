@@ -12,10 +12,15 @@
             </div>
 
             <!-- signup -->
-            <div class="projector-account-content projector-signup absolute top-0 left-0 full-xy">
+            <div class="projector-account-content projector-signup absolute top-0 left-0 full-xy"
+				init-default
+				when-proj-login-init="p:[op:0, z-index:-1]"
+				when-proj-signup-init="p:[op:1, z-index:10]">
                 <!-- ng-class:{'active':!page.account.loginMode && !page.account.forgotPassword} -->
                 <div class="projector-account-switch-desktop absolute top-0 right-0 p15xy">
-                    <button class="btn-ghost-white">Login</button>
+                    <button class="btn-ghost-white"
+						init-default
+						on-click="s:[proj-login-init:public]">Login</button>
                     <!-- class-on-activate="tada:anim" ng-click='page.account.loginMode = true' -->
                 </div>
                 <div class="projector-account-inside full-xy">
@@ -154,10 +159,15 @@
             </div>
 
             <!-- login -->
-            <div class="projector-account-content projector-login absolute top-0 left-0 full-xy" on-init="opacity:0">
+            <div class="projector-account-content projector-login absolute top-0 left-0 full-xy"
+				init-with="p:[op:0, z-index:-1]"
+				when-proj-login-init="p:[op:1, z-index:10]"
+				when-proj-signup-init="p:[op:0, z-index:-1]">
                 <!-- ng-class:{'active':page.account.loginMode && !page.account.forgotPassword} -->
                 <div class="projector-account-switch-desktop absolute top-0 right-0 p15xy">
-                    <button class="btn-splash-login btn-ghost-white">Signup</button>
+                    <button class="btn-splash-login btn-ghost-white"
+						init-default
+						on-click="s:[proj-signup-init:public]">Signup</button>
                     <!-- ng-click='switchToSignup()' -->
                 </div>
                 <div class="projector-account-inside full-xy">
@@ -273,7 +283,10 @@
             </div>
 
             <!-- forgot password -->
-            <div class="projector-account-content projector-forgot absolute top-0 left-0 full-xy" on-init="opacity:0">
+            <div class="projector-account-content projector-forgot absolute top-0 left-0 full-xy"
+				init-with="p:[op:0, z-index:-1]"
+				when-proj-login-init="p:[op:0, z-index:-1]"
+				when-proj-signup-init="p:[op:0, z-index:-1]">
                 <!-- ng-class:{'active':page.account.forgotPassword} -->
                 <ul class="projector-account-switch-desktop absolute top-0 right-0 flex p15-grid">
                     <li>
