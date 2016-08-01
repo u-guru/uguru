@@ -23,7 +23,7 @@
                     </ui-state>
 					<ui-state type="transition" name="Hanger onEnter" desc="Hanger swings in on top of tile" func="false" static-"true"></ui-state>
 					<ui-state type="transition" name="Highlight new apps" desc="Hanger swings out and new app sign drops in" func="false" static="false"></ui-state>
-                    <!-- add more here, any sequential animations should be a state. Sequential, as in, when one enters, it has an agenda to achieve XYZ in orderly fashion. -->
+
                 </ui-stream>
                 <ui-stream desc='User hovers over one powerup' test-id='2759'>
 					<ui-state name="Mouse enter state" type="gesture, transition" func="true">
@@ -43,10 +43,10 @@
 					</ui-state>
                 </ui-stream>
                 <ui-stream desc='User returns to the first and clicks on it'>
-					<!-- <ui-state name="Mouse leave state" desc="mouseEnter animation pauses" type="gesture, transition" func="true"> </ui-state>
+					<ui-state name="Mouse leave state" desc="mouseEnter animation pauses" type="gesture, transition" func="true"> </ui-state>
 					<ui-state name="New mouse enter state" desc="See respective animation in 'User hovers over one powerup' stream" type="gesture, transition" func="true"></ui-state>
 					<ui-state name="Mouse clickOn state" desc="Tile scaleDown" type="gesture, transition" func="true"></ui-state>
-					<ui-state name="Mouse clickOff state" desc="Tile scaleUp to original size" type="gesture, transition" func="true"></ui-state> -->
+					<ui-state name="Mouse clickOff state" desc="Tile scaleUp to original size" type="gesture, transition" func="true"></ui-state>
 				</ui-stream>
             </story>
             <story type="func, transition" desc="User transitions from powerups page to a specific powerup">
@@ -104,7 +104,7 @@
 				</ui-stream>
 				<ui-stream desc="User scrolls to sound demo" priority="1">
 					<ui-state name="Records animate in" desc="rotateInLeft" type="transition" func="false" static="false">
-						<!-- <visual></visual> -->
+
 						<bug type="static" open by="Gabrielle" flag="[Jeselle]" description="Record needs a texture in order to show rotation" platform="all" reference="true" reference-name="Record texture"/>
 					</ui-state>
 					<ui-state name="Equalizer starts infinite animation" desc="scaleY up and down, staggered randomly" type="transition" func="true" static="true">
@@ -383,8 +383,7 @@
 					<ui-state name="Link mouse-leave" j-notSure='true'></ui-state>
 					<ui-state name="Link click" j-notSure='true'></ui-state>
 					<ui-state name="Modal opens" j-notSure='true'></ui-state>
-                    <!-- <ui-state gesture='click'></ui-state>
-                    <ui-state type="transition" name="sidebar"></ui-state> -->
+
                 </ui-stream>
             </story>
         </user-stories>
@@ -509,7 +508,7 @@
             </story>
 
             <story desc="Prioritized directives">
-                <!-- <ui-state> Counter </ui-state> -->
+
             </story>
         </user-stories>
     </user-workflow>
