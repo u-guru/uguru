@@ -442,7 +442,7 @@ angular.module('uguru.shared.directives')
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
         var mouseEnterDelay = parseInt(attr.onMouseEnterDelay) || 250;
-
+        console.log('entering mouse');
         element.on('mouseenter', function () {
             var inTimeout = true;
             $timeout(function () {
@@ -773,66 +773,6 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       }
     }
 }])
-.directive("switches", ['$timeout', 'RootService', 'DirectiveService', 'UtilitiesService',
-        function($timeout, RootService, DirectiveService, UtilitiesService) {
-            return {
-              restrict: 'A',
-              priority:1,
-              link: {
-                pre: function(scope, element, attr) {
-                  scope.switchDict = {};
-                  var switches = DirectiveService.parseSwitchesAttr(scope, element, attr);
-                  for (var i = 0; i < switches.length; i++) {
-                    var indexSwitch = switches[i];
-                    var switchesName = indexSwitch.name
-                    delete indexSwitch['name']
-                    scope.switchDict[switchesName] = indexSwitch
-                  }
-
-                },
-                post: function(scope, element, attr) {
-                  console.log(scope.switchDict['rowOne'].switches, scope.switchDict['rowOne'].activeSwitches);
-                  $timeout(function() {
-                    console.log(scope.switchDict['rowOne'].switches, scope.switchDict['rowOne'].activeSwitches);
-                  }, 5000)
-                  scope.checkIfSiblingExiting = function(switch_obj) {
-                      var switchesObj = scope.switchDict[switch_obj.name];
-                      if (switchesObj.activeSwitches.length < switchesObj.activeLimit) {
-                        console.log(switch_obj, switchesObj.switches)
-                        switchesObj.activeSwitches.push(switch_obj.id);
-                        return false;
-                      } else
-                      if (switchesObj.activeSwitches.length === switchesObj.activeLimit) {
-
-                        if (switchesObj.activeSwitches.indexOf(switch_obj.id) > -1) {
-                          var switchIndex = switchesObj.activeSwitches.indexOf(switch_obj.id);
-                          var activeSwitchIndex = switchesObj[switchIndex] - 1
-                          switchesObj.activeSwitches.splice(activeSwitchIndex, 1);
-                          return false;
-                        } else {
-
-                          //notify the first one that it needs to go
-                          //remove previous
-                          var switchIdToRemove = switchesObj.activeSwitches.splice(switchesObj.activeLimit - 1, 1)[0] - 1;
-                          // switchesObj.activeSwitches.splice(switchIdToRemove, 1);
-                          // switchesObj.activeSwitches.push(switch_obj.id);
-                          var formattedAttr = 'on-switch-' + UtilitiesService.camelToDash(switch_obj.name).toLowerCase() + '-change';
-                          var elemToInactive = scope.switchDict[switch_obj.name].switches[switchIdToRemove];
-                          var childQuery = '[switch-id="' + (parseInt(switchIdToRemove) + 1) + '"][switch="' + switch_obj.name + '"]';
-                          var childElem = element[0].querySelector(childQuery);
-                          childElem.classList.add(formattedAttr);
-                          return true;
-                        }
-
-                      }
-                  }
-
-                }
-              }
-
-            }
-        }
-])
 .directive("inspect", ['$timeout', 'RootService', '$compile', 'AdminInspectService',
   function($timeout, RootService, $compile, AdminInspectService) {
       return {
@@ -1005,16 +945,72 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
         return parseFloat((element[0].style.webkitTransitionDuration || element[0].style.transitionDuration).split('ms')[0]);
       }
 }])
-.directive('switch', ['$state', '$timeout', function($state, $timeout) {
+.directive('switches', ['$state', '$timeout', 'DirectiveService', 'UtilitiesService', function($state, $timeout, DirectiveService, UtilitiesService) {
+    return {
+      restrict: 'A',
+      scope: {switches:"@switches"},
+      link: function(scope, element, attr) {
+        if (!scope.switches || !scope.switches.length) {
+          return;
+        }
+        scope.switches = {};
+        var switchesNameStr = UtilitiesService.removeAllOccurrancesArr(attr.switches, ['[', ']']);
+        switchesNameStr = UtilitiesService.replaceAll(switchesNameStr, ', ', ',');
+        switchNameArr = switchesNameStr.split(',');
+        for (var i = 0; i < switchNameArr.length; i++) {
+          var iSwitchName = switchNameArr[i];
+          var iSwitchDashedName = UtilitiesService.camelToDash(iSwitchName);
+          var onArgs = (iSwitchDashedName +'-off') in attr && attr[iSwitchDashedName+'-off'];
+          var offArgs = (iSwitchDashedName +'-on') in attr && attr[iSwitchDashedName+'-on'];
+          scope.switches[name] = {dashed: iSwitchDashedName, value: false, onArgs: false, offArgs: false};
+
+        }
+
+
+        // scope.switchClasses = [];
+        // for (key in attr) {
+        //   console.log(key);
+        // }
+      }
+    }
+}])
+.directive('switch', ['$state', '$timeout', 'DirectiveService', function($state, $timeout, DirectiveService) {
     return {
       restrict: 'A',
       scope: {},
       link: function(scope, element, attr) {
-        if ('switch' in attr && !attr['switch']) {
-          scope.switch = {name: null, value:false};
+        //shortcut
+        scope.switch = {name: null, value:false};
+
+        if ('switchOn' in attr) {
+          scope.switch.on = {args: DirectiveService.parseArgs(attr.switchOn)}
         }
-      }
+
+        if ('switchOff' in attr) {
+          scope.switch.off = {args: DirectiveService.parseArgs(attr.switchOff)}
+        }
+        scope.$watch(function() {
+          return element.attr('class');
+        }, function(new_classes) {
+          if (new_classes && new_classes.indexOf('switch-toggle') > -1) {
+
+            element[0].classList.remove('switch-toggle');
+            scope.switch.value = !scope.switch.value;
+            var toggleValue = scope.switch.value && 'on' || 'off';
+
+            var elemArgs = scope.switch[toggleValue].args;
+
+            var supportedCommands = DirectiveService.supportedCommands;
+
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+          }
+        })
     }
+  }
 }])
 .directive('parallaxChild', ['$state', '$timeout', function ($state, $timeout) {
     return {
@@ -1098,7 +1094,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       }
     }
 }])
-.directive('slide', [function () {
+.directive('slide', ['$timeout', function ($timeout) {
     return {
       restrict: 'E',
       scope: {data: '=data', index: '=index'},
@@ -1106,13 +1102,24 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       priority:1,
       replace:true,
       template: '<div class="swiper-slide" ng-transclude></div>',
-      link: function preLink(scope, element, attr) {
-        if (!scope.$parent.data) {
-          scope.$parent.data = [];
-        }
-        scope.$parent.data.push(scope.data);
-        console.log(scope.$parent.data);
-      }
+      link:  {
+            pre: function(scope, element, attr) {
+              if (!scope.$parent.data) {
+                scope.$parent.data = [];
+              }
+              scope.$parent.data.push(scope.data);
+            },
+            post: function(scope, element, attr) {
+              $timeout(function() {
+                if ('width' in attr && attr.width.length) {
+                  element.css('width', attr.width)
+                }
+                if ('height' in attr && attr.height.length) {
+                    element.css('height', attr.height)
+                  }
+              })
+            }
+          }
     }
 }])
 .directive('swiperNext', [function () {
@@ -1186,6 +1193,7 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
         }
     }
 }])
+
 .directive('includeReplace', function () {
     return {
         require: 'ngInclude',

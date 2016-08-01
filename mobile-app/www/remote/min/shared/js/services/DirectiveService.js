@@ -731,7 +731,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             var implementedTriggers = ['on-click', 'on-hover', 'on-mouse-leave', 'on-mouse-enter'];
             if (implementedTriggers.indexOf(trig_name) > -1) {
               angular.element(elem).triggerHandler(trig_name);
-            } else {
+            } else if (trig_name === 'switch') {
+              elem.classList.add('switch-toggle');
+            }
+            else {
               elem.classList.add(trig_name);
             }
           }

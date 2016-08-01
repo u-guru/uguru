@@ -346,6 +346,14 @@ angular.module('uguru.shared.directives.components')
 
     }
 }])
+.directive('projector', [function() {
+    return {
+        restrict: 'E',
+        replace: true,
+        transclude: true,
+        templateUrl: 'shared/templates/components/containers/projector.tpl'
+    }
+}])
 .directive('slides', [function() {
     return {
         retrict: 'E',
