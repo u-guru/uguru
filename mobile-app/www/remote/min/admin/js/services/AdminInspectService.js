@@ -27,7 +27,7 @@ function AdminInspectService($state, $timeout, $localstorage, RootService, Utili
         for (key in elementKeys) {
             var strKey = elementKeys[key];
 
-            if (supportedStates.indexOf(strKey) > -1) {
+            if (supportedStates.indexOf(strKey) > -1 && strKey !== 'initLater') {
 
                 var rawString = attr[strKey].substring();
 
