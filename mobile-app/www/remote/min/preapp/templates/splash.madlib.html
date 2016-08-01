@@ -256,10 +256,12 @@
                     on-change="e:[madlib.updateOptionByIndex(splash.category, 0)]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
-                            switch="rowOne"
-							on-switch-row-one-active="transform:[to:(#blank-1), duration:250, delay:0]"
-							on-switch-row-one-inactive="transform:[clear:translate]"
-							on-click="t:[on-switch-row-one-change]">
+							switches="[rowone, rowtwo]"
+							switch-rowone-on="tr:[to:(#blank-1), duration:250, delay:0]"
+							switch-rowone-off="tr:[clear:translate, duration:250, delay:0]"
+							switch-rowtwo-on="tr:[to:(#blank-1), duration:250, delay:0]"
+							switch-rowtwo-off="tr:[clear:translate, duration:250, delay:0]"
+							on-click="t:[switch:rowone]">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
