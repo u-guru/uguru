@@ -11,7 +11,7 @@ angular.module('uguru.admin')
   function($scope, $state, $timeout, $window, SpecService, $stateParams, UtilitiesService) {
 
     var ms = this;
-    var allowed_params = ['initial', 'filter']
+    var allowed_params = ['initial', 'filter', 'type']
     var teamDefaultDict = {JH: 'testReady', GW: 'states', SM:'stories', JO:'states'};
     var teamDefaultFilter = {JH: 'func', GW: 'func', SM:'func', JO:'func'};
     ms.types = ['ugh']//, 'eh', 'ah', 'aha'];
@@ -75,15 +75,19 @@ angular.module('uguru.admin')
             for (var i = 0; i < workflows.length; i++) {
               var iWorkflow = workflows[i];
               var activeIndex = iWorkflow.filter.options.indexOf(value);
+              // if ('type' in params && key === 'type' &&  (!(key in iWorkflow) || iWorkflow[key] !== params['type'])) {
+              //   iWorkflow.enabled = false;
+              // }
               if (activeIndex > -1) {
                 iWorkflow.filter.activeIndex = activeIndex;
                 ms.activeFilter = iWorkflow.filter.options[activeIndex];
                 ms.activeFilterFormatted = UtilitiesService.camelToDash(ms.activeFilter).split('-')
                 ms.activeFilterFormatted.forEach(function(word, index) {return word.substring(0,1).toUpperCase() + word[index].substring(1)})
                 ms.activeFilterFormatted = ms.activeFilterFormatted.join(" ");
-                iWorkflow.active = iWorkflow[iWorkflow.filter.options[activeIndex]].length > 0
+                workflows[i].active = false;
               }
             }
+            workflows.filter(function(w, i) {return !w.complete})[0].active = true;
           }
 
         }

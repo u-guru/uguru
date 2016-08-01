@@ -1,10 +1,5 @@
 <ion-view class="flex-center">
-    <div class="projector-slide">
-        <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
-            <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
-        </svg>
-        <div class="projector-top"></div>
-        <div class="projector-content projector-account">
+    <projector init-with="transform:[translateY:-200%]|p:[transition:transform 250ms ease-in-out]" on-init="transform:[translateY:0%]">
             <div class="projector-guru">
                 <div class="guru-head" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"></div>
                 <svg class="coach active" on-init="opacity:0" width="114px" height="98px" viewBox="0 0 228 196">
@@ -364,6 +359,5 @@
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>
+    </projector>
 </ion-view>

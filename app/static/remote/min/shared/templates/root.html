@@ -1,3 +1,4 @@
+<!-- <animation-group animations="root.inspectAnimations"> </animation-group> -->
 <ion-nav-view id='root-nav' animation="slide-left-right">
     <!-- Warnings: be careful with spaces, those are treated like characters
             i.e. opacity: 0 !== opacity:0
@@ -39,6 +40,8 @@
         <prop-shortcut replace="animation-direction" with="dir"/>
         <prop-shortcut replace="animation-play-state" with="aps"/>
         <prop-shortcut replace="animation-play-state" with="play"/>
+        <prop-shortcut replace="animation-fill-mode" with="afm"/>
+        <prop-shortcut replace="animation-fill-mode" with="mode"/>
         <prop-shortcut replace="animation-delay" with="ade"/>
         <prop-shortcut replace="animation-delay" with="start"/>
 
@@ -69,4 +72,5 @@
 		<prop-value-shortcut replace="t:all 150ms ease-in" with="t-150-ei"/>
 		<prop-value-shortcut replace="t:all 150ms ease-out" with="t-150-eo"/>
     </custom-shortcuts>
+    <root-animation off="true"> </root-animation>
 </ion-nav-view>
