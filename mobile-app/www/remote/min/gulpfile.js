@@ -218,7 +218,7 @@ gulp.task('compile-base-js', function(done) {
     ]);
 
   return streamqueue({ objectMode: true }, scriptStream)
-    .pipe(debug())
+    // .pipe(debug())
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
@@ -261,6 +261,7 @@ gulp.task('compile-js', function(done) {
 
   return streamqueue({ objectMode: true }, scriptStream)
     .pipe(debug())
+    .pipe(plugins.uglify().on('error', gutil.log))
     .pipe(plugins.if(build, plugins.ngAnnotate()))
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
@@ -277,9 +278,12 @@ gulp.task('compile-temp',function(done){
           // 'preapp/templates/**/*.html',
           '!*master.index.html',
           '!*index.html',
+          '!util/index.html',
           '!admin/templates/milestones.html',
           '!admin/templates/spec/**/**.html',
           '!admin/templates/spec*',
+          '!admin/templates/actions.html',
+          '!admin/templates/*.html',
           '**/*html',
           // 'admin/templates/*html',
           // 'admin/templates/*bugs.*html',
@@ -291,11 +295,16 @@ gulp.task('compile-temp',function(done){
           // 'preapp/templates/*html',
           // 'preapp/templates/components/*tpl',
           '**/*tpl',
-          '**/*svg'], { cwd: '' }).pipe(plugins.angularTemplatecache('templates.js', {
-        root: '',
-        module: 'uguru',
-        htmlmin: build && minifyConfig
-      }));
+          '**/*svg'], { cwd: '' })
+        .pipe(debug())
+        .pipe(plugins.angularTemplatecache('templates.js', {
+            root: '',
+            module: 'uguru',
+            htmlmin: build && minifyConfig
+          }))
+        // .pipe(plugins.uglify().on('error', gutil.log))
+
+        ;
 
     return streamqueue({ objectMode: true }, templateStream)
           .pipe(plugins.if(build, plugins.ngAnnotate()))
@@ -310,12 +319,23 @@ gulp.task('clean', function(done) {
 
 gulp.task('templates', function() {
   //PART ONE, MOVE ALL TEMPLATES TO RIGHT FOLDER
-  var templateLocations = ['admin/templates/**/**/**', 'shared/templates/**/**/**', 'preapp/templates/**/**/**', 'jeselle/templates/**/**/**', 'gabrielle/templates/**/**/**'];
+  var templateLocations = 
+  [
+    'admin/templates/**/**/**',
+    'shared/templates/**/**/**',
+    'preapp/templates/**/**/**svg',
+    'preapp/templates/**/**/**tpl',
+    'preapp/templates/**/**/**html',
+    'jeselle/templates/**/**/**',
+    'gabrielle/templates/**/**/**'
+    ];
   for (var i = 0; i < templateLocations.length; i++) {
     gulp.src([templateLocations[i]], { cwd: '' })
+    // .pipe(debug())
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest(path.join(targetDir, 'templates/' + templateLocations[i].split('/**')[0])))
-    .on('error', errorHandler);
+    .pipe(gulp.dest(path.join(targetDir, 'templates/' + templateLocations[i].split('/**')[0])));
+    // .on('error', errorHandler);
+    // .pipe(plugins.uglify().on('error', gutil.log));
   }
 
 
@@ -365,7 +385,7 @@ gulp.task('default', function(done) {
     'compile-css',
     'templates',
     'compile-temp',
-    // // 'jsHint',
+    // 'jsHint',
     'compile-js',
     'compile-base-js',
     'copy-prod',
