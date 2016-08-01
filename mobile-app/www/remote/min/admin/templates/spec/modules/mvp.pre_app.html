@@ -43,6 +43,58 @@
 
         </user-stories>
     </user-workflow>
+    <user-workflow name="MVP GO HOME IN THE PAINT" type='func' priority="-2">
+        <user-stories>
+            <story name="Getting Started" type='func' priority="1">
+                <ui-stream name="Account Setup">
+                    <ui-state name="Swiper" type='func'>
+                    </ui-state>
+                    <ui-state name="Input">
+                    </ui-state>
+                    <ui-state name="University ID Card">
+                    </ui-state>
+                    <ui-state name="UserObject + ServerSide Communication">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream name="Demographics">
+                    <ui-state name="">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream name="Access">
+                    <ui-state name="Server side route">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream name="University">
+                    <ui-state name="Server side route">
+                    </ui-state>
+                </ui-stream>
+                <ui-stream name="Courses">
+                    <ui-state name="Server side route">
+                    </ui-state>
+                </ui-stream>
+            </story>
+            <story name="Splash Madlib">
+                <ui-stream name="University">
+                </ui-stream>
+            </story>
+            <story name="Map">
+            </story>
+            <story name="Sidebar + About/Items">
+            </story>
+            <story name="Device">
+            </story>
+            <story name="Production + Presentation">
+            <story name="Wrapup + Scroll">
+                <ui-state name="Tween animation"/>
+                <ui-state name="Scroll"/>
+                <ui-state name="Admin Restructuring"/>
+            </story>
+            <story name="MVP Content">
+            </story>
+            <story name="Cleanup/Set up tomorrow">
+            </story>
+        </user-stories>
+    </user-workflow>
     <user-workflow name="Server side implementation" type='func' priority="3">
         <user-stories>
             <story name="To learn/decide now" complete>
@@ -50,12 +102,6 @@
                 <ui-state name="Create time spec now" complete>
                 </ui-state>
                 <ui-state name="Quick 'state' of databases check [<5m]" complete>
-                    <!-- <note>
-                        Heroku is still the best PAAS
-                    </note>
-                    <note>
-                        Start messing with amazon/docker myself
-                    </note> -->
                 </ui-state>
                 <ui-state name="Old Versus New Database Versus start fresh / right mentality [<10m" complete>
                     <!-- <note>
@@ -163,13 +209,23 @@
     </user-workflow>
     <user-workflow name="Client-server communication + execution" type='func' priority="4">
     </user-workflow>
-    <user-workflow name="Client side implementation" type='func' priority="4.5">
+    <user-workflow name="Client side implementation" type='func' priority="1">
         <user-stories>
-                <story name="Setup">
-                    <ui-state name="Create new branch">
-                    </ui-state>
-                    <ui-state name="Hover">
-                    </ui-state>
+                <story priority="1">
+                    <ui-stream>
+                        <ui-state name='Order amazon' priority="1">
+                        </ui-state>
+                        <ui-state name='Venmo cashout'>
+                        </ui-state>
+                        <ui-state name='Jeselle stuff'>
+                        </ui-state>
+                        <ui-state name='Engrain higher level goals'>
+                        </ui-state>
+                        <ui-state name='Prep for tomorrow'>
+                        </ui-state>
+                        <ui-state name='Prep for tomorrow'>
+                        </ui-state>
+                    </ui-stream>
                 </story>
                 <story name="Create all views & link to them">
                     <ui-state name="Sidebar: Team Page">
@@ -180,43 +236,43 @@
                     </ui-state>
                 </story>
                 <story name="Implement all base components w/ placehodlers">
-                    <ui-state name="Require on-enter, on-exit, on-load" priority="1">
+                    <ui-state name="Require on-enter, on-exit, on-load">
                     </ui-state>
-                    <ui-state name="Base view" priority="1">
+                    <ui-state name="Base view">
                     </ui-state>
-                    <ui-state name="Link to admin" priority="1">
+                    <ui-state name="Link to admin">
                     </ui-state>
-                    <ui-state name="Loader" priority="1">
+                    <ui-state name="Loader" >
                     </ui-state>
-                    <ui-state name="List Set" priority="1">
+                    <ui-state name="List Set">
                     </ui-state>
-                    <ui-state name="Search" priority="1">
+                    <ui-state name="Search" >
                     </ui-state>
-                    <ui-state name="Tabs" priority="1">
+                    <ui-state name="Tabs" >
                     </ui-state>
-                    <ui-state name="Text" describe="w/ types: extended, title, default(short)" priority="1">
+                    <ui-state name="Text" describe="w/ types: extended, title, default(short)" >
                     </ui-state>
-                    <ui-state name="Input" describe="w/ types: select options, title, default(short)" priority="1">
+                    <ui-state name="Input" describe="w/ types: select options, title, default(short)" >
                     </ui-state>
-                    <ui-state name="Progress" describe="w/ types: defined, incremental(w/easing), property specific" priority="1">
+                    <ui-state name="Progress" describe="w/ types: defined, incremental(w/easing), property specific">
                     </ui-state>
-                    <ui-state name="Scroll" priority="1">
+                    <ui-state name="Scroll" >
                     </ui-state>
-                    <ui-state name="Keyup" priority="1">
+                    <ui-state name="Keyup" >
                     </ui-state>
-                    <ui-state name="switch" priority="1">
+                    <ui-state name="switch">
                     </ui-state>
-                    <ui-state name="icon" desc="object orientated">
+                    <ui-state name="icon" >
                     </ui-state>
-                    <ui-state name="mobile" desc="w/ types-dimension">
+                    <ui-state name="mobile" >
                     </ui-state>
-                    <ui-state name="Image upload" desc="w/ types-dimension">
+                    <ui-state name="Image upload">
                     </ui-state>
                     <ui-state name="tag">
                     </ui-state>
                 </story>
 
-                <story name="Getting Started Components" priority="1"/>
+                <story name="Getting Started Components"/>
                     <ui-stream name="Getting Started Setup + Base">
                         <ui-state name="Send all model-related data to mixpanel">
                         </ui-state>
@@ -280,34 +336,34 @@
                         </ui-state>
                     </ui-stream>
                 </story>
-                <story name="Device" priority="1"/>
+                <story name="Device" />
                     <ui-stream name='Counter'>
                         <ui-state name='counter bubble directive'>
                         </ui-state>
                     </ui-stream>
                 </story>
-                <story name="Profiles" priority="1"/>
+                <story name="Profiles" />
                     <ui-state>
                     </ui-state>
                 </story>
-                <story name="About Components" priority="1"/>
+                <story name="About Components"/>
                     <ui-state name="Value Prop"> </ui-state>
                 </story>
-                <story name="Support" priority="1"/>
+                <story name="Support" />
                     <ui-state name="Spec out the rest. Intercom?">
                     </ui-state>
                     <ui-state name="Intercom">
                     </ui-state>
                 </story>
-                <story name="Stay updated" priority="1"/>
+                <story name="Stay updated"/>
                 </story>
-                <story name="Login/University/Countdown Page" priority="1"/>
+                <story name="Login/University/Countdown Page"/>
                 </story>
                 <story name="Cleanup">
-                    <ui-state name="preapp.gulpfile">
+                    <!-- <ui-state name="preapp.gulpfile">
                     </ui-state>
                     <ui-state name="All bugs">
-                    </ui-state>
+                    </ui-state> -->
                 </story>
         </user-stories>
     </user-workflow>

@@ -193,6 +193,11 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       $scope.name = $stateParams.name
     }
   })
+  .state('root.playground-swiper', {
+    url:'/dev/playground/modules/swiper',
+    controller: 'SwiperController',
+    templateUrl: 'admin/templates/swiper.html'
+  })
   .state('root.demos', {
     url:'/dev/demos',
     templateUrl: 'admin/templates/demos.html',

@@ -1012,7 +1012,6 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       link: function(scope, element, attr) {
         if ('switch' in attr && !attr['switch']) {
           scope.switch = {name: null, value:false};
-
         }
       }
     }
@@ -1044,6 +1043,147 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
           scope.root.animStatus.off = true;
         }
       }
+    }
+}])
+.directive('swiper', ['$timeout', function ($timeout) {
+    return {
+      restrict: 'E',
+      scope: {
+        type: '=type',
+      },
+      template: '<div class="swiper-container"><div class="swiper-wrapper" ng-transclude></div></div>',
+      transclude: true,
+      replace: true,
+      link: {
+        pre: function (scope, element, attr, controllerFn, transclude, data) {
+
+          var swiperOptions = {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 100,
+            effect: 'coverflow',
+            speed: 600,
+            coverflow: {
+              slideShadows: false
+            },
+            paginationClickable: true,
+            keyboardControl: true,
+            parallax: true,
+            ref: 'http://idangero.us/swiper/api/#.V57mX9ArLOQ'
+          }
+          scope.swiper = {instance: null, options: swiperOptions}
+          if ('width' in attr && attr.width.length) {
+            element[0].style.width = attr.width;
+          }
+          if ('height' in attr && attr.height.length) {
+            element[0].style.height = attr.height;
+          }
+          // nextButton: '.header-swiper-front .swiper-button-next',
+          //   prevButton: '.header-swiper-front .swiper-button-prev',
+          // $timeout(function() {
+
+          //   // scope.swiper.instance.update(true);
+          //   // scope.swiper.instance.startAutoplay();
+          // }, 1000)
+        },
+        post: function(scope,element, attr) {
+
+          var className = '.' + element[0].classList.value.split(' ').join('.')
+          scope.swiper.instance =  new Swiper(className, scope.swiper.options);
+          scope.$parent.swiperOptions = scope.swiper.options;
+
+          scope.$parent.swiper = scope.swiper;
+
+        }
+      }
+    }
+}])
+.directive('slide', [function () {
+    return {
+      restrict: 'E',
+      scope: {data: '=data', index: '=index'},
+      transclude: true,
+      priority:1,
+      replace:true,
+      template: '<div class="swiper-slide" ng-transclude></div>',
+      link: function preLink(scope, element, attr) {
+        if (!scope.$parent.data) {
+          scope.$parent.data = [];
+        }
+        scope.$parent.data.push(scope.data);
+        console.log(scope.$parent.data);
+      }
+    }
+}])
+.directive('swiperNext', [function () {
+    return {
+      restrict: 'E',
+      scope: false,
+      priority:1,
+      replace:true,
+      transclude: true,
+      template: '<div class="swiper-button-next" ng-transclude></div>',
+      link: function preLink(scope, element, attr) {
+        console.log();
+        scope.$parent.swiper.options.nextButton = element[0];
+      }
+    }
+}])
+.directive('swiperBack', [function () {
+    return {
+      restrict: 'E',
+      scope: false,
+      priority:1,
+      replace:true,
+      transclude: true,
+      template: '<div class="swiper-button-prev" ng-transclude></div>',
+      link: function preLink(scope, element, attr) {
+        console.log();
+        scope.$parent.swiper.options.prevButton = element[0];
+      }
+    }
+}])
+.directive('swiperControls', [function () {
+    return {
+      restrict: 'E',
+      priority:10,
+      replace:true,
+      scope: false,
+      link:
+        {
+          pre: function(scope, element, attr) {
+            scope.swiperOptions = scope.$parent.swiper.options;
+
+            }
+          // post: function(scope, element, attr) {
+
+
+          // }
+      }
+    }
+}])
+.directive('swipeVar', [function () {
+    return {
+      restrict: 'E',
+      priority:11,
+      replace:true,
+      scope: {key:'@key', value:'@value'},
+      link:
+        {
+          pre: function(scope, element, attr) {
+
+            if (scope.key && scope.key.length && scope.value && (scope.value + '').length) {
+              if (!isNaN(parseFloat(scope.value)) && isFinite(scope.value)) {
+                scope.value = parseFloat(scope.value);
+              }
+              scope.$parent.swiperOptions[scope.key] = scope.value;
+              if (!scope.$parent.swiperOptions.modified) {
+                scope.$parent.swiperOptions.modified =[];
+              }
+              scope.$parent.swiperOptions.modified.push(scope.key);
+            }
+          }
+        }
     }
 }])
 .directive('includeReplace', function () {

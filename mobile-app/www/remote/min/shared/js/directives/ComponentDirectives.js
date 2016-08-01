@@ -346,6 +346,23 @@ angular.module('uguru.shared.directives.components')
 
     }
 }])
+.directive('slides', [function() {
+    return {
+        retrict: 'E',
+        replace: true,
+        transclude: true,
+        template: '<ion-slides  options="options" slider="data.slider"><ion-slide-page><div class="box blue"><h1>BLUE</h1></div></ion-slide-page><ion-slide-page>',
+        controller: 'SwiperController',
+        scope: {
+            slides: '=slides'
+        },
+        link: {
+            pre: function(scope, element, attr) {
+
+            }
+        }
+    }
+}])
 .directive('animation', ['RootService', 'AnimationService', '$timeout', '$compile', function(RootService, AnimationService, $timeout, $compile) {
   return {
     restrict: 'E',
