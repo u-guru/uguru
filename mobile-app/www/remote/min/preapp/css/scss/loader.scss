@@ -130,7 +130,8 @@
         transform-origin: center center;
         overflow: hidden;
         opacity: 0;
-        animation: fadeIn 50ms linear 50ms forwards, l-portal-shrink 1000ms linear 5500ms forwards;
+        animation: fadeIn 50ms linear 50ms forwards;
+		// fadeOut 500ms ease-out 6400ms forwards
     }
     * {
         transform-style: preserve-3d;
@@ -143,6 +144,7 @@
         width: 200px;
         height: 200px;
         transform: translate3d(0, 37%, 25px) rotateX(75deg);
+		animation: portal-flip 900ms ease-out 5500ms forwards;
         > div:not(.mask) {
             width: 100%;
             height: 100%;
@@ -179,6 +181,11 @@
             animation: l-move-up 1000ms linear 1500ms forwards, l-head-hover 1000ms linear 2500ms 5 forwards, l-move-down 1000ms linear 4500ms forwards;
         }
     }
+}
+
+@keyframes portal-scaleUp {
+	0% { transform: scale(1); }
+	100% { transform: scale(1000); }
 }
 
 @keyframes l-progress {
@@ -423,7 +430,7 @@ $animationDuration: 8s;
 
 @keyframes portal-flip {
 	0% { transform: translate3d(0, 37%, 25px) rotateX(75deg); }
-	100% { transform: translate3d(0, -100px, 0); }
+	100% { transform: translate3d(0, -75px, 0); }
 }
 
 @keyframes tunnel-expand {
