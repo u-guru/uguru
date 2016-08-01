@@ -442,7 +442,6 @@ angular.module('uguru.shared.directives')
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
         var mouseEnterDelay = parseInt(attr.onMouseEnterDelay) || 250;
-        console.log('entering mouse');
         element.on('mouseenter', function () {
             var inTimeout = true;
             $timeout(function () {
