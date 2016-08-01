@@ -710,7 +710,11 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           } else if (trigger_scope === 'parent') {
             triggerActionOnElem(trig_name, elem[0].parentNode);
             // elem[0].parentNode.classList.add(trig_name);
-          } else if (trigger_scope === 'children') {
+          } else if (trig_name === 'switch' && trigger_scope && trigger_scope.length) {
+            var className = UtilitiesService.camelToDash(trigger_scope.toLowerCase());
+            triggerActionOnElem('switch' + '-' + className, elem[0]);
+          }
+          else if (trigger_scope === 'children') {
             var children = elem[0].children;
             for (var i = 0; i < children.length; i++) {
               var indexChild = children[i];
