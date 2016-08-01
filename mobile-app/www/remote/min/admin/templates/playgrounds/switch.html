@@ -12,8 +12,8 @@
             <div class='border-dashed border-2 bg-azure border-white opacity-50' style="width:200px; height:200px;" on-mouse-enter="trigger:[switch:self]"
             on-mouse-leave="trigger:[switch:self]"
             switch
-            switch-on="p:[opacity:1]"
-            switch-off="p:[opacity:0.5]">
+            switch-on="p:[op:1]"
+            switch-off="p:[op:0.5]">
             </div>
           </div>
           <div>
@@ -24,7 +24,7 @@
       </div>
       <div ng-if='activeExample.id === 2'>
         <div class='flex-wrap-center'>
-          <square class='opacity-50' when-toggle-square-switch="trigger:[switch:self]" init-with='p:[opacity:0]|trigger:[switch:self]' switch switch-on="p:[opacity:1]" switch-off="p:[opacity:0]">
+          <square class='opacity-50' when-toggle-square-switch="trigger:[switch:self]" init-with='p:[op:0]|trigger:[switch:self]' switch switch-on="p:[op:1]" switch-off="p:[op:0]">
           </square>
           <a on-click="send:[toggle-square-switch:public]" class='bg-moxie p15-grid m10xy'> External Switch </a>
         </div>
