@@ -30,23 +30,21 @@
         </div>
       </div>
       <div ng-if='activeExample.id === 3'>
-        <square class='opacity-50' when-toggle-square-switch="trigger:[switch:self]"
-
+        <div class='opacity-50 animated bg-cerise' style='width:100px; height:100px;'
+          init-default
           switches="[bounce, lightSpeed, fade]"
-
-          switch-bounce-on="anim:[bounceInDown:in]"
-          switch-bounce-off="anim:[bounceOutUp:out]"
-          switch-fade-on="anim:[fadeInDown:in]"
-          switch-fade-off="anim:[fadeOutUp:in]"
-          switch-lightspeed-on="anim:[lightSpeedIn:in]"
-          switch-lightspeed-off="anim:[fadeOutUp:out]"
-
-          when-fade-btn-clicked="trigger:[switch:fade]"
-          when-lightspeed-btn-clicked="trigger:[switch:lightSpeed]"
+          switch-bounce-on="anim:[bounceInDown:set:(animation-duration:1s):in]"
+          switch-bounce-off="anim:[bounceOutUp:set:(animation-duration:1s):out]"
+          switch-fade-on="anim:[fadeInDown:set:(animation-duration:1s):in]"
+          switch-fade-off="anim:[fadeOutUp:set:(animation-duration:1s):in]"
+          switch-lightspeed-on="anim:[lightSpeedIn:set:(animation-duration:1s):in]"
+          switch-lightspeed-off="anim:[fadeOutUp:set:(animation-duration:1s):in]"
+          when-fade-btn-clicked="trigger:[switch:fade:set:(animation-duration:1s):in]"
+          when-lightspeed-btn-clicked="trigger:[switch:lightSpeed:set:(animation-duration:1s):in]"
           when-bounce-btn-clicked="trigger:[switch:bounce]"
 
           >
-        </square>
+        </div>
         <a on-click="send:[bounce-btn-clicked:public]" class='bg-moxie p15-grid m10xy'>Trigger bounce</a>
         <a on-click="send:[lightspeed-btn-clicked:public]" class='bg-moxie p15-grid m10xy'>Trigger LightSpeed</a>
         <a on-click="send:[fade-btn-clicked:public]" class='bg-moxie p15-grid m10xy'>Trigger fade</a>

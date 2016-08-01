@@ -1,23 +1,25 @@
-<div class='full-xy absolute top-0 left-0 flex-wrap-center'
+<div id="landing-gpa" class='full-xy absolute top-0 left-0'
 	init-with="p:[op:0]"
 	on-enter="p:[t:all 500ms ease, op:1, z-index:10000]"
 	when-gpa-triggered="t-enter | s:[gpa-landing-enter:public]:delay-2000"
 	when-close-gpa="p:[op:0, z-index:default:delay-1000]">
 	<div class="landing-gpa landing-container">
-		<div class="powerup-icon"
-			init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
-			on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2000"
-			when-gpa-triggered="t-enter">
-			<div ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
+		<div class="landing-header">
+			<div class="powerup-icon"
+				init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
+				on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2000"
+				when-gpa-triggered="t-enter">
+				<div ng-include="root.base_url + 'preapp/templates/components/powerups/gpa-card.html'"></div>
+			</div>
+			<h1 class="powerup-header"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-250:in]"
+				when-gpa-landing-enter="t-enter">GPA Guru</h1>
+			<h2 class="powerup-subheader"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
+				when-gpa-landing-enter="t-enter">Organize and calculate your grades the easy way.</h2>
 		</div>
-		<h1 class="powerup-header"
-			init-with="p-op"
-			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-250:in]"
-			when-gpa-landing-enter="t-enter">GPA Guru</h1>
-		<h2 class="powerup-subheader"
-			init-with="p-op"
-			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
-			when-gpa-landing-enter="t-enter">Organize and calculate your grades the easy way.</h2>
 		<div class="relative z-index-2">
 			<div class="landing-demo z-index-3">
 				<svg viewBox="0 0 318 651"
@@ -135,7 +137,7 @@
 											when-gpa-landing-enter="t-enter">
 											<g class="line-scroll" clip-path="url(#line-scroll-clip)">
 												<g init-with="p-op"
-													on-enter="p:[op:1, t:opacity 250ms ease-out]:delay-2500 | a:[prop-scroll-search:set:(dur:3000ms#func:ease-in):delay-2750:out]"
+													on-enter="p:[op:1, t:opacity 250ms ease-out]:delay-2500 |class:[prop-scroll-search:add:delay-3000]"
 													when-gpa-landing-enter="t-enter">
 													<path d="M46.4092742,148 L70.9657258,148" class="line-10" stroke="#C18973"></path>
 										            <path d="M46.4092742,140 L70.9657258,140" class="line-9" stroke="#C18973"></path>
@@ -264,16 +266,16 @@
 										on-enter="a:[powerup-prop-bounceInUp:set:(dur:1000ms#func:cubic-bezier(0##.55##.25##1)):delay-2000:in]"
 										when-gpa-landing-enter="t-enter">
 								        <path d="M76.1506849,96.6954689 L103.767123,115.193136" class="stand-right" stroke="#79C5CD"
-											init-with="p:[tr:scale(0), tro:left top]"
-											on-enter="a:[prop-stand-leg:set:(dur:1000ms#func:linear):delay-2250:a]"
+											init-with="p:[op:0, tro:left top]"
+											on-enter="class:[prop-stand-leg:add:delay-2250]"
 											when-gpa-landing-enter="t-enter"></path>
 								        <path d="M73.8493151,96.6954689 L46.2328767,115.193136" class="stand-left" stroke="#79C5CD"
-											init-with="p:[tr:scale(0), tro:right top]"
-											on-enter="a:[prop-stand-leg:set:(dur:1200ms#func:linear):delay-2250:a]"
+											init-with="p:[op:0, tro:right top]"
+											on-enter="class:[prop-stand-leg:add:delay-2250]"
 											when-gpa-landing-enter="t-enter"></path>
 								        <path d="M75,96.1174168 L75,115.193136" class="stand-mid" stroke="#79C5CD"
-											init-with="p:[tr:scale(0), tro:center top]"
-											on-enter="a:[prop-stand-leg:set:(dur:1000ms#func:linear):delay-2250:a]"
+											init-with="p:[op:0, tro:center top]"
+											on-enter="class:[prop-stand-leg:add:delay-2250]"
 											when-gpa-landing-enter="t-enter"></path>
 								        <path d="M75,36 L75,42.3585729" class="stand-top" stroke="#79C5CD"></path>
 								        <path d="M112.39726,42.8943848 L112.39726,44.6527959 L112.39726,93.9858836 C112.39726,94.9570272 111.60789,95.7442947 110.640393,95.7442947 L39.359607,95.7442947 C38.389316,95.7442947 37.6027397,94.9561877 37.6027397,93.9858836 L37.6027397,42.8943848 M33.56,42.3585729 L116.44,42.3585729" class="projector" stroke="#79C5CD"></path>
@@ -313,6 +315,10 @@
 				</ul>
 			</div>
 		</div>
+		<button class="landing-try-button mobile"
+			init-with="p:[op:0, tro: center]"
+			on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):delay-2150:in]"
+			when-gpa-landing-enter="t-enter">Try It Now</button>
 		<div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
 	        init-with="p:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
 	        when-powerups-init="t-enter"

@@ -1416,6 +1416,21 @@ input[type=range] {
 		&::-ms-track {
 			height: 2px;
 		}
+		&::-webkit-slider-thumb {
+			margin-top: -8px;
+			height: 18px;
+			width: 4px;
+		}
+		&::-moz-range-thumb {
+			margin-top: -8px;
+			height: 18px;
+			width: 4px;
+		}
+		&::-ms-range-thumb {
+			margin-top: -8px;
+			height: 18px;
+			width: 4px;
+		}
 	}
 	&[size="medium"], &[size="5"] {
 		&::-webkit-slider-runnable-track {
