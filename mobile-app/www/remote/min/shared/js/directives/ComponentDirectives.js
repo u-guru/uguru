@@ -388,6 +388,7 @@ angular.module('uguru.shared.directives.components')
         var anim = AnimationService.initAnimationObj();
         scope.anim = anim;
         scope.anim.element = element;
+        scope.window = scope.$parent.root.window;
 
         //if attr.template
         anim.template = RootService.getBaseUrl() + attr.template;
@@ -414,7 +415,7 @@ angular.module('uguru.shared.directives.components')
             })
         }
         scope.$parent.root.inspectAnimations.push(anim);
-        AnimationService.injectAnimationWithPlayer(scope.anim, element, cb);
+        AnimationService.injectAnimationWithPlayer(scope, element, cb, scope.window);
       }
     }
   }

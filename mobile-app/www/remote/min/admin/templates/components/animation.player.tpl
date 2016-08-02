@@ -1,4 +1,4 @@
-<div class="animation-player bg-slate-75p radius-2 absolute top-0">
+<div class="animation-player bg-slate-75p radius-2 relative">
     <div class="bg-cobalt-25p p05xy radius-2">
 		<div class="bg-charcoal radius-2">
 			<div class='bg-cerise ugrid-2'>
