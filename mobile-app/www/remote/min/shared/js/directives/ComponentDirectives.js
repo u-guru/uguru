@@ -420,6 +420,182 @@ angular.module('uguru.shared.directives.components')
     }
   }
 }])
+.directive('animation', ['RootService', 'AnimationService', '$timeout', '$compile', function(RootService, AnimationService, $timeout, $compile) {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: AnimationService.getAnimatableTemplateFunc,
+    scope: {
+        name: '@name',
+        template: '@template',
+        obj: '@import',
+        stroke: '@stroke'
+    },
+    link: {
+      pre: function(scope, element, attr) {
+        $compile(element)(scope);
+        var anim = AnimationService.initAnimationObj();
+        scope.anim = anim;
+        scope.anim.element = element;
+        scope.window = scope.$parent.root.window;
+
+        //if attr.template
+        anim.template = RootService.getBaseUrl() + attr.template;
+
+
+        //if attr.import
+        anim.obj = AnimationService.getAnimationObjFromAnimationName(attr.import);
+        // for (key in anim.obj.cssRules) console.log(anim.obj.cssRules[key]);
+
+        anim.duration = attr.duration && parseFloat(attr.duration) || 3000;
+        anim.direction = attr.direction;
+        anim.func = attr.func.replace('cb', 'cubic-bezier');
+        anim.delay = attr.delay|| 0;
+        anim.css = anim.obj.cssText;
+        anim.playState = (((attr.play === 'true') && "running") || "paused");
+        anim.iter = attr.iter;
+        anim.fillMode = attr.fillMode;
+        anim.listeners = {start: AnimationService.getStartListener(scope.anim, element[0]), end: AnimationService.getEndListener(scope.anim, element[0])}
+        anim.name = attr.import;
+        var cb = function(element) {
+            $compile(element)(scope);
+            $timeout(function() {
+                scope.$apply();
+            })
+        }
+        scope.$parent.root.inspectAnimations.push(anim);
+        AnimationService.injectAnimationWithPlayer(scope, element, cb, scope.window);
+      }
+    }
+  }
+}])
+.directive('timelineInspector', ['RootService', 'AnimationService', '$timeout', '$compile', function(RootService, AnimationService, $timeout, $compile) {
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: AnimationService.getAnimatableTemplateFunc,
+    scope: {
+        name: '@name',
+        template: '@template',
+        obj: '@import',
+        stroke: '@stroke'
+    },
+    link: {
+      pre: function(scope, element, attr) {
+        $compile(element)(scope);
+        var anim = AnimationService.initAnimationObj();
+        // scope.anim = anim;
+        // scope.anim.element = element;
+        scope.window = scope.$parent.root.window;
+
+        scope.getAnimationFromName = AnimationService.getAnimationObjFromAnimationName;
+        scope.animations = [];
+        //if attr.template
+        anim.template = RootService.getBaseUrl() + attr.template;
+
+
+        //if attr.import
+        anim.obj = AnimationService.getAnimationObjFromAnimationName(attr.import);
+        // for (key in anim.obj.cssRules) console.log(anim.obj.cssRules[key]);
+
+        anim.duration = attr.duration && parseFloat(attr.duration) || 3000;
+        anim.direction = attr.direction;
+        anim.func = attr.func.replace('cb', 'cubic-bezier');
+        anim.delay = attr.delay|| 0;
+        anim.css = anim.obj.cssText;
+        anim.playState = (((attr.play === 'true') && "running") || "paused");
+        anim.iter = attr.iter;
+        anim.fillMode = attr.fillMode;
+        var browserPrefix = RootService.getBrowserPrefix();
+        anim.listeners = {start: getAnimationStartListener(scope, browserPrefix, element[0]), end: getAnimationEndListener(browserPrefix, element[0])}
+        anim.name = attr.import;
+        var cb = function(element) {
+            $compile(element)(scope);
+            $timeout(function() {
+                scope.$apply();
+            })
+        }
+
+        var startListener = anim.listeners.start();
+
+        // anim.listeners.end();
+        // scope.$parent.root.inspectAnimations.push(anim);
+        injectAnimationWithPlayer(scope.animations, element, cb, scope.window);
+      }
+    }
+  }
+}])
+
+function injectAnimationWithPlayer(animations, elem, cb, _window) {
+        var elemCoords = elem[0].getBoundingClientRect();
+        elemCoords.height = elemCoords.height/10.0;
+        elemCoords.width =  elemCoords.width/10.0;
+        var dx = Math.abs(elemCoords.width - _window.width);
+        var dy = Math.abs(elemCoords.height - _window.height);
+
+        div = document.createElement('div');
+        div.innerHTML = '<timeline-player animations=animations></timeline-player>'
+        div.style.zIndex = 100000;
+
+        if (dx/_window.width < 0.1) {
+          div.classList.add('bottom-0', 'left-0', 'full-x', 'fixed');
+          var elem = document.querySelector('ui-view');
+          elem.appendChild(div);
+        } else {
+          div.classList.add('relative', 'animated', 'slideInUp');
+          elem[0].parentNode.appendChild(div);
+        }
+        cb && cb(div);
+    }
+
+
+function getAnimationStartListener(scope, browser, element) {
+      return function(cb) {
+
+        var startAnimationEvent = browser + 'animationStart';
+
+        if (browser && browser.length) {
+          startAnimationEvent = browser + 'AnimationStart';
+        }
+        return element.addEventListener(startAnimationEvent, function(e) {
+            scope.animations.push({
+                target: e.target,
+                timeStamp: e.timeStamp,
+                type: e.type,
+                animation: {name: e.animationName, obj: scope.getAnimationFromName(e.animationName)}
+            })
+            e.target.style[browser.toLowerCase() + 'AnimationPlayState'] = 'paused';
+
+            var duration = (e.target.style[browser.toLowerCase() + 'AnimationDuration'].split('ms')[0] / 10) + 'ms';
+            console.log('getting', (e.target.style[browser.toLowerCase() + 'AnimationDuration']));
+            e.target.style[browser.toLowerCase() + 'AnimationDuration'] = duration;
+            e.target.style[browser.toLowerCase() + 'AnimationPlayState'] = 'running';
+            cb && cb(e);
+        })
+      }
+    }
+
+function getAnimationEndListener(scope, browser, element) {
+
+    return function(cb) {
+    var startAnimationEvent = 'animationEnd';
+    if (browser && browser.length) {
+      startAnimationEvent = browser + 'AnimationEnd';
+    }
+    return element.addEventListener(startAnimationEvent, function(e) {
+        cb && cb();
+
+        if (browser) {
+          console.log('pausing');
+          e.target.style[browser + 'AnimationPlayState'] = 'paused';
+        } else {
+          e.target.style['animationPlayState'] = 'paused';
+        }
+        e.target.style.offsetWidth = e.target.style.offsetWidth;
+        console.log('animation ending', e.target);
+    })
+    }
+}
 // .directive("userIcon", ['$compile', function($compile) {
 //         return {
 //             templateUrl: BASE + 'templates/elements/components/info/user.icon.tpl',
