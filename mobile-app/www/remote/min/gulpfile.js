@@ -319,13 +319,14 @@ gulp.task('clean', function(done) {
 
 gulp.task('templates', function() {
   //PART ONE, MOVE ALL TEMPLATES TO RIGHT FOLDER
+  // 'preapp/templates/**/**/**svg',
+  // 'preapp/templates/**/**/**tpl',
+  // 'preapp/templates/**/**/**html',
   var templateLocations = 
   [
     'admin/templates/**/**/**',
     'shared/templates/**/**/**',
-    'preapp/templates/**/**/**svg',
-    'preapp/templates/**/**/**tpl',
-    'preapp/templates/**/**/**html',
+    'preapp/templates/**/**/**',
     'jeselle/templates/**/**/**',
     'gabrielle/templates/**/**/**'
     ];
