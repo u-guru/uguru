@@ -177,6 +177,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/hiw',
     templateUrl: 'preapp/templates/splash.hiw.html'
   })
+  .state('root.animations', {
+    url:'/dev/animations',
+    templateUrl: 'admin/templates/animation.html'
+  })
   // -- end dev states
   .state('root.jeselle', {
     url:'/dev/jeselle',
