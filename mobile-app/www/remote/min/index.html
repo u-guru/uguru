@@ -11,7 +11,7 @@
        </script>
    </head>
    <body animation="slide-left-right-ios7" onload="timer.body = new Date().getTime()" ng-app="uguru">
-       <div class="loader-portal default bg-transparent">
+       <div class="loader-portal default">
 		   <!-- <div class="loader-portal-inside"
 		   	init-with="p-op"
 			on-init="a:[fadeIn:set:(dur:50ms#func:linear):in:delay-50] | s:[loader-init:public]">
@@ -205,7 +205,7 @@
 
            portalElem.addEventListener(((navigator.userAgent.indexOf('AppleWebKit') != -1) && 'webkitAnimationStart') || 'animationend',
                function(e) {
-                   if (e.animationName === 'portal-flip') {
+                   if (e.animationName === 'portal-scaleUp') {
                        setTimeout(function() {
                            portalElem.dispatchEvent(portalEvent);
                        }, 900)

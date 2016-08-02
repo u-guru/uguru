@@ -1,13 +1,15 @@
-<ion-view id='splash-view' class='bg-charcoal' ng-controller='SplashController as splash'>
+<ion-view id='splash-view' ng-controller='SplashController as splash'>
     <custom-states when="sidebar-icon-clicked">
     </custom-states>
     <div class="loader-scale-out" ng-if='showScaleOutLoader'
-        init-with='p:[tr:scale(1), op:1, display:block]'
-        on-init="p:[t:all 1000ms ease, tr:scale(50)] | t:[on-exit]"
-        on-exit="p:[t:all 500ms ease, op:0:delay-500, display:none:delay-1500]"></div>
+        init-with='p:[tr:scale(50), op:1, z-index:10]'
+        on-init="t:[on-exit]"
+        on-exit="p:[t:all 500ms ease, op:0, z-index:-100:delay-1500]"></div>
     <!-- <ion-content class='relative full-xy' > -->
         <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()">
-            <section id='splash-home' class='splash-hero'>
+            <section id='splash-home' class='splash-hero bg-slate'
+				init-with="p:[op:0]"
+				on-init="p:[op:1:delay-8400, t:all 500ms ease]">
                 <div class="absolute top-0 left-0 full-xy">
 					<div class="full-xy"
 						init-default
