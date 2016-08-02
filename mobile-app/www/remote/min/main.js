@@ -252,6 +252,16 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/svg-test',
     templateUrl: 'shared/templates/svg-test.html'
   })
+  .state('root.components', {
+    url:'/dev/components',
+    templateUrl: 'admin/templates/components/index.tpl'
+  })
+  .state('root.single-components', {
+    url: '/dev/components/:section/:name',
+    templateProvider: function($stateParams) {
+      return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + $stateParams.name + ".tpl'" + '"/> </div>'
+    }
+  })
   .state('root.base-components', {
     url:'/dev/base/components/:baseCompName',
     templateProvider: function(AdminDirectiveService, $stateParams) {
