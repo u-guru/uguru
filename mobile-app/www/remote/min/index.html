@@ -11,7 +11,23 @@
        </script>
    </head>
    <body animation="slide-left-right-ios7" onload="timer.body = new Date().getTime()" ng-app="uguru">
-       <div class="loader-portal default bg-transparent">
+       <div class="loader-portal default">
+		   <!-- <div class="loader-portal-inside"
+		   	init-with="p-op"
+			on-init="a:[fadeIn:set:(dur:50ms#func:linear):in:delay-50] | s:[loader-init:public]">
+             <div class="portal">
+                 <div init-with="p-op"
+				 	when-loader-init="a:[l-portal:set:(dur:1000ms#func:linear):in:delay-500]">
+                     <svg width="200px" height="200px" viewBox="0 0 400 400">
+                         <circle cx="200" cy="200" r="192"
+						 	stroke="#55A4B7" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"
+							fill="#2B3234"
+							init-with="p:[sda:1207, sdo:1207]"
+							when-loader-init="a:[l-progress:set:(dur:3000ms#func:linear):a:delay-2000]"></circle>
+                     </svg>
+                 </div>
+                 <div class="mask"></div>
+             </div> -->
            <div class="loader-portal-inside">
              <div class="portal">
                  <div>
@@ -134,6 +150,8 @@
                'admin/js/controllers/AdminComponentController.js',
                'admin/js/services/SpecContentService.js',
                'admin/js/services/AdminDirectives.js',
+               'admin/js/services/TimelineService.js',
+               'admin/js/services/TimelineDirectives.js',
                'admin/js/services/AdminDirectiveService.js',
                'admin/js/services/AdminDebugService.js',
                'admin/js/services/AdminWorkflowService.js',
@@ -189,10 +207,10 @@
 
            portalElem.addEventListener(((navigator.userAgent.indexOf('AppleWebKit') != -1) && 'webkitAnimationStart') || 'animationend',
                function(e) {
-                   if (e.animationName === 'l-portal-shrink') {
+                   if (e.animationName === 'portal-scaleUp') {
                        setTimeout(function() {
                            portalElem.dispatchEvent(portalEvent);
-                       }, 800)
+                       }, 900)
                    }
                }, false);
 

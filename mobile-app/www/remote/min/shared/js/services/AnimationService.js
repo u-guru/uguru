@@ -167,12 +167,25 @@ function AnimationService($ionicViewSwitcher, $timeout, $state, RootService) {
       }
     }
 
-    function injectAnimationWithPlayer(anim_obj, elem, cb) {
+    function injectAnimationWithPlayer(anim_obj, elem, cb, _window) {
+        var elemCoords = elem[0].getBoundingClientRect();
+        elemCoords.height = elemCoords.height/10.0;
+        elemCoords.width =  elemCoords.width/10.0;
+        var dx = Math.abs(elemCoords.width - _window.width);
+        var dy = Math.abs(elemCoords.height - _window.height);
+
         div = document.createElement('div');
-        div.classList.add('relative', 'animated', 'slideInUp');
-        div.style.zIndex = 100000;
         div.innerHTML = '<animation-player anim=anim></player>'
-        elem[0].parentNode.appendChild(div);
+        div.style.zIndex = 100000;
+
+        if (dx/_window.width < 0.1) {
+          div.classList.add('bottom-0', 'left-0', 'full-x', 'fixed');
+          var elem = document.querySelector('ui-view');
+          elem.appendChild(div);
+        } else {
+          div.classList.add('relative', 'animated', 'slideInUp');
+          elem[0].parentNode.appendChild(div);
+        }
         cb && cb(div);
     }
 

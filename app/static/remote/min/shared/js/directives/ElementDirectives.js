@@ -442,7 +442,6 @@ angular.module('uguru.shared.directives')
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
         var mouseEnterDelay = parseInt(attr.onMouseEnterDelay) || 250;
-        console.log('entering mouse');
         element.on('mouseenter', function () {
             var inTimeout = true;
             $timeout(function () {
@@ -945,27 +944,79 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
         return parseFloat((element[0].style.webkitTransitionDuration || element[0].style.transitionDuration).split('ms')[0]);
       }
 }])
-.directive('switches', ['$state', '$timeout', 'DirectiveService', 'UtilitiesService', function($state, $timeout, DirectiveService, UtilitiesService) {
+.directive('switches', ['$state', '$timeout', 'DirectiveService', 'UtilitiesService', 'SwitchService', function($state, $timeout, DirectiveService, UtilitiesService, SwitchService) {
     return {
       restrict: 'A',
-      scope: {switches:"@switches"},
-      link: function(scope, element, attr) {
-        if (!scope.switches || !scope.switches.length) {
+      scope: {},
+      link: function preLink(scope, element, attr) {
+        if (!attr.switches || !attr.switches.length) {
           return;
         }
-        scope.switches = {};
-        var switchesNameStr = UtilitiesService.removeAllOccurrancesArr(attr.switches, ['[', ']']);
-        switchesNameStr = UtilitiesService.replaceAll(switchesNameStr, ', ', ',');
-        switchNameArr = switchesNameStr.split(',');
-        for (var i = 0; i < switchNameArr.length; i++) {
-          var iSwitchName = switchNameArr[i];
-          var iSwitchDashedName = UtilitiesService.camelToDash(iSwitchName);
-          var onArgs = (iSwitchDashedName +'-off') in attr && attr[iSwitchDashedName+'-off'];
-          var offArgs = (iSwitchDashedName +'-on') in attr && attr[iSwitchDashedName+'-on'];
-          scope.switches[name] = {dashed: iSwitchDashedName, value: false, onArgs: false, offArgs: false};
 
+        scope.root = scope.$parent.root;
+        // var listenerArgs = DirectiveService.detectExternalStates(attr);
+
+        // for (key in listenerArgs) {
+
+        //     var type = listenerArgs[key].type
+        //     var _attr = listenerArgs[key].attr;
+        //     console.log(type, attr);
+        //     DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+
+        //   }
+        var supportedCommands = DirectiveService.supportedCommands;
+        scope.switches = SwitchService.parseSwitches(element, attr);
+        var classesToWatch = [];
+        if (scope.switches.classes) {
+
+
+
+
+          classesToWatch = scope.switches.classes;
+          delete scope.switches.classes['classes']
+          scope.$watch(
+            function() {
+              return element.attr('class');
+            },
+            function(new_classes, old_classes) {
+              if (!new_classes) {
+                return;
+              }
+              var modifiedClasses = [];
+
+              classesToWatch.forEach(
+                function(c, i) {
+                  if (new_classes.indexOf(c) > -1) {
+                    modifiedClasses.push(c);
+                    element[0].classList.remove(c);
+                  }
+              });
+              for (var i = 0; i < modifiedClasses.length; i++) {
+                var iClass = modifiedClasses[i];
+                for (key in scope.switches) {
+                  if (scope.switches[key].nameDashed === iClass) {
+                    var iSwitchObj = scope.switches[key];
+                    break;
+                  }
+                }
+              }
+              if (iSwitchObj) {
+                iSwitchObj.value = !iSwitchObj.value;
+                var stateValue = (iSwitchObj.value && 'on') || 'off';
+                if (stateValue in iSwitchObj) {
+                  var elemArgs = iSwitchObj[stateValue].args;
+                  for (key in elemArgs) {
+                    if (supportedCommands.indexOf(key) > -1) {
+                      console.log(key, elemArgs[key])
+                      DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                    }
+                  }
+                }
+              }
+            }
+          );
         }
-
+        // console.log(scope.switches);
 
         // scope.switchClasses = [];
         // for (key in attr) {

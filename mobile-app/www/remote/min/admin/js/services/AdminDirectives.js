@@ -42,6 +42,55 @@ angular.module('uguru.admin')
         }
     }
 }])
+.directive("animationPlayer", ['$timeout', 'RootService', function($timeout, RootService) {
+    return {
+        templateUrl: RootService.getBaseUrl() + 'admin/templates/components/animation.player.tpl',
+        restrict: 'E',
+        scope: {anim:'=anim'},
+        replace: true,
+        link: function(scope, element, attr) {
+            var browserPrefix = RootService.getBrowserPrefix() || '';
+            scope.player = {idle: true, playing:false, refreshable: false};
+            var startListener = scope.anim.listeners.start();
+            // var endListener = scope.anim.listeners.end(function() {scope.anim.playState = 'paused';});
+            scope.play = function() {
+                console.log('clicked');
+                scope.anim.element.css('-webkit-animation-name', '');
+                scope.anim.playState = 'running';
+
+                $timeout(function() {
+                    scope.anim.element.css('-webkit-animation-name', scope.anim.name);
+                    scope.$apply();
+                })
+            }
+
+            var animStartEvent = 'animation';
+            if (browserPrefix) {
+                animStartEvent = browserPrefix.toLowerCase() + 'Animation'
+            }
+        }
+    }
+}])
+.directive("gallery", ['$timeout', 'UtilitiesService', function($timeout, UtilitiesService) {
+    return {
+        templateUrl: 'admin/templates/components/gallery.tpl',
+        restrict: 'E',
+        scope: {},
+        link: function(scope, element, attr) {
+            scope.name = attr.name.length && attr.name[0].toUpperCase() + attr.name.substring(1);
+            scope.type = attr.type.length && attr.type[0].toUpperCase() + attr.type.substring(1);
+            scope.components = UtilitiesService.replaceAll(attr.includes, ', ', ',').split(',')
+            console.log(scope.components);
+            scope.components.forEach(function(str, i) {
+                scope.components[i] = {
+                    'name': str,
+                    url: ('/#/dev/' + scope.type.toLowerCase() + 's/' + scope.name.toLowerCase() + '/' + str),
+                    file_path: 'shared/templates/components/' + scope.type.toLowerCase() + '/' + scope.name.toLowerCase() + '/' + str + '.tpl'
+                };
+            });
+        }
+    }
+}])
 .directive("player", ['$timeout', 'RootService', function($timeout, RootService) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/player.tpl',
