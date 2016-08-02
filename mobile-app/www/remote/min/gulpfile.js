@@ -359,7 +359,7 @@ gulp.task('copy-prod', function(){
 
 gulp.task('default', function(done) {
   runSequence(
-    'clean',
+    // 'clean',
     'compile-css',
     'templates',
     'compile-temp',
