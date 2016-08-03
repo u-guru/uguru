@@ -2966,6 +2966,22 @@ a.course-card {
 	border-radius: 2px;
 	background-position: center center;
 	background-size: cover;
+	.category-tile-price {
+		@include round;
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		bottom: -15px;
+		font-size: 16px;
+		font-weight: 700;
+		height: 36px;
+		padding: 0 15px;
+		left: 50%;
+		transform: translate3d(-50%,0,0);
+		div {
+
+		}
+	}
 	.category-tile-inside {
 		@include flex;
 		@include flex-wrap;
@@ -3049,6 +3065,9 @@ a.course-card {
 	}
 	&.bg-delivery {
 		background-color: $auburn;
+		.category-tile-price {
+			background: $auburn;
+		}
 		.category-tile-count {
 			color: mix($auburn, lighten($slate, 15%));
 			svg * {
@@ -3064,6 +3083,9 @@ a.course-card {
 	}
 	&.bg-freelancing {
 		background-color: $orange;
+		.category-tile-price {
+			background: $orange;
+		}
 		.category-tile-count {
 			color: mix($orange, lighten($slate, 15%));
 			svg * {
@@ -3079,6 +3101,9 @@ a.course-card {
 	}
 	&.bg-baking {
 		background-color: $gold;
+		.category-tile-price {
+			background: $gold;
+		}
 		.category-tile-count {
 			color: mix($gold, lighten($slate, 15%));
 			svg * {
@@ -3094,6 +3119,9 @@ a.course-card {
 	}
 	&.bg-photography {
 		background-color: $moola;
+		.category-tile-price {
+			background: $moola;
+		}
 		.category-tile-count {
 			color: mix($moola, lighten($slate, 15%));
 			svg * {
@@ -3109,6 +3137,9 @@ a.course-card {
 	}
 	&.bg-tech {
 		background-color: $azure;
+		.category-tile-price {
+			background: $azure;
+		}
 		.category-tile-count {
 			color: mix($azure, lighten($slate, 15%));
 			svg * {
@@ -3124,6 +3155,9 @@ a.course-card {
 	}
 	&.bg-household {
 		background-color: $cobalt;
+		.category-tile-price {
+			background: $cobalt;
+		}
 		.category-tile-count {
 			color: mix($cobalt, lighten($slate, 15%));
 			svg * {
@@ -3139,6 +3173,9 @@ a.course-card {
 	}
 	&.bg-athletic {
 		background-color: $eggplant;
+		.category-tile-price {
+			background: $eggplant;
+		}
 		.category-tile-count {
 			color: mix($eggplant, lighten($slate, 15%));
 			svg * {
@@ -3154,6 +3191,9 @@ a.course-card {
 	}
 	&.bg-academic {
 		background-color: $cerise;
+		.category-tile-price {
+			background: $cerise;
+		}
 		.category-tile-count {
 			color: mix($cerise, lighten($slate, 15%));
 			svg * {

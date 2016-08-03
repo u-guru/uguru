@@ -4694,6 +4694,31 @@ a.course-card:active .course-card-hover {
   border-radius: 2px;
   background-position: center center;
   background-size: cover; }
+  .category-tile .category-tile-price {
+    border-radius: 1000px;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -15px;
+    font-size: 16px;
+    font-weight: 700;
+    height: 36px;
+    padding: 0 15px;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0); }
   .category-tile .category-tile-inside {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -4799,6 +4824,8 @@ a.course-card:active .course-card-hover {
       background: white; }
   .category-tile.bg-delivery {
     background-color: #F04F54; }
+    .category-tile.bg-delivery .category-tile-price {
+      background: #F04F54; }
     .category-tile.bg-delivery .category-tile-count {
       color: #aa6064; }
       .category-tile.bg-delivery .category-tile-count svg * {
@@ -4813,6 +4840,8 @@ a.course-card:active .course-card-hover {
         background: #F04F54; }
   .category-tile.bg-freelancing {
     background-color: #E5753C; }
+    .category-tile.bg-freelancing .category-tile-price {
+      background: #E5753C; }
     .category-tile.bg-freelancing .category-tile-count {
       color: #a47358; }
       .category-tile.bg-freelancing .category-tile-count svg * {
@@ -4827,6 +4856,8 @@ a.course-card:active .course-card-hover {
         background: #E5753C; }
   .category-tile.bg-baking {
     background-color: #F6C64E; }
+    .category-tile.bg-baking .category-tile-price {
+      background: #F6C64E; }
     .category-tile.bg-baking .category-tile-count {
       color: #ad9b61; }
       .category-tile.bg-baking .category-tile-count svg * {
@@ -4841,6 +4872,8 @@ a.course-card:active .course-card-hover {
         background: #F6C64E; }
   .category-tile.bg-photography {
     background-color: #81B566; }
+    .category-tile.bg-photography .category-tile-price {
+      background: #81B566; }
     .category-tile.bg-photography .category-tile-count {
       color: #72936d; }
       .category-tile.bg-photography .category-tile-count svg * {
@@ -4855,6 +4888,8 @@ a.course-card:active .course-card-hover {
         background: #81B566; }
   .category-tile.bg-tech {
     background-color: #55A4B7; }
+    .category-tile.bg-tech .category-tile-price {
+      background: #55A4B7; }
     .category-tile.bg-tech .category-tile-count {
       color: #5c8a96; }
       .category-tile.bg-tech .category-tile-count svg * {
@@ -4869,6 +4904,8 @@ a.course-card:active .course-card-hover {
         background: #55A4B7; }
   .category-tile.bg-household {
     background-color: #7872e3; }
+    .category-tile.bg-household .category-tile-price {
+      background: #7872e3; }
     .category-tile.bg-household .category-tile-count {
       color: #6e71ac; }
       .category-tile.bg-household .category-tile-count svg * {
@@ -4883,6 +4920,8 @@ a.course-card:active .course-card-hover {
         background: #7872e3; }
   .category-tile.bg-athletic {
     background-color: #9A5BC5; }
+    .category-tile.bg-athletic .category-tile-price {
+      background: #9A5BC5; }
     .category-tile.bg-athletic .category-tile-count {
       color: #7f669d; }
       .category-tile.bg-athletic .category-tile-count svg * {
@@ -4897,6 +4936,8 @@ a.course-card:active .course-card-hover {
         background: #9A5BC5; }
   .category-tile.bg-academic {
     background-color: #e6389b; }
+    .category-tile.bg-academic .category-tile-price {
+      background: #e6389b; }
     .category-tile.bg-academic .category-tile-count {
       color: #a55488; }
       .category-tile.bg-academic .category-tile-count svg * {
