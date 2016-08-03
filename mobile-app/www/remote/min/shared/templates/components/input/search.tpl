@@ -34,7 +34,8 @@
 	</fieldset>
 
 	<fieldset ng-if='activeType === "type4"' class="search-bar"
-		init-with="p:[width:96px]">
+		init-with="p:[width:96px]"
+		on-mouse-enter="p:[background:#000000]">
 
 		<label for="search-bar">
 			<svg viewBox="0 0 100 100">
