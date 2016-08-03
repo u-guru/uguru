@@ -39,11 +39,14 @@
 					<div init-with="p:[transform:translateY(-50%), transition:transform {{50 * $index}}ms ease-in]" on-init="p:[transform:translateY(0)]" class="state-timeline-dot expected bg-moxie height-10 round absolute" style="width: {{animation.env.width}}%; left: {{animation.env.xLeft}}%" ng-repeat='animation in animations'>
 						<div class="state-timeline-info absolute z-index-99 radius-2 bg-moxie" style="padding: 2px; bottom:15px">
 							<div class="bg-white radius-2">
-								<h1 class="bg-moxie p05xy txt-16 semibold flex-center-vertical-space-between">{{animation.element.className.split(' ').splice(0, 2)[0]}} <span class="opacity-50">{{animation.duration}}</span>+
+								<h1 class="bg-moxie p05xy txt-16 semibold flex-center-vertical-space-between">{{animation.name}}
+								 <span class="opacity-50">{{animation.duration}}</span>,
 								<span class="opacity-100">{{animation.delay}}</span>
 								</h1>
+								<h5 class='opacity-10 txt-1 txt-charcoal'> {{animation.element.className.split(' ').splice(0, 2)[0]}}
+								</h5>
 								<div class="txt-slate txt-14 p05x" style="white-space:nowrap">
-									<span>bounceInOut&nbsp;(400ms)</span>
+									<span class='ugrid-2' ng-repeat='(prop,value) in animation.css'>{{prop}} {{value}}</span>
 								</div>
 							</div>
 						</div>
