@@ -3,23 +3,105 @@ angular.module('uguru.shared.services')
     '$ionicViewSwitcher',
     '$timeout',
     '$state',
+    'RootService',
     AnimationService
         ]);
 
-function AnimationService($ionicViewSwitcher, $timeout, $state) {
+function AnimationService($ionicViewSwitcher, $timeout, $state, RootService) {
 
     return {
         // slide: slide,
         flip: flip,
         animateIn: animateIn,
         animate: animate,
+        initAnimationObj: initAnimationObj,
         animateOut: animateOut,
         applyAnimateInDirective: applyAnimateInDirective,
         applyAnimateOutDirective: applyAnimateOutDirective,
         initCSSAnimation: initCSSAnimation,
         getCSSAnimationFromClassName: getCSSAnimationFromClassName,
-        getAnimationObjFromAnimationName: getAnimationObjFromAnimationName
+        getAnimationObjFromAnimationName: getAnimationObjFromAnimationName,
+        getAnimatableTemplateFunc: getAnimatableTemplateFunc,
+        injectAnimationWithPlayer: injectAnimationWithPlayer,
+        getStartListener: getStartListener,
+        getEndListener: getEndListener
+    }
 
+    function getAnimatableTemplateFunc(element, attr) {
+      var styleStr = '';
+      if (attr.size) {
+          styleStr += 'width:' + attr.size + 'px;'
+          styleStr += 'height:' + attr.size + 'px;'
+      }
+      if (attr.stroke) {
+          styleStr += 'stroke:' + attr.stroke + 'px;'
+          element.children().css('stroke', attr.stroke);
+      }
+      styleStr += RootService.formatBrowserCSSProperty('animation-name') +':{{anim.name}};'
+      styleStr += RootService.formatBrowserCSSProperty('animation-iteration-count') +':{{anim.iter}} !important;'
+      styleStr += RootService.formatBrowserCSSProperty('animation-fill-mode') +':{{anim.fill}} !important;'
+      styleStr += RootService.formatBrowserCSSProperty('animation-duration') +':{{anim.duration}}ms !important;'
+      styleStr += RootService.formatBrowserCSSProperty('animation-timing-function') +':{{anim.func}} !important;'
+      styleStr += RootService.formatBrowserCSSProperty('animation-delay') +':{{anim.delay}}ms !important;'
+      styleStr += RootService.formatBrowserCSSProperty('animation-play-state') +':{{anim.playState}}'
+      attr.$set('style', styleStr);
+      return attr.template
+    }
+
+    function getStartListener(anim, element) {
+      return function(cb) {
+        var browserPrefix = RootService.getBrowserPrefix();
+        var startAnimationEvent = 'animationStart';
+        if (browserPrefix && browserPrefix.length) {
+          startAnimationEvent = browserPrefix + 'AnimationStart';
+        }
+        return element.addEventListener(startAnimationEvent, function(e) {
+            cb && cb(e);
+        })
+      }
+    }
+
+    function getEndListener(anim, element) {
+
+      return function(cb) {
+        var browserPrefix = RootService.getBrowserPrefix();
+        var startAnimationEvent = 'animationEnd';
+        if (browserPrefix && browserPrefix.length) {
+          startAnimationEvent = browserPrefix + 'AnimationEnd';
+        }
+        return element.addEventListener(startAnimationEvent, function(e) {
+            cb && cb();
+
+            if (browserPrefix) {
+              console.log('pausing');
+              e.target.style[browserPrefix + 'AnimationPlayState'] = 'paused';
+            } else {
+              e.target.style['animationPlayState'] = 'paused';
+            }
+            e.target.style.offsetWidth = e.target.style.offsetWidth;
+            console.log('animation ending', e.target);
+        })
+      }
+
+    }
+
+    function initAnimationObj() {
+
+      return {
+        name: null,
+        template: null,
+        duration: null,
+        css: {
+          name: RootService.formatBrowserCSSProperty('animation-name'),
+          iter: RootService.formatBrowserCSSProperty('animation-iteration-count'),
+          fill: RootService.formatBrowserCSSProperty('animation-fill-mode'),
+          duration: RootService.formatBrowserCSSProperty('animation-duration'),
+          tf: RootService.formatBrowserCSSProperty('animation-timing-function'),
+          direction: RootService.formatBrowserCSSProperty('animation-direction'),
+          delay: RootService.formatBrowserCSSProperty('animation-delay'),
+          play: RootService.formatBrowserCSSProperty('animation-play-state')
+        }
+      }
     }
 
     function getBrowserPrefix() {
@@ -83,6 +165,28 @@ function AnimationService($ionicViewSwitcher, $timeout, $state) {
             }
           }
       }
+    }
+
+    function injectAnimationWithPlayer(anim_obj, elem, cb, _window) {
+        var elemCoords = elem[0].getBoundingClientRect();
+        elemCoords.height = elemCoords.height/10.0;
+        elemCoords.width =  elemCoords.width/10.0;
+        var dx = Math.abs(elemCoords.width - _window.width);
+        var dy = Math.abs(elemCoords.height - _window.height);
+
+        div = document.createElement('div');
+        div.innerHTML = '<animation-player anim=anim></player>'
+        div.style.zIndex = 100000;
+
+        if (dx/_window.width < 0.1) {
+          div.classList.add('bottom-0', 'left-0', 'full-x', 'fixed');
+          var elem = document.querySelector('ui-view');
+          elem.appendChild(div);
+        } else {
+          div.classList.add('relative', 'animated', 'slideInUp');
+          elem[0].parentNode.appendChild(div);
+        }
+        cb && cb(div);
     }
 
     function initCSSAnimation(anim_name, options) {

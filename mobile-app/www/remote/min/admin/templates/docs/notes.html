@@ -3,6 +3,9 @@
 		<div class="bg-white radius-2">
 			<h2 class="p10y-p15x bg-robin txt-white txt-24 semibold txt-center radius-2-top">Guru Rubric</h2>
 			<div class="txt-slate">
+				<div style="width: 300px" ng-include="root.base_url + 'preapp/templates/components/powerups/default-card.html'"></div>
+
+				<!-- guru -->
 				<h2 class="txt-28 semibold p15x-p15top">What makes a guru?</h2>
 				<ol class="numbered-list flex-wrap">
 					<li>
@@ -65,7 +68,7 @@
 						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">arms*</span>
 					</li>
 				</ul>
-				<p class="p15x txt-18" style="margin-top: -5px;">Arms are only moved when needed to hold props, i.e. the camera for photo guru.</p>
+				<p class="p15x txt-18 line-height-1-2" style="margin-top: -5px;">Arms are only moved when needed to hold props, i.e. the camera for photo guru.</p>
 				<ul class="flex-wrap p15-grid">
 					<li>
 						<span class="block bg-slate radius-2">
@@ -79,7 +82,7 @@
 						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">eyebrow angle</span>
 					</li>
 				</ul>
-				<p class="p15x txt-18" style="margin-top: -5px;">Hair changes color on when dependent on a theme, usually a category - changing the color can change the overall feel which is something that should be maintainwed as soon as poeelble.</p>
+				<p class="p15x txt-18 line-height-1-2" style="margin-top: -5px;">Hair changes color on when dependent on a theme, usually a category - changing the color can change the overall feel which is something that should be maintained as soon as poeelble.</p>
 				<ul class="flex-wrap p15-grid">
 					<li>
 						<span class="block bg-slate radius-2">
@@ -93,7 +96,7 @@
 						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">color*</span>
 					</li>
 				</ul>
-				<p class="p15x txt-18" style="margin-top: -5px;">See above.</p>
+				<p class="p15x txt-18 line-height-1-2" style="margin-top: -5px;">See above.</p>
 				<ul class="flex-wrap p15-grid">
 					<li>
 						<span class="block bg-slate radius-2">
@@ -101,7 +104,7 @@
 						</span>
 					</li>
 					<li>
-						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">one or two piee outfit</span>
+						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">one or two piece outfit</span>
 					</li>
 					<li>
 						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">hat</span>
@@ -110,8 +113,81 @@
 						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">props*</span>
 					</li>
 				</ul>
-				<p class="p15x txt-18" style="margin-top: -5px;">Clothing should remain neutral in both gender and theme unless specifically stated such as cowboy guru, etc.</p>
-				<div class="txt-20 semibold p15x-p15bottom">*dependent on theme</div>
+				<p class="p15x txt-18 line-height-1-2" style="margin-top: -5px;">Clothing should remain neutral in both gender and theme unless specifically stated such as cowboy guru, etc.</p>
+				<div class="txt-14 semibold p15x-p15bottom">*dependent on theme</div>
+
+				<!-- color -->
+				<h2 class="txt-28 semibold p15x-p15top">How should colors be selected?</h2>
+				<ul class="flex-wrap p15-grid">
+					<li>
+						<span class="block bg-slate radius-2">
+							<span class="flex-center height-48 bg-cobalt-25p radius-2 p15x-p10y txt-24 semibold">association with theme</span>
+						</span>
+					</li>
+				</ul>
+				<p class="p15x txt-18 line-height-1-2" style="margin-top: -5px;">We chose a green color for transit to mimic traffic lights, red/orange for munchies which signifies a lot of different food sites, etc</p>
+				<ul class="flex-wrap p15-grid">
+					<li>
+						<span class="block bg-slate radius-2">
+							<span class="flex-center height-48 bg-cobalt-25p radius-2 p15x-p10y txt-24 semibold">color mix or palette</span>
+						</span>
+					</li>
+					<li>
+						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">25%-75% range</span>
+					</li>
+					<li>
+						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">30% tint for tiles/backgrounds</span>
+					</li>
+				</ul>
+				<p class="p15x txt-18 line-height-1-2" style="margin-top: -5px;">Colors should adhere to the Uguru palette without straying too close to one color or another.</p>
+				<ul class="flex-wrap p15-grid">
+					<li>
+						<span class="block bg-slate radius-2">
+							<span class="flex-center height-48 bg-cobalt-25p radius-2 p15x-p10y txt-24 semibold">accents</span>
+						</span>
+					</li>
+					<li>
+						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">derive from primary color</span>
+					</li>
+					<li>
+						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">neutral palette</span>
+					</li>
+				</ul>
+				<p class="p15x txt-18 line-height-1-2" style="margin-top: -5px;">Accent colors can be neutral colors such as <span class="bg-charcoal radius-2">&nbsp;charcoal&nbsp;</span>, <span class="bg-slate radius-2">&nbsp;slate&nbsp;</span>, <span class="bg-rocket radius-2">&nbsp;rocket&nbsp;</span>, <span class="bg-smoke radius-2 txt-slate">&nbsp;smoke&nbsp;</span>, or white. They can also be tints/shades of the primary color, or even complementary colors derived from sites like <a class="txt-robin" href="http://color.adobe.com">Adobe Color</a>.</p>
+
+				<!-- costumes and props -->
+				<h2 class="txt-28 semibold p15x-p15top">How should costumes and props be selected?</h2>
+				<p class="p15x txt-18 line-height-1-2">Powerups are more of a personality variation <span class="radius-2 bg-gold txt-charcoal">&nbsp;(costumes primary, props secondary)&nbsp;</span> while categories are more of an interest varation <span class="radius-2 bg-gold txt-charcoal">&nbsp;(props primary, costumes secondary)&nbsp;</span>.</p>
+				<p class="p15x txt-18 line-height-1-2">Costumes and props are more open-ended as long as they match with the overall theme selected.</p>
+				<p class="p15x txt-18 line-height-1-2">Props are generally rooted in reality. Props should follow a cloud motif if not reality-based because this allows more abstract props to be part of the theme.</p>
+
+				<h2 class="txt-28 semibold p15x-p15top">What does the composition look like?</h2>
+				<p class="p15x txt-18 line-height-1-2">Sets of gurus should have the <span class="radius-2 bg-gold txt-charcoal">&nbsp;same dimensions&nbsp;</span> and similar constrictions. For example, all the category loader gurus have the same width and height overall; all the category guru heads have the same height and width overall. The dimensions should be based off of the guru with the largest props/costumes. Gurus forms should be <span class="radius-2 bg-gold txt-charcoal">&nbsp;arranged at center bottom&nbsp;</span> to remain grounded in reality and for optimal animation.</p>
+				<p class="p15x txt-18 line-height-1-2">Props can be layered in front or behind of the guru to create depth; they can be inside or outside of the constrictions inside the container.</p>
+
+				<!-- animation -->
+				<h2 class="txt-28 semibold p15x-p15top">How should the gurus and powerups be animated?</h2>
+				<ul class="flex-wrap p15-grid">
+					<li>
+						<span class="block bg-slate radius-2">
+							<span class="flex-center height-48 bg-cobalt-25p radius-2 p15x-p10y txt-24 semibold">default animation styles</span>
+						</span>
+					</li>
+					<li>
+						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">soft and chill</span>
+					</li>
+					<li>
+						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">opacity fades</span>
+					</li>
+					<li>
+						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">bounce/jelly</span>
+					</li>
+
+					<li>
+						<span class="flex-center height-48 bg-moxie radius-2 p15x-p10y txt-20 semibold">draw lines</span>
+					</li>
+				</ul>
+				<p class="p15x txt-18 line-height-1-2" style="margin-top: -5px;">Animation should start from our defaults and variate based on powerup themes. For example, GPA Guru uses a lot of fades and slides while Munchies Guru uses more jelly animations.</p>
 			</div>
 		</div>
 	</li>
@@ -153,6 +229,15 @@
 										<li><a class="txt-robin" href="http://onepagelove.com">http://onepagelove.com</a></li>
 									</ul>
 								</li>
+                                <li>
+                                    <span>Random Notes Regarding Animation Edge Cases</span>
+                                    <ul class="p30left">
+                                        <li><a class="txt-robin">Applying edits to transition properties (via inline style) during a transition does not impact the animation. Of course, you can always set it null. </a></li>
+                                        <li><a class="txt-robin">Same scenario but for animation properties, the changes DO apply. In fact the animation resets and restarts if you alter anything in the middle of the animation.</a></li>
+                                        <li><a class="txt-robin"></a></li>
+                                        <li><a class="txt-robin"></a></li>
+                                    </ul>
+                                </li>
 							</ul>
 						</div>
 					</li>

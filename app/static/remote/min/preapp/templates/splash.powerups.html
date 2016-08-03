@@ -3,14 +3,12 @@
 -->
 <div class="powerups-scale"
 	init-with="p:[tr:scale(0), t:all 1000ms ease-out, op:1, display:block, background:#F6C64E]"
-    on-init='t:[on-enter] | s:[powerups-clicked]'
 	when-powerups-clicked="t-enter"
 	on-enter="p:[tr:scale(1000)] | t:[on-exit]"
 	on-exit="p:[op:0:delay-750, t:all 500ms ease-out, display:none:delay-2000]"></div>
-<!-- when-powerups-clicked="p:[op:1:delay-50, z-index:1000] | s:[powerups-init:public]:delay-3000" -->
 <ion-view id='splash-powerups' ng-controller="SplashPowerupsController as powerups"
 	init-with="p:[op:0, z-index:-1, t:all 750ms ease-in-out]"
-
+	when-powerups-clicked="p:[op:1:delay-50, z-index:1000] | s:[powerups-init:public]:delay-3000"
 	when-close-powerups="p:[op:0, z-index:-1:delay-250]">
 	<div class="absolute top-0 left-0 full-xy"
 		init-with="p:[z-index:999]"

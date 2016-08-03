@@ -876,6 +876,9 @@ button, input, textarea {
 	overflow: auto;
 }
 
+.height-02 {
+	height: 2px!important;
+}
 .height-05 {
 	height: 5px!important;
 }
@@ -1147,7 +1150,7 @@ button, input, textarea {
 	border-radius: 2px 0 0 2px!important;
 }
 .radius-2-right {
-	border-radius: 0 4px 4px 0!important;
+	border-radius: 0 2px 2px 0!important;
 }
 
 .radius-4-top {

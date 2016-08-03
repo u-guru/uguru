@@ -14,6 +14,9 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
       link: {
         pre: function(scope, element, attr) {
+
+          scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
+
           var switchDict;
           var elemArgs = DirectiveService.parseArgs(attr.initWith);
           var listenerArgs = DirectiveService.detectExternalStates(attr);
@@ -77,35 +80,38 @@ angular.module('uguru.shared.directives')
       }
     }
 }])
-// .directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
-//   return {
-//     restrict: 'A',
-//     priority: 10000,
-//     terminal: true,
-//       link: {
-//         pre: function(scope, element, attr) {
-//           attr.$set('ngHide', true);
-//           attr.$set('initLater', null);
-//           $compile(element[0])(scope);
+.directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
+  return {
+    restrict: 'A',
+    priority: 999,
+    terminal: true,
+      link: {
+        pre: function(scope, element, attr) {
 
 
-//           scope.$watch(function() {
-//             return element.attr('class');
-//           }, function(new_classes, old_classes) {
-//             new_classes = new_classes || '';
-//             if (new_classes.indexOf('init-later') > -1) {
-//               element[0].classList.remove('init-later');
-//               for (key in elemArgs) {
-//                 if (supportedCommands.indexOf(key) > -1) {
-//                   DirectiveService.activateArg(key, elemArgs[key], scope, element);
-//                 }
-//               }
-//             }
-//           })
-//       }
-//     }
-//   }
-// }])
+
+          attr.$set('ngHide', true);
+          attr.$set('initLater', null);
+          $compile(element[0])(scope);
+
+
+          scope.$watch(function() {
+            return element.attr('class');
+          }, function(new_classes, old_classes) {
+            new_classes = new_classes || '';
+            if (new_classes.indexOf('init-later') > -1) {
+              element[0].classList.remove('init-later');
+              for (key in elemArgs) {
+                if (supportedCommands.indexOf(key) > -1) {
+                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                }
+              }
+            }
+          })
+      }
+    }
+  }
+}])
 // .directive('counter', ['$timeout', '$interval', function ($timeout, $interval) {
 //   return {
 //     restrict: 'A',
@@ -211,18 +217,6 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('square', ['SVGService', function(SVGService) {
-  return {
-    restrict: 'E',
-    replace: true,
-    template: '<svg width="100" height="100" viewBox="0, 0, 100, 100"> <rect stroke="#637074" stroke-width="3" x="1.5" y="1.5" width="97" height="97" rx="10"></rect> </svg>',
-    link: {
-      pre: function(scope, element, attr) {
-
-      }
-    }
-  }
-}])
 .directive('mobile', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
   return {
     restrict: 'A',
@@ -245,6 +239,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         element.ready(function() {
           onInitReadyFunc();
         })
@@ -260,6 +255,7 @@ angular.module('uguru.shared.directives')
         })
 
         function onInitReadyFunc() {
+
           var elemArgs = DirectiveService.parseArgs(attr.onInit);
           var listenerArgs = DirectiveService.detectExternalStates(attr);
 
@@ -303,6 +299,7 @@ angular.module('uguru.shared.directives')
     link: {
       pre: function(scope, element, attr) {
 
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onEnter);
         var supportedCommands = DirectiveService.supportedCommands;
         scope.$watch(function() {
@@ -328,6 +325,7 @@ angular.module('uguru.shared.directives')
       pre: function(scope, element, attr) {
 
 
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onChange);
 
         scope.$watch(function() {
@@ -371,6 +369,7 @@ angular.module('uguru.shared.directives')
             // }
           }
         });
+
         // var elemArgs = DirectiveService.parseArgs(attr.onChange);
         // var supportedCommands = DirectiveService.supportedCommands;
         // scope.$watch(function() {
@@ -394,6 +393,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onExit);
         var supportedCommands = DirectiveService.supportedCommands;
         scope.$watch(function() {
@@ -417,9 +417,11 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onClick);
         var supportedCommands = DirectiveService.supportedCommands;
         element.on('click', function () {
+          console.log('click activated');
             for (key in elemArgs) {
               if (supportedCommands.indexOf(key) > -1) {
                 DirectiveService.activateArg(key, elemArgs[key], scope, element);
@@ -435,11 +437,11 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onMouseEnter);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
         var mouseEnterDelay = parseInt(attr.onMouseEnterDelay) || 250;
-
         element.on('mouseenter', function () {
             var inTimeout = true;
             $timeout(function () {
@@ -466,6 +468,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onMouseOver);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
@@ -495,6 +498,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onMouseLeave);
         var supportedCommands = DirectiveService.supportedCommands;
         var inTimeout = false;
@@ -768,93 +772,75 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       }
     }
 }])
-.directive("switches", ['$timeout', 'RootService', 'DirectiveService', 'UtilitiesService',
-        function($timeout, RootService, DirectiveService, UtilitiesService) {
-            return {
-              restrict: 'A',
-              priority:1,
-              link: {
-                pre: function(scope, element, attr) {
-                  scope.switchDict = {};
-                  var switches = DirectiveService.parseSwitchesAttr(scope, element, attr);
-                  for (var i = 0; i < switches.length; i++) {
-                    var indexSwitch = switches[i];
-                    var switchesName = indexSwitch.name
-                    delete indexSwitch['name']
-                    scope.switchDict[switchesName] = indexSwitch
-                  }
-
-                },
-                post: function(scope, element, attr) {
-                  console.log(scope.switchDict['rowOne'].switches, scope.switchDict['rowOne'].activeSwitches);
-                  $timeout(function() {
-                    console.log(scope.switchDict['rowOne'].switches, scope.switchDict['rowOne'].activeSwitches);
-                  }, 5000)
-                  scope.checkIfSiblingExiting = function(switch_obj) {
-                      var switchesObj = scope.switchDict[switch_obj.name];
-                      if (switchesObj.activeSwitches.length < switchesObj.activeLimit) {
-                        console.log(switch_obj, switchesObj.switches)
-                        switchesObj.activeSwitches.push(switch_obj.id);
-                        return false;
-                      } else
-                      if (switchesObj.activeSwitches.length === switchesObj.activeLimit) {
-
-                        if (switchesObj.activeSwitches.indexOf(switch_obj.id) > -1) {
-                          var switchIndex = switchesObj.activeSwitches.indexOf(switch_obj.id);
-                          var activeSwitchIndex = switchesObj[switchIndex] - 1
-                          switchesObj.activeSwitches.splice(activeSwitchIndex, 1);
-                          return false;
-                        } else {
-
-                          //notify the first one that it needs to go
-                          //remove previous
-                          var switchIdToRemove = switchesObj.activeSwitches.splice(switchesObj.activeLimit - 1, 1)[0] - 1;
-                          // switchesObj.activeSwitches.splice(switchIdToRemove, 1);
-                          // switchesObj.activeSwitches.push(switch_obj.id);
-                          var formattedAttr = 'on-switch-' + UtilitiesService.camelToDash(switch_obj.name).toLowerCase() + '-change';
-                          var elemToInactive = scope.switchDict[switch_obj.name].switches[switchIdToRemove];
-                          var childQuery = '[switch-id="' + (parseInt(switchIdToRemove) + 1) + '"][switch="' + switch_obj.name + '"]';
-                          var childElem = element[0].querySelector(childQuery);
-                          childElem.classList.add(formattedAttr);
-                          return true;
-                        }
-
-                      }
-                  }
-
-                }
-              }
-
-            }
-        }
-])
 .directive("inspect", ['$timeout', 'RootService', '$compile', 'AdminInspectService',
   function($timeout, RootService, $compile, AdminInspectService) {
       return {
         restrict: 'C',
-        scope: {},
-        priority: 1,
+        scope: false,
+        priority: 10000,
+        replace: true,
         link: {
           pre: function(scope, element, attr) {
+            'initLater' in attr && element.removeAttr('init-later');
 
-            scope.state = {play: false, pause: false, complete: false, timer: {start:0, pause:0}};
 
-            scope.$watch(function() {
-              return element.attr('style');
-            }, function(new_style, old_classes) {
-              if (new_style && !scope.play) {
-                scope.originalStyle = new_style;
+            if (scope.root.inspectCount) {
+              scope.root.inspectCount += 1;
+            } else {
+              scope.root.inspectCount = 1;
+            }
 
-                scope.origProp = {duration: getDuration(element), transition: (element[0].style.webkitTransition || element[0].style.webkitTransition)}
-                scope.props = {arr: AdminInspectService.getPropArr(new_style), duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
+            var inspect_index = element[0].classList && element[0].classList.value.indexOf('inspect-');
 
-                scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
-                scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
-                scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope);
-                attr.$set('style', null);
-                initPlayer(scope);
+            if (inspect_index > -1) {
+
+              var stateToTrigger = element[0].classList.value.split('inspect-')[1];
+              stateToTrigger = stateToTrigger.split(' ')[0];
+
+              //inspect requirement
+              if (stateToTrigger.indexOf('on-') > -1) {
+                element[0].classList.add(stateToTrigger);
+                element.ready(function() {
+                  element.triggerHandler(stateToTrigger.replace('on-', ''));
+                })
               }
-            })
+
+
+
+            } else {
+              //inspect main
+              scope.root.inspect = true;
+              console.log('set to true', scope.root.inspect = true);
+              element.ready(function() {
+                initInspector();
+              })
+            }
+
+
+            // document.body.addEventListener()
+
+            // console.log('initializing inspector')
+            function initInspector() {
+              scope.state = {play: false, pause: false, complete: false, timer: {start:0, pause:0}};
+              scope.$watch(function() {
+                return element.attr('style');
+              }, function(new_style, old_classes) {
+                if (new_style && !scope.play) {
+                  scope.originalStyle = new_style;
+
+                  scope.origProp = {duration: getDuration(element), transition: (element[0].style.webkitTransition || element[0].style.webkitTransition)}
+                  scope.props = {arr: AdminInspectService.getPropArr(new_style), duration: scope.origProp.duration, transition: scope.origProp.transition, style: new_style};
+                  scope.parsedAttr = AdminInspectService.getAttrDict(scope, element, attr, new_style);
+                  scope.play = getPlayFunction(element, attr, scope.props, scope.state, scope)
+                  scope.pause = getPauseFunction(element, attr, scope.props, scope.state, scope)
+                  scope.update = getUpdateFunction(element, attr, scope.props, scope.state, scope);
+                  attr.$set('style', null);
+                  scope.props.attr = scope.parsedAttr;
+                  initPlayer(scope);
+                }
+              })
+            }
+            // }
           }
         }
       }
@@ -904,7 +890,6 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
 
           if (state.pause && state.timer.pause) {
             var durationOffset = props.duration - state.timer.pause;
-            console.log(durationOffset)
             attr.$set('style', props.style);
             element.css('transition-duration', durationOffset + 'ms');
             element.css('webkit-transition-duration', durationOffset + 'ms');
@@ -940,10 +925,10 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
           scope.name = 'player'
           if (!div) {
             div = document.createElement('div');
-            div.classList.add('p15-grid', 'full-x', 'fixed', 'top-0', 'left-0', 'bg-auburn', 'animated', 'slideInDown');
+            div.classList.add('full-x', 'fixed', 'top-0', 'left-0', 'animated', 'slideInDown');
             div.style.zIndex = 100000;
             div.id = 'transition-player';
-            div.innerHTML = '<player play=play pause=pause state=state update=update props=props start-offset=state.timer.pause duration=duration></player>'
+            div.innerHTML = '<player play=play root=root pause=pause state=state update=update props=props start-offset=state.timer.pause duration=duration></player>'
             document.querySelector('ui-view').appendChild(div)
           }
 
@@ -959,100 +944,125 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
         return parseFloat((element[0].style.webkitTransitionDuration || element[0].style.transitionDuration).split('ms')[0]);
       }
 }])
-.directive("switch", ['$timeout', 'RootService', 'DirectiveService', 'UtilitiesService', 'SwitchService',
-        function($timeout, RootService, DirectiveService, UtilitiesService, SwitchService) {
-            return {
-              restrict: 'A',
-              scope: {},
-              require:'^?switches',
-              priority: 1,
-              link: {
-                pre: function(scope, element, attr) {
+.directive('switches', ['$state', '$timeout', 'DirectiveService', 'UtilitiesService', 'SwitchService', function($state, $timeout, DirectiveService, UtilitiesService, SwitchService) {
+    return {
+      restrict: 'A',
+      scope: {},
+      link: function preLink(scope, element, attr) {
+        if (!attr.switches || !attr.switches.length) {
+          return;
+        }
 
-                  scope.switch = SwitchService.parseElemAttrs(scope, element, attr);
-                  var switchEvents = ['active', 'inactive', 'change'];
-                  if (scope.$parent.switchDict) {
+        scope.root = scope.$parent.root;
+        // var listenerArgs = DirectiveService.detectExternalStates(attr);
 
-                    for (switchName in scope.$parent.switchDict) {
-                      if (switchName === scope.switch.name) {
-                        attr.$set('switch-id', scope.$parent.switchDict[switchName].switches.length + 1)
-                        var switchesParent = scope.$parent.switchDict[scope.switch.name]
-                        var parentHasDelay = 'changeDelay' in scope.$parent.switchDict[switchName];
-                        scope.switch.dashedName = UtilitiesService.camelToDash(scope.switch.name).toLowerCase();
-                        if (parentHasDelay) {
-                          scope.switch.parentDelay = scope.$parent.switchDict[switchName]['changeDelay'];
-                        }
-                        scope.switch.states = {};
-                        scope.switch.classes = [];
-                        scope.switch.id = scope.$parent.switchDict[scope.switch.name].switches.length + 1
-                        for (var i = 0; i < switchEvents.length; i++) {
-                          var indexEventDashed = 'on-switch-' + scope.switch.dashedName + '-' + switchEvents[i];
-                          var indexEventCamel = UtilitiesService.camelCase(indexEventDashed);
-                          if (indexEventCamel in attr) {
-                            scope.switch.states[switchEvents[i]] = {args: DirectiveService.parseArgs(attr[indexEventCamel]), className: indexEventDashed};
-                            scope.switch.classes.push(indexEventDashed)
-                          }
-                        }
-                        switchesParent.switches.push(scope.switch);
-                      }
-                    }
+        // for (key in listenerArgs) {
+
+        //     var type = listenerArgs[key].type
+        //     var _attr = listenerArgs[key].attr;
+        //     console.log(type, attr);
+        //     DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+
+        //   }
+        var supportedCommands = DirectiveService.supportedCommands;
+        scope.switches = SwitchService.parseSwitches(element, attr);
+        var classesToWatch = [];
+        if (scope.switches.classes) {
+
+
+
+
+          classesToWatch = scope.switches.classes;
+          delete scope.switches.classes['classes']
+          scope.$watch(
+            function() {
+              return element.attr('class');
+            },
+            function(new_classes, old_classes) {
+              if (!new_classes) {
+                return;
+              }
+              var modifiedClasses = [];
+
+              classesToWatch.forEach(
+                function(c, i) {
+                  if (new_classes.indexOf(c) > -1) {
+                    modifiedClasses.push(c);
+                    element[0].classList.remove(c);
                   }
-
-                  scope.$watch(function() {
-                    return element.attr('class');
-                  }, function(new_classes, old_classes) {
-                    for (var i = 0; i < switchEvents.length; i++) {
-                      var indexClass = 'on-switch-' + scope.switch.dashedName+ '-' + switchEvents[i];
-                      if (new_classes && new_classes.indexOf(indexClass) > -1) {
-                        element[0].classList.remove(indexClass);
-                        var stateName = indexClass.split('-').reverse()[0];
-                        if (stateName === 'change') {
-                          scope.switch.active = !scope.switch.active;
-                          if (scope.switch.active && 'active' in scope.switch.states) {
-                            var activeArgs = scope.switch.states['active']['args'];
-                            for (key in activeArgs) {
-                              var shouldSwitchDelayBeforeActive = scope.$parent.checkIfSiblingExiting(scope.switch);
-                              if (shouldSwitchDelayBeforeActive) {
-
-
-                                var callback = function() {
-                                  scope.$parent.switchDict[scope.switch.name].activeSwitches.push(parseInt(attr['switch-id']));
-                                }
-                                DirectiveService.activateArgDelay(key, activeArgs[key], scope, element, scope.switch.parentDelay, callback);
-
-                              } else {
-                                DirectiveService.activateArg(key, activeArgs[key], scope, element);
-                              }
-
-                            }
-                            // DirectiveService.activateArg
-                          } else {
-                            var inactiveArgs = scope.switch.states['inactive']['args'];
-
-                            var activeSwitches = scope.$parent.switchDict[scope.switch.name].activeSwitches;
-                            var indexSwitchActive = activeSwitches.indexOf(attr['switch-id']);
-                            activeSwitches.splice(indexSwitchActive, 1);
-                            console.log(indexSwitchActive, activeSwitches, inactiveArgs)
-                            for (key in inactiveArgs) {
-                              DirectiveService.activateArg(key, inactiveArgs[key], scope, element);
-                            }
-                          }
-                        }
-                      }
-                    }
-                  });
-                  // for (var i = 0; i < switches.length; i++) {
-                  //   var indexSwitch = switches[i];
-                  //   var switchesName = indexSwitch.name
-                  //   delete indexSwitch['name']
-                  //   scope.switchDict[switchesName] = indexSwitch
-                  // }
+              });
+              for (var i = 0; i < modifiedClasses.length; i++) {
+                var iClass = modifiedClasses[i];
+                for (key in scope.switches) {
+                  if (scope.switches[key].nameDashed === iClass) {
+                    var iSwitchObj = scope.switches[key];
+                    break;
+                  }
                 }
               }
-
+              if (iSwitchObj) {
+                iSwitchObj.value = !iSwitchObj.value;
+                var stateValue = (iSwitchObj.value && 'on') || 'off';
+                if (stateValue in iSwitchObj) {
+                  var elemArgs = iSwitchObj[stateValue].args;
+                  for (key in elemArgs) {
+                    if (supportedCommands.indexOf(key) > -1) {
+                      console.log(key, elemArgs[key])
+                      DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                    }
+                  }
+                }
+              }
             }
+          );
         }
-])
+        // console.log(scope.switches);
+
+        // scope.switchClasses = [];
+        // for (key in attr) {
+        //   console.log(key);
+        // }
+      }
+    }
+}])
+.directive('switch', ['$state', '$timeout', 'DirectiveService', function($state, $timeout, DirectiveService) {
+    return {
+      restrict: 'A',
+      scope: {},
+      link: function(scope, element, attr) {
+        //shortcut
+        scope.switch = {name: null, value:false};
+
+        if ('switchOn' in attr) {
+          scope.switch.on = {args: DirectiveService.parseArgs(attr.switchOn)}
+        }
+
+        if ('switchOff' in attr) {
+          scope.switch.off = {args: DirectiveService.parseArgs(attr.switchOff)}
+        }
+        scope.$watch(function() {
+          return element.attr('class');
+        }, function(new_classes) {
+          if (new_classes && new_classes.indexOf('switch-toggle') > -1) {
+
+            element[0].classList.remove('switch-toggle');
+            scope.switch.value = !scope.switch.value;
+            var toggleValue = scope.switch.value && 'on' || 'off';
+
+            var elemArgs = scope.switch[toggleValue].args;
+
+            var supportedCommands = DirectiveService.supportedCommands;
+
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+          }
+        })
+    }
+  }
+}])
 .directive('parallaxChild', ['$state', '$timeout', function ($state, $timeout) {
     return {
       restrict: 'A',
@@ -1071,6 +1081,170 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
       }
     }
 }])
+.directive('rootAnimation', [function () {
+    return {
+      restrict: 'E',
+      scope: false,
+      link: function(scope, element, attr) {
+        if (attr.off) {
+          scope.root.animStatus.off = true;
+        }
+      }
+    }
+}])
+.directive('swiper', ['$timeout', function ($timeout) {
+    return {
+      restrict: 'E',
+      scope: {
+        type: '=type',
+      },
+      template: '<div class="swiper-container"><div class="swiper-wrapper" ng-transclude></div></div>',
+      transclude: true,
+      replace: true,
+      link: {
+        pre: function (scope, element, attr, controllerFn, transclude, data) {
+
+          var swiperOptions = {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 100,
+            effect: 'coverflow',
+            speed: 600,
+            coverflow: {
+              slideShadows: false
+            },
+            paginationClickable: true,
+            keyboardControl: true,
+            parallax: true,
+            ref: 'http://idangero.us/swiper/api/#.V57mX9ArLOQ'
+          }
+          scope.swiper = {instance: null, options: swiperOptions}
+          if ('width' in attr && attr.width.length) {
+            element[0].style.width = attr.width;
+          }
+          if ('height' in attr && attr.height.length) {
+            element[0].style.height = attr.height;
+          }
+          // nextButton: '.header-swiper-front .swiper-button-next',
+          //   prevButton: '.header-swiper-front .swiper-button-prev',
+          // $timeout(function() {
+
+          //   // scope.swiper.instance.update(true);
+          //   // scope.swiper.instance.startAutoplay();
+          // }, 1000)
+        },
+        post: function(scope,element, attr) {
+
+          var className = '.' + element[0].classList.value.split(' ').join('.')
+          scope.swiper.instance =  new Swiper(className, scope.swiper.options);
+          scope.$parent.swiperOptions = scope.swiper.options;
+
+          scope.$parent.swiper = scope.swiper;
+
+        }
+      }
+    }
+}])
+.directive('slide', ['$timeout', function ($timeout) {
+    return {
+      restrict: 'E',
+      scope: {data: '=data', index: '=index'},
+      transclude: true,
+      priority:1,
+      replace:true,
+      template: '<div class="swiper-slide" ng-transclude></div>',
+      link:  {
+            pre: function(scope, element, attr) {
+              if (!scope.$parent.data) {
+                scope.$parent.data = [];
+              }
+              scope.$parent.data.push(scope.data);
+            },
+            post: function(scope, element, attr) {
+              $timeout(function() {
+                if ('width' in attr && attr.width.length) {
+                  element.css('width', attr.width)
+                }
+                if ('height' in attr && attr.height.length) {
+                    element.css('height', attr.height)
+                  }
+              })
+            }
+          }
+    }
+}])
+.directive('swiperNext', [function () {
+    return {
+      restrict: 'E',
+      scope: false,
+      priority:1,
+      replace:true,
+      transclude: true,
+      template: '<div class="swiper-button-next" ng-transclude></div>',
+      link: function preLink(scope, element, attr) {
+        console.log();
+        scope.$parent.swiper.options.nextButton = element[0];
+      }
+    }
+}])
+.directive('swiperBack', [function () {
+    return {
+      restrict: 'E',
+      scope: false,
+      priority:1,
+      replace:true,
+      transclude: true,
+      template: '<div class="swiper-button-prev" ng-transclude></div>',
+      link: function preLink(scope, element, attr) {
+        console.log();
+        scope.$parent.swiper.options.prevButton = element[0];
+      }
+    }
+}])
+.directive('swiperControls', [function () {
+    return {
+      restrict: 'E',
+      priority:10,
+      replace:true,
+      scope: false,
+      link:
+        {
+          pre: function(scope, element, attr) {
+            scope.swiperOptions = scope.$parent.swiper.options;
+
+            }
+          // post: function(scope, element, attr) {
+
+
+          // }
+      }
+    }
+}])
+.directive('swipeVar', [function () {
+    return {
+      restrict: 'E',
+      priority:11,
+      replace:true,
+      scope: {key:'@key', value:'@value'},
+      link:
+        {
+          pre: function(scope, element, attr) {
+
+            if (scope.key && scope.key.length && scope.value && (scope.value + '').length) {
+              if (!isNaN(parseFloat(scope.value)) && isFinite(scope.value)) {
+                scope.value = parseFloat(scope.value);
+              }
+              scope.$parent.swiperOptions[scope.key] = scope.value;
+              if (!scope.$parent.swiperOptions.modified) {
+                scope.$parent.swiperOptions.modified =[];
+              }
+              scope.$parent.swiperOptions.modified.push(scope.key);
+            }
+          }
+        }
+    }
+}])
+
 .directive('includeReplace', function () {
     return {
         require: 'ngInclude',

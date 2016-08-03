@@ -317,6 +317,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var transformPrefix = formatBrowserCSSProperty('transform');
         var transitionObj = {duration: 0, properties:[], timingFunction: 'ease'};
         var transformPropDict = TransformService.parseTransformArgs(indexTransform, elem);
+        console.log(transformPropDict);
         if (transformPropDict.ext) {
           for (key in transformPropDict['ext']) {
             var propDict = {};
@@ -325,7 +326,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           }
           delete transformPropDict['ext']
         }
-        if (transformPropDict.delay) {
+        if (transformPropDict.delay || transformPropDict.delay === 0) {
           resultPropDict.delay = transformPropDict.delay;
           delete transformPropDict['delay']
         }
@@ -359,7 +360,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           transformDict[browserProperty] = transformValueStr;
           resultPropDict.properties.push(transformDict);
         }
-
+        console.log(resultPropDict);
         if (extensions && extensions.length) {
           for (var i = 0; i < extensions.length; i++) {
             var key = Object.keys(extensions[i])[0];
@@ -709,7 +710,11 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           } else if (trigger_scope === 'parent') {
             triggerActionOnElem(trig_name, elem[0].parentNode);
             // elem[0].parentNode.classList.add(trig_name);
-          } else if (trigger_scope === 'children') {
+          } else if (trig_name === 'switch' && trigger_scope && trigger_scope.length) {
+            var className = UtilitiesService.camelToDash(trigger_scope.toLowerCase());
+            triggerActionOnElem('switch' + '-' + className, elem[0]);
+          }
+          else if (trigger_scope === 'children') {
             var children = elem[0].children;
             for (var i = 0; i < children.length; i++) {
               var indexChild = children[i];
@@ -730,7 +735,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             var implementedTriggers = ['on-click', 'on-hover', 'on-mouse-leave', 'on-mouse-enter'];
             if (implementedTriggers.indexOf(trig_name) > -1) {
               angular.element(elem).triggerHandler(trig_name);
-            } else {
+            } else if (trig_name === 'switch') {
+              elem.classList.add('switch-toggle');
+            }
+            else {
               elem.classList.add(trig_name);
             }
           }

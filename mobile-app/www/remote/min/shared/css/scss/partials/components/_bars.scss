@@ -1,5 +1,51 @@
 @import '../mixin';
 
+/* ---------- PRICE RANGE */
+.price-range-container {
+	min-width: 290px;
+	.price-range-bar {
+		position: relative;
+		width: 100%;
+		height: 2px;
+		border-radius: 2px;
+		background: rgba(white, .5);
+		.price-range-dot {
+			@include round;
+			position: absolute;
+			top: -4px;
+			width: 10px;
+			height: 10px;
+			background: white;
+			.price-range-number {
+				position: absolute;
+				top: -50px;
+				left: 50%;
+				margin-left: -30px;
+				width: 60px;
+				font-size: 20px;
+				font-weight: 600;
+				color: $charcoal;
+				background: white;
+				border-radius: 4px;
+				padding: 5px 10px;
+				text-align: center;
+				&:after {
+					content: "";
+					display: block;
+					position: absolute;
+					bottom: -20px;
+					left: 50%;
+					margin-left: -10px;
+					width: 0;
+					height: 0;
+					border: 10px solid transparent;
+					border-top-color: white;
+				}
+			}
+		}
+	}
+}
+
 /* ---------- TAB BARS */
 // tab bar
 .tab-container {
@@ -459,9 +505,24 @@
 			padding: 7.5px;
 			a {
 				@include round;
-				display: block;
-				width: 48px;
+				@include flex;
+				@include flex-center;
 				height: 48px;
+				&:not(.auto) {
+					width: 48px;
+				}
+				&.auto {
+					padding: 0 15px;
+					font-size: 18px;
+					font-weight: 600;
+					text-transform: uppercase;
+					&:hover, &:focus {
+						background: lighten($slate, 15%)!important;
+					}
+					&:active {
+						background: $slate!important;
+					}
+				}
 				svg {
 					display: block;
 					width: 100%;
@@ -879,6 +940,56 @@ progress, div[class*="progress"] {
 	}
 }
 // progress w/circles
+.numerical-bar {
+	width: 100%;
+	position: relative;
+	progress, .progress {
+		position: absolute;
+		top: 50%;
+		margin-top: -2.5px;
+		left: 0;
+		width: 100%;
+	}
+	ul {
+		@include flex;
+		@include flex-center;
+		justify-content: space-around;
+		li {
+			width: 80px;
+			height: 80px;
+			div {
+				@include round;
+				@include flex;
+				@include flex-center;
+				position: relative;
+				width: 100%;
+				height: 100%;
+				span {
+					position: relative;
+					z-index: 2;
+					display: block;
+					font-size: 28px;
+					font-weight: 600;
+					color: $shamrock;
+				}
+				svg {
+					display: block;
+					position: absolute;
+					z-index: 1;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					circle {
+						fill: white;
+						stroke-width: 5px;
+						stroke: $shamrock;
+					}
+				}
+			}
+		}
+	}
+}
 .onboarding-bar {
 	position: relative;
 	width: 100%;
@@ -1415,6 +1526,21 @@ input[type=range] {
 		}
 		&::-ms-track {
 			height: 2px;
+		}
+		&::-webkit-slider-thumb {
+			margin-top: -8px;
+			height: 18px;
+			width: 4px;
+		}
+		&::-moz-range-thumb {
+			margin-top: -8px;
+			height: 18px;
+			width: 4px;
+		}
+		&::-ms-range-thumb {
+			margin-top: -8px;
+			height: 18px;
+			width: 4px;
 		}
 	}
 	&[size="medium"], &[size="5"] {

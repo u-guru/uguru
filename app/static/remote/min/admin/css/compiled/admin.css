@@ -650,6 +650,12 @@
     height: 2px;
     background: rgba(93, 172, 193, 0.2); }
 
+.bg-cobalt-slate-campus-25p {
+  background: #5d667e !important; }
+
+.bg-cobalt-slate-campus-50p {
+  background: #6c798a !important; }
+
 @media screen and (max-width: 768px) {
   #admin-anim-tools > div {
     -ms-flex-flow: row wrap;
@@ -681,5 +687,17 @@
 .samir-anim {
   animation: samirAnim 3s ease 0s 1 normal none;
   -webkit-animation: samirAnim 3s ease 0s 1 normal none; }
+
+.samir-transition {
+  -webkit-transition-duration: 2s !important; }
+
+animation svg {
+  width: 100px;
+  height: 100px; }
+  animation svg > path {
+    stroke: white; }
+
+.width-2-3 {
+  width: 66%; }
 
 /*# sourceMappingURL=admin.css.map */

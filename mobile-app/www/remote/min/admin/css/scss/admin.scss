@@ -52,3 +52,24 @@
     animation: samirAnim 3s ease 0s 1 normal none;
     -webkit-animation: samirAnim 3s ease 0s 1 normal none;
 }
+
+
+.samir-transition {
+	-webkit-transition-duration: 2s !important;
+}
+
+animation svg {
+	width:100px;
+	height:100px;
+	> path {
+		stroke:white;
+	}
+}
+
+// * {
+// 	-webkit-animation-duration: 1ms !important;
+// }
+
+.width-2-3 {
+	width:66%;
+}

@@ -152,7 +152,6 @@ function SpecContentService($state, $timeout, $localstorage, $window, AdminWorkf
 
     function getBugInfo(wkflow_name) {
       var id = 0;
-      // console.log($scope)
       for (var i = 0; i < wkflow_name.length ; ++ i) {
         id += wkflow_name.charCodeAt(i);
       }
@@ -161,7 +160,7 @@ function SpecContentService($state, $timeout, $localstorage, $window, AdminWorkf
         stateID: id,
         launchBugTab: function() {
           // console.log("ID",this.bugID)
-          var url = document.URL +'/bugs/'+this.stateID;
+          var url = document.URL +'/bugs/'+this.workFlowID;
           $window.open(url);
           // alert('coming soon');
         }

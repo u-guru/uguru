@@ -8,6 +8,7 @@ angular.module('uguru.shared.services')
 function RootService($timeout, $state) {
     var base_url = '';
     var docItems = [];
+    var pauseElement;
     initBaseUrlByEnv();
     return {
         // slide: slide,
@@ -23,15 +24,23 @@ function RootService($timeout, $state) {
         getCSSAnimationFromClassName: getCSSAnimationFromClassName,
         getBrowserPrefix:getBrowserPrefix,
         appendDocItem: appendDocItem,
-        formatBrowserCSSProperty: formatBrowserCSSProperty
+        formatBrowserCSSProperty: formatBrowserCSSProperty,
+        setPauseElementFunc: setPauseElementFunc,
+        pauseElement: pauseElement
     }
 
     function appendDocItem(item) {
       docItems.push(item);
     }
 
+    function setPauseElementFunc(func) {
+      pauseElement = func;
+    }
+
+
+
     function formatBrowserCSSProperty(property) {
-      var dashedPrefixedProps = ['transition', 'transform', 'backface-visibility', 'perspective', 'perspective-origin', 'transform-style', 'transform-origin', 'animation-timing-function', 'animation-duration', 'animation-delay', 'transition-delay', 'transition-timing-function']
+      var dashedPrefixedProps = ['transition', 'transform', 'backface-visibility', 'perspective', 'perspective-origin', 'animation-start', 'transform-style', 'transform-origin', 'animation-timing-function', 'animation-duration', 'animation-name', 'animation-play-state', 'animation-fill-mode', 'animation-iteration-count', 'animation-direction', 'animation-delay', 'transition-delay', 'transition-timing-function']
       var browserPrefix = getBrowserPrefix();
       if (browserPrefix && browserPrefix.length && dashedPrefixedProps.indexOf(property.toLowerCase()) > -1) {
         property = '-' + browserPrefix + '-' + property

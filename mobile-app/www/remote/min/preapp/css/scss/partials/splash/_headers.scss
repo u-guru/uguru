@@ -35,6 +35,19 @@
 	}
 }
 
+.loader-scale-out {
+	transform-origin: center center;
+	position: fixed;
+	top: calc(50% - 100px);
+	left: calc(50% - 100px);
+	height: 200px;
+	width: 200px;
+	border: 8px solid $gold;
+	background: $charcoal;
+	border-radius: 100%;
+	z-index: 99999;
+}
+
 .splash-up-circle {
 	@include flex;
 	@include flex-center;

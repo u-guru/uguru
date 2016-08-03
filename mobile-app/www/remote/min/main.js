@@ -177,6 +177,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/hiw',
     templateUrl: 'preapp/templates/splash.hiw.html'
   })
+  .state('root.animations', {
+    url:'/dev/animations',
+    templateUrl: 'admin/templates/animation.html'
+  })
   // -- end dev states
   .state('root.jeselle', {
     url:'/dev/jeselle',
@@ -193,13 +197,28 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       $scope.name = $stateParams.name
     }
   })
+  .state('root.playground-swiper', {
+    url:'/dev/playground/modules/swiper',
+    controller: 'SwiperController',
+    templateUrl: 'admin/templates/swiper.html'
+  })
+  .state('root.playground-switches', {
+    url:'/dev/playground/modules/switches',
+    controller: function($scope) {
+      var exampleArr = [];
+      for (var i = 0; i < 5; i++) {
+        exampleArr.push({id: i + 1})
+      }
+      $scope.examples = exampleArr;
+      $scope.activeExample = exampleArr[2];
+
+      $scope.setActiveExample = function(index) {$scope.activeExample = $scope.examples[index]; }
+    },
+    templateUrl: 'admin/templates/playgrounds/switch.html',
+  })
   .state('root.demos', {
     url:'/dev/demos',
     templateUrl: 'admin/templates/demos.html',
-  })
-  .state('root.guru-head', {
-    url:'/dev/guru-head',
-    templateUrl: 'shared/templates/components/guru-head/main.html',
   })
   .state('root.cal', {
     url:'/cal',
@@ -221,19 +240,36 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/milestones/:initial/:filter',
     templateUrl: 'admin/templates/milestones.html'
   })
+  .state('root.milestones-filter', {
+    url:'/dev/milestones/:initial/:filter/:type',
+    templateUrl: 'admin/templates/milestones.html'
+  })
   .state('root.svg-test', {
     url:'/svg-test',
     templateUrl: 'shared/templates/svg-test.html'
   })
+  .state('root.components', {
+    url:'/dev/components',
+    templateUrl: 'admin/templates/components/index.tpl'
+  })
+  .state('root.single-components', {
+    url: '/dev/components/:section/:name',
+    templateProvider: function($stateParams) {
+      return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + $stateParams.name + ".tpl'" + '"/> </div>'
+    }
+  })
   .state('root.base-components', {
     url:'/dev/base/components/:baseCompName',
     templateProvider: function(AdminDirectiveService, $stateParams) {
-      var completedComponents = Object.keys(AdminDirectiveService.getBaseComponents());
+      var completedBaseComponents = Object.keys(AdminDirectiveService.getBaseComponents());
+      var completedCustomComponents = Object.keys(AdminDirectiveService.getCustomComponents())
       var urlComponentParam = $stateParams.baseCompName;
-      if (completedComponents.indexOf(urlComponentParam.toLowerCase()) > -1) {
+
+
+      if (completedBaseComponents.indexOf(urlComponentParam.toLowerCase()) > -1 || completedCustomComponents.indexOf(urlComponentParam.toLowerCase()) > -1) {
         return AdminDirectiveService.getBaseComponentHtml(urlComponentParam);
       }
-      return '<div> <span class="weight-700">' +  urlComponentParam + '</span> is not a base component </div> <div> <span class="weight-700">' +  completedComponents.join(', ') + '</span> </div>'
+      return '<div> <span class="weight-700">' +  urlComponentParam + '</span> is not a base component </div> <div> <span class="weight-700">' +  completedBaseComponents.join(', ') + '<br>' + completedCustomComponents.join(', ') + '</span> </div>'
     }
   })
 

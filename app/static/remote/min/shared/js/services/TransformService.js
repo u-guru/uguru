@@ -39,7 +39,7 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
       }
 
       function getSupported() {
-          return ['to', 'tf', 'timing-function', 'translate', 'sk-x', 'sk-y', 'sky', 'skx', 'sx', 'sc-x', 's-x', 'sy', 'sc-y', 's-y', 'sz', 'sc-z', 's-z', 'tr', 'tr-z', 'tr-x', 'tr-y', 't-z', 't-x', 'tr-y', 'tx', 'ty','tz', 'rx', 'rz', 'r-x', 'ro-x', 'r-y', 'ry', 'ro-y', 'r-z', 'ro-z', 'p-o', 'perspective-origin', 'transform-box', 't-b', 'transform-origin', 'transform-style', 't-s', 't-o',  'backface-visibility', 'b-v', 'perspective-origin', 'p-origin', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
+          return ['to', 'tf', 'timing-function', 'rotatex', 'rotatey', 'rotatez', 'translatex', 'translatey', 'translatez', 'scalex', 'scaley', 'scalez', 'pe', 'translate', 'sk-x', 'sk-y', 'sky', 'skx', 'sx', 'sc-x', 's-x', 'sy', 'sc-y', 's-y', 'sz', 'sc-z', 's-z', 'tr', 'tr-z', 'tr-x', 'tr-y', 't-z', 't-x', 'tr-y', 'tx', 'ty','tz', 'rx', 'rz', 'r-x', 'ro-x', 'r-y', 'ry', 'ro-y', 'r-z', 'ro-z', 'p-o', 'perspective-origin', 'transform-box', 't-b', 'transform-origin', 'transform-style', 't-s', 't-o',  'backface-visibility', 'b-v', 'perspective-origin', 'p-origin', 'rotate', 'skew', 'skewX', 'skewY', 'duration', 'delay', 'clear', 'tz', 'sz', 'sx', 'sy', 'scale', 'sc', 'moveX', 'moveY', 'moveZ', 'scaleX', 'scaleY', 'scaleZ', 'perspective', 'p'];
       }
 
       function parse2d(coord_string) {
@@ -47,52 +47,53 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
       }
 
       function detectTransformDictKey(str) {
+        str = str.toLowerCase();
         if (['sc', 'scale'].indexOf(str) > -1) {
           return "scale"
         }
-        if ('p' === str) {
+        if ('p' === str || 'pe' === str) {
           return 'perspective'
         }
         if ('sk' === str) {
           return 'skew'
         }
-        if (['tr-z', 'tz', 't-z'].indexOf(str) > -1) {
+        if (['tr-z', 'tz', 't-z', 'translatez'].indexOf(str) > -1) {
           return 'translateZ'
         }
-        if (['tr-y', 'ty', 't-y'].indexOf(str) > -1) {
+        if (['tr-y', 'ty', 't-y', 'translatey'].indexOf(str) > -1) {
           return 'translateY'
         }
-        if (['tr-x', 'tx', 't-x'].indexOf(str) > -1) {
+        if (['tr-x', 'tx', 't-x', 'translatex'].indexOf(str) > -1) {
           return 'translateX'
         }
-        if (['ro-z', 'rz', 'r-z'].indexOf(str) > -1) {
+        if (['ro-z', 'rz', 'r-z', 'rotatez'].indexOf(str) > -1) {
           return 'rotateZ'
         }
-        if (['ro-y', 'ry', 'r-y'].indexOf(str) > -1) {
+        if (['ro-y', 'ry', 'r-y', 'rotatey'].indexOf(str) > -1) {
           return 'rotateY'
         }
-        if (['ro-x', 'rx', 'r-x'].indexOf(str) > -1) {
+        if (['ro-x', 'rx', 'r-x', 'rotatex'].indexOf(str) > -1) {
           return 'rotateX'
         }
-        if (['sc-x', 'sx', 's-x'].indexOf(str) > -1) {
+        if (['sc-x', 'sx', 's-x', 'scalex'].indexOf(str) > -1) {
           return 'scaleX'
         }
-        if (['sk-x', 'sk'].indexOf(str) > -1) {
+        if (['sk-x', 'sk', 'skewx'].indexOf(str) > -1) {
           return 'skewX'
         }
-        if (['sk-y', 'sky'].indexOf(str) > -1) {
+        if (['sk-y', 'sky', 'skewy'].indexOf(str) > -1) {
           return 'skewY'
         }
-        if (['sc-y', 'sy', 's-y'].indexOf(str) > -1) {
+        if (['sc-y', 'sy', 's-y', 'scaley'].indexOf(str) > -1) {
           return 'scaleY'
         }
-        if (['sc-z', 'sz', 's-z'].indexOf(str) > -1) {
+        if (['sc-z', 'sz', 's-z', 'scalez'].indexOf(str) > -1) {
           return 'scaleZ'
         }
-        if ('p-o' === str) {
+        if ('p-o' === str || 'p-origin' === str || 'po' === str) {
           return 'perspective-origin'
         }
-        if ('t-b' === str) {
+        if ('t-b' === str || 'transform-box' === str || 'tb' === str) {
           return 'transform-box'
         }
         if ('tf' === str) {
@@ -214,6 +215,7 @@ function TransformService($timeout, $state, UtilitiesService, AnimationService, 
             case ('to'):
               resultDict.duration = transform_dict[key]
               var translateCoords = xyToElem(elem, transform_dict[key]);
+              console.log(translateCoords)
               for (coordName in translateCoords) {
                 resultDict[coordName] = translateCoords[coordName];
               }

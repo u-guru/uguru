@@ -11,19 +11,18 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive("bar", ["RootService", function(RootService) {
+    .directive("bar", ["RootService", "$timeout", function(RootService, $timeout) {
         return {
             templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/grid/bar.tpl',
             restrict: 'E',
             scope: {
                 overflowX:'=',
                 options: '=ngModel',
-                title: 'title',
-                key: 'key',
+                title: '=title',
+                key: '=key',
             },
             link: {
                 pre: function(scope, element, attr) {
-                    return
                 }
             }
         }

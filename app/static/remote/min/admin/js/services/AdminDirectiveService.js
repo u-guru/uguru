@@ -14,6 +14,7 @@ function AdminDirectiveService($state, $timeout, $localstorage, RootService) {
     return {
         getAllDirectives: getAllDirectives,
         getBaseComponents: getBaseComponents,
+        getCustomComponents: getCustomComponents,
         getBaseComponentHtml: getBaseComponentHtml
     }
 
@@ -34,9 +35,24 @@ function AdminDirectiveService($state, $timeout, $localstorage, RootService) {
         return baseComponentDict
     }
 
+    function getCustomComponents() {
+        var customComponentDict = {
+            projector: ['template']
+        }
+        return customComponentDict
+    }
+
     function getBaseComponentHtml(input_name) {
-        var base_url = RootService.getBaseUrl() + 'shared/templates/components/base/' + input_name.toLowerCase() + '.tpl';
-        return "<ion-view class='flex-wrap-center full-xy absolute'> <u-" + input_name.toLowerCase() + "></u-" + input_name.toLowerCase() + "> </ion-view>"
+
+        var uPrefix = Object(getBaseComponents()).keys().indexOf(input_name) > -1 && "u-" || '';
+        if (uPrefix.length) {
+            var base_url = RootService.getBaseUrl() + 'shared/templates/components/base/' + input_name.toLowerCase() + '.tpl';
+        } else {
+            var base_url = RootService.getBaseUrl() + 'shared/templates/components/containers/' + input_name.toLowerCase() + '.tpl';
+        }
+
+
+        return "<ion-view class='flex-wrap-center full-xy absolute'> <" + uPrefix + input_name.toLowerCase() + "></" + input_name.toLowerCase() + "> </ion-view>"
     }
 
     function getAllDirectives() {

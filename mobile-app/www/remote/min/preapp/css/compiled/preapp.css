@@ -1333,7 +1333,6 @@
     opacity: 1;
     stroke-dashoffset: 0; } }
 .splash-landing {
-  background: #40484B;
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
@@ -1362,7 +1361,6 @@
   height: 100%;
   overflow: hidden;
   position: relative;
-  background: #40484B;
   text-align: center; }
 
 .splash-hero-skip {
@@ -1704,6 +1702,18 @@
       top: 30px;
       right: 90px;
       margin: 0; } }
+
+.loader-scale-out {
+  transform-origin: center center;
+  position: fixed;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+  height: 200px;
+  width: 200px;
+  border: 8px solid #F6C64E;
+  background: #2B3234;
+  border-radius: 100%;
+  z-index: 99999; }
 
 .splash-up-circle {
   -ms-box-orient: horizontal;
