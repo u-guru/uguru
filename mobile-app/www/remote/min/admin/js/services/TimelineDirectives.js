@@ -3,13 +3,26 @@ angular.module('uguru.admin')
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/timeline.player.tpl',
         restrict: 'E',
-        scope: {animations:'=animations', mainElem:'=mainElem'},
+        scope: {animations:'=animations', options: '=options'},
         replace: true,
         terminal: true,
         link: function(scope, element, attr) {
-            scope.player = TimelineService.initGlobalPlayer(element, scope.animations);
-            scope.playAll = TimelineService.playAll(scope.animations);
-            scope.playAll = TimelineService.pauseAll(scope.animations);
+            scope.tPlayer = {};
+            scope.tPlayer.state = TimelineService.initGlobalPlayer(scope.options);
+            scope.tPlayer.play = TimelineService.func.playAll;
+            scope.tPlayer.playOne = TimelineService.func.play;
+            scope.tPlayer.pause = TimelineService.func.pauseAll;
+            scope.tPlayer.pauseOne = TimelineService.func.pause;
+            scope.tPlayer.reset = TimelineService.func.resetAll;
+            scope.tPlayer.resetOne = TimelineService.func.reset;
+
+            scope.$watchCollection('tPlayer', function(player) {
+                console.log(player)
+            })
+
+            if (!scope.tPlayer.state.play) {
+                scope.tPlayer.pause(scope.animations);
+            }
 
         }
     }
@@ -70,19 +83,26 @@ angular.module('uguru.admin')
         // var startListener = scope.timeline.listeners.start();
         // var endListener = scope.timeline.listeners.end();
 
-
+        scope.options = {
+            play: attr.play,
+            speed: attr.speed,
+            template: attr.template,
+            import: attr.import,
+            direction: attr.direction,
+            duration: attr.duration
+        }
         element.ready(function() {
             scope.animations = TimelineService.processAnimations(scope, element)
             scope.animations.forEach(function(item, i) {console.log(item.name, item.delay, item.duration, item.element)})
-            injectAnimationWithPlayer(scope.animations, element, cb, scope.window);
-        }, 1000)
+            injectAnimationWithPlayer(scope.animations, element, cb, scope.window, scope.options);
+        })
 
       }
     }
   }
 }])
 
-function injectAnimationWithPlayer(animations, elem, cb, _window) {
+function injectAnimationWithPlayer(animations, elem, cb, _window, options) {
         var elemCoords = elem[0].getBoundingClientRect();
         elemCoords.height = elemCoords.height/10.0;
         elemCoords.width =  elemCoords.width/10.0;
@@ -90,7 +110,7 @@ function injectAnimationWithPlayer(animations, elem, cb, _window) {
         var dy = Math.abs(elemCoords.height - _window.height);
 
         div = document.createElement('div');
-        div.innerHTML = '<timeline-player animations=animations></timeline-player>'
+        div.innerHTML = '<timeline-player animations=animations options=options></timeline-player>'
         div.style.zIndex = 100000;
 
         if (dx/_window.width < 0.1) {

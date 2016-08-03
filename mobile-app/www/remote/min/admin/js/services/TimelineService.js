@@ -8,46 +8,80 @@ angular
      TimelineService
 ]);
 function TimelineService($timeout, RootService, AnimationService, UtilitiesService) {
+  var browserPrefix = RootService.getBrowserPrefix();
+  var func = getAnimationFunctions();
   return {
     injectAnimationWithPlayer: injectAnimationWithPlayer,
     getAnimationStartListener: getAnimationStartListener,
     getAnimationEndListener: getAnimationEndListener,
-    parseInspectorArgs: parseInspectorArgs,
     getAnimatableTemplateFunc: getAnimatableTemplateFunc,
     getAnimationObjFromName: getAnimationObjFromName,
     initGlobalPlayer: initGlobalPlayer,
-    playAll: playAll,
-    pauseAll: pauseAll,
     processStyleAnimations: processStyleAnimations,
-    processAnimations: processAnimations
+    processAnimations: processAnimations,
+    changeStateAll:changeStateAll,
+    func: func
   }
 
-  function parseInspectorArgs() {
-    console.log()
-  }
 
-  function pauseAll() {
-    // console.log(element);
-  }
+  function initGlobalPlayer(attr) {
 
-  function initGlobalPlayer(element, animations, styles) {
-    console.log(element);
-
-
+    var resultDict = {
+      duration: parseDuration(attr.duration),
+      direction: attr.direction || 'forwards',
+      play: attr.play === "true" || false,
+      speed: parseFloat(attr.speed && attr.speed.replace('x', '')),
+      offset: attr.startAt && parseStartAt(attr.startAt) || 0,
+      template: attr.import,
+      import: attr.template
+    }
+    return resultDict;
     // var latestAnimation = animations.sort(function(a1, a2) {a2.timeStamp - a1.timeStamp}).reverse()[0];
+  }
 
+  function parseStartAt(str_start) {
+    if (str_start && str_start.split('ms').length === 1) {
+      return str_start + 'ms';
+    }
+    return str_start;
+  }
+
+  function parseDuration(str_duration) {
+    if (str_duration && str_duration.split('ms').length === 1) {
+      return str_duration + 'ms';
+    }
+    return str_duration;
+  }
+
+  function changeStateAll(property, animations, value) {
+    animations.forEach(function(a, i) {changeState(property, animations[i], value)});
+  }
+
+  function getAnimationFunctions() {
+    var prefix = 'animation';
+    if (browserPrefix && browserPrefix.length)  {
+      prefix = browserPrefix + 'Animation'
+    }
+    return {
+      play: function(animation) {return changeState(prefix + "PlayState", animation, "running")},
+      pause: function(animation) {return changeState(prefix + "PlayState", animation, "paused")},
+      reset: function(animation) {return changeState(prefix+"Reset", animations)},
+      playAll: function(animations) {return changeStateAll(prefix + "PlayState", animations, "running")},
+      pauseAll: function(animations) {return changeStateAll(prefix + "PlayState", animations, "paused")},
+      resetAll: function(animation) {return changeStateAll(prefix+"Reset", animations)}
+    }
   }
 
   function processAnimations(scope,element) {
     var allElements = element[0].querySelectorAll("*");
+
     var timelineDict = {transitions: [], animations:[]};
-    var browserPrefix = RootService.getBrowserPrefix();
     var classDict = {};
     var animations = [];
     var elementsWithAnimations = [];
     var count = 0;
-    for (var i = 0; i < allElements.length; i++) {
-      var indexChild = allElements[i];
+    for (var i = -1; i < allElements.length; i++) {
+      var indexChild = (i >= 0) && allElements[i] ||element[0];
       var indexChildClass = indexChild.classList;
       var animationProps = getAnimationObj(browserPrefix, indexChild);
       if (animationProps) {
@@ -75,6 +109,19 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
       }
     }
     return animations;
+  }
+
+  function changeState(property, animation, value) {
+    parsedProperty = property.toLowerCase().replace('webkit', '').replace('animation', '')
+    switch(parsedProperty) {
+      case ("playstate"):
+        applyAnimationProperty(animation, property, value);
+    }
+  }
+
+  function applyAnimationProperty(animation, property, value) {
+
+    animation.element.style[property] = value;
   }
 
   function getStyleWithCSSSelector(cssSelector) {
