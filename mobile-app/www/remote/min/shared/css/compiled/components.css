@@ -5725,6 +5725,10 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
       margin: 0;
       font-size: 16px; }
 
+.ranking-tile {
+  background: #637074;
+  border-radius: 2px; }
+
 .tile-group {
   width: 100%; }
   .tile-group ul {
