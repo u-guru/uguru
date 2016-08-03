@@ -24,13 +24,16 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
   }
 
 
-  function initGlobalPlayer(attr) {
 
+
+
+  function initGlobalPlayer(attr, env) {
+    var duration = env && env.duration;
     var resultDict = {
-      duration: parseDuration(attr.duration),
+      duration: duration || parseDuration(attr.duration),
       direction: attr.direction || 'forwards',
       play: attr.play === "true" || false,
-      speed: parseFloat(attr.speed && attr.speed.replace('x', '')),
+      speed:  parseFloat(attr.speed && attr.speed.replace('x', '')),
       offset: attr.startAt && parseStartAt(attr.startAt) || 0,
       template: attr.import,
       import: attr.template
@@ -60,7 +63,7 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
     animations.forEach(function(a, i) {changeState(property, animations[i], value)});
   }
 
-  function getAnimationFunctions() {
+  function getAnimationFunctions(state) {
     var prefix = 'animation';
     if (browserPrefix && browserPrefix.length)  {
       prefix = browserPrefix + 'Animation'
@@ -69,9 +72,9 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
       play: function(animation) {return changeState(prefix + "PlayState", animation, "running")},
       pause: function(animation) {return changeState(prefix + "PlayState", animation, "paused")},
       reset: function(animation) {return changeState(prefix+"Reset", animations)},
-      playAll: function(animations) {return changeStateAll(prefix + "PlayState", animations, "running")},
-      pauseAll: function(animations) {return changeStateAll(prefix + "PlayState", animations, "paused")},
-      resetAll: function(animation) {return changeStateAll(prefix+"Reset", animations)}
+      playAll: function(state) {return function(animations) {state.play = true; return changeStateAll(prefix + "PlayState", animations, "running")}},
+      pauseAll: function(state) {return function(animations) {state.play = false; return changeStateAll(prefix + "PlayState", animations, "paused")}},
+      resetAll: function(animations) {return changeStateAll(prefix+"Reset", animations, "paused")}
     }
   }
 
@@ -85,10 +88,9 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
     var count = 0;
     var maxDict = {duration: 0, delay:0, animation: null};;
     for (var i = -1; i < allElements.length; i++) {
-      var indexChild = (i >= 0) && allElements[i] ||element[0];
+      var indexChild = ((i >= 0) && allElements[i]) ||element[0];
       var indexChildClass = indexChild.classList;
       var animationProps = getAnimationObj(browserPrefix, indexChild);
-
       if (animationProps) {
         elementsWithAnimations.push(indexChild);
         var firstKey = Object.keys(animationProps)[0];
@@ -96,12 +98,11 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
         for (var j = 0; j < animationSplit.length; j++) {
           var animDict = [];
           for (key in animationProps) {
-            animDict[key] = animationProps[key].split(',')[j];
+            animDict[key] = UtilitiesService.replaceAll(animationProps[key], ', ', ',').split(',')[j];
             var animObj = initAnimationObj(animDict, indexChild, browserPrefix)
             if (animObj.duration && animObj.name && animObj.delay) {
               var durationParsed = parseFloat(parseDuration(animObj.duration));
               var delayParsed = parseFloat(parseDuration(animObj.delay));
-              console.log(delayParsed, durationParsed);
               if ((delayParsed + durationParsed) > (maxDict.delay + maxDict.duration)) {
                 maxDict.delay = delayParsed;
                 maxDict.duration = durationParsed;
@@ -146,15 +147,45 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
   }
 
   function changeState(property, animation, value) {
-    parsedProperty = property.toLowerCase().replace('webkit', '').replace('animation', '')
+    parsedProperty = (property +"").toLowerCase().replace('webkit', '').replace('animation', '')
     switch(parsedProperty) {
       case ("playstate"):
         applyAnimationProperty(animation, property, value);
+        break;
+      case ("reset"):
+        var durationProp = (property+ "").replace("Reset", "Duration");
+        var delayProp = (property+ "").replace("Reset", "Delay");
+        var fillModeProp = (property+ "").replace("Reset", "FillMode");
+        var playStateProp = (property+ "").replace("Reset", "PlayState");
+        var endAnimationProp = (property+ "").replace("Reset", "End");
+
+        applyAnimationProperty(animation, delayProp, '-' + animation.duration);
+        applyAnimationProperty(animation, durationProp, '0.01s')
+
+        applyAnimationProperty(animation, fillModeProp, 'backwards')
+        applyAnimationProperty(animation, playStateProp, 'running');
+        var offsetWidth = animation.element.style['offsetWidth'];
+        animation.element.style['offsetWidth'] = null;
+        animation.element.style['offsetWidth'] = offsetWidth;
+
+        applyAnimationProperty(animation, playStateProp, 'paused');
+        animation.element.addEventListener(endAnimationProp, function(e) {
+          console.log(e.animationName, e.target.className || e.target);
+        })
+
+        for (key in animation.css) {
+          console.log(key);
+          applyAnimationProperty(animation, key, animation.css[key]);
+        }
+
+        $timeout(function(){console.log(animation.element)}, 1000);
+
+        // applyAnimationProperty(animation, "webkitAnimationDuration", animation.duration);
+        // applyAnimationProperty(animation, "webkitAnimationDelay",  animation.delay);
     }
   }
 
   function applyAnimationProperty(animation, property, value) {
-
     animation.element.style[property] = value;
   }
 
@@ -246,26 +277,52 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
   }
 
   function getAnimationObj(browser, element) {
-    var animationProperties = ['animationName', 'animationDuration', 'animationTimingFunction', 'animationFillMode',  'animationIterationCount', 'animationDelay'];
+    var animationProperties = ['animation', 'animationName', 'animationDuration', 'animationTimingFunction', 'animationFillMode',  'animationIterationCount', 'animationDelay'];
     var defaultPropertyArr = ["none", "0s", "ease", "none", "1", "0s"];
     var animResultDict = {};
     if (browser && browser.length) {
-      animationProperties.forEach(function(prop, i) {animationProperties[i] = browser + prop[0].toUpperCase() + prop.substring(1)});
+      animationProperties.forEach(function(prop, i) {animationProperties.push(browser + prop[0].toUpperCase() + prop.substring(1))});
     }
     var computedStyle = window.getComputedStyle(element);
     var sum = 0;
     for (var i = 0; i < animationProperties.length; i++) {
       var iProperty = animationProperties[i];
-      if (computedStyle[iProperty] !== defaultPropertyArr[i]) {
-        animResultDict[iProperty] = computedStyle[iProperty];
+      if (computedStyle[iProperty] && computedStyle[iProperty].length) {
+        if ([browserPrefix + 'Animation', 'animation'].indexOf(iProperty) > -1 && computedStyle[iProperty] !== 'none 0s ease 0s 1 normal none running') {
+          animResultDict = processComputedPropertyDefaultFormat(animResultDict, computedStyle[iProperty], browser)
+        } else {
+          animResultDict[iProperty] = computedStyle[iProperty];
+        }
       }
     }
 
     return Object.keys(animResultDict).length && animResultDict;
   }
 
-  function playAll(animations) {
+  function processComputedPropertyDefaultFormat(_dict, anim_str, browser) {
+    var properties =     ['animationName', 'animationDuration', 'animationTimingFunction', 'animationDelay',  'animationIterationCount', 'animationDirection', 'animationFillMode', 'animationPlayState']
+    var animStrSplit = UtilitiesService.replaceAll(anim_str, ', ', ',').split(',');
+    if (browser && browser.length) {
+      properties.forEach(function(prop, i) {properties[i] = browser + prop[0].toUpperCase() + prop.substring(1)});
+    }
+    for (var i = 0; i < properties.length; i++) {
+      var resultStr = '';
+      for (var j = 0; j < animStrSplit.length; j++) {
+        if (j !== ( animStrSplit.length - 1)) {
+          resultStr +=  animStrSplit[j].split(' ')[i] + ', '
+        } else {
+          resultStr +=  animStrSplit[j].split(' ')[i]
+        }
+      }
+      if (resultStr.length) {
+        _dict[properties[i]] = resultStr;
+      }
+    }
+    return _dict
+  }
 
+  function playAll(animations) {
+    return;
   }
 
   function getAnimationObjFromName(name) {
@@ -365,5 +422,6 @@ function getAnimationEndListener(scope, browser, element) {
        })
     }
 }
+
 }
 

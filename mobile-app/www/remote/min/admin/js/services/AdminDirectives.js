@@ -13,6 +13,29 @@ angular.module('uguru.admin')
         }
     }
 ])
+.directive("types", ['$timeout', 'UtilitiesService', '$compile', function($timeout, UtilitiesService, $compile) {
+        return {
+            restrict: 'A',
+            replace: false,
+            link: function(scope, element, attr) {
+                scope.types = UtilitiesService.replaceAll(attr.types, ', ', ',').split(',');
+                scope.activateType = function(type) {
+                    scope.activeType = type;
+                }
+                if (attr.defaultType) {
+                    scope.activeType = scope.types[scope.types.indexOf(attr.defaultType)]
+                } else {
+                    scope.activeType = scope.types[0];
+                }
+                var div = document.createElement('div');
+                div.setAttribute('ng-include', '"' +  'admin/templates/types.tpl'  +'"');
+                element[0].parentNode.appendChild(div);
+                $compile(div)(scope);
+
+            }
+        }
+    }
+])
 .directive("animationPlayer", ['$timeout', 'RootService', function($timeout, RootService) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/animation.player.tpl',

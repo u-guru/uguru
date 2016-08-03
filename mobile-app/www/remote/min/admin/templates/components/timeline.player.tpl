@@ -8,9 +8,10 @@
 				<li>
 					<a ng-click='tPlayer.pause(animations)' class="flex-center svg-white svg-stroke-8 svg-24 opacity-50" ng-include="root.base_url + 'shared/templates/components/svg/main/pause.html'"> </a>
 				</li>
-				<li>
+				<!-- 'paused' for now-->
+				<!-- <li ng-if='false'>
 					<a ng-click='tPlayer.reset(animations)' class="flex-center svg-white svg-stroke-8 svg-24 opacity-50" ng-include="root.base_url + 'shared/templates/components/svg/main/sync.html'"> </a>
-				</li>
+				</li> -->
 				<li class="opacity-10p">
 					{{anim.duration}}
 				</li>
@@ -31,7 +32,13 @@
 				</li>
 			</ul>
 			<div class="state-timeline-container full-x height-24 p15xy flex-center">
-				<!-- <div class="state-timeline-container full-x height-02 round bg-white-25p relative">
+
+
+					<timeline-player points="" state="tPlayer.state"></timeline-player>
+					<!--
+					<div class="state-timeline-dot expected bg-moxie width-10 height-10 round absolute" style="margin-top: -4px; left: 20%">
+						<div class="state-timeline-info absolute z-index-999 radius-2 bg-moxie" style="padding:2px; bottom:15px; min-width:400px">
+				<div class="state-timeline-container full-x height-02 round bg-white-25p relative">
 					<div init-with="p:[transform:translateY(-50%), transition:transform {{50 * $index}}ms ease-in]" on-init="p:[transform:translateY(0)]" class="state-timeline-dot expected bg-moxie height-10 round absolute" style="width: {{animation.env.width}}%; left: {{animation.env.xLeft}}%" ng-repeat='animation in animations'>
 						<div class="state-timeline-info absolute z-index-99 radius-2 bg-moxie" style="padding: 2px; bottom:15px">
 							<div class="bg-white radius-2">
@@ -46,7 +53,24 @@
 							</div>
 						</div>
 					</div>
-				</div> -->
+					<div class="state-timeline-dot actual bg-crimson width-10 height-10 round absolute" style="margin-top: -4px; left: 78%">
+						<div class="state-timeline-info absolute z-index-99 radius-2 bg-crimson" style="padding:2px; bottom:15px">
+							<div class="bg-white radius-2">
+								<h1 class="bg-crimson p05xy txt-16 semibold flex-space-between-start">
+									<div>
+										<span class="block">#element</span>
+										<span class="block txt-14 opacity-50">2400</span>
+									</div>
+									<a class="state-timeline-info-expand flex-center svg-white svg-stroke-8 svg-24 opacity-50" ng-include="root.base_url + 'shared/templates/components/svg/main/up.html'"> </a>
+								</h1>
+								<div class="state-timeline-preview fix-abs" style="min-height: 100px"></div>
+								<div class="txt-slate txt-14 p05x flex" style="white-space:nowrap">
+									<span>op:0 &rarr; op:1&nbsp;(400ms)</span>
+								</div>
+							</div>
+						</div>
+					</div> -->
+				</div>
 			</div>
 			<!-- <div class="full-x height-24 p05xy">
 				<input ng-model="anim.delay" size="small" type="range"></input>
