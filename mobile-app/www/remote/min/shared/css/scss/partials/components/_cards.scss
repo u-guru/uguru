@@ -4629,9 +4629,105 @@ a.category-tile {
 	}
 }
 
+.ranking-container {
+	@include flex;
+	@include flex-center;
+	padding: 7.5px;
+	width: 100%;
+	height: 380px;
+	max-width: 1030px;
+	li {
+		width: calc(100% / 3);
+		padding: 7.5px;
+	}
+}
+
 .ranking-tile {
+	position: relative;
 	background: lighten($slate, 15%);
 	border-radius: 2px;
+	padding: 15px;
+	h2 {
+		font-size: 28px;
+		font-weight: 600;
+		text-align: center;
+	}
+	h3 {
+		font-size: 20px;
+		font-weight: 600;
+	}
+	&.large {
+		height: 100%;
+		svg {
+			display: block;
+			margin: 0 auto;
+			width: 100%;
+		}
+	}
+	&.small {
+		height: calc(50% - 7.5px);
+		&:last-child:not(:first-child) {
+			margin-top: 15px;
+		}
+		h3 {
+			text-align: center;
+		}
+		.ranking-tile-graph {
+			display: block;
+			position: absolute;
+			bottom: 15px;
+			left: 0;
+			width: 100%;
+		}
+		svg {
+			*[stroke] {
+				stroke: white;
+			}
+			*[fill*="#"] {
+				fill: white;
+			}
+		}
+		&.tile-shamrock {
+			svg {
+				*[stroke] {
+					stroke: $shamrock;
+				}
+				*[fill*="#"] {
+					fill: $shamrock;
+				}
+			}
+		}
+		&.tile-lake {
+			svg {
+				*[stroke] {
+					stroke: $lake;
+				}
+				*[fill*="#"] {
+					fill: $lake;
+				}
+			}
+		}
+		&.tile-auburn {
+			svg {
+				*[stroke] {
+					stroke: $auburn;
+				}
+				*[fill*="#"] {
+					fill: $auburn;
+				}
+			}
+		}
+		&.tile-cerise {
+			svg {
+				*[stroke] {
+					stroke: $cerise;
+				}
+				*[fill*="#"] {
+					fill: $cerise;
+				}
+			}
+		}
+	}
 }
 
 // tile group [needs height from parent]
