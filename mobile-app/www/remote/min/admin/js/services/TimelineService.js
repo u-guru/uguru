@@ -49,6 +49,9 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
   function parseDuration(str_duration) {
     if (str_duration && str_duration.split('ms').length === 1) {
       return str_duration + 'ms';
+    } else if (str_duration && str_duration.split('s').length > 1) {
+      var strValue = parseFloat(str_duration.split('s')[0]) + '000ms';
+      return strValue;
     }
     return str_duration;
   }
@@ -80,10 +83,12 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
     var animations = [];
     var elementsWithAnimations = [];
     var count = 0;
+    var maxDict = {duration: 0, delay:0, animation: null};;
     for (var i = -1; i < allElements.length; i++) {
       var indexChild = (i >= 0) && allElements[i] ||element[0];
       var indexChildClass = indexChild.classList;
       var animationProps = getAnimationObj(browserPrefix, indexChild);
+
       if (animationProps) {
         elementsWithAnimations.push(indexChild);
         var firstKey = Object.keys(animationProps)[0];
@@ -94,6 +99,14 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
             animDict[key] = animationProps[key].split(',')[j];
             var animObj = initAnimationObj(animDict, indexChild, browserPrefix)
             if (animObj.duration && animObj.name && animObj.delay) {
+              var durationParsed = parseFloat(parseDuration(animObj.duration));
+              var delayParsed = parseFloat(parseDuration(animObj.delay));
+              console.log(delayParsed, durationParsed);
+              if ((delayParsed + durationParsed) > (maxDict.delay + maxDict.duration)) {
+                maxDict.delay = delayParsed;
+                maxDict.duration = durationParsed;
+                maxDict.animation = animObj;
+              }
               if (!(animObj.name in scope.animLookupDict) || scope.animLookupDict[animObj.name].indexOf(indexChild) === -1) {
                   if (!(animObj.name in scope.animLookupDict)) {
                     scope.animLookupDict[animObj.name] = [indexChild];
@@ -104,11 +117,32 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
               }
             }
           }
-
         }
       }
     }
+    var totalLengthMS = durationToMS(maxDict.delay + maxDict.duration + 's');
+    animations.forEach(
+      function(anim, index) {
+        var durationMS = durationToMS(anim.duration);
+        var delayMS = durationToMS(anim.delay);
+
+        anim.env = {
+          duration: totalLengthMS,
+          xLeft: (delayMS/totalLengthMS * 100 ).toFixed(2),
+          width: ((durationMS/totalLengthMS) * 100).toFixed(2),
+        }
+      }
+        // anim.env.durationRatio = (parseDuration(anim.duration)/anim.env.duration) * 1000
+    )
     return animations;
+  }
+
+  function durationToMS(str_duration) {
+    if (str_duration.indexOf('ms') > -1) {
+      return parseFloat(str_duration.replace('ms', ''));
+    } else if (str_duration.indexOf('s') > -1) {
+      return parseFloat(str_duration.replace('ms', '')) * 1000;
+    }
   }
 
   function changeState(property, animation, value) {

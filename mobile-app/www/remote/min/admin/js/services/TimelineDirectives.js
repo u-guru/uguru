@@ -93,7 +93,6 @@ angular.module('uguru.admin')
         }
         element.ready(function() {
             scope.animations = TimelineService.processAnimations(scope, element)
-            scope.animations.forEach(function(item, i) {console.log(item.name, item.delay, item.duration, item.element)})
             injectAnimationWithPlayer(scope.animations, element, cb, scope.window, scope.options);
         })
 
