@@ -1,5 +1,5 @@
 angular.module('uguru.admin')
-.directive("timelinePlayer", ['$timeout', 'RootService', 'TimelineService', function($timeout, RootService, TimelineService) {
+.directive("timelineTool", ['$timeout', 'RootService', 'TimelineService', function($timeout, RootService, TimelineService) {
     return {
         templateUrl: RootService.getBaseUrl() + 'admin/templates/components/timeline.player.tpl',
         restrict: 'E',
@@ -8,10 +8,10 @@ angular.module('uguru.admin')
         terminal: true,
         link: function(scope, element, attr) {
             scope.tPlayer = {};
-            scope.tPlayer.state = TimelineService.initGlobalPlayer(scope.options);
-            scope.tPlayer.play = TimelineService.func.playAll;
+            scope.tPlayer.state = TimelineService.initGlobalPlayer(scope.options, scope.animations[0].env);
+            scope.tPlayer.play = TimelineService.func.playAll(scope.tPlayer.state);
             scope.tPlayer.playOne = TimelineService.func.play;
-            scope.tPlayer.pause = TimelineService.func.pauseAll;
+            scope.tPlayer.pause = TimelineService.func.pauseAll(scope.tPlayer.state);
             scope.tPlayer.pauseOne = TimelineService.func.pause;
             scope.tPlayer.reset = TimelineService.func.resetAll;
             scope.tPlayer.resetOne = TimelineService.func.reset;
@@ -42,31 +42,12 @@ angular.module('uguru.admin')
     },
     link: {
       pre: function(scope, element, attr) {
-
+        attr.$set('timeline-inspector', '');
         scope.timeline = {listeners: {}};
-        // scope.timelineAnimations = TimelineService.processStyleAnimations(scope._import);
-
-
         scope.window = scope.$parent.root.window;
-
-        // scope.getAnimationFromName = AnimationService.getAnimationObjFromAnimationName;
         scope.animations = [];
         scope.animLookupDict = {};
-        //if attr.template
 
-
-
-
-        // for (key in anim.obj.cssRules) console.log(anim.obj.cssRules[key]);
-
-        // anim.duration = attr.duration && parseFloat(attr.duration) || 3000;
-        // anim.direction = attr.direction;
-        // anim.func = attr.func.replace('cb', 'cubic-bezier');
-        // anim.delay = attr.delay|| 0;
-        // anim.css = anim.obj.cssText;
-        // anim.playState = (((attr.play === 'true') && "running") || "paused");
-        // anim.iter = attr.iter;
-        // anim.fillMode = attr.fillMode;
         var browserPrefix = RootService.getBrowserPrefix();
         scope.timeline.listeners = {
             start: TimelineService.getAnimationStartListener(scope, browserPrefix, element[0]),
@@ -92,13 +73,63 @@ angular.module('uguru.admin')
             duration: attr.duration
         }
         element.ready(function() {
-            scope.animations = TimelineService.processAnimations(scope, element)
+            scope.animations = TimelineService.processAnimations(scope, element);
             injectAnimationWithPlayer(scope.animations, element, cb, scope.window, scope.options);
         })
 
       }
     }
   }
+}])
+.directive("timelinePlayer", ['$timeout', 'RootService', 'TimelineService', function($timeout, RootService, TimelineService) {
+    return {
+        templateUrl:'admin/templates/components/timeline.playbar.tpl',
+        restrict: 'E',
+        scope: {points:'=points', state: '=state'},
+        replace: true,
+        terminal: true,
+        link: {
+            pre: function(scope, element, attr) {
+                var bgElem = element.children()[1];
+                var bgElemCoords = bgElem.getBoundingClientRect();
+                var progressElem = element.children()[0];
+                var initialTransitionSet;
+                element.ready(function() {
+                    console.log(scope.state, element[0]);
+                })
+
+                scope.$watch('state.speed', function() {
+
+                })
+
+                scope.$watch('state.play', function(play_status) {
+                    if (play_status) {
+                        if (!initialTransitionSet) {
+                            angular.element(progressElem).css('transition', 'width ' + scope.state.duration + 'ms linear');
+                            initialTransitionSet = true;
+                        }
+                        document.querySelector('svg rect').setAttribute('width', '100%')
+                        progressElem.setAttribute('width', '100%');
+                    } else {
+                        var progressElemRect = progressElem.getBoundingClientRect()
+                        var percentComplete = ((progressElemRect.width/bgElemCoords.width)).toFixed(4);
+
+                        progressElem.setAttribute('width', (percentComplete * 100) + '%');
+                        var durationRemaining = (scope.state.duration * (1-percentComplete));
+                        console.log(durationRemaining);
+                        angular.element(progressElem).css('transition', 'width ' + durationRemaining + 'ms linear' );
+
+
+                        // console.log(progress.style.transition);
+                        // angular.element(progressElem).css('transition', 'width ' + scope.state.duration + ' ease');
+                        // document.querySelector('svg rect').setAttribute('width', '100%')
+                        // progressElem.setAttribute('width', '100%');
+                    }
+                    console.log('play clicked', scope.state, play_status)
+                })
+            }
+        }
+    }
 }])
 
 function injectAnimationWithPlayer(animations, elem, cb, _window, options) {
@@ -109,7 +140,7 @@ function injectAnimationWithPlayer(animations, elem, cb, _window, options) {
         var dy = Math.abs(elemCoords.height - _window.height);
 
         div = document.createElement('div');
-        div.innerHTML = '<timeline-player animations=animations options=options></timeline-player>'
+        div.innerHTML = '<timeline-tool animations=animations options=options></timeline-tool>'
         div.style.zIndex = 100000;
 
         if (dx/_window.width < 0.1) {
@@ -122,6 +153,9 @@ function injectAnimationWithPlayer(animations, elem, cb, _window, options) {
         }
         cb && cb(div);
     }
+
+
+
 
 
 function getAnimationStartListener(scope, browser, element) {
