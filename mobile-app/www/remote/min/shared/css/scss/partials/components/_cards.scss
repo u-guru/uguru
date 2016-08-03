@@ -4629,6 +4629,11 @@ a.category-tile {
 	}
 }
 
+.ranking-tile {
+	background: lighten($slate, 15%);
+	border-radius: 2px;
+}
+
 // tile group [needs height from parent]
 .tile-group {
 	width: 100%;
