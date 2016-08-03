@@ -5725,9 +5725,105 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
       margin: 0;
       font-size: 16px; }
 
+.ranking-container {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 7.5px;
+  width: 100%;
+  height: 380px;
+  max-width: 1030px; }
+  .ranking-container li {
+    width: calc(100% / 3);
+    padding: 7.5px; }
+
 .ranking-tile {
+  position: relative;
   background: #637074;
   border-radius: 2px; }
+  .ranking-tile h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1; }
+  .ranking-tile h2 {
+    margin: 0 !important;
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center; }
+  .ranking-tile h3 {
+    margin: 0 !important;
+    font-size: 20px;
+    font-weight: 600; }
+  .ranking-tile.large {
+    height: 100%;
+    padding: 15px; }
+    .ranking-tile.large svg {
+      display: block;
+      margin: 0 auto;
+      width: 100%; }
+  .ranking-tile.small {
+    height: calc(50% - 7.5px); }
+    .ranking-tile.small:last-child:not(:first-child) {
+      margin-top: 15px; }
+    .ranking-tile.small .ranking-tile-graph {
+      display: block;
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      width: 100%; }
+    .ranking-tile.small svg *[stroke] {
+      stroke: white; }
+    .ranking-tile.small svg *[fill*="#"] {
+      fill: white; }
+    .ranking-tile.small.tile-shamrock svg *[stroke] {
+      stroke: #69B3A5; }
+    .ranking-tile.small.tile-shamrock svg *[fill*="#"] {
+      fill: #69B3A5; }
+    .ranking-tile.small.tile-lake svg *[stroke] {
+      stroke: #50A5DD; }
+    .ranking-tile.small.tile-lake svg *[fill*="#"] {
+      fill: #50A5DD; }
+    .ranking-tile.small.tile-auburn svg *[stroke] {
+      stroke: #F04F54; }
+    .ranking-tile.small.tile-auburn svg *[fill*="#"] {
+      fill: #F04F54; }
+    .ranking-tile.small.tile-cerise svg *[stroke] {
+      stroke: #e6389b; }
+    .ranking-tile.small.tile-cerise svg *[fill*="#"] {
+      fill: #e6389b; }
+  .ranking-tile.no-icon {
+    padding: 15px; }
+    .ranking-tile.no-icon h3 {
+      text-align: center; }
+  .ranking-tile.with-icon header {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    padding: 10px; }
+    .ranking-tile.with-icon header .ranking-tile-icon svg {
+      width: 36px;
+      height: 36px; }
+      .ranking-tile.with-icon header .ranking-tile-icon svg * {
+        stroke-width: 7px; }
+    .ranking-tile.with-icon header .ranking-tile-icon + div {
+      padding: 0 10px;
+      width: calc(100% - 36px); }
 
 .tile-group {
   width: 100%; }
