@@ -2204,27 +2204,6 @@ fieldset.no-border * {
         .pf-card-group > li .pf-card .pf-card-main .pf-rating {
           margin: 5px auto; }
 
-.pf-card-container, .school-card-container {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  padding: 15px; }
-
 .credit-card-flip {
   backface-visibility: hidden;
   position: relative;
@@ -4695,7 +4674,6 @@ a.course-card:active .course-card-hover {
   background-position: center center;
   background-size: cover; }
   .category-tile .category-tile-price {
-    border-radius: 1000px;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -4713,12 +4691,30 @@ a.course-card:active .course-card-hover {
     justify-content: center;
     position: absolute;
     bottom: -15px;
-    font-size: 16px;
-    font-weight: 700;
+    left: 0;
     height: 36px;
-    padding: 0 15px;
-    left: 50%;
-    transform: translate3d(-50%, 0, 0); }
+    width: 100%; }
+    .category-tile .category-tile-price div {
+      border-radius: 1000px;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      height: 36px;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0 15px; }
   .category-tile .category-tile-inside {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -4822,9 +4818,17 @@ a.course-card:active .course-card-hover {
       filter: alpha(opacity=100);
       opacity: 1;
       background: white; }
+  .category-tile.price-moxie .category-tile-price div {
+    background: #43cb9d !important; }
+  .category-tile.price-moxie .category-tile-inside {
+    border-bottom: 5px solid #43cb9d !important; }
+  .category-tile.price-crimson .category-tile-price div {
+    background: #d3242c !important; }
+  .category-tile.price-crimson .category-tile-inside {
+    border-bottom: 5px solid #d3242c !important; }
   .category-tile.bg-delivery {
     background-color: #F04F54; }
-    .category-tile.bg-delivery .category-tile-price {
+    .category-tile.bg-delivery .category-tile-price div {
       background: #F04F54; }
     .category-tile.bg-delivery .category-tile-count {
       color: #aa6064; }
@@ -4840,7 +4844,7 @@ a.course-card:active .course-card-hover {
         background: #F04F54; }
   .category-tile.bg-freelancing {
     background-color: #E5753C; }
-    .category-tile.bg-freelancing .category-tile-price {
+    .category-tile.bg-freelancing .category-tile-price div {
       background: #E5753C; }
     .category-tile.bg-freelancing .category-tile-count {
       color: #a47358; }
@@ -4856,7 +4860,7 @@ a.course-card:active .course-card-hover {
         background: #E5753C; }
   .category-tile.bg-baking {
     background-color: #F6C64E; }
-    .category-tile.bg-baking .category-tile-price {
+    .category-tile.bg-baking .category-tile-price div {
       background: #F6C64E; }
     .category-tile.bg-baking .category-tile-count {
       color: #ad9b61; }
@@ -4872,7 +4876,7 @@ a.course-card:active .course-card-hover {
         background: #F6C64E; }
   .category-tile.bg-photography {
     background-color: #81B566; }
-    .category-tile.bg-photography .category-tile-price {
+    .category-tile.bg-photography .category-tile-price div {
       background: #81B566; }
     .category-tile.bg-photography .category-tile-count {
       color: #72936d; }
@@ -4888,7 +4892,7 @@ a.course-card:active .course-card-hover {
         background: #81B566; }
   .category-tile.bg-tech {
     background-color: #55A4B7; }
-    .category-tile.bg-tech .category-tile-price {
+    .category-tile.bg-tech .category-tile-price div {
       background: #55A4B7; }
     .category-tile.bg-tech .category-tile-count {
       color: #5c8a96; }
@@ -4904,7 +4908,7 @@ a.course-card:active .course-card-hover {
         background: #55A4B7; }
   .category-tile.bg-household {
     background-color: #7872e3; }
-    .category-tile.bg-household .category-tile-price {
+    .category-tile.bg-household .category-tile-price div {
       background: #7872e3; }
     .category-tile.bg-household .category-tile-count {
       color: #6e71ac; }
@@ -4920,7 +4924,7 @@ a.course-card:active .course-card-hover {
         background: #7872e3; }
   .category-tile.bg-athletic {
     background-color: #9A5BC5; }
-    .category-tile.bg-athletic .category-tile-price {
+    .category-tile.bg-athletic .category-tile-price div {
       background: #9A5BC5; }
     .category-tile.bg-athletic .category-tile-count {
       color: #7f669d; }
@@ -4936,7 +4940,7 @@ a.course-card:active .course-card-hover {
         background: #9A5BC5; }
   .category-tile.bg-academic {
     background-color: #e6389b; }
-    .category-tile.bg-academic .category-tile-price {
+    .category-tile.bg-academic .category-tile-price div {
       background: #e6389b; }
     .category-tile.bg-academic .category-tile-count {
       color: #a55488; }
@@ -6415,7 +6419,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
       .tile-group.tile-row-2x3 ul li:nth-child(3):after {
         display: none; }
 
-/* ---------- ALBUM TILES */
 .album-tile {
   display: block;
   width: 100%;
@@ -15213,6 +15216,16 @@ input[type=range] {
   100% {
     transform: translateY(0); } }
 /* ---------- SIDEBAR LISTS */
+.sidebar-link-bg {
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 1000px; }
+
 .sidebar-list {
   width: 100%; }
 
@@ -15300,6 +15313,9 @@ input[type=range] {
         width: 5px;
         height: 100%;
         transform-origin: center top; }
+
+.list-icon-white path {
+  stroke: #ffffff; }
 
 .message {
   -ms-box-orient: horizontal;

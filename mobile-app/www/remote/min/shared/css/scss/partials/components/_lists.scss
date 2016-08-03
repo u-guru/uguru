@@ -1,6 +1,17 @@
 @import '../mixin';
 
 /* ---------- SIDEBAR LISTS */
+.sidebar-link-bg {
+	position: absolute;
+	top: 50%;
+	margin-top: -5px;
+	left: -5px;
+	width: 10px;
+	height: 10px;
+	overflow: hidden;
+	border-radius: 1000px;
+}
+
 .sidebar-list {
 	width: 100%;
 }
