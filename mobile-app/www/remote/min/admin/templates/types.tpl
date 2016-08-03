@@ -1,7 +1,7 @@
-<div class='flex-wrap-center fixed bottom-0 left-0 full-x p15-grid'>
-    <ul class='full-x'>
-        <li class='bg-slate p10xy' ng-repeat='type in types' ng-click='activateType(type)' ng-class="{'bg-cerise': type === activeType}">
-            {{type}}
+<div class='fixed bottom-0 left-0 p15xy'>
+    <ul class='flex bg-slate radius-2 overflow-hidden'>
+        <li ng-repeat='type in types'>
+            <div class="p15xy txt-20 semibold" ng-click='activateType(type)' ng-class="{'bg-moxie': type === activeType}">{{type}}</div>
         </li>
     </ul>
 </div>
