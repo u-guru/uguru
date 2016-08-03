@@ -282,6 +282,19 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: function(scope, element, attr, controller) {
           var listenerArgs = DirectiveService.detectExternalStates(attr);
+          for (key in listenerArgs) {
+            var type = listenerArgs[key].type
+            var _attr = listenerArgs[key].attr;
+            DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+          }
+    }
+  }
+}])
+.directive('u', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr, controller) {
+          var listenerArgs = DirectiveService.detectExternalStates(attr);
           if ('switch' in attr) {
             console.log('initializing', attr.switch)
           }
