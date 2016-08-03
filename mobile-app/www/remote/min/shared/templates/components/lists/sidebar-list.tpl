@@ -14,41 +14,53 @@
 				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]"
 				on-mouse-enter="p:[background:rgba(255#255#255#0.75), t:all 150ms ease-out] | send:[email-mouse-enter:public]"
 				on-mouse-leave="p:[background:rgba(64#72#75#0.75), t:all 150ms ease-in] | send:[email-mouse-leave:public]"
-				on-click="p:[background:rgba(64#72#75#0), t:all 150ms]">
+				on-click="p:[background:rgba(64#72#75#0), t:all 50ms] | send:[email-click:public]">
 				<h3 class="txt-24 semibold"
+					init-default
 					when-email-mouse-enter="p:[color:#50a5dd, t:all 150ms ease-out]"
-					when-email-mouse-leave="p:[color:#ffffff, t:all 150ms ease-in]">Validate Email</h3>
-				<div class="svg-white svg-48 svg-stroke-6" ng-include="root.base_url + 'shared/templates/components/svg/main/email.html'"
-					when-email-mouse-enter="p:[color:#50a5dd, t:all 150ms ease-out]"
-					when-email-mouse-leave="p:[color:#ffffff, t:all 150ms ease-in]"></div>
+					when-email-mouse-leave="p:[color:#ffffff, t:all 150ms ease-in]"
+					when-email-click="p:[color:rgba(64#72#75#0.75), t:all 50ms]">Validate Email</h3>
+				<div class="list-icon-white svg-48 svg-stroke-6" ng-include="root.base_url + 'shared/templates/components/svg/main/email.html'"
+					init-default
+					when-email-mouse-enter="p:[stroke:#50a5dd, t:all 150ms ease-out]"
+					when-email-mouse-leave="p:[stroke:#ffffff, t:all 150ms ease-in]"
+					when-email-click="p:[color:rgba(64#72#75#0.75), t:all 50ms]"></div>
 			</li>
 			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-50p"
 				init-with="p-op"
 				on-init="t-enter"
 				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-300]"
-				on-mouse-enter="p:[background:rgba(255#255#255#0.5), t:all 150ms ease-out] | send:[email-mouse-enter:public]"
-				on-mouse-leave="p:[background:rgba(64#72#75#0.5), t:all 150ms ease-in] | send:[email-mouse-leave:public]"
-				on-click="p:[background:rgba(64#72#75#0), t:all 150ms]">
+				on-mouse-enter="p:[background:rgba(255#255#255#0.5), t:all 150ms ease-out] | send:[email-mouse-enter-2:public]"
+				on-mouse-leave="p:[background:rgba(64#72#75#0.5), t:all 50ms] | send:[email-mouse-leave-2:public]"
+				on-click="p:[background:rgba(64#72#75#0), t:all 150ms] | send:[email-click-2:public]">
 				<h3 class="txt-24 semibold"
-					when-email-mouse-enter="p:[color:#50a5dd, t:all 150ms ease-out]"
-					when-email-mouse-leave="p:[color:#ffffff, t:all 150ms ease-in]">Validate Email</h3>
-				<div class="svg-white svg-48 svg-stroke-6" ng-include="root.base_url + 'shared/templates/components/svg/main/email.html'"
-					when-email-mouse-enter="p:[color:#50a5dd, t:all 150ms ease-out]"
-					when-email-mouse-leave="p:[color:#ffffff, t:all 150ms ease-in]"></div>
+					init-default
+					when-email-mouse-enter-2="p:[color:#50a5dd, t:all 150ms ease-out]"
+					when-email-mouse-leave-2="p:[color:#ffffff, t:all 150ms ease-in]"
+					when-email-click-2="p:[color:rgba(64#72#75#0.5), t:all 50ms]">Validate Email</h3>
+				<div class="list-icon-white svg-48 svg-stroke-6" ng-include="root.base_url + 'shared/templates/components/svg/main/email.html'"
+					init-default
+					when-email-mouse-enter-2="p:[stroke:#50a5dd, t:all 150ms ease-out]"
+					when-email-mouse-leave-2="p:[stroke:#ffffff, t:all 150ms ease-in]"
+					when-email-click-2="p:[color:rgba(64#72#75#0.5), t:all 50ms]"></div>
 			</li>
 			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-25p"
 				init-with="p-op"
 				on-init="t-enter"
 				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-450]"
-				on-mouse-enter="p:[background:rgba(255#255#255#0.25), t:all 150ms ease-out] | send:[email-mouse-enter:public]"
-				on-mouse-leave="p:[background:rgba(64#72#75#0.25), t:all 150ms ease-in] | send:[email-mouse-leave:public]"
-				on-click="p:[background:rgba(64#72#75#0), t:all 150ms]">
+				on-mouse-enter="p:[background:rgba(255#255#255#0.25), t:all 150ms ease-out] | send:[email-mouse-enter-3:public]"
+				on-mouse-leave="p:[background:rgba(64#72#75#0.25), t:all 150ms ease-in] | send:[email-mouse-leave-3:public]"
+				on-click="p:[background:rgba(64#72#75#0), t:all 150ms] | send:[email-click-3:public]">
 				<h3 class="txt-24 semibold"
-					when-email-mouse-enter="p:[color:#50a5dd, t:all 150ms ease-out]"
-					when-email-mouse-leave="p:[color:#ffffff, t:all 150ms ease-in]">Validate Email</h3>
-				<div class="svg-white svg-48 svg-stroke-6" ng-include="root.base_url + 'shared/templates/components/svg/main/email.html'"
-					when-email-mouse-enter="p:[color:#50a5dd, t:all 150ms ease-out]"
-					when-email-mouse-leave="p:[color:#ffffff, t:all 150ms ease-in]"></div>
+					init-default
+					when-email-mouse-enter-3="p:[color:#50a5dd, t:all 150ms ease-out]"
+					when-email-mouse-leave-3="p:[color:#ffffff, t:all 150ms ease-in]"
+					when-email-click-3="p:[color:rgba(64#72#75#0.25), t:all 50ms]">Validate Email</h3>
+				<div class="list-icon-white svg-48 svg-stroke-6" ng-include="root.base_url + 'shared/templates/components/svg/main/email.html'"
+					init-default
+					when-email-mouse-enter-3="p:[stroke:#50a5dd, t:all 150ms ease-out]"
+					when-email-mouse-leave-3="p:[stroke:#ffffff, t:all 150ms ease-in]"
+					when-email-click-3="p:[color:rgba(64#72#75#0.25), t:all 150ms ease-in]"></div>
 			</li>
 		</ul>
 	</aside>
@@ -87,8 +99,8 @@
 				</div>
 				<span>
 					<span class="chip bg-charcoal uppercase"
-					on-mouse-enter="p:[background:#ffffff, color:#2b3234, t:all 150ms ease-in]"
-					on-mouse-leave="p:[background:#2b3234, color:#ffffff, t:all 150ms]">$34.00</span>
+						on-mouse-enter="p:[background:#ffffff, color:#2b3234, t:all 150ms ease-in]"
+						on-mouse-leave="p:[background:#2b3234, color:#ffffff, t:all 150ms]">$34.00</span>
 				</span>
 				<hr/>
 			</li>
@@ -102,8 +114,8 @@
 				</div>
 				<span>
 					<span class="chip bg-charcoal uppercase"
-					on-mouse-enter="p:[background:#ffffff, color:#2b3234, t:all 150ms ease-in]"
-					on-mouse-leave="p:[background:#2b3234, color:#ffffff, t:all 150ms]">Approved</span>
+						on-mouse-enter="p:[background:#ffffff, color:#2b3234, t:all 150ms ease-in]"
+						on-mouse-leave="p:[background:#2b3234, color:#ffffff, t:all 150ms]">Approved</span>
 				</span>
 				<hr/>
 			</li>
@@ -126,6 +138,7 @@
 				<a class="flex-center-vertical p15xy">
 					<span class="user-icon-36 margin-none m15right"></span>
 					<h3 class="txt-24 semibold">Brian</h3>
+					<div class="sidebar-link-bg bg-white-25p"></div>
 				</a>
 			</li>
 			<li

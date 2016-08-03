@@ -15011,6 +15011,15 @@ input[type=range] {
   100% {
     transform: translateY(0); } }
 /* ---------- SIDEBAR LISTS */
+.sidebar-link-bg div {
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+  left: -5px;
+  width: 10px;
+  overflow: hidden;
+  border-radius: 1000px; }
+
 .sidebar-list {
   width: 100%; }
 
@@ -15098,6 +15107,9 @@ input[type=range] {
         width: 5px;
         height: 100%;
         transform-origin: center top; }
+
+.list-icon-white path {
+  stroke: #ffffff; }
 
 .message {
   -ms-box-orient: horizontal;
