@@ -4506,6 +4506,103 @@ a.category-tile {
 	}
 }
 
+// timeline icon
+.timeline-icon {
+	position: relative;
+	div {
+		position: relative;
+		z-index: 2;
+		@include flex;
+		@include flex-center;
+		width: 50px;
+		height: 50px;
+		@include round;
+	}
+	h2 {
+		@include flex;
+		@include flex-center-vertical;
+		z-index: 0;
+		position: absolute;
+		top: 0;
+		height: 50px;
+		font-size: 18px;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+	&.timeline-icon-left {
+		h2 {
+			right: 25px;
+			border-radius: 1000px 0 0 1000px;
+			padding: 0 25px 0 15px;
+		}
+	}
+	&.timeline-icon-right {
+		h2 {
+			left: 25px;
+			border-radius: 0 1000px 1000px 0;
+			padding: 0 15px 0 25px;
+		}
+	}
+	svg {
+		width: 36px;
+		height: 36px;
+		* {
+			stroke: white;
+			stroke-width: 6px;
+		}
+	}
+	&.timeline-milestone {
+		div, h2 {
+			background: mix(white, $shamrock, 15%);
+		}
+	}
+	&.timeline-blog {
+		div, h2 {
+			background: mix(white, $gold, 10%);
+		}
+	}
+	&.timeline-tutorial {
+		div, h2 {
+			background: mix(white, $azure, 15%);
+		}
+	}
+	&.timeline-partnership {
+		div, h2 {
+			background: mix(white, $auburn, 10%);
+		}
+	}
+	&.timeline-parent {
+		div, h2 {
+			background: mix(white, $eggplant, 15%);
+		}
+	}
+	&.timeline-college-main {
+		div, h2 {
+			background: mix(white, $cerise, 20%);
+		}
+	}
+	&.timeline-college-guru {
+		div, h2 {
+			background: mix(white, $moola, 15%);
+		}
+	}
+	&.timeline-college-student {
+		div, h2 {
+			background: mix(white, $lake, 15%);
+		}
+	}
+	&.timeline-professional {
+		div, h2 {
+			background: mix(white, $cobalt, 15%);
+		}
+	}
+	&.timeline-high-school {
+		div, h2 {
+			background: mix(white, $orange, 15%);
+		}
+	}
+}
+
 // attachment tile
 .attachment-tile {
 	@include flex;
