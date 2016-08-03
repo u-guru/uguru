@@ -148,6 +148,7 @@
 				<a class="flex-center-vertical p15xy">
 					<span class="user-icon-36 margin-none m15right"></span>
 					<h3 class="txt-24 semibold">Brian</h3>
+					<div class="sidebar-link-bg bg-white-25p"></div>
 				</a>
 			</li>
 			<li
@@ -157,6 +158,7 @@
 				<a class="flex-center-vertical p15xy">
 					<span class="user-icon-36 margin-none m15right"></span>
 					<h3 class="txt-24 semibold">Brian</h3>
+					<div class="sidebar-link-bg bg-white-25p"></div>
 				</a>
 			</li>
 		</ul>
