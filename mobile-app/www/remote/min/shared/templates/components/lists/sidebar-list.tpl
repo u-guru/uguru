@@ -1,18 +1,34 @@
 <div class="full-xy flex">
-	<aside class="sidebar-list bg-lake">
+	<aside class="sidebar-list bg-lake"
+		init-with="p-op"
+		on-init="t-enter"
+		on-enter="a:[slideInLeft:set:(dur:250ms#func:ease-in):in]">
 		<header class="sidebar-list-header bg-white-90p">
 			<h2 class="txt-charcoal">Ways to Super Student&nbsp;Stardom</h2>
 		</header>
 		<ul>
-			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-75p">
+			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-75p"
+				init-with="p-op"
+				on-init="t-enter"
+				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]"
+				on-mouse-enter="p:[background:rgba(255#255#255#0.75), t:all 150ms ease-out] | send:[email-mouse-enter:public]"
+				on-mouse-leave="p:[background:rgba(64#72#75#0.75), t:all 150ms ease-in]"
+				on-click="p:[background:rgba(64#72#75#0), t:all 150ms]">
+				<h3 class="txt-24 semibold"
+					when-email-mouse-enter="p:[color:rgba(80#165#221#1), t:all 150ms ease-out]">Validate Email</h3>
+				<div class="svg-white svg-48 svg-stroke-6" ng-include="root.base_url + 'shared/templates/components/svg/main/email.html'"></div>
+			</li>
+			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-50p"
+				init-with="p-op"
+				on-init="t-enter"
+				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-300]">
 				<h3 class="txt-24 semibold">Validate Email</h3>
 				<div class="svg-white svg-48 svg-stroke-6" ng-include="root.base_url + 'shared/templates/components/svg/main/email.html'"></div>
 			</li>
-			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-50p">
-				<h3 class="txt-24 semibold">Validate Email</h3>
-				<div class="svg-white svg-48 svg-stroke-6" ng-include="root.base_url + 'shared/templates/components/svg/main/email.html'"></div>
-			</li>
-			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-25p">
+			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-25p"
+				init-with="p-op"
+				on-init="t-enter"
+				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-450]">
 				<h3 class="txt-24 semibold">Validate Email</h3>
 				<div class="svg-white svg-48 svg-stroke-6" ng-include="root.base_url + 'shared/templates/components/svg/main/email.html'"></div>
 			</li>
