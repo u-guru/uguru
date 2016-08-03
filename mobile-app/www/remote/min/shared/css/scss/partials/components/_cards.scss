@@ -1,6 +1,7 @@
 @import '../mixin';
 
 /* ---------- CARDS */
+// containers
 [class*="tile-border"] {
 	li {
 		position: relative;
@@ -180,6 +181,7 @@
 	@include flex-center;
 	padding: 15px;
 }
+
 // credit card
 .credit-card-flip {
 	backface-visibility: hidden;
@@ -4183,6 +4185,349 @@ a.category-tile {
 		}
 		h1 {
 			color: $cerise;
+		}
+	}
+}
+
+// timeline tile
+.timeline-tile {
+	width: 100%;
+	max-width: 400px;
+	border-radius: 2px;
+	color: $slate;
+	header {
+		height: auto;
+		min-height: auto;
+		a {
+			display: block;
+			position: relative;
+			padding: 10px 15px;
+			font-size: 20px;
+			font-weight: 600;
+			line-height: 1.2;
+			text-transform: none;
+			border-radius: 2px 2px 0 0;
+			&:after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 10px;
+				width: 0;
+				height: 0;
+				border: 12px solid transparent;
+			}
+		}
+	}
+	figure {
+		background: white;
+		img {
+			display: block;
+			width: 100%;
+			&.post-svg {
+				max-height: 150px;
+			}
+		}
+	}
+	section {
+		background: white;
+		height: auto;
+		padding: 10px 15px;
+		font-size: 16px;
+		font-weight: 600;
+		border-radius: 0 0 2px 2px;
+	}
+	&.timeline-left {
+		header {
+			a {
+				&:after {
+					left: -24px;
+				}
+			}
+		}
+	}
+	&.timeline-right {
+		header {
+			a {
+				&:after {
+					right: -24px;
+				}
+			}
+		}
+	}
+	&.timeline-milestone {
+		header {
+			a {
+				background: mix(white, $shamrock, 15%);
+			}
+		}
+		&.timeline-left {
+			header {
+				a {
+					&:after {
+						border-right-color: mix(white, $shamrock, 15%);
+					}
+				}
+			}
+		}
+		&.timeline-right {
+			header {
+				a {
+					&:after {
+						border-left-color: mix(white, $shamrock, 15%);
+					}
+				}
+			}
+		}
+	}
+	&.timeline-blog {
+		header {
+			a {
+				background: mix(white, $gold, 10%);
+			}
+		}
+		&.timeline-left {
+			header {
+				a {
+					&:after {
+						border-right-color: mix(white, $gold, 10%);
+					}
+				}
+			}
+		}
+		&.timeline-right {
+			header {
+				a {
+					&:after {
+						border-left-color: mix(white, $gold, 10%);
+					}
+				}
+			}
+		}
+	}
+	&.timeline-tutorial {
+		header {
+			a {
+				background: mix(white, $azure, 15%);
+			}
+		}
+		&.timeline-left {
+			header {
+				a {
+					&:after {
+						border-right-color: mix(white, $azure, 15%);
+					}
+				}
+			}
+		}
+		&.timeline-right {
+			header {
+				a {
+					&:after {
+						border-left-color: mix(white, $azure, 15%);
+					}
+				}
+			}
+		}
+	}
+	&.timeline-partnership {
+		header {
+			a {
+				background: mix(white, $auburn, 10%);
+			}
+		}
+		&.timeline-left {
+			header {
+				a {
+					&:after {
+						border-right-color: mix(white, $auburn, 10%);
+					}
+				}
+			}
+		}
+		&.timeline-right {
+			header {
+				a {
+					&:after {
+						border-left-color: mix(white, $auburn, 10%);
+					}
+				}
+			}
+		}
+	}
+	&.timeline-parent {
+		header {
+			a {
+				background: mix(white, $eggplant, 15%);
+			}
+		}
+		&.timeline-left {
+			header {
+				a {
+					&:after {
+						border-right-color: mix(white, $eggplant, 15%);
+					}
+				}
+			}
+		}
+		&.timeline-right {
+			header {
+				a {
+					&:after {
+						border-left-color: mix(white, $eggplant, 15%);
+					}
+				}
+			}
+		}
+	}
+	&.timeline-college-main {
+		header {
+			a {
+				background: mix(white, $cerise, 20%);
+			}
+		}
+		&.timeline-left {
+			header {
+				a {
+					&:after {
+						border-right-color: mix(white, $cerise, 20%);
+					}
+				}
+			}
+		}
+		&.timeline-right {
+			header {
+				a {
+					&:after {
+						border-left-color: mix(white, $cerise, 20%);
+					}
+				}
+			}
+		}
+	}
+	&.timeline-college-guru {
+		header {
+			a {
+				background: mix(white, $moola, 15%);
+			}
+		}
+		&.timeline-left {
+			header {
+				a {
+					&:after {
+						border-right-color: mix(white, $moola, 15%);
+					}
+				}
+			}
+		}
+		&.timeline-right {
+			header {
+				a {
+					&:after {
+						border-left-color: mix(white, $moola, 15%);
+					}
+				}
+			}
+		}
+	}
+	&.timeline-college-student {
+		header {
+			a {
+				background: mix(white, $lake, 15%);
+			}
+		}
+		&.timeline-left {
+			header {
+				a {
+					&:after {
+						border-right-color: mix(white, $lake, 15%);
+					}
+				}
+			}
+		}
+		&.timeline-right {
+			header {
+				a {
+					&:after {
+						border-left-color: mix(white, $lake, 15%);
+					}
+				}
+			}
+		}
+	}
+	&.timeline-professional {
+		header {
+			a {
+				background: mix(white, $cobalt, 15%);
+			}
+		}
+		&.timeline-left {
+			header {
+				a {
+					&:after {
+						border-right-color: mix(white, $cobalt, 15%);
+					}
+				}
+			}
+		}
+		&.timeline-right {
+			header {
+				a {
+					&:after {
+						border-left-color: mix(white, $cobalt, 15%);
+					}
+				}
+			}
+		}
+	}
+	&.timeline-high-school {
+		header {
+			a {
+				background: mix(white, $orange, 15%);
+			}
+		}
+		&.timeline-left {
+			header {
+				a {
+					&:after {
+						border-right-color: mix(white, $orange, 15%);
+					}
+				}
+			}
+		}
+		&.timeline-right {
+			header {
+				a {
+					&:after {
+						border-left-color: mix(white, $orange, 15%);
+					}
+				}
+			}
+		}
+	}
+}
+
+// attachment tile
+.attachment-tile {
+	@include flex;
+	border-radius: 2px;
+	padding: 7.5px;
+	.attachment-tile-icon {
+		width: 64px;
+		height: 64px;
+		* {
+			stroke-width: 3px;
+		}
+	}
+	.attachment-tile-desc {
+		width: calc(100% - 64px);
+		padding: 7.5px;
+		h3 {
+			font-size: 18px;
+			font-weight: 600;
+		}
+		p {
+			margin: 0;
+			font-size: 16px;
 		}
 	}
 }

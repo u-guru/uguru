@@ -220,10 +220,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/demos',
     templateUrl: 'admin/templates/demos.html',
   })
-  .state('root.guru-head', {
-    url:'/dev/guru-head',
-    templateUrl: 'shared/templates/components/guru-head/main.html',
-  })
   .state('root.cal', {
     url:'/cal',
     templateUrl: 'shared/templates/calendar.html'

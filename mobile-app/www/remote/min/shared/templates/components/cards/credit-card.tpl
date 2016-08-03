@@ -1,5 +1,5 @@
-<div class="absolute full-xy top-0 left-0 flex-wrap-center">
-    <ul>
+<div class="full-xy flex-center">
+    <ul class="p15-grid">
         <li>
             <div class="credit-card-flip" tabindex>
                 <div class="credit-card">
