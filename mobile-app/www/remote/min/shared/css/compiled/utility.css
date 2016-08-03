@@ -779,6 +779,9 @@ button, input, textarea {
   height: calc(100% - 50px);
   overflow: auto; }
 
+.height-02 {
+  height: 2px !important; }
+
 .height-05 {
   height: 5px !important; }
 
