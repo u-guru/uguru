@@ -26,9 +26,35 @@
 				</header>
 				<div class="ranking-tile-graph" ng-include="root.base_url + 'shared/templates/components/svg/temp/ranking-graph.html'"></div>
 			</div>
-			<div class="ranking-tile small no-icon">
+			<div class="ranking-tile small with-icon tile-shamrock">
 				<header>
-					<h3>Big 10 Academic Ratings</h3>
+					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
+					<div>
+						<h1>100</h1>
+						<h3>Ranked Gurus</h3>
+					</div>
+				</header>
+				<div class="ranking-tile-graph" ng-include="root.base_url + 'shared/templates/components/svg/temp/ranking-graph.html'"></div>
+			</div>
+		</li>
+		<li>
+			<div class="ranking-tile small with-icon tile-lake">
+				<header>
+					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
+					<div>
+						<h1>100</h1>
+						<h3>Ranked Gurus</h3>
+					</div>
+				</header>
+				<div class="ranking-tile-graph" ng-include="root.base_url + 'shared/templates/components/svg/temp/ranking-graph.html'"></div>
+			</div>
+			<div class="ranking-tile small with-icon tile-auburn">
+				<header>
+					<div class="ranking-tile-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/user.html'"></div>
+					<div>
+						<h1>100</h1>
+						<h3>Ranked Gurus</h3>
+					</div>
 				</header>
 				<div class="ranking-tile-graph" ng-include="root.base_url + 'shared/templates/components/svg/temp/ranking-graph.html'"></div>
 			</div>
