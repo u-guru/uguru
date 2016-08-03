@@ -16,9 +16,13 @@ angular.module('uguru.admin')
             scope.tPlayer.reset = TimelineService.func.resetAll;
             scope.tPlayer.resetOne = TimelineService.func.reset;
 
+            scope.tPlayer.state.duration = scope.animations[0].env.duration;
+
             scope.$watchCollection('tPlayer', function(player) {
                 console.log(player)
             })
+
+            console.log(scope.animations[0]);
 
             if (!scope.tPlayer.state.play) {
                 scope.tPlayer.pause(scope.animations);
