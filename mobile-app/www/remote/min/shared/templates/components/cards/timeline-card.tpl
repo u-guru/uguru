@@ -1,17 +1,27 @@
 <div class="full-xy flex-center p15xy">
-	<article class="timeline-tile timeline-tutorial timeline-left">
+	<article class="timeline-card timeline-tutorial timeline-left"
+		init-with="p-op"
+		on-init="s:[timeline-card-init:public]"
+		when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
 		<header>
-			<a>Making Animated GIFs Tutorial</a>
+			<a>
+				<span class="block" init-with="p-op"
+					when-timeline-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-500]">Making Animated GIFs Tutorial</span>
+			</a>
 		</header>
 		<figure>
-			<img class="post-banner" src='https://d13yacurqjgara.cloudfront.net/users/802553/screenshots/2874479/meter_maid.gif' alt=''/>
+			<img class="post-banner" src='https://d13yacurqjgara.cloudfront.net/users/802553/screenshots/2874479/meter_maid.gif' alt=''
+				init-with="p:[op:0, t:opacity 500ms ease-out]"
+				when-timeline-card-init="p:[op:1:delay-1000]"/>
 		</figure>
-		<section>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		<section class="overflow-hidden">
+			<p init-with="p-op"
+				when-timeline-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 			<div class="attach-list student">
 				<ul>
 					<li>
-						<a>
+						<a init-with="p-op"
+							when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-1600]">
 							<span>
 								<svg viewBox="0 0 100 100">
 									<g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -28,7 +38,8 @@
 						</a>
 					</li>
 					<li>
-						<a>
+						<a init-with="p-op"
+							when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-1700]">
 							<span>
 								<svg viewBox="0 0 100 100">
 									<g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -49,7 +60,8 @@
 						</a>
 					</li>
 					<li>
-						<a>
+						<a init-with="p-op"
+							when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-1800]">
 							<span>
 								<svg viewBox="0 0 100 100">
 									<g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -66,34 +78,27 @@
 			</div>
 			<div class="tag-list">
 				<ul>
-					<li><a class="chip bg bg-azure">tag</a></li>
-					<li><a class="chip bg bg-azure">tag</a></li>
-					<li><a class="chip bg bg-azure">tag</a></li>
-					<li><a class="chip bg bg-azure">tag</a></li>
+					<li><a class="chip bg bg-azure" init-with="p-op"
+						when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-1900]">tag</a></li>
+					<li><a class="chip bg bg-azure" init-with="p-op"
+						when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-2000]">tag</a></li>
+					<li><a class="chip bg bg-azure" init-with="p-op"
+						when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-2100]">tag</a></li>
+					<li><a class="chip bg bg-azure" init-with="p-op"
+						when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-2200]">tag</a></li>
 				</ul>
 			</div>
 			<footer>
 				<ul>
-					<li><span class="user-icon-36"></span></li>
-					<li>
+					<li init-with="p-op"
+						when-timeline-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-2500]"><span class="user-icon-36"></span></li>
+					<li init-with="p-op"
+						when-timeline-card-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-2600]">
 						<a>Gabrielle Wee&nbsp;<span>Design Guru</span></a>
 						<span>December 12, 2015</span>
 					</li>
 				</ul>
 			</footer>
 		</section>
-
-		<!-- <aside class="post-tags">
-			<a class="chip bg-slate txt-white" ng-repeat='tag in event.tags'>{{tag}}</a>
-		</aside>
-		<footer>
-			<ul>
-				<li><span style="background-image: url({{event.announcer.profile_url}});"></span></li>
-				<li>
-					<a>{{event.announcer.name}}</a>
-					<span>{{event.formatted_time}}</span>
-				</li>
-			</ul>
-		</footer> -->
 	</article>
 </div>

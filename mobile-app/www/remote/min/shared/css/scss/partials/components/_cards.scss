@@ -766,6 +766,15 @@
 			border-width: 3px;
 		}
 	}
+	&.pf-thumb-128 {
+		width: 128px;
+		height: 128px;
+		.user-icon {
+			width: 96px;
+			height: 96px;
+			border-width: 3px;
+		}
+	}
 	&.pf-charcoal {
 		.top {
 			background: $charcoal;
@@ -4262,8 +4271,8 @@ a.category-tile {
 	}
 }
 
-// timeline tile
-.timeline-tile {
+// timeline card
+.timeline-card {
 	width: 100%;
 	max-width: 400px;
 	border-radius: 2px;
@@ -4328,6 +4337,12 @@ a.category-tile {
 						width: calc(100% - 51px);
 						> span, > a {
 							display: block;
+							span {
+								opacity: 0.5;
+							}
+						}
+						span {
+							font-weight: 400;
 						}
 					}
 				}

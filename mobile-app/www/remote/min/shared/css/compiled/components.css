@@ -2849,6 +2849,13 @@ fieldset.no-border * {
       width: 72px;
       height: 72px;
       border-width: 3px; }
+  [class*="pf-thumb"].pf-thumb-128 {
+    width: 128px;
+    height: 128px; }
+    [class*="pf-thumb"].pf-thumb-128 .user-icon {
+      width: 96px;
+      height: 96px;
+      border-width: 3px; }
   [class*="pf-thumb"].pf-charcoal .top {
     background: #2B3234; }
   [class*="pf-thumb"].pf-slate .top {
@@ -5647,15 +5654,15 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
   .calendar-tile.bg-cerise h1, .calendar-tile.bg-academic h1 {
     color: #e6389b; }
 
-.timeline-tile {
+.timeline-card {
   width: 100%;
   max-width: 400px;
   border-radius: 2px;
   color: #40484B; }
-  .timeline-tile header {
+  .timeline-card header {
     height: auto;
     min-height: auto; }
-    .timeline-tile header a {
+    .timeline-card header a {
       display: block;
       position: relative;
       padding: 10px 15px;
@@ -5664,7 +5671,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
       line-height: 1.2;
       text-transform: none;
       border-radius: 2px 2px 0 0; }
-      .timeline-tile header a:after {
+      .timeline-card header a:after {
         content: "";
         display: block;
         position: absolute;
@@ -5672,25 +5679,25 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
         width: 0;
         height: 0;
         border: 12px solid transparent; }
-  .timeline-tile figure {
+  .timeline-card figure {
     background: white; }
-    .timeline-tile figure img {
+    .timeline-card figure img {
       display: block;
       width: 100%; }
-      .timeline-tile figure img.post-svg {
+      .timeline-card figure img.post-svg {
         max-height: 150px; }
-  .timeline-tile section {
+  .timeline-card section {
     background: white;
     height: auto;
     font-size: 16px;
     font-weight: 600;
     border-radius: 0 0 2px 2px; }
-    .timeline-tile section p {
+    .timeline-card section p {
       padding: 15px;
       margin: 0; }
-    .timeline-tile section > *:not(:first-child) {
+    .timeline-card section > *:not(:first-child) {
       margin-top: -15px; }
-    .timeline-tile section footer ul {
+    .timeline-card section footer ul {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -5700,139 +5707,143 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
       display: flex;
       padding: 7.5px;
       width: 100%; }
-      .timeline-tile section footer ul li {
+      .timeline-card section footer ul li {
         padding: 7.5px; }
-        .timeline-tile section footer ul li:first-child {
+        .timeline-card section footer ul li:first-child {
           width: 51px; }
-        .timeline-tile section footer ul li:last-child {
+        .timeline-card section footer ul li:last-child {
           width: calc(100% - 51px); }
-          .timeline-tile section footer ul li:last-child > span, .timeline-tile section footer ul li:last-child > a {
+          .timeline-card section footer ul li:last-child > span, .timeline-card section footer ul li:last-child > a {
             display: block; }
-    .timeline-tile section footer .user-icon-36 {
+            .timeline-card section footer ul li:last-child > span span, .timeline-card section footer ul li:last-child > a span {
+              opacity: 0.5; }
+          .timeline-card section footer ul li:last-child span {
+            font-weight: 400; }
+    .timeline-card section footer .user-icon-36 {
       margin: 0; }
-  .timeline-tile.timeline-left header a:after {
+  .timeline-card.timeline-left header a:after {
     left: -24px; }
-  .timeline-tile.timeline-right header a:after {
+  .timeline-card.timeline-right header a:after {
     right: -24px; }
-  .timeline-tile.timeline-milestone header a {
+  .timeline-card.timeline-milestone header a {
     background: #80beb3; }
-  .timeline-tile.timeline-milestone section a {
+  .timeline-card.timeline-milestone section a {
     color: #80beb3; }
-    .timeline-tile.timeline-milestone section a span {
+    .timeline-card.timeline-milestone section a span {
       color: #40484B; }
-  .timeline-tile.timeline-milestone section footer .user-icon-36 {
+  .timeline-card.timeline-milestone section footer .user-icon-36 {
     border-color: #80beb3; }
-  .timeline-tile.timeline-milestone.timeline-left header a:after {
+  .timeline-card.timeline-milestone.timeline-left header a:after {
     border-right-color: #80beb3; }
-  .timeline-tile.timeline-milestone.timeline-right header a:after {
+  .timeline-card.timeline-milestone.timeline-right header a:after {
     border-left-color: #80beb3; }
-  .timeline-tile.timeline-blog header a {
+  .timeline-card.timeline-blog header a {
     background: #f7cc60; }
-  .timeline-tile.timeline-blog section a {
+  .timeline-card.timeline-blog section a {
     color: #f7cc60; }
-    .timeline-tile.timeline-blog section a span {
+    .timeline-card.timeline-blog section a span {
       color: #40484B; }
-  .timeline-tile.timeline-blog section footer .user-icon-36 {
+  .timeline-card.timeline-blog section footer .user-icon-36 {
     border-color: #f7cc60; }
-  .timeline-tile.timeline-blog.timeline-left header a:after {
+  .timeline-card.timeline-blog.timeline-left header a:after {
     border-right-color: #f7cc60; }
-  .timeline-tile.timeline-blog.timeline-right header a:after {
+  .timeline-card.timeline-blog.timeline-right header a:after {
     border-left-color: #f7cc60; }
-  .timeline-tile.timeline-tutorial header a {
+  .timeline-card.timeline-tutorial header a {
     background: #6fb2c2; }
-  .timeline-tile.timeline-tutorial section a {
+  .timeline-card.timeline-tutorial section a {
     color: #6fb2c2; }
-    .timeline-tile.timeline-tutorial section a span {
+    .timeline-card.timeline-tutorial section a span {
       color: #40484B; }
-  .timeline-tile.timeline-tutorial section footer .user-icon-36 {
+  .timeline-card.timeline-tutorial section footer .user-icon-36 {
     border-color: #6fb2c2; }
-  .timeline-tile.timeline-tutorial.timeline-left header a:after {
+  .timeline-card.timeline-tutorial.timeline-left header a:after {
     border-right-color: #6fb2c2; }
-  .timeline-tile.timeline-tutorial.timeline-right header a:after {
+  .timeline-card.timeline-tutorial.timeline-right header a:after {
     border-left-color: #6fb2c2; }
-  .timeline-tile.timeline-partnership header a {
+  .timeline-card.timeline-partnership header a {
     background: #f26165; }
-  .timeline-tile.timeline-partnership section a {
+  .timeline-card.timeline-partnership section a {
     color: #f26165; }
-    .timeline-tile.timeline-partnership section a span {
+    .timeline-card.timeline-partnership section a span {
       color: #40484B; }
-  .timeline-tile.timeline-partnership section footer .user-icon-36 {
+  .timeline-card.timeline-partnership section footer .user-icon-36 {
     border-color: #f26165; }
-  .timeline-tile.timeline-partnership.timeline-left header a:after {
+  .timeline-card.timeline-partnership.timeline-left header a:after {
     border-right-color: #f26165; }
-  .timeline-tile.timeline-partnership.timeline-right header a:after {
+  .timeline-card.timeline-partnership.timeline-right header a:after {
     border-left-color: #f26165; }
-  .timeline-tile.timeline-parent header a {
+  .timeline-card.timeline-parent header a {
     background: #a974ce; }
-  .timeline-tile.timeline-parent section a {
+  .timeline-card.timeline-parent section a {
     color: #a974ce; }
-    .timeline-tile.timeline-parent section a span {
+    .timeline-card.timeline-parent section a span {
       color: #40484B; }
-  .timeline-tile.timeline-parent section footer .user-icon-36 {
+  .timeline-card.timeline-parent section footer .user-icon-36 {
     border-color: #a974ce; }
-  .timeline-tile.timeline-parent.timeline-left header a:after {
+  .timeline-card.timeline-parent.timeline-left header a:after {
     border-right-color: #a974ce; }
-  .timeline-tile.timeline-parent.timeline-right header a:after {
+  .timeline-card.timeline-parent.timeline-right header a:after {
     border-left-color: #a974ce; }
-  .timeline-tile.timeline-college-main header a {
+  .timeline-card.timeline-college-main header a {
     background: #eb60af; }
-  .timeline-tile.timeline-college-main section a {
+  .timeline-card.timeline-college-main section a {
     color: #eb60af; }
-    .timeline-tile.timeline-college-main section a span {
+    .timeline-card.timeline-college-main section a span {
       color: #40484B; }
-  .timeline-tile.timeline-college-main section footer .user-icon-36 {
+  .timeline-card.timeline-college-main section footer .user-icon-36 {
     border-color: #eb60af; }
-  .timeline-tile.timeline-college-main.timeline-left header a:after {
+  .timeline-card.timeline-college-main.timeline-left header a:after {
     border-right-color: #eb60af; }
-  .timeline-tile.timeline-college-main.timeline-right header a:after {
+  .timeline-card.timeline-college-main.timeline-right header a:after {
     border-left-color: #eb60af; }
-  .timeline-tile.timeline-college-guru header a {
+  .timeline-card.timeline-college-guru header a {
     background: #94c07d; }
-  .timeline-tile.timeline-college-guru section a {
+  .timeline-card.timeline-college-guru section a {
     color: #94c07d; }
-    .timeline-tile.timeline-college-guru section a span {
+    .timeline-card.timeline-college-guru section a span {
       color: #40484B; }
-  .timeline-tile.timeline-college-guru section footer .user-icon-36 {
+  .timeline-card.timeline-college-guru section footer .user-icon-36 {
     border-color: #94c07d; }
-  .timeline-tile.timeline-college-guru.timeline-left header a:after {
+  .timeline-card.timeline-college-guru.timeline-left header a:after {
     border-right-color: #94c07d; }
-  .timeline-tile.timeline-college-guru.timeline-right header a:after {
+  .timeline-card.timeline-college-guru.timeline-right header a:after {
     border-left-color: #94c07d; }
-  .timeline-tile.timeline-college-student header a {
+  .timeline-card.timeline-college-student header a {
     background: #6ab3e2; }
-  .timeline-tile.timeline-college-student section a {
+  .timeline-card.timeline-college-student section a {
     color: #6ab3e2; }
-    .timeline-tile.timeline-college-student section a span {
+    .timeline-card.timeline-college-student section a span {
       color: #40484B; }
-  .timeline-tile.timeline-college-student section footer .user-icon-36 {
+  .timeline-card.timeline-college-student section footer .user-icon-36 {
     border-color: #6ab3e2; }
-  .timeline-tile.timeline-college-student.timeline-left header a:after {
+  .timeline-card.timeline-college-student.timeline-left header a:after {
     border-right-color: #6ab3e2; }
-  .timeline-tile.timeline-college-student.timeline-right header a:after {
+  .timeline-card.timeline-college-student.timeline-right header a:after {
     border-left-color: #6ab3e2; }
-  .timeline-tile.timeline-professional header a {
+  .timeline-card.timeline-professional header a {
     background: #8c87e7; }
-  .timeline-tile.timeline-professional section a {
+  .timeline-card.timeline-professional section a {
     color: #8c87e7; }
-    .timeline-tile.timeline-professional section a span {
+    .timeline-card.timeline-professional section a span {
       color: #40484B; }
-  .timeline-tile.timeline-professional section footer .user-icon-36 {
+  .timeline-card.timeline-professional section footer .user-icon-36 {
     border-color: #8c87e7; }
-  .timeline-tile.timeline-professional.timeline-left header a:after {
+  .timeline-card.timeline-professional.timeline-left header a:after {
     border-right-color: #8c87e7; }
-  .timeline-tile.timeline-professional.timeline-right header a:after {
+  .timeline-card.timeline-professional.timeline-right header a:after {
     border-left-color: #8c87e7; }
-  .timeline-tile.timeline-high-school header a {
+  .timeline-card.timeline-high-school header a {
     background: #e98a59; }
-  .timeline-tile.timeline-high-school section a {
+  .timeline-card.timeline-high-school section a {
     color: #e98a59; }
-    .timeline-tile.timeline-high-school section a span {
+    .timeline-card.timeline-high-school section a span {
       color: #40484B; }
-  .timeline-tile.timeline-high-school section footer .user-icon-36 {
+  .timeline-card.timeline-high-school section footer .user-icon-36 {
     border-color: #e98a59; }
-  .timeline-tile.timeline-high-school.timeline-left header a:after {
+  .timeline-card.timeline-high-school.timeline-left header a:after {
     border-right-color: #e98a59; }
-  .timeline-tile.timeline-high-school.timeline-right header a:after {
+  .timeline-card.timeline-high-school.timeline-right header a:after {
     border-left-color: #e98a59; }
 
 .timeline-icon {
@@ -15479,7 +15490,6 @@ input[type=range] {
     transform: translateY(-10px); }
   100% {
     transform: translateY(0); } }
-<<<<<<< HEAD
 /* ---------- ATTACHMENT LISTS */
 .attach-list ul {
   -ms-box-orient: horizontal;
@@ -15829,8 +15839,6 @@ input[type=range] {
           .attachment-list ul li .attach-upload-add a:active, .attachment-list ul li .attach-upload-add a.active {
             background: #cfe6e2; }
 
-=======
->>>>>>> 8bdfe8667946961906e263a48b4872530eb461d9
 /* ---------- NUMBERED LISTS */
 .numbered-list {
   padding: 7.5px;
