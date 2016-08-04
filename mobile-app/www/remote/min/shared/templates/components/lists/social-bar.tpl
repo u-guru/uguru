@@ -6,7 +6,9 @@
 			<li>
 				<a class="bg-fb"
 					init-with="p-op"
-					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in]">
+					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in]"
+					on-mouse-enter="tr:[ro-z:180deg, duration:250, tf:cb(.4,-0.2,.6,1.2)]"
+					on-mouse-leave="tr:[ro-z:0, duration:500]">
 					<svg viewBox="0 0 100 100"
 						init-with="p:[op:0.25, t:opacity 250ms ease-out]"
 						when-social-bar-init="p:[op:1:delay-600]">
