@@ -7,8 +7,7 @@
 				<a class="bg-fb"
 					init-with="p-op"
 					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in]"
-					on-mouse-enter="tr:[ro-z:180deg, duration:250, tf:cb(.4,-0.2,.6,1.2)]"
-					on-mouse-leave="tr:[ro-z:0, duration:500]">
+					on-mouse-enter="p:[t:transform 100ms ease-in, tr:rotate(-10deg), tr:rotate(0):delay-1100] | a:[wiggle-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 					<svg viewBox="0 0 100 100"
 						init-with="p:[op:0.25, t:opacity 250ms ease-out]"
 						when-social-bar-init="p:[op:1:delay-600]">
@@ -19,7 +18,8 @@
 			<li>
 				<a class="bg-tw"
 					init-with="p-op"
-					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in:delay-100]">
+					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in:delay-100]"
+					on-mouse-enter="p:[t:transform 100ms ease-in, tr:rotate(-10deg), tr:rotate(0):delay-1100] | a:[wiggle-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 					<svg viewBox="0 0 100 100"
 						init-with="p:[op:0.25, t:opacity 250ms ease-out]"
 						when-social-bar-init="p:[op:1:delay-600]">
@@ -30,7 +30,8 @@
 			<li>
 				<a class="bg-li"
 					init-with="p-op"
-					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in:delay-200]">
+					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in:delay-200]"
+					on-mouse-enter="p:[t:transform 100ms ease-in, tr:rotate(-10deg), tr:rotate(0):delay-1100] | a:[wiggle-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 					<svg viewBox="0 0 100 100"
 						init-with="p:[op:0.25, t:opacity 250ms ease-out]"
 						when-social-bar-init="p:[op:1:delay-600]">
@@ -41,7 +42,8 @@
 			<li>
 				<a class="bg-in"
 					init-with="p-op"
-					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in:delay-300]">
+					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in:delay-300]"
+					on-mouse-enter="p:[t:transform 100ms ease-in, tr:rotate(-10deg), tr:rotate(0):delay-1100] | a:[wiggle-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 					<svg viewBox="0 0 100 100"
 						init-with="p:[op:0.25, t:opacity 250ms ease-out]"
 						when-social-bar-init="p:[op:1:delay-600]">
@@ -52,7 +54,8 @@
 			<li>
 				<a class="auto" style="background: #e5753c"
 					init-with="p-op"
-					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in:delay-400]">
+					when-social-bar-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms):in:delay-400]"
+					on-mouse-enter="p:[t:transform 100ms ease-in, tr:rotate(-10deg), tr:rotate(0):delay-1100] | a:[wiggle-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 					<span init-with="p:[op:0.25, t:opacity 250ms ease-out]"
 						when-social-bar-init="p:[op:1:delay-600]">Chegg</span>
 				</a>

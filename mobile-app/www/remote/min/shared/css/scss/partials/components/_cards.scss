@@ -4304,10 +4304,38 @@ a.category-tile {
 	section {
 		background: white;
 		height: auto;
-		padding: 10px 15px;
 		font-size: 16px;
 		font-weight: 600;
 		border-radius: 0 0 2px 2px;
+		p {
+			padding: 15px;
+			margin: 0;
+		}
+		> *:not(:first-child) {
+			margin-top: -15px;
+		}
+		footer {
+			ul {
+				@include flex;
+				padding: 7.5px;
+				width: 100%;
+				li {
+					padding: 7.5px;
+					&:first-child {
+						width: 51px;
+					}
+					&:last-child {
+						width: calc(100% - 51px);
+						> span, > a {
+							display: block;
+						}
+					}
+				}
+			}
+			.user-icon-36 {
+				margin: 0;
+			}
+		}
 	}
 	&.timeline-left {
 		header {
@@ -4331,6 +4359,19 @@ a.category-tile {
 		header {
 			a {
 				background: mix(white, $shamrock, 15%);
+			}
+		}
+		section {
+			a {
+				color: mix(white, $shamrock, 15%);
+				span {
+					color: $slate;
+				}
+			}
+			footer {
+				.user-icon-36 {
+					border-color: mix(white, $shamrock, 15%);
+				}
 			}
 		}
 		&.timeline-left {
@@ -4358,6 +4399,19 @@ a.category-tile {
 				background: mix(white, $gold, 10%);
 			}
 		}
+		section {
+			a {
+				color: mix(white, $gold, 10%);
+				span {
+					color: $slate;
+				}
+			}
+			footer {
+				.user-icon-36 {
+					border-color: mix(white, $gold, 10%);
+				}
+			}
+		}
 		&.timeline-left {
 			header {
 				a {
@@ -4381,6 +4435,19 @@ a.category-tile {
 		header {
 			a {
 				background: mix(white, $azure, 15%);
+			}
+		}
+		section {
+			a {
+				color: mix(white, $azure, 15%);
+				span {
+					color: $slate;
+				}
+			}
+			footer {
+				.user-icon-36 {
+					border-color: mix(white, $azure, 15%);
+				}
 			}
 		}
 		&.timeline-left {
@@ -4408,6 +4475,19 @@ a.category-tile {
 				background: mix(white, $auburn, 10%);
 			}
 		}
+		section {
+			a {
+				color: mix(white, $auburn, 10%);
+				span {
+					color: $slate;
+				}
+			}
+			footer {
+				.user-icon-36 {
+					border-color: mix(white, $auburn, 10%);
+				}
+			}
+		}
 		&.timeline-left {
 			header {
 				a {
@@ -4431,6 +4511,19 @@ a.category-tile {
 		header {
 			a {
 				background: mix(white, $eggplant, 15%);
+			}
+		}
+		section {
+			a {
+				color: mix(white, $eggplant, 15%);
+				span {
+					color: $slate;
+				}
+			}
+			footer {
+				.user-icon-36 {
+					border-color: mix(white, $eggplant, 15%);
+				}
 			}
 		}
 		&.timeline-left {
@@ -4458,6 +4551,19 @@ a.category-tile {
 				background: mix(white, $cerise, 20%);
 			}
 		}
+		section {
+			a {
+				color: mix(white, $cerise, 20%);
+				span {
+					color: $slate;
+				}
+			}
+			footer {
+				.user-icon-36 {
+					border-color: mix(white, $cerise, 20%);
+				}
+			}
+		}
 		&.timeline-left {
 			header {
 				a {
@@ -4481,6 +4587,19 @@ a.category-tile {
 		header {
 			a {
 				background: mix(white, $moola, 15%);
+			}
+		}
+		section {
+			a {
+				color: mix(white, $moola, 15%);
+				span {
+					color: $slate;
+				}
+			}
+			footer {
+				.user-icon-36 {
+					border-color: mix(white, $moola, 15%);
+				}
 			}
 		}
 		&.timeline-left {
@@ -4508,6 +4627,19 @@ a.category-tile {
 				background: mix(white, $lake, 15%);
 			}
 		}
+		section {
+			a {
+				color: mix(white, $lake, 15%);
+				span {
+					color: $slate;
+				}
+			}
+			footer {
+				.user-icon-36 {
+					border-color: mix(white, $lake, 15%);
+				}
+			}
+		}
 		&.timeline-left {
 			header {
 				a {
@@ -4533,6 +4665,19 @@ a.category-tile {
 				background: mix(white, $cobalt, 15%);
 			}
 		}
+		section {
+			a {
+				color: mix(white, $cobalt, 15%);
+				span {
+					color: $slate;
+				}
+			}
+			footer {
+				.user-icon-36 {
+					border-color: mix(white, $cobalt, 15%);
+				}
+			}
+		}
 		&.timeline-left {
 			header {
 				a {
@@ -4556,6 +4701,19 @@ a.category-tile {
 		header {
 			a {
 				background: mix(white, $orange, 15%);
+			}
+		}
+		section {
+			a {
+				color: mix(white, $orange, 15%);
+				span {
+					color: $slate;
+				}
+			}
+			footer {
+				.user-icon-36 {
+					border-color: mix(white, $orange, 15%);
+				}
 			}
 		}
 		&.timeline-left {
