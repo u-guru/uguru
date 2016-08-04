@@ -1,9 +1,4 @@
 @import '../mixin';
-.list-icon-white {
-	path {
-		stroke: #ffffff;
-	}
-}
 .message {
 	@include flex;
 	width: 100%;

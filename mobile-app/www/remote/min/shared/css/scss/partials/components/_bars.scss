@@ -507,6 +507,7 @@
 				@include round;
 				@include flex;
 				@include flex-center;
+				transform-origin: center center;
 				height: 48px;
 				&:not(.auto) {
 					width: 48px;

@@ -367,15 +367,15 @@ fieldset {
 // search bar
 fieldset.search-bar {
 	@include round;
-	@include flex;
 	height: 48px;
 	background: white;
 	overflow: hidden;
 	position: relative;
+	div {
+		@include flex;
+		@include flex-wrap;
+	}
 	label {
-		position: absolute;
-		top: 0;
-		left: 0;
 		@include flex;
 		@include flex-center;
 		width: 48px;
@@ -397,7 +397,6 @@ fieldset.search-bar {
 		@include flex-center-vertical;
 		width: calc(100% - 48px);
 		height: 48px;
-		padding-left: 48px;
 		padding-right: 15px;
 		background: none;
 	}
