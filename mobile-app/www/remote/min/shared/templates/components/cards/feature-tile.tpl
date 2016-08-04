@@ -2,12 +2,15 @@
 	<div class="feature-tile"
 		init-with="p-op"
 		on-init="t-enter"
-		on-enter="a:[bounceIn-subtle:set:(dur:1200ms#func:linear):in]">
+		on-enter="a:[bounceIn-subtle:set:(dur:1200ms#func:linear):in]"
+		on-mouse-enter="p:[background:rgba(99#112#116#0.2), t:all 150ms ease-in] | send:[icon-wiggle:public]"
+		on-mouse-leave="p:[background:rgba(99#112#116#1), t:all 150ms ease-out]">
 		<div class="feature-tile-icon">
 			<div class="feature-tile-type bg-lake" ng-include="root.base_url + 'shared/templates/components/svg/main/experience.html'"
 				init-with="p-op"
 				on-init="t-enter"
-				on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-1250]"></div>
+				on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-1250]"
+				when-icon-wiggle="a:[wiggle-subtle:set:(dur:1000ms#func:linear):in]"></div>
 			<div class="feature-tile-thumb">
 				<svg class="bg-white" viewBox="0 0 120 100"
 					init-with="p-op"
