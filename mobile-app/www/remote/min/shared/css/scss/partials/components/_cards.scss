@@ -49,6 +49,27 @@
 		}
 	}
 }
+.pf-card-stack {
+	position: relative;
+	> li {
+		&:not(:last-child) {
+			transform-origin: center top;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		&:last-child {
+			position: relative;
+		}
+	}
+	&.slate {
+		> li {
+			> div {
+				background: $slate;
+			}
+		}
+	}
+}
 .pf-card-group {
 	@include flex;
 	@include flex-wrap;
@@ -174,12 +195,6 @@
 			}
 		}
 	}
-}
-.pf-card-container, .school-card-container {
-	@include flex;
-	@include flex-wrap;
-	@include flex-center;
-	padding: 15px;
 }
 
 // credit card
@@ -2945,6 +2960,24 @@ a.course-card {
 	border-radius: 2px;
 	background-position: center center;
 	background-size: cover;
+	.category-tile-price {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		bottom: -15px;
+		left: 0;
+		height: 36px;
+		width: 100%;
+		div {
+			@include round;
+			@include flex;
+			@include flex-center;
+			height: 36px;
+			font-size: 16px;
+			font-weight: 700;
+			padding: 0 15px;
+		}
+	}
 	.category-tile-inside {
 		@include flex;
 		@include flex-wrap;
@@ -3026,8 +3059,27 @@ a.course-card {
 			}
 		}
 	}
+	&.price-moxie {
+		.category-tile-price div {
+			background: $moxie!important;
+		}
+		.category-tile-inside {
+			border-bottom: 5px solid $moxie!important;
+		}
+	}
+	&.price-crimson {
+		.category-tile-price div {
+			background: $crimson!important;
+		}
+		.category-tile-inside {
+			border-bottom: 5px solid $crimson!important;
+		}
+	}
 	&.bg-delivery {
 		background-color: $auburn;
+		.category-tile-price div {
+			background: $auburn;
+		}
 		.category-tile-count {
 			color: mix($auburn, lighten($slate, 15%));
 			svg * {
@@ -3043,6 +3095,9 @@ a.course-card {
 	}
 	&.bg-freelancing {
 		background-color: $orange;
+		.category-tile-price div {
+			background: $orange;
+		}
 		.category-tile-count {
 			color: mix($orange, lighten($slate, 15%));
 			svg * {
@@ -3058,6 +3113,9 @@ a.course-card {
 	}
 	&.bg-baking {
 		background-color: $gold;
+		.category-tile-price div {
+			background: $gold;
+		}
 		.category-tile-count {
 			color: mix($gold, lighten($slate, 15%));
 			svg * {
@@ -3073,6 +3131,9 @@ a.course-card {
 	}
 	&.bg-photography {
 		background-color: $moola;
+		.category-tile-price div {
+			background: $moola;
+		}
 		.category-tile-count {
 			color: mix($moola, lighten($slate, 15%));
 			svg * {
@@ -3088,6 +3149,9 @@ a.course-card {
 	}
 	&.bg-tech {
 		background-color: $azure;
+		.category-tile-price div {
+			background: $azure;
+		}
 		.category-tile-count {
 			color: mix($azure, lighten($slate, 15%));
 			svg * {
@@ -3103,6 +3167,9 @@ a.course-card {
 	}
 	&.bg-household {
 		background-color: $cobalt;
+		.category-tile-price div {
+			background: $cobalt;
+		}
 		.category-tile-count {
 			color: mix($cobalt, lighten($slate, 15%));
 			svg * {
@@ -3118,6 +3185,9 @@ a.course-card {
 	}
 	&.bg-athletic {
 		background-color: $eggplant;
+		.category-tile-price div {
+			background: $eggplant;
+		}
 		.category-tile-count {
 			color: mix($eggplant, lighten($slate, 15%));
 			svg * {
@@ -3133,6 +3203,9 @@ a.course-card {
 	}
 	&.bg-academic {
 		background-color: $cerise;
+		.category-tile-price div {
+			background: $cerise;
+		}
 		.category-tile-count {
 			color: mix($cerise, lighten($slate, 15%));
 			svg * {
@@ -4629,6 +4702,7 @@ a.category-tile {
 	}
 }
 
+// ranking tile
 .ranking-container {
 	@include flex;
 	@include flex-center;
@@ -4641,7 +4715,6 @@ a.category-tile {
 		padding: 7.5px;
 	}
 }
-
 .ranking-tile {
 	position: relative;
 	background: lighten($slate, 15%);
@@ -4754,6 +4827,160 @@ a.category-tile {
 					padding: 0 10px;
 					width: calc(100% - 36px);
 				}
+			}
+		}
+	}
+}
+
+// feature tile
+.feature-tile {
+	@include flex;
+	background: lighten($slate, 15%);
+	border-radius: 2px;
+	padding: 7.5px;
+	max-width: 500px;
+	> div {
+		padding: 7.5px;
+	}
+	.feature-tile-icon {
+		position: relative;
+		.feature-tile-type {
+			@include flex;
+			@include flex-center;
+			@include round;
+			position: absolute;
+			top: -18px;
+			left: -18px;
+			width: 48px;
+			height: 48px;
+			svg {
+				width: 36px;
+				height: 36px;
+				* {
+					stroke: white;
+					stroke-width: 6px;
+				}
+			}
+		}
+		.feature-tile-thumb {
+			svg {
+				display: block;
+				width: 120px;
+				height: 100px;
+				border-radius: 2px;
+				overflow: hidden;
+			}
+		}
+	}
+	.feature-tile-text {
+		h2 {
+			font-size: 28px;
+			font-weight: 600;
+		}
+		p {
+			margin: 0;
+			font-size: 18px;
+		}
+	}
+}
+
+// money tile
+.money-tile {
+	position: relative;
+	background: $charcoal;
+	border-radius: 4px;
+	min-width: 128px;
+	min-height: 128px;
+	color: white;
+	font-size: 48px;
+	font-weight: 600;
+	svg {
+		* {
+			fill: none;
+		}
+	}
+	.money-text, .money-icon, .money-input {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.money-icon {
+		svg {
+			width: 50px;
+			height: 50px;
+			* {
+				stroke: white;
+				stroke-width: 8px;
+			}
+		}
+	}
+	.money-input {
+		background: white;
+		color: $slate;
+		border-radius: 4px;
+		div:empty {
+			position: absolute;
+			background: $moxie;
+			border-radius: 4px;
+			&:nth-child(1) {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 4px;
+				transform-origin: right center;
+				// transform: scaleX(0);
+			}
+			&:nth-child(2) {
+				top: 0;
+				right: 0;
+				width: 4px;
+				height: 100%;
+				transform-origin: center bottom;
+				// transform: scaleY(0);
+			}
+			&:nth-child(3) {
+				bottom: 0;
+				right: 0;
+				width: 100%;
+				height: 4px;
+				transform-origin: left center;
+				// transform: scaleX(0);
+			}
+			&:nth-child(4) {
+				bottom: 0;
+				left: 0;
+				width: 4px;
+				height: 100%;
+				transform-origin: center top;
+				// transform: scaleY(0);
+			}
+		}
+		div {
+			position: relative;
+			input {
+				font-size: 48px;
+				height: auto;
+				width: auto;
+				background: none!important;
+				max-width: 83px;
+				text-align: center;
+				font-weight: 600;
+				color: $slate;
+			}
+			hr {
+				@include round;
+				position: absolute;
+				left: 0;
+				bottom: -1px;
+				border: 0;
+				margin: 0;
+				width: 100%;
+				height: 2px;
+				background: rgba($slate, .5);
 			}
 		}
 	}
@@ -5445,7 +5672,10 @@ a.category-tile {
 	}
 }
 
-/* ---------- ALBUM TILES */
+// record tile
+
+
+// album tile
 .album-tile {
 	display: block;
 	width: 100%;

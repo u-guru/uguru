@@ -1,5 +1,4 @@
 <div class="full-xy flex-center p15xy" types='type1, type2, type3, type4' default-type="type3">
-
 	<fieldset ng-if='activeType === "type1"' class="search-bar"
 		init-with="p:[width:400px]">
 

@@ -1,8 +1,8 @@
 @import '../../../shared/css/scss/partials/mixin';
 @import 'partials/animation';
-@import 'partials/main';
+@import 'partials/shared';
 
-@import 'partials/adlib/main';
+@import 'partials/adlib/adlib';
 
 @import 'partials/splash/headers';
 @import 'partials/splash/sidebar';
@@ -23,5 +23,5 @@
 @import 'partials/pages/pricing';
 @import 'partials/pages/team';
 
-@import 'partials/powerups/main';
+@import 'partials/powerups/powerups';
 @import 'partials/powerups/animation';

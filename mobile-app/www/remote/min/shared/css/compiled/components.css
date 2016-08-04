@@ -2077,6 +2077,18 @@ fieldset.no-border * {
 [class*="tile-border"][class*="light"] li:after {
   background: rgba(255, 255, 255, 0.2); }
 
+.pf-card-stack {
+  position: relative; }
+  .pf-card-stack > li:not(:last-child) {
+    transform-origin: center top;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .pf-card-stack > li:last-child {
+    position: relative; }
+  .pf-card-stack.slate > li > div {
+    background: #40484B; }
+
 .pf-card-group {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -2191,27 +2203,6 @@ fieldset.no-border * {
           font-weight: 400; }
         .pf-card-group > li .pf-card .pf-card-main .pf-rating {
           margin: 5px auto; }
-
-.pf-card-container, .school-card-container {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  padding: 15px; }
 
 .credit-card-flip {
   backface-visibility: hidden;
@@ -4682,6 +4673,48 @@ a.course-card:active .course-card-hover {
   border-radius: 2px;
   background-position: center center;
   background-size: cover; }
+  .category-tile .category-tile-price {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    height: 36px;
+    width: 100%; }
+    .category-tile .category-tile-price div {
+      border-radius: 1000px;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      height: 36px;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0 15px; }
   .category-tile .category-tile-inside {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -4785,8 +4818,18 @@ a.course-card:active .course-card-hover {
       filter: alpha(opacity=100);
       opacity: 1;
       background: white; }
+  .category-tile.price-moxie .category-tile-price div {
+    background: #43cb9d !important; }
+  .category-tile.price-moxie .category-tile-inside {
+    border-bottom: 5px solid #43cb9d !important; }
+  .category-tile.price-crimson .category-tile-price div {
+    background: #d3242c !important; }
+  .category-tile.price-crimson .category-tile-inside {
+    border-bottom: 5px solid #d3242c !important; }
   .category-tile.bg-delivery {
     background-color: #F04F54; }
+    .category-tile.bg-delivery .category-tile-price div {
+      background: #F04F54; }
     .category-tile.bg-delivery .category-tile-count {
       color: #aa6064; }
       .category-tile.bg-delivery .category-tile-count svg * {
@@ -4801,6 +4844,8 @@ a.course-card:active .course-card-hover {
         background: #F04F54; }
   .category-tile.bg-freelancing {
     background-color: #E5753C; }
+    .category-tile.bg-freelancing .category-tile-price div {
+      background: #E5753C; }
     .category-tile.bg-freelancing .category-tile-count {
       color: #a47358; }
       .category-tile.bg-freelancing .category-tile-count svg * {
@@ -4815,6 +4860,8 @@ a.course-card:active .course-card-hover {
         background: #E5753C; }
   .category-tile.bg-baking {
     background-color: #F6C64E; }
+    .category-tile.bg-baking .category-tile-price div {
+      background: #F6C64E; }
     .category-tile.bg-baking .category-tile-count {
       color: #ad9b61; }
       .category-tile.bg-baking .category-tile-count svg * {
@@ -4829,6 +4876,8 @@ a.course-card:active .course-card-hover {
         background: #F6C64E; }
   .category-tile.bg-photography {
     background-color: #81B566; }
+    .category-tile.bg-photography .category-tile-price div {
+      background: #81B566; }
     .category-tile.bg-photography .category-tile-count {
       color: #72936d; }
       .category-tile.bg-photography .category-tile-count svg * {
@@ -4843,6 +4892,8 @@ a.course-card:active .course-card-hover {
         background: #81B566; }
   .category-tile.bg-tech {
     background-color: #55A4B7; }
+    .category-tile.bg-tech .category-tile-price div {
+      background: #55A4B7; }
     .category-tile.bg-tech .category-tile-count {
       color: #5c8a96; }
       .category-tile.bg-tech .category-tile-count svg * {
@@ -4857,6 +4908,8 @@ a.course-card:active .course-card-hover {
         background: #55A4B7; }
   .category-tile.bg-household {
     background-color: #7872e3; }
+    .category-tile.bg-household .category-tile-price div {
+      background: #7872e3; }
     .category-tile.bg-household .category-tile-count {
       color: #6e71ac; }
       .category-tile.bg-household .category-tile-count svg * {
@@ -4871,6 +4924,8 @@ a.course-card:active .course-card-hover {
         background: #7872e3; }
   .category-tile.bg-athletic {
     background-color: #9A5BC5; }
+    .category-tile.bg-athletic .category-tile-price div {
+      background: #9A5BC5; }
     .category-tile.bg-athletic .category-tile-count {
       color: #7f669d; }
       .category-tile.bg-athletic .category-tile-count svg * {
@@ -4885,6 +4940,8 @@ a.course-card:active .course-card-hover {
         background: #9A5BC5; }
   .category-tile.bg-academic {
     background-color: #e6389b; }
+    .category-tile.bg-academic .category-tile-price div {
+      background: #e6389b; }
     .category-tile.bg-academic .category-tile-count {
       color: #a55488; }
       .category-tile.bg-academic .category-tile-count svg * {
@@ -5825,6 +5882,155 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
       padding: 0 10px;
       width: calc(100% - 36px); }
 
+.feature-tile {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  background: #637074;
+  border-radius: 2px;
+  padding: 7.5px;
+  max-width: 500px; }
+  .feature-tile > div {
+    padding: 7.5px; }
+  .feature-tile .feature-tile-icon {
+    position: relative; }
+    .feature-tile .feature-tile-icon .feature-tile-type {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      border-radius: 1000px;
+      position: absolute;
+      top: -18px;
+      left: -18px;
+      width: 48px;
+      height: 48px; }
+      .feature-tile .feature-tile-icon .feature-tile-type svg {
+        width: 36px;
+        height: 36px; }
+        .feature-tile .feature-tile-icon .feature-tile-type svg * {
+          stroke: white;
+          stroke-width: 6px; }
+    .feature-tile .feature-tile-icon .feature-tile-thumb svg {
+      display: block;
+      width: 120px;
+      height: 100px;
+      border-radius: 2px;
+      overflow: hidden; }
+  .feature-tile .feature-tile-text h2 {
+    font-size: 28px;
+    font-weight: 600; }
+  .feature-tile .feature-tile-text p {
+    margin: 0;
+    font-size: 18px; }
+
+.money-tile {
+  position: relative;
+  background: #2B3234;
+  border-radius: 4px;
+  min-width: 128px;
+  min-height: 128px;
+  color: white;
+  font-size: 48px;
+  font-weight: 600; }
+  .money-tile svg * {
+    fill: none; }
+  .money-tile .money-text, .money-tile .money-icon, .money-tile .money-input {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+  .money-tile .money-icon svg {
+    width: 50px;
+    height: 50px; }
+    .money-tile .money-icon svg * {
+      stroke: white;
+      stroke-width: 8px; }
+  .money-tile .money-input {
+    background: white;
+    color: #40484B;
+    border-radius: 4px; }
+    .money-tile .money-input div:empty {
+      position: absolute;
+      background: #43cb9d;
+      border-radius: 4px; }
+      .money-tile .money-input div:empty:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        transform-origin: right center; }
+      .money-tile .money-input div:empty:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 4px;
+        height: 100%;
+        transform-origin: center bottom; }
+      .money-tile .money-input div:empty:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 4px;
+        transform-origin: left center; }
+      .money-tile .money-input div:empty:nth-child(4) {
+        bottom: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        transform-origin: center top; }
+    .money-tile .money-input div {
+      position: relative; }
+      .money-tile .money-input div input {
+        font-size: 48px;
+        height: auto;
+        width: auto;
+        background: none !important;
+        max-width: 83px;
+        text-align: center;
+        font-weight: 600;
+        color: #40484B; }
+      .money-tile .money-input div hr {
+        border-radius: 1000px;
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        border: 0;
+        margin: 0;
+        width: 100%;
+        height: 2px;
+        background: rgba(64, 72, 75, 0.5); }
+
 .tile-group {
   width: 100%; }
   .tile-group ul {
@@ -6213,7 +6419,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
       .tile-group.tile-row-2x3 ul li:nth-child(3):after {
         display: none; }
 
-/* ---------- ALBUM TILES */
 .album-tile {
   display: block;
   width: 100%;
