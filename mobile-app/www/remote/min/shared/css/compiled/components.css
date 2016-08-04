@@ -15018,8 +15018,8 @@ input[type=range] {
   left: -5px;
   width: 10px;
   height: 10px;
-  overflow: hidden;
-  border-radius: 1000px; }
+  border-radius: 1000px;
+  transform-origin: center center; }
 
 .sidebar-list {
   width: 100%; }
@@ -15108,9 +15108,6 @@ input[type=range] {
         width: 5px;
         height: 100%;
         transform-origin: center top; }
-
-.list-icon-white path {
-  stroke: #ffffff; }
 
 .message {
   -ms-box-orient: horizontal;
