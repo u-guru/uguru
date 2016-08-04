@@ -1409,41 +1409,6 @@ progress, div[class*="progress"] {
 		}
 	}
 }
-// meter
-.impact-meter {
-	display: block;
-	svg {
-		display: block;
-		path {
-			fill: rgba(white, .5);
-		}
-	}
-	&[data-impact="1"] {
-		svg {
-			path {
-				&:nth-child(1) {
-					fill: white;
-				}
-			}
-		}
-	}
-	&[data-impact="2"] {
-		svg {
-			path {
-				&:nth-child(1), &:nth-child(2) {
-					fill: $gold;
-				}
-			}
-		}
-	}
-	&[data-impact="3"] {
-		svg {
-			path {
-				fill: $moxie;
-			}
-		}
-	}
-}
 
 /* ---------- RANGE INPUTS */
 input[type=range] {

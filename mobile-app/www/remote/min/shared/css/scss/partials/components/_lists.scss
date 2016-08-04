@@ -1,5 +1,186 @@
 @import '../mixin';
 
+/* ---------- NUMBERED LISTS */
+.numbered-list {
+	padding: 7.5px;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.2;
+	counter-reset: li;
+	> li {
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		&:before {
+			@include flex;
+			@include flex-center;
+			width: 48px;
+			height: 48px;
+			content: counter(li);
+			counter-increment: li;
+			background: $lake;
+			color: white;
+			border-radius: 2px;
+			font-size: 24px;
+			font-weight: 600;
+			text-align: center;
+		}
+		> div {
+			@include flex;
+			@include flex-center-vertical;
+			width: calc(100% - 48px);
+			padding-left: 15px;
+		}
+	}
+	&.m {
+		> li {
+			&:before {
+				width: 64px;
+				height: 64px;
+				font-size: 28px;
+			}
+			> div {
+				width: calc(100% - 64px);
+			}
+		}
+	}
+	&.l {
+		> li {
+			&:before {
+				width: 96px;
+				height: 96px;
+				font-size: 48px;
+			}
+			> div {
+				width: calc(100% - 96px);
+			}
+		}
+	}
+	&.xl {
+		> li {
+			&:before {
+				width: 128px;
+				height: 128px;
+				font-size: 64px;
+			}
+			> div {
+				width: calc(100% - 128px);
+			}
+		}
+	}
+	&.charcoal{
+		> li {
+			&:before {
+				background: $charcoal;
+			}
+			> div {
+				color: $slate;
+			}
+		}
+	}
+	&.slate {
+		> li {
+			&:before {
+				background: $slate;
+			}
+			> div {
+				color: $slate;
+			}
+		}
+	}
+	&.taupe {
+		> li {
+			&:before {
+				background: $taupe;
+			}
+		}
+	}
+	&.rocket {
+		> li {
+			&:before {
+				background: $rocket;
+			}
+		}
+	}
+	&.shamrock {
+		> li {
+			&:before {
+				background: $shamrock;
+			}
+		}
+	}
+	&.lake {
+		> li {
+			&:before {
+				background: $lake;
+			}
+		}
+	}
+	&.robin {
+		> li {
+			&:before {
+				background: $robin;
+			}
+		}
+	}
+	&.moxie {
+		> li {
+			&:before {
+				background: $moxie;
+			}
+		}
+	}
+	&.crimson {
+		> li {
+			&:before {
+				background: $crimson;
+			}
+		}
+	}
+	&.delivery, &.auburn {
+		> li {
+			&:before {
+				background: $auburn;
+			}
+		}
+	}
+	&.freelancing, &.orange {
+		> li {
+			&:before {
+				background: $orange;
+			}
+		}
+	}
+	&.baking, &.gold {
+		> li {
+			&:before {
+				background: $gold;
+			}
+		}
+	}
+	&.photography, &.moola {
+		> li {
+			&:before {
+				background: $moola;
+			}
+		}
+	}
+	&.tech, &.azure {
+		> li {
+			&:before {
+				background: $azure;
+			}
+		}
+	}
+	&.household, &.cobalt {
+		> li {
+			&:before {
+				background: $cobalt;
+			}
+		}
+	}
+}
+
 /* ---------- SIDEBAR LISTS */
 .sidebar-link-bg {
 	position: absolute;
