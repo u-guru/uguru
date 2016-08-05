@@ -187,7 +187,10 @@
 				init-with="p-op"
 				on-init="t-enter"
 				on-enter="a:[fadeIn:set:(dur:1000ms#func:ease-out):in:delay-200]">Household</h1>
-			<div class="category-tile-border"></div>
+			<div class="category-tile-border"
+				init-with="p:[tro:center center, tr:scaleX(0)]"
+				on-init="t-enter"
+				on-enter="p:[tr:scaleX(1):delay-200, t:all 450ms cubic-bezier(.3#.1#1#.05)]"></div>
 		</div>
 	</a>
 
@@ -215,7 +218,10 @@
 				init-with="p-op"
 				on-init="t-enter"
 				on-enter="a:[fadeIn:set:(dur:1000ms#func:ease-out):in:delay-200]">Household</h1>
-			<div class="category-tile-border"></div>
+			<div class="category-tile-border"
+				init-with="p:[tro:center center, tr:scaleX(0)]"
+				on-init="t-enter"
+				on-enter="p:[tr:scaleX(1):delay-200, t:all 450ms cubic-bezier(.3#.1#1#.05)]"></div>
 		</div>
 		<span class="category-tile-count">6</span>
 	</a>
@@ -245,7 +251,10 @@
 				init-with="p-op"
 				on-init="t-enter"
 				on-enter="a:[fadeIn:set:(dur:1000ms#func:ease-out):in:delay-200]">Household</h1>
-			<div class="category-tile-border"></div>
+			<div class="category-tile-border"
+				init-with="p:[tro:center center, tr:scaleX(0)]"
+				on-init="t-enter"
+				on-enter="p:[tr:scaleX(1):delay-200, t:all 450ms cubic-bezier(.3#.1#1#.05)]"></div>
 		</div>
 		<span class="category-tile-count">
 			<svg viewBox="0 0 100 100">
