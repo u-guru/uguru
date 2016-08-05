@@ -4758,14 +4758,22 @@ a.category-tile {
 // timeline icon
 .timeline-icon {
 	position: relative;
-	div {
-		position: relative;
-		z-index: 2;
+	.timeline-icon-svg {
 		@include flex;
 		@include flex-center;
-		width: 50px;
-		height: 50px;
 		@include round;
+		position: relative;
+		z-index: 2;
+		width: 48px;
+		height: 48px;
+	}
+	.timeline-icon-cover {
+		position: absolute;
+		top: 0;
+		right: 24px;
+		width: 400px;
+		height: 48px;
+		z-index: 1;
 	}
 	h2 {
 		@include flex;
@@ -4773,21 +4781,21 @@ a.category-tile {
 		z-index: 0;
 		position: absolute;
 		top: 0;
-		height: 50px;
+		height: 48px;
 		font-size: 18px;
 		font-weight: 600;
 		text-transform: uppercase;
 	}
 	&.timeline-icon-left {
 		h2 {
-			right: 25px;
+			right: 24px;
 			border-radius: 1000px 0 0 1000px;
 			padding: 0 25px 0 15px;
 		}
 	}
 	&.timeline-icon-right {
 		h2 {
-			left: 25px;
+			left: 24px;
 			border-radius: 0 1000px 1000px 0;
 			padding: 0 15px 0 25px;
 		}
@@ -4801,52 +4809,52 @@ a.category-tile {
 		}
 	}
 	&.timeline-milestone {
-		div, h2 {
+		.timeline-icon-svg, h2 {
 			background: mix(white, $shamrock, 15%);
 		}
 	}
 	&.timeline-blog {
-		div, h2 {
+		.timeline-icon-svg, h2 {
 			background: mix(white, $gold, 10%);
 		}
 	}
 	&.timeline-tutorial {
-		div, h2 {
+		.timeline-icon-svg, h2 {
 			background: mix(white, $azure, 15%);
 		}
 	}
 	&.timeline-partnership {
-		div, h2 {
+		.timeline-icon-svg, h2 {
 			background: mix(white, $auburn, 10%);
 		}
 	}
 	&.timeline-parent {
-		div, h2 {
+		.timeline-icon-svg, h2 {
 			background: mix(white, $eggplant, 15%);
 		}
 	}
 	&.timeline-college-main {
-		div, h2 {
+		.timeline-icon-svg, h2 {
 			background: mix(white, $cerise, 20%);
 		}
 	}
 	&.timeline-college-guru {
-		div, h2 {
+		.timeline-icon-svg, h2 {
 			background: mix(white, $moola, 15%);
 		}
 	}
 	&.timeline-college-student {
-		div, h2 {
+		.timeline-icon-svg, h2 {
 			background: mix(white, $lake, 15%);
 		}
 	}
 	&.timeline-professional {
-		div, h2 {
+		.timeline-icon-svg, h2 {
 			background: mix(white, $cobalt, 15%);
 		}
 	}
 	&.timeline-high-school {
-		div, h2 {
+		.timeline-icon-svg, h2 {
 			background: mix(white, $orange, 15%);
 		}
 	}

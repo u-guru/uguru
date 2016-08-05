@@ -6050,9 +6050,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
 
 .timeline-icon {
   position: relative; }
-  .timeline-icon div {
-    position: relative;
-    z-index: 2;
+  .timeline-icon .timeline-icon-svg {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -6068,9 +6066,18 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 1000px; }
+    border-radius: 1000px;
+    position: relative;
+    z-index: 2;
+    width: 48px;
+    height: 48px; }
+  .timeline-icon .timeline-icon-cover {
+    position: absolute;
+    top: 0;
+    right: 24px;
+    width: 400px;
+    height: 48px;
+    z-index: 1; }
   .timeline-icon h2 {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -6086,16 +6093,16 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
     z-index: 0;
     position: absolute;
     top: 0;
-    height: 50px;
+    height: 48px;
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase; }
   .timeline-icon.timeline-icon-left h2 {
-    right: 25px;
+    right: 24px;
     border-radius: 1000px 0 0 1000px;
     padding: 0 25px 0 15px; }
   .timeline-icon.timeline-icon-right h2 {
-    left: 25px;
+    left: 24px;
     border-radius: 0 1000px 1000px 0;
     padding: 0 15px 0 25px; }
   .timeline-icon svg {
@@ -6104,25 +6111,25 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
     .timeline-icon svg * {
       stroke: white;
       stroke-width: 6px; }
-  .timeline-icon.timeline-milestone div, .timeline-icon.timeline-milestone h2 {
+  .timeline-icon.timeline-milestone .timeline-icon-svg, .timeline-icon.timeline-milestone h2 {
     background: #80beb3; }
-  .timeline-icon.timeline-blog div, .timeline-icon.timeline-blog h2 {
+  .timeline-icon.timeline-blog .timeline-icon-svg, .timeline-icon.timeline-blog h2 {
     background: #f7cc60; }
-  .timeline-icon.timeline-tutorial div, .timeline-icon.timeline-tutorial h2 {
+  .timeline-icon.timeline-tutorial .timeline-icon-svg, .timeline-icon.timeline-tutorial h2 {
     background: #6fb2c2; }
-  .timeline-icon.timeline-partnership div, .timeline-icon.timeline-partnership h2 {
+  .timeline-icon.timeline-partnership .timeline-icon-svg, .timeline-icon.timeline-partnership h2 {
     background: #f26165; }
-  .timeline-icon.timeline-parent div, .timeline-icon.timeline-parent h2 {
+  .timeline-icon.timeline-parent .timeline-icon-svg, .timeline-icon.timeline-parent h2 {
     background: #a974ce; }
-  .timeline-icon.timeline-college-main div, .timeline-icon.timeline-college-main h2 {
+  .timeline-icon.timeline-college-main .timeline-icon-svg, .timeline-icon.timeline-college-main h2 {
     background: #eb60af; }
-  .timeline-icon.timeline-college-guru div, .timeline-icon.timeline-college-guru h2 {
+  .timeline-icon.timeline-college-guru .timeline-icon-svg, .timeline-icon.timeline-college-guru h2 {
     background: #94c07d; }
-  .timeline-icon.timeline-college-student div, .timeline-icon.timeline-college-student h2 {
+  .timeline-icon.timeline-college-student .timeline-icon-svg, .timeline-icon.timeline-college-student h2 {
     background: #6ab3e2; }
-  .timeline-icon.timeline-professional div, .timeline-icon.timeline-professional h2 {
+  .timeline-icon.timeline-professional .timeline-icon-svg, .timeline-icon.timeline-professional h2 {
     background: #8c87e7; }
-  .timeline-icon.timeline-high-school div, .timeline-icon.timeline-high-school h2 {
+  .timeline-icon.timeline-high-school .timeline-icon-svg, .timeline-icon.timeline-high-school h2 {
     background: #e98a59; }
 
 .attachment-tile {
