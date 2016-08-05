@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household' default-type="tech-desktop">
+<div class="full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household' default-type="tech-mobile">
 	<div class="pf-tile-container" ng-if='activeType === "academic-desktop"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[academic-tile-init:public]"
@@ -321,6 +321,76 @@
 		on-init="s:[tech-tile-init:public]"
 		when-tech-tile-init="p:[op:1, tr:none]"
 		when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		<a></a><a></a><a></a><a></a>
+		<div class="pf-tile bg-tech">
+			<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
+				init-with="p:[op:0, t:opacity 500ms ease-out]"
+				when-tech-tile-init="p:[op:1:delay-250]"
+				when-tech-tile-exit="p:[op:0:delay-1000]">
+				<div class="pf-pricing">
+					<div>$10/hr</div>
+					<div class="border border-corner">
+						<span class="left"
+							init-with="p:[op:0, tr:scaleY(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
+							when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
+							when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleY(0):delay-1000]"></span>
+						<span class="bot"
+							init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
+							when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
+							when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleX(0):delay-1000]"></span>
+					</div>
+				</div>
+			</div>
+			<div class="pf-tile-bottom"
+				init-with="p:[op:0, t:opacity 500ms ease-out]"
+				when-tech-tile-init="p:[op:1:delay-250]"
+				when-tech-tile-exit="p:[op:0:delay-1000]">
+				<h1>Water Damage</h1>
+				<div class="border border-top">
+					<span class="left"
+						init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
+						when-tech-tile-init="p:[op:1, tr:none:delay-900]"
+						when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
+					<span class="right"
+						init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
+						when-tech-tile-init="p:[op:1, tr:none:delay-900]"
+						when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
+				</div>
+			</div>
+			<div class="border border-outside">
+				<span class="top-let"
+					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
+					when-tech-tile-init="p:[op:1, tr:none:delay-250]"
+					when-tech-tile-exit="p:[op:0:delay-1300, tr:scaleX(0):delay-800]"></span>
+				<span class="top-right"
+					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
+					when-tech-tile-init="p:[op:1, tr:none:delay-250]"
+					when-tech-tile-exit="p:[op:0:delay-1300, tr:scaleX(0):delay-800]"></span>
+				<span class="right"
+					init-with="p:[op:0, tr:scaleY(0), t:transform 300ms cubic-bezier(0#.66#.47#1.09)]"
+					when-tech-tile-init="p:[op:1, tr:none:delay-750]"
+					when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
+				<span class="bot-left"
+					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
+					when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
+					when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
+				<span class="bot-left"
+					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
+					when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
+					when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
+				<span class="left"
+					init-with="p:[op:0, tr:scaleY(0), t:transform 300ms cubic-bezier(0#.66#.47#1.09)]"
+					when-tech-tile-init="p:[op:1, tr:none:delay-750]"
+					when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="pf-tile-container" ng-if='activeType === "tech-mobile"'
+		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		on-init="s:[tech-tile-init:public]"
+		when-tech-tile-init="p:[op:1, tr:none]"
+		when-tech-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-tech">
 			<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"

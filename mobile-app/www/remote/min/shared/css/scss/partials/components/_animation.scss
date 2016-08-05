@@ -1,8 +1,40 @@
 @import '../mixin';
 
+<<<<<<< HEAD
 @keyframes wallet-exterior {
 	0% {transform: rotateY(-90deg) rotateX(-30deg);}
 	100% {transform: rotateY(0deg) rotateX(0deg);}
+=======
+@keyframes album-fade {
+	0% {
+		@include opacity(0);
+	}
+	100% {
+		@include opacity(1);
+	}
+}
+
+@keyframes album-title {
+	0% {
+		@include opacity(0);
+		transform: translateY(-100%) translateZ(0);
+	}
+	100% {
+		@include opacity(1);
+		transform: translateY(0) translateZ(0);
+	}
+}
+
+@keyframes album-genre {
+	0% {
+		@include opacity(0);
+		transform: translateY(-100%) translateZ(0);
+	}
+	100% {
+		@include opacity(.5);
+		transform: translateY(0) translateZ(0);
+	}
+>>>>>>> cc076de8c3efe78702493678e10de261c4215bf2
 }
 
 /* http://goo.gl/oFnLqt */
