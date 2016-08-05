@@ -10,6 +10,7 @@
 				</svg>
 			</div>
 			<h1>Household</h1>
+			<div class="category-tile-border"></div>
 		</div>
 	</a>
 
@@ -24,6 +25,7 @@
 				</svg>
 			</div>
 			<h1>Household</h1>
+			<div class="category-tile-border"></div>
 		</div>
 	</div>
 
@@ -38,6 +40,7 @@
 				</svg>
 			</div>
 			<h1>Household</h1>
+			<div class="category-tile-border"></div>
 		</div>
 		<div class="category-tile-price"><div>$25/hr AVG</div></div>
 	</div>
@@ -53,6 +56,7 @@
 				</svg>
 			</div>
 			<h1>Household</h1>
+			<div class="category-tile-border"></div>
 		</div>
 		<div class="category-tile-price"><div>$25/hr AVG</div></div>
 	</div>
@@ -68,6 +72,7 @@
 				</svg>
 			</div>
 			<h1>Household</h1>
+			<div class="category-tile-border"></div>
 		</div>
 		<div class="category-tile-price"><div>$25/hr AVG</div></div>
 	</div>
@@ -83,6 +88,7 @@
 				</svg>
 			</div>
 			<h1>Household</h1>
+			<div class="category-tile-border"></div>
 		</div>
 	</a>
 
@@ -97,6 +103,7 @@
 				</svg>
 			</div>
 			<h1>Household</h1>
+			<div class="category-tile-border"></div>
 		</div>
 		<span class="category-tile-count">6</span>
 	</a>
@@ -113,6 +120,7 @@
 				</svg>
 			</div>
 			<h1>Household</h1>
+			<div class="category-tile-border"></div>
 		</div>
 		<span class="category-tile-count">
 			<svg viewBox="0 0 100 100">

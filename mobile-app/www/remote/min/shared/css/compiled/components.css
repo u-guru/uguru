@@ -1,3 +1,28 @@
+@keyframes album-fade {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0; }
+  100% {
+    filter: alpha(opacity=100);
+    opacity: 1; } }
+@keyframes album-title {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    transform: translateY(-100%) translateZ(0); }
+  100% {
+    filter: alpha(opacity=100);
+    opacity: 1;
+    transform: translateY(0) translateZ(0); } }
+@keyframes album-genre {
+  0% {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    transform: translateY(-100%) translateZ(0); }
+  100% {
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    transform: translateY(0) translateZ(0); } }
 /* http://goo.gl/oFnLqt */
 @keyframes popup-header-enter {
   0% {
@@ -2322,29 +2347,6 @@ fieldset.no-border * {
             width: 30px;
             height: 15px; }
 
-/* ---------- CARDS */
-[class*="tile-border"] li {
-  position: relative; }
-  [class*="tile-border"] li:not(:last-child):after {
-    border-radius: 1000px;
-    content: "";
-    display: block;
-    position: absolute; }
-[class*="tile-border"][class*="tile-border-side"] li:after {
-  right: -1px;
-  top: 15px;
-  height: calc(100% - 30px);
-  width: 2px; }
-[class*="tile-border"][class*="tile-border-bottom"] li:after {
-  bottom: -1px;
-  left: 15px;
-  width: calc(100% - 30px);
-  height: 2px; }
-[class*="tile-border"][class*="dark"] li:after {
-  background: rgba(64, 72, 75, 0.2); }
-[class*="tile-border"][class*="light"] li:after {
-  background: rgba(255, 255, 255, 0.2); }
-
 .pf-card-stack {
   position: relative; }
   .pf-card-stack > li:not(:last-child) {
@@ -3860,6 +3862,599 @@ a.course-card:hover .course-card-border, a.course-card:focus .course-card-border
 a.course-card:active .course-card-hover {
   background: #637074 !important; }
 
+.timeline-card {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 2px;
+  color: #40484B; }
+  .timeline-card header {
+    height: auto;
+    min-height: auto; }
+    .timeline-card header a {
+      display: block;
+      position: relative;
+      padding: 10px 15px;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.2;
+      text-transform: none;
+      border-radius: 2px 2px 0 0; }
+      .timeline-card header a:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 10px;
+        width: 0;
+        height: 0;
+        border: 12px solid transparent; }
+  .timeline-card figure {
+    background: white; }
+    .timeline-card figure img {
+      display: block;
+      width: 100%; }
+      .timeline-card figure img.post-svg {
+        max-height: 150px; }
+  .timeline-card section {
+    background: white;
+    height: auto;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 0 0 2px 2px; }
+    .timeline-card section p {
+      padding: 15px;
+      margin: 0; }
+    .timeline-card section > *:not(:first-child) {
+      margin-top: -15px; }
+    .timeline-card section footer ul {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      padding: 7.5px;
+      width: 100%; }
+      .timeline-card section footer ul li {
+        padding: 7.5px; }
+        .timeline-card section footer ul li:first-child {
+          width: 51px; }
+        .timeline-card section footer ul li:last-child {
+          width: calc(100% - 51px); }
+          .timeline-card section footer ul li:last-child > span, .timeline-card section footer ul li:last-child > a {
+            display: block; }
+            .timeline-card section footer ul li:last-child > span span, .timeline-card section footer ul li:last-child > a span {
+              opacity: 0.5; }
+          .timeline-card section footer ul li:last-child span {
+            font-weight: 400; }
+    .timeline-card section footer .user-icon-36 {
+      margin: 0; }
+  .timeline-card.timeline-left header a:after {
+    left: -24px; }
+  .timeline-card.timeline-right header a:after {
+    right: -24px; }
+  .timeline-card.timeline-milestone header a {
+    background: #80beb3; }
+  .timeline-card.timeline-milestone section a {
+    color: #80beb3; }
+    .timeline-card.timeline-milestone section a span {
+      color: #40484B; }
+  .timeline-card.timeline-milestone section footer .user-icon-36 {
+    border-color: #80beb3; }
+  .timeline-card.timeline-milestone.timeline-left header a:after {
+    border-right-color: #80beb3; }
+  .timeline-card.timeline-milestone.timeline-right header a:after {
+    border-left-color: #80beb3; }
+  .timeline-card.timeline-blog header a {
+    background: #f7cc60; }
+  .timeline-card.timeline-blog section a {
+    color: #f7cc60; }
+    .timeline-card.timeline-blog section a span {
+      color: #40484B; }
+  .timeline-card.timeline-blog section footer .user-icon-36 {
+    border-color: #f7cc60; }
+  .timeline-card.timeline-blog.timeline-left header a:after {
+    border-right-color: #f7cc60; }
+  .timeline-card.timeline-blog.timeline-right header a:after {
+    border-left-color: #f7cc60; }
+  .timeline-card.timeline-tutorial header a {
+    background: #6fb2c2; }
+  .timeline-card.timeline-tutorial section a {
+    color: #6fb2c2; }
+    .timeline-card.timeline-tutorial section a span {
+      color: #40484B; }
+  .timeline-card.timeline-tutorial section footer .user-icon-36 {
+    border-color: #6fb2c2; }
+  .timeline-card.timeline-tutorial.timeline-left header a:after {
+    border-right-color: #6fb2c2; }
+  .timeline-card.timeline-tutorial.timeline-right header a:after {
+    border-left-color: #6fb2c2; }
+  .timeline-card.timeline-partnership header a {
+    background: #f26165; }
+  .timeline-card.timeline-partnership section a {
+    color: #f26165; }
+    .timeline-card.timeline-partnership section a span {
+      color: #40484B; }
+  .timeline-card.timeline-partnership section footer .user-icon-36 {
+    border-color: #f26165; }
+  .timeline-card.timeline-partnership.timeline-left header a:after {
+    border-right-color: #f26165; }
+  .timeline-card.timeline-partnership.timeline-right header a:after {
+    border-left-color: #f26165; }
+  .timeline-card.timeline-parent header a {
+    background: #a974ce; }
+  .timeline-card.timeline-parent section a {
+    color: #a974ce; }
+    .timeline-card.timeline-parent section a span {
+      color: #40484B; }
+  .timeline-card.timeline-parent section footer .user-icon-36 {
+    border-color: #a974ce; }
+  .timeline-card.timeline-parent.timeline-left header a:after {
+    border-right-color: #a974ce; }
+  .timeline-card.timeline-parent.timeline-right header a:after {
+    border-left-color: #a974ce; }
+  .timeline-card.timeline-college-main header a {
+    background: #eb60af; }
+  .timeline-card.timeline-college-main section a {
+    color: #eb60af; }
+    .timeline-card.timeline-college-main section a span {
+      color: #40484B; }
+  .timeline-card.timeline-college-main section footer .user-icon-36 {
+    border-color: #eb60af; }
+  .timeline-card.timeline-college-main.timeline-left header a:after {
+    border-right-color: #eb60af; }
+  .timeline-card.timeline-college-main.timeline-right header a:after {
+    border-left-color: #eb60af; }
+  .timeline-card.timeline-college-guru header a {
+    background: #94c07d; }
+  .timeline-card.timeline-college-guru section a {
+    color: #94c07d; }
+    .timeline-card.timeline-college-guru section a span {
+      color: #40484B; }
+  .timeline-card.timeline-college-guru section footer .user-icon-36 {
+    border-color: #94c07d; }
+  .timeline-card.timeline-college-guru.timeline-left header a:after {
+    border-right-color: #94c07d; }
+  .timeline-card.timeline-college-guru.timeline-right header a:after {
+    border-left-color: #94c07d; }
+  .timeline-card.timeline-college-student header a {
+    background: #6ab3e2; }
+  .timeline-card.timeline-college-student section a {
+    color: #6ab3e2; }
+    .timeline-card.timeline-college-student section a span {
+      color: #40484B; }
+  .timeline-card.timeline-college-student section footer .user-icon-36 {
+    border-color: #6ab3e2; }
+  .timeline-card.timeline-college-student.timeline-left header a:after {
+    border-right-color: #6ab3e2; }
+  .timeline-card.timeline-college-student.timeline-right header a:after {
+    border-left-color: #6ab3e2; }
+  .timeline-card.timeline-professional header a {
+    background: #8c87e7; }
+  .timeline-card.timeline-professional section a {
+    color: #8c87e7; }
+    .timeline-card.timeline-professional section a span {
+      color: #40484B; }
+  .timeline-card.timeline-professional section footer .user-icon-36 {
+    border-color: #8c87e7; }
+  .timeline-card.timeline-professional.timeline-left header a:after {
+    border-right-color: #8c87e7; }
+  .timeline-card.timeline-professional.timeline-right header a:after {
+    border-left-color: #8c87e7; }
+  .timeline-card.timeline-high-school header a {
+    background: #e98a59; }
+  .timeline-card.timeline-high-school section a {
+    color: #e98a59; }
+    .timeline-card.timeline-high-school section a span {
+      color: #40484B; }
+  .timeline-card.timeline-high-school section footer .user-icon-36 {
+    border-color: #e98a59; }
+  .timeline-card.timeline-high-school.timeline-left header a:after {
+    border-right-color: #e98a59; }
+  .timeline-card.timeline-high-school.timeline-right header a:after {
+    border-left-color: #e98a59; }
+
+.timeline-icon {
+  position: relative; }
+  .timeline-icon .timeline-icon-svg {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    border-radius: 1000px;
+    position: relative;
+    z-index: 2;
+    width: 48px;
+    height: 48px; }
+  .timeline-icon .timeline-icon-cover {
+    position: absolute;
+    top: 0;
+    right: 24px;
+    width: 400px;
+    height: 48px;
+    z-index: 1; }
+  .timeline-icon h2 {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    height: 48px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase; }
+  .timeline-icon.timeline-icon-left h2 {
+    right: 24px;
+    border-radius: 1000px 0 0 1000px;
+    padding: 0 25px 0 15px; }
+  .timeline-icon.timeline-icon-right h2 {
+    left: 24px;
+    border-radius: 0 1000px 1000px 0;
+    padding: 0 15px 0 25px; }
+  .timeline-icon svg {
+    width: 36px;
+    height: 36px; }
+    .timeline-icon svg * {
+      stroke: white;
+      stroke-width: 6px; }
+  .timeline-icon.timeline-milestone .timeline-icon-svg, .timeline-icon.timeline-milestone h2 {
+    background: #80beb3; }
+  .timeline-icon.timeline-blog .timeline-icon-svg, .timeline-icon.timeline-blog h2 {
+    background: #f7cc60; }
+  .timeline-icon.timeline-tutorial .timeline-icon-svg, .timeline-icon.timeline-tutorial h2 {
+    background: #6fb2c2; }
+  .timeline-icon.timeline-partnership .timeline-icon-svg, .timeline-icon.timeline-partnership h2 {
+    background: #f26165; }
+  .timeline-icon.timeline-parent .timeline-icon-svg, .timeline-icon.timeline-parent h2 {
+    background: #a974ce; }
+  .timeline-icon.timeline-college-main .timeline-icon-svg, .timeline-icon.timeline-college-main h2 {
+    background: #eb60af; }
+  .timeline-icon.timeline-college-guru .timeline-icon-svg, .timeline-icon.timeline-college-guru h2 {
+    background: #94c07d; }
+  .timeline-icon.timeline-college-student .timeline-icon-svg, .timeline-icon.timeline-college-student h2 {
+    background: #6ab3e2; }
+  .timeline-icon.timeline-professional .timeline-icon-svg, .timeline-icon.timeline-professional h2 {
+    background: #8c87e7; }
+  .timeline-icon.timeline-high-school .timeline-icon-svg, .timeline-icon.timeline-high-school h2 {
+    background: #e98a59; }
+
+.university-place-marker {
+  transition: all 150ms ease-in-out;
+  position: relative;
+  cursor: pointer;
+  max-width: 262px; }
+  .university-place-marker.visible {
+    filter: alpha(opacity=100) !important;
+    opacity: 1 !important;
+    z-index: 9; }
+  .university-place-marker.bg-academic .marker-circle {
+    background: #F04F54; }
+  .university-place-marker.bg-academic .marker-guru {
+    background: rgba(240, 79, 84, 0.3); }
+    .university-place-marker.bg-academic .marker-guru:hover, .university-place-marker.bg-academic .marker-guru:focus {
+      background: #F04F54; }
+  .university-place-marker.bg-freelancing .marker-circle {
+    background: #E5753C; }
+  .university-place-marker.bg-freelancing .marker-guru {
+    background: rgba(229, 117, 60, 0.3); }
+    .university-place-marker.bg-freelancing .marker-guru:hover, .university-place-marker.bg-freelancing .marker-guru:focus {
+      background: #E5753C; }
+  .university-place-marker.bg-baking .marker-circle {
+    background: #F6C64E; }
+  .university-place-marker.bg-baking .marker-guru {
+    background: rgba(246, 198, 78, 0.3); }
+    .university-place-marker.bg-baking .marker-guru:hover, .university-place-marker.bg-baking .marker-guru:focus {
+      background: #F6C64E; }
+  .university-place-marker.bg-photography .marker-circle {
+    background: #81B566; }
+  .university-place-marker.bg-photography .marker-guru {
+    background: rgba(129, 181, 102, 0.3); }
+    .university-place-marker.bg-photography .marker-guru:hover, .university-place-marker.bg-photography .marker-guru:focus {
+      background: #81B566; }
+  .university-place-marker.bg-tech .marker-circle {
+    background: #55A4B7; }
+  .university-place-marker.bg-tech .marker-guru {
+    background: rgba(85, 164, 183, 0.3); }
+    .university-place-marker.bg-tech .marker-guru:hover, .university-place-marker.bg-tech .marker-guru:focus {
+      background: #55A4B7; }
+  .university-place-marker.bg-household .marker-circle {
+    background: #7872e3; }
+  .university-place-marker.bg-household .marker-guru {
+    background: rgba(120, 114, 227, 0.3); }
+    .university-place-marker.bg-household .marker-guru:hover, .university-place-marker.bg-household .marker-guru:focus {
+      background: #7872e3; }
+  .university-place-marker.bg-athletic .marker-circle {
+    background: #9A5BC5; }
+  .university-place-marker.bg-athletic .marker-guru {
+    background: rgba(154, 91, 197, 0.3); }
+    .university-place-marker.bg-athletic .marker-guru:hover, .university-place-marker.bg-athletic .marker-guru:focus {
+      background: #9A5BC5; }
+  .university-place-marker.bg-academic .marker-circle {
+    background: #e6389b; }
+  .university-place-marker.bg-academic .marker-guru {
+    background: rgba(230, 56, 155, 0.3); }
+    .university-place-marker.bg-academic .marker-guru:hover, .university-place-marker.bg-academic .marker-guru:focus {
+      background: #e6389b; }
+  .university-place-marker .marker-normal {
+    position: relative; }
+    .university-place-marker .marker-normal .marker-normal-window .open {
+      transition: stroke-dashoffset 150ms ease-in-out, opacity 150ms ease-in-out 150ms;
+      stroke-dasharray: 80, 80;
+      stroke-dashoffset: 0; }
+    .university-place-marker .marker-normal .marker-normal-window .side {
+      transition: stroke-dashoffset 200ms ease-in-out 650ms;
+      stroke-dasharray: 278, 278;
+      stroke-dashoffset: 0; }
+    .university-place-marker .marker-normal .marker-normal-content {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      transition: all 150ms ease-in-out 350ms;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: calc(100% - 4px);
+      height: calc(100% - 26px); }
+      .university-place-marker .marker-normal .marker-normal-content svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 3px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: all 150ms ease-in-out 350ms;
+        position: absolute;
+        top: 50%;
+        margin-top: -24px;
+        left: 50%;
+        margin-left: -24px;
+        z-index: 2;
+        width: 48px;
+        height: 48px; }
+      .university-place-marker .marker-normal .marker-normal-content .marker-guru {
+        border-radius: 1000px;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-align-items: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        transition: all 150ms ease-in-out 350ms;
+        margin-top: 6px;
+        height: 30px;
+        width: 74px;
+        padding-left: 28px;
+        border: 2px solid white;
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 1;
+        text-align: center; }
+        .university-place-marker .marker-normal .marker-normal-content .marker-guru .user-icon {
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          width: 30px;
+          height: 30px;
+          border-width: 2px; }
+        .university-place-marker .marker-normal .marker-normal-content .marker-guru .marker-guru-course {
+          display: block;
+          width: 100%; }
+    .university-place-marker .marker-normal.move .marker-normal-window .open {
+      stroke-dashoffset: 80; }
+    .university-place-marker .marker-normal.move .marker-normal-content svg {
+      transform: translateY(-36px); }
+    .university-place-marker .marker-normal.hidden .marker-normal-window .open {
+      stroke-dashoffset: 80;
+      opacity: 0; }
+  .university-place-marker .marker-expanded {
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 50%;
+    margin-left: -131px; }
+    .university-place-marker .marker-expanded .marker-expanded-window .sides {
+      transition: stroke-dashoffset 300ms ease-in-out 150ms;
+      stroke-dasharray: 936, 936;
+      stroke-dashoffset: 936; }
+    .university-place-marker .marker-expanded .marker-expanded-content {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      transition: all 150ms ease-in-out 350ms;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: calc(100% - 4px);
+      height: calc(100% - 26px); }
+      .university-place-marker .marker-expanded .marker-expanded-content .marker-expanded-icon svg {
+        fill: none;
+        stroke: white;
+        stroke-width: 1.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        top: -50%;
+        margin-top: 75px;
+        width: 100px;
+        height: 100px; }
+      .university-place-marker .marker-expanded .marker-expanded-content .marker-location {
+        padding: 40px 0 15px 0;
+        text-align: center; }
+        .university-place-marker .marker-expanded .marker-expanded-content .marker-location h1 {
+          font-size: 18px;
+          font-weight: 600; }
+        .university-place-marker .marker-expanded .marker-expanded-content .marker-location h4 {
+          font-size: 14px;
+          font-weight: 600; }
+      .university-place-marker .marker-expanded .marker-expanded-content .marker-guru {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        position: relative;
+        padding: 10px 15px; }
+        .university-place-marker .marker-expanded .marker-expanded-content .marker-guru .user-icon {
+          width: 48px;
+          height: 48px;
+          border-width: 2px; }
+        .university-place-marker .marker-expanded .marker-expanded-content .marker-guru div {
+          width: calc(100% - 48px);
+          padding-left: 15px;
+          text-align: left; }
+        .university-place-marker .marker-expanded .marker-expanded-content .marker-guru h1 {
+          font-size: 20px;
+          font-weight: 600; }
+        .university-place-marker .marker-expanded .marker-expanded-content .marker-guru h3 {
+          filter: alpha(opacity=50);
+          opacity: 0.5;
+          margin-top: 0 !important;
+          font-size: 14px;
+          font-weight: 600; }
+        .university-place-marker .marker-expanded .marker-expanded-content .marker-guru svg {
+          fill: none;
+          stroke: white;
+          stroke-width: 8px;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -moz-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+          right: 2px;
+          height: 24px; }
+      .university-place-marker .marker-expanded .marker-expanded-content .marker-message {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-align-items: center;
+        align-items: center;
+        height: calc(100% - 96px - 68px);
+        padding: 0 15px; }
+        .university-place-marker .marker-expanded .marker-expanded-content .marker-message p {
+          margin: 0;
+          font-size: 16px;
+          font-weight: 400;
+          text-align: left; }
+  .university-place-marker .marker-circle {
+    border-radius: 1000px;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin-top: 3px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid white; }
+  .university-place-marker .marker-label {
+    position: absolute;
+    width: 100%;
+    bottom: -35px;
+    font-weight: 600;
+    font-size: 14px; }
+  .university-place-marker.active .marker-normal .marker-normal-window .side {
+    transition: stroke-dashoffset 200ms ease-in-out 150ms;
+    stroke-dashoffset: 278; }
+  .university-place-marker.active .marker-normal .marker-normal-content {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    transition: all 150ms ease-in-out 0ms; }
+    .university-place-marker.active .marker-normal .marker-normal-content svg, .university-place-marker.active .marker-normal .marker-normal-content .marker-guru {
+      transition: all 150ms ease-in-out 0ms; }
+  .university-place-marker.active .marker-normal.move .marker-normal-content {
+    transition: all 150ms ease-in-out 0ms; }
+    .university-place-marker.active .marker-normal.move .marker-normal-content svg, .university-place-marker.active .marker-normal.move .marker-normal-content .marker-guru {
+      transition: all 150ms ease-in-out 0ms; }
+  .university-place-marker.active .marker-expanded {
+    z-index: 2; }
+    .university-place-marker.active .marker-expanded .marker-expanded-window .sides {
+      transition: stroke-dashoffset 300ms ease-in-out 350ms;
+      stroke-dashoffset: 0; }
+    .university-place-marker.active .marker-expanded .marker-expanded-content {
+      filter: alpha(opacity=100);
+      opacity: 1;
+      transition: all 150ms ease-in-out 650ms; }
+
+[class*="tile-border"] li {
+  position: relative; }
+  [class*="tile-border"] li:not(:last-child):after {
+    border-radius: 1000px;
+    content: "";
+    display: block;
+    position: absolute; }
+[class*="tile-border"][class*="tile-border-side"] li:after {
+  right: -1px;
+  top: 15px;
+  height: calc(100% - 30px);
+  width: 2px; }
+[class*="tile-border"][class*="tile-border-bottom"] li:after {
+  bottom: -1px;
+  left: 15px;
+  width: calc(100% - 30px);
+  height: 2px; }
+[class*="tile-border"][class*="dark"] li:after {
+  background: rgba(64, 72, 75, 0.2); }
+[class*="tile-border"][class*="light"] li:after {
+  background: rgba(255, 255, 255, 0.2); }
+
 .pf-tile-container {
   -webkit-perspective: 1000;
   perspective: 1000;
@@ -5021,9 +5616,15 @@ a.course-card:active .course-card-hover {
     width: 100%;
     height: 100%;
     background: rgba(99, 112, 116, 0.7);
-    border-radius: 2px;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid white; }
+    border-radius: 2px; }
+    .category-tile .category-tile-inside .category-tile-border {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: white;
+      border-radius: 0 0 2px 2px; }
     .category-tile .category-tile-inside .category-tile-icon {
       border-radius: 1000px;
       width: 72px;
@@ -5098,17 +5699,13 @@ a.course-card:active .course-card-hover {
       filter: alpha(opacity=100);
       opacity: 1;
       background: white; }
-  .category-tile.price-moxie .category-tile-price div {
+  .category-tile.price-moxie .category-tile-price div, .category-tile.price-moxie .category-tile-border {
     background: #43cb9d !important; }
-  .category-tile.price-moxie .category-tile-inside {
-    border-bottom: 5px solid #43cb9d !important; }
-  .category-tile.price-crimson .category-tile-price div {
+  .category-tile.price-crimson .category-tile-price div, .category-tile.price-crimson .category-tile-border {
     background: #d3242c !important; }
-  .category-tile.price-crimson .category-tile-inside {
-    border-bottom: 5px solid #d3242c !important; }
   .category-tile.bg-delivery {
     background-color: #F04F54; }
-    .category-tile.bg-delivery .category-tile-price div {
+    .category-tile.bg-delivery .category-tile-price div, .category-tile.bg-delivery .category-tile-border, .category-tile.bg-delivery .category-tile-icon {
       background: #F04F54; }
     .category-tile.bg-delivery .category-tile-count {
       color: #aa6064; }
@@ -5118,13 +5715,9 @@ a.course-card:active .course-card-hover {
         stroke-width: 10px;
         stroke-linecap: round;
         stroke-linejoin: round; }
-    .category-tile.bg-delivery .category-tile-inside {
-      border-bottom: 5px solid #F04F54; }
-      .category-tile.bg-delivery .category-tile-inside .category-tile-icon {
-        background: #F04F54; }
   .category-tile.bg-freelancing {
     background-color: #E5753C; }
-    .category-tile.bg-freelancing .category-tile-price div {
+    .category-tile.bg-freelancing .category-tile-price div, .category-tile.bg-freelancing .category-tile-border, .category-tile.bg-freelancing .category-tile-icon {
       background: #E5753C; }
     .category-tile.bg-freelancing .category-tile-count {
       color: #a47358; }
@@ -5134,13 +5727,9 @@ a.course-card:active .course-card-hover {
         stroke-width: 10px;
         stroke-linecap: round;
         stroke-linejoin: round; }
-    .category-tile.bg-freelancing .category-tile-inside {
-      border-bottom: 5px solid #E5753C; }
-      .category-tile.bg-freelancing .category-tile-inside .category-tile-icon {
-        background: #E5753C; }
   .category-tile.bg-baking {
     background-color: #F6C64E; }
-    .category-tile.bg-baking .category-tile-price div {
+    .category-tile.bg-baking .category-tile-price div, .category-tile.bg-baking .category-tile-border, .category-tile.bg-baking .category-tile-icon {
       background: #F6C64E; }
     .category-tile.bg-baking .category-tile-count {
       color: #ad9b61; }
@@ -5150,13 +5739,9 @@ a.course-card:active .course-card-hover {
         stroke-width: 10px;
         stroke-linecap: round;
         stroke-linejoin: round; }
-    .category-tile.bg-baking .category-tile-inside {
-      border-bottom: 5px solid #F6C64E; }
-      .category-tile.bg-baking .category-tile-inside .category-tile-icon {
-        background: #F6C64E; }
   .category-tile.bg-photography {
     background-color: #81B566; }
-    .category-tile.bg-photography .category-tile-price div {
+    .category-tile.bg-photography .category-tile-price div, .category-tile.bg-photography .category-tile-border, .category-tile.bg-photography .category-tile-icon {
       background: #81B566; }
     .category-tile.bg-photography .category-tile-count {
       color: #72936d; }
@@ -5166,13 +5751,9 @@ a.course-card:active .course-card-hover {
         stroke-width: 10px;
         stroke-linecap: round;
         stroke-linejoin: round; }
-    .category-tile.bg-photography .category-tile-inside {
-      border-bottom: 5px solid #81B566; }
-      .category-tile.bg-photography .category-tile-inside .category-tile-icon {
-        background: #81B566; }
   .category-tile.bg-tech {
     background-color: #55A4B7; }
-    .category-tile.bg-tech .category-tile-price div {
+    .category-tile.bg-tech .category-tile-price div, .category-tile.bg-tech .category-tile-border, .category-tile.bg-tech .category-tile-icon {
       background: #55A4B7; }
     .category-tile.bg-tech .category-tile-count {
       color: #5c8a96; }
@@ -5182,13 +5763,9 @@ a.course-card:active .course-card-hover {
         stroke-width: 10px;
         stroke-linecap: round;
         stroke-linejoin: round; }
-    .category-tile.bg-tech .category-tile-inside {
-      border-bottom: 5px solid #55A4B7; }
-      .category-tile.bg-tech .category-tile-inside .category-tile-icon {
-        background: #55A4B7; }
   .category-tile.bg-household {
     background-color: #7872e3; }
-    .category-tile.bg-household .category-tile-price div {
+    .category-tile.bg-household .category-tile-price div, .category-tile.bg-household .category-tile-border, .category-tile.bg-household .category-tile-icon {
       background: #7872e3; }
     .category-tile.bg-household .category-tile-count {
       color: #6e71ac; }
@@ -5198,13 +5775,9 @@ a.course-card:active .course-card-hover {
         stroke-width: 10px;
         stroke-linecap: round;
         stroke-linejoin: round; }
-    .category-tile.bg-household .category-tile-inside {
-      border-bottom: 5px solid #7872e3; }
-      .category-tile.bg-household .category-tile-inside .category-tile-icon {
-        background: #7872e3; }
   .category-tile.bg-athletic {
     background-color: #9A5BC5; }
-    .category-tile.bg-athletic .category-tile-price div {
+    .category-tile.bg-athletic .category-tile-price div, .category-tile.bg-athletic .category-tile-border, .category-tile.bg-athletic .category-tile-icon {
       background: #9A5BC5; }
     .category-tile.bg-athletic .category-tile-count {
       color: #7f669d; }
@@ -5214,13 +5787,9 @@ a.course-card:active .course-card-hover {
         stroke-width: 10px;
         stroke-linecap: round;
         stroke-linejoin: round; }
-    .category-tile.bg-athletic .category-tile-inside {
-      border-bottom: 5px solid #9A5BC5; }
-      .category-tile.bg-athletic .category-tile-inside .category-tile-icon {
-        background: #9A5BC5; }
   .category-tile.bg-academic {
     background-color: #e6389b; }
-    .category-tile.bg-academic .category-tile-price div {
+    .category-tile.bg-academic .category-tile-price div, .category-tile.bg-academic .category-tile-border, .category-tile.bg-academic .category-tile-icon {
       background: #e6389b; }
     .category-tile.bg-academic .category-tile-count {
       color: #a55488; }
@@ -5230,228 +5799,209 @@ a.course-card:active .course-card-hover {
         stroke-width: 10px;
         stroke-linecap: round;
         stroke-linejoin: round; }
-    .category-tile.bg-academic .category-tile-inside {
-      border-bottom: 5px solid #e6389b; }
-      .category-tile.bg-academic .category-tile-inside .category-tile-icon {
-        background: #e6389b; }
   .category-tile.no-photo:not([class*="bg-"]) {
     background-color: #637074; }
   .category-tile.no-photo .category-tile-inside {
-    background: none;
-    border-bottom-color: white; }
+    background: none; }
+    .category-tile.no-photo .category-tile-inside .category-tile-border {
+      background: white; }
     .category-tile.no-photo .category-tile-inside .category-tile-icon {
       background: none; }
   .category-tile.no-border .category-tile-inside {
     border-color: transparent; }
 
 a.category-tile.bg-delivery:hover .category-tile-inside, a.category-tile.bg-delivery:focus .category-tile-inside {
-  background: #f8a7aa;
-  border-bottom-color: #984c50; }
-  a.category-tile.bg-delivery:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-delivery:focus .category-tile-inside .category-tile-icon {
+  background: #f8a7aa; }
+  a.category-tile.bg-delivery:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-delivery:hover .category-tile-inside .category-tile-border, a.category-tile.bg-delivery:focus .category-tile-inside .category-tile-icon, a.category-tile.bg-delivery:focus .category-tile-inside .category-tile-border {
     background: #984c50; }
   a.category-tile.bg-delivery:hover .category-tile-inside h1, a.category-tile.bg-delivery:focus .category-tile-inside h1 {
     color: #984c50; }
 a.category-tile.bg-delivery:active .category-tile-inside {
-  background: #984c50;
-  border-bottom-color: white; }
-  a.category-tile.bg-delivery:active .category-tile-inside .category-tile-icon {
+  background: #984c50; }
+  a.category-tile.bg-delivery:active .category-tile-inside .category-tile-icon, a.category-tile.bg-delivery:active .category-tile-inside .category-tile-border {
     background: white; }
-    a.category-tile.bg-delivery:active .category-tile-inside .category-tile-icon svg * {
+    a.category-tile.bg-delivery:active .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-delivery:active .category-tile-inside .category-tile-border svg * {
       stroke: #F04F54; }
   a.category-tile.bg-delivery:active .category-tile-inside h1 {
     color: white; }
-a.category-tile.bg-delivery.no-photo:hover .category-tile-inside, a.category-tile.bg-delivery.no-photo:focus .category-tile-inside {
-  border-bottom-color: #984c50; }
-  a.category-tile.bg-delivery.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-delivery.no-photo:focus .category-tile-inside .category-tile-icon {
-    background: none; }
-    a.category-tile.bg-delivery.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-delivery.no-photo:focus .category-tile-inside .category-tile-icon svg * {
-      stroke: #984c50; }
-a.category-tile.bg-delivery.no-photo:active .category-tile-inside {
-  border-bottom-color: white; }
-  a.category-tile.bg-delivery.no-photo:active .category-tile-inside .category-tile-icon svg * {
-    stroke: white; }
+a.category-tile.bg-delivery.no-photo:hover .category-tile-inside .category-tile-border, a.category-tile.bg-delivery.no-photo:focus .category-tile-inside .category-tile-border {
+  background: #984c50; }
+a.category-tile.bg-delivery.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-delivery.no-photo:focus .category-tile-inside .category-tile-icon {
+  background: none; }
+  a.category-tile.bg-delivery.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-delivery.no-photo:focus .category-tile-inside .category-tile-icon svg * {
+    stroke: #984c50; }
+a.category-tile.bg-delivery.no-photo:active .category-tile-inside .category-tile-icon {
+  background: white; }
+a.category-tile.bg-delivery.no-photo:active .category-tile-inside .category-tile-icon svg * {
+  stroke: white; }
 a.category-tile.bg-freelancing:hover .category-tile-inside, a.category-tile.bg-freelancing:focus .category-tile-inside {
-  background: #f2ba9e;
-  border-bottom-color: #935f44; }
-  a.category-tile.bg-freelancing:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-freelancing:focus .category-tile-inside .category-tile-icon {
+  background: #f2ba9e; }
+  a.category-tile.bg-freelancing:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-freelancing:hover .category-tile-inside .category-tile-border, a.category-tile.bg-freelancing:focus .category-tile-inside .category-tile-icon, a.category-tile.bg-freelancing:focus .category-tile-inside .category-tile-border {
     background: #935f44; }
   a.category-tile.bg-freelancing:hover .category-tile-inside h1, a.category-tile.bg-freelancing:focus .category-tile-inside h1 {
     color: #935f44; }
 a.category-tile.bg-freelancing:active .category-tile-inside {
-  background: #935f44;
-  border-bottom-color: white; }
-  a.category-tile.bg-freelancing:active .category-tile-inside .category-tile-icon {
+  background: #935f44; }
+  a.category-tile.bg-freelancing:active .category-tile-inside .category-tile-icon, a.category-tile.bg-freelancing:active .category-tile-inside .category-tile-border {
     background: white; }
-    a.category-tile.bg-freelancing:active .category-tile-inside .category-tile-icon svg * {
+    a.category-tile.bg-freelancing:active .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-freelancing:active .category-tile-inside .category-tile-border svg * {
       stroke: #E5753C; }
   a.category-tile.bg-freelancing:active .category-tile-inside h1 {
     color: white; }
-a.category-tile.bg-freelancing.no-photo:hover .category-tile-inside, a.category-tile.bg-freelancing.no-photo:focus .category-tile-inside {
-  border-bottom-color: #935f44; }
-  a.category-tile.bg-freelancing.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-freelancing.no-photo:focus .category-tile-inside .category-tile-icon {
-    background: none; }
-    a.category-tile.bg-freelancing.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-freelancing.no-photo:focus .category-tile-inside .category-tile-icon svg * {
-      stroke: #935f44; }
-a.category-tile.bg-freelancing.no-photo:active .category-tile-inside {
-  border-bottom-color: white; }
-  a.category-tile.bg-freelancing.no-photo:active .category-tile-inside .category-tile-icon svg * {
-    stroke: white; }
+a.category-tile.bg-freelancing.no-photo:hover .category-tile-inside .category-tile-border, a.category-tile.bg-freelancing.no-photo:focus .category-tile-inside .category-tile-border {
+  background: #935f44; }
+a.category-tile.bg-freelancing.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-freelancing.no-photo:focus .category-tile-inside .category-tile-icon {
+  background: none; }
+  a.category-tile.bg-freelancing.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-freelancing.no-photo:focus .category-tile-inside .category-tile-icon svg * {
+    stroke: #935f44; }
+a.category-tile.bg-freelancing.no-photo:active .category-tile-inside .category-tile-border {
+  background: white; }
+a.category-tile.bg-freelancing.no-photo:active .category-tile-inside .category-tile-icon svg * {
+  stroke: white; }
 a.category-tile.bg-baking:hover .category-tile-inside, a.category-tile.bg-baking:focus .category-tile-inside {
-  background: #fbe3a7;
-  border-bottom-color: #9b874d; }
-  a.category-tile.bg-baking:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-baking:focus .category-tile-inside .category-tile-icon {
+  background: #fbe3a7; }
+  a.category-tile.bg-baking:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-baking:hover .category-tile-inside .category-tile-border, a.category-tile.bg-baking:focus .category-tile-inside .category-tile-icon, a.category-tile.bg-baking:focus .category-tile-inside .category-tile-border {
     background: #9b874d; }
   a.category-tile.bg-baking:hover .category-tile-inside h1, a.category-tile.bg-baking:focus .category-tile-inside h1 {
     color: #9b874d; }
 a.category-tile.bg-baking:active .category-tile-inside {
-  background: #9b874d;
-  border-bottom-color: white; }
-  a.category-tile.bg-baking:active .category-tile-inside .category-tile-icon {
+  background: #9b874d; }
+  a.category-tile.bg-baking:active .category-tile-inside .category-tile-icon, a.category-tile.bg-baking:active .category-tile-inside .category-tile-border {
     background: white; }
-    a.category-tile.bg-baking:active .category-tile-inside .category-tile-icon svg * {
+    a.category-tile.bg-baking:active .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-baking:active .category-tile-inside .category-tile-border svg * {
       stroke: #F6C64E; }
   a.category-tile.bg-baking:active .category-tile-inside h1 {
     color: white; }
-a.category-tile.bg-baking.no-photo:hover .category-tile-inside, a.category-tile.bg-baking.no-photo:focus .category-tile-inside {
-  border-bottom-color: #9b874d; }
-  a.category-tile.bg-baking.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-baking.no-photo:focus .category-tile-inside .category-tile-icon {
-    background: none; }
-    a.category-tile.bg-baking.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-baking.no-photo:focus .category-tile-inside .category-tile-icon svg * {
-      stroke: #9b874d; }
-a.category-tile.bg-baking.no-photo:active .category-tile-inside {
-  border-bottom-color: white; }
-  a.category-tile.bg-baking.no-photo:active .category-tile-inside .category-tile-icon svg * {
-    stroke: white; }
+a.category-tile.bg-baking.no-photo:hover .category-tile-inside .category-tile-border, a.category-tile.bg-baking.no-photo:focus .category-tile-inside .category-tile-border {
+  background: #9b874d; }
+a.category-tile.bg-baking.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-baking.no-photo:focus .category-tile-inside .category-tile-icon {
+  background: none; }
+  a.category-tile.bg-baking.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-baking.no-photo:focus .category-tile-inside .category-tile-icon svg * {
+    stroke: #9b874d; }
+a.category-tile.bg-baking.no-photo:active .category-tile-inside .category-tile-border {
+  background: white; }
+a.category-tile.bg-baking.no-photo:active .category-tile-inside .category-tile-icon svg * {
+  stroke: white; }
 a.category-tile.bg-photography:hover .category-tile-inside, a.category-tile.bg-photography:focus .category-tile-inside {
-  background: #c0dab3;
-  border-bottom-color: #617f59; }
-  a.category-tile.bg-photography:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-photography:focus .category-tile-inside .category-tile-icon {
+  background: #c0dab3; }
+  a.category-tile.bg-photography:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-photography:hover .category-tile-inside .category-tile-border, a.category-tile.bg-photography:focus .category-tile-inside .category-tile-icon, a.category-tile.bg-photography:focus .category-tile-inside .category-tile-border {
     background: #617f59; }
   a.category-tile.bg-photography:hover .category-tile-inside h1, a.category-tile.bg-photography:focus .category-tile-inside h1 {
     color: #617f59; }
 a.category-tile.bg-photography:active .category-tile-inside {
-  background: #617f59;
-  border-bottom-color: white; }
-  a.category-tile.bg-photography:active .category-tile-inside .category-tile-icon {
+  background: #617f59; }
+  a.category-tile.bg-photography:active .category-tile-inside .category-tile-icon, a.category-tile.bg-photography:active .category-tile-inside .category-tile-border {
     background: white; }
-    a.category-tile.bg-photography:active .category-tile-inside .category-tile-icon svg * {
+    a.category-tile.bg-photography:active .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-photography:active .category-tile-inside .category-tile-border svg * {
       stroke: #81B566; }
   a.category-tile.bg-photography:active .category-tile-inside h1 {
     color: white; }
-a.category-tile.bg-photography.no-photo:hover .category-tile-inside, a.category-tile.bg-photography.no-photo:focus .category-tile-inside {
-  border-bottom-color: #617f59; }
-  a.category-tile.bg-photography.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-photography.no-photo:focus .category-tile-inside .category-tile-icon {
-    background: none; }
-    a.category-tile.bg-photography.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-photography.no-photo:focus .category-tile-inside .category-tile-icon svg * {
-      stroke: #617f59; }
-a.category-tile.bg-photography.no-photo:active .category-tile-inside {
-  border-bottom-color: white; }
-  a.category-tile.bg-photography.no-photo:active .category-tile-inside .category-tile-icon svg * {
-    stroke: white; }
+a.category-tile.bg-photography.no-photo:hover .category-tile-inside .category-tile-border, a.category-tile.bg-photography.no-photo:focus .category-tile-inside .category-tile-border {
+  background: #617f59; }
+a.category-tile.bg-photography.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-photography.no-photo:focus .category-tile-inside .category-tile-icon {
+  background: none; }
+  a.category-tile.bg-photography.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-photography.no-photo:focus .category-tile-inside .category-tile-icon svg * {
+    stroke: #617f59; }
+a.category-tile.bg-photography.no-photo:active .category-tile-inside .category-tile-border {
+  background: white; }
+a.category-tile.bg-photography.no-photo:active .category-tile-inside .category-tile-icon svg * {
+  stroke: white; }
 a.category-tile.bg-tech:hover .category-tile-inside, a.category-tile.bg-tech:focus .category-tile-inside {
-  background: #aad2db;
-  border-bottom-color: #4b7681; }
-  a.category-tile.bg-tech:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-tech:focus .category-tile-inside .category-tile-icon {
+  background: #aad2db; }
+  a.category-tile.bg-tech:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-tech:hover .category-tile-inside .category-tile-border, a.category-tile.bg-tech:focus .category-tile-inside .category-tile-icon, a.category-tile.bg-tech:focus .category-tile-inside .category-tile-border {
     background: #4b7681; }
   a.category-tile.bg-tech:hover .category-tile-inside h1, a.category-tile.bg-tech:focus .category-tile-inside h1 {
     color: #4b7681; }
 a.category-tile.bg-tech:active .category-tile-inside {
-  background: #4b7681;
-  border-bottom-color: white; }
-  a.category-tile.bg-tech:active .category-tile-inside .category-tile-icon {
+  background: #4b7681; }
+  a.category-tile.bg-tech:active .category-tile-inside .category-tile-icon, a.category-tile.bg-tech:active .category-tile-inside .category-tile-border {
     background: white; }
-    a.category-tile.bg-tech:active .category-tile-inside .category-tile-icon svg * {
+    a.category-tile.bg-tech:active .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-tech:active .category-tile-inside .category-tile-border svg * {
       stroke: #55A4B7; }
   a.category-tile.bg-tech:active .category-tile-inside h1 {
     color: white; }
-a.category-tile.bg-tech.no-photo:hover .category-tile-inside, a.category-tile.bg-tech.no-photo:focus .category-tile-inside {
-  border-bottom-color: #4b7681; }
-  a.category-tile.bg-tech.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-tech.no-photo:focus .category-tile-inside .category-tile-icon {
-    background: none; }
-    a.category-tile.bg-tech.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-tech.no-photo:focus .category-tile-inside .category-tile-icon svg * {
-      stroke: #4b7681; }
-a.category-tile.bg-tech.no-photo:active .category-tile-inside {
-  border-bottom-color: white; }
-  a.category-tile.bg-tech.no-photo:active .category-tile-inside .category-tile-icon svg * {
-    stroke: white; }
+a.category-tile.bg-tech.no-photo:hover .category-tile-inside .category-tile-border, a.category-tile.bg-tech.no-photo:focus .category-tile-inside .category-tile-border {
+  background: #4b7681; }
+a.category-tile.bg-tech.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-tech.no-photo:focus .category-tile-inside .category-tile-icon {
+  background: none; }
+  a.category-tile.bg-tech.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-tech.no-photo:focus .category-tile-inside .category-tile-icon svg * {
+    stroke: #4b7681; }
+a.category-tile.bg-tech.no-photo:active .category-tile-inside .category-tile-border {
+  background: white; }
+a.category-tile.bg-tech.no-photo:active .category-tile-inside .category-tile-icon svg * {
+  stroke: white; }
 a.category-tile.bg-household:hover .category-tile-inside, a.category-tile.bg-household:focus .category-tile-inside {
-  background: #bcb9f1;
-  border-bottom-color: #5c5d97; }
-  a.category-tile.bg-household:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-household:focus .category-tile-inside .category-tile-icon {
+  background: #bcb9f1; }
+  a.category-tile.bg-household:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-household:hover .category-tile-inside .category-tile-border, a.category-tile.bg-household:focus .category-tile-inside .category-tile-icon, a.category-tile.bg-household:focus .category-tile-inside .category-tile-border {
     background: #5c5d97; }
   a.category-tile.bg-household:hover .category-tile-inside h1, a.category-tile.bg-household:focus .category-tile-inside h1 {
     color: #5c5d97; }
 a.category-tile.bg-household:active .category-tile-inside {
-  background: #5c5d97;
-  border-bottom-color: white; }
-  a.category-tile.bg-household:active .category-tile-inside .category-tile-icon {
+  background: #5c5d97; }
+  a.category-tile.bg-household:active .category-tile-inside .category-tile-icon, a.category-tile.bg-household:active .category-tile-inside .category-tile-border {
     background: white; }
-    a.category-tile.bg-household:active .category-tile-inside .category-tile-icon svg * {
+    a.category-tile.bg-household:active .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-household:active .category-tile-inside .category-tile-border svg * {
       stroke: #7872e3; }
   a.category-tile.bg-household:active .category-tile-inside h1 {
     color: white; }
-a.category-tile.bg-household.no-photo:hover .category-tile-inside, a.category-tile.bg-household.no-photo:focus .category-tile-inside {
-  border-bottom-color: #5c5d97; }
-  a.category-tile.bg-household.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-household.no-photo:focus .category-tile-inside .category-tile-icon {
-    background: none; }
-    a.category-tile.bg-household.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-household.no-photo:focus .category-tile-inside .category-tile-icon svg * {
-      stroke: #5c5d97; }
-a.category-tile.bg-household.no-photo:active .category-tile-inside {
-  border-bottom-color: white; }
-  a.category-tile.bg-household.no-photo:active .category-tile-inside .category-tile-icon svg * {
-    stroke: white; }
+a.category-tile.bg-household.no-photo:hover .category-tile-inside .category-tile-border, a.category-tile.bg-household.no-photo:focus .category-tile-inside .category-tile-border {
+  background: #5c5d97; }
+a.category-tile.bg-household.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-household.no-photo:focus .category-tile-inside .category-tile-icon {
+  background: none; }
+  a.category-tile.bg-household.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-household.no-photo:focus .category-tile-inside .category-tile-icon svg * {
+    stroke: #5c5d97; }
+a.category-tile.bg-household.no-photo:active .category-tile-inside .category-tile-border {
+  background: white; }
+a.category-tile.bg-household.no-photo:active .category-tile-inside .category-tile-icon svg * {
+  stroke: white; }
 a.category-tile.bg-athletic:hover .category-tile-inside, a.category-tile.bg-athletic:focus .category-tile-inside {
-  background: #cdade2;
-  border-bottom-color: #6d5288; }
-  a.category-tile.bg-athletic:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-athletic:focus .category-tile-inside .category-tile-icon {
+  background: #cdade2; }
+  a.category-tile.bg-athletic:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-athletic:hover .category-tile-inside .category-tile-border, a.category-tile.bg-athletic:focus .category-tile-inside .category-tile-icon, a.category-tile.bg-athletic:focus .category-tile-inside .category-tile-border {
     background: #6d5288; }
   a.category-tile.bg-athletic:hover .category-tile-inside h1, a.category-tile.bg-athletic:focus .category-tile-inside h1 {
     color: #6d5288; }
 a.category-tile.bg-athletic:active .category-tile-inside {
-  background: #6d5288;
-  border-bottom-color: white; }
-  a.category-tile.bg-athletic:active .category-tile-inside .category-tile-icon {
+  background: #6d5288; }
+  a.category-tile.bg-athletic:active .category-tile-inside .category-tile-icon, a.category-tile.bg-athletic:active .category-tile-inside .category-tile-border {
     background: white; }
-    a.category-tile.bg-athletic:active .category-tile-inside .category-tile-icon svg * {
+    a.category-tile.bg-athletic:active .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-athletic:active .category-tile-inside .category-tile-border svg * {
       stroke: #9A5BC5; }
   a.category-tile.bg-athletic:active .category-tile-inside h1 {
     color: white; }
-a.category-tile.bg-athletic.no-photo:hover .category-tile-inside, a.category-tile.bg-athletic.no-photo:focus .category-tile-inside {
-  border-bottom-color: #6d5288; }
-  a.category-tile.bg-athletic.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-athletic.no-photo:focus .category-tile-inside .category-tile-icon {
-    background: none; }
-    a.category-tile.bg-athletic.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-athletic.no-photo:focus .category-tile-inside .category-tile-icon svg * {
-      stroke: #6d5288; }
-a.category-tile.bg-athletic.no-photo:active .category-tile-inside {
-  border-bottom-color: white; }
-  a.category-tile.bg-athletic.no-photo:active .category-tile-inside .category-tile-icon svg * {
-    stroke: white; }
+a.category-tile.bg-athletic.no-photo:hover .category-tile-inside .category-tile-border, a.category-tile.bg-athletic.no-photo:focus .category-tile-inside .category-tile-border {
+  background: #6d5288; }
+a.category-tile.bg-athletic.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-athletic.no-photo:focus .category-tile-inside .category-tile-icon {
+  background: none; }
+  a.category-tile.bg-athletic.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-athletic.no-photo:focus .category-tile-inside .category-tile-icon svg * {
+    stroke: #6d5288; }
+a.category-tile.bg-athletic.no-photo:active .category-tile-inside .category-tile-border {
+  background: white; }
+a.category-tile.bg-athletic.no-photo:active .category-tile-inside .category-tile-icon svg * {
+  stroke: white; }
 a.category-tile.bg-academic:hover .category-tile-inside, a.category-tile.bg-academic:focus .category-tile-inside {
-  background: #f39ccd;
-  border-bottom-color: #934073; }
-  a.category-tile.bg-academic:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-academic:focus .category-tile-inside .category-tile-icon {
+  background: #f39ccd; }
+  a.category-tile.bg-academic:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-academic:hover .category-tile-inside .category-tile-border, a.category-tile.bg-academic:focus .category-tile-inside .category-tile-icon, a.category-tile.bg-academic:focus .category-tile-inside .category-tile-border {
     background: #934073; }
   a.category-tile.bg-academic:hover .category-tile-inside h1, a.category-tile.bg-academic:focus .category-tile-inside h1 {
     color: #934073; }
 a.category-tile.bg-academic:active .category-tile-inside {
-  background: #934073;
-  border-bottom-color: white; }
-  a.category-tile.bg-academic:active .category-tile-inside .category-tile-icon {
+  background: #934073; }
+  a.category-tile.bg-academic:active .category-tile-inside .category-tile-icon, a.category-tile.bg-academic:active .category-tile-inside .category-tile-border {
     background: white; }
-    a.category-tile.bg-academic:active .category-tile-inside .category-tile-icon svg * {
+    a.category-tile.bg-academic:active .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-academic:active .category-tile-inside .category-tile-border svg * {
       stroke: #e6389b; }
   a.category-tile.bg-academic:active .category-tile-inside h1 {
     color: white; }
-a.category-tile.bg-academic.no-photo:hover .category-tile-inside, a.category-tile.bg-academic.no-photo:focus .category-tile-inside {
-  border-bottom-color: #934073; }
-  a.category-tile.bg-academic.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-academic.no-photo:focus .category-tile-inside .category-tile-icon {
-    background: none; }
-    a.category-tile.bg-academic.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-academic.no-photo:focus .category-tile-inside .category-tile-icon svg * {
-      stroke: #934073; }
-a.category-tile.bg-academic.no-photo:active .category-tile-inside {
-  border-bottom-color: white; }
-  a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile-icon svg * {
-    stroke: white; }
+a.category-tile.bg-academic.no-photo:hover .category-tile-inside .category-tile-border, a.category-tile.bg-academic.no-photo:focus .category-tile-inside .category-tile-border {
+  background: #934073; }
+a.category-tile.bg-academic.no-photo:hover .category-tile-inside .category-tile-icon, a.category-tile.bg-academic.no-photo:focus .category-tile-inside .category-tile-icon {
+  background: none; }
+  a.category-tile.bg-academic.no-photo:hover .category-tile-inside .category-tile-icon svg *, a.category-tile.bg-academic.no-photo:focus .category-tile-inside .category-tile-icon svg * {
+    stroke: #934073; }
+a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile-border {
+  background: white; }
+a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile-icon svg * {
+  stroke: white; }
 
 .request-tile {
   width: 100%;
@@ -5855,282 +6405,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
     background: #e6389b; }
   .calendar-tile.bg-cerise h1, .calendar-tile.bg-academic h1 {
     color: #e6389b; }
-
-.timeline-card {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 2px;
-  color: #40484B; }
-  .timeline-card header {
-    height: auto;
-    min-height: auto; }
-    .timeline-card header a {
-      display: block;
-      position: relative;
-      padding: 10px 15px;
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 1.2;
-      text-transform: none;
-      border-radius: 2px 2px 0 0; }
-      .timeline-card header a:after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 10px;
-        width: 0;
-        height: 0;
-        border: 12px solid transparent; }
-  .timeline-card figure {
-    background: white; }
-    .timeline-card figure img {
-      display: block;
-      width: 100%; }
-      .timeline-card figure img.post-svg {
-        max-height: 150px; }
-  .timeline-card section {
-    background: white;
-    height: auto;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 0 0 2px 2px; }
-    .timeline-card section p {
-      padding: 15px;
-      margin: 0; }
-    .timeline-card section > *:not(:first-child) {
-      margin-top: -15px; }
-    .timeline-card section footer ul {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      padding: 7.5px;
-      width: 100%; }
-      .timeline-card section footer ul li {
-        padding: 7.5px; }
-        .timeline-card section footer ul li:first-child {
-          width: 51px; }
-        .timeline-card section footer ul li:last-child {
-          width: calc(100% - 51px); }
-          .timeline-card section footer ul li:last-child > span, .timeline-card section footer ul li:last-child > a {
-            display: block; }
-            .timeline-card section footer ul li:last-child > span span, .timeline-card section footer ul li:last-child > a span {
-              opacity: 0.5; }
-          .timeline-card section footer ul li:last-child span {
-            font-weight: 400; }
-    .timeline-card section footer .user-icon-36 {
-      margin: 0; }
-  .timeline-card.timeline-left header a:after {
-    left: -24px; }
-  .timeline-card.timeline-right header a:after {
-    right: -24px; }
-  .timeline-card.timeline-milestone header a {
-    background: #80beb3; }
-  .timeline-card.timeline-milestone section a {
-    color: #80beb3; }
-    .timeline-card.timeline-milestone section a span {
-      color: #40484B; }
-  .timeline-card.timeline-milestone section footer .user-icon-36 {
-    border-color: #80beb3; }
-  .timeline-card.timeline-milestone.timeline-left header a:after {
-    border-right-color: #80beb3; }
-  .timeline-card.timeline-milestone.timeline-right header a:after {
-    border-left-color: #80beb3; }
-  .timeline-card.timeline-blog header a {
-    background: #f7cc60; }
-  .timeline-card.timeline-blog section a {
-    color: #f7cc60; }
-    .timeline-card.timeline-blog section a span {
-      color: #40484B; }
-  .timeline-card.timeline-blog section footer .user-icon-36 {
-    border-color: #f7cc60; }
-  .timeline-card.timeline-blog.timeline-left header a:after {
-    border-right-color: #f7cc60; }
-  .timeline-card.timeline-blog.timeline-right header a:after {
-    border-left-color: #f7cc60; }
-  .timeline-card.timeline-tutorial header a {
-    background: #6fb2c2; }
-  .timeline-card.timeline-tutorial section a {
-    color: #6fb2c2; }
-    .timeline-card.timeline-tutorial section a span {
-      color: #40484B; }
-  .timeline-card.timeline-tutorial section footer .user-icon-36 {
-    border-color: #6fb2c2; }
-  .timeline-card.timeline-tutorial.timeline-left header a:after {
-    border-right-color: #6fb2c2; }
-  .timeline-card.timeline-tutorial.timeline-right header a:after {
-    border-left-color: #6fb2c2; }
-  .timeline-card.timeline-partnership header a {
-    background: #f26165; }
-  .timeline-card.timeline-partnership section a {
-    color: #f26165; }
-    .timeline-card.timeline-partnership section a span {
-      color: #40484B; }
-  .timeline-card.timeline-partnership section footer .user-icon-36 {
-    border-color: #f26165; }
-  .timeline-card.timeline-partnership.timeline-left header a:after {
-    border-right-color: #f26165; }
-  .timeline-card.timeline-partnership.timeline-right header a:after {
-    border-left-color: #f26165; }
-  .timeline-card.timeline-parent header a {
-    background: #a974ce; }
-  .timeline-card.timeline-parent section a {
-    color: #a974ce; }
-    .timeline-card.timeline-parent section a span {
-      color: #40484B; }
-  .timeline-card.timeline-parent section footer .user-icon-36 {
-    border-color: #a974ce; }
-  .timeline-card.timeline-parent.timeline-left header a:after {
-    border-right-color: #a974ce; }
-  .timeline-card.timeline-parent.timeline-right header a:after {
-    border-left-color: #a974ce; }
-  .timeline-card.timeline-college-main header a {
-    background: #eb60af; }
-  .timeline-card.timeline-college-main section a {
-    color: #eb60af; }
-    .timeline-card.timeline-college-main section a span {
-      color: #40484B; }
-  .timeline-card.timeline-college-main section footer .user-icon-36 {
-    border-color: #eb60af; }
-  .timeline-card.timeline-college-main.timeline-left header a:after {
-    border-right-color: #eb60af; }
-  .timeline-card.timeline-college-main.timeline-right header a:after {
-    border-left-color: #eb60af; }
-  .timeline-card.timeline-college-guru header a {
-    background: #94c07d; }
-  .timeline-card.timeline-college-guru section a {
-    color: #94c07d; }
-    .timeline-card.timeline-college-guru section a span {
-      color: #40484B; }
-  .timeline-card.timeline-college-guru section footer .user-icon-36 {
-    border-color: #94c07d; }
-  .timeline-card.timeline-college-guru.timeline-left header a:after {
-    border-right-color: #94c07d; }
-  .timeline-card.timeline-college-guru.timeline-right header a:after {
-    border-left-color: #94c07d; }
-  .timeline-card.timeline-college-student header a {
-    background: #6ab3e2; }
-  .timeline-card.timeline-college-student section a {
-    color: #6ab3e2; }
-    .timeline-card.timeline-college-student section a span {
-      color: #40484B; }
-  .timeline-card.timeline-college-student section footer .user-icon-36 {
-    border-color: #6ab3e2; }
-  .timeline-card.timeline-college-student.timeline-left header a:after {
-    border-right-color: #6ab3e2; }
-  .timeline-card.timeline-college-student.timeline-right header a:after {
-    border-left-color: #6ab3e2; }
-  .timeline-card.timeline-professional header a {
-    background: #8c87e7; }
-  .timeline-card.timeline-professional section a {
-    color: #8c87e7; }
-    .timeline-card.timeline-professional section a span {
-      color: #40484B; }
-  .timeline-card.timeline-professional section footer .user-icon-36 {
-    border-color: #8c87e7; }
-  .timeline-card.timeline-professional.timeline-left header a:after {
-    border-right-color: #8c87e7; }
-  .timeline-card.timeline-professional.timeline-right header a:after {
-    border-left-color: #8c87e7; }
-  .timeline-card.timeline-high-school header a {
-    background: #e98a59; }
-  .timeline-card.timeline-high-school section a {
-    color: #e98a59; }
-    .timeline-card.timeline-high-school section a span {
-      color: #40484B; }
-  .timeline-card.timeline-high-school section footer .user-icon-36 {
-    border-color: #e98a59; }
-  .timeline-card.timeline-high-school.timeline-left header a:after {
-    border-right-color: #e98a59; }
-  .timeline-card.timeline-high-school.timeline-right header a:after {
-    border-left-color: #e98a59; }
-
-.timeline-icon {
-  position: relative; }
-  .timeline-icon .timeline-icon-svg {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    border-radius: 1000px;
-    position: relative;
-    z-index: 2;
-    width: 48px;
-    height: 48px; }
-  .timeline-icon .timeline-icon-cover {
-    position: absolute;
-    top: 0;
-    right: 24px;
-    width: 400px;
-    height: 48px;
-    z-index: 1; }
-  .timeline-icon h2 {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-align-items: center;
-    align-items: center;
-    z-index: 0;
-    position: absolute;
-    top: 0;
-    height: 48px;
-    font-size: 18px;
-    font-weight: 600;
-    text-transform: uppercase; }
-  .timeline-icon.timeline-icon-left h2 {
-    right: 24px;
-    border-radius: 1000px 0 0 1000px;
-    padding: 0 25px 0 15px; }
-  .timeline-icon.timeline-icon-right h2 {
-    left: 24px;
-    border-radius: 0 1000px 1000px 0;
-    padding: 0 15px 0 25px; }
-  .timeline-icon svg {
-    width: 36px;
-    height: 36px; }
-    .timeline-icon svg * {
-      stroke: white;
-      stroke-width: 6px; }
-  .timeline-icon.timeline-milestone .timeline-icon-svg, .timeline-icon.timeline-milestone h2 {
-    background: #80beb3; }
-  .timeline-icon.timeline-blog .timeline-icon-svg, .timeline-icon.timeline-blog h2 {
-    background: #f7cc60; }
-  .timeline-icon.timeline-tutorial .timeline-icon-svg, .timeline-icon.timeline-tutorial h2 {
-    background: #6fb2c2; }
-  .timeline-icon.timeline-partnership .timeline-icon-svg, .timeline-icon.timeline-partnership h2 {
-    background: #f26165; }
-  .timeline-icon.timeline-parent .timeline-icon-svg, .timeline-icon.timeline-parent h2 {
-    background: #a974ce; }
-  .timeline-icon.timeline-college-main .timeline-icon-svg, .timeline-icon.timeline-college-main h2 {
-    background: #eb60af; }
-  .timeline-icon.timeline-college-guru .timeline-icon-svg, .timeline-icon.timeline-college-guru h2 {
-    background: #94c07d; }
-  .timeline-icon.timeline-college-student .timeline-icon-svg, .timeline-icon.timeline-college-student h2 {
-    background: #6ab3e2; }
-  .timeline-icon.timeline-professional .timeline-icon-svg, .timeline-icon.timeline-professional h2 {
-    background: #8c87e7; }
-  .timeline-icon.timeline-high-school .timeline-icon-svg, .timeline-icon.timeline-high-school h2 {
-    background: #e98a59; }
 
 .attachment-tile {
   -ms-box-orient: horizontal;
@@ -7059,326 +7333,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside {
     opacity: 1;
     width: calc(100% + 30px);
     height: calc(100% + 30px); }
-
-@keyframes album-fade {
-  0% {
-    filter: alpha(opacity=0);
-    opacity: 0; }
-  100% {
-    filter: alpha(opacity=100);
-    opacity: 1; } }
-@keyframes album-title {
-  0% {
-    filter: alpha(opacity=0);
-    opacity: 0;
-    transform: translateY(-100%) translateZ(0); }
-  100% {
-    filter: alpha(opacity=100);
-    opacity: 1;
-    transform: translateY(0) translateZ(0); } }
-@keyframes album-genre {
-  0% {
-    filter: alpha(opacity=0);
-    opacity: 0;
-    transform: translateY(-100%) translateZ(0); }
-  100% {
-    filter: alpha(opacity=50);
-    opacity: 0.5;
-    transform: translateY(0) translateZ(0); } }
-.university-place-marker {
-  transition: all 150ms ease-in-out;
-  position: relative;
-  cursor: pointer;
-  max-width: 262px; }
-  .university-place-marker.visible {
-    filter: alpha(opacity=100) !important;
-    opacity: 1 !important;
-    z-index: 9; }
-  .university-place-marker.bg-academic .marker-circle {
-    background: #F04F54; }
-  .university-place-marker.bg-academic .marker-guru {
-    background: rgba(240, 79, 84, 0.3); }
-    .university-place-marker.bg-academic .marker-guru:hover, .university-place-marker.bg-academic .marker-guru:focus {
-      background: #F04F54; }
-  .university-place-marker.bg-freelancing .marker-circle {
-    background: #E5753C; }
-  .university-place-marker.bg-freelancing .marker-guru {
-    background: rgba(229, 117, 60, 0.3); }
-    .university-place-marker.bg-freelancing .marker-guru:hover, .university-place-marker.bg-freelancing .marker-guru:focus {
-      background: #E5753C; }
-  .university-place-marker.bg-baking .marker-circle {
-    background: #F6C64E; }
-  .university-place-marker.bg-baking .marker-guru {
-    background: rgba(246, 198, 78, 0.3); }
-    .university-place-marker.bg-baking .marker-guru:hover, .university-place-marker.bg-baking .marker-guru:focus {
-      background: #F6C64E; }
-  .university-place-marker.bg-photography .marker-circle {
-    background: #81B566; }
-  .university-place-marker.bg-photography .marker-guru {
-    background: rgba(129, 181, 102, 0.3); }
-    .university-place-marker.bg-photography .marker-guru:hover, .university-place-marker.bg-photography .marker-guru:focus {
-      background: #81B566; }
-  .university-place-marker.bg-tech .marker-circle {
-    background: #55A4B7; }
-  .university-place-marker.bg-tech .marker-guru {
-    background: rgba(85, 164, 183, 0.3); }
-    .university-place-marker.bg-tech .marker-guru:hover, .university-place-marker.bg-tech .marker-guru:focus {
-      background: #55A4B7; }
-  .university-place-marker.bg-household .marker-circle {
-    background: #7872e3; }
-  .university-place-marker.bg-household .marker-guru {
-    background: rgba(120, 114, 227, 0.3); }
-    .university-place-marker.bg-household .marker-guru:hover, .university-place-marker.bg-household .marker-guru:focus {
-      background: #7872e3; }
-  .university-place-marker.bg-athletic .marker-circle {
-    background: #9A5BC5; }
-  .university-place-marker.bg-athletic .marker-guru {
-    background: rgba(154, 91, 197, 0.3); }
-    .university-place-marker.bg-athletic .marker-guru:hover, .university-place-marker.bg-athletic .marker-guru:focus {
-      background: #9A5BC5; }
-  .university-place-marker.bg-academic .marker-circle {
-    background: #e6389b; }
-  .university-place-marker.bg-academic .marker-guru {
-    background: rgba(230, 56, 155, 0.3); }
-    .university-place-marker.bg-academic .marker-guru:hover, .university-place-marker.bg-academic .marker-guru:focus {
-      background: #e6389b; }
-  .university-place-marker .marker-normal {
-    position: relative; }
-    .university-place-marker .marker-normal .marker-normal-window .open {
-      transition: stroke-dashoffset 150ms ease-in-out, opacity 150ms ease-in-out 150ms;
-      stroke-dasharray: 80, 80;
-      stroke-dashoffset: 0; }
-    .university-place-marker .marker-normal .marker-normal-window .side {
-      transition: stroke-dashoffset 200ms ease-in-out 650ms;
-      stroke-dasharray: 278, 278;
-      stroke-dashoffset: 0; }
-    .university-place-marker .marker-normal .marker-normal-content {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      transition: all 150ms ease-in-out 350ms;
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: calc(100% - 4px);
-      height: calc(100% - 26px); }
-      .university-place-marker .marker-normal .marker-normal-content svg {
-        fill: none;
-        stroke: white;
-        stroke-width: 3px;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        transition: all 150ms ease-in-out 350ms;
-        position: absolute;
-        top: 50%;
-        margin-top: -24px;
-        left: 50%;
-        margin-left: -24px;
-        z-index: 2;
-        width: 48px;
-        height: 48px; }
-      .university-place-marker .marker-normal .marker-normal-content .marker-guru {
-        border-radius: 1000px;
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-align-items: center;
-        align-items: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        transition: all 150ms ease-in-out 350ms;
-        margin-top: 6px;
-        height: 30px;
-        width: 74px;
-        padding-left: 28px;
-        border: 2px solid white;
-        font-size: 10px;
-        font-weight: 600;
-        line-height: 1;
-        text-align: center; }
-        .university-place-marker .marker-normal .marker-normal-content .marker-guru .user-icon {
-          position: absolute;
-          top: -2px;
-          left: -2px;
-          width: 30px;
-          height: 30px;
-          border-width: 2px; }
-        .university-place-marker .marker-normal .marker-normal-content .marker-guru .marker-guru-course {
-          display: block;
-          width: 100%; }
-    .university-place-marker .marker-normal.move .marker-normal-window .open {
-      stroke-dashoffset: 80; }
-    .university-place-marker .marker-normal.move .marker-normal-content svg {
-      transform: translateY(-36px); }
-    .university-place-marker .marker-normal.hidden .marker-normal-window .open {
-      stroke-dashoffset: 80;
-      opacity: 0; }
-  .university-place-marker .marker-expanded {
-    position: absolute;
-    z-index: -1;
-    bottom: 0;
-    left: 50%;
-    margin-left: -131px; }
-    .university-place-marker .marker-expanded .marker-expanded-window .sides {
-      transition: stroke-dashoffset 300ms ease-in-out 150ms;
-      stroke-dasharray: 936, 936;
-      stroke-dashoffset: 936; }
-    .university-place-marker .marker-expanded .marker-expanded-content {
-      filter: alpha(opacity=0);
-      opacity: 0;
-      transition: all 150ms ease-in-out 350ms;
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: calc(100% - 4px);
-      height: calc(100% - 26px); }
-      .university-place-marker .marker-expanded .marker-expanded-content .marker-expanded-icon svg {
-        fill: none;
-        stroke: white;
-        stroke-width: 1.5px;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        position: absolute;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        -moz-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
-        transform: translateX(-50%);
-        top: -50%;
-        margin-top: 75px;
-        width: 100px;
-        height: 100px; }
-      .university-place-marker .marker-expanded .marker-expanded-content .marker-location {
-        padding: 40px 0 15px 0;
-        text-align: center; }
-        .university-place-marker .marker-expanded .marker-expanded-content .marker-location h1 {
-          font-size: 18px;
-          font-weight: 600; }
-        .university-place-marker .marker-expanded .marker-expanded-content .marker-location h4 {
-          font-size: 14px;
-          font-weight: 600; }
-      .university-place-marker .marker-expanded .marker-expanded-content .marker-guru {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        position: relative;
-        padding: 10px 15px; }
-        .university-place-marker .marker-expanded .marker-expanded-content .marker-guru .user-icon {
-          width: 48px;
-          height: 48px;
-          border-width: 2px; }
-        .university-place-marker .marker-expanded .marker-expanded-content .marker-guru div {
-          width: calc(100% - 48px);
-          padding-left: 15px;
-          text-align: left; }
-        .university-place-marker .marker-expanded .marker-expanded-content .marker-guru h1 {
-          font-size: 20px;
-          font-weight: 600; }
-        .university-place-marker .marker-expanded .marker-expanded-content .marker-guru h3 {
-          filter: alpha(opacity=50);
-          opacity: 0.5;
-          margin-top: 0 !important;
-          font-size: 14px;
-          font-weight: 600; }
-        .university-place-marker .marker-expanded .marker-expanded-content .marker-guru svg {
-          fill: none;
-          stroke: white;
-          stroke-width: 8px;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          position: absolute;
-          top: 50%;
-          -webkit-transform: translateY(-50%);
-          -moz-transform: translateY(-50%);
-          -ms-transform: translateY(-50%);
-          -o-transform: translateY(-50%);
-          transform: translateY(-50%);
-          right: 2px;
-          height: 24px; }
-      .university-place-marker .marker-expanded .marker-expanded-content .marker-message {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-align-items: center;
-        align-items: center;
-        height: calc(100% - 96px - 68px);
-        padding: 0 15px; }
-        .university-place-marker .marker-expanded .marker-expanded-content .marker-message p {
-          margin: 0;
-          font-size: 16px;
-          font-weight: 400;
-          text-align: left; }
-  .university-place-marker .marker-circle {
-    border-radius: 1000px;
-    position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
-    margin-top: 3px;
-    width: 10px;
-    height: 10px;
-    border: 2px solid white; }
-  .university-place-marker .marker-label {
-    position: absolute;
-    width: 100%;
-    bottom: -35px;
-    font-weight: 600;
-    font-size: 14px; }
-  .university-place-marker.active .marker-normal .marker-normal-window .side {
-    transition: stroke-dashoffset 200ms ease-in-out 150ms;
-    stroke-dashoffset: 278; }
-  .university-place-marker.active .marker-normal .marker-normal-content {
-    filter: alpha(opacity=0);
-    opacity: 0;
-    transition: all 150ms ease-in-out 0ms; }
-    .university-place-marker.active .marker-normal .marker-normal-content svg, .university-place-marker.active .marker-normal .marker-normal-content .marker-guru {
-      transition: all 150ms ease-in-out 0ms; }
-  .university-place-marker.active .marker-normal.move .marker-normal-content {
-    transition: all 150ms ease-in-out 0ms; }
-    .university-place-marker.active .marker-normal.move .marker-normal-content svg, .university-place-marker.active .marker-normal.move .marker-normal-content .marker-guru {
-      transition: all 150ms ease-in-out 0ms; }
-  .university-place-marker.active .marker-expanded {
-    z-index: 2; }
-    .university-place-marker.active .marker-expanded .marker-expanded-window .sides {
-      transition: stroke-dashoffset 300ms ease-in-out 350ms;
-      stroke-dashoffset: 0; }
-    .university-place-marker.active .marker-expanded .marker-expanded-content {
-      filter: alpha(opacity=100);
-      opacity: 1;
-      transition: all 150ms ease-in-out 650ms; }
 
 /* ---------- TAGS */
 .chip {
