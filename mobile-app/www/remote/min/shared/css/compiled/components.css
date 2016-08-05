@@ -4043,6 +4043,7 @@ a.course-card:active .course-card-hover {
       width: 100%;
       height: 100%; }
   .pf-tile.bg-academic {
+    background: #637074;
     transform-origin: left top; }
     .pf-tile.bg-academic .pf-tile-border {
       position: absolute;
@@ -4109,40 +4110,61 @@ a.course-card:active .course-card-hover {
       padding-bottom: 25px; }
       .pf-tile.bg-academic .pf-tile-bottom .pf-review-count {
         width: 100%; }
-  .pf-tile.bg-baking .pf-tile-top {
-    position: relative;
-    background-color: #9b874d;
-    border-radius: 2px;
-    height: 270px; }
-    .pf-tile.bg-baking .pf-tile-top h1 {
+  .pf-tile.bg-baking {
+    background: #f8d47a; }
+    .pf-tile.bg-baking .pf-tile-top {
       position: relative;
-      width: auto;
-      background: white;
-      color: #40484B;
-      padding: 15px 15px 10px;
-      margin-top: 30px;
-      font-size: 28px;
-      font-weight: 900;
+      background-color: #9b874d;
       border-radius: 2px;
-      overflow: hidden;
-      transition: all 250ms ease-in-out; }
-      .pf-tile.bg-baking .pf-tile-top h1 .border {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: #F6C64E;
-        transform-origin: center top;
+      height: 270px; }
+      .pf-tile.bg-baking .pf-tile-top h1 {
+        position: relative;
+        width: auto;
+        background: white;
+        color: #40484B;
+        padding: 15px 15px 10px;
+        margin-top: 30px;
+        font-size: 28px;
+        font-weight: 900;
+        border-radius: 2px;
+        overflow: hidden;
         transition: all 250ms ease-in-out; }
-        .pf-tile.bg-baking .pf-tile-top h1 .border + .border {
-          background: white;
-          transform: scaleY(0); }
-        .pf-tile.bg-baking .pf-tile-top h1 .border ~ div {
-          position: relative;
-          z-index: 2; }
-      .pf-tile.bg-baking .pf-tile-top h1 + div {
+        .pf-tile.bg-baking .pf-tile-top h1 .border {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 5px;
+          background: #F6C64E;
+          transform-origin: center top;
+          transition: all 250ms ease-in-out; }
+          .pf-tile.bg-baking .pf-tile-top h1 .border + .border {
+            background: white;
+            transform: scaleY(0); }
+          .pf-tile.bg-baking .pf-tile-top h1 .border ~ div {
+            position: relative;
+            z-index: 2; }
+        .pf-tile.bg-baking .pf-tile-top h1 + div {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          margin-top: 15px;
+          width: 100%;
+          transition: all 250ms ease-in-out; }
+      .pf-tile.bg-baking .pf-tile-top .pf-pricing {
         -ms-box-orient: horizontal;
         display: -webkit-box;
         display: -moz-box;
@@ -4158,129 +4180,112 @@ a.course-card:active .course-card-hover {
         align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
-        margin-top: 15px;
-        width: 100%;
-        transition: all 250ms ease-in-out; }
-    .pf-tile.bg-baking .pf-tile-top .pf-pricing {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      width: auto;
-      position: relative;
-      bottom: auto;
-      left: auto;
-      height: 74px;
-      padding: 0;
-      font-size: 18px;
-      font-weight: 900;
-      background: none;
-      stroke: white;
-      transition: all 250ms ease-in-out; }
-      .pf-tile.bg-baking .pf-tile-top .pf-pricing:not(.large) {
-        width: 104px; }
-        .pf-tile.bg-baking .pf-tile-top .pf-pricing:not(.large) .large {
-          display: none; }
-      .pf-tile.bg-baking .pf-tile-top .pf-pricing.large {
-        width: 156px; }
-        .pf-tile.bg-baking .pf-tile-top .pf-pricing.large .small {
-          display: none; }
-      .pf-tile.bg-baking .pf-tile-top .pf-pricing svg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%; }
-      .pf-tile.bg-baking .pf-tile-top .pf-pricing span {
+        width: auto;
         position: relative;
-        z-index: 2;
-        font-size: 28px; }
-  .pf-tile.bg-photography .pf-tile-border {
-    position: absolute;
-    border: 10px solid white;
-    border-bottom-width: 0;
-    top: 0;
-    left: 0;
-    border-radius: 2px 2px 0 0;
-    width: 100%;
-    height: 200px; }
-    .pf-tile.bg-photography .pf-tile-border div {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(113, 154, 95, 0.95);
-      transition: all 250ms ease-out;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.2;
-      text-align: center;
-      padding: 15px; }
-  .pf-tile.bg-photography .pf-tile-top {
-    border: 10px solid transparent;
-    border-bottom-width: 0;
-    height: 200px;
-    border-radius: 2px 2px 0 0;
-    transition: all 250ms ease-in-out; }
-  .pf-tile.bg-photography .pf-tile-bottom {
-    background: white;
-    height: 70px;
-    color: #81B566;
-    transform-style: preserve-3d; }
-    .pf-tile.bg-photography .pf-tile-bottom .pf-pricing {
-      border-radius: 1000px;
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
+        bottom: auto;
+        left: auto;
+        height: 74px;
+        padding: 0;
+        font-size: 18px;
+        font-weight: 900;
+        background: none;
+        stroke: white;
+        transition: all 250ms ease-in-out; }
+        .pf-tile.bg-baking .pf-tile-top .pf-pricing:not(.large) {
+          width: 104px; }
+          .pf-tile.bg-baking .pf-tile-top .pf-pricing:not(.large) .large {
+            display: none; }
+        .pf-tile.bg-baking .pf-tile-top .pf-pricing.large {
+          width: 156px; }
+          .pf-tile.bg-baking .pf-tile-top .pf-pricing.large .small {
+            display: none; }
+        .pf-tile.bg-baking .pf-tile-top .pf-pricing svg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%; }
+        .pf-tile.bg-baking .pf-tile-top .pf-pricing span {
+          position: relative;
+          z-index: 2;
+          font-size: 28px; }
+  .pf-tile.bg-photography {
+    background: #a1c88c; }
+    .pf-tile.bg-photography .pf-tile-border {
       position: absolute;
-      top: -44px;
-      right: 15px;
-      background: #81B566;
-      width: 64px;
-      height: 64px;
-      color: white;
-      font-size: 16px;
-      font-weight: 600;
+      border: 10px solid white;
+      border-bottom-width: 0;
+      top: 0;
+      left: 0;
+      border-radius: 2px 2px 0 0;
+      width: 100%;
+      height: 200px; }
+      .pf-tile.bg-photography .pf-tile-border div {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(113, 154, 95, 0.95);
+        transition: all 250ms ease-out;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.2;
+        text-align: center;
+        padding: 15px; }
+    .pf-tile.bg-photography .pf-tile-top {
+      border: 10px solid transparent;
+      border-bottom-width: 0;
+      height: 200px;
+      border-radius: 2px 2px 0 0;
       transition: all 250ms ease-in-out; }
-      .pf-tile.bg-photography .pf-tile-bottom .pf-pricing:before, .pf-tile.bg-photography .pf-tile-bottom .pf-pricing:after {
-        display: none; }
+    .pf-tile.bg-photography .pf-tile-bottom {
+      background: white;
+      height: 70px;
+      color: #81B566;
+      transform-style: preserve-3d; }
+      .pf-tile.bg-photography .pf-tile-bottom .pf-pricing {
+        border-radius: 1000px;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        position: absolute;
+        top: -44px;
+        right: 15px;
+        background: #81B566;
+        width: 64px;
+        height: 64px;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 250ms ease-in-out; }
+        .pf-tile.bg-photography .pf-tile-bottom .pf-pricing:before, .pf-tile.bg-photography .pf-tile-bottom .pf-pricing:after {
+          display: none; }
   .pf-tile.bg-tech {
     border: 0;
     border-radius: 2px;
@@ -4387,7 +4392,7 @@ a.course-card:active .course-card-hover {
     .pf-tile.bg-tech .pf-tile-top {
       background-color: #4b7681;
       overflow: visible;
-      height: 198px; }
+      height: 200px; }
       .pf-tile.bg-tech .pf-tile-top:after {
         content: "";
         display: block;
@@ -4414,7 +4419,7 @@ a.course-card:active .course-card-hover {
         .pf-tile.bg-tech .pf-tile-top .pf-pricing.bg-crimson {
           background: #d3242c !important; }
     .pf-tile.bg-tech .pf-tile-bottom {
-      height: 68px;
+      height: 70px;
       background: #2B3234;
       border: 0;
       transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
