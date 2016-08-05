@@ -190,6 +190,9 @@
 				.pf-tile-desc {
 					opacity: 1;
 				}
+				.bub-front-9 {
+					transform: scale(18);
+				}
 				.pf-tile-desc {
 					transform: translateZ(20px);
 				}
@@ -726,6 +729,10 @@
 		padding-bottom: 70px;
 		background: white;
 		border-radius: 2px;
+		.bub-front-9 {
+			transform-origin: center center;
+			transition: all 800ms ease-out;
+		}
 		.pf-tile-bg {
 			display: flex;
 			align-items: flex-end;
