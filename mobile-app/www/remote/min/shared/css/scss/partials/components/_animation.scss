@@ -1,36 +1,5 @@
 @import '../mixin';
 
-@keyframes album-fade {
-	0% {
-		@include opacity(0);
-	}
-	100% {
-		@include opacity(1);
-	}
-}
-
-@keyframes album-title {
-	0% {
-		@include opacity(0);
-		transform: translateY(-100%) translateZ(0);
-	}
-	100% {
-		@include opacity(1);
-		transform: translateY(0) translateZ(0);
-	}
-}
-
-@keyframes album-genre {
-	0% {
-		@include opacity(0);
-		transform: translateY(-100%) translateZ(0);
-	}
-	100% {
-		@include opacity(.5);
-		transform: translateY(0) translateZ(0);
-	}
-}
-
 /* http://goo.gl/oFnLqt */
 @keyframes popup-header-enter {
   0% { transform: matrix3d(0.1, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity:0; }
@@ -94,7 +63,7 @@
 }
 
 /*  http://goo.gl/UysK9c */
-@keyframes message-icon-enter {
+@keyframes icon-enter {
   0% { transform: matrix3d(0.2, 0, 0, 0, 0, 0.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1;}
   3.4% { transform: matrix3d(0.452, 0, 0, 0, 0, 0.526, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   4.7% { transform: matrix3d(0.56, 0, 0, 0, 0, 0.679, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }

@@ -194,16 +194,28 @@
 				<div class="pf-card pf-card-photography">
 					<div class="pf-card-top">
 						<ul>
-							<li>Gabrielle's Shop</li>
-							<li>
+							<li
+								init-with="p-op"
+								on-init="t-enter"
+								on-enter="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">Gabrielle's Shop</li>
+							<li
+								init-with="p-op"
+								on-init="t-enter"
+								on-enter="a:[fadeInRight:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-250]">
 								<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 							</li>
 						</ul>
-						<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
+						<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"
+							init-with="p-op"
+							on-init="t-enter"
+							on-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>
 					</div>
 					<div class="pf-card-main">
 						<h1 class="verified">
-							<span class="inline">Gabrielle Wee</span>
+							<span class="inline"
+								init-with="p-op"
+								on-init="t-enter"
+								on-enter="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">Gabrielle Wee</span>
 							<span class="inline">
 								<span>
 									<svg preserveAspectRatio="xMidYMax meet" viewBox="0 0 100 100">
@@ -213,41 +225,65 @@
 								</span>
 							</span>
 						</h1>
-						<h2 class="pf-school">UC Berkeley</h2>
+						<h2 class="pf-school"
+							init-with="p-op"
+							on-init="t-enter"
+							on-enter="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">UC Berkeley</h2>
 						<ul class="pf-rating" data-rating="4" data-half="true">
-							<li>
+							<li
+								init-with="p-op"
+								on-init="t-enter"
+								on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
-							<li>
+							<li
+								init-with="p-op"
+								on-init="t-enter"
+								on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-100]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
-							<li>
+							<li
+								init-with="p-op"
+								on-init="t-enter"
+								on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-200]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
-							<li>
+							<li
+								init-with="p-op"
+								on-init="t-enter"
+								on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-300]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
-							<li>
+							<li
+								init-with="p-op"
+								on-init="t-enter"
+								on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-400]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 						</ul>
-						<span class="pf-review-amt">3 Reviews</span>
-						<ul class="pf-card-thumbs">
+						<span class="pf-review-amt"
+							init-with="p-op"
+							on-init="t-enter"
+							on-enter="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-500]">3 Reviews</span>
+						<ul class="pf-card-thumbs"
+							init-with="p-op"
+							on-init="t-enter"
+							on-enter="a:[fadeIn:set:(dur:1200ms#func:cubic-bezier(.8#.1#1#.05)):in]">
 							<li>
 								<a>
 									<span></span>

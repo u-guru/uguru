@@ -3,7 +3,7 @@
 		<div class='message-icon'
 			init-with="p:[op:0, tro:center center]"
 			on-init="t-enter"
-			on-enter="a:[message-icon-enter:set:(dur:750ms#func:ease-out):in]">
+			on-enter="a:[icon-enter:set:(dur:750ms#func:ease-out):in]">
 			<span class="user-icon-48"></span>
 		</div>
 		<div class="message-content">
@@ -86,7 +86,7 @@
 			<span class="user-icon-48"
 				init-with="p:[op:0, tro:center center]"
 				on-init="t-enter"
-				on-enter="a:[message-icon-enter:set:(dur:750ms#func:ease-out):in:delay-2500]"></span>
+				on-enter="a:[icon-enter:set:(dur:750ms#func:ease-out):in:delay-2500]"></span>
 		</div>
 	</div>
 </div>
