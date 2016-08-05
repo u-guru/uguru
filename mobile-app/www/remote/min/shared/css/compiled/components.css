@@ -1,3 +1,8 @@
+@keyframes wallet-exterior {
+  0% {
+    transform: rotateY(-90deg) rotateX(-30deg); }
+  100% {
+    transform: rotateY(0deg) rotateX(0deg); } }
 /* http://goo.gl/oFnLqt */
 @keyframes popup-header-enter {
   0% {
