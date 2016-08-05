@@ -1,0 +1,1263 @@
+@import '../mixin';
+
+.desktop-mode {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: $charcoal;
+	#main-logo {
+		@include center-x;
+		top: 15px;
+		display: block;
+		height: 50px;
+		width: 50px;
+	}
+	.desktop-header {
+		@include center-x;
+		@include flex;
+		top: 10px;
+		height: 50px;
+		padding: 0 10px;
+		width: 100%;
+		max-width: 1280px;
+		a {
+			display: block;
+			width: 50%;
+			height: 100%;
+			svg {
+				@include svg-stroke(white, 5);
+				height: 100%;
+				width: auto;
+			}
+			&.desktop-header-next {
+				text-align: right;
+			}
+			&.desktop-header-close {
+				svg {
+					@include rotate(45);
+				}
+			}
+		}
+		.skip-button {
+			@include flex;
+			@include flex-center-vertical;
+			@include opacity(.5);
+			-webkit-justify-content: flex-end;
+			justify-content: flex-end;
+			padding-right: 10px;
+			font-weight: 600;
+			&:hover,
+			&:focus,
+			&:active {
+				@include opacity(1);
+			}
+		}
+	}
+	#cta-box-support,
+	#cta-box-content {
+		@include round;
+		position: fixed;
+		bottom: 15px;
+		left: 15px;
+		width: 48px;
+		height: 48px;
+		padding: 6px;
+		background: rgba(white, .9);
+		svg {
+			@include svg-stroke($charcoal, 7);
+		}
+		&:before, &:after {
+			@include transition(.15s ease-in-out);
+			@include opacity(0);
+			@include center-y;
+		}
+		&:before {
+			content: "";
+			right: -20px;
+			width: 0;
+			height: 0;
+			border: 10px solid transparent;
+			border-right-color: rgba(white,.9);
+		}
+		&:after {
+			content: "Support";
+			right: -108px;
+			padding: 10px 15px;
+			background: rgba(white,.9);
+			font-size: 14px;
+			font-weight: 600;
+			text-transform: uppercase;
+			color: $slate;
+		}
+		&:hover, &:focus {
+			background: lighten($shamrock, 10%);
+			&:before,
+			&:after {
+				@include opacity(1);
+			}
+		}
+		&:active {
+			background: $shamrock;
+		}
+	}
+	#cta-box-content.dark {
+		svg {
+			@include svg-stroke($smoke, 7);
+		}
+		background: rgba($charcoal, .9);
+	}
+	#top-bar {
+		height: 64px;
+		background: $shamrock;
+		padding: 0 15px;
+		div:nth-child(2) {
+			@include flex;
+			@include flex-center-vertical;
+			position: relative;
+			margin: 0 auto;
+			width: 100%;
+			max-width: 1280px;
+			height: 100%;
+			div {
+				@include flex;
+				@include flex-center-vertical;
+				position: relative;
+				z-index: 13;
+				background: $shamrock;
+				margin: 0 auto;
+				width: 100%;
+				max-width: 1280px;
+				height: 100%;
+			}
+			a:hover, a:focus {
+				@include opacity(.8);
+			}
+			a:active {
+				@include opacity(.5);
+			}
+			.toggle {
+				margin-right: 15px;
+				label {
+					width: auto;
+				}
+				input:checked + label {
+					background: $moxie;
+					svg:first-child {
+						@include prefix(transform, translateX(55px), webkit moz ms o);
+					}
+				}
+			}
+			#top-logo {
+				display: block;
+				width: calc(100% - 212px);
+				height: 100%;
+				svg {
+					height: 100%;
+					padding: 20px 0 15px;
+				}
+				&.full {
+					width: calc(100% - 90px);
+				}
+			}
+			.top-tooltip {
+				@include opacity-important(1);
+				position: relative;
+				height: 64px;
+				width: 64px;
+				&.hide-tooltip {
+					&:before,
+					&:after {
+						display: none;
+					}
+				}
+				&:before,
+				&:after {
+					@include transition(.15s ease-in-out);
+					@include opacity(0);
+					@include center-x;
+					z-index: 10;
+				}
+				&:before {
+					content: "";
+					bottom: 0;
+					width: 0;
+					height: 0;
+					border: 10px solid transparent;
+					border-bottom-color: rgba(white,.9);
+				}
+				&:after {
+					bottom: -40px;
+					padding: 10px 15px;
+					background: rgba(white,.9);
+					font-size: 14px;
+					font-weight: 600;
+					text-transform: uppercase;
+					color: $slate;
+				}
+				&:hover, &:focus {
+					&:before, &:after {
+						@include opacity(1);
+					}
+					svg {
+						@include opacity(.8);
+					}
+				}
+				&:active {
+					svg {
+						@include opacity(.5);
+					}
+				}
+				svg {
+					@include transition(.15s ease-in-out);
+					width: 100%;
+					height: 100%;
+					padding: 12px;
+					path {
+						@include svg-stroke(white, 5);
+					}
+				}
+			}
+			#cta-box-referrals {
+				margin-right: 3px;
+				&:after {
+					content: "Referrals";
+				}
+			}
+			#top-menu-discover {
+				margin-right: -9px;
+				svg {
+					circle {
+						@include svg-stroke(white, 5);
+						fill: $shamrock;
+					}
+				}
+				&:after {
+					content: "Visibility";
+				}
+				&.active {
+					svg {
+						circle {
+							fill: white;
+						}
+						path {
+							stroke: $shamrock;
+						}
+					}
+				}
+			}
+			#top-settings {
+				@include flex;
+				@include flex-center;
+				width: 90px;
+				height: 64px;
+				[class*="user-icon"] {
+					width: 40px!important;
+					height: 40px!important;
+					border: 3px solid white;
+					background-color: mix($slate, $shamrock);
+				}
+				svg {
+					@include svg-stroke(white, 14);
+					width: 50px;
+					height: 50px;
+					padding: 15px;
+				}
+			}
+			#top-request {
+				display: block;
+				width: 64px;
+				height: 64px;
+				background: rgba(white,.3);
+				svg {
+					@include svg-stroke(white, 8);
+					width: 100%;
+					height: 100%;
+					padding: 15px;
+				}
+			}
+			#top-menu-links {
+				@include transition(.15s ease-in-out);
+				@include translate-y(-500px);
+				@include opacity(0);
+				position: absolute;
+				z-index: 11;
+				right: 0;
+				top: 64px;
+				background: $shamrock;
+				overflow: hidden;
+				&.active {
+					@include transition(.15s ease-in-out);
+					@include translate-y(0);
+					@include opacity(1);
+					overflow: visible;
+				}
+				ul {
+					background: rgba(white,.3);
+					min-width: 250px;
+					li {
+						.guru-popup {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							padding: 0;
+							background: rgba(lighten($slate, 10%),.9);
+							h2 {
+								font-size: 20px;
+								font-weight: 600;
+								text-align: center;
+							}
+							div {
+								width: 100%!important;
+								background: none!important;
+							}
+							> div {
+								@include flex-wrap;
+								@include flex-center;
+								> div {
+									@include flex;
+									@include flex-wrap;
+									height: auto!important;
+								}
+							}
+						}
+						a {
+							@include flex;
+							@include flex-center;
+							padding: 15px;
+							height: 50px;
+							font-size: 18px;
+							font-weight: 600;
+							text-transform: uppercase;
+							span {
+								display: block;
+								text-align: left;
+								width: calc(100% - 35px);
+							}
+							svg {
+								@include svg-stroke(white, 5);
+								display: block;
+								padding: 5px;
+								height: 50px;
+								width: 50px;
+								margin-right: -15px;
+							}
+							&:hover, &:active, &:focus {
+								background: white;
+								span {
+									color: $shamrock;
+								}
+								svg {
+									stroke: $shamrock;
+								}
+							}
+						}
+						&:last-child {
+							a {
+								background: rgba(white,.75);
+								span {
+									color: $shamrock;
+								}
+								svg {
+									stroke: $shamrock;
+								}
+							}
+							&:hover, &:active, &:focus {
+								background: white;
+							}
+						}
+					}
+				}
+			}
+		}
+		.top-request-button {
+			#top-logo {
+				width: calc(100% - 90px - 64px);
+			}
+			#top-menu-links {
+				right: 64px;
+			}
+		}
+	}
+	.main {
+		padding: 15px;
+		height: calc(100% - 64px);
+		&.default {
+			width: 100%;
+			max-width: 1280px;
+			margin: 0 auto;
+		}
+	}
+	.progress-bottom {
+		@include center-x;
+		bottom: 0;
+		height: 128px;
+		width: 100%;
+		max-width: 960px;
+		background: $shamrock;
+		.progress {
+			border-radius: 0;
+			&::-webkit-progress-value,
+			span {
+				border-radius: 0 1000px 1000px 0;
+			}
+			&::-moz-progress-bar {
+				border-radius: 0 1000px 1000px 0;
+			}
+		}
+		div:last-child {
+			@include flex;
+			@include flex-center;
+			padding: 15px;
+			height: calc(100% - 30px);
+			> span {
+				width: 50%;
+				font-size: 32px;
+				font-weight: 600;
+				&:first-child {
+					@include flex;
+					@include flex-center-vertical;
+					img {
+						@include round;
+						margin-right: 15px;
+						display: inline-block;
+						width: 64px;
+						height: 64px;
+					}
+				}
+				&:last-child {
+					text-align: right;
+				}
+			}
+		}
+	}
+}
+
+.guru-mode {
+	background: $slate;
+	color: white;
+}
+
+.student-mode {
+	background: $smoke;
+	color: $slate;
+	#top-bar {
+		background: $lake;
+		div:nth-child(2) {
+			div {
+				background: $lake;
+			}
+			#top-menu-links {
+				background: $lake;
+				ul {
+					li {
+						a {
+							&:hover, &:active, &:focus {
+								span {
+									color: $lake;
+								}
+								svg {
+									stroke: $lake;
+								}
+							}
+						}
+						&:last-child {
+							a {
+								span {
+									color: $lake;
+								}
+								svg {
+									stroke: $lake;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- RANKING */
+#ranking {
+	background: $slate;
+	@media screen and (max-width: 768px) {
+		overflow: auto;
+	}
+	.main {
+		padding: 0;
+		margin: 0 auto;
+		@media screen and (min-width: 768px) {
+			overflow: auto;
+		}
+		> header {
+			max-width: 1000px;
+			margin: 0 auto;
+			h1 {
+				text-align: center;
+				font-size: 48px;
+				font-weight: 600;
+				text-transform: none;
+			}
+		}
+		> div {
+			max-width: 1000px;
+			margin: 0 auto;
+		}
+		.ranking-top {
+			@include flex;
+			margin: 0 -15px;
+			height: 380px;
+			padding: 7.5px;
+			li {
+				width: calc(100% / 3);
+				height: 100%;
+				padding: 7.5px;
+				.ranking-tile {
+					position: relative;
+					background: rgba(lighten($slate, 15%), .5);
+					padding: 15px;
+					border-radius: 2px;
+					h2 {
+						font-size: 20px;
+						font-weight: 600;
+						text-align: center;
+					}
+					header {
+						@include flex;
+						span {
+							display: block;
+							svg {
+								width: 48px;
+								height: 48px;
+								* {
+									stroke-width: 6px;
+									stroke: white;
+								}
+							}
+						}
+						div {
+							margin-left: 15px;
+							h1 {
+								padding: 0;
+								font-size: 36px;
+								font-weight: 900;
+							}
+							h2 {
+								@include opacity(.5);
+								margin: 0;
+							}
+						}
+					}
+					svg {
+						*[stroke] {
+							stroke: white;
+						}
+						*[fill*="#"] {
+							fill: white;
+						}
+					}
+					.ranking-tile-graph {
+						display: block;
+						position: absolute;
+						left: 15px;
+						bottom: 15px;
+						width: calc(100% - 30px);
+					}
+					&:not(.large) {
+						height: calc(50% - 7.5px);
+					}
+					&:first-child {
+						margin-bottom: 15px;
+					}
+					&.large {
+						height: 100%;
+						h2 {
+							font-size: 28px;
+						}
+					}
+					&.tile-shamrock {
+						svg {
+							*[stroke] {
+								stroke: $shamrock;
+							}
+							*[fill*="#"] {
+								fill: $shamrock;
+							}
+						}
+					}
+					&.tile-lake {
+						svg {
+							*[stroke] {
+								stroke: $lake;
+							}
+							*[fill*="#"] {
+								fill: $lake;
+							}
+						}
+					}
+					&.tile-auburn {
+						svg {
+							*[stroke] {
+								stroke: $auburn;
+							}
+							*[fill*="#"] {
+								fill: $auburn;
+							}
+						}
+					}
+				}
+			}
+		}
+		.ranking-list {
+			.tab-bar {
+				background: mix($shamrock, $slate);
+				> div {
+					a {
+						text-transform: none;
+					}
+				}
+				&.tall {
+					height: 80px;
+					border-radius: 2px;
+					> div {
+						height: 80px;
+						a {
+							height: 80px;
+							font-size: 24px;
+						}
+					}
+				}
+			}
+			.ranking-high-score, .ranking-next-steps {
+				padding: 0;
+				margin: 0 auto;
+			}
+			@media screen and (max-width: 768px) {
+				.ranking-high-score, .ranking-next-steps {
+					width: calc(100% - 8px);
+					margin-left: 4px;
+					h1 {
+						font-size: 20px;
+						font-weight: 600;
+					}
+					h2, h3 {
+						@include opacity(.5);
+						margin: 0;
+						font-size: 16px;
+					}
+					> li {
+						margin-top: 4px;
+						&:last-child {
+							margin-bottom: 4px;
+						}
+					}
+				}
+				.ranking-high-score > li, .ranking-next-steps > li > a {
+					@include flex;
+					background: $charcoal;
+					border-radius: 2px;
+					overflow: hidden;
+				}
+
+				.ranking-next-steps-check, .ranking-high-score li:before {
+					@include flex;
+					@include flex-center;
+					width: 48px;
+					height: 100%;
+					border-top-left-radius: 2px;
+					border-bottom-left-radius: 2px;
+				}
+				.ranking-next-steps {
+					> li {
+						position: relative;
+						> a {
+							@include flex-center-vertical;
+							height: 140px;
+							.ranking-next-steps-check {
+								position: relative;
+								z-index: 10;
+								background: lighten($slate, 15%);
+								svg {
+									display: block;
+									width: 48px;
+									height: 48px;
+									padding: 6px;
+									* {
+										stroke: rgba(white, .5);
+										stroke-width: 10px;
+									}
+								}
+								&.complete {
+									background: $moxie;
+									svg {
+										* {
+											stroke: white;
+										}
+									}
+								}
+							}
+							> div:nth-child(2) {
+								@include flex;
+								@include flex-wrap;
+								width: calc(100% - 48px - 36px);
+								> div:nth-child(1) {
+									width: 100%;
+									padding: 0 15px 10px;
+								}
+								> div:nth-child(2), > div:nth-child(3) {
+									width: 50%;
+									text-align: center;
+									h4 {
+										margin-bottom: 5px;
+										font-size: 14px;
+										font-weight: 600;
+										text-transform: uppercase;
+									}
+									.impact-meter {
+										width: 100%;
+										svg {
+											width: 100%;
+											max-width: 70px;
+											margin: 0 auto;
+											path {
+												fill: mix(white, $charcoal);
+											}
+										}
+										&[data-impact="1"] {
+											svg {
+												path {
+													&:nth-child(1) {
+														fill: white;
+													}
+												}
+											}
+										}
+										&[data-impact="2"] {
+											svg {
+												path {
+													&:nth-child(1), &:nth-child(2) {
+														fill: $gold;
+													}
+												}
+											}
+										}
+										&[data-impact="3"] {
+											svg {
+												path {
+													fill: $moxie;
+												}
+											}
+										}
+									}
+									div {
+										font-size: 48px;
+										font-weight: 900;
+										line-height: 0.8;
+									}
+								}
+							}
+							.ranking-next-steps-link {
+								display: block;
+								svg {
+									display: block;
+									width: 36px;
+									height: 36px;
+									* {
+										@include svg-stroke(white, 6);
+									}
+								}
+							}
+						}
+						&:not(.ranking-next-steps-locked) {
+							> a {
+								&:hover, &:focus {
+									background: mix($shamrock, $slate);
+								}
+								&:active {
+									background: mix($shamrock, white);
+									color: mix($shamrock, $slate);
+									.ranking-next-steps-link {
+										svg {
+											* {
+												stroke: mix($shamrock, $slate);
+											}
+										}
+									}
+								}
+							}
+						}
+						&.ranking-next-steps-locked {
+							&:after {
+								content: "";
+								display: block;
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								background: rgba($taupe, .8);
+							}
+							> a {
+								cursor: default;
+								.ranking-next-steps-check {
+									background: $taupe;
+									svg {
+										* {
+											stroke: white;
+											stroke-width: 5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.ranking-high-score {
+					counter-reset: li;
+					> li {
+						height: 100px;
+						&:before {
+							content: counter(li);
+							counter-increment: li;
+							font-size: 36px;
+							font-weight: 900;
+						}
+						&:nth-child(1) {
+							&:before {
+								background: $first;
+							}
+						}
+						&:nth-child(2) {
+							&:before {
+								background: $second;
+							}
+						}
+						&:nth-child(3) {
+							&:before {
+								background: $third;
+							}
+						}
+						&.current-score {
+							background: lighten($slate, 10%);
+						}
+						.user-icon-32 {
+							margin-top: 15px;
+							margin-left: 15px;
+						}
+						> div:nth-child(2) {
+							width: calc(100% - 15px - 32px - 48px - 15px);
+							padding: 15px;
+							.rating-stars {
+								margin: 0;
+								margin-right: 10px;
+							}
+						}
+					}
+				}
+			}
+			@media screen and (min-width: 768px) {
+				.ranking-high-score, .ranking-next-steps {
+					h1 {
+						font-size: 32px;
+						font-weight: 600;
+					}
+					h2, h3 {
+						@include opacity(.5);
+						margin: 0;
+						font-size: 20px;
+					}
+					> li {
+						margin-top: 15px;
+					}
+				}
+				.ranking-high-score > li, .ranking-next-steps > li > a {
+					@include flex;
+					background: $charcoal;
+					border-radius: 2px;
+					padding: 15px;
+				}
+				.ranking-next-steps-check, .ranking-high-score li:before {
+					@include flex;
+					@include flex-center;
+					width: 84px;
+					height: 84px;
+					border-radius: 2px;
+				}
+				.ranking-next-steps {
+					> li {
+						position: relative;
+						> a {
+							@include flex-center-vertical;
+							padding-right: 10.5px;
+							.ranking-next-steps-check {
+								position: relative;
+								z-index: 10;
+								background: lighten($slate, 15%);
+								svg {
+									display: block;
+									width: 64px;
+									height: 64px;
+									* {
+										stroke: rgba(white, .5);
+										stroke-width: 10px;
+									}
+								}
+								&.complete {
+									background: $moxie;
+									svg {
+										* {
+											stroke: white;
+										}
+									}
+								}
+							}
+							> div:nth-child(2) {
+								margin-left: 30px;
+								width: calc(100% - 84px - 30px - 120px - 120px - 36px);
+							}
+							> div:nth-child(3), > div:nth-child(4) {
+								width: 120px;
+								text-align: center;
+								h4 {
+									margin-bottom: 5px;
+									font-size: 14px;
+									font-weight: 600;
+									text-transform: uppercase;
+								}
+								.impact-meter {
+									width: 100%;
+									svg {
+										width: 100%;
+										path {
+											fill: mix(white, $charcoal);
+										}
+									}
+									&[data-impact="1"] {
+										svg {
+											path {
+												&:nth-child(1) {
+													fill: white;
+												}
+											}
+										}
+									}
+									&[data-impact="2"] {
+										svg {
+											path {
+												&:nth-child(1), &:nth-child(2) {
+													fill: $gold;
+												}
+											}
+										}
+									}
+									&[data-impact="3"] {
+										svg {
+											path {
+												fill: $moxie;
+											}
+										}
+									}
+								}
+								div {
+									font-size: 72px;
+									font-weight: 900;
+									line-height: 0.8;
+								}
+							}
+							.ranking-next-steps-link {
+								display: block;
+								svg {
+									display: block;
+									width: 36px;
+									height: 36px;
+									* {
+										@include svg-stroke(white, 6);
+									}
+								}
+							}
+						}
+						&:not(.ranking-next-steps-locked) {
+							> a {
+								&:hover, &:focus {
+									background: mix($shamrock, $slate);
+								}
+								&:active {
+									background: mix($shamrock, white);
+									color: mix($shamrock, $slate);
+									.ranking-next-steps-link {
+										svg {
+											* {
+												stroke: mix($shamrock, $slate);
+											}
+										}
+									}
+								}
+							}
+						}
+						&.ranking-next-steps-locked {
+							&:after {
+								content: "";
+								display: block;
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								background: rgba($taupe, .8);
+							}
+							> a {
+								cursor: default;
+								.ranking-next-steps-check {
+									background: $taupe;
+									svg {
+										* {
+											stroke: white;
+											stroke-width: 5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.ranking-high-score {
+					counter-reset: li;
+					> li {
+						&:before {
+							content: counter(li);
+							counter-increment: li;
+							font-size: 72px;
+							font-weight: 900;
+						}
+						&:nth-child(1) {
+							&:before {
+								background: $first;
+							}
+						}
+						&:nth-child(2) {
+							&:before {
+								background: $second;
+							}
+						}
+						&:nth-child(3) {
+							&:before {
+								background: $third;
+							}
+						}
+						&:last-child {
+							margin-bottom: 15px;
+						}
+						&.current-score {
+							background: lighten($slate, 10%);
+						}
+						.user-icon-72 {
+							margin-top: 6px;
+							margin-left: 30px;
+						}
+						> div:nth-child(2) {
+							width: calc(100% - 150px - 72px - 60px - 84px);
+							margin-left: 30px;
+						}
+						> div:nth-child(3) {
+							width: 150px;
+							text-align: center;
+						}
+						.tag-list {
+							margin-left: -15px;
+						}
+						.rating-stars {
+							max-width: 150px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.ranking-slider {
+		height: calc(100% - 58px);
+		.ranking-slide {
+			padding-bottom: 30px;
+			span {
+				display: block;
+				margin: 0 auto;
+				height: 100%;
+			}
+			svg {
+				display: block;
+				margin: 0 auto;
+				height: 100%;
+			}
+		}
+		.slider-pager {
+			bottom: 10px;
+		}
+	}
+}
+
+#desktop-ranking,
+#mobile-ranking {
+	.main {
+		aside {
+			background: $shamrock;
+			.sidebar-layout-list {
+				li {
+					div {
+						width: calc(100% - 40px);
+					}
+					.chip {
+						min-width: 40px;
+					}
+				}
+			}
+			.sidebar-lock {
+				@include svg-stroke(white, 4);
+				width: 100%;
+				height: 80px;
+				+ h2 {
+					padding-top: 0!important;
+				}
+			}
+			.disabled {
+				@include opacity(.7);
+				max-height: calc(100% - 317px);
+				.chip {
+					@include opacity(.7);
+				}
+			}
+		}
+		aside + div {
+			padding: 15px;
+			h1 {
+				width: 100%;
+			}
+			#ranking-primary {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				padding: 15px;
+				li {
+					&:first-child, &:last-child {
+						width: 30%;
+						div {
+							background: $slate;
+							padding: 15px;
+							h2 {
+								font-size: 32px;
+								font-weight: 700;
+							}
+							h3 {
+								font-size: 22px;
+								font-weight: 600;
+							}
+						}
+					}
+					&:nth-child(2) {
+						width: 40%;
+						padding: 0 30px;
+						h3 {
+							padding-top: 15px;
+							font-weight: 700;
+						}
+						#guru-chart {
+							position: relative;
+							height: 100%;
+							width: 100%;
+							#guru-ranking-progress-bar {
+								height: 100%;
+							}
+							svg {
+								height: 100%;
+								path {
+									stroke-linecap: round;
+								}
+							}
+							#percentile {
+								@include center-xy;
+								#percentile-ranking {
+									position: relative;
+									margin-top: -20px;
+									font-size: 96px;
+									font-weight: 600;
+									line-height: 1;
+									text-align: center;
+									&::after {
+										content: "th";
+										display: block;
+										position: absolute;
+										top: 14px;
+										right: -15px;
+										font-size: 20px;
+										font-weight: 600;
+										line-height: 28px;
+										text-transform: uppercase;
+									}
+								}
+								#percentile-label {
+									font-size: 20px;
+									font-weight: 600;
+									letter-spacing: 1px;
+									line-height: 1.2;
+									text-transform: uppercase;
+								}
+							}
+						}
+					}
+				}
+			}
+			.ugrid-3 {
+				width: 100%;
+				li {
+					padding: 15px;
+				}
+			}
+			> div {
+				width: 100%;
+			}
+			#ranking-secondary {
+				li {
+					> div {
+						@include flex;
+						@include flex-center-vertical;
+						text-align: left;
+						background: $shamrock;
+						div {
+							padding: 15px;
+							width: calc(100% - 55px);
+							font-size: 16px;
+							font-weight: 600;
+							h4 {
+								font-size: 28px;
+								font-weight: 900;
+							}
+						}
+						svg {
+							padding-right: 15px;
+							width: 55px;
+							height: 40px;
+							stroke-linecap: round;
+						}
+					}
+				}
+			}
+			#ranking-tertiary {
+				li {
+					> div {
+						background: mix($shamrock, $slate, 20%);
+						padding: 15px;
+						span {
+							display: block;
+							font-size: 20px;
+							font-weight: 600;
+						}
+						h4 {
+							font-size: 28px;
+							font-weight: 900;
+						}
+					}
+				}
+			}
+		}
+	}
+}
