@@ -103,7 +103,7 @@
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 100, 0, 1);
     opacity: 0; } }
 /*  http://goo.gl/UysK9c */
-@keyframes message-icon-enter {
+@keyframes icon-enter {
   0% {
     transform: matrix3d(0.2, 0, 0, 0, 0, 0.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 1; }
