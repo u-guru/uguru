@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<nav class="tab-bar arrow-bar-6">
 		<div class="radius-2 overflow-hidden">
 			<a class="active"><span>Link 1</span></a>

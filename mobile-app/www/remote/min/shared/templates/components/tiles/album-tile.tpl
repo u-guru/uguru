@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<a class="album-tile">
 		<div class="album-echo"><div style="background: #020c39;"></div></div>
 		<div class="album-art animate">

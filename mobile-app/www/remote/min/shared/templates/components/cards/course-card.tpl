@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='default, link, overlay, checkbox, badge' default-type="checkbox">
+<div class="perspective-container full-xy flex-center p15xy" types='default, link, overlay, checkbox, badge' default-type="checkbox">
 	<div class="course-card" ng-if='activeType === "default"'>
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>

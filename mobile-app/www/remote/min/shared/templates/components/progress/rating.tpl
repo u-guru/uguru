@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<ul class="rating-stars" data-rating="4" data-half="true">
 		<li>
 			<svg viewBox="0 0 100 100">

@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<div class="popup-tour"
 		init-with="p-op"
 		on-init="t-enter"

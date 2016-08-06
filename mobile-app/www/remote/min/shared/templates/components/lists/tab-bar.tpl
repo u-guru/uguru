@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy bg-slate">
+<div class="perspective-container full-xy flex-center p15xy bg-slate">
 	<nav class="tab-bar radius-2">
 		<div>
 			<a class="active">Link 1</a>

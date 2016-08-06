@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='36, 48, 64, 72, 96, 128' default-type="128">
+<div class="perspective-container full-xy flex-center p15xy" types='36, 48, 64, 72, 96, 128' default-type="128">
 	<div class="pf-thumb-36 pf-moola" ng-if='activeType === "36"'>
 		<div class="top"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=72);"></span>

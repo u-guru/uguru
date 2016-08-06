@@ -1,4 +1,4 @@
-<div class="full-xy flex-center" types='flip, edit, short, mini' default-type="short">
+<div class="perspective-container full-xy flex-center" types='flip, edit, short, mini' default-type="short">
     <div ng-if='activeType === "flip"' class="credit-card-flip" tabindex
 		init-with="p-op"
 		on-init="t-enter"

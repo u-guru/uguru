@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='left-hover, bottom-hover, top-default, right-default' default-type="left-hover">
+<div class="perspective-container full-xy flex-center p15xy" types='left-hover, bottom-hover, top-default, right-default' default-type="left-hover">
 	<a class="badge-container click" ng-if='activeType === "left-hover"'>
 		<span class="badge-left bg-moxie">1</span>
 		<span>Messages</span>

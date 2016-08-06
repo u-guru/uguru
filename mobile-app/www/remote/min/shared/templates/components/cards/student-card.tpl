@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='edit, link' default-type="edit">
+<div class="perspective-container full-xy flex-center p15xy" types='edit, link' default-type="edit">
 	<div class="student-card" ng-if='activeType === "edit"'>
 		<svg viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>

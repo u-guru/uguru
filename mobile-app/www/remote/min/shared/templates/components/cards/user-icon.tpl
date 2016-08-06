@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='24, 32, 36, 48, 64, 72, 84, 96, 128, default' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy" types='24, 32, 36, 48, 64, 72, 84, 96, 128, default' default-type="default">
 	<span class="user-icon-24" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=48);" ng-if='activeType === "24"'></span>
 
 	<span class="user-icon-32" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=64);" ng-if='activeType === "32"'></span>

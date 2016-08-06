@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='span, link, image, input' default-type="link">
+<div class="perspective-container full-xy flex-center p15xy" types='span, link, image, input' default-type="link">
 	<span class="chip bg-moxie" ng-if='activeType === "span"'>moxie tag</span>
 	<a class="chip chip-link bg bg-cobalt" ng-if='activeType === "link"'>cobalt tag</a>
 	<a class="chip chip-link bg bg-moola" ng-if='activeType === "image"'>

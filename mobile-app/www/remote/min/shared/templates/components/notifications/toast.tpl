@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='mobile, icon-hover, icon-input, icon-input-button, cta, cta-icon' default-type="cta-icon">
+<div class="perspective-container full-xy flex-center p15xy" types='mobile, icon-hover, icon-input, icon-input-button, cta, cta-icon' default-type="cta-icon">
 	<div class="toast toast-mobile bg-smoke border-academic toast-icon toast-hover" ng-if='activeType === "mobile"'>
 		<div class="toast-overlay" tabindex="1">
 			<ul>

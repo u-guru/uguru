@@ -1,4 +1,4 @@
-<div class="full-xy flex-center bg-slate">
+<div class="perspective-container full-xy flex-center bg-slate">
 	<div class="impact-meter"
 		init-with="p-op"
 		on-init="t-enter"

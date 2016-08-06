@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy bg-slate">
+<div class="perspective-container full-xy flex-center p15xy bg-slate">
 	<ul class="p15-grid flex">
 		<li
 			init-with="p-op"

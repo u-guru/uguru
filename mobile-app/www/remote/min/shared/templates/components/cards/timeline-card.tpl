@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<article class="timeline-card timeline-tutorial timeline-left"
 		init-with="p-op"
 		on-init="s:[timeline-card-init:public]"

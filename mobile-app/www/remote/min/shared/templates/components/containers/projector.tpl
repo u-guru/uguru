@@ -1,4 +1,4 @@
-<div class="projector-slide">
+<div class="perspective-container projector-slide">
     <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
         <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
     </svg>
