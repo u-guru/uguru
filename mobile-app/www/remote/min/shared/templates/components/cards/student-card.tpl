@@ -15,10 +15,9 @@
 					on-init="t-enter"
 					on-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
 			</div>
-			<!-- http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800 -->
 			<div class="school-id-bottom">
 				<div>
-					<h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
+					<h1 class='lettercase' style="color: #003262;">Marco Polo</h1>
 					<h2 style="color: #003262;">Cal Freshman</h2>
 					<h2 style="color: #003262;">email@school.edu</h2>
 				</div>
@@ -36,11 +35,11 @@
 		</svg>
 		<div class="school-id-inside">
 			<div class="school-id-top" style="background: #003262;">
-				<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+				<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"></span>
 			</div>
 			<div class="school-id-bottom">
 				<div>
-					<h1 class='lettercase' style="color: #003262;">Gabrielle Wee</h1>
+					<h1 class='lettercase' style="color: #003262;">Marco Polo</h1>
 					<h2 style="color: #003262;">Cal Freshman</h2>
 					<h2 style="color: #003262;">email@school.edu</h2>
 				</div>
