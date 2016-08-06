@@ -49,7 +49,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="university-card with-hover" ng-if='activeType === "link"'
+	<a class="university-card with-hover" ng-if='activeType === "link"'
 		init-with="p-op"
 		on-init="t-enter"
 		on-enter="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
@@ -103,5 +103,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</a>
 </div>
