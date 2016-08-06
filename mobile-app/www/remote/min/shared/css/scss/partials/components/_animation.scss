@@ -92,13 +92,7 @@
   100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1;}
 }
 
-
-.animation-target {
-  animation: animation 1000ms linear both;
-}
-
-/* Generated with Bounce.js. Edit at http://goo.gl/EMWpQu */
-
+/* http://goo.gl/EMWpQu */
 @keyframes messageIn {
   0% { transform: matrix3d(0.2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity:0;}
   4.7% { transform: matrix3d(0.56, 0, 0, 0, 0, 0.392, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }

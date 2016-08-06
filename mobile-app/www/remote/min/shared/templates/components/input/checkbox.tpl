@@ -1,4 +1,4 @@
-<div class="full-xy flex-center" reference="http://codepen.io/teamuguru/pen/a76dae2606469f818ac51ad37c0dc827?editors=1100">
+<div class="perspective-container full-xy flex-center" reference="http://codepen.io/teamuguru/pen/a76dae2606469f818ac51ad37c0dc827?editors=1100">
 	<div class="checkbox-container checkbox-moxie">
 		<div>
 			<input type="checkbox" id="checkbox-item"/>

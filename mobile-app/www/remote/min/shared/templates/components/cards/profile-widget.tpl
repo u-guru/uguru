@@ -1,5 +1,10 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="pf-aside-widget">
+		<div class="top"></div>
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="bot-left"></div>
+		<div class="bot-right"></div>
 		<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"></span>
 		<div>
 			<h1 class="pf-name verified">

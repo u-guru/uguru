@@ -1,4 +1,4 @@
-<div class="full-xy flex-center" types='default, time-period, round, white-round' default-type="time-period" reference="http://codepen.io/teamuguru/pen/6ddde9fa7dbff14ae4124d45341be8c5?editors=1100">
+<div class="perspective-container full-xy flex-center" types='default, time-period, round, white-round' default-type="time-period" reference="http://codepen.io/teamuguru/pen/6ddde9fa7dbff14ae4124d45341be8c5?editors=1100">
 	<div class="toggle" ng-if='activeType === "default"'>
 		<input type="checkbox" checked />
 		<label>
