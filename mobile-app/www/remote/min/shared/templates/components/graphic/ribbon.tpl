@@ -1,4 +1,4 @@
-<div class="full-xy flex-center">
+<div class="perspective-container full-xy flex-center">
 	<div class="banner-fold">
 		<svg width="85px" height="99px" viewBox="0 0 85 99" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 		    <g fill="none" fill-rule="evenodd">

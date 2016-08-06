@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<ul class="ranking-container">
 		<li>
 			<div class="ranking-tile large"

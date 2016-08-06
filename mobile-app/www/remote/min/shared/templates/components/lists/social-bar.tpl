@@ -1,4 +1,4 @@
-<div class="absolute full-xy top-0 left-0 flex-wrap-center">
+<div class="perspective-container absolute full-xy top-0 left-0 flex-wrap-center">
 	<div class="social-bar fill"
 		init-default
 		on-init="s:[social-bar-init:public]">

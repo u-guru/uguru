@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='link, default, 2x3' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy" types='link, default, 2x3' default-type="default">
 	<div class="tile-group links" ng-if='activeType === "link"'>
 		<ul class="bg-slate">
 			<li>

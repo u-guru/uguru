@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<fieldset class="search-bar"
 		init-with="p:[op:0, width:48px, t:width 250ms cubic-bezier(.6#0#.1#1.3)#opacity 250ms ease-out]"
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in] | s:[search-bar-init:public]"

@@ -1,4 +1,4 @@
-<div class="full-xy flex">
+<div class="perspective-container full-xy flex">
 	<aside class="sidebar-list bg-lake"
 		init-with="p-op"
 		on-init="t-enter"

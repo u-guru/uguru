@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy"
+<div class="perspective-container full-xy flex-center p15xy"
 	init-default
 	on-init="s:[record-tile-init:public]">
 	<div class="record-tile-container"

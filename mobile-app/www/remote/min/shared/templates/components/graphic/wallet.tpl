@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<div class="wallet-container"
 		init-with="p:[tro:left center]"
 		on-init="t-enter"

@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<div class="university-place-marker bg-academic">
 		<div class="marker-normal">
 			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">

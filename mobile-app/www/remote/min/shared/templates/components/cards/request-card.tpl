@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<div class="request-card bg-household complete">
 		<div class="map">
 			<div class="map-marker" style="bottom: 15px; left: 50%; margin-left: -6px;">

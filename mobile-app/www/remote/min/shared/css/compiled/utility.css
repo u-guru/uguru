@@ -63,6 +63,11 @@
   font-style: italic;
   font-weight: 900;
   src: local("Source Sans Pro Black Italic"), local("SourceSansPro-BlackIt"), url(../../fonts/sourcesanspro-blackitalic-webfont.woff2) format("woff2"), url(../../fonts/sourcesanspro-blackitalic-webfont.woff) format("woff"); }
+.perspective-container {
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  transform-style: preserve-3d; }
+
 .impact-label, .impact-label * {
   font-family: "Impact Label" !important; }
 

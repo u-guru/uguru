@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<ul class="pf-card-stack slate">
 		<li init-with="tr:[translateY:-30px, scale:(0.8,0.8,0.8)]">
 				<div style="min-width: 300px"

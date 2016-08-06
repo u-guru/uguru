@@ -2957,114 +2957,6 @@ fieldset.no-border * {
     filter: alpha(opacity=100);
     opacity: 1; }
 
-[class*="pf-thumb"] {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position: relative;
-  border-radius: 2px;
-  background: white;
-  overflow: hidden; }
-  [class*="pf-thumb"] .top {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100% / 3);
-    background: #69B3A5; }
-  [class*="pf-thumb"] .user-icon {
-    position: relative;
-    z-index: 2; }
-  [class*="pf-thumb"].pf-thumb-36 {
-    width: 36px;
-    height: 36px; }
-    [class*="pf-thumb"].pf-thumb-36 .user-icon {
-      width: 24px;
-      height: 24px;
-      border-width: 2px; }
-  [class*="pf-thumb"].pf-thumb-48 {
-    width: 48px;
-    height: 48px; }
-    [class*="pf-thumb"].pf-thumb-48 .user-icon {
-      width: 32px;
-      height: 32px;
-      border-width: 2px; }
-  [class*="pf-thumb"].pf-thumb-64 {
-    width: 64px;
-    height: 64px; }
-    [class*="pf-thumb"].pf-thumb-64 .user-icon {
-      width: 44px;
-      height: 44px;
-      border-width: 2px; }
-  [class*="pf-thumb"].pf-thumb-72 {
-    width: 72px;
-    height: 72px; }
-    [class*="pf-thumb"].pf-thumb-72 .user-icon {
-      width: 48px;
-      height: 48px;
-      border-width: 2px; }
-  [class*="pf-thumb"].pf-thumb-96 {
-    width: 96px;
-    height: 96px; }
-    [class*="pf-thumb"].pf-thumb-96 .user-icon {
-      width: 72px;
-      height: 72px;
-      border-width: 3px; }
-  [class*="pf-thumb"].pf-thumb-128 {
-    width: 128px;
-    height: 128px; }
-    [class*="pf-thumb"].pf-thumb-128 .user-icon {
-      width: 96px;
-      height: 96px;
-      border-width: 3px; }
-  [class*="pf-thumb"].pf-charcoal .top {
-    background: #2B3234; }
-  [class*="pf-thumb"].pf-slate .top {
-    background: #40484B; }
-  [class*="pf-thumb"].pf-taupe .top {
-    background: #757575; }
-  [class*="pf-thumb"].pf-campus .top {
-    background: #8A9EA3; }
-  [class*="pf-thumb"].pf-shamrock .top {
-    background: #69B3A5; }
-  [class*="pf-thumb"].pf-robin .top {
-    background: #2BB3B8; }
-  [class*="pf-thumb"].pf-lake .top {
-    background: #50A5DD; }
-  [class*="pf-thumb"].pf-moxie .top {
-    background: #43cb9d; }
-  [class*="pf-thumb"].pf-crimson .top {
-    background: #d3242c; }
-  [class*="pf-thumb"].pf-auburn .top, [class*="pf-thumb"].pf-delivery .top {
-    background: #F04F54; }
-  [class*="pf-thumb"].pf-orange .top, [class*="pf-thumb"].pf-freelancing .top {
-    background: #E5753C; }
-  [class*="pf-thumb"].pf-gold .top, [class*="pf-thumb"].pf-baking .top {
-    background: #F6C64E; }
-  [class*="pf-thumb"].pf-moola .top, [class*="pf-thumb"].pf-photography .top {
-    background: #81B566; }
-  [class*="pf-thumb"].pf-azure .top, [class*="pf-thumb"].pf-tech .top {
-    background: #55A4B7; }
-  [class*="pf-thumb"].pf-cobalt .top, [class*="pf-thumb"].pf-household .top {
-    background: #7872e3; }
-  [class*="pf-thumb"].pf-eggplant .top, [class*="pf-thumb"].pf-athletic .top {
-    background: #9A5BC5; }
-  [class*="pf-thumb"].pf-cerise .top, [class*="pf-thumb"].pf-academic .top {
-    background: #e6389b; }
-
 .pf-card {
   width: 100%;
   max-width: 400px;
@@ -7294,6 +7186,234 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
     width: calc(100% + 30px);
     height: calc(100% + 30px); }
 
+/* ---------- USER ICONS */
+[class*="user-icon"] {
+  border-radius: 1000px;
+  display: block;
+  margin: 0 auto;
+  background-position: center;
+  background-size: cover;
+  background-color: #E3E3E3;
+  border-style: solid;
+  border-color: white; }
+
+.user-icon, .user-icon-128 {
+  width: 128px;
+  height: 128px;
+  border-width: 5px; }
+
+.user-icon-96 {
+  width: 96px;
+  height: 96px;
+  border-width: 4px; }
+
+.user-icon-84 {
+  width: 84px;
+  height: 84px;
+  border-width: 3px; }
+
+.user-icon-72 {
+  width: 72px;
+  height: 72px;
+  border-width: 3px; }
+
+.user-icon-64 {
+  width: 64px;
+  height: 64px;
+  border-width: 3px; }
+
+.user-icon-48 {
+  width: 48px;
+  height: 48px;
+  border-width: 3px; }
+
+.user-icon-36 {
+  width: 36px;
+  height: 36px;
+  border-width: 2px; }
+
+.user-icon-32 {
+  width: 32px;
+  height: 32px;
+  border-width: 2px; }
+
+.user-icon-28 {
+  width: 28px;
+  height: 28px;
+  border-width: 2px; }
+
+.user-icon-24 {
+  width: 24px;
+  height: 24px;
+  border-width: 2px; }
+
+.user-icon-container {
+  display: block;
+  position: relative; }
+  .user-icon-container .user-icon {
+    filter: alpha(opacity=50);
+    opacity: 0.5; }
+  .user-icon-container .user-icon-edit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase; }
+  .user-icon-container.border-charcoal [class*="user-icon"] {
+    border-color: #2B3234 !important; }
+  .user-icon-container.border-slate [class*="user-icon"] {
+    border-color: #40484B !important; }
+  .user-icon-container.border-taupe [class*="user-icon"] {
+    border-color: #757575 !important; }
+  .user-icon-container.border-campus [class*="user-icon"] {
+    border-color: #8A9EA3 !important; }
+  .user-icon-container.border-smoke [class*="user-icon"] {
+    border-color: #F1F1F1 !important; }
+  .user-icon-container.border-white [class*="user-icon"] {
+    border-color: white !important; }
+  .user-icon-container.border-rocket [class*="user-icon"] {
+    border-color: #696269 !important; }
+  .user-icon-container.border-shamrock [class*="user-icon"] {
+    border-color: #69B3A5 !important; }
+  .user-icon-container.border-robin [class*="user-icon"] {
+    border-color: #2BB3B8 !important; }
+  .user-icon-container.border-lake [class*="user-icon"] {
+    border-color: #50A5DD !important; }
+  .user-icon-container.border-moxie [class*="user-icon"] {
+    border-color: #43cb9d !important; }
+  .user-icon-container.border-crimson [class*="user-icon"] {
+    border-color: #d3242c !important; }
+  .user-icon-container.border-auburn [class*="user-icon"], .user-icon-container.border-delivery [class*="user-icon"] {
+    border-color: #F04F54 !important; }
+  .user-icon-container.border-freelacing [class*="user-icon"], .user-icon-container.border-orange [class*="user-icon"] {
+    border-color: #E5753C !important; }
+  .user-icon-container.border-baking [class*="user-icon"], .user-icon-container.border-gold [class*="user-icon"] {
+    border-color: #F6C64E !important; }
+  .user-icon-container.border-moola [class*="user-icon"], .user-icon-container.border-photography [class*="user-icon"] {
+    border-color: #81B566 !important; }
+  .user-icon-container.border-azure [class*="user-icon"], .user-icon-container.border-tech [class*="user-icon"] {
+    border-color: #55A4B7 !important; }
+  .user-icon-container.border-cobalt [class*="user-icon"], .user-icon-container.border-household [class*="user-icon"] {
+    border-color: #7872e3 !important; }
+  .user-icon-container.border-athletic [class*="user-icon"], .user-icon-container.border-eggplant [class*="user-icon"] {
+    border-color: #9A5BC5 !important; }
+  .user-icon-container.border-academic [class*="user-icon"], .user-icon-container.border-cerise [class*="user-icon"] {
+    border-color: #e6389b !important; }
+
+[class*="pf-thumb"] {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 2px;
+  background: white;
+  overflow: hidden; }
+  [class*="pf-thumb"] .top {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% / 3);
+    background: #69B3A5; }
+  [class*="pf-thumb"] .user-icon {
+    position: relative;
+    z-index: 2; }
+  [class*="pf-thumb"].pf-thumb-36 {
+    width: 36px;
+    height: 36px; }
+    [class*="pf-thumb"].pf-thumb-36 .user-icon {
+      width: 24px;
+      height: 24px;
+      border-width: 2px; }
+  [class*="pf-thumb"].pf-thumb-48 {
+    width: 48px;
+    height: 48px; }
+    [class*="pf-thumb"].pf-thumb-48 .user-icon {
+      width: 32px;
+      height: 32px;
+      border-width: 2px; }
+  [class*="pf-thumb"].pf-thumb-64 {
+    width: 64px;
+    height: 64px; }
+    [class*="pf-thumb"].pf-thumb-64 .user-icon {
+      width: 44px;
+      height: 44px;
+      border-width: 2px; }
+  [class*="pf-thumb"].pf-thumb-72 {
+    width: 72px;
+    height: 72px; }
+    [class*="pf-thumb"].pf-thumb-72 .user-icon {
+      width: 48px;
+      height: 48px;
+      border-width: 2px; }
+  [class*="pf-thumb"].pf-thumb-96 {
+    width: 96px;
+    height: 96px; }
+    [class*="pf-thumb"].pf-thumb-96 .user-icon {
+      width: 72px;
+      height: 72px;
+      border-width: 3px; }
+  [class*="pf-thumb"].pf-thumb-128 {
+    width: 128px;
+    height: 128px; }
+    [class*="pf-thumb"].pf-thumb-128 .user-icon {
+      width: 96px;
+      height: 96px;
+      border-width: 3px; }
+  [class*="pf-thumb"].pf-charcoal .top {
+    background: #2B3234; }
+  [class*="pf-thumb"].pf-slate .top {
+    background: #40484B; }
+  [class*="pf-thumb"].pf-taupe .top {
+    background: #757575; }
+  [class*="pf-thumb"].pf-campus .top {
+    background: #8A9EA3; }
+  [class*="pf-thumb"].pf-shamrock .top {
+    background: #69B3A5; }
+  [class*="pf-thumb"].pf-robin .top {
+    background: #2BB3B8; }
+  [class*="pf-thumb"].pf-lake .top {
+    background: #50A5DD; }
+  [class*="pf-thumb"].pf-moxie .top {
+    background: #43cb9d; }
+  [class*="pf-thumb"].pf-crimson .top {
+    background: #d3242c; }
+  [class*="pf-thumb"].pf-auburn .top, [class*="pf-thumb"].pf-delivery .top {
+    background: #F04F54; }
+  [class*="pf-thumb"].pf-orange .top, [class*="pf-thumb"].pf-freelancing .top {
+    background: #E5753C; }
+  [class*="pf-thumb"].pf-gold .top, [class*="pf-thumb"].pf-baking .top {
+    background: #F6C64E; }
+  [class*="pf-thumb"].pf-moola .top, [class*="pf-thumb"].pf-photography .top {
+    background: #81B566; }
+  [class*="pf-thumb"].pf-azure .top, [class*="pf-thumb"].pf-tech .top {
+    background: #55A4B7; }
+  [class*="pf-thumb"].pf-cobalt .top, [class*="pf-thumb"].pf-household .top {
+    background: #7872e3; }
+  [class*="pf-thumb"].pf-eggplant .top, [class*="pf-thumb"].pf-athletic .top {
+    background: #9A5BC5; }
+  [class*="pf-thumb"].pf-cerise .top, [class*="pf-thumb"].pf-academic .top {
+    background: #e6389b; }
+
 /* ---------- TAGS */
 .chip {
   display: inline-block;
@@ -7306,395 +7426,14 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   padding: 0 12px;
   border-radius: 16px; }
   .chip img {
-    float: left;
-    margin: 0 8px 0 -12px;
     padding: 2px;
-    height: 32px;
-    width: 32px;
     border-radius: 50%; }
-  .chip[class*="arrow"] {
-    border-radius: 2px; }
-    .chip[class*="arrow"] svg {
-      position: absolute;
-      width: 20px;
-      height: 10px; }
-    .chip[class*="arrow"].arrow-up {
-      margin-top: 20px; }
-      .chip[class*="arrow"].arrow-up svg {
-        position: absolute;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        -moz-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
-        transform: translateX(-50%);
-        top: -10px; }
-    .chip[class*="arrow"].arrow-down {
-      margin-bottom: 20px; }
-      .chip[class*="arrow"].arrow-down svg {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%) rotate(180deg);
-        transform-origin: center center;
-        bottom: -10px; }
-    .chip[class*="arrow"].arrow-left {
-      margin-left: 20px; }
-      .chip[class*="arrow"].arrow-left svg {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%) rotate(-90deg);
-        transform-origin: center center;
-        left: -15px; }
-    .chip[class*="arrow"].arrow-right {
-      margin-right: 20px; }
-      .chip[class*="arrow"].arrow-right svg {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%) rotate(90deg);
-        transform-origin: center center;
-        right: -15px; }
-    .chip[class*="arrow"][class*="bg-white"] svg {
-      fill: white; }
-    .chip[class*="arrow"][class*="bg-white"][class*="-05p"] svg {
-      fill: rgba(255, 255, 255, 0.05); }
-    .chip[class*="arrow"][class*="bg-white"][class*="-10p"] svg {
-      fill: rgba(255, 255, 255, 0.1); }
-    .chip[class*="arrow"][class*="bg-white"][class*="-20p"] svg {
-      fill: rgba(255, 255, 255, 0.2); }
-    .chip[class*="arrow"][class*="bg-white"][class*="-25p"] svg {
-      fill: rgba(255, 255, 255, 0.25); }
-    .chip[class*="arrow"][class*="bg-white"][class*="-50p"] svg {
-      fill: rgba(255, 255, 255, 0.5); }
-    .chip[class*="arrow"][class*="bg-white"][class*="-75p"] svg {
-      fill: rgba(255, 255, 255, 0.75); }
-    .chip[class*="arrow"][class*="bg-white"][class*="-80p"] svg {
-      fill: rgba(255, 255, 255, 0.8); }
-    .chip[class*="arrow"][class*="bg-white"][class*="-90p"] svg {
-      fill: rgba(255, 255, 255, 0.9); }
-    .chip[class*="arrow"][class*="bg-charcoal"] svg {
-      fill: #2B3234; }
-    .chip[class*="arrow"][class*="bg-charcoal"][class*="-05p"] svg {
-      fill: rgba(43, 50, 52, 0.05); }
-    .chip[class*="arrow"][class*="bg-charcoal"][class*="-10p"] svg {
-      fill: rgba(43, 50, 52, 0.1); }
-    .chip[class*="arrow"][class*="bg-charcoal"][class*="-20p"] fill {
-      fill: rgba(43, 50, 52, 0.2); }
-    .chip[class*="arrow"][class*="bg-charcoal"][class*="-25p"] svg {
-      fill: rgba(43, 50, 52, 0.25); }
-    .chip[class*="arrow"][class*="bg-charcoal"][class*="-50p"] svg {
-      fill: rgba(43, 50, 52, 0.5); }
-    .chip[class*="arrow"][class*="bg-charcoal"][class*="-75p"] svg {
-      fill: rgba(43, 50, 52, 0.75); }
-    .chip[class*="arrow"][class*="bg-charcoal"][class*="-80p"] svg {
-      fill: rgba(43, 50, 52, 0.8); }
-    .chip[class*="arrow"][class*="bg-charcoal"][class*="-90p"] svg {
-      fill: rgba(43, 50, 52, 0.9); }
-    .chip[class*="arrow"][class*="bg-slate"] svg {
-      fill: #40484B; }
-    .chip[class*="arrow"][class*="bg-slate"][class*="-05p"] svg {
-      fill: rgba(64, 72, 75, 0.05); }
-    .chip[class*="arrow"][class*="bg-slate"][class*="-10p"] svg {
-      fill: rgba(64, 72, 75, 0.1); }
-    .chip[class*="arrow"][class*="bg-slate"][class*="-20p"] svg {
-      fill: rgba(64, 72, 75, 0.2); }
-    .chip[class*="arrow"][class*="bg-slate"][class*="-25p"] svg {
-      fill: rgba(64, 72, 75, 0.25); }
-    .chip[class*="arrow"][class*="bg-slate"][class*="-50p"] svg {
-      fill: rgba(64, 72, 75, 0.5); }
-    .chip[class*="arrow"][class*="bg-slate"][class*="-75p"] svg {
-      fill: rgba(64, 72, 75, 0.75); }
-    .chip[class*="arrow"][class*="bg-slate"][class*="-80p"] svg {
-      fill: rgba(64, 72, 75, 0.8); }
-    .chip[class*="arrow"][class*="bg-slate"][class*="-90p"] svg {
-      fill: rgba(64, 72, 75, 0.9); }
-    .chip[class*="arrow"][class*="bg-taupe"] svg {
-      fill: #757575; }
-    .chip[class*="arrow"][class*="bg-taupe"][class*="-05p"] svg {
-      fill: rgba(117, 117, 117, 0.05); }
-    .chip[class*="arrow"][class*="bg-taupe"][class*="-10p"] svg {
-      fill: rgba(117, 117, 117, 0.1); }
-    .chip[class*="arrow"][class*="bg-taupe"][class*="-20p"] svg {
-      fill: rgba(117, 117, 117, 0.2); }
-    .chip[class*="arrow"][class*="bg-taupe"][class*="-25p"] svg {
-      fill: rgba(117, 117, 117, 0.25); }
-    .chip[class*="arrow"][class*="bg-taupe"][class*="-50p"] svg {
-      svg: rgba(117, 117, 117, 0.5); }
-    .chip[class*="arrow"][class*="bg-taupe"][class*="-75p"] svg {
-      fill: rgba(117, 117, 117, 0.75); }
-    .chip[class*="arrow"][class*="bg-taupe"][class*="-80p"] svg {
-      fill: rgba(117, 117, 117, 0.8); }
-    .chip[class*="arrow"][class*="bg-taupe"][class*="-90p"] svg {
-      fill: rgba(117, 117, 117, 0.9); }
-    .chip[class*="arrow"][class*="bg-smoke"] svg {
-      fill: #F1F1F1; }
-    .chip[class*="arrow"][class*="bg-smoke"][class*="-05p"] svg {
-      fill: rgba(241, 241, 241, 0.05); }
-    .chip[class*="arrow"][class*="bg-smoke"][class*="-10p"] svg {
-      fill: rgba(241, 241, 241, 0.1); }
-    .chip[class*="arrow"][class*="bg-smoke"][class*="-20p"] svg {
-      fill: rgba(241, 241, 241, 0.2); }
-    .chip[class*="arrow"][class*="bg-smoke"][class*="-25p"] svg {
-      fill: rgba(241, 241, 241, 0.25); }
-    .chip[class*="arrow"][class*="bg-smoke"][class*="-50p"] svg {
-      fill: rgba(241, 241, 241, 0.5); }
-    .chip[class*="arrow"][class*="bg-smoke"][class*="-75p"] svg {
-      fill: rgba(241, 241, 241, 0.75); }
-    .chip[class*="arrow"][class*="bg-smoke"][class*="-80p"] svg {
-      fill: rgba(241, 241, 241, 0.8); }
-    .chip[class*="arrow"][class*="bg-smoke"][class*="-90p"] svg {
-      fill: rgba(241, 241, 241, 0.9); }
-    .chip[class*="arrow"][class*="bg-campus"] svg {
-      fill: #8A9EA3; }
-    .chip[class*="arrow"][class*="bg-campus"][class*="-05p"] svg {
-      fill: rgba(138, 158, 163, 0.05); }
-    .chip[class*="arrow"][class*="bg-campus"][class*="-10p"] svg {
-      fill: rgba(138, 158, 163, 0.1); }
-    .chip[class*="arrow"][class*="bg-campus"][class*="-20p"] svg {
-      fill: rgba(138, 158, 163, 0.2); }
-    .chip[class*="arrow"][class*="bg-campus"][class*="-25p"] svg {
-      fill: rgba(138, 158, 163, 0.25); }
-    .chip[class*="arrow"][class*="bg-campus"][class*="-50p"] svg {
-      fill: rgba(138, 158, 163, 0.5); }
-    .chip[class*="arrow"][class*="bg-campus"][class*="-75p"] svg {
-      fill: rgba(138, 158, 163, 0.75); }
-    .chip[class*="arrow"][class*="bg-campus"][class*="-80p"] svg {
-      fill: rgba(138, 158, 163, 0.8); }
-    .chip[class*="arrow"][class*="bg-campus"][class*="-90p"] svg {
-      fill: rgba(138, 158, 163, 0.9); }
-    .chip[class*="arrow"][class*="bg-rocket"] svg {
-      fill: #696269; }
-    .chip[class*="arrow"][class*="bg-rocket"][class*="-05p"] svg {
-      fill: rgba(105, 98, 105, 0.05); }
-    .chip[class*="arrow"][class*="bg-rocket"][class*="-10p"] svg {
-      fill: rgba(105, 98, 105, 0.1); }
-    .chip[class*="arrow"][class*="bg-rocket"][class*="-20p"] svg {
-      fill: rgba(105, 98, 105, 0.2); }
-    .chip[class*="arrow"][class*="bg-rocket"][class*="-25p"] svg {
-      fill: rgba(105, 98, 105, 0.25); }
-    .chip[class*="arrow"][class*="bg-rocket"][class*="-50p"] svg {
-      fill: rgba(105, 98, 105, 0.5); }
-    .chip[class*="arrow"][class*="bg-rocket"][class*="-75p"] svg {
-      fill: rgba(105, 98, 105, 0.75); }
-    .chip[class*="arrow"][class*="bg-rocket"][class*="-80p"] svg {
-      fill: rgba(105, 98, 105, 0.8); }
-    .chip[class*="arrow"][class*="bg-rocket"][class*="-90p"] svg {
-      fill: rgba(105, 98, 105, 0.9); }
-    .chip[class*="arrow"][class*="bg-shamrock"] svg {
-      fill: #69B3A5; }
-    .chip[class*="arrow"][class*="bg-shamrock"][class*="-05p"] svg {
-      fill: rgba(105, 179, 165, 0.05); }
-    .chip[class*="arrow"][class*="bg-shamrock"][class*="-10p"] svg {
-      fill: rgba(105, 179, 165, 0.1); }
-    .chip[class*="arrow"][class*="bg-shamrock"][class*="-20p"] svg {
-      fill: rgba(105, 179, 165, 0.2); }
-    .chip[class*="arrow"][class*="bg-shamrock"][class*="-25p"] svg {
-      fill: rgba(105, 179, 165, 0.25); }
-    .chip[class*="arrow"][class*="bg-shamrock"][class*="-50p"] svg {
-      fill: rgba(105, 179, 165, 0.5); }
-    .chip[class*="arrow"][class*="bg-shamrock"][class*="-75p"] svg {
-      fill: rgba(105, 179, 165, 0.75); }
-    .chip[class*="arrow"][class*="bg-shamrock"][class*="-80p"] svg {
-      fill: rgba(105, 179, 165, 0.8); }
-    .chip[class*="arrow"][class*="bg-shamrock"][class*="-90p"] svg {
-      fill: rgba(105, 179, 165, 0.9); }
-    .chip[class*="arrow"][class*="bg-robin"] svg {
-      fill: #2BB3B8; }
-    .chip[class*="arrow"][class*="bg-robin"][class*="-05p"] svg {
-      fill: rgba(43, 179, 184, 0.05); }
-    .chip[class*="arrow"][class*="bg-robin"][class*="-10p"] svg {
-      fill: rgba(43, 179, 184, 0.1); }
-    .chip[class*="arrow"][class*="bg-robin"][class*="-20p"] svg {
-      fill: rgba(43, 179, 184, 0.2); }
-    .chip[class*="arrow"][class*="bg-robin"][class*="-25p"] svg {
-      fill: rgba(43, 179, 184, 0.25); }
-    .chip[class*="arrow"][class*="bg-robin"][class*="-50p"] svg {
-      fill: rgba(43, 179, 184, 0.5); }
-    .chip[class*="arrow"][class*="bg-robin"][class*="-75p"] svg {
-      fill: rgba(43, 179, 184, 0.75); }
-    .chip[class*="arrow"][class*="bg-robin"][class*="-80p"] svg {
-      fill: rgba(43, 179, 184, 0.8); }
-    .chip[class*="arrow"][class*="bg-robin"][class*="-90p"] svg {
-      fill: rgba(43, 179, 184, 0.9); }
-    .chip[class*="arrow"][class*="bg-lake"] svg {
-      fill: #50A5DD; }
-    .chip[class*="arrow"][class*="bg-lake"][class*="-05p"] svg {
-      fill: rgba(80, 165, 221, 0.05); }
-    .chip[class*="arrow"][class*="bg-lake"][class*="-10p"] svg {
-      fill: rgba(80, 165, 221, 0.1); }
-    .chip[class*="arrow"][class*="bg-lake"][class*="-20p"] svg {
-      fill: rgba(80, 165, 221, 0.2); }
-    .chip[class*="arrow"][class*="bg-lake"][class*="-25p"] svg {
-      fill: rgba(80, 165, 221, 0.25); }
-    .chip[class*="arrow"][class*="bg-lake"][class*="-50p"] svg {
-      fill: rgba(80, 165, 221, 0.5); }
-    .chip[class*="arrow"][class*="bg-lake"][class*="-75p"] svg {
-      fill: rgba(80, 165, 221, 0.75); }
-    .chip[class*="arrow"][class*="bg-lake"][class*="-80p"] svg {
-      fill: rgba(80, 165, 221, 0.8); }
-    .chip[class*="arrow"][class*="bg-lake"][class*="-90p"] svg {
-      fill: rgba(80, 165, 221, 0.9); }
-    .chip[class*="arrow"][class*="bg-moxie"] svg {
-      fill: #43cb9d; }
-    .chip[class*="arrow"][class*="bg-moxie"][class*="-05p"] svg {
-      fill: rgba(67, 203, 157, 0.05); }
-    .chip[class*="arrow"][class*="bg-moxie"][class*="-10p"] svg {
-      fill: rgba(67, 203, 157, 0.1); }
-    .chip[class*="arrow"][class*="bg-moxie"][class*="-20p"] svg {
-      fill: rgba(67, 203, 157, 0.2); }
-    .chip[class*="arrow"][class*="bg-moxie"][class*="-25p"] svg {
-      fill: rgba(67, 203, 157, 0.25); }
-    .chip[class*="arrow"][class*="bg-moxie"][class*="-50p"] svg {
-      fill: rgba(67, 203, 157, 0.5); }
-    .chip[class*="arrow"][class*="bg-moxie"][class*="-75p"] svg {
-      fill: rgba(67, 203, 157, 0.75); }
-    .chip[class*="arrow"][class*="bg-moxie"][class*="-80p"] svg {
-      fill: rgba(67, 203, 157, 0.8); }
-    .chip[class*="arrow"][class*="bg-moxie"][class*="-90p"] svg {
-      fill: rgba(67, 203, 157, 0.9); }
-    .chip[class*="arrow"][class*="bg-crimson"] svg {
-      fill: #d3242c; }
-    .chip[class*="arrow"][class*="bg-crimson"][class*="-05p"] svg {
-      fill: rgba(211, 36, 44, 0.05); }
-    .chip[class*="arrow"][class*="bg-crimson"][class*="-10p"] svg {
-      fill: rgba(211, 36, 44, 0.1); }
-    .chip[class*="arrow"][class*="bg-crimson"][class*="-20p"] svg {
-      fill: rgba(211, 36, 44, 0.2); }
-    .chip[class*="arrow"][class*="bg-crimson"][class*="-25p"] svg {
-      fill: rgba(211, 36, 44, 0.25); }
-    .chip[class*="arrow"][class*="bg-crimson"][class*="-50p"] svg {
-      fill: rgba(211, 36, 44, 0.5); }
-    .chip[class*="arrow"][class*="bg-crimson"][class*="-75p"] svg {
-      fill: rgba(211, 36, 44, 0.75); }
-    .chip[class*="arrow"][class*="bg-crimson"][class*="-80p"] svg {
-      fill: rgba(211, 36, 44, 0.8); }
-    .chip[class*="arrow"][class*="bg-crimson"][class*="-90p"] svg {
-      fill: rgba(211, 36, 44, 0.9); }
-    .chip[class*="arrow"][class*="bg-auburn"] svg {
-      fill: #F04F54; }
-    .chip[class*="arrow"][class*="bg-auburn"][class*="-05p"] svg {
-      fill: rgba(240, 79, 84, 0.05); }
-    .chip[class*="arrow"][class*="bg-auburn"][class*="-10p"] svg {
-      fill: rgba(240, 79, 84, 0.1); }
-    .chip[class*="arrow"][class*="bg-auburn"][class*="-20p"] svg {
-      fill: rgba(240, 79, 84, 0.2); }
-    .chip[class*="arrow"][class*="bg-auburn"][class*="-25p"] svg {
-      fill: rgba(240, 79, 84, 0.25); }
-    .chip[class*="arrow"][class*="bg-auburn"][class*="-50p"] svg {
-      fill: rgba(240, 79, 84, 0.5); }
-    .chip[class*="arrow"][class*="bg-auburn"][class*="-75p"] svg {
-      fill: rgba(240, 79, 84, 0.75); }
-    .chip[class*="arrow"][class*="bg-auburn"][class*="-80p"] svg {
-      fill: rgba(240, 79, 84, 0.8); }
-    .chip[class*="arrow"][class*="bg-auburn"][class*="-90p"] svg {
-      fill: rgba(240, 79, 84, 0.9); }
-    .chip[class*="arrow"][class*="bg-orange"] svg {
-      fill: #E5753C; }
-    .chip[class*="arrow"][class*="bg-orange"][class*="-05p"] svg {
-      fill: rgba(229, 117, 60, 0.05); }
-    .chip[class*="arrow"][class*="bg-orange"][class*="-10p"] svg {
-      fill: rgba(229, 117, 60, 0.1); }
-    .chip[class*="arrow"][class*="bg-orange"][class*="-20p"] svg {
-      fill: rgba(229, 117, 60, 0.2); }
-    .chip[class*="arrow"][class*="bg-orange"][class*="-25p"] svg {
-      fill: rgba(229, 117, 60, 0.25); }
-    .chip[class*="arrow"][class*="bg-orange"][class*="-50p"] svg {
-      fill: rgba(229, 117, 60, 0.5); }
-    .chip[class*="arrow"][class*="bg-orange"][class*="-75p"] svg {
-      fill: rgba(229, 117, 60, 0.75); }
-    .chip[class*="arrow"][class*="bg-orange"][class*="-80p"] svg {
-      fill: rgba(229, 117, 60, 0.8); }
-    .chip[class*="arrow"][class*="bg-orange"][class*="-90p"] svg {
-      fill: rgba(229, 117, 60, 0.9); }
-    .chip[class*="arrow"][class*="bg-gold"] svg {
-      fill: #F6C64E; }
-    .chip[class*="arrow"][class*="bg-gold"][class*="-05p"] svg {
-      fill: rgba(246, 198, 78, 0.05); }
-    .chip[class*="arrow"][class*="bg-gold"][class*="-10p"] svg {
-      fill: rgba(246, 198, 78, 0.1); }
-    .chip[class*="arrow"][class*="bg-gold"][class*="-20p"] svg {
-      fill: rgba(246, 198, 78, 0.2); }
-    .chip[class*="arrow"][class*="bg-gold"][class*="-25p"] svg {
-      fill: rgba(246, 198, 78, 0.25); }
-    .chip[class*="arrow"][class*="bg-gold"][class*="-50p"] svg {
-      fill: rgba(246, 198, 78, 0.5); }
-    .chip[class*="arrow"][class*="bg-gold"][class*="-75p"] svg {
-      fill: rgba(246, 198, 78, 0.75); }
-    .chip[class*="arrow"][class*="bg-gold"][class*="-80p"] svg {
-      fill: rgba(246, 198, 78, 0.8); }
-    .chip[class*="arrow"][class*="bg-gold"][class*="-90p"] svg {
-      fill: rgba(246, 198, 78, 0.9); }
-    .chip[class*="arrow"][class*="bg-moola"] svg {
-      fill: #81B566; }
-    .chip[class*="arrow"][class*="bg-moola"][class*="-05p"] svg {
-      fill: rgba(129, 181, 102, 0.05); }
-    .chip[class*="arrow"][class*="bg-moola"][class*="-10p"] svg {
-      fill: rgba(129, 181, 102, 0.1); }
-    .chip[class*="arrow"][class*="bg-moola"][class*="-20p"] svg {
-      fill: rgba(129, 181, 102, 0.2); }
-    .chip[class*="arrow"][class*="bg-moola"][class*="-25p"] svg {
-      fill: rgba(129, 181, 102, 0.25); }
-    .chip[class*="arrow"][class*="bg-moola"][class*="-50p"] svg {
-      fill: rgba(129, 181, 102, 0.5); }
-    .chip[class*="arrow"][class*="bg-moola"][class*="-75p"] svg {
-      fill: rgba(129, 181, 102, 0.75); }
-    .chip[class*="arrow"][class*="bg-moola"][class*="-80p"] svg {
-      fill: rgba(129, 181, 102, 0.8); }
-    .chip[class*="arrow"][class*="bg-moola"][class*="-90p"] svg {
-      fill: rgba(129, 181, 102, 0.9); }
-    .chip[class*="arrow"][class*="bg-azure"] svg {
-      fill: #55A4B7; }
-    .chip[class*="arrow"][class*="bg-azure"][class*="-05p"] svg {
-      fill: rgba(85, 164, 183, 0.05); }
-    .chip[class*="arrow"][class*="bg-azure"][class*="-10p"] svg {
-      fill: rgba(85, 164, 183, 0.1); }
-    .chip[class*="arrow"][class*="bg-azure"][class*="-20p"] svg {
-      fill: rgba(85, 164, 183, 0.2); }
-    .chip[class*="arrow"][class*="bg-azure"][class*="-25p"] svg {
-      fill: rgba(85, 164, 183, 0.25); }
-    .chip[class*="arrow"][class*="bg-azure"][class*="-50p"] svg {
-      fill: rgba(85, 164, 183, 0.5); }
-    .chip[class*="arrow"][class*="bg-azure"][class*="-75p"] svg {
-      fill: rgba(85, 164, 183, 0.75); }
-    .chip[class*="arrow"][class*="bg-azure"][class*="-80p"] svg {
-      fill: rgba(85, 164, 183, 0.8); }
-    .chip[class*="arrow"][class*="bg-azure"][class*="-90p"] svg {
-      fill: rgba(85, 164, 183, 0.9); }
-    .chip[class*="arrow"][class*="bg-eggplant"] svg {
-      fill: #9A5BC5; }
-    .chip[class*="arrow"][class*="bg-eggplant"][class*="-05p"] svg {
-      fill: rgba(154, 91, 197, 0.05); }
-    .chip[class*="arrow"][class*="bg-eggplant"][class*="-10p"] svg {
-      fill: rgba(154, 91, 197, 0.1); }
-    .chip[class*="arrow"][class*="bg-eggplant"][class*="-20p"] svg {
-      fill: rgba(154, 91, 197, 0.2); }
-    .chip[class*="arrow"][class*="bg-eggplant"][class*="-25p"] svg {
-      fill: rgba(154, 91, 197, 0.25); }
-    .chip[class*="arrow"][class*="bg-eggplant"][class*="-50p"] svg {
-      fill: rgba(154, 91, 197, 0.5); }
-    .chip[class*="arrow"][class*="bg-eggplant"][class*="-75p"] svg {
-      fill: rgba(154, 91, 197, 0.75); }
-    .chip[class*="arrow"][class*="bg-eggplant"][class*="-80p"] svg {
-      fill: rgba(154, 91, 197, 0.8); }
-    .chip[class*="arrow"][class*="bg-eggplant"][class*="-90p"] svg {
-      fill: rgba(154, 91, 197, 0.9); }
-    .chip[class*="arrow"][class*="bg-cerise"] svg {
-      fill: #e6389b; }
-    .chip[class*="arrow"][class*="bg-cerise"][class*="-05p"] svg {
-      fill: rgba(230, 56, 155, 0.05); }
-    .chip[class*="arrow"][class*="bg-cerise"][class*="-10p"] svg {
-      fill: rgba(230, 56, 155, 0.1); }
-    .chip[class*="arrow"][class*="bg-cerise"][class*="-20p"] svg {
-      fill: rgba(230, 56, 155, 0.2); }
-    .chip[class*="arrow"][class*="bg-cerise"][class*="-25p"] svg {
-      fill: rgba(230, 56, 155, 0.25); }
-    .chip[class*="arrow"][class*="bg-cerise"][class*="-50p"] svg {
-      fill: rgba(230, 56, 155, 0.5); }
-    .chip[class*="arrow"][class*="bg-cerise"][class*="-75p"] svg {
-      fill: rgba(230, 56, 155, 0.75); }
-    .chip[class*="arrow"][class*="bg-cerise"][class*="-80p"] svg {
-      fill: rgba(230, 56, 155, 0.8); }
-    .chip[class*="arrow"][class*="bg-cerise"][class*="-90p"] svg {
-      fill: rgba(230, 56, 155, 0.9); }
+  .chip img, .chip .user-icon-32 {
+    float: left;
+    height: 28px !important;
+    width: 28px !important;
+    margin: 2px 8px 2px -10px;
+    border: 0 !important; }
 
 input.chip:hover {
   cursor: text; }
@@ -8804,6 +8543,82 @@ input.chip:hover {
       .color-picker ul:nth-child(2).bg-charcoal li:nth-child(9) span {
         background: black; }
 
+.impact-meter {
+  width: 99px;
+  height: 51px; }
+
+/* ---------- RATING */
+.rating-stars, .pf-rating {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100px;
+  margin: 0 auto; }
+  .rating-stars li, .pf-rating li {
+    width: 20%; }
+    .rating-stars li svg, .pf-rating li svg {
+      fill: none;
+      stroke: #F6C64E;
+      stroke-width: 7px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: block; }
+      .rating-stars li svg polygon:nth-child(2), .pf-rating li svg polygon:nth-child(2) {
+        filter: alpha(opacity=0);
+        opacity: 0;
+        stroke-width: 0;
+        fill: #F6C64E; }
+  .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-rating[data-rating*="1"] li:nth-child(1) svg polygon {
+    fill: #F6C64E; }
+  .rating-stars[data-rating*="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2), .rating-stars[data-rating*="1"][data-rating*="."] li:nth-child(2) svg polygon:nth-child(2), .pf-rating[data-rating*="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2), .pf-rating[data-rating*="1"][data-rating*="."] li:nth-child(2) svg polygon:nth-child(2) {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
+  .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-rating[data-rating*="2"] li:nth-child(1) svg polygon,
+  .pf-rating[data-rating*="2"] li:nth-child(2) svg polygon {
+    fill: #F6C64E; }
+  .rating-stars[data-rating*="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2), .rating-stars[data-rating*="2"][data-rating*="."] li:nth-child(3) svg polygon:nth-child(2), .pf-rating[data-rating*="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2), .pf-rating[data-rating*="2"][data-rating*="."] li:nth-child(3) svg polygon:nth-child(2) {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
+  .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
+  .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-rating[data-rating*="3"] li:nth-child(1) svg polygon,
+  .pf-rating[data-rating*="3"] li:nth-child(2) svg polygon,
+  .pf-rating[data-rating*="3"] li:nth-child(3) svg polygon {
+    fill: #F6C64E; }
+  .rating-stars[data-rating*="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2), .rating-stars[data-rating*="3"][data-rating*="."] li:nth-child(4) svg polygon:nth-child(2), .pf-rating[data-rating*="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2), .pf-rating[data-rating*="3"][data-rating*="."] li:nth-child(4) svg polygon:nth-child(2) {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
+  .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
+  .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
+  .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-rating[data-rating*="4"] li:nth-child(1) svg polygon,
+  .pf-rating[data-rating*="4"] li:nth-child(2) svg polygon,
+  .pf-rating[data-rating*="4"] li:nth-child(3) svg polygon,
+  .pf-rating[data-rating*="4"] li:nth-child(4) svg polygon {
+    fill: #F6C64E; }
+  .rating-stars[data-rating*="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .rating-stars[data-rating*="4"][data-rating*="."] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating*="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating*="4"][data-rating*="."] li:nth-child(5) svg polygon:nth-child(2) {
+    filter: alpha(opacity=100);
+    opacity: 1; }
+  .rating-stars[data-rating*="5"] li svg polygon, .pf-rating[data-rating*="5"] li svg polygon {
+    fill: #F6C64E; }
+
 /* ---------- PRICE RANGE */
 .price-range-container {
   min-width: 290px; }
@@ -9018,7 +8833,8 @@ input.chip:hover {
   .tab-bar[class*="arrow-bar"] {
     width: 100%;
     padding: 0;
-    margin: 0; }
+    margin: 0;
+    background: none !important; }
     .tab-bar[class*="arrow-bar"].arrow-bar-2 > div > div {
       width: 50%; }
     .tab-bar[class*="arrow-bar"].arrow-bar-3 > div > div {
@@ -11568,10 +11384,6 @@ input[type=range] {
       font-size: 24px;
       font-weight: 600; }
 
-.impact-meter {
-  width: 99px;
-  height: 51px; }
-
 .verified {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -11595,198 +11407,6 @@ input[type=range] {
     height: 20px; }
     .verified span svg path:first-child {
       fill: #50A5DD; }
-
-/* ---------- USER ICONS */
-[class*="user-icon"] {
-  border-radius: 1000px;
-  display: block;
-  margin: 0 auto;
-  background-position: center;
-  background-size: cover;
-  background-color: #E3E3E3;
-  border-style: solid;
-  border-color: white; }
-
-.user-icon {
-  width: 128px;
-  height: 128px;
-  border-width: 5px; }
-
-.user-icon-96 {
-  width: 96px;
-  height: 96px;
-  border-width: 4px; }
-
-.user-icon-84 {
-  width: 84px;
-  height: 84px;
-  border-width: 3px; }
-
-.user-icon-72 {
-  width: 72px;
-  height: 72px;
-  border-width: 3px; }
-
-.user-icon-64 {
-  width: 64px;
-  height: 64px;
-  border-width: 3px; }
-
-.user-icon-48 {
-  width: 48px;
-  height: 48px;
-  border-width: 3px; }
-
-.user-icon-36 {
-  width: 36px;
-  height: 36px;
-  border-width: 2px; }
-
-.user-icon-32 {
-  width: 32px;
-  height: 32px;
-  border-width: 2px; }
-
-.user-icon-28 {
-  width: 28px;
-  height: 28px;
-  border-width: 2px; }
-
-.user-icon-24 {
-  width: 24px;
-  height: 24px;
-  border-width: 2px; }
-
-.user-icon-container {
-  display: block;
-  position: relative; }
-  .user-icon-container .user-icon {
-    filter: alpha(opacity=50);
-    opacity: 0.5; }
-  .user-icon-container .user-icon-edit {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase; }
-  .user-icon-container.border-charcoal [class*="user-icon"] {
-    border-color: #2B3234 !important; }
-  .user-icon-container.border-slate [class*="user-icon"] {
-    border-color: #40484B !important; }
-  .user-icon-container.border-taupe [class*="user-icon"] {
-    border-color: #757575 !important; }
-  .user-icon-container.border-campus [class*="user-icon"] {
-    border-color: #8A9EA3 !important; }
-  .user-icon-container.border-smoke [class*="user-icon"] {
-    border-color: #F1F1F1 !important; }
-  .user-icon-container.border-white [class*="user-icon"] {
-    border-color: white !important; }
-  .user-icon-container.border-rocket [class*="user-icon"] {
-    border-color: #696269 !important; }
-  .user-icon-container.border-shamrock [class*="user-icon"] {
-    border-color: #69B3A5 !important; }
-  .user-icon-container.border-robin [class*="user-icon"] {
-    border-color: #2BB3B8 !important; }
-  .user-icon-container.border-lake [class*="user-icon"] {
-    border-color: #50A5DD !important; }
-  .user-icon-container.border-moxie [class*="user-icon"] {
-    border-color: #43cb9d !important; }
-  .user-icon-container.border-crimson [class*="user-icon"] {
-    border-color: #d3242c !important; }
-  .user-icon-container.border-auburn [class*="user-icon"], .user-icon-container.border-delivery [class*="user-icon"] {
-    border-color: #F04F54 !important; }
-  .user-icon-container.border-freelacing [class*="user-icon"], .user-icon-container.border-orange [class*="user-icon"] {
-    border-color: #E5753C !important; }
-  .user-icon-container.border-baking [class*="user-icon"], .user-icon-container.border-gold [class*="user-icon"] {
-    border-color: #F6C64E !important; }
-  .user-icon-container.border-moola [class*="user-icon"], .user-icon-container.border-photography [class*="user-icon"] {
-    border-color: #81B566 !important; }
-  .user-icon-container.border-azure [class*="user-icon"], .user-icon-container.border-tech [class*="user-icon"] {
-    border-color: #55A4B7 !important; }
-  .user-icon-container.border-cobalt [class*="user-icon"], .user-icon-container.border-household [class*="user-icon"] {
-    border-color: #7872e3 !important; }
-  .user-icon-container.border-athletic [class*="user-icon"], .user-icon-container.border-eggplant [class*="user-icon"] {
-    border-color: #9A5BC5 !important; }
-  .user-icon-container.border-academic [class*="user-icon"], .user-icon-container.border-cerise [class*="user-icon"] {
-    border-color: #e6389b !important; }
-
-/* ---------- RATING */
-.rating-stars, .pf-rating {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 100px;
-  margin: 0 auto; }
-  .rating-stars li, .pf-rating li {
-    width: 20%; }
-    .rating-stars li svg, .pf-rating li svg {
-      fill: none;
-      stroke: #F6C64E;
-      stroke-width: 7px;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      display: block; }
-      .rating-stars li svg polygon:nth-child(2), .pf-rating li svg polygon:nth-child(2) {
-        filter: alpha(opacity=0);
-        opacity: 0;
-        stroke-width: 0;
-        fill: #F6C64E; }
-  .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-rating[data-rating*="1"] li:nth-child(1) svg polygon {
-    fill: #F6C64E; }
-  .rating-stars[data-rating*="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2), .rating-stars[data-rating*="1"][data-rating*="."] li:nth-child(2) svg polygon:nth-child(2), .pf-rating[data-rating*="1"][data-half="true"] li:nth-child(2) svg polygon:nth-child(2), .pf-rating[data-rating*="1"][data-rating*="."] li:nth-child(2) svg polygon:nth-child(2) {
-    filter: alpha(opacity=100);
-    opacity: 1; }
-  .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
-  .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-rating[data-rating*="2"] li:nth-child(1) svg polygon,
-  .pf-rating[data-rating*="2"] li:nth-child(2) svg polygon {
-    fill: #F6C64E; }
-  .rating-stars[data-rating*="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2), .rating-stars[data-rating*="2"][data-rating*="."] li:nth-child(3) svg polygon:nth-child(2), .pf-rating[data-rating*="2"][data-half="true"] li:nth-child(3) svg polygon:nth-child(2), .pf-rating[data-rating*="2"][data-rating*="."] li:nth-child(3) svg polygon:nth-child(2) {
-    filter: alpha(opacity=100);
-    opacity: 1; }
-  .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
-  .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
-  .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-rating[data-rating*="3"] li:nth-child(1) svg polygon,
-  .pf-rating[data-rating*="3"] li:nth-child(2) svg polygon,
-  .pf-rating[data-rating*="3"] li:nth-child(3) svg polygon {
-    fill: #F6C64E; }
-  .rating-stars[data-rating*="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2), .rating-stars[data-rating*="3"][data-rating*="."] li:nth-child(4) svg polygon:nth-child(2), .pf-rating[data-rating*="3"][data-half="true"] li:nth-child(4) svg polygon:nth-child(2), .pf-rating[data-rating*="3"][data-rating*="."] li:nth-child(4) svg polygon:nth-child(2) {
-    filter: alpha(opacity=100);
-    opacity: 1; }
-  .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
-  .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
-  .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
-  .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-rating[data-rating*="4"] li:nth-child(1) svg polygon,
-  .pf-rating[data-rating*="4"] li:nth-child(2) svg polygon,
-  .pf-rating[data-rating*="4"] li:nth-child(3) svg polygon,
-  .pf-rating[data-rating*="4"] li:nth-child(4) svg polygon {
-    fill: #F6C64E; }
-  .rating-stars[data-rating*="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .rating-stars[data-rating*="4"][data-rating*="."] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating*="4"][data-half="true"] li:nth-child(5) svg polygon:nth-child(2), .pf-rating[data-rating*="4"][data-rating*="."] li:nth-child(5) svg polygon:nth-child(2) {
-    filter: alpha(opacity=100);
-    opacity: 1; }
-  .rating-stars[data-rating*="5"] li svg polygon, .pf-rating[data-rating*="5"] li svg polygon {
-    fill: #F6C64E; }
 
 .wallet-container {
   position: relative;

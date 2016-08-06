@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square' default-type="photo-price-moxie">
+<div class="perspective-container full-xy flex-center p15xy" types='link-no-photo, photo, photo-price, photo-price-moxie, photo-price-crimson, link-color, link-square, check-square' default-type="photo-price-moxie">
 	<a ng-if='activeType === "link-no-photo"' class="category-tile no-photo"
 		init-with="p-op"
 		on-init="t-enter"

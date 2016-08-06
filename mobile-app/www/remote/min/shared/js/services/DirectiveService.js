@@ -375,7 +375,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
         if (transitionObj.duration || transitionObj.timingFunction) {
 
-          var transitionDict = formatTransitionString(transitionObj);
+          var transitionDict = formatTransitionString(transitionObj, elem);
           resultPropDict.properties.push(transitionDict);
         }
         if (resultPropDict.properties && resultPropDict.properties.length) {
@@ -396,11 +396,12 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       return property
     }
 
-    function formatTransitionString(obj) {
+    function formatTransitionString(obj, elem) {
+      var elemTransitionDurationStyle = elem.style['transition'] || elem.style['webkitTransitionDuration'];
       var properties = obj.properties.join(" ") || 'all';
       var propName = formatBrowserCSSProperty('transition');
       var propDelay = obj.delay && (obj.delay + 'ms');
-      var propDuration = (obj.duration && (obj.duration + 'ms')) || '1000ms';
+      var propDuration = (obj.duration && (obj.duration + 'ms')) || elemTransitionDurationStyle || '1000ms';
       var propTimingFunc = obj.timingFunction || 'ease'
 
       var valueString = [properties, propDuration, propTimingFunc, propDelay].join(" ").trim()

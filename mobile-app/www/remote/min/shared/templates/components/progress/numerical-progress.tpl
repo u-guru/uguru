@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15-grid">
+<div class="perspective-container full-xy flex-center p15xy">
 	<div class="numerical-bar"
 		init-default
 		on-init="s:[progress-init:public]">

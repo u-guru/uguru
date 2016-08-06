@@ -1,5 +1,124 @@
 @import '../mixin';
 
+// impact meter
+.impact-meter {
+	width: 99px;
+	height: 51px;
+}
+
+/* ---------- RATING */
+.rating-stars, .pf-rating {
+	@include listless;
+	@include flex;
+	@include flex-center;
+	width: 100%;
+	max-width: 100px;
+	margin: 0 auto;
+	li {
+		width: 20%;
+		svg {
+			@include svg-stroke($gold, 7);
+			display: block;
+			polygon:nth-child(2) {
+				@include opacity(0);
+				stroke-width: 0;
+				fill: $gold;
+			}
+		}
+	}
+	&[data-rating*="1"] {
+		li:nth-child(1) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"],
+		&[data-rating*="."] {
+			li:nth-child(2) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating*="2"] {
+		li:nth-child(1),
+		li:nth-child(2) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"],
+		&[data-rating*="."] {
+			li:nth-child(3) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating*="3"] {
+		li:nth-child(1),
+		li:nth-child(2),
+		li:nth-child(3) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"],
+		&[data-rating*="."] {
+			li:nth-child(4) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating*="4"] {
+		li:nth-child(1),
+		li:nth-child(2),
+		li:nth-child(3),
+		li:nth-child(4) {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+		&[data-half="true"],
+		&[data-rating*="."] {
+			li:nth-child(5) {
+				svg {
+					polygon:nth-child(2) {
+						@include opacity(1);
+					}
+				}
+			}
+		}
+	}
+	&[data-rating*="5"] {
+		li {
+			svg {
+				polygon {
+					fill: $gold;
+				}
+			}
+		}
+	}
+}
+
 /* ---------- PRICE RANGE */
 .price-range-container {
 	min-width: 290px;
@@ -222,6 +341,7 @@
 		width: 100%;
 		padding: 0;
 		margin: 0;
+		background: none!important;
 		&.arrow-bar-2 {
 			> div {
 				> div {

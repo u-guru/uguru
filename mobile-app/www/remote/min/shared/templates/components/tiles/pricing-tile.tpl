@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy bg-smoke" types='default, alert' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy bg-smoke" types='default, alert' default-type="default">
 	<div class="pricing-tile" ng-if='activeType === "default"'>
 		<h3>Our Fees</h3>
 		<h2>&le; 5%</h2>

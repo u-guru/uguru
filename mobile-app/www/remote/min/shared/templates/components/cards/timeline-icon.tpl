@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<div class="timeline-icon timeline-parent timeline-icon-right"
 		init-with="p:[op:0, tr:center center]"
 		on-init="t-enter"

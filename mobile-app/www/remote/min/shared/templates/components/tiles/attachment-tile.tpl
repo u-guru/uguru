@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<a class="attachment-tile overflow-hidden" style="width: 350px"
 		init-with="p:[op:0, bg:#40484b]"
 		on-init="s:[attachment-tile-init]"

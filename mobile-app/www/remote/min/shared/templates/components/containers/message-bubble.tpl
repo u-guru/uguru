@@ -1,4 +1,4 @@
-<div class="full-xy flex-center-wrap p15xy">
+<div class="perspective-container full-xy flex-center-wrap p15xy">
 	<div class="message left">
 		<div class='message-icon'
 			init-with="p:[op:0, tro:center center]"

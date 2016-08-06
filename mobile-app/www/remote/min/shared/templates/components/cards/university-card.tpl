@@ -1,10 +1,10 @@
-<div class="full-xy flex-center p15xy" types='checkbox, link' default-type="link">
+<div class="perspective-container full-xy flex-center p15xy" types='checkbox, link' default-type="link">
 	<div class="university-card" ng-if='activeType === "checkbox"'
 		init-with="p-op"
 		on-init="t-enter"
 		on-enter="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:scale(1.1), tro:center center, t:all 250ms ease-out]"
-		on-mouse-leave="p:[tr:scale(1), tro:center center, t:all 250ms ease-in]">
+		on-mouse-enter="p:[tr:translateZ(20px), tro:center center, t:all 250ms ease-out]"
+		on-mouse-leave="p:[tr:translateZ(0px), tro:center center, t:all 250ms ease-in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>

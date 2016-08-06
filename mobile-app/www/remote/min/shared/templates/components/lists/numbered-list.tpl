@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy">
+<div class="perspective-container full-xy flex-center p15xy">
 	<ol class="numbered-list delivery max-800">
 		<li><div>Lorem ipsum dolor sit amet, omnium oblique ad qui. Bonorum accusam democritum per te. Vim ei ridens audire commune, intellegat necessitatibus et quo. Nam eripuit inimicus ei. Omittam conceptam vim an, cum modo eripuit percipit eu.</div></li>
 		<li><div>Unum dicat ex vis, movet iudico mel ad, lucilius mediocritatem nec an. Cum an molestiae quaerendum temporibus. Qui et eligendi voluptua. Mea an nihil singulis disputando.</div></li>

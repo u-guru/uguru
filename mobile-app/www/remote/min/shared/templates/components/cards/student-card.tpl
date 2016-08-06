@@ -1,4 +1,4 @@
-<div class="full-xy flex-center p15xy" types='edit, link' default-type="edit">
+<div class="perspective-container full-xy flex-center p15xy" types='edit, link' default-type="edit">
 	<div class="student-card" ng-if='activeType === "edit"'
 		init-with="p-op"
 		on-init="t-enter"

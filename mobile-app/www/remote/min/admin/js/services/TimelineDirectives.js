@@ -7,26 +7,51 @@ angular.module('uguru.admin')
         replace: true,
         terminal: true,
         link: function(scope, element, attr) {
-            scope.tPlayer = {};
-            scope.tPlayer.state = TimelineService.initGlobalPlayer(scope.options, scope.animations[0].env);
-            scope.tPlayer.play = TimelineService.func.playAll(scope.tPlayer.state);
-            scope.tPlayer.playOne = TimelineService.func.play;
-            scope.tPlayer.pause = TimelineService.func.pauseAll(scope.tPlayer.state);
-            scope.tPlayer.pauseOne = TimelineService.func.pause;
-            scope.tPlayer.reset = TimelineService.func.resetAll;
-            scope.tPlayer.resetOne = TimelineService.func.reset;
+            element.ready(function() {
+                scope.animations = scope.animations.filter(function(a, i) {return a.duration !== '0s'});
+                // scope.animations.forEach(function(a, i) {console.log(scope.animations[i])});
+                scope.animations = TimelineService.initAnimations(scope.animations);
+                console.log(scope.animations);
+                scope.tPlayer = {};
+                scope.tPlayer.state = scope.animations.length && TimelineService.initGlobalPlayer(scope.options, scope.animations[0].env, scope.animations);
+                scope.tPlayer.play = TimelineService.func.playAll(scope.tPlayer.state);
+                scope.tPlayer.playOne = TimelineService.func.play;
+                scope.tPlayer.pause = TimelineService.func.pauseAll(scope.tPlayer.state);
+                scope.tPlayer.pauseOne = TimelineService.func.pause;
+                scope.tPlayer.reset = TimelineService.func.resetAll;
+                scope.tPlayer.resetOne = TimelineService.func.reset;
+                scope.tPlayer.jump = TimelineService.func.jumpAll(scope.tPlayer.state);
 
-            scope.tPlayer.state.duration = scope.animations[0].env.duration;
+                scope.tPlayer.state.duration = scope.animations.length && scope.animations[0].env.duration;
 
-            scope.$watchCollection('tPlayer', function(player) {
-                console.log(player)
-            })
+                // scope.$watch('tPlayer.state.jumpDirection', function(direction) {
 
-            console.log(scope.animations[0]);
+                //     if (['reverse', 'normal'].indexOf(direction) > -1) {
 
-            if (!scope.tPlayer.state.play) {
+                //         scope.tPlayer.jump(scope.animations, scope.tPlayer.state);
+                //     }
+
+                // })
+
+
+                scope.tPlayer.state.offsetStr = "0.0";
+
+                if (!scope.tPlayer.state.play) {
+
+
+
+
+                    // scope.tPlayer.play(scope.animations);
+                    // TimelineService.func.jumpAll(scope.tPlayer.state)(scope.animations);
+
+                } else {
+                    scope.animations.forEach(function(a, i) {console.log(a.events)});
+                }
+
+                // TimelineService.initAnimations(scope.animations)
+                scope.animations.forEach(function(a, i) {a.events.start(); a.events.end()})
                 scope.tPlayer.pause(scope.animations);
-            }
+            })
 
         }
     }
@@ -74,10 +99,12 @@ angular.module('uguru.admin')
             template: attr.template,
             import: attr.import,
             direction: attr.direction,
-            duration: attr.duration
+            duration: attr.duration,
+            delay: '0s'
         }
         element.ready(function() {
             scope.animations = TimelineService.processAnimations(scope, element);
+            console.log(element);
             injectAnimationWithPlayer(scope.animations, element, cb, scope.window, scope.options);
         })
 
@@ -97,39 +124,47 @@ angular.module('uguru.admin')
                 var bgElem = element.children()[1];
                 var bgElemCoords = bgElem.getBoundingClientRect();
                 var progressElem = element.children()[0];
-                var initialTransitionSet;
-                element.ready(function() {
-                    console.log(scope.state, element[0]);
-                })
+                scope.state.initialTransitionSet;
+                scope.state.progressElem = progressElem;
 
-                scope.$watch('state.speed', function() {
 
-                })
+                scope.jumpTo = TimelineService.jumpTo(scope.state, progressElem, bgElemCoords);
 
                 scope.$watch('state.play', function(play_status) {
-                    if (play_status) {
-                        if (!initialTransitionSet) {
+                    if (play_status === true) {
+                        if (!scope.state.initialTransitionSet) {
                             angular.element(progressElem).css('transition', 'width ' + scope.state.duration + 'ms linear');
-                            initialTransitionSet = true;
+                            scope.state.initialTransitionSet = true;
                         }
                         document.querySelector('svg rect').setAttribute('width', '100%')
                         progressElem.setAttribute('width', '100%');
-                    } else {
+                    } else  if (play_status === false && scope.state.initialTransitionSet){
                         var progressElemRect = progressElem.getBoundingClientRect()
                         var percentComplete = ((progressElemRect.width/bgElemCoords.width)).toFixed(4);
 
                         progressElem.setAttribute('width', (percentComplete * 100) + '%');
                         var durationRemaining = (scope.state.duration * (1-percentComplete));
-                        console.log(durationRemaining);
                         angular.element(progressElem).css('transition', 'width ' + durationRemaining + 'ms linear' );
 
-
-                        // console.log(progress.style.transition);
-                        // angular.element(progressElem).css('transition', 'width ' + scope.state.duration + ' ease');
-                        // document.querySelector('svg rect').setAttribute('width', '100%')
-                        // progressElem.setAttribute('width', '100%');
                     }
-                    console.log('play clicked', scope.state, play_status)
+                });
+                scope.$watch('state.complete', function(is_complete) {
+                    if (is_complete) {
+                        var origTransition = angular.element(progressElem).css('transition');
+                        console.log(origTransition);
+                        angular.element(progressElem).css('transition', 'width ' + '400ms linear' );
+                        progressElem.setAttribute('width','0%');
+                        is_complete = false;
+                        scope.state.scaleOffset = 10;
+                        scope.state.timer.reset(scope.state)
+
+                        $timeout(function() {
+                            scope.state.scaleOffset = 1;
+                            scope.state.initialTransitionSet = false;
+                            // scope.state.play = false;
+
+                        }, 400)
+                    }
                 })
             }
         }
