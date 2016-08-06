@@ -5,11 +5,13 @@ angular
     'RootService',
     'AnimationService',
     'UtilitiesService',
+    '$interval',
      TimelineService
 ]);
-function TimelineService($timeout, RootService, AnimationService, UtilitiesService) {
+function TimelineService($timeout, RootService, AnimationService, UtilitiesService, $interval) {
   var browserPrefix = RootService.getBrowserPrefix();
   var func = getAnimationFunctions();
+  var animationFunc;
   return {
     injectAnimationWithPlayer: injectAnimationWithPlayer,
     getAnimationStartListener: getAnimationStartListener,
@@ -20,26 +22,249 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
     processStyleAnimations: processStyleAnimations,
     processAnimations: processAnimations,
     changeStateAll:changeStateAll,
-    func: func
+    func: func,
+    jumpTo:jumpTo,
+    initAnimations: initAnimations
   }
 
 
 
+  function initAnimations(animations) {
+      var prefix = 'animation';
+      var browserPrefix = RootService.getBrowserPrefix();
+      if (browserPrefix && browserPrefix.length)  {
+          prefix = browserPrefix + 'Animation';
+      }
 
 
-  function initGlobalPlayer(attr, env) {
+
+    animations.forEach(function(a, i) {
+        var properties = ['Name', 'Duration',  'TimingFunction', 'Delay', 'IterationCount',  'Direction', 'FillMode', 'PlayState']
+        var animationCSS = window.getComputedStyle(a.element)[prefix];
+        if (animationCSS && animationCSS.split(' ').length >= 8) {
+            a.css = {};
+            a.css = {orig: {}, cache: {}};
+            var elemAnims = animationCSS.split(', ');
+            properties.forEach(function(prop, j) {
+                propArr = [];
+                elemAnims.forEach(function(str, k) {propArr.push(str.split(' ')[j]) });
+                a.css.orig[prefix+prop] = propArr.join(', ');
+                a.css.cache[prefix+prop] = propArr.join(', ');
+            })
+        }
+    });
+
+    return animations;
+  }
+
+  function initGlobalPlayer(attr, env, animations) {
     var duration = env && env.duration;
     var resultDict = {
-      duration: duration || parseDuration(attr.duration),
-      direction: attr.direction || 'forwards',
+      duration: duration,
       play: attr.play === "true" || false,
-      speed:  parseFloat(attr.speed && attr.speed.replace('x', '')),
-      offset: attr.startAt && parseStartAt(attr.startAt) || 0,
+      speed:  formatSpeedFromAttr(parseFloat(attr.speed && attr.speed.replace('x', ''))),
+      offset: 0,
       template: attr.import,
-      import: attr.template
+      import: attr.template,
+      fillMode: 'forwards',
+      direction: 'normal',
+      timer: {reset: resetTimer},
+      iterCount :1,
+      jumpToScale:5,
+      scaleOffset: 1,
+      timeInterval: 100,
+      complete: false,
+      animStats: {
+        total: animations.length,
+        active: 0
+      }
+    }
+    resultDict.fDuration = formatDurationAllTypes(resultDict.duration)
+
+
+    applyPlayerDefaultSettings(animations);
+    initAnimationDefaults(animations, resultDict);
+    if (resultDict.play) {
+      var prefix = (browserPrefix && browserPrefix + 'Animation') || 'animation' ;
+      console.log(prefix);
+      $timeout(function() {
+        resultDict.play = true;
+        changeStateAll(prefix+'PlayState', animations, 'running');
+      })
     }
     return resultDict;
+
+
     // var latestAnimation = animations.sort(function(a1, a2) {a2.timeStamp - a1.timeStamp}).reverse()[0];
+  }
+
+
+
+  function initAnimationDefaults(animations, state) {
+    console.log(animations.length);
+    var elements = [];
+    animations.forEach(function(a, i) {if (elements.indexOf(a.element) === -1) {elements.push(a.element)}})
+    elements.forEach(function(e, j){
+      var eAnimations = [];
+      animations.forEach(function(anim, k) {if (anim.element === e) eAnimations.push(anim)});
+      eAnimations.forEach(function(anim, k) {
+        anim.events = {
+          start: getStartListener(anim, e),
+          end: getEndListener(anim, e),
+          listeners: {}
+        }
+      })
+    })
+
+    function getStartListener(anim, elem) {
+      var startAnimationEvent = browserPrefix + 'animationStart';
+      if (browserPrefix && browserPrefix.length) {
+        startAnimationEvent = browserPrefix + 'AnimationStart';
+      }
+      return function() {
+        anim.events.listeners.startFunc =  function(e) {
+          console.log(e.animationName, 'has started', anim.css);
+          anim.active = true;
+          elem.removeEventListener(startAnimationEvent, anim.events.listeners.startFunc);
+        }
+        elem.addEventListener(startAnimationEvent, anim.events.listeners.startFunc);
+      }
+
+    }
+    function getEndListener(anim, elem) {
+      var startAnimationEvent = browserPrefix + 'animationEnd';
+      if (browserPrefix && browserPrefix.length) {
+        startAnimationEvent = browserPrefix + 'AnimationEnd';
+      }
+      return function() {
+        anim.events.listeners.endFunc = elem.addEventListener(startAnimationEvent, function(e) {
+          console.log(e.animationName, 'has ended', anim.css);
+          state.complete = true;
+          var prefix = 'animation';
+          if (browserPrefix && browserPrefix.length)  {
+            prefix = browserPrefix + 'Animation'
+          }
+
+          if (anim.resetAfter && !anim.midReset) {
+
+            $timeout(function() {
+              anim.reset();
+            }, 100)
+
+            if (anim.isLast) {
+
+              state.play = false;
+            }
+          }
+          // console.log(e.animationName, 'has ended');
+          // console.log(anim.element.offsetWidth);
+          // var width = anim.element.offsetWidth;
+          // var s = getComputedStyle(anim.element);
+          // var name = s[prefix+'Name'];
+          // console.log(name);
+          // changeState(prefix+"Name", anim, '');
+          // anim.active = false;
+          // $timeout(function() {
+          //   var s = getComputedStyle(anim.element)['webkitAnimation'];
+          //   changeState(prefix+"Name", anim, name);
+          //   // changeState(prefix+"PlayState", anim, "running");
+          //   console.log(window.getComputedStyle(anim.element)['webkitAnimation']);
+          // }, 100)
+          elem.removeEventListener(startAnimationEvent, anim.events.listeners.endFunc);
+
+        });
+        elem.addEventListener(startAnimationEvent, anim.events.listeners.endFunc);
+      }
+
+    }
+  }
+
+  function applyPlayerDefaultSettings(state, animation) {
+    state.offset = 1;
+    if (state.offset) {
+
+    }
+  }
+
+  function jumpTo(state, progress_elem, bg_elem_coords) {
+    return function($event)  {
+      var e = $event;
+      var newWidth = $event.clientX - 20;
+      var percentPlaybarOffset = parseFloat(((($event.clientX - 20) / bg_elem_coords.width)).toFixed(4));
+
+      //calculate percent of bar changed
+      currentWidth = progress_elem.getBoundingClientRect().width;
+      progressTranslateXChange = Math.abs((newWidth - currentWidth)/bg_elem_coords.width);
+
+
+
+      scaledTransitionTime = parseFloat((progressTranslateXChange * state.duration).toFixed(4));
+
+      // state.offset = (newWidth/bg_elem_coords.width).toFixed(4) * state.duration;
+
+
+      var timerDuration = scaledTransitionTime/state.jumpToScale;
+      angular.element(progress_elem).css('transition', 'width ' + timerDuration + 'ms linear' );
+
+      progress_elem.setAttribute('width', percentPlaybarOffset * 100 + '%');
+
+
+
+
+      var interval = state.timeInterval / state.jumpToScale;
+      state.scaleOffset =  state.jumpToScale;
+      state.jumpOffset = timerDuration;
+
+
+      // state.play = true;
+      state.jumpDirection = 'normal';
+      if (currentWidth > newWidth) {
+        state.jumpDirection = "reverse";
+        console.log(state.jumpDirection);
+      }
+
+      console.log(state, state.offset, state.jumpDirection, interval)
+      startTimer(state, state.offset, state.jumpDirection, interval);
+
+      $timeout(function() {
+        state.scaleOffset = 1;
+        state.jumpOffset = null;
+        state.jumpDirection = null;
+        pauseTimer(state, interval);
+        var timerDuration = scaledTransitionTime/state.jumpToScale;
+        initialTransitionSet = false;
+      }, timerDuration)
+
+      // console.log('new width', percentPlaybarOffset)
+      // console.log('percent change', progressTranslateXChange);
+      // console.log('direction', state.jump);
+
+      // console.log(durationRemaining);
+      // angular.element(progressElem).css('transition', 'width ' + durationRemaining + 'ms linear' );
+
+    }
+  }
+
+  function formatSpeedFromAttr(speed) {
+    if (!speed || !speed.length) {
+      return '1x';
+    } else {
+      return parseFloat(speed.replace('x', '')).toFixed(1);
+    }
+  }
+
+  function formatDurationAllTypes(duration) {
+    sDuration = (duration/1000).toFixed(1);
+    return {
+      ms: {
+        number: duration,
+        str: duration + 'ms'
+      },
+      s: {
+        number: parseFloat(sDuration),
+        str: sDuration + 's'
+      }
+    }
   }
 
   function parseStartAt(str_start) {
@@ -59,9 +284,90 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
     return str_duration;
   }
 
-  function changeStateAll(property, animations, value) {
-    animations.forEach(function(a, i) {changeState(property, animations[i], value)});
+  function changeStateAll(property, animations, value, state) {
+    animations.forEach(function(a, i) {changeState(property, animations[i], value, state)});
   }
+
+  function changeStateJumpAll(property, animations, state) {
+    console.log(state.jumpDirection);
+      var deltaOffset = state.jumpOffset * state.scaleOffset;
+
+      // animations = animations.splice(0, 1);
+      // $timeout(function() {
+
+      //   console.log(animations[0].name, isJumpValid);
+      // }, 1000)
+
+      // console.log(animations);
+      // console.log('jumping', animations.length, 'animations')
+      // console.log('jump offset', state.jumpOffset)
+      // console.log('jump direction', state.jumpDirection);
+    // $timeout(function() {
+
+      // var isJumpValid = isJumpValidForAnimation(state, animations[0]);
+      var validAnimations = animations.filter(function(a, i) {return isJumpValidForAnimation(state, a)})
+    // }, 500)
+      var jumpObj = {scale: state.scaleOffset, direction:state.jumpDirection, duration: state.jumpOffset * state.scaleOffset, start: state.offset, end: state.offset + (state.jumpOffset * state.scaleOffset)}
+      // if (state.offset < state.lastOffset) {
+      //   jumpObj.end = state.offset - (state.jumpOffset * state.scaleOffset);
+      // }
+      console.log(validAnimations);
+      validAnimations.forEach(function(a, i) {changeStateJump(validAnimations[i], jumpObj)});
+  }
+
+  function isJumpValidForAnimation(state, animation) {
+
+    // var offsetDiff = state.offset - state.lastOffset;
+    animTLObj = getAnimationTimelineObj(animation);
+    var TLObj = getPlayerTimelineObj(state)
+    // console.log(state.lastOffset, state.offset);
+    // console.log('\n');
+    // console.log(animation)
+    // console.log(animTLObj.start, animTLObj.end);
+    // console.log(TLObj.start, TLObj.end);
+    // console.log('\n');
+    // forward direction
+
+    if (Math.abs(TLObj.end - TLObj.start) <= Math.abs(animTLObj.end - animTLObj.start) && ((animTLObj.start <= TLObj.start && animTLObj.end <= animTLObj.start))) {
+      return true;
+    }
+    if ( (TLObj.end - TLObj.start) >= 0 && ((TLObj.start <= animTLObj.start && animTLObj.start <= TLObj.end) || (TLObj.start <= animTLObj.end && animTLObj.end <= TLObj.end))) {
+
+      return true;
+    }
+    if ( (TLObj.end - TLObj.start) < 0 && ((TLObj.start >= animTLObj.start && animTLObj.start >= TLObj.end) || (TLObj.start >= animTLObj.end && animTLObj.end >= TLObj.end))) {
+      return true;
+    }
+
+
+    return false;
+  }
+
+  function getPlayerTimelineObj(state) {
+    var deltaOffset = state.jumpOffset * state.scaleOffset;
+    if (state.jumpDirection === 'reverse') {
+      deltaOffset *= -1;
+    }
+
+    var resultDict = {start: state.offset, end: state.offset + deltaOffset, direction: 'normal'};
+    // console.log(resultDict);
+
+    if (resultDict.end - resultDict.start < 0) {
+      resultDict.direction = 'reverse'
+    }
+    return resultDict;
+  }
+
+  function getAnimationTimelineObj(animation) {
+    var animStartMS = durationToMS(animation.delay);
+    var animEndMS = durationToMS(animation.duration) + animStartMS;
+    return {
+      start: animStartMS,
+      end: animEndMS,
+      direction: animation.direction
+    }
+  }
+
 
   function getAnimationFunctions(state) {
     var prefix = 'animation';
@@ -72,13 +378,70 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
       play: function(animation) {return changeState(prefix + "PlayState", animation, "running")},
       pause: function(animation) {return changeState(prefix + "PlayState", animation, "paused")},
       reset: function(animation) {return changeState(prefix+"Reset", animations)},
-      playAll: function(state) {return function(animations) {state.play = true; return changeStateAll(prefix + "PlayState", animations, "running")}},
-      pauseAll: function(state) {return function(animations) {state.play = false; return changeStateAll(prefix + "PlayState", animations, "paused")}},
-      resetAll: function(animations) {return changeStateAll(prefix+"Reset", animations, "paused")}
+      jump: function(animation, state) {return changeStateJump(prefix+"Reset", animations)},
+      playAll: function(state) {return function(animations) {state.play = true; startTimer(state); return changeStateAll(prefix + "PlayState", animations, "running")}},
+      pauseAll: function(state) {return function(animations) {state.play = false; pauseTimer(state); return changeStateAll(prefix + "PlayState", animations, "paused")}},
+      jumpAll: function(state) {return function(animations) {return changeStateJumpAll(prefix + "Jump", animations, state)}},
+      resetAll: function(animations, state) {return changeStateAll(prefix+"Reset", animations, "paused", state)}
     }
   }
 
+  function resetTimer(state) {
+    startTimer(state, state.duration, 'reverse', 10)
+  }
+
+  function startTimer(state, start_point, direction, interval, cb) {
+    state.lastOffset = state.offset;
+    start_point = start_point || state.lastOffset || 0;
+    state.offset = start_point;
+    if (direction && direction === 'reverse') {
+      state.increment = false;
+    } else {
+      state.increment = true;
+    }
+    interval = interval || state.timeInterval;
+    state.startIntervalPromise = $interval(
+      function(){
+        if (state.increment) {
+          state.offset += (interval *state.scaleOffset);
+        } else {
+          state.offset -= (interval *state.scaleOffset);
+        }
+        state.offsetStr = (state.offset/1000).toFixed(1) + '';
+        if ((state.offset + interval) > state.duration || state.offset < 0) {
+          $timeout(function() {
+            pauseTimer(state);
+            if (state.offset > 0) {
+              state.offset = state.duration;
+            }
+            if (state.offset <= 0) {
+              state.offset = 0;
+            }
+
+            state.offsetStr = (state.offset/1000).toFixed(1) + '';
+
+
+            // state.play = false;
+            // state.reset = true;
+            // $timeout(function() {
+            //   state.reset = false;
+            // })
+          }, (state.offset + interval - state.duration))
+        }
+      }, interval
+    )
+  }
+
+  function pauseTimer(state) {
+
+    $interval.cancel(state.startIntervalPromise);
+  }
+
   function processAnimations(scope,element) {
+    var prefix = 'animation';
+    if (browserPrefix && browserPrefix.length)  {
+      prefix = browserPrefix + 'Animation'
+    }
     var allElements = element[0].querySelectorAll("*");
 
     var timelineDict = {transitions: [], animations:[]};
@@ -122,20 +485,72 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
       }
     }
     var totalLengthMS = durationToMS(maxDict.delay + maxDict.duration + 's');
+    maxDict.animation.isLast = true;
+    animations = animations.filter(function(a, i) { return window.getComputedStyle(a.element)['webkitAnimation'].split(' ')[1] !== '0s' })
+    console.log(animations)
     animations.forEach(
       function(anim, index) {
         var durationMS = durationToMS(anim.duration);
         var delayMS = durationToMS(anim.delay);
-
+        anim.prefix = prefix;
+        anim.css = {};
         anim.env = {
+          id: index + 1,
           duration: totalLengthMS,
-          xLeft: (delayMS/totalLengthMS * 100 ).toFixed(2),
-          width: ((durationMS/totalLengthMS) * 100).toFixed(2),
+          xLeft: parseFloat((delayMS/totalLengthMS * 100 ).toFixed(4)),
+          width: parseFloat(((durationMS/totalLengthMS) * 100).toFixed(4)),
+          collapsed: true,
+          active: true,
+          tabIndex:0,
+          startAt:'50ms',
+          endAt: '1s',
+          fillModeOptions: ['forwards', 'none', 'backwards', 'both'],
+          directionOptions: ['forwards', 'none', 'backwards', 'both'],
         }
+        anim.bp = {points: null, add: null, remove:null};
+        anim.bp.points = [{time:0, name:'@start'}, {time:0, name:'@end'}];
+        anim.bp.add = addAnimationBreakpoint;
+        anim.bp.remove = removeAnimationBreakpoint;
+
+        anim.keys = {};
+        anim.keys.templates = []
+        anim.keys.frames = [{percent: '%0', properties:[]}];
+        anim.keys.addFrame = addAnimationKeyframe,
+        anim.keys.removeFrame = removeAnimationKeyframe;
+
+        anim.easings = {};
+        anim.easings.options = [];
+        anim.easings.createTemplate = function () {};
       }
-        // anim.env.durationRatio = (parseDuration(anim.duration)/anim.env.duration) * 1000
     )
     return animations;
+
+
+
+  }
+
+  function removeAnimationKeyframe() {
+    return function() {
+
+    }
+  }
+
+  function addAnimationKeyframe() {
+    return function() {
+
+    }
+  }
+
+  function removeAnimationBreakpoint() {
+    return function() {
+
+    }
+  }
+
+  function addAnimationBreakpoint(anim) {
+    return function() {
+
+    }
   }
 
   function durationToMS(str_duration) {
@@ -146,47 +561,171 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
     }
   }
 
-  function changeState(property, animation, value) {
-    parsedProperty = (property +"").toLowerCase().replace('webkit', '').replace('animation', '')
+  function getAnimationCssCache(animation, property) {
+    if (property in animation.css) {
+      return animation.css[property]
+    }
+  }
+
+  function changeStateJump(animation, jump_info) {
+    var prefix = 'animation';
+    if (browserPrefix && browserPrefix.length)  {
+      prefix = browserPrefix + 'Animation'
+    }
+    var ji = jump_info;
+
+    ji.pauseIn = ji.duration/ji.scale;
+
+    var msDuration = durationToMS(animation.duration);
+    var msDelay = durationToMS(getAnimationCssCache(animation, prefix+'Delay') || animation.delay)
+    var msScaledDuration = msDuration/ji.scale + 'ms';
+    var msScaledDelay = msDelay/ji.scale + 'ms';
+    // console.log('jump animation', animation.name, 'start:' + msScaledDelay, 'end:' + msScaledDuration + msScaledDelay, 'will stop at', ji.pauseIn);
+
+    changeState(prefix + "PlayState", animation, "paused");
+
+
+
+
+    if (ji.direction === 'reverse') {
+        changeState(prefix + "Delay", animation, Math.abs((msDuration - msDelay)/ji.scale) * -1);
+        changeState(prefix + "Direction", animation, "reverse");
+        changeState(prefix + "Duration", animation, msScaledDuration);
+    } else {
+        changeState(prefix + "Delay", animation, msScaledDelay);
+        changeState(prefix + "Direction", animation, "normal");
+        changeState(prefix + "Duration", animation, msScaledDuration);
+    }
+
+
+
+    // console.log('setting delay to...', msScaledDelay);
+
+
+
+    changeState(prefix + "PlayState", animation, "running");
+
+    $timeout(function() {
+      //
+
+    // console.log(getAnimationProperty(animation, prefix+"Direction"));
+
+
+      changeState(prefix + "PlayState", animation, "paused");
+        if (ji.direction === 'reverse') {
+          changeState(prefix + "Direction", animation, "normal");
+        }
+
+
+      changeState(prefix + "Duration", animation, msDuration + 'ms');
+
+
+
+      var elapsedDelay = parseFloat((ji.end - msDelay).toFixed(1));
+
+
+      // if (elapsedDelay > msDuration) {
+      //   console.log(animation.name, 'has completed');
+      //   //TODO --> set everything back to initial once complete
+
+      //   changeState(prefix + "Delay", animation,  animation.delay);
+      //   console.log('Restored delay', animation.name, window.getComputedStyle(animation.element)[prefix + 'Delay']);
+      // } else
+
+      if (elapsedDelay < msDuration && msDelay > ji.start) {
+        elapsedDelay = '-' + elapsedDelay + 'ms';
+        changeState(prefix + "Delay", animation, elapsedDelay);
+      } //else {
+        //changeState(prefix + "Delay", animation, animation.delay);
+      //}
+
+      console.log(animation.name, animation.duration, animation.delay, elapsedDelay, animation);
+      }, ji.pauseIn)
+
+  }
+
+  function getAnimationFillMode(animation, fill_prop) {
+    if (animation.fillMode !== animation.css[fill_prop] && fill_prop in animation.css && animation.css[fill_prop].length) {
+      return animation.css[fill_prop]
+    } else {
+      return animation.fillMode
+    }
+  }
+
+  function changeState(property, animation, value, state) {
+
+    parsedProperty = (property +"").toLowerCase().replace('webkit', '').replace(browserPrefix, '').replace('animation', '')
     switch(parsedProperty) {
+      case ("direction"):
+        applyAnimationProperty(animation, property, value);
+        break;
+      case ("delay"):
+        applyAnimationProperty(animation, property, value);
+        break
+      case ("fillmode"):
+        applyAnimationProperty(animation, property, value);
+        break
+      case ("timingfunction"):
+        applyAnimationProperty(animation, property, value);
+        break
+      case ("duration"):
+        applyAnimationProperty(animation, property, value);
+        break
       case ("playstate"):
+          applyAnimationProperty(animation, property, value);
+        break;
+      case ("name"):
         applyAnimationProperty(animation, property, value);
         break;
       case ("reset"):
-        var durationProp = (property+ "").replace("Reset", "Duration");
-        var delayProp = (property+ "").replace("Reset", "Delay");
-        var fillModeProp = (property+ "").replace("Reset", "FillMode");
-        var playStateProp = (property+ "").replace("Reset", "PlayState");
-        var endAnimationProp = (property+ "").replace("Reset", "End");
+        animation.reset();
+        break;
 
-        applyAnimationProperty(animation, delayProp, '-' + animation.duration);
-        applyAnimationProperty(animation, durationProp, '0.01s')
-
-        applyAnimationProperty(animation, fillModeProp, 'backwards')
-        applyAnimationProperty(animation, playStateProp, 'running');
-        var offsetWidth = animation.element.style['offsetWidth'];
-        animation.element.style['offsetWidth'] = null;
-        animation.element.style['offsetWidth'] = offsetWidth;
-
-        applyAnimationProperty(animation, playStateProp, 'paused');
-        animation.element.addEventListener(endAnimationProp, function(e) {
-          console.log(e.animationName, e.target.className || e.target);
-        })
-
-        for (key in animation.css) {
-          console.log(key);
-          applyAnimationProperty(animation, key, animation.css[key]);
-        }
-
-        $timeout(function(){console.log(animation.element)}, 1000);
-
-        // applyAnimationProperty(animation, "webkitAnimationDuration", animation.duration);
-        // applyAnimationProperty(animation, "webkitAnimationDelay",  animation.delay);
     }
   }
 
   function applyAnimationProperty(animation, property, value) {
+
+    var currentValue = getAnimationProperty(animation, property);
+    if (currentValue && currentValue.split(',').length > 1) {
+      // console.log('\nattempting to apply', animation.name, property, 'from', currentValue, 'to', value);
+      // console.log('value before:' + currentValue);
+      value = getIndexValue(animation, property, currentValue, value);
+      // console.log('value proposed:' + value);
+    }
     animation.element.style[property] = value;
+    animation.css[property] = value;
+
+    return value
+    // if (currentValue) {
+    //   var currentValue = getAnimationProperty(animation, property);
+    //   // console.log('value after:' + currentValue, '\n');
+    // }
+  }
+
+  function getIndexValue(animation, property, current, future) {
+    var prefix = 'animation';
+    if (browserPrefix && browserPrefix.length)  {
+      prefix = browserPrefix + 'Animation'
+    }
+    var currentValueName = getAnimationProperty(animation, prefix + 'Name');
+    var cvSplitName = currentValueName.split(', ');
+    var indexName = cvSplitName.indexOf(animation.name);
+
+
+    var valueSplit = current.split(', ');
+    valueSplit[indexName] = future;
+
+    return valueSplit.join(', ');
+  }
+
+  function getAnimationProperty(animation, property) {
+    // parsedProperty = (property +"").toLowerCase().replace('webkit', '').replace(browserPrefix, '').replace('animation', '');
+    value = animation.element.style[property];
+    if (!value) {
+      return window.getComputedStyle(animation.element)[property];
+    }
+    return value;
   }
 
   function getStyleWithCSSSelector(cssSelector) {
@@ -251,8 +790,16 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
      var cssColumns = Object.keys(css_dict)
      var animation = {
         element: element,
-        css: css_dict
+        css: css_dict,
+        resetAfter: true,
+        isLast: false,
+        reset: null,
+        resetParentTimeline: null
       }
+      animation.reset = resetAnimationFunc(animation)
+      animation.play = playAnimationFunc(animation);
+      animation.pause = pauseAnimationFunc(animation);
+      animation.set = setAnimationFunc(animation);
       for (key in css_dict) {
         var shortKey = (key + "").replace(browser, '').replace('Animation', '').replace('animation', '');
         shortKey = shortKey.toLowerCase().trim();
@@ -262,8 +809,68 @@ function TimelineService($timeout, RootService, AnimationService, UtilitiesServi
         animation[shortKey] = css_dict[key].trim();
       }
       return animation;
+  }
+
+
+
+  function resetAnimationFunc(animation) {
+    var prefix = 'animation';
+    if (browserPrefix && browserPrefix.length)  {
+      prefix = browserPrefix + 'Animation'
+    }
+    return function() {
+      animation.midReset = true;
+      // changeState(prefix+'Delay', animation, '-' + animation.css.orig[prefix+'Duration']);
+
+      changeState(prefix+"PlayState", animation, "running");
+      // changeState(prefix+'FillMode', animation, "backwards");
+      // changeState(prefix+"PlayState", animation, "paused");
+
+      changeState(prefix+'Duration', animation, '10ms');
+
+
+
+      $timeout(function() {
+        animation.midReset = false;
+        changeState(prefix+"Name", animation, '');
+        changeState(prefix+"Name", animation, animation.name);
+        changeState(prefix+"PlayState", animation, "paused");
+
+        changeState(prefix+'Delay', animation, animation.css.orig[prefix+'Delay']);
+
+        changeState(prefix+'Duration', animation, animation.css.orig[prefix+'Duration']);
+
+
+
+      }, 500)
+      console.log('reseting...')
+
+
+      // changeState(prefix+"FillMode", animation, "backwards");
+
+
+
+      // animation.events.start();
+      // animation.events.end();
+    }
+  }
+
+  function playAnimationFunc(animation) {
+    var prefix = 'animation';
 
   }
+
+  function pauseAnimationFunc(animation) {
+    var prefix = 'animation';
+
+  }
+
+  function setAnimationFunc(animation) {
+    var prefix = 'animation';
+
+  }
+
+
 
   function processStyleAnimations(styles) {
     var resultDict = {animations: {}, transitions: {}};
