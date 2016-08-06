@@ -2445,6 +2445,9 @@ button, input, textarea {
 	}
 }
 
+.bg-light-slate {
+	background: lighten($slate, 15%);
+}
 .bg-fb {
 	background: $facebook;
 }

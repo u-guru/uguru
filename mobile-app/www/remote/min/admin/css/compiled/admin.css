@@ -698,6 +698,6 @@ animation svg {
     stroke: white; }
 
 .width-2-3 {
-  width: 66%; }
+  width: calc(100% / 2 * 3); }
 
 /*# sourceMappingURL=admin.css.map */
