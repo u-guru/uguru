@@ -264,6 +264,7 @@
 	max-width: 400px;
 	transition: all 500ms ease-out;
 	transform-style: preserve-3d;
+	border-radius: 2px;
 	height: 270px;
 	.pf-tile-top {
 		@include flex;
@@ -373,6 +374,7 @@
 		}
 		.pf-tile-top {
 			background: lighten($slate, 15%);
+			border-radius: 2px;
 			.pf-pricing {
 				position: absolute;
 				top: 25px;

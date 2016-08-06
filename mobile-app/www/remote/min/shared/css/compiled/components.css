@@ -4755,6 +4755,7 @@ a.course-card:active .course-card-hover {
   max-width: 400px;
   transition: all 500ms ease-out;
   transform-style: preserve-3d;
+  border-radius: 2px;
   height: 270px; }
   .pf-tile .pf-tile-top {
     -ms-box-orient: horizontal;
@@ -4876,7 +4877,8 @@ a.course-card:active .course-card-hover {
           width: 2px;
           height: 100%; }
     .pf-tile.bg-academic .pf-tile-top {
-      background: #637074; }
+      background: #637074;
+      border-radius: 2px; }
       .pf-tile.bg-academic .pf-tile-top .pf-pricing {
         position: absolute;
         top: 25px;
