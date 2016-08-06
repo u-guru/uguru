@@ -507,6 +507,7 @@
 				@include round;
 				@include flex;
 				@include flex-center;
+				transform-origin: center center;
 				height: 48px;
 				&:not(.auto) {
 					width: 48px;
@@ -980,7 +981,7 @@ progress, div[class*="progress"] {
 					left: 0;
 					width: 100%;
 					height: 100%;
-					circle {
+					circle, path {
 						fill: white;
 						stroke-width: 5px;
 						stroke: $shamrock;
@@ -1405,41 +1406,6 @@ progress, div[class*="progress"] {
 				.top, .bottom {
 					stroke: $cerise;
 				}
-			}
-		}
-	}
-}
-// meter
-.impact-meter {
-	display: block;
-	svg {
-		display: block;
-		path {
-			fill: rgba(white, .5);
-		}
-	}
-	&[data-impact="1"] {
-		svg {
-			path {
-				&:nth-child(1) {
-					fill: white;
-				}
-			}
-		}
-	}
-	&[data-impact="2"] {
-		svg {
-			path {
-				&:nth-child(1), &:nth-child(2) {
-					fill: $gold;
-				}
-			}
-		}
-	}
-	&[data-impact="3"] {
-		svg {
-			path {
-				fill: $moxie;
 			}
 		}
 	}

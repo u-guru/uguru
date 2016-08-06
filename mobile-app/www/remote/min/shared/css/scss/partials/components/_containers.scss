@@ -47,8 +47,23 @@
 			font-size: 16px;
 			line-height: 1.2;
 			> div {
-				border-radius: 2px;
 				padding: 15px;
+				border-radius: 2px;
+			}
+		}
+		&:first-child:not(:last-child) {
+			> div {
+				border-radius: 8px 8px 2px 2px;
+			}
+		}
+		&:last-child:not(:first-child) {
+			> div {
+				border-radius: 2px 2px 8px 8px;
+			}
+		}
+		&:only-child {
+			> div {
+				border-radius: 6px;
 			}
 		}
 	}

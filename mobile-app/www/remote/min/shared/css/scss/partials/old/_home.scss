@@ -1,0 +1,1048 @@
+@import '../mixin';
+
+/* ---------- MOBILE */
+// main
+.nav-icon-burger {
+	display: block;
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	width: 42px;
+	height: 42px;
+	svg {
+		display: block;
+		* {
+			@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+			@include svg-stroke(white, 4);
+		}
+	}
+	&:hover {
+		svg {
+			circle {
+				fill: white!important;
+			}
+			path {
+				stroke: $slate!important;
+			}
+		}
+	}
+}
+.mobile-home {
+	.toggle {
+		@include center-x;
+		z-index: 100;
+		top: 10px;
+		label {
+			width: auto;
+		}
+		input:checked + label {
+			svg:first-child {
+				@include prefix(transform, translateX(55px), webkit moz ms o);
+			}
+		}
+	}
+	.nav-icon-burger {
+		z-index: 99;
+	}
+	.home-ticket-content {
+		position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 50%;
+		.home-ticket-inside {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			padding: 15px;
+			width: 100%;
+			height: 100%;
+			h1, h2 {
+				text-align: center;
+				padding: 0;
+				margin: 0!important;
+			}
+			h1 {
+				padding-top: 15px;
+				font-size: 24px;
+				font-weight: 600;
+			}
+			h2 {
+				font-size: 18px;
+				font-weight: 600;
+			}
+			.home-ticket-guru-bar {
+				@include flex;
+				@include flex-center;
+				padding: 7.5px;
+				width: 100%;
+				> li {
+					padding: 7.5px;
+					.pf-card-mini {
+						background: $smoke;
+						color: $slate;
+						.user-icon {
+							border-color: $smoke;
+							width: 48px;
+							height: 48px;
+						}
+						.pf-name {
+							font-size: 14px;
+							font-weight: 600;
+						}
+						.rating-stars {
+							max-width: 70px;
+						}
+					}
+				}
+			}
+			.home-ticket-icon-bar {
+				@include flex;
+				@include flex-center;
+				padding: 7.5px;
+				> li {
+					padding: 7.5px;
+					span {
+						display: block;
+						width: 100%;
+						font-size: 16px;
+						font-weight: 600;
+						line-height: 1.2;
+						text-align: center;
+						text-transform: uppercase;
+						+ span {
+							margin-top: 5px;
+						}
+					}
+					svg {
+						@include round;
+						display: block;
+						width: 100%;
+						max-width: 90px;
+						margin: 0 auto;
+						padding: 5px;
+						* {
+							@include svg-stroke(white, 3);
+						}
+					}
+					&.academic {
+						svg {
+							background: $cerise;
+						}
+					}
+					&.baking {
+						svg {
+							background: $gold;
+						}
+					}
+					&.photography {
+						svg {
+							background: $moola;
+						}
+					}
+					&.household {
+						svg {
+							background: $cobalt;
+						}
+					}
+					&.tech {
+						svg {
+							background: $azure;
+						}
+					}
+				}
+			}
+			.home-ticket-icon {
+				display: block;
+				margin: 0 auto;
+				svg {
+					display: block;
+					margin: 0 auto;
+					width: 100%;
+					max-height: 150px;
+					*[stroke="#000000"] {
+						stroke: white!important;
+					}
+				}
+			}
+		}
+	}
+	.home-top {
+		@include flex;
+		@include flex-center;
+		height: 50%;
+		> h1 {
+			@include center-x;
+			@include flex;
+			@include flex-center;
+			height: 42px;
+			font-size: 20px;
+			font-weight: 600;
+		}
+	}
+	.home-tabs {
+		ul {
+			@include flex;
+			li {
+				position: relative;
+				width: 100%;
+				&:not(:last-child) {
+					&:after {
+						@include opacity(.4);
+						@include round;
+						content: "";
+						display: block;
+						position: absolute;
+						top: 10px;
+						right: -1px;
+						width: 2px;
+						height: 40px;
+					}
+				}
+				a {
+					@include flex;
+					@include flex-center;
+					position: relative;
+					height: 60px;
+					padding-top: 15px;
+					font-weight: 600;
+					font-size: 18px;
+					.notification {
+						@include flex;
+						@include flex-center;
+						position: absolute;
+						left: 50%;
+						margin-left: -18px;
+						top: -16px;
+						background: $moxie;
+						color: white;
+						width: 36px;
+						height: 32px;
+						border-radius: 2px;
+						&:after {
+							content: "";
+							display: block;
+							position: absolute;
+							bottom: -12px;
+							left: 50%;
+							margin-left: -6px;
+							height: 0;
+							width: 0;
+							border: 6px solid transparent;
+							border-top-color: $moxie;
+						}
+					}
+					&:hover, &:focus {
+						.notification {
+							@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							&:after {
+								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.home-links {
+		height: calc(50% - 60px);
+		ul {
+			@include flex;
+			@include flex-wrap;
+			position: relative;
+			height: 100%;
+			&:after {
+				@include round;
+				content: "";
+				position: absolute;
+				top: 50%;
+				margin-top: -1px;
+				left: 15px;
+				width: calc(100% - 30px);
+				height: 2px;
+			}
+			li {
+				position: relative;
+				height: 50%;
+				a {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					font-size: 16px;
+					font-weight: 600;
+					text-align: center;
+					span {
+						display: block;
+						width: 100%;
+						svg {
+							display: block;
+							margin: 0 auto;
+							width: 60px;
+							height: 60px;
+							* {
+								@include svg-stroke(white, 3);
+								&:not(.line) {
+									fill: rgba(white, .3)!important;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// guru
+#mobile-guru-home {
+	.home-top {
+		background: lighten(mix($slate, $shamrock, 90%), 10%);
+	}
+	.home-tabs {
+		background: $slate;
+		ul {
+			li {
+				min-width: calc(100% / 3);
+				&:not(:last-child) {
+					&:after {
+						background: $shamrock;
+					}
+				}
+				a {
+					color: white;
+					&:hover, &:focus {
+						color: lighten($slate, 20%);
+						.notification {
+							background: $slate;
+							&:after {
+								border-top-color: $slate;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.home-links {
+		background: $shamrock;
+		ul {
+			&:after {
+				background: mix($shamrock, white);
+			}
+			li {
+				width: 50%;
+				&:nth-child(1) {
+					&:after {
+						content: "";
+						position: absolute;
+						top: 15px;
+						right: -1px;
+						height: calc(100% - 15px);
+						width: 2px;
+						background: mix($shamrock, white);
+						border-top-left-radius: 1000px;
+						border-top-right-radius: 1000px;
+					}
+				}
+				&:nth-child(3) {
+					&:after {
+						content: "";
+						position: absolute;
+						bottom: 15px;
+						right: -1px;
+						height: calc(100% - 15px);
+						width: 2px;
+						background: mix($shamrock, white);
+						border-bottom-left-radius: 1000px;
+						border-bottom-right-radius: 1000px;
+					}
+				}
+				a {
+					&:hover, &:focus {
+						background: rgba(lighten(mix($slate, $shamrock, 90%), 10%), .5);
+					}
+					&:active {
+						background: lighten(mix($slate, $shamrock, 90%), 10%);
+					}
+					span:first-child {
+						position: relative;
+						display: block;
+						> span {
+							@include center-xy;
+							display: block;
+							font-size: 20px;
+							font-weight: 600;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// student
+#mobile-student-home {
+	background: $smoke;
+	.home-top {
+		background: lighten(mix($slate, $lake, 90%), 20%);
+		.home-top-guru {
+			position: relative;
+			height: 100%;
+			padding: 30px 15px;
+			svg {
+				display: block;
+				height: 100%;
+				+ div {
+					@include flex;
+					@include flex-wrap;
+					@include flex-center;
+					position: absolute;
+					left: 18.5%;
+				    width: 62%;
+				    height: 36%;
+				    padding: 10px;
+					bottom: 30px;
+					color: $slate;
+					h1 {
+						width: 100%;
+						text-align: center;
+						font-size: 18px;
+						font-weight: 600;
+					}
+					p {
+						width: 100%;
+						font-size: 14px;
+						font-weight: 400;
+						line-height: 1.2;
+					}
+				}
+			}
+		}
+	}
+	.home-tabs {
+		ul {
+			li {
+				min-width: calc(100% / 3);
+				&:not(:last-child) {
+					&:after {
+						background: $lake;
+					}
+				}
+				a {
+					color: $lake;
+					&:hover, &:focus {
+						color: lighten($slate, 20%);
+						.notification {
+							background: $slate;
+							&:after {
+								border-top-color: $slate;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.home-links {
+		background: $lake;
+		ul {
+			&:after {
+				background: mix($lake, white);
+			}
+			li {
+				width: calc(100% / 3);
+				&:nth-child(1), &:nth-child(2) {
+					&:after {
+						content: "";
+						position: absolute;
+						top: 15px;
+						right: -1px;
+						height: calc(100% - 15px);
+						width: 2px;
+						background: mix($lake, white);
+						border-top-left-radius: 1000px;
+						border-top-right-radius: 1000px;
+					}
+				}
+				&:nth-child(4), &:nth-child(5) {
+					&:after {
+						content: "";
+						position: absolute;
+						bottom: 15px;
+						right: -1px;
+						height: calc(100% - 15px);
+						width: 2px;
+						background: mix($lake, white);
+						border-bottom-left-radius: 1000px;
+						border-bottom-right-radius: 1000px;
+					}
+				}
+				a {
+					&:hover, &:focus {
+						background: rgba(lighten(mix($slate, $lake, 90%), 20%), .5);
+					}
+					&:active {
+						background: lighten(mix($slate, $lake, 90%), 20%);
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ---------- DESKTOP */
+// main
+.desktop-home {
+	.main {
+		@include flex;
+		@include flex-wrap;
+		position: relative;
+		padding: 0;
+		.home-tabs {
+			width: 100%;
+			height: 60px;
+			ul {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				li {
+					position: relative;
+					&:not(:last-child) {
+						&:after {
+							@include opacity(.4);
+							@include round;
+							content: "";
+							display: block;
+							position: absolute;
+							top: 10px;
+							right: -1px;
+							width: 2px;
+							height: 40px;
+							background: white;
+						}
+					}
+					a {
+						@include flex;
+						@include flex-center;
+						position: relative;
+						height: 60px;
+						padding: 0 15px;
+						color: white;
+						font-weight: 600;
+						font-size: 18px;
+						.notification {
+							@include flex;
+							@include flex-center;
+							position: relative;
+							background: $moxie;
+							color: white;
+							width: 36px;
+							height: 32px;
+							border-radius: 2px;
+							&:after {
+								content: "";
+								display: block;
+								position: absolute;
+								right: -12px;
+								top: 50%;
+								margin-top: -6px;
+								height: 0;
+								width: 0;
+								border: 6px solid transparent;
+								border-left-color: $moxie;
+							}
+						}
+						span:not(.notification) {
+							margin-left: 15px;
+						}
+						&:hover, &:focus {
+							.notification {
+								@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+								background: $slate;
+								&:after {
+									@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+									border-left-color: $slate;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.home-main {
+			@include flex;
+			@include flex-wrap;
+			@include prefix(justify-content, center, webkit);
+			width: 100%;
+			max-width: 1030px;
+			margin: 0 auto;
+			height: calc(100% - 60px);
+			max-height: 650px;
+			.home-tiles-top {
+				@include flex;
+				@include flex-center;
+				width: 100%;
+				height: calc(100% / 3 * 2);
+				.home-tiles-guru {
+					height: 100%;
+					padding: 15px 0;
+					svg {
+						display: block;
+						height: 100%;
+						width: auto;
+						max-width: 320px;
+						> g > ellipse {
+							@include prefix(animation, tour-guru-shadow-hover 1000ms linear infinite alternate, webkit moz ms o);
+							@include prefix(transform-origin, center center, webkit moz ms o);
+						}
+						.guru-body {
+							@include prefix(animation, tour-guru-hover 1000ms linear infinite alternate, webkit moz ms o);
+						}
+					}
+				}
+				.home-tiles-daily {
+					padding: 15px 0 15px 15px;
+					height: 100%;
+					width: 100%;
+					position: relative;
+					.home-ticket-content {
+						position: absolute;
+						left: calc(10% + 7.5px);
+						top: 10%;
+						width: 80%;
+						height: 80%;
+						border-radius: 5px;
+						text-align: center;
+						.home-ticket-inside {
+							@include flex;
+							@include flex-wrap;
+							@include prefix(justify-content, center, webkit);
+							padding: 15px;
+							width: 100%;
+							height: 100%;
+							h1, h2 {
+								@include prefix(align-self, flex-start, webkit);
+								text-align: center;
+								padding: 0;
+								margin: 0!important;
+							}
+							h1 {
+								font-size: 32px;
+								font-weight: 900;
+							}
+							h2 {
+								font-size: 20px;
+								font-weight: 600;
+							}
+							.home-ticket-guru-bar {
+								@include prefix(align-self, center, webkit);
+								@include flex;
+								@include flex-center;
+								padding: 0 7.5px;
+								width: 100%;
+								> li {
+									padding: 0 7.5px;
+									.pf-card-mini {
+										background: $smoke;
+										color: $slate;
+										.user-icon {
+											border-color: $smoke;
+											width: 48px;
+											height: 48px;
+										}
+										.pf-name {
+											font-size: 14px;
+											font-weight: 600;
+										}
+										.rating-stars {
+											max-width: 70px;
+										}
+									}
+								}
+							}
+							.home-ticket-icon-bar {
+								@include prefix(align-self, center, webkit);
+								@include flex;
+								@include flex-center;
+								padding: 0 7.5px;
+								> li {
+									padding: 0 7.5px;
+									span {
+										display: block;
+										width: 100%;
+										font-size: 16px;
+										font-weight: 600;
+										line-height: 1.2;
+										text-align: center;
+										text-transform: uppercase;
+										+ span {
+											margin-top: 5px;
+										}
+									}
+									svg {
+										@include round;
+										display: block;
+										width: 100%;
+										max-width: 90px;
+										margin: 0 auto;
+										padding: 5px;
+										* {
+											@include svg-stroke(white, 3);
+										}
+									}
+									&.academic {
+										svg {
+											background: $cerise;
+										}
+									}
+									&.baking {
+										svg {
+											background: $gold;
+										}
+									}
+									&.photography {
+										svg {
+											background: $moola;
+										}
+									}
+									&.household {
+										svg {
+											background: $cobalt;
+										}
+									}
+									&.tech {
+										svg {
+											background: $azure;
+										}
+									}
+								}
+							}
+							.home-ticket-icon {
+								@include prefix(align-self, center, webkit);
+								display: block;
+								margin: 0 auto;
+								svg {
+									display: block;
+									margin: 0 auto;
+									width: 100%;
+									max-height: 150px;
+								}
+							}
+							button {
+								@include prefix(align-self, flex-end, webkit);
+								display: inline-block;
+								max-width: 75%;
+							}
+						}
+					}
+					.home-ticket {
+						position: relative;
+						width: 100%;
+						height: 100%;
+						div {
+							margin: 0 auto;
+							width: calc(100% - 10px);
+							height: 100%;
+						}
+						&:before, &:after {
+							content: "";
+							display: block;
+							position: absolute;
+							z-index: 2;
+							top: 0;
+							height: 100%;
+							width: 20%;
+						}
+						&:before {
+							left: 0;
+						}
+						&:after {
+							right: 0;
+						}
+					}
+				}
+			}
+			.home-tiles-container {
+				padding: 7.5px;
+				.home-tile {
+					display: block;
+				}
+			}
+			.home-tiles-main {
+				width: 100%;
+				height: calc(100% / 3);
+				padding: 0 15px 15px;
+				.home-tiles-main-inside {
+					@include flex;
+					@include flex-wrap;
+					border-radius: 2px;
+					height: 100%;
+					.home-tile {
+						position: relative;
+						width: 25%;
+						height: 100%;
+						padding: 15px;
+						&:not(:last-child) {
+							&:after {
+								@include round;
+								content: "";
+								position: absolute;
+								z-index: 10;
+								top: 15px;
+								right: -1px;
+								height: calc(100% - 30px);
+								width: 2px;
+							}
+						}
+						.home-tile-inside {
+							@include flex;
+							@include flex-center;
+							height: 100%;
+							div {
+								width: 100%;
+								padding-bottom: 5px;
+								> span {
+									position: relative;
+									display: block;
+									> span {
+										@include center-xy;
+										display: block;
+										font-size: 28px;
+										font-weight: 600;
+										text-align: center;
+									}
+								}
+								h1 {
+									width: 100%;
+									color: white;
+									font-size: 24px;
+									font-weight: 600;
+									text-align: center;
+									span:not([data-courses="1"]) {
+										b {
+											font-weight: 600;
+											&:after {
+												content: "s";
+											}
+										}
+									}
+								}
+								h2 {
+									@include opacity(.5);
+									margin-top: 0!important;
+									width: 100%;
+									color: white;
+									font-size: 16px;
+									font-weight: 600;
+									text-align: center;
+								}
+								svg {
+									display: block;
+									margin: 0 auto;
+									height: 80px;
+									width: 80px;
+									* {
+										@include svg-stroke(white, 3);
+										&:not(.line) {
+											fill: rgba(white, .3)!important;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// guru
+#cta-modal-signup {
+	background: rgba($charcoal,.9) !important;
+	top: 64px;
+	height: calc(100% - 64px);
+	.cta-modal-close {
+		display: block;
+	}
+	header.desktop-header {
+		display: block;
+		top: 0;
+		a.cta-modal-close {
+			display: block;
+			top: 0;
+			margin: 15px;
+			right: 0;
+			position: absolute;
+			width: auto !important;
+		}
+	}
+	input {
+		color: $charcoal !important;
+	}
+	#cta-footer-switch-link {
+		display: block;
+		bottom: 20%;
+		text-align: center;
+		left: 0;
+	}
+}
+#desktop-guru-home {
+	background: $slate;
+	.main {
+		.home-tabs {
+			background: lighten(mix($slate, $shamrock, 90%), 10%);
+		}
+		.home-main {
+			.home-tiles-top {
+				.home-tiles-daily {
+					width: calc(100% - 320px);
+					height: 100%;
+					.home-ticket-content {
+						border: 3px solid $shamrock;
+						background: $slate;
+						.home-ticket-inside {
+							.home-ticket-icon {
+								svg {
+									*[stroke="#000000"] {
+										stroke: white!important;
+									}
+								}
+							}
+						}
+					}
+					.home-ticket {
+						div {
+							background: url(../../img/ticket/center-guru.svg) repeat-x center center / contain,
+										url(/static/remote/img/ticket/center-guru.svg) repeat-x center center / contain;
+						}
+						&:before {
+							background: url(../../img/ticket/left-guru.svg) no-repeat center left / contain,
+										url(/static/remote/img/ticket/left-guru.svg) no-repeat center left / contain;
+						}
+						&:after {
+							background: url(../../img/ticket/right-guru.svg) no-repeat center right / contain,
+										url(/static/remote/img/ticket/right-guru.svg) no-repeat center right / contain;
+						}
+					}
+				}
+			}
+			.home-tiles-main {
+				.home-tiles-main-inside {
+					background: $shamrock;
+					.home-tile {
+						&:hover, &:focus {
+							background: rgba(lighten(mix($slate, $shamrock, 90%), 10%), .5);
+						}
+						&:active {
+							background: lighten(mix($slate, $shamrock, 90%), 10%);
+						}
+						&:not(:last-child) {
+							&:after {
+								background: mix($shamrock, white);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// student
+#desktop-student-home {
+	background: $smoke;
+	color: $slate;
+	.main {
+		.home-tabs {
+			background: lighten(mix($slate, $lake, 90%), 20%);
+		}
+		.home-main {
+			.home-tiles-top {
+				.home-tiles-daily {
+					.home-ticket-content {
+						border: 3px solid #F1B99D;
+						background: white;
+						.home-ticket-inside {
+							.home-ticket-icon {
+								svg {
+									*[stroke="#000000"] {
+										stroke: $slate!important;
+									}
+								}
+							}
+						}
+					}
+					.home-ticket {
+						div {
+							background: url(../../img/ticket/center.svg) repeat-x center center / contain,
+										url(/static/remote/img/ticket/center.svg) repeat-x center center / contain;
+						}
+						&:before {
+							background: url(../../img/ticket/left.svg) no-repeat center left / contain,
+										url(/static/remote/img/ticket/left.svg) no-repeat center left / contain;
+						}
+						&:after {
+							background: url(../../img/ticket/right.svg) no-repeat center right / contain,
+										url(/static/remote/img/ticket/right.svg) no-repeat center right / contain;
+						}
+					}
+				}
+			}
+			.home-tiles-powerups {
+				@include flex-column;
+				height: 100%;
+				padding: 7.5px;
+				.home-tile {
+					height: 25%;
+					padding: 7.5px;
+					.home-tile-inside {
+						border-radius: 2px;
+						height: 100%;
+						> svg {
+							height: 100%;
+							width: auto;
+						}
+					}
+					&.gpa {
+						.home-tile-inside {
+							background: #559AB0;
+						}
+					}
+					&.munchies {
+						.home-tile-inside {
+							background: #F25A5B;
+						}
+					}
+					&.sound {
+						.home-tile-inside {
+							background: #9A5BC5;
+						}
+					}
+					&.transit {
+						.home-tile-inside {
+							background: #81B566;
+						}
+					}
+				}
+			}
+			.home-tiles-main {
+				.home-tiles-main-inside {
+					background: $lake;
+					.home-tile {
+						&:hover, &:focus {
+							background: rgba(lighten(mix($slate, $lake, 90%), 20%), .5);
+						}
+						&:active {
+							background: lighten(mix($slate, $lake, 90%), 20%);
+						}
+						&:not(:last-child) {
+							&:after {
+								background: mix($lake, white);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

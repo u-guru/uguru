@@ -124,6 +124,8 @@ body {
 	background: $charcoal;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
+	-webkit-perspective: 1000;
+	perspective: 1000;
 	> section, > div, > main {
 		height: 100%;
 	}
@@ -210,6 +212,11 @@ button, input, textarea {
 }
 .resize-none {
 	resize: none;
+}
+
+// transform
+.preserve-3d {
+	transform-style: preserve-3d;
 }
 
 /* ---------- LAYOUTS */

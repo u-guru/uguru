@@ -1,0 +1,114 @@
+<main id="timeline" ng-controller="TimelineController" class='full-xy'>
+	<header>
+        <div class="timeline-header">
+            <div>
+                <h1>Uguru Timeline</h1>
+                <h2>Our journey</h2>
+            </div>
+        </div>
+        <div class="tab-bar">
+            <ul>
+                <li><a class="active">All</a></li>
+                <li><a>Milestones</a></li>
+                <li><a>College</a></li>
+                <li><a>High School</a></li>
+                <li><a>Blog</a></li>
+            </ul>
+        </div>
+	</header>
+
+    <section>
+        <div class="post-search">
+            <div tabindex>
+				<label for="search-tags">
+					<svg viewBox="0 0 100 100">
+	                    <path d="M42.5,71 C58.2401154,71 71,58.2401154 71,42.5 C71,26.7598846 58.2401154,14 42.5,14 C26.7598846,14 14,26.7598846 14,42.5 C14,58.2401154 26.7598846,71 42.5,71 Z M62.994485,62.994485 L85.6624699,85.6624699"></path>
+	                </svg>
+				</label>
+                <input type="search" name="search-tags" placeholder="search tags" />
+				<ul class="post-results">
+					<li>
+						<input type="checkbox" checked />
+						<label class="chip bg-slate txt-white">social media</label>
+					</li>
+					<li>
+						<input type="checkbox" />
+						<label class="chip bg-slate txt-white">hs support</label>
+					</li>
+					<li>
+						<input type="checkbox" />
+						<label class="chip bg-slate txt-white">announcement</label>
+					</li>
+					<li>
+						<input type="checkbox" />
+						<label class="chip bg-slate txt-white">college</label>
+					</li>
+					<li>
+						<input type="checkbox" />
+						<label class="chip bg-slate txt-white">new feature</label>
+					</li>
+				</ul>
+            </div>
+        </div>
+        <ul>
+            <li class="post-month">
+                <span class="post-icon">DEC</span>
+            </li>
+            <li class="post post-{{event.category}}" ng-repeat='event in timeline.events' tabindex>
+                <span class="post-icon">
+                    <span ng-include="img_base + 'templates/svg/timeline/' + event.category + '.html'"></span>
+                    <span>{{event.formatted_category || event.category}}</span>
+                </span>
+                <article class="post-content">
+                    <header>
+                        <a class="txt-white" ng-bind-html="event.title"></a>
+                    </header>
+                    <figure ng-if="event.banner.length">
+                        <img class="post-banner" src='{{event.banner}}' alt=''/>
+                    </figure>
+                    <figure ng-if="event.svg.length">
+                        <img class="post-svg" src='{{event.svg}}' alt=''/>
+                    </figure>
+                    <section ng-if="event.body.length">{{event.body}}</section>
+                    <aside class="post-attach" ng-if="event.attachment.url.length">
+                        <ul>
+                            <li>
+                                <div class="post-upload-file post-upload-pdf">
+        							<svg class="doc-outline" viewBox="0 0 75 75">
+        								<path d="M6.50001634,1.5 C3.73858357,1.5 1.5,3.73376942 1.5,6.50573628 L1.5,68.4942637 C1.5,71.2588555 3.73376942,73.5 6.50573628,73.5 L68.4942637,73.5 C71.2588555,73.5 73.5,71.2643283 73.5,68.5001225 L73.5,21.0605722 C73.5,19.9548035 72.8472697,18.4334881 72.0608909,17.6806226 L56.5991089,2.87777827 C55.8043109,2.11685234 54.2734003,1.5 53.1543987,1.5 L6.50001634,1.5 Z M55.5992131,2.46 C55.5992131,2.46 55.5992131,2.90396713 55.5992131,3.46092472 L55.5992131,14.0558242 C55.5992131,16.818671 57.8364841,19.0584009 60.6045233,19.0584009 L72.9848101,19.0584009"></path>
+        							</svg>
+        							<span class="doc-info">
+        								<span class="doc-name">{{event.attachment.title}}.{{event.attachment.extension}}</span>
+        								<span class="doc-type">{{event.attachment.extension}}</span>
+        							</span>
+        						</div>
+                            </li>
+                            <li>
+                                <div class="post-upload-file post-upload-img" style="background-image: url({{img_base}}./img/sample/1.jpeg)"></div>
+                            </li>
+                        </ul>
+                    </aside>
+                    <aside class="post-tags">
+                        <a class="chip bg-slate txt-white" ng-repeat='tag in event.tags'>{{tag}}</a>
+                    </aside>
+                    <footer>
+                        <ul>
+                            <li><span style="background-image: url({{event.announcer.profile_url}});"></span></li>
+                            <li>
+                                <a>{{event.announcer.name}}</a>
+                                <span>{{event.formatted_time}}</span>
+                            </li>
+                        </ul>
+                    </footer>
+                </article>
+                <!--
+                    {{event.announcer.role}}
+                    <span ng-repeat="attachment in event.attachments">{{attachment}}</span>
+                -->
+
+            </li>
+            <div></div>
+        </ul>
+    </section>
+
+</main>
