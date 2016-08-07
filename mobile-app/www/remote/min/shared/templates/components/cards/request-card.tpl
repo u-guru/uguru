@@ -14,6 +14,7 @@
 			</div>
 		</div>
 		<div class="info">
+			<hr class="info-border"/>
 			<ul class="ugrid-2">
 				<li>
 					<span class="user-icon" style="background-image: url();"></span>
@@ -21,6 +22,7 @@
 				<li>
 					<h2>Academic Request</h2>
 					<h1>In Person Tutoring</h1>
+					<hr class="info-divider"/>
 				</li>
 			</ul>
 			<ul class="ugrid-3">

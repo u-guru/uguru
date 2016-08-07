@@ -2509,6 +2509,9 @@ a.category-tile {
 // tile group [needs height from parent]
 .tile-group {
 	width: 100%;
+	+ .tile-group-border {
+		background: rgba(white, .2);
+	}
 	ul {
 		@include flex;
 		@include flex-center;
@@ -2518,15 +2521,17 @@ a.category-tile {
 		max-height: 200px;
 		width: 100%;
 		overflow: hidden;
-		&:after {
-			background: rgba(white, .2);
-		}
 		li {
 			position: relative;
 			width: 100%;
 			height: 100%;
+			&:last-child {
+				.tile-border {
+					display: none;
+				}
+			}
 			&:not(:last-child) {
-				&:after {
+				.tile-border {
 					@include round;
 					content: "";
 					position: absolute;
@@ -2535,6 +2540,8 @@ a.category-tile {
 					right: -1px;
 					height: calc(100% - 30px);
 					width: 2px;
+					margin: 0;
+					border: 0;
 					background: rgba(white, .2);
 				}
 			}
@@ -2589,12 +2596,12 @@ a.category-tile {
 			}
 		}
 		&.bg-slate {
-			&:after {
+			+ .tile-group-border {
 				background: mix($slate, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($slate, white, 75%);
 					}
 				}
@@ -2621,12 +2628,12 @@ a.category-tile {
 			}
 		}
 		&.bg-taupe {
-			&:after {
+			+ .tile-group-border {
 				background: mix($taupe, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($taupe, white, 75%);
 					}
 				}
@@ -2653,12 +2660,12 @@ a.category-tile {
 			}
 		}
 		&.bg-campus {
-			&:after {
+			+ .tile-group-border {
 				background: mix($campus, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($campus, white, 75%);
 					}
 				}
@@ -2682,12 +2689,12 @@ a.category-tile {
 			}
 		}
 		&.bg-smoke, &.bg-white {
-			&:after {
+			+ .tile-group-border {
 				background: mix($smoke, $slate, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($smoke, $slate, 75%);
 					}
 				}
@@ -2725,12 +2732,12 @@ a.category-tile {
 			}
 		}
 		&.bg-rocket {
-			&:after {
+			+ .tile-group-border {
 				background: mix($rocket, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($rocket, white, 75%);
 					}
 				}
@@ -2754,12 +2761,12 @@ a.category-tile {
 			}
 		}
 		&.bg-shamrock {
-			&:after {
+			+ .tile-group-border {
 				background: mix($shamrock, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($shamrock, white, 75%);
 					}
 				}
@@ -2783,12 +2790,12 @@ a.category-tile {
 			}
 		}
 		&.bg-robin {
-			&:after {
+			+ .tile-group-border {
 				background: mix($robin, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($robin, white, 75%);
 					}
 				}
@@ -2812,12 +2819,12 @@ a.category-tile {
 			}
 		}
 		&.bg-lake {
-			&:after {
+			+ .tile-group-border {
 				background: mix($lake, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($lake, white, 75%);
 					}
 				}
@@ -2841,12 +2848,12 @@ a.category-tile {
 			}
 		}
 		&.bg-moxie {
-			&:after {
+			+ .tile-group-border {
 				background: mix($moxie, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($moxie, white, 75%);
 					}
 				}
@@ -2870,12 +2877,12 @@ a.category-tile {
 			}
 		}
 		&.bg-crimson {
-			&:after {
+			+ .tile-group-border {
 				background: mix($crimson, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($crimson, white, 75%);
 					}
 				}
@@ -2899,12 +2906,12 @@ a.category-tile {
 			}
 		}
 		&.bg-auburn, &.bg-delivery {
-			&:after {
+			+ .tile-group-border {
 				background: mix($auburn, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($auburn, white, 75%);
 					}
 				}
@@ -2928,12 +2935,12 @@ a.category-tile {
 			}
 		}
 		&.bg-orange, &.bg-freelancing {
-			&:after {
+			+ .tile-group-border {
 				background: mix($orange, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($orange, white, 75%);
 					}
 				}
@@ -2957,12 +2964,12 @@ a.category-tile {
 			}
 		}
 		&.bg-gold, &.bg-baking {
-			&:after {
+			+ .tile-group-border {
 				background: mix($gold, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($gold, white, 75%);
 					}
 				}
@@ -2986,12 +2993,12 @@ a.category-tile {
 			}
 		}
 		&.bg-moola, &.bg-photography {
-			&:after {
+			+ .tile-group-border {
 				background: mix($moola, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($moola, white, 75%);
 					}
 				}
@@ -3015,12 +3022,12 @@ a.category-tile {
 			}
 		}
 		&.bg-azure, &.bg-tech {
-			&:after {
+			+ .tile-group-border {
 				background: mix($azure, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($azure, white, 75%);
 					}
 				}
@@ -3044,12 +3051,12 @@ a.category-tile {
 			}
 		}
 		&.bg-cobalt, &.bg-household {
-			&:after {
+			+ .tile-group-border {
 				background: mix($cobalt, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($cobalt, white, 75%);
 					}
 				}
@@ -3073,12 +3080,12 @@ a.category-tile {
 			}
 		}
 		&.bg-eggplant, &.bg-athletic {
-			&:after {
+			+ .tile-group-border {
 				background: mix($eggplant, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($eggplant, white, 75%);
 					}
 				}
@@ -3102,12 +3109,12 @@ a.category-tile {
 			}
 		}
 		&.bg-cerise, &.bg-academic {
-			&:after {
+			+ .tile-group-border {
 				background: mix($cerise, white, 75%);
 			}
 			li {
 				&:not(:last-child) {
-					&:after {
+					.tile-border {
 						background: mix($cerise, white, 75%);
 					}
 				}
@@ -3145,45 +3152,47 @@ a.category-tile {
 		}
 	}
 	&[class*="tile-row"] {
+		position: relative;
 		ul {
 			@include flex-wrap;
 			position: relative;
-			&:after {
-				content: "";
-				display: block;
-				position: absolute;
-				width: calc(100% - 30px);
-				height: 2px;
-			}
+		}
+		.tile-group-border {
+			display: block;
+			position: absolute;
+			width: calc(100% - 30px);
+			height: 2px;
+			margin: 0;
+			border: 0;
 		}
 	}
 	&.tile-row-2x3 {
+		.tile-group-border {
+			top: 50%;
+			margin-top: -1px;
+			left: 15px;
+		}
 		ul {
 			height: 400px;
 			max-height: 400px;
-			&:after {
-				top: 50%;
-				margin-top: -1px;
-				left: 15px;
-			}
 			li {
 				width: calc(100% / 3);
 				height: 50%;
 				&:nth-child(1), &:nth-child(2) {
-					&:after {
+					.tile-border {
 						border-radius: 100px 100px 0 0;
 						height: calc(100% - 15px);
 					}
 				}
 				&:nth-child(4), &:nth-child(5) {
-					&:after {
+					.tile-border {
 						top: 0;
 						border-radius: 0 0 100px 100px;
 						height: calc(100% - 15px);
 					}
 				}
 				&:nth-child(3) {
-					&:after {
+					.tile-border {
 						display: none;
 					}
 				}

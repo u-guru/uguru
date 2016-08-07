@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='link, default, 2x3' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy" types='link, default, 2x3' default-type="2x3">
 	<div class="tile-group links" ng-if='activeType === "link"'>
 		<ul class="bg-slate">
 			<li>
@@ -6,15 +6,18 @@
 					<span class="badge-top bg-moxie">6</span>
 					<span>Billing</span>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 			<li>
 				<a class="tile badge-container click">
 					<span class="badge-left bg-moxie">6</span>
 					<span>Gurus</span>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 			<li>
 				<a class="tile">Requests</a>
+				<hr class="tile-border"/>
 			</li>
 		</ul>
 	</div>
@@ -34,6 +37,7 @@
 					<h1>Your Profile</h1>
 					<h2>Edit and add<br/>your shops</h2>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 			<li>
 				<a class="tile">
@@ -48,6 +52,7 @@
 					<h1>Your Profile</h1>
 					<h2>Edit and add<br/>your shops</h2>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 			<li>
 				<a class="tile">
@@ -62,6 +67,7 @@
 					<h1>Your Profile</h1>
 					<h2>Edit and add<br/>your shops</h2>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 		</ul>
 	</div>
@@ -80,6 +86,7 @@
 					</span>
 					<h1>Your Profile</h1>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 			<li>
 				<a class="tile">
@@ -93,6 +100,7 @@
 					</span>
 					<h1>Your Profile</h1>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 			<li>
 				<a class="tile">
@@ -106,6 +114,7 @@
 					</span>
 					<h1>Your Profile</h1>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 			<li>
 				<a class="tile">
@@ -119,6 +128,7 @@
 					</span>
 					<h1>Your Profile</h1>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 			<li>
 				<a class="tile">
@@ -132,6 +142,7 @@
 					</span>
 					<h1>Your Profile</h1>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 			<li>
 				<a class="tile">
@@ -145,7 +156,9 @@
 					</span>
 					<h1>Your Profile</h1>
 				</a>
+				<hr class="tile-border"/>
 			</li>
 		</ul>
+		<hr class="tile-group-border"/>
 	</div>
 </div>

@@ -2266,9 +2266,20 @@ a.course-card {
 		}
 	}
 	.info {
-		border-top: 5px solid $shamrock;
+		// border-top: 5px solid $shamrock;
 		color: $slate;
-		padding: 15px;
+		padding: 20px 15px 15px;
+		position: relative;
+		.info-border {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 0;
+			margin: 0;
+			border: 0;
+			border-bottom: 5px solid $shamrock;
+		}
 		.ugrid-2 {
 			position: relative;
 			padding-bottom: 15px;
@@ -2297,7 +2308,7 @@ a.course-card {
 					}
 				}
 			}
-			&:after {
+			.info-divider {
 				@include round;
 				content: "";
 				display: block;
@@ -2306,6 +2317,8 @@ a.course-card {
 				bottom: -1px;
 				width: 100%;
 				height: 2px;
+				border: 0;
+				margin: 0;
 				background: rgba(lighten($slate, 30%), .2);
 			}
 		}
@@ -2358,8 +2371,8 @@ a.course-card {
 			}
 		}
 		.info {
-			border-color: $auburn;
-			.user-icon {
+			// border-color: $auburn;
+			.user-icon, .info-border {
 				border-color: $auburn;
 			}
 		}
@@ -2373,8 +2386,8 @@ a.course-card {
 			}
 		}
 		.info {
-			border-color: $orange;
-			.user-icon {
+			// border-color: $orange;
+			.user-icon, .info-border {
 				border-color: $orange;
 			}
 		}
@@ -2388,8 +2401,8 @@ a.course-card {
 			}
 		}
 		.info {
-			border-color: $gold;
-			.user-icon {
+			// border-color: $gold;
+			.user-icon, .info-border {
 				border-color: $gold;
 			}
 		}
@@ -2403,8 +2416,8 @@ a.course-card {
 			}
 		}
 		.info {
-			border-color: $moola;
-			.user-icon {
+			// border-color: $moola;
+			.user-icon, .info-border {
 				border-color: $moola;
 			}
 		}
@@ -2418,8 +2431,8 @@ a.course-card {
 			}
 		}
 		.info {
-			border-color: $azure;
-			.user-icon {
+			// border-color: $azure;
+			.user-icon, .info-border {
 				border-color: $azure;
 			}
 		}
@@ -2433,8 +2446,8 @@ a.course-card {
 			}
 		}
 		.info {
-			border-color: $cobalt;
-			.user-icon {
+			// border-color: $cobalt;
+			.user-icon, .info-border {
 				border-color: $cobalt;
 			}
 		}
@@ -2448,8 +2461,8 @@ a.course-card {
 			}
 		}
 		.info {
-			border-color: $eggplant;
-			.user-icon {
+			// border-color: $eggplant;
+			.user-icon, .info-border {
 				border-color: $eggplant;
 			}
 		}
@@ -2463,24 +2476,20 @@ a.course-card {
 			}
 		}
 		.info {
-			border-color: $cerise;
-			.user-icon {
+			// border-color: $cerise;
+			.user-icon, .info-border {
 				border-color: $cerise;
 			}
 		}
 	}
 }
 
-// university marker
-.university-place-marker {
+// place marker
+.place-marker {
 	transition: all 150ms ease-in-out;
 	position: relative;
 	cursor: pointer;
 	max-width: 262px;
-	&.visible {
-		@include opacity-important(1);
-		z-index: 9;
-	}
 	&.bg-academic {
 		.marker-circle {
 			background: $auburn;
@@ -2571,18 +2580,6 @@ a.course-card {
 	}
 	.marker-normal {
 		position: relative;
-		.marker-normal-window {
-			.open {
-				transition: stroke-dashoffset 150ms ease-in-out, opacity 150ms ease-in-out 150ms;
-				stroke-dasharray: 80, 80;
-				stroke-dashoffset: 0;
-			}
-			.side {
-				transition: stroke-dashoffset 200ms ease-in-out 650ms;
-				stroke-dasharray: 278, 278;
-				stroke-dashoffset: 0;
-			}
-		}
 		.marker-normal-content {
 			@include flex;
 			@include flex-wrap;
@@ -2592,9 +2589,7 @@ a.course-card {
 			left: 2px;
 			width: calc(100% - 4px);
 			height: calc(100% - 26px);
-			svg {
-				@include svg-stroke(white, 3);
-				transition: all 150ms ease-in-out 350ms;
+			.marker-link {
 				position: absolute;
 				top: 50%;
 				margin-top: -24px;
@@ -2603,15 +2598,21 @@ a.course-card {
 				z-index: 2;
 				width: 48px;
 				height: 48px;
+				svg {
+					@include svg-stroke(white, 3);
+					width: 48px;
+					height: 48px;
+				}
 			}
 			.marker-guru {
-				// @include opacity(0);
 				@include round;
 				@include flex;
 				@include flex-center-vertical;
-				@include center-xy;
-				transition: all 150ms ease-in-out 350ms;
-				margin-top: 6px;
+				position: absolute;
+				top: 50%;
+				margin-top: -9px;
+				left: 50%;
+				margin-left: -37px;
 				height: 30px;
 				width: 74px;
 				padding-left: 28px;
@@ -2634,57 +2635,28 @@ a.course-card {
 				}
 			}
 		}
-		&.move {
-			.marker-normal-window {
-				.open {
-					stroke-dashoffset: 80;
-				}
-			}
-			.marker-normal-content {
-				svg {
-					transform: translateY(-36px);
-				}
-			}
-		}
-		&.hidden {
-			.marker-normal-window {
-				.open {
-					stroke-dashoffset: 80;
-					opacity: 0;
-				}
-			}
-		}
 	}
 	.marker-expanded {
 		position: absolute;
-		z-index: -1;
 		bottom: 0;
 		left: 50%;
 		margin-left: -131px;
-		.marker-expanded-window {
-			.sides {
-				transition: stroke-dashoffset 300ms ease-in-out 150ms;
-				stroke-dasharray: 936, 936;
-				stroke-dashoffset: 936;
-			}
-		}
 		.marker-expanded-content {
-			@include opacity(0);
-			transition: all 150ms ease-in-out 350ms;
 			position: absolute;
 			top: 2px;
 			left: 2px;
 			width: calc(100% - 4px);
 			height: calc(100% - 26px);
-			// &.active {
-			// 	@include opacity-important(1);
-			// }
 			.marker-expanded-icon {
+				position: absolute;
+				top: -50%;
+				margin-top: 75px;
+				left: 50%;
+				margin-left: -50px;
+				width: 100px;
+				height: 100px;
 				svg {
 					@include svg-stroke(white, 1.5);
-					@include center-x;
-					top: -50%;
-					margin-top: 75px;
 					width: 100px;
 					height: 100px;
 				}
@@ -2727,7 +2699,9 @@ a.course-card {
 				}
 				svg {
 					@include svg-stroke(white, 8);
-					@include center-y;
+					position: absolute;
+					top: 50%;
+					margin-top: -12px;
 					right: 2px;
 					height: 24px;
 				}
@@ -2760,43 +2734,5 @@ a.course-card {
 		bottom: -35px;
 		font-weight: 600;
 		font-size: 14px;
-	}
-	&.active {
-		.marker-normal {
-			.marker-normal-window {
-				.side {
-					transition: stroke-dashoffset 200ms ease-in-out 150ms;
-					stroke-dashoffset: 278;
-				}
-			}
-			.marker-normal-content {
-				@include opacity(0);
-				transition: all 150ms ease-in-out 0ms;
-				svg, .marker-guru {
-					transition: all 150ms ease-in-out 0ms;
-				}
-			}
-			&.move {
-				.marker-normal-content {
-					transition: all 150ms ease-in-out 0ms;
-					svg, .marker-guru {
-						transition: all 150ms ease-in-out 0ms;
-					}
-				}
-			}
-		}
-		.marker-expanded {
-			z-index: 2;
-			.marker-expanded-window {
-				.sides {
-					transition: stroke-dashoffset 300ms ease-in-out 350ms;
-					stroke-dashoffset: 0;
-				}
-			}
-			.marker-expanded-content {
-				@include opacity(1);
-				transition: all 150ms ease-in-out 650ms;
-			}
-		}
 	}
 }
