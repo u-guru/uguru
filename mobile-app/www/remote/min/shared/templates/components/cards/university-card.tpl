@@ -3,8 +3,9 @@
 		init-with="p-op"
 		on-init="t-enter"
 		on-enter="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:translateZ(20px), tro:center center, t:all 250ms ease-out]"
-		on-mouse-leave="p:[tr:translateZ(0px), tro:center center, t:all 250ms ease-in]">
+		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
+		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
+		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
@@ -53,8 +54,9 @@
 		init-with="p-op"
 		on-init="t-enter"
 		on-enter="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:scale(1.1), tro:center center, t:all 250ms ease-out]"
-		on-mouse-leave="p:[tr:scale(1), tro:center center, t:all 250ms ease-in]">
+		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
+		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
+		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
