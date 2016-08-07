@@ -1,15 +1,37 @@
 <div class="perspective-container full-xy flex-center p15xy">
-	<div class="pf-aside-widget">
-		<div class="top"></div>
-		<div class="left"></div>
-		<div class="right"></div>
-		<div class="bot-left"></div>
-		<div class="bot-right"></div>
-		<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"init-with="p-op"
+	<div class="pf-aside-widget"
+		init-with="p:[background:rgba(99#112#116#0), t:background 700ms ease-in-out]"
 		on-init="t-enter"
-		on-enter="p:[tro:center center] | a:[icon-enter:set:(dur:1000ms#func:ease-out):in]"></span>
+		on-enter="p:[background:rgba(99#112#116#0.3):delay-700]">
+		<div class="top"
+			init-with="p:[op:0, tr:scale(0), tro:center center]"
+			on-init="t-enter"
+			on-enter="p:[op:1, tr:scale(1), t:opacity 250ms linear#scale 1000ms ease-out]:delay-150"></div>
+		<div class="left"
+			init-with="p:[op:0, tr:scale(0), tro:left top]"
+			on-init="t-enter"
+			on-enter="p:[op:1, tr:scale(1), t:opacity 250ms linear#scale 1000ms ease-out]:delay-300"></div>
+		<div class="right"
+			init-with="p:[op:0, tr:scale(0), tro:right top]"
+			on-init="t-enter"
+			on-enter="p:[op:1, tr:scale(1), t:opacity 250ms linear#scale 1000ms ease-out]:delay-300"></div>
+		<div class="bot-left"
+			init-with="p:[op:0, tr:scale(0), tro:left center]"
+			on-init="t-enter"
+			on-enter="p:[op:1, tr:scale(1), t:opacity 250ms linear#scale 1000ms linear]:delay-500"></div>
+		<div class="bot-right"
+			init-with="p:[op:0, tr:scale(0), tro:right center]"
+			on-init="t-enter"
+			on-enter="p:[op:1, tr:scale(1), t:opacity 250ms linear#scale 1000ms linear]:delay-500"></div>
+		<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
+			init-with="p-op"
+			on-init="t-enter"
+			on-enter="p:[tro:center center] | a:[icon-enter:set:(dur:1000ms#func:ease-out):in]"></span>
 		<div>
-			<h1 class="pf-name verified">
+			<h1 class="pf-name verified"
+				init-with="p-op"
+				on-init="t-enter"
+				on-enter="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-150]">
 				<span>Gabrielle Wee</span>
 				<span>
 					<svg preserveAspectRatio="xMidYMax meet" width="100px" height="100px" viewBox="0 0 100 100">
@@ -18,41 +40,65 @@
 					</svg>
 				</span>
 			</h1>
-			<h2 class="pf-school-name">Ex'pression College for Digital Arts</h2>
+			<h2 class="pf-school-name"
+				init-with="p-op"
+				on-init="t-enter"
+				on-enter="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-150]">Ex'pression College for Digital Arts</h2>
 			<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
-				<li>
+				<li
+					init-with="p-op"
+					on-init="t-enter"
+					on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1000]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
-				<li>
+				<li
+					init-with="p-op"
+					on-init="t-enter"
+					on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1200]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
-				<li>
+				<li
+					init-with="p-op"
+					on-init="t-enter"
+					on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1300]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
-				<li>
+				<li
+					init-with="p-op"
+					on-init="t-enter"
+					on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1400]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
-				<li>
+				<li
+					init-with="p-op"
+					on-init="t-enter"
+					on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1500]">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 					</svg>
 				</li>
 			</ul>
-			<h3 class="pf-reviews"><span>72</span> reviews</h3>
+			<h3 class="pf-reviews"
+				init-with="p-op"
+				on-init="t-enter"
+				on-enter="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-1600]"><span>72</span> reviews</h3>
 		</div>
-		<button class="bg-moola normal">Contact Guru</button>
+		<button class="bg-moola normal"
+			init-with="p:[op:0, tro:center center, color:rgba(255#255#255#0)]"
+			on-init="t-enter"
+			on-enter="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500] | p:[color:rgba(255#255#255#1):delay-700, t:color 500ms ease-in-out]">Contact Guru</button>
 	</div>
 </div>

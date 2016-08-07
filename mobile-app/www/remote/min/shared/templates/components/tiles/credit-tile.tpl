@@ -19,9 +19,14 @@
 			</li>
 			<li class="bottom">
 				<h1>50 Credits</h1>
-				<button class="btn-split"
-					init-with="p-op"
-					on-init="a:[popup-header-enter:set:(dur:1000ms#func:ease-out):in:delay-650]"><span>Get Started</span><span>$40</span></button>
+				<button class="btn-split"><span
+					init-with="p:[op:0, tro:right center, color:rgba(255#255#255#0)]"
+					on-init="t-enter"
+					on-enter="a:[split-button:set:(dur:1000ms#func:linear):in:delay-800] | p:[color:rgba(255#255#255#1):delay-1000, t:color 500ms ease-in-out]">Get Started</span>
+					<span
+						init-with="p:[op:0, tro:left center, color:rgba(255#255#255#0)]"
+						on-init="t-enter"
+						on-enter="a:[split-button:set:(dur:1000ms#func:linear):in:delay-800] | p:[color:rgba(255#255#255#1):delay-1000, t:color 500ms ease-in-out]">$40</span></button>
 			</li>
 		</ul>
 	</div>
