@@ -502,8 +502,8 @@ button.disabled {
 	}
 }
 
-// ghost buttons
-[class*="btn-ghost"] {
+// round ghost buttons
+.btn-ghost-round {
 	@include round;
 	width: auto;
 	height: auto;
@@ -816,6 +816,94 @@ button.disabled {
 			border-color: mix($facebook, white);
 			background: mix($facebook, white);
 			color: mix($facebook, $slate);
+		}
+	}
+}
+
+// square ghost buttons
+.btn-ghost-square {
+	position: relative;
+	background: none;
+	height: auto;
+	width: auto;
+	border-radius: 2px;
+	padding: 14px 24px;
+	border: 0;
+	overflow: hidden;
+	color: white;
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: background 10ms ease 250ms, color 250ms ease-in-out;
+	span {
+		&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+			position: absolute;
+			background: white;
+			border-radius: 1000px;
+			transition: none;
+		}
+		&:nth-child(1) {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			transform-origin: right center;
+		}
+		&:nth-child(2) {
+			top: 0;
+			right: 0;
+			width: 2px;
+			height: 100%;
+			transform-origin: center bottom;
+		}
+		&:nth-child(3) {
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			height: 2px;
+			transform-origin: left center;
+		}
+		&:nth-child(4) {
+			bottom: 0;
+			left: 0;
+			width: 2px;
+			height: 100%;
+			transform-origin: center top;
+		}
+		&:nth-child(5) {
+			position: absolute;
+			top: 50%;
+			margin-top: -5px;
+			left: 50%;
+			margin-left: -5px;
+			width: 10px;
+			height: 10px;
+			border-radius: 1000px;
+			background: lighten($slate, 15%);
+			transform-origin: center center;
+			transform: scale(0) translateZ(0);
+			transition: transform 250ms ease-in-out, opacity 50ms ease 260ms;
+		}
+		&:nth-child(6) {
+			position: relative;
+			z-index: 10;
+		}
+	}
+	&:hover, &:focus {
+		background: white;
+		color: $charcoal;
+	}
+	&:active {
+		background: lighten($slate, 15%);
+		span {
+			&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+				opacity: 0;
+			}
+			&:nth-child(5) {
+				transform: scale(100) translateZ(0);
+				opacity: 0;
+			}
 		}
 	}
 }

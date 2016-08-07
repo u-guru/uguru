@@ -28,7 +28,7 @@
 				when-window-open="p:[op:0]"
 				when-window-close="p:[op:1:delay-300]">
 				<a class="marker-link"
-					init-with="p:[t:transform 500ms cubic-bezier(.6#0#.1#1.3), pointer-events]"
+					init-with="p:[t:transform 500ms cubic-bezier(.6#0#.1#1.3)]"
 					on-mouse-enter="s:[marker-open:public]"
 					when-marker-open="p:[tr:translateY(-36px)]">
 					<svg viewBox="0 0 100 100"

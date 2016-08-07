@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-wrap-center" types='default, ghost-round, ghost-square, split' default-type="default" reference="http://codepen.io/teamuguru/pen/6018db762fec392ead23dceab1584aab?editors=1100">
+<div class="perspective-container full-xy flex-wrap-center" types='default, ghost-round, ghost-square, split' default-type="ghost-square" reference="http://codepen.io/teamuguru/pen/6018db762fec392ead23dceab1584aab?editors=1100">
 	<button class="btn-default bg-moxie radius-2 normal p30x" ng-if='activeType === "default"'>
 		<span></span><span></span>
 		<span></span><span></span>
@@ -13,7 +13,7 @@
 		<span>Ghost round</span>
 	</button>
 
-	<button class="btn-ghost-sq btn-ghost-white" ng-if='activeType === "ghost-square"'>
+	<button class="btn-ghost-square btn-ghost-white" ng-if='activeType === "ghost-square"'>
 		<span></span><span></span><span>
 		</span><span></span>
 		<span></span>
