@@ -1,5 +1,7 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default, separate-header, tour-guru' default-type="separate-header">
-	<div class="popup" ng-if='activeType === "default"'>
+<div class="perspective-container full-xy flex-center p15xy" types='default, separate-header, tour-guru' default-type="default">
+	<div class="popup" ng-if='activeType === "default"'
+		init-with="p-op"
+		on-init="a:[scaleIn-bounceDown:set:(dur:800ms#func:ease-out):in]">
 		<div>
 			<header><h2>This is a header</h2></header>
 			<div>
