@@ -59,7 +59,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -132,7 +132,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -205,7 +205,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -278,7 +278,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -351,7 +351,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -424,7 +424,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -497,7 +497,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -570,7 +570,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -643,7 +643,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -716,7 +716,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -789,7 +789,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -862,7 +862,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="checkbox-container">
+                <div class="checkbox-container old">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>

@@ -13,7 +13,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -40,7 +40,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -67,7 +67,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -94,7 +94,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -121,7 +121,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -148,7 +148,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -175,7 +175,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -202,7 +202,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -229,7 +229,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -256,7 +256,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -283,7 +283,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -310,7 +310,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -337,7 +337,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -364,7 +364,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -391,7 +391,7 @@
                         <button class="bg-moxie">Okay</button>
                     </div>
                 </div>
-                <div class="checkbox-container m15top full-x">
+                <div class="checkbox-container old m15top full-x">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>

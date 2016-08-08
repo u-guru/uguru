@@ -1,7 +1,7 @@
 <div class="base-components absolute full-xy top-0 left-0 flex-center-wrap bg-charcoal overflow-auto">
 	<ul class="p15xy">
         <li class="flex">
-            <div class="checkbox-container checkbox m15right">
+            <div class="checkbox-container old checkbox m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -13,7 +13,7 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox-container state checkbox-moxie state-default">
+            <div class="checkbox-container old state checkbox-moxie state-default">
                 <div>
                     <input type="checkbox" id="checkbox-item" disabled/>
                     <span>
@@ -28,7 +28,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container checkbox m15right">
+            <div class="checkbox-container old checkbox m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -40,7 +40,7 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox-container state checkbox-moxie state-onload">
+            <div class="checkbox-container old state checkbox-moxie state-onload">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -59,7 +59,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container checkbox m15right">
+            <div class="checkbox-container old checkbox m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -71,7 +71,7 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox-container state checkbox-moxie state-onenter">
+            <div class="checkbox-container old state checkbox-moxie state-onenter">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -90,7 +90,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container checkbox m15right">
+            <div class="checkbox-container old checkbox m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -102,7 +102,7 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox-container state checkbox-moxie state-onexit">
+            <div class="checkbox-container old state checkbox-moxie state-onexit">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -117,7 +117,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container checkbox m15right">
+            <div class="checkbox-container old checkbox m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -130,7 +130,7 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox-container state checkbox-moxie state-unchecked-hover">
+            <div class="checkbox-container old state checkbox-moxie state-unchecked-hover">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -145,7 +145,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container checkbox m15right">
+            <div class="checkbox-container old checkbox m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -157,7 +157,7 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox-container state checkbox-moxie state-unchecked-active">
+            <div class="checkbox-container old state checkbox-moxie state-unchecked-active">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -173,7 +173,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container checkbox m15right">
+            <div class="checkbox-container old checkbox m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -185,7 +185,7 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox-container state checkbox-moxie state-checked">
+            <div class="checkbox-container old state checkbox-moxie state-checked">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -200,7 +200,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container checkbox m15right">
+            <div class="checkbox-container old checkbox m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -212,7 +212,7 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox-container state checkbox-moxie state-checked-hover">
+            <div class="checkbox-container old state checkbox-moxie state-checked-hover">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -227,7 +227,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container checkbox m15right">
+            <div class="checkbox-container old checkbox m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -239,7 +239,7 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox-container state checkbox-moxie state-checked-active">
+            <div class="checkbox-container old state checkbox-moxie state-checked-active">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -254,7 +254,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container checkbox m15right">
+            <div class="checkbox-container old checkbox m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -266,7 +266,7 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox-container state checkbox-moxie state-disabled">
+            <div class="checkbox-container old state checkbox-moxie state-disabled">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>

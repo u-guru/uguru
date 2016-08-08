@@ -8,7 +8,7 @@
 					<span></span>
 					<span>Default</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -29,7 +29,7 @@
 					<span></span>
 					<span>onLoad</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -50,7 +50,7 @@
 					<span></span>
 					<span>onEnter</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -71,7 +71,7 @@
 					<span></span>
 					<span>onExit</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -92,7 +92,7 @@
 					<span></span>
 					<span>:hover</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -113,7 +113,7 @@
 					<span></span>
 					<span>:active</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -134,7 +134,7 @@
 					<span></span>
 					<span>Default</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -155,7 +155,7 @@
 					<span></span>
 					<span>onLoad</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -176,7 +176,7 @@
 					<span></span>
 					<span>onEnter</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -197,7 +197,7 @@
 					<span></span>
 					<span>onExit</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -218,7 +218,7 @@
 					<span></span>
 					<span>:hover</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -239,7 +239,7 @@
 					<span></span>
 					<span>:active</span>
 				</button>
-				<div class="checkbox-container m15top">
+				<div class="checkbox-container old m15top">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>

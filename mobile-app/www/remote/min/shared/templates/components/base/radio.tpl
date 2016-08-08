@@ -1,7 +1,7 @@
 <div class="base-components absolute full-xy top-0 left-0 flex-center-wrap bg-charcoal overflow-auto">
 	<ul class="p15xy">
         <li class="flex">
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -12,7 +12,7 @@
                     </span>
                 </div>
             </div>
-            <div class="radio-container radio-moxie state-default">
+            <div class="radiu-container old radio-moxie state-default">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>
@@ -27,7 +27,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -38,7 +38,7 @@
                     </span>
                 </div>
             </div>
-            <div class="radio-container radio-moxie state-onload">
+            <div class="radiu-container old radio-moxie state-onload">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>
@@ -53,7 +53,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -64,7 +64,7 @@
                     </span>
                 </div>
             </div>
-            <div class="radio-container radio-moxie state-onenter">
+            <div class="radiu-container old radio-moxie state-onenter">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>
@@ -79,7 +79,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -90,7 +90,7 @@
                     </span>
                 </div>
             </div>
-            <div class="radio-container radio-moxie state-onexit">
+            <div class="radiu-container old radio-moxie state-onexit">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>
@@ -105,7 +105,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -116,7 +116,7 @@
                     </span>
                 </div>
             </div>
-            <div class="radio-container radio-moxie state-unchecked-hover">
+            <div class="radiu-container old radio-moxie state-unchecked-hover">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>
@@ -131,7 +131,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -142,7 +142,7 @@
                     </span>
                 </div>
             </div>
-            <div class="radio-container radio-moxie state-unchecked-active">
+            <div class="radiu-container old radio-moxie state-unchecked-active">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>
@@ -157,7 +157,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -168,7 +168,7 @@
                     </span>
                 </div>
             </div>
-            <div class="radio-container radio-moxie state-checked">
+            <div class="radiu-container old radio-moxie state-checked">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>
@@ -183,7 +183,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -194,7 +194,7 @@
                     </span>
                 </div>
             </div>
-            <div class="radio-container radio-moxie state-checked-hover">
+            <div class="radiu-container old radio-moxie state-checked-hover">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>
@@ -209,7 +209,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -220,7 +220,7 @@
                     </span>
                 </div>
             </div>
-            <div class="radio-container radio-moxie state-checked-active">
+            <div class="radiu-container old radio-moxie state-checked-active">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>
@@ -235,7 +235,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -246,7 +246,7 @@
                     </span>
                 </div>
             </div>
-            <div class="radio-container radio-moxie state-disabled">
+            <div class="radiu-container old radio-moxie state-disabled">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>

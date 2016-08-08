@@ -55,7 +55,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -124,7 +124,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -193,7 +193,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -262,7 +262,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -331,7 +331,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -400,7 +400,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -469,7 +469,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -538,7 +538,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -607,7 +607,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -676,7 +676,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -745,7 +745,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -814,7 +814,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -883,7 +883,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -956,7 +956,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1029,7 +1029,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1102,7 +1102,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1175,7 +1175,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1248,7 +1248,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1321,7 +1321,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1394,7 +1394,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1467,7 +1467,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1540,7 +1540,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1613,7 +1613,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1686,7 +1686,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>
@@ -1759,7 +1759,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+				<div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
 					<div>
 						<input type="checkbox" id="checkbox-item"/>
 						<span>

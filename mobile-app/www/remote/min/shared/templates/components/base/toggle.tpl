@@ -1,7 +1,7 @@
 <div class="base-components absolute full-xy top-0 left-0 flex-center-wrap bg-charcoal overflow-auto">
 	<ul class="p15-grid">
         <li class="flex">
-            <div class="checkbox-container m15right">
+            <div class="checkbox-container old m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -39,7 +39,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container m15right">
+            <div class="checkbox-container old m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -76,7 +76,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container m15right">
+            <div class="checkbox-container old m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -113,7 +113,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container m15right">
+            <div class="checkbox-container old m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -150,7 +150,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container m15right">
+            <div class="checkbox-container old m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -187,7 +187,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container m15right">
+            <div class="checkbox-container old m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -224,7 +224,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container m15right">
+            <div class="checkbox-container old m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>
@@ -261,7 +261,7 @@
             </div>
         </li>
         <li class="flex">
-            <div class="checkbox-container m15right">
+            <div class="checkbox-container old m15right">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>

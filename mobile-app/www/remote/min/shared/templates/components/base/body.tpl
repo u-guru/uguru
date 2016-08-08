@@ -14,7 +14,7 @@
                     <span>Consectetuer adipiscing elit eget nisl.</span>
                     <span>Nam at tortor quis ipsum tempor.</span>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -42,7 +42,7 @@
                     <span>Consectetuer adipiscing elit eget nisl.</span>
                     <span>Nam at tortor quis ipsum tempor.</span>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -70,7 +70,7 @@
                     <span>Consectetuer adipiscing elit eget nisl.</span>
                     <span>Nam at tortor quis ipsum tempor.</span>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -91,7 +91,7 @@
                     <span>Consectetuer&nbsp;adipiscing&nbsp;elit&nbsp;eget&nbsp;nisl.</span>
                     <span>Nam&nbsp;at&nbsp;tortor&nbsp;quis&nbsp;ipsum&nbsp;tempor.</span>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -119,7 +119,7 @@
                     <span>Consectetuer adipiscing elit eget nisl.</span>
                     <span>Nam at tortor quis ipsum tempor.</span>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -140,7 +140,7 @@
                     <span>Consectetuer adipiscing elit eget nisl.</span>
                     <span>Nam at tortor quis ipsum tempor.</span>
                 </div>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>

@@ -160,7 +160,7 @@
 				<div class='tag-list'>
 					<ul>
 						<li ng-repeat="platform in selectedBug.platforms"  class='full-x mtop20' style='width:calc(100%/8) !important;'  ng-if="platform.isPassed != 0">
-						    <div class="checkbox-container {{platform.test_status || 'unsure'}}" style='width: auto !important;'>
+						    <div class="checkbox-container old {{platform.test_status || 'unsure'}}" style='width: auto !important;'>
 						        <div class='relative full-x text-center flex-wrap-center'>
 						            <!-- <input type="checkbox" id="checkbox-item"/> -->
 						            <input  type="checkbox"

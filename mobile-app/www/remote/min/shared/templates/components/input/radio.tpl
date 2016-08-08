@@ -1,5 +1,5 @@
 <div class="perspective-container full-xy flex-center" reference="http://codepen.io/teamuguru/pen/3d51f2394a6a0dbe38646612aa3e3759?editors=1100">
-	<div class="radio-container radio-moxie state-onload">
+	<div class="radiu-container old radio-moxie state-onload">
 		<div>
 			<input type="radio" id="radio-item" />
 			<span>

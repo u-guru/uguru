@@ -7968,7 +7968,77 @@ input.chip:hover {
     text-align: center; }
 
 /* ---------- CHECKBOXES & RADIO */
-.checkbox-container, .radio-container {
+.checkbox-container:not(.old) {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center; }
+  .checkbox-container:not(.old) div {
+    position: relative; }
+    .checkbox-container:not(.old) div > span {
+      display: block;
+      background: #40484B;
+      border-radius: 3px;
+      width: 32px;
+      height: 32px;
+      overflow: hidden; }
+      .checkbox-container:not(.old) div > span span {
+        position: absolute;
+        top: 50%;
+        margin-top: -5px;
+        left: 50%;
+        margin-left: -5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 1000px;
+        background: #598881;
+        transform-origin: center center;
+        transform: scale(0) translateZ(0); }
+      .checkbox-container:not(.old) div > span svg {
+        position: relative;
+        z-index: 10;
+        fill: none;
+        width: 100%;
+        height: 100%; }
+        .checkbox-container:not(.old) div > span svg circle {
+          fill: #69B3A5;
+          transform-origin: center center;
+          transform: scale(0); }
+        .checkbox-container:not(.old) div > span svg path, .checkbox-container:not(.old) div > span svg polyline {
+          fill: none;
+          stroke: #6f7d82;
+          stroke-width: 2.5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+    .checkbox-container:not(.old) div input {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      position: absolute;
+      z-index: 12;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer; }
+      .checkbox-container:not(.old) div input:checked + span {
+        background: #69B3A5; }
+        .checkbox-container:not(.old) div input:checked + span svg path, .checkbox-container:not(.old) div input:checked + span svg polyline {
+          stroke: white; }
+  .checkbox-container:not(.old) label {
+    padding-left: 15px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600; }
+
+/* ---------- CHECKBOXES & RADIO [deprecate] */
+.checkbox-container.old, .radio-container.old {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -7984,9 +8054,9 @@ input.chip:hover {
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center; }
-  .checkbox-container div, .radio-container div {
+  .checkbox-container.old div, .radio-container.old div {
     position: relative; }
-    .checkbox-container div input:not([text]), .radio-container div input:not([text]) {
+    .checkbox-container.old div input:not([text]), .radio-container.old div input:not([text]) {
       filter: alpha(opacity=0);
       opacity: 0;
       position: absolute;
@@ -7995,20 +8065,20 @@ input.chip:hover {
       left: 0;
       width: 100%;
       height: 100%; }
-    .checkbox-container div span, .radio-container div span {
+    .checkbox-container.old div span, .radio-container.old div span {
       display: block;
       background: #40484B; }
-  .checkbox-container label, .radio-container label {
+  .checkbox-container.old label, .radio-container.old label {
     padding-left: 15px;
     color: white;
     font-size: 20px;
     font-weight: 600; }
 
-.checkbox-container div span {
+.checkbox-container.old div span {
   border-radius: 3px;
   width: 32px;
   height: 32px; }
-  .checkbox-container div span svg {
+  .checkbox-container.old div span svg {
     fill: none;
     stroke: #6f7d82;
     stroke-width: 10px;
@@ -8017,111 +8087,111 @@ input.chip:hover {
     padding: 4px;
     width: 100%;
     height: 100%; }
-.checkbox-container div input:checked + span {
+.checkbox-container.old div input:checked + span {
   background: #69B3A5; }
-  .checkbox-container div input:checked + span svg {
+  .checkbox-container.old div input:checked + span svg {
     stroke: white; }
-.checkbox-container.small div span {
+.checkbox-container.old.small div span {
   width: 20px;
   height: 20px; }
-.checkbox-container.small label {
+.checkbox-container.old.small label {
   font-size: 16px; }
 
-.small .checkbox-container div span {
+.small .checkbox-container.old div span {
   width: 20px;
   height: 20px; }
-.small .checkbox-container label {
+.small .checkbox-container.old label {
   font-size: 16px; }
 
-.checkbox-shamrock input:checked + span {
+.old.checkbox-shamrock .old input:checked + span, .old.checkbox-shamrock input:checked + span, .checkbox-shamrock .old input:checked + span, .checkbox-shamrock input:checked + span {
   background: #69B3A5 !important; }
 
-.checkbox-robin input:checked + span {
+.old.checkbox-robin .old input:checked + span, .old.checkbox-robin input:checked + span, .checkbox-robin .old input:checked + span, .checkbox-robin input:checked + span {
   background: #2BB3B8 !important; }
 
-.checkbox-lake input:checked + span {
+.old.checkbox-lake .old input:checked + span, .old.checkbox-lake input:checked + span, .checkbox-lake .old input:checked + span, .checkbox-lake input:checked + span {
   background: #50A5DD !important; }
 
-.checkbox-moxie input:checked + span {
+.old.checkbox-moxie .old input:checked + span, .old.checkbox-moxie input:checked + span, .checkbox-moxie .old input:checked + span, .checkbox-moxie input:checked + span {
   background: #43cb9d !important; }
 
-.checkbox-crimson input:checked + span {
+.old.checkbox-crimson .old input:checked + span, .old.checkbox-crimson input:checked + span, .checkbox-crimson .old input:checked + span, .checkbox-crimson input:checked + span {
   background: #d3242c !important; }
 
-.checkbox-auburn input:checked + span, .checkbox-delivery input:checked + span {
+.old.checkbox-auburn .old input:checked + span, .old.checkbox-auburn input:checked + span, .old.checkbox-delivery .old input:checked + span, .old.checkbox-delivery input:checked + span, .checkbox-auburn .old input:checked + span, .checkbox-auburn input:checked + span, .checkbox-delivery .old input:checked + span, .checkbox-delivery input:checked + span {
   background: #F04F54 !important; }
 
-.checkbox-orange input:checked + span, .checkbox-freelancing input:checked + span {
+.old.checkbox-orange .old input:checked + span, .old.checkbox-orange input:checked + span, .old.checkbox-freelancing .old input:checked + span, .old.checkbox-freelancing input:checked + span, .checkbox-orange .old input:checked + span, .checkbox-orange input:checked + span, .checkbox-freelancing .old input:checked + span, .checkbox-freelancing input:checked + span {
   background: #E5753C !important; }
 
-.checkbox-gold input:checked + span, .checkbox-baking input:checked + span {
+.old.checkbox-gold .old input:checked + span, .old.checkbox-gold input:checked + span, .old.checkbox-baking .old input:checked + span, .old.checkbox-baking input:checked + span, .checkbox-gold .old input:checked + span, .checkbox-gold input:checked + span, .checkbox-baking .old input:checked + span, .checkbox-baking input:checked + span {
   background: #F6C64E !important; }
 
-.checkbox-moola input:checked + span, .checkbox-photography input:checked + span {
+.old.checkbox-moola .old input:checked + span, .old.checkbox-moola input:checked + span, .old.checkbox-photography .old input:checked + span, .old.checkbox-photography input:checked + span, .checkbox-moola .old input:checked + span, .checkbox-moola input:checked + span, .checkbox-photography .old input:checked + span, .checkbox-photography input:checked + span {
   background: #81B566 !important; }
 
-.checkbox-azure input:checked + span, .checkbox-tech input:checked + span {
+.old.checkbox-azure .old input:checked + span, .old.checkbox-azure input:checked + span, .old.checkbox-tech .old input:checked + span, .old.checkbox-tech input:checked + span, .checkbox-azure .old input:checked + span, .checkbox-azure input:checked + span, .checkbox-tech .old input:checked + span, .checkbox-tech input:checked + span {
   background: #55A4B7 !important; }
 
-.checkbox-cobalt input:checked + span, .checkbox-household input:checked + span {
+.old.checkbox-cobalt .old input:checked + span, .old.checkbox-cobalt input:checked + span, .old.checkbox-household .old input:checked + span, .old.checkbox-household input:checked + span, .checkbox-cobalt .old input:checked + span, .checkbox-cobalt input:checked + span, .checkbox-household .old input:checked + span, .checkbox-household input:checked + span {
   background: #7872e3 !important; }
 
-.checkbox-eggplant input:checked + span, .checkbox-athletic input:checked + span {
+.old.checkbox-eggplant .old input:checked + span, .old.checkbox-eggplant input:checked + span, .old.checkbox-athletic .old input:checked + span, .old.checkbox-athletic input:checked + span, .checkbox-eggplant .old input:checked + span, .checkbox-eggplant input:checked + span, .checkbox-athletic .old input:checked + span, .checkbox-athletic input:checked + span {
   background: #9A5BC5 !important; }
 
-.checkbox-cerise input:checked + span, .checkbox-academic input:checked + span {
+.old.checkbox-cerise .old input:checked + span, .old.checkbox-cerise input:checked + span, .old.checkbox-academic .old input:checked + span, .old.checkbox-academic input:checked + span, .checkbox-cerise .old input:checked + span, .checkbox-cerise input:checked + span, .checkbox-academic .old input:checked + span, .checkbox-academic input:checked + span {
   background: #e6389b !important; }
 
-.radio-container div span {
+.radio-container.old div span {
   border-radius: 1000px;
   width: 24px;
   height: 24px;
   padding: 3px; }
-  .radio-container div span svg {
+  .radio-container.old div span svg {
     border-radius: 1000px;
     background: #576267; }
-    .radio-container div span svg path {
+    .radio-container.old div span svg path {
       display: none; }
-.radio-container div input:checked + span svg {
+.radio-container.old div input:checked + span svg {
   background: #69B3A5; }
 
-.radio-shamrock input:checked + span svg {
+.old.radio-shamrock .old input:checked + span svg, .old.radio-shamrock input:checked + span svg, .radio-shamrock .old input:checked + span svg, .radio-shamrock input:checked + span svg {
   background: #69B3A5 !important; }
 
-.radio-robin input:checked + span svg {
+.old.radio-robin .old input:checked + span svg, .old.radio-robin input:checked + span svg, .radio-robin .old input:checked + span svg, .radio-robin input:checked + span svg {
   background: #2BB3B8 !important; }
 
-.radio-lake input:checked + span svg {
+.old.radio-lake .old input:checked + span svg, .old.radio-lake input:checked + span svg, .radio-lake .old input:checked + span svg, .radio-lake input:checked + span svg {
   background: #50A5DD !important; }
 
-.radio-moxie input:checked + span svg {
+.old.radio-moxie .old input:checked + span svg, .old.radio-moxie input:checked + span svg, .radio-moxie .old input:checked + span svg, .radio-moxie input:checked + span svg {
   background: #43cb9d !important; }
 
-.radio-crimson input:checked + span svg {
+.old.radio-crimson .old input:checked + span svg, .old.radio-crimson input:checked + span svg, .radio-crimson .old input:checked + span svg, .radio-crimson input:checked + span svg {
   background: #d3242c !important; }
 
-.radio-auburn input:checked + span svg, .radio-delivery input:checked + span svg {
+.old.radio-auburn .old input:checked + span svg, .old.radio-auburn input:checked + span svg, .old.radio-delivery .old input:checked + span svg, .old.radio-delivery input:checked + span svg, .radio-auburn .old input:checked + span svg, .radio-auburn input:checked + span svg, .radio-delivery .old input:checked + span svg, .radio-delivery input:checked + span svg {
   background: #F04F54 !important; }
 
-.radio-orange input:checked + span svg, .radio-freelancing input:checked + span svg {
+.old.radio-orange .old input:checked + span svg, .old.radio-orange input:checked + span svg, .old.radio-freelancing .old input:checked + span svg, .old.radio-freelancing input:checked + span svg, .radio-orange .old input:checked + span svg, .radio-orange input:checked + span svg, .radio-freelancing .old input:checked + span svg, .radio-freelancing input:checked + span svg {
   background: #E5753C !important; }
 
-.radio-gold input:checked + span svg, .radio-baking input:checked + span svg {
+.old.radio-gold .old input:checked + span svg, .old.radio-gold input:checked + span svg, .old.radio-baking .old input:checked + span svg, .old.radio-baking input:checked + span svg, .radio-gold .old input:checked + span svg, .radio-gold input:checked + span svg, .radio-baking .old input:checked + span svg, .radio-baking input:checked + span svg {
   background: #F6C64E !important; }
 
-.radio-moola input:checked + span svg, .radio-photography input:checked + span svg {
+.old.radio-moola .old input:checked + span svg, .old.radio-moola input:checked + span svg, .old.radio-photography .old input:checked + span svg, .old.radio-photography input:checked + span svg, .radio-moola .old input:checked + span svg, .radio-moola input:checked + span svg, .radio-photography .old input:checked + span svg, .radio-photography input:checked + span svg {
   background: #81B566 !important; }
 
-.radio-azure input:checked + span svg, .radio-tech input:checked + span svg {
+.old.radio-azure .old input:checked + span svg, .old.radio-azure input:checked + span svg, .old.radio-tech .old input:checked + span svg, .old.radio-tech input:checked + span svg, .radio-azure .old input:checked + span svg, .radio-azure input:checked + span svg, .radio-tech .old input:checked + span svg, .radio-tech input:checked + span svg {
   background: #55A4B7 !important; }
 
-.radio-cobalt input:checked + span svg, .radio-household input:checked + span svg {
+.old.radio-cobalt .old input:checked + span svg, .old.radio-cobalt input:checked + span svg, .old.radio-household .old input:checked + span svg, .old.radio-household input:checked + span svg, .radio-cobalt .old input:checked + span svg, .radio-cobalt input:checked + span svg, .radio-household .old input:checked + span svg, .radio-household input:checked + span svg {
   background: #7872e3 !important; }
 
-.radio-eggplant input:checked + span svg, .radio-athletic input:checked + span svg {
+.old.radio-eggplant .old input:checked + span svg, .old.radio-eggplant input:checked + span svg, .old.radio-athletic .old input:checked + span svg, .old.radio-athletic input:checked + span svg, .radio-eggplant .old input:checked + span svg, .radio-eggplant input:checked + span svg, .radio-athletic .old input:checked + span svg, .radio-athletic input:checked + span svg {
   background: #9A5BC5 !important; }
 
-.radio-cerise input:checked + span svg, .radio-academic input:checked + span svg {
+.old.radio-cerise .old input:checked + span svg, .old.radio-cerise input:checked + span svg, .old.radio-academic .old input:checked + span svg, .old.radio-academic input:checked + span svg, .radio-cerise .old input:checked + span svg, .radio-cerise input:checked + span svg, .radio-academic .old input:checked + span svg, .radio-academic input:checked + span svg {
   background: #e6389b !important; }
 
 .txt-slate .checkbox-container label, .txt-slate .radio-container label {

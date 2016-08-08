@@ -24,7 +24,7 @@
             <!-- <span>{{manualBugs[availableState.selectedIndex].title}}</span> -->
             <ul class='full-x ugrid-6 relative flex-wrap-center flex-stretch' style='width:66.6% !important;'>
                 <li class='full-x mtop20 p10xy' style='width:calc(100%/8) !important;' ng-repeat="platform in statePlatforms[availableState.selectedIndex].platforms">
-                    <div class="checkbox-container {{platform.test_status || 'unsure'}}" style='width: auto !important;'>
+                    <div class="checkbox-container old {{platform.test_status || 'unsure'}}" style='width: auto !important;'>
                         <div class='relative full-x text-center flex-wrap-center'>
                             <div class='text-5 txt-white full-x uppercase weight-600 p05xy' style='font-size:14px; margin-left:-7px;'>
                                  {{platform.name}}<br>{{platform.device}}<br>{{platform.screenSize[0]}}
@@ -64,7 +64,7 @@
         <div >
             <ul class='full-x ugrid-6 relative flex-wrap-center flex-stretch' style='width:66.6% !important;'>
                 <li class='full-x mtop20 p10xy' style='width:calc(100%/8) !important;' ng-repeat="platform in platformList">
-                    <div class="checkbox-container {{platform.test_status || 'unsure'}}" style='width: auto !important;'>
+                    <div class="checkbox-container old {{platform.test_status || 'unsure'}}" style='width: auto !important;'>
                         <div class='relative full-x text-center flex-wrap-center'>
                             <input  type="checkbox"
                                     ng-true-value="-1" 
@@ -95,7 +95,7 @@
        <!--  <li class='full-x' >
             <ul class='full-x ugrid-6 relative flex-wrap-center flex-stretch' style='width:66.6% !important;'>
                 <li class='full-x mtop20 p10xy' style='width:calc(100%/5) !important;' ng-repeat="platform in currentStatePlatforms">
-                    <div class="checkbox-container {{platform.test_status || 'unsure'}}" style='width: auto !important;'>
+                    <div class="checkbox-container old {{platform.test_status || 'unsure'}}" style='width: auto !important;'>
                         <div class='relative full-x text-center flex-wrap-center'>
                             <div class='text-5 txt-white full-x uppercase weight-600 p05xy' style='font-size:14px; margin-left:-7px;'>
                                  {{platform.name}}<br>{{platform.device}}<br>{{platform.screenSize[0]}}

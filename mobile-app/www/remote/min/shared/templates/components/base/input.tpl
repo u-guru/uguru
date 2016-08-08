@@ -1,7 +1,7 @@
 <div class="base-components absolute full-xy top-0 left-0 flex-center-wrap bg-charcoal overflow-auto">
 	<ul class="ugrid-2 flex-wrap-start margin-auto p15xy max-1030">
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -36,7 +36,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -71,7 +71,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -106,7 +106,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -141,7 +141,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -176,7 +176,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -211,7 +211,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -246,7 +246,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -281,7 +281,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -324,7 +324,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -368,7 +368,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -412,7 +412,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -455,7 +455,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -499,7 +499,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -543,7 +543,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -587,7 +587,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -631,7 +631,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -674,7 +674,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>
@@ -717,7 +717,7 @@
 			</fieldset>
 		</li>
 		<li class="p15xy flex-center-vertical">
-			<div class="checkbox-container checkbox-moxie m15right">
+			<div class="checkbox-container old checkbox-moxie m15right">
 				<div>
 					<input type="checkbox"/>
 					<span>

@@ -5,7 +5,7 @@
                 <header class="state-default">
                     <h1>Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet.</h1>
                 </header>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -24,7 +24,7 @@
                 <header class="state-onenter">
                     <h1>Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet.</h1>
                 </header>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -43,7 +43,7 @@
                 <header class="state-onexit">
                     <h1>Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet.</h1>
                 </header>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
@@ -62,7 +62,7 @@
                 <header class="state-onexit-alt">
                     <h1>Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet.</h1>
                 </header>
-                <div class="checkbox-container absolute left-0 full-x" style="bottom: 15px">
+                <div class="checkbox-container old absolute left-0 full-x" style="bottom: 15px">
                     <div>
                         <input type="checkbox" id="checkbox-item"/>
                         <span>
