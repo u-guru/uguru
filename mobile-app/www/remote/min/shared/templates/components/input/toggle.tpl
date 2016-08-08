@@ -3,11 +3,11 @@
 		<div class="toggle normal">
 			<input type="checkbox" checked />
 			<label>
-				<svg class="square" viewBox="0 0 100 100">
-					<rect x="0" y="0" width="100" height="100"></rect>
+				<svg class="square" viewBox="0 0 26 26">
+					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
-				<svg class="square" viewBox="0 0 100 100">
-					<rect x="0" y="0" width="100" height="100"></rect>
+				<svg class="square" viewBox="0 0 26 26">
+					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
 				<div>
 					<div></div>
@@ -23,11 +23,11 @@
 		<div class="toggle am-pm">
 			<input type="checkbox"/>
 			<label>
-				<svg class="square" viewBox="0 0 100 100">
-					<rect x="0" y="0" width="100" height="100"></rect>
+				<svg class="square" viewBox="0 0 26 26">
+					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
-				<svg class="square" viewBox="0 0 100 100">
-					<rect x="0" y="0" width="100" height="100"></rect>
+				<svg class="square" viewBox="0 0 26 26">
+					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
 				<span>
 					<span class="am">AM</span>
@@ -48,11 +48,11 @@
 		<div class="toggle round">
 			<input type="checkbox" checked />
 			<label>
-				<svg class="square" viewBox="0 0 100 100">
-					<rect x="0" y="0" width="100" height="100"></rect>
+				<svg class="square" viewBox="0 0 26 26">
+					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
-				<svg class="square" viewBox="0 0 100 100">
-					<rect x="0" y="0" width="100" height="100"></rect>
+				<svg class="square" viewBox="0 0 26 26">
+					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36">
 				    <rect x="1" y="1" width="70" height="34" rx="17"
@@ -66,11 +66,11 @@
 		<div class="toggle white-round">
 			<input type="checkbox" checked />
 			<label>
-				<svg class="square" viewBox="0 0 100 100">
-					<rect x="0" y="0" width="100" height="100"></rect>
+				<svg class="square" viewBox="0 0 26 26">
+					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
-				<svg class="square" viewBox="0 0 100 100">
-					<rect x="0" y="0" width="100" height="100"></rect>
+				<svg class="square" viewBox="0 0 26 26">
+					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36">
 				    <rect x="1" y="1" width="70" height="34" rx="17"></rect>

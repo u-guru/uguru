@@ -1,8 +1,14 @@
 <div class="full-xy flex-center" types='default, color' default-type="default" reference="http://codepen.io/teamuguru/pen/a22af7dfdac53aa76c35f1317740770f?editors=1100, http://codepen.io/teamuguru/pen/c2d938e2a4e4c173187a71cd320bf078?editors=1100, http://codepen.io/teamuguru/pen/e1d55abb071ad8db0845cefd76f7c48f?editors=1100">
 	<div class="dropdown auto info" ng-if='activeType === "default"'>
 		<div>
-			<div></div><div></div>
-			<div></div><div></div>
+			<div class="top"
+				init-with="p:[tr:scaleX(0)]"></div>
+			<div class="right"
+				init-with="p:[tr:scaleY(0)]"></div>
+			<div class="bot"
+				init-with="p:[tr:scaleX(0)]"></div>
+			<div class="left"
+				init-with="p:[tr:scaleY(0)]"></div>
 			<span>Photography</span>
 			<a>
 				<svg viewBox="0 0 100 100">

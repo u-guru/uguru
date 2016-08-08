@@ -248,7 +248,7 @@
 					}
 				}
 			}
-			.square rect {
+			.square:first-child rect {
 				stroke: white;
 				stroke-width: 2px;
 				stroke-linejoin: round;

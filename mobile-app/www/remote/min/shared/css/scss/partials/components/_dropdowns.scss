@@ -9,6 +9,39 @@
 		@include flex-center;
 		position: relative;
 		width: 100%;
+		div:empty {
+			position: absolute;
+			background: lighten($slate, 10%);
+			border-radius: 1000px;
+			&:nth-child(1) {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				transform-origin: right center;
+			}
+			&:nth-child(2) {
+				top: 0;
+				right: 0;
+				width: 2px;
+				height: 100%;
+				transform-origin: center bottom;
+			}
+			&:nth-child(3) {
+				bottom: 0;
+				right: 0;
+				width: 100%;
+				height: 2px;
+				transform-origin: left center;
+			}
+			&:nth-child(4) {
+				bottom: 0;
+				left: 0;
+				width: 2px;
+				height: 100%;
+				transform-origin: center top;
+			}
+		}
 		span, input {
 			@include flex;
 			@include flex-center;
