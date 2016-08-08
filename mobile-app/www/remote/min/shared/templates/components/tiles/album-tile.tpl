@@ -5,15 +5,16 @@
 		on-mouse-enter="s:[album-tile-mouse-enter]"
 		on-mouse-leave="s:[album-tile-mouse-leave]"
 		on-click="s:[album-tile-click]">
-		<!-- use when-album-tile-init for any of the onEnter stuff you want to do -->
 		<div class="album-echo"
 			init-with="p:[op:0]"
-			when-album-tile-click="p:[op:1, width:calc(100% + 30px), height:calc(100% + 30px);]">
+			when-album-tile-click="p:[op:1, width:calc(100% + 30px), height:calc(100% + 30px)] | send:[album-tile-clicked:public:delay-300]"
+			when-album-tile-clicked="p:[op:0:delay-250, width:calc(100% - 30px), height:calc(100% - 30px)]" >
 			<!-- might want to trigger another state to fade the echo out similar to the translateZ for the cards -->
 			<div style="background: #020c39;"></div>
 		</div>
 		<div class="album-art"
-			init-with="p:[op:0]">
+			init-with="p:[op:0]"
+			when-album-tile-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
 			<svg class="square" viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100" fill="none"></rect>
 			</svg>
@@ -31,9 +32,11 @@
 		</div>
 		<div class="album-caption">
 			<h1 style="background: #020c39;"
-				init-with="p:[op:0, tr:translateY(-100%) translateZ(0)]">Midnight<br/>Cramming</h1>
+				init-with="p:[op:0, tr:translateY(-100%) translateZ(0)]"
+				when-album-tile-init="p:[op:1:delay-150, tr:translateY(0):delay-250, t:transform 250ms ease-out#opacity 250ms linear]">Midnight<br/>Cramming</h1>
 			<h2 class="animate" style="background: #020c39;"
-				init-with="p:[op:0, tr:translateY(-100%) translateZ(0)]">Intense EDM</h2>
+				init-with="p:[op:0, tr:translateY(-100%) translateZ(0)]"
+				when-album-tile-init="p:[op:1:delay-350, tr:translateY(0):delay-450, t:transform 250ms ease-out#opacity 250ms linear]">Intense EDM</h2>
 		</div>
 	</a>
 </div>
