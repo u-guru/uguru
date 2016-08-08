@@ -96,14 +96,16 @@
 					padding: 0;
 					span {
 						&:nth-child(1) {
+							position: relative;
 							width: 64px;
-							height: auto;
+							height: 64px;
 							svg {
 								width: 100%;
 								height: auto;
 							}
 						}
 						&:nth-child(2) {
+							width: 100%;
 							margin-left: 0;
 							text-align: center;
 						}
@@ -155,7 +157,7 @@
 				}
 				> a {
 					&:hover, &:focus {
-						background: $slate;
+						background: lighten($slate, 5%);
 						color: white;
 					}
 					&:active {

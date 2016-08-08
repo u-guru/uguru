@@ -12765,12 +12765,14 @@ input[type=range] {
       width: 64px;
       padding: 0; }
       .attach-list.large ul li > a span:nth-child(1), .attach-list.large ul li > span span:nth-child(1) {
+        position: relative;
         width: 64px;
-        height: auto; }
+        height: 64px; }
         .attach-list.large ul li > a span:nth-child(1) svg, .attach-list.large ul li > span span:nth-child(1) svg {
           width: 100%;
           height: auto; }
       .attach-list.large ul li > a span:nth-child(2), .attach-list.large ul li > span span:nth-child(2) {
+        width: 100%;
         margin-left: 0;
         text-align: center; }
 .attach-list.no-padding ul li > a, .attach-list.no-padding ul li > span {
@@ -12791,7 +12793,7 @@ input[type=range] {
   background: #637074;
   color: white; }
 .attach-list.guru ul li > a:hover, .attach-list.guru ul li > a:focus {
-  background: #40484B;
+  background: #4c5559;
   color: white; }
 .attach-list.guru ul li > a:active {
   background: #69B3A5; }
