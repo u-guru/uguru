@@ -10578,6 +10578,58 @@ input[type=range] {
         display: none; }
 
 /* ---------- POPUPS */
+.popup > div {
+  background: white;
+  border-radius: 2px;
+  color: #40484B;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden; }
+  .popup > div header {
+    padding: 15px 15px 0;
+    text-align: center; }
+    .popup > div header h2 {
+      font-size: 24px;
+      font-weight: 600; }
+  .popup > div > div {
+    padding: 5px 15px 0; }
+    .popup > div > div p {
+      margin: 0;
+      font-size: 16px; }
+    .popup > div > div .input-basic input {
+      background: #F1F1F1; }
+    .popup > div > div:first-child {
+      padding: 15px 15px 0; }
+    .popup > div > div:nth-child(2):last-child {
+      padding: 5px 15px 0; }
+    .popup > div > div:only-child {
+      padding: 15px; }
+.popup.with-header > div header {
+  padding: 15px; }
+.popup.with-header > div > div {
+  padding: 15px 15px 0; }
+  .popup.with-header > div > div:only-child {
+    padding: 15px; }
+
+.button-group {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  padding: 7.5px; }
+  .button-group li {
+    padding: 7.5px;
+    width: 50%; }
+    .button-group li button {
+      width: 100%;
+      border-radius: 2px;
+      font-size: 18px;
+      height: auto;
+      padding: 10px 15px; }
+
 .popup-tour {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -10647,14 +10699,17 @@ input[type=range] {
     color: #40484B;
     text-align: center; }
     .popup-tour > div h1 {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 600; }
     .popup-tour > div p {
       margin: 0;
-      font-size: 18px; }
+      font-size: 16px; }
   .popup-tour > button {
     width: 100%;
-    border-radius: 0 0 2px 2px; }
+    border-radius: 0 0 2px 2px;
+    height: auto;
+    padding: 10px 15px;
+    font-size: 18px; }
 
 /* ---------- TOOLTIPS */
 .tooltip-line {
@@ -10883,120 +10938,6 @@ input[type=range] {
     margin-top: -10px;
     right: -20px;
     border-left-color: rgba(255, 255, 255, 0.9); }
-
-.button-group {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  padding: 7.5px; }
-  .button-group button {
-    height: auto;
-    padding: 10px 15px;
-    margin: 7.5px;
-    border-radius: 2px !important;
-    width: 100px;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1;
-    background: #69B3A5; }
-    .button-group button:hover, .button-group button:focus {
-      background: #8bc4b9; }
-    .button-group button:active, .button-group button.activated {
-      background: #6f7d82; }
-    .button-group button.button-group-cancel {
-      background: #89969b !important; }
-      .button-group button.button-group-cancel:hover, .button-group button.button-group-cancel:focus {
-        background: #a5afb2 !important; }
-      .button-group button.button-group-cancel:active, .button-group button.button-group-cancel.activated {
-        background: #6f7d82 !important; }
-  .button-group div {
-    width: 100%;
-    text-align: center; }
-    .button-group div button {
-      width: 150px; }
-
-.popup-guru {
-  width: 75%;
-  max-width: 250px;
-  padding: 0 15px; }
-  .popup-guru.tooltip-center, .popup-guru.popup-guru-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); }
-  .popup-guru div.with-button {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important; }
-  .popup-guru h1 {
-    background: rgba(43, 50, 52, 0.9);
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    padding: 10px 15px 0;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center; }
-    .popup-guru h1 + div {
-      border-top-left-radius: 0 !important;
-      border-top-right-radius: 0 !important; }
-  .popup-guru > div {
-    background: rgba(43, 50, 52, 0.9);
-    padding: 10px 15px;
-    width: 100%;
-    border-radius: 2px;
-    color: white;
-    font-size: 18px;
-    font-weight: 600; }
-    .popup-guru > div.min-height {
-      min-height: 100px; }
-    .popup-guru > div.popup-guru-vertical-center {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-align-items: center;
-      align-items: center; }
-    .popup-guru > div input {
-      display: block;
-      width: 100%;
-      padding: 5px 10px;
-      border: 0; }
-      .popup-guru > div input:last-child {
-        margin-bottom: 5px; }
-  .popup-guru button {
-    height: auto;
-    padding: 10px 15px;
-    font-size: 18px;
-    font-weight: 600;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    line-height: 1; }
 
 /* ---------- TOASTS */
 .toast {
@@ -11673,11 +11614,7 @@ input[type=range] {
     .badge-container [class*="badge"].badge-bottom {
       position: absolute;
       left: 50%;
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
-      transform: translateX(-50%);
+      margin-left: -18px;
       bottom: -40px; }
       .badge-container [class*="badge"].badge-bottom:after {
         top: -12px;

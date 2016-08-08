@@ -1,6 +1,75 @@
 @import '../mixin';
 
 /* ---------- POPUPS */
+// regular popup
+.popup {
+	> div {
+		background: white;
+		border-radius: 2px;
+		color: $slate;
+		width: 100%;
+		max-width: 400px;
+		overflow: hidden;
+		header {
+			padding: 15px 15px 0;
+			text-align: center;
+			h2 {
+				font-size: 24px;
+				font-weight: 600;
+			}
+		}
+		> div {
+			padding: 5px 15px 0;
+			p {
+				margin: 0;
+				font-size: 16px;
+			}
+			.input-basic {
+				input {
+					background: $smoke;
+				}
+			}
+			&:first-child {
+				padding: 15px 15px 0;
+			}
+			&:nth-child(2):last-child {
+				padding: 5px 15px 0;
+			}
+			&:only-child {
+				padding: 15px;
+			}
+		}
+	}
+	&.with-header {
+		> div {
+			header {
+				padding: 15px;
+			}
+			> div {
+				padding: 15px 15px 0;
+				&:only-child {
+					padding: 15px;
+				}
+			}
+		}
+	}
+}
+.button-group {
+	@include flex;
+	padding: 7.5px;
+	li {
+		padding: 7.5px;
+		width: 50%;
+		button {
+			width: 100%;
+			border-radius: 2px;
+			font-size: 18px;
+			height: auto;
+			padding: 10px 15px;
+		}
+	}
+}
+
 // tour guru popup
 .popup-tour {
 	@include flex;
@@ -47,17 +116,20 @@
 		color: $slate;
 		text-align: center;
 		h1 {
-			font-size: 28px;
+			font-size: 24px;
 			font-weight: 600;
 		}
 		p {
 			margin: 0;
-			font-size: 18px;
+			font-size: 16px;
 		}
 	}
 	> button {
 		width: 100%;
 		border-radius: 0 0 2px 2px;
+		height: auto;
+		padding: 10px 15px;
+		font-size: 18px;
 	}
 }
 
@@ -398,113 +470,6 @@
 				border-left-color: rgba(white,.9);
 			}
 		}
-	}
-}
-
-.button-group {
-	@include flex;
-	@include flex-wrap;
-	@include flex-center;
-	padding: 7.5px;
-	button {
-		height: auto;
-		padding: 10px 15px;
-		margin: 7.5px;
-		border-radius: 2px!important;
-		width: 100px;
-		font-size: 18px;
-		font-weight: 600;
-		line-height: 1;
-		background: $shamrock;
-		&:hover,
-		&:focus {
-			background: lighten($shamrock, 10%);
-		}
-		&:active,
-		&.activated {
-			background: lighten($slate, 20%);
-		}
-		&.button-group-cancel {
-			background: lighten($slate, 30%)!important;
-			&:hover,
-			&:focus {
-				background: lighten($slate, 40%)!important;
-			}
-			&:active,
-			&.activated {
-				background: lighten($slate, 20%)!important;
-			}
-		}
-	}
-	div {
-		width: 100%;
-		text-align: center;
-		button {
-			width: 150px;
-		}
-	}
-}
-
-// popups
-.popup-guru {
-	width: 75%;
-	max-width: 250px;
-	padding: 0 15px;
-	&.tooltip-center,
-	&.popup-guru-center {
-		@include center-xy;
-	}
-	div.with-button {
-		border-bottom-left-radius: 0!important;
-		border-bottom-right-radius: 0!important;
-	}
-	h1 {
-		background: rgba($charcoal,.9);
-		border-top-left-radius: 2px;
-		border-top-right-radius: 2px;
-		padding: 10px 15px 0;
-		font-size: 20px;
-		font-weight: 600;
-		text-align: center;
-		+ div {
-			border-top-left-radius: 0!important;
-			border-top-right-radius: 0!important;
-		}
-	}
-	> div {
-		background: rgba($charcoal,.9);
-		padding: 10px 15px;
-		width: 100%;
-		border-radius: 2px;
-		color: white;
-		font-size: 18px;
-		font-weight: 600;
-		&.min-height {
-			min-height: 100px;
-		}
-		&.popup-guru-vertical-center {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center-vertical;
-		}
-		input {
-			display: block;
-			width: 100%;
-			padding: 5px 10px;
-			border: 0;
-			&:last-child {
-				margin-bottom: 5px;
-			}
-		}
-	}
-	button {
-		height: auto;
-		padding: 10px 15px;
-		font-size: 18px;
-		font-weight: 600;
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
-		line-height: 1;
 	}
 }
 
@@ -1438,7 +1403,9 @@
 			}
 		}
 		&.badge-bottom {
-			@include center-x;
+			position: absolute;
+			left: 50%;
+			margin-left: -18px;
 			bottom: -40px;
 			&:after {
 				top: -12px;

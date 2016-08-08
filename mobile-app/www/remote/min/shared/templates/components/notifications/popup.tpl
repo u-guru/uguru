@@ -1,10 +1,44 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default, tour-guru' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy" types='default, separate-header, tour-guru' default-type="default">
 	<div class="popup" ng-if='activeType === "default"'>
-		<header><h2>This is a header</h2></header>
 		<div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id nunc et leo dignissim egestas.</p>
+			<header><h2>This is a header</h2></header>
+			<div>
+				<fieldset class="input-basic m15top">
+					<label>Name</label>
+					<input type="text" placeholder="This is an basic input" />
+				</fieldset>
+			</div>
+			<ul class="button-group">
+				<li>
+					<button class="bg-taupe">Cancel</button>
+				</li>
+				<li>
+					<button class="bg-moxie">Save</button>
+				</li>
+			</ul>
 		</div>
 	</div>
+
+	<div class="popup with-header" ng-if='activeType === "separate-header"'>
+		<div>
+			<header class="bg-cobalt"><h2>This is a header</h2></header>
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id nunc et leo dignissim egestas.</p>
+				<!-- <fieldset class="input-basic dark m15top">
+					<input class="dark" type="text" placeholder="This is an basic input" />
+				</fieldset> -->
+			</div>
+			<ul class="button-group">
+				<li>
+					<button class="bg-taupe">Cancel</button>
+				</li>
+				<li>
+					<button class="bg-moxie">Save</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+
 	<div class="popup-tour" ng-if='activeType === "tour-guru"'
 		init-with="p-op"
 		on-init="a:[scaleIn-bounceDown:set:(dur:800ms#func:ease-out):in] | s:[popup-tour-init:public]"
