@@ -3,12 +3,12 @@
 /* ---------- POPUPS */
 // regular popup
 .popup {
+	width: 100%;
+	max-width: 400px;
 	> div {
 		background: white;
 		border-radius: 2px;
 		color: $slate;
-		width: 100%;
-		max-width: 400px;
 		overflow: hidden;
 		header {
 			padding: 15px 15px 0;

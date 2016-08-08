@@ -3,8 +3,12 @@
 		<div>
 			<header><h2>This is a header</h2></header>
 			<div>
-				<fieldset class="input-basic m15top">
+				<fieldset class="input-basic">
 					<label>Name</label>
+					<input type="text" placeholder="This is an basic input" />
+				</fieldset>
+				<fieldset class="input-basic m15top">
+					<label>Email</label>
 					<input type="text" placeholder="This is an basic input" />
 				</fieldset>
 			</div>
