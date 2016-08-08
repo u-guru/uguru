@@ -207,9 +207,70 @@
 			transform: translateX(36px);
 		}
 	}
+	&.normal, &.am-pm {
+		label {
+			> div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				div {
+					position: absolute;
+					border-radius: 1000px;
+					&:nth-child(1) {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: right center;
+					}
+					&:nth-child(2) {
+						top: 0;
+						right: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center bottom;
+					}
+					&:nth-child(3) {
+						bottom: 0;
+						right: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: left center;
+					}
+					&:nth-child(4) {
+						bottom: 0;
+						left: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center top;
+					}
+				}
+			}
+			.square rect {
+				stroke: white;
+				stroke-width: 2px;
+				stroke-linejoin: round;
+				stroke-linecap: round;
+			}
+		}
+	}
+	&.normal {
+		> div {
+			div {
+				background: $moxie;
+			}
+		}
+	}
 	&.am-pm {
 		input + label {
 			background: mix($lake, $slate, 30%);
+			> div {
+				div {
+					background: mix($lake, $slate, 30%);
+				}
+			}
 			> span {
 				display: block;
 				position: relative;
@@ -249,7 +310,6 @@
 		label {
 			@include round;
 			background: rgba(white, .5);
-			border: 2px solid white;
 			.square {
 				@include round;
 				&:first-child {
@@ -260,6 +320,16 @@
 					* {
 						fill: white;
 					}
+				}
+			}
+			.bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				rect {
+					@include svg-stroke(white, 2);
 				}
 			}
 		}
@@ -279,6 +349,9 @@
 				left: 0;
 				width: 100%;
 				height: 100%;
+				rect {
+					@include svg-stroke(white, 2);
+				}
 			}
 		}
 	}

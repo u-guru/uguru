@@ -8177,8 +8177,50 @@ input.chip:hover {
       transform: translateX(-26px); }
     .toggle:not(.old) input:checked + label .square:first-child {
       transform: translateX(36px); }
+  .toggle:not(.old).normal label > div, .toggle:not(.old).am-pm label > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .toggle:not(.old).normal label > div div, .toggle:not(.old).am-pm label > div div {
+      position: absolute;
+      border-radius: 1000px; }
+      .toggle:not(.old).normal label > div div:nth-child(1), .toggle:not(.old).am-pm label > div div:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: right center; }
+      .toggle:not(.old).normal label > div div:nth-child(2), .toggle:not(.old).am-pm label > div div:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center bottom; }
+      .toggle:not(.old).normal label > div div:nth-child(3), .toggle:not(.old).am-pm label > div div:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: left center; }
+      .toggle:not(.old).normal label > div div:nth-child(4), .toggle:not(.old).am-pm label > div div:nth-child(4) {
+        bottom: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center top; }
+  .toggle:not(.old).normal label .square rect, .toggle:not(.old).am-pm label .square rect {
+    stroke: white;
+    stroke-width: 2px;
+    stroke-linejoin: round;
+    stroke-linecap: round; }
+  .toggle:not(.old).normal > div div {
+    background: #43cb9d; }
   .toggle:not(.old).am-pm input + label {
     background: #456477; }
+    .toggle:not(.old).am-pm input + label > div div {
+      background: #456477; }
     .toggle:not(.old).am-pm input + label > span {
       display: block;
       position: relative;
@@ -8207,8 +8249,7 @@ input.chip:hover {
       opacity: 0; }
   .toggle:not(.old).white-round label {
     border-radius: 1000px;
-    background: rgba(255, 255, 255, 0.5);
-    border: 2px solid white; }
+    background: rgba(255, 255, 255, 0.5); }
     .toggle:not(.old).white-round label .square {
       border-radius: 1000px; }
       .toggle:not(.old).white-round label .square:first-child {
@@ -8218,6 +8259,18 @@ input.chip:hover {
         height: 100%; }
         .toggle:not(.old).white-round label .square:first-child * {
           fill: white; }
+    .toggle:not(.old).white-round label .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+      .toggle:not(.old).white-round label .bg rect {
+        fill: none;
+        stroke: white;
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke-linejoin: round; }
   .toggle:not(.old).white-round input:checked + label {
     background: rgba(255, 255, 255, 0.5); }
   .toggle:not(.old).round label {
@@ -8230,6 +8283,12 @@ input.chip:hover {
       left: 0;
       width: 100%;
       height: 100%; }
+      .toggle:not(.old).round label .bg rect {
+        fill: none;
+        stroke: white;
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke-linejoin: round; }
 
 /* ---------- CHECKBOXES & RADIO [deprecate] */
 .checkbox-container.old, .radio-container.old {
@@ -10454,9 +10513,9 @@ input[type=range] {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
+    border-radius: 1000px;
     width: 150px;
     height: 150px;
-    border-radius: 1000px;
     position: relative;
     z-index: 1; }
     .popup-tour header .popup-tour-guru {
@@ -11386,11 +11445,7 @@ input[type=range] {
     .badge-container [class*="badge"].badge-top {
       position: absolute;
       left: 50%;
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
-      transform: translateX(-50%);
+      margin-left: -18px;
       top: -40px; }
       .badge-container [class*="badge"].badge-top:after {
         bottom: -12px;

@@ -10,9 +10,9 @@
 	header {
 		@include flex;
 		@include flex-center;
+		@include round;
 		width: 150px;
 		height: 150px;
-		@include round;
 		position: relative;
 		z-index: 1;
 		.popup-tour-guru {
@@ -1228,7 +1228,9 @@
 			border: 6px solid transparent;
 		}
 		&.badge-top {
-			@include center-x;
+			position: absolute;
+			left: 50%;
+			margin-left: -18px;
 			top: -40px;
 			&:after {
 				bottom: -12px;
