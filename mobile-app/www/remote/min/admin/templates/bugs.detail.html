@@ -93,7 +93,7 @@
 				<li class="flex-stretch-space-between">
 					<span class="block bg-rocket p10y-p15x txt-18 semibold" ng-class="{'radius-2-left': !isEditMode, 'radius-2': isEditMode}">priority</span>
 					<span class="block bg-slate p10y-p15x radius-2-right txt-18 semibold full-x txt-white" ng-if='!isEditMode && !isNewBug'>{{selectedBug.priority}}</span>
-					<div class="toggle" style="margin-top: 2px" ng-if='isEditMode || isNewBug'>
+					<div class="toggle old" style="margin-top: 2px" ng-if='isEditMode || isNewBug'>
 						<input type="checkbox" ng-model='selectedBug.priority' />
 						<label>
 							<svg class="square" viewBox="0 0 100 100">
