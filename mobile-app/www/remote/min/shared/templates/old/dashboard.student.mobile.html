@@ -2,7 +2,7 @@
     <section id="mobile-student-home" class="mobile-home">
         <a id="nav-icon-burger" class="nav-icon-burger" ng-if='user || user.id' ng-click='toggleRightSideMenu()' ng-include="img_base + 'templates/svg/main/menu-circle.html'"></a>
         <div class="home-top">
-            <div class="toggle round" ng-if='!user || !user.id' ng-click='signupModal.show()'>
+            <div class="toggle old round" ng-if='!user || !user.id' ng-click='signupModal.show()'>
                 <input type="checkbox" checked />
                 <label>
                     <svg class="square" viewBox="0 0 100 100">

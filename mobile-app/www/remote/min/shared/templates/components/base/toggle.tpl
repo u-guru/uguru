@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="toggle-container state-default">
-                <div class="toggle am-pm">
+                <div class="toggle old am-pm">
                     <input type="checkbox"/>
                     <label>
                         <svg class="square" viewBox="0 0 26 26">
@@ -35,7 +35,7 @@
                         </div>
                     </label>
                 </div>
-                <div class="toggle-label">Default</div>
+                <div class="toggle old-label">Default</div>
             </div>
         </li>
         <li class="flex">
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="toggle-container state-onload">
-                <div class="toggle am-pm">
+                <div class="toggle old am-pm">
                     <input type="checkbox"/>
                     <label>
                         <svg class="square" viewBox="0 0 100 100">
@@ -72,7 +72,7 @@
                         </div>
                     </label>
                 </div>
-                <div class="toggle-label">onLoad</div>
+                <div class="toggle old-label">onLoad</div>
             </div>
         </li>
         <li class="flex">
@@ -88,7 +88,7 @@
                 </div>
             </div>
             <div class="toggle-container state-onenter">
-                <div class="toggle am-pm">
+                <div class="toggle old am-pm">
                     <input type="checkbox"/>
                     <label>
                         <svg class="square" viewBox="0 0 26 26">
@@ -109,7 +109,7 @@
                         </div>
                     </label>
                 </div>
-                <div class="toggle-label">onEnter</div>
+                <div class="toggle old-label">onEnter</div>
             </div>
         </li>
         <li class="flex">
@@ -125,7 +125,7 @@
                 </div>
             </div>
             <div class="toggle-container state-onexit">
-                <div class="toggle am-pm">
+                <div class="toggle old am-pm">
                     <input type="checkbox"/>
                     <label>
                         <svg class="square" viewBox="0 0 26 26">
@@ -146,7 +146,7 @@
                         </div>
                     </label>
                 </div>
-                <div class="toggle-label">onExit</div>
+                <div class="toggle old-label">onExit</div>
             </div>
         </li>
         <li class="flex">
@@ -162,7 +162,7 @@
                 </div>
             </div>
             <div class="toggle-container state-checked">
-                <div class="toggle am-pm">
+                <div class="toggle old am-pm">
                     <input type="checkbox"/>
                     <label>
                         <svg class="square" viewBox="0 0 26 26">
@@ -183,7 +183,7 @@
                         </div>
                     </label>
                 </div>
-                <div class="toggle-label">:checked</div>
+                <div class="toggle old-label">:checked</div>
             </div>
         </li>
         <li class="flex">
@@ -199,7 +199,7 @@
                 </div>
             </div>
             <div class="toggle-container state-hover">
-                <div class="toggle am-pm">
+                <div class="toggle old am-pm">
                     <input type="checkbox"/>
                     <label>
                         <svg class="square" viewBox="0 0 26 26">
@@ -220,7 +220,7 @@
                         </div>
                     </label>
                 </div>
-                <div class="toggle-label">:hover</div>
+                <div class="toggle old-label">:hover</div>
             </div>
         </li>
         <li class="flex">
@@ -236,7 +236,7 @@
                 </div>
             </div>
             <div class="toggle-container state-active">
-                <div class="toggle am-pm">
+                <div class="toggle old am-pm">
                     <input type="checkbox"/>
                     <label>
                         <svg class="square" viewBox="0 0 26 26">
@@ -257,7 +257,7 @@
                         </div>
                     </label>
                 </div>
-                <div class="toggle-label">:active</div>
+                <div class="toggle old-label">:active</div>
             </div>
         </li>
         <li class="flex">
@@ -273,7 +273,7 @@
                 </div>
             </div>
             <div class="toggle-container state-disabled">
-                <div class="toggle am-pm">
+                <div class="toggle old am-pm">
                     <input type="checkbox"/>
                     <label>
                         <svg class="square" viewBox="0 0 26 26">
@@ -294,7 +294,7 @@
                         </div>
                     </label>
                 </div>
-                <div class="toggle-label">:disabled</div>
+                <div class="toggle old-label">:disabled</div>
             </div>
         </li>
     </ul>

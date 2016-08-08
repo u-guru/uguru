@@ -71,7 +71,291 @@
 }
 
 // radio inputs
+.radio-container:not(.old) {
+	@include flex;
+	@include flex-center-vertical;
+	div {
+		position: relative;
+		span {
+			@include round;
+			display: block;
+			background: $slate;
+			width: 24px;
+			height: 24px;
+			svg {
+				@include round;
+				display: block;
+				width: 100%;
+				height: 100%;
+				.border {
+					@include svg-stroke($slate, 2.5);
+					transform-origin: center center;
+					transform: rotate(-90deg);
+					stroke-dasharray: 59.7;
+					stroke-dashoffset: 59.7;
+					opacity: 0;
+				}
+				.bg {
+					fill: lighten($slate, 10%);
+					transform-origin: center center;
+				}
+				.check {
+					fill: $shamrock;
+					transform-origin: center center;
+					transform: scale(0) translateZ(0);
+				}
+				path, polyline {
+					display: none;
+				}
+			}
+		}
+		input {
+			opacity: 0;
+			position: absolute;
+			z-index: 12;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			&:checked + span {
+				svg {
+					.check {
+						transform: scale(1) translateZ(0);
+					}
+				}
+			}
+		}
+	}
+	label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
 
+.toggle-container {
+	@include flex;
+	@include flex-center-vertical;
+	.toggle-label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+
+.toggle:not(.old) {
+	position: relative;
+	display: block;
+	pointer-events: auto;
+	margin: 0;
+	padding: 0;
+	input {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+	}
+	label {
+		transition: all 150ms ease-in-out;
+		@include flex;
+		@include flex-center;
+		position: relative;
+		background: $slate;
+		padding: 5px;
+		height: 36px;
+		width: 72px;
+		border-radius: 2px;
+		color: white;
+		font-size: 18px;
+		font-weight: 600;
+		* {
+			transition: all 150ms ease-in-out;
+		}
+		span {
+			padding: 0 5px;
+		}
+		.square {
+			display: block;
+			height: 100%;
+			border-radius: 2px;
+			overflow: hidden;
+			* {
+				fill: none;
+			}
+			&:first-child {
+				position: absolute;
+				top: 5px;
+				left: 5px;
+				height: calc(100% - 10px);
+				* {
+					fill: white;
+				}
+			}
+		}
+	}
+	input:checked + label {
+		background: $moxie;
+		span {
+			transform: translateX(-26px);
+		}
+		.square:first-child {
+			transform: translateX(36px);
+		}
+	}
+	&.normal, &.am-pm {
+		label {
+			> div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				div {
+					position: absolute;
+					border-radius: 1000px;
+					&:nth-child(1) {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: right center;
+					}
+					&:nth-child(2) {
+						top: 0;
+						right: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center bottom;
+					}
+					&:nth-child(3) {
+						bottom: 0;
+						right: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: left center;
+					}
+					&:nth-child(4) {
+						bottom: 0;
+						left: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center top;
+					}
+				}
+			}
+			.square rect {
+				stroke: white;
+				stroke-width: 2px;
+				stroke-linejoin: round;
+				stroke-linecap: round;
+			}
+		}
+	}
+	&.normal {
+		> div {
+			div {
+				background: $moxie;
+			}
+		}
+	}
+	&.am-pm {
+		input + label {
+			background: mix($lake, $slate, 30%);
+			> div {
+				div {
+					background: mix($lake, $slate, 30%);
+				}
+			}
+			> span {
+				display: block;
+				position: relative;
+				height: 100%;
+				width: 50%;
+				padding: 0;
+				text-align: center;
+				> span {
+					transform: translate(0)!important;
+					position: absolute;
+					display: block;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					padding: 0;
+				}
+			}
+			.am {
+				opacity: 0;
+			}
+			.pm {
+				opacity: 1;
+			}
+		}
+		input:checked + label {
+			background: $gold;
+			.am {
+				opacity: 1;
+			}
+			.pm {
+				opacity: 0;
+			}
+		}
+	}
+	&.white-round {
+		label {
+			@include round;
+			background: rgba(white, .5);
+			.square {
+				@include round;
+				&:first-child {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					* {
+						fill: white;
+					}
+				}
+			}
+			.bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				rect {
+					@include svg-stroke(white, 2);
+				}
+			}
+		}
+		input:checked + label {
+			background: rgba(white, .5);
+		}
+	}
+	&.round {
+		label {
+			@include round;
+			.square {
+				@include round;
+			}
+			.bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				rect {
+					@include svg-stroke(white, 2);
+				}
+			}
+		}
+	}
+}
 
 /* ---------- CHECKBOXES & RADIO [deprecate] */
 .checkbox-container.old, .radio-container.old {
@@ -309,7 +593,7 @@
 }
 
 // toggles
-.toggle {
+.toggle.old {
 	position: relative;
 	display: block;
     pointer-events: auto;

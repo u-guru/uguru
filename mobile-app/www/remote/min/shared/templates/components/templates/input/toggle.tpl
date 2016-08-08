@@ -1,6 +1,6 @@
 <div>
     <h2>{{::label}}</h2>
-    <div class="toggle {{::size}}">
+    <div class="toggle old {{::size}}">
         <input type="checkbox" ngModel="isOn" />
         <label class='bg-charcoal'>
             <svg class="square" viewBox="0 0 100 100">

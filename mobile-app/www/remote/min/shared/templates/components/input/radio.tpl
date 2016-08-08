@@ -1,5 +1,5 @@
 <div class="perspective-container full-xy flex-center" reference="http://codepen.io/teamuguru/pen/3d51f2394a6a0dbe38646612aa3e3759?editors=1100">
-	<div class="radiu-container">
+	<div class="radio-container">
 		<div>
 			<input type="radio" id="radio-item" />
 			<span>
@@ -10,10 +10,11 @@
 				</svg>
 			</span>
 		</div>
-		<label for="radio-item">onLoad</label>
+		<label for="radio-item">Radio Item</label>
 	</div>
 
-	<div class="radio-container old">
+	<!-- this is the deprecated version of the checkbox - you can use it for reference -->
+	<!-- <div class="radio-container old">
 		<div>
 			<input type="radio" id="radio-item" />
 			<span>
@@ -23,5 +24,5 @@
 			</span>
 		</div>
 		<label for="radio-item">Radio Item</label>
-	</div>
+	</div> -->
 </div>
