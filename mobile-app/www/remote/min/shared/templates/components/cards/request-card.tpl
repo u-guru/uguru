@@ -4,20 +4,21 @@
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
 		<div class="map">
 			<div class="map-marker" style="bottom: 15px; left: 50%; margin-left: -6px;">
-				<div
-					init-with="p-op"
-					on-init="t-enter"
-					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-750] | p:[tro:center bottom]">
-					<span
-						init-with="p-op"
-						on-init="a:[fadeIn:set:(dur:1000ms#func:ease-out):in:delay-1000]">
-						<svg viewBox="0 0 100 100">
-							<path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-						</svg>
-					</span>
-					<span
-						init-with="p-op"
-						on-init="a:[fadeIn:set:(dur:1000ms#func:ease-out):in:delay-1000]">Philz Coffee</span>
+				<div>
+					<div init-with="p-op"
+						on-init="t-enter"
+						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-750] | p:[tro:center bottom]">
+						<span
+							init-with="p-op"
+							on-init="a:[fadeIn:set:(dur:1000ms#func:ease-out):in:delay-1000]">
+							<svg viewBox="0 0 100 100">
+								<path d="M24.2857143,39.7142857 C24.2085714,25.5128 35.7985143,14 50,14 C64.2014857,14 75.7914286,25.5128 75.7142857,39.7142857 C75.6001143,60.8658286 50,86 50,86 C50,86 24.4009143,60.8658286 24.2857143,39.7142857 Z M50,50 C55.6806431,50 60.2857143,45.3949289 60.2857143,39.7142857 C60.2857143,34.0336426 55.6806431,29.4285714 50,29.4285714 C44.3193569,29.4285714 39.7142857,34.0336426 39.7142857,39.7142857 C39.7142857,45.3949289 44.3193569,50 50,50 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+							</svg>
+						</span>
+						<span
+							init-with="p-op"
+							on-init="a:[fadeIn:set:(dur:1000ms#func:ease-out):in:delay-1000]">Philz Coffee</span>
+					</div>
 				</div>
 				<span
 					init-with="p-op"

@@ -4238,21 +4238,6 @@ a.course-card:active .course-card-hover {
     .request-card .map .map-marker {
       position: absolute; }
       .request-card .map .map-marker > div {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
         position: absolute;
         left: 50%;
         -webkit-transform: translateX(-50%);
@@ -4260,40 +4245,52 @@ a.course-card:active .course-card-hover {
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
         transform: translateX(-50%);
-        top: -55px;
-        background: rgba(64, 72, 75, 0.95);
-        padding: 10px 15px;
-        border-radius: 2px; }
-        .request-card .map .map-marker > div:after {
-          position: absolute;
-          left: 50%;
-          -webkit-transform: translateX(-50%);
-          -moz-transform: translateX(-50%);
-          -ms-transform: translateX(-50%);
-          -o-transform: translateX(-50%);
-          transform: translateX(-50%);
-          content: "";
-          display: block;
-          bottom: -20px;
-          width: 0;
-          height: 0;
-          border: 10px solid transparent;
-          border-top-color: rgba(64, 72, 75, 0.95); }
-        .request-card .map .map-marker > div span {
-          display: block;
-          font-size: 14px;
-          font-weight: 600;
-          white-space: nowrap; }
-        .request-card .map .map-marker > div svg {
-          display: block;
-          width: 16px;
-          height: 16px; }
-          .request-card .map .map-marker > div svg * {
-            fill: none;
-            stroke: white;
-            stroke-width: 5px;
-            stroke-linecap: round;
-            stroke-linejoin: round; }
+        top: -55px; }
+        .request-card .map .map-marker > div > div {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          background: rgba(64, 72, 75, 0.95);
+          padding: 10px 15px;
+          border-radius: 2px; }
+          .request-card .map .map-marker > div > div:after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 50%;
+            margin-left: -10px;
+            bottom: -20px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-top-color: rgba(64, 72, 75, 0.95); }
+          .request-card .map .map-marker > div > div span {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap; }
+          .request-card .map .map-marker > div > div svg {
+            display: block;
+            width: 16px;
+            height: 16px; }
+            .request-card .map .map-marker > div > div svg * {
+              fill: none;
+              stroke: white;
+              stroke-width: 5px;
+              stroke-linecap: round;
+              stroke-linejoin: round; }
       .request-card .map .map-marker > span {
         border-radius: 1000px;
         display: block;
