@@ -7,9 +7,8 @@
 		on-click="s:[album-tile-click]">
 		<div class="album-echo"
 			init-with="p:[op:0]"
-			when-album-tile-click="p:[op:1, width:calc(100% + 30px), height:calc(100% + 30px)] | send:[album-tile-clicked:public:delay-300]"
-			when-album-tile-clicked="p:[op:0:delay-250, width:calc(100% - 30px), height:calc(100% - 30px)]" >
-			<!-- might want to trigger another state to fade the echo out similar to the translateZ for the cards -->
+			when-album-tile-click="p:[op:1, width:calc(100% + 30px), height:calc(100% + 30px), t:all 250ms ease-out] | send:[album-tile-clicked:public:delay-500]"
+			when-album-tile-clicked="p:[op:0:delay-250, width:calc(100% - 30px), height:calc(100% - 30px), t:all 250ms ease-in]" >
 			<div style="background: #020c39;"></div>
 		</div>
 		<div class="album-art"
