@@ -4,7 +4,7 @@
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in] | p:[color:rgba(255#255#255#1):delay-250, t:color 500ms ease-out]">moxie tag</span>
 	<a class="chip chip-link bg bg-cobalt" ng-if='activeType === "link"'
 		init-with="p:[op:0, color:rgba(255#255#255#0)]"
-		on-init="a:[scaleInX-subtle:set:(dur:1000ms#func:ease-out):in] | p:[color:rgba(255#255#255#1):delay-250, t:color 500ms ease-out]"
+		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in] | p:[color:rgba(255#255#255#1):delay-250, t:color 500ms ease-out]"
 		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250, t:all 350ms ease-out]">cobalt tag</a>
 	<a class="chip chip-link bg bg-moola" ng-if='activeType === "image"'
 		init-with="p-op"
