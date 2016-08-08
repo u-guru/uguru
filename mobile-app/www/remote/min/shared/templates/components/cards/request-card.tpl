@@ -17,7 +17,7 @@
 			<hr class="info-border"/>
 			<ul class="ugrid-2">
 				<li>
-					<span class="user-icon" style="background-image: url();"></span>
+					<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
 				</li>
 				<li>
 					<h2>Academic Request</h2>
