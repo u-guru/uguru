@@ -16,22 +16,24 @@
 				</a>
 				<hr class="tile-border"/>
 			</li>
-			<li
-				init-default
-				on-init="t:[on-enter:children:delay-150]">
-				<a class="tile badge-container click">
+			<li>
+				<a class="tile badge-container click"
+					init-default
+					on-init="t:[on-enter:children:delay-150]">
 					<span class="badge-left bg-moxie"
-						init-with="p-op">6</span>
+						init-with="p-op"
+						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-150] | p:[tro:right center]">6</span>
 					<span
-						init-with="p-op">Gurus</span>
+						init-with="p-op"
+						on-enter="a:[fadeIn:set:(dur:500ms#func:ease-out):in]">Gurus</span>
 				</a>
 				<hr class="tile-border"/>
 			</li>
-			<li
-				init-default
+			<li init-default
 				on-init="t:[on-enter:children:delay-300]">
 				<a class="tile"
-					init-with="p-op">Requests</a>
+					init-with="p-op"
+					on-enter="a:[fadeIn:set:(dur:500ms#func:ease-out):in]">Requests</a>
 				<hr class="tile-border"/>
 			</li>
 		</ul>
