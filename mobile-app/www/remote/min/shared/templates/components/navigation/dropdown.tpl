@@ -2,15 +2,26 @@
 	<div class="dropdown auto" ng-if='activeType === "default"'>
 		<div>
 			<div class="top"
-				init-with="p:[tr:scaleX(0)]"></div>
+				init-with="p:[tr:scaleX(0)]"
+				on-init="p:[tr:scaleX(1), t:transform 250ms ease-out]"
+				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
 			<div class="right"
-				init-with="p:[tr:scaleY(0)]"></div>
+				init-with="p:[tr:scaleY(0)]"
+				on-init="p:[tr:scaleY(1):delay-150, t:transform 250ms ease-out]"
+				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
 			<div class="bot"
-				init-with="p:[tr:scaleX(0)]"></div>
+				init-with="p:[tr:scaleX(0)]"
+				on-init="p:[tr:scaleX(1):delay-300, t:transform 250ms ease-out]"
+				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
 			<div class="left"
-				init-with="p:[tr:scaleY(0)]"></div>
-			<span class="txt-20">Photography</span>
-			<a init-default
+				init-with="p:[tr:scaleY(0)]"
+				on-init="p:[tr:scaleX(1):delay-450, t:transform 250ms ease-out]"
+				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
+			<span class="txt-20"
+				init-with="p-op"
+				on-init="a:[fadeIn:set:(dur:500ms#func:ease-out):in:delay-700] | send:[load-end:public:delay-1200]">Photography</span>
+			<a init-with="p-op"
+				on-init="a:[fadeIn:set:(dur:700ms#func:ease-out):in:delay-1000]"
 				on-click="s:[dropdown-open:public]">
 				<!-- @samir couldn't get this one to work, pls help -->
 				<!-- <a init-default
@@ -22,7 +33,8 @@
 					when-dropdown-close-link="s:[dropdown-open:public]"> -->
 				<svg viewBox="0 0 100 100">
 					<path d="M14,32 L50,68 L86,32"
-						init-with="p:[tr:none, t:all 150ms ease-in-out]"
+						init-with="p:[tr:none, t:all 150ms ease-in-out, sdo:102, sda:102, op:0]"
+						on-init="p:[sdo:0:delay-1000, op:1:delay-1000, t:all 450ms cubic-bezier(0#.53#.23#1)]"
 						when-dropdown-open="p:[tr:rotate(180deg)]"
 						when-dropdown-close="p:[tr:rotate(0)]"></path>
 				</svg>
@@ -59,19 +71,31 @@
 	<div class="dropdown auto info" ng-if='activeType === "info"'>
 		<div>
 			<div class="top"
-				init-with="p:[tr:scaleX(0)]"></div>
+				init-with="p:[tr:scaleX(0)]"
+				on-init="p:[tr:scaleX(1), t:transform 250ms ease-out]"
+				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
 			<div class="right"
-				init-with="p:[tr:scaleY(0)]"></div>
+				init-with="p:[tr:scaleY(0)]"
+				on-init="p:[tr:scaleY(1):delay-150, t:transform 250ms ease-out]"
+				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
 			<div class="bot"
-				init-with="p:[tr:scaleX(0)]"></div>
+				init-with="p:[tr:scaleX(0)]"
+				on-init="p:[tr:scaleX(1):delay-300, t:transform 250ms ease-out]"
+				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
 			<div class="left"
-				init-with="p:[tr:scaleY(0)]"></div>
-			<span>Photography</span>
-			<a init-default
+				init-with="p:[tr:scaleY(0)]"
+				on-init="p:[tr:scaleX(1):delay-450, t:transform 250ms ease-out]"
+				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
+			<span
+				init-with="p-op"
+				on-init="a:[fadeIn:set:(dur:500ms#func:ease-out):in:delay-700] | send:[load-end:public:delay-1200]">Photography</span>
+			<a  init-with="p-op"
+				on-init="a:[fadeIn:set:(dur:700ms#func:ease-out):in:delay-1000]"
 				on-click="s:[dropdown-open:public]">
 				<svg viewBox="0 0 100 100">
 					<path d="M14,32 L50,68 L86,32"
-						init-with="p:[tr:none, t:all 150ms ease-in-out]"
+						init-with="p:[tr:none, t:all 150ms ease-in-out, sdo:102, sda:102, op:0]"
+						on-init="p:[sdo:0:delay-1000, op:1:delay-1000, t:all 450ms cubic-bezier(0#.53#.23#1)]"
 						when-dropdown-open="p:[tr:rotate(180deg)]"
 						when-dropdown-close="p:[tr:rotate(0)]"></path>
 				</svg>
@@ -137,14 +161,27 @@
 
 	<div class="dropdown-color" ng-if='activeType === "color"'>
 		<a class="bg-robin"
-			init-default
+			init-with="p:[background:rgba(43#179#184#0)]"
+			on-init="p:[background:rgba(43#179#184#1):delay-1200, t:background 1000ms ease-out]"
 			on-click="s:[dropdown-color-open:public]">
-			<div></div><div></div>
-			<div></div><div></div>
-			<span>Color&nbsp;Dropdown</span>
+			<div init-with="p:[tr:scaleX(0), background:#2BB3B8]"
+				on-init="p:[tr:scaleX(1), t:transform 250ms ease-out]"
+				when-load-end="p:[background:#ffffff, t:background 500ms ease-out]"></div>
+			<div init-with="p:[tr:scaleY(0), background:#2BB3B8]"
+				on-init="p:[tr:scaleY(1):delay-150, t:transform 250ms ease-out]"
+				when-load-end="p:[background:#ffffff, t:background 500ms ease-out]"></div>
+			<div init-with="p:[tr:scaleX(0), background:#2BB3B8]"
+				on-init="p:[tr:scaleX(1):delay-300, t:transform 250ms ease-out]"
+				when-load-end="p:[background:#ffffff, t:background 500ms ease-out]"></div>
+			<div init-with="p:[tr:scaleY(0), background:#2BB3B8]"
+				on-init="p:[tr:scaleX(1):delay-450, t:transform 250ms ease-out]"
+				when-load-end="p:[background:#ffffff, t:background 500ms ease-out]"></div>
+			<span init-with="p-op"
+				on-init="a:[fadeIn:set:(dur:500ms#func:ease-out):in:delay-700] | send:[load-end:public:delay-1200]">Color&nbsp;Dropdown</span>
 			<svg viewBox="0 0 100 100">
 				<path d="M14,32 L50,68 L86,32"
-					init-with="p:[tro:center center, tr:rotate(0), t:all 150ms ease-in-out]"
+					init-with="p:[tro:center center, tr:rotate(0), sdo:102, sda:102, op:0, t:all 150ms ease-in-out]"
+					on-init="p:[sdo:0:delay-1000, op:1:delay-1000, t:all 450ms cubic-bezier(0#.53#.23#1)]"
 					when-dropdown-color-open="p:[tr:rotate(180deg)]"
 					when-dropdown-color-close="p:[tr:rotate(0)]"></path>
 			</svg>
