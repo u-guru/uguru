@@ -1,4 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-desktop">
+	<!-- academic doesn't need description, photo/household need a longer description for service -->
+
 	<div class="pf-tile-container" ng-if='activeType === "academic-desktop"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[academic-tile-init:public]"
@@ -94,17 +96,17 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "academic-mobile"'
+	<div class="pf-tile-container mobile" ng-if='activeType === "academic-mobile"'
 		init-default
 		on-init="s:[academic-tile-init:public]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-academic"
-			init-with="p:[bg:rgba(99#112#116#0), t:background 500ms ease-out]"
+			init-with="p:[bg:rgba(99#112#116#0), t:background 500ms ease-out#transform 500ms ease-out]"
 			when-academic-tile-init="p:[bg:rgba(99#112#116#1):delay-650]"
-			when-academic-tile-exit="p:[op:0:delay-1000, t:opacity 1500ms cubic-bezier(0#.3#.02#.99)]">
+			when-academic-tile-exit="p:[op:0:delay-1000, t:opacity 1500ms cubic-bezier(0#.3#.02#.99)#transform 500ms ease-out]">
 			<div class="pf-tile-border"
 				init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-				when-academic-tile-init="p:[op:1, tr:none]"
+				when-academic-tile-init="p:[op:0.5, tr:none]"
 				when-academic-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg):delay-1500, op:0:delay-2000]">
 				<div class="top"></div>
 				<div class="right"></div>
@@ -226,7 +228,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "baking-mobile"'
+	<div class="pf-tile-container mobile" ng-if='activeType === "baking-mobile"'
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[baking-tile-init:public]"
 		when-baking-tile-init="p:[op:1, tr:none]"
@@ -290,7 +292,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "photo-mobile"'
+	<div class="pf-tile-container mobile" ng-if='activeType === "photo-mobile"'
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[photo-tile-init:public]"
 		when-photo-tile-init="p:[op:1, tr:none]"
@@ -386,7 +388,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "tech-mobile"'
+	<div class="pf-tile-container mobile" ng-if='activeType === "tech-mobile"'
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[tech-tile-init:public]"
 		when-tech-tile-init="p:[op:1, tr:none]"
@@ -599,7 +601,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "household-mobile"'
+	<div class="pf-tile-container mobile" ng-if='activeType === "household-mobile"'
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[household-tile-init:public]"
 		when-household-tile-init="p:[op:1, tr:none]"
