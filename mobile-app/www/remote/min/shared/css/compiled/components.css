@@ -4974,7 +4974,7 @@ a.course-card:active .course-card-hover {
       -webkit-justify-content: center;
       justify-content: center;
       border-radius: 1000px;
-      background: white;
+      background: rgba(255, 255, 255, 0.25);
       width: 64px;
       height: 64px; }
       .pf-tile .pf-tile-top .pf-tile-icon svg {
@@ -4983,8 +4983,8 @@ a.course-card:active .course-card-hover {
         height: 48px; }
         .pf-tile .pf-tile-top .pf-tile-icon svg * {
           fill: none;
-          stroke: #637074;
-          stroke-width: 5px;
+          stroke: white;
+          stroke-width: 4px;
           stroke-linecap: round;
           stroke-linejoin: round; }
     .pf-tile .pf-tile-top h1, .pf-tile .pf-tile-top h2 {
