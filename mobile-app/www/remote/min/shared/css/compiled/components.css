@@ -4941,13 +4941,13 @@ a.course-card:active .course-card-hover {
       transform: translateZ(20px); }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-photography .pf-tile-bottom, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-photography .pf-tile-bottom {
       transform: translateZ(20px); }
-      .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-photography .pf-tile-bottom h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-photography .pf-tile-bottom h1 {
+      .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-photography .pf-tile-bottom h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-photography .pf-tile-bottom .rating-stars, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-photography .pf-tile-bottom h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-photography .pf-tile-bottom .rating-stars {
         transform: translateZ(20px); }
       .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-photography .pf-tile-bottom .pf-pricing div:empty, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-photography .pf-tile-bottom .pf-pricing span, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-photography .pf-tile-bottom .pf-pricing div:empty, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-photography .pf-tile-bottom .pf-pricing span {
         transform: translateZ(10px); }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .pf-tile-top:after, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .pf-tile-top .pf-pricing, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .pf-tile-top:after, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .pf-tile-top .pf-pricing {
       transform: translateZ(20px); }
-    .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .pf-tile-bottom, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .border-corner, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .border-outside, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .border-top, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .pf-tile-bottom, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .border-corner, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .border-outside, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .border-top {
+    .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .pf-tile-bottom, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .border-corner, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .border-outside, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .border-top, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-tech .rating-stars, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .pf-tile-bottom, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .border-corner, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .border-outside, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .border-top, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-tech .rating-stars {
       transform: translateZ(20px); }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-household .pf-tile-desc, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-household .pf-tile-desc {
       transform: translateZ(20px); }
@@ -5276,21 +5276,6 @@ a.course-card:active .course-card-hover {
       width: 100%;
       height: 200px; }
       .pf-tile.bg-photography .pf-tile-border div {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
         opacity: 0;
         width: 100%;
         height: 100%;
@@ -5312,8 +5297,10 @@ a.course-card:active .course-card-hover {
       height: 70px;
       color: #81B566;
       transform-style: preserve-3d; }
-      .pf-tile.bg-photography .pf-tile-bottom .rating-stars li svg {
-        height: auto; }
+      .pf-tile.bg-photography .pf-tile-bottom .rating-stars {
+        transition: all 500ms ease-out; }
+        .pf-tile.bg-photography .pf-tile-bottom .rating-stars li svg {
+          height: auto; }
       .pf-tile.bg-photography .pf-tile-bottom .pf-pricing {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -5532,11 +5519,13 @@ a.course-card:active .course-card-hover {
       background: #2B3234;
       border: 0;
       transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-      .pf-tile.bg-tech .pf-tile-bottom .rating-stars li svg {
-        height: auto; }
+      .pf-tile.bg-tech .pf-tile-bottom .rating-stars {
+        transition: all 500ms ease-out; }
+        .pf-tile.bg-tech .pf-tile-bottom .rating-stars li svg {
+          height: auto; }
       .pf-tile.bg-tech .pf-tile-bottom h1 {
         color: #55A4B7;
-        transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+        transition: all 500ms ease-out; }
   .pf-tile.bg-household {
     position: relative;
     padding-bottom: 70px;
