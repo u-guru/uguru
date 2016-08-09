@@ -475,7 +475,7 @@
 				</ul>
 				<div class="pf-pricing photo-price"
 					init-with="p:[tro:center center, op:0]"
-					when-photo-tile-init="a:[pf-price-rotate:set:(dur:1000ms#func:ease-out):in:delay-1000]">
+					when-photo-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
 					<div class="pf-border">
 						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
 							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
