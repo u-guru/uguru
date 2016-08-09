@@ -46,22 +46,22 @@
 			when-dropdown-close="p:[z-index:-1]">
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0)]"
-				when-dropdown-open="p:[op:1:delay-250, tr:rotateX(0) translateZ(0):delay-250, t:all 250ms ease-in-out#background 150ms ease-in-out]"
-				when-dropdown-close="p:[op:0:delay-750, tr:rotateX(90deg) translateZ(0):delay-750]"
+				when-dropdown-open="p:[op:1:delay-150, tr:rotateX(0) translateZ(0):delay-150, t:all 250ms ease-in-out#background 150ms ease-in-out]"
+				when-dropdown-close="p:[op:0:delay-450, tr:rotateX(90deg) translateZ(0):delay-450]"
 				on-click="s:[dropdown-close:public]">
 				<span>Academic</span>
 			</li>
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(-90deg) translateZ(0)]"
-				when-dropdown-open="p:[op:1:delay-500, tr:rotateX(-0deg) translateZ(0):delay-500, t:all 250ms ease-in-out#background 150ms ease-in-out]"
-				when-dropdown-close="p:[op:0:delay-500, tr:rotateX(-90deg) translateZ(0):delay-500]"
+				when-dropdown-open="p:[op:1:delay-300, tr:rotateX(-0deg) translateZ(0):delay-300, t:all 250ms ease-in-out#background 150ms ease-in-out]"
+				when-dropdown-close="p:[op:0:delay-300, tr:rotateX(-90deg) translateZ(0):delay-300]"
 				on-click="s:[dropdown-close:public]">
 				<span>Baking</span>
 			</li>
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0)]"
-				when-dropdown-open="p:[op:1:delay-750, tr:rotateX(0) translateZ(0):delay-750, t:all 250ms ease-in-out#background 150ms ease-in-out]"
-				when-dropdown-close="p:[op:0:delay-250, tr:rotateX(90deg) translateZ(0):delay-250]"
+				when-dropdown-open="p:[op:1:delay-450, tr:rotateX(0) translateZ(0):delay-450, t:all 250ms ease-in-out#background 150ms ease-in-out]"
+				when-dropdown-close="p:[op:0:delay-150, tr:rotateX(90deg) translateZ(0):delay-150]"
 				on-click="s:[dropdown-close:public]">
 				<span>Tech</span>
 			</li>
@@ -107,8 +107,8 @@
 			when-dropdown-close="p:[z-index:-1]">
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0)]"
-				when-dropdown-open="p:[op:1:delay-250, tr:rotateX(0) translateZ(0):delay-250, t:all 250ms ease-in-out#background 150ms ease-in-out]"
-				when-dropdown-close="p:[op:0:delay-750, tr:rotateX(90deg) translateZ(0):delay-750]"
+				when-dropdown-open="p:[op:1:delay-150, tr:rotateX(0) translateZ(0):delay-150, t:all 250ms ease-in-out#background 150ms ease-in-out]"
+				when-dropdown-close="p:[op:0:delay-450, tr:rotateX(90deg) translateZ(0):delay-450]"
 				on-click="s:[dropdown-close:public]"
 				<span>Academic</span>
 				<a class="dropdown-popup">
@@ -124,8 +124,8 @@
 			</li>
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(-90deg) translateZ(0)]"
-				when-dropdown-open="p:[op:1:delay-500, tr:rotateX(-0deg) translateZ(0):delay-500, t:all 250ms ease-in-out#background 150ms ease-in-out]"
-				when-dropdown-close="p:[op:0:delay-500, tr:rotateX(-90deg) translateZ(0):delay-500]"
+				when-dropdown-open="p:[op:1:delay-300, tr:rotateX(-0deg) translateZ(0):delay-300, t:all 250ms ease-in-out#background 150ms ease-in-out]"
+				when-dropdown-close="p:[op:0:delay-300, tr:rotateX(-90deg) translateZ(0):delay-300]"
 				on-click="s:[dropdown-close:public]">
 				<span>Baking</span>
 				<a class="dropdown-popup">
@@ -141,8 +141,8 @@
 			</li>
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0)]"
-				when-dropdown-open="p:[op:1:delay-750, tr:rotateX(0) translateZ(0):delay-750, t:all 250ms ease-in-out#background 150ms ease-in-out]"
-				when-dropdown-close="p:[op:0:delay-250, tr:rotateX(90deg) translateZ(0):delay-250]"
+				when-dropdown-open="p:[op:1:delay-450, tr:rotateX(0) translateZ(0):delay-450, t:all 250ms ease-in-out#background 150ms ease-in-out]"
+				when-dropdown-close="p:[op:0:delay-150, tr:rotateX(90deg) translateZ(0):delay-150]"
 				on-click="s:[dropdown-close:public]">
 				<span>Tech</span>
 				<a class="dropdown-popup">
