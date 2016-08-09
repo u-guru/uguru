@@ -11025,6 +11025,22 @@ input[type=range] {
     transform-origin: center top; }
   .tooltip-line.tooltip-left > div > div:nth-child(8) {
     transform-origin: center bottom; }
+  .tooltip-line.tooltip-bot > div > div:nth-child(1) {
+    transform-origin: left center; }
+  .tooltip-line.tooltip-bot > div > div:nth-child(2) {
+    transform-origin: right center; }
+  .tooltip-line.tooltip-bot > div > div:nth-child(3) {
+    transform-origin: center bottom; }
+  .tooltip-line.tooltip-bot > div > div:nth-child(4) {
+    transform-origin: center bottom; }
+  .tooltip-line.tooltip-bot > div > div:nth-child(5) {
+    transform-origin: left center; }
+  .tooltip-line.tooltip-bot > div > div:nth-child(6) {
+    transform-origin: right center; }
+  .tooltip-line.tooltip-bot > div > div:nth-child(7) {
+    transform-origin: center bottom; }
+  .tooltip-line.tooltip-bot > div > div:nth-child(8) {
+    transform-origin: center bottom; }
 
 .tooltip {
   padding: 0 15px;
