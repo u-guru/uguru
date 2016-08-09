@@ -1,10 +1,13 @@
-<div class="full-xy flex-center bg-slate" types='student, guru, no-padding, large-icons' default-type="guru">
+<div class="full-xy flex-center bg-slate" types='student, guru, no-padding, large-icons' default-type="student">
 	<!-- make sure that the borders are not visible after entering otherwise they will conflict with the uploading status -->
 	<div class="full-xy flex-center bg-white" ng-if='activeType === "student"'>
 		<div class="attach-list student">
-			<ul>
-				<li>
-					<a>
+			<ul init-default
+				on-init="s:[attach-list-init]">
+				<li init-with="p-op"
+					when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
+					<a init-default
+						on-click="s:[attach-upload:public]">
 						<span>
 							<svg viewBox="0 0 100 100">
 								<g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -28,11 +31,13 @@
 							<div class="left"
 								init-with="p:[tr:scaleY(0)]"></div>
 							<div class="uploading"
-								init-with="p:[tr:scaleX(0)]"></div>
+								init-with="p:[tr:scaleX(0), op:1]"
+								when-attach-upload="p:[tr:none, t:all 250ms ease-out, op:0:delay-500]"></div>
 						</div>
 					</a>
 				</li>
-				<li>
+				<li init-with="p-op"
+					when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 					<a>
 						<span>
 							<svg viewBox="0 0 100 100">
@@ -65,7 +70,8 @@
 						</div>
 					</a>
 				</li>
-				<li>
+				<li init-with="p-op"
+					when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-200]">
 					<a>
 						<span>
 							<svg viewBox="0 0 100 100">
@@ -96,9 +102,12 @@
 	</div>
 
 	<div class="attach-list guru" ng-if='activeType === "guru"'>
-		<ul>
-			<li>
-				<a>
+		<ul init-default
+			on-init="s:[attach-list-init]">
+			<li init-with="p-op"
+				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
+				<a init-default
+					on-click="s:[attach-upload:public]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -122,11 +131,13 @@
 						<div class="left"
 							init-with="p:[tr:scaleY(0)]"></div>
 						<div class="uploading"
-							init-with="p:[tr:scaleX(0)]"></div>
+							init-with="p:[tr:scaleX(0), op:1]"
+							when-attach-upload="p:[tr:none, t:all 250ms ease-out, op:0:delay-500]"></div>
 					</div>
 				</a>
 			</li>
-			<li>
+			<li init-with="p-op"
+				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 				<a>
 					<span>
 						<svg viewBox="0 0 100 100">
@@ -159,7 +170,8 @@
 					</div>
 				</a>
 			</li>
-			<li>
+			<li init-with="p-op"
+				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-200]">
 				<a>
 					<span>
 						<svg viewBox="0 0 100 100">
@@ -192,8 +204,10 @@
 	</div>
 
 	<div class="attach-list no-padding" ng-if='activeType === "no-padding"'>
-		<ul>
-			<li>
+		<ul init-default
+			on-init="s:[attach-list-init]">
+			<li init-with="p-op"
+				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
 				<a>
 					<span>
 						<svg viewBox="0 0 100 100">
@@ -210,7 +224,8 @@
 					<span>vet-ethics-guide.pdf</span>
 				</a>
 			</li>
-			<li>
+			<li init-with="p-op"
+				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 				<a>
 					<span>
 						<svg viewBox="0 0 100 100">
@@ -231,7 +246,8 @@
 					<span>file.doc</span>
 				</a>
 			</li>
-			<li>
+			<li init-with="p-op"
+				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-200]">
 				<a>
 					<span>
 						<svg viewBox="0 0 100 100">

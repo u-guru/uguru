@@ -1,5 +1,7 @@
 <div class="full-xy flex-center" reference="http://codepen.io/teamuguru/pen/819ae8236d2546a80f7372d1c6872138?editors=1100">
-	<figure class="figure-image">
+	<figure class="figure-image"
+		init-default
+		on-init="s:[figure-image-init:public]">
 		<img src="http://41.media.tumblr.com/ae90b8caeba47c980d343fedfc547b55/tumblr_n9v9gbigA21sciteso1_500.png"/>
 		<div class="figure-loading"
 			init-with="p:[op:0, z-index:-10]">
