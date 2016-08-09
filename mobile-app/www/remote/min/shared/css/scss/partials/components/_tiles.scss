@@ -95,10 +95,74 @@
 						color: white;
 						.border {
 							&:nth-child(1) {
-								transform: scaleY(12);
+								transform: scaleY(17);
 							}
 							&:nth-child(2) {
 								transform: scaleY(1);
+							}
+						}
+					}
+				}
+			}
+			~ .bg-baking, ~ .bg-household {
+
+				.rating-stars {
+					li {
+						svg {
+							stroke: white!important;
+							polygon:nth-child(2) {
+								fill: white;
+							}
+						}
+					}
+					&[data-rating*="1"] {
+						li:nth-child(1) {
+							svg {
+								polygon {
+									fill: white;
+								}
+							}
+						}
+					}
+					&[data-rating*="2"] {
+						li:nth-child(1),
+						li:nth-child(2) {
+							svg {
+								polygon {
+									fill: white;
+								}
+							}
+						}
+					}
+					&[data-rating*="3"] {
+						li:nth-child(1),
+						li:nth-child(2),
+						li:nth-child(3) {
+							svg {
+								polygon {
+									fill: white;
+								}
+							}
+						}
+					}
+					&[data-rating*="4"] {
+						li:nth-child(1),
+						li:nth-child(2),
+						li:nth-child(3),
+						li:nth-child(4) {
+							svg {
+								polygon {
+									fill: white;
+								}
+							}
+						}
+					}
+					&[data-rating*="5"] {
+						li {
+							svg {
+								polygon {
+									fill: white;
+								}
 							}
 						}
 					}
@@ -180,6 +244,19 @@
 				.pf-tile-desc {
 					opacity: 1;
 				}
+				.pf-tile-bottom {
+					h1 {
+						color: white;
+					}
+					div:not(.pf-pricing) {
+						transform: translate3d(10px, -10px, 0);
+					}
+					.pf-pricing {
+						transform: translate3d(-10px, -10px, 0);
+						background: rgba(white, .2);
+						color: white;
+					}
+				}
 				.bub-front-9 {
 					transform: scale(18);
 				}
@@ -258,15 +335,20 @@
 								transform: translateZ(20px);
 							}
 							.pf-tile-top {
-								.pf-pricing {
-									transform: translateZ(40px);
+								.pf-tile-icon, h1, h2 , .pf-pricing {
+									transform: translateZ(20px)!important;
+								}
+							}
+							.pf-tile-bottom {
+								.rating-stars {
+									transform: translateZ(20px);
 								}
 							}
 						}
 						&.bg-baking {
 							.pf-tile-top {
 								h1, div {
-									transform: translateZ(20px);
+									transform: translateZ(40px);
 								}
 							}
 						}
@@ -276,8 +358,13 @@
 							}
 							.pf-tile-bottom {
 								transform: translateZ(20px);
+								h1 {
+									transform: translateZ(20px);
+								}
 								.pf-pricing {
-									transform: translateZ(40px);
+									div:empty, span {
+										transform: translateZ(10px);
+									}
 								}
 							}
 						}
@@ -294,6 +381,14 @@
 						&.bg-household {
 							.pf-tile-desc {
 								transform: translateZ(20px);
+							}
+							.pf-tile-bottom {
+								div:not(.pf-pricing) {
+									transform: translate3d(10px, -10px, 30px);
+								}
+								.pf-pricing {
+									transform: translate3d(-10px, -10px, 30px);
+								}
 							}
 						}
 					}
@@ -428,6 +523,7 @@
 		}
 	}
 	.rating-stars {
+		transition: all 500ms ease-out;
 		li {
 			padding: 0!important;
 			svg {
@@ -483,15 +579,14 @@
 			border-radius: 2px;
 			.pf-pricing {
 				position: absolute;
-				top: 25px;
+				top: 10px;
+				left: 10px;
 				z-index: 11;
-				right: 0;
-				background: $cerise;
+				background: white;
 				height: 40px;
-				padding: 10px 15px 10px 0;
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-				color: white;
+				padding: 10px 0 10px 15px;
+				border-top-left-radius: 2px;
+				color: $cerise;
 				font-size: 16px;
 				font-weight: 700;
 				transition: all 500ms ease-out;
@@ -499,13 +594,13 @@
 					content: "";
 					position: absolute;
 					top: 0;
-					left: -20px;
+					right: -20px;
 					width: 0;
 					height: 0;
-					border: 20px solid $cerise;
+					border: 20px solid white;
 					border-left-width: 10px;
 					border-right-width: 10px;
-					border-left-color: transparent;
+					border-right-color: transparent;
 				}
 			}
 		}
@@ -536,6 +631,16 @@
 				border-radius: 2px;
 				overflow: hidden;
 				transition: all 250ms ease-in-out;
+				.rating-stars {
+					position: relative;
+					z-index: 3;
+					margin-top: 5px;
+					li {
+						svg {
+							height: auto;
+						}
+					}
+				}
 				.border {
 					display: block;
 					position: absolute;
@@ -644,22 +749,91 @@
 			height: 70px;
 			color: $moola;
 			transform-style: preserve-3d;
+			.rating-stars {
+				li {
+					svg {
+						height: auto;
+					}
+				}
+			}
 			.pf-pricing {
-				@include round;
 				@include flex;
 				@include flex-center;
 				position: absolute;
-				top: -44px;
-				right: 15px;
-				background: $moola;
-				width: 64px;
-				height: 64px;
-				color: white;
+				top: -35px;
+				right: 5px;
+				background: white;
+				padding: 10px 15px;
+				border-top-left-radius: 2px;
+				color: $moola;
 				font-size: 16px;
 				font-weight: 600;
-				transition: all 250ms ease-in-out;
-				&:before, &:after {
-					display: none;
+				span {
+					transition: all 500ms ease-out;
+				}
+				.pf-border {
+					opacity: 0.25;
+					div:empty {
+						position: absolute;
+						border-radius: 1000px;
+						background: $moola;
+						&:nth-child(1) {
+							top: 5px;
+							left: 5px;
+							width: 10px;
+							height: 2px;
+							transform-origin: left center;
+						}
+						&:nth-child(2) {
+							top: 5px;
+							left: 5px;
+							width: 2px;
+							height: 10px;
+							transform-origin: center top;
+						}
+						&:nth-child(3) {
+							top: 5px;
+							right: 5px;
+							width: 10px;
+							height: 2px;
+							transform-origin: right center;
+						}
+						&:nth-child(4) {
+							top: 5px;
+							right: 5px;
+							width: 2px;
+							height: 10px;
+							transform-origin: center bottom;
+						}
+						&:nth-child(5) {
+							bottom: 5px;
+							right: 5px;
+							width: 10px;
+							height: 2px;
+							transform-origin: right center;
+						}
+						&:nth-child(6) {
+							bottom: 5px;
+							right: 5px;
+							width: 2px;
+							height: 10px;
+							transform-origin: center bottom;
+						}
+						&:nth-child(7) {
+							bottom: 5px;
+							left: 5px;
+							width: 10px;
+							height: 2px;
+							transform-origin: left center;
+						}
+						&:nth-child(8) {
+							bottom: 5px;
+							left: 5px;
+							width: 2px;
+							height: 10px;
+							transform-origin: center bottom;
+						}
+					}
 				}
 			}
 		}
@@ -826,6 +1000,13 @@
 			background: $charcoal;
 			border: 0;
 			transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
+			.rating-stars {
+				li {
+					svg {
+						height: auto;
+					}
+				}
+			}
 			h1 {
 				color: $azure;
 				transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
@@ -860,11 +1041,11 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			z-index: 3;
+			z-index: 0;
 			width: 100%;
 			height: 100%;
 			border: 10px solid white;
-			padding: 15px;
+			padding: 15px 15px 70px;
 			background: rgba(mix($cobalt, $slate), .95);
 			font-size: 18px;
 			font-weight: 600;
@@ -884,6 +1065,10 @@
 			border: 10px solid white;
 			border-top: 0;
 			height: 70px;
+			padding: 15px 0 15px 5px;
+			div {
+				transition: all 500ms ease-out;
+			}
 			h1 {
 				color: $cobalt;
 			}
@@ -1372,7 +1557,7 @@
 			background: white;
 		}
 		.pf-cardlet-bottom {
-			div {
+			> div {
 				position: absolute;
 				bottom: 8px;
 				right: 8px;
@@ -1385,6 +1570,41 @@
 				color: $cobalt;
 				border-top-left-radius: 2px;
 				text-shadow: none!important;
+				.pf-cardlet-border {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: 200px;
+					height: 200px;
+					overflow: hidden;
+					div:empty {
+						position: absolute;
+						border-radius: 100%;
+						background: white;
+						&:nth-child(1) {
+							bottom: -8px;
+							right: 75px;
+							width: 50px;
+							height: 50px;
+						}
+						&:nth-child(2) {
+							bottom: 20px;
+							right: 60px;
+							width: 30px;
+							height: 30px;
+						}
+						&:nth-child(3) {
+							bottom: -15px;
+							right: -8px;
+							width: 80px;
+							height: 80px;
+						}
+					}
+				}
+				h2 {
+					position: relative;
+					z-index: 2;
+				}
 			}
 		}
 		.pf-cardlet-ribbon {

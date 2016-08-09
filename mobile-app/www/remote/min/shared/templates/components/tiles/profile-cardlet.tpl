@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-desktop">
+<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="household-desktop">
 	<div class="pf-tile-container" ng-if='activeType === "default-desktop"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[default-cardlet-init:public]"
@@ -267,6 +267,11 @@
 			<div class="pf-cardlet-bottom">
 				<h1>How to Make Your Plants Live Longer</h1>
 				<div>
+					<div class="pf-cardlet-border">
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
 					<h2>03/28/2016</h2>
 				</div>
 			</div>
@@ -293,6 +298,11 @@
 			<div class="pf-cardlet-bottom">
 				<h1>How to Make Your Plants Live Longer</h1>
 				<div>
+					<div class="pf-cardlet-border">
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
 					<h2>03/28/2016</h2>
 				</div>
 			</div>
