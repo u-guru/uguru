@@ -56,23 +56,29 @@
 		when-academic-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-academic">
-			<div class="pf-cardlet-front" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
+			<div class="pf-cardlet-front" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"
+				init-with="p:[tr:translate3d(7.5px#7.5px#0)]"
+				when-academic-cardlet-init="p:[tr:none:delay-500]"></div>
 			<div class="pf-cardlet-back" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"
-				init-with="p:[op:0, tr:translateX(-15px)]"
-				on-init="p:[op:0.25, tr:translateX(0), t:all 450ms ease-out]"></div>
-			<div class="pf-cardlet-bottom"
-				init-with="p:[op:0, tr:scale(1.5)]"
-				on-init="p:[op:1, tr:scale(1), t:opacity 500ms ease-out#transform 1000ms linear:delay-250]">
+				init-with="p:[tr:translate3d(-7.5px#-7.5px#0)]"
+				when-academic-cardlet-init="p:[tr:none:delay-500]"></div>
+			<div class="pf-cardlet-bottom">
+				<div class="pf-cardlet-bg deco"></div>
+				<div class="pf-cardlet-border deco">
+					<div></div><div></div><div></div><div></div>
+				</div>
 				<h1 init-with="p-op"
 					on-init="a:[zoomIn:set:(dur:400ms#func:cubic-bezier(.8#.1#.41#.91)):in:delay-250]">Master the Cerebral Cortex</h1>
-				<div init-with="p-op"
-					on-init="a:[fadeIn:set:(dur:800ms#func:cubic-bezier(.8#.1#.41#.91)):in:delay-450]">
-					<h2>03/28/2016</h2>
+				<div>
+					<div init-with="p:[op:0, tr:scaleX(0), t:all 400ms cubic-bezier(.8#.1#.41#.91)]"
+						when-academic-cardlet-init="p:[op:1, tr:none]:delay-450">
+						<h2>03/28/2016</h2>
+					</div>
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon"
-				init-with="p:[op:0, tr:translateX(10px)]"
-				on-init="p:[op:1:delay-500, tr:translateX(0):delay-500, t:all 250ms ease-out]">
+				init-with="p:[op:0, tr:translateX(10px), t:all 250ms ease-out]"
+				on-init="p:[op:1:delay-500, tr:translateX(0):delay-500, t:all 500ms ease-out:delay-750]">
 				<svg viewBox="0 0 100 100">
 					<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
 				</svg>
@@ -93,6 +99,10 @@
 			<div class="pf-cardlet-front" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
 			<div class="pf-cardlet-back" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
 			<div class="pf-cardlet-bottom">
+				<div class="pf-cardlet-bg deco"></div>
+				<div class="pf-cardlet-border deco">
+					<div></div><div></div><div></div><div></div>
+				</div>
 				<h1>Master the Cerebral Cortex</h1>
 				<div>
 					<h2>03/28/2016</h2>
