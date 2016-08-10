@@ -1,0 +1,72 @@
+<div class='full-y right-0 width-66 absolute top-0 left-0 sidebar-modal' id='splash-sidebar-pricing' ng-controller='SplashPricingController as pricing' init-with="prop:[opacity:0]" when-pricing-clicked="trigger:[on-enter] | send:[faq-closed, about-closed, team-closed]" when-pricing-closed="trigger:[on-exit]" on-exit="prop:[opacity:0]" on-enter="prop:[opacity:1]">
+    <main id="pricing">
+        <!-- class-on-activate="null:inject#pricing header h1|activate, null:inject#pricing header ul li|activate, null:inject#pricing dl|activate" -->
+        <header>
+    		<a id='guru-profile-cta-close' class='cta-modal-close close-button high-z-index absolute' ng-class='{"arrow": !desktopMode}'  ng-click='!desktopMode && page.modals.pricing.hide()' class-on-click="null:inject#cta-modal-pricing|clear, null:inject.splash-sidebar-empty|activate, null:inject#pricing *|clear">
+                <svg viewBox="0 0 100 100" ng-if='!desktopMode'>
+                    <path d="M14,32 L50,68 L86,32"></path>
+                </svg>
+                <svg viewBox="0 0 100 100" ng-if='desktopMode'>
+                    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                </svg>
+    	    </a>
+    		<h1>Uguru Pricing</h1>
+            <!-- class="opacity-0" class-on-activate="bounceInDown:anim" -->
+            <ul>
+    			<li>
+                    <!-- class="opacity-0" class-on-activate="bounceInUp:anim, null:inject.counter-our-fees|activate" class-on-activate-delay="0" -->
+                    <div class="pricing-tile">
+        				<h3>Our Fees</h3>
+        				<!-- <h2 class="counter-our-fees" counter init-on-class="counter:activate" counter-max="5" counter-min="1" counter-duration=".5" counter-delay="1000" counter-prefix="&le;" counter-suffix="%"></h2> -->
+                        <h2>&le; 5%</h2>
+        				<span>Guaranteed Lowest</span>
+        				<svg viewBox="0 0 150 200" preserveAspectRatio="none">
+        					<path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
+        				</svg>
+        			</div>
+    			</li>
+    			<li>
+                    <!-- class="opacity-0" class-on-activate="bounceInUp:anim, null:inject.counter-students-pay|activate" class-on-activate-delay="200" -->
+    				<div class="pricing-tile">
+    					<h3>Our Students Pay</h3>
+    					<!-- <h2 class="counter-students-pay" counter init-on-class="counter:activate" counter-max="13" counter-min="1" counter-duration=".5" counter-delay="1000" counter-prefix="$" counter-suffix="/hr"></h2> -->
+                        <h2>$13/hr</h2>
+    					<span>On Average</span>
+                        <svg viewBox="0 0 150 200" preserveAspectRatio="none">
+                            <path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
+                        </svg>
+    				</div>
+    			</li>
+                <li>
+                    <!-- class="opacity-0" class-on-activate="bounceInUp:anim, null:inject.counter-guru-avg|activate" class-on-activate-delay="400" -->
+    				<div class="pricing-tile">
+    					<h3>College Guru Avg</h3>
+                        <!-- <h2 class="counter-guru-avg" counter init-on-class="counter:activate" counter-max="14" counter-min="1" counter-duration=".5" counter-delay="1000" counter-prefix="$" counter-suffix="/hr"></h2> -->
+                        <h2>$14/hr</h2>
+    					<span>Open Market</span>
+                        <svg viewBox="0 0 150 200" preserveAspectRatio="none">
+                            <path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
+                        </svg>
+    				</div>
+    			</li>
+    		</ul>
+    	</header>
+    	<div>
+    		<dl>
+                <!-- class="opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="1000" -->
+    			<dt>Minimal Fees and Maximum Affordability</dt>
+    			<dd>One of our core missions with Uguru is to make in-person tutoring affordable and accessible to all demographics.</dd>
+    		</dl>
+            <dl>
+                <!-- class="opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="1200" -->
+    			<dt>Let the Market Decide Pricing</dt>
+    			<dd>Since we take less than <b><u>5 percent </u></b> transaction fees (from Gurus only), we've noticed a sharp decrease in overall pricing.</dd>
+    		</dl>
+            <dl>
+                <!-- class="opacity-0" class-on-activate="fadeIn:anim" class-on-activate-delay="1400" -->
+    			<dt>Students Propose Ideal Price</dt>
+    			<dd>Affordability varies from student to student. With Uguru, students can propose a price or suggest an exchange of services or items. </dd>
+    		</dl>
+    	</div>
+    </main>
+</div>

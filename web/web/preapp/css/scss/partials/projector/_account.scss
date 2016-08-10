@@ -1,0 +1,42 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.projector-account {
+	.projector-account-switch-desktop {
+		display: none;
+	}
+	.projector-account-content {
+		padding-top: 80px;
+	}
+	.projector-account-inside {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		align-content: space-between;;
+	}
+	.projector-account-buttons {
+		&.mobile {
+			@include flex;
+		}
+		&.desktop {
+			display: none;
+			@include flex-wrap;
+			@include flex-center;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.projector-account {
+		.projector-account-switch-desktop {
+			@include flex;
+		}
+		.projector-account-buttons {
+			&.mobile {
+				display: none;
+			}
+			&.desktop {
+				@include flex;
+			}
+		}
+	}
+}

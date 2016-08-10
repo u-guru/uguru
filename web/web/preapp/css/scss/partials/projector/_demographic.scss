@@ -1,0 +1,168 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.projector-demo {
+	@include flex;
+	@include flex-center;
+	position: relative;
+	padding: 15px;
+	height: 100%;
+	ul {
+		@include center-xy;
+		@include listless;
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+		margin-top: 20px!important;
+		padding: 7.5px;
+		width: 100%;
+		&:not(.active) {
+			@include opacity(0);
+			z-index: -10;
+		}
+		li {
+			padding: 7.5px;
+			a {
+				@include round;
+				@include flex;
+				@include flex-center;
+				text-align: center;
+				width: 100px;
+				height: 100px;
+				border: 2px solid white;
+				font-size: 16px!important;
+				padding: 15px;
+				&.demo-freshman {
+					background: rgba($lake, .5);
+					&:hover, &:focus {
+						background: $lake;
+					}
+					&:active {
+						background: lighten($slate, 20%);
+					}
+				}
+				&.demo-sophomore {
+					background: rgba(mix($shamrock, $lake, 25%), .5);
+					&:hover, &:focus {
+						background: mix($shamrock, $lake, 25%);
+					}
+					&:active {
+						background: lighten($slate, 20%);
+					}
+				}
+				&.demo-jr {
+					background: rgba(mix($shamrock, $lake, 50%), .5);
+					&:hover, &:focus {
+						background: mix($shamrock, $lake, 50%);
+					}
+					&:active {
+						background: lighten($slate, 20%);
+					}
+				}
+				&.demo-sr {
+					background: rgba(mix($shamrock, $lake, 75%), .5);
+					&:hover, &:focus {
+						background: mix($shamrock, $lake, 75%);
+					}
+					&:active {
+						background: lighten($slate, 20%);
+					}
+				}
+				&.demo-postgrad {
+					background: rgba($shamrock, .5);
+					&:hover, &:focus {
+						background: $shamrock;
+					}
+					&:active {
+						background: lighten($slate, 20%);
+					}
+				}
+				&.demo-college {
+					background: rgba(mix($smoke, $cerise, 10%), .5);
+					&:hover, &:focus {
+						background: mix($smoke, $cerise, 10%);
+					}
+					&:active {
+						background: lighten($slate, 20%);
+					}
+				}
+				&.demo-alum {
+					background: rgba(mix($smoke, $cobalt, 10%), .5);
+					&:hover, &:focus {
+						background: mix($smoke, $cobalt, 10%);
+					}
+					&:active {
+						background: lighten($slate, 20%);
+					}
+				}
+				&.demo-hs {
+					background: rgba(mix($smoke, $orange, 10%), .5);
+					&:hover, &:focus {
+						background: mix($smoke, $orange, 10%);
+					}
+					&:active {
+						background: lighten($slate, 20%);
+					}
+				}
+				&.demo-parent {
+					background: rgba(#2bb3b8, .5);
+					&:hover, &:focus {
+						background: #2bb3b8;
+					}
+					&:active {
+						background: lighten($slate, 20%);
+					}
+				}
+				&.demo-other {
+					background: rgba(lighten($slate, 15%), .5);
+					&:hover, &:focus {
+						background: lighten($slate, 15%);
+					}
+					&:active {
+						background: lighten($slate, 20%);
+					}
+				}
+			}
+		}
+		&.demo-3 {
+			margin-top: 0!important;
+			li {
+				a {
+					width: 200px;
+					height: 200px;
+					font-size: 24px!important;
+				}
+			}
+		}
+	}
+	.info-demographic-button {
+		padding-bottom: 15px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.projector-demo {
+		ul {
+			margin-top: 60px!important;
+			max-width: 100%!important;
+			li {
+				padding: 15px;
+				a {
+					width: 150px;
+					height: 150px;
+					font-size: 20px!important;
+				}
+			}
+			&.demo-3 {
+				margin-top: 0!important;
+				li {
+					a {
+						width: 200px;
+						height: 200px;
+						padding: 15px;
+						font-size: 24px!important;
+					}
+				}
+			}
+		}
+	}
+}

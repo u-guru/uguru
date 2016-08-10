@@ -1,0 +1,70 @@
+@import '../mixin';
+
+.message {
+	@include flex;
+	width: 100%;
+	position: relative;
+	margin-top: 25px;
+	.user-icon-48 {
+		margin: 0;
+	}
+	.message-info {
+		position: absolute;
+		top: -25px;
+		margin: 0 15px;
+		font-size: 14px;
+		span {
+			&:first-child {
+				font-weight: 600;
+			}
+		}
+	}
+	&.left {
+		.message-info {
+			left: 48px;
+		}
+	}
+	&.right {
+		justify-content: flex-end;
+		.message-info {
+			right: 48px;
+		}
+	}
+	.message-content {
+		width: calc(100% - 96px);
+	}
+	.message-container {
+		padding: 0 7.5px 7.5px;
+		.message-single:first-child {
+			padding-top: 0!important;
+		}
+	}
+	.message-single {
+		width: 100%;
+		padding: 7.5px;
+		> div {
+			border-radius: 2px;
+			font-size: 16px;
+			line-height: 1.2;
+			> div {
+				padding: 15px;
+				border-radius: 2px;
+			}
+		}
+		&:first-child:not(:last-child) {
+			> div {
+				border-radius: 8px 8px 2px 2px;
+			}
+		}
+		&:last-child:not(:first-child) {
+			> div {
+				border-radius: 2px 2px 8px 8px;
+			}
+		}
+		&:only-child {
+			> div {
+				border-radius: 6px;
+			}
+		}
+	}
+}
