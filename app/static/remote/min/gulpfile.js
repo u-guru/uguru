@@ -309,8 +309,9 @@ gulp.task('templates', function() {
   //PART ONE, MOVE ALL TEMPLATES TO RIGHT FOLDER
   var templateLocations = ['admin/templates/**/**/**', 'shared/templates/**/**/**', 'preapp/templates/**/**/**', 'jeselle/templates/**/**/**', 'gabrielle/templates/**/**/**'];
   for (var i = 0; i < templateLocations.length; i++) {
+
     gulp.src([templateLocations[i]], { cwd: '' })
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin())
     .pipe(gulp.dest(path.join(targetDir, 'templates/' + templateLocations[i].split('/**')[0])))
     .on('error', errorHandler);
   }
@@ -358,7 +359,7 @@ gulp.task('copy-prod', function(){
 
 gulp.task('default', function(done) {
   runSequence(
-    'clean',
+    // 'clean',
     'compile-css',
     'templates',
     'compile-temp',

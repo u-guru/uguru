@@ -1,0 +1,50 @@
+<div class='full-xy absolute left-0 flex-wrap-center'
+	init-with="p:[op:0]"
+	on-enter="p:[t:all 1000ms ease, op:1, z-index:10000]"
+	when-transit-triggered="t-enter | s:[transit-landing-enter:public]:delay-2000"
+	when-close-transit="p:[op:0, tr:translateY(-100%), z-index:default:delay-1000]">
+	<div class="landing-transit landing-container">
+		<div class="powerup-icon"
+			init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
+			on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2500"
+			when-transit-triggered="t-enter">
+			<div ng-include="root.base_url + 'preapp/templates/components/powerups/transit-card.html'"></div>
+		</div>
+		<h1 class="powerup-header"
+			init-with="p-op"
+			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-250:in]"
+			when-transit-landing-enter="t-enter">Transit Guru</h1>
+		<h2 class="powerup-subheader"
+			init-with="p-op"
+			on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
+			when-transit-landing-enter="t-enter">Lorem ipsum dolor sit amet consectetur.</h2>
+		<div class="landing-demo z-index-3">
+			<svg viewBox="0 0 318 651"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:1200ms#func:ease-out):delay-750:in]"
+				when-transit-landing-enter="t-enter">
+				<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+				<circle cx="158.5" cy="610.5" r="25"></circle>
+				<rect x="21.5" y="79.5" width="276" height="493"></rect>
+			</svg>
+			<div>
+
+			</div>
+		</div>
+		<div class="landing-content z-index-1"
+			init-with="p-op"
+			on-enter="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]"
+			when-transit-landing-enter="t-enter">
+			<h1
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:1000ms#func:linear):delay-1500:in]"
+				when-transit-landing-enter="t-enter">Preview the App</h1>
+		</div>
+	</div>
+    <div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
+        init-with="p:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
+        when-powerups-init="t-enter"
+        on-enter="p:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
+       <button on-click="s:[close-transit:public]">Back</button>
+    </div>
+</div>
