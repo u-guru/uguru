@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="tech-desktop">
+<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="photo-mobile">
 	<!-- academic doesn't need description, photo/household need a longer description for service -->
 
 	<div class="pf-tile-container" ng-if='activeType === "academic-desktop"'
@@ -475,26 +475,24 @@
 				</ul>
 				<div class="pf-pricing photo-price"
 					init-with="p:[tro:center center, op:0]"
-					when-photo-tile-init="a:[pf-price-rotate:set:(dur:1000ms#func:ease-out):in:delay-1000]">
+					when-photo-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
 					<div class="pf-border">
-						<div class="pf-border">
-							<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-								when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-							<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-								when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-							<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-								when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-							<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-								when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-							<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-								when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-							<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-								when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-							<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-								when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-							<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-								when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-						</div>
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
 					</div>
 					<span>$10/hr</span>
 				</div>
