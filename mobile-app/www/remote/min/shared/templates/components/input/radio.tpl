@@ -4,9 +4,11 @@
 			<input type="radio" id="radio-item" />
 			<span>
 				<svg viewBox="0 0 24 24">
-					<circle class="border" cx="12" cy="12" r="9.5"></circle>
+					<circle class="border" cx="12" cy="12" r="9.5"
+						init-with="p:[sda:59.7, sdo:59.7, op:0]"></circle>
 					<circle class="bg" cx="12" cy="12" r="9"></circle>
-					<circle class="check" cx="12" cy="12" r="9"></circle>
+					<circle class="check" cx="12" cy="12" r="9"
+						init-with="p:[tr:scale(0)]"></circle>
 				</svg>
 			</span>
 		</div>

@@ -8539,11 +8539,22 @@ input.chip:hover {
         height: 100%; }
         .checkbox-container:not(.old) div > span svg circle {
           fill: #69B3A5;
-          transform-origin: center center;
-          transform: scale(0); }
-        .checkbox-container:not(.old) div > span svg path, .checkbox-container:not(.old) div > span svg polyline {
+          transform-origin: center center; }
+        .checkbox-container:not(.old) div > span svg path, .checkbox-container:not(.old) div > span svg .check-under {
           fill: none;
           stroke: #6f7d82;
+          stroke-width: 2.5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+        .checkbox-container:not(.old) div > span svg .check-stroke {
+          fill: none;
+          stroke: white;
+          stroke-width: 2.5px;
+          stroke-linecap: round;
+          stroke-linejoin: round; }
+        .checkbox-container:not(.old) div > span svg line {
+          fill: none;
+          stroke: #40484B;
           stroke-width: 2.5px;
           stroke-linecap: round;
           stroke-linejoin: round; }
@@ -8557,10 +8568,6 @@ input.chip:hover {
       width: 100%;
       height: 100%;
       cursor: pointer; }
-      .checkbox-container:not(.old) div input:checked + span {
-        background: #69B3A5; }
-        .checkbox-container:not(.old) div input:checked + span svg path, .checkbox-container:not(.old) div input:checked + span svg polyline {
-          stroke: white; }
   .checkbox-container:not(.old) label {
     padding-left: 15px;
     color: white;
@@ -8599,19 +8606,13 @@ input.chip:hover {
           stroke-linecap: round;
           stroke-linejoin: round;
           transform-origin: center center;
-          transform: rotate(-90deg);
-          stroke-dasharray: 59.7;
-          stroke-dashoffset: 59.7;
-          opacity: 0; }
+          transform: rotate(-90deg); }
         .radio-container:not(.old) div span svg .bg {
           fill: #576267;
           transform-origin: center center; }
         .radio-container:not(.old) div span svg .check {
           fill: #69B3A5;
-          transform-origin: center center;
-          transform: scale(0) translateZ(0); }
-        .radio-container:not(.old) div span svg path, .radio-container:not(.old) div span svg polyline {
-          display: none; }
+          transform-origin: center center; }
     .radio-container:not(.old) div input {
       opacity: 0;
       position: absolute;
@@ -8620,8 +8621,6 @@ input.chip:hover {
       left: 0;
       width: 100%;
       height: 100%; }
-      .radio-container:not(.old) div input:checked + span svg .check {
-        transform: scale(1) translateZ(0); }
   .radio-container:not(.old) label {
     padding-left: 15px;
     color: white;

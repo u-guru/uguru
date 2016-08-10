@@ -36,10 +36,15 @@
 				circle {
 					fill: $shamrock;
 					transform-origin: center center;
-					transform: scale(0);
 				}
-				path, polyline {
+				path, .check-under {
 					@include svg-stroke(lighten($slate, 20%), 2.5);
+				}
+				.check-stroke {
+					@include svg-stroke(white, 2.5);
+				}
+				line {
+					@include svg-stroke($slate, 2.5);
 				}
 			}
 		}
@@ -52,14 +57,6 @@
 			width: 100%;
 			height: 100%;
 			cursor: pointer;
-			&:checked + span {
-				background: $shamrock;
-				svg {
-					path, polyline {
-						stroke: white;
-					}
-				}
-			}
 		}
 	}
 	label {
@@ -91,9 +88,6 @@
 					@include svg-stroke($slate, 2.5);
 					transform-origin: center center;
 					transform: rotate(-90deg);
-					stroke-dasharray: 59.7;
-					stroke-dashoffset: 59.7;
-					opacity: 0;
 				}
 				.bg {
 					fill: lighten($slate, 10%);
@@ -102,10 +96,6 @@
 				.check {
 					fill: $shamrock;
 					transform-origin: center center;
-					transform: scale(0) translateZ(0);
-				}
-				path, polyline {
-					display: none;
 				}
 			}
 		}
@@ -117,13 +107,6 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			&:checked + span {
-				svg {
-					.check {
-						transform: scale(1) translateZ(0);
-					}
-				}
-			}
 		}
 	}
 	label {
