@@ -1,4 +1,7 @@
 <div class="perspective-container full-xy flex-center" reference="http://codepen.io/teamuguru/pen/3d51f2394a6a0dbe38646612aa3e3759?editors=1100">
+	<!-- @jeselle (delete when completed)
+		- If you can't get all the states to work (i.e. you might have problems with the different between :unchecked:hover and :checked:hover), let me know and we can figure it out. Worst case, you'll just put the states in with the appropriate properties and we'll ask Samir how to activate them properly.
+	-->
 	<div class="radio-container">
 		<div>
 			<input type="radio" id="radio-item" />
