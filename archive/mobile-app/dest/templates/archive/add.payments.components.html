@@ -1,0 +1,25 @@
+<section class="full-xy bg-charcoal mobile-mode absolute payments-modal"><header class="bg-slate flex-center-wrap"><h1 class="bg-charcoal full-x text-center"><span class='hide ng-class:{"show":!root.vars.cardForm.view_only}'>Add Card </span><span class='hide ng-class:{"show":root.vars.cardForm.view_only}'>Edit Card</span></h1><div class="header-nav full-x"><a class="header-close cta-modal-close" ng-click="addCardModal.hide()"><svg viewBox="0 0 100 100"><path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path></svg></a></div></header><div class="main bg-charcoal full-y"><div class="bg-slate"><ul class="mobile-cards-container"><li><a class="credit-card-wrapper" ng-click="editPaymentMobile(card)"><!-- BIND --><div id="credit-card-visa" class="credit-card cf"><!-- BIND --> <span ng-if="(card.is_payment_card || card.is_transfer_card) && card.card_type" class="card-type" ng-include="img_base + BASE + 'templates/cards/' + card.card_type + '.html'"></span> <span ng-if="(card.is_payment_card || card.is_transfer_card) && !card.card_type" class="card-type">Debit Card</span> <span ng-if="card.is_bank_account" class="card-type bg-slate txt-smoke p05xy" style="font-size:16px">Bank Account</span><div class="card-number">**** **** **** {{card.card_last4}}</div><div class="card-name">{{user.name}}</div><div class="valid"><div class="group">Valid<br>Thru</div><div class="expiry">**/**</div></div></div></a><!--
+            <a class='credit-card-wrapper' ng-click='editPayment(card)' ng-if='root.vars.cardForm.view_only'>
+
+              <div class="credit-card cf" style='min-height:150px;'>
+
+                  <h4 style='font-size:12px;' class='uppercase absolute top-0 left-0 m10xy' ng-if='card.is_default_transfer'><strong>Default</strong></h4>
+
+                  <img src="http://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" width="80" id="visa">
+                  <img class='card-chip' src="http://alfoart.com/images/golden_credit_card/chip.png" id="chip">
+                  <div class="card-number">
+                    **** **** **** {{card.card_last4}}
+                  </div>
+                  <div class="card-name">
+                    {{user.name}}
+                  </div>
+                  <div class="valid">
+                    <div class="group">
+                      Valid<br>
+                      Thru
+                    </div>
+                    <div class="expiry">**/**
+                    </div>
+                  </div>
+                </div>
+            </a> --></li></ul><form ng-if="!root.vars.cardForm.view_only" class="full-x bg-charcoal p10xy"><div class="input-field relative"><input ng-model="root.vars.cardForm.number" ng-disabled="root.vars.cardForm.view_only" autocomplete="off" id="card-number" type="text" class="validate txt-white bg-charcoal"><label for="email" class="ng-class:{'active':root.vars.cardForm.number.length}">Card Number</label><a ng-show="root.vars.cardForm.number.length" ng-click='root.vars.cardForm.number = "";' class="desktop-input-close-icon side-icon"><i class="icon ion-close-circled"></i></a></div><div class="input-field"><input autocomplete="off" ng-disabled="root.vars.cardForm.view_only" ng-model="root.vars.cardForm.exp" id="exp-date" type="text" class="validate txt-white bg-charcoal"><label for="password" class="ng-class:{'active':root.vars.cardForm.exp.length}">Expiration Date</label><a ng-show="root.vars.cardForm.exp.length" ng-click='root.vars.cardForm.exp = "";' class="desktop-input-close-icon side-icon"><i class="icon ion-close-circled"></i></a></div></form><button name="save_card-btn" class='bottom-0 bg-slate semibold absolute hide ng-class:{"show":!root.vars.cardForm.view_only}' ng-click="savePayment()">Save</button> <button name="default_card-btn" style="bottom:64px" class='bg-slate semibold absolute hide ng-class:{"show":root.vars.cardForm.view_only}' ng-click="setDefaultTransfer()">Set Default</button> <button name="remove-btn" class='bg-auburn semibold absolute bottom-0 hide ng-class:{"show":root.vars.cardForm.view_only}' ng-click="removeCard()">Remove Card</button></div></div></section>

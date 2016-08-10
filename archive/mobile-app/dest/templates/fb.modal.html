@@ -1,0 +1,7 @@
+<ion-modal-view class="uguru-view faq-modal" onload="LoadingService"><style>.uguru-view.faq-modal {
+		#top-menu {
+			display: none;
+			visibility: hidden;
+		}
+
+	}</style><section class="full-xy"><header class="bg-charcoal white"><div class="header-nav"><a class="header-down" ng-click="closeModal('fb')"><svg viewBox="0 0 100 100"><path d="M14,32 L50,68 L86,32"></path></svg></a></div><h1 class="text-center">Connect with Facebook</h1></header><ion-content class="white-bg" scroll="false"><iframe iframe-onload="closeLoader()" name="{{FBurl}}" ng-src="https://www.facebook.com/dialog/oauth?client_id=1416375518604557&redirect_uri=http://localhost:8100/oauthcallback.html&response_type=token&scope="></iframe></ion-content></section></ion-modal-view>

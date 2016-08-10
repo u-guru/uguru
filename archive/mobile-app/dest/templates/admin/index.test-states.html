@@ -1,0 +1,55 @@
+<div class="admin-states-header full-x text-center p20xy text-36 flex-wrap-center bg-azure weight-900 txt-white absolute top-0 left-0" style="width:66.6% !important; height:5%"><div>{{selected_test_scene.tests.length}} total</div><a class="absolute top-0 left-0 bg-charcoal p20xy" ng-click="selected_test_scene.showTestsScreen = false;">Close</a></div><div class="admin-states-container no-scrollbar full-xy flex-wrap flex-wrap-center absolute left-0 flex-stretch" style="height:95% !important; top:7.5%"><ul class="full-xy relative"><li class="full-x"><!-- <ul ng-if="page.toggles.showAddScenario" class='full-x'>
+                    <li>
+                        <a ng-click="page.toggles.showAddScenario = !page.toggles.showAddScenario;">&times;</a>
+                    </li>
+                    <li>
+                        <input class='full-xy p05xy m10x text-center txt-16' placeholder="name" ng-model="newTestState.name"/>
+                    </li>
+                    <li class='relative'>
+                        <input class='full-xy p05xy m10x text-center txt-16' placeholder="add description here" ng-model="newTestState.description"/>
+                    </li>
+                    <li>
+                        <button class="radius-2 m10x bg-slate height-36 txt-18" ng-click='createStateElement(newTestState, selected_scene, "testing")'>Save</button>
+                    </li>
+                </ul> --><ul class="full-x ugrid-6 relative flex-wrap-center flex-stretch" style="width:66.6% !important"><li class="full-x mtop20 p20xy" style="width:calc(100%/6) !important" ng-repeat="platform in selected_test_scene.tests"><div class="checkbox-container {{platform.test_status || 'unsure'}}" style="width: auto !important"><div class="relative full-x text-center flex-wrap-center"><input ng-model="platform.passed" ng-change="updateSubStateElement($index, selected_test_scene, platform, platform.passed, filename)" type="checkbox" id="checkbox-item"> <span><svg viewBox="0 0 100 100" ng-if="!platform.passed"><path d="M14,50 L86,50"></path></svg> <svg viewBox="0 0 100 100" ng-if="platform.passed"><path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path></svg></span><div class="text-5 txt-white full-x uppercase weight-600 p05xy" style="font-size:14px; margin-left:-7px">{{platform.platform}}<br>{{platform.screen_size}}<br>{{platform.passed}}</div><div class="opacity-50 full-x uppercase weight-600 p05xy" style="font-size:10px; margin-left:-7px">status: {{platform.test_client}}</div></div></div></li><!-- <li>
+                                <div class="checkbox-container unsure">
+                                    <div>
+                                        <span>
+                                            <svg viewBox="0 0 100 100">
+                                                <path d="M14,50 L86,50"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="checkbox-container pass">
+                                    <div>
+                                        <input type="checkbox" id="checkbox-item" checked/>
+                                        <span>
+                                            <svg viewBox="0 0 100 100">
+                                                <path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li> --><!-- </ul> --><!-- <ul class='ugrid-3 full-x m10y' style='border-bottom: 4
+                        px dashed rgba(0,0,0,0.1); padding-bottom:15px;'>
+                            <li class='relative' style="width:150px; text-align:right;" ng-show="!page.toggles.showAddSubtate" ng-click='page.toggles.showAddSubtate = !page.toggles.showAddSubtate && state.ref;'>
+                                <div class='uppercase opacity-50 weight-600 txt-charcoal' style='max-height:30px;'>
+                                    + &nbsp;&nbsp;&nbsp; Add a substate
+                                </div>
+                            </li>
+                            <li class='relative' style="width:150px; text-align:right;" ng-show="page.toggles.showAddSubtate" ng-click='page.toggles.showAddSubtate = !page.toggles.showAddSubtate'>
+                                <div class='uppercase weight-300 txt-charcoal' style='max-height:30px;'>
+                                    Cancel
+                                </div>
+                            </li>
+
+                            <li class='relative' style="width:300px" ng-show="page.toggles.showAddSubtate && page.toggles.showAddSubtate === state.ref">
+                                    <input class='full-xy p05xy m10x text-center txt-16' placeholder="add substate name" ng-model="newSubScene.name"/>
+                            </li>
+                            <li class='relative bg-azure txt-white' style='width:150px' ng-click='updateSubStateElement(substate, scene, selected_scene, "testing", false)' ng-show="page.toggles.showAddSubtate && page.toggles.showAddSubtate === state.ref">
+                                 <a ng-click='createSubstateElement(newSubScene, scene, selected_scene, "fluid")' class='full-x bg-transparent'>save</a>
+                            </li>
+                        </ul> --><!-- </li> --></ul></li></ul></div>

@@ -1,0 +1,25 @@
+<u-slide-box id="intro-slide-box" class="full-y" disable-scroll="true"><!-- <u-slide class="text-center">
+		<header class="third flex text-center bg-charcoal">
+			<div class="header-nav">
+				<a class="header-nav-back" ng-click="prevSlide()">
+					<svg viewBox="0 0 100 100">
+						<path d="M68,86 L32,50 L68,14"></path>
+					</svg>
+					<h1>Back</h1>
+				</a>
+				<a class="header-nav-next" ng-click="nextSlide()">
+					<h1>Next</h1>
+					<svg viewBox="0 0 100 100">
+						<path d="M32,86 L68,50 L32,14"></path>
+					</svg>
+				</a>
+			</div>
+			<h1 class="text-center">Please wait while we build an awesome playlist for you.</h1>
+		</header>
+
+		<div>
+			<div id="loader-container">
+			  // <p id="loadingText">Building Playlist</p>
+			</div>
+		</div>
+	</u-slide> --><u-slide id="sound-player" class="flex-center-wrap text-center"><div class="sound-bg" style="background-image: url({{currentTrack.artwork_url}})"></div><div class="sound-bg" style="background-image: url({{currentTrack.artwork_url}})"></div><header class="text-center"><div class="header-nav"><a class="header-nav-back" ng-click="goToIntro()"><svg viewBox="0 0 100 100"><path d="M68,86 L32,50 L68,14"></path></svg><h1>&nbsp;</h1></a></div><h3>Current Playlist</h3><h2>{{genre}}</h2></header><div><audio id="audioPlayer"></audio><div><div id="sound-player-art"><img ng-src="{{currentTrack.artwork_url}}"></div><div id="sound-player-box"><ul><li class="sound-player-track">{{currentTrack.title}}</li><li class="sound-player-artist">{{currentTrack.user.username}}</li></ul><progress id="seekbar" class="white-round" value="0" max="1"></progress><ul class="ugrid-2"><li>2:34</li><li>-5:20</li></ul><div id="sound-player-controls" class="ugrid-3"><a class="sound-player-star" ng-click="player.fave()"><svg viewBox="0 0 100 100"><polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon></svg> </a><a class="sound-player-control-big" ng-hide="player.isPlaying" ng-click="player.play()"><svg viewBox="0 0 100 100"><path d="M50,86 C69.882251,86 86,69.882251 86,50 C86,30.117749 69.882251,14 50,14 C30.117749,14 14,30.117749 14,50 C14,69.882251 30.117749,86 50,86 Z M62.2163044,47.615046 C62.6255301,47.9506063 62.9624,48.2795217 62.9624,48.805565 C62.9624,49.3305008 62.7227954,49.6494492 62.2163044,49.9949765 L44.2957773,63.0862556 C43.9980507,63.2767387 42.8178201,63.3586907 42.8024,62.1338404 L42.8024,35.4761821 C42.8035862,34.343251 43.8818069,34.2535468 44.2957773,34.5248744 L62.2163044,47.615046 Z"></path></svg> </a><a class="sound-player-control-big" ng-show="player.isPlaying" ng-click="player.pause()"><svg viewBox="0 0 100 100"><path d="M50,86 C69.882251,86 86,69.882251 86,50 C86,30.117749 69.882251,14 50,14 C30.117749,14 14,30.117749 14,50 C14,69.882251 30.117749,86 50,86 Z M39,36.4976575 C39,35.1182394 40.1096621,34 41.5,34 L41.5,34 C42.8807119,34 44,35.1201337 44,36.4976575 L44,63.5023425 C44,64.8817606 42.8903379,66 41.5,66 L41.5,66 C40.1192881,66 39,64.8798663 39,63.5023425 L39,36.4976575 Z M56.5,36.4976575 C56.5,35.1182394 57.6096621,34 59,34 L59,34 C60.3807119,34 61.5,35.1201337 61.5,36.4976575 L61.5,63.5023425 C61.5,64.8817606 60.3903379,66 59,66 L59,66 C57.6192881,66 56.5,64.8798663 56.5,63.5023425 L56.5,36.4976575 Z"></path></svg> </a><!-- <a ng-click="player.stop()" >Stop</a> --> <a ng-click="player.next()"><svg viewBox="0 0 100 100"><path d="M68.3635106,20.0921155 C68.3635106,16.727533 71.0974015,14 74.454538,14 L74.454538,14 C77.8185196,14 80.5455654,16.7345657 80.5455654,20.0921155 L80.5455654,79.9078845 C80.5455654,83.272467 77.8116745,86 74.454538,86 L74.454538,86 C71.0905565,86 68.3635106,83.2654343 68.3635106,79.9078845 L68.3635106,20.0921155 Z M65.6106483,47.0463201 C66.5720751,47.8852207 67.3635106,48.7075094 67.3635106,50.0226176 C67.3635106,51.3349572 66.8005882,52.132328 65.6106483,52.9961465 L23.5085114,85.7243441 C22.8090385,86.2005517 20.0362277,86.4054318 20,83.3433062 L20,16.6991604 C20.0027867,13.8668327 22.5359376,13.6425721 23.5085114,14.3208911 L65.6106483,47.0463201 Z"></path></svg></a></div></div></div></div></u-slide></u-slide-box>
