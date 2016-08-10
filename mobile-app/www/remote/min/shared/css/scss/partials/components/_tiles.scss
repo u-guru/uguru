@@ -105,7 +105,6 @@
 				}
 			}
 			~ .bg-baking, ~ .bg-household {
-
 				.rating-stars {
 					li {
 						svg {
@@ -279,41 +278,42 @@
 			}
 		}
 	}
+	// parallax - leave this alone
 	@media screen and (min-width: 768px) {
 		&:not(.mobile) {
 			a {
 				&:hover, &:focus {
 					~ .pf-cardlet {
 						.pf-cardlet-front {
-							transform: translateZ(10px);
+							transform: translateZ(10px)!important;
 							div:empty {
-								transform: translateZ(10px);
+								transform: translateZ(10px)!important;
 							}
 						}
 						.pf-cardlet-ribbon-edge {
-							transform: translateZ(10px) rotate(45deg);
+							transform: translateZ(10px) rotate(45deg)!important;
 						}
 						.pf-cardlet-ribbon {
-							transform: translateZ(20px);
+							transform: translateZ(20px)!important;
 						}
 						.pf-cardlet-back {
-							transform: translateZ(-10px);
+							transform: translateZ(-10px)!important;
 						}
 						.pf-cardlet-bottom {
-							transform: translateZ(20px);
-							h1, div {
-								transform: translateZ(10px);
+							transform: translateZ(20px)!important;
+							h1, > div:not(.deco) {
+								transform: translateZ(10px)!important;
 							}
 							.pf-cardlet-icon {
-								transform: translateZ(15px);
+								transform: translateZ(15px)!important;
 							}
 						}
 						&.bg-academic {
 							.pf-cardlet-bottom {
-								div {
-									transform: rotate(-90deg);
+								> div:not(.deco) {
+									transform: rotate(-90deg)!important;
 									h2 {
-										transform: translateZ(10px);
+										transform: translateZ(10px)!important;
 									}
 								}
 							}
@@ -321,9 +321,9 @@
 						&.bg-household {
 							.pf-cardlet-bottom {
 								div {
-									transform: none;
+									transform: none!important;
 									h2 {
-										transform: translateZ(10px);
+										transform: translateZ(10px)!important;
 									}
 								}
 							}
@@ -332,38 +332,38 @@
 					~ .pf-tile {
 						&.bg-academic {
 							.pf-tile-border {
-								transform: translateZ(20px);
+								transform: translateZ(20px)!important;
 							}
 							.pf-tile-top {
 								.pf-tile-icon, h1, h2 , .pf-pricing {
-									transform: translateZ(20px)!important;
+									transform: translateZ(20px)!important!important;
 								}
 							}
 							.pf-tile-bottom {
 								.rating-stars {
-									transform: translateZ(20px);
+									transform: translateZ(20px)!important;
 								}
 							}
 						}
 						&.bg-baking {
 							.pf-tile-top {
 								h1, div {
-									transform: translateZ(40px);
+									transform: translateZ(40px)!important;
 								}
 							}
 						}
 						&.bg-photography {
 							.pf-tile-border {
-								transform: translateZ(20px);
+								transform: translateZ(20px)!important;
 							}
 							.pf-tile-bottom {
-								transform: translateZ(20px);
+								transform: translateZ(20px)!important;
 								h1, .rating-stars {
-									transform: translateZ(20px);
+									transform: translateZ(20px)!important;
 								}
 								.pf-pricing {
 									div:empty, span {
-										transform: translateZ(10px);
+										transform: translateZ(10px)!important;
 									}
 								}
 							}
@@ -371,23 +371,23 @@
 						&.bg-tech {
 							.pf-tile-top {
 								&:after, .pf-pricing {
-									transform: translateZ(20px);
+									transform: translateZ(20px)!important;
 								}
 							}
 							h1, .pf-tile-bottom, .border-corner, .border-outside, .border-top, .rating-stars {
-								transform: translateZ(20px);
+								transform: translateZ(20px)!important;
 							}
 						}
 						&.bg-household {
 							.pf-tile-desc {
-								transform: translateZ(20px);
+								transform: translateZ(20px)!important;
 							}
 							.pf-tile-bottom {
 								div:not(.pf-pricing) {
-									transform: translate3d(10px, -10px, 30px);
+									transform: translate3d(10px, -10px, 30px)!important;
 								}
 								.pf-pricing {
-									transform: translate3d(-10px, -10px, 30px);
+									transform: translate3d(-10px, -10px, 30px)!important;
 								}
 							}
 						}
@@ -396,12 +396,12 @@
 				&:nth-child(1) {
 					&:hover, &:focus {
 						~ .pf-tile, ~ .pf-cardlet {
-							transform-origin: bottom right;
-							transform: rotateX(5deg) rotateY(-5deg);
+							transform-origin: bottom right!important;
+							transform: rotateX(5deg) rotateY(-5deg)!important;
 						}
 						~ .pf-cardlet {
 							.pf-cardlet-ribbon-edge {
-								transform: translate3d(2px,-2px,10px) rotate(45deg);
+								transform: translate3d(2px,-2px,10px) rotate(45deg)!important;
 							}
 						}
 					}
@@ -409,12 +409,12 @@
 				&:nth-child(2) {
 					&:hover, &:focus {
 						~ .pf-tile, ~ .pf-cardlet {
-							transform-origin: bottom left;
-							transform: rotateX(5deg) rotateY(5deg);
+							transform-origin: bottom left!important;
+							transform: rotateX(5deg) rotateY(5deg)!important;
 						}
 						~ .pf-cardlet {
 							.pf-cardlet-ribbon-edge {
-								transform: translate3d(2px,-2px,10px) rotate(45deg);
+								transform: translate3d(2px,-2px,10px) rotate(45deg)!important;
 							}
 						}
 					}
@@ -422,12 +422,12 @@
 				&:nth-child(3) {
 					&:hover, &:focus {
 						~ .pf-tile, ~ .pf-cardlet {
-							transform-origin: top left;
-							transform: rotateX(-5deg) rotateY(5deg);
+							transform-origin: top left!important;
+							transform: rotateX(-5deg) rotateY(5deg)!important;
 						}
 						~ .pf-cardlet {
 							.pf-cardlet-ribbon-edge {
-								transform: translate3d(4px,-1px,10px) rotate(45deg);
+								transform: translate3d(4px,-1px,10px) rotate(45deg)!important;
 							}
 						}
 					}
@@ -435,12 +435,12 @@
 				&:nth-child(4) {
 					&:hover, &:focus {
 						~ .pf-tile, ~ .pf-cardlet {
-							transform-origin: top right;
-							transform: rotateX(-5deg) rotateY(-5deg);
+							transform-origin: top right!important;
+							transform: rotateX(-5deg) rotateY(-5deg)!important;
 						}
 						~ .pf-cardlet {
 							.pf-cardlet-ribbon-edge {
-								transform: translate3d(2px,-1px,10px) rotate(45deg);
+								transform: translate3d(2px,-1px,10px) rotate(45deg)!important;
 							}
 						}
 					}
@@ -1245,29 +1245,65 @@
 	}
 	&.bg-academic {
 		.pf-cardlet-bottom {
-			top: 30px;
-			left: 45px;
-			width: calc(100% - 105px);
-			height: calc(100% - 75px);
-			border: 2px solid white;
+			top: 28px;
+			left: 43px;
+			width: calc(100% - 101px);
+			height: calc(100% - 71px);
+			// border: 2px solid white;
 			border-radius: 2px;
 			border-top-left-radius: 0;
 			background: rgba($cerise, .1);
-			div {
-				@include flex;
-				@include flex-center;
+			> div:not(.deco) {
 				transform: rotate(-90deg);
 				position: absolute;
-				width: 120px;
-				top: 43px;
+				top: 45px;
 				left: -75px;
-				margin-top: 0;
-				background: white;
-				color: $cerise;
+				width: 120px;
 				height: 30px;
-				padding: 5px 10px;
-				border-top-left-radius: 2px;
-				border-top-right-radius: 2px;
+				margin-top: 0;
+				> div {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					padding: 5px 10px;
+					background: white;
+					color: $cerise;
+					border-top-left-radius: 2px;
+					border-top-right-radius: 2px;
+					transform-origin: right center;
+				}
+			}
+			.pf-cardlet-border {
+				div:empty {
+					position: absolute;
+					border-radius: 1000px;
+					background: white;
+					&:nth-child(1) {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+					}
+					&:nth-child(2) {
+						top: 0;
+						right: 0;
+						width: 2px;
+						height: 100%;
+					}
+					&:nth-child(3) {
+						top: 0;
+						left: 0;
+						width: 2px;
+						height: 100%;
+					}
+					&:nth-child(4) {
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+					}
+				}
 			}
 		}
 		.pf-cardlet-ribbon {
