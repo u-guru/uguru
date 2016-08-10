@@ -1,0 +1,66 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.projector-courses {
+	padding-top: 50px;
+	.backpack {
+		position: absolute;
+		bottom: -15px;
+		right: -15px;
+		display: block;
+		width: 100px;
+		height: 100px;
+	}
+	form {
+		width: 100%;
+		padding: 0 15px;
+	}
+	ul {
+		@include listless;
+		@include flex;
+		@include flex-wrap;
+		padding: 7.5px;
+		width: 100%;
+		li {
+			padding: 7.5px;
+		}
+	}
+	.course-search {
+		@include flex-center;
+	}
+	.course-selected {
+		li {
+			a {
+				@include flex;
+				border: 2px solid white;
+				border-radius: 2px;
+				> span {
+					@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+					@include flex;
+					@include flex-center;
+					padding: 5px 8px 5px 10px;
+					border-bottom-width: 5px;
+					border-bottom-style: solid;
+					font-size: 18px;
+					svg {
+						@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);
+						@include prefix(transform, rotate(45deg), webkit moz ms o);
+						@include svg-stroke(white, 9);
+						display: block;
+						width: 18px;
+						height: 18px;
+						margin-left: 5px;
+					}
+				}
+				&:hover, &:active {
+					background: white;
+					> span {
+						color: $slate;
+						svg {
+							stroke: $slate;
+						}
+					}
+				}
+			}
+		}
+	}
+}
