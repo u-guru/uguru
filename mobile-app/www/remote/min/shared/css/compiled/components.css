@@ -8724,25 +8724,25 @@ input.chip:hover {
         left: 0;
         width: 100%;
         height: 2px;
-        transform-origin: right center; }
+        transform-origin: left center; }
       .toggle:not(.old).normal label > div div:nth-child(2), .toggle:not(.old).am-pm label > div div:nth-child(2) {
         top: 0;
         right: 0;
         width: 2px;
         height: 100%;
-        transform-origin: center bottom; }
+        transform-origin: center top; }
       .toggle:not(.old).normal label > div div:nth-child(3), .toggle:not(.old).am-pm label > div div:nth-child(3) {
         bottom: 0;
         right: 0;
         width: 100%;
         height: 2px;
-        transform-origin: left center; }
+        transform-origin: right center; }
       .toggle:not(.old).normal label > div div:nth-child(4), .toggle:not(.old).am-pm label > div div:nth-child(4) {
         bottom: 0;
         left: 0;
         width: 2px;
         height: 100%;
-        transform-origin: center top; }
+        transform-origin: center bottom; }
   .toggle:not(.old).normal label .square:first-child rect, .toggle:not(.old).am-pm label .square:first-child rect {
     stroke: white;
     stroke-width: 2px;
