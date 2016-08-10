@@ -1,7 +1,364 @@
 @import '../mixin';
 
 /* ---------- CHECKBOXES & RADIO */
-.checkbox-container, .radio-container {
+// checkbox inputs
+.checkbox-container:not(.old) {
+	@include flex;
+	@include flex-center-vertical;
+	div {
+		position: relative;
+		> span {
+			display: block;
+			background: $slate;
+			border-radius: 3px;
+			width: 32px;
+			height: 32px;
+			overflow: hidden;
+			span {
+				position: absolute;
+				top: 50%;
+				margin-top: -5px;
+				left: 50%;
+				margin-left: -5px;
+				width: 10px;
+				height: 10px;
+				border-radius: 1000px;
+				background: mix($shamrock, $slate, 60%);
+				transform-origin: center center;
+				transform: scale(0) translateZ(0);
+			}
+			svg {
+				position: relative;
+				z-index: 10;
+				fill: none;
+				width: 100%;
+				height: 100%;
+				circle {
+					fill: $shamrock;
+					transform-origin: center center;
+					transform: scale(0);
+				}
+				path, polyline {
+					@include svg-stroke(lighten($slate, 20%), 2.5);
+				}
+			}
+		}
+		input {
+			@include opacity(0);
+			position: absolute;
+			z-index: 12;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+			&:checked + span {
+				background: $shamrock;
+				svg {
+					path, polyline {
+						stroke: white;
+					}
+				}
+			}
+		}
+	}
+	label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+
+// radio inputs
+.radio-container:not(.old) {
+	@include flex;
+	@include flex-center-vertical;
+	div {
+		position: relative;
+		span {
+			@include round;
+			display: block;
+			background: $slate;
+			width: 24px;
+			height: 24px;
+			svg {
+				@include round;
+				display: block;
+				width: 100%;
+				height: 100%;
+				.border {
+					@include svg-stroke($slate, 2.5);
+					transform-origin: center center;
+					transform: rotate(-90deg);
+					stroke-dasharray: 59.7;
+					stroke-dashoffset: 59.7;
+					opacity: 0;
+				}
+				.bg {
+					fill: lighten($slate, 10%);
+					transform-origin: center center;
+				}
+				.check {
+					fill: $shamrock;
+					transform-origin: center center;
+					transform: scale(0) translateZ(0);
+				}
+				path, polyline {
+					display: none;
+				}
+			}
+		}
+		input {
+			opacity: 0;
+			position: absolute;
+			z-index: 12;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			&:checked + span {
+				svg {
+					.check {
+						transform: scale(1) translateZ(0);
+					}
+				}
+			}
+		}
+	}
+	label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+
+.toggle-container {
+	@include flex;
+	@include flex-center-vertical;
+	.toggle-label {
+		padding-left: 15px;
+		color: white;
+		font-size: 20px;
+		font-weight: 600;
+	}
+}
+
+.toggle:not(.old) {
+	position: relative;
+	display: block;
+	pointer-events: auto;
+	margin: 0;
+	padding: 0;
+	input {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 5;
+	}
+	label {
+		transition: all 150ms ease-in-out;
+		@include flex;
+		@include flex-center;
+		position: relative;
+		background: $slate;
+		padding: 5px;
+		height: 36px;
+		width: 72px;
+		border-radius: 2px;
+		color: white;
+		font-size: 18px;
+		font-weight: 600;
+		* {
+			transition: all 150ms ease-in-out;
+		}
+		span {
+			padding: 0 5px;
+		}
+		.square {
+			display: block;
+			height: 100%;
+			border-radius: 2px;
+			overflow: hidden;
+			* {
+				fill: none;
+			}
+			&:first-child {
+				position: absolute;
+				top: 5px;
+				left: 5px;
+				height: calc(100% - 10px);
+				* {
+					fill: white;
+				}
+			}
+		}
+	}
+	input:checked + label {
+		background: $moxie;
+		span {
+			transform: translateX(-26px);
+		}
+		.square:first-child {
+			transform: translateX(36px);
+		}
+	}
+	&.normal, &.am-pm {
+		label {
+			> div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				div {
+					position: absolute;
+					border-radius: 1000px;
+					&:nth-child(1) {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: right center;
+					}
+					&:nth-child(2) {
+						top: 0;
+						right: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center bottom;
+					}
+					&:nth-child(3) {
+						bottom: 0;
+						right: 0;
+						width: 100%;
+						height: 2px;
+						transform-origin: left center;
+					}
+					&:nth-child(4) {
+						bottom: 0;
+						left: 0;
+						width: 2px;
+						height: 100%;
+						transform-origin: center top;
+					}
+				}
+			}
+			.square:first-child rect {
+				stroke: white;
+				stroke-width: 2px;
+				stroke-linejoin: round;
+				stroke-linecap: round;
+			}
+		}
+	}
+	&.normal {
+		> div {
+			div {
+				background: $moxie;
+			}
+		}
+	}
+	&.am-pm {
+		input + label {
+			background: mix($lake, $slate, 30%);
+			> div {
+				div {
+					background: mix($lake, $slate, 30%);
+				}
+			}
+			> span {
+				display: block;
+				position: relative;
+				height: 100%;
+				width: 50%;
+				padding: 0;
+				text-align: center;
+				> span {
+					transform: translate(0)!important;
+					position: absolute;
+					display: block;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					padding: 0;
+				}
+			}
+			.am {
+				opacity: 0;
+			}
+			.pm {
+				opacity: 1;
+			}
+		}
+		input:checked + label {
+			background: $gold;
+			.am {
+				opacity: 1;
+			}
+			.pm {
+				opacity: 0;
+			}
+		}
+	}
+	&.white-round {
+		label {
+			@include round;
+			background: rgba(white, .5);
+			.square {
+				@include round;
+				&:first-child {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					* {
+						fill: white;
+					}
+				}
+			}
+			.bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				rect {
+					@include svg-stroke(white, 2);
+				}
+			}
+		}
+		input:checked + label {
+			background: rgba(white, .5);
+		}
+	}
+	&.round {
+		label {
+			@include round;
+			.square {
+				@include round;
+			}
+			.bg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				rect {
+					@include svg-stroke(white, 2);
+				}
+			}
+		}
+	}
+}
+
+/* ---------- CHECKBOXES & RADIO [deprecate] */
+.checkbox-container.old, .radio-container.old {
 	@include flex;
 	@include flex-center;
 	div {
@@ -28,7 +385,7 @@
 	}
 }
 // checkbox inputs
-.checkbox-container {
+.checkbox-container.old {
 	div {
 		span {
 			border-radius: 3px;
@@ -60,7 +417,7 @@
 		}
 	}
 }
-.small .checkbox-container {
+.small .checkbox-container.old {
 	div {
 		span {
 			width: 20px;
@@ -71,73 +428,74 @@
 		font-size: 16px;
 	}
 }
-.checkbox-shamrock {
-	input:checked + span {
+.old.checkbox-shamrock, .checkbox-shamrock {
+	.old input:checked + span, input:checked + span {
 		background: $shamrock!important;
 	}
 }
-.checkbox-robin {
-	input:checked + span {
+.old.checkbox-robin, .checkbox-robin {
+	.old input:checked + span, input:checked + span {
 		background: $robin!important;
 	}
 }
-.checkbox-lake {
-	input:checked + span {
+.old.checkbox-lake, .checkbox-lake {
+	.old input:checked + span, input:checked + span {
 		background: $lake!important;
 	}
 }
-.checkbox-moxie {
-	input:checked + span {
+.old.checkbox-moxie, .checkbox-moxie {
+	.old input:checked + span, input:checked + span {
 		background: $moxie!important;
 	}
 }
-.checkbox-crimson {
-	input:checked + span {
+.old.checkbox-crimson, .checkbox-crimson {
+	.old input:checked + span, input:checked + span {
 		background: $crimson!important;
 	}
 }
-.checkbox-auburn, .checkbox-delivery {
-	input:checked + span {
+.old.checkbox-auburn, .old.checkbox-delivery, .checkbox-auburn, .checkbox-delivery {
+	.old input:checked + span, input:checked + span {
 		background: $auburn!important;
 	}
 }
-.checkbox-orange, .checkbox-freelancing {
-	input:checked + span {
+.old.checkbox-orange, .old.checkbox-freelancing, .checkbox-orange, .checkbox-freelancing {
+	.old input:checked + span, input:checked + span {
 		background: $orange!important;
 	}
 }
-.checkbox-gold, .checkbox-baking {
-	input:checked + span {
+.old.checkbox-gold, .old.checkbox-baking, .checkbox-gold, .checkbox-baking {
+	.old input:checked + span, input:checked + span {
 		background: $gold!important;
 	}
 }
-.checkbox-moola, .checkbox-photography {
-	input:checked + span {
+.old.checkbox-moola, .old.checkbox-photography, .checkbox-moola, .checkbox-photography {
+	.old input:checked + span, input:checked + span {
 		background: $moola!important;
 	}
 }
-.checkbox-azure, .checkbox-tech {
-	input:checked + span {
+.old.checkbox-azure, .old.checkbox-tech, .checkbox-azure, .checkbox-tech {
+	.old input:checked + span, input:checked + span {
 		background: $azure!important;
 	}
 }
-.checkbox-cobalt, .checkbox-household {
-	input:checked + span {
+.old.checkbox-cobalt, .old.checkbox-household, .checkbox-cobalt, .checkbox-household {
+	.old input:checked + span, input:checked + span {
 		background: $cobalt!important;
 	}
 }
-.checkbox-eggplant, .checkbox-athletic {
-	input:checked + span {
+.old.checkbox-eggplant, .old.checkbox-athletic, .checkbox-eggplant, .checkbox-athletic {
+	.old input:checked + span, input:checked + span {
 		background: $eggplant!important;
 	}
 }
-.checkbox-cerise, .checkbox-academic {
-	input:checked + span {
+.old.checkbox-cerise, .old.checkbox-academic, .checkbox-cerise, .checkbox-academic {
+	.old input:checked + span, input:checked + span {
 		background: $cerise!important;
 	}
 }
+
 // radio inputs
-.radio-container {
+.radio-container.old {
 	div {
 		span {
 			@include round;
@@ -159,71 +517,72 @@
 		}
 	}
 }
-.radio-shamrock {
-	input:checked + span svg {
+.old.radio-shamrock, .radio-shamrock {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $shamrock!important;
 	}
 }
-.radio-robin {
-	input:checked + span svg {
+.old.radio-robin, .radio-robin {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $robin!important;
 	}
 }
-.radio-lake {
-	input:checked + span svg {
+.old.radio-lake, .radio-lake {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $lake!important;
 	}
 }
-.radio-moxie {
-	input:checked + span svg {
+.old.radio-moxie, .radio-moxie {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $moxie!important;
 	}
 }
-.radio-crimson {
-	input:checked + span svg {
+.old.radio-crimson, .radio-crimson {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $crimson!important;
 	}
 }
-.radio-auburn, .radio-delivery {
-	input:checked + span svg {
+.old.radio-auburn, .old.radio-delivery, .radio-auburn, .radio-delivery {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $auburn!important;
 	}
 }
-.radio-orange, .radio-freelancing {
-	input:checked + span svg {
+.old.radio-orange, .old.radio-freelancing, .radio-orange, .radio-freelancing {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $orange!important;
 	}
 }
-.radio-gold, .radio-baking {
-	input:checked + span svg {
+.old.radio-gold, .old.radio-baking, .radio-gold, .radio-baking {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $gold!important;
 	}
 }
-.radio-moola, .radio-photography {
-	input:checked + span svg {
+.old.radio-moola, .old.radio-photography, .radio-moola, .radio-photography {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $moola!important;
 	}
 }
-.radio-azure, .radio-tech {
-	input:checked + span svg {
+.old.radio-azure, .old.radio-tech, .radio-azure, .radio-tech {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $azure!important;
 	}
 }
-.radio-cobalt, .radio-household {
-	input:checked + span svg {
+.old.radio-cobalt, .old.radio-household, .radio-cobalt, .radio-household {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $cobalt!important;
 	}
 }
-.radio-eggplant, .radio-athletic {
-	input:checked + span svg {
+.old.radio-eggplant, .old.radio-athletic, .radio-eggplant, .radio-athletic {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $eggplant!important;
 	}
 }
-.radio-cerise, .radio-academic {
-	input:checked + span svg {
+.old.radio-cerise, .old.radio-academic, .radio-cerise, .radio-academic {
+	.old input:checked + span svg, input:checked + span svg {
 		background: $cerise!important;
 	}
 }
+
 // both
 .txt-slate {
 	.checkbox-container, .radio-container {
@@ -232,8 +591,9 @@
 		}
 	}
 }
+
 // toggles
-.toggle {
+.toggle.old {
 	position: relative;
 	display: block;
     pointer-events: auto;

@@ -1,8 +1,8 @@
 {
-  "name": "uguru-mobile",
+  "name": "uguru-web",
   "app_id": "",
   "gulpStartupTasks": ["start-sass"],
-  "documentRoot": "web",
+  "documentRoot": "web/",
 
   "watchPatterns": [
     "shared/**/*",

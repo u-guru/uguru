@@ -1,5 +1,76 @@
 @import '../mixin';
 
+/* ---------- POPUPS */
+// regular popup
+.popup {
+	width: 100%;
+	max-width: 400px;
+	> div {
+		background: white;
+		border-radius: 2px;
+		color: $slate;
+		overflow: hidden;
+		header {
+			padding: 15px 15px 0;
+			text-align: center;
+			h2 {
+				font-size: 24px;
+				font-weight: 600;
+			}
+		}
+		> div {
+			padding: 5px 15px 0;
+			p {
+				margin: 0;
+				font-size: 16px;
+			}
+			.input-basic {
+				input {
+					background: $smoke;
+				}
+			}
+			&:first-child {
+				padding: 15px 15px 0;
+			}
+			&:nth-child(2):last-child {
+				padding: 5px 15px 0;
+			}
+			&:only-child {
+				padding: 15px;
+			}
+		}
+	}
+	&.with-header {
+		> div {
+			header {
+				padding: 15px;
+			}
+			> div {
+				padding: 15px 15px 0;
+				&:only-child {
+					padding: 15px;
+				}
+			}
+		}
+	}
+}
+.button-group {
+	@include flex;
+	padding: 7.5px;
+	li {
+		padding: 7.5px;
+		width: 50%;
+		button {
+			width: 100%;
+			border-radius: 2px;
+			font-size: 18px;
+			height: auto;
+			padding: 10px 15px;
+		}
+	}
+}
+
+// tour guru popup
 .popup-tour {
 	@include flex;
 	@include flex-wrap;
@@ -10,9 +81,9 @@
 	header {
 		@include flex;
 		@include flex-center;
+		@include round;
 		width: 150px;
 		height: 150px;
-		@include round;
 		position: relative;
 		z-index: 1;
 		.popup-tour-guru {
@@ -45,78 +116,330 @@
 		color: $slate;
 		text-align: center;
 		h1 {
-			font-size: 28px;
+			font-size: 24px;
 			font-weight: 600;
 		}
 		p {
 			margin: 0;
-			font-size: 18px;
+			font-size: 16px;
 		}
 	}
 	> button {
 		width: 100%;
 		border-radius: 0 0 2px 2px;
+		height: auto;
+		padding: 10px 15px;
+		font-size: 18px;
 	}
 }
 
 /* ---------- TOOLTIPS */
-.tooltip, .popup-guru {
+// line tooltips
+.tooltip-line {
+	display: flex;
+	position: relative;
 	z-index: 99;
-	padding: 0 15px;
-	&.tooltip-center,
-	&.popup-guru-center {
-		@include center-xy;
+	width: 300px;
+	height: 210px;
+	> span {
+		position: relative;
+		display: block;
+		width: 10px;
+		height: 10px;
+		border-radius: 100%;
+		background: $moxie;
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			background: $moxie;
+			border-radius: 1000px;
+		}
 	}
-	div.with-button {
-		border-bottom-left-radius: 0!important;
-		border-bottom-right-radius: 0!important;
+	&.tooltip-top, &.tooltip-bot {
+		justify-content: center;
+		> span {
+			&:after {
+				left: 50%;
+				margin-left: -1px;
+				width: 2px;
+				height: 100px;
+			}
+		}
+		> div {
+			left: 50%;
+			margin-left: -100px;
+		}
 	}
-}
-.button-group {
-	@include flex;
-	@include flex-wrap;
-	@include flex-center;
-	padding: 7.5px;
+	&.tooltip-top {
+		> span {
+			align-self: flex-start;
+			&:after {
+				top: 0;
+			}
+		}
+		> div {
+			top: 100px;
+		}
+	}
+	&.tooltip-bot {
+		> span {
+			align-self: flex-end;
+			&:after {
+				bottom: 0;
+			}
+		}
+		> div {
+			bottom: 100px;
+		}
+	}
+	&.tooltip-left, &.tooltip-right {
+		align-items: center;
+		align-content: center;
+		> span {
+			&:after {
+				top: 50%;
+				margin-top: -1px;
+				width: 100px;
+				height: 2px;
+			}
+		}
+		> div {
+			top: 50%;
+			margin-top: -57px;
+		}
+	}
+	&.tooltip-left {
+		justify-content: flex-start;
+		> span {
+			&:after {
+				left: 0;
+			}
+		}
+		> div {
+			left: 100px;
+		}
+	}
+	&.tooltip-right {
+		justify-content: flex-end;
+		> span {
+			&:after {
+				right: 0;
+			}
+		}
+		> div {
+			right: 100px;
+		}
+	}
+	> div {
+		position: absolute;
+		width: 200px;
+		height: 100px;
+		background: rgba(white,.9);
+		border-radius: 2px;
+		color: $slate;
+		font-size: 18px;
+		font-weight: 600;
+		overflow: hidden;
+		> span {
+			display: block;
+			padding: 10px 15px;
+		}
+		> div {
+			position: absolute;
+			background: $moxie;
+			border-radius: 1000px;
+			&:nth-child(1) {
+				top: 0;
+				left: 0;
+				width: 50%;
+				height: 2px;
+				border-radius: 1000px 0 0 1000px;
+			}
+			&:nth-child(2) {
+				top: 0;
+				right: 0;
+				width: 50%;
+				height: 2px;
+				border-radius: 0 1000px 1000px 0;
+			}
+			&:nth-child(3) {
+				top: 0;
+				right: 0;
+				width: 2px;
+				height: 50%;
+				border-radius: 1000px 1000px 0 0;
+			}
+			&:nth-child(4) {
+				bottom: 0;
+				right: 0;
+				width: 2px;
+				height: 50%;
+				border-radius: 0 0 1000px 1000px;
+			}
+			&:nth-child(5) {
+				bottom: 0;
+				right: 0;
+				width: 50%;
+				height: 2px;
+				border-radius: 0 1000px 1000px 0;
+			}
+			&:nth-child(6) {
+				bottom: 0;
+				left: 0;
+				width: 50%;
+				height: 2px;
+				border-radius: 1000px 0 0 1000px;
+			}
+			&:nth-child(7) {
+				bottom: 0;
+				left: 0;
+				width: 2px;
+				height: 50%;
+				border-radius: 1000px 1000px 0 0;
+			}
+			&:nth-child(8) {
+				top: 0;
+				left: 0;
+				width: 2px;
+				height: 50%;
+				border-radius: 0 0 1000px 1000px;
+			}
+		}
+	}
 	button {
 		height: auto;
 		padding: 10px 15px;
-		margin: 7.5px;
-		border-radius: 2px!important;
-		width: 100px;
 		font-size: 18px;
-		font-weight: 600;
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
 		line-height: 1;
-		background: $shamrock;
-		&:hover,
-		&:focus {
-			background: lighten($shamrock, 10%);
-		}
-		&:active,
-		&.activated {
-			background: lighten($slate, 20%);
-		}
-		&.button-group-cancel {
-			background: lighten($slate, 30%)!important;
-			&:hover,
-			&:focus {
-				background: lighten($slate, 40%)!important;
-			}
-			&:active,
-			&.activated {
-				background: lighten($slate, 20%)!important;
+	}
+	&.tooltip-top {
+		> div {
+			> div {
+				&:nth-child(1) {
+					transform-origin: right center;
+				}
+				&:nth-child(2) {
+					transform-origin: left center;
+				}
+				&:nth-child(3) {
+					transform-origin: center top;
+				}
+				&:nth-child(4) {
+					transform-origin: center top;
+				}
+				&:nth-child(5) {
+					transform-origin: right center;
+				}
+				&:nth-child(6) {
+					transform-origin: left center;
+				}
+				&:nth-child(7) {
+					transform-origin: center top;
+				}
+				&:nth-child(8) {
+					transform-origin: center top;
+				}
 			}
 		}
 	}
-	div {
-		width: 100%;
-		text-align: center;
-		button {
-			width: 150px;
+	&.tooltip-right {
+		> div {
+			> div {
+				&:nth-child(1) {
+					transform-origin: right center;
+				}
+				&:nth-child(2) {
+					transform-origin: right center;
+				}
+				&:nth-child(3) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(4) {
+					transform-origin: center top;
+				}
+				&:nth-child(5) {
+					transform-origin: right center;
+				}
+				&:nth-child(6) {
+					transform-origin: right center;
+				}
+				&:nth-child(7) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(8) {
+					transform-origin: center top;
+				}
+			}
+		}
+	}
+	&.tooltip-left {
+		> div {
+			> div {
+				&:nth-child(1) {
+					transform-origin: left center;
+				}
+				&:nth-child(2) {
+					transform-origin: left center;
+				}
+				&:nth-child(3) {
+					transform-origin: center top;
+				}
+				&:nth-child(4) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(5) {
+					transform-origin: left center;
+				}
+				&:nth-child(6) {
+					transform-origin: left center;
+				}
+				&:nth-child(7) {
+					transform-origin: center top;
+				}
+				&:nth-child(8) {
+					transform-origin: center bottom;
+				}
+			}
+		}
+	}
+	&.tooltip-bot {
+		> div {
+			> div {
+				&:nth-child(1) {
+					transform-origin: left center;
+				}
+				&:nth-child(2) {
+					transform-origin: right center;
+				}
+				&:nth-child(3) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(4) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(5) {
+					transform-origin: left center;
+				}
+				&:nth-child(6) {
+					transform-origin: right center;
+				}
+				&:nth-child(7) {
+					transform-origin: center bottom;
+				}
+				&:nth-child(8) {
+					transform-origin: center bottom;
+				}
+			}
 		}
 	}
 }
-// tooltips
+
+// regular tooltips
 .tooltip {
+	padding: 0 15px;
 	min-width: 200px;
 	div {
 		position: relative;
@@ -126,7 +449,7 @@
 		color: $slate;
 		font-size: 18px;
 		font-weight: 600;
-		&::after {
+		&:after {
 			content: "";
 			bottom: 0;
 			width: 0;
@@ -134,180 +457,48 @@
 			border: 10px solid transparent;
 		}
 	}
-	&.white {
-		div {
-			background: white;
-		}
-	}
-	button {
-		position: relative;
-		z-index: 10;
-		height: auto;
-		padding: 10px 15px;
-		font-size: 18px;
-		font-weight: 600;
-		color: white;
-		background: $shamrock;
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
-		line-height: 1;
-		&:hover, &:focus {
-			background: mix($shamrock, white);
-			color: mix($shamrock, $slate);
-		}
-		&:active {
-			background: mix($shamrock, $slate);
-			color: white;
-		}
-	}
 	&.tooltip-top {
 		div {
-			&::after {
-				@include center-x;
+			&:after {
+				position: absolute;
+				left: 50%;
+				margin-left: -10px;
 				top: -20px;
 				border-bottom-color: rgba(white,.9);
 			}
 		}
-		&.white {
-			div {
-				&::after {
-					border-bottom-color: white;
-				}
-			}
-		}
 	}
-	&.tooltip-bottom {
+	&.tooltip-bot {
 		div {
-			&::after {
-				@include center-x;
+			&:after {
+				position: absolute;
+				left: 50%;
+				margin-left: -10px;
 				bottom: -20px;
 				border-top-color: rgba(white,.9);
-			}
-		}
-		&.white {
-			div {
-				&::after {
-					border-top-color: white;
-				}
-			}
-		}
-		button {
-			&::after {
-				@include prefix(transition, all 150ms ease-in-out);
-				@include center-x;
-				content: "";
-				width: 0;
-				height: 0;
-				border: 10px solid transparent;
-				bottom: -20px;
-				border-top-color: $shamrock;
-			}
-			&:hover, &:focus {
-				&::after {
-					border-top-color: mix($shamrock, white);
-				}
-			}
-			&:active {
-				&::after {
-					border-top-color: mix($shamrock, $slate);
-				}
 			}
 		}
 	}
 	&.tooltip-left {
 		div {
-			&::after {
-				@include center-y;
+			&:after {
+				position: absolute;
+				top: 50%;
+				margin-top: -10px;
 				left: -20px;
 				border-right-color: rgba(white,.9);
-			}
-		}
-		&.white {
-			div {
-				&::after {
-					border-right-color: white;
-				}
 			}
 		}
 	}
 	&.tooltip-right {
 		div {
-			&::after {
-				@include center-y;
+			&:after {
+				position: absolute;
+				top: 50%;
+				margin-top: -10px;
 				right: -20px;
 				border-left-color: rgba(white,.9);
 			}
-		}
-		&.white {
-			div {
-				&::after {
-					border-left-color: white;
-				}
-			}
-		}
-	}
-}
-
-// popups
-.popup-guru {
-	width: 75%;
-	max-width: 250px;
-	h1 {
-		background: rgba($charcoal,.9);
-		border-top-left-radius: 2px;
-		border-top-right-radius: 2px;
-		padding: 10px 15px 0;
-		font-size: 20px;
-		font-weight: 600;
-		text-align: center;
-		+ div {
-			border-top-left-radius: 0!important;
-			border-top-right-radius: 0!important;
-		}
-	}
-	> div {
-		background: rgba($charcoal,.9);
-		padding: 10px 15px;
-		width: 100%;
-		border-radius: 2px;
-		color: white;
-		font-size: 18px;
-		font-weight: 600;
-		&.min-height {
-			min-height: 100px;
-		}
-		&.popup-guru-vertical-center {
-			@include flex;
-			@include flex-wrap;
-			@include flex-center-vertical;
-		}
-		input {
-			display: block;
-			width: 100%;
-			padding: 5px 10px;
-			border: 0;
-			&:last-child {
-				margin-bottom: 5px;
-			}
-		}
-	}
-	button {
-		height: auto;
-		padding: 10px 15px;
-		font-size: 18px;
-		font-weight: 600;
-		background: lighten($shamrock, 20%);
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
-		line-height: 1;
-		&:hover,
-		&:focus {
-			@include opacity(1);
-			background: $shamrock;
-		}
-		&.activated,
-		&:active {
-			background: $taupe;
 		}
 	}
 }
@@ -1228,7 +1419,9 @@
 			border: 6px solid transparent;
 		}
 		&.badge-top {
-			@include center-x;
+			position: absolute;
+			left: 50%;
+			margin-left: -18px;
 			top: -40px;
 			&:after {
 				bottom: -12px;
@@ -1240,7 +1433,9 @@
 			}
 		}
 		&.badge-bottom {
-			@include center-x;
+			position: absolute;
+			left: 50%;
+			margin-left: -18px;
 			bottom: -40px;
 			&:after {
 				top: -12px;

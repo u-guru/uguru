@@ -1,6 +1,7 @@
 @import '../mixin';
 
-// containers
+/*---------- CONTAINERS */
+// tile borders
 [class*="tile-border"] {
 	li {
 		position: relative;
@@ -49,7 +50,8 @@
 	}
 }
 
-// profile tile
+/*---------- PROFILE TILES & CARDLETS */
+// tile container
 .pf-tile-container {
 	-webkit-perspective: 1000;
 	perspective: 1000;
@@ -63,17 +65,23 @@
 		width: 50%;
 		height: 50%;
 		cursor: pointer;
+		&:nth-child(1) {
+			top: 0;
+			left: 0;
+		}
+		&:nth-child(2) {
+			top: 0;
+			right: 0;
+		}
+		&:nth-child(3) {
+			bottom: 0;
+			right: 0;
+		}
+		&:nth-child(4) {
+			bottom: 0;
+			left: 0;
+		}
 		&:hover, &:focus {
-			~ .bg-academic {
-				.pf-tile-border {
-					transform: translateZ(20px);
-				}
-				.pf-tile-top {
-					.pf-pricing {
-						transform: translateZ(40px);
-					}
-				}
-			}
 			~ .bg-baking {
 				.pf-pricing {
 					color: $gold;
@@ -87,29 +95,82 @@
 						color: white;
 						.border {
 							&:nth-child(1) {
-								transform: scaleY(12);
+								transform: scaleY(17);
 							}
 							&:nth-child(2) {
 								transform: scaleY(1);
 							}
 						}
 					}
-					h1, div {
-						transform: translateZ(20px);
+				}
+			}
+			~ .bg-baking, ~ .bg-household {
+				.rating-stars {
+					li {
+						svg {
+							stroke: white!important;
+							polygon:nth-child(2) {
+								fill: white;
+							}
+						}
+					}
+					&[data-rating*="1"] {
+						li:nth-child(1) {
+							svg {
+								polygon {
+									fill: white;
+								}
+							}
+						}
+					}
+					&[data-rating*="2"] {
+						li:nth-child(1),
+						li:nth-child(2) {
+							svg {
+								polygon {
+									fill: white;
+								}
+							}
+						}
+					}
+					&[data-rating*="3"] {
+						li:nth-child(1),
+						li:nth-child(2),
+						li:nth-child(3) {
+							svg {
+								polygon {
+									fill: white;
+								}
+							}
+						}
+					}
+					&[data-rating*="4"] {
+						li:nth-child(1),
+						li:nth-child(2),
+						li:nth-child(3),
+						li:nth-child(4) {
+							svg {
+								polygon {
+									fill: white;
+								}
+							}
+						}
+					}
+					&[data-rating*="5"] {
+						li {
+							svg {
+								polygon {
+									fill: white;
+								}
+							}
+						}
 					}
 				}
 			}
 			~ .bg-photography {
 				.pf-tile-border {
-					transform: translateZ(20px);
 					div {
 						opacity: 1;
-					}
-				}
-				.pf-tile-bottom {
-					transform: translateZ(20px);
-					.pf-pricing {
-						transform: translateZ(40px);
 					}
 				}
 			}
@@ -117,21 +178,15 @@
 				.pf-tile-top {
 					&:after {
 						opacity: 1;
-						transform: translateZ(20px);
-					}
-					.pf-pricing {
-						transform: translateZ(20px);
 					}
 				}
 				.pf-tile-bottom {
-					transform: translateZ(20px);
 					background: $azure;
 					h1 {
 						color: white;
 					}
 				}
 				.border-corner {
-					transform: translateZ(20px);
 					span {
 						&:nth-child(1) {
 							transform: scaleY(0);
@@ -144,7 +199,6 @@
 					}
 				}
 				.border-outside {
-					transform: translateZ(20px);
 					span {
 						&:nth-child(1) {
 							transform: scaleX(0);
@@ -173,7 +227,6 @@
 					}
 				}
 				.border-top {
-					transform: translateZ(20px);
 					span {
 						&:nth-child(1) {
 							transform: scaleX(0);
@@ -190,11 +243,21 @@
 				.pf-tile-desc {
 					opacity: 1;
 				}
+				.pf-tile-bottom {
+					h1 {
+						color: white;
+					}
+					div:not(.pf-pricing) {
+						transform: translate3d(10px, -10px, 0);
+					}
+					.pf-pricing {
+						transform: translate3d(-10px, -10px, 0);
+						background: rgba(white, .2);
+						color: white;
+					}
+				}
 				.bub-front-9 {
 					transform: scale(18);
-				}
-				.pf-tile-desc {
-					transform: translateZ(20px);
 				}
 			}
 		}
@@ -214,48 +277,180 @@
 				}
 			}
 		}
-		&:nth-child(1) {
-			top: 0;
-			left: 0;
-			&:hover, &:focus {
-				~ .pf-tile {
-					transform-origin: bottom right;
-					transform: rotateX(5deg) rotateY(-5deg);
+	}
+	// parallax - leave this alone
+	@media screen and (min-width: 768px) {
+		&:not(.mobile) {
+			a {
+				&:hover, &:focus {
+					~ .pf-cardlet {
+						.pf-cardlet-front {
+							transform: translateZ(10px)!important;
+							div:empty {
+								transform: translateZ(10px)!important;
+							}
+						}
+						.pf-cardlet-ribbon-edge {
+							transform: translateZ(10px) rotate(45deg)!important;
+						}
+						.pf-cardlet-ribbon {
+							transform: translateZ(20px)!important;
+						}
+						.pf-cardlet-back {
+							transform: translateZ(-10px)!important;
+						}
+						.pf-cardlet-bottom {
+							transform: translateZ(20px)!important;
+							h1, > div:not(.deco) {
+								transform: translateZ(10px)!important;
+							}
+							.pf-cardlet-icon {
+								transform: translateZ(15px)!important;
+							}
+						}
+						&.bg-academic {
+							.pf-cardlet-bottom {
+								> div:not(.deco) {
+									transform: rotate(-90deg)!important;
+									h2 {
+										transform: translateZ(10px)!important;
+									}
+								}
+							}
+						}
+						&.bg-household {
+							.pf-cardlet-bottom {
+								div {
+									transform: none!important;
+									h2 {
+										transform: translateZ(10px)!important;
+									}
+								}
+							}
+						}
+					}
+					~ .pf-tile {
+						&.bg-academic {
+							.pf-tile-border {
+								transform: translateZ(20px)!important;
+							}
+							.pf-tile-top {
+								.pf-tile-icon, h1, h2 , .pf-pricing {
+									transform: translateZ(20px)!important!important;
+								}
+							}
+							.pf-tile-bottom {
+								.rating-stars {
+									transform: translateZ(20px)!important;
+								}
+							}
+						}
+						&.bg-baking {
+							.pf-tile-top {
+								h1, div {
+									transform: translateZ(40px)!important;
+								}
+							}
+						}
+						&.bg-photography {
+							.pf-tile-border {
+								transform: translateZ(20px)!important;
+							}
+							.pf-tile-bottom {
+								transform: translateZ(20px)!important;
+								h1, .rating-stars {
+									transform: translateZ(20px)!important;
+								}
+								.pf-pricing {
+									div:empty, span {
+										transform: translateZ(10px)!important;
+									}
+								}
+							}
+						}
+						&.bg-tech {
+							.pf-tile-top {
+								&:after, .pf-pricing {
+									transform: translateZ(20px)!important;
+								}
+							}
+							h1, .pf-tile-bottom, .border-corner, .border-outside, .border-top, .rating-stars {
+								transform: translateZ(20px)!important;
+							}
+						}
+						&.bg-household {
+							.pf-tile-desc {
+								transform: translateZ(20px)!important;
+							}
+							.pf-tile-bottom {
+								div:not(.pf-pricing) {
+									transform: translate3d(10px, -10px, 30px)!important;
+								}
+								.pf-pricing {
+									transform: translate3d(-10px, -10px, 30px)!important;
+								}
+							}
+						}
+					}
 				}
-			}
-		}
-		&:nth-child(2) {
-			top: 0;
-			right: 0;
-			&:hover, &:focus {
-				~ .pf-tile {
-					transform-origin: bottom left;
-					transform: rotateX(5deg) rotateY(5deg);
+				&:nth-child(1) {
+					&:hover, &:focus {
+						~ .pf-tile, ~ .pf-cardlet {
+							transform-origin: bottom right!important;
+							transform: rotateX(5deg) rotateY(-5deg)!important;
+						}
+						~ .pf-cardlet {
+							.pf-cardlet-ribbon-edge {
+								transform: translate3d(2px,-2px,10px) rotate(45deg)!important;
+							}
+						}
+					}
 				}
-			}
-		}
-		&:nth-child(3) {
-			bottom: 0;
-			right: 0;
-			&:hover, &:focus {
-				~ .pf-tile {
-					transform-origin: top left;
-					transform: rotateX(-5deg) rotateY(5deg);
+				&:nth-child(2) {
+					&:hover, &:focus {
+						~ .pf-tile, ~ .pf-cardlet {
+							transform-origin: bottom left!important;
+							transform: rotateX(5deg) rotateY(5deg)!important;
+						}
+						~ .pf-cardlet {
+							.pf-cardlet-ribbon-edge {
+								transform: translate3d(2px,-2px,10px) rotate(45deg)!important;
+							}
+						}
+					}
 				}
-			}
-		}
-		&:nth-child(4) {
-			bottom: 0;
-			left: 0;
-			&:hover, &:focus {
-				~ .pf-tile {
-					transform-origin: top right;
-					transform: rotateX(-5deg) rotateY(-5deg);
+				&:nth-child(3) {
+					&:hover, &:focus {
+						~ .pf-tile, ~ .pf-cardlet {
+							transform-origin: top left!important;
+							transform: rotateX(-5deg) rotateY(5deg)!important;
+						}
+						~ .pf-cardlet {
+							.pf-cardlet-ribbon-edge {
+								transform: translate3d(4px,-1px,10px) rotate(45deg)!important;
+							}
+						}
+					}
+				}
+				&:nth-child(4) {
+					&:hover, &:focus {
+						~ .pf-tile, ~ .pf-cardlet {
+							transform-origin: top right!important;
+							transform: rotateX(-5deg) rotateY(-5deg)!important;
+						}
+						~ .pf-cardlet {
+							.pf-cardlet-ribbon-edge {
+								transform: translate3d(2px,-1px,10px) rotate(45deg)!important;
+							}
+						}
+					}
 				}
 			}
 		}
 	}
 }
+
+// profile tile
 .pf-tile {
 	position: relative;
 	z-index: 1;
@@ -277,12 +472,18 @@
 		background-position: center center;
 		background-size: cover;
 		.pf-tile-icon {
+			@include flex;
+			@include flex-center;
+			@include round;
+			background: rgba(white, .25);
+			width: 64px;
+			height: 64px;
 			svg {
 				display: block;
 				width: 48px;
 				height: 48px;
 				* {
-					@include svg-stroke(white, 3);
+					@include svg-stroke(white, 4);
 				}
 			}
 		}
@@ -322,6 +523,7 @@
 		}
 	}
 	.rating-stars {
+		transition: all 500ms ease-out;
 		li {
 			padding: 0!important;
 			svg {
@@ -377,15 +579,14 @@
 			border-radius: 2px;
 			.pf-pricing {
 				position: absolute;
-				top: 25px;
+				top: 10px;
+				left: 10px;
 				z-index: 11;
-				right: 0;
-				background: $cerise;
+				background: white;
 				height: 40px;
-				padding: 10px 15px 10px 0;
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-				color: white;
+				padding: 10px 0 10px 15px;
+				border-top-left-radius: 2px;
+				color: $cerise;
 				font-size: 16px;
 				font-weight: 700;
 				transition: all 500ms ease-out;
@@ -393,13 +594,13 @@
 					content: "";
 					position: absolute;
 					top: 0;
-					left: -20px;
+					right: -20px;
 					width: 0;
 					height: 0;
-					border: 20px solid $cerise;
+					border: 20px solid white;
 					border-left-width: 10px;
 					border-right-width: 10px;
-					border-left-color: transparent;
+					border-right-color: transparent;
 				}
 			}
 		}
@@ -430,6 +631,16 @@
 				border-radius: 2px;
 				overflow: hidden;
 				transition: all 250ms ease-in-out;
+				.rating-stars {
+					position: relative;
+					z-index: 3;
+					margin-top: 5px;
+					li {
+						svg {
+							height: auto;
+						}
+					}
+				}
 				.border {
 					display: block;
 					position: absolute;
@@ -510,8 +721,6 @@
 			width: 100%;
 			height: 200px;
 			div {
-				@include flex;
-				@include flex-center;
 				opacity: 0;
 				width: 100%;
 				height: 100%;
@@ -521,7 +730,7 @@
 				font-weight: 600;
 				line-height: 1.2;
 				text-align: center;
-				padding: 15px;
+				padding: 15px 15px 35px;
 			}
 		}
 		.pf-tile-top {
@@ -538,22 +747,92 @@
 			height: 70px;
 			color: $moola;
 			transform-style: preserve-3d;
+			.rating-stars {
+				transition: all 500ms ease-out;
+				li {
+					svg {
+						height: auto;
+					}
+				}
+			}
 			.pf-pricing {
-				@include round;
 				@include flex;
 				@include flex-center;
 				position: absolute;
-				top: -44px;
-				right: 15px;
-				background: $moola;
-				width: 64px;
-				height: 64px;
-				color: white;
+				top: -35px;
+				right: 5px;
+				background: white;
+				padding: 10px 15px;
+				border-top-left-radius: 2px;
+				color: $moola;
 				font-size: 16px;
 				font-weight: 600;
-				transition: all 250ms ease-in-out;
-				&:before, &:after {
-					display: none;
+				span {
+					transition: all 500ms ease-out;
+				}
+				.pf-border {
+					opacity: 0.25;
+					div:empty {
+						position: absolute;
+						border-radius: 1000px;
+						background: $moola;
+						&:nth-child(1) {
+							top: 5px;
+							left: 5px;
+							width: 10px;
+							height: 2px;
+							transform-origin: left center;
+						}
+						&:nth-child(2) {
+							top: 5px;
+							left: 5px;
+							width: 2px;
+							height: 10px;
+							transform-origin: center top;
+						}
+						&:nth-child(3) {
+							top: 5px;
+							right: 5px;
+							width: 10px;
+							height: 2px;
+							transform-origin: right center;
+						}
+						&:nth-child(4) {
+							top: 5px;
+							right: 5px;
+							width: 2px;
+							height: 10px;
+							transform-origin: center bottom;
+						}
+						&:nth-child(5) {
+							bottom: 5px;
+							right: 5px;
+							width: 10px;
+							height: 2px;
+							transform-origin: right center;
+						}
+						&:nth-child(6) {
+							bottom: 5px;
+							right: 5px;
+							width: 2px;
+							height: 10px;
+							transform-origin: center bottom;
+						}
+						&:nth-child(7) {
+							bottom: 5px;
+							left: 5px;
+							width: 10px;
+							height: 2px;
+							transform-origin: left center;
+						}
+						&:nth-child(8) {
+							bottom: 5px;
+							left: 5px;
+							width: 2px;
+							height: 10px;
+							transform-origin: center bottom;
+						}
+					}
 				}
 			}
 		}
@@ -720,9 +999,17 @@
 			background: $charcoal;
 			border: 0;
 			transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
+			.rating-stars {
+				transition: all 500ms ease-out;
+				li {
+					svg {
+						height: auto;
+					}
+				}
+			}
 			h1 {
 				color: $azure;
-				transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
+				transition: all 500ms ease-out;
 			}
 		}
 	}
@@ -754,11 +1041,11 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			z-index: 3;
+			z-index: 0;
 			width: 100%;
 			height: 100%;
 			border: 10px solid white;
-			padding: 15px;
+			padding: 15px 15px 70px;
 			background: rgba(mix($cobalt, $slate), .95);
 			font-size: 18px;
 			font-weight: 600;
@@ -778,6 +1065,10 @@
 			border: 10px solid white;
 			border-top: 0;
 			height: 70px;
+			padding: 15px 0 15px 5px;
+			div {
+				transition: all 500ms ease-out;
+			}
 			h1 {
 				color: $cobalt;
 			}
@@ -810,6 +1101,11 @@
 	width: 100%;
 	max-width: 400px;
 	height: 270px;
+	transition: all 500ms ease-out;
+	transform-style: preserve-3d;
+	> * {
+		transform-style: preserve-3d;
+	}
 	.pf-cardlet-front, .pf-cardlet-back {
 		width: calc(100% - 15px);
 		height: calc(100% - 15px);
@@ -817,8 +1113,10 @@
 		background-color: lighten($slate, 15%);
 		background-position: center center;
 		background-size: cover;
+		transition: all 500ms ease-out;
 	}
 	.pf-cardlet-bottom {
+		transition: all 500ms ease-out;
 		@include flex;
 		@include flex-wrap;
 		@include flex-center;
@@ -830,6 +1128,7 @@
 		height: calc(100% - 15px);
 		padding: 15px;
 		h1 {
+			transition: all 500ms ease-out;
 			width: 100%;
 			font-size: 24px;
 			font-weight: 700;
@@ -839,16 +1138,19 @@
 				font-size: 28px;
 			}
 		}
-		> div {
+		> div:not(:empty) {
+			transition: all 500ms ease-out;
 			margin-top: 5px;
 			text-align: center;
 			text-shadow: 0 0 20px rgba(lighten($slate, 15%), .5);
 			h2 {
+				transition: all 500ms ease-out;
 				margin-top: 0;
 				font-size: 16px;
 				font-weight: 700;
 			}
 			h3 {
+				transition: all 500ms ease-out;
 				font-size: 14px;
 				font-weight: 700;
 				text-transform: uppercase;
@@ -885,6 +1187,7 @@
 		right: 0;
 	}
 	.pf-cardlet-ribbon {
+		transition: all 500ms ease-out;
 		@include flex;
 		@include flex-center;
 		position: absolute;
@@ -923,6 +1226,7 @@
 		}
 	}
 	.pf-cardlet-ribbon-edge {
+		transition: all 500ms ease-out;
 		transform: rotate(45deg);
 		position: absolute;
 		z-index: 1;
@@ -930,8 +1234,9 @@
 		right: 11px;
 		width: 0;
 		height: 0;
-		border: 10px solid transparent;
-		border-right-color: mix($lake, white);
+		border: 10px solid mix($lake, white);
+		border-bottom-color: transparent!important;
+		border-left-color: transparent!important;
 	}
 	&:not(.highlight) {
 		.pf-cardlet-ribbon, .pf-cardlet-ribbon-edge {
@@ -940,29 +1245,65 @@
 	}
 	&.bg-academic {
 		.pf-cardlet-bottom {
-			top: 30px;
-			left: 45px;
-			width: calc(100% - 105px);
-			height: calc(100% - 75px);
-			border: 2px solid white;
+			top: 28px;
+			left: 43px;
+			width: calc(100% - 101px);
+			height: calc(100% - 71px);
+			// border: 2px solid white;
 			border-radius: 2px;
 			border-top-left-radius: 0;
 			background: rgba($cerise, .1);
-			div {
-				@include flex;
-				@include flex-center;
+			> div:not(.deco) {
 				transform: rotate(-90deg);
 				position: absolute;
-				width: 120px;
-				top: 43px;
+				top: 45px;
 				left: -75px;
-				margin-top: 0;
-				background: white;
-				color: $cerise;
+				width: 120px;
 				height: 30px;
-				padding: 5px 10px;
-				border-top-left-radius: 2px;
-				border-top-right-radius: 2px;
+				margin-top: 0;
+				> div {
+					@include flex;
+					@include flex-center;
+					width: 100%;
+					height: 100%;
+					padding: 5px 10px;
+					background: white;
+					color: $cerise;
+					border-top-left-radius: 2px;
+					border-top-right-radius: 2px;
+					transform-origin: right center;
+				}
+			}
+			.pf-cardlet-border {
+				div:empty {
+					position: absolute;
+					border-radius: 1000px;
+					background: white;
+					&:nth-child(1) {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+					}
+					&:nth-child(2) {
+						top: 0;
+						right: 0;
+						width: 2px;
+						height: 100%;
+					}
+					&:nth-child(3) {
+						top: 0;
+						left: 0;
+						width: 2px;
+						height: 100%;
+					}
+					&:nth-child(4) {
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+					}
+				}
 			}
 		}
 		.pf-cardlet-ribbon {
@@ -997,6 +1338,7 @@
 			height: 100%;
 			left: 30px;
 			.pf-cardlet-icon {
+				transition: all 500ms ease-out;
 				@include round;
 				margin: 0 0 5px;
 				width: 96px;
@@ -1026,10 +1368,39 @@
 			height: 185px;
 			border-bottom-left-radius: 0;
 			border-bottom-right-radius: 0;
-			border: 10px solid white;
-			border-bottom-width: 0;
+			// border: 10px solid white;
+			// border-bottom-width: 0;
 			&:after {
 				display: none;
+			}
+			div:empty {
+				position: absolute;
+				background: white;
+				transition: all 500ms ease-out;
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 10px;
+					transform-origin: center center;
+					border-radius: 3px;
+				}
+				&:nth-child(2) {
+					top: 0;
+					right: 0;
+					width: 10px;
+					height: 102%;
+					transform-origin: right center;
+					border-radius: 3px 3px 0 0;
+				}
+				&:nth-child(3) {
+					top: 0;
+					left: 0;
+					width: 10px;
+					height: 102%;
+					transform-origin: left center;
+					border-radius: 3px 3px 0 0;
+				}
 			}
 		}
 		.pf-cardlet-back {
@@ -1092,26 +1463,65 @@
 			background: mix($slate, white, 90%);
 		}
 		.pf-cardlet-bottom {
+			position: relative;
 			top: 15px;
 			left: 0;
 			width: 100%;
 			height: calc(100% - 30px);
-			border: 2px solid $azure;
+			// border: 2px solid $azure;
 			border-radius: 2px;
-			padding: 30px;
-			div {
+			padding: 32px;
+			> div:empty {
+				transition: all 500ms ease-out;
+				position: absolute;
+				border-radius: 1000px;
+				background: $azure;
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 2px;
+					transform-origin: center center;
+				}
+				&:nth-child(2) {
+					top: 0;
+					left: 0;
+					width: 2px;
+					height: 100%;
+					transform-origin: left center;
+				}
+				&:nth-child(3) {
+					bottom : 0;
+					left: 0;
+					width: calc(100% / 3);
+					height: 2px;
+					transform-origin: left center;
+				}
+				&:nth-child(4) {
+					top: 0;
+					right: 0;
+					width: 2px;
+					height: 100%;
+					transform-origin: right center;
+				}
+				&:nth-child(5) {
+					bottom : 0;
+					right: 0;
+					width: calc(100% / 3);
+					height: 2px;
+					transform-origin: right center;
+				}
+			}
+			> div:not(:empty) {
 				@include flex;
 				@include flex-center;
 				position: absolute;
-				bottom: -17px;
+				bottom: -15;
 				height: 30px;
-				width: 150px;
-				left: 50%;
-				margin-left: -75px;
-				background: mix($slate, white, 90%);
-				&:before, &:after {
+				width: calc(100% / 3);
+				left: calc(100% / 3);
+				> div {
 					@include round;
-					content: "";
 					display: block;
 					position: absolute;
 					top: 50%;
@@ -1120,12 +1530,12 @@
 					width: 10px;
 					height: 10px;
 					background: $azure;
-				}
-				&:before {
-					left: -5px;
-				}
-				&:after {
-					right: -5px;
+					&:first-child {
+						left: -5px;
+					}
+					&:last-child {
+						right: -5px;
+					}
 				}
 			}
 		}
@@ -1143,25 +1553,94 @@
 	}
 	&.bg-household {
 		.pf-cardlet-front {
-			border: 10px solid white;
+			// border: 10px solid white;
+			div:empty {
+				position: absolute;
+				background: white;
+				transition: all 500ms ease-out;
+				border-radius: 3px;
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 10px;
+					transform-origin: center center;
+				}
+				&:nth-child(2) {
+					top: 0;
+					right: 0;
+					width: 10px;
+					height: 100%;
+					transform-origin: right center;
+				}
+				&:nth-child(3) {
+					top: 0;
+					left: 0;
+					width: 10px;
+					height: 100%;
+					transform-origin: left center;
+				}
+				&:nth-child(4) {
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 10px;
+					transform-origin: center center;
+				}
+			}
 		}
 		.pf-cardlet-back {
 			background: white;
 		}
 		.pf-cardlet-bottom {
-			div {
+			> div {
 				position: absolute;
-				bottom: 10px;
-				right: 10px;
+				bottom: 8px;
+				right: 8px;
 				padding-top: 10px;
 				padding-left: 15px;
-				padding-bottom: 5px;
-				padding-right: 10px;
+				padding-bottom: 7px;
+				padding-right: 12px;
 				margin: 0;
 				background: white;
 				color: $cobalt;
 				border-top-left-radius: 2px;
 				text-shadow: none!important;
+				.pf-cardlet-border {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					width: 200px;
+					height: 200px;
+					overflow: hidden;
+					div:empty {
+						position: absolute;
+						border-radius: 100%;
+						background: white;
+						&:nth-child(1) {
+							bottom: -8px;
+							right: 75px;
+							width: 50px;
+							height: 50px;
+						}
+						&:nth-child(2) {
+							bottom: 20px;
+							right: 60px;
+							width: 30px;
+							height: 30px;
+						}
+						&:nth-child(3) {
+							bottom: -15px;
+							right: -8px;
+							width: 80px;
+							height: 80px;
+						}
+					}
+				}
+				h2 {
+					position: relative;
+					z-index: 2;
+				}
 			}
 		}
 		.pf-cardlet-ribbon {
@@ -1176,7 +1655,7 @@
 	}
 }
 
-// category tile
+/*---------- CATEGORY TILES */
 .category-tile {
 	display: block;
 	position: relative;
@@ -1417,7 +1896,6 @@
 		}
 	}
 }
-
 a.category-tile {
 	&.bg-delivery {
 		&:hover, &:focus {
@@ -1901,7 +2379,7 @@ a.category-tile {
 	}
 }
 
-// credit tile
+/*---------- CREDIT TILES */
 .credit-tile {
 	width: 100%;
 	max-width: 350px;
@@ -1943,7 +2421,7 @@ a.category-tile {
 	}
 }
 
-// pricing tile
+/*---------- PRICING TILES */
 .pricing-tile {
 	width: 100%;
 	max-width: 240px;
@@ -2009,7 +2487,7 @@ a.category-tile {
 	}
 }
 
-// calendar tile
+/*---------- CALENDAR TILES */
 .calendar-tile {
 	// border: 2px solid $shamrock;
 	// border-left-width: 5px;
@@ -2196,7 +2674,7 @@ a.category-tile {
 	}
 }
 
-// attachment tile
+/*---------- ATTACHMENT TILES */
 .attachment-tile {
 	@include flex;
 	border-radius: 2px;
@@ -2222,7 +2700,7 @@ a.category-tile {
 	}
 }
 
-// ranking tile
+/*---------- RANKING TILES */
 .ranking-container {
 	@include flex;
 	@include flex-center;
@@ -2352,7 +2830,7 @@ a.category-tile {
 	}
 }
 
-// feature tile
+/*---------- FEATURE TILES */
 .feature-tile {
 	@include flex;
 	background: lighten($slate, 15%);
@@ -2404,7 +2882,7 @@ a.category-tile {
 	}
 }
 
-// money tile
+/*---------- MONEY TILES */
 .money-tile {
 	position: relative;
 	background: $charcoal;
@@ -2506,7 +2984,8 @@ a.category-tile {
 	}
 }
 
-// tile group [needs height from parent]
+/*---------- TILE GROUPS */
+// need height from parent
 .tile-group {
 	width: 100%;
 	+ .tile-group-border {
@@ -3201,7 +3680,7 @@ a.category-tile {
 	}
 }
 
-// record tile
+/*---------- RECORD TILES */
 .record-tile-container {
 	min-width: 450px;
 	text-align: center;
@@ -3365,7 +3844,7 @@ a.category-tile {
 	}
 }
 
-// album tile
+/*---------- ALBUM TILES */
 .album-tile {
 	display: block;
 	width: 100%;
@@ -3375,7 +3854,6 @@ a.category-tile {
 		transition: all 150ms ease-in-out;
 	}
 	.album-echo {
-		@include opacity(0);
 		@include center-xy;
 		width: 100%;
 		height: 100%;
@@ -3389,16 +3867,11 @@ a.category-tile {
 		}
 	}
 	.album-art {
-		@include opacity(0);
 		position: relative;
 		z-index: 2;
-		&.animate {
-				animation: album-fade 300ms ease-in-out forwards;
-			}
 		> svg {
 			max-width: 100%;
 			&:last-child {
-				@include opacity(0);
 				position: absolute;
 				top: 50%;
 				left: 50%;
@@ -3421,17 +3894,12 @@ a.category-tile {
 			background-position: center center;
 			border-top-left-radius: 2px;
 			border-top-right-radius: 2px;
-			&:nth-child(3) {
-				@include opacity(0);
-			}
 		}
 	}
 	.album-caption {
 		position: relative;
 		z-index: 1;
 		h1, h2 {
-			@include opacity(0);
-			transform: translateY(-100%) translateZ(0);
 			padding: 5px;
 			margin: 0;
 			font-size: 14px;
@@ -3462,27 +3930,6 @@ a.category-tile {
 				padding: 10px;
 				font-size: 16px;
 			}
-		}
-	}
-	&:hover, &:focus {
-		.album-art {
-			> svg {
-				&:last-child {
-					@include opacity(1);
-				}
-			}
-			> div {
-				&:nth-child(3) {
-					@include opacity(.5);
-				}
-			}
-		}
-	}
-	&:active {
-		.album-echo {
-			@include opacity(1);
-			width: calc(100% + 30px);
-			height: calc(100% + 30px);
 		}
 	}
 }

@@ -1,4 +1,6 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-desktop">
+<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="photo-mobile">
+	<!-- academic doesn't need description, photo/household need a longer description for service -->
+
 	<div class="pf-tile-container" ng-if='activeType === "academic-desktop"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[academic-tile-init:public]"
@@ -26,7 +28,7 @@
 			</div>
 			<div class="pf-tile-top">
 				<div class="pf-pricing"
-					init-with="p:[op:0, tr:translateX(50%), t:opacity 375ms ease-out#transform 500ms ease-out]"
+					init-with="p:[op:0, tr:translateX(-50%), t:opacity 375ms ease-out#transform 500ms ease-out]"
 					when-academic-tile-init="p:[op:1:delay-875, tr:none:delay-750]">$10/hr</div>
 				<div class="pf-tile-icon"
 					init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)]"
@@ -87,24 +89,21 @@
 						</svg>
 					</li>
 				</ul>
-				<h3 class="pf-review-count"
-					init-with="p-op"
-					when-academic-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">5 Reviews</h3>
 			</div>
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "academic-mobile"'
+	<div class="pf-tile-container mobile" ng-if='activeType === "academic-mobile"'
 		init-default
 		on-init="s:[academic-tile-init:public]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-academic"
-			init-with="p:[bg:rgba(99#112#116#0), t:background 500ms ease-out]"
+			init-with="p:[bg:rgba(99#112#116#0), t:background 500ms ease-out#transform 500ms ease-out]"
 			when-academic-tile-init="p:[bg:rgba(99#112#116#1):delay-650]"
-			when-academic-tile-exit="p:[op:0:delay-1000, t:opacity 1500ms cubic-bezier(0#.3#.02#.99)]">
+			when-academic-tile-exit="p:[op:0:delay-1000, t:opacity 1500ms cubic-bezier(0#.3#.02#.99)#transform 500ms ease-out]">
 			<div class="pf-tile-border"
 				init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-				when-academic-tile-init="p:[op:1, tr:none]"
+				when-academic-tile-init="p:[op:0.5, tr:none]"
 				when-academic-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg):delay-1500, op:0:delay-2000]">
 				<div class="top"></div>
 				<div class="right"></div>
@@ -181,9 +180,6 @@
 						</svg>
 					</li>
 				</ul>
-				<h3 class="pf-review-count"
-					init-with="p-op"
-					when-academic-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">5 Reviews</h3>
 			</div>
 		</div>
 	</div>
@@ -206,6 +202,43 @@
 						<span class="border"></span>
 						<span class="border"></span>
 						<div>Peach Pancake</div>
+						<ul class="rating-stars" data-rating="4" data-half="true">
+							<li init-with="p-op"
+								when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li init-with="p-op"
+								when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li init-with="p-op"
+								when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li init-with="p-op"
+								when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li init-with="p-op"
+								when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+						</ul>
 					</h1>
 				</div>
 				<div>
@@ -226,7 +259,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "baking-mobile"'
+	<div class="pf-tile-container mobile" ng-if='activeType === "baking-mobile"'
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[baking-tile-init:public]"
 		when-baking-tile-init="p:[op:1, tr:none]"
@@ -244,6 +277,43 @@
 						<span class="border"></span>
 						<span class="border"></span>
 						<div>Peach Pancake</div>
+						<ul class="rating-stars" data-rating="4" data-half="true">
+							<li init-with="p-op"
+								when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li init-with="p-op"
+								when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li init-with="p-op"
+								when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li init-with="p-op"
+								when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+							<li init-with="p-op"
+								when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
+								<svg viewBox="0 0 100 100">
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+								</svg>
+							</li>
+						</ul>
 					</h1>
 				</div>
 				<div>
@@ -281,16 +351,73 @@
 				</div>
 			</div>
 			<div class="pf-tile-bottom">
-				<h1 init-with="p:[op:0, t:all 250ms ease-out]"
+				<h1 init-with="p:[op:0, t:opacity 250ms ease-out#transform 500ms ease-out]"
 					when-photo-tile-init="p:[op:1:delay-1000]">Professional Headshots</h1>
+				<ul class="rating-stars" data-rating="4" data-half="true">
+					<li init-with="p-op"
+						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+				</ul>
 				<div class="pf-pricing photo-price"
 					init-with="p:[tro:center center, op:0]"
-					when-photo-tile-init="a:[pf-price-rotate:set:(dur:1000ms#func:ease-out):in:delay-1000]">$10/hr</div>
+					when-photo-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
+					<div class="pf-border">
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+					</div>
+					<span>$10/hr</span>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "photo-mobile"'
+	<div class="pf-tile-container mobile" ng-if='activeType === "photo-mobile"'
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[photo-tile-init:public]"
 		when-photo-tile-init="p:[op:1, tr:none]"
@@ -309,9 +436,66 @@
 			<div class="pf-tile-bottom">
 				<h1 init-with="p:[op:0, t:all 250ms ease-out]"
 					when-photo-tile-init="p:[op:1:delay-1000]">Professional Headshots</h1>
+				<ul class="rating-stars" data-rating="4" data-half="true">
+					<li init-with="p-op"
+						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+				</ul>
 				<div class="pf-pricing photo-price"
 					init-with="p:[tro:center center, op:0]"
-					when-photo-tile-init="a:[pf-price-rotate:set:(dur:1000ms#func:ease-out):in:delay-1000]">$10/hr</div>
+					when-photo-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
+					<div class="pf-border">
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+					</div>
+					<span>$10/hr</span>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -346,6 +530,43 @@
 				when-tech-tile-init="p:[op:1:delay-250]"
 				when-tech-tile-exit="p:[op:0:delay-1000]">
 				<h1>Water Damage</h1>
+				<ul class="rating-stars" data-rating="4" data-half="true">
+					<li init-with="p-op"
+						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+				</ul>
 				<div class="border border-top">
 					<span class="left"
 						init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
@@ -386,7 +607,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "tech-mobile"'
+	<div class="pf-tile-container mobile" ng-if='activeType === "tech-mobile"'
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[tech-tile-init:public]"
 		when-tech-tile-init="p:[op:1, tr:none]"
@@ -416,6 +637,43 @@
 				when-tech-tile-init="p:[op:1:delay-250]"
 				when-tech-tile-exit="p:[op:0:delay-1000]">
 				<h1>Water Damage</h1>
+				<ul class="rating-stars" data-rating="4" data-half="true">
+					<li init-with="p-op"
+						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+					<li init-with="p-op"
+						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+						<svg viewBox="0 0 100 100">
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+						</svg>
+					</li>
+				</ul>
 				<div class="border border-top">
 					<span class="left"
 						init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
@@ -599,7 +857,7 @@
 		</div>
 	</div>
 
-	<div class="pf-tile-container" ng-if='activeType === "household-mobile"'
+	<div class="pf-tile-container mobile" ng-if='activeType === "household-mobile"'
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[household-tile-init:public]"
 		when-household-tile-init="p:[op:1, tr:none]"

@@ -13,7 +13,7 @@
 	<div>
 		<div class='bg-robin-80p full-x flex-center-vertical-wrap'>
 			<dropdown  ng-if ='false' class="height-32" ng-model="availableOptions" selected-index="0" ng-if='!addSection'> </dropdown>
-			<div class="checkbox-container" ng-if='availableOptions.selectedIndex > 0 && !addSection'>
+			<div class="checkbox-container old" ng-if='availableOptions.selectedIndex > 0 && !addSection'>
 
 				<div>
 					<input type="checkbox" id="reverse-order" ng-click="order()" />

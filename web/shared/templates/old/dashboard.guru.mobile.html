@@ -4,7 +4,7 @@
 		<a class="nav-icon-burger" name='active-side' ng-click='toggleRightSideMenu()' ng-include="img_base + 'templates/svg/main/menu-circle.html'"></a>
 		<div class="home-top">
 			<h1 ng-if="user.first_name">Hello {{user.first_name}}!</h1>
-            <div class="toggle white-round" ng-if='!user || !user.id' ng-click='signupModal.show()'>
+            <div class="toggle old white-round" ng-if='!user || !user.id' ng-click='signupModal.show()'>
                 <input type="checkbox" checked />
                 <label>
                     <svg class="square" viewBox="0 0 100 100">
