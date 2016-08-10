@@ -1,13 +1,15 @@
-<ion-view id='splash-view' class='bg-charcoal' ng-controller='SplashController as splash'>
+<ion-view id='splash-view' ng-controller='SplashController as splash'>
     <custom-states when="sidebar-icon-clicked">
     </custom-states>
     <div class="loader-scale-out" ng-if='showScaleOutLoader'
-        init-with='p:[tr:scale(0), op:1, display:block, bg:#2B3234]'
-        on-init="p:[t:all 1000ms ease, tr:scale(1000)] | class:[on-exit:add:delay-0]"
-        on-exit="p:[t:all 500ms ease, tr:scale(0):delay-500, display:none:delay-1500]"></div>
+        init-with='p:[tr:scale(50), op:1, z-index:10]'
+        on-init="t:[on-exit]"
+        on-exit="p:[t:all 500ms ease, op:0, z-index:-100]"></div>
     <!-- <ion-content class='relative full-xy' > -->
         <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()">
-            <section id='splash-home' class='splash-hero'>
+            <section id='splash-home' class='splash-hero bg-slate'
+				init-with="p:[op:0]"
+				on-init="p:[op:1, t:all 500ms ease]">
                 <div class="absolute top-0 left-0 full-xy">
 					<div class="full-xy"
 						init-default
@@ -16,10 +18,10 @@
 				</div>
 
                 <!-- @gabrielle-note, study this complex example to see what's going on-->
-                <!-- <div
-                    on-init="prop:[opacity:0, z-index:1000, transition:opacity 1500ms ease:delay-1500, opacity:1:delay-2000]:delay-1000 | class:[add:opacity-0-impt:delay-5500]"
+                <div
+                    on-init="prop:[opacity:0, z-index:1000, transition:opacity 1500ms ease, opacity:1] | class:[add:opacity-0-impt]"
                     ng-if="splash.state.nav" ng-include src="root.base_url + 'preapp/templates/splash.nav.html'" include-replace>
-                </div> -->
+                </div>
                 <div ng-if="splash.state.nav" ng-include src="root.base_url + 'preapp/templates/splash.nav.html'"
                 	include-replace
 					when-search-university-clicked="prop:[opacity:0.5, t:all 600ms ease-in-out]"
@@ -35,7 +37,7 @@
 					when-search-university-clicked="prop:[opacity:0.5, t:all 600ms ease-in-out]"
 					when-close-search-university="prop:[opacity:1]"
                     init-with="p:[opacity:0, t:all 2000ms ease]"
-                    on-enter="p:[opacity:1:delay-1000]"
+                    on-init="p:[opacity:1]"
                     ng-class="{'on-enter': splash.state.nav}">
 				</div>
 

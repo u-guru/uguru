@@ -1,7 +1,7 @@
 <div class="absolute full-xy top-0 left-0 flex-center-wrap">
     <ul>
         <li>
-            <div class="radio-container">
+            <div class="radiu-container old">
                 <div>
                     <input type="radio" id="radio-item" />
                     <span>
@@ -14,7 +14,7 @@
             </div>
         </li>
         <li>
-            <div class="checkbox-container">
+            <div class="checkbox-container old">
                 <div>
                     <input type="checkbox" id="checkbox-item"/>
                     <span>

@@ -7810,7 +7810,7 @@
             <doc-demo>
                 <doc-states>
                     <doc-state default>
-                        <div class="pf-cardlet highlight bg-tech" on-activate="bounceInUp-subtle:animIn" elem-states="[pf-cardlet]" on-pf-cardlet-enter="bounceIn-subtle:animIn" on-pf-cardlet-exit="bounceOut:animOut">
+                        <div class="pf-cardlet highlight bg-household" on-activate="bounceInUp-subtle:animIn" elem-states="[pf-cardlet]" on-pf-cardlet-enter="bounceIn-subtle:animIn" on-pf-cardlet-exit="bounceOut:animOut">
                             <div class="pf-cardlet-front" style="background-image: url('http://www.kinfolk.com/wp-content/uploads/2013/11/Kinfolk-City-Guide-Portland-Oregon-Pistils-Nursery-3.jpg');"></div>
                             <div class="pf-cardlet-back"></div>
                             <div class="pf-cardlet-bottom">
@@ -12498,7 +12498,7 @@
             <doc-demo>
                 <doc-states>
                     <doc-state default>
-                        <button class="btn-ghost-white" on-activate="bounceInUp-subtle:animIn" elem-states="[button]" on-button-enter="bounceIn-subtle:animIn" on-button-exit="bounceOut:animOut">Button</button>
+                        <button class="btn-ghost bg-white" on-activate="bounceInUp-subtle:animIn" elem-states="[button]" on-button-enter="bounceIn-subtle:animIn" on-button-exit="bounceOut:animOut">Button</button>
                     </doc-state>
                     <doc-state inherit todo name="onActivate"></doc-state>
                     <doc-state inherit todo name="onButtonEnter"></doc-state>
@@ -12597,7 +12597,7 @@
                     			color: white;
                     		}
                     	}
-                    	&[class*="btn-ghost-white"] {
+                    	&[class*="btn-ghost bg-white"] {
                     		color: white;
                     		border-color: white;
                     		&:hover, &:focus {
@@ -13563,7 +13563,7 @@
             <doc-demo>
                 <doc-states>
                     <doc-state default>
-                        <div class="checkbox-container" on-activate="bounceInUp-subtle:animIn" elem-states="[checkbox]" on-checkbox-enter="bounceIn-subtle:animIn" on-checkbox-exit="bounceOut:animOut">
+                        <div class="checkbox-container old" on-activate="bounceInUp-subtle:animIn" elem-states="[checkbox]" on-checkbox-enter="bounceIn-subtle:animIn" on-checkbox-exit="bounceOut:animOut">
                             <div>
                                 <input type="checkbox" id="checkbox-item"/>
                                 <span>
@@ -13581,7 +13581,7 @@
                 </doc-states>
                 <doc-snippets>
                     <doc-snippet default type="html"></doc-snippet>
-                    <doc-snippet type="css">.checkbox-container {
+                    <doc-snippet type="css">.checkbox-container old {
                     	@include flex;
                     	@include flex-center;
                     	div {
@@ -13607,7 +13607,7 @@
                     		font-weight: 600;
                     	}
                     }
-                    .checkbox-container {
+                    .checkbox-container old {
                     	div {
                     		span {
                     			border-radius: 3px;
@@ -13639,7 +13639,7 @@
                     		}
                     	}
                     }
-                    .small .checkbox-container {
+                    .small .checkbox-container old {
                     	div {
                     		span {
                     			width: 20px;
@@ -13724,7 +13724,7 @@
             <doc-demo>
                 <doc-states>
                     <doc-state default>
-                        <div class="radio-container" on-activate="bounceInUp-subtle:animIn" elem-states="[radio]" on-radio-enter="bounceIn-subtle:animIn" on-radio-exit="bounceOut:animOut">
+                        <div class="radiu-container old" on-activate="bounceInUp-subtle:animIn" elem-states="[radio]" on-radio-enter="bounceIn-subtle:animIn" on-radio-exit="bounceOut:animOut">
                             <div>
                                 <input type="radio" id="radio-item" />
                                 <span>
@@ -13742,7 +13742,7 @@
                 </doc-states>
                 <doc-snippets>
                     <doc-snippet default type="html"></doc-snippet>
-                    <doc-snippet type="css">.radio-container {
+                    <doc-snippet type="css">.radiu-container old {
                     	@include flex;
                     	@include flex-center;
                     	div {
@@ -13768,7 +13768,7 @@
                     		font-weight: 600;
                     	}
                     }
-                    .radio-container {
+                    .radiu-container old {
                     	div {
                     		span {
                     			@include round;
@@ -13857,7 +13857,7 @@
                     }
                     // both
                     .txt-slate {
-                    	.checkbox-container, .radio-container {
+                    	.checkbox-container old, .radiu-container old {
                     		label {
                     			color: $slate!important;
                     		}
@@ -16226,7 +16226,7 @@
             <doc-demo>
                 <doc-states>
                     <doc-state default>
-                        <div class="toggle" on-activate="bounceInUp-subtle:animIn" elem-states="[toggle]" on-toggle-enter="bounceIn-subtle:animIn" on-toggle-exit="bounceOut:animOut">
+                        <div class="toggle old" on-activate="bounceInUp-subtle:animIn" elem-states="[toggle]" on-toggle-enter="bounceIn-subtle:animIn" on-toggle-exit="bounceOut:animOut">
                             <input type="checkbox" checked />
                             <label>
                                 <svg class="square" viewBox="0 0 100 100">
@@ -19013,30 +19013,28 @@
             <doc-demo>
                 <doc-states>
                     <doc-state default>
-                        <div class="toast toast-mobile bg-smoke border-academic toast-icon toast-hover" on-activate="bounceInUp-subtle:animIn" elem-states="[toast]" on-toast-enter="bounceIn-subtle:animIn" on-toast-exit="bounceOut:animOut">
-                            <div class="toast bg-smoke border-academic toast-icon toast-hover">
-                    			<div class="toast-overlay" tabindex="1">
-                    				<ul>
-                    					<li>
-                    						<button>Reply</button>
-                    					</li>
-                    					<li>
-                    						<button>Send Location</button>
-                    					</li>
-                    				</ul>
-                    			</div>
-                    			<span class="toast-svg user-icon-48" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
-                    			<div>
-                    				<p>Gabrielle sent you a new message!</p>
-                    				<q>I'm at the library, where are you?</q>
-                    			</div>
-                    			<a class="close-icon">
-                    				<svg viewBox="0 0 100 100">
-                    					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
-                    				</svg>
-                    			</a>
-                    		</div>
-                        </div>
+                        <div class="toast bg-smoke border-academic toast-icon toast-hover" on-activate="bounceInUp-subtle:animIn" elem-states="[toast]" on-toast-enter="bounceIn-subtle:animIn" on-toast-exit="bounceOut:animOut">
+                			<div class="toast-overlay" tabindex="1">
+                				<ul>
+                					<li>
+                						<button>Reply</button>
+                					</li>
+                					<li>
+                						<button>Send Location</button>
+                					</li>
+                				</ul>
+                			</div>
+                			<span class="toast-svg user-icon-48" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800');"></span>
+                			<div>
+                				<p>Gabrielle sent you a new message!</p>
+                				<q>I'm at the library, where are you?</q>
+                			</div>
+                			<a class="close-icon">
+                				<svg viewBox="0 0 100 100">
+                					<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+                				</svg>
+                			</a>
+                		</div>
                     </doc-state>
                     <doc-state inherit todo name="onActivate"></doc-state>
                     <doc-state inherit todo name="onToastEnter"></doc-state>

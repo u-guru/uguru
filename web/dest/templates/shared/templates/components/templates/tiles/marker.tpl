@@ -56,6 +56,6 @@
         <div class="marker-circle"></div>
     </div>
     <div class="full-x text-center m20top">
-        <button class="btn-ghost-white">Reset</button>
+        <button class="btn-ghost bg-white">Reset</button>
     </div>
 </div>

@@ -265,7 +265,7 @@ gulp.task('compile-js', function(done) {
     .pipe(plugins.if(build, plugins.uglify()))
     .pipe(plugins.if(build, plugins.rev()))
     .pipe(plugins.if(build, plugins.concat('app.js')))
-    .pipe(gulp.dest('../min'));
+    .pipe(gulp.dest('util/'));
 });
 
 gulp.task('compile-temp',function(done){
@@ -308,9 +308,9 @@ gulp.task('clean', function(done) {
 gulp.task('templates', function() {
   //PART ONE, MOVE ALL TEMPLATES TO RIGHT FOLDER
   var templateLocations = ['admin/templates/**/**/**',
-   'shared/templates/**/**/**', 
+   'shared/templates/**/**/**',
    'preapp/templates/**/**/**',
-    'jeselle/templates/**/**/**', 
+    'jeselle/templates/**/**/**',
     'gabrielle/templates/**/**/**'];
   for (var i = 0; i < templateLocations.length; i++) {
 

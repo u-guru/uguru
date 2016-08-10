@@ -1,4 +1,4 @@
-<div class="checkbox-container">
+<div class="checkbox-container old">
     <div>
         <input type="checkbox" ng-model="value" ng-change="onValueChanged(value)"/>
         <span>

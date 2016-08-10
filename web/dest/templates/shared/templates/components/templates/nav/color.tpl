@@ -1,5 +1,5 @@
 
-<div class="dropdown-color"
+<div class="dropdown-color old"
     init-with="p:[op:1]">
     <!-- ng-mouseenter="mouseEnter($event, $index, 500)" ng-mouseover="mouseOver($event, $index, 500)" ng-mouseleave="mouseLeave($event, $index)" -->
     <a class="color" ng-click="toggle($event)" ng-class='{"active": dropdown.active }'
