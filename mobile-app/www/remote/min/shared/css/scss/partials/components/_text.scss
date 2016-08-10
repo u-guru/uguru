@@ -52,6 +52,67 @@
 			}
 		}
 	}
+	&[number="4"] {
+		.body-text-loader {
+			span {
+				&:nth-child(5), &:nth-child(6),
+				&:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="5"] {
+		.body-text-loader {
+			span {
+				&:nth-child(6),
+				&:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="6"] {
+		.body-text-loader {
+			span {
+				&:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="7"] {
+		.body-text-loader {
+			span {
+				&:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="8"] {
+		.body-text-loader {
+			span {
+				&:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="9"] {
+		.body-text-loader {
+			span {
+				&:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&.short {
+		> span {
+			@include flex;
+		}
+	}
 }
 
 // header

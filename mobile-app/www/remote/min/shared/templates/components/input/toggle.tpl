@@ -81,10 +81,10 @@
 			<input type="checkbox" checked />
 			<label>
 				<svg class="square" viewBox="0 0 26 26">
-					<rect x="2" y="2" width="22" height="22"></rect>
+					<circle cx="13" cy="13" r="13"></circle>
 				</svg>
 				<svg class="square" viewBox="0 0 26 26">
-					<rect x="2" y="2" width="22" height="22"></rect>
+					<circle cx="13" cy="13" r="13"></circle>
 				</svg>
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36">
 				    <rect x="1" y="1" width="70" height="34" rx="17"
@@ -99,10 +99,10 @@
 			<input type="checkbox" checked />
 			<label>
 				<svg class="square" viewBox="0 0 26 26">
-					<rect x="2" y="2" width="22" height="22"></rect>
+					<circle cx="13" cy="13" r="13"></circle>
 				</svg>
 				<svg class="square" viewBox="0 0 26 26">
-					<rect x="2" y="2" width="22" height="22"></rect>
+					<circle cx="13" cy="13" r="13"></circle>
 				</svg>
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36">
 				    <rect x="1" y="1" width="70" height="34" rx="17"></rect>
