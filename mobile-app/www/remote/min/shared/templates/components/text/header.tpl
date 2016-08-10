@@ -1,5 +1,33 @@
 <div class="full-xy flex-center" reference="http://codepen.io/teamuguru/pen/21e55095ca66c95f47fe57212fb4b9a6?editors=1100">
 	<header class="header-text">
-		<h1>Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet.</h1>
+		<h1>
+			<span>L</span>
+			<span>o</span>
+			<span>r</span>
+			<span>e</span>
+			<span>m</span>
+			<span>&nbsp;</span>
+			<span>i</span>
+			<span>p</span>
+			<span>s</span>
+			<span>u</span>
+			<span>m</span>
+			<span>&nbsp;</span>
+			<span>d</span>
+			<span>o</span>
+			<span>l</span>
+			<span>o</span>
+			<span>r</span>
+			<span>&nbsp;</span>
+			<span>s</span>
+			<span>i</span>
+			<span>t</span>
+			<span>&nbsp;</span>
+			<span>a</span>
+			<span>m</span>
+			<span>e</span>
+			<span>t</span>
+			<span>.</span>
+		</h1>
 	</header>
 </div>
