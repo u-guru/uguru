@@ -63,6 +63,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       console.log($state.current.name);
     }
   })
+  .state('root.dev.inspect', {
+    name: 'root.dev.inspect',
+    parent: 'root.dev',
+    url:'/inspect',
+    templateUrl:'admin/templates/inspector.html'
+  })
   .state('root.preapp', {
     name: 'root.preapp',
     parent: 'root',
@@ -71,6 +77,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     template: '<ui-view class="overflow-auto"/>',
     controller: 'SplashController'
   })
+
   .state('root.preapp.madlib', {
     name: 'root.preapp.madlib',
     parent: 'root.preapp',
@@ -107,6 +114,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
        $scope.component = {name: componentName, templateUrl: 'shared/templates/components/base/grid/' + $stateParams.cName.replace('-', '.') + '.html'}
     }
   })
+
   .state('root.dev-splash', {
     parent: 'root',
     url:'/dev/splash',

@@ -16,7 +16,8 @@ flower
 .DS_Store
 sijax
 *.webassets-cache
-
+plugins/*
+node_modules/*
 
 ############################
 # WEB APP Python gitignore #
