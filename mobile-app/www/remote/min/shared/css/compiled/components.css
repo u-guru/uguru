@@ -13890,7 +13890,8 @@ input[type=range] {
   display: flex;
   flex-flow: row wrap; }
   .header-text h1 span {
-    display: block; }
+    display: block;
+    transform-origin: center top; }
 
 .guru-head {
   position: relative; }
