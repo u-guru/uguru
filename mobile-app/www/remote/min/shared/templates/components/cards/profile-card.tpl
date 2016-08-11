@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<ul class="pf-card-stack slate">
-		<li init-with="tr:[translateY:-30px, scale:(0.8,0.8,0.8)]">
+		<li init-with="p:[tr:translateY(-30px) scale(0.8)]">
 				<div style="min-width: 300px"
 					init-with="p:[op:0, tro:center bottom]"
 					on-init="t-enter"
@@ -93,7 +93,7 @@
 				</div>
 			</li>
 
-		<li init-with="tr:[translateY:-15px, scale:(0.9,0.9,0.9)]">
+		<li init-with="p:[tr:translateY(-15px) scale(0.9)]">
 			<div style="min-width: 300px"
 				init-with="p:[op:0, tro:center bottom]"
 				on-init="t-enter"
