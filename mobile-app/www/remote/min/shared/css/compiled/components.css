@@ -8569,7 +8569,8 @@ input.chip:hover {
   -webkit-align-content: center;
   align-content: center;
   -webkit-align-items: center;
-  align-items: center; }
+  align-items: center;
+  background: none !important; }
   .checkbox-container:not(.old) div {
     position: relative; }
     .checkbox-container:not(.old) div > span {
@@ -8579,45 +8580,39 @@ input.chip:hover {
       width: 32px;
       height: 32px;
       overflow: hidden; }
-      .checkbox-container:not(.old) div > span span {
-        position: absolute;
-        top: 50%;
-        margin-top: -5px;
-        left: 50%;
-        margin-left: -5px;
-        width: 10px;
-        height: 10px;
-        border-radius: 1000px;
-        background: #598881;
+    .checkbox-container:not(.old) div svg {
+      position: relative;
+      z-index: 10;
+      fill: none;
+      width: 100%;
+      height: 100%; }
+      .checkbox-container:not(.old) div svg circle {
+        fill: #69B3A5;
         transform-origin: center center;
-        transform: scale(0) translateZ(0); }
-      .checkbox-container:not(.old) div > span svg {
-        position: relative;
-        z-index: 10;
+        transform: scale(0) translateZ(0);
+        transition: transform 250ms cubic-bezier(0.8, 0.1, 1, 0.05); }
+      .checkbox-container:not(.old) div svg path, .checkbox-container:not(.old) div svg .check-under {
         fill: none;
-        width: 100%;
-        height: 100%; }
-        .checkbox-container:not(.old) div > span svg circle {
-          fill: #69B3A5;
-          transform-origin: center center; }
-        .checkbox-container:not(.old) div > span svg path, .checkbox-container:not(.old) div > span svg .check-under {
-          fill: none;
-          stroke: #6f7d82;
-          stroke-width: 2.5px;
-          stroke-linecap: round;
-          stroke-linejoin: round; }
-        .checkbox-container:not(.old) div > span svg .check-stroke {
-          fill: none;
-          stroke: white;
-          stroke-width: 2.5px;
-          stroke-linecap: round;
-          stroke-linejoin: round; }
-        .checkbox-container:not(.old) div > span svg line {
-          fill: none;
-          stroke: #40484B;
-          stroke-width: 2.5px;
-          stroke-linecap: round;
-          stroke-linejoin: round; }
+        stroke: #6f7d82;
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round; }
+      .checkbox-container:not(.old) div svg .check-under, .checkbox-container:not(.old) div svg .check-stroke {
+        stroke-dasharray: 24.8; }
+      .checkbox-container:not(.old) div svg .check-stroke {
+        fill: none;
+        stroke: white;
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dashoffset: 24.8;
+        transition: stroke-dashoffset 500ms ease-out; }
+      .checkbox-container:not(.old) div svg line {
+        fill: none;
+        stroke: #40484B;
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round; }
     .checkbox-container:not(.old) div input {
       filter: alpha(opacity=0);
       opacity: 0;
@@ -8628,11 +8623,79 @@ input.chip:hover {
       width: 100%;
       height: 100%;
       cursor: pointer; }
+      .checkbox-container:not(.old) div input:hover + span svg .check-under {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.5);
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round; }
+      .checkbox-container:not(.old) div input:active + span svg circle {
+        transform: scale(1) translateZ(0); }
+      .checkbox-container:not(.old) div input:checked + span svg circle {
+        transform: scale(1) translateZ(0); }
+      .checkbox-container:not(.old) div input:checked + span svg .check-stroke {
+        stroke-dashoffset: 0; }
+      .checkbox-container:not(.old) div input:checked:active + span svg circle {
+        fill-opacity: 0.75; }
+      .checkbox-container:not(.old) div input:checked:active + span svg .check-stroke {
+        stroke-opacity: 0.75; }
   .checkbox-container:not(.old) label {
     padding-left: 15px;
     color: white;
     font-size: 20px;
     font-weight: 600; }
+  .checkbox-container:not(.old).bg-shamrock div input + span svg circle {
+    fill: #69B3A5; }
+  .checkbox-container:not(.old).bg-shamrock div input:active + span svg circle {
+    fill: #63a398; }
+  .checkbox-container:not(.old).bg-robin div input + span svg circle {
+    fill: #2BB3B8; }
+  .checkbox-container:not(.old).bg-robin div input:active + span svg circle {
+    fill: #2ea3a8; }
+  .checkbox-container:not(.old).bg-lake div input + span svg circle {
+    fill: #50A5DD; }
+  .checkbox-container:not(.old).bg-lake div input:active + span svg circle {
+    fill: #4e97c7; }
+  .checkbox-container:not(.old).bg-moxie div input + span svg circle {
+    fill: #43cb9d; }
+  .checkbox-container:not(.old).bg-moxie div input:active + span svg circle {
+    fill: #43b791; }
+  .checkbox-container:not(.old).bg-crimson div input + span svg circle {
+    fill: #d3242c; }
+  .checkbox-container:not(.old).bg-crimson div input:active + span svg circle {
+    fill: #bd2931; }
+  .checkbox-container:not(.old).bg-auburn div input + span svg circle, .checkbox-container:not(.old).bg-deilvery div input + span svg circle {
+    fill: #F04F54; }
+  .checkbox-container:not(.old).bg-auburn div input:active + span svg circle, .checkbox-container:not(.old).bg-deilvery div input:active + span svg circle {
+    fill: #d64e53; }
+  .checkbox-container:not(.old).bg-orange div input + span svg circle, .checkbox-container:not(.old).bg-freelancing div input + span svg circle {
+    fill: #E5753C; }
+  .checkbox-container:not(.old).bg-orange div input:active + span svg circle, .checkbox-container:not(.old).bg-freelancing div input:active + span svg circle {
+    fill: #cc6e3e; }
+  .checkbox-container:not(.old).bg-gold div input + span svg circle, .checkbox-container:not(.old).bg-baking div input + span svg circle {
+    fill: #F6C64E; }
+  .checkbox-container:not(.old).bg-gold div input:active + span svg circle, .checkbox-container:not(.old).bg-baking div input:active + span svg circle {
+    fill: #dbb34e; }
+  .checkbox-container:not(.old).bg-moola div input + span svg circle, .checkbox-container:not(.old).bg-photography div input + span svg circle {
+    fill: #81B566; }
+  .checkbox-container:not(.old).bg-moola div input:active + span svg circle, .checkbox-container:not(.old).bg-photography div input:active + span svg circle {
+    fill: #77a562; }
+  .checkbox-container:not(.old).bg-azure div input + span svg circle, .checkbox-container:not(.old).bg-tech div input + span svg circle {
+    fill: #55A4B7; }
+  .checkbox-container:not(.old).bg-azure div input:active + span svg circle, .checkbox-container:not(.old).bg-tech div input:active + span svg circle {
+    fill: #5296a7; }
+  .checkbox-container:not(.old).bg-cobalt div input + span svg circle, .checkbox-container:not(.old).bg-household div input + span svg circle {
+    fill: #7872e3; }
+  .checkbox-container:not(.old).bg-cobalt div input:active + span svg circle, .checkbox-container:not(.old).bg-household div input:active + span svg circle {
+    fill: #706ccc; }
+  .checkbox-container:not(.old).bg-eggplant div input + span svg circle, .checkbox-container:not(.old).bg-athletic div input + span svg circle {
+    fill: #9A5BC5; }
+  .checkbox-container:not(.old).bg-eggplant div input:active + span svg circle, .checkbox-container:not(.old).bg-athletic div input:active + span svg circle {
+    fill: #8d58b3; }
+  .checkbox-container:not(.old).bg-cerise div input + span svg circle, .checkbox-container:not(.old).bg-academic div input + span svg circle {
+    fill: #e6389b; }
+  .checkbox-container:not(.old).bg-cerise div input:active + span svg circle, .checkbox-container:not(.old).bg-academic div input:active + span svg circle {
+    fill: #cd3a8f; }
 
 .radio-container:not(.old) {
   -ms-box-orient: horizontal;
@@ -8645,7 +8708,8 @@ input.chip:hover {
   -webkit-align-content: center;
   align-content: center;
   -webkit-align-items: center;
-  align-items: center; }
+  align-items: center;
+  background: none !important; }
   .radio-container:not(.old) div {
     position: relative; }
     .radio-container:not(.old) div span {
@@ -8654,25 +8718,27 @@ input.chip:hover {
       background: #40484B;
       width: 24px;
       height: 24px; }
-      .radio-container:not(.old) div span svg {
-        border-radius: 1000px;
-        display: block;
-        width: 100%;
-        height: 100%; }
-        .radio-container:not(.old) div span svg .border {
-          fill: none;
-          stroke: #40484B;
-          stroke-width: 2.5px;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          transform-origin: center center;
-          transform: rotate(-90deg); }
-        .radio-container:not(.old) div span svg .bg {
-          fill: #576267;
-          transform-origin: center center; }
-        .radio-container:not(.old) div span svg .check {
-          fill: #69B3A5;
-          transform-origin: center center; }
+    .radio-container:not(.old) div svg {
+      border-radius: 1000px;
+      display: block;
+      width: 100%;
+      height: 100%; }
+      .radio-container:not(.old) div svg .border {
+        fill: none;
+        stroke: #40484B;
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transform-origin: center center;
+        transform: rotate(-90deg); }
+      .radio-container:not(.old) div svg .bg {
+        fill: #576267;
+        transform-origin: center center; }
+      .radio-container:not(.old) div svg .check {
+        fill: #69B3A5;
+        transform-origin: center center;
+        transform: scale(0) translateZ(0);
+        transition: all 250ms cubic-bezier(0.8, 0.1, 1, 0.05); }
     .radio-container:not(.old) div input {
       opacity: 0;
       position: absolute;
@@ -8680,12 +8746,69 @@ input.chip:hover {
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      cursor: pointer; }
+      .radio-container:not(.old) div input:hover + span svg .bg {
+        fill: #637074; }
+      .radio-container:not(.old) div input:checked + span svg .check, .radio-container:not(.old) div input:active + span svg .check {
+        transform: scale(1) translateZ(0); }
   .radio-container:not(.old) label {
     padding-left: 15px;
     color: white;
     font-size: 20px;
     font-weight: 600; }
+  .radio-container:not(.old).bg-shamrock div input + span svg .check {
+    fill: #69B3A5; }
+  .radio-container:not(.old).bg-shamrock div input:active + span svg .check {
+    fill: #63a398; }
+  .radio-container:not(.old).bg-robin div input + span svg .check {
+    fill: #2BB3B8; }
+  .radio-container:not(.old).bg-robin div input:active + span svg .check {
+    fill: #2ea3a8; }
+  .radio-container:not(.old).bg-lake div input + span svg .check {
+    fill: #50A5DD; }
+  .radio-container:not(.old).bg-lake div input:active + span svg .check {
+    fill: #4e97c7; }
+  .radio-container:not(.old).bg-moxie div input + span svg .check {
+    fill: #43cb9d; }
+  .radio-container:not(.old).bg-moxie div input:active + span svg .check {
+    fill: #43b791; }
+  .radio-container:not(.old).bg-crimson div input + span svg .check {
+    fill: #d3242c; }
+  .radio-container:not(.old).bg-crimson div input:active + span svg .check {
+    fill: #bd2931; }
+  .radio-container:not(.old).bg-auburn div input + span svg .check, .radio-container:not(.old).bg-deilvery div input + span svg .check {
+    fill: #F04F54; }
+  .radio-container:not(.old).bg-auburn div input:active + span svg .check, .radio-container:not(.old).bg-deilvery div input:active + span svg .check {
+    fill: #d64e53; }
+  .radio-container:not(.old).bg-orange div input + span svg .check, .radio-container:not(.old).bg-freelancing div input + span svg .check {
+    fill: #E5753C; }
+  .radio-container:not(.old).bg-orange div input:active + span svg .check, .radio-container:not(.old).bg-freelancing div input:active + span svg .check {
+    fill: #cc6e3e; }
+  .radio-container:not(.old).bg-gold div input + span svg .check, .radio-container:not(.old).bg-baking div input + span svg .check {
+    fill: #F6C64E; }
+  .radio-container:not(.old).bg-gold div input:active + span svg .check, .radio-container:not(.old).bg-baking div input:active + span svg .check {
+    fill: #dbb34e; }
+  .radio-container:not(.old).bg-moola div input + span svg .check, .radio-container:not(.old).bg-photography div input + span svg .check {
+    fill: #81B566; }
+  .radio-container:not(.old).bg-moola div input:active + span svg .check, .radio-container:not(.old).bg-photography div input:active + span svg .check {
+    fill: #77a562; }
+  .radio-container:not(.old).bg-azure div input + span svg .check, .radio-container:not(.old).bg-tech div input + span svg .check {
+    fill: #55A4B7; }
+  .radio-container:not(.old).bg-azure div input:active + span svg .check, .radio-container:not(.old).bg-tech div input:active + span svg .check {
+    fill: #5296a7; }
+  .radio-container:not(.old).bg-cobalt div input + span svg .check, .radio-container:not(.old).bg-household div input + span svg .check {
+    fill: #7872e3; }
+  .radio-container:not(.old).bg-cobalt div input:active + span svg .check, .radio-container:not(.old).bg-household div input:active + span svg .check {
+    fill: #706ccc; }
+  .radio-container:not(.old).bg-eggplant div input + span svg .check, .radio-container:not(.old).bg-athletic div input + span svg .check {
+    fill: #9A5BC5; }
+  .radio-container:not(.old).bg-eggplant div input:active + span svg .check, .radio-container:not(.old).bg-athletic div input:active + span svg .check {
+    fill: #8d58b3; }
+  .radio-container:not(.old).bg-cerise div input + span svg .check, .radio-container:not(.old).bg-academic div input + span svg .check {
+    fill: #e6389b; }
+  .radio-container:not(.old).bg-cerise div input:active + span svg .check, .radio-container:not(.old).bg-academic div input:active + span svg .check {
+    fill: #cd3a8f; }
 
 .toggle-container {
   -ms-box-orient: horizontal;

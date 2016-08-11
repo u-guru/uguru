@@ -5,6 +5,7 @@
 .checkbox-container:not(.old) {
 	@include flex;
 	@include flex-center-vertical;
+	background: none!important;
 	div {
 		position: relative;
 		> span {
@@ -14,38 +15,32 @@
 			width: 32px;
 			height: 32px;
 			overflow: hidden;
-			span {
-				position: absolute;
-				top: 50%;
-				margin-top: -5px;
-				left: 50%;
-				margin-left: -5px;
-				width: 10px;
-				height: 10px;
-				border-radius: 1000px;
-				background: mix($shamrock, $slate, 60%);
+		}
+		svg {
+			position: relative;
+			z-index: 10;
+			fill: none;
+			width: 100%;
+			height: 100%;
+			circle {
+				fill: $shamrock;
 				transform-origin: center center;
 				transform: scale(0) translateZ(0);
+				transition: transform 250ms cubic-bezier(0.8, 0.1, 1, 0.05);
 			}
-			svg {
-				position: relative;
-				z-index: 10;
-				fill: none;
-				width: 100%;
-				height: 100%;
-				circle {
-					fill: $shamrock;
-					transform-origin: center center;
-				}
-				path, .check-under {
-					@include svg-stroke(lighten($slate, 20%), 2.5);
-				}
-				.check-stroke {
-					@include svg-stroke(white, 2.5);
-				}
-				line {
-					@include svg-stroke($slate, 2.5);
-				}
+			path, .check-under {
+				@include svg-stroke(lighten($slate, 20%), 2.5);
+			}
+			.check-under, .check-stroke {
+				stroke-dasharray: 24.8;
+			}
+			.check-stroke {
+				@include svg-stroke(white, 2.5);
+				stroke-dashoffset: 24.8;
+				transition: stroke-dashoffset 500ms ease-out;
+			}
+			line {
+				@include svg-stroke($slate, 2.5);
 			}
 		}
 		input {
@@ -57,6 +52,48 @@
 			width: 100%;
 			height: 100%;
 			cursor: pointer;
+			&:hover {
+				+ span {
+					svg {
+						.check-under {
+							@include svg-stroke(rgba(white, .5), 2.5);
+						}
+					}
+				}
+			}
+			&:active {
+				+ span {
+					svg {
+						circle {
+							transform: scale(1) translateZ(0);
+						}
+					}
+				}
+			}
+			&:checked {
+				+ span {
+					svg {
+						circle {
+							transform: scale(1) translateZ(0);
+						}
+						.check-stroke {
+							stroke-dashoffset: 0;
+						}
+					}
+				}
+				&:active {
+					+ span {
+						svg {
+							circle {
+								fill-opacity: 0.75;
+							}
+							.check-stroke {
+								stroke-opacity: 0.75;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	label {
@@ -65,12 +102,247 @@
 		font-size: 20px;
 		font-weight: 600;
 	}
+	&.bg-shamrock {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $shamrock;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $shamrock, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-robin {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $robin;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $robin, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-lake {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $lake;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $lake, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moxie {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $moxie;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $moxie, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-crimson {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $crimson;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $crimson, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-auburn, &.bg-deilvery {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $auburn;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $auburn, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-orange, &.bg-freelancing {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $orange;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $orange, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-gold, &.bg-baking {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $gold;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $gold, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moola, &.bg-photography {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $moola;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $moola, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-azure, &.bg-tech {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $azure;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $azure, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cobalt, &.bg-household {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $cobalt;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $cobalt, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-eggplant, &.bg-athletic {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $eggplant;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $eggplant, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cerise, &.bg-academic {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $cerise;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $cerise, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 // radio inputs
 .radio-container:not(.old) {
 	@include flex;
 	@include flex-center-vertical;
+	background: none!important;
 	div {
 		position: relative;
 		span {
@@ -79,24 +351,26 @@
 			background: $slate;
 			width: 24px;
 			height: 24px;
-			svg {
-				@include round;
-				display: block;
-				width: 100%;
-				height: 100%;
-				.border {
-					@include svg-stroke($slate, 2.5);
-					transform-origin: center center;
-					transform: rotate(-90deg);
-				}
-				.bg {
-					fill: lighten($slate, 10%);
-					transform-origin: center center;
-				}
-				.check {
-					fill: $shamrock;
-					transform-origin: center center;
-				}
+		}
+		svg {
+			@include round;
+			display: block;
+			width: 100%;
+			height: 100%;
+			.border {
+				@include svg-stroke($slate, 2.5);
+				transform-origin: center center;
+				transform: rotate(-90deg);
+			}
+			.bg {
+				fill: lighten($slate, 10%);
+				transform-origin: center center;
+			}
+			.check {
+				fill: $shamrock;
+				transform-origin: center center;
+				transform: scale(0) translateZ(0);
+				transition: all 250ms cubic-bezier(0.8, 0.1, 1, 0.05);
 			}
 		}
 		input {
@@ -107,6 +381,25 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
+			cursor: pointer;
+			&:hover {
+				+ span {
+					svg {
+						.bg {
+							fill: lighten($slate, 15%);
+						}
+					}
+				}
+			}
+			&:checked, &:active {
+				+ span {
+					svg {
+						.check {
+							transform: scale(1) translateZ(0);
+						}
+					}
+				}
+			}
 		}
 	}
 	label {
@@ -114,6 +407,240 @@
 		color: white;
 		font-size: 20px;
 		font-weight: 600;
+	}
+	&.bg-shamrock {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $shamrock;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $shamrock, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-robin {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $robin;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $robin, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-lake {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $lake;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $lake, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moxie {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $moxie;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $moxie, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-crimson {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $crimson;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $crimson, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-auburn, &.bg-deilvery {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $auburn;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $auburn, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-orange, &.bg-freelancing {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $orange;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $orange, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-gold, &.bg-baking {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $gold;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $gold, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moola, &.bg-photography {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $moola;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $moola, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-azure, &.bg-tech {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $azure;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $azure, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cobalt, &.bg-household {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $cobalt;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $cobalt, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-eggplant, &.bg-athletic {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $eggplant;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $eggplant, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cerise, &.bg-academic {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $cerise;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $cerise, 15%);
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
