@@ -8707,7 +8707,6 @@ input.chip:hover {
     height: 100%;
     z-index: 5; }
   .toggle:not(.old) label {
-    transition: all 150ms ease-in-out;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -8724,150 +8723,160 @@ input.chip:hover {
     -webkit-justify-content: center;
     justify-content: center;
     position: relative;
-    background: #40484B;
-    padding: 5px;
     height: 36px;
     width: 72px;
-    border-radius: 2px;
     color: white;
     font-size: 18px;
-    font-weight: 600; }
+    font-weight: 600;
+    padding: 5px; }
+    .toggle:not(.old) label > div:empty {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #40484B;
+      border-radius: 2px; }
     .toggle:not(.old) label * {
       transition: all 150ms ease-in-out; }
     .toggle:not(.old) label span {
+      position: relative;
+      z-index: 2;
       padding: 0 5px; }
     .toggle:not(.old) label .square {
+      position: relative;
+      z-index: 2;
       display: block;
       height: 100%;
       border-radius: 2px;
       overflow: hidden; }
       .toggle:not(.old) label .square * {
         fill: none; }
-      .toggle:not(.old) label .square:first-child {
+      .toggle:not(.old) label .square:first-of-type {
         position: absolute;
         top: 5px;
         left: 5px;
         height: calc(100% - 10px); }
-        .toggle:not(.old) label .square:first-child * {
-          fill: white; }
-  .toggle:not(.old) input:checked + label {
+        .toggle:not(.old) label .square:first-of-type * {
+          fill: white;
+          stroke: white;
+          stroke-width: 2px;
+          stroke-linejoin: round;
+          stroke-linecap: round; }
+  .toggle:not(.old) input:checked + label > div:empty {
     background: #43cb9d; }
-    .toggle:not(.old) input:checked + label span {
-      transform: translateX(-26px); }
-    .toggle:not(.old) input:checked + label .square:first-child {
-      transform: translateX(36px); }
-  .toggle:not(.old).normal label > div, .toggle:not(.old).am-pm label > div {
+  .toggle:not(.old) input:checked + label span {
+    transform: translateX(-26px); }
+  .toggle:not(.old) input:checked + label .square:first-of-type {
+    transform: translateX(36px); }
+  .toggle:not(.old).normal label > div:not(:empty), .toggle:not(.old).am-pm label > div:not(:empty) {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; }
-    .toggle:not(.old).normal label > div div, .toggle:not(.old).am-pm label > div div {
+    .toggle:not(.old).normal label > div:not(:empty) div, .toggle:not(.old).am-pm label > div:not(:empty) div {
       position: absolute;
       border-radius: 1000px; }
-      .toggle:not(.old).normal label > div div:nth-child(1), .toggle:not(.old).am-pm label > div div:nth-child(1) {
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(1), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(1) {
         top: 0;
         left: 0;
-        width: 100%;
-        height: 2px;
-        transform-origin: right center; }
-      .toggle:not(.old).normal label > div div:nth-child(2), .toggle:not(.old).am-pm label > div div:nth-child(2) {
-        top: 0;
-        right: 0;
-        width: 2px;
-        height: 100%;
-        transform-origin: center bottom; }
-      .toggle:not(.old).normal label > div div:nth-child(3), .toggle:not(.old).am-pm label > div div:nth-child(3) {
-        bottom: 0;
-        right: 0;
         width: 100%;
         height: 2px;
         transform-origin: left center; }
-      .toggle:not(.old).normal label > div div:nth-child(4), .toggle:not(.old).am-pm label > div div:nth-child(4) {
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(2), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center top; }
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(3), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: right center; }
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(4), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(4) {
         bottom: 0;
         left: 0;
         width: 2px;
         height: 100%;
-        transform-origin: center top; }
-  .toggle:not(.old).normal label .square:first-child rect, .toggle:not(.old).am-pm label .square:first-child rect {
-    stroke: white;
-    stroke-width: 2px;
-    stroke-linejoin: round;
-    stroke-linecap: round; }
-  .toggle:not(.old).normal > div div {
+        transform-origin: center bottom; }
+  .toggle:not(.old).normal > div:not(:empty) div {
     background: #43cb9d; }
-  .toggle:not(.old).am-pm input + label {
+  .toggle:not(.old).am-pm input + label > div:empty {
     background: #456477; }
-    .toggle:not(.old).am-pm input + label > div div {
-      background: #456477; }
-    .toggle:not(.old).am-pm input + label > span {
+  .toggle:not(.old).am-pm input + label > div:not(:empty) div {
+    background: #456477; }
+  .toggle:not(.old).am-pm input + label > span {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 50%;
+    padding: 0;
+    text-align: center; }
+    .toggle:not(.old).am-pm input + label > span > span {
+      transform: translate(0) !important;
+      position: absolute;
       display: block;
-      position: relative;
+      left: 0;
+      width: 100%;
       height: 100%;
-      width: 50%;
-      padding: 0;
-      text-align: center; }
-      .toggle:not(.old).am-pm input + label > span > span {
-        transform: translate(0) !important;
-        position: absolute;
-        display: block;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        padding: 0; }
-    .toggle:not(.old).am-pm input + label .am {
-      opacity: 0; }
-    .toggle:not(.old).am-pm input + label .pm {
-      opacity: 1; }
-  .toggle:not(.old).am-pm input:checked + label {
+      text-align: center;
+      padding: 0; }
+  .toggle:not(.old).am-pm input + label .am {
+    opacity: 0; }
+  .toggle:not(.old).am-pm input + label .pm {
+    opacity: 1; }
+  .toggle:not(.old).am-pm input:checked + label div:empty {
     background: #F6C64E; }
-    .toggle:not(.old).am-pm input:checked + label .am {
-      opacity: 1; }
-    .toggle:not(.old).am-pm input:checked + label .pm {
-      opacity: 0; }
-  .toggle:not(.old).white-round label {
+  .toggle:not(.old).am-pm input:checked + label .am {
+    opacity: 1; }
+  .toggle:not(.old).am-pm input:checked + label .pm {
+    opacity: 0; }
+  .toggle:not(.old).white-round label div:empty {
     border-radius: 1000px;
     background: rgba(255, 255, 255, 0.5); }
-    .toggle:not(.old).white-round label .square {
-      border-radius: 1000px; }
-      .toggle:not(.old).white-round label .square:first-child {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%; }
-        .toggle:not(.old).white-round label .square:first-child * {
-          fill: white; }
-    .toggle:not(.old).white-round label .bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%; }
-      .toggle:not(.old).white-round label .bg rect {
-        fill: none;
-        stroke: white;
-        stroke-width: 2px;
-        stroke-linecap: round;
-        stroke-linejoin: round; }
-  .toggle:not(.old).white-round input:checked + label {
-    background: rgba(255, 255, 255, 0.5); }
-  .toggle:not(.old).round label {
+  .toggle:not(.old).white-round label .square {
     border-radius: 1000px; }
-    .toggle:not(.old).round label .square {
-      border-radius: 1000px; }
-    .toggle:not(.old).round label .bg {
+    .toggle:not(.old).white-round label .square:first-child {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
       height: 100%; }
-      .toggle:not(.old).round label .bg rect {
-        fill: none;
-        stroke: white;
-        stroke-width: 2px;
-        stroke-linecap: round;
-        stroke-linejoin: round; }
+      .toggle:not(.old).white-round label .square:first-child * {
+        fill: white; }
+  .toggle:not(.old).white-round label .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .toggle:not(.old).white-round label .bg rect {
+      fill: none;
+      stroke: white;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
+  .toggle:not(.old).white-round input:checked + label div:empty {
+    background: rgba(255, 255, 255, 0.5); }
+  .toggle:not(.old).round label div:empty {
+    border-radius: 1000px; }
+  .toggle:not(.old).round label .square {
+    border-radius: 1000px; }
+  .toggle:not(.old).round label .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .toggle:not(.old).round label .bg rect {
+      fill: none;
+      stroke: #43cb9d;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
 
 /* ---------- CHECKBOXES & RADIO [deprecate] */
 .checkbox-container.old, .radio-container.old {
@@ -13896,15 +13905,10 @@ input[type=range] {
       background: #eaeced;
       border-radius: 2px;
       overflow: hidden; }
-      .body-text .body-text-loader > span:nth-child(1) {
-        width: 70%; }
-      .body-text .body-text-loader > span:nth-child(2) {
-        width: 95%; }
-      .body-text .body-text-loader > span:nth-child(3) {
-        width: 85%; }
       .body-text .body-text-loader > span span {
+        transform-origin: left center;
         display: block;
-        width: 10px;
+        width: 100%;
         height: 100%;
         background: #dce0e1; }
   .body-text[number="3"] .body-text-loader span:nth-child(4), .body-text[number="3"] .body-text-loader span:nth-child(5), .body-text[number="3"] .body-text-loader span:nth-child(6), .body-text[number="3"] .body-text-loader span:nth-child(7), .body-text[number="3"] .body-text-loader span:nth-child(8), .body-text[number="3"] .body-text-loader span:nth-child(9), .body-text[number="3"] .body-text-loader span:nth-child(10) {

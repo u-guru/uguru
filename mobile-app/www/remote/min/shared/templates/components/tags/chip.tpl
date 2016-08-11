@@ -8,7 +8,7 @@
 		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250, t:all 350ms ease-out]">
 			<span init-with="p-op"
 				on-init="p:[op:1:delay-250, t:opacity 500ms ease-out]">cobalt tag</span>
-		</a>
+	</a>
 	<a class="chip chip-link bg bg-moola" ng-if='activeType === "image"'
 		init-with="p-op"
 		on-init="a:[bounceInX:set:(dur:1200ms#func:ease-out):in]">
