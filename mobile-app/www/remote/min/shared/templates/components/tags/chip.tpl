@@ -1,11 +1,14 @@
-<div class="perspective-container full-xy flex-center p15xy" types='span, link, image, input' default-type="link">
+<div class="perspective-container full-xy flex-center p15xy" types='span, link, image, input' default-type="image">
 	<span class="chip bg-moxie" ng-if='activeType === "span"'
 		init-with="p:[op:0, color:rgba(255#255#255#0)]"
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in] | p:[color:rgba(255#255#255#1):delay-250, t:color 500ms ease-out]">moxie tag</span>
 	<a class="chip chip-link bg bg-cobalt" ng-if='activeType === "link"'
-		init-with="p:[op:0, color:rgba(255#255#255#0)]"
-		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in] | p:[color:rgba(255#255#255#1):delay-250, t:color 500ms ease-out]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250, t:all 350ms ease-out]">cobalt tag</a>
+		init-with="p-op"
+		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in]"
+		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250, t:all 350ms ease-out]">
+			<span init-with="p-op"
+				on-init="p:[op:1:delay-250, t:opacity 500ms ease-out]">cobalt tag</span>
+		</a>
 	<a class="chip chip-link bg bg-moola" ng-if='activeType === "image"'
 		init-with="p-op"
 		on-init="a:[bounceInX:set:(dur:1200ms#func:ease-out):in]">
