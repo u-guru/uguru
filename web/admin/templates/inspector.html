@@ -7,45 +7,45 @@
             {{apc.property.animation.cssText}}
         </div>
         <div style='width:33%' class='right-0 bg-moola full-y top-0 flex-wrap-center'>
-            <div class='full-x weight-700 bg-charcoal'>
-                {{apc.animation.name}}
+            <div class='full-x weight-700 bg-charcoal ugrid-{{apc.properties.length}}'>
+                <span class='p10x p05y' ng-repeat='property in apc.properties'>{{property.name}}
             </div>
-            <div class='full-x ugrid-3 full-x'>
-                <div>
-                    <input ng-model="apc.property.name"> </input>
+            <div>
+                <div class='full-x ugrid-3 full-x'>
+                    <div>
+                        <input ng-model="property.name"> </input>
+                    </div>
+                    <div>
+                        <input ng-model="property.start"> </input>
+                    </div>
+                    <div>
+                        <input ng-model="property.end"> </input>
+                    </div>
                 </div>
-                <div>
-                    <input ng-model="apc.property.start"> </input>
-                </div>
-                <div>
-                    <input ng-model="apc.property.end"> </input>
-                </div>
-            </div>
-            <div style='height:80%' class='full-x'>
-                <ul class='full-x'>
-                    <li ng-repeat='kf_rule in apc.property.keyframes track by $index' >
-                        <div class='full-x flex-vertical-center m20y p15-grid'>
-                            <div class='flex-wrap-center full-x'>
-                                <span class='bg-charcoal flex-wrap-center'>
-                                Keyframe {{kf_rule.percent.str}}
-                                </span>
-                                <div>
-                                    <a ng-click='apc.removeKF(apc.property, kf_rule.percent.str)'> Remove </a>
+                <div style='height:80%' class='full-x'>
+                    <ul class='full-x'>
+                        <li ng-repeat='kf_rule in property.keyframes track by $index' >
+                            <div class='full-x flex-vertical-center m20y p15-grid'>
+                                <div class='flex-wrap-center full-x'>
+                                    <span class='bg-charcoal flex-wrap-center'>
+                                    Keyframe {{kf_rule.percent.str}}
+                                    </span>
+                                    <div>
+                                        <a ng-click='apc.removeKF(apc.property, kf_rule.percent.str)'> Remove </a>
+                                    </div>
                                 </div>
+                                <span class='bg-charcoal-50p flex-wrap-center full-x' ng-repeat='property in kf_rule.properties'>
+                                    <span >
+                                    {{property.name}}: {{property.value}}
+                                    </span>
+                                    <div class='full-x'>
+                                        <input type='range' ng-model='property.value'> </input>
+                                    </div>
+                                </span>
                             </div>
-                            <span class='bg-charcoal-50p flex-wrap-center full-x' ng-repeat='property in kf_rule.properties'>
-                                <span >
-                                {{property.name}}: {{property.value}}
-                                </span>
-                                <div class='full-x'>
-                                    <input type='range' ng-model='property.value'> </input>
-                                </div>
-                            </span>
-
-                        </div>
-
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
