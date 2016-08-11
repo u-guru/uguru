@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center" types='default, time-period, round, white-round' default-type="white-round" reference="http://codepen.io/teamuguru/pen/6ddde9fa7dbff14ae4124d45341be8c5?editors=1100">
+<div class="perspective-container full-xy flex-center" types='default, time-period, round, white-round' default-type="default" reference="http://codepen.io/teamuguru/pen/6ddde9fa7dbff14ae4124d45341be8c5?editors=1100">
 	<div class="toggle-container" ng-if='activeType === "default"'
 		init-default
 		on-init="send:[input-load:public]"
