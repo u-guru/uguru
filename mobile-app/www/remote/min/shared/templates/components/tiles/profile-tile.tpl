@@ -1,6 +1,24 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="photo-mobile">
-	<!-- academic doesn't need description, photo/household need a longer description for service -->
+<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-desktop">
+	<!-- NOTES FOR JESELLE - WORK ON CARDLETS FIRST
+		Look for these comments within _tiles.scss (replace category with the actual category name)
+		// profile tile transitions
+			// profile tile transitions category
+		// profile tile hover
+			// profile tile hover category
+		// profile tile click
+			// profile tile click category
 
+		These are universal and will apply to both desktop and mobile. Desktop and mobile should be differentiated by onEnter/onExit and parallax, not by color changes.
+
+		With regards to hover transitions:
+			- If you want separate transitiona for mouse-enter and mouse-leave
+				- Put mouse-leave transitions in // profile tile transitions
+				- Put mouse-enter transitions in // profile tile hover
+			- If you want a transition to apply to BOTH mouse-enter and mouse-leave, put it in // profile tile transitions
+
+		With regards to onEnter/onExit animations:
+			- Let me know if you want the containers I did for cardlets here
+	-->
 	<div class="pf-tile-container" ng-if='activeType === "academic-desktop"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[academic-tile-init:public]"
