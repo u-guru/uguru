@@ -1,5 +1,24 @@
 @import '../mixin';
 
+@keyframes projector-swing {
+	0% {
+		transform-origin: center top;
+		transform: rotateX(0) rotateY(0);
+	}
+	50% {
+		transform-origin: left top;
+		transform: rotateX(-1deg) rotateY(1deg);
+	}
+	75% {
+		transform-origin: right top;
+		transform: rotateX(-0.5deg) rotateY(-0.5deg);
+	}
+	100% {
+		transform-origin: right top;
+		transform: rotateX(0) rotateY(0);
+	}
+}
+
 @keyframes split-button {
   0% { transform: matrix3d(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity:1;}
   2.5% { transform: matrix3d(0.356, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }

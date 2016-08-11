@@ -1,3 +1,16 @@
+@keyframes projector-swing {
+  0% {
+    transform-origin: center top;
+    transform: rotateX(0) rotateY(0); }
+  50% {
+    transform-origin: left top;
+    transform: rotateX(-1deg) rotateY(1deg); }
+  75% {
+    transform-origin: right top;
+    transform: rotateX(-0.5deg) rotateY(-0.5deg); }
+  100% {
+    transform-origin: right top;
+    transform: rotateX(0) rotateY(0); } }
 @keyframes split-button {
   0% {
     transform: matrix3d(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
@@ -1794,16 +1807,29 @@ fieldset.search-bar {
   -webkit-align-items: center;
   align-items: center;
   height: 48px; }
-  .number-input input {
-    border-radius: 2px;
-    background: #637074;
+  .number-input div {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
     width: 48px;
     height: 48px;
-    font-size: 28px;
-    font-weight: 900 !important;
-    text-align: center;
-    color: white; }
+    border-radius: 2px;
+    background: #637074; }
+    .number-input div input {
+      width: 100%;
+      height: 100%;
+      background: none;
+      border-radius: 2px;
+      font-size: 28px;
+      font-weight: 900 !important;
+      text-align: center;
+      color: white;
+      transition: all 150ms ease-out; }
+      .number-input div input:focus {
+        background: rgba(255, 255, 255, 0.2); }
   .number-input label {
+    position: relative;
+    z-index: 1;
     margin-left: 10px;
     font-size: 24px;
     font-weight: 600 !important; }
@@ -4936,111 +4962,160 @@ a.course-card:active .course-card-hover {
     .pf-tile-container a:nth-child(4) {
       bottom: 0;
       left: 0; }
-    .pf-tile-container a:hover ~ .bg-baking .pf-pricing, .pf-tile-container a:focus ~ .bg-baking .pf-pricing {
-      color: #F6C64E;
-      transition: all 250ms ease-in-out; }
-      .pf-tile-container a:hover ~ .bg-baking .pf-pricing svg, .pf-tile-container a:focus ~ .bg-baking .pf-pricing svg {
+    .pf-tile-container a ~ .pf-tile {
+      transition: all 500ms ease-out;
+      transform-style: preserve-3d; }
+      .pf-tile-container a ~ .pf-tile .rating-stars {
+        transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-border {
+        transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
+        transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1 .border, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1 + div, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top .pf-pricing {
+        transition: all 250ms ease-in-out; }
+      .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-border div {
+        transition: all 250ms ease-out; }
+      .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-top {
+        transition: all 250ms ease-in-out; }
+      .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-bottom {
+        transform-style: preserve-3d; }
+      .pf-tile-container a ~ .pf-tile.bg-tech .pf-tile-top:after {
+        transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+      .pf-tile-container a ~ .pf-tile.bg-tech .pf-tile-bottom {
+        transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+        .pf-tile-container a ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
+          transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-tile.bg-household .bub-front-9 {
+        transition: all 800ms ease-out; }
+      .pf-tile-container a ~ .pf-tile.bg-household .pf-tile-desc {
+        transition: all 250ms ease-in-out; }
+      .pf-tile-container a ~ .pf-tile.bg-household .pf-tile-bottom div {
+        transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-cardlet {
+      transition: all 500ms ease-out;
+      transform-style: preserve-3d; }
+      .pf-tile-container a ~ .pf-cardlet > * {
+        transform-style: preserve-3d; }
+      .pf-tile-container a ~ .pf-cardlet .pf-cardlet-front, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-back, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-ribbon, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-ribbon-edge {
+        transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom h1 {
+        transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom > div:not(:empty) {
+        transition: all 500ms ease-out; }
+        .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom > div:not(:empty) h2, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom > div:not(:empty) h3 {
+          transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-cardlet.bg-baking .pf-cardlet-bottom .pf-cardlet-icon {
+        transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-cardlet.bg-photography .pf-cardlet-front div:empty {
+        transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-cardlet.bg-tech .pf-cardlet-bottom > div:empty {
+        transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-cardlet.bg-household .pf-cardlet-front div:empty {
+        transition: all 500ms ease-out; }
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-pricing, .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-pricing {
+      color: #F6C64E; }
+      .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-pricing svg, .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-pricing svg {
         stroke: #F6C64E; }
-    .pf-tile-container a:hover ~ .bg-baking .pf-tile-top h1, .pf-tile-container a:focus ~ .bg-baking .pf-tile-top h1 {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-tile-top h1 {
       color: white; }
-      .pf-tile-container a:hover ~ .bg-baking .pf-tile-top h1 .border:nth-child(1), .pf-tile-container a:focus ~ .bg-baking .pf-tile-top h1 .border:nth-child(1) {
+      .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-tile-top h1 .border:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-tile-top h1 .border:nth-child(1) {
         transform: scaleY(17); }
-      .pf-tile-container a:hover ~ .bg-baking .pf-tile-top h1 .border:nth-child(2), .pf-tile-container a:focus ~ .bg-baking .pf-tile-top h1 .border:nth-child(2) {
+      .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-tile-top h1 .border:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-tile-top h1 .border:nth-child(2) {
         transform: scaleY(1); }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars li svg, .pf-tile-container a:hover ~ .bg-household .rating-stars li svg, .pf-tile-container a:focus ~ .bg-baking .rating-stars li svg, .pf-tile-container a:focus ~ .bg-household .rating-stars li svg {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars li svg, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars li svg, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars li svg, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars li svg {
       stroke: white !important; }
-      .pf-tile-container a:hover ~ .bg-baking .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:hover ~ .bg-household .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:focus ~ .bg-baking .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:focus ~ .bg-household .rating-stars li svg polygon:nth-child(2) {
+      .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars li svg polygon:nth-child(2) {
         fill: white; }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon {
       fill: white; }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon {
       fill: white; }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon {
       fill: white; }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon {
       fill: white; }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="5"] li svg polygon {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="5"] li svg polygon {
       fill: white; }
-    .pf-tile-container a:hover ~ .bg-photography .pf-tile-border div, .pf-tile-container a:focus ~ .bg-photography .pf-tile-border div {
+    .pf-tile-container a:hover ~ .pf-tile.bg-photography .pf-tile-border div, .pf-tile-container a:focus ~ .pf-tile.bg-photography .pf-tile-border div {
       opacity: 1; }
-    .pf-tile-container a:hover ~ .bg-tech .pf-tile-top:after, .pf-tile-container a:focus ~ .bg-tech .pf-tile-top:after {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .pf-tile-top:after, .pf-tile-container a:focus ~ .pf-tile.bg-tech .pf-tile-top:after {
       opacity: 1; }
-    .pf-tile-container a:hover ~ .bg-tech .pf-tile-bottom, .pf-tile-container a:focus ~ .bg-tech .pf-tile-bottom {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .pf-tile-bottom, .pf-tile-container a:focus ~ .pf-tile.bg-tech .pf-tile-bottom {
       background: #55A4B7; }
-      .pf-tile-container a:hover ~ .bg-tech .pf-tile-bottom h1, .pf-tile-container a:focus ~ .bg-tech .pf-tile-bottom h1 {
+      .pf-tile-container a:hover ~ .pf-tile.bg-tech .pf-tile-bottom h1, .pf-tile-container a:focus ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
         color: white; }
-    .pf-tile-container a:hover ~ .bg-tech .border-corner span:nth-child(1), .pf-tile-container a:focus ~ .bg-tech .border-corner span:nth-child(1) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-corner span:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-corner span:nth-child(1) {
       transform: scaleY(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-corner span:nth-child(2), .pf-tile-container a:focus ~ .bg-tech .border-corner span:nth-child(2) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-corner span:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-corner span:nth-child(2) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(1), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(1) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(1) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(2), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(2) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(2) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(3), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(3) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(3), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(3) {
       transform: scaleY(0);
       transition: all 300ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(4), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(4) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(4), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(4) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(5), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(5) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(5), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(5) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(6), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(6) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(6), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(6) {
       transform: scaleY(0);
       transition: all 300ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-top span:nth-child(1), .pf-tile-container a:focus ~ .bg-tech .border-top span:nth-child(1) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-top span:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-top span:nth-child(1) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a:hover ~ .bg-tech .border-top span:nth-child(2), .pf-tile-container a:focus ~ .bg-tech .border-top span:nth-child(2) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-top span:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-top span:nth-child(2) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a:hover ~ .bg-household .pf-tile-desc, .pf-tile-container a:focus ~ .bg-household .pf-tile-desc {
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .pf-tile-desc, .pf-tile-container a:focus ~ .pf-tile.bg-household .pf-tile-desc {
       opacity: 1; }
-    .pf-tile-container a:hover ~ .bg-household .pf-tile-bottom h1, .pf-tile-container a:focus ~ .bg-household .pf-tile-bottom h1 {
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .pf-tile-bottom h1, .pf-tile-container a:focus ~ .pf-tile.bg-household .pf-tile-bottom h1 {
       color: white; }
-    .pf-tile-container a:hover ~ .bg-household .pf-tile-bottom div:not(.pf-pricing), .pf-tile-container a:focus ~ .bg-household .pf-tile-bottom div:not(.pf-pricing) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .pf-tile-bottom div:not(.pf-pricing), .pf-tile-container a:focus ~ .pf-tile.bg-household .pf-tile-bottom div:not(.pf-pricing) {
       transform: translate3d(10px, -10px, 0); }
-    .pf-tile-container a:hover ~ .bg-household .pf-tile-bottom .pf-pricing, .pf-tile-container a:focus ~ .bg-household .pf-tile-bottom .pf-pricing {
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing, .pf-tile-container a:focus ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing {
       transform: translate3d(-10px, -10px, 0);
       background: rgba(255, 255, 255, 0.2);
       color: white; }
-    .pf-tile-container a:hover ~ .bg-household .bub-front-9, .pf-tile-container a:focus ~ .bg-household .bub-front-9 {
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .bub-front-9, .pf-tile-container a:focus ~ .pf-tile.bg-household .bub-front-9 {
       transform: scale(18); }
-    .pf-tile-container a:active ~ .bg-tech .pf-tile-top:after {
+    .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-top:after {
       background: rgba(75, 118, 129, 0.5);
       transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a:active ~ .bg-tech .pf-tile-bottom {
+    .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-bottom {
       background: #4b7681; }
-      .pf-tile-container a:active ~ .bg-tech .pf-tile-bottom h1 {
+      .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
         color: #55A4B7; }
   @media screen and (min-width: 768px) {
     .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-front, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-front {
@@ -5070,7 +5145,7 @@ a.course-card:active .course-card-hover {
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-border, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-border {
       transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
-      transform: translateZ(20px) !important !important; }
+      transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-bottom .rating-stars, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-bottom .rating-stars {
       transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-baking .pf-tile-top div, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-baking .pf-tile-top div {
@@ -5120,8 +5195,6 @@ a.course-card:active .course-card-hover {
   display: block;
   width: 100%;
   max-width: 400px;
-  transition: all 500ms ease-out;
-  transform-style: preserve-3d;
   border-radius: 2px;
   height: 270px; }
   .pf-tile .pf-tile-top {
@@ -5222,13 +5295,11 @@ a.course-card:active .course-card-hover {
     .pf-tile .pf-tile-bottom .pf-review-count {
       font-size: 16px;
       font-weight: 600; }
-  .pf-tile .rating-stars {
-    transition: all 500ms ease-out; }
-    .pf-tile .rating-stars li {
-      padding: 0 !important; }
-      .pf-tile .rating-stars li svg {
-        width: 100%;
-        height: 100%; }
+  .pf-tile .rating-stars li {
+    padding: 0 !important; }
+    .pf-tile .rating-stars li svg {
+      width: 100%;
+      height: 100%; }
   .pf-tile.bg-academic {
     background: #637074;
     transform-origin: left top; }
@@ -5239,8 +5310,7 @@ a.course-card:active .course-card-hover {
       z-index: 10;
       width: calc(100% - 20px);
       height: calc(100% - 20px);
-      opacity: 0.5;
-      transition: all 500ms ease-out; }
+      opacity: 0.5; }
       .pf-tile.bg-academic .pf-tile-border div {
         border-radius: 1000px;
         position: absolute;
@@ -5279,8 +5349,7 @@ a.course-card:active .course-card-hover {
         border-top-left-radius: 2px;
         color: #e6389b;
         font-size: 16px;
-        font-weight: 700;
-        transition: all 500ms ease-out; }
+        font-weight: 700; }
         .pf-tile.bg-academic .pf-tile-top .pf-pricing:before {
           content: "";
           position: absolute;
@@ -5314,8 +5383,7 @@ a.course-card:active .course-card-hover {
         font-size: 28px;
         font-weight: 900;
         border-radius: 2px;
-        overflow: hidden;
-        transition: all 250ms ease-in-out; }
+        overflow: hidden; }
         .pf-tile.bg-baking .pf-tile-top h1 .rating-stars {
           position: relative;
           z-index: 3;
@@ -5330,8 +5398,7 @@ a.course-card:active .course-card-hover {
           width: 100%;
           height: 5px;
           background: #F6C64E;
-          transform-origin: center top;
-          transition: all 250ms ease-in-out; }
+          transform-origin: center top; }
           .pf-tile.bg-baking .pf-tile-top h1 .border + .border {
             background: white;
             transform: scaleY(0); }
@@ -5355,8 +5422,7 @@ a.course-card:active .course-card-hover {
           -webkit-justify-content: center;
           justify-content: center;
           margin-top: 15px;
-          width: 100%;
-          transition: all 250ms ease-in-out; }
+          width: 100%; }
       .pf-tile.bg-baking .pf-tile-top .pf-pricing {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -5418,7 +5484,6 @@ a.course-card:active .course-card-hover {
         width: 100%;
         height: 100%;
         background: rgba(113, 154, 95, 0.95);
-        transition: all 250ms ease-out;
         font-size: 18px;
         font-weight: 600;
         line-height: 1.2;
@@ -5428,17 +5493,13 @@ a.course-card:active .course-card-hover {
       border: 10px solid transparent;
       border-bottom-width: 0;
       height: 200px;
-      border-radius: 2px 2px 0 0;
-      transition: all 250ms ease-in-out; }
+      border-radius: 2px 2px 0 0; }
     .pf-tile.bg-photography .pf-tile-bottom {
       background: white;
       height: 70px;
-      color: #81B566;
-      transform-style: preserve-3d; }
-      .pf-tile.bg-photography .pf-tile-bottom .rating-stars {
-        transition: all 500ms ease-out; }
-        .pf-tile.bg-photography .pf-tile-bottom .rating-stars li svg {
-          height: auto; }
+      color: #81B566; }
+      .pf-tile.bg-photography .pf-tile-bottom .rating-stars li svg {
+        height: auto; }
       .pf-tile.bg-photography .pf-tile-bottom .pf-pricing {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -5540,15 +5601,13 @@ a.course-card:active .course-card-hover {
         left: 0;
         width: 2px;
         height: 100%;
-        transform-origin: left top;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: left top; }
       .pf-tile.bg-tech .border-corner span:nth-child(2) {
         bottom: 0;
         left: 0;
         width: 100%;
         height: 2px;
-        transform-origin: right center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: right center; }
     .pf-tile.bg-tech .border-top {
       position: absolute;
       top: 0;
@@ -5561,16 +5620,14 @@ a.course-card:active .course-card-hover {
         left: 0;
         width: 50%;
         height: 2px;
-        transform-origin: left center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: left center; }
       .pf-tile.bg-tech .border-top span:nth-child(2) {
         border-radius: 0 1000px 1000px 0;
         top: 0;
         right: 0;
         width: 50%;
         height: 2px;
-        transform-origin: right center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: right center; }
     .pf-tile.bg-tech .border-outside {
       position: absolute;
       top: 0;
@@ -5583,46 +5640,40 @@ a.course-card:active .course-card-hover {
         left: 0;
         width: 50%;
         height: 2px;
-        transform-origin: right center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+        transform-origin: right center; }
       .pf-tile.bg-tech .border-outside span:nth-child(2) {
         border-radius: 0 1000px 1000px 0;
         top: 0;
         right: 0;
         width: 50%;
         height: 2px;
-        transform-origin: left center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+        transform-origin: left center; }
       .pf-tile.bg-tech .border-outside span:nth-child(3) {
         top: 0;
         right: 0;
         width: 2px;
         height: 100%;
-        transform-origin: center top;
-        transition: all 300ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
+        transform-origin: center top; }
       .pf-tile.bg-tech .border-outside span:nth-child(4) {
         border-radius: 1000px 0 0 1000px;
         bottom: 0;
         left: 0;
         width: 50%;
         height: 2px;
-        transform-origin: left center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: left center; }
       .pf-tile.bg-tech .border-outside span:nth-child(5) {
         border-radius: 0 1000px 1000px 0;
         bottom: 0;
         right: 0;
         width: 50%;
         height: 2px;
-        transform-origin: right center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: right center; }
       .pf-tile.bg-tech .border-outside span:nth-child(6) {
         bottom: 0;
         left: 0;
         width: 2px;
         height: 100%;
-        transform-origin: center top;
-        transition: all 300ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
+        transform-origin: center top; }
     .pf-tile.bg-tech .pf-tile-top {
       background-color: #4b7681;
       overflow: visible;
@@ -5636,8 +5687,7 @@ a.course-card:active .course-card-hover {
         width: 100%;
         height: 100%;
         background: rgba(85, 164, 183, 0.5);
-        opacity: 0;
-        transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+        opacity: 0; }
       .pf-tile.bg-tech .pf-tile-top .pf-pricing {
         position: absolute;
         top: 0;
@@ -5655,23 +5705,18 @@ a.course-card:active .course-card-hover {
     .pf-tile.bg-tech .pf-tile-bottom {
       height: 70px;
       background: #2B3234;
-      border: 0;
-      transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-      .pf-tile.bg-tech .pf-tile-bottom .rating-stars {
-        transition: all 500ms ease-out; }
-        .pf-tile.bg-tech .pf-tile-bottom .rating-stars li svg {
-          height: auto; }
+      border: 0; }
+      .pf-tile.bg-tech .pf-tile-bottom .rating-stars li svg {
+        height: auto; }
       .pf-tile.bg-tech .pf-tile-bottom h1 {
-        color: #55A4B7;
-        transition: all 500ms ease-out; }
+        color: #55A4B7; }
   .pf-tile.bg-household {
     position: relative;
     padding-bottom: 70px;
     background: white;
     border-radius: 2px; }
     .pf-tile.bg-household .bub-front-9 {
-      transform-origin: center center;
-      transition: all 800ms ease-out; }
+      transform-origin: center center; }
     .pf-tile.bg-household .pf-tile-bg {
       display: flex;
       align-items: flex-end;
@@ -5685,7 +5730,6 @@ a.course-card:active .course-card-hover {
         width: 100%; }
     .pf-tile.bg-household .pf-tile-desc {
       opacity: 0;
-      transition: all 250ms ease-in-out;
       position: absolute;
       top: 0;
       left: 0;
@@ -5718,8 +5762,6 @@ a.course-card:active .course-card-hover {
       border-top: 0;
       height: 70px;
       padding: 15px 0 15px 5px; }
-      .pf-tile.bg-household .pf-tile-bottom div {
-        transition: all 500ms ease-out; }
       .pf-tile.bg-household .pf-tile-bottom h1 {
         color: #7872e3; }
       .pf-tile.bg-household .pf-tile-bottom .rating-stars {
@@ -5757,21 +5799,33 @@ a.course-card:active .course-card-hover {
   position: relative;
   width: 100%;
   max-width: 400px;
-  height: 270px;
-  transition: all 500ms ease-out;
-  transform-style: preserve-3d; }
-  .pf-cardlet > * {
-    transform-style: preserve-3d; }
+  height: 270px; }
+  .pf-cardlet .pf-cardlet-front-container, .pf-cardlet .pf-cardlet-back-container {
+    width: 100%;
+    height: 100%; }
+  .pf-cardlet .pf-cardlet-front-container, .pf-cardlet .pf-cardlet-front {
+    position: relative;
+    z-index: 2; }
+  .pf-cardlet .pf-cardlet-back-container, .pf-cardlet .pf-cardlet-back {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: 0; }
   .pf-cardlet .pf-cardlet-front, .pf-cardlet .pf-cardlet-back {
     width: calc(100% - 15px);
     height: calc(100% - 15px);
     border-radius: 2px;
     background-color: #637074;
     background-position: center center;
-    background-size: cover;
-    transition: all 500ms ease-out; }
+    background-size: cover; }
+  .pf-cardlet .pf-cardlet-bottom-container {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
   .pf-cardlet .pf-cardlet-bottom {
-    transition: all 500ms ease-out;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -5791,14 +5845,12 @@ a.course-card:active .course-card-hover {
     -webkit-justify-content: center;
     justify-content: center;
     position: absolute;
-    z-index: 4;
     top: 0;
     left: 0;
     width: calc(100% - 15px);
     height: calc(100% - 15px);
     padding: 15px; }
     .pf-cardlet .pf-cardlet-bottom h1 {
-      transition: all 500ms ease-out;
       width: 100%;
       font-size: 24px;
       font-weight: 700;
@@ -5808,17 +5860,14 @@ a.course-card:active .course-card-hover {
         .pf-cardlet .pf-cardlet-bottom h1 {
           font-size: 28px; } }
     .pf-cardlet .pf-cardlet-bottom > div:not(:empty) {
-      transition: all 500ms ease-out;
       margin-top: 5px;
       text-align: center;
       text-shadow: 0 0 20px rgba(99, 112, 116, 0.5); }
       .pf-cardlet .pf-cardlet-bottom > div:not(:empty) h2 {
-        transition: all 500ms ease-out;
         margin-top: 0;
         font-size: 16px;
         font-weight: 700; }
       .pf-cardlet .pf-cardlet-bottom > div:not(:empty) h3 {
-        transition: all 500ms ease-out;
         font-size: 14px;
         font-weight: 700;
         text-transform: uppercase; }
@@ -5840,9 +5889,7 @@ a.course-card:active .course-card-hover {
     -webkit-align-content: center;
     align-content: center;
     -webkit-justify-content: center;
-    justify-content: center;
-    position: relative;
-    z-index: 2; }
+    justify-content: center; }
     .pf-cardlet .pf-cardlet-front:after {
       content: "";
       display: block;
@@ -5858,13 +5905,15 @@ a.course-card:active .course-card-hover {
       z-index: 4; }
   .pf-cardlet .pf-cardlet-back {
     filter: alpha(opacity=25);
-    opacity: 0.25;
+    opacity: 0.25; }
+  .pf-cardlet .pf-cardlet-ribbon-container {
     position: absolute;
-    z-index: 0;
-    bottom: 0;
-    right: 0; }
+    z-index: 10;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; }
   .pf-cardlet .pf-cardlet-ribbon {
-    transition: all 500ms ease-out;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -5911,8 +5960,14 @@ a.course-card:active .course-card-hover {
       border-left-width: 10px;
       border-right-width: 10px;
       border-left-color: transparent !important; }
+  .pf-cardlet .pf-cardlet-ribbon-edge-container {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; }
   .pf-cardlet .pf-cardlet-ribbon-edge {
-    transition: all 500ms ease-out;
     transform: rotate(45deg);
     position: absolute;
     z-index: 1;
@@ -6014,7 +6069,6 @@ a.course-card:active .course-card-hover {
     height: 100%;
     left: 30px; }
     .pf-cardlet.bg-baking .pf-cardlet-bottom .pf-cardlet-icon {
-      transition: all 500ms ease-out;
       border-radius: 1000px;
       margin: 0 0 5px;
       width: 96px;
@@ -6032,6 +6086,8 @@ a.course-card:active .course-card-hover {
   .pf-cardlet.bg-baking .pf-cardlet-ribbon-edge {
     right: 26px;
     border-color: #fbe3a7; }
+  .pf-cardlet.bg-photography .pf-cardlet-front-container {
+    height: 185px; }
   .pf-cardlet.bg-photography .pf-cardlet-front {
     height: 185px;
     border-bottom-left-radius: 0;
@@ -6040,8 +6096,7 @@ a.course-card:active .course-card-hover {
       display: none; }
     .pf-cardlet.bg-photography .pf-cardlet-front div:empty {
       position: absolute;
-      background: white;
-      transition: all 500ms ease-out; }
+      background: white; }
       .pf-cardlet.bg-photography .pf-cardlet-front div:empty:nth-child(1) {
         top: 0;
         left: 0;
@@ -6065,11 +6120,17 @@ a.course-card:active .course-card-hover {
         border-radius: 3px 3px 0 0; }
   .pf-cardlet.bg-photography .pf-cardlet-back {
     background: white; }
+  .pf-cardlet.bg-photography .pf-cardlet-bottom-container {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0;
+    height: 70px; }
   .pf-cardlet.bg-photography .pf-cardlet-bottom {
     justify-content: flex-start;
     position: relative;
     top: auto;
-    right: auto;
+    left: auto;
     margin: 0;
     height: 70px;
     background: white;
@@ -6214,7 +6275,6 @@ a.course-card:active .course-card-hover {
   .pf-cardlet.bg-household .pf-cardlet-front div:empty {
     position: absolute;
     background: white;
-    transition: all 500ms ease-out;
     border-radius: 3px; }
     .pf-cardlet.bg-household .pf-cardlet-front div:empty:nth-child(1) {
       top: 0;
@@ -8660,7 +8720,6 @@ input.chip:hover {
     height: 100%;
     z-index: 5; }
   .toggle:not(.old) label {
-    transition: all 150ms ease-in-out;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -8677,150 +8736,160 @@ input.chip:hover {
     -webkit-justify-content: center;
     justify-content: center;
     position: relative;
-    background: #40484B;
-    padding: 5px;
     height: 36px;
     width: 72px;
-    border-radius: 2px;
     color: white;
     font-size: 18px;
-    font-weight: 600; }
+    font-weight: 600;
+    padding: 5px; }
+    .toggle:not(.old) label > div:empty {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #40484B;
+      border-radius: 2px; }
     .toggle:not(.old) label * {
       transition: all 150ms ease-in-out; }
     .toggle:not(.old) label span {
+      position: relative;
+      z-index: 2;
       padding: 0 5px; }
     .toggle:not(.old) label .square {
+      position: relative;
+      z-index: 2;
       display: block;
       height: 100%;
       border-radius: 2px;
       overflow: hidden; }
       .toggle:not(.old) label .square * {
         fill: none; }
-      .toggle:not(.old) label .square:first-child {
+      .toggle:not(.old) label .square:first-of-type {
         position: absolute;
         top: 5px;
         left: 5px;
         height: calc(100% - 10px); }
-        .toggle:not(.old) label .square:first-child * {
-          fill: white; }
-  .toggle:not(.old) input:checked + label {
+        .toggle:not(.old) label .square:first-of-type * {
+          fill: white;
+          stroke: white;
+          stroke-width: 2px;
+          stroke-linejoin: round;
+          stroke-linecap: round; }
+  .toggle:not(.old) input:checked + label > div:empty {
     background: #43cb9d; }
-    .toggle:not(.old) input:checked + label span {
-      transform: translateX(-26px); }
-    .toggle:not(.old) input:checked + label .square:first-child {
-      transform: translateX(36px); }
-  .toggle:not(.old).normal label > div, .toggle:not(.old).am-pm label > div {
+  .toggle:not(.old) input:checked + label span {
+    transform: translateX(-26px); }
+  .toggle:not(.old) input:checked + label .square:first-of-type {
+    transform: translateX(36px); }
+  .toggle:not(.old).normal label > div:not(:empty), .toggle:not(.old).am-pm label > div:not(:empty) {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; }
-    .toggle:not(.old).normal label > div div, .toggle:not(.old).am-pm label > div div {
+    .toggle:not(.old).normal label > div:not(:empty) div, .toggle:not(.old).am-pm label > div:not(:empty) div {
       position: absolute;
       border-radius: 1000px; }
-      .toggle:not(.old).normal label > div div:nth-child(1), .toggle:not(.old).am-pm label > div div:nth-child(1) {
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(1), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(1) {
         top: 0;
         left: 0;
         width: 100%;
         height: 2px;
         transform-origin: left center; }
-      .toggle:not(.old).normal label > div div:nth-child(2), .toggle:not(.old).am-pm label > div div:nth-child(2) {
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(2), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(2) {
         top: 0;
         right: 0;
         width: 2px;
         height: 100%;
         transform-origin: center top; }
-      .toggle:not(.old).normal label > div div:nth-child(3), .toggle:not(.old).am-pm label > div div:nth-child(3) {
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(3), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(3) {
         bottom: 0;
         right: 0;
         width: 100%;
         height: 2px;
         transform-origin: right center; }
-      .toggle:not(.old).normal label > div div:nth-child(4), .toggle:not(.old).am-pm label > div div:nth-child(4) {
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(4), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(4) {
         bottom: 0;
         left: 0;
         width: 2px;
         height: 100%;
         transform-origin: center bottom; }
-  .toggle:not(.old).normal label .square:first-child rect, .toggle:not(.old).am-pm label .square:first-child rect {
-    stroke: white;
-    stroke-width: 2px;
-    stroke-linejoin: round;
-    stroke-linecap: round; }
-  .toggle:not(.old).normal > div div {
+  .toggle:not(.old).normal > div:not(:empty) div {
     background: #43cb9d; }
-  .toggle:not(.old).am-pm input + label {
+  .toggle:not(.old).am-pm input + label > div:empty {
     background: #456477; }
-    .toggle:not(.old).am-pm input + label > div div {
-      background: #456477; }
-    .toggle:not(.old).am-pm input + label > span {
+  .toggle:not(.old).am-pm input + label > div:not(:empty) div {
+    background: #456477; }
+  .toggle:not(.old).am-pm input + label > span {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 50%;
+    padding: 0;
+    text-align: center; }
+    .toggle:not(.old).am-pm input + label > span > span {
+      transform: translate(0) !important;
+      position: absolute;
       display: block;
-      position: relative;
+      left: 0;
+      width: 100%;
       height: 100%;
-      width: 50%;
-      padding: 0;
-      text-align: center; }
-      .toggle:not(.old).am-pm input + label > span > span {
-        transform: translate(0) !important;
-        position: absolute;
-        display: block;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        padding: 0; }
-    .toggle:not(.old).am-pm input + label .am {
-      opacity: 0; }
-    .toggle:not(.old).am-pm input + label .pm {
-      opacity: 1; }
-  .toggle:not(.old).am-pm input:checked + label {
+      text-align: center;
+      padding: 0; }
+  .toggle:not(.old).am-pm input + label .am {
+    opacity: 0; }
+  .toggle:not(.old).am-pm input + label .pm {
+    opacity: 1; }
+  .toggle:not(.old).am-pm input:checked + label div:empty {
     background: #F6C64E; }
-    .toggle:not(.old).am-pm input:checked + label .am {
-      opacity: 1; }
-    .toggle:not(.old).am-pm input:checked + label .pm {
-      opacity: 0; }
-  .toggle:not(.old).white-round label {
+  .toggle:not(.old).am-pm input:checked + label .am {
+    opacity: 1; }
+  .toggle:not(.old).am-pm input:checked + label .pm {
+    opacity: 0; }
+  .toggle:not(.old).white-round label div:empty {
     border-radius: 1000px;
     background: rgba(255, 255, 255, 0.5); }
-    .toggle:not(.old).white-round label .square {
-      border-radius: 1000px; }
-      .toggle:not(.old).white-round label .square:first-child {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%; }
-        .toggle:not(.old).white-round label .square:first-child * {
-          fill: white; }
-    .toggle:not(.old).white-round label .bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%; }
-      .toggle:not(.old).white-round label .bg rect {
-        fill: none;
-        stroke: white;
-        stroke-width: 2px;
-        stroke-linecap: round;
-        stroke-linejoin: round; }
-  .toggle:not(.old).white-round input:checked + label {
-    background: rgba(255, 255, 255, 0.5); }
-  .toggle:not(.old).round label {
+  .toggle:not(.old).white-round label .square {
     border-radius: 1000px; }
-    .toggle:not(.old).round label .square {
-      border-radius: 1000px; }
-    .toggle:not(.old).round label .bg {
+    .toggle:not(.old).white-round label .square:first-child {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
       height: 100%; }
-      .toggle:not(.old).round label .bg rect {
-        fill: none;
-        stroke: white;
-        stroke-width: 2px;
-        stroke-linecap: round;
-        stroke-linejoin: round; }
+      .toggle:not(.old).white-round label .square:first-child * {
+        fill: white; }
+  .toggle:not(.old).white-round label .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .toggle:not(.old).white-round label .bg rect {
+      fill: none;
+      stroke: white;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
+  .toggle:not(.old).white-round input:checked + label div:empty {
+    background: rgba(255, 255, 255, 0.5); }
+  .toggle:not(.old).round label div:empty {
+    border-radius: 1000px; }
+  .toggle:not(.old).round label .square {
+    border-radius: 1000px; }
+  .toggle:not(.old).round label .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .toggle:not(.old).round label .bg rect {
+      fill: none;
+      stroke: #43cb9d;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
 
 /* ---------- CHECKBOXES & RADIO [deprecate] */
 .checkbox-container.old, .radio-container.old {
@@ -13849,15 +13918,10 @@ input[type=range] {
       background: #eaeced;
       border-radius: 2px;
       overflow: hidden; }
-      .body-text .body-text-loader > span:nth-child(1) {
-        width: 70%; }
-      .body-text .body-text-loader > span:nth-child(2) {
-        width: 95%; }
-      .body-text .body-text-loader > span:nth-child(3) {
-        width: 85%; }
       .body-text .body-text-loader > span span {
+        transform-origin: left center;
         display: block;
-        width: 10px;
+        width: 100%;
         height: 100%;
         background: #dce0e1; }
   .body-text[number="3"] .body-text-loader span:nth-child(4), .body-text[number="3"] .body-text-loader span:nth-child(5), .body-text[number="3"] .body-text-loader span:nth-child(6), .body-text[number="3"] .body-text-loader span:nth-child(7), .body-text[number="3"] .body-text-loader span:nth-child(8), .body-text[number="3"] .body-text-loader span:nth-child(9), .body-text[number="3"] .body-text-loader span:nth-child(10) {

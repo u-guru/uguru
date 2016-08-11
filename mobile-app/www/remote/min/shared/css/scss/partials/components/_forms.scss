@@ -144,25 +144,36 @@
 		z-index: 5;
 	}
 	label {
-		transition: all 150ms ease-in-out;
 		@include flex;
 		@include flex-center;
 		position: relative;
-		background: $slate;
-		padding: 5px;
 		height: 36px;
 		width: 72px;
-		border-radius: 2px;
 		color: white;
 		font-size: 18px;
 		font-weight: 600;
+		padding: 5px;
+		> div:empty {
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: $slate;
+			border-radius: 2px;
+		}
 		* {
 			transition: all 150ms ease-in-out;
 		}
 		span {
+			position: relative;
+			z-index: 2;
 			padding: 0 5px;
 		}
 		.square {
+			position: relative;
+			z-index: 2;
 			display: block;
 			height: 100%;
 			border-radius: 2px;
@@ -170,29 +181,35 @@
 			* {
 				fill: none;
 			}
-			&:first-child {
+			&:first-of-type {
 				position: absolute;
 				top: 5px;
 				left: 5px;
 				height: calc(100% - 10px);
 				* {
 					fill: white;
+					stroke: white;
+					stroke-width: 2px;
+					stroke-linejoin: round;
+					stroke-linecap: round;
 				}
 			}
 		}
 	}
 	input:checked + label {
-		background: $moxie;
+		> div:empty {
+			background: $moxie;
+		}
 		span {
 			transform: translateX(-26px);
 		}
-		.square:first-child {
+		.square:first-of-type {
 			transform: translateX(36px);
 		}
 	}
 	&.normal, &.am-pm {
 		label {
-			> div {
+			> div:not(:empty) {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -231,16 +248,10 @@
 					}
 				}
 			}
-			.square:first-child rect {
-				stroke: white;
-				stroke-width: 2px;
-				stroke-linejoin: round;
-				stroke-linecap: round;
-			}
 		}
 	}
 	&.normal {
-		> div {
+		> div:not(:empty) {
 			div {
 				background: $moxie;
 			}
@@ -248,8 +259,10 @@
 	}
 	&.am-pm {
 		input + label {
-			background: mix($lake, $slate, 30%);
-			> div {
+			> div:empty {
+				background: mix($lake, $slate, 30%);
+			}
+			> div:not(:empty) {
 				div {
 					background: mix($lake, $slate, 30%);
 				}
@@ -280,7 +293,9 @@
 			}
 		}
 		input:checked + label {
-			background: $gold;
+			div:empty {
+				background: $gold;
+			}
 			.am {
 				opacity: 1;
 			}
@@ -291,8 +306,10 @@
 	}
 	&.white-round {
 		label {
-			@include round;
-			background: rgba(white, .5);
+			div:empty {
+				@include round;
+				background: rgba(white, .5);
+			}
 			.square {
 				@include round;
 				&:first-child {
@@ -317,12 +334,16 @@
 			}
 		}
 		input:checked + label {
-			background: rgba(white, .5);
+			div:empty {
+				background: rgba(white, .5);
+			}
 		}
 	}
 	&.round {
 		label {
-			@include round;
+			div:empty {
+				@include round;
+			}
 			.square {
 				@include round;
 			}
@@ -333,7 +354,7 @@
 				width: 100%;
 				height: 100%;
 				rect {
-					@include svg-stroke(white, 2);
+					@include svg-stroke($moxie, 2);
 				}
 			}
 		}

@@ -5,6 +5,23 @@
 @import 'partials/keyframes';
 @import 'partials/docs';
 
+.type-list {
+	ul {
+		li {
+			&:first-child {
+				div {
+					border-radius: 2px 0 0 2px!important;
+				}
+			}
+			&:last-child {
+				div {
+					border-radius: 0 2px 2px 0!important;
+				}
+			}
+		}
+	}
+}
+
 .bg-cobalt-slate-campus-25p {
 	background: mix($campus, mix($cobalt, $slate, 25%), 25%)!important;
 }
