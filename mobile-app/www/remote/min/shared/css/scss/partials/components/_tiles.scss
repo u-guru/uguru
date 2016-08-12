@@ -1788,6 +1788,7 @@
 			height: calc(100% - 30px);
 			right: 0;
 			bottom: 15px;
+			transform-origin: center center;
 		}
 		.pf-cardlet-bottom {
 			width: calc(100% - 60px);
@@ -1800,6 +1801,7 @@
 				height: 96px;
 				background-position: center center;
 				background-size: cover;
+				transform-origin: center center;
 			}
 			h1, div {
 				text-shadow: none!important;
