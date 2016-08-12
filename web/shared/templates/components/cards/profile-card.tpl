@@ -13,7 +13,7 @@
 						<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 					</li>
 				</ul>
-				<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"
+				<span class="user-icon"  style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"
 					init-with="p-op"
 					when-pf-card-1-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>
 			</div>
@@ -105,8 +105,8 @@
 			</div>
 		</div>
 	</div>
-
-	<ul class="pf-card-stack slate" ng-if='activeType === "stack"'>
+	<!-- Go to line 327 on AdminPropertyContgroller to add-->
+	<ul class="pf-card-stack slate" ng-if='activeType === "stack"' inspector-elem>
 		<li init-with="p:[tr:translateY(-30px) scale(0.8)]">
 			<div style="min-width: 300px"
 				init-with="p:[op:0, tro:center bottom]"
@@ -122,7 +122,8 @@
 								<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 							</li>
 						</ul>
-						<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
+
+						<span class="user-icon"  style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"></span>
 					</div>
 					<div class="pf-card-main">
 						<h1 class="verified">
@@ -302,7 +303,7 @@
 				when-pf-card-1-init="a:[scoop-enter:set:(dur:800ms#func:linear):in] | s:[pf-card-2-init:public:delay-300]">
 				<div class="pf-card pf-card-photography">
 					<div class="pf-card-top">
-						<ul>
+						<ul  inspector-elem >
 							<li init-with="p-op"
 								when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">Gabrielle's Shop</li>
 							<li init-with="p-op"
@@ -310,7 +311,7 @@
 								<span><span data-rank="25">25</span>&nbsp;Percentile</span>
 							</li>
 						</ul>
-						<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"
+						<span class="user-icon"  style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=800);"
 							init-with="p-op"
 							when-pf-card-1-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>
 					</div>

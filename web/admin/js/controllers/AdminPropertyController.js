@@ -304,7 +304,9 @@ angular.module('uguru.admin')
       }
 
       for (var i = 0; i < property_arr.length; i++) {
-        animStr += convertAnimPropObjToString(property_arr[i].animation);
+
+        property_arr[i].animation.str = convertAnimPropObjToString(property_arr[i].animation);
+        animStr += property_arr[i].animation.str;
         if (i === property_arr.length-1) {
           var endCallback = function(e) {
             apc.gPlayer.paused = false;
@@ -321,15 +323,23 @@ angular.module('uguru.admin')
       }
     }
 
-    apc.properties = [{name: 'transform', start: 'translateX(-1000%)', end: 'translateX(10%)', duration:1500, timingFunction:'linear', ease: 'bouncePast', playbar:null, unit: 0}]
+
+    var propertyOne = {name: 'transform', start: 'translateX(-1000%) rotate(-360deg) scale(0.1)', end: 'translateX(10%) rotate(720deg) scale(1.25)', duration:5000, timingFunction:'linear', ease: 'elastic', playbar:null, unit: 0}
+    var propertyTwo = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
+    var propertyThree = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
+
+    apc.properties = [propertyOne, propertyTwo];
+
     $timeout(function() {
       console.log(apc.properties[0])
       var inspectElemId = '#svg-square-rect';
-      var elem = document.querySelector(inspectElemId);
+      var elem = document.querySelector('[inspector-elem]');
+
+      console.log(elem);
       parsePropertiesAndPlay(apc.properties, elem);
-      $timeout(function() {
-        changeDirection(apc.properties[0]);
-      }, 500)
+      // $timeout(function() {
+      //   changeDirection(apc.properties[0]);
+      // }, 500)
     }, 2000)
 
 
