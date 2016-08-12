@@ -122,15 +122,15 @@
 							when-academic-cardlet-init="p:[tr:scaleX(1), t:transform 1450ms ease-out]"></div>
 						<div init-with="p:[tr:scaleY(0)]"
 							when-academic-cardlet-init="p:[tr:scaleY(1), t:transform 1450ms ease-out]"></div>
-						<div init-with="p:[tr:scaleX(0)]"
-							when-academic-cardlet-init="p:[tr:scaleX(1), t:transform 1450ms ease-out]"></div>
 						<div init-with="p:[tr:scaleY(0)]"
 							when-academic-cardlet-init="p:[tr:scaleY(1), t:transform 1450ms ease-out]"></div>
+						<div init-with="p:[tr:scaleX(0)]"
+							when-academic-cardlet-init="p:[tr:scaleX(1), t:transform 1450ms ease-out]"></div>
 					</div>
 					<h1 init-with="p-op"
 						on-init="a:[zoomIn:set:(dur:400ms#func:cubic-bezier(.8#.1#.41#.91)):in:delay-450]">Master the Cerebral Cortex</h1>
 					<div>
-						<div init-with="p:[op:0, tr:scaleX(0), t:all 400ms cubic-bezier(.8#.1#.41#.91)]"
+						<div init-with="p:[op:0, tr:scaleY(0), t:all 400ms cubic-bezier(.8#.1#.41#.91)]"
 							when-academic-cardlet-init="p:[op:1, tr:none]:delay-650">
 							<h2>03/28/2016</h2>
 						</div>
