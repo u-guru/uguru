@@ -19,7 +19,7 @@ angular.module('uguru.admin')
 
     apc.property = [{name: 'opacity', start: 0.5, end: 1.0}];
     apc.activeIndex = 0;
-    apc.gPlayer = {play: playAll, pause: pauseAll, paused: false, element: null, resume: resumeAll};
+    apc.gPlayer = {play: playAll, pause: pauseAll, paused: false, resetAll: resetAll, element: null, resume: resumeAll};
     apc.playAll = playAll;
     apc.pauseAll = pauseAll;
     apc.addProp = {searchText: '', propName: '', start: '', end: '', ease: '', duration: ''};
@@ -233,21 +233,60 @@ angular.module('uguru.admin')
     }
 
     function pauseAll() {
+      try {
+        var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
+        apc.gPlayer.element.style['webkitAnimation'] = UtilitiesService.replaceAll(style, 'running', 'paused');
+        apc.gPlayer.paused = true;
+        apc.gPlayer.reset = true;
+
+      } catch(e) {
+        console.log('BS Ionic error - please tell samir if the pause is funky')
+        $timeout(function() {
+          pauseAll();
+          $scope.$apply();
+          console.log('If you see this multiple times in the console.log -- tell Samir')
+        })
+      }
+
+    }
+
+    function resetAll() {
+      var tempoOffsetWidth = apc.gPlayer.element.style['offsetWidth']
       var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
-      apc.gPlayer.element.style['webkitAnimation'] = UtilitiesService.replaceAll(style, 'running', 'paused');
-      apc.gPlayer.pause = true;
-      apc.gPlayer.reset = true;
+      var newPausedStyle = UtilitiesService.replaceAll(style, 'running', 'paused');
+      apc.gPlayer.element.style['webkitAnimation'] = newPausedStyle;
+      apc.gPlayer.element.style['webkitAnimation'] = '';
+      apc.gPlayer.element.style['offsetWidth'] = null;
+      apc.gPlayer.reset = false;
+      apc.gPlayer.paused = false;
+      apc.gPlayer.element.style['webkitAnimation'] = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
+      // var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
+      //pause.
+      //set direction to reverse
+      //pause
+      //set fillMode to backwards
+      //pause
+      //set duration to 0.01; store currentDuration in Arr;
+      //fire timeout
+      //fire start listener
+      //play
+      //onEndListener --> ste back to original
+      // apc.gPlayer.element.style['webkitAnimation'] = UtilitiesService.replaceAll(style, 'paused', 'running');
+      // apc.gPlayer.element.style['webkitAnimation'] = UtilitiesService.replaceAll(style, 'running', 'paused');
+      // apc.gPlayer.pause = true;
+      // apc.gPlayer.reset = true;
     }
 
     function resumeAll() {
       var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
       apc.gPlayer.element.style['webkitAnimation'] = UtilitiesService.replaceAll(style, 'paused', 'running');
-      apc.gPlayer.pause = false;
+      apc.gPlayer.paused = false;
+      apc.gPlayer.reset = false;
     }
 
     function playAll(property_arr) {
       if (apc.gPlayer.paused) {
-        apc.resumeAll();
+        apc.gPlayer.resume();
         return;
       }
 
@@ -268,7 +307,7 @@ angular.module('uguru.admin')
         animStr += convertAnimPropObjToString(property_arr[i].animation);
         if (i === property_arr.length-1) {
           var endCallback = function(e) {
-            apc.gPlayer.resume = false;
+            apc.gPlayer.paused = false;
           }
           maxDurationProp.animation.listeners = {
             start: getStartListener(maxDurationProp.element),
@@ -407,6 +446,7 @@ angular.module('uguru.admin')
       return function() {
         var style = window.getComputedStyle(element)['webkitAnimation'];
         var newPausedStyle = UtilitiesService.replaceAll(style, 'running', 'paused');
+        var tempoOffsetWidth = element.style['offsetWidth'] = null;
         element.style['webkitAnimation'] = newPausedStyle;
         element.style['webkitAnimation'] = '';
         element.style['offsetWidth'] = null;
