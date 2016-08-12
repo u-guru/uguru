@@ -25,18 +25,10 @@
 			background: lighten($slate, 65%);
 			border-radius: 2px;
 			overflow: hidden;
-			&:nth-child(1) {
-				width: 70%;
-			}
-			&:nth-child(2) {
-				width: 95%;
-			}
-			&:nth-child(3) {
-				width: 85%;
-			}
 			span {
+				transform-origin: left center;
 				display: block;
-				width: 10px;
+				width: 100%;
 				height: 100%;
 				background: lighten($slate, 60%);
 			}
@@ -52,6 +44,67 @@
 			}
 		}
 	}
+	&[number="4"] {
+		.body-text-loader {
+			span {
+				&:nth-child(5), &:nth-child(6),
+				&:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="5"] {
+		.body-text-loader {
+			span {
+				&:nth-child(6),
+				&:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="6"] {
+		.body-text-loader {
+			span {
+				&:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="7"] {
+		.body-text-loader {
+			span {
+				&:nth-child(8), &:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="8"] {
+		.body-text-loader {
+			span {
+				&:nth-child(9), &:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&[number="9"] {
+		.body-text-loader {
+			span {
+				&:nth-child(10) {
+					display: none;
+				}
+			}
+		}
+	}
+	&.short {
+		> span {
+			@include flex;
+		}
+	}
 }
 
 // header
@@ -64,6 +117,7 @@
 		flex-flow: row wrap;
 		span {
 			display: block;
+			transform-origin:center top;
 		}
 	}
 }

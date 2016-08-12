@@ -1,8 +1,7 @@
 <div class="perspective-container full-xy flex-center" types='flip, edit, short, mini' default-type="short">
     <div ng-if='activeType === "flip"' class="credit-card-flip" tabindex
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]">
+		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]">
         <div class="credit-card">
             <svg width="240px" height="150px" viewBox="0 0 240 150">
                 <rect fill="none" x="0" y="0" width="240" height="150"></rect>
@@ -22,8 +21,7 @@
                         <h4>Card Number</h4>
                         <div class="credit-card-number"
 							init-with="p:[op:0, tro:center bottom]"
-							on-init="t-enter"
-							on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
+							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
 							<span>
                                 &bull;&bull;&bull;&bull;
                                 &bull;&bull;&bull;&bull;
@@ -37,8 +35,7 @@
                             <h4>Valid Thru</h4>
                             <div class="credit-card-number"
 								init-with="p:[op:0, tro:center bottom]"
-								on-init="t-enter"
-								on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]">10/20</div>
+								when-credi-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]">10/20</div>
                         </div>
                         <div class="credit-card-default">
                             <svg viewBox="0 0 100 100">
@@ -67,8 +64,7 @@
 
     <div ng-if='activeType === "edit"' class="credit-card edit"
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
+		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
 		on-mouse-enter="send:[logo-wiggle:public]">
             <svg width="240px" height="75px" viewBox="0 0 240 75">
                 <rect fill="none" x="0" y="0" width="240" height="75"></rect>
@@ -86,8 +82,7 @@
                     </div>
                     <div class="credit-card-number"
 						init-with="p:[op:0, tro:center bottom]"
-						on-init="t-enter"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
+						when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
                         <span>&bull;&bull;&bull;&bull;</span><span>1234</span>
                     </div>
                 </div>
@@ -96,8 +91,7 @@
 
 	<div ng-if='activeType === "short"' class="credit-card short"
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
+		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
 		on-mouse-enter="send:[logo-wiggle:public]">
             <svg width="240px" height="50px" viewBox="0 0 240 50">
                 <rect fill="none" x="0" y="0" width="240" height="50"></rect>
@@ -114,8 +108,7 @@
                     </div>
                     <div class="credit-card-number"
 						init-with="p:[op:0, tro:center bottom]"
-						on-init="t-enter"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
+						when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
                         <span>&bull;&bull;&bull;&bull;</span><span>1234</span>
                     </div>
                 </div>
@@ -124,8 +117,7 @@
 
     <div ng-if='activeType === "mini"' class="credit-card x-short"
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
+		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
 		on-mouse-enter="send:[logo-wiggle:public]">
             <svg width="240px" height="36px" viewBox="0 0 240 36">
                 <rect fill="none" x="0" y="0" width="240" height="36"></rect>
@@ -142,8 +134,7 @@
                     </div>
                     <div class="credit-card-number"
 						init-with="p:[op:0, tro:center bottom]"
-						on-init="t-enter"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
+						when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
                         <span>&bull;&bull;&bull;&bull;</span><span>1234</span>
                     </div>
                 </div>

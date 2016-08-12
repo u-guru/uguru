@@ -81,199 +81,520 @@
 			bottom: 0;
 			left: 0;
 		}
-		&:hover, &:focus {
-			~ .bg-baking {
-				.pf-pricing {
-					color: $gold;
-					transition: all 250ms ease-in-out;
-					svg {
-						stroke: $gold;
-					}
-				}
-				.pf-tile-top {
-					h1 {
-						color: white;
-						.border {
-							&:nth-child(1) {
-								transform: scaleY(17);
-							}
-							&:nth-child(2) {
-								transform: scaleY(1);
-							}
-						}
-					}
-				}
+		// transitions
+		~ .pf-tile, ~ .pf-cardlet {
+			transition: all 500ms ease-out;
+			transform-style: preserve-3d;
+			.rating-stars {
+				transition: all 500ms ease-out;
 			}
-			~ .bg-baking, ~ .bg-household {
-				.rating-stars {
-					li {
-						svg {
-							stroke: white!important;
-							polygon:nth-child(2) {
-								fill: white;
-							}
-						}
-					}
-					&[data-rating*="1"] {
-						li:nth-child(1) {
-							svg {
-								polygon {
-									fill: white;
-								}
-							}
-						}
-					}
-					&[data-rating*="2"] {
-						li:nth-child(1),
-						li:nth-child(2) {
-							svg {
-								polygon {
-									fill: white;
-								}
-							}
-						}
-					}
-					&[data-rating*="3"] {
-						li:nth-child(1),
-						li:nth-child(2),
-						li:nth-child(3) {
-							svg {
-								polygon {
-									fill: white;
-								}
-							}
-						}
-					}
-					&[data-rating*="4"] {
-						li:nth-child(1),
-						li:nth-child(2),
-						li:nth-child(3),
-						li:nth-child(4) {
-							svg {
-								polygon {
-									fill: white;
-								}
-							}
-						}
-					}
-					&[data-rating*="5"] {
-						li {
-							svg {
-								polygon {
-									fill: white;
-								}
-							}
-						}
-					}
-				}
+			* {
+				transform-style: preserve-3d;
 			}
-			~ .bg-photography {
-				.pf-tile-border {
-					div {
-						opacity: 1;
-					}
-				}
-			}
-			~ .bg-tech {
-				.pf-tile-top {
-					&:after {
-						opacity: 1;
-					}
-				}
-				.pf-tile-bottom {
-					background: $azure;
-					h1 {
-						color: white;
-					}
-				}
-				.border-corner {
-					span {
-						&:nth-child(1) {
-							transform: scaleY(0);
-							transition: all 500ms cubic-bezier(0,.66,.47,1.09) 250ms;
-						}
-						&:nth-child(2) {
-							transform: scaleX(0);
-							transition: all 500ms cubic-bezier(0,.66,.47,1.09) 250ms;
-						}
-					}
-				}
-				.border-outside {
-					span {
-						&:nth-child(1) {
-							transform: scaleX(0);
-							transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
-						}
-						&:nth-child(2) {
-							transform: scaleX(0);
-							transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
-						}
-						&:nth-child(3) {
-							transform: scaleY(0);
-							transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
-						}
-						&:nth-child(4) {
-							transform: scaleX(0);
-							transition: all 500ms cubic-bezier(0,.66,.47,1.09);
-						}
-						&:nth-child(5) {
-							transform: scaleX(0);
-							transition: all 500ms cubic-bezier(0,.66,.47,1.09);
-						}
-						&:nth-child(6) {
-							transform: scaleY(0);
-							transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
-						}
-					}
-				}
-				.border-top {
-					span {
-						&:nth-child(1) {
-							transform: scaleX(0);
-							transition: all 500ms cubic-bezier(0,.66,.47,1.09);
-						}
-						&:nth-child(2) {
-							transform: scaleX(0);
-							transition: all 500ms cubic-bezier(0,.66,.47,1.09);
-						}
-					}
-				}
-			}
-			~ .bg-household {
-				.pf-tile-desc {
-					opacity: 1;
-				}
-				.pf-tile-bottom {
-					h1 {
-						color: white;
-					}
-					div:not(.pf-pricing) {
-						transform: translate3d(10px, -10px, 0);
-					}
-					.pf-pricing {
-						transform: translate3d(-10px, -10px, 0);
-						background: rgba(white, .2);
-						color: white;
-					}
-				}
-				.bub-front-9 {
-					transform: scale(18);
-				}
+			.pf-cardlet-overlay {
+				transition: all 500ms ease-out;
 			}
 		}
-		&:active {
-			~ .bg-tech {
+		// profile tile transitions
+		~ .pf-tile {
+			// profile tile transitions academic
+			&.bg-academic {
+				.pf-tile-border {
+					transition: all 500ms ease-out;
+				}
+				.pf-tile-top {
+					.pf-pricing {
+						transition: all 500ms ease-out;
+					}
+				}
+			}
+			// profile tile transitions baking
+			&.bg-baking {
+				.pf-tile-top {
+					h1, h1 .border, h1 + div, .pf-pricing {
+						transition: all 250ms ease-in-out;
+					}
+				}
+			}
+			// profile tile transitions photography
+			&.bg-photography {
+				.pf-tile-border {
+					div {
+						transition: all 250ms ease-out;
+					}
+				}
+				.pf-tile-top {
+					transition: all 250ms ease-in-out;
+				}
+				.pf-tile-bottom {
+					transform-style: preserve-3d;
+				}
+			}
+			// profile tile transitions tech
+			&.bg-tech {
+				// .border-corner {
+				// 	span {
+				// 		&:nth-child(1) {
+				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 		}
+				// 		&:nth-child(2) {
+				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 		}
+				// 	}
+				// }
+				// .border-top {
+				// 	span {
+				// 		&:nth-child(1) {
+				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 		}
+				// 		&:nth-child(2) {
+				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 		}
+				// 	}
+				// }
+				// .border-outside {
+				// 	span {
+				// 		&:nth-child(1) {
+				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+				// 		}
+				// 		&:nth-child(2) {
+				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+				// 		}
+				// 		&:nth-child(3) {
+				// 			transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+				// 		}
+				// 		&:nth-child(4) {
+				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 		}
+				// 		&:nth-child(5) {
+				// 			transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+				// 		}
+				// 		&:nth-child(6) {
+				// 			transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+				// 		}
+				// 	}
+				// }
 				.pf-tile-top {
 					&:after {
-						background: rgba(mix($azure, $slate), 0.5);
+						// overlay
 						transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
 					}
 				}
 				.pf-tile-bottom {
-					background: mix($azure, $slate);
+					transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
 					h1 {
-						color: $azure;
+						transition: all 500ms ease-out;
 					}
+				}
+			}
+			// profile tile transitions household
+			&.bg-household {
+				.bub-front-9 {
+					transition: all 800ms ease-out;
+				}
+				.pf-tile-desc {
+					transition: all 250ms ease-in-out;
+				}
+				.pf-tile-bottom {
+					div {
+						transition: all 500ms ease-out;
+					}
+				}
+			}
+		}
+		// profile cardlet transitions
+		~ .pf-cardlet {
+			.pf-cardlet-front, .pf-cardlet-back, .pf-cardlet-bottom, .pf-cardlet-ribbon, .pf-cardlet-ribbon-edge {
+				transition: all 500ms ease-out;
+			}
+			.pf-cardlet-bottom {
+				h1 {
+					transition: all 500ms ease-out;
+				}
+				> div:not(:empty) {
+					transition: transform 500ms ease-out;
+					h2, h3 {
+						transition: all 500ms ease-out;
+					}
+				}
+			}
+			// profile cardlet transitions academic
+			&.bg-academic {
+				.pf-cardlet-bottom {
+					.deco {
+						transition: all 500ms ease-out;
+					}
+				}
+			}
+			// profile cardlet transitions baking
+			&.bg-baking {
+				.pf-cardlet-bottom {
+					.pf-cardlet-icon {
+						transition: all 500ms ease-out;
+					}
+				}
+			}
+			// profile cardlet transitions photography
+			&.bg-photography {
+				.pf-cardlet-front {
+					// borders
+					div:empty {
+						transition: all 500ms ease-out;
+					}
+				}
+			}
+			// profile cardlet transitions tech
+			&.bg-tech {
+				.pf-cardlet-bottom {
+					// borders
+					> div:empty {
+						transition: all 500ms ease-out;
+					}
+					> div:not(:empty) {
+						div {
+							transition: all 500ms ease-out;
+						}
+					}
+				}
+			}
+			// profile cardlet transitions household
+			&.bg-household {
+				.pf-cardlet-front {
+					// borders
+					div:empty {
+						transition: all 500ms ease-out;
+					}
+				}
+			}
+		}
+		// hover
+		&:hover, &:focus {
+			// profile tile hover
+			~ .pf-tile {
+				// profile tile hover academic
+				&.bg-academic {
+
+				}
+				// profile tile hover baking
+				&.bg-baking {
+					.pf-pricing {
+						color: $gold;
+						svg {
+							stroke: $gold;
+						}
+					}
+					.pf-tile-top {
+						h1 {
+							color: white;
+							.border {
+								&:nth-child(1) {
+									transform: scaleY(17);
+								}
+								&:nth-child(2) {
+									transform: scaleY(1);
+								}
+							}
+						}
+					}
+				}
+				&.bg-baking, &.bg-household {
+					.rating-stars {
+						li {
+							svg {
+								stroke: white!important;
+								polygon:nth-child(2) {
+									fill: white;
+								}
+							}
+						}
+						&[data-rating*="1"] {
+							li:nth-child(1) {
+								svg {
+									polygon {
+										fill: white;
+									}
+								}
+							}
+						}
+						&[data-rating*="2"] {
+							li:nth-child(1),
+							li:nth-child(2) {
+								svg {
+									polygon {
+										fill: white;
+									}
+								}
+							}
+						}
+						&[data-rating*="3"] {
+							li:nth-child(1),
+							li:nth-child(2),
+							li:nth-child(3) {
+								svg {
+									polygon {
+										fill: white;
+									}
+								}
+							}
+						}
+						&[data-rating*="4"] {
+							li:nth-child(1),
+							li:nth-child(2),
+							li:nth-child(3),
+							li:nth-child(4) {
+								svg {
+									polygon {
+										fill: white;
+									}
+								}
+							}
+						}
+						&[data-rating*="5"] {
+							li {
+								svg {
+									polygon {
+										fill: white;
+									}
+								}
+							}
+						}
+					}
+				}
+				// profile tile hover photography
+				&.bg-photography {
+					.pf-tile-border {
+						div {
+							opacity: 1;
+						}
+					}
+				}
+				// profile tile hover tech
+				&.bg-tech {
+					.pf-tile-top {
+						&:after {
+							opacity: 1;
+						}
+					}
+					.pf-tile-bottom {
+						background: $azure;
+						h1 {
+							color: white;
+						}
+					}
+					.border-corner {
+						span {
+							&:nth-child(1) {
+								transform: scaleY(0);
+								transition: all 500ms cubic-bezier(0,.66,.47,1.09) 250ms;
+							}
+							&:nth-child(2) {
+								transform: scaleX(0);
+								transition: all 500ms cubic-bezier(0,.66,.47,1.09) 250ms;
+							}
+						}
+					}
+					.border-outside {
+						span {
+							&:nth-child(1) {
+								transform: scaleX(0);
+								transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+							}
+							&:nth-child(2) {
+								transform: scaleX(0);
+								transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
+							}
+							&:nth-child(3) {
+								transform: scaleY(0);
+								transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+							}
+							&:nth-child(4) {
+								transform: scaleX(0);
+								transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+							}
+							&:nth-child(5) {
+								transform: scaleX(0);
+								transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+							}
+							&:nth-child(6) {
+								transform: scaleY(0);
+								transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
+							}
+						}
+					}
+					.border-top {
+						span {
+							&:nth-child(1) {
+								transform: scaleX(0);
+								transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+							}
+							&:nth-child(2) {
+								transform: scaleX(0);
+								transition: all 500ms cubic-bezier(0,.66,.47,1.09);
+							}
+						}
+					}
+				}
+				// profile tile hover household
+				&.bg-household {
+					.pf-tile-desc {
+						opacity: 1;
+					}
+					.pf-tile-bottom {
+						h1 {
+							color: white;
+						}
+						div:not(.pf-pricing) {
+							transform: translate3d(10px, -10px, 0);
+						}
+						.pf-pricing {
+							transform: translate3d(-10px, -10px, 0);
+							background: rgba(white, .2);
+							color: white;
+						}
+					}
+					.bub-front-9 {
+						transform: scale(18);
+					}
+				}
+			}
+			// profile cardlet hover
+			~ .pf-cardlet {
+				.pf-cardlet-overlay {
+					opacity: 0.2;
+				}
+				// profile cardlet hover academic
+				&.bg-academic {
+					.pf-cardlet-bottom {
+						> div:not(.deco) {
+							> div {
+								background: mix($cerise, white, 15%);
+								color: $cerise;
+							}
+						}
+						.pf-cardlet-bg {
+							background: rgba($cerise, .2);
+						}
+						.pf-cardlet-border {
+							div:empty {
+								background: mix($cerise, white, 15%);
+							}
+						}
+					}
+				}
+				// profile cardlet hover baking
+				&.bg-baking {
+					.pf-cardlet-front {
+						background: mix($gold, white, 30%);
+					}
+				}
+				// profile cardlet hover photography
+				&.bg-photography {
+
+				}
+				// profile cardlet hover tech
+				&.bg-tech {
+
+				}
+				// profile cardlet hover household
+				&.bg-household {
+
+				}
+			}
+		}
+		// click
+		&:active {
+			// profile tile click
+			~ .pf-tile {
+				// profile tile click academic
+				&.bg-academic {
+
+				}
+				// profile tile click baking
+				&.bg-baking {
+
+				}
+				// profile tile click photography
+				&.bg-photography {
+
+				}
+				// profile tile click tech
+				&.bg-tech {
+					.pf-tile-top {
+						&:after {
+							background: rgba(mix($azure, $slate), 0.5);
+							transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
+						}
+					}
+					.pf-tile-bottom {
+						background: mix($azure, $slate);
+						h1 {
+							color: $azure;
+						}
+					}
+				}
+				// profile tile click household
+				&.bg-household {
+
+				}
+			}
+			// profile cardlet click
+			~ .pf-cardlet {
+				* {
+					transition: all 250ms ease-in!important;
+				}
+				.pf-cardlet-overlay {
+					opacity: 0.4;
+				}
+				// profile cardlet click academic
+				&.bg-academic {
+					.pf-cardlet-bottom {
+						> div:not(.deco) {
+							> div {
+								background: mix($cerise, $slate, 85%);
+								color: white;
+							}
+						}
+						.pf-cardlet-bg {
+							background: rgba(white, .2);
+						}
+						.pf-cardlet-border {
+							div:empty {
+								background: mix($cerise, $slate, 85%);
+							}
+						}
+					}
+				}
+				// profile cardlet click baking
+				&.bg-baking {
+					.pf-cardlet-front {
+						background: mix($gold, white, 60%);
+					}
+					.pf-cardlet-bottom {
+						* {
+							color: white;
+						}
+					}
+				}
+				// profile cardlet click photography
+				&.bg-photography {
+
+				}
+				// profile cardlet click tech
+				&.bg-tech {
+					.pf-cardlet-bottom {
+						> div:empty {
+							background: white;
+						}
+						> div:not(:empty) {
+							> div {
+								background: white;
+							}
+						}
+					}
+				}
+				// profile cardlet click household
+				&.bg-household {
+
 				}
 			}
 		}
@@ -286,7 +607,7 @@
 					~ .pf-cardlet {
 						.pf-cardlet-front {
 							transform: translateZ(10px)!important;
-							div:empty {
+							div:empty:not(.pf-cardlet-overlay) {
 								transform: translateZ(10px)!important;
 							}
 						}
@@ -336,7 +657,7 @@
 							}
 							.pf-tile-top {
 								.pf-tile-icon, h1, h2 , .pf-pricing {
-									transform: translateZ(20px)!important!important;
+									transform: translateZ(20px)!important;
 								}
 							}
 							.pf-tile-bottom {
@@ -388,6 +709,125 @@
 								}
 								.pf-pricing {
 									transform: translate3d(-10px, -10px, 30px)!important;
+								}
+							}
+						}
+					}
+				}
+				&:active {
+					~ .pf-cardlet {
+						.pf-cardlet-front {
+							transform: translateZ(10px)!important;
+							div:empty:not(.pf-cardlet-overlay) {
+								transform: translateZ(0)!important;
+							}
+						}
+						.pf-cardlet-ribbon-edge {
+							transform: translateZ(10px) rotate(45deg)!important;
+						}
+						.pf-cardlet-ribbon {
+							transform: translateZ(20px)!important;
+						}
+						.pf-cardlet-back {
+							transform: translateZ(-10px)!important;
+						}
+						.pf-cardlet-bottom {
+							transform: translateZ(20px)!important;
+							h1, > div:not(.deco) {
+								transform: translateZ(0)!important;
+							}
+							.pf-cardlet-icon {
+								transform: translateZ(0)!important;
+							}
+						}
+						&.bg-academic {
+							.pf-cardlet-bottom {
+								> div:not(.deco) {
+									transform: rotate(-90deg)!important;
+									h2 {
+										transform: translateZ(0)!important;
+									}
+								}
+							}
+						}
+						&.bg-photography {
+							.pf-cardlet-bottom {
+								transform: translateZ(10px)!important;
+							}
+						}
+						&.bg-household {
+							.pf-cardlet-bottom {
+								div {
+									transform: none!important;
+									h2 {
+										transform: translateZ(0)!important;
+									}
+								}
+							}
+						}
+					}
+					~ .pf-tile {
+						* {
+							transition: all 250ms ease-in;
+						}
+						&.bg-academic {
+							.pf-tile-border {
+								transform: translateZ(0)!important;
+							}
+							.pf-tile-top {
+								.pf-tile-icon, h1, h2 , .pf-pricing {
+									transform: translateZ(0)!important;
+								}
+							}
+							.pf-tile-bottom {
+								.rating-stars {
+									transform: translateZ(0)!important;
+								}
+							}
+						}
+						&.bg-baking {
+							.pf-tile-top {
+								h1, div {
+									transform: translateZ(0)!important;
+								}
+							}
+						}
+						&.bg-photography {
+							.pf-tile-border {
+								transform: translateZ(0)!important;
+							}
+							.pf-tile-bottom {
+								transform: translateZ(0)!important;
+								h1, .rating-stars {
+									transform: translateZ(0)!important;
+								}
+								.pf-pricing {
+									div:empty, span {
+										transform: translateZ(0)!important;
+									}
+								}
+							}
+						}
+						&.bg-tech {
+							.pf-tile-top {
+								&:after, .pf-pricing {
+									transform: translateZ(0)!important;
+								}
+							}
+							h1, .pf-tile-bottom, .border-corner, .border-outside, .border-top, .rating-stars {
+								transform: translateZ(0)!important;
+							}
+						}
+						&.bg-household {
+							.pf-tile-desc {
+								transform: translateZ(0)!important;
+							}
+							.pf-tile-bottom {
+								div:not(.pf-pricing) {
+									transform: translate3d(10px, -10px, 0)!important;
+								}
+								.pf-pricing {
+									transform: translate3d(-10px, -10px, 0)!important;
 								}
 							}
 						}
@@ -457,8 +897,6 @@
 	display: block;
 	width: 100%;
 	max-width: 400px;
-	transition: all 500ms ease-out;
-	transform-style: preserve-3d;
 	border-radius: 2px;
 	height: 270px;
 	.pf-tile-top {
@@ -523,7 +961,6 @@
 		}
 	}
 	.rating-stars {
-		transition: all 500ms ease-out;
 		li {
 			padding: 0!important;
 			svg {
@@ -543,7 +980,6 @@
 			width: calc(100% - 20px);
 			height: calc(100% - 20px);
 			opacity: 0.5;
-			transition: all 500ms ease-out;
 			div {
 				@include round;
 				position: absolute;
@@ -589,7 +1025,6 @@
 				color: $cerise;
 				font-size: 16px;
 				font-weight: 700;
-				transition: all 500ms ease-out;
 				&:before {
 					content: "";
 					position: absolute;
@@ -630,7 +1065,6 @@
 				font-weight: 900;
 				border-radius: 2px;
 				overflow: hidden;
-				transition: all 250ms ease-in-out;
 				.rating-stars {
 					position: relative;
 					z-index: 3;
@@ -650,7 +1084,6 @@
 					height: 5px;
 					background: $gold;
 					transform-origin: center top;
-					transition: all 250ms ease-in-out;
 					+ .border {
 						background: white;
 						transform: scaleY(0);
@@ -665,7 +1098,6 @@
 					@include flex-center;
 					margin-top: 15px;
 					width: 100%;
-					transition: all 250ms ease-in-out;
 				}
 			}
 			.pf-pricing {
@@ -725,7 +1157,6 @@
 				width: 100%;
 				height: 100%;
 				background: rgba(mix($moola, $slate, 75%), 0.95);
-				transition: all 250ms ease-out;
 				font-size: 18px;
 				font-weight: 600;
 				line-height: 1.2;
@@ -738,17 +1169,12 @@
 			border-bottom-width: 0;
 			height: 200px;
 			border-radius: 2px 2px 0 0;
-			// -webkit-clip-path: circle(0px at 50% 50%);
-			// clip-path: circle(0px at 50% 50%);
-			transition: all 250ms ease-in-out;
 		}
 		.pf-tile-bottom {
 			background: white;
 			height: 70px;
 			color: $moola;
-			transform-style: preserve-3d;
 			.rating-stars {
-				transition: all 500ms ease-out;
 				li {
 					svg {
 						height: auto;
@@ -772,6 +1198,11 @@
 				}
 				.pf-border {
 					opacity: 0.25;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
 					div:empty {
 						position: absolute;
 						border-radius: 1000px;
@@ -860,7 +1291,6 @@
 					width: 2px;
 					height: 100%;
 					transform-origin: left top;
-					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				}
 				&:nth-child(2) {
 					bottom: 0;
@@ -868,7 +1298,6 @@
 					width: 100%;
 					height: 2px;
 					transform-origin: right center;
-					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				}
 			}
 		}
@@ -886,7 +1315,6 @@
 					width: 50%;
 					height: 2px;
 					transform-origin: left center;
-					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				}
 				&:nth-child(2) {
 					border-radius: 0 1000px 1000px 0;
@@ -895,7 +1323,6 @@
 					width: 50%;
 					height: 2px;
 					transform-origin: right center;
-					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				}
 			}
 		}
@@ -913,7 +1340,6 @@
 					width: 50%;
 					height: 2px;
 					transform-origin: right center;
-					transition: all 500ms cubic-bezier(0,.66,.47,1.09);
 				}
 				&:nth-child(2) {
 					border-radius: 0 1000px 1000px 0;
@@ -922,7 +1348,6 @@
 					width: 50%;
 					height: 2px;
 					transform-origin: left center;
-					transition: all 500ms cubic-bezier(0,.66,.47,1.09);
 				}
 				&:nth-child(3) {
 					top: 0;
@@ -930,7 +1355,6 @@
 					width: 2px;
 					height: 100%;
 					transform-origin: center top;
-					transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
 				}
 				&:nth-child(4) {
 					border-radius: 1000px 0 0 1000px;
@@ -939,7 +1363,6 @@
 					width: 50%;
 					height: 2px;
 					transform-origin: left center;
-					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				}
 				&:nth-child(5) {
 					border-radius: 0 1000px 1000px 0;
@@ -948,7 +1371,6 @@
 					width: 50%;
 					height: 2px;
 					transform-origin: right center;
-					transition: all 500ms cubic-bezier(0,.66,.47,1.09) 500ms;
 				}
 				&:nth-child(6) {
 					bottom: 0;
@@ -956,7 +1378,6 @@
 					width: 2px;
 					height: 100%;
 					transform-origin: center top;
-					transition: all 300ms cubic-bezier(0,.66,.47,1.09) 250ms;
 				}
 			}
 		}
@@ -974,7 +1395,6 @@
 				height: 100%;
 				background: rgba($azure,0.5);
 				opacity: 0;
-				transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
 			}
 			.pf-pricing {
 				position: absolute;
@@ -998,9 +1418,7 @@
 			height: 70px;
 			background: $charcoal;
 			border: 0;
-			transition: all 1000ms cubic-bezier(0,.66,.47,1.09);
 			.rating-stars {
-				transition: all 500ms ease-out;
 				li {
 					svg {
 						height: auto;
@@ -1009,7 +1427,6 @@
 			}
 			h1 {
 				color: $azure;
-				transition: all 500ms ease-out;
 			}
 		}
 	}
@@ -1020,7 +1437,6 @@
 		border-radius: 2px;
 		.bub-front-9 {
 			transform-origin: center center;
-			transition: all 800ms ease-out;
 		}
 		.pf-tile-bg {
 			display: flex;
@@ -1037,7 +1453,6 @@
 		}
 		.pf-tile-desc {
 			opacity: 0;
-			transition: all 250ms ease-in-out;
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -1066,9 +1481,6 @@
 			border-top: 0;
 			height: 70px;
 			padding: 15px 0 15px 5px;
-			div {
-				transition: all 500ms ease-out;
-			}
 			h1 {
 				color: $cobalt;
 			}
@@ -1101,10 +1513,19 @@
 	width: 100%;
 	max-width: 400px;
 	height: 270px;
-	transition: all 500ms ease-out;
-	transform-style: preserve-3d;
-	> * {
-		transform-style: preserve-3d;
+	.pf-cardlet-front-container, .pf-cardlet-back-container {
+		width: 100%;
+		height: 100%;
+	}
+	.pf-cardlet-front-container, .pf-cardlet-front {
+		position: relative;
+		z-index: 2;
+	}
+	.pf-cardlet-back-container, .pf-cardlet-back {
+		position: absolute;
+		z-index: 0;
+		bottom: 0;
+		right: 0;
 	}
 	.pf-cardlet-front, .pf-cardlet-back {
 		width: calc(100% - 15px);
@@ -1113,22 +1534,26 @@
 		background-color: lighten($slate, 15%);
 		background-position: center center;
 		background-size: cover;
-		transition: all 500ms ease-out;
+	}
+	.pf-cardlet-bottom-container {
+		position: absolute;
+		z-index: 4;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 	.pf-cardlet-bottom {
-		transition: all 500ms ease-out;
 		@include flex;
 		@include flex-wrap;
 		@include flex-center;
 		position: absolute;
-		z-index: 4;
 		top: 0;
 		left: 0;
 		width: calc(100% - 15px);
 		height: calc(100% - 15px);
 		padding: 15px;
 		h1 {
-			transition: all 500ms ease-out;
 			width: 100%;
 			font-size: 24px;
 			font-weight: 700;
@@ -1139,18 +1564,15 @@
 			}
 		}
 		> div:not(:empty) {
-			transition: all 500ms ease-out;
 			margin-top: 5px;
 			text-align: center;
 			text-shadow: 0 0 20px rgba(lighten($slate, 15%), .5);
 			h2 {
-				transition: all 500ms ease-out;
 				margin-top: 0;
 				font-size: 16px;
 				font-weight: 700;
 			}
 			h3 {
-				transition: all 500ms ease-out;
 				font-size: 14px;
 				font-weight: 700;
 				text-transform: uppercase;
@@ -1161,8 +1583,16 @@
 		@include flex;
 		@include flex-wrap;
 		@include flex-center;
-		position: relative;
-		z-index: 2;
+		.pf-cardlet-overlay {
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: mix($lake, white, 70%);
+			border-radius: 2px;
+		}
 		&:after {
 			content: "";
 			display: block;
@@ -1181,13 +1611,16 @@
 	}
 	.pf-cardlet-back {
 		@include opacity(.25);
+	}
+	.pf-cardlet-ribbon-container {
 		position: absolute;
-		z-index: 0;
-		bottom: 0;
+		z-index: 10;
 		right: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
 	}
 	.pf-cardlet-ribbon {
-		transition: all 500ms ease-out;
 		@include flex;
 		@include flex-center;
 		position: absolute;
@@ -1225,8 +1658,15 @@
 			border-left-color: transparent!important;
 		}
 	}
+	.pf-cardlet-ribbon-edge-container {
+		position: absolute;
+		z-index: 1;
+		right: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
 	.pf-cardlet-ribbon-edge {
-		transition: all 500ms ease-out;
 		transform: rotate(45deg);
 		position: absolute;
 		z-index: 1;
@@ -1252,7 +1692,6 @@
 			// border: 2px solid white;
 			border-radius: 2px;
 			border-top-left-radius: 0;
-			background: rgba($cerise, .1);
 			> div:not(.deco) {
 				transform: rotate(-90deg);
 				position: absolute;
@@ -1271,8 +1710,21 @@
 					color: $cerise;
 					border-top-left-radius: 2px;
 					border-top-right-radius: 2px;
-					transform-origin: right center;
+					transform-origin: right bottom;
 				}
+			}
+			.deco {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				margin-top: 0;
+			}
+			.pf-cardlet-bg {
+				border-radius: 2px;
+				border-top-left-radius: 0;
+				background: rgba($cerise, .1);
 			}
 			.pf-cardlet-border {
 				div:empty {
@@ -1284,24 +1736,28 @@
 						left: 0;
 						width: 100%;
 						height: 2px;
+						transform-origin: left center;
 					}
 					&:nth-child(2) {
 						top: 0;
 						right: 0;
 						width: 2px;
 						height: 100%;
+						transform-origin: center bottom;
 					}
 					&:nth-child(3) {
 						top: 0;
 						left: 0;
 						width: 2px;
 						height: 100%;
+						transform-origin: center top;
 					}
 					&:nth-child(4) {
 						bottom: 0;
 						left: 0;
 						width: 100%;
 						height: 2px;
+						transform-origin: right center;
 					}
 				}
 			}
@@ -1332,19 +1788,20 @@
 			height: calc(100% - 30px);
 			right: 0;
 			bottom: 15px;
+			transform-origin: center center;
 		}
 		.pf-cardlet-bottom {
 			width: calc(100% - 60px);
 			height: 100%;
 			left: 30px;
 			.pf-cardlet-icon {
-				transition: all 500ms ease-out;
 				@include round;
 				margin: 0 0 5px;
 				width: 96px;
 				height: 96px;
 				background-position: center center;
 				background-size: cover;
+				transform-origin: center center;
 			}
 			h1, div {
 				text-shadow: none!important;
@@ -1364,6 +1821,9 @@
 		}
 	}
 	&.bg-photography {
+		.pf-cardlet-front-container {
+			height: 185px;
+		}
 		.pf-cardlet-front {
 			height: 185px;
 			border-bottom-left-radius: 0;
@@ -1373,10 +1833,9 @@
 			&:after {
 				display: none;
 			}
-			div:empty {
+			div:empty:not(.pf-cardlet-overlay) {
 				position: absolute;
 				background: white;
-				transition: all 500ms ease-out;
 				&:nth-child(1) {
 					top: 0;
 					left: 0;
@@ -1402,15 +1861,25 @@
 					border-radius: 3px 3px 0 0;
 				}
 			}
+			.pf-cardlet-overlay {
+				background: mix($moola, white, 85%);
+			}
 		}
 		.pf-cardlet-back {
 			background: white;
+		}
+		.pf-cardlet-bottom-container {
+			position: relative;
+			top: auto;
+			left: auto;
+			margin: 0;
+			height: 70px;
 		}
 		.pf-cardlet-bottom {
 			justify-content: flex-start;
 			position: relative;
 			top: auto;
-			right: auto;
+			left: auto;
 			margin: 0;
 			height: 70px;
 			background: white;
@@ -1453,6 +1922,9 @@
 			left: 15px;
 			width: calc(100% - 30px);
 			height: calc(100% - 60px);
+			.pf-cardlet-overlay {
+				background: $azure;
+			}
 		}
 		.pf-cardlet-back {
 			@include opacity(1);
@@ -1554,10 +2026,9 @@
 	&.bg-household {
 		.pf-cardlet-front {
 			// border: 10px solid white;
-			div:empty {
+			div:empty:not(.pf-cardlet-overlay) {
 				position: absolute;
 				background: white;
-				transition: all 500ms ease-out;
 				border-radius: 3px;
 				&:nth-child(1) {
 					top: 0;
@@ -1587,6 +2058,10 @@
 					height: 10px;
 					transform-origin: center center;
 				}
+			}
+			.pf-cardlet-overlay {
+				background: mix($cobalt, white, 75%);
+				z-index: 2;
 			}
 		}
 		.pf-cardlet-back {

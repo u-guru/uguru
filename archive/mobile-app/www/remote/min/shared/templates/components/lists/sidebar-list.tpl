@@ -1,8 +1,7 @@
 <div class="perspective-container full-xy flex">
 	<aside class="sidebar-list bg-lake"
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[slideInLeft:set:(dur:250ms#func:ease-in):in]"
+		on-init="a:[slideInLeft:set:(dur:250ms#func:ease-in):in]"
 		on-exit="a:[fadeOut:set:(dur:450ms#func:ease-out):out]">
 		<header class="sidebar-list-header bg-white-90p">
 			<h2 class="txt-charcoal">Ways to Super Student&nbsp;Stardom</h2>
@@ -10,8 +9,7 @@
 		<ul>
 			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-75p"
 				init-with="p-op"
-				on-init="t-enter"
-				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]"
+				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]"
 				on-mouse-enter="p:[background:rgba(255#255#255#0.75), t:all 150ms ease-out] | send:[email-mouse-enter:public]"
 				on-mouse-leave="p:[background:rgba(64#72#75#0.75), t:all 150ms ease-in] | send:[email-mouse-leave:public]"
 				on-click="p:[background:rgba(64#72#75#0), t:all 50ms] | send:[email-click:public]">
@@ -32,8 +30,7 @@
 			</li>
 			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-50p"
 				init-with="p-op"
-				on-init="t-enter"
-				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-300]"
+				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-300]"
 				on-mouse-enter="p:[background:rgba(255#255#255#0.75), t:all 150ms ease-out] | send:[email-mouse-enter-2:public]"
 				on-mouse-leave="p:[background:rgba(64#72#75#0.5), t:all 50ms] | send:[email-mouse-leave-2:public]"
 				on-click="p:[background:rgba(64#72#75#0), t:all 150ms] | send:[email-click-2:public]">
@@ -54,8 +51,7 @@
 			</li>
 			<li class="flex-center-vertical-space-between p15xy height-96 bg-slate-25p"
 				init-with="p-op"
-				on-init="t-enter"
-				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-450]"
+				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-450]"
 				on-mouse-enter="p:[background:rgba(255#255#255#0.75), t:all 150ms ease-out] | send:[email-mouse-enter-3:public]"
 				on-mouse-leave="p:[background:rgba(64#72#75#0.25), t:all 150ms ease-in] | send:[email-mouse-leave-3:public]"
 				on-click="p:[background:rgba(64#72#75#0), t:all 150ms] | send:[email-click-3:public]">
@@ -79,8 +75,7 @@
 
 	<aside class="sidebar-list bg-moxie"
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[slideInLeft:set:(dur:250ms#func:ease-in):in]"
+		on-init="a:[slideInLeft:set:(dur:250ms#func:ease-in):in]"
 		on-exit="a:[fadeOut:set:(dur:450ms#func:ease-out):out">
 		<header class="sidebar-list-header bg-charcoal-25p">
 			<h2>Payment History</h2>
@@ -88,8 +83,7 @@
 		<ul class="sidebar-list-dividers">
 			<li class="flex-center-vertical-space-between"
 				init-with="p-op"
-				on-init="t-enter"
-				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
+				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
 				<div>
 					<h3 class="txt-20 semibold">You cashed out to <b class="black">**0092</b></h3>
 					<h4 class="txt-16 semibold opacity-75p">11/13/15</h4>
@@ -103,8 +97,7 @@
 			</li>
 			<li class="flex-center-vertical-space-between"
 				init-with="p-op"
-				on-init="t-enter"
-				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-300]">
+				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-300]">
 				<div>
 					<h3 class="txt-20 semibold"><b class="black">CS10</b> Session with <b class="black">Amrita</b></h3>
 					<h4 class="txt-16 semibold opacity-75p">11/13/15</h4>
@@ -118,8 +111,7 @@
 			</li>
 			<li class="flex-center-vertical-space-between"
 				init-with="p-op"
-				on-init="t-enter"
-				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-450]">
+				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-450]">
 				<div>
 					<h3 class="txt-20 semibold">You cashed out to <b class="black">**0092</b></h3>
 					<h4 class="txt-16 semibold opacity-75p">11/13/15</h4>
@@ -136,8 +128,7 @@
 
 	<aside class="sidebar-list bg-lake"
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[slideInLeft:set:(dur:250ms#func:ease-in):in]"
+		on-init="a:[slideInLeft:set:(dur:250ms#func:ease-in):in]"
 		on-exit="a:[fadeOut:set:(dur:450ms#func:ease-out):out">
 		<header class="sidebar-list-header bg-slate-50p">
 			<h2 class="txt-left">My Gurus</h2>
@@ -145,8 +136,7 @@
 		<ul class="sidebar-list-messaging">
 			<li class="relative overflow-hidden"
 				init-with="p-op"
-				on-init="t-enter"
-				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]"
+				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]"
 				on-mouse-enter="send:[brian-mouse-enter:public]"
 				on-mouse-leave="send:[brian-mouse-leave:public]"
 				on-click="send:[brian-click:public]">
@@ -173,8 +163,7 @@
 			</li>
 			<li class="relative overflow-hidden"
 				init-with="p-op"
-				on-init="t-enter"
-				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-300]"
+				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-300]"
 				on-mouse-enter="send:[brian-mouse-enter-2:public]"
 				on-mouse-leave="send:[brian-mouse-leave-2:public]"
 				on-click="send:[brian-click-2:public]">
@@ -201,8 +190,7 @@
 			</li>
 			<li class="relative overflow-hidden"
 				init-with="p-op"
-				on-init="t-enter"
-				on-enter="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-450]"
+				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-450]"
 				on-mouse-enter="send:[brian-mouse-enter-3:public]"
 				on-mouse-leave="send:[brian-mouse-leave-3:public]"
 				on-click="send:[brian-click-3:public]">

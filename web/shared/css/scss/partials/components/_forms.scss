@@ -5,6 +5,7 @@
 .checkbox-container:not(.old) {
 	@include flex;
 	@include flex-center-vertical;
+	background: none!important;
 	div {
 		position: relative;
 		> span {
@@ -14,33 +15,32 @@
 			width: 32px;
 			height: 32px;
 			overflow: hidden;
-			span {
-				position: absolute;
-				top: 50%;
-				margin-top: -5px;
-				left: 50%;
-				margin-left: -5px;
-				width: 10px;
-				height: 10px;
-				border-radius: 1000px;
-				background: mix($shamrock, $slate, 60%);
+		}
+		svg {
+			position: relative;
+			z-index: 10;
+			fill: none;
+			width: 100%;
+			height: 100%;
+			circle {
+				fill: $shamrock;
 				transform-origin: center center;
 				transform: scale(0) translateZ(0);
+				transition: transform 250ms cubic-bezier(0.8, 0.1, 1, 0.05);
 			}
-			svg {
-				position: relative;
-				z-index: 10;
-				fill: none;
-				width: 100%;
-				height: 100%;
-				circle {
-					fill: $shamrock;
-					transform-origin: center center;
-					transform: scale(0);
-				}
-				path, polyline {
-					@include svg-stroke(lighten($slate, 20%), 2.5);
-				}
+			path, .check-under {
+				@include svg-stroke(lighten($slate, 20%), 2.5);
+			}
+			.check-under, .check-stroke {
+				stroke-dasharray: 24.8;
+			}
+			.check-stroke {
+				@include svg-stroke(white, 2.5);
+				stroke-dashoffset: 24.8;
+				transition: stroke-dashoffset 500ms ease-out;
+			}
+			line {
+				@include svg-stroke($slate, 2.5);
 			}
 		}
 		input {
@@ -52,11 +52,45 @@
 			width: 100%;
 			height: 100%;
 			cursor: pointer;
-			&:checked + span {
-				background: $shamrock;
-				svg {
-					path, polyline {
-						stroke: white;
+			&:hover {
+				+ span {
+					svg {
+						.check-under {
+							@include svg-stroke(rgba(white, .5), 2.5);
+						}
+					}
+				}
+			}
+			&:active {
+				+ span {
+					svg {
+						circle {
+							transform: scale(1) translateZ(0);
+						}
+					}
+				}
+			}
+			&:checked {
+				+ span {
+					svg {
+						circle {
+							transform: scale(1) translateZ(0);
+						}
+						.check-stroke {
+							stroke-dashoffset: 0;
+						}
+					}
+				}
+				&:active {
+					+ span {
+						svg {
+							circle {
+								fill-opacity: 0.75;
+							}
+							.check-stroke {
+								stroke-opacity: 0.75;
+							}
+						}
 					}
 				}
 			}
@@ -68,12 +102,247 @@
 		font-size: 20px;
 		font-weight: 600;
 	}
+	&.bg-shamrock {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $shamrock;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $shamrock, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-robin {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $robin;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $robin, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-lake {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $lake;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $lake, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moxie {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $moxie;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $moxie, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-crimson {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $crimson;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $crimson, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-auburn, &.bg-deilvery {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $auburn;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $auburn, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-orange, &.bg-freelancing {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $orange;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $orange, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-gold, &.bg-baking {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $gold;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $gold, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moola, &.bg-photography {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $moola;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $moola, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-azure, &.bg-tech {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $azure;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $azure, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cobalt, &.bg-household {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $cobalt;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $cobalt, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-eggplant, &.bg-athletic {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $eggplant;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $eggplant, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cerise, &.bg-academic {
+		div {
+			input {
+				+ span {
+					svg circle {
+						fill: $cerise;
+					}
+				}
+				&:active {
+					+ span {
+						svg circle {
+							fill: mix($slate, $cerise, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 // radio inputs
 .radio-container:not(.old) {
 	@include flex;
 	@include flex-center-vertical;
+	background: none!important;
 	div {
 		position: relative;
 		span {
@@ -82,31 +351,26 @@
 			background: $slate;
 			width: 24px;
 			height: 24px;
-			svg {
-				@include round;
-				display: block;
-				width: 100%;
-				height: 100%;
-				.border {
-					@include svg-stroke($slate, 2.5);
-					transform-origin: center center;
-					transform: rotate(-90deg);
-					stroke-dasharray: 59.7;
-					stroke-dashoffset: 59.7;
-					opacity: 0;
-				}
-				.bg {
-					fill: lighten($slate, 10%);
-					transform-origin: center center;
-				}
-				.check {
-					fill: $shamrock;
-					transform-origin: center center;
-					transform: scale(0) translateZ(0);
-				}
-				path, polyline {
-					display: none;
-				}
+		}
+		svg {
+			@include round;
+			display: block;
+			width: 100%;
+			height: 100%;
+			.border {
+				@include svg-stroke($slate, 2.5);
+				transform-origin: center center;
+				transform: rotate(-90deg);
+			}
+			.bg {
+				fill: lighten($slate, 10%);
+				transform-origin: center center;
+			}
+			.check {
+				fill: $shamrock;
+				transform-origin: center center;
+				transform: scale(0) translateZ(0);
+				transition: all 250ms cubic-bezier(0.8, 0.1, 1, 0.05);
 			}
 		}
 		input {
@@ -117,10 +381,22 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			&:checked + span {
-				svg {
-					.check {
-						transform: scale(1) translateZ(0);
+			cursor: pointer;
+			&:hover {
+				+ span {
+					svg {
+						.bg {
+							fill: lighten($slate, 15%);
+						}
+					}
+				}
+			}
+			&:checked, &:active {
+				+ span {
+					svg {
+						.check {
+							transform: scale(1) translateZ(0);
+						}
 					}
 				}
 			}
@@ -131,6 +407,240 @@
 		color: white;
 		font-size: 20px;
 		font-weight: 600;
+	}
+	&.bg-shamrock {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $shamrock;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $shamrock, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-robin {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $robin;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $robin, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-lake {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $lake;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $lake, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moxie {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $moxie;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $moxie, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-crimson {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $crimson;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $crimson, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-auburn, &.bg-deilvery {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $auburn;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $auburn, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-orange, &.bg-freelancing {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $orange;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $orange, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-gold, &.bg-baking {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $gold;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $gold, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-moola, &.bg-photography {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $moola;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $moola, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-azure, &.bg-tech {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $azure;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $azure, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cobalt, &.bg-household {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $cobalt;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $cobalt, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-eggplant, &.bg-athletic {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $eggplant;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $eggplant, 15%);
+						}
+					}
+				}
+			}
+		}
+	}
+	&.bg-cerise, &.bg-academic {
+		div {
+			input {
+				+ span {
+					svg .check {
+						fill: $cerise;
+					}
+				}
+				&:active {
+					+ span {
+						svg .check {
+							fill: mix($slate, $cerise, 15%);
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -161,25 +671,36 @@
 		z-index: 5;
 	}
 	label {
-		transition: all 150ms ease-in-out;
 		@include flex;
 		@include flex-center;
 		position: relative;
-		background: $slate;
-		padding: 5px;
 		height: 36px;
 		width: 72px;
-		border-radius: 2px;
 		color: white;
 		font-size: 18px;
 		font-weight: 600;
+		padding: 5px;
+		> div:empty {
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: $slate;
+			border-radius: 2px;
+		}
 		* {
 			transition: all 150ms ease-in-out;
 		}
 		span {
+			position: relative;
+			z-index: 2;
 			padding: 0 5px;
 		}
 		.square {
+			position: relative;
+			z-index: 2;
 			display: block;
 			height: 100%;
 			border-radius: 2px;
@@ -187,29 +708,35 @@
 			* {
 				fill: none;
 			}
-			&:first-child {
+			&:first-of-type {
 				position: absolute;
 				top: 5px;
 				left: 5px;
 				height: calc(100% - 10px);
 				* {
 					fill: white;
+					stroke: white;
+					stroke-width: 2px;
+					stroke-linejoin: round;
+					stroke-linecap: round;
 				}
 			}
 		}
 	}
 	input:checked + label {
-		background: $moxie;
+		> div:empty {
+			background: $moxie;
+		}
 		span {
 			transform: translateX(-26px);
 		}
-		.square:first-child {
+		.square:first-of-type {
 			transform: translateX(36px);
 		}
 	}
 	&.normal, &.am-pm {
 		label {
-			> div {
+			> div:not(:empty) {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -223,41 +750,35 @@
 						left: 0;
 						width: 100%;
 						height: 2px;
-						transform-origin: right center;
+						transform-origin: left center;
 					}
 					&:nth-child(2) {
 						top: 0;
 						right: 0;
 						width: 2px;
 						height: 100%;
-						transform-origin: center bottom;
+						transform-origin: center top;
 					}
 					&:nth-child(3) {
 						bottom: 0;
 						right: 0;
 						width: 100%;
 						height: 2px;
-						transform-origin: left center;
+						transform-origin: right center;
 					}
 					&:nth-child(4) {
 						bottom: 0;
 						left: 0;
 						width: 2px;
 						height: 100%;
-						transform-origin: center top;
+						transform-origin: center bottom;
 					}
 				}
-			}
-			.square:first-child rect {
-				stroke: white;
-				stroke-width: 2px;
-				stroke-linejoin: round;
-				stroke-linecap: round;
 			}
 		}
 	}
 	&.normal {
-		> div {
+		> div:not(:empty) {
 			div {
 				background: $moxie;
 			}
@@ -265,8 +786,10 @@
 	}
 	&.am-pm {
 		input + label {
-			background: mix($lake, $slate, 30%);
-			> div {
+			> div:empty {
+				background: mix($lake, $slate, 30%);
+			}
+			> div:not(:empty) {
 				div {
 					background: mix($lake, $slate, 30%);
 				}
@@ -297,7 +820,9 @@
 			}
 		}
 		input:checked + label {
-			background: $gold;
+			div:empty {
+				background: $gold;
+			}
 			.am {
 				opacity: 1;
 			}
@@ -308,8 +833,10 @@
 	}
 	&.white-round {
 		label {
-			@include round;
-			background: rgba(white, .5);
+			div:empty {
+				@include round;
+				background: rgba(white, .5);
+			}
 			.square {
 				@include round;
 				&:first-child {
@@ -334,12 +861,16 @@
 			}
 		}
 		input:checked + label {
-			background: rgba(white, .5);
+			div:empty {
+				background: rgba(white, .5);
+			}
 		}
 	}
 	&.round {
 		label {
-			@include round;
+			div:empty {
+				@include round;
+			}
 			.square {
 				@include round;
 			}
@@ -350,7 +881,7 @@
 				width: 100%;
 				height: 100%;
 				rect {
-					@include svg-stroke(white, 2);
+					@include svg-stroke($moxie, 2);
 				}
 			}
 		}

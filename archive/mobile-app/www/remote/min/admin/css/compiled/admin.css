@@ -650,6 +650,11 @@
     height: 2px;
     background: rgba(93, 172, 193, 0.2); }
 
+.type-list ul li:first-child div {
+  border-radius: 2px 0 0 2px !important; }
+.type-list ul li:last-child div {
+  border-radius: 0 2px 2px 0 !important; }
+
 .bg-cobalt-slate-campus-25p {
   background: #5d667e !important; }
 
