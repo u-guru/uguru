@@ -1,4 +1,17 @@
 {
   "name": "uguru-web",
-  "app_id": ""
+  "app_id": "",
+  "gulpStartupTasks": ["start-sass"],
+  "documentRoot": "web/",
+
+  "watchPatterns": [
+    "shared/**/*",
+    "web/remote/**/*",
+    "!web/lib/**/*",
+    "web/**/*",
+    "web/**/**/*",
+    "web/**/**/**/*",
+    "web/**/**/**/**/*",
+    "web/util/**"
+  ]
 }

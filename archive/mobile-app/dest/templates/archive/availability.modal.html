@@ -1,0 +1,78 @@
+<ion-modal-view class="availability-modal full-xy" ng-controller="AvailabilityController"><header class="bg-charcoal"><div class="header-nav"><a class="header-down half" ng-click="closeAvailabilityModal()"><svg viewBox="0 0 100 100"><path d="M14,32 L50,68 L86,32"></path></svg> </a><a class="header-nav-next" ng-click="closeAvailabilityModal()"><h1>Save</h1></a></div><h1 class="text-center">Availability</h1></header><section><div class="flex full-x"><div class="avail-days"><ul><li ng-repeat="date in dates"><span>{{date.month}}/{{date.date}}</span> <span>{{date.name}}</span></li></ul></div><div class="avail-times"><ul ng-repeat="hour in hours"><li><span ng-bind="hour"></span></li></ul></div><div class="avail-hours"><ul class="{{hour}}" ng-repeat="hour in hours"><li ng-repeat="date in dates"><input type="checkbox" ng-model="date.schedule[$parent.$index].isPass"><span>{{date.schedule[$parent.$index].hour}}</span></li></ul></div></div></section></ion-modal-view><!--
+<ion-modal-view  class='availability-modal' ng-controller='AvailabilityController'>
+
+  <ion-header-bar align-title="center" class='dark-bg-header calendar-top-header no-background-image' hide-nav-bar='true'>
+    <div class="buttons">
+      <button class="button button-clear button-header-link" ng-click='closeAvailabilityModal()'>Cancel</button>
+    </div>
+    <h1 class="title micro-text modal-header-text">When Are You Available?</h1>
+    <div class="buttons">
+      <button class="button button-clear button-header-link button-submit button-blue" ng-click='saveRequestInfo()'>
+        Done
+      </button>
+    </div>
+  </ion-header-bar>
+
+  <ion-header-bar class='dark-bg-header bar-header no-padding'>
+    <ion-tabs class="tabs-top home-request-tabs-top tabs-title-only" delegate-handle='availability-handle'>
+
+      <ion-tab on-select='onAvailabilityTabSelected()' title="Today" class='uppercase dark-bg white-text calendar-tab-item bar-subheader'>
+
+    <!-- Tab 1 content 
+      </ion-tab>
+
+      <ion-tab on-select='onAvailabilityTabSelected()' title="Tomorrow" class='uppercase dark-bg white-text calendar-tab-item'>
+    <!-- Tab 2 content 
+      </ion-tab>
+
+      <ion-tab on-select='onAvailabilityTabSelected()' title="{{calendar.selected_custom_date}}" class='uppercase dark-bg white-text calendar-tab-item'>
+
+          <ion-scroll direction="x" ng-show='showDateTabs' class="tabs home-request-tabs-top tabs-top bar-subheader date-tabs-top" delegate-handle='date-handle' scrollbar-x="false" style='border-top:1px solid grey; overflow-x: hidden;'>
+          <!-- <div  > -
+                <a class="tab-item uppercase dark-bg white-text calendar-tab-item center" ng-click='onAvailabilityTabSelected($index, ($index + calendar.start_date + calendar.offset_date) % calendar.next_month_length)' ng-repeat='time in getNumber(7) track by $index'>
+                  <div class='calendar-date'>
+                    <span class='nano-text'>{{weekdays[($index + calendar.weekday_offset) % 7]}}</span> <br>
+                    <span class='date white-text semibold'>{{($index + calendar.start_date + calendar.offset_date) % calendar.next_month_length}}  </span>
+                  </div>
+                </a>
+          <!-- </div> 
+          </ion-scroll>
+
+      </ion-tab>
+
+    </ion-tabs>
+
+  </ion-header-bar>
+
+  <ion-content class='has-header has-subheader calendar-bg' id='calendar-content' delegate-handle='calendar'style='margin-top:-20px;'>
+
+    <div class='pure-g flex-space-between flex-column'>
+        <div class='pure-g center' style='margin-top:5px;'>
+            <!-- left date column -
+            <div class='pure-u-1-6'>
+              <div class='pure-u-1 padding-1em calendar-date-label relative' ng-repeat='time in getNumber(24) track by $index'>&nbsp;
+                <span  id='{{hours[$index].replace(" ", "").toUpperCase()}}' ng-show='$index > 0'class='calendar-date-label-text ng-class:{"blue blue-left-margin full-opacity" : ($index * calendar.coords.chunkHeights.hours) >= calendar.coords.currentTopY && ($index * calendar.coords.chunkHeights.hours) < (calendar.coords.currentTopY + calendar.coords.currentHeight) }'>{{hours[$index]}}</span>
+              </div>
+            </div>
+            <!-- left column --
+            <div class='pure-u-7-8 calendar-date-row-wrapper' >
+              <div class='pure-u-1 padding-1em calendar-date-row' id='calendar-rows' ng-repeat='time in getNumber(24) track by $index'>
+                <div class='pure-g full-height'>
+                  <div class='pure-u-1 calendar-hour-half-row'>&nbsp;</div>
+                  <div class='pure-u-2-24 calendar-hour-half-row border-top'>&nbsp;</div>
+                </div>
+              </div>
+              <div class='draggable-event pure-u-1 padding-1em calendar-date-row' id='calendar-event'data-tap-disabled ="true">
+                <div class='pure-g full-height'>
+                    <span class='drag-point' id='drag-point-top'> </span>
+                    <span class='drag-point' id='drag-point-bottom'> </span>
+                </div>
+              </div>
+              <!-- <div class='draggable-event absolute' data-tap-disabled ="true">
+                    <span class='drag-point' id='drag-point-top'> </span>
+                    <span class='drag-point' id='drag-point-bottom'> </span>
+              </div> --><!-- </div> --
+
+  </ion-content>
+</ion-modal-view>
+-->

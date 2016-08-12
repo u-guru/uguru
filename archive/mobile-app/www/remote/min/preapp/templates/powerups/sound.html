@@ -1,0 +1,517 @@
+<div class='full-xy absolute top-0 left-0'
+	init-with="p:[op:0]"
+	on-enter="p:[t:all 1000ms ease, op:1, z-index:10000]"
+	when-sound-triggered="t-enter | s:[sound-landing-enter:public]:delay-2000"
+	when-close-sound="p:[op:0, tr:translateY(-100%), z-index:default:delay-1000]">
+	<div class="landing-sound landing-container"
+		init-with="p:[background:#ac95e1]"
+		on-enter="p:[background:#504464, t:all 450ms ease-in]"
+		when-sound-landing-enter="t-enter">
+		<div class="landing-header">
+			<div class="powerup-icon"
+				init-with="p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#300#0#1)]"
+				on-enter="a:[powerup-bounceInUp:set:(dur:1000ms#func:linear):delay-1500:in] | p:[tr:matrix3d(1#0#0#0#0#1#0#0#0#0#1#0#0#0#0#1)]:delay-2500"
+				when-sound-triggered="t-enter">
+				<div ng-include="root.base_url + 'preapp/templates/components/powerups/sound-card.html'"></div>
+			</div>
+			<h1 class="powerup-header"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-250:in]"
+				when-sound-landing-enter="t-enter">Sound Guru</h1>
+			<h2 class="powerup-subheader"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:800ms#func:linear):delay-500:in]"
+				when-sound-landing-enter="t-enter">Curated mixtapes for a focused study session.</h2>
+		</div>
+		<div class="landing-demo z-index-3">
+			<svg viewBox="0 0 318 651"
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:1200ms#func:ease-out):delay-750:in]"
+				when-sound-landing-enter="t-enter">
+				<rect x="1.5" y="1.5" width="315" height="648" rx="40"></rect>
+				<circle cx="158.5" cy="610.5" r="25"></circle>
+				<rect x="21.5" y="79.5" width="276" height="493"></rect>
+			</svg>
+			<div>
+
+			</div>
+		</div>
+		<div class="landing-content z-index-1"
+			init-with="p-op"
+			on-enter="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]"
+			when-sound-landing-enter="t-enter">
+			<h1
+				init-with="p-op"
+				on-enter="a:[gpa-enter:set:(dur:1000ms#func:linear):delay-1500:in]"
+				when-sound-landing-enter="t-enter">Preview the App</h1>
+			<ul class="sound-record-list"
+				init-default
+				when-sound-landing-enter="s:[record-tile-init:public:delay-2000]">
+				<li>
+					<div class="record-tile-container"
+						on-mouse-enter="s:[record-mouse-enter-1:public]"
+						on-mouse-leave="s:[record-mouse-leave-1:public]">
+						<div class="record-tile">
+							<svg viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div class="record-tile-back"
+								init-with="p:[op:0, tr:translate3d(-15%#0#0), t:transform 1000ms ease-out#opacity 250ms ease-out]"
+								when-record-tile-init="p:[op:1:delay-250, tr:translate3d(0#0#0)]:delay-750"
+								when-record-mouse-enter-1="p:[op:1, tr:translate3d(5%#0#0):delay-50, t:all 150ms ease-out]"
+								when-record-mouse-leave-1="p:[op:1, tr:translate3d(0#0#0), t:all 150ms ease-out]">
+								<div init-with="p:[tro:center center, tr:rotate(0) translateZ(0), t:all 1000ms cubic-bezier(0#.58#.33#1.2)]"
+									when-record-tile-init="p:[tr:rotate(40deg) translateZ(0)]:delay-900"
+									when-record-mouse-enter-1="p:[op:1, tr:rotate(50deg) translateZ(0):delay-50]"
+									when-record-mouse-leave-1="p:[op:1, tr:rotate(40deg) translateZ(0)]">
+									<svg viewBox="0 0 320 320">
+									    <defs>
+									        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="vinyl-shine">
+									            <feGaussianBlur stdDeviation="8" in="SourceGraphic"></feGaussianBlur>
+									        </filter>
+									    </defs>
+									    <g fill="none" fill-rule="evenodd">
+									        <circle class="rim" stroke="#423942" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#191919" cx="160" cy="160" r="150"></circle>
+									        <circle class="micro-groove" fill="#423942" cx="160" cy="159.0625" r="60.9375"></circle>
+									        <circle class="label" fill="#CE8FCF" cx="160" cy="159.0625" r="28.125"></circle>
+									        <path d="M160,187.1875 L160,130.9375 C144.466991,130.9375 131.875,143.529491 131.875,159.0625 C131.875,174.595509 144.466991,187.1875 160,187.1875 Z" class="label-half" fill="#347DD0"></path>
+									        <circle class="groove-1" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160" cy="159.0625" r="93.75"></circle>
+									        <circle class="groove-2" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160.46875" cy="159.53125" r="83.90625"></circle>
+									        <circle class="groove-3" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160" cy="160" r="103.125"></circle>
+									        <path d="M161.963396,272.482866 C224.085967,271.398512 273.567219,220.159176 272.482866,158.036604 C271.398512,95.9140329 220.159176,46.4327808 158.036604,47.5171343 C95.9140329,48.6014878 46.4327808,99.8408244 47.5171343,161.963396 C48.6014878,224.085967 99.8408244,273.567219 161.963396,272.482866 L161.963396,272.482866 Z" class="groove-4" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <path d="M162.127012,281.856438 C229.426464,280.681722 283.031154,225.17244 281.856438,157.872988 C280.681722,90.5735357 225.17244,36.9688458 157.872988,38.1435622 C90.5735357,39.3182785 36.9688458,94.8275597 38.1435622,162.127012 C39.3182785,229.426464 94.8275597,283.031154 162.127012,281.856438 L162.127012,281.856438 Z" class="groove-5" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <path d="M162.290628,291.23001 C234.766962,289.964931 292.495089,230.185705 291.23001,157.709372 C289.964931,85.2330384 230.185705,27.5049109 157.709372,28.76999 C85.2330384,30.0350691 27.5049109,89.8142951 28.76999,162.290628 C30.0350691,234.766962 89.8142951,292.495089 162.290628,291.23001 L162.290628,291.23001 Z" class="groove-6" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <circle class="groove-7" fill="#211720" cx="160" cy="159.0625" r="4.6875"></circle>
+									        <polygon class="shine" fill-opacity="0.5" fill="#FFFFFF" filter="url(#vinyl-shine)" points="160.804837 159.804837 66.8040405 277.228968 43.0172439 253.442172 160.441375 159.441375 254.442172 42.0172439 278.228968 65.8040405 160.804837 159.804837"></polygon>
+									    </g>
+									</svg>
+
+								</div>
+							</div>
+							<div class="record-tile-front"
+								init-with="p:[bg:transparent, tr:translateX(7.5%), t:transform 1000ms ease-out#background 250ms ease-out]"
+								when-record-tile-init="p:[tr:none:delay-750, bg:#8967d4:delay-250]"
+								when-record-mouse-enter-1="p:[tr:translate3d(-5%#0#0):delay-50, t:all 150ms ease-out]"
+								when-record-mouse-leave-1="p:[tr:translate3d(0#0#0), t:all 150ms ease-out]">
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleY(1)]"></div>
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleY(1)]"></div>
+								<div class="record-art"
+									init-with="p-op"
+									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
+								<h1 class="record-label"
+									init-with="p-op"
+									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Top 40</h1>
+							</div>
+						</div>
+						<div class="record-info">
+							<h3 init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Top 40 - 2016</h3>
+							<button init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
+								<span></span><span></span><span></span><span></span>
+								<span>Listen Now</span>
+							</button>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="record-tile-container"
+						on-mouse-enter="s:[record-mouse-enter-2:public]"
+						on-mouse-leave="s:[record-mouse-leave-2:public]">
+						<div class="record-tile">
+							<svg viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div class="record-tile-back"
+								init-with="p:[op:0, tr:translate3d(-15%#0#0), t:transform 1000ms ease-out#opacity 250ms ease-out]"
+								when-record-tile-init="p:[op:1:delay-250, tr:translate3d(0#0#0)]:delay-750"
+								when-record-mouse-enter-2="p:[op:1, tr:translate3d(5%#0#0):delay-50, t:all 150ms ease-out]"
+								when-record-mouse-leave-2="p:[op:1, tr:translate3d(0#0#0), t:all 150ms ease-out]">
+								<div init-with="p:[tro:center center, tr:rotate(0) translateZ(0), t:all 1000ms cubic-bezier(0#.58#.33#1.2)]"
+									when-record-tile-init="p:[tr:rotate(40deg) translateZ(0)]:delay-900"
+									when-record-mouse-enter-2="p:[op:1, tr:rotate(50deg) translateZ(0):delay-50]"
+									when-record-mouse-leave-2="p:[op:1, tr:rotate(40deg) translateZ(0)]">
+									<svg viewBox="0 0 320 320">
+									    <defs>
+									        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="vinyl-shine">
+									            <feGaussianBlur stdDeviation="8" in="SourceGraphic"></feGaussianBlur>
+									        </filter>
+									    </defs>
+									    <g fill="none" fill-rule="evenodd">
+									        <circle class="rim" stroke="#423942" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#191919" cx="160" cy="160" r="150"></circle>
+									        <circle class="micro-groove" fill="#423942" cx="160" cy="159.0625" r="60.9375"></circle>
+									        <circle class="label" fill="#CE8FCF" cx="160" cy="159.0625" r="28.125"></circle>
+									        <path d="M160,187.1875 L160,130.9375 C144.466991,130.9375 131.875,143.529491 131.875,159.0625 C131.875,174.595509 144.466991,187.1875 160,187.1875 Z" class="label-half" fill="#347DD0"></path>
+									        <circle class="groove-1" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160" cy="159.0625" r="93.75"></circle>
+									        <circle class="groove-2" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160.46875" cy="159.53125" r="83.90625"></circle>
+									        <circle class="groove-3" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160" cy="160" r="103.125"></circle>
+									        <path d="M161.963396,272.482866 C224.085967,271.398512 273.567219,220.159176 272.482866,158.036604 C271.398512,95.9140329 220.159176,46.4327808 158.036604,47.5171343 C95.9140329,48.6014878 46.4327808,99.8408244 47.5171343,161.963396 C48.6014878,224.085967 99.8408244,273.567219 161.963396,272.482866 L161.963396,272.482866 Z" class="groove-4" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <path d="M162.127012,281.856438 C229.426464,280.681722 283.031154,225.17244 281.856438,157.872988 C280.681722,90.5735357 225.17244,36.9688458 157.872988,38.1435622 C90.5735357,39.3182785 36.9688458,94.8275597 38.1435622,162.127012 C39.3182785,229.426464 94.8275597,283.031154 162.127012,281.856438 L162.127012,281.856438 Z" class="groove-5" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <path d="M162.290628,291.23001 C234.766962,289.964931 292.495089,230.185705 291.23001,157.709372 C289.964931,85.2330384 230.185705,27.5049109 157.709372,28.76999 C85.2330384,30.0350691 27.5049109,89.8142951 28.76999,162.290628 C30.0350691,234.766962 89.8142951,292.495089 162.290628,291.23001 L162.290628,291.23001 Z" class="groove-6" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <circle class="groove-7" fill="#211720" cx="160" cy="159.0625" r="4.6875"></circle>
+									        <polygon class="shine" fill-opacity="0.5" fill="#FFFFFF" filter="url(#vinyl-shine)" points="160.804837 159.804837 66.8040405 277.228968 43.0172439 253.442172 160.441375 159.441375 254.442172 42.0172439 278.228968 65.8040405 160.804837 159.804837"></polygon>
+									    </g>
+									</svg>
+
+								</div>
+							</div>
+							<div class="record-tile-front"
+								init-with="p:[bg:transparent, tr:translateX(7.5%), t:transform 1000ms ease-out#background 250ms ease-out]"
+								when-record-tile-init="p:[tr:none:delay-750, bg:#8967d4:delay-250]"
+								when-record-mouse-enter-2="p:[tr:translate3d(-5%#0#0):delay-50, t:all 150ms ease-out]"
+								when-record-mouse-leave-2="p:[tr:translate3d(0#0#0), t:all 150ms ease-out]">
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleY(1)]"></div>
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleY(1)]"></div>
+								<div class="record-art"
+									init-with="p-op"
+									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
+								<h1 class="record-label"
+									init-with="p-op"
+									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Chill Out</h1>
+							</div>
+						</div>
+						<div class="record-info">
+							<h3 init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Chill Out</h3>
+							<button init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
+								<span></span><span></span><span></span><span></span>
+								<span>Listen Now</span>
+							</button>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="record-tile-container"
+						on-mouse-enter="s:[record-mouse-enter-3:public]"
+						on-mouse-leave="s:[record-mouse-leave-3:public]">
+						<div class="record-tile">
+							<svg viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div class="record-tile-back"
+								init-with="p:[op:0, tr:translate3d(-15%#0#0), t:transform 1000ms ease-out#opacity 250ms ease-out]"
+								when-record-tile-init="p:[op:1:delay-250, tr:translate3d(0#0#0)]:delay-750"
+								when-record-mouse-enter-3="p:[op:1, tr:translate3d(5%#0#0):delay-50, t:all 150ms ease-out]"
+								when-record-mouse-leave-3="p:[op:1, tr:translate3d(0#0#0), t:all 150ms ease-out]">
+								<div init-with="p:[tro:center center, tr:rotate(0) translateZ(0), t:all 1000ms cubic-bezier(0#.58#.33#1.2)]"
+									when-record-tile-init="p:[tr:rotate(40deg) translateZ(0)]:delay-900"
+									when-record-mouse-enter-3="p:[op:1, tr:rotate(50deg) translateZ(0):delay-50]"
+									when-record-mouse-leave-3="p:[op:1, tr:rotate(40deg) translateZ(0)]">
+									<svg viewBox="0 0 320 320">
+									    <defs>
+									        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="vinyl-shine">
+									            <feGaussianBlur stdDeviation="8" in="SourceGraphic"></feGaussianBlur>
+									        </filter>
+									    </defs>
+									    <g fill="none" fill-rule="evenodd">
+									        <circle class="rim" stroke="#423942" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#191919" cx="160" cy="160" r="150"></circle>
+									        <circle class="micro-groove" fill="#423942" cx="160" cy="159.0625" r="60.9375"></circle>
+									        <circle class="label" fill="#CE8FCF" cx="160" cy="159.0625" r="28.125"></circle>
+									        <path d="M160,187.1875 L160,130.9375 C144.466991,130.9375 131.875,143.529491 131.875,159.0625 C131.875,174.595509 144.466991,187.1875 160,187.1875 Z" class="label-half" fill="#347DD0"></path>
+									        <circle class="groove-1" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160" cy="159.0625" r="93.75"></circle>
+									        <circle class="groove-2" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160.46875" cy="159.53125" r="83.90625"></circle>
+									        <circle class="groove-3" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160" cy="160" r="103.125"></circle>
+									        <path d="M161.963396,272.482866 C224.085967,271.398512 273.567219,220.159176 272.482866,158.036604 C271.398512,95.9140329 220.159176,46.4327808 158.036604,47.5171343 C95.9140329,48.6014878 46.4327808,99.8408244 47.5171343,161.963396 C48.6014878,224.085967 99.8408244,273.567219 161.963396,272.482866 L161.963396,272.482866 Z" class="groove-4" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <path d="M162.127012,281.856438 C229.426464,280.681722 283.031154,225.17244 281.856438,157.872988 C280.681722,90.5735357 225.17244,36.9688458 157.872988,38.1435622 C90.5735357,39.3182785 36.9688458,94.8275597 38.1435622,162.127012 C39.3182785,229.426464 94.8275597,283.031154 162.127012,281.856438 L162.127012,281.856438 Z" class="groove-5" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <path d="M162.290628,291.23001 C234.766962,289.964931 292.495089,230.185705 291.23001,157.709372 C289.964931,85.2330384 230.185705,27.5049109 157.709372,28.76999 C85.2330384,30.0350691 27.5049109,89.8142951 28.76999,162.290628 C30.0350691,234.766962 89.8142951,292.495089 162.290628,291.23001 L162.290628,291.23001 Z" class="groove-6" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <circle class="groove-7" fill="#211720" cx="160" cy="159.0625" r="4.6875"></circle>
+									        <polygon class="shine" fill-opacity="0.5" fill="#FFFFFF" filter="url(#vinyl-shine)" points="160.804837 159.804837 66.8040405 277.228968 43.0172439 253.442172 160.441375 159.441375 254.442172 42.0172439 278.228968 65.8040405 160.804837 159.804837"></polygon>
+									    </g>
+									</svg>
+
+								</div>
+							</div>
+							<div class="record-tile-front"
+								init-with="p:[bg:transparent, tr:translateX(7.5%), t:transform 1000ms ease-out#background 250ms ease-out]"
+								when-record-tile-init="p:[tr:none:delay-750, bg:#8967d4:delay-250]"
+								when-record-mouse-enter-3="p:[tr:translate3d(-5%#0#0):delay-50, t:all 150ms ease-out]"
+								when-record-mouse-leave-3="p:[tr:translate3d(0#0#0), t:all 150ms ease-out]">
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleY(1)]"></div>
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleY(1)]"></div>
+								<div class="record-art"
+									init-with="p-op"
+									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
+								<h1 class="record-label"
+									init-with="p-op"
+									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Upbeat EDM</h1>
+							</div>
+						</div>
+						<div class="record-info">
+							<h3 init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Upbeat EDM</h3>
+							<button init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
+								<span></span><span></span><span></span><span></span>
+								<span>Listen Now</span>
+							</button>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="record-tile-container"
+						on-mouse-enter="s:[record-mouse-enter-4:public]"
+						on-mouse-leave="s:[record-mouse-leave-4:public]">
+						<div class="record-tile">
+							<svg viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div class="record-tile-back"
+								init-with="p:[op:0, tr:translate3d(-15%#0#0), t:transform 1000ms ease-out#opacity 250ms ease-out]"
+								when-record-tile-init="p:[op:1:delay-250, tr:translate3d(0#0#0)]:delay-750"
+								when-record-mouse-enter-4="p:[op:1, tr:translate3d(5%#0#0):delay-50, t:all 150ms ease-out]"
+								when-record-mouse-leave-4="p:[op:1, tr:translate3d(0#0#0), t:all 150ms ease-out]">
+								<div init-with="p:[tro:center center, tr:rotate(0) translateZ(0), t:all 1000ms cubic-bezier(0#.58#.33#1.2)]"
+									when-record-tile-init="p:[tr:rotate(40deg) translateZ(0)]:delay-900"
+									when-record-mouse-enter-4="p:[op:1, tr:rotate(50deg) translateZ(0):delay-50]"
+									when-record-mouse-leave-4="p:[op:1, tr:rotate(40deg) translateZ(0)]">
+									<svg viewBox="0 0 320 320">
+									    <defs>
+									        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="vinyl-shine">
+									            <feGaussianBlur stdDeviation="8" in="SourceGraphic"></feGaussianBlur>
+									        </filter>
+									    </defs>
+									    <g fill="none" fill-rule="evenodd">
+									        <circle class="rim" stroke="#423942" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#191919" cx="160" cy="160" r="150"></circle>
+									        <circle class="micro-groove" fill="#423942" cx="160" cy="159.0625" r="60.9375"></circle>
+									        <circle class="label" fill="#CE8FCF" cx="160" cy="159.0625" r="28.125"></circle>
+									        <path d="M160,187.1875 L160,130.9375 C144.466991,130.9375 131.875,143.529491 131.875,159.0625 C131.875,174.595509 144.466991,187.1875 160,187.1875 Z" class="label-half" fill="#347DD0"></path>
+									        <circle class="groove-1" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160" cy="159.0625" r="93.75"></circle>
+									        <circle class="groove-2" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160.46875" cy="159.53125" r="83.90625"></circle>
+									        <circle class="groove-3" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="160" cy="160" r="103.125"></circle>
+									        <path d="M161.963396,272.482866 C224.085967,271.398512 273.567219,220.159176 272.482866,158.036604 C271.398512,95.9140329 220.159176,46.4327808 158.036604,47.5171343 C95.9140329,48.6014878 46.4327808,99.8408244 47.5171343,161.963396 C48.6014878,224.085967 99.8408244,273.567219 161.963396,272.482866 L161.963396,272.482866 Z" class="groove-4" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <path d="M162.127012,281.856438 C229.426464,280.681722 283.031154,225.17244 281.856438,157.872988 C280.681722,90.5735357 225.17244,36.9688458 157.872988,38.1435622 C90.5735357,39.3182785 36.9688458,94.8275597 38.1435622,162.127012 C39.3182785,229.426464 94.8275597,283.031154 162.127012,281.856438 L162.127012,281.856438 Z" class="groove-5" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <path d="M162.290628,291.23001 C234.766962,289.964931 292.495089,230.185705 291.23001,157.709372 C289.964931,85.2330384 230.185705,27.5049109 157.709372,28.76999 C85.2330384,30.0350691 27.5049109,89.8142951 28.76999,162.290628 C30.0350691,234.766962 89.8142951,292.495089 162.290628,291.23001 L162.290628,291.23001 Z" class="groove-6" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+									        <circle class="groove-7" fill="#211720" cx="160" cy="159.0625" r="4.6875"></circle>
+									        <polygon class="shine" fill-opacity="0.5" fill="#FFFFFF" filter="url(#vinyl-shine)" points="160.804837 159.804837 66.8040405 277.228968 43.0172439 253.442172 160.441375 159.441375 254.442172 42.0172439 278.228968 65.8040405 160.804837 159.804837"></polygon>
+									    </g>
+									</svg>
+
+								</div>
+							</div>
+							<div class="record-tile-front"
+								init-with="p:[bg:transparent, tr:translateX(7.5%), t:transform 1000ms ease-out#background 250ms ease-out]"
+								when-record-tile-init="p:[tr:none:delay-750, bg:#8967d4:delay-250]"
+								when-record-mouse-enter-4="p:[tr:translate3d(-5%#0#0):delay-50, t:all 150ms ease-out]"
+								when-record-mouse-leave-4="p:[tr:translate3d(0#0#0), t:all 150ms ease-out]">
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleY(1)]"></div>
+								<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleX(1)]"></div>
+								<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
+									when-record-tile-init="p:[tr:scaleY(1)]"></div>
+								<div class="record-art"
+									init-with="p-op"
+									when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
+								<h1 class="record-label"
+									init-with="p-op"
+									when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Guitar Melodies</h1>
+							</div>
+						</div>
+						<div class="record-info">
+							<h3 init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Guitar Melodies</h3>
+							<button init-with="p-op"
+								when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
+								<span></span><span></span><span></span><span></span>
+								<span>Listen Now</span>
+							</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="landing-action">
+				<div class="sound-equalizer">
+					<svg viewBox="0 0 1920 150">
+					    <g stroke="#7872E3" stroke-width="6" fill="none" fill-rule="evenodd" stroke-linecap="round" opacity="0.5" stroke-linejoin="round">
+					        <path d="M1724,50 L1724,102" class="line-119"></path>
+					        <path d="M1738,60.1534653 L1738,90.8465347" class="line-118"></path>
+					        <path d="M1754,67.0891089 L1754,84.9108911" class="line-117"></path>
+					        <path d="M1770,46.2970297 L1770,105.70297" class="line-116"></path>
+					        <path d="M1786,48.2722772 L1786,102.727723" class="line-115"></path>
+					        <path d="M1802,44.3118812 L1802,106.688119" class="line-114"></path>
+					        <path d="M1818,58.1782178 L1818,93.8217822" class="line-113"></path>
+					        <path d="M1834,68.0742574 L1834,82.9257426" class="line-112"></path>
+					        <path d="M1850,58.1761926 L1850,93.4147165" class="line-111"></path>
+					        <path d="M1866,71.049505 L1866,80.950495" class="line-110"></path>
+					        <path d="M1882,60.1534653 L1882,90.8465347" class="line-109"></path>
+					        <path d="M1898,67.0891089 L1898,84.9108911" class="line-108"></path>
+					        <path d="M1470,67.0891089 L1470,84.9108911" class="line-107"></path>
+					        <path d="M1486,44.3168317 L1486,107.683168" class="line-106"></path>
+					        <path d="M1502,62.1386139 L1502,89.8613861" class="line-105"></path>
+					        <path d="M1518,67.0841584 L1518,83.9158416" class="line-104"></path>
+					        <path d="M1534,39.3613861 L1534,111.638614" class="line-103"></path>
+					        <path d="M1550,50.2574257 L1550,101.742574" class="line-102"></path>
+					        <path d="M1566,29.460396 L1566,121.539604" class="line-101"></path>
+					        <path d="M1582,49.2673267 L1582,102.732673" class="line-100"></path>
+					        <path d="M1598,44.3118812 L1598,106.688119" class="line-99"></path>
+					        <path d="M1614,52.2326733 L1614,98.7673267" class="line-98"
+								init-with="a:[sound-equalizer:set:(dur:450ms#func:ease-in-out#count:infinite):a:delay-250] | p:[tro:center center]"></path>
+					        <path d="M1630,46.2970297 L1630,105.70297" class="line-97"
+								init-with="a:[sound-equalizer:set:(dur:450ms#func:ease-in-out#count:infinite):a:delay-750] | p:[tro:center center]"></path>
+					        <path d="M1646,48.2722772 L1646,102.727723" class="line-96"
+								init-with="a:[sound-equalizer:set:(dur:450ms#func:ease-in-out#count:infinite):a:delay-150] | p:[tro:center center]"></path>
+					        <path d="M1662,44.3118812 L1662,106.688119" class="line-95"
+								init-with="a:[sound-equalizer:set:(dur:450ms#func:ease-in-out#count:infinite):a:delay-250] | p:[tro:center center]"></path>
+					        <path d="M1678,32.4356436 L1678,119.564356" class="line-94"
+								init-with="a:[sound-equalizer:set:(dur:450ms#func:ease-in-out#count:infinite):a:delay-250] | p:[tro:center center]"></path>
+					        <path d="M1694,68.0742574 L1694,82.9257426" class="line-93"
+								init-with="a:[sound-equalizer:set:(dur:450ms#func:ease-in-out#count:infinite):a:delay-500]| p:[tro:center center]"></path>
+					        <path d="M1710,32.4306931 L1710,118.569307" class="line-92"
+								init-with="a:[sound-equalizer:set:(dur:450ms#func:ease-in-out#count:infinite):a:delay-750]| p:[tro:center center]"></path>
+					        <path d="M894,29.460396 L894,121.539604" class="line-91"
+								init-with="a:[sound-equalizer:set:(dur:450ms#func:ease-in-out#count:infinite):a:delay-500]| p:[tro:center center]"></path>
+					        <path d="M958,67.0891089 L958,84.9108911" class="line-90"
+								init-with="a:[sound-equalizer:set:(dur:650ms#func:ease-in-out#count:infinite):a:delay-800]| p:[tro:center center]"></path>
+					        <path d="M942,53.2277228 L942,98.7722772" class="line-89"
+								init-with="a:[sound-equalizer:set:(dur:650ms#func:ease-in-out#count:infinite):a:delay-900]| p:[tro:center center]"></path>
+					        <path d="M926,64.1188119 L926,87.8811881" class="line-88"
+								init-with="a:[sound-equalizer:set:(dur:650ms#func:ease-in-out#count:infinite):a:delay-350]| p:[tro:center center]"></path>
+					        <path d="M910,70.0594059 L910,81.9405941" class="line-87"
+								init-with="a:[sound-equalizer:set:(dur:650ms#func:ease-in-out#count:infinite):a:delay-500]| p:[tro:center center]"></path>
+					        <path d="M974,34.4108911 L974,116.589109" class="line-86"
+								init-with="a:[sound-equalizer:set:(dur:650ms#func:ease-in-out#count:infinite):a:delay-750]| p:[tro:center center]"></path>
+					        <path d="M990,52.2376238 L990,99.7623762" class="line-85"
+								init-with="a:[sound-equalizer:set:(dur:650ms#func:ease-in-out#count:infinite):a:delay-500]| p:[tro:center center]"></path>
+					        <path d="M1006,57.1881188 L1006,94.8118812" class="line-84"
+								init-with="a:[sound-equalizer-2:set:(dur:1000ms#func:ease-in-out#count:infinite):a:delay-500]| p:[tro:center center]"></path>
+					        <path d="M1022,37.3861386 L1022,114.613861" class="line-83"
+								init-with="a:[sound-equalizer-2:set:(dur:1000ms#func:ease-in-out#count:infinite):a:delay-250]| p:[tro:center center]"></path>
+					        <path d="M1038,46.2920792 L1038,104.707921" class="line-82"
+								init-with="a:[sound-equalizer-2:set:(dur:1000ms#func:ease-in-out#count:infinite):a:delay-550]| p:[tro:center center]"></path>
+					        <path d="M1054,46.2970297 L1054,105.70297" class="line-81"
+								init-with="a:[sound-equalizer-2:set:(dur:1000ms#func:ease-in-out#count:infinite):a:delay-750]| p:[tro:center center]"></path>
+					        <path d="M1070,70.0594059 L1070,81.9405941" class="line-80"
+								init-with="a:[sound-equalizer-2:set:(dur:1000ms#func:ease-in-out#count:infinite):a:delay-1000]| p:[tro:center center]"></path>
+					        <path d="M1086,58.1732673 L1086,92.8267327" class="line-79"
+								init-with="a:[sound-equalizer-2:set:(dur:1000ms#func:ease-in-out#count:infinite):a:delay-250]| p:[tro:center center]"></path>
+					        <path d="M1102,28.4752475 L1102,123.524752" class="line-78"></path>
+					        <path d="M1118,62.1336634 L1118,88.8663366" class="line-77"></path>
+					        <path d="M1134,64.1188119 L1134,87.8811881" class="line-76"></path>
+					        <path d="M1150,55.2079208 L1150,96.7920792" class="line-75"></path>
+					        <path d="M1166,54.2178218 L1166,97.7821782" class="line-74"></path>
+					        <path d="M1182,54.2178218 L1182,97.7821782" class="line-73"></path>
+					        <path d="M1198,44.3168317 L1198,107.683168" class="line-72"></path>
+					        <path d="M1214,62.1386139 L1214,89.8613861" class="line-71"></path>
+					        <path d="M1230,67.0841584 L1230,83.9158416" class="line-70"></path>
+					        <path d="M1246,39.3613861 L1246,111.638614" class="line-69"></path>
+					        <path d="M1262,50.2574257 L1262,101.742574" class="line-68"></path>
+					        <path d="M1278,29.460396 L1278,121.539604" class="line-67"></path>
+					        <path d="M1294,49.2673267 L1294,102.732673" class="line-66"></path>
+					        <path d="M1310,44.3118812 L1310,106.688119" class="line-65"></path>
+					        <path d="M1326,52.2326733 L1326,98.7673267" class="line-64"></path>
+					        <path d="M1342,46.2970297 L1342,105.70297" class="line-63"></path>
+					        <path d="M1358,48.2722772 L1358,102.727723" class="line-62"></path>
+					        <path d="M1374,44.3118812 L1374,106.688119" class="line-61"></path>
+					        <path d="M1390,32.4356436 L1390,119.564356" class="line-60"></path>
+					        <path d="M1406,68.0742574 L1406,82.9257426" class="line-59"></path>
+					        <path d="M1422,32.4306931 L1422,118.569307" class="line-58"></path>
+					        <path d="M1438,71.049505 L1438,80.950495" class="line-57"></path>
+					        <path d="M1454,60.1534653 L1454,90.8465347" class="line-56"></path>
+					        <path d="M878,38.3712871 L878,112.628713" class="line-55"></path>
+					        <path d="M862,60.1584158 L862,91.8415842" class="line-54"></path>
+					        <path d="M830,41.3465347 L830,110.653465" class="line-53"></path>
+					        <path d="M846,26.490099 L846,124.509901" class="line-52"></path>
+					        <path d="M814,29.4653465 L814,122.534653" class="line-51"></path>
+					        <path d="M782,29.460396 L782,121.539604" class="line-50"></path>
+					        <path d="M766,51.2475248 L766,100.752475" class="line-49"></path>
+					        <path d="M798,70.0544554 L798,80.9455446" class="line-48"></path>
+					        <path d="M750,30.4554455 L750,121.544554" class="line-47"></path>
+					        <path d="M718,61.1485149 L718,90.8514851" class="line-46"></path>
+					        <path d="M734,49.2623762 L734,101.737624" class="line-45"></path>
+					        <path d="M702,69.0693069 L702,82.9306931" class="line-44"></path>
+					        <path d="M686,49.2673267 L686,102.732673" class="line-43"></path>
+					        <path d="M670,70.0594059 L670,81.9405941" class="line-42"></path>
+					        <path d="M654,42.3366337 L654,109.663366" class="line-41"></path>
+					        <path d="M638,56.1930693 L638,94.8069307" class="line-40"></path>
+					        <path d="M622,64.1188119 L622,87.8811881" class="line-39"></path>
+					        <path d="M606,53.2277228 L606,98.7722772" class="line-38"></path>
+					        <path d="M590,65.1039604 L590,85.8960396" class="line-37"></path>
+					        <path d="M574,57.1881188 L574,94.8118812" class="line-36"></path>
+					        <path d="M558,61.1485149 L558,90.8514851" class="line-35"></path>
+					        <path d="M542,67.0891089 L542,84.9108911" class="line-34"></path>
+					        <path d="M526,61.1485149 L526,90.8514851" class="line-33"></path>
+					        <path d="M510,50.2574257 L510,101.742574" class="line-32"></path>
+					        <path d="M494,59.1683168 L494,92.8316832" class="line-31"></path>
+					        <path d="M478,58.1782178 L478,93.8217822" class="line-30"></path>
+					        <path d="M462,42.3366337 L462,109.663366" class="line-29"></path>
+					        <path d="M446,42.3366337 L446,109.663366" class="line-28"></path>
+					        <path d="M430,59.1683168 L430,92.8316832" class="line-27"></path>
+					        <path d="M414,58.1782178 L414,93.8217822" class="line-26"></path>
+					        <path d="M398,42.3366337 L398,109.663366" class="line-25"></path>
+					        <path d="M382,42.3366337 L382,109.663366" class="line-24"></path>
+					        <path d="M366,53.2277228 L366,98.7722772" class="line-23"></path>
+					        <path d="M352,42 L352,108.772277" class="line-22"></path>
+					        <path d="M338,47.2832611 L338,103.935489" class="line-21"></path>
+					        <path d="M322,47.2832611 L322,103.935489" class="line-20"></path>
+					        <path d="M308,62 L308,89.7722772" class="line-19"></path>
+					        <path d="M294,57.1881188 L294,94.8118812" class="line-18"></path>
+					        <path d="M278,57.1881188 L278,94.8118812" class="line-17"></path>
+					        <path d="M262,29.460396 L262,121.539604" class="line-16"></path>
+					        <path d="M246,47.2832611 L246,103.935489" class="line-15"></path>
+					        <path d="M230,47.2832611 L230,103.935489" class="line-14"></path>
+					        <path d="M214,29.460396 L214,121.539604" class="line-13"></path>
+					        <path d="M198,53.2277228 L198,98.7722772" class="line-12"></path>
+					        <path d="M182,65.1039604 L182,85.8960396" class="line-11"></path>
+					        <path d="M166,47.2832611 L166,103.935489" class="line-10"></path>
+					        <path d="M150,29.460396 L150,121.539604" class="line-9"></path>
+					        <path d="M134,29.460396 L134,121.539604" class="line-8"></path>
+					        <path d="M118,47.2832611 L118,103.935489" class="line-7"></path>
+					        <path d="M102,65.1039604 L102,85.8960396" class="line-6"></path>
+					        <path d="M86,53.2277228 L86,98.7722772" class="line-5"></path>
+					        <path d="M70,64.1188119 L70,87.8811881" class="line-4"></path>
+					        <path d="M54,57.1881188 L54,94.8118812" class="line-3"></path>
+					        <path d="M38,61.1485149 L38,90.8514851" class="line-2"></path>
+					        <path d="M22,67.0891089 L22,84.9108911" class="line-1"></path>
+					    </g>
+					</svg>
+				</div>
+				<button class="landing-try-button"
+					init-with="p:[op:0, tro: center]"
+					on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):delay-2150:in]"
+					when-sound-landing-enter="t-enter">Try It Now on Desktop</button>
+				<ul class="landing-platforms p15-grid full-x line-height-1-2">
+					<li class="txt-24 semibold"
+						init-with="p-op"
+						on-enter="p:[op:1, t:all 750 ease-out]:delay-2150"
+						when-sound-landing-enter="t-enter">
+						Android<br/>Play Store
+					</li>
+					<li class="txt-24 semibold"
+						init-with="p-op"
+						on-enter="p:[op:1, t:all 750 ease-out]:delay-2150"
+						when-sound-landing-enter="t-enter">
+						iOS<br/>Coming Soon
+					</li>
+				</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+    <div class="splash-hero-skip absolute bottom-0 right-0 z-index-999"
+        init-with="p:[op:0, tro:center center, tr:translateX(100%) rotate(180deg), t:all 1000ms cubic-bezier(.04#.75#.77#1.32)]"
+        when-powerups-init="t-enter"
+        on-enter="p:[op:1, tr:translateX(0) rotate(0)]:delay-3000">
+       <button on-click="s:[close-sound:public]">Back</button>
+    </div>
+</div>

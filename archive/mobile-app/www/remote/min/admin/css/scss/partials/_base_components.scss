@@ -1,0 +1,648 @@
+// .checkbox-container, .radio-container {
+//     @include flex;
+//     @include flex-center;
+//     div {
+//         position: relative;
+//         input:not([text]) {
+//             @include opacity(0);
+//             position: absolute;
+//             z-index: 12;
+//             top: 0;
+//             left: 0;
+//             width: 100%;
+//             height: 100%;
+//         }
+//         span {
+//             display: block;
+//             background: $slate;
+//         }
+//     }
+//     label {
+//         padding-left: 15px;
+//         color: white;
+//         font-size: 20px;
+//         font-weight: 600;
+//     }
+// }
+// // checkbox inputs
+// .checkbox-container {
+//     div {
+//         span {
+//             border-radius: 3px;
+//             width: 32px;
+//             height: 32px;
+//             svg {
+//                 @include svg-stroke(lighten($slate, 20%), 10);
+//                 padding: 4px;
+//                 width: 100%;
+//                 height: 100%;
+//             }
+//         }
+//         input:checked + span {
+//             background: $shamrock;
+//             svg {
+//                 stroke: white;
+//             }
+//         }
+//     }
+//     &.small {
+//         div {
+//             span {
+//                 width: 20px;
+//                 height: 20px;
+//             }
+//         }
+//         label {
+//             font-size: 16px;
+//         }
+//     }
+// }
+// .small .checkbox-container {
+//     div {
+//         span {
+//             width: 20px;
+//             height: 20px;
+//         }
+//     }
+//     label {
+//         font-size: 16px;
+//     }
+// }
+// .checkbox-shamrock {
+//     input:checked + span {
+//         background: $shamrock!important;
+//     }
+// }
+// .checkbox-robin {
+//     input:checked + span {
+//         background: $robin!important;
+//     }
+// }
+// .checkbox-lake {
+//     input:checked + span {
+//         background: $lake!important;
+//     }
+// }
+// .checkbox-moxie {
+//     input:checked + span {
+//         background: $moxie!important;
+//     }
+// }
+// .checkbox-crimson {
+//     input:checked + span {
+//         background: $crimson!important;
+//     }
+// }
+// .checkbox-auburn, .checkbox-delivery {
+//     input:checked + span {
+//         background: $auburn!important;
+//     }
+// }
+// .checkbox-orange, .checkbox-freelancing {
+//     input:checked + span {
+//         background: $orange!important;
+//     }
+// }
+// .checkbox-gold, .checkbox-baking {
+//     input:checked + span {
+//         background: $gold!important;
+//     }
+// }
+// .checkbox-moola, .checkbox-photography {
+//     input:checked + span {
+//         background: $moola!important;
+//     }
+// }
+// .checkbox-azure, .checkbox-tech {
+//     input:checked + span {
+//         background: $azure!important;
+//     }
+// }
+// .checkbox-cobalt, .checkbox-household {
+//     input:checked + span {
+//         background: $cobalt!important;
+//     }
+// }
+// .checkbox-eggplant, .checkbox-athletic {
+//     input:checked + span {
+//         background: $eggplant!important;
+//     }
+// }
+// .checkbox-cerise, .checkbox-academic {
+//     input:checked + span {
+//         background: $cerise!important;
+//     }
+// }
+//
+// body, html {
+//     height: 100%;
+// }
+// body {
+//     perspective: 1000;
+//     background: $charcoal;
+//     color: white;
+//     font-family: $font;
+// }
+//
+// body > div {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+// }
+//
+// * {
+//     box-sizing: border-box!important;
+// }
+// *:focus {
+//     outline: none;
+// }
+//
+// input {
+//     appearance: none;
+//     border: 0;
+//     padding: 0;
+// }
+//
+// body > div > ul {
+//     @include flex;
+//     @include flex-wrap;
+//     @include listless;
+//     margin: 0 auto;
+//     max-width: 900px;
+//     padding: 15px;
+//     > li {
+//         @include flex;
+//         @include flex-center-vertical;
+//         width: 50%;
+//         padding: 15px;
+//         .checkbox-container {
+//             margin-right: 15px;
+//         }
+//     }
+// }
+//
+// fieldset {
+//     @include flex;
+//     position: relative;
+//     margin: 0;
+//     padding: 0;
+//     border: 0;
+//     font-size: 18px;
+//     font-weight: 400;
+//     width: 100%;
+//     max-width: 400px;
+//     min-height: 30px;
+//     * {
+//         transition: all 150ms ease-in-out;
+//     }
+//     input {
+//         display: block;
+//         width: 100%;
+//         font-size: 16px;
+//         @include placeholder {
+//             transition: all 150ms ease-in-out;
+//             font-weight: 400;
+//             font-size: 16px;
+//         }
+//     }
+// }
+//
+// .input-border {
+//     position: relative;
+//     z-index: 9;
+//     background: none;
+//     width: 100%;
+//     padding: 15px 0;
+//     transition: all 300ms linear;
+//     &:focus {
+//         &::selection {
+//             background: white;
+//             color: $slate;
+//         }
+//         &::-moz-selection {
+//             background: white;
+//             color: $slate;
+//         }
+//     }
+//     &.light {
+//         color: white;
+//         @include placeholder {
+//             color: rgba(white, .2);
+//         }
+//         &:focus {
+//             @include placeholder {
+//                 color: white;
+//             }
+//         }
+//     }
+//     + label:not(:empty) {
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         height: 100%;
+//         &:after {
+//             content: "";
+//             display: block;
+//             position: absolute;
+//             bottom: 0;
+//             left: 0;
+//             width: 100%;
+//             height: 2px;
+//             background: rgba(white, .2);
+//             border-radius: 1000px;
+//         }
+//         svg {
+//             position: absolute;
+//             top: 15px;
+//             * {
+//                 stroke-width: 8px;
+//             }
+//         }
+//         span {
+//             position: absolute;
+//             top: 15px;
+//             display: block;
+//             font-size: 16px;
+//             transition: all 250ms ease-out 300ms;
+//             padding-left: 39px;
+//         }
+//         > div {
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             width: 100%;
+//             height: 100%;
+//             background: rgba(white, .2);
+//             border-radius: 2px;
+//             transform: rotateX(90deg);
+//             transition: all 300ms linear;
+//             transform-origin: center bottom;
+//             opacity: 0;
+//             div {
+//                 @include round;
+//                 position: absolute;
+//                 background: white;
+//                 opacity: 0;
+//                 &:nth-child(1) {
+//                     top: 0;
+//                     left: 0;
+//                     width: 100%;
+//                     height: 2px;
+//                     transform: scaleX(0);
+//                     transform-origin: right center;
+//                     transition: all 300ms ease-in-out 750ms;
+//                 }
+//                 &:nth-child(2) {
+//                     top: 0;
+//                     right: 0;
+//                     width: 2px;
+//                     height: 100%;
+//                     transform: scaleX(0);
+//                     transform-origin: center bottom;
+//                     transition: all 100ms ease-in-out 650ms;
+//                 }
+//                 &:nth-child(3) {
+//                     bottom: 0;
+//                     right: 0;
+//                     width: 100%;
+//                     height: 2px;
+//                     transform: scaleX(0);
+//                     transform-origin: left center;
+//                     transition: all 300ms ease-in-out 500ms;
+//                 }
+//                 &:nth-child(4) {
+//                     bottom: 0;
+//                     left: 0;
+//                     width: 2px;
+//                     height: 100%;
+//                     transform: scaleY(0);
+//                     transform-origin: center top;
+//                     transition: all 100ms ease-in-out 400ms;
+//                 }
+//             }
+//         }
+//     }
+// }
+//
+// // EDIT HERE
+// .activate {
+//     &.state-onload {
+//         + label {
+//             span {
+//                 opacity: 0;
+//             }
+//             svg {
+//                 opacity: 0;
+//             }
+//             &:after {
+//                 transform: scaleX(0);
+//                 transform-origin: left center;
+//                 animation: scaleInX 1000ms ease both;
+//             }
+//         }
+//     }
+//     &.state-empty-focus {
+//         + label {
+//             > div {
+//                 transform-origin: center bottom;
+//                 animation: upput-rotate 1000ms ease both;
+//             }
+//         }
+//     }
+// }
+//
+// @keyframes scaleInX {
+//     0% { transform: scaleX(0); }
+//     100% { transform: scaleX(1); }
+// }
+//
+// @keyframes upput-rotate {
+//     0% { transform: rotateX(90deg); opacity:1; }
+//     100% { transform: rotateX(0); opacity:1; }
+// }
+//
+// // OLD
+// .upput {
+//     &:hover {
+//         + label {
+//             > div {
+//                 opacity: 0.2;
+//             }
+//         }
+//     }
+//     &:focus, &:valid {
+//         + label {
+//             .email-icon {
+//                 .success-1 {
+//                     animation: input-icon-success-1 250ms ease-out 500ms both, input-icon-moxie 250ms ease-out 250ms both;
+//                 }
+//                 .success-2 {
+//                     animation: input-icon-success-2 500ms ease-out 750ms both, input-icon-moxie 250ms ease-out 250ms both;
+//                 }
+//                 .email {
+//                     animation: input-icon-email 1000ms ease-out both, input-icon-moxie 250ms ease-out 250ms both;
+//                 }
+//                 .name {
+//                     animation: input-icon-email 1000ms ease-out both, input-icon-moxie 250ms ease-out 250ms both;
+//                 }
+//             }
+//             .name-icon {
+//                 .error-1 {
+//                     animation: input-icon-error 350ms ease-out 500ms both, input-icon-crimson 250ms ease-out 250ms both;
+//                 }
+//                 .error-2 {
+//                     animation: input-icon-error 350ms ease-out 750ms both, input-icon-crimson 250ms ease-out 250ms both;
+//                 }
+//                 .email {
+//                     animation: input-icon-email 1000ms ease-out both, input-icon-crimson 250ms ease-out 250ms both;
+//                 }
+//                 .name {
+//                     animation: input-icon-email 1000ms ease-out both, input-icon-crimson 250ms ease-out 250ms both;
+//                 }
+//             }
+//             span {
+//                 transform: translateY(-24px);
+//                 font-size: 12px;
+//                 transition: all 250ms ease-out;
+//             }
+//             > div {
+//                 transform: rotateX(0);
+//                 opacity: 1;
+//                 transform-origin: center bottom;
+//                 div {
+//                     opacity: 1;
+//                     &:nth-child(1) {
+//                         transform: scaleX(1);
+//                     }
+//                     &:nth-child(2) {
+//                         transform: scaleX(1);
+//                     }
+//                     &:nth-child(3) {
+//                         transform: scaleX(1);
+//                     }
+//                     &:nth-child(4) {
+//                         transform: scaleY(1);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+//
+// .input-icon {
+//     width: 24px;
+//     height: 24px;
+//     path {
+//         stroke: lighten($slate, 15%);
+//     }
+//     .template {
+//         stroke-dasharray: 220.3;
+//     }
+//     .success-1 {
+//         stroke-dasharray: 19.8;
+//         opacity: 0;
+//     }
+//     .success-2 {
+//         stroke-dasharray: 50.2;
+//         opacity: 0;
+//     }
+//     .error-1, .error-2 {
+//         stroke: $crimson;
+//         stroke-dasharray: 39.6;
+//         opacity: 0;
+//     }
+//     .email {
+//         transform-origin: center center;
+//         stroke-dasharray: 365.6;
+//     }
+//     .name {
+//         transform-origin: center center;
+//         stroke-dasharray: 365.6;
+//     }
+//     &.email-icon {
+//         .name {
+//             opacity: 0;
+//         }
+//     }
+//     &.name-icon {
+//         .email {
+//             opacity: 0;
+//         }
+//     }
+//     &.valid:not(.invalidated) {
+//         .success-1 {
+//             animation: input-icon-success-1 250ms ease-out 500ms both, input-icon-moxie 250ms ease-out 250ms both;
+//         }
+//         .success-2 {
+//             animation: input-icon-success-2 500ms ease-out 750ms both, input-icon-moxie 250ms ease-out 250ms both;
+//         }
+//         .email {
+//             animation: input-icon-email 1000ms ease-out both, input-icon-moxie 250ms ease-out 250ms both;
+//         }
+//         .name {
+//             animation: input-icon-email 1000ms ease-out both, input-icon-moxie 250ms ease-out 250ms both;
+//         }
+//     }
+//     &.error:not(.validated) {
+//         .error-1 {
+//             animation: input-icon-error 350ms ease-out 500ms both, input-icon-crimson 250ms ease-out 250ms both;
+//         }
+//         .error-2 {
+//             animation: input-icon-error 350ms ease-out 750ms both, input-icon-crimson 250ms ease-out 250ms both;
+//         }
+//         .email {
+//             animation: input-icon-email 1000ms ease-out both, input-icon-crimson 250ms ease-out 250ms both;
+//         }
+//         .name {
+//             animation: input-icon-email 1000ms ease-out both, input-icon-crimson 250ms ease-out 250ms both;
+//         }
+//     }
+//     &.validated {
+//         .email {
+//             stroke: $moxie;
+//             stroke-dasharray: 365.6;
+//             stroke-dashoffset: -145.3;
+//             transform: rotate(-67.5deg);
+//         }
+//         .name {
+//             stroke: $moxie;
+//             stroke-dasharray: 365.6;
+//             stroke-dashoffset: -145.3;
+//             transform: rotate(-67.5deg);
+//         }
+//         .success-1, .success-2 {
+//             stroke: $moxie;
+//             stroke-dashoffset: 0;
+//             opacity: 1;
+//         }
+//         &.normal {
+//             .success-1 {
+//                 animation: input-icon-success-1 250ms ease-in 500ms reverse both, input-icon-moxie 250ms ease-in 500ms reverse both;
+//             }
+//             .success-2 {
+//                 animation: input-icon-success-2 500ms ease-in reverse both, input-icon-moxie 250ms ease-in 500ms reverse both;
+//             }
+//             .email {
+//                 animation: input-icon-email 1000ms ease-in reverse 750ms both, input-icon-moxie 250ms ease-in 500ms reverse both;
+//             }
+//             .name {
+//                 animation: input-icon-email 1000ms ease-in reverse 750ms both, input-icon-moxie 250ms ease-in 500ms reverse both;
+//             }
+//         }
+//         &.error {
+//             .success-1 {
+//                 animation: input-icon-success-1 250ms ease-out 250ms reverse both, input-icon-moxie-crimson 250ms ease-out 500ms both;
+//             }
+//             .success-2 {
+//                 animation: input-icon-success-2 500ms ease-out reverse both, input-icon-moxie-crimson 250ms ease-out 500ms both;
+//             }
+//             .error-1 {
+//                 animation: input-icon-error 350ms ease-out 500ms both, input-icon-moxie-crimson 250ms ease-out 500ms both;
+//             }
+//             .error-2 {
+//                 animation: input-icon-error 350ms ease-out 750ms both, input-icon-moxie-crimson 250ms ease-out 500ms both;
+//             }
+//             .email {
+//                 animation: input-icon-moxie-crimson 250ms ease-out 500ms both;
+//             }
+//             .name {
+//                 animation: input-icon-moxie-crimson 250ms ease-out 500ms both;
+//             }
+//         }
+//     }
+//     &.invalidated {
+//         .email {
+//             stroke: $crimson;
+//             stroke-dasharray: 365.6;
+//             stroke-dashoffset: -145.3;
+//             transform: rotate(-67.5deg);
+//         }
+//         .name {
+//             stroke: $crimson;
+//             stroke-dasharray: 365.6;
+//             stroke-dashoffset: -145.3;
+//             transform: rotate(-67.5deg);
+//         }
+//         .error-1, .error-2 {
+//             stroke: $crimson;
+//             stroke-dashoffset: 0;
+//             opacity: 1;
+//         }
+//         &.normal {
+//             .error-1 {
+//                 animation: input-icon-error 350ms ease-out 250ms reverse both, input-icon-crimson 250ms ease-out 500ms reverse both;
+//             }
+//             .error-2 {
+//                 animation: input-icon-error 350ms ease-out reverse both, input-icon-crimson 250ms ease-out 500ms reverse both;
+//             }
+//             .email {
+//                 animation: input-icon-email 1000ms ease-out 750ms reverse both, input-icon-crimson 250ms ease-out 500ms reverse both;
+//             }
+//             .name {
+//                 animation: input-icon-email 1000ms ease-out 750ms reverse both, input-icon-crimson 250ms ease-out 500ms reverse both;
+//             }
+//         }
+//         &.valid {
+//             .success-1 {
+//                 animation: input-icon-success-1 250ms ease-out 500ms both, input-icon-moxie-crimson 250ms ease-out 500ms reverse both;
+//             }
+//             .success-2 {
+//                 animation: input-icon-success-2 500ms ease-out 750ms both, input-icon-moxie-crimson 250ms ease-out 500ms reverse both;
+//             }
+//             .error-1 {
+//                 animation: input-icon-error 350ms ease-out 250ms reverse both, input-icon-moxie-crimson 250ms ease-out 500ms reverse both;
+//             }
+//             .error-2 {
+//                 animation: input-icon-error 350ms ease-out reverse both, input-icon-moxie-crimson 250ms ease-out 500ms reverse both;
+//             }
+//             .email {
+//                 animation: input-icon-moxie-crimson 250ms ease-out 500ms reverse both;
+//             }
+//             .name {
+//                 animation: input-icon-moxie-crimson 250ms ease-out 500ms reverse both;
+//             }
+//         }
+//     }
+// }
+//
+// @keyframes input-icon-crimson {
+//     0% { stroke: lighten($slate, 15%); }
+//     100% { stroke: $crimson; }
+// }
+//
+// @keyframes input-icon-moxie {
+//     0% { stroke: lighten($slate, 15%); }
+//     100% { stroke: $moxie; }
+// }
+//
+// @keyframes input-icon-moxie-crimson {
+//     0% { stroke: $moxie; }
+//     100% { stroke: $crimson; }
+// }
+//
+// @keyframes input-icon-error {
+//     0% { stroke-dashoffset: 39.6; opacity: 1; }
+//     100% { stroke-dashoffset: 0; opacity: 1; }
+// }
+//
+// @keyframes input-icon-email {
+//     0% { stroke-dasharray: 365.6; stroke-dashoffset: 0; transform: rotate(0deg); }
+//     50% { stroke-dasharray: 265.6; transform: rotate(0deg); }
+//     100% { stroke-dasharray: 365.6; stroke-dashoffset: -145.3; transform: rotate(-67.5deg); }
+// }
+//
+// @keyframes input-icon-success-1 {
+//     0% { stroke-dashoffset: 19.8; opacity: 0; }
+//     10% { opacity: 1; }
+//     100% { stroke-dashoffset: 0; opacity: 1; }
+// }
+//
+// @keyframes input-icon-success-2 {
+//     0% { stroke-dashoffset: 50.2; opacity: 0; }
+//     10% { opacity: 1; }
+//     90% { stroke-dashoffset: 0; }
+//     100% { stroke-dashoffset: 4; opacity: 1; }
+// }

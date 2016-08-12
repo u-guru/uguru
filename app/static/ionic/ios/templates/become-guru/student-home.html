@@ -1,0 +1,49 @@
+<ion-view hide-nav-bar="true" style="background-image:url(./img/student-background.png)">
+  
+
+    <ion-header-bar style="background-color:transparent; background-image:none; height:70px; z-index:12;" class="bar-header">
+      <div class="buttons" style="position:relative;">
+        <button ui-sref="^.wizard.list" class="button-clear" style="width:50px;">
+          <img src="img/left-chevron.png" class='uguru-back-button' style="top:8px;padding-right:20px;"/>
+        </button>
+      </div>
+      <h1 class="title white-header-text">uguru</h1>
+      <div class="buttons">
+        <button style="color:rgba(255,255,255,0.5); padding-left: 50px; padding-bottom:10px;"ng-click="showActionSheet()"class="button button-icon icon ion-more"></button>
+      </div>
+    </ion-header-bar>
+
+
+
+  <ion-content class="padding" scroll="false" style="position:absolute; top:44px; bottom:80px; height:auto">
+
+    <div class='row absolute-center'>
+          <div class="col col-offset-33 col-33" style="margin-top:20%">
+            <img src='./img/guru_splash_grey.png' class='inherit-width'>
+          </div>
+    </div>
+    
+    <div style="bottom:15%; position:absolute;"> 
+        <h1 class="center" style="font-size:2em; color:white;">Come Back Soon!</h1>
+        <p class="center grey-text" style="padding:5px 10% 0px 10%; z-index:-5">
+            We look forward to your next visit.
+            <br>
+            <br>
+            Have a question?<br> Contact support@uguru.me for a fast reply.
+        </p>
+    </div>
+
+  </ion-content> 
+
+
+  <ion-footer-bar style="height:auto; background-color:transparent !important; background-image:none;background-color: rgba(0,0,0,0.04); z-index:12;" class="padding">
+            
+      
+
+        <button class="button button-full button-positive footer-button" ng-show="user.university_id || user.guru_courses.length > 0 || user.majors.length > 0 || user.guru_introduction" ng-click="userLogout();">
+            Exit
+        </button>
+          
+    </ion-footer-bar>
+
+</ion-view>

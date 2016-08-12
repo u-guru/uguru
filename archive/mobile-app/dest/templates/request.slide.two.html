@@ -1,0 +1,72 @@
+<section id="request-cta-details" class="request-slide request-details" ng-controller="CoursesController"><header><h1>Describe a little more.</h1><h2>This is filler header content.</h2></header><div class="max-830"><div class="request-courses"><h1>Choose a Course</h1><ul class="request-course-list desktop p15-grid ugrid-3" ng-if="desktopMode"><li><div class="course-card"><svg width="240px" height="150px" viewBox="0 0 240 150"><rect x="0" y="0" width="240" height="150" fill="none"></rect></svg> <input type="radio" name="request-course-tile" checked="checked"><div class="course-card-inside"><h2 style="color: #003262">BIO 1A</h2><h1 style="color: #003262">Introduction to Biology</h1></div><div class="course-card-border" style="background: #003262"></div><span class="course-card-count"><span style="background: #003262"></span> <svg viewBox="0 0 100 100"><path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path></svg></span></div></li><li><div class="course-card"><svg width="240px" height="150px" viewBox="0 0 240 150"><rect x="0" y="0" width="240" height="150" fill="none"></rect></svg> <input type="radio" name="request-course-tile"><div class="course-card-inside"><h2 style="color: #003262">BIO 1A</h2><h1 style="color: #003262">Introduction to Biology</h1></div><div class="course-card-border" style="background: #003262"></div><span class="course-card-count"><span style="background: #003262"></span> <svg viewBox="0 0 100 100"><path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path></svg></span></div></li><li><div class="course-card"><svg width="240px" height="150px" viewBox="0 0 240 150"><rect x="0" y="0" width="240" height="150" fill="none"></rect></svg> <input type="radio" name="request-course-tile"><div class="course-card-inside"><h2 style="color: #003262">BIO 1A</h2><h1 style="color: #003262">Introduction to Biology</h1></div><div class="course-card-border" style="background: #003262"></div><span class="course-card-count"><span style="background: #003262"></span> <svg viewBox="0 0 100 100"><path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path></svg></span></div></li><li><div class="course-card"><svg width="240px" height="150px" viewBox="0 0 240 150"><rect x="0" y="0" width="240" height="150" fill="none"></rect></svg> <input type="radio" name="request-course-tile"><div class="course-card-inside"><h2 style="color: #003262">BIO 1A</h2><h1 style="color: #003262">Introduction to Biology</h1></div><div class="course-card-border" style="background: #003262"></div><span class="course-card-count"><span style="background: #003262"></span> <svg viewBox="0 0 100 100"><path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path></svg></span></div></li><li><div class="course-card"><svg width="240px" height="150px" viewBox="0 0 240 150"><rect x="0" y="0" width="240" height="150" fill="none"></rect></svg> <input type="radio" name="request-course-tile"><div class="course-card-inside"><h2 style="color: #003262">BIO 1A</h2><h1 style="color: #003262">Introduction to Biology</h1></div><div class="course-card-border" style="background: #003262"></div><span class="course-card-count"><span style="background: #003262"></span> <svg viewBox="0 0 100 100"><path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path></svg></span></div></li><li><a class="course-card"><svg width="240px" height="150px" viewBox="0 0 240 150"><rect x="0" y="0" width="240" height="150" fill="none"></rect></svg><div class="course-card-inside"><h1 style="color: #003262">+ Add One</h1></div><div class="course-card-hover" style="background: #003262"></div><div class="course-card-border" style="background: #003262"></div></a></li></ul><ul class="request-course-list mobile" ng-if="!desktopMode"><li class="course-item" ng-click="requestForm.course = course" ng-repeat="course in user.student_courses"><a>{{course.short_name}}</a></li><li class="course-item"><a>Bio 1A</a></li><li class="course-item"><a>Bio 1A</a></li><li class="course-item"><a>Bio 1A</a></li><li class="course-item"><a>Bio 1A</a></li><li class="course-item"><a>Bio 1A</a></li><li class="course-item"><a>Bio 1A</a></li><li class="course-item"><a>Bio 1A</a></li><li id="cta-box-request-courses" class="course-item"><a>+ Add One</a></li></ul></div><div class="request-desc"><h1>Description</h1><textarea rows="4" ng-maxlength="requestForm.description.maxLength" ng-blur="requestForm.description.showSaved($scope)" ng-model="requestForm.description.content" placeholder="{{requestForm.description.placeholder}}"></textarea></div><div class="request-tags"><h1>Tags</h1><div class="tag-list"><ul><li ng-repeat="tag in requestForm.tags.list"><a class="chip tag-selected" ng-click="requestForm.tags.remove($index)"><span>&times;&nbsp;&nbsp;</span> <span>{{tag.name}}</span></a></li><li><input tabindex="1" class="chip tag-add" ng-model="requestForm.tags.empty_tag.content" ng-blur="requestForm.tags.add()" ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && requestForm.tags.add()" placeholder="+ add a tag" size="{{requestForm.tags.empty_tag.content.length || 10}}"></li><!-- <tag desktop="desktopMode" inner-text="'tag'" type="base"> </tag> --><!-- <tag desktop="desktopMode" inner-text="" placeholder="+ add a tag" type="input"> </tag> --></ul><span class="error hide" ng-class="{'show': requestForm.tags.showError}">Tags must have more than 3 characters</span></div></div><div class="request-attachments"><h1>Attachments</h1><div><div class="attachment-container"><ul id="dz-preview-template" style="display: none"><li class="u-dz-attachment"><div class="img-container relative not"><div data-dz-uploadprogress class="not"></div><a data-dz-remove><svg viewBox="0 0 100 100" stroke="#FFFFFF" stroke-width="5"><path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path></svg> </a><img data-dz-thumbnail> <span class="u-dz-details details"><span class="u-file-name" data-dz-name></span> <span class="u-file-size" data-dz-size></span> <span class="u-file-error" data-dz-errormessage></span></span></div></li></ul><div class="attachment-list min-height"><span class="instructions">Drag up to 10mb of files here</span><ul id="request-form-file-uploader"></ul><progress class="bg-slate txt-shamrock round" max="10" value="10"></progress></div><span class="uploaded">{{requestForm.files.length || '0'}} files uploaded</span></div></div></div></div><button class="confirm">Next</button></section><!-- <section class="request-slide full-xy text-center flex-wrap-center" id='request-cta-details'>
+	<ion-pane id='cta-modal-request-courses' class='absolute high-z-index full-xy hide-display cta-modal bg-charcoal' ng-controller='CoursesController' ng-include="img_base + BASE + 'templates/student.courses.container.html'"></ion-pane>
+	<div class="course-choose-container" ng-show='requestForm.category && requestForm.category.name === "Academic"'>
+		<div>
+			<h1 class='full-x text-center uppercase weight-600'> Select one of your {{user.university.short_name}} courses  </h1>
+			<div class='full-x p20xy text-center'>
+				<ul class='desktop-card-list full-x flex-wrap-center'>
+					<li class='course-item p20xy m10x weight-400' ng-class='{"bg-cerise": requestForm.course.id === course.id, "bg-slate-50": request.course.id !== course.id}' ng-click='requestForm.course = course' ng-repeat='course in user.student_courses'>
+						{{course.short_name}}
+					</li>
+					<li class='course-item p20xy m10x bg-slate-50p weight-400' id='cta-box-request-courses'>
+						Add One
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class='text-area-container ugrid-3'>
+		<div>
+			<span class='hide text-right weight-700' ng-class='{"show": requestForm.description.saved }'>
+				<svg id="checkmark" class="loader" width="25px" height="25px" viewBox="0 0 100 100">
+				    <line fill='#40484B' stroke='#40484B' x1="39.71" x2="25" y1="67.65" y2="52.94"/>
+				    <line fill='#40484B' stroke='#40484B' x1="39.71" x2="75" y1="67.65" y2="32.35"/>
+				</svg>
+				saved
+			</span>
+			</div>
+		<div class='relative' style='min-height:150px;'>
+
+			<textarea class="full-xy absolute input-outline txt-charcoal" rows="4" ng-maxlength="requestForm.description.maxLength" ng-blur="requestForm.description.showSaved($scope)" ng-model='requestForm.description.content' placeholder="{{requestForm.description.placeholder}}"></textarea>
+
+			<small class='absolute weight-300 bottom-0 right-0 p05xy'>{{requestForm.description.maxLength - requestForm.description.content.length}}  characters remaining</small>
+		</div>
+	</div>
+	<div class='tags-container p15x p20y'>
+		<div class='tag-list full-x flex-wrap-center'>
+			<a class="chip tag-selected" ng-click='requestForm.tags.remove($index)' ng-repeat="tag in requestForm.tags.list">
+				<span>&times;&nbsp;&nbsp;</span>
+				<span>{{tag.name}}</span>
+			</a>
+			<input tabindex="1" class='chip tag-add' ng-model='requestForm.tags.empty_tag.content' ng-blur='requestForm.tags.add()' ng-keyup="($event.keyCode == 13 || $event.keyCode == 9) && requestForm.tags.add()" placeholder="{{requestForm.tags.empty_tag.placeholder}}" size="{{requestForm.tags.empty_tag.content.length || 10}}">
+			<span class='hide' ng-class="{'show': requestForm.tags.showError}">Tags must have more than 3 characters</span>
+		</div>
+	</div>
+	<div class='attachment-container ugrid-3 relative'>
+		<div>{{requestForm.files.length}} files uploaded </div>
+		<div class='file-attach-container relative'>
+			<div id="dz-preview-template" style="display: none;">
+				<div class="u-dz-attachment full-y p10xy">
+					<div class='img-container relative'>
+						  <div data-dz-uploadprogress class='bg-shamrock absolute high-z-index'> </div>
+						  	<a data-dz-remove class='absolute high-z-index top-0 right-0 close-button'>
+						  		<svg viewBox="0 0 100 100" stroke="#2B3234" stroke-width="5">
+									<path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+								</svg>
+							</a>
+						  <img data-dz-thumbnail class='full-x'/>
+					</div>
+				  <div class="u-dz-details">
+				    <div class='u-file-name weight-600' data-dz-name> </div>
+				    <small class='u-file-size weight-400' data-dz-size> </small>
+				    <div class='u-file-error' data-dz-errormessage> </div>
+				  </div>
+				</div>
+			</div>
+			<div id='request-form-file-uploader' style='max-height:180px; height:180px;' class='full-x flex-wrap-center bg-slate-50p ugrid'>
+				<small style='margin-bottom:-50px;' class='absolute txt-slate p20y uppercase weight-600 bottom-0 left-0 full-x weight-300'> Drag up to 10mb of files here </small>
+				<progress class="absolute left-0 bottom-0 shamrock" max="10" value="10"></progress>
+			</div>
+		</div>
+	</div>
+</section> -->
