@@ -1,0 +1,87 @@
+<ion-view view-title="Find A Guru">
+  <ion-nav-buttons side="secondary">
+      <button ng-click="submitSupport()" ng-disabled="!support.message" class="button button-clear button-positive">cancel</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="relative">
+      <ul class="list find-guru">
+        <li class="item no-border padding-10-14">
+          <div class="course padding-20-15">
+            <span class="name">BIO101</span>
+            <span class="gurus">70 GURUS AVAILABLE</span>
+          </div>
+        </li>
+        <li class="item no-border padding-10-16">
+          <div class="message">I prefer to meet my tutor...</div>
+        </li>
+        <li class="item no-border padding-0-9">
+          <div class="row">
+            <div class="col center">
+              <button ui-sref="^.sandbox2" ng-click="toggleVirtualGuru()" class="button ng-class:{'button-outline-half':!virtual_guru_checkbox, 'button-positive-half':virtual_guru_checkbox}">
+                <span class="absolute">in person</span>
+              </button>
+            </div>
+            <div class="col center">
+              <button ng-click="togglePersonGuru()" class="button ng-class:{'button-outline-half':!person_guru_checkbox, 'button-positive-half':person_guru_checkbox}">
+                <span class="absolute">online</span>
+              </button>
+            </div>
+          </div>
+        </li>
+        <li class="item no-border padding-10-16">
+          <div class="message">This session should last at least...</div>
+        </li>
+
+        <li>
+          <div class="row">
+            <div class="col col-25 relative">
+              <div ng-show="time_checkbox == 0" class="icon ion-checkmark-circled"></div>
+              <div ng-click="checkboxClicked(0)" class="icon ion-record"></div>
+            </div>
+            <div class="col col-25 relative">
+              <div ng-show="time_checkbox == 1" class="icon ion-checkmark-circled"></div>
+              <div ng-click="checkboxClicked(1)" class="icon ion-record"></div>
+            </div>
+            <div class="col col-25 relative">
+              <div ng-show="time_checkbox == 2" class="icon ion-checkmark-circled"></div>
+              <div ng-click="checkboxClicked(2)" class="icon ion-record"></div>
+            </div>
+            <div class="col col-25 relative">
+              <div ng-show="time_checkbox == 3" class="icon ion-checkmark-circled"></div>
+              <div ng-click="checkboxClicked(3)" class="icon ion-record"></div>
+            </div>
+          </div>
+        </li>
+
+        <hr class="hr-bar">
+
+        <li class="item no-border padding-0-9">
+          <div class="row padding-0">
+            <div class="col center"><span class="font-size-10">30 MINUTES</span></div>
+            <div class="col center"><span class="font-size-10">30 MINUTES</span></div>
+            <div class="col center"><span class="font-size-10">30 MINUTES</span></div>
+            <div class="col center"><span class="font-size-10">30 MINUTES</span></div>
+          </div>
+        </li>
+
+        <li class="item padding-20-15 border-top-bottom font-green">
+          <div class="message">Add a note or photo...</div>
+        </li>
+      </ul>
+
+<!-- make icon opposit direction -->
+
+      <div class="row bottom center absolute">
+        <div class="col">
+          <div class="font-size-16 gray-8"><span class="icon ion-navigate"></span>We'll meet at 198 Church St.</div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+  
+
+  <ion-footer-bar style="height: auto; background-color:#f2f2f2;" class="extra-padding-sides">
+    <button ui-sref="^.sandbox3" style="height:4em"class="button button-positive button-full button-outline"> Request Guru </button>
+  </ion-footer-bar>
+</ion-view>

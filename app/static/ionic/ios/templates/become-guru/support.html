@@ -1,0 +1,50 @@
+<!-- <ion-view view-title="Support">
+
+  <ion-content scroll="false">
+    <div class="list list-inset">
+        <label class="item item-input">
+            <form name="guruBioForm">
+              <input type="text" ng-model="support.message" placeholder="how can we help?" 
+              required
+              />
+            </form>
+        </label>
+    </div>
+
+  </ion-content> 
+</ion-view> -->
+<ion-view view-title="Support">
+    
+    <ion-nav-buttons side="secondary">
+        <button ng-click="submitSupport()" ng-disabled="!support.message" class="button button-clear button-positive">Submit</button>
+    </ion-nav-buttons>
+
+  <ion-content scroll="false" style="background-color: #363C3E !important">
+
+    <div class="list">
+      <div class="item bio-list-item" style="border:0px; border-top:1px solid rgba(255,255,255, 0.1); padding:10%; border-top: 1px solid rgba(255,255,255, 0.1); padding: 20% 10%;">
+        <p class="center" style="color:rgba(255, 255, 255, 0.8); line-height: 1.4em; font-size:100%"> 
+          <span ng-hide="support.message" style="white-space:normal;">
+            Ask or share anything. <br><br>We have a passionate team working around the clock accomodate any needs.
+          </span>
+          <span ng-show="support.message" style="color:rgba(255, 255, 255, 0.8); line-height: 1.4em; font-size:100%">
+            {{support.message}}
+          </span>
+      </div>
+
+
+
+    </div>
+
+  </ion-content> 
+
+    <ion-footer-bar class="bar-footer item-input-inset" style="z-index:30" keyboard-attach>
+        
+        <!-- <label class="item-input-wrapper"> -->
+
+            <input type="text" name="support" placeholder="How can we help?" ng-model="support.message"/>
+        <!-- </label> -->
+
+  </ion-footer-bar>
+
+</ion-view>

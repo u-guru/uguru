@@ -1,16 +1,13 @@
-
 <div class="perspective-container full-xy flex-center p15xy">
-	<!-- ttt:[p:(width) dur:250ms tf:(ease-out)]
-	ttt:[p:(opacity) dur:(1000ms,500) tf:(linear,ease) a:(bounceIn-subtle,ease)]|
--->
 	<fieldset class="search-bar"
 		init-with="p:[op:0, width:48px, t:width 250ms cubic-bezier(.6#0#.1#1.3)#opacity 250ms ease-out]"
-		on-init="p:[op:1]|s:[search-bar-init:public]|ttt:[p:(opacity) dur:1250ms tf:linear i:1]"
-		when-search-bar-clicked=""
-		on-click="s:[search-bar-clicked:public] | p:[width:500px] | ttt:[p:(width) dur:1250ms tf:linear i:1]"
-		on-exit="p:[op:0]|ttt:[p:(opacity) dur:1250ms tf:(cb(.6#0#.1#1.3)) i:1 a:bounceIn-subtle]">
+		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in] | s:[search-bar-init:public]"
+		when-search-bar-clicked="p:[width:500px]"
+		on-click="s:[search-bar-clicked:public]"
+		on-exit="p:[op:0]">
 		<div>
-			<label for="search-bar" on-init="p:[op:1, width:100px]">
+			<label for="search-bar"
+				init-default>
 				<svg viewBox="0 0 100 100">
 			        <path d="M62.994485,62.994485 L85.6624699,85.6624699"
 						init-with="p:[sda:32.06, sdo:32.06, t:stroke-dashoffset 200ms ease-out]"
