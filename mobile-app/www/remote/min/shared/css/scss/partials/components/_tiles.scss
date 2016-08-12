@@ -82,13 +82,21 @@
 			left: 0;
 		}
 		// transitions
-		// profile tile transitions
-		~ .pf-tile {
+		~ .pf-tile, ~ .pf-cardlet {
 			transition: all 500ms ease-out;
 			transform-style: preserve-3d;
 			.rating-stars {
 				transition: all 500ms ease-out;
 			}
+			* {
+				transform-style: preserve-3d;
+			}
+			.pf-cardlet-overlay {
+				transition: all 500ms ease-out;
+			}
+		}
+		// profile tile transitions
+		~ .pf-tile {
 			// profile tile transitions academic
 			&.bg-academic {
 				.pf-tile-border {
@@ -196,11 +204,6 @@
 		}
 		// profile cardlet transitions
 		~ .pf-cardlet {
-			transition: all 500ms ease-out;
-			transform-style: preserve-3d;
-			> * {
-				transform-style: preserve-3d;
-			}
 			.pf-cardlet-front, .pf-cardlet-back, .pf-cardlet-bottom, .pf-cardlet-ribbon, .pf-cardlet-ribbon-edge {
 				transition: all 500ms ease-out;
 			}
@@ -447,9 +450,41 @@
 			}
 			// profile cardlet hover
 			~ .pf-cardlet {
+				.pf-cardlet-overlay {
+					opacity: 0.2;
+				}
 				// profile cardlet hover academic
 				&.bg-academic {
-
+					.pf-cardlet-bottom {
+						top: 28px;
+						left: 43px;
+						width: calc(100% - 101px);
+						height: calc(100% - 71px);
+						// border: 2px solid white;
+						border-radius: 2px;
+						border-top-left-radius: 0;
+						> div:not(.deco) {
+							transform: rotate(-90deg);
+							position: absolute;
+							top: 45px;
+							left: -75px;
+							width: 120px;
+							height: 30px;
+							margin-top: 0;
+							> div {
+								background: mix($cerise, white, 15%);
+								color: $cerise;
+							}
+						}
+						.pf-cardlet-bg {
+							background: rgba($cerise, .2);
+						}
+						.pf-cardlet-border {
+							div:empty {
+								background: mix($cerise, white, 15%);
+							}
+						}
+					}
 				}
 				// profile cardlet hover baking
 				&.bg-baking {
@@ -507,6 +542,9 @@
 			}
 			// profile cardlet click
 			~ .pf-cardlet {
+				.pf-cardlet-overlay {
+					opacity: 0.4;
+				}
 				// profile cardlet click academic
 				&.bg-academic {
 
@@ -538,7 +576,7 @@
 					~ .pf-cardlet {
 						.pf-cardlet-front {
 							transform: translateZ(10px)!important;
-							div:empty {
+							div:empty:not(.pf-cardlet-overlay) {
 								transform: translateZ(10px)!important;
 							}
 						}
@@ -1390,6 +1428,16 @@
 		@include flex;
 		@include flex-wrap;
 		@include flex-center;
+		.pf-cardlet-overlay {
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: mix($lake, white, 70%);
+			border-radius: 2px;
+		}
 		&:after {
 			content: "";
 			display: block;
@@ -1489,7 +1537,6 @@
 			// border: 2px solid white;
 			border-radius: 2px;
 			border-top-left-radius: 0;
-			background: rgba($cerise, .1);
 			> div:not(.deco) {
 				transform: rotate(-90deg);
 				position: absolute;
@@ -1510,6 +1557,19 @@
 					border-top-right-radius: 2px;
 					transform-origin: right center;
 				}
+			}
+			.deco {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				margin-top: 0;
+			}
+			.pf-cardlet-bg {
+				border-radius: 2px;
+				border-top-left-radius: 0;
+				background: rgba($cerise, .1);
 			}
 			.pf-cardlet-border {
 				div:empty {

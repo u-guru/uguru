@@ -1,9 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy bg-slate">
 	<ul class="p15-grid flex">
-		<li
-			init-with="p-op"
-			on-init="t-enter"
-			on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]"
+		<li init-with="p-op"
+			on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]"
 			on-mouse-enter="send:[money-mouse-enter:public]"
 			on-mouse-leave="send:[money-mouse-leave:public]"
 			on-click="send:[money-click:public]">
@@ -37,10 +35,8 @@
 			</div>
 		</li>
 
-		<li
-			init-with="p-op"
-			on-init="t-enter"
-			on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-300]"
+		<li init-with="p-op"
+			on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-300]"
 			on-mouse-enter="send:[money-mouse-enter-3:public]"
 			on-mouse-leave="send:[money-mouse-leave-3:public]"
 			on-click="send:[money-click-3:public]">

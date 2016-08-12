@@ -1,8 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy bg-smoke" types='default, alert' default-type="default">
 	<div class="pricing-tile" ng-if='activeType === "default"'
 		init-with="p:[op:0, tro:center center]"
-		on-init="t-enter"
-		on-enter="a:[frame-enter:set:(dur:1000ms#func:linear):in]">
+		on-init="a:[frame-enter:set:(dur:1000ms#func:linear):in]">
 		<h3>Our Fees</h3>
 		<h2
 			init-with="p-op"
@@ -15,8 +14,7 @@
 	</div>
 	<div class="pricing-tile alert" ng-if='activeType === "alert"'
 		init-with="p:[op:0, tro:center center]"
-		on-init="t-enter"
-		on-enter="a:[frame-enter:set:(dur:1000ms#func:linear):in]">
+		on-init="a:[frame-enter:set:(dur:1000ms#func:linear):in]">
 		<h3>Our Fees</h3>
 		<h2	init-with="p-op"
 			on-init="a:[fadeInDown:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-500]">&le; 5%</h2>
