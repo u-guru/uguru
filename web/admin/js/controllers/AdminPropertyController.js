@@ -19,7 +19,9 @@ angular.module('uguru.admin')
 
     apc.property = [{name: 'opacity', start: 0.5, end: 1.0}];
     apc.activeIndex = 0;
+    apc.gPlayer = {play: playAll, pause: pauseAll, paused: false, element: null, resume: resumeAll};
     apc.playAll = playAll;
+    apc.pauseAll = pauseAll;
     apc.addProp = {searchText: '', propName: '', start: '', end: '', ease: '', duration: ''};
 
     //todo #1
@@ -39,12 +41,16 @@ angular.module('uguru.admin')
     function parsePropertiesAndPlay(properties, i_elem) {
       var transformProp = {start: '', end: '', ease: ''};
       properties.forEach(function(property, i) {
+
         var transformProperties = ['scale', 'translateX', 'translateY', 'scale', 'rotate', 'perspective'];
         if (transformProperties.indexOf(property.start.split('(')[0]) > -1) {
           transformProp.start += property.start + ' ';
           transformProp.end += property.end + ' ';
         }
         properties[i].element = i_elem;
+        if (i === 0 && properties[i].element) {
+          apc.gPlayer.element = i_elem;
+        }
 
         properties[i].animation = initAnimationWithEase(property, i);
 
@@ -226,14 +232,31 @@ angular.module('uguru.admin')
 
     }
 
+    function pauseAll() {
+      var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
+      apc.gPlayer.element.style['webkitAnimation'] = UtilitiesService.replaceAll(style, 'running', 'paused');
+      apc.gPlayer.pause = true;
+      apc.gPlayer.reset = true;
+    }
+
+    function resumeAll() {
+      var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
+      apc.gPlayer.element.style['webkitAnimation'] = UtilitiesService.replaceAll(style, 'paused', 'running');
+      apc.gPlayer.pause = false;
+    }
+
     function playAll(property_arr) {
+      if (apc.gPlayer.paused) {
+        apc.resumeAll();
+        return;
+      }
+
       if (apc.settings.showFPS) {
         apc.showFPS;
       }
       var animStr = ''
       var maxDuration = 0;
       var maxDurationProp = null;
-      console.log('longest animation');
       for (var i = 0; i < property_arr.length; i++) {
         if (property_arr[i].duration > maxDuration) {
           maxDuration = property_arr[i].duration;
@@ -244,9 +267,12 @@ angular.module('uguru.admin')
       for (var i = 0; i < property_arr.length; i++) {
         animStr += convertAnimPropObjToString(property_arr[i].animation);
         if (i === property_arr.length-1) {
+          var endCallback = function(e) {
+            apc.gPlayer.resume = false;
+          }
           maxDurationProp.animation.listeners = {
             start: getStartListener(maxDurationProp.element),
-            end: getEndListener(maxDurationProp.element)
+            end: getEndListener(maxDurationProp.element, endCallback)
           }
           property_arr[i].element.style['webkitAnimation'] =  animStr;
 

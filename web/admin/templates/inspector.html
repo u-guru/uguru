@@ -96,9 +96,10 @@
     </div>
     <div class='full-x overflow-auto' style='height:20%;'>
         <div class='flex-wrap-center'>
-            <span class='svg-48 p05xy stroke-white svg-stroke-6' ng-click='playAll()' ng-include='"shared/templates/components/svg/main/settings.html"'></span>
-            <span class='svg-48 p05xy stroke-white svg-stroke-6' ng-include='"shared/templates/components/svg/main/play.html"'></span>
-            <span class='svg-48 p05xy stroke-white svg-stroke-6' ng-include='"shared/templates/components/svg/main/pause.html"'></span>
+            <span class='svg-48 p05xy stroke-white svg-stroke-6' ng-click='apc.gPlayer.showSettings = !apc.gPlayer.showSettings' ng-include='"shared/templates/components/svg/main/settings.html"'></span>
+            <span class='svg-48 p05xy stroke-white svg-stroke-6' ng-class="{'opacity-20p': apc.gPlayer.pause}" ng-include='"shared/templates/components/svg/main/play.html"' ng-click='apc.playAll(apc.properties)'></span>
+            <span class='svg-48 p05xy stroke-white svg-stroke-6' ng-click='apc.pauseAll()' ng-include='"shared/templates/components/svg/main/pause.html"'></span>
+            <span class='svg-48 p05xy stroke-white svg-stroke-6' ng-class="{'opacity-20p': !apc.gPlayer.reset}" ng-click='apc.resetAll()' ng-include='"shared/templates/components/svg/main/sync.html"'></span>
         </div>
         <div class='full-x bg-slate p15-grid flex-wrap-center'>
             <ul class='full-x p15-grid flex-wrap-center'>
