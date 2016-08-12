@@ -1,3 +1,92 @@
+/* http://goo.gl/1z6FIQ */
+@keyframes baking-cardlet-hover {
+  0% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  2.1% {
+    transform: matrix3d(1.056, 0, 0, 0, 0, 1.056, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  4.1% {
+    transform: matrix3d(1.09, 0, 0, 0, 0, 1.09, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  8.21% {
+    transform: matrix3d(1.115, 0, 0, 0, 0, 1.115, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  11.41% {
+    transform: matrix3d(1.104, 0, 0, 0, 0, 1.104, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  14.51% {
+    transform: matrix3d(1.08, 0, 0, 0, 0, 1.08, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  20.72% {
+    transform: matrix3d(1.027, 0, 0, 0, 0, 1.027, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  27.03% {
+    transform: matrix3d(0.992, 0, 0, 0, 0, 0.992, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  33.23% {
+    transform: matrix3d(0.983, 0, 0, 0, 0, 0.983, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  45.75% {
+    transform: matrix3d(0.996, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  58.26% {
+    transform: matrix3d(1.003, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  83.28% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
+/* http://goo.gl/VDGQbK */
+@keyframes baking-cardlet-scaleX-enter {
+  0% {
+    transform: matrix3d(0.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 25, 0, 1);
+    opacity: 0; }
+  1% {
+    opacity: 1; }
+  2% {
+    transform: matrix3d(0.34, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 16.305, 0, 1); }
+  3.92% {
+    transform: matrix3d(0.495, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 10.675, 0, 1); }
+  4.7% {
+    transform: matrix3d(0.56, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 8.953, 0, 1); }
+  7.85% {
+    transform: matrix3d(0.804, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 4.306, 0, 1); }
+  9.41% {
+    transform: matrix3d(0.907, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2.947, 0, 1); }
+  11.77% {
+    transform: matrix3d(1.03, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1.623, 0, 1); }
+  14.11% {
+    transform: matrix3d(1.113, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.87, 0, 1); }
+  15.7% {
+    transform: matrix3d(1.147, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.557, 0, 1); }
+  18.72% {
+    transform: matrix3d(1.17, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.221, 0, 1); }
+  23.54% {
+    transform: matrix3d(1.131, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.033, 0, 1); }
+  24.32% {
+    transform: matrix3d(1.12, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.021, 0, 1); }
+  29.93% {
+    transform: matrix3d(1.038, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.009, 0, 1); }
+  31.31% {
+    transform: matrix3d(1.021, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.009, 0, 1); }
+  35.54% {
+    transform: matrix3d(0.984, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.007, 0, 1); }
+  41.04% {
+    transform: matrix3d(0.969, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.003, 0, 1); }
+  52.15% {
+    transform: matrix3d(0.993, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  63.26% {
+    transform: matrix3d(1.006, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  80% {
+    transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  85.49% {
+    transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; } }
+@keyframes projector-swing {
+  0% {
+    transform-origin: center top;
+    transform: rotateX(0) rotateY(0); }
+  50% {
+    transform-origin: left top;
+    transform: rotateX(-1deg) rotateY(1deg); }
+  75% {
+    transform-origin: right top;
+    transform: rotateX(-0.5deg) rotateY(-0.5deg); }
+  100% {
+    transform-origin: right top;
+    transform: rotateX(0) rotateY(0); } }
 @keyframes split-button {
   0% {
     transform: matrix3d(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
@@ -406,8 +495,6 @@
   0% {
     transform: matrix3d(1.3, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 0; }
-  1% {
-    opacity: 1; }
   2.6% {
     transform: matrix3d(1.197, 0, 0, 0, 0, 0.671, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   5.11% {
@@ -415,7 +502,8 @@
   7.61% {
     transform: matrix3d(1.067, 0, 0, 0, 0, 0.889, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   10.11% {
-    transform: matrix3d(1.031, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+    transform: matrix3d(1.031, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; }
   15.22% {
     transform: matrix3d(0.997, 0, 0, 0, 0, 1.006, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   20.22% {
@@ -1794,16 +1882,29 @@ fieldset.search-bar {
   -webkit-align-items: center;
   align-items: center;
   height: 48px; }
-  .number-input input {
-    border-radius: 2px;
-    background: #637074;
+  .number-input div {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
     width: 48px;
     height: 48px;
-    font-size: 28px;
-    font-weight: 900 !important;
-    text-align: center;
-    color: white; }
+    border-radius: 2px;
+    background: #637074; }
+    .number-input div input {
+      width: 100%;
+      height: 100%;
+      background: none;
+      border-radius: 2px;
+      font-size: 28px;
+      font-weight: 900 !important;
+      text-align: center;
+      color: white;
+      transition: all 150ms ease-out; }
+      .number-input div input:focus {
+        background: rgba(255, 255, 255, 0.2); }
   .number-input label {
+    position: relative;
+    z-index: 1;
     margin-left: 10px;
     font-size: 24px;
     font-weight: 600 !important; }
@@ -4936,116 +5037,198 @@ a.course-card:active .course-card-hover {
     .pf-tile-container a:nth-child(4) {
       bottom: 0;
       left: 0; }
-    .pf-tile-container a:hover ~ .bg-baking .pf-pricing, .pf-tile-container a:focus ~ .bg-baking .pf-pricing {
-      color: #F6C64E;
+    .pf-tile-container a ~ .pf-tile, .pf-tile-container a ~ .pf-cardlet {
+      transition: all 500ms ease-out;
+      transform-style: preserve-3d; }
+      .pf-tile-container a ~ .pf-tile .rating-stars, .pf-tile-container a ~ .pf-cardlet .rating-stars {
+        transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-tile *, .pf-tile-container a ~ .pf-cardlet * {
+        transform-style: preserve-3d; }
+      .pf-tile-container a ~ .pf-tile .pf-cardlet-overlay, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-overlay {
+        transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-border {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1 .border, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1 + div, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top .pf-pricing {
       transition: all 250ms ease-in-out; }
-      .pf-tile-container a:hover ~ .bg-baking .pf-pricing svg, .pf-tile-container a:focus ~ .bg-baking .pf-pricing svg {
+    .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-border div {
+      transition: all 250ms ease-out; }
+    .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-top {
+      transition: all 250ms ease-in-out; }
+    .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-bottom {
+      transform-style: preserve-3d; }
+    .pf-tile-container a ~ .pf-tile.bg-tech .pf-tile-top:after {
+      transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+    .pf-tile-container a ~ .pf-tile.bg-tech .pf-tile-bottom {
+      transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+      .pf-tile-container a ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
+        transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-tile.bg-household .bub-front-9 {
+      transition: all 800ms ease-out; }
+    .pf-tile-container a ~ .pf-tile.bg-household .pf-tile-desc {
+      transition: all 250ms ease-in-out; }
+    .pf-tile-container a ~ .pf-tile.bg-household .pf-tile-bottom div {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-cardlet .pf-cardlet-front, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-back, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-ribbon, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-ribbon-edge {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom h1 {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom > div:not(:empty) {
+      transition: transform 500ms ease-out; }
+      .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom > div:not(:empty) h2, .pf-tile-container a ~ .pf-cardlet .pf-cardlet-bottom > div:not(:empty) h3 {
+        transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .deco {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-cardlet.bg-baking .pf-cardlet-bottom .pf-cardlet-icon {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-cardlet.bg-photography .pf-cardlet-front div:empty {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-cardlet.bg-tech .pf-cardlet-bottom > div:empty {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-cardlet.bg-tech .pf-cardlet-bottom > div:not(:empty) div {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-cardlet.bg-household .pf-cardlet-front div:empty {
+      transition: all 500ms ease-out; }
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-pricing, .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-pricing {
+      color: #F6C64E; }
+      .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-pricing svg, .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-pricing svg {
         stroke: #F6C64E; }
-    .pf-tile-container a:hover ~ .bg-baking .pf-tile-top h1, .pf-tile-container a:focus ~ .bg-baking .pf-tile-top h1 {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-tile-top h1 {
       color: white; }
-      .pf-tile-container a:hover ~ .bg-baking .pf-tile-top h1 .border:nth-child(1), .pf-tile-container a:focus ~ .bg-baking .pf-tile-top h1 .border:nth-child(1) {
+      .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-tile-top h1 .border:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-tile-top h1 .border:nth-child(1) {
         transform: scaleY(17); }
-      .pf-tile-container a:hover ~ .bg-baking .pf-tile-top h1 .border:nth-child(2), .pf-tile-container a:focus ~ .bg-baking .pf-tile-top h1 .border:nth-child(2) {
+      .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-tile-top h1 .border:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-tile-top h1 .border:nth-child(2) {
         transform: scaleY(1); }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars li svg, .pf-tile-container a:hover ~ .bg-household .rating-stars li svg, .pf-tile-container a:focus ~ .bg-baking .rating-stars li svg, .pf-tile-container a:focus ~ .bg-household .rating-stars li svg {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars li svg, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars li svg, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars li svg, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars li svg {
       stroke: white !important; }
-      .pf-tile-container a:hover ~ .bg-baking .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:hover ~ .bg-household .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:focus ~ .bg-baking .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:focus ~ .bg-household .rating-stars li svg polygon:nth-child(2) {
+      .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars li svg polygon:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars li svg polygon:nth-child(2) {
         fill: white; }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="1"] li:nth-child(1) svg polygon {
       fill: white; }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="2"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="2"] li:nth-child(2) svg polygon {
       fill: white; }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="3"] li:nth-child(3) svg polygon {
       fill: white; }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
-    .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
-    .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
-    .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(1) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(2) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(3) svg polygon,
+    .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="4"] li:nth-child(4) svg polygon {
       fill: white; }
-    .pf-tile-container a:hover ~ .bg-baking .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:hover ~ .bg-household .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:focus ~ .bg-baking .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:focus ~ .bg-household .rating-stars[data-rating*="5"] li svg polygon {
+    .pf-tile-container a:hover ~ .pf-tile.bg-baking .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:hover ~ .pf-tile.bg-household .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-baking .rating-stars[data-rating*="5"] li svg polygon, .pf-tile-container a:focus ~ .pf-tile.bg-household .rating-stars[data-rating*="5"] li svg polygon {
       fill: white; }
-    .pf-tile-container a:hover ~ .bg-photography .pf-tile-border div, .pf-tile-container a:focus ~ .bg-photography .pf-tile-border div {
+    .pf-tile-container a:hover ~ .pf-tile.bg-photography .pf-tile-border div, .pf-tile-container a:focus ~ .pf-tile.bg-photography .pf-tile-border div {
       opacity: 1; }
-    .pf-tile-container a:hover ~ .bg-tech .pf-tile-top:after, .pf-tile-container a:focus ~ .bg-tech .pf-tile-top:after {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .pf-tile-top:after, .pf-tile-container a:focus ~ .pf-tile.bg-tech .pf-tile-top:after {
       opacity: 1; }
-    .pf-tile-container a:hover ~ .bg-tech .pf-tile-bottom, .pf-tile-container a:focus ~ .bg-tech .pf-tile-bottom {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .pf-tile-bottom, .pf-tile-container a:focus ~ .pf-tile.bg-tech .pf-tile-bottom {
       background: #55A4B7; }
-      .pf-tile-container a:hover ~ .bg-tech .pf-tile-bottom h1, .pf-tile-container a:focus ~ .bg-tech .pf-tile-bottom h1 {
+      .pf-tile-container a:hover ~ .pf-tile.bg-tech .pf-tile-bottom h1, .pf-tile-container a:focus ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
         color: white; }
-    .pf-tile-container a:hover ~ .bg-tech .border-corner span:nth-child(1), .pf-tile-container a:focus ~ .bg-tech .border-corner span:nth-child(1) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-corner span:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-corner span:nth-child(1) {
       transform: scaleY(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-corner span:nth-child(2), .pf-tile-container a:focus ~ .bg-tech .border-corner span:nth-child(2) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-corner span:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-corner span:nth-child(2) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(1), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(1) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(1) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(2), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(2) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(2) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(3), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(3) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(3), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(3) {
       transform: scaleY(0);
       transition: all 300ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(4), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(4) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(4), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(4) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(5), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(5) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(5), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(5) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a:hover ~ .bg-tech .border-outside span:nth-child(6), .pf-tile-container a:focus ~ .bg-tech .border-outside span:nth-child(6) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-outside span:nth-child(6), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-outside span:nth-child(6) {
       transform: scaleY(0);
       transition: all 300ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
-    .pf-tile-container a:hover ~ .bg-tech .border-top span:nth-child(1), .pf-tile-container a:focus ~ .bg-tech .border-top span:nth-child(1) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-top span:nth-child(1), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-top span:nth-child(1) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a:hover ~ .bg-tech .border-top span:nth-child(2), .pf-tile-container a:focus ~ .bg-tech .border-top span:nth-child(2) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-tech .border-top span:nth-child(2), .pf-tile-container a:focus ~ .pf-tile.bg-tech .border-top span:nth-child(2) {
       transform: scaleX(0);
       transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a:hover ~ .bg-household .pf-tile-desc, .pf-tile-container a:focus ~ .bg-household .pf-tile-desc {
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .pf-tile-desc, .pf-tile-container a:focus ~ .pf-tile.bg-household .pf-tile-desc {
       opacity: 1; }
-    .pf-tile-container a:hover ~ .bg-household .pf-tile-bottom h1, .pf-tile-container a:focus ~ .bg-household .pf-tile-bottom h1 {
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .pf-tile-bottom h1, .pf-tile-container a:focus ~ .pf-tile.bg-household .pf-tile-bottom h1 {
       color: white; }
-    .pf-tile-container a:hover ~ .bg-household .pf-tile-bottom div:not(.pf-pricing), .pf-tile-container a:focus ~ .bg-household .pf-tile-bottom div:not(.pf-pricing) {
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .pf-tile-bottom div:not(.pf-pricing), .pf-tile-container a:focus ~ .pf-tile.bg-household .pf-tile-bottom div:not(.pf-pricing) {
       transform: translate3d(10px, -10px, 0); }
-    .pf-tile-container a:hover ~ .bg-household .pf-tile-bottom .pf-pricing, .pf-tile-container a:focus ~ .bg-household .pf-tile-bottom .pf-pricing {
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing, .pf-tile-container a:focus ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing {
       transform: translate3d(-10px, -10px, 0);
       background: rgba(255, 255, 255, 0.2);
       color: white; }
-    .pf-tile-container a:hover ~ .bg-household .bub-front-9, .pf-tile-container a:focus ~ .bg-household .bub-front-9 {
+    .pf-tile-container a:hover ~ .pf-tile.bg-household .bub-front-9, .pf-tile-container a:focus ~ .pf-tile.bg-household .bub-front-9 {
       transform: scale(18); }
-    .pf-tile-container a:active ~ .bg-tech .pf-tile-top:after {
+    .pf-tile-container a:hover ~ .pf-cardlet .pf-cardlet-overlay, .pf-tile-container a:focus ~ .pf-cardlet .pf-cardlet-overlay {
+      opacity: 0.2; }
+    .pf-tile-container a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) > div, .pf-tile-container a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) > div {
+      background: #fbe1f0;
+      color: #e6389b; }
+    .pf-tile-container a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-bg, .pf-tile-container a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-bg {
+      background: rgba(230, 56, 155, 0.2); }
+    .pf-tile-container a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty, .pf-tile-container a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty {
+      background: #fbe1f0; }
+    .pf-tile-container a:hover ~ .pf-cardlet.bg-baking .pf-cardlet-front, .pf-tile-container a:focus ~ .pf-cardlet.bg-baking .pf-cardlet-front {
+      background: #fceeca; }
+    .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-top:after {
       background: rgba(75, 118, 129, 0.5);
       transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-    .pf-tile-container a:active ~ .bg-tech .pf-tile-bottom {
+    .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-bottom {
       background: #4b7681; }
-      .pf-tile-container a:active ~ .bg-tech .pf-tile-bottom h1 {
+      .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-bottom h1 {
         color: #55A4B7; }
+    .pf-tile-container a:active ~ .pf-cardlet * {
+      transition: all 250ms ease-in !important; }
+    .pf-tile-container a:active ~ .pf-cardlet .pf-cardlet-overlay {
+      opacity: 0.4; }
+    .pf-tile-container a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) > div {
+      background: #cd3a8f;
+      color: white; }
+    .pf-tile-container a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-bg {
+      background: rgba(255, 255, 255, 0.2); }
+    .pf-tile-container a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty {
+      background: #cd3a8f; }
+    .pf-tile-container a:active ~ .pf-cardlet.bg-baking .pf-cardlet-front {
+      background: #fadd95; }
+    .pf-tile-container a:active ~ .pf-cardlet.bg-baking .pf-cardlet-bottom * {
+      color: white; }
+    .pf-tile-container a:active ~ .pf-cardlet.bg-tech .pf-cardlet-bottom > div:empty {
+      background: white; }
+    .pf-tile-container a:active ~ .pf-cardlet.bg-tech .pf-cardlet-bottom > div:not(:empty) > div {
+      background: white; }
   @media screen and (min-width: 768px) {
     .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-front, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-front {
       transform: translateZ(10px) !important; }
-      .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-front div:empty, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-front div:empty {
+      .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-front div:empty:not(.pf-cardlet-overlay), .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-front div:empty:not(.pf-cardlet-overlay) {
         transform: translateZ(10px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-cardlet .pf-cardlet-ribbon-edge, .pf-tile-container:not(.mobile) a:focus ~ .pf-cardlet .pf-cardlet-ribbon-edge {
       transform: translateZ(10px) rotate(45deg) !important; }
@@ -5070,7 +5253,7 @@ a.course-card:active .course-card-hover {
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-border, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-border {
       transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
-      transform: translateZ(20px) !important !important; }
+      transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-bottom .rating-stars, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-bottom .rating-stars {
       transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-baking .pf-tile-top div, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-baking .pf-tile-top div {
@@ -5093,6 +5276,60 @@ a.course-card:active .course-card-hover {
       transform: translate3d(10px, -10px, 30px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing {
       transform: translate3d(-10px, -10px, 30px) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-front {
+      transform: translateZ(10px) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-front div:empty:not(.pf-cardlet-overlay) {
+        transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-ribbon-edge {
+      transform: translateZ(10px) rotate(45deg) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-ribbon {
+      transform: translateZ(20px) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-back {
+      transform: translateZ(-10px) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom {
+      transform: translateZ(20px) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom h1, .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom > div:not(.deco) {
+        transform: translateZ(0) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom .pf-cardlet-icon {
+        transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) {
+      transform: rotate(-90deg) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) h2 {
+        transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-photography .pf-cardlet-bottom {
+      transform: translateZ(10px) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-household .pf-cardlet-bottom div {
+      transform: none !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-household .pf-cardlet-bottom div h2 {
+        transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile * {
+      transition: all 250ms ease-in; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-border {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-bottom .rating-stars {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-baking .pf-tile-top div {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-border {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-bottom {
+      transform: translateZ(0) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-bottom h1, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-bottom .rating-stars {
+        transform: translateZ(0) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-bottom .pf-pricing div:empty, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-bottom .pf-pricing span {
+        transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .pf-tile-top:after, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .pf-tile-top .pf-pricing {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech h1, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .pf-tile-bottom, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .border-corner, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .border-outside, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .border-top, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .rating-stars {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-household .pf-tile-desc {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-household .pf-tile-bottom div:not(.pf-pricing) {
+      transform: translate3d(10px, -10px, 0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing {
+      transform: translate3d(-10px, -10px, 0) !important; }
     .pf-tile-container:not(.mobile) a:nth-child(1):hover ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(1):hover ~ .pf-cardlet, .pf-tile-container:not(.mobile) a:nth-child(1):focus ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(1):focus ~ .pf-cardlet {
       transform-origin: bottom right !important;
       transform: rotateX(5deg) rotateY(-5deg) !important; }
@@ -5120,8 +5357,6 @@ a.course-card:active .course-card-hover {
   display: block;
   width: 100%;
   max-width: 400px;
-  transition: all 500ms ease-out;
-  transform-style: preserve-3d;
   border-radius: 2px;
   height: 270px; }
   .pf-tile .pf-tile-top {
@@ -5222,13 +5457,11 @@ a.course-card:active .course-card-hover {
     .pf-tile .pf-tile-bottom .pf-review-count {
       font-size: 16px;
       font-weight: 600; }
-  .pf-tile .rating-stars {
-    transition: all 500ms ease-out; }
-    .pf-tile .rating-stars li {
-      padding: 0 !important; }
-      .pf-tile .rating-stars li svg {
-        width: 100%;
-        height: 100%; }
+  .pf-tile .rating-stars li {
+    padding: 0 !important; }
+    .pf-tile .rating-stars li svg {
+      width: 100%;
+      height: 100%; }
   .pf-tile.bg-academic {
     background: #637074;
     transform-origin: left top; }
@@ -5239,8 +5472,7 @@ a.course-card:active .course-card-hover {
       z-index: 10;
       width: calc(100% - 20px);
       height: calc(100% - 20px);
-      opacity: 0.5;
-      transition: all 500ms ease-out; }
+      opacity: 0.5; }
       .pf-tile.bg-academic .pf-tile-border div {
         border-radius: 1000px;
         position: absolute;
@@ -5279,8 +5511,7 @@ a.course-card:active .course-card-hover {
         border-top-left-radius: 2px;
         color: #e6389b;
         font-size: 16px;
-        font-weight: 700;
-        transition: all 500ms ease-out; }
+        font-weight: 700; }
         .pf-tile.bg-academic .pf-tile-top .pf-pricing:before {
           content: "";
           position: absolute;
@@ -5314,8 +5545,7 @@ a.course-card:active .course-card-hover {
         font-size: 28px;
         font-weight: 900;
         border-radius: 2px;
-        overflow: hidden;
-        transition: all 250ms ease-in-out; }
+        overflow: hidden; }
         .pf-tile.bg-baking .pf-tile-top h1 .rating-stars {
           position: relative;
           z-index: 3;
@@ -5330,8 +5560,7 @@ a.course-card:active .course-card-hover {
           width: 100%;
           height: 5px;
           background: #F6C64E;
-          transform-origin: center top;
-          transition: all 250ms ease-in-out; }
+          transform-origin: center top; }
           .pf-tile.bg-baking .pf-tile-top h1 .border + .border {
             background: white;
             transform: scaleY(0); }
@@ -5355,8 +5584,7 @@ a.course-card:active .course-card-hover {
           -webkit-justify-content: center;
           justify-content: center;
           margin-top: 15px;
-          width: 100%;
-          transition: all 250ms ease-in-out; }
+          width: 100%; }
       .pf-tile.bg-baking .pf-tile-top .pf-pricing {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -5418,7 +5646,6 @@ a.course-card:active .course-card-hover {
         width: 100%;
         height: 100%;
         background: rgba(113, 154, 95, 0.95);
-        transition: all 250ms ease-out;
         font-size: 18px;
         font-weight: 600;
         line-height: 1.2;
@@ -5428,17 +5655,13 @@ a.course-card:active .course-card-hover {
       border: 10px solid transparent;
       border-bottom-width: 0;
       height: 200px;
-      border-radius: 2px 2px 0 0;
-      transition: all 250ms ease-in-out; }
+      border-radius: 2px 2px 0 0; }
     .pf-tile.bg-photography .pf-tile-bottom {
       background: white;
       height: 70px;
-      color: #81B566;
-      transform-style: preserve-3d; }
-      .pf-tile.bg-photography .pf-tile-bottom .rating-stars {
-        transition: all 500ms ease-out; }
-        .pf-tile.bg-photography .pf-tile-bottom .rating-stars li svg {
-          height: auto; }
+      color: #81B566; }
+      .pf-tile.bg-photography .pf-tile-bottom .rating-stars li svg {
+        height: auto; }
       .pf-tile.bg-photography .pf-tile-bottom .pf-pricing {
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -5467,7 +5690,12 @@ a.course-card:active .course-card-hover {
         .pf-tile.bg-photography .pf-tile-bottom .pf-pricing span {
           transition: all 500ms ease-out; }
         .pf-tile.bg-photography .pf-tile-bottom .pf-pricing .pf-border {
-          opacity: 0.25; }
+          opacity: 0.25;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%; }
           .pf-tile.bg-photography .pf-tile-bottom .pf-pricing .pf-border div:empty {
             position: absolute;
             border-radius: 1000px;
@@ -5540,15 +5768,13 @@ a.course-card:active .course-card-hover {
         left: 0;
         width: 2px;
         height: 100%;
-        transform-origin: left top;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: left top; }
       .pf-tile.bg-tech .border-corner span:nth-child(2) {
         bottom: 0;
         left: 0;
         width: 100%;
         height: 2px;
-        transform-origin: right center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: right center; }
     .pf-tile.bg-tech .border-top {
       position: absolute;
       top: 0;
@@ -5561,16 +5787,14 @@ a.course-card:active .course-card-hover {
         left: 0;
         width: 50%;
         height: 2px;
-        transform-origin: left center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: left center; }
       .pf-tile.bg-tech .border-top span:nth-child(2) {
         border-radius: 0 1000px 1000px 0;
         top: 0;
         right: 0;
         width: 50%;
         height: 2px;
-        transform-origin: right center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: right center; }
     .pf-tile.bg-tech .border-outside {
       position: absolute;
       top: 0;
@@ -5583,46 +5807,40 @@ a.course-card:active .course-card-hover {
         left: 0;
         width: 50%;
         height: 2px;
-        transform-origin: right center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+        transform-origin: right center; }
       .pf-tile.bg-tech .border-outside span:nth-child(2) {
         border-radius: 0 1000px 1000px 0;
         top: 0;
         right: 0;
         width: 50%;
         height: 2px;
-        transform-origin: left center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+        transform-origin: left center; }
       .pf-tile.bg-tech .border-outside span:nth-child(3) {
         top: 0;
         right: 0;
         width: 2px;
         height: 100%;
-        transform-origin: center top;
-        transition: all 300ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
+        transform-origin: center top; }
       .pf-tile.bg-tech .border-outside span:nth-child(4) {
         border-radius: 1000px 0 0 1000px;
         bottom: 0;
         left: 0;
         width: 50%;
         height: 2px;
-        transform-origin: left center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: left center; }
       .pf-tile.bg-tech .border-outside span:nth-child(5) {
         border-radius: 0 1000px 1000px 0;
         bottom: 0;
         right: 0;
         width: 50%;
         height: 2px;
-        transform-origin: right center;
-        transition: all 500ms cubic-bezier(0, 0.66, 0.47, 1.09) 500ms; }
+        transform-origin: right center; }
       .pf-tile.bg-tech .border-outside span:nth-child(6) {
         bottom: 0;
         left: 0;
         width: 2px;
         height: 100%;
-        transform-origin: center top;
-        transition: all 300ms cubic-bezier(0, 0.66, 0.47, 1.09) 250ms; }
+        transform-origin: center top; }
     .pf-tile.bg-tech .pf-tile-top {
       background-color: #4b7681;
       overflow: visible;
@@ -5636,8 +5854,7 @@ a.course-card:active .course-card-hover {
         width: 100%;
         height: 100%;
         background: rgba(85, 164, 183, 0.5);
-        opacity: 0;
-        transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
+        opacity: 0; }
       .pf-tile.bg-tech .pf-tile-top .pf-pricing {
         position: absolute;
         top: 0;
@@ -5655,23 +5872,18 @@ a.course-card:active .course-card-hover {
     .pf-tile.bg-tech .pf-tile-bottom {
       height: 70px;
       background: #2B3234;
-      border: 0;
-      transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
-      .pf-tile.bg-tech .pf-tile-bottom .rating-stars {
-        transition: all 500ms ease-out; }
-        .pf-tile.bg-tech .pf-tile-bottom .rating-stars li svg {
-          height: auto; }
+      border: 0; }
+      .pf-tile.bg-tech .pf-tile-bottom .rating-stars li svg {
+        height: auto; }
       .pf-tile.bg-tech .pf-tile-bottom h1 {
-        color: #55A4B7;
-        transition: all 500ms ease-out; }
+        color: #55A4B7; }
   .pf-tile.bg-household {
     position: relative;
     padding-bottom: 70px;
     background: white;
     border-radius: 2px; }
     .pf-tile.bg-household .bub-front-9 {
-      transform-origin: center center;
-      transition: all 800ms ease-out; }
+      transform-origin: center center; }
     .pf-tile.bg-household .pf-tile-bg {
       display: flex;
       align-items: flex-end;
@@ -5685,7 +5897,6 @@ a.course-card:active .course-card-hover {
         width: 100%; }
     .pf-tile.bg-household .pf-tile-desc {
       opacity: 0;
-      transition: all 250ms ease-in-out;
       position: absolute;
       top: 0;
       left: 0;
@@ -5718,8 +5929,6 @@ a.course-card:active .course-card-hover {
       border-top: 0;
       height: 70px;
       padding: 15px 0 15px 5px; }
-      .pf-tile.bg-household .pf-tile-bottom div {
-        transition: all 500ms ease-out; }
       .pf-tile.bg-household .pf-tile-bottom h1 {
         color: #7872e3; }
       .pf-tile.bg-household .pf-tile-bottom .rating-stars {
@@ -5757,21 +5966,33 @@ a.course-card:active .course-card-hover {
   position: relative;
   width: 100%;
   max-width: 400px;
-  height: 270px;
-  transition: all 500ms ease-out;
-  transform-style: preserve-3d; }
-  .pf-cardlet > * {
-    transform-style: preserve-3d; }
+  height: 270px; }
+  .pf-cardlet .pf-cardlet-front-container, .pf-cardlet .pf-cardlet-back-container {
+    width: 100%;
+    height: 100%; }
+  .pf-cardlet .pf-cardlet-front-container, .pf-cardlet .pf-cardlet-front {
+    position: relative;
+    z-index: 2; }
+  .pf-cardlet .pf-cardlet-back-container, .pf-cardlet .pf-cardlet-back {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: 0; }
   .pf-cardlet .pf-cardlet-front, .pf-cardlet .pf-cardlet-back {
     width: calc(100% - 15px);
     height: calc(100% - 15px);
     border-radius: 2px;
     background-color: #637074;
     background-position: center center;
-    background-size: cover;
-    transition: all 500ms ease-out; }
+    background-size: cover; }
+  .pf-cardlet .pf-cardlet-bottom-container {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
   .pf-cardlet .pf-cardlet-bottom {
-    transition: all 500ms ease-out;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -5791,14 +6012,12 @@ a.course-card:active .course-card-hover {
     -webkit-justify-content: center;
     justify-content: center;
     position: absolute;
-    z-index: 4;
     top: 0;
     left: 0;
     width: calc(100% - 15px);
     height: calc(100% - 15px);
     padding: 15px; }
     .pf-cardlet .pf-cardlet-bottom h1 {
-      transition: all 500ms ease-out;
       width: 100%;
       font-size: 24px;
       font-weight: 700;
@@ -5808,17 +6027,14 @@ a.course-card:active .course-card-hover {
         .pf-cardlet .pf-cardlet-bottom h1 {
           font-size: 28px; } }
     .pf-cardlet .pf-cardlet-bottom > div:not(:empty) {
-      transition: all 500ms ease-out;
       margin-top: 5px;
       text-align: center;
       text-shadow: 0 0 20px rgba(99, 112, 116, 0.5); }
       .pf-cardlet .pf-cardlet-bottom > div:not(:empty) h2 {
-        transition: all 500ms ease-out;
         margin-top: 0;
         font-size: 16px;
         font-weight: 700; }
       .pf-cardlet .pf-cardlet-bottom > div:not(:empty) h3 {
-        transition: all 500ms ease-out;
         font-size: 14px;
         font-weight: 700;
         text-transform: uppercase; }
@@ -5840,9 +6056,16 @@ a.course-card:active .course-card-hover {
     -webkit-align-content: center;
     align-content: center;
     -webkit-justify-content: center;
-    justify-content: center;
-    position: relative;
-    z-index: 2; }
+    justify-content: center; }
+    .pf-cardlet .pf-cardlet-front .pf-cardlet-overlay {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #85c0e7;
+      border-radius: 2px; }
     .pf-cardlet .pf-cardlet-front:after {
       content: "";
       display: block;
@@ -5858,13 +6081,15 @@ a.course-card:active .course-card-hover {
       z-index: 4; }
   .pf-cardlet .pf-cardlet-back {
     filter: alpha(opacity=25);
-    opacity: 0.25;
+    opacity: 0.25; }
+  .pf-cardlet .pf-cardlet-ribbon-container {
     position: absolute;
-    z-index: 0;
-    bottom: 0;
-    right: 0; }
+    z-index: 10;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; }
   .pf-cardlet .pf-cardlet-ribbon {
-    transition: all 500ms ease-out;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -5911,8 +6136,14 @@ a.course-card:active .course-card-hover {
       border-left-width: 10px;
       border-right-width: 10px;
       border-left-color: transparent !important; }
+  .pf-cardlet .pf-cardlet-ribbon-edge-container {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; }
   .pf-cardlet .pf-cardlet-ribbon-edge {
-    transition: all 500ms ease-out;
     transform: rotate(45deg);
     position: absolute;
     z-index: 1;
@@ -5931,8 +6162,7 @@ a.course-card:active .course-card-hover {
     width: calc(100% - 101px);
     height: calc(100% - 71px);
     border-radius: 2px;
-    border-top-left-radius: 0;
-    background: rgba(230, 56, 155, 0.1); }
+    border-top-left-radius: 0; }
     .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) {
       transform: rotate(-90deg);
       position: absolute;
@@ -5964,7 +6194,18 @@ a.course-card:active .course-card-hover {
         color: #e6389b;
         border-top-left-radius: 2px;
         border-top-right-radius: 2px;
-        transform-origin: right center; }
+        transform-origin: right bottom; }
+    .pf-cardlet.bg-academic .pf-cardlet-bottom .deco {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin-top: 0; }
+    .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-bg {
+      border-radius: 2px;
+      border-top-left-radius: 0;
+      background: rgba(230, 56, 155, 0.1); }
     .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty {
       position: absolute;
       border-radius: 1000px;
@@ -5973,22 +6214,26 @@ a.course-card:active .course-card-hover {
         top: 0;
         left: 0;
         width: 100%;
-        height: 2px; }
+        height: 2px;
+        transform-origin: left center; }
       .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty:nth-child(2) {
         top: 0;
         right: 0;
         width: 2px;
-        height: 100%; }
+        height: 100%;
+        transform-origin: center bottom; }
       .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty:nth-child(3) {
         top: 0;
         left: 0;
         width: 2px;
-        height: 100%; }
+        height: 100%;
+        transform-origin: center top; }
       .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty:nth-child(4) {
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 2px; }
+        height: 2px;
+        transform-origin: right center; }
   .pf-cardlet.bg-academic .pf-cardlet-ribbon {
     background: #e6389b; }
     .pf-cardlet.bg-academic .pf-cardlet-ribbon:before {
@@ -6008,19 +6253,20 @@ a.course-card:active .course-card-hover {
     width: 100%;
     height: calc(100% - 30px);
     right: 0;
-    bottom: 15px; }
+    bottom: 15px;
+    transform-origin: center center; }
   .pf-cardlet.bg-baking .pf-cardlet-bottom {
     width: calc(100% - 60px);
     height: 100%;
     left: 30px; }
     .pf-cardlet.bg-baking .pf-cardlet-bottom .pf-cardlet-icon {
-      transition: all 500ms ease-out;
       border-radius: 1000px;
       margin: 0 0 5px;
       width: 96px;
       height: 96px;
       background-position: center center;
-      background-size: cover; }
+      background-size: cover;
+      transform-origin: center center; }
     .pf-cardlet.bg-baking .pf-cardlet-bottom h1, .pf-cardlet.bg-baking .pf-cardlet-bottom div {
       text-shadow: none !important;
       color: #F6C64E; }
@@ -6032,44 +6278,53 @@ a.course-card:active .course-card-hover {
   .pf-cardlet.bg-baking .pf-cardlet-ribbon-edge {
     right: 26px;
     border-color: #fbe3a7; }
+  .pf-cardlet.bg-photography .pf-cardlet-front-container {
+    height: 185px; }
   .pf-cardlet.bg-photography .pf-cardlet-front {
     height: 185px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; }
     .pf-cardlet.bg-photography .pf-cardlet-front:after {
       display: none; }
-    .pf-cardlet.bg-photography .pf-cardlet-front div:empty {
+    .pf-cardlet.bg-photography .pf-cardlet-front div:empty:not(.pf-cardlet-overlay) {
       position: absolute;
-      background: white;
-      transition: all 500ms ease-out; }
-      .pf-cardlet.bg-photography .pf-cardlet-front div:empty:nth-child(1) {
+      background: white; }
+      .pf-cardlet.bg-photography .pf-cardlet-front div:empty:not(.pf-cardlet-overlay):nth-child(1) {
         top: 0;
         left: 0;
         width: 100%;
         height: 10px;
         transform-origin: center center;
         border-radius: 3px; }
-      .pf-cardlet.bg-photography .pf-cardlet-front div:empty:nth-child(2) {
+      .pf-cardlet.bg-photography .pf-cardlet-front div:empty:not(.pf-cardlet-overlay):nth-child(2) {
         top: 0;
         right: 0;
         width: 10px;
         height: 102%;
         transform-origin: right center;
         border-radius: 3px 3px 0 0; }
-      .pf-cardlet.bg-photography .pf-cardlet-front div:empty:nth-child(3) {
+      .pf-cardlet.bg-photography .pf-cardlet-front div:empty:not(.pf-cardlet-overlay):nth-child(3) {
         top: 0;
         left: 0;
         width: 10px;
         height: 102%;
         transform-origin: left center;
         border-radius: 3px 3px 0 0; }
+    .pf-cardlet.bg-photography .pf-cardlet-front .pf-cardlet-overlay {
+      background: #94c07d; }
   .pf-cardlet.bg-photography .pf-cardlet-back {
     background: white; }
+  .pf-cardlet.bg-photography .pf-cardlet-bottom-container {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0;
+    height: 70px; }
   .pf-cardlet.bg-photography .pf-cardlet-bottom {
     justify-content: flex-start;
     position: relative;
     top: auto;
-    right: auto;
+    left: auto;
     margin: 0;
     height: 70px;
     background: white;
@@ -6117,6 +6372,8 @@ a.course-card:active .course-card-hover {
     left: 15px;
     width: calc(100% - 30px);
     height: calc(100% - 60px); }
+    .pf-cardlet.bg-tech .pf-cardlet-front .pf-cardlet-overlay {
+      background: #55A4B7; }
   .pf-cardlet.bg-tech .pf-cardlet-back {
     filter: alpha(opacity=100);
     opacity: 1;
@@ -6211,35 +6468,37 @@ a.course-card:active .course-card-hover {
   .pf-cardlet.bg-tech .pf-cardlet-ribbon-edge {
     top: 75px;
     border-color: #aad2db; }
-  .pf-cardlet.bg-household .pf-cardlet-front div:empty {
+  .pf-cardlet.bg-household .pf-cardlet-front div:empty:not(.pf-cardlet-overlay) {
     position: absolute;
     background: white;
-    transition: all 500ms ease-out;
     border-radius: 3px; }
-    .pf-cardlet.bg-household .pf-cardlet-front div:empty:nth-child(1) {
+    .pf-cardlet.bg-household .pf-cardlet-front div:empty:not(.pf-cardlet-overlay):nth-child(1) {
       top: 0;
       left: 0;
       width: 100%;
       height: 10px;
       transform-origin: center center; }
-    .pf-cardlet.bg-household .pf-cardlet-front div:empty:nth-child(2) {
+    .pf-cardlet.bg-household .pf-cardlet-front div:empty:not(.pf-cardlet-overlay):nth-child(2) {
       top: 0;
       right: 0;
       width: 10px;
       height: 100%;
       transform-origin: right center; }
-    .pf-cardlet.bg-household .pf-cardlet-front div:empty:nth-child(3) {
+    .pf-cardlet.bg-household .pf-cardlet-front div:empty:not(.pf-cardlet-overlay):nth-child(3) {
       top: 0;
       left: 0;
       width: 10px;
       height: 100%;
       transform-origin: left center; }
-    .pf-cardlet.bg-household .pf-cardlet-front div:empty:nth-child(4) {
+    .pf-cardlet.bg-household .pf-cardlet-front div:empty:not(.pf-cardlet-overlay):nth-child(4) {
       bottom: 0;
       left: 0;
       width: 100%;
       height: 10px;
       transform-origin: center center; }
+  .pf-cardlet.bg-household .pf-cardlet-front .pf-cardlet-overlay {
+    background: #9a95ea;
+    z-index: 2; }
   .pf-cardlet.bg-household .pf-cardlet-back {
     background: white; }
   .pf-cardlet.bg-household .pf-cardlet-bottom > div {
@@ -8509,7 +8768,8 @@ input.chip:hover {
   -webkit-align-content: center;
   align-content: center;
   -webkit-align-items: center;
-  align-items: center; }
+  align-items: center;
+  background: none !important; }
   .checkbox-container:not(.old) div {
     position: relative; }
     .checkbox-container:not(.old) div > span {
@@ -8519,34 +8779,39 @@ input.chip:hover {
       width: 32px;
       height: 32px;
       overflow: hidden; }
-      .checkbox-container:not(.old) div > span span {
-        position: absolute;
-        top: 50%;
-        margin-top: -5px;
-        left: 50%;
-        margin-left: -5px;
-        width: 10px;
-        height: 10px;
-        border-radius: 1000px;
-        background: #598881;
+    .checkbox-container:not(.old) div svg {
+      position: relative;
+      z-index: 10;
+      fill: none;
+      width: 100%;
+      height: 100%; }
+      .checkbox-container:not(.old) div svg circle {
+        fill: #69B3A5;
         transform-origin: center center;
-        transform: scale(0) translateZ(0); }
-      .checkbox-container:not(.old) div > span svg {
-        position: relative;
-        z-index: 10;
+        transform: scale(0) translateZ(0);
+        transition: transform 250ms cubic-bezier(0.8, 0.1, 1, 0.05); }
+      .checkbox-container:not(.old) div svg path, .checkbox-container:not(.old) div svg .check-under {
         fill: none;
-        width: 100%;
-        height: 100%; }
-        .checkbox-container:not(.old) div > span svg circle {
-          fill: #69B3A5;
-          transform-origin: center center;
-          transform: scale(0); }
-        .checkbox-container:not(.old) div > span svg path, .checkbox-container:not(.old) div > span svg polyline {
-          fill: none;
-          stroke: #6f7d82;
-          stroke-width: 2.5px;
-          stroke-linecap: round;
-          stroke-linejoin: round; }
+        stroke: #6f7d82;
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round; }
+      .checkbox-container:not(.old) div svg .check-under, .checkbox-container:not(.old) div svg .check-stroke {
+        stroke-dasharray: 24.8; }
+      .checkbox-container:not(.old) div svg .check-stroke {
+        fill: none;
+        stroke: white;
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dashoffset: 24.8;
+        transition: stroke-dashoffset 500ms ease-out; }
+      .checkbox-container:not(.old) div svg line {
+        fill: none;
+        stroke: #40484B;
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round; }
     .checkbox-container:not(.old) div input {
       filter: alpha(opacity=0);
       opacity: 0;
@@ -8557,15 +8822,79 @@ input.chip:hover {
       width: 100%;
       height: 100%;
       cursor: pointer; }
-      .checkbox-container:not(.old) div input:checked + span {
-        background: #69B3A5; }
-        .checkbox-container:not(.old) div input:checked + span svg path, .checkbox-container:not(.old) div input:checked + span svg polyline {
-          stroke: white; }
+      .checkbox-container:not(.old) div input:hover + span svg .check-under {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.5);
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round; }
+      .checkbox-container:not(.old) div input:active + span svg circle {
+        transform: scale(1) translateZ(0); }
+      .checkbox-container:not(.old) div input:checked + span svg circle {
+        transform: scale(1) translateZ(0); }
+      .checkbox-container:not(.old) div input:checked + span svg .check-stroke {
+        stroke-dashoffset: 0; }
+      .checkbox-container:not(.old) div input:checked:active + span svg circle {
+        fill-opacity: 0.75; }
+      .checkbox-container:not(.old) div input:checked:active + span svg .check-stroke {
+        stroke-opacity: 0.75; }
   .checkbox-container:not(.old) label {
     padding-left: 15px;
     color: white;
     font-size: 20px;
     font-weight: 600; }
+  .checkbox-container:not(.old).bg-shamrock div input + span svg circle {
+    fill: #69B3A5; }
+  .checkbox-container:not(.old).bg-shamrock div input:active + span svg circle {
+    fill: #63a398; }
+  .checkbox-container:not(.old).bg-robin div input + span svg circle {
+    fill: #2BB3B8; }
+  .checkbox-container:not(.old).bg-robin div input:active + span svg circle {
+    fill: #2ea3a8; }
+  .checkbox-container:not(.old).bg-lake div input + span svg circle {
+    fill: #50A5DD; }
+  .checkbox-container:not(.old).bg-lake div input:active + span svg circle {
+    fill: #4e97c7; }
+  .checkbox-container:not(.old).bg-moxie div input + span svg circle {
+    fill: #43cb9d; }
+  .checkbox-container:not(.old).bg-moxie div input:active + span svg circle {
+    fill: #43b791; }
+  .checkbox-container:not(.old).bg-crimson div input + span svg circle {
+    fill: #d3242c; }
+  .checkbox-container:not(.old).bg-crimson div input:active + span svg circle {
+    fill: #bd2931; }
+  .checkbox-container:not(.old).bg-auburn div input + span svg circle, .checkbox-container:not(.old).bg-deilvery div input + span svg circle {
+    fill: #F04F54; }
+  .checkbox-container:not(.old).bg-auburn div input:active + span svg circle, .checkbox-container:not(.old).bg-deilvery div input:active + span svg circle {
+    fill: #d64e53; }
+  .checkbox-container:not(.old).bg-orange div input + span svg circle, .checkbox-container:not(.old).bg-freelancing div input + span svg circle {
+    fill: #E5753C; }
+  .checkbox-container:not(.old).bg-orange div input:active + span svg circle, .checkbox-container:not(.old).bg-freelancing div input:active + span svg circle {
+    fill: #cc6e3e; }
+  .checkbox-container:not(.old).bg-gold div input + span svg circle, .checkbox-container:not(.old).bg-baking div input + span svg circle {
+    fill: #F6C64E; }
+  .checkbox-container:not(.old).bg-gold div input:active + span svg circle, .checkbox-container:not(.old).bg-baking div input:active + span svg circle {
+    fill: #dbb34e; }
+  .checkbox-container:not(.old).bg-moola div input + span svg circle, .checkbox-container:not(.old).bg-photography div input + span svg circle {
+    fill: #81B566; }
+  .checkbox-container:not(.old).bg-moola div input:active + span svg circle, .checkbox-container:not(.old).bg-photography div input:active + span svg circle {
+    fill: #77a562; }
+  .checkbox-container:not(.old).bg-azure div input + span svg circle, .checkbox-container:not(.old).bg-tech div input + span svg circle {
+    fill: #55A4B7; }
+  .checkbox-container:not(.old).bg-azure div input:active + span svg circle, .checkbox-container:not(.old).bg-tech div input:active + span svg circle {
+    fill: #5296a7; }
+  .checkbox-container:not(.old).bg-cobalt div input + span svg circle, .checkbox-container:not(.old).bg-household div input + span svg circle {
+    fill: #7872e3; }
+  .checkbox-container:not(.old).bg-cobalt div input:active + span svg circle, .checkbox-container:not(.old).bg-household div input:active + span svg circle {
+    fill: #706ccc; }
+  .checkbox-container:not(.old).bg-eggplant div input + span svg circle, .checkbox-container:not(.old).bg-athletic div input + span svg circle {
+    fill: #9A5BC5; }
+  .checkbox-container:not(.old).bg-eggplant div input:active + span svg circle, .checkbox-container:not(.old).bg-athletic div input:active + span svg circle {
+    fill: #8d58b3; }
+  .checkbox-container:not(.old).bg-cerise div input + span svg circle, .checkbox-container:not(.old).bg-academic div input + span svg circle {
+    fill: #e6389b; }
+  .checkbox-container:not(.old).bg-cerise div input:active + span svg circle, .checkbox-container:not(.old).bg-academic div input:active + span svg circle {
+    fill: #cd3a8f; }
 
 .radio-container:not(.old) {
   -ms-box-orient: horizontal;
@@ -8578,7 +8907,8 @@ input.chip:hover {
   -webkit-align-content: center;
   align-content: center;
   -webkit-align-items: center;
-  align-items: center; }
+  align-items: center;
+  background: none !important; }
   .radio-container:not(.old) div {
     position: relative; }
     .radio-container:not(.old) div span {
@@ -8587,31 +8917,27 @@ input.chip:hover {
       background: #40484B;
       width: 24px;
       height: 24px; }
-      .radio-container:not(.old) div span svg {
-        border-radius: 1000px;
-        display: block;
-        width: 100%;
-        height: 100%; }
-        .radio-container:not(.old) div span svg .border {
-          fill: none;
-          stroke: #40484B;
-          stroke-width: 2.5px;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-          transform-origin: center center;
-          transform: rotate(-90deg);
-          stroke-dasharray: 59.7;
-          stroke-dashoffset: 59.7;
-          opacity: 0; }
-        .radio-container:not(.old) div span svg .bg {
-          fill: #576267;
-          transform-origin: center center; }
-        .radio-container:not(.old) div span svg .check {
-          fill: #69B3A5;
-          transform-origin: center center;
-          transform: scale(0) translateZ(0); }
-        .radio-container:not(.old) div span svg path, .radio-container:not(.old) div span svg polyline {
-          display: none; }
+    .radio-container:not(.old) div svg {
+      border-radius: 1000px;
+      display: block;
+      width: 100%;
+      height: 100%; }
+      .radio-container:not(.old) div svg .border {
+        fill: none;
+        stroke: #40484B;
+        stroke-width: 2.5px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transform-origin: center center;
+        transform: rotate(-90deg); }
+      .radio-container:not(.old) div svg .bg {
+        fill: #576267;
+        transform-origin: center center; }
+      .radio-container:not(.old) div svg .check {
+        fill: #69B3A5;
+        transform-origin: center center;
+        transform: scale(0) translateZ(0);
+        transition: all 250ms cubic-bezier(0.8, 0.1, 1, 0.05); }
     .radio-container:not(.old) div input {
       opacity: 0;
       position: absolute;
@@ -8619,14 +8945,69 @@ input.chip:hover {
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%; }
-      .radio-container:not(.old) div input:checked + span svg .check {
+      height: 100%;
+      cursor: pointer; }
+      .radio-container:not(.old) div input:hover + span svg .bg {
+        fill: #637074; }
+      .radio-container:not(.old) div input:checked + span svg .check, .radio-container:not(.old) div input:active + span svg .check {
         transform: scale(1) translateZ(0); }
   .radio-container:not(.old) label {
     padding-left: 15px;
     color: white;
     font-size: 20px;
     font-weight: 600; }
+  .radio-container:not(.old).bg-shamrock div input + span svg .check {
+    fill: #69B3A5; }
+  .radio-container:not(.old).bg-shamrock div input:active + span svg .check {
+    fill: #63a398; }
+  .radio-container:not(.old).bg-robin div input + span svg .check {
+    fill: #2BB3B8; }
+  .radio-container:not(.old).bg-robin div input:active + span svg .check {
+    fill: #2ea3a8; }
+  .radio-container:not(.old).bg-lake div input + span svg .check {
+    fill: #50A5DD; }
+  .radio-container:not(.old).bg-lake div input:active + span svg .check {
+    fill: #4e97c7; }
+  .radio-container:not(.old).bg-moxie div input + span svg .check {
+    fill: #43cb9d; }
+  .radio-container:not(.old).bg-moxie div input:active + span svg .check {
+    fill: #43b791; }
+  .radio-container:not(.old).bg-crimson div input + span svg .check {
+    fill: #d3242c; }
+  .radio-container:not(.old).bg-crimson div input:active + span svg .check {
+    fill: #bd2931; }
+  .radio-container:not(.old).bg-auburn div input + span svg .check, .radio-container:not(.old).bg-deilvery div input + span svg .check {
+    fill: #F04F54; }
+  .radio-container:not(.old).bg-auburn div input:active + span svg .check, .radio-container:not(.old).bg-deilvery div input:active + span svg .check {
+    fill: #d64e53; }
+  .radio-container:not(.old).bg-orange div input + span svg .check, .radio-container:not(.old).bg-freelancing div input + span svg .check {
+    fill: #E5753C; }
+  .radio-container:not(.old).bg-orange div input:active + span svg .check, .radio-container:not(.old).bg-freelancing div input:active + span svg .check {
+    fill: #cc6e3e; }
+  .radio-container:not(.old).bg-gold div input + span svg .check, .radio-container:not(.old).bg-baking div input + span svg .check {
+    fill: #F6C64E; }
+  .radio-container:not(.old).bg-gold div input:active + span svg .check, .radio-container:not(.old).bg-baking div input:active + span svg .check {
+    fill: #dbb34e; }
+  .radio-container:not(.old).bg-moola div input + span svg .check, .radio-container:not(.old).bg-photography div input + span svg .check {
+    fill: #81B566; }
+  .radio-container:not(.old).bg-moola div input:active + span svg .check, .radio-container:not(.old).bg-photography div input:active + span svg .check {
+    fill: #77a562; }
+  .radio-container:not(.old).bg-azure div input + span svg .check, .radio-container:not(.old).bg-tech div input + span svg .check {
+    fill: #55A4B7; }
+  .radio-container:not(.old).bg-azure div input:active + span svg .check, .radio-container:not(.old).bg-tech div input:active + span svg .check {
+    fill: #5296a7; }
+  .radio-container:not(.old).bg-cobalt div input + span svg .check, .radio-container:not(.old).bg-household div input + span svg .check {
+    fill: #7872e3; }
+  .radio-container:not(.old).bg-cobalt div input:active + span svg .check, .radio-container:not(.old).bg-household div input:active + span svg .check {
+    fill: #706ccc; }
+  .radio-container:not(.old).bg-eggplant div input + span svg .check, .radio-container:not(.old).bg-athletic div input + span svg .check {
+    fill: #9A5BC5; }
+  .radio-container:not(.old).bg-eggplant div input:active + span svg .check, .radio-container:not(.old).bg-athletic div input:active + span svg .check {
+    fill: #8d58b3; }
+  .radio-container:not(.old).bg-cerise div input + span svg .check, .radio-container:not(.old).bg-academic div input + span svg .check {
+    fill: #e6389b; }
+  .radio-container:not(.old).bg-cerise div input:active + span svg .check, .radio-container:not(.old).bg-academic div input:active + span svg .check {
+    fill: #cd3a8f; }
 
 .toggle-container {
   -ms-box-orient: horizontal;
@@ -8661,7 +9042,6 @@ input.chip:hover {
     height: 100%;
     z-index: 5; }
   .toggle:not(.old) label {
-    transition: all 150ms ease-in-out;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -8678,150 +9058,160 @@ input.chip:hover {
     -webkit-justify-content: center;
     justify-content: center;
     position: relative;
-    background: #40484B;
-    padding: 5px;
     height: 36px;
     width: 72px;
-    border-radius: 2px;
     color: white;
     font-size: 18px;
-    font-weight: 600; }
+    font-weight: 600;
+    padding: 5px; }
+    .toggle:not(.old) label > div:empty {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #40484B;
+      border-radius: 2px; }
     .toggle:not(.old) label * {
       transition: all 150ms ease-in-out; }
     .toggle:not(.old) label span {
+      position: relative;
+      z-index: 2;
       padding: 0 5px; }
     .toggle:not(.old) label .square {
+      position: relative;
+      z-index: 2;
       display: block;
       height: 100%;
       border-radius: 2px;
       overflow: hidden; }
       .toggle:not(.old) label .square * {
         fill: none; }
-      .toggle:not(.old) label .square:first-child {
+      .toggle:not(.old) label .square:first-of-type {
         position: absolute;
         top: 5px;
         left: 5px;
         height: calc(100% - 10px); }
-        .toggle:not(.old) label .square:first-child * {
-          fill: white; }
-  .toggle:not(.old) input:checked + label {
+        .toggle:not(.old) label .square:first-of-type * {
+          fill: white;
+          stroke: white;
+          stroke-width: 2px;
+          stroke-linejoin: round;
+          stroke-linecap: round; }
+  .toggle:not(.old) input:checked + label > div:empty {
     background: #43cb9d; }
-    .toggle:not(.old) input:checked + label span {
-      transform: translateX(-26px); }
-    .toggle:not(.old) input:checked + label .square:first-child {
-      transform: translateX(36px); }
-  .toggle:not(.old).normal label > div, .toggle:not(.old).am-pm label > div {
+  .toggle:not(.old) input:checked + label span {
+    transform: translateX(-26px); }
+  .toggle:not(.old) input:checked + label .square:first-of-type {
+    transform: translateX(36px); }
+  .toggle:not(.old).normal label > div:not(:empty), .toggle:not(.old).am-pm label > div:not(:empty) {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; }
-    .toggle:not(.old).normal label > div div, .toggle:not(.old).am-pm label > div div {
+    .toggle:not(.old).normal label > div:not(:empty) div, .toggle:not(.old).am-pm label > div:not(:empty) div {
       position: absolute;
       border-radius: 1000px; }
-      .toggle:not(.old).normal label > div div:nth-child(1), .toggle:not(.old).am-pm label > div div:nth-child(1) {
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(1), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(1) {
         top: 0;
         left: 0;
-        width: 100%;
-        height: 2px;
-        transform-origin: right center; }
-      .toggle:not(.old).normal label > div div:nth-child(2), .toggle:not(.old).am-pm label > div div:nth-child(2) {
-        top: 0;
-        right: 0;
-        width: 2px;
-        height: 100%;
-        transform-origin: center bottom; }
-      .toggle:not(.old).normal label > div div:nth-child(3), .toggle:not(.old).am-pm label > div div:nth-child(3) {
-        bottom: 0;
-        right: 0;
         width: 100%;
         height: 2px;
         transform-origin: left center; }
-      .toggle:not(.old).normal label > div div:nth-child(4), .toggle:not(.old).am-pm label > div div:nth-child(4) {
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(2), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(2) {
+        top: 0;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        transform-origin: center top; }
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(3), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: right center; }
+      .toggle:not(.old).normal label > div:not(:empty) div:nth-child(4), .toggle:not(.old).am-pm label > div:not(:empty) div:nth-child(4) {
         bottom: 0;
         left: 0;
         width: 2px;
         height: 100%;
-        transform-origin: center top; }
-  .toggle:not(.old).normal label .square:first-child rect, .toggle:not(.old).am-pm label .square:first-child rect {
-    stroke: white;
-    stroke-width: 2px;
-    stroke-linejoin: round;
-    stroke-linecap: round; }
-  .toggle:not(.old).normal > div div {
+        transform-origin: center bottom; }
+  .toggle:not(.old).normal > div:not(:empty) div {
     background: #43cb9d; }
-  .toggle:not(.old).am-pm input + label {
+  .toggle:not(.old).am-pm input + label > div:empty {
     background: #456477; }
-    .toggle:not(.old).am-pm input + label > div div {
-      background: #456477; }
-    .toggle:not(.old).am-pm input + label > span {
+  .toggle:not(.old).am-pm input + label > div:not(:empty) div {
+    background: #456477; }
+  .toggle:not(.old).am-pm input + label > span {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 50%;
+    padding: 0;
+    text-align: center; }
+    .toggle:not(.old).am-pm input + label > span > span {
+      transform: translate(0) !important;
+      position: absolute;
       display: block;
-      position: relative;
+      left: 0;
+      width: 100%;
       height: 100%;
-      width: 50%;
-      padding: 0;
-      text-align: center; }
-      .toggle:not(.old).am-pm input + label > span > span {
-        transform: translate(0) !important;
-        position: absolute;
-        display: block;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        padding: 0; }
-    .toggle:not(.old).am-pm input + label .am {
-      opacity: 0; }
-    .toggle:not(.old).am-pm input + label .pm {
-      opacity: 1; }
-  .toggle:not(.old).am-pm input:checked + label {
+      text-align: center;
+      padding: 0; }
+  .toggle:not(.old).am-pm input + label .am {
+    opacity: 0; }
+  .toggle:not(.old).am-pm input + label .pm {
+    opacity: 1; }
+  .toggle:not(.old).am-pm input:checked + label div:empty {
     background: #F6C64E; }
-    .toggle:not(.old).am-pm input:checked + label .am {
-      opacity: 1; }
-    .toggle:not(.old).am-pm input:checked + label .pm {
-      opacity: 0; }
-  .toggle:not(.old).white-round label {
+  .toggle:not(.old).am-pm input:checked + label .am {
+    opacity: 1; }
+  .toggle:not(.old).am-pm input:checked + label .pm {
+    opacity: 0; }
+  .toggle:not(.old).white-round label div:empty {
     border-radius: 1000px;
     background: rgba(255, 255, 255, 0.5); }
-    .toggle:not(.old).white-round label .square {
-      border-radius: 1000px; }
-      .toggle:not(.old).white-round label .square:first-child {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%; }
-        .toggle:not(.old).white-round label .square:first-child * {
-          fill: white; }
-    .toggle:not(.old).white-round label .bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%; }
-      .toggle:not(.old).white-round label .bg rect {
-        fill: none;
-        stroke: white;
-        stroke-width: 2px;
-        stroke-linecap: round;
-        stroke-linejoin: round; }
-  .toggle:not(.old).white-round input:checked + label {
-    background: rgba(255, 255, 255, 0.5); }
-  .toggle:not(.old).round label {
+  .toggle:not(.old).white-round label .square {
     border-radius: 1000px; }
-    .toggle:not(.old).round label .square {
-      border-radius: 1000px; }
-    .toggle:not(.old).round label .bg {
+    .toggle:not(.old).white-round label .square:first-child {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
       height: 100%; }
-      .toggle:not(.old).round label .bg rect {
-        fill: none;
-        stroke: white;
-        stroke-width: 2px;
-        stroke-linecap: round;
-        stroke-linejoin: round; }
+      .toggle:not(.old).white-round label .square:first-child * {
+        fill: white; }
+  .toggle:not(.old).white-round label .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .toggle:not(.old).white-round label .bg rect {
+      fill: none;
+      stroke: white;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
+  .toggle:not(.old).white-round input:checked + label div:empty {
+    background: rgba(255, 255, 255, 0.5); }
+  .toggle:not(.old).round label div:empty {
+    border-radius: 1000px; }
+  .toggle:not(.old).round label .square {
+    border-radius: 1000px; }
+  .toggle:not(.old).round label .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .toggle:not(.old).round label .bg rect {
+      fill: none;
+      stroke: #43cb9d;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round; }
 
 /* ---------- CHECKBOXES & RADIO [deprecate] */
 .checkbox-container.old, .radio-container.old {
@@ -13850,19 +14240,34 @@ input[type=range] {
       background: #eaeced;
       border-radius: 2px;
       overflow: hidden; }
-      .body-text .body-text-loader > span:nth-child(1) {
-        width: 70%; }
-      .body-text .body-text-loader > span:nth-child(2) {
-        width: 95%; }
-      .body-text .body-text-loader > span:nth-child(3) {
-        width: 85%; }
       .body-text .body-text-loader > span span {
+        transform-origin: left center;
         display: block;
-        width: 10px;
+        width: 100%;
         height: 100%;
         background: #dce0e1; }
   .body-text[number="3"] .body-text-loader span:nth-child(4), .body-text[number="3"] .body-text-loader span:nth-child(5), .body-text[number="3"] .body-text-loader span:nth-child(6), .body-text[number="3"] .body-text-loader span:nth-child(7), .body-text[number="3"] .body-text-loader span:nth-child(8), .body-text[number="3"] .body-text-loader span:nth-child(9), .body-text[number="3"] .body-text-loader span:nth-child(10) {
     display: none; }
+  .body-text[number="4"] .body-text-loader span:nth-child(5), .body-text[number="4"] .body-text-loader span:nth-child(6), .body-text[number="4"] .body-text-loader span:nth-child(7), .body-text[number="4"] .body-text-loader span:nth-child(8), .body-text[number="4"] .body-text-loader span:nth-child(9), .body-text[number="4"] .body-text-loader span:nth-child(10) {
+    display: none; }
+  .body-text[number="5"] .body-text-loader span:nth-child(6), .body-text[number="5"] .body-text-loader span:nth-child(7), .body-text[number="5"] .body-text-loader span:nth-child(8), .body-text[number="5"] .body-text-loader span:nth-child(9), .body-text[number="5"] .body-text-loader span:nth-child(10) {
+    display: none; }
+  .body-text[number="6"] .body-text-loader span:nth-child(7), .body-text[number="6"] .body-text-loader span:nth-child(8), .body-text[number="6"] .body-text-loader span:nth-child(9), .body-text[number="6"] .body-text-loader span:nth-child(10) {
+    display: none; }
+  .body-text[number="7"] .body-text-loader span:nth-child(8), .body-text[number="7"] .body-text-loader span:nth-child(9), .body-text[number="7"] .body-text-loader span:nth-child(10) {
+    display: none; }
+  .body-text[number="8"] .body-text-loader span:nth-child(9), .body-text[number="8"] .body-text-loader span:nth-child(10) {
+    display: none; }
+  .body-text[number="9"] .body-text-loader span:nth-child(10) {
+    display: none; }
+  .body-text.short > span {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; }
 
 .header-text h1 {
   margin: 0;
@@ -13871,7 +14276,8 @@ input[type=range] {
   display: flex;
   flex-flow: row wrap; }
   .header-text h1 span {
-    display: block; }
+    display: block;
+    transform-origin: center top; }
 
 .guru-head {
   position: relative; }
