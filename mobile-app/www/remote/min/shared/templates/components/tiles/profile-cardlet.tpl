@@ -207,17 +207,13 @@
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[baking-cardlet-init:public]"
 		when-baking-cardlet-init="p:[op:1, tr:none]"
-		when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
-		<a on-mouse-enter="s:[baking-cardlet-hover:public]"
-			on-mouse-leave="s:[baking-cardlet-leave:public]"></a>
-		<a on-mouse-enter="s:[baking-cardlet-hover:public]"
-			on-mouse-leave="s:[baking-cardlet-leave:public]"></a>
-		<a on-mouse-enter="s:[baking-cardlet-hover:public]"
-			on-mouse-leave="s:[baking-cardlet-leave:public]"></a>
-		<a on-mouse-enter="s:[baking-cardlet-hover:public]"
-			on-mouse-leave="s:[baking-cardlet-leave:public]"></a>
+		when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
+		on-mouse-enter="s:[baking-cardlet-hover:public]"
+		on-mouse-leave="s:[baking-cardlet-leave:public]">
+		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-baking">
 			<div class="pf-cardlet-front-container"
+				init-default
 				when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
 				<div class="pf-cardlet-front"></div>
 			</div>
