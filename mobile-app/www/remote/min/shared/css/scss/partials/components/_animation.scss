@@ -1,5 +1,40 @@
 @import '../mixin';
 
+
+
+.animation-target {
+  animation: animation 1000ms linear both;
+}
+
+/* Generated with Bounce.js. Edit at http://goo.gl/VDGQbK */
+
+@keyframes bakeX-enter {
+  0% { transform: matrix3d(0.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 25, 0, 1); opacity:0;}
+  1% {opacity:1;}
+  2% { transform: matrix3d(0.34, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 16.305, 0, 1); }
+  3.92% { transform: matrix3d(0.495, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 10.675, 0, 1); }
+  4.7% { transform: matrix3d(0.56, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 8.953, 0, 1); }
+  7.85% { transform: matrix3d(0.804, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 4.306, 0, 1); }
+  9.41% { transform: matrix3d(0.907, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2.947, 0, 1); }
+  11.77% { transform: matrix3d(1.03, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1.623, 0, 1); }
+  14.11% { transform: matrix3d(1.113, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.87, 0, 1); }
+  15.7% { transform: matrix3d(1.147, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.557, 0, 1); }
+  18.72% { transform: matrix3d(1.17, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.221, 0, 1); }
+  23.54% { transform: matrix3d(1.131, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.033, 0, 1); }
+  24.32% { transform: matrix3d(1.12, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0.021, 0, 1); }
+  29.93% { transform: matrix3d(1.038, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.009, 0, 1); }
+  31.31% { transform: matrix3d(1.021, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.009, 0, 1); }
+  35.54% { transform: matrix3d(0.984, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.007, 0, 1); }
+  41.04% { transform: matrix3d(0.969, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.003, 0, 1); }
+  52.15% { transform: matrix3d(0.993, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  63.26% { transform: matrix3d(1.006, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  80% { transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  85.49% { transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity:1;}
+}
+
+
+
 @keyframes projector-swing {
 	0% {
 		transform-origin: center top;

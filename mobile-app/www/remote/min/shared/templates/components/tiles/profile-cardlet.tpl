@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-mobile">
+<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="baking-desktop">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -214,25 +214,37 @@
 				<div class="pf-cardlet-front"></div>
 			</div>
 			<div class="pf-cardlet-back-container">
-				<div class="pf-cardlet-back" style="background: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
+				<div class="pf-cardlet-back" style="background: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
+					init-with="p-op"
+					when-baking-cardlet-init="a:[bakeX-enter:set:(dur:2000ms#func:linear):in:delay-600]"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
-					<h1>Four-Star Strawberry Cake on a Budget</h1>
+					<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
+						init-with="p-op"
+						when-baking-cardlet-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-300]"></div>
+					<h1
+						init-with="p-op"
+						when-baking-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">Four-Star Strawberry Cake on a Budget</h1>
 					<div>
-						<h2>03/28/2016</h2>
+						<h2
+							init-with="p-op"
+							when-baking-cardlet-init="a:[fadeIn:set:(dur:850ms#func:ease-out):in:delay-450]">03/28/2016</h2>
 					</div>
 				</div>
 			</div>
-			<div class="pf-cardlet-ribbon-container">
+			<div class="pf-cardlet-ribbon-container"
+				init-with="p:[op:0, tr:translateX(10px), t:all 250ms ease-out]"
+				on-init="p:[op:1:delay-500, tr:translateX(0):delay-500]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
 					</svg>
 				</div>
 			</div>
-			<div class="pf-cardlet-ribbon-edge-container">
+			<div class="pf-cardlet-ribbon-edge-container"
+				init-with="p:[op:0]"
+				on-init="a:[fadeInLeft:set:(dur:250ms#func:ease-in):in:delay-600]">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
 		</div>
