@@ -683,6 +683,128 @@
 						}
 					}
 				}
+				&:active {
+					~ .pf-cardlet {
+						* {
+							transition: all 250ms ease-in;
+						}
+						.pf-cardlet-front {
+							transform: translateZ(10px)!important;
+							div:empty:not(.pf-cardlet-overlay) {
+								transform: translateZ(0)!important;
+							}
+						}
+						.pf-cardlet-ribbon-edge {
+							transform: translateZ(10px) rotate(45deg)!important;
+						}
+						.pf-cardlet-ribbon {
+							transform: translateZ(20px)!important;
+						}
+						.pf-cardlet-back {
+							transform: translateZ(-10px)!important;
+						}
+						.pf-cardlet-bottom {
+							transform: translateZ(20px)!important;
+							h1, > div:not(.deco) {
+								transform: translateZ(0)!important;
+							}
+							.pf-cardlet-icon {
+								transform: translateZ(0)!important;
+							}
+						}
+						&.bg-academic {
+							.pf-cardlet-bottom {
+								> div:not(.deco) {
+									transform: rotate(-90deg)!important;
+									h2 {
+										transform: translateZ(0)!important;
+									}
+								}
+							}
+						}
+						&.bg-photography {
+							.pf-cardlet-bottom {
+								transform: translateZ(10px)!important;
+							}
+						}
+						&.bg-household {
+							.pf-cardlet-bottom {
+								div {
+									transform: none!important;
+									h2 {
+										transform: translateZ(0)!important;
+									}
+								}
+							}
+						}
+					}
+					~ .pf-tile {
+						* {
+							transition: all 250ms ease-in;
+						}
+						&.bg-academic {
+							.pf-tile-border {
+								transform: translateZ(0)!important;
+							}
+							.pf-tile-top {
+								.pf-tile-icon, h1, h2 , .pf-pricing {
+									transform: translateZ(0)!important;
+								}
+							}
+							.pf-tile-bottom {
+								.rating-stars {
+									transform: translateZ(0)!important;
+								}
+							}
+						}
+						&.bg-baking {
+							.pf-tile-top {
+								h1, div {
+									transform: translateZ(0)!important;
+								}
+							}
+						}
+						&.bg-photography {
+							.pf-tile-border {
+								transform: translateZ(0)!important;
+							}
+							.pf-tile-bottom {
+								transform: translateZ(0)!important;
+								h1, .rating-stars {
+									transform: translateZ(0)!important;
+								}
+								.pf-pricing {
+									div:empty, span {
+										transform: translateZ(0)!important;
+									}
+								}
+							}
+						}
+						&.bg-tech {
+							.pf-tile-top {
+								&:after, .pf-pricing {
+									transform: translateZ(0)!important;
+								}
+							}
+							h1, .pf-tile-bottom, .border-corner, .border-outside, .border-top, .rating-stars {
+								transform: translateZ(0)!important;
+							}
+						}
+						&.bg-household {
+							.pf-tile-desc {
+								transform: translateZ(0)!important;
+							}
+							.pf-tile-bottom {
+								div:not(.pf-pricing) {
+									transform: translate3d(10px, -10px, 0)!important;
+								}
+								.pf-pricing {
+									transform: translate3d(-10px, -10px, 0)!important;
+								}
+							}
+						}
+					}
+				}
 				&:nth-child(1) {
 					&:hover, &:focus {
 						~ .pf-tile, ~ .pf-cardlet {
@@ -1048,6 +1170,11 @@
 				}
 				.pf-border {
 					opacity: 0.25;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
 					div:empty {
 						position: absolute;
 						border-radius: 1000px;

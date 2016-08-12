@@ -5129,7 +5129,7 @@ a.course-card:active .course-card-hover {
           background: #fbe1f0;
           color: #e6389b; }
       .pf-tile-container a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-bg, .pf-tile-container a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-bg {
-        background: rgba(230, 56, 155, 0.1); }
+        background: rgba(230, 56, 155, 0.2); }
       .pf-tile-container a:hover ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty, .pf-tile-container a:focus ~ .pf-cardlet.bg-academic .pf-cardlet-bottom .pf-cardlet-border div:empty {
         background: #fbe1f0; }
     .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-top:after {
@@ -5192,6 +5192,62 @@ a.course-card:active .course-card-hover {
       transform: translate3d(10px, -10px, 30px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing {
       transform: translate3d(-10px, -10px, 30px) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet * {
+      transition: all 250ms ease-in; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-front {
+      transform: translateZ(10px) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-front div:empty:not(.pf-cardlet-overlay) {
+        transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-ribbon-edge {
+      transform: translateZ(10px) rotate(45deg) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-ribbon {
+      transform: translateZ(20px) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-back {
+      transform: translateZ(-10px) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom {
+      transform: translateZ(20px) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom h1, .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom > div:not(.deco) {
+        transform: translateZ(0) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet .pf-cardlet-bottom .pf-cardlet-icon {
+        transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) {
+      transform: rotate(-90deg) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-academic .pf-cardlet-bottom > div:not(.deco) h2 {
+        transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-photography .pf-cardlet-bottom {
+      transform: translateZ(10px) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-household .pf-cardlet-bottom div {
+      transform: none !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-cardlet.bg-household .pf-cardlet-bottom div h2 {
+        transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile * {
+      transition: all 250ms ease-in; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-border {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-academic .pf-tile-bottom .rating-stars {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-baking .pf-tile-top div {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-border {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-bottom {
+      transform: translateZ(0) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-bottom h1, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-bottom .rating-stars {
+        transform: translateZ(0) !important; }
+      .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-bottom .pf-pricing div:empty, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-photography .pf-tile-bottom .pf-pricing span {
+        transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .pf-tile-top:after, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .pf-tile-top .pf-pricing {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech h1, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .pf-tile-bottom, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .border-corner, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .border-outside, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .border-top, .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-tech .rating-stars {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-household .pf-tile-desc {
+      transform: translateZ(0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-household .pf-tile-bottom div:not(.pf-pricing) {
+      transform: translate3d(10px, -10px, 0) !important; }
+    .pf-tile-container:not(.mobile) a:active ~ .pf-tile.bg-household .pf-tile-bottom .pf-pricing {
+      transform: translate3d(-10px, -10px, 0) !important; }
     .pf-tile-container:not(.mobile) a:nth-child(1):hover ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(1):hover ~ .pf-cardlet, .pf-tile-container:not(.mobile) a:nth-child(1):focus ~ .pf-tile, .pf-tile-container:not(.mobile) a:nth-child(1):focus ~ .pf-cardlet {
       transform-origin: bottom right !important;
       transform: rotateX(5deg) rotateY(-5deg) !important; }
@@ -5552,7 +5608,12 @@ a.course-card:active .course-card-hover {
         .pf-tile.bg-photography .pf-tile-bottom .pf-pricing span {
           transition: all 500ms ease-out; }
         .pf-tile.bg-photography .pf-tile-bottom .pf-pricing .pf-border {
-          opacity: 0.25; }
+          opacity: 0.25;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%; }
           .pf-tile.bg-photography .pf-tile-bottom .pf-pricing .pf-border div:empty {
             position: absolute;
             border-radius: 1000px;
