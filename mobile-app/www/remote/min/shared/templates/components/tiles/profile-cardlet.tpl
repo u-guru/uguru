@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-desktop">
+<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-mobile">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -171,11 +171,20 @@
 				<div class="pf-cardlet-bottom">
 					<div class="pf-cardlet-bg deco"></div>
 					<div class="pf-cardlet-border deco">
-						<div></div><div></div><div></div><div></div>
+						<div init-with="p:[tr:scaleX(0)]"
+							when-academic-cardlet-init="p:[tr:scaleX(1), t:transform 1450ms ease-out]"></div>
+						<div init-with="p:[tr:scaleY(0)]"
+							when-academic-cardlet-init="p:[tr:scaleY(1), t:transform 1450ms ease-out]"></div>
+						<div init-with="p:[tr:scaleY(0)]"
+							when-academic-cardlet-init="p:[tr:scaleY(1), t:transform 1450ms ease-out]"></div>
+						<div init-with="p:[tr:scaleX(0)]"
+							when-academic-cardlet-init="p:[tr:scaleX(1), t:transform 1450ms ease-out]"></div>
 					</div>
-					<h1>Master the Cerebral Cortex</h1>
+					<h1 init-with="p-op"
+						on-init="a:[zoomIn:set:(dur:400ms#func:cubic-bezier(.8#.1#.41#.91)):in:delay-450]">Master the Cerebral Cortex</h1>
 					<div>
-						<div>
+						<div init-with="p:[op:0, tr:scaleY(0), t:all 400ms cubic-bezier(.8#.1#.41#.91)]"
+							when-academic-cardlet-init="p:[op:1, tr:none]:delay-650">
 							<h2>03/28/2016</h2>
 						</div>
 					</div>
