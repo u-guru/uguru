@@ -8,7 +8,8 @@ function TweenService() {
     return  {
         getKeyframeValues: getKeyframeValues,
         getAllEasing: getAllEasing,
-        getAllAnimatable: getAllAnimatable
+        getAllAnimatable: getAllAnimatable,
+        getCubicBezierArrs: getAllAnimatable
     }
 
     function getAllEasing() {
@@ -47,6 +48,12 @@ function TweenService() {
         "easeFromTo",
         "easeFrom",
         "easeTo"]
+    }
+
+    function getCubicBezierArrs() {
+        return {
+            "nameOfCB": [1,1,1,1]
+        }
     }
 
     function getAllAnimatable() {
