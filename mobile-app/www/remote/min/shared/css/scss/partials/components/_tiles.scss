@@ -220,7 +220,11 @@
 			}
 			// profile cardlet transitions academic
 			&.bg-academic {
-
+				.pf-cardlet-bottom {
+					.deco {
+						transition: all 500ms ease-out;
+					}
+				}
 			}
 			// profile cardlet transitions baking
 			&.bg-baking {
@@ -456,21 +460,7 @@
 				// profile cardlet hover academic
 				&.bg-academic {
 					.pf-cardlet-bottom {
-						top: 28px;
-						left: 43px;
-						width: calc(100% - 101px);
-						height: calc(100% - 71px);
-						// border: 2px solid white;
-						border-radius: 2px;
-						border-top-left-radius: 0;
 						> div:not(.deco) {
-							transform: rotate(-90deg);
-							position: absolute;
-							top: 45px;
-							left: -75px;
-							width: 120px;
-							height: 30px;
-							margin-top: 0;
 							> div {
 								background: mix($cerise, white, 15%);
 								color: $cerise;
@@ -542,12 +532,30 @@
 			}
 			// profile cardlet click
 			~ .pf-cardlet {
+				* {
+					transition: all 250ms ease-in!important;
+				}
 				.pf-cardlet-overlay {
 					opacity: 0.4;
 				}
 				// profile cardlet click academic
 				&.bg-academic {
-
+					.pf-cardlet-bottom {
+						> div:not(.deco) {
+							> div {
+								background: mix($cerise, $slate, 85%);
+								color: white;
+							}
+						}
+						.pf-cardlet-bg {
+							background: rgba(white, .2);
+						}
+						.pf-cardlet-border {
+							div:empty {
+								background: mix($cerise, $slate, 85%);
+							}
+						}
+					}
 				}
 				// profile cardlet click baking
 				&.bg-baking {
@@ -685,9 +693,6 @@
 				}
 				&:active {
 					~ .pf-cardlet {
-						* {
-							transition: all 250ms ease-in;
-						}
 						.pf-cardlet-front {
 							transform: translateZ(10px)!important;
 							div:empty:not(.pf-cardlet-overlay) {
