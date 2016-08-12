@@ -13,6 +13,20 @@ angular.module('uguru.admin')
         }
     }
 ])
+.directive("kfX", ['$timeout', 'UtilitiesService', '$compile', function($timeout, UtilitiesService, $compile) {
+        return {
+            restrict: 'A',
+            replace: true,
+            scope: {
+                kf: '=kfX'
+            },
+            link: function preLink(scope, element, attr) {
+
+                element[0].setAttribute('x', scope.kf);
+
+            }
+        }
+}])
 .directive("types", ['$timeout', 'UtilitiesService', '$compile', function($timeout, UtilitiesService, $compile) {
         return {
             restrict: 'A',

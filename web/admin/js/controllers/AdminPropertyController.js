@@ -16,14 +16,16 @@ angular.module('uguru.admin')
 
     apc.animationArr = getAllCSSAnimation();
     var results = getCSSAnimationMetrics(apc.animationArr);
+    console.log(results);
 
     apc.property = [{name: 'opacity', start: 0.5, end: 1.0}];
-
+    apc.activeIndex = 0;
 
     //todo #1
     apc.addProperty = function(property_name) {
       apc.properties.push(prop_obj)
     }
+    apc.settings = {showFPS:apc.fps}
 
     apc.playBar = document.querySelector('#property-playbar');
     apc.element = document.querySelector('#svg-square-rect');
@@ -31,34 +33,63 @@ angular.module('uguru.admin')
 
 
     //demo
-    apc.properties = [{name: 'transform', start: 'scale(0)', end: 'scale(1)', duration:1000, timingFunction:'linear', ease: null, playbar:null, element:null, unit: 0}];
-    apc.properties[0].element = document.querySelector('#svg-square-rect');
-    apc.properties[0].animation = initAnimationWithEase(apc.properties[0]);
-    apc.properties[0].player  = {element: document.querySelector('#property-playbar'), play: play(apc.properties[0]), reset: resetAnimation(apc.properties[0].element)}
-    apc.properties[0].player.play();
-    apc.properties[0].playbar = initPlaybarObj;
+    apc.properties = [];
+    apc.properties.push({name: 'transform', start: 'scale(0)', end: 'scale(1)', duration:1000, timingFunction:'linear', ease: 'easeInExpo', playbar:null, element:null, unit: 0})
+    apc.properties.push({name: 'transform', start: 'translateX(-1000%)', end: 'translateX(10%)', duration:1500, timingFunction:'linear', ease: 'bouncePast', playbar:null, element:null, unit: 0})
+    apc.properties.push({name: 'transform', start: 'rotate(0deg)', end: 'rotate(1080deg)', duration:1500, timingFunction:'linear', ease: 'easeInOutQuint', playbar:null, element:null, unit: 0})
+    apc.properties.push({name: 'fill', start: 'rgb(255,255,255)', end: 'rgb(255,0,255)', duration:1500, timingFunction:'linear', ease: 'easeOutSine', playbar:null, element:null, unit: 0})
 
-
-    apc.property.playbar = initPlaybarObj();
-    apc.property.playbar.animations = [getDefaultAnimationProperties(apc.animation.name, window.getComputedStyle(apc.element))]
-    apc.export = false;
-    apc.play = playAnimation;
-
-    apc.animationArr.filter(function(a, i) {
-      return a.cssRules.length;
-    });
-
-
-    function initPlaybarObj() {
-      return {
-        animations: [],
-        element: null
-      }
+    // apc.properties[0].element = document.querySelector('#svg-square-rect');
+    function parsePropertiesAndPlay(properties) {
+      var transformProp = {start: '', end: '', ease: ''};
+      properties.forEach(function(property, index) {
+        var transformProperties = ['scale', 'translateX', 'translateY', 'scale', 'rotate', 'perspective'];
+        if (transformProperties.indexOf(property.start.split('(')[0]) > -1) {
+          transformProp.start += property.start + ' ';
+          transformProp.end += property.end + ' ';
+        }
+        property.animation = initAnimationWithEase(property, index);
+        property.element = apc.element;
+        property.player = {element: document.querySelector('.property-player-' + index), play: playOne, reset: resetAnimation(property.element)}
+        property.keyframes = convertAnimObjToKF(property.animation.obj);
+      })
+      transformProp.start.length && transformProp.end.length && properties.push(transformProp);
     }
 
-    function initAnimationWithEase(options) {
+    parsePropertiesAndPlay(apc.properties);
+
+    function calculateFPS() {
+
+      window.requestAnimFrame = (function(){
+      return  window.requestAnimationFrame       ||
+              window.webkitRequestAnimationFrame ||
+              window.mozRequestAnimationFrame    ||
+              function( callback ){
+                window.setTimeout(callback, 1000 / 60);
+              };
+      })();
+
+      var requestAnimFram = window.requestAnimationFrame;
+      apc.count = 0;
+      var timeStart
+      function animate() {
+        var currentTime = new Date().getTime();
+        if (currentTime - timeStart < 1000) {
+          apc.count += 1
+          requestAnimFrame( animate );
+        } else {
+          $timeout(function() {
+            $scope.$apply();
+          })
+        }
+      }
+
+    }
+
+    function initAnimationWithEase(options, index) {
+      options.easeName = options.ease[0].toUpperCase() + options.ease.substring(1);
       var anim =  {
-        name: (options.name) + 'Animation',
+        name: (options.name) + options.easeName + index,
         propName: (options.name) || 'opacity',
         ease: options.ease || 'bounce',
         start: options.start || 0,
@@ -163,12 +194,46 @@ angular.module('uguru.admin')
       property.animation.deleteRule(kf_rule);
       property.keyframes = convertAnimObjToKF(property.animation);
     }
-
     function updateKeyFrameArr() {
 
     }
 
-    function play(property, cb_start, cb_end) {
+    function playAll(property_arr) {
+      if (apc.settings.showFPS) {
+        apc.showFPS;
+      }
+      var animStr = ''
+      for (var i = 0; i < property_arr.length; i++) {
+        animStr += convertAnimPropObjToString(property_arr[i].animation);
+        if (i === property_arr.length-1) {
+
+          console.log(animStr);
+          property_arr[i].element.style['webkitAnimation'] =  animStr;
+        } else {
+          animStr += ', '
+        }
+      }
+    }
+    // $timeout(function() {
+    //   playAll(apc.properties)
+    // }, 1000)
+
+    function playOne(property, cb_start, cb_end) {
+      var properties = ['Name', 'Duration',  'TimingFunction', 'Delay', 'IterationCount',  'Direction', 'FillMode', 'PlayState'];
+      var animStrArr = [];
+      var animStr = convertAnimPropObjToString(property.animation);
+
+      if (!property.animation.listeners) property.animation.listeners = {};
+      if (!property.animation.listeners.start) property.animation.listeners.start = getStartListener(property.element,cb_start);
+      if (!property.animation.listeners.end) property.animation.listeners.start = getEndListener(property.element,cb_end);
+      property.animation.listeners = {
+        start: getStartListener(property.element),
+        end: getEndListener(property.element)
+      }
+      property.element.style['webkitAnimation'] =  animStr;
+    }
+
+    function play(property, cb_start, cb_end, override) {
       animation = property.animation;
       element = property.element;
       if (!animation || !element) {
@@ -189,23 +254,20 @@ angular.module('uguru.admin')
               end: getEndListener(element)
             }
             console.log(animation, animStr);
-            element.style['webkitAnimation'] = animStr;
+            if (override) {
+              element.style['webkitAnimation'] =  animStr;
+            } else {
+              var currentStyle = window.getComputedStyle(element)['webkitAnimation'];
+              if (currentStyle.split(' ').length === 8 && currentStyle.split(' ')[1] === '0s') {
+                element.style['webkitAnimation'] =  animStr;
+              } else if (currentStyle.split(' ').length >= 8){
+                element.style['webkitAnimation'] +=  ', ' + animStr;
+              }
+            }
 
           };
 
-          function getEndListener(element, cb) {
-            return element.addEventListener('webkitAnimationEnd', function(e) {
-              console.log(e.animationName, 'has ended');
-              cb && cb(e)
-              resetAnimation(element)();
-            })
-          }
-          function getStartListener(element, cb) {
-            return element.addEventListener('webkitAnimationStart', function(e) {
-              console.log(e.animationName, 'has started')
-              cb && cb(e)
-            })
-        }
+
 
     }
 
@@ -219,6 +281,20 @@ angular.module('uguru.admin')
         apc.element.style['webkitAnimation'] = window.getComputedStyle(element)['webkitAnimation'];
       }
     }
+
+     function getEndListener(element, cb) {
+            return element.addEventListener('webkitAnimationEnd', function(e) {
+              console.log(e.animationName, 'has ended');
+              cb && cb(e)
+              resetAnimation(element)();
+            })
+      }
+      function getStartListener(element, cb) {
+          return element.addEventListener('webkitAnimationStart', function(e) {
+            console.log(e.animationName, 'has started')
+            cb && cb(e)
+          })
+      }
 
     function playAnimation() {};
 
@@ -262,7 +338,6 @@ angular.module('uguru.admin')
       var anim_properties = [];
       for (key in anim) {
         if (allAnimPropertyStr.toLowerCase().indexOf(key.toLowerCase()) > -1)  {
-          console.log(key)
           anim_properties.push(key);
         }
       }
@@ -346,6 +421,39 @@ angular.module('uguru.admin')
     this.export = function() {
 
     }
+
+    // apc.propertyInputStart = 'scale(0)|easeInOutQuint rotate(0deg)|easeInOutQuint translateX(500%)|easeInOutQuint translateY(500%)|easeInOutQuint opacity:0.3|easeInOutQuint'
+    // apc.propertyInputEnd = 'scale(1) rotate(0deg) translateX(500%) translateY(500%) opacity:0.3 fill:rgb(0,0,0) fill:rgba(255,0,255)'
+    // var transformStr = '';
+    // $scope.$watch('apc.propertyInputStart', function(new_value) {
+    //   if (!new_value || !new_value.length) {
+    //     return;
+    //   }
+    //   var values = new_value.split(' ')
+    //   var propertyArr = [];
+    //   var transformStr = '';
+    //   values.forEach(function(val, i) {
+    //     var ease = val.split('|')[1];
+    //     var propDict = {};
+    //     propDict.duration = 1500
+    //     propDict.name = val.split('|')[0].split(':')[0];
+    //     propDict.start =val.split('|')[0].split(':')[1];
+    //     propDict.ease = ease || 'easeInOutQuint';
+    //     propDict.end = apc.propertyInputEnd.split(' ')[i];
+    //     propDict.timingFunction = 'linear'
+    //     if (val.indexOf('(') > -1 && val.indexOf('fill') === -1) {
+    //       propDict.name = val.split('|')[0].split('(')[0]
+    //       transformStr += val + ' ';
+    //     }
+    //     apc.properties.push(propDict);
+    //   })
+    //   apc.properties.push({name: 'transform', start: transformStr, end: transformStr});
+    //   parsePropertiesAndPlay(apc.properties)
+    //   $timeout(function() {
+    //     playAll(apc.properties);
+    //   })
+    //   // apc.properties.push({name: 'fill', start: 'rgb(255,255,255)', end: 'rgb(255,0,255)', duration:1500, timingFunction:'linear', ease: 'easeOutSine', playbar:null, element:null, unit: 0})
+    // })
 
   }
 

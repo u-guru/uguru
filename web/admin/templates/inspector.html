@@ -1,30 +1,28 @@
 <div class='flex-vertical-center flex-wrap full-xy absolute top-0 left-0' ng-controller='AdminPropertyController as apc'>
-    <div class='flex-stretch flex-wrap-center full-x'>
+    <div class='flex-stretch flex-wrap-center full-x relative overflow-auto' style='height:80%;'>
         <div style='width:66%;' class='flex-wrap-center'>
-            <square id='svg-square-rect' fill="pink"> </square>
+            <!-- <div ng-repeat='result in apc.results' style='width:50px; height:50px;' class='text-white flex-wrap-center p20xy'> {{result.prop}}<br> {{result.value}}</div> -->
+            <square id='svg-square-rect' fill="pink"></square>
         </div>
         <div style='width:33%' class='right-0 bg-moola full-y top-0 flex-wrap-center' ng-if='false'>
             {{apc.property.animation.cssText}}
         </div>
         <div style='width:33%' class='right-0 bg-moola full-y top-0 flex-wrap-center'>
             <div class='full-x weight-700 bg-charcoal ugrid-{{apc.properties.length}}'>
-                <span class='p10x p05y' ng-repeat='property in apc.properties'>{{property.name}}
+                <span ng-class='{"bg-moola": apc.activeIndex === $index}' class='p10x p05y' ng-click='apc.activeIndex = $index' ng-repeat='property in apc.properties'>{{property.animation.name}} </span>
             </div>
-            <div ng-repeat='property in apc.properties' ng-show="apc.activeIndex === apc.properties.id">
+            <div ng-repeat='property in apc.properties' ng-show="apc.activeIndex === $index">
                 <div class='full-x ugrid-3 full-x'>
-                    <div>
-                        <input ng-model="property.name"> </input>
-                    </div>
-                    <div>
+                    <!-- <div>
                         <input ng-model="property.start"> </input>
                     </div>
                     <div>
                         <input ng-model="property.end"> </input>
-                    </div>
+                    </div> -->
                 </div>
                 <div style='height:80%' class='full-x'>
                     <ul class='full-x'>
-                        <li ng-repeat='kf_rule in property.animation.keyframes track by $index' >
+                        <li ng-repeat='kf_rule in property.animation.keyframes track by $index' class='full-x'>
                             <div class='full-x flex-vertical-center m20y p15-grid'>
                                 <div class='flex-wrap-center full-x'>
                                     <span class='bg-charcoal flex-wrap-center'>
@@ -38,9 +36,6 @@
                                     <span >
                                     {{property.name}}: {{property.value}}
                                     </span>
-                                    <div class='full-x'>
-                                        <input type='range' ng-model='property.value'> </input>
-                                    </div>
                                 </span>
                             </div>
                         </li>
@@ -49,26 +44,47 @@
             </div>
         </div>
     </div>
-    <div class='full-x absolute bottom-0 left-0'>
-        <div class='full-x bg-slate p15-grid flex-wrap-center p20y ugrid-2'>
-            <div ng-repeat='property in apc.properties'>
-                <a class='bg-azure weight-600' ng-click='playAnimation()'>{{property.animation["webkitAnimationName"]}}</a>
-                <a class='bg-azure weight-600' ng-click='playAnimation()'>{{property.animation["webkitAnimationDuration"]}}</a>
-                <a class='bg-azure weight-600' ng-click='playAnimation()'>{{property.animation["webkitAnimationTimingFunction"]}}</a>
-                <a class='bg-azure weight-600' ng-click='playAnimation()'>{{property.animation["webkitAnimationIterationCount"]}}</a>
-                <a ng-click='property.player.play()'> Play </a>
-                <a ng-click='property.animation.export()'> Export</a>
-            </div>
-            <div ng-repeat='animation in apc.property.playbar'>
-                <svg ng-mousedown='apc.addKeyFrame($event)' ng-mouseover="apc.showPercentage($event, animation)" class='full-x relative' style="height:10px;" viewBox="0 0 150 1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
-                <!--  -->
-                <rect class='z-index:1000' class='property-playbar-{{$index}}' rx="0.5"  width="150" height="1" fill="white"> </rect>
-                <rect rx="0.5"  width="150" height="1" style='opacity:0.2' fill="#F1F1F1"> </rect>
-            </svg>
-            </div>
+    <div class='full-x overflow-auto' style='height:20%;'>
+        <div class='flex-wrap-center'>
+            <span class='svg-48 p05xy stroke-white svg-stroke-6' ng-click='apc.gPlayer.play()' ng-include='"shared/templates/components/svg/main/settings.html"'></span>
+            <span class='svg-48 p05xy stroke-white svg-stroke-6' ng-include='"shared/templates/components/svg/main/play.html"'></span>
+            <span class='svg-48 p05xy stroke-white svg-stroke-6' ng-include='"shared/templates/components/svg/main/pause.html"'></span>
         </div>
-        <div class='bg-azure ugrid p20xy'>
-
+        <div class='full-x bg-slate p15-grid flex-wrap-center'>
+            <ul class='full-x p15-grid flex-wrap-center'>
+                <li ng-repeat='property in apc.properties' class='full-x p15-grid flex-wrap-center' ng-class="{'bg-slate':$index % 2 === 1, 'bg-charcoal':$index % 2 === 0}">
+                    <div style='width:20%'>
+                        <div class='full-x flex-wrap-center'>
+                            <span class='m05y'>
+                                <a class='weight-600 txt-3 full-x' ng-click='playAnimation()'>{{property.animation.name}}</a>
+                            </span>
+                            <span>
+                                <a class='weight-400' ng-click='playAnimation()'>{{property.animation.duration}}</a>
+                                <a class='weight-400' ng-click='playAnimation()'>Play {{property.animation.iterationCount}}x</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div style='width:80%;' class='relative flex-wrap-center'>
+                        <div class='absolute full-x'>
+                            <svg ng-mousedown='property.addKeyFrame($event)' ng-mouseover="apc.showPercentage($event, animation)" class='full-x relative' style="height:10px;" viewBox="0 0 150 1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+                            <!--  -->
+                                <rect class='z-index:1000' class='property-playbar-{{$index}}' rx="0.5"  width="150" height="1" fill="white"> </rect>
+                                <rect rx="0.5"  width="150" height="1" style='opacity:0.2' fill="#F1F1F1"> </rect>
+                            </svg>
+                        </div>
+                        <div class='relative full-x' style='margin-top:-4.3%'>
+                            <svg viewBox="0 0 100 100" class='absolute left-0 top-0'>
+                                <a ng-click='property.player.play(property)'>
+                                    <rect class='absolute left-0'  rx="10" width="4" height="4" fill="red"> </rect>
+                                </a>
+                                <g>
+                                    <rect ng-if='kf_rule' ng-repeat='kf_rule in property.animation.keyframes' class='absolute' rx="10" width="1" y="1.5" kf-x="kf_rule.percent.str" height="1" fill="red"> </rect>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
