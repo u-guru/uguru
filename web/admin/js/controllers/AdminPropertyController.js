@@ -324,9 +324,9 @@ angular.module('uguru.admin')
     }
 
 
-    var propertyOne = {name: 'transform', start: 'translateX(-1000%) rotate(-360deg) scale(0.1)', end: 'translateX(10%) rotate(720deg) scale(1.25)', duration:5000, timingFunction:'linear', ease: 'elastic', playbar:null, unit: 0}
-    var propertyTwo = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
-    var propertyThree = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
+    var propertyOne = {name: 'transform', start: 'scale(0.6)', end: 'scale(1)', duration:1000, timingFunction:'linear', ease: 'easeOutBounce', playbar:null, unit: 0}
+    var propertyTwo = {name: 'opacity', start: '0', end: '1', duration:1000, timingFunction:'ease-out', ease: 'easeInExpo', playbar:null, unit: 0}
+    // var propertyThree = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
 
     apc.properties = [propertyOne, propertyTwo];
 
@@ -640,4 +640,3 @@ angular.module('uguru.admin')
   }
 
 ])
-

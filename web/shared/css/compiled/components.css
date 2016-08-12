@@ -4564,6 +4564,7 @@ a.course-card:active .course-card-hover {
     background: #e98a59; }
 
 .request-card {
+  display: block;
   width: 100%;
   max-width: 350px;
   background: white;
