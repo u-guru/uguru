@@ -212,7 +212,7 @@
 					transition: all 500ms ease-out;
 				}
 				> div:not(:empty) {
-					transition: all 500ms ease-out;
+					transition: transform 500ms ease-out;
 					h2, h3 {
 						transition: all 500ms ease-out;
 					}
@@ -249,6 +249,11 @@
 					// borders
 					> div:empty {
 						transition: all 500ms ease-out;
+					}
+					> div:not(:empty) {
+						div {
+							transition: all 500ms ease-out;
+						}
 					}
 				}
 			}
@@ -478,7 +483,9 @@
 				}
 				// profile cardlet hover baking
 				&.bg-baking {
-
+					.pf-cardlet-front {
+						background: mix($gold, white, 30%);
+					}
 				}
 				// profile cardlet hover photography
 				&.bg-photography {
@@ -559,7 +566,14 @@
 				}
 				// profile cardlet click baking
 				&.bg-baking {
-
+					.pf-cardlet-front {
+						background: mix($gold, white, 60%);
+					}
+					.pf-cardlet-bottom {
+						* {
+							color: white;
+						}
+					}
 				}
 				// profile cardlet click photography
 				&.bg-photography {
@@ -567,7 +581,16 @@
 				}
 				// profile cardlet click tech
 				&.bg-tech {
-
+					.pf-cardlet-bottom {
+						> div:empty {
+							background: white;
+						}
+						> div:not(:empty) {
+							> div {
+								background: white;
+							}
+						}
+					}
 				}
 				// profile cardlet click household
 				&.bg-household {
@@ -1687,7 +1710,7 @@
 					color: $cerise;
 					border-top-left-radius: 2px;
 					border-top-right-radius: 2px;
-					transform-origin: right center;
+					transform-origin: right bottom;
 				}
 			}
 			.deco {
@@ -1713,24 +1736,28 @@
 						left: 0;
 						width: 100%;
 						height: 2px;
+						transform-origin: left center;
 					}
 					&:nth-child(2) {
 						top: 0;
 						right: 0;
 						width: 2px;
 						height: 100%;
+						transform-origin: center bottom;
 					}
 					&:nth-child(3) {
 						top: 0;
 						left: 0;
 						width: 2px;
 						height: 100%;
+						transform-origin: center top;
 					}
 					&:nth-child(4) {
 						bottom: 0;
 						left: 0;
 						width: 100%;
 						height: 2px;
+						transform-origin: right center;
 					}
 				}
 			}
@@ -1804,7 +1831,7 @@
 			&:after {
 				display: none;
 			}
-			div:empty {
+			div:empty:not(.pf-cardlet-overlay) {
 				position: absolute;
 				background: white;
 				&:nth-child(1) {
@@ -1831,6 +1858,9 @@
 					transform-origin: left center;
 					border-radius: 3px 3px 0 0;
 				}
+			}
+			.pf-cardlet-overlay {
+				background: mix($moola, white, 85%);
 			}
 		}
 		.pf-cardlet-back {
@@ -1890,6 +1920,9 @@
 			left: 15px;
 			width: calc(100% - 30px);
 			height: calc(100% - 60px);
+			.pf-cardlet-overlay {
+				background: $azure;
+			}
 		}
 		.pf-cardlet-back {
 			@include opacity(1);
@@ -1991,7 +2024,7 @@
 	&.bg-household {
 		.pf-cardlet-front {
 			// border: 10px solid white;
-			div:empty {
+			div:empty:not(.pf-cardlet-overlay) {
 				position: absolute;
 				background: white;
 				border-radius: 3px;
@@ -2023,6 +2056,10 @@
 					height: 10px;
 					transform-origin: center center;
 				}
+			}
+			.pf-cardlet-overlay {
+				background: mix($cobalt, white, 75%);
+				z-index: 2;
 			}
 		}
 		.pf-cardlet-back {
