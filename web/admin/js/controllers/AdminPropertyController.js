@@ -188,7 +188,7 @@ angular.module('uguru.admin')
       anim.keyframes = [];
       kf_arr = TweenService.getKeyframeValues(startDict, endDict, anim.duration, anim.ease, anim.keyframes);
       anim.duration = formatDuration(anim.duration);
-      for (var i = 1; i < kf_arr.length; i++) {
+      for (var i = 0; i < kf_arr.length; i++) {
         createFrameWithPropValue(anim_obj, options.name, kf_arr[i][options.name], kf_arr[i].percentage);
       }
 
