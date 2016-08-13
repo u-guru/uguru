@@ -169,13 +169,13 @@
 							</li>
 							<li>
                                 <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.step(property, 100, "-")'>
-                                        <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style='transform:rotate(180deg)'>
-                                            <path d="M68.3635106,20.0921155 C68.3635106,16.727533 71.0974015,14 74.454538,14 L74.454538,14 C77.8185196,14 80.5455654,16.7345657 80.5455654,20.0921155 L80.5455654,79.9078845 C80.5455654,83.272467 77.8116745,86 74.454538,86 L74.454538,86 C71.0905565,86 68.3635106,83.2654343 68.3635106,79.9078845 L68.3635106,20.0921155 Z M65.6106483,47.0463201 C66.5720751,47.8852207 67.3635106,48.7075094 67.3635106,50.0226176 C67.3635106,51.3349572 66.8005882,52.132328 65.6106483,52.9961465 L23.5085114,85.7243441 C22.8090385,86.2005517 20.0362277,86.4054318 20,83.3433062 L20,16.6991604 C20.0027867,13.8668327 22.5359376,13.6425721 23.5085114,14.3208911 L65.6106483,47.0463201 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
+                                    <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style='transform:rotate(180deg)'>
+                                        <path d="M68.3635106,20.0921155 C68.3635106,16.727533 71.0974015,14 74.454538,14 L74.454538,14 C77.8185196,14 80.5455654,16.7345657 80.5455654,20.0921155 L80.5455654,79.9078845 C80.5455654,83.272467 77.8116745,86 74.454538,86 L74.454538,86 C71.0905565,86 68.3635106,83.2654343 68.3635106,79.9078845 L68.3635106,20.0921155 Z M65.6106483,47.0463201 C66.5720751,47.8852207 67.3635106,48.7075094 67.3635106,50.0226176 C67.3635106,51.3349572 66.8005882,52.132328 65.6106483,52.9961465 L23.5085114,85.7243441 C22.8090385,86.2005517 20.0362277,86.4054318 20,83.3433062 L20,16.6991604 C20.0027867,13.8668327 22.5359376,13.6425721 23.5085114,14.3208911 L65.6106483,47.0463201 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
                                 </a>
                             </li>
                             <li ng-if='!property.player.active'>
-								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.play(property)' when-show-play="p:[opacity:1, scale(1)]" ng-include='"shared/templates/components/svg/main/play.html"' ></a>
+								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.play(property)' when-show-play="p:[opacity:1, scale(1)]" ng-include='"shared/templates/components/svg/main/play-basic.html"' ></a>
 							</li>
 							<li ng-if='property.player.active'>
 								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.pause(property)' when-show-pause="p:[opacity:1, scale(1)]:easeIntQuint"  ng-include='"shared/templates/components/svg/main/pause.html"'></a>
@@ -184,13 +184,7 @@
                                 <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.step(property, property.settings.stepSlowSpeed, "+")' ng-include='"shared/templates/components/svg/main/skip.html"'></a>
                             </li>
                             <li>
-
-                                <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus ugrid-2' ng-click='property.player.step(property, property.settings.stepSpeed.fast, "+")'>
-                                    <span style='transform:scale(0.8); padding:0 !important;' ng-include='"shared/templates/components/svg/main/skip.html"'>
-                                    </span>
-                                    <span style='transform:scale(0.66);margin-left:-10%;padding:0 !important;' ng-include='"shared/templates/components/svg/main/skip.html"'>
-                                    </span>
-                                </a>
+                                <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus ugrid-2' ng-click='property.player.step(property, property.settings.stepSpeed.fast, "+")' ng-include='"shared/templates/components/svg/main/fast-forward.html"'></a>
                             </li>
 							<li>
 								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.resetAnim(property)' ng-include='"shared/templates/components/svg/main/sync.html"'></a>
