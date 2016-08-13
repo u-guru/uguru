@@ -224,6 +224,9 @@
 						</ul> -->
                     </div>
                     <div class='relative flex-wrap-center width-66p p20xy'>
+                        <div class='bottom-0 left-0 p15-grid ugrid-2 absolute weight-900' style='margin-bottom:-2.5%;'>
+                            {{property.player.timer.display.s}}/{{property.player.timer.durationDisplay.s}}
+                        </div>
                         <div class='absolute' style='width:90%; right:5%;'>
                             <svg ng-mousedown='property.addKeyFrame($event)' ng-mouseover="apc.showPercentage($event, animation)" class='full-x relative' viewBox="0 0 200 1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
                             <!--  -->
