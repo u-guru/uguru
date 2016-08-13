@@ -178,6 +178,7 @@ angular.module('uguru.admin')
             range: {max: 3000, min:0, step: 100 },
               val:delayVal , display: animation.delay + ''
         },
+        resetAtEnd: false,
         stepSpeed: {
           fast: 250,
           slow:50,
@@ -451,7 +452,7 @@ angular.module('uguru.admin')
           }
           maxDurationProp.animation.listeners = {
             start: getStartListener(maxDurationProp.element),
-            end: getEndListener(maxDurationProp.element, endCallback(apc.gPlayer))
+            end: getEndListener(maxDurationProp.element, endCallback(apc.gPlayer), property_arr[i].settings.resetAtEnd)
           }
           property_arr[i].element.style['webkitAnimation'] =  animStr;
 
@@ -632,7 +633,7 @@ angular.module('uguru.admin')
 
       if (!property.animation.listeners) property.animation.listeners = {};
       if (!property.animation.listeners.start) property.animation.listeners.start = getStartListener(property.element,cb_start);
-      if (!property.animation.listeners.end) property.animation.listeners.end = getEndListener(property.element,cb_end);
+      property.animation.listeners.end = getEndListener(property.element,cb_end, property.settings.resetAtEnd);
       var endCallback = function(property) {
         return function(e) {
           property.player.paused = false;
@@ -647,12 +648,12 @@ angular.module('uguru.admin')
 
       property.animation.listeners = {
         start: getStartListener(property.element),
-        end: getEndListener(property.element, endCallback(property))
+        end: getEndListener(property.element, endCallback(property), property.settings.resetAtEnd)
       }
 
       property.player.animation.listeners = {
-        start: getStartListener(property.player.playElement),
-        end: getEndListener(property.player.playElement)
+        start: getStartListener(property.player.playElement, cb_end),
+        end: getEndListener(property.player.playElement, cb_end,property.settings.resetAtEnd)
       }
       property.element.style['webkitAnimation'] =  animStr;
 
@@ -713,12 +714,12 @@ angular.module('uguru.admin')
       }
     }
 
-     function getEndListener(element, cb) {
+     function getEndListener(element, cb, auto_reset) {
             return element.addEventListener('webkitAnimationEnd', function(e) {
               console.log(e.animationName, 'has ended');
               cb && cb(e)
               console.log(element)
-              resetAnimation(element)();
+              auto_reset && resetAnimation(element)();
             })
       }
       function getStartListener(element, cb) {
