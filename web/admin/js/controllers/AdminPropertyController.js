@@ -537,7 +537,7 @@ angular.module('uguru.admin')
     }
 
     function playOne(property, cb_start, cb_end) {
-      property.player.startTime();
+      // property.player.startTime();
       property.player.active = true;
       if (property.player.paused) {
         property.player.paused = false;
