@@ -222,7 +222,9 @@
 				when-baking-cardlet-init="a:[baking-cardlet-scaleX-enter:set:(dur:2000ms#func:linear):in:delay-600]">
 				<div class="pf-cardlet-back" style="background: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
 			</div>
-			<div class="pf-cardlet-bottom-container">
+			<div class="pf-cardlet-bottom-container"
+				init-default
+				when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
 				<div class="pf-cardlet-bottom">
 					<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 						init-with="p-op"
@@ -258,16 +260,22 @@
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[baking-cardlet-init:public]"
 		when-baking-cardlet-init="p:[op:1, tr:none]"
-		when-baking-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
+		when-baking-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]"
+		on-mouse-enter="s:[baking-cardlet-hover:public]"
+		on-mouse-leave="s:[baking-cardlet-leave:public]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-baking">
-			<div class="pf-cardlet-front-container">
+			<div class="pf-cardlet-front-container"
+				init-default
+				when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
 				<div class="pf-cardlet-front"></div>
 			</div>
 			<div class="pf-cardlet-back-container">
 				<div class="pf-cardlet-back" style="background: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
 			</div>
-			<div class="pf-cardlet-bottom-container">
+			<div class="pf-cardlet-bottom-container"
+				init-default
+				when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
 				<div class="pf-cardlet-bottom">
 					<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
 					<h1>Four-Star Strawberry Cake on a Budget</h1>

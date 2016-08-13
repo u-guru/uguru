@@ -16,10 +16,11 @@ angular.module('uguru.admin')
     apc.animProperties = TweenService.getAllAnimatable()
     console.log(apc.animProperties)
     var results = getCSSAnimationMetrics(apc.animationArr);
-
+    var gPlayerDefaults = {stepTime: 100};
     apc.property = [{name: 'opacity', start: 0.5, end: 1.0}];
     apc.activeIndex = 0;
-    apc.gPlayer = {play: playAll, pause: pauseAll, paused: false, resetAll: resetAll, element: null, resume: resumeAll};
+
+    apc.gPlayer = {play: playAll, step: stepAll, defaults: gPlayerDefaults,  pause: pauseAll, paused: false, resetAll: resetAll, element: null, resume: resumeAll};
     apc.playAll = playAll;
     apc.pauseAll = pauseAll;
     apc.addProp = {searchText: '', propName: '', start: '', end: '', ease: '', duration: ''};
@@ -28,13 +29,13 @@ angular.module('uguru.admin')
     apc.addProperty = function(property_name) {
       apc.properties.push(prop_obj)
     }
-    apc.settings = {showFPS:apc.fps, showKFBar: false}
+    apc.settings = {showFPS:apc.fps, showKFBar: true}
 
 
     //demo
     apc.properties = [];
-    // apc.properties.push({name: 'transform', start: 'scale(0)', end: 'scale(1)', duration:1000, timingFunction:'linear', ease: 'easeInExpo', playbar:null, element:null, unit: 0})
-    // apc.properties.push({name: 'transform', start: 'rotate(0deg)', end: 'rotate(1080deg)', duration:1500, timingFunction:'linear', ease: 'easeInOutQuint', playbar:null, element:null, unit: 0})
+    apc.properties.push({name: 'transform', start: 'scale(0)', end: 'scale(1)', duration:1000, timingFunction:'linear', ease: 'easeInExpo', playbar:null, element:null, unit: 0})
+    apc.properties.push({name: 'transform', start: 'rotate(0deg)', end: 'rotate(1080deg)', duration:1500, timingFunction:'linear', ease: 'easeInOutQuint', playbar:null, element:null, unit: 0})
     // apc.properties.push({name: 'fill', start: 'rgb(255,255,255)', end: 'rgb(255,0,255)', duration:1500, timingFunction:'linear', ease: 'easeOutSine', playbar:null, element:null, unit: 0})
 
     // apc.properties[0].element = document.querySelector('#svg-square-rect');
@@ -53,13 +54,12 @@ angular.module('uguru.admin')
         }
 
         properties[i].animation = initAnimationWithEase(property, i);
-
-
-
-        properties[i].player = {play: playOne, resetAnim: resetOne, resume: playOne, jump: jumpToForOne, pause: pauseOne};
+        properties[i].player = {play: playOne, resetAnim: resetOne, resume: playOne, step: stepOne, pause: pauseOne};
         properties[i].player.element = document.querySelector('.property-playbar-' + i);
         properties[i].keyframes = convertAnimObjToKF(property.animation.obj);
-        properties[i].player.update = getUpdatePropertyAnimationFunc(property);
+        properties[i].player.update = getUpdatePropertyAnimationFunc(i);
+        properties[i].defaults = {stepTime: 100};
+        properties[i].settings = initSettingsWithCurrentAnimationValues(properties[i]);
 
         //player specific
         var playballDict = initPlayerBallAnimation(property);
@@ -74,20 +74,52 @@ angular.module('uguru.admin')
 
     function initPlayerBallAnimation(property) {
       var width = property.player.element.getBoundingClientRect().width;
-      return {name: 'transform',  start: 'translateX(0px)',  end: 'translateX(' +  (width * 0.075) + 'px)',  duration:property.duration,  timingFunction:property.timingFunction, ease: property.ease,  unit: 0}
+      return {name: 'transform',  start: 'translateX(0px)',  end: 'translateX(' +  (width * 0.11) + 'px)',  duration:property.duration,  timingFunction:property.timingFunction, ease: 'linear',  unit: 0}
     }
 
-    function getUpdatePropertyAnimationFunc(property) {
-      return function(prop_name) {
-        if (prop_name in property)  {
-          updatePlayerAnimation(property);
+    function getUpdatePropertyAnimationFunc(index) {
+      return function(property, prop_name) {
+
+        if (prop_name in property.animation)  {
+          console.log('yo', prop_name, property.animation.duration);
+          // property.animation = initAnimationWithEase(property);
           property.animation = initAnimationWithEase(property, index);
           property.keyframes = convertAnimObjToKF(property.animation.obj);
+          property.settings = initSettingsWithCurrentAnimationValues(property);
         }
       }
     }
 
+    function initSettingsWithCurrentAnimationValues(property) {
+      var animation = property.animation;
+      var durationVal =  parseFloat(property.animation.duration.replace('ms', ''))
+      var delayVal =  parseFloat(property.animation.delay.replace('ms', ''))
+      var settingsDict = {
+        duration : {
+                  range: {max: durationVal + durationVal * 1.5, min:(durationVal - (durationVal * 1.5)), step: 100 },
+                  val:durationVal , display: animation.duration + ''},
+        delay : {
+            range: {max: 3000, min:0, step: 100 },
+              val:delayVal , display: animation.delay + ''
+        },
+        iterationCount: {val: property.animation.duration || 1, str: animation.iterationCount + ''},
+        update: onSettingChange(property),
+      };
 
+
+      return settingsDict;
+
+      function onSettingChange(property) {
+        return function (prop_name, value) {
+          console.log('updating', prop_name, value)
+          property[prop_name] = parseFloat(value.replace('ms', ''));
+          property.player.update(property, prop_name)
+          $timeout(function() {
+            $scope.$apply();
+          })
+        }
+      }
+    }
 
     function calculateFPS() {
 
@@ -119,6 +151,7 @@ angular.module('uguru.admin')
 
     function initAnimationWithEase(options, index) {
       options.easeName = options.ease[0].toUpperCase() + options.ease.substring(1);
+      console.log(options.duration)
       var anim =  {
         name: (options.name) + options.easeName + index,
         propName: (options.name) || 'opacity',
@@ -184,7 +217,10 @@ angular.module('uguru.admin')
       if (animPropObj[prefix + 'Duration'] === '0s') {
         animPropObj[prefix + 'Duration'] = '1s';
       }
-      animPropObj[prefix + 'TimingFunction'] = 'linear';
+
+      if (name.toLowerCase.indexOf('player') > -1) {
+        animPropObj[prefix + 'TimingFunction'] = 'linear';
+      }
 
       return animPropObj
     }
@@ -239,6 +275,7 @@ angular.module('uguru.admin')
         apc.gPlayer.element.style['webkitAnimation'] = UtilitiesService.replaceAll(style, 'running', 'paused');
         apc.gPlayer.paused = true;
         apc.gPlayer.reset = true;
+        apc.gPlayer.active = false;
 
       } catch(e) {
         console.log('BS Ionic error - please tell samir if the pause is funky')
@@ -259,6 +296,7 @@ angular.module('uguru.admin')
       apc.gPlayer.element.style['webkitAnimation'] = '';
       apc.gPlayer.element.style['offsetWidth'] = null;
       apc.gPlayer.reset = false;
+      apc.gPlayer.active = false;
       apc.gPlayer.paused = false;
       apc.gPlayer.element.style['webkitAnimation'] = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
       // var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
@@ -286,7 +324,9 @@ angular.module('uguru.admin')
     }
 
     function playAll(property_arr) {
+      apc.gPlayer.active = true;
       if (apc.gPlayer.paused) {
+        apc.gPlayer.paused = false;
         apc.gPlayer.resume();
         return;
       }
@@ -309,12 +349,19 @@ angular.module('uguru.admin')
         property_arr[i].animation.str = convertAnimPropObjToString(property_arr[i].animation);
         animStr += property_arr[i].animation.str;
         if (i === property_arr.length-1) {
-          var endCallback = function(e) {
-            apc.gPlayer.paused = false;
+          var endCallback = function(player) {
+            return function(e) {
+              player.paused = false;
+              player.reset = false;
+              player.active = false;
+              $timeout(function() {
+                $scope.$apply();
+              })
+            }
           }
           maxDurationProp.animation.listeners = {
             start: getStartListener(maxDurationProp.element),
-            end: getEndListener(maxDurationProp.element, endCallback)
+            end: getEndListener(maxDurationProp.element, endCallback(apc.gPlayer))
           }
           property_arr[i].element.style['webkitAnimation'] =  animStr;
 
@@ -324,9 +371,11 @@ angular.module('uguru.admin')
       }
     }
 
-
     var propertyOne = {name: 'transform', start: 'translateX(-1000%) rotate(-360deg) scale(0.1)', end: 'translateX(10%) rotate(720deg) scale(1.25)', duration:2000, timingFunction:'linear', ease: 'elastic', playbar:null, unit: 0}
     var propertyTwo = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
+    // var propertyOne = {name: 'transform', start: 'scale(0.6)', end: 'scale(1)', duration:1000, timingFunction:'linear', ease: 'easeOutBounce', playbar:null, unit: 0}
+    // var propertyTwo = {name: 'opacity', start: '0', end: '1', duration:1000, timingFunction:'ease-out', ease: 'easeInExpo', playbar:null, unit: 0}
+    // var propertyThree = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
 
     apc.properties = [propertyOne, propertyTwo];
 
@@ -334,12 +383,7 @@ angular.module('uguru.admin')
       console.log(apc.properties[0])
       var inspectElemId = '#svg-square-rect';
       var elem = document.querySelector('[inspector-elem]');
-
-      console.log(elem);
       parsePropertiesAndPlay(apc.properties, elem);
-      // $timeout(function() {
-      //   changeDirection(apc.properties[0]);
-      // }, 500)
     }, 2000)
 
 
@@ -350,34 +394,28 @@ angular.module('uguru.admin')
       property.player.playElement.style['webkitAnimation'] = playerStyle.replace('running', 'paused');
       property.player.paused = true;
       property.player.reset = true;
+      property.player.active = false;
     }
 
     function resetOne(property, cb) {
-      var tempoOffsetWidth = apc.gPlayer.element.style['offsetWidth']
-      var playerTempOffsetWidth = property.player.playElement.style['offsetWidth'];
+      // var tempoOffsetWidth = apc.gPlayer.element.style['offsetWidth']
+      // var playerTempOffsetWidth = property.player.playElement.style['offsetWidth'];
       var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
       var playerStyle = window.getComputedStyle(property.player.element)['webkitAnimation'];
 
 
       var newPausedStyle = UtilitiesService.replaceAll(style, 'running', 'paused');
       var newPausedPlayerStyle = UtilitiesService.replaceAll(playerStyle, 'running', 'paused');
-      property.player.reset = false;
-      property.player.paused = false;
+      console.log('current:', style, 'reset:', newPausedStyle);
 
-      apc.gPlayer.element.style['webkitAnimation'] = newPausedStyle;
-      property.player.playElement.style['webkitAnimation'] = newPausedPlayerStyle;
-
-      console.log(property.player.element.style['webkitAnimation']);
+      apc.gPlayer.element.style['webkitAnimation'] = '';
+      property.player.playElement.style['webkitAnimation'] = '';
 
       apc.gPlayer.element.style['offsetWidth'] = null;
       property.player.playElement.style['offsetWidth'] = null;
-      property.player.reset = false;
-      property.player.paused = false;
 
       property.player.element.style['webkitAnimation'] = newPausedStyle;
       property.player.playElement.style['webkitAnimation'] = newPausedPlayerStyle;
-      console.log(newPausedStyle, newPausedPlayerStyle);
-
 
     }
 
@@ -388,33 +426,85 @@ angular.module('uguru.admin')
       property.player.playElement.style['webkitAnimation'] = playerStyle.replace('paused', 'running');
     }
 
-    function jumpOne(property, cb) {
-      var animationName = property.animation.name;
-      var style = window.getComputedStyle(property.element)['webkitAnimation'];
-      var isAnimationInStyle = style.indexOf(animationName);
-      if (isAnimationInStyle > -1) {
-        var styleSplit = style.split(animationName)
-        var previousAnim = styleSplit[0];
-        var thisAnimSplit = styleSplit[1].split(', ');
-        var remainingAnim = thisAnimSplit[1] && thisAnimSplit[1].join(", ") || '';
-        var animStr = animationName + thisAnimSplit[0];
-        var updated = previousAnim + animStr.replace('running', 'paused') + remainingAnim;
-        property.element.style['webkitAnimation'] = updated;
-        updated = previousAnim + updated.replace('0s', '-1s') + remainingAnim;
-        property.element.style['webkitAnimation'] = updated
-        updated = previousAnim + updated.replace('normal', 'reverse') + remainingAnim;
-        property.element.style['webkitAnimation'] = updated;
-        updated = previousAnim + updated.replace('running', 'paused') + remainingAnim;;
-        property.element.style['webkitAnimation'] = updated;
+    function stepAll(properties, direction, cb) {
+      var time = apc.gPlayer.defaults.stepTime;
+      if (!direction) direction = '+';
+      if (direction === '+') {
+        apc.gPlayer.play(properties);
+
+
+        // apc.gPlayer.element.style['webkitAnimation'] = style;
+        // property.player.playElement.style['webkitAnimation'] = animPlayerStr;
         $timeout(function() {
-          property.element.style['webkitAnimation'] = previousAnim + updated.replace('paused', 'running') + remainingAnim;
-        }, 50);
+          apc.gPlayer.pause(properties);
+        }, time)
+      }
+
+    }
+
+    function stepOne(property, time, direction, cb) {
+      if (!time) {
+        time = property.defaults.stepTime;
+      } else {
+        time = parseInt(time);
+      }
+      if (!direction) direction = '+';
+      var animationName = property.animation.name;
+
+      var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
+      var playerStyle = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
+      var isAnimationInStyle = style.indexOf(animationName);
+      var animStr;
+
+      // its starting
+      animPlayerStr = convertAnimPropObjToString(property.player.animation);
+      if (isAnimationInStyle === -1) {
+        style = convertAnimPropObjToString(property.animation);
+      }
+
+      UtilitiesService.replaceAll(style, 'paused', 'running');
+      UtilitiesService.replaceAll(animPlayerStr, 'paused', 'running');
+
+      if (direction === '+') {
+        property.player.play(property);
+        // apc.gPlayer.element.style['webkitAnimation'] = style;
+        // property.player.playElement.style['webkitAnimation'] = animPlayerStr;
+        $timeout(function() {
+          property.player.pause(property);
+        }, time)
+      }
+
+    }
+
+    function jumpAll() {
+
+      // console.log(animStr);
+
+      var styleSplit = style.split(animationName)
+      var previousAnim = styleSplit[0] || '';
+      var thisAnimSplit = styleSplit[1].split(', ');
+      var remainingAnim = thisAnimSplit[1] && thisAnimSplit[1].join(", ") || '';
+      console.log('previous:', previousAnim, '\n' + 'targetted:', thisAnimSplit, '\n' + 'remaining:', remainingAnim);
+        // var animStr = animationName + thisAnimSplit[0];
+        // var updated = previousAnim + animStr.replace('running', 'paused') + remainingAnim;
+
+        // console.log('ready to jump');
+
+        // property.element.style['webkitAnimation'] = updated;
+        // updated = previousAnim + updated.replace('0s', '-1s') + remainingAnim;
+        // property.element.style['webkitAnimation'] = updated
+        // updated = previousAnim + updated.replace('normal', 'reverse') + remainingAnim;
+        // property.element.style['webkitAnimation'] = updated;
+        // updated = previousAnim + updated.replace('running', 'paused') + remainingAnim;;
+        // property.element.style['webkitAnimation'] = updated;
+        // $timeout(function() {
+        //   property.element.style['webkitAnimation'] = previousAnim + updated.replace('paused', 'running') + remainingAnim;
+        // }, 50);
 
         // console.log(property.element.style['webkitAnimation']);
         // property.element.style['webkitAnimation'] = previousAnim + animStr.replace('paused', 'running') + remainingAnim;
         // property.element.style['webkitAnimation'] = previousAnim + cb && cb(animStr); + remainingAnim;
 
-      }
     }
 
     function changeDirection(property, direction) {
@@ -432,7 +522,7 @@ angular.module('uguru.admin')
     }
 
     function playOne(property, cb_start, cb_end) {
-
+      property.player.active = true;
       if (property.player.paused) {
         property.player.paused = false;
         property.player.reset = false;
@@ -447,9 +537,20 @@ angular.module('uguru.admin')
       if (!property.animation.listeners) property.animation.listeners = {};
       if (!property.animation.listeners.start) property.animation.listeners.start = getStartListener(property.element,cb_start);
       if (!property.animation.listeners.end) property.animation.listeners.end = getEndListener(property.element,cb_end);
+      var endCallback = function(property) {
+        return function(e) {
+          property.player.paused = false;
+          property.player.reset = false;
+          property.player.active = false;
+          $timeout(function() {
+            $scope.$apply();
+          })
+        }
+      }
+
       property.animation.listeners = {
         start: getStartListener(property.element),
-        end: getEndListener(property.element)
+        end: getEndListener(property.element, endCallback(property))
       }
 
       property.player.animation.listeners = {
@@ -504,10 +605,11 @@ angular.module('uguru.admin')
     }
 
     function resetAnimation(element) {
-      return function() {
+      return function(property) {
         var style = window.getComputedStyle(element)['webkitAnimation'];
         var newPausedStyle = UtilitiesService.replaceAll(style, 'running', 'paused');
         var tempoOffsetWidth = element.style['offsetWidth'] = null;
+
         element.style['webkitAnimation'] = newPausedStyle;
         element.style['webkitAnimation'] = '';
         element.style['offsetWidth'] = null;
@@ -525,7 +627,6 @@ angular.module('uguru.admin')
       }
       function getStartListener(element, cb) {
           return element.addEventListener('webkitAnimationStart', function(e) {
-            console.log(e.animationName, 'has started')
             cb && cb(e)
           })
       }
@@ -691,4 +792,3 @@ angular.module('uguru.admin')
   }
 
 ])
-
