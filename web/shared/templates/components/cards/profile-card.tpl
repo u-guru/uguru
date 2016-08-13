@@ -105,7 +105,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Go to line 327 on AdminPropertyContgroller to add-->
+	<!-- Go to line 327 on AdminPropertyController to add-->
 	<ul class="pf-card-stack slate" ng-if='activeType === "stack"' inspector-elem>
 		<li init-with="p:[tr:translateY(-30px) scale(0.8)]">
 			<div style="min-width: 300px"
