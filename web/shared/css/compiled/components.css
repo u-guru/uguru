@@ -16014,6 +16014,18 @@ input[type=range] {
         background: #934073;
         color: white; }
 
+.playing-card-stack-enter {
+  animation: playing-card-stack-enter 2000ms linear forwards; }
+
+.playing-card-stack-rotate {
+  animation: playing-card-stack-rotate 2000ms linear forwards; }
+
+.playing-card-drop {
+  animation: playing-card-drop 2000ms linear forwards; }
+
+.playing-card-rotate {
+  animation: playing-card-rotate 200ms linear forwards; }
+
 @keyframes playing-card-rotate {
   0% {
     transform: rotateX(0deg) rotateY(0deg); }
@@ -16022,7 +16034,7 @@ input[type=range] {
   66.6667% {
     transform: rotateX(75.6deg) rotateY(4.2deg); }
   100% {
-    transform: rotateX(89.1deg) rotateY(4.95deg); } }
+    transform: rotateX(90deg) rotateY(5deg); } }
 @keyframes playing-card-drop {
   0% {
     transform: translate3d(0px, 0px, 0px); }
@@ -16057,7 +16069,7 @@ input[type=range] {
   93.75% {
     transform: translate3d(0px, 297px, 0px); }
   100% {
-    transform: translate3d(0px, 299.52px, 0px); } }
+    transform: translate3d(0px, 300px, 0px); } }
 @keyframes playing-card-stack-enter {
   0% {
     transform: translate3d(-600px, -300px, 0px); }
@@ -16127,7 +16139,7 @@ input[type=range] {
   93.75% {
     transform: rotateY(-81deg); }
   100% {
-    transform: rotateY(-80.16deg); } }
+    transform: rotateY(-80deg); } }
 .playing-card-container {
   position: relative;
   width: 125px;
