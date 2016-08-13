@@ -1,19 +1,19 @@
 @import 'mixin';
 
 .playing-card-stack-enter {
-	animation: playing-card-stack-enter 2000ms linear forwards;
+	animation: playing-card-stack-enter 2000ms linear;
 }
 
 .playing-card-stack-rotate {
-	animation: playing-card-stack-rotate 2000ms linear forwards;
+	animation: playing-card-stack-rotate 2000ms linear;
 }
 
 .playing-card-drop {
-	animation: playing-card-drop 2000ms linear forwards;
+	animation: playing-card-drop 2000ms linear;
 }
 
 .playing-card-rotate {
-	animation: playing-card-rotate 200ms linear forwards;
+	animation: playing-card-rotate 200ms linear;
 }
 
 @keyframes playing-card-rotate {
@@ -94,7 +94,9 @@
 		top: 0;
 		left: 0;
 		&:nth-child(odd) {
-			background: $smoke;
+			> div {
+				background: $smoke;
+			}
 		}
 	}
 }

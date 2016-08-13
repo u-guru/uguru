@@ -694,9 +694,9 @@
 
 			<div class="playing-card play-club"
 				init-with="p:[tr:translate3d(0#0#0)]"
-				when-playing-card-init="c:[playing-card-drop:add:delay-200] | p:[tr:translate3d(0#300px#0):delay-2200]">
+				when-playing-card-init="c:[playing-card-drop:add:delay-400] | p:[tr:translate3d(0#300px#0):delay-2400]">
 				<div init-with="p:[tr:rotateX(0) rotateY(0)]"
-					when-playing-card-init="c:[playing-card-rotate:add:delay-200] | p:[tr:rotateX(90deg) rotateY(5deg):delay-400]">
+					when-playing-card-init="c:[playing-card-rotate:add:delay-400] | p:[tr:rotateX(90deg) rotateY(5deg):delay-600]">
 					<svg viewBox="0 0 250 350">
 						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M181,114.589487 C181,98.2465582 167.776199,85 151.466344,85 C139.864282,85 129.833984,91.6958698 125.003748,101.438048 C120.163517,91.6958698 110.140715,85 98.5361549,85 C82.228799,85 69,98.2465582 69,114.589487 C69,153.630788 124.386538,175 124.386538,175 C124.386538,175 181,153.360451 181,114.589487 L181,114.589487 Z" class="heart" stroke="#F04F54" stroke-width="3" fill="#F04F54"></path>
@@ -713,9 +713,9 @@
 
 			<div class="playing-card play-club"
 				init-with="p:[tr:translate3d(0#0#0)]"
-				when-playing-card-init="c:[playing-card-drop:add:delay-100] | p:[tr:translate3d(0#300px#0):delay-2100]">
+				when-playing-card-init="c:[playing-card-drop:add:delay-200] | p:[tr:translate3d(0#300px#0):delay-2200]">
 				<div init-with="p:[tr:rotateX(0) rotateY(0)]"
-					when-playing-card-init="c:[playing-card-rotate:add:delay-100] | p:[tr:rotateX(90deg) rotateY(5deg):delay-300]">
+					when-playing-card-init="c:[playing-card-rotate:add:delay-200] | p:[tr:rotateX(90deg) rotateY(5deg):delay-400]">
 					<svg viewBox="0 0 250 350">
 						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M181,114.589487 C181,98.2465582 167.776199,85 151.466344,85 C139.864282,85 129.833984,91.6958698 125.003748,101.438048 C120.163517,91.6958698 110.140715,85 98.5361549,85 C82.228799,85 69,98.2465582 69,114.589487 C69,153.630788 124.386538,175 124.386538,175 C124.386538,175 181,153.360451 181,114.589487 L181,114.589487 Z" class="heart" stroke="#F04F54" stroke-width="3" fill="#F04F54"></path>

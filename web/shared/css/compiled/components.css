@@ -16015,16 +16015,16 @@ input[type=range] {
         color: white; }
 
 .playing-card-stack-enter {
-  animation: playing-card-stack-enter 2000ms linear forwards; }
+  animation: playing-card-stack-enter 2000ms linear; }
 
 .playing-card-stack-rotate {
-  animation: playing-card-stack-rotate 2000ms linear forwards; }
+  animation: playing-card-stack-rotate 2000ms linear; }
 
 .playing-card-drop {
-  animation: playing-card-drop 2000ms linear forwards; }
+  animation: playing-card-drop 2000ms linear; }
 
 .playing-card-rotate {
-  animation: playing-card-rotate 200ms linear forwards; }
+  animation: playing-card-rotate 200ms linear; }
 
 @keyframes playing-card-rotate {
   0% {
@@ -16150,7 +16150,7 @@ input[type=range] {
     position: absolute;
     top: 0;
     left: 0; }
-    .playing-card-container .playing-card:nth-child(odd) {
+    .playing-card-container .playing-card:nth-child(odd) > div {
       background: #F1F1F1; }
 
 .playing-card {
