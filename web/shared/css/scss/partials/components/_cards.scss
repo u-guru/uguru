@@ -1,5 +1,57 @@
 @import '../mixin';
 
+.playing-card-container {
+	position: relative;
+	width: 125px;
+	height: 175px;
+	.playing-card {
+		position: absolute;
+		top: 0;
+		left: 0;
+		&:nth-child(odd) {
+			background: $smoke;
+		}
+	}
+}
+.playing-card {
+	width: 125px;
+	height: 175px;
+	background: white;
+	border-radius: 10px;
+}
+.play-heart {
+	.diamond, .spade, .club {
+		display: none;
+	}
+	text {
+		fill: $auburn;
+	}
+}
+.play-diamond {
+	.heart, .spade, .club {
+		display: none;
+	}
+	text {
+		fill: $auburn;
+	}
+}
+.play-spade {
+	.diamond, .heart, .club {
+		display: none;
+	}
+	text {
+		fill: $slate;
+	}
+}
+.play-club {
+	.diamond, .spade, .heart {
+		display: none;
+	}
+	text {
+		fill: $slate;
+	}
+}
+
 // containers
 .pf-card-stack {
 	position: relative;

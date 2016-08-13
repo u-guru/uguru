@@ -2847,6 +2847,43 @@ fieldset.no-border * {
             width: 30px;
             height: 15px; }
 
+.playing-card-container {
+  position: relative;
+  width: 125px;
+  height: 175px; }
+  .playing-card-container .playing-card {
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .playing-card-container .playing-card:nth-child(odd) {
+      background: #F1F1F1; }
+
+.playing-card {
+  width: 125px;
+  height: 175px;
+  background: white;
+  border-radius: 10px; }
+
+.play-heart .diamond, .play-heart .spade, .play-heart .club {
+  display: none; }
+.play-heart text {
+  fill: #F04F54; }
+
+.play-diamond .heart, .play-diamond .spade, .play-diamond .club {
+  display: none; }
+.play-diamond text {
+  fill: #F04F54; }
+
+.play-spade .diamond, .play-spade .heart, .play-spade .club {
+  display: none; }
+.play-spade text {
+  fill: #40484B; }
+
+.play-club .diamond, .play-club .spade, .play-club .heart {
+  display: none; }
+.play-club text {
+  fill: #40484B; }
+
 .pf-card-stack {
   position: relative; }
   .pf-card-stack > li:not(:last-child) {
