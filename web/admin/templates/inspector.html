@@ -181,7 +181,16 @@
 								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.pause(property)' when-show-pause="p:[opacity:1, scale(1)]:easeIntQuint"  ng-include='"shared/templates/components/svg/main/pause.html"'></a>
 							</li>
                             <li>
-                                <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.step(property, 100, "+")' ng-include='"shared/templates/components/svg/main/skip.html"'></a>
+                                <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.step(property, property.settings.stepSlowSpeed, "+")' ng-include='"shared/templates/components/svg/main/skip.html"'></a>
+                            </li>
+                            <li>
+
+                                <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus ugrid-2' ng-click='property.player.step(property, property.settings.stepSpeed.fast, "+")'>
+                                    <span style='transform:scale(0.8); padding:0 !important;' ng-include='"shared/templates/components/svg/main/skip.html"'>
+                                    </span>
+                                    <span style='transform:scale(0.66);margin-left:-10%;padding:0 !important;' ng-include='"shared/templates/components/svg/main/skip.html"'>
+                                    </span>
+                                </a>
                             </li>
 							<li>
 								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.resetAnim(property)' ng-include='"shared/templates/components/svg/main/sync.html"'></a>
@@ -215,6 +224,9 @@
 						</ul> -->
                     </div>
                     <div class='relative flex-wrap-center width-66p p20xy'>
+                        <div class='bottom-0 left-0 p15-grid ugrid-2 absolute weight-900' style='margin-bottom:-2.5%;'>
+                            {{property.player.timer.display.s}}/{{property.player.timer.durationDisplay.s}}
+                        </div>
                         <div class='absolute' style='width:90%; right:5%;'>
                             <svg ng-mousedown='property.addKeyFrame($event)' ng-mouseover="apc.showPercentage($event, animation)" class='full-x relative' viewBox="0 0 200 1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
                             <!--  -->
@@ -272,6 +284,24 @@
 							<div class="m20top">
                             	<input ng-change="property.player.update('fillMode')" type='range' size="2" ng-model="property.player.delay"/>
 							</div>
+                        </li>
+                        <li>
+                            <span class="flex radius-2 overflow-hidden">
+                                <span class="bg-campus height-36 p10x flex-center-vertical">Step Fast Speed:</span>
+                                <span class="bg-white txt-slate p10x flex-center-vertical">{{property.settings.stepSpeed.fast}}ms</span>
+                            </span>
+                            <div class="m20top">
+                                <input type='range' max="{{property.settings.stepSpeed.fastRange.max}}" min="{{property.settings.stepSpeed.fastRange.min}}" ng-model="property.settings.stepSpeed.fast"/>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="flex radius-2 overflow-hidden">
+                                <span class="bg-campus height-36 p10x flex-center-vertical">Step Slow Speed:</span>
+                                <span class="bg-white txt-slate p10x flex-center-vertical">{{property.settings.stepSpeed.slow}}ms</span>
+                            </span>
+                            <div class="m20top">
+                                <input type='range' max="{{property.settings.stepSpeed.slowRange.max}}" min="{{property.settings.stepSpeed.slowRange.min}}" ng-model="property.settings.stepSpeed.slow"/>
+                            </div>
                         </li>
                         <li>
 							<span class="flex radius-2 overflow-hidden">

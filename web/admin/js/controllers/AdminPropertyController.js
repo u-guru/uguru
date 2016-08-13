@@ -4,12 +4,11 @@ angular.module('uguru.admin')
   '$scope',
   '$state',
   '$timeout',
-  '$interval',
   '$localstorage',
   'AnimationService',
   'UtilitiesService',
   'TweenService',
-  function($scope, $state, $timeout, $interval, $localstorage, AnimationService, UtilitiesService, TweenService) {
+  function($scope, $state, $timeout, $localstorage, AnimationService, UtilitiesService, TweenService) {
     var apc = this;
 
     apc.animationArr = getAllCSSAnimation();
@@ -55,19 +54,19 @@ angular.module('uguru.admin')
 
         properties[i].animation = initAnimationWithEase(property, i);
         properties[i].player = {offset:0, play: playOne, resetAnim: resetOne, resume: playOne, step: stepOne, pause: pauseOne};
-        properties[i].player.timer = getTimer(property)
+
         properties[i].player.element = document.querySelector('.property-playbar-' + i);
 
         properties[i].keyframes = convertAnimObjToKF(property.animation.obj);
         properties[i].player.update = getUpdatePropertyAnimationFunc(i);
         properties[i].defaults = {stepTime: 100};
         properties[i].settings = initSettingsWithCurrentAnimationValues(properties[i]);
+        properties[i].player.timer = getTimer(property);
 
         //player specific
         var playballDict = initPlayerBallAnimation(property);
         properties[i].player.animation = initAnimationWithEase(playballDict, 'Player');
         properties[i].player.playElement = document.querySelector('.property-playball-' + i);
-        console.log(properties[i].player.playElement);
         properties[i].player.playKeyframes = convertAnimObjToKF(property.player.animation.obj);
       })
       // transformProp.start.length && transformProp.end.length && properties.push(transformProp);
@@ -79,13 +78,76 @@ angular.module('uguru.admin')
       return {name: 'transform',  start: 'translateX(0px)',  end: 'translateX(' +  (width * 0.11) + 'px)',  duration:property.duration,  timingFunction:property.timingFunction, ease: 'linear',  unit: 0}
     }
 
-    function getTimer(property) {
-      var timer = {};
-      return {
-        // start: startTimer(),
-        // pause: pauseTimer(),
-        // resume: resumeTimer(),
-        // reset: resetTimer()
+    function getTimer(property, precision) {
+      if (!precision) precision = 3
+      var intervalLength = 100;//ms
+      var timer = {
+        value: 0,
+        startRef: null,
+        interval: null,
+        display: {s: 0, ms: 0},
+        duration: property.settings.duration.val
+      };
+      timer.start = startTimer(timer);
+      timer.pause = pauseTimer(timer);
+      timer.resume = resumeTimer(timer);
+      timer.reset = resetTimer(timer);
+      timer.durationDisplay = {s: (timer.duration/1000).toFixed(precision) + 's', ms: (timer.duration) + 'ms'};
+      return timer;
+      function resumeTimer(timer) {
+        return function() {
+          timer.start();
+          // var current = new Date().getTime();
+          // timer.startRef = current;
+          // timer.interval = setInterval(function() {
+          //   timer.value += intervalLength;
+          //   timer.startRef = new Date().getTime();
+          //   timer.display.ms = timer.value;
+          //   timer.display.s = (parseFloat(timer.value)/1000).toFixed(1);
+          //   $timeout(function() {$scope.$apply()});
+          // }, intervalLength)
+        }
+      }
+      function startTimer(timer) {
+        return function() {
+          timer.startRef = new Date().getTime();
+
+          clearInterval(timer.interval);
+          timer.interval = null;
+          timer.interval = setInterval(function() {
+            timer.value += intervalLength;
+            timer.startRef = new Date().getTime();
+            timer.display.ms = timer.value;
+            timer.display.s = (parseFloat(timer.value)/1000).toFixed(precision);
+            $timeout(function() {$scope.$apply()});
+          }, intervalLength)
+        }
+      }
+      function resetTimer(timer) {
+        return function() {
+          timer.pause();
+          timer.startRef = null;
+          timer.value = 0;
+          timer.interval = null;
+          timer.display.s = 0;
+          timer.display.ms = 0
+          timer.durationDisplay = {s: (timer.duration/1000).toFixed(precision) + 's', ms: (timer.duration) + 'ms'};
+          $timeout(function() {$scope.$apply()});
+          timer.interval = null;
+        }
+
+      }
+      function pauseTimer(timer) {
+        return function() {
+          clearInterval(timer.interval);
+          timer.interval = null;
+          var current = new Date().getTime();
+          timer.value +=  current - timer.startRef;
+          timer.startRef = new Date().getTime();
+          timer.display.ms = timer.value;
+          timer.display.s = (parseFloat(timer.value)/1000).toFixed(1);
+
+        }
       }
     }
 
@@ -113,6 +175,18 @@ angular.module('uguru.admin')
         delay : {
             range: {max: 3000, min:0, step: 100 },
               val:delayVal , display: animation.delay + ''
+        },
+        stepSpeed: {
+          fast: 250,
+          slow:50,
+          slowRange: {
+            max: 250,
+            min:16
+          },
+          fastRange: {
+            min: 250,
+            max: durationVal/2
+          }
         },
         iterationCount: {val: property.animation.duration || 1, str: animation.iterationCount + ''},
         update: onSettingChange(property),
@@ -403,6 +477,7 @@ angular.module('uguru.admin')
 
 
     function pauseOne(property, cb) {
+      property.player.timer.pause();
       var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
       var playerStyle =window.getComputedStyle(property.player.playElement)['webkitAnimation'];
       apc.gPlayer.element.style['webkitAnimation'] = style.replace('running', 'paused');
@@ -410,6 +485,7 @@ angular.module('uguru.admin')
       property.player.paused = true;
       property.player.reset = true;
       property.player.active = false;
+
     }
 
     function resetOne(property, cb) {
@@ -417,7 +493,7 @@ angular.module('uguru.admin')
       // var playerTempOffsetWidth = property.player.playElement.style['offsetWidth'];
       var style = window.getComputedStyle(apc.gPlayer.element)['webkitAnimation'];
       var playerStyle = window.getComputedStyle(property.player.element)['webkitAnimation'];
-
+      property.player.timer.reset();
 
       var newPausedStyle = UtilitiesService.replaceAll(style, 'running', 'paused');
       var newPausedPlayerStyle = UtilitiesService.replaceAll(playerStyle, 'running', 'paused');
@@ -439,6 +515,7 @@ angular.module('uguru.admin')
       var playerStyle =window.getComputedStyle(property.player.playElement)['webkitAnimation'];
       apc.gPlayer.element.style['webkitAnimation'] = style.replace('paused', 'running');
       property.player.playElement.style['webkitAnimation'] = playerStyle.replace('paused', 'running');
+      property.player.timer.resume();
     }
 
     function stepAll(properties, direction, cb) {
@@ -538,6 +615,7 @@ angular.module('uguru.admin')
 
     function playOne(property, cb_start, cb_end) {
       // property.player.startTime();
+      property.player.timer.start();
       property.player.active = true;
       if (property.player.paused) {
         property.player.paused = false;
@@ -558,6 +636,8 @@ angular.module('uguru.admin')
           property.player.paused = false;
           property.player.reset = false;
           property.player.active = false;
+          property.player.timer.reset();
+          clearInterval(property.player.timer.interval);
           $timeout(function() {
             $scope.$apply();
           })
@@ -625,7 +705,6 @@ angular.module('uguru.admin')
         var style = window.getComputedStyle(element)['webkitAnimation'];
         var newPausedStyle = UtilitiesService.replaceAll(style, 'running', 'paused');
         var tempoOffsetWidth = element.style['offsetWidth'] = null;
-
         element.style['webkitAnimation'] = newPausedStyle;
         element.style['webkitAnimation'] = '';
         element.style['offsetWidth'] = null;
