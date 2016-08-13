@@ -68,7 +68,8 @@ function TweenService() {
         return animatableProps;
     }
 
-    function getKeyframeValues(start_dict, end_dict, duration, easeFunc, kf_arr) {
+    function getKeyframeValues(start_dict, end_dict, duration, easeFunc, kf_arr, max_keyframe) {
+        if (!max_keyframe) max_keyframe = 30;
         //{ x: 0,  y: 50  }
         //{ x: 10, y: -30 }
         var tweenable = new Tweenable();
@@ -79,19 +80,20 @@ function TweenService() {
           to:   end_dict,
           duration: duration,
           easing: easeFunc
-        }).seek(0);
-        var intervals = parseInt(duration/60);
+        })
+        var intervals = Math.min(parseInt(duration/1000 * 60), max_keyframe*(duration/1000));
         console.log(intervals);
-        for (var i = 0; i < intervals + 1; i++) {
+        for (var i = 0; i < (intervals + 2); i++) {
 
-            tweenable.seek(i*60);
+            tweenable.seek(i*(intervals));
             tweenable.resume();
             kf_arr.push(tweenable.get());
             // console.log(tweenable.get());
         }
-        kf_arr.forEach(function(kf, i) {kf_arr[i].percentage = i * (100/intervals)})
+        kf_arr.forEach(function(kf, i) {kf_arr[i].percentage = i * (100/(intervals + 1))})
         // kf_arr.forEach(function(kf, i) {console.log(kf.percentage, kf[Object.keys(start_dict)[0]])})
         return kf_arr;
+
     }
 
 }
