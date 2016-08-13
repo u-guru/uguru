@@ -80,18 +80,23 @@ function TweenService() {
           to:   end_dict,
           duration: duration,
           easing: easeFunc
-        })
-        var intervals = Math.min(parseInt(duration/1000 * 60), max_keyframe*(duration/1000));
-        console.log(intervals);
+        }).seek(0)
+        var intervals = (duration/1000 * 60)/2;
+        var chunkSize = duration/intervals
         for (var i = 0; i < (intervals + 2); i++) {
 
-            tweenable.seek(i*(intervals));
-            tweenable.resume();
+
+
+            tweenable.seek(i*chunkSize);
             kf_arr.push(tweenable.get());
+            tweenable.resume();
             // console.log(tweenable.get());
         }
-        kf_arr.forEach(function(kf, i) {kf_arr[i].percentage = i * (100/(intervals + 1))})
+        console.log(kf_arr);
+        // kf_arr.forEach(function(kf, i) {kf_arr[i].percentage = i * (100/(intervals + 2))})
         // kf_arr.forEach(function(kf, i) {console.log(kf.percentage, kf[Object.keys(start_dict)[0]])})
+        kf_arr.forEach(function(kf, i) {kf_arr[i].percentage = i/(kf_arr.length - 1) * 100})
+        console.log(kf_arr[0], kf_arr[kf_arr.length - 1])
         return kf_arr;
 
     }

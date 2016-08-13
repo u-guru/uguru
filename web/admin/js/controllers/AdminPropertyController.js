@@ -54,8 +54,10 @@ angular.module('uguru.admin')
         }
 
         properties[i].animation = initAnimationWithEase(property, i);
-        properties[i].player = {play: playOne, resetAnim: resetOne, resume: playOne, step: stepOne, pause: pauseOne};
+        properties[i].player = {offset:0, play: playOne, resetAnim: resetOne, resume: playOne, step: stepOne, pause: pauseOne};
+        properties[i].player.timer = getTimer(property)
         properties[i].player.element = document.querySelector('.property-playbar-' + i);
+
         properties[i].keyframes = convertAnimObjToKF(property.animation.obj);
         properties[i].player.update = getUpdatePropertyAnimationFunc(i);
         properties[i].defaults = {stepTime: 100};
@@ -75,6 +77,16 @@ angular.module('uguru.admin')
     function initPlayerBallAnimation(property) {
       var width = property.player.element.getBoundingClientRect().width;
       return {name: 'transform',  start: 'translateX(0px)',  end: 'translateX(' +  (width * 0.11) + 'px)',  duration:property.duration,  timingFunction:property.timingFunction, ease: 'linear',  unit: 0}
+    }
+
+    function getTimer(property) {
+      var timer = {};
+      return {
+        // start: startTimer(),
+        // pause: pauseTimer(),
+        // resume: resumeTimer(),
+        // reset: resetTimer()
+      }
     }
 
     function getUpdatePropertyAnimationFunc(index) {
@@ -176,10 +188,12 @@ angular.module('uguru.admin')
       anim.keyframes = [];
       kf_arr = TweenService.getKeyframeValues(startDict, endDict, anim.duration, anim.ease, anim.keyframes);
       anim.duration = formatDuration(anim.duration);
-      for (var i = 0; i < kf_arr.length; i++) {
+      for (var i = 1; i < kf_arr.length; i++) {
         createFrameWithPropValue(anim_obj, options.name, kf_arr[i][options.name], kf_arr[i].percentage);
       }
+
       function createFrameWithPropValue(anim_obj, prop, value, percent) {
+        console.log()
         anim_obj.appendRule(percent + '% ' + '{' + prop + ':' + value + ';' + '}', percent);
       }
       anim.keyframes = convertAnimObjToKF(anim_obj);
@@ -371,7 +385,7 @@ angular.module('uguru.admin')
       }
     }
 
-    var propertyOne = {name: 'transform', start: 'translateX(-1000%) rotate(-360deg) scale(0.1)', end: 'translateX(10%) rotate(720deg) scale(1.25)', duration:2000, timingFunction:'linear', ease: 'elastic', playbar:null, unit: 0}
+    var propertyOne = {name: 'transform', start: 'translateX(-1000%) rotate(-360deg) scale(0.1)', end: 'translateX(10%) rotate(720deg) scale(1.25)', duration:2000, timingFunction:'linear', ease: 'easeOutQuad', playbar:null, unit: 0}
     var propertyTwo = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
 
 	// var propertyOne = {name: 'transform', start: 'rotateX(0deg) rotateY(0deg)', end: 'rotateX(90deg) rotateY(5deg)', duration:200, timingFunction:'linear', ease: 'easeOutQuad', playbar:null, unit: 0}
@@ -523,6 +537,7 @@ angular.module('uguru.admin')
     }
 
     function playOne(property, cb_start, cb_end) {
+      property.player.startTime();
       property.player.active = true;
       if (property.player.paused) {
         property.player.paused = false;
