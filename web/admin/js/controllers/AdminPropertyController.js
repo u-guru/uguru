@@ -177,7 +177,7 @@ angular.module('uguru.admin')
             range: {max: 3000, min:0, step: 100 },
               val:delayVal , display: animation.delay + ''
         },
-        resetAtEnd: false,
+        resetAtEnd: true,
         stepSpeed: {
           fast: 250,
           slow:50,
