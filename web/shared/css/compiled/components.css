@@ -2847,152 +2847,6 @@ fieldset.no-border * {
             width: 30px;
             height: 15px; }
 
-@keyframes playing-card-drop {
-  0% {
-    transform: translate3d(0px, 0px, 0px); }
-  6.25% {
-    transform: translate3d(0px, 34.92px, 0px); }
-  12.5% {
-    transform: translate3d(0px, 67.68px, 0px); }
-  18.75% {
-    transform: translate3d(0px, 98.28px, 0px); }
-  25% {
-    transform: translate3d(0px, 126.72px, 0px); }
-  31.25% {
-    transform: translate3d(0px, 153px, 0px); }
-  37.5% {
-    transform: translate3d(0px, 177.12px, 0px); }
-  43.75% {
-    transform: translate3d(0px, 199.08px, 0px); }
-  50% {
-    transform: translate3d(0px, 218.88px, 0px); }
-  56.25% {
-    transform: translate3d(0px, 236.52px, 0px); }
-  62.5% {
-    transform: translate3d(0px, 252px, 0px); }
-  68.75% {
-    transform: translate3d(0px, 265.32px, 0px); }
-  75% {
-    transform: translate3d(0px, 276.48px, 0px); }
-  81.25% {
-    transform: translate3d(0px, 285.48px, 0px); }
-  87.5% {
-    transform: translate3d(0px, 292.32px, 0px); }
-  93.75% {
-    transform: translate3d(0px, 297px, 0px); }
-  100% {
-    transform: translate3d(0px, 299.52px, 0px); } }
-@keyframes playing-card-stack-enter {
-  0% {
-    transform: translate3d(-600px, -300px, 0px); }
-  6.25% {
-    transform: translate3d(-530.16px, -300px, 0px); }
-  12.5% {
-    transform: translate3d(-464.64px, -300px, 0px); }
-  18.75% {
-    transform: translate3d(-403.44px, -300px, 0px); }
-  25% {
-    transform: translate3d(-346.56px, -300px, 0px); }
-  31.25% {
-    transform: translate3d(-294px, -300px, 0px); }
-  37.5% {
-    transform: translate3d(-245.76px, -300px, 0px); }
-  43.75% {
-    transform: translate3d(-201.84px, -300px, 0px); }
-  50% {
-    transform: translate3d(-162.24px, -300px, 0px); }
-  56.25% {
-    transform: translate3d(-126.96px, -300px, 0px); }
-  62.5% {
-    transform: translate3d(-96px, -300px, 0px); }
-  68.75% {
-    transform: translate3d(-69.36px, -300px, 0px); }
-  75% {
-    transform: translate3d(-47.04px, -300px, 0px); }
-  81.25% {
-    transform: translate3d(-29.04px, -300px, 0px); }
-  87.5% {
-    transform: translate3d(-15.36px, -300px, 0px); }
-  93.75% {
-    transform: translate3d(-6px, -300px, 0px); }
-  100% {
-    transform: translate3d(-0.96px, -300px, 0px); } }
-@keyframes playing-card-stack-rotate {
-  0% {
-    transform: rotateY(-180deg); }
-  6.25% {
-    transform: rotateY(-168.36deg); }
-  12.5% {
-    transform: rotateY(-157.44deg); }
-  18.75% {
-    transform: rotateY(-147.24deg); }
-  25% {
-    transform: rotateY(-137.76deg); }
-  31.25% {
-    transform: rotateY(-129deg); }
-  37.5% {
-    transform: rotateY(-120.96deg); }
-  43.75% {
-    transform: rotateY(-113.64deg); }
-  50% {
-    transform: rotateY(-107.04deg); }
-  56.25% {
-    transform: rotateY(-101.16deg); }
-  62.5% {
-    transform: rotateY(-96deg); }
-  68.75% {
-    transform: rotateY(-91.56deg); }
-  75% {
-    transform: rotateY(-87.84deg); }
-  81.25% {
-    transform: rotateY(-84.84deg); }
-  87.5% {
-    transform: rotateY(-82.56deg); }
-  93.75% {
-    transform: rotateY(-81deg); }
-  100% {
-    transform: rotateY(-80.16deg); } }
-.playing-card-container {
-  position: relative;
-  width: 125px;
-  height: 175px;
-  transform-origin: center center; }
-  .playing-card-container .playing-card {
-    position: absolute;
-    top: 0;
-    left: 0; }
-    .playing-card-container .playing-card:nth-child(odd) {
-      background: #F1F1F1; }
-
-.playing-card {
-  width: 125px;
-  height: 175px;
-  background: white;
-  border-radius: 10px;
-  transform-origin: center center; }
-  .playing-card * {
-    transform-origin: center center; }
-
-.play-heart .diamond, .play-heart .spade, .play-heart .club {
-  display: none; }
-.play-heart text {
-  fill: #F04F54; }
-
-.play-diamond .heart, .play-diamond .spade, .play-diamond .club {
-  display: none; }
-.play-diamond text {
-  fill: #F04F54; }
-
-.play-spade .diamond, .play-spade .heart, .play-spade .club {
-  display: none; }
-.play-spade text {
-  fill: #40484B; }
-
-.play-club .diamond, .play-club .spade, .play-club .heart {
-  display: none; }
-.play-club text {
-  fill: #40484B; }
-
 .pf-card-stack {
   position: relative; }
   .pf-card-stack > li:not(:last-child) {
@@ -16159,5 +16013,170 @@ input[type=range] {
       .calendar-week.bg-academic .cal-week > div .cal-month.has-link a:active, .calendar-week.bg-academic .cal-week > div .cal-month.has-link a.active {
         background: #934073;
         color: white; }
+
+@keyframes playing-card-rotate {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg); }
+  33.3333% {
+    transform: rotateX(45.9deg) rotateY(2.55deg); }
+  66.6667% {
+    transform: rotateX(75.6deg) rotateY(4.2deg); }
+  100% {
+    transform: rotateX(89.1deg) rotateY(4.95deg); } }
+@keyframes playing-card-drop {
+  0% {
+    transform: translate3d(0px, 0px, 0px); }
+  6.25% {
+    transform: translate3d(0px, 34.92px, 0px); }
+  12.5% {
+    transform: translate3d(0px, 67.68px, 0px); }
+  18.75% {
+    transform: translate3d(0px, 98.28px, 0px); }
+  25% {
+    transform: translate3d(0px, 126.72px, 0px); }
+  31.25% {
+    transform: translate3d(0px, 153px, 0px); }
+  37.5% {
+    transform: translate3d(0px, 177.12px, 0px); }
+  43.75% {
+    transform: translate3d(0px, 199.08px, 0px); }
+  50% {
+    transform: translate3d(0px, 218.88px, 0px); }
+  56.25% {
+    transform: translate3d(0px, 236.52px, 0px); }
+  62.5% {
+    transform: translate3d(0px, 252px, 0px); }
+  68.75% {
+    transform: translate3d(0px, 265.32px, 0px); }
+  75% {
+    transform: translate3d(0px, 276.48px, 0px); }
+  81.25% {
+    transform: translate3d(0px, 285.48px, 0px); }
+  87.5% {
+    transform: translate3d(0px, 292.32px, 0px); }
+  93.75% {
+    transform: translate3d(0px, 297px, 0px); }
+  100% {
+    transform: translate3d(0px, 299.52px, 0px); } }
+@keyframes playing-card-stack-enter {
+  0% {
+    transform: translate3d(-600px, -300px, 0px); }
+  6.25% {
+    transform: translate3d(-530.16px, -300px, 0px); }
+  12.5% {
+    transform: translate3d(-464.64px, -300px, 0px); }
+  18.75% {
+    transform: translate3d(-403.44px, -300px, 0px); }
+  25% {
+    transform: translate3d(-346.56px, -300px, 0px); }
+  31.25% {
+    transform: translate3d(-294px, -300px, 0px); }
+  37.5% {
+    transform: translate3d(-245.76px, -300px, 0px); }
+  43.75% {
+    transform: translate3d(-201.84px, -300px, 0px); }
+  50% {
+    transform: translate3d(-162.24px, -300px, 0px); }
+  56.25% {
+    transform: translate3d(-126.96px, -300px, 0px); }
+  62.5% {
+    transform: translate3d(-96px, -300px, 0px); }
+  68.75% {
+    transform: translate3d(-69.36px, -300px, 0px); }
+  75% {
+    transform: translate3d(-47.04px, -300px, 0px); }
+  81.25% {
+    transform: translate3d(-29.04px, -300px, 0px); }
+  87.5% {
+    transform: translate3d(-15.36px, -300px, 0px); }
+  93.75% {
+    transform: translate3d(-6px, -300px, 0px); }
+  100% {
+    transform: translate3d(-0.96px, -300px, 0px); } }
+@keyframes playing-card-stack-rotate {
+  0% {
+    transform: rotateY(-180deg); }
+  6.25% {
+    transform: rotateY(-168.36deg); }
+  12.5% {
+    transform: rotateY(-157.44deg); }
+  18.75% {
+    transform: rotateY(-147.24deg); }
+  25% {
+    transform: rotateY(-137.76deg); }
+  31.25% {
+    transform: rotateY(-129deg); }
+  37.5% {
+    transform: rotateY(-120.96deg); }
+  43.75% {
+    transform: rotateY(-113.64deg); }
+  50% {
+    transform: rotateY(-107.04deg); }
+  56.25% {
+    transform: rotateY(-101.16deg); }
+  62.5% {
+    transform: rotateY(-96deg); }
+  68.75% {
+    transform: rotateY(-91.56deg); }
+  75% {
+    transform: rotateY(-87.84deg); }
+  81.25% {
+    transform: rotateY(-84.84deg); }
+  87.5% {
+    transform: rotateY(-82.56deg); }
+  93.75% {
+    transform: rotateY(-81deg); }
+  100% {
+    transform: rotateY(-80.16deg); } }
+.playing-card-container {
+  position: relative;
+  width: 125px;
+  height: 175px;
+  transform-origin: center center;
+  transform-style: preserve-3d; }
+  .playing-card-container .playing-card {
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .playing-card-container .playing-card:nth-child(odd) {
+      background: #F1F1F1; }
+
+.playing-card {
+  width: 125px;
+  height: 175px;
+  transform-origin: center center;
+  transform-style: preserve-3d; }
+  .playing-card * {
+    transform-origin: center center;
+    transform-style: preserve-3d; }
+  .playing-card > div {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 10px; }
+    .playing-card > div svg {
+      display: block;
+      width: 100%;
+      height: 100%; }
+
+.play-heart .diamond, .play-heart .spade, .play-heart .club {
+  display: none; }
+.play-heart text {
+  fill: #F04F54; }
+
+.play-diamond .heart, .play-diamond .spade, .play-diamond .club {
+  display: none; }
+.play-diamond text {
+  fill: #F04F54; }
+
+.play-spade .diamond, .play-spade .heart, .play-spade .club {
+  display: none; }
+.play-spade text {
+  fill: #40484B; }
+
+.play-club .diamond, .play-club .spade, .play-club .heart {
+  display: none; }
+.play-club text {
+  fill: #40484B; }
 
 /*# sourceMappingURL=components.css.map */
