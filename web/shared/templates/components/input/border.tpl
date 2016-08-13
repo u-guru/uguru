@@ -1,7 +1,9 @@
 <div class="full-xy flex-center p15xy" types='light, dark, search-light, search-dark, large-light, large-dark, search-large-light, search-large-dark' default-type="light" reference="https://codepen.io/teamuguru/pen/0dd0f5b893950ead5db6bc302daf956f?editors=1100, http://codepen.io/teamuguru/pen/553314ac263ad7c0cd070bdf53969aa1?editors=1100, http://codepen.io/teamuguru/pen/e73453ab175045bd429577c423c2cb47?editors=1100">
-	<div class="p15xy radius-2 bg-slate" ng-if='activeType === "light"'>
-		<fieldset>
-			<input disabled class="input-border light state-blur" type="email" required placeholder="" onclick="this.select()"/>
+	<div class="full-x" style="max-width:400px" ng-if='activeType === "light"'>
+		<div class="input-border">
+			<input class="input-border light" type="email" required placeholder=""
+				init-default
+				on-click="s:[input-clicked:public]"/>
 			<label>
 				<svg class="input-icon email-icon" viewBox="0 0 100 100">
 					<g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -14,14 +16,15 @@
 					</g>
 				</svg>
 				<span class="label">:blur</span>
-				<span class="input">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+				<span class="input"
+					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div>
 					<div></div>
 					<div></div>
 					<div></div>
 					<div></div>
 				</div>
-				<a>
+				<a init-with="p:[op:0]">
 					<svg viewBox="0 0 100 100">
 						<g fill="none" stroke-linecap="round" stroke-linejoin="round">
 							<circle cx="50" cy="50" r="36"></circle>
@@ -30,11 +33,11 @@
 					</svg>
 				</a>
 			</label>
-		</fieldset>
+		</div>
 	</div>
 
-	<div class="p15xy radius-2 bg-white" ng-if='activeType === "dark"'>
-		<fieldset>
+	<div class="p15xy radius-2 bg-white full-x" style="max-width:400px" ng-if='activeType === "dark"'>
+		<fieldset class="input-border">
 			<input class="input-border dark" type="text" placeholder="This is an outline input" />
 			<label></label>
 		</fieldset>

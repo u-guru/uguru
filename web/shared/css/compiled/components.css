@@ -1630,14 +1630,14 @@ fieldset.input-basic.two-buttons input {
 fieldset.input-basic.no-border * {
   border-radius: 0 !important; }
 
-.input-border {
+input.input-border {
   position: relative;
   z-index: 9;
   background: none;
   border-bottom: 1px solid !important;
   width: 100%;
   padding: 10px 0; }
-  .input-border + label:empty {
+  input.input-border + label:empty {
     -webkit-transform: scaleX(0) translateZ(0);
     -moz-transform: scaleX(0) translateZ(0);
     -ms-transform: scaleX(0) translateZ(0);
@@ -1655,97 +1655,97 @@ fieldset.input-basic.no-border * {
     z-index: 10;
     width: 100%;
     height: 2px; }
-  .input-border:focus + label:empty {
+  input.input-border:focus + label:empty {
     -webkit-transform: scaleX(1) translateZ(0);
     -moz-transform: scaleX(1) translateZ(0);
     -ms-transform: scaleX(1) translateZ(0);
     -o-transform: scaleX(1) translateZ(0);
     transform: scaleX(1) translateZ(0); }
-  .input-border.light {
+  input.input-border.light {
     color: white;
     border-bottom-color: rgba(255, 255, 255, 0.2) !important; }
-    .input-border.light::-webkit-input-placeholder {
+    input.input-border.light::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.2); }
-    .input-border.light:-moz-placeholder {
+    input.input-border.light:-moz-placeholder {
       color: rgba(255, 255, 255, 0.2); }
-    .input-border.light::-moz-placeholder {
+    input.input-border.light::-moz-placeholder {
       color: rgba(255, 255, 255, 0.2); }
-    .input-border.light:-ms-input-placeholder {
+    input.input-border.light:-ms-input-placeholder {
       color: rgba(255, 255, 255, 0.2); }
-    .input-border.light:focus::-webkit-input-placeholder {
+    input.input-border.light:focus::-webkit-input-placeholder {
       color: white; }
-    .input-border.light:focus:-moz-placeholder {
+    input.input-border.light:focus:-moz-placeholder {
       color: white; }
-    .input-border.light:focus::-moz-placeholder {
+    input.input-border.light:focus::-moz-placeholder {
       color: white; }
-    .input-border.light:focus:-ms-input-placeholder {
+    input.input-border.light:focus:-ms-input-placeholder {
       color: white; }
-    .input-border.light + label:empty {
+    input.input-border.light + label:empty {
       background: white; }
-    .input-border.light:hover, .input-border.light:focus {
+    input.input-border.light:hover, input.input-border.light:focus {
       border-bottom-color: rgba(255, 255, 255, 0.4) !important; }
-      .input-border.light:hover::-webkit-input-placeholder, .input-border.light:focus::-webkit-input-placeholder {
+      input.input-border.light:hover::-webkit-input-placeholder, input.input-border.light:focus::-webkit-input-placeholder {
         color: rgba(255, 255, 255, 0.4); }
-      .input-border.light:hover:-moz-placeholder, .input-border.light:focus:-moz-placeholder {
+      input.input-border.light:hover:-moz-placeholder, input.input-border.light:focus:-moz-placeholder {
         color: rgba(255, 255, 255, 0.4); }
-      .input-border.light:hover::-moz-placeholder, .input-border.light:focus::-moz-placeholder {
+      input.input-border.light:hover::-moz-placeholder, input.input-border.light:focus::-moz-placeholder {
         color: rgba(255, 255, 255, 0.4); }
-      .input-border.light:hover:-ms-input-placeholder, .input-border.light:focus:-ms-input-placeholder {
+      input.input-border.light:hover:-ms-input-placeholder, input.input-border.light:focus:-ms-input-placeholder {
         color: rgba(255, 255, 255, 0.4); }
-  .input-border.dark {
+  input.input-border.dark {
     color: #40484B;
     border-bottom-color: rgba(64, 72, 75, 0.2) !important; }
-    .input-border.dark::-webkit-input-placeholder {
+    input.input-border.dark::-webkit-input-placeholder {
       color: rgba(64, 72, 75, 0.2); }
-    .input-border.dark:-moz-placeholder {
+    input.input-border.dark:-moz-placeholder {
       color: rgba(64, 72, 75, 0.2); }
-    .input-border.dark::-moz-placeholder {
+    input.input-border.dark::-moz-placeholder {
       color: rgba(64, 72, 75, 0.2); }
-    .input-border.dark:-ms-input-placeholder {
+    input.input-border.dark:-ms-input-placeholder {
       color: rgba(64, 72, 75, 0.2); }
-    .input-border.dark:focus::-webkit-input-placeholder {
+    input.input-border.dark:focus::-webkit-input-placeholder {
       color: #40484B; }
-    .input-border.dark:focus:-moz-placeholder {
+    input.input-border.dark:focus:-moz-placeholder {
       color: #40484B; }
-    .input-border.dark:focus::-moz-placeholder {
+    input.input-border.dark:focus::-moz-placeholder {
       color: #40484B; }
-    .input-border.dark:focus:-ms-input-placeholder {
+    input.input-border.dark:focus:-ms-input-placeholder {
       color: #40484B; }
-    .input-border.dark + label:empty {
+    input.input-border.dark + label:empty {
       background: #40484B; }
-    .input-border.dark:hover, .input-border.dark:focus {
+    input.input-border.dark:hover, input.input-border.dark:focus {
       border-bottom-color: rgba(64, 72, 75, 0.4) !important; }
-      .input-border.dark:hover::-webkit-input-placeholder, .input-border.dark:focus::-webkit-input-placeholder {
+      input.input-border.dark:hover::-webkit-input-placeholder, input.input-border.dark:focus::-webkit-input-placeholder {
         color: rgba(64, 72, 75, 0.4); }
-      .input-border.dark:hover:-moz-placeholder, .input-border.dark:focus:-moz-placeholder {
+      input.input-border.dark:hover:-moz-placeholder, input.input-border.dark:focus:-moz-placeholder {
         color: rgba(64, 72, 75, 0.4); }
-      .input-border.dark:hover::-moz-placeholder, .input-border.dark:focus::-moz-placeholder {
+      input.input-border.dark:hover::-moz-placeholder, input.input-border.dark:focus::-moz-placeholder {
         color: rgba(64, 72, 75, 0.4); }
-      .input-border.dark:hover:-ms-input-placeholder, .input-border.dark:focus:-ms-input-placeholder {
+      input.input-border.dark:hover:-ms-input-placeholder, input.input-border.dark:focus:-ms-input-placeholder {
         color: rgba(64, 72, 75, 0.4); }
-  .input-border.bg-moxie {
+  input.input-border.bg-moxie {
     color: #43cb9d; }
-    .input-border.bg-moxie:focus::-webkit-input-placeholder {
+    input.input-border.bg-moxie:focus::-webkit-input-placeholder {
       color: #43cb9d; }
-    .input-border.bg-moxie:focus:-moz-placeholder {
+    input.input-border.bg-moxie:focus:-moz-placeholder {
       color: #43cb9d; }
-    .input-border.bg-moxie:focus::-moz-placeholder {
+    input.input-border.bg-moxie:focus::-moz-placeholder {
       color: #43cb9d; }
-    .input-border.bg-moxie:focus:-ms-input-placeholder {
+    input.input-border.bg-moxie:focus:-ms-input-placeholder {
       color: #43cb9d; }
-    .input-border.bg-moxie + label:empty {
+    input.input-border.bg-moxie + label:empty {
       background: #43cb9d; }
-  .input-border.bg-crimson {
+  input.input-border.bg-crimson {
     color: #d3242c; }
-    .input-border.bg-crimson:focus::-webkit-input-placeholder {
+    input.input-border.bg-crimson:focus::-webkit-input-placeholder {
       color: #d3242c; }
-    .input-border.bg-crimson:focus:-moz-placeholder {
+    input.input-border.bg-crimson:focus:-moz-placeholder {
       color: #d3242c; }
-    .input-border.bg-crimson:focus::-moz-placeholder {
+    input.input-border.bg-crimson:focus::-moz-placeholder {
       color: #d3242c; }
-    .input-border.bg-crimson:focus:-ms-input-placeholder {
+    input.input-border.bg-crimson:focus:-ms-input-placeholder {
       color: #d3242c; }
-    .input-border.bg-crimson + label:empty {
+    input.input-border.bg-crimson + label:empty {
       background: #d3242c; }
 
 fieldset.with-icon .input-icon {
@@ -1807,6 +1807,256 @@ fieldset.with-icon input {
       fieldset.large.with-icon input + label {
         width: calc(100% - 68px) !important;
         left: 68px !important; } }
+
+div.input-border {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 18px;
+  font-weight: 400;
+  width: 100%;
+  max-width: 400px;
+  min-height: 50px; }
+  div.input-border * {
+    transition: all 150ms ease-in-out; }
+  div.input-border input.input-border {
+    display: block;
+    font-size: 16px;
+    position: relative;
+    z-index: 9;
+    background: none;
+    width: calc(100% - 52px);
+    padding: 15px 0 15px 52px;
+    transition: all 300ms linear;
+    border: none !important;
+    font-weight: 600; }
+    div.input-border input.input-border::-webkit-input-placeholder {
+      transition: all 150ms ease-in-out;
+      font-weight: 400;
+      font-size: 16px; }
+    div.input-border input.input-border:-moz-placeholder {
+      transition: all 150ms ease-in-out;
+      font-weight: 400;
+      font-size: 16px; }
+    div.input-border input.input-border::-moz-placeholder {
+      transition: all 150ms ease-in-out;
+      font-weight: 400;
+      font-size: 16px; }
+    div.input-border input.input-border:-ms-input-placeholder {
+      transition: all 150ms ease-in-out;
+      font-weight: 400;
+      font-size: 16px; }
+    div.input-border input.input-border:focus::selection {
+      background: white;
+      color: #40484B; }
+    div.input-border input.input-border:focus::-moz-selection {
+      background: white;
+      color: #40484B; }
+    div.input-border input.input-border.light {
+      color: white; }
+      div.input-border input.input-border.light::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light:-moz-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light::-moz-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light:-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light:focus::-webkit-input-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus:-moz-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus::-moz-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus:-ms-input-placeholder {
+        color: white; }
+    div.input-border input.input-border + label:not(:empty) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+      div.input-border input.input-border + label:not(:empty):before, div.input-border input.input-border + label:not(:empty):after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 1000px;
+        transform-origin: left center;
+        transition: all 300ms ease-in-out; }
+      div.input-border input.input-border + label:not(:empty):before {
+        background: white;
+        transform: scaleX(0); }
+      div.input-border input.input-border + label:not(:empty) .input-icon {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        z-index: 3;
+        top: 13px;
+        left: 13px; }
+        div.input-border input.input-border + label:not(:empty) .input-icon * {
+          stroke-width: 8px;
+          stroke: #637074; }
+        div.input-border input.input-border + label:not(:empty) .input-icon .template {
+          stroke-dasharray: 220.3; }
+        div.input-border input.input-border + label:not(:empty) .input-icon .success-1 {
+          stroke-dasharray: 19.8;
+          opacity: 0; }
+        div.input-border input.input-border + label:not(:empty) .input-icon .success-2 {
+          stroke-dasharray: 50.2;
+          opacity: 0; }
+        div.input-border input.input-border + label:not(:empty) .input-icon .error-1, div.input-border input.input-border + label:not(:empty) .input-icon .error-2 {
+          stroke: #d3242c;
+          stroke-dasharray: 39.6;
+          opacity: 0; }
+        div.input-border input.input-border + label:not(:empty) .input-icon .email {
+          transform-origin: center center;
+          stroke-dasharray: 365.6; }
+        div.input-border input.input-border + label:not(:empty) .input-icon .name {
+          transform-origin: center center;
+          stroke-dasharray: 365.6; }
+        div.input-border input.input-border + label:not(:empty) .input-icon.email-icon .name {
+          opacity: 0; }
+        div.input-border input.input-border + label:not(:empty) .input-icon.name-icon .email {
+          opacity: 0; }
+      div.input-border input.input-border + label:not(:empty) > span {
+        position: absolute;
+        top: 15px;
+        display: block;
+        font-size: 16px;
+        transition: all 250ms ease-out 300ms;
+        padding-left: 52px;
+        padding-right: 52px; }
+      div.input-border input.input-border + label:not(:empty) .input {
+        z-index: 5;
+        display: flex; }
+        div.input-border input.input-border + label:not(:empty) .input span {
+          display: block;
+          position: relative; }
+          div.input-border input.input-border + label:not(:empty) .input span:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -15px;
+            left: -1px;
+            width: calc(100% + 2px);
+            height: 2px;
+            border-radius: 1000px;
+            background: white; }
+        div.input-border input.input-border + label:not(:empty) .input span:last-child {
+          margin-left: 2px; }
+          div.input-border input.input-border + label:not(:empty) .input span:last-child:after {
+            display: none !important; }
+      div.input-border input.input-border + label:not(:empty) a {
+        transition: all 150ms ease-in-out;
+        transform-origin: center center;
+        display: block;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        z-index: 4;
+        top: 13px;
+        right: 13px;
+        cursor: pointer;
+        opacity: 0.75; }
+        div.input-border input.input-border + label:not(:empty) a svg {
+          transform-origin: center center;
+          transform: rotate(45deg);
+          display: block;
+          width: 100%;
+          height: 100%; }
+          div.input-border input.input-border + label:not(:empty) a svg * {
+            stroke-width: 8px; }
+          div.input-border input.input-border + label:not(:empty) a svg circle {
+            stroke: white;
+            fill: white; }
+          div.input-border input.input-border + label:not(:empty) a svg path {
+            stroke: #40484B; }
+        div.input-border input.input-border + label:not(:empty) a:hover, div.input-border input.input-border + label:not(:empty) a:focus {
+          opacity: 1 !important; }
+        div.input-border input.input-border + label:not(:empty) a:active svg circle {
+          fill: rgba(255, 255, 255, 0.2); }
+        div.input-border input.input-border + label:not(:empty) a:active svg path {
+          stroke: white; }
+      div.input-border input.input-border + label:not(:empty) > div {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        transform: rotateX(90deg);
+        transition: all 300ms linear;
+        transform-origin: center bottom;
+        opacity: 0; }
+        div.input-border input.input-border + label:not(:empty) > div div, div.input-border input.input-border + label:not(:empty) > div div:before, div.input-border input.input-border + label:not(:empty) > div div:after {
+          position: absolute; }
+        div.input-border input.input-border + label:not(:empty) > div div:after, div.input-border input.input-border + label:not(:empty) > div div:before {
+          border-radius: 1000px;
+          content: "";
+          display: block;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          transform: scaleX(0);
+          background: white; }
+        div.input-border input.input-border + label:not(:empty) > div div:nth-child(1) {
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 2px; }
+        div.input-border input.input-border + label:not(:empty) > div div:nth-child(1):before, div.input-border input.input-border + label:not(:empty) > div div:nth-child(1):after {
+          transform-origin: right center;
+          transition: all 300ms ease-in-out 750ms; }
+        div.input-border input.input-border + label:not(:empty) > div div:nth-child(2) {
+          top: 0;
+          right: 0;
+          width: 2px;
+          height: 100%; }
+        div.input-border input.input-border + label:not(:empty) > div div:nth-child(2):before, div.input-border input.input-border + label:not(:empty) > div div:nth-child(2):after {
+          transform-origin: center bottom;
+          transition: all 100ms ease-in-out 650ms; }
+        div.input-border input.input-border + label:not(:empty) > div div:nth-child(3) {
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 2px; }
+        div.input-border input.input-border + label:not(:empty) > div div:nth-child(3):before, div.input-border input.input-border + label:not(:empty) > div div:nth-child(3):after {
+          transform-origin: left center;
+          transition: all 300ms ease-in-out 500ms; }
+        div.input-border input.input-border + label:not(:empty) > div div:nth-child(4) {
+          bottom: 0;
+          left: 0;
+          width: 2px;
+          height: 100%; }
+        div.input-border input.input-border + label:not(:empty) > div div:nth-child(4):before, div.input-border input.input-border + label:not(:empty) > div div:nth-child(4):after {
+          transform-origin: center top;
+          transition: all 100ms ease-in-out 400ms; }
+    div.input-border input.input-border:focus + label:not(:empty) .label {
+      transform: translateY(-36px);
+      font-size: 12px; }
+    div.input-border input.input-border:focus + label:not(:empty) > div {
+      transform: rotateX(0);
+      opacity: 1; }
+      div.input-border input.input-border:focus + label:not(:empty) > div div:after, div.input-border input.input-border:focus + label:not(:empty) > div div:before {
+        opacity: 1;
+        transform: scaleX(1); }
 
 fieldset.search-bar {
   border-radius: 1000px;
