@@ -1,3 +1,192 @@
+@keyframes input-swingUp {
+  0% {
+    transform: rotateX(90deg); }
+  3.33333% {
+    transform: rotateX(76.5266deg); }
+  6.66667% {
+    transform: rotateX(64.2797deg); }
+  10% {
+    transform: rotateX(53.2055deg); }
+  13.3333% {
+    transform: rotateX(43.2498deg); }
+  16.6667% {
+    transform: rotateX(34.3585deg); }
+  20% {
+    transform: rotateX(26.4778deg); }
+  23.3333% {
+    transform: rotateX(19.5535deg); }
+  26.6667% {
+    transform: rotateX(13.5316deg); }
+  30% {
+    transform: rotateX(8.3581deg); }
+  33.3333% {
+    transform: rotateX(3.9789deg); }
+  36.6667% {
+    transform: rotateX(0.3401deg); }
+  40% {
+    transform: rotateX(-2.6125deg); }
+  43.3333% {
+    transform: rotateX(-4.9328deg); }
+  46.6667% {
+    transform: rotateX(-6.6749deg); }
+  50% {
+    transform: rotateX(-7.8928deg); }
+  53.3333% {
+    transform: rotateX(-8.6405deg); }
+  56.6667% {
+    transform: rotateX(-8.9721deg); }
+  60% {
+    transform: rotateX(-8.9417deg); }
+  63.3333% {
+    transform: rotateX(-8.6031deg); }
+  66.6667% {
+    transform: rotateX(-8.0105deg); }
+  70% {
+    transform: rotateX(-7.218deg); }
+  73.3333% {
+    transform: rotateX(-6.2794deg); }
+  76.6667% {
+    transform: rotateX(-5.2489deg); }
+  80% {
+    transform: rotateX(-4.1806deg); }
+  83.3333% {
+    transform: rotateX(-3.1283deg); }
+  86.6667% {
+    transform: rotateX(-2.1462deg); }
+  90% {
+    transform: rotateX(-1.2883deg); }
+  93.3333% {
+    transform: rotateX(-0.6086deg); }
+  96.6667% {
+    transform: rotateX(-0.1612deg); }
+  100% {
+    transform: rotateX(0deg); } }
+@keyframes input-scaleX {
+  0% {
+    transform: scaleX(0); }
+  3.33333% {
+    transform: scaleX(0.154); }
+  6.66667% {
+    transform: scaleX(0.2858); }
+  10% {
+    transform: scaleX(0.4088); }
+  13.3333% {
+    transform: scaleX(0.5194); }
+  16.6667% {
+    transform: scaleX(0.6182); }
+  20% {
+    transform: scaleX(0.7058); }
+  23.3333% {
+    transform: scaleX(0.7827); }
+  26.6667% {
+    transform: scaleX(0.8496); }
+  30% {
+    transform: scaleX(0.9071); }
+  33.3333% {
+    transform: scaleX(0.9558); }
+  36.6667% {
+    transform: scaleX(0.9962); }
+  40% {
+    transform: scaleX(1.029); }
+  43.3333% {
+    transform: scaleX(1.0548); }
+  46.6667% {
+    transform: scaleX(1.0742); }
+  50% {
+    transform: scaleX(1.0877); }
+  53.3333% {
+    transform: scaleX(1.096); }
+  56.6667% {
+    transform: scaleX(1.0997); }
+  60% {
+    transform: scaleX(1.0994); }
+  63.3333% {
+    transform: scaleX(1.0956); }
+  66.6667% {
+    transform: scaleX(1.089); }
+  70% {
+    transform: scaleX(1.0802); }
+  73.3333% {
+    transform: scaleX(1.0698); }
+  76.6667% {
+    transform: scaleX(1.0583); }
+  80% {
+    transform: scaleX(1.0465); }
+  83.3333% {
+    transform: scaleX(1.0348); }
+  86.6667% {
+    transform: scaleX(1.0238); }
+  90% {
+    transform: scaleX(1.0143); }
+  93.3333% {
+    transform: scaleX(1.0068); }
+  96.6667% {
+    transform: scaleX(1.0018); }
+  100% {
+    transform: scaleX(1); } }
+@keyframes input-scaleY {
+  0% {
+    transform: scaleY(0); }
+  3.33333% {
+    transform: scaleY(0.154); }
+  6.66667% {
+    transform: scaleY(0.2858); }
+  10% {
+    transform: scaleY(0.4088); }
+  13.3333% {
+    transform: scaleY(0.5194); }
+  16.6667% {
+    transform: scaleY(0.6182); }
+  20% {
+    transform: scaleY(0.7058); }
+  23.3333% {
+    transform: scaleY(0.7827); }
+  26.6667% {
+    transform: scaleY(0.8496); }
+  30% {
+    transform: scaleY(0.9071); }
+  33.3333% {
+    transform: scaleY(0.9558); }
+  36.6667% {
+    transform: scaleY(0.9962); }
+  40% {
+    transform: scaleY(1.029); }
+  43.3333% {
+    transform: scaleY(1.0548); }
+  46.6667% {
+    transform: scaleY(1.0742); }
+  50% {
+    transform: scaleY(1.0877); }
+  53.3333% {
+    transform: scaleY(1.096); }
+  56.6667% {
+    transform: scaleY(1.0997); }
+  60% {
+    transform: scaleY(1.0994); }
+  63.3333% {
+    transform: scaleY(1.0956); }
+  66.6667% {
+    transform: scaleY(1.089); }
+  70% {
+    transform: scaleY(1.0802); }
+  73.3333% {
+    transform: scaleY(1.0698); }
+  76.6667% {
+    transform: scaleY(1.0583); }
+  80% {
+    transform: scaleY(1.0465); }
+  83.3333% {
+    transform: scaleY(1.0348); }
+  86.6667% {
+    transform: scaleY(1.0238); }
+  90% {
+    transform: scaleY(1.0143); }
+  93.3333% {
+    transform: scaleY(1.0068); }
+  96.6667% {
+    transform: scaleY(1.0018); }
+  100% {
+    transform: scaleY(1); } }
 /* http://goo.gl/YKjZd6 */
 @keyframes baking-cardlet-hover {
   0% {
@@ -1999,13 +2188,11 @@ div.input-border {
         height: 100%;
         background: rgba(255, 255, 255, 0.2);
         border-radius: 2px;
-        transform: rotateX(90deg);
         transition: all 300ms linear;
-        transform-origin: center bottom;
-        opacity: 0; }
-        div.input-border input.input-border + label:not(:empty) > div div, div.input-border input.input-border + label:not(:empty) > div div:before, div.input-border input.input-border + label:not(:empty) > div div:after {
+        transform-origin: center bottom; }
+        div.input-border input.input-border + label:not(:empty) > div > div, div.input-border input.input-border + label:not(:empty) > div > div div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div div:nth-child(2) {
           position: absolute; }
-        div.input-border input.input-border + label:not(:empty) > div div:after, div.input-border input.input-border + label:not(:empty) > div div:before {
+        div.input-border input.input-border + label:not(:empty) > div > div div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div div:nth-child(2) {
           border-radius: 1000px;
           content: "";
           display: block;
@@ -2016,45 +2203,47 @@ div.input-border {
           opacity: 0;
           transform: scaleX(0);
           background: white; }
-        div.input-border input.input-border + label:not(:empty) > div div:nth-child(1) {
+        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(1) {
           top: 0;
           left: 0;
           width: 100%;
           height: 2px; }
-        div.input-border input.input-border + label:not(:empty) > div div:nth-child(1):before, div.input-border input.input-border + label:not(:empty) > div div:nth-child(1):after {
+        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(1) div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div:nth-child(1) div:nth-child(2) {
           transform-origin: right center;
           transition: all 300ms ease-in-out 750ms; }
-        div.input-border input.input-border + label:not(:empty) > div div:nth-child(2) {
+        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(2) {
           top: 0;
           right: 0;
           width: 2px;
           height: 100%; }
-        div.input-border input.input-border + label:not(:empty) > div div:nth-child(2):before, div.input-border input.input-border + label:not(:empty) > div div:nth-child(2):after {
+        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(2) div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div:nth-child(2) div:nth-child(2) {
           transform-origin: center bottom;
           transition: all 100ms ease-in-out 650ms; }
-        div.input-border input.input-border + label:not(:empty) > div div:nth-child(3) {
+        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(3) {
           bottom: 0;
           right: 0;
           width: 100%;
           height: 2px; }
-        div.input-border input.input-border + label:not(:empty) > div div:nth-child(3):before, div.input-border input.input-border + label:not(:empty) > div div:nth-child(3):after {
+        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(3) div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div:nth-child(3) div:nth-child(2) {
           transform-origin: left center;
           transition: all 300ms ease-in-out 500ms; }
-        div.input-border input.input-border + label:not(:empty) > div div:nth-child(4) {
+        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(4) {
           bottom: 0;
           left: 0;
           width: 2px;
           height: 100%; }
-        div.input-border input.input-border + label:not(:empty) > div div:nth-child(4):before, div.input-border input.input-border + label:not(:empty) > div div:nth-child(4):after {
+        div.input-border input.input-border + label:not(:empty) > div > div:nth-child(4) div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div:nth-child(4) div:nth-child(2) {
           transform-origin: center top;
           transition: all 100ms ease-in-out 400ms; }
     div.input-border input.input-border:focus + label:not(:empty) .label {
       transform: translateY(-36px);
       font-size: 12px; }
+    div.input-border input.input-border:focus + label:not(:empty) .input-icon * {
+      stroke: white; }
     div.input-border input.input-border:focus + label:not(:empty) > div {
       transform: rotateX(0);
       opacity: 1; }
-      div.input-border input.input-border:focus + label:not(:empty) > div div:after, div.input-border input.input-border:focus + label:not(:empty) > div div:before {
+      div.input-border input.input-border:focus + label:not(:empty) > div > div div:nth-child(2), div.input-border input.input-border:focus + label:not(:empty) > div > div div:nth-child(2) {
         opacity: 1;
         transform: scaleX(1); }
 

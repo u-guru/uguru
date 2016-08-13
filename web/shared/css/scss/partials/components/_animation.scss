@@ -1,5 +1,107 @@
 @import '../mixin';
 
+@keyframes input-swingUp {
+  0% { transform: rotateX(90deg); }
+  3.33333% { transform: rotateX(76.5266deg); }
+  6.66667% { transform: rotateX(64.2797deg); }
+  10% { transform: rotateX(53.2055deg); }
+  13.3333% { transform: rotateX(43.2498deg); }
+  16.6667% { transform: rotateX(34.3585deg); }
+  20% { transform: rotateX(26.4778deg); }
+  23.3333% { transform: rotateX(19.5535deg); }
+  26.6667% { transform: rotateX(13.5316deg); }
+  30% { transform: rotateX(8.3581deg); }
+  33.3333% { transform: rotateX(3.9789deg); }
+  36.6667% { transform: rotateX(0.3401deg); }
+  40% { transform: rotateX(-2.6125deg); }
+  43.3333% { transform: rotateX(-4.9328deg); }
+  46.6667% { transform: rotateX(-6.6749deg); }
+  50% { transform: rotateX(-7.8928deg); }
+  53.3333% { transform: rotateX(-8.6405deg); }
+  56.6667% { transform: rotateX(-8.9721deg); }
+  60% { transform: rotateX(-8.9417deg); }
+  63.3333% { transform: rotateX(-8.6031deg); }
+  66.6667% { transform: rotateX(-8.0105deg); }
+  70% { transform: rotateX(-7.218deg); }
+  73.3333% { transform: rotateX(-6.2794deg); }
+  76.6667% { transform: rotateX(-5.2489deg); }
+  80% { transform: rotateX(-4.1806deg); }
+  83.3333% { transform: rotateX(-3.1283deg); }
+  86.6667% { transform: rotateX(-2.1462deg); }
+  90% { transform: rotateX(-1.2883deg); }
+  93.3333% { transform: rotateX(-0.6086deg); }
+  96.6667% { transform: rotateX(-0.1612deg); }
+  100% { transform: rotateX(0deg); }
+}
+
+@keyframes input-scaleX {
+  0% { transform: scaleX(0); }
+  3.33333% { transform: scaleX(0.154); }
+  6.66667% { transform: scaleX(0.2858); }
+  10% { transform: scaleX(0.4088); }
+  13.3333% { transform: scaleX(0.5194); }
+  16.6667% { transform: scaleX(0.6182); }
+  20% { transform: scaleX(0.7058); }
+  23.3333% { transform: scaleX(0.7827); }
+  26.6667% { transform: scaleX(0.8496); }
+  30% { transform: scaleX(0.9071); }
+  33.3333% { transform: scaleX(0.9558); }
+  36.6667% { transform: scaleX(0.9962); }
+  40% { transform: scaleX(1.029); }
+  43.3333% { transform: scaleX(1.0548); }
+  46.6667% { transform: scaleX(1.0742); }
+  50% { transform: scaleX(1.0877); }
+  53.3333% { transform: scaleX(1.096); }
+  56.6667% { transform: scaleX(1.0997); }
+  60% { transform: scaleX(1.0994); }
+  63.3333% { transform: scaleX(1.0956); }
+  66.6667% { transform: scaleX(1.089); }
+  70% { transform: scaleX(1.0802); }
+  73.3333% { transform: scaleX(1.0698); }
+  76.6667% { transform: scaleX(1.0583); }
+  80% { transform: scaleX(1.0465); }
+  83.3333% { transform: scaleX(1.0348); }
+  86.6667% { transform: scaleX(1.0238); }
+  90% { transform: scaleX(1.0143); }
+  93.3333% { transform: scaleX(1.0068); }
+  96.6667% { transform: scaleX(1.0018); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes input-scaleY {
+  0% { transform: scaleY(0); }
+  3.33333% { transform: scaleY(0.154); }
+  6.66667% { transform: scaleY(0.2858); }
+  10% { transform: scaleY(0.4088); }
+  13.3333% { transform: scaleY(0.5194); }
+  16.6667% { transform: scaleY(0.6182); }
+  20% { transform: scaleY(0.7058); }
+  23.3333% { transform: scaleY(0.7827); }
+  26.6667% { transform: scaleY(0.8496); }
+  30% { transform: scaleY(0.9071); }
+  33.3333% { transform: scaleY(0.9558); }
+  36.6667% { transform: scaleY(0.9962); }
+  40% { transform: scaleY(1.029); }
+  43.3333% { transform: scaleY(1.0548); }
+  46.6667% { transform: scaleY(1.0742); }
+  50% { transform: scaleY(1.0877); }
+  53.3333% { transform: scaleY(1.096); }
+  56.6667% { transform: scaleY(1.0997); }
+  60% { transform: scaleY(1.0994); }
+  63.3333% { transform: scaleY(1.0956); }
+  66.6667% { transform: scaleY(1.089); }
+  70% { transform: scaleY(1.0802); }
+  73.3333% { transform: scaleY(1.0698); }
+  76.6667% { transform: scaleY(1.0583); }
+  80% { transform: scaleY(1.0465); }
+  83.3333% { transform: scaleY(1.0348); }
+  86.6667% { transform: scaleY(1.0238); }
+  90% { transform: scaleY(1.0143); }
+  93.3333% { transform: scaleY(1.0068); }
+  96.6667% { transform: scaleY(1.0018); }
+  100% { transform: scaleY(1); }
+}
+
 /* http://goo.gl/YKjZd6 */
 @keyframes baking-cardlet-hover {
   0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }

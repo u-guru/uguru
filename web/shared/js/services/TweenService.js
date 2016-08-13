@@ -39,7 +39,7 @@ function TweenService() {
         "easeInBack",
         "easeOutBack",
         "easeInOutBack",
-        // "easeInElastic", // easings.net
+        // "easeInElastic", // easings.net or https://github.com/ai/easings.net/blob/master/vendor/jquery.easing.js
         // "easeOutElastic",
         // "easeInOutElastic",
 		// "sway", // http://goo.gl/n3DjKQ

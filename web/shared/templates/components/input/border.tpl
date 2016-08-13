@@ -19,10 +19,10 @@
 				<span class="input"
 					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+					<div><div></div><div inspector-elem></div></div>
+					<div><div></div><div></div></div>
 				</div>
 				<a init-with="p:[op:0]">
 					<svg viewBox="0 0 100 100">
