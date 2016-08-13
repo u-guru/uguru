@@ -6,7 +6,7 @@
             <!-- <div ng-include="'shared/templates/components/cards/profile-card.tpl'">
             </div> -->
         </div>
-        <aside class='relative'>
+        <aside class='relative' ng-if="apc.settings.showKFBar">
             <div class='bg-lake absolute full-xy top-0 left-0 overflow-auto' ng-if='apc.settings.showAnimProps'>
                 <div class="p15xy">
                     <fieldset class="search-bar"
@@ -113,6 +113,11 @@
             </li>
 
         </ul>
+        <ul class='flex p15-grid absolute right-0' style="top:-78px">
+            <li>
+                <span class='svg-48-36 stroke-white svg-stroke-6 radius-2 bg bg-moxie weight-900' ng-click="show" ng-click='apc.settings.showKFBar = !apc.settings.showKFBar'>KF</span>
+            </li>
+        </ul>
         <div class="bg-slate-50p full-xy overflow-auto">
             <ul class='full-x'>
                 <li ng-repeat='property in apc.properties' class='full-x flex-wrap-center' ng-class="{'bg-slate':$index % 2 === 1, 'bg-campus-50p':$index % 2 === 0}">
@@ -123,13 +128,13 @@
 								<a class='weight-600 txt-20 bg bg-campus reverse radius-2-right p10x height-36 flex-center-vertical' ng-click='playAnimation()'>{{property.animation.name}}</a>
 							</li>
 							<li>
-								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.showMore = !property.player.showMore' ng-include='"shared/templates/components/svg/main/play.html"'></a>
+								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.play(property)' ng-include='"shared/templates/components/svg/main/play.html"' ></a>
 							</li>
 							<li>
-								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.showMore = !property.player.showMore' ng-include='"shared/templates/components/svg/main/sync.html"'></a>
+								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.pause(property)' ng-include='"shared/templates/components/svg/main/pause.html"'></a>
 							</li>
 							<li>
-								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.showMore = !property.player.showMore' ng-include='"shared/templates/components/svg/main/pause.html"'></a>
+								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.resetAnim(property)' ng-include='"shared/templates/components/svg/main/sync.html"'></a>
 							</li>
 						</ul>
 						<ul class='full-x flex-wrap p15-grid' style="margin-top: -15px">
