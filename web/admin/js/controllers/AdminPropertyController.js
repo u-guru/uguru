@@ -114,6 +114,18 @@ angular.module('uguru.admin')
             range: {max: 3000, min:0, step: 100 },
               val:delayVal , display: animation.delay + ''
         },
+        stepSpeed: {
+          fast: 250,
+          slow:50,
+          slowRange: {
+            max: 250,
+            min:16
+          },
+          fastRange: {
+            min: 250,
+            max: durationVal/2
+          }
+        },
         iterationCount: {val: property.animation.duration || 1, str: animation.iterationCount + ''},
         update: onSettingChange(property),
       };
