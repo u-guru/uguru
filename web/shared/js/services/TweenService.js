@@ -82,8 +82,8 @@ function TweenService() {
           easing: easeFunc
         }).seek(0)
         var intervals = (duration/1000 * 60)/2;
-        var chunkSize = duration/intervals
-        for (var i = 0; i < (intervals + 2); i++) {
+        var chunkSize = duration/intervals;
+        for (var i = 1; i < (intervals + 2); i++) {
 
 
 
