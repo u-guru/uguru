@@ -1,0 +1,132 @@
+@import '../../../../shared/css/scss/partials/mixin';
+
+// html
+.admin-html {
+	h2 {
+		width: 100%;
+		padding: 15px 15px 5px;
+		font-weight: 600;
+		font-size: 24px;
+	}
+	ul {
+		@include flex;
+		@include flex-wrap;
+		width: 100%;
+		padding: 7.5px;
+		margin-top: -15px;
+		&:last-child {
+			margin-bottom: 15px;
+		}
+		&.no-input {
+			li {
+				span {
+					@include flex;
+					@include flex-center;
+					height: 34px;
+					font-family: "Source Code Pro", monospace!important;
+					font-size: 14px;
+					font-weight: 600;
+				}
+			}
+		}
+		&.border {
+			li {
+				span:not(.inside) {
+					position: relative;
+					> input {
+						position: relative;
+						z-index: 10;
+					}
+					.inside {
+						position: absolute;
+						top: 2px;
+						left: 2px;
+						width: calc(100% - 4px);
+						height: calc(100% - 4px);
+						border-width: 2px;
+						border-style: solid;
+						border-radius: 2px;
+					}
+				}
+			}
+		}
+		li {
+			padding: 7.5px;
+			> div:not(.size-auto) {
+				position: relative;
+				height: 120px;
+				border-radius: 2px;
+			}
+			span:not(.inside) {
+				display: block;
+				padding: 5px 10px;
+				color: $slate;
+				border-radius: 2px;
+				&:not([class*="bg-"]) {
+					background: white;
+				}
+				&[class*="flex"] {
+					@include flex-important;
+				}
+				&[class*="bg-"] {
+					color: white;
+					input {
+						color: white;
+					}
+				}
+				&.bg-smoke {
+					border: 1px solid lighten($campus, 25%);
+				}
+				&:not([class*="weight-"]) {
+					weight: 600;
+					input {
+						font-weight: 600;
+					}
+				}
+			}
+			input {
+				background: none;
+				font-family: "Source Code Pro", monospace!important;
+				cursor: text;
+			}
+		}
+	}
+}
+
+// definition list
+.admin-definition-list {
+	dl {
+		div {
+			@include flex;
+			@include flex-center;
+			position: relative;
+			padding: 7.5px;
+			&[deprecate] {
+				color: rgba(mix($shamrock, $lake), .3);
+			}
+			dt {
+				width: calc(100% / 3);
+				padding: 7.5px;
+				font-size: 28px;
+				font-weight: 600;
+			}
+			dd {
+				width: calc(100% / 3 * 2);
+				padding: 7.5px;
+				font-size: 18px;
+				font-weight: 400;
+			}
+			&:not(:last-child):after {
+				@include round;
+				content: "";
+				display: block;
+				position: absolute;
+				bottom: -1px;
+				left: 15px;
+				width: calc(100% - 30px);
+				height: 2px;
+				background: rgba(mix($shamrock, $lake), .2);
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+<ion-slide-box can-swipe-back="false" on-slide-changed="slideHasChanged($index)" delegate-handle="become-guru-slide-box" class="become-guru-slidebox-container"><!--  <ion-slide ng-controller='AddMajorController'>
+  		 <ion-view class='uguru-view major-view' >
+      		<span ng-include="img_base + BASE + 'templates/majors.container.html'"></span>
+  		</ion-view>
+		<div ng-include="img_base + BASE + 'templates/majors.html'"></div>
+	</ion-slide> --><ion-slide ng-controller="CoursesController" on-drag-right="onDragRight()" on-drag-left="onDragLeft()"><ion-view class="uguru-view courses-view guru-courses-view"><span ng-include="img_base + BASE + 'templates/guru.courses.container.html'"></span><!-- @samir - I commented these out for now because I finally did find the place where it shows - if I go back to become-guru and the courses come up, it's there. If you can put these into the container.html files and only have them show up during onboarding, that would be great. --><!-- <div class="onboarding-steps">
+				<progress class="white" max="6" value="1"></progress>
+			</div> --></ion-view></ion-slide><ion-slide ng-controller="CategoriesController"><ion-view class="uguru-view skills-view"><span ng-include="img_base + BASE + 'templates/guru.skills.container.html'"></span></ion-view><!-- <div class="onboarding-steps">
+			<progress class="white" max="6" value="3"></progress>
+		</div> --></ion-slide><ion-slide on-drag-right="onDragRight()" on-drag-left="onDragLeft()"><span ng-include="img_base + BASE + 'templates/become.guru.photo.html'"></span><!-- <div class="onboarding-steps">
+			<progress class="white" max="6" value="5"></progress>
+		</div> --></ion-slide></ion-slide-box><!-- <ion-slide>
+       <div ng-include="img_base + BASE + 'templates/become.guru.start.html'"></div>
+    </ion-slide> -->

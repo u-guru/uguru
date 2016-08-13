@@ -1,0 +1,66 @@
+<ion-view view-title="{{view_title}}" name="major">
+
+    <ion-nav-buttons side="secondary">
+        <button ng-click="saveMajor()" ng-disabled="user.majors.length === 0 &&!edit_mode" class="button button-clear button-positive">Save</button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <div class="row black-subheader" ng-show="user.majors.length > 0 && !edit_mode" scroll="false" style="display:block; top:0px; z-index:20">
+            <button class="button button-balanced button-course" ng-repeat="major in user.majors.slice(0,6)">{{major.name}}</button>
+            <button class="button button-balanced button-course" style="color:white;"ng-show="user.majors.length > 6 " ng-repeat="majors in user.majors.slice(6,7)">{{user.major.length - 6}} more</button>
+            <button ng-click="toggleEditMode()"class="button button-positive button-course" style="border: 1px solid rgba(105, 179, 165, 1); position:initial;"><span ng-show="user.majors.length < 7">Edit</span><span ng-show="user.majors.length >= 7">See All</span></button>
+        </div>
+
+        <ion-scroll>
+            <div class="list" ng-show="!edit_mode">
+                <li class="item" ng-click="majorSelected(major)" ng-show="search_text.length === 0 && user.majors.length === 0" ng-repeat="major in initialMajors">
+                  <h2>{{major.name}}</h2>
+                  <!-- <p ng-hide="!major.university"> {{major.university}} </p> -->
+                </li>
+                <li class="item" ng-click="majorSelected(major)" ng-repeat="major in matchingMajors">
+                  <h2>{{major.name}}</h2>
+                  <!-- <p ng-hide="!major.university"> {{major.university}} </p> -->
+                </li>
+                <!-- <li class="item positive item-icon-right" ng-show="search_text.length > 0" ng-click="fireActionModal()">
+                    <h2 style="color:rgba(105, 179, 165, 1); font-family:OpenSans-SemiBold">Major not listed?</h2> 
+                    <i style="color:rgba(0,0,0,0.2); font-size:1.5em"class="icon ion-plus-round"></i>
+                </li> -->
+            </div>
+
+            <ion-list ng-show="edit_mode" show-delete="true" can-swipe="true">
+                <ion-item class="item-remove-animate list-right-editing" ng-repeat="majors in user.majors">
+                  <h2>{{majors.name}}</h2>
+                  <ion-delete-button class="ion-minus-circled" 
+                                     ng-click="onMajorDelete(majors)">
+                  </ion-delete-button>
+                </ion-item>
+            </ion-list>
+        </ion-scroll>
+
+    </ion-content> 
+  <ion-footer-bar class="bar-footer item-input-inset" ng-show="!edit_mode" style="z-index:30" keyboard-attach>
+        
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+
+            <input type="search" name="prefix" class="form-control"
+                    fast-matcher
+                    fast-matcher-source="majors"
+                    fast-matcher-output="matchingMajors"
+                    fast-matcher-properties="name, keywords" 
+                    fast-matcher-any-word="true"
+                    fast-matcher-limit="10"
+                    fast-matcher-preserve-order="true"
+                    fast-matcher-case-insensitive="true"
+                    placeholder="{{search_placeholder_text}}"
+                    ng-model="search_text"
+                    ng-blur="setFocus(search_text)"
+            />
+        </label>
+
+    <button class="button button-clear button-positive" ng-show="search_text.length" ng-click="clearSearchInput(data.search)">
+        Clear
+        </button>  
+    </ion-footer-bar>
+</ion-view>

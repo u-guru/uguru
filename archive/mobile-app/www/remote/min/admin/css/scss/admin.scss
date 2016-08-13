@@ -1,0 +1,90 @@
+@import '../../../shared/css/scss/partials/mixin';
+@import 'partials/toolbar';
+@import 'partials/components';
+// @import 'partials/base_components';
+@import 'partials/keyframes';
+@import 'partials/docs';
+
+.type-list {
+	ul {
+		li {
+			&:first-child {
+				div {
+					border-radius: 2px 0 0 2px!important;
+				}
+			}
+			&:last-child {
+				div {
+					border-radius: 0 2px 2px 0!important;
+				}
+			}
+		}
+	}
+}
+
+.bg-cobalt-slate-campus-25p {
+	background: mix($campus, mix($cobalt, $slate, 25%), 25%)!important;
+}
+.bg-cobalt-slate-campus-50p {
+	background: mix($campus, mix($cobalt, $slate, 25%), 50%)!important;
+}
+
+#admin-anim-tools {
+	> div {
+		@media screen and (max-width: 768px) {
+			@include flex-wrap;
+		}
+	}
+}
+
+// bugs
+.bug-tag-list {
+	ul {
+		padding: 7.5px!important;
+		li {
+			padding: 7.5px!important;
+			.chip {
+				margin: 0!important;
+			}
+		}
+	}
+}
+
+// preview default
+.preview-container {
+	position: relative!important;
+	overflow: hidden!important;
+	.fixed {
+		position: absolute!important;
+	}
+}
+
+//samir demo animation
+@-webkit-keyframes samirAnim {
+  0% { transform: rotate(0deg) scale(1); opacity:1;}
+  50% {transform: rotate(-90deg) scaleX(1.5) scaleY(1.5);}
+  100% { transform: rotate(180deg) scaleX(0.5) scaleY(0.5); opacity: 5;}
+}
+.samir-anim {
+    animation: samirAnim 3s ease 0s 1 normal none;
+    -webkit-animation: samirAnim 3s ease 0s 1 normal none;
+}
+.samir-transition {
+	-webkit-transition-duration: 2s !important;
+}
+
+animation svg {
+	width: 100px;
+	height: 100px;
+	> path {
+		stroke: white;
+	}
+}
+
+// * {
+// 	-webkit-animation-duration: 1ms !important;
+// }
+
+.width-2-3 {
+	width: calc(100% / 2 * 3);
+}

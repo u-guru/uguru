@@ -1,0 +1,75 @@
+<ion-view id='splash-view' ng-controller='SplashController as splash'>
+    <custom-states when="sidebar-icon-clicked">
+    </custom-states>
+    <div class="loader-scale-out" ng-if='showScaleOutLoader'
+        init-with='p:[tr:scale(50), op:1, z-index:10]'
+        on-init="t:[on-exit]"
+        on-exit="p:[t:all 500ms ease, op:0, z-index:-100]"></div>
+    <!-- <ion-content class='relative full-xy' > -->
+        <main class='splash-landing' id="home-splash" eval-on-init="splash.activate()">
+            <section id='splash-home' class='splash-hero bg-slate'
+				init-with="p:[op:0]"
+				on-init="p:[op:1, t:all 500ms ease]">
+                <div class="absolute top-0 left-0 full-xy">
+					<div class="full-xy"
+						init-default
+						init-with="prop:[op:.25, bg:transparent, t:all 150ms ease-in-out]"
+						when-category-dropdown-click="prop:[bg:^hex_color]"></div>
+				</div>
+
+                <!-- @gabrielle-note, study this complex example to see what's going on-->
+                <div
+                    on-init="prop:[opacity:0, z-index:1000, transition:opacity 1500ms ease, opacity:1] | class:[add:opacity-0-impt]"
+                    ng-if="splash.state.nav" ng-include src="root.base_url + 'preapp/templates/splash.nav.html'" include-replace>
+                </div>
+                <div ng-if="splash.state.nav" ng-include src="root.base_url + 'preapp/templates/splash.nav.html'"
+                	include-replace
+					when-search-university-clicked="prop:[opacity:0.5, t:all 600ms ease-in-out]"
+					when-close-search-university="prop:[opacity:1]">
+				</div>
+
+                <div ng-if="splash.state.powerups" init-later ng-include src="root.base_url + 'preapp/templates/splash.powerups.html'" include-replace></div>
+
+                <div ng-if="splash.state.sidebar" ng-include src="root.base_url + 'preapp/templates/splash.sidebar.html'" include-replace></div>
+
+                <!-- Madlib -->
+                <div ng-if="splash.state.madlib"  ng-include src="root.base_url + 'preapp/templates/splash.madlib.html'" include-replace
+					when-search-university-clicked="prop:[opacity:0.5, t:all 600ms ease-in-out]"
+					when-close-search-university="prop:[opacity:1]"
+                    init-with="p:[opacity:0, t:all 2000ms ease]"
+                    on-init="p:[opacity:1]"
+                    ng-class="{'on-enter': splash.state.nav}">
+				</div>
+
+                <!-- Device -->
+                <div class="absolute top-0 left-0 full-xy"
+					ng-if="splash.state.device" ng-include src="root.base_url + 'preapp/templates/splash.device.html'" include-replace
+					init-default
+					on-init="prop:[z-index:0]"
+					when-category-dropdown-toggle-on="prop:[op:0.25:delay-50, t:all 500ms ease-in-out]"
+					when-category-dropdown-toggle-off="prop:[op:1, t:all 500ms ease-in-out]"
+					when-university-dropdown-toggle-on="prop:[z-index:5:delay-50, t:all 500ms ease-in-out]"
+					when-university-dropdown-toggle-off="prop:[z-index:0:delay-50, t:all 500ms ease-in-out]"
+					when-search-university-clicked="prop:[opacity:0.5, t:all 600ms ease-in-out]"
+					when-close-search-university="prop:[opacity:1]">
+                </div>
+
+                <!-- Map -->
+                <div ng-if="splash.state.map" init-later ng-include src="root.base_url + 'preapp/templates/splash.map.html'" include-replace></div>
+
+                <!-- Powerups -->
+
+                <!-- School Search -->
+                <div ng-if="splash.state.universitySearch" ng-include src="root.base_url + 'preapp/templates/started/university-search.html'" include-replace></div>
+
+                <!-- Controls -->
+                <div class='absolute' init-with="prop:[opacity:0]">
+                    <div class="splash-hero-skip opacity-0 rollIn animated">
+                        <button>Skip</button>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    <!-- </ion-content> -->
+</ion-view>

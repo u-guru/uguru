@@ -1,0 +1,65 @@
+  
+  <ion-view view-title="Select A University">
+    <ion-nav-buttons side="right">
+      <!-- <a class="button" ng-disabled="!university_choice" ng-click='onSubmitUniversity()'>
+        Save
+      </a> -->
+    </ion-nav-buttons>
+
+  <ion-content>
+
+      <div class="list" ng-show="!nearest_universities">
+        <li class="item" ng-click="onSubmitUniversity(university)" ng-repeat="university in matchingUniversities">
+          <h2>{{university.title}}</h2>
+          <p>{{university.city}}, {{university.state}}</p>
+        </li>
+      </div>
+
+    <div class="list list-inset" ng-show="nearest_universities" style="margin-top:15%">
+         <label class="item item-radio" ng-repeat="university in nearest_universities | limitTo:10" style="margin:0px 5px;">
+            <input name="university_radio" ng-change="onSubmitUniversity(university)" ng-model="university.checked" value="{{university}}" type="radio">
+            <div class="item-content">
+              <h2>{{university.title}}</h2>
+              <p>
+                {{university.location.city}}, {{university.location.state}}
+              </p>
+            </div>
+            <i class="radio-icon ion-checkmark"></i>
+          </label>
+          <li class="item item-icon-left" ng-click="toggleNearestUniversities()" style="margin-top:0px;">
+            <i class="icon ion-search"></i>
+            <span class="regular-text">Search a university</span>
+          </li>
+    </div>
+
+
+  </ion-content> 
+
+
+  <ion-footer-bar class="bar-footer item-input-inset" ng-show="!nearest_universities" keyboard-attach>
+        
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+
+            <input type="search" name="prefix" class="form-control"
+                    fast-matcher
+                    fast-matcher-source="universities"
+                    fast-matcher-output="matchingUniversities"
+                    fast-matcher-properties="title, keywords"
+                    fast-matcher-any-word="true"
+                    fast-matcher-limit="10"
+                    fast-matcher-preserve-order="true"
+                    fast-matcher-case-insensitive="true"
+                    placeholder="Search {{universities.length}} Available Universities"
+                    ng-model="search_text"
+                    ng-blur="setFocus(search_text)"
+            />
+        </label>
+
+        <button class="button button-clear button-positive" ng-show="search_text.length" ng-click="clearSearchInput()">
+        Clear
+        </button>  
+
+  </ion-footer-bar>
+
+  </ion-view>
