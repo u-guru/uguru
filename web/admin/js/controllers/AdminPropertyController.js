@@ -126,14 +126,14 @@ angular.module('uguru.admin')
       function resetTimer(timer) {
         return function() {
           timer.pause();
+          clearInterval(timer.interval);
+          timer.interval = null;
           timer.startRef = null;
           timer.value = 0;
           timer.interval = null;
           timer.display.s = 0;
           timer.display.ms = 0
           timer.durationDisplay = {s: (timer.duration/1000).toFixed(precision) + 's', ms: (timer.duration) + 'ms'};
-          $timeout(function() {$scope.$apply()});
-          timer.interval = null;
         }
 
       }
