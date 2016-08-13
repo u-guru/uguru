@@ -92,11 +92,11 @@ function TweenService() {
             tweenable.resume();
             // console.log(tweenable.get());
         }
-        console.log(kf_arr);
+        // console.log(kf_arr);
         // kf_arr.forEach(function(kf, i) {kf_arr[i].percentage = i * (100/(intervals + 2))})
         // kf_arr.forEach(function(kf, i) {console.log(kf.percentage, kf[Object.keys(start_dict)[0]])})
         kf_arr.forEach(function(kf, i) {kf_arr[i].percentage = i/(kf_arr.length - 1) * 100})
-        console.log(kf_arr[0], kf_arr[kf_arr.length - 1])
+        // console.log(kf_arr[0], kf_arr[kf_arr.length - 1])
         return kf_arr;
 
     }

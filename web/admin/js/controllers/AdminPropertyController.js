@@ -13,7 +13,6 @@ angular.module('uguru.admin')
 
     apc.animationArr = getAllCSSAnimation();
     apc.animProperties = TweenService.getAllAnimatable()
-    console.log(apc.animProperties)
     var results = getCSSAnimationMetrics(apc.animationArr);
     var gPlayerDefaults = {stepTime: 100};
     apc.property = [{name: 'opacity', start: 0.5, end: 1.0}];
@@ -240,7 +239,6 @@ angular.module('uguru.admin')
 
     function initAnimationWithEase(options, index) {
       options.easeName = options.ease[0].toUpperCase() + options.ease.substring(1);
-      console.log(options.duration)
       var anim =  {
         name: (options.name) + options.easeName + index,
         propName: (options.name) || 'opacity',
@@ -716,9 +714,7 @@ angular.module('uguru.admin')
 
      function getEndListener(element, cb, auto_reset) {
             return element.addEventListener('webkitAnimationEnd', function(e) {
-              console.log(e.animationName, 'has ended');
               cb && cb(e)
-              console.log(element)
               auto_reset && resetAnimation(element)();
             })
       }
