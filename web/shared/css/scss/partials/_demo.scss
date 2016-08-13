@@ -1,29 +1,100 @@
 @import 'mixin';
 
 .playing-card-stack-enter {
-	animation: playing-card-stack-enter 2000ms linear;
+	animation: playing-card-stack-enter 4000ms linear;
 }
 
 .playing-card-stack-rotate {
-	animation: playing-card-stack-rotate 2000ms linear;
+	animation: playing-card-stack-rotate 4000ms linear;
 }
 
-.playing-card-drop {
-	animation: playing-card-drop 2000ms linear;
+.playing-card-drop-1 {
+	animation: playing-card-drop-1 2000ms linear;
+}
+
+.playing-card-drop-2 {
+	animation: playing-card-drop-2 2000ms linear;
+}
+
+.playing-card-drop-3 {
+	animation: playing-card-drop-3 2000ms linear;
 }
 
 .playing-card-rotate {
 	animation: playing-card-rotate 200ms linear;
 }
 
-@keyframes playing-card-rotate {
-  0% { transform: rotateX(0deg) rotateY(0deg); }
-  33.3333% { transform: rotateX(45.9deg) rotateY(2.55deg); }
-  66.6667% { transform: rotateX(75.6deg) rotateY(4.2deg); }
-  100% { transform: rotateX(90deg) rotateY(5deg); }
+@keyframes playing-card-drop-3 {
+  0% { transform: translate3d(0px, 0px, 0px); }
+  3.22581% { transform: translate3d(0px, 17.6118px, 0px); }
+  6.45161% { transform: translate3d(0px, 34.6872px, 0px); }
+  9.67742% { transform: translate3d(0px, 51.2262px, 0px); }
+  12.9032% { transform: translate3d(0px, 67.2288px, 0px); }
+  16.129% { transform: translate3d(0px, 82.695px, 0px); }
+  19.3548% { transform: translate3d(0px, 97.6248px, 0px); }
+  22.5806% { transform: translate3d(0px, 112.018px, 0px); }
+  25.8065% { transform: translate3d(0px, 125.875px, 0px); }
+  29.0323% { transform: translate3d(0px, 139.196px, 0px); }
+  32.2581% { transform: translate3d(0px, 151.98px, 0px); }
+  35.4839% { transform: translate3d(0px, 164.228px, 0px); }
+  38.7097% { transform: translate3d(0px, 175.939px, 0px); }
+  41.9355% { transform: translate3d(0px, 187.114px, 0px); }
+  45.1613% { transform: translate3d(0px, 197.753px, 0px); }
+  48.3871% { transform: translate3d(0px, 207.855px, 0px); }
+  51.6129% { transform: translate3d(0px, 217.421px, 0px); }
+  54.8387% { transform: translate3d(0px, 226.45px, 0px); }
+  58.0645% { transform: translate3d(0px, 234.943px, 0px); }
+  61.2903% { transform: translate3d(0px, 242.9px, 0px); }
+  64.5161% { transform: translate3d(0px, 250.32px, 0px); }
+  67.7419% { transform: translate3d(0px, 257.204px, 0px); }
+  70.9677% { transform: translate3d(0px, 263.551px, 0px); }
+  74.1935% { transform: translate3d(0px, 269.362px, 0px); }
+  77.4194% { transform: translate3d(0px, 274.637px, 0px); }
+  80.6452% { transform: translate3d(0px, 279.375px, 0px); }
+  83.871% { transform: translate3d(0px, 283.577px, 0px); }
+  87.0968% { transform: translate3d(0px, 287.242px, 0px); }
+  90.3226% { transform: translate3d(0px, 290.371px, 0px); }
+  93.5484% { transform: translate3d(0px, 292.964px, 0px); }
+  96.7742% { transform: translate3d(0px, 295.02px, 0px); }
+  100% { transform: translate3d(0px, 298px, 0px); }
 }
 
-@keyframes playing-card-drop {
+@keyframes playing-card-drop-2 {
+  0% { transform: translate3d(0px, 0px, 0px); }
+  3.22581% { transform: translate3d(0px, 17.6709px, 0px); }
+  6.45161% { transform: translate3d(0px, 34.8036px, 0px); }
+  9.67742% { transform: translate3d(0px, 51.3981px, 0px); }
+  12.9032% { transform: translate3d(0px, 67.4544px, 0px); }
+  16.129% { transform: translate3d(0px, 82.9725px, 0px); }
+  19.3548% { transform: translate3d(0px, 97.9524px, 0px); }
+  22.5806% { transform: translate3d(0px, 112.394px, 0px); }
+  25.8065% { transform: translate3d(0px, 126.298px, 0px); }
+  29.0323% { transform: translate3d(0px, 139.663px, 0px); }
+  32.2581% { transform: translate3d(0px, 152.49px, 0px); }
+  35.4839% { transform: translate3d(0px, 164.779px, 0px); }
+  38.7097% { transform: translate3d(0px, 176.53px, 0px); }
+  41.9355% { transform: translate3d(0px, 187.742px, 0px); }
+  45.1613% { transform: translate3d(0px, 198.416px, 0px); }
+  48.3871% { transform: translate3d(0px, 208.553px, 0px); }
+  51.6129% { transform: translate3d(0px, 218.15px, 0px); }
+  54.8387% { transform: translate3d(0px, 227.21px, 0px); }
+  58.0645% { transform: translate3d(0px, 235.732px, 0px); }
+  61.2903% { transform: translate3d(0px, 243.715px, 0px); }
+  64.5161% { transform: translate3d(0px, 251.16px, 0px); }
+  67.7419% { transform: translate3d(0px, 258.067px, 0px); }
+  70.9677% { transform: translate3d(0px, 264.436px, 0px); }
+  74.1935% { transform: translate3d(0px, 270.266px, 0px); }
+  77.4194% { transform: translate3d(0px, 275.558px, 0px); }
+  80.6452% { transform: translate3d(0px, 280.312px, 0px); }
+  83.871% { transform: translate3d(0px, 284.528px, 0px); }
+  87.0968% { transform: translate3d(0px, 288.206px, 0px); }
+  90.3226% { transform: translate3d(0px, 291.346px, 0px); }
+  93.5484% { transform: translate3d(0px, 293.947px, 0px); }
+  96.7742% { transform: translate3d(0px, 296.01px, 0px); }
+  100% { transform: translate3d(0px, 299px, 0px); }
+}
+
+@keyframes playing-card-drop-1 {
   0% { transform: translate3d(0px, 0px, 0px); }
   6.25% { transform: translate3d(0px, 34.92px, 0px); }
   12.5% { transform: translate3d(0px, 67.68px, 0px); }
@@ -41,6 +112,13 @@
   87.5% { transform: translate3d(0px, 292.32px, 0px); }
   93.75% { transform: translate3d(0px, 297px, 0px); }
   100% { transform: translate3d(0px, 300px, 0px); }
+}
+
+@keyframes playing-card-rotate {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  33.3333% { transform: rotateX(45.9deg) rotateY(2.55deg); }
+  66.6667% { transform: rotateX(75.6deg) rotateY(4.2deg); }
+  100% { transform: rotateX(90deg) rotateY(5deg); }
 }
 
 @keyframes playing-card-stack-enter {
@@ -114,6 +192,7 @@
 		height: 100%;
 		background: white;
 		border-radius: 10px;
+		transform-origin: bottom center;
 		svg {
 			display: block;
 			width: 100%;
