@@ -139,13 +139,15 @@ angular.module('uguru.admin')
       }
       function pauseTimer(timer) {
         return function() {
-          clearInterval(timer.interval);
-          timer.interval = null;
-          var current = new Date().getTime();
-          timer.value +=  current - timer.startRef;
-          timer.startRef = new Date().getTime();
-          timer.display.ms = timer.value;
-          timer.display.s = (parseFloat(timer.value)/1000).toFixed(1);
+          if (timer.value) {
+            clearInterval(timer.interval);
+            timer.interval = null;
+            var current = new Date().getTime();
+            timer.value +=  current - timer.startRef;
+            timer.startRef = new Date().getTime();
+            timer.display.ms = timer.value;
+            timer.display.s = (parseFloat(timer.value)/1000).toFixed(1);
+          }
 
         }
       }
@@ -637,7 +639,6 @@ angular.module('uguru.admin')
           property.player.reset = false;
           property.player.active = false;
           property.player.timer.reset();
-          clearInterval(property.player.timer.interval);
           $timeout(function() {
             $scope.$apply();
           })
