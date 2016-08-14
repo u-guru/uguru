@@ -15,13 +15,13 @@
 						<path d="M64,36 L36,64" class="error-2"></path>
 					</g>
 				</svg>
-				<span class="label">:blur</span>
+				<span class="label" inspector-elem>:blur</span>
 				<span class="input"
 					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div>
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
-					<div><div></div><div inspector-elem></div></div>
+					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
 				</div>
 				<a init-with="p:[op:0]">

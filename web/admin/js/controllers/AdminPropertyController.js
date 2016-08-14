@@ -461,8 +461,9 @@ angular.module('uguru.admin')
     // var propertyOne = {name: 'transform', start: 'translateX(-1000%) rotate(-360deg) scale(0.1)', end: 'translateX(10%) rotate(720deg) scale(1.25)', duration:2000, timingFunction:'linear', ease: 'easeOutQuad', playbar:null, unit: 0}
     // var propertyTwo = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
 
-    var propertyOne = {name: 'transform', start: 'scaleX(0)', end: 'scaleX(1)', duration:1000, timingFunction:'linear', ease: 'swingTo', playbar:null, unit: 0}
-    var propertyTwo = {name: 'opacity', start: '0.5', end: '1', duration:200, timingFunction:'ease-out', ease: 'easeInExpo', playbar:null, unit: 0}
+    var propertyOne = {name: 'font-size', start: '16px', end: '12px', duration:1000, timingFunction:'linear', ease: 'easeOutExpo', playbar:null, unit: 0}
+	var propertyTwo = {name: 'transform', start: 'translate3d(0px,0px,0px)', end: 'translate3d(0px,-36px,0px)', duration:1000, timingFunction:'linear', ease: 'easeOutBounce', playbar:null, unit: 0}
+    // var propertyTwo = {name: 'opacity', start: '0.5', end: '1', duration:200, timingFunction:'ease-out', ease: 'easeInExpo', playbar:null, unit: 0}
     // var propertyThree = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
 
     apc.properties = [propertyOne, propertyTwo];

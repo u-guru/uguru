@@ -571,10 +571,10 @@ div.input-border {
 				height: 100%;
 				background: rgba(white, .2);
 				border-radius: 2px;
-				// transform: rotateX(90deg);
+				transform: rotateX(90deg);
 				transition: all 300ms linear;
 				transform-origin: center bottom;
-				// opacity: 0;
+				opacity: 0;
 				> div, > div div:nth-child(1), > div div:nth-child(2) {
 					position: absolute;
 				}
