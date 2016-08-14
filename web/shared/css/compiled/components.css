@@ -5569,11 +5569,17 @@ a.course-card:active .course-card-hover {
   top: 15px;
   height: calc(100% - 30px);
   width: 2px; }
+[class*="tile-border"][class*="tile-border-side"].small li:after {
+  top: 5px;
+  height: calc(100% - 10px); }
 [class*="tile-border"][class*="tile-border-bottom"] li:after {
   bottom: -1px;
   left: 15px;
   width: calc(100% - 30px);
   height: 2px; }
+[class*="tile-border"][class*="tile-border-bottom"].small li:after {
+  left: 5px;
+  width: calc(100% - 10px); }
 [class*="tile-border"][class*="dark"] li:after {
   background: rgba(64, 72, 75, 0.2); }
 [class*="tile-border"][class*="light"] li:after {
