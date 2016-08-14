@@ -23,6 +23,14 @@
 				width: 2px;
 			}
 		}
+		&.small {
+			li {
+				&:after {
+					top: 5px;
+					height: calc(100% - 10px);
+				}
+			}
+		}
 	}
 	&[class*="tile-border-bottom"] {
 		li {
@@ -31,6 +39,14 @@
 				left: 15px;
 				width: calc(100% - 30px);
 				height: 2px;
+			}
+		}
+		&.small {
+			li {
+				&:after {
+					left: 5px;
+					width: calc(100% - 10px);
+				}
 			}
 		}
 	}

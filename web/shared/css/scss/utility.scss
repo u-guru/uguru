@@ -206,6 +206,13 @@ button, input, textarea {
 	.fixed {
 		position: absolute!important;
 	}
+	> .fixed, > .absolute {
+		position: relative!important;
+		top: auto!important;
+		left: auto!important;
+		right: auto!important;
+		bottom: auto!important;
+	}
 }
 
 .no-scrollbar {
@@ -994,6 +1001,9 @@ button, input, textarea {
 .width-25p {
 	width: 25%!important;
 }
+.width-30p {
+	width: 30%!important;
+}
 .width-33p {
 	width: calc(100% / 3)!important;
 }
@@ -1003,8 +1013,14 @@ button, input, textarea {
 .width-50p {
 	width: 50%!important;
 }
+.width-60p {
+	width: 60%!important;
+}
 .width-66p {
 	width: calc(100% / 3 * 2)!important;
+}
+.width-70p {
+	width: 70%!important;
 }
 .width-75p {
 	width: 75%!important;
