@@ -138,15 +138,13 @@ angular.module('uguru.admin')
       }
       function pauseTimer(timer) {
         return function() {
-          if (timer.value) {
-            clearInterval(timer.interval);
-            timer.interval = null;
-            var current = new Date().getTime();
-            timer.value +=  current - timer.startRef;
-            timer.startRef = new Date().getTime();
-            timer.display.ms = timer.value;
-            timer.display.s = (parseFloat(timer.value)/1000).toFixed(1);
-          }
+          clearInterval(timer.interval);
+          timer.interval = null;
+          var current = new Date().getTime();
+          timer.value +=  current - timer.startRef;
+          timer.startRef = new Date().getTime();
+          timer.display.ms = timer.value;
+          timer.display.s = (parseFloat(timer.value)/1000).toFixed(1);
 
         }
       }
@@ -460,10 +458,11 @@ angular.module('uguru.admin')
       }
     }
 
-    var propertyOne = {name: 'transform', start: 'translateX(-1000%) rotate(-360deg) scale(0.1)', end: 'translateX(10%) rotate(720deg) scale(1.25)', duration:2000, timingFunction:'linear', ease: 'easeOutQuad', playbar:null, unit: 0}
-    var propertyTwo = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
+    // var propertyOne = {name: 'transform', start: 'translateX(-1000%) rotate(-360deg) scale(0.1)', end: 'translateX(10%) rotate(720deg) scale(1.25)', duration:2000, timingFunction:'linear', ease: 'easeOutQuad', playbar:null, unit: 0}
+    // var propertyTwo = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
 
-	// var propertyOne = {name: 'transform', start: 'rotateX(0deg) rotateY(0deg)', end: 'rotateX(90deg) rotateY(5deg)', duration:200, timingFunction:'linear', ease: 'easeOutQuad', playbar:null, unit: 0}
+    var propertyOne = {name: 'font-size', start: '16px', end: '12px', duration:1000, timingFunction:'linear', ease: 'easeOutExpo', playbar:null, unit: 0}
+	var propertyTwo = {name: 'transform', start: 'translate3d(0px,0px,0px)', end: 'translate3d(0px,-36px,0px)', duration:1000, timingFunction:'linear', ease: 'easeOutBounce', playbar:null, unit: 0}
     // var propertyTwo = {name: 'opacity', start: '0.5', end: '1', duration:200, timingFunction:'ease-out', ease: 'easeInExpo', playbar:null, unit: 0}
     // var propertyThree = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
 
@@ -638,6 +637,7 @@ angular.module('uguru.admin')
           property.player.reset = false;
           property.player.active = false;
           property.player.timer.reset();
+          clearInterval(property.player.timer.interval);
           $timeout(function() {
             $scope.$apply();
           })

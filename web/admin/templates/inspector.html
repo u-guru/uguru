@@ -1,11 +1,13 @@
 <div class='full-xy absolute top-0 left-0 overflow-hidden' ng-controller='AdminPropertyController as apc'>
     <div class='flex full-x relative lyt-1-3-sidebar' style='height:80%;'>
-        <div class='flex-wrap-center fix-abs'>
+        <div class='flex-wrap-center fix-abs relative'>
+			<div class="full-xy" ng-include="'shared/templates/components/input/border.tpl'"></div>
+
             <!-- <div ng-repeat='result in apc.results' style='width:50px; height:50px;' class='text-white flex-wrap-center p20xy'> {{result.prop}}<br> {{result.value}}</div> -->
 
-            <!-- <square   fill="pink"></square> -->
+			<!-- <square inspector-elem fill="pink"></square> -->
 
-			<!-- <div class="playing-card play-heart"><div inspector-elem>
+			<!-- <div inspector-elem class="playing-card play-heart"><div>
 				<svg viewBox="0 0 250 350">
 				    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 				        <path d="M181,114.589487 C181,98.2465582 167.776199,85 151.466344,85 C139.864282,85 129.833984,91.6958698 125.003748,101.438048 C120.163517,91.6958698 110.140715,85 98.5361549,85 C82.228799,85 69,98.2465582 69,114.589487 C69,153.630788 124.386538,175 124.386538,175 C124.386538,175 181,153.360451 181,114.589487 L181,114.589487 Z" class="heart" stroke="#F04F54" stroke-width="3" fill="#F04F54"></path>
@@ -36,7 +38,7 @@
 
             <!-- <div ng-include="'shared/templates/components/cards/profile-card.tpl'">
             </div> -->
-            <square inspector-elem  fill="pink"></square>
+
             <!-- <div ng-include="'shared/templates/components/demo/request-card.tpl'">
             </div>
             <div ng-include="'shared/templates/components/demo/request-card.tpl'">
@@ -169,13 +171,13 @@
 							</li>
 							<li>
                                 <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.step(property, 100, "-")'>
-                                        <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style='transform:rotate(180deg)'>
-                                            <path d="M68.3635106,20.0921155 C68.3635106,16.727533 71.0974015,14 74.454538,14 L74.454538,14 C77.8185196,14 80.5455654,16.7345657 80.5455654,20.0921155 L80.5455654,79.9078845 C80.5455654,83.272467 77.8116745,86 74.454538,86 L74.454538,86 C71.0905565,86 68.3635106,83.2654343 68.3635106,79.9078845 L68.3635106,20.0921155 Z M65.6106483,47.0463201 C66.5720751,47.8852207 67.3635106,48.7075094 67.3635106,50.0226176 C67.3635106,51.3349572 66.8005882,52.132328 65.6106483,52.9961465 L23.5085114,85.7243441 C22.8090385,86.2005517 20.0362277,86.4054318 20,83.3433062 L20,16.6991604 C20.0027867,13.8668327 22.5359376,13.6425721 23.5085114,14.3208911 L65.6106483,47.0463201 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
+                                    <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style='transform:rotate(180deg)'>
+                                        <path d="M68.3635106,20.0921155 C68.3635106,16.727533 71.0974015,14 74.454538,14 L74.454538,14 C77.8185196,14 80.5455654,16.7345657 80.5455654,20.0921155 L80.5455654,79.9078845 C80.5455654,83.272467 77.8116745,86 74.454538,86 L74.454538,86 C71.0905565,86 68.3635106,83.2654343 68.3635106,79.9078845 L68.3635106,20.0921155 Z M65.6106483,47.0463201 C66.5720751,47.8852207 67.3635106,48.7075094 67.3635106,50.0226176 C67.3635106,51.3349572 66.8005882,52.132328 65.6106483,52.9961465 L23.5085114,85.7243441 C22.8090385,86.2005517 20.0362277,86.4054318 20,83.3433062 L20,16.6991604 C20.0027867,13.8668327 22.5359376,13.6425721 23.5085114,14.3208911 L65.6106483,47.0463201 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
                                 </a>
                             </li>
                             <li ng-if='!property.player.active'>
-								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.play(property)' when-show-play="p:[opacity:1, scale(1)]" ng-include='"shared/templates/components/svg/main/play.html"' ></a>
+								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.play(property)' when-show-play="p:[opacity:1, scale(1)]" ng-include='"shared/templates/components/svg/main/play-basic.html"' ></a>
 							</li>
 							<li ng-if='property.player.active'>
 								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.pause(property)' when-show-pause="p:[opacity:1, scale(1)]:easeIntQuint"  ng-include='"shared/templates/components/svg/main/pause.html"'></a>
@@ -184,13 +186,7 @@
                                 <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.step(property, property.settings.stepSlowSpeed, "+")' ng-include='"shared/templates/components/svg/main/skip.html"'></a>
                             </li>
                             <li>
-
-                                <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus ugrid-2' ng-click='property.player.step(property, property.settings.stepSpeed.fast, "+")'>
-                                    <span style='transform:scale(0.8); padding:0 !important;' ng-include='"shared/templates/components/svg/main/skip.html"'>
-                                    </span>
-                                    <span style='transform:scale(0.66);margin-left:-10%;padding:0 !important;' ng-include='"shared/templates/components/svg/main/skip.html"'>
-                                    </span>
-                                </a>
+                                <a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus ugrid-2' ng-click='property.player.step(property, property.settings.stepSpeed.fast, "+")' ng-include='"shared/templates/components/svg/main/fast-forward.html"'></a>
                             </li>
 							<li>
 								<a class='svg-36-24 stroke-white svg-stroke-9 radius-2 bg bg-campus' ng-click='property.player.resetAnim(property)' ng-include='"shared/templates/components/svg/main/sync.html"'></a>
@@ -287,20 +283,20 @@
                         </li>
                         <li>
                             <span class="flex radius-2 overflow-hidden">
-                                <span class="bg-campus height-36 p10x flex-center-vertical">Step Fast Speed:</span>
+                                <span class="bg-campus height-36 p10x flex-center-vertical">fast step-speed:</span>
                                 <span class="bg-white txt-slate p10x flex-center-vertical">{{property.settings.stepSpeed.fast}}ms</span>
                             </span>
                             <div class="m20top">
-                                <input type='range' max="{{property.settings.stepSpeed.fastRange.max}}" min="{{property.settings.stepSpeed.fastRange.min}}" ng-model="property.settings.stepSpeed.fast"/>
+                                <input type='range' max="{{property.settings.stepSpeed.fastRange.max}}" min="{{property.settings.stepSpeed.fastRange.min}}" size="2" ng-model="property.settings.stepSpeed.fast"/>
                             </div>
                         </li>
                         <li>
                             <span class="flex radius-2 overflow-hidden">
-                                <span class="bg-campus height-36 p10x flex-center-vertical">Step Slow Speed:</span>
+                                <span class="bg-campus height-36 p10x flex-center-vertical">slow step-speed:</span>
                                 <span class="bg-white txt-slate p10x flex-center-vertical">{{property.settings.stepSpeed.slow}}ms</span>
                             </span>
                             <div class="m20top">
-                                <input type='range' max="{{property.settings.stepSpeed.slowRange.max}}" min="{{property.settings.stepSpeed.slowRange.min}}" ng-model="property.settings.stepSpeed.slow"/>
+                                <input type='range' max="{{property.settings.stepSpeed.slowRange.max}}" min="{{property.settings.stepSpeed.slowRange.min}}" size="2" ng-model="property.settings.stepSpeed.slow"/>
                             </div>
                         </li>
                         <li>
