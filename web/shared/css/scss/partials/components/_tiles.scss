@@ -547,6 +547,9 @@
 		}
 		// click
 		&:active {
+			* {
+				transition: all 250ms ease-in!important;
+			}
 			// profile tile click
 			~ .pf-tile {
 				// profile tile click academic
@@ -568,7 +571,7 @@
 							}
 						}
 						.pf-tile-icon {
-							background: white;
+							background: rgba(mix($cerise, $slate, 15%), .2);
 							svg {
 								* {
 									@include svg-stroke(mix($cerise, $slate, 15%), 4);
@@ -582,7 +585,21 @@
 				}
 				// profile tile click baking
 				&.bg-baking {
-
+					.pf-pricing {
+						color: mix($gold, $slate, 75%);
+						svg {
+							stroke: mix($gold, $slate, 75%);
+						}
+					}
+					.pf-tile-top {
+						h1 {
+							.border {
+								&:nth-child(1) {
+									background: mix($gold, $slate, 75%);
+								}
+							}
+						}
+					}
 				}
 				// profile tile click photography
 				&.bg-photography {
@@ -740,7 +757,7 @@
 						&.bg-baking {
 							.pf-tile-top {
 								h1, div {
-									transform: translateZ(40px)!important;
+									transform: translateZ(30px)!important;
 								}
 							}
 						}

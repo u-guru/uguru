@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-desktop">
+<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="baking-desktop">
 	<!-- NOTES FOR JESELLE - WORK ON CARDLETS FIRST
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile tile transitions
