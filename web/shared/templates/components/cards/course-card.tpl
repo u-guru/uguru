@@ -1,4 +1,42 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default, link, overlay, checkbox, badge' default-type="link">
+<div class="perspective-container full-xy flex-center p15xy" types='svg, default, link, overlay, checkbox, badge' default-type="svg">
+	<a class="course-card-svg" ng-if='activeType === "svg"'
+		init-with="p-op"
+		on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
+		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
+		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
+		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		<svg width="240px" height="150px" viewBox="0 0 240 150">
+		    <g fill="none" fill-rule="evenodd" font-family="Source Sans Pro" font-weight="600" text-anchor="middle">
+				<g class="default">
+					<rect class="background" fill="#FFFFFF" x="0" y="0" width="240" height="150" rx="2"></rect>
+					<g fill="#003262">
+						<path d="M0,145 L240,145 L240,147.995118 C240,149.102384 239.106955,150 237.997273,150 L2.00272724,150 C0.896651527,150 0,149.1061 0,147.995118 L0,145 Z" class="border"></path>
+						<text class="name" font-size="14">
+							<tspan x="120" y="49">BIO 1A</tspan>
+						</text>
+						<text class="title" font-size="24" line-spacing="28">
+							<tspan x="120" y="80">Introduction to</tspan>
+							<tspan x="120" y="108">Biology</tspan>
+						</text>
+					</g>
+				</g>
+				<g class="color">
+					<rect class="color-background" fill="#003262" x="0" y="0" width="240" height="150" rx="2"></rect>
+					<g fill="#FFFFFF">
+						<path d="M0,145 L240,145 L240,147.995118 C240,149.102384 239.106955,150 237.997273,150 L2.00272724,150 C0.896651527,150 0,149.1061 0,147.995118 L0,145 Z" class="color-border"></path>
+						<text class="color-name" font-size="14">
+							<tspan x="120" y="49">BIO 1A</tspan>
+						</text>
+						<text class="color-title" font-size="24" line-spacing="28">
+							<tspan x="120" y="80">Introduction to</tspan>
+							<tspan x="120" y="108">Biology</tspan>
+						</text>
+					</g>
+				</g>
+		    </g>
+		</svg>
+	</a>
+
 	<div class="course-card" ng-if='activeType === "default"'
 		init-with="p-op"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
