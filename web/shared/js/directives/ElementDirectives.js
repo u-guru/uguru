@@ -880,6 +880,22 @@ directive("evalOnInit", ["$timeout", 'AnimationService', '$parse', function($tim
           }
       }
 }])
+.
+directive("evalOnReady", ["$timeout", '$parse', function($timeout, $parse) {
+      return {
+          restrict: 'A',
+          link: {post: function(scope, element, attr) {
+                element.ready(function() {
+                  var func = $parse(attr.evalOnReady);
+                  func(scope);
+                  $timeout(function() {
+                    scope.$apply();
+                  })
+                })
+              }
+          }
+      }
+}])
 .directive('classOnInit', ['$timeout', function ($timeout) {
   return {
     restrict: 'A',

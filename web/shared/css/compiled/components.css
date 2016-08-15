@@ -5646,6 +5646,10 @@ a.course-card:active .course-card-hover {
       transition: all 500ms ease-out; }
     .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
       transition: all 500ms ease-out; }
+      .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing:before {
+        transition: all 500ms ease-out; }
+    .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon *, .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container a ~ .pf-tile.bg-academic .pf-tile-top h2 {
+      transition: all 500ms ease-out; }
     .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1 .border, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top h1 + div, .pf-tile-container a ~ .pf-tile.bg-baking .pf-tile-top .pf-pricing {
       transition: all 250ms ease-in-out; }
     .pf-tile-container a ~ .pf-tile.bg-photography .pf-tile-border div {
@@ -5686,6 +5690,19 @@ a.course-card:active .course-card-hover {
       transition: all 500ms ease-out; }
     .pf-tile-container a ~ .pf-cardlet.bg-household .pf-cardlet-front div:empty {
       transition: all 500ms ease-out; }
+    .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-border > div, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-border > div {
+      background: #fbe1f0; }
+    .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
+      background: #fbe1f0; }
+      .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing:before, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing:before {
+        border-color: #fbe1f0;
+        border-right-color: transparent; }
+    .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon {
+      background: #fbe1f0; }
+      .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon svg *, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon svg * {
+        stroke: #97a2a6; }
+    .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container a:hover ~ .pf-tile.bg-academic .pf-tile-top h2, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container a:focus ~ .pf-tile.bg-academic .pf-tile-top h2 {
+      color: #fbe1f0; }
     .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-pricing, .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-pricing {
       color: #F6C64E; }
       .pf-tile-container a:hover ~ .pf-tile.bg-baking .pf-pricing svg, .pf-tile-container a:focus ~ .pf-tile.bg-baking .pf-pricing svg {
@@ -5795,6 +5812,36 @@ a.course-card:active .course-card-hover {
       background: #fbe1f0; }
     .pf-tile-container a:hover ~ .pf-cardlet.bg-baking .pf-cardlet-front, .pf-tile-container a:focus ~ .pf-cardlet.bg-baking .pf-cardlet-front {
       background: #fceeca; }
+    .pf-tile-container a:active * {
+      transition: all 250ms ease-in !important; }
+    .pf-tile-container a:active ~ .pf-tile.bg-academic {
+      background: #97a2a6; }
+      .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-border > div {
+        background: #594657; }
+      .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top {
+        background: #97a2a6; }
+        .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing {
+          background: #594657;
+          color: white !important; }
+          .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-pricing:before {
+            border-color: #594657;
+            border-right-color: transparent; }
+        .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon {
+          background: rgba(89, 70, 87, 0.2); }
+          .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top .pf-tile-icon svg * {
+            fill: none;
+            stroke: #594657;
+            stroke-width: 4px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
+        .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top h1, .pf-tile-container a:active ~ .pf-tile.bg-academic .pf-tile-top h2 {
+          color: #594657; }
+    .pf-tile-container a:active ~ .pf-tile.bg-baking .pf-pricing {
+      color: #c9a74d; }
+      .pf-tile-container a:active ~ .pf-tile.bg-baking .pf-pricing svg {
+        stroke: #c9a74d; }
+    .pf-tile-container a:active ~ .pf-tile.bg-baking .pf-tile-top h1 .border:nth-child(1) {
+      background: #c9a74d; }
     .pf-tile-container a:active ~ .pf-tile.bg-tech .pf-tile-top:after {
       background: rgba(75, 118, 129, 0.5);
       transition: all 1000ms cubic-bezier(0, 0.66, 0.47, 1.09); }
@@ -5853,7 +5900,7 @@ a.course-card:active .course-card-hover {
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-academic .pf-tile-bottom .rating-stars, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-academic .pf-tile-bottom .rating-stars {
       transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-baking .pf-tile-top div, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-baking .pf-tile-top h1, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-baking .pf-tile-top div {
-      transform: translateZ(40px) !important; }
+      transform: translateZ(30px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-photography .pf-tile-border, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-photography .pf-tile-border {
       transform: translateZ(20px) !important; }
     .pf-tile-container:not(.mobile) a:hover ~ .pf-tile.bg-photography .pf-tile-bottom, .pf-tile-container:not(.mobile) a:focus ~ .pf-tile.bg-photography .pf-tile-bottom {
@@ -6884,7 +6931,8 @@ a.course-card:active .course-card-hover {
       display: none; }
     .pf-cardlet.bg-photography .pf-cardlet-front div:empty:not(.pf-cardlet-overlay) {
       position: absolute;
-      background: white; }
+      background: white;
+      z-index: 5; }
       .pf-cardlet.bg-photography .pf-cardlet-front div:empty:not(.pf-cardlet-overlay):nth-child(1) {
         top: 0;
         left: 0;
@@ -6906,7 +6954,15 @@ a.course-card:active .course-card-hover {
         height: 102%;
         transform-origin: left center;
         border-radius: 3px 3px 0 0; }
+    .pf-cardlet.bg-photography .pf-cardlet-front .pf-cardlet-bg {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-position: center center;
+      background-size: cover; }
     .pf-cardlet.bg-photography .pf-cardlet-front .pf-cardlet-overlay {
+      z-index: 2;
       background: #94c07d; }
   .pf-cardlet.bg-photography .pf-cardlet-back {
     background: white; }
@@ -7136,6 +7192,11 @@ a.course-card:active .course-card-hover {
           right: -8px;
           width: 80px;
           height: 80px; }
+        .pf-cardlet.bg-household .pf-cardlet-bottom > div .pf-cardlet-border div:empty:nth-child(4) {
+          width: 30px;
+          height: 30px;
+          bottom: 20px;
+          right: 20px; }
     .pf-cardlet.bg-household .pf-cardlet-bottom > div h2 {
       position: relative;
       z-index: 2; }

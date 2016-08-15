@@ -8,7 +8,9 @@ angular.module('uguru.admin')
   'AnimationService',
   'UtilitiesService',
   'TweenService',
-  function($scope, $state, $timeout, $localstorage, AnimationService, UtilitiesService, TweenService) {
+  'RootService',
+  'DirectiveService',
+  function($scope, $state, $timeout, $localstorage, AnimationService, UtilitiesService, TweenService, RootService, DirectiveService) {
     var apc = this;
 
     apc.animationArr = getAllCSSAnimation();
@@ -175,7 +177,7 @@ angular.module('uguru.admin')
             range: {max: 3000, min:0, step: 100 },
               val:delayVal , display: animation.delay + ''
         },
-        resetAtEnd: false,
+        resetAtEnd: true,
         stepSpeed: {
           fast: 250,
           slow:50,
@@ -458,6 +460,82 @@ angular.module('uguru.admin')
       }
     }
 
+    apc.getAnimatableElements = function($event, elem) {
+      var browserPrefix = RootService.getBrowserPrefix();
+      var parentContainer = document.querySelector('[inspector-elem]');
+      parentContainer = parentContainer.childNodes[0]
+      var prefix = 'animation';
+      if (browserPrefix && browserPrefix.length)  {
+        prefix = browserPrefix + 'Animation'
+      }
+      var stateFilters = [];
+      var supportedStates = DirectiveService.getSupportedOnStates();
+      supportedStates = '[' + supportedStates.join(' [').split(' ').join('] ') + ']';
+      console.log(supportedStates);
+      var elements = parentContainer.querySelectorAll('*');
+      var filteredElements = [];
+      elements.forEach(function(e, i) {
+        var cmdAttrArr = [];
+        for (var j = 0; j < e.attributes.length; j++) {
+          var indexAttr = e.attributes[j];
+          if (supportedStates.indexOf(indexAttr.name) > -1) {
+            cmdAttrArr.push({name: indexAttr.name, value: indexAttr.value})
+          }
+        }
+        if (cmdAttrArr.length) {
+            eStyle = window.getComputedStyle(e);
+            var animStr = eStyle['webkitAnimation'].replace('running', 'paused');
+            e.style['webkitAnimation'] = animStr;
+            filteredElements.push({element: e, attr: cmdAttrArr, animStr: eStyle['webkitAnimation']})
+
+        }
+      })
+      apc.elements = filteredElements;
+      apc.activeElement = apc.elements[0].element
+      return;
+      var timelineDict = {transitions: [], animations:[]};
+      var classDict = {};
+      var animations = [];
+      var elementsWithAnimations = [];
+      var count = 0;
+      var maxDict = {duration: 0, delay:0, animation: null};;
+      for (var i = -1; i < allElements.length; i++) {
+        var indexChild = ((i >= 0) && allElements[i]) ||element[0];
+        var indexChildClass = indexChild.classList;
+        var animationProps = getAnimationObj(browserPrefix, indexChild);
+        if (animationProps) {
+          elementsWithAnimations.push(indexChild);
+          var firstKey = Object.keys(animationProps)[0];
+          var animationSplit = UtilitiesService.replaceAll(animationProps[firstKey], ', ', ',').split(',');
+          for (var j = 0; j < animationSplit.length; j++) {
+            var animDict = [];
+            for (key in animationProps) {
+              animDict[key] = UtilitiesService.replaceAll(animationProps[key], ', ', ',').split(',')[j];
+              var animObj = initAnimationObj(animDict, indexChild, browserPrefix)
+              if (animObj.duration && animObj.name && animObj.delay) {
+                var durationParsed = parseFloat(parseDuration(animObj.duration));
+                var delayParsed = parseFloat(parseDuration(animObj.delay));
+                if ((delayParsed + durationParsed) > (maxDict.delay + maxDict.duration)) {
+                  maxDict.delay = delayParsed;
+                  maxDict.duration = durationParsed;
+                  maxDict.animation = animObj;
+                }
+                if (!(animObj.name in scope.animLookupDict) || scope.animLookupDict[animObj.name].indexOf(indexChild) === -1) {
+                    if (!(animObj.name in scope.animLookupDict)) {
+                      scope.animLookupDict[animObj.name] = [indexChild];
+                    } else {
+                      scope.animLookupDict[animObj.name].push(indexChild);
+                    }
+
+                    animations.push(animObj)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     // var propertyOne = {name: 'transform', start: 'translateX(-1000%) rotate(-360deg) scale(0.1)', end: 'translateX(10%) rotate(720deg) scale(1.25)', duration:2000, timingFunction:'linear', ease: 'easeOutQuad', playbar:null, unit: 0}
     // var propertyTwo = {name: 'fill', start: 'rgb(0,0,0)', end: 'rgb(101,21,255)', duration:2000, timingFunction:'linear', ease: 'easeInOutExpo', playbar:null, unit: 0}
 
@@ -468,12 +546,12 @@ angular.module('uguru.admin')
 
     apc.properties = [propertyOne, propertyTwo];
 
-    $timeout(function() {
-      console.log(apc.properties[0])
-      var inspectElemId = '#svg-square-rect';
-      var elem = document.querySelector('[inspector-elem]');
-      parsePropertiesAndPlay(apc.properties, elem);
-    }, 2000)
+    // $timeout(function() {
+    //   console.log(apc.properties[0])
+    //   var inspectElemId = '#svg-square-rect';
+    //   var elem = document.querySelector('[inspector-elem]');
+    //   parsePropertiesAndPlay(apc.properties, elem);
+    // }, 2000)
 
 
     function pauseOne(property, cb) {
@@ -577,26 +655,6 @@ angular.module('uguru.admin')
       var thisAnimSplit = styleSplit[1].split(', ');
       var remainingAnim = thisAnimSplit[1] && thisAnimSplit[1].join(", ") || '';
       console.log('previous:', previousAnim, '\n' + 'targetted:', thisAnimSplit, '\n' + 'remaining:', remainingAnim);
-        // var animStr = animationName + thisAnimSplit[0];
-        // var updated = previousAnim + animStr.replace('running', 'paused') + remainingAnim;
-
-        // console.log('ready to jump');
-
-        // property.element.style['webkitAnimation'] = updated;
-        // updated = previousAnim + updated.replace('0s', '-1s') + remainingAnim;
-        // property.element.style['webkitAnimation'] = updated
-        // updated = previousAnim + updated.replace('normal', 'reverse') + remainingAnim;
-        // property.element.style['webkitAnimation'] = updated;
-        // updated = previousAnim + updated.replace('running', 'paused') + remainingAnim;;
-        // property.element.style['webkitAnimation'] = updated;
-        // $timeout(function() {
-        //   property.element.style['webkitAnimation'] = previousAnim + updated.replace('paused', 'running') + remainingAnim;
-        // }, 50);
-
-        // console.log(property.element.style['webkitAnimation']);
-        // property.element.style['webkitAnimation'] = previousAnim + animStr.replace('paused', 'running') + remainingAnim;
-        // property.element.style['webkitAnimation'] = previousAnim + cb && cb(animStr); + remainingAnim;
-
     }
 
     function changeDirection(property, direction) {

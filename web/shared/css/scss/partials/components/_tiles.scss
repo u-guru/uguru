@@ -121,6 +121,12 @@
 				.pf-tile-top {
 					.pf-pricing {
 						transition: all 500ms ease-out;
+						&:before {
+							transition: all 500ms ease-out;
+						}
+					}
+					.pf-tile-icon, .pf-tile-icon *, h1, h2 {
+						transition: all 500ms ease-out;
 					}
 				}
 			}
@@ -289,7 +295,29 @@
 			~ .pf-tile {
 				// profile tile hover academic
 				&.bg-academic {
-
+					.pf-tile-border {
+						> div {
+							background: mix($cerise, white, 15%);
+						}
+					}
+					.pf-tile-top {
+						.pf-pricing {
+							background: mix($cerise, white, 15%);
+							&:before {
+								border-color: mix($cerise, white, 15%);
+							    border-right-color: transparent;
+							}
+						}
+						.pf-tile-icon {
+							background: mix($cerise, white, 15%);
+							svg * {
+								stroke: lighten($slate, 35%);
+							}
+						}
+						h1, h2 {
+							color: mix($cerise, white, 15%);
+						}
+					}
 				}
 				// profile tile hover baking
 				&.bg-baking {
@@ -519,15 +547,59 @@
 		}
 		// click
 		&:active {
+			* {
+				transition: all 250ms ease-in!important;
+			}
 			// profile tile click
 			~ .pf-tile {
 				// profile tile click academic
 				&.bg-academic {
-
+					background: lighten($slate, 35%);
+					.pf-tile-border {
+						> div {
+							background: mix($cerise, $slate, 15%);
+						}
+					}
+					.pf-tile-top {
+						background: lighten($slate, 35%);
+						.pf-pricing {
+							background: mix($cerise, $slate, 15%);
+							color: white!important;
+							&:before {
+								border-color: mix($cerise, $slate, 15%);
+								border-right-color: transparent;
+							}
+						}
+						.pf-tile-icon {
+							background: rgba(mix($cerise, $slate, 15%), .2);
+							svg {
+								* {
+									@include svg-stroke(mix($cerise, $slate, 15%), 4);
+								}
+							}
+						}
+						h1, h2 {
+							color: mix($cerise, $slate, 15%);
+						}
+					}
 				}
 				// profile tile click baking
 				&.bg-baking {
-
+					.pf-pricing {
+						color: mix($gold, $slate, 75%);
+						svg {
+							stroke: mix($gold, $slate, 75%);
+						}
+					}
+					.pf-tile-top {
+						h1 {
+							.border {
+								&:nth-child(1) {
+									background: mix($gold, $slate, 75%);
+								}
+							}
+						}
+					}
 				}
 				// profile tile click photography
 				&.bg-photography {
@@ -685,7 +757,7 @@
 						&.bg-baking {
 							.pf-tile-top {
 								h1, div {
-									transform: translateZ(40px)!important;
+									transform: translateZ(30px)!important;
 								}
 							}
 						}
@@ -1852,6 +1924,7 @@
 			div:empty:not(.pf-cardlet-overlay) {
 				position: absolute;
 				background: white;
+				z-index: 5;
 				&:nth-child(1) {
 					top: 0;
 					left: 0;
@@ -1877,7 +1950,16 @@
 					border-radius: 3px 3px 0 0;
 				}
 			}
+			.pf-cardlet-bg {
+				position: relative;
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+				background-position: center center;
+				background-size: cover;
+			}
 			.pf-cardlet-overlay {
+				z-index: 2;
 				background: mix($moola, white, 85%);
 			}
 		}
@@ -2125,6 +2207,12 @@
 							right: -8px;
 							width: 80px;
 							height: 80px;
+						}
+						&:nth-child(4) {
+							width: 30px;
+							height: 30px;
+							bottom: 20px;
+							right: 20px;
 						}
 					}
 				}
