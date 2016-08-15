@@ -446,8 +446,10 @@ $munchies: mix($auburn, $orange, 75%);
 $sound: mix($cobalt, $eggplant);
 $transit: mix($moola, $moxie);
 
-// $gabrielle: #958B8E;
-$gabrielle: $shamrock;
+$gabrielle: #F5C8BF;
+$jeselle: #7DD7D6;
+$jason: desaturate(mix($cobalt, $eggplant, 60%), 15%);
+$samir: mix($shamrock, $lake, 80%);
 
 $padding: 15px;
 

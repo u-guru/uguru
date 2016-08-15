@@ -376,186 +376,186 @@
 
 /* ---------- MISC */
 // ribbon edges
-[class*="ribbon-"] {
-	@include flex;
-	@include flex-center;
-	position: relative;
-	font-weight: 600;
-	&:before, &:after {
-		content: "";
-		position: absolute;
-		top: 0;
-	}
-	&[class*="-left"] {
-		padding-right: 15px;
-		&:after {
-			display: none;
-		}
-	}
-	&[class*="-right"] {
-		padding-left: 15px;
-		&:before {
-			display: none;
-		}
-	}
-	&[class*="ribbon-32"] {
-		height: 32px;
-		font-size: 18px;
-		&:before, &:after {
-			border: 16px solid;
-			border-left-width: 12px;
-			border-right-width: 12px;
-		}
-		&:before {
-			left: -24px;
-		}
-		&:after {
-			right: -24px;
-		}
-	}
-	&[class*="ribbon-48"] {
-		height: 48px;
-		font-size: 24px;
-		&:before, &:after {
-			border: 24px solid;
-			border-left-width: 16px;
-			border-right-width: 16px;
-		}
-		&:before {
-			left: -32px;
-		}
-		&:after {
-			right: -32px;
-		}
-	}
-	&[class*="ribbon-64"] {
-		height: 64px;
-		font-size: 28px;
-		&:before, &:after {
-			border: 32px solid;
-			border-left-width: 24px;
-			border-right-width: 24px;
-		}
-		&:before {
-			left: -48px;
-		}
-		&:after {
-			right: -48px;
-		}
-	}
-	&.bg-charcoal {
-		&:before, &:after {
-			border-color: $charcoal;
-		}
-	}
-	&.bg-slate {
-		&:before, &:after {
-			border-color: $slate;
-		}
-	}
-	&.bg-taupe {
-		&:before, &:after {
-			border-color: $taupe;
-		}
-	}
-	&.bg-campus {
-		&:before, &:after {
-			border-color: $campus;
-		}
-	}
-	&.bg-smoke {
-		color: $slate;
-		&:before, &:after {
-			border-color: $smoke;
-		}
-	}
-	&.bg-white {
-		color: $slate;
-		&:before, &:after {
-			border-color: white;
-		}
-	}
-	&.bg-shamrock {
-		&:before, &:after {
-			border-color: $shamrock;
-		}
-	}
-	&.bg-robin {
-		background: $robin;
-		&:before, &:after {
-			border-color: $robin;
-		}
-	}
-	&.bg-lake {
-		&:before, &:after {
-			border-color: $lake;
-		}
-	}
-	&.bg-moxie {
-		&:before, &:after {
-			border-color: $moxie;
-		}
-	}
-	&.bg-crimson {
-		&:before, &:after {
-			border-color: $crimson;
-		}
-	}
-	&.bg-auburn, &.bg-delivery {
-		background: $auburn;
-		&:before, &:after {
-			border-color: $auburn;
-		}
-	}
-	&.bg-orange, &.bg-freelancing {
-		background: $orange;
-		&:before, &:after {
-			border-color: $orange;
-		}
-	}
-	&.bg-gold, &.bg-baking {
-		background: $gold;
-		&:before, &:after {
-			border-color: $gold;
-		}
-	}
-	&.bg-moola, &.bg-photography {
-		background: $moola;
-		&:before, &:after {
-			border-color: $moola;
-		}
-	}
-	&.bg-azure, &.bg-tech {
-		background: $azure;
-		&:before, &:after {
-			border-color: $azure;
-		}
-	}
-	&.bg-cobalt, &.bg-household {
-		background: $cobalt;
-		&:before, &:after {
-			border-color: $cobalt;
-		}
-	}
-	&.bg-eggplant, &.bg-athletic {
-		background: $eggplant;
-		&:before, &:after {
-			border-color: $eggplant;
-		}
-	}
-	&.bg-cerise, &.bg-academic {
-		background: $cerise;
-		&:before, &:after {
-			border-color: $cerise;
-		}
-	}
-	&:before {
-		border-left-color: transparent!important;
-	}
-	&:after {
-		border-right-color: transparent!important;
-	}
-}
+// [class*="ribbon-"] {
+// 	@include flex;
+// 	@include flex-center;
+// 	position: relative;
+// 	font-weight: 600;
+// 	&:before, &:after {
+// 		content: "";
+// 		position: absolute;
+// 		top: 0;
+// 	}
+// 	&[class*="-left"] {
+// 		padding-right: 15px;
+// 		&:after {
+// 			display: none;
+// 		}
+// 	}
+// 	&[class*="-right"] {
+// 		padding-left: 15px;
+// 		&:before {
+// 			display: none;
+// 		}
+// 	}
+// 	&[class*="ribbon-32"] {
+// 		height: 32px;
+// 		font-size: 18px;
+// 		&:before, &:after {
+// 			border: 16px solid;
+// 			border-left-width: 12px;
+// 			border-right-width: 12px;
+// 		}
+// 		&:before {
+// 			left: -24px;
+// 		}
+// 		&:after {
+// 			right: -24px;
+// 		}
+// 	}
+// 	&[class*="ribbon-48"] {
+// 		height: 48px;
+// 		font-size: 24px;
+// 		&:before, &:after {
+// 			border: 24px solid;
+// 			border-left-width: 16px;
+// 			border-right-width: 16px;
+// 		}
+// 		&:before {
+// 			left: -32px;
+// 		}
+// 		&:after {
+// 			right: -32px;
+// 		}
+// 	}
+// 	&[class*="ribbon-64"] {
+// 		height: 64px;
+// 		font-size: 28px;
+// 		&:before, &:after {
+// 			border: 32px solid;
+// 			border-left-width: 24px;
+// 			border-right-width: 24px;
+// 		}
+// 		&:before {
+// 			left: -48px;
+// 		}
+// 		&:after {
+// 			right: -48px;
+// 		}
+// 	}
+// 	&.bg-charcoal {
+// 		&:before, &:after {
+// 			border-color: $charcoal;
+// 		}
+// 	}
+// 	&.bg-slate {
+// 		&:before, &:after {
+// 			border-color: $slate;
+// 		}
+// 	}
+// 	&.bg-taupe {
+// 		&:before, &:after {
+// 			border-color: $taupe;
+// 		}
+// 	}
+// 	&.bg-campus {
+// 		&:before, &:after {
+// 			border-color: $campus;
+// 		}
+// 	}
+// 	&.bg-smoke {
+// 		color: $slate;
+// 		&:before, &:after {
+// 			border-color: $smoke;
+// 		}
+// 	}
+// 	&.bg-white {
+// 		color: $slate;
+// 		&:before, &:after {
+// 			border-color: white;
+// 		}
+// 	}
+// 	&.bg-shamrock {
+// 		&:before, &:after {
+// 			border-color: $shamrock;
+// 		}
+// 	}
+// 	&.bg-robin {
+// 		background: $robin;
+// 		&:before, &:after {
+// 			border-color: $robin;
+// 		}
+// 	}
+// 	&.bg-lake {
+// 		&:before, &:after {
+// 			border-color: $lake;
+// 		}
+// 	}
+// 	&.bg-moxie {
+// 		&:before, &:after {
+// 			border-color: $moxie;
+// 		}
+// 	}
+// 	&.bg-crimson {
+// 		&:before, &:after {
+// 			border-color: $crimson;
+// 		}
+// 	}
+// 	&.bg-auburn, &.bg-delivery {
+// 		background: $auburn;
+// 		&:before, &:after {
+// 			border-color: $auburn;
+// 		}
+// 	}
+// 	&.bg-orange, &.bg-freelancing {
+// 		background: $orange;
+// 		&:before, &:after {
+// 			border-color: $orange;
+// 		}
+// 	}
+// 	&.bg-gold, &.bg-baking {
+// 		background: $gold;
+// 		&:before, &:after {
+// 			border-color: $gold;
+// 		}
+// 	}
+// 	&.bg-moola, &.bg-photography {
+// 		background: $moola;
+// 		&:before, &:after {
+// 			border-color: $moola;
+// 		}
+// 	}
+// 	&.bg-azure, &.bg-tech {
+// 		background: $azure;
+// 		&:before, &:after {
+// 			border-color: $azure;
+// 		}
+// 	}
+// 	&.bg-cobalt, &.bg-household {
+// 		background: $cobalt;
+// 		&:before, &:after {
+// 			border-color: $cobalt;
+// 		}
+// 	}
+// 	&.bg-eggplant, &.bg-athletic {
+// 		background: $eggplant;
+// 		&:before, &:after {
+// 			border-color: $eggplant;
+// 		}
+// 	}
+// 	&.bg-cerise, &.bg-academic {
+// 		background: $cerise;
+// 		&:before, &:after {
+// 			border-color: $cerise;
+// 		}
+// 	}
+// 	&:before {
+// 		border-left-color: transparent!important;
+// 	}
+// 	&:after {
+// 		border-right-color: transparent!important;
+// 	}
+// }
 
 .svg-pennant {
 	animation-duration: 500ms;
