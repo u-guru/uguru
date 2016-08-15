@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="photo-desktop">
+<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="tech-desktop">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -410,12 +410,19 @@
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<div></div><div></div><div></div><div></div><div></div>
+					<div init-with="p:[tr:scaleX(0)]" when-tech-cardlet-init="p:[tr:scaleX(1):delay-150, t:transform 250ms ease-out]"></div>
+					<div init-with="p:[tr:scaleY(0)]" when-tech-cardlet-init="p:[tr:scaleY(1):delay-350, t:transform 250ms ease-out]"></div>
+					<div init-with="p:[tr:scaleX(0)]" when-tech-cardlet-init="p:[tr:scaleX(1):delay-600, t:transform 250ms ease-out]"></div>
+					<div init-with="p:[tr:scaleY(0)]" when-tech-cardlet-init="p:[tr:scaleY(1):delay-350, t:transform 250ms ease-out]"></div>
+					<div init-with="p:[tr:scaleX(0)]" when-tech-cardlet-init="p:[tr:scaleX(1):delay-600, t:transform 250ms ease-out]"></div>
 					<h1>When to Replace Your Phone</h1>
 					<div>
-						<div></div>
-						<h2>03/28/2016</h2>
-						<div></div>
+						<div init-with="p-op"
+							when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-850]"></div>
+						<h2 init-with="p-op"
+							when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-750]">03/28/2016</h2>
+						<div init-with="p-op"
+							when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-850]"></div>
 					</div>
 				</div>
 			</div>

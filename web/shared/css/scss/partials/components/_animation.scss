@@ -1,5 +1,35 @@
 @import '../mixin';
 
+@keyframes window-guru-hover {
+	0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+	52.15% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 3.516, 0, 1); }
+	63.26% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -2.895, 0, 1); }
+	85.49% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 3.516, 0, 1); }
+	100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+}
+
+@keyframes shake-opacity {
+  10% {
+    transform: translate(2px, 2px);
+    opacity: 0.8; }
+  20% {
+    transform: translate(0px, 0px);
+    opacity: 0.47; }
+  30% {
+    transform: translate(0px, 4px);
+    opacity: 0.3; }
+  70% {
+    transform: translate(1px, 3px);
+    opacity: 0.96; }
+  80% {
+    transform: translate(0px, -4px);
+    opacity: 0.9; }
+  90% {
+    transform: translate(3px, -4px);
+    opacity: 0.81; }
+  0%, 100% {
+    transform: translate(0, 0); opacity:1;} }
+
 @keyframes input-swingUp {
   0% { transform: rotateX(90deg); }
   3.33333% { transform: rotateX(76.5266deg); }
