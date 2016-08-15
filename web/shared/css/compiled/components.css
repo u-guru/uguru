@@ -6924,8 +6924,15 @@ a.course-card:active .course-card-hover {
         height: 102%;
         transform-origin: left center;
         border-radius: 3px 3px 0 0; }
+    .pf-cardlet.bg-photography .pf-cardlet-front .pf-cardlet-bg {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-position: center center;
+      background-size: cover; }
     .pf-cardlet.bg-photography .pf-cardlet-front .pf-cardlet-overlay {
-      z-index: 0;
+      z-index: 2;
       background: #94c07d; }
   .pf-cardlet.bg-photography .pf-cardlet-back {
     background: white; }
