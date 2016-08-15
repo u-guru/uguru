@@ -20,7 +20,7 @@
 						</div>
 						<div class="team-info">
 							<h2>UI Developer</h2>
-								<h2>SAE Ex'pression College</h2>
+							<h2>SAE Ex'pression College</h2>
 						</div>
 					</div>
 				</div>

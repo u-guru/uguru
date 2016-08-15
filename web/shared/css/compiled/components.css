@@ -3517,8 +3517,8 @@ fieldset.no-border * {
       width: 64px;
       height: 64px;
       border-radius: 100%;
-      border: 2px solid white;
-      background: #69B3A5;
+      border: 2px solid #69B3A5;
+      background: #40484B;
       margin: -32px auto 0; }
     .team-card .team-link .team-name {
       margin-top: 5px;
@@ -3576,7 +3576,7 @@ fieldset.no-border * {
 .team-gabrie .team-link {
   background: #F5C8BF; }
   .team-gabrie .team-link .team-icon {
-    background: #F5C8BF; }
+    border-color: #F5C8BF; }
 .team-gabrie .team-ribbon {
   background: #dab5ae; }
   .team-gabrie .team-ribbon .team-ribbon-left, .team-gabrie .team-ribbon .team-ribbon-right {
@@ -3590,7 +3590,7 @@ fieldset.no-border * {
 .team-jeselle .team-link {
   background: #7DD7D6; }
   .team-jeselle .team-link .team-icon {
-    background: #7DD7D6; }
+    border-color: #7DD7D6; }
 .team-jeselle .team-ribbon {
   background: #74c2c1; }
   .team-jeselle .team-ribbon .team-ribbon-left, .team-jeselle .team-ribbon .team-ribbon-right {
@@ -3604,7 +3604,7 @@ fieldset.no-border * {
 .team-jason .team-link {
   background: #8d77c9; }
   .team-jason .team-link .team-icon {
-    background: #8d77c9; }
+    border-color: #8d77c9; }
 .team-jason .team-ribbon {
   background: #8170b6; }
   .team-jason .team-ribbon .team-ribbon-left, .team-jason .team-ribbon .team-ribbon-right {
@@ -3618,7 +3618,7 @@ fieldset.no-border * {
 .team-samir .team-link {
   background: #64b0b0; }
   .team-samir .team-link .team-icon {
-    background: #64b0b0; }
+    border-color: #64b0b0; }
 .team-samir .team-ribbon {
   background: #5fa0a1; }
   .team-samir .team-ribbon .team-ribbon-left, .team-samir .team-ribbon .team-ribbon-right {
@@ -3628,6 +3628,51 @@ fieldset.no-border * {
 .team-samir .team-info {
   background: #e0efef;
   color: #527c7e; }
+
+.faq-card {
+  border-radius: 2px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px; }
+  .faq-card dt {
+    position: relative;
+    z-index: 2; }
+    .faq-card dt a {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      justify-content: space-between;
+      padding: 7.5px; }
+      .faq-card dt a h1 {
+        padding: 7.5px;
+        font-size: 20px;
+        font-weight: 600;
+        width: calc(100% - 24px - 15px); }
+      .faq-card dt a div {
+        padding: 7.5px; }
+        .faq-card dt a div span {
+          display: block;
+          width: 24px;
+          height: 24px; }
+          .faq-card dt a div span svg * {
+            stroke-width: 8px; }
+  .faq-card dd {
+    position: relative;
+    z-index: 1;
+    overflow: hidden; }
+    .faq-card dd div {
+      padding: 7.5px;
+      background: white; }
+      .faq-card dd div p {
+        color: #40484B;
+        margin: 0 !important;
+        padding: 7.5px;
+        font-size: 16px;
+        line-height: 1.2; }
 
 .pf-card-stack {
   position: relative; }
