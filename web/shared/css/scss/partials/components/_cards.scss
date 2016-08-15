@@ -1434,6 +1434,22 @@
 }
 
 // course cards
+.course-card-svg {
+	display: block;
+	.color {
+		opacity: 0;
+	}
+	&:hover, &:focus {
+		.color {
+			opacity: 1;
+		}
+	}
+	&:active {
+		.color-background {
+			fill: lighten($slate, 15%);
+		}
+	}
+}
 .course-card {
 	display: block;
 	position: relative;

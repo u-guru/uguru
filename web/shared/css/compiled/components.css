@@ -4637,6 +4637,15 @@ fieldset.no-border * {
             position: relative;
             z-index: 10; }
 
+.course-card-svg {
+  display: block; }
+  .course-card-svg .color {
+    opacity: 0; }
+  .course-card-svg:hover .color, .course-card-svg:focus .color {
+    opacity: 1; }
+  .course-card-svg:active .color-background {
+    fill: #637074; }
+
 .course-card {
   display: block;
   position: relative;
