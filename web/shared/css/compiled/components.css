@@ -5323,56 +5323,57 @@ a.course-card:active .course-card-hover {
   position: relative;
   cursor: pointer;
   max-width: 262px; }
-  .place-marker.bg-academic .marker-circle {
+  .place-marker.bg-academic .marker-circle div {
     background: #F04F54; }
   .place-marker.bg-academic .marker-guru {
     background: rgba(240, 79, 84, 0.3); }
     .place-marker.bg-academic .marker-guru:hover, .place-marker.bg-academic .marker-guru:focus {
       background: #F04F54; }
-  .place-marker.bg-freelancing .marker-circle {
+  .place-marker.bg-freelancing .marker-circle div {
     background: #E5753C; }
   .place-marker.bg-freelancing .marker-guru {
     background: rgba(229, 117, 60, 0.3); }
     .place-marker.bg-freelancing .marker-guru:hover, .place-marker.bg-freelancing .marker-guru:focus {
       background: #E5753C; }
-  .place-marker.bg-baking .marker-circle {
+  .place-marker.bg-baking .marker-circle div {
     background: #F6C64E; }
   .place-marker.bg-baking .marker-guru {
     background: rgba(246, 198, 78, 0.3); }
     .place-marker.bg-baking .marker-guru:hover, .place-marker.bg-baking .marker-guru:focus {
       background: #F6C64E; }
-  .place-marker.bg-photography .marker-circle {
+  .place-marker.bg-photography .marker-circle div {
     background: #81B566; }
   .place-marker.bg-photography .marker-guru {
     background: rgba(129, 181, 102, 0.3); }
     .place-marker.bg-photography .marker-guru:hover, .place-marker.bg-photography .marker-guru:focus {
       background: #81B566; }
-  .place-marker.bg-tech .marker-circle {
+  .place-marker.bg-tech .marker-circle div {
     background: #55A4B7; }
   .place-marker.bg-tech .marker-guru {
     background: rgba(85, 164, 183, 0.3); }
     .place-marker.bg-tech .marker-guru:hover, .place-marker.bg-tech .marker-guru:focus {
       background: #55A4B7; }
-  .place-marker.bg-household .marker-circle {
+  .place-marker.bg-household .marker-circle div {
     background: #7872e3; }
   .place-marker.bg-household .marker-guru {
     background: rgba(120, 114, 227, 0.3); }
     .place-marker.bg-household .marker-guru:hover, .place-marker.bg-household .marker-guru:focus {
       background: #7872e3; }
-  .place-marker.bg-athletic .marker-circle {
+  .place-marker.bg-athletic .marker-circle div {
     background: #9A5BC5; }
   .place-marker.bg-athletic .marker-guru {
     background: rgba(154, 91, 197, 0.3); }
     .place-marker.bg-athletic .marker-guru:hover, .place-marker.bg-athletic .marker-guru:focus {
       background: #9A5BC5; }
-  .place-marker.bg-academic .marker-circle {
+  .place-marker.bg-academic .marker-circle div {
     background: #e6389b; }
   .place-marker.bg-academic .marker-guru {
     background: rgba(230, 56, 155, 0.3); }
     .place-marker.bg-academic .marker-guru:hover, .place-marker.bg-academic .marker-guru:focus {
       background: #e6389b; }
   .place-marker .marker-normal {
-    position: relative; }
+    position: relative;
+    transform-origin: center bottom; }
     .place-marker .marker-normal .marker-normal-content {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -5537,7 +5538,6 @@ a.course-card:active .course-card-hover {
           font-weight: 400;
           text-align: left; }
   .place-marker .marker-circle {
-    border-radius: 1000px;
     position: absolute;
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -5547,8 +5547,13 @@ a.course-card:active .course-card-hover {
     transform: translateX(-50%);
     margin-top: 3px;
     width: 10px;
-    height: 10px;
-    border: 2px solid white; }
+    height: 10px; }
+    .place-marker .marker-circle div {
+      border-radius: 1000px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid white;
+      transform-origin: center center; }
   .place-marker .marker-label {
     position: absolute;
     width: 100%;

@@ -1,10 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy" types='edit, link' default-type="edit">
 	<div class="student-card" ng-if='activeType === "edit"'
 		init-with="p-op"
-		on-init="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
@@ -16,19 +13,16 @@
 			</div>
 			<div class="school-id-bottom">
 				<div>
-					<h1 class='lettercase' style="color: #003262;"
+					<h1 class='lettercase'
 						init-with="p:[op:0, tro:center top]"
 						when-student-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-150]">Marco Polo</h1>
-					<h2 style="color: #003262;"
-						init-with="p-op"
+					<h2 init-with="p-op"
 						when-student-card-init="a:[fadeIn:set:(dur:800ms#func:ease-in):in:delay-150]">Cal Freshman</h2>
-					<h2 style="color: #003262;"
-						init-with="p-op"
+					<h2 init-with="p-op"
 						when-student-card-init="a:[fadeIn:set:(dur:800ms#func:ease-in):in:delay-150]">email@school.edu</h2>
 				</div>
 				<h3>
-					<span style="color: #003262;"
-						init-with="p-op"
+					<span init-with="p-op"
 						when-student-card-init="a:[fadeIn:set:(dur:800ms#func:ease-in):in:delay-150]">SELECTED COURSES</span>
 					<span style="background: #003262;"
 						init-with="p:[op:0, tro:left center]"
