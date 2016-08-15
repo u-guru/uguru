@@ -420,7 +420,7 @@
 						<div init-with="p-op"
 							when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-850]"></div>
 						<h2 init-with="p-op"
-							when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:linear):in:delay-750]">03/28/2016</h2>
+							when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-750]">03/28/2016</h2>
 						<div init-with="p-op"
 							when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-850]"></div>
 					</div>
