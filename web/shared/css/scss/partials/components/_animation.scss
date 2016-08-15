@@ -1,5 +1,27 @@
 @import '../mixin';
 
+@keyframes shake-opacity {
+  10% {
+    transform: translate(2px, 2px) rotate(-0.5deg);
+    opacity: 0.8; }
+  20% {
+    transform: translate(0px, 0px) rotate(0.5deg);
+    opacity: 0.47; }
+  30% {
+    transform: translate(0px, 4px) rotate(-0.5deg);
+    opacity: 0.97; }
+  70% {
+    transform: translate(1px, 3px) rotate(1.5deg);
+    opacity: 0.96; }
+  80% {
+    transform: translate(0px, -4px) rotate(0.5deg);
+    opacity: 0.9; }
+  90% {
+    transform: translate(3px, -4px) rotate(0.5deg);
+    opacity: 0.81; }
+  0%, 100% {
+    transform: translate(0, 0) rotate(0); opacity:1;} }
+
 @keyframes input-swingUp {
   0% { transform: rotateX(90deg); }
   3.33333% { transform: rotateX(76.5266deg); }

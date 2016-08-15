@@ -1355,7 +1355,7 @@
 					left: 0;
 					width: 50%;
 					height: 2px;
-					transform-origin: right center;
+					transform-origin: center center;
 				}
 				&:nth-child(2) {
 					border-radius: 0 1000px 1000px 0;
@@ -1363,14 +1363,14 @@
 					right: 0;
 					width: 50%;
 					height: 2px;
-					transform-origin: left center;
+					transform-origin: center top;
 				}
 				&:nth-child(3) {
 					top: 0;
 					right: 0;
 					width: 2px;
 					height: 100%;
-					transform-origin: center top;
+					transform-origin: left center;
 				}
 				&:nth-child(4) {
 					border-radius: 1000px 0 0 1000px;
@@ -1378,7 +1378,7 @@
 					left: 0;
 					width: 50%;
 					height: 2px;
-					transform-origin: left center;
+					transform-origin: center top;
 				}
 				&:nth-child(5) {
 					border-radius: 0 1000px 1000px 0;

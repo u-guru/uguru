@@ -1,3 +1,25 @@
+@keyframes shake-opacity {
+  10% {
+    transform: translate(2px, 2px) rotate(-0.5deg);
+    opacity: 0.8; }
+  20% {
+    transform: translate(0px, 0px) rotate(0.5deg);
+    opacity: 0.47; }
+  30% {
+    transform: translate(0px, 4px) rotate(-0.5deg);
+    opacity: 0.97; }
+  70% {
+    transform: translate(1px, 3px) rotate(1.5deg);
+    opacity: 0.96; }
+  80% {
+    transform: translate(0px, -4px) rotate(0.5deg);
+    opacity: 0.9; }
+  90% {
+    transform: translate(3px, -4px) rotate(0.5deg);
+    opacity: 0.81; }
+  0%, 100% {
+    transform: translate(0, 0) rotate(0);
+    opacity: 1; } }
 @keyframes input-swingUp {
   0% {
     transform: rotateX(90deg); }
@@ -6381,27 +6403,27 @@ a.course-card:active .course-card-hover {
         left: 0;
         width: 50%;
         height: 2px;
-        transform-origin: right center; }
+        transform-origin: center center; }
       .pf-tile.bg-tech .border-outside span:nth-child(2) {
         border-radius: 0 1000px 1000px 0;
         top: 0;
         right: 0;
         width: 50%;
         height: 2px;
-        transform-origin: left center; }
+        transform-origin: center top; }
       .pf-tile.bg-tech .border-outside span:nth-child(3) {
         top: 0;
         right: 0;
         width: 2px;
         height: 100%;
-        transform-origin: center top; }
+        transform-origin: left center; }
       .pf-tile.bg-tech .border-outside span:nth-child(4) {
         border-radius: 1000px 0 0 1000px;
         bottom: 0;
         left: 0;
         width: 50%;
         height: 2px;
-        transform-origin: left center; }
+        transform-origin: center top; }
       .pf-tile.bg-tech .border-outside span:nth-child(5) {
         border-radius: 0 1000px 1000px 0;
         bottom: 0;
