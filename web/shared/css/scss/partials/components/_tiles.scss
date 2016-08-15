@@ -121,6 +121,12 @@
 				.pf-tile-top {
 					.pf-pricing {
 						transition: all 500ms ease-out;
+						&:before {
+							transition: all 500ms ease-out;
+						}
+					}
+					.pf-tile-icon, .pf-tile-icon *, h1, h2 {
+						transition: all 500ms ease-out;
 					}
 				}
 			}
@@ -289,7 +295,29 @@
 			~ .pf-tile {
 				// profile tile hover academic
 				&.bg-academic {
-
+					.pf-tile-border {
+						> div {
+							background: mix($cerise, white, 15%);
+						}
+					}
+					.pf-tile-top {
+						.pf-pricing {
+							background: mix($cerise, white, 15%);
+							&:before {
+								border-color: mix($cerise, white, 15%);
+							    border-right-color: transparent;
+							}
+						}
+						.pf-tile-icon {
+							background: mix($cerise, white, 15%);
+							svg * {
+								stroke: lighten($slate, 35%);
+							}
+						}
+						h1, h2 {
+							color: mix($cerise, white, 15%);
+						}
+					}
 				}
 				// profile tile hover baking
 				&.bg-baking {
@@ -523,7 +551,34 @@
 			~ .pf-tile {
 				// profile tile click academic
 				&.bg-academic {
-
+					background: lighten($slate, 35%);
+					.pf-tile-border {
+						> div {
+							background: mix($cerise, $slate, 15%);
+						}
+					}
+					.pf-tile-top {
+						background: lighten($slate, 35%);
+						.pf-pricing {
+							background: mix($cerise, $slate, 15%);
+							color: white!important;
+							&:before {
+								border-color: mix($cerise, $slate, 15%);
+								border-right-color: transparent;
+							}
+						}
+						.pf-tile-icon {
+							background: white;
+							svg {
+								* {
+									@include svg-stroke(mix($cerise, $slate, 15%), 4);
+								}
+							}
+						}
+						h1, h2 {
+							color: mix($cerise, $slate, 15%);
+						}
+					}
 				}
 				// profile tile click baking
 				&.bg-baking {
@@ -1852,6 +1907,7 @@
 			div:empty:not(.pf-cardlet-overlay) {
 				position: absolute;
 				background: white;
+				z-index: 5;
 				&:nth-child(1) {
 					top: 0;
 					left: 0;
@@ -1878,6 +1934,7 @@
 				}
 			}
 			.pf-cardlet-overlay {
+				z-index: 0;
 				background: mix($moola, white, 85%);
 			}
 		}
@@ -2125,6 +2182,12 @@
 							right: -8px;
 							width: 80px;
 							height: 80px;
+						}
+						&:nth-child(4) {
+							width: 30px;
+							height: 30px;
+							bottom: 20px;
+							right: 20px;
 						}
 					}
 				}

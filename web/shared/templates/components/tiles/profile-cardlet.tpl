@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="baking-desktop">
+<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-desktop">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -473,6 +473,7 @@
 							<div></div>
 							<div></div>
 							<div></div>
+							<div></div>
 						</div>
 						<h2>03/28/2016</h2>
 					</div>
@@ -512,6 +513,7 @@
 					<h1>How to Make Your Plants Live Longer</h1>
 					<div>
 						<div class="pf-cardlet-border">
+							<div></div>
 							<div></div>
 							<div></div>
 							<div></div>

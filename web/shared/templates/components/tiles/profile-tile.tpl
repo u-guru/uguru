@@ -28,43 +28,44 @@
 		<div class="pf-tile bg-academic">
 			<div class="pf-tile-border">
 				<div class="top"
-					init-with="p:[op:0, tro:left center, tr:scaleX(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)]"
+					init-with="p:[op:0, tro:left center, tr:scaleX(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)#background 500ms ease-out]"
 					when-academic-tile-init="p:[op:1, tr:none:delay-500]"
 					when-academic-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></div>
 				<div class="right"
-					init-with="p:[op:0, tro:center bottom, tr:scaleY(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)]"
+					init-with="p:[op:0, tro:center bottom, tr:scaleY(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)#background 500ms ease-out]"
 					when-academic-tile-init="p:[op:1, tr:none:delay-500]"
 					when-academic-tile-exit="p:[op:0:delay-500, tr:scaleY(0)]"></div>
 				<div class="bot"
-					init-with="p:[op:0, tro:right center, tr:scaleX(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)]"
+					init-with="p:[op:0, tro:right center, tr:scaleX(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)#background 500ms ease-out]"
 					when-academic-tile-init="p:[op:1, tr:none:delay-500]"
 					when-academic-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></div>
 				<div class="left"
-					init-with="p:[op:0, tro:center top, tr:scaleY(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)]"
+					init-with="p:[op:0, tro:center top, tr:scaleY(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)#background 500ms ease-out]"
 					when-academic-tile-init="p:[op:1, tr:none:delay-500]"
 					when-academic-tile-exit="p:[op:0:delay-500, tr:scaleY(0)]"></div>
 			</div>
 			<div class="pf-tile-top">
 				<div class="pf-pricing"
-					init-with="p:[op:0, tr:translateX(-50%), t:opacity 375ms ease-out#transform 500ms ease-out]"
+					init-with="p:[op:0, tr:translateX(-50%), t:opacity 375ms ease-out#transform 500ms ease-out#background 500ms ease-out#color 500ms ease-out]"
 					when-academic-tile-init="p:[op:1:delay-875, tr:none:delay-750]">$10/hr</div>
-				<div class="pf-tile-icon"
-					init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)]"
+				<div init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)]"
 					when-academic-tile-init="p:[op:1:delay-500, tr:none:delay-500]">
-					<svg viewBox="0 0 100 100">
-						<g>
-							<path d="M61.993,18 L25.006,18 C23.334,18 22,19.344 22,21.001 L22,30 L25.002,30 C26.658,30 28,31.346 28,33 C28,34.657 26.658,36 25.002,36 L22,36 L22,47 L25.002,47 C26.658,47 28,48.346 28,50 C28,51.657 26.658,53 25.002,53 L22,53 L22,64 L25.002,64 C26.658,64 28,65.346 28,67 C28,68.657 26.658,70 25.002,70 L22,70 L22,78.999 C22,80.663 23.346,82 25.006,82 L61.993,82 C63.666,82 65,80.656 65,78.999 L65,21.001 C65,19.337 63.654,18 61.993,18 L61.993,18 Z"></path>
-							<path d="M70,70 L74,77 L78,70 L78,17.9999998 L70,17.9999998 L70,70 Z"></path>
-							<path d="M70.4117647,81 L83.5882353,81"></path>
-							<rect x="16" y="64" width="12" height="6" rx="3"></rect>
-							<rect x="16" y="47" width="12" height="6" rx="3"></rect>
-							<rect x="16" y="30" width="12" height="6" rx="3"></rect>
-						</g>
-					</svg>
+					<div class="pf-tile-icon">
+						<svg viewBox="0 0 100 100">
+							<g>
+								<path d="M61.993,18 L25.006,18 C23.334,18 22,19.344 22,21.001 L22,30 L25.002,30 C26.658,30 28,31.346 28,33 C28,34.657 26.658,36 25.002,36 L22,36 L22,47 L25.002,47 C26.658,47 28,48.346 28,50 C28,51.657 26.658,53 25.002,53 L22,53 L22,64 L25.002,64 C26.658,64 28,65.346 28,67 C28,68.657 26.658,70 25.002,70 L22,70 L22,78.999 C22,80.663 23.346,82 25.006,82 L61.993,82 C63.666,82 65,80.656 65,78.999 L65,21.001 C65,19.337 63.654,18 61.993,18 L61.993,18 Z"></path>
+								<path d="M70,70 L74,77 L78,70 L78,17.9999998 L70,17.9999998 L70,70 Z"></path>
+								<path d="M70.4117647,81 L83.5882353,81"></path>
+								<rect x="16" y="64" width="12" height="6" rx="3"></rect>
+								<rect x="16" y="47" width="12" height="6" rx="3"></rect>
+								<rect x="16" y="30" width="12" height="6" rx="3"></rect>
+							</g>
+						</svg>
+					</div>
 				</div>
-				<h1 init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)]"
+				<h1 init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)#color 500ms ease-out]"
 					when-academic-tile-init="p:[op:1:delay-500, tr:none:delay-500]">Chem 133</h1>
-				<h2 init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)]"
+				<h2 init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)#color 500ms ease-out]"
 					when-academic-tile-init="p:[op:1:delay-500, tr:none:delay-500]">Organic Chemistry</h2>
 			</div>
 			<div class="pf-tile-bottom"
