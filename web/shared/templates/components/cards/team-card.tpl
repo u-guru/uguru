@@ -291,7 +291,7 @@
 								when-samir-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
 							<div class="team-ribbon-right-corner"
 								init-with="p:[tr:scale(0), tro:left top]"
-								when-samir-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[jason-line-draw:public:delay-1000]"></div>
+								when-samir-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[samir-line-draw:public:delay-1000]"></div>
 						</div>
 						<div class="team-info"
 							init-with="p:[op:0, tr:translateY(-50px)]"
