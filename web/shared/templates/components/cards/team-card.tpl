@@ -7,7 +7,7 @@
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://lh3.googleusercontent.com/QTuexOGRCXW_XGK-W2giycynljv3KsuX3QrMQf81aSNNJQMbieFxL3spoOvR3CzV3oxNr1jCriY3bpA=w2560-h1424')"></div>
+					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/gabrielle.jpg?token=AAm4HoXDx19Lb58LPkLHAOTjJNakVVRIks5XvJnLwA%3D%3D')"></div>
 					<div>
 			            <div class="team-link">
 							<div class="team-icon">
@@ -54,7 +54,7 @@
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://lh3.googleusercontent.com/FtUtn61vO8Xg8Cv2mhFQd2PfE0HVOfQI6hE_MoxOIaC4euGSD7ZKaersoQ3Kv9tQFoDmzQj68SLTJck=w2560-h1424')"></div>
+					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jeselle.jpg?token=AAm4HhGSrc-7t6S6vyNQMpDZ3DbSndC1ks5XvJozwA%3D%3D')"></div>
 					<div>
 			            <div class="team-link">
 							<div class="team-icon">
@@ -105,7 +105,7 @@
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://lh6.googleusercontent.com/n404hrhQWbL9uwtI47XucvsPJaPE2Myph5XDQQJDKbqXR-5CX0YIGdRsb_FKpFRjEQpYL1F9Iq2ufeY=w2560-h1424')"></div>
+					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jason.jpg?token=AAm4HmSt9nEW3q8WZCb7eWtoqE76eqcnks5XvJoKwA%3D%3D')"></div>
 					<div>
 			            <div class="team-link">
 							<div class="team-icon"><svg viewBox="0 0 200 200">
@@ -151,7 +151,7 @@
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://lh6.googleusercontent.com/ewXxuuvycbyGSGibGOmLafXwqwXSoWNDP5RFvBwHCjVpITG8_oqU8rCzRtVToZafQP74ynJglNd5hj8=w2560-h1424')"></div>
+					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/samir.jpg?token=AAm4HqfZg6AkFGFO4M623SOvqBUV0NgTks5XvJpOwA%3D%3D')"></div>
 					<div>
 			            <div class="team-link">
 							<div class="team-icon" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"></div>
