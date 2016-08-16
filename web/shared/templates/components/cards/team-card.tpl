@@ -2,11 +2,12 @@
 	<ul class="p15-grid flex-wrap-center">
 		<li>
 			<div class="team-card-container team-gabrie">
+				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://gravatar.com/avatar/c5480b6529be0c21681ba05ee601557a?s=512')"></div>
+					<div class="team-photo" style="background-image: url('https://lh3.googleusercontent.com/QTuexOGRCXW_XGK-W2giycynljv3KsuX3QrMQf81aSNNJQMbieFxL3spoOvR3CzV3oxNr1jCriY3bpA=w2560-h1424')"></div>
 					<div>
 			            <div class="team-link">
 							<div class="team-icon">
@@ -30,9 +31,11 @@
 							<h1 class="team-name">Gabrielle Wee</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-left"></div>
+							<div class="team-ribbon-center">
+								<div class="team-ribbon-left"></div>
+								<div class="team-ribbon-right"></div>
+							</div>
 							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right"></div>
 							<div class="team-ribbon-right-corner"></div>
 						</div>
 						<div class="team-info">
@@ -46,11 +49,12 @@
 
 		<li>
 			<div class="team-card-container team-jeselle">
+				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://scontent-sjc2-1.cdninstagram.com/t51.2885-15/e15/1391413_1645788252322652_665608859_n.jpg?ig_cache_key=OTU3Mzg5NzQ3MDA4MzgxODQx.2')"></div>
+					<div class="team-photo" style="background-image: url('https://lh3.googleusercontent.com/FtUtn61vO8Xg8Cv2mhFQd2PfE0HVOfQI6hE_MoxOIaC4euGSD7ZKaersoQ3Kv9tQFoDmzQj68SLTJck=w2560-h1424')"></div>
 					<div>
 			            <div class="team-link">
 							<div class="team-icon">
@@ -78,9 +82,11 @@
 							<h1 class="team-name">Jeselle Obina</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-left"></div>
+							<div class="team-ribbon-center">
+								<div class="team-ribbon-left"></div>
+								<div class="team-ribbon-right"></div>
+							</div>
 							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right"></div>
 							<div class="team-ribbon-right-corner"></div>
 						</div>
 						<div class="team-info">
@@ -94,11 +100,12 @@
 
 		<li>
 			<div class="team-card-container team-jason">
+				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/13055371_10156816442930158_1183249581669632888_n.jpg?oh=dee5db93fa37c736beefdc80b3ee5481&oe=585AA62B')"></div>
+					<div class="team-photo" style="background-image: url('https://lh6.googleusercontent.com/n404hrhQWbL9uwtI47XucvsPJaPE2Myph5XDQQJDKbqXR-5CX0YIGdRsb_FKpFRjEQpYL1F9Iq2ufeY=w2560-h1424')"></div>
 					<div>
 			            <div class="team-link">
 							<div class="team-icon"><svg viewBox="0 0 200 200">
@@ -121,9 +128,11 @@
 							<h1 class="team-name">Jason Huang</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-left"></div>
+							<div class="team-ribbon-center">
+								<div class="team-ribbon-left"></div>
+								<div class="team-ribbon-right"></div>
+							</div>
 							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right"></div>
 							<div class="team-ribbon-right-corner"></div>
 						</div>
 						<div class="team-info">
@@ -137,20 +146,23 @@
 
 		<li>
 			<div class="team-card-container team-samir">
+				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/11223309_10153583382222292_4630063946892964678_n.jpg?oh=d2daefea8ab82aff3424a98a5c827ab8&oe=58123A8B'); background-position: top center;"></div>
+					<div class="team-photo" style="background-image: url('https://lh6.googleusercontent.com/ewXxuuvycbyGSGibGOmLafXwqwXSoWNDP5RFvBwHCjVpITG8_oqU8rCzRtVToZafQP74ynJglNd5hj8=w2560-h1424')"></div>
 					<div>
 			            <div class="team-link">
 							<div class="team-icon" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"></div>
 							<h1 class="team-name">Samir Makhani</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-left"></div>
+							<div class="team-ribbon-center">
+								<div class="team-ribbon-left"></div>
+								<div class="team-ribbon-right"></div>
+							</div>
 							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right"></div>
 							<div class="team-ribbon-right-corner"></div>
 						</div>
 						<div class="team-info">
