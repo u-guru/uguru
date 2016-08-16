@@ -1,0 +1,28 @@
+{
+    "description": "components directory",
+    "base_url": "shared/templates/components",
+    "dir": {
+        "input": {
+            "search": {
+                "filename": "search.tpl",
+                "types": []
+            }
+        },
+        "cards": {
+            "course": {
+                "filename": "course-card.tpl",
+                "types": ["default", "link", "overlay", "checkbox", "badge"]
+            }
+        },
+		"tiles": {
+            "profile-tile": {
+                "filename": "profile-tile.tpl",
+                "types": ["academic", "baking", "photography", "tech", "household"]
+            },
+			"profile-cardlet": {
+                "filename": "profile-cardlet.tpl",
+                "types": ["default", "academic", "baking", "photography", "tech", "household"]
+            }
+        }
+    }
+}

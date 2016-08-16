@@ -650,6 +650,9 @@
     height: 2px;
     background: rgba(93, 172, 193, 0.2); }
 
+.fix-abs .types-bar {
+  display: none; }
+
 .bg-cobalt-slate-campus-25p {
   background: #5d667e !important; }
 
