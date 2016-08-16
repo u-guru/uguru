@@ -1,16 +1,31 @@
 <div class="full-xy flex-center">
 	<ul class="p15-grid flex-wrap-center">
 		<li>
-			<div class="team-card-container team-gabrie">
+			<div class="team-card-container team-gabrie"
+				init-default
+				on-init="send:[gabrie-enter:public]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
-						<div></div><div></div><div></div><div></div>
+						<div init-with="p:[tr:scaleX(0), tro:center center]"
+							when-gabrie-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:scaleY(0), tro:center center]"
+							when-gabrie-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:scaleX(0), tro:center center]"
+							when-gabrie-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:scaleY(0), tro:center center]"
+							when-gabrie-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/gabrielle.jpg?token=AAm4HoXDx19Lb58LPkLHAOTjJNakVVRIks5XvJnLwA%3D%3D')"></div>
+					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/gabrielle.jpg?token=AAm4HoXDx19Lb58LPkLHAOTjJNakVVRIks5XvJnLwA%3D%3D')"
+						init-with="p:[op:0, tr:rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						when-gabrie-enter="p:[op:1, tr:rotateX(0) rotateY(0) translateY(0), t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
-			            <div class="team-link">
-							<div class="team-icon">
+						<div class="team-link"
+							init-with="p-op"
+							when-gabrie-enter="a:[scaleInX-subtle-half:set:(dur:1000ms#func:linear):in:delay-800] | send:[gabrie-ribbon-expand:public:delay-1000]">
+							<div class="team-icon"
+								init-with="p-op"
+								when-gabrie-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-1300]">
 								<svg viewBox="0 0 200 200">
 								    <g class="gabrie" fill="none" fill-rule="evenodd">
 								        <path d="M147.648434,64.825194 C145.791933,47.1617124 135.753836,25.5046051 106.176757,28.6132814 C76.5996777,31.7219576 76.6914661,34.1469119 66.658203,54.2695304 C56.6249399,74.3921488 149.504936,82.4886756 147.648434,64.825194 L147.648434,64.825194 Z" class="hat-top" stroke="#595241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#000000"></path>
@@ -27,18 +42,32 @@
 								        <path d="M52.8266512,126.896484 C52.8266512,96.828419 52.8266513,162.35607 52.8266513,167.311525 C52.8266513,167.311525 64.3554446,172.51758 67.5124347,172.51758 C70.3685167,172.51758 66.5366211,147.535645 66.5366211,147.535645 C66.5366211,147.535645 52.8266512,147.276367 52.8266512,126.896484 L52.8266512,126.896484 Z" class="blonde-left" fill="#F5C8BF"></path>
 								    </g>
 								</svg>
-						</div>
-							<h1 class="team-name">Gabrielle Wee</h1>
+							</div>
+							<h1 class="team-name"
+								init-with="p-op"
+								when-gabrie-enter="p:[op:1:delay-1000, t:all 500ms ease-out]">Gabrielle Wee</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-center">
-								<div class="team-ribbon-left"></div>
-								<div class="team-ribbon-right"></div>
+							<div class="team-ribbon-center"
+								init-with="p:[tr:scaleX(0), tro:center center]"
+								when-gabrie-ribbon-expand="p:[tr:scaleX(1), t:transform 1000ms linear]">
+								<div class="team-ribbon-left"
+									init-with="p:[op:0, tr:translateX(50px)]"
+									when-gabrie-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+								<div class="team-ribbon-right"
+									init-with="p:[op:0, tr:translateX(-50px)]"
+									when-gabrie-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 							</div>
-							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right-corner"></div>
+							<div class="team-ribbon-left-corner"
+								init-with="p:[tr:scale(0), tro:right top]"
+								when-gabrie-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
+							<div class="team-ribbon-right-corner"
+								init-with="p:[tr:scale(0), tro:left top]"
+								when-gabrie-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[gabrie-line-draw:public:delay-1000]"></div>
 						</div>
-						<div class="team-info">
+						<div class="team-info"
+							init-with="p:[op:0, tr:translateY(-50px)]"
+							when-gabrie-enter="p:[op:1:delay-1000, tr:translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
 							<h2>UI Developer</h2>
 							<h2>SAE Ex'pression College</h2>
 						</div>
@@ -50,26 +79,26 @@
 		<li>
 			<div class="team-card-container team-jeselle"
 				init-default
-				on-init="send:[jeselle-enter:public]">
+				on-init="send:[jeselle-enter:public:delay-500]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
 						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-line-jeselle="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
+							when-jeselle-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
 						<div init-with="p:[tr:scaleY(0), tro:center center]"
-							when-line-jeselle="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
+							when-jeselle-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-line-jeselle="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
+							when-jeselle-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
 						<div init-with="p:[tr:scaleY(0), tro:center center]"
-							when-line-jeselle="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
+							when-jeselle-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jeselle.jpg?token=AAm4HhGSrc-7t6S6vyNQMpDZ3DbSndC1ks5XvJozwA%3D%3D')"
-						init-with="p:[tr:rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
-						when-jeselle-enter="p:[tr:rotateX(0) rotateY(0) translateY(0), t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
+						init-with="p:[op:0, tr:rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						when-jeselle-enter="p:[op:1, tr:rotateX(0) rotateY(0) translateY(0), t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
 			            <div class="team-link"
 							init-with="p-op"
-							when-jeselle-enter="a:[scaleInX-subtle:set:(dur:1000ms#func:linear):in:delay-800] | send:[ribbon-expand:public:delay-1000]">
+							when-jeselle-enter="a:[scaleInX-subtle-half:set:(dur:1000ms#func:linear):in:delay-800] | send:[jeselle-ribbon-expand:public:delay-1000]">
 							<div class="team-icon"
 								init-with="p-op"
 								when-jeselle-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-1300]">
@@ -101,20 +130,20 @@
 						<div class="team-ribbon">
 							<div class="team-ribbon-center"
 								init-with="p:[tr:scaleX(0), tro:center center]"
-								when-ribbon-expand="p:[tr:scaleX(1), t:transform 1000ms linear]">
+								when-jeselle-ribbon-expand="p:[tr:scaleX(1), t:transform 1000ms linear]">
 								<div class="team-ribbon-left"
 									init-with="p:[op:0, tr:translateX(50px)]"
-									when-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									when-jeselle-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 								<div class="team-ribbon-right"
 									init-with="p:[op:0, tr:translateX(-50px)]"
-									when-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									when-jeselle-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 							</div>
 							<div class="team-ribbon-left-corner"
 								init-with="p:[tr:scale(0), tro:right top]"
-								when-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
+								when-jeselle-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
 							<div class="team-ribbon-right-corner"
 								init-with="p:[tr:scale(0), tro:left top]"
-								when-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[line-jeselle:public:delay-1000]"></div>
+								when-jeselle-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[jeselle-line-draw:public:delay-1000]"></div>
 						</div>
 						<div class="team-info"
 							init-with="p:[op:0, tr:translateY(-50px)]"
@@ -128,16 +157,31 @@
 		</li>
 
 		<li>
-			<div class="team-card-container team-jason">
+			<div class="team-card-container team-jason"
+				init-default
+				on-init="send:[jason-enter:public:delay-1000]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
-						<div></div><div></div><div></div><div></div>
+						<div init-with="p:[tr:scaleX(0), tro:center center]"
+							when-jason-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:scaleY(0), tro:center center]"
+							when-jason-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:scaleX(0), tro:center center]"
+							when-jason-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:scaleY(0), tro:center center]"
+							when-jason-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jason.jpg?token=AAm4HmSt9nEW3q8WZCb7eWtoqE76eqcnks5XvJoKwA%3D%3D')"></div>
+					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jason.jpg?token=AAm4HmSt9nEW3q8WZCb7eWtoqE76eqcnks5XvJoKwA%3D%3D')"
+						init-with="p:[op:0, tr:rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						when-jason-enter="p:[op:1, tr:rotateX(0) rotateY(0) translateY(0), t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
-			            <div class="team-link">
-							<div class="team-icon">
+			            <div class="team-link"
+							init-with="p-op"
+							when-jason-enter="a:[scaleInX-subtle-half:set:(dur:1000ms#func:linear):in:delay-800] | send:[jason-ribbon-expand:public:delay-1000]">
+							<div class="team-icon"
+								init-with="p-op"
+								when-jason-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-1300]">
 								<svg viewBox="0 0 200 200">
 								    <g class="jason-guru" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 							            <path d="M60,107 C60,107 56,107 54,111 C52,115 52.9750979,121.312012 56.970215,123.79248 C60.9653322,126.272949 64.0000002,123 64,123 C67.9716799,130.0625 75.4101584,149.488446 108.506026,147.99722 C134.625974,146.820313 146.641113,128.905274 146,113 C146,113 150.995605,115.307617 153.519043,111.708496 C156.04248,108.109375 157,104 155,100 C153,96.0000005 150,95 146,97 C149,84.0000006 131,71 131,71 C119,75 107,67 96,67 C85,67 56,73 60,107" class="face" stroke="#393E56" stroke-width="2"  fill="#F9ECE5"></path>
@@ -154,17 +198,31 @@
 								    </g>
 								</svg>
 							</div>
-							<h1 class="team-name">Jason Huang</h1>
+							<h1 class="team-name"
+								init-with="p-op"
+								when-jason-enter="p:[op:1:delay-1000, t:all 500ms ease-out]">Jason Huang</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-center">
-								<div class="team-ribbon-left"></div>
-								<div class="team-ribbon-right"></div>
+							<div class="team-ribbon-center"
+								init-with="p:[tr:scaleX(0), tro:center center]"
+								when-jason-ribbon-expand="p:[tr:scaleX(1), t:transform 1000ms linear]">
+								<div class="team-ribbon-left"
+									init-with="p:[op:0, tr:translateX(50px)]"
+									when-jason-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+								<div class="team-ribbon-right"
+									init-with="p:[op:0, tr:translateX(-50px)]"
+									when-jason-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 							</div>
-							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right-corner"></div>
+							<div class="team-ribbon-left-corner"
+								init-with="p:[tr:scale(0), tro:right top]"
+								when-jason-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
+							<div class="team-ribbon-right-corner"
+								init-with="p:[tr:scale(0), tro:left top]"
+								when-jason-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[jason-line-draw:public:delay-1000]"></div>
 						</div>
-						<div class="team-info">
+						<div class="team-info"
+							init-with="p:[op:0, tr:translateY(-50px)]"
+							when-jason-enter="p:[op:1:delay-1000, tr:translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
 							<h2>QA Engineer</h2>
 							<h2>San Jose State University</h2>
 						</div>
@@ -174,17 +232,32 @@
 		</li>
 
 		<li>
-			<div class="team-card-container team-samir">
+			<div class="team-card-container team-samir"
+				init-default
+				on-init="send:[samir-enter:public:delay-1500]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
-						<div></div><div></div><div></div><div></div>
+						<div init-with="p:[tr:scaleX(0), tro:center center]"
+							when-samir-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:scaleY(0), tro:center center]"
+							when-samir-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:scaleX(0), tro:center center]"
+							when-samir-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:scaleY(0), tro:center center]"
+							when-samir-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
-					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/samir.jpg?token=AAm4HqfZg6AkFGFO4M623SOvqBUV0NgTks5XvJpOwA%3D%3D')"></div>
+					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/samir.jpg?token=AAm4HqfZg6AkFGFO4M623SOvqBUV0NgTks5XvJpOwA%3D%3D')"
+						init-with="p:[op:0, tr:rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						when-samir-enter="p:[op:1, tr:rotateX(0) rotateY(0) translateY(0), t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
-			            <div class="team-link">
-							<div class="team-icon">
-								<svg viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			            <div class="team-link"
+							init-with="p-op"
+							when-samir-enter="a:[scaleInX-subtle-half:set:(dur:1000ms#func:linear):in:delay-800] | send:[samir-ribbon-expand:public:delay-1000]">
+							<div class="team-icon"
+								init-with="p-op"
+								when-samir-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-1300]">
+								<svg viewBox="0 0 200 200">
 								    <g class="samir-guru" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 								        <path d="M55,117 C53,121 53.9750979,127.312012 57.970215,129.79248 C61.9653322,132.272949 65.0000002,129 65,129 C68.9716799,136.0625 76.4101584,155.488446 109.506026,153.99722 C135.625974,152.820313 147.641113,134.905274 147,119 C147,119 151.995605,121.307617 154.519043,117.708496 C157.04248,114.109375 158,110 156,106 C154,102 151,101 147,103 C150,90.0000006 140.67974,78.7779723 136.482419,75.6123048 C124.018552,66.211914 101.643956,66.4833985 90.9746105,68.1650391 C80.3052647,69.8466797 57,79 61,113 C61,113 57,113 55,117 Z" class="face" stroke="#33534D" stroke-width="2" fill="#F9ECE5"></path>
 								        <path d="M66.9995117,130.619629 C66.9995117,130.619629 76.4679651,157.057152 112.602539,152.73877 C146.845215,148.646484 145.854492,120.311035 145.854492,120.311035 C145.854492,120.311035 136.036621,130.802246 109.341797,133.098633 C82.6469727,135.39502 66.9995117,130.619629 66.9995117,130.619629 Z" class="scruff" fill="#64B0B0" opacity="0.218866604"></path>
@@ -198,17 +271,31 @@
 								    </g>
 								</svg>
 							</div>
-							<h1 class="team-name">Samir Makhani</h1>
+							<h1 class="team-name"
+								init-with="p-op"
+								when-samir-enter="p:[op:1:delay-1000, t:all 500ms ease-out]">Samir Makhani</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-center">
-								<div class="team-ribbon-left"></div>
-								<div class="team-ribbon-right"></div>
+							<div class="team-ribbon-center"
+								init-with="p:[tr:scaleX(0), tro:center center]"
+								when-samir-ribbon-expand="p:[tr:scaleX(1), t:transform 1000ms linear]">
+								<div class="team-ribbon-left"
+									init-with="p:[op:0, tr:translateX(50px)]"
+									when-samir-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+								<div class="team-ribbon-right"
+									init-with="p:[op:0, tr:translateX(-50px)]"
+									when-samir-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 							</div>
-							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right-corner"></div>
+							<div class="team-ribbon-left-corner"
+								init-with="p:[tr:scale(0), tro:right top]"
+								when-samir-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
+							<div class="team-ribbon-right-corner"
+								init-with="p:[tr:scale(0), tro:left top]"
+								when-samir-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[jason-line-draw:public:delay-1000]"></div>
 						</div>
-						<div class="team-info">
+						<div class="team-info"
+							init-with="p:[op:0, tr:translateY(-50px)]"
+							when-samir-enter="p:[op:1:delay-1000, tr:translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
 							<h2>Founder</h2>
 							<h2>UC Berkeley</h2>
 						</div>
