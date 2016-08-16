@@ -96,7 +96,7 @@
 							</div>
 							<h1 class="team-name"
 								init-with="p-op"
-								when-jeselle-enter="p:[op:1:delay-1000, t:opacity 500ms ease-out]">Jeselle Obina</h1>
+								when-jeselle-enter="p:[op:1:delay-1000, t:all 500ms ease-out]">Jeselle Obina</h1>
 			            </div>
 						<div class="team-ribbon">
 							<div class="team-ribbon-center"
@@ -111,10 +111,10 @@
 							</div>
 							<div class="team-ribbon-left-corner"
 								init-with="p:[tr:scale(0), tro:right top]"
-								when-ribbon-expand="p:[tr:scale(1), t: transform 450ms ease-out]"></div>
+								when-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
 							<div class="team-ribbon-right-corner"
 								init-with="p:[tr:scale(0), tro:left top]"
-								when-ribbon-expand="p:[tr:scale(1), t: transform 450ms ease-out] | send:[line-jeselle:public:delay-1000]"></div>
+								when-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[line-jeselle:public:delay-1000]"></div>
 						</div>
 						<div class="team-info"
 							init-with="p:[op:0, tr:translateY(-50px)]"
