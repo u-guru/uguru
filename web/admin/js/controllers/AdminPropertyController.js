@@ -15,7 +15,7 @@
     var apc = this;
 
     function parsePropertiesAndPlay(properties, i_elem) {
-
+      console.log(properties);
       properties.forEach(function(property, i) {
         var transformProp = {start: '', end: '', ease: ''};
         var transformProperties = ['scale', 'translateX', 'translateY', 'scale', 'rotate', 'perspective'];
@@ -29,9 +29,10 @@
         }
 
         properties[i].animation = initAnimationWithEase(property, i);
-        properties[i].player = {offset:0, play: playOne, resetAnim: resetOne, resume: playOne, stepBack: stepOne, stepForward: stepOne, pause: pauseOne};
+        properties[i].player = {offset:0, play: playOne, resetAnim: resetOne, resume: playOne, stepBack: stepOne, step: stepForward(apc.gPlayer.element, properties[i]), pause: pauseOne};
 
         properties[i].player.element = document.querySelector('.property-playbar-' + i);
+
 
         properties[i].keyframes = convertAnimObjToKF(property.animation.obj);
         properties[i].player.update = getUpdatePropertyAnimationFunc(i);
@@ -40,17 +41,92 @@
         properties[i].player.timer = getTimer(property);
 
         //player specific
-        var playballDict = initPlayerBallAnimation(property);
-        properties[i].player.animation = initAnimationWithEase(playballDict, 'Player');
-        properties[i].player.playElement = document.querySelector('.property-playball-' + i);
-        console.log(properties[i].player.playElement)
-        properties[i].player.playKeyframes = convertAnimObjToKF(property.player.animation.obj);
+        if (properties[i].player.element) {
+          var playballDict = initPlayerBallAnimation(property);
+          properties[i].player.animation = initAnimationWithEase(playballDict, 'Player');
+          properties[i].player.playElement = document.querySelector('.property-playball-' + i);
+          console.log(properties[i].player.playElement)
+          properties[i].player.playKeyframes = convertAnimObjToKF(property.player.animation.obj);
+        }
       })
+
       // transformProp.start.length && transformProp.end.length && properties.push(transformProp);
+      // apc.gPlayer.stepForward = stepForward(properties, apc.gPlayer.defaults)
       apc.playAll(properties);
+      // stepForward()
+      // properties[0].player.step();
     }
 
+
+
+    function stepForward(elem, properties) {
+      return function() {
+        for (var i = 0 ; i < properties.length; i++) {
+          ball = properties[i].player.playElement;
+          var iProp= apc.properties[0];
+          var options = iProp.settings;
+          var tween = new Tweenable();
+          var s_dict = {};
+          s_dict[iProp.propName] = iProp.start
+          e_dict[iProp.propName] = iProp.end;
+          tween.setConfig({
+            from: s_dict,
+            end: e_dict,
+            duration: iProp.duration,
+            easing: iProp.ease
+          })
+          tween.tween();
+          tween.pause();
+          tween.seek(iProp.timer.value - 250);
+          tween.resume();
+          $timeout(function() {
+            tween.pause();
+          }, 250)
+
+        }
+      }
+    }
+
+    // function stepBackwards(elem, properties) {
+    //   for (var i = 0 ; i < properties.length; i++) {
+
+    //   }
+    // }
+
+    // $timeout(function() {
+
+    //   var inspectElemId = '#svg-square-rect';
+
+
+
+    //   var property = apc.properties[0]
+    // // parsePropertiesAndPlay(apc.properties, elem);
+    //   var startDict = {};
+    //   var endDict = {};
+    //   startDict[apc.properties[0].propName] = apc.properties[0].start;
+
+    //   var property = apc.properties[0];
+    //   var tweenable = new Tweenable();
+    //   $timeout(function() {
+
+
+    //     endDict[apc.properties[0].animation.propName]  = property.end;
+    //     tweenable.setConfig({
+    //       from: startDict,
+    //       to:   endDict,
+    //       duration: property.duration,
+    //       easing: property.ease,
+    //       start: function() {tweenable.pause()},
+    //       step: function () {
+    //         elem.style[property.animation.propName] = tweenable.get()[property.animation.propName]
+    //       },
+    //       finish: function() {console.log('finished')}
+    //     });
+    //   }, 250)
+    // });
+
     function initPlayerBallAnimation(property, reverse) {
+
       var width = property.player.element.getBoundingClientRect().width;
       if (!reverse) {
         return {name: 'transform',  start: 'translateX(0px)',  end: 'translateX(' +  (width * 0.11) + 'px)',  duration:property.duration,  timingFunction:property.timingFunction, ease: 'linear',  unit: 0}
@@ -252,6 +328,8 @@
         cb: [],
         playState: 'running',
       }
+
+      console.log(anim);
 
       var anim_obj = AnimationService.initCSSAnimation(anim.name);
       var startDict = {};
@@ -456,7 +534,7 @@
           maxDurationProp.animation.listeners && maxDurationProp.animation.listeners.end && maxDurationProp.element.removeEventListener('webkitAnimationEnd', maxDurationProp.animation.listeners.end);
           maxDurationProp.animation.listeners = {
             start: getStartListener(maxDurationProp.element),
-            end: getEndListener(maxDurationProp.element, endCallback(apc.gPlayer), property_arr[i].settings.resetAtEnd)
+            end: getEndListener(maxDurationProp.element, endCallback(apc.gPlayer), property_arr[i])
           }
           property_arr[i].element.style['webkitAnimation'] =  animStr;
 
@@ -469,7 +547,9 @@
     function insertElementsInPlayer(elements, main_elem) {
       elements.sort(function(e1, e2) { return e2.attrs.length - e1.attrs.length});
       var elementContainers = document.querySelectorAll('.element-wrapper');
-      console.log(elementContainers);
+      if (!elementContainers) {
+        return;
+      }
       var elemContainerIds = [];
       elementContainers.forEach(
         function(e, i) {
@@ -938,7 +1018,7 @@
 
       if (!property.animation.listeners) property.animation.listeners = {};
       if (!property.animation.listeners.start) property.animation.listeners.start = getStartListener(property.element,cb_start);
-      if (!property.animation.listeners.end) property.animation.listeners.end = getEndListener(property.element,cb_end, property.settings.resetAtEnd);
+      if (!property.animation.listeners.end) property.animation.listeners.end = getEndListener(property.element,cb_end, property);
       var endCallback = function(property) {
         return function(e) {
           property.player.paused = false;
@@ -954,12 +1034,12 @@
 
       property.animation.listeners = {
         start: getStartListener(property.element),
-        end: getEndListener(property.element, endCallback(property), property.settings.resetAtEnd)
+        end: getEndListener(property.element, endCallback(property), property)
       }
 
       property.player.animation.listeners = {
         start: getStartListener(property.player.playElement, cb_end),
-        end: getEndListener(property.player.playElement, cb_end,property.settings.resetAtEnd)
+        end: getEndListener(property.player.playElement, cb_end,property)
       }
       property.element.style['webkitAnimation'] =  animStr;
 
@@ -988,7 +1068,7 @@
             if (animation.listeners && animation.listeners.end) element.removeEventListener('webkitAnimationEnd', animation.listeners.end)
             animation.listeners = {
               start: getStartListener(element),
-              end: getEndListener(element)
+              end: getEndListener(element, cb_end, property)
             }
             console.log(animation, animStr);
             if (override) {
@@ -1020,11 +1100,12 @@
       }
     }
 
-     function getEndListener(element, cb, auto_reset) {
+     function getEndListener(element, cb, property) {
             return element.addEventListener('webkitAnimationEnd', function(e) {
               cb && cb(e)
-
-              auto_reset && resetAnimation(element)();
+              if (property.fillMode === 'backwards') {
+                resetAnimation(element)();
+              }
             })
       }
       function getStartListener(element, cb) {
@@ -1144,7 +1225,6 @@
 
     }
 
-    console.log($scope.templates);
     function flattenResponseDict(_dict) {
       var result_arr = [];
       for (key in _dict.dir) {
@@ -1160,6 +1240,8 @@
     }
 
     $timeout(function() {
+      console.log($state.current.name)
+      if ($state.current.name === 'root.dev.inspector') {
 
 
 
@@ -1170,20 +1252,23 @@
 
           $timeout(function() {
             var elem = document.querySelector('.component-container');
+            if (elem && elem.children && elem.children.length) {
+              for (var i = 0; i < elem.children.length; i++) {
+                var iElem = elem.children[i];
+                var eRect = iElem.getBoundingClientRect();
+                var scaleX = 150/eRect.width
+                var scaleY = scaleX * (75/eRect.height)
+                iElem.children[iElem.children.length - 1].style.transform = 'scale(' + scaleX + ',' + scaleY + ')';
 
-            for (var i = 0; i < elem.children.length; i++) {
-              var iElem = elem.children[i];
-              var eRect = iElem.getBoundingClientRect();
-              var scaleX = 150/eRect.width
-              var scaleY = scaleX * (75/eRect.height)
-              iElem.children[iElem.children.length - 1].style.transform = 'scale(' + scaleX + ',' + scaleY + ')';
-
+              }
             }
+
           }, 500);
           $timeout(function() {
             initInspector();
           }, 1000)
         })
+      }
 
     }, 750)
 
@@ -1203,6 +1288,8 @@
       if (preLoadElem) {
         loadType = preLoadElem.split('|')[0];
         elemName = preLoadElem.split('|')[1];
+      } else {
+        elemName = ''
       }
       return {
         selector: selector,
@@ -1254,16 +1341,17 @@
 
 
         apc.inspector = parseInspectorArgs($scope.root.inspector)
-
-        if (apc.inspector.name) {
+        console.log(apc.inspector)
+        if (apc.inspector.name && apc.inspector.name.length) {
           var className = apc.inspector.name + '-component';
+
           elem = document.querySelector('.'  + apc.inspector.name + '-component');
           var index = elem.className.split(className + '-').length > 1 &&  parseFloat(elem.className.split(className + '-')[1]);
           apc.components[index].active = true;
           apc.activeComponent = apc.components[index];
           apc.components[index].parentContainer = elem.parentNode
         } else {
-          elem = initElement(apc.inspector.selector);
+          elem = initElement(apc.inspector.selector || '[inspector-elem]');
         }
         // var selectedElem =
 
@@ -1274,16 +1362,16 @@
 
 
         stage && stage.appendChild(elem);
+        console.log(stage)
         globalElemContainer && globalElemContainer.appendChild(clonedElem)
-        elem.style.transform = '';
-
-
-
+        // elem.style.transform = '';
         apc.gPlayer.element = elem;
         apc.showAllElems = true;
         apc.showAllChildren = true;
         apc.children = apc.getAnimatableElements(elem);
+
         if (apc.gPlayer.states && apc.gPlayer.states.length) {
+
           apc.gPlayer.activeState = apc.gPlayer.states[0];
           apc.activateState(apc.gPlayer.activeState, apc.gPlayer.element);
         }
@@ -1297,7 +1385,7 @@
       }
       apc.properties = [];
       apc.gPlayer.activeState = state;
-      console.log(apc.gPlayer.activeState);
+
       var propArr = [];
 
       for (key in state.parsedArgs) {
@@ -1338,14 +1426,13 @@
 
         }
       }
-      console.log(propArr.length)
       apc.properties = propArr;
-
+      console.log('properties', propArr, elem)
       apc.properties.forEach(function(p, i) {
           p.element = elem
       })
-      console.log(apc.properties);
       $timeout(function() {
+
         parsePropertiesAndPlay(apc.properties, elem);
       }, 750)
 
@@ -1357,39 +1444,12 @@
       return elem
     }
 
+    $timeout(function() {
 
+      initInspector()
 
-    // $timeout(function() {
+    }, 1000)
 
-    //   var inspectElemId = '#svg-square-rect';
-
-
-
-    //   var property = apc.properties[0]
-    // // parsePropertiesAndPlay(apc.properties, elem);
-    //   var startDict = {};
-    //   var endDict = {};
-    //   startDict[apc.properties[0].propName] = apc.properties[0].start;
-    //   endDict[apc.properties[0].propName]  = apc.properties[0].end;
-    //   var property = apc.properties[0];
-    //   var tweenable = new Tweenable();
-    //   $timeout(function() {
-
-    //     startDict[apc.properties[0].animation.propName] = property.start;
-    //     endDict[apc.properties[0].animation.propName]  = property.end;
-    //     tweenable.setConfig({
-    //       from: startDict,
-    //       to:   endDict,
-    //       duration: property.duration,
-    //       easing: property.ease,
-    //       start: function() {tweenable.pause()},
-    //       step: function () {
-    //         elem.style[property.animation.propName] = tweenable.get()[property.animation.propName]
-    //       },
-    //       finish: function() {console.log('finished')}
-    //     });
-    //   }, 250)
-    // });
 
   }
 

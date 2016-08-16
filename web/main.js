@@ -63,6 +63,27 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       console.log($state.current.name);
     }
   })
+    .state('root.api', {
+    name: 'root.api',
+    parent: 'root',
+    url:'/admin/api/property',
+    templateUrl: 'admin/templates/api/property.html',
+    controller: function($scope, $timeout) {
+      $timeout(function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open( 'GET', '/admin/spec/property.json', true );
+
+
+        xhr.onload = function () {
+            var responseDict = JSON.parse(xhr.responseText);
+            $scope.property = {examples: responseDict.examples, activeIndex: responseDict.exampleIndex};
+            $scope.templates = {components: responseDict};
+
+        };
+        xhr.send();
+      })
+    }
+  })
   .state('root.dev.inspect', {
     name: 'root.dev.inspect',
     parent: 'root.dev',
@@ -154,7 +175,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   })
   .state('root.admin', {
     url:'/admin',
-    controller: 'AdminController',
+    // controller: 'AdminController',
     templateUrl: 'admin/templates/index.html',
   })
   .state('root.admin-docs', {

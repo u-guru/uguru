@@ -3489,8 +3489,6 @@ fieldset.no-border * {
       transition: all 500ms ease-out; }
     .team-card-container .team-card .team-border, .team-card-container .team-card .team-ribbon, .team-card-container .team-card .team-link, .team-card-container .team-card .team-info, .team-card-container .team-card .team-icon {
       transform-style: preserve-3d; }
-    .team-card-container .team-card .team-link, .team-card-container .team-card .team-icon {
-      transform: translateZ(0); }
   @media screen and (min-width: 768px) {
     .team-card-container:not(.mobile) a:hover ~ .team-card, .team-card-container:not(.mobile) a:focus ~ .team-card {
       transition: all 500ms ease-out !important; }

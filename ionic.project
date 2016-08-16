@@ -6,12 +6,10 @@
 
   "watchPatterns": [
     "shared/**/*",
-    "web/remote/**/*",
     "!web/lib/**/*",
     "web/**/*",
     "web/**/**/*",
     "web/**/**/**/*",
-    "web/**/**/**/**/*",
-    "web/util/**"
+    "web/**/**/**/**/*"
   ]
 }
