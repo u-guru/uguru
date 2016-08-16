@@ -36,9 +36,9 @@
 		    </g>
 		</svg>
 	</a>
-
+	
 	<div class="course-card" ng-if='activeType === "default"'
-		init-with="p-op"
+		init-with="p:[opacity:0:1:1000ms:elastic, transform:rotate(-360deg) translateX(0%):rotate(0deg) translateX(-100%):2000ms:elastic]"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
