@@ -1328,7 +1328,8 @@
 
         if (apc.inspector.name) {
           var className = apc.inspector.name + '-component';
-          elem = document.querySelector('.'  + apc.inspector.name + '-component')|| document.querySelector('.'  + apc.inspector.name + '-component').firstChild;
+
+          elem = document.querySelector('.'  + apc.inspector.name + '-component');
           var index = elem.className.split(className + '-').length > 1 &&  parseFloat(elem.className.split(className + '-')[1]);
           apc.components[index].active = true;
           apc.activeComponent = apc.components[index];
