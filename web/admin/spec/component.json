@@ -11,17 +11,157 @@
         "cards": {
             "course": {
                 "filename": "course-card.tpl",
-                "types": ["default", "link", "overlay", "checkbox", "badge"]
+                "types": ["svg", "default", "link", "overlay", "checkbox", "badge"]
+            },
+			"credit-card": {
+                "filename": "credit-card.tpl",
+                "types": ["flip", "edit", "short", "mini"]
+            },
+			"faq-card": {
+                "filename": "faq-card.tpl"
+            },
+			"map-marker": {
+                "filename": "map-marker.tpl"
+            },
+			"profile-card": {
+                "filename": "profile-card.tpl",
+                "types": ["single", "stack"]
+            },
+			"profile-thumb": {
+                "filename": "profile-thumb.tpl",
+                "types": ["36", "48", "64", "72", "96", "128"]
+            },
+			"profile-widget": {
+                "filename": "profile-widget.tpl"
+            },
+			"request-card": {
+                "filename": "request-card.tpl"
+            },
+			"student-card": {
+                "filename": "student-card.tpl",
+                "types": ["edit", "link"]
+            },
+			"team-card": {
+                "filename": "team-card.tpl"
+            },
+			"timeline-card": {
+                "filename": "timeline-card.tpl"
+            },
+			"university-card": {
+                "filename": "university-card.tpl",
+                "types": ["checkbox", "link"]
+            },
+			"user-icon": {
+                "filename": "user-icon.tpl",
+                "types": ["24", "32", "36", "48", "64", "72", "84", "96", "128", "default"]
+            }
+        },
+		"containers": {
+            "message-bubble": {
+                "filename": "message-bubble.tpl"
+            },
+			"projector": {
+                "filename": "projector.tpl"
+            },
+			"ticket": {
+                "filename": "ticket.tpl",
+                "types": ["guru", "student"]
+            }
+        },
+		"graphic": {
+            "image": {
+                "filename": "image.tpl"
+            },
+			"register": {
+                "filename": "register.tpl"
+            },
+			"ribbon": {
+                "filename": "ribbon.tpl"
+            },
+			"wallet": {
+                "filename": "wallet.tpl"
+            },
+			"window-small": {
+                "filename": "window-small.tpl"
+            },
+			"window": {
+                "filename": "window.tpl"
+            }
+        },
+		"lists": {
+            "attachment-list": {
+                "filename": "attachment-list.tpl",
+				"types": ["student", "guru", "no-padding", "large-icons"]
+            },
+			"course-list": {
+                "filename": "course-list.tpl"
+            },
+			"numbered-list": {
+                "filename": "numbered-list.tpl"
+            },
+			"sidebar-list": {
+                "filename": "sidebar-list.tpl"
+            }
+        },
+		"navigation": {
+            "dropdown": {
+                "filename": "dropdown.tpl",
+				"types": ["default", "info", "color"]
+            },
+			"social-bar": {
+                "filename": "social-bar.tpl"
+            },
+			"tab-bar-arrow": {
+                "filename": "tab-bar-arrow.tpl"
+            },
+			"tab-bar": {
+                "filename": "tab-bar.tpl"
+            },
+			"tile-group": {
+                "filename": "tile-group.tpl",
+				"types": ["link", "default", "2x3"]
             }
         },
 		"tiles": {
+			"album-tile": {
+                "filename": "album-tile.tpl"
+            },
+			"attachment-tile": {
+                "filename": "attachment-tile.tpl"
+            },
+			"calendar-tile": {
+                "filename": "calendar-tile.tpl"
+            },
+            "category-tile": {
+                "filename": "category-tile.tpl",
+                "types": ["link-no-photo", "photo", "photo-price", "photo-price-moxie", "photo-price-crimson", "link-color", "link-square", "check-square"]
+            },
+			"credit-tile": {
+                "filename": "credit-tile.tpl"
+            },
+			"feature-tile": {
+                "filename": "feature-tile.tpl"
+            },
+			"money-tile": {
+                "filename": "money-tile.tpl"
+            },
+			"pricing-tile": {
+                "filename": "pricing-tile.tpl",
+				"types": ["default", "alert"]
+            },
             "profile-tile": {
                 "filename": "profile-tile.tpl",
-                "types": ["academic", "baking", "photography", "tech", "household"]
+                "types": ["academic-desktop","academic-mobile", "baking-desktop", "baking-mobile", "photography-desktop","photography-mobile", "tech-desktop", "tech-mobile", "household-desktop", "household-mobile"]
             },
 			"profile-cardlet": {
                 "filename": "profile-cardlet.tpl",
-                "types": ["default", "academic", "baking", "photography", "tech", "household"]
+                "types": ["default-desktop", "default-mobile", "academic-desktop", "academic-mobile", "baking-desktop", "baking-mobile", "photography-desktop", "photography-mobile", "tech-desktop", "tech-mobile", "household-desktop", "household-mobile"]
+            },
+			"ranking-tile": {
+                "filename": "ranking-tile.tpl"
+            },
+			"record-tile": {
+                "filename": "record-tile.tpl"
             }
         }
     }
