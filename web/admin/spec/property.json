@@ -1,6 +1,6 @@
 {
     "description": "property examples",
-    "exampleIndex": 2,
+    "exampleIndex": 3,
     "examples": [
         {
             "exampleName": "translateX",
@@ -31,6 +31,17 @@
             "end": "translateX(0) translateY(0) scale(1.5)",
             "duration": "2500ms",
             "ease": "elastic",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "translateZRotate",
+            "property": "transform",
+            "start": "translateY(200%) translateZ(-200px) rotateX(30deg) rotateY(60deg)",
+            "end": "translateY(0) translateZ(0) rotateX(0) rotateY(0)",
+            "duration": "2500ms",
+            "ease": "easeOutBounce",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null
