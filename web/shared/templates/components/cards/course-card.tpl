@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='svg, default, link, overlay, checkbox, badge' default-type="svg">
+<div class="perspective-container full-xy flex-center p15xy" types='svg, default, link, overlay, checkbox, badge' default-type="default">
 	<a class="course-card-svg" ng-if='activeType === "svg"'
 		init-with="p-op"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
@@ -36,7 +36,7 @@
 		    </g>
 		</svg>
 	</a>
-	
+
 	<div class="course-card" ng-if='activeType === "default"'
 		init-with="p:[opacity:0:1:1000ms:elastic, transform:rotate(-360deg) translateX(0%):rotate(0deg) translateX(-100%):2000ms:elastic]"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
