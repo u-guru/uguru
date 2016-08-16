@@ -29,7 +29,7 @@
         }
 
         properties[i].animation = initAnimationWithEase(property, i);
-        properties[i].player = {offset:0, play: playOne, resetAnim: resetOne, resume: playOne, stepBack: stepOne, stepForward: stepOne, pause: pauseOne};
+        properties[i].player = {offset:0, play: playOne, resetAnim: resetOne, resume: playOne, stepBack: stepOne, step: stepForward(apc.gPlayer.element, properties[i]), pause: pauseOne};
 
         properties[i].player.element = document.querySelector('.property-playbar-' + i);
 
@@ -47,8 +47,79 @@
         properties[i].player.playKeyframes = convertAnimObjToKF(property.player.animation.obj);
       })
       // transformProp.start.length && transformProp.end.length && properties.push(transformProp);
-      apc.playAll(properties);
+      // apc.gPlayer.stepForward = stepForward(properties, apc.gPlayer.defaults)
+      // apc.playAll(properties);
+      // stepForward()
+      properties[0].player.step();
     }
+
+
+
+    function stepForward(elem, properties) {
+      return function() {
+        for (var i = 0 ; i < properties.length; i++) {
+          ball = properties[i].player.playElement;
+          var iProp= apc.properties[0];
+          var options = iProp.settings;
+          var tween = new Tweenable();
+          var s_dict = {};
+          s_dict[iProp.propName] = iProp.start
+          e_dict[iProp.propName] = iProp.end;
+          tween.setConfig({
+            from: s_dict,
+            end: e_dict,
+            duration: iProp.duration,
+            easing: iProp.ease
+          })
+          tween.tween();
+          tween.pause();
+          tween.seek(iProp.timer.value - 250);
+          tween.resume();
+          $timeout(function() {
+            tween.pause();
+          }, 250)
+
+        }
+      }
+    }
+
+    // function stepBackwards(elem, properties) {
+    //   for (var i = 0 ; i < properties.length; i++) {
+
+    //   }
+    // }
+
+    // $timeout(function() {
+
+    //   var inspectElemId = '#svg-square-rect';
+
+
+
+    //   var property = apc.properties[0]
+    // // parsePropertiesAndPlay(apc.properties, elem);
+    //   var startDict = {};
+    //   var endDict = {};
+    //   startDict[apc.properties[0].propName] = apc.properties[0].start;
+
+    //   var property = apc.properties[0];
+    //   var tweenable = new Tweenable();
+    //   $timeout(function() {
+
+
+    //     endDict[apc.properties[0].animation.propName]  = property.end;
+    //     tweenable.setConfig({
+    //       from: startDict,
+    //       to:   endDict,
+    //       duration: property.duration,
+    //       easing: property.ease,
+    //       start: function() {tweenable.pause()},
+    //       step: function () {
+    //         elem.style[property.animation.propName] = tweenable.get()[property.animation.propName]
+    //       },
+    //       finish: function() {console.log('finished')}
+    //     });
+    //   }, 250)
+    // });
 
     function initPlayerBallAnimation(property, reverse) {
       var width = property.player.element.getBoundingClientRect().width;
@@ -1257,7 +1328,7 @@
 
         if (apc.inspector.name) {
           var className = apc.inspector.name + '-component';
-          elem = document.querySelector('.'  + apc.inspector.name + '-component').firstChild;
+          elem = document.querySelector('.'  + apc.inspector.name + '-component')|| document.querySelector('.'  + apc.inspector.name + '-component').firstChild;
           var index = elem.className.split(className + '-').length > 1 &&  parseFloat(elem.className.split(className + '-')[1]);
           apc.components[index].active = true;
           apc.activeComponent = apc.components[index];
@@ -1357,37 +1428,7 @@
 
 
 
-    // $timeout(function() {
 
-    //   var inspectElemId = '#svg-square-rect';
-
-
-
-    //   var property = apc.properties[0]
-    // // parsePropertiesAndPlay(apc.properties, elem);
-    //   var startDict = {};
-    //   var endDict = {};
-    //   startDict[apc.properties[0].propName] = apc.properties[0].start;
-    //   endDict[apc.properties[0].propName]  = apc.properties[0].end;
-    //   var property = apc.properties[0];
-    //   var tweenable = new Tweenable();
-    //   $timeout(function() {
-
-    //     startDict[apc.properties[0].animation.propName] = property.start;
-    //     endDict[apc.properties[0].animation.propName]  = property.end;
-    //     tweenable.setConfig({
-    //       from: startDict,
-    //       to:   endDict,
-    //       duration: property.duration,
-    //       easing: property.ease,
-    //       start: function() {tweenable.pause()},
-    //       step: function () {
-    //         elem.style[property.animation.propName] = tweenable.get()[property.animation.propName]
-    //       },
-    //       finish: function() {console.log('finished')}
-    //     });
-    //   }, 250)
-    // });
 
   }
 
