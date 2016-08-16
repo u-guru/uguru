@@ -2,6 +2,7 @@
 	<ul class="p15-grid flex-wrap-center">
 		<li>
 			<div class="team-card-container team-gabrie">
+				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
@@ -30,9 +31,11 @@
 							<h1 class="team-name">Gabrielle Wee</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-left"></div>
+							<div class="team-ribbon-center">
+								<div class="team-ribbon-left"></div>
+								<div class="team-ribbon-right"></div>
+							</div>
 							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right"></div>
 							<div class="team-ribbon-right-corner"></div>
 						</div>
 						<div class="team-info">
@@ -46,6 +49,7 @@
 
 		<li>
 			<div class="team-card-container team-jeselle">
+				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
@@ -78,9 +82,11 @@
 							<h1 class="team-name">Jeselle Obina</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-left"></div>
+							<div class="team-ribbon-center">
+								<div class="team-ribbon-left"></div>
+								<div class="team-ribbon-right"></div>
+							</div>
 							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right"></div>
 							<div class="team-ribbon-right-corner"></div>
 						</div>
 						<div class="team-info">
@@ -94,6 +100,7 @@
 
 		<li>
 			<div class="team-card-container team-jason">
+				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
@@ -105,9 +112,11 @@
 							<h1 class="team-name">Jason Huang</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-left"></div>
+							<div class="team-ribbon-center">
+								<div class="team-ribbon-left"></div>
+								<div class="team-ribbon-right"></div>
+							</div>
 							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right"></div>
 							<div class="team-ribbon-right-corner"></div>
 						</div>
 						<div class="team-info">
@@ -121,6 +130,7 @@
 
 		<li>
 			<div class="team-card-container team-samir">
+				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
 						<div></div><div></div><div></div><div></div>
@@ -132,9 +142,11 @@
 							<h1 class="team-name">Samir Makhani</h1>
 			            </div>
 						<div class="team-ribbon">
-							<div class="team-ribbon-left"></div>
+							<div class="team-ribbon-center">
+								<div class="team-ribbon-left"></div>
+								<div class="team-ribbon-right"></div>
+							</div>
 							<div class="team-ribbon-left-corner"></div>
-							<div class="team-ribbon-right"></div>
 							<div class="team-ribbon-right-corner"></div>
 						</div>
 						<div class="team-info">
