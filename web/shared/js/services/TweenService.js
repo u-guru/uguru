@@ -13,8 +13,7 @@ function TweenService() {
     }
 
     function getAllEasing() {
-        return
-        ["easeInQuad",
+        return ["easeInQuad",
         "easeOutQuad",
         "easeInOutQuad",
         "easeInCubic",
@@ -35,7 +34,6 @@ function TweenService() {
         "easeInCirc",
         "easeOutCirc",
         "easeInOutCirc",
-        "easeOutBounce",
         "easeInBack",
         "easeOutBack",
         "easeInOutBack",

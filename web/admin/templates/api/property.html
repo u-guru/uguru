@@ -1,6 +1,6 @@
 <inspector-gadget   selector="[inspector-elem]"  default-state="on-init" auto-play="true" start-at=""> </inspector-gadget>
 
-<div class='bg-charcoal flex-vertical-center'>
+<div class='bg-charcoal flex-vertical-center' ng-controller="AdminPropertyController as apc">
     <span init-with="p:[opacity:0]">
         {{propOptions = ['start', "end", "duration", "ease", "delay", "iterations", "fill-mode","direction"]}}
         {{propExamples = [{prop: 'opacity', start: 0, end: 1, ease:elastic}]}}
@@ -10,14 +10,15 @@
     </div>
     <div class='ugrid bg-transparent flex-stretch absolute left-0 flex-wrap flex-vertical-center full-x' style='top:15%; height:85%;'>
         <div class='full-x flex-vertical-center relative' style='height:calc(85%/{{admin.sections}});'>
-            <ul class='grid full-x flex-end overflow-x flex-stretch no-scrollbar' style='z-index:10;' style='min-width:15%; max-height:25%'>
-                <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
-                    <div class='full-xy flex-wrap-center bg-azure-50p txt-white absolute'>
-                        <h1 class='weight-900 full-x'> Property Attribute </h1>
-                        </h1>
+            <ul class='grid full-x flex-end overflow-x flex-stretch no-scrollbar relative' style='z-index:10;' style='min-width:15%; max-height:25%'>
+                <li class='lc-header full-xy weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate relative' style='min-width:15%;'>
+                    <div class='full-xy flex-wrap-center bg-azure-50p txt-white absolute full-xy overflow-y'>
+                        <ul class='flex-vertical-center flex-wrap'>
+                            <li ng-click='refreshStageElem($index, easing)' ng-repeat='easing in property.easings' class='p10y weight-900 full-x'>{{easing}}</li>
+                        </ul>
                     </div>
                 </li>
-                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-azure-20p text-center ' style='min-width:15%; max-height:25%' ng-repeat='option in propOptions' ng-class="{ 'opacity-80p border-1-right border-slate': property.examples[property.activeIndex][option]}">
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-azure-20p text-center' style='min-width:15%; max-height:25%' ng-repeat='option in propOptions' ng-class="{ 'opacity-80p border-1-right border-slate': property.examples[property.activeIndex][option]}">
                     <div class='full-x weight-600 opacity-50p uppercase m05y'>
                         {{option}}
                     </div>
@@ -27,7 +28,7 @@
                 </li>
             </ul>
             <ul class='absolute right-0' style='z-index:101'>
-                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-gold txt-slate text-center ' style='min-width:15%;' ng-repeat='example in property.examples' ng-class="{'txt-charcoal opacity-1 border-3 border-smoke': $index === property.exampleIndex, 'opacity-80p border-1-right border-slate': $index !== property.activeIndex}" ng-click='property.activeIndex = $index'>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-gold txt-slate text-center ' style='min-width:15%;' ng-repeat='example in property.examples' ng-class="{'txt-charcoal opacity-1 border-3 border-smoke': $index === property.exampleIndex, 'opacity-80p border-1-right border-slate': $index !== property.activeIndex}" ng-click='property.activeIndex = $index; refreshStageElem($index)'>
 
 
                     <div class='full-x weight-900 p10x'>
@@ -38,9 +39,9 @@
                 </li>
             </ul>
 
-            <div class='flex-vertical-center absolute' style='z-index:100' ng-controller="AdminPropertyController">
+            <div class='flex-vertical-center absolute' style='z-index:100'>
                 <div id='player-stage' class='flex-wrap-center'>
-                    <div class='flex-wrap-center full-xy relative'>
+                    <div class='flex-wrap-center full-xy relative stage-elem-container'>
 
                         <div  ng-repeat="example in property.examples" ng-if='property.activeIndex === $index' style='width:200px; height:200px; opacity:1' inspector-elem class='bg-cerise opacity-100p flex-wrap-center weight-900'  on-init="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]:delay-250"></div>
 
