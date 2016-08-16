@@ -38,7 +38,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive('svgItem', ['$compile', function ($compile) {
+    .directive('svgTableItem', ['$compile', function ($compile) {
         return {
         restrict: 'AE',
         scope: {rows:'=rows'},

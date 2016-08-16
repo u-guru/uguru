@@ -67,7 +67,27 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     name: 'root.dev.inspect',
     parent: 'root.dev',
     url:'/inspect',
-    templateUrl:'admin/templates/inspector.html'
+    templateUrl:'admin/templates/inspector.html',
+    controller: function($scope, $timeout) {
+      $timeout(function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open( 'GET', '/admin/spec/component.json', true );
+
+
+        xhr.onload = function () {
+            var responseDict = JSON.parse(xhr.responseText);
+            $scope.templates = {components: responseDict}
+
+        };
+        xhr.send();
+      })
+    }
+  }).
+  state('root.dev.demos', {
+    name: 'root.dev.demos',
+    parent: 'root.dev',
+    url:'/svg-todo',
+    templateUrl: 'admin/templates/demos/svg.todo.html'
   })
   .state('root.preapp', {
     name: 'root.preapp',
@@ -273,14 +293,9 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       }
       $scope.examples = exampleArr;
       $scope.activeExample = exampleArr[2];
-
       $scope.setActiveExample = function(index) {$scope.activeExample = $scope.examples[index]; }
     },
     templateUrl: 'admin/templates/playgrounds/switch.html',
-  })
-  .state('root.demos', {
-    url:'/dev/demos',
-    templateUrl: 'admin/templates/demos.html',
   })
   .state('root.cal', {
     url:'/cal',

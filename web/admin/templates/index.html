@@ -1,3 +1,88 @@
+<!-- <div class='bg-charcoal flex-vertical-center' ng-controller="LifeCoachController as life">
+    <div class='p20xy bg-azure-50p txt-48 txt-center weight-900 flex-wrap-center full-x' style='height:15%;'>
+        Life Coaching Home
+    </div>
+    <div class='ugrid bg-transparent flex-stretch absolute left-0 flex-wrap flex-vertical-center' style='top:8.75%; height:85%;'>
+        <div class='full-x flex-vertical-center relative' style='height:calc(85%/{{life.sections}});'>
+            <ul class='grid full-x flex-stretch overflow-x no-scrollbar'>
+                 <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
+                    <div class='full-xy flex-wrap-center bg-azure-50p txt-white absolute'>
+                        <h1 class='weight-900 full-x'> Calendar </h1>
+                        <div class='full-x weight-100 p05y'>
+                        {{life.calendarDates[0].month.name}} {{life.calendarDates[0].date}} - {{life.calendarDates[life.calendarDates.length - 1].date}}
+                        </div>
+                    </h1>
+                </li>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-azure-20p text-center ' style='min-width:15%;' ng-repeat='date in life.calendarDates' ng-class="{'txt-white opacity-1 border-3 border-smoke': $index === 0, 'opacity-80p border-1-right border-slate': $index > 0}">
+                    <div class='full-x weight-900'>
+                        {{date.day.name}}
+                    </div>
+                    <h1 class='flex-center full-x relative weight-900 txt-48' ng-class="{'txt-smoke opacity-80p': $index > 0, 'txt-azure': $index === 0}">
+                        {{date.date}}
+                    </h1>
+                </li>
+            </ul>
+        </div>
+        <div class='full-x flex-vertical-center flex-stretch relative' style='height:calc(85%/{{life.sections}});'>
+            <ul class='flex-stretch grid full-x flex-stretch overflow-x no-scrollbar'>
+                <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
+                    <h1 class='full-xy flex-center weight-900 bg-cerise absolute'>
+                        Samples
+                    </h1>
+                </li>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center text-center border-1-right border-slate' style='min-width:15%;' ng-repeat='url in life.examples' ng-click='life.openInNewWindow("http://" + url.domain + "." + url.tld)'>
+                    <div class='full-x p20x'>
+                        <h1 class='weight-700 uppercase txt-smoke opacity-80p'> {{url.domain}} </h1>
+                    </div>
+                    <div class='full-x'>
+                        <p class='weight-300 opacity-50'> {{url.tld}} </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class='full-x flex-vertical-center flex-stretch relative' style='height:calc(85%/{{life.sections}})'>
+            <ul class='grid full-x flex-stretch overflow-x no-scrollbar'>
+                 <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
+                    <h1 class='full-xy flex-center weight-900 bg-azure absolute'>
+                        Asset Guide
+                    </h1>
+                </li>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center text-center border-1-right border-slate' style='min-width:15%;' ng-repeat='asset in life.assets' ng-click='life.openInNewWindow("http://" + url.domain + "." + url.tld)'>
+                    <div class='full-x p20x'>
+                        <h1 class='weight-700 uppercase txt-smoke opacity-80p'> {{asset.name}} </h1>
+                    </div>
+                    <div class='full-x m20y'>
+                        <span class='p10x p05y uppercase txt-3 border-solid border-1 border-azure weight-300 opacity-50' ng-repeat='tag in asset.tags'> {{tag}} </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class='full-x flex-vertical-center flex-stretch relative' style='height:calc(85%/{{life.sections}})'>
+            <ul class='grid full-x flex-stretch overflow-x no-scrollbar'>
+                 <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
+                    <h1 class='full-xy flex-center weight-900 bg-shamrock absolute'>
+                        Projects
+                    </h1>
+                </li>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center text-center border-1-right border-slate' style='min-width:15%;' ng-repeat='url in life.examples'>
+                </li>
+            </ul>
+        </div>
+        <div class='full-x flex-vertical-center flex-stretch relative' style='height:calc(85%/{{life.sections}})'>
+            <ul class='grid full-x flex-stretch overflow-x no-scrollbar'>
+                 <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
+                    <h1 class='full-xy flex-center weight-900 bg-auburn absolute'>
+                        Goals & Targets
+                    </h1>
+                </li>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center text-center border-1-right border-slate' style='min-width:15%;' ng-repeat='url in life.examples'>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<!--  --> -->
 <div id="keys">
     <div class='absolute flex-wrap-start highest-z-index full-xy bg-charcoal-90p' ng-if='showShortcuts'>
         <h1 class='p20xy txt-7 text-center bg-robin full-x weight-600'>Keyboard Shortcuts</h1>
@@ -221,28 +306,28 @@
                 </div>
             </div>
 
-			<!-- Action Items -->
-			<div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3' ng-include="root.base_url + 'admin/templates/actions.html'" ng-controller='AdminActionController'> </div>
+            <!-- Action Items -->
+            <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 3' ng-include="root.base_url + 'admin/templates/actions.html'" ng-controller='AdminActionController'> </div>
 
-			<!-- Calendar -->
+            <!-- Calendar -->
             <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 4'>
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Calendar</h1>
                 </header>
             </div>
 
-			<!-- Bugs -->
+            <!-- Bugs -->
             <div class='relative bg-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 5' ng-include="root.base_url + 'admin/templates/bugs.html'"> </div>
 
-			<!-- Docs -->
+            <!-- Docs -->
             <div class='relative bg-slate z-index-1000 full-xy' ng-show='layout.index === 6'>
-				<!-- ng-include="root.base_url + 'admin/templates/docs/docs.html'" -->
-				<header class="bg-slate">
+                <!-- ng-include="root.base_url + 'admin/templates/docs/docs.html'" -->
+                <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>see /admin/docs</h1>
                 </header>
-			</div>
+            </div>
 
-			<!-- Demos -->
+            <!-- Demos -->
             <div class='relative bg-smoke txt-slate z-index-1000' style="height: calc(100% - 68px);" ng-show='layout.index === 7'>
                 <header class="bg-slate">
                     <h1 class='bg-cobalt-25p txt-18 p15xy txt-center'>Demos</h1>

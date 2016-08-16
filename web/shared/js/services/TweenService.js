@@ -71,6 +71,7 @@ function TweenService() {
     function getKeyframeValues(start_dict, end_dict, duration, easeFunc, kf_arr, max_keyframe) {
         if (!max_keyframe) max_keyframe = 30;
         //{ x: 0,  y: 50  }
+        console.log(start_dict, end_dict)
         //{ x: 10, y: -30 }
         var tweenable = new Tweenable();
         var kf_arr = kf_arr || [];
