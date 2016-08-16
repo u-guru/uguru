@@ -1277,8 +1277,6 @@
         globalElemContainer && globalElemContainer.appendChild(clonedElem)
         elem.style.transform = '';
 
-
-
         apc.gPlayer.element = elem;
         apc.showAllElems = true;
         apc.showAllChildren = true;
