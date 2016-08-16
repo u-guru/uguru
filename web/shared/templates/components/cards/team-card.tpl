@@ -69,10 +69,10 @@
 					<div>
 			            <div class="team-link"
 							init-with="p-op"
-							when-jeselle-enter="a:[scaleInX-subtle:set:(dur:1000ms#func:linear):in:delay-1000] | send:[ribbon-expand:public:delay-1200]">
+							when-jeselle-enter="a:[scaleInX-subtle:set:(dur:1000ms#func:linear):in:delay-800] | send:[ribbon-expand:public:delay-1000]">
 							<div class="team-icon"
 								init-with="p-op"
-								when-jeselle-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-1500]">
+								when-jeselle-enter="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-1300]">
 								<svg viewBox="0 0 200 200">
 								    <g class="jeselle-guru" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								        <path d="M69.5957037,59.9082032 C90.5874333,51.5140717 126.531517,53.5525281 134,66 C134,66 135,73 132,77 C120,81 114.503907,69.7773437 94.8925787,69.7773437 C86.0125701,69.7773437 76.1750975,75.704329 68.4392353,85.347266 C59.0905947,97.0005697 129.373049,150.648437 62.4667965,159.166015 C62.4667965,159.166015 56.8589303,65.0013591 69.5957037,59.9082032 L69.5957037,59.9082032 Z M147,103 C148.320376,101.5971 130.735204,135.893938 132,149.833982 C133.300996,164.173008 153.438948,158.166356 153.838514,156.628904 C155.399662,150.621916 166.838514,81.6660152 153.838514,76.9999998 C140.838513,72.3339843 136.82853,64.748438 134,66 C134,66 135,73 132,77 C132,77 150,90.0000006 147,103 L147,103 Z" class="hair-back" stroke="#3C4C4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#86A9A8"></path>
@@ -96,7 +96,7 @@
 							</div>
 							<h1 class="team-name"
 								init-with="p-op"
-								when-jeselle-enter="p:[op:1:delay-1200, t:opacity 500ms ease-out]">Jeselle Obina</h1>
+								when-jeselle-enter="p:[op:1:delay-1000, t:opacity 500ms ease-out]">Jeselle Obina</h1>
 			            </div>
 						<div class="team-ribbon">
 							<div class="team-ribbon-center"
@@ -118,7 +118,7 @@
 						</div>
 						<div class="team-info"
 							init-with="p:[op:0, tr:translateY(-50px)]"
-							when-jeselle-enter="p:[op:1:delay-1200, tr:translateY(0):delay-1000, t:opacity 350ms linear#transform 500ms ease-out]">
+							when-jeselle-enter="p:[op:1:delay-1000, tr:translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
 							<h2>Product &amp; Graphic Designer</h2>
 							<h2>University of Illinois at Urbana</h2>
 						</div>
