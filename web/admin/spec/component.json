@@ -1,0 +1,18 @@
+{
+    "description": "components directory",
+    "base_url": "shared/templates/components",
+    "dir": {
+        "input": {
+            "search": {
+                "filename": "search.tpl",
+                "types": []
+            }
+        },
+        "cards": {
+            "course": {
+                "filename": "course-card.tpl",
+                "types": ["default", "link", "overlay", "checkbox", "badge"]
+            }
+        }
+    }
+}
