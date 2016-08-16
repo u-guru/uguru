@@ -50,7 +50,8 @@
 		<li>
 			<div class="team-card-container team-jeselle"
 				init-default
-				on-init="send:[jeselle-enter:public]">
+				on-init="send:[jeselle-enter:public]"
+				when-jeselle-exit="p:[tr:translateY(-200px) rotateX(90deg) rotateY(15deg), op:0:delay-100, t:transform 750ms ease-out#opacity 700ms linear]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
@@ -59,7 +60,7 @@
 						<div init-with="p:[tr:scaleY(0), tro:center center]"
 							when-line-jeselle="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-line-jeselle="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
+							when-line-jeselle="p:[tr:scaleX(1), t:transform 750ms ease-out] | send:[jeselle-exit:public:delay-1200]"></div>
 						<div init-with="p:[tr:scaleY(0), tro:center center]"
 							when-line-jeselle="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
