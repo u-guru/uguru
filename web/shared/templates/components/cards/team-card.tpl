@@ -91,7 +91,7 @@
 						</div>
 						<div class="team-info">
 							<h2>Product &amp; Graphic Designer</h2>
-							<h2>UIUC</h2>
+							<h2>University of Illinois at Urbana</h2>
 						</div>
 					</div>
 				</div>

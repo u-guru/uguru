@@ -59,18 +59,24 @@
 				&:hover, &:focus {
 					~ .team-card {
 						.team-border {
-							transform: translateZ(15px);
+							transform: translateZ(15px)!important;
 						}
 						.team-link {
-							transform: translateZ(25px);
-							.team-icon {
-								transform: translateZ(10px);
+							transform: translateZ(25px)!important;
+							.team-icon, .team-name {
+								transform: translateZ(10px)!important;
 							}
 						}
 						.team-ribbon-center {
-							transform: translateZ(-10px);
+							transform: translateZ(-10px)!important;
+						}
+						.team-ribbon-info {
+							transform: translateZ(10px)!important;
 						}
 					}
+				}
+				&:active {
+					
 				}
 				&:nth-child(1) {
 					&:hover, &:focus {
@@ -94,10 +100,10 @@
 							transform-origin: top left!important;
 							transform: rotateX(-5deg) rotateY(5deg)!important;
 							.team-ribbon-center {
-								transform: translateZ(-10px) translateY(5px);
+								transform: translateZ(-10px) translateY(5px)!important;
 							}
 							.team-ribbon-left-corner, .team-ribbon-right-corner {
-								transform: translateY(4px);
+								transform: translateY(4px)!important;
 							}
 						}
 					}
@@ -108,10 +114,10 @@
 							transform-origin: top right!important;
 							transform: rotateX(-5deg) rotateY(-5deg)!important;
 							.team-ribbon-center {
-								transform: translateZ(-10px) translateY(5px);
+								transform: translateZ(-10px) translateY(5px)!important;
 							}
 							.team-ribbon-left-corner, .team-ribbon-right-corner {
-								transform: translateY(4px);
+								transform: translateY(4px)!important;
 							}
 						}
 					}
@@ -122,10 +128,10 @@
 							transform-origin: top right!important;
 							transform: rotateX(-5deg) rotateY(-8deg)!important;
 							.team-ribbon-center {
-								transform: translateZ(-10px) translateY(5px);
+								transform: translateZ(-10px) translateY(5px)!important;
 							}
 							.team-ribbon-left-corner, .team-ribbon-right-corner {
-								transform: translateY(4px);
+								transform: translateY(4px)!important;
 							}
 						}
 					}
@@ -136,10 +142,10 @@
 							transform-origin: top left!important;
 							transform: rotateX(-5deg) rotateY(8deg)!important;
 							.team-ribbon-center {
-								transform: translateZ(-10px) translateY(5px);
+								transform: translateZ(-10px) translateY(5px)!important;
 							}
 							.team-ribbon-left-corner, .team-ribbon-right-corner {
-								transform: translateY(4px);
+								transform: translateY(4px)!important;
 							}
 						}
 					}
