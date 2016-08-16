@@ -42,7 +42,9 @@
                 <div id='player-stage' class='flex-wrap-center'>
                     <div class='flex-wrap-center full-xy relative'>
 
-                        <div  ng-repeat="example in property.examples" ng-if='property.activeIndex === $index' style='width:200px; height:200px; opacity:1' inspector-elem class='bg-cerise opacity-100p flex-wrap-center weight-900'  init-with="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]"></div>
+                        <div ng-repeat="example in property.examples" ng-if='property.activeIndex === $index' style='width:200px; height:200px; opacity:1'
+							inspector-elem class='bg-cerise opacity-100p flex-wrap-center weight-900'
+							on-init="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]:delay-250"></div>
 
                     </div>
 
