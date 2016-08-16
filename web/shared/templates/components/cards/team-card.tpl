@@ -4,21 +4,21 @@
 			<div class="team-card-container team-gabrie"
 				init-default
 				on-init="send:[gabrie-enter:public]"
-				when-gabrie-exit="p:[tr:translateY(-200px) rotateX(90deg) rotateY(15deg), op:0:delay-100, t:transform 750ms ease-out#opacity 700ms linear]">
+				when-gabrie-exit="p:[tr:translateZ(0) translateY(-200px) rotateX(90deg) rotateY(15deg), op:0:delay-100, t:transform 750ms ease-out#opacity 700ms linear]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
-						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-gabrie-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
-						<div init-with="p:[tr:scaleY(0), tro:center center]"
-							when-gabrie-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
-						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-gabrie-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
-						<div init-with="p:[tr:scaleY(0), tro:center center]"
-							when-gabrie-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+							when-gabrie-line-draw="p:[tr:translateZ(0) scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleY(0), tro:center center]"
+							when-gabrie-line-draw="p:[tr:translateZ(0) scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+							when-gabrie-line-draw="p:[tr:translateZ(0) scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleY(0), tro:center center]"
+							when-gabrie-line-draw="p:[tr:translateZ(0) scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/gabrielle.jpg?token=AAm4HoXDx19Lb58LPkLHAOTjJNakVVRIks5XvJnLwA%3D%3D')"
-						init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						init-with="p:[op:0, tr:translateZ(0) scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 						when-gabrie-enter="p:[op:1, tr:none, t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
 						<div class="team-link"
@@ -65,25 +65,25 @@
 			            </div>
 						<div class="team-ribbon">
 							<div class="team-ribbon-center"
-								init-with="p:[tr:scaleX(0), tro:center center]"
-								when-gabrie-ribbon-expand="p:[tr:scaleX(1), t:transform 1000ms linear]">
+								init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+								when-gabrie-ribbon-expand="p:[tr:translateZ(0) scaleX(1), t:transform 1000ms linear]">
 								<div class="team-ribbon-left"
-									init-with="p:[op:0, tr:translateX(50px)]"
-									when-gabrie-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									init-with="p:[op:0, tr:translateZ(0) translateX(50px)]"
+									when-gabrie-ribbon-expand="p:[op:1:delay-250, tr:translateZ(0) translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 								<div class="team-ribbon-right"
-									init-with="p:[op:0, tr:translateX(-50px)]"
-									when-gabrie-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									init-with="p:[op:0, tr:translateZ(0) translateX(-50px)]"
+									when-gabrie-ribbon-expand="p:[op:1:delay-250, tr:translateZ(0) translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 							</div>
 							<div class="team-ribbon-left-corner"
-								init-with="p:[tr:scale(0), tro:right top]"
-								when-gabrie-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
+								init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
+								when-gabrie-ribbon-expand="p:[tr:translateZ(0) scale(1):delay-250, t: transform 450ms ease-out]"></div>
 							<div class="team-ribbon-right-corner"
-								init-with="p:[tr:scale(0), tro:left top]"
-								when-gabrie-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[gabrie-line-draw:public:delay-1000]"></div>
+								init-with="p:[tr:translateZ(0) scale(0), tro:left top]"
+								when-gabrie-ribbon-expand="p:[tr:translateZ(0) scale(1):delay-250, t: transform 450ms ease-out] | send:[gabrie-line-draw:public:delay-1000]"></div>
 						</div>
 						<div class="team-info"
-							init-with="p:[op:0, tr:translateY(-50px)]"
-							when-gabrie-enter="p:[op:1:delay-1000, tr:translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
+							init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
+							when-gabrie-enter="p:[op:1:delay-1000, tr:translateZ(0) translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
 							<h2>UI Developer</h2>
 							<h2>SAE Ex'pression College</h2>
 						</div>
@@ -96,21 +96,21 @@
 			<div class="team-card-container team-jeselle"
 				init-default
 				on-init="send:[jeselle-enter:public:delay-500]"
-				when-jeselle-exit="p:[tr:translateY(-200px) rotateX(90deg) rotateY(15deg), op:0:delay-100, t:transform 750ms ease-out#opacity 700ms linear]">
+				when-jeselle-exit="p:[tr:translateZ(0) translateY(-200px) rotateX(90deg) rotateY(15deg), op:0:delay-100, t:transform 750ms ease-out#opacity 700ms linear]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
-						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-jeselle-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
-						<div init-with="p:[tr:scaleY(0), tro:center center]"
-							when-jeselle-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
-						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-jeselle-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
-						<div init-with="p:[tr:scaleY(0), tro:center center]"
-							when-jeselle-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+							when-jeselle-line-draw="p:[tr:translateZ(0) scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleY(0), tro:center center]"
+							when-jeselle-line-draw="p:[tr:translateZ(0) scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+							when-jeselle-line-draw="p:[tr:translateZ(0) scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleY(0), tro:center center]"
+							when-jeselle-line-draw="p:[tr:translateZ(0) scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jeselle.jpg?token=AAm4HhGSrc-7t6S6vyNQMpDZ3DbSndC1ks5XvJozwA%3D%3D')"
-						init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						init-with="p:[op:0, tr:translateZ(0) scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 						when-jeselle-enter="p:[op:1, tr:none, t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
 			            <div class="team-link"
@@ -163,25 +163,25 @@
 			            </div>
 						<div class="team-ribbon">
 							<div class="team-ribbon-center"
-								init-with="p:[tr:scaleX(0), tro:center center]"
-								when-jeselle-ribbon-expand="p:[tr:scaleX(1), t:transform 1000ms linear]">
+								init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+								when-jeselle-ribbon-expand="p:[tr:translateZ(0) scaleX(1), t:transform 1000ms linear]">
 								<div class="team-ribbon-left"
-									init-with="p:[op:0, tr:translateX(50px)]"
-									when-jeselle-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									init-with="p:[op:0, tr:translateZ(0) translateX(50px)]"
+									when-jeselle-ribbon-expand="p:[op:1:delay-250, tr:translateZ(0) translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 								<div class="team-ribbon-right"
-									init-with="p:[op:0, tr:translateX(-50px)]"
-									when-jeselle-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									init-with="p:[op:0, tr:translateZ(0) translateX(-50px)]"
+									when-jeselle-ribbon-expand="p:[op:1:delay-250, tr:translateZ(0) translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 							</div>
 							<div class="team-ribbon-left-corner"
-								init-with="p:[tr:scale(0), tro:right top]"
-								when-jeselle-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
+								init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
+								when-jeselle-ribbon-expand="p:[tr:translateZ(0) scale(1):delay-250, t: transform 450ms ease-out]"></div>
 							<div class="team-ribbon-right-corner"
-								init-with="p:[tr:scale(0), tro:left top]"
-								when-jeselle-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[jeselle-line-draw:public:delay-1000]"></div>
+								init-with="p:[tr:translateZ(0) scale(0), tro:left top]"
+								when-jeselle-ribbon-expand="p:[tr:translateZ(0) scale(1):delay-250, t: transform 450ms ease-out] | send:[jeselle-line-draw:public:delay-1000]"></div>
 						</div>
 						<div class="team-info"
-							init-with="p:[op:0, tr:translateY(-50px)]"
-							when-jeselle-enter="p:[op:1:delay-1000, tr:translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
+							init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
+							when-jeselle-enter="p:[op:1:delay-1000, tr:translateZ(0) translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
 							<h2>Product &amp; Graphic Designer</h2>
 							<h2>University of Illinois at Urbana</h2>
 						</div>
@@ -194,21 +194,21 @@
 			<div class="team-card-container team-jason"
 				init-default
 				on-init="send:[jason-enter:public:delay-1000]"
-				when-jason-exit="p:[tr:translateY(-200px) rotateX(90deg) rotateY(15deg), op:0:delay-100, t:transform 750ms ease-out#opacity 700ms linear]">
+				when-jason-exit="p:[tr:translateZ(0) translateY(-200px) rotateX(90deg) rotateY(15deg), op:0:delay-100, t:transform 750ms ease-out#opacity 700ms linear]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
-						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-jason-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
-						<div init-with="p:[tr:scaleY(0), tro:center center]"
-							when-jason-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
-						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-jason-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
-						<div init-with="p:[tr:scaleY(0), tro:center center]"
-							when-jason-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+							when-jason-line-draw="p:[tr:translateZ(0) scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleY(0), tro:center center]"
+							when-jason-line-draw="p:[tr:translateZ(0) scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+							when-jason-line-draw="p:[tr:translateZ(0) scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleY(0), tro:center center]"
+							when-jason-line-draw="p:[tr:translateZ(0) scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jason.jpg?token=AAm4HmSt9nEW3q8WZCb7eWtoqE76eqcnks5XvJoKwA%3D%3D')"
-						init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						init-with="p:[op:0, tr:translateZ(0) scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 						when-jason-enter="p:[op:1, tr:none, t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
 			            <div class="team-link"
@@ -248,25 +248,25 @@
 			            </div>
 						<div class="team-ribbon">
 							<div class="team-ribbon-center"
-								init-with="p:[tr:scaleX(0), tro:center center]"
-								when-jason-ribbon-expand="p:[tr:scaleX(1), t:transform 1000ms linear]">
+								init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+								when-jason-ribbon-expand="p:[tr:translateZ(0) scaleX(1), t:transform 1000ms linear]">
 								<div class="team-ribbon-left"
-									init-with="p:[op:0, tr:translateX(50px)]"
-									when-jason-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									init-with="p:[op:0, tr:translateZ(0) translateX(50px)]"
+									when-jason-ribbon-expand="p:[op:1:delay-250, tr:translateZ(0) translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 								<div class="team-ribbon-right"
-									init-with="p:[op:0, tr:translateX(-50px)]"
-									when-jason-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									init-with="p:[op:0, tr:translateZ(0) translateX(-50px)]"
+									when-jason-ribbon-expand="p:[op:1:delay-250, tr:translateZ(0) translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 							</div>
 							<div class="team-ribbon-left-corner"
-								init-with="p:[tr:scale(0), tro:right top]"
-								when-jason-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
+								init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
+								when-jason-ribbon-expand="p:[tr:translateZ(0) scale(1):delay-250, t: transform 450ms ease-out]"></div>
 							<div class="team-ribbon-right-corner"
-								init-with="p:[tr:scale(0), tro:left top]"
-								when-jason-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[jason-line-draw:public:delay-1000]"></div>
+								init-with="p:[tr:translateZ(0) scale(0), tro:left top]"
+								when-jason-ribbon-expand="p:[tr:translateZ(0) scale(1):delay-250, t: transform 450ms ease-out] | send:[jason-line-draw:public:delay-1000]"></div>
 						</div>
 						<div class="team-info"
-							init-with="p:[op:0, tr:translateY(-50px)]"
-							when-jason-enter="p:[op:1:delay-1000, tr:translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
+							init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
+							when-jason-enter="p:[op:1:delay-1000, tr:translateZ(0) translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
 							<h2>QA Engineer</h2>
 							<h2>San Jose State University</h2>
 						</div>
@@ -279,21 +279,21 @@
 			<div class="team-card-container team-samir"
 				init-default
 				on-init="send:[samir-enter:public:delay-1500]"
-				when-samir-exit="p:[tr:translateY(-200px) rotateX(90deg) rotateY(15deg), op:0:delay-100, t:transform 750ms ease-out#opacity 700ms linear]">
+				when-samir-exit="p:[tr:translateZ(0) translateY(-200px) rotateX(90deg) rotateY(15deg), op:0:delay-100, t:transform 750ms ease-out#opacity 700ms linear]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card">
 					<div class="team-border">
-						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-samir-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
-						<div init-with="p:[tr:scaleY(0), tro:center center]"
-							when-samir-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
-						<div init-with="p:[tr:scaleX(0), tro:center center]"
-							when-samir-line-draw="p:[tr:scaleX(1), t:transform 750ms ease-out]"></div>
-						<div init-with="p:[tr:scaleY(0), tro:center center]"
-							when-samir-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+							when-samir-line-draw="p:[tr:translateZ(0) scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleY(0), tro:center center]"
+							when-samir-line-draw="p:[tr:translateZ(0) scaleY(1), t:transform 450ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+							when-samir-line-draw="p:[tr:translateZ(0) scaleX(1), t:transform 750ms ease-out]"></div>
+						<div init-with="p:[tr:translateZ(0) scaleY(0), tro:center center]"
+							when-samir-line-draw="p:[tr:translateZ(0) scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/samir.jpg?token=AAm4HqfZg6AkFGFO4M623SOvqBUV0NgTks5XvJpOwA%3D%3D')"
-						init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						init-with="p:[op:0, tr:translateZ(0) scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
 						when-samir-enter="p:[op:1, tr:none, t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
 			            <div class="team-link"
@@ -330,25 +330,25 @@
 			            </div>
 						<div class="team-ribbon">
 							<div class="team-ribbon-center"
-								init-with="p:[tr:scaleX(0), tro:center center]"
-								when-samir-ribbon-expand="p:[tr:scaleX(1), t:transform 1000ms linear]">
+								init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
+								when-samir-ribbon-expand="p:[tr:translateZ(0) scaleX(1), t:transform 1000ms linear]">
 								<div class="team-ribbon-left"
-									init-with="p:[op:0, tr:translateX(50px)]"
-									when-samir-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									init-with="p:[op:0, tr:translateZ(0) translateX(50px)]"
+									when-samir-ribbon-expand="p:[op:1:delay-250, tr:translateZ(0) translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 								<div class="team-ribbon-right"
-									init-with="p:[op:0, tr:translateX(-50px)]"
-									when-samir-ribbon-expand="p:[op:1:delay-250, tr:translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									init-with="p:[op:0, tr:translateZ(0) translateX(-50px)]"
+									when-samir-ribbon-expand="p:[op:1:delay-250, tr:translateZ(0) translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
 							</div>
 							<div class="team-ribbon-left-corner"
-								init-with="p:[tr:scale(0), tro:right top]"
-								when-samir-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out]"></div>
+								init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
+								when-samir-ribbon-expand="p:[tr:translateZ(0) scale(1):delay-250, t: transform 450ms ease-out]"></div>
 							<div class="team-ribbon-right-corner"
-								init-with="p:[tr:scale(0), tro:left top]"
-								when-samir-ribbon-expand="p:[tr:scale(1):delay-250, t: transform 450ms ease-out] | send:[samir-line-draw:public:delay-1000]"></div>
+								init-with="p:[tr:translateZ(0) scale(0), tro:left top]"
+								when-samir-ribbon-expand="p:[tr:translateZ(0) scale(1):delay-250, t: transform 450ms ease-out] | send:[samir-line-draw:public:delay-1000]"></div>
 						</div>
 						<div class="team-info"
-							init-with="p:[op:0, tr:translateY(-50px)]"
-							when-samir-enter="p:[op:1:delay-1000, tr:translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
+							init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
+							when-samir-enter="p:[op:1:delay-1000, tr:translateZ(0) translateY(0):delay-800, t:opacity 350ms linear#transform 500ms ease-out]">
 							<h2>Founder</h2>
 							<h2>UC Berkeley</h2>
 						</div>
