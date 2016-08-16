@@ -3491,13 +3491,15 @@ fieldset.no-border * {
       transform-style: preserve-3d; }
   @media screen and (min-width: 768px) {
     .team-card-container:not(.mobile) a:hover ~ .team-card .team-border, .team-card-container:not(.mobile) a:focus ~ .team-card .team-border {
-      transform: translateZ(15px); }
+      transform: translateZ(15px) !important; }
     .team-card-container:not(.mobile) a:hover ~ .team-card .team-link, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link {
-      transform: translateZ(25px); }
-      .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon {
-        transform: translateZ(10px); }
+      transform: translateZ(25px) !important; }
+      .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon, .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name {
+        transform: translateZ(10px) !important; }
     .team-card-container:not(.mobile) a:hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:focus ~ .team-card .team-ribbon-center {
-      transform: translateZ(-10px); }
+      transform: translateZ(-10px) !important; }
+    .team-card-container:not(.mobile) a:hover ~ .team-card .team-ribbon-info, .team-card-container:not(.mobile) a:focus ~ .team-card .team-ribbon-info {
+      transform: translateZ(10px) !important; }
     .team-card-container:not(.mobile) a:nth-child(1):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(1):focus ~ .team-card {
       transform-origin: bottom right !important;
       transform: rotateX(5deg) rotateY(-5deg) !important; }
@@ -3508,30 +3510,30 @@ fieldset.no-border * {
       transform-origin: top left !important;
       transform: rotateX(-5deg) rotateY(5deg) !important; }
       .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card .team-ribbon-center {
-        transform: translateZ(-10px) translateY(5px); }
+        transform: translateZ(-10px) translateY(5px) !important; }
       .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card .team-ribbon-right-corner {
-        transform: translateY(4px); }
+        transform: translateY(4px) !important; }
     .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card {
       transform-origin: top right !important;
       transform: rotateX(-5deg) rotateY(-5deg) !important; }
       .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card .team-ribbon-center {
-        transform: translateZ(-10px) translateY(5px); }
+        transform: translateZ(-10px) translateY(5px) !important; }
       .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card .team-ribbon-right-corner {
-        transform: translateY(4px); }
+        transform: translateY(4px) !important; }
     .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card {
       transform-origin: top right !important;
       transform: rotateX(-5deg) rotateY(-8deg) !important; }
       .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card .team-ribbon-center {
-        transform: translateZ(-10px) translateY(5px); }
+        transform: translateZ(-10px) translateY(5px) !important; }
       .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card .team-ribbon-right-corner {
-        transform: translateY(4px); }
+        transform: translateY(4px) !important; }
     .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card {
       transform-origin: top left !important;
       transform: rotateX(-5deg) rotateY(8deg) !important; }
       .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card .team-ribbon-center {
-        transform: translateZ(-10px) translateY(5px); }
+        transform: translateZ(-10px) translateY(5px) !important; }
       .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card .team-ribbon-right-corner {
-        transform: translateY(4px); } }
+        transform: translateY(4px) !important; } }
 
 .team-card {
   position: relative;
