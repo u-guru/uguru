@@ -3487,7 +3487,7 @@ fieldset.no-border * {
     transform-style: preserve-3d; }
     .team-card-container .team-card * {
       transition: all 500ms ease-out; }
-    .team-card-container .team-card .team-border, .team-card-container .team-card .team-ribbon, .team-card-container .team-card .team-link, .team-card-container .team-card .team-info {
+    .team-card-container .team-card .team-border, .team-card-container .team-card .team-ribbon, .team-card-container .team-card .team-link, .team-card-container .team-card .team-info, .team-card-container .team-card .team-icon {
       transform-style: preserve-3d; }
   @media screen and (min-width: 768px) {
     .team-card-container:not(.mobile) a:hover ~ .team-card, .team-card-container:not(.mobile) a:focus ~ .team-card {
@@ -3500,6 +3500,14 @@ fieldset.no-border * {
         transform: translateZ(25px) !important; }
         .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon, .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name {
           transform: translateZ(10px) !important; }
+          .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon [class*="mid"], .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name [class*="mid"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon [class*="mid"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name [class*="mid"] {
+            transform: translateZ(5px) !important; }
+          .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon [class*="front"], .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name [class*="front"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon [class*="front"], .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name [class*="front"] {
+            transform: translateZ(10px) !important; }
+          .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon .eyes, .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name .eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon .eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name .eyes {
+            opacity: 0; }
+          .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon .circle-eyes, .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-name .circle-eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon .circle-eyes, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-name .circle-eyes {
+            opacity: 1; }
       .team-card-container:not(.mobile) a:hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:focus ~ .team-card .team-ribbon-center {
         transform: translateZ(-10px) !important; }
       .team-card-container:not(.mobile) a:hover ~ .team-card .team-ribbon-info h2, .team-card-container:not(.mobile) a:focus ~ .team-card .team-ribbon-info h2 {
@@ -3515,9 +3523,13 @@ fieldset.no-border * {
     .team-card-container:not(.mobile) a:nth-child(1):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(1):focus ~ .team-card {
       transform-origin: bottom right !important;
       transform: rotateX(5deg) rotateY(-5deg) !important; }
+      .team-card-container:not(.mobile) a:nth-child(1):hover ~ .team-card .circle-eyes, .team-card-container:not(.mobile) a:nth-child(1):focus ~ .team-card .circle-eyes {
+        transform: translate(-4px, -4px); }
     .team-card-container:not(.mobile) a:nth-child(2):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(2):focus ~ .team-card {
       transform-origin: bottom left !important;
       transform: rotateX(5deg) rotateY(5deg) !important; }
+      .team-card-container:not(.mobile) a:nth-child(2):hover ~ .team-card .circle-eyes, .team-card-container:not(.mobile) a:nth-child(2):focus ~ .team-card .circle-eyes {
+        transform: translate(2px, -2px); }
     .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card {
       transform-origin: top left !important;
       transform: rotateX(-5deg) rotateY(5deg) !important; }
@@ -3525,6 +3537,8 @@ fieldset.no-border * {
         transform: translateZ(-10px) translateY(5px) !important; }
       .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card .team-ribbon-right-corner {
         transform: translateY(4px) !important; }
+      .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card .circle-eyes, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card .circle-eyes {
+        transform: translate(2px, 2px); }
     .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card {
       transform-origin: top right !important;
       transform: rotateX(-5deg) rotateY(-5deg) !important; }
@@ -3532,6 +3546,8 @@ fieldset.no-border * {
         transform: translateZ(-10px) translateY(5px) !important; }
       .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card .team-ribbon-right-corner {
         transform: translateY(4px) !important; }
+      .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card .circle-eyes, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card .circle-eyes {
+        transform: translate(-4px, 4px); }
     .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card {
       transform-origin: top right !important;
       transform: rotateX(-5deg) rotateY(-8deg) !important; }
@@ -3539,13 +3555,17 @@ fieldset.no-border * {
         transform: translateZ(-10px) translateY(5px) !important; }
       .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card .team-ribbon-right-corner {
         transform: translateY(4px) !important; }
+      .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card .circle-eyes, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card .circle-eyes {
+        transform: translate(-6px, 4px); }
     .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card {
       transform-origin: top left !important;
       transform: rotateX(-5deg) rotateY(8deg) !important; }
       .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card .team-ribbon-center {
         transform: translateZ(-10px) translateY(5px) !important; }
       .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card .team-ribbon-right-corner {
-        transform: translateY(4px) !important; } }
+        transform: translateY(4px) !important; }
+      .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card .circle-eyes, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card .circle-eyes {
+        transform: translate(4px, 2px); } }
 
 .team-card {
   position: relative;
@@ -3599,7 +3619,6 @@ fieldset.no-border * {
     background-position: center center;
     background-size: cover; }
   .team-card .team-link {
-    display: block;
     position: absolute;
     top: 218px;
     left: -15px;
@@ -3610,12 +3629,21 @@ fieldset.no-border * {
     border-radius: 2px;
     text-align: center; }
     .team-card .team-link .team-icon {
+      position: relative;
       width: 64px;
       height: 64px;
       border-radius: 100%;
       border: 2px solid #69B3A5;
       background: #40484B;
       margin: -32px auto 0; }
+      .team-card .team-link .team-icon svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+        .team-card .team-link .team-icon svg .circle-eyes {
+          opacity: 0; }
     .team-card .team-link .team-name {
       margin-top: 5px;
       font-weight: 600;
