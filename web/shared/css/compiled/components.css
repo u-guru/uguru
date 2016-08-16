@@ -3491,10 +3491,12 @@ fieldset.no-border * {
       transform-style: preserve-3d; }
   @media screen and (min-width: 768px) {
     .team-card-container:not(.mobile) a:hover ~ .team-card .team-border, .team-card-container:not(.mobile) a:focus ~ .team-card .team-border {
-      transform: translateZ(20px); }
+      transform: translateZ(15px); }
     .team-card-container:not(.mobile) a:hover ~ .team-card .team-link, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link {
-      transform: translateZ(30px); }
-    .team-card-container:not(.mobile) a:hover ~ .team-card .team-ribbon .team-ribbon-center, .team-card-container:not(.mobile) a:focus ~ .team-card .team-ribbon .team-ribbon-center {
+      transform: translateZ(25px); }
+      .team-card-container:not(.mobile) a:hover ~ .team-card .team-link .team-icon, .team-card-container:not(.mobile) a:focus ~ .team-card .team-link .team-icon {
+        transform: translateZ(10px); }
+    .team-card-container:not(.mobile) a:hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:focus ~ .team-card .team-ribbon-center {
       transform: translateZ(-10px); }
     .team-card-container:not(.mobile) a:nth-child(1):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(1):focus ~ .team-card {
       transform-origin: bottom right !important;
@@ -3505,9 +3507,31 @@ fieldset.no-border * {
     .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card {
       transform-origin: top left !important;
       transform: rotateX(-5deg) rotateY(5deg) !important; }
+      .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card .team-ribbon-center {
+        transform: translateZ(-10px) translateY(5px); }
+      .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(3):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(3):focus ~ .team-card .team-ribbon-right-corner {
+        transform: translateY(4px); }
     .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card {
       transform-origin: top right !important;
-      transform: rotateX(-5deg) rotateY(-5deg) !important; } }
+      transform: rotateX(-5deg) rotateY(-5deg) !important; }
+      .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card .team-ribbon-center {
+        transform: translateZ(-10px) translateY(5px); }
+      .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(4):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(4):focus ~ .team-card .team-ribbon-right-corner {
+        transform: translateY(4px); }
+    .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card {
+      transform-origin: top right !important;
+      transform: rotateX(-5deg) rotateY(-8deg) !important; }
+      .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card .team-ribbon-center {
+        transform: translateZ(-10px) translateY(5px); }
+      .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(5):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(5):focus ~ .team-card .team-ribbon-right-corner {
+        transform: translateY(4px); }
+    .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card {
+      transform-origin: top left !important;
+      transform: rotateX(-5deg) rotateY(8deg) !important; }
+      .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card .team-ribbon-center, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card .team-ribbon-center {
+        transform: translateZ(-10px) translateY(5px); }
+      .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(6):hover ~ .team-card .team-ribbon-right-corner, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card .team-ribbon-left-corner, .team-card-container:not(.mobile) a:nth-child(6):focus ~ .team-card .team-ribbon-right-corner {
+        transform: translateY(4px); } }
 
 .team-card {
   position: relative;
@@ -3634,6 +3658,8 @@ fieldset.no-border * {
       font-weight: 600;
       text-align: center; }
 
+.team-gabrie .team-border div {
+  background: #9b8885; }
 .team-gabrie .team-link {
   background: #F5C8BF; }
   .team-gabrie .team-link .team-icon {
@@ -3648,6 +3674,8 @@ fieldset.no-border * {
   background: #fdf4f2;
   color: #9b8885; }
 
+.team-jeselle .team-border div {
+  background: #5f9091; }
 .team-jeselle .team-link {
   background: #7DD7D6; }
   .team-jeselle .team-link .team-icon {
@@ -3662,6 +3690,8 @@ fieldset.no-border * {
   background: #e5f7f7;
   color: #5f9091; }
 
+.team-jason .team-border div {
+  background: #67608a; }
 .team-jason .team-link {
   background: #8d77c9; }
   .team-jason .team-link .team-icon {
@@ -3676,6 +3706,8 @@ fieldset.no-border * {
   background: #e8e4f4;
   color: #67608a; }
 
+.team-samir .team-border div {
+  background: #527c7e; }
 .team-samir .team-link {
   background: #64b0b0; }
   .team-samir .team-link .team-icon {
