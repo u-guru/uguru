@@ -5,6 +5,12 @@
 @import 'partials/keyframes';
 @import 'partials/docs';
 
+.fix-abs {
+	.types-bar {
+		display: none;
+	}
+}
+
 .bg-cobalt-slate-campus-25p {
 	background: mix($campus, mix($cobalt, $slate, 25%), 25%)!important;
 }

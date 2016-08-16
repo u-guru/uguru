@@ -125,21 +125,20 @@
                 <li ng-if='apc.activeComponent.name' class='full-y weight-900 flex-wrap-center txt-1 txt-white bg-azure' style='width:100px !important;'>
                     {{apc.elements.length}} animated {{apc.activeComponent.name}} components
                 </li>
-                <li ng-repeat='element in apc.elements' ng-if='!apc.activeElement' ng-class="{'bg-slate': $index % 2 === 1}" class='full-y relative flex-wrap-center element-wrapper' style='max-width:20%; min-width:10%; height:100%'>
+                <li ng-repeat='element in apc.elements' ng-if='!apc.activeElement' ng-class="{'bg-slate': $index % 2 === 1}" class='full-y relative flex-wrap-center element-wrapper fix-abs' style='max-width:20%; min-width:10%; height:100%'>
                     <span class='absolute circle top-0 right-0 m10xy'> {{apc.element.attrs.length}}
                     </span>
                 </li>
             </ul>
              <ul class='full-x p15-grid flex-stretch overflow-x no-scrollbar component-container' style='height:100px' ng-hide='!apc.showAllElems'>
-
                 <li init-with="p:[opacity:0]" on-init="p:[opacity:1:elastic:250ms:d-500ms]:delay-500" ng-click='apc.switchComponent($index, comp)' ng-repeat='comp in apc.components' ng-class="{'bg-slate': $index % 2 === 1}" class='full-y border-1-right border-solid border-smoke relative flex-wrap-center element-wrapper' style='max-width:20%; min-width:10%; height:100%' ng-if='!comp.active'>
                     <span style='margin-top:-10px; z-index:100; transform:scale(1, 1) !important;' class='absolute full-x txt-white weight-700 top-0 bg-azure p05y txt-3 left-0 p05x txt-center'> {{comp.name}} </span>
                     <span class='full-xy {{comp.name}}-component {{comp.name}}-component-{{$index}}' style='margin-top:10px;' ng-include='comp.url + ""'> </span>
                 </li>
             </ul>
             <ul class='full-x bg-charcoal'>
-                <li  class='full-x flex-wrap-stretch' ng-class="{'bg-slate':$index % 2 === 1, 'bg-campus-25p':$index % 2 === 0}">
-					<div class="width-10p flex-vertical-center-wrap bg-gold">
+                <li class='full-x flex-wrap-stretch' ng-class="{'bg-slate':$index % 2 === 1, 'bg-campus-25p':$index % 2 === 0}">
+					<div class="width-10p flex-wrap-start bg-gold">
 						<a class='block text-center border-solid border-white left-0 top-0 full-x txt-4 bg-charcoal' style='z-index:100;' ng-click='apc.showAllElems = !apc.showAllElems'>
 							<span class='weight-300 uppercase'>View: </span>
 							<span class='weight-900 uppercase'>{{apc.activeComponent.name || 'Component'}}</span>
