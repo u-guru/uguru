@@ -17,8 +17,8 @@
 							when-gabrie-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/gabrielle.jpg?token=AAm4HoXDx19Lb58LPkLHAOTjJNakVVRIks5XvJnLwA%3D%3D')"
-						init-with="p:[op:0, tr:rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
-						when-gabrie-enter="p:[op:1, tr:rotateX(0) rotateY(0) translateY(0), t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
+						init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						when-gabrie-enter="p:[op:1, tr:none, t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
 						<div class="team-link"
 							init-with="p-op"
@@ -93,8 +93,8 @@
 							when-jeselle-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jeselle.jpg?token=AAm4HhGSrc-7t6S6vyNQMpDZ3DbSndC1ks5XvJozwA%3D%3D')"
-						init-with="p:[op:0, tr:rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
-						when-jeselle-enter="p:[op:1, tr:rotateX(0) rotateY(0) translateY(0), t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
+						init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						when-jeselle-enter="p:[op:1, tr:none, t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
 			            <div class="team-link"
 							init-with="p-op"
@@ -173,8 +173,8 @@
 							when-jason-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/jason.jpg?token=AAm4HmSt9nEW3q8WZCb7eWtoqE76eqcnks5XvJoKwA%3D%3D')"
-						init-with="p:[op:0, tr:rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
-						when-jason-enter="p:[op:1, tr:rotateX(0) rotateY(0) translateY(0), t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
+						init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						when-jason-enter="p:[op:1, tr:none, t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
 			            <div class="team-link"
 							init-with="p-op"
@@ -248,8 +248,8 @@
 							when-samir-line-draw="p:[tr:scaleY(1), t:transform 450ms ease-out]"></div>
 					</div>
 					<div class="team-photo" style="background-image: url('https://raw.githubusercontent.com/Uguru/uguru/gabri-dev/web/shared/images/samir.jpg?token=AAm4HqfZg6AkFGFO4M623SOvqBUV0NgTks5XvJpOwA%3D%3D')"
-						init-with="p:[op:0, tr:rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
-						when-samir-enter="p:[op:1, tr:rotateX(0) rotateY(0) translateY(0), t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
+						init-with="p:[op:0, tr:scale(0.5) rotateX(70deg) rotateY(-15deg) translateY(-1000px)]"
+						when-samir-enter="p:[op:1, tr:none, t:transform 800ms cubic-bezier(0#.25#.48#1.2)]"></div>
 					<div>
 			            <div class="team-link"
 							init-with="p-op"
