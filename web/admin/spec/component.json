@@ -197,7 +197,8 @@
                 "filename": "feature-tile.tpl"
             },
 			"money-tile": {
-                "filename": "money-tile.tpl"
+                "filename": "money-tile.tpl",
+                "types": ["fixed", "add"]
             },
 			"pricing-tile": {
                 "filename": "pricing-tile.tpl",

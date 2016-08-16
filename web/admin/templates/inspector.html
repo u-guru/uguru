@@ -95,7 +95,7 @@
             </div>
         </aside>
     </div>
-    <div class='relative' style='height;30%;'>
+    <div class='relative' style='height:30%;'>
         <ul class='flex p15-grid absolute left-0' style="top:-78px">
             <li>
 				<span class='svg-48-36 svg-stroke-6 radius-2 bg bg-moxie' ng-click='apc.gPlayer.viewSettings = !apc.gPlayer.viewSettings' ng-include='"shared/templates/components/svg/main/settings.html"'></span>
@@ -128,7 +128,7 @@
 					</div>
 				</div>
 				<ul class='full-x flex-stretch overflow-x no-scrollbar component-container'>
-	                <li ng-repeat='element in apc.elements' ng-if='!apc.activeElement' ng-class="{'bg-slate': $index % 2 === 1}" style="height:85px">
+	                <li ng-repeat='element in apc.elements' ng-if='!apc.activeElement' ng-class="{'bg-slate': $index % 2 === 1}" class="relative" style="height:100px">
 	                    <div class='element-wrapper full-y flex-wrap-center fix-abs'>
 							{{apc.element.attrs.length}}
 						</div>
@@ -142,11 +142,13 @@
 					</div>
 				</div>
 	            <ul class='full-x flex-stretch overflow-x no-scrollbar component-container' style='height:100px'>
-	                <li init-with="p:[opacity:0]" on-init="p:[opacity:1:elastic:250ms:d-500ms]:delay-500" ng-click='apc.switchComponent($index, comp)' ng-repeat='comp in apc.components' ng-class="{'bg-slate': $index % 2 === 1}" class='relative element-wrapper' style='width:200px; height:85px;' ng-if='!comp.active'>
+	                <li init-with="p:[opacity:0]" on-init="p:[opacity:1:elastic:250ms:d-500ms]:delay-500" ng-click='apc.switchComponent($index, comp)' ng-repeat='comp in apc.components' ng-class="{'bg-slate': $index % 2 === 1}" class='relative element-wrapper' style='width:200px; height:100px;' ng-if='!comp.active'>
 	                    <span style='transform:scale(1)!important;' class='absolute block top-0 left-0 z-index-10 p05xy'>
 							<span class="weight-600 bg-moxie-90p txt-1 block radius-2" style="padding: 2px 5px;">{{comp.name}}</span>
 						</span>
-	                    <div class='fix-abs flex-center overflow-hidden full-xy {{comp.name}}-component {{comp.name}}-component-{{$index}}' ng-include='comp.url + ""'> </div>
+						<div class="full-xy overflow-hidden flex-center">
+	                    	<div class='fix-abs flex-center overflow-hidden opacity-80p {{comp.name}}-component {{comp.name}}-component-{{$index}}' ng-include='comp.url + ""' style="min-width: 500px; min-height: 500px;"> </div>
+						</div>
 	                </li>
 	            </ul>
 			</div>
@@ -155,8 +157,8 @@
 					<!-- ng-class="{'bg-slate':$index % 2 === 1, 'bg-campus-25p':$index % 2 === 0}" -->
 					<div class="width-10p flex-wrap-start bg-gold">
 						<a class='block text-center bg bg-gold left-0 top-0 full-x txt-4 p05xy z-index-100' ng-click='apc.showAllElems = !apc.showAllElems'>
-							<span class='weight-400'>view: </span>
-							<span class='weight-900'>{{apc.activeComponent.name || 'component'}}</span>
+							<span class='weight-600'>view: </span>
+							<span class='weight-700'>{{apc.activeComponent.name || 'component'}}</span>
 						</a>
 						<div class='fix-abs flex-center overflow-hidden full-x' style='height: 200px;' id='global-player-elem-container'>
 						</div>
