@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="baking-desktop">
+<div class="perspective-container full-xy flex-center p15xy" types='default-desktop, default-mobile, academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="tech-desktop">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -304,31 +304,47 @@
 		when-photo-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-photography">
-			<div class="pf-cardlet-front-container">
-				<div class="pf-cardlet-front" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');">
+			<div class="pf-cardlet-front-container"
+				init-with="p:[tr:translate3d(7.5px#7.5px#0), t:all 450ms ease-out]"
+				when-photo-cardlet-init="p:[tr:none:delay-500]">
+				<div class="pf-cardlet-front">
 					<div></div><div></div><div></div>
+					<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
+						init-with="p:[op:0]"
+						when-photo-cardlet-init="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
+						when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 					<div class="pf-cardlet-overlay"></div>
 				</div>
 			</div>
-			<div class="pf-cardlet-bottom-container">
+			<div class="pf-cardlet-bottom-container"
+				init-with="p:[tr:translate3d(7.5px#7.5px#0), t:all 450ms ease-out]"
+				when-photo-cardlet-init="p:[tr:none:delay-500]">
 				<div class="pf-cardlet-bottom">
-					<h1>2016 Camera Models</h1>
-					<div>
+					<h1 init-with="p-op"
+						when-photo-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">2016 Camera Models</h1>
+					<div init-with="p-op"
+						when-photo-cardlet-init="a:[bounceInX:set:(dur:1000ms#func:linear):in:delay-450]">
 						<h2>03/28/2016</h2>
 					</div>
 				</div>
 			</div>
-			<div class="pf-cardlet-back-container">
+			<div class="pf-cardlet-back-container"
+				init-with="p:[tr:translate3d(-7.5px#-7.5px#0), t:all 450ms ease-out]"
+				when-photo-cardlet-init="p:[tr:none:delay-500]">
 				<div class="pf-cardlet-back"></div>
 			</div>
-			<div class="pf-cardlet-ribbon-container">
+			<div class="pf-cardlet-ribbon-container"
+				init-with="p:[op:0, tr:translateX(10px), t:all 250ms ease-out]"
+				when-photo-cardlet-init="p:[op:1:delay-500, tr:translateX(0):delay-500]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
 					</svg>
 				</div>
 			</div>
-			<div class="pf-cardlet-ribbon-edge-container">
+			<div class="pf-cardlet-ribbon-edge-container"
+				init-with="p:[op:0]"
+				when-photo-cardlet-init="a:[fadeIn:set:(dur:250ms#func:ease-in):in:delay-600]">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
 		</div>
@@ -342,8 +358,12 @@
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-photography">
 			<div class="pf-cardlet-front-container">
-				<div class="pf-cardlet-front" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');">
+				<div class="pf-cardlet-front">
 					<div></div><div></div><div></div>
+					<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
+						init-with="p:[op:0]"
+						when-photo-cardlet-init="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
+						when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 					<div class="pf-cardlet-overlay"></div>
 				</div>
 			</div>
@@ -355,7 +375,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="pf-cardlet-back-container">
+			<div class="pf-cardlet-back-container"
+				init-with="p:[tr:translate3d(-7.5px#-7.5px#0), t:all 450ms ease-out]"
+				when-photo-cardlet-init="p:[tr:none:delay-500]">
 				<div class="pf-cardlet-back"></div>
 			</div>
 			<div class="pf-cardlet-ribbon-container">
@@ -388,12 +410,19 @@
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<div></div><div></div><div></div><div></div><div></div>
+					<div init-with="p:[tr:scaleX(0)]" when-tech-cardlet-init="p:[tr:scaleX(1):delay-150, t:transform 250ms ease-out]"></div>
+					<div init-with="p:[tr:scaleY(0)]" when-tech-cardlet-init="p:[tr:scaleY(1):delay-350, t:transform 250ms ease-out]"></div>
+					<div init-with="p:[tr:scaleX(0)]" when-tech-cardlet-init="p:[tr:scaleX(1):delay-600, t:transform 250ms ease-out]"></div>
+					<div init-with="p:[tr:scaleY(0)]" when-tech-cardlet-init="p:[tr:scaleY(1):delay-350, t:transform 250ms ease-out]"></div>
+					<div init-with="p:[tr:scaleX(0)]" when-tech-cardlet-init="p:[tr:scaleX(1):delay-600, t:transform 250ms ease-out]"></div>
 					<h1>When to Replace Your Phone</h1>
 					<div>
-						<div></div>
-						<h2>03/28/2016</h2>
-						<div></div>
+						<div init-with="p-op"
+							when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-850]"></div>
+						<h2 init-with="p-op"
+							when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-750]">03/28/2016</h2>
+						<div init-with="p-op"
+							when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-850]"></div>
 					</div>
 				</div>
 			</div>
@@ -473,6 +502,7 @@
 							<div></div>
 							<div></div>
 							<div></div>
+							<div></div>
 						</div>
 						<h2>03/28/2016</h2>
 					</div>
@@ -512,6 +542,7 @@
 					<h1>How to Make Your Plants Live Longer</h1>
 					<div>
 						<div class="pf-cardlet-border">
+							<div></div>
 							<div></div>
 							<div></div>
 							<div></div>

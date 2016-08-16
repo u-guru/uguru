@@ -482,7 +482,7 @@
           clonedNode.id = elements[i].element.id;
           clonedNode.setAttribute('style', '');
           clonedNode.style.transform += " scale(0.4)";
-          clonedNode.classList.add('absolute', 'full-xy');
+        //   clonedNode.classList.add('absolute', 'full-xy');
           clonedNode.style['webkitAnimation'] = '';
 
           clonedNode.style.opacity = 1;
