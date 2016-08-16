@@ -8,7 +8,7 @@
             "start": "rotateX(720deg) skewY(-180deg)",
             "end": "rotateX(-70deg) skewY(0)",
             "duration": "3000ms",
-            "ease": "easeInOutCubic",
+            "ease": "easeOutBounce",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null
