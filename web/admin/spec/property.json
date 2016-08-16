@@ -1,0 +1,39 @@
+{
+    "description": "property examples",
+    "exampleIndex": 2,
+    "examples": [
+        {
+            "exampleName": "translateX",
+            "property": "transform",
+            "start": "translateX(-100%)",
+            "end": "translateX(200%)",
+            "duration": "1000ms",
+            "ease": "elastic",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "opacity",
+            "property": "opacity",
+            "start": "0",
+            "end": "1",
+            "duration": "2500ms",
+            "ease": "bounce",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "translateXYScale",
+            "property": "transform",
+            "start": "translateX(200%) translateY(50%) scale(0.5)",
+            "end": "translateX(0) translateY(0) scale(1.5)",
+            "duration": "2500ms",
+            "ease": "elastic",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        }
+    ]
+}

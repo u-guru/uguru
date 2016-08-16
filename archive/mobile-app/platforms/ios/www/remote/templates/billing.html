@@ -1,0 +1,255 @@
+<ion-view>
+	<main id='desktop-billing' class="desktop-mode" ng-if='isDesktopMode()'>
+		<header class="desktop-header">
+			<a></a>
+			<a class='cta-modal-close close-button desktop-header-next'>
+				<svg viewBox="0 0 100 100">
+				    <path d="M50,50 L50,14 L50,50 L14,50 L50,50 Z M50,50 L50,86 L50,50 L86,50 L50,50 Z"></path>
+				</svg>
+			</a>
+		</header>
+		<div class="main text-center">
+			<div>
+				<h1>Bill Student</h1>
+				<div id="billing-container">
+					<div id="billing-student">
+						<h2>1. Select a Student</h2>
+						<ul id="select-student" class="ugrid-4">
+							<li>
+								<a>
+									<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+									<span>{{user.name}}</span>
+								</a>
+							</li>
+							<li>
+								<a>
+									<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+									<span>{{user.name}}</span>
+								</a>
+							</li>
+							<li>
+								<a>
+									<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+									<span>{{user.name}}</span>
+								</a>
+							</li>
+							<li>
+								<a>
+									<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+									<span>{{user.name}}</span>
+								</a>
+							</li>
+						</ul>
+						<ul id="select-skill" class="ugrid-3">
+							<li>
+								<span class="user-icon" style="background-image: url({{user.profile_url}});"></span>
+								<span>{{user.name}}</span>
+							</li>
+							<li>for</li>
+							<li>
+								<div>
+									<div class="custom-dropdown">
+										<div>
+											<span>CS10</span>
+											<a>
+												<svg viewBox="0 0 100 100">
+													<path d="M14,32 L50,68 L86,32"></path>
+												</svg>
+											</a>
+										</div>
+										<ul class="active">
+											<li tabindex>CS10</li>
+											<li tabindex>CS20</li>
+											<li tabindex>CS30</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div id="billing-details">
+						<h2>2. Session Details</h2>
+						<ul class="ugrid-2">
+							<li>
+								<h3>Session Time</h3>
+								<ul>
+									<li><input type="tel" placeholder="0"/></li>
+									<li>hours</li>
+									<li><input type="tel" placeholder="0"/></li>
+									<li>minutes</li>
+								</ul>
+							</li>
+							<li>
+								<div class="custom-dropdown">
+									<div>
+										<span><h3>Hourly Rate</h3></span>
+										<a>
+											<svg viewBox="0 0 100 100">
+												<path d="M14,32 L50,68 L86,32"></path>
+											</svg>
+										</a>
+									</div>
+									<ul class="">
+										<li tabindex>Hourly Rate</li>
+										<li tabindex>Fixed Price</li>
+										<li tabindex>Keep it Free</li>
+									</ul>
+								</div>
+
+								<!-- <div class="keep-it-free">
+									No Charge
+								</div> -->
+
+								<!-- <ul class="fixed-price">
+									<li>$</li>
+									<li><input type="tel" placeholder="0"/></li>
+								</ul> -->
+
+								<ul class="hourly-rate">
+									<li>
+										<div class="custom-dropdown">
+											<div>
+												<span>$10</span>
+												<a>
+													<svg viewBox="0 0 100 100">
+														<path d="M14,32 L50,68 L86,32"></path>
+													</svg>
+												</a>
+											</div>
+											<ul class="">
+												<li tabindex>$15</li>
+												<li tabindex>$20</li>
+												<li tabindex>$25</li>
+											</ul>
+										</div>
+									</li>
+									<li>per hour</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<button class="bg-shamrock semibold">Confirm</button>
+				</div>
+			</div>
+		</div>
+	</main>
+	<section id="mobile-billing" class="bg-charcoal" ng-if='!isDesktopMode()'>
+		<header class="text-center bg-slate">
+			<div class="header-nav">
+				<a class="header-down" ng-click="closeModal('signup')">
+					<svg viewBox="0 0 100 100">
+						<path d="M14,32 L50,68 L86,32"></path>
+					</svg>
+				</a>
+			</div>
+			<h1>Bill Student</h1>
+		</header>
+		<div class="main">
+			<div class="mobile-billing">
+				<h1 class="section-header">Select a student</h1>
+				<div>
+					<div class="custom-dropdown">
+						<div>
+							<span>{{user.name}}</span>
+							<a>
+								<svg viewBox="0 0 100 100">
+									<path d="M14,32 L50,68 L86,32"></path>
+								</svg>
+							</a>
+						</div>
+						<ul>
+							<li tabindex>{{user.name}}</li>
+							<li tabindex>{{user.name}}</li>
+							<li tabindex>{{user.name}}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="mobile-billing">
+				<h1 class="section-header">Select a course</h1>
+				<div>
+					<div class="custom-dropdown">
+						<div>
+							<span>CS10</span>
+							<a>
+								<svg viewBox="0 0 100 100">
+									<path d="M14,32 L50,68 L86,32"></path>
+								</svg>
+							</a>
+						</div>
+						<ul>
+							<li tabindex>CS10</li>
+							<li tabindex>CS10</li>
+							<li tabindex>CS10</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="mobile-billing mobile-billing-type">
+				<h1 class="section-header">Billing Type</h1>
+				<form>
+					<ul>
+						<li>
+							<input type="radio" name="billing-type" checked/>
+							<label for="billing-type">
+								<span></span>
+								<span>Hourly Rate</span>
+							</label>
+						</li>
+						<li>
+							<input type="radio" name="billing-type"/>
+							<label for="billing-type">
+								<span></span>
+								<span>Fixed Price</span>
+							</label>
+						</li>
+						<li>
+							<input type="radio" name="billing-type"/>
+							<label for="billing-type">
+								<span></span>
+								<span>Keep It Free</span>
+							</label>
+						</li>
+					</ul>
+				</form>
+			</div>
+			<div class="mobile-billing mobile-session-time">
+				<h1 class="section-header">Session Time</h1>
+				<ul>
+					<li><input type="tel" placeholder="0"/></li>
+					<li>hours</li>
+					<li><input type="tel" placeholder="0"/></li>
+					<li>min</li>
+				</ul>
+			</div>
+			<div class="mobile-billing mobile-billing-hour">
+				<h1 class="section-header">Rate Per Hour</h1>
+				<div>
+					<div class="custom-dropdown">
+						<div>
+							<span>$10/hour</span>
+							<a>
+								<svg viewBox="0 0 100 100">
+									<path d="M14,32 L50,68 L86,32"></path>
+								</svg>
+							</a>
+						</div>
+						<ul>
+							<li tabindex>$15/hour</li>
+							<li tabindex>$20/hour</li>
+							<li tabindex>$25/hour</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="mobile-billing mobile-billing-fix-price">
+				<h1 class="section-header">Price</h1>
+				<ul>
+					<li>$</li>
+					<li><input type="tel" placeholder="0"/></li>
+				</ul>
+			</div> -->
+		</div>
+		<button>Confirm</button>
+	</section>
+</ion-view>

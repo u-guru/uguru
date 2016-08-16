@@ -1,0 +1,2855 @@
+@import 'mixin';
+
+// ACADEMIC
+#desktop-guru-home {
+	.pf-type-academic {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $cerise!important;
+						&:hover, &:focus {
+							background: lighten($cerise, 10%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $cerise;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.pf-edit.pf-type-academic {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $cerise;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
+	button {
+		background: $cerise;
+		&:hover, &:focus {
+			color: $cerise;
+		}
+		&:active, &.activated {
+			background: $cerise!important;
+			color: white!important;
+		}
+	}
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $cerise;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $cerise;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $cerise;
+						span {
+							svg {
+								stroke: $cerise;
+							}
+							span {
+								color: $cerise;
+							}
+						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($cerise, 35%);
+						}
+					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $cerise, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $cerise;
+				}
+				&:active {
+					background: lighten($cerise, 10%);
+				}
+			}
+			&.tag-selected {
+				background: $cerise;
+				&:hover, &:focus {
+					background: mix($slate, $cerise, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $cerise, 40%);
+				&:hover, &:focus {
+					background: $cerise;
+				}
+			}
+		}
+	}
+}
+.pf-type-academic {
+	.custom-dropdown {
+		> div {
+			a {
+				&:hover, &:focus {
+					svg {
+						background: lighten($cerise, 10%)!important;
+					}
+				}
+				&:active {
+					svg {
+						background: $cerise!important;
+					}
+				}
+			}
+		}
+		> ul {
+			li {
+				&:hover, &:focus {
+					background: $cerise!important;
+				}
+				&:active {
+					background: lighten($cerise, 10%)!important;
+				}
+			}
+		}
+	}
+	&.pf-modal {
+		header.third.pf-item-header {
+			.pf-header-info {
+				.pf-price {
+					background: $cerise;
+					&:after {
+						border-color: $cerise;
+					}
+				}
+			}
+		}
+		.pf-shop-item-header {
+			background: $cerise;
+		}
+	}
+	header.third {
+		.pf-header-color {
+			background: desaturate(darken($cerise, 20%), 20%);
+		}
+		.pf-banner {
+			background: $cerise;
+			&:after {
+				border: 25px solid $cerise;
+				border-bottom-color: transparent;
+			}
+			&.pf-banner-academic {
+				display: block;
+			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $cerise;
+				}
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($cerise, 20%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $cerise;
+				}
+				&:hover, &:focus {
+					background: $cerise;
+					svg {
+						stroke: white;
+					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($cerise, 20%), 20%)!important;
+				}
+			}
+		}
+	}
+	.pf-header {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $cerise;
+					}
+				}
+			}
+		}
+	}
+	.pf-tabs {
+		ul {
+			li {
+				a {
+					&.active {
+						border-bottom: 5px solid $cerise;
+					}
+				}
+			}
+		}
+	}
+	.pf-list {
+		h1 {
+			background: $cerise;
+		}
+		button.chip {
+			&:hover, &:focus {
+				background: $cerise;
+			}
+			&:active, &.activated {
+				background: lighten($cerise, 10%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $cerise;
+					}
+				}
+			}
+		}
+	}
+	.pf-checklist {
+		> li:not(.pf-checklist-full) {
+			.pf-check-enabled {
+				div {
+					button {
+						background: $cerise;
+						&:hover, &:focus {
+							background: lighten($cerise, 10%);
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%);
+						}
+					}
+				}
+			}
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $cerise;
+							&:hover, &:focus {
+								background: lighten($cerise, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+							&.button-group-deactivate {
+								background: mix(lighten($slate, 20%), lighten($cerise, 15%), 60%);
+								&:hover, &:focus {
+									background: lighten(mix(lighten($slate, 20%), lighten($cerise, 15%), 60%), 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+						}
+					}
+				}
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $cerise;
+						}
+						&:hover, &:focus {
+							background: $cerise;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
+					background: $cerise;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $cerise, 80%);
+				}
+			}
+			input:checked + div .pf-check svg {
+				stroke: $cerise;
+			}
+		}
+		.pf-checklist-add {
+			.pf-check-container > a {
+				background: $cerise;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $cerise;
+						svg {
+							stroke: $cerise;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $cerise;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// PHOTOGRAHPY
+#desktop-guru-home {
+	.pf-type-photo {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $moola!important;
+						&:hover, &:focus {
+							background: lighten($moola, 10%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $moola;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.pf-edit.pf-type-photo {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $moola;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
+	button {
+		background: $moola;
+		&:hover, &:focus {
+			color: $moola;
+		}
+		&:active, &.activated {
+			background: $moola!important;
+			color: white!important;
+		}
+	}
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $moola;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $moola;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $moola;
+						span {
+							svg {
+								stroke: $moola;
+							}
+							span {
+								color: $moola;
+							}
+						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($moola, 35%);
+						}
+					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $moola, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $moola;
+				}
+				&:active {
+					background: lighten($moola, 10%);
+				}
+			}
+			&.tag-selected {
+				background: $moola;
+				&:hover, &:focus {
+					background: mix($slate, $moola, 80%);
+				}
+				&:active {
+					background: $moola;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $moola, 40%);
+				&:hover, &:focus {
+					background: $moola;
+				}
+			}
+		}
+	}
+}
+.pf-type-photo {
+	.custom-dropdown {
+		> div {
+			a {
+				&:hover, &:focus {
+					svg {
+						background: lighten($moola, 10%)!important;
+					}
+				}
+				&:active {
+					svg {
+						background: $moola!important;
+					}
+				}
+			}
+		}
+		> ul {
+			li {
+				&:hover, &:focus {
+					background: $moola!important;
+				}
+				&:active {
+					background: lighten($moola, 10%)!important;
+				}
+			}
+		}
+	}
+	&.pf-modal {
+		> section {
+			overflow: auto;
+			> header.third.pf-item-header {
+				@include flex-wrap;
+				height: auto!important;
+				.pf-header-bg {
+					height: auto;
+					position: relative;
+					top: auto;
+					left: auto;
+					width: 100%;
+					img {
+						display: block;
+						width: 100%;
+						max-width: 100%;
+					}
+					.pf-photo-desc {
+						@include flex;
+						@include flex-wrap;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						padding: 15px;
+						background: rgba($charcoal,.8);
+						color: white;
+						font-size: 16px;
+						font-weight: 400;
+						line-height: 1.25;
+						@media screen and (min-width:768px) {
+							font-size: 20px;
+						}
+						&:not(.active) {
+							@include opacity(0);
+							display: none;
+						}
+						&.active + .pf-photo-info {
+							@include opacity(0);
+						}
+						.pf-photo-tags {
+							padding-top: 2px;
+							font-size: 14px;
+							ul {
+								@include flex;
+								@include flex-wrap;
+								width: 100%;
+								li {
+									padding-right: 7px;
+									a {
+										@include opacity(.75);
+										&.tag::before {
+											content: "#";
+										}
+										&.location {
+											@include flex;
+											@include flex-center;
+											padding-left: 7.5px;
+											@media screen and (min-width:768px) {
+												padding-left: 13.5px;
+											}
+											svg {
+												width: 20px;
+												height: 20px;
+											}
+										}
+										&.active, &:active {
+											@include opacity(1);
+										}
+									}
+								}
+							}
+						}
+					}
+					button {
+						@include flex;
+						@include flex-center;
+						position: absolute;
+						display: block;
+						bottom: 15px;
+						right: 15px;
+						width: 50px;
+						height: 50px;
+						padding: 0;
+						svg {
+							display: block;
+							width: 50px;
+							height: 50px;
+							padding: 5px;
+							path {
+								@include svg-stroke-width(5);
+							}
+						}
+					}
+					.pf-photo-info {
+						background: rgba($charcoal,.8);
+						svg {
+							path {
+								stroke: white;
+							}
+						}
+					}
+					.pf-photo-img {
+						background: rgba(white,.8);
+						svg {
+							path {
+								stroke: $charcoal;
+							}
+						}
+					}
+				}
+				.pf-header-thumbs {
+					@include flex;
+					background: $charcoal;
+					width: 100%;
+					height: 158px;
+					padding: 7.5px;
+					overflow: auto;
+					@media screen and (max-height:568px) {
+						height: 114px;
+					}
+					li {
+						height: 100%;
+						padding: 7.5px;
+						&:last-child {
+							padding-right: 15px;
+						}
+						a {
+							height: 100%;
+							img {
+								display: block;
+								max-height: 100%;
+							}
+						}
+					}
+				}
+			}
+			.pf-tab-container {
+				height: auto;
+				overflow: visible;
+			}
+		}
+		.pf-shop-item-header {
+			background: white;
+			h1 {
+				color: $slate;
+			}
+			.pf-price {
+				background: $moola;
+				&:after {
+					border-color: $moola;
+				}
+			}
+		}
+	}
+	header.third {
+		.pf-header-color {
+			background: desaturate(darken($moola, 20%), 20%);
+		}
+		.pf-banner {
+			background: $moola;
+			&:after {
+				border: 25px solid $moola;
+				border-bottom-color: transparent;
+			}
+			&.pf-banner-photo {
+				display: block;
+			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $moola;
+				}
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($moola, 20%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $moola;
+				}
+				&:hover, &:focus {
+					background: $moola;
+					svg {
+						stroke: white;
+					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($moola, 20%), 20%)!important;
+				}
+			}
+		}
+	}
+	.pf-header {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $moola;
+					}
+				}
+			}
+		}
+	}
+	.pf-tabs {
+		ul {
+			li {
+				a {
+					&.active {
+						border-bottom: 5px solid $moola;
+					}
+				}
+			}
+		}
+	}
+	.pf-list {
+		h1 {
+			background: $moola;
+		}
+		button.chip {
+			&:hover, &:focus {
+				background: $moola;
+			}
+			&:active, &.activated {
+				background: lighten($moola, 10%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $moola;
+					}
+				}
+			}
+		}
+	}
+	.pf-checklist {
+		> li:not(.pf-checklist-full) {
+			.pf-check-enabled {
+				div {
+					button {
+						background: $moola;
+						&:hover, &:focus {
+							background: lighten($moola, 10%);
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%);
+						}
+					}
+				}
+			}
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $moola;
+							&:hover, &:focus {
+								background: lighten($moola, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+							&.button-group-deactivate {
+								background: mix(lighten($slate, 20%), lighten($moola, 15%), 60%);
+								&:hover, &:focus {
+									background: lighten(mix(lighten($slate, 20%), lighten($moola, 15%), 60%), 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+						}
+					}
+				}
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $slate;
+						}
+						&:hover, &:focus {
+							background: $slate;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
+					background: white;
+					color: $slate;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $moola, 80%);
+				}
+			}
+			input:checked + div .pf-check svg {
+				stroke: white;
+			}
+		}
+		.pf-checklist-add {
+			.pf-check-container > a {
+				background: $moola;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $moola;
+						svg {
+							stroke: $moola;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $moola;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// BAKING
+#desktop-guru-home {
+	.pf-type-baking {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $gold!important;
+						&:hover, &:focus {
+							background: lighten($gold, 10%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $gold;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.pf-edit.pf-type-baking {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $gold;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
+	button {
+		background: $gold;
+		&:hover, &:focus {
+			color: $gold;
+		}
+		&:active, &.activated {
+			background: $gold!important;
+			color: white!important;
+		}
+	}
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $gold;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $gold;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $gold;
+						span {
+							svg {
+								stroke: $gold;
+							}
+							span {
+								color: $gold;
+							}
+						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($gold, 25%);
+						}
+					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $gold, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $gold;
+				}
+				&:active {
+					background: lighten($gold, 10%);
+				}
+			}
+			&.tag-selected {
+				background: $gold;
+				&:hover, &:focus {
+					background: mix($slate, $gold, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $gold, 40%);
+				&:hover, &:focus {
+					background: $gold;
+				}
+			}
+		}
+	}
+}
+.pf-type-baking {
+	.custom-dropdown {
+		> div {
+			a {
+				&:hover, &:focus {
+					svg {
+						background: lighten($gold, 10%)!important;
+					}
+				}
+				&:active {
+					svg {
+						background: $gold!important;
+					}
+				}
+			}
+		}
+		> ul {
+			li {
+				&:hover, &:focus {
+					background: $gold!important;
+				}
+				&:active {
+					background: lighten($gold, 10%)!important;
+				}
+			}
+		}
+	}
+	&.pf-modal {
+		header.third.pf-item-header {
+			.pf-header-info {
+				.pf-price {
+					background: $gold;
+					&:after {
+						border-color: $gold;
+					}
+				}
+			}
+		}
+		.pf-shop-item-header {
+			background: $gold;
+		}
+	}
+	header.third {
+		.pf-header-color {
+			background: desaturate(darken($gold, 40%), 20%);
+		}
+		.pf-banner {
+			background: $gold;
+			&:after {
+				border: 25px solid $gold;
+				border-bottom-color: transparent;
+			}
+			&.pf-banner-baking {
+				display: block;
+			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $gold;
+				}
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($gold, 40%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $gold;
+				}
+				&:hover, &:focus {
+					background: $gold;
+					svg {
+						stroke: white;
+					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($gold, 40%), 20%)!important;
+				}
+			}
+		}
+	}
+	.pf-header {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $gold;
+					}
+				}
+			}
+		}
+	}
+	.pf-tabs {
+		ul {
+			li {
+				a {
+					&.active {
+						border-bottom: 5px solid $gold;
+					}
+				}
+			}
+		}
+	}
+	.pf-list {
+		h1 {
+			background: $gold;
+		}
+		button.chip {
+			&:hover, &:focus {
+				background: $gold;
+			}
+			&:active, &.activated {
+				background: lighten($gold, 10%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $gold;
+					}
+				}
+			}
+		}
+	}
+	.pf-rating:not(.default) {
+		li {
+			svg {
+				@include svg-stroke(lighten($gold, 20%), 7);
+				polygon:nth-child(2) {
+					fill: lighten($gold, 20%);
+				}
+			}
+		}
+		&[data-rating="1"] {
+			li:nth-child(1) {
+				svg {
+					polygon {
+						fill: lighten($gold, 20%);
+					}
+				}
+			}
+		}
+		&[data-rating="2"] {
+			li:nth-child(1), li:nth-child(2) {
+				svg {
+					polygon {
+						fill: lighten($gold, 20%);
+					}
+				}
+			}
+		}
+		&[data-rating="3"] {
+			li:nth-child(1), li:nth-child(2), li:nth-child(3) {
+				svg {
+					polygon {
+						fill: lighten($gold, 20%);
+					}
+				}
+			}
+		}
+		&[data-rating="4"] {
+			li:nth-child(1), li:nth-child(2), li:nth-child(3), li:nth-child(4) {
+				svg {
+					polygon {
+						fill: lighten($gold, 20%);
+					}
+				}
+			}
+		}
+		&[data-rating="5"] {
+			li {
+				svg {
+					polygon {
+						fill: lighten($gold, 20%);
+					}
+				}
+			}
+		}
+	}
+	.pf-checklist {
+		> li:not(.pf-checklist-full) {
+			.pf-check-enabled {
+				div {
+					button {
+						background: $gold;
+						&:hover, &:focus {
+							background: lighten($gold, 10%);
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%);
+						}
+					}
+				}
+			}
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $gold;
+							&:hover, &:focus {
+								background: lighten($gold, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+							&.button-group-deactivate {
+								background: mix(lighten($slate, 20%), lighten($gold, 15%), 60%);
+								&:hover, &:focus {
+									background: lighten(mix(lighten($slate, 20%), lighten($gold, 15%), 60%), 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+						}
+					}
+				}
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $gold;
+						}
+						&:hover, &:focus {
+							background: $gold;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
+					background: $gold;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $gold, 80%);
+				}
+			}
+			input:checked + div .pf-check svg {
+				stroke: $gold;
+			}
+		}
+		.pf-checklist-add {
+			.pf-check-container > a {
+				background: $gold;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $gold;
+						svg {
+							stroke: $gold;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $gold;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// HOUSEHOLD
+#desktop-guru-home {
+	.pf-type-household {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $cobalt!important;
+						&:hover, &:focus {
+							background: lighten($cobalt, 10%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $cobalt;
+						}
+					}
+					button.bg-campus {
+						background: $cobalt!important;
+						&:hover, &:focus {
+							background: lighten($cobalt, 10%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.pf-edit.pf-type-household {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $cobalt;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
+	button {
+		background: $cobalt;
+		&:hover, &:focus {
+			color: $cobalt;
+		}
+		&:active, &.activated {
+			background: $cobalt!important;
+			color: white!important;
+		}
+	}
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $cobalt;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $cobalt;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $cobalt;
+						span {
+							svg {
+								stroke: $cobalt;
+							}
+							span {
+								color: $cobalt;
+							}
+						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($cobalt, 25%);
+						}
+					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $cobalt, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $cobalt;
+				}
+				&:active {
+					background: lighten($cobalt, 10%);
+				}
+			}
+			&.tag-selected {
+				background: $cobalt;
+				&:hover, &:focus {
+					background: mix($slate, $cobalt, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $cobalt, 40%);
+				&:hover, &:focus {
+					background: $cobalt;
+				}
+			}
+		}
+	}
+}
+.pf-type-household {
+	.custom-dropdown {
+		> div {
+			a {
+				&:hover, &:focus {
+					svg {
+						background: lighten($cobalt, 10%)!important;
+					}
+				}
+				&:active {
+					svg {
+						background: $cobalt!important;
+					}
+				}
+			}
+		}
+		> ul {
+			li {
+				&:hover, &:focus {
+					background: $cobalt!important;
+				}
+				&:active {
+					background: lighten($cobalt, 10%)!important;
+				}
+			}
+		}
+	}
+	&.pf-modal {
+		header.third.pf-item-header {
+			.pf-header-info {
+				.pf-price {
+					background: $cobalt;
+					&:after {
+						border-color: $cobalt;
+					}
+				}
+			}
+		}
+		.pf-shop-item-header {
+			background: $cobalt;
+		}
+	}
+	header.third {
+		.pf-header-color {
+			background: desaturate(darken($cobalt, 30%), 20%);
+		}
+		.pf-banner {
+			background: $cobalt;
+			&:after {
+				border: 25px solid $cobalt;
+				border-bottom-color: transparent;
+			}
+			&.pf-banner-household {
+				display: block;
+			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $cobalt;
+				}
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color: desaturate(darken($cobalt, 30%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $cobalt;
+				}
+				&:hover, &:focus {
+					background: $cobalt;
+					svg {
+						stroke: white;
+					}
+				}
+				&:active, &.active {
+					background: desaturate(darken($cobalt, 30%), 20%)!important;
+				}
+			}
+		}
+	}
+	.pf-header {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $cobalt;
+					}
+				}
+			}
+		}
+	}
+	.pf-tabs {
+		ul {
+			li {
+				a {
+					&.active {
+						border-bottom: 5px solid $cobalt;
+					}
+				}
+			}
+		}
+	}
+	.pf-list {
+		h1 {
+			background: $cobalt;
+		}
+		button.chip {
+			&:hover, &:focus {
+				background: $cobalt;
+			}
+			&:active, &.activated {
+				background: lighten($cobalt, 10%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $cobalt;
+					}
+				}
+			}
+		}
+	}
+	.pf-checklist {
+		> li:not(.pf-checklist-full) {
+			.pf-check-enabled {
+				div {
+					button {
+						background: $cobalt;
+						&:hover, &:focus {
+							background: lighten($cobalt, 10%);
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%);
+						}
+					}
+				}
+			}
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $cobalt;
+							&:hover, &:focus {
+								background: lighten($cobalt, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+							&.button-group-deactivate {
+								background: mix(lighten($slate, 20%), lighten($cobalt, 15%), 60%);
+								&:hover, &:focus {
+									background: lighten(mix(lighten($slate, 20%), lighten($cobalt, 15%), 60%), 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+						}
+					}
+				}
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $cobalt;
+						}
+						&:hover, &:focus {
+							background: $cobalt;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
+					background: $cobalt;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $cobalt, 80%);
+				}
+			}
+			input:checked + div .pf-check svg {
+				stroke: $cobalt;
+			}
+		}
+		.pf-checklist-add {
+			.pf-check-container > a {
+				background: $cobalt;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $cobalt;
+						svg {
+							stroke: $cobalt;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $cobalt;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// DELIVERY
+#desktop-guru-home {
+	.pf-type-delivery {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $auburn!important;
+						&:hover, &:focus {
+							background: lighten($auburn, 10%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $auburn;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.pf-edit.pf-type-delivery {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $auburn;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
+	button {
+		background: $auburn;
+		&:hover, &:focus {
+			color: $auburn;
+		}
+		&:active, &.activated {
+			background: $auburn!important;
+			color: white!important;
+		}
+	}
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $auburn;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $auburn;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $auburn;
+						span {
+							svg {
+								stroke: $auburn;
+							}
+							span {
+								color: $auburn;
+							}
+						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($auburn, 30%);
+						}
+					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $auburn, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $auburn;
+				}
+				&:active {
+					background: lighten($auburn, 10%);
+				}
+			}
+			&.tag-selected {
+				background: $auburn;
+				&:hover, &:focus {
+					background: mix($slate, $auburn, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $auburn, 40%);
+				&:hover, &:focus {
+					background: $auburn;
+				}
+			}
+		}
+	}
+}
+.pf-type-delivery {
+	.custom-dropdown {
+		> div {
+			a {
+				&:hover, &:focus {
+					svg {
+						background: lighten($auburn, 10%)!important;
+					}
+				}
+				&:active {
+					svg {
+						background: $auburn!important;
+					}
+				}
+			}
+		}
+		> ul {
+			li {
+				&:hover, &:focus {
+					background: $auburn!important;
+				}
+				&:active {
+					background: lighten($auburn, 10%)!important;
+				}
+			}
+		}
+	}
+	&.pf-modal {
+		header.third.pf-item-header {
+			.pf-header-info {
+				.pf-price {
+					background: $auburn;
+					&:after {
+						border-color: $auburn;
+					}
+				}
+			}
+		}
+		.pf-shop-item-header {
+			background: $auburn;
+		}
+	}
+	header.third {
+		.pf-header-color {
+			background: desaturate(darken($auburn, 30%), 20%);
+		}
+		.pf-banner {
+			background: $auburn;
+			&:after {
+				border: 25px solid $auburn;
+				border-bottom-color: transparent;
+			}
+			&.pf-banner-delivery {
+				display: block;
+			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $auburn;
+				}
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($auburn, 30%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $auburn;
+				}
+				&:hover, &:focus {
+					background: $auburn;
+					svg {
+						stroke: white;
+					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($auburn, 30%), 20%)!important;
+				}
+			}
+		}
+	}
+	.pf-header {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $auburn;
+					}
+				}
+			}
+		}
+	}
+	.pf-tabs {
+		ul {
+			li {
+				a {
+					&.active {
+						border-bottom: 5px solid $auburn;
+					}
+				}
+			}
+		}
+	}
+	.pf-list {
+		h1 {
+			background: $auburn;
+		}
+		button.chip {
+			&:hover, &:focus {
+				background: $auburn;
+			}
+			&:active, &.activated {
+				background: lighten($auburn, 10%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $auburn;
+					}
+				}
+			}
+		}
+	}
+	.pf-checklist {
+		> li:not(.pf-checklist-full) {
+			.pf-check-enabled {
+				div {
+					button {
+						background: $auburn;
+						&:hover, &:focus {
+							background: lighten($auburn, 10%);
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%);
+						}
+					}
+				}
+			}
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $auburn;
+							&:hover, &:focus {
+								background: lighten($auburn, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+							&.button-group-deactivate {
+								background: mix(lighten($slate, 20%), lighten($auburn, 15%), 60%);
+								&:hover, &:focus {
+									background: lighten(mix(lighten($slate, 20%), lighten($auburn, 15%), 60%), 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+						}
+					}
+				}
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $auburn;
+						}
+						&:hover, &:focus {
+							background: $auburn;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
+					background: $auburn;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $auburn, 80%);
+				}
+			}
+			input:checked + div .pf-check svg {
+				stroke: $auburn;
+			}
+		}
+		.pf-checklist-add {
+			.pf-check-container > a {
+				background: $auburn;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $auburn;
+						svg {
+							stroke: $auburn;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $auburn;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// FREELANCING
+#desktop-guru-home {
+	.pf-type-freelancing {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $orange!important;
+						&:hover, &:focus {
+							background: lighten($orange, 10%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $orange;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.pf-edit.pf-type-freelancing {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $orange;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
+	button {
+		background: $orange;
+		&:hover, &:focus {
+			color: $orange;
+		}
+		&:active, &.activated {
+			background: $orange!important;
+			color: white!important;
+		}
+	}
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $orange;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $orange;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $orange;
+						span {
+							svg {
+								stroke: $orange;
+							}
+							span {
+								color: $orange;
+							}
+						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($orange, 35%);
+						}
+					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $orange, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $orange;
+				}
+				&:active {
+					background: lighten($orange, 10%);
+				}
+			}
+			&.tag-selected {
+				background: $orange;
+				&:hover, &:focus {
+					background: mix($slate, $orange, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $orange, 40%);
+				&:hover, &:focus {
+					background: $orange;
+				}
+			}
+		}
+	}
+}
+.pf-type-freelancing {
+	.custom-dropdown {
+		> div {
+			a {
+				&:hover, &:focus {
+					svg {
+						background: lighten($orange, 10%)!important;
+					}
+				}
+				&:active {
+					svg {
+						background: $orange!important;
+					}
+				}
+			}
+		}
+		> ul {
+			li {
+				&:hover, &:focus {
+					background: $orange!important;
+				}
+				&:active {
+					background: lighten($orange, 10%)!important;
+				}
+			}
+		}
+	}
+	&.pf-modal {
+		header.third.pf-item-header {
+			.pf-header-info {
+				.pf-price {
+					background: $orange;
+					&:after {
+						border-color: $orange;
+					}
+				}
+			}
+		}
+		.pf-shop-item-header {
+			background: $orange;
+		}
+	}
+	header.third {
+		.pf-header-color {
+			background: desaturate(darken($orange, 20%), 20%);
+		}
+		.pf-banner {
+			background: $orange;
+			&:after {
+				border: 25px solid $orange;
+				border-bottom-color: transparent;
+			}
+			&.pf-banner-freelancing {
+				display: block;
+			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $orange;
+				}
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($orange, 20%), 20%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $orange;
+				}
+				&:hover, &:focus {
+					background: $orange;
+					svg {
+						stroke: white;
+					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($orange, 20%), 20%)!important;
+				}
+			}
+		}
+	}
+	.pf-header {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $orange;
+					}
+				}
+			}
+		}
+	}
+	.pf-tabs {
+		ul {
+			li {
+				a {
+					&.active {
+						border-bottom: 5px solid $orange;
+					}
+				}
+			}
+		}
+	}
+	.pf-list {
+		h1 {
+			background: $orange;
+		}
+		button.chip {
+			&:hover, &:focus {
+				background: $orange;
+			}
+			&:active, &.activated {
+				background: lighten($orange, 10%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $orange;
+					}
+				}
+			}
+		}
+	}
+	.pf-checklist {
+		> li:not(.pf-checklist-full) {
+			.pf-check-enabled {
+				div {
+					button {
+						background: $orange;
+						&:hover, &:focus {
+							background: lighten($orange, 10%);
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%);
+						}
+					}
+				}
+			}
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $orange;
+							&:hover, &:focus {
+								background: lighten($orange, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+							&.button-group-deactivate {
+								background: mix(lighten($slate, 20%), lighten($orange, 15%), 60%);
+								&:hover, &:focus {
+									background: lighten(mix(lighten($slate, 20%), lighten($orange, 15%), 60%), 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+						}
+					}
+				}
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $orange;
+						}
+						&:hover, &:focus {
+							background: $orange;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
+					background: $orange;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $orange, 80%);
+				}
+			}
+			input:checked + div .pf-check svg {
+				stroke: $orange;
+			}
+		}
+		.pf-checklist-add {
+			.pf-check-container > a {
+				background: $orange;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $orange;
+						svg {
+							stroke: $orange;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $orange;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// ATHLETIC
+#desktop-guru-home {
+	.pf-type-athletic {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $eggplant!important;
+						&:hover, &:focus {
+							background: lighten($eggplant, 10%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $eggplant;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.pf-edit.pf-type-athletic {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $eggplant;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
+	button {
+		background: $eggplant;
+		&:hover, &:focus {
+			color: $eggplant;
+		}
+		&:active, &.activated {
+			background: $eggplant!important;
+			color: white!important;
+		}
+	}
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $eggplant;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $eggplant;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $eggplant;
+						span {
+							svg {
+								stroke: $eggplant;
+							}
+							span {
+								color: $eggplant;
+							}
+						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($eggplant, 35%);
+						}
+					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $eggplant, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $eggplant;
+				}
+				&:active {
+					background: lighten($eggplant, 10%);
+				}
+			}
+			&.tag-selected {
+				background: $eggplant;
+				&:hover, &:focus {
+					background: mix($slate, $eggplant, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $eggplant, 40%);
+				&:hover, &:focus {
+					background: $eggplant;
+				}
+			}
+		}
+	}
+}
+.pf-type-athletic {
+	.custom-dropdown {
+		> div {
+			a {
+				&:hover, &:focus {
+					svg {
+						background: lighten($eggplant, 10%)!important;
+					}
+				}
+				&:active {
+					svg {
+						background: $eggplant!important;
+					}
+				}
+			}
+		}
+		> ul {
+			li {
+				&:hover, &:focus {
+					background: $eggplant!important;
+				}
+				&:active {
+					background: lighten($eggplant, 10%)!important;
+				}
+			}
+		}
+	}
+	&.pf-modal {
+		header.third.pf-item-header {
+			.pf-header-info {
+				.pf-price {
+					background: $eggplant;
+					&:after {
+						border-color: $eggplant;
+					}
+				}
+			}
+		}
+		.pf-shop-item-header {
+			background: $eggplant;
+		}
+	}
+	header.third {
+		.pf-header-color {
+			background: desaturate(darken($eggplant, 20%), 10%);
+		}
+		.pf-banner {
+			background: $eggplant;
+			&:after {
+				border: 25px solid $eggplant;
+				border-bottom-color: transparent;
+			}
+			&.pf-banner-athletic {
+				display: block;
+			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $eggplant;
+				}
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($eggplant, 20%), 10%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $eggplant;
+				}
+				&:hover, &:focus {
+					background: $eggplant;
+					svg {
+						stroke: white;
+					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($eggplant, 20%), 10%)!important;
+				}
+			}
+		}
+	}
+	.pf-header {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $eggplant;
+					}
+				}
+			}
+		}
+	}
+	.pf-tabs {
+		ul {
+			li {
+				a {
+					&.active {
+						border-bottom: 5px solid $eggplant;
+					}
+				}
+			}
+		}
+	}
+	.pf-list {
+		h1 {
+			background: $eggplant;
+		}
+		button.chip {
+			&:hover, &:focus {
+				background: $eggplant;
+			}
+			&:active, &.activated {
+				background: lighten($eggplant, 10%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $eggplant;
+					}
+				}
+			}
+		}
+	}
+	.pf-checklist {
+		> li:not(.pf-checklist-full) {
+			.pf-check-enabled {
+				div {
+					button {
+						background: $eggplant;
+						&:hover, &:focus {
+							background: lighten($eggplant, 10%);
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%);
+						}
+					}
+				}
+			}
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $eggplant;
+							&:hover, &:focus {
+								background: lighten($eggplant, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+							&.button-group-deactivate {
+								background: mix(lighten($slate, 20%), lighten($eggplant, 15%), 60%);
+								&:hover, &:focus {
+									background: lighten(mix(lighten($slate, 20%), lighten($eggplant, 15%), 60%), 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+						}
+					}
+				}
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $eggplant;
+						}
+						&:hover, &:focus {
+							background: $eggplant;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
+					background: $eggplant;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $eggplant, 80%);
+				}
+			}
+			input:checked + div .pf-check svg {
+				stroke: $eggplant;
+			}
+		}
+		.pf-checklist-add {
+			.pf-check-container > a {
+				background: $eggplant;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $eggplant;
+						svg {
+							stroke: $eggplant;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $eggplant;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// TECH & IT
+#desktop-guru-home {
+	.pf-type-tech {
+		.pf-tab-container {
+			.pf-shop-desc {
+				#desktop-languages, #experience-modal {
+					button.save-button, button.bg-campus {
+						background: $azure!important;
+						&:hover, &:focus {
+							background: lighten($azure, 10%)!important;
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%)!important;
+						}
+					}
+				}
+				#experience-modal {
+					.main {
+						.input-outline:focus {
+							border-color: $azure;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.pf-edit.pf-type-tech {
+	.pf-course-list {
+		li {
+			a {
+				&:hover, &:focus {
+					background: $azure;
+				}
+				&:active {
+					background: lighten($slate, 10%);
+				}
+			}
+		}
+	}
+	button {
+		background: $azure;
+		&:hover, &:focus {
+			color: $azure;
+		}
+		&:active, &.activated {
+			background: $azure!important;
+			color: white!important;
+		}
+	}
+	.pf-course-check {
+		div {
+			input:checked + span {
+				background: $azure;
+			}
+		}
+	}
+	.input-outline {
+		&:focus {
+			border-color: $azure;
+		}
+	}
+	.pf-photo-list {
+		ul {
+			li {
+				div.pf-upload-add {
+					a {
+						border-color: $azure;
+						span {
+							svg {
+								stroke: $azure;
+							}
+							span {
+								color: $azure;
+							}
+						}
+						&:hover, &:focus {
+							background: white;
+						}
+						&:active, &.active {
+							background: lighten($azure, 35%);
+						}
+					}
+				}
+			}
+		}
+	}
+	.pf-tag-edit {
+		.chip {
+			background: mix($slate, $azure, 80%);
+			&.tag-auto {
+				&:hover, &:focus {
+					background: $azure;
+				}
+				&:active {
+					background: lighten($azure, 10%);
+				}
+			}
+			&.tag-selected {
+				background: $azure;
+				&:hover, &:focus {
+					background: mix($slate, $azure, 80%);
+				}
+				&:active {
+					background: $slate;
+				}
+			}
+			&.tag-add {
+				background: mix($slate, $azure, 40%);
+				&:hover, &:focus {
+					background: $azure;
+				}
+			}
+		}
+	}
+}
+.pf-type-tech {
+	.custom-dropdown {
+		> div {
+			a {
+				&:hover, &:focus {
+					svg {
+						background: lighten($azure, 10%)!important;
+					}
+				}
+				&:active {
+					svg {
+						background: $azure!important;
+					}
+				}
+			}
+		}
+		> ul {
+			li {
+				&:hover, &:focus {
+					background: $azure!important;
+				}
+				&:active {
+					background: lighten($azure, 10%)!important;
+				}
+			}
+		}
+	}
+	&.pf-modal {
+		header.third.pf-item-header {
+			.pf-header-info {
+				.pf-price {
+					background: $azure;
+					&:after {
+						border-color: $azure;
+					}
+				}
+			}
+		}
+		.pf-shop-item-header {
+			background: $azure;
+		}
+	}
+	header.third {
+		.pf-header-color {
+			background: desaturate(darken($azure, 20%), 10%);
+		}
+		.pf-banner {
+			background: $azure;
+			&:after {
+				border: 25px solid $azure;
+				border-bottom-color: transparent;
+			}
+			&.pf-banner-tech {
+				display: block;
+			}
+			&.pf-banner-edit {
+				svg path {
+					stroke: $azure;
+				}
+			}
+		}
+	}
+	.pf-url {
+		li {
+			&:first-child input {
+				color:  desaturate(darken($azure, 20%), 10%)!important;
+			}
+			&:last-child a {
+				svg {
+					stroke: $azure;
+				}
+				&:hover, &:focus {
+					background: $azure;
+					svg {
+						stroke: white;
+					}
+				}
+				&:active, &.active {
+					background:  desaturate(darken($azure, 20%), 10%)!important;
+				}
+			}
+		}
+	}
+	.pf-header {
+		.verified {
+			span {
+				svg {
+					path:first-child {
+						fill: $azure;
+					}
+				}
+			}
+		}
+	}
+	.pf-tabs {
+		ul {
+			li {
+				a {
+					&.active {
+						border-bottom: 5px solid $azure;
+					}
+				}
+			}
+		}
+	}
+	.pf-list {
+		h1 {
+			background: $azure;
+		}
+		button.chip {
+			&:hover, &:focus {
+				background: $azure;
+			}
+			&:active, &.activated {
+				background: lighten($azure, 10%);
+			}
+		}
+		.pf-list-x {
+			li {
+				div {
+					input:checked + span {
+						background: $azure;
+					}
+				}
+			}
+		}
+	}
+	.pf-checklist {
+		> li:not(.pf-checklist-full) {
+			.pf-check-enabled {
+				div {
+					button {
+						background: $azure;
+						&:hover, &:focus {
+							background: lighten($azure, 10%);
+						}
+						&:active, &.activated {
+							background: lighten($slate, 20%);
+						}
+					}
+				}
+			}
+			.pf-check-container {
+				.guru-popup {
+					.button-group {
+						button {
+							background: $azure;
+							&:hover, &:focus {
+								background: lighten($azure, 10%);
+							}
+							&:active {
+								background: lighten($slate, 20%);
+							}
+							&.button-group-deactivate {
+								background: mix(lighten($slate, 20%), lighten($azure, 15%), 60%);
+								&:hover, &:focus {
+									background: lighten(mix(lighten($slate, 20%), lighten($azure, 15%), 60%), 10%);
+								}
+								&:active {
+									background: lighten($slate, 20%);
+								}
+							}
+						}
+					}
+				}
+				.pf-check {
+					&.pf-remove {
+						svg {
+							stroke: $azure;
+						}
+						&:hover, &:focus {
+							background: $azure;
+							svg {
+								stroke: white;
+							}
+						}
+					}
+				}
+				.pf-check-label {
+					background: $azure;
+				}
+				.pf-checklist-item-bg {
+					background-color: mix($slate, $azure, 80%);
+				}
+			}
+			input:checked + div .pf-check svg {
+				stroke: $azure;
+			}
+		}
+		.pf-checklist-add {
+			.pf-check-container > a {
+				background: $azure;
+				&:hover, &:focus {
+					background: white;
+					span {
+						color: $azure;
+						svg {
+							stroke: $azure;
+						}
+					}
+				}
+				&:active, &.active {
+					background: $azure;
+					span {
+						color: white;
+						svg {
+							stroke: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}

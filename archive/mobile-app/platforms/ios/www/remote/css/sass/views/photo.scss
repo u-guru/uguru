@@ -1,0 +1,31 @@
+.photo-view {
+    background: #2B3234;
+    .onboarding-prop {
+        top:45% !important;
+    }
+
+    img.user-photo-img {
+        width: 200px;
+        max-height:100%;
+        height:auto;
+        border-radius: 100%;
+    }
+
+    li.sample-photo {
+        display:inline;
+        img {
+            width: 23%;
+            margin-left: 0.5%;
+        }
+    }
+    #photo-list {
+        position:absolute;
+        bottom:2.5%;
+        p {
+            font-size: 14px;
+            text-align: center;
+            font-weight: 400;
+            opacity: 0.5;
+        }
+    }
+}

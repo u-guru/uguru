@@ -1,0 +1,253 @@
+@mixin flex {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+@mixin flex-wrap {
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+@mixin center-xy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.guru-view, .credibility-view, .guru-profile-view {
+    header {
+        position:relative;
+    }
+    height:100%;
+    button.bg-shamrock.button.guru-home-footer-button {
+        height:49px;
+        line-height:49px;
+        border-color:#69B3A5;
+        font-weight:700;
+        text-transform: uppercase;
+    }
+    button.bg-shamrock.button.guru-home-footer-button.active,
+    button.bg-shamrock.button.guru-home-footer-button.activated,
+    button.bg-shamrock.button.guru-home-footer-button:hover,
+    button.bg-shamrock.button.guru-home-footer-button:visited,
+    button.bg-shamrock.button.guru-home-footer-button:focus, {
+        text-decoration: none;
+        height:49px;
+        line-height:49px;
+        border-color:#69B3A5 !important;
+        background-color: #69B3A5 !important;
+        color:white !important;
+        font-weight:700;
+        text-transform: uppercase;
+        opacity:0.7;
+    }
+    #guru-home {
+        height: calc(100% - 49px);
+        width:100%;
+        header:before {
+            background: url(../../../img/onboarding/school.jpg) no-repeat center center/cover !important;
+        }
+        header {
+            height: calc(100% / 5 * 3);
+            .bottom-header {
+                position:absolute;
+                bottom:7%;
+                text-align:center;
+                text-transform:uppercase;
+                width:100%;
+                font-weight:600;
+                font-size:70%;
+                color:white;
+            }
+
+
+
+            position: relative;
+            box-sizing: border-box;
+            .header-nav {
+                position:relative;
+                background:transparent;
+                h1 {
+                    font-weight:700;
+                }
+                .header-nav-next {
+                    position: absolute;
+                    top: 12px;
+                    opacity:0.7;
+                    right: 15px;
+                    font-size: 110%;
+                }
+            }
+            .header-ranking {
+                position:relative;
+                height:calc(100% - 50px);
+                h1 {
+                    text-transform: capitalize;
+                    font-weight:400;
+                    font-size:26px;
+                    margin:15px 5px 15px 5px;
+                }
+                .guru-ranking-container {
+                    padding:5px 5px 15px 5px;
+                    position:relative;
+                    p.progressbar-text {
+                        font-weight:700 !important;
+                        font-size:40px !important;
+                        position: absolute;
+                        top: 50%;
+                        left: calc(50% + 10px) !important;
+                        width:100% !important;
+                        padding: 0px;
+                        margin: 0px;
+                        transform: translate(-50%, -50%);
+                        color: rgb(255, 255, 255);
+                    }
+                }
+                .progress-bar-container {
+                    padding:7px 10px;
+                    svg {
+                        width: 75%;
+                        left: 20%;
+                        border-radius: 15px;
+                    }
+                    p.progressbar-text {
+                        display:none !important;
+                    }
+                    h4 {
+                        color:white;
+                        font-size:22px !important;
+                        text-align: left !important;
+                        padding-left: 20%;
+                        span.uppercase-text {
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+            .onboarding-prop {
+                @include center-xy;
+                position:absolute;
+                top:10% !important;
+                h2 {
+                    font-weight:700 !important;
+                    text-transform:uppercase !important;
+                }
+            }
+            .header-nav-center {
+                width:100%;
+                h1 {
+                    text-align: center;
+                }
+            }
+            #profile-ranking {
+                position: relative;
+                top: 25%;
+                align-self: center;
+                width:100%;
+                h1.guru-ranking-header {
+                    padding: 10px;
+                    font-size: 14px;
+                    font-weight: 400;
+                    letter-spacing: 2px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    color: white;
+                }
+                #profile-ranking-chart {
+                    position: relative;
+                    box-sizing: content-box;
+                    padding: 15px 0;
+                    min-height: 200px;
+                    // margin-top:12%;
+                    height:auto;
+                    overflow: hidden;
+                    text-align: center;
+                    svg {
+                        left:25%;
+                        top:50%;
+                    }
+                    #percentile {
+                        @include center-xy;
+                        #percentile-ranking {
+                            position: relative;
+                            font-size: 48px;
+                            font-weight: 600;
+                            line-height: 1;
+                            &:after {
+                                content: "th";
+                                display: block;
+                                position: absolute;
+                                top: 0;
+                                right: -5px;
+                                font-size: 14px;
+                                font-weight: 400;
+                                line-height: 28px;
+                                text-transform: uppercase;
+                            }
+                        }
+                        #percentile-label {
+                            font-size: 12px;
+                            font-weight: 400;
+                            letter-spacing: 1px;
+                            line-height: 15px;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+        }
+        #guru-home-content {
+            height: calc(100% / 5 * 2);
+            .pure-g.stats-container {
+                height:33%;
+                padding:0.5em 0em;
+            }
+            .tip-container {
+                height:100%;
+                background: rgba(255, 255, 255, 0.1);
+
+                .slider-pager {
+                    display:block;
+                }
+                .pure-u-1 {
+                    padding:1em;
+                    h2 {
+                        font-weight:600;
+                        font-size:1.3em;
+                    }
+                    p {
+                        letter-spacing: 0px;
+                        margin: 15px;
+                        line-height: 20px;
+                        font-size: 14px;
+                        font-weight: 400;
+                    }
+                }
+            }
+
+        }
+
+    }
+    .guru-tabs {
+        z-index:0;
+        a.tab-item i{
+            color:white !important;
+            font-size:24px !important;
+            opacity:0.5 !important;
+        }
+        a.tab-item.active i{
+            color:#6F98B5 !important;
+            opacity:1 !important;
+        }
+    }
+
+}
