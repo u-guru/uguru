@@ -38,9 +38,10 @@
             </ul>
 
             <div class='flex-vertical-center absolute z-index-99 top-0 right-0' style="width: 85%; height: calc(100% - 128px);" ng-controller="AdminPropertyController">
-                <div id='player-stage' class='flex-wrap-center full-xy relative fix-abs overflow-hidden perspective-container'>
-                    <div ng-repeat="example in property.examples" ng-if='property.activeIndex === $index' style='width:200px; height:200px; opacity:1; transform-origin:center center;'
-						inspector-elem class='bg-auburn radius-2 opacity-100p flex-wrap-center weight-900'
+                <div id='player-stage' class='flex-wrap-center stage-elem-container full-xy relative fix-abs overflow-hidden perspective-container'>
+                    <div ng-repeat="example in property.examples" ng-if='property.activeIndex === $index' style='opacity:1; transform-origin:center center;'
+						inspector-elem class='opacity-100p flex-wrap-center'
+						ng-include="root.base_url + 'shared/templates/components/demo/card.tpl'"
 						on-init="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]:delay-250"></div>
                 </div>
             </div>

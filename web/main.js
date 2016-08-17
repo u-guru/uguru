@@ -70,13 +70,13 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     templateUrl: 'admin/templates/api/property.html',
     controller: ['$scope', '$timeout', 'TweenService', '$compile', function($scope, $timeout, TweenService, $compile) {
       $scope.refreshStageElem = function($index, easing) {
-        var elemContainer = document.querySelector('.stage-elem-container');
+        var elemContainer = document.querySelector('.stage-elem-container > div');
 
         if (easing) {
           $scope.property.examples[$scope.property.activeIndex].ease = easing;
         }
-        var siblings = elemContainer.parentNode.childNodes;
-        var elem = elemContainer.parentNode.childNodes[siblings.length - 1];
+        // var siblings = elemContainer.parentNode.childNodes;
+        // var elem = elemContainer.parentNode.childNodes[siblings.length - 1];
         var animStyle = window.getComputedStyle(elem)['webkitAnimation']
         elem.style['webkitAnimation'] = elem.style['webkitAnimation'].replace('running', 'paused');
         elem.style['webkitAnimation'] = '';
