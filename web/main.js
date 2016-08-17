@@ -70,20 +70,34 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     templateUrl: 'admin/templates/api/property.html',
     controller: ['$scope', '$timeout', 'TweenService', '$compile', function($scope, $timeout, TweenService, $compile) {
       $scope.refreshStageElem = function($index, easing) {
-        var elemContainer = document.querySelector('.stage-elem-container > div');
+        var elemContainer = document.querySelector('#player-stage');
 
-		if (easing) {
-          $scope.property.examples[$scope.property.activeIndex].ease = easing;
-        }
-        // var siblings = elemContainer.parentNode.childNodes;
-        // var elem = elemContainer.parentNode.childNodes[siblings.length - 1];
-        var animStyle = window.getComputedStyle(elem)['webkitAnimation']
-        elem.style['webkitAnimation'] = elem.style['webkitAnimation'].replace('running', 'paused');
-        elem.style['webkitAnimation'] = '';
-        elem.style['offsetWidth'] = null;
-        $timeout(function() {
-          elem.style['webkitAnimation'] = animStyle.replace('paused', 'running');
-        })
+          var exampleDict = $scope.property.examples[$scope.property.activeIndex];
+          console.log(exampleDict);
+          $scope.property.examples[$scope.property.activeIndex].ease = easing;
+
+          var fromDict = {};
+          fromDict[exampleDict.property] = exampleDict.start;
+          var endDict = {};
+          endDict[exampleDict.property] = exampleDict.end;
+
+          var tweenable = new Tweenable();
+          var elem = elemContainer.childNodes[elemContainer.childNodes.length - 1];
+          var elemStyle = elem.getAttribute('style');
+          tweenable.tween({
+            from: fromDict,
+            to: endDict,
+            duration: parseFloat(exampleDict.duration.replace('ms', '')),
+            easing: exampleDict.ease,
+            step: function(property, e2, e3) {
+
+              // var elemProperty = exampleDict.property;
+              // elemStyle = elemStyle.split(elemProperty)[0] + property[elemProperty];
+              elem.setAttribute('style',  'width:200px; height:200px; opacity:1;transform:' + property[exampleDict.property] + '');
+              // elem.style['webkitTransform'] = property[exampleDict.property];
+              // console.log(exampleDict.property, property[exampleDict.property],)
+            }
+          })
       }
       // $scope.property = {examples: responseDict.examples, activeIndex: responseDict.exampleIndex, easings: TweenService.getAllEasing()};
       $timeout(function() {
