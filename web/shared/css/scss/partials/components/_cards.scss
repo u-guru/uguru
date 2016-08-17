@@ -49,7 +49,7 @@
 		* {
 			transition: all 500ms ease-out;
 		}
-		.team-border, .team-ribbon, .team-link {
+		.team-border, .team-ribbon, .team-link, .team-info, .team-icon {
 			transform-style: preserve-3d;
 		}
 	}
@@ -58,15 +58,55 @@
 			a {
 				&:hover, &:focus {
 					~ .team-card {
+						transition: all 500ms ease-out!important;
+						* {
+							transition: all 500ms ease-out!important;
+						}
 						.team-border {
-							transform: translateZ(20px);
+							transform: translateZ(15px)!important;
 						}
 						.team-link {
-							transform: translateZ(30px);
+							transform: translateZ(25px)!important;
+							.team-icon, .team-name {
+								transform: translateZ(10px)!important;
+								[class*="mid"] {
+									transform: translateZ(5px)!important;
+								}
+								[class*="front"] {
+									transform: translateZ(10px)!important;
+								}
+								.eyes {
+									opacity: 0;
+								}
+								.circle-eyes {
+									opacity: 1;
+								}
+							}
 						}
-						.team-ribbon {
-							.team-ribbon-center {
-								transform: translateZ(-10px);
+						.team-ribbon-center {
+							transform: translateZ(-10px)!important;
+						}
+						.team-ribbon-info {
+							h2 {
+								transform: translateZ(10px)!important;
+							}
+						}
+					}
+				}
+				&:active {
+					~ .team-card {
+						transform: all 150ms ease-out!important;
+						* {
+							transform: all 150ms ease-out!important;
+						}
+						.team-link {
+							.team-icon, .team-name {
+								transform: translateZ(0px)!important;
+							}
+						}
+						.team-ribbon-info {
+							h2 {
+								transform: translateZ(0px)!important;
 							}
 						}
 					}
@@ -76,6 +116,9 @@
 						~ .team-card {
 							transform-origin: bottom right!important;
 							transform: rotateX(5deg) rotateY(-5deg)!important;
+							.circle-eyes {
+								transform: translate(-4px, -4px);
+							}
 						}
 					}
 				}
@@ -84,6 +127,9 @@
 						~ .team-card {
 							transform-origin: bottom left!important;
 							transform: rotateX(5deg) rotateY(5deg)!important;
+							.circle-eyes {
+								transform: translate(2px, -2px);
+							}
 						}
 					}
 				}
@@ -92,6 +138,15 @@
 						~ .team-card {
 							transform-origin: top left!important;
 							transform: rotateX(-5deg) rotateY(5deg)!important;
+							.team-ribbon-center {
+								transform: translateZ(-10px) translateY(5px)!important;
+							}
+							.team-ribbon-left-corner, .team-ribbon-right-corner {
+								transform: translateY(4px)!important;
+							}
+							.circle-eyes {
+								transform: translate(2px, 2px);
+							}
 						}
 					}
 				}
@@ -100,6 +155,49 @@
 						~ .team-card {
 							transform-origin: top right!important;
 							transform: rotateX(-5deg) rotateY(-5deg)!important;
+							.team-ribbon-center {
+								transform: translateZ(-10px) translateY(5px)!important;
+							}
+							.team-ribbon-left-corner, .team-ribbon-right-corner {
+								transform: translateY(4px)!important;
+							}
+							.circle-eyes {
+								transform: translate(-4px, 4px);
+							}
+						}
+					}
+				}
+				&:nth-child(5) {
+					&:hover, &:focus {
+						~ .team-card {
+							transform-origin: top right!important;
+							transform: rotateX(-5deg) rotateY(-8deg)!important;
+							.team-ribbon-center {
+								transform: translateZ(-10px) translateY(5px)!important;
+							}
+							.team-ribbon-left-corner, .team-ribbon-right-corner {
+								transform: translateY(4px)!important;
+							}
+							.circle-eyes {
+								transform: translate(-6px, 4px);
+							}
+						}
+					}
+				}
+				&:nth-child(6) {
+					&:hover, &:focus {
+						~ .team-card {
+							transform-origin: top left!important;
+							transform: rotateX(-5deg) rotateY(8deg)!important;
+							.team-ribbon-center {
+								transform: translateZ(-10px) translateY(5px)!important;
+							}
+							.team-ribbon-left-corner, .team-ribbon-right-corner {
+								transform: translateY(4px)!important;
+							}
+							.circle-eyes {
+								transform: translate(4px, 2px);
+							}
 						}
 					}
 				}
@@ -166,7 +264,6 @@
 		background-size: cover;
 	}
 	.team-link {
-		display: block;
 		position: absolute;
 		top: 218px;
 		left: -15px;
@@ -177,12 +274,25 @@
 		border-radius: 2px;
 		text-align: center;
 		.team-icon {
+			position: relative;
 			width: 64px;
 			height: 64px;
+			// width: 128px;
+			// height: 128px;
 			border-radius: 100%;
 			border: 2px solid $shamrock;
 			background: $slate;
 			margin: -32px auto 0;
+			svg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				.circle-eyes {
+					opacity: 0;
+				}
+			}
 		}
 		.team-name {
 			margin-top: 5px;
@@ -199,6 +309,7 @@
 		width: calc(100% + 50px);
 		height: 76px;
 		.team-ribbon-center {
+			position: relative;
 			width: 100%;
 			height: 100%;
 			background: mix($shamrock, $slate, 85%);
@@ -213,11 +324,11 @@
 			height: 0;
 		}
 		.team-ribbon-left {
-			left: -30px;
+			left: -28px;
 			border-left-color: transparent!important;
 		}
 		.team-ribbon-right {
-			right: -30px;
+			right: -28px;
 			border-right-color: transparent!important;
 		}
 		.team-ribbon-left-corner, .team-ribbon-right-corner {
@@ -254,6 +365,11 @@
 }
 
 .team-gabrie {
+	.team-border {
+		div {
+			background: mix($gabrielle, $slate);
+		}
+	}
 	.team-link {
 		background: $gabrielle;
 		.team-icon {
@@ -278,6 +394,11 @@
 }
 
 .team-jeselle {
+	.team-border {
+		div {
+			background: mix($jeselle, $slate);
+		}
+	}
 	.team-link {
 		background: $jeselle;
 		.team-icon {
@@ -302,6 +423,11 @@
 }
 
 .team-jason {
+	.team-border {
+		div {
+			background: mix($jason, $slate);
+		}
+	}
 	.team-link {
 		background: $jason;
 		.team-icon {
@@ -326,6 +452,11 @@
 }
 
 .team-samir {
+	.team-border {
+		div {
+			background: mix($samir, $slate);
+		}
+	}
 	.team-link {
 		background: $samir;
 		.team-icon {
