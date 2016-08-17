@@ -31,7 +31,7 @@
 			<div class="team-card-container team-gabrie"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-99%#90%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tr:rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px)]"
+				when-house-build="p:[tr:rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px), t:transform 1000ms cubic-bezier(0.19#1#0.22#1)]"
 				when-house-return="p:[tr:none:delay-500]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -101,7 +101,7 @@
 			<div class="team-card-container team-jeselle"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-198%#88%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tr:rotateY(-90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px)]:delay-100"
+				when-house-build="p:[tr:rotateY(-90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px), t:transform 1000ms cubic-bezier(0.19#1#0.22#1)]:delay-100"
 				when-house-return="p:[tr:none:delay-700]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -177,7 +177,7 @@
 			<div class="team-card-container team-jason"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-100%#-13%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tr:rotateY(90deg) translateX(30px) translateY(-5px)]:delay-200"
+				when-house-build="p:[tr:rotateY(90deg) translateX(30px) translateY(-5px), t:transform 1000ms cubic-bezier(0.19#1#0.22#1)]:delay-200"
 				when-house-return="p:[tr:none:delay-600]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -240,7 +240,7 @@
 			<div class="team-card-container team-samir"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-200%#-12%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tr:rotateY(-90deg) translateX(-30px) translateY(-5px)]:delay-300"
+				when-house-build="p:[tr:rotateY(-90deg) translateX(-30px) translateY(-5px), t:transform 1000ms cubic-bezier(0.19#1#0.22#1)]:delay-300"
 				when-house-return="p:[tr:none:delay-900]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -298,9 +298,9 @@
 
 		<li style="position:absolute;">
 			<div class="team-card-container"
-				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
-				when-house-stack="p:[tr:translate3d(-150%#37%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tro:center top, tr:rotateX(90deg) rotateZ(90deg) translateX(30px) translateY(-180px) translateZ(-179px)]:delay-400"
+				init-with="p:[t:all 250ms ease-out, tro:center top]"
+				when-house-stack="p:[tr:translate3d(-50%#135%#0px) rotateX(90deg) rotateZ(90deg)]"
+				when-house-build="p:[tro:center top,tr:translate3d(178px#179px#20px) rotateX(90deg) rotateZ(90deg),t:transform 750ms cubic-bezier(0.19#1#0.22#1)]:delay-400"
 				when-house-return="p:[tr:none:delay-800]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
