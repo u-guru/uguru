@@ -2,7 +2,7 @@
 	<div class="flex-center full-x overflow-hidden" style="height:100px">
 		<div class="relative" style="width:500px; height:200px;">
 			<svg class="absolute top-0 left-0 full-xy" viewBox="0 0 500 200">
-			    <g class="header-split" fill="#000000" stroke="none" stroke-width="1" fill-rule="evenodd">
+			    <g class="header-split" fill="#FFFFFF" stroke="none" stroke-width="1" fill-rule="evenodd">
 			        <polygon class="Path" points="47.9694266 133.996932 56.1181514 130.621923 49.8732372 115.54401 62.3457752 110.378181 68.5906894 125.456093 76.7948477 122.058125 61.8254211 85.9154819 53.6212628 89.3134499 59.3840328 103.227259 46.9114949 108.393089 41.1487248 94.4792796 33 97.8542884"></polygon>
 			        <path d="M99.8765909,117.474692 C107.059668,115.317518 112.086112,107.856522 109.238643,98.3748595 C106.391173,88.8931973 98.0858255,85.4359157 90.9027481,87.5930894 C83.6622061,89.7675206 78.6357622,97.2285167 81.4832316,106.710179 C84.3307009,116.191841 92.6360488,119.649123 99.8765909,117.474692 L99.8765909,117.474692 L99.8765909,117.474692 Z M97.8229615,110.636402 C94.3176197,111.689103 91.6445247,109.04627 90.1603891,104.104313 C88.6762536,99.1623557 89.4510357,95.4840799 92.9563775,94.4313791 C96.4042547,93.3959357 99.1348143,96.0215107 100.61895,100.963468 C102.103085,105.905425 101.270839,109.600958 97.8229615,110.636402 L97.8229615,110.636402 L97.8229615,110.636402 Z" class="o"></path>
 			        <path d="M130.537511,110.619372 C134.520534,109.735104 136.81181,107.321132 138.621715,103.846274 L138.797436,103.807262 L140.339021,107.705815 L147.367885,106.145342 L140.91793,77.0927058 L132.307572,79.0042852 L136.572864,98.2165125 C135.381376,100.878007 134.300814,102.101276 132.133581,102.582422 C129.614905,103.141591 128.202911,102.041467 127.279631,97.882723 L123.521492,80.9548764 L114.911134,82.8664558 L118.916348,100.907206 C120.528837,108.170365 124.211534,112.023797 130.537511,110.619372 L130.537511,110.619372 Z" class="u"></path>
@@ -21,8 +21,10 @@
 	</div>
 
 	<ul class="card-house p15-grid flex-wrap-center"
-		init-with="p:[tro:center center, tr:rotateX(5deg) rotateY(-5deg)]">
-		<li init-with="p:[tr:translate3d(-100%#90%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center]">
+		init-with="p:[tro:center center, tr:rotateX(5deg) rotateY(-5deg)]"
+		on-click="s:[return-init:public]">
+		<li init-with="p:[tr:translate3d(-100%#90%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
+			when-return-init="p:[tr:none:delay-500]">
 			<div class="team-card-container team-gabrie">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -44,8 +46,8 @@
 								</svg>
 								<svg class="gabrie-mid" viewBox="0 0 200 200">
 								    <g class="gabrie-guru" fill="none" fill-rule="evenodd">
-								        <path d="M147.648434,64.825194 C145.791933,47.1617124 135.753836,25.5046051 106.176757,28.6132814 C76.5996777,31.7219576 76.6914661,34.1469119 66.658203,54.2695304 C56.6249399,74.3921488 149.504936,82.4886756 147.648434,64.825194 L147.648434,64.825194 Z" class="hat-top" stroke="#595241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#000000"></path>
-								        <path d="M114.481022,120.819805 C154.125216,112.46137 171.84266,102.811847 169.294852,78.5710752 C166.747044,54.3303036 134.462548,37.85543 97.1854107,41.7734149 C59.9082736,45.6913999 31.7545896,68.5185824 34.3023973,92.759354 C36.8502051,117.000126 74.8368287,129.178241 114.481022,120.819805 L114.481022,120.819805 Z" class="hat-brim" stroke="#595241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#000000"></path>
+								        <path d="M147.648434,64.825194 C145.791933,47.1617124 135.753836,25.5046051 106.176757,28.6132814 C76.5996777,31.7219576 76.6914661,34.1469119 66.658203,54.2695304 C56.6249399,74.3921488 149.504936,82.4886756 147.648434,64.825194 L147.648434,64.825194 Z" class="hat-top" stroke="#595241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF"></path>
+								        <path d="M114.481022,120.819805 C154.125216,112.46137 171.84266,102.811847 169.294852,78.5710752 C166.747044,54.3303036 134.462548,37.85543 97.1854107,41.7734149 C59.9082736,45.6913999 31.7545896,68.5185824 34.3023973,92.759354 C36.8502051,117.000126 74.8368287,129.178241 114.481022,120.819805 L114.481022,120.819805 Z" class="hat-brim" stroke="#595241" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF"></path>
 								        <!-- hair-back -->
 								        <path d="M55,118 C53,122 53.9750979,128.312012 57.970215,130.79248 C61.9653322,133.272949 65.0000002,130 65,130 C68.9716799,137.0625 76.4101584,156.488446 109.506026,154.99722 C135.625974,153.820313 147.641113,135.905274 147,120 C147,120 151.995605,122.307617 154.519043,118.708496 C157.04248,115.109375 158,111 156,107 C154,103.000001 151,102 147,104 C150,91.0000006 137.818845,80.7192383 132,78 C126.181155,75.2807617 108,74 97,74 C86,74 57,80 61,114 C61,114 57,114 55,118 Z" class="face" stroke="#40484B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#F9ECE5"></path>
 								        <path d="M137.280367,94.3366242 C134.710366,87.9936625 131.027616,88.9269837 127.918155,89.3087775 C123.786597,89.816069 119.033339,91.8150193 116.852944,93.1685907 C114.672549,94.5221621 112.183954,95.4702402 111.399514,93.8381873 C110.547491,92.0655283 114.94629,89.3693847 118.007324,88.2416993 C121.068358,87.1140139 123.863161,86.4106304 127.507235,85.9621067 C134.627818,85.085684 136.387906,89.1415274 137.280367,94.3366242 L137.280367,94.3366242 Z M69.1180322,102.195227 C70.1953083,95.4367102 73.9936217,95.5176718 77.1092723,95.1902037 C81.2490545,94.7550951 86.3301522,95.6335621 88.7591512,96.4619594 C91.1881502,97.2903567 93.8262338,97.6543235 94.2234371,95.8876394 C94.6548606,93.9687502 89.7623028,92.3312229 86.5260489,91.9210228 C83.2897951,91.5108227 80.4083958,91.4541608 76.7568228,91.8368712 C69.6215876,92.5846937 68.8189769,96.9325198 69.1180322,102.195227 L69.1180322,102.195227 Z" class="eyebrows" stroke="#40484B" stroke-linecap="round" stroke-linejoin="round" fill="#40484B"></path>
@@ -88,7 +90,8 @@
 			</div>
 		</li>
 
-		<li init-with="p:[tr:translate3d(-198%#89%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center]">
+		<li init-with="p:[tr:translate3d(-198%#89%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
+			when-return-init="p:[tr:none:delay-700]">
 			<div class="team-card-container team-jeselle">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -160,7 +163,8 @@
 			</div>
 		</li>
 
-		<li>
+		<li init-with="p:[tr:translate3d(-100%#-11%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
+			when-return-init="p:[tr:none:delay-600]">
 			<div class="team-card-container team-jason">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -219,7 +223,8 @@
 			</div>
 		</li>
 
-		<li>
+		<li init-with="p:[tr:translate3d(-200%#-12%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
+			when-return-init="p:[tr:none:delay-900]">
 			<div class="team-card-container team-samir">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -275,7 +280,8 @@
 			</div>
 		</li>
 
-		<li style="position:absolute;">
+		<li init-with="p:[tr:translate3d(-150%#37%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]" style="position:absolute;"
+			when-return-init="p:[tr:none:delay-800]">
 			<div class="team-card-container">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
