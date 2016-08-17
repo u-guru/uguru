@@ -2,7 +2,11 @@
 	<div class="flex-center full-x overflow-hidden" style="height:100px">
 		<div class="relative" style="width:500px; height:200px;">
 			<svg class="absolute top-0 left-0 full-xy" viewBox="0 0 500 200">
+<<<<<<< HEAD
 			    <g class="header-split" fill="#FFFFFF" stroke="none" stroke-width="1" fill-rule="evenodd">
+=======
+			    <g class="header-split" fill="#ffffff" stroke="none" stroke-width="1" fill-rule="evenodd">
+>>>>>>> c37d4d91a6a6fdf67245dff9d5d1512577f2aa16
 			        <polygon class="Path" points="47.9694266 133.996932 56.1181514 130.621923 49.8732372 115.54401 62.3457752 110.378181 68.5906894 125.456093 76.7948477 122.058125 61.8254211 85.9154819 53.6212628 89.3134499 59.3840328 103.227259 46.9114949 108.393089 41.1487248 94.4792796 33 97.8542884"></polygon>
 			        <path d="M99.8765909,117.474692 C107.059668,115.317518 112.086112,107.856522 109.238643,98.3748595 C106.391173,88.8931973 98.0858255,85.4359157 90.9027481,87.5930894 C83.6622061,89.7675206 78.6357622,97.2285167 81.4832316,106.710179 C84.3307009,116.191841 92.6360488,119.649123 99.8765909,117.474692 L99.8765909,117.474692 L99.8765909,117.474692 Z M97.8229615,110.636402 C94.3176197,111.689103 91.6445247,109.04627 90.1603891,104.104313 C88.6762536,99.1623557 89.4510357,95.4840799 92.9563775,94.4313791 C96.4042547,93.3959357 99.1348143,96.0215107 100.61895,100.963468 C102.103085,105.905425 101.270839,109.600958 97.8229615,110.636402 L97.8229615,110.636402 L97.8229615,110.636402 Z" class="o"></path>
 			        <path d="M130.537511,110.619372 C134.520534,109.735104 136.81181,107.321132 138.621715,103.846274 L138.797436,103.807262 L140.339021,107.705815 L147.367885,106.145342 L140.91793,77.0927058 L132.307572,79.0042852 L136.572864,98.2165125 C135.381376,100.878007 134.300814,102.101276 132.133581,102.582422 C129.614905,103.141591 128.202911,102.041467 127.279631,97.882723 L123.521492,80.9548764 L114.911134,82.8664558 L118.916348,100.907206 C120.528837,108.170365 124.211534,112.023797 130.537511,110.619372 L130.537511,110.619372 Z" class="u"></path>
@@ -22,10 +26,14 @@
 
 	<ul class="card-house p15-grid flex-wrap-center"
 		init-with="p:[tro:center center, tr:rotateX(5deg) rotateY(-5deg)]"
-		on-click="s:[return-init:public]">
-		<li when-house-stack="p:[tr:translate3d(-100%#90%#0px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
-			when-return-init="p:[tr:none:delay-500]">
-			<div class="team-card-container team-gabrie">
+		on-init="s:[house-stack:public]"
+		on-click="s:[house-build:public]">
+		<li>
+			<div class="team-card-container team-gabrie"
+				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
+				when-house-stack="p:[tr:translate3d(-99%#90%#0px) rotateX(90deg) rotateZ(90deg)]"
+				when-house-build="p:[tr:rotateY(90deg) rotateX(-31deg) translateX(40px)]"
+				when-house-return="p:[tr:none:delay-500]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>
@@ -90,9 +98,12 @@
 			</div>
 		</li>
 
-		<li when-house-stack="p:[tr:translate3d(-198%#89%#0px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
-			when-return-init="p:[tr:none:delay-700]">
-			<div class="team-card-container team-jeselle">
+		<li>
+			<div class="team-card-container team-jeselle"
+				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
+				when-house-stack="p:[tr:translate3d(-198%#88%#0px) rotateX(90deg) rotateZ(90deg)]"
+				when-house-build="p:[tr:rotateY(90deg) rotateX(33deg) translateX(19px)]:delay-100"
+				when-house-return="p:[tr:none:delay-700]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>
@@ -163,9 +174,12 @@
 			</div>
 		</li>
 
-		<li when-house-stack="p:[tr:translate3d(-100%#-11%#0px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
-			when-return-init="p:[tr:none:delay-600]">
-			<div class="team-card-container team-jason">
+		<li>
+			<div class="team-card-container team-jason"
+				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
+				when-house-stack="p:[tr:translate3d(-100%#-13%#0px) rotateX(90deg) rotateZ(90deg)]"
+				when-house-build="p:[tr:rotateY(90deg) translateX(50px) translateY(-20px)]:delay-200"
+				when-house-return="p:[tr:none:delay-600]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>
@@ -223,9 +237,12 @@
 			</div>
 		</li>
 
-		<li when-house-stack="p:[tr:translate3d(-200%#-12%#0px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
-			when-return-init="p:[tr:none:delay-900]">
-			<div class="team-card-container team-samir">
+		<li>
+			<div class="team-card-container team-samir"
+				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
+				when-house-stack="p:[tr:translate3d(-200%#-12%#0px) rotateX(90deg) rotateZ(90deg)]"
+				when-house-build="p:[tr:rotateY(262deg) translateX(-90px) translateZ(10px) translateY(-20px)]:delay-300"
+				when-house-return="p:[tr:none:delay-900]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>
@@ -280,9 +297,12 @@
 			</div>
 		</li>
 
-		<li when-house-stack="p:[tr:translate3d(-150%#37%#0px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]" style="position:absolute;"
-			when-return-init="p:[tr:none:delay-800]">
-			<div class="team-card-container">
+		<li style="position:absolute;">
+			<div class="team-card-container"
+				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
+				when-house-stack="p:[tr:translate3d(-150%#37%#0px) rotateX(90deg) rotateZ(90deg)]"
+				when-house-build="p:[tr:rotateX(90deg) rotateZ(90deg) translateZ(184px) translateX(40px) translateY(173px)]:delay-400"
+				when-house-return="p:[tr:none:delay-800]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>
