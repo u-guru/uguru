@@ -8,16 +8,34 @@
     <div class='p15xy bg-moxie txt-32 txt-center weight-600 flex-wrap-center full-x' style="height:68px">
         <h1>Admin API: Property Attribute</h1>
     </div>
+    <div class='bg-transparent absolute right-0' style='width:85%;'>
+        <ul class='flex-wrap-center'>
+            <li>
+                <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-click="apc.gPlayer.play(apc.properties)" ng-include='"shared/templates/components/svg/main/play.html"'></span>
+            </li>
+            <li ng-if='apc.gPlayer.active'>
+                <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-click="apc.gPlayer.pause(apc.properties)" ng-include='"shared/templates/components/svg/main/pause.html"'></span>
+            </li>
+            <li>
+                <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-click="apc.gPlayer.resetAll(apc.properties)" ng-include='"shared/templates/components/svg/main/sync.html"'></span>
+            </li>
+
+            <li>
+                <span class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke' ng-click="apc.gPlayer.stepForward(apc.properties, '+')" ng-include='"shared/templates/components/svg/main/skip.html"'></span>
+            </li>
+        </ul>
+    </div>
     <div class='bg-transparent full-x relative' style='height:calc(100% - 68px);'>
         <div class='full-xy flex-vertical-center relative'>
+
 			<!-- style='height:calc(85%/{{admin.sections}});' -->
-            <h1 class='absolute weight-600 full-x bg-gold-20p p15x-p10y top-0' init-with="p:[opacity:0]"> Property Attribute </h1>
+            <h1 class='absolute weight-600 full-x bg-gold-20p p15x-p10y top-0' init-with="p:[opacity:0]" when-ease-swapped="p:[transform:translateX(-200%):translateX(16%):250ms:easeInOutQuint, opacity:0:1:250ms:@]"> Property Attribute </h1>
 			<div class="full-xy flex-end">
 				<aside class='bg-campus-10p full-y weight-500 txt-24 text-center relative overflow-auto no-scrollbar' style='min-width:15%;'>
 					<h1 class='weight-600 full-x bg-gold p15x-p10y'> Property Attribute </h1>
 					<ul class="p15-grid">
 						<li ng-click='refreshStageElem($index, easing)' ng-repeat='easing in property.easings' class='weight-600 txt-18'>
-							<div class="bg bg-campus radius-2 p10y-p15x">{{easing}}</div>
+							<div  on-init="p:[transform:translateY({{500*$index}}%):translateY(0%):{{100*$index}}:easeFromTo]:delay-500" class="bg bg-campus radius-2 p10y-p15x">{{easing}}</div>
 						</li>
 					</ul>
 				</aside>

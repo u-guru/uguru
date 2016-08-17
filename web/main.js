@@ -73,8 +73,13 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
         var elemContainer = document.querySelector('#player-stage');
 
           var exampleDict = $scope.property.examples[$scope.property.activeIndex];
-          console.log(exampleDict);
+
           $scope.property.examples[$scope.property.activeIndex].ease = easing;
+          console.log($scope.root.public);
+          if ($scope.root && 'when' in $scope.root.public.customStates) {
+
+            $scope.root.public.customStates.when['whenEaseSwapped'] = true;
+          }
 
           var fromDict = {};
           fromDict[exampleDict.property] = exampleDict.start;
@@ -90,12 +95,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
             duration: parseFloat(exampleDict.duration.replace('ms', '')),
             easing: exampleDict.ease,
             step: function(property, e2, e3) {
-
-              // var elemProperty = exampleDict.property;
-              // elemStyle = elemStyle.split(elemProperty)[0] + property[elemProperty];
               elem.setAttribute('style',  'width:200px; height:200px; opacity:1;transform:' + property[exampleDict.property] + '');
-              // elem.style['webkitTransform'] = property[exampleDict.property];
-              // console.log(exampleDict.property, property[exampleDict.property],)
             }
           })
       }

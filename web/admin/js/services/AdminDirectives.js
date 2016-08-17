@@ -39,7 +39,6 @@ angular.module('uguru.admin')
                     speed: parseFloat(attr.speed && parseFloat(attr.speed.replace('x')) || 1),
                     load: attr.load
                 }
-                console.log(scope.root.inspector)
                 // element[0].setAttribute('x', scope.kf);
 
             }

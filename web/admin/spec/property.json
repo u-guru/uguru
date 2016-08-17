@@ -1,7 +1,19 @@
 {
     "description": "property examples",
+    "propertyList": ["property", "start", "end", "duration", "ease", "delay", "iterations", "fill-mode","direction"],
+    "defaultsDict": {
+        "opacity": {
+            "start": 0,
+            "end": 1,
+            "duration": 250,
+            "ease": "bouncePast",
+            "delay": 0,
+            "iterations": 1,
+            "fill-mode": "forwards",
+            "direction": "normal"
+        }
+    },
     "exampleIndex": 2,
-    "exampleIndex": 6,
     "examples": [
         {
             "exampleName": "translateX",

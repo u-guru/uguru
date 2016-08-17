@@ -15,7 +15,6 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
   var apc = this;
 
   function parsePropertiesAndPlay(properties, i_elem) {
-	console.log(properties);
 	properties.forEach(function(property, i) {
 	  var transformProp = {start: '', end: '', ease: ''};
 	  var transformProperties = ['scale', 'translateX', 'translateY', 'scale', 'rotate', 'perspective'];
@@ -45,17 +44,14 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
 		var playballDict = initPlayerBallAnimation(property);
 		properties[i].player.animation = initAnimationWithEase(playballDict, 'Player');
 		properties[i].player.playElement = document.querySelector('.property-playball-' + i);
-		console.log(properties[i].player.playElement)
 		properties[i].player.playKeyframes = convertAnimObjToKF(property.player.animation.obj);
 	  }
 	})
-
-	// transformProp.start.length && transformProp.end.length && properties.push(transformProp);
-	// apc.gPlayer.stepForward = stepForward(properties, apc.gPlayer.defaults)
-	apc.playAll(properties);
-	// stepForward()
-	// properties[0].player.step();
   }
+
+  // function initPropertyObj(elem, property, end, ){
+
+  // }
 
 
 
@@ -329,7 +325,6 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
 	  playState: 'running',
 	}
 
-	console.log(anim);
 
 	var anim_obj = AnimationService.initCSSAnimation(anim.name);
 	var startDict = {};
@@ -1216,7 +1211,6 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
 	  resultArr.push({prop: key, value: resultDict[key]})
 	}
 	resultArr.sort(function(p, p2) {return p2.value - p.value})
-	console.log(resultArr);
 	return {
 	  dict: resultDict,
 	  total: animation_arr.length,
@@ -1240,7 +1234,6 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
   }
 
   $timeout(function() {
-	console.log($state.current.name)
 	if ($state.current.name === 'root.dev.inspector') {
 
 
@@ -1341,7 +1334,6 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
 
 
 	  apc.inspector = parseInspectorArgs($scope.root.inspector)
-	  console.log(apc.inspector)
 	  if (apc.inspector.name && apc.inspector.name.length) {
 		var className = apc.inspector.name + '-component';
 
@@ -1361,8 +1353,7 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
 
 
 
-	  stage && stage.appendChild(elem);
-	  console.log(stage)
+	  stage && stage.appendChild(elem)
 	  globalElemContainer && globalElemContainer.appendChild(clonedElem)
 	  // elem.style.transform = '';
 	  apc.gPlayer.element = elem;
@@ -1380,63 +1371,61 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
   }
 
   apc.activateState  = function(state, elem) {
-	if (!elem) {
-	  elem = apc.gPlayer.element;
-	}
-	apc.properties = [];
-	apc.gPlayer.activeState = state;
+	// if (!elem) {
+	//   elem = apc.gPlayer.element;
+	// }
+	// apc.properties = [];
+	// apc.gPlayer.activeState = state;
 
-	var propArr = [];
+	// var propArr = [];
 
-	for (key in state.parsedArgs) {
-	  var iArg = key;
+	// for (key in state.parsedArgs) {
+	//   var iArg = key;
 
-	  if (iArg === 'prop' && state.parsedArgs[iArg].properties) {
+	//   if (iArg === 'prop' && state.parsedArgs[iArg].properties) {
 
 
-		for (key in state.parsedArgs[iArg].properties) {
-		  var propDict = {timingFunction:'linear', ease: 'easeOutQuad'};
-		  var obj = state.parsedArgs[iArg].properties[key];
-		  var extraArgs = obj.custom + ''
-		  // if ('custom' in obj) {
-		  //   delete obj['custom']
-		  // }
+	// 	for (key in state.parsedArgs[iArg].properties) {
+	// 	  var propDict = {timingFunction:'linear', ease: 'easeOutQuad'};
+	// 	  var obj = state.parsedArgs[iArg].properties[key];
+	// 	  var extraArgs = obj.custom + ''
+	// 	  // if ('custom' in obj) {
+	// 	  //   delete obj['custom']
+	// 	  // }
 
-		  var firstKey = Object.keys(obj)[0];
-		  var firstValue = obj[firstKey];
+	// 	  var firstKey = Object.keys(obj)[0];
+	// 	  var firstValue = obj[firstKey];
 
-		  if (firstKey.length && (firstValue + "").length && extraArgs.split(':').length > 0) {
+	// 	  if (firstKey.length && (firstValue + "").length && extraArgs.split(':').length > 0) {
 
-			// var iargPropSplit = state.parsedArgs[iArg].properties[key].split(':')
-			propDict['name'] = firstKey;
-			propDict['start'] = firstValue + "";
-			propDict['end'] = extraArgs.split(':')[0] + ""
+	// 		// var iargPropSplit = state.parsedArgs[iArg].properties[key].split(':')
+	// 		propDict['name'] = firstKey;
+	// 		propDict['start'] = firstValue + "";
+	// 		propDict['end'] = extraArgs.split(':')[0] + ""
 
-			propDict['duration'] = parseFloat(extraArgs.split(':')[1].replace('ms', ''));
-			if (extraArgs.length > 2) {
-			  propDict['ease'] = extraArgs.split(':')[2]
-			}
-			if (extraArgs.length > 3) {
-			  propDict['delay'] = extraArgs.split(':')[3];
-			}
-			console.log(propDict);
-		  }
-		  propArr.push(propDict);
-		}
+	// 		propDict['duration'] = parseFloat(extraArgs.split(':')[1].replace('ms', ''));
+	// 		if (extraArgs.length > 2) {
+	// 		  propDict['ease'] = extraArgs.split(':')[2]
+	// 		}
+	// 		if (extraArgs.length > 3) {
+	// 		  propDict['delay'] = extraArgs.split(':')[3];
+	// 		}
+	// 	  }
+	// 	  propArr.push(propDict);
+	// 	}
 
-	  }
-	}
-	apc.properties = propArr;
-	console.log('properties', propArr, elem)
-	apc.properties.forEach(function(p, i) {
-		p.element = elem
-	})
-	$timeout(function() {
+	//   }
+	// }
+	// apc.properties = propArr;
+	// apc.properties.forEach(function(p, i) {
+	// 	p.element = elem
+	// })
+	// $timeout(function() {
 
-	  parsePropertiesAndPlay(apc.properties, elem);
-	}, 750)
+	//   parsePropertiesAndPlay(apc.properties, elem);
+	// }, 750)
 
-	return apc.properties
+	// return apc.properties
   }
 
   function initElement(selector) {
@@ -1446,7 +1435,7 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
 
   $timeout(function() {
 
-	initInspector()
+	// initInspector()
 
   }, 1000)
 

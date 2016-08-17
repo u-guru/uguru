@@ -7,10 +7,11 @@ angular.module('uguru.shared.services')
     'AnimationService',
     'RootService',
     'TransformService',
+    'PropertyService',
     DirectiveService
         ]);
 
-function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService, RootService, TransformService) {
+function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService, RootService, TransformService, PropertyService) {
     var argNames = ['prop', 'anim', 'send', 'tween', 'class', 'trigger', 'eval', 'transform', 'ttt'];
     var argShortNames = ['p', 'a', 's', 't', 'c', 't', 'ttt'];
     var shortcuts;
@@ -24,6 +25,11 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     var defaultSecondaryArgs = {
       _class: ['add', 'remove', 'set']
     }
+
+    $timeout(function() {
+      PropertyService.getDefaultAnimProp()
+    })
+
     return {
         // slide: slide,
         parseArgs: parseArgs,
@@ -45,6 +51,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         parseAfterArgs: parseAfterArgs,
         processSetExtraArgs: processSetExtraArgs
     }
+
+
+
+
     function parseSwitchAttr(scope, element, attr) {
       if (attr && attr.switch) {
         console.log(attr.switch);
@@ -245,54 +255,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var _type = processedArgResults[secondary_arg].type;
         var _value = processedArgResults[secondary_arg].value;
 
-        processedArgResults[secondary_arg] = processSecondaryArgsByType(_type, _value, processedArgResults[secondary_arg]);
+        processedArgResults[secondary_arg] = processSecondaryArgsByType(_type, _value, processedArgResults[secondary_arg], state_name, elem);
         processedArgDict[_type] = processedArgResults[secondary_arg];
       }
-      if (processedArgDict.ttt && processedArgDict.prop) {
-        var stateProperties = [];
-        var stateValues = [];
-        processedArgDict.prop.properties.forEach(function(p, i) {
-            var firstKey = Object.keys(p)[0];
-            stateValues.push(p[firstKey]);
-            if (firstKey in shortcuts.cssProps) {
-              firstKey = shortcuts.cssProps[firstKey]
-            }
-            stateProperties.push(firstKey);
-        });
-        processedArgDict.ttt.Property.forEach(function(prop, i) {
-          var iProp = prop;
-          var tf = processedArgDict.ttt.TimingFunction[i];
-          if (iProp in shortcuts.cssProps) {
-            iProp = prop;
-          }
-          var cssValueIndex = stateProperties.indexOf(iProp)
-          var cssValue;
-          if (cssValueIndex <= -1) {
-            console.log('error! could not determine which property', iProp, 'should begin AND end with...');
-            return
-          } else {
-            cssValue = stateValues[cssValueIndex];
-          }
-          var prefix = 'animation';
-          var browserPrefix = RootService.getBrowserPrefix();
-          if (browserPrefix && browserPrefix.length)  {
-            var style = window.getComputedStyle(elem[0])[browserPrefix.toLowerCase() + 'Animation'];
-            prefix = '-' + browserPrefix + '-'
-          } else {
-            var style = window.getComputedStyle(elem[0])['animation'];
-            prefix = '-'
-          }
-          var animObj = processedArgDict.ttt.Animation[i](state_name, 'inherit', cssValue);
-          console.log(animObj);
-          processedArgDict.ttt.Animation[i] = animObj.name
-          var newStyle = setAnimationWithPreviousStyle(processedArgDict.ttt, i,  style, cssValue, state_name)
 
-          elem.css(prefix + 'animation', newStyle);
-          // browserPrefix
-          // styl
-
-        })
-      }
       return processedArgDict;
     }
 
@@ -556,14 +522,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       return {type: 'transform', transforms: [resultDict]}
     }
 
-    function processSecondaryArgsByType(type, string_args) {
+    function processSecondaryArgsByType(type, string_args, processed_args, state_name, elem) {
       switch(type) {
         case ("transform"):
           return processTransformArgs(string_args)
           break;
         case ("prop"):
 
-          return formatAndProcessArgs(type, string_args, {properties:[]}, 'properties', processCSSPropValue, ['transition']);
+          return formatAndProcessArgs(type, string_args, {properties:[]}, 'properties', processCSSPropValue, ['transition'], state_name, elem);
           break;
 
         case ("class"):
@@ -639,22 +605,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             }
           }
         }
-        console.log(animDict)
 
-        for (var i = 0; i < animDict['Property'].length; i++) {
-          var iProperty = animDict['Property'][i];
-          var duration = animDict['Duration'][i];
-
-
-          //if its not a
-          if (!animDict['Animation'][i]) {
-            animDict['Animation'][i] = initAnimationObjWithProperty(iProperty, animDict['TimingFunction'][i]);
-          } else {
-            animDict['Animation'][i] = initAnimationObjWithProperty(iProperty, animDict['TimingFunction'][i], animDict['Animation'][i]);
-          }
-
-          // animDict['Animation'].push(animObj);
-        }
         console.log(animDict);
         return animDict;
 
@@ -759,8 +710,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function processCSSPropValue(name, value, prop_dict, orig_str) {
-      //2nd arg of if --> fill:#;
 
+
+      //2nd arg of if --> fill:#;
       if (value && value.indexOf('#') > -1 && value.indexOf('#') > 0) {
         value = value && UtilitiesService.replaceAll(value, '#', ',');
       }
@@ -780,8 +732,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
 
 
+
+
     //todo modularize
-    function formatAndProcessArgs(type, string_args, base_dict, base_dict_key, custom_func, custom_args) {
+    function formatAndProcessArgs(type, string_args, base_dict, base_dict_key, custom_func, custom_args, state_name, elem) {
       var propDict = base_dict
       propDict.type = type;
       var generalArgs = '';
@@ -793,15 +747,27 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var parsedPropDict = {};
 
           var kvPairSplit = stringPropArgs[i].split(':');
+
           var key = kvPairSplit[0];
           var value = kvPairSplit[1];
+
+
 
           parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs, i);
 
 
-          if (kvPairSplit.length > 2) {
+          if (kvPairSplit.length > 2 || (type === 'prop' && key in PropertyService.defaultPropAnimations)) {
+
+
             parsedPropDict = processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
-            processCustomArgsArray(type, parsedPropDict, custom_args);
+            if (key in PropertyService.defaultPropAnimations) {
+
+              if (!('custom' in parsedPropDict)) {
+                parsedPropDict['custom'] = '';
+              }
+              parsedPropDict['default'] = true;
+            }
+            processCustomArgsArray(type, key, value, string_args, parsedPropDict, custom_args, state_name, elem);
           }
           propDict[base_dict_key].push(parsedPropDict);
         }
@@ -812,7 +778,50 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     }
 
-    function processCustomArgsArray(type, arg_dict, d_custom_args) {
+    function processCustomArgsArray(type, split_key, split_value, orig_str, arg_dict, d_custom_args, state_name, elem) {
+      var blacklistStates = PropertyService.getBlacklistStates();
+      if (type === 'prop' && state_name && blacklistStates.indexOf(state_name) > -1) {
+        delete arg_dict['default']
+        delete arg_dict['custom'];
+        return;
+      }
+      var hasDefault = 'default' in arg_dict;
+      if (areCustomArgsPropertyAnimation(type, arg_dict)) {
+
+        var startArgs = arg_dict[split_key];
+        var customArgs = arg_dict['custom']
+        var endArgs = split_value
+
+
+        delete arg_dict['default'];
+        delete arg_dict['custom'];
+
+        var arg_arr = [];
+        var propName = split_key;
+
+        startArgs && arg_arr.push(startArgs);
+        endArgs && !(endArgs === startArgs) && arg_arr.push(endArgs);
+        customArgs && customArgs.split(':').filter(function(a) {return a.length}).forEach(function(a) {arg_arr.push(a)})
+        arg_dict.animProp = PropertyService.getFrameAnimationFunc(elem, propName, arg_arr, state_name, hasDefault);
+
+      }
+      if (arg_dict.default && type === 'prop' ) {
+
+        delete arg_dict['default'];
+        delete arg_dict['custom'];
+        // arg_dict.animProp
+        console.log(split_key, split_value, orig_str)
+        // var propName = split_key;
+        // propDict.animProp = PropertyService.getFrameAnimationFunc(propName, arg_arr, state_name, hasDefault);
+        // console.log(arg_dict, hasDefault)
+        // console.log(split_key, split_value, hasDefault);
+        // console.log('apply default arg to opacity', split_key, split_value, arg_dict, true)
+      }
+
+      function areCustomArgsPropertyAnimation(type, arg_dict) {
+        return type === 'prop' && 'custom' in arg_dict && arg_dict.custom.length && arg_dict.custom.split(':').length > 1
+      }
+
       return arg_dict;
     }
 
@@ -835,13 +844,12 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function processStrArrToObj(string_args) {
       var propArrEndIndex = string_args.indexOf(']');
-
       var stringPropArgs = string_args.substring(1, propArrEndIndex).split(',');
-
       return stringPropArgs;
     }
 
     function processGeneralArgsArray(type, arg_arr, result_dict, custom_args) {
+
       var resultDict = result_dict || {};
       var notProcessed = [];
       for (var i = 0; i < arg_arr.length; i++) {
@@ -1359,6 +1367,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processCSSPropArr(prop_arr, scope, elem)  {
       for (var i = 0; i < prop_arr.length; i++) {
         var indexPropDict = prop_arr[i];
+        if (indexPropDict.animProp) {
+          indexPropDict.animProp.player.play();
+          return;
+        }
         if (indexPropDict.custom) {
           processCSSCustomArgs(indexPropDict.custom, indexPropDict);
           delete indexPropDict['custom'];
