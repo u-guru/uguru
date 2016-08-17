@@ -1,6 +1,6 @@
 {
     "description": "property examples",
-    "exampleIndex": 6,
+    "exampleIndex": 8,
     "examples": [
         {
             "exampleName": "translateX",
@@ -84,6 +84,17 @@
             "property": "-webkit-perspective",
             "start": "10000",
             "end": "100",
+            "duration": "1000ms",
+            "ease": "easeInQuart",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "card-house-1",
+            "property": "transform",
+            "start": "translateX(-99%) translateY(90%) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(90deg)",
+            "end": "translateX(-5px) translateY(4px) translateZ(10px) rotateX(-31deg) rotateY(90deg) rotateZ(0deg)",
             "duration": "1000ms",
             "ease": "easeInQuart",
             "fillMode": null,

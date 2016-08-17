@@ -38,10 +38,11 @@
             </ul>
 
             <div class='flex-vertical-center absolute z-index-99 top-0 right-0' style="width: 85%; height: calc(100% - 128px);" ng-controller="AdminPropertyController">
-                <div id='player-stage' class='flex-wrap-center stage-elem-container full-xy relative fix-abs overflow-hidden'>
+                <div id='player-stage' class='flex-wrap-center stage-elem-container perspective-container full-xy relative fix-abs overflow-hidden'>
                     <div ng-repeat="example in property.examples" ng-if='property.activeIndex === $index'
 						inspector-elem
-						ng-include="root.base_url + 'shared/templates/components/demo/card.tpl'"
+						ng-include="root.base_url + 'shared/templates/components/demo/card-house-single.tpl'"
+						style="transform-origin: center bottom"
 						on-init="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]:delay-250"></div>
                 </div>
             </div>
