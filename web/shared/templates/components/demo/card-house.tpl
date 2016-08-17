@@ -23,16 +23,15 @@
 			</svg>
 		</div>
 	</div>
-
 	<ul class="card-house p15-grid flex-wrap-center"
-		init-with="p:[tro:center center, tr:rotateX(5deg) rotateY(-5deg)]"
+		init-with="p:[tro:center center]"
 		on-init="s:[house-stack:public]"
 		on-click="s:[house-build:public]">
 		<li>
 			<div class="team-card-container team-gabrie"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-99%#90%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tr:rotateY(90deg) rotateX(-31deg) translateX(40px)]"
+				when-house-build="p:[tr:rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px)]"
 				when-house-return="p:[tr:none:delay-500]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -102,7 +101,7 @@
 			<div class="team-card-container team-jeselle"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-198%#88%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tr:rotateY(90deg) rotateX(33deg) translateX(19px)]:delay-100"
+				when-house-build="p:[tr:rotateY(-90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px)]:delay-100"
 				when-house-return="p:[tr:none:delay-700]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -178,7 +177,7 @@
 			<div class="team-card-container team-jason"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-100%#-13%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tr:rotateY(90deg) translateX(50px) translateY(-20px)]:delay-200"
+				when-house-build="p:[tr:rotateY(90deg) translateX(30px) translateY(-5px)]:delay-200"
 				when-house-return="p:[tr:none:delay-600]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -241,7 +240,7 @@
 			<div class="team-card-container team-samir"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-200%#-12%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tr:rotateY(262deg) translateX(-90px) translateZ(10px) translateY(-20px)]:delay-300"
+				when-house-build="p:[tr:rotateY(-90deg) translateX(-30px) translateY(-5px)]:delay-300"
 				when-house-return="p:[tr:none:delay-900]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -301,7 +300,7 @@
 			<div class="team-card-container"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-150%#37%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tr:rotateX(90deg) rotateZ(90deg) translateZ(184px) translateX(40px) translateY(173px)]:delay-400"
+				when-house-build="p:[tro:center top, tr:rotateX(90deg) rotateZ(90deg) translateX(30px) translateY(-180px) translateZ(-179px)]:delay-400"
 				when-house-return="p:[tr:none:delay-800]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
