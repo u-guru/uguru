@@ -38,8 +38,19 @@
         {
             "exampleName": "translateZRotate",
             "property": "transform",
-            "start": "translateY(200%) translateZ(-200px) rotateX(30deg) rotateY(60deg)",
-            "end": "translateY(0) translateZ(0) rotateX(0) rotateY(0)",
+            "start": "translateY(200%) translateZ(-200px) rotateY(30deg) rotateX(60deg)",
+            "end": "translateY(0) translateZ(0) rotateY(0) rotateX(0)",
+            "duration": "2500ms",
+            "ease": "easeOutBounce",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "clip-path",
+            "property": "-webkit-clip-path",
+            "start": "circle(0px at 50% 50%)",
+            "end": "circle(200px at 50% 50%)",
             "duration": "2500ms",
             "ease": "easeOutBounce",
             "fillMode": null,

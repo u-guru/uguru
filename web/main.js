@@ -68,7 +68,24 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     parent: 'root',
     url:'/admin/api/property',
     templateUrl: 'admin/templates/api/property.html',
-    controller: function($scope, $timeout) {
+    controller: ['$scope', '$timeout', 'TweenService', '$compile', function($scope, $timeout, TweenService, $compile) {
+      $scope.refreshStageElem = function($index, easing) {
+        var elemContainer = document.querySelector('.stage-elem-container');
+
+        if (easing) {
+          $scope.property.examples[$scope.property.activeIndex].ease = easing;
+        }
+        var siblings = elemContainer.parentNode.childNodes;
+        var elem = elemContainer.parentNode.childNodes[siblings.length - 1];
+        var animStyle = window.getComputedStyle(elem)['webkitAnimation']
+        elem.style['webkitAnimation'] = elem.style['webkitAnimation'].replace('running', 'paused');
+        elem.style['webkitAnimation'] = '';
+        elem.style['offsetWidth'] = null;
+        $timeout(function() {
+          elem.style['webkitAnimation'] = animStyle.replace('paused', 'running');
+        })
+      }
+      // $scope.property = {examples: responseDict.examples, activeIndex: responseDict.exampleIndex, easings: TweenService.getAllEasing()};
       $timeout(function() {
         var xhr = new XMLHttpRequest();
         xhr.open( 'GET', '/admin/spec/property.json', true );
@@ -76,13 +93,13 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
 
         xhr.onload = function () {
             var responseDict = JSON.parse(xhr.responseText);
-            $scope.property = {examples: responseDict.examples, activeIndex: responseDict.exampleIndex};
+            $scope.property = {examples: responseDict.examples, activeIndex: responseDict.exampleIndex, easings: TweenService.getAllEasing()};
             $scope.templates = {components: responseDict};
 
         };
         xhr.send();
       })
-    }
+    }]
   })
   .state('root.dev.inspect', {
     name: 'root.dev.inspect',
