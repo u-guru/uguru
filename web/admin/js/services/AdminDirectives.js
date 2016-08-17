@@ -27,22 +27,34 @@ angular.module('uguru.admin')
             }
         }
 }])
-.directive("inspectorGadget", ['$timeout', 'UtilitiesService', '$compile', function($timeout, UtilitiesService, $compile) {
+.directive("inspectorGadget", ['$timeout', 'UtilitiesService', '$compile', 'RootService', function($timeout, UtilitiesService, $compile, RootService) {
         return {
             restrict: 'E',
             replace: true,
             scope: false,
-            link: function preLink(scope, element, attr) {
-                scope.root.inspector = {
-                    select:attr.selector,
-                    autoPlay: attr.autoPlay === 'true',
-                    speed: parseFloat(attr.speed && parseFloat(attr.speed.replace('x')) || 1),
-                    load: attr.load
-                }
-                console.log(scope.root.inspector)
-                // element[0].setAttribute('x', scope.kf);
+            link:  {pre: function(scope, element, attr) {
+                        // scope.root.inspector = {
+                        //     select:attr.selector,
+                        //     autoPlay: attr.autoPlay === 'true',
+                        //     speed: parseFloat(attr.speed && parseFloat(attr.speed.replace('x')) || 1),
+                        //     load: attr.load
+                        // }
 
-            }
+                        scope.activePlayers = [];
+                        scope.elementInspector = RootService.inspectableElements;
+
+                    },
+                    post: function(scope, element, attr) {
+                        $timeout(function() {
+                            scope.$watch('root.inspector.players', function(new_value, old_value) {
+                                // new_value.pause();
+
+                            })
+                        }, 500)
+
+                    }
+                }
+
         }
 }])
 .directive("types", ['$timeout', 'UtilitiesService', '$compile', function($timeout, UtilitiesService, $compile) {

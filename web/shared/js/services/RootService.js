@@ -9,6 +9,8 @@ function RootService($timeout, $state) {
     var base_url = '';
     var docItems = [];
     var pauseElement;
+    var setInspectableElem;
+    var addElemToInspector;
     initBaseUrlByEnv();
     return {
         // slide: slide,
@@ -26,7 +28,15 @@ function RootService($timeout, $state) {
         appendDocItem: appendDocItem,
         formatBrowserCSSProperty: formatBrowserCSSProperty,
         setPauseElementFunc: setPauseElementFunc,
-        pauseElement: pauseElement
+        pauseElement: pauseElement,
+        setInspectableElem: setInspectableElem,
+        setInspectableElements: setInspectableElements,
+        addElemToInspector: addElemToInspector
+    }
+
+    function setInspectableElements(func) {
+      console.log(func)
+      setInspectableElem = func;
     }
 
     function appendDocItem(item) {
@@ -37,6 +47,11 @@ function RootService($timeout, $state) {
       pauseElement = func;
     }
 
+    function addElemToInspector(elem) {
+      console.log(elem);
+      setInspectableElem(elem);
+      // inspectableElements.push(elem);
+    }
 
 
     function formatBrowserCSSProperty(property) {

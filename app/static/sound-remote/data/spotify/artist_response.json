@@ -1,0 +1,72 @@
+// response.data
+
+// response.data.artists.items[0].name
+
+{
+  "data": {
+    "artists": {
+      "href": "https://api.spotify.com/v1/search?query=odesza&offset=0&limit=20&type=artist",
+      "items": [
+        {
+          "external_urls": {
+            "spotify": "https://open.spotify.com/artist/21mKp7DqtSNHhCAU2ugvUw"
+          },
+          "followers": {
+            "href": null,
+            "total": 251874
+          },
+          "genres": [],
+          "href": "https://api.spotify.com/v1/artists/21mKp7DqtSNHhCAU2ugvUw",
+          "id": "21mKp7DqtSNHhCAU2ugvUw",
+          "images": [
+            {
+              "height": 621,
+              "url": "https://i.scdn.co/image/c6f4007b2306d56233ad0e2d410d9e1dbc1f7342",
+              "width": 999
+            },
+            {
+              "height": 398,
+              "url": "https://i.scdn.co/image/c3af1f9d873682c5cf982e1776a392bd05c85f04",
+              "width": 640
+            },
+            {
+              "height": 124,
+              "url": "https://i.scdn.co/image/dc211fe976108ebd64780a2ac1680739763eff5d",
+              "width": 200
+            },
+            {
+              "height": 40,
+              "url": "https://i.scdn.co/image/681d0a343db7c8589dedbc6b088a3c38a3de161d",
+              "width": 64
+            }
+          ],
+          "name": "ODESZA",
+          "popularity": 76,
+          "type": "artist",
+          "uri": "spotify:artist:21mKp7DqtSNHhCAU2ugvUw"
+        }
+      ],
+      "limit": 20,
+      "next": null,
+      "offset": 0,
+      "previous": null,
+      "total": 1
+    }
+  },
+  "status": 200,
+  "config": {
+    "method": "GET",
+    "transformRequest": [
+      null
+    ],
+    "transformResponse": [
+      null
+    ],
+    "url": "https://api.spotify.com/v1/search?q=odesza&type=artist",
+    "headers": {
+      "Accept": "application/json, text/plain, */*",
+      "Authorization": "Bearer BQDk3wSDFyxddfZm3KQsQMqMpgo0INiTl-TU9VuUuRLv50Nd_qj7BgBtW2b_GFoUp30Ocog18fC6IhZpl7aOo-z857A9bMla76V5i_m53WFlPirj-I3zbf87Kc5ErTfb0OP5VaSm"
+    }
+  },
+  "statusText": "OK"
+}
