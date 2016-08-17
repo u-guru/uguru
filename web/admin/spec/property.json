@@ -82,10 +82,10 @@
         {
             "exampleName": "perspective",
             "property": "-webkit-perspective",
-            "start": "1000",
-            "end": "500",
-            "duration": "1500ms",
-            "ease": "easeOutCirc",
+            "start": "10000",
+            "end": "100",
+            "duration": "1000ms",
+            "ease": "easeInQuart",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null

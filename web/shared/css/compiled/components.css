@@ -3489,6 +3489,60 @@ fieldset.no-border * {
       transition: all 500ms ease-out; }
     .team-card-container .team-card .team-border, .team-card-container .team-card .team-ribbon, .team-card-container .team-card .team-link, .team-card-container .team-card .team-info, .team-card-container .team-card .team-icon {
       transform-style: preserve-3d; }
+  .team-card-container .team-card-placeholder {
+    position: absolute;
+    top: 0;
+    left: 55px;
+    height: 100%;
+    width: calc(100% - 110px);
+    font-weight: 600; }
+    .team-card-container .team-card-placeholder .front {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 2px;
+      color: #40484B; }
+    .team-card-container .team-card-placeholder .back {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #40484B;
+      border-radius: 2px;
+      transform: rotateX(180deg);
+      backface-visibility: hidden;
+      color: white; }
   @media screen and (min-width: 768px) {
     .team-card-container:not(.mobile) a:hover ~ .team-card, .team-card-container:not(.mobile) a:focus ~ .team-card {
       transition: all 500ms ease-out !important; }
@@ -3617,7 +3671,8 @@ fieldset.no-border * {
     width: 256px;
     height: 256px;
     background-position: center center;
-    background-size: cover; }
+    background-size: cover;
+    background-color: #65a89c; }
   .team-card .team-link {
     position: absolute;
     top: 218px;
@@ -3703,6 +3758,8 @@ fieldset.no-border * {
 
 .team-gabrie .team-border div {
   background: #9b8885; }
+.team-gabrie .team-photo {
+  background-color: #e3bbb3; }
 .team-gabrie .team-link {
   background: #F5C8BF; }
   .team-gabrie .team-link .team-icon {
@@ -3719,6 +3776,8 @@ fieldset.no-border * {
 
 .team-jeselle .team-border div {
   background: #5f9091; }
+.team-jeselle .team-photo {
+  background-color: #77c9c8; }
 .team-jeselle .team-link {
   background: #7DD7D6; }
   .team-jeselle .team-link .team-icon {
@@ -3735,6 +3794,8 @@ fieldset.no-border * {
 
 .team-jason .team-border div {
   background: #67608a; }
+.team-jason .team-photo {
+  background-color: #8572bc; }
 .team-jason .team-link {
   background: #8d77c9; }
   .team-jason .team-link .team-icon {
@@ -3751,6 +3812,8 @@ fieldset.no-border * {
 
 .team-samir .team-border div {
   background: #527c7e; }
+.team-samir .team-photo {
+  background-color: #60a6a6; }
 .team-samir .team-link {
   background: #64b0b0; }
   .team-samir .team-link .team-icon {
@@ -16929,6 +16992,10 @@ input[type=range] {
       .calendar-week.bg-academic .cal-week > div .cal-month.has-link a:active, .calendar-week.bg-academic .cal-week > div .cal-month.has-link a.active {
         background: #934073;
         color: white; }
+
+.card-house {
+  max-width: 777px;
+  max-height: 764px; }
 
 .playing-card-stack-enter {
   animation: playing-card-stack-enter 6000ms linear; }

@@ -53,6 +53,37 @@
 			transform-style: preserve-3d;
 		}
 	}
+	.team-card-placeholder {
+		position: absolute;
+		top: 0;
+		left: 55px;
+		height: 100%;
+		width: calc(100% - 110px);
+		font-weight: 600;
+		.front {
+			@include flex;
+			@include flex-center;
+			width: 100%;
+			height: 100%;
+			background: white;
+			border-radius: 2px;
+			color: $slate;
+		}
+		.back {
+			@include flex;
+			@include flex-center;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background: $slate;
+			border-radius: 2px;
+			transform: rotateX(180deg);
+			backface-visibility: hidden;
+			color: white;
+		}
+	}
 	@media screen and (min-width: 768px) {
 		&:not(.mobile) {
 			a {
@@ -262,6 +293,7 @@
 		height: 256px;
 		background-position: center center;
 		background-size: cover;
+		background-color: mix($shamrock, $slate, 90%);
 	}
 	.team-link {
 		position: absolute;
@@ -370,6 +402,9 @@
 			background: mix($gabrielle, $slate);
 		}
 	}
+	.team-photo {
+		background-color: mix($gabrielle, $slate, 90%);
+	}
 	.team-link {
 		background: $gabrielle;
 		.team-icon {
@@ -398,6 +433,9 @@
 		div {
 			background: mix($jeselle, $slate);
 		}
+	}
+	.team-photo {
+		background-color: mix($jeselle, $slate, 90%);
 	}
 	.team-link {
 		background: $jeselle;
@@ -428,6 +466,9 @@
 			background: mix($jason, $slate);
 		}
 	}
+	.team-photo {
+		background-color: mix($jason, $slate, 90%);
+	}
 	.team-link {
 		background: $jason;
 		.team-icon {
@@ -456,6 +497,9 @@
 		div {
 			background: mix($samir, $slate);
 		}
+	}
+	.team-photo {
+		background-color: mix($samir, $slate, 90%);
 	}
 	.team-link {
 		background: $samir;

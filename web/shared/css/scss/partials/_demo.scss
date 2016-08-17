@@ -1,5 +1,10 @@
 @import 'mixin';
 
+.card-house {
+	max-width: 777px;
+	max-height: 764px;
+}
+
 .playing-card-stack-enter {
 	animation: playing-card-stack-enter 6000ms linear;
 }
