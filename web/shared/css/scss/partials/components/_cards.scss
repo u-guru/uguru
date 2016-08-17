@@ -65,9 +65,10 @@
 			@include flex-center;
 			width: 100%;
 			height: 100%;
-			background: white;
+			background: mix(white, $shamrock, 70%);
 			border-radius: 2px;
 			color: $slate;
+			backface-visibility: hidden;
 		}
 		.back {
 			@include flex;
@@ -77,7 +78,7 @@
 			height: 100%;
 			top: 0;
 			left: 0;
-			background: $slate;
+			background: mix($slate, $shamrock, 70%);
 			border-radius: 2px;
 			transform: rotateX(180deg);
 			backface-visibility: hidden;
@@ -397,6 +398,14 @@
 }
 
 .team-gabrie {
+	.team-card-placeholder {
+		.front {
+			background: mix(white, $gabrielle, 70%);
+		}
+		.back {
+			background: mix($slate, $gabrielle, 70%);
+		}
+	}
 	.team-border {
 		div {
 			background: mix($gabrielle, $slate);
@@ -429,6 +438,14 @@
 }
 
 .team-jeselle {
+	.team-card-placeholder {
+		.front {
+			background: mix(white, $jeselle, 70%);
+		}
+		.back {
+			background: mix($slate, $jeselle, 70%);
+		}
+	}
 	.team-border {
 		div {
 			background: mix($jeselle, $slate);
@@ -461,6 +478,14 @@
 }
 
 .team-jason {
+	.team-card-placeholder {
+		.front {
+			background: mix(white, $jason, 70%);
+		}
+		.back {
+			background: mix($slate, $jason, 70%);
+		}
+	}
 	.team-border {
 		div {
 			background: mix($jason, $slate);
@@ -493,6 +518,14 @@
 }
 
 .team-samir {
+	.team-card-placeholder {
+		.front {
+			background: mix(white, $samir, 70%);
+		}
+		.back {
+			background: mix($slate, $samir, 70%);
+		}
+	}
 	.team-border {
 		div {
 			background: mix($samir, $slate);

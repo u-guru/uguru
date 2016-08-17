@@ -22,9 +22,10 @@
 
 	<ul class="card-house p15-grid flex-wrap-center"
 		init-with="p:[tro:center center, tr:rotateX(5deg) rotateY(-5deg)]">
+
 		<li>
 			<div class="team-card-container team-gabrie"
-				init-with="p:[tro:center center, tr:rotateX(30deg) rotateY(-90deg)]">
+				 init-with="p:[tr:rotateY(90deg) rotateX(-31deg) translateX(40px), tro:center bottom]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>
@@ -91,7 +92,7 @@
 
 		<li>
 			<div class="team-card-container team-jeselle"
-				init-with="p:[tro:center center, tr:rotateX(30deg) rotateY(-90deg)]">
+				init-with="p:[tr:rotateY(90deg) rotateX(33deg) translateX(19px), tro:center bottom]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>
@@ -164,7 +165,7 @@
 
 		<li>
 			<div class="team-card-container team-jason"
-				init-with="p:[tro:center center, tr:rotateY(-90deg)]">
+				init-with="p:[tro:center bottom, tr:rotateY(-90deg) translateX(-36px) translateY(-15px)]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>
@@ -224,7 +225,7 @@
 
 		<li>
 			<div class="team-card-container team-samir"
-				init-with="p:[tro:center center, tr:rotateY(90deg)]">
+				init-with="p:[tro:center bottom, tr:rotateY(90deg) translateX(36px) translateY(-15px)]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>
@@ -281,7 +282,7 @@
 
 		<li style="position:absolute;">
 			<div class="team-card-container"
-				init-with="p:[tro:center center, tr:rotateX(90deg)]">
+				init-with="p:[tro:center bottom, tr:rotateX(90deg) rotateZ(90deg) translateZ(184px) translateX(40px) translateY(173px)]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>
