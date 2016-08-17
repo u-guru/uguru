@@ -12,10 +12,12 @@
         <div class='full-xy flex-vertical-center relative'>
 			<!-- style='height:calc(85%/{{admin.sections}});' -->
 			<div class="full-xy flex-end">
-				<aside class='bg-campus-10p full-y weight-500 txt-24 text-center relative' style='min-width:15%;'>
+				<aside class='bg-campus-10p full-y weight-500 txt-24 text-center relative overflow-auto' style='min-width:15%;'>
 					<h1 class='weight-600 full-x bg-campus p15x-p10y'> Property Attribute </h1>
-					<ul>
-						<li ng-click='refreshStageElem($index, easing)' ng-repeat='easing in property.easings' class='p10y weight-900 full-x'>{{easing}}</li>
+					<ul class="p15-grid">
+						<li ng-click='refreshStageElem($index, easing)' ng-repeat='easing in property.easings' class='weight-600 txt-18'>
+							<div class="bg-campus-25p radius-2 p10y-p15x">{{easing}}</div>
+						</li>
 					</ul>
 				</aside>
 	            <ul class='full-x flex overflow-x flex-stretch no-scrollbar border-1 border-slate z-index-10' style="min-width:85%;">
