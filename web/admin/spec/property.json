@@ -1,6 +1,6 @@
 {
     "description": "property examples",
-    "exampleIndex": 7,
+    "exampleIndex": 6,
     "examples": [
         {
             "exampleName": "translateX",
@@ -18,8 +18,8 @@
             "property": "opacity",
             "start": "0",
             "end": "1",
-            "duration": "500ms",
-            "ease": "bounce",
+            "duration": "1000ms",
+            "ease": "easeInOutBounce",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null
