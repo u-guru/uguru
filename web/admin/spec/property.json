@@ -1,6 +1,6 @@
 {
     "description": "property examples",
-    "exampleIndex": 3,
+    "exampleIndex": 0,
     "examples": [
         {
             "exampleName": "translateX",
@@ -8,7 +8,7 @@
             "start": "rotateX(720deg) skewY(-180deg)",
             "end": "rotateX(-70deg) skewY(0)",
             "duration": "3000ms",
-            "ease": "easeOutBounce",
+            "ease": "easeInSine",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null
@@ -63,7 +63,7 @@
             "start": "scaleX(2) scaleY(0.1) translateX(-200px) rotateX(-90deg)",
             "end": "scaleX(2) scaleY(1) translateX(200px) rotateX(195deg)",
             "duration": "1500ms",
-            "ease": "easeOutCirc",
+            "ease": "easeOutQuart",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null
