@@ -50,9 +50,9 @@
             "exampleName": "clip-path",
             "property": "-webkit-clip-path",
             "start": "circle(0px at 50% 50%)",
-            "end": "circle(200px at 50% 50%)",
+            "end": "circle(150px at 50% 50%)",
             "duration": "2500ms",
-            "ease": "easeOutBounce",
+            "ease": "easeOutQuint",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null
