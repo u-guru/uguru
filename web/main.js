@@ -69,35 +69,15 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/admin/api/property',
     templateUrl: 'admin/templates/api/property.html',
     controller: ['$scope', '$timeout', 'TweenService', '$compile', function($scope, $timeout, TweenService, $compile) {
-      $scope.refreshStageElem = function($index, easing) {
+      $scope.refreshEasing = function(easing) {
+        console.log(easing);
         var elemContainer = document.querySelector('#player-stage');
-
-          var exampleDict = $scope.property.examples[$scope.property.activeIndex];
-
-          $scope.property.examples[$scope.property.activeIndex].ease = easing;
-          console.log($scope.root.public);
-          if ($scope.root && 'when' in $scope.root.public.customStates) {
-
-            $scope.root.public.customStates.when['whenEaseSwapped'] = true;
-          }
-
-          var fromDict = {};
-          fromDict[exampleDict.property] = exampleDict.start;
-          var endDict = {};
-          endDict[exampleDict.property] = exampleDict.end;
-
-          var tweenable = new Tweenable();
-          var elem = elemContainer.childNodes[elemContainer.childNodes.length - 1];
-          var elemStyle = elem.getAttribute('style');
-          tweenable.tween({
-            from: fromDict,
-            to: endDict,
-            duration: parseFloat(exampleDict.duration.replace('ms', '')),
-            easing: exampleDict.ease,
-            step: function(property, e2, e3) {
-              elem.setAttribute('style',  'width:200px; height:200px; opacity:1;transform:' + property[exampleDict.property] + '');
-            }
-          })
+        $scope.property.examples[$scope.property.activeIndex].ease = easing;
+        var temp = $scope.property.activeIndex;
+        $scope.property.activeIndex = null;
+        $timeout(function() {
+          $scope.property.activeIndex = temp;
+        })
       }
       $timeout(function() {
         var xhr = new XMLHttpRequest();
