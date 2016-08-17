@@ -298,9 +298,9 @@
 
 		<li style="position:absolute;">
 			<div class="team-card-container"
-				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
-				when-house-stack="p:[tr:translate3d(-150%#37%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tro:center top,tr:translate3d(178px#179px#20px) rotateX(90deg) rotateZ(90deg),t:transform 750ms ease-out]:delay-400"
+				init-with="p:[t:all 250ms ease-out, tro:center top]"
+				when-house-stack="p:[tr:translate3d(-50%#135%#0px) rotateX(90deg) rotateZ(90deg)]"
+				when-house-build="p:[tro:center top,tr:translate3d(178px#179px#20px) rotateX(90deg) rotateZ(90deg),t:transform 750ms cubic-bezier(0.19#1#0.22#1)]:delay-400"
 				when-house-return="p:[tr:none:delay-800]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
