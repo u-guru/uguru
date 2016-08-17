@@ -1,5 +1,6 @@
-<div class="full-xy flex-center">
-	<ul class="card-house p15-grid flex-wrap-center">
+<div class="full-xy flex-center-wrap perspective-container">
+	<ul class="card-house p15-grid flex-wrap-center"
+		init-with="p:[tro:center center, tr:rotateX(5deg) rotateY(-5deg)]">
 		<li>
 			<div class="team-card-container team-gabrie">
 				<a></a><a></a><a></a><a></a><a></a><a></a>

@@ -3,6 +3,10 @@
 .card-house {
 	max-width: 777px;
 	max-height: 764px;
+	transform-style: preserve-3d;
+	* {
+		transform-style: preserve-3d;
+	}
 }
 
 .playing-card-stack-enter {

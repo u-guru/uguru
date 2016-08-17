@@ -16995,7 +16995,10 @@ input[type=range] {
 
 .card-house {
   max-width: 777px;
-  max-height: 764px; }
+  max-height: 764px;
+  transform-style: preserve-3d; }
+  .card-house * {
+    transform-style: preserve-3d; }
 
 .playing-card-stack-enter {
   animation: playing-card-stack-enter 6000ms linear; }
