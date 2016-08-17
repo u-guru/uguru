@@ -14,6 +14,9 @@
 			<div class="full-xy flex-end">
 				<aside class='bg-campus-10p full-y weight-500 txt-24 text-center relative' style='min-width:15%;'>
 					<h1 class='weight-600 full-x bg-campus p15x-p10y'> Property Attribute </h1>
+					<ul>
+						<li ng-click='refreshStageElem($index, easing)' ng-repeat='easing in property.easings' class='p10y weight-900 full-x'>{{easing}}</li>
+					</ul>
 				</aside>
 	            <ul class='full-x flex overflow-x flex-stretch no-scrollbar border-1 border-slate z-index-10' style="min-width:85%;">
 	                <li class='p15x-p10y height-128 weight-500 flex-wrap-start bg-campus-20p text-center border-1 border-slate radius-2 overflow-hidden' style='min-width:15%; max-height:25%' ng-repeat='option in propOptions' ng-class="{'opacity-80p': property.examples[property.activeIndex][option]}">
