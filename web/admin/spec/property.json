@@ -1,6 +1,6 @@
 {
     "description": "property examples",
-    "exampleIndex": 3,
+    "exampleIndex": 6,
     "examples": [
         {
             "exampleName": "translateX",
@@ -62,6 +62,17 @@
             "property": "transform",
             "start": "scaleX(2) scaleY(0.1) translateX(-200px) rotateX(-90deg)",
             "end": "scaleX(2) scaleY(1) translateX(200px) rotateX(195deg)",
+            "duration": "1500ms",
+            "ease": "easeOutCirc",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "glide-2",
+            "property": "transform",
+            "start": "scaleY(2) scaleX(0.1) translateY(-300%) rotateY(-180deg)",
+            "end": "scaleY(1) scaleX(1) translateY(0) rotateY(0deg)",
             "duration": "1500ms",
             "ease": "easeOutCirc",
             "fillMode": null,
