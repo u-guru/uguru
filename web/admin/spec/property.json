@@ -110,10 +110,10 @@
         {
             "exampleName": "card-house-1",
             "property": "transform",
-            "start": "translateX(-99%) translateY(-300%) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(90deg)",
-            "end": "translateX(-99%) translateY(90%) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(90deg)",
-            "duration": "1000ms",
-            "ease": "easeInQuint",
+            "start": "translateX(-99%) translateY(-30%) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(90deg)",
+            "end": "translateX(-99%) translateY(30%) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(90deg)",
+            "duration": "1000",
+            "ease": "easeOutBounce",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null
