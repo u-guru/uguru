@@ -1,6 +1,6 @@
 {
     "description": "property examples",
-    "exampleIndex": 0,
+    "exampleIndex": 4,
     "examples": [
         {
             "exampleName": "translateX",
@@ -34,6 +34,29 @@
             "fillMode": null,
             "forwards": null,
             "iterationCount": null
+        },
+        {
+            "exampleName": "translateZRotate",
+            "property": "transform",
+            "start": "translateY(200%) translateZ(-200px) rotateX(30deg) rotateY(60deg)",
+            "end": "translateY(0) translateZ(0) rotateX(0) rotateY(0)",
+            "duration": "2500ms",
+            "ease": "easeOutBounce",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "glide",
+            "property": "transform",
+            "start": "scaleX(2) scaleY(0.1) translateX(-200px) rotateX(-90deg)",
+            "end": "scaleX(2) scaleY(1) translateX(200px) rotateX(195deg)",
+            "duration": "1500ms",
+            "ease": "easeOutCirc",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
         }
+
     ]
 }
