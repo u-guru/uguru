@@ -1,6 +1,6 @@
 {
     "description": "property examples",
-    "exampleIndex": 6,
+    "exampleIndex": 7,
     "examples": [
         {
             "exampleName": "translateX",
@@ -78,7 +78,17 @@
             "fillMode": null,
             "forwards": null,
             "iterationCount": null
+        },
+        {
+            "exampleName": "perspective",
+            "property": "-webkit-perspective",
+            "start": "1000",
+            "end": "500",
+            "duration": "1500ms",
+            "ease": "easeOutCirc",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
         }
-
     ]
 }
