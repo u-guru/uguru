@@ -3514,9 +3514,10 @@ fieldset.no-border * {
       justify-content: center;
       width: 100%;
       height: 100%;
-      background: white;
+      background: #d2e8e4;
       border-radius: 2px;
-      color: #40484B; }
+      color: #40484B;
+      backface-visibility: hidden; }
     .team-card-container .team-card-placeholder .back {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -3538,7 +3539,7 @@ fieldset.no-border * {
       height: 100%;
       top: 0;
       left: 0;
-      background: #40484B;
+      background: #4c6866;
       border-radius: 2px;
       transform: rotateX(180deg);
       backface-visibility: hidden;
@@ -3756,6 +3757,10 @@ fieldset.no-border * {
       font-weight: 600;
       text-align: center; }
 
+.team-gabrie .team-card-placeholder .front {
+  background: #fcefec; }
+.team-gabrie .team-card-placeholder .back {
+  background: #766e6e; }
 .team-gabrie .team-border div {
   background: #9b8885; }
 .team-gabrie .team-photo {
@@ -3774,6 +3779,10 @@ fieldset.no-border * {
   background: #fdf4f2;
   color: #9b8885; }
 
+.team-jeselle .team-card-placeholder .front {
+  background: #d8f3f3; }
+.team-jeselle .team-card-placeholder .back {
+  background: #527375; }
 .team-jeselle .team-border div {
   background: #5f9091; }
 .team-jeselle .team-photo {
@@ -3792,6 +3801,10 @@ fieldset.no-border * {
   background: #e5f7f7;
   color: #5f9091; }
 
+.team-jason .team-card-placeholder .front {
+  background: #ddd6ef; }
+.team-jason .team-card-placeholder .back {
+  background: #575671; }
 .team-jason .team-border div {
   background: #67608a; }
 .team-jason .team-photo {
@@ -3810,6 +3823,10 @@ fieldset.no-border * {
   background: #e8e4f4;
   color: #67608a; }
 
+.team-samir .team-card-placeholder .front {
+  background: #d1e7e7; }
+.team-samir .team-card-placeholder .back {
+  background: #4b6769; }
 .team-samir .team-border div {
   background: #527c7e; }
 .team-samir .team-photo {

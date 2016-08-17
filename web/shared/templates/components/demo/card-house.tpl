@@ -22,7 +22,7 @@
 
 	<ul class="card-house p15-grid flex-wrap-center"
 		init-with="p:[tro:center center, tr:rotateX(5deg) rotateY(-5deg)]">
-		<li>
+		<li init-with="p:[tr:translate3d(-100%#90%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center]">
 			<div class="team-card-container team-gabrie">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
@@ -88,7 +88,7 @@
 			</div>
 		</li>
 
-		<li>
+		<li init-with="p:[tr:translate3d(-198%#89%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center]">
 			<div class="team-card-container team-jeselle">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
