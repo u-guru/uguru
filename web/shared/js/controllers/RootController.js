@@ -18,13 +18,21 @@ angular.module('uguru.shared.controllers', [])
     root.milestones = [];
     root.animStatus = {off: false};
     root.inspectAnimations = [];
+    root.inspectElements = [];
     root.public = {customStates: []};
     root.pauseElement = pauseElement(root);
     RootService.setPauseElementFunc(root.pauseElement);
-
-
+    root.inspector = {players:[], elements: []};
+    RootService.setInspectableElements(pushElemPlayer(root.inspector));
   }
 ]);
+
+function pushElemPlayer(r_inspector) {
+  return function(elem) {
+    r_inspector.players.push(elem);
+  }
+}
+
 
 function pauseElement(scope) {
   return function(element, attr) {

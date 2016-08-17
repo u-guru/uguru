@@ -99,7 +99,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
             }
           })
       }
-      // $scope.property = {examples: responseDict.examples, activeIndex: responseDict.exampleIndex, easings: TweenService.getAllEasing()};
       $timeout(function() {
         var xhr = new XMLHttpRequest();
         xhr.open( 'GET', '/admin/spec/property.json', true );
@@ -109,7 +108,6 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
             var responseDict = JSON.parse(xhr.responseText);
             $scope.property = {examples: responseDict.examples, activeIndex: responseDict.exampleIndex, easings: TweenService.getAllEasing()};
             $scope.templates = {components: responseDict};
-
         };
         xhr.send();
       })

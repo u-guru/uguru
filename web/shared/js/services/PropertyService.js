@@ -57,30 +57,111 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
     var playerObj = {};
 
-    var tween = new Tweenable();
+
+    playerObj.elem = elem;
+
+    $timeout(function() {
+
+    })
     args.elem = elem;
-    console.log(args.duration, args.start, args.end, args.ease)
-    tween.setConfig({
+    playerObj.tween = new Tweenable();
+    playerObj.tweenConfig = {
       from: args.start,
       to: args.end,
       duration: args.duration,
       easing: args.ease,
       attachment: args,
-      step: function(state, args, time) {
-        for (property in state) {
-          console.log(property, state[property], time)
-          if (property === 'opacity') {
-            elem.setAttribute('style', 'opacity:' + state[property]);
-          } else {
-            elem.style[property] = state[property];
-            console.log(property, state[property])
-          }
+      startTween: startTween,
+      step: applyPropToElem,
+      finish: finishTween
+    }
 
-        }
+    // playerObj.tween.setConfig(playerObj.tweenConfig);
+
+    function applyPropToElem(state, args, time) {
+      for (prop in state) {
+        // console.log(time + 'ms', (time/args.duration * 100).toFixed(2) + '%', prop, state[prop])
+        elem.style[prop] = state[prop];
       }
-    })
+    }
 
-    playerObj.play = getPlayFunc(tween);
+    function startTween(state, args) {
+      console.log('starting...', state, args);
+    }
+
+    function finishTween(state, args) {
+        playerObj = playerObj.reset(playerObj)
+
+    }
+
+    function getPlayFunction(tween, config) {
+      return function() {
+        tween.setConfig(config); tween.tween()
+      };
+    }
+
+    function getPauseFunction(tween, config) {
+      return function() {
+        tween.pause();
+      }
+    }
+
+    function getStepToFunction(tween, config) {
+      return function(ms) {
+        tween.seek();
+      }
+    }
+
+    playerObj.reset = function(playerObj) {
+      playerObj.tween.dispose();
+      playerObj.tween = new Tweenable();
+      playerObj.play = getPlayFunction(playerObj.tween, playerObj.tweenConfig);
+      playerObj.pause = getPauseFunction(playerObj.tween);
+      playerObj.stepTo = getStepToFunction(playerObj.tween);
+      // playerObj.reverse = function(value) {tween.seek(value)};
+      return playerObj
+    }
+    playerObj = playerObj.reset(playerObj)
+    if (elem.hasAttribute('inspector-elem')) {
+        RootService.addElemToInspector(playerObj);
+      }
+
+    // tween.setConfig({
+    //   from: args.start,
+    //   to: args.end,
+    //   duration: args.duration,
+    //   easing: args.ease,
+    //   attachment: args,
+    //   step: function(state, args, time) {
+    //     args.time = time;
+    //     for (property in state) {
+    //       // console.log(property, state[property], time)
+    //       if (property === 'opacity') {
+    //         elem.setAttribute('style', 'opacity:' + state[property]);
+    //       } else {
+    //         elem.style[property] = state[property];
+    //         // console.log(property, state[property])
+    //       }
+
+    //     }
+    //   },
+    //   finish: function(state, args, time) {
+    //     console.log('disposing..');
+    //     // tween.dispose();
+    //     tween.tween();
+    //     tween.seek(100);
+    //     $timeout(function() {
+    //       tween.resume();
+    //     })
+    //     // tween.resume();
+    //   }
+    // })
+
+    // playerObj.play = getPlayFunc(tween);
+    // playerObj.tween = tween
+    // playerObj.reset = getResetFunc(tween);
+    // playerObj.pause = getPauseFunc(tween);
+    // playerObj.info = args.time;
 
     return playerObj;
     // playerObj.state =  {offset: 0, state: 'idle', speed: '1x'};
@@ -96,8 +177,27 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   function getPlayFunc(tween) {
     return function(state, args, timer) {
       console.log('playing...')
+      tween.seek(0);
       // if (tween.isPlaying) return;
-      tween.tween();
+      $timeout(function() {
+        tween.resume();
+      })
+    }
+  }
+
+  function getPauseFunc(tween) {
+    return function() {
+      tween.pause();
+    }
+  }
+
+  function getResetFunc(tween) {
+    return function() {
+      console.log('reseting...');
+      tween.seek(0);
+      $timeout(function() {
+        tween.resume();
+      })
     }
   }
 
@@ -133,10 +233,13 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     pObj.property = property;
     pObj.timingFunction = 'linear';
 
+
+
     for (var i = 0; i < arg_arr.length; i++) {
       switch(i) {
         //potential start
         case (0):
+
           pObj.start[property] = processStartArg(arg_arr[i], property, apply_default);
           continue
         case (1):
@@ -146,7 +249,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           pObj.duration = processDuration(arg_arr[i], property, apply_default);
           continue;
         case (3):
-          pObj.ease = verifyAndProcessEaseArg(arg_arr[i], property, apply_default, allTweens.slice());
+          pObj.ease = verifyAndProcessEaseArg(pObj, arg_arr[i], property, apply_default, allTweens.slice());
           continue;
         case (4):
           pObj.delay = processDuration(arg_arr[i], property, apply_default);
@@ -174,14 +277,23 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     }
   }
 
-  function verifyAndProcessEaseArg(arg_str, prop, apply_default, easing_arr) {
-    easing_arr = easing_arr.slice();
-    easing_arr.forEach(function(e, i) {easing_arr[i] = e.toLowerCase()});
-    if (arg_str.indexOf('*') > -1 && apply_default) {
-      return defaultPropAnimations[prop]["ease"];
-    } else
-    if (easing_arr.indexOf(arg_str.toLowerCase()) > -1) {
-      return arg_str.trim()
+  function verifyAndProcessEaseArg(obj, arg_str, prop, apply_default, easing_arr) {
+    console.log(arg_str, obj.start)
+    if (arg_str.indexOf(' ') > -1 && prop in obj.start && obj.start[prop].indexOf(' ') > -1) {
+
+      var startProps = obj.start[prop].split(' ');
+      var easeDict = {};
+      startProps.forEach(function(prop, i) {easeDict[prop.split('(')[0]] = arg_str.split(' ')[i].split('(')[0]})
+      return easeDict;
+    } else {
+      easing_arr = easing_arr.slice();
+      easing_arr.forEach(function(e, i) {easing_arr[i] = e.toLowerCase()});
+      if (arg_str.indexOf('*') > -1 && apply_default) {
+        return defaultPropAnimations[prop]["ease"];
+      } else
+      if (easing_arr.indexOf(arg_str.toLowerCase()) > -1) {
+        return arg_str.trim()
+      }
     }
   }
 
