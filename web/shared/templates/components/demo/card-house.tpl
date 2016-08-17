@@ -23,7 +23,7 @@
 	<ul class="card-house p15-grid flex-wrap-center"
 		init-with="p:[tro:center center, tr:rotateX(5deg) rotateY(-5deg)]"
 		on-click="s:[return-init:public]">
-		<li init-with="p:[tr:translate3d(-100%#90%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
+		<li when-house-stack="p:[tr:translate3d(-100%#90%#0px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
 			when-return-init="p:[tr:none:delay-500]">
 			<div class="team-card-container team-gabrie">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
@@ -90,7 +90,7 @@
 			</div>
 		</li>
 
-		<li init-with="p:[tr:translate3d(-198%#89%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
+		<li when-house-stack="p:[tr:translate3d(-198%#89%#0px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
 			when-return-init="p:[tr:none:delay-700]">
 			<div class="team-card-container team-jeselle">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
@@ -163,7 +163,7 @@
 			</div>
 		</li>
 
-		<li init-with="p:[tr:translate3d(-100%#-11%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
+		<li when-house-stack="p:[tr:translate3d(-100%#-11%#0px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
 			when-return-init="p:[tr:none:delay-600]">
 			<div class="team-card-container team-jason">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
@@ -223,7 +223,7 @@
 			</div>
 		</li>
 
-		<li init-with="p:[tr:translate3d(-200%#-12%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
+		<li when-house-stack="p:[tr:translate3d(-200%#-12%#0px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]"
 			when-return-init="p:[tr:none:delay-900]">
 			<div class="team-card-container team-samir">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
@@ -280,7 +280,7 @@
 			</div>
 		</li>
 
-		<li init-with="p:[tr:translate3d(-150%#37%#-100px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]" style="position:absolute;"
+		<li when-house-stack="p:[tr:translate3d(-150%#37%#0px) rotateX(90deg) rotateZ(90deg), tro:bottom center, t:all 250ms ease-out]" style="position:absolute;"
 			when-return-init="p:[tr:none:delay-800]">
 			<div class="team-card-container">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
