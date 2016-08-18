@@ -21,16 +21,16 @@
             "properties": [
                 {
                     "property": "transform",
-                    "start": "rotateX(0deg)",
-                    "end": "rotateX(0deg)",
-                    "duration": "2000",
-                    "ease": "easeInSine",
+                    "start": "translateX(100px) translateY(-100px)",
+                    "end": "translateX(-100px) translateY(0px)",
+                    "duration": "500",
+                    "ease": "easeInExpo",
                     "delay": "500"
                 },
                 {
                     "property": "border-radius",
                     "start": "0%",
-                    "end": "100%",
+                    "end": "0%",
                     "duration": "500",
                     "ease": "bouncePast"
                 },
