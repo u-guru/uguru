@@ -36,13 +36,8 @@
 					<h1 class='weight-600 full-x bg-gold p15x-p10y'> Property Attribute </h1>
 					<ul class="p15-grid">
 						<li ng-click='refreshEasing(easing)' ng-repeat='easing in property.easings' class='weight-600 txt-18'>
-<<<<<<< HEAD
-							<!-- on-init="p:[transform:translateY(-{{50*$index}}%):translateY(0%):{{100*$index}}:easeFromTo]:delay-500" -->
-                            <div class="bg bg-campus radius-2 p10y-p15x">{{easing}}</div>
-=======
 							<!-- on-init="p:[transform:translateY({{500*$index}}%):translateY(0%):{{100*$index}}:easeFromTo]:delay-500" -->
                             <div class="bg bg-campus radius-2 p10y-p15x" on-init="p:[transform:translateY(-{{50*$index}}%):translateY(0%):{{100*$index}}:easeFromTo]:delay-500">{{easing}}</div>
->>>>>>> 9d5557685b333d8e28b57847e98a9e8b84fd1531
 						</li>
 					</ul>
 				</aside>
@@ -63,21 +58,12 @@
                 </li>
             </ul>
 
-<<<<<<< HEAD
-            <div class='flex-vertical-center absolute z-index-99 top-0 right-0' style="width: 85%; height: calc(100% - 128px);">
-                <div id='player-stage' class='flex-wrap-center stage-elem-container full-xy relative fix-abs overflow-hidden perspective-container'>
-                    <div ng-repeat="example in property.examples" ng-if='example.property && property.activeIndex === $index' style='opacity:1; transform-origin:center center;'
-						inspector-elem class='opacity-100p'
-						ng-include="root.base_url + 'shared/templates/components/demo/card.tpl'"
-                        init-with="{{example.initWith}}"
-=======
             <div class='flex-vertical-center absolute z-index-99 top-0 right-0' style="width: 85%; height: calc(100% - 128px);" ng-controller="AdminPropertyController">
                 <div id='player-stage' class='flex-wrap-center stage-elem-container perspective-container full-xy relative fix-abs overflow-hidden'>
                     <div ng-repeat="example in property.examples" ng-if='property.activeIndex === $index'
 						inspector-elem
 						ng-include="root.base_url + 'shared/templates/components/demo/card-house-single.tpl'"
 						style="transform-origin: center bottom"
->>>>>>> 9d5557685b333d8e28b57847e98a9e8b84fd1531
 						on-init="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]:delay-250"></div>
                     <div ng-repeat="example in property.examples" ng-if='example.properties && property.activeIndex === $index' style='opacity:1; transform-origin:center center;'
                         inspector-elem class='opacity-100p'
