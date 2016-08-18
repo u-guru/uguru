@@ -13,25 +13,33 @@
             "direction": "normal"
         }
     },
-    "exampleIndex": 2,
+    "exampleIndex": 0,
     "examples": [
         {
-            "initWith": "opacity:1",
+            "initWith": "opacity:0",
             "exampleName": "rotateSkew",
             "properties": [
                 {
                     "property": "transform",
                     "start": "rotateX(-180deg) rotateY(-180deg)",
                     "end": "rotateX(-70deg) rotateY(-70deg)",
-                    "duration": "500",
-                    "ease": "easeInSine bouncePast"
+                    "duration": "2000",
+                    "ease": "easeInSine",
+                    "delay": "500"
+                },
+                {
+                    "property": "background-color",
+                    "start": "rgb(255#255#255)",
+                    "end": "rgb(0#0#0)",
+                    "duration": "2000",
+                    "ease": "bouncePast"
                 },
                 {
                     "property": "opacity",
                     "start": "0",
                     "end": "1",
-                    "duration": "450",
-                    "ease": "easeInSine bouncePast"
+                    "duration": "2000",
+                    "ease": "bouncePast"
                 }
             ]
         },

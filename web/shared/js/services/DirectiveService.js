@@ -242,7 +242,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function parseArgs(string_args, state_name, elem) {
-      console.log(string_args, state_name, elem)
       string_args = UtilitiesService.replaceAll(string_args, ', ',  ',');
       string_args = UtilitiesService.replaceAll(string_args, '| ',  '| ');
       string_args = UtilitiesService.replaceAll(string_args, ' | ',  ' | ');

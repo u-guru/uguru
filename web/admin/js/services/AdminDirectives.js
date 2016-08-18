@@ -33,13 +33,16 @@ angular.module('uguru.admin')
             replace: true,
             scope: false,
             link:  {pre: function(scope, element, attr) {
-                        // scope.root.inspector = {
-                        //     select:attr.selector,
-                        //     autoPlay: attr.autoPlay === 'true',
-                        //     speed: parseFloat(attr.speed && parseFloat(attr.speed.replace('x')) || 1),
-                        //     load: attr.load
-                        // }
+                scope.supportedAttributes = ['active', 'selector', 'state', 'autoPlay', "playInfinite", 'stepSize', 'startAt', 'endAt', 'pauseAt', 'visible']
 
+                        for (key in attr) {
+                            if (scope.supportedAttributes.indexOf(key) > -1) {
+                                scope.root.inspector.preferences[key] = attr[key];
+                                if (attr[key] === 'true' || attr[key] === 'false') {
+                                    scope.root.inspector.preferences[key] = (attr[key] === 'true');
+                                }
+                            }
+                        }
                         scope.activePlayers = [];
                         scope.elementInspector = RootService.inspectableElements;
 
@@ -47,11 +50,13 @@ angular.module('uguru.admin')
                     post: function(scope, element, attr) {
                         $timeout(function() {
                             scope.$watch('root.inspector.players', function(new_value, old_value) {
-                                // new_value.pause();
+                                for (var i = 0; i < scope.root.inspector.players.length; i++) {
+                                    var iPlayer = scope.root.inspector.players[i];
+                                    scope.root.player = iPlayer;
+                                }
 
                             })
                         }, 500)
-
                     }
                 }
 
