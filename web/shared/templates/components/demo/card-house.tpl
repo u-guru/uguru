@@ -31,7 +31,7 @@
 			<div class="team-card-container team-gabrie"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-99%#90%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[tr:rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px), t:transform 1000ms cubic-bezier(0.19#1#0.22#1)]"
+				when-house-build="p:[transform:translateX(-99%) translateY(90%) translateZ(0) rotateX(90deg) rotateZ(90deg):rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px):1000:easeOutCirc]"
 				when-house-return="p:[tr:none:delay-500]">
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
