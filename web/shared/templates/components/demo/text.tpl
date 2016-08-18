@@ -1,4 +1,4 @@
-<div class="full-xy flex-center-wrap perspective-container" types='prop, anim' default-type="prop">
+<div class="full-xy flex-center-wrap perspective-container" types='prop, anim, 3d' default-type="3d">
 	<ul class="full-x border-1 border-slate" ng-if='activeType === "prop"'>
 		<li class="border-1 border-slate">
 			<div class="flex-center" style="height: 200px">
@@ -113,7 +113,7 @@
 
 	<ul class="full-x border-1 border-slate" ng-if='activeType === "anim"'>
 		<li class="border-1 border-slate">
-			<div class="flex-center" style="height: 200px">
+			<div class="flex-center" style="h deight: 200px">
 				<h1 class="txt-48 txt-robin semibold flex">
 					<span class="block"
 						init-with="p:[tro:left bottom]"
@@ -220,6 +220,31 @@
 					</g>
 				</svg>
 			</div>
+		</li>
+	</ul>
+
+	<ul class="full-x border-1 border-slate" ng-if='activeType === "3d"'>
+		<li class="border-1 border-slate">
+			<div class="flex-center" style="height: 200px">
+				<h1 class="txt-48 txt-robin semibold flex">
+					<span class="block"
+						init-with="p:[tro:left bottom]"
+						on-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-100]">q</span>
+					<span class="block"
+						init-with="p:[tro:left bottom]"
+						on-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-200]">u</span>
+					<span class="block"
+						init-with="p:[tro:left bottom]"
+						on-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-300]">i</span>
+					<span class="block"
+						init-with="p:[tro:left bottom]"
+						on-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-400]">c</span>
+					<span class="block"
+						init-with="p:[tro:left bottom]"
+						on-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]">k</span>
+				</h1>
+			</div>
+			<!-- 48 semibold 1000 * 200 -->
 		</li>
 	</ul>
 </div>
