@@ -59,6 +59,7 @@ function RootService($timeout, $state) {
     }
 
     function addElemToInspector(elem) {
+      console.log(elem);
       setInspectableElem(elem);
       // inspectableElements.push(elem);
     }

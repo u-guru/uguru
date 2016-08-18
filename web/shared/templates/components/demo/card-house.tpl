@@ -1,3 +1,5 @@
+<!-- step-size="100" start-at="" end-at="" pause-at=""  active="true" selector="[inspector-elem]" state="on-init"-->
+<inspector-gadget auto-play="false" play-infinite="false"> </inspector-gadget>
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px"
 		on-click="s:[house-return:public]">
@@ -44,12 +46,15 @@
 			</svg>
 		</div>
 	</div>
+	<!-- ex: 1 inspect-trigger="when-house-return|2000" -->
 	<ul class="card-house p15-grid flex-wrap-center"
 		init-with="p:[tro:center center, max-width:777px]"
-		on-init="s:[house-stack:public, house-build:public:delay-1000, header-build:public:delay-1250]"
+		on-init="s:[house-stack:public]"
 		on-click="s:[house-build:public, header-build:public:delay-250]"
 		when-house-build="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]"
-		when-house-return="p:[animation:none]">
+		when-house-return="p:[animation:none]"
+		inspect-trigger="on-click|0">
+		<!-- ex: 2 inspect-trigger="when-house-return|2000" -->
 		<li init-with="p:[op:0, tro:center center, t:all 500ms ease-out]"
 			when-house-stack="p:[opacity:0:1:50:easeInQuint]"
 			when-house-return="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]">

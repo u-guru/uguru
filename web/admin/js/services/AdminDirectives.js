@@ -32,7 +32,10 @@ angular.module('uguru.admin')
             restrict: 'E',
             replace: true,
             scope: false,
+            templateUrl: RootService.getBaseUrl() + 'admin/templates/components/inspector.gadget.player.tpl',
             link:  {pre: function(scope, element, attr) {
+                scope.triggerEvents = ['on-click', 'on-mouse-leave', 'on-mouse-enter', 'on-mouse-over'];
+                scope.classEvents = ['on-enter', 'on-exit', 'on-init', 'init-with'];
                 scope.supportedAttributes = ['active', 'selector', 'state', 'autoPlay', "playInfinite", 'stepSize', 'startAt', 'endAt', 'pauseAt', 'visible']
 
                         for (key in attr) {
@@ -43,22 +46,77 @@ angular.module('uguru.admin')
                                 }
                             }
                         }
+
+
+
                         scope.activePlayers = [];
                         scope.elementInspector = RootService.inspectableElements;
-
                     },
                     post: function(scope, element, attr) {
-                        $timeout(function() {
-                            scope.$watch('root.inspector.players', function(new_value, old_value) {
-                                for (var i = 0; i < scope.root.inspector.players.length; i++) {
-                                    var iPlayer = scope.root.inspector.players[i];
-                                    scope.root.player = iPlayer;
-                                }
-
+                        var parentView = element[0].parentNode
+                        var inspectorElems = parentView.querySelectorAll('[inspector-elem]');
+                        var inspectorTriggers = parentView.querySelectorAll('[inspect-trigger]');
+                        var autoTriggerStates = [];
+                        for (var i = 0; i < inspectorTriggers.length; i++) {
+                            var iTriggerElem = inspectorTriggers[i];
+                            var iTriggerAttr = iTriggerElem.getAttribute('inspect-trigger');
+                            var iTriggerValState = iTriggerAttr.split('|')[0];
+                            var iTriggerValTime = iTriggerAttr.split('|')[1];
+                            autoTriggerStates.push({
+                                elem: iTriggerElem,
+                                state: iTriggerValState,
+                                time: iTriggerValTime
                             })
-                        }, 500)
+                            triggerStateInFuture(iTriggerElem, iTriggerValState, iTriggerValTime);
+                        }
+
+                        function triggerStateInFuture(trigger_elem, trigger_type, delay) {
+
+                            $timeout(function() {
+                                if (scope.triggerEvents.indexOf(trigger_type) > -1) {
+                                    console.log('supposed to be triggering', trigger_type, 'after', delay + 'ms for', trigger_elem)
+                                    angular.element(trigger_elem).triggerHandler(trigger_type.replace('on-', ''));
+                                } else if (scope.classEvents.indexOf(trigger_type) > -1) {
+                                    trigger_elem.classList.add(trigger_type)
+                                } else if (trigger_type.indexOf('when-') > -1) {
+                                    scope.root.public.customStates['when'][UtilitiesService.camelCase(trigger_type)] = true;
+                                }
+                            }, parseFloat(delay) || 0)
+                        }
+
+
+
+
+                        // $timeout(function() {
+                        // scope.$watch('root.inspector.players', function(new_value, old_value) {
+                        //     console.log(new_value.length)
+                        //     for (var i = 0; i < scope.root.inspector.players.length; i++) {
+
+                        //         var iPlayer = scope.root.inspector.players[i];
+
+                        //         scope.root.player = iPlayer;
+                        //     }
+
+                        // })
+                        // }, 500)
                     }
                 }
+
+        }
+}])
+.directive("inspectorGadgetPlayer", ['$timeout', 'UtilitiesService', '$compile', 'RootService', function($timeout, UtilitiesService, $compile, RootService) {
+        return {
+            restrict: 'E',
+            replace: true,
+            templateUrl: RootService.getBaseUrl() + 'admin/templates/components/inspector.gadget.player.tpl',
+            scope: {root: '=root'},
+            link:  {
+                pre: function(scope, element, attr) {
+                    console.log('yo')
+                    scope.player = scope.root.player;
+                    scope.prefs = scope.root.inspector.prefs;
+                }
+            }
 
         }
 }])
