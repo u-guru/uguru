@@ -40,12 +40,15 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     var previous_player = player || null;
     if (!property) console.log('ERROR: Missing property');
 
+    if (!state_name) {
+      state_name = 'when-*'
+    }
 
     var args = processPropertyArgs(property, arg_arr, state_name, apply_default);
     args.stateNameCamel = UtilitiesService.camelCase(state_name);
     args.stateName = state_name;
 
-    console.log(args, player);
+    console.log(args, player, elem);
     args.player = initPlayerFromArgs(elem[0], args, previous_player);
 
     return args;

@@ -42,9 +42,9 @@ function TweenService() {
         // "easeInOutElastic",
 		// "sway", // http://goo.gl/n3DjKQ
         // "hardSway", // http://goo.gl/xX8hna
-        "easeInBounce",
+        // "easeInBounce",
         "easeOutBounce",
-        "easeInOutBounce",
+        // "easeInOutBounce",
         "elastic",
         "swingFromTo",
         "swingFrom",

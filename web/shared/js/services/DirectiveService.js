@@ -202,7 +202,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             }
           }
 
-          var elemArgs = parseArgs(formattedAttrValue);
+          var elemArgs = parseArgs(formattedAttrValue, type, element);
           for (key in elemArgs) {
             if ((argNames || supportedCommands).indexOf(key) > -1) {
               activateArg(key, elemArgs[key], scope, element);
@@ -242,6 +242,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function parseArgs(string_args, state_name, elem) {
+      console.log(string_args, state_name, elem)
       string_args = UtilitiesService.replaceAll(string_args, ', ',  ',');
       string_args = UtilitiesService.replaceAll(string_args, '| ',  '| ');
       string_args = UtilitiesService.replaceAll(string_args, ' | ',  ' | ');
@@ -736,6 +737,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     //todo modularize
     function formatAndProcessArgs(type, string_args, base_dict, base_dict_key, custom_func, custom_args, state_name, elem) {
+
       var propDict = base_dict
       propDict.type = type;
       var generalArgs = '';
