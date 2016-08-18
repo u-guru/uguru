@@ -22,7 +22,9 @@ angular.module('uguru.shared.controllers', [])
     root.public = {customStates: []};
     root.pauseElement = pauseElement(root);
     RootService.setPauseElementFunc(root.pauseElement);
-    root.inspector = {players:[], elements: []};
+
+    root.inspector = {players:[], elements: [], preferences: {}};
+    RootService.setGetInspector(getInspectorPrefs(root.inspector));
     RootService.setInspectableElements(pushElemPlayer(root.inspector));
   }
 ]);
@@ -30,6 +32,12 @@ angular.module('uguru.shared.controllers', [])
 function pushElemPlayer(r_inspector) {
   return function(elem) {
     r_inspector.players.push(elem);
+  }
+}
+
+function getInspectorPrefs(r_inspector) {
+  return function() {
+    return r_inspector.preferences;
   }
 }
 
