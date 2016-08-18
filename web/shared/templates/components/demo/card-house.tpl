@@ -2,8 +2,7 @@
 <inspector-gadget auto-play="true" play-infinite="false"> </inspector-gadget>
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px"
-		on-click="s:[house-return:public]"
-		inspect-trigger="on-click|3000">
+		on-click="s:[house-return:public]">
 		<div class="relative" style="width:500px; height:200px;">
 			<svg class="absolute top-0 left-0 full-xy" viewBox="0 0 500 200">
 			    <g class="header-split" fill="#FFFFFF" stroke="none" stroke-width="1" fill-rule="evenodd">
@@ -54,8 +53,7 @@
 		on-click="s:[house-build:public, header-build:public:delay-250]"
 		when-house-build="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]"
 		when-house-return="p:[animation:none] | s:[house-rotate:public:delay-500]"
-		inspect-trigger="on-click|1200">
-		<!-- inspector-elem -->
+		inspect-trigger="on-click|2000">
 		<!-- ex: 2 inspect-trigger="when-house-return|2000" -->
 		<li init-with="p:[op:0, tro:center center, t:all 500ms ease-out]"
 			when-house-stack="p:[opacity:0:1:200:linear]"
