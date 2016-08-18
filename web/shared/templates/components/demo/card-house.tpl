@@ -46,7 +46,7 @@
 	</div>
 	<ul class="card-house p15-grid flex-wrap-center"
 		init-with="p:[tro:center center, max-width:777px]"
-		on-init="s:[house-stack:public]"
+		on-init="s:[house-stack:public, house-build:public:delay-1000, header-build:public:delay-1250]"
 		on-click="s:[house-build:public, header-build:public:delay-250]"
 		when-house-build="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]"
 		when-house-return="p:[animation:none]">
