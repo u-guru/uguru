@@ -40,9 +40,13 @@ angular.module('uguru.admin')
 
                         for (key in attr) {
                             if (scope.supportedAttributes.indexOf(key) > -1) {
+
                                 scope.root.inspector.preferences[key] = attr[key];
                                 if (attr[key] === 'true' || attr[key] === 'false') {
                                     scope.root.inspector.preferences[key] = (attr[key] === 'true');
+                                }
+                                if (key === 'stepSize') {
+                                    scope.root.inspector.preferences[key] = parseFloat(attr[key])
                                 }
                             }
                         }
