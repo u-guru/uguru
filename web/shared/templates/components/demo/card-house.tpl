@@ -1,3 +1,6 @@
+<!-- step-size="100" start-at="" end-at="" pause-at=""  active="true" selector="[inspector-elem]" state="on-init"-->
+<inspector-gadget  auto-play="false" play-infinite="false" >
+</inspector-gadget>
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px">
 		<div class="relative" style="width:500px; height:200px;">
@@ -19,17 +22,23 @@
 			</svg>
 		</div>
 	</div>
+	<!-- ex: 1 inspect-trigger="when-house-return|2000" -->
 	<ul class="card-house p15-grid flex-wrap-center"
 		init-with="p:[tro:center center]"
 		on-init="s:[house-stack:public]"
-		on-click="s:[house-build:public]">
+		on-click="s:[house-build:public]"
+		inspect-trigger="on-click|0"
+		>
 		<li>
+
+			<!-- ex: 2 inspect-trigger="when-house-return|2000" -->
 			<div class="team-card-container team-gabrie"
 				inspector-elem
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translateX(-362px) translateY(324px) translateZ(0px) rotateX(90deg) rotate(90deg)]"
 				when-house-build="p:[transform:rotateY(0deg) rotateX(90deg) translateX(-362px) translateY(324px) translateZ(0px) rotate(90deg):rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):250:easeOutCirc]"
-				when-house-return="p:[tr:none:delay-500]">
+				when-house-return="p:[tr:none:delay-500]"
+				>
 				<!-- width - 366px; height - 359.5px -->
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">

@@ -41,6 +41,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         playerControlElems.bar.height = barRect.height;
       }
     }
+    return playerControlElems
   }
   function getDefaultAnimProp(struct) {
     if (!struct) struct = defaultPropAnimations;
@@ -57,6 +58,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   }
 
   function getFrameAnimationFunc(elem, property, arg_arr, state_name, apply_default, player) {
+
     var previous_player = player || null;
     if (!property) console.log('ERROR: Missing property');
 
@@ -65,6 +67,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     args.stateName = state_name;
 
     args.player = initPlayerFromArgs(elem[0], args, previous_player);
+
 
     return args;
 
@@ -95,7 +98,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     var preferences = RootService.getInspectorPreferences();
     var filledPreferences = {};
     for (key in preferences) {
-      console.log(key, preferences[key])
       if (preferences[key].length || typeof(preferences[key]) === 'boolean') {
         filledPreferences[key] = preferences[key];
       }
@@ -106,7 +108,10 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   function initPlayerFromArgs(elem, args, previous_player) {
     // args.player = getPlayerObj();
 
-      detectPlaybarControlElem();
+
+
+
+
 
 
     var playerObj = {state: {time: 0, active: false, paused: false}};
@@ -125,40 +130,46 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       }
       playerObj.tween = new Tweenable();
       playerObj.elem = elem;
-
-      RootService.addElemToInspector(playerObj);
     } else {
       playerObj = combinePreviousWithNewProp(args, previous_player);
     }
-    console.log('control', playerControlElems)
-    playerObj.control = playerControlElems;
-    if (playerObj.control && playerObj.control.ball && playerObj.control.ball.elem) {
-      playerObj.tweenConfig.from['ballControl'] = 'translateX(0px)';
-      playerObj.tweenConfig.to['ballControl'] = 'translateX(' + playerObj.control.bar.width + 'px)';
-      playerObj.tweenConfig.easing['ballControl'] = playerObj.tweenConfig.easing[Object.keys(playerObj.tweenConfig.easing)[0]];
-      !playerObj.prefs && applyInspectorGadgetPreferences(playerObj);
-    } else {
-      playerObj.control = false
+
+
+    if (elem.hasAttribute('inspector-elem')) {
+      RootService.addElemToInspector(playerObj);
     }
+
+    $timeout(function() {
+      playerObj.control = detectPlaybarControlElem();
+      if (playerObj.control && playerObj.control.ball && playerObj.control.ball.elem) {
+        playerObj.tweenConfig.from['ballControl'] = 'translateX(0px)';
+        playerObj.tweenConfig.to['ballControl'] = 'translateX(' + playerObj.control.bar.width + 'px)';
+        playerObj.tweenConfig.easing['ballControl'] = playerObj.tweenConfig.easing[Object.keys(playerObj.tweenConfig.easing)[0]];
+        !playerObj.prefs && applyInspectorGadgetPreferences(playerObj);
+      }
+    })
+    // detectPlaybarControlElem();
+
+
+
 
 
     //transform playerObj based on gadget preferences
 
 
     function applyPropToElem(state, args, time) {
-      if (args.control) {
+      if (args.control && args.control.ball.elem) {
         args.control.ball.elem.style.transform =  state['ballControl'];
       }
       args.state.time = time;
       for (prop in state) {
-        console.log(prop, state[prop])
         args.elem.style[prop] = state[prop];
       }
     }
 
     function startTween(state, args) {
-      console.log(args)
-      console.log('starting...', state, args);
+      // console.log(args)
+      // console.log('starting...', state, args);
     }
 
     function finishTween(state, player) {
@@ -246,12 +257,19 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       playerObj.reset = getResetFunc();
       playerObj.set = getSetFunction(playerObj);
       // playerObj.reverse = function(value) {tween.seek(value)};
-      // $timeout(function() {
-      //   playerObj.prefs.playInfinite && playerObj.play();
-      // })
+      $timeout(function() {
+        playerObj.prefs.playInfinite && playerObj.play();
+      })
+
       return playerObj
     }
-    playerObj.init(playerObj);
+    playerObj = playerObj.init(playerObj);
+    $timeout(function() {
+      if (playerObj.prefs && playerObj.prefs.autoPlay) {
+        console.log('detected auto play')
+          playerObj.play();
+      }
+    })
 
     return playerObj;
   }
@@ -387,6 +405,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   }
 
   function processStartArg(arg_str, prop, apply_default) {
+    arg_str = arg_str + '';
     if (arg_str && arg_str.trim() === '@') {
       return function(elem, prop) {
         return ele.style[prop];
