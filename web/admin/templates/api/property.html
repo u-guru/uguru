@@ -37,7 +37,7 @@
 					<ul class="p15-grid">
 						<li ng-click='refreshEasing(easing)' ng-repeat='easing in property.easings' class='weight-600 txt-18'>
 							<!-- on-init="p:[transform:translateY({{500*$index}}%):translateY(0%):{{100*$index}}:easeFromTo]:delay-500" -->
-                            <div class="bg bg-campus radius-2 p10y-p15x">{{easing}}</div>
+                            <div class="bg bg-campus radius-2 p10y-p15x" on-init="p:[transform:translateY(-{{50*$index}}%):translateY(0%):{{100*$index}}:easeFromTo]:delay-500">{{easing}}</div>
 						</li>
 					</ul>
 				</aside>
