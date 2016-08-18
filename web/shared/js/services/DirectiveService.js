@@ -201,8 +201,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
             }
           }
-
-          var elemArgs = parseArgs(formattedAttrValue, type, element);
+          var elemArgs = parseArgs(formattedAttrValue, args && args.dashed || type, element);
           for (key in elemArgs) {
             if ((argNames || supportedCommands).indexOf(key) > -1) {
               activateArg(key, elemArgs[key], scope, element);
@@ -1373,8 +1372,15 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processCSSPropArr(prop_arr, scope, elem)  {
       for (var i = 0; i < prop_arr.length; i++) {
         var indexPropDict = prop_arr[i];
+        indexPropDict.animProp &&  console.log(indexPropDict.animProp)
         if (indexPropDict.animProp) {
           indexPropDict.animProp.player.play();
+          console.log(indexPropDict.animProp.stateName, elem[0].getAttribute('inspector-elem'));
+          if (elem[0].getAttribute('inspector-elem') === indexPropDict.animProp.stateName) {
+            $timeout(function() {
+              indexPropDict.animProp.player.reset(indexPropDict.animProp.player);
+            }, 100)
+          }
           return;
         }
         if (indexPropDict.custom) {

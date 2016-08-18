@@ -1,5 +1,5 @@
 <!-- step-size="100" start-at="" end-at="" pause-at=""  active="true" selector="[inspector-elem]" state="on-init"-->
-<inspector-gadget  auto-play="false" play-infinite="false" >
+<inspector-gadget  auto-play="true" play-infinite="false" >
 </inspector-gadget>
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px">
@@ -33,7 +33,7 @@
 
 			<!-- ex: 2 inspect-trigger="when-house-return|2000" -->
 			<div class="team-card-container team-gabrie"
-				inspector-elem
+				inspector-elem="when-house-build"
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translateX(-362px) translateY(324px) translateZ(0px) rotateX(90deg) rotate(90deg)]"
 				when-house-build="p:[transform:rotateY(0deg) rotateX(90deg) translateX(-362px) translateY(324px) translateZ(0px) rotate(90deg):rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):250:easeOutCirc]"
