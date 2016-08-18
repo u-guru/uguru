@@ -25,10 +25,12 @@
 		on-click="s:[house-build:public]">
 		<li>
 			<div class="team-card-container team-gabrie"
+				inspector-elem
 				init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 				when-house-stack="p:[tr:translate3d(-99%#90%#0px) rotateX(90deg) rotateZ(90deg)]"
-				when-house-build="p:[transform:translateX(-99%) translateY(90%) translateZ(0) rotateX(90deg) rotateZ(90deg):rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px):1000:easeOutCirc]"
+				when-house-build="p:[transform:rotateY(0deg) rotateX(90deg) translateX(-362px) translateY(324px) translateZ(0px) rotate(90deg):rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):1000:easeOutCirc]"
 				when-house-return="p:[tr:none:delay-500]">
+				<!-- width - 366px; height - 359.5px -->
 				<a></a><a></a><a></a><a></a><a></a><a></a>
 				<div class="team-card-placeholder">
 					<div class="front">front</div>

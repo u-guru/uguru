@@ -202,7 +202,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             }
           }
 
-          var elemArgs = parseArgs(formattedAttrValue);
+          var elemArgs = parseArgs(formattedAttrValue, type, element);
           for (key in elemArgs) {
             if ((argNames || supportedCommands).indexOf(key) > -1) {
               activateArg(key, elemArgs[key], scope, element);
@@ -242,6 +242,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function parseArgs(string_args, state_name, elem) {
+      console.log(string_args, state_name, elem)
       string_args = UtilitiesService.replaceAll(string_args, ', ',  ',');
       string_args = UtilitiesService.replaceAll(string_args, '| ',  '| ');
       string_args = UtilitiesService.replaceAll(string_args, ' | ',  ' | ');
@@ -736,13 +737,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     //todo modularize
     function formatAndProcessArgs(type, string_args, base_dict, base_dict_key, custom_func, custom_args, state_name, elem) {
+
       var propDict = base_dict
       propDict.type = type;
       var generalArgs = '';
       if (isFirstArgAnArr(string_args)) {
         //array case
         var stringPropArgs = processStrArrToObj(string_args);
-
+        var hasPlayer = false;
         for (var i = 0; i < stringPropArgs.length; i++) {
           var parsedPropDict = {};
 
@@ -767,9 +769,12 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
               }
               parsedPropDict['default'] = true;
             }
-            processCustomArgsArray(type, key, value, string_args, parsedPropDict, custom_args, state_name, elem);
+            processCustomArgsArray(type, key, value, string_args, parsedPropDict, custom_args, state_name, elem, hasPlayer);
           }
           propDict[base_dict_key].push(parsedPropDict);
+          if (parsedPropDict.animProp) {
+            hasPlayer = parsedPropDict.animProp.player;
+          }
         }
       }
       //parseGeneralArgs
@@ -778,7 +783,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     }
 
-    function processCustomArgsArray(type, split_key, split_value, orig_str, arg_dict, d_custom_args, state_name, elem) {
+    function processCustomArgsArray(type, split_key, split_value, orig_str, arg_dict, d_custom_args, state_name, elem, hasPlayer) {
       var blacklistStates = PropertyService.getBlacklistStates();
       if (type === 'prop' && state_name && blacklistStates.indexOf(state_name) > -1) {
         delete arg_dict['default']
@@ -803,8 +808,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         endArgs && !(endArgs === startArgs) && arg_arr.push(endArgs);
 
         customArgs && customArgs.split(':').filter(function(a) {return a.length}).forEach(function(a) {arg_arr.push(a)})
-        console.log(arg_arr)
-        arg_dict.animProp = PropertyService.getFrameAnimationFunc(elem, propName, arg_arr, state_name, hasDefault);
+
+        arg_dict.animProp = PropertyService.getFrameAnimationFunc(elem, propName, arg_arr, state_name, hasDefault, hasPlayer);
 
       }
       if (arg_dict.default && type === 'prop' ) {
