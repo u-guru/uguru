@@ -380,7 +380,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   }
 
   function processStartArg(arg_str, prop, apply_default) {
-    if (arg_str.trim() === '@') {
+    if (arg_str && arg_str.trim() === '@') {
       return function(elem, prop) {
         return ele.style[prop];
       }
