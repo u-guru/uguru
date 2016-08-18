@@ -35,12 +35,13 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     }
     if (!playerControlElems.bar) {
       playerControlElems.bar = {elem: document.querySelector('[inspector-bar]'), width: null, height: null};
-      if (playerControlElems.bar.elem)
+      if (playerControlElems.bar.elem) {
         var barRect = playerControlElems.bar.elem.getBoundingClientRect();
         playerControlElems.bar.width = barRect.width;
         playerControlElems.bar.height = barRect.height;
       }
     }
+  }
   function getDefaultAnimProp(struct) {
     if (!struct) struct = defaultPropAnimations;
       var callback = function(response) {
@@ -129,16 +130,20 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     } else {
       playerObj = combinePreviousWithNewProp(args, previous_player);
     }
-
+    console.log('control', playerControlElems)
     playerObj.control = playerControlElems;
-    playerObj.tweenConfig.from['ballControl'] = 'translateX(0px)';
-    playerObj.tweenConfig.to['ballControl'] = 'translateX(' + playerObj.control.bar.width + 'px)';
-    playerObj.tweenConfig.easing['ballControl'] = playerObj.tweenConfig.easing[Object.keys(playerObj.tweenConfig.easing)[0]];
+    if (playerObj.control && playerObj.control.ball && playerObj.control.ball.elem) {
+      playerObj.tweenConfig.from['ballControl'] = 'translateX(0px)';
+      playerObj.tweenConfig.to['ballControl'] = 'translateX(' + playerObj.control.bar.width + 'px)';
+      playerObj.tweenConfig.easing['ballControl'] = playerObj.tweenConfig.easing[Object.keys(playerObj.tweenConfig.easing)[0]];
+      !playerObj.prefs && applyInspectorGadgetPreferences(playerObj);
+    } else {
+      playerObj.control = false
+    }
 
 
     //transform playerObj based on gadget preferences
-    !playerObj.prefs && applyInspectorGadgetPreferences(playerObj);
-    console.log(playerObj.prefs)
+
 
     function applyPropToElem(state, args, time) {
       if (args.control) {
@@ -146,11 +151,13 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       }
       args.state.time = time;
       for (prop in state) {
+        console.log(prop, state[prop])
         args.elem.style[prop] = state[prop];
       }
     }
 
     function startTween(state, args) {
+      console.log(args)
       console.log('starting...', state, args);
     }
 
@@ -239,9 +246,9 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       playerObj.reset = getResetFunc();
       playerObj.set = getSetFunction(playerObj);
       // playerObj.reverse = function(value) {tween.seek(value)};
-      $timeout(function() {
-        playerObj.prefs.playInfinite && playerObj.play();
-      })
+      // $timeout(function() {
+      //   playerObj.prefs.playInfinite && playerObj.play();
+      // })
       return playerObj
     }
     playerObj.init(playerObj);
