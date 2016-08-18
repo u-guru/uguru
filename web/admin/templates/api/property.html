@@ -19,10 +19,10 @@
                 </span>
             </li>
             <li ng-click="root.player.play()" ng-if='!root.player.state.active'>
-                <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-include='"shared/templates/components/svg/main/play.html"'></span>
+                <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' on-click="send:[show-pause:public]" when-show-pause="p:[opacity:swingOut]" ng-include='"shared/templates/components/svg/main/play.html"'></span>
             </li>
-            <li ng-click='root.player.pause()' ng-if='root.player.state.active'>
-                <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-include='"shared/templates/components/svg/main/pause.html"'></span>
+            <li ng-click='root.player.pause()'  when-receive-on="p:[opacity:0:1:500:bouncePast, scale:0:1:1000:easeInQuint]">
+                <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' on-click="send:[show-play:public] | p:[opacity:1:0:easeInOutQuart]" ng-include='"shared/templates/components/svg/main/pause.html"'></span>
             </li>
             <li ng-click='root.player.reset(root.player)' ng-if='!root.player.state.active'>
                 <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-include='"shared/templates/components/svg/main/sync.html"'></span>
