@@ -49,45 +49,8 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
 	})
   }
 
-  // function initPropertyObj(elem, property, end, ){
-
-  // }
-  // $timeout(function() {
-  // 	calculateFPS();
-  // }, 2000);
   apc.player = {};
 
-  $timeout(function() {
-  	$scope.$watch('root.inspector.players', function(new_players, old_player) {
-  		if ($state.current.name === 'root.api') {
-  			// for (key in new_players) {
-  				$timeout(function() {
-  					console.log(new_players);
-  					apc.player = new_players[0].reset(new_players[0]);
-  					apc.player.play();
-  				}, 1000)
-
-  			// }
-  			// apc.player.play = new_players.play;
-  			// apc.player = new_players[0];
-  			// apc.player.stop(true);
-  			// $timeout(function() {
-
-  			// 	apc.player.play();
-  			// 	$timeout(function() {
-  			// 		$scope.$apply();
-  			// 	})
-  			// }, 1000)
-  			// apc.player.reset();
-  			// $timeout(function() {
-
-  			// 	apc.player.seek(-1);
-  			// 	apc.player.resume();
-  			// }, 100)
-
-  		}
-  	})
-  }, 500)
   function stepForward(elem, properties) {
 	return function() {
 	  for (var i = 0 ; i < properties.length; i++) {

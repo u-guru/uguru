@@ -1,4 +1,4 @@
-<inspector-gadget selector="[inspector-elem]"  default-state="on-init" auto-play="true" start-at=""> </inspector-gadget>
+<inspector-gadget active="true" selector="[inspector-elem]" state="on-init" auto-play="true" play-infinite="false" step-size="100" start-at="" end-at="" pause-at=""> </inspector-gadget>
 
 <div class='bg-charcoal' ng-controller="AdminPropertyController as apc">
     <span init-with="p:[display:none, opacity:0]">
@@ -10,21 +10,31 @@
         <span class='p15-grid absolute right-0 top-0'> {{apc.count}} </span>
     </div>
     <div class='bg-transparent absolute right-0' style='width:85%;z-index:1000;'>
-        <ul class='flex-wrap-center'>
-            <li ng-click="apc.player.play()" >
+        <ul class='flex-wrap-center ugrid-5 absolute right-0 p15-grid' style='width:20%;'>
+            <li ng-click='root.player.stepTo(-100)'>
+                <span  class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'>
+                    <svg style='transform:rotate(-180deg)' viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path d="M68.3635106,20.0921155 C68.3635106,16.727533 71.0974015,14 74.454538,14 L74.454538,14 C77.8185196,14 80.5455654,16.7345657 80.5455654,20.0921155 L80.5455654,79.9078845 C80.5455654,83.272467 77.8116745,86 74.454538,86 L74.454538,86 C71.0905565,86 68.3635106,83.2654343 68.3635106,79.9078845 L68.3635106,20.0921155 Z M65.6106483,47.0463201 C66.5720751,47.8852207 67.3635106,48.7075094 67.3635106,50.0226176 C67.3635106,51.3349572 66.8005882,52.132328 65.6106483,52.9961465 L23.5085114,85.7243441 C22.8090385,86.2005517 20.0362277,86.4054318 20,83.3433062 L20,16.6991604 C20.0027867,13.8668327 22.5359376,13.6425721 23.5085114,14.3208911 L65.6106483,47.0463201 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </span>
+            </li>
+            <li ng-click="root.player.play()" ng-if='!root.player.state.active'>
                 <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-include='"shared/templates/components/svg/main/play.html"'></span>
             </li>
-            <li ng-click='apc.player.pause()'>
+            <li ng-click='root.player.pause()' ng-if='root.player.state.active'>
                 <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-include='"shared/templates/components/svg/main/pause.html"'></span>
             </li>
-            <li>
-                <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-click="apc.player = apc.player.reset(apc.player)" ng-include='"shared/templates/components/svg/main/sync.html"'></span>
+            <li ng-click='root.player.reset(root.player)' ng-if='!root.player.state.active'>
+                <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-include='"shared/templates/components/svg/main/sync.html"'></span>
             </li>
-
-            <li>
-                <span class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke' ng-click="apc.player.stepTo(500)" ng-include='"shared/templates/components/svg/main/skip.html"'></span>
+            <li ng-click='root.player.stepTo(100)'>
+                <span class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'  ng-include='"shared/templates/components/svg/main/skip.html"'></span>
             </li>
         </ul>
+        <div class='m10y player absolute' style='width:75%;left:2.5%;'>
+            <hr class='full-x relative' inspector-bar>
+            <div class='m05y round bg-azure z-index-99 top-0 absolute p15-grid' inspector-ball> </div>
+        </div>
     </div>
     <div class='bg-transparent full-x relative' style='height:calc(100% - 68px);'>
         <div class='full-xy flex-vertical-center relative'>
@@ -35,9 +45,9 @@
 				<aside class='bg-campus-10p full-y weight-500 txt-24 text-center relative overflow-auto no-scrollbar' style='min-width:15%;'>
 					<h1 class='weight-600 full-x bg-gold p15x-p10y'> Property Attribute </h1>
 					<ul class="p15-grid">
-						<li ng-click='refreshEasing(easing)' ng-repeat='easing in property.easings' class='weight-600 txt-18'>
-							<!-- on-init="p:[transform:translateY({{500*$index}}%):translateY(0%):{{100*$index}}:easeFromTo]:delay-500" -->
-                            <div class="bg bg-campus radius-2 p10y-p15x" on-init="p:[transform:translateY(-{{50*$index}}%):translateY(0%):{{100*$index}}:easeFromTo]:delay-500">{{easing}}</div>
+						<li ng-click='root.player.set("easing", easing)' ng-repeat='easing in property.easings' class='weight-600 txt-18'>
+							<!-- on-init="p:[transform:translateY(-{{50*$index}}%):translateY(0%):{{100*$index}}:easeFromTo]:delay-500" -->
+                            <div class="bg bg-campus radius-2 p10y-p15x" >{{easing}}</div>
 						</li>
 					</ul>
 				</aside>
@@ -58,18 +68,19 @@
                 </li>
             </ul>
 
-            <div class='flex-vertical-center absolute z-index-99 top-0 right-0' style="width: 85%; height: calc(100% - 128px);" ng-controller="AdminPropertyController">
-                <div id='player-stage' class='flex-wrap-center stage-elem-container perspective-container full-xy relative fix-abs overflow-hidden'>
-                    <div ng-repeat="example in property.examples" ng-if='property.activeIndex === $index'
-						inspector-elem
-						ng-include="root.base_url + 'shared/templates/components/demo/card-house-single.tpl'"
-						style="transform-origin: center bottom"
-						on-init="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]:delay-250"></div>
-                    <div ng-repeat="example in property.examples" ng-if='example.properties && property.activeIndex === $index' style='opacity:1; transform-origin:center center;'
-                        inspector-elem class='opacity-100p'
-                        ng-include="root.base_url + 'shared/templates/components/demo/card.tpl'"
+            <div class='flex-vertical-center absolute z-index-99 top-0 right-0' style="width: 85%; height: calc(100% - 128px);">
+                <div id='player-stage' class='flex-wrap-center stage-elem-container full-xy relative fix-abs overflow-hidden perspective-container'>
+                    <!-- <div ng-repeat="example in property.examples" ng-if='example.property && property.activeIndex === $index' style='opacity:1; transform-origin:center center;'
+						inspector-elem class='opacity-100p'
+						ng-include="root.base_url + 'shared/templates/components/demo/card.tpl'"
+                        init-with="{{example.initWith}}"
+						on-init="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]:delay-250"></div> -->
+                    <div ng-repeat="example in property.examples" ng-if='example.properties && property.activeIndex === $index'
+                        inspector-elem class='opacity-100p width-128 height-128 bg-auburn'
                         init-with="{{example.initWith}}"
                         on-init="p:[{{example.properties[0].property}}:{{example.properties[0].start}}:{{example.properties[0].end}}:{{example.properties[0].duration}}:{{example.properties[0].ease}},{{example.properties[1].property}}:{{example.properties[1].start}}:{{example.properties[1].end}}:{{example.properties[1].duration}}:{{example.properties[1].ease}}]:delay-250"></div>
+
+                        <!-- ng-include="root.base_url + 'shared/templates/components/demo/card.tpl'" -->
                 </div>
             </div>
         </div>
