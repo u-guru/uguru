@@ -32,6 +32,7 @@ angular.module('uguru.shared.controllers', [])
 function pushElemPlayer(r_inspector) {
   return function(elem) {
     r_inspector.players.push(elem);
+    console.log('root inspector elems', r_inspector.players)
   }
 }
 
