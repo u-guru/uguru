@@ -1,4 +1,4 @@
-<div class="full-xy flex-center-wrap perspective-container" types='prop, anim-1, anim-2, 3d, stroke, new-prop' default-type="new-prop">
+<div class="full-xy flex-center-wrap perspective-container" types='prop, anim-1, anim-2, 3d, stroke, new-prop' default-type="3d">
 	<ul class="full-x border-1 border-slate" ng-if='activeType === "prop"'>
 		<li class="border-1 border-slate">
 			<div class="flex-center" style="height: 200px">
@@ -339,21 +339,46 @@
 		<li class="border-1 border-slate">
 			<div class="flex-center" style="height: 200px">
 				<h1 class="txt-48 txt-robin semibold flex">
-					<span class="block"
-						init-with="p:[op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
-						on-init="p:[op:1:delay-100, tr:rotateX(0deg) rotateY(0deg):delay-100]">q</span>
-					<span class="block"
-						init-with="p:[op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
-						on-init="p:[op:1:delay-200, tr:rotateX(0deg) rotateY(0deg):delay-200]">u</span>
-					<span class="block"
-						init-with="p:[op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
-						on-init="p:[op:1:delay-300, tr:rotateX(0deg) rotateY(0deg):delay-300]">i</span>
-					<span class="block"
-						init-with="p:[op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
-						on-init="p:[op:1:delay-400, tr:rotateX(0deg) rotateY(0deg):delay-400]">c</span>
-					<span class="block"
-						init-with="p:[op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
-						on-init="p:[op:1:delay-500, tr:rotateX(0deg) rotateY(0deg):delay-500]">k</span>
+					<div class="relative">
+						<span class="block absolute top-0 left-0 full-xy txt-white"
+							init-with="p:[op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
+							on-init="p:[op:1:delay-100, tr:rotateX(0deg) rotateY(0deg):delay-100]">q</span>
+						<span class="block relative z-index-2"
+							init-with="p:[backface-visibility:hidden, op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
+							on-init="p:[op:1:delay-100, tr:rotateX(0deg) rotateY(0deg):delay-100]">q</span>
+					</div>
+					<div class="relative">
+						<span class="block absolute top-0 left-0 full-xy txt-white"
+							init-with="p:[op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
+							on-init="p:[op:1:delay-200, tr:rotateX(0deg) rotateY(0deg):delay-200]">u</span>
+						<span class="block relative z-index-2"
+							init-with="p:[backface-visibility:hidden, op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
+							on-init="p:[op:1:delay-200, tr:rotateX(0deg) rotateY(0deg):delay-200]">u</span>
+					</div>
+					<div class="relative">
+						<span class="block absolute top-0 left-0 full-xy txt-white"
+							init-with="p:[op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
+							on-init="p:[op:1:delay-300, tr:rotateX(0deg) rotateY(0deg):delay-300]">i</span>
+						<span class="block relative z-index-2"
+							init-with="p:[backface-visibility:hidden, op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
+							on-init="p:[op:1:delay-300, tr:rotateX(0deg) rotateY(0deg):delay-300]">i</span>
+					</div>
+					<div class="relative">
+						<span class="block absolute top-0 left-0 full-xy txt-white"
+							init-with="p:[op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
+							on-init="p:[op:1:delay-400, tr:rotateX(0deg) rotateY(0deg):delay-400]">c</span>
+						<span class="block relative z-index-2"
+							init-with="p:[backface-visibility:hidden, op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
+							on-init="p:[op:1:delay-400, tr:rotateX(0deg) rotateY(0deg):delay-400]">c</span>
+					</div>
+					<div class="relative">
+						<span class="block absolute top-0 left-0 full-xy txt-white"
+							init-with="p:[op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
+							on-init="p:[op:1:delay-500, tr:rotateX(0deg) rotateY(0deg):delay-500]">k</span>
+						<span class="block relative z-index-2"
+							init-with="p:[backface-visibility:hidden, op:0, tro:left bottom, tr:rotateX(-220deg) rotateY(45deg), t:all 1000ms cubic-bezier(0.215#0.61#0.355#1)]"
+							on-init="p:[op:1:delay-500, tr:rotateX(0deg) rotateY(0deg):delay-500]">k</span>
+					</div>
 				</h1>
 			</div>
 			<!-- 48 semibold 1000 * 200 -->

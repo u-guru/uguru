@@ -21,17 +21,17 @@
             "properties": [
                 {
                     "property": "transform",
-                    "start": "rotateX(-180deg) rotateY(-180deg)",
-                    "end": "rotateX(-70deg) rotateY(-70deg)",
+                    "start": "rotateX(0deg)",
+                    "end": "rotateX(0deg)",
                     "duration": "2000",
                     "ease": "easeInSine",
                     "delay": "500"
                 },
                 {
-                    "property": "background-color",
-                    "start": "rgb(255#255#255)",
-                    "end": "rgb(0#0#0)",
-                    "duration": "2000",
+                    "property": "border-radius",
+                    "start": "0%",
+                    "end": "100%",
+                    "duration": "500",
                     "ease": "bouncePast"
                 },
                 {
@@ -127,6 +127,17 @@
             "property": "transform",
             "start": "translateX(-99%) translateY(-30%) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(90deg)",
             "end": "translateX(-99%) translateY(30%) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(90deg)",
+            "duration": "1000",
+            "ease": "easeOutBounce",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "border radius",
+            "property": "border-radius",
+            "start": "5px 5px 5px 5px",
+            "end": "15px 50px 30px 5px",
             "duration": "1000",
             "ease": "easeOutBounce",
             "fillMode": null,
