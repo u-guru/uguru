@@ -18,15 +18,22 @@
         {
             "initWith": "opacity:1",
             "exampleName": "rotateSkew",
-            "property": "transform",
-
-            "start": "rotateX(-180deg) rotateY(-180deg)",
-            "end": "rotateX(-70deg) rotateY(-70deg)",
-            "duration": "500",
-            "ease": "easeInSine bouncePast",
-            "fillMode": null,
-            "forwards": null,
-            "iterationCount": null
+            "properties": [
+                {
+                    "property": "transform",
+                    "start": "rotateX(-180deg) rotateY(-180deg)",
+                    "end": "rotateX(-70deg) rotateY(-70deg)",
+                    "duration": "500",
+                    "ease": "easeInSine bouncePast"
+                },
+                {
+                    "property": "opacity",
+                    "start": "0",
+                    "end": "1",
+                    "duration": "450",
+                    "ease": "easeInSine bouncePast"
+                }
+            ]
         },
         {
             "exampleName": "opacity",
