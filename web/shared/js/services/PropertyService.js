@@ -36,7 +36,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       XHRService.getJSONFile(request_type, url, callback, {})
   }
 
-  function getFrameAnimationFunc(elem, property, arg_arr, state_name, apply_default) {
+  function getFrameAnimationFunc(elem, property, arg_arr, state_name, apply_default, player) {
+    var previous_player = player || null;
     if (!property) console.log('ERROR: Missing property');
 
 
@@ -44,25 +45,25 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     args.stateNameCamel = UtilitiesService.camelCase(state_name);
     args.stateName = state_name;
 
-
-    args.player = initPlayerFromArgs(elem[0], args)
+    console.log(args, player);
+    args.player = initPlayerFromArgs(elem[0], args, previous_player);
 
     return args;
 
     // console.log(property, arg_arr, state_name, apply_default);
   }
 
-  function initPlayerFromArgs(elem, args) {
+  function initPlayerFromArgs(elem, args, previous_player) {
     // args.player = getPlayerObj();
 
     var playerObj = {};
+    if (!previous_player) {
+      playerObj.elem = elem;
+    } else {
+      playerObj = previous_player;
+    }
 
 
-    playerObj.elem = elem;
-
-    $timeout(function() {
-
-    })
     args.elem = elem;
     playerObj.tween = new Tweenable();
     playerObj.tweenConfig = {

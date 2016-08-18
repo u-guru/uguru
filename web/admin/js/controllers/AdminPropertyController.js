@@ -62,8 +62,9 @@ function($scope, $state, $timeout, $localstorage, $compile, AnimationService, Ut
   		if ($state.current.name === 'root.api') {
   			// for (key in new_players) {
   				$timeout(function() {
+  					console.log(new_players);
   					apc.player = new_players[0].reset(new_players[0]);
-
+  					apc.player.play();
   				}, 1000)
 
   			// }
