@@ -98,7 +98,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     var preferences = RootService.getInspectorPreferences();
     var filledPreferences = {};
     for (key in preferences) {
-      if (preferences[key].length || typeof(preferences[key]) === 'boolean') {
+
+      if (preferences[key].length || preferences[key] > 0 || typeof(preferences[key]) === 'boolean') {
         filledPreferences[key] = preferences[key];
       }
     }
@@ -173,6 +174,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     }
 
     function finishTween(state, player) {
+        console.log('finishing...')
         player.state.active = false;
         player.state.time = 0;
         player.state.active = false;
@@ -182,6 +184,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           player.state.active = false;
         })
         player = player.init(player);
+
       }
 
     function getPlayFunction(player) {
@@ -208,11 +211,27 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     }
 
     function getStepToFunction(player) {
-      return function(ms) {
+      return function(direction) {
+        var ms = parseFloat(player.prefs && player.prefs.stepSize || 100);
+        var seekTotal;
+        if (direction === 'forwards') {
+          player.direction = 'normal';
+          seekTotal = player.state.time + ms;
+        } else if (direction === 'reverse'){
+          ms = ms * -1;
+            if (player.state.time < Math.abs(ms) && player.state.time > 0) {
+              seekTotal = 0;
+            }
+            else if (player.state.time === 0){
+              seekTotal = player.tweenConfig.duration + ms;
+            } else {
+              seekTotal = player.state.time + ms
+            }
+            console.log('new total', seekTotal)
+        }
 
-        var ms = parseFloat(ms);
 
-        var seekTotal = player.state.time + ms;
+
         console.log('stepping', ms, 'to', seekTotal);
         player.tween.seek(seekTotal);
       }
@@ -260,7 +279,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       $timeout(function() {
         playerObj.prefs.playInfinite && playerObj.play();
       })
-
       return playerObj
     }
     playerObj = playerObj.init(playerObj);
