@@ -1,4 +1,4 @@
-<div class='bg-transparent absolute right-0' style='width:85%;z-index:1000;'  ng-if='root.inspector.players.length' ng-repeat='player in root.inspector.players'>
+<div class='absolute full-x' style='z-index:1000;height:65px;'  ng-if='root.inspector.players.length' ng-repeat='player in root.inspector.players'>
     <ul class='flex-wrap-center ugrid-5 absolute right-0 p15-grid' style='width:20%;' ng-if='player.play'>
         <li ng-click='player.stepTo("reverse")'>
             <span  class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'>
@@ -7,10 +7,10 @@
                 </svg>
             </span>
         </li>
-        <li ng-click="player.play()" ng-if='!root.player.state.active'>
-            <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke'  ng-include='"shared/templates/components/svg/main/play.html"'></span>
+        <li ng-click="player.play()" >
+            <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-class="{'opacity-50p':player.state.active}"  ng-include='"shared/templates/components/svg/main/play.html"'></span>
         </li>
-        <li ng-click='player.pause()' ng-if='root.player.state.active' when-receive-on="p:[opacity:0:1:500:bouncePast, scale:0:1:1000:easeInQuint]">
+        <li ng-click='player.state.time > 0 && player.pause()' ng-class="{'opacity-50p':!player.state.active}">
             <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke'  ng-include='"shared/templates/components/svg/main/pause.html"'></span>
         </li>
         <li ng-click='player.reset(player)' ng-if='!root.player.state.active'>
@@ -20,8 +20,8 @@
             <span class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'  ng-include='"shared/templates/components/svg/main/skip.html"'></span>
         </li>
     </ul>
-    <div class='m10y player absolute' style='width:75%;left:2.5%;'>
+    <div class='m10y player absolute' style='width:75%;left:2.5%; top:10%;'>
         <hr class='full-x relative' inspector-bar>
-        <div class='m05y round bg-azure z-index-99 top-0 absolute p15-grid' inspector-ball> </div>
+        <div class='m05y round bg-{{player.prefs.ballColor || "azure"}} z-index-99 top-0 absolute p15-grid' inspector-ball> </div>
     </div>
 </div>
