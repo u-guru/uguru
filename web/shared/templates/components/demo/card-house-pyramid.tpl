@@ -1,12 +1,7 @@
 <inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="0.5x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'> </inspector-gadget>
 <!-- @samir try adding start-at="t:20%" - autoplays even when set to false -->
 
-<div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:10%; left:50%; margin-left:-300px;" init-with="send:[pyramid-init:public]">
-	<!-- <button class="bg-slate m15bottom"
-
-		when-pyramid-init="p:[transform:translateY(0px):translateY(500px):1000:easeOutCirc]"
-		inspector-toggle="on-click|10000"
-		>Toggle</button> -->
+<div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:50%; left:50%; margin-left:-300px; margin-top: -300px;" init-with="send:[pyramid-init:public]">
 	<div class="playing-card-container">
 		<div class="playing-card play-diamond c1"
 			init-with="p:[transform:rotateY(0deg) rotateX(-90deg) translateZ(28px), left:0px, top:0px, z-index:15]"
