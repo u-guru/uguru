@@ -1,6 +1,6 @@
 <!-- <inspector-gadget ball-color="smoke" ball-ease="easeTo" reverse-speed="10x" start-at="123" speed="0.5" class="bottom-0 width-75p bg-azure" auto-play="true"  step-size="25" play-infinite="false" >
 </inspector-gadget> -->
-<div class="absolute perspective-container" style="width:600px; height:600px; top:10%; left:50%; margin-left:-300px;">
+<div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:10%; left:50%; margin-left:-300px;">
 	<button class="bg-slate m15bottom"
 		init-default
 		on-click="send:[pyramid-init:public]">Toggle</button>

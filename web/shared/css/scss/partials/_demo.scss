@@ -1,5 +1,23 @@
 @import 'mixin';
 
+#pyramid {
+	.playing-card-container {
+		width: 100px;
+		height: 150px;
+		.playing-card {
+			width: 100px;
+			height: 150px;
+			transform-origin: left top !important;
+			> div {
+				svg {
+					width: auto;
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+
 .card-house {
 	// max-width: 777px;
 	max-height: 764px;
