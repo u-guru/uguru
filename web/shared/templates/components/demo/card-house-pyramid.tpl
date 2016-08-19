@@ -1,4 +1,5 @@
-<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed=".5x" start-at="t:20%" class="bottom-0 bg-azure" auto-play="false" step-size="25" play-infinite="false" ng-if='root.inspector'> </inspector-gadget>
+<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed=".5x" class="bottom-0 bg-azure" auto-play="false" step-size="25" play-infinite="false" ng-if='root.inspector'> </inspector-gadget>
+<!-- @samir try adding start-at="t:20%" - autoplays even when set to false -->
 
 <div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:10%; left:50%; margin-left:-300px;">
 	<button class="bg-slate m15bottom"
