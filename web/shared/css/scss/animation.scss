@@ -1,5 +1,11 @@
 @import 'partials/animate';
 
+@keyframes scale-hover {
+	0% { transform: translateY(0) scale(1); }
+	50% { transform: translateY(-5px) scale(1.01); }
+	100% { transform: translateY(0) scale(1); }
+}
+
 /*  http://goo.gl/yc10Zg */
 @keyframes scoop-enter {
   0% { transform: matrix3d(0.8, 0, 0, 0, 0, 0.8, 0, 0, 0, 0, 1, 0, 0, 38.4, 0, 1); opacity:0;}

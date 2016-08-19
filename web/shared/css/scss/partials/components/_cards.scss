@@ -1,6 +1,21 @@
 @import '../mixin';
 
 // team card
+.card-house {
+	.team-card-container {
+		.team-card {
+			.team-link {
+				top: auto!important;
+				margin-top: -38px!important;
+				transform: translateZ(1px);
+			}
+			.team-ribbon {
+				top: auto!important;
+				margin-top: -23px!important;
+			}
+		}
+	}
+}
 .team-card-container {
 	padding-left: 55px;
 	padding-right: 55px;

@@ -3447,6 +3447,14 @@ fieldset.no-border * {
             width: 30px;
             height: 15px; }
 
+.card-house .team-card-container .team-card .team-link {
+  top: auto !important;
+  margin-top: -38px !important;
+  transform: translateZ(1px); }
+.card-house .team-card-container .team-card .team-ribbon {
+  top: auto !important;
+  margin-top: -23px !important; }
+
 .team-card-container {
   padding-left: 55px;
   padding-right: 55px;
@@ -17011,7 +17019,6 @@ input[type=range] {
         color: white; }
 
 .card-house {
-  max-width: 777px;
   max-height: 764px;
   transform-style: preserve-3d; }
   .card-house * {
