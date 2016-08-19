@@ -1379,6 +1379,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (elem[0].getAttribute('inspector-elem') === indexPropDict.animProp.stateName) {
             $timeout(function() {
               indexPropDict.animProp.player.reset(indexPropDict.animProp.player);
+              if (indexPropDict.animProp.player.prefs && indexPropDict.animProp.player.prefs.autoPlay) {
+                indexPropDict.animProp.player.play()
+              }
             }, 100)
           }
           return;

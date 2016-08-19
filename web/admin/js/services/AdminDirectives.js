@@ -36,7 +36,7 @@ angular.module('uguru.admin')
             link:  {pre: function(scope, element, attr) {
                 scope.triggerEvents = ['on-click', 'on-mouse-leave', 'on-mouse-enter', 'on-mouse-over'];
                 scope.classEvents = ['on-enter', 'on-exit', 'on-init', 'init-with'];
-                scope.supportedAttributes = ['active', 'selector', 'state', 'autoPlay', "playInfinite", 'stepSize', 'startAt', 'endAt', 'pauseAt', 'visible']
+                scope.supportedAttributes = ['active', 'selector', 'ballColor', 'bgColor', 'state', 'autoPlay', "playInfinite", 'stepSize', 'startAt', 'endAt', 'pauseAt', 'visible']
 
                         for (key in attr) {
                             if (scope.supportedAttributes.indexOf(key) > -1) {

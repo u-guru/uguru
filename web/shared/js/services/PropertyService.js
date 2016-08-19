@@ -184,7 +184,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           player.state.active = false;
         })
         player = player.init(player);
-
       }
 
     function getPlayFunction(player) {
@@ -246,9 +245,11 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         player.state.paused = false;
         player.tween.dispose();
         player = player.init(player);
-        $timeout(function() {
-          playerObj.prefs.autoPlay && playerObj.play()
-        })
+
+        // player.stepTo('forwards')
+        // $timeout(function() {
+        //   playerObj.prefs.autoPlay && playerObj.play()
+        // })
       }
     }
 
