@@ -68,7 +68,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     parent: 'root',
     url:'/admin/api/property',
     templateUrl: 'admin/templates/api/property.html',
-    controller: ['$scope', '$timeout', 'TweenService', '$compile', function($scope, $timeout, TweenService, $compile) {
+    controller: ['$scope', '$timeout', 'TweenService', '$compile', 'PropertyService', function($scope, $timeout, TweenService, $compile, PropertyService) {
       $scope.refreshEasing = function(easing) {
         console.log(easing);
         var elemContainer = document.querySelector('#player-stage');
@@ -79,18 +79,13 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
           $scope.property.activeIndex = temp;
         })
       }
-      $timeout(function() {
-        var xhr = new XMLHttpRequest();
-        xhr.open( 'GET', '/admin/spec/property.json', true );
+      function callback(responseDict) {
+        responseDict.exampleIndex = 1
+        $scope.property = {examples: responseDict.examples, activeIndex: responseDict.exampleIndex, easings: TweenService.getAllEasing()};
+        $scope.templates = {components: responseDict};
+      }
+      PropertyService.getPropJson({}, callback);
 
-
-        xhr.onload = function () {
-            var responseDict = JSON.parse(xhr.responseText);
-            $scope.property = {examples: responseDict.examples, activeIndex: responseDict.exampleIndex, easings: TweenService.getAllEasing()};
-            $scope.templates = {components: responseDict};
-        };
-        xhr.send();
-      })
     }]
   })
   .state('root.dev.inspect', {

@@ -1,4 +1,11 @@
-<inspector-gadget ball-color="smoke" duration-format="s" start-at="123" speed="0.5" class="bottom-0 width-75p bg-azure" auto-play="true"  step-size="25" play-infinite="false" >
+<!--
+precisions
+fast forward speed
+breakproints
+-->
+<!-- <inspector-gadget ball-color="smoke" ball-ease="easeTo" reverse-speed="10x" start-at="123" speed="0.5" class="bottom-0 width-75p bg-azure" auto-play="true"  step-size="25" play-infinite="false" >
+</inspector-gadget> -->
+<inspector-gadget ball-color="smoke" reverse-speed="10" speed="1x" start-at="123" class="bottom-0 bg-azure" auto-play="true"  step-size="25" play-infinite="false" ng-if='root.inspector'>
 </inspector-gadget>
 
 <div class="full-xy flex-center-wrap perspective-container">
@@ -55,8 +62,9 @@
 		on-init="s:[house-stack:public]"
 		when-house-stack="s:[house-build:public, header-build:public:delay-250]:delay-2000"
 		when-house-build="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]"
-		when-house-return="p:[animation:none] | s:[house-rotate:public:delay-500]">
-		<!-- inspect-trigger="on-click|2000" -->
+		when-house-return="p:[animation:none] | s:[house-rotate:public:delay-500]"
+		inspect-trigger="on-click|0">
+
 		<!-- ex: 2 inspect-trigger="when-house-return|2000" -->
 		<!-- inspector-elem="when-house-build" -->
 		<li init-with="p:[op:0, tro:center center, t:all 500ms ease-out]"
@@ -138,13 +146,13 @@
 						<div class="team-ribbon">
 							<div class="team-ribbon-center"
 								init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
-								when-gabrie-ribbon-expand="p:[tr:translateZ(0) scaleX(1), t:transform 1000ms linear]">
+								when-gabrie-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:linear]">
 								<div class="team-ribbon-left"
 									init-with="p:[op:0, tr:translateZ(0) translateX(50px)]"
-									when-gabrie-ribbon-expand="p:[op:1:delay-250, tr:translateZ(0) translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									when-gabrie-ribbon-expand="p:[op:1:delay-250, transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine:delay-250, t:opacity 150ms linear]"></div>
 								<div class="team-ribbon-right"
 									init-with="p:[op:0, tr:translateZ(0) translateX(-50px)]"
-									when-gabrie-ribbon-expand="p:[op:1:delay-250, tr:translateZ(0) translateX(0):delay-250, t:opacity 150ms linear#transform 500ms ease-out]"></div>
+									when-gabrie-ribbon-expand="p:[op:1:delay-250, transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine:delay-250, t:opacity 150ms linear]"></div>
 							</div>
 							<div class="team-ribbon-left-corner"
 								init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
