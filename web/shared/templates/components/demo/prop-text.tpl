@@ -1,6 +1,6 @@
 <div class="full-xy flex-center-wrap perspective-container" types='prop, anim-1, anim-2, 3d, stroke, new-prop' default-type="3d">
-	<ul class="full-x border-1 border-slate" ng-if='activeType === "prop"'>
-		<li class="border-1 border-slate">
+	<ul class="full-x" ng-if='activeType === "prop"'>
+		<li>
 			<div class="flex-center" style="height: 200px">
 				<h1 class="txt-48 txt-robin semibold flex">
 					<span class="block"
@@ -22,7 +22,7 @@
 			</div>
 			<!-- 48 semibold 1000 * 200 -->
 		</li>
-		<li class="border-1 border-slate">
+		<li>
 			<div class="flex-center" style="height: 200px">
 				<svg width="1000px" height="200px" viewBox="0 0 1000 200">
 				    <g fill-rule="evenodd" font-size="48" font-family="Source Sans Pro" font-weight="600" fill="#2BB3B8">
@@ -60,7 +60,7 @@
 				</svg>
 			</div>
 		</li>
-		<li class="border-1 border-slate flex-center full-x">
+		<li class="flex-center full-x">
 			<div class="flex-center relative" style="height: 200px; width: 1000px;">
 				<svg class="absolute top-0 left-0" width="1000px" height="200px" viewBox="0 0 1000 200">
 				    <g fill-rule="evenodd" font-size="48" font-family="Source Sans Pro" font-weight="600" fill="#2BB3B8"
@@ -111,8 +111,8 @@
 		</li>
 	</ul>
 
-	<ul class="full-x border-1 border-slate" ng-if='activeType === "anim-1"'>
-		<li class="border-1 border-slate">
+	<ul class="full-x" ng-if='activeType === "anim-1"'>
+		<li>
 			<div class="flex-center" style="height: 200px">
 				<h1 class="txt-48 txt-robin semibold flex">
 					<span class="block"
@@ -134,7 +134,7 @@
 			</div>
 			<!-- 48 semibold 1000 * 200 -->
 		</li>
-		<li class="border-1 border-slate">
+		<li>
 			<div class="flex-center" style="height: 200px">
 				<svg width="1000px" height="200px" viewBox="0 0 1000 200">
 					<g fill-rule="evenodd" font-size="48" font-family="Source Sans Pro" font-weight="600" fill="#2BB3B8">
@@ -172,7 +172,7 @@
 				</svg>
 			</div>
 		</li>
-		<li class="border-1 border-slate flex-center full-x">
+		<li class="flex-center full-x">
 			<div class="flex-center relative" style="height: 200px; width: 1000px;">
 				<svg class="absolute top-0 left-0" width="1000px" height="200px" viewBox="0 0 1000 200">
 					<g fill-rule="evenodd" font-size="48" font-family="Source Sans Pro" font-weight="600" fill="#2BB3B8"
@@ -223,8 +223,8 @@
 		</li>
 	</ul>
 
-	<ul class="full-x border-1 border-slate" ng-if='activeType === "anim-2"'>
-		<li class="border-1 border-slate">
+	<ul class="full-x" ng-if='activeType === "anim-2"'>
+		<li>
 			<div class="flex-center" style="height: 200px">
 				<h1 class="txt-48 txt-robin semibold flex">
 					<span class="block"
@@ -246,7 +246,7 @@
 			</div>
 			<!-- 48 semibold 1000 * 200 -->
 		</li>
-		<li class="border-1 border-slate">
+		<li>
 			<div class="flex-center" style="height: 200px">
 				<svg width="1000px" height="200px" viewBox="0 0 1000 200">
 					<g fill-rule="evenodd" font-size="48" font-family="Source Sans Pro" font-weight="600" fill="#2BB3B8">
@@ -284,7 +284,7 @@
 				</svg>
 			</div>
 		</li>
-		<li class="border-1 border-slate flex-center full-x">
+		<li class="flex-center full-x">
 			<div class="flex-center relative" style="height: 200px; width: 1000px;">
 				<svg class="absolute top-0 left-0" width="1000px" height="200px" viewBox="0 0 1000 200">
 					<g fill-rule="evenodd" font-size="48" font-family="Source Sans Pro" font-weight="600" fill="#2BB3B8"
@@ -335,8 +335,8 @@
 		</li>
 	</ul>
 
-	<ul class="full-x border-1 border-slate" ng-if='activeType === "3d"'>
-		<li class="border-1 border-slate">
+	<ul class="full-x" ng-if='activeType === "3d"'>
+		<li>
 			<div class="flex-center" style="height: 200px">
 				<h1 class="txt-48 txt-robin semibold flex">
 					<div class="relative">
@@ -385,8 +385,8 @@
 		</li>
 	</ul>
 
-	<ul class="full-x border-1 border-slate" ng-if='activeType === "stroke"'>
-		<li class="border-1 border-slate">
+	<ul class="full-x" ng-if='activeType === "stroke"'>
+		<li>
 			<div class="flex-center" style="height: 200px">
 				<svg width="1000px" height="200px" viewBox="0 0 1000 200">
 					<g fill-rule="evenodd" font-size="48" font-family="Source Sans Pro" font-weight="600" fill="none" stroke="#2BB3B8" stroke-width="2">
@@ -426,8 +426,8 @@
 		k 144.60507202148438 -->
 	</ul>
 
-	<ul class="full-x border-1 border-slate" ng-if='activeType === "new-prop"'>
-		<li class="border-1 border-slate">
+	<ul class="full-x" ng-if='activeType === "new-prop"'>
+		<li>
 			<div class="flex-center" style="height: 200px">
 				<h1 class="txt-48 txt-robin semibold flex">
 					<span class="block"
@@ -449,7 +449,7 @@
 			</div>
 			<!-- 48 semibold 1000 * 200 -->
 		</li>
-		<li class="border-1 border-slate">
+		<li>
 			<div class="flex-center" style="height: 200px">
 				<svg width="1000px" height="200px" viewBox="0 0 1000 200">
 				    <g fill-rule="evenodd" font-size="48" font-family="Source Sans Pro" font-weight="600" fill="#2BB3B8">
@@ -487,7 +487,7 @@
 				</svg>
 			</div>
 		</li>
-		<li class="border-1 border-slate flex-center full-x">
+		<li class="flex-center full-x">
 			<div class="flex-center relative" style="height: 200px; width: 1000px;">
 				<svg class="absolute top-0 left-0" width="1000px" height="200px" viewBox="0 0 1000 200">
 				    <g fill-rule="evenodd" font-size="48" font-family="Source Sans Pro" font-weight="600" fill="#2BB3B8"
