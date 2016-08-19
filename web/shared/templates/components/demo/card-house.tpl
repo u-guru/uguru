@@ -7,6 +7,8 @@ breakproints
 </inspector-gadget> -->
 <!-- <inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="5x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
 </inspector-gadget> -->
+<inspector-gadget ball-color="smoke" reverse-speed="10" speed="5x" class="bottom-0 bg-azure" auto-play="false"  step-size="25" play-infinite="false" show-log="true" ng-if='root.inspector'>
+</inspector-gadget>
 
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px"
