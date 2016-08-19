@@ -26,7 +26,8 @@
 		</div>
 
 		<div class="playing-card play-heart c2"
-			init-with="p:[transform:rotateY(90deg) rotateX(29deg), left:282px, top:36px, z-index:14]">
+			init-with="p:[transform:rotateY(0deg) rotateX(-90deg) translateZ(26px), left:0px, top:0px, z-index:14]"
+			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(-90deg) translateZ(26px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutSine, left:0px:282px:400:easeOutSine, top:0px:36px:400:easeOutSine]:delay-200">
 			<div class="playing-card-back bg-auburn"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
