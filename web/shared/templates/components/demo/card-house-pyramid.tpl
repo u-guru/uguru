@@ -43,7 +43,7 @@
 		</div>
 
 		<div class="playing-card play-heart c3"
-			init-with="p:[transform:rotateY(90deg) rotateX(90deg), left:204px, top:171px, z-index:13]">
+			init-with="p:[transform:rotateY(90deg) rotateX(90deg), left:204px, top:168px, z-index:13]">
 			<div class="playing-card-back bg-gold"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -133,7 +133,7 @@
 		</div>
 
 		<div class="playing-card play-club c8"
-			init-with="p:[transform:rotateY(90deg) rotateX(90deg), left:131px, top:294px, z-index:8]">
+			init-with="p:[transform:rotateY(90deg) rotateX(90deg), left:131px, top:300px, z-index:8]">
 			<div class="playing-card-back bg-shamrock"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -151,7 +151,7 @@
 		</div>
 
 		<div class="playing-card play-club c9"
-			init-with="p:[transform: rotateY(90deg) rotateX(90deg), left:281px, top:294px, z-index:7]">
+			init-with="p:[transform: rotateY(90deg) rotateX(90deg), left:281px, top:300px, z-index:7]">
 			<div class="playing-card-back bg-lake"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
