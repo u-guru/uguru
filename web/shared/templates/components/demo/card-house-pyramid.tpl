@@ -7,7 +7,7 @@
 
 <div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:50%; left:50%; margin-left:-300px; margin-top:-300px; -webkit-perspective-origin: 50% 30%; perspective-origin: 50% 30%;"
 	init-with="p:[tro:center bottom]"
-	on-init="p:[transform:rotateY(3600deg):rotateY(0deg):36000:easeInSine]">
+	on-init="p:[transform:rotateY(3600deg):rotateY(0deg):36000:linear]">
 	<div class="playing-card-container">
 		<div class="playing-card play-diamond c1"
 			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(28px), left:0px, top:0px, z-index:15]"
