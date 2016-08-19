@@ -22,7 +22,8 @@ angular.module('uguru.shared.controllers', [])
     root.public = {customStates: []};
     root.pauseElement = pauseElement(root);
     RootService.setPauseElementFunc(root.pauseElement);
-
+    root.animationCounter = 0;
+    root.transitionCounter = 0;
     root.inspector = {players:[], elements: [], preferences: {}};
     RootService.setGetInspector(getInspectorPrefs(root.inspector));
     RootService.setInspectableElements(pushElemPlayer(root.inspector));

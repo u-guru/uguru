@@ -1368,23 +1368,23 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           processCSSPropArr(arg_dict.properties, scope, elem);
       }
     }
-
     function processCSSPropArr(prop_arr, scope, elem)  {
       for (var i = 0; i < prop_arr.length; i++) {
         var indexPropDict = prop_arr[i];
         if (indexPropDict.animProp && !indexPropDict.animProp.player.inspect) {
+          scope.root.animationCounter += 1
           indexPropDict.animProp.player.play();
+          continue
         }
         else if (indexPropDict.animProp && indexPropDict.animProp.player) {
-          indexPropDict.animProp.player.play();
-          console.log(indexPropDict.animProp.stateName, elem[0].getAttribute('inspector-elem'));
           if (elem[0].getAttribute('inspector-elem') === indexPropDict.animProp.stateName) {
             $timeout(function() {
-              indexPropDict.animProp.player.reset(indexPropDict.animProp.player);
               if (indexPropDict.animProp.player.prefs && indexPropDict.animProp.player.prefs.autoPlay) {
                 indexPropDict.animProp.player.play()
               }
             }, 100)
+          } else {
+            indexPropDict.animProp.player.play();
           }
           return;
         }
@@ -1401,6 +1401,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
         var propValShortcut;
         if (propName in shortcuts.cssPropValues) {
+
           propValShortcut = shortcuts.cssPropValues[propName];
           if (propValShortcut.split(':').length > 1) {
             propName = propValShortcut.split(':')[0]
@@ -1408,6 +1409,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           }
         }
         if ((propName && propValue) || (propName && propValue === 0)) {
+
           setCSSProperty(propName, propValue, delay, important, scope, elem)
         } else {
           // console.log('ERROR: css propValue or css propName not defined', propName, propValue, '\nelem:', elem)
@@ -1432,6 +1434,12 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         if (prop in shortcuts.cssProps) {
           prop = shortcuts.cssProps[prop];
         }
+        if (prop === 'transition') {
+          if (prop === 'transition' || prop.indexOf('transition') > -1) {
+            scope.root.transitionCounter += 1;
+          }
+        }
+
         var priority;
         if (impt) {
           priority = 'important';
