@@ -17018,6 +17018,17 @@ input[type=range] {
         background: #934073;
         color: white; }
 
+#pyramid .playing-card-container {
+  width: 100px;
+  height: 150px; }
+  #pyramid .playing-card-container .playing-card {
+    width: 100px;
+    height: 150px;
+    transform-origin: left top !important; }
+    #pyramid .playing-card-container .playing-card > div svg {
+      width: auto;
+      height: 100%; }
+
 .card-house {
   max-height: 764px;
   transform-style: preserve-3d; }
