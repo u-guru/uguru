@@ -1,5 +1,5 @@
 <!-- step-size="100" start-at="" end-at="" pause-at=""  active="true" selector="[inspector-elem]" state="on-init"-->
-<inspector-gadget  auto-play="true" step-size="25" play-infinite="false" >
+<inspector-gadget  auto-play="true" auto-reset="true" step-size="25" play-infinite="false" >
 </inspector-gadget>
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px">

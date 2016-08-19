@@ -7,10 +7,10 @@
                 </svg>
             </span>
         </li>
-        <li ng-click="player.play()" ng-if='!root.player.state.active'>
-            <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke'  ng-include='"shared/templates/components/svg/main/play.html"'></span>
+        <li ng-click="player.play()" >
+            <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-class="{'opacity-50p':player.state.active}"  ng-include='"shared/templates/components/svg/main/play.html"'></span>
         </li>
-        <li ng-click='player.pause()' ng-if='root.player.state.active' when-receive-on="p:[opacity:0:1:500:bouncePast, scale:0:1:1000:easeInQuint]">
+        <li ng-click='player.state.time > 0 && player.pause()' ng-class="{'opacity-50p':!player.state.active}">
             <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke'  ng-include='"shared/templates/components/svg/main/pause.html"'></span>
         </li>
         <li ng-click='player.reset(player)' ng-if='!root.player.state.active'>
