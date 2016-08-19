@@ -3,7 +3,7 @@ precisions
 fast forward speed
 breakproints
 -->
-<!-- <inspector-gadget ball-color="smoke" ball-ease="easeTo" reverse-speed="10x" start-at="123" speed="0.5" class="bottom-0 width-75p bg-azure" auto-play="true"  step-size="25" play-infinite="false" >
+<!-- <inspector-gadget ball-color="smoke" ball-ease="easeTo" reverse-speed="10x" start-at="123" speed="2x" class="bottom-0 width-75p bg-azure" auto-play="true"  step-size="25" play-infinite="false" >
 </inspector-gadget> -->
 <!-- <inspector-gadget ball-color="smoke" reverse-speed="10" speed="1x" start-at="123" class="bottom-0 bg-azure" auto-play="true"  step-size="25" play-infinite="false" ng-if='root.inspector'>
 </inspector-gadget> -->
@@ -84,7 +84,7 @@ breakproints
 					<div class="front"></div>
 					<div class="back"></div>
 				</div>
-				<div class="team-card" init-with="p:[t:all 500ms ease-out, op:0, backface-visibility:hidden]"
+				<div class="team-card"  init-with="p:[t:all 500ms ease-out, op:0, backface-visibility:hidden]"
 					when-house-stack="p:[op:0]"
 					when-house-build="p:[op:0]"
 					when-house-rotate="p:[op:1] | s:[gabrie-enter:public:delay-300]">
@@ -386,6 +386,7 @@ breakproints
 			when-house-return="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]">
 			<div class="team-card-container team-samir"
 				init-with="p:[tr:rotateY(15deg) translateX(-385px) translateY(-725px) translateZ(0px) rotateX(90deg) rotate(90deg), tro:center bottom]"
+				transform
 				when-house-stack="p:[transform:rotateY(15deg) translateX(-385px) translateY(-725px) translateZ(0px) rotateX(90deg) rotate(90deg):rotateY(0deg) translateX(-732px) translateY(-43px) translateZ(0px) rotateX(90deg) rotate(90deg):350:easeInExpo]:delay-150"
 				when-house-build="p:[transform:rotateY(0deg) translateX(-732px) translateY(-43px) translateZ(0px) rotateX(90deg) rotate(90deg):rotateY(-90deg) translateX(-30px) translateY(-5px) translateZ(0px) rotateX(0deg) rotate(0deg):1250:easeOutCirc]:delay-300"
 				when-house-return="p:[transform:rotateY(-90deg) translateX(-30px) translateY(-5px) translateZ(0px) rotateX(0deg) rotate(0deg):rotateY(0deg) translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotate(0deg):1000:easeOutExpo]:delay-600">
