@@ -1,9 +1,12 @@
-<!-- <inspector-gadget ball-color="smoke" ball-ease="easeTo" reverse-speed="10x" start-at="123" speed="0.5" class="bottom-0 width-75p bg-azure" auto-play="true"  step-size="25" play-infinite="false" >
-</inspector-gadget> -->
+<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="5x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'> </inspector-gadget>
+
 <div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:10%; left:50%; margin-left:-300px;">
 	<button class="bg-slate m15bottom"
 		init-default
-		on-click="send:[pyramid-init:public]">Toggle</button>
+		on-click="send:[pyramid-init:public]"
+		inspect-trigger="on-click|1000"
+		inspector-elem="when-pyramid-init"
+		when-pyramid-init="p:[transform:translateY(0px):translateY(-500px):1000:easeOutCirc]">Toggle</button>
 	<div class="playing-card-container">
 		<div class="playing-card play-diamond c1"
 			init-with="p:[transform:rotateY(0deg) rotateX(-90deg) translateZ(28px), left:0px, top:0px, z-index:15]"
