@@ -84,7 +84,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     var args = processPropertyArgs(property, arg_arr, state_name, apply_default);
     args.stateNameCamel = UtilitiesService.camelCase(state_name);
     args.stateName = state_name;
-    console.log(elem[0].getAttribute('inspector-elem'));
     args.player = initPlayerFromArgs(elem[0], args, previous_player);
 
 
@@ -222,14 +221,14 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
       for (prop in state) {
         args.elem.style[prop] = state[prop];
-        args.prefs.showLog && args.state.active && prop.indexOf('Control') === -1 && time > 0 && time < args.tweenConfig.duration && console.log('\n@ T = ' + time +'ms\n', prop + ':' + state[prop])
+        args.inspect && args.prefs.showLog && args.state.active && prop.indexOf('Control') === -1 && time > 0 && time < args.tweenConfig.duration && console.log('\n@ T = ' + time +'ms\n', prop + ':' + state[prop])
       }
     }
 
     function startTween(state, args) {
       // console.log(args)
       // console.log('starting...', state, args);
-      player.prefs.showLog && console.log('-----Animation starting ---')
+      args.prefs && args.prefs.showLog && console.log('-----Animation starting ---')
     }
 
     function finishTween(state, player) {
@@ -244,7 +243,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         $timeout(function() {
           player.state.active = false;
         })
-        player.prefs.showLog && console.log('-----Animation successfully finished---')
+        player.inspect && player.prefs.showLog && console.log('-----Animation successfully finished---')
         player = player.init(player);
       }
 
@@ -404,7 +403,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       playerObj.inspect && $timeout(function() {
         !skip && playerObj.prefs.playInfinite && playerObj.play();
       })
-      playerObj.prefs.startAt && playerObj.tween.seek(0).seek(playerObj.prefs.startAt.seek);
+      playerObj.prefs && playerObj.prefs.startAt && playerObj.tween.seek(0).seek(playerObj.prefs.startAt.seek);
       return playerObj
     }
     if (playerObj.inspect) {

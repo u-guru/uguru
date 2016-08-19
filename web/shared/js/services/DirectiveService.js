@@ -1373,7 +1373,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var indexPropDict = prop_arr[i];
         if (indexPropDict.animProp && !indexPropDict.animProp.player.inspect) {
           scope.root.animationCounter += 1
-          console.log(scope.root.transitionCounter,scope.root.animationCounter)
           indexPropDict.animProp.player.play();
           continue
         }
