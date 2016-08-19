@@ -5,7 +5,7 @@ breakproints
 -->
 <!-- <inspector-gadget ball-color="smoke" ball-ease="easeTo" reverse-speed="10x" start-at="123" speed="2x" class="bottom-0 width-75p bg-azure" auto-play="true" step-size="25" play-infinite="false" >
 </inspector-gadget> -->
-<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
+<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" start-at="t:15%" speed="1x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
 </inspector-gadget>
 
 <div class="full-xy flex-center-wrap perspective-container">

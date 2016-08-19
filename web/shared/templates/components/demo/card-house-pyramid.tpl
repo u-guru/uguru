@@ -6,8 +6,7 @@
 		init-default
 		on-click="send:[pyramid-init:public]"
 		when-pyramid-init="p:[transform:translateY(0px):translateY(500px):1000:easeOutCirc]"
-		inspector-toggle="on-click|10"
-		>Toggle</button>
+		inspector-toggle="on-click|10">Toggle</button>
 	<div class="playing-card-container">
 		<div class="playing-card play-diamond c1"
 			init-with="p:[transform:rotateY(0deg) rotateX(-90deg) translateZ(28px), left:0px, top:0px, z-index:15]"
