@@ -5,14 +5,13 @@ breakproints
 -->
 <!-- <inspector-gadget ball-color="smoke" ball-ease="easeTo" reverse-speed="10x" start-at="123" speed="2x" class="bottom-0 width-75p bg-azure" auto-play="true" step-size="25" play-infinite="false" >
 </inspector-gadget> -->
-<!-- <inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="5x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
-</inspector-gadget> -->
+<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
+</inspector-gadget>
 
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px"
 		init-default
 		when-house-build="s:[house-return:public]:delay-2000">
-		<!-- inspect-trigger="on-click|4000"-->
 		<div class="relative" style="width:500px; height:200px;">
 			<svg class="absolute top-0 left-0 full-xy" viewBox="0 0 500 200">
 			    <g class="header-split" fill="#FFFFFF" stroke="none" stroke-width="1" fill-rule="evenodd">
@@ -63,10 +62,10 @@ breakproints
 		when-house-stack="s:[house-build:public, header-build:public:delay-250]:delay-2000"
 		when-house-build="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]"
 		when-house-return="p:[animation:none] | s:[house-rotate:public:delay-500]">
-		<!-- inspect-trigger="on-click|2000" -->
+		<!-- @samir when-house-return, see inspector when inspector-elem is on li, animation should be 50ms but is logged as 2500ms -->
 		<!-- ex: 2 inspect-trigger="when-house-return|2000" -->
-		<!-- inspector-elem="when-house-build" -->
 		<li init-with="p:[op:0, tro:center center, t:all 500ms ease-out]"
+			inspector-elem="when-house-stack"
 			when-house-stack="p:[opacity:0:1:50:linear]"
 			when-house-return="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]">
 			<!-- @samir when-house-return, try adding opacity anim and check console -->
@@ -74,7 +73,7 @@ breakproints
 				init-with="p:[transform:translateX(528px) translateY(-375px) translateZ(0px) rotateX(45deg) rotateY(45deg) rotate(90deg),tro:center bottom]"
 				when-house-stack="p:[transform:translateX(528px) translateY(-375px) translateZ(0px) rotateX(45deg) rotateY(45deg)  rotate(90deg):translateX(-362px) translateY(324px) translateZ(0px) rotateX(90deg) rotateY(0deg) rotate(90deg):1000:easeInExpo]"
 				when-house-build="p:[transform:rotateY(0deg) rotateX(90deg) translateX(-362px) translateY(324px) translateZ(0px) rotate(90deg):rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):1250:easeOutCirc]"
-				when-house-return="p:[transform:rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):rotateY(0deg) rotateX(0deg) translateX(0px) translateY(0px) translateZ(0px) rotate(0deg):1000:easeOutQuint]:delay-300">
+				when-house-return="p:[transform:rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):rotateY(0deg) rotateX(0deg) translateX(0px) translateY(0px) translateZ(0px) rotate(0deg):1000:easeOutExpo]:delay-300">
 				<div class="team-card-placeholder" style="position: relative; top: auto; left: 0; width: 256px; height: 359.5px">
 					<div class="front"></div>
 					<div class="back"></div>
@@ -89,7 +88,7 @@ breakproints
 				init-with="p:[tr:rotateY(30deg) translateX(-90px) translateY(-364px) translateZ(0px) rotateX(60deg) rotate(90deg), tro:center bottom]"
 				when-house-stack="p:[transform:rotateY(30deg) translateX(-90px) translateY(-364px) translateZ(0px) rotateX(60deg) rotate(90deg):rotateY(0deg) translateX(-725px) translateY(316px) translateZ(0px) rotateX(90deg) rotate(90deg):1000:easeInExpo]:delay-150"
 				when-house-build="p:[transform:rotateY(0deg) rotateX(90deg) translateX(-725px) translateY(316px) translateZ(0px) rotate(90deg):rotateY(-90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):1250:easeOutCirc]:delay-100"
-				when-house-return="p:[transform:rotateY(-90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):rotateY(0deg) rotateX(0deg) translateX(0px) translateY(0px) translateZ(0px) rotate(0deg):1000:easeOutQuint]:delay-400">
+				when-house-return="p:[transform:rotateY(-90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):rotateY(0deg) rotateX(0deg) translateX(0px) translateY(0px) translateZ(0px) rotate(0deg):1000:easeOutExpo]:delay-400">
 				<div class="team-card-placeholder" style="position: relative; top: auto; left: 0; width: 256px; height: 359.5px">
 					<div class="front"></div>
 					<div class="back"></div>
@@ -104,7 +103,7 @@ breakproints
 				init-with="p:[tr:rotateY(15deg) translateX(185px) translateY(-734px) translateZ(0px) rotateX(80deg) rotate(90deg), tro:center bottom]"
 				when-house-stack="p:[transform:rotateY(15deg) translateX(185px) translateY(-734px) translateZ(0px) rotateX(80deg) rotate(90deg):rotateY(0deg) translateX(-366px) translateY(-47px) translateZ(0px) rotateX(90deg) rotate(90deg):1000:easeInExpo]:delay-300"
 				when-house-build="p:[transform:rotateY(0deg) translateX(-366px) translateY(-47px) translateZ(0px) rotateX(90deg) rotate(90deg):rotateY(90deg) translateX(30px) translateY(-5px) translateZ(0px) rotateX(0deg) rotate(0deg):1250:easeOutCirc]:delay-200"
-				when-house-return="p:[transform:rotateY(90deg) translateX(30px) translateY(-5px) translateZ(0px) rotateX(0deg) rotate(0deg):rotateY(0deg) translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotate(0deg):1000:easeOutQuint]:delay-500">
+				when-house-return="p:[transform:rotateY(90deg) translateX(30px) translateY(-5px) translateZ(0px) rotateX(0deg) rotate(0deg):rotateY(0deg) translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotate(0deg):1000:easeOutExpo]:delay-500">
 				<div class="team-card-placeholder" style="position: relative; top: auto; left: 0; width: 256px; height: 359.5px">
 					<div class="front"></div>
 					<div class="back"></div>
@@ -119,7 +118,7 @@ breakproints
 				init-with="p:[tr:rotateY(15deg) translateX(-385px) translateY(-725px) translateZ(0px) rotateX(90deg) rotate(90deg), tro:center bottom]"
 				when-house-stack="p:[transform:rotateY(15deg) translateX(-385px) translateY(-725px) translateZ(0px) rotateX(90deg) rotate(90deg):rotateY(0deg) translateX(-732px) translateY(-43px) translateZ(0px) rotateX(90deg) rotate(90deg):1000:easeInExpo]:delay-450"
 				when-house-build="p:[transform:rotateY(0deg) translateX(-732px) translateY(-43px) translateZ(0px) rotateX(90deg) rotate(90deg):rotateY(-90deg) translateX(-30px) translateY(-5px) translateZ(0px) rotateX(0deg) rotate(0deg):1250:easeOutCirc]:delay-300"
-				when-house-return="p:[transform:rotateY(-90deg) translateX(-30px) translateY(-5px) translateZ(0px) rotateX(0deg) rotate(0deg):rotateY(0deg) translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotate(0deg):1000:easeOutQuint]:delay-600">
+				when-house-return="p:[transform:rotateY(-90deg) translateX(-30px) translateY(-5px) translateZ(0px) rotateX(0deg) rotate(0deg):rotateY(0deg) translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotate(0deg):1000:easeOutExpo]:delay-600">
 				<div class="team-card-placeholder" style="position: relative; top: auto; left: 0; width: 256px; height: 359.5px">
 					<div class="front"></div>
 					<div class="back"></div>
