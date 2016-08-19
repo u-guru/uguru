@@ -13,7 +13,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   var blacklistStates = ['init-with', 'init-later'];
   var defaultPropAnimations = {};
   var rFrameEasingCache = {};
-  var playerControlElems= {ball: null, bar: null};
+  var playerControlElems= {ball: null, bar: null, time:null};
   return {
     initPropertyObj: initPropertyObj,
     getBlacklistStates: getBlacklistStates,
@@ -41,6 +41,15 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         playerControlElems.bar.height = barRect.height;
       }
     }
+    if (!playerControlElems.time) {
+      playerControlElems.time = {elem: document.querySelector('[inspector-time]'), width: null, height: null};
+      if (playerControlElems.time.elem) {
+        var timeRect = playerControlElems.time.elem.getBoundingClientRect();
+        playerControlElems.time.width = timeRect.width;
+        playerControlElems.time.height = timeRect.height;
+      }
+    }
+    console.log(playerControlElems);
     return playerControlElems
   }
   function getDefaultAnimProp(struct) {
@@ -161,6 +170,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     function applyPropToElem(state, args, time) {
       if (args.control && args.control.ball.elem) {
         args.control.ball.elem.style.transform =  state['ballControl'];
+        args.control.time.elem.innerHTML = time;
       }
       args.state.time = time;
       for (prop in state) {
