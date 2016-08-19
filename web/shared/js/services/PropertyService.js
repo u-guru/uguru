@@ -84,7 +84,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     var args = processPropertyArgs(property, arg_arr, state_name, apply_default);
     args.stateNameCamel = UtilitiesService.camelCase(state_name);
     args.stateName = state_name;
-
+    console.log(elem[0].getAttribute('inspector-elem'));
     args.player = initPlayerFromArgs(elem[0], args, previous_player);
 
 
@@ -123,6 +123,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       }
     }
 
+
+
     if (preferences.speed) {
       player.tweenConfig.duration = 1/preferences.speed * player.tweenConfig.duration;
       player.control.time.duration = player.tweenConfig.duration;
@@ -130,6 +132,20 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         player.control.time.sigfig = (player.tweenConfig.duration/1000 + "").split('.')[1].length
       }
       filledPreferences.speed = preferences.speed;
+    }
+
+    if (preferences.startAt) {
+      console.log('start at', preferences.startAt);
+      var startOption = preferences.startAt.split(':')[0];
+      var startValue = preferences.startAt.split(':')[1];
+      if (startValue.indexOf('%') > -1) {
+        startValue = parseFloat(startValue.replace('%', ''))/100 * player.tweenConfig.duration;
+      }
+      switch (startOption) {
+        case ("t") :
+          // var seekMS = player.tweenConfig.duration
+          filledPreferences.startAt = {seek: startValue};
+      }
     }
 
     player.prefs = filledPreferences
@@ -166,6 +182,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     if (elem.hasAttribute('inspector-elem')) {
+      console.log('elem has attribute')
       playerObj.inspect = true;
       RootService.addElemToInspector(playerObj);
 
@@ -202,14 +219,17 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         args.control.time.elem.innerHTML = formatTime(time, args.control.time)
       }
       args.state.time = time;
+
       for (prop in state) {
         args.elem.style[prop] = state[prop];
+        args.prefs.showLog && args.state.active && prop.indexOf('Control') === -1 && time > 0 && time < args.tweenConfig.duration && console.log('\n@ T = ' + time +'ms\n', prop + ':' + state[prop])
       }
     }
 
     function startTween(state, args) {
       // console.log(args)
       // console.log('starting...', state, args);
+      player.prefs.showLog && console.log('-----Animation starting ---')
     }
 
     function finishTween(state, player) {
@@ -224,6 +244,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         $timeout(function() {
           player.state.active = false;
         })
+        player.prefs.showLog && console.log('-----Animation successfully finished---')
         player = player.init(player);
       }
 
@@ -269,10 +290,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
             }
             console.log('new total', seekTotal)
         }
-
-
-
-        console.log('stepping', ms, 'to', seekTotal);
         player.tween.seek(seekTotal);
       }
     }
@@ -378,6 +395,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       playerObj.tweenConfig.durationFormatted = formatTime(playerObj.tweenConfig.duration, playerObj.control.time, playerObj.control.time.sigfig || 1);
       playerObj.play = getPlayFunction(playerObj);
       playerObj.pause = getPauseFunction(playerObj);
+      playerObj.start = startTween;
       playerObj.stepTo = getStepToFunction(playerObj);
       // playerObj.jumpTo = getJumpToFunction(playerObj);
       playerObj.reset = getResetFunc();
@@ -386,18 +404,25 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       playerObj.inspect && $timeout(function() {
         !skip && playerObj.prefs.playInfinite && playerObj.play();
       })
+      playerObj.prefs.startAt && playerObj.tween.seek(0).seek(playerObj.prefs.startAt.seek);
       return playerObj
     }
     if (playerObj.inspect) {
       $timeout(function() {
         playerObj = playerObj.init(playerObj);
+
+        // if (playerObj.prefs.startAt) {
+        //   // playerObj.play()
+        //   console.log(playerObj.tween.get())
+        //   // console.log('startAt', playerObj.prefs.startAt.seek,  playerObj.tween.get())
+        // }
       })
-      $timeout(function() {
-        if (playerObj.prefs && playerObj.prefs.autoPlay) {
-          console.log('detected auto play')
-            playerObj.play();
-        }
-      })
+      // $timeout(function() {
+      //   if (playerObj.prefs && playerObj.prefs.autoPlay) {
+
+      //       playerObj.play();
+      //   }
+      // })
     } else {
       playerObj.init(playerObj);
     }

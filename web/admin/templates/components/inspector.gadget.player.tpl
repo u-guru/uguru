@@ -27,12 +27,36 @@
             <div class='z-index-99 top-0 m10y p10y right-0 absolute p15-grid weight-900 p05y' style='margin-right:-20px;'>
                 <span class='weight-900 txt-5 txt-white' inspector-time></span><span style='margin-left:-10px;' class='opacity-50p txt-3'>/{{player.tweenConfig.durationFormatted}} </span>
             </div>
-            <div ng-if='player.prefs.speed' class='txt-2' style='margin-top:-5px;'>
+            <div ng-if='player.prefs.speed' class='txt-2' style='margin-top:-5px; margin-right:10px;'>
                 <span class='weight-900 opacity-70p'>
                     Speed:
                 </span>
                 <span class='weight-900'>
                     {{player.prefs.speed}}x
+                </span>
+            </div>
+            <div ng-if='player.prefs.speed' class='txt-2 m10x' style='margin-top:-5px;'>
+                <span class='weight-900 opacity-70p'>
+                    Step Size:
+                </span>
+                <span class='weight-900'>
+                    {{player.prefs.stepSize}}ms
+                </span>
+            </div>
+            <div ng-if='player.prefs.speed' class='txt-2 m10x' style='margin-top:-5px;'>
+                <span class='weight-900 opacity-70p'>
+                    Auto Play:
+                </span>
+                <span class='weight-900'>
+                    {{player.prefs.autoPlay}}
+                </span>
+            </div>
+            <div ng-if='player.prefs.speed' class='txt-2 m10x' style='margin-top:-5px;'>
+                <span class='weight-900 opacity-70p'>
+                    Logging:
+                </span>
+                <span class='weight-900'>
+                    {{player.prefs.showLog}}
                 </span>
             </div>
         </div>

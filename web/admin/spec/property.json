@@ -13,7 +13,7 @@
             "direction": "normal"
         }
     },
-    "exampleIndex": 0,
+    "exampleIndex": 2,
     "examples": [
         {
             "initWith": "opacity:0",
@@ -59,10 +59,9 @@
             "property": "transform",
             "start": "translateX(200%) translateY(50%) scale(0.5)",
             "end": "translateX(0) translateY(0) scale(1.5)",
-            "duration": "2500",
-            "ease": "elastic",
-            "duration": "1000",
-            "ease": "easeInQuart",
+
+            "duration": "2000",
+            "ease": "easeFromTo",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null

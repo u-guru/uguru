@@ -80,12 +80,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
         })
       }
       function callback(responseDict) {
-        responseDict.exampleIndex = 1
         $scope.property = {examples: responseDict.examples, activeIndex: responseDict.exampleIndex, easings: TweenService.getAllEasing()};
         $scope.templates = {components: responseDict};
       }
       PropertyService.getPropJson({}, callback);
-
     }]
   })
   .state('root.dev.inspect', {
