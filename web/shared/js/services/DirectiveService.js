@@ -1372,8 +1372,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processCSSPropArr(prop_arr, scope, elem)  {
       for (var i = 0; i < prop_arr.length; i++) {
         var indexPropDict = prop_arr[i];
-        indexPropDict.animProp &&  console.log(indexPropDict.animProp)
-        if (indexPropDict.animProp) {
+        if (indexPropDict.animProp && !indexPropDict.animProp.player.inspect) {
+          indexPropDict.animProp.player.play();
+        }
+        else if (indexPropDict.animProp && indexPropDict.animProp.player) {
           indexPropDict.animProp.player.play();
           console.log(indexPropDict.animProp.stateName, elem[0].getAttribute('inspector-elem'));
           if (elem[0].getAttribute('inspector-elem') === indexPropDict.animProp.stateName) {
