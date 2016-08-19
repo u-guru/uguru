@@ -36,7 +36,7 @@ angular.module('uguru.admin')
             link:  {pre: function(scope, element, attr) {
                 scope.triggerEvents = ['on-click', 'on-mouse-leave', 'on-mouse-enter', 'on-mouse-over'];
                 scope.classEvents = ['on-enter', 'on-exit', 'on-init', 'init-with'];
-                scope.supportedAttributes = ['active', 'startAt', 'selector', 'ballColor', 'bgColor', 'state', 'autoPlay', "playInfinite", 'stepSize', 'startAt', 'endAt', 'pauseAt', 'visible']
+                scope.supportedAttributes = ['active', 'reverseSpeed', 'speed', 'startAt', 'selector', 'ballColor', 'bgColor', 'state', 'autoPlay', "playInfinite", 'stepSize', 'startAt', 'endAt', 'pauseAt', 'visible']
 
                         for (key in attr) {
                             if (scope.supportedAttributes.indexOf(key) > -1) {
@@ -45,14 +45,11 @@ angular.module('uguru.admin')
                                 if (attr[key] === 'true' || attr[key] === 'false') {
                                     scope.root.inspector.preferences[key] = (attr[key] === 'true');
                                 }
-                                if (key === 'stepSize') {
-                                    scope.root.inspector.preferences[key] = parseFloat(attr[key])
+                                if (['stepSize', 'reverseSpeed', 'speed'].indexOf(key) > -1) {
+                                    scope.root.inspector.preferences[key] = parseFloat(attr[key].replace('x', ''))
                                 }
                             }
                         }
-
-
-
                         scope.activePlayers = [];
                         scope.elementInspector = RootService.inspectableElements;
                     },
@@ -61,6 +58,13 @@ angular.module('uguru.admin')
                         var inspectorElems = parentView.querySelectorAll('[inspector-elem]');
                         var inspectorTriggers = parentView.querySelectorAll('[inspect-trigger]');
                         var autoTriggerStates = [];
+                        $timeout(function() {
+                            console.log(scope.root.inspector.players)
+                            $timeout(function() {
+                                $compile(element[0])(scope);
+                                scope.$apply()
+                            })
+                        }, 1000)
                         for (var i = 0; i < inspectorTriggers.length; i++) {
                             var iTriggerElem = inspectorTriggers[i];
                             var iTriggerAttr = iTriggerElem.getAttribute('inspect-trigger');
@@ -108,22 +112,7 @@ angular.module('uguru.admin')
 
         }
 }])
-.directive("inspectorGadgetPlayer", ['$timeout', 'UtilitiesService', '$compile', 'RootService', function($timeout, UtilitiesService, $compile, RootService) {
-        return {
-            restrict: 'E',
-            replace: true,
-            templateUrl: RootService.getBaseUrl() + 'admin/templates/components/inspector.gadget.player.tpl',
-            scope: {root: '=root'},
-            link:  {
-                pre: function(scope, element, attr) {
-                    console.log('yo')
-                    scope.player = scope.root.player;
-                    scope.prefs = scope.root.inspector.prefs;
-                }
-            }
 
-        }
-}])
 .directive("types", ['$timeout', 'UtilitiesService', '$compile', function($timeout, UtilitiesService, $compile) {
         return {
             restrict: 'A',

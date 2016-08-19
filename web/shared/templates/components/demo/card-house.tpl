@@ -1,6 +1,12 @@
-
-<inspector-gadget ball-color="smoke" duration-format="s" start-at="123" speed="0.5" class="bottom-0 width-75p bg-azure" auto-play="true"  step-size="25" play-infinite="false" >
-</inspector-gadget>
+<!--
+precisions
+fast forward speed
+breakproints
+-->
+<!-- <inspector-gadget ball-color="smoke" ball-ease="easeTo" reverse-speed="10x" start-at="123" speed="0.5" class="bottom-0 width-75p bg-azure" auto-play="true"  step-size="25" play-infinite="false" >
+</inspector-gadget> -->
+<!-- <inspector-gadget ball-color="smoke" reverse-speed="10" speed="1x" start-at="123" class="bottom-0 bg-azure" auto-play="true"  step-size="25" play-infinite="false" ng-if='root.inspector'>
+</inspector-gadget> -->
 
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px"

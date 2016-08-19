@@ -1,4 +1,4 @@
-<div class='absolute full-x' style='z-index:1000;height:65px;'  ng-if='root.inspector.players.length' ng-repeat='player in root.inspector.players'>
+<div class='absolute full-x' style='z-index:1000;height:65px;'  ng-repeat='player in root.inspector.players'>
     <ul class='flex-wrap-center ugrid-5 absolute right-0 p15-grid' style='width:20%;' ng-if='player.play'>
         <li ng-click='player.stepTo("reverse")'>
             <span  class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'>
@@ -10,7 +10,7 @@
         <li ng-click="player.play()" >
             <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke' ng-class="{'opacity-50p':player.state.active}"  ng-include='"shared/templates/components/svg/main/play.html"'></span>
         </li>
-        <li ng-click='player.state.time > 0 && player.pause()' ng-class="{'opacity-50p':!player.state.active}">
+        <li ng-click='player.pause()' ng-class="{'opacity-50p':!player.state.active}">
             <span class='svg-32 svg-stroke-6 radius-2 stroke-smoke'  ng-include='"shared/templates/components/svg/main/pause.html"'></span>
         </li>
         <li ng-click='player.reset(player)' ng-if='!root.player.state.active'>
@@ -20,10 +20,21 @@
             <span class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'  ng-include='"shared/templates/components/svg/main/skip.html"'></span>
         </li>
     </ul>
-    <div class='m10y player absolute' style='width:75%;left:2.5%; top:10%;'>
+    <div class='m10y player absolute' style='width:75%;left:2.5%; top:10%;' ng-mouseup="player.jumpTo($event)">
         <hr class='full-x relative' inspector-bar>
         <div class='m05y round bg-{{player.prefs.ballColor || "azure"}} z-index-99 top-0 absolute p15-grid' inspector-ball> </div>
-
-        <div class='z-index-99 top-0 m10y p10y left-0 absolute p15-grid weight-900 txt-5 p05y'><span class='weight-900 txt-5 txt-white' inspector-time></span><span style='margin-left:-10px;' class='opacity-50p txt-3'>/ {{player.tweenConfig.duration}}{{player.prefs.durationFormat || 'ms'}} </span></div>
+        <div class='full-x flex-end'>
+            <div class='z-index-99 top-0 m10y p10y right-0 absolute p15-grid weight-900 p05y' style='margin-right:-20px;'>
+                <span class='weight-900 txt-5 txt-white' inspector-time></span><span style='margin-left:-10px;' class='opacity-50p txt-3'>/{{player.tweenConfig.durationFormatted}} </span>
+            </div>
+            <div ng-if='player.prefs.speed' class='txt-2' style='margin-top:-5px;'>
+                <span class='weight-900 opacity-70p'>
+                    Speed:
+                </span>
+                <span class='weight-900'>
+                    {{player.prefs.speed}}x
+                </span>
+            </div>
+        </div>
     </div>
 </div>
