@@ -1,7 +1,7 @@
 <!-- step-size="100" start-at="" end-at="" pause-at=""  active="true" selector="[inspector-elem]" state="on-init"-->
-
-<inspector-gadget ball-color="smoke" class="bottom-0 width-75p bg-azure" auto-play="true" auto-reset="true" step-size="25" play-infinite="false" ></inspector-gadget>
-
+<!--
+<inspector-gadget ball-color="smoke" duration-format="s" class="bottom-0 width-75p bg-azure" auto-play="true" step-size="25" play-infinite="false">
+</inspector-gadget> -->
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px"
 		init-default
@@ -64,7 +64,6 @@
 			when-house-stack="p:[opacity:0:1:200:linear]"
 			when-house-return="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]">
 			<div class="team-card-container team-gabrie"
-				inspector-elem="when-house-stack"
 				init-with="p:[transform:translateX(528px) translateY(-375px) translateZ(0px) rotateX(45deg) rotateY(45deg) rotate(90deg),tro:center bottom]"
 				when-house-stack="p:[transform:translateX(528px) translateY(-375px) translateZ(0px) rotateX(45deg) rotateY(45deg)  rotate(90deg):translateX(-362px) translateY(324px) translateZ(0px) rotateX(90deg) rotateY(0deg) rotate(90deg):350:easeInExpo]"
 				when-house-build="p:[transform:rotateY(0deg) rotateX(90deg) translateX(-362px) translateY(324px) translateZ(0px) rotate(90deg):rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):1250:easeOutCirc]"

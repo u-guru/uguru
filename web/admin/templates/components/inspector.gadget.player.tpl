@@ -23,5 +23,7 @@
     <div class='m10y player absolute' style='width:75%;left:2.5%; top:10%;'>
         <hr class='full-x relative' inspector-bar>
         <div class='m05y round bg-{{player.prefs.ballColor || "azure"}} z-index-99 top-0 absolute p15-grid' inspector-ball> </div>
+
+        <div class='z-index-99 top-0 m10y p10y left-0 absolute p15-grid weight-900 txt-5 p05y'><span class='weight-900 txt-5 txt-white' inspector-time></span><span style='margin-left:-10px;' class='opacity-50p txt-3'>/ {{player.tweenConfig.duration}}{{player.prefs.durationFormat || 'ms'}} </span></div>
     </div>
 </div>
