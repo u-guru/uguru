@@ -5,13 +5,13 @@ breakproints
 -->
 <!-- <inspector-gadget ball-color="smoke" ball-ease="easeTo" reverse-speed="10x" start-at="123" speed="2x" class="bottom-0 width-75p bg-azure" auto-play="true" step-size="25" play-infinite="false" >
 </inspector-gadget> -->
-<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="5x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
-</inspector-gadget>
+<!-- <inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="5x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
+</inspector-gadget> -->
 
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px"
 		init-default
-		when-house-build="s:[house-return:public]">
+		when-house-build="s:[house-return:public]:delay-2000">
 		<!-- inspect-trigger="on-click|4000"-->
 		<div class="relative" style="width:500px; height:200px;">
 			<svg class="absolute top-0 left-0 full-xy" viewBox="0 0 500 200">
@@ -71,7 +71,6 @@ breakproints
 			when-house-return="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]">
 			<!-- @samir when-house-return, try adding opacity anim and check console -->
 			<div class="team-card-container team-gabrie"
-				inspector-elem="when-house-return"
 				init-with="p:[transform:translateX(528px) translateY(-375px) translateZ(0px) rotateX(45deg) rotateY(45deg) rotate(90deg),tro:center bottom]"
 				when-house-stack="p:[transform:translateX(528px) translateY(-375px) translateZ(0px) rotateX(45deg) rotateY(45deg)  rotate(90deg):translateX(-362px) translateY(324px) translateZ(0px) rotateX(90deg) rotateY(0deg) rotate(90deg):1000:easeInExpo]"
 				when-house-build="p:[transform:rotateY(0deg) rotateX(90deg) translateX(-362px) translateY(324px) translateZ(0px) rotate(90deg):rotateY(90deg) rotateX(-31deg) translateX(-5px) translateY(4px) translateZ(10px) rotate(0deg):1250:easeOutCirc]"
