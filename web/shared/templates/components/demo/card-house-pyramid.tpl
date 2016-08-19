@@ -6,7 +6,8 @@
 		on-click="send:[pyramid-init:public]">Toggle</button>
 	<div class="playing-card-container">
 		<div class="playing-card play-diamond c1"
-			init-with="p:[transform: rotateY(90deg) rotateX(-29deg), left:280px, top:36px, z-index:15]">
+			init-with="p:[transform:rotateY(0deg) rotateX(-90deg) translateZ(28px), left:0px, top:0px, z-index:15]"
+			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(-90deg) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutSine, left:0px:280px:400:easeOutSine, top:0px:36px:400:easeOutSine]">
 			<!-- "p:[transform:rotateY(0deg) rotateX(-90deg) translateX(0px) translateY(0px) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateX(376px) translateY(400px) translateZ(548px):400:easeOutSine]:delay-200"> -->
 			<div class="playing-card-back bg-azure"></div>
 			<div class="playing-card-front">
