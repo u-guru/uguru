@@ -1,16 +1,141 @@
-<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="0.2x" class="bottom-0 bg-azure" auto-play="false" step-size="25" play-infinite="false" ng-if='root.inspector'> </inspector-gadget>
+<!-- <inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="0.5x" class="bottom-0 bg-azure" start-at="t:50%" auto-play="false" step-size="5" play-infinite="false" ng-if='root.inspector'> </inspector-gadget> -->
 
+<!-- <div id="pyramid" class="absolute perspective-container flex-center opacity-25p" style="width:600px; height:600px; top:10%; left:50%; margin-left:-300px;">
+	<ul class="ugrid-5 p15-grid">
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="playing-card-container">
+				<div class="playing-card">
+					<div class="playing-card-back bg-azure"></div>
+					<div class="playing-card-front"></div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div> -->
 
 <div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:50%; left:50%; margin-left:-300px; margin-top:-300px; -webkit-perspective-origin: 50% 30%; perspective-origin: 50% 30%;"
-	init-with="p:[tro:center bottom]"
-	hon-init="p:[transform:rotateY(2880deg):rotateY(0deg):35000:easeOutSine]">
-	<div class="playing-card-container"
-		init-default
-		on-init="send:[pyramid-init:public]">
+	on-init="send:[pyramid-init:public, grid-init:public:delay-4000]"
+	init-with="p:[tro:center bottom]">
+	<!-- pyramid-init:public, grid-init:public:delay-4000 -->
+	<!-- on-init="p:[transform:rotateY(2880deg):rotateY(0deg):35000:easeOutSine]" -->
+	<div class="playing-card-container">
 		<div class="playing-card play-diamond c1"
-			inspector-elem="when-pyramid-init"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(28px), left:0px, top:0px, z-index:15]"
-			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad, left:0px:280px:400:easeOutQuad, top:0px:136px:400:easeOutQuad]:delay-2800">
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(28px), z-index:15]"
+			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad, left:0px:280px:400:easeOutQuad, top:0px:136px:400:easeOutQuad]:delay-2800"
+			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):400:easeOutQuad, left:280px:15px:400:easeOutQuad, top:136px:-35px:400:easeOutQuad]">
+			<!-- inspector-elem="when-pyramid-init" -->
 			<div class="playing-card-back bg-azure"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -28,8 +153,9 @@
 		</div>
 
 		<div class="playing-card play-heart c2"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(26px), left:0px, top:0px, z-index:14]"
-			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(26px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad, left:0px:282px:400:easeOutQuad, top:0px:136px:400:easeOutQuad]:delay-2600">
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(26px), z-index:14]"
+			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(26px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad, left:0px:282px:400:easeOutQuad, top:0px:136px:400:easeOutQuad]:delay-2600"
+			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):400:easeOutQuad, left:282px:130px:400:easeOutQuad, top:136px:-35px:400:easeOutQuad]:delay-100">
 			<div class="playing-card-back bg-auburn"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -47,8 +173,9 @@
 		</div>
 
 		<div class="playing-card play-heart c3"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(24px), left:0px, top:0px, z-index:13]"
-			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(24px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad, left:0px:204px:400:easeOutQuad, top:0px:268px:400:easeOutQuad]:delay-2400">
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(24px), z-index:13]"
+			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(24px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad, left:0px:204px:400:easeOutQuad, top:0px:268px:400:easeOutQuad]:delay-2400"
+			when-grid-init="p:[transform:rotateY(90deg) rotateX(90deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):400:easeOutQuad, left:204px:245px:400:easeOutQuad, top:268px:-35px:400:easeOutQuad]:delay-200">
 			<div class="playing-card-back bg-gold"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -66,8 +193,9 @@
 		</div>
 
 		<div class="playing-card play-heart c4"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(22px), left:0px, top:0px, z-index:12]"
-			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(22px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad, left:0px:204px:400:easeOutQuad, top:0px:268px:400:easeOutQuad]:delay-2200">
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(22px), z-index:12]"
+			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(22px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad, left:0px:204px:400:easeOutQuad, top:0px:268px:400:easeOutQuad]:delay-2200"
+			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):400:easeOutQuad, left:204px:360px:400:easeOutQuad, top:268px:-35px:400:easeOutQuad]:delay-300">
 			<div class="playing-card-back bg-moola"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -85,8 +213,9 @@
 		</div>
 
 		<div class="playing-card play-diamond c5"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(20px), left:0px, top:0px, z-index:11]"
-			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(20px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad, left:0px:208px:400:easeOutQuad, top:0px:268px:400:easeOutQuad]:delay-2000">
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(20px), z-index:11]"
+			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(20px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad, left:0px:208px:400:easeOutQuad, top:0px:268px:400:easeOutQuad]:delay-2000"
+			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):400:easeOutQuad, left:208px:475px:400:easeOutQuad, top:268px:-35px:400:easeOutQuad]:delay-400">
 			<div class="playing-card-back bg-cobalt"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -104,7 +233,7 @@
 		</div>
 
 		<div class="playing-card play-diamond c6"
-		init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(18px), left:0px, top:0px, z-index:10]"
+		init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(18px), z-index:10]"
 		when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(18px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad, left:0px:352px:400:easeOutQuad, top:0px:268px:400:easeOutQuad]:delay-1800">
 			<div class="playing-card-back bg-eggplant"></div>
 			<div class="playing-card-front">
@@ -123,7 +252,7 @@
 		</div>
 
 		<div class="playing-card play-diamond c7"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(16px), left:0px, top:0px, z-index:9]"
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(16px), z-index:9]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(16px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad, left:0px:356px:400:easeOutQuad, top:0px:268px:400:easeOutQuad]:delay-1600">
 			<div class="playing-card-back bg-cerise"></div>
 			<div class="playing-card-front">
@@ -142,7 +271,7 @@
 		</div>
 
 		<div class="playing-card play-club c8"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(14px), left:0px, top:0px, z-index:8]"
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(14px), z-index:8]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(14px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad, left:0px:131px:400:easeOutQuad, top:0px:400px:400:easeOutQuad]:delay-1400">
 			<div class="playing-card-back bg-shamrock"></div>
 			<div class="playing-card-front">
@@ -161,7 +290,7 @@
 		</div>
 
 		<div class="playing-card play-club c9"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(12px), left:0px, top:0px, z-index:7]"
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(12px), z-index:7]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(12px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad, left:0px:281px:400:easeOutQuad, top:0px:400px:400:easeOutQuad]:delay-1200">
 			<div class="playing-card-back bg-lake"></div>
 			<div class="playing-card-front">
@@ -180,7 +309,7 @@
 		</div>
 
 		<div class="playing-card play-club c10"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(10px), left:0px, top:0px, z-index:6]"
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(10px), z-index:6]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(10px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad, left:0px:130px:400:easeOutQuad, top:0px:400px:400:easeOutQuad]:delay-1000">
 			<div class="playing-card-back bg-robin"></div>
 			<div class="playing-card-front">
@@ -199,7 +328,7 @@
 		</div>
 
 		<div class="playing-card play-club c11"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(8px), left:0px, top:0px, z-index:5]"
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(8px), z-index:5]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(8px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad, left:0px:134px:400:easeOutQuad, top:0px:400px:400:easeOutQuad]:delay-800">
 			<div class="playing-card-back bg-moxie"></div>
 			<div class="playing-card-front">
@@ -218,7 +347,7 @@
 		</div>
 
 		<div class="playing-card play-spade c12"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(6px), left:0px, top:0px, z-index:4]"
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(6px), z-index:4]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(6px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad, left:0px:280px:400:easeOutQuad, top:0px:400px:400:easeOutQuad]:delay-600">
 			<div class="playing-card-back bg-crimson"></div>
 			<div class="playing-card-front">
@@ -237,7 +366,7 @@
 		</div>
 
 		<div class="playing-card play-spade c13"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(4px), left:0px, top:0px, z-index:3]"
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(4px), z-index:3]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(8px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad, left:0px:282px:400:easeOutQuad, top:0px:400px:400:easeOutQuad]:delay-400">
 			<div class="playing-card-back bg-campus"></div>
 			<div class="playing-card-front">
@@ -257,7 +386,7 @@
 
 
 		<div class="playing-card play-spade c14"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(2px), left:0px, top:0px, z-index:2]"
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(2px), z-index:2]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(2px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad, left:0px:428px:400:easeOutQuad, top:0px:400px:400:easeOutQuad]:delay-200">
 			<div class="playing-card-back bg-rocket"></div>
 			<div class="playing-card-front">
@@ -276,7 +405,7 @@
 		</div>
 
 		<div class="playing-card play-spade c15"
-			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(0px), left:0px, top:0px, z-index:1]"
+			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(0px), z-index:1]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad, left:0px:430px:400:easeOutQuad, top:0px:400px:400:easeOutQuad]">
 			<div class="playing-card-back bg-robin"></div>
 			<div class="playing-card-front">
