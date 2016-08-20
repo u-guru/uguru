@@ -1,4 +1,4 @@
-<!-- <inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" start-at="t:15%" speed="1x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
+<!-- <inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" start-at="t:15%" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
 </inspector-gadget> -->
 
 <div class="full-xy flex-center-wrap perspective-container">
@@ -57,7 +57,7 @@
 		when-house-return="p:[animation:none] | s:[house-rotate:public:delay-500]">
 		<!-- @samir when-house-return, see inspector when inspector-elem is on li, animation should be 50ms but is logged as 2500ms -->
 		<!-- ex: 2 inspect-trigger="when-house-return|2000" -->
-		<li init-with="p:[op:0, tro:center center, t:all 500ms ease-out]"
+		<li init-with="p:[op:0, tro:center center]"
 			when-house-stack="p:[opacity:0:1:100:linear]"
 			when-house-return="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]">
 			<!-- inspector-elem="when-house-stack" -->
@@ -128,12 +128,13 @@
 							</div>
 							<h1 class="team-name"
 								init-with="p-op"
-								when-gabrie-enter="p:[op:1:delay-1000, t:all 500ms ease-out]">Gabrielle Wee</h1>
+								when-gabrie-enter="p:[op:1:delay-1000]">Gabrielle Wee</h1>
 			            </div>
 						<div class="team-ribbon">
 							<div class="team-ribbon-center"
 								init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
-								when-gabrie-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]">
+								when-gabrie-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):0100:easeOutSine]">
+								<!-- @samir when-gahrie-expand + other states animating opacity - the animation is 2500ms no matter what duration I use -->
 								<div class="team-ribbon-left"
 									init-with="p:[op:0, tr:translateZ(0) translateX(50px)]"
 									when-gabrie-ribbon-expand="p:[opacity:0:1:150:easeOutSine, transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-250"></div>
@@ -160,7 +161,7 @@
 			</div>
 		</li>
 
-		<li init-with="p:[op:0, tro:center center, t:all 500ms ease-out]"
+		<li init-with="p:[op:0, tro:center center]"
 			when-house-stack="p:[opacity:0:1:50:linear]:delay-150"
 			when-house-return="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]">
 			<div class="team-card-container team-jeselle"
@@ -175,7 +176,7 @@
 			</div>
 		</li>
 
-		<li init-with="p:[op:0, tro:center center, t:all 500ms ease-out]"
+		<li init-with="p:[op:0, tro:center center]"
 			when-house-stack="p:[opacity:0:1:50:linear]:delay-300"
 			when-house-return="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]">
 			<div class="team-card-container team-jason"
@@ -190,7 +191,7 @@
 			</div>
 		</li>
 
-		<li init-with="p:[op:0, tro:center center, t:all 500ms ease-out]"
+		<li init-with="p:[op:0, tro:center center]"
 			when-house-stack="p:[opacity:0:1:50:linear]:delay-450"
 			when-house-return="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]">
 			<div class="team-card-container team-samir"
