@@ -174,7 +174,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         playerObj.elem = elem;
     } else {
         playerObj = combinePreviousWithNewProp(args, previous_player);
-        console.log(previous_player.control);
     }
 
     playerObj.tween = new Tweenable();
