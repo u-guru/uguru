@@ -1,3 +1,6 @@
+<inspector-gadget ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" auto-play="false"  step-size="25" show-options="true" play-infinite="false" show-log="false" ng-if='root.inspector'>
+</inspector-gadget>
+
 <div class="team-card-container team-gabrie"
 	init-with="p:[t:all 250ms ease-out, tro:center bottom]"
 	when-house-stack="p:[tr:translate3d(-99%#90%#0px) rotateX(90deg) rotateZ(90deg)]"

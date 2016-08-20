@@ -44,24 +44,24 @@
             ]
         },
         {
-            "exampleName": "opacity",
-            "property": "opacity",
-            "start": "0",
-            "end": "1",
-            "duration": "1000",
-            "ease": "easeInOutBounce",
+            "exampleName": "transform - several easings",
+            "property": "transform",
+            "start": "translateX(0px) translateY(0px)",
+            "end": "translateX(100px) translateY(100px)",
+            "duration": "2500",
+            "ease": "bouncePast elastic",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null
         },
         {
-            "exampleName": "translateXYScale",
+            "exampleName": "translateXYScale-3 easings",
             "property": "transform",
-            "start": "translateX(200%) translateY(50%) scale(0.5)",
-            "end": "translateX(0) translateY(0) scale(1.5)",
+            "start": "translateX(0%) translateY(0%) scale(0) rotate(0deg)",
+            "end": "translateX(100%) translateY(100%) scale(1) rotate(-1080deg)",
 
             "duration": "2000",
-            "ease": "easeFromTo",
+            "ease": "easeOutCirc easeOutCirc linear elastic",
             "fillMode": null,
             "forwards": null,
             "iterationCount": null

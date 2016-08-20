@@ -95,7 +95,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   function combinePreviousWithNewProp(prop_args, previous_player) {
     var resultDict = {};
     var supportedMappings = ['property', 'start', 'end', 'ease', 'duration'];
-
     previousPlayerProp = previous_player.tweenConfig.attachment.property;
     if (typeof(previous_player.tweenConfig.easing) === 'string') {
       var previousStrValue = previous_player.tweenConfig.easing;
@@ -148,16 +147,89 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     player.prefs = filledPreferences
   }
 
+  function applyShowOptionPropertySpecificPlayerToTweenConfig(playerObj) {
+    if (!playerObj.tweenConfig.from.propControl && playerObj.state.properties.length) {
+            playerObj.tweenConfig.from.propControl = '';
+            playerObj.tweenConfig.to.propControl = '';
+
+            playerObj.tweenConfig.easing.propControl = '';
+      }
+
+
+      playerObj.state.properties.forEach(function(prop, i) {
+          playerObj.tweenConfig.from.propControl += 'translateX(0px) ';
+          console.log(prop.control)
+          playerObj.tweenConfig.to.propControl += 'translateX(' + prop.control.barWidth + 'px) ';
+
+          playerObj.tweenConfig.easing.propControl += prop.easing + ' ';
+          playerObj.state.propertyControls.push(prop.control);
+      })
+      playerObj.tweenConfig.easing.propControl = playerObj.tweenConfig.easing.propControl.trim()
+      playerObj.tweenConfig.to.propControl = playerObj.tweenConfig.to.propControl.trim();
+      playerObj.tweenConfig.from.propControl = playerObj.tweenConfig.from.propControl.trim();
+      return playerObj;
+  }
+
+  function parseActiveProperties(playerObj, start, end, easing) {
+    var resultArr = [];
+    var resultDict = {};
+    var easing = easing;
+    for (key in start) {
+      if (key.toLowerCase().indexOf('control') > -1) continue;
+      var pDict = {};
+      pDict.name = key;
+      pDict.start = start[key];
+      pDict.end = end[key];
+      // pDict.easing = key in easing && easing[key].trim() || 'linear';
+      if (key.toLowerCase().indexOf('transform') > -1) {
+        pDict.type = 'transform';
+        start[key].split(' ').forEach(function(prop, i) {
+          pDict.name = prop.split('(')[0].replace('%', '').replace('px', '').replace('deg','');
+          pDict.start = UtilitiesService.removeAllOccurrancesArr(prop.split(pDict.name)[1], ['(', ')']).trim()
+          pDict.end = UtilitiesService.removeAllOccurrancesArr(end[key].split(' ')[i].split(pDict.name)[1], ['(', ')']).trim()
+          pDict.easing = easing[key].split(' ')[i];
+          pDict.state = {active: false, time: 0, delay: 0, ignore:true, breakpoints:[], startAt: [], stepSize: 25, speed:1};
+          resultArr.push(JSON.parse(JSON.stringify(pDict)));
+
+        })
+      } else {
+        pDict.easing = easing[key];
+        resultArr.push(JSON.parse(JSON.stringify(pDict)));
+      }
+    }
+    // playerObj.state.properties = resultArr;
+    $timeout(function() {
+      // playerObj.state.properties = resultArr;
+      if (!playerObj.state.properties) {
+        playerObj.state.properties = resultArr;
+        console.log('parsing values', resultArr, playerObj.state.properties);
+
+        $timeout(function() {
+          playerObj.state.properties.length && playerObj.state.properties.forEach(function(pDict, i) {
+            var ballElem = document.querySelector('#property-ball-' + i);
+            var valueElem = document.querySelector('#property-value-' + i);
+            var barElem = document.querySelector('#property-bar-' + i);
+            var barElemWidth = null || playerObj.control.bar.width;
+            if (barElem) {
+              barElemWidth = barElem.getBoundingClientRect().width || playerObj.control.bar.width
+            }
+            pDict.control = {ball: {elem: ballElem}, valueElem: valueElem, name: pDict.type || pDict.name, barWidth: barElemWidth};
+          })
+
+          playerObj.state.propertyControls = [];
+          playerObj = applyShowOptionPropertySpecificPlayerToTweenConfig(playerObj)
+        },100)
+      }
+
+
+      },10);
+      return resultArr;
+  }
+
   function initPlayerFromArgs(elem, args, previous_player) {
-    // args.player = getPlayerObj();
 
+    var playerObj = {state: { time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
 
-
-
-
-
-
-    var playerObj = {state: {time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
 
     if (!previous_player) {
       playerObj.elem = elem;
@@ -165,7 +237,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         from: args.start,
         to: args.end,
         duration: args.duration,
-        easing: args.ease || 'easeFromTo',
+        easing: args.ease,
         attachment: playerObj,
         start: startTween,
         step: applyPropToElem,
@@ -190,13 +262,17 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         newControl.time.sigfig = playerObj.control.time.sigfig;
         playerObj.control = newControl;
         if (playerObj.control && playerObj.control.ball && playerObj.control.ball.elem) {
-          playerObj.tweenConfig.from['ballControl'] = 'translateX(0px)';
+          console.log(playerObj.tweenConfig.easing,playerObj.tweenConfig.to)
+          playerObj.tweenConfig.from.ballControl = 'translateX(0px)';
           playerObj.tweenConfig.to['ballControl'] = 'translateX(' + playerObj.control.bar.width + 'px)';
-          playerObj.tweenConfig.easing['ballControl'] = 'easeTo' || playerObj.tweenConfig.easing[Object.keys(playerObj.tweenConfig.easing)[0]];
           !playerObj.prefs && applyInspectorGadgetPreferences(playerObj);
+          if (playerObj.prefs && playerObj.prefs.showOptions) {
+            parseActiveProperties(playerObj, args.start, args.end, args.ease);
+          }
         }
       })
     }
+
 
     function formatTime (time, time_control, sigfig) {
       if (!sigfig) sigfig = 2;
@@ -211,13 +287,25 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
     function applyPropToElem(state, args, time) {
       if (args.control && args.control.ball) {
-        console.log(args.control, state)
         args.control.ball.elem.style.transform =  state['ballControl'];
         args.control.time.elem.innerHTML = formatTime(time, args.control.time)
       }
+
+      if (args.prefs && args.prefs.showOptions) {
+
+        args.state.propertyControls.forEach(function(prop, i) {
+          var ballValue = state['propControl'].split(' ')[i];
+          var propValue = state[args.state.propertyControls[i].name];
+          prop.ball.elem.style.transform = ballValue;
+          prop.valueElem.innerHTML = propValue.split(' ').length === 1 && propValue || propValue.split(' ')[i].split('(')[1].replace(')', '');
+          console.log(prop.valueElem.id, state.propControl,args.state.propertyControls[i]);
+        })
+      }
+
       args.state.time = time;
 
       args.inspect && args.prefs.showLog && args.state.active && console.log('\n@ T = ' + time +'ms\n-----------');
+
       for (prop in state) {
         args.elem.style[prop] = state[prop];
         args.inspect && args.prefs.showLog && args.state.active && prop.indexOf('Control') === -1 && time >= 0 && time <= args.tweenConfig.duration && console.log(prop + ':' + state[prop])
@@ -228,12 +316,16 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     function startTween(state, args) {
       // console.log(args)
       // console.log('starting...', state, args);
+      // console.log(state, args)
       args.prefs && args.prefs.showLog && console.log('-----Animation starting ---')
       args.inspect && args.prefs.showLog && args.state.active && console.log('\n@ T = ' +'0ms\n-----------');
       for (prop in state) {
 
         args.inspect && args.prefs.showLog && args.state.active && prop.indexOf('Control') === -1  && console.log(prop + ':' + state[prop])
       }
+
+
+
     }
 
     function finishTween(state, player) {
@@ -395,7 +487,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       playerObj.state.paused = false;
       playerObj.state.percent= 0;
       playerObj.tween = new Tweenable();
-      playerObj.tweenConfig.attachment = playerObj
+      playerObj.tweenConfig.attachment = playerObj;
       playerObj.tweenConfig.durationFormatted = formatTime(playerObj.tweenConfig.duration, playerObj.control.time, playerObj.control.time.sigfig || 1);
       playerObj.play = getPlayFunction(playerObj);
       playerObj.pause = getPauseFunction(playerObj);
@@ -404,6 +496,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       // playerObj.jumpTo = getJumpToFunction(playerObj);
       playerObj.reset = getResetFunc();
       playerObj.set = getSetFunction(playerObj);
+      // playerObj.start =
       // playerObj.reverse = function(value) {tween.seek(value)};
       playerObj.inspect && $timeout(function() {
         !skip && playerObj.prefs && playerObj.prefs.playInfinite && playerObj.play();
@@ -411,72 +504,53 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       playerObj.prefs && playerObj.prefs.startAt && playerObj.tween.seek(0).seek(playerObj.prefs.startAt.seek);
       return playerObj
     }
-    if (playerObj.inspect) {
+
+
+
+
+    if (playerObj.inspect && !playerObj.inspectorInitialized) {
+      playerObj.inspectorInitialized = true;
+      playerObj.showOptions && parseActiveProperties(playerObj, args.start, args.end, args.ease);
       $timeout(function() {
-        playerObj = playerObj.init(playerObj);
 
-        // if (playerObj.prefs.startAt) {
-        //   // playerObj.play()
-        //   console.log(playerObj.tween.get())
-        //   // console.log('startAt', playerObj.prefs.startAt.seek,  playerObj.tween.get())
+        // if (playerObj.inspectorInitialized) {
+          playerObj = playerObj.init(playerObj);
+          console.log(playerObj.tweenConfig)
+          playerObj.inspectorInitialized = false;
+
+           if (playerObj.inspect && (
+              !playerObj.state.properties[0].control.ball.elem)) {
+
+              playerObj.state.properties.forEach(function(pDict, i) {
+                var ballElem = document.querySelector('#property-ball-' + i);
+                var valueElem = document.querySelector('#property-value-' + i);
+                var barElem = document.querySelector('#property-bar-' + i);
+                var barElemWidth = barElem && barElem.getBoundingClientRect().width || playerObj.control.bar.width * .6;
+                pDict.control = {ball: {elem: ballElem}, valueElem: valueElem, barWidth: barElemWidth};
+                playerObj.state.propertyControls[i] = pDict.control;
+              });
+              // applyShowOptionPropertySpecificPlayerToTweenConfig(playerObj)
+              console.log(playerObj)
+              playerObj = playerObj.init(playerObj);
+
+              playerObj.tween
+            }
         // }
-      })
-      // $timeout(function() {
-      //   if (playerObj.prefs && playerObj.prefs.autoPlay) {
 
-      //       playerObj.play();
-      //   }
-      // })
+
+
+
+        console.log(playerObj.tweenConfig.to)
+
+      }, 250)
+
     } else {
-      playerObj.init(playerObj);
+      playerObj = playerObj.init(playerObj);
+      // console.log(playerObj.tweenConfig.easing)
     }
 
     return playerObj;
   }
-
-  // function getPlayFunc(tween) {
-  //   return function(state, args, timer) {
-  //     console.log('playing...')
-  //     tween.seek(0);
-  //     // if (tween.isPlaying) return;
-  //     $timeout(function() {
-  //       tween.resume();
-  //     })
-  //   }
-  // }
-
-  // function getPauseFunc(tween) {
-  //   return function() {
-  //     tween.pause();
-  //   }
-  // }
-
-  // function getResetFunc(tween) {
-  //   return function() {
-  //     console.log('reseting...');
-  //     tween.seek(0);
-  //     $timeout(function() {
-  //       tween.resume();
-  //     })
-  //   }
-  // }
-
-  // function getPlayFunc(tween) {
-  //   return function(state) {
-  //     if (tween.isPlaying) return;
-  //     tween.resume();
-  //   }
-  // }
-
-  // function initPlayerObj() {
-  //   return function() {
-  //     play: getElemPlayFunction,
-  //     pause: getElemPauseFunction,
-  //     stepFront: getElemStepFunction,
-  //     stepBack: getElemBackFunction,
-  //     reset: getElemResetFunction,
-  //   }
-  // }
 
   function getElemPlayFunction(elem, tweener) {
     return function() {
@@ -509,6 +583,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           pObj.duration = processDuration(arg_arr[i], property, apply_default);
           continue;
         case (3):
+
           pObj.ease = verifyAndProcessEaseArg(pObj, arg_arr[i], property, apply_default, allTweens.slice());
           continue;
         case (4):
@@ -538,21 +613,12 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   }
 
   function verifyAndProcessEaseArg(obj, arg_str, prop, apply_default, easing_arr) {
-    if (arg_str.indexOf(' ') > -1 && prop in obj.start && obj.start[prop].indexOf(' ') > -1) {
-
-      var startProps = obj.start[prop].split(' ');
-      var easeDict = {};
-      startProps.forEach(function(prop, i) {easeDict[prop.split('(')[0]] = arg_str.split(' ')[i].split('(')[0]})
-      return easeDict;
+    if (prop === 'transform') {
+      var ease_dict = {ballControl: 'linear'};
+      ease_dict[prop] = arg_str;
+      return ease_dict
     } else {
-      easing_arr = easing_arr.slice();
-      easing_arr.forEach(function(e, i) {easing_arr[i] = e.toLowerCase()});
-      if (arg_str.indexOf('*') > -1 && apply_default) {
-        return defaultPropAnimations[prop]["ease"];
-      } else
-      if (easing_arr.indexOf(arg_str.toLowerCase()) > -1) {
-        return arg_str.trim()
-      }
+      return arg_str
     }
   }
 
