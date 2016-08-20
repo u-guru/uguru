@@ -55,11 +55,11 @@
 	</div>
 </div>
 
-<div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:50%; left:50%; margin-left:-300px; margin-top:-300px; -webkit-perspective-origin: 50% 30%; perspective-origin: 50% 30%;"
+<div id="pyramid" style="-webkit-perspective: 2000; perspective: 2000; -webkit-perspective-origin: 50% 50%; perspective-origin: 50% 50%;"
+	init-with="p:[tro:center bottom, play:paused]"
 	on-init="s:[pyramid-init:public]"
-	when-pyramid-init="p:[transform:rotateY(2880deg):rotateY(0deg):60000:easeOutSine]"
-	when-grid-init="p:[transform:rotateY(2880deg):rotateY(0deg):60000:easeOutSine]"
-	init-with="p:[tro:center bottom]">
+	when-pyramid-init="p:[play:running]"
+	when-column-init="p:[play:running]">
 	<!-- pyramid-init:public, grid-init:public:delay-4000 -->
 	<!-- on-init="p:[transform:rotateY(2880deg):rotateY(0deg):35000:easeOutSine]" -->
 	<div class="playing-card-container">
