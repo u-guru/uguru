@@ -105,7 +105,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     } else {
       previous_player.tweenConfig.easing[prop_args.property] = prop_args.ease;
     }
-
     previous_player.tweenConfig.from[prop_args.property] = prop_args.start[prop_args.property];
     previous_player.tweenConfig.to[prop_args.property] = prop_args.end[prop_args.property];
     return previous_player;
@@ -172,20 +171,19 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         step: applyPropToElem,
         finish: finishTween
       }
-      playerObj.elem = elem;
+        playerObj.elem = elem;
     } else {
-      playerObj = combinePreviousWithNewProp(args, previous_player);
-      playerObj.inspect = true;
+        playerObj = combinePreviousWithNewProp(args, previous_player);
+        console.log(previous_player.control);
     }
 
     playerObj.tween = new Tweenable();
 
 
 
-    if (elem.hasAttribute('inspector-elem') && !previous_player) {
+    if (elem.hasAttribute('inspector-elem')) {
       playerObj.inspect = true;
-      RootService.addElemToInspector(playerObj);
-
+      !previous_player && RootService.addElemToInspector(playerObj);
 
       $timeout(function() {
         var newControl = detectPlaybarControlElem();
