@@ -173,7 +173,8 @@
 		<div class="playing-card play-diamond c6"
 			init-with="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(18px), z-index:10]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(18px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad, left:0px:352px:400:easeOutQuad, top:0px:268px:400:easeOutQuad]:delay-1800"
-			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo, left:352px:15px:600:easeOutExpo, top:268px:130px:600:easeOutExpo]:dely-100">
+			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo, left:352px:15px:600:easeOutExpo, top:268px:130px:600:easeOutExpo]:delay-100"
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(0deg) translateZ(300px):600:easeOutExpo, left:15px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-100">
 			<div class="playing-card-back bg-cobalt"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
