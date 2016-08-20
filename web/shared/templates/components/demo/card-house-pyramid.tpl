@@ -7,22 +7,22 @@
 				<li>
 					<button class="bg-moxie height-36 txt-18 radius-2 p10x"
 						init-default
-						on-click="s:[pyramid-init:public]">stack &rarr; pyramid</button>
+						on-click="s:[pyramid-init:public]">s &rarr; pyramid</button>
 				</li>
 				<li>
 					<button class="bg-moxie height-36 txt-18 radius-2 p10x"
 						init-default
-						on-click="s:[grid-init:public]">pyramid &rarr; grid</button>
+						on-click="s:[grid-init:public]">p &rarr; grid</button>
 				</li>
 				<li>
 					<button class="bg-moxie height-36 txt-18 radius-2 p10x"
 						init-default
-						on-click="s:[column-init:public]">grid &rarr; column</button>
+						on-click="s:[column-init:public]">g &rarr; column</button>
 				</li>
 				<li>
 					<button class="bg-moxie height-36 txt-18 radius-2 p10x"
 						init-default
-						on-click="s:[stack-init:public]">column &rarr; stack</button>
+						on-click="s:[stack-init:public]">c &rarr; stack</button>
 				</li>
 			</ul>
 			<h1 class="m15right semibold txt-20">regular</h1>
@@ -32,22 +32,22 @@
 				<li>
 					<button class="bg-robin height-36 txt-18 radius-2 p10x"
 						init-default
-						on-click="s:[grid-pyramid-init:public]">grid &rarr; pyramid</button>
+						on-click="s:[grid-pyramid-init:public]">g &rarr; pyramid</button>
 				</li>
 				<li>
 					<button class="bg-robin height-36 txt-18 radius-2 p10x"
 						init-default
-						on-click="s:[column-grid-init:public]">column &rarr; grid</button>
+						on-click="s:[column-grid-init:public]">c &rarr; grid</button>
 				</li>
 				<li>
 					<button class="bg-robin height-36 txt-18 radius-2 p10x"
 						init-default
-						on-click="s:[column-pyramid-init:public]">column &rarr; pyramid</button>
+						on-click="s:[column-pyramid-init:public]">c &rarr; pyramid</button>
 				</li>
 				<li>
 					<button class="bg-robin height-36 txt-18 radius-2 p10x"
 						init-default
-						on-click="s:[pyramid-column-init:public]">pyramid &rarr; column</button>
+						on-click="s:[pyramid-column-init:public]">p &rarr; column</button>
 				</li>
 			</ul>
 			<h1 class="m15left semibold txt-20">reverse</h1>
@@ -66,7 +66,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:280px:400:easeOutQuad, top:0px:136px:400:easeOutQuad, tro:left top]:delay-2800"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:280px:15px:600:easeOutExpo, top:136px:-35px:600:easeOutExpo]"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:15px:280px:400:easeOutQuad, top:-35px:136px:400:easeOutQuad, tro:left top]:delay-1400"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(0deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:15px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(0deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:15px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]"
+			when-pyramid-column-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(300px):600:easeOutExpo easeOutExpo easeOutExpo, left:280px:245px:600:easeOutExpo, top:136px:-35px:600:easeOutExpo, tro:50% 50% -300px]">
 			<!-- inspector-elem="when-pyramid-init" -->
 			<div class="playing-card-back bg-auburn"></div>
 			<div class="playing-card-front">
@@ -89,7 +90,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(26px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:282px:400:easeOutQuad, top:0px:136px:400:easeOutQuad, tro:left top]:delay-2600"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:282px:130px:600:easeOutExpo, top:136px:-35px:600:easeOutExpo, tro:left top]:delay-100"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:130px:282px:400:easeOutQuad, top:-35px:136px:400:easeOutQuad, tro:left top]:delay-1300"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(72deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:130px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-100">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(72deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:130px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-100"
+			when-pyramid-column-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(72deg) rotateX(0deg) translateZ(300px):600:easeOutExpo easeOutExpo easeOutExpo, left:282px:245px:600:easeOutExpo, top:136px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-100">
 			<div class="playing-card-back bg-orange"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -111,7 +113,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(24px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:204px:400:easeOutQuad, top:0px:268px:400:easeOutQuad, tro:left top]:delay-2400"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(90deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:204px:245px:600:easeOutExpo, top:268px:-35px:600:easeOutExpo, tro:left top]:delay-200"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:245px:204px:400:easeOutQuad, top:-35px:268px:400:easeOutQuad, tro:left top]:delay-1200"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(144deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:245px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-200">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(144deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:245px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-200"
+			when-pyramid-column-init="p:[transform:rotateY(90deg) rotateX(90deg) translateZ(0px):rotateY(144deg) rotateX(0deg) translateZ(300px):600:easeOutExpo easeOutExpo easeOutExpo, left:204px:245px:600:easeOutExpo, top:268px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-200">
 			<div class="playing-card-back bg-gold"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -133,7 +136,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(22px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:204px:400:easeOutQuad, top:0px:268px:400:easeOutQuad, tro:left top]:delay-2200"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:204px:360px:600:easeOutExpo, top:268px:-35px:600:easeOutExpo, tro:left top]:delay-300"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:360px:204px:400:easeOutQuad, top:-35px:268px:400:easeOutQuad, tro:left top]:delay-1100"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(216deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:360px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-300">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(216deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:360px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-300"
+			when-pyramid-column-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(216deg) rotateX(0deg) translateZ(300px):600:easeOutExpo easeOutExpo easeOutExpo, left:204px:245px:600:easeOutExpo, top:268px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-300">
 			<div class="playing-card-back bg-moola"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -155,7 +159,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(20px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:208px:400:easeOutQuad, top:0px:268px:400:easeOutQuad, tro:left top]:delay-2000"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:208px:475px:600:easeOutExpo, top:268px:-35px:600:easeOutExpo, tro:left top]:delay-400"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:475px:208px:400:easeOutQuad, top:-35px:268px:400:easeOutQuad, tro:left top]:delay-1000"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(288deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:475px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-400">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(288deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:475px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-400"
+			when-pyramid-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(288deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:475px:245px:600:easeOutExpo, top:-35px:-35px:600:easeOutExpo, tro:50% 50% -300px]:delay-400">
 			<div class="playing-card-back bg-azure"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -177,7 +182,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(18px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:352px:400:easeOutQuad, top:0px:268px:400:easeOutQuad, tro:left top]:delay-1800"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:352px:15px:600:easeOutExpo, top:268px:130px:600:easeOutExpo, tro:left top]:delay-100"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:15px:352px:400:easeOutQuad, top:130px:268px:400:easeOutQuad, tro:left top]:delay-900"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(36deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:15px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(36deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:15px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]"
+			when-pyramid-column-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(36deg) rotateX(0deg) translateZ(300px):600:easeOutExpo easeOutExpo easeOutExpo, left:352px:245px:600:easeOutExpo, top:268px:130px:600:easeOutExpo, tro:50% 50% -300px]">
 			<div class="playing-card-back bg-cobalt"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -199,7 +205,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(16px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:356px:400:easeOutQuad, top:0px:268px:400:easeOutQuad, tro:left top]:delay-1600"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:356px:130px:600:easeOutExpo, top:268px:130px:600:easeOutExpo, tro:left top]:delay-200"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:130px:356px:400:easeOutQuad, top:130px:268px:400:easeOutQuad, tro:left top]:delay-800"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(108deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:130px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-100">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(108deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:130px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-100"
+			when-pyramid-column-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(108deg) rotateX(0deg) translateZ(300px):600:easeOutExpo easeOutExpo easeOutExpo, left:356px:245px:600:easeOutExpo, top:268px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-100">
 			<div class="playing-card-back bg-eggplant"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -221,7 +228,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(14px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:130px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-1400"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(90deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:130px:245px:600:easeOutExpo, top:400px:130px:600:easeOutExpo, tro:left top]:delay-300"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:245px:130px:400:easeOutQuad, top:130px:400px:400:easeOutQuad, tro:left top]:delay-700"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(180deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:245px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-300">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(180deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:245px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-300"
+			when-pyramid-column-init="p:[transform:rotateY(90deg) rotateX(90deg) translateZ(0px):rotateY(180deg) rotateX(0deg) translateZ(300px):600:easeOutExpo easeOutExpo easeOutExpo, left:130px:245px:600:easeOutExpo, top:400px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-300">
 			<div class="playing-card-back bg-cerise"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -243,7 +251,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(12px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:281px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-1200"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(90deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:281px:360px:600:easeOutExpo, top:400px:130px:600:easeOutExpo, tro:left top]:delay-400"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:360px:281px:400:easeOutQuad, top:130px:400px:400:easeOutQuad, tro:left top]:delay-600"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(252deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:130px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-200">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(252deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:130px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-200"
+			when-pyramid-column-init="p:[transform:rotateY(90deg) rotateX(90deg) translateZ(0px):rotateY(252deg) rotateX(0deg) translateZ(300px):600:easeOutExpo easeOutExpo easeOutExpo, left:281px:245px:600:easeOutExpo, top:400px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-200">
 			<div class="playing-card-back bg-shamrock"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -265,7 +274,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(10px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:130px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-1000"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:130px:475px:600:easeOutExpo, top:400px:130px:600:easeOutExpo, tro:left top]:delay-500"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:475px:130px:400:easeOutQuad, top:130px:400px:400:easeOutQuad, tro:left top]:delay-500"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(324deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:475px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-300">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(324deg) translateZ(300px):600:easeOutExpo easeOutExpo, left:475px:245px:600:easeOutExpo, top:130px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-300"
+			when-pyramid-column-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(324deg) rotateX(0deg) translateZ(300px):600:easeOutExpo easeOutExpo easeOutExpo, left:130px:245px:600:easeOutExpo, top:400px:130px:600:easeOutExpo, tro:50% 50% -300px]:delay-300">
 			<div class="playing-card-back bg-lake"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
@@ -287,7 +297,8 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(8px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:134px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-800"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:134px:15px:600:easeOutExpo, top:400px:295px:600:easeOutExpo, tro:left top]:delay-200"
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:15px:134px:400:easeOutQuad, top:295px:400px:400:easeOutQuad, tro:left top]:delay-400"
-			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(0deg) translateZ(300px):600:easeOutExpo, left:15px:245px:600:easeOutExpo, top:295px:295px:600:easeOutExpo, tro:50% 50% -300px]">
+			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(0deg) translateZ(300px):600:easeOutExpo, left:15px:245px:600:easeOutExpo, top:295px:295px:600:easeOutExpo, tro:50% 50% -300px]"
+			when-pyramid-column-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(300px):600:easeOutExpo easeOutExpo easeOutExpo, left:134px:245px:600:easeOutExpo, top:400px:295px:600:easeOutExpo, tro:50% 50% -300px]">
 			<div class="playing-card-back bg-robin"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
