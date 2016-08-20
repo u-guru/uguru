@@ -61,6 +61,7 @@
 	.team-card {
 		transition: all 500ms ease-out;
 		transform-style: preserve-3d;
+		backface-visibility: hidden;
 		* {
 			transition: all 500ms ease-out;
 		}
