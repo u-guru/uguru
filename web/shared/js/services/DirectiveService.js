@@ -1371,18 +1371,16 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function processCSSPropArr(prop_arr, scope, elem)  {
       for (var i = 0; i < prop_arr.length; i++) {
         var indexPropDict = prop_arr[i];
-        if (indexPropDict.animProp && !indexPropDict.animProp.player.inspect) {
-          scope.root.animationCounter += 1
-          indexPropDict.animProp.player.play();
-          continue
-        }
-        else if (indexPropDict.animProp && indexPropDict.animProp.player) {
+        if (indexPropDict.animProp && indexPropDict.animProp.player) {
           if (elem[0].getAttribute('inspector-elem') === indexPropDict.animProp.stateName) {
             $timeout(function() {
               if (indexPropDict.animProp.player.prefs && indexPropDict.animProp.player.prefs.autoPlay) {
                 indexPropDict.animProp.player.play()
               }
             }, 100)
+          }
+          else {
+            indexPropDict.animProp.player.play();
           }
           return;
         }
