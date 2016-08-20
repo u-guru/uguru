@@ -1,7 +1,64 @@
 <!-- <inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="4x" class="bottom-0 bg-azure" start-at="t:0%" auto-play="false" step-size="5" play-infinite="false" ng-if='root.inspector'> </inspector-gadget> -->
 
+<div class="fixed bottom-0 left-0 full-x flex-center">
+	<div class="ugrid-2 full-x">
+		<div class="txt-right" style="margin-right: -7.5px">
+			<h1 class="m15right semibold txt-20">regular</h1>
+			<ul class="flex-right p15-grid">
+				<li>
+					<button class="bg-moxie height-36 txt-18 radius-2 p10x"
+						init-default
+						on-click="s:[pyramid-init:public]">stack &rarr; pyramid</button>
+				</li>
+				<li>
+					<button class="bg-moxie height-36 txt-18 radius-2 p10x"
+						init-default
+						on-click="s:[grid-init:public]">pyramid &rarr; grid</button>
+				</li>
+				<li>
+					<button class="bg-moxie height-36 txt-18 radius-2 p10x"
+						init-default
+						on-click="s:[column-init:public]">grid &rarr; column</button>
+				</li>
+				<li>
+					<button class="bg-moxie height-36 txt-18 radius-2 p10x"
+						init-default
+						on-click="s:[stack-init:public]">column &rarr; stack</button>
+				</li>
+			</ul>
+		</div>
+		<div style="margin-left: -7.5px">
+			<h1 class="m15left semibold txt-20">reverse</h1>
+			<ul class="flex-left p15-grid">
+				<li>
+					<button class="bg-robin height-36 txt-18 radius-2 p10x"
+						init-default
+						on-click="s:[grid-pyramid-init:public]">grid &rarr; pyramid</button>
+				</li>
+				<li>
+					<button class="bg-robin height-36 txt-18 radius-2 p10x"
+						init-default
+						on-click="s:[column-grid-init:public]">column &rarr; grid</button>
+				</li>
+				<li>
+					<button class="bg-robin height-36 txt-18 radius-2 p10x"
+						init-default
+						on-click="s:[column-pyramid-init:public]">column &rarr; pyramid</button>
+				</li>
+				<li>
+					<button class="bg-robin height-36 txt-18 radius-2 p10x"
+						init-default
+						on-click="s:[pyramid-column-init:public]">pyramid &rarr; column</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
 <div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:50%; left:50%; margin-left:-300px; margin-top:-300px; -webkit-perspective-origin: 50% 30%; perspective-origin: 50% 30%;"
-	on-init="send:[pyramid-init:public, grid-init:public:delay-4000]"
+	on-init="s:[pyramid-init:public]"
+	when-pyramid-init="p:[transform:rotateY(2880deg):rotateY(0deg):60000:easeOutSine]"
+	when-grid-init="p:[transform:rotateY(2880deg):rotateY(0deg):60000:easeOutSine]"
 	init-with="p:[tro:center bottom]">
 	<!-- pyramid-init:public, grid-init:public:delay-4000 -->
 	<!-- on-init="p:[transform:rotateY(2880deg):rotateY(0deg):35000:easeOutSine]" -->
