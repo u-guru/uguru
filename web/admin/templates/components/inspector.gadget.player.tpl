@@ -1,4 +1,4 @@
-<div class='absolute full-x' style='z-index:1000;height:65px;'  ng-repeat='player in root.inspector.players'>
+<div class='absolute full-x' style='z-index:1000;height:65px;'  ng-repeat='player in root.inspector.players.slice(0, 1)'>
     <ul class='flex-wrap-center ugrid-5 absolute right-0 p15-grid' style='width:20%;' ng-if='player.play'>
         <li ng-click='player.stepTo("reverse")'>
             <span  class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'>

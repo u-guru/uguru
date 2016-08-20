@@ -210,7 +210,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     function applyPropToElem(state, args, time) {
-      if (args.inspect && args.control && args.control.ball.elem) {
+      if (args.control && args.control.ball) {
+        console.log(args.control, state)
         args.control.ball.elem.style.transform =  state['ballControl'];
         args.control.time.elem.innerHTML = formatTime(time, args.control.time)
       }
