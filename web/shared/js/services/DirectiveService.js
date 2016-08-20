@@ -1383,8 +1383,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
                 indexPropDict.animProp.player.play()
               }
             }, 100)
-          } else {
-            indexPropDict.animProp.player.play();
           }
           return;
         }

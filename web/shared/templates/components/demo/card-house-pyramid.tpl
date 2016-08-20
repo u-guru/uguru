@@ -1,4 +1,4 @@
-<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="0.5x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'> </inspector-gadget>
+<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" start-at="t:50%" auto-play="false" step-size="25" play-infinite="false" ng-if='root.inspector'> </inspector-gadget>
 <!-- @samir try adding start-at="t:20%" - autoplays even when set to false -->
 
 <div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:10%; left:50%; margin-left:-300px;" init-with="send:[pyramid-init:public]">
@@ -10,8 +10,9 @@
 	<div class="playing-card-container">
 		<div class="playing-card play-diamond c1"
 			init-with="p:[transform:rotateY(0deg) rotateX(-90deg) translateZ(28px), left:0px, top:0px, z-index:15]"
-			inspector-elem="when-pyramid-init"
-			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(-90deg) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutSine, left:0px:280px]">
+			inspector-elem="on-init"
+			on-init="send:[pyramid-init:public]"
+			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(-90deg) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutSine, left:0px:280px:400:easeOutSine, top:0px:36px:400:easeOutSine]">
 			<!-- "p:[transform:rotateY(0deg) rotateX(-90deg) translateX(0px) translateY(0px) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateX(376px) translateY(400px) translateZ(548px):400:easeOutSine]:delay-200"> -->
 			<div class="playing-card-back bg-azure"></div>
 			<div class="playing-card-front">
