@@ -31,13 +31,15 @@ angular.module('uguru.admin')
         return {
             restrict: 'E',
             replace: true,
-            scope: false,
             templateUrl: RootService.getBaseUrl() + 'admin/templates/components/inspector.gadget.player.tpl',
             link:  {pre: function(scope, element, attr) {
                 scope.triggerEvents = ['on-click', 'on-mouse-leave', 'on-mouse-enter', 'on-mouse-over'];
                 scope.classEvents = ['on-enter', 'on-exit', 'on-init', 'init-with'];
                 scope.supportedAttributes = ['active', 'reverseSpeed', 'speed', 'showOptions', 'showLog', 'startAt', 'selector', 'ballColor', 'bgColor', 'state', 'autoPlay', "playInfinite", 'stepSize', 'startAt', 'endAt', 'pauseAt', 'visible']
-
+                scope.root = scope.$parent.root;
+                scope.$watch('root.inspector.players', function(players) {
+                    console.log('players updated', players.length)
+                })
                         for (key in attr) {
                             if (scope.supportedAttributes.indexOf(key) > -1) {
 

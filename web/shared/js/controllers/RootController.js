@@ -24,7 +24,7 @@ angular.module('uguru.shared.controllers', [])
     RootService.setPauseElementFunc(root.pauseElement);
     root.animationCounter = 0;
     root.transitionCounter = 0;
-    root.inspector = {players:[], elements: [], preferences: {}};
+    root.inspector = {players:[], activePlayer: null, elements: [], preferences: {}};
     RootService.setGetInspector(getInspectorPrefs(root.inspector));
     RootService.setInspectableElements(pushElemPlayer(root.inspector));
   }
@@ -33,6 +33,7 @@ angular.module('uguru.shared.controllers', [])
 function pushElemPlayer(r_inspector) {
   return function(elem) {
     r_inspector.players.push(elem);
+    r_inspector.activePlayer = elem;
     console.log('root inspector elems', r_inspector.players)
   }
 }
