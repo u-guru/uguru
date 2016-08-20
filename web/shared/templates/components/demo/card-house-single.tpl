@@ -1,4 +1,4 @@
-<inspector-gadget ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" auto-play="false"  step-size="25" show-options="true" play-infinite="false" show-log="false" ng-if='root.inspector'>
+<inspector-gadget ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" auto-play="false"  step-size="25" show-props play-infinite="false" show-log="false">
 </inspector-gadget>
 
 <div class="team-card-container team-gabrie"

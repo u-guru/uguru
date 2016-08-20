@@ -47,6 +47,9 @@ angular.module('uguru.admin')
                                 if (attr[key] === 'true' || attr[key] === 'false') {
                                     scope.root.inspector.preferences[key] = (attr[key] === 'true');
                                 }
+                                if (key in attr && !attr[key]) {
+                                    scope.root.inspector.preferences[key] = true;
+                                }
                                 if (['stepSize', 'reverseSpeed', 'speed'].indexOf(key) > -1) {
                                     scope.root.inspector.preferences[key] = parseFloat(attr[key].replace('x', ''))
                                 }
