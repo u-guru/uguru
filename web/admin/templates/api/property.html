@@ -1,5 +1,5 @@
 <!-- speed="2x" -->
-<inspector-gadget ball-color="smoke" reverse-speed="10" speed="5x" class="bottom-0 bg-azure" auto-play="false"  step-size="25" play-infinite="false" show-log="true" ng-if='root.inspector'>
+<inspector-gadget ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" auto-play="false"  step-size="25" show-options="true" play-infinite="false" show-log="false" ng-if='root.inspector'>
 </inspector-gadget>
 
 <div class='bg-charcoal'>
@@ -50,11 +50,13 @@
 						inspector-elem="on-init" class='opacity-100p'
 						ng-include="root.base_url + 'shared/templates/components/demo/card.tpl'"
                         init-with="{{example.initWith}}"
-						on-init="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]:delay-250"></div>
-                    <div ng-repeat="example in property.examples" ng-if='example.properties && property.activeIndex === $index'
+                        on-init="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]:delay-250"
+						></div>
+                        <!-- on-init=" -->
+                    <!-- <div ng-repeat="example in property.examples" ng-if='example.properties && property.activeIndex === $index'
                         inspector-elem="on-init" class='opacity-100p width-128 height-128 bg-auburn'
                         init-with="{{example.initWith}}"
-                        on-init="p:[{{example.properties[0].property}}:{{example.properties[0].start}}:{{example.properties[0].end}}:{{example.properties[0].duration}}:{{example.properties[0].ease}},{{example.properties[1].property}}:{{example.properties[1].start}}:{{example.properties[1].end}}:{{example.properties[1].duration}}:{{example.properties[1].ease}}]:delay-250"></div>
+                        on-init="p:[{{example.properties[0].property}}:{{example.properties[0].start}}:{{example.properties[0].end}}:{{example.properties[0].duration}}:{{example.properties[0].ease}},{{example.properties[1].property}}:{{example.properties[1].start}}:{{example.properties[1].end}}:{{example.properties[1].duration}}:{{example.properties[1].ease}}]:delay-250"></div> -->
 
                         <!-- ng-include="root.base_url + 'shared/templates/components/demo/card.tpl'" -->
                 </div>

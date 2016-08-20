@@ -95,7 +95,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   function combinePreviousWithNewProp(prop_args, previous_player) {
     var resultDict = {};
     var supportedMappings = ['property', 'start', 'end', 'ease', 'duration'];
-
     previousPlayerProp = previous_player.tweenConfig.attachment.property;
     if (typeof(previous_player.tweenConfig.easing) === 'string') {
       var previousStrValue = previous_player.tweenConfig.easing;
@@ -148,16 +147,78 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     player.prefs = filledPreferences
   }
 
+  function applyShowOptionPropertySpecificPlayerToTweenConfig(playerObj) {
+    console.log(playerObj)
+    if (!playerObj.tweenConfig.from.propControl && playerObj.state.properties.length) {
+            playerObj.tweenConfig.from.propControl = '';
+            playerObj.tweenConfig.to.propControl = '';
+
+            playerObj.tweenConfig.easing.propEasing = '';
+      }
+
+      playerObj.state.properties.forEach(function(prop, i) {
+          playerObj.tweenConfig.from.propControl += 'translateX(0px) ';
+          playerObj.tweenConfig.to.propControl += 'translateX(' + prop.control.barWidth + 'px) ';
+
+          playerObj.tweenConfig.easing.propEasing += prop.easing + ' ';
+          playerObj.state.propertyControls.push(prop.control);
+      })
+      playerObj.tweenConfig.easing.propControl = playerObj.tweenConfig.easing.propEasing.trim()
+      playerObj.tweenConfig.to.propControl = playerObj.tweenConfig.to.propControl.trim();
+      return playerObj;
+  }
+
+  function parseActiveProperties(playerObj, start, end, easing) {
+    var resultArr = [];
+    var resultDict = {};
+    var easing = easing;
+    for (key in start) {
+      if (key.toLowerCase().indexOf('control') > -1) continue;
+      var pDict = {};
+      pDict.name = key;
+      pDict.start = start[key];
+      pDict.end = end[key];
+      pDict.easing = key in easing && easing[key] || 'linear';
+      if (key.toLowerCase().indexOf('transform') > -1) {
+        pDict.type = 'transform';
+        start[key].split(' ').forEach(function(prop, i) {
+          pDict.name = prop.split('(')[0].replace('%', '').replace('px', '').replace('deg','');
+          pDict.start = UtilitiesService.removeAllOccurrancesArr(prop.split(pDict.name)[1], ['(', ')']).trim()
+          pDict.end = UtilitiesService.removeAllOccurrancesArr(end[key].split(' ')[i].split(pDict.name)[1], ['(', ')']).trim()
+          pDict.easing = easing[key].split(' ')[i];
+          console.log(pDict.easing);
+          pDict.state = {active: false, time: 0, delay: 0, ignore:true, breakpoints:[], startAt: [], stepSize: 25, speed:1};
+          resultArr.push(JSON.parse(JSON.stringify(pDict)));
+
+        })
+      } else {
+        resultArr.push(JSON.parse(JSON.stringify(pDict)));
+      }
+    }
+    $timeout(function() {
+      console.log('parsing values ')
+      resultArr.length && resultArr.forEach(function(pDict, i) {
+        var ballElem = document.querySelector('#property-ball-' + i);
+        var valueElem = document.querySelector('#property-value-' + i);
+        var barElem = document.querySelector('#property-bar-' + i);
+        var barElemWidth = null;
+        if (barElem) {
+          barElemWidth = barElem.getBoundingClientRect().width
+        }
+        pDict.control = {ball: {elem: ballElem}, valueElem: valueElem, barWidth: barElemWidth};
+      })
+      playerObj.state.propertyControls = [];
+
+
+      playerObj = applyShowOptionPropertySpecificPlayerToTweenConfig(playerObj)
+      },10);
+      return resultArr;
+  }
+
   function initPlayerFromArgs(elem, args, previous_player) {
-    // args.player = getPlayerObj();
 
+    var playerObj = {state: { time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
 
-
-
-
-
-
-    var playerObj = {state: {time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
 
     if (!previous_player) {
       playerObj.elem = elem;
@@ -165,7 +226,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         from: args.start,
         to: args.end,
         duration: args.duration,
-        easing: args.ease || 'easeFromTo',
+        easing: args.ease,
         attachment: playerObj,
         start: startTween,
         step: applyPropToElem,
@@ -190,13 +251,18 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         newControl.time.sigfig = playerObj.control.time.sigfig;
         playerObj.control = newControl;
         if (playerObj.control && playerObj.control.ball && playerObj.control.ball.elem) {
-          playerObj.tweenConfig.from['ballControl'] = 'translateX(0px)';
+          console.log(playerObj.tweenConfig.easing,playerObj.tweenConfig.to)
+          playerObj.tweenConfig.from.ballControl = 'translateX(0px)';
           playerObj.tweenConfig.to['ballControl'] = 'translateX(' + playerObj.control.bar.width + 'px)';
-          playerObj.tweenConfig.easing['ballControl'] = 'easeTo' || playerObj.tweenConfig.easing[Object.keys(playerObj.tweenConfig.easing)[0]];
           !playerObj.prefs && applyInspectorGadgetPreferences(playerObj);
+          if (playerObj.prefs && playerObj.prefs.showOptions) {
+            playerObj.state.properties = parseActiveProperties(playerObj, args.start, args.end, args.ease);
+
+          }
         }
       })
     }
+
 
     function formatTime (time, time_control, sigfig) {
       if (!sigfig) sigfig = 2;
@@ -211,13 +277,20 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
     function applyPropToElem(state, args, time) {
       if (args.control && args.control.ball) {
-        console.log(args.control, state)
         args.control.ball.elem.style.transform =  state['ballControl'];
         args.control.time.elem.innerHTML = formatTime(time, args.control.time)
       }
+
+      if (args.prefs && args.prefs.showOptions) {
+        args.state.propertyControls.forEach(function(prop, i) {
+          prop.ball.elem.style.transform = state['propControl'].split(' ')[i];
+        })
+      }
+
       args.state.time = time;
 
       args.inspect && args.prefs.showLog && args.state.active && console.log('\n@ T = ' + time +'ms\n-----------');
+
       for (prop in state) {
         args.elem.style[prop] = state[prop];
         args.inspect && args.prefs.showLog && args.state.active && prop.indexOf('Control') === -1 && time >= 0 && time <= args.tweenConfig.duration && console.log(prop + ':' + state[prop])
@@ -228,6 +301,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     function startTween(state, args) {
       // console.log(args)
       // console.log('starting...', state, args);
+
       args.prefs && args.prefs.showLog && console.log('-----Animation starting ---')
       args.inspect && args.prefs.showLog && args.state.active && console.log('\n@ T = ' +'0ms\n-----------');
       for (prop in state) {
@@ -395,7 +469,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       playerObj.state.paused = false;
       playerObj.state.percent= 0;
       playerObj.tween = new Tweenable();
-      playerObj.tweenConfig.attachment = playerObj
+      playerObj.tweenConfig.attachment = playerObj;
       playerObj.tweenConfig.durationFormatted = formatTime(playerObj.tweenConfig.duration, playerObj.control.time, playerObj.control.time.sigfig || 1);
       playerObj.play = getPlayFunction(playerObj);
       playerObj.pause = getPauseFunction(playerObj);
@@ -404,6 +478,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       // playerObj.jumpTo = getJumpToFunction(playerObj);
       playerObj.reset = getResetFunc();
       playerObj.set = getSetFunction(playerObj);
+      playerObj.start =
       // playerObj.reverse = function(value) {tween.seek(value)};
       playerObj.inspect && $timeout(function() {
         !skip && playerObj.prefs && playerObj.prefs.playInfinite && playerObj.play();
@@ -413,6 +488,10 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     }
     if (playerObj.inspect) {
       $timeout(function() {
+        var updatePropControlConfig = playerObj.prefs.showOptions && !playerObj.tweenConfig.to.propControl && applyShowOptionPropertySpecificPlayerToTweenConfig(playerObj).tweenConfig
+        if (updatePropControlConfig) {
+          playerObj.tweenConfig = updatePropControlConfig;
+        }
         playerObj = playerObj.init(playerObj);
 
         // if (playerObj.prefs.startAt) {
@@ -420,7 +499,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         //   console.log(playerObj.tween.get())
         //   // console.log('startAt', playerObj.prefs.startAt.seek,  playerObj.tween.get())
         // }
-      })
+      }, 30)
       // $timeout(function() {
       //   if (playerObj.prefs && playerObj.prefs.autoPlay) {
 
@@ -509,6 +588,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           pObj.duration = processDuration(arg_arr[i], property, apply_default);
           continue;
         case (3):
+
           pObj.ease = verifyAndProcessEaseArg(pObj, arg_arr[i], property, apply_default, allTweens.slice());
           continue;
         case (4):
@@ -538,22 +618,9 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   }
 
   function verifyAndProcessEaseArg(obj, arg_str, prop, apply_default, easing_arr) {
-    if (arg_str.indexOf(' ') > -1 && prop in obj.start && obj.start[prop].indexOf(' ') > -1) {
-
-      var startProps = obj.start[prop].split(' ');
-      var easeDict = {};
-      startProps.forEach(function(prop, i) {easeDict[prop.split('(')[0]] = arg_str.split(' ')[i].split('(')[0]})
-      return easeDict;
-    } else {
-      easing_arr = easing_arr.slice();
-      easing_arr.forEach(function(e, i) {easing_arr[i] = e.toLowerCase()});
-      if (arg_str.indexOf('*') > -1 && apply_default) {
-        return defaultPropAnimations[prop]["ease"];
-      } else
-      if (easing_arr.indexOf(arg_str.toLowerCase()) > -1) {
-        return arg_str.trim()
-      }
-    }
+    var ease_dict = {ballControl: 'linear'};
+    ease_dict[prop] = arg_str;
+    return ease_dict
   }
 
   function processEndArg(arg_str, prop, apply_default) {
