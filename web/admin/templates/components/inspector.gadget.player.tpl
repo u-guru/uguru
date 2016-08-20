@@ -11,6 +11,7 @@
                 <div class='p20x relative flex-vertical-center flex-wrap' style='width:90%'>
                     <hr class='full-x relative' id='property-bar-{{$index}}'>
                     <div class='left-0 m20x m10y round bg-{{player.prefs.ballColor || "azure"}} z-index-99 top-0 absolute p15-grid' id='property-ball-{{$index}}'> </div>
+                    <div id='property-value-{{$index}}' class='absolute right-0 flex-vertical-center txt-1 p20x weight-600 top-50p' style='margin-right:-15%'> </div>
                 </div>
                 <div class='full-x absolute bottom-0 flex-wrap grid full-x m10x'>
 
@@ -94,7 +95,7 @@
         <li ng-click='player.stepTo("forwards")'>
             <span class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'  ng-include='"shared/templates/components/svg/main/skip.html"'></span>
         </li>
-        <li ng-click='player.prefs.showOptions = !player.prefs.showOptions'>
+        <li ng-click='player.prefs.showOptions = !player.prefs.showOptions' ng-if='false'>
             <span class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'  ng-include='"shared/templates/components/svg/main/arrow.html"'></span>
         </li>
     </ul>

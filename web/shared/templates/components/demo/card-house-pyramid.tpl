@@ -1,4 +1,4 @@
-<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="0.25x" show-options="true" class="bottom-0 bg-azure" auto-play="false" step-size="100" play-infinite="false" > </inspector-gadget>
+<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.25x" show-options="true" class="bottom-0 bg-azure" auto-play="false" step-size="100" start-at="t:50%" play-infinite="false" > </inspector-gadget>
 
 
 <div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:50%; left:50%; margin-left:-300px; margin-top:-300px; -webkit-perspective-origin: 50% 30%; perspective-origin: 50% 30%;"
