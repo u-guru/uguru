@@ -9,9 +9,12 @@
 			height: 150px;
 			transform-origin: left top !important;
 			> div {
+				@include flex;
+				@include flex-center;
+				overflow: hidden;
 				svg {
-					width: auto;
-					height: 100%;
+					width: 100%!important;
+					height: auto!important;
 				}
 			}
 		}
