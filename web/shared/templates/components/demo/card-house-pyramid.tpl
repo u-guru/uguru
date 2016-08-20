@@ -1,4 +1,4 @@
-<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" start-at="t:50%" auto-play="false" step-size="25" play-infinite="false" ng-if='root.inspector'> </inspector-gadget>
+<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" auto-play="false" step-size="25" play-infinite="false" ng-if='root.inspector'> </inspector-gadget>
 
 
 <div id="pyramid" class="absolute perspective-container" style="width:600px; height:600px; top:50%; left:50%; margin-left:-300px; margin-top:-300px; -webkit-perspective-origin: 50% 30%; perspective-origin: 50% 30%;"
@@ -10,7 +10,6 @@
 			on-init="send:[pyramid-init:public]"
 			inspector-elem="when-pyramid-init"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad, left:0px:280px:400:easeOutQuad, top:0px:136px:400:easeOutQuad]:delay-2800">
-			<!-- "p:[transform:rotateY(0deg) rotateX(90deg) translateX(0px) translateY(0px) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateX(376px) translateY(400px) translateZ(548px):400:easeOutQuad]:delay-200"> -->
 			<div class="playing-card-back bg-azure"></div>
 			<div class="playing-card-front">
 				<svg viewBox="0 0 250 350">
