@@ -17035,8 +17035,7 @@ input[type=range] {
     height: 150px; }
     #pyramid .playing-card-container .playing-card {
       width: 100px;
-      height: 150px;
-      transform-origin: left top !important; }
+      height: 150px; }
       #pyramid .playing-card-container .playing-card > div {
         -ms-box-orient: horizontal;
         display: -webkit-box;

@@ -20,7 +20,6 @@
 		.playing-card {
 			width: 100px;
 			height: 150px;
-			transform-origin: left top !important;
 			> div {
 				@include flex;
 				@include flex-center;
