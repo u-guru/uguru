@@ -35,7 +35,7 @@ angular.module('uguru.admin')
             link:  {pre: function(scope, element, attr) {
                 scope.triggerEvents = ['on-click', 'on-mouse-leave', 'on-mouse-enter', 'on-mouse-over'];
                 scope.classEvents = ['on-enter', 'on-exit', 'on-init', 'init-with'];
-                scope.supportedAttributes = ['active', 'reverseSpeed', 'speed', 'showOptions', 'showLog', 'startAt', 'selector', 'ballColor', 'bgColor', 'state', 'autoPlay', "playInfinite", 'stepSize', 'startAt', 'endAt', 'pauseAt', 'visible']
+                scope.supportedAttributes = ['active', 'showProps', 'reverseSpeed', 'speed', 'showOptions', 'showLog', 'startAt', 'selector', 'ballColor', 'bgColor', 'state', 'autoPlay', "playInfinite", 'stepSize', 'startAt', 'endAt', 'pauseAt', 'visible']
                 scope.root = scope.$parent.root;
                 scope.$watch('root.inspector.players', function(players) {
                     console.log('players updated', players.length)
@@ -46,6 +46,9 @@ angular.module('uguru.admin')
                                 scope.root.inspector.preferences[key] = attr[key];
                                 if (attr[key] === 'true' || attr[key] === 'false') {
                                     scope.root.inspector.preferences[key] = (attr[key] === 'true');
+                                }
+                                if (key in attr && !attr[key]) {
+                                    scope.root.inspector.preferences[key] = true;
                                 }
                                 if (['stepSize', 'reverseSpeed', 'speed'].indexOf(key) > -1) {
                                     scope.root.inspector.preferences[key] = parseFloat(attr[key].replace('x', ''))

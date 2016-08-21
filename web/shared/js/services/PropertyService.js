@@ -266,7 +266,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           playerObj.tweenConfig.from.ballControl = 'translateX(0px)';
           playerObj.tweenConfig.to['ballControl'] = 'translateX(' + playerObj.control.bar.width + 'px)';
           !playerObj.prefs && applyInspectorGadgetPreferences(playerObj);
-          if (playerObj.prefs && playerObj.prefs.showOptions) {
+          if (playerObj.prefs && playerObj.prefs.showProps) {
             parseActiveProperties(playerObj, args.start, args.end, args.ease);
           }
         }
@@ -291,7 +291,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         args.control.time.elem.innerHTML = formatTime(time, args.control.time)
       }
 
-      if (args.prefs && args.prefs.showOptions) {
+      if (args.prefs && args.prefs.showProps) {
 
         args.state.propertyControls.forEach(function(prop, i) {
           var ballValue = state['propControl'].split(' ')[i];
@@ -510,7 +510,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
     if (playerObj.inspect && !playerObj.inspectorInitialized) {
       playerObj.inspectorInitialized = true;
-      playerObj.showOptions && parseActiveProperties(playerObj, args.start, args.end, args.ease);
+      playerObj.showProps && parseActiveProperties(playerObj, args.start, args.end, args.ease);
       $timeout(function() {
 
         // if (playerObj.inspectorInitialized) {
