@@ -1,6 +1,6 @@
 <div class='absolute full-x' style='z-index:1000;height:65px;'  ng-repeat='player in root.inspector.players track by $index' ng-if='root.inspector.activePlayer === player'>
     <ul class='flex-wrap grid absolute right-0 grid full-x bg-charcoal-80p absolute left-0' style='bottom:65px;' ng-if='player.state.properties.length && player.prefs.showProps ' >
-        <li class='full-x relative flex-vertical-wrap bg-azure-20p p15-grid border-2-bottom border-charcoal txt-2 weight-700' style='max-height:75px;' ng-repeat='property in player.state.properties track by $index'>
+        <li class='full-x relative flex-vertical-wrap bg-azure-20p p15-grid border-2-bottom border-charcoal txt-2 weight-700' style='max-height:75px;' ng-if='property.active' ng-repeat='property in player.state.properties track by $index'>
             <div style='margin-top:-5px;' class='width-10p  uppercase flex-wrap-center text-left'>
                 <div class='full-x'>
                     <h1 class='uppercase m05y txt-4 text-left'> {{property.name}} </h1>
