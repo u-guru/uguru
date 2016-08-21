@@ -40,7 +40,7 @@
 						on-click="s:[column-grid-init:public]">c &rarr; grid</button>
 				</li>
 				<li>
-					<button class="bg-robin height-36 txt-18 radius-2 p10x"
+					<button class="bg-taupe height-36 txt-18 radius-2 p10x disabled"
 						init-default
 						on-click="s:[column-pyramid-init:public]">c &rarr; pyramid</button>
 				</li>
@@ -191,6 +191,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:280px:400:easeOutQuad, top:0px:136px:400:easeOutQuad, tro:left top]:delay-2800"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:280px:15px:600:easeOutExpo, top:136px:60px:600:easeOutExpo, tro:left top]"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(0deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:15px:249px:750:easeInOutSine, top:60px:60px:750:easeInOutSine, tro:50% 50% -200px]"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(28px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:60px:0px:500:easeOutQuart, tro:left top]"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:15px:280px:400:easeOutQuad, top:60px:136px:400:easeOutQuad, tro:left top]:delay-1400"
 			when-column-grid-init="p:[transform:rotateY(0deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:15px:600:easeInOutSine, top:60px:60px:600:easeInOutSine, tro:left top]"
@@ -217,6 +218,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(26px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:282px:400:easeOutQuad, top:0px:136px:400:easeOutQuad, tro:left top]:delay-2600"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:282px:132px:600:easeOutExpo, top:136px:60px:600:easeOutExpo, tro:left top]:delay-100"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(72deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:132px:249px:750:easeInOutSine, top:60px:60px:750:easeInOutSine, tro:50% 50% -200px]:delay-100"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(26px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:60px:0px:500:easeOutQuart, tro:left top]:delay-150"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:132px:282px:400:easeOutQuad, top:60px:136px:400:easeOutQuad, tro:left top]:delay-1300"
 			when-column-grid-init="p:[transform:rotateY(72deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:132px:600:easeInOutSine, top:60px:60px:600:easeInOutSine, tro:left top]:delay-100"
@@ -242,6 +244,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(24px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:204px:400:easeOutQuad, top:0px:268px:400:easeOutQuad, tro:left top]:delay-2400"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(90deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:204px:249px:600:easeOutExpo, top:268px:60px:600:easeOutExpo, tro:left top]:delay-200"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(144deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:249px:249px:600:easeInOutSine, top:60px:60px:750:easeInOutSine, tro:50% 50% -200px]:delay-200"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(24px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:60px:0px:500:easeOutQuart, tro:left top]:delay-300"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:249px:204px:400:easeOutQuad, top:60px:268px:400:easeOutQuad, tro:left top]:delay-1200"
 			when-column-grid-init="p:[transform:rotateY(144deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:249px:600:easeInOutSine, top:60px:60px:600:easeInOutSine, tro:left top]:delay-200"
@@ -267,6 +270,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(22px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:204px:400:easeOutQuad, top:0px:268px:400:easeOutQuad, tro:left top]:delay-2200"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:204px:366px:600:easeOutExpo, top:268px:60px:600:easeOutExpo, tro:left top]:delay-300"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(216deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:366px:249px:750:easeInOutSine, top:60px:60px:750:easeInOutSine, tro:50% 50% -200px]:delay-300"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(22px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:60px:0px:500:easeOutQuart, tro:left top]:delay-450"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:366px:204px:400:easeOutQuad, top:60px:268px:400:easeOutQuad, tro:left top]:delay-1100"
 			when-column-grid-init="p:[transform:rotateY(216deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:366px:600:easeInOutSine, top:60px:60px:600:easeInOutSine, tro:left top]:delay-300"
@@ -292,6 +296,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(20px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:208px:400:easeOutQuad, top:0px:268px:400:easeOutQuad, tro:left top]:delay-2000"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:208px:483px:600:easeOutExpo, top:268px:60px:600:easeOutExpo, tro:left top]:delay-400"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(288deg) translateZ(200px):750:easeOutExpo easeOutExpo, left:483px:249px:750:easeInOutSine, top:60px:60px:750:easeInOutSine, tro:50% 50% -200px]:delay-400"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(20px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:60px:0px:500:easeOutQuart, tro:left top]:delay-600"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:483px:208px:400:easeOutQuad, top:60px:268px:400:easeOutQuad, tro:left top]:delay-1000"
 			when-column-grid-init="p:[transform:rotateY(288deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeOutExpo easeOutExpo, left:249px:483px:600:easeInOutSine, top:60px:60px:600:easeInOutSine, tro:left top]:delay-400"
@@ -317,6 +322,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(18px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:352px:400:easeOutQuad, top:0px:268px:400:easeOutQuad, tro:left top]:delay-1800"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:352px:15px:600:easeOutExpo, top:268px:225px:600:easeOutExpo, tro:left top]:delay-100"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(36deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:15px:249px:750:easeInOutSine, top:225px:225px:750:easeInOutSine, tro:50% 50% -200px]:delay-400"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(18px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:225px:0px:500:easeOutQuart, tro:left top]:delay-750"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:15px:352px:400:easeOutQuad, top:225px:268px:400:easeOutQuad, tro:left top]:delay-900"
 			when-column-grid-init="p:[transform:rotateY(36deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:15px:600:easeInOutSine, top:225px:225px:600:easeInOutSine, tro:left top]:delay-100"
@@ -342,6 +348,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(16px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:356px:400:easeOutQuad, top:0px:268px:400:easeOutQuad, tro:left top]:delay-1600"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:356px:132px:600:easeOutExpo, top:268px:225px:600:easeOutExpo, tro:left top]:delay-200"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(108deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:132px:249px:750:easeInOutSine, top:225px:225px:750:easeInOutSine, tro:50% 50% -200px]:delay-300"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(16px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:225px:0px:500:easeOutQuart, tro:left top]:delay-900"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:132px:356px:400:easeOutQuad, top:225px:268px:400:easeOutQuad, tro:left top]:delay-800"
 			when-column-grid-init="p:[transform:rotateY(108deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:132px:600:easeInOutSine, top:225px:225px:600:easeInOutSine, tro:left top]:delay-200"
@@ -367,6 +374,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(14px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:132px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-1400"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(90deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:132px:249px:600:easeOutExpo, top:400px:225px:600:easeOutExpo, tro:left top]:delay-300"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(180deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:249px:249px:750:easeInOutSine, top:225px:225px:750:easeInOutSine, tro:50% 50% -200px]:delay-200"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(14px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:225px:0px:500:easeOutQuart, tro:left top]:delay-1150"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:249px:132px:400:easeOutQuad, top:225px:400px:400:easeOutQuad, tro:left top]:delay-700"
 			when-column-grid-init="p:[transform:rotateY(180deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:249px:600:easeInOutSine, top:225px:225px:600:easeInOutSine, tro:left top]:delay-200"
@@ -392,6 +400,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(12px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:281px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-1200"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(90deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:281px:366px:600:easeOutExpo, top:400px:225px:600:easeOutExpo, tro:left top]:delay-400"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(252deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:366px:249px:750:easeInOutSine, top:225px:225px:750:easeInOutSine, tro:50% 50% -200px]:delay-100"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(12px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:225px:0px:500:easeOutQuart, tro:left top]:delay-1300"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(90deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:366px:281px:400:easeOutQuad, top:225px:400px:400:easeOutQuad, tro:left top]:delay-600"
 			when-column-grid-init="p:[transform:rotateY(252deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:366px:600:easeInOutSine, top:225px:225px:600:easeInOutSine, tro:left top]:delay-400"
@@ -417,6 +426,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(10px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:132px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-1000"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:132px:483px:600:easeOutExpo, top:400px:225px:600:easeOutExpo, tro:left top]:delay-500"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(324deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:483px:249px:750:easeInOutSine, top:225px:225px:750:easeInOutSine, tro:50% 50% -200px]"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(10px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:225px:0px:500:easeOutQuart, tro:left top]:delay-1450"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:483px:132px:400:easeOutQuad, top:225px:400px:400:easeOutQuad, tro:left top]:delay-500"
 			when-column-grid-init="p:[transform:rotateY(324deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:483px:600:easeInOutSine, top:225px:225px:600:easeInOutSine, tro:left top]:delay-500"
@@ -442,6 +452,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(8px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:134px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-800"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:134px:15px:600:easeOutExpo, top:400px:390px:600:easeOutExpo, tro:left top]:delay-200"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(0deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:15px:249px:750:easeInOutSine, top:390px:390px:750:easeInOutSine, tro:50% 50% -200px]"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(8px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:390px:0px:500:easeOutQuart, tro:left top]:delay-1600"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:15px:134px:400:easeOutQuad, top:390px:400px:400:easeOutQuad, tro:left top]:delay-400"
 			when-column-grid-init="p:[transform:rotateY(0deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:15px:600:easeInOutSine, top:390px:390px:600:easeInOutSine, tro:left top]:delay-200"
@@ -467,6 +478,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(6px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:280px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-600"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:280px:132px:600:easeOutExpo, top:400px:390px:600:easeOutExpo, tro:left top]:delay-300"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(72deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:132px:282px:750:easeInOutSine, top:390px:390px:750:easeInOutSine, tro:50% 50% -200px]:delay-100"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(6px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:390px:0px:500:easeOutQuart, tro:left top]:delay-1750"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px:rotateY(90deg) rotateX(-29deg) translateZ(0px)):400:easeOutQuad easeOutQuad easeOutQuad, left:132px:280px:400:easeOutQuad, top:390px:400px:400:easeOutQuad, tro:left top]:delay-300"
 			when-column-grid-init="p:[transform:rotateY(72deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:282px:132px:600:easeInOutSine, top:390px:390px:600:easeInOutSine, tro:left top]:delay-300"
@@ -492,6 +504,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(8px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:282px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-400"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:282px:249px:600:easeOutExpo, top:400px:390px:600:easeOutExpo, tro:left top]:delay-400"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(144deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:249px:249px:750:easeInOutSine, top:390px:390px:750:easeInOutSine, tro:50% 50% -200px]:delay-200"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(4px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:390px:0px:500:easeOutQuart, tro:left top]:delay-1900"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:249px:282px:400:easeOutQuad, top:390px:400px:400:easeOutQuad, tro:left top]:delay-200"
 			when-column-grid-init="p:[transform:rotateY(144deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:249px:600:easeInOutSine, top:390px:390px:600:easeInOutSine, tro:left top]:delay-400"
@@ -517,6 +530,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(2px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:428px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]:delay-200"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:428px:366px:600:easeOutExpo, top:400px:390px:600:easeOutExpo, tro:left top]:delay-500"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(216deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:366px:249px:750:easeInOutSine, top:390px:390px:750:easeInOutSine, tro:50% 50% -200px]:delay-300"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(2px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:390px:0px:500:easeOutQuart, tro:left top]:delay-2150"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:366px:428px:400:easeOutQuad, top:390px:400px:400:easeOutQuad, tro:left top]:delay-100"
 			when-column-grid-init="p:[transform:rotateY(216deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:366px:600:easeInOutSine, top:390px:390px:600:easeInOutSine, tro:left top]:delay-500"
@@ -542,6 +556,7 @@
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:430px:400:easeOutQuad, top:0px:400px:400:easeOutQuad, tro:left top]"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:430px:483px:600:easeOutExpo, top:400px:390px:600:easeOutExpo, tro:left top]:delay-600"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(288deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:483px:249px:750:easeInOutSine, top:390px:390px:750:easeInOutSine, tro:50% 50% -200px]:delay-400"
+			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(0px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:390px:0px:500:easeOutQuart, tro:left top]:delay-2300"
 
 			when-grid-pyramid-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(0px):rotateY(90deg) rotateX(29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:483px:430px:400:easeOutQuad, top:390px:400px:400:easeOutQuad, tro:left top]"
 			when-column-grid-init="p:[transform:rotateY(288deg) translateZ(200px):rotateY(0deg) translateZ(0px):600:easeInOutSine easeInOutSine, left:249px:483px:600:easeInOutSine, top:390px:390px:600:easeInOutSine, tro:50% 50% -200px]:delay-600"
