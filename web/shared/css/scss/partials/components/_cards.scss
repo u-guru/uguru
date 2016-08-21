@@ -19,8 +19,6 @@
 .team-card-container {
 	padding-left: 55px;
 	padding-right: 55px;
-	-webkit-perspective: 1000;
-	perspective: 1000;
 	position: relative;
 	a {
 		display: block;
@@ -61,6 +59,7 @@
 	.team-card {
 		transition: all 500ms ease-out;
 		transform-style: preserve-3d;
+		backface-visibility: hidden;
 		* {
 			transition: all 500ms ease-out;
 		}

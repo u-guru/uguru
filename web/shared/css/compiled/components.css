@@ -3458,8 +3458,6 @@ fieldset.no-border * {
 .team-card-container {
   padding-left: 55px;
   padding-right: 55px;
-  -webkit-perspective: 1000;
-  perspective: 1000;
   position: relative; }
   .team-card-container a {
     display: block;
@@ -3492,7 +3490,8 @@ fieldset.no-border * {
       height: 91px; }
   .team-card-container .team-card {
     transition: all 500ms ease-out;
-    transform-style: preserve-3d; }
+    transform-style: preserve-3d;
+    backface-visibility: hidden; }
     .team-card-container .team-card * {
       transition: all 500ms ease-out; }
     .team-card-container .team-card .team-border, .team-card-container .team-card .team-ribbon, .team-card-container .team-card .team-link, .team-card-container .team-card .team-info, .team-card-container .team-card .team-icon {
@@ -17018,16 +17017,45 @@ input[type=range] {
         background: #934073;
         color: white; }
 
-#pyramid .playing-card-container {
-  width: 100px;
-  height: 150px; }
-  #pyramid .playing-card-container .playing-card {
+#pyramid {
+  animation: rotate-infinite 6000ms linear infinite;
+  animation-play-state: paused;
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  margin-left: -300px;
+  margin-top: -300px;
+  transform-style: preserve-3d; }
+  #pyramid * {
+    transform-style: preserve-3d; }
+  #pyramid .playing-card-container {
     width: 100px;
-    height: 150px;
-    transform-origin: left top !important; }
-    #pyramid .playing-card-container .playing-card > div svg {
-      width: auto;
-      height: 100%; }
+    height: 150px; }
+    #pyramid .playing-card-container .playing-card {
+      width: 100px;
+      height: 150px; }
+      #pyramid .playing-card-container .playing-card > div {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        overflow: hidden; }
+        #pyramid .playing-card-container .playing-card > div svg {
+          width: 100% !important;
+          height: auto !important; }
 
 .card-house {
   max-height: 764px;
