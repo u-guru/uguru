@@ -5,6 +5,7 @@
 		on-mouse-enter="s:[album-tile-mouse-enter]"
 		on-mouse-leave="s:[album-tile-mouse-leave]"
 		on-click="s:[album-tile-click]">
+		<!-- @samir The opacity,the height,and width isn't working together.  -->
 		<div class="album-echo"
 			init-with="p:[op:0]"
 			when-album-tile-click="p:[opacity:0:1:250:easeOutSine, width:0:calc(100% + 30px):250:easeOutExpo, height:0:calc(100% + 30px):250:easeOutExpo] | send:[album-tile-clicked:public:delay-500]"
