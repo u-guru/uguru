@@ -213,12 +213,14 @@
                 margin: 0 auto;
                 padding: 15px;
                 h2 {
+					display: block;
                     font-size: 18px;
                     font-weight: 600;
                     text-transform: uppercase;
                 }
                 a {
                     @include opacity(.5);
+					display: block;
                     font-size: 16px;
                     font-weight: 600;
                     &:hover, &:focus {

@@ -202,12 +202,14 @@
         margin: 0 auto;
         padding: 15px; }
         .pf-container .pf-main > div .pf-main-subheader h2 {
+          display: block;
           font-size: 18px;
           font-weight: 600;
           text-transform: uppercase; }
         .pf-container .pf-main > div .pf-main-subheader a {
           filter: alpha(opacity=50);
           opacity: 0.5;
+          display: block;
           font-size: 16px;
           font-weight: 600; }
           .pf-container .pf-main > div .pf-main-subheader a:hover, .pf-container .pf-main > div .pf-main-subheader a:focus {
@@ -1210,12 +1212,11 @@
     transform: matrix3d(1.012, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   21.02% {
     transform: matrix3d(1.026, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  25% {
-    opacity: 1; }
   35.34% {
     transform: matrix3d(1.005, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   49.55% {
-    transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+    transform: matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; }
   78.18% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   100% {

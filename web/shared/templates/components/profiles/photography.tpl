@@ -1,13 +1,17 @@
-<div class="pf-container pf-photography">
-	<aside class="pf-aside">
-		<div class="pf-aside-bg-container pf-aside-anim">
-			<div class="pf-aside-bg" style="background-image: url('http://newflowerwallpaper.com/download/flower-garden-pictures-and-wallpapers/flower-garden-pictures-and-wallpapers-24.jpg');"></div>
+<div class="pf-container pf-photography"
+	on-init="s:[pf-aside-init:public:delay-500, pf-rest-init:public]">
+	<aside class="pf-aside"
+		init-with="p-op"
+		when-pf-aside-init="a:[pf-scaleInY:set:(dur:1500ms#func:linear):in] | s:[pf-aside-bg-init:public:delay-2000, pf-widget-init:public:delay-2500, pf-aside-desc-init:public:delay-2500]"
+		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
+		<div class="pf-aside-bg-container"
+			init-with="p-op"
+			when-pf-aside-bg-init="p:[opacity:0:1:1000:easeOutSine]">
+			<div class="pf-aside-bg" style="background-image: url('https://c1.staticflickr.com/7/6129/5916495923_43a93ef193_o.jpg');"></div>
 		</div>
-		<div class="pf-aside-widget pf-aside-anim"
+		<div class="pf-aside-widget"
 			init-with="p:[background:rgba(99#112#116#0), t:all 700ms ease-out]"
-			on-init="s:[pf-widget-init:public]"
 			when-pf-widget-init="p:[background:rgba(99#112#116#0.3)]:delay-700">
-			<!-- init-with="p:[background:rgba(99#112#116#0, t: background 700ms ease-in-out)]" -->
 			<div class="top"
 				init-with="p:[tr:scale(0), tro:center center]"
 				when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-150"></div>
@@ -90,8 +94,11 @@
 				</button>
 			</div>
 		</div>
-		<div class="pf-aside-desc pf-aside-anim">
-			<span class="pf-aside-anim">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+		<div class="pf-aside-desc"
+			init-with="p:[op:0, tro:left top]"
+			when-pf-aside-desc-init="a:[pf-slideLeft-scaleIn:set:(dur:1000ms#func:linear):in] | t:[on-enter:children]">
+			<span init-with="p-op"
+				on-enter="p:[opacity:0:1:1000:easeOutSine]:delay-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
 		</div>
 		<div class="pf-aside-mobile">
 			<span class="pf-icon user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
@@ -140,46 +147,63 @@
 			<h3 class="pf-reviews"><span>72</span> reviews</h3>
 		</div>
 	</aside>
-	<div class="pf-rest">
-		<span class="pf-enter"></span>
+	<div class="pf-rest"
+		init-with="p-op"
+		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public, pf-mn-init:public:delay-1750]"
+		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
 			<div>
 				<a class="pf-profile-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 0;'
-					ng-class="{'active': !guru.section_index}">Profile</a>
-				<!-- null:inject.pf-mn-anim|on-mn-enter:delay-1750 -->
+					ng-class="{'active': !guru.section_index}"
+					init-with="p-op"
+					when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutBack, opacity:0:1:500:easeOutBack]:delay-500"
+					on-click="s:[pf-mn-init:public]">Profile</a>
 				<a class="pf-portfolio-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 1;'
-					ng-class="{'active': guru.section_index === 1}">Services</a>
-				<!-- null:inject.pf-sv-anim|on-sv-enter:delay-1750 -->
+					ng-class="{'active': guru.section_index === 1}"
+					init-with="p-op"
+					when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutBack, opacity:0:1:500:easeOutBack]:delay-600"
+					on-click="s:[pf-sv-init:public]">Services</a>
 				<a class="pf-about-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 2;'
-					ng-class="{'active': guru.section_index === 2}">About</a>
-				<!-- null:inject.pf-ab-anim|on-ab-enter:delay-1750 -->
+					ng-class="{'active': guru.section_index === 2}"
+					init-with="p-op"
+					when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutBack, opacity:0:1:500:easeOutBack]:delay-700"
+					on-click="s:[pf-ab-init:public]">About</a>
 				<a class="pf-resources-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 3;'
-					ng-class="{'active': guru.section_index === 3}">Resources</a>
-				<!-- null:inject.pf-rs-anim|on-rs-enter:delay-1750 -->
-				<hr class="pf-enter">
+					ng-class="{'active': guru.section_index === 3}"
+					init-with="p-op"
+					when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutBack, opacity:0:1:500:easeOutBack]:delay-800"
+					on-click="s:[pf-rs-init:public]">Resources</a>
+				<hr class="pf-enter"
+					init-with="p-op"
+					when-pf-tabs-init="p:[opacity:0:1:1000:easeOutSine]:delay-1200">
 			</div>
 		</nav>
 		<main class="pf-main">
 			<!-- ng-init="guru.section_index = 2;" -->
 			<div class="pf-profile pf-main-section active" ng-class="{'active': !guru.section_index}">
-				<div class="pf-main-header">
-					<h1 class="pf-enter">The Golden Bear Tutor</h1>
-					<p class="pf-enter">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
+				<div class="pf-main-header overflow-hidden">
+					<h1 init-with="p-op"
+						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-900">The Golden Bear Tutor</h1>
+					<p init-with="p-op"
+						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:0.5:500:easeOutQuint]:delay-1000">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
 				</div>
 				<div class="pf-main-subheader">
-					<h2 class="pf-mn-anim">Services</h2>
-					<a class="pf-mn-anim">see more</a>
-					<hr class="pf-mn-anim"/>
+					<h2 init-with="p-op"
+						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]">Services</h2>
+					<a init-with="p-op"
+						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]">see more</a>
+					<hr init-with="p-op"
+						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]"/>
 				</div>
 				<ul class="pf-items">
-					<li class="pf-mn-anim">
+					<li init-with="p-op">
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -263,10 +287,10 @@
 							</div>
 						</div>
 					</li>
-					<li class="pf-mn-anim">
+					<li init-with="p-op">
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -352,15 +376,15 @@
 					</li>
 				</ul>
 				<div class="pf-main-subheader">
-					<h2 class="pf-mn-anim">Resources</h2>
-					<a class="pf-mn-anim">see more</a>
-					<hr class="pf-mn-anim"/>
+					<h2 init-with="p-op">Resources</h2>
+					<a init-with="p-op">see more</a>
+					<hr init-with="p-op"/>
 				</div>
 				<ul class="pf-items">
-					<li class="pf-mn-anim">
+					<li init-with="p-op">
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							on-init="s:[photo-cardlet-init:public]"
+							when-cardlet-init="s:[photo-cardlet-init:public]"
 							when-photo-cardlet-init="p:[op:1, tr:none]"
 							when-photo-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 							<a></a><a></a><a></a><a></a>
@@ -411,10 +435,10 @@
 							</div>
 						</div>
 					</li>
-					<li class="pf-mn-anim">
+					<li init-with="p-op">
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							on-init="s:[photo-cardlet-init:public]"
+							when-cardlet-init="s:[photo-cardlet-init:public]"
 							when-photo-cardlet-init="p:[op:1, tr:none]"
 							when-photo-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 							<a></a><a></a><a></a><a></a>
@@ -476,7 +500,7 @@
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -563,7 +587,7 @@
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -650,7 +674,7 @@
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -737,7 +761,7 @@
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -824,7 +848,7 @@
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -911,7 +935,7 @@
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -998,7 +1022,7 @@
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -1085,7 +1109,7 @@
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -1387,7 +1411,7 @@
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
@@ -1474,7 +1498,7 @@
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							on-init="s:[photo-tile-init:public]"
+							when-tile-init="s:[photo-tile-init:public]"
 							when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
