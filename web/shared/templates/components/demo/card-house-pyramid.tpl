@@ -1,4 +1,4 @@
-<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.25x" show-props class="bottom-0 bg-azure" auto-play="false" step-size="100" start-at="t:50%" play-infinite="false" > </inspector-gadget>
+<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.25x" show-props="!scale, !translateZ" class="bottom-0 bg-azure" auto-play="false" step-size="100" play-infinite="false" > </inspector-gadget>
 
 <div class="fixed top-0 left-0 full-x flex-center">
 	<div class="ugrid-2 full-x">
