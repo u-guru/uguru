@@ -8,7 +8,7 @@
 		<!-- @samir The opacity,the height,and width isn't working together.  -->
 		<div class="album-echo"
 			init-with="p:[op:0]"
-			when-album-tile-click="p:[opacity:0:1:250:easeOutSine, width:0:calc(100% + 30px):250:easeOutExpo, height:0:calc(100% + 30px):250:easeOutExpo] | send:[album-tile-clicked:public:delay-500]"
+			when-album-tile-click="p:[width:0:calc(100% + 30px):250:easeOutExpo, height:0:calc(100% + 30px):250:easeOutExpo] | send:[album-tile-clicked:public:delay-500]"
 			when-album-tile-clicked="p:[opacity:1:0:250:easeInSine:delay-250, width:calc(100% + 30px):calc(100% - 30px):250:easeInExpo, height:calc(100% + 30px):calc(100% - 30px):250:easeInExpo" >
 			<div style="background: #020c39;"></div>
 		</div>

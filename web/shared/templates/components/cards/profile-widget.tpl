@@ -1,22 +1,23 @@
 <div class="perspective-container full-xy flex-center p15xy">
+	<!-- @samir Background not transitioning -->
 	<div class="pf-aside-widget"
-		init-with="p:[background:rgba(99#112#116#0), t:background 700ms ease-in-out]"
-		on-init="s:[pf-widget-init:public] | p:[background:rgba(99#112#116#0.3):delay-700]">
+		init-with="p:[background:rgba(99#112#116#0)]"
+		on-init="p:[background:rgba(99#112#116#0):rgba(99#112#116#0.3):700:easeInOutSine:delay-700] | s:[pf-widget-init:public]">
 		<div class="top"
 			init-with="p:[tr:scale(0), tro:center center]"
-			when-pf-widget-init="p:[tr:scale(1), t:transform 500ms ease-out]:delay-150"></div>
+			when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-150"></div>
 		<div class="left"
 			init-with="p:[tr:scale(0), tro:left top]"
-			when-pf-widget-init="p:[tr:scale(1), t:transform 500ms ease-out]:delay-450"></div>
+			when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-450"></div>
 		<div class="right"
 			init-with="p:[tr:scale(0), tro:right top]"
-			when-pf-widget-init="p:[tr:scale(1), t:transform 500ms ease-out]:delay-450"></div>
+			when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-450"></div>
 		<div class="bot-left"
 			init-with="p:[tr:scale(0), tro:left center]"
-			when-pf-widget-init="p:[tr:scale(1), t:transform 500ms linear]:delay-750"></div>
+			when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-750"></div>
 		<div class="bot-right"
 			init-with="p:[tr:scale(0), tro:right center]"
-			when-pf-widget-init="p:[tr:scale(1), t:transform 500ms linear]:delay-750"></div>
+			when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-750"></div>
 		<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
 			init-with="p-op"
 			when-pf-widget-init="p:[tro:center center] | a:[icon-enter:set:(dur:1000ms#func:ease-out):in]"></span>
@@ -79,8 +80,8 @@
 		<div init-with="p:[op:0, tro:center center]"
 			when-pf-widget-init="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500]">
 			<button class="bg-moola normal">
-				<span init-with="p:[op:0, t:opacity 500ms ease-in-out]"
-					when-pf-widget-init="p:[op:1:delay-700]">Contact Guru</span>
+				<span init-with="p:[op:0]"
+					when-pf-widget-init="p:[opacity:0:1:500:easeInOutSine:delay-700]">Contact Guru</span>
 			</button>
 		</div>
 	</div>
