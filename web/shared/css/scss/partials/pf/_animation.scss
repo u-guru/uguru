@@ -165,7 +165,8 @@
 
 /* http://goo.gl/jy0IFR */
 @keyframes pf-bounceIn-rotate {
-	0% { transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 0; }
+	0% { transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 0;}
+	1% {opacity:1;}
 	3.2% { transform: matrix3d(0.187, -0.265, 0, 0, 0.265, 0.187, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 	4.3% { transform: matrix3d(0.296, -0.283, 0, 0, 0.283, 0.296, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 	6.31% { transform: matrix3d(0.483, -0.238, 0, 0, 0.238, 0.483, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
