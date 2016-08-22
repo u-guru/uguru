@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-mobile">
+<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-desktop">
 	<!-- NOTES FOR JESELLE - WORK ON CARDLETS FIRST
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile tile transitions
@@ -117,28 +117,33 @@
 		on-init="s:[academic-tile-init:public]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-academic"
-			init-with="p:[bg:rgba(99#112#116#0), t:background 500ms ease-out#transform 500ms ease-out]"
+			init-with="p:[bg:rgba(99#112#116#0), t:background 500ms ease-out]"
 			when-academic-tile-init="p:[bg:rgba(99#112#116#1):delay-650]"
 			when-academic-tile-exit="p:[op:0:delay-1000, t:opacity 1500ms cubic-bezier(0#.3#.02#.99)#transform 500ms ease-out]">
+			<!-- when-academic-tile-init="p:[background:rgba(99#112#116#0):rgba(99#112#116#1):500:easeOutSine:delay-650]"
+			when-academic-tile-exit="p:[op:1:0:1500:easeInQuad]" -->
+
 			<div class="pf-tile-border"
 				init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 				when-academic-tile-init="p:[op:0.5, tr:none]"
 				when-academic-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg):delay-1500, op:0:delay-2000]">
+				<!-- when-academic-tile-init="p:[opacity:0:0.5:500:easeOutSine, transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
+				when-academic-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutCubic:delay-1500, opacity:1:0:500:easeOutSine:delay-2000]" -->
 				<div class="top"></div>
 				<div class="right"></div>
 				<div class="bot"></div>
 				<div class="left"></div>
 			</div>
 			<div class="pf-tile-top"
-				init-with="p:[bg:rgba(99#112#116#0), t:background 500ms ease-out]"
-				when-academic-tile-init="p:[bg:rgba(99#112#116#1):delay-650]"
-				when-academic-tile-exit="p:[op:0:delay-1000, t:opacity 1500ms cubic-bezier(0#.3#.02#.99)]">
+				init-with="p:[bg:rgba(99#112#116#0)]"
+				when-academic-tile-init="p:[background:rgba(99#112#116#0):rgba(99#112#116#1):500:easeOutSine]:delay-650"
+				when-academic-tile-exit="p:[opacity:1:0:1500:easeOutCubic]:delay-1000">
 				<div class="pf-pricing"
 					init-with="p:[op:0, t:500ms ease-out]"
 					when-academic-tile-init="p:[op:1:delay-900]">$10/hr</div>
 				<div class="pf-tile-icon"
-					init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)]"
-					when-academic-tile-init="p:[op:1:delay-1500, tr:none:delay-1500]"
+					init-with="p:[tr:translateY(-80%), op:0]"
+					when-academic-tile-init="p:[transform:none, op:1, t:transform 750ms cubic-bezier(0#0.3#.02#0.99)#opacity 250ms linear]:delay-500"
 					when-academic-tile-exit="p:[op:0:delay-750, t:opacity 750ms ease-out]">
 					<svg viewBox="0 0 100 100">
 						<g>
@@ -152,15 +157,19 @@
 					</svg>
 				</div>
 				<h1 init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)]"
-					when-academic-tile-init="p:[op:1:delay-1500, tr:none:delay-1500]"
+					when-academic-tile-init="p:[op:1, transform:none]:delay-1500"
 					when-academic-tile-exit="p:[op:0:delay-750, t:opacity 750ms ease-out]">Chem 133</h1>
+						<!-- when-academic-tile-init="p:[opacity:0:1:750:easeOutSine, transform:translateY(-80%):translateY(0%):750:easeOutCubic]:delay-1500"
+						when-academic-tile-exit="p:[op:1:0:750:easeOutSine]:delay-750" -->
 				<h2 init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)]"
 					when-academic-tile-init="p:[op:1:delay-1500, tr:none:delay-1500]"
 					when-academic-tile-exit="p:[op:0:delay-750, t:opacity 750ms ease-out]">Organic Chemistry</h2>
+					<!-- when-academic-tile-init="p:[opacity:0:1:750:easeOutSine, transform:translateY(-80%):translateY(0%):750:easeOutCubic]:delay-1500"
+					when-academic-tile-exit="p:[op:1:0:750:easeOutSine]:delay-750" -->
 			</div>
 			<div class="pf-tile-bottom"
-				init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3), t:opacity 250ms ease-out#transform 700ms ease-in-out]"
-				when-academic-tile-init="p:[op:1:delay-750, tr:none:delay-500]"
+				init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
+				when-academic-tile-init="p:[transform:translateY(-100px) scaleY(3):translateY(0px) scaleY(1):1000:easeInOutCubic, opacity:0:1:250:easeOutSine:delay-250]"
 				when-academic-tile-exit="p:[op:0:delay-750, t:opacity 1500ms cubic-bezier(0#.3#.02#.99)]">
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li init-with="p-op"
@@ -204,19 +213,20 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "baking-desktop"'
-		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[baking-tile-init:public]"
-		when-baking-tile-init="p:[op:1, tr:none]"
-		when-baking-tile-exit="p:[tro:left bottom, op:0:delay-1000, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-500, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		when-baking-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+		when-baking-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-500, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
 			<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-				init-with="p:[op:0, t:opacity 500ms ease-out]"
-				when-baking-tile-init="p:[op:1:delay-250]"
-				when-baking-tile-exit="p:[op:0:delay-750]">
-				<div class="full-x flex-center preserve-3d m15bottom" init-with="p:[op:0, tro:center top, tr:rotateX(180deg), t:opacity 250ms ease-out#transform 1000ms cubic-bezier(.43#-0.06#.68#1.23)]"
-					when-baking-tile-init="p:[op:1:delay-500, tr:rotateX(0)]"
-					when-baking-tile-exit="p:[op:0:delay-250, tr:rotateX(180deg)]">
+				init-with="p:[op:0]"
+				when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-250]"
+				when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-750]">
+				<div class="full-x flex-center preserve-3d m15bottom"
+					init-with="p:[tro:center top, tr:rotateX(180deg)]"
+					when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
+					when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
 					<h1>
 						<span class="border"></span>
 						<span class="border"></span>
@@ -279,19 +289,21 @@
 	</div>
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "baking-mobile"'
-		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
 		on-init="s:[baking-tile-init:public]"
-		when-baking-tile-init="p:[op:1, tr:none]"
-		when-baking-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
+		when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
+		when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
 			<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-				init-with="p:[op:0, t:opacity 500ms ease-out]"
-				when-baking-tile-init="p:[op:1:delay-150]"
-				when-baking-tile-exit="p:[op:0:delay-250]">
-				<div class="full-x flex-center preserve-3d m15bottom" init-with="p:[op:0, tro:center top, tr:rotateX(180deg), t:opacity 250ms ease-out#transform 1000ms cubic-bezier(.43#-0.06#.68#1.23)]"
-					when-baking-tile-init="p:[op:1:delay-500, tr:rotateX(0)]"
-					when-baking-tile-exit="p:[op:0:delay-250, tr:rotateX(180deg)]">
+				init-with="p:[op:0]"
+				when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
+				when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
+				<div class="full-x flex-center preserve-3d m15bottom"
+					init-with="p:[tro:center top, tr:rotateX(180deg)]"
+					when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
+					when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
+					<!-- when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]:delay-500" -->
 					<h1>
 						<span class="border"></span>
 						<span class="border"></span>
