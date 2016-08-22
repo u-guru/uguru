@@ -5,7 +5,8 @@
         "cards": {
             "course-card": {
                 "filename": "course-card.tpl",
-                "types": ["svg", "default", "link", "overlay", "checkbox", "badge"]
+                "types": ["svg", "default", "link", "overlay", "checkbox", "badge"],
+                "verified": true,
             },
 			"credit-card": {
                 "filename": "credit-card.tpl",
