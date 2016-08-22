@@ -114,6 +114,8 @@
       z-index: 2; }
     .pf-container .pf-aside .pf-aside-widget {
       margin-top: 47px; }
+      .pf-container .pf-aside .pf-aside-widget div:empty {
+        position: absolute !important; }
     .pf-container .pf-aside .pf-aside-widget, .pf-container .pf-aside .pf-aside-desc {
       display: none; }
     .pf-container .pf-aside .pf-aside-desc {

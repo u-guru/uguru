@@ -4811,30 +4811,30 @@ fieldset.no-border * {
     left: 50%;
     margin-left: -100px;
     width: 200px; }
-  .pf-aside-widget > div:not(:empty) {
+  .pf-aside-widget > div:not(:empty):not(:last-child) {
     padding: 79px 15px 47px; }
-    .pf-aside-widget > div:not(:empty) .pf-name {
+    .pf-aside-widget > div:not(:empty):not(:last-child) .pf-name {
       width: 100%;
       font-size: 20px;
       font-weight: 600; }
-    .pf-aside-widget > div:not(:empty) .pf-school-name {
+    .pf-aside-widget > div:not(:empty):not(:last-child) .pf-school-name {
       margin-top: 0;
       width: 100%;
       font-size: 16px;
       font-weight: 400; }
-    .pf-aside-widget > div:not(:empty) .pf-rating {
+    .pf-aside-widget > div:not(:empty):not(:last-child) .pf-rating {
       margin-top: 10px;
       max-width: 200px; }
-    .pf-aside-widget > div:not(:empty) .pf-reviews {
+    .pf-aside-widget > div:not(:empty):not(:last-child) .pf-reviews {
       width: 100%;
       font-size: 16px !important;
       font-weight: 400;
       text-transform: uppercase; }
-  @media screen and (min-width: 768px) {
-    .pf-aside-widget > div .pf-name {
-      font-size: 28px; }
-    .pf-aside-widget > div .pf-school-name {
-      font-size: 20px; } }
+    @media screen and (min-width: 768px) {
+      .pf-aside-widget > div:not(:empty):not(:last-child) .pf-name {
+        font-size: 28px !important; }
+      .pf-aside-widget > div:not(:empty):not(:last-child) .pf-school-name {
+        font-size: 20px !important; } }
 
 @media screen and (min-width: 1000px) {
   .pf-aside-widget {

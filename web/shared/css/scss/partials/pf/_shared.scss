@@ -119,6 +119,9 @@
 		}
         .pf-aside-widget {
             margin-top: 47px;
+			div:empty {
+				position: absolute!important;
+			}
         }
         .pf-aside-widget, .pf-aside-desc {
             display: none;

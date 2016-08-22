@@ -3,10 +3,33 @@
 		<div class="pf-aside-bg-container pf-aside-anim">
 			<div class="pf-aside-bg" style="background-image: url('http://newflowerwallpaper.com/download/flower-garden-pictures-and-wallpapers/flower-garden-pictures-and-wallpapers-24.jpg');"></div>
 		</div>
-		<div class="pf-aside-widget pf-aside-anim">
-			<span class="user-icon pf-aside-widget-anim" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+		<div class="pf-aside-widget pf-aside-anim"
+			init-with="p:[background:rgba(99#112#116#0), t:all 700ms ease-out]"
+			on-init="s:[pf-widget-init:public]"
+			when-pf-widget-init="p:[background:rgba(99#112#116#0.3)]:delay-700">
+			<!-- init-with="p:[background:rgba(99#112#116#0, t: background 700ms ease-in-out)]" -->
+			<div class="top"
+				init-with="p:[tr:scale(0), tro:center center]"
+				when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-150"></div>
+			<div class="left"
+				init-with="p:[tr:scale(0), tro:left top]"
+				when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-450"></div>
+			<div class="right"
+				init-with="p:[tr:scale(0), tro:right top]"
+				when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-450"></div>
+			<div class="bot-left"
+				init-with="p:[tr:scale(0), tro:left center]"
+				when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-750"></div>
+			<div class="bot-right"
+				init-with="p:[tr:scale(0), tro:right center]"
+				when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-750"></div>
+			<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
+				init-with="p-op"
+				when-pf-widget-init="p:[tro:center center] | a:[icon-enter:set:(dur:1000ms#func:ease-out):in]"></span>
 			<div>
-				<h1 class="pf-name verified pf-aside-widget-anim">
+				<h1 class="pf-name verified"
+					init-with="p-op"
+					when-pf-widget-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-150]">
 					<span>Gabrielle Wee</span>
 					<span>
 						<svg preserveAspectRatio="xMidYMax meet" width="100px" height="100px" viewBox="0 0 100 100">
@@ -15,42 +38,57 @@
 						</svg>
 					</span>
 				</h1>
-				<h2 class="pf-school-name pf-aside-widget-anim">Ex'pression College for Digital Arts</h2>
+				<h2 class="pf-school-name"
+					init-with="p-op"
+					when-pf-widget-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-150]">Ex'pression College for Digital Arts</h2>
 				<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
-					<li class="pf-aside-widget-anim">
+					<li init-with="p-op"
+						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-800]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li class="pf-aside-widget-anim">
+					<li init-with="p-op"
+						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-900]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li class="pf-aside-widget-anim">
+					<li init-with="p-op"
+						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1000]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li class="pf-aside-widget-anim">
+					<li init-with="p-op"
+						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1100]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
-					<li class="pf-aside-widget-anim">
+					<li init-with="p-op"
+						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1200]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 				</ul>
-				<h3 class="pf-reviews pf-aside-widget-anim"><span>72</span> reviews</h3>
+				<h3 class="pf-reviews"
+					init-with="p-op"
+					when-pf-widget-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-1100]"><span>72</span> reviews</h3>
 			</div>
-			<button class="bg-photography normal pf-aside-widget-anim">Contact Guru</button>
+			<div init-with="p:[op:0, tro:center center]"
+				when-pf-widget-init="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500]">
+				<button class="bg-moola normal">
+					<span init-with="p:[op:0]"
+						when-pf-widget-init="p:[opacity:0:1:500:easeInOutSine:delay-700]">Contact Guru</span>
+				</button>
+			</div>
 		</div>
 		<div class="pf-aside-desc pf-aside-anim">
 			<span class="pf-aside-anim">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>

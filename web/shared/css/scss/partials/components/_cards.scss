@@ -1768,7 +1768,7 @@
 		margin-left: -100px;
 		width: 200px;
 	}
-	> div:not(:empty) {
+	> div:not(:empty):not(:last-child) {
 		padding: 79px 15px 47px;
 		.pf-name {
 			width: 100%;
@@ -1791,14 +1791,12 @@
 			font-weight: 400;
 			text-transform: uppercase;
 		}
-	}
-	@media screen and (min-width:768px) {
-		> div {
+		@media screen and (min-width:768px) {
 			.pf-name {
-				font-size: 28px;
+				font-size: 28px!important;
 			}
 			.pf-school-name {
-				font-size: 20px;
+				font-size: 20px!important;
 			}
 		}
 	}
