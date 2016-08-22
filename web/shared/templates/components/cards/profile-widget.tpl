@@ -1,8 +1,10 @@
 <div class="perspective-container full-xy flex-center p15xy">
-	<!-- @samir Background not transitioning -->
+	<!-- @samir Background not transitioning. Same problem as Gabrielle's toggle opacity -->
 	<div class="pf-aside-widget"
 		init-with="p:[background:rgba(99#112#116#0)]"
-		on-init="p:[background:rgba(99#112#116#0):rgba(99#112#116#0.3):700:easeInOutSine:delay-700] | s:[pf-widget-init:public]">
+		on-init="s:[pf-widget-init:public]"
+		when-pf-widget-init="p:[background:rgba(99#112#116#0):rgba(99#112#116#0.3):700:easeInOutSine]:delay-700">
+		<!-- init-with="p:[background:rgba(99#112#116#0, t: background 700ms ease-in-out)]" -->
 		<div class="top"
 			init-with="p:[tr:scale(0), tro:center center]"
 			when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-150"></div>
