@@ -297,7 +297,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   function initPlayerFromArgs(elem, args, previous_player) {
 
     var playerObj = {state: { time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
-
+    console.log(playerObj)
 
     if (!previous_player) {
       playerObj.elem = elem;
@@ -657,7 +657,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           playerObj = playerObj.init(playerObj);
           playerObj.inspectorInitialized = false;
 
-           if (playerObj.inspect && (
+           if (playerObj.inspect && playerObj.state.properties && (
               !playerObj.state.properties[0].control.ball.elem)) {
 
               playerObj.state.properties.forEach(function(pDict, i) {

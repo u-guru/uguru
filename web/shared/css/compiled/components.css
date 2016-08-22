@@ -10270,7 +10270,7 @@ input.chip:hover {
         width: 2px;
         height: 100%;
         transform-origin: center bottom; }
-  .toggle:not(.old).normal > div:not(:empty) div {
+  .toggle:not(.old).normal label > div:not(:empty) div {
     background: #43cb9d; }
   .toggle:not(.old).am-pm input + label > div:empty {
     background: #456477; }

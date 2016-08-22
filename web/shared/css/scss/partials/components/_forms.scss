@@ -778,9 +778,11 @@
 		}
 	}
 	&.normal {
-		> div:not(:empty) {
-			div {
-				background: $moxie;
+		label {
+			> div:not(:empty) {
+				div {
+					background: $moxie;
+				}
 			}
 		}
 	}

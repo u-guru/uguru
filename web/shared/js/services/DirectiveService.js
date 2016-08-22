@@ -717,7 +717,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
       name = (name && name.trim()) || '';
       value = (value && value.trim()) || '';
-      var propertiesToConvertInt = ['opacity', 'z-index'];
+      var propertiesToConvertInt = [];
       if (propertiesToConvertInt.indexOf(name) > -1 && typeof(name) === 'string') {
         if (value.indexOf('.') > -1) {
           return parseFloat(value);
@@ -789,11 +789,16 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         return;
       }
       var hasDefault = 'default' in arg_dict;
+
       if (areCustomArgsPropertyAnimation(type, arg_dict)) {
 
+
         var startArgs = arg_dict[split_key];
+
         var customArgs = arg_dict['custom']
+
         var endArgs = split_value
+        console.log(startArgs, endArgs,  customArgs)
 
 
         delete arg_dict['default'];
@@ -803,25 +808,29 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var propName = split_key;
 
         startArgs && arg_arr.push(startArgs);
+
         endArgs && !(endArgs === startArgs) && arg_arr.push(endArgs);
 
+
         customArgs && customArgs.split(':').filter(function(a) {return a.length}).forEach(function(a) {arg_arr.push(a)})
+
+        console.log(orig_str, arg_arr)
 
         arg_dict.animProp = PropertyService.getFrameAnimationFunc(elem, propName, arg_arr, state_name, hasDefault, hasPlayer);
 
       }
-      if (arg_dict.default && type === 'prop' ) {
+      // if (arg_dict.default && type === 'prop' ) {
 
-        delete arg_dict['default'];
-        delete arg_dict['custom'];
-        // arg_dict.animProp
-        console.log(split_key, split_value, orig_str)
-        // var propName = split_key;
-        // propDict.animProp = PropertyService.getFrameAnimationFunc(propName, arg_arr, state_name, hasDefault);
-        // console.log(arg_dict, hasDefault)
-        // console.log(split_key, split_value, hasDefault);
-        // console.log('apply default arg to opacity', split_key, split_value, arg_dict, true)
-      }
+      //   delete arg_dict['default'];
+      //   delete arg_dict['custom'];
+      //   // arg_dict.animProp
+      //   console.log(split_key, split_value, orig_str)
+      //   // var propName = split_key;
+      //   // propDict.animProp = PropertyService.getFrameAnimationFunc(propName, arg_arr, state_name, hasDefault);
+      //   // console.log(arg_dict, hasDefault)
+      //   // console.log(split_key, split_value, hasDefault);
+      //   // console.log('apply default arg to opacity', split_key, split_value, arg_dict, true)
+      // }
 
       function areCustomArgsPropertyAnimation(type, arg_dict) {
         return type === 'prop' && 'custom' in arg_dict && arg_dict.custom.length && arg_dict.custom.split(':').length > 1
