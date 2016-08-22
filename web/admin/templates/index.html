@@ -1,19 +1,16 @@
-<div class='bg-charcoal flex-vertical-center' ng-controller="AdminDevController as admin">
-    <div class='p20xy bg-azure-50p txt-48 txt-center weight-900 flex-wrap-center full-x absolute top-0' style='height:15%;'>
-        Admin Home
+<div class='bg-charcoal flex-wrap-center full-xy' ng-controller="AdminDevController as admin">
+    <div class='bg-azure-50p txt-center flex-vertical-center flex-wrap weight-900 full-x capital' style='height:15%;'>
+        <div class='full-x m20y txt-36'>
+            {{admin.today.release}}
+        </div>
+        <div class='txt-24 opacity-50p full-x'>
+        {{admin.calendarDates[0].month.name}} {{admin.calendarDates[0].date}} - {{admin.calendarDates[7].date}}
+        </div>
     </div>
-    <div class='ugrid bg-transparent flex-stretch absolute left-0 flex-wrap flex-vertical-center full-x' style='top:15%; height:85%;'>
-        <div class='full-x flex-vertical-center relative' style='height:calc(85%/{{admin.sections}});'>
-            <ul class='grid full-x flex-stretch overflow-x no-scrollbar'>
-                 <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
-                    <div class='full-xy flex-wrap-center bg-azure-50p txt-white absolute'>
-                        <h1 class='weight-900 full-x'> Calendar </h1>
-                        <div class='full-x weight-100 p05y'>
-                        {{admin.calendarDates[0].month.name}} {{admin.calendarDates[0].date}} - {{admin.calendarDates[admin.calendarDates.length - 1].date}}
-                        </div>
-                    </h1>
-                </li>
-                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-azure-20p text-center ' style='min-width:15%;' ng-repeat='date in admin.calendarDates' ng-class="{'txt-white opacity-1 border-3 border-smoke': $index === 0, 'opacity-80p border-1-right border-slate': $index > 0}">
+    <div class='ugrid bg-transparent flex-stretch relative flex-wrap flex-vertical-center full-x' style='height:85%; align-content:stretch;'>
+        <div class='flex-wrap-vertical flex-stretch absolute full-xy top-0 left-0'>
+            <ul class='grid full-x flex-stretch relative no-scrollbar overflow-x' style='align-content:stretch'>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-azure-20p text-center ' style='min-width:15%;' ng-repeat='date in admin.calendarDates' ng-class="{'txt-white opacity-1 border-3 border-smoke':  $index === 0, 'opacity-80p border-1-right border-slate': $index > 0}">
                     <div class='full-x weight-900'>
                         {{date.day.name}}
                     </div>
@@ -22,7 +19,31 @@
                     </h1>
                 </li>
             </ul>
+            <ul class='grid flex-stretch flex-wrap-center full-x no-scrollbar bg-charcoal' style='align-content:stretch' ng-if='admin.today'>
+                <li class='full-x weight-500 txt-24 ugrid-2 flex-wrap-center text-center relative' style="align-self:stretch" ng-repeat='section in admin.today.daySections' ng-class='{"bg-azure-20p" :!($index % 2)}'>
+                    <div class='flex-wrap flex-right' style='width:20%;'>
+                        <div class='weight-900 txt-36 txt-white full-x text-right m20y' ng-bind-html="section['name']"></div>
+                        <div class='weight-900 opacity-50p m20bottom' ng-bind="section['time_desc']"></div>
+                    </div>
+                    <div class='text-left p20x m20left border-left border-slate border-solid' style='padding-left:05%'>
+                        <h4 class='weight-500 txt-5 m20y' ng-bind="section.description"> </h4>
+                        <ul class='weight-500 opacity-80p m20y txt-3'>
+                            <li ng-repeat='item in section.items' class='m10y'>
+                                {{$index + 1}}. [ ] {{item}}
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </li>
+            </ul>
+            <ul class='grid flex-stretch flex-wrap-center full-x no-scrollbar bg-charcoal' style='align-content:stretch'>
+                <ul class='grid full-x flex-stretch relative no-scrollbar overflow-x' ng-repeat=''>
+                </ul>
+            </ul>
         </div>
+    </div>
+</div>
         <!-- <div class='full-x flex-vertical-center flex-stretch relative' style='height:calc(85%/{{admin.sections}});'>
             <ul class='flex-stretch grid full-x flex-stretch overflow-x no-scrollbar'>
                 <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
@@ -81,5 +102,4 @@
         </div>
  -->
     </div>
-</div>
-s
+<!-- </div> -->
