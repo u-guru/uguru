@@ -202,3 +202,5 @@
 		</li>
 	</ul>
 </div>
+
+<!-- Notes: Animating border width from low to high creates a deepened effect. The object appears to be shrinking down because of the growing border taking its real estate. Surprisingly, easeOutBounce works well to make the "shrinking" feel stepped and cartoonish. As usual, the -Sine animations are the smoothest to animation. -->
