@@ -9,21 +9,21 @@
 				when-checkbox-enter="p:[background:rgba(64#72#75#1)]">
 				<svg viewBox="0 0 32 32">
 					<line class="line-1" x1="1.25" y1="1.25" x2="30.75" y2="1.25"
-						init-with="p:[sda:29.5, sdo:29.5, t:all 250ms ease-out]"
-						when-checkbox-load="p:[sdo:0]"/>
+						init-with="p:[sda:29.5, sdo:29.5, t:stroke-dasharray 250ms ease-out]"
+						when-checkbox-load="p:[sdo:29.5:0:250:easeOutSine]"/>
 					<line class="line-2" x1="30.75" y1="1.25" x2="30.75" y2="30.75"
-						init-with="p:[sda:29.5, sdo:29.5, t:all 250ms ease-out]"
-						when-checkbox-load="p:[sdo:0:delay-150]"/>
+						init-with="p:[sda:29.5, sdo:29.5, t:stroke-dasharray 250ms ease-out]"
+						when-checkbox-load="p:[sdo:29.5:0:250:easeOutSine]:delay-150"/>
 					<line class="line-3" x1="30.75" y1="30.75" x2="1.25" y2="30.75"
-						init-with="p:[sda:29.5, sdo:29.5, t:all 250ms ease-out]"
-						when-checkbox-load="p:[sdo:0:delay-300]"/>
+						init-with="p:[sda:29.5, sdo:29.5, t:stroke-dasharray 250ms ease-out]"
+						when-checkbox-load="p:[sdo:29.5:0:250:easeOutSine]:delay-300"/>
 					<line class="line-4" x1="1.25" y1="30.75" x2="1.25" y2="1.25"
-						init-with="p:[sda:29.5, sdo:29.5, t:all 250ms ease-out]"
-						when-checkbox-load="p:[sdo:0:delay-450]"/>
+						init-with="p:[sda:29.5, sdo:29.5, t:stroke-dasharray 250ms ease-out]"
+						when-checkbox-load="p:[sdo:29.5:0:250:easeOutSine]:delay-450"/>
 					<circle cx="12.3901367" cy="22.03125" r="32"></circle>
 					<polyline class="check-under" points="7.24 17.0305882 12.3929412 22.1835294 24.76 9.81647059"
-						init-with="p:[op:0, t:opacity 250ms ease-out]"
-						when-checkbox-enter="p:[op:1]"></polyline>
+						init-with="p:[op:0]"
+						when-checkbox-enter="p:[op:0:1:250:easeOutSine]"></polyline>
 					<polyline class="check-stroke" points="7.24 17.0305882 12.3929412 22.1835294 24.76 9.81647059"></polyline>
 				</svg>
 				<span></span>
