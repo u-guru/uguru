@@ -219,15 +219,21 @@
                     text-transform: uppercase;
                 }
                 a {
-                    @include opacity(.5);
 					display: block;
                     font-size: 16px;
                     font-weight: 600;
+					span {
+						@include opacity(.5);
+					}
                     &:hover, &:focus {
-                        @include opacity(.75);
+                        span {
+							@include opacity(.75);
+						}
                     }
                     &:active {
-                        @include opacity(1);
+                        span {
+							@include opacity(1);
+						}
                     }
                 }
                 hr {
