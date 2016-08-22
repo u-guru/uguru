@@ -4,8 +4,7 @@
 			<div class="playing-card play-heart">
 				<div class="playing-card-back bg-auburn"></div>
 				<div class="playing-card-front"
-					style="background-image:url(http://icons.iconarchive.com/icons/designbolts/free-multimedia/1024/iMac-icon.png); background-repeat: no-repeat; background-position: center center;"
-					init-with="p:[background-size:100px 100px:200px 200px:1000:easeOutSine]">
+					init-with="p:[background-color:rgb(0#0#0):rgb(255#0#0):1000:easeOutSine]">
 				</div>
 			</div>
 		</li>
