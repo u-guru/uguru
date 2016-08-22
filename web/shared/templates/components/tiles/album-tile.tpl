@@ -7,8 +7,8 @@
 		on-click="s:[album-tile-click]">
 		<div class="album-echo"
 			init-with="p:[op:0]"
-			when-album-tile-click="p:[op:1, width:calc(100% + 30px), height:calc(100% + 30px), t:all 250ms ease-out] | send:[album-tile-clicked:public:delay-500]"
-			when-album-tile-clicked="p:[op:0:delay-250, width:calc(100% - 30px), height:calc(100% - 30px), t:all 250ms ease-in]" >
+			when-album-tile-click="p:[opacity:0:1:250:easeOutSine, width:0:calc(100% + 30px):250:easeOutExpo, height:0:calc(100% + 30px):250:easeOutExpo] | send:[album-tile-clicked:public:delay-500]"
+			when-album-tile-clicked="p:[opacity:1:0:250:easeInSine:delay-250, width:calc(100% + 30px):calc(100% - 30px):250:easeInExpo, height:calc(100% + 30px):calc(100% - 30px):250:easeInExpo" >
 			<div style="background: #020c39;"></div>
 		</div>
 		<div class="album-art"
@@ -30,12 +30,13 @@
 			</svg>
 		</div>
 		<div class="album-caption">
+			<!-- @samir The opacity and the transform isn't working together. If I take opacity out, the transform animation works. -->
 			<h1 style="background: #020c39;"
-				init-with="p:[op:0, tr:translateY(-100%) translateZ(0)]"
-				when-album-tile-init="p:[op:1:delay-150, tr:translateY(0):delay-250, t:transform 250ms ease-out#opacity 250ms linear]">Midnight<br/>Cramming</h1>
+				init-with="p:[opacity:0, transform:translateY(-100%) translateZ(0)]"
+				when-album-tile-init="p:[opacity:0:1:250:linear:delay-150,transform:translateY(-100%) translateZ(0):translateY(0%) translateZ(0):250:easeOutExpo easeOutExpo:delay-250]">Midnight<br/>Cramming</h1>
 			<h2 class="animate" style="background: #020c39;"
-				init-with="p:[op:0, tr:translateY(-100%) translateZ(0)]"
-				when-album-tile-init="p:[op:1:delay-350, tr:translateY(0):delay-450, t:transform 250ms ease-out#opacity 250ms linear]">Intense EDM</h2>
+				init-with="p:[opacity:0, tr:translateY(-100%) translateZ(0)]"
+				when-album-tile-init="p:[opacity:0:0.3:250:lineardelay-350, tr:translateY(-100%):translateY(0):250:easeOutSine:delay-450]">Intense EDM</h2>
 		</div>
 	</a>
 </div>
