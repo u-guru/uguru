@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="photo-desktop">
+<div class="perspective-container full-xy flex-center p15xy" types='academic-desktop, academic-mobile, baking-desktop, baking-mobile, photo-desktop, photo-mobile, tech-desktop, tech-mobile, household-desktop, household-mobile' default-type="academic-desktop">
 	<!-- NOTES FOR JESELLE - WORK ON CARDLETS FIRST
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile tile transitions
@@ -20,36 +20,36 @@
 			- Let me know if you want the containers I did for cardlets here
 	-->
 	<div class="pf-tile-container" ng-if='activeType === "academic-desktop"'
-		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[academic-tile-init:public]"
-		when-academic-tile-init="p:[op:1, tr:none]"
-		when-academic-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		when-academic-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+		when-academic-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-500, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-academic">
 			<div class="pf-tile-border">
 				<div class="top"
-					init-with="p:[op:0, tro:left center, tr:scaleX(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)#background 500ms ease-out]"
-					when-academic-tile-init="p:[op:1, tr:none:delay-500]"
-					when-academic-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></div>
+					init-with="p:[tro:left center, tr:scaleX(0)]"
+					when-academic-tile-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-500"
+					when-academic-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
 				<div class="right"
-					init-with="p:[op:0, tro:center bottom, tr:scaleY(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)#background 500ms ease-out]"
-					when-academic-tile-init="p:[op:1, tr:none:delay-500]"
-					when-academic-tile-exit="p:[op:0:delay-500, tr:scaleY(0)]"></div>
+					init-with="p:[tro:center bottom, tr:scaleY(0)]"
+					when-academic-tile-init="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-500"
+					when-academic-tile-exit="p:[tr:scaleY(0)]"></div>
 				<div class="bot"
-					init-with="p:[op:0, tro:right center, tr:scaleX(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)#background 500ms ease-out]"
-					when-academic-tile-init="p:[op:1, tr:none:delay-500]"
-					when-academic-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></div>
+					init-with="p:[tro:right center, tr:scaleX(0)]"
+					when-academic-tile-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-500"
+					when-academic-tile-exit="p:[tr:scaleX(0)]"></div>
 				<div class="left"
-					init-with="p:[op:0, tro:center top, tr:scaleY(0), t:transform 500ms cubic-bezier(.19#.37#.36#.99)#background 500ms ease-out]"
-					when-academic-tile-init="p:[op:1, tr:none:delay-500]"
-					when-academic-tile-exit="p:[op:0:delay-500, tr:scaleY(0)]"></div>
+					init-with="p:[tro:center top, tr:scaleY(0)]"
+					when-academic-tile-init="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-500"
+					when-academic-tile-exit="p:[tr:scaleY(0)]"></div>
 			</div>
 			<div class="pf-tile-top">
 				<div class="pf-pricing"
-					init-with="p:[op:0, tr:translateX(-50%), t:opacity 375ms ease-out#transform 500ms ease-out#background 500ms ease-out#color 500ms ease-out]"
-					when-academic-tile-init="p:[op:1:delay-875, tr:none:delay-750]">$10/hr</div>
-				<div init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)]"
-					when-academic-tile-init="p:[op:1:delay-500, tr:none:delay-500]">
+					init-with="p:[op:0]"
+					when-academic-tile-init="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
+				<div init-with="p:[tr:translateY(-80%), opacity:0]"
+					when-academic-tile-init="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
 					<div class="pf-tile-icon">
 						<svg viewBox="0 0 100 100">
 							<g>
@@ -354,10 +354,11 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "photo-desktop"'
-	init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-	on-init="s:[photo-tile-init:public]"
-	when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
-		when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+		on-init="s:[photo-tile-init:public]"
+		when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+		when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+		<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-photography">
 			<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
@@ -370,8 +371,8 @@
 				</div>
 			</div>
 			<div class="pf-tile-bottom">
-				<h1 init-with="p:[op:0, t:opacity 250ms ease-out#transform 500ms ease-out]"
-					when-photo-tile-init="p:[op:1:delay-1000]">Professional Headshots</h1>
+				<h1 init-with="p:[op:0]"
+					when-photo-tile-init="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li init-with="p-op"
 						when-photo-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
@@ -412,23 +413,25 @@
 				<div class="pf-pricing photo-price"
 					init-with="p:[tro:center center, op:0]"
 					when-photo-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
-					<div class="pf-border">
-						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-						<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
-						<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-							when-photo-tile-init="p:[tr:none:delay-2000]"></div>
+					<div class="pf-border"
+						init-default
+						when-photo-tile-init="send:[viewport-init:public]:delay-2000">
+						<div init-with="p:[transform:scaleX(0)]"
+							when-viewport-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
+						<div init-with="p:[tr:scaleY(0)]"
+							when-viewport-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
+						<div init-with="p:[tr:scaleX(0)]"
+							when-viewport-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
+						<div init-with="p:[tr:scaleY(0)]"
+							when-viewport-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
+						<div init-with="p:[tr:scaleX(0)]"
+							when-viewport-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
+						<div init-with="p:[tr:scaleY(0)]"
+							when-viewport-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
+						<div init-with="p:[tr:scaleX(0)]"
+							when-viewport-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
+						<div init-with="p:[tr:scaleY(0)]"
+							when-viewport-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
 					</div>
 					<span>$10/hr</span>
 				</div>
@@ -437,9 +440,9 @@
 	</div>
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "photo-mobile"'
-		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[photo-tile-init:public]"
-		when-photo-tile-init="p:[op:1, tr:none]"
+		when-photo-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo,opacity:0:1:500:easeOutSine]"
 		when-photo-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-photography">
