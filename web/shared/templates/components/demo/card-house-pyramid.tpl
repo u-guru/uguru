@@ -190,6 +190,7 @@
 		<div class="playing-card play-heart c1"
 			init-with="p:[tro:left top, transform:rotateY(0deg) rotateX(90deg) translateZ(28px), z-index:15]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:280px:400:easeOutQuad, top:0px:136px:400:easeOutQuad, tro:left top]:delay-2800"
+			inspector-elem="when-pyramid-init"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:280px:15px:600:easeOutExpo, top:136px:60px:600:easeOutExpo, tro:left top]"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(0deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:15px:249px:750:easeInOutSine, top:60px:60px:750:easeInOutSine, tro:50% 50% -200px]"
 			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(28px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:60px:0px:500:easeOutQuart, tro:left top]"

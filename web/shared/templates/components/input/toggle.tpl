@@ -16,7 +16,7 @@
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
-				<div>
+				<div init-default>
 					<div init-with="p:[background:rgba(67#203#157#0),tr:scale(0)]"
 						when-input-load="p:[background:rgba(67#203#157#1), tr:scale(1), t:transform 150ms ease-out]"
 						when-input-enter="p:[background:rgba(67#203#157#0):delay-500]"></div>

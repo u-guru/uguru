@@ -218,7 +218,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
           pDict.end = UtilitiesService.removeAllOccurrancesArr(end[key].split(' ')[i].split(pDict.name)[1], ['(', ')']).trim()
           pDict.easing = easing[key].split(' ')[i];
-          pDict.state = {splitIndex: i,  time: 0, delay: 0, ignore:true, breakpoints:[], startAt: [], stepSize: 25, speed:1};
+          pDict.state = {splitIndex: i,  time: 0,  delay: 0, ignore:true, breakpoints:[], startAt: [], stepSize: 25, speed:1};
           resultArr.push(JSON.parse(JSON.stringify(pDict)));
 
         })
@@ -360,6 +360,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     function applyPropToElem(state, args, time) {
+      var skipArgs;
       if (args.control && args.control.ball) {
         args.control.ball.elem.style.transform =  state['ballControl'];
         args.control.time.elem.innerHTML = formatTime(time, args.control.time)
@@ -368,12 +369,22 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       if (args.prefs && args.prefs.showProps) {
         if (Math.abs(prop.time - time) > 2 * defaults.FPS_SIXTY) return;
         args.state.propertyControls.forEach(function(prop, i) {
+          if (!prop.active) return;
           var ballValue = state['propControl'].split(' ')[i];
-          var propValue = state[args.state.propertyControls[i].name];
+          var propName = args.state.propertyControls[i].name;
+          var propValue = state[propName];
           prop.ball.elem.style.transform = ballValue;
           prop.time = time;
           prop.valueElem.innerHTML = propValue.split(' ').length === 1 && propValue || propValue.split(' ')[i].split('(')[1].replace(')', '');
+          if (args.skip && args.skip.length && prop.active) {
+            console.log('skipProp', args.skip, propValue)
+            skipArgs = {value:propValue, name: propName}
+          }
         })
+      }
+      if (skipArgs) {
+        args.elem.style[skipArgs.name] = skipArgs.value
+        return;
       }
 
       args.state.time = time;
@@ -381,6 +392,10 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       args.inspect && args.prefs.showLog && args.state.active && console.log('\n@ T = ' + time +'ms\n-----------');
 
       for (prop in state) {
+        if (args.inspect && args.skipProp && args.skipProp.indexOf(prop) > -1) {
+          console.log('skipping', prop);
+          continue
+        };
         args.elem.style[prop] = state[prop];
         args.inspect && args.prefs.showLog && args.state.active && prop.indexOf('Control') === -1 && time >= 0 && time <= args.tweenConfig.duration && console.log(prop + ':' + state[prop])
       }
@@ -554,6 +569,56 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       }
     }
 
+    function setPropPlayerFunctions(player) {
+      player.state.propertyControls.forEach(function(prop, i) {
+        player.state.propertyControls[i].player = {};
+        player.state.propertyControls[i].player.play = playFunc(player.state.propertyControls[i], player);
+        player.state.properties[i].player = {};
+        player.state.properties[i].player.play = playFunc(player.state.propertyControls[i], player);
+        // prop.player = {
+        //   play:
+        // };
+
+        console.log(player, prop.name, prop.splitIndex)
+        // prop.play = playFunc;
+
+      })
+      console.log(player.state.propertyControls)
+      return player.state.propertyControls;
+
+      function stepFunc(property, playerObj) {
+
+      }
+
+      function pauseFunc(property, playerObj) {
+
+      }
+
+      function playFunc(property, player) {
+        console.log('playing..', property);
+        return function() {
+          console.log('actual', property.splitIndex);
+          player.skip = '';
+          player.state.propertyControls.forEach(function(prop, i) {
+            if (prop !== property) {
+              prop.active = false;
+              player.skip += prop.name + ' ';
+            } else {
+              console.log('still playing..', property.name);
+            }
+          })
+          console.log(player.skip)
+          playerObj.play();
+        }
+      }
+
+
+
+      function coreFunc(property, playerObj) {
+
+      }
+    }
+
 
     playerObj.init = function(playerObj, skip) {
       playerObj.state.time = 0
@@ -570,6 +635,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       // playerObj.jumpTo = getJumpToFunction(playerObj);
       playerObj.reset = getResetFunc();
       playerObj.set = getSetFunction(playerObj);
+      playerObj.state.propertyControls =  playerObj.state.propertyControls && setPropPlayerFunctions(playerObj);
       // playerObj.start =
       // playerObj.reverse = function(value) {tween.seek(value)};
       playerObj.inspect && $timeout(function() {
