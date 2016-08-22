@@ -63,14 +63,14 @@
 						</svg>
 					</div>
 				</div>
-				<h1 init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)#color 500ms ease-out]"
-					when-academic-tile-init="p:[op:1:delay-500, tr:none:delay-500]">Chem 133</h1>
-				<h2 init-with="p:[op:0, tr:translateY(-80%), t:opacity 750ms ease-out#transform 750ms cubic-bezier(.19#.37#.36#.99)#color 500ms ease-out]"
-					when-academic-tile-init="p:[op:1:delay-500, tr:none:delay-500]">Organic Chemistry</h2>
+				<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
+					when-academic-tile-init="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
+				<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
+					when-academic-tile-init="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
 			</div>
 			<div class="pf-tile-bottom"
-				init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3), t:opacity 250ms ease-out#transform 1000ms ease-in-out]"
-				when-academic-tile-init="p:[op:1:delay-250, tr:none]">
+				init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
+				when-academic-tile-init="p:[transform:translateY(-100px) scaleY(3):translateY(0px) scaleY(1):1000:easeInOutCubic, opacity:0:1:250:easeOutSine:delay-250]">
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li init-with="p-op"
 						when-academic-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
