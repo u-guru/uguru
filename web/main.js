@@ -197,6 +197,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       return $stateParams.categoryName;
     }}
   })
+  // .state('root.profile-photography', {
+  //   url:'/profile-photography',
+  //   templateUrl: 'shared/templates/profiles/photography.html',
+  // })
   // -- start DEV states
   .state('root.dev-splash-loader', {
     url:'/dev/splash/loader',
