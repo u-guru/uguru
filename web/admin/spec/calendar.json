@@ -1,0 +1,34 @@
+{
+    "8/22": {
+        "release": "preapp",
+        "daySections": [
+            {
+                "time_desc": "before 10:00am",
+                "name" : "Morning Skills",
+                "description": "Don't pull, choose one new property + document + record",
+                "items": ["one new property + document", "decide properties for the week", "animate /#/ admin for fun for fun"]
+            },
+            {
+                "name": "Revisit <br><br> Components",
+                "time_desc": "10-11am",
+                "description": "Discuss animation guide for already animated components + polish w/ Saturday's tool",
+                "items": ["discuss similarities, patterns for all base + custom components", "create rudimentary guide", "implement + go as far as you can until 11pm"]
+            },
+            {
+                "name": "Check-in",
+                "time_desc": "@11am",
+                "description": "Sync with Samir for the day"
+            },
+            {
+                "name": "TBD",
+                "time_desc": "Before 3pm + Checkin",
+                "description": "TBA (but definitely fun - the usual)"
+            },
+            {
+                "name": "TBD",
+                "time_desc": "Before 6pm",
+                "description": "TBA (but definitely fun - the usual)"
+            }
+        ]
+    }
+}
