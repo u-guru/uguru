@@ -1,10 +1,10 @@
 <div class="full-xy flex-center bg-smoke">
 	<ul class="ugrid-5 p15-grid">
 		<li class="flex-center">
-			<div class="playing-card play-heart">
+			<div class="playing-card play-heart"
+				init-with="p:[box-shadow:3px 3px 10px 10px #000]">
 				<div class="playing-card-back bg-auburn"></div>
-				<div class="playing-card-front"
-					init-with="p:[box-shadow:0px 0px 10px #000]">
+				<div class="playing-card-front">
 					<svg viewBox="0 0 250 350">
 						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M181,114.589487 C181,98.2465582 167.776199,85 151.466344,85 C139.864282,85 129.833984,91.6958698 125.003748,101.438048 C120.163517,91.6958698 110.140715,85 98.5361549,85 C82.228799,85 69,98.2465582 69,114.589487 C69,153.630788 124.386538,175 124.386538,175 C124.386538,175 181,153.360451 181,114.589487 L181,114.589487 Z" class="heart" stroke="#F04F54" stroke-width="3" fill="#F04F54"></path>
