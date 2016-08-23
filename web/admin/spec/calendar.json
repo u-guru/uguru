@@ -30,5 +30,34 @@
                 "description": "TBA (but definitely fun - the usual)"
             }
         ]
+    },
+    "8/23": {
+        "release": "preapp",
+        "daySections": [
+            {
+                "time_desc": "before 1pm",
+                "name": "Components + <br><br>help debugging <br><br>tool",
+                "description": "Make sure things are stable"
+            },
+            {
+                "time_desc": "@1pm",
+                "name": "Check-in",
+                "description": "Discuss remaining day details + go over the admin format"
+            },
+            {
+                "time_desc": "Post Lunch (intermittent)",
+                "name": "Verify new <br><br> features + discuss<br><br>1st hifi workflows",
+                "description": "ordering is <b> not final </b> nor required to be synchronous",
+                "items": ["Feature: jump", "Feature: ease + constants", "Feature: single property switching", "Feature: insert at"]
+
+            },
+            {
+                "time_desc": "Before exit",
+                "name": "API Specs Overview",
+                "description": "Go over them + make sure they are accessible, comprehendable, interact-able",
+                "items": ["letter-specific: letters/words/sentences/paragraphs", "scroll", "draw"]
+
+            }
+        ]
     }
 }

@@ -1,5 +1,5 @@
 
-<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" auto-play="false" step-size="100" show-props play-infinite="false"> </inspector-gadget>
+<!-- <inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" auto-play="false" step-size="100"  play-infinite="false"> </inspector-gadget> -->
 <!-- <inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.25x" show-props class="bottom-0 bg-azure" auto-play="false" step-size="100" start-at="t:50%" play-infinite="false" > </inspector-gadget> -->
 <div class="fixed top-0 left-0 full-x flex-center">
 	<div class="ugrid-2 full-x">
@@ -190,7 +190,6 @@
 		<div class="playing-card play-heart c1"
 			init-with="p:[tro:left top, transform:rotateY(0deg) rotateX(90deg) translateZ(28px), z-index:15]"
 			when-pyramid-init="p:[transform:rotateY(0deg) rotateX(90deg) translateZ(28px):rotateY(90deg) rotateX(-29deg) translateZ(0px):400:easeOutQuad easeOutQuad easeOutQuad, left:0px:280px:400:easeOutQuad, top:0px:136px:400:elastic, background:rgba(255#255#255#0):rgba(0#0#0#0.2):1000:linear, tro:left top]:delay-2800"
-			inspector-elem="when-pyramid-init"
 			when-grid-init="p:[transform:rotateY(90deg) rotateX(-29deg) translateZ(0px):rotateY(0deg) rotateX(0deg) translateZ(0px):600:easeOutExpo easeOutExpo easeOutExpo, left:280px:15px:600:easeOutExpo, top:136px:60px:600:easeOutExpo, tro:left top]"
 			when-column-init="p:[transform:rotateY(0deg) translateZ(0px):rotateY(0deg) translateZ(200px):750:easeInOutSine easeInOutSine, left:15px:249px:750:easeInOutSine, top:60px:60px:750:easeInOutSine, tro:50% 50% -200px]"
 			when-stack-init="p:[transform:rotateY(0deg) rotateX(0deg) translateZ(200px):rotateY(0deg) rotateX(90deg) translateZ(28px):500:easeOutQuad easeOutQuad easeOutQuart, left:245px:0px:500:easeOutQuart, top:60px:0px:500:easeOutQuart, tro:left top]"

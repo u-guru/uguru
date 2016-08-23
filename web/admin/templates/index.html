@@ -10,7 +10,7 @@
     <div class='ugrid bg-transparent flex-stretch relative flex-wrap flex-vertical-center full-x' style='height:85%; align-content:stretch;'>
         <div class='flex-wrap-vertical flex-stretch absolute full-xy top-0 left-0'>
             <ul class='grid full-x flex-stretch relative no-scrollbar overflow-x' style='align-content:stretch'>
-                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-azure-20p text-center ' style='min-width:15%;' ng-repeat='date in admin.calendarDates' ng-class="{'txt-white opacity-1 border-3 border-smoke':  $index === 0, 'opacity-80p border-1-right border-slate': $index > 0}">
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-azure-20p text-center ' style='min-width:15%;' ng-repeat='date in (admin.calendarDates || []) track by $index' ng-class="{'txt-white opacity-1 border-3 border-smoke':  $index === 0, 'opacity-80p border-1-right border-slate': $index > 0}">
                     <div class='full-x weight-900'>
                         {{date.day.name}}
                     </div>
@@ -19,16 +19,16 @@
                     </h1>
                 </li>
             </ul>
-            <ul class='grid flex-stretch flex-wrap-center full-x no-scrollbar bg-charcoal' style='align-content:stretch' ng-if='admin.today'>
-                <li class='full-x weight-500 txt-24 ugrid-2 flex-wrap-center text-center relative' style="align-self:stretch" ng-repeat='section in admin.today.daySections' ng-class='{"bg-azure-20p" :!($index % 2)}'>
+            <ul class='grid flex-stretch flex-wrap-center full-x no-scrollbar bg-charcoal overflow-y' style='align-content:stretch' ng-if='admin.today'>
+                <li class='full-x weight-500 txt-24 ugrid-2 flex-wrap-center text-center overflow-visible relative' style="align-self:stretch" ng-repeat='section in (admin.today.daySections || []) track by $index' ng-class='{"bg-azure-20p" :!($index % 2)}'>
                     <div class='flex-wrap flex-right' style='width:20%;'>
-                        <div class='weight-900 txt-36 txt-white full-x text-right m20y' ng-bind-html="section['name']"></div>
-                        <div class='weight-900 opacity-50p m20bottom' ng-bind="section['time_desc']"></div>
+                        <div class='weight-900 txt-24 txt-white full-x text-right m20y' ng-bind-html="section['name']"></div>
+                        <div class='weight-900 opacity-50p m20bottom text-right' ng-bind-html="section['time_desc']"></div>
                     </div>
                     <div class='text-left p20x m20left border-left border-slate border-solid' style='padding-left:05%'>
-                        <h4 class='weight-500 txt-5 m20y' ng-bind="section.description"> </h4>
+                        <h4 class='weight-500 txt-5 m20y' ng-bind-html="section.description"> </h4>
                         <ul class='weight-500 opacity-80p m20y txt-3'>
-                            <li ng-repeat='item in section.items' class='m10y'>
+                            <li ng-repeat='item in (section.items || []) track by $index' class='m10y'>
                                 {{$index + 1}}. [ ] {{item}}
                             </li>
                         </ul>
@@ -38,7 +38,7 @@
                 </li>
             </ul>
             <ul class='grid flex-stretch flex-wrap-center full-x no-scrollbar bg-charcoal' style='align-content:stretch'>
-                <ul class='grid full-x flex-stretch relative no-scrollbar overflow-x' ng-repeat=''>
+                <ul class='grid full-x flex-stretch relative no-scrollbar overflow-x'>
                 </ul>
             </ul>
         </div>
