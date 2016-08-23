@@ -184,25 +184,53 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
             playerObj.tweenConfig.from.propControl += 'translateX(0px) ';
             playerObj.tweenConfig.to.propControl += 'translateX(' + prop.control.barWidth + 'px) ';
 
-            if (prop.type === 'transform') {
-              console.log('transform');
+            if (prop.type === 'transform' && prop.easing.split(' ').length > 1) {
+              prop.easing = prop.easing.split(' ')[prop.state.splitIndex]
+              console.log(prop.easing = prop.easing.split(' '))
+              playerObj.tweenConfig.easing.propControl += prop.easing + ' '
+
             }
-            playerObj.tweenConfig.easing.propControl += prop.easing + ' ';
+            else if (prop.type && playerObj.tweenConfig.easing && prop.type in playerObj.tweenConfig.easing)  {
+              prop.easing = playerObj.tweenConfig.easing[prop.type]
+              playerObj.tweenConfig.easing.propControl += prop.easing + ' ';
+            } else if (playerObj.tweenConfig.easing && prop.name in playerObj.tweenConfig.easing) {
+              prop.easing =  playerObj.tweenConfig.easing[prop.name];
+              playerObj.tweenConfig.easing.propControl += prop.easing + ' ';
+            }
+            else if (!prop.name){
+              prop.easing = 'linear';
+              playerObj.tweenConfig.easing = {};
+              playerObj.tweenConfig.easing.name = prop.easing || 'linear'
+              playerObj.tweenConfig.easing.propControl = playerObj.tweenConfig.easing.name
+            } else if (prop.name && !playerObj.tweenConfig.easing) {
+              prop.easing = prop.name
+              playerObj.tweenConfig.easing = {}
+              playerObj.tweenConfig.easing.name = prop.name || prop.type;
+              playerObj.tweenConfig.easing.propControl = playerObj.tweenConfig.easing.name
+            }
+
 
             playerObj.state.propertyControls.push(prop.control);
           } else {
 
           }
       })
-      playerObj.tweenConfig.easing.propControl = playerObj.tweenConfig.easing.propControl.trim()
-      if ('undefined' in playerObj.tweenConfig.easing) {
-        delete playerObj.tweenConfig.easing['undefined']
+      if (playerObj.tweenConfig.easing.propControl) {
+        playerObj.tweenConfig.easing.propControl = playerObj.tweenConfig.easing.propControl.trim()
       }
+      playerObj.tweenConfig.easing && delete playerObj.tweenConfig.easing['undefined']
+      // if (playerObj.tweenConfig.easing) {
+      //   playerObj.tweenConfig.easing.ballControl = 'linear'
+      // }
       playerObj.tweenConfig.to.propControl = playerObj.tweenConfig.to.propControl.trim();
       playerObj.tweenConfig.from.propControl = playerObj.tweenConfig.from.propControl.trim();
+
       console.log(playerObj.tweenConfig.from.propControl)
       console.log(playerObj.tweenConfig.to.propControl)
-      console.log(playerObj.tweenConfig.easing.propControl)
+      console.log(playerObj.tweenConfig.easing, playerObj.tweenConfig.easing)
+      if (playerObj.tweenConfig.easing.propControl && playerObj.tweenConfig.easing.propControl.split(' ').length > playerObj.tweenConfig.from.propControl.split(' ').length) {
+        playerObj.tweenConfig.easing.propControl = playerObj.tweenConfig.easing.propControl.split(' ').slice(0, playerObj.tweenConfig.to.propControl.split(' ').length).join(' ')
+      }
       // playerObj.tweenConfig.easing.propControl =
       return playerObj;
   }
@@ -219,7 +247,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       pDict.end = end[key];
       pDict.active = !playerObj.prefs.hideProp || ((pDict.name in playerObj.prefs.hideProp) === false)
 
-      // pDict.easing = key in easing && easing[key].trim() || 'linear';
+
       if (key.toLowerCase().indexOf('transform') > -1) {
         pDict.type = 'transform';
         start[key].split(' ').forEach(function(prop, i) {
@@ -235,7 +263,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
         })
       } else {
-        pDict.easing = easing[key];
+        pDict.easing = easing || 'linear';
         resultArr.push(JSON.parse(JSON.stringify(pDict)));
       }
 
@@ -308,7 +336,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   function initPlayerFromArgs(elem, args, previous_player) {
 
     var playerObj = {state: { time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
-    console.log(args.ease)
     if (!previous_player) {
       playerObj.elem = elem;
       playerObj.tweenConfig = {
@@ -402,6 +429,14 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           console.log('skipping', prop);
           continue
         };
+        if (state[prop].indexOf('rgba') > -1) {
+          var firstSplit = state[prop].split('(')
+          var secondSplit = firstSplit[1].split(',');
+          // console.log(state[prop],args.elem.style[prop])
+          var value = firstSplit[0] + '(' + parseInt(secondSplit[0]) + ',' +  parseInt(secondSplit[1]) + ',' +  parseInt(secondSplit[2]) + ',' + secondSplit[3];
+          args.elem.style[prop] = value;
+
+        }
         args.elem.style[prop] = state[prop];
         args.inspect && args.prefs.showLog && args.state.active && prop.indexOf('Control') === -1 && time >= 0 && time <= args.tweenConfig.duration && console.log(prop + ':' + state[prop])
       }
@@ -576,54 +611,84 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       }
     }
 
+
+
     function setPropPlayerFunctions(player) {
       player.state.propertyControls.forEach(function(prop, i) {
         player.state.propertyControls[i].player = {};
         player.state.propertyControls[i].player.play = playFunc(player.state.propertyControls[i], player);
         player.state.properties[i].player = {};
         player.state.properties[i].player.play = playFunc(player.state.propertyControls[i], player);
-        // prop.player = {
-        //   play:
-        // };
-
-        console.log(player, prop.name, prop.splitIndex)
-        // prop.play = playFunc;
+        player.state.properties[i].player.pause = pauseFunc(player.state.propertyControls[i], player);
+        player.state.properties[i].player.reset = resetFunc(player.state.propertyControls[i], player);
+        player.state.properties[i].player.stepTo = stepToFunc(player.state.propertyControls[i], player);
 
       })
-      console.log(player.state.propertyControls)
       return player.state.propertyControls;
 
-      function stepFunc(property, playerObj) {
+      function resetFunc(property, playerObj) {
 
+
+        return function() {
+            setAllInactive(property, player);
+            property.active = true;
+            playerObj = playerObj.reset(playerObj);
+        }
       }
 
       function pauseFunc(property, playerObj) {
-
-      }
-
-      function playFunc(property, player) {
-        console.log('playing..', property);
         return function() {
-          console.log('actual', property.splitIndex);
-          player.skip = '';
-          player.state.propertyControls.forEach(function(prop, i) {
-            if (prop !== property) {
-              prop.active = false;
-              player.skip += prop.name + ' ';
-            } else {
-              console.log('still playing..', property.name);
+          // if (!property.active) {
+              setAllInactive(property, playerObj);
+              property.active = true;
+            // }
+            player.skip = '';
+
+            playerObj.pause();
+          }
+        }
+
+        function stepToFunc(property, playerObj) {
+          return function(direction) {
+            setAllInactive(property, player);
+            if (!property.active) {
+              property.player = true;
             }
-          })
-          console.log(player.skip)
+            player.skip = '';
+            property.time = playerObj.state.time
+            playerObj.stepTo(direction);
+
+          }
+        }
+
+      function playFunc(property, playerObj) {
+        return function() {
+          setAllInactive(property, playerObj);
+          property.active = true;
+          player.skip = '';
+          // property.time = playerObj.state.time || property.time;
           playerObj.play();
+          // setPropPlayerFunctions();
         }
       }
 
 
+      function setAllInactive(property, player) {
+          player.skip = '';
+          player.state.propertyControls.forEach(function(prop, i) {
+            if (prop !== property) {
 
-      function coreFunc(property, playerObj) {
-
+              if (prop.active) {
+                prop.time = player.state.time;
+                console.log('last time recordered before switch', prop.time)
+              }
+              prop.active = false;
+              player.skip += prop.name + ' ';
+            }
+          })
       }
+
+
     }
 
 
@@ -725,7 +790,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         case (3):
 
           pObj.ease = verifyAndProcessEaseArg(pObj, arg_arr[i], property, apply_default, allTweens.slice());
-          console.log(pObj)
           continue;
         case (4):
           pObj.delay = processDuration(arg_arr[i], property, apply_default);

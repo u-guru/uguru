@@ -773,10 +773,12 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (parsedPropDict.animProp) {
             hasPlayer = parsedPropDict.animProp.player;
           }
+
         }
       }
       //parseGeneralArgs
       processGeneralArgs(type, string_args, propDict, custom_args);
+
       return propDict
 
     }
@@ -798,6 +800,19 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
         delete arg_dict['default'];
         delete arg_dict['custom'];
+
+        if ((orig_str.indexOf('rgba') > -1 || orig_str.indexOf(':#') > -1) && 'background' in arg_dict)  {
+          var endArgsReconstruct = customArgs.split('):')
+          var customArgs = endArgsReconstruct[1].trim();
+          var endArgs = UtilitiesService.replaceAll(endArgsReconstruct[0] + ')', '#', ',').trim();
+
+
+
+          // var temp = endArgs.split('):')[1];
+          // customArgs = temp
+
+          console.log(startArgs, customArgs, endArgs)
+        }
 
         var arg_arr = [];
         var propName = split_key;

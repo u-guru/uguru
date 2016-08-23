@@ -47,7 +47,7 @@
             </div>
             <div style='width:20%' class='flex-vertical-center relative'>
                 <ul class='top-0 flex-vertical-center ugrid-6 p15-grid absolute full-x right-0'>
-                    <li ng-click='player.stepTo("reverse", property)' class='opacity-30p'>
+                    <li ng-click='player.stepTo("reverse")' class='opacity-30p'>
                         <span  class='svg-24 svg-stroke-6 radius-2 bg stroke-smoke'>
                             <svg style='transform:rotate(-180deg)' viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <path d="M68.3635106,20.0921155 C68.3635106,16.727533 71.0974015,14 74.454538,14 L74.454538,14 C77.8185196,14 80.5455654,16.7345657 80.5455654,20.0921155 L80.5455654,79.9078845 C80.5455654,83.272467 77.8116745,86 74.454538,86 L74.454538,86 C71.0905565,86 68.3635106,83.2654343 68.3635106,79.9078845 L68.3635106,20.0921155 Z M65.6106483,47.0463201 C66.5720751,47.8852207 67.3635106,48.7075094 67.3635106,50.0226176 C67.3635106,51.3349572 66.8005882,52.132328 65.6106483,52.9961465 L23.5085114,85.7243441 C22.8090385,86.2005517 20.0362277,86.4054318 20,83.3433062 L20,16.6991604 C20.0027867,13.8668327 22.5359376,13.6425721 23.5085114,14.3208911 L65.6106483,47.0463201 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -57,16 +57,16 @@
                     <li ng-click="property.player.play()" >
                         <span class='svg-24 svg-stroke-4 radius-2 stroke-smoke' ng-class="{'opacity-50p':player.state.active}"  ng-include='"shared/templates/components/svg/main/play.html"'></span>
                     </li>
-                    <li ng-click='player.pause(property)' ng-class="{'opacity-50p':!player.state.active}">
+                    <li ng-click='property.player.pause()' ng-class="{'opacity-50p':!player.state.active}">
                         <span class='svg-24 svg-stroke-4 radius-2 stroke-smoke'  ng-include='"shared/templates/components/svg/main/pause.html"'></span>
                     </li>
-                    <li ng-click='player.reset(player, property)' ng-if='!root.player.state.active'>
+                    <li ng-click='property.player.reset()' ng-if='!root.player.state.active'>
                         <span class='svg-24 svg-stroke-4 radius-2 stroke-smoke' ng-include='"shared/templates/components/svg/main/sync.html"'></span>
                     </li>
-                    <li ng-click='player.stepTo("forwards", property)'>
+                    <li ng-click='property.player.stepTo("forwards")'>
                         <span class='svg-24 svg-stroke-4 radius-2 bg stroke-smoke'  ng-include='"shared/templates/components/svg/main/skip.html"'></span>
                     </li>
-                    <li>
+                    <li ng-click='property.player.active = ! property.player.active'>
                         <span class='svg-24 svg-stroke-4 radius-2 bg stroke-smoke' ng-click='property.active = !property.active' ng-include='"shared/templates/components/svg/main/lock.html"'></span>
                     </li>
                 </ul>
