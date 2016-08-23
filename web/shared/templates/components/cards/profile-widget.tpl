@@ -3,7 +3,7 @@
 	<div class="pf-aside-widget"
 		init-with="p:[background:rgba(99#112#116#0)]"
 		on-init="s:[pf-widget-init:public]"
-		when-pf-widget-init="p:[background:rgba(99#112#116#0):rgba(99#112#116#0.3):700:easeInOutSine]:delay-700">
+		when-pf-widget-init="p:[background:rgba(99#112#116#0):rgba(99#112#116#0.3):700:easeOutSine]:delay-700">
 		<!-- init-with="p:[background:rgba(99#112#116#0, t: background 700ms ease-in-out)]" -->
 		<div class="top"
 			init-with="p:[tr:scale(0), tro:center center]"

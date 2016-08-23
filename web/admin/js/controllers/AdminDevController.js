@@ -36,8 +36,14 @@ angular.module('uguru.admin')
     function loadCalendar(d_obj){
       var strDate = d_obj.month +'/' + d_obj.date;
       var callback = function(c_dict) {
+        console.log(c_dict)
         admin.fullcalendar = c_dict;
         admin.today = c_dict[strDate];
+        console.log(c_dict, strDate)
+        // console.log(admin.today)
+        // if (!admin.today) {
+        //   admin.today = c_dict[Object.keys(c_dict)[0]]
+        // }
       }
       XHRService.getJSONFile('get', 'admin/spec/calendar.json', callback);
     }
