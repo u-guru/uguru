@@ -19,7 +19,7 @@ Jeselle
 		<div class="pf-aside-bg-container"
 			init-with="p-op"
 			when-pf-aside-bg-init="p:[opacity:0:1:1000:easeOutSine]">
-			<div class="pf-aside-bg bg-moola"></div>
+			<div class="pf-aside-bg" style="background-image: url('https://c1.staticflickr.com/7/6129/5916495923_43a93ef193_o.jpg');"></div>
 		</div>
 		<div class="pf-aside-widget">
 			<div class="top"
@@ -113,8 +113,7 @@ Jeselle
 		<div class="pf-aside-mobile" init-default>
 			<span class="pf-icon user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
 				init-with="p:[tro:center center, transform:scale(0)]"
-				when-pf-widget-init="p:[transform:scale(0) rotate(-15deg):scale(1) rotate(0deg):500:easeOutBack easeOutQuad]"
-				></span>
+				when-pf-widget-init="p:[transform:scale(0) rotate(-15deg):scale(1) rotate(0deg):500:easeOutBack easeOutQuad]"></span>
 			<h1 class="pf-name verified">
 				<span init-with="p:[op:0, tr:translateY(-10px)]" when-pf-widget-init="p:[opacity:0:1:250:easeInSine, transform:translateY(-10px):translateY(0px):450:easeInOutBack]:delay-100">Gabrielle Wee</span>
 				<span init-with="p:[op:0, tr:translateY(-10px)]" when-pf-widget-init="p:[opacity:0:1:250:easeInSine, transform:translateY(-10px):translateY(0px):450:easeInOutBack]:delay-100">
@@ -218,15 +217,15 @@ Jeselle
 				</div>
 				<ul class="pf-items">
 					<li>
-						<div class="pf-tile-container"
-							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+						<div class="pf-tile-container mobile"
+							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 							when-pf-mn-init="s:[photo-tile-init-1:public]"
-							when-photo-tile-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
-							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							when-photo-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-photo-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-photo-tile-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -235,8 +234,8 @@ Jeselle
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p-op"
-										when-photo-tile-init-1="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
+									<h1 init-with="p:[op:0, t:all 250ms ease-out]"
+										when-photo-tile-init-1="p:[op:1:delay-1000]">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
@@ -277,25 +276,23 @@ Jeselle
 									<div class="pf-pricing photo-price"
 										init-with="p:[tro:center center, op:0]"
 										when-photo-tile-init-1="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
-										<div class="pf-border"
-											init-default
-											when-photo-tile-init-1="send:[viewport-init-1:public]:delay-2000">
-											<div init-with="p:[transform:scaleX(0)]"
-												when-viewport-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
+										<div class="pf-border">
+											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
 										</div>
 										<span>$10/hr</span>
 									</div>
@@ -304,15 +301,15 @@ Jeselle
 						</div>
 					</li>
 					<li>
-						<div class="pf-tile-container"
-							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-mn-init="s:[photo-tile-init-2:public:delay-500]"
-							when-photo-tile-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
-							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+						<div class="pf-tile-container mobile"
+							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
+							when-pf-mn-init="s:[photo-tile-init-2:public]"
+							when-photo-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-photo-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p-op"
+									init-with="p:[op:0]"
 									when-photo-tile-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -321,8 +318,8 @@ Jeselle
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p-op"
-										when-photo-tile-init-2="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
+									<h1 init-with="p:[op:0, t:all 250ms ease-out]"
+										when-photo-tile-init-2="p:[op:1:delay-1000]">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
@@ -363,25 +360,23 @@ Jeselle
 									<div class="pf-pricing photo-price"
 										init-with="p:[tro:center center, op:0]"
 										when-photo-tile-init-2="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
-										<div class="pf-border"
-											init-default
-											when-photo-tile-init-2="send:[viewport-init-2:public]:delay-2000">
-											<div init-with="p:[transform:scaleX(0)]"
-												when-viewport-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
+										<div class="pf-border">
+											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
+												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
 										</div>
 										<span>$10/hr</span>
 									</div>
