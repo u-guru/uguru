@@ -19,8 +19,8 @@ Gabrielle
 			<div class="pf-aside-bg" style="background-image: url('https://c1.staticflickr.com/7/6129/5916495923_43a93ef193_o.jpg');"></div>
 		</div>
 		<div class="pf-aside-widget"
-			init-with="p:[background:rgba(99#112#116#0), t:all 700ms ease-out]"
-			when-pf-widget-init="p:[background:rgba(99#112#116#0.3)]:delay-700">
+			init-with="p:[background:rgba(99#112#116#0)]"
+			when-pf-widget-init="p:[background:rgba(99#112#116#0):rgba(99#112#116#0.3):700:easeOutSine]:delay-700">
 			<div class="top"
 				init-with="p:[tr:scale(0), tro:center center]"
 				when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-150"></div>
@@ -393,15 +393,15 @@ Gabrielle
 				<ul class="pf-items">
 					<li>
 						<div class="pf-tile-container"
-							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-mn-init="s:[photo-cardlet-init-1:public:delay-1000]"
-							when-photo-cardlet-init-1="p:[op:1, tr:none]"
-							when-photo-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							when-photo-cardlet-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-photography">
 								<div class="pf-cardlet-front-container"
-									init-with="p:[tr:translate3d(7.5px#7.5px#0), t:all 450ms ease-out]"
-									when-photo-cardlet-init-1="p:[tr:none:delay-500]">
+									init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
+									when-photo-cardlet-init-1="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
@@ -412,11 +412,11 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-cardlet-bottom-container"
-									init-with="p:[tr:translate3d(7.5px#7.5px#0), t:all 450ms ease-out]"
-									when-photo-cardlet-init-1="p:[tr:none:delay-500]">
+									init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
+									when-photo-cardlet-init-1="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 									<div class="pf-cardlet-bottom">
 										<h1 init-with="p-op"
-											when-photo-cardlet-init-1="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">2016 Camera Models</h1>
+											when-photo-cardlet-init-1="p:[opacity:0:1:650:easeOutSine]:delay-450">2016 Camera Models</h1>
 										<div init-with="p-op"
 											when-photo-cardlet-init-1="a:[bounceInX:set:(dur:1000ms#func:linear):in:delay-450]">
 											<h2>03/28/2016</h2>
@@ -424,13 +424,13 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-cardlet-back-container"
-									init-with="p:[tr:translate3d(-7.5px#-7.5px#0), t:all 450ms ease-out]"
-									when-photo-cardlet-init-1="p:[tr:none:delay-500]">
+									init-with="p:[tr:translateX(-7.5px) translateY(-7.5px) translateZ(0px)]"
+									when-photo-cardlet-init-1="p:[transform:translateX(-7.5px) translateY(-7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 									<div class="pf-cardlet-back"></div>
 								</div>
 								<div class="pf-cardlet-ribbon-container"
-									init-with="p:[op:0, tr:translateX(10px), t:all 250ms ease-out]"
-									when-photo-cardlet-init-1="p:[op:1:delay-500, tr:translateX(0):delay-500]">
+									init-with="p:[op:0, tr:translateX(10px)]"
+									when-photo-cardlet-init-1="p:[opacity:0:1:250:easeOutSine, transform:translateX(10px):translateX(0px):250:easeOutSine]:delay-500">
 									<div class="pf-cardlet-ribbon">
 										<svg viewBox="0 0 100 100">
 											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
@@ -439,7 +439,7 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-ribbon-edge-container"
 									init-with="p-op"
-									when-photo-cardlet-init-1="a:[fadeIn:set:(dur:250ms#func:ease-in):in:delay-600]">
+									when-photo-cardlet-init-1="p:[opacity:0:1:250:easeInSine]:delay-600">
 									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
 							</div>
@@ -447,15 +447,15 @@ Gabrielle
 					</li>
 					<li>
 						<div class="pf-tile-container"
-							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-mn-init="s:[photo-cardlet-init-2:public:delay-1500]"
-							when-photo-cardlet-init-2="p:[op:1, tr:none]"
-							when-photo-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							when-photo-cardlet-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-photography">
 								<div class="pf-cardlet-front-container"
-									init-with="p:[tr:translate3d(7.5px#7.5px#0), t:all 450ms ease-out]"
-									when-photo-cardlet-init-2="p:[tr:none:delay-500]">
+									init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
+									when-photo-cardlet-init-2="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
@@ -466,11 +466,11 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-cardlet-bottom-container"
-									init-with="p:[tr:translate3d(7.5px#7.5px#0), t:all 450ms ease-out]"
-									when-photo-cardlet-init-2="p:[tr:none:delay-500]">
+									init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
+									when-photo-cardlet-init-2="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 									<div class="pf-cardlet-bottom">
 										<h1 init-with="p-op"
-											when-photo-cardlet-init-2="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">2016 Camera Models</h1>
+											when-photo-cardlet-init-2="p:[opacity:0:1:650:easeOutSine]:delay-450">2016 Camera Models</h1>
 										<div init-with="p-op"
 											when-photo-cardlet-init-2="a:[bounceInX:set:(dur:1000ms#func:linear):in:delay-450]">
 											<h2>03/28/2016</h2>
@@ -478,13 +478,13 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-cardlet-back-container"
-									init-with="p:[tr:translate3d(-7.5px#-7.5px#0), t:all 450ms ease-out]"
-									when-photo-cardlet-init-2="p:[tr:none:delay-500]">
+									init-with="p:[tr:translateX(-7.5px) translateY(-7.5px) translateZ(0px)]"
+									when-photo-cardlet-init-2="p:[transform:translateX(-7.5px) translateY(-7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 									<div class="pf-cardlet-back"></div>
 								</div>
 								<div class="pf-cardlet-ribbon-container"
-									init-with="p:[op:0, tr:translateX(10px), t:all 250ms ease-out]"
-									when-photo-cardlet-init-2="p:[op:1:delay-500, tr:translateX(0):delay-500]">
+									init-with="p:[op:0, tr:translateX(10px)]"
+									when-photo-cardlet-init-2="p:[opacity:0:1:250:easeOutSine, transform:translateX(10px):translateX(0px):250:easeOutSine]:delay-500">
 									<div class="pf-cardlet-ribbon">
 										<svg viewBox="0 0 100 100">
 											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
@@ -493,7 +493,7 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-ribbon-edge-container"
 									init-with="p-op"
-									when-photo-cardlet-init-2="a:[fadeIn:set:(dur:250ms#func:ease-in):in:delay-600]">
+									when-photo-cardlet-init-2="p:[opacity:0:1:250:easeInSine]:delay-600">
 									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
 							</div>
