@@ -16,7 +16,7 @@ Gabrielle
 		<div class="pf-aside-bg-container"
 			init-with="p-op"
 			when-pf-aside-bg-init="p:[opacity:0:1:1000:easeOutSine]">
-			<div class="pf-aside-bg" style="background-image: url('https://c1.staticflickr.com/7/6129/5916495923_43a93ef193_o.jpg');"></div>
+			<div class="pf-aside-bg" style="background-image: url('http://www.kemecer.com/i/hipster-floral-wallpapers-photo.jpg');"></div>
 		</div>
 		<div class="pf-aside-widget"
 			init-with="p:[background:rgba(99#112#116#0)]"
@@ -97,7 +97,7 @@ Gabrielle
 			</div>
 			<div init-with="p:[op:0, tro:center center]"
 				when-pf-widget-init="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500]">
-				<button class="bg-moola normal">
+				<button class="bg-academic normal">
 					<span init-with="p-op"
 						when-pf-widget-init="p:[opacity:0:1:500:easeInOutSine:delay-700]">Contact Guru</span>
 				</button>
@@ -212,85 +212,93 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-mn-init="s:[photo-tile-init-1:public]"
-							when-photo-tile-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
-							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							when-pf-mn-init="s:[academic-tile-init-1:public]"
+							when-academic-tile-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-academic-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-500, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic]">
 							<a></a><a></a><a></a><a></a>
-							<div class="pf-tile bg-photography">
-								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p-op"
-									when-photo-tile-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
-									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
+							<div class="pf-tile bg-academic">
 								<div class="pf-tile-border">
-									<div>
-										Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
+									<div class="top"
+										init-with="p:[tro:left center, tr:scaleX(0)]"
+										when-academic-tile-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-500"
+										when-academic-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
+									<div class="right"
+										init-with="p:[tro:center bottom, tr:scaleY(0)]"
+										when-academic-tile-init-1="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-500"
+										when-academic-tile-exit="p:[tr:scaleY(0)]"></div>
+									<div class="bot"
+										init-with="p:[tro:right center, tr:scaleX(0)]"
+										when-academic-tile-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-500"
+										when-academic-tile-exit="p:[tr:scaleX(0)]"></div>
+									<div class="left"
+										init-with="p:[tro:center top, tr:scaleY(0)]"
+										when-academic-tile-init-1="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-500"
+										when-academic-tile-exit="p:[tr:scaleY(0)]"></div>
 								</div>
-								<div class="pf-tile-bottom">
-									<h1 init-with="p-op"
-										when-photo-tile-init-1="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
+								<div class="pf-tile-top">
+									<div class="pf-pricing"
+										init-with="p-op"
+										when-academic-tile-init-1="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
+									<div init-with="p:[tr:translateY(-80%), opacity:0]"
+										when-academic-tile-init-1="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+										<div class="pf-tile-icon">
+											<svg viewBox="0 0 100 100">
+												<g>
+													<path d="M61.993,18 L25.006,18 C23.334,18 22,19.344 22,21.001 L22,30 L25.002,30 C26.658,30 28,31.346 28,33 C28,34.657 26.658,36 25.002,36 L22,36 L22,47 L25.002,47 C26.658,47 28,48.346 28,50 C28,51.657 26.658,53 25.002,53 L22,53 L22,64 L25.002,64 C26.658,64 28,65.346 28,67 C28,68.657 26.658,70 25.002,70 L22,70 L22,78.999 C22,80.663 23.346,82 25.006,82 L61.993,82 C63.666,82 65,80.656 65,78.999 L65,21.001 C65,19.337 63.654,18 61.993,18 L61.993,18 Z"></path>
+													<path d="M70,70 L74,77 L78,70 L78,17.9999998 L70,17.9999998 L70,70 Z"></path>
+													<path d="M70.4117647,81 L83.5882353,81"></path>
+													<rect x="16" y="64" width="12" height="6" rx="3"></rect>
+													<rect x="16" y="47" width="12" height="6" rx="3"></rect>
+													<rect x="16" y="30" width="12" height="6" rx="3"></rect>
+												</g>
+											</svg>
+										</div>
+									</div>
+									<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
+										when-academic-tile-init-1="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
+									<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
+										when-academic-tile-init-1="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+								</div>
+								<div class="pf-tile-bottom"
+									init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
+									when-academic-tile-init-1="p:[transform:translateY(-100px) scaleY(3):translateY(0px) scaleY(1):1000:easeInOutCubic, opacity:0:1:250:easeOutSine:delay-250]">
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
-											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+											when-academic-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+											when-academic-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+											when-academic-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+											when-academic-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+											when-academic-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 									</ul>
-									<div class="pf-pricing photo-price"
-										init-with="p:[tro:center center, op:0]"
-										when-photo-tile-init-1="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
-										<div class="pf-border"
-											init-default
-											when-photo-tile-init-1="send:[viewport-init-1:public]:delay-2000">
-											<div init-with="p:[transform:scaleX(0)]"
-												when-viewport-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-										</div>
-										<span>$10/hr</span>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -298,85 +306,93 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-mn-init="s:[photo-tile-init-2:public:delay-500]"
-							when-photo-tile-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
-							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							when-pf-mn-init="s:[academic-tile-init-2:public:delay-500]"
+							when-academic-tile-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-academic-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-500, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic]">
 							<a></a><a></a><a></a><a></a>
-							<div class="pf-tile bg-photography">
-								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p-op"
-									when-photo-tile-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
-									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
+							<div class="pf-tile bg-academic">
 								<div class="pf-tile-border">
-									<div>
-										Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
+									<div class="top"
+										init-with="p:[tro:left center, tr:scaleX(0)]"
+										when-academic-tile-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-500"
+										when-academic-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
+									<div class="right"
+										init-with="p:[tro:center bottom, tr:scaleY(0)]"
+										when-academic-tile-init-2="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-500"
+										when-academic-tile-exit="p:[tr:scaleY(0)]"></div>
+									<div class="bot"
+										init-with="p:[tro:right center, tr:scaleX(0)]"
+										when-academic-tile-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-500"
+										when-academic-tile-exit="p:[tr:scaleX(0)]"></div>
+									<div class="left"
+										init-with="p:[tro:center top, tr:scaleY(0)]"
+										when-academic-tile-init-2="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-500"
+										when-academic-tile-exit="p:[tr:scaleY(0)]"></div>
 								</div>
-								<div class="pf-tile-bottom">
-									<h1 init-with="p-op"
-										when-photo-tile-init-2="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
+								<div class="pf-tile-top">
+									<div class="pf-pricing"
+										init-with="p-op"
+										when-academic-tile-init-2="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
+									<div init-with="p:[tr:translateY(-80%), opacity:0]"
+										when-academic-tile-init-2="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+										<div class="pf-tile-icon">
+											<svg viewBox="0 0 100 100">
+												<g>
+													<path d="M61.993,18 L25.006,18 C23.334,18 22,19.344 22,21.001 L22,30 L25.002,30 C26.658,30 28,31.346 28,33 C28,34.657 26.658,36 25.002,36 L22,36 L22,47 L25.002,47 C26.658,47 28,48.346 28,50 C28,51.657 26.658,53 25.002,53 L22,53 L22,64 L25.002,64 C26.658,64 28,65.346 28,67 C28,68.657 26.658,70 25.002,70 L22,70 L22,78.999 C22,80.663 23.346,82 25.006,82 L61.993,82 C63.666,82 65,80.656 65,78.999 L65,21.001 C65,19.337 63.654,18 61.993,18 L61.993,18 Z"></path>
+													<path d="M70,70 L74,77 L78,70 L78,17.9999998 L70,17.9999998 L70,70 Z"></path>
+													<path d="M70.4117647,81 L83.5882353,81"></path>
+													<rect x="16" y="64" width="12" height="6" rx="3"></rect>
+													<rect x="16" y="47" width="12" height="6" rx="3"></rect>
+													<rect x="16" y="30" width="12" height="6" rx="3"></rect>
+												</g>
+											</svg>
+										</div>
+									</div>
+									<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
+										when-academic-tile-init-2="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
+									<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
+										when-academic-tile-init-2="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+								</div>
+								<div class="pf-tile-bottom"
+									init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
+									when-academic-tile-init-2="p:[transform:translateY(-100px) scaleY(3):translateY(0px) scaleY(1):1000:easeInOutCubic, opacity:0:1:250:easeOutSine:delay-250]">
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
-											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+											when-academic-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+											when-academic-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+											when-academic-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+											when-academic-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+											when-academic-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 									</ul>
-									<div class="pf-pricing photo-price"
-										init-with="p:[tro:center center, op:0]"
-										when-photo-tile-init-2="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
-										<div class="pf-border"
-											init-default
-											when-photo-tile-init-2="send:[viewport-init-2:public]:delay-2000">
-											<div init-with="p:[transform:scaleX(0)]"
-												when-viewport-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-viewport-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
-											<div init-with="p:[tr:scaleY(0)]"
-												when-viewport-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]"></div>
-										</div>
-										<span>$10/hr</span>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -394,43 +410,49 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-mn-init="s:[photo-cardlet-init-1:public:delay-1000]"
-							when-photo-cardlet-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
-							when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							when-pf-mn-init="s:[academic-cardlet-init-1:public:delay-1000]"
+							when-academic-cardlet-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-academic-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
-							<div class="pf-cardlet highlight bg-photography">
+							<div class="pf-cardlet highlight bg-academic">
 								<div class="pf-cardlet-front-container"
 									init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
-									when-photo-cardlet-init-1="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
-									<div class="pf-cardlet-front">
-										<div></div><div></div><div></div>
-										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p-op"
-											when-photo-cardlet-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
-											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
-										<div class="pf-cardlet-overlay"></div>
-									</div>
-								</div>
-								<div class="pf-cardlet-bottom-container"
-									init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
-									when-photo-cardlet-init-1="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
-									<div class="pf-cardlet-bottom">
-										<h1 init-with="p-op"
-											when-photo-cardlet-init-1="p:[opacity:0:1:650:easeOutSine]:delay-450">2016 Camera Models</h1>
-										<div init-with="p-op"
-											when-photo-cardlet-init-1="a:[bounceInX:set:(dur:1000ms#func:linear):in:delay-450]">
-											<h2>03/28/2016</h2>
-										</div>
-									</div>
+									when-academic-cardlet-init-1="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
+									<div class="pf-cardlet-front" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
 								</div>
 								<div class="pf-cardlet-back-container"
 									init-with="p:[tr:translateX(-7.5px) translateY(-7.5px) translateZ(0px)]"
-									when-photo-cardlet-init-1="p:[transform:translateX(-7.5px) translateY(-7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
-									<div class="pf-cardlet-back"></div>
+									when-academic-cardlet-init-1="p:[transform:translateX(-7.5px) translateY(-7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
+									<div class="pf-cardlet-back" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
+								</div>
+								<div class="pf-cardlet-bottom-container"
+									init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
+									when-academic-cardlet-init-1="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
+									<div class="pf-cardlet-bottom">
+										<div class="pf-cardlet-bg deco"></div>
+										<div class="pf-cardlet-border deco">
+											<div init-with="p:[tr:scaleX(0)]"
+												when-academic-cardlet-init-1="p:[transform:scaleX(0):scaleX(1):1450:easeOutSine]"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-academic-cardlet-init-1="p:[transform:scaleY(0):scaleY(1):1450:easeOutSine]"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-academic-cardlet-init-1="p:[transform:scaleY(0):scaleY(1):1450:easeOutSine]"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-academic-cardlet-init-1="p:[transform:scaleX(0):scaleX(1):1450:easeOutSine]"></div>
+										</div>
+										<h1 init-with="p-op"
+											when-academic-cardlet-init-1="a:[zoomIn:set:(dur:400ms#func:cubic-bezier(.8#.1#.41#.91)):in:delay-450]">Master the Cerebral Cortex</h1>
+										<div>
+											<div init-with="p:[op:0, tr:scaleY(0)]"
+												when-academic-cardlet-init-1="p:[opacity:0:1:400:easeOutSine, transform:scaleY(0):scaleY(1):400:easeOutSine]:delay-650">
+												<h2>03/28/2016</h2>
+											</div>
+										</div>
+									</div>
 								</div>
 								<div class="pf-cardlet-ribbon-container"
 									init-with="p:[op:0, tr:translateX(10px)]"
-									when-photo-cardlet-init-1="p:[opacity:0:1:250:easeOutSine, transform:translateX(10px):translateX(0px):250:easeOutSine]:delay-500">
+									when-academic-cardlet-init-1="p:[opacity:0:1:250:easeOutSine, transform:translateX(10px):translateX(0px):250:easeOutSine]:delay-500">
 									<div class="pf-cardlet-ribbon">
 										<svg viewBox="0 0 100 100">
 											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
@@ -439,7 +461,7 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-ribbon-edge-container"
 									init-with="p-op"
-									when-photo-cardlet-init-1="p:[opacity:0:1:250:easeInSine]:delay-600">
+									when-academic-cardlet-init-1="p:[opacity:0:1:250:easeInSine]:delay-650">
 									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
 							</div>
@@ -448,43 +470,49 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-mn-init="s:[photo-cardlet-init-2:public:delay-1500]"
-							when-photo-cardlet-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
-							when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							when-pf-mn-init="s:[academic-cardlet-init-2:public:delay-1500]"
+							when-academic-cardlet-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-academic-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
-							<div class="pf-cardlet highlight bg-photography">
+							<div class="pf-cardlet highlight bg-academic">
 								<div class="pf-cardlet-front-container"
 									init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
-									when-photo-cardlet-init-2="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
-									<div class="pf-cardlet-front">
-										<div></div><div></div><div></div>
-										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p-op"
-											when-photo-cardlet-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
-											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
-										<div class="pf-cardlet-overlay"></div>
-									</div>
-								</div>
-								<div class="pf-cardlet-bottom-container"
-									init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
-									when-photo-cardlet-init-2="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
-									<div class="pf-cardlet-bottom">
-										<h1 init-with="p-op"
-											when-photo-cardlet-init-2="p:[opacity:0:1:650:easeOutSine]:delay-450">2016 Camera Models</h1>
-										<div init-with="p-op"
-											when-photo-cardlet-init-2="a:[bounceInX:set:(dur:1000ms#func:linear):in:delay-450]">
-											<h2>03/28/2016</h2>
-										</div>
-									</div>
+									when-academic-cardlet-init-2="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
+									<div class="pf-cardlet-front" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
 								</div>
 								<div class="pf-cardlet-back-container"
 									init-with="p:[tr:translateX(-7.5px) translateY(-7.5px) translateZ(0px)]"
-									when-photo-cardlet-init-2="p:[transform:translateX(-7.5px) translateY(-7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
-									<div class="pf-cardlet-back"></div>
+									when-academic-cardlet-init-2="p:[transform:translateX(-7.5px) translateY(-7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
+									<div class="pf-cardlet-back" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
+								</div>
+								<div class="pf-cardlet-bottom-container"
+									init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
+									when-academic-cardlet-init-2="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
+									<div class="pf-cardlet-bottom">
+										<div class="pf-cardlet-bg deco"></div>
+										<div class="pf-cardlet-border deco">
+											<div init-with="p:[tr:scaleX(0)]"
+												when-academic-cardlet-init-2="p:[transform:scaleX(0):scaleX(1):1450:easeOutSine]"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-academic-cardlet-init-2="p:[transform:scaleY(0):scaleY(1):1450:easeOutSine]"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-academic-cardlet-init-2="p:[transform:scaleY(0):scaleY(1):1450:easeOutSine]"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-academic-cardlet-init-2="p:[transform:scaleX(0):scaleX(1):1450:easeOutSine]"></div>
+										</div>
+										<h1 init-with="p-op"
+											when-academic-cardlet-init-2="a:[zoomIn:set:(dur:400ms#func:cubic-bezier(.8#.1#.41#.91)):in:delay-450]">Master the Cerebral Cortex</h1>
+										<div>
+											<div init-with="p:[op:0, tr:scaleY(0)]"
+												when-academic-cardlet-init-2="p:[opacity:0:1:400:easeOutSine, transform:scaleY(0):scaleY(1):400:easeOutSine]:delay-650">
+												<h2>03/28/2016</h2>
+											</div>
+										</div>
+									</div>
 								</div>
 								<div class="pf-cardlet-ribbon-container"
 									init-with="p:[op:0, tr:translateX(10px)]"
-									when-photo-cardlet-init-2="p:[opacity:0:1:250:easeOutSine, transform:translateX(10px):translateX(0px):250:easeOutSine]:delay-500">
+									when-academic-cardlet-init-2="p:[opacity:0:1:250:easeOutSine, transform:translateX(10px):translateX(0px):250:easeOutSine]:delay-500">
 									<div class="pf-cardlet-ribbon">
 										<svg viewBox="0 0 100 100">
 											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
@@ -493,7 +521,7 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-ribbon-edge-container"
 									init-with="p-op"
-									when-photo-cardlet-init-2="p:[opacity:0:1:250:easeInSine]:delay-600">
+									when-academic-cardlet-init-2="p:[opacity:0:1:250:easeInSine]:delay-650">
 									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
 							</div>

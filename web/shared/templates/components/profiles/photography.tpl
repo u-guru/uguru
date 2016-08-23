@@ -439,7 +439,7 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-ribbon-edge-container"
 									init-with="p-op"
-									when-photo-cardlet-init-1="p:[opacity:0:1:250:easeInSine]:delay-600">
+									when-photo-cardlet-init-1="p:[opacity:0:1:250:easeInSine]:delay-650">
 									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
 							</div>
@@ -493,7 +493,7 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-ribbon-edge-container"
 									init-with="p-op"
-									when-photo-cardlet-init-2="p:[opacity:0:1:250:easeInSine]:delay-600">
+									when-photo-cardlet-init-2="p:[opacity:0:1:250:easeInSine]:delay-650">
 									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
 							</div>
