@@ -1046,7 +1046,7 @@ Jeselle
 			 	 </div>
 				<div class="pf-about-section pf-ab-anim"
 					init-with="p:[op:0, transform:rotateX(10deg) rotateY(-15deg)]"
-					when-ab-sect-init="p:[opacity:0:1:450:easeOutExpo, transform:rotateX(10deg) rotateY(-15deg):rotateX(0deg) rotateY(0deg):1000:easeOutExpo easeOutQuad] | send:[social-sect-init:public]:delay-150">
+					when-ab-sect-init="p:[opacity:0:1:450:easeOutExpo, transform:translateY(-15px):translateY(0px):1000:easeOutQuad] | send:[social-sect-init:public]:delay-150">
 					<header><h2>About</h2></header>
 					<div>
 						<h1 class="pf-ab-about-anim"
