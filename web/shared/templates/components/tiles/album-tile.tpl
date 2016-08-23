@@ -1,7 +1,8 @@
+<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.25x" class="bottom-0 bg-azure" auto-play="true" step-size="100" play-infinite="false" > </inspector-gadget>
 <div class="perspective-container full-xy flex-center p15xy">
 	<a class="album-tile"
 		init-default
-		on-init="s:[album-tile-init]"
+		on-init="s:[album-tile-init:public]"
 		on-mouse-enter="s:[album-tile-mouse-enter]"
 		on-mouse-leave="s:[album-tile-mouse-leave]"
 		on-click="s:[album-tile-click]">
@@ -33,11 +34,12 @@
 		<div class="album-caption">
 			<!-- @samir The opacity and the transform isn't working together. If I take opacity out, the transform animation works. -->
 			<h1 style="background: #020c39;"
-				init-with="p:[opacity:0, transform:translateY(-100%) translateZ(0)]"
-				when-album-tile-init="p:[opacity:0:1:250:linear:delay-150,transform:translateY(-100%) translateZ(0):translateY(0%) translateZ(0):250:easeOutExpo easeOutExpo:delay-250]">Midnight<br/>Cramming</h1>
+				init-with="p:[opacity:0:1, transform:translateY(-100%) translateZ(0)]"
+				inspector-elem="when-album-tile-init"
+				when-album-tile-init="p:[opacity:0.5:1:250:linear, transform:translateY(-100%) translateZ(0px):translateY(0%) translateZ(0px):250:elastic elastic]">Midnight<br/>Cramming</h1>
 			<h2 class="animate" style="background: #020c39;"
 				init-with="p:[opacity:0, tr:translateY(-100%) translateZ(0)]"
-				when-album-tile-init="p:[opacity:0:0.3:250:lineardelay-350, tr:translateY(-100%):translateY(0):250:easeOutSine:delay-450]">Intense EDM</h2>
+				when-album-tile-init="p:[opacity:0:0.3:250:linear:delay-235, transform:translateY(-100%):translateY(0):250:easeOutSine]">Intense EDM</h2>
 		</div>
 	</a>
 </div>

@@ -1,12 +1,15 @@
+
+<inspector-gadget show-log="false" ball-color="smoke" show-props reverse-speed="10" speed="0.2x" class="bottom-0 bg-azure" auto-play="false" step-size="100" play-infinite="false" > </inspector-gadget>
 <div class="perspective-container full-xy flex-center p15xy">
 	<!-- transition-free -->
 	<!-- @samir opacity-bug line 8, "Cannot read property 'duration' of null" -->
 	<fieldset class="search-bar"
 		init-with="p:[op:0, width:48px]"
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in] | s:[search-bar-init:public]"
-		when-search-bar-clicked="p:[width:48px:500px:250:easeOutBack]"
+		inspector-elem="when-search-bar-clicked"
+		when-search-bar-clicked="p:[width:48px:500px:1000:easeOutSine,background:rgba(255#255#255#1):rgba(0#255#0#0.5):1000:easeOutSine]"
 		on-click="s:[search-bar-clicked:public]"
-		on-exit="p:[opacity:1:0:250:easeOutSine]">
+		>
 		<div>
 			<label for="search-bar"
 				init-default>
