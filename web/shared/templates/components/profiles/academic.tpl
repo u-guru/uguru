@@ -6,7 +6,7 @@ Gabrielle
 - Bug onBlur that is causing a jittery background color on the bottom of profile tiles. Will look into fixing this (and possibly switching over to the new syntax, since it can't be debugged with the tool if it's static CSS)
 -->
 
-<div class="pf-container pf-photography"
+<div class="pf-container pf-academic"
 	on-init="s:[pf-aside-init:public:delay-500, pf-rest-init:public]">
 	<aside class="pf-aside perspective-container"
 		init-with="p-op"
