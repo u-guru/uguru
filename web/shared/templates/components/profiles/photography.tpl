@@ -149,7 +149,7 @@
 	</aside>
 	<div class="pf-rest"
 		init-with="p-op"
-		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public, pf-mn-init:public:delay-1750]"
+		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public, pf-ab-init:public:delay-1750]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
 			<div>
@@ -182,7 +182,7 @@
 					when-pf-tabs-init="p:[opacity:0:1:1000:easeOutSine]:delay-1200">
 			</div>
 		</nav>
-		<main class="pf-main" ng-init="guru.section_index = 0;">
+		<main class="pf-main" ng-init="guru.section_index = 2;">
 			<!-- ng-init="guru.section_index = 2;" -->
 			<div class="pf-profile pf-main-section" ng-class="{'active': !guru.section_index}">
 				<div class="pf-main-header overflow-hidden">
@@ -1023,9 +1023,12 @@
 					<h1 init-with="p-op"
 						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-900">The Golden Bear Tutor</h1>
 					<p init-with="p-op"
-						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-1000">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
-				</div>
-				<div class="pf-about-section pf-ab-anim">
+						when-pf-enter="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-1000">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
+			 	</div>
+				<div class="pf-about-section pf-ab-anim"
+					init-with="p:[transform:translateY(300px) rotateX(560deg), op:0]"
+					when-pf-ab-init="p:[transform:translateY(300px) rotateX(560deg):translateY(0px) rotateX(0deg):450:easeOutSine easeOutExpo, opacity:0:1:50:linear]">
+					<!-- when-pf-ab-init="a:[pf-slideUp-fadeIn:set:(dur:1000ms#func:linear):in]" -->
 					<header><h2>About</h2></header>
 					<div>
 						<h1 class="pf-ab-about-anim">I am a freshman seeking a degree in Journalism.</h1>
