@@ -19,7 +19,7 @@ Jeselle
 		<div class="pf-aside-bg-container"
 			init-with="p-op"
 			when-pf-aside-bg-init="p:[opacity:0:1:1000:easeOutSine]">
-			<div class="pf-aside-bg" style="background-image: url('https://c1.staticflickr.com/7/6129/5916495923_43a93ef193_o.jpg');"></div>
+			<div class="pf-aside-bg bg-moola"></div>
 		</div>
 		<div class="pf-aside-widget">
 			<div class="top"
