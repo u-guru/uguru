@@ -158,7 +158,7 @@
                 on-pf-exit="fadeOut:animOut:delay-1000">
                 <span class="pf-enter"
 					  elem-states="[pf]"
-					  on-pf-enter="null:inject.pf-mn-anim|on-mn-enter:delay-1750"></span>
+					  on-pf-enter="null:inject.pf-ab-anim|on-ab-enter:delay-1750"></span>
                 <nav class="pf-tabs tab-bar slide">
                     <div>
                         <a class="pf-profile-section-link pf-main-link pf-enter"
@@ -196,7 +196,7 @@
                             on-pf-enter="fadeIn:animIn:delay-1500"/>
                     </div>
                 </nav>
-                <main class="pf-main">
+                <main class="pf-main" ng-init="guru.section_index = 2;">
                     <!-- ng-init="guru.section_index = 2;" -->
                     <div class="pf-profile pf-main-section" ng-class="{'active': !guru.section_index}">
                         <div class="pf-main-header">
