@@ -3,7 +3,7 @@
 <!-- NOTES AND BUGS
 Gabrielle
 - Lag on multiple profile tiles due to old animation syntax. Leaving alone for now as specified on Monday 8/23
-- Bug onBlur that is causing a jittery background color on the bottom of profile tiles. Will look into fixing this (and possibly switching over to the new syntax)
+- Bug onBlur that is causing a jittery background color on the bottom of profile tiles. Will look into fixing this (and possibly switching over to the new syntax, since it can't be debugged with the tool if it's static CSS)
 -->
 
 <div class="pf-container pf-photography"
