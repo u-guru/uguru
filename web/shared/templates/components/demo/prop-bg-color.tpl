@@ -4,7 +4,7 @@
 			<div class="playing-card play-heart">
 				<div class="playing-card-back bg-auburn"></div>
 				<div class="playing-card-front"
-					init-with="p:[background-color:rgb(0#0#0):rgb(255#0#0):1000:easeOutSine]">
+					on-init="p:[background:rgba(0#0#0#0):rgba(255#0#0#1):1000:easeOutSine]">
 				</div>
 			</div>
 		</li>
