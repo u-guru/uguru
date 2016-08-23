@@ -1197,9 +1197,9 @@ Gabrielle
 								<div>
 									<span class="pf-exp-date"
 										init-with="p:[tro:center center, transform:scale(0)]"
-										when-exp-sect-init="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-650">2015</span>
+										when-exp-sect-init="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-1000">2015</span>
 									<div init-with="p:[tro:left center, transform:scale(0)]"
-										when-exp-sect-init="p:[transform:scale(0):scale(1):1000:easeOutExpo]:delay-650">
+										when-exp-sect-init="p:[transform:scale(0):scale(1):1000:easeOutExpo]:delay-1000">
 										<h1>Daily Illini Editor</h1>
 										<p>Lorem ipsum dolor sit amet magna trisique ornare. Donec aliquet velit ex, vitae dignissim.</p>
 										<div class="pf-exp-time">04/15-11/15</div>
@@ -1212,9 +1212,9 @@ Gabrielle
 								<div>
 									<span class="pf-exp-date"
 										init-with="p:[tro:center center, transform:scale(0)]"
-										when-exp-sect-init="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-400"></span>
+										when-exp-sect-init="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-1200"></span>
 									<div init-with="p:[tro:left center, transform:scale(0)]"
-										when-exp-sect-init="p:[transform:scale(0):scale(1):1000:easeOutExpo]:delay-400">
+										when-exp-sect-init="p:[transform:scale(0):scale(1):1000:easeOutExpo]:delay-1200">
 										<h1>Daily Illini Writer</h1>
 										<p>Lorem ipsum dolor sit amet magna trisique ornare. Donec aliquet velit ex, vitae dignissim.</p>
 										<div class="pf-exp-time">01/15-04/15</div>
@@ -1227,9 +1227,9 @@ Gabrielle
 								<div>
 									<span class="pf-exp-date"
 										init-with="p:[tro:center center, transform:scale(0)]"
-										when-exp-sect-init="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-250">2014</span>
+										when-exp-sect-init="p:[transform:scale(0):scale(1):250:easeInOutBack]:delay-1400">2014</span>
 									<div init-with="p:[tro:left center, transform:scale(0)]"
-										when-exp-sect-init="p:[transform:scale(0):scale(1):1000:easeOutExpo]:delay-250">
+										when-exp-sect-init="p:[transform:scale(0):scale(1):1000:easeOutExpo]:delay-1400">
 										<h1>Newsletter Writer</h1>
 										<p>Lorem ipsum dolor sit amet magna trisique ornare. Donec aliquet velit ex, vitae dignissim.</p>
 										<div class="pf-exp-time">01/14-11/14</div>
