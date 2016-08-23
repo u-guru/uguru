@@ -800,8 +800,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
         delete arg_dict['default'];
         delete arg_dict['custom'];
-
-        if ((orig_str.indexOf('rgba') > -1 || orig_str.indexOf(':#') > -1) && 'background' in arg_dict)  {
+        console.log(arg_dict)
+        if ((orig_str.indexOf('rgba') > -1 || orig_str.indexOf(':#') > -1) && ('background' in arg_dict || 'background-color' in arg_dict ))  {
           var endArgsReconstruct = customArgs.split('):')
           var customArgs = endArgsReconstruct[1].trim();
           var endArgs = UtilitiesService.replaceAll(endArgsReconstruct[0] + ')', '#', ',').trim();

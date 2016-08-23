@@ -1,8 +1,17 @@
+<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.2x" class="bottom-0 bg-azure" auto-play="false" step-size="100" play-infinite="false" > </inspector-gadget>
+
+<!-- NOTES AND BUGS
+Gabrielle
+- Lag on multiple profile tiles due to old animation syntax. Leaving alone for now as specified on Monday 8/22
+- Bug onBlur that is causing a jittery background color on the bottom of profile tiles. Will look into fixing this (and possibly switching over to the new syntax, since it can't be debugged with the tool if it's static CSS)
+-->
+
 <div class="pf-container pf-photography"
 	on-init="s:[pf-aside-init:public:delay-500, pf-rest-init:public]">
-	<aside class="pf-aside"
+	<aside class="pf-aside perspective-container"
 		init-with="p-op"
-		when-pf-aside-init="a:[pf-scaleInY:set:(dur:1500ms#func:linear):in] | s:[pf-aside-bg-init:public:delay-3000, pf-widget-init:public:delay-3500, pf-aside-desc-init:public:delay-3500]"
+		when-pf-aside-init="s:[pf-aside-content-init:public:delay-2000] | p:[transform:scaleX(0.4):scaleX(1):500:easeOutQuint, opacity:0:1:500:easeOutSine]"
+		when-pf-aside-content-init="s:[pf-aside-bg-init:public:delay-1500, pf-widget-init:public:delay-2000, pf-aside-desc-init:public:delay-2000]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<div class="pf-aside-bg-container"
 			init-with="p-op"
@@ -89,7 +98,7 @@
 			<div init-with="p:[op:0, tro:center center]"
 				when-pf-widget-init="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500]">
 				<button class="bg-moola normal">
-					<span init-with="p:[op:0]"
+					<span init-with="p-op"
 						when-pf-widget-init="p:[opacity:0:1:500:easeInOutSine:delay-700]">Contact Guru</span>
 				</button>
 			</div>
@@ -101,7 +110,7 @@
 				on-enter="p:[opacity:0:1:1000:easeOutSine]:delay-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
 		</div>
 		<div class="pf-aside-mobile">
-			<span class="pf-icon user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+			<span class="pf-icon user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"></span>
 			<h1 class="pf-name verified">
 				<span>Gabrielle Wee</span>
 				<span>
@@ -147,9 +156,9 @@
 			<h3 class="pf-reviews"><span>72</span> reviews</h3>
 		</div>
 	</aside>
-	<div class="pf-rest"
+	<div class="pf-rest perspective-container"
 		init-with="p-op"
-		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public, pf-ab-init:public:delay-1750]"
+		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public, pf-mn-init:public:delay-1750]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
 			<div>
@@ -182,7 +191,7 @@
 					when-pf-tabs-init="p:[opacity:0:1:1000:easeOutSine]:delay-1200">
 			</div>
 		</nav>
-		<main class="pf-main" ng-init="guru.section_index = 2;">
+		<main class="pf-main" ng-init="guru.section_index = 0;">
 			<!-- ng-init="guru.section_index = 2;" -->
 			<div class="pf-profile pf-main-section" ng-class="{'active': !guru.section_index}">
 				<div class="pf-main-header overflow-hidden">
@@ -209,7 +218,7 @@
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -218,7 +227,7 @@
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0]"
+									<h1 init-with="p-op"
 										when-photo-tile-init-1="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
@@ -295,7 +304,7 @@
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -304,7 +313,7 @@
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0]"
+									<h1 init-with="p-op"
 										when-photo-tile-init-2="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
@@ -396,7 +405,7 @@
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p:[op:0]"
+											init-with="p-op"
 											when-photo-cardlet-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -429,7 +438,7 @@
 									</div>
 								</div>
 								<div class="pf-cardlet-ribbon-edge-container"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-cardlet-init-1="a:[fadeIn:set:(dur:250ms#func:ease-in):in:delay-600]">
 									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
@@ -450,7 +459,7 @@
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p:[op:0]"
+											init-with="p-op"
 											when-photo-cardlet-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -483,7 +492,7 @@
 									</div>
 								</div>
 								<div class="pf-cardlet-ribbon-edge-container"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-cardlet-init-2="a:[fadeIn:set:(dur:250ms#func:ease-in):in:delay-600]">
 									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
@@ -509,7 +518,7 @@
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -518,7 +527,7 @@
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0]"
+									<h1 init-with="p-op"
 										when-photo-tile-init-1="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
@@ -595,7 +604,7 @@
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -604,7 +613,7 @@
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0]"
+									<h1 init-with="p-op"
 										when-photo-tile-init-2="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
@@ -681,7 +690,7 @@
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-3="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -690,7 +699,7 @@
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0]"
+									<h1 init-with="p-op"
 										when-photo-tile-init-3="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
@@ -767,7 +776,7 @@
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-4="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -776,7 +785,7 @@
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0]"
+									<h1 init-with="p-op"
 										when-photo-tile-init-4="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
@@ -853,7 +862,7 @@
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-5="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -862,7 +871,7 @@
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0]"
+									<h1 init-with="p-op"
 										when-photo-tile-init-5="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
@@ -939,7 +948,7 @@
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-6="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -948,7 +957,7 @@
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0]"
+									<h1 init-with="p-op"
 										when-photo-tile-init-6="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
@@ -1270,7 +1279,7 @@
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -1279,7 +1288,7 @@
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0]"
+									<h1 init-with="p-op"
 										when-photo-tile-init="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
@@ -1356,7 +1365,7 @@
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -1365,7 +1374,7 @@
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0]"
+									<h1 init-with="p-op"
 										when-photo-tile-init="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
