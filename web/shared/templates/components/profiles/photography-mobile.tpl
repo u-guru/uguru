@@ -9,17 +9,16 @@ Jeselle
 -->
 
 <div class="pf-container pf-photography"
-	on-init="s:[pf-aside-init:public, pf-rest-init:public]">
+	on-init="s:[pf-aside-init:public, pf-rest-init:public:delay-1000]">
 	<aside class="pf-aside perspective-container"
 		init-with="p:[op:0, tro:center top]"
-		when-pf-aside-init="s:[pf-aside-content-init:public:delay-2000] | a:[pf-bounceDown:set:(dur:2000ms#func:linear):in]"
-		when-pf-aside-content-init="s:[pf-aside-bg-init:public:delay-1500, pf-widget-init:public:delay-2000, pf-aside-desc-init:public:delay-2000]"
-		when-pf-aside-content-init="s:[pf-aside-bg-init:public:delay-1500, pf-widget-init:public, pf-aside-desc-init:public:delay-2000]"
+		when-pf-aside-init="s:[pf-aside-content-init:public:delay-1000] | a:[pf-bounceDown:set:(dur:2000ms#func:linear):in]"
+		when-pf-aside-content-init="s:[pf-aside-bg-init:public:delay-1500, pf-widget-init:public, pf-cta-init:public:delay-500]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<div class="pf-aside-bg-container"
 			init-with="p-op"
 			when-pf-aside-bg-init="p:[opacity:0:1:1000:easeOutSine]">
-			<div class="pf-aside-bg" style="background-image: url('https://c1.staticflickr.com/7/6129/5916495923_43a93ef193_o.jpg');"></div>
+			<div class="pf-aside-bg bg-moola"></div>
 		</div>
 		<div class="pf-aside-widget">
 			<div class="top"
@@ -110,7 +109,7 @@ Jeselle
 			<span init-with="p-op"
 				on-enter="p:[opacity:0:1:1000:easeOutSine]:delay-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
 		</div>
-		<div class="pf-aside-mobile" init-default>
+		<div class="pf-aside-mobile">
 			<span class="pf-icon user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
 				init-with="p:[tro:center center, transform:scale(0)]"
 				when-pf-widget-init="p:[transform:scale(0) rotate(-15deg):scale(1) rotate(0deg):500:easeOutBack easeOutQuad]"></span>
@@ -165,7 +164,7 @@ Jeselle
 	</aside>
 	<div class="pf-rest perspective-container"
 		init-with="p-op"
-		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public, pf-mn-init:public:delay-1750]"
+		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public:delay-500, pf-mn-init:public:delay-2250]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
 			<div>
@@ -173,25 +172,25 @@ Jeselle
 					ng-click='guru.section_index = 0;'
 					ng-class="{'active': !guru.section_index}"
 					init-with="p-op"
-					when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutBack, opacity:0:1:500:easeOutBack]:delay-500"
+					when-pf-tabs-init="p:[transform:translateX(150px):translateX(0px):500:easeOutCubic, opacity:0:1:500:easeInBack]:delay-500"
 					on-click="s:[pf-mn-init:public]">Profile</a>
 				<a class="pf-portfolio-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 1;'
 					ng-class="{'active': guru.section_index === 1}"
 					init-with="p-op"
-					when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutBack, opacity:0:1:500:easeOutBack]:delay-600"
+					when-pf-tabs-init="p:[transform:translateX(150px):translateX(0px):500:easeOutCubic, opacity:0:1:500:easeInBack]:delay-700"
 					on-click="s:[pf-sv-init:public]">Services</a>
 				<a class="pf-about-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 2;'
 					ng-class="{'active': guru.section_index === 2}"
 					init-with="p-op"
-					when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutBack, opacity:0:1:500:easeOutBack]:delay-700"
+					when-pf-tabs-init="p:[transform:translateX(150px):translateX(0px):500:easeOutCubic, opacity:0:1:500:easeInBack]:delay-900"
 					on-click="s:[pf-ab-init:public]">About</a>
 				<a class="pf-resources-section-link pf-main-link pf-enter"
 					ng-click='guru.section_index = 3;'
 					ng-class="{'active': guru.section_index === 3}"
 					init-with="p-op"
-					when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutBack, opacity:0:1:500:easeOutBack]:delay-800"
+					when-pf-tabs-init="p:[transform:translateX(150px):translateX(0px):500:easeOutCubic, opacity:0:1:500:easeInBack]:delay-1000"
 					on-click="s:[pf-rs-init:public]">Resources</a>
 				<hr class="pf-enter"
 					init-with="p-op"
@@ -1479,5 +1478,10 @@ Jeselle
 			</div>
 		</main>
 	</div>
-	<button class="pf-mobile-cta">Contact Guru</button>
+	<button class="pf-mobile-cta"
+		init-with="p-op"
+		when-pf-cta-init="a:[bounceInUp-subtle:set:(dur:800ms#func:linear):in]">Contact Guru</button>
+	<!--
+		init-with="p:[transform:translateY(150px)]"
+		when-pf-cta-init="p:[transform:translateY(150px):translateY(0px):800:easeOutBounce]" -->
 </div>
