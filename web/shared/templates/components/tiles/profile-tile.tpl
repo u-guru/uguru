@@ -454,7 +454,7 @@
 	<div class="pf-tile-container mobile" ng-if='activeType === "photo-mobile"'
 		init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[photo-tile-init:public]"
-		when-photo-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo,opacity:0:1:500:easeOutSine]"
+		when-photo-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
 		when-photo-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-photography">
