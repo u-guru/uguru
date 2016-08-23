@@ -2,13 +2,13 @@
 
 <!-- NOTES AND BUGS
 Gabrielle
-- Lag on multiple profile tiles due to old animation syntax. Leaving alone for now as specified on Monday 8/23
+- Lag on multiple profile tiles due to old animation syntax. Leaving alone for now as specified on Monday 8/22
 - Bug onBlur that is causing a jittery background color on the bottom of profile tiles. Will look into fixing this (and possibly switching over to the new syntax, since it can't be debugged with the tool if it's static CSS)
 -->
 
 <div class="pf-container pf-photography"
 	on-init="s:[pf-aside-init:public:delay-500, pf-rest-init:public]">
-	<aside class="pf-aside"
+	<aside class="pf-aside perspective-container"
 		init-with="p-op"
 		when-pf-aside-init="s:[pf-aside-content-init:public:delay-2000] | p:[transform:scaleX(0.4):scaleX(1):500:easeOutQuint, opacity:0:1:500:easeOutSine]"
 		when-pf-aside-content-init="s:[pf-aside-bg-init:public:delay-1500, pf-widget-init:public:delay-2000, pf-aside-desc-init:public:delay-2000]"
@@ -110,7 +110,7 @@ Gabrielle
 				on-enter="p:[opacity:0:1:1000:easeOutSine]:delay-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
 		</div>
 		<div class="pf-aside-mobile">
-			<span class="pf-icon user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=256');"></span>
+			<span class="pf-icon user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"></span>
 			<h1 class="pf-name verified">
 				<span>Gabrielle Wee</span>
 				<span>
@@ -156,9 +156,9 @@ Gabrielle
 			<h3 class="pf-reviews"><span>72</span> reviews</h3>
 		</div>
 	</aside>
-	<div class="pf-rest"
+	<div class="pf-rest perspective-container"
 		init-with="p-op"
-		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public, pf-sv-init:public:delay-1750]"
+		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public, pf-mn-init:public:delay-1750]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
 			<div>
@@ -191,7 +191,7 @@ Gabrielle
 					when-pf-tabs-init="p:[opacity:0:1:1000:easeOutSine]:delay-1200">
 			</div>
 		</nav>
-		<main class="pf-main" ng-init="guru.section_index = 1;">
+		<main class="pf-main" ng-init="guru.section_index = 0;">
 			<!-- ng-init="guru.section_index = 2;" -->
 			<div class="pf-profile pf-main-section" ng-class="{'active': !guru.section_index}">
 				<div class="pf-main-header overflow-hidden">

@@ -141,11 +141,12 @@
       font-size: 20px;
       font-weight: 600; }
     .pf-container .pf-aside .pf-aside-mobile .pf-school-name {
+      margin-top: 0 !important;
       width: 100%;
       font-size: 16px;
       font-weight: 400; }
     .pf-container .pf-aside .pf-aside-mobile .pf-rating {
-      margin-top: 10px; }
+      margin-top: 5px; }
     .pf-container .pf-aside .pf-aside-mobile .pf-reviews {
       width: 100%;
       font-size: 14px;
