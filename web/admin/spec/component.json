@@ -100,13 +100,13 @@
 			},
             "search": {
                 "filename": "search.tpl",
-                "versions": ["v1", "mobile"],
-                "contact": "JO", //who's 'in -charge' for this component
+                "versions": ["SM-082316", "mobile"],
+                "contact": "JO",
                 "status": {
-                    "static": true, //perfect static
-                    "responsive": true, //you've verified
-                    "cross-platform": false, //check
-                    "complete" : true,  // hifi + fluid + the three above + both of you agree it is 'portfolio worthy'
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : true,
                     "performance":false
                 },
                 "notes": {
