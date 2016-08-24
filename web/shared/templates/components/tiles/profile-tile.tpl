@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="academic">
+<div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="tech">
 	<!-- NOTES FOR JESELLE - WORK ON CARDLETS FIRST
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile tile transitions
@@ -276,7 +276,7 @@
 
 	<div class="pf-tile-container" ng-if='activeType === "tech"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-		on-init="s:[tech-tile-init:public]"
+		on-init="s:[tech-tile-init:public, tech-borders-init:public:delay-1000]"
 		when-tech-tile-init="p:[op:1, tr:none]"
 		when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
@@ -343,39 +343,40 @@
 				</ul>
 				<div class="border border-top">
 					<span class="left"
-						init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-						when-tech-tile-init="p:[op:1, tr:none:delay-900]"
+						init-with="p:[tr:scaleX(0)]"
+						when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-600"
 						when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 					<span class="right"
-						init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-						when-tech-tile-init="p:[op:1, tr:none:delay-900]"
+						init-with="p:[tr:scaleX(0]"
+						when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-600"
 						when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 				</div>
 			</div>
 			<div class="border border-outside">
-				<span class="top-let"
-					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-250]"
-					when-tech-tile-exit="p:[op:0:delay-1300, tr:scaleX(0):delay-800]"></span>
+				<span class="top-left"
+					init-with="p:[tr:scaleX(0)]"
+					when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+					when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
+					<!-- init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]" -->
 				<span class="top-right"
-					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-250]"
-					when-tech-tile-exit="p:[op:0:delay-1300, tr:scaleX(0):delay-800]"></span>
+					init-with="p:[tr:scaleX(0)]"
+					when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+					when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 				<span class="right"
-					init-with="p:[op:0, tr:scaleY(0), t:transform 300ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-750]"
+					init-with="p:[tr:scaleY(0)]"
+					when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 					when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 				<span class="bot-left"
-					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
+					init-with="p:[tr:scaleX(0)]"
+					when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 					when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
-				<span class="bot-left"
-					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
+				<span class="bot-right"
+					init-with="p:[tr:scaleX(0)]"
+					when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 					when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 				<span class="left"
-					init-with="p:[op:0, tr:scaleY(0), t:transform 300ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-750]"
+					init-with="p:[tr:scaleY(0)]"
+					when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 					when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 			</div>
 		</div>
