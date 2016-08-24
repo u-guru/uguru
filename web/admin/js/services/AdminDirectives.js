@@ -27,6 +27,26 @@ angular.module('uguru.admin')
             }
         }
 }])
+
+.directive("componentStatusBar", ["$timeout", "XHRService", function($timeout, XHRService) {
+    return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: 'admin/templates/components/components.status.tpl',
+        link: function preLink(scope, element, attr) {
+            scope.section = attr.section;
+            scope.name = attr.name;
+            scope.version = attr.version
+
+            var callback = function(response) {
+                // console.log();
+                scope.metadata = response["dir"][scope.section][scope.name];
+                console.log(scope.metadata);
+            }
+            XHRService.getJSONFile('GET', 'admin/spec/component.json', callback)
+        }
+    }
+}])
 .directive("inspectorGadget", ['$timeout', 'UtilitiesService', '$compile', 'RootService', function($timeout, UtilitiesService, $compile, RootService) {
         return {
             restrict: 'E',

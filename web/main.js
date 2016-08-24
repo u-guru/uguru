@@ -369,8 +369,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       }
 
       var fileName = $stateParams.name + '.' + $stateParams.version
-      console.log('rendering', fileName);
-      return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + fileName + ".tpl'" + '"> </div> <div class="absolute bottom-0 p15-grid left-0 weight-900 full-x m20y text-center txt-7 opacity-30p"> ' + $stateParams.section + ' > ' + $stateParams.name + ' > ' + $stateParams.version + '</div>'
+      return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + fileName + ".tpl'" + '"> </div> <component-status-bar' + " section='" + $stateParams.section + "' name='" + $stateParams.name  + "' version='" + $stateParams.version + "'/></component-status-bar>"
+    },
+    controller: function($scope, $timeout, $compile) {
+      $timeout(function() {
+        console.log(document.querySelector('component-status-bar'));
+      }, 1000)
     }
   })
   .state('root.single-components-timeline', {
