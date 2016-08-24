@@ -200,13 +200,12 @@ Gabrielle
 					<p init-with="p-op"
 						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-1000">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
 				</div>
-				<div class="pf-main-subheader">
-					<h2 init-with="p-op"
-						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]">Services</h2>
-					<a init-with="p-op"
-						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]"><span>see more</span></a>
-					<hr init-with="p-op"
-						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]"/>
+				<div class="pf-main-subheader" init-with="p-op"
+					when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]">
+					<h2>Services</h2>
+					<a><span>see more</span></a>
+					<hr init-with="p:[tr:scaleX(0)]"
+						when-pf-mn-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic, tro:left center]:delay-500"/>
 				</div>
 				<ul class="pf-items">
 					<li>
