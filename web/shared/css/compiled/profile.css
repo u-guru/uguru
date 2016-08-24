@@ -8,6 +8,10 @@
   height: 100%;
   width: 100%;
   color: white; }
+  .pf-container::-webkit-scrollbar {
+    display: none; }
+  .pf-container::-moz-scrollbar {
+    display: none; }
   .pf-container .tab-bar.slide {
     width: 100%;
     overflow: auto; }

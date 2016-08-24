@@ -11,6 +11,12 @@
     height: 100%;
     width: 100%;
     color: white;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&::-moz-scrollbar {
+		display: none;
+	}
     .tab-bar {
         &.slide {
             width: 100%;
