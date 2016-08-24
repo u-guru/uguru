@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="baking">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -69,7 +69,7 @@
 	<div class="pf-tile-container" ng-if='activeType === "academic"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[academic-cardlet-init:public]"
-		when-academic-cardlet-init="p:[op:1, tr:none]"
+		when-academic-cardlet-init="p:[op:1, tr:none] | send:[academic-ribbon:public]:delay-500"
 		when-academic-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-academic">
@@ -109,8 +109,8 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-container"
-				init-with="p:[op:0, tr:translateX(10px), t:all 250ms ease-out]"
-				when-academic-cardlet-init="p:[op:1:delay-500, tr:translateX(0):delay-500]">
+				init-with="p:[op:0, tr:translateX(-10px)]"
+				when-academic-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
@@ -118,8 +118,8 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-edge-container"
-				init-with="p:[op:0]"
-				when-academic-cardlet-init="a:[fadeIn:set:(dur:250ms#func:ease-in):in:delay-650]">
+				init-with="p:[op:0, tr:translateY(-10px)]"
+				when-academic-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
 		</div>
@@ -128,7 +128,7 @@
 	<div class="pf-tile-container" ng-if='activeType === "baking"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[baking-cardlet-init:public]"
-		when-baking-cardlet-init="p:[op:1, tr:none]"
+		when-baking-cardlet-init="p:[op:1, tr:none] | send:[baking-ribbon:public]:delay-500"
 		when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
 		on-mouse-enter="s:[baking-cardlet-hover:public]"
 		on-mouse-leave="s:[baking-cardlet-leave:public]">
@@ -162,8 +162,8 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-container"
-				init-with="p:[op:0, tr:translateX(10px), t:all 250ms ease-out]"
-				when-baking-cardlet-init="p:[op:1:delay-500, tr:translateX(0):delay-500]">
+				init-with="p:[op:0, tr:translateX(-10px)]"
+				when-baking-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
@@ -171,8 +171,8 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-edge-container"
-				init-with="p:[op:0]"
-				when-baking-cardlet-init="a:[fadeInLeft:set:(dur:250ms#func:ease-in):in:delay-600]">
+				init-with="p:[op:0, tr:translateY(-10px)]"
+				when-baking-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
 		</div>
@@ -181,7 +181,7 @@
 	<div class="pf-tile-container" ng-if='activeType === "photo"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[photo-cardlet-init:public]"
-		when-photo-cardlet-init="p:[op:1, tr:none]"
+		when-photo-cardlet-init="p:[op:1, tr:none] | send:[photo-ribbon:public]:delay-500"
 		when-photo-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-photography">
@@ -224,8 +224,8 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-edge-container"
-				init-with="p:[op:0]"
-				when-photo-cardlet-init="a:[fadeIn:set:(dur:250ms#func:ease-in):in:delay-600]">
+				init-with="p:[op:0, tr:translateY(-10px)]"
+				when-photo-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
 		</div>
@@ -234,7 +234,7 @@
 	<div class="pf-tile-container" ng-if='activeType === "tech"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[tech-cardlet-init:public]"
-		when-tech-cardlet-init="p:[op:1, tr:none]"
+		when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public]:delay-500"
 		when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-tech">
@@ -264,14 +264,18 @@
 					</div>
 				</div>
 			</div>
-			<div class="pf-cardlet-ribbon-container">
+			<div class="pf-cardlet-ribbon-container"
+				init-with="p:[op:0, tr:translateX(-10px)]"
+				when-tech-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
 					</svg>
 				</div>
 			</div>
-			<div class="pf-cardlet-ribbon-edge-container">
+			<div class="pf-cardlet-ribbon-edge-container"
+				init-with="p:[op:0, tr:translateY(-10px)]"
+				when-tech-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
 		</div>
@@ -280,7 +284,7 @@
 	<div class="pf-tile-container" ng-if='activeType === "household"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[household-cardlet-init:public]"
-		when-household-cardlet-init="p:[op:1, tr:none]"
+		when-household-cardlet-init="p:[op:1, tr:none] | send:[household-ribbon:public]:delay-500"
 		when-household-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-household">
@@ -307,14 +311,18 @@
 					</div>
 				</div>
 			</div>
-			<div class="pf-cardlet-ribbon-container">
+			<div class="pf-cardlet-ribbon-container"
+				init-with="p:[op:0, tr:translateX(-10px)]"
+				when-household-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
 					</svg>
 				</div>
 			</div>
-			<div class="pf-cardlet-ribbon-edge-container">
+			<div class="pf-cardlet-ribbon-edge-container"
+				init-with="p:[op:0, tr:translateY(-10px)]"
+				when-household-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
 		</div>
