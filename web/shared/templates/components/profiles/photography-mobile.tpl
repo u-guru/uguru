@@ -5,7 +5,7 @@ Gabrielle
 - Lag on multiple profile tiles due to old animation syntax. Leaving alone for now as specified on Monday 8/22
 - Bug onBlur that is causing a jittery background color on the bottom of profile tiles. Will look into fixing this (and possibly switching over to the new syntax, since it can't be debugged with the tool if it's static CSS)
 Jeselle
--The experience ribbons are blocking the titles.
+- The experience ribbons are blocking the titles.
 -->
 
 <div class="pf-container pf-photography"
@@ -164,7 +164,7 @@ Jeselle
 	</aside>
 	<div class="pf-rest perspective-container"
 		init-with="p-op"
-		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public:delay-500, pf-ab-init:public:delay-2250]"
+		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public:delay-500, pf-mn-init:public:delay-2250]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
 			<!-- Note: The line is flickering -->
@@ -198,7 +198,7 @@ Jeselle
 					when-pf-tabs-init="p:[opacity:0:1:1000:easeOutSine]:delay-1200">
 			</div>
 		</nav>
-		<main class="pf-main" ng-init="guru.section_index = 2;">
+		<main class="pf-main" ng-init="guru.section_index = 0;">
 			<!-- ng-init="guru.section_index = 2;" -->
 			<div class="pf-profile pf-main-section" ng-class="{'active': !guru.section_index}">
 				<div class="pf-main-header overflow-hidden">

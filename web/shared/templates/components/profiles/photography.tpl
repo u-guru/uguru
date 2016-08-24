@@ -213,7 +213,7 @@ Gabrielle
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-mn-init="s:[photo-tile-init-1:public]"
-							when-photo-tile-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-tile-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
@@ -299,7 +299,7 @@ Gabrielle
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-mn-init="s:[photo-tile-init-2:public:delay-500]"
-							when-photo-tile-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-tile-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
@@ -395,7 +395,7 @@ Gabrielle
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-mn-init="s:[photo-cardlet-init-1:public:delay-1000]"
-							when-photo-cardlet-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-cardlet-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 							when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-photography">
@@ -449,7 +449,7 @@ Gabrielle
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-mn-init="s:[photo-cardlet-init-2:public:delay-1500]"
-							when-photo-cardlet-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-cardlet-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 							when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-photography">
@@ -513,7 +513,7 @@ Gabrielle
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-sv-init="s:[photo-tile-init-1:public]"
-							when-photo-tile-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-tile-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
@@ -599,7 +599,7 @@ Gabrielle
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-sv-init="s:[photo-tile-init-2:public:delay-500]"
-							when-photo-tile-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-tile-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
@@ -685,7 +685,7 @@ Gabrielle
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-sv-init="s:[photo-tile-init-3:public:delay-1000]"
-							when-photo-tile-init-3="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-tile-init-3="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
@@ -771,7 +771,7 @@ Gabrielle
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-sv-init="s:[photo-tile-init-4:public:delay-1500]"
-							when-photo-tile-init-4="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-tile-init-4="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
@@ -857,7 +857,7 @@ Gabrielle
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-sv-init="s:[photo-tile-init-5:public:delay-2000]"
-							when-photo-tile-init-5="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-tile-init-5="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
@@ -943,7 +943,7 @@ Gabrielle
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-sv-init="s:[photo-tile-init-6:public:delay-2500]"
-							when-photo-tile-init-6="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+							when-photo-tile-init-6="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 							when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
@@ -1307,7 +1307,7 @@ Gabrielle
 							<div class="pf-tile-container"
 								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[photo-cardlet-init-1:public]"
-								when-photo-cardlet-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+								when-photo-cardlet-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 								when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 								<a></a><a></a><a></a><a></a>
 								<div class="pf-cardlet highlight bg-photography">
@@ -1361,7 +1361,7 @@ Gabrielle
 							<div class="pf-tile-container"
 								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[photo-cardlet-init-2:public:delay-500]"
-								when-photo-cardlet-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+								when-photo-cardlet-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 								when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 								<a></a><a></a><a></a><a></a>
 								<div class="pf-cardlet highlight bg-photography">
@@ -1415,7 +1415,7 @@ Gabrielle
 							<div class="pf-tile-container"
 								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[photo-cardlet-init-3:public:delay-1000]"
-								when-photo-cardlet-init-3="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+								when-photo-cardlet-init-3="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 								when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 								<a></a><a></a><a></a><a></a>
 								<div class="pf-cardlet highlight bg-photography">
@@ -1469,7 +1469,7 @@ Gabrielle
 							<div class="pf-tile-container"
 								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[photo-cardlet-init-4:public:delay-1500]"
-								when-photo-cardlet-init-4="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+								when-photo-cardlet-init-4="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 								when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 								<a></a><a></a><a></a><a></a>
 								<div class="pf-cardlet highlight bg-photography">
@@ -1523,7 +1523,7 @@ Gabrielle
 							<div class="pf-tile-container"
 								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[photo-cardlet-init-5:public:delay-2000]"
-								when-photo-cardlet-init-5="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+								when-photo-cardlet-init-5="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 								when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 								<a></a><a></a><a></a><a></a>
 								<div class="pf-cardlet highlight bg-photography">
@@ -1577,7 +1577,7 @@ Gabrielle
 							<div class="pf-tile-container"
 								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[photo-cardlet-init-6:public:delay-2500]"
-								when-photo-cardlet-init-6="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+								when-photo-cardlet-init-6="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 								when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 								<a></a><a></a><a></a><a></a>
 								<div class="pf-cardlet highlight bg-photography">
