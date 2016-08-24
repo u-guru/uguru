@@ -538,10 +538,13 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         var initialTo = player.tweenConfig.to;
         var initialFrom = player.tweenConfig.from;
         var initialDuration = player.tweenConfig.duration;
+
         parentRect = player.control.bar.elem.parentNode.getBoundingClientRect()
+        console.log(parentRect)
         ballRectLeft = player.control.ball.elem.getBoundingClientRect().left;
         var parentWidth = parentRect.width;
         var jumpToCoordX = $event.clientX - parentRect.left;
+        jumpToCoordX
         var reverse = ballRectLeft > jumpToCoordX;
 
         var jumpDict = {start: {}, end: {}};
@@ -549,42 +552,40 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         if (player.state.time > 0) {
           jumpDict.start.state =  player.state.time && player.tween.get();
           jumpDict.start.time = player.state.time;
-          // console.log('jumping with time already > 0 && reverse', reverse);
+          console.log('jumping with time already > 0 && reverse', reverse);
         } else if (reverse && !player.state.time) {
           jumpDict.start.state =  player.tweenConfig.to;
           jumpDict.start.time = player.tweenConfig.duration;
-          // console.log('jumping with animation complete && reverse', reverse);
+          console.log('jumping with animation complete && reverse', reverse);
         } else if (!reverse && !player.state.time) {
           jumpDict.start.time = 0;
           jumpDict.start.state = player.tween.get();
-          // console.log('jumping with time = 0')
+          console.log('jumping with time = 0')
         }
 
 
 
         jumpDict.end.time = parseInt(player.tweenConfig.duration * (jumpToCoordX/parentWidth));
         jumpDict.end.state = player.tween.pause().seek(jumpDict.end.time).get()
-        player.tween.seek(jumpDict.start.time)
-        player.tween.dispose()
 
-        player.tweenConfig.from = jumpDict.start.state;
-        player.tweenConfig.to = jumpDict.end.state;
-        player.tweenConfig.duration = Math.abs(jumpDict.end.time - jumpDict.start.time);
-        player.control.time.duration = player.tweenConfig.duration
-        player.control.time.reverse = reverse;
-        player.tweenConfig.finishCallback = function(player) {
+        player.control.time.reverse = jumpDict.end.time < jumpDict.start.time;
+
+
+        player.tweenConfig.finishCallback = function(player, $state) {
           player.tweenConfig.to = initialTo;
           player.tweenConfig.from = initialFrom;
           player.tweenConfig.finishCallback = null;
           player.control.time.reverse = false;
-          player.control.time.duration = initialDuration;
-          player.tweenConfig.duration = initialDuration;
           return player;
         }
+
+        player.tweenConfig.duration = player.tweenConfig.duration
         player = player.init(player, true);
-        player.tween.tween();
-
-
+        player.tween.tween()
+        if (player.tween.isPlaying()) {
+          player.tween.pause();
+        }
+        player.tween.seek(jumpDict.end.time)
       }
     }
 
@@ -617,7 +618,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       return function(property, value) {
         if (property in player.tweenConfig) {
           player.tweenConfig[property] = value;
-          player.reset(player, true);
+          player.init(player, true);
 
         }
       }
