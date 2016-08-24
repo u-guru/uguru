@@ -178,6 +178,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       }
 
 
+
       playerObj.state.properties.forEach(function(prop, i) {
           if (prop.active) {
 
@@ -215,6 +216,18 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
           }
       })
+
+
+      if (typeof playerObj.tweenConfig.easing === 'string') {
+        var originalEasing = playerObj.tweenConfig.easing;
+        playerObj.tweenConfig.easing = {ballControl: 'linear'}
+        for (key in playerObj.tweenConfig.from) {
+          if (key !== 'ballControl') {
+            playerObj.tweenConfig.easing[key] = originalEasing;
+          }
+        }
+      }
+
       if (playerObj.tweenConfig.easing.propControl) {
         playerObj.tweenConfig.easing.propControl = playerObj.tweenConfig.easing.propControl.trim()
       }
@@ -227,7 +240,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
       console.log(playerObj.tweenConfig.from.propControl)
       console.log(playerObj.tweenConfig.to.propControl)
-      console.log(playerObj.tweenConfig.easing, playerObj.tweenConfig.easing)
       if (playerObj.tweenConfig.easing.propControl && playerObj.tweenConfig.easing.propControl.split(' ').length > playerObj.tweenConfig.from.propControl.split(' ').length) {
         playerObj.tweenConfig.easing.propControl = playerObj.tweenConfig.easing.propControl.split(' ').slice(0, playerObj.tweenConfig.to.propControl.split(' ').length).join(' ')
       }
@@ -399,9 +411,9 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       }
 
       if (args.prefs && args.prefs.showProps) {
-        if (Math.abs(prop.time - time) > 2 * defaults.FPS_SIXTY) return;
-        args.state.propertyControls.forEach(function(prop, i) {
 
+        args.state.propertyControls.forEach(function(prop, i) {
+          if (Math.abs(prop.time - time) > 2 * defaults.FPS_SIXTY) return;
           if (!prop.active) return;
           var ballValue = state['propControl'].split(' ')[i];
           var propName = args.state.propertyControls[i].name;
@@ -515,7 +527,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
             } else {
               seekTotal = player.state.time + ms
             }
-            console.log('new total', seekTotal)
         }
         player.tween.seek(seekTotal);
       }
@@ -523,6 +534,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
     function getJumpToFunction(player) {
       return function($event) {
+        console.log(player.tweenConfig)
         var initialTo = player.tweenConfig.to;
         var initialFrom = player.tweenConfig.from;
         var initialDuration = player.tweenConfig.duration;
@@ -704,7 +716,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       playerObj.pause = getPauseFunction(playerObj);
       playerObj.start = startTween;
       playerObj.stepTo = getStepToFunction(playerObj);
-      // playerObj.jumpTo = getJumpToFunction(playerObj);
+      playerObj.jumpTo = getJumpToFunction(playerObj);
       playerObj.reset = getResetFunc();
       playerObj.set = getSetFunction(playerObj);
       playerObj.state.propertyControls =  playerObj.state.propertyControls && setPropPlayerFunctions(playerObj);

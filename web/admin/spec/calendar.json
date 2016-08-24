@@ -59,5 +59,19 @@
 
             }
         ]
+    },
+    "8/24": {
+        "release": "preapp",
+        "daySections": [
+            {
+                "time_desc": "before 10:30am",
+                "name": "Birthday Festivities"
+            },
+            {
+                "time_desc": "before 11am",
+                "name": "Box/Text Shadow properties",
+                "description": "Open /admin/api/property to see the first two options demonstrating that it works."
+            }
+        ]
     }
 }
