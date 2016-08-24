@@ -24,7 +24,7 @@
 	<div class="pf-tile-container" ng-if='activeType === "default"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[default-cardlet-init:public]"
-		when-default-cardlet-init="p:[op:1, tr:none]"
+		when-default-cardlet-init="p:[op:1, tr:none] | send:[default-ribbon:public]:delay-500"
 		when-default-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight">
@@ -33,26 +33,34 @@
 					<div class="pf-cardlet-overlay"></div>
 				</div>
 			</div>
-			<div class="pf-cardlet-back-container">
+			<div class="pf-cardlet-back-container"
+				init-with="p:[tr:translate3d(-7.5px#-7.5px#0), t:all 450ms ease-out]"
+				when-default-cardlet-init="p:[tr:none:delay-500]">
 				<div class="pf-cardlet-back" style="background-image: url('http://cdn1.pri.org/sites/default/files/styles/story_main/public/story/images/leonardo_da_vinci_studi_di_carri_dassalto_falcati_0.jpg?itok=V1_nRmK3');"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<h1>Leonardo da Vinci</h1>
-					<div>
+					<h1 init-with="p:[op:0, tr:translateY(10%)]"
+						when-default-cardlet-init="p:[opacity:0:1:400:linear, transform:translateY(10%):translateY(0%):600:easeOutExpo]">Leonardo da Vinci</h1>
+					<div init-with="p:[op:0, tr:translateY(10%)]"
+						when-default-cardlet-init="p:[opacity:0:1:400:linear, transform:translateY(10%):translateY(0%):600:easeOutExpo]:delay-200">
 						<h3>Created</h3>
 						<h2>03/28/2016</h2>
 					</div>
 				</div>
 			</div>
-			<div class="pf-cardlet-ribbon-container">
+			<div class="pf-cardlet-ribbon-container"
+				init-with="p:[op:0, tr:translateX(-10px)]"
+				when-default-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
 					</svg>
 				</div>
 			</div>
-			<div class="pf-cardlet-ribbon-edge-container">
+			<div class="pf-cardlet-ribbon-edge-container"
+				init-with="p:[op:0, tr:translateY(-10px)]"
+				when-default-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
 				<div class="pf-cardlet-ribbon-edge"></div>
 			</div>
 		</div>
