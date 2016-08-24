@@ -800,19 +800,22 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
         delete arg_dict['default'];
         delete arg_dict['custom'];
-        console.log(arg_dict)
+
         if ((orig_str.indexOf('rgba') > -1 || orig_str.indexOf(':#') > -1) && ('background' in arg_dict || 'background-color' in arg_dict ))  {
           var endArgsReconstruct = customArgs.split('):')
           var customArgs = endArgsReconstruct[1].trim();
           var endArgs = UtilitiesService.replaceAll(endArgsReconstruct[0] + ')', '#', ',').trim();
-
-
-
-          // var temp = endArgs.split('):')[1];
-          // customArgs = temp
-
           console.log(startArgs, customArgs, endArgs)
         }
+
+        if (((orig_str.indexOf('text-shadow') > -1 || orig_str.indexOf('box-shadow') > -1)) &&
+              orig_str.indexOf(' #') > -1) {
+          startArgs = startArgs.replace(',', '#').trim();
+          endArgs = customArgs.split(':')[0].trim();
+          customArgs = customArgs.split(':').splice(1).join(":");
+          console.log(startArgs, endArgs);
+        }
+
 
         var arg_arr = [];
         var propName = split_key;

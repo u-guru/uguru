@@ -1,8 +1,42 @@
 {
     "description": "property examples",
     "propertyList": ["property", "start", "end", "duration", "ease", "delay", "iterations", "fill-mode","direction"],
-    "exampleIndex": 2,
+    "exampleIndex": 0,
     "examples": [
+        {
+            "exampleName": "textShadow Demonstration",
+            "property": "text-shadow",
+            "start": "0px 0px 0px #000000",
+            "end": "100px 100px 100px #FFFFFF",
+
+            "duration": "2000",
+            "ease": "elastic",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "boxShadow Demonstration",
+            "property": "box-shadow",
+            "start": "0px 100px 0px #FFFFFF",
+            "end": "100px 0px 100px #FFF000",
+            "duration": "2000",
+            "ease": "bounce",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
+        {
+            "exampleName": "Background Size Demonstration",
+            "property": "background-size",
+            "start": "0px 100px",
+            "end": "0px 200px",
+            "duration": "1000",
+            "ease": "elastic",
+            "fillMode": null,
+            "forwards": null,
+            "iterationCount": null
+        },
         {
             "initWith": "opacity:0",
             "exampleName": "rotateSkew",
@@ -42,18 +76,7 @@
             "forwards": null,
             "iterationCount": null
         },
-        {
-            "exampleName": "translateXYScale-3 easings",
-            "property": "transform",
-            "start": "translateX(0%) translateY(0%) scale(0) rotate(0deg)",
-            "end": "translateX(100%) translateY(100%) scale(1) rotate(-1080deg)",
 
-            "duration": "2000",
-            "ease": "easeOutCirc easeOutCirc linear elastic",
-            "fillMode": null,
-            "forwards": null,
-            "iterationCount": null
-        },
         {
             "exampleName": "translateZRotate",
             "property": "transform",

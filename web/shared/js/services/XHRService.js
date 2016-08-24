@@ -24,7 +24,7 @@ function XHRService($timeout) {
       xhr.onload = function () {
 
           var responseDict = JSON.parse(frontQueue.xhrObj.responseText);
-
+          console.log(responseDict)
           callback && callback(responseDict);
       };
       xhr.send();
