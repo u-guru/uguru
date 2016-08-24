@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="academic">
+<div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="tech">
 	<!-- NOTES FOR JESELLE - WORK ON CARDLETS FIRST
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile tile transitions
@@ -281,16 +281,16 @@
 	</div>
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "tech"'
-		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-		on-init="s:[tech-tile-init:public]"
-		when-tech-tile-init="p:[op:1, tr:none]"
+		init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
+		on-init="s:[tech-tile-init:public, tech-borders-init:public:delay-400]"
+		when-tech-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
 		when-tech-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-tech">
 			<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-				init-with="p:[op:0, t:opacity 500ms ease-out]"
-				when-tech-tile-init="p:[op:1:delay-250]"
-				when-tech-tile-exit="p:[op:0:delay-1000]">
+				init-with="p:[op:0]"
+				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+				when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 				<div class="pf-pricing">
 					<div>$10/hr</div>
 					<div class="border border-corner">
@@ -306,10 +306,11 @@
 				</div>
 			</div>
 			<div class="pf-tile-bottom"
-				init-with="p:[op:0, t:opacity 500ms ease-out]"
-				when-tech-tile-init="p:[op:1:delay-250]"
-				when-tech-tile-exit="p:[op:0:delay-1000]">
-				<h1>Water Damage</h1>
+				init-with="p:[op:0]"
+				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+				when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
+				<h1 init-with="p:[op:0, tr:translateY(10px)]"
+					when-tech-tile-init="p:[opacity:0:1:50:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li init-with="p-op"
 						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
@@ -349,48 +350,49 @@
 				</ul>
 				<div class="border border-top">
 					<span class="left"
-						init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-						when-tech-tile-init="p:[op:1, tr:none:delay-900]"
+						init-with="p:[tr:scaleX(0)]"
+						when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 						when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 					<span class="right"
-						init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-						when-tech-tile-init="p:[op:1, tr:none:delay-900]"
+						init-with="p:[tr:scaleX(0)]"
+						when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 						when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 				</div>
 			</div>
 			<div class="border border-outside">
-				<span class="top-let"
-					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-250]"
-					when-tech-tile-exit="p:[op:0:delay-1300, tr:scaleX(0):delay-800]"></span>
+				<span class="top-left"
+					init-with="p:[tr:scaleX(0)]"
+					when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+					when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
+					<!-- init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]" -->
 				<span class="top-right"
-					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-250]"
-					when-tech-tile-exit="p:[op:0:delay-1300, tr:scaleX(0):delay-800]"></span>
+					init-with="p:[tr:scaleX(0)]"
+					when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+					when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 				<span class="right"
-					init-with="p:[op:0, tr:scaleY(0), t:transform 300ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-750]"
+					init-with="p:[tr:scaleY(0)]"
+					when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 					when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 				<span class="bot-left"
-					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
+					init-with="p:[tr:scaleX(0)]"
+					when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 					when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
-				<span class="bot-left"
-					init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
+				<span class="bot-right"
+					init-with="p:[tr:scaleX(0)]"
+					when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 					when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 				<span class="left"
-					init-with="p:[op:0, tr:scaleY(0), t:transform 300ms cubic-bezier(0#.66#.47#1.09)]"
-					when-tech-tile-init="p:[op:1, tr:none:delay-750]"
+					init-with="p:[tr:scaleY(0)]"
+					when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 					when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 			</div>
 		</div>
 	</div>
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "household"'
-		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[household-tile-init:public]"
-		when-household-tile-init="p:[op:1, tr:none]"
+		when-household-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
 		when-household-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-household">

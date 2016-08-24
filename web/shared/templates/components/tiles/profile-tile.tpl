@@ -303,7 +303,8 @@
 				init-with="p:[op:0, t:opacity 500ms ease-out]"
 				when-tech-tile-init="p:[op:1:delay-250]"
 				when-tech-tile-exit="p:[op:0:delay-1000]">
-				<h1>Water Damage</h1>
+				<h1 init-with="p:[op:0, tr:translateY(10px)]"
+					when-tech-tile-init="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li init-with="p-op"
 						when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
@@ -344,11 +345,11 @@
 				<div class="border border-top">
 					<span class="left"
 						init-with="p:[tr:scaleX(0)]"
-						when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-600"
+						when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 						when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 					<span class="right"
-						init-with="p:[tr:scaleX(0]"
-						when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-600"
+						init-with="p:[tr:scaleX(0)]"
+						when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 						when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 				</div>
 			</div>
