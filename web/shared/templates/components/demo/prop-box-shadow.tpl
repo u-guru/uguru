@@ -451,7 +451,7 @@
 		<li class="flex-center">
 			<div class="playing-card play-heart"
 				init-with="p:[box-shadow:3px 3px 20px 10px #000]"
-				on-init="p:[box-shadow:3px 3px 20px 10px #000:3px 3px 20px 0px #000:1000:easeInOutQuart]:delay-200">
+				on-init="p:[box-shadow:3px 3px 20px 10px #000:3px 3px 20px -10px #000:1000:easeInOutQuart]:delay-200">
 				<div class="playing-card-back bg-auburn"></div>
 				<div class="playing-card-front">
 					<svg viewBox="0 0 250 350">
