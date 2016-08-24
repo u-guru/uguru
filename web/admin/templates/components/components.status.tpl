@@ -10,6 +10,9 @@
 				<span class="bg-slate-50p radius-2-left block p10x-p05y">Versions</span>
 				<span class="bg-moxie radius-2-right block p10x-p05y semibold">{{metadata.versions}}</span>
 			</li>
+			<li class='txt-14 line-height-1-2 semibold full-x'>
+		        {{metadata.notes.for}}
+		    </li>
 			<li class='opacity-30p txt-14 line-height-1-2 weight-300 full-x'>
 		        {{metadata}}
 		    </li>
