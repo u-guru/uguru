@@ -1086,7 +1086,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
 
-
     function parseAfterArgs(arg_string, scope, elem) {
         var argSplit = arg_string.split(':');
 
