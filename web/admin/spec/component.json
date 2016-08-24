@@ -441,7 +441,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "you guys - put anything here + lmk to render on the page for context"
+                    "for": ""
                 }
             },
 			"toggle": {
@@ -862,8 +862,11 @@
             },
             "profile-cardlet": {
                 "filename": "profile-cardlet.tpl",
-                "types": ["default-desktop", "default-mobile", "academic-desktop", "academic-mobile", "baking-desktop", "baking-mobile", "photography-desktop", "photography-mobile", "tech-desktop", "tech-mobile", "household-desktop", "household-mobile"],
-				"versions": [],
+				"types": ["default", "academic", "baking", "photo", "tech", "household"],
+				"versions": ["mobile"],
+				"versionVars": {
+                    "mobile": {"mobile": true}
+                },
                 "contact": "JO",
                 "status": {
                     "static": true,
@@ -873,13 +876,16 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "for": "Take versions from profile"
                 }
             },
 			"profile-tile": {
 				"filename": "profile-tile.tpl",
-				"types": ["academic-desktop","academic-mobile", "baking-desktop", "baking-mobile", "photography-desktop","photography-mobile", "tech-desktop", "tech-mobile", "household-desktop", "household-mobile"],
-				"versions": [],
+				"types": ["academic", "baking", "photo", "tech", "household"],
+				"versions": ["mobile"],
+				"versionVars": {
+                    "mobile": {"mobile": true}
+                },
                 "contact": "JO",
                 "status": {
                     "static": true,
@@ -889,7 +895,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "for": "Add final four and have all of the tiles match to the profile external animations"
                 }
             },
 			"ranking-tile": {
