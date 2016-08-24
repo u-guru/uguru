@@ -778,21 +778,11 @@
 	position: relative;
 	display: block;
 	* {
-		transition: all 300ms ease-in-out;
+		transition: all 150ms ease-in-out;
 	}
 	&:hover, &:focus {
-		.credit-card {
-			transform: rotateY(180deg);
-		}
-		.credit-card-back {
-			transform: rotateY(0deg);
-			ul {
-				li {
-					button {
-						@include opacity(1);
-					}
-				}
-			}
+		.credit-card .credit-card-inside, .credit-card-back {
+			background: lighten(#394851, 5%);
 		}
 	}
 }
@@ -801,6 +791,7 @@
 	transform-style: preserve-3d;
 }
 .credit-card {
+	display: block;
 	padding: 0!important;
 	background: none!important;
 	color: white!important;
@@ -902,7 +893,6 @@
 	}
 }
 .credit-card-back {
-	transform: rotateY(180deg);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -961,6 +951,22 @@
 					}
 				}
 			}
+		}
+	}
+}
+a.credit-card {
+	transform-origin: center center;
+	transform: all 150ms ease-in;
+	&:hover, &:focus {
+		transform: translateZ(20px);
+		.credit-card-inside {
+			background: lighten(#394851, 5%);
+		}
+	}
+	&:active {
+		transform: translateZ(-20px);
+		.credit-card-inside {
+			background: darken(#394851, 5%);
 		}
 	}
 }
@@ -2057,15 +2063,19 @@
 // course cards
 .course-card-svg {
 	display: block;
+	transform-origin: center center;
+	transition: all 150ms ease-in;
 	.color {
 		opacity: 0;
 	}
 	&:hover, &:focus {
+		transform: translateZ(20px);
 		.color {
 			opacity: 1;
 		}
 	}
 	&:active {
+		transform: translateZ(-20px);
 		.color-background {
 			fill: lighten($slate, 15%);
 		}
@@ -2075,6 +2085,14 @@
 	display: block;
 	position: relative;
 	text-align: center;
+	transform-origin: center center;
+	transition: all 150ms ease-in;
+	&:hover, &:focus {
+		transform: translateZ(20px);
+	}
+	&:active {
+		transform: translateZ(-20px);
+	}
 	> svg {
 		background: white;
 		border-radius: 2px;

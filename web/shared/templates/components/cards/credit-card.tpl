@@ -1,8 +1,13 @@
-<div class="perspective-container full-xy flex-center" types='flip, edit, short, mini' default-type="short">
+<div class="perspective-container full-xy flex-center" types='flip, edit, short, mini' default-type="mini">
     <div ng-if='activeType === "flip"' class="credit-card-flip" tabindex
 		init-with="p-op"
-		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]">
-        <div class="credit-card">
+		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
+		on-mouse-enter="s:[flip-enter:public]"
+		on-mouse-leave="s:[flip-leave:public]">
+        <div class="credit-card"
+			init-default
+			when-flip-enter="p:[transform:rotateY(0deg):rotateX(180deg):300:easeInOutSine]"
+			when-flip-leave="p:[transform:rotateY(180deg):rotateX(0deg):300:easeInOutSine]">
             <svg width="240px" height="150px" viewBox="0 0 240 150">
                 <rect fill="none" x="0" y="0" width="240" height="150"></rect>
             </svg>
@@ -46,17 +51,26 @@
                 </div>
             </div>
         </div>
-        <div class="credit-card-back">
+        <div class="credit-card-back"
+			init-with="p:[tr:rotateY(180deg)]"
+			when-flip-enter="p:[transform:rotateY(180deg):rotateX(0deg):300:easeInOutSine]"
+			when-flip-leave="p:[transform:rotateY(0deg):rotateX(180deg):300:easeInOutSine]">
             <svg width="240px" height="150px" viewBox="0 0 240 150">
                 <rect fill="none" x="0" y="0" width="240" height="150"></rect>
             </svg>
             <div></div>
             <ul>
                 <li>
-                    <button class="remove">Remove</button>
+                    <button class="remove"
+						init-with="p-op"
+						when-flip-enter="p:[opacity:0:1:250:easeOutSine]:delay-300"
+						when-flip-leave="p:[opacity:1:0:250:easeOutSine]">Remove</button>
                 </li>
                 <li>
-                    <button class="default">Set Default</button>
+                    <button class="default"
+						init-with="p-op"
+						when-flip-enter="p:[opacity:0:1:250:easeOutSine]:delay-300"
+						when-flip-leave="p:[opacity:1:0:250:easeOutSine]">Set Default</button>
                 </li>
             </ul>
         </div>
@@ -64,13 +78,14 @@
 
     <div ng-if='activeType === "edit"' class="credit-card edit"
 		init-with="p-op"
-		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
-		on-mouse-enter="send:[logo-wiggle:public]">
+		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]">
             <svg width="240px" height="75px" viewBox="0 0 240 75">
                 <rect fill="none" x="0" y="0" width="240" height="75"></rect>
             </svg>
             <div class="credit-card-inside">
-                <a class="edit">Edit</a>
+                <a class="edit"
+					init-default
+					on-mouse-enter="send:[logo-wiggle:public]">Edit</a>
                 <div class="flex">
                     <div class="credit-card-logo"
 						init-default
@@ -89,7 +104,7 @@
             </div>
         </div>
 
-	<div ng-if='activeType === "short"' class="credit-card short"
+	<a ng-if='activeType === "short"' class="credit-card short"
 		init-with="p-op"
 		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
 		on-mouse-enter="send:[logo-wiggle:public]">
@@ -113,9 +128,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </a>
 
-    <div ng-if='activeType === "mini"' class="credit-card x-short"
+    <a ng-if='activeType === "mini"' class="credit-card x-short"
 		init-with="p-op"
 		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
 		on-mouse-enter="send:[logo-wiggle:public]">
@@ -139,5 +154,5 @@
                     </div>
                 </div>
             </div>
-    </div>
+    </a>
 </div>

@@ -125,6 +125,36 @@ button.disabled {
 			}
 		}
 	}
+	&.bg-light-slate {
+		background: lighten($slate, 15%);
+		&.reverse {
+			background: white;
+			color: lighten($slate, 15%);
+			svg {
+				* {
+					stroke: lighten($slate, 15%);
+				}
+			}
+		}
+		&:hover, &:focus {
+			background: mix(lighten($slate, 15%), white);
+			color: lighten($slate, 15%);
+			svg {
+				* {
+					stroke: lighten($slate, 15%);
+				}
+			}
+		}
+		&:active {
+			background: mix(lighten($slate, 15%), white, 75%);
+			color: white;
+			svg {
+				* {
+					stroke: white;
+				}
+			}
+		}
+	}
 	&.bg-taupe {
 		background: $taupe;
 		&.reverse {
