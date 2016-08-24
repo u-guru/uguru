@@ -100,7 +100,11 @@
             },
             "search": {
                 "filename": "search.tpl",
-                "versions": ["v1", "mobile"],
+                "versions": ["v1", "mobile", "scale"],
+                "versionVars": {
+                    "scale": { "circle" : {"initWith": "p:[transform:scale(0) rotate(-1080deg):scale(2) rotate(0deg):2500:linear easeInQuint]"}},
+                    "mobile": {"mobile": true}
+                },
                 "contact": "JO",
                 "status": {
                     "static": true,
