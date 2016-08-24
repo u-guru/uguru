@@ -49,9 +49,9 @@
 				</g>
 			</svg>
 			<div class="marker-normal-content"
-				init-with="p:[t:opacity 150ms ease-out, op:1]"
-				when-window-open="p:[op:0]"
-				when-window-close="p:[op:1:delay-300]">
+				init-default
+				when-window-open="p:[opacity:1:0:150:easeOutSine]"
+				when-window-close="p:[opacity:0:1:150:easeOutSine]:delay-300">
 				<a class="marker-link"
 					init-with="p:[t:transform 500ms cubic-bezier(.6#0#.1#1.3)]"
 					on-mouse-enter="s:[marker-open:public]"
