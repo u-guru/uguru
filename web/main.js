@@ -358,6 +358,21 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + $stateParams.name + ".tpl'" + '"/> </div>'
     }
   })
+  .state('root.single-components-version', {
+    url: '/dev/components/:section/:name/:version',
+    templateProvider: function($stateParams) {
+      var section = $stateParams.section || '';
+      var name = $stateParams.name || '';
+      var version = $stateParams.version || '';
+      if (!version.length || !name.length || !section.length) {
+        $state.go('^.single-components', {section:section, name: name})
+      }
+
+      var fileName = $stateParams.name + '.' + $stateParams.version
+      console.log('rendering', fileName);
+      return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + fileName + ".tpl'" + '"> </div> <div class="absolute bottom-0 p15-grid left-0 weight-900 full-x m20y text-center txt-7 opacity-30p"> ' + $stateParams.section + ' > ' + $stateParams.name + ' > ' + $stateParams.version + '</div>'
+    }
+  })
   .state('root.single-components-timeline', {
     url: '/dev/components/t/:section/:name',
     templateProvider: function($stateParams) {
@@ -365,11 +380,32 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     }
   })
   .state('root.base-components', {
-    url:'/dev/base/components/:baseCompName',
+    url:'/dev/base/components/:baseCompName?versionNumber',
     templateProvider: function(AdminDirectiveService, $stateParams) {
       var completedBaseComponents = Object.keys(AdminDirectiveService.getBaseComponents());
       var completedCustomComponents = Object.keys(AdminDirectiveService.getCustomComponents())
       var urlComponentParam = $stateParams.baseCompName;
+      console.log($stateParams)
+
+      if (completedBaseComponents.indexOf(urlComponentParam.toLowerCase()) > -1 || completedCustomComponents.indexOf(urlComponentParam.toLowerCase()) > -1) {
+        return AdminDirectiveService.getBaseComponentHtml(urlComponentParam);
+      }
+      return '<div> <span class="weight-700">' +  urlComponentParam + '</span> is not a base component </div> <div> <span class="weight-700">' +  completedBaseComponents.join(', ') + '<br>' + completedCustomComponents.join(', ') + '</span> </div>'
+    }
+  })
+  .state('root.base-components-version', {
+    url:'/dev/base/components/:baseCompName/:compTypeName/:versionNumber',
+    templateProvider: function(AdminDirectiveService, $stateParams, $state) {
+      var completedBaseComponents = Object.keys(AdminDirectiveService.getBaseComponents());
+      var completedCustomComponents = Object.keys(AdminDirectiveService.getCustomComponents())
+      var urlComponentParam = $stateParams.baseCompName || '';
+      var versionNumber = $stateParams.versionNumber || '';
+      console.log(versionNumber, urlComponentParam)
+      if (!urlComponentParam.length || !versionNumber.length) {
+        console.log('redirecting')
+        $state.go('^.base-components', {baseCompName:$stateParams.baseCompName})
+        return;
+      }
 
 
       if (completedBaseComponents.indexOf(urlComponentParam.toLowerCase()) > -1 || completedCustomComponents.indexOf(urlComponentParam.toLowerCase()) > -1) {

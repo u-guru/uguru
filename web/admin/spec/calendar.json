@@ -68,9 +68,14 @@
                 "name": "Birthday Festivities"
             },
             {
-                "time_desc": "before 11am",
+                "time_desc": "before 11:30am",
                 "name": "Box/Text Shadow properties",
                 "description": "Open /admin/api/property to see the first two options demonstrating that it works."
+            },
+            {
+                "time_desc": "Before noon",
+                "name": "Setup Versioning + update components.json",
+                "description": "Check /dev/components/input/search/v1"
             }
         ]
     }

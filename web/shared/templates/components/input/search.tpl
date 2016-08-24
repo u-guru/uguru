@@ -31,7 +31,7 @@
 		init-with="p:[op:0, width:48px]"
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in] | s:[search-bar-init:public]"
 		inspector-elem="when-search-bar-clicked"
-		when-search-bar-clicked="p:[width:48px:500px:1000:easeOutSine,background-color:rgba(255#255#255#1):rgba(0#255#0#0.5):1000:easeOutSine, box-shadow:0px 0px 0px:100px 100px 100px:1000:bounce]"
+		when-search-bar-clicked="p:[width:48px:500px:1000:easeOutSine,background-color:rgba(255#255#255#1):rgba(0#255#0#0.5):1000:easeOutSine]"
 		on-click="s:[search-bar-clicked:public]"
 		>
 		<div>
