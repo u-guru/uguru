@@ -6,7 +6,7 @@
             "course-card": {
                 "filename": "course-card.tpl",
                 "types": ["svg", "default", "link", "overlay", "checkbox", "badge"],
-                "verified": true,
+                "verified": true
             },
 			"credit-card": {
                 "filename": "credit-card.tpl",
@@ -99,7 +99,19 @@
                 "filename": "radio.tpl"
 			},
             "search": {
-                "filename": "search.tpl"
+                "filename": "search.tpl",
+                "versions": ["v1", "mobile"],
+                "contact": "JO", //who's 'in -charge' for this component
+                "status": {
+                    "static": true, //perfect static
+                    "responsive": true, //you've verified
+                    "cross-platform": false, //check
+                    "complete" : true,  // hifi + fluid + the three above + both of you agree it is 'portfolio worthy'
+                    "performance":false
+                },
+                "notes": {
+                    "for": "you guys - put anything here + lmk to render on the page for context"
+                }
             },
 			"toggle": {
 				"filename": "toggle.tpl",
