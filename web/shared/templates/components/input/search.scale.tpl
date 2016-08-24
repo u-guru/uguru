@@ -1,10 +1,12 @@
+
 <inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.2x" class="bottom-0 bg-azure" auto-play="false" step-size="100" play-infinite="false" > </inspector-gadget>
 <div class="perspective-container full-xy flex-center p15xy">
+    <!-- transition-free -->
     <fieldset class="search-bar"
         init-with="p:[op:0, width:48px]"
         on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in] | s:[search-bar-init:public]"
         inspector-elem="when-search-bar-clicked"
-        when-search-bar-clicked="p:[width:48px:500px:1000:easeOutSine,background-color:rgba(255#255#255#1):rgba(0#255#0#0.5):1000:easeOutSine]"
+        when-search-bar-clicked="{{scale.circle.initWith}}"
         on-click="s:[search-bar-clicked:public]"
         >
         <div>

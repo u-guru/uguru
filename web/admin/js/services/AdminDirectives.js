@@ -41,7 +41,11 @@ angular.module('uguru.admin')
             var callback = function(response) {
                 // console.log();
                 scope.metadata = response["dir"][scope.section][scope.name];
-                console.log(scope.metadata);
+                for (_var in scope.metadata.versionVars) {
+                    if (_var === scope.version) {
+                        scope.$parent[_var] = scope.metadata.versionVars[_var]
+                    }
+                }
             }
             XHRService.getJSONFile('GET', 'admin/spec/component.json', callback)
         }

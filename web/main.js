@@ -369,7 +369,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       }
 
       var fileName = $stateParams.name + '.' + $stateParams.version
-      return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + fileName + ".tpl'" + '"> </div> <component-status-bar' + " section='" + $stateParams.section + "' name='" + $stateParams.name  + "' version='" + $stateParams.version + "'/></component-status-bar>"
+      return '<div ng-if="' + version + '" ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + fileName + ".tpl'" + '"> </div> <component-status-bar' + " section='" + $stateParams.section + "' name='" + $stateParams.name  + "' version='" + $stateParams.version + "'/></component-status-bar>"
     },
     controller: function($scope, $timeout, $compile) {
       $timeout(function() {

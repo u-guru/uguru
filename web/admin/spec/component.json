@@ -427,7 +427,11 @@
 			},
             "search": {
                 "filename": "search.tpl",
-                "versions": ["SM-082316", "mobile"],
+                "versions": ["SM-082316", "mobile", "scale"],
+                "versionVars": {
+                    "scale": { "circle" : {"initWith": "p:[transform:scale(0) rotate(-1080deg):scale(2) rotate(0deg):2500:linear easeInQuint]"}},
+                    "mobile": {"mobile": true}
+                },
                 "contact": "GW",
                 "status": {
                     "static": true,
