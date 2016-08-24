@@ -1,7 +1,15 @@
-
 <inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.2x" class="bottom-0 bg-azure" auto-play="false" step-size="100" play-infinite="false" > </inspector-gadget>
 <div class="perspective-container full-xy flex-center p15xy">
-    <!-- transition-free -->
+	<div class='types-bar fixed top-0 left-0 p15xy'>
+	    <ul class='flex bg-light-slate radius-2 overflow-hidden'>
+	        <li>
+	            <div class="p10xy txt-16 semibold">default</div>
+	        </li>
+			<li>
+	            <div class="p10xy txt-16 semibold">timeline</div>
+	        </li>
+	    </ul>
+	</div>
     <fieldset class="search-bar"
         init-with="p:[op:0, width:48px]"
         on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in] | s:[search-bar-init:public]"
