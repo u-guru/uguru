@@ -6,108 +6,435 @@
             "course-card": {
                 "filename": "course-card.tpl",
                 "types": ["svg", "default", "link", "overlay", "checkbox", "badge"],
-                "verified": true
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": "Try putting translateZ into :active in CSS vs. states"
+                }
             },
-			"credit-card": {
+            "credit-card": {
                 "filename": "credit-card.tpl",
-                "types": ["flip", "edit", "short", "mini"]
+                "types": ["flip", "edit", "short", "mini"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": "Try putting translateZ into :active in CSS vs. states"
+                }
             },
 			"faq-card": {
-                "filename": "faq-card.tpl"
+                "filename": "faq-card.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": "Check about toggling from the same element"
+                }
             },
 			"map-marker": {
-                "filename": "map-marker.tpl"
+                "filename": "map-marker.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": "Check about toggling from the same element"
+                }
             },
-			"profile-card": {
+            "profile-card": {
                 "filename": "profile-card.tpl",
-                "types": ["single", "stack"]
-            },
-			"profile-thumb": {
-                "filename": "profile-thumb.tpl",
-                "types": ["36", "48", "64", "72", "96", "128"]
-            },
-			"profile-widget": {
-                "filename": "profile-widget.tpl"
-            },
-			"request-card": {
-                "filename": "request-card.tpl"
-            },
-			"student-card": {
-                "filename": "student-card.tpl",
-                "types": ["edit", "link"]
-            },
-			"team-card": {
-                "filename": "team-card.tpl"
-            },
-			"timeline-card": {
-                "filename": "timeline-card.tpl"
-            },
-			"timeline-icon": {
-                "filename": "timeline-icon.tpl"
-            },
-			"university-card": {
-                "filename": "university-card.tpl",
-                "types": ["checkbox", "link"]
-            },
-			"user-icon": {
-                "filename": "user-icon.tpl",
-                "types": ["24", "32", "36", "48", "64", "72", "84", "96", "128", "default"]
-            }
-        },
-		"containers": {
-            "message-bubble": {
-                "filename": "message-bubble.tpl"
-            },
-			"projector": {
-                "filename": "projector.tpl"
-            },
-			"ticket": {
-                "filename": "ticket.tpl",
-                "types": ["guru", "student"]
-            }
-        },
-		"graphic": {
-            "image": {
-                "filename": "image.tpl"
-            },
-			"wallet": {
-                "filename": "wallet.tpl"
-            },
-			"window-small": {
-                "filename": "window-small.tpl"
-            },
-			"window": {
-                "filename": "window.tpl"
-            }
-        },
-        "input": {
-            "basic": {
-                "filename": "basic.tpl",
-                "types": ["light", "dark"]
-			},
-			"button": {
-                "filename": "button.tpl",
-                "types": ["default", "ghost-round", "ghost-square", "split"]
-			},
-			"checkbox": {
-                "filename": "checkbox.tpl"
-			},
-			"number": {
-                "filename": "number.tpl"
-			},
-			"radio": {
-                "filename": "radio.tpl"
-			},
-            "search": {
-                "filename": "search.tpl",
-                "versions": ["SM-082316", "mobile"],
+                "types": ["single", "stack"],
+				"versions": [],
                 "contact": "JO",
                 "status": {
                     "static": true,
                     "responsive": true,
                     "cross-platform": false,
-                    "complete" : true,
-                    "performance":false
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+            "profile-thumb": {
+                "filename": "profile-thumb.tpl",
+                "types": ["36", "48", "64", "72", "96", "128"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+			"profile-widget": {
+                "filename": "profile-widget.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+			"request-card": {
+                "filename": "request-card.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+            "student-card": {
+                "filename": "student-card.tpl",
+                "types": ["edit", "link"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+			"team-card": {
+                "filename": "team-card.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+			"timeline-card": {
+                "filename": "timeline-card.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+			"timeline-icon": {
+                "filename": "timeline-icon.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+            "university-card": {
+                "filename": "university-card.tpl",
+                "types": ["checkbox", "link"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+            "user-icon": {
+                "filename": "user-icon.tpl",
+                "types": ["24", "32", "36", "48", "64", "72", "84", "96", "128", "default"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            }
+        },
+        "containers": {
+            "message-bubble": {
+                "filename": "message-bubble.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+			"projector": {
+                "filename": "projector.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": "Revisit animation"
+                }
+            },
+            "ticket": {
+                "filename": "ticket.tpl",
+                "types": ["guru", "student"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            }
+        },
+        "graphic": {
+            "image": {
+                "filename": "image.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+			"wallet": {
+                "filename": "wallet.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+			"window-small": {
+                "filename": "window-small.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            },
+			"window": {
+                "filename": "window.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+            }
+        },
+        "input": {
+            "basic": {
+                "filename": "basic.tpl",
+                "types": ["light", "dark"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+			},
+			"border": {
+                "filename": "border.tpl",
+                "types": ["light", "dark", "search-light", "search-dark", "large-light", "large-dark", "search-large-light", "search-large-dark"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": false,
+                    "responsive": false,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": "Fill these out, but might need binding for fake input from Samir"
+                }
+			},
+			"button": {
+                "filename": "button.tpl",
+                "types": ["default", "ghost-round", "ghost-square", "split"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+			},
+			"checkbox": {
+                "filename": "checkbox.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+			},
+			"number": {
+                "filename": "number.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+			},
+			"radio": {
+                "filename": "radio.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
+			},
+            "search": {
+                "filename": "search.tpl",
+                "versions": ["SM-082316", "mobile"],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete": true,
+                    "performance": false
                 },
                 "notes": {
                     "for": "you guys - put anything here + lmk to render on the page for context"
@@ -115,121 +442,481 @@
             },
 			"toggle": {
 				"filename": "toggle.tpl",
-				"types": ["default", "time-period", "round", "white-round"]
+				"types": ["default", "time-period", "round", "white-round"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			}
         },
-		"lists": {
+        "lists": {
             "attachment-list": {
                 "filename": "attachment-list.tpl",
-				"types": ["student", "guru", "no-padding", "large-icons"]
+				"types": ["student", "guru", "no-padding", "large-icons"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
 			"course-list": {
-                "filename": "course-list.tpl"
+                "filename": "course-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
 			"sidebar-list": {
-                "filename": "sidebar-list.tpl"
+                "filename": "sidebar-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             }
         },
-		"navigation": {
+        "navigation": {
             "dropdown": {
                 "filename": "dropdown.tpl",
-				"types": ["default", "info", "color"]
+				"types": ["default", "info", "color"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
 			"social-bar": {
-                "filename": "social-bar.tpl"
+                "filename": "social-bar.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
-			"tile-group": {
+            "tile-group": {
                 "filename": "tile-group.tpl",
-				"types": ["link", "default", "2x3"]
+				"types": ["link", "default", "2x3"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             }
         },
 		"notifications": {
 			"badge": {
 				"filename": "badge.tpl",
-				"types": ["left-hover", "bottom-hover", "top-default", "right-default"]
+				"types": ["left-hover", "bottom-hover", "top-default", "right-default"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			},
 			"popup": {
 				"filename": "popup.tpl",
-				"types": ["default", "separate-header", "tour-guru"]
+				"types": ["default", "separate-header", "tour-guru"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			},
 			"toast": {
 				"filename": "toast.tpl",
-				"types": ["mobile", "icon-hover", "icon-input", "icon-input-button", "cta", "cta-icon"]
+				"types": ["mobile", "icon-hover", "icon-input", "icon-input-button", "cta", "cta-icon"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			},
 			"tooltip": {
 				"filename": "tooltip.tpl",
-				"types": ["top", "bottom", "left", "right", "line-top", "line-bottom", "line-left", "line-right"]
+				"types": ["top", "bottom", "left", "right", "line-top", "line-bottom", "line-left", "line-right"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			}
 		},
 		"progress": {
 			"meter": {
-				"filename": "meter.tpl"
+				"filename": "meter.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			},
 			"numerical-progress": {
-				"filename": "numerical-progress.tpl"
+				"filename": "numerical-progress.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			},
 			"rating": {
-				"filename": "rating.tpl"
+				"filename": "rating.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			}
 		},
 		"tags": {
 			"chip": {
 				"filename": "chip.tpl",
-				"types": ["span", "link", "image", "input"]
+				"types": ["span", "link", "image", "input"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			},
 			"adlib": {
-				"filename": "ghost.tpl"
+				"filename": "ghost.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			}
 		},
 		"text": {
 			"body": {
-				"filename": "body.tpl"
+				"filename": "body.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			},
 			"header": {
-				"filename": "header.tpl"
+				"filename": "header.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
 			}
 		},
 		"tiles": {
 			"album-tile": {
-                "filename": "album-tile.tpl"
+                "filename": "album-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
 			"attachment-tile": {
-                "filename": "attachment-tile.tpl"
+                "filename": "attachment-tile.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
 			"calendar-tile": {
-                "filename": "calendar-tile.tpl"
+                "filename": "calendar-tile.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
             "category-tile": {
                 "filename": "category-tile.tpl",
-                "types": ["link-no-photo", "photo", "photo-price", "photo-price-moxie", "photo-price-crimson", "link-color", "link-square", "check-square"]
+                "types": ["link-no-photo", "photo", "photo-price", "photo-price-moxie", "photo-price-crimson", "link-color", "link-square", "check-square"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
 			"credit-tile": {
-                "filename": "credit-tile.tpl"
+                "filename": "credit-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
 			"feature-tile": {
-                "filename": "feature-tile.tpl"
+                "filename": "feature-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
-			"money-tile": {
+            "money-tile": {
                 "filename": "money-tile.tpl",
-                "types": ["fixed", "add"]
+                "types": ["fixed", "add"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
-			"pricing-tile": {
+            "pricing-tile": {
                 "filename": "pricing-tile.tpl",
-				"types": ["default", "alert"]
+				"types": ["default", "alert"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
-			"profile-cardlet": {
+            "profile-cardlet": {
                 "filename": "profile-cardlet.tpl",
-                "types": ["default-desktop", "default-mobile", "academic-desktop", "academic-mobile", "baking-desktop", "baking-mobile", "photography-desktop", "photography-mobile", "tech-desktop", "tech-mobile", "household-desktop", "household-mobile"]
+                "types": ["default-desktop", "default-mobile", "academic-desktop", "academic-mobile", "baking-desktop", "baking-mobile", "photography-desktop", "photography-mobile", "tech-desktop", "tech-mobile", "household-desktop", "household-mobile"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
 			"profile-tile": {
 				"filename": "profile-tile.tpl",
-				"types": ["academic-desktop","academic-mobile", "baking-desktop", "baking-mobile", "photography-desktop","photography-mobile", "tech-desktop", "tech-mobile", "household-desktop", "household-mobile"]
+				"types": ["academic-desktop","academic-mobile", "baking-desktop", "baking-mobile", "photography-desktop","photography-mobile", "tech-desktop", "tech-mobile", "household-desktop", "household-mobile"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
 			"ranking-tile": {
-                "filename": "ranking-tile.tpl"
+                "filename": "ranking-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             },
 			"record-tile": {
-                "filename": "record-tile.tpl"
+                "filename": "record-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": ""
+                }
             }
         }
     }

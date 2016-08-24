@@ -6,7 +6,7 @@ angular.module('uguru.shared.services')
 
 function XHRService($timeout) {
   var XHRQueue = [];
-  var XHR_THRESHOLD = 2;
+  var XHR_THRESHOLD = 5;
 
   return {
     getJSONFile: getJSONFile
@@ -17,14 +17,14 @@ function XHRService($timeout) {
 
     var xhr = new XMLHttpRequest();
     XHRQueue.push({xhrObj: xhr, type: request_type, url:url, func: callback, params: params});
-    if (XHRQueue.length < XHR_THRESHOLD) {
+    var frontQueue = XHRQueue.splice(0, 1)[0];
+    if (XHRQueue.length < XHR_THRESHOLD + 1) {
 
-      var frontQueue = XHRQueue.splice(0, 1)[0];
       frontQueue.xhrObj.open(frontQueue.type, frontQueue.url, true);
       xhr.onload = function () {
 
           var responseDict = JSON.parse(frontQueue.xhrObj.responseText);
-          console.log(responseDict)
+          console.log(frontQueue.xhrObj.responseText)
           callback && callback(responseDict);
       };
       xhr.send();
