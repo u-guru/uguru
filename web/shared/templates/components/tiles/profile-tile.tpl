@@ -22,7 +22,7 @@
 	<div class="pf-tile-container" ng-if='activeType === "academic"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[academic-tile-init:public]"
-		when-academic-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+		when-academic-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 		when-academic-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-500, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-academic">
@@ -115,7 +115,7 @@
 	<div class="pf-tile-container" ng-if='activeType === "baking"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[baking-tile-init:public]"
-		when-baking-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+		when-baking-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 		when-baking-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-500, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
@@ -191,7 +191,7 @@
 	<div class="pf-tile-container" ng-if='activeType === "photo"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[photo-tile-init:public]"
-		when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutExpo,opacity:0:1:10:linear]"
+		when-photo-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 		when-photo-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 		<!-- when-photo-tile-exit="p:[tro:left bottom, op:0:delay-750, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px):delay-250, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]" -->
 		<a></a><a></a><a></a><a></a>
@@ -275,9 +275,9 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "tech"'
-		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[tech-tile-init:public, tech-borders-init:public:delay-1000]"
-		when-tech-tile-init="p:[op:1, tr:none]"
+		when-tech-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 		when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-tech">
@@ -384,9 +384,9 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "household"'
-		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[household-tile-init:public]"
-		when-household-tile-init="p:[op:1, tr:none]"
+		when-household-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
 		when-household-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-household">
