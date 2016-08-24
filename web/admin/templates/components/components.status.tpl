@@ -7,37 +7,37 @@
 				<span class="bg-crimson radius-2 block p10x-p05y semibold" ng-if="metadata.status.complete != true">&#x2717;</span>
 			</li>
 	        <!-- <li class="txt-16 flex">
-				<span class="bg-slate-50p radius-2-left block p10x-p05y">File Name</span>
+				<span class="bg-slate-50p radius-2-left block p10x-p05y weight-400">File Name</span>
 				<span class="bg-moxie radius-2-right block p10x-p05y semibold">{{metadata.filename}}</span>
 			</li>
 	        <li class="txt-16 flex">
-				<span class="bg-slate-50p radius-2-left block p10x-p05y">Versions</span>
+				<span class="bg-slate-50p radius-2-left block p10x-p05y weight-400">Versions</span>
 				<span class="bg-moxie radius-2-right block p10x-p05y semibold">{{metadata.versions}}</span>
 			</li> -->
 			<li class="txt-16 flex">
-				<span class="bg-slate-50p radius-2-left block p10x-p05y">static</span>
+				<span class="bg-slate-50p radius-2-left block p10x-p05y weight-400">static</span>
 				<span class="bg-moxie radius-2-right block p10x-p05y semibold" ng-if="metadata.status.static === true">&#x2713;</span>
 				<span class="bg-crimson radius-2-right block p10x-p05y semibold" ng-if="metadata.status.static != true">&#x2717;</span>
 			</li>
 			<li class="txt-16 flex">
-				<span class="bg-slate-50p radius-2-left block p10x-p05y">animated</span>
+				<span class="bg-slate-50p radius-2-left block p10x-p05y weight-400">animated</span>
 				<span class="bg-moxie radius-2-right block p10x-p05y semibold" ng-if="metadata.status.animated === true">&#x2713;</span>
 				<span class="bg-crimson radius-2-right block p10x-p05y semibold" ng-if="metadata.status.animated != true">&#x2717;</span>
 			</li>
 			<li class="txt-16 flex">
-				<span class="bg-slate-50p radius-2-left block p10x-p05y">responsive</span>
+				<span class="bg-slate-50p radius-2-left block p10x-p05y weight-400">responsive</span>
 				<span class="bg-moxie radius-2-right block p10x-p05y semibold" ng-if="metadata.status.responsive === true">&#x2713;</span>
 				<span class="bg-crimson radius-2-right block p10x-p05y semibold" ng-if="metadata.status.responsive != true">&#x2717;</span>
 			</li>
 
 			<li class="txt-16 flex">
-				<span class="bg-slate-50p radius-2-left block p10x-p05y">cross-platform</span>
+				<span class="bg-slate-50p radius-2-left block p10x-p05y weight-400">cross-platform</span>
 				<span class="bg-moxie radius-2-right block p10x-p05y semibold" ng-if="metadata.status.cross-platform === true">&#x2713;</span>
 				<span class="bg-crimson radius-2-right block p10x-p05y semibold" ng-if="metadata.status.cross-platform != true">&#x2717;</span>
 			</li>
 
 			<li class="txt-16 flex">
-				<span class="bg-slate-50p radius-2-left block p10x-p05y">performance</span>
+				<span class="bg-slate-50p radius-2-left block p10x-p05y weight-400">performance</span>
 				<span class="bg-moxie radius-2-right block p10x-p05y semibold" ng-if="metadata.status.performance === true">&#x2713;</span>
 				<span class="bg-crimson radius-2-right block p10x-p05y semibold" ng-if="metadata.status.performance != true">&#x2717;</span>
 			</li>

@@ -942,6 +942,23 @@ button.disabled {
     color: white; }
     .bg.bg-slate:active svg *, button.bg-slate:active svg * {
       stroke: white; }
+.bg.bg-light-slate, button.bg-light-slate {
+  background: #637074; }
+  .bg.bg-light-slate.reverse, button.bg-light-slate.reverse {
+    background: white;
+    color: #637074; }
+    .bg.bg-light-slate.reverse svg *, button.bg-light-slate.reverse svg * {
+      stroke: #637074; }
+  .bg.bg-light-slate:hover, .bg.bg-light-slate:focus, button.bg-light-slate:hover, button.bg-light-slate:focus {
+    background: #b1b8ba;
+    color: #637074; }
+    .bg.bg-light-slate:hover svg *, .bg.bg-light-slate:focus svg *, button.bg-light-slate:hover svg *, button.bg-light-slate:focus svg * {
+      stroke: #637074; }
+  .bg.bg-light-slate:active, button.bg-light-slate:active {
+    background: #8a9497;
+    color: white; }
+    .bg.bg-light-slate:active svg *, button.bg-light-slate:active svg * {
+      stroke: white; }
 .bg.bg-taupe, button.bg-taupe {
   background: #757575; }
   .bg.bg-taupe.reverse, button.bg-taupe.reverse {
