@@ -348,6 +348,22 @@
                     "for": ""
                 }
 			},
+			"border": {
+                "filename": "border.tpl",
+                "types": ["light", "dark", "search-light", "search-dark", "large-light", "large-dark", "search-large-light", "search-large-dark"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": false,
+                    "responsive": false,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": "Fill these out, but might need binding for fake input from Samir"
+                }
+			},
 			"button": {
                 "filename": "button.tpl",
                 "types": ["default", "ghost-round", "ghost-square", "split"],
