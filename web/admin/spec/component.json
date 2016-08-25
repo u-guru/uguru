@@ -110,7 +110,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -181,7 +181,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "for": "Altered transform origin based off of the tip's direction. In the example, left top."
                 }
             },
 			"timeline-icon": {
