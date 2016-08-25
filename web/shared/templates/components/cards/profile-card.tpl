@@ -36,35 +36,35 @@
 					when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">UC Berkeley</h2>
 				<ul class="pf-rating" data-rating="4" data-half="true">
 					<li init-with="p-op"
-						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in]">
+						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-500]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li init-with="p-op"
-						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-100]">
+						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-600]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li init-with="p-op"
-						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-200]">
+						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-700]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li init-with="p-op"
-						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-300]">
+						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-800]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 						</svg>
 					</li>
 					<li init-with="p-op"
-						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-400]">
+						when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-900]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -73,10 +73,10 @@
 				</ul>
 				<span class="pf-review-amt"
 					init-with="p-op"
-					when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-500]">3 Reviews</span>
+					when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-1000]">3 Reviews</span>
 				<ul class="pf-card-thumbs"
 					init-with="p-op"
-					when-pf-card-1-init="a:[fadeIn:set:(dur:1200ms#func:cubic-bezier(.8#.1#1#.05)):in]">
+					when-pf-card-1-init="a:[scoop-enter:set:(dur:1200ms#func:linear):in:delay-1000]">
 					<li>
 						<a>
 							<span></span>
@@ -205,7 +205,7 @@
 		<li init-with="p:[tr:translateY(-15px) scale(0.9)]">
 			<div style="min-width: 300px"
 				init-with="p:[op:0, tro:center bottom]"
-				when-pf-card-2-init="a:[back-stack:set:(dur:1000ms#func:linear):in] | s:[pf-card-3-init:public:delay-300]">
+				when-pf-card-2-init="a:[back-stack:set:(dur:1000ms#func:linear):in]| s:[pf-card-3-init:public:delay-300]">
 				<div class="pf-card pf-card-athletic"
 					init-with="p:[op:0.75]">
 					<div class="pf-card-top">
@@ -334,35 +334,35 @@
 							when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">UC Berkeley</h2>
 						<ul class="pf-rating" data-rating="4" data-half="true">
 							<li init-with="p-op"
-								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in]">
+								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-500]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li init-with="p-op"
-								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-100]">
+								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-600]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li init-with="p-op"
-								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-200]">
+								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-700]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li init-with="p-op"
-								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-300]">
+								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-800]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 								</svg>
 							</li>
 							<li init-with="p-op"
-								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-400]">
+								when-pf-card-1-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-900]">
 								<svg viewBox="0 0 100 100">
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 									<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -371,10 +371,10 @@
 						</ul>
 						<span class="pf-review-amt"
 							init-with="p-op"
-							when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-500]">3 Reviews</span>
+							when-pf-card-1-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-1000]">3 Reviews</span>
 						<ul class="pf-card-thumbs"
 							init-with="p-op"
-							when-pf-card-1-init="a:[fadeIn:set:(dur:1200ms#func:cubic-bezier(.8#.1#1#.05)):in]">
+							when-pf-card-1-init="a:[scoop-enter:set:(dur:1200ms#func:linear):in:delay-1000]">
 							<li>
 								<a>
 									<span></span>
