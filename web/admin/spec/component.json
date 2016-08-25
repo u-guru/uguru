@@ -552,13 +552,13 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "for": "Animate color for the color dropdown"
                 }
             },
 			"social-bar": {
@@ -621,7 +621,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
