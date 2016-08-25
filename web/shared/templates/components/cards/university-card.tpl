@@ -1,10 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy" types='checkbox, link' default-type="link">
 	<div class="university-card" ng-if='activeType === "checkbox"'
 		init-with="p-op"
-		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
@@ -46,10 +43,7 @@
 	</div>
 	<a class="university-card with-hover" ng-if='activeType === "link"'
 		init-with="p-op"
-		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>

@@ -5,47 +5,57 @@
 			when-marker-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]">
 			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
 				<path d="M172.009493,2 C177.527924,2 182,6.47590822 182,11.9972208 L182,136.002779 C182,141.532461 177.518876,146 171.991129,146 L122,146 L92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L172.009493,2 Z" fill="#003262" fill-opacity="0.25"
-					init-with="p:[t:opacity 200ms ease-out]"
-					when-marker-open="p:[op:0]"></path>
+					init-default
+					when-marker-open="p:[opacity:1:0:200:easeOutSine]"></path>
 				<g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
 					<path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"
-						init-with="p:[t:stroke-dashoffset 200ms ease-out, sda:278, sdo:0]"
-						when-window-open="p:[sdo:278]"
-						when-window-close="p:[sdo:0:delay-450]"></path>
+						init-with="p:[sda:278, sdo:0]"
+						when-window-open="p:[stroke-dashoffset:0:278:200:easeOutSine]"
+						when-window-close="p:[stroke-dashoffset:278:0:200:easeOutSine]:delay-450"></path>
 					<path class="side" d="M92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L42,2"
-						init-with="p:[t:stroke-dashoffset 200ms ease-out, sda:278, sdo:0]"
-						when-window-open="p:[sdo:278]"
-						when-window-close="p:[sdo:0:delay-450]"></path>
-					<path class="open" d="M12,2 L92,2"
-						init-with="p:[t:stroke-dashoffset 150ms ease-out#opacity 150ms ease-out 150ms, sda:80, sdo:0, op:1]"
-						when-marker-open="p:[sdo:80, op:1]"
-						when-window-open="p:[sdo:80, op:0]"
-						when-window-close="p:[sdo:80, op:1]"></path>
-					<path class="open" d="M171,2 L91,2"
-						init-with="p:[t:stroke-dashoffset 150ms ease-out#opacity 150ms ease-out 150ms, sda:80, sdo:0, op:1]"
-						when-marker-open="p:[sdo:80, op:1]"
-						when-window-open="p:[sdo:80, op:0]"
-						when-window-close="p:[sdo:80, op:1]"></path>
+						init-with="p:[sda:278, sdo:0]"
+						when-window-open="p:[stroke-dashoffset:0:278:200:easeOutSine]"
+						when-window-close="p:[stroke-dashoffset:278:0:200:easeOutSine]:delay-450"></path>
+					<g init-with="p:[op:1]"
+						when-marker-open="p:[opacity:0:1:150:easeOutSine]:delay-150"
+						when-window-open="p:[opacity:1:0:150:easeOutSine]:delay-150"
+						when-window-close="p:[opacity:0:1:150:easeOutSine]:delay-150">
+						<path class="open" d="M12,2 L92,2"
+							init-with="p:[sda:80, sdo:0, op:1]"
+							when-marker-open="p:[stroke-dashoffset:0:80:150:easeOutSine]"
+							when-window-open="p:[stroke-dashoffset:0:80:easeOutSine]"
+							when-window-close="p:[stroke-dashoffset:0:80:easeOutSine]"></path>
+						<path class="open" d="M171,2 L91,2"
+							init-with="p:[sda:80, sdo:0, op:1]"
+							when-marker-open="p:[stroke-dashoffset:0:80:150:easeOutSine]"
+							when-window-open="p:[stroke-dashoffset:0:80:easeOutSine]"
+							when-window-close="p:[stroke-dashoffset:0:80:easeOutSine]"></path>
+					</g>
 				</g>
 				<g fill="none" stroke-width="4" stroke="#FDB515" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
 					<path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"
-						init-with="p:[t:stroke-dashoffset 200ms ease-out, sda:278, sdo:0]"
-						when-window-open="p:[sdo:278]"
-						when-window-close="p:[sdo:0:delay-450]"></path>
+						init-with="p:[sda:278, sdo:0]"
+						when-window-open="p:[stroke-dashoffset:0:278:200:easeOutSine]"
+						when-window-close="p:[stroke-dashoffset:278:0:200:easeOutSine]:delay-450"></path>
 					<path class="side" d="M92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L42,2"
-						init-with="p:[t:stroke-dashoffset 200ms ease-out, sda:278, sdo:0]"
-						when-window-open="p:[sdo:278]"
-						when-window-close="p:[sdo:0:delay-450]"></path>
-					<path class="open" d="M12,2 L92,2"
-						init-with="p:[t:stroke-dashoffset 150ms ease-out#opacity 150ms ease-out 150ms, sda:80, sdo:0, op:1]"
-						when-marker-open="p:[sdo:80, op:1]"
-						when-window-open="p:[sdo:80, op:0]"
-						when-window-close="p:[sdo:80, op:1]"></path>
-					<path class="open" d="M171,2 L91,2"
-						init-with="p:[t:stroke-dashoffset 150ms ease-out#opacity 150ms ease-out 150ms, sda:80, sdo:0, op:1]"
-						when-marker-open="p:[sdo:80, op:1]"
-						when-window-open="p:[sdo:80, op:0]"
-						when-window-close="p:[sdo:80, op:1]"></path>
+						init-with="p:[sda:278, sdo:0]"
+						when-window-open="p:[stroke-dashoffset:0:278:200:easeOutSine]"
+						when-window-close="p:[stroke-dashoffset:278:0:200:easeOutSine]:delay-450"></path>
+					<g init-with="p:[op:1]"
+						when-marker-open="p:[opacity:0:1:150:easeOutSine]:delay-150"
+						when-window-open="p:[opacity:1:0:150:easeOutSine]:delay-150"
+						when-window-close="p:[opacity:0:1:150:easeOutSine]:delay-150">
+						<path class="open" d="M12,2 L92,2"
+							init-with="p:[sda:80, sdo:0, op:1]"
+							when-marker-open="p:[stroke-dashoffset:0:80:150:easeOutSine]"
+							when-window-open="p:[stroke-dashoffset:0:80:easeOutSine]"
+							when-window-close="p:[stroke-dashoffset:0:80:easeOutSine]"></path>
+						<path class="open" d="M171,2 L91,2"
+							init-with="p:[sda:80, sdo:0, op:1]"
+							when-marker-open="p:[stroke-dashoffset:0:80:150:easeOutSine]"
+							when-window-open="p:[stroke-dashoffset:0:80:easeOutSine]"
+							when-window-close="p:[stroke-dashoffset:0:80:easeOutSine]"></path>
+					</g>
 				</g>
 			</svg>
 			<div class="marker-normal-content"
@@ -81,23 +91,23 @@
 			<svg class="marker-expanded-window" width="262px" height="267px" viewBox="0 0 524 534">
 				<g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
 					<path class="sides" d="M262,532 L232,502 L22.0086422,502 C10.9581743,502 2,493.042549 2,481.993992 L2,22.006008 C2,10.9569949 10.9569966,2 21.9941986,2 L182,2"
-					  	init-with="p:[t:stroke-dashoffset 300ms ease-out, sda:936, sdo:936]"
-						when-window-open="p:[sdo:0:delay-350]"
-						when-window-close="p:[sdo:936:delay-150]"></path>
+					  	init-with="p:[sda:936, sdo:936]"
+						when-window-open="p:[stroke-dashoffset:936:0:300:easeOutBack]:delay-350"
+						when-window-close="p:[stroke-dashoffset:0:936:300:easeOutBack]:delay-150"></path>
 					<path class="sides" d="M262,532 L292,502 L501.991358,502 C513.041826,502 522,493.042549 522,481.993992 L522,22.006008 C522,10.9569949 513.043003,2 502.005801,2 L342,2"
-					  	init-with="p:[t:stroke-dashoffset 300ms ease-out, sda:936, sdo:936]"
-						when-window-open="p:[sdo:0:delay-350]"
-						when-window-close="p:[sdo:936:delay-150]"></path>
+					  	init-with="p:[sda:936, sdo:936]"
+						when-window-open="p:[stroke-dashoffset:936:0:300:easeOutBack]:delay-350"
+						when-window-close="p:[stroke-dashoffset:0:936:300:easeOutBack]:delay-150"></path>
 				</g>
 				<g fill="none" stroke-width="4" stroke="#FDB515" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
 					<path class="sides" d="M262,532 L232,502 L22.0086422,502 C10.9581743,502 2,493.042549 2,481.993992 L2,22.006008 C2,10.9569949 10.9569966,2 21.9941986,2 L182,2"
-					  	init-with="p:[t:stroke-dashoffset 300ms ease-out, sda:936, sdo:936]"
-						when-window-open="p:[sdo:0:delay-350]"
-						when-window-close="p:[sdo:936:delay-150]"></path>
+					  	init-with="p:[sda:936, sdo:936]"
+						when-window-open="p:[stroke-dashoffset:936:0:300:easeOutBack]:delay-350"
+						when-window-close="p:[stroke-dashoffset:0:936:300:easeOutBack]:delay-150"></path>
 					<path class="sides" d="M262,532 L292,502 L501.991358,502 C513.041826,502 522,493.042549 522,481.993992 L522,22.006008 C522,10.9569949 513.043003,2 502.005801,2 L342,2"
-					  	init-with="p:[t:stroke-dashoffset 300ms ease-out, sda:936, sdo:936]"
-						when-window-open="p:[sdo:0:delay-350]"
-						when-window-close="p:[sdo:936:delay-150]"></path>
+					  	init-with="p:[sda:936, sdo:936]"
+						when-window-open="p:[stroke-dashoffset:936:0:300:easeOutBack]:delay-350"
+						when-window-close="p:[stroke-dashoffset:0:936:300:easeOutBack]:delay-150"></path>
 				</g>
 			</svg>
 			<div class="marker-expanded-content"
