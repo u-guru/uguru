@@ -20,10 +20,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   var playerControlElems= {ball: null, bar: null, time:null};
   return {
     initPropertyObj: initPropertyObj,
-    getBlacklistStates: getBlacklistStates,
     getFrameAnimationFunc: getFrameAnimationFunc,
-    getDefaultAnimProp: getDefaultAnimProp,
-    detectAndInitAnimationProperty: detectAndInitAnimationProperty,
     defaultPropAnimations: defaultPropAnimations,
     detectPlaybarControlElem: detectPlaybarControlElem,
     getPropJson: getPropJson
@@ -60,7 +57,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
   function getPropJson(struct, cb) {
     if (!struct) return;
-
       var request_type = 'GET';
       var url = '/admin/spec/property.json';
       XHRService.getJSONFile(request_type, url, cb, struct)
@@ -176,14 +172,19 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       var elemParent = elemChild.parentNode;
       elemChild.parentNode.removeChild(elem);
       elem.setAttribute('inspector-elem', state_name);
-      $compile(document.querySelector('#gadget-player'))($rootScope);
+      elemParent.appendChild(elem);
+
+      // $timeout(function() {
+      //   $compile(elemParent)($rootScope);
+      // })
       $timeout(function() {
 
-        elemParent.appendChild(elem);
-        $compile(elemParent)($rootScope)
+
+
+        $compile(angular.element(document.querySelector('#gadget-player')))($rootScope);
         var argsDict = {};
 
-      }, 1000)
+      }, 100)
     }
   }
 
@@ -925,25 +926,5 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     if (!p_obj.timingFunction) p_obj.timingFunction = 0;
     return p_obj;
   }
-
-  function getBlacklistStates() {
-    return blacklistStates;
-  }
-
-  function detectAndInitAnimationProperty(name, value, _dict) {
-    if (!defaultPropAnimations || !Object.keys(defaultPropAnimations).length) {
-      getDefaultAnimProp(defaultPropAnimations);
-      $timeout(function() {
-        detectAndInitAnimationProperty(name, value, _dict);
-      }, 1000)
-      return;
-    }
-    //check
-    if (name in defaultPropAnimations || value.split(':').length > 2) {
-      console.log('ayy animation', name, value)
-    }
-  }
-
-
 
 }
