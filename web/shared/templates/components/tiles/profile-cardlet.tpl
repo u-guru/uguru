@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="baking">
+<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="tech">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -234,7 +234,7 @@
 	<div class="pf-tile-container" ng-if='activeType === "tech"'
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 		on-init="s:[tech-cardlet-init:public]"
-		when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public]:delay-500"
+		when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
 		when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-tech">
@@ -244,7 +244,9 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-back-container">
-				<div class="pf-cardlet-back"></div>
+				<div class="pf-cardlet-back"
+					init-with="p:[op:0, tro:center center]"
+					when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
