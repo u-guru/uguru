@@ -3449,6 +3449,18 @@ a.category-tile {
 	border-radius: 2px;
 	padding: 7.5px;
 	max-width: 500px;
+	transform-origin: center center;
+	transition: all 150ms ease-in;
+	&:hover, &:focus {
+		background: lighten($slate, 25%);
+		transform: translateZ(20px);
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
+	}
+	&:active {
+		background: lighten($slate, 5%);
+		transform: translateZ(-20px);
+		transition: all 150ms ease-in;
+	}
 	> div {
 		padding: 7.5px;
 	}
@@ -4535,13 +4547,33 @@ a.category-tile {
 	* {
 		transition: all 150ms ease-in-out;
 	}
+	&:hover, &:focus {
+		.album-art {
+			div.overlay {
+				opacity: 0.95;
+			}
+			svg.overlay {
+				opacity: 1;
+			}
+		}
+	}
+	&:active {
+		.album-echo {
+			opacity: 1;
+			width: calc(100% + 30px);
+			height: calc(100% + 30px);
+			transition: opacity 300ms ease-out, width 300ms ease-out, height 300ms ease-out;
+		}
+	}
 	.album-echo {
+		opacity: 0;
 		@include center-xy;
 		width: 100%;
 		height: 100%;
 		border: 2px solid white;
 		border-radius: 2px;
 		z-index: -1;
+		transition: opacity 300ms ease-out, width 300ms ease-out 300ms, height 150ms ease-out 300ms;
 		div {
 			@include opacity(.3);
 			width: 100%;
@@ -4551,6 +4583,9 @@ a.category-tile {
 	.album-art {
 		position: relative;
 		z-index: 2;
+		.overlay {
+			opacity: 0;
+		}
 		> svg {
 			max-width: 100%;
 			&:last-child {

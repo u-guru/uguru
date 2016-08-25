@@ -1238,12 +1238,14 @@ button.disabled {
 			border-radius: 1000px 0 0 1000px;
 			margin-right: 1px;
 			font-weight: 600;
+			transform-origin: right center;
 		}
 		&:last-child {
 			padding-right: 30px;
 			border-radius: 0 1000px 1000px 0;
 			margin-left: 1px;
 			font-weight: 900;
+			transform-origin: left center;
 		}
 	}
 	&:hover, &:focus {
