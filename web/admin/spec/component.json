@@ -77,7 +77,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -94,7 +94,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -110,7 +110,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -181,7 +181,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "for": "Altered transform origin based off of the tip's direction. In the example, left top."
                 }
             },
 			"timeline-icon": {
@@ -191,7 +191,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -271,12 +271,15 @@
             "ticket": {
                 "filename": "ticket.tpl",
                 "types": ["guru", "student"],
-				"versions": [],
+				"versions": ["JO-082516"],
+                "versionVars": {
+                    "JO-082516": { "ticket-slider-container" : {"initWith": "p:[opacity:0, transform:translateX(-50%) skewX(-15deg), tro:right center]"}}
+                },
                 "contact": "JO",
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -310,7 +313,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -326,7 +329,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -342,7 +345,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -924,13 +927,13 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
                 },
                 "notes": {
-                    "for": "Take versions from profile"
+                    "for": "Take versions from profile. Tech borders are not applying easings."
                 }
             },
 			"profile-tile": {

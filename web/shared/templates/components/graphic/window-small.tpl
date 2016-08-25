@@ -1,10 +1,12 @@
 <div class="full-xy flex-center"
 	init-default
 	on-init="send:[window-small-init:public]">
-	<div class="overflow-hidden relative">
+	<div class="overflow-hidden relative"
+		init-with="p-op"
+		on-init="a:[bounceInDown-subtle:set:(dur:1000ms#func:linear):in]">
 		<div class="absolute z-index-1 bottom-0"
 			init-with="p:[tr:translateY(150px) translateX(110px)]"
-			when-window-small-init="p:[tr:translateY(0) translateX(110px), t:transform 450ms cubic-bezier(0#.39#.17#1.07)]">
+			when-window-small-init="p:[transform:translateY(150px) translateX(110px):translateY(0) translateX(110px):450:easeOutCirc]">
 			<svg width="150px" height="250px" viewBox="0 0 150 250"
 				init-default
 				when-window-small-init="a:[window-guru-hover:set:(dur:1000ms#func:ease-in-out#aic:10#ad:alternate):in]">
@@ -55,10 +57,12 @@
 		    </g>
 		</svg>
 	</div>
-	<div class="m15x overflow-hidden relative">
+	<div class="m15x overflow-hidden relative"
+		init-with="p-op"
+		on-init="a:[bounceInDown-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 		<div class="absolute z-index-1 bottom-0"
 				init-with="p:[tr:translateY(200px) translateX(110px)]"
-				when-window-small-init="p:[tr:translateY(0) translateX(110px):delay-250, t:transform 450ms cubic-bezier(0#.39#.17#1.07)]">
+				when-window-small-init="p:[transform:translateY(200px) translateX(110px):translateY(0) translateX(110px):450:easeOutCirc:delay-250]">
 				<svg width="150px" height="250px" viewBox="0 0 150 250"
 					init-default
 					when-window-small-init="a:[window-guru-hover:set:(dur:1000ms#func:ease-in-out#aic:10#ad:alternate):in:delay-150]">
@@ -109,10 +113,12 @@
 		    </g>
 		</svg>
 	</div>
-	<div class="overflow-hidden relative">
+	<div class="overflow-hidden relative"
+		init-with="p-op"
+		on-init="a:[bounceInDown-subtle:set:(dur:1000ms#func:linear):in]:delay-200">
 		<div class="absolute z-index-1 bottom-0"
 				init-with="p:[tr:translateY(-250px) translateX(110px)]"
-				when-window-small-init="p:[tr:translateY(0) translateX(110px):delay-450, t:transform 450ms cubic-bezier(0#.39#.17#1.07)]">
+				when-window-small-init="p:[transform:translateY(-250px) translateX(110px):translateY(0) translateX(110px):450:easeInOutBack:delay-450]">
 				<svg width="150px" height="250px" viewBox="0 0 150 250"
 					init-default
 					when-window-small-init="a:[window-guru-hover:set:(dur:1000ms#func:ease-in-out#aic:10#ad:alternate):in:delay-300]">

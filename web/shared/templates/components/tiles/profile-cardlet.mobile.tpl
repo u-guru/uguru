@@ -132,13 +132,13 @@
 				when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
 				<div class="pf-cardlet-bottom">
 					<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
-						init-with="p:[transform:scale(0) rotate(-15deg), tro:center center]"
-						when-baking-cardlet-init="p:[transform:scale(0) rotate(-15deg):scale(1) rotate(0deg):1000:easeOutBack]:delay-200"></div>
+						init-with="p-op"
+						when-baking-cardlet-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
 					<h1 init-with="p-op"
-						when-baking-cardlet-init="p:[opacity:0:1:500:easeInQuint]:delay-200">Four-Star Strawberry Cake on a Budget</h1>
+						when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
 					<div>
 						<h2 init-with="p-op"
-							when-baking-cardlet-init="p:[opacity:0:1:500:easeInQuint]:delay-400">03/28/2016</h2>
+							when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
 					</div>
 				</div>
 			</div>
@@ -200,7 +200,7 @@
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "tech"'
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-		on-init="s:[tech-cardlet-init:public]"
+		on-init="send:[tech-cardlet-init:public, tech-surge:public:delay-500]"
 		when-tech-cardlet-init="p:[op:1, tr:none]"
 		when-tech-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
@@ -215,12 +215,26 @@
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<div></div><div></div><div></div><div></div><div></div>
-					<h1>When to Replace Your Phone</h1>
+						<div init-with="p:[tr:scaleX(0)]"
+						 	when-tech-surge="p:[transform:scaleX(0):scaleX(1):150:easeOutSine]"></div>
+						<div init-with="p:[tr:scaleY(0), tro:center top]"
+							when-tech-surge="p:[transform:scaleY(0):scaleY(1):150:easeOutSine]:delay-550"></div>
+						<div init-with="p:[tr:scaleX(0)]"
+						 	when-tech-surge="p:[transform:scaleX(0):scaleX(1):150:easeOutSine]:delay-1200"></div>
+						<div init-with="p:[tr:scaleY(0), tro: center top]"
+							when-tech-surge="p:[transform:scaleY(0):scaleY(1):150:easeOutSine]:delay-550"></div>
+						<div init-with="p:[tr:scaleX(0)]"
+						 	when-tech-surge="p:[transform:scaleX(0):scaleX(1):150:easeOutSine]:delay-1200"></div>
+							<!-- Note, easings are not being applied -->
+					<h1 init-with="p-op"
+						when-tech-surge="p:[opacity:0:1:250:easeOutSine]:delay-1500">When to Replace Your Phone</h1>
 					<div>
-						<div></div>
-						<h2>03/28/2016</h2>
-						<div></div>
+						<div init-with="p-op"
+							when-tech-surge="p:[opacity:0:1:250:easeOutSine]:delay-1500"></div>
+						<h2 init-with="p-op"
+							when-tech-surge="p:[opacity:0:1:250:easeOutSine]:delay-1700">03/28/2016</h2>
+						<div init-with="p-op"
+							when-tech-surge="p:[opacity:0:1:250:easeOutSine]:delay-1500"></div>
 					</div>
 				</div>
 			</div>
@@ -255,8 +269,10 @@
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<h1>How to Make Your Plants Live Longer</h1>
-					<div>
+					<h1 init-with="p-op"
+						when-household-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-300">How to Make Your Plants Live Longer</h1>
+					<div init-with="p:[op:0, tro:right bottom]"
+						when-household-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-500]">
 						<div class="pf-cardlet-border">
 							<div></div>
 							<div></div>
