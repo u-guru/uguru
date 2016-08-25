@@ -19,6 +19,6 @@
 		<div class="timeline-icon-cover bg-charcoal"></div>
 		<h2 class="timeline-icon-text"
 			on-init="p:[tr:translateX(-100%)]"
-			when-timeline-click="p:[tr:translateX(0), t:all 250ms cubic-bezier(.6#0#.1#1.3)]">Milestones</h2>
+			when-timeline-click="p:[transform:translateX(-100%):translateX(0%):450:easeInOutCubic]">Milestones</h2>
 	</div>
 </div>
