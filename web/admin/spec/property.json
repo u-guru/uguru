@@ -1,7 +1,7 @@
 {
     "description": "property examples",
     "propertyList": ["property", "start", "end", "duration", "ease", "delay", "iterations", "fill-mode","direction"],
-    "exampleIndex": 0,
+    "exampleIndex": 1,
     "examples": [
         {
             "exampleName": "textShadow Demonstration",
@@ -21,6 +21,7 @@
             "start": "0px 100px 0px #FFFFFF",
             "end": "100px 0px 100px #FFF000",
             "duration": "2000",
+            "delay": "2000",
             "ease": "bounce",
             "fillMode": null,
             "forwards": null,

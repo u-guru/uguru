@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="baking">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -39,8 +39,10 @@
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<h1>Leonardo da Vinci</h1>
-					<div>
+					<h1 init-with="p:[op:0, tr:translateY(-10%)]"
+						when-default-cardlet-init="p:[opacity:0:1:400:linear, transform:translateY(-10%):translateY(0%):600:easeOutBack]">Leonardo da Vinci</h1>
+					<div init-with="p:[op:0, tr:translateY(-10%)]"
+						when-default-cardlet-init="p:[opacity:0:1:400:linear, transform:translateY(-10%):translateY(0%):600:easeOutBack]:delay-500">
 						<h3>Created</h3>
 						<h2>03/28/2016</h2>
 					</div>
@@ -129,10 +131,14 @@
 				init-default
 				when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
 				<div class="pf-cardlet-bottom">
-					<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
-					<h1>Four-Star Strawberry Cake on a Budget</h1>
+					<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
+						init-with="p:[transform:scale(0) rotate(-15deg), tro:center center]"
+						when-baking-cardlet-init="p:[transform:scale(0) rotate(-15deg):scale(1) rotate(0deg):1000:easeOutBack]:delay-200"></div>
+					<h1 init-with="p-op"
+						when-baking-cardlet-init="p:[opacity:0:1:500:easeInQuint]:delay-200">Four-Star Strawberry Cake on a Budget</h1>
 					<div>
-						<h2>03/28/2016</h2>
+						<h2 init-with="p-op"
+							when-baking-cardlet-init="p:[opacity:0:1:500:easeInQuint]:delay-400">03/28/2016</h2>
 					</div>
 				</div>
 			</div>

@@ -50,8 +50,10 @@
 						inspector-elem="on-init" class='opacity-100p'
 						ng-include="root.base_url + 'shared/templates/components/demo/card.tpl'"
                         init-with="{{example.initWith}}"
-                        on-init="p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}]:delay-250"
+                        on-init="p:[box-shadow:0px 100px 0px #FFFFFF:100px 0px 100px #FFF000:2000:bounce:1000, transform:translateY(100%):translateY(-100%):1500:easeTo:250]:delay-250"
 						></div>
+                        <!-- p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}:{{example.delay}}] -->
+
                         <!-- on-init=" -->
                     <!-- <div ng-repeat="example in property.examples" ng-if='example.properties && property.activeIndex === $index'
                         inspector-elem="on-init" class='opacity-100p width-128 height-128 bg-auburn'

@@ -944,13 +944,13 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
                 },
                 "notes": {
-                    "for": "Add final four and have all of the tiles match to the profile external animations"
+                    "for": "Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter"
                 }
             },
 			"ranking-tile": {

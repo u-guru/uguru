@@ -104,7 +104,7 @@ Gabrielle
 			</div>
 		</div>
 		<div class="pf-aside-desc"
-			init-with="p:[op:0, tro:left top]"
+			init-with="p:[op:0, tro:center top]"
 			when-pf-aside-desc-init="a:[pf-slideLeft-scaleIn:set:(dur:1000ms#func:linear):in] | t:[on-enter:children]">
 			<span init-with="p-op"
 				on-enter="p:[opacity:0:1:1000:easeOutSine]:delay-1000">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
@@ -158,7 +158,7 @@ Gabrielle
 	</aside>
 	<div class="pf-rest perspective-container"
 		init-with="p-op"
-		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public, pf-rs-init:public:delay-1750]"
+		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public, pf-mn-init:public:delay-1750]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
 			<div>
@@ -191,7 +191,7 @@ Gabrielle
 					when-pf-tabs-init="p:[opacity:0:1:1000:easeOutSine]:delay-1200">
 			</div>
 		</nav>
-		<main class="pf-main" ng-init="guru.section_index = 3;">
+		<main class="pf-main" ng-init="guru.section_index = 0;">
 			<!-- ng-init="guru.section_index = 2;" -->
 			<div class="pf-profile pf-main-section" ng-class="{'active': !guru.section_index}">
 				<div class="pf-main-header overflow-hidden">
@@ -200,13 +200,12 @@ Gabrielle
 					<p init-with="p-op"
 						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-1000">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
 				</div>
-				<div class="pf-main-subheader">
-					<h2 init-with="p-op"
-						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]">Services</h2>
-					<a init-with="p-op"
-						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]"><span>see more</span></a>
-					<hr init-with="p-op"
-						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]"/>
+				<div class="pf-main-subheader" init-with="p-op"
+					when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]">
+					<h2>Services</h2>
+					<a><span>see more</span></a>
+					<hr init-with="p:[tr:scaleX(0)]"
+						when-pf-mn-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic, tro:left center]:delay-500"/>
 				</div>
 				<ul class="pf-items">
 					<li>
@@ -382,13 +381,12 @@ Gabrielle
 						</div>
 					</li>
 				</ul>
-				<div class="pf-main-subheader">
-					<h2 init-with="p-op"
-						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-750">Resources</h2>
-					<a init-with="p-op"
-						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-750"><span>see more</span></a>
-					<hr init-with="p-op"
-						when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-750"/>
+				<div class="pf-main-subheader" init-with="p-op"
+					when-pf-mn-init="p:[transform:translateY(50px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-750">
+					<h2>Resources</h2>
+					<a><span>see more</span></a>
+					<hr init-with="p:[transform:scaleX(0)]"
+						when-pf-mn-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic, tro:left center]:delay-1250"/>
 				</div>
 				<ul class="pf-items">
 					<li>
