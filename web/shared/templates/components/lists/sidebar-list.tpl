@@ -149,7 +149,7 @@
 				<a class="flex-center-vertical p15xy"
 					init-default
 					on-click="p:[background:rgba(255#255#255#0):rgba(123#187#230#1):150:easeInOutSine]:delay-250 | send:[brian-blur-2:public, brian-blur-3:public]"
-					when-brian-blur="p:[background:rgba(255#255#255#0)]">
+					when-brian-blur="p:[background:rgba(123#187#230#1):rgba(255#255#255#0):150:easeInOutSine]">
 					<div class="sidebar-link-bg bg-white-25p"
 						init-with="p:[tr:scale(0)]"
 						when-brian-click="p:[tr:scale(128), t:all 250ms ease-in] | t-exit"
@@ -175,8 +175,8 @@
 				on-click="send:[brian-click-2:public]">
 				<a class="flex-center-vertical p15xy"
 					init-default
-					on-click="p:[background:#7BBBE6:delay-250] | send:[brian-blur:public, brian-blur-3:public]"
-					when-brian-blur-2="p:[background:rgba(255#255#255#0)]">
+					on-click="p:[background:rgba(255#255#255#0):rgba(123#187#230#1):150:easeInOutSine]:delay-250 | send:[brian-blur:public, brian-blur-3:public]"
+					when-brian-blur-2="p:[background:rgba(123#187#230#1):rgba(255#255#255#0):150:easeInOutSine]">
 					<div class="sidebar-link-bg bg-white-25p"
 						init-with="p:[tr:scale(0)]"
 						when-brian-click-2="p:[tr:scale(128), t:all 250ms ease-in] | t-exit"
@@ -202,8 +202,8 @@
 				on-click="send:[brian-click-3:public]">
 				<a class="flex-center-vertical p15xy"
 					init-default
-					on-click="p:[background:#7BBBE6:delay-250] | send:[brian-blur:public, brian-blur-2:public]"
-					when-brian-blur-3="p:[background:rgba(255#255#255#0)]">
+					on-click="p:[background:rgba(255#255#255#0):rgba(123#187#230#1):150:easeInOutSine]:delay-250 | send:[brian-blur:public, brian-blur-2:public]"
+					when-brian-blur-3="p:[background:rgba(123#187#230#1):rgba(255#255#255#0):150:easeInOutSine]">
 					<div class="sidebar-link-bg bg-white-25p"
 						init-with="p:[tr:scale(0)]"
 						when-brian-click-3="p:[tr:scale(128), t:all 250ms ease-in]| t-exit"

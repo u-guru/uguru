@@ -4328,12 +4328,27 @@ a.category-tile {
 	min-width: 450px;
 	text-align: center;
 	.record-tile {
+		display: block;
 		position: relative;
 		width: 85%;
+		&:hover, &:focus {
+			.record-tile-back {
+				transform: translateX(5%)!important;
+				transition-delay: 50ms!important;
+				div {
+					transform: rotate(50deg) translateZ(0)!important;
+				}
+			}
+			.record-tile-front {
+				transform: translateX(-5%)!important;
+				transition-delay: 50ms!important;
+			}
+		}
 		svg {
 			fill: none;
 		}
 		.record-tile-front, .record-tile-back {
+			transition: all 150ms ease-out;
 			position: absolute;
 			top: 0;
 			width: 100%;
@@ -4345,6 +4360,7 @@ a.category-tile {
 		.record-tile-back {
 			right: -15%;
 			div {
+				transition: all 1000ms cubic-bezier(0,.58,.33,1.2);
 				width: 100%;
 				height: 100%;
 				svg {
@@ -4357,10 +4373,11 @@ a.category-tile {
 		.record-tile-front {
 			@include flex;
 			@include flex-center;
-			background: $sound;
 			border-radius: 4px;
 			padding: 15px;
 			h1 {
+				position: relative;
+				z-index: 10;
 				color: white;
 				font-size: 36px;
 				font-weight: 900;
@@ -4370,37 +4387,59 @@ a.category-tile {
 					font-size: 54px;
 				}
 			}
-			div:empty {
+			.record-tile-bg, .record-art, .record-tile-border {
 				position: absolute;
-				background: white;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.record-tile-bg {
+				z-index: 0;
+				background-color: mix($sound, lighten($slate, 15%), 75%);
 				border-radius: 4px;
-				&:nth-child(1) {
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 15px;
-					transform-origin: right center;
-				}
-				&:nth-child(2) {
-					top: 0;
-					right: 0;
-					width: 15px;
-					height: 100%;
-					transform-origin: center top;
-				}
-				&:nth-child(3) {
-					bottom: 0;
-					right: 0;
-					width: 100%;
-					height: 15px;
-					transform-origin: left center;
-				}
-				&:nth-child(4) {
-					bottom: 0;
-					left: 0;
-					width: 15px;
-					height: 100%;
-					transform-origin: center bottom;
+			}
+			.record-art {
+				opacity: 0.5;
+				z-index: 1;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			.record-tile-border {
+				z-index: 2;
+				div:empty {
+					position: absolute;
+					background: white;
+					border-radius: 4px;
+					&:nth-child(1) {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 15px;
+						transform-origin: right center;
+					}
+					&:nth-child(2) {
+						top: 0;
+						right: 0;
+						width: 15px;
+						height: 100%;
+						transform-origin: center top;
+					}
+					&:nth-child(3) {
+						bottom: 0;
+						right: 0;
+						width: 100%;
+						height: 15px;
+						transform-origin: left center;
+					}
+					&:nth-child(4) {
+						bottom: 0;
+						left: 0;
+						width: 15px;
+						height: 100%;
+						transform-origin: center bottom;
+					}
 				}
 			}
 		}

@@ -2,22 +2,19 @@
 	init-default
 	on-init="s:[record-tile-init:public]">
 	<div class="record-tile-container"
-		on-mouse-enter="s:[record-mouse-enter-1:public]"
-		on-mouse-leave="s:[record-mouse-leave-1:public]">
-		<div class="record-tile">
+		on-mouse-enter="s:[record-mouse-enter:public]"
+		on-mouse-leave="s:[record-mouse-leave:public]">
+		<a class="record-tile">
 			<svg viewBox="0 0 100 100">
 				<rect x="0" y="0" width="100" height="100"></rect>
 			</svg>
 			<div class="record-tile-back"
-				init-with="p:[op:0, tr:translate3d(-15%#0#0), t:transform 1000ms ease-out#opacity 250ms ease-out]"
-				when-record-tile-init="p:[op:1:delay-250, tr:translate3d(0#0#0)]:delay-750"
-				when-record-mouse-enter-1="p:[op:1, tr:translate3d(5%#0#0):delay-50, t:all 150ms ease-out]"
-				when-record-mouse-leave-1="p:[op:1, tr:translate3d(0#0#0), t:all 150ms ease-out]">
-				<div init-with="p:[tro:center center, tr:rotate(0) translateZ(0), t:all 1000ms cubic-bezier(0#.58#.33#1.2)]"
-					when-record-tile-init="p:[tr:rotate(40deg) translateZ(0)]:delay-900"
-					when-record-mouse-enter-1="p:[op:1, tr:rotate(50deg) translateZ(0):delay-50]"
-					when-record-mouse-leave-1="p:[op:1, tr:rotate(40deg) translateZ(0)]">
-					<svg viewBox="0 0 320 320">
+				init-with="p:[tr:translateX(-7.5%)]"
+				when-record-tile-init="p:[transform:translateX(-7.5%):translateX(0%):1000:easeOutSine]:delay-750">
+				<div init-with="p:[tro:center center, tr:rotate(0)]"
+					when-record-tile-init="p:[transform:rotate(0deg):rotate(40deg):1000:easeOutBack]:delay-1750">
+					<svg viewBox="0 0 320 320" init-with="p-op"
+						when-record-tile-init="p:[opacity:0:1:500:easeOutQuint]:delay-250">
 						<defs>
 							<filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="vinyl-shine">
 								<feGaussianBlur stdDeviation="8" in="SourceGraphic"></feGaussianBlur>
@@ -42,34 +39,33 @@
 				</div>
 			</div>
 			<div class="record-tile-front"
-				init-with="p:[bg:transparent, tr:translateX(7.5%), t:transform 1000ms ease-out#background 250ms ease-out]"
-				when-record-tile-init="p:[tr:none:delay-750, bg:#8967d4:delay-250]"
-				when-record-mouse-enter-1="p:[tr:translate3d(-5%#0#0):delay-50, t:all 150ms ease-out]"
-				when-record-mouse-leave-1="p:[tr:translate3d(0#0#0), t:all 150ms ease-out]">
-				<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
-					when-record-tile-init="p:[tr:scaleX(1)]"></div>
-				<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
-					when-record-tile-init="p:[tr:scaleY(1)]"></div>
-				<div init-with="p:[tr:scaleX(0), t:all 250ms cubic-bezier(1#0#1#0)]"
-					when-record-tile-init="p:[tr:scaleX(1)]"></div>
-				<div init-with="p:[tr:scaleY(0), t:all 250ms cubic-bezier(1#0#1#0)]"
-					when-record-tile-init="p:[tr:scaleY(1)]"></div>
-				<div class="record-art"
+				init-with="p:[tr:translateX(7.5%)]"
+				when-record-tile-init="p:[transform:translateX(7.5%):translateX(0%):1000:easeOutSine]:delay-750">
+				<div class="record-tile-bg"
 					init-with="p-op"
-					when-record-tile-init="p:[op:1:delay-250, tr:all 250ms ease-out]"></div>
+					when-record-tile-init="p:[opacity:0:1:250:easeOutSine]:delay-50"></div>
+				<div class="record-tile-border">
+					<div init-with="p:[tr:scaleX(0)]"
+						when-record-tile-init="p:[transform:scaleX(0):scaleX(1):500:easeOutExpo]"></div>
+					<div init-with="p:[tr:scaleY(0)]"
+						when-record-tile-init="p:[transform:scaleY(0):scaleY(1):500:easeOutExpo]"></div>
+					<div init-with="p:[tr:scaleX(0)]"
+						when-record-tile-init="p:[transform:scaleX(0):scaleX(1):500:easeOutExpo]"></div>
+					<div init-with="p:[tr:scaleY(0)]"
+						when-record-tile-init="p:[transform:scaleY(0):scaleY(1):500:easeOutExpo]"></div>
+				</div>
+				<div class="record-art"
+					style="background-image:url(https://consequenceofsound.files.wordpress.com/2016/08/blonde-alternative.jpg?w=806&h=806);"
+					init-with="p-op"
+					when-record-tile-init="p:[opacity:0:0.5:250:easeOutSine]:delay-250"></div>
 				<h1 class="record-label"
 					init-with="p-op"
 					when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1000]">Top 40</h1>
 			</div>
-		</div>
+		</a>
 		<div class="record-info">
 			<h3 init-with="p-op"
 				when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1250]">Top 40 - 2016</h3>
-			<button init-with="p-op"
-				when-record-tile-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-1500]">
-				<span></span><span></span><span></span><span></span>
-				<span>Listen Now</span>
-			</button>
 		</div>
 	</div>
 </div>

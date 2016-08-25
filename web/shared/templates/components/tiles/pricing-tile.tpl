@@ -3,8 +3,7 @@
 		init-with="p:[op:0, tro:center center]"
 		on-init="a:[frame-enter:set:(dur:1000ms#func:linear):in]">
 		<h3>Our Fees</h3>
-		<h2
-			init-with="p-op"
+		<h2 init-with="p-op"
 			on-init="a:[fadeInDown:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-500]">&le; 5%</h2>
 			<!-- For final version, have count up directive for the 5% -->
 		<span>Guaranteed Lowest</span>
