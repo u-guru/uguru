@@ -4,9 +4,9 @@
 		on-init="send:[window-init:public]"
 		when-window-init="send:[window-leave:public:delay-5000]">
 		<div class="absolute z-index-1 bottom-0" style=“left:20px;”
-			init-with="p:[tr:translateX(0)]"
-			when-window-init="p:[tr:translateX(320px), t:transform 1500ms ease-out]"
-			when-window-leave="p:[tr:translateX(600px), t:transform 1500ms ease-out]">
+			init-with="p:[tr:translateX(0px)]"
+			when-window-init="p:[transform:translateX(0px):translateX(320px):1500:easeOutExpo]"
+			when-window-leave="p:[transform:translateX(320px):translateX(600px):1500:easeOutExpo]">
 			<svg width="150px" height="250px" viewBox="0 0 150 250"
 				init-default
 				when-window-init="a:[window-guru-hover:set:(dur:1000ms#func:ease-in-out#aic:10#ad:alternate):in]">
