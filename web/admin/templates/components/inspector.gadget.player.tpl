@@ -1,12 +1,12 @@
 <div class='absolute full-x' style='z-index:1000;height:65px;' ng-repeat='player in root.inspector.players track by $index' id='gadget-player' ng-if='root.inspector.activePlayer === player' init-default when-show-state-active="p:[transform:translateY(0%):translateY(-100%):250:easeOutQuint]" when-show-state-inactive="p:[transform:translateY(-100%):translateY(0%):250:easeInQuint]">
-    <div class='full-xy'  >
-        <ul class='flex-wrap grid absolute right-0 grid full-x bg-charcoal-80p absolute left-0' style='bottom:65px;' ng-if='player.state.properties.length && player.prefs.showProps ' >
+    <div class='full-xy'>
+        <ul class='flex-wrap grid absolute right-0 grid full-x bg-charcoal-80p absolute left-0' style='bottom:65px;' ng-if='player.state.properties.length && player.prefs.showProps '>
             <li class='full-x relative flex-vertical-wrap bg-azure-20p p15-grid border-2-bottom border-charcoal txt-2 weight-700' style='max-height:75px;' ng-if='property.active' ng-repeat='property in player.state.properties track by $index'>
                 <div style='margin-top:-5px;' class='width-10p  uppercase flex-wrap-center text-left'>
                     <div class='full-x'>
                         <h1 class='uppercase m05y txt-4 text-left'> {{property.name}} </h1>
                     </div>
-                    <span class='mtop05 bg-charcoal txt-1 p20x border-azure border-1 border-solid'> {{property.easing}} </span>
+                    <span class='m05top bg-charcoal txt-1 p20x border-azure border-1 border-solid'> {{property.easing}} </span>
                 </div>
                 <div class='player flex-wrap p15-grid flex-start relative p10x' style='width:70%;'>
                     <div class='p20x relative flex-vertical-center flex-wrap' style='width:90%'>
@@ -94,16 +94,16 @@
             <li ng-click='player.stepTo("forwards")'>
                 <span class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'  ng-include='"shared/templates/components/svg/main/skip.html"'></span>
             </li>
-            <li ng-click='player.prefs.showProps = !player.prefs.showProps' >
+            <li ng-click='player.prefs.showProps = !player.prefs.showProps'>
                 <span class='svg-32 svg-stroke-6 radius-2 bg stroke-smoke'  ng-include='"shared/templates/components/svg/main/arrow.html"'></span>
             </li>
         </ul>
-        <div style='width:10%' class='grid p05x relative full-y txt-charcoal txt-24 uppercase'>
-            <a init-default on-click="send:[show-state-active:public]" ng-click='player.prefs.showStates(player)' class='bg-charcoal-20p weight-600 absolute left-0 top-0 full-y p20x flex-vertical-center'>
+        <div style='width:10%' class='relative full-y txt-charcoal txt-24 uppercase'>
+            <a init-default on-click="send:[show-state-active:public]" ng-click='player.prefs.showStates(player)' class='bg-charcoal-20p weight-600 full-y p15x flex-vertical-center txt-16 lowercase'>
                 {{player.prefs.activeState}}
             </a>
         </div>
-        <div class='m10y player absolute' style='width:65%;left:10%; top:10%;' ng-mouseup="player.jumpTo($event)">
+        <div class='m10y p15left player absolute' style='width:65%; left:10%; top:10%;' ng-mouseup="player.jumpTo($event)">
             <hr class='full-x relative' inspector-bar>
             <div class='m05y round bg-{{player.prefs.ballColor || "azure"}} z-index-99 top-0 absolute p15-grid' inspector-ball> </div>
             <div class='full-x flex-end'>
@@ -145,14 +145,15 @@
             </div>
         </div>
     </div>
-    <div class=' grid relative flex-vertical-center' style='height:65px !important;'>
-        <ul class='overflow-x p15xy full-xy absolute flex-wrap-center grid' >
-            <li class='p20x full-y txt-white txt-7 weight-700 opacity-80p bg-charcoal' init-default on-click='send:[show-state-inactive:public]'>
-                Close
+    <div class='relative bg-slate-90p' style='height:65px!important;'>
+        <ul class='overflow-x p15-grid full-xy flex-center-vertical-wrap txt-18'>
+            <li init-default on-click='send:[show-state-inactive:public]'>
+                <button class="txt-18 bg-charcoal height-36 radius-2 normal">Close</button>
             </li>
-            <li ng-repeat='state in player.prefs.elemAnimStates' class='p20x' style='width:{{90/player.prefs.elemAnimStates.length}}%;' ng-click='player.prefs.switchStateTo(player, state)'>
-                <span class='txt-7 weight-700 full-x'> {{state.name}} </span>
-                <span class='txt-1'>{{state.value}}</span>
+            <li ng-repeat='state in player.prefs.elemAnimStates' ng-click='player.prefs.switchStateTo(player, state)'>
+				<!-- style='width:{{90/player.prefs.elemAnimStates.length}}%;' -->
+                <span class='block txt-18 weight-600 full-x'> {{state.name}} </span>
+                <span class='block txt-1'>{{state.value}}</span>
             </li>
         </ul>
     </div>

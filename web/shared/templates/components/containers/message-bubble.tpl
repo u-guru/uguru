@@ -1,3 +1,5 @@
+<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.2x" class="bottom-0 bg-azure" auto-play="false" step-size="100" play-infinite="false"> </inspector-gadget>
+
 <div class="perspective-container full-xy flex-center-wrap p15xy">
 	<div class="message left"
 		init-default
@@ -18,7 +20,8 @@
 				<li class="message-single">
 					<div class="bg-white txt-slate"
 						init-with="p:[op:0, tro: left center]"
-						when-message-bubble-left-init="a:[messageIn:set:(dur:1000ms#func:linear):in:delay-150] | t:[on-enter:children]:delay-150">
+						when-message-bubble-left-init="a:[messageIn:set:(dur:1000ms#func:linear):in:delay-150] | t:[on-enter:children]:delay-150"
+						inspector-elem="when-message-bubble-left-init">
 						<div init-with="p-op"
 							on-enter="p:[opacity:0:1:500:easeInSine]:delay-300">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
