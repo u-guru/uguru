@@ -4,7 +4,7 @@
     <fieldset class="search-bar"
         init-with="p:[op:0, width:48px]"
         on-init="{{scale.circle.initWith}} | a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in] | s:[search-bar-init:public]"
-        inspector-elem="on-init"
+        inspector-elem="when-search-bar-clicked"
         when-search-bar-clicked="p:[transform:translateY(-1000%):translateY(0%):1000:elastic]"
         on-click="s:[search-bar-clicked:public]"
         >
