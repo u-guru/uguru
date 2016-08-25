@@ -1,21 +1,21 @@
-<div class="perspective-container full-xy flex-center" types='default, info, color' default-type="color" reference="http://codepen.io/teamuguru/pen/a22af7dfdac53aa76c35f1317740770f?editors=1100, http://codepen.io/teamuguru/pen/c2d938e2a4e4c173187a71cd320bf078?editors=1100, http://codepen.io/teamuguru/pen/e1d55abb071ad8db0845cefd76f7c48f?editors=1100">
+<div class="perspective-container full-xy flex-center" types='default, info, color' default-type="default" reference="http://codepen.io/teamuguru/pen/a22af7dfdac53aa76c35f1317740770f?editors=1100, http://codepen.io/teamuguru/pen/c2d938e2a4e4c173187a71cd320bf078?editors=1100, http://codepen.io/teamuguru/pen/e1d55abb071ad8db0845cefd76f7c48f?editors=1100">
 	<div class="dropdown auto" ng-if='activeType === "default"'>
 		<div>
 			<div class="top"
 				init-with="p:[tr:scaleX(0)]"
-				on-init="p:[tr:scaleX(1), t:transform 250ms ease-out]"
+				on-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"
 				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
 			<div class="right"
 				init-with="p:[tr:scaleY(0)]"
-				on-init="p:[tr:scaleY(1):delay-150, t:transform 250ms ease-out]"
+				on-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-150"
 				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
 			<div class="bot"
 				init-with="p:[tr:scaleX(0)]"
-				on-init="p:[tr:scaleX(1):delay-300, t:transform 250ms ease-out]"
+				on-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]:delay-300"
 				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
 			<div class="left"
 				init-with="p:[tr:scaleY(0)]"
-				on-init="p:[tr:scaleX(1):delay-450, t:transform 250ms ease-out]"
+				on-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-450"
 				when-load-end="a:[fadeOut:set:(dur:500ms#func:ease-out):out]"></div>
 			<span class="txt-20"
 				init-with="p-op"
@@ -33,10 +33,11 @@
 					when-dropdown-close-link="s:[dropdown-open:public]"> -->
 				<svg viewBox="0 0 100 100">
 					<path d="M14,32 L50,68 L86,32"
-						init-with="p:[tr:none, t:all 150ms ease-in-out, sdo:102, sda:102, op:0]"
-						on-init="p:[sdo:0:delay-1000, op:1:delay-1000, t:all 450ms cubic-bezier(0#.53#.23#1)]"
-						when-dropdown-open="p:[tr:rotate(180deg)]"
-						when-dropdown-close="p:[tr:rotate(0)]"></path>
+						init-with="p:[op:0, tr:none, sdo:102, sda:102]"
+						on-init="p:[opacity:0:1:150:linear] | send:[draw-arrow:public:delay-1000]"
+						when-draw-arrow="p:[stroke-dashoffset:102:0:450:easeInQuint]"
+						when-dropdown-open="p:[transform:rotate(0deg):rotate(180deg):150:easeInOutBack]"
+						when-dropdown-close="p:[transform:rotate(180deg):rotate(0deg):150:easeInOutBack]"></path>
 				</svg>
 			</a>
 		</div>
@@ -45,23 +46,23 @@
 			when-dropdown-open="p:[z-index:99]"
 			when-dropdown-close="p:[z-index:-1]">
 			<li tabindex
-				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0)]"
-				when-dropdown-open="p:[op:1:delay-150, tr:rotateX(0) translateZ(0):delay-150, t:all 250ms ease-in-out#background 150ms ease-in-out]"
-				when-dropdown-close="p:[op:0:delay-450, tr:rotateX(90deg) translateZ(0):delay-450]"
+				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0px)]"
+				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic]:delay-150"
+				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(90deg) translateZ(0px):250:easeInOutCubic]:delay-450"
 				on-click="s:[dropdown-close:public]">
 				<span>Academic</span>
 			</li>
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(-90deg) translateZ(0)]"
-				when-dropdown-open="p:[op:1:delay-300, tr:rotateX(-0deg) translateZ(0):delay-300, t:all 250ms ease-in-out#background 150ms ease-in-out]"
-				when-dropdown-close="p:[op:0:delay-300, tr:rotateX(-90deg) translateZ(0):delay-300]"
+				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(-90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic]:delay-300"
+				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(-90deg) translateZ(0px):250:easeInOutCubic]:delay-300"
 				on-click="s:[dropdown-close:public]">
 				<span>Baking</span>
 			</li>
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0)]"
-				when-dropdown-open="p:[op:1:delay-450, tr:rotateX(0) translateZ(0):delay-450, t:all 250ms ease-in-out#background 150ms ease-in-out]"
-				when-dropdown-close="p:[op:0:delay-150, tr:rotateX(90deg) translateZ(0):delay-150]"
+				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic]:delay-450"
+				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(90deg) translateZ(0px):250:easeInOutCubic]:delay-150"
 				on-click="s:[dropdown-close:public]">
 				<span>Tech</span>
 			</li>
