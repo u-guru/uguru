@@ -34,12 +34,12 @@
 	</button>
 
 	<button class="btn-split-slate" ng-if='activeType === "split"'>
-		<span init-with="p:[op:0, tro:right center]"
+		<span init-with="p-op"
 			on-init="a:[split-button:set:(dur:1000ms#func:linear):in:delay-800]">
 			<span init-with="p-op"
 				on-init="p:[opacity:0:1:500:easeInOutSine]:delay-1000">Split button</span>
 		</span>
-		<span init-with="p:[op:0, tro:left center]"
+		<span init-with="p-op"
 			on-init="a:[split-button:set:(dur:1000ms#func:linear):in:delay-800]">
 			<span init-with="p-op"
 				on-init="p:[opacity:0:1:500:easeInOutSine]:delay-1000">$40</span>
