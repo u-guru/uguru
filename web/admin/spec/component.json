@@ -397,7 +397,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -413,7 +413,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -429,7 +429,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -445,7 +445,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -482,7 +482,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -517,7 +517,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -533,7 +533,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -568,7 +568,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -585,7 +585,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -604,7 +604,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -638,7 +638,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -689,7 +689,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -724,7 +724,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -733,14 +733,14 @@
                     "for": ""
                 }
 			},
-			"adlib": {
+			"ghost": {
 				"filename": "ghost.tpl",
 				"versions": [],
                 "contact": "GW",
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -808,7 +808,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -824,7 +824,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -841,7 +841,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -890,7 +890,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -907,7 +907,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -953,7 +953,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter. Mobile easings."
+                    "for": "Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter"
                 }
             },
 			"ranking-tile": {
@@ -963,7 +963,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -979,7 +979,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false

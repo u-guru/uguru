@@ -20,10 +20,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   var playerControlElems= {ball: null, bar: null, time:null};
   return {
     initPropertyObj: initPropertyObj,
-    getBlacklistStates: getBlacklistStates,
     getFrameAnimationFunc: getFrameAnimationFunc,
-    getDefaultAnimProp: getDefaultAnimProp,
-    detectAndInitAnimationProperty: detectAndInitAnimationProperty,
     defaultPropAnimations: defaultPropAnimations,
     detectPlaybarControlElem: detectPlaybarControlElem,
     getPropJson: getPropJson
@@ -60,7 +57,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
   function getPropJson(struct, cb) {
     if (!struct) return;
-
       var request_type = 'GET';
       var url = '/admin/spec/property.json';
       XHRService.getJSONFile(request_type, url, cb, struct)
@@ -176,14 +172,19 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       var elemParent = elemChild.parentNode;
       elemChild.parentNode.removeChild(elem);
       elem.setAttribute('inspector-elem', state_name);
-      $compile(document.querySelector('#gadget-player'))($rootScope);
+      elemParent.appendChild(elem);
+
+      // $timeout(function() {
+      //   $compile(elemParent)($rootScope);
+      // })
       $timeout(function() {
 
-        elemParent.appendChild(elem);
-        $compile(elemParent)($rootScope)
+
+
+        $compile(angular.element(document.querySelector('#gadget-player')))($rootScope);
         var argsDict = {};
 
-      }, 1000)
+      }, 100)
     }
   }
 
@@ -232,16 +233,24 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
               playerObj.tweenConfig.easing.propControl += prop.easing + ' '
 
             }
+            //transform
             else if (prop.type && playerObj.tweenConfig.easing && prop.type in playerObj.tweenConfig.easing)  {
               prop.easing = playerObj.tweenConfig.easing[prop.type]
               playerObj.tweenConfig.easing.propControl += prop.easing + ' ';
-            } else if (playerObj.tweenConfig.easing && prop.name in playerObj.tweenConfig.easing) {
-              prop.easing =  playerObj.tweenConfig.easing[prop.name];
-              playerObj.tweenConfig.easing.propControl += prop.easing + ' ';
+            }
+
+            //standard
+            else if (playerObj.tweenConfig.easing && typeof playerObj.tweenConfig.easing === 'string') {
+              var initialEasing = playerObj.tweenConfig.easing + '';
+              playerObj.tweenConfig.easing = {ballControl: 'linear'};
+              playerObj.tweenConfig.easing[prop.name] = initialEasing || prop.easing || 'linear';
+              if (!playerObj.tweenConfig.easing.propControl) {
+                playerObj.tweenConfig.easing.propControl = prop.easing;
+              }
             }
             else if (!prop.name){
               prop.easing = 'linear';
-              playerObj.tweenConfig.easing = {};
+              playerObj.tweenConfig.easing = {ballControl: 'linear'};
               playerObj.tweenConfig.easing.name = prop.easing || 'linear'
               playerObj.tweenConfig.easing.propControl = playerObj.tweenConfig.easing.name
             } else if (prop.name && !playerObj.tweenConfig.easing) {
@@ -252,10 +261,10 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
             }
 
 
-            playerObj.state.propertyControls.push(prop.control);
-          } else {
-
           }
+          playerObj.state.propertyControls.push(prop.control);
+
+          console.log(playerObj.tweenConfig, prop.name)
       })
 
 
@@ -445,13 +454,16 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     function applyPropToElem(state, args, time) {
+
+      if (!time) return;
+
       var skipArgs;
       if (args.control && args.control.ball) {
         args.control.ball.elem.style.transform =  state['ballControl'];
         args.control.time.elem.innerHTML = formatTime(time, args.control.time)
       }
 
-      if (args.prefs && args.prefs.showProps) {
+      if (args.prefs && args.prefs.showProps && time > 0) {
 
         args.state.propertyControls.forEach(function(prop, i) {
           if (Math.abs(prop.time - time) > 2 * defaults.FPS_SIXTY) return;
@@ -461,7 +473,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           var propValue = state[propName];
           prop.ball.elem.style.transform = ballValue;
           prop.time = time;
-          prop.valueElem.innerHTML = propValue.split(' ').length === 1 && propValue || propValue.split(' ')[i].split('(')[1].replace(')', '');
+          prop.valueElem.innerHTML = (propValue.split(' ').length >= 1 && propName.toLowerCase() !== 'transform') || propValue.split(' ')[i].split('(')[1].replace(')', '');
           if (args.skip && args.skip.length && prop.active) {
             console.log('skipProp', args.skip, propValue)
             skipArgs = {value:propValue, name: propName}
@@ -478,7 +490,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       args.inspect && args.prefs.showLog && args.state.active && console.log('\n@ T = ' + time +'ms\n-----------');
 
       for (prop in state) {
-        if (args.inspect && args.skipProp && args.skipProp.indexOf(prop) > -1) {
+        if (time > 0 && args.inspect && args.skipProp && args.skipProp.indexOf(prop) > -1) {
           console.log('skipping', prop);
           continue
         };
@@ -652,6 +664,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         }
         player = player.init(player, true);
         player.tween.tween();
+        console.log(player.tween.get())
       }
     }
 
@@ -772,6 +785,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         elemAnimStates = playerObj.prefs.showStates(playerObj);
         playerObj.prefs.elemAnimStates = elemAnimStates
       }
+      console.log(playerObj.tweenConfig, playerObj.tween.get())
       return playerObj
     }
 
@@ -833,6 +847,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     for (var i = 0; i < arg_arr.length; i++) {
+      console.log(arg_arr)
       switch(i) {
         //potential start
         case (0):
@@ -850,7 +865,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           pObj.ease = verifyAndProcessEaseArg(pObj, arg_arr[i], property, apply_default, allTweens.slice());
           continue;
         case (4):
-          pObj.delay = processDuration(arg_arr[i], property, apply_default);
+            pObj.delay = processDuration(arg_arr[i], property, apply_default);
+
           continue;
       }
     }
@@ -925,25 +941,5 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     if (!p_obj.timingFunction) p_obj.timingFunction = 0;
     return p_obj;
   }
-
-  function getBlacklistStates() {
-    return blacklistStates;
-  }
-
-  function detectAndInitAnimationProperty(name, value, _dict) {
-    if (!defaultPropAnimations || !Object.keys(defaultPropAnimations).length) {
-      getDefaultAnimProp(defaultPropAnimations);
-      $timeout(function() {
-        detectAndInitAnimationProperty(name, value, _dict);
-      }, 1000)
-      return;
-    }
-    //check
-    if (name in defaultPropAnimations || value.split(':').length > 2) {
-      console.log('ayy animation', name, value)
-    }
-  }
-
-
 
 }

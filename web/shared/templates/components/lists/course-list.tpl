@@ -3,7 +3,7 @@
 		<ul>
 			<li init-with="p-op"
 				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in]"
-				on-exit="a:[fadeOut:set:(dur:1000ms#func:ease-in-out):out]">
+				on-exit="p:[opacity:1:0:1000:easeInOutSine]">
 				<a class="course-list-item">
 					<div class="border">
 						<div></div><div></div><div></div><div></div>
@@ -14,7 +14,7 @@
 			</li>
 			<li init-with="p-op"
 				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-100]"
-				on-exit="a:[fadeOut:set:(dur:1000ms#func:ease-in-out):out]">
+				on-exit="p:[opacity:1:0:1000:easeInOutSine]">
 				<a class="course-list-item">
 					<div class="border">
 						<div></div><div></div><div></div><div></div>
@@ -25,7 +25,7 @@
 			</li>
 			<li init-with="p-op"
 				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-200]"
-				on-exit="a:[fadeOut:set:(dur:1000ms#func:ease-in-out):out]">
+				on-exit="p:[opacity:1:0:1000:easeInOutSine]">
 				<a class="course-list-item">
 					<div class="border">
 						<div></div><div></div><div></div><div></div>
@@ -36,7 +36,7 @@
 			</li>
 			<li init-with="p-op"
 				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-300]"
-				on-exit="a:[fadeOut:set:(dur:1000ms#func:ease-in-out):out]">
+				on-exit="p:[opacity:1:0:1000:easeInOutSine]">
 				<a class="course-list-item">
 					<div class="border">
 						<div></div><div></div><div></div><div></div>

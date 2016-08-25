@@ -37,15 +37,21 @@ function TweenService() {
         "easeInBack",
         "easeOutBack",
         "easeInOutBack",
+        "easeInOutBounce",
         // "easeInElastic", // easings.net or https://github.com/ai/easings.net/blob/master/vendor/jquery.easing.js
         // "easeOutElastic",
         // "easeInOutElastic",
+        // "easeInBounce",
+        // "easeOutBounce",
+        // "easeInOutBounce",
+
+        //
+
 		// "sway", // http://goo.gl/n3DjKQ
         // "hardSway", // http://goo.gl/xX8hna
-        // "easeInBounce",
-        "easeOutBounce",
-        // "easeInOutBounce",
+
         "elastic",
+
         "swingFromTo",
         "swingFrom",
         "swingTo",
@@ -64,6 +70,15 @@ function TweenService() {
 
     function getAllAnimatable() {
         return animatableProps;
+    }
+
+    function getCustomEasingFunction() {
+        return {
+            t: 'now',
+            b: 'start' || 0,
+            c: 'end' || 1,
+            d: 'duration' || 1000
+        }
     }
 
     function getKeyframeValues(start_dict, end_dict, duration, easeFunc, kf_arr, max_keyframe) {

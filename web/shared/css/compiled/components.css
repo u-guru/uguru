@@ -7790,7 +7790,15 @@ a.course-card:active .course-card-hover {
   position: relative;
   border-radius: 2px;
   background-position: center center;
-  background-size: cover; }
+  background-size: cover;
+  transform-origin: center center;
+  transition: all 150ms ease-in; }
+  .category-tile:hover, .category-tile:focus {
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+  .category-tile:active {
+    transform: translateZ(-20px);
+    transition: all 150ms ease-in; }
   .category-tile .category-tile-price {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -8352,7 +8360,15 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   border-radius: 2px;
   background: white;
   padding: 14px 19px;
-  padding-left: 22px; }
+  padding-left: 22px;
+  transform-origin: left top;
+  transition: all 150ms ease-in; }
+  .calendar-tile:hover, .calendar-tile:focus {
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+  .calendar-tile:active {
+    transform: translateZ(20px) rotate(15deg);
+    transition: all 150ms ease-in; }
   .calendar-tile div:empty {
     position: absolute;
     background: #69B3A5;
@@ -8467,7 +8483,18 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   display: -webkit-flex;
   display: flex;
   border-radius: 2px;
-  padding: 7.5px; }
+  padding: 7.5px;
+  transform-origin: center center;
+  transition: all 150ms ease-in;
+  background: #4c5559; }
+  .attachment-tile:hover, .attachment-tile:focus {
+    background: #637074;
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+  .attachment-tile:active {
+    background: #4c5559;
+    transform: translateZ(-20px);
+    transition: all 150ms ease-in; }
   .attachment-tile .attachment-tile-icon {
     width: 64px;
     height: 64px; }
@@ -8645,13 +8672,23 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 /*---------- MONEY TILES */
 .money-tile {
   position: relative;
-  background: #2B3234;
+  background: #373f42;
   border-radius: 4px;
   min-width: 128px;
   min-height: 128px;
   color: white;
   font-size: 48px;
-  font-weight: 600; }
+  font-weight: 600;
+  transform-origin: center center;
+  transition: all 150ms ease-in; }
+  .money-tile:hover, .money-tile:focus {
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2);
+    background: #43cb9d; }
+  .money-tile:active {
+    transform: translateZ(-20px);
+    transition: all 150ms ease-in;
+    background: #428a74; }
   .money-tile svg * {
     fill: none; }
   .money-tile .money-text, .money-tile .money-icon, .money-tile .money-input {
@@ -8674,7 +8711,8 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    transition: all 150ms ease-in-out; }
   .money-tile .money-icon svg {
     width: 50px;
     height: 50px; }
@@ -8715,15 +8753,6 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
         transform-origin: center top; }
     .money-tile .money-input div {
       position: relative; }
-      .money-tile .money-input div input {
-        font-size: 48px;
-        height: auto;
-        width: auto;
-        background: none !important;
-        max-width: 83px;
-        text-align: center;
-        font-weight: 600;
-        color: #40484B; }
       .money-tile .money-input div hr {
         border-radius: 1000px;
         position: absolute;
@@ -8733,7 +8762,29 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
         margin: 0;
         width: 100%;
         height: 2px;
-        background: rgba(64, 72, 75, 0.5); }
+        background: rgba(64, 72, 75, 0.5);
+        transform: all 150ms ease-in-out; }
+      .money-tile .money-input div input {
+        font-size: 48px;
+        height: auto;
+        width: auto;
+        background: none !important;
+        max-width: 83px;
+        text-align: center;
+        font-weight: 600;
+        color: #40484B; }
+        .money-tile .money-input div input:focus + hr {
+          background: rgba(64, 72, 75, 0.75); }
+  .money-tile .money-checkbox {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99; }
+    .money-tile .money-checkbox:checked ~ .money-text {
+      background: #42aa89; }
 
 /*---------- TILE GROUPS */
 .tile-group {
@@ -9136,11 +9187,21 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
   min-width: 450px;
   text-align: center; }
   .record-tile-container .record-tile {
+    display: block;
     position: relative;
     width: 85%; }
+    .record-tile-container .record-tile:hover .record-tile-back, .record-tile-container .record-tile:focus .record-tile-back {
+      transform: translateX(5%) !important;
+      transition-delay: 50ms !important; }
+      .record-tile-container .record-tile:hover .record-tile-back div, .record-tile-container .record-tile:focus .record-tile-back div {
+        transform: rotate(50deg) translateZ(0) !important; }
+    .record-tile-container .record-tile:hover .record-tile-front, .record-tile-container .record-tile:focus .record-tile-front {
+      transform: translateX(-5%) !important;
+      transition-delay: 50ms !important; }
     .record-tile-container .record-tile svg {
       fill: none; }
     .record-tile-container .record-tile .record-tile-front, .record-tile-container .record-tile .record-tile-back {
+      transition: all 150ms ease-out;
       position: absolute;
       top: 0;
       width: 100%;
@@ -9150,6 +9211,7 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
     .record-tile-container .record-tile .record-tile-back {
       right: -15%; }
       .record-tile-container .record-tile .record-tile-back div {
+        transition: all 1000ms cubic-bezier(0, 0.58, 0.33, 1.2);
         width: 100%;
         height: 100%; }
         .record-tile-container .record-tile .record-tile-back div svg {
@@ -9172,10 +9234,11 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
       align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
-      background: #8967d4;
       border-radius: 4px;
       padding: 15px; }
       .record-tile-container .record-tile .record-tile-front h1 {
+        position: relative;
+        z-index: 10;
         color: white;
         font-size: 36px;
         font-weight: 900;
@@ -9184,34 +9247,52 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
         @media screen and (min-width: 768px) {
           .record-tile-container .record-tile .record-tile-front h1 {
             font-size: 54px; } }
-      .record-tile-container .record-tile .record-tile-front div:empty {
+      .record-tile-container .record-tile .record-tile-front .record-tile-bg, .record-tile-container .record-tile .record-tile-front .record-art, .record-tile-container .record-tile .record-tile-front .record-tile-border {
         position: absolute;
-        background: white;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+      .record-tile-container .record-tile .record-tile-front .record-tile-bg {
+        z-index: 0;
+        background-color: #8069bc;
         border-radius: 4px; }
-        .record-tile-container .record-tile .record-tile-front div:empty:nth-child(1) {
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 15px;
-          transform-origin: right center; }
-        .record-tile-container .record-tile .record-tile-front div:empty:nth-child(2) {
-          top: 0;
-          right: 0;
-          width: 15px;
-          height: 100%;
-          transform-origin: center top; }
-        .record-tile-container .record-tile .record-tile-front div:empty:nth-child(3) {
-          bottom: 0;
-          right: 0;
-          width: 100%;
-          height: 15px;
-          transform-origin: left center; }
-        .record-tile-container .record-tile .record-tile-front div:empty:nth-child(4) {
-          bottom: 0;
-          left: 0;
-          width: 15px;
-          height: 100%;
-          transform-origin: center bottom; }
+      .record-tile-container .record-tile .record-tile-front .record-art {
+        opacity: 0.5;
+        z-index: 1;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover; }
+      .record-tile-container .record-tile .record-tile-front .record-tile-border {
+        z-index: 2; }
+        .record-tile-container .record-tile .record-tile-front .record-tile-border div:empty {
+          position: absolute;
+          background: white;
+          border-radius: 4px; }
+          .record-tile-container .record-tile .record-tile-front .record-tile-border div:empty:nth-child(1) {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            transform-origin: right center; }
+          .record-tile-container .record-tile .record-tile-front .record-tile-border div:empty:nth-child(2) {
+            top: 0;
+            right: 0;
+            width: 15px;
+            height: 100%;
+            transform-origin: center top; }
+          .record-tile-container .record-tile .record-tile-front .record-tile-border div:empty:nth-child(3) {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 15px;
+            transform-origin: left center; }
+          .record-tile-container .record-tile .record-tile-front .record-tile-border div:empty:nth-child(4) {
+            bottom: 0;
+            left: 0;
+            width: 15px;
+            height: 100%;
+            transform-origin: center bottom; }
     .record-tile-container .record-tile .record-tile-back {
       border-radius: 100%;
       background: #2B3234; }
@@ -9625,6 +9706,16 @@ a.category-tile.bg-academic.no-photo:active .category-tile-inside .category-tile
 
 input.chip:hover {
   cursor: text; }
+
+a.chip, input.chip {
+  transform-origin: center center;
+  transition: all 150ms ease-in; }
+  a.chip:hover, a.chip:focus, input.chip:hover, input.chip:focus {
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+  a.chip:active, input.chip:active {
+    transform: translateZ(-20px);
+    transition: all 150ms ease-in; }
 
 /* ---------- ADLIB TAGS */
 .tag-adlib-container {
@@ -13037,7 +13128,15 @@ input[type=range] {
   font-size: 18px;
   font-weight: 600;
   overflow: hidden;
-  border-left: 5px solid white; }
+  border-left: 5px solid white;
+  transform-origin: center center;
+  transition: all 150ms ease-in; }
+  .toast:hover, .toast:focus {
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+  .toast:active {
+    transform: translateZ(-20px);
+    transition: all 150ms ease-in; }
   .toast p, .toast q {
     width: 100%;
     line-height: 1.3 !important; }

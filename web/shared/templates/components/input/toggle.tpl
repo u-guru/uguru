@@ -1,6 +1,3 @@
-
-<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="5x" class="bottom-0 bg-azure" auto-play="true" step-size="100" play-infinite="false" > </inspector-gadget>
-
 <div class="perspective-container full-xy flex-center" types='default, time-period, round, white-round' default-type="default" reference="http://codepen.io/teamuguru/pen/6ddde9fa7dbff14ae4124d45341be8c5?editors=1100">
 	<div class="toggle-container" ng-if='activeType === "default"'
 		init-default
@@ -21,10 +18,8 @@
 					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
 
-				<!-- @samir, this particular state on line 22 is causing an error, and I can't seem to put in inspector-elem -->
 				<div init-with="p:[op:1]"
-				inspector-elem="when-input-enter"
-					when-input-enter="p:[opacity:1:0:750:easeOutSine, transform:scale(0):scale(2):1000:easeOutSine]:delay-500">
+					when-input-enter="p:[opacity:1:0:750:easeOutSine]:delay-500">
 					<div init-with="p:[tr:scale(0)]"
 						when-input-load="p:[transform:scale(0):scale(1):150:easeOutSine]"></div>
 					<div init-with="p:[tr:scale(0)]"
@@ -62,7 +57,6 @@
 					<span class="am">AM</span>
 					<span class="pm">PM</span>
 				</span>
-				<!-- @samir, this particular state on line 62 is causing an error, and I can't seem to put in inspector-elem -->
 				<div init-with="p:[op:1]"
 					when-input-enter="p:[opacity:1:0:750:easeOutSine]:delay-500">
 					<div init-with="p:[tr:scale(0)]"

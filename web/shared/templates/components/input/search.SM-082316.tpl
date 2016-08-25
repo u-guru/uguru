@@ -1,14 +1,14 @@
-<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.2x" class="bottom-0 bg-azure" auto-play="false" step-size="100" play-infinite="false"> </inspector-gadget>
-
 <div class="perspective-container full-xy flex-center p15xy">
     <fieldset class="search-bar"
-        init-with="p:[op:0, width:48px]"
-        on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in] | s:[search-bar-init:public]"
-        inspector-elem="when-search-bar-clicked"
-        when-search-bar-clicked="p:[width:48px:500px:1000:easeOutSine,background-color:rgba(255#255#255#1):rgba(0#255#0#0.5):1000:easeOutSine]"
-        on-click="s:[search-bar-clicked:public]">
+        init-with="p:[op:1, width:48px, transform:translateX(-500px)]"
+        on-init="s:[search-bar-init:public] | p:[transform:translateX(-500px):translateX(0px):1000:easeInOutBounce]:delay-500"
+        when-search-bar-clicked="p:[width:48px:500px:250:easeOutBack]"
+
+        on-click="s:[search-bar-clicked:public]"
+        on-exit="p:[opacity:1:0:250:easeOutSine]">
         <div>
-            <label for="search-bar">
+            <label for="search-bar"
+                init-default>
                 <svg viewBox="0 0 100 100">
                     <path d="M62.994485,62.994485 L85.6624699,85.6624699"
                         init-with="p:[sda:32.06, sdo:32.06]"

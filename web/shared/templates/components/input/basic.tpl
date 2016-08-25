@@ -6,7 +6,7 @@
 			<label init-with="p-op"
 				on-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-250]">Label</label>
 			<input type="text" placeholder="This is an basic input" init-with="p-op"
-				on-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-500]"/>
+				on-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-380]"/>
 		</fieldset>
 	</div>
 
@@ -17,7 +17,7 @@
 			<label class="txt-taupe" init-with="p-op"
 				on-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-250]">Label</label>
 			<input class="dark" type="text" placeholder="This is an basic input" init-with="p-op"
-				on-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-500]"/>
+				on-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in:delay-380]"/>
 		</fieldset>
 	</div>
 </div>
