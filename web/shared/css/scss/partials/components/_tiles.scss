@@ -2241,6 +2241,16 @@
 	border-radius: 2px;
 	background-position: center center;
 	background-size: cover;
+	transform-origin: center center;
+	transition: all 150ms ease-in;
+	&:hover, &:focus {
+		transform: translateZ(20px);
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
+	}
+	&:active {
+		transform: translateZ(-20px);
+		transition: all 150ms ease-in;
+	}
 	.category-tile-price {
 		@include flex;
 		@include flex-center;
@@ -3076,6 +3086,16 @@ a.category-tile {
 	background: white;
 	padding: 14px 19px;
 	padding-left: 22px;
+	transform-origin: left top;
+	transition: all 150ms ease-in;
+	&:hover, &:focus {
+		transform: translateZ(20px);
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
+	}
+	&:active {
+		transform: translateZ(20px) rotate(15deg);
+		transition: all 150ms ease-in;
+	}
 	div:empty {
 		position: absolute;
 		background: $shamrock;
