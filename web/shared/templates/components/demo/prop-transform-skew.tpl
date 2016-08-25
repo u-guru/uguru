@@ -107,8 +107,8 @@
 		</li>
 		<li class="flex-center-wrap">
 			<div class="playing-card play-heart"
-				init-with="p:[]"
-				on-init="p:[]">
+				init-with="p:[tr:skewX(40deg)]"
+				on-init="p:[transform:skewX(40deg):skewX(0deg):1000:easeOutCubic]">
 				<div class="playing-card-back bg-auburn"></div>
 				<div class="playing-card-front">
 					<svg viewBox="0 0 250 350">
@@ -124,11 +124,12 @@
 					</svg>
 				</div>
 			</div>
+			<h1 class='txt-18 semibold full-x txt-center txt-slate m05top'>skewX + easeOutCubic</h1>
 		</li>
 		<li class="flex-center-wrap">
 			<div class="playing-card play-heart"
-				init-with="p:[]"
-				on-init="p:[]">
+				init-with="p:[tr:translateY(500px) skewX(-105deg), tro:center top]"
+				on-init="p:[transform:translateY(300px) skewX(-105deg):translateY(0px) skewX(0deg):500:easeOutQuad easeOutBack]">
 				<div class="playing-card-back bg-auburn"></div>
 				<div class="playing-card-front">
 					<svg viewBox="0 0 250 350">
@@ -144,11 +145,12 @@
 					</svg>
 				</div>
 			</div>
+			<h1 class='txt-18 semibold full-x txt-center txt-slate m05top'>Fish tail: translateY + skewX + easeOutQuad + easeOutBack</h1>
 		</li>
 		<li class="flex-center-wrap">
 			<div class="playing-card play-heart"
-				init-with="p:[]"
-				on-init="p:[]">
+				init-with="p:[tr:skewX(40deg) skewY(90deg)]"
+				on-init="p:[transform:skewX(40deg) skewY(90deg):skewX(0deg) skewY(0deg):1000:elastic easeOutBounce]">
 				<div class="playing-card-back bg-auburn"></div>
 				<div class="playing-card-front">
 					<svg viewBox="0 0 250 350">
@@ -164,11 +166,12 @@
 					</svg>
 				</div>
 			</div>
+			<h1 class='txt-18 semibold full-x txt-center txt-slate m05top'>skewX + elastic + skewY</h1>
 		</li>
 		<li class="flex-center-wrap">
 			<div class="playing-card play-heart"
-				init-with="p:[]"
-				on-init="p:[]">
+				init-with="p:[transform:scaleY(3) skewY(30deg), tro:right top]"
+				on-init="p:[transform:scaleY(3) skewY(30deg):scaleY(1) skewY(0deg):500: easeInQuint bounce]">
 				<div class="playing-card-back bg-auburn"></div>
 				<div class="playing-card-front">
 					<svg viewBox="0 0 250 350">
@@ -184,11 +187,12 @@
 					</svg>
 				</div>
 			</div>
+			<h1 class='txt-18 semibold full-x txt-center txt-slate m05top'>scaleY + skewY + easeInQuint</h1>
 		</li>
 		<li class="flex-center-wrap">
 			<div class="playing-card play-heart"
-				init-with="p:[]"
-				on-init="p:[]">
+				init-with="p:[transform:skewX(360deg) skewY(-6deg), tro:center bottom]"
+				on-init="p:[transform:skewX(360deg) skewY(-6deg):skewX(0deg) skewY(0deg):2000: easeInOutBack bounce]">
 				<div class="playing-card-back bg-auburn"></div>
 				<div class="playing-card-front">
 					<svg viewBox="0 0 250 350">
@@ -204,6 +208,7 @@
 					</svg>
 				</div>
 			</div>
+			<h1 class='txt-18 semibold full-x txt-center txt-slate m05top'>skewX + skewY + easeInOutBack</h1>
 		</li>
 	</ul>
 </div>
