@@ -6,10 +6,12 @@ angular.module('uguru.shared.services')
     'TweenService',
     'RootService',
     'XHRService',
+    '$compile',
+    '$rootScope',
     PropertyService
         ]);
 
-function PropertyService($timeout, $state, UtilitiesService, TweenService, RootService, XHRService) {
+function PropertyService($timeout, $state, UtilitiesService, TweenService, RootService, XHRService, $compile, $rootScope) {
   var blacklistStates = ['init-with', 'init-later'];
   var defaultPropAnimations = {};
   var rFrameEasingCache = {};
@@ -79,7 +81,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   }
 
   function getFrameAnimationFunc(elem, property, arg_arr, state_name, apply_default, player) {
-
     var previous_player = player || null;
     if (!property) console.log('ERROR: Missing property');
 
@@ -158,15 +159,55 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           filledPreferences.hideProp[prop] = true;
         }
       })
-      console.log(filledPreferences.hideProp)
-
-    // }
-
     }
 
 
-
+    filledPreferences.showStates = getPlayerPropertyAnimations(player.elem)
+    filledPreferences.switchStateTo = recompileElement(player.elem);
     player.prefs = filledPreferences
+  }
+
+  function recompileElement(elem) {
+    return function(player, state) {
+      var state_name = state.name;
+      var state_value = state.value;
+
+      var elemChild = elem;
+      var elemParent = elemChild.parentNode;
+      elemChild.parentNode.removeChild(elem);
+      elem.setAttribute('inspector-elem', state_name);
+      $compile(document.querySelector('#gadget-player'))($rootScope);
+      $timeout(function() {
+
+        elemParent.appendChild(elem);
+        $compile(elemParent)($rootScope)
+        var argsDict = {};
+
+      }, 1000)
+    }
+  }
+
+  function getPlayerPropertyAnimations(elem) {
+    return function(player) {
+      var searchValues = ['inspector-elem', 'p:['];
+      var currentlyActive;
+      var resultAttr = [];
+      for (var i = 0; i < elem.attributes.length; i++) {
+        var attrName = elem.attributes[i].name;
+        var attrValue = elem.attributes[i].value;
+        if (attrName.indexOf(searchValues[0]) > -1) {
+          currentlyActive = attrValue.split('-').join(' ').toUpperCase();
+          continue
+        }
+        if (attrValue.indexOf(searchValues[1]) > -1) {
+          resultAttr.push(elem.attributes[i])
+        }
+      }
+
+      player.prefs.elemAnimStates = resultAttr;
+      player.prefs.activeState = currentlyActive
+      return resultAttr
+    }
   }
 
   function applyShowOptionPropertySpecificPlayerToTweenConfig(playerObj) {
@@ -727,6 +768,10 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         !skip && playerObj.prefs && playerObj.prefs.playInfinite && playerObj.play();
       })
       playerObj.prefs && playerObj.prefs.startAt && playerObj.tween.seek(0).seek(playerObj.prefs.startAt.seek);
+      if (playerObj.prefs) {
+        elemAnimStates = playerObj.prefs.showStates(playerObj);
+        playerObj.prefs.elemAnimStates = elemAnimStates
+      }
       return playerObj
     }
 
