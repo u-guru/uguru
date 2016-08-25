@@ -246,23 +246,28 @@
 			<div class="pf-cardlet-back-container">
 				<div class="pf-cardlet-back"
 					init-with="p:[op:0, tro:center center]"
-					when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]"></div>
+					when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<div init-with="p:[tr:scaleX(0)]" when-tech-cardlet-init="p:[tr:scaleX(1):delay-150, t:transform 250ms ease-out]"></div>
-					<div init-with="p:[tr:scaleY(0)]" when-tech-cardlet-init="p:[tr:scaleY(1):delay-350, t:transform 250ms ease-out]"></div>
-					<div init-with="p:[tr:scaleX(0)]" when-tech-cardlet-init="p:[tr:scaleX(1):delay-600, t:transform 250ms ease-out]"></div>
-					<div init-with="p:[tr:scaleY(0)]" when-tech-cardlet-init="p:[tr:scaleY(1):delay-350, t:transform 250ms ease-out]"></div>
-					<div init-with="p:[tr:scaleX(0)]" when-tech-cardlet-init="p:[tr:scaleX(1):delay-600, t:transform 250ms ease-out]"></div>
+					<div init-with="p:[tr:scaleX(0)]"
+					 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
+					<div init-with="p:[tr:scaleY(0), tro:center top]"
+						when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+					<div init-with="p:[tr:scaleX(0)]"
+					 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+					<div init-with="p:[tr:scaleY(0), tro: center top]"
+						when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+					<div init-with="p:[tr:scaleX(0)]"
+					 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
 					<h1>When to Replace Your Phone</h1>
 					<div>
 						<div init-with="p-op"
-							when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-850]"></div>
+							when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
 						<h2 init-with="p-op"
-							when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-750]">03/28/2016</h2>
+							when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
 						<div init-with="p-op"
-							when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-850]"></div>
+							when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
 					</div>
 				</div>
 			</div>

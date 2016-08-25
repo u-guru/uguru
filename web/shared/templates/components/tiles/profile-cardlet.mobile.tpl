@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="baking">
+<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="tech">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -200,7 +200,7 @@
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "tech"'
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-		on-init="s:[tech-cardlet-init:public]"
+		on-init="send:[tech-cardlet-init:public]"
 		when-tech-cardlet-init="p:[op:1, tr:none]"
 		when-tech-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
@@ -215,10 +215,20 @@
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<div></div><div></div><div></div><div></div><div></div>
+						<div init-with="p:[tr:scaleX(0)]"
+						 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):150:easeOutSine]"></div>
+						<div init-with="p:[tr:scaleY(0), tro:center top]"
+							when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):150:easeOutSine]:delay-550"></div>
+						<div init-with="p:[tr:scaleX(0)]"
+						 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):150:easeOutSine]:delay-1200"></div>
+						<div init-with="p:[tr:scaleY(0), tro: center top]"
+							when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):150:easeOutSine]:delay-550"></div>
+						<div init-with="p:[tr:scaleX(0)]"
+						 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):150:easeOutSine]:delay-1200"></div>
 					<h1>When to Replace Your Phone</h1>
 					<div>
-						<div></div>
+						<div init-with="p-op"
+							when-tech-cardlet-init=""></div>
 						<h2>03/28/2016</h2>
 						<div></div>
 					</div>
