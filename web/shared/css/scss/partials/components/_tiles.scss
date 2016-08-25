@@ -3497,13 +3497,25 @@ a.category-tile {
 /*---------- MONEY TILES */
 .money-tile {
 	position: relative;
-	background: $charcoal;
+	background: lighten($charcoal, 5%);
 	border-radius: 4px;
 	min-width: 128px;
 	min-height: 128px;
 	color: white;
 	font-size: 48px;
 	font-weight: 600;
+	transform-origin: center center;
+	transition: all 150ms ease-in;
+	&:hover, &:focus {
+		transform: translateZ(20px);
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
+		background: $moxie;
+	}
+	&:active {
+		transform: translateZ(-20px);
+		transition: all 150ms ease-in;
+		background: mix($moxie, $slate);
+	}
 	svg {
 		* {
 			fill: none;
@@ -3517,6 +3529,7 @@ a.category-tile {
 		left: 0;
 		width: 100%;
 		height: 100%;
+		transition: all 150ms ease-in-out;
 	}
 	.money-icon {
 		svg {
@@ -3571,16 +3584,6 @@ a.category-tile {
 		}
 		div {
 			position: relative;
-			input {
-				font-size: 48px;
-				height: auto;
-				width: auto;
-				background: none!important;
-				max-width: 83px;
-				text-align: center;
-				font-weight: 600;
-				color: $slate;
-			}
 			hr {
 				@include round;
 				position: absolute;
@@ -3591,6 +3594,34 @@ a.category-tile {
 				width: 100%;
 				height: 2px;
 				background: rgba($slate, .5);
+				transform: all 150ms ease-in-out;
+			}
+			input {
+				font-size: 48px;
+				height: auto;
+				width: auto;
+				background: none!important;
+				max-width: 83px;
+				text-align: center;
+				font-weight: 600;
+				color: $slate;
+				&:focus + hr {
+					background: rgba($slate, .75);
+				}
+			}
+		}
+	}
+	.money-checkbox {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 99;
+		&:checked {
+			~ .money-text {
+				background: mix($moxie, $slate, 75%);
 			}
 		}
 	}
