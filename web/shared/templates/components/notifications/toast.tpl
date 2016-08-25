@@ -16,7 +16,7 @@
 			init-with="p-op"
 			on-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-250]"></span>
 		<div init-with="p-op"
-			on-init="a:[fadeIn:set:(dur:500ms#func:ease-out):in:delay-250]">
+			on-init="p:[opacity:0:1:500:easeOutSine]:delay-250">
 			<p>Gabrielle sent you a new message!</p>
 			<q>I'm at the library, where are you?</q>
 		</div>
@@ -29,10 +29,7 @@
 
 	<div class="toast bg-smoke border-academic toast-icon toast-hover" ng-if='activeType === "icon-hover"'
 		init-with="p-op"
-		on-init="a:[bounceInLeft-subtle:set:(dur:800ms#func:linear):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[bounceInLeft-subtle:set:(dur:800ms#func:linear):in]">
 		<div class="toast-overlay" tabindex="1">
 			<ul>
 				<li>
@@ -47,7 +44,7 @@
 			init-with="p-op"
 			on-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-250]"></span>
 		<div init-with="p-op"
-			on-init="a:[fadeIn:set:(dur:500ms#func:ease-out):in:delay-250]">
+			on-init="p:[opacity:0:1:500:easeOutSine]:delay-250">
 			<p>Gabrielle sent you a new message!</p>
 			<q>I'm at the library, where are you?</q>
 		</div>
@@ -60,10 +57,7 @@
 
 	<div class="toast bg-slate border-moxie toast-input toast-icon" ng-if='activeType === "icon-input"'
 		init-with="p-op"
-		on-init="a:[bounceInLeft-subtle:set:(dur:800ms#func:linear):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[bounceInLeft-subtle:set:(dur:800ms#func:linear):in]">
 		<span class="toast-svg"
 			init-with="p-op"
 			on-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-250]">
@@ -72,7 +66,7 @@
 			</svg>
 		</span>
 		<div init-with="p-op"
-			on-init="a:[fadeIn:set:(dur:500ms#func:ease-out):in:delay-250]">
+			on-init="p:[opacity:0:1:500:easeOutSine]:delay-250">
 			<p>Activate your account</p>
 			<input placeholder="Add school email now"/>
 		</div>
@@ -85,10 +79,7 @@
 
 	<div class="toast bg-smoke toast-input toast-icon" ng-if='activeType === "icon-input-button"'
 		init-with="p-op"
-		on-init="a:[bounceInLeft-subtle:set:(dur:800ms#func:linear):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[bounceInLeft-subtle:set:(dur:800ms#func:linear):in]">
 		<span class="toast-svg"
 			init-with="p-op"
 			on-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-250]">
@@ -97,7 +88,7 @@
 			</svg>
 		</span>
 		<div init-with="p-op"
-			on-init="a:[fadeIn:set:(dur:500ms#func:ease-out):in:delay-250]">
+			on-init="p:[opacity:0:1:500:easeOutSine]:delay-250">
 			<p>Activate your account</p>
 			<div class="input-button">
 				<input placeholder="Add school email now"/>
@@ -113,12 +104,9 @@
 
 	<div class="toast bg-smoke txt-moxie border-moxie toast-cta" ng-if='activeType === "cta"'
 		init-with="p-op"
-		on-init="a:[bounceInLeft-subtle:set:(dur:800ms#func:linear):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[bounceInLeft-subtle:set:(dur:800ms#func:linear):in]">
 		<p init-with="p-op"
-			on-init="a:[fadeIn:set:(dur:500ms#func:ease-out):in:delay-150]">Your money is here! Update your bank preferences</p>
+			on-init="p:[opacity:0:1:500:easeOutSine]:delay-150">Your money is here! Update your bank preferences</p>
 		<button init-with="p-op"
 			on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in] | p:[tro:right bottom]">Update Now</button>
 		<a class="close-icon">
@@ -130,10 +118,7 @@
 
 	<div class="toast bg-household toast-cta toast-icon" ng-if='activeType === "cta-icon"'
 		init-with="p-op"
-		on-init="a:[bounceInLeft-subtle:set:(dur:800ms#func:linear):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[bounceInLeft-subtle:set:(dur:800ms#func:linear):in]">
 		<span class="toast-svg"
 			init-with="p-op"
 			on-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-250]">
@@ -142,7 +127,7 @@
 			</svg>
 		</span>
 		<p init-with="p-op"
-			on-init="a:[fadeIn:set:(dur:500ms#func:ease-out):in:delay-250]">You have <strong>12 Household</strong><br/>guru matches</p>
+			on-init="p:[opacity:0:1:500:easeOutSine]:delay-250">You have <strong>12 Household</strong><br/>guru matches</p>
 		<button init-with="p-op"
 			on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-250] | p:[tro:right bottom]">View Now</button>
 		<a class="close-icon">
