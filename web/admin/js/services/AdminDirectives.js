@@ -87,7 +87,24 @@ angular.module('uguru.admin')
                         var inspectorElems = parentView.querySelectorAll('[inspector-elem]');
                         var inspectorTriggers = parentView.querySelectorAll('[inspect-trigger]');
                         var autoTriggerStates = [];
+                        for (var i = 0; i < inspectorElems.length; i++) {
+                            var stateName = inspectorElems[i].getAttribute('inspector-elem');
+                            if (stateName.indexOf('when') > -1) {
+                                var stateNameCamel;
+                                if (stateName.indexOf('|d-') > -1) {
+                                    var stateNameSplit = stateName.split('|d-');
+                                    var delay = parseFloat(stateNameSplit[1]);
+                                    stateNameCamel = UtilitiesService.camelCase(stateNameSplit[0])
+                                    console.log(stateNameCamel, delay)
+                                    $timeout(function() {
+                                        scope.root.public.customStates.when[stateNameCamel] = true;
+                                    }, delay)
+
+                                }
+                            }
+                        }
                         $timeout(function() {
+
                             $timeout(function() {
                                 $compile(element[0])(scope);
                                 scope.$apply()

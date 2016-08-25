@@ -26,9 +26,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       _class: ['add', 'remove', 'set']
     }
 
-    $timeout(function() {
-      PropertyService.getDefaultAnimProp()
-    })
+
 
     return {
         // slide: slide,
@@ -756,17 +754,17 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs, i);
 
 
-          if (kvPairSplit.length > 2 || (type === 'prop' && key in PropertyService.defaultPropAnimations)) {
+          if (kvPairSplit.length > 2) {
 
 
             parsedPropDict = processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
-            if (key in PropertyService.defaultPropAnimations) {
+            // if (key in PropertyService.defaultPropAnimations) {
 
-              if (!('custom' in parsedPropDict)) {
-                parsedPropDict['custom'] = '';
-              }
-              parsedPropDict['default'] = true;
-            }
+            //   if (!('custom' in parsedPropDict)) {
+            //     parsedPropDict['custom'] = '';
+            //   }
+            //   parsedPropDict['default'] = true;
+            // }
             processCustomArgsArray(type, key, value, string_args, parsedPropDict, custom_args, state_name, elem, hasPlayer);
           }
           propDict[base_dict_key].push(parsedPropDict);
@@ -784,12 +782,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function processCustomArgsArray(type, split_key, split_value, orig_str, arg_dict, d_custom_args, state_name, elem, hasPlayer) {
-      var blacklistStates = PropertyService.getBlacklistStates();
-      if (type === 'prop' && state_name && blacklistStates.indexOf(state_name) > -1) {
-        delete arg_dict['default']
-        delete arg_dict['custom'];
-        return;
-      }
       var hasDefault = 'default' in arg_dict;
       if (areCustomArgsPropertyAnimation(type, arg_dict)) {
 

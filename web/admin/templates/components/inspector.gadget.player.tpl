@@ -104,8 +104,10 @@
             </a>
         </div>
         <div class='m10y p15left player absolute' style='width:65%; left:10%; top:10%;' ng-mouseup="player.jumpTo($event)">
-            <hr class='full-x relative' inspector-bar>
-            <div class='m05y round bg-{{player.prefs.ballColor || "azure"}} z-index-99 top-0 absolute p15-grid' inspector-ball> </div>
+            <hr class='full-x relative' inspector-bar/>
+            <hr class='full-x opacity-50p bg-transparent border-4 border-solid border-slate z-index-99 top-0 absolute right-0' style='max-width:98.5%;left:1.5%;' ng-if='player.delay.offset' inspector-end-early/>
+            <hr class='full-x opacity-50p bg-transparent border-4 border-solid border-slate z-index-99 top-0 absolute right-0' style='max-width:98.5%;left:1.5%;' ng-if='player.delay.offset' inspector-delay />
+            <div class='m05y round bg-{{player.prefs.ballColor || "azure"}} z-index-1000 top-0 absolute p15-grid' inspector-ball> </div>
             <div class='full-x flex-end'>
                 <div class='z-index-99 top-0 m10y p10y right-0 absolute p15-grid weight-900 p05y' style='margin-right:-20px;'>
                     <span class='weight-900 txt-5 txt-white' inspector-time></span><span style='margin-left:-10px;' class='opacity-50p txt-3'>/{{player.tweenConfig.durationFormatted}} </span>
