@@ -271,12 +271,15 @@
             "ticket": {
                 "filename": "ticket.tpl",
                 "types": ["guru", "student"],
-				"versions": [],
+				"versions": ["JO-082516"],
+                "versionVars": {
+                    "JO-082516": { "ticket-slider-container" : {"initWith": "p:[opacity:0, transform:translateX(-50%) skewX(-15deg), tro:right center]"}}
+                },
                 "contact": "JO",
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
@@ -310,7 +313,7 @@
                 "status": {
                     "static": true,
                     "responsive": true,
-                    "animated": false,
+                    "animated": true,
                     "cross-platform": false,
                     "complete" : false,
                     "performance": false
