@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="tech">
+<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="household">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -34,8 +34,8 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-back-container"
-				init-with="p:[tr:translate3d(-7.5px#-7.5px#0), t:all 450ms ease-out]"
-				when-default-cardlet-init="p:[tr:none:delay-500]">
+				init-with="p:[transform:translateX(-7.5px) translateY(-7.5px) translateZ(0)]"
+				when-default-cardlet-init="p:[transform:translateX(-7.5px) translateY(-7.5px) translateZ(0):translateX(0px) translateY(0px) translateZ(0):450:easeOutSine easeOutSine easeOutSine]:delay-500">
 				<div class="pf-cardlet-back" style="background-image: url('http://cdn1.pri.org/sites/default/files/styles/story_main/public/story/images/leonardo_da_vinci_studi_di_carri_dassalto_falcati_0.jpg?itok=V1_nRmK3');"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container">
@@ -79,8 +79,8 @@
 				<div class="pf-cardlet-front" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
 			</div>
 			<div class="pf-cardlet-back-container"
-				init-with="p:[tr:translate3d(-7.5px#-7.5px#0), t:all 450ms ease-out]"
-				when-academic-cardlet-init="p:[tr:none:delay-500]">
+				init-with="p:[transform:translateX(-7.5px) translateY(-7.5px) translateZ(0)]"
+				when-academic-cardlet-init="p:[transform:translateX(-7.5px) translateY(-7.5px) translateZ(0):translateX(0px) translateY(0px) translateZ(0):450:easeOutSine easeOutSine easeOutSine]:delay-500">
 				<div class="pf-cardlet-back" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container"
@@ -296,20 +296,26 @@
 					<div class="pf-cardlet-overlay"></div>
 				</div>
 			</div>
-			<div class="pf-cardlet-back-container">
+			<div class="pf-cardlet-back-container"
+				init-with="p:[transform:translateX(-7.5px) translateY(-7.5px) translateZ(0)]"
+				when-household-cardlet-init="p:[transform:translateX(-7.5px) translateY(-7.5px) translateZ(0):translateX(0px) translateY(0px) translateZ(0):450:easeOutSine easeOutSine easeOutSine]:delay-500">
 				<div class="pf-cardlet-back"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container">
 				<div class="pf-cardlet-bottom">
-					<h1>How to Make Your Plants Live Longer</h1>
+					<h1 init-with="p-op"
+						when-household-cardlet-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in]:delay-500">How to Make Your Plants Live Longer</h1>
 					<div>
-						<div class="pf-cardlet-border">
+						<div class="pf-cardlet-border"
+							init-with="p:[tr:scale(0), tro:right bottom]"
+							when-household-cardlet-init="p:[transform:scale(0):scale(1):1000:easeOutBack]:delay-250">
 							<div></div>
 							<div></div>
 							<div></div>
 							<div></div>
 						</div>
-						<h2>03/28/2016</h2>
+						<h2 init-with="p-op"
+							when-household-cardlet-init="p:[opacity:0:1:250:linear]:delay-250">03/28/2016</h2>
 					</div>
 				</div>
 			</div>
