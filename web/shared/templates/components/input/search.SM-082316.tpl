@@ -1,7 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy">
     <fieldset class="search-bar"
         init-with="p:[op:1, width:48px]"
-        on-init="s:[search-bar-init:public] | p:[transform:translateX(-1000px):translateX(250px):1000:easeInOutBounce]"
+        on-init="s:[search-bar-init:public] | p:[transform:translateX(1000px):translateX(0px):3000:easeInOutElastic]:delay-500"
         when-search-bar-clicked="p:[width:48px:500px:250:easeOutBack]"
 
         on-click="s:[search-bar-clicked:public]"
