@@ -1,4 +1,4 @@
-<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.2x" class="bottom-0 bg-azure" auto-play="false" step-size="100" play-infinite="false"> </inspector-gadget>
+<inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.2x" class="bottom-0 bg-azure" auto-play="true" step-size="100" play-infinite="false"> </inspector-gadget>
 
 <div class="perspective-container full-xy flex-center-wrap p15xy">
 	<div class="message left"
