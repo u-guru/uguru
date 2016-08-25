@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-<!-- <inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" start-at="t:15%" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
-=======
-<!--
-<inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" start-at="t:15%" speed="1x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'>
->>>>>>> 4923c538fc402a3a38163bee9d79f1b7ce688f03
-</inspector-gadget> -->
+<!-- <inspector-gadget show-log="true" ball-color="smoke" reverse-speed="10" start-at="t:15%" speed="1x" class="bottom-0 bg-azure" auto-play="true" step-size="25" play-infinite="false" ng-if='root.inspector'></inspector-gadget> -->
 
 <div class="full-xy flex-center-wrap perspective-container">
 	<div class="flex-center full-x overflow-hidden" style="height:100px"
@@ -62,13 +56,8 @@
 		when-house-return="p:[animation:none] | s:[house-rotate:public:delay-1000]">
 		<!-- @samir when-house-return, see inspector when inspector-elem is on li, animation should be 50ms but is logged as 2500ms -->
 		<!-- ex: 2 inspect-trigger="when-house-return|2000" -->
-<<<<<<< HEAD
-		<li init-with="p:[op:0, tro:center center]"
-			when-house-stack="p:[opacity:0:1:100:linear]"
-=======
 		<li init-with="p:[op:0, tro:center center, t:all 500ms ease-out]"
 			when-house-stack="p:[opacity:0:1:50:linear]"
->>>>>>> 4923c538fc402a3a38163bee9d79f1b7ce688f03
 			when-house-return="a:[scale-hover:set:(dur:2000ms#func:linear#count:infinite):in]">
 			<!-- inspector-elem="when-house-stack" -->
 			<!-- @samir when-house-return, try adding opacity anim and check console -->

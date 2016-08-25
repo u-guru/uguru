@@ -1086,7 +1086,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
 
-
     function parseAfterArgs(arg_string, scope, elem) {
         var argSplit = arg_string.split(':');
 
@@ -1401,7 +1400,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           else {
 
 
-            indexPropDict.animProp.player.play();
+            indexPropDict.animProp && indexPropDict.animProp.player && indexPropDict.animProp.player.play &&  indexPropDict.animProp.player.play();
           }
           return;
         }

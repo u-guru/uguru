@@ -6,10 +6,12 @@ angular.module('uguru.shared.services')
     'TweenService',
     'RootService',
     'XHRService',
+    '$compile',
+    '$rootScope',
     PropertyService
         ]);
 
-function PropertyService($timeout, $state, UtilitiesService, TweenService, RootService, XHRService) {
+function PropertyService($timeout, $state, UtilitiesService, TweenService, RootService, XHRService, $compile, $rootScope) {
   var blacklistStates = ['init-with', 'init-later'];
   var defaultPropAnimations = {};
   var rFrameEasingCache = {};
@@ -79,7 +81,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
   }
 
   function getFrameAnimationFunc(elem, property, arg_arr, state_name, apply_default, player) {
-
     var previous_player = player || null;
     if (!property) console.log('ERROR: Missing property');
 
@@ -158,15 +159,55 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           filledPreferences.hideProp[prop] = true;
         }
       })
-      console.log(filledPreferences.hideProp)
-
-    // }
-
     }
 
 
-
+    filledPreferences.showStates = getPlayerPropertyAnimations(player.elem)
+    filledPreferences.switchStateTo = recompileElement(player.elem);
     player.prefs = filledPreferences
+  }
+
+  function recompileElement(elem) {
+    return function(player, state) {
+      var state_name = state.name;
+      var state_value = state.value;
+
+      var elemChild = elem;
+      var elemParent = elemChild.parentNode;
+      elemChild.parentNode.removeChild(elem);
+      elem.setAttribute('inspector-elem', state_name);
+      $compile(document.querySelector('#gadget-player'))($rootScope);
+      $timeout(function() {
+
+        elemParent.appendChild(elem);
+        $compile(elemParent)($rootScope)
+        var argsDict = {};
+
+      }, 1000)
+    }
+  }
+
+  function getPlayerPropertyAnimations(elem) {
+    return function(player) {
+      var searchValues = ['inspector-elem', 'p:['];
+      var currentlyActive;
+      var resultAttr = [];
+      for (var i = 0; i < elem.attributes.length; i++) {
+        var attrName = elem.attributes[i].name;
+        var attrValue = elem.attributes[i].value;
+        if (attrName.indexOf(searchValues[0]) > -1) {
+          currentlyActive = attrValue.split('-').join(' ').toUpperCase();
+          continue
+        }
+        if (attrValue.indexOf(searchValues[1]) > -1) {
+          resultAttr.push(elem.attributes[i])
+        }
+      }
+
+      player.prefs.elemAnimStates = resultAttr;
+      player.prefs.activeState = currentlyActive
+      return resultAttr
+    }
   }
 
   function applyShowOptionPropertySpecificPlayerToTweenConfig(playerObj) {
@@ -538,10 +579,13 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         var initialTo = player.tweenConfig.to;
         var initialFrom = player.tweenConfig.from;
         var initialDuration = player.tweenConfig.duration;
+
         parentRect = player.control.bar.elem.parentNode.getBoundingClientRect()
+        console.log(parentRect)
         ballRectLeft = player.control.ball.elem.getBoundingClientRect().left;
         var parentWidth = parentRect.width;
         var jumpToCoordX = $event.clientX - parentRect.left;
+        jumpToCoordX
         var reverse = ballRectLeft > jumpToCoordX;
 
         var jumpDict = {start: {}, end: {}};
@@ -549,42 +593,40 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         if (player.state.time > 0) {
           jumpDict.start.state =  player.state.time && player.tween.get();
           jumpDict.start.time = player.state.time;
-          // console.log('jumping with time already > 0 && reverse', reverse);
+          console.log('jumping with time already > 0 && reverse', reverse);
         } else if (reverse && !player.state.time) {
           jumpDict.start.state =  player.tweenConfig.to;
           jumpDict.start.time = player.tweenConfig.duration;
-          // console.log('jumping with animation complete && reverse', reverse);
+          console.log('jumping with animation complete && reverse', reverse);
         } else if (!reverse && !player.state.time) {
           jumpDict.start.time = 0;
           jumpDict.start.state = player.tween.get();
-          // console.log('jumping with time = 0')
+          console.log('jumping with time = 0')
         }
 
 
 
         jumpDict.end.time = parseInt(player.tweenConfig.duration * (jumpToCoordX/parentWidth));
         jumpDict.end.state = player.tween.pause().seek(jumpDict.end.time).get()
-        player.tween.seek(jumpDict.start.time)
-        player.tween.dispose()
 
-        player.tweenConfig.from = jumpDict.start.state;
-        player.tweenConfig.to = jumpDict.end.state;
-        player.tweenConfig.duration = Math.abs(jumpDict.end.time - jumpDict.start.time);
-        player.control.time.duration = player.tweenConfig.duration
-        player.control.time.reverse = reverse;
-        player.tweenConfig.finishCallback = function(player) {
+        player.control.time.reverse = jumpDict.end.time < jumpDict.start.time;
+
+
+        player.tweenConfig.finishCallback = function(player, $state) {
           player.tweenConfig.to = initialTo;
           player.tweenConfig.from = initialFrom;
           player.tweenConfig.finishCallback = null;
           player.control.time.reverse = false;
-          player.control.time.duration = initialDuration;
-          player.tweenConfig.duration = initialDuration;
           return player;
         }
+
+        player.tweenConfig.duration = player.tweenConfig.duration
         player = player.init(player, true);
-        player.tween.tween();
-
-
+        player.tween.tween()
+        if (player.tween.isPlaying()) {
+          player.tween.pause();
+        }
+        player.tween.seek(jumpDict.end.time)
       }
     }
 
@@ -617,7 +659,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       return function(property, value) {
         if (property in player.tweenConfig) {
           player.tweenConfig[property] = value;
-          player.reset(player, true);
+          player.init(player, true);
 
         }
       }
@@ -726,6 +768,10 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         !skip && playerObj.prefs && playerObj.prefs.playInfinite && playerObj.play();
       })
       playerObj.prefs && playerObj.prefs.startAt && playerObj.tween.seek(0).seek(playerObj.prefs.startAt.seek);
+      if (playerObj.prefs) {
+        elemAnimStates = playerObj.prefs.showStates(playerObj);
+        playerObj.prefs.elemAnimStates = elemAnimStates
+      }
       return playerObj
     }
 

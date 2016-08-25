@@ -3692,6 +3692,8 @@ fieldset.no-border * {
         height: 100%;
         transform-origin: center bottom; }
   .team-card .team-photo {
+    position: relative;
+    z-index: 1;
     border-radius: 2px 2px 0 0;
     width: 256px;
     height: 256px;
@@ -4209,13 +4211,15 @@ fieldset.no-border * {
 
 a.credit-card {
   transform-origin: center center;
-  transform: all 150ms ease-in; }
+  transition: all 150ms ease-in; }
   a.credit-card:hover, a.credit-card:focus {
-    transform: translateZ(20px); }
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
     a.credit-card:hover .credit-card-inside, a.credit-card:focus .credit-card-inside {
       background: #445560; }
   a.credit-card:active {
-    transform: translateZ(-20px); }
+    transform: translateZ(-20px);
+    transition: all 150ms ease-in; }
     a.credit-card:active .credit-card-inside {
       background: #2e3b42; }
 
@@ -4223,7 +4227,15 @@ a.credit-card {
   position: relative;
   margin: 0 auto;
   border-radius: 10px;
-  overflow: hidden; }
+  overflow: hidden;
+  transform-origin: center center;
+  transition: all 150ms ease-in; }
+  .university-card:hover, .university-card:focus {
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+  .university-card:active {
+    transform: translateZ(-20px);
+    transition: all 150ms ease-in; }
   .university-card.with-hover .school-card-hover {
     filter: alpha(opacity=0);
     opacity: 0;
@@ -4869,53 +4881,66 @@ a.credit-card {
   max-width: 240px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
-  .student-card.with-hover .school-id-hover {
-    filter: alpha(opacity=0);
-    opacity: 0;
-    transition: all 150ms ease-in-out;
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-    .student-card.with-hover .school-id-hover:hover, .student-card.with-hover .school-id-hover:focus {
-      filter: alpha(opacity=100);
-      opacity: 1; }
-    .student-card.with-hover .school-id-hover > span {
-      filter: alpha(opacity=95);
-      opacity: 0.95;
+  .student-card.with-hover {
+    transform-origin: center center;
+    transition: all 150ms ease-in; }
+    .student-card.with-hover:hover, .student-card.with-hover:focus {
+      transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2);
+      transform: translateZ(20px); }
+    .student-card.with-hover:active {
+      transition: all 150ms ease-in;
+      transform: translateZ(-20px); }
+    .student-card.with-hover .school-id-hover {
+      filter: alpha(opacity=0);
+      opacity: 0;
+      transition: all 150ms ease-in-out;
       position: absolute;
+      z-index: 10;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      color: white; }
-    .student-card.with-hover .school-id-hover > div {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      padding: 15px;
-      font-size: 18px;
-      font-weight: 600; }
+      height: 100%; }
+      .student-card.with-hover .school-id-hover:hover, .student-card.with-hover .school-id-hover:focus {
+        filter: alpha(opacity=100);
+        opacity: 1; }
+      .student-card.with-hover .school-id-hover > span {
+        filter: alpha(opacity=95);
+        opacity: 0.95;
+        display: block;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px; }
+      .student-card.with-hover .school-id-hover > div {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: 600;
+        color: white; }
   .student-card > svg {
     display: block;
     width: 100%;
@@ -5151,11 +5176,13 @@ a.credit-card {
   .course-card-svg .color {
     opacity: 0; }
   .course-card-svg:hover, .course-card-svg:focus {
-    transform: translateZ(20px); }
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
     .course-card-svg:hover .color, .course-card-svg:focus .color {
       opacity: 1; }
   .course-card-svg:active {
-    transform: translateZ(-20px); }
+    transform: translateZ(-20px);
+    transition: all 150ms ease-in; }
     .course-card-svg:active .color-background {
       fill: #637074; }
 
@@ -5166,9 +5193,11 @@ a.credit-card {
   transform-origin: center center;
   transition: all 150ms ease-in; }
   .course-card:hover, .course-card:focus {
-    transform: translateZ(20px); }
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
   .course-card:active {
-    transform: translateZ(-20px); }
+    transform: translateZ(-20px);
+    transition: all 150ms ease-in; }
   .course-card > svg {
     background: white;
     border-radius: 2px; }
@@ -5664,7 +5693,15 @@ a.course-card:active .course-card-hover {
   max-width: 350px;
   background: white;
   border-radius: 2px;
-  overflow: hidden; }
+  overflow: hidden;
+  transform-origin: center center;
+  transition: all 150ms ease-in; }
+  .request-card:hover, .request-card:focus {
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2);
+    transform: translateZ(20px); }
+  .request-card:active {
+    transition: all 150ms ease-in;
+    transform: translateZ(-20px); }
   .request-card .map {
     position: relative;
     height: 100px;
@@ -5744,7 +5781,8 @@ a.course-card:active .course-card-hover {
       height: 0;
       margin: 0;
       border: 0;
-      border-bottom: 5px solid #69B3A5; }
+      border-bottom: 5px solid #69B3A5;
+      transition: all 150ms ease-out; }
     .request-card .info .ugrid-2 {
       position: relative;
       padding-bottom: 15px;
@@ -5817,34 +5855,66 @@ a.course-card:active .course-card-hover {
     background: #F04F54; }
   .request-card.bg-delivery .info .user-icon, .request-card.bg-delivery .info .info-border {
     border-color: #F04F54; }
+  .request-card.bg-delivery:hover .info .info-border, .request-card.bg-delivery:focus .info .info-border {
+    border-color: #f8a7aa; }
+  .request-card.bg-delivery:active .info .info-border {
+    border-color: #984c50; }
   .request-card.bg-freelancing .map .map-marker > span {
     background: #E5753C; }
   .request-card.bg-freelancing .info .user-icon, .request-card.bg-freelancing .info .info-border {
     border-color: #E5753C; }
+  .request-card.bg-freelancing:hover .info .info-border, .request-card.bg-freelancing:focus .info .info-border {
+    border-color: #f2ba9e; }
+  .request-card.bg-freelancing:active .info .info-border {
+    border-color: #935f44; }
   .request-card.bg-baking .map .map-marker > span {
     background: #F6C64E; }
   .request-card.bg-baking .info .user-icon, .request-card.bg-baking .info .info-border {
     border-color: #F6C64E; }
+  .request-card.bg-baking:hover .info .info-border, .request-card.bg-baking:focus .info .info-border {
+    border-color: #fbe3a7; }
+  .request-card.bg-baking:active .info .info-border {
+    border-color: #9b874d; }
   .request-card.bg-photography .map .map-marker > span {
     background: #81B566; }
   .request-card.bg-photography .info .user-icon, .request-card.bg-photography .info .info-border {
     border-color: #81B566; }
+  .request-card.bg-photography:hover .info .info-border, .request-card.bg-photography:focus .info .info-border {
+    border-color: #c0dab3; }
+  .request-card.bg-photography:active .info .info-border {
+    border-color: #617f59; }
   .request-card.bg-tech .map .map-marker > span {
     background: #55A4B7; }
   .request-card.bg-tech .info .user-icon, .request-card.bg-tech .info .info-border {
     border-color: #55A4B7; }
+  .request-card.bg-tech:hover .info .info-border, .request-card.bg-tech:focus .info .info-border {
+    border-color: #aad2db; }
+  .request-card.bg-tech:active .info .info-border {
+    border-color: #4b7681; }
   .request-card.bg-household .map .map-marker > span {
     background: #7872e3; }
   .request-card.bg-household .info .user-icon, .request-card.bg-household .info .info-border {
     border-color: #7872e3; }
+  .request-card.bg-household:hover .info .info-border, .request-card.bg-household:focus .info .info-border {
+    border-color: #bcb9f1; }
+  .request-card.bg-household:active .info .info-border {
+    border-color: #5c5d97; }
   .request-card.bg-athletic .map .map-marker > span {
     background: #9A5BC5; }
   .request-card.bg-athletic .info .user-icon, .request-card.bg-athletic .info .info-border {
     border-color: #9A5BC5; }
+  .request-card.bg-athletic:hover .info .info-border, .request-card.bg-athletic:focus .info .info-border {
+    border-color: #cdade2; }
+  .request-card.bg-athletic:active .info .info-border {
+    border-color: #6d5288; }
   .request-card.bg-academic .map .map-marker > span {
     background: #e6389b; }
   .request-card.bg-academic .info .user-icon, .request-card.bg-academic .info .info-border {
     border-color: #e6389b; }
+  .request-card.bg-academic:hover .info .info-border, .request-card.bg-academic:focus .info .info-border {
+    border-color: #f39ccd; }
+  .request-card.bg-academic:active .info .info-border {
+    border-color: #934073; }
 
 .place-marker {
   transition: all 150ms ease-in-out;

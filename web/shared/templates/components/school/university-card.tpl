@@ -1,10 +1,7 @@
 <div class="perspective-container full-xy flex-center p15xy" types='uc-berkeley, boston-college, manhattan-college, university-of-chicago, williams-college, case-western' default-type="uc-berkeley">
 	<div class="university-card" ng-if='activeType === "uc-berkeley"'
 		init-with="p-op"
-		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
@@ -47,10 +44,7 @@
 
 	<div class="university-card" ng-if='activeType === "boston-college"'
 		init-with="p-op"
-		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
@@ -93,10 +87,7 @@
 
 	<div class="university-card" ng-if='activeType === "manhattan-college"'
 		init-with="p-op"
-		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
@@ -139,10 +130,7 @@
 
 	<div class="university-card" ng-if='activeType === "university-of-chicago"'
 		init-with="p-op"
-		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
@@ -185,10 +173,7 @@
 
 	<div class="university-card" ng-if='activeType === "williams-college"'
 		init-with="p-op"
-		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>
@@ -231,10 +216,7 @@
 
 	<div class="university-card" ng-if='activeType === "case-western"'
 		init-with="p-op"
-		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
-		on-mouse-enter="p:[tr:translateZ(40px), tro:center center, t:all 250ms ease-in]"
-		on-mouse-leave="p:[tr:translateZ(0px), t:all 250ms ease-in]"
-		on-click="p:[tr:translateZ(-40px), tr:translateZ(0):delay-250]">
+		on-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 		</svg>

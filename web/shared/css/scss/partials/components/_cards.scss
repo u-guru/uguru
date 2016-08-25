@@ -303,6 +303,8 @@
 		}
 	}
 	.team-photo {
+		position: relative;
+		z-index: 1;
 		border-radius: 2px 2px 0 0;
 		width: 256px;
 		height: 256px;
@@ -956,15 +958,17 @@
 }
 a.credit-card {
 	transform-origin: center center;
-	transform: all 150ms ease-in;
+	transition: all 150ms ease-in;
 	&:hover, &:focus {
 		transform: translateZ(20px);
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
 		.credit-card-inside {
 			background: lighten(#394851, 5%);
 		}
 	}
 	&:active {
 		transform: translateZ(-20px);
+		transition: all 150ms ease-in;
 		.credit-card-inside {
 			background: darken(#394851, 5%);
 		}
@@ -977,6 +981,16 @@ a.credit-card {
 	margin: 0 auto;
 	border-radius: 10px;
 	overflow: hidden;
+	transform-origin: center center;
+	transition: all 150ms ease-in;
+	&:hover, &:focus {
+		transform: translateZ(20px);
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
+	}
+	&:active {
+		transform: translateZ(-20px);
+		transition: all 150ms ease-in;
+	}
 	&.with-hover {
 		.school-card-hover {
 			@include opacity(0);
@@ -1820,6 +1834,16 @@ a.credit-card {
 	max-width: 240px;
 	@include prefix(transform-style, preserve-3d, webkit);
 	&.with-hover {
+		transform-origin: center center;
+		transition: all 150ms ease-in;
+		&:hover, &:focus {
+			transition: all 600ms cubic-bezier(.6,0,.1,2);
+			transform: translateZ(20px);
+		}
+		&:active {
+			transition: all 150ms ease-in;
+			transform: translateZ(-20px);
+		}
 		.school-id-hover {
 			@include opacity(0);
 			transition: all 150ms ease-in-out;
@@ -1834,23 +1858,27 @@ a.credit-card {
 			}
 			> span {
 				@include opacity(.95);
+				display: block;
+				z-index: 1;
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: 100%;
 				height: 100%;
 				border-radius: 10px;
-				color: white;
 			}
 			> div {
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
+				position: relative;
+				z-index: 2;
 				width: 100%;
 				height: 100%;
 				padding: 15px;
 				font-size: 18px;
 				font-weight: 600;
+				color: white;
 			}
 		}
 	}
@@ -2070,12 +2098,14 @@ a.credit-card {
 	}
 	&:hover, &:focus {
 		transform: translateZ(20px);
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
 		.color {
 			opacity: 1;
 		}
 	}
 	&:active {
 		transform: translateZ(-20px);
+		transition: all 150ms ease-in;
 		.color-background {
 			fill: lighten($slate, 15%);
 		}
@@ -2089,9 +2119,11 @@ a.credit-card {
 	transition: all 150ms ease-in;
 	&:hover, &:focus {
 		transform: translateZ(20px);
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
 	}
 	&:active {
 		transform: translateZ(-20px);
+		transition: all 150ms ease-in;
 	}
 	> svg {
 		background: white;
@@ -2872,6 +2904,16 @@ a.course-card {
 	background: white;
 	border-radius: 2px;
 	overflow: hidden;
+	transform-origin: center center;
+	transition: all 150ms ease-in;
+	&:hover, &:focus {
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
+		transform: translateZ(20px);
+	}
+	&:active {
+		transition: all 150ms ease-in;
+		transform: translateZ(-20px);
+	}
 	.map {
 		position: relative;
 		height: 100px;
@@ -2939,6 +2981,7 @@ a.course-card {
 			margin: 0;
 			border: 0;
 			border-bottom: 5px solid $shamrock;
+			transition: all 150ms ease-out;
 		}
 		.ugrid-2 {
 			position: relative;
@@ -3036,6 +3079,20 @@ a.course-card {
 				border-color: $auburn;
 			}
 		}
+		&:hover, &:focus {
+			.info {
+				.info-border {
+					border-color: mix($auburn, white);
+				}
+			}
+		}
+		&:active {
+			.info {
+				.info-border {
+					border-color: mix($auburn, $slate);
+				}
+			}
+		}
 	}
 	&.bg-freelancing {
 		.map {
@@ -3049,6 +3106,20 @@ a.course-card {
 			// border-color: $orange;
 			.user-icon, .info-border {
 				border-color: $orange;
+			}
+		}
+		&:hover, &:focus {
+			.info {
+				.info-border {
+					border-color: mix($orange, white);
+				}
+			}
+		}
+		&:active {
+			.info {
+				.info-border {
+					border-color: mix($orange, $slate);
+				}
 			}
 		}
 	}
@@ -3066,6 +3137,20 @@ a.course-card {
 				border-color: $gold;
 			}
 		}
+		&:hover, &:focus {
+			.info {
+				.info-border {
+					border-color: mix($gold, white);
+				}
+			}
+		}
+		&:active {
+			.info {
+				.info-border {
+					border-color: mix($gold, $slate);
+				}
+			}
+		}
 	}
 	&.bg-photography {
 		.map {
@@ -3079,6 +3164,20 @@ a.course-card {
 			// border-color: $moola;
 			.user-icon, .info-border {
 				border-color: $moola;
+			}
+		}
+		&:hover, &:focus {
+			.info {
+				.info-border {
+					border-color: mix($moola, white);
+				}
+			}
+		}
+		&:active {
+			.info {
+				.info-border {
+					border-color: mix($moola, $slate);
+				}
 			}
 		}
 	}
@@ -3096,6 +3195,21 @@ a.course-card {
 				border-color: $azure;
 			}
 		}
+
+		&:hover, &:focus {
+			.info {
+				.info-border {
+					border-color: mix($azure, white);
+				}
+			}
+		}
+		&:active {
+			.info {
+				.info-border {
+					border-color: mix($azure, $slate);
+				}
+			}
+		}
 	}
 	&.bg-household {
 		.map {
@@ -3109,6 +3223,21 @@ a.course-card {
 			// border-color: $cobalt;
 			.user-icon, .info-border {
 				border-color: $cobalt;
+			}
+		}
+
+		&:hover, &:focus {
+			.info {
+				.info-border {
+					border-color: mix($cobalt, white);
+				}
+			}
+		}
+		&:active {
+			.info {
+				.info-border {
+					border-color: mix($cobalt, $slate);
+				}
 			}
 		}
 	}
@@ -3126,6 +3255,21 @@ a.course-card {
 				border-color: $eggplant;
 			}
 		}
+
+		&:hover, &:focus {
+			.info {
+				.info-border {
+					border-color: mix($eggplant, white);
+				}
+			}
+		}
+		&:active {
+			.info {
+				.info-border {
+					border-color: mix($eggplant, $slate);
+				}
+			}
+		}
 	}
 	&.bg-academic {
 		.map {
@@ -3139,6 +3283,21 @@ a.course-card {
 			// border-color: $cerise;
 			.user-icon, .info-border {
 				border-color: $cerise;
+			}
+		}
+
+		&:hover, &:focus {
+			.info {
+				.info-border {
+					border-color: mix($cerise, white);
+				}
+			}
+		}
+		&:active {
+			.info {
+				.info-border {
+					border-color: mix($cerise, $slate);
+				}
 			}
 		}
 	}
