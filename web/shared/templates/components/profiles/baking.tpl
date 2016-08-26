@@ -371,10 +371,10 @@ Gabrielle
 				<ul class="pf-items">
 					<li>
 						<div class="pf-tile-container"
-							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-mn-init="s:[baking-cardlet-init:public:delay-1000]"
-							when-baking-cardlet-init="p:[op:1, tr:none] | send:[baking-ribbon:public]:delay-500"
-							when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
+							when-baking-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[baking-ribbon:public]:delay-500"
+							when-baking-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]"
 							on-mouse-enter="s:[baking-cardlet-hover:public]"
 							on-mouse-leave="s:[baking-cardlet-leave:public]">
 							<a></a><a></a><a></a><a></a>
@@ -396,13 +396,11 @@ Gabrielle
 										<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 											init-with="p-op"
 											when-baking-cardlet-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-300]"></div>
-										<h1
-											init-with="p-op"
-											when-baking-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">Four-Star Strawberry Cake on a Budget</h1>
+										<h1 init-with="p-op"
+											when-baking-cardlet-init="p:[opacity:0:1:650:easeOutSine]:delay-450">Four-Star Strawberry Cake on a Budget</h1>
 										<div>
-											<h2
-												init-with="p-op"
-												when-baking-cardlet-init="a:[fadeIn:set:(dur:850ms#func:ease-out):in:delay-450]">03/28/2016</h2>
+											<h2 init-with="p-op"
+												when-baking-cardlet-init="p:[opacity:0:1:850:easeOutSine]:delay-450">03/28/2016</h2>
 										</div>
 									</div>
 								</div>
@@ -425,10 +423,10 @@ Gabrielle
 					</li>
 					<li>
 						<div class="pf-tile-container"
-							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 							when-pf-mn-init="s:[baking-cardlet-init:public:delay-1500]"
-							when-baking-cardlet-init="p:[op:1, tr:none] | send:[baking-ribbon:public]:delay-500"
-							when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
+							when-baking-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[baking-ribbon:public]:delay-500"
+							when-baking-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]"
 							on-mouse-enter="s:[baking-cardlet-hover:public]"
 							on-mouse-leave="s:[baking-cardlet-leave:public]">
 							<a></a><a></a><a></a><a></a>
@@ -450,13 +448,11 @@ Gabrielle
 										<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 											init-with="p-op"
 											when-baking-cardlet-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-300]"></div>
-										<h1
-											init-with="p-op"
-											when-baking-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">Four-Star Strawberry Cake on a Budget</h1>
+										<h1 init-with="p-op"
+											when-baking-cardlet-init="p:[opacity:0:1:650:easeOutSine]:delay-450">Four-Star Strawberry Cake on a Budget</h1>
 										<div>
-											<h2
-												init-with="p-op"
-												when-baking-cardlet-init="a:[fadeIn:set:(dur:850ms#func:ease-out):in:delay-450]">03/28/2016</h2>
+											<h2 init-with="p-op"
+												when-baking-cardlet-init="p:[opacity:0:1:850:easeOutSine]:delay-450">03/28/2016</h2>
 										</div>
 									</div>
 								</div>
@@ -1229,10 +1225,10 @@ Gabrielle
 					<ul class="pf-items">
 						<li>
 							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[baking-cardlet-init:public]"
-								when-baking-cardlet-init="p:[op:1, tr:none] | send:[baking-ribbon:public]:delay-500"
-								when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
+								when-baking-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[baking-ribbon:public]:delay-500"
+								when-baking-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]"
 								on-mouse-enter="s:[baking-cardlet-hover:public]"
 								on-mouse-leave="s:[baking-cardlet-leave:public]">
 								<a></a><a></a><a></a><a></a>
@@ -1254,13 +1250,11 @@ Gabrielle
 											<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 												init-with="p-op"
 												when-baking-cardlet-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-300]"></div>
-											<h1
-												init-with="p-op"
-												when-baking-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">Four-Star Strawberry Cake on a Budget</h1>
+											<h1 init-with="p-op"
+												when-baking-cardlet-init="p:[opacity:0:1:650:easeOutSine]:delay-450">Four-Star Strawberry Cake on a Budget</h1>
 											<div>
-												<h2
-													init-with="p-op"
-													when-baking-cardlet-init="a:[fadeIn:set:(dur:850ms#func:ease-out):in:delay-450]">03/28/2016</h2>
+												<h2 init-with="p-op"
+													when-baking-cardlet-init="p:[opacity:0:1:850:easeOutSine]:delay-450">03/28/2016</h2>
 											</div>
 										</div>
 									</div>
@@ -1283,10 +1277,10 @@ Gabrielle
 						</li>
 						<li>
 							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[baking-cardlet-init:public:delay-500]"
-								when-baking-cardlet-init="p:[op:1, tr:none] | send:[baking-ribbon:public]:delay-500"
-								when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
+								when-baking-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[baking-ribbon:public]:delay-500"
+								when-baking-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]"
 								on-mouse-enter="s:[baking-cardlet-hover:public]"
 								on-mouse-leave="s:[baking-cardlet-leave:public]">
 								<a></a><a></a><a></a><a></a>
@@ -1308,13 +1302,11 @@ Gabrielle
 											<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 												init-with="p-op"
 												when-baking-cardlet-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-300]"></div>
-											<h1
-												init-with="p-op"
-												when-baking-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">Four-Star Strawberry Cake on a Budget</h1>
+											<h1 init-with="p-op"
+												when-baking-cardlet-init="p:[opacity:0:1:650:easeOutSine]:delay-450">Four-Star Strawberry Cake on a Budget</h1>
 											<div>
-												<h2
-													init-with="p-op"
-													when-baking-cardlet-init="a:[fadeIn:set:(dur:850ms#func:ease-out):in:delay-450]">03/28/2016</h2>
+												<h2 init-with="p-op"
+													when-baking-cardlet-init="p:[opacity:0:1:850:easeOutSine]:delay-450">03/28/2016</h2>
 											</div>
 										</div>
 									</div>
@@ -1337,10 +1329,10 @@ Gabrielle
 						</li>
 						<li>
 							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[baking-cardlet-init:public:delay-1000]"
-								when-baking-cardlet-init="p:[op:1, tr:none] | send:[baking-ribbon:public]:delay-500"
-								when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
+								when-baking-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[baking-ribbon:public]:delay-500"
+								when-baking-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]"
 								on-mouse-enter="s:[baking-cardlet-hover:public]"
 								on-mouse-leave="s:[baking-cardlet-leave:public]">
 								<a></a><a></a><a></a><a></a>
@@ -1362,13 +1354,11 @@ Gabrielle
 											<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 												init-with="p-op"
 												when-baking-cardlet-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-300]"></div>
-											<h1
-												init-with="p-op"
-												when-baking-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">Four-Star Strawberry Cake on a Budget</h1>
+											<h1 init-with="p-op"
+												when-baking-cardlet-init="p:[opacity:0:1:650:easeOutSine]:delay-450">Four-Star Strawberry Cake on a Budget</h1>
 											<div>
-												<h2
-													init-with="p-op"
-													when-baking-cardlet-init="a:[fadeIn:set:(dur:850ms#func:ease-out):in:delay-450]">03/28/2016</h2>
+												<h2 init-with="p-op"
+													when-baking-cardlet-init="p:[opacity:0:1:850:easeOutSine]:delay-450">03/28/2016</h2>
 											</div>
 										</div>
 									</div>
@@ -1391,10 +1381,10 @@ Gabrielle
 						</li>
 						<li>
 							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[baking-cardlet-init:public:delay-1500]"
-								when-baking-cardlet-init="p:[op:1, tr:none] | send:[baking-ribbon:public]:delay-500"
-								when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
+								when-baking-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[baking-ribbon:public]:delay-500"
+								when-baking-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]"
 								on-mouse-enter="s:[baking-cardlet-hover:public]"
 								on-mouse-leave="s:[baking-cardlet-leave:public]">
 								<a></a><a></a><a></a><a></a>
@@ -1416,13 +1406,11 @@ Gabrielle
 											<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 												init-with="p-op"
 												when-baking-cardlet-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-300]"></div>
-											<h1
-												init-with="p-op"
-												when-baking-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">Four-Star Strawberry Cake on a Budget</h1>
+											<h1 init-with="p-op"
+												when-baking-cardlet-init="p:[opacity:0:1:650:easeOutSine]:delay-450">Four-Star Strawberry Cake on a Budget</h1>
 											<div>
-												<h2
-													init-with="p-op"
-													when-baking-cardlet-init="a:[fadeIn:set:(dur:850ms#func:ease-out):in:delay-450]">03/28/2016</h2>
+												<h2 init-with="p-op"
+													when-baking-cardlet-init="p:[opacity:0:1:850:easeOutSine]:delay-450">03/28/2016</h2>
 											</div>
 										</div>
 									</div>
@@ -1445,10 +1433,10 @@ Gabrielle
 						</li>
 						<li>
 							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[baking-cardlet-init:public:delay-2000]"
-								when-baking-cardlet-init="p:[op:1, tr:none] | send:[baking-ribbon:public]:delay-500"
-								when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
+								when-baking-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[baking-ribbon:public]:delay-500"
+								when-baking-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]"
 								on-mouse-enter="s:[baking-cardlet-hover:public]"
 								on-mouse-leave="s:[baking-cardlet-leave:public]">
 								<a></a><a></a><a></a><a></a>
@@ -1470,13 +1458,11 @@ Gabrielle
 											<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 												init-with="p-op"
 												when-baking-cardlet-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-300]"></div>
-											<h1
-												init-with="p-op"
-												when-baking-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">Four-Star Strawberry Cake on a Budget</h1>
+											<h1 init-with="p-op"
+												when-baking-cardlet-init="p:[opacity:0:1:650:easeOutSine]:delay-450">Four-Star Strawberry Cake on a Budget</h1>
 											<div>
-												<h2
-													init-with="p-op"
-													when-baking-cardlet-init="a:[fadeIn:set:(dur:850ms#func:ease-out):in:delay-450]">03/28/2016</h2>
+												<h2 init-with="p-op"
+													when-baking-cardlet-init="p:[opacity:0:1:850:easeOutSine]:delay-450">03/28/2016</h2>
 											</div>
 										</div>
 									</div>
@@ -1499,10 +1485,10 @@ Gabrielle
 						</li>
 						<li>
 							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 								when-pf-rs-init="s:[baking-cardlet-init:public:delay-2500]"
-								when-baking-cardlet-init="p:[op:1, tr:none] | send:[baking-ribbon:public]:delay-500"
-								when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
+								when-baking-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[baking-ribbon:public]:delay-500"
+								when-baking-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]"
 								on-mouse-enter="s:[baking-cardlet-hover:public]"
 								on-mouse-leave="s:[baking-cardlet-leave:public]">
 								<a></a><a></a><a></a><a></a>
@@ -1524,13 +1510,11 @@ Gabrielle
 											<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 												init-with="p-op"
 												when-baking-cardlet-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-300]"></div>
-											<h1
-												init-with="p-op"
-												when-baking-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">Four-Star Strawberry Cake on a Budget</h1>
+											<h1 init-with="p-op"
+												when-baking-cardlet-init="p:[opacity:0:1:650:easeOutSine]:delay-450">Four-Star Strawberry Cake on a Budget</h1>
 											<div>
-												<h2
-													init-with="p-op"
-													when-baking-cardlet-init="a:[fadeIn:set:(dur:850ms#func:ease-out):in:delay-450]">03/28/2016</h2>
+												<h2 init-with="p-op"
+													when-baking-cardlet-init="p:[opacity:0:1:850:easeOutSine]:delay-450">03/28/2016</h2>
 											</div>
 										</div>
 									</div>

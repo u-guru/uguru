@@ -230,8 +230,8 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0, t:all 250ms ease-out]"
-										when-photo-tile-init-1="p:[op:1:delay-1000]">Professional Headshots</h1>
+									<h1 init-with="p-op"
+										when-photo-tile-init="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
