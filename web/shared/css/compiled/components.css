@@ -2441,6 +2441,8 @@ fieldset.search-bar {
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap; }
   fieldset.search-bar label {
+    position: relative;
+    z-index: 10;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
