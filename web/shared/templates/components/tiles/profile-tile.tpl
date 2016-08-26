@@ -46,7 +46,7 @@
 			</div>
 			<div class="pf-tile-top">
 				<div class="pf-pricing"
-					init-with="p:[op:0]"
+					init-with="p-op"
 					when-academic-tile-init="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
 				<div init-with="p:[tr:translateY(-80%), opacity:0]"
 					when-academic-tile-init="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
@@ -120,7 +120,7 @@
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
 			<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-250]"
 				when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-750]">
 				<div class="full-x flex-center preserve-3d m15bottom"
@@ -197,7 +197,7 @@
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-photography">
 			<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-photo-tile-init="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 				when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 			<div class="pf-tile-border">
@@ -206,7 +206,7 @@
 				</div>
 			</div>
 			<div class="pf-tile-bottom">
-				<h1 init-with="p:[op:0]"
+				<h1 init-with="p-op"
 					when-photo-tile-init="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li init-with="p-op"
@@ -278,29 +278,29 @@
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[tech-tile-init:public]"
 		when-tech-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init:public:delay-1000]"
-		when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		when-tech-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-tech">
 			<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-				init-with="p:[op:0, t:opacity 500ms ease-out]"
-				when-tech-tile-init="p:[op:1:delay-250]"
-				when-tech-tile-exit="p:[op:0:delay-1000]">
+				init-with="p-op"
+				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+				when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-1000">
 				<div class="pf-pricing">
 					<div>$10/hr</div>
 					<div class="border border-corner">
 						<span class="left"
-							init-with="p:[op:0, tr:scaleY(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-							when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-							when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleY(0):delay-1000]"></span>
+							init-with="p:[tr:scaleY(0)]"
+							when-tech-tile-init="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-1250"
+							when-tech-tile-exit="p:[transform:scaleY(1):scaleY(0):500:easeInCubic]:delay-1000"></span>
 						<span class="bot"
-							init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-							when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-							when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleX(0):delay-1000]"></span>
+							init-with="p:[tr:scaleX(0)]"
+							when-tech-tile-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-1250"
+							when-tech-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeInCubic]:delay-1000"></span>
 					</div>
 				</div>
 			</div>
 			<div class="pf-tile-bottom"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
 				when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 				<h1 init-with="p:[op:0, tr:translateY(10px)]"
@@ -387,17 +387,17 @@
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[household-tile-init:public]"
 		when-household-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
-		when-household-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		when-household-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-household">
 			<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-household-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
 				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 			<div class="pf-tile-bg"
-				init-with="p:[overflow:visible, t:opacity 500ms ease-out]"
+				init-with="p:[overflow:visible]"
 				when-household-tile-init="p:[overflow:hidden:delay-1800]"
-				when-household-tile-exit="p:[op:0:delay-250]">
+				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250">
 				<svg viewBox="0 0 380 270">
 					<defs>
 						<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="bub-front-color">
@@ -426,7 +426,7 @@
 					</defs>
 					<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 						<g class="bub-back"
-							init-with="p:[op:0, t:all 500ms ease-out, tr:none]"
+							init-with="p-op"
 							when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink:public:delay-1500]"
 							when-bub-sink="p:[opacity:1:0:250:linear, transform:translateY(0%):translateY(100%):500:easeInCubic]:delay-250">
 							<g init-with="p:[op:0, tro:center center]"
@@ -452,7 +452,7 @@
 							<path d="M162.779003,21.4467685 C166.666099,22.8517117 168.6598,27.1484826 167.232059,31.0438748 C165.804318,34.939267 161.495791,36.9581748 157.608695,35.5532315 C153.721599,34.1482883 151.727898,29.8515174 153.155639,25.9561252 C154.58338,22.060733 158.891907,20.0418252 162.779003,21.4467685 L162.779003,21.4467685 L162.779003,21.4467685 Z" class="bub-back-1"></path>
 						</g>
 						<g class="bub-mid"
-							init-with="p:[op:0, tro:center center, t:all 500ms ease-out, tr:none]"
+							init-with="p:[op:0, tro:center center]"
 							when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450]"
 							when-bub-sink="p:[opacity:1:0:250:linear, transform:translateY(0%):translateY(100%):500:easeInCubic]:delay-300">
 							<path d="M115.696926,83.0336412 C106.2023,62.0461607 81.8199237,51.6601249 59.6190792,59.7405715 C36.3392132,68.2137497 24.273701,93.7834547 32.6700034,116.852106 C37.0361983,128.848128 46.0757807,137.805587 57.0212138,142.449282 C66.5158396,163.436762 90.8982162,173.822798 113.099061,165.742352 C135.85912,157.458367 154.00358,135.394667 146.683611,112.741463 C151.983322,108.565154 154.277303,101.355784 151.862779,94.7219363 C148.845358,86.4316397 133.513564,79.6176735 125.147363,82.6627219 C123.373073,83.3085105 121.780049,84.2306418 120.39999,85.361936 C118.879532,84.4949901 117.308898,83.717534 115.696926,83.0336412 L115.696926,83.0336412 Z" class="bub-mid-12"></path>
