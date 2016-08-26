@@ -273,22 +273,22 @@ Gabrielle
 										init-with="p:[tro:center center, op:0]"
 										when-photo-tile-init-1="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
 										<div class="pf-border">
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
 										</div>
 										<span>$10/hr</span>
 									</div>
