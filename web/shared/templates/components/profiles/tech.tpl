@@ -209,66 +209,66 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-mn-init="s:[tech-tile-init:public]"
-							when-tech-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init:public:delay-1000]"
-							when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							when-pf-mn-init="s:[tech-tile-init-1:public]"
+							when-tech-tile-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init-1:public:delay-1000]"
+							when-tech-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0, t:opacity 500ms ease-out]"
-									when-tech-tile-init="p:[op:1:delay-250]"
-									when-tech-tile-exit="p:[op:0:delay-1000]">
+									init-with="p-op"
+									when-tech-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
 										<div>$10/hr</div>
 										<div class="border border-corner">
 											<span class="left"
-												init-with="p:[op:0, tr:scaleY(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleY(0):delay-1000]"></span>
+												init-with="p:[tr:scaleY(0)]"
+												when-tech-tile-init-1="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleY(1):scaleY(0):500:easeInCubic]:delay-1000"></span>
 											<span class="bot"
-												init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleX(0):delay-1000]"></span>
+												init-with="p:[tr:scaleX(0)]"
+												when-tech-tile-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeInCubic]:delay-1000"></span>
 										</div>
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
-									when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									init-with="p-op"
+									when-tech-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
-										when-tech-tile-init="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
+										when-tech-tile-init-1="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
+											when-tech-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
+											when-tech-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+											when-tech-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+											when-tech-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+											when-tech-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -278,39 +278,39 @@ Gabrielle
 									<div class="border border-top">
 										<span class="left"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 										<span class="right"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 									</div>
 								</div>
 								<div class="border border-outside">
 									<span class="top-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 										<!-- init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]" -->
 									<span class="top-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 									<span class="right"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-1="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 									<span class="bot-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="bot-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="left"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-1="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 								</div>
 							</div>
@@ -319,66 +319,66 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-mn-init="s:[tech-tile-init:public:delay-500]"
-							when-tech-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init:public:delay-1000]"
-							when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							when-pf-mn-init="s:[tech-tile-init-2:public:delay-500]"
+							when-tech-tile-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init-2:public:delay-1000]"
+							when-tech-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:e2aseOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0, t:opacity 500ms ease-out]"
-									when-tech-tile-init="p:[op:1:delay-250]"
-									when-tech-tile-exit="p:[op:0:delay-1000]">
+									init-with="p-op"
+									when-tech-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
 										<div>$10/hr</div>
 										<div class="border border-corner">
 											<span class="left"
-												init-with="p:[op:0, tr:scaleY(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleY(0):delay-1000]"></span>
+												init-with="p:[tr:scaleY(0)]"
+												when-tech-tile-init-2="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleY(1):scaleY(0):500:easeInCubic]:delay-1000"></span>
 											<span class="bot"
-												init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleX(0):delay-1000]"></span>
+												init-with="p:[tr:scaleX(0)]"
+												when-tech-tile-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeInCubic]:delay-1000"></span>
 										</div>
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
-									when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									init-with="p-op"
+									when-tech-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
-										when-tech-tile-init="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
+										when-tech-tile-init-2="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
+											when-tech-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
+											when-tech-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+											when-tech-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+											when-tech-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+											when-tech-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -388,39 +388,39 @@ Gabrielle
 									<div class="border border-top">
 										<span class="left"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 										<span class="right"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 									</div>
 								</div>
 								<div class="border border-outside">
 									<span class="top-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 										<!-- init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]" -->
 									<span class="top-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 									<span class="right"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-2="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 									<span class="bot-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="bot-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="left"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-2="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 								</div>
 							</div>
@@ -437,10 +437,10 @@ Gabrielle
 				<ul class="pf-items">
 					<li>
 						<div class="pf-tile-container"
-							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							when-pf-mn-init="s:[tech-cardlet-init:public:delay-1000]"
-							when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
-							when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+							when-pf-mn-init="s:[tech-cardlet-init-1:public:delay-1000]"
+							when-tech-cardlet-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[tech-ribbon-1:public:delay-500, tech-cardlet-back-1:public:delay-1000]"
+							when-tech-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-tech">
 								<div class="pf-cardlet-front-container">
@@ -451,34 +451,34 @@ Gabrielle
 								<div class="pf-cardlet-back-container">
 									<div class="pf-cardlet-back"
 										init-with="p:[op:0, tro:center center]"
-										when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
+										when-tech-cardlet-back-1="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
 								</div>
 								<div class="pf-cardlet-bottom-container">
 									<div class="pf-cardlet-bottom">
 										<div init-with="p:[tr:scaleX(0)]"
-										 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
+											when-tech-cardlet-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
 										<div init-with="p:[tr:scaleY(0), tro:center top]"
-											when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+											when-tech-cardlet-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
 										<div init-with="p:[tr:scaleX(0)]"
-										 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+											when-tech-cardlet-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
 										<div init-with="p:[tr:scaleY(0), tro: center top]"
-											when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+											when-tech-cardlet-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
 										<div init-with="p:[tr:scaleX(0)]"
-										 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+											when-tech-cardlet-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
 										<h1>When to Replace Your Phone</h1>
 										<div>
 											<div init-with="p-op"
-												when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+												when-tech-cardlet-init-1="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
 											<h2 init-with="p-op"
-												when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
+												when-tech-cardlet-init-1="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
 											<div init-with="p-op"
-												when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+												when-tech-cardlet-init-1="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
 										</div>
 									</div>
 								</div>
 								<div class="pf-cardlet-ribbon-container"
 									init-with="p:[op:0, tr:translateX(-10px)]"
-									when-tech-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
+									when-tech-ribbon-1="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
 									<div class="pf-cardlet-ribbon">
 										<svg viewBox="0 0 100 100">
 											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
@@ -487,7 +487,7 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-ribbon-edge-container"
 									init-with="p:[op:0, tr:translateY(-10px)]"
-									when-tech-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
+									when-tech-ribbon-1="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
 									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
 							</div>
@@ -495,10 +495,10 @@ Gabrielle
 					</li>
 					<li>
 						<div class="pf-tile-container"
-							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							when-pf-mn-init="s:[tech-cardlet-init:public:delay-1500]"
-							when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
-							when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+							when-pf-mn-init="s:[tech-cardlet-init-2:public:delay-1500]"
+							when-tech-cardlet-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[tech-ribbon-2:public:delay-500, tech-cardlet-back-2:public:delay-1000]"
+							when-tech-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-tech">
 								<div class="pf-cardlet-front-container">
@@ -509,34 +509,34 @@ Gabrielle
 								<div class="pf-cardlet-back-container">
 									<div class="pf-cardlet-back"
 										init-with="p:[op:0, tro:center center]"
-										when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
+										when-tech-cardlet-back-2="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
 								</div>
 								<div class="pf-cardlet-bottom-container">
 									<div class="pf-cardlet-bottom">
 										<div init-with="p:[tr:scaleX(0)]"
-										 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
+											when-tech-cardlet-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
 										<div init-with="p:[tr:scaleY(0), tro:center top]"
-											when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+											when-tech-cardlet-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
 										<div init-with="p:[tr:scaleX(0)]"
-										 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+											when-tech-cardlet-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
 										<div init-with="p:[tr:scaleY(0), tro: center top]"
-											when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+											when-tech-cardlet-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
 										<div init-with="p:[tr:scaleX(0)]"
-										 	when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+											when-tech-cardlet-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
 										<h1>When to Replace Your Phone</h1>
 										<div>
 											<div init-with="p-op"
-												when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+												when-tech-cardlet-init-2="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
 											<h2 init-with="p-op"
-												when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
+												when-tech-cardlet-init-2="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
 											<div init-with="p-op"
-												when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+												when-tech-cardlet-init-2="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
 										</div>
 									</div>
 								</div>
 								<div class="pf-cardlet-ribbon-container"
 									init-with="p:[op:0, tr:translateX(-10px)]"
-									when-tech-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
+									when-tech-ribbon-2="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
 									<div class="pf-cardlet-ribbon">
 										<svg viewBox="0 0 100 100">
 											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
@@ -545,7 +545,7 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-ribbon-edge-container"
 									init-with="p:[op:0, tr:translateY(-10px)]"
-									when-tech-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
+									when-tech-ribbon-2="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
 									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
 							</div>
@@ -564,66 +564,66 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-sv-init="s:[tech-tile-init:public]"
-							when-tech-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init:public:delay-1000]"
-							when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							when-pf-sv-init="s:[tech-tile-init-1:public]"
+							when-tech-tile-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init-1:public:delay-1000]"
+							when-tech-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0, t:opacity 500ms ease-out]"
-									when-tech-tile-init="p:[op:1:delay-250]"
-									when-tech-tile-exit="p:[op:0:delay-1000]">
+									init-with="p-op"
+									when-tech-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
 										<div>$10/hr</div>
 										<div class="border border-corner">
 											<span class="left"
-												init-with="p:[op:0, tr:scaleY(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleY(0):delay-1000]"></span>
+												init-with="p:[tr:scaleY(0)]"
+												when-tech-tile-init-1="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleY(1):scaleY(0):500:easeInCubic]:delay-1000"></span>
 											<span class="bot"
-												init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleX(0):delay-1000]"></span>
+												init-with="p:[tr:scaleX(0)]"
+												when-tech-tile-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeInCubic]:delay-1000"></span>
 										</div>
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
-									when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									init-with="p-op"
+									when-tech-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
-										when-tech-tile-init="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
+										when-tech-tile-init-1="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
+											when-tech-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
+											when-tech-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+											when-tech-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+											when-tech-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+											when-tech-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -633,39 +633,39 @@ Gabrielle
 									<div class="border border-top">
 										<span class="left"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 										<span class="right"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 									</div>
 								</div>
 								<div class="border border-outside">
 									<span class="top-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 										<!-- init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]" -->
 									<span class="top-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 									<span class="right"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-1="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 									<span class="bot-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="bot-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-1="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="left"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-1="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 								</div>
 							</div>
@@ -674,66 +674,66 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-sv-init="s:[tech-tile-init:public:delay-500]"
-							when-tech-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init:public:delay-1000]"
-							when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							when-pf-sv-init="s:[tech-tile-init-2:public:delay-500]"
+							when-tech-tile-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init-2:public:delay-1000]"
+							when-tech-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:e2aseOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0, t:opacity 500ms ease-out]"
-									when-tech-tile-init="p:[op:1:delay-250]"
-									when-tech-tile-exit="p:[op:0:delay-1000]">
+									init-with="p-op"
+									when-tech-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
 										<div>$10/hr</div>
 										<div class="border border-corner">
 											<span class="left"
-												init-with="p:[op:0, tr:scaleY(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleY(0):delay-1000]"></span>
+												init-with="p:[tr:scaleY(0)]"
+												when-tech-tile-init-2="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleY(1):scaleY(0):500:easeInCubic]:delay-1000"></span>
 											<span class="bot"
-												init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleX(0):delay-1000]"></span>
+												init-with="p:[tr:scaleX(0)]"
+												when-tech-tile-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeInCubic]:delay-1000"></span>
 										</div>
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
-									when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									init-with="p-op"
+									when-tech-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
-										when-tech-tile-init="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
+										when-tech-tile-init-2="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
+											when-tech-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
+											when-tech-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+											when-tech-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+											when-tech-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+											when-tech-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -743,39 +743,39 @@ Gabrielle
 									<div class="border border-top">
 										<span class="left"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 										<span class="right"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 									</div>
 								</div>
 								<div class="border border-outside">
 									<span class="top-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 										<!-- init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]" -->
 									<span class="top-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 									<span class="right"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-2="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 									<span class="bot-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="bot-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-2="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="left"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-2="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 								</div>
 							</div>
@@ -784,66 +784,66 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-sv-init="s:[tech-tile-init:public:delay-1000]"
-							when-tech-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init:public:delay-1000]"
-							when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							when-pf-sv-init="s:[tech-tile-init-3:public:delay-1000]"
+							when-tech-tile-init-3="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init-3:public:delay-1000]"
+							when-tech-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0, t:opacity 500ms ease-out]"
-									when-tech-tile-init="p:[op:1:delay-250]"
-									when-tech-tile-exit="p:[op:0:delay-1000]">
+									init-with="p-op"
+									when-tech-tile-init-3="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
 										<div>$10/hr</div>
 										<div class="border border-corner">
 											<span class="left"
-												init-with="p:[op:0, tr:scaleY(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleY(0):delay-1000]"></span>
+												init-with="p:[tr:scaleY(0)]"
+												when-tech-tile-init-3="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleY(1):scaleY(0):500:easeInCubic]:delay-1000"></span>
 											<span class="bot"
-												init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleX(0):delay-1000]"></span>
+												init-with="p:[tr:scaleX(0)]"
+												when-tech-tile-init-3="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeInCubic]:delay-1000"></span>
 										</div>
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
-									when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									init-with="p-op"
+									when-tech-tile-init-3="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
-										when-tech-tile-init="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
+										when-tech-tile-init-3="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
+											when-tech-tile-init-3="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
+											when-tech-tile-init-3="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+											when-tech-tile-init-3="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+											when-tech-tile-init-3="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+											when-tech-tile-init-3="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -853,39 +853,39 @@ Gabrielle
 									<div class="border border-top">
 										<span class="left"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-3="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 										<span class="right"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-3="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 									</div>
 								</div>
 								<div class="border border-outside">
 									<span class="top-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-3="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 										<!-- init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]" -->
 									<span class="top-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-3="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 									<span class="right"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-3="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 									<span class="bot-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-3="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="bot-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-3="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="left"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-3="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 								</div>
 							</div>
@@ -894,66 +894,66 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-sv-init="s:[tech-tile-init:public:delay-1500]"
-							when-tech-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init:public:delay-1000]"
-							when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							when-pf-sv-init="s:[tech-tile-init-4:public:delay-1500]"
+							when-tech-tile-init-4="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init-4:public:delay-1000]"
+							when-tech-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:e2aseOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0, t:opacity 500ms ease-out]"
-									when-tech-tile-init="p:[op:1:delay-250]"
-									when-tech-tile-exit="p:[op:0:delay-1000]">
+									init-with="p-op"
+									when-tech-tile-init-4="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
 										<div>$10/hr</div>
 										<div class="border border-corner">
 											<span class="left"
-												init-with="p:[op:0, tr:scaleY(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleY(0):delay-1000]"></span>
+												init-with="p:[tr:scaleY(0)]"
+												when-tech-tile-init-4="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleY(1):scaleY(0):500:easeInCubic]:delay-1000"></span>
 											<span class="bot"
-												init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleX(0):delay-1000]"></span>
+												init-with="p:[tr:scaleX(0)]"
+												when-tech-tile-init-4="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeInCubic]:delay-1000"></span>
 										</div>
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
-									when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									init-with="p-op"
+									when-tech-tile-init-4="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
-										when-tech-tile-init="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
+										when-tech-tile-init-4="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
+											when-tech-tile-init-4="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
+											when-tech-tile-init-4="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+											when-tech-tile-init-4="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+											when-tech-tile-init-4="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+											when-tech-tile-init-4="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -963,39 +963,39 @@ Gabrielle
 									<div class="border border-top">
 										<span class="left"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-4="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 										<span class="right"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-4="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 									</div>
 								</div>
 								<div class="border border-outside">
 									<span class="top-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-4="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 										<!-- init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]" -->
 									<span class="top-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-4="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 									<span class="right"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-4="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 									<span class="bot-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-4="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="bot-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-4="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="left"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-4="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 								</div>
 							</div>
@@ -1004,66 +1004,66 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-sv-init="s:[tech-tile-init:public:delay-2000]"
-							when-tech-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init:public:delay-1000]"
-							when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							when-pf-sv-init="s:[tech-tile-init-5:public:delay-2000]"
+							when-tech-tile-init-5="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init-5:public:delay-1000]"
+							when-tech-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0, t:opacity 500ms ease-out]"
-									when-tech-tile-init="p:[op:1:delay-250]"
-									when-tech-tile-exit="p:[op:0:delay-1000]">
+									init-with="p-op"
+									when-tech-tile-init-5="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
 										<div>$10/hr</div>
 										<div class="border border-corner">
 											<span class="left"
-												init-with="p:[op:0, tr:scaleY(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleY(0):delay-1000]"></span>
+												init-with="p:[tr:scaleY(0)]"
+												when-tech-tile-init-5="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleY(1):scaleY(0):500:easeInCubic]:delay-1000"></span>
 											<span class="bot"
-												init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleX(0):delay-1000]"></span>
+												init-with="p:[tr:scaleX(0)]"
+												when-tech-tile-init-5="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeInCubic]:delay-1000"></span>
 										</div>
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
-									when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									init-with="p-op"
+									when-tech-tile-init-5="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
-										when-tech-tile-init="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
+										when-tech-tile-init-5="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
+											when-tech-tile-init-5="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
+											when-tech-tile-init-5="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+											when-tech-tile-init-5="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+											when-tech-tile-init-5="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+											when-tech-tile-init-5="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -1073,39 +1073,39 @@ Gabrielle
 									<div class="border border-top">
 										<span class="left"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-5="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 										<span class="right"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-5="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 									</div>
 								</div>
 								<div class="border border-outside">
 									<span class="top-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-5="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 										<!-- init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]" -->
 									<span class="top-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-5="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 									<span class="right"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-5="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 									<span class="bot-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-5="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="bot-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-5="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="left"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-5="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 								</div>
 							</div>
@@ -1114,66 +1114,66 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container"
 							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
-							when-pf-sv-init="s:[tech-tile-init:public:delay-2500]"
-							when-tech-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init:public:delay-1000]"
-							when-tech-tile-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+							when-pf-sv-init="s:[tech-tile-init-6:public:delay-2500]"
+							when-tech-tile-init-6="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | s:[tech-borders-init-6:public:delay-1000]"
+							when-tech-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:e2aseOutCubic:delay-250]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0, t:opacity 500ms ease-out]"
-									when-tech-tile-init="p:[op:1:delay-250]"
-									when-tech-tile-exit="p:[op:0:delay-1000]">
+									init-with="p-op"
+									when-tech-tile-init-6="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-tech-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
 										<div>$10/hr</div>
 										<div class="border border-corner">
 											<span class="left"
-												init-with="p:[op:0, tr:scaleY(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleY(0):delay-1000]"></span>
+												init-with="p:[tr:scaleY(0)]"
+												when-tech-tile-init-6="p:[transform:scaleY(0):scaleY(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleY(1):scaleY(0):500:easeInCubic]:delay-1000"></span>
 											<span class="bot"
-												init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]"
-												when-tech-tile-init="p:[op:1, tr:none:delay-1250]"
-												when-tech-tile-exit="p:[op:0:delay-1500, tr:scaleX(0):delay-1000]"></span>
+												init-with="p:[tr:scaleX(0)]"
+												when-tech-tile-init-6="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-1250"
+												when-tech-tile-exit="p:[transform:scaleX(1):scaleX(0):500:easeInCubic]:delay-1000"></span>
 										</div>
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
-									when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									init-with="p-op"
+									when-tech-tile-init-6="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
-										when-tech-tile-init="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
+										when-tech-tile-init-6="p:[opacity:0:1:500:linear, transform:translateY(10px):translateY(0px):500:easeOutExpo]:delay-450">Water Damage</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
+											when-tech-tile-init-6="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-900]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
+											when-tech-tile-init-6="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1000]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
+											when-tech-tile-init-6="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
+											when-tech-tile-init-6="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1200]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 											</svg>
 										</li>
 										<li init-with="p-op"
-											when-tech-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
+											when-tech-tile-init-6="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1300]">
 											<svg viewBox="0 0 100 100">
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -1183,39 +1183,39 @@ Gabrielle
 									<div class="border border-top">
 										<span class="left"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-6="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 										<span class="right"
 											init-with="p:[tr:scaleX(0)]"
-											when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+											when-tech-borders-init-6="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 											when-tech-tile-exit="p:[op:0:delay-750, tr:scaleX(0):delay-250]"></span>
 									</div>
 								</div>
 								<div class="border border-outside">
 									<span class="top-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-6="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 										<!-- init-with="p:[op:0, tr:scaleX(0), t:transform 500ms cubic-bezier(0#.66#.47#1.09)]" -->
 									<span class="top-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
+										when-tech-borders-init-6="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]"
 										when-tech-tile-exit="p:[tr:scaleX(1):scaleX(0):500:easeInCubic]:delay-800"></span>
 									<span class="right"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-6="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 									<span class="bot-left"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-6="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="bot-right"
 										init-with="p:[tr:scaleX(0)]"
-										when-tech-borders-init="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
+										when-tech-borders-init-6="p:[transform:scaleX(0):scaleX(1):500:easeOutCubic]:delay-750"
 										when-tech-tile-exit="p:[op:0:delay-500, tr:scaleX(0)]"></span>
 									<span class="left"
 										init-with="p:[tr:scaleY(0)]"
-										when-tech-borders-init="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
+										when-tech-borders-init-6="p:[transform:scaleY(0):scaleY(1):300:easeOutCubic]:delay-450"
 										when-tech-tile-exit="p:[op:0:delay-800, tr:scaleY(0):delay-500]"></span>
 								</div>
 							</div>
@@ -1498,356 +1498,354 @@ Gabrielle
 						when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-1000">Fusce vehicula dolor arcu, sit amet blandit dolor nec. Donec viverra.<p>
 				</div>
 				<ul class="pf-items">
-					<ul class="pf-items">
-						<li>
-							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-								when-pf-rs-init="s:[tech-cardlet-init:public]"
-								when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
-								when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
-								<a></a><a></a><a></a><a></a>
-								<div class="pf-cardlet highlight bg-tech">
-									<div class="pf-cardlet-front-container">
-										<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
-											<div class="pf-cardlet-overlay"></div>
-										</div>
-									</div>
-									<div class="pf-cardlet-back-container">
-										<div class="pf-cardlet-back"
-											init-with="p:[op:0, tro:center center]"
-											when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
-									</div>
-									<div class="pf-cardlet-bottom-container">
-										<div class="pf-cardlet-bottom">
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
-											<div init-with="p:[tr:scaleY(0), tro:center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<div init-with="p:[tr:scaleY(0), tro: center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<h1>When to Replace Your Phone</h1>
-											<div>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-												<h2 init-with="p-op"
-													when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-											</div>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-container"
-										init-with="p:[op:0, tr:translateX(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
-										<div class="pf-cardlet-ribbon">
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
-											</svg>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-edge-container"
-										init-with="p:[op:0, tr:translateY(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
-										<div class="pf-cardlet-ribbon-edge"></div>
+					<li>
+						<div class="pf-tile-container"
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+							when-pf-rs-init="s:[tech-cardlet-init-1:public]"
+							when-tech-cardlet-init-1="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[tech-ribbon-1:public:delay-500, tech-cardlet-back-1:public:delay-1000]"
+							when-tech-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							<a></a><a></a><a></a><a></a>
+							<div class="pf-cardlet highlight bg-tech">
+								<div class="pf-cardlet-front-container">
+									<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
+										<div class="pf-cardlet-overlay"></div>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-								when-pf-rs-init="s:[tech-cardlet-init:public:delay-500]"
-								when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
-								when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
-								<a></a><a></a><a></a><a></a>
-								<div class="pf-cardlet highlight bg-tech">
-									<div class="pf-cardlet-front-container">
-										<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
-											<div class="pf-cardlet-overlay"></div>
+								<div class="pf-cardlet-back-container">
+									<div class="pf-cardlet-back"
+										init-with="p:[op:0, tro:center center]"
+										when-tech-cardlet-back-1="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
+								</div>
+								<div class="pf-cardlet-bottom-container">
+									<div class="pf-cardlet-bottom">
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-tech-cardlet-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<div init-with="p:[tr:scaleY(0), tro: center top]"
+											when-tech-cardlet-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<h1>When to Replace Your Phone</h1>
+										<div>
+											<div init-with="p-op"
+												when-tech-cardlet-init-1="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+											<h2 init-with="p-op"
+												when-tech-cardlet-init-1="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
+											<div init-with="p-op"
+												when-tech-cardlet-init-1="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
 										</div>
-									</div>
-									<div class="pf-cardlet-back-container">
-										<div class="pf-cardlet-back"
-											init-with="p:[op:0, tro:center center]"
-											when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
-									</div>
-									<div class="pf-cardlet-bottom-container">
-										<div class="pf-cardlet-bottom">
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
-											<div init-with="p:[tr:scaleY(0), tro:center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<div init-with="p:[tr:scaleY(0), tro: center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<h1>When to Replace Your Phone</h1>
-											<div>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-												<h2 init-with="p-op"
-													when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-											</div>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-container"
-										init-with="p:[op:0, tr:translateX(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
-										<div class="pf-cardlet-ribbon">
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
-											</svg>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-edge-container"
-										init-with="p:[op:0, tr:translateY(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
-										<div class="pf-cardlet-ribbon-edge"></div>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-								when-pf-rs-init="s:[tech-cardlet-init:public:delay-1000]"
-								when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
-								when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
-								<a></a><a></a><a></a><a></a>
-								<div class="pf-cardlet highlight bg-tech">
-									<div class="pf-cardlet-front-container">
-										<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
-											<div class="pf-cardlet-overlay"></div>
-										</div>
-									</div>
-									<div class="pf-cardlet-back-container">
-										<div class="pf-cardlet-back"
-											init-with="p:[op:0, tro:center center]"
-											when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
-									</div>
-									<div class="pf-cardlet-bottom-container">
-										<div class="pf-cardlet-bottom">
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
-											<div init-with="p:[tr:scaleY(0), tro:center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<div init-with="p:[tr:scaleY(0), tro: center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<h1>When to Replace Your Phone</h1>
-											<div>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-												<h2 init-with="p-op"
-													when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-											</div>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-container"
-										init-with="p:[op:0, tr:translateX(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
-										<div class="pf-cardlet-ribbon">
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
-											</svg>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-edge-container"
-										init-with="p:[op:0, tr:translateY(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
-										<div class="pf-cardlet-ribbon-edge"></div>
+								<div class="pf-cardlet-ribbon-container"
+									init-with="p:[op:0, tr:translateX(-10px)]"
+									when-tech-ribbon-1="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
+									<div class="pf-cardlet-ribbon">
+										<svg viewBox="0 0 100 100">
+											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+										</svg>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-								when-pf-rs-init="s:[tech-cardlet-init:public:delay-1500]"
-								when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
-								when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
-								<a></a><a></a><a></a><a></a>
-								<div class="pf-cardlet highlight bg-tech">
-									<div class="pf-cardlet-front-container">
-										<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
-											<div class="pf-cardlet-overlay"></div>
-										</div>
-									</div>
-									<div class="pf-cardlet-back-container">
-										<div class="pf-cardlet-back"
-											init-with="p:[op:0, tro:center center]"
-											when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
-									</div>
-									<div class="pf-cardlet-bottom-container">
-										<div class="pf-cardlet-bottom">
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
-											<div init-with="p:[tr:scaleY(0), tro:center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<div init-with="p:[tr:scaleY(0), tro: center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<h1>When to Replace Your Phone</h1>
-											<div>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-												<h2 init-with="p-op"
-													when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-											</div>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-container"
-										init-with="p:[op:0, tr:translateX(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
-										<div class="pf-cardlet-ribbon">
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
-											</svg>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-edge-container"
-										init-with="p:[op:0, tr:translateY(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
-										<div class="pf-cardlet-ribbon-edge"></div>
-									</div>
+								<div class="pf-cardlet-ribbon-edge-container"
+									init-with="p:[op:0, tr:translateY(-10px)]"
+									when-tech-ribbon-1="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
+									<div class="pf-cardlet-ribbon-edge"></div>
 								</div>
 							</div>
-						</li>
-						<li>
-							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-								when-pf-rs-init="s:[tech-cardlet-init:public:delay-2000]"
-								when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
-								when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
-								<a></a><a></a><a></a><a></a>
-								<div class="pf-cardlet highlight bg-tech">
-									<div class="pf-cardlet-front-container">
-										<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
-											<div class="pf-cardlet-overlay"></div>
-										</div>
-									</div>
-									<div class="pf-cardlet-back-container">
-										<div class="pf-cardlet-back"
-											init-with="p:[op:0, tro:center center]"
-											when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
-									</div>
-									<div class="pf-cardlet-bottom-container">
-										<div class="pf-cardlet-bottom">
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
-											<div init-with="p:[tr:scaleY(0), tro:center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<div init-with="p:[tr:scaleY(0), tro: center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<h1>When to Replace Your Phone</h1>
-											<div>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-												<h2 init-with="p-op"
-													when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-											</div>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-container"
-										init-with="p:[op:0, tr:translateX(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
-										<div class="pf-cardlet-ribbon">
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
-											</svg>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-edge-container"
-										init-with="p:[op:0, tr:translateY(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
-										<div class="pf-cardlet-ribbon-edge"></div>
+						</div>
+					</li>
+					<li>
+						<div class="pf-tile-container"
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+							when-pf-rs-init="s:[tech-cardlet-init-2:public:delay-500]"
+							when-tech-cardlet-init-2="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[tech-ribbon-2:public:delay-500, tech-cardlet-back-2:public:delay-1000]"
+							when-tech-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							<a></a><a></a><a></a><a></a>
+							<div class="pf-cardlet highlight bg-tech">
+								<div class="pf-cardlet-front-container">
+									<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
+										<div class="pf-cardlet-overlay"></div>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="pf-tile-container"
-								init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-								when-pf-rs-init="s:[tech-cardlet-init:public:delay-2500]"
-								when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
-								when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
-								<a></a><a></a><a></a><a></a>
-								<div class="pf-cardlet highlight bg-tech">
-									<div class="pf-cardlet-front-container">
-										<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
-											<div class="pf-cardlet-overlay"></div>
+								<div class="pf-cardlet-back-container">
+									<div class="pf-cardlet-back"
+										init-with="p:[op:0, tro:center center]"
+										when-tech-cardlet-back-2="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
+								</div>
+								<div class="pf-cardlet-bottom-container">
+									<div class="pf-cardlet-bottom">
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-tech-cardlet-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<div init-with="p:[tr:scaleY(0), tro: center top]"
+											when-tech-cardlet-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<h1>When to Replace Your Phone</h1>
+										<div>
+											<div init-with="p-op"
+												when-tech-cardlet-init-2="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+											<h2 init-with="p-op"
+												when-tech-cardlet-init-2="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
+											<div init-with="p-op"
+												when-tech-cardlet-init-2="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
 										</div>
-									</div>
-									<div class="pf-cardlet-back-container">
-										<div class="pf-cardlet-back"
-											init-with="p:[op:0, tro:center center]"
-											when-tech-cardlet-back="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
-									</div>
-									<div class="pf-cardlet-bottom-container">
-										<div class="pf-cardlet-bottom">
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
-											<div init-with="p:[tr:scaleY(0), tro:center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<div init-with="p:[tr:scaleY(0), tro: center top]"
-												when-tech-cardlet-init="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
-											<div init-with="p:[tr:scaleX(0)]"
-												when-tech-cardlet-init="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
-											<h1>When to Replace Your Phone</h1>
-											<div>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-												<h2 init-with="p-op"
-													when-tech-cardlet-init="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
-												<div init-with="p-op"
-													when-tech-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
-											</div>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-container"
-										init-with="p:[op:0, tr:translateX(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
-										<div class="pf-cardlet-ribbon">
-											<svg viewBox="0 0 100 100">
-												<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
-											</svg>
-										</div>
-									</div>
-									<div class="pf-cardlet-ribbon-edge-container"
-										init-with="p:[op:0, tr:translateY(-10px)]"
-										when-tech-ribbon="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
-										<div class="pf-cardlet-ribbon-edge"></div>
 									</div>
 								</div>
+								<div class="pf-cardlet-ribbon-container"
+									init-with="p:[op:0, tr:translateX(-10px)]"
+									when-tech-ribbon-2="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
+									<div class="pf-cardlet-ribbon">
+										<svg viewBox="0 0 100 100">
+											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+										</svg>
+									</div>
+								</div>
+								<div class="pf-cardlet-ribbon-edge-container"
+									init-with="p:[op:0, tr:translateY(-10px)]"
+									when-tech-ribbon-2="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
+									<div class="pf-cardlet-ribbon-edge"></div>
+								</div>
 							</div>
-						</li>
-					</ul>
+						</div>
+					</li>
+					<li>
+						<div class="pf-tile-container"
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+							when-pf-rs-init="s:[tech-cardlet-init-3:public:delay-1000]"
+							when-tech-cardlet-init-3="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[tech-ribbon-3:public:delay-500, tech-cardlet-back-3:public:delay-1000]"
+							when-tech-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							<a></a><a></a><a></a><a></a>
+							<div class="pf-cardlet highlight bg-tech">
+								<div class="pf-cardlet-front-container">
+									<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
+										<div class="pf-cardlet-overlay"></div>
+									</div>
+								</div>
+								<div class="pf-cardlet-back-container">
+									<div class="pf-cardlet-back"
+										init-with="p:[op:0, tro:center center]"
+										when-tech-cardlet-back-3="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
+								</div>
+								<div class="pf-cardlet-bottom-container">
+									<div class="pf-cardlet-bottom">
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-3="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-tech-cardlet-init-3="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-3="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<div init-with="p:[tr:scaleY(0), tro: center top]"
+											when-tech-cardlet-init-3="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-3="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<h1>When to Replace Your Phone</h1>
+										<div>
+											<div init-with="p-op"
+												when-tech-cardlet-init-3="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+											<h2 init-with="p-op"
+												when-tech-cardlet-init-3="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
+											<div init-with="p-op"
+												when-tech-cardlet-init-3="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+										</div>
+									</div>
+								</div>
+								<div class="pf-cardlet-ribbon-container"
+									init-with="p:[op:0, tr:translateX(-10px)]"
+									when-tech-ribbon-3="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
+									<div class="pf-cardlet-ribbon">
+										<svg viewBox="0 0 100 100">
+											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+										</svg>
+									</div>
+								</div>
+								<div class="pf-cardlet-ribbon-edge-container"
+									init-with="p:[op:0, tr:translateY(-10px)]"
+									when-tech-ribbon-3="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
+									<div class="pf-cardlet-ribbon-edge"></div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="pf-tile-container"
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+							when-pf-rs-init="s:[tech-cardlet-init-4:public:delay-1500]"
+							when-tech-cardlet-init-4="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[tech-ribbon-4:public:delay-500, tech-cardlet-back-4:public:delay-1000]"
+							when-tech-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							<a></a><a></a><a></a><a></a>
+							<div class="pf-cardlet highlight bg-tech">
+								<div class="pf-cardlet-front-container">
+									<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
+										<div class="pf-cardlet-overlay"></div>
+									</div>
+								</div>
+								<div class="pf-cardlet-back-container">
+									<div class="pf-cardlet-back"
+										init-with="p:[op:0, tro:center center]"
+										when-tech-cardlet-back-4="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
+								</div>
+								<div class="pf-cardlet-bottom-container">
+									<div class="pf-cardlet-bottom">
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-4="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-tech-cardlet-init-4="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-4="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<div init-with="p:[tr:scaleY(0), tro: center top]"
+											when-tech-cardlet-init-4="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-4="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<h1>When to Replace Your Phone</h1>
+										<div>
+											<div init-with="p-op"
+												when-tech-cardlet-init-4="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+											<h2 init-with="p-op"
+												when-tech-cardlet-init-4="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
+											<div init-with="p-op"
+												when-tech-cardlet-init-4="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+										</div>
+									</div>
+								</div>
+								<div class="pf-cardlet-ribbon-container"
+									init-with="p:[op:0, tr:translateX(-10px)]"
+									when-tech-ribbon-4="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
+									<div class="pf-cardlet-ribbon">
+										<svg viewBox="0 0 100 100">
+											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+										</svg>
+									</div>
+								</div>
+								<div class="pf-cardlet-ribbon-edge-container"
+									init-with="p:[op:0, tr:translateY(-10px)]"
+									when-tech-ribbon-4="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
+									<div class="pf-cardlet-ribbon-edge"></div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="pf-tile-container"
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+							when-pf-rs-init="s:[tech-cardlet-init-5:public:delay-2000]"
+							when-tech-cardlet-init-5="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[tech-ribbon-5:public:delay-500, tech-cardlet-back-5:public:delay-1000]"
+							when-tech-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							<a></a><a></a><a></a><a></a>
+							<div class="pf-cardlet highlight bg-tech">
+								<div class="pf-cardlet-front-container">
+									<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
+										<div class="pf-cardlet-overlay"></div>
+									</div>
+								</div>
+								<div class="pf-cardlet-back-container">
+									<div class="pf-cardlet-back"
+										init-with="p:[op:0, tro:center center]"
+										when-tech-cardlet-back-5="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
+								</div>
+								<div class="pf-cardlet-bottom-container">
+									<div class="pf-cardlet-bottom">
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-5="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-tech-cardlet-init-5="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-5="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<div init-with="p:[tr:scaleY(0), tro: center top]"
+											when-tech-cardlet-init-5="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-5="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<h1>When to Replace Your Phone</h1>
+										<div>
+											<div init-with="p-op"
+												when-tech-cardlet-init-5="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+											<h2 init-with="p-op"
+												when-tech-cardlet-init-5="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
+											<div init-with="p-op"
+												when-tech-cardlet-init-5="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+										</div>
+									</div>
+								</div>
+								<div class="pf-cardlet-ribbon-container"
+									init-with="p:[op:0, tr:translateX(-10px)]"
+									when-tech-ribbon-5="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
+									<div class="pf-cardlet-ribbon">
+										<svg viewBox="0 0 100 100">
+											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+										</svg>
+									</div>
+								</div>
+								<div class="pf-cardlet-ribbon-edge-container"
+									init-with="p:[op:0, tr:translateY(-10px)]"
+									when-tech-ribbon-5="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
+									<div class="pf-cardlet-ribbon-edge"></div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="pf-tile-container"
+							init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
+							when-pf-rs-init="s:[tech-cardlet-init-6:public:delay-2500]"
+							when-tech-cardlet-init-6="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[tech-ribbon-6:public:delay-500, tech-cardlet-back-6:public:delay-1000]"
+							when-tech-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
+							<a></a><a></a><a></a><a></a>
+							<div class="pf-cardlet highlight bg-tech">
+								<div class="pf-cardlet-front-container">
+									<div class="pf-cardlet-front" style="background-image: url('http://techmaniacs.gr/wp-content/uploads/2012/08/iphone-5-release-date-imore-0.jpg');">
+										<div class="pf-cardlet-overlay"></div>
+									</div>
+								</div>
+								<div class="pf-cardlet-back-container">
+									<div class="pf-cardlet-back"
+										init-with="p:[op:0, tro:center center]"
+										when-tech-cardlet-back-6="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-550"></div>
+								</div>
+								<div class="pf-cardlet-bottom-container">
+									<div class="pf-cardlet-bottom">
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-6="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-tech-cardlet-init-6="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-6="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<div init-with="p:[tr:scaleY(0), tro: center top]"
+											when-tech-cardlet-init-6="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-550"></div>
+										<div init-with="p:[tr:scaleX(0)]"
+											when-tech-cardlet-init-6="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-1200"></div>
+										<h1>When to Replace Your Phone</h1>
+										<div>
+											<div init-with="p-op"
+												when-tech-cardlet-init-6="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+											<h2 init-with="p-op"
+												when-tech-cardlet-init-6="a:[shake-opacity:set:(dur:450ms#func:ease-in-out):in:delay-1600]">03/28/2016</h2>
+											<div init-with="p-op"
+												when-tech-cardlet-init-6="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]"></div>
+										</div>
+									</div>
+								</div>
+								<div class="pf-cardlet-ribbon-container"
+									init-with="p:[op:0, tr:translateX(-10px)]"
+									when-tech-ribbon-6="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
+									<div class="pf-cardlet-ribbon">
+										<svg viewBox="0 0 100 100">
+											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
+										</svg>
+									</div>
+								</div>
+								<div class="pf-cardlet-ribbon-edge-container"
+									init-with="p:[op:0, tr:translateY(-10px)]"
+									when-tech-ribbon-6="p:[opacity:0:1:450:linear, transform:translateY(-10px):translateY(0px):900:easeOutQuad:delay-500]:delay-200">
+									<div class="pf-cardlet-ribbon-edge"></div>
+								</div>
+							</div>
+						</div>
+					</li>
 				</ul>
 			</div>
 		</main>
