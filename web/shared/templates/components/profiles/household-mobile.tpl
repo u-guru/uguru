@@ -215,19 +215,19 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-							when-pf-mn-init="s:[household-tile-init:public]"
-							when-household-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-household-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
+							when-pf-mn-init="s:[household-tile-init-1:public]"
+							when-household-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-household-tile-exit-1="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
 									init-with="p:[op:0]"
-									when-household-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
-									when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
+									when-household-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-household-tile-exit-1="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"
 									init-with="p:[overflow:visible]"
-									when-household-tile-init="p:[overflow:hidden:delay-1800]"
-									when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250">
+									when-household-tile-init-1="p:[overflow:hidden:delay-1800]"
+									when-household-tile-exit-1="p:[opacity:1:0:500:easeOutSine]:delay-250">
 									<svg viewBox="0 0 380 270">
 										<defs>
 											<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="bub-front-color">
@@ -257,10 +257,10 @@ Gabrielle
 										<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 											<g class="bub-back"
 												init-with="p-op"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink:public:delay-1000]"
-												when-bub-sink="p:[opacity:1:0:250:linear, transform:translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
+												when-household-tile-init-1="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink-1:public:delay-1000]"
+												when-bub-sink-1="p:[opacity:1:0:250:linear, transform:translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
 												<g init-with="p:[op:0, tro:center center]"
-													when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-800]">
+													when-household-tile-init-1="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-800]">
 													<path d="M186.36829,41.0424598 C195.375073,44.3206607 199.994675,54.3464594 196.686459,63.4357079 C193.378243,72.5249564 183.394964,77.2357412 174.388181,73.9575402 C165.381398,70.6793393 160.761796,60.6535406 164.070012,51.5642921 C167.378228,42.4750436 177.361507,37.7642588 186.36829,41.0424598 L186.36829,41.0424598 L186.36829,41.0424598 Z" class="bub-back-18"></path>
 													<path d="M295.030127,16.3827652 C315.61706,8.8897345 338.435984,19.6572426 345.99762,40.4326677 C353.559256,61.2080927 343.000167,84.124204 322.413235,91.6172348 C301.826302,99.1102655 279.007378,88.3427574 271.445742,67.5673323 C263.884105,46.7919073 274.443194,23.875796 295.030127,16.3827652 L295.030127,16.3827652 L295.030127,16.3827652 Z" class="bub-back-17"></path>
 													<path d="M240.030127,31.3827652 C260.61706,23.8897345 283.435984,34.6572426 290.99762,55.4326677 C298.559256,76.2080927 288.000167,99.124204 267.413235,106.617235 C246.826302,114.110266 224.007378,103.342757 216.445742,82.5673323 C208.884105,61.7919073 219.443194,38.875796 240.030127,31.3827652 L240.030127,31.3827652 L240.030127,31.3827652 Z" class="bub-back-16"></path>
@@ -283,8 +283,8 @@ Gabrielle
 											</g>
 											<g class="bub-mid"
 												init-with="p:[op:0, tro:center center]"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450]"
-												when-bub-sink="p:[opacity:1:0:500:linear, transform:translateY(0px):translateY(137px):500:easeInOutSine]:delay-300">
+												when-household-tile-init-1="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450]"
+												when-bub-sink-1="p:[opacity:1:0:500:linear, transform:translateY(0px):translateY(137px):500:easeInOutSine]:delay-300">
 												<path d="M115.696926,83.0336412 C106.2023,62.0461607 81.8199237,51.6601249 59.6190792,59.7405715 C36.3392132,68.2137497 24.273701,93.7834547 32.6700034,116.852106 C37.0361983,128.848128 46.0757807,137.805587 57.0212138,142.449282 C66.5158396,163.436762 90.8982162,173.822798 113.099061,165.742352 C135.85912,157.458367 154.00358,135.394667 146.683611,112.741463 C151.983322,108.565154 154.277303,101.355784 151.862779,94.7219363 C148.845358,86.4316397 133.513564,79.6176735 125.147363,82.6627219 C123.373073,83.3085105 121.780049,84.2306418 120.39999,85.361936 C118.879532,84.4949901 117.308898,83.717534 115.696926,83.0336412 L115.696926,83.0336412 Z" class="bub-mid-12"></path>
 												<path d="M161.959412,104.615952 C170.44517,97.4395013 182.370998,94.8721228 193.48842,98.9185335 C210.064421,104.951705 218.566293,123.403093 212.477883,140.130863 C206.389473,156.858633 188.016337,165.528318 171.440335,159.495147 C170.706867,159.228186 169.989207,158.936911 169.28792,158.622547 C160.802161,165.798998 148.876334,168.366376 137.758912,164.319965 C121.182911,158.286794 112.681038,139.835406 118.769449,123.107636 C124.857859,106.379866 143.230995,97.7101807 159.806996,103.743352 C160.540465,104.010313 161.258125,104.301588 161.959412,104.615952 L161.959412,104.615952 L161.959412,104.615952 Z" class="bub-mid-11"></path>
 												<path d="M39.3357458,115.615952 C47.8215046,108.439501 59.7473319,105.872123 70.8647538,109.918533 C87.4407552,115.951705 95.9426276,134.403093 89.8542173,151.130863 C83.7658069,167.858633 65.392671,176.528318 48.8166696,170.495147 C48.0832008,170.228186 47.3655408,169.936911 46.6642542,169.622547 C38.1784954,176.798998 26.2526681,179.366376 15.1352462,175.319965 C-1.44075524,169.286794 -9.94262762,150.835406 -3.85421727,134.107636 C2.23419307,117.379866 20.607329,108.710181 37.1833304,114.743352 C37.9167992,115.010313 38.6344592,115.301588 39.3357458,115.615952 L39.3357458,115.615952 L39.3357458,115.615952 Z" class="bub-mid-10"></path>
@@ -300,7 +300,7 @@ Gabrielle
 											</g>
 											<g class="bub-front"
 												init-with="p:[op:0, tro:center center]"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-250]">
+												when-household-tile-init-1="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-250]">
 												<rect x="0" y="0" width="380" height="270" clip-path="url(#bub-front)" fill="url(#bub-front-color)"></rect>
 											</g>
 										</g>
@@ -308,41 +308,41 @@ Gabrielle
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[t:opacity 500ms ease-out]"
-									when-household-tile-exit="p:[op:0:delay-250]">
+									bub-sink-1-1-household-tile-exit-1="p:[op:0:delay-250]">
 									<div>
 										<h1 init-with="p:[op:0, tr:translateY(-100px)]"
-											when-bub-sink="p:[opacity:0:1:750:easeOutSine, transform:translateY(-100px):translateY(0px):750:easeOutQuad]">Furniture Care</h1>
+											when-bub-sink-1="p:[opacity:0:1:750:easeOutSine, transform:translateY(-100px):translateY(0px):750:easeOutQuad]">Furniture Care</h1>
 										<ul class="rating-stars" data-rating="4" data-half="true">
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+												when-household-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
+												when-household-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
+												when-household-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
+												when-household-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1900]">
+												when-household-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1900]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -352,7 +352,7 @@ Gabrielle
 									</div>
 									<div class="pf-pricing"
 										init-with="p:[op:0, tro:center center]"
-										when-household-tile-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-2000]">$10/hr</div>
+										when-household-tile-init-1="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-2000]">$10/hr</div>
 								</div>
 								<div class="pf-tile-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
 							</div>
@@ -361,19 +361,19 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-							when-pf-mn-init="s:[household-tile-init:public:delay-500]"
-							when-household-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-household-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
+							when-pf-mn-init="s:[household-tile-init-2:public:delay-500]"
+							when-household-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-household-tile-exit-2="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
 									init-with="p:[op:0]"
-									when-household-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
-									when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
+									when-household-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-household-tile-exit-2="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"
 									init-with="p:[overflow:visible]"
-									when-household-tile-init="p:[overflow:hidden:delay-1800]"
-									when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250">
+									when-household-tile-init-2="p:[overflow:hidden:delay-1800]"
+									when-household-tile-exit-2="p:[opacity:1:0:500:easeOutSine]:delay-250">
 									<svg viewBox="0 0 380 270">
 										<defs>
 											<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="bub-front-color">
@@ -403,10 +403,10 @@ Gabrielle
 										<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 											<g class="bub-back"
 												init-with="p-op"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink:public:delay-1000]"
-												when-bub-sink="p:[opacity:1:0:250:linear, transform:translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
+												when-household-tile-init-2="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink-2:public:delay-1000]"
+												when-bub-sink-2="p:[opacity:1:0:250:linear, transform:translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
 												<g init-with="p:[op:0, tro:center center]"
-													when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-800]">
+													when-household-tile-init-2="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-800]">
 													<path d="M186.36829,41.0424598 C195.375073,44.3206607 199.994675,54.3464594 196.686459,63.4357079 C193.378243,72.5249564 183.394964,77.2357412 174.388181,73.9575402 C165.381398,70.6793393 160.761796,60.6535406 164.070012,51.5642921 C167.378228,42.4750436 177.361507,37.7642588 186.36829,41.0424598 L186.36829,41.0424598 L186.36829,41.0424598 Z" class="bub-back-18"></path>
 													<path d="M295.030127,16.3827652 C315.61706,8.8897345 338.435984,19.6572426 345.99762,40.4326677 C353.559256,61.2080927 343.000167,84.124204 322.413235,91.6172348 C301.826302,99.1102655 279.007378,88.3427574 271.445742,67.5673323 C263.884105,46.7919073 274.443194,23.875796 295.030127,16.3827652 L295.030127,16.3827652 L295.030127,16.3827652 Z" class="bub-back-17"></path>
 													<path d="M240.030127,31.3827652 C260.61706,23.8897345 283.435984,34.6572426 290.99762,55.4326677 C298.559256,76.2080927 288.000167,99.124204 267.413235,106.617235 C246.826302,114.110266 224.007378,103.342757 216.445742,82.5673323 C208.884105,61.7919073 219.443194,38.875796 240.030127,31.3827652 L240.030127,31.3827652 L240.030127,31.3827652 Z" class="bub-back-16"></path>
@@ -429,8 +429,8 @@ Gabrielle
 											</g>
 											<g class="bub-mid"
 												init-with="p:[op:0, tro:center center]"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450]"
-												when-bub-sink="p:[opacity:1:0:500:linear, transform:translateY(0px):translateY(137px):500:easeInOutSine]:delay-300">
+												when-household-tile-init-2="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450]"
+												when-bub-sink-2="p:[opacity:1:0:500:linear, transform:translateY(0px):translateY(137px):500:easeInOutSine]:delay-300">
 												<path d="M115.696926,83.0336412 C106.2023,62.0461607 81.8199237,51.6601249 59.6190792,59.7405715 C36.3392132,68.2137497 24.273701,93.7834547 32.6700034,116.852106 C37.0361983,128.848128 46.0757807,137.805587 57.0212138,142.449282 C66.5158396,163.436762 90.8982162,173.822798 113.099061,165.742352 C135.85912,157.458367 154.00358,135.394667 146.683611,112.741463 C151.983322,108.565154 154.277303,101.355784 151.862779,94.7219363 C148.845358,86.4316397 133.513564,79.6176735 125.147363,82.6627219 C123.373073,83.3085105 121.780049,84.2306418 120.39999,85.361936 C118.879532,84.4949901 117.308898,83.717534 115.696926,83.0336412 L115.696926,83.0336412 Z" class="bub-mid-12"></path>
 												<path d="M161.959412,104.615952 C170.44517,97.4395013 182.370998,94.8721228 193.48842,98.9185335 C210.064421,104.951705 218.566293,123.403093 212.477883,140.130863 C206.389473,156.858633 188.016337,165.528318 171.440335,159.495147 C170.706867,159.228186 169.989207,158.936911 169.28792,158.622547 C160.802161,165.798998 148.876334,168.366376 137.758912,164.319965 C121.182911,158.286794 112.681038,139.835406 118.769449,123.107636 C124.857859,106.379866 143.230995,97.7101807 159.806996,103.743352 C160.540465,104.010313 161.258125,104.301588 161.959412,104.615952 L161.959412,104.615952 L161.959412,104.615952 Z" class="bub-mid-11"></path>
 												<path d="M39.3357458,115.615952 C47.8215046,108.439501 59.7473319,105.872123 70.8647538,109.918533 C87.4407552,115.951705 95.9426276,134.403093 89.8542173,151.130863 C83.7658069,167.858633 65.392671,176.528318 48.8166696,170.495147 C48.0832008,170.228186 47.3655408,169.936911 46.6642542,169.622547 C38.1784954,176.798998 26.2526681,179.366376 15.1352462,175.319965 C-1.44075524,169.286794 -9.94262762,150.835406 -3.85421727,134.107636 C2.23419307,117.379866 20.607329,108.710181 37.1833304,114.743352 C37.9167992,115.010313 38.6344592,115.301588 39.3357458,115.615952 L39.3357458,115.615952 L39.3357458,115.615952 Z" class="bub-mid-10"></path>
@@ -446,7 +446,7 @@ Gabrielle
 											</g>
 											<g class="bub-front"
 												init-with="p:[op:0, tro:center center]"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-250]">
+												when-household-tile-init-2="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-250]">
 												<rect x="0" y="0" width="380" height="270" clip-path="url(#bub-front)" fill="url(#bub-front-color)"></rect>
 											</g>
 										</g>
@@ -454,41 +454,41 @@ Gabrielle
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[t:opacity 500ms ease-out]"
-									when-household-tile-exit="p:[op:0:delay-250]">
+									bub-sink-2-1-household-tile-exit-2="p:[op:0:delay-250]">
 									<div>
 										<h1 init-with="p:[op:0, tr:translateY(-100px)]"
-											when-bub-sink="p:[opacity:0:1:750:easeOutSine, transform:translateY(-100px):translateY(0px):750:easeOutQuad]">Furniture Care</h1>
+											when-bub-sink-2="p:[opacity:0:1:750:easeOutSine, transform:translateY(-100px):translateY(0px):750:easeOutQuad]">Furniture Care</h1>
 										<ul class="rating-stars" data-rating="4" data-half="true">
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+												when-household-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
+												when-household-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
+												when-household-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
+												when-household-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1900]">
+												when-household-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1900]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -498,7 +498,7 @@ Gabrielle
 									</div>
 									<div class="pf-pricing"
 										init-with="p:[op:0, tro:center center]"
-										when-household-tile-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-2000]">$10/hr</div>
+										when-household-tile-init-2="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-2000]">$10/hr</div>
 								</div>
 								<div class="pf-tile-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
 							</div>
@@ -517,9 +517,9 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-mn-init="s:[household-cardlet-init:public:delay-1000]"
-							when-household-cardlet-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-household-cardlet-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
+							when-pf-mn-init="s:[household-cardlet-init-1:public]"
+							when-household-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-household-cardlet-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-household">
 								<div class="pf-cardlet-front-container">
@@ -534,9 +534,9 @@ Gabrielle
 								<div class="pf-cardlet-bottom-container">
 									<div class="pf-cardlet-bottom">
 										<h1 init-with="p-op"
-											when-household-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-300">How to Make Your Plants Live Longer</h1>
+											when-household-cardlet-init-1="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-300">How to Make Your Plants Live Longer</h1>
 										<div init-with="p:[op:0, tro:right bottom]"
-											when-household-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-500]">
+											when-household-cardlet-init-1="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-500]">
 											<div class="pf-cardlet-border">
 												<div></div>
 												<div></div>
@@ -563,9 +563,9 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-mn-init="s:[household-cardlet-init:public:delay-1500]"
-							when-household-cardlet-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-household-cardlet-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
+							when-pf-mn-init="s:[household-cardlet-init-2:public:delay-500]"
+							when-household-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-household-cardlet-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-household">
 								<div class="pf-cardlet-front-container">
@@ -580,9 +580,9 @@ Gabrielle
 								<div class="pf-cardlet-bottom-container">
 									<div class="pf-cardlet-bottom">
 										<h1 init-with="p-op"
-											when-household-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-300">How to Make Your Plants Live Longer</h1>
+											when-household-cardlet-init-2="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-300">How to Make Your Plants Live Longer</h1>
 										<div init-with="p:[op:0, tro:right bottom]"
-											when-household-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-500]">
+											when-household-cardlet-init-2="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-500]">
 											<div class="pf-cardlet-border">
 												<div></div>
 												<div></div>
@@ -619,19 +619,19 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-							when-pf-sv-init="s:[household-tile-init:public]"
-							when-household-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-household-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
+							when-pf-sv-init="s:[household-tile-init-1:public]"
+							when-household-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-household-tile-exit-1="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
 									init-with="p:[op:0]"
-									when-household-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
-									when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
+									when-household-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-household-tile-exit-1="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"
 									init-with="p:[overflow:visible]"
-									when-household-tile-init="p:[overflow:hidden:delay-1800]"
-									when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250">
+									when-household-tile-init-1="p:[overflow:hidden:delay-1800]"
+									when-household-tile-exit-1="p:[opacity:1:0:500:easeOutSine]:delay-250">
 									<svg viewBox="0 0 380 270">
 										<defs>
 											<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="bub-front-color">
@@ -661,10 +661,10 @@ Gabrielle
 										<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 											<g class="bub-back"
 												init-with="p-op"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink:public:delay-1000]"
-												when-bub-sink="p:[opacity:1:0:250:linear, transform:translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
+												when-household-tile-init-1="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink-1:public:delay-1000]"
+												when-bub-sink-1="p:[opacity:1:0:250:linear, transform:translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
 												<g init-with="p:[op:0, tro:center center]"
-													when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-800]">
+													when-household-tile-init-1="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-800]">
 													<path d="M186.36829,41.0424598 C195.375073,44.3206607 199.994675,54.3464594 196.686459,63.4357079 C193.378243,72.5249564 183.394964,77.2357412 174.388181,73.9575402 C165.381398,70.6793393 160.761796,60.6535406 164.070012,51.5642921 C167.378228,42.4750436 177.361507,37.7642588 186.36829,41.0424598 L186.36829,41.0424598 L186.36829,41.0424598 Z" class="bub-back-18"></path>
 													<path d="M295.030127,16.3827652 C315.61706,8.8897345 338.435984,19.6572426 345.99762,40.4326677 C353.559256,61.2080927 343.000167,84.124204 322.413235,91.6172348 C301.826302,99.1102655 279.007378,88.3427574 271.445742,67.5673323 C263.884105,46.7919073 274.443194,23.875796 295.030127,16.3827652 L295.030127,16.3827652 L295.030127,16.3827652 Z" class="bub-back-17"></path>
 													<path d="M240.030127,31.3827652 C260.61706,23.8897345 283.435984,34.6572426 290.99762,55.4326677 C298.559256,76.2080927 288.000167,99.124204 267.413235,106.617235 C246.826302,114.110266 224.007378,103.342757 216.445742,82.5673323 C208.884105,61.7919073 219.443194,38.875796 240.030127,31.3827652 L240.030127,31.3827652 L240.030127,31.3827652 Z" class="bub-back-16"></path>
@@ -687,8 +687,8 @@ Gabrielle
 											</g>
 											<g class="bub-mid"
 												init-with="p:[op:0, tro:center center]"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450]"
-												when-bub-sink="p:[opacity:1:0:500:linear, transform:translateY(0px):translateY(137px):500:easeInOutSine]:delay-300">
+												when-household-tile-init-1="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450]"
+												when-bub-sink-1="p:[opacity:1:0:500:linear, transform:translateY(0px):translateY(137px):500:easeInOutSine]:delay-300">
 												<path d="M115.696926,83.0336412 C106.2023,62.0461607 81.8199237,51.6601249 59.6190792,59.7405715 C36.3392132,68.2137497 24.273701,93.7834547 32.6700034,116.852106 C37.0361983,128.848128 46.0757807,137.805587 57.0212138,142.449282 C66.5158396,163.436762 90.8982162,173.822798 113.099061,165.742352 C135.85912,157.458367 154.00358,135.394667 146.683611,112.741463 C151.983322,108.565154 154.277303,101.355784 151.862779,94.7219363 C148.845358,86.4316397 133.513564,79.6176735 125.147363,82.6627219 C123.373073,83.3085105 121.780049,84.2306418 120.39999,85.361936 C118.879532,84.4949901 117.308898,83.717534 115.696926,83.0336412 L115.696926,83.0336412 Z" class="bub-mid-12"></path>
 												<path d="M161.959412,104.615952 C170.44517,97.4395013 182.370998,94.8721228 193.48842,98.9185335 C210.064421,104.951705 218.566293,123.403093 212.477883,140.130863 C206.389473,156.858633 188.016337,165.528318 171.440335,159.495147 C170.706867,159.228186 169.989207,158.936911 169.28792,158.622547 C160.802161,165.798998 148.876334,168.366376 137.758912,164.319965 C121.182911,158.286794 112.681038,139.835406 118.769449,123.107636 C124.857859,106.379866 143.230995,97.7101807 159.806996,103.743352 C160.540465,104.010313 161.258125,104.301588 161.959412,104.615952 L161.959412,104.615952 L161.959412,104.615952 Z" class="bub-mid-11"></path>
 												<path d="M39.3357458,115.615952 C47.8215046,108.439501 59.7473319,105.872123 70.8647538,109.918533 C87.4407552,115.951705 95.9426276,134.403093 89.8542173,151.130863 C83.7658069,167.858633 65.392671,176.528318 48.8166696,170.495147 C48.0832008,170.228186 47.3655408,169.936911 46.6642542,169.622547 C38.1784954,176.798998 26.2526681,179.366376 15.1352462,175.319965 C-1.44075524,169.286794 -9.94262762,150.835406 -3.85421727,134.107636 C2.23419307,117.379866 20.607329,108.710181 37.1833304,114.743352 C37.9167992,115.010313 38.6344592,115.301588 39.3357458,115.615952 L39.3357458,115.615952 L39.3357458,115.615952 Z" class="bub-mid-10"></path>
@@ -704,7 +704,7 @@ Gabrielle
 											</g>
 											<g class="bub-front"
 												init-with="p:[op:0, tro:center center]"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-250]">
+												when-household-tile-init-1="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-250]">
 												<rect x="0" y="0" width="380" height="270" clip-path="url(#bub-front)" fill="url(#bub-front-color)"></rect>
 											</g>
 										</g>
@@ -712,41 +712,41 @@ Gabrielle
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[t:opacity 500ms ease-out]"
-									when-household-tile-exit="p:[op:0:delay-250]">
+									bub-sink-1-1-household-tile-exit-1="p:[op:0:delay-250]">
 									<div>
 										<h1 init-with="p:[op:0, tr:translateY(-100px)]"
-											when-bub-sink="p:[opacity:0:1:750:easeOutSine, transform:translateY(-100px):translateY(0px):750:easeOutQuad]">Furniture Care</h1>
+											when-bub-sink-1="p:[opacity:0:1:750:easeOutSine, transform:translateY(-100px):translateY(0px):750:easeOutQuad]">Furniture Care</h1>
 										<ul class="rating-stars" data-rating="4" data-half="true">
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+												when-household-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
+												when-household-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
+												when-household-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
+												when-household-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1900]">
+												when-household-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1900]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -756,7 +756,7 @@ Gabrielle
 									</div>
 									<div class="pf-pricing"
 										init-with="p:[op:0, tro:center center]"
-										when-household-tile-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-2000]">$10/hr</div>
+										when-household-tile-init-1="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-2000]">$10/hr</div>
 								</div>
 								<div class="pf-tile-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
 							</div>
@@ -765,19 +765,19 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-							when-pf-sv-init="s:[household-tile-init:public:delay-500]"
-							when-household-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-household-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
+							when-pf-sv-init="s:[household-tile-init-2:public:delay-500]"
+							when-household-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-household-tile-exit-2="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
 									init-with="p:[op:0]"
-									when-household-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
-									when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
+									when-household-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
+									when-household-tile-exit-2="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"
 									init-with="p:[overflow:visible]"
-									when-household-tile-init="p:[overflow:hidden:delay-1800]"
-									when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250">
+									when-household-tile-init-2="p:[overflow:hidden:delay-1800]"
+									when-household-tile-exit-2="p:[opacity:1:0:500:easeOutSine]:delay-250">
 									<svg viewBox="0 0 380 270">
 										<defs>
 											<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="bub-front-color">
@@ -807,10 +807,10 @@ Gabrielle
 										<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 											<g class="bub-back"
 												init-with="p-op"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink:public:delay-1000]"
-												when-bub-sink="p:[opacity:1:0:250:linear, transform:translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
+												when-household-tile-init-2="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink-2:public:delay-1000]"
+												when-bub-sink-2="p:[opacity:1:0:250:linear, transform:translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
 												<g init-with="p:[op:0, tro:center center]"
-													when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-800]">
+													when-household-tile-init-2="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-800]">
 													<path d="M186.36829,41.0424598 C195.375073,44.3206607 199.994675,54.3464594 196.686459,63.4357079 C193.378243,72.5249564 183.394964,77.2357412 174.388181,73.9575402 C165.381398,70.6793393 160.761796,60.6535406 164.070012,51.5642921 C167.378228,42.4750436 177.361507,37.7642588 186.36829,41.0424598 L186.36829,41.0424598 L186.36829,41.0424598 Z" class="bub-back-18"></path>
 													<path d="M295.030127,16.3827652 C315.61706,8.8897345 338.435984,19.6572426 345.99762,40.4326677 C353.559256,61.2080927 343.000167,84.124204 322.413235,91.6172348 C301.826302,99.1102655 279.007378,88.3427574 271.445742,67.5673323 C263.884105,46.7919073 274.443194,23.875796 295.030127,16.3827652 L295.030127,16.3827652 L295.030127,16.3827652 Z" class="bub-back-17"></path>
 													<path d="M240.030127,31.3827652 C260.61706,23.8897345 283.435984,34.6572426 290.99762,55.4326677 C298.559256,76.2080927 288.000167,99.124204 267.413235,106.617235 C246.826302,114.110266 224.007378,103.342757 216.445742,82.5673323 C208.884105,61.7919073 219.443194,38.875796 240.030127,31.3827652 L240.030127,31.3827652 L240.030127,31.3827652 Z" class="bub-back-16"></path>
@@ -833,8 +833,8 @@ Gabrielle
 											</g>
 											<g class="bub-mid"
 												init-with="p:[op:0, tro:center center]"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450]"
-												when-bub-sink="p:[opacity:1:0:500:linear, transform:translateY(0px):translateY(137px):500:easeInOutSine]:delay-300">
+												when-household-tile-init-2="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450]"
+												when-bub-sink-2="p:[opacity:1:0:500:linear, transform:translateY(0px):translateY(137px):500:easeInOutSine]:delay-300">
 												<path d="M115.696926,83.0336412 C106.2023,62.0461607 81.8199237,51.6601249 59.6190792,59.7405715 C36.3392132,68.2137497 24.273701,93.7834547 32.6700034,116.852106 C37.0361983,128.848128 46.0757807,137.805587 57.0212138,142.449282 C66.5158396,163.436762 90.8982162,173.822798 113.099061,165.742352 C135.85912,157.458367 154.00358,135.394667 146.683611,112.741463 C151.983322,108.565154 154.277303,101.355784 151.862779,94.7219363 C148.845358,86.4316397 133.513564,79.6176735 125.147363,82.6627219 C123.373073,83.3085105 121.780049,84.2306418 120.39999,85.361936 C118.879532,84.4949901 117.308898,83.717534 115.696926,83.0336412 L115.696926,83.0336412 Z" class="bub-mid-12"></path>
 												<path d="M161.959412,104.615952 C170.44517,97.4395013 182.370998,94.8721228 193.48842,98.9185335 C210.064421,104.951705 218.566293,123.403093 212.477883,140.130863 C206.389473,156.858633 188.016337,165.528318 171.440335,159.495147 C170.706867,159.228186 169.989207,158.936911 169.28792,158.622547 C160.802161,165.798998 148.876334,168.366376 137.758912,164.319965 C121.182911,158.286794 112.681038,139.835406 118.769449,123.107636 C124.857859,106.379866 143.230995,97.7101807 159.806996,103.743352 C160.540465,104.010313 161.258125,104.301588 161.959412,104.615952 L161.959412,104.615952 L161.959412,104.615952 Z" class="bub-mid-11"></path>
 												<path d="M39.3357458,115.615952 C47.8215046,108.439501 59.7473319,105.872123 70.8647538,109.918533 C87.4407552,115.951705 95.9426276,134.403093 89.8542173,151.130863 C83.7658069,167.858633 65.392671,176.528318 48.8166696,170.495147 C48.0832008,170.228186 47.3655408,169.936911 46.6642542,169.622547 C38.1784954,176.798998 26.2526681,179.366376 15.1352462,175.319965 C-1.44075524,169.286794 -9.94262762,150.835406 -3.85421727,134.107636 C2.23419307,117.379866 20.607329,108.710181 37.1833304,114.743352 C37.9167992,115.010313 38.6344592,115.301588 39.3357458,115.615952 L39.3357458,115.615952 L39.3357458,115.615952 Z" class="bub-mid-10"></path>
@@ -850,7 +850,7 @@ Gabrielle
 											</g>
 											<g class="bub-front"
 												init-with="p:[op:0, tro:center center]"
-												when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-250]">
+												when-household-tile-init-2="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-250]">
 												<rect x="0" y="0" width="380" height="270" clip-path="url(#bub-front)" fill="url(#bub-front-color)"></rect>
 											</g>
 										</g>
@@ -858,41 +858,41 @@ Gabrielle
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[t:opacity 500ms ease-out]"
-									when-household-tile-exit="p:[op:0:delay-250]">
+									bub-sink-2-1-household-tile-exit-2="p:[op:0:delay-250]">
 									<div>
 										<h1 init-with="p:[op:0, tr:translateY(-100px)]"
-											when-bub-sink="p:[opacity:0:1:750:easeOutSine, transform:translateY(-100px):translateY(0px):750:easeOutQuad]">Furniture Care</h1>
+											when-bub-sink-2="p:[opacity:0:1:750:easeOutSine, transform:translateY(-100px):translateY(0px):750:easeOutQuad]">Furniture Care</h1>
 										<ul class="rating-stars" data-rating="4" data-half="true">
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+												when-household-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
+												when-household-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
+												when-household-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
+												when-household-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 												</svg>
 											</li>
 											<li init-with="p-op"
-												when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1900]">
+												when-household-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1900]">
 												<svg viewBox="0 0 100 100">
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 													<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -902,7 +902,7 @@ Gabrielle
 									</div>
 									<div class="pf-pricing"
 										init-with="p:[op:0, tro:center center]"
-										when-household-tile-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-2000]">$10/hr</div>
+										when-household-tile-init-2="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-2000]">$10/hr</div>
 								</div>
 								<div class="pf-tile-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
 							</div>
@@ -1180,9 +1180,9 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-rs-init="s:[household-cardlet-init:public]"
-							when-household-cardlet-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-household-cardlet-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
+							when-pf-rs-init="s:[household-cardlet-init-1:public]"
+							when-household-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-household-cardlet-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-household">
 								<div class="pf-cardlet-front-container">
@@ -1197,9 +1197,9 @@ Gabrielle
 								<div class="pf-cardlet-bottom-container">
 									<div class="pf-cardlet-bottom">
 										<h1 init-with="p-op"
-											when-household-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-300">How to Make Your Plants Live Longer</h1>
+											when-household-cardlet-init-1="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-300">How to Make Your Plants Live Longer</h1>
 										<div init-with="p:[op:0, tro:right bottom]"
-											when-household-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-500]">
+											when-household-cardlet-init-1="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-500]">
 											<div class="pf-cardlet-border">
 												<div></div>
 												<div></div>
@@ -1226,9 +1226,9 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-rs-init="s:[household-cardlet-init:public:delay-500]"
-							when-household-cardlet-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-household-cardlet-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
+							when-pf-rs-init="s:[household-cardlet-init-2:public:delay-500]"
+							when-household-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-household-cardlet-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-household">
 								<div class="pf-cardlet-front-container">
@@ -1243,9 +1243,9 @@ Gabrielle
 								<div class="pf-cardlet-bottom-container">
 									<div class="pf-cardlet-bottom">
 										<h1 init-with="p-op"
-											when-household-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-300">How to Make Your Plants Live Longer</h1>
+											when-household-cardlet-init-2="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-300">How to Make Your Plants Live Longer</h1>
 										<div init-with="p:[op:0, tro:right bottom]"
-											when-household-cardlet-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-500]">
+											when-household-cardlet-init-2="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-500]">
 											<div class="pf-cardlet-border">
 												<div></div>
 												<div></div>
