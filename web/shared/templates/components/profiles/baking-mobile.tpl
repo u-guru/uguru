@@ -295,7 +295,7 @@ Jeselle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
-							when-pf-mn-init="s:[baking-tile-init-2:public]"
+							when-pf-mn-init="s:[baking-tile-init-2:public:delay-500]"
 							when-baking-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
 							when-baking-tile-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
 							<a></a><a></a><a></a><a></a>
@@ -382,7 +382,7 @@ Jeselle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-mn-init="s:[baking-cardlet-init-1:public]"
+							when-pf-mn-init="s:[baking-cardlet-init-1:public:delay-1000]"
 							when-baking-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
 							when-baking-cardlet-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]"
 							on-mouse-enter="s:[baking-cardlet-hover-1:public]"
@@ -428,7 +428,7 @@ Jeselle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-mn-init="s:[baking-cardlet-init-2:public]"
+							when-pf-mn-init="s:[baking-cardlet-init-2:public:delay-1500]"
 							when-baking-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
 							when-baking-cardlet-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]"
 							on-mouse-enter="s:[baking-cardlet-hover-2:public]"
@@ -953,7 +953,7 @@ Jeselle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-rs-init="s:[baking-cardlet-init-2:public]"
+							when-pf-rs-init="s:[baking-cardlet-init-2:public:delay-500]"
 							when-baking-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
 							when-baking-cardlet-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]"
 							on-mouse-enter="s:[baking-cardlet-hover-2:public]"
