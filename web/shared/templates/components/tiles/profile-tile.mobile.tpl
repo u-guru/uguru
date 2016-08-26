@@ -126,7 +126,6 @@
 					init-with="p:[tro:center top, tr:rotateX(180deg)]"
 					when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
 					when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
-					<!-- when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]:delay-500" -->
 					<h1>
 						<span class="border"></span>
 						<span class="border"></span>
