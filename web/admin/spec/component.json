@@ -66,7 +66,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Check about toggling from the same element. Animations missing updates."
+                    "bugs": "FIXED &rarr; Check about toggling from the same element. Animations missing updates."
                 }
             },
             "profile-card": {
@@ -83,7 +83,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Flicker on back cards in stack"
+                    "bugs": ""
                 }
             },
             "profile-thumb": {
@@ -149,7 +149,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Hover should be in static css for edit"
+                    "bugs": "FIXED &rarr; Hover should be in static css for edit"
                 }
             },
 			"team-card": {
@@ -165,7 +165,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Ribbon opacity"
+                    "bugs": "FIXED &rarr; Ribbon opacity"
                 }
             },
 			"timeline-card": {
@@ -197,7 +197,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Change onclick to onmouseenter"
+                    "bugs": "FIXED &rarr; Change onclick to onmouseenter"
                 }
             },
             "university-card": {
@@ -214,7 +214,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Link isn't showing up"
+                    "bugs": "FIXED WITH HOVER &rarr; Link isn't showing up"
                 }
             },
             "user-icon": {
@@ -303,7 +303,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Check to see if draw is working"
+                    "bugs": "FIXED &rarr; Check to see if draw is working"
                 }
             },
 			"wallet": {
@@ -471,7 +471,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "Clicking multiple times shouldn't retrigger opening"
                 }
             },
 			"toggle": {
@@ -507,7 +507,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "for": "Loading bar is only onclick for demo purposes"
                 }
             },
 			"course-list": {
@@ -558,7 +558,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Animate color for the color dropdown"
+                    "bugs": "Color dropdown main link needs hover and static fixed"
                 }
             },
 			"social-bar": {
