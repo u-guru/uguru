@@ -152,10 +152,10 @@
 						init-with="p-op"
 						when-baking-cardlet-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-300]"></div>
 					<h1 init-with="p-op"
-						when-baking-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">Four-Star Strawberry Cake on a Budget</h1>
+						when-baking-cardlet-init="p:[opacity:0:1:650:easeOutSine]:delay-450">Four-Star Strawberry Cake on a Budget</h1>
 					<div>
 						<h2 init-with="p-op"
-							when-baking-cardlet-init="a:[fadeIn:set:(dur:850ms#func:ease-out):in:delay-450]">03/28/2016</h2>
+							when-baking-cardlet-init="p:[opacity:0:1:850:easeOutSine]:delay-450">03/28/2016</h2>
 					</div>
 				</div>
 			</div>
@@ -200,7 +200,7 @@
 				when-photo-cardlet-init="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 				<div class="pf-cardlet-bottom">
 					<h1 init-with="p-op"
-						when-photo-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">2016 Camera Models</h1>
+						when-photo-cardlet-init="p:[opacity:0:1:650:easeOutSine]:delay-450">2016 Camera Models</h1>
 					<div init-with="p-op"
 						when-photo-cardlet-init="a:[bounceInX:set:(dur:1000ms#func:linear):in:delay-450]">
 						<h2>03/28/2016</h2>
