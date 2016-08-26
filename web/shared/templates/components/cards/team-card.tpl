@@ -66,24 +66,24 @@
 				<div class="team-ribbon">
 					<div class="team-ribbon-center"
 						init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
-						when-gabrie-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]">
+						when-gabrie-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]:delay-50">
 						<div class="team-ribbon-left"
 							init-with="p:[tr:translateZ(0) translateX(50px)]"
-							when-gabrie-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-250"></div>
+							when-gabrie-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
 						<div class="team-ribbon-right"
 							init-with="p:[tr:translateZ(0) translateX(-50px)]"
-							when-gabrie-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-250"></div>
+							when-gabrie-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
 					</div>
 					<div class="team-ribbon-left-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
-						when-gabrie-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-250"></div>
+						when-gabrie-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-300"></div>
 					<div class="team-ribbon-right-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:left top]"
-						when-gabrie-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-250 | s:[gabrie-line-draw:public:delay-1000]"></div>
+						when-gabrie-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-300 | s:[gabrie-line-draw:public:delay-1000]"></div>
 				</div>
 				<div class="team-info"
 					init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
-					when-gabrie-enter="p:[opacity:0:1:350:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
+					when-gabrie-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
 					<h2>UI Developer</h2>
 					<h2>SAE Ex'pression College</h2>
 				</div>
@@ -164,24 +164,24 @@
 				<div class="team-ribbon">
 					<div class="team-ribbon-center"
 						init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
-						when-jeselle-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]">
+						when-jeselle-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]:delay-50">
 						<div class="team-ribbon-left"
 							init-with="p:[tr:translateZ(0) translateX(50px)]"
-							when-jeselle-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-250"></div>
+							when-jeselle-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
 						<div class="team-ribbon-right"
 							init-with="p:[tr:translateZ(0) translateX(-50px)]"
-							when-jeselle-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-250"></div>
+							when-jeselle-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
 					</div>
 					<div class="team-ribbon-left-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
-						when-jeselle-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-250"></div>
+						when-jeselle-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-300"></div>
 					<div class="team-ribbon-right-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:left top]"
-						when-jeselle-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-250 | s:[jeselle-line-draw:public:delay-1000]"></div>
+						when-jeselle-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-300 | s:[jeselle-line-draw:public:delay-1000]"></div>
 				</div>
 				<div class="team-info"
 					init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
-					when-jeselle-enter="p:[opacity:0:1:350:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
+					when-jeselle-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
 					<h2>Product &amp; Graphic Designer</h2>
 					<h2>University of Illinois at Urbana</h2>
 				</div>
@@ -249,24 +249,24 @@
 				<div class="team-ribbon">
 					<div class="team-ribbon-center"
 						init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
-						when-jason-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]">
+						when-jason-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]:delay-50">
 						<div class="team-ribbon-left"
 							init-with="p:[tr:translateZ(0) translateX(50px)]"
-							when-jason-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-250"></div>
+							when-jason-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
 						<div class="team-ribbon-right"
 							init-with="p:[tr:translateZ(0) translateX(-50px)]"
-							when-jason-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-250"></div>
+							when-jason-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
 					</div>
 					<div class="team-ribbon-left-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
-						when-jason-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-250"></div>
+						when-jason-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-300"></div>
 					<div class="team-ribbon-right-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:left top]"
-						when-jason-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-250 | s:[jason-line-draw:public:delay-1000]"></div>
+						when-jason-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-300 | s:[jason-line-draw:public:delay-1000]"></div>
 				</div>
 				<div class="team-info"
 					init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
-					when-jason-enter="p:[opacity:0:1:350:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
+					when-jason-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
 					<h2>QA Engineer</h2>
 					<h2>San Jose State University</h2>
 				</div>
@@ -331,24 +331,24 @@
 				<div class="team-ribbon">
 					<div class="team-ribbon-center"
 						init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
-						when-samir-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]">
+						when-samir-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]:delay-50">
 						<div class="team-ribbon-left"
 							init-with="p:[tr:translateZ(0) translateX(50px)]"
-							when-samir-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-250"></div>
+							when-samir-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
 						<div class="team-ribbon-right"
 							init-with="p:[tr:translateZ(0) translateX(-50px)]"
-							when-samir-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-250"></div>
+							when-samir-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
 					</div>
 					<div class="team-ribbon-left-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
-						when-samir-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-250"></div>
+						when-samir-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-300"></div>
 					<div class="team-ribbon-right-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:left top]"
-						when-samir-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-250 | s:[samir-line-draw:public:delay-1000]"></div>
+						when-samir-ribbon-expand="p:[transform:translateZ(0) scale(0):translateZ(0) scale(1):450:easeOutSine]:delay-300 | s:[samir-line-draw:public:delay-1000]"></div>
 				</div>
 				<div class="team-info"
 					init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
-					when-samir-enter="p:[opacity:0:1:350:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
+					when-samir-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
 					<h2>Founder</h2>
 					<h2>UC Berkeley</h2>
 				</div>
