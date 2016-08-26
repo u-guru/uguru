@@ -1,58 +1,33 @@
 <div class="perspective-container full-xy flex-center p15xy bg-white" reference="http://codepen.io/teamuguru/pen/b96acb7823f68a8dadc95e01abea94a6?editors=1100">
 	<div class="body-text" number="3" style="max-width: 360px"
-		init-with="p:[op:1, t:all 250ms ease-out]"
+		init-default
 		on-init="s:[body-text-init:public]"
-		on-exit="p:[op:0]">
+		on-exit="p:[opacity:1:0:250:easeOutSine]">
 		<div class="body-text-loader"
-			 init-with="p:[op:0, t:opacity 150ms ease-out]"
-			 when-body-text-init="p:[op:1, op:0:delay-600]">
-			<span init-with="p:[width:70%]">
-				<span init-with="p:[tr:scaleX(0), t:transform 450ms ease-out]"
-					when-body-text-init="p:[tr:none]"></span>
+			 init-with="p:[op:1]"
+			 when-body-text-init="p:[opacity:1:0:150:easeOutSine]:delay-600">
+			<span init-with="p:[op:0, width:70%]"
+				when-body-text-init="p:[opacity:0:1:150:easeOutSine]">
+				<span init-with="p:[tr:scaleX(0)]"
+					when-body-text-init="p:[transform:scaleX(0):scaleX(1):450:easeOutSine]"></span>
 			</span>
-			<span init-with="p:[width:95%]">
-				<span init-with="p:[tr:scaleX(0), t:transform 450ms ease-out]"
-					when-body-text-init="p:[tr:none]"></span>
+			<span init-with="p:[op:0, width:95%]"
+				when-body-text-init="p:[opacity:0:1:150:easeOutSine]">
+				<span init-with="p:[tr:scaleX(0)]"
+					when-body-text-init="p:[transform:scaleX(0):scaleX(1):450:easeOutSine]"></span>
 			</span>
-			<span init-with="p:[width:85%]">
-				<span init-with="p:[tr:scaleX(0), t:transform 450ms ease-out]"
-					when-body-text-init="p:[tr:none]"></span>
-			</span>
-			<span>
-				<span init-with="p:[tr:scaleX(0), t:transform 450ms ease-out]"
-					when-body-text-init="p:[tr:none]"></span>
-			</span>
-			<span>
-				<span init-with="p:[tr:scaleX(0), t:transform 450ms ease-out]"
-					when-body-text-init="p:[tr:none]"></span>
-			</span>
-			<span>
-				<span init-with="p:[tr:scaleX(0), t:transform 450ms ease-out]"
-					when-body-text-init="p:[tr:none]"></span>
-			</span>
-			<span>
-				<span init-with="p:[tr:scaleX(0), t:transform 450ms ease-out]"
-					when-body-text-init="p:[tr:none]"></span>
-			</span>
-			<span>
-				<span init-with="p:[tr:scaleX(0), t:transform 450ms ease-out]"
-					when-body-text-init="p:[tr:none]"></span>
-			</span>
-			<span>
-				<span init-with="p:[tr:scaleX(0), t:transform 450ms ease-out]"
-					when-body-text-init="p:[tr:none]"></span>
-			</span>
-			<span>
-				<span init-with="p:[tr:scaleX(0), t:transform 450ms ease-out]"
-					when-body-text-init="p:[tr:none]"></span>
+			<span init-with="p:[op:0, width:85%]"
+				when-body-text-init="p:[opacity:0:1:150:easeOutSine]">
+				<span init-with="p:[tr:scaleX(0)]"
+					when-body-text-init="p:[transform:scaleX(0):scaleX(1):450:easeOutSine]"></span>
 			</span>
 		</div>
-		<span init-with="p:[op:0, t:opacity 150ms ease-out]"
-			 when-body-text-init="p:[op:1:delay-600]">Lorem ipsum dolor sit amet.</span>
-		<span init-with="p:[op:0, t:opacity 150ms ease-out]"
-			 when-body-text-init="p:[op:1:delay-600]">Consectetuer adipiscing elit eget nisl.</span>
-		<span init-with="p:[op:0, t:opacity 150ms ease-out]"
-			 when-body-text-init="p:[op:1:delay-600]">Nam at tortor quis ipsum tempor.</span>
+		<span init-with="p-op"
+			 when-body-text-init="p:[opacity:0:1:150:easeOutSine]:delay-600">Lorem ipsum dolor sit amet.</span>
+		<span init-with="p-op"
+			 when-body-text-init="p:[opacity:0:1:150:easeOutSine]:delay-600">Consectetuer adipiscing elit eget nisl.</span>
+		<span init-with="p-op"
+			 when-body-text-init="p:[opacity:0:1:150:easeOutSine]:delay-600">Nam at tortor quis ipsum tempor.</span>
 	</div>
 
 	<!-- not ready to animate yet, avoid for now!!! -->

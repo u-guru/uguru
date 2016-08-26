@@ -202,6 +202,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/dev/splash/loader',
     templateUrl: 'preapp/templates/loaders/main.html'
   })
+  .state('root.dev-splash-loader-default', {
+    url:'/dev/splash/loader/default',
+    templateUrl: 'preapp/templates/loaders/regular.html'
+  })
   .state('root.dev-splash-nav', {
     url:'/dev/splash/nav',
     template: '<ion-view ng-controller="SplashController as splash"> <ion-content><div class="full-xy" ng-include="' + "'" + "preapp/templates/splash.nav.html" + "'" + '"></div></ion-content></ion-view>'
