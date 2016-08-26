@@ -672,6 +672,8 @@ fieldset.search-bar {
 		@include flex-wrap;
 	}
 	label {
+		position: relative;
+		z-index: 10;
 		@include flex;
 		@include flex-center;
 		width: 48px;

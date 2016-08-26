@@ -2441,6 +2441,8 @@ fieldset.search-bar {
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap; }
   fieldset.search-bar label {
+    position: relative;
+    z-index: 10;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -4235,7 +4237,6 @@ a.credit-card {
     transform: translateZ(-20px);
     transition: all 150ms ease-in; }
   .university-card.with-hover .school-card-hover {
-    filter: alpha(opacity=0);
     opacity: 0;
     transition: all 150ms ease-in-out;
     position: absolute;
@@ -4245,18 +4246,16 @@ a.credit-card {
     width: 100%;
     height: 100%; }
     .university-card.with-hover .school-card-hover:hover, .university-card.with-hover .school-card-hover:focus {
-      filter: alpha(opacity=100);
       opacity: 1; }
     .university-card.with-hover .school-card-hover > span {
-      filter: alpha(opacity=95);
       opacity: 0.95;
       position: absolute;
+      z-index: 1;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      border-radius: 10px;
-      color: white; }
+      border-radius: 10px; }
     .university-card.with-hover .school-card-hover > div {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -4276,11 +4275,14 @@ a.credit-card {
       align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
+      position: relative;
+      z-index: 2;
       width: 100%;
       height: 100%;
       padding: 15px;
       font-size: 18px;
-      font-weight: 600; }
+      font-weight: 600;
+      color: white; }
   .university-card .rect {
     display: block; }
   .university-card input {
@@ -5027,11 +5029,11 @@ a.credit-card {
         font-size: 16px;
         font-weight: 600;
         margin: 0 !important; }
-        .student-card .school-id-inside .school-id-bottom h3 span:first-child {
+        .student-card .school-id-inside .school-id-bottom h3 > span:first-child {
           display: block;
           white-space: nowrap;
           width: 150px; }
-        .student-card .school-id-inside .school-id-bottom h3 span:nth-child(2) {
+        .student-card .school-id-inside .school-id-bottom h3 > span:nth-child(2) {
           border-radius: 1000px;
           -ms-box-orient: horizontal;
           display: -webkit-box;
@@ -5055,13 +5057,14 @@ a.credit-card {
           font-size: 12px;
           margin: 0 10px; }
         .student-card .school-id-inside .school-id-bottom h3 a {
-          filter: alpha(opacity=50);
-          opacity: 0.5;
           display: block;
           width: 26px;
           font-size: 14px; }
-          .student-card .school-id-inside .school-id-bottom h3 a:hover, .student-card .school-id-inside .school-id-bottom h3 a:focus {
-            filter: alpha(opacity=100);
+          .student-card .school-id-inside .school-id-bottom h3 a span {
+            opacity: 0.5; }
+          .student-card .school-id-inside .school-id-bottom h3 a:hover span, .student-card .school-id-inside .school-id-bottom h3 a:focus span {
+            opacity: 0.75; }
+          .student-card .school-id-inside .school-id-bottom h3 a:active span {
             opacity: 1; }
       .student-card .school-id-inside .school-id-bottom > div {
         align-self: flex-start;

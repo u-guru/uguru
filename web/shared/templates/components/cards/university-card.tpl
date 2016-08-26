@@ -42,8 +42,10 @@
 			</div>
 		</div>
 	</div>
+
 	<a class="university-card with-hover" ng-if='activeType === "link"'
 		init-with="p-op"
+		on-init="s:[university-card-init:public]"
 		when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
 		<svg class="rect" width="240px" height="150px" viewBox="0 0 240 150">
 			<rect x="0" y="0" width="240" height="150" fill="none"></rect>

@@ -14,27 +14,27 @@
 					<g class="photo">
 						<path d="M38.3633395,60.0766722 C36.6478321,57.2324103 33.8770088,57.2390917 32.1655313,60.0766722 L24.5930447,72.6316374 C22.8775374,75.4758992 24.1848498,77.7695312 27.5040079,77.7695312 L41.0271169,77.7695312 L74.9969009,77.7695312 C78.3179275,77.7695312 79.612528,75.4691426 77.9009946,72.6314693 L60.1121413,43.1380619 C58.397677,40.2955294 55.6256639,40.3003887 53.9141305,43.1380619 L41.030501,64.4987493 L38.3633395,60.0766722 Z"
 							init-with="p:[op:1, sdo:0]"
-							when-figure-image-error="p:[opacity:1:0:75:easeOutSine, stroke-dashoffset:0:157.8:300:easeOutSine]:delay-600"></path>
+							when-figure-image-error="p:[stroke-dashoffset:0:157.8:300:easeOutSine]:delay-600"></path>
 						<rect x="15" y="15" width="70" height="70" rx="8"
 							init-with="p:[op:1, sdo:0]"
-							when-figure-image-error="p:[opacity:1:0:75:easeOutSine, stroke-dashoffset:0:280:900:easeOutSine]:delay-900"></rect>
+							when-figure-image-error="p:[stroke-dashoffset:0:280:900:easeOutSine]:delay-900"></rect>
 						<circle cx="28" cy="28" r="6"
 							init-with="p:[op:1, sdo:0]"
-							when-figure-image-error="p:[opacity:1:0:75:easeOutSine, stroke-dashoffset:0:37.7:150:easeOutSine]:delay-750"></circle>
+							when-figure-image-error="p:[stroke-dashoffset:0:37.7:150:easeOutSine]:delay-750"></circle>
 					</g>
 					<g class="photo">
 						<path d="M38.3633395,60.0766722 C36.6478321,57.2324103 33.8770088,57.2390917 32.1655313,60.0766722 L24.5930447,72.6316374 C22.8775374,75.4758992 24.1848498,77.7695312 27.5040079,77.7695312 L41.0271169,77.7695312 L74.9969009,77.7695312 C78.3179275,77.7695312 79.612528,75.4691426 77.9009946,72.6314693 L60.1121413,43.1380619 C58.397677,40.2955294 55.6256639,40.3003887 53.9141305,43.1380619 L41.030501,64.4987493 L38.3633395,60.0766722 Z"
-							init-with="p:[op:0, sdo:157.8]"
-							when-figure-image-init="p:[opacity:0:1:75:easeOutSine, stroke-dashoffset:157.8:0:300:easeOutSine]:delay-150"
-							when-figure-image-error="p:[opacity:1:0:75:easeOutSine, stroke-dashoffset:0:157.8:300:easeOutSine]:delay-600"></path>
+							init-with="p:[sdo:157.8]"
+							when-figure-image-init="p:[stroke-dashoffset:157.8:0:300:easeOutSine]:delay-150"
+							when-figure-image-error="p:[stroke-dashoffset:0:157.8:300:easeOutSine]:delay-600"></path>
 						<rect x="15" y="15" width="70" height="70" rx="8"
-							init-with="p:[op:0, sdo:280]"
-							when-figure-image-init="p:[opacity:0:1:75:easeOutSine, stroke-dashoffset:280:0:900:easeOutSine]:delay-450"
-							when-figure-image-error="p:[opacity:1:0:75:easeOutSine, stroke-dashoffset:0:280:900:easeOutSine]:delay-900"></rect>
+							init-with="p:[sdo:280]"
+							when-figure-image-init="p:[stroke-dashoffset:280:0:900:easeOutSine]:delay-450"
+							when-figure-image-error="p:[stroke-dashoffset:0:280:900:easeOutSine]:delay-900"></rect>
 						<circle cx="28" cy="28" r="6"
-							init-with="p:[op:0, sdo:37.7]"
-							when-figure-image-init="p:[opacity:0:1:75:easeOutSine, stroke-dashoffset:37.7:0:150:easeOutSine]:delay-300 | s:[figure-image-load:public:delay-1350]"
-							when-figure-image-error="p:[opacity:1:0:75:easeOutSine, stroke-dashoffse0:37.7:150:easeOutSine]:delay-750"></circle>
+							init-with="p:[sdo:37.7]"
+							when-figure-image-init="p:[stroke-dashoffset:37.7:0:150:easeOutSine]:delay-300 | s:[figure-image-load:public:delay-1350]"
+							when-figure-image-error="p:[stroke-dashoffse0:37.7:150:easeOutSine]:delay-750"></circle>
 					</g>
 					<g class="broken">
 						<path d="M50,52 L57,60 L64,52 L71,60 L78,52 L85,60 L85,67.996098 L85,77.003902 C85,81.420025 81.420342,85 77.0042148,85 L50,85"
