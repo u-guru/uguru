@@ -22,10 +22,10 @@
 			- Let me know if you have problems
 	-->
 	<div class="pf-tile-container" ng-if='activeType === "default"'
-		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[default-cardlet-init:public]"
-		when-default-cardlet-init="p:[op:1, tr:none] | send:[default-ribbon:public]:delay-500"
-		when-default-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		when-default-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[default-ribbon:public]:delay-500"
+		when-default-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight">
 			<div class="pf-cardlet-front-container">
@@ -67,15 +67,15 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "academic"'
-		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[academic-cardlet-init:public]"
-		when-academic-cardlet-init="p:[op:1, tr:none] | send:[academic-ribbon:public]:delay-500"
-		when-academic-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		when-academic-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[academic-ribbon:public]:delay-500"
+		when-academic-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-academic">
 			<div class="pf-cardlet-front-container"
-				init-with="p:[tr:translate3d(7.5px#7.5px#0), t:all 450ms ease-out]"
-				when-academic-cardlet-init="p:[tr:none:delay-500]">
+				init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
+				when-academic-cardlet-init="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 				<div class="pf-cardlet-front" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
 			</div>
 			<div class="pf-cardlet-back-container"
@@ -84,8 +84,8 @@
 				<div class="pf-cardlet-back" style="background-image: url('http://i1-news.softpedia-static.com/images/news2/no-two-brains-are-alike-investigation-reveals-494462-2.jpg');"></div>
 			</div>
 			<div class="pf-cardlet-bottom-container"
-				init-with="p:[tr:translate3d(7.5px#7.5px#0), t:all 450ms ease-out]"
-				when-academic-cardlet-init="p:[tr:none:delay-500]">
+				init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
+				when-academic-cardlet-init="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 				<div class="pf-cardlet-bottom">
 					<div class="pf-cardlet-bg deco"></div>
 					<div class="pf-cardlet-border deco">
@@ -126,10 +126,10 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "baking"'
-		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[baking-cardlet-init:public]"
-		when-baking-cardlet-init="p:[op:1, tr:none] | send:[baking-ribbon:public]:delay-500"
-		when-baking-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]"
+		when-baking-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[baking-ribbon:public]:delay-500"
+		when-baking-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]"
 		on-mouse-enter="s:[baking-cardlet-hover:public]"
 		on-mouse-leave="s:[baking-cardlet-leave:public]">
 		<a></a><a></a><a></a><a></a>
@@ -179,15 +179,15 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "photo"'
-		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[photo-cardlet-init:public]"
-		when-photo-cardlet-init="p:[op:1, tr:none] | send:[photo-ribbon:public]:delay-500"
-		when-photo-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		when-photo-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[photo-ribbon:public]:delay-500"
+		when-photo-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-photography">
 			<div class="pf-cardlet-front-container"
-				init-with="p:[tr:translate3d(7.5px#7.5px#0), t:all 450ms ease-out]"
-				when-photo-cardlet-init="p:[tr:none:delay-500]">
+				init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
+				when-photo-cardlet-init="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 				<div class="pf-cardlet-front">
 					<div></div><div></div><div></div>
 					<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
@@ -198,8 +198,8 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-bottom-container"
-				init-with="p:[tr:translate3d(7.5px#7.5px#0), t:all 450ms ease-out]"
-				when-photo-cardlet-init="p:[tr:none:delay-500]">
+				init-with="p:[tr:translateX(7.5px) translateY(7.5px) translateZ(0px)]"
+				when-photo-cardlet-init="p:[transform:translateX(7.5px) translateY(7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 				<div class="pf-cardlet-bottom">
 					<h1 init-with="p-op"
 						when-photo-cardlet-init="a:[fadeIn:set:(dur:650ms#func:ease-out):in:delay-450]">2016 Camera Models</h1>
@@ -210,13 +210,13 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-back-container"
-				init-with="p:[tr:translate3d(-7.5px#-7.5px#0), t:all 450ms ease-out]"
-				when-photo-cardlet-init="p:[tr:none:delay-500]">
+				init-with="p:[tr:translateX(-7.5px) translateY(-7.5px) translateZ(0px)]"
+				when-photo-cardlet-init="p:[transform:translateX(-7.5px) translateY(-7.5px):translateX(0px) translateY(0px):450:easeOutSine]:delay-750">
 				<div class="pf-cardlet-back"></div>
 			</div>
 			<div class="pf-cardlet-ribbon-container"
-				init-with="p:[op:0, tr:translateX(10px), t:all 250ms ease-out]"
-				when-photo-cardlet-init="p:[op:1:delay-500, tr:translateX(0):delay-500]">
+				init-with="p:[op:0, tr:translateX(-10px)]"
+				when-photo-cardlet-init="p:[opacity:0:1:250:easeOutSine, transform:translateX(-10px):translateX(0px):900:easeOutQuad:delay-500]">
 				<div class="pf-cardlet-ribbon">
 					<svg viewBox="0 0 100 100">
 						<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
@@ -232,10 +232,10 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "tech"'
-		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[tech-cardlet-init:public]"
-		when-tech-cardlet-init="p:[op:1, tr:none] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
-		when-tech-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		when-tech-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[tech-ribbon:public:delay-500, tech-cardlet-back:public:delay-1000]"
+		when-tech-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-tech">
 			<div class="pf-cardlet-front-container">
@@ -289,10 +289,10 @@
 	</div>
 
 	<div class="pf-tile-container" ng-if='activeType === "household"'
-		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
+		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[household-cardlet-init:public]"
-		when-household-cardlet-init="p:[op:1, tr:none] | send:[household-ribbon:public]:delay-500"
-		when-household-cardlet-exit="p:[tro:left bottom, op:0:delay-500, tr:rotateX(-45deg) rotateY(30deg) translateY(-300px), t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.31#.01#1#.8)]">
+		when-household-cardlet-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear] | send:[household-ribbon:public]:delay-500"
+		when-household-cardlet-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-750, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic:delay-250]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-cardlet highlight bg-household">
 			<div class="pf-cardlet-front-container">

@@ -30,7 +30,6 @@
 			when-academic-tile-exit="p:[op:0:delay-1000, t:opacity 1500ms cubic-bezier(0#.3#.02#.99)#transform 500ms ease-out]">
 			<!-- when-academic-tile-init="p:[background:rgba(99#112#116#0):rgba(99#112#116#1):500:easeOutSine:delay-650]"
 			when-academic-tile-exit="p:[op:1:0:1500:easeInQuad]" -->
-
 			<div class="pf-tile-border"
 				init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
 				when-academic-tile-init="p:[op:0.5, tr:none]"
@@ -282,8 +281,8 @@
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "tech"'
 		init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-		on-init="s:[tech-tile-init:public, tech-borders-init:public:delay-400]"
-		when-tech-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+		on-init="s:[tech-tile-init:public]"
+		when-tech-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-borders-init:public:delay-400]"
 		when-tech-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-tech">

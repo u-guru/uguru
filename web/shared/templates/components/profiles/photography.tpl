@@ -1,5 +1,3 @@
-<!-- <inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="0.2x" class="bottom-0 bg-azure" auto-play="false" step-size="100" play-infinite="false" > </inspector-gadget> -->
-
 <!-- NOTES AND BUGS
 Gabrielle
 - Lag on multiple profile tiles due to old animation syntax. Leaving alone for now as specified on Monday 8/22
