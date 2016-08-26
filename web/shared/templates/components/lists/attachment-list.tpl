@@ -410,61 +410,61 @@
 									init-with="p:[stroke-dashoffset:351, sda:351]"
 									when-html-load="p:[stroke-dashoffset:351:0:1050:easeOutSine]"></path>
 						        <path d="M14,28.0458697 C14,26.3636823 15.3424077,25 17.0020839,25 L82.9979161,25 C84.6559213,25 86,26.3595982 86,28.0458697 L86,82.9541303 C86,84.6363177 84.6575923,86 82.9979161,86 L17.0020839,86 C15.3440787,86 14,84.6404018 14,82.9541303 L14,28.0458697 L14,28.0458697 Z" fill="#40484B"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="a:[fadeIn:set:(dur:750ms#func:ease-out):in]"></path>
 						        <path d="M14,15.5492552 C14,15.2459099 15.3424077,15 17.0020839,15 L82.9979161,15 C84.6559213,15 86,15.2451735 86,15.5492552 L86,25.4507448 C86,25.7540901 84.6575923,26 82.9979161,26 L17.0020839,26 C15.3440787,26 14,25.7548265 14,25.4507448 L14,15.5492552 L14,15.5492552 Z" fill="#C8D2D4"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="a:[fadeIn:set:(dur:250ms#func:ease-out):in:delay-500]"></path>
 						        <path d="M14,17.5951249 C14,15.6095923 15.3424077,14 17.0020839,14 L82.9979161,14 C84.6559213,14 86,15.6047717 86,17.5951249 L86,82.4048751 C86,84.3904077 84.6575923,86 82.9979161,86 L17.0020839,86 C15.3440787,86 14,84.3952283 14,82.4048751 L14,17.5951249 L14,17.5951249 Z M15.5,25 L84.5,25" stroke="#8A9EA3" stroke-width="2"
 									init-with="p:[fill-opacity:0,stroke-dashoffset:351, sda:351]"
 									when-html-enter="p:[fill-opacity:0:1:1050:easeOutSine:delay-250,stroke-dashoffset:351:0:1050:easeOutSine]"></path>
 						        <path d="M20.2161578,66 L38.8057277,66" stroke="#F1F1F1" stroke-width="2"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeOutSine]"></path>
 						        <path d="M43.2102147,66 L61.2886771,66" stroke-opacity="0.699999988" stroke="#FFFFFF" stroke-width="2" opacity="0.7"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-50"></path>
 						        <path d="M65.1761238,66 L80.322768,66" stroke="#FFFFFF" stroke-width="2" opacity="0.3"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-100"></path>
 						        <path d="M20.2969054,56 L45.8307734,56" stroke="#F1F1F1" stroke-width="2"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-150"></path>
 						        <path d="M50.34236,56 L79.7853188,56" stroke-opacity="0.699999988" stroke="#FFFFFF" stroke-width="2" opacity="0.7"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-200"></path>
 						        <path d="M20.2287236,76 L39.8989552,76" stroke="#F1F1F1" stroke-width="2"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-250"></path>
 						        <path d="M44.1605418,76 L57.967137,76" stroke-opacity="0.699999988" stroke="#FFFFFF" stroke-width="2" opacity="0.7"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-300"></path>
 						        <path d="M62.2059964,76 L79.9216825,76" stroke="#FFFFFF" stroke-width="2" opacity="0.3"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-450"></path>
 						        <path d="M20.1306692,46 L31.3682225,46" stroke="#F1F1F1" stroke-width="2"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeInSine]"></path>
 						        <path d="M20.3011238,36 L46.197768,36" stroke="#F1F1F1" stroke-width="2"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeInSine]"></path>
 						        <path d="M50.3465783,36 L80.1523134,36" stroke-opacity="0.699999988" stroke="#FFFFFF" stroke-width="2" opacity="0.7"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeInSine]:delay-120"></path>
 						        <path d="M35.2670329,46 L58.2318589,46" stroke-opacity="0.699999988" stroke="#FFFFFF" stroke-width="2" opacity="0.7"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeInSine]:delay-100"></path>
 						        <path d="M62.2102147,46 L80.2886771,46" stroke="#FFFFFF" stroke-width="2" opacity="0.3"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="p:[opacity:0:1:450:easeInSine]:delay-50"></path>
 						        <circle stroke="#8A9EA3" stroke-width="2" cx="20.5" cy="19.5" r="1.5"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="a:[fadeIn:set:(dur:750ms#func:ease-out):in]"></circle>
 						        <circle stroke="#8A9EA3" stroke-width="2" cx="27.5" cy="19.5" r="1.5"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="a:[fadeIn:set:(dur:750ms#func:ease-out):in]"></circle>
 						        <circle stroke="#8A9EA3" stroke-width="2" cx="34.5" cy="19.5" r="1.5"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-html-enter="a:[fadeIn:set:(dur:750ms#func:ease-out):in]"></circle>
 						    </g>
 						</svg>
@@ -532,13 +532,13 @@
 								<rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2" stroke-opacity="0.1"	init-with="p:[stroke-dashoffset:288, sda:288]"
 								when-mp4-load="p:[stroke-dashoffset:288:0:1050:easeOutSine]"></rect>
 						        <rect fill="#7872E3" x="14" y="14" width="72" height="72" rx="2"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-mp4-enter="a:[fadeIn:set:(dur:500ms#func:linear):in]"></rect>
 						        <rect fill="#FFFFFF" opacity="0.5" x="14" y="14" width="12" height="72" rx="2"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-mp4-enter="p:[opacity:0:0.5:500:easeOutSine]:delay-200"></rect>
 						        <rect fill="#FFFFFF" opacity="0.5" x="74" y="14" width="12" height="72" rx="2"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-mp4-enter="p:[opacity:0:0.5:500:easeOutSine]:delay-200"></rect>
 						        <path d="M27,14.4675325 L27,85.5324675" stroke="#4A4D72" stroke-width="2"
 									init-with="p:[stroke-dashoffset:72, sda:72]"
@@ -556,7 +556,7 @@
 									init-with="p:[fill-opacity:0, stroke-dashoffset:79,sda:79]"
 									when-mp4-enter="p:[fill-opacity:0:0.5:500:easeOutSine, stroke-dashoffset:79:0:750:easeOutSine]"></path>
 						        <rect stroke="#4A4D72" stroke-width="2" x="14" y="14" width="72" height="72" rx="2"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-mp4-enter="p:[opacity:0:1:750:easeOutSine]"></rect>
 						    </g>
 						</svg>
@@ -584,16 +584,16 @@
 									init-with="p:[fill-opacity:0, stroke-dashoffset:226, sda:226]"
 									when-ppt-enter="p:[fill-opacity:0:1:500:easeOutSine:delay-250, stroke-dashoffset:226:0:500:easeOutSine]"></rect>
 						        <rect stroke="#FFFFFF" fill-opacity="0.5" fill="#FFFFFF" x="22" y="42" width="49" height="5" rx="2.5"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-ppt-enter="p:[opacity:0:1:250:easeOutSine:delay-500]"></rect>
 						        <path d="M39.5939197,68.0940381 L32.8419127,64.9262109 L29.129401,58.3562293 C29.0367577,58.1928325 28.8848499,58.0732396 28.705698,58.0245688 C28.5265433,57.9751994 28.3364888,58.0009281 28.1764087,58.0954882 C25.6001272,59.6154347 24,62.443956 24,65.4782859 C24,70.177188 27.7452127,74 32.3487273,74 C35.5987102,74 38.576895,72.0524354 39.9358793,69.0382687 C40.0135366,68.8665276 40.0210295,68.6711486 39.9563151,68.4938446 C39.8922826,68.3165409 39.7621746,68.1726085 39.5939197,68.0940381 L39.5939197,68.0940381 Z" stroke="#FFFFFF" fill-opacity="0.5" fill="#FFFFFF"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-ppt-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500] | p:[tro:center center]"></path>
 						        <path d="M41.5,65 C41.5,60.3055796 37.6944204,56.5 33,56.5" stroke="#FFFFFF"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-ppt-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500] | p:[tro:center center]"></path>
 						        <path d="M49.4545455,71 L68.5454545,71 M49.4545455,65 L68.5454545,65 M49.4545455,59 L68.5454545,59" stroke="#FFFFFF"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-ppt-enter="a:[fadeIn:set:(dur:1000ms#func:linear):in:delay-500] | p:[tro:center center]"></path>
 						    </g>
 						</svg>

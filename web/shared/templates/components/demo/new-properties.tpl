@@ -57,7 +57,7 @@
 				</div>
 			</div>
 			<div class="pf-cardlet-ribbon-edge-container"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				on-init="a:[fadeIn:set:(dur:250ms#func:ease-in):in:delay-650]">
 				<div class="pf-cardlet-ribbon-edge"
 					init-with="p:[tr:translate3d(2px#-2px#10px) rotate(45deg)]"></div>

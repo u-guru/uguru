@@ -6,7 +6,7 @@
 			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
 				<path d="M172.009493,2 C177.527924,2 182,6.47590822 182,11.9972208 L182,136.002779 C182,141.532461 177.518876,146 171.991129,146 L122,146 L92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L172.009493,2 Z" fill="#003262" fill-opacity="0.25"
 					init-with="p:[t:opacity 200ms ease-out]"
-					when-marker-open="p:[op:0]"></path>
+					when-marker-open="p-op"></path>
 				<g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
 					<path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"
 						init-with="p:[t:stroke-dashoffset 200ms ease-out, sda:278, sdo:0]"
@@ -50,7 +50,7 @@
 			</svg>
 			<div class="marker-normal-content"
 				init-with="p:[t:opacity 150ms ease-out, op:1]"
-				when-window-open="p:[op:0]"
+				when-window-open="p-op"
 				when-window-close="p:[op:1:delay-300]">
 				<a class="marker-link"
 					init-with="p:[t:transform 500ms cubic-bezier(.6#0#.1#1.3)]"
@@ -103,7 +103,7 @@
 			<div class="marker-expanded-content"
 				init-with="p:[t:opacity 150ms ease-out, op:0]"
 				when-window-open="p:[op:1:delay-350]"
-				when-window-close="p:[op:0]">
+				when-window-close="p-op">
 				<div class="marker-expanded-icon"
 					on-click="s:[window-close:public]">
 					<svg viewBox="0 0 100 100"
@@ -167,7 +167,7 @@
 			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
 				<path d="M172.009493,2 C177.527924,2 182,6.47590822 182,11.9972208 L182,136.002779 C182,141.532461 177.518876,146 171.991129,146 L122,146 L92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L172.009493,2 Z" fill="#910039" fill-opacity="0.25"
 					init-with="p:[t:opacity 200ms ease-out]"
-					when-marker-open="p:[op:0]"></path>
+					when-marker-open="p-op"></path>
 				<g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
 					<path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"
 						init-with="p:[t:stroke-dashoffset 200ms ease-out, sda:278, sdo:0]"
@@ -211,7 +211,7 @@
 			</svg>
 			<div class="marker-normal-content"
 				init-with="p:[t:opacity 150ms ease-out, op:1]"
-				when-window-open="p:[op:0]"
+				when-window-open="p-op"
 				when-window-close="p:[op:1:delay-300]">
 				<a class="marker-link"
 					init-with="p:[t:transform 500ms cubic-bezier(.6#0#.1#1.3)]"
@@ -264,7 +264,7 @@
 			<div class="marker-expanded-content"
 				init-with="p:[t:opacity 150ms ease-out, op:0]"
 				when-window-open="p:[op:1:delay-350]"
-				when-window-close="p:[op:0]">
+				when-window-close="p-op">
 				<div class="marker-expanded-icon"
 					on-click="s:[window-close:public]">
 					<svg viewBox="0 0 100 100"
@@ -328,7 +328,7 @@
 			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
 				<path d="M172.009493,2 C177.527924,2 182,6.47590822 182,11.9972208 L182,136.002779 C182,141.532461 177.518876,146 171.991129,146 L122,146 L92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L172.009493,2 Z" fill="#006838" fill-opacity="0.25"
 					init-with="p:[t:opacity 200ms ease-out]"
-					when-marker-open="p:[op:0]"></path>
+					when-marker-open="p-op"></path>
 				<g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
 					<path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"
 						init-with="p:[t:stroke-dashoffset 200ms ease-out, sda:278, sdo:0]"
@@ -372,7 +372,7 @@
 			</svg>
 			<div class="marker-normal-content"
 				init-with="p:[t:opacity 150ms ease-out, op:1]"
-				when-window-open="p:[op:0]"
+				when-window-open="p-op"
 				when-window-close="p:[op:1:delay-300]">
 				<a class="marker-link"
 					init-with="p:[t:transform 500ms cubic-bezier(.6#0#.1#1.3)]"
@@ -425,7 +425,7 @@
 			<div class="marker-expanded-content"
 				init-with="p:[t:opacity 150ms ease-out, op:0]"
 				when-window-open="p:[op:1:delay-350]"
-				when-window-close="p:[op:0]">
+				when-window-close="p-op">
 				<div class="marker-expanded-icon"
 					on-click="s:[window-close:public]">
 					<svg viewBox="0 0 100 100"
@@ -489,7 +489,7 @@
 			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
 				<path d="M172.009493,2 C177.527924,2 182,6.47590822 182,11.9972208 L182,136.002779 C182,141.532461 177.518876,146 171.991129,146 L122,146 L92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L172.009493,2 Z" fill="#000000" fill-opacity="0.25"
 					init-with="p:[t:opacity 200ms ease-out]"
-					when-marker-open="p:[op:0]"></path>
+					when-marker-open="p-op"></path>
 				<g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
 					<path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"
 						init-with="p:[t:stroke-dashoffset 200ms ease-out, sda:278, sdo:0]"
@@ -533,7 +533,7 @@
 			</svg>
 			<div class="marker-normal-content"
 				init-with="p:[t:opacity 150ms ease-out, op:1]"
-				when-window-open="p:[op:0]"
+				when-window-open="p-op"
 				when-window-close="p:[op:1:delay-300]">
 				<a class="marker-link"
 					init-with="p:[t:transform 500ms cubic-bezier(.6#0#.1#1.3)]"
@@ -586,7 +586,7 @@
 			<div class="marker-expanded-content"
 				init-with="p:[t:opacity 150ms ease-out, op:0]"
 				when-window-open="p:[op:1:delay-350]"
-				when-window-close="p:[op:0]">
+				when-window-close="p-op">
 				<div class="marker-expanded-icon"
 					on-click="s:[window-close:public]">
 					<svg viewBox="0 0 100 100"
@@ -650,7 +650,7 @@
 			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
 				<path d="M172.009493,2 C177.527924,2 182,6.47590822 182,11.9972208 L182,136.002779 C182,141.532461 177.518876,146 171.991129,146 L122,146 L92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L172.009493,2 Z" fill="#330067" fill-opacity="0.25"
 					init-with="p:[t:opacity 200ms ease-out]"
-					when-marker-open="p:[op:0]"></path>
+					when-marker-open="p-op"></path>
 				<g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
 					<path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"
 						init-with="p:[t:stroke-dashoffset 200ms ease-out, sda:278, sdo:0]"
@@ -694,7 +694,7 @@
 			</svg>
 			<div class="marker-normal-content"
 				init-with="p:[t:opacity 150ms ease-out, op:1]"
-				when-window-open="p:[op:0]"
+				when-window-open="p-op"
 				when-window-close="p:[op:1:delay-300]">
 				<a class="marker-link"
 					init-with="p:[t:transform 500ms cubic-bezier(.6#0#.1#1.3)]"
@@ -747,7 +747,7 @@
 			<div class="marker-expanded-content"
 				init-with="p:[t:opacity 150ms ease-out, op:0]"
 				when-window-open="p:[op:1:delay-350]"
-				when-window-close="p:[op:0]">
+				when-window-close="p-op">
 				<div class="marker-expanded-icon"
 					on-click="s:[window-close:public]">
 					<svg viewBox="0 0 100 100"
@@ -811,7 +811,7 @@
 			<svg class="marker-normal-window" width="92px" height="89px" viewBox="0 0 184 178">
 				<path d="M172.009493,2 C177.527924,2 182,6.47590822 182,11.9972208 L182,136.002779 C182,141.532461 177.518876,146 171.991129,146 L122,146 L92,176 L62,146 L12.0088711,146 C6.48112423,146 2,141.532461 2,136.002779 L2,11.9972208 C2,6.47590822 6.47207592,2 11.9905068,2 L172.009493,2 Z" fill="#184c8c" fill-opacity="0.25"
 					init-with="p:[t:opacity 200ms ease-out]"
-					when-marker-open="p:[op:0]"></path>
+					when-marker-open="p-op"></path>
 				<g fill="none" stroke-width="4" stroke="#666C6F" stroke-linecap="round" stroke-linejoin="round">
 					<path class="side" d="M92,176 L122,146 L171.991129,146 C177.518876,146 182,141.532461 182,136.002779 L182,11.9972208 C182,6.47590822 177.527924,2 172.009493,2 L142,2"
 						init-with="p:[t:stroke-dashoffset 200ms ease-out, sda:278, sdo:0]"
@@ -855,7 +855,7 @@
 			</svg>
 			<div class="marker-normal-content"
 				init-with="p:[t:opacity 150ms ease-out, op:1]"
-				when-window-open="p:[op:0]"
+				when-window-open="p-op"
 				when-window-close="p:[op:1:delay-300]">
 				<a class="marker-link"
 					init-with="p:[t:transform 500ms cubic-bezier(.6#0#.1#1.3)]"
@@ -908,7 +908,7 @@
 			<div class="marker-expanded-content"
 				init-with="p:[t:opacity 150ms ease-out, op:0]"
 				when-window-open="p:[op:1:delay-350]"
-				when-window-close="p:[op:0]">
+				when-window-close="p-op">
 				<div class="marker-expanded-icon"
 					on-click="s:[window-close:public]">
 					<svg viewBox="0 0 100 100"

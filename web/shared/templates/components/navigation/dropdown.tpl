@@ -193,13 +193,13 @@
 			when-dropdown-color-open="p:[visibility:visible, z-index:10]"
 			when-dropdown-color-close="p:[visibility:hidden, z-index:-1]:delay-400">
 			<svg viewBox="0 0 396 38"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-dropdown-color-open="p:[opacity:0:1:250:easeOutSine]:delay-200"
 				when-dropdown-color-close="p:[opacity:1:0:250:easeOutSine]:delay-300">
 				<path d="M2,36 L2,34 C2,32.8954305 2.8931253,32 4.0093292,32 L168,32 L198,2 L228,32 L391.990671,32 C393.100393,32 394,32.8877296 394,34 L394,36" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
 			</svg>
 			<ul>
-				<li init-with="p:[op:0]"
+				<li init-with="p-op"
 					when-dropdown-color-open="p:[opacity:0:1:250:easeOutSine]:delay-200"
 					when-dropdown-color-close="p:[opacity:1:0:250:easeOutSine]:delay-300">
 					<div></div><div></div>

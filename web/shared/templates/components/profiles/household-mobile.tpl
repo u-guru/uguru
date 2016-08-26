@@ -221,7 +221,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-household-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-household-tile-exit-1="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"
@@ -367,7 +367,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-household-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-household-tile-exit-2="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"
@@ -625,7 +625,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-household-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-household-tile-exit-1="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"
@@ -771,7 +771,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-household-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-household-tile-exit-2="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"

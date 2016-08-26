@@ -111,9 +111,9 @@
 				</g>
 			</svg>
 			<div class="marker-expanded-content"
-				init-with="p:[t:opacity 150ms ease-out, op:0]"
-				when-window-open="p:[op:1:delay-350]"
-				when-window-close="p:[op:0]">
+				init-with="p-op"
+				when-window-open="p:[opacity:0:1:150:easeOutSine]:delay-350"
+				when-window-close="p:[opacity:1:0:150:easeOutSine]">
 				<div class="marker-expanded-icon"
 					on-click="s:[window-close:public]">
 					<svg viewBox="0 0 100 100"

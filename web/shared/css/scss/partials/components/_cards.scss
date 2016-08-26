@@ -2219,24 +2219,24 @@ a.credit-card {
 		height: 100%;
 		cursor: pointer;
 		~ .course-card-count {
-			@include opacity(0);
+			opacity: 0!important;
 			span {
-				@include opacity(.5);
+				opacity: 0.5;
 			}
 		}
 		&:hover {
 			~ .course-card-count {
-				@include opacity(1);
+				opacity: 1!important;
 				span {
-					@include opacity(.5);
+					opacity: 0.5!important;
 				}
 			}
 		}
 		&:active, &:checked {
 			~ .course-card-count {
-				@include opacity(1);
+				opacity: 1!important;
 				span {
-					@include opacity(1);
+					opacity: 1!important;
 				}
 			}
 		}

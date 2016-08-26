@@ -27,10 +27,10 @@
 				<div class='flex-wrap-center'>
 					<square class='opacity-50'
 						when-toggle-square-switch="trigger:[switch:self]"
-						init-with='p:[op:0]|trigger:[switch:self]'
+						init-with='p-op|trigger:[switch:self]'
 						switch
 						switch-on="p:[op:1]"
-						switch-off="p:[op:0]">
+						switch-off="p-op">
 					</square>
 					<a on-click="send:[toggle-square-switch:public]" class='bg-moxie p15-grid m10xy'> External Switch </a>
 				</div>

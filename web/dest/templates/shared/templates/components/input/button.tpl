@@ -29,7 +29,7 @@
 		<span init-with="p:[tr:scaleY(0), t:150ms transform ease-out]"
 			when-btn-ghost-sq-init="p:[tr:none:delay-450]"></span>
 		<span></span>
-		<span init-with="p:[op:0]"
+		<span init-with="p-op"
 			when-btn-ghost-sq-init="p:[op:1:delay-600]">Ghost square</span>
 	</button>
 

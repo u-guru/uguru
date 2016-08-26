@@ -214,14 +214,14 @@ Gabrielle
 				<ul class="pf-items">
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
+							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), op:0]"
 							when-pf-mn-init="s:[tech-tile-init-1:public]"
 							when-tech-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-borders-init-1:public:delay-400]"
 							when-tech-tile-exit-1="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-tech-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit-1="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
@@ -239,7 +239,7 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-tech-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit-1="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
@@ -330,7 +330,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-tech-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit-2="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
@@ -348,7 +348,7 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-tech-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit-2="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
@@ -567,7 +567,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-tech-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit-1="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
@@ -585,7 +585,7 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-tech-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit-1="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"
@@ -676,7 +676,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-tech">
 								<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-tech-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit-2="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<div class="pf-pricing">
@@ -694,7 +694,7 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-tile-bottom"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-tech-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-tech-tile-exit-2="p:[opacity:1:0:easeOutSine]:delay-1000">
 									<h1 init-with="p:[op:0, tr:translateY(10px)]"

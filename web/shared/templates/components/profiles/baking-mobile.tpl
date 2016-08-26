@@ -163,7 +163,7 @@ Jeselle
 	</aside>
 	<div class="pf-rest perspective-container"
 		init-with="p-op"
-		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public:delay-500, pf-mn-init:public:delay-2250]"
+		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public:delay-500, pf-mn-init:public:delay-1750]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
 			<!-- Note: The line is flickering -->
@@ -217,14 +217,14 @@ Jeselle
 				<ul class="pf-items">
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
 							when-pf-mn-init="s:[baking-tile-init-1:public]"
-							when-baking-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
+							when-baking-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-tile-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic easeInExpo, opacity:1:0:500:linear]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-baking">
 								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-baking-tile-init-1="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
 									when-baking-tile-exit-1="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
 									<div class="full-x flex-center preserve-3d m15bottom"
@@ -294,14 +294,14 @@ Jeselle
 					</li>
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
 							when-pf-mn-init="s:[baking-tile-init-2:public:delay-500]"
-							when-baking-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
+							when-baking-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-tile-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic easeInExpo, opacity:1:0:500:linear]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-baking">
 								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-baking-tile-init-2="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
 									when-baking-tile-exit-2="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
 									<div class="full-x flex-center preserve-3d m15bottom"
@@ -483,14 +483,14 @@ Jeselle
 				<ul class="pf-items">
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
 							when-pf-sv-init="s:[baking-tile-init-1:public]"
-							when-baking-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
+							when-baking-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-tile-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic easeInExpo, opacity:1:0:500:linear]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-baking">
 								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-baking-tile-init-1="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
 									when-baking-tile-exit-1="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
 									<div class="full-x flex-center preserve-3d m15bottom"
@@ -560,14 +560,14 @@ Jeselle
 					</li>
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
 							when-pf-sv-init="s:[baking-tile-init-2:public:delay-500]"
-							when-baking-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
+							when-baking-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-tile-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic easeInExpo, opacity:1:0:500:linear]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-baking">
 								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-baking-tile-init-2="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
 									when-baking-tile-exit-2="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
 									<div class="full-x flex-center preserve-3d m15bottom"

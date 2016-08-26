@@ -25,7 +25,7 @@
 			</svg>
 			<div class="marker-normal-content"
 				init-with="p:[t:opacity 150ms ease-out, op:1]"
-				when-window-open="p:[op:0]"
+				when-window-open="p-op"
 				when-window-close="p:[op:1:delay-300]">
 				<a class="marker-link"
 					init-with="p:[t:transform 500ms cubic-bezier(.6#0#.1#1.3)]"
@@ -68,7 +68,7 @@
 			<div class="marker-expanded-content"
 				init-with="p:[t:opacity 150ms ease-out, op:0]"
 				when-window-open="p:[op:1:delay-350]"
-				when-window-close="p:[op:0]">
+				when-window-close="p-op">
 				<div class="marker-expanded-icon"
 					on-click="s:[window-close:public]">
 					<svg viewBox="0 0 100 100"

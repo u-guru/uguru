@@ -17,14 +17,14 @@
 				</svg>
 				<span class="label" inspector-elem>:blur</span>
 				<span class="input"
-					init-with="p:[op:0]">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
 				<div>
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
 					<div><div></div><div></div></div>
 				</div>
-				<a init-with="p:[op:0]">
+				<a init-with="p-op">
 					<svg viewBox="0 0 100 100">
 						<g fill="none" stroke-linecap="round" stroke-linejoin="round">
 							<circle cx="50" cy="50" r="36"></circle>

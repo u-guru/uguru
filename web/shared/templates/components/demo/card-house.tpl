@@ -73,7 +73,7 @@
 					<div class="front"></div>
 					<div class="back"></div>
 				</div>
-				<div class="team-card" init-with="p:[op:0]"
+				<div class="team-card" init-with="p-op"
 					when-house-rotate="p:[opacity:0:1:50:easeOutSine] | s:[gabrie-enter:public:delay-1000]">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -175,7 +175,7 @@
 					<div class="front"></div>
 					<div class="back"></div>
 				</div>
-				<div class="team-card" init-with="p:[op:0]"
+				<div class="team-card" init-with="p-op"
 					when-house-rotate="p:[opacity:0:1:50:easeOutSine]:delay-150 | s:[jeselle-enter:public:delay-1000]:delay-150">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -283,7 +283,7 @@
 					<div class="front"></div>
 					<div class="back"></div>
 				</div>
-				<div class="team-card" init-with="p:[op:0]"
+				<div class="team-card" init-with="p-op"
 					when-house-rotate="p:[opacity:0:1:50:easeOutSine]:delay-300 | s:[jason-enter:public:delay-1000]:delay-300">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -378,7 +378,7 @@
 					<div class="front"></div>
 					<div class="back"></div>
 				</div>
-				<div class="team-card" init-with="p:[op:0]"
+				<div class="team-card" init-with="p-op"
 					when-house-rotate="p:[opacity:0:1:50:easeOutSine]:delay-450 | s:[samir-enter:public:delay-1000]:delay-450">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -456,7 +456,7 @@
 		</li>
 
 		<li style="position:absolute;"
-			init-with="p:[op:0]"
+			init-with="p-op"
 			when-house-stack="p:[z-index:auto, opacity:0:1:50:linear]:delay-600"
 			when-house-build="p:[z-index:auto]"
 			when-house-return="p:[z-index:-100:delay-1000]">
