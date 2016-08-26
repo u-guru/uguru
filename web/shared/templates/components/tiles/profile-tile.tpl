@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="household">
+<div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="academic">
 	<!-- NOTES FOR JESELLE - WORK ON CARDLETS FIRST
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile tile transitions
@@ -49,7 +49,7 @@
 					init-with="p-op"
 					when-academic-tile-init="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
 				<div init-with="p:[tr:translateY(-80%), opacity:0]"
-					when-academic-tile-init="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+					when-academic-tile-init="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
 					<div class="pf-tile-icon">
 						<svg viewBox="0 0 100 100">
 							<g>
@@ -63,10 +63,10 @@
 						</svg>
 					</div>
 				</div>
-				<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
-					when-academic-tile-init="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
-				<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
-					when-academic-tile-init="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+				<h1 init-with="p:[tr:translateY(-100px), op:0]"
+					when-academic-tile-init="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Chem 133</h1>
+				<h2 init-with="p:[tr:translateY(-100px), op:0]"
+					when-academic-tile-init="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Organic Chemistry</h2>
 			</div>
 			<div class="pf-tile-bottom"
 				init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
@@ -481,7 +481,7 @@
 				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250">
 				<div>
 					<h1 init-with="p:[op:0, tr:translateY(-80%)]"
-						when-bub-sink="p:[opacity:0:1:750:easeOutSine, transform:translateY(-80%):translateY(0%):750:easeOutQuad]">Furniture Care</h1>
+						when-bub-sink="p:[opacity:0:1:750:easeOutSine, transform:translateY(-100px):translateY(0px):750:easeOutQuad]">Furniture Care</h1>
 					<ul class="rating-stars" data-rating="4" data-half="true">
 						<li init-with="p-op"
 							when-household-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
