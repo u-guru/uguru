@@ -324,7 +324,7 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-							when-pf-mn-init="s:[tech-tile-init-2:public]"
+							when-pf-mn-init="s:[tech-tile-init-2:public:delay-500]"
 							when-tech-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-borders-init-2:public:delay-400]"
 							when-tech-tile-exit-2="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
@@ -443,8 +443,8 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-mn-init="send:[tech-cardlet-init-1:public, tech-surge-1:public:delay-500]"
-							when-tech-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-pf-mn-init="s:[tech-cardlet-init-1:public:delay-1000]"
+							when-tech-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-surge-1:public:delay-500]"
 							when-tech-cardlet-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-tech">
@@ -497,8 +497,8 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-mn-init="send:[tech-cardlet-init-2:public, tech-surge-2:public:delay-500]"
-							when-tech-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-pf-mn-init="s:[tech-cardlet-init-2:public:delay-1500]"
+							when-tech-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-surge-2:public:delay-500]"
 							when-tech-cardlet-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-tech">
@@ -670,7 +670,7 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-							when-pf-sv-init="s:[tech-tile-init-2:public]"
+							when-pf-sv-init="s:[tech-tile-init-2:public:delay-500]"
 							when-tech-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-borders-init-2:public:delay-400]"
 							when-tech-tile-exit-2="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
@@ -781,7 +781,7 @@ Gabrielle
 			<div class="pf-about pf-main-section" ng-class="{'active': guru.section_index === 2}">
 				<div class="pf-main-header overflow-hidden"
 					init-default
-					when-pf-ab-init="send:[ab-sect-init:public]">
+					when-pf-ab-init="s:[ab-sect-init:public]">
 				 <h1 init-with="p-op"
 					 when-pf-tabs-init="p:[transform:translateY(150px):translateY(0px):500:easeOutQuint, opacity:0:1:500:easeOutQuint]:delay-900">The Golden Bear Tutor</h1>
 				 <p init-with="p-op"
@@ -789,7 +789,7 @@ Gabrielle
 			 	 </div>
 				<div class="pf-about-section"
 					init-with="p:[op:0, transform:rotateX(10deg) rotateY(-15deg)]"
-					when-ab-sect-init="p:[opacity:0:1:450:easeOutExpo, transform:translateY(-15px):translateY(0px):1000:easeOutQuad] | send:[social-sect-init:public]:delay-150">
+					when-ab-sect-init="p:[opacity:0:1:450:easeOutExpo, transform:translateY(-15px):translateY(0px):1000:easeOutQuad] | s:[social-sect-init:public]:delay-150">
 					<header><h2>About</h2></header>
 					<div>
 						<h1 init-with="p:[op:0, transform:translateY(10px)]"
@@ -800,7 +800,7 @@ Gabrielle
 				</div>
 				<div class="pf-about-links pf-about-section overflow-hidden"
 					init-with="p:[op:0, transform:translateY(-15px):translateY(0px)]"
-					when-social-sect-init="p:[opacity:0:1:450:easeOutExpo, transform:translateY(-15px):translateY(0px):1000:easeOutQuad] | send:[work-sect-init:public]:delay-150">
+					when-social-sect-init="p:[opacity:0:1:450:easeOutExpo, transform:translateY(-15px):translateY(0px):1000:easeOutQuad] | s:[work-sect-init:public]:delay-150">
 					<header><h2>Where to find me</h2></header>
 					<div>
 						<div class="social-bar fill">
@@ -860,7 +860,7 @@ Gabrielle
 				</div>
 				<div class="pf-wwf pf-about-section"
 					init-with="p:[op:0, transform:translateY(-15px):translateY(0px)]"
-					when-work-sect-init="p:[opacity:0:1:450:easeOutExpo, transform:translateY(-15px):translateY(0px):1000:easeOutQuad] | send:[exp-sect-init:public]:delay-150">
+					when-work-sect-init="p:[opacity:0:1:450:easeOutExpo, transform:translateY(-15px):translateY(0px):1000:easeOutQuad] | s:[exp-sect-init:public]:delay-150">
 					<header><h2>Will Work For</h2></header>
 					<div>
 						<h1>
@@ -923,7 +923,7 @@ Gabrielle
 				</div>
 				<div class="pf-exp pf-about-section"
 					init-with="p:[op:0, transform:translateY(-15px):translateY(0px)]"
-					when-exp-sect-init="p:[opacity:0:1:450:easeOutExpo, transform:translateY(-15px):translateY(0px):1000:easeOutQuad] | send:[shop-sect-init:public]:delay-150">
+					when-exp-sect-init="p:[opacity:0:1:450:easeOutExpo, transform:translateY(-15px):translateY(0px):1000:easeOutQuad] | s:[shop-sect-init:public]:delay-150">
 					<header><h2>Experience</h2></header>
 					<div>
 						<ul>
@@ -1048,8 +1048,8 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-rs-init="send:[tech-cardlet-init-1:public, tech-surge-1:public:delay-500]"
-							when-tech-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-pf-rs-init="s:[tech-cardlet-init-1:public]"
+							when-tech-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-surge-1:public:delay-500]"
 							when-tech-cardlet-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-tech">
@@ -1102,8 +1102,8 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-rs-init="send:[tech-cardlet-init-2:public, tech-surge-2:public:delay-500]"
-							when-tech-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-pf-rs-init="s:[tech-cardlet-init-2:public:delay-500]"
+							when-tech-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-surge-2:public:delay-500]"
 							when-tech-cardlet-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-tech">

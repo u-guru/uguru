@@ -273,7 +273,7 @@
 	<div class="pf-tile-container mobile" ng-if='activeType === "tech"'
 		init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[tech-tile-init:public]"
-		when-tech-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-borders-init:public:delay-400]"
+		when-tech-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-borders-init:public:delay-500]"
 		when-tech-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-tech">
@@ -422,7 +422,7 @@
 					<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 						<g class="bub-back"
 							init-with="p-op"
-							when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink:public:delay-1000]"
+							when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | s:[bub-sink:public:delay-1000]"
 							when-bub-sink="p:[opacity:1:0:250:linear, transform:translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
 							<g init-with="p:[op:0, tro:center center]"
 								when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-800]">
