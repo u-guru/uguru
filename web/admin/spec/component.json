@@ -17,7 +17,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Try putting translateZ into :active in CSS vs. states"
+                    "bugs": "FIXED &rarr; Checkbox missing opacity on uncheck"
                 }
             },
             "credit-card": {
@@ -34,7 +34,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Try putting translateZ into :active in CSS vs. states"
+                    "bugs": "FIXED &rarr; Try putting translateZ into :active in CSS vs. states"
                 }
             },
 			"faq-card": {
@@ -50,7 +50,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Check about toggling from the same element"
+                    "bugs": "Check about toggling from the same element"
                 }
             },
 			"map-marker": {
@@ -66,7 +66,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Check about toggling from the same element"
+                    "bugs": "Check about toggling from the same element. Animations missing updates."
                 }
             },
             "profile-card": {
@@ -83,7 +83,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": "Flicker on back cards in stack"
                 }
             },
             "profile-thumb": {
@@ -100,7 +100,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"profile-widget": {
@@ -116,7 +116,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"request-card": {
@@ -132,7 +132,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
             "student-card": {
@@ -149,7 +149,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": "Hover should be in static css for edit"
                 }
             },
 			"team-card": {
@@ -165,7 +165,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": "Ribbon opacity"
                 }
             },
 			"timeline-card": {
@@ -197,7 +197,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": "Change onclick to onmouseenter"
                 }
             },
             "university-card": {
@@ -214,7 +214,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": "Link isn't showing up"
                 }
             },
             "user-icon": {
@@ -231,7 +231,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             }
         },
@@ -249,7 +249,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"projector": {
@@ -285,7 +285,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             }
         },
@@ -303,7 +303,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": "Check to see if draw is working"
                 }
             },
 			"wallet": {
@@ -319,7 +319,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"window-small": {
@@ -335,7 +335,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"window": {
@@ -351,7 +351,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             }
         },
@@ -370,7 +370,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"border": {
@@ -386,7 +386,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Fill these out, but might need binding for fake input from Samir"
+                    "bugs": "Fill these out, but might need binding for fake input from Samir"
                 }
 			},
 			"button": {
@@ -403,7 +403,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"checkbox": {
@@ -419,7 +419,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"number": {
@@ -435,7 +435,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"radio": {
@@ -451,7 +451,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
             "search": {
@@ -471,7 +471,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"toggle": {
@@ -488,7 +488,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			}
         },
@@ -507,7 +507,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"course-list": {
@@ -523,7 +523,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"sidebar-list": {
@@ -539,7 +539,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             }
         },
@@ -558,7 +558,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Animate color for the color dropdown"
+                    "bugs": "Animate color for the color dropdown"
                 }
             },
 			"social-bar": {
@@ -574,7 +574,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
             "tile-group": {
@@ -591,7 +591,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             }
         },
@@ -610,7 +610,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"popup": {
@@ -627,7 +627,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"toast": {
@@ -644,7 +644,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"tooltip": {
@@ -661,7 +661,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Easings available are too snappy/stiff. Trying to find timing similar to cubic-bezier(.71,.06,.47,.63)"
+                    "bugs": "Easings available are too snappy/stiff. Trying to find timing similar to cubic-bezier(.71,.06,.47,.63)"
                 }
 			}
 		},
@@ -679,7 +679,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"numerical-progress": {
@@ -695,7 +695,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"rating": {
@@ -711,7 +711,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			}
 		},
@@ -730,7 +730,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"ghost": {
@@ -746,7 +746,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			}
 		},
@@ -764,7 +764,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			},
 			"header": {
@@ -780,7 +780,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
 			}
 		},
@@ -798,7 +798,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"attachment-tile": {
@@ -814,7 +814,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"calendar-tile": {
@@ -830,7 +830,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
             "category-tile": {
@@ -847,7 +847,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"credit-tile": {
@@ -863,7 +863,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"feature-tile": {
@@ -879,7 +879,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
             "money-tile": {
@@ -896,7 +896,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
             "pricing-tile": {
@@ -913,7 +913,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
             "profile-cardlet": {
@@ -933,7 +933,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Take versions from profile. Tech borders are not applying easings."
+                    "bugs": "Take versions from profile. Tech borders are not applying easings."
                 }
             },
 			"profile-tile": {
@@ -953,7 +953,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter"
+                    "bugs": "Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter"
                 }
             },
 			"ranking-tile": {
@@ -969,7 +969,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             },
 			"record-tile": {
@@ -985,7 +985,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": ""
+                    "bugs": ""
                 }
             }
         }
