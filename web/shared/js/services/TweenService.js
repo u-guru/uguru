@@ -38,6 +38,12 @@ function TweenService() {
         "easeOutBack",
         "easeInOutBack",
         "easeInOutBounce",
+        "easeInBounce",
+        "easeOutBounce",
+        "easeInElastic",
+        "easeOutElastic",
+        "easeInOutElastic",
+
         // "easeInElastic", // easings.net or https://github.com/ai/easings.net/blob/master/vendor/jquery.easing.js
         // "easeOutElastic",
         // "easeInOutElastic",
@@ -45,21 +51,23 @@ function TweenService() {
         // "easeOutBounce",
         // "easeInOutBounce",
 
-        //
 
 		// "sway", // http://goo.gl/n3DjKQ
         // "hardSway", // http://goo.gl/xX8hna
 
+        // deprecated
         "elastic",
+        "bounce",
+        "bouncePast",
 
         "swingFromTo",
         "swingFrom",
         "swingTo",
-        "bounce",
-        "bouncePast",
         "easeFromTo",
         "easeFrom",
-        "easeTo"]
+        "easeTo"
+
+        ]
     }
 
     function getCubicBezierArrs() {
