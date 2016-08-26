@@ -84,7 +84,7 @@
 				</svg>
 			</div>
 			<div class="pf-cardlet-ribbon-edge"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				on-init="a:[fadeIn:set:(dur:250ms#func:ease-in):in:delay-650]"></div>
 		</div>
 	</div>

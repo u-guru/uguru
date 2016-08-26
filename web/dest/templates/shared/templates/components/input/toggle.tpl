@@ -56,7 +56,7 @@
 				</svg>
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36">
 				    <rect x="1" y="1" width="70" height="34" rx="17"
-						init-with="p:[op:0]"></rect>
+						init-with="p-op"></rect>
 				</svg>
 			</label>
 		</div>

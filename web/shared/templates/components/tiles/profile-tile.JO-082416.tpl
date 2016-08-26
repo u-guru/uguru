@@ -46,7 +46,7 @@
 			</div>
 			<div class="pf-tile-top">
 				<div class="pf-pricing"
-					init-with="p:[op:0]"
+					init-with="p-op"
 					when-academic-tile-init="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
 				<div init-with="p:[tr:translateY(-80%), opacity:0]"
 					when-academic-tile-init="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
@@ -220,7 +220,7 @@
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
 			<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-250]"
 				when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-750]">
 				<div class="full-x flex-center preserve-3d m15bottom"
@@ -294,11 +294,11 @@
 		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
 		on-init="s:[baking-tile-init:public]"
 		when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-		when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
+		when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic easeInExpo, opacity:1:0:500:linear]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
 			<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
 				when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
 				<div class="full-x flex-center preserve-3d m15bottom"
@@ -376,7 +376,7 @@
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-photography">
 			<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-photo-tile-init="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 				when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 			<div class="pf-tile-border">
@@ -385,7 +385,7 @@
 				</div>
 			</div>
 			<div class="pf-tile-bottom">
-				<h1 init-with="p:[op:0]"
+				<h1 init-with="p-op"
 					when-photo-tile-init="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li init-with="p-op"
@@ -461,7 +461,7 @@
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-photography">
 			<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-photo-tile-init="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 				when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 			<div class="pf-tile-border">

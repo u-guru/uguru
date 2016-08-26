@@ -5325,23 +5325,17 @@ a.credit-card {
     height: 100%;
     cursor: pointer; }
     .course-card input ~ .course-card-count {
-      filter: alpha(opacity=0);
-      opacity: 0; }
+      opacity: 0 !important; }
       .course-card input ~ .course-card-count span {
-        filter: alpha(opacity=50);
         opacity: 0.5; }
     .course-card input:hover ~ .course-card-count {
-      filter: alpha(opacity=100);
-      opacity: 1; }
+      opacity: 1 !important; }
       .course-card input:hover ~ .course-card-count span {
-        filter: alpha(opacity=50);
-        opacity: 0.5; }
+        opacity: 0.5 !important; }
     .course-card input:active ~ .course-card-count, .course-card input:checked ~ .course-card-count {
-      filter: alpha(opacity=100);
-      opacity: 1; }
+      opacity: 1 !important; }
       .course-card input:active ~ .course-card-count span, .course-card input:checked ~ .course-card-count span {
-        filter: alpha(opacity=100);
-        opacity: 1; }
+        opacity: 1 !important; }
   .course-card.with-hover .course-card-hover {
     filter: alpha(opacity=0);
     opacity: 0;

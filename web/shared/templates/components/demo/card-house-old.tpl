@@ -190,8 +190,8 @@ breakproints
 					<div class="back"></div>
 				</div>
 				<div class="team-card" init-with="p:[t:all 500ms ease-out, op:0, backface-visibility:hidden]"
-					when-house-stack="p:[op:0]"
-					when-house-build="p:[op:0]"
+					when-house-stack="p-op"
+					when-house-build="p-op"
 					when-house-rotate="p:[op:1]:delay-300 | s:[jeselle-enter:public:delay-600]">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -301,8 +301,8 @@ breakproints
 					<div class="back"></div>
 				</div>
 				<div class="team-card" init-with="p:[t:all 500ms ease-out, op:0, backface-visibility:hidden]"
-					when-house-stack="p:[op:0]"
-					when-house-build="p:[op:0]"
+					when-house-stack="p-op"
+					when-house-build="p-op"
 					when-house-rotate="p:[op:1]:delay-600 | s:[jason-enter:public:delay-900]">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -399,8 +399,8 @@ breakproints
 					<div class="back"></div>
 				</div>
 				<div class="team-card" init-with="p:[t:all 500ms ease-out, op:0, backface-visibility:hidden]"
-					when-house-stack="p:[op:0]"
-					when-house-build="p:[op:0]"
+					when-house-stack="p-op"
+					when-house-build="p-op"
 					when-house-rotate="p:[op:1]:delay-900 | s:[samir-enter:public:delay-1200]">
 					<div class="team-border">
 						<div init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
@@ -477,7 +477,7 @@ breakproints
 		</li>
 
 		<li style="position:absolute;"
-			init-with="p:[op:0]"
+			init-with="p-op"
 			when-house-stack="p:[z-index:auto, opacity:0:1:200:linear]:delay-400"
 			when-house-build="p:[z-index:auto]"
 			when-house-return="p:[z-index:-100:delay-1000]">

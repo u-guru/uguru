@@ -189,7 +189,7 @@
 				<div class="pf-cardlet-front">
 					<div></div><div></div><div></div>
 					<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-						init-with="p:[op:0]"
+						init-with="p-op"
 						when-photo-cardlet-init="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 						when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 					<div class="pf-cardlet-overlay"></div>

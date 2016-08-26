@@ -160,7 +160,7 @@ Gabrielle
 	</aside>
 	<div class="pf-rest perspective-container"
 		init-with="p-op"
-		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public:delay-500, pf-sv-init:public:delay-2250]"
+		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public:delay-500, pf-mn-init:public:delay-2250]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
 			<!-- Note: The line is flickering -->
@@ -194,7 +194,7 @@ Gabrielle
 					when-pf-tabs-init="p:[opacity:0:1:1000:easeOutSine]:delay-1200">
 			</div>
 		</nav>
-		<main class="pf-main" ng-init="guru.section_index = 1;">
+		<main class="pf-main" ng-init="guru.section_index = 0;">
 			<!-- ng-init="guru.section_index = 2;" -->
 			<div class="pf-profile pf-main-section" ng-class="{'active': !guru.section_index}">
 				<div class="pf-main-header overflow-hidden">
@@ -221,7 +221,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -305,7 +305,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -402,7 +402,7 @@ Gabrielle
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p:[op:0]"
+											init-with="p-op"
 											when-photo-cardlet-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -446,7 +446,7 @@ Gabrielle
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p:[op:0]"
+											init-with="p-op"
 											when-photo-cardlet-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -497,7 +497,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -581,7 +581,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -937,7 +937,7 @@ Gabrielle
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p:[op:0]"
+											init-with="p-op"
 											when-photo-cardlet-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -981,7 +981,7 @@ Gabrielle
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p:[op:0]"
+											init-with="p-op"
 											when-photo-cardlet-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>

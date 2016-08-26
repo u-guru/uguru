@@ -4,9 +4,9 @@
 	on-enter="p:[tr:scale(1000), background:#40484b, op:1, display:block, t:all 1000ms ease-out] | t:[on-exit]"
 	on-exit="p:[tr:scale(0):delay-2000, background:#ffffff:delay-2000, op:0:delay-500, display:none:delay-2000, t:all 500ms ease-out]"></div>
 <div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar'
-	init-with="p:[op:0]"
+	init-with="p-op"
  	when-sidebar-icon-clicked="p:[op:1:delay-500]"
-	when-sidebar-close-clicked="p:[op:0]">
+	when-sidebar-close-clicked="p-op">
 	<!-- on-init="t:[on-enter]" -->
     <!-- <custom-states when="faq-clicked, pricing-clicked"></custom-states> -->
     <aside class="splash-sidebar-full overflow-auto no-scrollbar">
@@ -136,9 +136,9 @@
 						<div class="school-id-bg" style="background: #003262;"
 							init-with="p:[op:1]"
 							when-sidebar-icon-clicked="t:[on-enter]"
-							on-enter="p:[op:0]:delay-4000"></div>
+							on-enter="p-op:delay-4000"></div>
                         <div class="school-id-top" style="background: #003262;"
-							 init-with="p:[op:0]"
+							 init-with="p-op"
 							 when-sidebar-icon-clicked="t:[on-enter]"
 							 on-enter="anim:[fadeIn:set:(animation-duration:250ms#animation-timing-function:ease-out#animation-delay:3750ms):in]">
                             <span class="user-icon" style="border-color: #003262;">
@@ -149,7 +149,7 @@
                             </span>
                         </div>
                         <div class="school-id-bottom"
-							init-with="p:[op:0]"
+							init-with="p-op"
 							when-sidebar-icon-clicked="t:[on-enter]"
 							on-enter="anim:[fadeIn:set:(animation-duration:250ms#animation-timing-function:ease-out#animation-delay:3750ms):in]">
                             <div>

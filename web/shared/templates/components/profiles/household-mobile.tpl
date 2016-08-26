@@ -221,7 +221,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-household-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-household-tile-exit-1="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"
@@ -367,7 +367,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-household-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-household-tile-exit-2="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"
@@ -517,7 +517,7 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-mn-init="s:[household-cardlet-init-1:public]"
+							when-pf-mn-init="s:[household-cardlet-init-1:public:delay-1000]"
 							when-household-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
 							when-household-cardlet-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
@@ -563,7 +563,7 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-mn-init="s:[household-cardlet-init-2:public:delay-500]"
+							when-pf-mn-init="s:[household-cardlet-init-2:public:delay-1500]"
 							when-household-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
 							when-household-cardlet-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
@@ -625,7 +625,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-household-tile-init-1="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-household-tile-exit-1="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"
@@ -771,7 +771,7 @@ Gabrielle
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-household">
 								<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-household-tile-init-2="p:[opacity:0:1:500:easeOutSine]:delay-250"
 									when-household-tile-exit-2="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 								<div class="pf-tile-bg"

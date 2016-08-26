@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="household">
+<div class="perspective-container full-xy flex-center p15xy" types='academic, baking, photo, tech, household' default-type="baking">
 	<!-- NOTES FOR JESELLE - WORK ON CARDLETS FIRST
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile tile transitions
@@ -112,14 +112,14 @@
 	</div>
 
 	<div class="pf-tile-container mobile" ng-if='activeType === "baking"'
-		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
+		init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
 		on-init="s:[baking-tile-init:public]"
-		when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-		when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
+		when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+		when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic easeInExpo, opacity:1:0:500:linear]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
 			<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
 				when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
 				<div class="full-x flex-center preserve-3d m15bottom"
@@ -195,7 +195,7 @@
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-photography">
 			<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-photo-tile-init="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 				when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 			<div class="pf-tile-border">
@@ -273,12 +273,12 @@
 	<div class="pf-tile-container mobile" ng-if='activeType === "tech"'
 		init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 		on-init="s:[tech-tile-init:public]"
-		when-tech-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-borders-init:public:delay-400]"
+		when-tech-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine] | s:[tech-borders-init:public:delay-500]"
 		when-tech-tile-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-tech">
 			<div class="pf-tile-top" style="background-image: url('http://www.iphoneinformer.com/wp-content/uploads/2015/11/wet-iPhone-6-2.jpg');"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
 				when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 				<div class="pf-pricing">
@@ -296,7 +296,7 @@
 				</div>
 			</div>
 			<div class="pf-tile-bottom"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-tech-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
 				when-tech-tile-exit="p:[opacity:1:0:easeOutSine]:delay-1000">
 				<h1 init-with="p:[op:0, tr:translateY(10px)]"
@@ -386,7 +386,7 @@
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-household">
 			<div class="pf-tile-top" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg')"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-household-tile-init="p:[opacity:0:1:500:easeOutSine]:delay-250"
 				when-household-tile-exit="p:[opacity:1:0:500:easeOutSine]:delay-250"></div>
 			<div class="pf-tile-bg"
@@ -422,7 +422,7 @@
 					<g class="bubbles" fill="#FFFFFF" fill-rule="evenodd">
 						<g class="bub-back"
 							init-with="p-op"
-							when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | send:[bub-sink:public:delay-1000]"
+							when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-450] | s:[bub-sink:public:delay-1000]"
 							when-bub-sink="p:[opacity:1:0:250:linear, transform:translateY(0px):translateY(119px):500:easeInCubic]:delay-250">
 							<g init-with="p:[op:0, tro:center center]"
 								when-household-tile-init="a:[pf-hh-bubble-blow:set:(dur:1000ms#func:linear):in:delay-800]">
