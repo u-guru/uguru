@@ -7,7 +7,10 @@
 		<div class="portal">
 			<div>
 				<svg width="200px" height="200px" viewBox="0 0 400 400">
-					<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"></circle>
+					<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
+						init-default
+						when-portal-hover="a:[l-progress:set:(dur:3000ms#func:linear):in] | s:[portal-complete:public:delay-3000]"
+						when-portal-complete="p:[sdo:0, stroke:#F6C64E]"></circle>
 				</svg>
 			</div>
 			<div class="mask"></div>
