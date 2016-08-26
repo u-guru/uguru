@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="baking">
+<div class="perspective-container full-xy flex-center p15xy" types='default, academic, baking, photo, tech, household' default-type="photo">
 	<!-- NOTES FOR JESELLE
 		Look for these comments within _tiles.scss (replace category with the actual category name)
 		// profile cardlet transitions
@@ -79,19 +79,19 @@
 					<div class="pf-cardlet-bg deco"></div>
 					<div class="pf-cardlet-border deco">
 						<div init-with="p:[tr:scaleX(0)]"
-							when-academic-cardlet-init="p:[tr:scaleX(1), t:transform 1450ms ease-out, t:all 500ms ease-out:delay-1500]"></div>
+							when-academic-cardlet-init="p:[transform:scaleX(0):scaleX(1):1450:easeOutCubic]:delay-500"></div>
 						<div init-with="p:[tr:scaleY(0)]"
-							when-academic-cardlet-init="p:[tr:scaleY(1), t:transform 1450ms ease-out, t:all 500ms ease-out:delay-1500]"></div>
+							when-academic-cardlet-init="p:[transform:scaleY(0):scaleY(1):1450:easeOutCubic]:delay-500"></div>
 						<div init-with="p:[tr:scaleY(0)]"
-							when-academic-cardlet-init="p:[tr:scaleY(1), t:transform 1450ms ease-out, t:all 500ms ease-out:delay-1500]"></div>
+							when-academic-cardlet-init="p:[transform:scaleY(0):scaleY(1):1450:easeOutCubic]:delay-500"></div>
 						<div init-with="p:[tr:scaleX(0)]"
-							when-academic-cardlet-init="p:[tr:scaleX(1), t:transform 1450ms ease-out, t:all 500ms ease-out:delay-1500]"></div>
+							when-academic-cardlet-init="p:[transform:scaleX(0):scaleX(1):1450:easeOutCubic]:delay-500"></div>
 					</div>
 					<h1 init-with="p-op"
 						when-academic-cardlet-init="a:[zoomIn:set:(dur:400ms#func:cubic-bezier(.8#.1#.41#.91)):in:delay-450]">Master the Cerebral Cortex</h1>
 					<div>
-						<div init-with="p:[op:0, tr:scaleY(0), t:all 400ms cubic-bezier(.8#.1#.41#.91)]"
-							when-academic-cardlet-init="p:[op:1, tr:none, t:all 500ms ease-out:delay-400]:delay-650">
+						<div init-with="p:[op:0, tr:scaleY(0)]"
+							when-academic-cardlet-init="p:[opacity:0:1:500:easeOutQuad, transform:scaleY(0):scaleY(1):500:easeOutQuad]:delay-650">
 							<h2>03/28/2016</h2>
 						</div>
 					</div>
@@ -180,9 +180,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="pf-cardlet-back-container"
-				init-with="p:[tr:translate3d(-7.5px#-7.5px#0), t:all 450ms ease-out]"
-				when-photo-cardlet-init="p:[tr:none:delay-500]">
+			<div class="pf-cardlet-back-container">
 				<div class="pf-cardlet-back"></div>
 			</div>
 			<div class="pf-cardlet-ribbon-container">
