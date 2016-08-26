@@ -42,7 +42,7 @@
 				<span class="bg-crimson radius-2-right block p10x-p05y semibold" ng-if="metadata.status.performance != true">&#x2717;</span>
 			</li>
 			<li class='txt-14 line-height-1-2 semibold full-x'>
-		        {{metadata.notes.for}}
+		        {{metadata.notes.bugs}}
 		    </li>
 			<!-- <li class='opacity-30p txt-14 line-height-1-2 weight-300 full-x'>
 		        {{metadata}}
