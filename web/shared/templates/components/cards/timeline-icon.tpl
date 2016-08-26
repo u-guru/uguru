@@ -1,9 +1,9 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="timeline-icon timeline-parent timeline-icon-right"
 		init-with="p:[op:0, tr:center center]"
-		on-init="t-enter"
-		on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]"
-		on-click="send:[timeline-click:public]">
+		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]"
+		on-mouse-enter="s:[timeline-enter:public]"
+		on-mouse-leave="s:[timeline-leave:public]">
 		<div class="timeline-icon-svg">
 			<svg viewBox="0 0 100 100">
 			    <g fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -19,6 +19,7 @@
 		<div class="timeline-icon-cover bg-charcoal"></div>
 		<h2 class="timeline-icon-text"
 			on-init="p:[tr:translateX(-100%)]"
-			when-timeline-click="p:[transform:translateX(-100%):translateX(0%):450:easeInOutCubic]">Milestones</h2>
+			when-timeline-enter="p:[transform:translateX(-100%):translateX(0%):450:easeInOutCubic]"
+			when-timeline-leave="p:[transform:translateX(0%):translateX(-100%):250:easeInOutCubic]">Milestones</h2>
 	</div>
 </div>
