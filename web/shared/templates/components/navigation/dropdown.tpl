@@ -47,22 +47,22 @@
 			when-dropdown-close="p:[z-index:-1]">
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0px)]"
-				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic]:delay-150"
-				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(90deg) translateZ(0px):250:easeInOutCubic]:delay-450"
+				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-150"
+				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(90deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-450"
 				on-click="s:[dropdown-close:public]">
 				<span>Academic</span>
 			</li>
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(-90deg) translateZ(0)]"
-				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(-90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic]:delay-300"
-				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(-90deg) translateZ(0px):250:easeInOutCubic]:delay-300"
+				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(-90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-300"
+				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(-90deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-300"
 				on-click="s:[dropdown-close:public]">
 				<span>Baking</span>
 			</li>
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0)]"
-				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic]:delay-450"
-				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(90deg) translateZ(0px):250:easeInOutCubic]:delay-150"
+				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-450"
+				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(90deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-150"
 				on-click="s:[dropdown-close:public]">
 				<span>Tech</span>
 			</li>
@@ -87,8 +87,7 @@
 				init-with="p:[tr:scaleY(0)]"
 				on-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-450"
 				when-load-end="p:[transform:scaleY(1):scaleY(0):500:easeOutCubic]"></div>
-			<span
-				init-with="p-op"
+			<span init-with="p-op"
 				on-init="p:[opacity:0:1:500:easeOutSine]:delay-700 | send:[load-end:public:delay-1200]">Photography</span>
 			<a  init-with="p-op"
 				on-init="p:[opacity:0:1:700:easeOutSine]:delay-1000"
@@ -109,8 +108,8 @@
 			when-dropdown-close="p:[z-index:-1]">
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0px)]"
-				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic]:delay-150"
-				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(90deg) translateZ(0px):250:easeInOutCubic]:delay-450"
+				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-150"
+				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(90deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-450"
 				on-click="s:[dropdown-close:public]">
 				<span>Academic</span>
 				<a class="dropdown-popup">
@@ -126,8 +125,8 @@
 			</li>
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(-90deg) translateZ(0)]"
-				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(-90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic]:delay-300"
-				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(-90deg) translateZ(0px):250:easeInOutCubic]:delay-300"
+				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(-90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-300"
+				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(-90deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-300"
 				on-click="s:[dropdown-close:public]">
 				<span>Baking</span>
 				<a class="dropdown-popup">
@@ -143,8 +142,8 @@
 			</li>
 			<li tabindex
 				init-with="p:[op:0, tr:rotateX(90deg) translateZ(0)]"
-				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic]:delay-450"
-				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(90deg) translateZ(0px):250:easeInOutCubic]:delay-150"
+				when-dropdown-open="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-450"
+				when-dropdown-close="p:[opacity:1:0:250:easeInOutSine, transform:rotateX(0deg) translateZ(0px):rotateX(90deg) translateZ(0px):250:easeInOutCubic easeInOutCubic]:delay-150"
 				on-click="s:[dropdown-close:public]">
 				<span>Tech</span>
 				<a class="dropdown-popup">
