@@ -644,7 +644,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "for": "Toast with any action should have a confirmation/success state"
                 }
 			},
 			"tooltip": {
@@ -661,7 +661,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Easings available are too snappy/stiff. Trying to find timing similar to cubic-bezier(.71,.06,.47,.63)"
+                    "for": "Revisit when there is custom timing. Easings available are too snappy/stiff. Trying to find timing similar to cubic-bezier(.71,.06,.47,.63)"
                 }
 			}
 		},
@@ -695,7 +695,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "for": "Should be binding so that it goes step to step in one direction."
                 }
 			},
 			"rating": {
@@ -798,7 +798,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "Change translate down to swing like the dropdown. Stagger."
                 }
             },
 			"attachment-tile": {
@@ -814,7 +814,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "Combine doc outline into single simple path (instead of combined path)"
                 }
             },
 			"calendar-tile": {
@@ -847,7 +847,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "Switcher is not working for this page only: onexits are being triggered, key being the first type. Convert on-inits to a single state."
                 }
             },
 			"credit-tile": {
