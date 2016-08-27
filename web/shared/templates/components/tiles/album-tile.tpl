@@ -24,11 +24,11 @@
 		<div class="album-caption">
 			<!-- @samir The opacity and the transform isn't working together. If I take opacity out, the transform animation works. -->
 			<h1 style="background: #020c39;"
-				init-with="p:[op:0, tr:translateY(-100%)]"
-				when-album-tile-init="p:[opacity:0:1:250:easeOutSine, transform:translateY(-100%):translateY(0%):250:easeOutCubic]:delay-250">Midnight<br/>Cramming</h1>
+			init-with="p:[op:0, tro:top center, tr:rotateX(90deg) translateZ(0px)]"
+			when-album-tile-init="p:[opacity:0:1:250:easeInOutSine, transform:rotateX(90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeOutQuint easeOutQuint]:delay-150">Midnight<br/>Cramming</h1>
 			<h2 style="background: #020c39;"
-				init-with="p:[op:0, tr:translateY(-100%)]"
-				when-album-tile-init="p:[opacity:0:0.3:250:easeOutSine, transform:translateY(-100%):translateY(0%):250:easeOutCubic]:delay-500">Intense EDM</h2>
+			init-with="p:[op:0, tro:top center, tr:rotateX(-90deg) translateZ(0px)]"
+			when-album-tile-init="p:[opacity:0:0.3:250:easeInOutSine, transform:rotateX(-90deg) translateZ(0px):rotateX(0deg) translateZ(0px):250:easeOutQuint easeOutQuint]:delay-300">Intense EDM</h2>
 		</div>
 	</a>
 </div>
