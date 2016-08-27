@@ -50,7 +50,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Check about toggling from the same element"
+                    "bugs": "Check about toggling from the same element @samir"
                 }
             },
 			"map-marker": {
@@ -386,7 +386,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Fill these out, but might need binding for fake input from Samir"
+                    "bugs": "Fill these out, but might need binding for fake input from @Samir"
                 }
 			},
 			"button": {
@@ -471,7 +471,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Clicking multiple times shouldn't retrigger opening"
+                    "bugs": "Clicking multiple times shouldn't retrigger opening @Samir"
                 }
             },
 			"toggle": {
@@ -933,7 +933,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Take versions from profile. Tech borders are not applying easings."
+                    "bugs": "FIXED &rarr; Take versions from profile. Tech borders are not applying easings."
                 }
             },
 			"profile-tile": {
@@ -953,7 +953,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter"
+                    "bugs": "FIXED &rarr; Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter"
                 }
             },
 			"ranking-tile": {
