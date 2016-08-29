@@ -1,4 +1,4 @@
-<div class="full-xy flex-center bg-slate" types='student, guru, no-padding, large-icons' default-type="large-icons">
+<div class="full-xy flex-center bg-slate" types='student, guru, no-padding, large-icons' default-type="student">
 	<!-- make sure that the borders are not visible after entering otherwise they will conflict with the uploading status -->
 	<div class="full-xy flex-center bg-white" ng-if='activeType === "student"'>
 		<div class="attach-list student">
@@ -32,7 +32,7 @@
 								init-with="p:[tr:scaleY(0)]"></div>
 							<div class="uploading"
 								init-with="p:[tr:scaleX(0), op:1]"
-								when-attach-upload="p:[tr:none, t:all 250ms ease-out, op:0:delay-500]"></div>
+								when-attach-upload="p:[transform:scaleX(0):scaleX(1):250:easeOutSine, opacity:1:0:250:easeOutSine:delay-500]"></div>
 						</div>
 					</a>
 				</li>
@@ -132,7 +132,7 @@
 							init-with="p:[tr:scaleY(0)]"></div>
 						<div class="uploading"
 							init-with="p:[tr:scaleX(0), op:1]"
-							when-attach-upload="p:[tr:none, t:all 250ms ease-out, op:0:delay-500]"></div>
+							when-attach-upload="p:[transform:scaleX(0):scaleX(1):250:easeOutSine, opacity:1:0:250:easeOutSine:delay-500]"></div>
 					</div>
 				</a>
 			</li>
@@ -389,7 +389,7 @@
 								<!-- this extra element is to draw in, since you probably won't be able to animate the fill coming in properly, it's an image fill -->
 								<rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2"
 									init-with="p:[stroke-dashoffset:288, sda:288]"
-									when-jpg-enter="p:[stroke-dashoffset:288:0:1050:easeOutSine, t:all 1050ms ease-out]"></rect>
+									when-jpg-enter="p:[stroke-dashoffset:288:0:1050:easeOutSine]"></rect>
 								<rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2" fill="url(#img-fill)"
 									init-with="p:[fill-opacity:0,stroke-dashoffset:288, sda:288]"
 									when-jpg-enter="p:[fill-opacity:0:1:1050:easeOutSine:delay-500, stroke-dashoffset:288:0:1050:easeOutSine]"></rect>
