@@ -79,8 +79,6 @@
 		<div class="toggle round">
 			<input type="checkbox" checked />
 			<label>
-				<!-- @samir opacity and fill-opacity don't animate at the same time despite having the same syntax
-					see line 87 and line 92 -->
 				<div init-with="p-op"
 					when-round-enter="p:[opacity:0:1:750:easeOutQuad]:delay-500"></div>
 				<svg class="square" viewBox="0 0 26 26">
@@ -121,6 +119,7 @@
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"></circle>
 				</svg>
+				<!-- @samir look here for multiple delays -->
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36">
 				    <rect x="1" y="1" width="70" height="34" rx="17"
 						init-with="p:[fop:0, sdo:225, sda:225]"
