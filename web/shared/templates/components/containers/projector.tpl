@@ -1,6 +1,6 @@
 <div class="perspective-container full-xy flex-center">
 	<div class="full-xy flex-center preserve-3d"
-		init-with="p:[op:0]"
+		init-with="p-op"
 		on-init="a:[bounceInDown-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]">
 		<div class="projector-slide"
 			init-default

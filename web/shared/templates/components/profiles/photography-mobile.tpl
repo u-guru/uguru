@@ -217,13 +217,13 @@ Gabrielle
 							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 							when-pf-mn-init="s:[photo-tile-init-1:public]"
 							when-photo-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-photo-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
+							when-photo-tile-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
-									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
+									when-photo-tile-exit-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
 									<div>
 										Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -273,22 +273,22 @@ Gabrielle
 										init-with="p:[tro:center center, op:0]"
 										when-photo-tile-init-1="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
 										<div class="pf-border">
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
 										</div>
 										<span>$10/hr</span>
 									</div>
@@ -301,13 +301,13 @@ Gabrielle
 							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 							when-pf-mn-init="s:[photo-tile-init-2:public:delay-500]"
 							when-photo-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-photo-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
+							when-photo-tile-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
-									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
+									when-photo-tile-exit-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
 									<div>
 										Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -402,7 +402,7 @@ Gabrielle
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p:[op:0]"
+											init-with="p-op"
 											when-photo-cardlet-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -446,7 +446,7 @@ Gabrielle
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p:[op:0]"
+											init-with="p-op"
 											when-photo-cardlet-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
@@ -493,11 +493,11 @@ Gabrielle
 							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
 							when-pf-sv-init="s:[photo-tile-init-1:public]"
 							when-photo-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-photo-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
+							when-photo-tile-exit-1="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
 									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
@@ -506,8 +506,8 @@ Gabrielle
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0, t:all 250ms ease-out]"
-										when-photo-tile-init-1="p:[op:1:delay-1000]">Professional Headshots</h1>
+									<h1 init-with="p-op"
+										when-photo-tile-init-1="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
 											when-photo-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
@@ -549,22 +549,22 @@ Gabrielle
 										init-with="p:[tro:center center, op:0]"
 										when-photo-tile-init-1="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
 										<div class="pf-border">
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-1="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-1="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-1="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
 										</div>
 										<span>$10/hr</span>
 									</div>
@@ -575,23 +575,23 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, transform:rotateX(-30deg) rotateY(30deg), opacity:0]"
-							when-pf-sv-init="s:[photo-tile-init-2:public:delay-500]"
+							when-pf-sv-init="s:[photo-tile-init-2:public]"
 							when-photo-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-photo-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
+							when-photo-tile-exit-2="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-photography">
 								<div class="pf-tile-top" style="background-image: url('http://cultr.sampleface.co.uk/wp-content/uploads/2015/05/hipster.jpg');"
-									init-with="p:[op:0]"
+									init-with="p-op"
 									when-photo-tile-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
-									when-photo-tile-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
+									when-photo-tile-exit-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]"></div>
 								<div class="pf-tile-border">
 									<div>
 										Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 									</div>
 								</div>
 								<div class="pf-tile-bottom">
-									<h1 init-with="p:[op:0, t:all 250ms ease-out]"
-										when-photo-tile-init-2="p:[op:1:delay-1000]">Professional Headshots</h1>
+									<h1 init-with="p-op"
+										when-photo-tile-init-2="p:[opacity:0:1:250:easeOutSine]:delay-1000">Professional Headshots</h1>
 									<ul class="rating-stars" data-rating="4" data-half="true">
 										<li init-with="p-op"
 											when-photo-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1100]">
@@ -633,22 +633,22 @@ Gabrielle
 										init-with="p:[tro:center center, op:0]"
 										when-photo-tile-init-2="a:[slideInUp-subtle:set:(dur:1000ms#func:ease-out):in:delay-1000]">
 										<div class="pf-border">
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleX(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
-											<div init-with="p:[tr:scaleY(0), t:transform 250ms ease-out]"
-												when-photo-tile-init-2="p:[tr:none:delay-2000]"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleX(0)]"
+												when-photo-tile-init-2="p:[transform:scaleX(0):scaleX(1):250:easeOutSine]:delay-2000"></div>
+											<div init-with="p:[tr:scaleY(0)]"
+												when-photo-tile-init-2="p:[transform:scaleY(0):scaleY(1):250:easeOutSine]:delay-2000"></div>
 										</div>
 										<span>$10/hr</span>
 									</div>
@@ -930,16 +930,16 @@ Gabrielle
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
 							when-pf-rs-init="s:[photo-cardlet-init-1:public]"
 							when-photo-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-photo-cardlet-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
+							when-photo-cardlet-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-photography">
 								<div class="pf-cardlet-front-container">
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p:[op:0]"
+											init-with="p-op"
 											when-photo-cardlet-init-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
-											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
+											when-photo-cardlet-exit-1="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
 									</div>
 								</div>
@@ -972,18 +972,18 @@ Gabrielle
 					<li>
 						<div class="pf-tile-container mobile"
 							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
-							when-pf-rs-init="s:[photo-cardlet-init-2:public:delay-500]"
+							when-pf-rs-init="s:[photo-cardlet-init-2:public]"
 							when-photo-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
-							when-photo-cardlet-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
+							when-photo-cardlet-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-photography">
 								<div class="pf-cardlet-front-container">
 									<div class="pf-cardlet-front">
 										<div></div><div></div><div></div>
 										<div class="pf-cardlet-bg" style="background-image: url('http://s8.favim.com/orig/72/cameras-hipster-indie-photography-Favim.com-712610.jpg');"
-											init-with="p:[op:0]"
+											init-with="p-op"
 											when-photo-cardlet-init-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out):in:delay-500]"
-											when-photo-cardlet-exit="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
+											when-photo-cardlet-exit-2="a:[pf-photo-enter:set:(dur:750ms#func:ease-in-out#dir:reverse):out]">&nbsp;</div>
 										<div class="pf-cardlet-overlay"></div>
 									</div>
 								</div>

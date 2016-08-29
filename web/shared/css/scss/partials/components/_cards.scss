@@ -993,7 +993,7 @@ a.credit-card {
 	}
 	&.with-hover {
 		.school-card-hover {
-			@include opacity(0);
+			opacity: 0;
 			transition: all 150ms ease-in-out;
 			position: absolute;
 			z-index: 7;
@@ -1002,27 +1002,30 @@ a.credit-card {
 			width: 100%;
 			height: 100%;
 			&:hover, &:focus {
-				@include opacity(1);
+				opacity: 1;
 			}
 			> span {
-				@include opacity(.95);
+				opacity: 0.95;
 				position: absolute;
+				z-index: 1;
 				top: 0;
 				left: 0;
 				width: 100%;
 				height: 100%;
 				border-radius: 10px;
-				color: white;
 			}
 			> div {
 				@include flex;
 				@include flex-wrap;
 				@include flex-center;
+				position: relative;
+				z-index: 2;
 				width: 100%;
 				height: 100%;
 				padding: 15px;
 				font-size: 18px;
 				font-weight: 600;
+				color: white;
 			}
 		}
 	}
@@ -1958,12 +1961,12 @@ a.credit-card {
 				font-size: 16px;
 				font-weight: 600;
 				margin: 0!important;
-				span:first-child {
+				> span:first-child {
 					display: block;
 					white-space: nowrap;
 					width: 150px;
 				}
-				span:nth-child(2) {
+				> span:nth-child(2) {
 					@include round;
 					@include flex;
 					@include flex-center;
@@ -1975,12 +1978,21 @@ a.credit-card {
 					margin: 0 10px;
 				}
 				a {
-					@include opacity(.5);
 					display: block;
 					width: 26px;
 					font-size: 14px;
+					span {
+						opacity: 0.5;
+					}
 					&:hover, &:focus {
-						@include opacity(1);
+						span {
+							opacity: 0.75;
+						}
+					}
+					&:active {
+						span {
+							opacity: 1;
+						}
 					}
 				}
 			}
@@ -2219,24 +2231,24 @@ a.credit-card {
 		height: 100%;
 		cursor: pointer;
 		~ .course-card-count {
-			@include opacity(0);
+			opacity: 0!important;
 			span {
-				@include opacity(.5);
+				opacity: 0.5;
 			}
 		}
 		&:hover {
 			~ .course-card-count {
-				@include opacity(1);
+				opacity: 1!important;
 				span {
-					@include opacity(.5);
+					opacity: 0.5!important;
 				}
 			}
 		}
 		&:active, &:checked {
 			~ .course-card-count {
-				@include opacity(1);
+				opacity: 1!important;
 				span {
-					@include opacity(1);
+					opacity: 1!important;
 				}
 			}
 		}

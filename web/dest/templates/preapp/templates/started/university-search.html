@@ -90,7 +90,7 @@
                         <!-- class-on-activate="null:inject.projector-school-desktop li|activate" -->
 						<!-- ng-repeat='university in universities | filter:search_text.university:strict | limitTo: 5 track by $index' class="matrix-0" class-on-activate="u-bounceIn-subtle" class-on-activate-delay="{{4800 + (150 * ($index + 1)) }}" -->
 						<!-- ng-click='uniSearch.selectUniversityFromSearch(university)' -->
-                        <li init-with="prop:[op:0]"
+                        <li init-with="prop-op"
 							when-search-university-init="t-enter"
 							on-enter="anim:[projectorInDown:set:(dur:1250ms#func:linear):in:delay-1000] | prop:[op:1:delay-2250] | t-enter-child">
                             <div class="university-card"
@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li init-with="prop:[op:0]"
+                        <li init-with="prop-op"
 							when-search-university-init="t-enter"
 							on-enter="anim:[projectorInDown:set:(dur:1250ms#func:linear):in:delay-1500] | prop:[op:1:delay-2750] | trigger:[on-enter:children]:delay-1250">
 							<div class="university-card"
@@ -188,7 +188,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li init-with="prop:[op:0]"
+                        <li init-with="prop-op"
 							when-search-university-init="t-enter"
 							on-enter="anim:[projectorInDown:set:(dur:1250ms#func:linear):in:delay-2000] | prop:[op:1:delay-3250] | trigger:[on-enter:children]:delay-1500">
 							<div class="university-card"
@@ -237,7 +237,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li init-with="prop:[op:0]"
+                        <li init-with="prop-op"
 							when-search-university-init="t-enter"
 							on-enter="anim:[projectorInDown:set:(dur:1250ms#func:linear):in:delay-2500] | prop:[op:1:delay-3750] | trigger:[on-enter:children]:delay-1750">
 							<div class="university-card"
@@ -286,7 +286,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li init-with="prop:[op:0]"
+                        <li init-with="prop-op"
 							when-search-university-init="t-enter"
 							on-enter="anim:[projectorInDown:set:(dur:1250ms#func:linear):in:delay-3000] | prop:[op:1:delay-4250]| trigger:[on-enter:children]:delay-2000">
 							<div class="university-card"

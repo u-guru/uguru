@@ -28,7 +28,7 @@
 						init-with="p:[op:0, tro:left center]"
 						when-student-card-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-350]">9</span>
 					<a init-with="p-op"
-						when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">Edit</a>
+						when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150"><span>Edit</span></a>
 				</h3>
 			</div>
 		</div>

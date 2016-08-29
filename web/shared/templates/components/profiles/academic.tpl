@@ -236,8 +236,8 @@ Gabrielle
 									<div class="pf-pricing"
 										init-with="p-op"
 										when-academic-tile-init-1="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
-									<div init-with="p:[tr:translateY(-80%), opacity:0]"
-										when-academic-tile-init-1="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+									<div init-with="p:[tr:translateY(-100px), opacity:0]"
+										when-academic-tile-init-1="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-750">
 										<div class="pf-tile-icon">
 											<svg viewBox="0 0 100 100">
 												<g>
@@ -251,10 +251,10 @@ Gabrielle
 											</svg>
 										</div>
 									</div>
-									<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-1="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
-									<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-1="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+									<h1 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-1="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Chem 133</h1>
+									<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-1="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Organic Chemistry</h2>
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
@@ -330,8 +330,8 @@ Gabrielle
 									<div class="pf-pricing"
 										init-with="p-op"
 										when-academic-tile-init-2="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
-									<div init-with="p:[tr:translateY(-80%), opacity:0]"
-										when-academic-tile-init-2="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+									<div init-with="p:[tr:translateY(-100px), opacity:0]"
+										when-academic-tile-init-2="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-750">
 										<div class="pf-tile-icon">
 											<svg viewBox="0 0 100 100">
 												<g>
@@ -345,10 +345,10 @@ Gabrielle
 											</svg>
 										</div>
 									</div>
-									<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-2="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
-									<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-2="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+									<h1 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-2="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Chem 133</h1>
+									<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-2="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Organic Chemistry</h2>
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
@@ -563,8 +563,8 @@ Gabrielle
 									<div class="pf-pricing"
 										init-with="p-op"
 										when-academic-tile-init-1="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
-									<div init-with="p:[tr:translateY(-80%), opacity:0]"
-										when-academic-tile-init-1="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+									<div init-with="p:[tr:translateY(-100px), opacity:0]"
+										when-academic-tile-init-1="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-750">
 										<div class="pf-tile-icon">
 											<svg viewBox="0 0 100 100">
 												<g>
@@ -578,10 +578,10 @@ Gabrielle
 											</svg>
 										</div>
 									</div>
-									<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-1="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
-									<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-1="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+									<h1 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-1="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Chem 133</h1>
+									<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-1="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Organic Chemistry</h2>
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
@@ -657,8 +657,8 @@ Gabrielle
 									<div class="pf-pricing"
 										init-with="p-op"
 										when-academic-tile-init-2="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
-									<div init-with="p:[tr:translateY(-80%), opacity:0]"
-										when-academic-tile-init-2="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+									<div init-with="p:[tr:translateY(-100px), opacity:0]"
+										when-academic-tile-init-2="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-750">
 										<div class="pf-tile-icon">
 											<svg viewBox="0 0 100 100">
 												<g>
@@ -672,10 +672,10 @@ Gabrielle
 											</svg>
 										</div>
 									</div>
-									<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-2="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
-									<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-2="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+									<h1 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-2="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Chem 133</h1>
+									<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-2="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Organic Chemistry</h2>
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
@@ -751,8 +751,8 @@ Gabrielle
 									<div class="pf-pricing"
 										init-with="p-op"
 										when-academic-tile-init-3="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
-									<div init-with="p:[tr:translateY(-80%), opacity:0]"
-										when-academic-tile-init-3="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+									<div init-with="p:[tr:translateY(-100px), opacity:0]"
+										when-academic-tile-init-3="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-750">
 										<div class="pf-tile-icon">
 											<svg viewBox="0 0 100 100">
 												<g>
@@ -766,10 +766,10 @@ Gabrielle
 											</svg>
 										</div>
 									</div>
-									<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-3="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
-									<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-3="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+									<h1 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-3="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Chem 133</h1>
+									<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-3="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Organic Chemistry</h2>
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
@@ -845,8 +845,8 @@ Gabrielle
 									<div class="pf-pricing"
 										init-with="p-op"
 										when-academic-tile-init-4="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
-									<div init-with="p:[tr:translateY(-80%), opacity:0]"
-										when-academic-tile-init-4="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+									<div init-with="p:[tr:translateY(-100px), opacity:0]"
+										when-academic-tile-init-4="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-750">
 										<div class="pf-tile-icon">
 											<svg viewBox="0 0 100 100">
 												<g>
@@ -860,10 +860,10 @@ Gabrielle
 											</svg>
 										</div>
 									</div>
-									<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-4="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
-									<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-4="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+									<h1 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-4="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Chem 133</h1>
+									<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-4="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Organic Chemistry</h2>
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
@@ -939,8 +939,8 @@ Gabrielle
 									<div class="pf-pricing"
 										init-with="p-op"
 										when-academic-tile-init-5="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
-									<div init-with="p:[tr:translateY(-80%), opacity:0]"
-										when-academic-tile-init-5="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+									<div init-with="p:[tr:translateY(-100px), opacity:0]"
+										when-academic-tile-init-5="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-750">
 										<div class="pf-tile-icon">
 											<svg viewBox="0 0 100 100">
 												<g>
@@ -954,10 +954,10 @@ Gabrielle
 											</svg>
 										</div>
 									</div>
-									<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-5="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
-									<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-5="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+									<h1 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-5="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Chem 133</h1>
+									<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-5="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Organic Chemistry</h2>
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"
@@ -1033,8 +1033,8 @@ Gabrielle
 									<div class="pf-pricing"
 										init-with="p-op"
 										when-academic-tile-init-6="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
-									<div init-with="p:[tr:translateY(-80%), opacity:0]"
-										when-academic-tile-init-6="p:[transform:translateY(-80%):translateY(0%):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+									<div init-with="p:[tr:translateY(-100px), opacity:0]"
+										when-academic-tile-init-6="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-750">
 										<div class="pf-tile-icon">
 											<svg viewBox="0 0 100 100">
 												<g>
@@ -1048,10 +1048,10 @@ Gabrielle
 											</svg>
 										</div>
 									</div>
-									<h1 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-6="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Chem 133</h1>
-									<h2 init-with="p:[transform:translateY(-80%), opacity:0]"
-										when-academic-tile-init-6="p:[transform:translateY(-80%):translateY(0%):750:easeOutSine:delay-500, opacity:0:1:750:easeOutSine]">Organic Chemistry</h2>
+									<h1 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-6="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Chem 133</h1>
+									<h2 init-with="p:[transform:translateY(-100px), opacity:0]"
+										when-academic-tile-init-6="p:[transform:translateY(-100px):translateY(0px):750:easeOutSine, opacity:0:1:750:easeOutSine]:delay-500">Organic Chemistry</h2>
 								</div>
 								<div class="pf-tile-bottom"
 									init-with="p:[tro:center bottom, op:0, tr:translateY(-100px) scaleY(3)]"

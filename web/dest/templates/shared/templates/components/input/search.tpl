@@ -8,7 +8,7 @@
 		on-init="p:[op:1]|s:[search-bar-init:public]|ttt:[p:(opacity) dur:1250ms tf:linear i:1]"
 		when-search-bar-clicked=""
 		on-click="s:[search-bar-clicked:public] | p:[width:500px] | ttt:[p:(width) dur:1250ms tf:linear i:1]"
-		on-exit="p:[op:0]|ttt:[p:(opacity) dur:1250ms tf:(cb(.6#0#.1#1.3)) i:1 a:bounceIn-subtle]">
+		on-exit="p-op|ttt:[p:(opacity) dur:1250ms tf:(cb(.6#0#.1#1.3)) i:1 a:bounceIn-subtle]">
 		<div>
 			<label for="search-bar" on-init="p:[op:1, width:100px]">
 				<svg viewBox="0 0 100 100">

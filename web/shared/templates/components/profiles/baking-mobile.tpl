@@ -2,6 +2,9 @@
 Gabrielle
 - Lag on multiple profile tiles due to old animation syntax. Leaving alone for now as specified on Monday 8/22
 - Bug onBlur that is causing a jittery background color on the bottom of profile tiles. Will look into fixing this (and possibly switching over to the new syntax, since it can't be debugged with the tool if it's static CSS)
+
+Jeselle
+-Weird onEnter bug on main. Looks like the beginning state when it swings in before the picture loads
 -->
 
 <div class="pf-container pf-baking"
@@ -160,7 +163,7 @@ Gabrielle
 	</aside>
 	<div class="pf-rest perspective-container"
 		init-with="p-op"
-		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public:delay-500, pf-mn-init:public:delay-2250]"
+		when-pf-rest-init="a:[pf-bounceUp:set:(dur:2000ms#func:linear):in] | s:[pf-tabs-init:public:delay-500, pf-mn-init:public:delay-1750]"
 		when-pf-exit="p:[opacity:1:0:1000:easeOutSine]:delay-1000">
 		<nav class="pf-tabs tab-bar slide">
 			<!-- Note: The line is flickering -->
@@ -214,56 +217,55 @@ Gabrielle
 				<ul class="pf-items">
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
-							when-pf-mn-init="s:[baking-tile-init:public]"
-							when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
+							when-pf-mn-init="s:[baking-tile-init-1:public]"
+							when-baking-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-tile-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic easeInExpo, opacity:1:0:500:linear]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-baking">
 								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
-									when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
-									when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
+									init-with="p-op"
+									when-baking-tile-init-1="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
+									when-baking-tile-exit-1="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
 									<div class="full-x flex-center preserve-3d m15bottom"
 										init-with="p:[tro:center top, tr:rotateX(180deg)]"
-										when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
-										when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
-										<!-- when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]:delay-500" -->
+										when-baking-tile-init-1="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
+										when-baking-tile-exit-1="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
 										<h1>
 											<span class="border"></span>
 											<span class="border"></span>
 											<div>Peach Pancake</div>
 											<ul class="rating-stars" data-rating="4" data-half="true">
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+													when-baking-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+													when-baking-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
+													when-baking-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
+													when-baking-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
+													when-baking-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -275,8 +277,8 @@ Gabrielle
 									<div>
 										<div class="pf-pricing large"
 											init-with="p-op"
-											when-baking-tile-init="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
-											when-baking-tile-exit="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
+											when-baking-tile-init-1="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
+											when-baking-tile-exit-1="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
 											<svg class="small" viewBox="0 0 104 74">
 												<polygon points="102 37 52 72 2 37 52 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
 											</svg>
@@ -292,56 +294,55 @@ Gabrielle
 					</li>
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
-							when-pf-mn-init="s:[baking-tile-init:public:delay-500]"
-							when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
+							when-pf-mn-init="s:[baking-tile-init-2:public:delay-500]"
+							when-baking-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-tile-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic easeInExpo, opacity:1:0:500:linear]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-baking">
 								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
-									when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
-									when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
+									init-with="p-op"
+									when-baking-tile-init-2="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
+									when-baking-tile-exit-2="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
 									<div class="full-x flex-center preserve-3d m15bottom"
 										init-with="p:[tro:center top, tr:rotateX(180deg)]"
-										when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
-										when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
-										<!-- when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]:delay-500" -->
+										when-baking-tile-init-2="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
+										when-baking-tile-exit-2="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
 										<h1>
 											<span class="border"></span>
 											<span class="border"></span>
 											<div>Peach Pancake</div>
 											<ul class="rating-stars" data-rating="4" data-half="true">
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+													when-baking-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+													when-baking-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
+													when-baking-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
+													when-baking-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
+													when-baking-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -353,8 +354,8 @@ Gabrielle
 									<div>
 										<div class="pf-pricing large"
 											init-with="p-op"
-											when-baking-tile-init="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
-											when-baking-tile-exit="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
+											when-baking-tile-init-2="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
+											when-baking-tile-exit-2="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
 											<svg class="small" viewBox="0 0 104 74">
 												<polygon points="102 37 52 72 2 37 52 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
 											</svg>
@@ -380,17 +381,17 @@ Gabrielle
 				<ul class="pf-items">
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							when-pf-mn-init="s:[baking-cardlet-init:public:delay-1000]"
-							when-baking-cardlet-init="p:[op:1, tr:none]"
-							when-baking-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]"
-							on-mouse-enter="s:[baking-cardlet-hover:public]"
-							on-mouse-leave="s:[baking-cardlet-leave:public]">
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
+							when-pf-mn-init="s:[baking-cardlet-init-1:public:delay-1000]"
+							when-baking-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-cardlet-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]"
+							on-mouse-enter="s:[baking-cardlet-hover-1:public]"
+							on-mouse-leave="s:[baking-cardlet-leave-1:public]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-baking">
 								<div class="pf-cardlet-front-container"
 									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
+									when-baking-cardlet-hover-1="a:[baking-cardlet-hover-1:set:(dur:1000ms#func:linear):in]">
 									<div class="pf-cardlet-front"></div>
 								</div>
 								<div class="pf-cardlet-back-container">
@@ -398,16 +399,16 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-bottom-container"
 									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
+									when-baking-cardlet-hover-1="a:[baking-cardlet-hover-1:set:(dur:1000ms#func:linear):in]">
 									<div class="pf-cardlet-bottom">
 										<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 											init-with="p-op"
-											when-baking-cardlet-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
+											when-baking-cardlet-init-1="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
 										<h1 init-with="p-op"
-											when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
+											when-baking-cardlet-init-1="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
 										<div>
 											<h2 init-with="p-op"
-												when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
+												when-baking-cardlet-init-1="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
 										</div>
 									</div>
 								</div>
@@ -426,17 +427,17 @@ Gabrielle
 					</li>
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							when-pf-mn-init="s:[baking-cardlet-init:public:delay-1500]"
-							when-baking-cardlet-init="p:[op:1, tr:none]"
-							when-baking-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]"
-							on-mouse-enter="s:[baking-cardlet-hover:public]"
-							on-mouse-leave="s:[baking-cardlet-leave:public]">
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
+							when-pf-mn-init="s:[baking-cardlet-init-2:public:delay-1500]"
+							when-baking-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-cardlet-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]"
+							on-mouse-enter="s:[baking-cardlet-hover-2:public]"
+							on-mouse-leave="s:[baking-cardlet-leave-2:public]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-baking">
 								<div class="pf-cardlet-front-container"
 									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
+									when-baking-cardlet-hover-2="a:[baking-cardlet-hover-2:set:(dur:1000ms#func:linear):in]">
 									<div class="pf-cardlet-front"></div>
 								</div>
 								<div class="pf-cardlet-back-container">
@@ -444,16 +445,16 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-bottom-container"
 									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
+									when-baking-cardlet-hover-2="a:[baking-cardlet-hover-2:set:(dur:1000ms#func:linear):in]">
 									<div class="pf-cardlet-bottom">
 										<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 											init-with="p-op"
-											when-baking-cardlet-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
+											when-baking-cardlet-init-2="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
 										<h1 init-with="p-op"
-											when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
+											when-baking-cardlet-init-2="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
 										<div>
 											<h2 init-with="p-op"
-												when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
+												when-baking-cardlet-init-2="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
 										</div>
 									</div>
 								</div>
@@ -482,56 +483,55 @@ Gabrielle
 				<ul class="pf-items">
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
-							when-pf-sv-init="s:[baking-tile-init:public]"
-							when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
+							when-pf-sv-init="s:[baking-tile-init-1:public]"
+							when-baking-tile-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-tile-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic easeInExpo, opacity:1:0:500:linear]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-baking">
 								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
-									when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
-									when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
+									init-with="p-op"
+									when-baking-tile-init-1="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
+									when-baking-tile-exit-1="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
 									<div class="full-x flex-center preserve-3d m15bottom"
 										init-with="p:[tro:center top, tr:rotateX(180deg)]"
-										when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
-										when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
-										<!-- when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]:delay-500" -->
+										when-baking-tile-init-1="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
+										when-baking-tile-exit-1="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
 										<h1>
 											<span class="border"></span>
 											<span class="border"></span>
 											<div>Peach Pancake</div>
 											<ul class="rating-stars" data-rating="4" data-half="true">
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+													when-baking-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+													when-baking-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
+													when-baking-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
+													when-baking-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
+													when-baking-tile-init-1="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -543,8 +543,8 @@ Gabrielle
 									<div>
 										<div class="pf-pricing large"
 											init-with="p-op"
-											when-baking-tile-init="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
-											when-baking-tile-exit="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
+											when-baking-tile-init-1="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
+											when-baking-tile-exit-1="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
 											<svg class="small" viewBox="0 0 104 74">
 												<polygon points="102 37 52 72 2 37 52 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
 											</svg>
@@ -560,56 +560,55 @@ Gabrielle
 					</li>
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
-							when-pf-sv-init="s:[baking-tile-init:public:delay-500]"
-							when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
+							when-pf-sv-init="s:[baking-tile-init-2:public:delay-500]"
+							when-baking-tile-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-tile-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic easeInExpo, opacity:1:0:500:linear]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-tile bg-baking">
 								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
-									when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
-									when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
+									init-with="p-op"
+									when-baking-tile-init-2="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
+									when-baking-tile-exit-2="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
 									<div class="full-x flex-center preserve-3d m15bottom"
 										init-with="p:[tro:center top, tr:rotateX(180deg)]"
-										when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
-										when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
-										<!-- when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]:delay-500" -->
+										when-baking-tile-init-2="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
+										when-baking-tile-exit-2="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
 										<h1>
 											<span class="border"></span>
 											<span class="border"></span>
 											<div>Peach Pancake</div>
 											<ul class="rating-stars" data-rating="4" data-half="true">
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+													when-baking-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
+													when-baking-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
+													when-baking-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
+													when-baking-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
 													</svg>
 												</li>
 												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
+													when-baking-tile-init-2="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
 													<svg viewBox="0 0 100 100">
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
@@ -621,320 +620,8 @@ Gabrielle
 									<div>
 										<div class="pf-pricing large"
 											init-with="p-op"
-											when-baking-tile-init="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
-											when-baking-tile-exit="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
-											<svg class="small" viewBox="0 0 104 74">
-												<polygon points="102 37 52 72 2 37 52 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
-											</svg>
-											<svg class="large" viewBox="0 0 156 74">
-												<polygon points="154 37 78 72 2 37 78 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
-											</svg>
-											<span>$10.50</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
-							when-pf-sv-init="s:[baking-tile-init:public:delay-1000]"
-							when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
-							<a></a><a></a><a></a><a></a>
-							<div class="pf-tile bg-baking">
-								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
-									when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
-									when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
-									<div class="full-x flex-center preserve-3d m15bottom"
-										init-with="p:[tro:center top, tr:rotateX(180deg)]"
-										when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
-										when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
-										<!-- when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]:delay-500" -->
-										<h1>
-											<span class="border"></span>
-											<span class="border"></span>
-											<div>Peach Pancake</div>
-											<ul class="rating-stars" data-rating="4" data-half="true">
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-											</ul>
-										</h1>
-									</div>
-									<div>
-										<div class="pf-pricing large"
-											init-with="p-op"
-											when-baking-tile-init="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
-											when-baking-tile-exit="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
-											<svg class="small" viewBox="0 0 104 74">
-												<polygon points="102 37 52 72 2 37 52 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
-											</svg>
-											<svg class="large" viewBox="0 0 156 74">
-												<polygon points="154 37 78 72 2 37 78 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
-											</svg>
-											<span>$10.50</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
-							when-pf-sv-init="s:[baking-tile-init:public:delay-1500]"
-							when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
-							<a></a><a></a><a></a><a></a>
-							<div class="pf-tile bg-baking">
-								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
-									when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
-									when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
-									<div class="full-x flex-center preserve-3d m15bottom"
-										init-with="p:[tro:center top, tr:rotateX(180deg)]"
-										when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
-										when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
-										<!-- when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]:delay-500" -->
-										<h1>
-											<span class="border"></span>
-											<span class="border"></span>
-											<div>Peach Pancake</div>
-											<ul class="rating-stars" data-rating="4" data-half="true">
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-											</ul>
-										</h1>
-									</div>
-									<div>
-										<div class="pf-pricing large"
-											init-with="p-op"
-											when-baking-tile-init="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
-											when-baking-tile-exit="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
-											<svg class="small" viewBox="0 0 104 74">
-												<polygon points="102 37 52 72 2 37 52 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
-											</svg>
-											<svg class="large" viewBox="0 0 156 74">
-												<polygon points="154 37 78 72 2 37 78 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
-											</svg>
-											<span>$10.50</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
-							when-pf-sv-init="s:[baking-tile-init:public:delay-2000]"
-							when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
-							<a></a><a></a><a></a><a></a>
-							<div class="pf-tile bg-baking">
-								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
-									when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
-									when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
-									<div class="full-x flex-center preserve-3d m15bottom"
-										init-with="p:[tro:center top, tr:rotateX(180deg)]"
-										when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
-										when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
-										<!-- when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]:delay-500" -->
-										<h1>
-											<span class="border"></span>
-											<span class="border"></span>
-											<div>Peach Pancake</div>
-											<ul class="rating-stars" data-rating="4" data-half="true">
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-											</ul>
-										</h1>
-									</div>
-									<div>
-										<div class="pf-pricing large"
-											init-with="p-op"
-											when-baking-tile-init="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
-											when-baking-tile-exit="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
-											<svg class="small" viewBox="0 0 104 74">
-												<polygon points="102 37 52 72 2 37 52 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
-											</svg>
-											<svg class="large" viewBox="0 0 156 74">
-												<polygon points="154 37 78 72 2 37 78 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
-											</svg>
-											<span>$10.50</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg)]"
-							when-pf-sv-init="s:[baking-tile-init:public:delay-2500]"
-							when-baking-tile-init="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic]"
-							when-baking-tile-exit="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeInCubic, opacity:1:0:50:linear:delay-500]">
-							<a></a><a></a><a></a><a></a>
-							<div class="pf-tile bg-baking">
-								<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"
-									init-with="p:[op:0]"
-									when-baking-tile-init="a:[fadeIn:set:(dur:500#func:ease-out):in:delay-150]"
-									when-baking-tile-exit="a:[fadeOut:set:(dur:500#func:ease-in):in:delay-250]">
-									<div class="full-x flex-center preserve-3d m15bottom"
-										init-with="p:[tro:center top, tr:rotateX(180deg)]"
-										when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]"
-										when-baking-tile-exit="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeInOutQuint]">
-										<!-- when-baking-tile-init="p:[transform:rotateX(180deg):rotateX(0deg):1000:easeInOutQuint, opacity:0:1:100:easeInOutQuint]:delay-500" -->
-										<h1>
-											<span class="border"></span>
-											<span class="border"></span>
-											<div>Peach Pancake</div>
-											<ul class="rating-stars" data-rating="4" data-half="true">
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1500]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1600]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1700]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-												<li init-with="p-op"
-													when-baking-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1800]">
-													<svg viewBox="0 0 100 100">
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-														<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-													</svg>
-												</li>
-											</ul>
-										</h1>
-									</div>
-									<div>
-										<div class="pf-pricing large"
-											init-with="p-op"
-											when-baking-tile-init="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
-											when-baking-tile-exit="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
+											when-baking-tile-init-2="a:[pf-jelly:set:(dur:1000ms#func:cubic-bezier(.43#-0.06#.68#1.23)):in:delay-1000]"
+											when-baking-tile-exit-2="a:[pf-jelly:set:(dur:1000ms#dir:reverse#func:cubic-bezier(.43#-0.06#.68#1.23)):out]">
 											<svg class="small" viewBox="0 0 104 74">
 												<polygon points="102 37 52 72 2 37 52 2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#757575" fill-opacity="0.75"></polygon>
 											</svg>
@@ -1219,17 +906,17 @@ Gabrielle
 				<ul class="pf-items">
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							when-pf-rs-init="s:[baking-cardlet-init:public]"
-							when-baking-cardlet-init="p:[op:1, tr:none]"
-							when-baking-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]"
-							on-mouse-enter="s:[baking-cardlet-hover:public]"
-							on-mouse-leave="s:[baking-cardlet-leave:public]">
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
+							when-pf-rs-init="s:[baking-cardlet-init-1:public]"
+							when-baking-cardlet-init-1="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-cardlet-exit-1="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]"
+							on-mouse-enter="s:[baking-cardlet-hover-1:public]"
+							on-mouse-leave="s:[baking-cardlet-leave-1:public]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-baking">
 								<div class="pf-cardlet-front-container"
 									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
+									when-baking-cardlet-hover-1="a:[baking-cardlet-hover-1:set:(dur:1000ms#func:linear):in]">
 									<div class="pf-cardlet-front"></div>
 								</div>
 								<div class="pf-cardlet-back-container">
@@ -1237,16 +924,16 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-bottom-container"
 									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
+									when-baking-cardlet-hover-1="a:[baking-cardlet-hover-1:set:(dur:1000ms#func:linear):in]">
 									<div class="pf-cardlet-bottom">
 										<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 											init-with="p-op"
-											when-baking-cardlet-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
+											when-baking-cardlet-init-1="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
 										<h1 init-with="p-op"
-											when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
+											when-baking-cardlet-init-1="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
 										<div>
 											<h2 init-with="p-op"
-												when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
+												when-baking-cardlet-init-1="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
 										</div>
 									</div>
 								</div>
@@ -1265,17 +952,17 @@ Gabrielle
 					</li>
 					<li>
 						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							when-pf-rs-init="s:[baking-cardlet-init:public:delay-500]"
-							when-baking-cardlet-init="p:[op:1, tr:none]"
-							when-baking-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]"
-							on-mouse-enter="s:[baking-cardlet-hover:public]"
-							on-mouse-leave="s:[baking-cardlet-leave:public]">
+							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0]"
+							when-pf-rs-init="s:[baking-cardlet-init-2:public:delay-500]"
+							when-baking-cardlet-init-2="p:[transform:rotateX(-30deg) rotateY(30deg):rotateX(0deg) rotateY(0deg):1000:easeOutCubic easeOutExpo, opacity:0:1:500:easeOutSine]"
+							when-baking-cardlet-exit-2="p:[transform:rotateX(0deg) rotateY(0deg):rotateX(-30deg) rotateY(30deg):1000:easeOutSine easeOutSine, opacity:1:0:1500:easeOutSine]"
+							on-mouse-enter="s:[baking-cardlet-hover-2:public]"
+							on-mouse-leave="s:[baking-cardlet-leave-2:public]">
 							<a></a><a></a><a></a><a></a>
 							<div class="pf-cardlet highlight bg-baking">
 								<div class="pf-cardlet-front-container"
 									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
+									when-baking-cardlet-hover-2="a:[baking-cardlet-hover-2:set:(dur:1000ms#func:linear):in]">
 									<div class="pf-cardlet-front"></div>
 								</div>
 								<div class="pf-cardlet-back-container">
@@ -1283,200 +970,16 @@ Gabrielle
 								</div>
 								<div class="pf-cardlet-bottom-container"
 									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
+									when-baking-cardlet-hover-2="a:[baking-cardlet-hover-2:set:(dur:1000ms#func:linear):in]">
 									<div class="pf-cardlet-bottom">
 										<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
 											init-with="p-op"
-											when-baking-cardlet-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
+											when-baking-cardlet-init-2="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
 										<h1 init-with="p-op"
-											when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
+											when-baking-cardlet-init-2="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
 										<div>
 											<h2 init-with="p-op"
-												when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
-										</div>
-									</div>
-								</div>
-								<div class="pf-cardlet-ribbon-container">
-									<div class="pf-cardlet-ribbon">
-										<svg viewBox="0 0 100 100">
-											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
-										</svg>
-									</div>
-								</div>
-								<div class="pf-cardlet-ribbon-edge-container">
-									<div class="pf-cardlet-ribbon-edge"></div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							when-pf-rs-init="s:[baking-cardlet-init:public:delay-1000]"
-							when-baking-cardlet-init="p:[op:1, tr:none]"
-							when-baking-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]"
-							on-mouse-enter="s:[baking-cardlet-hover:public]"
-							on-mouse-leave="s:[baking-cardlet-leave:public]">
-							<a></a><a></a><a></a><a></a>
-							<div class="pf-cardlet highlight bg-baking">
-								<div class="pf-cardlet-front-container"
-									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
-									<div class="pf-cardlet-front"></div>
-								</div>
-								<div class="pf-cardlet-back-container">
-									<div class="pf-cardlet-back" style="background: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
-								</div>
-								<div class="pf-cardlet-bottom-container"
-									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
-									<div class="pf-cardlet-bottom">
-										<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
-											init-with="p-op"
-											when-baking-cardlet-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
-										<h1 init-with="p-op"
-											when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
-										<div>
-											<h2 init-with="p-op"
-												when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
-										</div>
-									</div>
-								</div>
-								<div class="pf-cardlet-ribbon-container">
-									<div class="pf-cardlet-ribbon">
-										<svg viewBox="0 0 100 100">
-											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
-										</svg>
-									</div>
-								</div>
-								<div class="pf-cardlet-ribbon-edge-container">
-									<div class="pf-cardlet-ribbon-edge"></div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							when-pf-rs-init="s:[baking-cardlet-init:public:delay-1500]"
-							when-baking-cardlet-init="p:[op:1, tr:none]"
-							when-baking-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]"
-							on-mouse-enter="s:[baking-cardlet-hover:public]"
-							on-mouse-leave="s:[baking-cardlet-leave:public]">
-							<a></a><a></a><a></a><a></a>
-							<div class="pf-cardlet highlight bg-baking">
-								<div class="pf-cardlet-front-container"
-									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
-									<div class="pf-cardlet-front"></div>
-								</div>
-								<div class="pf-cardlet-back-container">
-									<div class="pf-cardlet-back" style="background: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
-								</div>
-								<div class="pf-cardlet-bottom-container"
-									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
-									<div class="pf-cardlet-bottom">
-										<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
-											init-with="p-op"
-											when-baking-cardlet-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
-										<h1 init-with="p-op"
-											when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
-										<div>
-											<h2 init-with="p-op"
-												when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
-										</div>
-									</div>
-								</div>
-								<div class="pf-cardlet-ribbon-container">
-									<div class="pf-cardlet-ribbon">
-										<svg viewBox="0 0 100 100">
-											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
-										</svg>
-									</div>
-								</div>
-								<div class="pf-cardlet-ribbon-edge-container">
-									<div class="pf-cardlet-ribbon-edge"></div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							when-pf-rs-init="s:[baking-cardlet-init:public:delay-2000]"
-							when-baking-cardlet-init="p:[op:1, tr:none]"
-							when-baking-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]"
-							on-mouse-enter="s:[baking-cardlet-hover:public]"
-							on-mouse-leave="s:[baking-cardlet-leave:public]">
-							<a></a><a></a><a></a><a></a>
-							<div class="pf-cardlet highlight bg-baking">
-								<div class="pf-cardlet-front-container"
-									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
-									<div class="pf-cardlet-front"></div>
-								</div>
-								<div class="pf-cardlet-back-container">
-									<div class="pf-cardlet-back" style="background: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
-								</div>
-								<div class="pf-cardlet-bottom-container"
-									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
-									<div class="pf-cardlet-bottom">
-										<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
-											init-with="p-op"
-											when-baking-cardlet-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
-										<h1 init-with="p-op"
-											when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
-										<div>
-											<h2 init-with="p-op"
-												when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
-										</div>
-									</div>
-								</div>
-								<div class="pf-cardlet-ribbon-container">
-									<div class="pf-cardlet-ribbon">
-										<svg viewBox="0 0 100 100">
-											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118 "></polygon>
-										</svg>
-									</div>
-								</div>
-								<div class="pf-cardlet-ribbon-edge-container">
-									<div class="pf-cardlet-ribbon-edge"></div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="pf-tile-container mobile"
-							init-with="p:[tro:left top, tr:rotateX(-30deg) rotateY(30deg), op:0, t:opacity 500ms ease-out#transform 1000ms cubic-bezier(.19#.37#.36#.99)]"
-							when-pf-rs-init="s:[baking-cardlet-init:public:delay-2500]"
-							when-baking-cardlet-init="p:[op:1, tr:none]"
-							when-baking-cardlet-exit="p:[tr:rotateX(-30deg) rotateY(30deg), op:0:delay-500]"
-							on-mouse-enter="s:[baking-cardlet-hover:public]"
-							on-mouse-leave="s:[baking-cardlet-leave:public]">
-							<a></a><a></a><a></a><a></a>
-							<div class="pf-cardlet highlight bg-baking">
-								<div class="pf-cardlet-front-container"
-									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
-									<div class="pf-cardlet-front"></div>
-								</div>
-								<div class="pf-cardlet-back-container">
-									<div class="pf-cardlet-back" style="background: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"></div>
-								</div>
-								<div class="pf-cardlet-bottom-container"
-									init-default
-									when-baking-cardlet-hover="a:[baking-cardlet-hover:set:(dur:1000ms#func:linear):in]">
-									<div class="pf-cardlet-bottom">
-										<div class="pf-cardlet-icon" style="background-image: url('http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2009/3/25/0/PB0210-1_Strawberry-Cake_s4x3.jpg');"
-											init-with="p-op"
-											when-baking-cardlet-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500]"></div>
-										<h1 init-with="p-op"
-											when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-750]">Four-Star Strawberry Cake on a Budget</h1>
-										<div>
-											<h2 init-with="p-op"
-												when-baking-cardlet-init="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
+												when-baking-cardlet-init-2="a:[scoop-enter:set:(dur:1000ms#func:linear):in:delay-1000]">03/28/2016</h2>
 										</div>
 									</div>
 								</div>
