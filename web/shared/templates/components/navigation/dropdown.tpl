@@ -1,27 +1,29 @@
-<div class="perspective-container full-xy flex-center" types='default, info, color' default-type="color" reference="http://codepen.io/teamuguru/pen/a22af7dfdac53aa76c35f1317740770f?editors=1100, http://codepen.io/teamuguru/pen/c2d938e2a4e4c173187a71cd320bf078?editors=1100, http://codepen.io/teamuguru/pen/e1d55abb071ad8db0845cefd76f7c48f?editors=1100">
-	<div class="dropdown auto" ng-if='activeType === "default"'>
+<div class="perspective-container full-xy flex-center" types='default, info, color' default-type="color">
+	<div class="dropdown auto" ng-if='activeType === "default"'
+		init-default
+		on-init="s:[dropdown-init:public]">
 		<div>
 			<div class="top"
 				init-with="p:[tr:scaleX(0)]"
-				on-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"
-				when-load-end="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
+				when-dropdown-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"
+				when-dropdown-load-end="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
 			<div class="right"
 				init-with="p:[tr:scaleY(0)]"
-				on-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-150"
-				when-load-end="p:[transform:scaleY(1):scaleY(0):500:easeOutCubic]"></div>
+				when-dropdown-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-150"
+				when-dropdown-load-end="p:[transform:scaleY(1):scaleY(0):500:easeOutCubic]"></div>
 			<div class="bot"
 				init-with="p:[tr:scaleX(0)]"
-				on-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]:delay-300"
-				when-load-end="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
+				when-dropdown-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]:delay-300"
+				when-dropdown-load-end="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
 			<div class="left"
 				init-with="p:[tr:scaleY(0)]"
-				on-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-450"
-				when-load-end="p:[transform:scaleY(1):scaleY(0):500:easeOutCubic]"></div>
+				when-dropdown-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-450"
+				when-dropdown-load-end="p:[transform:scaleY(1):scaleY(0):500:easeOutCubic]"></div>
 			<span class="txt-20"
 				init-with="p-op"
-				on-init="p:[opacity:0:1:500:easeOutSine]:delay-700 | send:[load-end:public:delay-1200]">Photography</span>
+				when-dropdown-init="p:[opacity:0:1:500:easeOutSine]:delay-700 | s:[dropdown-load-end:public:delay-1200]">Photography</span>
 			<a init-with="p-op"
-				on-init="p:[opacity:0:1:500:easeOutSine]:delay-1000"
+				when-dropdown-init="p:[opacity:0:1:500:easeOutSine]:delay-1000"
 				on-click="s:[dropdown-open:public]">
 				<!-- @samir couldn't get this one to work, pls help -->
 				<!-- <a init-default
@@ -34,7 +36,7 @@
 				<svg viewBox="0 0 100 100">
 					<path d="M14,32 L50,68 L86,32"
 						init-with="p:[op:0, tr:none, sdo:102, sda:102]"
-						on-init="p:[opacity:0:1:150:linear] | send:[draw-arrow:public:delay-1000]"
+						when-dropdown-init="p:[opacity:0:1:150:linear] | s:[draw-arrow:public:delay-1000]"
 						when-draw-arrow="p:[stroke-dashoffset:102:0:450:easeInQuint]"
 						when-dropdown-open="p:[transform:rotate(0deg):rotate(180deg):150:easeOutBack]"
 						when-dropdown-close="p:[transform:rotate(180deg):rotate(0deg):150:easeOutBack]"></path>
@@ -69,33 +71,35 @@
 		</ul>
 	</div>
 
-	<div class="dropdown auto info" ng-if='activeType === "info"'>
+	<div class="dropdown auto info" ng-if='activeType === "info"'
+		init-default
+		on-init="s:[dropdown-init:public]">
 		<div>
 			<div class="top"
 				init-with="p:[tr:scaleX(0)]"
-				on-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"
-				when-load-end="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
+				when-dropdown-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"
+				when-dropdown-load-end="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
 			<div class="right"
 				init-with="p:[tr:scaleY(0)]"
-				on-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-150"
-				when-load-end="p:[transform:scaleY(1):scaleY(0):500:easeOutCubic]"></div>
+				when-dropdown-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-150"
+				when-dropdown-load-end="p:[transform:scaleY(1):scaleY(0):500:easeOutCubic]"></div>
 			<div class="bot"
 				init-with="p:[tr:scaleX(0)]"
-				on-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]:delay-300"
-				when-load-end="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
+				when-dropdown-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]:delay-300"
+				when-dropdown-load-end="p:[transform:scaleX(1):scaleX(0):500:easeOutCubic]"></div>
 			<div class="left"
 				init-with="p:[tr:scaleY(0)]"
-				on-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-450"
-				when-load-end="p:[transform:scaleY(1):scaleY(0):500:easeOutCubic]"></div>
+				when-dropdown-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-450"
+				when-dropdown-load-end="p:[transform:scaleY(1):scaleY(0):500:easeOutCubic]"></div>
 			<span init-with="p-op"
-				on-init="p:[opacity:0:1:500:easeOutSine]:delay-700 | send:[load-end:public:delay-1200]">Photography</span>
+				when-dropdown-init="p:[opacity:0:1:500:easeOutSine]:delay-700 | s:[dropdown-load-end:public:delay-1200]">Photography</span>
 			<a  init-with="p-op"
-				on-init="p:[opacity:0:1:700:easeOutSine]:delay-1000"
+				when-dropdown-init="p:[opacity:0:1:700:easeOutSine]:delay-1000"
 				on-click="s:[dropdown-open:public]">
 				<svg viewBox="0 0 100 100">
 					<path d="M14,32 L50,68 L86,32"
 						init-with="p:[op:0, tr:none, sdo:102, sda:102]"
-						on-init="p:[opacity:0:1:150:linear] | send:[draw-arrow:public:delay-1000]"
+						when-dropdown-init="p:[opacity:0:1:150:linear] | s:[draw-arrow:public:delay-1000]"
 						when-draw-arrow="p:[stroke-dashoffset:102:0:450:easeInQuint]"
 						when-dropdown-open="p:[transform:rotate(0deg):rotate(180deg):150:easeOutBack]"
 						when-dropdown-close="p:[transform:rotate(180deg):rotate(0deg):150:easeOutBack]"></path>
@@ -160,30 +164,27 @@
 		</ul>
 	</div>
 
-	<div class="dropdown-color" ng-if='activeType === "color"'>
+	<div class="dropdown-color" ng-if='activeType === "color"'
+		init-with="p-op"
+		on-init="s:[dropdown-color-init:public]"
+		when-dropdown-color-init="p:[opacity:0:1:250:easeOutSine]">
 		<a class="bg-robin"
-			init-with="p:[background:rgba(43#179#184#0)]"
-			on-init="p:[background:rgba(43#179#184#0):rgba(43#179#184#1):1000:easeOutExpo]:delay-1200"
 			on-click="s:[dropdown-color-open:public]">
 			<!-- @Gabrielle: Animating color -->
-			<div init-with="p:[tr:scaleX(0), background:#2BB3B8]"
-				on-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"
-				when-load-end="p:[background:#2BB3B8:#ffffff:500:easeOutSine]"></div>
-			<div init-with="p:[tr:scaleY(0), background:#2BB3B8]"
-				on-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-150"
-				when-load-end="p:[background:#2BB3B8:#ffffff:500:easeOutSine]"></div>
-			<div init-with="p:[tr:scaleX(0), background:#2BB3B8]"
-				on-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]:delay-300"
-				when-load-end="p:[background:#2BB3B8:#ffffff:500:easeOutSine]"></div>
-			<div init-with="p:[tr:scaleY(0), background:#2BB3B8]"
-				on-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-450"
-				when-load-end="p:[background:#2BB3B8:#ffffff:500:easeOutSine]"></div>
+			<div init-with="p:[tr:scaleX(0)]"
+				when-dropdown-color-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]"></div>
+			<div init-with="p:[tr:scaleY(0)]"
+				when-dropdown-color-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-150"></div>
+			<div init-with="p:[tr:scaleX(0)]"
+				when-dropdown-color-init="p:[transform:scaleX(0):scaleX(1):250:easeOutCubic]:delay-300"></div>
+			<div init-with="p:[tr:scaleY(0)]"
+				when-dropdown-color-init="p:[transform:scaleY(0):scaleY(1):250:easeOutCubic]:delay-450"></div>
 			<span init-with="p-op"
-				on-init="p:[opacity:0:1:500:easeOutSine]:delay-700 | send:[load-end:public]:delay-1200">Color&nbsp;Dropdown</span>
+				when-dropdown-color-init="p:[opacity:0:1:500:easeOutSine]:delay-700">Color&nbsp;Dropdown</span>
 			<svg viewBox="0 0 100 100">
 				<path d="M14,32 L50,68 L86,32"
 					init-with="p:[tro:center center, tr:rotate(0), sdo:102, sda:102, op:0]"
-					on-init="p:[stroke-dashoffset:102:0:450:easeOutCubic, opacity:0:1:450:easeOutSine]:delay-1000"
+					when-dropdown-color-init="p:[stroke-dashoffset:102:0:450:easeOutCubic, opacity:0:1:450:easeOutSine]:delay-1000"
 					when-dropdown-color-open="p:[transform:rotate(0deg):rotate(180deg):150:easeOutBack]"
 					when-dropdown-color-close="p:[transform:rotate(180deg):rotate(0deg):150:easeOutBack]"></path>
 			</svg>
