@@ -1,6 +1,6 @@
     <!-- speed="2x"
     start-at="t:45%" -->
-    <inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="1x"  class="bottom-0 bg-azure"  auto-play="false" step-size="16" play-infinite="false"> </inspector-gadget>
+    <inspector-gadget show-log="false" ball-color="smoke" reverse-speed="10" speed="1x"  class="bottom-0 bg-azure"  auto-play="false" step-size="16" play-infinite="false" speed="2x"> </inspector-gadget>
 <div class="perspective-container full-xy flex-center p15xy">
     <fieldset class="search-bar"
         init-with="p:[op:1, width:48px]"
