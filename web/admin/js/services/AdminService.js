@@ -1,13 +1,27 @@
 angular.module('uguru.admin')
 .factory("AdminService", [
+    "$timeout",
+    "$http",
     AdminService
     ]);
 
-function AdminService($timeout) {
+function AdminService($timeout, $http) {
 
     return {
-        getUpcomingCalendar: getUpcomingCalendar
+        getUpcomingCalendar: getUpcomingCalendar,
+        getComponents: getComponents
     };
+
+    function getComponents(scope) {
+        return $http.get('admin/spec/component.json').success(function(data) {
+            scope.admin.gallery.components = data;
+            console.log(scope.admin.gallery.components.dir);
+            $timeout(function() {
+                scope.$apply();
+            })
+
+        });
+    }
 
     function getUpcomingCalendar(num_days) {
         var weekdaysShort = ['Sun', 'Mon', 'Tue', "Wed", 'Thur', 'Fri', 'Sat'];

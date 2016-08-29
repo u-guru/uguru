@@ -7,7 +7,7 @@
         {{admin.calendarDates[0].month.name}} {{admin.calendarDates[0].date}} - {{admin.calendarDates[7].date}}
         </div>
     </div>
-    <div class='ugrid bg-transparent flex-stretch relative flex-wrap flex-vertical-center full-x' style='height:85%; align-content:stretch;'>
+    <div class='ugrid bg-transparent flex-stretch relative flex-wrap flex-vertical-center full-x' style='height:50%; align-content:stretch;'>
         <div class='flex-wrap-vertical flex-stretch absolute full-xy top-0 left-0'>
             <ul class='grid full-x flex-stretch relative no-scrollbar overflow-x' style='align-content:stretch'>
                 <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-azure-20p text-center ' style='min-width:15%;' ng-repeat='date in (admin.calendarDates || []) track by $index' ng-class="{'txt-white opacity-1 border-3 border-smoke':  $index === 0, 'opacity-80p border-1-right border-slate': $index > 0}">
@@ -43,7 +43,23 @@
             </ul>
         </div>
     </div>
+    <div class='relative full-x' style='height:40%;'>
+        <ul class='full-x flex-vertical-center p15-grid ugrid-4'>
+            <li on-click="s:[show-comp-gallery] | p:[position: fixed, transform:scale(0.25):scale(1):250:easeInOutElastic, background:rgba(200, 54, 54, 0.5):rgba(255,255,255,1):1500:elastic, width:10%:100%:1500:bounce, height:10%:100%:1500:bounce]">
+                Components
+                <div ng-include="'admin/templates/gallery.html'" class='fixed full-xy left-0' when-show-comp-gallery="p:[opacity:0:1:50:easeOutQuint, transform:scale(0) translateY(-1000%) rotate(-1080deg):scale(1) translateY(0%) rotate(0deg):1000:easeInOutElastic bouncePast linear, top:-100%:-20%:1000:elastic, z-index:1000]"  on-click="p:[transform:scale(1):scale(0):2000:easeInQuint]" init-with="p:[opacity:0]">
+                </div>
+            </li>
+            <li>
+                Properties
+            </li>
+            <li>
+                API
+            </li>
+        </ul>
+    </div>
 </div>
+
         <!-- <div class='full-x flex-vertical-center flex-stretch relative' style='height:calc(85%/{{admin.sections}});'>
             <ul class='flex-stretch grid full-x flex-stretch overflow-x no-scrollbar'>
                 <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
