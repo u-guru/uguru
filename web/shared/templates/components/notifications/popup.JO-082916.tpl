@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='default, separate-header, tour-guru' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy" types='default, separate-header, tour-guru' default-type="tour-guru">
 	<div class="popup" ng-if='activeType === "default"'
 		init-with="p-op"
 		on-init="a:[scaleIn-bounceDown:set:(dur:800ms#func:ease-out):in]">
@@ -53,8 +53,9 @@
 		on-exit="a:[popup-bounceOut:set:(dur:750ms#func:linear):out:delay-4000]">
 		<header>
 			<svg class="popup-bg-circle" viewBox="0 0 150 150"
-				init-with="p:[op:0, stroke-opacity:0, sdo:472, sda:472, tr:rotate(45deg), tro: center center]"
-				when-popup-tour-init="a:[popup-header-enter:set:(dur:1000ms#func:linear):in:delay-450] | p:[stroke-opacity:0:1:450:easeInOutSine, stroke-dashoffset:472:0:450:easeInOutBack]:delay-600">
+				init-with="p:[op:0, stroke-opacity:0, sdo:0, sda:472, tr:rotate(45deg), tro: center center]"
+				when-popup-tour-init="">
+				<!-- a:[popup-header-enter:set:(dur:1000ms#func:linear):in:delay-450] | p:[stroke-opacity:1, sdo:0, t:all 450ms ease-in-out]:delay-600 -->
 				<circle cy="75" cx="75" r="72" stroke="white" stroke-width="3"></circle>
 			</svg>
 			<svg class="popup-tour-guru" viewBox="0 0 150 150"
