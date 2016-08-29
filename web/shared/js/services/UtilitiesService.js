@@ -42,7 +42,18 @@ function UtilitiesService($rootScope, $compile, $timeout) {
         isAdminRequest: isAdminRequest,
         compileToAngular: compileToAngular,
         initSupport: initSupport,
-        calcScrollOffset: calcScrollOffset
+        calcScrollOffset: calcScrollOffset,
+        addClassToElemDelay: addClassToElemDelay
+    }
+
+    function addClassToElemDelay(elem, _class, delay) {
+        console.log(elem, _class, delay)
+        $timeout(function() {
+
+            _class && _class();
+            // elem.classList.add(_class);
+            // console.log(elem)
+        }, parseInt(delay))
     }
 
     function camelCase(input) {

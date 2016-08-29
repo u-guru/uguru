@@ -1,5 +1,5 @@
 <!-- speed="2x" -->
-<inspector-gadget ball-color="smoke" reverse-speed="10" speed="0.5x" class="bottom-0 bg-azure" auto-play="false"  step-size="25" show-props play-infinite="false">
+<inspector-gadget ball-color="smoke" reverse-speed="10" speed="1x" class="bottom-0 bg-azure" auto-play="false"  step-size="25" show-props play-infinite="false">
 </inspector-gadget>
 
 <div class='bg-charcoal'>
@@ -50,7 +50,7 @@
 						inspector-elem="on-init" class='opacity-100p'
 						ng-include="root.base_url + 'shared/templates/components/demo/card.tpl'"
                         init-with="{{example.initWith}}"
-                        on-init="p:[box-shadow:0px 100px 0px #FFFFFF:100px 0px 100px #FFF000:2000:bounce:1000, transform:translateY(100%):translateY(-100%):1500:easeTo:250]:delay-250"
+                        on-init="p:[opacity:0:1:1000:bounce:250, transform:translateY(100%):translateY(-100%):1000:easeTo:250]"
 						></div>
                         <!-- p:[{{example.property}}:{{example.start}}:{{example.end}}:{{example.duration}}:{{example.ease}}:{{example.delay}}] -->
 
