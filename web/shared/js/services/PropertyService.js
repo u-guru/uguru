@@ -547,10 +547,11 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       // console.log(state, args)
       args.prefs && args.prefs.showLog && console.log('-----Animation starting ---')
       $timeout(function() {
+
         args.control.ball = {elem: document.querySelector('[inspector-ball]')}
         args.control.time.elem = document.querySelector('[inspector-time]');
-        args = args.init(args);
-      }, 500)
+
+      }, 250)
       args.inspect && args.prefs.showLog && args.state.active && console.log('\n@ T = ' +'0ms\n-----------');
       for (prop in state) {
 
