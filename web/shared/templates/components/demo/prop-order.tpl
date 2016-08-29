@@ -4,7 +4,8 @@
 		<li init-with="p:[flex-basis:1, flex-grow:1, order:8]">
 			<div class="full-x height-128 bg-auburn radius-2"></div>
 		</li>
-		<li init-with="p:[flex-basis:1, flex-grow:1, order:7]">
+		<li init-with="p:[flex-basis:1, flex-grow:1, order:7]"
+			on-init="p:[order:7:4:400:easeOutBounce]:delay-200">
 			<div class="full-x height-128 bg-orange radius-2"></div>
 		</li>
 		<li init-with="p:[flex-basis:1, flex-grow:1, order:6]">
