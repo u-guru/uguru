@@ -12,11 +12,16 @@ angular.module('uguru.admin')
     var admin = this;
 
     admin.releases = ['preapp', 'become-guru', 'gpa', 'sound', 'focus'];
+    admin.gallery = {components: []}
     $timeout(function() {
       loadAdminSpec(admin.releases[0]);
       var today = new Date();
       loadCalendar({month: today.getUTCMonth() + 1, date: today.getUTCDate()});
     })
+
+    AdminService.getComponents($scope)
+
+    // console.log(promise)
 
     admin.calendarDates = AdminService.getUpcomingCalendar(14);
     // admin.today = getDetailedDayEvent(0, admin.calendarDates);
@@ -36,14 +41,8 @@ angular.module('uguru.admin')
     function loadCalendar(d_obj){
       var strDate = d_obj.month +'/' + d_obj.date;
       var callback = function(c_dict) {
-        console.log(c_dict)
         admin.fullcalendar = c_dict;
         admin.today = c_dict[strDate];
-        console.log(c_dict, strDate)
-        // console.log(admin.today)
-        // if (!admin.today) {
-        //   admin.today = c_dict[Object.keys(c_dict)[0]]
-        // }
       }
       XHRService.getJSONFile('get', 'admin/spec/calendar.json', callback);
     }
