@@ -123,6 +123,13 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
     if (preferences.speed) {
       player.tweenConfig.duration = 1/preferences.speed * player.tweenConfig.duration;
+      if (player.propDelays) {
+        for (key in player.propDelays) {
+          player.propDelays[key].duration = 1/preferences.speed * player.propDelays[key].duration;
+          player.propDelays[key].offset = 1/preferences.speed * player.propDelays[key].offset;
+          TweenService.preComputeValues(player.propDelays[key].property, player.propDelays[key].duration, player.propDelays[key].start, player.propDelays[key].end, player.propDelays[key].ease, player.propDelays[key])
+        }
+      }
       player.control.time.duration = player.tweenConfig.duration;
       if (player.tweenConfig.duration > 1000 && (player.tweenConfig.duration/1000 % 100) > 10) {
         player.control.time.sigfig = (player.tweenConfig.duration/1000 + "").split('.')[1].length
@@ -136,10 +143,13 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       if (startValue.indexOf('%') > -1) {
         startValue = parseFloat(startValue.replace('%', ''))/100 * player.tweenConfig.duration;
       }
+      console.log(startValue)
       switch (startOption) {
         case ("t") :
           // var seekMS = player.tweenConfig.duration
           filledPreferences.startAt = {seek: startValue};
+          player.control.ball = {elem: document.querySelector('[inspector-ball]')}
+          player.control.time.elem = document.querySelector('[inspector-time]');
       }
     }
 
@@ -397,7 +407,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
   function initPlayerFromArgs(elem, args, previous_player) {
 
-    var playerObj = {state: { time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
+    var playerObj = {propDelays:{}, state: { time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
+
     if (!previous_player) {
       playerObj.elem = elem;
       playerObj.tweenConfig = {
@@ -412,11 +423,16 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       }
         playerObj.elem = elem;
     } else {
+
         playerObj = combinePreviousWithNewProp(args, previous_player);
+        playerObj.tweenConfig.duration = Math.max(playerObj.tweenConfig.duration, args.duration + args.delay || 0)
     }
 
-    playerObj.tween = new Tweenable();
-
+    // playerObj.tween = new Tweenable();
+    if (args.delay) {
+      playerObj.propDelays[args.property] = {property: args.property, offset: args.delay, duration: args.duration, start: args.start, end: args.end, ease:args.ease, cache:[]};
+      TweenService.preComputeValues(args.property, args.duration, args.start, args.end, args.ease, playerObj.propDelays[args.property])
+    }
 
 
     if (elem.hasAttribute('inspector-elem')) {
@@ -442,6 +458,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     }
 
 
+
+
     function formatTime (time, time_control, sigfig) {
       if (!sigfig) sigfig = 2;
       if (!time) time = 0;
@@ -459,7 +477,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
       var skipArgs;
       if (args.control && args.control.ball) {
-        args.control.ball.elem.style.transform =  state['ballControl'];
+        args.control.ball.elem.setAttribute('style', 'transform:' + state['ballControl'] + ';');
         args.control.time.elem.innerHTML = formatTime(time, args.control.time)
       }
 
@@ -497,12 +515,29 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         if (state[prop].indexOf('rgba') > -1) {
           var firstSplit = state[prop].split('(')
           var secondSplit = firstSplit[1].split(',');
-          // console.log(state[prop],args.elem.style[prop])
           var value = firstSplit[0] + '(' + parseInt(secondSplit[0]) + ',' +  parseInt(secondSplit[1]) + ',' +  parseInt(secondSplit[2]) + ',' + secondSplit[3];
           args.elem.style[prop] = value;
-
+          continue;
         }
-        args.elem.style[prop] = state[prop];
+        if (prop in args.propDelays) {
+          var delta = args.propDelays[prop].offset - time;
+          // args.propDelays[prop].cache.push(state[prop])
+
+          if (delta < 0) {
+            var val = args.propDelays[prop].cache.shift();
+            if (val !== null) {
+
+              args.propDelays[prop].cache.push(val);
+              args.elem.style[prop] = val
+              // console.log(delta, args.propDelays[prop].cache)
+            } else {
+              args.propDelays[prop].cache.unshift(null);
+            }
+
+          }
+        } else {
+          args.elem.style[prop] = state[prop];
+        }
         args.inspect && args.prefs.showLog && args.state.active && prop.indexOf('Control') === -1 && time >= 0 && time <= args.tweenConfig.duration && console.log(prop + ':' + state[prop])
       }
       args.inspect && args.prefs.showLog && args.state.active && console.log('\n')
@@ -513,6 +548,12 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       // console.log('starting...', state, args);
       // console.log(state, args)
       args.prefs && args.prefs.showLog && console.log('-----Animation starting ---')
+      $timeout(function() {
+
+        args.control.ball = {elem: document.querySelector('[inspector-ball]')}
+        args.control.time.elem = document.querySelector('[inspector-time]');
+
+      }, 250)
       args.inspect && args.prefs.showLog && args.state.active && console.log('\n@ T = ' +'0ms\n-----------');
       for (prop in state) {
 
@@ -535,9 +576,19 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         $timeout(function() {
           player.state.active = false;
         })
+        if (player.propDelays) {
+          for (key in player.propDelays) {
+            if (player.propDelays[key].cache && player.propDelays[key].cache.length) {
+              player.propDelays[key].cache.push(null);
+            }
+          }
+          console.log('resetting cache..')
+        }
         player.inspect && player.prefs.showLog && console.log('-----Animation successfully finished---')
+        // playerObj.propDelays[args.property] = {offset: args.delay, duration: args.duration, start: args.start, end: args.end, ease:args.ease, cache:[]};
         player = player.init(player);
       }
+
 
     function getPlayFunction(player) {
 
@@ -664,7 +715,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         }
         player = player.init(player, true);
         player.tween.tween();
-        console.log(player.tween.get())
       }
     }
 
@@ -777,6 +827,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       playerObj.state.propertyControls =  playerObj.state.propertyControls && setPropPlayerFunctions(playerObj);
       // playerObj.start =
       // playerObj.reverse = function(value) {tween.seek(value)};
+
+
       playerObj.inspect && $timeout(function() {
         !skip && playerObj.prefs && playerObj.prefs.playInfinite && playerObj.play();
       })
@@ -785,7 +837,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         elemAnimStates = playerObj.prefs.showStates(playerObj);
         playerObj.prefs.elemAnimStates = elemAnimStates
       }
-      console.log(playerObj.tweenConfig, playerObj.tween.get())
       return playerObj
     }
 
@@ -816,7 +867,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
               console.log(playerObj)
               playerObj = playerObj.init(playerObj);
 
-              playerObj.tween
+
             }
 
       }, 250)
@@ -847,7 +898,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     for (var i = 0; i < arg_arr.length; i++) {
-      console.log(arg_arr)
       switch(i) {
         //potential start
         case (0):

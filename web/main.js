@@ -86,6 +86,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       PropertyService.getPropJson({}, callback);
     }]
   })
+.state('root.api-stagger', {
+    name: 'root.api-stagger',
+    parent: 'root',
+    url:'/admin/api/stagger',
+    templateUrl: 'admin/templates/api/stagger.html'
+  })
   .state('root.dev.inspect', {
     name: 'root.dev.inspect',
     parent: 'root.dev',
