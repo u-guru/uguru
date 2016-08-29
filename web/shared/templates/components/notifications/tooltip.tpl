@@ -59,9 +59,9 @@
 				when-top-complete="p:[opacity:1:0:500:easeInOutQuad:delay-100, transform:translateY(0%):translateY(-10%):500:easeInOutQuad]:delay-450]">This is a tip with a button.</span>
 			<button class="bg-moxie"
 				init-with="p:[op:0, tr:translateY(-10px)]"
-				on-init="p:[opacity:0:1:800:easeInOutExpo:delay-100, transform:translateY(-10px):translateY(1px):800:easeOutExpo]:delay-650"
-				on-click="send:[top-complete:public]"
-				when-top-complete="p:[opacity:1:0:800:easeInOutExpo:delay-100, transform:translateY(0px):translateY(-10px):800:easeOutExpo]:delay-250">Okay</button>
+				on-init="p:[opacity:0:1:500:easeOutSine:100, transform:translateY(-10px):translateY(0px):600:easeOutExpo]:delay-650"
+				on-click="s:[top-complete:public]"
+				when-top-complete="p:[opacity:1:0:500:easeOutSine:100, transform:translateY(0px):translateY(-10px):600:easeOutExpo]:delay-250">Okay</button>
 		</div>
 	</div>
 
@@ -102,9 +102,9 @@
 				>This is a tip with a button.</span>
 			<button class="bg-moxie"
 				init-with="p:[op:0, tr:translateY(10px)]"
-				on-init="p:[opacity:0:1:600:linear, transform:translateY(10px):translateY(0px):600:easeInOutExpo]:delay-450"
-				on-click="send:[bot-complete:public]"
-				when-bot-complete="p:[opacity:1:0:1000:easeInOutExpo, transform:translateY(0px):translateY(10px):1000:easeInOutExpo]:delay-450">Okay</button>
+				on-init="p:[opacity:0:1:500:easeOutSine:100, transform:translateY(10px):translateY(0px):600:easeOutExpo]:delay-450"
+				on-click="s:[bot-complete:public]"
+				when-bot-complete="p:[opacity:1:0:500:easeOutSine:100, transform:translateY(0px):translateY(10px):600:easeInOutExpo]:delay-450">Okay</button>
 				<!-- Note: Still too snappy -->
 		</div>
 	</div>
@@ -146,9 +146,9 @@
 				>This is a tip with a button.</span>
 			<button class="bg-moxie"
 				init-with="p:[op:0, tr:translateX(-10px)]"
-				on-init="p:[opacity:0:1:600:linear,transform:translateX(-10px):translateX(0px):1000:easeOutExpo]:delay-650"
-				when-left-complete="p:[opacity:1:0:600:linear,transform:translateX(0px):translateX(-10px):1000:easeOutExpo]:delay-650"
-				on-click="send:[left-complete:public]">Okay</button>
+				on-init="p:[opacity:0:1:500:easeOutSine:100, transform:translateX(-10px):translateX(0px):600:easeOutExpo]:delay-650"
+				when-left-complete="p:[opacity:1:0:600:easeOutSine:100, transform:translateX(0px):translateX(-10px):600:easeOutExpo]:delay-650"
+				on-click="s:[left-complete:public]">Okay</button>
 		</div>
 	</div>
 
@@ -181,15 +181,15 @@
 					on-init="p:[transform:scaleY(0):scaleY(1):250:easeInOutSine]:delay-750"
 					when-right-complete="p:[transform:scaleY(0):scaleY(1):250:easeInOutSine]"></div>
 				<div init-with="p:[tr:scaleY(0)]"
-						on-init="p:[transform:scaleY(0):scaleY(1):250:easeInOutSine]:delay-750"
-						when-right-complete="p:[transform:scaleY(0):scaleY(1):250:easeInOutSine]"></div>
+					on-init="p:[transform:scaleY(0):scaleY(1):250:easeInOutSine]:delay-750"
+					when-right-complete="p:[transform:scaleY(0):scaleY(1):250:easeInOutSine]"></div>
 			<span init-with="p:[op:0, tr:translateX(10px)]"
 				on-init="p:[opacity:0:1:500:linear,transform:translateX(10px):translateX(0px):1000:easeOutExpo]:delay-450"
 				when-right-complete="p:[opacity:1:0:500:linear,transform:translateX(0px):translateX(10px):1000:easeOutExpo]:delay-450">This is a tip with a button.</span>
 			<button class="bg-moxie" init-with="p:[op:0, tr:translateX(10px)]"
-				on-init="p:[opacity:0:1:300:linear,transform:translateX(10px):translateX(0):1000:easeInOutExpo]:delay-650"
-				on-click="send:[right-complete:public]"
-				when-right-complete="p:[opacity:1:0:500:linear,transform:translateX(0px)translateX(10px):1000:easeOutExpo]:delay-650">Okay</button>
+				on-init="p:[opacity:0:1:500:easeOutSine:100, transform:translateX(10px):translateX(0):600:easeInOutExpo]:delay-650"
+				on-click="s:[right-complete:public]"
+				when-right-complete="p:[opacity:1:0:500:easeOutSine:100, transform:translateX(0px)translateX(10px):600:easeOutExpo]:delay-650">Okay</button>
 		</div>
 	</div>
 </div>
