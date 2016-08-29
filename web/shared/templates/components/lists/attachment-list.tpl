@@ -193,7 +193,7 @@
 								<g stroke-width="2">
 									<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="#A25B5D"
 										init-with="p:[sdo:306.6, sda:306.6]"
-										when-pdf-enter="p:[stroke-dashoffset:306.6:0:150:easeOutSine]:delay-500"></path>
+										when-pdf-enter="p:[stroke-dashoffset:306.6:0:150:easeOutSine]"></path>
 							        <g stroke="#FFFFFF">
 										<path d="M26,50 L26,78 L73,78"
 											init-with="p:[sdo:75, sda:75]"
@@ -236,7 +236,7 @@
 								<g stroke-width="2">
 									<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="#467693"
 										init-with="p:[sdo:306.6, sda:306.6]"
-										when-doc-enter="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]:delay-500"></path>
+										when-doc-enter="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]"></path>
 							        <g stroke="#FFFFFF">
 										<path d="M22.6366123,64 L77.3852732,64"
 											init-with="p:[sdo:56, sda:56]"
@@ -418,7 +418,7 @@
 
 								<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="#617E56"
 									init-with="p:[sdo:306.6, sda:306.6]"
-									when-xls-enter="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]:delay-500"></path>
+									when-xls-enter="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]"></path>
 						        <path d="M38,39 L38,79 M50,39 L50,79 M62,39 L62,79 M74,39 L74,79 M26,39 L26,79 M74,79 L26.5,79 M74,69 L26.5,69 M74,59 L26.5,59 M74,49 L26.5,49 M74,39 L26.5,39" stroke="#FFFFFF"
 									init-with="p:[sdo:438, sda:438]"
 									when-xls-enter="p:[stroke-dashoffset:438:0:3050:easeOutSine]:delay-250"></path>
@@ -502,7 +502,6 @@
 					<span>mp4</span>
 				</a>
 			</li>
-			<!-- didn't fix yet -->
 			<li>
 				<a init-default
 					on-init="send:[ppt-load:public]"
@@ -513,6 +512,7 @@
 								<path d="M78.6753247,69.4038462 L83.9946012,69.4038462 C85.6544371,69.4038462 87,68.0615005 87,66.4025609 L87,25.0012853 C87,23.3437212 85.6551641,22 83.9983762,22 L22.6769485,22 C21.0191974,22 19.6821402,23.3349726 19.6906437,25.0005709 L19.7282873,32.3739316" stroke="white" stroke-opacity="0.1"
 									init-with="p:[sdo:130, sda:130]"
 									when-ppt-load="p:[stroke-dashoffset:500:0:500:easeOutSine]:delay-250"></path>
+
 								<rect stroke="white" stroke-opacity="0.1" x="15" y="33" width="63" height="50" rx="3"
 									init-with="p:[sdo:226, sda:226]"
 									when-ppt-load="p:[stroke-dashoffset:226:0:500:easeOutSine]"></rect>
@@ -522,18 +522,21 @@
 						        <rect stroke="#9C694C" fill="#E5753C" x="15" y="33" width="63" height="50" rx="3"
 									init-with="p:[fill-opacity:0, stroke-dashoffset:226, sda:226]"
 									when-ppt-enter="p:[fill-opacity:0:1:500:easeOutSine:delay-250, stroke-dashoffset:226:0:500:easeOutSine]"></rect>
-						        <rect stroke="#FFFFFF" fill-opacity="0.5" fill="#FFFFFF" x="22" y="42" width="49" height="5" rx="2.5"
-									init-with="p-op"
-									when-ppt-enter="p:[opacity:0:1:250:easeOutSine:delay-500]"></rect>
-						        <path d="M39.5939197,68.0940381 L32.8419127,64.9262109 L29.129401,58.3562293 C29.0367577,58.1928325 28.8848499,58.0732396 28.705698,58.0245688 C28.5265433,57.9751994 28.3364888,58.0009281 28.1764087,58.0954882 C25.6001272,59.6154347 24,62.443956 24,65.4782859 C24,70.177188 27.7452127,74 32.3487273,74 C35.5987102,74 38.576895,72.0524354 39.9358793,69.0382687 C40.0135366,68.8665276 40.0210295,68.6711486 39.9563151,68.4938446 C39.8922826,68.3165409 39.7621746,68.1726085 39.5939197,68.0940381 L39.5939197,68.0940381 Z" stroke="#FFFFFF" fill-opacity="0.5" fill="#FFFFFF"
-									init-with="p-op"
-									when-ppt-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500] | p:[tro:center center]"></path>
-						        <path d="M41.5,65 C41.5,60.3055796 37.6944204,56.5 33,56.5" stroke="#FFFFFF"
-									init-with="p-op"
-									when-ppt-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500] | p:[tro:center center]"></path>
-						        <path d="M49.4545455,71 L68.5454545,71 M49.4545455,65 L68.5454545,65 M49.4545455,59 L68.5454545,59" stroke="#FFFFFF"
-									init-with="p-op"
-									when-ppt-enter="a:[fadeIn:set:(dur:1000ms#func:linear):in:delay-500] | p:[tro:center center]"></path>
+
+						        <g stroke="#FFFFFF">
+									<rect fill-opacity="0.5" fill="#FFFFFF" x="22" y="42" width="49" height="5" rx="2.5"
+										init-with="p-op"
+										when-ppt-enter="p:[opacity:0:1:250:easeOutSine:delay-500]"></rect>
+							        <path d="M39.5939197,68.0940381 L32.8419127,64.9262109 L29.129401,58.3562293 C29.0367577,58.1928325 28.8848499,58.0732396 28.705698,58.0245688 C28.5265433,57.9751994 28.3364888,58.0009281 28.1764087,58.0954882 C25.6001272,59.6154347 24,62.443956 24,65.4782859 C24,70.177188 27.7452127,74 32.3487273,74 C35.5987102,74 38.576895,72.0524354 39.9358793,69.0382687 C40.0135366,68.8665276 40.0210295,68.6711486 39.9563151,68.4938446 C39.8922826,68.3165409 39.7621746,68.1726085 39.5939197,68.0940381 L39.5939197,68.0940381 Z" fill-opacity="0.5" fill="#FFFFFF"
+										init-with="p-op"
+										when-ppt-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500] | p:[tro:center center]"></path>
+							        <path d="M41.5,65 C41.5,60.3055796 37.6944204,56.5 33,56.5"
+										init-with="p-op"
+										when-ppt-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-500] | p:[tro:center center]"></path>
+							        <path d="M49.4545455,71 L68.5454545,71 M49.4545455,65 L68.5454545,65 M49.4545455,59 L68.5454545,59"
+										init-with="p-op"
+										when-ppt-enter="p:[opacity:0:1:1000:easeOutSine]:delay-500"></path>
+								</g>
 						    </g>
 						</svg>
 					</span>
@@ -547,30 +550,37 @@
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="white" stroke-width="2" stroke-opacity="0.1"
-									init-with="p:[sdo:303, sda:303]"
-									when-txt-load="p:[stroke-dashoffset:303:0:1050:easeOutSine]"></path>
-						        <path d="M14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 Z" fill="#ADBAD4"
-									init-with="p:[fill-opacity:0]"
-									when-txt-enter="p:[fill-opacity:0:1:1050:easeOutSine:delay-250]"></path>
-						        <path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="#ADBAD4" stroke-width="2" fill="#E7EBF3"
-									init-with="p:[fill-opacity:0, stroke-dashoffset:303, sda:303]"
-									when-txt-enter="p:[fill-opacity:0:1:1050:easeOutSine:delay-250, stroke-dashoffset:303:0:500:easeOutSine]"></path>
-						        <path d="M26.5355418,76 L72.592137,76" stroke="#ADBAD4" stroke-width="2"
-									init-with="p:[sdo:48,sda:48]"
-									when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-450"></path>
-						        <path d="M26.5397601,40 L72.9591316,40" stroke="#ADBAD4" stroke-width="2"
-									init-with="p:[sdo:48,sda:48]"
-									when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-350"></path>
-						        <path d="M26.5397601,52 L72.9591316,52" stroke="#ADBAD4" stroke-width="2"
-									init-with="p:[sdo:48,sda:48]"
-									when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-250"></path>
-						        <path d="M26.5397601,64 L72.9591316,64" stroke="#ADBAD4" stroke-width="2"
-									init-with="p:[sdo:48,sda:48]"
-									when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-150"></path>
-						        <path d="M26.357942,28 L57.1409498,28" stroke="#ADBAD4" stroke-width="2"
-									init-with="p:[sdo:32,sda:32]"
-									when-txt-enter="p:[stroke-dashoffset:32:0:150:easeOutSine]"></path>
+								<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="white" stroke-width="2" stroke-opacity="0.1"
+									init-with="p:[sdo:306.6, sda:306.6]"
+									when-txt-load="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]"></path>
+
+								<path d="M68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32 L68,14 L68,14 Z" fill="#E7EBF3"
+									init-with="p-op"
+									when-txt-enter="p:[opacity:0:1:1050:easeOutSine]:delay-250"></path>
+								<path d="M68,14 L68,28.0052166 C68,30.2114745 69.7917156,32 71.9947834,32 L86,32 L68,14 Z" fill="#ADBAD4"
+									init-with="p-op"
+									when-txt-enter="p:[opacity:0:1:1050:easeOutSine]:delay-250"></path>
+
+								<g stroke="#ADBAD4" stroke-width="2">
+									<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32"
+										init-with="p:[sdo:306.6, sda:306.6]"
+										when-txt-enter="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]"></path>
+							        <path d="M26.5355418,76 L72.592137,76"
+										init-with="p:[sdo:48,sda:48]"
+										when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-450"></path>
+							        <path d="M26.5397601,40 L72.9591316,40"
+										init-with="p:[sdo:48,sda:48]"
+										when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-350"></path>
+							        <path d="M26.5397601,52 L72.9591316,52"
+										init-with="p:[sdo:48,sda:48]"
+										when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-250"></path>
+							        <path d="M26.5397601,64 L72.9591316,64"
+										init-with="p:[sdo:48,sda:48]"
+										when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-150"></path>
+							        <path d="M26.357942,28 L57.1409498,28"
+										init-with="p:[sdo:48,sda:48]"
+										when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-50"></path>
+								</g>
 						    </g>
 						</svg>
 					</span>
