@@ -9,7 +9,8 @@ function TweenService() {
         getKeyframeValues: getKeyframeValues,
         getAllEasing: getAllEasing,
         getAllAnimatable: getAllAnimatable,
-        getCubicBezierArrs: getAllAnimatable
+        getCubicBezierArrs: getAllAnimatable,
+        preComputeValues: preComputeValues
     }
 
     function getAllEasing() {
@@ -87,6 +88,34 @@ function TweenService() {
             c: 'end' || 1,
             d: 'duration' || 1000
         }
+    }
+
+    function preComputeValues(property, duration, start, end, ease, result_arr) {
+        console.log(property, duration)
+        result_arr.cache = [];
+        var iterations = (duration/1000 * 60);//fps
+        var startDict = {};
+        startDict[property] = start;
+        var endDict = {};
+        endDict[property] = end;
+        var t = new Tweenable();
+        t.tween({
+          from: start,
+          to:   end,
+          duration: duration,
+          easing: ease
+        }).seek(0).pause()
+        for (var i = 0; i < iterations; i++) {
+            var seekValue = duration/iterations * i;
+            // t.seek();
+            result_arr.cache.push(t.seek(seekValue).resume().pause().get()[property])
+        }
+        t.stop(true);
+        result_arr.cache.push(t.get()[property]);
+        result_arr.cache.push(null)
+        t.dispose();
+        return result_arr
+        // t.dispose();
     }
 
     function getKeyframeValues(start_dict, end_dict, duration, easeFunc, kf_arr, max_keyframe) {

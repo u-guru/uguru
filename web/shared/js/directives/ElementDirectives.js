@@ -23,6 +23,69 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive('staggerChildren', ['UtilitiesService', '$timeout', '$compile', function(UtilitiesService, $timeout, $compile) {
+  return {
+    restrict: 'AE',
+    scope: false,
+    replace:true,
+    transclude:true,
+    priority: 100,
+    // template:'<div ng-transclude> </div>',
+      compile: function(element, attr, transclude) {
+        // element[0].style.display = 'none';
+          var elems = element[0].querySelectorAll('*')
+          var attrDelay = attr.delay
+          var attrInterval = attr.interval;
+          var attrApply = attr.apply;
+          var attrLength = element[0].attributes.length;
+          var staggerDict = {};
+          var postponedElem = [];
+          for (var i = 0; i < attrLength; i++) {
+            var iAttr = element[0].attributes[i];
+            if (iAttr.name.indexOf('on-') > -1 && iAttr.name.indexOf('-delay') > -1) {
+              var formattedIAttr = iAttr.name.replace('-delay', '');
+              staggerDict[formattedIAttr] = {elems: [], value: iAttr.value, delay:true};
+            }
+          }
+          return {
+            pre: function preLink(lScope, lElem, lAttr) {
+
+                  transclude(lScope, function(clone, innerScope) {
+                    for (var i = 0; i < clone.length; i++) {
+                      var iChild = clone[i];
+                      if (iChild && iChild.attributes && iChild.hasAttribute('on-init') && !iChild.hasAttribute('stagger-ignore')) {
+
+                          var newOnInit = iChild.getAttribute('on-init') + ':delay-' + i * 1000;
+                          iChild.removeAttribute('on-init');
+                          $compile(iChild)(lScope)
+                          element.append(iChild)
+                          // iChild.setAttribute('on-init', newOnInit)
+
+                          // element.append();
+                          // element.append($compile(iChild)(lScope));
+                          // postponedElem.push({elem:iChild, delay: i*100})
+                      } else {
+                          element.append(iChild)
+                      }
+                    }
+                  });
+
+                },
+            post: function postLink(scope, elem, attr) {
+              // console.log('waiting 1000ms')
+              // $timeout(function() {
+              //   postponedElem.forEach(function(eObj, i) {
+              //     console.log(eObj, i);
+              //     eObj.elem.removeAttribute('ng-if')
+              //     $compile(eObj.elem)(scope);
+              //     console.log(eObj.elem)
+              //   })
+              // }, 1000)
+            }
+          }
+      }
+  }
+}])
 .directive('scrollable', ['UtilitiesService', '$timeout', function(UtilitiesService, $timeout) {
   return {
     restrict: 'A',
