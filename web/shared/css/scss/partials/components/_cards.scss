@@ -668,7 +668,7 @@
 			margin: 0;
 			max-width: none;
 			.pf-hover {
-				@include opacity(0);
+				opacity: 0;
 				@include flex;
 				@include flex-center;
 				transition: all 150ms ease-in-out;
@@ -727,7 +727,7 @@
 			&:hover {
 				color: $slate;
 				.pf-hover {
-					@include opacity(1);
+					opacity: 1;
 				}
 			}
 			.pf-card-top {
@@ -922,7 +922,7 @@
 			width: 50%;
 			padding: 7.5px;
 			button {
-				@include opacity(0);
+				opacity: 0;
 				height: 36px;
 				width: 100%;
 				border-radius: 2px;
@@ -1048,7 +1048,7 @@ a.credit-card {
 		width: 100%;
 		height: 100%;
 		.school-card-border {
-			@include opacity(0);
+			opacity: 0;
 			transition: all 150ms ease-in-out;
 			position: absolute;
 			top: 0;
@@ -1082,7 +1082,7 @@ a.credit-card {
 				background-color: white;
 				border: 3px solid $slate;
 				.school-card-icon-bg {
-					@include opacity(0);
+					opacity: 0;
 					@include round;
 					transition: all 150ms ease-in-out;
 					display: block;
@@ -1094,7 +1094,7 @@ a.credit-card {
 					height: 100%;
 				}
 				.school-card-state {
-					@include opacity(0);
+					opacity: 0;
 					transition: all 150ms ease-in-out;
 					position: absolute;
 					z-index: 7;
@@ -1115,14 +1115,14 @@ a.credit-card {
 					}
 					&:last-child {
 						svg {
-							@include opacity(0);
+							opacity: 0;
 							transform: rotate(45deg);
 						}
 					}
 				}
 			}
 			&:after {
-				@include opacity(0);
+				opacity: 0;
 				transition: all 150ms ease-in-out;
 				content: "";
 				position: absolute;
@@ -1146,7 +1146,7 @@ a.credit-card {
 			overflow: hidden;
 			color: $slate;
 			.school-card-map {
-				@include opacity(.2);
+				opacity: .2;
 				@include center-x;
 				bottom: 0;
 				z-index: 2;
@@ -1160,7 +1160,7 @@ a.credit-card {
 				}
 			}
 			.school-card-color {
-				@include opacity(.1);
+				opacity: .1;
 				transition: all 150ms ease-in-out;
 				position: absolute;
 				z-index: 1;
@@ -1178,7 +1178,7 @@ a.credit-card {
 			}
 			.school-card-footer {
 				@include listless;
-				@include opacity(0);
+				opacity: 0;
 				@include flex;
 				@include flex-center;
 				transition: all 150ms ease-in-out;
@@ -1255,10 +1255,10 @@ a.credit-card {
 		.school-card-top {
 			.school-card-icon {
 				.school-card-icon-bg {
-					@include opacity(.7);
+					opacity: .7;
 				}
 				.school-card-state {
-					@include opacity(1);
+					opacity: 1;
 				}
 			}
 		}
@@ -1269,12 +1269,12 @@ a.credit-card {
 				.school-card-state {
 					&:not(:last-child) {
 						svg {
-							@include opacity(0);
+							opacity: 0;
 						}
 					}
 					&:last-child {
 						svg {
-							@include opacity(1);
+							opacity: 1;
 						}
 					}
 				}
@@ -1283,15 +1283,15 @@ a.credit-card {
 	}
 	input:checked + .school-card-inside {
 		.school-card-border {
-			@include opacity(1);
+			opacity: 1;
 		}
 		.school-card-top {
 			.school-card-icon {
 				.school-card-icon-bg {
-					@include opacity(.7);
+					opacity: .7;
 				}
 				.school-card-state {
-					@include opacity(1);
+					opacity: 1;
 				}
 			}
 		}
@@ -1848,7 +1848,7 @@ a.credit-card {
 			transform: translateZ(-20px);
 		}
 		.school-id-hover {
-			@include opacity(0);
+			opacity: 0;
 			transition: all 150ms ease-in-out;
 			position: absolute;
 			z-index: 10;
@@ -1857,10 +1857,10 @@ a.credit-card {
 			width: 100%;
 			height: 100%;
 			&:hover, &:focus {
-				@include opacity(1);
+				opacity: 1;
 			}
 			> span {
-				@include opacity(.95);
+				opacity: .95;
 				display: block;
 				z-index: 1;
 				position: absolute;
@@ -2186,6 +2186,14 @@ a.credit-card {
 		height: 5px;
 		border-radius: 0 0 2px 2px;
 	}
+	.course-card-count-container {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 9;
+		width: 32px;
+		height: 32px;
+	}
 	.course-card-count {
 		@include flex;
 		@include flex-center;
@@ -2230,32 +2238,32 @@ a.credit-card {
 		width: 100%;
 		height: 100%;
 		cursor: pointer;
-		~ .course-card-count {
-			opacity: 0!important;
+		~ .course-card-count, ~ .course-card-count-container .course-card-count {
+			opacity: 0;
 			span {
 				opacity: 0.5;
 			}
 		}
 		&:hover {
-			~ .course-card-count {
-				opacity: 1!important;
+			~ .course-card-count, ~ .course-card-count-container .course-card-count {
+				opacity: 1;
 				span {
-					opacity: 0.5!important;
+					opacity: 0.5;
 				}
 			}
 		}
 		&:active, &:checked {
-			~ .course-card-count {
-				opacity: 1!important;
+			~ .course-card-count, ~ .course-card-count-container .course-card-count {
+				opacity: 1;
 				span {
-					opacity: 1!important;
+					opacity: 1;
 				}
 			}
 		}
 	}
 	&.with-hover {
 		.course-card-hover {
-			@include opacity(0);
+			opacity: 0;
 			transition: all 150ms ease-in-out;
 			display: block;
 			position: absolute;
@@ -2265,10 +2273,10 @@ a.credit-card {
 			width: 100%;
 			height: 100%;
 			&:hover, &:focus {
-				@include opacity(1);
+				opacity: 1;
 			}
 			> span {
-				@include opacity(.95);
+				opacity: .95;
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -2294,7 +2302,7 @@ a.credit-card {
 }
 a.course-card {
 	.course-card-hover {
-		@include opacity(0);
+		opacity: 0;
 		display: block;
 	}
 	&:hover, &:focus {
@@ -2309,7 +2317,7 @@ a.course-card {
 			}
 		}
 		.course-card-hover {
-			@include opacity(.95);
+			opacity: .95;
 		}
 		.course-card-border {
 			background: white!important;
@@ -2836,16 +2844,16 @@ a.course-card {
 	}
 	&.timeline-icon-left {
 		h2 {
-			right: 24px;
-			border-radius: 1000px 0 0 1000px;
-			padding: 0 25px 0 15px;
+			right: 0;
+			border-radius: 1000px;
+			padding: 0 49px 0 15px;
 		}
 	}
 	&.timeline-icon-right {
 		h2 {
-			left: 24px;
-			border-radius: 0 1000px 1000px 0;
-			padding: 0 15px 0 25px;
+			left: 0;
+			border-radius: 1000px;
+			padding: 0 15px 0 49px;
 		}
 	}
 	svg {
@@ -3524,7 +3532,7 @@ a.course-card {
 					font-weight: 600;
 				}
 				h3 {
-					@include opacity(.5);
+					opacity: .5;
 					margin-top: 0!important;
 					font-size: 14px;
 					font-weight: 600;

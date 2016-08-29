@@ -459,8 +459,6 @@
   0% {
     transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 0; }
-  1% {
-    opacity: 1; }
   7.61% {
     transform: matrix3d(0.409, 0.05, 0, 0, -0.05, 0.409, 0, 0, 0, 0, 1, 0, -5.731, -38.205, 0, 1); }
   11.41% {
@@ -472,7 +470,8 @@
   22.72% {
     transform: matrix3d(1.057, -0.01, 0, 0, 0.01, 1.057, 0, 0, 0, 0, 1, 0, 1.197, 7.98, 0, 1); }
   30.23% {
-    transform: matrix3d(1.111, -0.021, 0, 0, 0.021, 1.111, 0, 0, 0, 0, 1, 0, 2.412, 16.077, 0, 1); }
+    transform: matrix3d(1.111, -0.021, 0, 0, 0.021, 1.111, 0, 0, 0, 0, 1, 0, 2.412, 16.077, 0, 1);
+    opacity: 1; }
   50.25% {
     transform: matrix3d(1.023, -0.004, 0, 0, 0.004, 1.023, 0, 0, 0, 0, 1, 0, 0.467, 3.112, 0, 1); }
   70.27% {
@@ -3964,7 +3963,6 @@ fieldset.no-border * {
       margin: 0;
       max-width: none; }
       .pf-card-group > li .pf-card .pf-hover {
-        filter: alpha(opacity=0);
         opacity: 0;
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -4012,7 +4010,6 @@ fieldset.no-border * {
       .pf-card-group > li .pf-card:hover {
         color: #40484B; }
         .pf-card-group > li .pf-card:hover .pf-hover {
-          filter: alpha(opacity=100);
           opacity: 1; }
       .pf-card-group > li .pf-card .pf-card-top .user-icon {
         position: absolute;
@@ -4183,7 +4180,6 @@ fieldset.no-border * {
       width: 50%;
       padding: 7.5px; }
       .credit-card-back ul li button {
-        filter: alpha(opacity=0);
         opacity: 0;
         height: 36px;
         width: 100%;
@@ -4300,7 +4296,6 @@ a.credit-card {
     width: 100%;
     height: 100%; }
     .university-card .school-card-inside .school-card-border {
-      filter: alpha(opacity=0);
       opacity: 0;
       transition: all 150ms ease-in-out;
       position: absolute;
@@ -4347,7 +4342,6 @@ a.credit-card {
         background-color: white;
         border: 3px solid #40484B; }
         .university-card .school-card-inside .school-card-top .school-card-icon .school-card-icon-bg {
-          filter: alpha(opacity=0);
           opacity: 0;
           border-radius: 1000px;
           transition: all 150ms ease-in-out;
@@ -4359,7 +4353,6 @@ a.credit-card {
           width: 100%;
           height: 100%; }
         .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state {
-          filter: alpha(opacity=0);
           opacity: 0;
           transition: all 150ms ease-in-out;
           position: absolute;
@@ -4382,11 +4375,9 @@ a.credit-card {
               stroke-linecap: round;
               stroke-linejoin: round; }
           .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state:last-child svg {
-            filter: alpha(opacity=0);
             opacity: 0;
             transform: rotate(45deg); }
       .university-card .school-card-inside .school-card-top:after {
-        filter: alpha(opacity=0);
         opacity: 0;
         transition: all 150ms ease-in-out;
         content: "";
@@ -4424,8 +4415,7 @@ a.credit-card {
       overflow: hidden;
       color: #40484B; }
       .university-card .school-card-inside .school-card-main .school-card-map {
-        filter: alpha(opacity=20);
-        opacity: 0.2;
+        opacity: .2;
         position: absolute;
         left: 50%;
         -webkit-transform: translateX(-50%);
@@ -4443,8 +4433,7 @@ a.credit-card {
           display: block;
           width: 100%; }
       .university-card .school-card-inside .school-card-main .school-card-color {
-        filter: alpha(opacity=10);
-        opacity: 0.1;
+        opacity: .1;
         transition: all 150ms ease-in-out;
         position: absolute;
         z-index: 1;
@@ -4462,7 +4451,6 @@ a.credit-card {
         list-style: none;
         margin: 0;
         padding: 0;
-        filter: alpha(opacity=0);
         opacity: 0;
         -ms-box-orient: horizontal;
         display: -webkit-box;
@@ -4547,25 +4535,18 @@ a.credit-card {
         .university-card .school-card-inside .school-card-main h2 span:last-child {
           text-transform: uppercase; }
   .university-card input:hover + .school-card-inside .school-card-top .school-card-icon .school-card-icon-bg {
-    filter: alpha(opacity=70);
-    opacity: 0.7; }
+    opacity: .7; }
   .university-card input:hover + .school-card-inside .school-card-top .school-card-icon .school-card-state {
-    filter: alpha(opacity=100);
     opacity: 1; }
   .university-card input:checked:hover + .school-card-inside .school-card-top .school-card-icon .school-card-state:not(:last-child) svg {
-    filter: alpha(opacity=0);
     opacity: 0; }
   .university-card input:checked:hover + .school-card-inside .school-card-top .school-card-icon .school-card-state:last-child svg {
-    filter: alpha(opacity=100);
     opacity: 1; }
   .university-card input:checked + .school-card-inside .school-card-border {
-    filter: alpha(opacity=100);
     opacity: 1; }
   .university-card input:checked + .school-card-inside .school-card-top .school-card-icon .school-card-icon-bg {
-    filter: alpha(opacity=70);
-    opacity: 0.7; }
+    opacity: .7; }
   .university-card input:checked + .school-card-inside .school-card-top .school-card-icon .school-card-state {
-    filter: alpha(opacity=100);
     opacity: 1; }
 
 .pf-card {
@@ -4891,7 +4872,6 @@ a.credit-card {
       transition: all 150ms ease-in;
       transform: translateZ(-20px); }
     .student-card.with-hover .school-id-hover {
-      filter: alpha(opacity=0);
       opacity: 0;
       transition: all 150ms ease-in-out;
       position: absolute;
@@ -4901,11 +4881,9 @@ a.credit-card {
       width: 100%;
       height: 100%; }
       .student-card.with-hover .school-id-hover:hover, .student-card.with-hover .school-id-hover:focus {
-        filter: alpha(opacity=100);
         opacity: 1; }
       .student-card.with-hover .school-id-hover > span {
-        filter: alpha(opacity=95);
-        opacity: 0.95;
+        opacity: .95;
         display: block;
         z-index: 1;
         position: absolute;
@@ -5257,6 +5235,13 @@ a.credit-card {
     width: 100%;
     height: 5px;
     border-radius: 0 0 2px 2px; }
+  .course-card .course-card-count-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    width: 32px;
+    height: 32px; }
   .course-card .course-card-count {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -5327,20 +5312,19 @@ a.credit-card {
     width: 100%;
     height: 100%;
     cursor: pointer; }
-    .course-card input ~ .course-card-count {
-      opacity: 0 !important; }
-      .course-card input ~ .course-card-count span {
+    .course-card input ~ .course-card-count, .course-card input ~ .course-card-count-container .course-card-count {
+      opacity: 0; }
+      .course-card input ~ .course-card-count span, .course-card input ~ .course-card-count-container .course-card-count span {
         opacity: 0.5; }
-    .course-card input:hover ~ .course-card-count {
-      opacity: 1 !important; }
-      .course-card input:hover ~ .course-card-count span {
-        opacity: 0.5 !important; }
-    .course-card input:active ~ .course-card-count, .course-card input:checked ~ .course-card-count {
-      opacity: 1 !important; }
-      .course-card input:active ~ .course-card-count span, .course-card input:checked ~ .course-card-count span {
-        opacity: 1 !important; }
+    .course-card input:hover ~ .course-card-count, .course-card input:hover ~ .course-card-count-container .course-card-count {
+      opacity: 1; }
+      .course-card input:hover ~ .course-card-count span, .course-card input:hover ~ .course-card-count-container .course-card-count span {
+        opacity: 0.5; }
+    .course-card input:active ~ .course-card-count, .course-card input:active ~ .course-card-count-container .course-card-count, .course-card input:checked ~ .course-card-count, .course-card input:checked ~ .course-card-count-container .course-card-count {
+      opacity: 1; }
+      .course-card input:active ~ .course-card-count span, .course-card input:active ~ .course-card-count-container .course-card-count span, .course-card input:checked ~ .course-card-count span, .course-card input:checked ~ .course-card-count-container .course-card-count span {
+        opacity: 1; }
   .course-card.with-hover .course-card-hover {
-    filter: alpha(opacity=0);
     opacity: 0;
     transition: all 150ms ease-in-out;
     display: block;
@@ -5351,11 +5335,9 @@ a.credit-card {
     width: 100%;
     height: 100%; }
     .course-card.with-hover .course-card-hover:hover, .course-card.with-hover .course-card-hover:focus {
-      filter: alpha(opacity=100);
       opacity: 1; }
     .course-card.with-hover .course-card-hover > span {
-      filter: alpha(opacity=95);
-      opacity: 0.95;
+      opacity: .95;
       position: absolute;
       top: 0;
       left: 0;
@@ -5391,7 +5373,6 @@ a.credit-card {
       color: white; }
 
 a.course-card .course-card-hover {
-  filter: alpha(opacity=0);
   opacity: 0;
   display: block; }
 a.course-card:hover .course-card-inside h1, a.course-card:hover .course-card-inside h2, a.course-card:focus .course-card-inside h1, a.course-card:focus .course-card-inside h2 {
@@ -5399,8 +5380,7 @@ a.course-card:hover .course-card-inside h1, a.course-card:hover .course-card-ins
 a.course-card:hover .course-card-count span, a.course-card:focus .course-card-count span {
   background: rgba(255, 255, 255, 0.6) !important; }
 a.course-card:hover .course-card-hover, a.course-card:focus .course-card-hover {
-  filter: alpha(opacity=95);
-  opacity: 0.95; }
+  opacity: .95; }
 a.course-card:hover .course-card-border, a.course-card:focus .course-card-border {
   background: white !important; }
 a.course-card:active .course-card-hover {
@@ -5648,13 +5628,13 @@ a.course-card:active .course-card-hover {
     font-weight: 600;
     text-transform: uppercase; }
   .timeline-icon.timeline-icon-left h2 {
-    right: 24px;
-    border-radius: 1000px 0 0 1000px;
-    padding: 0 25px 0 15px; }
+    right: 0;
+    border-radius: 1000px;
+    padding: 0 49px 0 15px; }
   .timeline-icon.timeline-icon-right h2 {
-    left: 24px;
-    border-radius: 0 1000px 1000px 0;
-    padding: 0 15px 0 25px; }
+    left: 0;
+    border-radius: 1000px;
+    padding: 0 15px 0 49px; }
   .timeline-icon svg {
     width: 36px;
     height: 36px; }
@@ -6095,8 +6075,7 @@ a.course-card:active .course-card-hover {
           font-size: 20px;
           font-weight: 600; }
         .place-marker .marker-expanded .marker-expanded-content .marker-guru h3 {
-          filter: alpha(opacity=50);
-          opacity: 0.5;
+          opacity: .5;
           margin-top: 0 !important;
           font-size: 14px;
           font-weight: 600; }

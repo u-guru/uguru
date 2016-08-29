@@ -20,14 +20,14 @@
 				<h1>50 Credits</h1>
 				<button class="btn-split">
 					<span init-with="p-op"
-						when-credit-tile-init="a:[split-button:set:(dur:1000ms#func:linear):in:delay-800]">
+						when-credit-tile-init="a:[split-button:set:(dur:1000ms#func:linear):in:delay-1000]">
 						<span init-with="p-op"
-							when-credit-tile-init="p:[opacity:0:1:500:easeInOutSine]:delay-1000">Split button</span>
+							when-credit-tile-init="p:[opacity:0:1:500:easeInOutSine]:delay-1200">Split button</span>
 					</span>
 					<span init-with="p-op"
-						when-credit-tile-init="a:[split-button:set:(dur:1000ms#func:linear):in:delay-800]">
+						when-credit-tile-init="a:[split-button:set:(dur:1000ms#func:linear):in:delay-1000]">
 						<span init-with="p-op"
-							when-credit-tile-init="p:[opacity:0:1:500:easeInOutSine]:delay-1000">$40</span>
+							when-credit-tile-init="p:[opacity:0:1:500:easeInOutSine]:delay-1200">$40</span>
 					</span>
 				</button>
 			</li>
