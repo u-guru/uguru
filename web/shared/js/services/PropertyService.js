@@ -531,7 +531,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           args.elem.style[prop] = value;
           continue;
         }
-        console.log(time, state[prop])
         if (args.propDelays && prop in args.propDelays) {
           var delta = args.propDelays[prop].offset - time;
           // args.propDelays[prop].cache.push(state[prop])
@@ -823,7 +822,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     playerObj.init = function(playerObj, skip) {
-      console.log(playerObj)
       playerObj.state.time = 0
       playerObj.state.active = false;
       playerObj.state.paused = false;
