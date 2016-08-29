@@ -578,11 +578,11 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         })
         if (player.propDelays) {
           for (key in player.propDelays) {
-            if (player.propDelays[key].cache && player.propDelays[key].cache.length) {
-              player.propDelays[key].cache.push(null);
+            if (player.propDelays[key].cache && player.propDelays[key].cache.length && player.propDelays[key].cache[0] === null) {
+              player.propDelays[key].cache.push(player.propDelays[key].cache.shift());
             }
+            console.log('resetting cache..', player.propDelays[key].cache)
           }
-          console.log('resetting cache..')
         }
         player.inspect && player.prefs.showLog && console.log('-----Animation successfully finished---')
         // playerObj.propDelays[args.property] = {offset: args.delay, duration: args.duration, start: args.start, end: args.end, ease:args.ease, cache:[]};
