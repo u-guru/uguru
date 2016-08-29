@@ -174,8 +174,8 @@
 		<ul>
 			<li>
 				<a init-default
-					on-init="send:[pdf-load:public]"
-					when-pdf-load="send:[pdf-enter:public:delay-1000]">
+					on-init="s:[pdf-load:public]"
+					when-pdf-load="s:[pdf-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -212,13 +212,14 @@
 						    </g>
 						</svg>
 					</span>
-					<span>pdf</span>
+					<span init-with="p-op"
+						when-pdf-enter="a:[bounceInUp-subtle:set:(dur:500ms#func:linear):in]">pdf</span>
 				</a>
 			</li>
 			<li>
 				<a init-default
-					on-init="send:[doc-load:public]"
-					when-doc-load="send:[doc-enter:public:delay-1000]">
+					on-init="s:[doc-load:public:delay-150]"
+					when-doc-load="s:[doc-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -270,13 +271,14 @@
 						    </g>
 						</svg>
 					</span>
-					<span>doc</span>
+					<span init-with="p-op"
+						when-doc-enter="a:[bounceInUp-subtle:set:(dur:500ms#func:linear):in]">doc</span>
 				</a>
 			</li>
 			<li>
 				<a init-default
-					on-init="send:[png-load:public]"
-					when-png-load="send:[png-enter:public:delay-1000]">
+					on-init="s:[png-load:public:delay-300]"
+					when-png-load="s:[png-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<g stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
@@ -295,13 +297,14 @@
 							</g>
 						</svg>
 					</span>
-					<span>png</span>
+					<span init-with="p-op"
+						when-png-enter="a:[bounceInUp-subtle:set:(dur:500ms#func:linear):in]">png</span>
 				</a>
 			</li>
 			<li>
 				<a init-default
-					on-init="send:[jpg-load:public]"
-					when-jpg-load="send:[jpg-enter:public:delay-1000]">
+					on-init="s:[jpg-load:public:delay-450]"
+					when-jpg-load="s:[jpg-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 							<defs>
@@ -323,13 +326,14 @@
 							</g>
 						</svg>
 					</span>
-					<span>jpg</span>
+					<span init-with="p-op"
+						when-jpg-enter="a:[bounceInUp-subtle:set:(dur:500ms#func:linear):in]">jpg</span>
 				</a>
 			</li>
 			<li>
 				<a init-default
-					on-init="send:[html-load:public]"
-					when-html-load="send:[html-enter:public:delay-1000]">
+					on-init="s:[html-load:public:delay-600]"
+					when-html-load="s:[html-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -398,13 +402,14 @@
 						    </g>
 						</svg>
 					</span>
-					<span>html</span>
+					<span init-with="p-op"
+						when-html-enter="a:[bounceInUp-subtle:set:(dur:500ms#func:linear):in]">html</span>
 				</a>
 			</li>
 			<li>
 				<a init-default
-					on-init="send:[xls-load:public]"
-					when-xls-load="send:[xls-enter:public:delay-1000]">
+					on-init="s:[xls-load:public:delay-750]"
+					when-xls-load="s:[xls-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -428,13 +433,14 @@
 						    </g>
 						</svg>
 					</span>
-					<span>xls</span>
+					<span init-with="p-op"
+						when-xls-enter="a:[bounceInUp-subtle:set:(dur:500ms#func:linear):in]">xls</span>
 				</a>
 			</li>
 			<li>
 				<a init-default
-					on-init="send:[mp3-load:public]"
-					when-mp3-load="send:[mp3-enter:public:delay-1000]">
+					on-init="s:[mp3-load:public:delay-900]"
+					when-mp3-load="s:[mp3-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -453,13 +459,14 @@
 						    </g>
 						</svg>
 					</span>
-					<span>mp3</span>
+					<span init-with="p-op"
+						when-mp3-enter="a:[bounceInUp-subtle:set:(dur:500ms#func:linear):in]">mp3</span>
 				</a>
 			</li>
 			<li>
 				<a init-default
-					on-init="send:[mp4-load:public]"
-					when-mp4-load="send:[mp4-enter:public:delay-1000]">
+					on-init="s:[mp4-load:public:delay-1050]"
+					when-mp4-load="s:[mp4-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -502,13 +509,14 @@
 						    </g>
 						</svg>
 					</span>
-					<span>mp4</span>
+					<span init-with="p-op"
+						when-mp4-enter="a:[bounceInUp-subtle:set:(dur:500ms#func:linear):in]">mp4</span>
 				</a>
 			</li>
 			<li>
 				<a init-default
-					on-init="send:[ppt-load:public]"
-					when-ppt-load="send:[ppt-enter:public:delay-1000]">
+					on-init="s:[ppt-load:public:delay-1200]"
+					when-ppt-load="s:[ppt-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -543,13 +551,14 @@
 						    </g>
 						</svg>
 					</span>
-					<span>ppt</span>
+					<span init-with="p-op"
+						when-ppt-enter="a:[bounceInUp-subtle:set:(dur:500ms#func:linear):in]">ppt</span>
 				</a>
 			</li>
 			<li>
 				<a init-default
-					on-init="send:[txt-load:public]"
-					when-txt-load="send:[txt-enter:public:delay-1000]">
+					on-init="s:[txt-load:public:delay-1350]"
+					when-txt-load="s:[txt-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -587,7 +596,8 @@
 						    </g>
 						</svg>
 					</span>
-					<span>txt</span>
+					<span init-with="p-op"
+						when-txt-enter="a:[bounceInUp-subtle:set:(dur:500ms#func:linear):in]">txt</span>
 				</a>
 			</li>
 		</ul>
