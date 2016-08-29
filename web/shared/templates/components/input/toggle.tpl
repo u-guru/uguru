@@ -1,33 +1,33 @@
-<div class="perspective-container full-xy flex-center" types='default, time-period, round, white-round' default-type="default" reference="http://codepen.io/teamuguru/pen/6ddde9fa7dbff14ae4124d45341be8c5?editors=1100">
+<div class="perspective-container full-xy flex-center" types='default, time-period, round, white-round' default-type="time-period" reference="http://codepen.io/teamuguru/pen/6ddde9fa7dbff14ae4124d45341be8c5?editors=1100">
 	<div class="toggle-container" ng-if='activeType === "default"'
 		init-default
 		on-init="send:[input-load:public]"
-		when-input-load="send:[input-enter:public:delay-450]">
+		when-input-load="send:[input-enter:public]:delay-450">
 		<div class="toggle normal">
 			<input type="checkbox" checked/>
 			<label>
 				<div init-with="p-op"
-					when-input-enter="p:[opacity:0:1:750:easeOutSine]:delay-500"></div>
+					when-input-enter="p:[opacity:0:1:400:easeOutCubic]:delay-200"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"
-						init-with="p:[fop:0, sdo:88, sda:88]"
-						when-input-load="p:[stroke-dashoffset:88:0:450:easeOutSine]"
-						when-input-enter="p:[fill-opacity:0:1:750:easeOutSine]:delay-500"></rect>
+						init-with="p:[sdo:88, sda:88, fill-opacity:0]"
+						when-input-load="p:[stroke-dashoffset:88:0:450:easeOutSine]:delay-200"
+						when-input-enter="p:[fill-opacity:0:1:500:easeOutExpo]:delay-450"></rect>
 				</svg>
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"></rect>
 				</svg>
 
 				<div init-with="p:[op:1]"
-					when-input-enter="p:[opacity:1:0:750:easeOutSine]:delay-500">
+					when-input-load="p:[opacity:1:0:800:linear]:delay-200">
 					<div init-with="p:[tr:scale(0)]"
-						when-input-load="p:[transform:scale(0):scale(1):150:easeOutSine]"></div>
+						when-input-load="p:[transform:scale(0):scale(1):50:easeOutQuad]"></div>
 					<div init-with="p:[tr:scale(0)]"
-						when-input-load="p:[transform:scale(0):scale(1):150:easeOutSine]:delay-150"></div>
+						when-input-load="p:[transform:scale(0):scale(1):50:easeOutQuad]:delay-50"></div>
 					<div init-with="p:[tr:scale(0)]"
-						when-input-load="p:[transform:scale(0):scale(1):150:easeOutSine]:delay-300"></div>
+						when-input-load="p:[transform:scale(0):scale(1):50:easeOutQuad]:delay-200"></div>
 					<div init-with="p:[tr:scale(0)]"
-						when-input-load="p:[transform:scale(0):scale(1):150:easeOutSine]:delay-450"></div>
+						when-input-load="p:[transform:scale(0):scale(1):50:easeOutQuad]:delay-250"></div>
 				</div>
 			</label>
 		</div>
@@ -36,18 +36,18 @@
 	<div class="toggle-container" ng-if='activeType === "time-period"'
 		init-default
 		on-init="send:[input-load:public]"
-		when-input-load="send:[input-enter:public:delay-450]"
+		when-input-load="send:[input-enter:public]:delay-450"
 		on-click="send:[pm-exit:public]">
 		<div class="toggle am-pm">
 			<input type="checkbox"/>
 			<label>
 				<div init-with="p-op"
-					when-input-enter="p:[opacity:0:1:750:easeOutSine]:delay-500"></div>
+					when-input-enter="p:[opacity:0:1:400:easeOutCubic]:delay-200"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"
-						init-with="p:[fop:0, sdo:88, sda:88]"
-						when-input-load="p:[stroke-dashoffset:88:0:450:easeOutSine]"
-						when-input-enter="p:[fill-opacity:0:1:750:easeOutSine]:delay-500"></rect>
+						init-with="p:[sdo:88, sda:88, fill-opacity:0]"
+						when-input-load="p:[stroke-dashoffset:88:0:1750:easeOutSine]"
+						when-input-enter="p:[fill-opacity:0:1:500:easeOutExpo]:delay-500"></rect>
 				</svg>
 				<svg class="square" viewBox="0 0 26 26">
 					<rect x="2" y="2" width="22" height="22"></rect>
@@ -58,15 +58,15 @@
 					<span class="pm">PM</span>
 				</span>
 				<div init-with="p:[op:1]"
-					when-input-enter="p:[opacity:1:0:750:easeOutSine]:delay-500">
+					when-input-load="p:[opacity:1:0:800:linear]:delay-200">
 					<div init-with="p:[tr:scale(0)]"
-						when-input-load="p:[transform:scale(0):scale(1):150:easeOutSine]"></div>
+						when-input-load="p:[transform:scale(0):scale(1):50:easeOutQuad]"></div>
 					<div init-with="p:[tr:scale(0)]"
-						when-input-load="p:[transform:scale(0):scale(1):150:easeOutSine]:delay-150"></div>
+						when-input-load="p:[transform:scale(0):scale(1):50:easeOutQuad]:delay-50"></div>
 					<div init-with="p:[tr:scale(0)]"
-						when-input-load="p:[transform:scale(0):scale(1):150:easeOutSine]:delay-300"></div>
+						when-input-load="p:[transform:scale(0):scale(1):50:easeOutQuad]:delay-200"></div>
 					<div init-with="p:[tr:scale(0)]"
-						when-input-load="p:[transform:scale(0):scale(1):150:easeOutSine]:delay-450"></div>
+						when-input-load="p:[transform:scale(0):scale(1):50:easeOutQuad]:delay-250"></div>
 				</div>
 			</label>
 		</div>
