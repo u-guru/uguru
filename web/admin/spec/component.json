@@ -50,7 +50,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Check about toggling from the same element @samir"
+                    "bugs": "@samir Check about toggling from the same element"
                 }
             },
 			"map-marker": {
@@ -386,7 +386,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Fill these out, but might need binding for fake input from @Samir"
+                    "bugs": "@samir Needs binding for fake input + letter animation"
                 }
 			},
 			"button": {
@@ -471,7 +471,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Clicking multiple times shouldn't retrigger opening @Samir"
+                    "bugs": "@samir Clicking multiple times shouldn't retrigger opening"
                 }
             },
 			"toggle": {
@@ -798,7 +798,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Change translate down to swing like the dropdown. Stagger."
+                    "bugs": "FIXED &rarr; Change translate down to swing like the dropdown. Stagger."
                 }
             },
 			"attachment-tile": {
@@ -847,7 +847,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Switcher is not working for this page only: onexits are being triggered, key being the first type. Convert on-inits to a single state."
+                    "bugs": "@samir Switcher is not working for this page only: onexits are being triggered, key being the first type. FIXED &rarr; Convert on-inits to a single state."
                 }
             },
 			"credit-tile": {
