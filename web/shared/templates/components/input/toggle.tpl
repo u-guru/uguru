@@ -111,6 +111,8 @@
 				<div init-with="p-op"
 					when-round-enter="p:[opacity:0:1:750:easeOutSine]:delay-500"></div>
 				<svg class="square" viewBox="0 0 26 26">
+					<!-- @samir look here for multiple delay workaround. Ideally, get the one state working like this :
+						when-round-load="p:[stroke-dashoffset:82:0:500:easeOutQuad:300, fill-opacityL0:1:500:linear:450]"-->
 					<circle cx="13" cy="13" r="13"
 					init-with="p:[fop:0, sdo:82, sda:82]"
 					when-round-load="p:[stroke-dashoffset:82:0:500:easeOutQuad]:delay-300"
@@ -119,7 +121,6 @@
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"></circle>
 				</svg>
-				<!-- @samir look here for multiple delays -->
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36">
 				    <rect x="1" y="1" width="70" height="34" rx="17"
 						init-with="p:[fop:0, sdo:225, sda:225]"
