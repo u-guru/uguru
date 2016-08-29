@@ -81,6 +81,7 @@
 		</li>
 		<li>
 			<div class="bg-slate-05p radius-2 p05xy">
+				<!-- @samir, color should be 100ms long but is visually 1000ms long. Try switching the letter-spacing and color around to see the difference. -->
 				<h1 class="semibold"
 					init-with="p:[letter-spacing:0px, color:#40484b]"
 					on-click="p:[letter-spacing:0px:10px:1000:easeInBack, color:#40484b:#FFFFFF:100:easeOutSine]">The quick brown fox jumps over the lazy dog.</h1>
