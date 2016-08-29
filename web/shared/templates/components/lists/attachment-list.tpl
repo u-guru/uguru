@@ -8,18 +8,7 @@
 					when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
 					<a init-default
 						on-click="s:[attach-upload:public]">
-						<span>
-							<svg viewBox="0 0 100 100">
-								<g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 Z" stroke="#F25A5B" fill="#A25B5D"></path>
-									<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 L19.0000163,14 Z M68.0992131,14.96 L68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="#A25B5D" fill="#F25A5B"></path>
-									<path d="M26,50 L26,78 L73,78" stroke="#FFFFFF"></path>
-									<path d="M26.0065349,27 L58.452381,27" stroke="#FFFFFF"></path>
-									<path d="M26.0065349,39 L73,39" stroke="#FFFFFF"></path>
-									<path d="M68.6006058,52 L52.1852677,69.8143786 L43.0177984,59.8655876 L26.3536791,77.9499504 M61.1012997,52 L68.5969544,52 L68.5969544,60.1384542" stroke="#FFFFFF"></path>
-								</g>
-							</svg>
-						</span>
+						<span ng-include="root.base_url + 'shared/templates/components/svg/ext/pdf-fill.html'"></span>
 						<span>vet-ethics-guide.pdf</span>
 						<div>
 							<div class="top"
@@ -32,29 +21,14 @@
 								init-with="p:[tr:scaleY(0)]"></div>
 							<div class="uploading"
 								init-with="p:[tr:scaleX(0), op:1]"
-								when-attach-upload="p:[tr:none, t:all 250ms ease-out, op:0:delay-500]"></div>
+								when-attach-upload="p:[transform:scaleX(0):scaleX(1):250:easeOutSine, opacity:1:0:250:easeOutSine:delay-500]"></div>
 						</div>
 					</a>
 				</li>
 				<li init-with="p-op"
 					when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 					<a>
-						<span>
-							<svg viewBox="0 0 100 100">
-								<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 Z" fill="#467693"></path>
-									<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="#467693" stroke-width="2" fill="#50A5DD"></path>
-									<path d="M22.6366123,64 L77.3852732,64" stroke="#FFFFFF" stroke-width="2"></path>
-									<path d="M22.6366123,76 L77.3852732,76" stroke="#FFFFFF" stroke-width="2"></path>
-									<path d="M55.6294408,52 L77.2542178,52" stroke="#FFFFFF" stroke-width="2"></path>
-									<path d="M55.6336591,40 L77.6212124,40" stroke="#FFFFFF" stroke-width="2"></path>
-									<path d="M55.4518409,28 L61.8030306,28" stroke="#FFFFFF" stroke-width="2"></path>
-									<rect stroke="#FFFFFF" stroke-width="2" fill="#467693" x="22" y="25" width="26" height="28" rx="2"></rect>
-									<path d="M31.9314179,48.9453845 C32.1640179,48.9906485 32.4187723,49.0143973 32.6943619,49.0143973 L42.5153962,49.0143973 C44.7241651,49.0143973 45.5891311,47.4805175 44.447895,45.5883809 L39.6712698,37.6688735 C38.5247851,35.7680349 36.6797244,35.7767369 35.5384884,37.6688735 L31.6684718,44.0852498 L31.2869733,43.4527362 C30.3147502,41.8408183 28.7387295,41.8409855 27.7666073,43.4527362 L26.1722924,46.0960645 C25.2000693,47.7079824 25.9371302,49.0143973 27.8183387,49.0143973 L31.2352418,49.0143973 C31.4884119,49.0143973 31.72095,48.9905711 31.9314179,48.9453845 L31.9314179,48.9453845 Z" stroke="#FFFFFF" stroke-width="2" fill="#B0D8F0"></path>
-									<circle stroke="#FFFFFF" stroke-width="2" fill="#B0D8F0" cx="28.1285714" cy="31.1285714" r="2.22857143"></circle>
-								</g>
-							</svg>
-						</span>
+						<span ng-include="root.base_url + 'shared/templates/components/svg/ext/doc-fill.html'"></span>
 						<span>file.doc</span>
 						<div>
 							<div class="top"
@@ -73,15 +47,7 @@
 				<li init-with="p-op"
 					when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-200]">
 					<a>
-						<span>
-							<svg viewBox="0 0 100 100">
-								<g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-									<rect stroke="#4B7681" fill="#CCE3E9" x="14" y="14" width="72" height="72" rx="2"></rect>
-									<rect stroke="#4B7681" fill="#55A4B7" x="19" y="19" width="62" height="52"></rect>
-									<path d="M43.4375976,66 L67.786851,66 C71.1015401,66 72.3823516,63.7024894 70.6596479,60.8683666 L58.6929424,41.1812237 C56.9720116,38.3500175 54.1771841,38.3471008 52.4544804,41.1812237 L43.4434661,56.0057822 L42.1887653,53.941599 C40.4658749,51.1071689 37.6696704,51.105382 35.9456939,53.941599 L31.7376067,60.8645749 C30.0147162,63.699005 31.304048,66 34.6198358,66 L43.4375976,66 Z M33.5537843,33.0371927 C36.0687699,33.0371927 38.1075686,31.0141482 38.1075686,28.5185963 C38.1075686,26.0230445 36.0687699,24 33.5537843,24 C31.0387987,24 29,26.0230445 29,28.5185963 C29,31.0141482 31.0387987,33.0371927 33.5537843,33.0371927 Z" stroke="#FFFFFF" fill-opacity="0.5" fill="#40484B"></path>
-								</g>
-							</svg>
-						</span>
+						<span ng-include="root.base_url + 'shared/templates/components/svg/ext/jpg-fill.html'"></span>
 						<span>image.jpg</span>
 						<div>
 							<div class="top"
@@ -108,18 +74,7 @@
 				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
 				<a init-default
 					on-click="s:[attach-upload:public]">
-					<span>
-						<svg viewBox="0 0 100 100">
-							<g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 Z" stroke="#F25A5B" fill="#A25B5D"></path>
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 L19.0000163,14 Z M68.0992131,14.96 L68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="#A25B5D" fill="#F25A5B"></path>
-								<path d="M26,50 L26,78 L73,78" stroke="#FFFFFF"></path>
-								<path d="M26.0065349,27 L58.452381,27" stroke="#FFFFFF"></path>
-								<path d="M26.0065349,39 L73,39" stroke="#FFFFFF"></path>
-								<path d="M68.6006058,52 L52.1852677,69.8143786 L43.0177984,59.8655876 L26.3536791,77.9499504 M61.1012997,52 L68.5969544,52 L68.5969544,60.1384542" stroke="#FFFFFF"></path>
-							</g>
-						</svg>
-					</span>
+					<span ng-include="root.base_url + 'shared/templates/components/svg/ext/pdf-fill.html'"></span>
 					<span>vet-ethics-guide.pdf</span>
 					<div>
 						<div class="top"
@@ -132,29 +87,14 @@
 							init-with="p:[tr:scaleY(0)]"></div>
 						<div class="uploading"
 							init-with="p:[tr:scaleX(0), op:1]"
-							when-attach-upload="p:[tr:none, t:all 250ms ease-out, op:0:delay-500]"></div>
+							when-attach-upload="p:[transform:scaleX(0):scaleX(1):250:easeOutSine, opacity:1:0:250:easeOutSine:delay-500]"></div>
 					</div>
 				</a>
 			</li>
 			<li init-with="p-op"
 				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 				<a>
-					<span>
-						<svg viewBox="0 0 100 100">
-							<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 Z" fill="#467693"></path>
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="#467693" stroke-width="2" fill="#50A5DD"></path>
-								<path d="M22.6366123,64 L77.3852732,64" stroke="#FFFFFF" stroke-width="2"></path>
-								<path d="M22.6366123,76 L77.3852732,76" stroke="#FFFFFF" stroke-width="2"></path>
-								<path d="M55.6294408,52 L77.2542178,52" stroke="#FFFFFF" stroke-width="2"></path>
-								<path d="M55.6336591,40 L77.6212124,40" stroke="#FFFFFF" stroke-width="2"></path>
-								<path d="M55.4518409,28 L61.8030306,28" stroke="#FFFFFF" stroke-width="2"></path>
-								<rect stroke="#FFFFFF" stroke-width="2" fill="#467693" x="22" y="25" width="26" height="28" rx="2"></rect>
-								<path d="M31.9314179,48.9453845 C32.1640179,48.9906485 32.4187723,49.0143973 32.6943619,49.0143973 L42.5153962,49.0143973 C44.7241651,49.0143973 45.5891311,47.4805175 44.447895,45.5883809 L39.6712698,37.6688735 C38.5247851,35.7680349 36.6797244,35.7767369 35.5384884,37.6688735 L31.6684718,44.0852498 L31.2869733,43.4527362 C30.3147502,41.8408183 28.7387295,41.8409855 27.7666073,43.4527362 L26.1722924,46.0960645 C25.2000693,47.7079824 25.9371302,49.0143973 27.8183387,49.0143973 L31.2352418,49.0143973 C31.4884119,49.0143973 31.72095,48.9905711 31.9314179,48.9453845 L31.9314179,48.9453845 Z" stroke="#FFFFFF" stroke-width="2" fill="#B0D8F0"></path>
-								<circle stroke="#FFFFFF" stroke-width="2" fill="#B0D8F0" cx="28.1285714" cy="31.1285714" r="2.22857143"></circle>
-							</g>
-						</svg>
-					</span>
+					<span ng-include="root.base_url + 'shared/templates/components/svg/ext/doc-fill.html'"></span>
 					<span>file.doc</span>
 					<div>
 						<div class="top"
@@ -209,55 +149,21 @@
 			<li init-with="p-op"
 				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
 				<a>
-					<span>
-						<svg viewBox="0 0 100 100">
-							<g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 Z" stroke="#F25A5B" fill="#A25B5D"></path>
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 L19.0000163,14 Z M68.0992131,14.96 L68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="#A25B5D" fill="#F25A5B"></path>
-								<path d="M26,50 L26,78 L73,78" stroke="#FFFFFF"></path>
-								<path d="M26.0065349,27 L58.452381,27" stroke="#FFFFFF"></path>
-								<path d="M26.0065349,39 L73,39" stroke="#FFFFFF"></path>
-								<path d="M68.6006058,52 L52.1852677,69.8143786 L43.0177984,59.8655876 L26.3536791,77.9499504 M61.1012997,52 L68.5969544,52 L68.5969544,60.1384542" stroke="#FFFFFF"></path>
-							</g>
-						</svg>
-					</span>
+					<span ng-include="root.base_url + 'shared/templates/components/svg/ext/pdf-fill.html'"></span>
 					<span>vet-ethics-guide.pdf</span>
 				</a>
 			</li>
 			<li init-with="p-op"
 				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 				<a>
-					<span>
-						<svg viewBox="0 0 100 100">
-							<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 Z" fill="#467693"></path>
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="#467693" stroke-width="2" fill="#50A5DD"></path>
-								<path d="M22.6366123,64 L77.3852732,64" stroke="#FFFFFF" stroke-width="2"></path>
-								<path d="M22.6366123,76 L77.3852732,76" stroke="#FFFFFF" stroke-width="2"></path>
-								<path d="M55.6294408,52 L77.2542178,52" stroke="#FFFFFF" stroke-width="2"></path>
-								<path d="M55.6336591,40 L77.6212124,40" stroke="#FFFFFF" stroke-width="2"></path>
-								<path d="M55.4518409,28 L61.8030306,28" stroke="#FFFFFF" stroke-width="2"></path>
-								<rect stroke="#FFFFFF" stroke-width="2" fill="#467693" x="22" y="25" width="26" height="28" rx="2"></rect>
-								<path d="M31.9314179,48.9453845 C32.1640179,48.9906485 32.4187723,49.0143973 32.6943619,49.0143973 L42.5153962,49.0143973 C44.7241651,49.0143973 45.5891311,47.4805175 44.447895,45.5883809 L39.6712698,37.6688735 C38.5247851,35.7680349 36.6797244,35.7767369 35.5384884,37.6688735 L31.6684718,44.0852498 L31.2869733,43.4527362 C30.3147502,41.8408183 28.7387295,41.8409855 27.7666073,43.4527362 L26.1722924,46.0960645 C25.2000693,47.7079824 25.9371302,49.0143973 27.8183387,49.0143973 L31.2352418,49.0143973 C31.4884119,49.0143973 31.72095,48.9905711 31.9314179,48.9453845 L31.9314179,48.9453845 Z" stroke="#FFFFFF" stroke-width="2" fill="#B0D8F0"></path>
-								<circle stroke="#FFFFFF" stroke-width="2" fill="#B0D8F0" cx="28.1285714" cy="31.1285714" r="2.22857143"></circle>
-							</g>
-						</svg>
-					</span>
+					<span ng-include="root.base_url + 'shared/templates/components/svg/ext/doc-fill.html'"></span>
 					<span>file.doc</span>
 				</a>
 			</li>
 			<li init-with="p-op"
 				when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-200]">
 				<a>
-					<span>
-						<svg viewBox="0 0 100 100">
-							<g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<rect stroke="#4B7681" fill="#CCE3E9" x="14" y="14" width="72" height="72" rx="2"></rect>
-								<rect stroke="#4B7681" fill="#55A4B7" x="19" y="19" width="62" height="52"></rect>
-								<path d="M43.4375976,66 L67.786851,66 C71.1015401,66 72.3823516,63.7024894 70.6596479,60.8683666 L58.6929424,41.1812237 C56.9720116,38.3500175 54.1771841,38.3471008 52.4544804,41.1812237 L43.4434661,56.0057822 L42.1887653,53.941599 C40.4658749,51.1071689 37.6696704,51.105382 35.9456939,53.941599 L31.7376067,60.8645749 C30.0147162,63.699005 31.304048,66 34.6198358,66 L43.4375976,66 Z M33.5537843,33.0371927 C36.0687699,33.0371927 38.1075686,31.0141482 38.1075686,28.5185963 C38.1075686,26.0230445 36.0687699,24 33.5537843,24 C31.0387987,24 29,26.0230445 29,28.5185963 C29,31.0141482 31.0387987,33.0371927 33.5537843,33.0371927 Z" stroke="#FFFFFF" fill-opacity="0.5" fill="#40484B"></path>
-							</g>
-						</svg>
-					</span>
+					<span ng-include="root.base_url + 'shared/templates/components/svg/ext/png-fill.html'"></span>
 					<span>image.jpg</span>
 				</a>
 			</li>
@@ -272,29 +178,38 @@
 					when-pdf-load="send:[pdf-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
-							<g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="white" stroke-width="2" stroke-opacity="0.1"
-									init-with="p:[stroke-dashoffset:303, sda:303]"
-									when-pdf-load="p:[stroke-dashoffset:303:0:1050:easeOutSine]"></path>
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 Z" stroke="#F25A5B" fill="#A25B5D"
+						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="white" stroke-width="2" stroke-opacity="0.1"
+									init-with="p:[sdo:306.6, sda:306.6]"
+									when-pdf-load="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]"></path>
+
+								<path d="M68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32 L68,14 L68,14 Z" fill="#F25A5B"
 									init-with="p-op"
-									when-pdf-enter="a:[fadeIn:set:(dur:1000ms#func:linear):in]"></path>
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 L19.0000163,14 Z M68.0992131,14.96 L68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="#A25B5D" fill="#F25A5B"
-									init-with="p:[fill-opacity:0, stroke-dashoffset:303, sda:303]"
-									when-pdf-enter="p:[fill-opacity:0:1:250:easeOutSine, stroke-dashoffset:303:0:150:easeOutSine]:delay-500"></path>
-								<path d="M26,50 L26,78 L73,78" stroke="#FFFFFF"
-									init-with="p:[stroke-dashoffset:75, sda:75]"
-									when-pdf-enter="p:[stroke-dashoffset:75:0:150:easeOutSine:delay-1250]"></path>
-								<path d="M26.0065349,27 L58.452381,27" stroke="#FFFFFF"
-									init-with="p:[op:0, sda:33]"
-									when-pdf-enter="p:[opacity:0:1:150:easeOutSine, stroke-dashoffset:33:0:150:easeOutSine]"></path>
-								<path d="M26.0065349,39 L73,39" stroke="#FFFFFF"
-									init-with="p:[op:0,sda:47]"
-									when-pdf-enter="p:[opacity:0:1:150:easeOutSine, stroke-dashoffset:47:0:150:easeOutSine]:delay-150"></path>
-								<path d="M68.6006058,52 L52.1852677,69.8143786 L43.0177984,59.8655876 L26.3536791,77.9499504 M61.1012997,52 L68.5969544,52 L68.5969544,60.1384542" stroke="#FFFFFF"
-									init-with="p:[stroke-dashoffset:-78, sda:78]"
-									when-pdf-enter="p:[stroke-dashoffset:-78:0:250:easeOutSine]:delay-500"></path>
-							</g>
+									when-pdf-enter="p:[opacity:0:1:1000:easeOutSine]"></path>
+								<path d="M68,14 L68,28.0052166 C68,30.2114745 69.7917156,32 71.9947834,32 L86,32 L68,14 Z" fill="#A25B5D"
+									init-with="p-op"
+									when-pdf-enter="p:[opacity:0:1:1000:easeOutSine]"></path>
+
+								<g stroke-width="2">
+									<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="#A25B5D"
+										init-with="p:[sdo:306.6, sda:306.6]"
+										when-pdf-enter="p:[stroke-dashoffset:306.6:0:150:easeOutSine]:delay-500"></path>
+							        <g stroke="#FFFFFF">
+										<path d="M26,50 L26,78 L73,78"
+											init-with="p:[sdo:75, sda:75]"
+											when-pdf-enter="p:[stroke-dashoffset:75:0:150:easeOutSine:delay-1250]"></path>
+								        <path d="M26.0065349,27 L58.452381,27"
+											init-with="p:[op:0, sda:33]"
+											when-pdf-enter="p:[opacity:0:1:150:easeOutSine, stroke-dashoffset:33:0:150:easeOutSine]"></path>
+								        <path d="M26.0065349,39 L73,39"
+											init-with="p:[op:0,sda:47]"
+											when-pdf-enter="p:[opacity:0:1:150:easeOutSine, stroke-dashoffset:47:0:150:easeOutSine]:delay-150">></path>
+								        <path d="M68.6006058,52 L52.1852677,69.8143786 L43.0177984,59.8655876 L26.3536791,77.9499504 M61.1012997,52 L68.5969544,52 L68.5969544,60.1384542"
+											init-with="p:[sdo:-78, sda:78]"
+											when-pdf-enter="p:[stroke-dashoffset:-78:0:250:easeOutSine]:delay-500"></path>
+									</g>
+								</g>
+						    </g>
 						</svg>
 					</span>
 					<span>pdf</span>
@@ -306,41 +221,50 @@
 					when-doc-load="send:[doc-enter:public:delay-1000]">
 					<span>
 						<svg viewBox="0 0 100 100">
-							<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="white" stroke-width="2" stroke-opacity="0.1"
-									init-with="p:[stroke-dashoffset:303, sda:303]"
-									when-doc-load="p:[stroke-dashoffset:303:0:1050:easeOutSine]"></path>
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 Z" fill="#467693"
+						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="white" stroke-width="2" stroke-opacity="0.1"
+									init-with="p:[sdo:306.6, sda:306.6]"
+									when-doc-load="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]"></path>
+
+								<path d="M68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32 L68,14 L68,14 Z" fill="#50A5DD"
 									init-with="p-op"
-									when-doc-enter="a:[fadeIn:set:(dur:1000ms#func:linear):in]"></path>
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="#467693" stroke-width="2" fill="#50A5DD"
-									init-with="p:[fill-opacity:0, stroke-dashoffset:303, sda:303]"
-									when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-500, stroke-dashoffset:303:0:150:easeOutSine]"></path>
-								<path d="M22.6366123,64 L77.3852732,64" stroke="#FFFFFF" stroke-width="2"
-									init-with="p:[stroke-dashoffset:56, sda:56]"
-									when-doc-enter="p:[stroke-dashoffset:56:0:150:easeOutSine]:delay-200"></path>
-								<path d="M22.6366123,76 L77.3852732,76" stroke="#FFFFFF" stroke-width="2"
-									init-with="p:[stroke-dashoffset:56, sda:56]"
-									when-doc-enter="p:[stroke-dashoffset:56:0:150:easeOutSine]:delay-150"></path>
-								<path d="M55.6294408,52 L77.2542178,52" stroke="#FFFFFF" stroke-width="2"
-									init-with="p:[stroke-dashoffset:22, sda:22]"
-									when-doc-enter="p:[stroke-dashoffset:22:0:150:easeOutSine]:delay-100"></path>
-								<path d="M55.6336591,40 L77.6212124,40" stroke="#FFFFFF" stroke-width="2"
-									init-with="p:[stroke-dashoffset:22, sda:22]"
-									when-doc-enter="p:[stroke-dashoffset:22:0:150:easeOutSine]:delay-50"></path>
-								<path d="M55.4518409,28 L61.8030306,28" stroke="#FFFFFF" stroke-width="2"
-									init-with="p:[stroke-dashoffset:7, sda:7]"
-									when-doc-enter="p:[stroke-dashoffset:7:0:150:easeOutSine]"></path>
-								<rect stroke="#FFFFFF" stroke-width="2" fill="#467693" x="22" y="25" width="26" height="28" rx="2"
-									init-with="p:[fill-opacity:0,stroke-dashoffset:728, sda:728]"
-									when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-450,stroke-dashoffset:728:0:1450:easeInQuint]"></rect>
-								<path d="M31.9314179,48.9453845 C32.1640179,48.9906485 32.4187723,49.0143973 32.6943619,49.0143973 L42.5153962,49.0143973 C44.7241651,49.0143973 45.5891311,47.4805175 44.447895,45.5883809 L39.6712698,37.6688735 C38.5247851,35.7680349 36.6797244,35.7767369 35.5384884,37.6688735 L31.6684718,44.0852498 L31.2869733,43.4527362 C30.3147502,41.8408183 28.7387295,41.8409855 27.7666073,43.4527362 L26.1722924,46.0960645 C25.2000693,47.7079824 25.9371302,49.0143973 27.8183387,49.0143973 L31.2352418,49.0143973 C31.4884119,49.0143973 31.72095,48.9905711 31.9314179,48.9453845 L31.9314179,48.9453845 Z" stroke="#FFFFFF" stroke-width="2" fill="#B0D8F0"
-									init-with="p:[fill-opacity:0,stroke-dashoffset:56, sda:56]"
-									when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-750,stroke-dashoffset:56:0:750:easeInQuint:delay-450]"></path>
-								<circle stroke="#FFFFFF" stroke-width="2" fill="#B0D8F0" cx="28.1285714" cy="31.1285714" r="2.22857143"
-									init-with="p:[fill-opacity:0,stroke-dashoffset:14, sda:14]"
-									when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-750,stroke-dashoffset:750:0:easeOutSine:delay-450]"></circle>
-							</g>
+									when-doc-enter="p:[opacity:0:1:1000:easeOutSine]"></path>
+								<path d="M68,14 L68,28.0052166 C68,30.2114745 69.7917156,32 71.9947834,32 L86,32 L68,14 Z" fill="#467693"
+									init-with="p-op"
+									when-doc-enter="p:[opacity:0:1:1000:easeOutSine]"></path>
+
+								<g stroke-width="2">
+									<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="#467693"
+										init-with="p:[sdo:306.6, sda:306.6]"
+										when-doc-enter="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]:delay-500"></path>
+							        <g stroke="#FFFFFF">
+										<path d="M22.6366123,64 L77.3852732,64"
+											init-with="p:[sdo:56, sda:56]"
+											when-doc-enter="p:[stroke-dashoffset:56:0:150:easeOutSine]:delay-200"></path>
+								        <path d="M22.6366123,76 L77.3852732,76"
+											init-with="p:[sdo:56, sda:56]"
+											when-doc-enter="p:[stroke-dashoffset:56:0:150:easeOutSine]:delay-150"></path>
+								        <path d="M55.6294408,52 L77.2542178,52"
+											init-with="p:[sdo:22, sda:22]"
+											when-doc-enter="p:[stroke-dashoffset:22:0:150:easeOutSine]:delay-100"></path>
+								        <path d="M55.6336591,40 L77.6212124,40"
+											init-with="p:[sdo:22, sda:22]"
+											when-doc-enter="p:[stroke-dashoffset:22:0:150:easeOutSine]:delay-50"></path>
+								        <path d="M55.4518409,28 L61.8030306,28"
+											init-with="p:[sdo:7, sda:7]"
+											when-doc-enter="p:[stroke-dashoffset:7:0:150:easeOutSine]"></path>
+								        <rect fill="#467693" x="22" y="25" width="26" height="28" rx="2"
+											init-with="p:[fill-opacity:0,stroke-dashoffset:728, sda:728]"
+											when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-450,stroke-dashoffset:728:0:1450:easeInQuint]"></rect>
+								        <path d="M31.9314179,48.9453845 C32.1640179,48.9906485 32.4187723,49.0143973 32.6943619,49.0143973 L42.5153962,49.0143973 C44.7241651,49.0143973 45.5891311,47.4805175 44.447895,45.5883809 L39.6712698,37.6688735 C38.5247851,35.7680349 36.6797244,35.7767369 35.5384884,37.6688735 L31.6684718,44.0852498 L31.2869733,43.4527362 C30.3147502,41.8408183 28.7387295,41.8409855 27.7666073,43.4527362 L26.1722924,46.0960645 C25.2000693,47.7079824 25.9371302,49.0143973 27.8183387,49.0143973 L31.2352418,49.0143973 C31.4884119,49.0143973 31.72095,48.9905711 31.9314179,48.9453845 L31.9314179,48.9453845 Z" fill="#B0D8F0"
+											init-with="p:[fill-opacity:0,stroke-dashoffset:56, sda:56]"
+											when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-750,stroke-dashoffset:56:0:750:easeInQuint:delay-450]"></path>
+								        <circle fill="#B0D8F0" cx="28.1285714" cy="31.1285714" r="2.22857143"
+											init-with="p:[fill-opacity:0,stroke-dashoffset:14, sda:14]"
+											when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-750,stroke-dashoffset:750:0:easeOutSine:delay-450]"></circle>
+									</g>
+								</g>
+						    </g>
 						</svg>
 					</span>
 					<span>doc</span>
@@ -354,7 +278,7 @@
 						<svg viewBox="0 0 100 100">
 							<g stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
 								<rect stroke="white" stroke-opacity="0.1" x="14" y="14" width="72" height="72" rx="2"
-									init-with="p:[stroke-dashoffset:288, sda:288]"
+									init-with="p:[sdo:288, sda:288]"
 									when-png-load="p:[stroke-dashoffset:288:0:1050:easeOutSine]"></rect>
 								<rect stroke="#4B7681" fill="#CCE3E9" x="14" y="14" width="72" height="72" rx="2"
 									init-with="p:[fill-opacity:0,stroke-dashoffset:288, sda:288]"
@@ -384,12 +308,12 @@
 						  </defs>
 							<g fill="none" stroke-linecap="round" stroke-linejoin="round">
 								<rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2" stroke-opacity="0.1"
-									init-with="p:[stroke-dashoffset:288, sda:288]"
+									init-with="p:[sdo:288, sda:288]"
 									when-jpg-load="p:[stroke-dashoffset:228:0:1050:easeOutSine]"></rect>
 								<!-- this extra element is to draw in, since you probably won't be able to animate the fill coming in properly, it's an image fill -->
 								<rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2"
-									init-with="p:[stroke-dashoffset:288, sda:288]"
-									when-jpg-enter="p:[stroke-dashoffset:288:0:1050:easeOutSine, t:all 1050ms ease-out]"></rect>
+									init-with="p:[sdo:288, sda:288]"
+									when-jpg-enter="p:[stroke-dashoffset:288:0:1050:easeOutSine]"></rect>
 								<rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2" fill="url(#img-fill)"
 									init-with="p:[fill-opacity:0,stroke-dashoffset:288, sda:288]"
 									when-jpg-enter="p:[fill-opacity:0:1:1050:easeOutSine:delay-500, stroke-dashoffset:288:0:1050:easeOutSine]"></rect>
@@ -407,65 +331,67 @@
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
 								<path d="M14,17.5951249 C14,15.6095923 15.3424077,14 17.0020839,14 L82.9979161,14 C84.6559213,14 86,15.6047717 86,17.5951249 L86,82.4048751 C86,84.3904077 84.6575923,86 82.9979161,86 L17.0020839,86 C15.3440787,86 14,84.3952283 14,82.4048751 L14,17.5951249 L14,17.5951249 Z M15.5,25 L84.5,25" stroke="white" stroke-width="2" stroke-opacity="0.1"
-									init-with="p:[stroke-dashoffset:351, sda:351]"
+									init-with="p:[sdo:351, sda:351]"
 									when-html-load="p:[stroke-dashoffset:351:0:1050:easeOutSine]"></path>
 						        <path d="M14,28.0458697 C14,26.3636823 15.3424077,25 17.0020839,25 L82.9979161,25 C84.6559213,25 86,26.3595982 86,28.0458697 L86,82.9541303 C86,84.6363177 84.6575923,86 82.9979161,86 L17.0020839,86 C15.3440787,86 14,84.6404018 14,82.9541303 L14,28.0458697 L14,28.0458697 Z" fill="#40484B"
 									init-with="p-op"
-									when-html-enter="a:[fadeIn:set:(dur:750ms#func:ease-out):in]"></path>
+									when-html-enter="p:[opacity:0:1:750:easeOutSine]"></path>
 						        <path d="M14,15.5492552 C14,15.2459099 15.3424077,15 17.0020839,15 L82.9979161,15 C84.6559213,15 86,15.2451735 86,15.5492552 L86,25.4507448 C86,25.7540901 84.6575923,26 82.9979161,26 L17.0020839,26 C15.3440787,26 14,25.7548265 14,25.4507448 L14,15.5492552 L14,15.5492552 Z" fill="#C8D2D4"
 									init-with="p-op"
-									when-html-enter="a:[fadeIn:set:(dur:250ms#func:ease-out):in:delay-500]"></path>
-						        <path d="M14,17.5951249 C14,15.6095923 15.3424077,14 17.0020839,14 L82.9979161,14 C84.6559213,14 86,15.6047717 86,17.5951249 L86,82.4048751 C86,84.3904077 84.6575923,86 82.9979161,86 L17.0020839,86 C15.3440787,86 14,84.3952283 14,82.4048751 L14,17.5951249 L14,17.5951249 Z M15.5,25 L84.5,25" stroke="#8A9EA3" stroke-width="2"
-									init-with="p:[fill-opacity:0,stroke-dashoffset:351, sda:351]"
-									when-html-enter="p:[fill-opacity:0:1:1050:easeOutSine:delay-250,stroke-dashoffset:351:0:1050:easeOutSine]"></path>
-						        <path d="M20.2161578,66 L38.8057277,66" stroke="#F1F1F1" stroke-width="2"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeOutSine]"></path>
-						        <path d="M43.2102147,66 L61.2886771,66" stroke-opacity="0.699999988" stroke="#FFFFFF" stroke-width="2" opacity="0.7"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-50"></path>
-						        <path d="M65.1761238,66 L80.322768,66" stroke="#FFFFFF" stroke-width="2" opacity="0.3"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-100"></path>
-						        <path d="M20.2969054,56 L45.8307734,56" stroke="#F1F1F1" stroke-width="2"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-150"></path>
-						        <path d="M50.34236,56 L79.7853188,56" stroke-opacity="0.699999988" stroke="#FFFFFF" stroke-width="2" opacity="0.7"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-200"></path>
-						        <path d="M20.2287236,76 L39.8989552,76" stroke="#F1F1F1" stroke-width="2"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-250"></path>
-						        <path d="M44.1605418,76 L57.967137,76" stroke-opacity="0.699999988" stroke="#FFFFFF" stroke-width="2" opacity="0.7"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-300"></path>
-						        <path d="M62.2059964,76 L79.9216825,76" stroke="#FFFFFF" stroke-width="2" opacity="0.3"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-450"></path>
-						        <path d="M20.1306692,46 L31.3682225,46" stroke="#F1F1F1" stroke-width="2"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeInSine]"></path>
-						        <path d="M20.3011238,36 L46.197768,36" stroke="#F1F1F1" stroke-width="2"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeInSine]"></path>
-						        <path d="M50.3465783,36 L80.1523134,36" stroke-opacity="0.699999988" stroke="#FFFFFF" stroke-width="2" opacity="0.7"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeInSine]:delay-120"></path>
-						        <path d="M35.2670329,46 L58.2318589,46" stroke-opacity="0.699999988" stroke="#FFFFFF" stroke-width="2" opacity="0.7"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeInSine]:delay-100"></path>
-						        <path d="M62.2102147,46 L80.2886771,46" stroke="#FFFFFF" stroke-width="2" opacity="0.3"
-									init-with="p-op"
-									when-html-enter="p:[opacity:0:1:450:easeInSine]:delay-50"></path>
-						        <circle stroke="#8A9EA3" stroke-width="2" cx="20.5" cy="19.5" r="1.5"
-									init-with="p-op"
-									when-html-enter="a:[fadeIn:set:(dur:750ms#func:ease-out):in]"></circle>
-						        <circle stroke="#8A9EA3" stroke-width="2" cx="27.5" cy="19.5" r="1.5"
-									init-with="p-op"
-									when-html-enter="a:[fadeIn:set:(dur:750ms#func:ease-out):in]"></circle>
-						        <circle stroke="#8A9EA3" stroke-width="2" cx="34.5" cy="19.5" r="1.5"
-									init-with="p-op"
-									when-html-enter="a:[fadeIn:set:(dur:750ms#func:ease-out):in]"></circle>
+									when-html-enter="p:[opacity:0:1:250:easeOutSine]:delay-500"></path>
+						        <g stroke-width="2">
+									<path d="M14,17.5951249 C14,15.6095923 15.3424077,14 17.0020839,14 L82.9979161,14 C84.6559213,14 86,15.6047717 86,17.5951249 L86,82.4048751 C86,84.3904077 84.6575923,86 82.9979161,86 L17.0020839,86 C15.3440787,86 14,84.3952283 14,82.4048751 L14,17.5951249 L14,17.5951249 Z M15.5,25 L84.5,25" stroke="#8A9EA3"
+										init-with="p:[sdo:351, sda:351]"
+										when-html-enter="p:[stroke-dashoffset:351:0:1050:easeOutSine]"></path>
+							        <path d="M20.2161578,66 L38.8057277,66" stroke="#F1F1F1"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]"></path>
+							        <path d="M43.2102147,66 L61.2886771,66" stroke="#FFFFFF" stroke-opacity="0.7"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-50"></path>
+							        <path d="M65.1761238,66 L80.322768,66" stroke="#FFFFFF" stroke-opacity="0.3"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-100"></path>
+							        <path d="M20.2969054,56 L45.8307734,56" stroke="#F1F1F1"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-150"></path>
+							        <path d="M50.34236,56 L79.7853188,56" stroke="#FFFFFF" stroke-opacity="0.7"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-200"></path>
+							        <path d="M20.2287236,76 L39.8989552,76" stroke="#F1F1F1"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-250"></path>
+							        <path d="M44.1605418,76 L57.967137,76" stroke="#FFFFFF" stroke-opacity="0.7"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-300"></path>
+							        <path d="M62.2059964,76 L79.9216825,76" stroke="#FFFFFF" stroke-opacity="0.3"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-350"></path>
+							        <path d="M20.1306692,46 L31.3682225,46" stroke="#F1F1F1"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-450"></path>
+							        <path d="M20.3011238,36 L46.197768,36" stroke="#F1F1F1"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]"></path>
+							        <path d="M50.3465783,36 L80.1523134,36" stroke="#FFFFFF" stroke-opacity="0.7"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-120"></path>
+							        <path d="M35.2670329,46 L58.2318589,46" stroke="#FFFFFF" stroke-opacity="0.7"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-100"></path>
+							        <path d="M62.2102147,46 L80.2886771,46" stroke="#FFFFFF" stroke-opacity="0.3"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:450:easeOutSine]:delay-50"></path>
+							        <circle stroke="#8A9EA3" cx="20.5" cy="19.5" r="1.5"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:750:easeOutSine]"></circle>
+							        <circle stroke="#8A9EA3" cx="27.5" cy="19.5" r="1.5"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:750:easeOutSine]"></circle>
+							        <circle stroke="#8A9EA3" cx="34.5" cy="19.5" r="1.5"
+										init-with="p-op"
+										when-html-enter="p:[opacity:0:1:750:easeOutSine]"></circle>
+								</g>
 						    </g>
 						</svg>
 					</span>
@@ -479,18 +405,23 @@
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="white" stroke-width="2" stroke-opacity="0.1"
-									init-with="p:[stroke-dashoffset:303, sda:303]"
-									when-xls-load="p:[stroke-dashoffset:303:0:1050:easeOutSine]"></path>
-						        <path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 L19.0000163,14 Z" fill="#617E56"
+								<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="white" stroke-width="2" stroke-opacity="0.1"
+									init-with="p:[sdo:306.6, sda:306.6]"
+									when-xls-load="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]"></path>
+
+								<path d="M68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32 L68,14 L68,14 Z" fill="#81B566"
 									init-with="p-op"
-									when-xls-enter="a:[fadeIn:set:(dur:1000ms#func:linear):in]"></path>
-						        <path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="#617E56" stroke-width="2" fill="#81B566"
-									init-with="p:[fill-opacity:0, stroke-dashoffset:303, sda:303]"
-									when-xls-enter="p:[fill-opacity:0:1:1050:easeOutSine:delay-750, stroke-dashoffset:303:0:1050:easeOutSine]"></path>
+									when-xls-enter="p:[opacity:0:1:1000:easeOutSine]"></path>
+								<path d="M68,14 L68,28.0052166 C68,30.2114745 69.7917156,32 71.9947834,32 L86,32 L68,14 Z" fill="#617E56"
+									init-with="p-op"
+									when-xls-enter="p:[opacity:0:1:1000:easeOutSine]"></path>
+
+								<path d="M68,14 L68,28.0100002 C68,30.2099991 69.7917156,32 71.9947834,32 L86,32 L68,14 L17.9926786,14 C15.7875831,14 14,15.7977484 14,17.9994146 L14,82.0005854 C14,84.2094011 15.7977484,86 17.9994146,86 L82.0005854,86 C84.2094011,86 86,84.2033234 86,82.0073214 L86,32" stroke="#617E56"
+									init-with="p:[sdo:306.6, sda:306.6]"
+									when-xls-enter="p:[stroke-dashoffset:306.6:0:1050:easeOutSine]:delay-500"></path>
 						        <path d="M38,39 L38,79 M50,39 L50,79 M62,39 L62,79 M74,39 L74,79 M26,39 L26,79 M74,79 L26.5,79 M74,69 L26.5,69 M74,59 L26.5,59 M74,49 L26.5,49 M74,39 L26.5,39" stroke="#FFFFFF"
-									init-with="p:[stroke-dashoffset:438, sda:438]"
-									when-xls-enter="p:[stroke-dashoffset:438:0:3050:easeOutSine:delay-250]"></path>
+									init-with="p:[sdo:438, sda:438]"
+									when-xls-enter="p:[stroke-dashoffset:438:0:3050:easeOutSine]:delay-250"></path>
 						    </g>
 						</svg>
 					</span>
@@ -505,7 +436,7 @@
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
 						        <rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2" stroke-opacity="0.1"
-									init-with="p:[stroke-dashoffset:288, sda:288]"
+									init-with="p:[sdo:288, sda:288]"
 									when-mp3-load="p:[stroke-dashoffset:288:0:1050:easeOutSine]"></rect>
 						        <rect x="14" y="14" width="72" height="72" rx="2" stroke="#AD377C" stroke-width="2" fill="#E6389B"
 									init-with="p:[fill-opacity:0, stroke-dashoffset:288, sda:288]"
@@ -529,41 +460,49 @@
 					<span>
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-								<rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2" stroke-opacity="0.1"	init-with="p:[stroke-dashoffset:288, sda:288]"
-								when-mp4-load="p:[stroke-dashoffset:288:0:1050:easeOutSine]"></rect>
-						        <rect fill="#7872E3" x="14" y="14" width="72" height="72" rx="2"
+								<rect x="14" y="14" width="72" height="72" rx="2" stroke="white" stroke-width="2" stroke-opacity="0.1"
+									init-with="p:[sdo:288, sda:288]"
+									when-mp4-load="p:[stroke-dashoffset:288:0:1050:easeOutSine]"></rect>
+
+								<rect fill="#7872E3" x="14" y="14" width="72" height="72" rx="2"
 									init-with="p-op"
-									when-mp4-enter="a:[fadeIn:set:(dur:500ms#func:linear):in]"></rect>
+									when-mp4-enter="p:[opacity:0:1:500:easeOutSine]"></rect>
 						        <rect fill="#FFFFFF" opacity="0.5" x="14" y="14" width="12" height="72" rx="2"
 									init-with="p-op"
 									when-mp4-enter="p:[opacity:0:0.5:500:easeOutSine]:delay-200"></rect>
 						        <rect fill="#FFFFFF" opacity="0.5" x="74" y="14" width="12" height="72" rx="2"
 									init-with="p-op"
 									when-mp4-enter="p:[opacity:0:0.5:500:easeOutSine]:delay-200"></rect>
-						        <path d="M27,14.4675325 L27,85.5324675" stroke="#4A4D72" stroke-width="2"
-									init-with="p:[stroke-dashoffset:72, sda:72]"
-									when-mp4-enter="p:[stroke-dashoffset:72:0:450:easeOutSine]"></path>
-						        <path d="M73,14.4675325 L73,85.5324675" stroke="#4A4D72" stroke-width="2"
-									init-with="p:[stroke-dashoffset:72, sda:72]"
-									when-mp4-enter="p:[stroke-dashoffset:72:0:450:easeOutSine]"></path>
-						        <path d="M74,74 L86,74 M74,26 L86,26 M74,38 L86,38 M74,50 L86,50 M74,62 L86,62" stroke="#4A4D72" stroke-width="2"
-									init-with="p:[stroke-dashoffset:60, sda:60]"
-									when-mp4-enter="p:[stroke-dashoffset:60:0:750:easeOutSine]:delay-250"></path>
-						        <path d="M14,74 L26,74 M14,26 L26,26 M14,38 L26,38 M14,50 L26,50 M14,62 L26,62" stroke="#4A4D72" stroke-width="2"
-									init-with="p:[stroke-dashoffset:60, sda:60]"
-									when-mp4-enter="p:[stroke-dashoffset:60:0:750:easeOutSine:delay-250]"></path>
-						        <path d="M62.2163044,47.615046 C62.6255301,47.9506063 62.9624,48.2795217 62.9624,48.805565 C62.9624,49.3305008 62.7227954,49.6494492 62.2163044,49.9949765 L44.2957773,63.0862556 C43.9980507,63.2767387 42.8178201,63.3586907 42.8024,62.1338404 L42.8024,35.4761821 C42.8035862,34.343251 43.8818069,34.2535468 44.2957773,34.5248744 L62.2163044,47.615046 Z" stroke="#FFFFFF" stroke-width="2" fill-opacity="0.5" fill="#FFFFFF"
-									init-with="p:[fill-opacity:0, stroke-dashoffset:79,sda:79]"
-									when-mp4-enter="p:[fill-opacity:0:0.5:500:easeOutSine, stroke-dashoffset:79:0:750:easeOutSine]"></path>
-						        <rect stroke="#4A4D72" stroke-width="2" x="14" y="14" width="72" height="72" rx="2"
-									init-with="p-op"
-									when-mp4-enter="p:[opacity:0:1:750:easeOutSine]"></rect>
+
+						        <g stroke-width="2">
+									<g stroke="#4A4D72">
+										<path d="M27,14.4675325 L27,85.5324675"
+											init-with="p:[sdo:72, sda:72]"
+											when-mp4-enter="p:[stroke-dashoffset:72:0:450:easeOutSine]"></path>
+								        <path d="M73,14.4675325 L73,85.5324675"
+											init-with="p:[sdo:72, sda:72]"
+											when-mp4-enter="p:[stroke-dashoffset:72:0:450:easeOutSine]"></path>
+								        <path d="M74,74 L86,74 M74,26 L86,26 M74,38 L86,38 M74,50 L86,50 M74,62 L86,62"
+											init-with="p:[sdo:60, sda:60]"
+											when-mp4-enter="p:[stroke-dashoffset:60:0:750:easeOutSine]:delay-250"></path>
+								        <path d="M14,74 L26,74 M14,26 L26,26 M14,38 L26,38 M14,50 L26,50 M14,62 L26,62"
+											init-with="p:[sdo:60, sda:60]"
+											when-mp4-enter="p:[stroke-dashoffset:60:0:750:easeOutSine]:delay-250"></path>
+										<rect x="14" y="14" width="72" height="72" rx="2"
+											init-with="p-op"
+											when-mp4-enter="p:[opacity:0:1:750:easeOutSine]"></rect>
+									</g>
+							        <path d="M62.2163044,47.615046 C62.6255301,47.9506063 62.9624,48.2795217 62.9624,48.805565 C62.9624,49.3305008 62.7227954,49.6494492 62.2163044,49.9949765 L44.2957773,63.0862556 C43.9980507,63.2767387 42.8178201,63.3586907 42.8024,62.1338404 L42.8024,35.4761821 C42.8035862,34.343251 43.8818069,34.2535468 44.2957773,34.5248744 L62.2163044,47.615046 Z" stroke="#FFFFFF" fill-opacity="0.5" fill="#FFFFFF"
+										init-with="p:[fill-opacity:0, stroke-dashoffset:79,sda:79]"
+										when-mp4-enter="p:[fill-opacity:0:0.5:500:easeOutSine, stroke-dashoffset:79:0:750:easeOutSine]"></path>
+								</g>
 						    </g>
 						</svg>
 					</span>
 					<span>mp4</span>
 				</a>
 			</li>
+			<!-- didn't fix yet -->
 			<li>
 				<a init-default
 					on-init="send:[ppt-load:public]"
@@ -572,10 +511,10 @@
 						<svg viewBox="0 0 100 100">
 						    <g stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
 								<path d="M78.6753247,69.4038462 L83.9946012,69.4038462 C85.6544371,69.4038462 87,68.0615005 87,66.4025609 L87,25.0012853 C87,23.3437212 85.6551641,22 83.9983762,22 L22.6769485,22 C21.0191974,22 19.6821402,23.3349726 19.6906437,25.0005709 L19.7282873,32.3739316" stroke="white" stroke-opacity="0.1"
-									init-with="p:[stroke-dashoffset:130, sda:130]"
+									init-with="p:[sdo:130, sda:130]"
 									when-ppt-load="p:[stroke-dashoffset:500:0:500:easeOutSine]:delay-250"></path>
 								<rect stroke="white" stroke-opacity="0.1" x="15" y="33" width="63" height="50" rx="3"
-									init-with="p:[stroke-dashoffset:226, sda:226]"
+									init-with="p:[sdo:226, sda:226]"
 									when-ppt-load="p:[stroke-dashoffset:226:0:500:easeOutSine]"></rect>
 						        <path d="M78.6753247,69.4038462 L83.9946012,69.4038462 C85.6544371,69.4038462 87,68.0615005 87,66.4025609 L87,25.0012853 C87,23.3437212 85.6551641,22 83.9983762,22 L22.6769485,22 C21.0191974,22 19.6821402,23.3349726 19.6906437,25.0005709 L19.7282873,32.3739316" stroke="#9C694C" fill="#F4C2A7"
 									init-with="p:[fill-opacity:0,stroke-dashoffset:130, sda:130]"
@@ -609,7 +548,7 @@
 						<svg viewBox="0 0 100 100">
 						    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
 								<path d="M19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 Z M68.0992131,14.96 C68.0992131,14.96 68.0992131,15.4039671 68.0992131,15.9609247 L68.0992131,26.5558242 C68.0992131,29.318671 70.3364841,31.5584009 73.1045233,31.5584009 L85.4848101,31.5584009" stroke="white" stroke-width="2" stroke-opacity="0.1"
-									init-with="p:[stroke-dashoffset:303, sda:303]"
+									init-with="p:[sdo:303, sda:303]"
 									when-txt-load="p:[stroke-dashoffset:303:0:1050:easeOutSine]"></path>
 						        <path d="M14,19.0057363 L14,80.9942637 C14,83.7588555 16.2337694,86 19.0057363,86 L80.9942637,86 C83.7588555,86 86,83.7643283 86,81.0001225 L86,33.5605722 C86,32.4548035 85.3472697,30.9334881 84.5608909,30.1806226 L69.0991089,15.3777783 C68.3043109,14.6168523 66.7734003,14 65.6543987,14 L19.0000163,14 C16.2385836,14 14,16.2337694 14,19.0057363 Z" fill="#ADBAD4"
 									init-with="p:[fill-opacity:0]"
@@ -618,19 +557,19 @@
 									init-with="p:[fill-opacity:0, stroke-dashoffset:303, sda:303]"
 									when-txt-enter="p:[fill-opacity:0:1:1050:easeOutSine:delay-250, stroke-dashoffset:303:0:500:easeOutSine]"></path>
 						        <path d="M26.5355418,76 L72.592137,76" stroke="#ADBAD4" stroke-width="2"
-									init-with="p:[stroke-dashoffset:48,sda:48]"
+									init-with="p:[sdo:48,sda:48]"
 									when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-450"></path>
 						        <path d="M26.5397601,40 L72.9591316,40" stroke="#ADBAD4" stroke-width="2"
-									init-with="p:[stroke-dashoffset:48,sda:48]"
+									init-with="p:[sdo:48,sda:48]"
 									when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-350"></path>
 						        <path d="M26.5397601,52 L72.9591316,52" stroke="#ADBAD4" stroke-width="2"
-									init-with="p:[stroke-dashoffset:48,sda:48]"
+									init-with="p:[sdo:48,sda:48]"
 									when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-250"></path>
 						        <path d="M26.5397601,64 L72.9591316,64" stroke="#ADBAD4" stroke-width="2"
-									init-with="p:[stroke-dashoffset:48,sda:48]"
+									init-with="p:[sdo:48,sda:48]"
 									when-txt-enter="p:[stroke-dashoffset:48:0:150:easeOutSine]:delay-150"></path>
 						        <path d="M26.357942,28 L57.1409498,28" stroke="#ADBAD4" stroke-width="2"
-									init-with="p:[stroke-dashoffset:32,sda:32]"
+									init-with="p:[sdo:32,sda:32]"
 									when-txt-enter="p:[stroke-dashoffset:32:0:150:easeOutSine]"></path>
 						    </g>
 						</svg>

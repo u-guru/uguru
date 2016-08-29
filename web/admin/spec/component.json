@@ -17,7 +17,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Checkbox missing opacity on uncheck"
+                    "bugs": "Checkbox missing opacity on uncheck, no longer fixed"
                 }
             },
             "credit-card": {
@@ -165,7 +165,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Ribbon opacity"
+                    "bugs": "FIXED &rarr; Ribbon opacity. Could be enhanced with delay"
                 }
             },
 			"timeline-card": {
@@ -197,7 +197,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Change onclick to onmouseenter"
+                    "bugs": "FIXED &rarr; Change onclick to onmouseenter. Possible enhancement by adding bounce and spacing"
                 }
             },
             "university-card": {
@@ -249,7 +249,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "for": "Upward motion enhancement"
                 }
             },
 			"projector": {
@@ -319,7 +319,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "for": "Check for flash. Possibly convert on-inits to states"
                 }
             },
 			"window-small": {
@@ -488,7 +488,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "Could use retiming with delays"
                 }
 			}
         },
@@ -616,7 +616,11 @@
 			"popup": {
 				"filename": "popup.tpl",
 				"types": ["default", "separate-header", "tour-guru"],
-				"versions": [],
+				"versions": ["JO-082916"],
+                "versionVars": {
+                    "JO-082916": { "h2" : {"initWith": "p:[letter-spacing:15px]"}},
+					"JO-082916": { "popup-tour-guru" : {"initWith": "p:[transform:rotate(215deg) scale(0), tro:left bottom]"}},
+                },
                 "contact": "JO",
                 "status": {
                     "static": true,
@@ -863,7 +867,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "for": "CTA needs a longer ease-out"
                 }
             },
 			"feature-tile": {
@@ -913,7 +917,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "for": "Check for flicker"
                 }
             },
             "profile-cardlet": {
@@ -933,7 +937,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Take versions from profile. Tech borders are not applying easings."
+                    "bugs": "Mobile has JSON error. FIXED &rarr; Take versions from profile. Tech borders are not applying easings."
                 }
             },
 			"profile-tile": {
@@ -953,7 +957,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter"
+                    "bugs": "Mobile has JSON error. Academic could use opacity delay for icon-enter. FIXED &rarr; Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter"
                 }
             },
 			"ranking-tile": {

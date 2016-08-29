@@ -1,4 +1,4 @@
-<div class="full-xy flex-center perspective-container" types='gabrielle, jeselle, jason, samir' default-type="gabrielle">
+<div class="full-xy flex-center perspective-container" types='gabrielle, jeselle, jason, samir' default-type="samir">
 	<div class="team-card-container team-gabrie" ng-if='activeType === "gabrielle"'
 		init-default
 		on-init="s:[gabrie-enter:public]"
@@ -61,18 +61,18 @@
 					</div>
 					<h1 class="team-name"
 						init-with="p-op"
-						when-gabrie-enter="p:[op:1:delay-1000, t:all 500ms ease-out]">Gabrielle Wee</h1>
+						when-gabrie-enter="p:[opacity:0:1:500:easeOutSine]:delay-1000">Gabrielle Wee</h1>
 	            </div>
 				<div class="team-ribbon">
 					<div class="team-ribbon-center"
 						init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
-						when-gabrie-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]:delay-50">
+						when-gabrie-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):800:easeOutSine easeOutSine]:delay-400">
 						<div class="team-ribbon-left"
 							init-with="p:[tr:translateZ(0) translateX(50px)]"
-							when-gabrie-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
+							when-gabrie-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-100"></div>
 						<div class="team-ribbon-right"
 							init-with="p:[tr:translateZ(0) translateX(-50px)]"
-							when-gabrie-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
+							when-gabrie-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-100"></div>
 					</div>
 					<div class="team-ribbon-left-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
@@ -83,7 +83,7 @@
 				</div>
 				<div class="team-info"
 					init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
-					when-gabrie-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
+					when-gabrie-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):300:easeOutSine]:delay-500">
 					<h2>UI Developer</h2>
 					<h2>SAE Ex'pression College</h2>
 				</div>
@@ -159,18 +159,18 @@
 					</div>
 					<h1 class="team-name"
 						init-with="p-op"
-						when-jeselle-enter="p:[op:1:delay-1000, t:all 500ms ease-out]">Jeselle Obina</h1>
+						when-jeselle-enter="p:[opacity:0:1:500:easeOutSine]:delay-1000">Jeselle Obina</h1>
 	            </div>
 				<div class="team-ribbon">
 					<div class="team-ribbon-center"
 						init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
-						when-jeselle-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]:delay-50">
+						when-jeselle-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):800:easeOutSine easeOutSine]:delay-400">
 						<div class="team-ribbon-left"
 							init-with="p:[tr:translateZ(0) translateX(50px)]"
-							when-jeselle-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
+							when-jeselle-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-100"></div>
 						<div class="team-ribbon-right"
 							init-with="p:[tr:translateZ(0) translateX(-50px)]"
-							when-jeselle-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
+							when-jeselle-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-100"></div>
 					</div>
 					<div class="team-ribbon-left-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
@@ -181,7 +181,7 @@
 				</div>
 				<div class="team-info"
 					init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
-					when-jeselle-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
+					when-jeselle-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):300:easeOutSine]:delay-500">
 					<h2>Product &amp; Graphic Designer</h2>
 					<h2>University of Illinois at Urbana</h2>
 				</div>
@@ -244,18 +244,17 @@
 					</div>
 					<h1 class="team-name"
 						init-with="p-op"
-						when-jason-enter="p:[op:1:delay-1000, t:all 500ms ease-out]">Jason Huang</h1>
-	            </div>
-				<div class="team-ribbon">
+						when-jason-enter="p:[opacity:0:1:500:easeOutSine]:delay-1000">Jason Huang</h1>
+	            </div><div class="team-ribbon">
 					<div class="team-ribbon-center"
 						init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
-						when-jason-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]:delay-50">
+						when-jason-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):800:easeOutSine easeOutSine]:delay-400">
 						<div class="team-ribbon-left"
 							init-with="p:[tr:translateZ(0) translateX(50px)]"
-							when-jason-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
+							when-jason-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-100"></div>
 						<div class="team-ribbon-right"
 							init-with="p:[tr:translateZ(0) translateX(-50px)]"
-							when-jason-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
+							when-jason-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-100"></div>
 					</div>
 					<div class="team-ribbon-left-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
@@ -266,7 +265,7 @@
 				</div>
 				<div class="team-info"
 					init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
-					when-jason-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
+					when-jason-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):300:easeOutSine]:delay-500">
 					<h2>QA Engineer</h2>
 					<h2>San Jose State University</h2>
 				</div>
@@ -326,18 +325,17 @@
 					</div>
 					<h1 class="team-name"
 						init-with="p-op"
-						when-samir-enter="p:[op:1:delay-1000, t:all 500ms ease-out]">Samir Makhani</h1>
-	            </div>
-				<div class="team-ribbon">
+						when-samir-enter="p:[opacity:0:1:500:easeOutSine]:delay-1000">Samir Makhani</h1>
+	            </div><div class="team-ribbon">
 					<div class="team-ribbon-center"
 						init-with="p:[tr:translateZ(0) scaleX(0), tro:center center]"
-						when-samir-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):1000:easeOutSine]:delay-50">
+						when-samir-ribbon-expand="p:[transform:translateZ(0) scaleX(0):translateZ(0) scaleX(1):800:easeOutSine easeOutSine]:delay-400">
 						<div class="team-ribbon-left"
 							init-with="p:[tr:translateZ(0) translateX(50px)]"
-							when-samir-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
+							when-samir-ribbon-expand="p:[transform:translateZ(0) translateX(50px):translateZ(0) translateX(0):500:easeOutSine]:delay-100"></div>
 						<div class="team-ribbon-right"
 							init-with="p:[tr:translateZ(0) translateX(-50px)]"
-							when-samir-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-300"></div>
+							when-samir-ribbon-expand="p:[transform:translateZ(0) translateX(-50px):translateZ(0) translateX(0):500:easeOutSine]:delay-100"></div>
 					</div>
 					<div class="team-ribbon-left-corner"
 						init-with="p:[tr:translateZ(0) scale(0), tro:right top]"
@@ -348,7 +346,7 @@
 				</div>
 				<div class="team-info"
 					init-with="p:[op:0, tr:translateZ(0) translateY(-50px)]"
-					when-samir-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):500:easeOutSine]:delay-800">
+					when-samir-enter="p:[opacity:0:1:50:easeOutSine, transform:translateZ(0) translateY(-50px):translateZ(0) translateY(0):300:easeOutSine]:delay-500">
 					<h2>Founder</h2>
 					<h2>UC Berkeley</h2>
 				</div>
