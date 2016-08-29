@@ -4,7 +4,7 @@
 <div class="perspective-container full-xy flex-center p15xy">
     <fieldset class="search-bar"
         init-with="p:[op:1, width:48px]"
-        on-init="s:[search-bar-init:public] | p:[opacity:0:1:1500:easeOutQuint, transform:translateX(500px):translateX(0px):750:easeInOutElastic:750]"
+        on-init="s:[search-bar-init:public] | p:[opacity:0:1:1500:easeOutQuint, transform:translateX(500px):translateX(0px):50:easeInOutElastic:750]"
         when-search-bar-clicked="p:[width:48px:500px:250:easeOutBack]"
         inspector-elem="on-init"
         on-click="s:[search-bar-clicked:public]"

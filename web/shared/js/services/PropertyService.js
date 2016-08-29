@@ -530,6 +530,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
               args.propDelays[prop].cache.push(val);
               args.elem.style[prop] = val
               // console.log(delta, args.propDelays[prop].cache)
+            } else {
+              args.propDelays[prop].cache.unshift(null);
             }
 
           }
@@ -577,7 +579,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         if (player.propDelays) {
           for (key in player.propDelays) {
             if (player.propDelays[key].cache && player.propDelays[key].cache.length) {
-              console.log(player.propDelays[key])
+              player.propDelays[key].cache.push(null);
             }
           }
           console.log('resetting cache..')
