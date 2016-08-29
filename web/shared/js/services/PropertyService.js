@@ -476,7 +476,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       if (!time) return;
 
       var skipArgs;
-      if (args.control && args.control.ball) {
+      if (args.control && args.control.ball && args.control.ball.elem) {
         args.control.ball.elem.setAttribute('style', 'transform:' + state['ballControl'] + ';');
         args.control.time.elem.innerHTML = formatTime(time, args.control.time)
       }
