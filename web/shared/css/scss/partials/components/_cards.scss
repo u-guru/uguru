@@ -2844,15 +2844,15 @@ a.course-card {
 	}
 	&.timeline-icon-left {
 		h2 {
-			right: 0;
-			border-radius: 1000px;
+			right: 24px;
+			border-radius: 1000px 0 0 1000px;
 			padding: 0 49px 0 15px;
 		}
 	}
 	&.timeline-icon-right {
 		h2 {
 			left: 0;
-			border-radius: 1000px;
+			border-radius: 0 1000px 1000px 0;
 			padding: 0 15px 0 49px;
 		}
 	}

@@ -17,7 +17,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Checkbox missing opacity on uncheck, no longer fixed"
+                    "bugs": "FIXED &rarr; Checkbox missing opacity on uncheck, no longer fixed"
                 }
             },
             "credit-card": {
@@ -197,7 +197,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Change onclick to onmouseenter. Possible enhancement by adding bounce and spacing"
+                    "bugs": "FIXED &rarr; Change onclick to onmouseenter. FIXED &rarr; Possible enhancement by adding bounce and spacing"
                 }
             },
             "university-card": {
@@ -818,7 +818,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Combine doc outline into single simple path (instead of combined path)"
+                    "bugs": "FIXED &rarr; Combine doc outline into single simple path (instead of combined path)"
                 }
             },
 			"calendar-tile": {
@@ -867,7 +867,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "CTA needs a longer ease-out"
+                    "for": "FIXED &rarr; CTA needs a longer ease-out"
                 }
             },
 			"feature-tile": {
@@ -917,7 +917,7 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Check for flicker"
+                    "for": "FIXED &rarr; Check for flicker"
                 }
             },
             "profile-cardlet": {

@@ -19,7 +19,7 @@
 		<div class="timeline-icon-cover bg-charcoal"></div>
 		<h2 class="timeline-icon-text"
 			on-init="p:[tr:translateX(-100%)]"
-			when-timeline-enter="p:[transform:translateX(-100%):translateX(0%):450:easeOutElastic]"
+			when-timeline-enter="p:[transform:translateX(-100%):translateX(0%):450:easeOutBack]"
 			when-timeline-leave="p:[transform:translateX(0%):translateX(-100%):250:easeInOutCubic]">Milestones</h2>
 	</div>
 </div>
