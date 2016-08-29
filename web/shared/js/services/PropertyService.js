@@ -407,7 +407,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
   function initPlayerFromArgs(elem, args, previous_player) {
 
-    var playerObj = {propDelays:{}, state: { time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
+    var playerObj = {state: { time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
 
     if (!previous_player) {
       playerObj.elem = elem;
@@ -425,11 +425,23 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     } else {
 
         playerObj = combinePreviousWithNewProp(args, previous_player);
-        playerObj.tweenConfig.duration = Math.max(playerObj.tweenConfig.duration, args.duration + args.delay || 0)
+
+
+    }
+
+    if (args.duration !== playerObj.tweenConfig.duration) {
+      console.log('yo')
+      args.delay = 0;
+      playerObj.tweenConfig.duration = Math.max(playerObj.tweenConfig.duration, args.duration + args.delay || 0)
+      console.log(playerObj.tweenConfig.duration)
     }
 
     // playerObj.tween = new Tweenable();
-    if (args.delay) {
+    if (args.delay || args.delay === 0) {
+
+      if (!('propDelays' in playerObj)) {
+        playerObj.propDelays = {};
+      }
       playerObj.propDelays[args.property] = {property: args.property, offset: args.delay, duration: args.duration, start: args.start, end: args.end, ease:args.ease, cache:[]};
       TweenService.preComputeValues(args.property, args.duration, args.start, args.end, args.ease, playerObj.propDelays[args.property])
     }
@@ -519,7 +531,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           args.elem.style[prop] = value;
           continue;
         }
-        if (prop in args.propDelays) {
+        console.log(time, state[prop])
+        if (args.propDelays && prop in args.propDelays) {
           var delta = args.propDelays[prop].offset - time;
           // args.propDelays[prop].cache.push(state[prop])
 
@@ -548,12 +561,12 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       // console.log('starting...', state, args);
       // console.log(state, args)
       args.prefs && args.prefs.showLog && console.log('-----Animation starting ---')
-      $timeout(function() {
+      // $timeout(function() {
 
-        args.control.ball = {elem: document.querySelector('[inspector-ball]')}
-        args.control.time.elem = document.querySelector('[inspector-time]');
+      //   args.control.ball = {elem: document.querySelector('[inspector-ball]')}
+      //   args.control.time.elem = document.querySelector('[inspector-time]');
 
-      }, 250)
+      // }, 250)
       args.inspect && args.prefs.showLog && args.state.active && console.log('\n@ T = ' +'0ms\n-----------');
       for (prop in state) {
 
@@ -810,6 +823,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     playerObj.init = function(playerObj, skip) {
+      console.log(playerObj)
       playerObj.state.time = 0
       playerObj.state.active = false;
       playerObj.state.paused = false;
