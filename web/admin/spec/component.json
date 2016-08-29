@@ -616,7 +616,11 @@
 			"popup": {
 				"filename": "popup.tpl",
 				"types": ["default", "separate-header", "tour-guru"],
-				"versions": [],
+				"versions": ["JO-082916"],
+                "versionVars": {
+                    "JO-082916": { "h2" : {"initWith": "p:[letter-spacing:15px]"}},
+					"JO-082916": { "popup-tour-guru" : {"initWith": "p:[transform:rotate(215deg) scale(0), tro:left bottom]"}},
+                },
                 "contact": "JO",
                 "status": {
                     "static": true,
