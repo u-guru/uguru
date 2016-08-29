@@ -257,8 +257,8 @@
 											init-with="p:[fill-opacity:0,stroke-dashoffset:728, sda:728]"
 											when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-450,stroke-dashoffset:728:0:1450:easeInQuint]"></rect>
 								        <path d="M31.9314179,48.9453845 C32.1640179,48.9906485 32.4187723,49.0143973 32.6943619,49.0143973 L42.5153962,49.0143973 C44.7241651,49.0143973 45.5891311,47.4805175 44.447895,45.5883809 L39.6712698,37.6688735 C38.5247851,35.7680349 36.6797244,35.7767369 35.5384884,37.6688735 L31.6684718,44.0852498 L31.2869733,43.4527362 C30.3147502,41.8408183 28.7387295,41.8409855 27.7666073,43.4527362 L26.1722924,46.0960645 C25.2000693,47.7079824 25.9371302,49.0143973 27.8183387,49.0143973 L31.2352418,49.0143973 C31.4884119,49.0143973 31.72095,48.9905711 31.9314179,48.9453845 L31.9314179,48.9453845 Z" fill="#B0D8F0"
-											init-with="p:[fill-opacity:0,stroke-dashoffset:56, sda:56]"
-											when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-750,stroke-dashoffset:56:0:750:easeInQuint:delay-450]"></path>
+											init-with="p:[fill-opacity:0, sdo:54.5, sda:54.5]"
+											when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-750, stroke-dashoffset:54.5:0:750:easeInQuint:delay-450]"></path>
 								        <circle fill="#B0D8F0" cx="28.1285714" cy="31.1285714" r="2.22857143"
 											init-with="p:[fill-opacity:0,stroke-dashoffset:14, sda:14]"
 											when-doc-enter="p:[fill-opacity:0:1:250:easeOutSine:delay-750,stroke-dashoffset:750:0:easeOutSine:delay-450]"></circle>
