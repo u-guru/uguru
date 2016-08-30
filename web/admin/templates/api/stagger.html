@@ -39,8 +39,8 @@
                 </ul>
             </div>
             <ul class='absolute right-0 radius-2-left overflow-hidden z-index-100'>
-                <li class='p15xy txt-20 flex-wrap-center bg bg-gold text-center weight-600' style='min-width:15%;' ng-repeat='example in stagger.examples' ng-class="{'opacity-100p': $index === stagger.exampleIndex, 'opacity-80p': $index !== stagger.activeIndex}" ng-click='stagger.activeIndex = $index'>
-                    <span>{{example.name}}</span>
+                <li class='p15xy txt-20 flex-wrap-center bg bg-gold text-center weight-600' style='min-width:15%;'>
+                    <span>Example 1</span>
                 </li>
             </ul>
 
@@ -49,7 +49,7 @@
 
 
                     <!-- You could also render this is as <stagger-children> -->
-                    <div class='flex-vertical-center p15-grid' stagger-children on-init-delay="250:1000">
+                    <div class='flex-vertical-center p15-grid' stagger-children>
                         <div on-init="p:[opacity:0:1:250:linear]:delay-2500" stagger-ignore>Text</div>
                         <div init-with="p:[opacity:0, height:100px, width:100px]" on-init="p:[opacity:0:1:250:linear]">1</div>
                         <div init-with="p:[opacity:0, height:100px, width:100px]" on-init="p:[opacity:0:1:250:linear]">2</div>

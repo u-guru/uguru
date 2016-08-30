@@ -56,8 +56,8 @@ angular.module('uguru.shared.directives')
                       if (iChild && iChild.attributes && iChild.hasAttribute('on-init') && !iChild.hasAttribute('stagger-ignore')) {
 
                           var newOnInit = iChild.getAttribute('on-init') + ':delay-' + i * 1000;
-                          iChild.removeAttribute('on-init');
-                          $compile(iChild)(lScope)
+                          // iChild.removeAttribute('on-init');
+                          // $compile(iChild)(lScope)
                           element.append(iChild)
                           // iChild.setAttribute('on-init', newOnInit)
 
