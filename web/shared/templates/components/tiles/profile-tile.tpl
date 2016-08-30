@@ -23,7 +23,7 @@
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[academic-tile-init:public]"
 		when-academic-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
-		when-academic-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-500, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic]">
+		when-academic-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:500, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-academic">
 			<div class="pf-tile-border">
@@ -49,7 +49,7 @@
 					init-with="p-op"
 					when-academic-tile-init="a:[slideInLeft:set:(dur:750ms#func:linear):in]:delay-875">$10/hr</div>
 				<div init-with="p:[tr:translateY(-80%), opacity:0]"
-					when-academic-tile-init="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250ms:linear]:delay-500">
+					when-academic-tile-init="p:[transform:translateY(-100px):translateY(0px):750:easeOutCubic, opacity:0:1:250:linear]:delay-1000">
 					<div class="pf-tile-icon">
 						<svg viewBox="0 0 100 100">
 							<g>
@@ -116,7 +116,7 @@
 		init-with="p:[op:0, tro:left top, tr:rotateX(30deg) rotateY(30deg) translateY(300px)]"
 		on-init="s:[baking-tile-init:public]"
 		when-baking-tile-init="p:[transform:rotateX(30deg) rotateY(30deg) translateY(300px):rotateX(0deg) rotateY(0deg) translateY(0px):1000:easeOutCubic easeOutCubic easeOutCubic,opacity:0:1:10:linear]"
-		when-baking-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:delay-500, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic]">
+		when-baking-tile-exit="p:[tro:left bottom, opacity:1:0:500:easeOutSine:500, transform:rotateX(0deg) rotateY(0deg) translateY(0px):rotateX(-45deg) rotateY(30deg) translateY(-300px):1000:easeOutCubic]">
 		<a></a><a></a><a></a><a></a>
 		<div class="pf-tile bg-baking">
 			<div class="pf-tile-top" style="background-image: url('https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/e15/11427260_752534584858053_1867976098_n.jpg');"

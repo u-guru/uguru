@@ -1,6 +1,8 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<div class="course-list">
 		<ul>
+			<!-- @samir - <li> elements are being staggered in intervals of 100ms -->
+			<!-- lines: 7, 18, 29, 40 -->
 			<li init-with="p-op"
 				on-init="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in]"
 				on-exit="p:[opacity:1:0:1000:easeInOutSine]">
