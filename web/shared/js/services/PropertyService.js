@@ -877,7 +877,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
                 playerObj.state.propertyControls[i] = pDict.control;
               });
               // applyShowOptionPropertySpecificPlayerToTweenConfig(playerObj)
-              console.log(playerObj)
               playerObj = playerObj.init(playerObj);
 
 
