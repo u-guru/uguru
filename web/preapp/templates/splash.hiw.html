@@ -44,7 +44,9 @@
 			<path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
 		</svg>
 		<div class="projector-top"></div>
-		<div class="projector-content">
+		<div class="projector-content"
+			init-default
+			on-init="s:[hiw-enter:public]">
 			<svg preserveAspectRatio="xMidYMin" id="hiw-map" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" style="background: #B6E2F7;"
 				when-open-stadium="t-enter">
 				<defs>
@@ -152,7 +154,7 @@
 					</g>
 					<g class="map-student-union"
 						init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
-						on-enter="a:[hiw-scaleUp:set:(dur:500ms#func:cubic-bezier(.77#0#.05#1.27)):in]:delay-800">
+						when-hiw-enter="a:[hiw-scaleUp:set:(dur:500ms#func:cubic-bezier(.77#0#.05#1.27)):in]:delay-800">
 						<path d="M569.91471,246.038098 C567.684562,241.254125 563.291829,238 558.237486,238 C550.926624,238 545,244.808349 545,253.206873 C545,257.528912 552.011437,259.626748 558.817874,259.500381 C564.385536,262.822539 580.827474,261.972061 580.827474,256.948948 C580.827474,251.211823 576.026076,246.505309 569.91471,246.038098 L569.91471,246.038098 Z" class="map-student-union-bush-right" stroke="#57984F" fill="#74B66C"
 							init-with="p-op"
 							on-enter="a:[fadeIn:set:(dur:1000ms#func:ease-in-out):in]"></path>
