@@ -15,12 +15,15 @@ function AdminService($timeout, $http) {
     function getComponents(scope) {
         return $http.get('admin/spec/component.json').success(function(data) {
             scope.admin.gallery.components = data;
-            console.log(scope.admin.gallery.components.dir);
             $timeout(function() {
                 scope.$apply();
             })
-
         });
+    }
+    function getComponents(scope) {
+        return $http.get('admin/spec/component.json').success(function(data){
+            scope.admin.api = data;
+        })
     }
 
     function getUpcomingCalendar(num_days) {

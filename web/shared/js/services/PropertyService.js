@@ -8,10 +8,11 @@ angular.module('uguru.shared.services')
     'XHRService',
     '$compile',
     '$rootScope',
+    'SVGService',
     PropertyService
         ]);
 
-function PropertyService($timeout, $state, UtilitiesService, TweenService, RootService, XHRService, $compile, $rootScope) {
+function PropertyService($timeout, $state, UtilitiesService, TweenService, RootService, XHRService, $compile, $rootScope, SVGService) {
   var blacklistStates = ['init-with', 'init-later'];
   var defaultPropAnimations = {};
   var rFrameEasingCache = {};
@@ -80,7 +81,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     var previous_player = player || null;
     if (!property) console.log('ERROR: Missing property');
 
-    var args = processPropertyArgs(property, arg_arr, state_name, apply_default);
+    var args = processPropertyArgs(elem, property, arg_arr, state_name, apply_default);
     args.stateNameCamel = UtilitiesService.camelCase(state_name);
     args.stateName = state_name;
     args.player = initPlayerFromArgs(elem[0], args, previous_player);
@@ -531,7 +532,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           args.elem.style[prop] = value;
           continue;
         }
-        console.log(time, state[prop])
         if (args.propDelays && prop in args.propDelays) {
           var delta = args.propDelays[prop].offset - time;
           // args.propDelays[prop].cache.push(state[prop])
@@ -823,7 +823,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     playerObj.init = function(playerObj, skip) {
-      console.log(playerObj)
       playerObj.state.time = 0
       playerObj.state.active = false;
       playerObj.state.paused = false;
@@ -900,7 +899,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     }
   }
 
-  function processPropertyArgs(property, arg_arr, state_name, apply_default) {
+  function processPropertyArgs(elem, property, arg_arr, state_name, apply_default) {
     var allTweens = TweenService.getAllEasing();
     var missing_args = [];
     var pObj = initPropertyObj();
@@ -908,7 +907,28 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     pObj.state_name = state_name;
     pObj.property = property;
     pObj.timingFunction = 'linear';
+    if (pObj.property === 'draw') {
 
+      // option 2
+      // var pathLength = SVGService.svgShapeToPath(elem[0])[0].getTotalLength();
+
+
+      var pathLength = SVGService.getTotalPathLength(elem[0])
+      console.log('computing path length',  pathLength, '\n', elem[0])
+      if (parseInt(arg_arr[0]) > 0) {
+        arg_arr[0] = parseInt(pathLength) + ""
+      }
+      if (parseInt(arg_arr[1]) > 0) {
+        // console.log(pathLength)
+        // // var path = SVGService.svgShapeToPath(elem[0]);
+
+        console.log(arg_arr[1])
+        arg_arr[1] = parseInt(pathLength) + ""
+      }
+      var property = "stroke-dashoffset"
+      pObj.property = property;
+      console.log(pObj.property, arg_arr)
+    }
 
 
     for (var i = 0; i < arg_arr.length; i++) {

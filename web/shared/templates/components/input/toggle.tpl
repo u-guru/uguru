@@ -83,8 +83,8 @@
 					when-round-enter="p:[opacity:0:1:750:easeOutQuad]:delay-500"></div>
 				<svg class="square" viewBox="0 0 26 26">
 					<circle cx="13" cy="13" r="13"
-						init-with="p:[fop:0, sdo:82, sda:82]"
-						when-round-load="p:[stroke-dashoffset:82:0:500:easeOutQuad]:delay-300"
+						init-with="p:[fop:0, sdo:0, sda:81]"
+						when-round-load="p:[draw:0:1:500:easeOutQuad]:delay-300"
 						when-round-enter="p:[fill-opacity:0:1:500:linear]:delay-100"></circle>
 				</svg>
 				<svg class="square" viewBox="0 0 26 26">
@@ -94,8 +94,8 @@
 					init-default
 					when-round-enter="p:[op:0:delay-500]">
 				    <rect x="1" y="1" width="70" height="34" rx="17"
-						init-with="p:[fop:0, sdo:225, sda:225]"
-						when-round-load="p:[stroke-dashoffset:225:0:450:easeOutQuad, fill-opacity:1:0:450:easeOutQuad:600]"></rect>
+						init-with="p:[fop:0, sdo:0, sda:0]"
+						when-round-load="p:[draw:0:1:450:easeOutQuad, fill-opacity:1:0:450:easeOutQuad:600]"></rect>
 				</svg>
 			</label>
 		</div>
@@ -103,7 +103,7 @@
 
 	<div class="toggle-container" ng-if='activeType === "white-round"'
 	init-default
-	on-init="send:[round-load:public]"
+	on-init="send:[round-load:public]:delay-1000"
 	when-round-load="send:[round-enter:public:delay-450]">
 		<div class="toggle white-round">
 			<input type="checkbox" checked />
@@ -123,8 +123,8 @@
 				</svg>
 				<svg class="bg" width="72px" height="36px" viewBox="0 0 72 36">
 				    <rect x="1" y="1" width="70" height="34" rx="17"
-						init-with="p:[fop:0, sdo:225, sda:225]"
-						when-round-load="p:[stroke-dashoffset:225:0:450:easeOutQuad, fill-opacity:1:0:450:easeOutQuad:400]"></rect>
+						init-with="p:[fop:0, sdo:0, sda:0]"
+						when-round-load="p:[stroke-dashoffset:0:1:450:easeOutQuad, fill-opacity:1:0:450:easeOutQuad:400]"></rect>
 				</svg>
 			</label>
 		</div>
