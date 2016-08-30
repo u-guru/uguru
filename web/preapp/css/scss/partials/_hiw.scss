@@ -7,8 +7,8 @@
 // onEnter
 .map-stadium,.map-library,.map-dorm,.map-clock-tower,.map-student-union,.map-extra-dorm-1,.map-extra-dorm-2,.map-extra-dorm-3,.map-extra-dorm-4,.map-extra-dorm-5,.map-extra-dorm-6, .map-gym, .map-lab-maroon, .map-lab-teal, .map-lab-brown, .map-fountain {
 	transform-origin: center bottom;
-	transform: scaleY(0) translateZ(0);
-	animation: hiw-scaleUp 500ms cubic-bezier(.77,0,.05,1.27) forwards;
+	init-with: scaleY(0) translateZ(0);
+	on-enter: hiw-scaleUp 500ms cubic-bezier(.77,0,.05,1.27) forwards;
 }
 
 @for $i from 1 through 6 {
