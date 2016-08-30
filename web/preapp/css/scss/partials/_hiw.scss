@@ -141,57 +141,36 @@ a[class*="-container"] {
 	// }
 }
 
-// map transition to stadium subscene 1
-// #hiw-map {
-// 	> g {
-// 		transition: transform 1s ease-out;
-// 		transform-origin: 123px 210.5px;
-// 	}
-// 	&.active-stadium {
-// 		> g {
-// 			// transform: translate3d(35%,34.3%,0) scale(4.32);
-// 			transform: translate3d(34.2%,26.6%,0) scale(4.32);
-// 		}
-// 		a[class*="-container"] {
-// 			.map-enter {
-// 				opacity: 0!important;
-// 				transform: translate3d(0,100%,0) scaleX(0)!important;
-// 			}
-// 			.map-stadium-outside { transform: scaleY(0) translateZ(0) }
-// 		}
-// 	}
-// }
-
 #hiw-stadium {
-	cursor: pointer;
-	.stadium-screen-grid,.stadium-screen-display-container,.stadium-coach { transition: all 500ms cubic-bezier(.77,-0.22,.05,1) 4s }
-	.stadium-screen-grid,.stadium-screen-display-container,[class*="avg-sign-"],.cal-people,.away-people,.sub1-main-crowd,.fan-props-cal-main,.fan-props-away-main { opacity: 0 }
-	.fan-props-cal-small {
-		opacity: 0;
-		transform-origin: bottom center;
-	}
-	.fan-props-away-small { transform-origin: bottom center }
+	// cursor: pointer;
+	// .stadium-screen-grid,.stadium-screen-display-container,.stadium-coach { transition: all 500ms cubic-bezier(.77,-0.22,.05,1) 4s }
+	// .stadium-screen-grid,.stadium-screen-display-container,[class*="avg-sign-"],.cal-people,.away-people,.sub1-main-crowd,.fan-props-cal-main,.fan-props-away-main { opacity: 0 }
+	// .fan-props-cal-small {
+	// 	opacity: 0;
+	// 	transform-origin: bottom center;
+	// }
+	// .fan-props-away-small { transform-origin: bottom center }
 	&.active {
-		z-index: 1;
-		opacity: 1;
-		// onEnter
-		.stadium-screen-grid,.stadium-screen-display-container { opacity: 1 }
-		.stadium-coach-group {
-			transform-origin: center center;
-			animation: hiw-tada 1s ease-in-out 1s 2.75 forwards;
-		}
-		.stadium-coach { opacity: 0 }
-		[class*="avg-sign-"] { animation: avg-slide-down 500ms cubic-bezier(.13,-0.5,.62,1.32) 1250ms forwards }
-		.cal-people { animation: cal-people 1s linear 1500ms both }
-		.fan-props-cal-small {
-			animation: fan-props-cal-small 2000ms linear 1750ms both;
-		}
-		.away-people {
-			animation: away-people 1s linear 1500ms both;
-		}
-		.fan-props-away-small {
-			animation: fan-props-away-small 2000ms linear 1750ms both;
-		}
+		// z-index: 1;
+		// opacity: 1;
+		// // onEnter
+		// .stadium-screen-grid,.stadium-screen-display-container { opacity: 1 }
+		// .stadium-coach-group {
+		// 	transform-origin: center center;
+		// 	animation: hiw-tada 1s ease-in-out 1s 2.75 forwards;
+		// }
+		// .stadium-coach { opacity: 0 }
+		// [class*="avg-sign-"] { animation: avg-slide-down 500ms cubic-bezier(.13,-0.5,.62,1.32) 1250ms forwards }
+		// .cal-people { animation: cal-people 1s linear 1500ms both }
+		// .fan-props-cal-small {
+		// 	animation: fan-props-cal-small 2000ms linear 1750ms both;
+		// }
+		// .away-people {
+		// 	animation: away-people 1s linear 1500ms both;
+		// }
+		// .fan-props-away-small {
+		// 	animation: fan-props-away-small 2000ms linear 1750ms both;
+		// }
 		.sub1-main-crowd {
 			animation: sub1-main-crowd 1s linear 1500ms both;
 		}
@@ -1007,4 +986,25 @@ a[class*="-container"] {
 // .map-student-union-flag {
 //     animation: map-student-union-flag 750ms ease-out infinite alternate;
 // 	transform-origin: left center;
+// }
+
+// map transition to stadium subscene 1
+// #hiw-map {
+// 	> g {
+// 		transition: transform 1s ease-out;
+// 		transform-origin: 123px 210.5px;
+// 	}
+// 	&.active-stadium {
+// 		> g {
+// 			// transform: translate3d(35%,34.3%,0) scale(4.32);
+// 			transform: translate3d(34.2%,26.6%,0) scale(4.32);
+// 		}
+// 		a[class*="-container"] {
+// 			.map-enter {
+// 				opacity: 0!important;
+// 				transform: translate3d(0,100%,0) scaleX(0)!important;
+// 			}
+// 			.map-stadium-outside { transform: scaleY(0) translateZ(0) }
+// 		}
+// 	}
 // }
