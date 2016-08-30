@@ -1,6 +1,5 @@
 <ion-view id="demo" class="flex-center">
-    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script>
+    <!-- <script>
         $(".map-stadium-container").click(function(){
         	$("#hiw-map").addClass("active-stadium");
         	$("#hiw-stadium").addClass("active");
@@ -46,7 +45,8 @@
 		</svg>
 		<div class="projector-top"></div>
 		<div class="projector-content">
-			<svg preserveAspectRatio="xMidYMin" id="hiw-map" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" style="background: #B6E2F7;">
+			<svg preserveAspectRatio="xMidYMin" id="hiw-map" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" style="background: #B6E2F7;"
+				when-open-stadium="t-enter">
 				<defs>
 					<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="night-sky-gradient">
 						<stop stop-color="#2A4863" offset="0%"></stop>
@@ -308,7 +308,9 @@
 						<rect class="ppl-yellow-face" stroke="#33534D" stroke-width="0.517241379" fill="#F9ECE5" x="262.08" y="385.517241" width="8.32" height="8.79310345" rx="51.7241379"></rect>
 						<path d="M268.937754,389.565009 C268.937754,388.262308 265.152297,386.42508 265.152297,386.42508 C263.786033,385.667601 263.942249,385.053543 265.517936,385.053543 L268.659681,385.053543 C270.227882,385.053543 271.49916,386.328838 271.49916,387.889145 L271.49916,397.483734 C271.49916,399.049794 270.226774,400.319336 268.650574,400.319336 L268.893954,400.319336 C268.323573,400.319336 267.913113,399.860413 267.976399,399.296929 C267.976399,399.296929 268.937753,390.867709 268.937754,389.565009 Z" class="ppl-yellow-hair" stroke="#2C4944" stroke-width="0.517241379" fill="#4E4438"></path>
 					</g>
-					<a class="map-stadium-container">
+					<a class="map-stadium-container"
+						init-default
+						on-click="s:[open-stadium:public]">
 						<g class="map-stadium-enter map-enter">
 							<g>
 								<path d="M59,74.9997073 C59,73.8952994 59.885725,73 60.9977106,73 L185.002289,73 C186.105594,73 187,73.8898926 187,74.9997073 L187,107.000293 C187,108.104701 186.119632,109.137558 185.014427,109.310246 L123.979677,118.846925 C123.438616,118.931466 122.557137,118.930803 122.020323,118.846925 L60.9855728,109.310246 C59.8889712,109.138902 59,108.110107 59,107.000293 L59,74.9997073 Z" class="map-stadium-bg" stroke="#D3242C" stroke-width="2" fill="#F04F54"></path>
@@ -1031,9 +1033,13 @@
 					</g>
 				</g>
 			</svg>
-			<svg preserveAspectRatio="xMidYMin" id="hiw-stadium" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" style="background: #B6E2F7;">
-				<g class="hiw-stadium-balloons-container">
-					<g class="sub1-stadium hiw-stadium-container" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+			<svg preserveAspectRatio="xMidYMin" id="hiw-stadium" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" style="background: #B6E2F7;"
+				when-open-stadium="t-enter"
+				when-crowd-cheer="t-enter">
+				<g class="hiw-stadium-balloons-container"
+					when-balloon-baking-init="t-exit">
+					<g class="sub1-stadium hiw-stadium-container" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+						when-balloon-enter="t-enter">
 						<g class="sub1-general-arena">
 							<path d="M19,240 C19,240 294.666667,286 432.5,286 C570.333333,286 846,240 846,240 L846,484.110419 L19,484.110419 L19,240 Z" class="stadium-outside" stroke="#2B3234" stroke-width="3" fill="#6F828F"></path>
 							<path d="M432.343177,323.249394 L431.562937,361.096291 C429.647581,361.096291 166.178798,361 36.2943809,361 C32.6976935,361 36.2943809,263.374999 36.2943809,263.374999 L18,248.226562 L18,224.003906 C18,207.337413 123.483093,215.869141 127.784018,217.820938 C143.051241,224.749336 160.258554,232.558163 160.258554,232.558163 C191.221248,246.609302 243.837451,258 277.794335,258 C277.794335,258 417.115955,258.029095 432.343177,258.086507 C447.570376,258.029095 586.892019,258 586.892019,258 C620.848903,258 673.465107,246.609302 704.427801,232.558163 C704.427801,232.558163 721.635114,224.749336 736.902337,217.820938 C741.203262,215.869141 846.686355,207.337413 846.686355,224.003906 L846.686355,248.226562 L828.391974,263.374999 C828.391974,263.374999 831.988661,361 828.391974,361 C698.507556,361 435.038774,361.096291 433.123418,361.096291 L432.343177,323.249394 L432.343177,323.249394 Z" class="stadium-border" stroke="#8DA3B3" stroke-width="3" fill="#E5E5E5"></path>
@@ -1328,7 +1334,9 @@
 							</g>
 							<rect class="stadium-screen-sign-away-avg" stroke="#FFFFFF" stroke-width="3" fill="#F25A5B" x="252" y="57" width="160" height="30"></rect>
 							<rect class="stadium-screen-sign-away-avg" stroke="#FFFFFF" stroke-width="3" fill="#FFFFFF" x="252" y="87" width="160" height="13"></rect>
-							<g class="avg-sign-away">
+							<g class="avg-sign-away"
+								init-default
+								on-click="s:[crowd-cheer:public]">
 								<text class="stadium-avg-text" font-family="Source Sans Pro" font-size="10" font-weight="bold" fill="#F25A5B">
 									<tspan x="299.34" y="97">AVG PER HOUR</tspan>
 								</text>
@@ -1338,7 +1346,9 @@
 							</g>
 							<rect class="stadium-screen-sign-cal-name" stroke="#FFFFFF" stroke-width="3" fill="#0547BB" x="452" y="57" width="160" height="30"></rect>
 							<rect class="stadium-screen-sign-cal-avg" stroke="#FFFFFF" stroke-width="3" fill="#FFFFFF" x="452" y="87" width="160" height="13"></rect>
-							<g class="avg-sign-cal">
+							<g class="avg-sign-cal"
+								init-default
+								on-click="s:[balloon-enter:public]">
 								<text class="stadium-avg-text" font-family="Source Sans Pro" font-size="10" font-weight="bold" fill="#0648BB">
 									<tspan x="499.34" y="97">AVG PER HOUR</tspan>
 								</text>
@@ -1355,7 +1365,8 @@
 					</g>
 				</g>
 			</svg>
-			<svg preserveAspectRatio="xMidYMin" id="hiw-stadium-balloons" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572">
+			<svg preserveAspectRatio="xMidYMin" id="hiw-stadium-balloons" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572"
+				when-balloon-enter="t-enter">
 				<defs>
 					<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="day-sky-gradient-reverse">
 						<stop stop-color="#F4E3F6" offset="0%"></stop>
@@ -1366,7 +1377,9 @@
 					<rect class="day-sky" fill="url(#day-sky-gradient-reverse)" x="0" y="0" width="864" height="572"></rect>
 				</g>
 				<g class="sub2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-					<g class="hiw-helicopter">
+					<g class="hiw-helicopter"
+						when-balloon-enter="t-enter"
+						when-balloon-baking-init="t-exit">
 						<g class="hiw-helicopter-container">
 							<g class="sub2-helicopter">
 								<g>
@@ -1409,8 +1422,16 @@
 							</g>
 						</g>
 					</g>
-					<g id="hiw-balloon-group-baking" class="hiw-balloon-group">
-						<a id="hiw-balloon-baking" class="sub2-bakery-balloon hiw-balloon">
+					<g id="hiw-balloon-group-baking" class="hiw-balloon-group"
+						when-balloon-enter="t-enter">
+						<a id="hiw-balloon-baking" class="sub2-bakery-balloon hiw-balloon"
+							init-default
+							on-click="s:[balloon-baking-select]"
+							when-balloon-academic-select="t-exit"
+							when-balloon-baking-select="t-enter"
+							when-balloon-photography-select="t-exit"
+							when-balloon-tech-select="t-exit"
+							when-balloon-household-select="t-exit">
 							<g>
 								<path d="M106,419.88 C122.676953,419.88 151.78,383.825764 151.78,363.031445 C151.78,342.237126 131.283596,325.38 106,325.38 C80.7164042,325.38 60.22,342.237126 60.22,363.031445 C60.22,383.825764 89.3230469,419.88 106,419.88 Z" class="sub2-bakery-hotair-envelope" stroke="#9A7402" stroke-width="1.26" fill="#F6C64E"></path>
 								<rect class="sub2-bakery-hotair-icon-fill" fill="#FFFFFF" x="95.08" y="365.28" width="19.74" height="14.7"></rect>
@@ -1432,8 +1453,15 @@
 							</g>
 						</g>
 					</g>
-					<g id="hiw-balloon-group-photo" class="hiw-balloon-group">
-						<a id="hiw-balloon-photo" class="sub2-photo-balloon hiw-balloon hiw-balloon-static">
+					<g id="hiw-balloon-group-photo" class="hiw-balloon-group"
+						when-balloon-enter="t-enter">
+						<a id="hiw-balloon-photo" class="sub2-photo-balloon hiw-balloon hiw-balloon-static"
+							on-click="s:[balloon-photography-select:public]"
+							when-balloon-academic-select="t-exit"
+							when-balloon-baking-select="t-exit"
+							when-balloon-photography-select="t-enter"
+							when-balloon-tech-select="t-exit"
+							when-balloon-household-select="t-exit">
 							<g>
 								<path d="M778,419.88 C794.676953,419.88 823.78,383.825764 823.78,363.031445 C823.78,342.237126 803.283596,325.38 778,325.38 C752.716404,325.38 732.22,342.237126 732.22,363.031445 C732.22,383.825764 761.323047,419.88 778,419.88 Z" class="sub2-photo-hotair-envelope" stroke="#367F10" stroke-width="1.26" fill="#81B566"></path>
 								<rect class="sub2-photo-hotair-icon-fill" fill="#FFFFFF" x="767.5" y="366.846486" width="21" height="13.44"></rect>
@@ -1455,8 +1483,16 @@
 							</g>
 						</g>
 					</g>
-					<g id="hiw-balloon-group-tech" class="hiw-balloon-group">
-						<a id="hiw-balloon-tech" class="sub2-tech-balloon hiw-balloon">
+					<g id="hiw-balloon-group-tech" class="hiw-balloon-group"
+						when-balloon-enter="t-enter">
+						<a id="hiw-balloon-tech" class="sub2-tech-balloon hiw-balloon"
+							init-default
+							on-click="s:[balloon-tech-select:public]"
+							when-balloon-academic-select="t-exit"
+							when-balloon-baking-select="t-exit"
+							when-balloon-photography-select="t-exit"
+							when-balloon-tech-select="t-enter"
+							when-balloon-household-select="t-exit">
 							<g>
 								<path d="M610,431.88 C626.676953,431.88 655.78,395.825764 655.78,375.031445 C655.78,354.237126 635.283596,337.38 610,337.38 C584.716404,337.38 564.22,354.237126 564.22,375.031445 C564.22,395.825764 593.323047,431.88 610,431.88 Z" class="sub2-tech-hotair-envelope" stroke="#166669" stroke-width="1.26" fill="#55A4B7"></path>
 								<path d="M601.541667,393.279759 L601.541667,390.346667 L600.342211,390.346667 C599.877071,390.346667 599.5,389.971758 599.5,389.509637 L599.5,376.01703 C599.5,375.554751 599.873407,375.18 600.336184,375.18 L619.663816,375.18 C620.125628,375.18 620.5,375.554908 620.5,376.01703 L620.5,389.509637 C620.5,389.971916 620.126226,390.346667 619.663118,390.346667 L606.791667,390.346667 L606.791667,392.971667 L607.06,392.971667 L607.06,390.867568 L612.94,390.867568 L612.94,392.971667 L614.86045,392.971667 C615.261137,392.971667 615.585958,393.295318 615.585958,393.700833 C615.585958,394.103541 615.259474,394.43 614.86045,394.43 L612.94,394.43 L612.94,394.647568 L607.06,394.647568 L607.06,394.43 L602.267175,394.43 C601.866488,394.43 601.541667,394.106349 601.541667,393.700833 L601.541667,393.279759 L601.541667,393.279759 L601.541667,393.279759 L601.541667,393.279759 Z M613.0625,390.489652 L613.0625,392.825833 L613.0625,390.489652 L613.0625,390.489652 L613.0625,390.489652 L613.0625,390.489652 Z" class="sub2-tech-hotair-icon-fill" fill="#FFFFFF"></path>
@@ -1478,8 +1514,16 @@
 							</g>
 						</g>
 					</g>
-					<g id="hiw-balloon-group-academic" class="hiw-balloon-group">
-						<a id="hiw-balloon-academic" class="sub2-academic-balloon hiw-balloon">
+					<g id="hiw-balloon-group-academic" class="hiw-balloon-group"
+						when-balloon-enter="t-enter">
+						<a id="hiw-balloon-academic" class="sub2-academic-balloon hiw-balloon"
+							init-default
+							on-click="s:[balloon-academic-select]"
+							when-balloon-academic-select="t-enter"
+							when-balloon-baking-select="t-exit"
+							when-balloon-photography-select="t-exit"
+							when-balloon-tech-select="t-exit"
+							when-balloon-household-select="t-exit">
 							<g>
 								<path d="M442,446.88 C458.676953,446.88 487.78,410.825764 487.78,390.031445 C487.78,369.237126 467.283596,352.38 442,352.38 C416.716404,352.38 396.22,369.237126 396.22,390.031445 C396.22,410.825764 425.323047,446.88 442,446.88 Z" class="sub2-academic-hotair-envelope" stroke="#AD377C" stroke-width="1.26" fill="#E6389B"></path>
 								<path d="M445.700541,401.395135 L445.700541,408.487176 C445.700541,408.958824 445.319419,409.341081 444.850892,409.341081 L433.212351,409.341081 C433.125045,409.341081 433.055987,408.693171 433.001408,407.638378 L432.209743,407.638378 C431.817838,407.638378 431.5,407.323378 431.5,406.928919 C431.5,406.537014 431.820392,406.219459 432.209743,406.219459 L432.943493,406.219459 C432.929035,405.77764 432.915996,405.301771 432.904238,404.800541 L432.209743,404.800541 C431.817838,404.800541 431.5,404.485541 431.5,404.091081 C431.5,403.699176 431.820392,403.381622 432.209743,403.381622 L432.875328,403.381622 C432.867164,402.919634 432.859848,402.444849 432.853295,401.962703 L432.209743,401.962703 C431.817838,401.962703 431.5,401.647703 431.5,401.253243 C431.5,400.861338 431.820392,400.543784 432.209743,400.543784 L432.836303,400.543784 C432.829352,399.880969 432.823641,399.214357 432.81896,398.557297 L432.209743,398.557297 C431.817838,398.557297 431.5,398.242297 431.5,397.847838 C431.5,397.455932 431.820392,397.138378 432.209743,397.138378 L432.810273,397.138378 C432.80776,396.652135 432.80576,396.177174 432.80418,395.719459 L432.209743,395.719459 C431.817838,395.719459 431.5,395.404459 431.5,395.01 C431.5,394.618095 431.820392,394.300541 432.209743,394.300541 L432.800407,394.300541 C432.799439,393.787192 432.798963,393.310409 432.7988,392.881622 L432.209743,392.881622 C431.817838,392.881622 431.5,392.566622 431.5,392.172162 C431.5,391.780257 431.820392,391.462703 432.209743,391.462703 L432.799382,391.462703 C432.800057,390.923357 432.801016,390.613905 432.801016,390.613905 C432.801016,390.142257 433.162645,389.76 433.631172,389.76 L444.850892,389.76 C445.32027,389.76 445.700541,390.142257 445.700541,390.613905 L445.700541,397.705946 L446.540541,397.705946 L446.540541,401.395135 L445.700541,401.395135 L445.700541,401.395135 L445.700541,401.395135 Z M448.093005,409.341081 L452.366455,409.341081 L448.093005,409.341081 L448.093005,409.341081 L448.093005,409.341081 Z M448.294018,391.178919 L450.721564,391.178919 L450.721488,406.219459 L448.294296,406.219459 L448.294018,391.178919 L448.294018,391.178919 L448.294018,391.178919 Z M448.73562,389.76 L450.279963,389.76 L450.279963,391.178919 L448.73562,391.178919 L448.73562,389.76 L448.73562,389.76 L448.73562,389.76 Z M448.294296,406.219459 L449.507892,408.184791 L450.721488,406.219459 L448.294296,406.219459 L448.294296,406.219459 L448.294296,406.219459 Z" class="sub2-academic-hotair-icon-fill" fill="#FFFFFF"></path>
@@ -1501,8 +1545,16 @@
 							</g>
 						</g>
 					</g>
-					<g id="hiw-balloon-group-hh" class="hiw-balloon-group">
-						<a id="hiw-balloon-hh" class="sub2-hh-balloon hiw-balloon">
+					<g id="hiw-balloon-group-hh" class="hiw-balloon-group"
+						when-balloon-enter="t-enter">
+						<a id="hiw-balloon-hh" class="sub2-hh-balloon hiw-balloon"
+							init-default
+							on-click="s:[balloon-household-select:public]"
+							when-balloon-academic-select="t-exit"
+							when-balloon-baking-select="t-exit"
+							when-balloon-photography-select="t-exit"
+							when-balloon-tech-select="t-exit"
+							when-balloon-household-select="t-enter">
 							<g>
 								<path d="M274,431.88 C290.676953,431.88 319.78,395.825764 319.78,375.031445 C319.78,354.237126 299.283596,337.38 274,337.38 C248.716404,337.38 228.22,354.237126 228.22,375.031445 C228.22,395.825764 257.323047,431.88 274,431.88 Z" class="sub2-hh-hotair-envelope" stroke="#2D278D" stroke-width="1.26" fill="#7872E3"></path>
 								<rect class="sub2-hh-hotair-icon-fill" fill="#FFFFFF" x="272.586" y="378.629297" width="4.872" height="3.248"></rect>
@@ -1552,9 +1604,19 @@
 					</g>
 				</g>
 			</svg>
-			<svg preserveAspectRatio="xMidYMin" id="hiw-sky-balloon" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572">
+			<svg preserveAspectRatio="xMidYMin" id="hiw-sky-balloon" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572"
+				when-balloon-academic-select="t-enter"
+				when-balloon-baking-select="t-enter"
+				when-balloon-photography-select="t-enter"
+				when-balloon-tech-select="t-enter"
+				when-balloon-household-select="t-enter">
 				<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-					<g id="hiw-sky-balloon-academic" class="hiw-sky-balloon">
+					<g id="hiw-sky-balloon-academic" class="hiw-sky-balloon"
+						when-balloon-academic-select="t-enter"
+						when-balloon-baking-select="t-exit"
+						when-balloon-photography-select="t-exit"
+						when-balloon-tech-select="t-exit"
+						when-balloon-household-select="t-exit">
 						<g>
 							<path d="M200,350 C239.707031,350 309,264.156581 309,214.646298 C309,165.136015 260.199038,125 200,125 C139.800962,125 91,165.136015 91,214.646298 C91,264.156581 160.292969,350 200,350 Z" class="academic-hotair-envelope" stroke="#AD377C" stroke-width="3" fill="#E6389B"></path>
 							<path d="M208.810811,241.702703 L208.810811,258.588514 C208.810811,259.711486 207.903378,260.621622 206.787838,260.621622 L179.077027,260.621622 C178.869156,260.621622 178.70473,259.078979 178.57478,256.567568 L176.689865,256.567568 C175.756757,256.567568 175,255.817568 175,254.878378 C175,253.94527 175.762838,253.189189 176.689865,253.189189 L178.436888,253.189189 C178.402465,252.137237 178.371418,251.004217 178.343425,249.810811 L176.689865,249.810811 C175.756757,249.810811 175,249.060811 175,248.121622 C175,247.188514 175.762838,246.432432 176.689865,246.432432 L178.274591,246.432432 C178.255152,245.332462 178.237733,244.202021 178.222131,243.054054 L176.689865,243.054054 C175.756757,243.054054 175,242.304054 175,241.364865 C175,240.431757 175.762838,239.675676 176.689865,239.675676 L178.181673,239.675676 C178.165124,238.097546 178.151525,236.510375 178.140381,234.945946 L176.689865,234.945946 C175.756757,234.945946 175,234.195946 175,233.256757 C175,232.323649 175.762838,231.567568 176.689865,231.567568 L178.119698,231.567568 C178.113714,230.409846 178.108953,229.278985 178.105191,228.189189 L176.689865,228.189189 C175.756757,228.189189 175,227.439189 175,226.5 C175,225.566892 175.762838,224.810811 176.689865,224.810811 L178.096207,224.810811 C178.093902,223.588551 178.092769,222.453356 178.092382,221.432432 L176.689865,221.432432 C175.756757,221.432432 175,220.682432 175,219.743243 C175,218.810135 175.762838,218.054054 176.689865,218.054054 L178.093766,218.054054 C178.095373,216.769898 178.097656,216.033108 178.097656,216.033108 C178.097656,214.910135 178.958678,214 180.074219,214 L206.787838,214 C207.905405,214 208.810811,214.910135 208.810811,216.033108 L208.810811,232.918919 L210.810811,232.918919 L210.810811,241.702703 L208.810811,241.702703 L208.810811,241.702703 L208.810811,241.702703 Z M214.507154,260.621622 L224.682035,260.621622 L214.507154,260.621622 L214.507154,260.621622 L214.507154,260.621622 Z M214.985758,217.378378 L220.765629,217.378378 L220.765449,253.189189 L214.986419,253.189189 L214.985758,217.378378 L214.985758,217.378378 L214.985758,217.378378 Z M216.03719,214 L219.714197,214 L219.714197,217.378378 L216.03719,217.378378 L216.03719,214 L216.03719,214 L216.03719,214 Z M214.986419,253.189189 L217.875934,257.868551 L220.765449,253.189189 L214.986419,253.189189 L214.986419,253.189189 L214.986419,253.189189 Z" class="academic-hotair-icon-fill" fill="#FFFFFF"></path>
@@ -1567,7 +1629,12 @@
 							<rect class="academic-hotair-invisible-container" x="0" y="86" width="400" height="400"></rect>
 						</g>
 					</g>
-					<g id="hiw-sky-balloon-baking" class="hiw-sky-balloon">
+					<g id="hiw-sky-balloon-baking" class="hiw-sky-balloon"
+						when-balloon-academic-select="t-exit"
+						when-balloon-baking-select="t-enter"
+						when-balloon-photography-select="t-exit"
+						when-balloon-tech-select="t-exit"
+						when-balloon-household-select="t-exit">
 						<g>
 							<path d="M200,350 C239.707031,350 309,264.156581 309,214.646298 C309,165.136015 260.199038,125 200,125 C139.800962,125 91,165.136015 91,214.646298 C91,264.156581 160.292969,350 200,350 Z" class="bakery-hotair-envelope" stroke="#9A7402" stroke-width="3" fill="#F6C64E"></path>
 							<rect class="bakery-hotair-icon-fill" fill="#FFFFFF" x="174" y="220" width="47" height="35"></rect>
@@ -1580,7 +1647,12 @@
 							<rect class="bakery-hotair-invisible-container" x="0" y="86" width="400" height="400"></rect>
 						</g>
 					</g>
-					<g id="hiw-sky-balloon-photo" class="hiw-sky-balloon">
+					<g id="hiw-sky-balloon-photo" class="hiw-sky-balloon"
+						when-balloon-academic-select="t-exit"
+						when-balloon-baking-select="t-exit"
+						when-balloon-photography-select="t-enter"
+						when-balloon-tech-select="t-exit"
+						when-balloon-household-select="t-exit">
 						<g>
 							<path d="M200,350 C239.707031,350 309,264.156581 309,214.646298 C309,165.136015 260.199038,125 200,125 C139.800962,125 91,165.136015 91,214.646298 C91,264.156581 160.292969,350 200,350 Z" class="photo-hotair-envelope" stroke="#367F10" stroke-width="3" fill="#81B566"></path>
 							<rect class="photo-hotair-icon-fill" fill="#FFFFFF" x="175" y="223.72973" width="50" height="32"></rect>
@@ -1593,7 +1665,12 @@
 							<rect class="photo-hotair-invisible-container" x="0" y="86" width="400" height="400"></rect>
 						</g>
 					</g>
-					<g id="hiw-sky-balloon-tech" class="hiw-sky-balloon">
+					<g id="hiw-sky-balloon-tech" class="hiw-sky-balloon"
+						when-balloon-academic-select="t-exit"
+						when-balloon-baking-select="t-exit"
+						when-balloon-photography-select="t-exit"
+						when-balloon-tech-select="t-enter"
+						when-balloon-household-select="t-exit">
 						<g>
 							<path d="M200,350 C239.707031,350 309,264.156581 309,214.646298 C309,165.136015 260.199038,125 200,125 C139.800962,125 91,165.136015 91,214.646298 C91,264.156581 160.292969,350 200,350 Z" class="tech-hotair-envelope" stroke="#166669" stroke-width="3" fill="#55A4B7"></path>
 							<path d="M179.861111,258.094665 L179.861111,251.111111 L177.005265,251.111111 C175.897788,251.111111 175,250.218472 175,249.118184 L175,216.992927 C175,215.892264 175.889064,215 176.990914,215 L223.009086,215 C224.108637,215 225,215.892639 225,216.992927 L225,249.118184 C225,250.218847 224.110061,251.111111 223.007424,251.111111 L192.361111,251.111111 L192.361111,257.361111 L193,257.361111 L193,252.351351 L207,252.351351 L207,257.361111 L211.572499,257.361111 C212.526516,257.361111 213.2999,258.13171 213.2999,259.097222 C213.2999,260.05605 212.522556,260.833333 211.572499,260.833333 L207,260.833333 L207,261.351351 L193,261.351351 L193,260.833333 L181.588512,260.833333 C180.634495,260.833333 179.861111,260.062735 179.861111,259.097222 L179.861111,258.094665 L179.861111,258.094665 L179.861111,258.094665 L179.861111,258.094665 Z M207.291667,251.451552 L207.291667,257.013889 L207.291667,251.451552 L207.291667,251.451552 L207.291667,251.451552 L207.291667,251.451552 Z" class="tech-hotair-icon-fill" fill="#FFFFFF"></path>
@@ -1606,7 +1683,12 @@
 							<rect class="tech-hotair-invisible-container" x="0" y="86" width="400" height="400"></rect>
 						</g>
 					</g>
-					<g id="hiw-sky-balloon-hh" class="hiw-sky-balloon">
+					<g id="hiw-sky-balloon-hh" class="hiw-sky-balloon"
+						when-balloon-academic-select="t-exit"
+						when-balloon-baking-select="t-exit"
+						when-balloon-photography-select="t-exit"
+						when-balloon-tech-select="t-exit"
+						when-balloon-household-select="t-enter">
 						<g>
 							<path d="M200,350 C239.707031,350 309,264.156581 309,214.646298 C309,165.136015 260.199038,125 200,125 C139.800962,125 91,165.136015 91,214.646298 C91,264.156581 160.292969,350 200,350 Z" class="hh-hotair-envelope" stroke="#2D278D" stroke-width="3" fill="#7872E3"></path>
 							<rect class="hh-hotair-icon-fill" fill="#FFFFFF" x="196.633333" y="223.212613" width="11.6" height="7.73333333"></rect>
