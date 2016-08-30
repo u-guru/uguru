@@ -47,10 +47,51 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         parseSwitchAttr: parseSwitchAttr,
         processAnimArr: processAnimArr,
         parseAfterArgs: parseAfterArgs,
-        processSetExtraArgs: processSetExtraArgs
+        processSetExtraArgs: processSetExtraArgs,
+        processStaggerArgs: processStaggerArgs
+    }
+
+    function processStaggerArgs(attr_arr) {
+      var resultDict = {};
+      var attrKeys = Object.keys(attr_arr).filter(function(attr, i) {return attr.indexOf('$') === -1})
+      for (var i = 0; i < attrKeys.length; i++) {
+        var stateName = attrKeys[i];
+        var stateValue = attr_arr[stateName];
+
+        // console.log(stateName, stateValue)
+        var staggerArgsDict = processStaggerString(stateValue.split(':'))
+        resultDict[stateName] = staggerArgsDict
+      }
+      return resultDict
     }
 
 
+    function processStaggerString(arg_arr) {
+      var resultDict = {};
+      if (arg_arr.length < 3) return {};
+      resultDict.selector = arg_arr.shift();
+
+      // there's a start and end
+      resultDict.time = {};
+      if (arg_arr.length === 3) {
+        resultDict.time.start = parseInt(arg_arr.shift());
+        resultDict.time.end = parseInt(arg_arr.shift());
+        resultDict.ease = arg_arr.shift()
+      }
+      if (arg_arr.length === 2) {
+        var time = arg_arr.shift();
+        if (time.indexOf('[') > -1) {
+          time = UtilitiesService.removeAllOccurrancesArr(time, ['[', ']', ' '])
+          var time_arr = time.split(',');
+          resultDict.time.values = time_arr;
+        }
+        // resultDict.time.start = parseInt(arg_arr.shift());
+        // resultDict.time.end = parseInt(arg_arr.shift());
+        resultDict.ease = arg_arr.shift()
+      }
+      console.log(resultDict)
+      return resultDict //resultDict
+    }
 
 
     function parseSwitchAttr(scope, element, attr) {
