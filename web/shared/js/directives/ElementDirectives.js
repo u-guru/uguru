@@ -23,14 +23,13 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
-.directive('staggerChildren', ['UtilitiesService', '$timeout', '$compile', function(UtilitiesService, $timeout, $compile) {
+.directive('staggerChildren', ['UtilitiesService', 'DirectiveService', '$timeout', '$compile', function(UtilitiesService, DirectiveService, $timeout, $compile) {
   return {
     restrict: 'AE',
     scope: false,
     replace:true,
     transclude:true,
     priority: 100,
-    // template:'<div ng-transclude> </div>',
       compile: function(element, attr, transclude) {
         // element[0].style.display = 'none';
           var elems = element[0].querySelectorAll('*')
@@ -40,48 +39,54 @@ angular.module('uguru.shared.directives')
           var attrLength = element[0].attributes.length;
           var staggerDict = {};
           var postponedElem = [];
-          for (var i = 0; i < attrLength; i++) {
-            var iAttr = element[0].attributes[i];
-            if (iAttr.name.indexOf('on-') > -1 && iAttr.name.indexOf('-delay') > -1) {
-              var formattedIAttr = iAttr.name.replace('-delay', '');
-              staggerDict[formattedIAttr] = {elems: [], value: iAttr.value, delay:true};
-            }
-          }
+          // for (var i = 0; i < attrLength; i++) {
+            // var iAttr = element[0].attributes[i];
+            var stagDict = DirectiveService.processStaggerArgs(attr)
+            // if (iAttr.name.indexOf('on-') > -1) {
+            //   var staggerArgsSplit = iAttr.value.split(':')
+
+          // element.parent()[0].innerHTML = '';
+            // }
+          // }
           return {
             pre: function preLink(lScope, lElem, lAttr) {
-
+              var parent = lElem.parent();
+              parent[0].removeChild(lElem[0])
                   transclude(lScope, function(clone, innerScope) {
+                    var clonedChildrenWithAttr = [];
                     for (var i = 0; i < clone.length; i++) {
-                      var iChild = clone[i];
-                      if (iChild && iChild.attributes && iChild.hasAttribute('on-init') && !iChild.hasAttribute('stagger-ignore')) {
-
-                          var newOnInit = iChild.getAttribute('on-init') + ':delay-' + i * 1000;
-                          // iChild.removeAttribute('on-init');
-                          // $compile(iChild)(lScope)
-                          element.append(iChild)
-                          // iChild.setAttribute('on-init', newOnInit)
-
-                          // element.append();
-                          // element.append($compile(iChild)(lScope));
-                          // postponedElem.push({elem:iChild, delay: i*100})
-                      } else {
-                          element.append(iChild)
+                      if (clone[i] && clone[i].attributes) {
+                        clonedChildrenWithAttr.push(clone[i])
                       }
                     }
+                    console.log(clonedChildrenWithAttr.length)
+                    for (var i = 0; i < clonedChildrenWithAttr.length; i++) {
+                      var iChild = clonedChildrenWithAttr[i];
+                      for (key in stagDict) {
+                          keyDashed = UtilitiesService.camelToDash(key);
+                          var hasAttribute = iChild.getAttribute(keyDashed);
+                          if (hasAttribute && hasAttribute.length) {
+                            var keyAttr = hasAttribute
+                            var extensionValue = ':' + 'delay-' + stagDict[key].time.values[i];
+                            iChild.setAttribute(keyDashed, keyAttr + extensionValue);
+                          }
+                        }
+                        iChild.removeAttribute('style')
+                      }
+                      clonedChildrenWithAttr.forEach(function(elem, i) {
+
+
+                        elem.setAttribute('style', '');
+                        // elem.removeAttribute('on-init');
+                        parent.append(elem)
+
+                        // $compile(elem)(lScope)
+                      })
+                      $compile(parent)(lScope)
+
                   });
 
                 },
-            post: function postLink(scope, elem, attr) {
-              // console.log('waiting 1000ms')
-              // $timeout(function() {
-              //   postponedElem.forEach(function(eObj, i) {
-              //     console.log(eObj, i);
-              //     eObj.elem.removeAttribute('ng-if')
-              //     $compile(eObj.elem)(scope);
-              //     console.log(eObj.elem)
-              //   })
-              // }, 1000)
-            }
           }
       }
   }
