@@ -3742,9 +3742,9 @@
     opacity: 0; } }
 @keyframes map-student-union-flag {
   0% {
-    transform: scaleX(1) translate3d(0, 0, 0); }
+    transform: scaleX(1) skewX(0deg) translate3d(0, 0, 0); }
   100% {
-    transform: scaleX(0.5) translate3d(0, 0, 0); } }
+    transform: scaleX(0.5) skewX(-5deg) translate3d(0, 0, 0); } }
 #hiw-clock-tower.animate .tower, #hiw-clock-tower.animate .clock {
   opacity: 0;
   animation: hiw-fadeIn 1500ms ease-in-out forwards; }

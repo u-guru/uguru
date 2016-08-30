@@ -31,7 +31,7 @@
 				when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in:delay-1200]"></path>
 			<path d="M80.2925759,18.1336701 C85.9740083,16.4573009 39.1656567,46.8470445 80.2925752,46.847045 C96.4819076,40.0868522 115.524511,17.1509819 119.041282,18.2061005 C122.752713,13.2935246 81.7693287,49.0491967 148.5,54.4417735 C193.484957,44.5844736 195.940684,13.6946413 227.036443,17.5700591 C229.38937,17.6031464 179.793883,39.3390777 211.823637,50.1073016 C234.302802,56.8983765 262.968379,45.2347876 259.436004,48.284758 C252.607402,54.1808011 240.170391,58.125 225.960106,58.125 C218.03714,58.125 153.597843,64.4226086 126.055934,64.4226086 C98.5140251,64.4226086 64.1866024,56.0625 56.787234,56.0625 C43.0976227,56.0625 32,50.2972778 32,43.1855159 C32,39.654635 34.7355311,36.4556723 39.1656567,34.1293947 C43.6585167,31.7701752 24.5638298,49.0115979 45.6813913,45.40625 C53.2071248,36.2800902 52.6915309,30.5725032 61.8048433,30.5725029 C64.5183443,25.2525028 71.2892397,20.7902036 80.2925759,18.1336701 Z" class="map-cloud-4-detail" fill="#FBFBFB"
 				on-init="p:[tr:translateZ(0)]"
-				when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in:delay-1200]"></path>
+				when-hiw-enter="a:[hiw-cloud-hover:set:(dur:2000ms#func:linear#aic:infinite#ad:alternate):in:delay-1200]"></path>
 		</g>
 		<g class="map-cloud-3"
 			init-with="p:[op:0, tro:center center]"
@@ -51,7 +51,7 @@
 				when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in:delay-1700]"></path>
 			<path d="M500.292576,3.13367008 C505.974008,1.45730088 459.165657,31.8470445 500.292575,31.847045 C516.481908,25.0868522 535.524511,2.1509819 539.041282,3.20610053 C542.752713,-1.70647545 501.769329,34.0491967 568.5,39.4417735 C613.484957,29.5844736 615.940684,-1.30535873 647.036443,2.57005913 C649.38937,2.60314642 599.793883,24.3390777 631.823637,35.1073016 C654.302802,41.8983765 682.968379,30.2347876 679.436004,33.284758 C672.607402,39.1808011 660.170391,43.125 645.960106,43.125 C638.03714,43.125 573.597843,49.4226086 546.055934,49.4226086 C518.514025,49.4226086 484.186602,41.0625 476.787234,41.0625 C463.097623,41.0625 452,35.2972778 452,28.1855159 C452,24.654635 454.735531,21.4556723 459.165657,19.1293947 C463.658517,16.7701752 444.56383,34.0115979 465.681391,30.40625 C473.207125,21.2800902 472.691531,15.5725032 481.804843,15.5725029 C484.518344,10.2525028 491.28924,5.79020357 500.292576,3.13367008 Z" class="map-cloud-2-detail" fill="#FBFBFB"
 				on-init="p:[tr:translateZ(0)]"
-				when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in:delay-600]"></path>
+				when-hiw-enter="a:[hiw-cloud-hover:set:(dur:2000ms#func:linear#aic:infinite#ad:alternate):in:delay-1100]"></path>
 		</g>
 		<g class="map-cloud-1"
 			init-with="p:[op:0, tro:center center]"
@@ -67,9 +67,10 @@
 	<g class="map-thumbnail-balloons">
 		<g class="map-thumbnail-balloon-baking"
 			init-with="p:[op:0, tro:center top]"
-			when-hiw-details-enter="p:[opacity:0:1:1000:easeOutSine]:delay-500 | a:[hiw-sway:set:(dur:3000ms#func:linear#aic:infinite#ad:alternate):in:delay-500]">
+			when-hiw-details-enter="p:[opacity:0:1:1000:easeOutSine]:delay-500 | a:[hiw-sway:set:(dur:3000ms#func:cubic-bezier(1#0.09#0.33#0.92)#aic:infinite#dir:alternate):in:delay-700]">
+			<!-- BUG: Flicker on-enter when refresh. Doesn't appear to be cubic-bezier -->
 			<g init-default
-				when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in:delay-270]">
+				when-hiw-details-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#dir:alternate):in:delay-1270]">
 				<path d="M477,99.4396552 C477,95.7498217 478.208699,92.7586207 481.285714,92.7586207 C484.362729,92.7586207 486,95.7498217 486,99.4396552" class="map-thumbnail-balloon-arms" stroke="#F25A5B" stroke-width="2.06896552"></path>
 				<path d="M484.285714,95.3725037 C484.285714,93.8286995 483.035377,92.5771989 481.5,92.5771989 L481.5,92.5771989 C479.961492,92.5771989 478.714286,93.8224221 478.714286,95.3725037 L478.714286,99.0150401 C478.714286,100.558844 479.964623,101.810345 481.5,101.810345 L481.5,101.810345 C483.038508,101.810345 484.285714,100.565122 484.285714,99.0150401 L484.285714,95.3725037 L484.285714,95.3725037 Z" class="map-thumbnail-balloon-torso" stroke="#F25A5B" stroke-width="0.689655172" fill="#DA6869"></path>
 				<path d="M482.571429,102.059958 L482.571429,108.61695 C482.571429,109.380787 483.190325,110 483.955183,110 L482.90196,110 C483.666186,110 484.285714,109.382455 484.285714,108.627324 L484.285714,100.127879 L484.285714,99.4737507 L478.714286,99.4737507 L478.714286,100.127879 L478.714286,108.627324 C478.714286,109.385432 479.333182,110 480.09804,110 L479.044817,110 C479.809044,110 480.428571,109.376958 480.428571,108.61695 L480.428571,102.059958 L482.571429,102.059958 L482.571429,102.059958 Z" class="map-thumbnail-balloon-legs" stroke="#356977" stroke-width="0.689655172" fill="#55A4B7"></path>
@@ -86,7 +87,7 @@
 		</g>
 		<g class="map-thumbnail-balloon-hh"
 			init-with="p:[op:0, tro:center top]"
-			when-hiw-details-enter="p:[opacity:0:1:1000:easeOutSine]:delay-1000 | a:[hiw-sway:set:(dur:3000ms#func:linear#aic:infinite#ad:alternate):in:delay-960]">
+			when-hiw-details-enter="p:[opacity:0:1:1000:easeOutSine]:delay-1000 | a:[hiw-sway:set:(dur:3500ms#func:cubic-bezier(0.39#0.17#0.05#0.94)#aic:infinite#ad:alternate):in:delay-960]">
 			<g init-default
 				when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500#func:linear#aic:infinite#ad:alternate):in:delay-640]">
 				<g init-with="p:[op:0.8]">
