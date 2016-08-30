@@ -6,7 +6,10 @@
 // main
 .projector-slide .hiw-svg { width: 100%; height: 100% }
 
-.map-stadium, .map-library, .map-dorm, .map-clock-tower { cursor: pointer }
+.map-stadium, .map-library, .map-dorm, .map-clock-tower,
+#hiw-stadium {
+	cursor: pointer;
+}
 
 // main map hover
 .map-enter {
@@ -32,6 +35,15 @@ a[class*="-container"] {
 		}
 		.map-stadium-outside { transform: scaleY(0) translateZ(0) }
 	}
+}
+
+// stadium transitions
+#hiw-sky-balloon, #hiw-stadium, #hiw-stadium-balloons {
+	position: absolute;
+	top: 0;
+	left: 0;
+	// #hiw-sky-gradient (?)
+	// transition: all 500ms ease-out 1s;
 }
 
 // other sections
@@ -129,287 +141,26 @@ a[class*="-container"] {
 	// }
 }
 
-// onEnter
-// .map-stadium,.map-library,.map-dorm,.map-clock-tower,.map-student-union,.map-extra-dorm-1,.map-extra-dorm-2,.map-extra-dorm-3,.map-extra-dorm-4,.map-extra-dorm-5,.map-extra-dorm-6, .map-gym, .map-lab-maroon, .map-lab-teal, .map-lab-brown, .map-fountain {
-// 	transform-origin: center bottom;
-// 	transform: scaleY(0) translateZ(0);
-// 	animation: hiw-scaleUp 500ms cubic-bezier(.77,0,.05,1.27) forwards;
-// }
-
-// @for $i from 1 through 6 {
-// 	.map-extra-dorm-#{$i} {
-// 		animation-delay: #{($i*200)}ms;
-// 	}
-// }
-
-// .map-stadium { animation-delay: 500ms }
-// .map-library { animation-delay: 200ms }
-// .map-dorm { animation-delay: 1800ms }
-// .map-student-union { animation-delay: 800ms }
-// .map-clock-tower { animation-delay: 2500ms }
-// .map-gym { animation-delay: 900ms }
-// .map-lab-maroon { animation-delay: 200ms }
-// .map-lab-teal { animation-delay: 400ms }
-// .map-lab-brown { animation-delay: 600ms }
-
-// onEnter / infinite
-// g[class*="ppl"], [class*="bush"], g[class*="pine"], g[class*="elm"], g[class*="tri"], g[class*="gate-back"] {
-// 	animation: fadeIn 1000ms ease-in-out forwards;
-// }
-// g[class*="pine"] {
-// 	polygon[class*="top-base"] {
-// 		transform-origin: top center;
-// 		animation: hiw-shake 2000ms linear infinite alternate;
-// 	}
-// 	polygon[class*="top-shadow"] {
-// 		transform-origin: top right;
-// 		animation: hiw-shake 2000ms linear infinite alternate;
-// 	}
-// }
-// polygon[class*="pine-front-1"] {
-// 	animation-delay: 4s;
-// }
-// polygon[class*="pine-front-2"] {
-// 	animation: none;
-// }
-// polygon[class*="pine-front-3"] {
-// 	animation-delay: 2340ms;
-// }
-// polygon[class*="pine-front-4"] {
-// 	animation-delay: 1460ms;
-// }
-// polygon[class*="pine-back"] {
-// 	animation: none;
-// }
-//
-// [class*="bush"] {
-// 	transform-origin: center center;
-// 	animation: hiw-shake 2000ms linear infinite alternate;
-// 	&.map-student-union-bush-right { animation-delay: 3s }
-// 	&.map-student-union-bush-left { animation-delay: 8s }
-// }
-// .map-thumbnail-balloons {
-// 	g[class*="map-thumbnail-balloon-"] {
-// 		opacity: 0;
-// 		transform-origin: top center;
-// 	}
-// 	.map-thumbnail-balloon-baking {
-// 		animation: fadeIn 1s ease-out 3s forwards,hiw-sway 3s linear 500ms infinite alternate;
-// 		> g { animation: hiw-cloud-hover 1500ms linear 270ms infinite alternate }
-// 	}
-// 	.map-thumbnail-balloon-hh {
-// 		animation: fadeIn 1s ease-out 3500ms forwards,hiw-sway 3s linear 960ms infinite alternate;
-// 		> g {
-// 			opacity: 0.8;
-// 			animation: hiw-cloud-hover 1500ms linear 640ms infinite alternate;
-// 		}
-// 	}
-// 	.map-thumbnail-balloon-academic {
-// 		animation: fadeIn 1s ease-out 4s forwards,hiw-sway 3s linear 50ms infinite alternate;
-// 		> g {
-// 			opacity: 0.3;
-// 			animation: hiw-cloud-hover 1500ms linear 200ms infinite alternate;
-// 		}
-// 	}
-// }
-//
-// .map-clouds {
-// 	g[class*="map-cloud-"] {
-// 		opacity: 0;
-// 		transform-origin: center center;
-// 		transform: matrix3d(0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1);
-// 		animation: 1s hiw-map-clouds 0ms linear forwards;
-// 	}
-// 	path[class*="-shape"],path[class*="-detail"] {
-// 		transform: translateZ(0);
-// 		animation: hiw-cloud-hover 1500ms linear infinite alternate;
-// 	}
-// 	@for $i from 1 through 4 {
-// 		g.map-cloud-#{$i} { animation-delay: #{(3000+($i*200))}ms }
-// 		path.map-cloud-#{$i}-shape,path.map-cloud-#{$i}-detail { animation-delay: #{($i*300)}ms }
-// 	}
-// }
-//
-// .map-clock-tower-minute-hand {
-// 	transform-origin: bottom center;
-// 	animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
-// }
-// .map-clock-tower-hour-hand {
-// 	transform-origin: left center;
-// 	animation: 12000ms hiw-hour-hand 2000ms linear infinite forwards;
-// }
-//
-// .ppl-wheelchair {
-// 	animation: fadeIn 1000ms ease-in-out forwards, ppl-wheelchair-move 10s ease-in-out 5s forwards;
-// 	g {
-// 		transform-origin: center bottom;
-// 		animation: ppl-wheelchair-rotate 10s linear 5s forwards;
-// 	}
-// }
-//
-// .ppl-fan-2-wave {
-// 	animation: hiw-sway 500ms ease-in-out infinite alternate;
-// 	transform-origin: left bottom;
-// }
-//
-// .ppl-fan-1-wave {
-// 	animation: hiw-sway 500ms ease-in-out infinite alternate;
-// 	transform-origin: right bottom;
-// }
-//
-// .ppl-fan-1 {
-// 	animation: ppl-fan-cheer 500ms ease-in-out 3s 4 alternate-reverse,ppl-fan-2-push 500ms ease-in-out 5750ms 2 forwards,ppl-fan-1-push 500ms ease-in-out 6250ms 2 forwards,ppl-fan-cheer 500ms ease-in-out 8s infinite alternate;
-// 	transform-origin: right bottom;
-// }
-//
-// .ppl-fan-2 {
-// 	animation: ppl-fan-cheer 500ms ease-in-out 3250ms 4 alternate-reverse,ppl-fan-2-push 500ms ease-in-out 5650ms 2 forwards,ppl-fan-1-push 500ms ease-in-out 6150ms 2 forwards,ppl-fan-cheer 500ms ease-in-out 8500ms infinite alternate;
-// 	transform-origin: right bottom;
-// }
-//
-// .ppl-kite-fly {
-// 	animation: ppl-kite-fly 2000ms ease-in-out infinite alternate;
-// 	transform-origin: left bottom;
-// }
-//
-// .ppl-kite-diamond {
-// 	animation: ppl-kite-diamond 1500ms ease-in-out infinite alternate;
-// 	transform-origin: center bottom;
-// }
-//
-// .ppl-kite-arm-right {
-// 	animation: ppl-kite-fly 1500ms ease-in-out infinite alternate;
-// 	transform-origin: left top;
-// }
-//
-// .ppl-eating-munching {
-// 	animation: ppl-eating-munching 2000ms linear 3500ms infinite alternate-reverse;
-// 	transform-origin: left bottom;
-// }
-//
-// .ppl-eating-pizza-slice {
-// 	animation: ppl-eating-pizza-slice 6s ease-in infinite alternate;
-// 	transform-origin: center center;
-// }
-//
-// .ppl-eating-torso {
-// 	animation: ppl-eating-shake 100ms linear infinite alternate;
-// 	transform-origin: center center;
-// }
-//
-// .ppl-jeselle-arms {
-// 	animation: ppl-jeselle-dribble 300ms ease-in-out infinite alternate;
-// 	transform-origin: center center;
-// }
-//
-// .ppl-jeselle-wilson {
-// 	animation: ppl-jeselle-wilson 300ms cubic-bezier(.63,.09,.75,.46) infinite alternate;
-// 	transform-origin: center center;
-// }
-//
-// .ppl-musician {
-//   animation: ppl-musician-rock 500ms linear infinite alternate;
-// 	transform-origin: center bottom;
-// }
-//
-// .ppl-musician-arm-right {
-// 	animation: ppl-musician-strum 250ms ease-in-out infinite alternate;
-// 	transform-origin: right top;
-// }
-//
-// .ppl-musician-mohawk {
-// 	transform-origin: center bottom;
-// 		animation: ppl-musician-strum 500ms ease-in-out infinite alternate;
-// }
-//
-// .ppl-gabri {
-// 	animation: ppl-gabrielle-walk 3000ms steps(5,start) 2000ms forwards;
-// }
-//
-// .ppl-gabri-purse-swing {
-// 	transform-origin: center top;
-// 	animation: ppl-musician-strum 500ms ease-in-out infinite alternate;
-// }
-//
-// .ppl-bald {
-// 	animation: ppl-bald 5000ms ease-in-out 3 alternate-reverse;
-// }
-//
-// .ppl-bald-wobble {
-// 	animation: ppl-musician-strum 300ms ease-in-out 30 alternate-reverse;
-// 	transform-origin: center center;
-// }
-//
-// .fountain-water-drops-1{
-// 	animation: fountain-water-drops 500ms ease-in-out infinite normal;
-// 	transform-origin: center center;
-// }
-//
-// .fountain-water-drops-5{
-// 	animation: fountain-water-drops-5 800ms ease-in-out infinite normal;
-// 	transform-origin: center center;
-// }
-//
-// .fountain-water-drops-3,
-// .fountain-water-drops-4,
-// .fountain-water-drops-2 {
-// 	animation: fountain-water-drops-3 300ms ease-out infinite normal;
-// }
-//
-// .fountain-water-drops-6 {
-// 	animation: fountain-water-drops-6 450ms ease-in-out infinite normal;
-// 	transform-origin: center center;
-// }
-//
-// .fountain-water-burst-bottom {
-// 	transform-origin: center top;
-// 	animation: fountain-water-burst-bottom 1000ms ease-in-out infinite alternate;
-// }
-//
-// .fountain-water-burst {
-// 	transform-origin: center center;
-// 	animation: fountain-water-burst 500ms ease-in-out infinite alternate-reverse;
-// }
-//
-// .fountain-water-burst-top {
-// 	transform-origin: center center;
-// 	animation: fountain-water-burst-top 1500ms ease-in-out infinite alternate;
-// }
-//
-// .map-student-union-flag {
-//     animation: map-student-union-flag 750ms ease-out infinite alternate;
-// 	transform-origin: left center;
-// }
-
 // map transition to stadium subscene 1
-#hiw-map {
-	> g {
-		transition: transform 1s ease-out;
-		transform-origin: 123px 210.5px;
-	}
-	&.active-stadium {
-		> g {
-			// transform: translate3d(35%,34.3%,0) scale(4.32);
-			transform: translate3d(34.2%,26.6%,0) scale(4.32);
-		}
-		a[class*="-container"] {
-			.map-enter {
-				opacity: 0!important;
-				transform: translate3d(0,100%,0) scaleX(0)!important;
-			}
-			.map-stadium-outside { transform: scaleY(0) translateZ(0) }
-		}
-	}
-}
-
-// stadium transitions
-#hiw-sky-balloon,#hiw-sky-gradient,#hiw-stadium,#hiw-stadium-balloons {
-	position: absolute;
-	top: 0; left: 0;
-	z-index: -1;
-	opacity: 0;
-	transition: all 500ms ease-out 1s;
-}
+// #hiw-map {
+// 	> g {
+// 		transition: transform 1s ease-out;
+// 		transform-origin: 123px 210.5px;
+// 	}
+// 	&.active-stadium {
+// 		> g {
+// 			// transform: translate3d(35%,34.3%,0) scale(4.32);
+// 			transform: translate3d(34.2%,26.6%,0) scale(4.32);
+// 		}
+// 		a[class*="-container"] {
+// 			.map-enter {
+// 				opacity: 0!important;
+// 				transform: translate3d(0,100%,0) scaleX(0)!important;
+// 			}
+// 			.map-stadium-outside { transform: scaleY(0) translateZ(0) }
+// 		}
+// 	}
+// }
 
 #hiw-stadium {
 	cursor: pointer;
@@ -1004,3 +755,256 @@ a[class*="-container"] {
 		}
 	}
 }
+
+
+// onEnter
+// .map-stadium,.map-library,.map-dorm,.map-clock-tower,.map-student-union,.map-extra-dorm-1,.map-extra-dorm-2,.map-extra-dorm-3,.map-extra-dorm-4,.map-extra-dorm-5,.map-extra-dorm-6, .map-gym, .map-lab-maroon, .map-lab-teal, .map-lab-brown, .map-fountain {
+// 	transform-origin: center bottom;
+// 	transform: scaleY(0) translateZ(0);
+// 	animation: hiw-scaleUp 500ms cubic-bezier(.77,0,.05,1.27) forwards;
+// }
+
+// @for $i from 1 through 6 {
+// 	.map-extra-dorm-#{$i} {
+// 		animation-delay: #{($i*200)}ms;
+// 	}
+// }
+
+// .map-stadium { animation-delay: 500ms }
+// .map-library { animation-delay: 200ms }
+// .map-dorm { animation-delay: 1800ms }
+// .map-student-union { animation-delay: 800ms }
+// .map-clock-tower { animation-delay: 2500ms }
+// .map-gym { animation-delay: 900ms }
+// .map-lab-maroon { animation-delay: 200ms }
+// .map-lab-teal { animation-delay: 400ms }
+// .map-lab-brown { animation-delay: 600ms }
+
+// onEnter / infinite
+// g[class*="ppl"], [class*="bush"], g[class*="pine"], g[class*="elm"], g[class*="tri"], g[class*="gate-back"] {
+// 	animation: fadeIn 1000ms ease-in-out forwards;
+// }
+// g[class*="pine"] {
+// 	polygon[class*="top-base"] {
+// 		transform-origin: top center;
+// 		animation: hiw-shake 2000ms linear infinite alternate;
+// 	}
+// 	polygon[class*="top-shadow"] {
+// 		transform-origin: top right;
+// 		animation: hiw-shake 2000ms linear infinite alternate;
+// 	}
+// }
+// polygon[class*="pine-front-1"] {
+// 	animation-delay: 4s;
+// }
+// polygon[class*="pine-front-2"] {
+// 	animation: none;
+// }
+// polygon[class*="pine-front-3"] {
+// 	animation-delay: 2340ms;
+// }
+// polygon[class*="pine-front-4"] {
+// 	animation-delay: 1460ms;
+// }
+// polygon[class*="pine-back"] {
+// 	animation: none;
+// }
+//
+// [class*="bush"] {
+// 	transform-origin: center center;
+// 	animation: hiw-shake 2000ms linear infinite alternate;
+// 	&.map-student-union-bush-right { animation-delay: 3s }
+// 	&.map-student-union-bush-left { animation-delay: 8s }
+// }
+// .map-thumbnail-balloons {
+// 	g[class*="map-thumbnail-balloon-"] {
+// 		opacity: 0;
+// 		transform-origin: top center;
+// 	}
+// 	.map-thumbnail-balloon-baking {
+// 		animation: fadeIn 1s ease-out 3s forwards,hiw-sway 3s linear 500ms infinite alternate;
+// 		> g { animation: hiw-cloud-hover 1500ms linear 270ms infinite alternate }
+// 	}
+// 	.map-thumbnail-balloon-hh {
+// 		animation: fadeIn 1s ease-out 3500ms forwards,hiw-sway 3s linear 960ms infinite alternate;
+// 		> g {
+// 			opacity: 0.8;
+// 			animation: hiw-cloud-hover 1500ms linear 640ms infinite alternate;
+// 		}
+// 	}
+// 	.map-thumbnail-balloon-academic {
+// 		animation: fadeIn 1s ease-out 4s forwards,hiw-sway 3s linear 50ms infinite alternate;
+// 		> g {
+// 			opacity: 0.3;
+// 			animation: hiw-cloud-hover 1500ms linear 200ms infinite alternate;
+// 		}
+// 	}
+// }
+//
+// .map-clouds {
+// 	g[class*="map-cloud-"] {
+// 		opacity: 0;
+// 		transform-origin: center center;
+// 		transform: matrix3d(0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1);
+// 		animation: 1s hiw-map-clouds 0ms linear forwards;
+// 	}
+// 	path[class*="-shape"],path[class*="-detail"] {
+// 		transform: translateZ(0);
+// 		animation: hiw-cloud-hover 1500ms linear infinite alternate;
+// 	}
+// 	@for $i from 1 through 4 {
+// 		g.map-cloud-#{$i} { animation-delay: #{(3000+($i*200))}ms }
+// 		path.map-cloud-#{$i}-shape,path.map-cloud-#{$i}-detail { animation-delay: #{($i*300)}ms }
+// 	}
+// }
+//
+// .map-clock-tower-minute-hand {
+// 	transform-origin: bottom center;
+// 	animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+// }
+// .map-clock-tower-hour-hand {
+// 	transform-origin: left center;
+// 	animation: 12000ms hiw-hour-hand 2000ms linear infinite forwards;
+// }
+//
+// .ppl-wheelchair {
+// 	animation: fadeIn 1000ms ease-in-out forwards, ppl-wheelchair-move 10s ease-in-out 5s forwards;
+// 	g {
+// 		transform-origin: center bottom;
+// 		animation: ppl-wheelchair-rotate 10s linear 5s forwards;
+// 	}
+// }
+//
+// .ppl-fan-2-wave {
+// 	animation: hiw-sway 500ms ease-in-out infinite alternate;
+// 	transform-origin: left bottom;
+// }
+//
+// .ppl-fan-1-wave {
+// 	animation: hiw-sway 500ms ease-in-out infinite alternate;
+// 	transform-origin: right bottom;
+// }
+//
+// .ppl-fan-1 {
+// 	animation: ppl-fan-cheer 500ms ease-in-out 3s 4 alternate-reverse,ppl-fan-2-push 500ms ease-in-out 5750ms 2 forwards,ppl-fan-1-push 500ms ease-in-out 6250ms 2 forwards,ppl-fan-cheer 500ms ease-in-out 8s infinite alternate;
+// 	transform-origin: right bottom;
+// }
+//
+// .ppl-fan-2 {
+// 	animation: ppl-fan-cheer 500ms ease-in-out 3250ms 4 alternate-reverse,ppl-fan-2-push 500ms ease-in-out 5650ms 2 forwards,ppl-fan-1-push 500ms ease-in-out 6150ms 2 forwards,ppl-fan-cheer 500ms ease-in-out 8500ms infinite alternate;
+// 	transform-origin: right bottom;
+// }
+//
+// .ppl-kite-fly {
+// 	animation: ppl-kite-fly 2000ms ease-in-out infinite alternate;
+// 	transform-origin: left bottom;
+// }
+//
+// .ppl-kite-diamond {
+// 	animation: ppl-kite-diamond 1500ms ease-in-out infinite alternate;
+// 	transform-origin: center bottom;
+// }
+//
+// .ppl-kite-arm-right {
+// 	animation: ppl-kite-fly 1500ms ease-in-out infinite alternate;
+// 	transform-origin: left top;
+// }
+//
+// .ppl-eating-munching {
+// 	animation: ppl-eating-munching 2000ms linear 3500ms infinite alternate-reverse;
+// 	transform-origin: left bottom;
+// }
+//
+// .ppl-eating-pizza-slice {
+// 	animation: ppl-eating-pizza-slice 6s ease-in infinite alternate;
+// 	transform-origin: center center;
+// }
+//
+// .ppl-eating-torso {
+// 	animation: ppl-eating-shake 100ms linear infinite alternate;
+// 	transform-origin: center center;
+// }
+//
+// .ppl-jeselle-arms {
+// 	animation: ppl-jeselle-dribble 300ms ease-in-out infinite alternate;
+// 	transform-origin: center center;
+// }
+//
+// .ppl-jeselle-wilson {
+// 	animation: ppl-jeselle-wilson 300ms cubic-bezier(.63,.09,.75,.46) infinite alternate;
+// 	transform-origin: center center;
+// }
+//
+// .ppl-musician {
+//   animation: ppl-musician-rock 500ms linear infinite alternate;
+// 	transform-origin: center bottom;
+// }
+//
+// .ppl-musician-arm-right {
+// 	animation: ppl-musician-strum 250ms ease-in-out infinite alternate;
+// 	transform-origin: right top;
+// }
+//
+// .ppl-musician-mohawk {
+// 	transform-origin: center bottom;
+// 		animation: ppl-musician-strum 500ms ease-in-out infinite alternate;
+// }
+//
+// .ppl-gabri {
+// 	animation: ppl-gabrielle-walk 3000ms steps(5,start) 2000ms forwards;
+// }
+//
+// .ppl-gabri-purse-swing {
+// 	transform-origin: center top;
+// 	animation: ppl-musician-strum 500ms ease-in-out infinite alternate;
+// }
+//
+// .ppl-bald {
+// 	animation: ppl-bald 5000ms ease-in-out 3 alternate-reverse;
+// }
+//
+// .ppl-bald-wobble {
+// 	animation: ppl-musician-strum 300ms ease-in-out 30 alternate-reverse;
+// 	transform-origin: center center;
+// }
+//
+// .fountain-water-drops-1{
+// 	animation: fountain-water-drops 500ms ease-in-out infinite normal;
+// 	transform-origin: center center;
+// }
+//
+// .fountain-water-drops-5{
+// 	animation: fountain-water-drops-5 800ms ease-in-out infinite normal;
+// 	transform-origin: center center;
+// }
+//
+// .fountain-water-drops-3,
+// .fountain-water-drops-4,
+// .fountain-water-drops-2 {
+// 	animation: fountain-water-drops-3 300ms ease-out infinite normal;
+// }
+//
+// .fountain-water-drops-6 {
+// 	animation: fountain-water-drops-6 450ms ease-in-out infinite normal;
+// 	transform-origin: center center;
+// }
+//
+// .fountain-water-burst-bottom {
+// 	transform-origin: center top;
+// 	animation: fountain-water-burst-bottom 1000ms ease-in-out infinite alternate;
+// }
+//
+// .fountain-water-burst {
+// 	transform-origin: center center;
+// 	animation: fountain-water-burst 500ms ease-in-out infinite alternate-reverse;
+// }
+//
+// .fountain-water-burst-top {
+// 	transform-origin: center center;
+// 	animation: fountain-water-burst-top 1500ms ease-in-out infinite alternate;
+// }
+//
+// .map-student-union-flag {
+//     animation: map-student-union-flag 750ms ease-out infinite alternate;
+// 	transform-origin: left center;
+// }

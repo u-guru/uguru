@@ -4422,7 +4422,8 @@
   width: 100%;
   height: 100%; }
 
-.map-stadium, .map-library, .map-dorm, .map-clock-tower {
+.map-stadium, .map-library, .map-dorm, .map-clock-tower,
+#hiw-stadium {
   cursor: pointer; }
 
 .map-enter {
@@ -4443,6 +4444,11 @@ a[class*="-container"]:hover .map-enter {
     animation: hiw-cloud-hover 1500ms linear 175ms infinite alternate; }
 a[class*="-container"]:hover .map-stadium-outside {
   transform: scaleY(0) translateZ(0); }
+
+#hiw-sky-balloon, #hiw-stadium, #hiw-stadium-balloons {
+  position: absolute;
+  top: 0;
+  left: 0; }
 
 #hiw-clock-tower, #hiw-dorm, #hiw-library {
   position: absolute;
@@ -4489,25 +4495,6 @@ a[class*="-container"]:hover .map-stadium-outside {
         transform-origin: right center; }
   #hiw-library.animate #hiw-library-outside-left svg > g, #hiw-library.animate #hiw-library-outside-right svg > g {
     transform: scaleX(0); }
-
-#hiw-map > g {
-  transition: transform 1s ease-out;
-  transform-origin: 123px 210.5px; }
-#hiw-map.active-stadium > g {
-  transform: translate3d(34.2%, 26.6%, 0) scale(4.32); }
-#hiw-map.active-stadium a[class*="-container"] .map-enter {
-  opacity: 0 !important;
-  transform: translate3d(0, 100%, 0) scaleX(0) !important; }
-#hiw-map.active-stadium a[class*="-container"] .map-stadium-outside {
-  transform: scaleY(0) translateZ(0); }
-
-#hiw-sky-balloon, #hiw-sky-gradient, #hiw-stadium, #hiw-stadium-balloons {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  opacity: 0;
-  transition: all 500ms ease-out 1s; }
 
 #hiw-stadium {
   cursor: pointer; }

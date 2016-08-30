@@ -1,50 +1,10 @@
 <ion-view id="demo" class="flex-center">
-    <!-- <script>
-        $(".map-stadium-container").click(function(){
-        	$("#hiw-map").addClass("active-stadium");
-        	$("#hiw-stadium").addClass("active");
-        });
-
-        $(".avg-sign-away").click(function(){
-        	$("#hiw-stadium").addClass("wild");
-        });
-
-        $(".avg-sign-cal").click(function(){
-        	$(".hiw-stadium-container").addClass("active");
-        	$("#hiw-stadium-balloons").addClass("active");
-        	$(".hiw-helicopter").addClass("active");
-        	$(".hiw-balloon-group").addClass("move");
-        });
-
-        $(".hiw-balloon").each(function() {
-        	$(this).click(function(){
-        		$(this).addClass("active");
-        		$(".hiw-stadium-balloons-container").addClass("clear");
-        		$(".hiw-helicopter").addClass("clear");
-        		$(".hiw-balloon").not(this).addClass("hiw-balloon-static").addClass("clear");
-        		$("#hiw-sky-balloon").addClass("active");
-        		$("#hiw-sky-balloon-gradient").addClass("active");
-        		$("#hiw-sky-clouds").addClass("active");
-        		if ($(this).is( "#hiw-balloon-academic" )) {
-        			$("#hiw-sky-balloon-academic").addClass("active");
-        		} else if ($(this).is( "#hiw-balloon-baking" )) {
-        			$("#hiw-sky-balloon-baking").addClass("active");
-        		} else if ($(this).is( "#hiw-balloon-hh" )) {
-        			$("#hiw-sky-balloon-hh").addClass("active");
-        		} else if ($(this).is( "#hiw-balloon-tech" )) {
-        			$("#hiw-sky-balloon-tech").addClass("active");
-        		} else if ($(this).is( "#hiw-balloon-photo" )) {
-        			$("#hiw-sky-balloon-photo").addClass("active");
-        		}
-        	});
-        });
-    </script> -->
     <div class="projector-slide">
 		<svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
 			<path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
 		</svg>
 		<div class="projector-top"></div>
-		<div class="projector-content"
+		<div class="projector-content overflow-hidden"
 			init-default
 			on-init="s:[hiw-enter:public]">
 			<svg id="hiw-clock-tower" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMid slice"
@@ -58,7 +18,8 @@
 				init-with="p:[op:0, z-index:-10]"></div>
 			<svg id="hiw-map" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
 				style="background: #B6E2F7;"
-				when-open-stadium="t-enter">
+				init-with="p:[tro:123px 210.5px]"
+				when-open-stadium="p:[transform:translateX(0%) translateY(0%) translateZ(0px) scale(0):translateX(28%) translateY(12%) translateZ(0px) scale(4.32):1000:easeOutSine easeOutSine easeOutSine easeOutSine]">
 				<defs>
 					<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="night-sky-gradient">
 						<stop stop-color="#2A4863" offset="0%"></stop>
@@ -401,7 +362,8 @@
 					<a class="map-stadium-container"
 						init-default
 						on-click="s:[open-stadium:public]">
-						<g class="map-stadium-enter map-enter">
+						<g class="map-stadium-enter map-enter"
+							when-open-stadium="p:[opacity:1:0:150:easeInOutSine, transform:translateY(0%):translateY(100%):150:easeInOutSine]">
 							<g>
 								<path d="M59,74.9997073 C59,73.8952994 59.885725,73 60.9977106,73 L185.002289,73 C186.105594,73 187,73.8898926 187,74.9997073 L187,107.000293 C187,108.104701 186.119632,109.137558 185.014427,109.310246 L123.979677,118.846925 C123.438616,118.931466 122.557137,118.930803 122.020323,118.846925 L60.9855728,109.310246 C59.8889712,109.138902 59,108.110107 59,107.000293 L59,74.9997073 Z" class="map-stadium-bg" stroke="#D3242C" stroke-width="2" fill="#F04F54"></path>
 								<text class="map-stadium-text" font-family="Source Sans Pro" font-size="24" font-weight="900" fill="#FFFFFF">
@@ -434,7 +396,9 @@
 								<rect class="mini-stadium-inside-18" stroke="#FFFFFF" stroke-width="0.694444444" fill="#FFFFFF" x="81.3333333" y="139.138889" width="37.037037" height="3.00925926"></rect>
 								<rect class="mini-stadium-inside-19" stroke="#FFFFFF" stroke-width="0.694444444" fill="#FFFFFF" x="127.62963" y="139.138889" width="37.037037" height="3.00925926"></rect>
 							</g>
-							<g class="map-stadium-outside">
+							<g class="map-stadium-outside"
+								init-default
+								when-open-stadium="p:[tr:scaleY(0) translateZ(0px)]">
 								<path d="M27.3981481,184.972222 C27.3981481,184.972222 91.2098765,195.62037 123.115741,195.62037 C155.021605,195.62037 218.833333,184.972222 218.833333,184.972222 L218.833333,228.977561 C218.833333,230.129094 217.895113,231.137913 216.761352,231.227829 C216.761352,231.227829 155.021605,236.248987 123.115741,236.248987 C91.2098765,236.248987 29.4517805,231.226381 29.4517805,231.226381 C28.3175907,231.135926 27.3981481,230.121039 27.3981481,228.977561 L27.3981481,184.972222 Z" class="mini-stadium-outside-4" stroke="#2B3234" stroke-width="0.694444444" fill="#6F828F"></path>
 								<path d="M123.115741,203.674298 C90.0524691,203.674298 23.9259259,192.923069 23.9259259,192.923069 L23.9259259,184.277778 C23.9259259,184.277778 90.0524691,194.925926 123.115741,194.925926 C156.179012,194.925926 222.305556,184.277778 222.305556,184.277778 L222.305556,192.923069 C222.305556,192.923069 156.179012,203.674298 123.115741,203.674298 Z" class="mini-stadium-outside-3" stroke="#8DA3B3" stroke-width="0.694444444" fill="#E5E5E5"></path>
 								<path d="M25.025463,177.28134 C25.512818,175.099101 26.9114132,170.725635 26.9114132,170.725635 C26.9884639,170.482226 27.1766042,170.446125 27.3357792,170.650316 L31.1018519,175.481481 L31.1018519,185.203704 L24.3857286,184.337107 C24.1317866,184.30434 23.9531825,184.066656 23.9856338,183.819114 C23.9856338,183.819114 24.538108,179.46358 25.025463,177.28134 Z" class="mini-stadium-outside-2" stroke="#8DA3B3" stroke-width="0.694444444" fill="#E5E5E5"></path>
@@ -1310,7 +1274,8 @@
 			</svg>
 			<svg id="hiw-stadium" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
 				style="background: #B6E2F7;"
-				when-open-stadium="t-enter"
+				init-with="p:[op:0, z-index:-1]"
+				when-open-stadium="p:[z-index:1, opacity:0:1:500:easeInOutSine]:delay-1000"
 				when-crowd-cheer="t-enter">
 				<g class="hiw-stadium-balloons-container"
 					when-balloon-baking-init="t-exit">
@@ -1642,6 +1607,7 @@
 				</g>
 			</svg>
 			<svg id="hiw-stadium-balloons" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
+				init-with="p:[op:0, z-index:-1]"
 				when-balloon-enter="t-enter">
 				<defs>
 					<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="day-sky-gradient-reverse">
@@ -1881,6 +1847,7 @@
 				</g>
 			</svg>
 			<svg id="hiw-sky-balloon" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
+				init-with="p:[op:0, z-index:-1]"
 				when-balloon-academic-select="t-enter"
 				when-balloon-baking-select="t-enter"
 				when-balloon-photography-select="t-enter"
@@ -1985,3 +1952,45 @@
 		</svg>
 	</div>
 </ion-view>
+
+
+<!-- <script>
+	$(".map-stadium-container").click(function(){
+		$("#hiw-map").addClass("active-stadium");
+		$("#hiw-stadium").addClass("active");
+	});
+
+	$(".avg-sign-away").click(function(){
+		$("#hiw-stadium").addClass("wild");
+	});
+
+	$(".avg-sign-cal").click(function(){
+		$(".hiw-stadium-container").addClass("active");
+		$("#hiw-stadium-balloons").addClass("active");
+		$(".hiw-helicopter").addClass("active");
+		$(".hiw-balloon-group").addClass("move");
+	});
+
+	$(".hiw-balloon").each(function() {
+		$(this).click(function(){
+			$(this).addClass("active");
+			$(".hiw-stadium-balloons-container").addClass("clear");
+			$(".hiw-helicopter").addClass("clear");
+			$(".hiw-balloon").not(this).addClass("hiw-balloon-static").addClass("clear");
+			$("#hiw-sky-balloon").addClass("active");
+			$("#hiw-sky-balloon-gradient").addClass("active");
+			$("#hiw-sky-clouds").addClass("active");
+			if ($(this).is( "#hiw-balloon-academic" )) {
+				$("#hiw-sky-balloon-academic").addClass("active");
+			} else if ($(this).is( "#hiw-balloon-baking" )) {
+				$("#hiw-sky-balloon-baking").addClass("active");
+			} else if ($(this).is( "#hiw-balloon-hh" )) {
+				$("#hiw-sky-balloon-hh").addClass("active");
+			} else if ($(this).is( "#hiw-balloon-tech" )) {
+				$("#hiw-sky-balloon-tech").addClass("active");
+			} else if ($(this).is( "#hiw-balloon-photo" )) {
+				$("#hiw-sky-balloon-photo").addClass("active");
+			}
+		});
+	});
+</script> -->
