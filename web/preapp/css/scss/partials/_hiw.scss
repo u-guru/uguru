@@ -11,21 +11,21 @@
 // 	animation: hiw-scaleUp 500ms cubic-bezier(.77,0,.05,1.27) forwards;
 // }
 
-@for $i from 1 through 6 {
-	.map-extra-dorm-#{$i} {
-		animation-delay: #{($i*200)}ms;
-	}
-}
+// @for $i from 1 through 6 {
+// 	.map-extra-dorm-#{$i} {
+// 		animation-delay: #{($i*200)}ms;
+// 	}
+// }
 
-.map-stadium { animation-delay: 500ms }
-.map-library { animation-delay: 200ms }
-.map-dorm { animation-delay: 1800ms }
-.map-student-union { animation-delay: 800ms }
-.map-clock-tower { animation-delay: 2500ms }
-.map-gym { animation-delay: 900ms }
-.map-lab-maroon { animation-delay: 200ms }
-.map-lab-teal { animation-delay: 400ms }
-.map-lab-brown { animation-delay: 600ms }
+// .map-stadium { animation-delay: 500ms }
+// .map-library { animation-delay: 200ms }
+// .map-dorm { animation-delay: 1800ms }
+// .map-student-union { animation-delay: 800ms }
+// .map-clock-tower { animation-delay: 2500ms }
+// .map-gym { animation-delay: 900ms }
+// .map-lab-maroon { animation-delay: 200ms }
+// .map-lab-teal { animation-delay: 400ms }
+// .map-lab-brown { animation-delay: 600ms }
 
 // onEnter / infinite
 g[class*="ppl"], [class*="bush"], g[class*="pine"], g[class*="elm"], g[class*="tri"], g[class*="gate-back"] {
