@@ -3206,9 +3206,10 @@
 @keyframes cal-people {
   0% {
     transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-    opacity: 1; }
+    opacity: 0; }
   4.5% {
-    transform: matrix3d(0.485, 0, 0, 0, 0, 0.485, 0, 0, 0, 0, 1, 0, 68.746, 0, 0, 1); }
+    transform: matrix3d(0.485, 0, 0, 0, 0, 0.485, 0, 0, 0, 0, 1, 0, 68.746, 0, 0, 1);
+    opacity: 1; }
   6.31% {
     transform: matrix3d(0.664, 0, 0, 0, 0, 0.664, 0, 0, 0, 0, 1, 0, 81.77, 0, 0, 1); }
   9.01% {
@@ -3246,9 +3247,10 @@
 @keyframes fan-props-cal-small {
   0% {
     transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-    opacity: 1; }
+    opacity: 0; }
   2.25% {
-    transform: matrix3d(0.205, -0.44, 0, 0, 0.44, 0.205, 0, 0, 0, 0, 1, 0, -15.518, 33.232, 0, 1); }
+    transform: matrix3d(0.205, -0.44, 0, 0, 0.44, 0.205, 0, 0, 0, 0, 1, 0, -15.518, 33.232, 0, 1);
+    opacity: 1; }
   2.6% {
     transform: matrix3d(0.269, -0.488, 0, 0, 0.488, 0.269, 0, 0, 0, 0, 1, 0, -19.428, 35.286, 0, 1); }
   4.3% {
@@ -3350,9 +3352,10 @@
 @keyframes fan-props-away-small {
   0% {
     transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-    opacity: 1; }
+    opacity: 0; }
   2.25% {
-    transform: matrix3d(0.205, 0.44, 0, 0, -0.44, 0.205, 0, 0, 0, 0, 1, 0, 15.518, 33.232, 0, 1); }
+    transform: matrix3d(0.205, 0.44, 0, 0, -0.44, 0.205, 0, 0, 0, 0, 1, 0, 15.518, 33.232, 0, 1);
+    opacity: 1; }
   2.6% {
     transform: matrix3d(0.269, 0.488, 0, 0, -0.488, 0.269, 0, 0, 0, 0, 1, 0, 19.428, 35.286, 0, 1); }
   4.3% {
@@ -3408,9 +3411,10 @@
 @keyframes away-people {
   0% {
     transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-    opacity: 1; }
+    opacity: 0; }
   4.5% {
-    transform: matrix3d(0.485, 0, 0, 0, 0, 0.485, 0, 0, 0, 0, 1, 0, -34.373, 0, 0, 1); }
+    transform: matrix3d(0.485, 0, 0, 0, 0, 0.485, 0, 0, 0, 0, 1, 0, -34.373, 0, 0, 1);
+    opacity: 1; }
   6.31% {
     transform: matrix3d(0.664, 0, 0, 0, 0, 0.664, 0, 0, 0, 0, 1, 0, -40.885, 0, 0, 1); }
   9.01% {
@@ -4490,21 +4494,6 @@ a[class*="-container"]:hover .map-stadium-outside {
   #hiw-library.animate #hiw-library-outside-left svg > g, #hiw-library.animate #hiw-library-outside-right svg > g {
     transform: scaleX(0); }
 
-#hiw-stadium.active .fan-props-away-small {
-  animation: fan-props-away-small 2000ms linear 1750ms both; }
-#hiw-stadium.active .sub1-main-crowd {
-  animation: sub1-main-crowd 1s linear 1500ms both; }
-#hiw-stadium.active .fan-props-cal-main, #hiw-stadium.active .fan-props-away-main {
-  animation: hiw-slideUp 1s ease-in-out 1750ms forwards; }
-#hiw-stadium.active .stadium-main-cal-flag-1 {
-  animation: flag-rotate-2 150ms linear 1600ms 30 alternate;
-  transform-origin: bottom right; }
-#hiw-stadium.active .stadium-main-cal-flag-2 {
-  animation: flag-rotate 250ms linear 1600ms 30 alternate;
-  transform-origin: bottom left; }
-#hiw-stadium.active .stadium-main-cal-flag-3 {
-  animation: flag-rotate 300ms linear 1600ms 20 alternate;
-  transform-origin: bottom left; }
 #hiw-stadium.active .stadium-small-cal-flag-11,
 #hiw-stadium.active .stadium-small-cal-flag-1,
 #hiw-stadium.active .stadium-small-cal-flag-2 {
