@@ -2994,6 +2994,11 @@
     -o-animation-delay: 2000ms;
     animation-delay: 2000ms; }
 
+@keyframes food-shake {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(-10deg); } }
 @keyframes ppl-fan-1-push {
   0% {
     transform: translateX(0) rotateZ(0deg); }
