@@ -9,7 +9,8 @@
 			on-init="s:[hiw-enter:public]">
 			<svg id="hiw-clock-tower" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMid slice"
 				ng-include="root.base_url + 'preapp/templates/hiw/clock-tower.html'"
-				init-with="p:[op:0, z-index:-10]"></svg>
+				init-with="p:[op:0, z-index:-10]"
+				when-open-clock-tower="p:[op:1, z-index:4]"></svg>
 			<svg id="hiw-dorm" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMid slice"
 				ng-include="root.base_url + 'preapp/templates/hiw/dorm.html'"
 				init-with="p:[op:0, z-index:-10]"></svg>
