@@ -26,7 +26,6 @@ angular.module('uguru.shared.directives')
 .directive('staggerChildren', ['UtilitiesService', 'DirectiveService', '$timeout', '$compile', function(UtilitiesService, DirectiveService, $timeout, $compile) {
   return {
     restrict: 'AE',
-    scope: false,
     replace:true,
     transclude:true,
     priority: 100,
@@ -39,36 +38,46 @@ angular.module('uguru.shared.directives')
           var attrLength = element[0].attributes.length;
           var staggerDict = {};
           var postponedElem = [];
-          // for (var i = 0; i < attrLength; i++) {
-            // var iAttr = element[0].attributes[i];
-            var stagDict = DirectiveService.processStaggerArgs(attr)
-            // if (iAttr.name.indexOf('on-') > -1) {
-            //   var staggerArgsSplit = iAttr.value.split(':')
+          //
 
-          // element.parent()[0].innerHTML = '';
-            // }
-          // }
+          var stagDict = DirectiveService.processStaggerArgs(attr)
+          // console.log('its compiling', attr.onEnter)
+
+
           return {
             pre: function preLink(lScope, lElem, lAttr) {
               var parent = lElem.parent();
+
+              console.log(lElem[0])
               parent[0].removeChild(lElem[0])
                   transclude(lScope, function(clone, innerScope) {
+
                     var clonedChildrenWithAttr = [];
+
                     for (var i = 0; i < clone.length; i++) {
+                      // console.log(angular.element(clone[i]).parent())
                       if (clone[i] && clone[i].attributes) {
+
                         clonedChildrenWithAttr.push(clone[i])
                       }
                     }
-                    console.log(clonedChildrenWithAttr.length)
+                    // console.log(clonedChildrenWithAttr.length)
                     for (var i = 0; i < clonedChildrenWithAttr.length; i++) {
                       var iChild = clonedChildrenWithAttr[i];
                       for (key in stagDict) {
                           keyDashed = UtilitiesService.camelToDash(key);
                           var hasAttribute = iChild.getAttribute(keyDashed);
-                          if (hasAttribute && hasAttribute.length) {
+                          if (hasAttribute && hasAttribute.length && stagDict[key].time) {
                             var keyAttr = hasAttribute
-                            var extensionValue = ':' + 'delay-' + stagDict[key].time.values[i];
-                            iChild.setAttribute(keyDashed, keyAttr + extensionValue);
+
+                            var selectorPrefs = stagDict[key].selector;
+
+                            var matchesWithConstraints = DirectiveService.verifyStaggerChildSelector(selectorPrefs[0], iChild)
+                            if (matchesWithConstraints) {
+                              var extensionValue = ':' + 'delay-' + stagDict[key].time.values.shift();
+                              iChild.setAttribute(keyDashed, keyAttr + extensionValue);
+                            }
+
                           }
                         }
                         iChild.removeAttribute('style')
@@ -77,9 +86,7 @@ angular.module('uguru.shared.directives')
 
 
                         elem.setAttribute('style', '');
-                        // elem.removeAttribute('on-init');
                         parent.append(elem)
-
                         // $compile(elem)(lScope)
                       })
                       $compile(parent)(lScope)

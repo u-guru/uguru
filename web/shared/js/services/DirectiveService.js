@@ -48,52 +48,141 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         processAnimArr: processAnimArr,
         parseAfterArgs: parseAfterArgs,
         processSetExtraArgs: processSetExtraArgs,
-        processStaggerArgs: processStaggerArgs
+        processStaggerArgs: processStaggerArgs,
+        verifyStaggerChildSelector: verifyStaggerChildSelector
+    }
+
+    function verifyStaggerChildSelector(constraints, elem) {
+      var result = true;
+      if (constraints.all) {
+        return true;
+      } else
+      if (constraints.classes && constraints.classes.length) {
+        var className = elem.classList.value || elem.className
+
+        constraints.classes.forEach(function(_class, i) {
+          if (className.indexOf(_class) === -1) {
+            result = false;
+          }
+        })
+      }
+
+      return result;
     }
 
     function processStaggerArgs(attr_arr) {
       var resultDict = {};
       var attrKeys = Object.keys(attr_arr).filter(function(attr, i) {return attr.indexOf('$') === -1})
+
       for (var i = 0; i < attrKeys.length; i++) {
         var stateName = attrKeys[i];
         var stateValue = attr_arr[stateName];
 
-        // console.log(stateName, stateValue)
         var staggerArgsDict = processStaggerString(stateValue.split(':'))
+
         resultDict[stateName] = staggerArgsDict
       }
+      // processSelectors(attr_arr)
       return resultDict
     }
 
 
     function processStaggerString(arg_arr) {
       var resultDict = {};
-      if (arg_arr.length < 3) return {};
-      resultDict.selector = arg_arr.shift();
-
+      console.log(arg_arr)
+      if (arg_arr.length < 2) {
+        if (arg_arr.length === 1 && (arg_arr[0].indexOf('[') > -1 || arg_arr[0].indexOf('+') > -1 || arg_arr[0].indexOf('-') > -1)) {
+          arg_arr.unshift('*')
+        } else {
+          return {}
+        }
+      }
+      resultDict.selector = processSelectors(arg_arr.shift());
+      console.log('selector', resultDict.selector[0])
+      // resultDict.selector =
       // there's a start and end
       resultDict.time = {};
-      if (arg_arr.length === 3) {
-        resultDict.time.start = parseInt(arg_arr.shift());
-        resultDict.time.end = parseInt(arg_arr.shift());
-        resultDict.ease = arg_arr.shift()
-      }
-      if (arg_arr.length === 2) {
-        var time = arg_arr.shift();
-        if (time.indexOf('[') > -1) {
-          time = UtilitiesService.removeAllOccurrancesArr(time, ['[', ']', ' '])
-          var time_arr = time.split(',');
-          resultDict.time.values = time_arr;
+      resultDict.time = processTime(arg_arr.shift(), arg_arr);
+
+      if (arg_arr.length) {
+        console.log('easing');
+      } else {
+        if (resultDict.time && resultDict.time.values) {
+          resultDict.easing = 'custom'
         }
-        // resultDict.time.start = parseInt(arg_arr.shift());
-        // resultDict.time.end = parseInt(arg_arr.shift());
-        resultDict.ease = arg_arr.shift()
       }
+      // if (arg_arr.length === 2) {
+
+      //   // resultDict.time.start = parseInt(arg_arr.shift());
+      //   // resultDict.time.end = parseInt(arg_arr.shift());
+      //   resultDict.ease = arg_arr.shift()
+      // }
       console.log(resultDict)
       return resultDict //resultDict
     }
 
+    function processTime(arg1, arg_arr, result_dict) {
+      var timeDict = {};
+      //
+        if (arg1.indexOf('[') > -1) {
+          time = UtilitiesService.removeAllOccurrancesArr(arg1, ['[', ']', ' '])
+          var time_arr = time.split(',');
+          timeDict.values = time_arr;
+        }
+      return timeDict
+    }
 
+    function processSelectors(selector) {
+      var resultArr = []
+      selectors = selector.split(', ');
+      for (var i = 0; i < selectors.length; i++) {
+
+        resultArr.push(processOneSelector(selectors[i]))
+
+
+      }
+      return resultArr
+
+      function processOneSelector(str) {
+        resultDict = {};
+        if (str === '*') {
+          resultDict.all = true;
+          resultDict.str = str;
+          return resultDict
+        }
+        if (str.indexOf('.') > -1) {
+          classSplit = str.split('.').filter(function(str, i) {return str && str.length});
+          var classArr = [];
+          classSplit.forEach(function(c, i) {
+            if (c[0] === '[') {
+              c = c.split(']')[1];
+            }
+            if (c.indexOf('[') > -1) {
+              c = c.split('[')[0]
+            }
+            c && c.length && classArr.push(c.trim())
+          })
+          if (classArr.length) {
+            resultDict.classes = classArr
+          }
+        }
+        if (str.indexOf('[') > -1) {
+          attrSplit = str.split('[').filter(function(_str,i) {return str && _str.indexOf(']') > -1})
+          var attrArr = [];
+          attrSplit.forEach(function(attr, i) {
+            if (attr.indexOf(']') > -1) {
+              attr = attr.split(']')[0]
+              attrArr.push(attr.trim())
+            }
+          })
+          if (attrArr.length) {
+            resultDict.attrs = attrArr
+          }
+          // console.log(attrSplit)
+        }
+        return resultDict
+      }
+    }
     function parseSwitchAttr(scope, element, attr) {
       if (attr && attr.switch) {
         console.log(attr.switch);

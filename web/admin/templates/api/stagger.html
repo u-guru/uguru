@@ -16,26 +16,72 @@
         <div class='full-xy flex-vertical-center relative'>
 
             <!-- style='height:calc(85%/{{admin.sections}});' -->
-            <h1 class='absolute weight-600 full-x bg-gold-20p p15x-p10y top-0' init-with="p:[opacity:0]" when-ease-swapped="p:[transform:translateX(-200%):translateX(16%):250ms:easeInOutQuint, opacity:0:1:250ms:@]"> Property Attribute </h1>
+            <h1 class='absolute weight-600 full-x bg-gold-20p p15x-p10y top-0' init-with="p:[opacity:0]" when-ease-swapped="p:[transform:translateX(-200%):translateX(16%):250ms:easeInOutQuint, opacity:0:1:250ms:@]"> Use Cases </h1>
             <div class="full-xy flex-end">
                 <aside class='bg-campus-10p full-y weight-500 txt-24 text-center relative overflow-auto no-scrollbar' style='min-width:15%;'>
-                    <h1 class='weight-600 full-x bg-gold p15x-p10y'> Property Attribute </h1>
+                    <h1 class='weight-600 full-x bg-gold p15x-p10y'> Use Cases </h1>
                     <ul class="p15-grid">
-                        <li ng-click='root.player.set("easing", easing)'>
-                            <!-- on-init="p:[transform:translateY(-{{50*$index}}%):translateY(0%):{{100*$index}}:easeFromTo]:delay-500" -->
-                            <div class="bg bg-campus radius-2 p10y-p15x" >{{easing}}</div>
+                        <li ng-repeat='use_case in stagger.data.use_cases' ng-click='stagger.data.activeIndex = $index' ng-class="{'bg-smoke':$index === stagger.data.activeIndex}">
+                            <div class="txt-1 bg bg-campus radius-2 p10y-p15x">{{use_case.name}}</div>
                         </li>
                     </ul>
                 </aside>
-                <ul class='full-x flex overflow-x flex-stretch no-scrollbar border-1 border-slate z-index-10' style="min-width:85%;">
-                    <li class='p15x-p10y height-128 weight-500 flex-wrap-start bg-campus-20p text-center border-1 border-slate radius-2 overflow-hidden' style='min-width:15%; max-height:25%'  >
-                        <div class='full-x weight-600 opacity-25p uppercase txt-16'>
-                            {{option}}
-                        </div>
-                        <div class='full-x txt-16 weight-700 p05y line-height-1-2'>
-                            {{property.examples[property.activeIndex][option]}}
+                <ul class='full-x flex overflow-x flex-stretch no-scrollbar border-1 border-slate ugrid-4 z-index-10' style="min-width:85%;">
+                    <li class='p15x-p10y height-128 weight-500 flex-wrap-start bg-campus-20p text-center border-1 border-slate radius-2 overflow-hidden' style='width:100%; max-height:15%'>
+
+                        <div style='width:85%' class='bg-shamrock-20p full-x'>
+                            <div class='txt-gold uppercase txt-1 p10y text-left m10x'>
+                                Note: {{stagger.data.use_cases[stagger.data.activeIndex].note}}
+                            </div>
+                             <code class='txt-1 full-x p15-grid text-left top-0 left-0 txt-white html flex-wrap' type='html'>
+                                <div class='opacity-50p'>
+                                <"stagger-children"</div><br>
+                                <div class='weight-900'>on-enter={{stagger.data.use_cases[stagger.data.activeIndex].example}} ></div>
+                                <div class='opacity-50p'>
+                                <"stagger-children">
+                                </div>
+                            </code>
                         </div>
                     </li>
+                    <li class='p15x-p10y height-128 weight-500 flex-wrap-center bg-campus-20p text-center border-1 border-slate radius-2 overflow-hidden flex-wrap' style='min-width:15%; max-height:15%'  >
+                        <div class='txt-3 uppercase opacity-50p full-x m10y'>
+                        State(s)
+                        </div>
+                        <div class='txt-32 txt-gold full-x m15y'>
+                            {{stagger.data.activeExample.state || 'onEnter'}}
+                        </div>
+                    </li>
+                    <li class='p15x-p10y height-128 weight-500 flex-wrap-center bg-campus-20p text-center border-1 border-slate radius-2 overflow-hidden flex-wrap' style='min-width:15%; max-height:15%'  >
+                        <div class='txt-3 uppercase opacity-50p full-x m10y'>
+                        Selector
+                        </div>
+                        <div class='txt-32 lowercase txt-gold full-x m15y'>
+                            <ul class='flex-vertical-center p15-grid'>
+                                <li class='bg-azure txt-7 weight-700 p20x p10y flex-wrap-center' ng-if='stagger.data.activeExample.selector[0].str'>
+                                    {{stagger.data.activeExample.selector[0].str}}
+                                </li>
+                                <li class='txt-1 weight-700 m05x bg-transparent border-2 border-azure border-solid p10xy flex-wrap-center' ng-repeat='_class in stagger.data.activeExample.selector[0].classes' class='txt-1'>.{{_class}}</li>
+                                <li class='txt-1 weight-700 m05x bg-azure-50p border-2 border-white border-solid p10xy flex-wrap-center' ng-repeat='_attr in stagger.data.activeExample.selector[0].attrs' class='txt-1'>[{{_attr}}]</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class='p15x-p10y height-128 weight-500 flex-wrap-center bg-campus-20p text-center border-1 border-slate radius-2 overflow-hidden flex-wrap' style='min-width:15%; max-height:15%'  >
+                        <div class='txt-3 uppercase opacity-50p full-x m10y'>
+                        Time
+                        </div>
+                        <div class='txt-24 lowercase txt-gold full-x m15y'>
+                            {{stagger.data.activeExample.time.values}}
+                        </div>
+                    </li>
+                    <li class='p15x-p10y height-128 weight-500 flex-wrap-center bg-campus-20p text-center border-1 border-slate radius-2 overflow-hidden flex-wrap' style='min-width:15%; max-height:15%'  >
+                        <div class='txt-3 uppercase opacity-50p full-x m10y'>
+                        Easing
+                        </div>
+                        <div class='txt-32 lowercase txt-gold full-x m15y'>
+                            {{stagger.data.activeExample.easing}}
+                        </div>
+                    </li>
+
                 </ul>
             </div>
             <ul class='absolute right-0 radius-2-left overflow-hidden z-index-100'>
@@ -51,12 +97,12 @@
                     <!-- You could also render this is as <stagger-children> -->
                     <div class='flex-wrap p15-grid txt-48 full-x'>
                         <div class='full-x flex-vertical-center'>
-                            <stagger-children on-enter="*:[250, 500, 750, 1000, 1250]:linear">
-                                <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">S</div>
+                            <stagger-children on-enter=".m10x.odd[class]:[1000, 1500, 2000]">
+                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">S</div>
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">A</div>
-                                <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">M</div>
+                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">M</div>
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">I</div>
-                                <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">R</div>
+                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">R</div>
                             </stagger-children>
                         </div>
                     </div>
