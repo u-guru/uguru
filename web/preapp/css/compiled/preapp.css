@@ -4495,11 +4495,6 @@ a[class*="-container"]:hover .map-stadium-outside {
   #hiw-library.animate #hiw-library-outside-left svg > g, #hiw-library.animate #hiw-library-outside-right svg > g {
     transform: scaleX(0); }
 
-.hiw-helicopter {
-  transform: translateZ(0); }
-  .hiw-helicopter.active {
-    animation: hiw-helicopter-translate 4s ease-out 1s; }
-
 .hiw-helicopter-container {
   animation: hiw-cloud-hover 1500ms linear infinite alternate; }
 
@@ -4587,10 +4582,8 @@ a[class*="-container"]:hover .map-stadium-outside {
 #hiw-balloon-photo > g {
   animation: hiw-cloud-hover 1500ms linear 640ms infinite alternate; }
 
-.hiw-stadium-balloons-container, .hiw-helicopter {
-  transition: all 500ms ease-out 500ms; }
-  .hiw-stadium-balloons-container.clear, .hiw-helicopter.clear {
-    transform: translate3d(0, 2000px, 0) !important; }
+.hiw-stadium-balloons-container.clear, .hiw-helicopter.clear {
+  transform: translate3d(0, 2000px, 0) !important; }
 
 .hiw-balloon-static {
   transition: all 1s ease-out 1500ms; }

@@ -146,12 +146,12 @@ a[class*="-container"] {
 }
 
 // helicopter
-.hiw-helicopter {
-	transform: translateZ(0);
-	&.active {
-		animation: hiw-helicopter-translate 4s ease-out 1s;
-	}
-}
+// .hiw-helicopter {
+// 	transform: translateZ(0);
+// 	&.active {
+// 		animation: hiw-helicopter-translate 4s ease-out 1s;
+// 	}
+// }
 
 .hiw-helicopter-container {
 	animation: hiw-cloud-hover 1500ms linear infinite alternate;
@@ -242,7 +242,7 @@ a[class*="-container"] {
 }
 
 .hiw-stadium-balloons-container,.hiw-helicopter {
-	transition: all 500ms ease-out 500ms;
+	// transition: all 500ms ease-out 500ms;
 	&.clear { transform: translate3d(0,2000px,0)!important }
 }
 
