@@ -10,6 +10,8 @@
 			<h2 class="txt-charcoal">Ways to Super Student&nbsp;Stardom</h2>
 		</header>
 		<ul>
+			<!-- @samir - <li> elements are being staggered in intervals of 150ms -->
+			<!-- lines: 16, 38, 60 -->
 			<li init-with="p-op"
 				when-sidebar-list-init-1="a:[bounceInUp-subtle:set:(dur:1000ms#func:linear):in:delay-150]">
 				<a class="flex-center-vertical-space-between p15xy height-96 bg-slate-75p"

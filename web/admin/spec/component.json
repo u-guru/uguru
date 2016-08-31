@@ -17,7 +17,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Checkbox missing opacity on uncheck, no longer fixed"
+                    "bugs": "FIXED &rarr; Checkbox missing opacity on uncheck, no longer fixed",
+					"stagger": "",
+					"draw": ""
                 }
             },
             "credit-card": {
@@ -34,7 +36,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Try putting translateZ into :active in CSS vs. states"
+                    "bugs": "FIXED &rarr; Try putting translateZ into :active in CSS vs. states",
+					"stagger": "numbers",
+					"draw": ""
                 }
             },
 			"faq-card": {
@@ -50,7 +54,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "@samir Check about toggling from the same element"
+                    "bugs": "@samir Check about toggling from the same element",
+					"stagger": "",
+					"draw": ""
                 }
             },
 			"map-marker": {
@@ -66,7 +72,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Check about toggling from the same element. Animations missing updates."
+                    "bugs": "FIXED &rarr; Check about toggling from the same element. Animations missing updates.",
+					"stagger": "window contents",
+					"draw": "window borders"
                 }
             },
             "profile-card": {
@@ -83,7 +91,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "rating",
+					"draw": ""
                 }
             },
             "profile-thumb": {
@@ -100,7 +110,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
             },
 			"profile-widget": {
@@ -116,7 +128,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "rating, borders",
+					"draw": ""
                 }
             },
 			"request-card": {
@@ -132,7 +146,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
             },
             "student-card": {
@@ -149,7 +165,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Hover should be in static css for edit"
+                    "bugs": "FIXED &rarr; Hover should be in static css for edit",
+					"stagger": "",
+					"draw": ""
                 }
             },
 			"team-card": {
@@ -165,7 +183,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Ribbon opacity. Could be enhanced with delay"
+                    "bugs": "FIXED &rarr; Ribbon opacity. Could be enhanced with delay",
+					"stagger": "",
+					"draw": ""
                 }
             },
 			"timeline-card": {
@@ -181,7 +201,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Altered transform origin based off of the tip's direction. In the example, left top."
+                    "for": "Altered transform origin based off of the tip's direction. In the example, left top.",
+					"stagger": "attachment-list, tag-list",
+					"draw": ""
                 }
             },
 			"timeline-icon": {
@@ -197,7 +219,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Change onclick to onmouseenter. Possible enhancement by adding bounce and spacing"
+                    "bugs": "FIXED &rarr; Change onclick to onmouseenter. FIXED &rarr; Possible enhancement by adding bounce and spacing",
+					"stagger": "",
+					"draw": ""
                 }
             },
             "university-card": {
@@ -214,7 +238,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED WITH HOVER &rarr; Link isn't showing up"
+                    "bugs": "FIXED WITH HOVER &rarr; Link isn't showing up",
+					"stagger": "",
+					"draw": ""
                 }
             },
             "user-icon": {
@@ -231,7 +257,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
             }
         },
@@ -249,7 +277,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Upward motion enhancement"
+                    "for": "Upward motion enhancement",
+					"stagger": "bubbles",
+					"draw": ""
                 }
             },
 			"projector": {
@@ -265,7 +295,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Revisit animation"
+                    "for": "Revisit animation",
+					"stagger": "",
+					"draw": ""
                 }
             },
             "ticket": {
@@ -285,7 +317,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
             }
         },
@@ -303,7 +337,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Check to see if draw is working"
+                    "bugs": "FIXED &rarr; Check to see if draw is working",
+					"stagger": "",
+					"draw": "icon"
                 }
             },
 			"wallet": {
@@ -319,7 +355,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Check for flash. Possibly convert on-inits to states"
+                    "for": "Check for flash. Possibly convert on-inits to states",
+					"stagger": "",
+					"draw": ""
                 }
             },
 			"window-small": {
@@ -335,7 +373,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "windows",
+					"draw": ""
                 }
             },
 			"window": {
@@ -351,7 +391,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
             }
         },
@@ -370,7 +412,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
 			},
 			"border": {
@@ -386,7 +430,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "@samir Needs binding for fake input + letter animation"
+                    "bugs": "@samir Needs binding for fake input + letter animation",
+					"stagger": "character counter",
+					"draw": "border"
                 }
 			},
 			"button": {
@@ -403,7 +449,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "borders",
+					"draw": ""
                 }
 			},
 			"checkbox": {
@@ -419,7 +467,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "borders",
+					"draw": "check"
                 }
 			},
 			"number": {
@@ -435,7 +485,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
 			},
 			"radio": {
@@ -451,7 +503,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": "circle"
                 }
 			},
             "search": {
@@ -471,7 +525,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "@samir Clicking multiple times shouldn't retrigger opening"
+                    "bugs": "@samir Clicking multiple times shouldn't retrigger opening",
+					"stagger": "",
+					"draw": "icon"
                 }
             },
 			"toggle": {
@@ -488,7 +544,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Could use retiming with delays"
+                    "bugs": "Could use retiming with delays",
+					"stagger": "borders",
+					"draw": "borders"
                 }
 			}
         },
@@ -507,7 +565,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Loading bar is only onclick for demo purposes"
+                    "for": "Loading bar is only onclick for demo purposes",
+					"stagger": "items",
+					"draw": "icons"
                 }
             },
 			"course-list": {
@@ -523,7 +583,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "items",
+					"draw": ""
                 }
             },
 			"sidebar-list": {
@@ -539,7 +601,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "items",
+					"draw": ""
                 }
             }
         },
@@ -558,7 +622,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Color dropdown main link needs hover and static fixed"
+                    "bugs": "FIXED &rarr; Color dropdown main link needs hover and static fixed",
+					"stagger": "borders, items",
+					"draw": "icon"
                 }
             },
 			"social-bar": {
@@ -574,7 +640,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "links",
+					"draw": ""
                 }
             },
             "tile-group": {
@@ -591,7 +659,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "borders, items",
+					"draw": ""
                 }
             }
         },
@@ -610,7 +680,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
 			},
 			"popup": {
@@ -631,7 +703,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": "circle"
                 }
 			},
 			"toast": {
@@ -648,7 +722,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Toast with any action should have a confirmation/success state"
+                    "for": "Toast with any action should have a confirmation/success state",
+					"stagger": "",
+					"draw": ""
                 }
 			},
 			"tooltip": {
@@ -665,7 +741,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Revisit when there is custom timing. Easings available are too snappy/stiff. Trying to find timing similar to cubic-bezier(.71,.06,.47,.63)"
+                    "for": "Revisit when there is custom timing. Easings available are too snappy/stiff. Trying to find timing similar to cubic-bezier(.71,.06,.47,.63)",
+					"stagger": "borders",
+					"draw": ""
                 }
 			}
 		},
@@ -683,7 +761,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "for": "",
+					"stagger": "",
+					"draw": "indicator (must be able to use decimals)"
                 }
 			},
 			"numerical-progress": {
@@ -699,7 +779,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "@samir Should be binding so that it goes step to step in one direction."
+                    "for": "@samir Should be binding so that it goes step to step in one direction.",
+					"stagger": "steps",
+					"draw": "progress completion"
                 }
 			},
 			"rating": {
@@ -715,7 +797,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "rating",
+					"draw": ""
                 }
 			}
 		},
@@ -734,7 +818,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
 			},
 			"ghost": {
@@ -750,7 +836,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": "borders"
                 }
 			}
 		},
@@ -768,7 +856,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
 			},
 			"header": {
@@ -784,7 +874,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "letters",
+					"draw": ""
                 }
 			}
 		},
@@ -802,7 +894,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Change translate down to swing like the dropdown. Stagger."
+                    "bugs": "FIXED &rarr; Change translate down to swing like the dropdown. Stagger.",
+					"stagger": "info (2)",
+					"draw": ""
                 }
             },
 			"attachment-tile": {
@@ -818,7 +912,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Combine doc outline into single simple path (instead of combined path)"
+                    "bugs": "FIXED &rarr; Combine doc outline into single simple path (instead of combined path)",
+					"stagger": "",
+					"draw": "icon (see attachment list)"
                 }
             },
 			"calendar-tile": {
@@ -834,7 +930,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
             },
             "category-tile": {
@@ -851,7 +949,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "@samir Switcher is not working for this page only: onexits are being triggered, key being the first type. FIXED &rarr; Convert on-inits to a single state."
+                    "bugs": "@samir Switcher is not working for this page only: onexits are being triggered, key being the first type. FIXED &rarr; Convert on-inits to a single state.",
+					"stagger": "",
+					"draw": "icon"
                 }
             },
 			"credit-tile": {
@@ -867,7 +967,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "CTA needs a longer ease-out"
+                    "for": "FIXED &rarr; CTA needs a longer ease-out",
+					"stagger": "",
+					"draw": "icon"
                 }
             },
 			"feature-tile": {
@@ -883,7 +985,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
             },
             "money-tile": {
@@ -900,7 +1004,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
             },
             "pricing-tile": {
@@ -917,7 +1023,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "for": "Check for flicker"
+                    "for": "FIXED &rarr; Check for flicker",
+					"stagger": "",
+					"draw": ""
                 }
             },
             "profile-cardlet": {
@@ -937,7 +1045,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Mobile has JSON error. FIXED &rarr; Take versions from profile. Tech borders are not applying easings."
+                    "bugs": "Mobile has JSON error. FIXED &rarr; Take versions from profile. Tech borders are not applying easings.",
+					"stagger": "",
+					"draw": ""
                 }
             },
 			"profile-tile": {
@@ -957,7 +1067,10 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "Mobile has JSON error. Academic could use opacity delay for icon-enter. FIXED &rarr; Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter"
+                    "bugs": "Mobile has JSON error. Academic could use opacity delay for icon-enter. FIXED &rarr; Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter",
+					"for": "When given the cycles, should go back to animate indiv hh bubbles",
+					"stagger": "rating",
+					"draw": ""
                 }
             },
 			"ranking-tile": {
@@ -973,7 +1086,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "cards",
+					"draw": "arrows, icons"
                 }
             },
 			"record-tile": {
@@ -989,7 +1104,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ""
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
                 }
             }
         }

@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center p15xy" types='svg, default, link, overlay, checkbox, badge' default-type="default">
+<div class="perspective-container full-xy flex-center p15xy" types='svg, default, link, overlay, checkbox, badge' default-type="checkbox">
 	<a class="course-card-svg" ng-if='activeType === "svg"'
 		init-with="p-op"
 		on-init="s:[course-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
@@ -107,14 +107,15 @@
 			<h1 style="color: #003262;">Introduction to Biology</h1>
 		</div>
 		<div class="course-card-border" style="background: #003262;"></div>
-		<span class="course-card-count"
-			init-with="p:[op:0, tro:right top]"
+		<div class="course-card-count-container" init-with="p:[op:0, tro:right top]"
 			when-course-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-250]">
-			<span style="background: #003262;"></span>
-			<svg viewBox="0 0 100 100">
-				<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
-			</svg>
-		</span>
+			<span class="course-card-count">
+				<span style="background: #003262;"></span>
+				<svg viewBox="0 0 100 100">
+					<path d="M14,54.2352941 L35.1764706,75.4117647 L86,24.5882353"></path>
+				</svg>
+			</span>
+		</div>
 	</div>
 
 	<a class="course-card" ng-if='activeType === "badge"'
