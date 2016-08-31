@@ -13,8 +13,9 @@
 		when-balloon-enter="p:[op:1, transform:translateX(-100%):translateX(0%):4000:easeOutCirc]:delay-1000"
 		when-balloon-baking-init="t-exit">
 		<g class="hiw-helicopter-container"
+			init-default
 			when-balloon-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#dir:alternate):in]">
-			<g class="sub2-helicopter" init-with="p:[tr:translateZ(0)]">
+			<g class="sub2-helicopter">
 				<g>
 					<path d="M763.345589,70.1376059 C763.345589,69.2813477 763.633058,67.2910991 763.633058,67.2910991 C763.875999,65.3871808 762.504793,63.84375 760.581401,63.84375 L760.498599,63.84375 C758.570275,63.84375 757.007059,65.4102618 757.007059,67.3312801 L757.007059,71.6223837 C757.007059,73.5484934 758.533796,75.4027725 760.422665,75.7650953 L761.226608,75.9193077 C763.112995,76.2811544 764.315021,75.0523986 763.918082,73.1689026 C763.918082,73.1689026 763.345589,70.6085743 763.345589,70.1376059 L763.345589,70.1376059 Z" class="helicopter-gabri-8" stroke="#A96E40" stroke-width="0.75" fill="#EEC194"></path>
 					<path d="M750.262353,85.4261853 C750.262353,78.6130567 752.728313,74.1600216 757.649412,74.1600216 C762.65286,74.1600216 765.678824,78.8869058 765.678824,85.4261853 C765.678824,85.9751969 765.247437,86.4202586 764.715294,86.4202586 C764.183152,86.4202586 763.751765,85.9751969 763.751765,85.4261853 C763.751765,79.8536393 761.37967,76.1481681 757.649412,76.1481681 C754.081854,76.1481681 752.189412,79.5655441 752.189412,85.4261853 C752.189412,85.9751969 751.758025,86.4202586 751.225882,86.4202586 C750.69374,86.4202586 750.262353,85.9751969 750.262353,85.4261853 L750.262353,85.4261853 L750.262353,85.4261853 Z" class="helicopter-gabri-7" stroke="#2C4944" stroke-width="0.75" fill="#F9E9E1"></path>
@@ -37,7 +38,7 @@
 				<path d="M725.84537,104.667851 C725.358643,104.474767 724.641019,104.25 724.641019,104.25 L719.17286,114.978747 L714.315337,114.978747 L709.489456,108.171907 L706.5,109.686953 L713.052934,118.75 L716.187889,118.725769 L760.314685,118.725769 L764.197066,118.75 L764.300958,118.606364 L770.75,109.686953 L767.913518,108.171907 L763.012395,114.978747 L758.681559,114.978747 L753.633833,104.667851 L750.632694,104.667851 L749.960839,105.028905 L754.800922,114.978747 L723.053746,114.978747 L728.157963,104.667851 C728.157963,104.667851 726.332097,104.860934 725.84537,104.667851 Z" class="sub2-helicopter-legs" stroke="#757575" fill="#8A9EA3"></path>
 				<path d="M786.5,37.25 L785.318513,40.7979385 C784.729617,42.566358 782.738647,43.9999452 780.872328,43.9999452 L687.127919,43.9999452 C685.261255,43.9999452 683.319398,42.5519126 682.789977,40.7633647 L681.75,37.25 L786.5,37.25 L786.5,37.25 Z" class="sub2-helicopter-wing-2" stroke="#757575" fill="#8A9EA3"
 					init-with="p:[backface-visibility:hidden, tro:center center, tr:rotateY(1turn) translateZ(0)]"
-					on-enter="a:[hiw-helicopter-spin-2:set:(dur:300ms#func:linear#aic:infinite):in]"></path>
+					when-balloon-enter="a:[hiw-helicopter-spin-2:set:(dur:300ms#func:linear#aic:infinite):in]"></path>
 				<path d="M786.5,37.25 L785.318513,40.7979673 C784.729617,42.5664011 782.738647,44 780.872328,44 L687.127919,44 C685.261255,44 683.319398,42.5519557 682.789977,40.7633932 L681.75,37.25 L786.5,37.25 L786.5,37.25 Z" class="sub2-helicopter-wing-1" stroke="#757575" fill="#40484B"
 					init-with="p:[backface-visibility:hidden, tro:center center, tr:rotateY(0) translateZ(0]"
 					when-balloon-enter="a:[hiw-helicopter-spin-1:set:(dur:150ms#func:linear#aic:infinite):in]"></path>
@@ -62,7 +63,7 @@
 		</g>
 	</g>
 	<g id="hiw-balloon-group-baking" class="hiw-balloon-group"
-		init-with="p:[transform: translate3d(-520%,-100%,0) scale(0)]"
+		init-with="p:[tr:translate3d(-520%#-100%#0) scale(0)]"
 		when-balloon-enter="a:[hiw-balloon-move-baking:set:(dur:6000ms#func:ease-in-out):in:delay-2000]">
 		<a id="hiw-balloon-baking" class="sub2-bakery-balloon hiw-balloon"
 			init-default
@@ -94,7 +95,7 @@
 		</g>
 	</g>
 	<g id="hiw-balloon-group-photo" class="hiw-balloon-group"
-		init-with="p:[transform: translate3d(-520%,-100%,0) scale(0)]"
+		init-with="p:[tr:translate3d(-520%#-100%#0) scale(0)]"
 		when-balloon-enter="a:[hiw-balloon-move-photo:set:(dur:6000ms#func:ease-in-out):in]">
 		<a id="hiw-balloon-photo" class="sub2-photo-balloon hiw-balloon hiw-balloon-static"
 			on-click="s:[balloon-photography-select:public]"
@@ -125,7 +126,7 @@
 		</g>
 	</g>
 	<g id="hiw-balloon-group-tech" class="hiw-balloon-group"
-		init-with="p:[transform: translate3d(-520%,-100%,0) scale(0)]"
+		init-with="p:[tr:translate3d(-520%#-100%#0) scale(0)]"
 		when-balloon-enter="a:[hiw-balloon-move-tech:set:(dur:6000ms#func:ease-in-out):in:delay-500]">
 		<a id="hiw-balloon-tech" class="sub2-tech-balloon hiw-balloon"
 			init-default
@@ -157,7 +158,7 @@
 		</g>
 	</g>
 	<g id="hiw-balloon-group-academic" class="hiw-balloon-group"
-		init-with="p:[transform: translate3d(-520%,-100%,0) scale(0)]"
+		init-with="p:[tr:translate3d(-520%#-100%#0) scale(0)]"
 		when-balloon-enter="a:[hiw-balloon-move-academic:set:(dur:6000ms#func:ease-in-out):in:delay-1000]">
 		<a id="hiw-balloon-academic" class="sub2-academic-balloon hiw-balloon"
 			init-default
@@ -189,7 +190,7 @@
 		</g>
 	</g>
 	<g id="hiw-balloon-group-hh" class="hiw-balloon-group"
-		init-with="p:[transform: translate3d(-520%,-100%,0) scale(0)]"
+		init-with="p:[tr:translate3d(-520%#-100%#0) scale(0)]"
 		when-balloon-enter="a:[hiw-balloon-move-hh:set:(dur:6000ms#func:ease-in-out):in:delay-1500]" >
 		<a id="hiw-balloon-hh" class="sub2-hh-balloon hiw-balloon"
 			init-default
