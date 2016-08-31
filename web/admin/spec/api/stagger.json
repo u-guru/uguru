@@ -1,0 +1,50 @@
+{
+    "activeIndex": 1,
+    "use_cases": [
+        {
+            "name": "Select All *",
+            "example": "[0, 50, 100, 150, 250]",
+            "note": "No easing is needed here since the time is already clarified. No global delay in this example"
+        },
+        {
+            "name": "Select all w/ class",
+            "example": ".m10x.odd[class]:[1000, 1500, 2000]"
+        },
+        {
+            "name": "Multi-select: even+odd"
+        },
+        {
+            "name": "Select All Except.."
+        },
+        {
+            "name": "Select with initial delay"
+        },
+        {
+            "name": "Set delay + Set duration"
+        },
+        {
+            "name": "Set delay+duration+easing"
+        },
+        {
+            "name": "zero delay, set interval right->left"
+        },
+        {
+            "name": "set interval left-right"
+        },
+        {
+            "name": "custom-order"
+        },
+        {
+            "name": "zero delay, duration, auto-linear"
+        },
+        {
+            "name": "advanced #1"
+        },
+        {
+            "name": "advanced #1"
+        },
+        {
+            "name": "Format #1: Element"
+        }
+    ]
+}
