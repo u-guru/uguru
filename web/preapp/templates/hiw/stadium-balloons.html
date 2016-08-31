@@ -13,6 +13,7 @@
 		when-balloon-enter="p:[op:1, transform:translateX(-100%):translateX(0%):4000:easeOutCirc]:delay-1000"
 		when-balloon-baking-init="t-exit">
 		<g class="hiw-helicopter-container"
+			init-default
 			when-balloon-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#dir:alternate):in]">
 			<g class="sub2-helicopter" init-with="p:[tr:translateZ(0)]">
 				<g>
@@ -63,7 +64,7 @@
 	</g>
 	<g id="hiw-balloon-group-baking" class="hiw-balloon-group"
 		init-with="p:[transform: translate3d(-520%,-100%,0) scale(0)]"
-		when-balloon-enter="a:[hiw-balloon-move-baking:set:(dur:6000ms#func:ease-in-out):in:delay-2000]">
+		when-balloon-enter="a:[hiw-balloon-move-baking:set:(dur:6000ms#func:ease-in-out):in:delay-2000] | p:[tr:none]:delay-8000">
 		<a id="hiw-balloon-baking" class="sub2-bakery-balloon hiw-balloon"
 			init-default
 			on-click="s:[balloon-baking-select]"
@@ -95,7 +96,7 @@
 	</g>
 	<g id="hiw-balloon-group-photo" class="hiw-balloon-group"
 		init-with="p:[transform: translate3d(-520%,-100%,0) scale(0)]"
-		when-balloon-enter="a:[hiw-balloon-move-photo:set:(dur:6000ms#func:ease-in-out):in]">
+		when-balloon-enter="a:[hiw-balloon-move-photo:set:(dur:6000ms#func:ease-in-out):in] | p:[tr:none]:delay-6000">
 		<a id="hiw-balloon-photo" class="sub2-photo-balloon hiw-balloon hiw-balloon-static"
 			on-click="s:[balloon-photography-select:public]"
 			when-balloon-academic-select="t-exit"
@@ -126,7 +127,7 @@
 	</g>
 	<g id="hiw-balloon-group-tech" class="hiw-balloon-group"
 		init-with="p:[transform: translate3d(-520%,-100%,0) scale(0)]"
-		when-balloon-enter="a:[hiw-balloon-move-tech:set:(dur:6000ms#func:ease-in-out):in:delay-500]">
+		when-balloon-enter="a:[hiw-balloon-move-tech:set:(dur:6000ms#func:ease-in-out):in:delay-500] | p:[tr:none]:delay-6500">
 		<a id="hiw-balloon-tech" class="sub2-tech-balloon hiw-balloon"
 			init-default
 			on-click="s:[balloon-tech-select:public]"
@@ -158,7 +159,7 @@
 	</g>
 	<g id="hiw-balloon-group-academic" class="hiw-balloon-group"
 		init-with="p:[transform: translate3d(-520%,-100%,0) scale(0)]"
-		when-balloon-enter="a:[hiw-balloon-move-academic:set:(dur:6000ms#func:ease-in-out):in:delay-1000]">
+		when-balloon-enter="a:[hiw-balloon-move-academic:set:(dur:6000ms#func:ease-in-out):in:delay-1000] | p:[tr:none]:delay-7000">
 		<a id="hiw-balloon-academic" class="sub2-academic-balloon hiw-balloon"
 			init-default
 			on-click="s:[balloon-academic-select]"
@@ -190,7 +191,7 @@
 	</g>
 	<g id="hiw-balloon-group-hh" class="hiw-balloon-group"
 		init-with="p:[transform: translate3d(-520%,-100%,0) scale(0)]"
-		when-balloon-enter="a:[hiw-balloon-move-hh:set:(dur:6000ms#func:ease-in-out):in:delay-1500]" >
+		when-balloon-enter="a:[hiw-balloon-move-hh:set:(dur:6000ms#func:ease-in-out):in:delay-1500] | p:[tr:none]:delay-7500" >
 		<a id="hiw-balloon-hh" class="sub2-hh-balloon hiw-balloon"
 			init-default
 			on-click="s:[balloon-household-select:public]"
