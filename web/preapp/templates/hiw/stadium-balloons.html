@@ -64,9 +64,9 @@
 	</g>
 	<g id="hiw-balloon-group-baking" class="hiw-balloon-group"
 		init-with="p:[tr:translate3d(-520%#-100%#0) scale(0)]"
-		when-balloon-enter="a:[hiw-balloon-move-baking:set:(dur:6000ms#func:ease-in-out):in:delay-2000]">
+		when-balloon-enter="a:[hiw-balloon-move-baking:set:(dur:6000ms#func:ease-in-out):in:delay-2000] | p:[tr:none]:delay-8000">
 		<a id="hiw-balloon-baking" class="sub2-bakery-balloon hiw-balloon"
-			init-default
+			init-with="p:[tro:center center]"
 			on-click="s:[balloon-baking-select]"
 			when-balloon-academic-select="t-exit"
 			when-balloon-baking-select="t-enter"
@@ -96,8 +96,9 @@
 	</g>
 	<g id="hiw-balloon-group-photo" class="hiw-balloon-group"
 		init-with="p:[tr:translate3d(-520%#-100%#0) scale(0)]"
-		when-balloon-enter="a:[hiw-balloon-move-photo:set:(dur:6000ms#func:ease-in-out):in]">
+		when-balloon-enter="a:[hiw-balloon-move-photo:set:(dur:6000ms#func:ease-in-out):in] | p:[tr:none]:delay-6000">
 		<a id="hiw-balloon-photo" class="sub2-photo-balloon hiw-balloon hiw-balloon-static"
+			init-with="p:[tro:center center]"
 			on-click="s:[balloon-photography-select:public]"
 			when-balloon-academic-select="t-exit"
 			when-balloon-baking-select="t-exit"
@@ -127,9 +128,9 @@
 	</g>
 	<g id="hiw-balloon-group-tech" class="hiw-balloon-group"
 		init-with="p:[tr:translate3d(-520%#-100%#0) scale(0)]"
-		when-balloon-enter="a:[hiw-balloon-move-tech:set:(dur:6000ms#func:ease-in-out):in:delay-500]">
+		when-balloon-enter="a:[hiw-balloon-move-tech:set:(dur:6000ms#func:ease-in-out):in:delay-500] | p:[tr:none]:delay-6500">
 		<a id="hiw-balloon-tech" class="sub2-tech-balloon hiw-balloon"
-			init-default
+			init-with="p:[tro:center center]"
 			on-click="s:[balloon-tech-select:public]"
 			when-balloon-academic-select="t-exit"
 			when-balloon-baking-select="t-exit"
@@ -159,9 +160,9 @@
 	</g>
 	<g id="hiw-balloon-group-academic" class="hiw-balloon-group"
 		init-with="p:[tr:translate3d(-520%#-100%#0) scale(0)]"
-		when-balloon-enter="a:[hiw-balloon-move-academic:set:(dur:6000ms#func:ease-in-out):in:delay-1000]">
+		when-balloon-enter="a:[hiw-balloon-move-academic:set:(dur:6000ms#func:ease-in-out):in:delay-1000] | p:[tr:none]:delay-7000">
 		<a id="hiw-balloon-academic" class="sub2-academic-balloon hiw-balloon"
-			init-default
+			init-with="p:[tro:center center]"
 			on-click="s:[balloon-academic-select]"
 			when-balloon-academic-select="t-enter"
 			when-balloon-baking-select="t-exit"
@@ -191,9 +192,9 @@
 	</g>
 	<g id="hiw-balloon-group-hh" class="hiw-balloon-group"
 		init-with="p:[tr:translate3d(-520%#-100%#0) scale(0)]"
-		when-balloon-enter="a:[hiw-balloon-move-hh:set:(dur:6000ms#func:ease-in-out):in:delay-1500]" >
+		when-balloon-enter="a:[hiw-balloon-move-hh:set:(dur:6000ms#func:ease-in-out):in:delay-1500] | p:[tr:none]:delay-7500" >
 		<a id="hiw-balloon-hh" class="sub2-hh-balloon hiw-balloon"
-			init-default
+			init-with="p:[tro:center center]"
 			on-click="s:[balloon-household-select:public]"
 			when-balloon-academic-select="t-exit"
 			when-balloon-baking-select="t-exit"

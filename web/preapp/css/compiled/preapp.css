@@ -4495,31 +4495,25 @@ a[class*="-container"]:hover .map-stadium-outside {
   #hiw-library.animate #hiw-library-outside-left svg > g, #hiw-library.animate #hiw-library-outside-right svg > g {
     transform: scaleX(0); }
 
-.hiw-balloon {
-  opacity: 1;
+.hiw-balloon ~ .hiw-balloon-hover {
+  transition: all 150ms ease-in-out;
+  opacity: 0;
   transform-origin: center center;
-  transition: transform 500ms ease-out 1500ms,opacity 0ms linear 2400ms; }
-  .hiw-balloon.active {
-    opacity: 0; }
-    .hiw-balloon.active > g {
-      animation: hiw-balloon-anticipation 150ms ease-in-out 0ms 1 forwards, hiw-balloon-anticipation-reverse 500ms ease-in-out 1s 1 forwards !important; }
-  .hiw-balloon ~ .hiw-balloon-hover {
-    transition: all 150ms ease-in-out;
-    opacity: 0;
-    transform-origin: center center;
-    transform: translate3d(0, 100%, 0) scaleX(0); }
-  .hiw-balloon:hover ~ .hiw-balloon-hover, .hiw-balloon:focus ~ .hiw-balloon-hover {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scaleX(1); }
-    .hiw-balloon:hover ~ .hiw-balloon-hover g, .hiw-balloon:focus ~ .hiw-balloon-hover g {
-      transform: translateZ(0);
-      animation: hiw-cloud-hover 1500ms linear 175ms infinite alternate; }
-  .hiw-balloon.active ~ .hiw-balloon-hover {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0) scaleX(0); }
+  transform: translate3d(0, 100%, 0) scaleX(0); }
+.hiw-balloon:hover ~ .hiw-balloon-hover, .hiw-balloon:focus ~ .hiw-balloon-hover {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scaleX(1); }
+  .hiw-balloon:hover ~ .hiw-balloon-hover g, .hiw-balloon:focus ~ .hiw-balloon-hover g {
+    transform: translateZ(0);
+    animation: hiw-cloud-hover 1500ms linear 175ms infinite alternate; }
+.hiw-balloon.active ~ .hiw-balloon-hover {
+  opacity: 0;
+  transform: translate3d(0, 100%, 0) scaleX(0); }
 
-.hiw-balloon-group {
-  transform: translate3d(-520%, -100%, 0) scale(0); }
+.hiw-balloon.active {
+  opacity: 0; }
+  .hiw-balloon.active > g {
+    animation: hiw-balloon-anticipation 150ms ease-in-out 0ms 1 forwards, hiw-balloon-anticipation-reverse 500ms ease-in-out 1s 1 forwards !important; }
 
 #hiw-balloon-group-baking.move {
   animation: hiw-balloon-move-baking 6s ease-in-out 2000ms forwards; }
