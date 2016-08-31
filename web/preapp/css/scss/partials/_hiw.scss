@@ -145,42 +145,6 @@ a[class*="-container"] {
 	// }
 }
 
-// helicopter
-// .hiw-helicopter {
-// 	transform: translateZ(0);
-// 	&.active {
-// 		animation: hiw-helicopter-translate 4s ease-out 1s;
-// 	}
-// }
-
-.hiw-helicopter-container {
-	animation: hiw-cloud-hover 1500ms linear infinite alternate;
-}
-
-.sub2-announcement {
-	transform-origin: right center;
-	transform: rotateZ(-0.5deg) translateZ(0);
-	animation: hiw-helicopter-rotate 1500ms linear infinite alternate;
-}
-
-.sub2-helicopter {
-	transform: translateZ(0);
-}
-
-.sub2-helicopter-wing-1 {
-	// backface-visibility: hidden;
-	animation: hiw-helicopter-spin-1 150ms linear infinite forwards;
-	transform: rotateY(0) translateZ(0);
-	transform-origin: center center;
-}
-
-.sub2-helicopter-wing-2 {
-	// backface-visibility: hidden;
-	animation: hiw-helicopter-spin-2 300ms linear infinite forwards;
-	transform: rotateY(1turn) translateZ(0);
-	transform-origin: center center;
-}
-
 // balloons
 .hiw-balloon {
 	// cursor: pointer;
@@ -1012,3 +976,39 @@ a[class*="-container"] {
 
 // main
 // [class*="stadium-light-"] { opacity: 0 }
+
+// helicopter
+// .hiw-helicopter {
+// 	transform: translateZ(0);
+// 	&.active {
+// 		animation: hiw-helicopter-translate 4s ease-out 1s;
+// 	}
+// }
+
+// .hiw-helicopter-container {
+// 	animation: hiw-cloud-hover 1500ms linear infinite alternate;
+// }
+
+// .sub2-announcement {
+// 	transform-origin: right center;
+// 	transform: rotateZ(-0.5deg) translateZ(0);
+// 	animation: hiw-helicopter-rotate 1500ms linear infinite alternate;
+// }
+
+// .sub2-helicopter {
+// 	transform: translateZ(0);
+// }
+
+// .sub2-helicopter-wing-1 {
+// 	// backface-visibility: hidden;
+// 	animation: hiw-helicopter-spin-1 150ms linear infinite forwards;
+// 	transform: rotateY(0) translateZ(0);
+// 	transform-origin: center center;
+// }
+//
+// .sub2-helicopter-wing-2 {
+// 	// backface-visibility: hidden;
+// 	animation: hiw-helicopter-spin-2 300ms linear infinite forwards;
+// 	transform: rotateY(1turn) translateZ(0);
+// 	transform-origin: center center;
+// }

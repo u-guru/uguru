@@ -4495,27 +4495,6 @@ a[class*="-container"]:hover .map-stadium-outside {
   #hiw-library.animate #hiw-library-outside-left svg > g, #hiw-library.animate #hiw-library-outside-right svg > g {
     transform: scaleX(0); }
 
-.hiw-helicopter-container {
-  animation: hiw-cloud-hover 1500ms linear infinite alternate; }
-
-.sub2-announcement {
-  transform-origin: right center;
-  transform: rotateZ(-0.5deg) translateZ(0);
-  animation: hiw-helicopter-rotate 1500ms linear infinite alternate; }
-
-.sub2-helicopter {
-  transform: translateZ(0); }
-
-.sub2-helicopter-wing-1 {
-  animation: hiw-helicopter-spin-1 150ms linear infinite forwards;
-  transform: rotateY(0) translateZ(0);
-  transform-origin: center center; }
-
-.sub2-helicopter-wing-2 {
-  animation: hiw-helicopter-spin-2 300ms linear infinite forwards;
-  transform: rotateY(1turn) translateZ(0);
-  transform-origin: center center; }
-
 .hiw-balloon {
   opacity: 1;
   transform-origin: center center;
