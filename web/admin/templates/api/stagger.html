@@ -49,45 +49,72 @@
 
 
                     <!-- You could also render this is as <stagger-children> -->
-					<div class='flex-wrap p15-grid txt-48 full-x'>
 
-					<div class='full-x flex-vertical-center perspective-container'>
-							<stagger-children on-enter="*:[20, 40, 60, 80, 100, 150, 200, 300, 400, 500, 700, 900, 1200, 1210, 1220, 1230, 1240, 1250, 1260, 1270, 1280, 1290, 1300, 1310, 1320, 1330, 1340]:linear">
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]"
-								on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):300:easeOutExpo]">L</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">o</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">r</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">e</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">m</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">&nbsp;</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">i</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">p</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">s</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">u</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">m</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">&nbsp;</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">d</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">o</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">l</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">o</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">r</span>
+                    <div class='flex-wrap p15-grid full-x'>
+                        <div class='full-x flex-vertical-center perspective-container semibold txt-48'>
+                            <stagger-children on-enter="*:[5, 15, 25, 35, 45, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145, 155, 165, 175, 185, 195, 255, 215, 225, 235, 245, 255, 265]:linear">
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]"
+								on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">L</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">o</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">r</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">e</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">m</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">&nbsp;</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">i</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">p</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">s</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">u</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">m</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">&nbsp;</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">d</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">o</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">l</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">o</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">r</span>
 								<span>&nbsp;</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">s</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">i</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">t</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">s</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">i</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">t</span>
 								<span>&nbsp;</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">a</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">m</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">e</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">t</span>
-								<span init-with="p:[op:0, tr:rotateX(90deg), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg):rotateX(0deg):1000:bouncePast]">.</span>
-							</stagger-children>
-						</div>
-					</div>
-
-					<div class='flex-wrap p15-grid txt-48 full-x'>
-
-
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">a</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">m</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">e</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">t</span>
+								<span init-with="p:[op:0, tr:rotateX(90deg) scaleY(0), tro:center bottom]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:rotateX(90deg) scaleY(0):rotateX(0deg) scaleY(1):1000:easeOutBack easeOutElastic]">.</span>
+                            </stagger-children>
+                        </div>
+						<div class='full-x flex-vertical-center perspective-container semibold txt-48 line-height-1-2'>
+                            <stagger-children on-enter="*:[5, 15, 25, 35, 45, 55, 65, 75, 85, 95, 105, 115, 125, 135, 145, 155, 165, 175, 185, 195, 255, 215, 225, 235, 245, 255, 265]:linear">
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]"
+								on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">L</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(-30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(-30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">o</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(-30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(-30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">r</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">e</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(-30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(-30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">m</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">&nbsp;</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(-30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(-30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">i</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">p</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(-30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(-30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">s</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(-30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(-30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">u</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">m</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">&nbsp;</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">d</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">o</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">l</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">o</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">r</span>
+								<span>&nbsp;</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">s</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">i</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">t</span>
+								<span>&nbsp;</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">a</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">m</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">e</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">t</span>
+								<span class="block" init-with="p:[op:0, tr:translateX(100px) rotate(30deg), tro:center center]" on-init="t:[on-enter:self]" on-enter="p:[opacity:0:1:300:easeOutSine, transform:translateX(100px) rotate(30deg):translateX(0px) rotateX(0deg):1000:easeOutBack easeOutElastic]">.</span>
+                            </stagger-children>
+                        </div>
                     </div>
 					<div class='flex-wrap p15-grid txt-48 full-x'>
 
