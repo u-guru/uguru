@@ -32,7 +32,14 @@
 				init-with="p:[op:0, z-index:-1]"
 				when-balloon-enter="p:[z-index:2, opacity:0:1:500:easeOutSine]"></svg>
 			<svg id="hiw-sky-clouds" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
-				ng-include="root.base_url + 'preapp/templates/hiw/sky-clouds.html'"></svg>
+				ng-include="root.base_url + 'preapp/templates/hiw/sky-clouds.html'"
+				init-with="p:[op:0, z-index:-1]"
+				when-balloon-academic-select="t-enter"
+				when-balloon-baking-select="t-enter"
+				when-balloon-photography-select="t-enter"
+				when-balloon-tech-select="t-enter"
+				when-balloon-household-select="t-enter"
+				on-enter="p:[z-index:3, opacity:0:1:500:easeOutSine]:delay-1200"></svg>
 			<svg id="hiw-sky-balloon" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
 				ng-include="root.base_url + 'preapp/templates/hiw/sky-balloon.html'"
 				init-with="p:[op:0, z-index:-1]"
