@@ -38,7 +38,7 @@
 	100% {transform: translateY(0%); opacity: 1;}
 }
 
-@keyframes hiw-cloud-fall-hover {
+@keyframes hiw--hover {
 	0% { transform: translateY(3px) translateZ(0); opacity: 1 }
 	100% { transform: translateY(-3px) translateZ(0); opacity: 1 }
 }

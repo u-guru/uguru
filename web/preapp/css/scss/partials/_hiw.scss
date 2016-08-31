@@ -170,6 +170,11 @@ a[class*="-container"] {
 	}
 }
 
+#hiw-sky-clouds {
+	position: absolute;
+	top: 0; left: 0;
+}
+
 // // sky
 // #hiw-sky-gradient {
 // 	transition-delay: 1500ms!important;
@@ -187,11 +192,11 @@ a[class*="-container"] {
 // 	}
 // }
 #hiw-sky-clouds {
-	position: absolute;
-	top: 0; left: 0;
-	z-index: -1;
-	opacity: 0;
-	.hiw-sky-cloud { opacity: 0 }
+	// position: absolute;
+	// top: 0; left: 0;
+	// z-index: -1;
+	// opacity: 0;
+	// .hiw-sky-cloud { opacity: 0 }
 	&.active {
 		z-index: 3;
 		opacity: 1;
