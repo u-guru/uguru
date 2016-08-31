@@ -58,6 +58,11 @@
 	100% { transform: translate3d(0,0,0) }
 }
 
+@keyframes hiw-basket-balloon-sway {
+	0% {transform: rotate(-5deg);}
+	100% {transform: rotate(5deg);}
+}
+
 @keyframes hiw-balloon-move-baking {
 	0% { transform: translate3d(-520%,-300%,0) }
 	80% { transform: translate3d(-208%,-250%,0) }
