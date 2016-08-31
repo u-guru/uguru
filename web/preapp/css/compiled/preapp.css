@@ -4419,8 +4419,11 @@
   height: 100%; }
 
 .map-stadium, .map-library, .map-dorm, .map-clock-tower,
-#hiw-stadium {
+#hiw-stadium, .hiw-balloon {
   cursor: pointer; }
+
+.sub2-helicopter-wing-1, .sub2-helicopter-wing-2 {
+  backface-visibility: hidden; }
 
 .map-enter {
   transition: all 150ms ease-in-out;
@@ -4492,14 +4495,193 @@ a[class*="-container"]:hover .map-stadium-outside {
   #hiw-library.animate #hiw-library-outside-left svg > g, #hiw-library.animate #hiw-library-outside-right svg > g {
     transform: scaleX(0); }
 
-#hiw-stadium.active .stadium-small-cal-flag-11,
-#hiw-stadium.active .stadium-small-cal-flag-1,
-#hiw-stadium.active .stadium-small-cal-flag-2 {
-  animation: flag-rotate 300ms linear 1600ms 30 alternate;
-  transform-origin: bottom left; }
-#hiw-stadium.active .stadium-small-cal-flag-3 {
-  animation: flag-rotate-2 500ms linear 1600ms 20 alternate;
-  transform-origin: bottom right; }
+.hiw-helicopter {
+  transform: translateZ(0); }
+  .hiw-helicopter.active {
+    animation: hiw-helicopter-translate 4s ease-out 1s; }
+
+.hiw-helicopter-container {
+  animation: hiw-cloud-hover 1500ms linear infinite alternate; }
+
+.sub2-announcement {
+  transform-origin: right center;
+  transform: rotateZ(-0.5deg) translateZ(0);
+  animation: hiw-helicopter-rotate 1500ms linear infinite alternate; }
+
+.sub2-helicopter {
+  transform: translateZ(0); }
+
+.sub2-helicopter-wing-1 {
+  animation: hiw-helicopter-spin-1 150ms linear infinite forwards;
+  transform: rotateY(0) translateZ(0);
+  transform-origin: center center; }
+
+.sub2-helicopter-wing-2 {
+  animation: hiw-helicopter-spin-2 300ms linear infinite forwards;
+  transform: rotateY(1turn) translateZ(0);
+  transform-origin: center center; }
+
+.hiw-balloon {
+  opacity: 1;
+  transform-origin: center center;
+  transition: transform 500ms ease-out 1500ms,opacity 0ms linear 2400ms; }
+  .hiw-balloon.active {
+    opacity: 0; }
+    .hiw-balloon.active > g {
+      animation: hiw-balloon-anticipation 150ms ease-in-out 0ms 1 forwards, hiw-balloon-anticipation-reverse 500ms ease-in-out 1s 1 forwards !important; }
+  .hiw-balloon ~ .hiw-balloon-hover {
+    transition: all 150ms ease-in-out;
+    opacity: 0;
+    transform-origin: center center;
+    transform: translate3d(0, 100%, 0) scaleX(0); }
+  .hiw-balloon:hover ~ .hiw-balloon-hover, .hiw-balloon:focus ~ .hiw-balloon-hover {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scaleX(1); }
+    .hiw-balloon:hover ~ .hiw-balloon-hover g, .hiw-balloon:focus ~ .hiw-balloon-hover g {
+      transform: translateZ(0);
+      animation: hiw-cloud-hover 1500ms linear 175ms infinite alternate; }
+  .hiw-balloon.active ~ .hiw-balloon-hover {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0) scaleX(0); }
+
+.hiw-balloon-group {
+  transform: translate3d(-520%, -100%, 0) scale(0); }
+
+#hiw-balloon-group-baking.move {
+  animation: hiw-balloon-move-baking 6s ease-in-out 2000ms forwards; }
+
+#hiw-balloon-baking.active {
+  transform: translate3d(56%, -63%, 0) scale(2.38); }
+#hiw-balloon-baking > g {
+  animation: hiw-cloud-hover 1500ms linear 350ms infinite alternate; }
+
+#hiw-balloon-group-hh.move {
+  animation: hiw-balloon-move-hh 6s ease-in-out 1500ms forwards; }
+
+#hiw-balloon-hh.active {
+  transform: translate3d(-44%, -70%, 0) scale(2.38); }
+#hiw-balloon-hh > g {
+  animation: hiw-cloud-hover 1500ms linear 520ms infinite alternate; }
+
+#hiw-balloon-group-academic.move {
+  animation: hiw-balloon-move-academic 6s ease-in-out 1s forwards; }
+
+#hiw-balloon-academic.active {
+  transform: translate3d(-144%, -80%, 0) scale(2.38); }
+#hiw-balloon-academic > g {
+  animation: hiw-cloud-hover 1500ms linear 230ms infinite alternate; }
+
+#hiw-balloon-group-tech.move {
+  animation: hiw-balloon-move-tech 6s ease-in-out 500ms forwards; }
+
+#hiw-balloon-tech.active {
+  transform: translate3d(-244%, -70%, 0) scale(2.38); }
+#hiw-balloon-tech > g {
+  animation: hiw-cloud-hover 1500ms linear 100ms infinite alternate; }
+
+#hiw-balloon-group-photo.move {
+  animation: hiw-balloon-move-photo 6s ease-in-out 0ms forwards; }
+
+#hiw-balloon-photo.active {
+  transform: translate3d(-344%, -65%, 0) scale(2.38); }
+#hiw-balloon-photo > g {
+  animation: hiw-cloud-hover 1500ms linear 640ms infinite alternate; }
+
+.hiw-stadium-balloons-container, .hiw-helicopter {
+  transition: all 500ms ease-out 500ms; }
+  .hiw-stadium-balloons-container.clear, .hiw-helicopter.clear {
+    transform: translate3d(0, 2000px, 0) !important; }
+
+.hiw-balloon-static {
+  transition: all 1s ease-out 1500ms; }
+  .hiw-balloon-static.clear {
+    transform: translate3d(0, 2000px, 0); }
+    .hiw-balloon-static.clear#hiw-balloon-baking {
+      transition-delay: 1600ms !important; }
+    .hiw-balloon-static.clear#hiw-balloon-hh {
+      transition-delay: 1800ms !important; }
+    .hiw-balloon-static.clear#hiw-balloon-academic {
+      transition-delay: 1500ms !important; }
+    .hiw-balloon-static.clear#hiw-balloon-tech {
+      transition-delay: 1900ms !important; }
+    .hiw-balloon-static.clear#hiw-balloon-photo {
+      transition-delay: 1700ms !important; }
+    .hiw-balloon-static.clear > g {
+      animation: hiw-balloon-anticipation 150ms ease-in-out 0ms 1 forwards !important; }
+
+.hiw-sky-balloon {
+  opacity: 0 !important;
+  transform-origin: center center; }
+  .hiw-sky-balloon.active {
+    opacity: 1 !important; }
+    .hiw-sky-balloon.active > g {
+      animation: hiw-cloud-hover 1500ms linear 2600ms infinite alternate; }
+
+#hiw-sky-gradient {
+  transition-delay: 1500ms !important; }
+  #hiw-sky-gradient.active {
+    z-index: 3;
+    opacity: 1; }
+
+#hiw-sky-balloon-gradient {
+  opacity: 0; }
+  #hiw-sky-balloon-gradient.active {
+    opacity: 1;
+    transform: translate3d(0, -100%, 0);
+    animation: hiw-sky-balloon-gradient 1s ease-out 2500ms forwards; }
+
+#hiw-sky-clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0; }
+  #hiw-sky-clouds .hiw-sky-cloud {
+    opacity: 0; }
+  #hiw-sky-clouds.active {
+    z-index: 3;
+    opacity: 1; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-1 {
+      animation: hiw-cloud-fall 200ms linear 1200ms 2, hiw-cloud-fall-end 200ms ease-out 3020ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-2 {
+      animation: hiw-cloud-fall 400ms linear 1400ms 2, hiw-cloud-fall-end 400ms ease-out 3040ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-3 {
+      animation: hiw-cloud-fall 600ms linear 1600ms 2, hiw-cloud-fall-end 600ms ease-out 3060ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-4 {
+      animation: hiw-cloud-fall 800ms linear 1800ms 2, hiw-cloud-fall-end 800ms ease-out 3080ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-5 {
+      animation: hiw-cloud-fall 1000ms linear 2000ms 2, hiw-cloud-fall-end 1000ms ease-out 3100ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-6 {
+      animation: hiw-cloud-fall 1200ms linear 2200ms 2, hiw-cloud-fall-end 1200ms ease-out 3120ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-7 {
+      animation: hiw-cloud-fall 1400ms linear 2400ms 2, hiw-cloud-fall-end 1400ms ease-out 3140ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-8 {
+      animation: hiw-cloud-fall 1600ms linear 2600ms 2, hiw-cloud-fall-end 1600ms ease-out 3160ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-9 {
+      animation: hiw-cloud-fall 1800ms linear 2800ms 2, hiw-cloud-fall-end 1800ms ease-out 3180ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-10 {
+      animation: hiw-cloud-fall 2000 ms linear 2000 ms 2, hiw-cloud-fall-end 2000 ms ease-out 3100 ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-11 {
+      animation: hiw-cloud-fall 2200 ms linear 2100 ms 2, hiw-cloud-fall-end 2200 ms ease-out 3110 ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-12 {
+      animation: hiw-cloud-fall 2400 ms linear 2200 ms 2, hiw-cloud-fall-end 2400 ms ease-out 3120 ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-13 {
+      animation: hiw-cloud-fall 2600 ms linear 2300 ms 2, hiw-cloud-fall-end 2600 ms ease-out 3130 ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-14 {
+      animation: hiw-cloud-fall 2800 ms linear 2400 ms 2, hiw-cloud-fall-end 2800 ms ease-out 3140 ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-15 {
+      animation: hiw-cloud-fall 3000 ms linear 2500 ms 2, hiw-cloud-fall-end 3000 ms ease-out 3150 ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-16 {
+      animation: hiw-cloud-fall 3200 ms linear 2600 ms 2, hiw-cloud-fall-end 3200 ms ease-out 3160 ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-17 {
+      animation: hiw-cloud-fall 3400 ms linear 2700 ms 2, hiw-cloud-fall-end 3400 ms ease-out 3170 ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-18 {
+      animation: hiw-cloud-fall 3600 ms linear 2800 ms 2, hiw-cloud-fall-end 3600 ms ease-out 3180 ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-19 {
+      animation: hiw-cloud-fall 3800 ms linear 2900 ms 2, hiw-cloud-fall-end 3800 ms ease-out 3190 ms forwards; }
+    #hiw-sky-clouds.active .hiw-sky-cloud-20 {
+      animation: hiw-cloud-fall 4000 ms linear 3000 ms 2, hiw-cloud-fall-end 4000 ms ease-out 3200 ms forwards; }
+
 #hiw-stadium.active .stadium-small-cal-flag-5 {
   animation: flag-rotate-2 200ms linear 1600ms 30 alternate;
   transform-origin: bottom left; }
@@ -4791,216 +4973,6 @@ a[class*="-container"]:hover .map-stadium-outside {
   animation: fadeIn 0.15s steps(2, start) infinite alternate !important; }
 #hiw-stadium.wild .stadium-main-crowd-white-47 {
   animation: fadeIn 0.25s steps(2, start) infinite alternate !important; }
-
-.hiw-stadium-container {
-  transition: all 500ms ease-out 1s; }
-  .hiw-stadium-container.active {
-    transform: translateY(20.2%) translateZ(0); }
-
-#hiw-stadium-balloons {
-  transition-delay: 1500ms !important; }
-  #hiw-stadium-balloons.active {
-    z-index: 2;
-    opacity: 1; }
-
-[class*="stadium-light-"] {
-  opacity: 0; }
-
-.hiw-helicopter {
-  transform: translateZ(0); }
-  .hiw-helicopter.active {
-    animation: hiw-helicopter-translate 4s ease-out 1s; }
-
-.hiw-helicopter-container {
-  animation: hiw-cloud-hover 1500ms linear infinite alternate; }
-
-.sub2-announcement {
-  transform-origin: right center;
-  transform: rotateZ(-0.5deg) translateZ(0);
-  animation: hiw-helicopter-rotate 1500ms linear infinite alternate; }
-
-.sub2-helicopter {
-  transform: translateZ(0); }
-
-.sub2-helicopter-wing-1 {
-  backface-visibility: hidden;
-  animation: hiw-helicopter-spin-1 150ms linear infinite forwards;
-  transform: rotateY(0) translateZ(0);
-  transform-origin: center center; }
-
-.sub2-helicopter-wing-2 {
-  backface-visibility: hidden;
-  animation: hiw-helicopter-spin-2 300ms linear infinite forwards;
-  transform: rotateY(1turn) translateZ(0);
-  transform-origin: center center; }
-
-.hiw-balloon {
-  cursor: pointer;
-  opacity: 1;
-  transform-origin: center center;
-  transition: transform 500ms ease-out 1500ms,opacity 0ms linear 2400ms; }
-  .hiw-balloon.active {
-    opacity: 0; }
-    .hiw-balloon.active > g {
-      animation: hiw-balloon-anticipation 150ms ease-in-out 0ms 1 forwards, hiw-balloon-anticipation-reverse 500ms ease-in-out 1s 1 forwards !important; }
-  .hiw-balloon ~ .hiw-balloon-hover {
-    transition: all 150ms ease-in-out;
-    opacity: 0;
-    transform-origin: center center;
-    transform: translate3d(0, 100%, 0) scaleX(0); }
-  .hiw-balloon:hover ~ .hiw-balloon-hover, .hiw-balloon:focus ~ .hiw-balloon-hover {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scaleX(1); }
-    .hiw-balloon:hover ~ .hiw-balloon-hover g, .hiw-balloon:focus ~ .hiw-balloon-hover g {
-      transform: translateZ(0);
-      animation: hiw-cloud-hover 1500ms linear 175ms infinite alternate; }
-  .hiw-balloon.active ~ .hiw-balloon-hover {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0) scaleX(0); }
-
-.hiw-balloon-group {
-  transform: translate3d(-520%, -100%, 0) scale(0); }
-
-#hiw-balloon-group-baking.move {
-  animation: hiw-balloon-move-baking 6s ease-in-out 2000ms forwards; }
-
-#hiw-balloon-baking.active {
-  transform: translate3d(56%, -63%, 0) scale(2.38); }
-#hiw-balloon-baking > g {
-  animation: hiw-cloud-hover 1500ms linear 350ms infinite alternate; }
-
-#hiw-balloon-group-hh.move {
-  animation: hiw-balloon-move-hh 6s ease-in-out 1500ms forwards; }
-
-#hiw-balloon-hh.active {
-  transform: translate3d(-44%, -70%, 0) scale(2.38); }
-#hiw-balloon-hh > g {
-  animation: hiw-cloud-hover 1500ms linear 520ms infinite alternate; }
-
-#hiw-balloon-group-academic.move {
-  animation: hiw-balloon-move-academic 6s ease-in-out 1s forwards; }
-
-#hiw-balloon-academic.active {
-  transform: translate3d(-144%, -80%, 0) scale(2.38); }
-#hiw-balloon-academic > g {
-  animation: hiw-cloud-hover 1500ms linear 230ms infinite alternate; }
-
-#hiw-balloon-group-tech.move {
-  animation: hiw-balloon-move-tech 6s ease-in-out 500ms forwards; }
-
-#hiw-balloon-tech.active {
-  transform: translate3d(-244%, -70%, 0) scale(2.38); }
-#hiw-balloon-tech > g {
-  animation: hiw-cloud-hover 1500ms linear 100ms infinite alternate; }
-
-#hiw-balloon-group-photo.move {
-  animation: hiw-balloon-move-photo 6s ease-in-out 0ms forwards; }
-
-#hiw-balloon-photo.active {
-  transform: translate3d(-344%, -65%, 0) scale(2.38); }
-#hiw-balloon-photo > g {
-  animation: hiw-cloud-hover 1500ms linear 640ms infinite alternate; }
-
-.hiw-stadium-balloons-container, .hiw-helicopter {
-  transition: all 500ms ease-out 500ms; }
-  .hiw-stadium-balloons-container.clear, .hiw-helicopter.clear {
-    transform: translate3d(0, 2000px, 0) !important; }
-
-.hiw-balloon-static {
-  transition: all 1s ease-out 1500ms; }
-  .hiw-balloon-static.clear {
-    transform: translate3d(0, 2000px, 0); }
-    .hiw-balloon-static.clear#hiw-balloon-baking {
-      transition-delay: 1600ms !important; }
-    .hiw-balloon-static.clear#hiw-balloon-hh {
-      transition-delay: 1800ms !important; }
-    .hiw-balloon-static.clear#hiw-balloon-academic {
-      transition-delay: 1500ms !important; }
-    .hiw-balloon-static.clear#hiw-balloon-tech {
-      transition-delay: 1900ms !important; }
-    .hiw-balloon-static.clear#hiw-balloon-photo {
-      transition-delay: 1700ms !important; }
-    .hiw-balloon-static.clear > g {
-      animation: hiw-balloon-anticipation 150ms ease-in-out 0ms 1 forwards !important; }
-
-#hiw-sky-balloon {
-  transition-delay: 2000ms !important; }
-  #hiw-sky-balloon.active {
-    z-index: 3;
-    opacity: 1; }
-
-.hiw-sky-balloon {
-  opacity: 0 !important;
-  transform-origin: center center; }
-  .hiw-sky-balloon.active {
-    opacity: 1 !important; }
-    .hiw-sky-balloon.active > g {
-      animation: hiw-cloud-hover 1500ms linear 2600ms infinite alternate; }
-
-#hiw-sky-gradient {
-  transition-delay: 1500ms !important; }
-  #hiw-sky-gradient.active {
-    z-index: 3;
-    opacity: 1; }
-
-#hiw-sky-balloon-gradient {
-  opacity: 0; }
-  #hiw-sky-balloon-gradient.active {
-    opacity: 1;
-    transform: translate3d(0, -100%, 0);
-    animation: hiw-sky-balloon-gradient 1s ease-out 2500ms forwards; }
-
-#hiw-sky-clouds {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  opacity: 0; }
-  #hiw-sky-clouds .hiw-sky-cloud {
-    opacity: 0; }
-  #hiw-sky-clouds.active {
-    z-index: 3;
-    opacity: 1; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-1 {
-      animation: hiw-cloud-fall 200ms linear 1200ms 2, hiw-cloud-fall-end 200ms ease-out 3020ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-2 {
-      animation: hiw-cloud-fall 400ms linear 1400ms 2, hiw-cloud-fall-end 400ms ease-out 3040ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-3 {
-      animation: hiw-cloud-fall 600ms linear 1600ms 2, hiw-cloud-fall-end 600ms ease-out 3060ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-4 {
-      animation: hiw-cloud-fall 800ms linear 1800ms 2, hiw-cloud-fall-end 800ms ease-out 3080ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-5 {
-      animation: hiw-cloud-fall 1000ms linear 2000ms 2, hiw-cloud-fall-end 1000ms ease-out 3100ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-6 {
-      animation: hiw-cloud-fall 1200ms linear 2200ms 2, hiw-cloud-fall-end 1200ms ease-out 3120ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-7 {
-      animation: hiw-cloud-fall 1400ms linear 2400ms 2, hiw-cloud-fall-end 1400ms ease-out 3140ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-8 {
-      animation: hiw-cloud-fall 1600ms linear 2600ms 2, hiw-cloud-fall-end 1600ms ease-out 3160ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-9 {
-      animation: hiw-cloud-fall 1800ms linear 2800ms 2, hiw-cloud-fall-end 1800ms ease-out 3180ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-10 {
-      animation: hiw-cloud-fall 2000 ms linear 2000 ms 2, hiw-cloud-fall-end 2000 ms ease-out 3100 ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-11 {
-      animation: hiw-cloud-fall 2200 ms linear 2100 ms 2, hiw-cloud-fall-end 2200 ms ease-out 3110 ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-12 {
-      animation: hiw-cloud-fall 2400 ms linear 2200 ms 2, hiw-cloud-fall-end 2400 ms ease-out 3120 ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-13 {
-      animation: hiw-cloud-fall 2600 ms linear 2300 ms 2, hiw-cloud-fall-end 2600 ms ease-out 3130 ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-14 {
-      animation: hiw-cloud-fall 2800 ms linear 2400 ms 2, hiw-cloud-fall-end 2800 ms ease-out 3140 ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-15 {
-      animation: hiw-cloud-fall 3000 ms linear 2500 ms 2, hiw-cloud-fall-end 3000 ms ease-out 3150 ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-16 {
-      animation: hiw-cloud-fall 3200 ms linear 2600 ms 2, hiw-cloud-fall-end 3200 ms ease-out 3160 ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-17 {
-      animation: hiw-cloud-fall 3400 ms linear 2700 ms 2, hiw-cloud-fall-end 3400 ms ease-out 3170 ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-18 {
-      animation: hiw-cloud-fall 3600 ms linear 2800 ms 2, hiw-cloud-fall-end 3600 ms ease-out 3180 ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-19 {
-      animation: hiw-cloud-fall 3800 ms linear 2900 ms 2, hiw-cloud-fall-end 3800 ms ease-out 3190 ms forwards; }
-    #hiw-sky-clouds.active .hiw-sky-cloud-20 {
-      animation: hiw-cloud-fall 4000 ms linear 3000 ms 2, hiw-cloud-fall-end 4000 ms ease-out 3200 ms forwards; }
 
 .projector-access .projector-access-content {
   -ms-box-orient: horizontal;
