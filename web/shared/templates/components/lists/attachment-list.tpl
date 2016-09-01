@@ -3,10 +3,9 @@
 		<div class="attach-list student">
 			<ul init-default
 				on-init="s:[attach-list-init]">
-				<stagger-children on-enter="[odd]:1000">
-					<li class="odd" init-with="p-op"
-						when-attach-list-init="t-enter"
-						on-enter="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
+					<li class="student-attach" init-with="p-op"
+						when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]"
+						on-enter>
 						<a init-default
 							on-click="s:[attach-upload:public]">
 							<span ng-include="root.base_url + 'shared/templates/components/svg/ext/pdf-fill.html'"></span>
@@ -26,9 +25,8 @@
 							</div>
 						</a>
 					</li>
-					<li class="odd" init-with="p-op"
-						when-attach-list-init="t-enter"
-						on-enter="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
+					<li class="student-attach" init-with="p-op"
+						when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
 						<a>
 							<span ng-include="root.base_url + 'shared/templates/components/svg/ext/doc-fill.html'"></span>
 							<span>file.doc</span>
@@ -46,9 +44,8 @@
 							</div>
 						</a>
 					</li>
-					<li class="odd" init-with="p-op"
-						when-attach-list-init="t-enter"
-						on-enter="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
+					<li class="student-attach" init-with="p-op"
+						when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-200]">
 						<a>
 							<span ng-include="root.base_url + 'shared/templates/components/svg/ext/jpg-fill.html'"></span>
 							<span>image.jpg</span>
@@ -66,7 +63,6 @@
 							</div>
 						</a>
 					</li>
-				</stagger-children>
 			</ul>
 		</div>
 	</div>
