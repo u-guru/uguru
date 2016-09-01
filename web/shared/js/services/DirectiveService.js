@@ -49,7 +49,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         parseAfterArgs: parseAfterArgs,
         processSetExtraArgs: processSetExtraArgs,
         processStaggerArgs: processStaggerArgs,
-        verifyStaggerChildSelector: verifyStaggerChildSelector
+        verifyStaggerChildSelector: verifyStaggerChildSelector,
+        applyMappingDelayFuncToFutureChildren: applyMappingDelayFuncToFutureChildren
     }
 
     function verifyStaggerChildSelector(constraints, elem) {
@@ -107,14 +108,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       if (arg_arr.length) {
         console.log('easing');
       } else {
-        if (resultDict.time && resultDict.time.values) {
-          resultDict.easing = 'custom'
-        }
+        // if (resultDict.time && resultDict.time.values) {
+        //   resultDict.easing = 'custom'
+        // }
       }
       return resultDict //resultDict
     }
     function applyMappingDelayFuncToFutureChildren(state_name, options) {
-      return function(children_arr, time_dict) {
+      return function(children_arr, time_dict, selector) {
         // var options = options;
         var childCount = 0;
         for (var i = 0; i < children_arr.length; i++) {
@@ -122,7 +123,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
           if (iChild.attributes
             && iChild.hasAttribute(UtilitiesService.camelToDash(state_name))
-            && verifyStaggerChildSelector(options.selector[0], iChild)) {
+            && verifyStaggerChildSelector(selector || (options && options.selector && options.selector[0]), iChild)) {
             childCount += 1;
           }
         }
@@ -138,7 +139,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             time_dict.values.push(i*Math.abs(time_dict.linearConst))
           }
         }
-        console.log(time_dict)
+
+
+        //ordering
         if (time_dict.order === 'reverse') {
           time_dict.values = time_dict.values.reverse();
         }
@@ -175,13 +178,12 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (arg1.indexOf('+') > -1 || ((arg1.indexOf('+') + arg1.indexOf('-')) === -2)) {
             timeDict.order = 'normal';
           }
-          var options = {
+          timeDict.options = {
             easing: 'linear',
             order: timeDict.order,
             selector: result_dict.selector
           }
-          timeDict.valueFunc = applyMappingDelayFuncToFutureChildren(state_name, options);
-          console.log('setting valueFunc')
+          timeDict.valueFunc = applyMappingDelayFuncToFutureChildren(state_name, timeDict.options);
         }
       return timeDict
     }

@@ -24,6 +24,13 @@ function($scope, $state, $timeout, $localstorage, $compile, $http, DirectiveServ
         var elem = document.querySelector('#demo-controller')
         elem.style.opacity = 0;
         stagger.data.activeIndex = index;
+        $scope.stagger.data.activeExample = updateExampleGUI($scope.stagger.data.activeIndex, $scope.stagger.data.use_cases);
+        // console.log($scope.stagger.data.activeExample);
+        var getValuesFunc = DirectiveService.applyMappingDelayFuncToFutureChildren('onEnter', $scope.stagger.data.activeExample.time);
+
+        getValuesFunc(angular.element(elem).children(), $scope.stagger.data.activeExample.time, $scope.stagger.data.activeExample.selector[0])
+        console.log($scope.stagger.data.activeExample)
+
     }
     function init(scope) {
         var elem = document.querySelector('#demo-controller')
@@ -44,7 +51,7 @@ function($scope, $state, $timeout, $localstorage, $compile, $http, DirectiveServ
 
 
 
-            scope.stagger.data.activeExample = updateExampleGUI(scope.stagger.data.activeIndex, scope.stagger.data.use_cases);
+
             var elem = document.querySelector('#demo-controller')
             var staggerStr = '<stagger-children>' + elem.innerHTML + '</stagger-children>'
             // var elemDisplayTemp = window.getComputedStyle(elem)['display']
@@ -52,13 +59,35 @@ function($scope, $state, $timeout, $localstorage, $compile, $http, DirectiveServ
             // elem.style.display = 'none';
             elem.innerHTML = staggerStr;
             $timeout(function() {
-
+                // $scope.stagger.data.activeIndex = _new;
                 var elem = document.querySelector('#demo-controller > stagger-children')
 
                 elem.setAttribute('on-enter', scope.stagger.data.use_cases[scope.stagger.data.activeIndex].example)
+                if ($scope.stagger.data && !$scope.stagger.data.activeExample) {
+                            $scope.stagger.data.activeExample = updateExampleGUI($scope.stagger.data.activeIndex, $scope.stagger.data.use_cases);
+                            // console.log($scope.stagger.data.activeExample);
+                            var getValuesFunc = DirectiveService.applyMappingDelayFuncToFutureChildren('onEnter', $scope.stagger.data.activeExample.time);
+
+                            getValuesFunc(angular.element(elem).children(), $scope.stagger.data.activeExample.time, $scope.stagger.data.activeExample.selector[0])
+                        }
                 $timeout(function() {
                     elem.parentNode.style.opacity = 1;
                     $compile(elem)($scope);
+                    $timeout(function() {
+
+
+                         // stagger.updateActiveIndex
+                         // if ( !$scope.stagger.data.activeExample) {
+                         //    stagger.updateActiveIndex(_new)
+                            // $scope.stagger.data.activeExample
+                            // $scope.stagger.data.activeExample = updateExampleGUI($scope.stagger.data.activeIndex, $scope.stagger.data.use_cases);
+                            // // console.log($scope.stagger.data.activeExample);
+                            // var getValuesFunc = DirectiveService.applyMappingDelayFuncToFutureChildren('onEnter', $scope.stagger.data.activeExample.time.options);
+
+                            // getValuesFunc(angular.element(elem).children(), $scope.stagger.data.activeExample.time, $scope.stagger.data.activeExample.selector)
+                         // }
+                    })
+
                 }, 500)
 
 
@@ -68,7 +97,7 @@ function($scope, $state, $timeout, $localstorage, $compile, $http, DirectiveServ
 
             // stagElem.setAttribute('on-enter', scope.stagger.data.use_cases[_new].example)
             // console.log()
-
+            // if ()
             // var elem = document.querySelector('#player-stage');
             // $compile(angular.element(elem))(scope)
             // console.log(re)
@@ -100,7 +129,9 @@ function($scope, $state, $timeout, $localstorage, $compile, $http, DirectiveServ
 	}
 
     function updateExampleGUI(index, use_cases) {
-        return DirectiveService.processStaggerArgs({onEnter: use_cases[index].example}).onEnter
+        var result = DirectiveService.processStaggerArgs({onEnter: use_cases[index].example});
+        console.log(result);
+        return result.onEnter
     }
 
     function getStaggerDocs(scope) {

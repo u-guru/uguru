@@ -68,7 +68,8 @@ angular.module('uguru.shared.directives')
                       var stateTime = hasKey && 'time' in stagDict[key] && stagDict[key].time;
                       if (hasKey && stateTime && (!stateTime.values || !stateTime.values.length)) {
                         if (stateTime.valueFunc) {
-                          stateTime.valueFunc(clone, stateTime)
+                          stateTime.valueFunc(clone, stateTime);
+                          // if ()
                         }
                       }
                     }
