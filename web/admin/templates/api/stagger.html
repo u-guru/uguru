@@ -1,6 +1,6 @@
 <!-- speed="2x" -->
-<inspector-gadget ball-color="smoke" reverse-speed="10" speed="0.5x" class="bottom-0 bg-azure" auto-play="false"  step-size="25" show-props play-infinite="false">
-</inspector-gadget>
+<!-- <inspector-gadget ball-color="smoke" reverse-speed="10" speed="0.5x" class="bottom-0 bg-azure" auto-play="false"  step-size="25" show-props play-infinite="false">
+</inspector-gadget> -->
 
 <div class='bg-charcoal' ng-controller='AdminStaggerController as stagger'>
     <span init-with="p:[display:none, opacity:0]">
@@ -82,7 +82,7 @@
                         Easing
                         </div>
                         <div class='txt-32 lowercase txt-gold full-x m15y'>
-                            {{stagger.data.activeExample.easing}}
+                            {{stagger.data.activeExample.easing || 'custom'}}
                         </div>
                     </li>
 
@@ -111,7 +111,7 @@
 
 
                                 <!-- @jeselle You can change the values of these below however you like. The stagger.json only impacts the stagger-children on-enter state. -->
-                                <div class='m10x odd' group-1 on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">S</div>
+                                <div class='m10x odd' group-1 on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" inspector-elem="on-enter" init-with="p:[opacity:0]">S</div>
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">A</div>
                                 <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) skew(180deg) rotate(-1080deg):translateY(0px) scale(1) skew(0deg) rotate(0deg):1000:bouncePast easeInOutQuad linear linear]" init-with="p:[opacity:0]">M</div>
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">I</div>
