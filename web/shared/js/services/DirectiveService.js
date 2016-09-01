@@ -91,7 +91,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function processStaggerString(state_name, arg_arr) {
       var resultDict = {};
-      console.log(arg_arr)
       if (arg_arr.length < 2) {
         if (arg_arr.length === 1 && (arg_arr[0].indexOf('[') > -1 || arg_arr[0].indexOf('+') > -1 || arg_arr[0].indexOf('-') > -1)) {
           arg_arr.unshift('*')
@@ -118,7 +117,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     function applyMappingDelayFuncToFutureChildren(state_name, options) {
       return function(children_arr, time_dict, selector) {
 
-        // var options = options;
         var childCount = 0;
         for (var i = 0; i < children_arr.length; i++) {
           var iChild = children_arr[i]
@@ -129,11 +127,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             childCount += 1;
           }
         }
-        // console.log(time_dict)
-        if (time_dict.values) {
-
-          console.log('values', time_dict.values);
-        }
         if (!time_dict.delay && time_dict.delay !== 0) {
           time_dict.delay = 0;
         }
@@ -142,15 +135,16 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             time_dict.values.push(i*Math.abs(time_dict.linearConst))
           }
         }
-        console.log(time_dict)
-        if (time_dict.options.easing && time_dict.options.duration) {
-          console.log(childCount * 16)
+        else if (time_dict.options.easing && time_dict.options.duration) {
           var resultArr = TweenService.preComputeValues('time', childCount * 16, {'time':0}, {'time': 1},time_dict.options.easing, {}).cache;
-          resultArr = resultArr.slice(1)
+
+          //@jeselle un-comment the line below
+          // resultArr = resultArr.slice(1)
+
           resultArr.forEach(function(val, i) {
             if (val && val >= 0) {
               var value = val * time_dict.options.duration;
-              console.log(value)
+
               time_dict.values.push(value);
             }
           })
@@ -169,7 +163,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function processTime(arg1, arg_arr, result_dict, state_name) {
-      var timeDict = {};
+      var timeDict = {values:[], formattedValues:[]};
       console.log(arg1, arg_arr)
       //
         if (arg1.indexOf('[') > -1) {
@@ -231,6 +225,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           }
           timeDict.valueFunc = applyMappingDelayFuncToFutureChildren(state_name, timeDict.options);
         }
+        timeDict.formattedValues = [];
+        if (timeDict.values && timeDict.values.length) {
+
+          timeDict.values.forEach(function(val, i) {
+            timeDict.formattedValues.push(val.toFixed(0));
+          })
+        }
+
       return timeDict
     }
 

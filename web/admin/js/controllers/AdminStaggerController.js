@@ -29,7 +29,7 @@ function($scope, $state, $timeout, $localstorage, $compile, $http, DirectiveServ
         var getValuesFunc = DirectiveService.applyMappingDelayFuncToFutureChildren('onEnter', $scope.stagger.data.activeExample.time);
 
         getValuesFunc(angular.element(elem).children(), $scope.stagger.data.activeExample.time, $scope.stagger.data.activeExample.selector[0])
-        console.log($scope.stagger.data.activeExample)
+        // console.log($scope.stagger.data.activeExample.time.formattedValues)
 
     }
     function init(scope) {
