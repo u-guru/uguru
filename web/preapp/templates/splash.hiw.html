@@ -16,8 +16,10 @@
 				init-with="p:[op:0, z-index:-10]"
 				when-open-dorm="p:[op:1, z-index:4]"></svg>
 			<div id="hiw-library"
+				style="background: #B6E2F7;"
 				ng-include="root.base_url + 'preapp/templates/hiw/library.html'"
-				init-with="p:[op:0, z-index:-10]"></div>
+				init-with="p:[op:0, z-index:-10, bg:rgba(182#226#247#0)]"
+				when-open-library="p:[op:1, z-index:4, background:rgba(182#226#247#0):rgba(182#226#247#1):500:easeInOutSine]"></div>
 			<svg id="hiw-map" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
 				style="background: #B6E2F7;"
 				ng-include="root.base_url + 'preapp/templates/hiw/map.html'"></svg>
