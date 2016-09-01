@@ -8,10 +8,11 @@ angular.module('uguru.shared.services')
     'RootService',
     'TransformService',
     'PropertyService',
+    'TweenService',
     DirectiveService
         ]);
 
-function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService, RootService, TransformService, PropertyService) {
+function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService, AnimationService, RootService, TransformService, PropertyService, TweenService) {
     var argNames = ['prop', 'anim', 'send', 'tween', 'class', 'trigger', 'eval', 'transform', 'ttt'];
     var argShortNames = ['p', 'a', 's', 't', 'c', 't', 'ttt'];
     var shortcuts;
@@ -116,6 +117,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
     function applyMappingDelayFuncToFutureChildren(state_name, options) {
       return function(children_arr, time_dict, selector) {
+
         // var options = options;
         var childCount = 0;
         for (var i = 0; i < children_arr.length; i++) {
@@ -129,6 +131,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         }
         // console.log(time_dict)
         if (time_dict.values) {
+
           console.log('values', time_dict.values);
         }
         if (!time_dict.delay && time_dict.delay !== 0) {
@@ -138,6 +141,20 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           for (var i = 0; i < childCount; i++) {
             time_dict.values.push(i*Math.abs(time_dict.linearConst))
           }
+        }
+        console.log(time_dict)
+        if (time_dict.options.easing && time_dict.options.duration) {
+          console.log(childCount * 16)
+          var resultArr = TweenService.preComputeValues('time', childCount * 16, {'time':0}, {'time': 1},time_dict.options.easing, {}).cache;
+          resultArr = resultArr.slice(1)
+          resultArr.forEach(function(val, i) {
+            if (val && val >= 0) {
+              var value = val * time_dict.options.duration;
+              console.log(value)
+              time_dict.values.push(value);
+            }
+          })
+          console.log('get values', time_dict.options.duration, childCount);
         }
 
 
@@ -159,6 +176,35 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           time = UtilitiesService.removeAllOccurrancesArr(arg1, ['[', ']', ' '])
           var time_arr = time.split(',');
           timeDict.values = time_arr;
+        } else
+        //easing or there is a delay w/o easing
+        if (arg_arr.length === 1) {
+           result_dict.duration = arg1;
+           var lastArg = arg_arr.shift();
+           console.log(lastArg)
+           result_dict.easing = lastArg.replace('-', '').replace('+', '')
+           if (TweenService.getAllEasing().indexOf(result_dict.easing) > -1) {
+
+            // result_dict.easing = lastArg;
+            result_dict.delay = 0;
+            timeDict.values = [];
+            if (lastArg.indexOf('-') > -1) {
+                timeDict.order = 'reverse';
+            }
+            else if (lastArg.indexOf('+') > -1) {
+                timeDict.order = 'normal';
+            }
+            else if (lastArg.indexOf('+') === -1 || ((lastArg.indexOf('+') + lastArg.indexOf('-')) === -2)) {
+              timeDict.order = 'normal';
+            }
+            timeDict.options = {
+              easing: result_dict.easing,
+              duration: result_dict.duration,
+              order: timeDict.order,
+              selector: result_dict.selector
+            }
+            timeDict.valueFunc = applyMappingDelayFuncToFutureChildren(state_name, timeDict.options);
+          }
         }
         //linear
         else if (!arg_arr.length) {
@@ -172,7 +218,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             if (directionIndex === 0) {
               timeDict.order = 'reverse';
             } else {
-              timeeDict.order = 'custom';
+              timeDict.order = 'custom';
             }
           } else
           if (arg1.indexOf('+') > -1 || ((arg1.indexOf('+') + arg1.indexOf('-')) === -2)) {

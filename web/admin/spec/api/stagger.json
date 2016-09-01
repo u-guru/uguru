@@ -1,5 +1,5 @@
 {
-    "activeIndex": 4,
+    "activeIndex": 6,
     "use_cases": [
         {
             "name": "Most Minimal #1:Verbose",
@@ -35,17 +35,20 @@
             "complete": true
         },
         {
-            "name": "Delay + total duration",
-            "example": "-250",
-            "description": "The most minimal case",
-            "impt": "No easing is needed here since the time is already clarified. No global delay in this example"
+            "name": "Easings #1",
+            "example": "*:1250:easeInOutExpo",
+            "description": "",
+            "impt": "Duration + Time are Required for the easing to take effect",
+            "complete": true
         },
         {
-            "name": "Custom Ordering",
-            "example": "-250",
-            "description": "The most minimal case",
-            "impt": "No easing is needed here since the time is already clarified. No global delay in this example"
+            "name": "Easings #1:negative",
+            "example": "*:1500:easeInQuint",
+            "description": "",
+            "impt": "Duration + Time are Required for the easing to take effect",
+            "complete": true
         },
+
         {
             "name": "9 Children, 2 delays",
             "example": "-250",

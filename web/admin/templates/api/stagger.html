@@ -74,14 +74,14 @@
                         Time
                         </div>
                         <div class='txt-24 lowercase txt-gold full-x m15y'>
-                            {{stagger.data.activeExample.time.values}}
+                            {{(stagger.data.activeExample.time.values)}}
                         </div>
                     </li>
                     <li class='p15x-p10y height-128 weight-500 flex-wrap-center bg-campus-20p text-center border-1 border-slate radius-2 overflow-hidden flex-wrap' style='min-width:15%; max-height:15%'  >
                         <div class='txt-3 uppercase opacity-50p full-x m10y'>
                         Easing
                         </div>
-                        <div class='txt-32 lowercase txt-gold full-x m15y'>
+                        <div class='txt-32 txt-gold full-x m15y'>
                             {{stagger.data.activeExample.easing || 'custom'}}
                         </div>
                     </li>
@@ -111,7 +111,7 @@
 
 
                                 <!-- @jeselle You can change the values of these below however you like. The stagger.json only impacts the stagger-children on-enter state. -->
-                                <div class='m10x odd' group-1 on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" inspector-elem="on-enter" init-with="p:[opacity:0]">S</div>
+                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" inspector-elem="on-enter" init-with="p:[opacity:0]">S</div>
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">A</div>
                                 <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) skew(180deg) rotate(-1080deg):translateY(0px) scale(1) skew(0deg) rotate(0deg):1000:bouncePast easeInOutQuad linear linear]" init-with="p:[opacity:0]">M</div>
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">I</div>
