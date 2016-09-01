@@ -15,6 +15,7 @@ function TweenService() {
 
     function getAllEasing() {
         return ["easeInQuad",
+        "linear",
         "easeOutQuad",
         "easeInOutQuad",
         "easeInCubic",
@@ -91,7 +92,6 @@ function TweenService() {
     }
 
     function preComputeValues(property, duration, start, end, ease, result_arr) {
-        console.log(property, duration)
         result_arr.cache = [];
         var iterations = (duration/1000 * 60);//fps
         var startDict = {};
