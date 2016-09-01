@@ -78,7 +78,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         var stateName = attrKeys[i];
         var stateValue = attr_arr[stateName];
 
-        var staggerArgsDict = processStaggerString(stateValue.split(':'))
+        var staggerArgsDict = processStaggerString(stateName, stateValue.split(':'))
 
         resultDict[stateName] = staggerArgsDict
       }
@@ -87,7 +87,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
 
-    function processStaggerString(arg_arr) {
+    function processStaggerString(state_name, arg_arr) {
       var resultDict = {};
       console.log(arg_arr)
       if (arg_arr.length < 2) {
@@ -102,7 +102,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       // resultDict.selector =
       // there's a start and end
       resultDict.time = {};
-      resultDict.time = processTime(arg_arr.shift(), arg_arr);
+      resultDict.time = processTime(arg_arr.shift(), arg_arr, resultDict, state_name);
 
       if (arg_arr.length) {
         console.log('easing');
@@ -111,23 +111,77 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           resultDict.easing = 'custom'
         }
       }
-      // if (arg_arr.length === 2) {
-
-      //   // resultDict.time.start = parseInt(arg_arr.shift());
-      //   // resultDict.time.end = parseInt(arg_arr.shift());
-      //   resultDict.ease = arg_arr.shift()
-      // }
-      console.log(resultDict)
       return resultDict //resultDict
     }
+    function applyMappingDelayFuncToFutureChildren(state_name, options) {
+      return function(children_arr, time_dict) {
+        // var options = options;
+        var childCount = 0;
+        for (var i = 0; i < children_arr.length; i++) {
+          var iChild = children_arr[i]
 
-    function processTime(arg1, arg_arr, result_dict) {
+          if (iChild.attributes
+            && iChild.hasAttribute(UtilitiesService.camelToDash(state_name))
+            && verifyStaggerChildSelector(options.selector[0], iChild)) {
+            childCount += 1;
+          }
+        }
+        // console.log(time_dict)
+        if (time_dict.values) {
+          console.log('values', time_dict.values);
+        }
+        if (!time_dict.delay && time_dict.delay !== 0) {
+          time_dict.delay = 0;
+        }
+        if (time_dict.linearConst && childCount && !time_dict.values.length) {
+          for (var i = 0; i < childCount; i++) {
+            time_dict.values.push(i*Math.abs(time_dict.linearConst))
+          }
+        }
+        console.log(time_dict)
+        if (time_dict.order === 'reverse') {
+          time_dict.values = time_dict.values.reverse();
+        }
+        // if (time_dict.)
+        // console.log(state_name, order, options)
+        // console.log(elem)
+      }
+    }
+
+    function processTime(arg1, arg_arr, result_dict, state_name) {
       var timeDict = {};
+      console.log(arg1, arg_arr)
       //
         if (arg1.indexOf('[') > -1) {
           time = UtilitiesService.removeAllOccurrancesArr(arg1, ['[', ']', ' '])
           var time_arr = time.split(',');
           timeDict.values = time_arr;
+        }
+        //linear
+        else if (!arg_arr.length) {
+          result_dict.easing = 'linear';
+          result_dict.delay = 0;
+          timeDict.linearConst = arg1;
+          timeDict.values = [];
+          timeDict.valueFunc;
+          if (arg1.indexOf('-') > -1) {
+            var directionIndex = arg1.indexOf('-');
+            if (directionIndex === 0) {
+              timeDict.order = 'reverse';
+            } else {
+              timeeDict.order = 'custom';
+            }
+          } else
+          if (arg1.indexOf('+') > -1 || ((arg1.indexOf('+') + arg1.indexOf('-')) === -2)) {
+            timeDict.order = 'normal';
+          }
+          var options = {
+            easing: 'linear',
+            order: timeDict.order,
+            selector: result_dict.selector
+          }
+          timeDict.valueFunc = applyMappingDelayFuncToFutureChildren(state_name, options);
+          console.log('setting valueFunc')
         }
       return timeDict
     }

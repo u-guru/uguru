@@ -54,38 +54,54 @@ angular.module('uguru.shared.directives')
 
                     var clonedChildrenWithAttr = [];
 
-                    for (var i = 0; i < clone.length; i++) {
-                      // console.log(angular.element(clone[i]).parent())
-                      if (clone[i] && clone[i].attributes) {
+                    // for (var i = 0; i < clone.length; i++) {
+                    //   // console.log(angular.element(clone[i]).parent())
+                    //   if (clone[i] && clone[i].attributes) {
 
-                        clonedChildrenWithAttr.push(clone[i])
+                    //     clonedChildrenWithAttr.push(clone[i])
+                    //   }
+                    // }
+                    // console.log(clonedChildrenWithAttr.length)
+                    //go through each element
+                    for (key in stagDict) {
+                      var hasKey = key in stagDict && stagDict[key];
+                      var stateTime = hasKey && 'time' in stagDict[key] && stagDict[key].time;
+                      if (hasKey && stateTime && (!stateTime.values || !stateTime.values.length)) {
+                        if (stateTime.valueFunc) {
+                          stateTime.valueFunc(clone, stateTime)
+                        }
                       }
                     }
-                    // console.log(clonedChildrenWithAttr.length)
-                    for (var i = 0; i < clonedChildrenWithAttr.length; i++) {
-                      var iChild = clonedChildrenWithAttr[i];
+                    for (var i = 0; i < clone.length; i++) {
+                      var iChild = clone[i];
                       for (key in stagDict) {
                           keyDashed = UtilitiesService.camelToDash(key);
-                          var hasAttribute = iChild.getAttribute(keyDashed);
-                          if (hasAttribute && hasAttribute.length && stagDict[key].time) {
-                            var keyAttr = hasAttribute
 
+                          var hasAttribute = iChild.getAttribute && iChild.getAttribute(keyDashed);
+                          if (hasAttribute && hasAttribute.length && stagDict[key].time) {
+
+
+
+                            var keyAttr = hasAttribute
                             var selectorPrefs = stagDict[key].selector;
 
                             var matchesWithConstraints = DirectiveService.verifyStaggerChildSelector(selectorPrefs[0], iChild)
-                            if (matchesWithConstraints) {
+                            if (matchesWithConstraints && stagDict[key].time.values && stagDict[key].time.values.length) {
+
                               var extensionValue = ':' + 'delay-' + stagDict[key].time.values.shift();
                               iChild.setAttribute(keyDashed, keyAttr + extensionValue);
                             }
 
                           }
                         }
-                        iChild.removeAttribute('style')
+                        iChild.removeAttribute && iChild.removeAttribute('style')
+                        clonedChildrenWithAttr.push(iChild);
                       }
+
                       clonedChildrenWithAttr.forEach(function(elem, i) {
 
 
-                        elem.setAttribute('style', '');
+                        // elem.setAttribute && setAttribute('style', '');
                         parent.append(elem)
                         // $compile(elem)(lScope)
                       })

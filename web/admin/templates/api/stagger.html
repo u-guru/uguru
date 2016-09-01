@@ -21,8 +21,8 @@
                 <aside class='bg-campus-10p full-y weight-500 txt-24 text-center relative overflow-auto no-scrollbar' style='min-width:15%;'>
                     <h1 class='weight-600 full-x bg-gold p15x-p10y'> Use Cases </h1>
                     <ul class="p15-grid">
-                        <li ng-repeat='use_case in stagger.data.use_cases' ng-click='stagger.data.activeIndex = $index' ng-class="{'bg-smoke':$index === stagger.data.activeIndex}">
-                            <div class="txt-1 bg bg-campus radius-2 p10y-p15x">{{use_case.name}}</div>
+                        <li ng-repeat='use_case in stagger.data.use_cases' ng-click='stagger.updateActiveIndex($index)' ng-class="{'bg-smoke opacity-80p ng-disabled':!use_case.complete, 'bg-moola': use_case.complete && $index !== stagger.data.activeIndex, 'bg-white':$index === stagger.data.activeIndex}">
+                            <div ng-class="{'bg-shamrock':$index === stagger.data.activeIndex}" class="txt-1 bg bg-campus radius-2 p10y-p15x">{{use_case.name}}</div>
                         </li>
                     </ul>
                 </aside>
@@ -30,14 +30,18 @@
                     <li class='p15x-p10y height-128 weight-500 flex-wrap-start bg-campus-20p text-center border-1 border-slate radius-2 overflow-hidden' style='width:100%; max-height:15%'>
 
                         <div style='width:85%' class='bg-shamrock-20p full-x'>
-                            <div class='txt-gold uppercase txt-1 p10y text-left m10x'>
-                                Note: {{stagger.data.use_cases[stagger.data.activeIndex].note}}
+                            <div class='txt-white weight-600 txt-5 opacity-80p p10y text-left m10x' ng-if='stagger.data.use_cases[stagger.data.activeIndex].description'>
+                                <span class='weight-900'>{{stagger.data.use_cases[stagger.data.activeIndex].name}}: </span>
+                                {{stagger.data.use_cases[stagger.data.activeIndex].description}}
                             </div>
-                             <code class='txt-1 full-x p15-grid text-left top-0 left-0 txt-white html flex-wrap' type='html'>
-                                <div class='opacity-50p'>
+                            <div class='weight-900 txt-gold uppercase txt-1 p10y text-left m10x' ng-if='stagger.data.use_cases[stagger.data.activeIndex].impt'>
+                                Note: {{stagger.data.use_cases[stagger.data.activeIndex].impt}}
+                            </div>
+                             <code class='txt-3 full-x p15-grid text-left top-0 bg-charcoal-20 left-0 txt-white html flex-wrap' type='html'>
+                                <div class='opacity-80p txt-gold' style='font-weight:bold'>
                                 <"stagger-children"</div><br>
                                 <div class='weight-900'>on-enter={{stagger.data.use_cases[stagger.data.activeIndex].example}} ></div>
-                                <div class='opacity-50p'>
+                                <div class='opacity-80p txt-gold weight-600'>
                                 <"stagger-children">
                                 </div>
                             </code>
@@ -84,7 +88,7 @@
 
                 </ul>
             </div>
-            <ul class='absolute right-0 radius-2-left overflow-hidden z-index-100'>
+            <ul class='absolute right-0 radius-2-left overflow-hidden z-index-100' ng-if='false'>
                 <li class='p15xy txt-20 flex-wrap-center bg bg-gold text-center weight-600' style='min-width:15%;'>
                     <span>Example 1</span>
                 </li>
@@ -95,16 +99,26 @@
 
 
                     <!-- You could also render this is as <stagger-children> -->
+                    <div class='flex-wrap p15-grid txt-48 full-x' >
+                        <div class='full-x flex-vertical-center' id='demo-controller'>
 
-                    <div class='flex-wrap p15-grid txt-48 full-x'>
-                        <div class='full-x flex-vertical-center'>
-                            <stagger-children on-enter=".m10x.odd[class]:[100, 700, 2000]">
-                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) skew(180deg) rotate(-1080deg):translateY(0px) scale(1) skew(0deg) rotate(0deg):1000:bouncePast easeInOutQuad linear linear]" init-with="p:[opacity:0]">S</div>
+
+                            <!-- @jeselle In order to optimize for playground mode, its better that I auto-inject the HTML magically for the first page load (based on the stagger.json). Assume that the values correlating to the activeIndex and its respective examples, below is exactly what gets injected. You wont see it in inspect element
+
+                            <stagger-children on-enter=".m10x.odd[class]:[1000, 1500, 2000]">
+
+                            -->
+
+
+                                <!-- @jeselle You can change the values of these below however you like. The stagger.json only impacts the stagger-children on-enter state. -->
+                                <div class='m10x odd' group-1 on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">S</div>
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">A</div>
                                 <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) skew(180deg) rotate(-1080deg):translateY(0px) scale(1) skew(0deg) rotate(0deg):1000:bouncePast easeInOutQuad linear linear]" init-with="p:[opacity:0]">M</div>
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">I</div>
-                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) skew(180deg) rotate(-1080deg):translateY(0px) scale(1) skew(0deg) rotate(0deg):1000:bouncePast easeInOutQuad linear linear]" init-with="p:[opacity:0]">R</div>
-							</stagger-children>
+
+                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">R</div>
+							<!-- </stagger-children> -->
+
 						</div>
 					</div>
                 </div>

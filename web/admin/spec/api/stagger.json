@@ -1,17 +1,56 @@
 {
-    "activeIndex": 1,
+    "activeIndex": 4,
     "use_cases": [
         {
-            "name": "Select All *",
+            "name": "Most Minimal #1:Verbose",
             "example": "[0, 50, 100, 150, 250]",
-            "note": "No easing is needed here since the time is already clarified. No global delay in this example"
+            "description": "The most minimal case",
+            "impt": "No easing is needed here since the time is already clarified. No global delay in this example",
+            "complete": true
         },
         {
-            "name": "Select all w/ class",
-            "example": ".m10x.odd[class]:[1000, 1500, 2000]"
+            "name": "Most Minimal #1:Verbose",
+            "example": "*:[0, 50, 100, 150, 250]",
+            "description": "Same as previous example but you can put the matcher based on comfort",
+            "impt": "No easing is needed here since the time is already clarified. No global delay in this example",
+            "complete": true
         },
         {
-            "name": "Multi-select: even+odd"
+            "name": "Stagger selected via class",
+            "example": ".m10x.odd[class]:[1000, 1500, 2000]",
+            "description": "Select all children that have both classes m10x, odd and the attribute class",
+            "complete": true
+        },
+        {
+            "name": "Linear #1",
+            "example": "[odd]:250",
+            "description": "Select all children attribute [odd] and apply delays left-to-right",
+            "complete": true
+        },
+        {
+            "name": "Linear #1 + reverse",
+            "example": "[odd]:-250",
+            "description": "Select all children attribute [odd] and apply delays right-to-left",
+            "impt": "",
+            "complete": true
+        },
+        {
+            "name": "Direction Ordering #1",
+            "example": "-250",
+            "description": "The most minimal case",
+            "impt": "No easing is needed here since the time is already clarified. No global delay in this example"
+        },
+        {
+            "name": "Custom Ordering",
+            "example": "-250",
+            "description": "The most minimal case",
+            "impt": "No easing is needed here since the time is already clarified. No global delay in this example"
+        },
+        {
+            "name": "9 Children, 2 delays",
+            "example": "-250",
+            "description": "The most minimal case",
+            "impt": "No easing is needed here since the time is already clarified. No global delay in this example"
         },
         {
             "name": "Select All Except.."
@@ -44,7 +83,7 @@
             "name": "advanced #1"
         },
         {
-            "name": "Format #1: Element"
+            "name": "Stagger + Child w/ Ng-repeat"
         }
     ]
 }
