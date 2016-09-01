@@ -282,8 +282,9 @@
 				<polygon class="stadium-main-cal-sign-3" stroke="#0648BB" fill="#DEDEDE" points="452 313 479 313 479 332 452 332 452 313"
 					init-with="p:[tro:center center]"
 					when-crowd-sign="a:[sign-side-shake:set:(dur:1000ms#func:steps(9#start)#aic:15#dir:alternate):in]"></polygon>
-				<polygon class="stadium-main-cal-sign-4" stroke="#0648BB" fill="#DEDEDE" points="495 298 522 298 522 317 495 317 495 298"></polygon>
-
+				<polygon class="stadium-main-cal-sign-4" stroke="#0648BB" fill="#DEDEDE" points="495 298 522 298 522 317 495 317 495 298"
+					init-with="p:[tro:center center]"
+					when-crowd-sign="a:[sign-vertical-shake:set:(dur:550ms#func:steps(9#start)#count:20#dir:alternate):in]"></polygon>
 				<polygon class="stadium-main-cal-flag-1" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="532 323.094379 548.879252 315 549.632878 329.380054 532 323.094379 532 323.094379 532 323.094379"
 					init-with="p:[tro:bottom right]"
 					when-crowd-sign="a:[flag-rotate-2:set:(dur:150ms#func:linear#count:30#dir:alternate):in]"></polygon>

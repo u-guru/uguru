@@ -4,6 +4,7 @@
 		init-with="p:[background:rgba(99#112#116#0)]"
 		on-init="s:[pf-widget-init:public]"
 		when-pf-widget-init="p:[background:rgba(99#112#116#0):rgba(99#112#116#0.3):700:easeOutSine]:delay-700">
+		<!-- on-init="s:[pf-widget-init:public, pf-border-init:public]" -->
 		<!-- <div class="top"
 			init-with="p:[tr:scale(0), tro:center center]"
 			when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-150"></div>
@@ -19,8 +20,9 @@
 		<div class="bot-right"
 			init-with="p:[tr:scale(0), tro:right center]"
 			when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-750"></div> -->
-		<stagger-children on-enter="border-line:[100, 200, 200, 750, 750]">
-			<!-- on-enter=[border-line]:250 -->
+		<stagger-children on-enter="*:[100, 200, 200, 750, 750]">
+			<!-- on-enter="border-line:[100, 200, 200, 750, 750]"
+			on-enter=[border-line]:250 -->
 			<div class="top border-line"
 				init-with="p:[tr:scale(0), tro:center center]"
 				on-init="t-enter"
