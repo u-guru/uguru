@@ -19,7 +19,8 @@
 		<div class="bot-right"
 			init-with="p:[tr:scale(0), tro:right center]"
 			when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-750"></div> -->
-		<stagger-children on-enter=".border-line:[100, 200, 200, 750, 750]">
+		<stagger-children on-enter="border-line:[100, 200, 200, 750, 750]">
+			<!-- on-enter=[border-line]:250 -->
 			<div class="top border-line"
 				init-with="p:[tr:scale(0), tro:center center]"
 				on-init="t-enter"
