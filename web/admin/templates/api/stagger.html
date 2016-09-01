@@ -99,24 +99,26 @@
 
 
                     <!-- You could also render this is as <stagger-children> -->
-
                     <div class='flex-wrap p15-grid txt-48 full-x' >
                         <div class='full-x flex-vertical-center' id='demo-controller'>
 
 
-                            <!-- In order to optimize for playground mode, its better that I auto-inject the HTML magically for the first page load (based on the stagger.json). Assume that the values correlating to the activeIndex and its respective examples, below is exactly what gets injected. You wont see it in inspect element
+                            <!-- @jeselle In order to optimize for playground mode, its better that I auto-inject the HTML magically for the first page load (based on the stagger.json). Assume that the values correlating to the activeIndex and its respective examples, below is exactly what gets injected. You wont see it in inspect element
 
                             <stagger-children on-enter=".m10x.odd[class]:[1000, 1500, 2000]">
 
                             -->
 
 
+                                <!-- @jeselle You can change the values of these below however you like. The stagger.json only impacts the stagger-children on-enter state. -->
                                 <div class='m10x odd' group-1 on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">S</div>
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">A</div>
-                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">M</div>
+                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) skew(180deg) rotate(-1080deg):translateY(0px) scale(1) skew(0deg) rotate(0deg):1000:bouncePast easeInOutQuad linear linear]" init-with="p:[opacity:0]">M</div>
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">I</div>
+
                                 <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">R</div>
 							<!-- </stagger-children> -->
+
 						</div>
 					</div>
                 </div>

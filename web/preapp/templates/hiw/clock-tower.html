@@ -18,7 +18,7 @@
 </defs>
 <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 	<g init-with="p-op"
-		when-open-clock-tower="p:[opacity:0:1:1000:easeOutExpo]:delay-500">
+		when-open-clock-tower="p:[opacity:0:1:500:easeOutExpo]">
 		<g class="night-sky-container">
 			<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="572"></rect>
 			<g class="stars" stroke="#DCE1B9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF">
@@ -229,10 +229,14 @@
 			<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="572"></rect>
 		</g>
 		<g class="sky-elements">
-			<g class="sun">
-				<circle class="sun-face" stroke="#F6C64E" stroke-width="8" fill="#FDEB3E" cx="432.5" cy="55.5" r="40.5"></circle>
+			<g class="sun"
+				init-with="p:[tro:50% 450px, tr:rotate(20deg), op:0]"
+				when-time-shift="a:[hiw-sun-rotate:set:(dur:12000ms#func:linear#aic:infinite):in:delay-1000]">
+				<circle class="sun-face" stroke="#F6C64E" stroke-width="8" fill="#FDEB3E" cx="432.5" cy="55.5" r="40.5" stroke-opacity="0.5"></circle>
 			</g>
-			<g class="moon">
+			<g class="moon"
+				init-with="p:[op:0, tro:50% 450px, tr:rotate(20deg)]"
+				when-time-shift="a:[hiw-moon-rotate:set:(dur:12000ms#func:linear#aic:infinite):in]">
 				<circle class="moon-face" stroke="#DCE1B9" stroke-width="8" fill="#FFFDEE" cx="431.5" cy="53.5" r="40.5"></circle>
 				<path d="M447.5,44 C454.403559,44 460,38.4035594 460,31.5 C460,24.5964406 454.403559,19 447.5,19 C440.596441,19 435,24.5964406 435,31.5 C435,38.4035594 440.596441,44 447.5,44 Z M411,48 C413.761424,48 416,45.7614237 416,43 C416,40.2385763 413.761424,38 411,38 C408.238576,38 406,40.2385763 406,43 C406,45.7614237 408.238576,48 411,48 Z M435.5,76 C439.642136,76 443,72.6421356 443,68.5 C443,64.3578644 439.642136,61 435.5,61 C431.357864,61 428,64.3578644 428,68.5 C428,72.6421356 431.357864,76 435.5,76 Z" id="crater" stroke="#DCE1B9" stroke-width="8" fill="#FFFDEE"></path>
 			</g>

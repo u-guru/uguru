@@ -13,20 +13,19 @@
 				when-open-clock-tower="p:[op:1, z-index:4]"></svg>
 			<svg id="hiw-dorm" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMid slice"
 				ng-include="root.base_url + 'preapp/templates/hiw/dorm.html'"
-				init-with="p:[op:0, z-index:-10]"></svg>
+				init-with="p:[op:0, z-index:-10]"
+				when-open-dorm="p:[op:1, z-index:4]"></svg>
 			<div id="hiw-library"
 				ng-include="root.base_url + 'preapp/templates/hiw/library.html'"
 				init-with="p:[op:0, z-index:-10]"></div>
 			<svg id="hiw-map" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
 				style="background: #B6E2F7;"
-				ng-include="root.base_url + 'preapp/templates/hiw/map.html'"
-				init-with="p:[tro:123px 210.5px]"
-				when-open-stadium="p:[transform:translateX(0%) translateY(0%) translateZ(0px) scale(0):translateX(28%) translateY(12%) translateZ(0px) scale(4.32):1000:easeOutSine easeOutSine easeOutSine easeOutSine]"></svg>
+				ng-include="root.base_url + 'preapp/templates/hiw/map.html'"></svg>
 			<svg id="hiw-stadium" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
 				style="background: #B6E2F7;"
 				ng-include="root.base_url + 'preapp/templates/hiw/stadium.html'"
-				init-with="p:[op:0, z-index:-1]"
-				when-open-stadium="p:[z-index:1, opacity:0:1:500:easeInOutSine]:delay-1000"
+				init-with="p:[op:0, z-index:-1, bg:rgba(182#226#247#0)]"
+				when-open-stadium="p:[z-index:1, op:1, background:rgba(182#226#247#0):rgba(182#226#247#1):500:easeInOutSine]"
 				when-crowd-cheer="t-enter"></svg>
 			<svg id="hiw-stadium-balloons" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMin"
 				ng-include="root.base_url + 'preapp/templates/hiw/stadium-balloons.html'"
