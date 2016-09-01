@@ -1,67 +1,72 @@
-<div class="full-xy flex-center bg-slate" types='student, guru, no-padding, large-icons' default-type="large-icons">
+<div class="full-xy flex-center bg-slate" types='student, guru, no-padding, large-icons' default-type="student">
 	<div class="full-xy flex-center bg-white" ng-if='activeType === "student"'>
 		<div class="attach-list student">
 			<ul init-default
 				on-init="s:[attach-list-init]">
-				<li init-with="p-op"
-					when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
-					<a init-default
-						on-click="s:[attach-upload:public]">
-						<span ng-include="root.base_url + 'shared/templates/components/svg/ext/pdf-fill.html'"></span>
-						<span>vet-ethics-guide.pdf</span>
-						<div>
-							<div class="top"
-								init-with="p:[tr:scaleX(0)]"></div>
-							<div class="right"
-								init-with="p:[tr:scaleY(0)]"></div>
-							<div class="bot"
-								init-with="p:[tr:scaleX(0)]"></div>
-							<div class="left"
-								init-with="p:[tr:scaleY(0)]"></div>
-							<div class="uploading"
-								init-with="p:[tr:scaleX(0), op:1]"
-								when-attach-upload="p:[transform:scaleX(0):scaleX(1):250:easeOutSine, opacity:1:0:250:easeOutSine:delay-500]"></div>
-						</div>
-					</a>
-				</li>
-				<li init-with="p-op"
-					when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-100]">
-					<a>
-						<span ng-include="root.base_url + 'shared/templates/components/svg/ext/doc-fill.html'"></span>
-						<span>file.doc</span>
-						<div>
-							<div class="top"
-								init-with="p:[tr:scaleX(0)]"></div>
-							<div class="right"
-								init-with="p:[tr:scaleY(0)]"></div>
-							<div class="bot"
-								init-with="p:[tr:scaleX(0)]"></div>
-							<div class="left"
-								init-with="p:[tr:scaleY(0)]"></div>
-							<div class="uploading"
-								init-with="p:[tr:scaleX(0)]"></div>
-						</div>
-					</a>
-				</li>
-				<li init-with="p-op"
-					when-attach-list-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in:delay-200]">
-					<a>
-						<span ng-include="root.base_url + 'shared/templates/components/svg/ext/jpg-fill.html'"></span>
-						<span>image.jpg</span>
-						<div>
-							<div class="top"
-								init-with="p:[tr:scaleX(0)]"></div>
-							<div class="right"
-								init-with="p:[tr:scaleY(0)]"></div>
-							<div class="bot"
-								init-with="p:[tr:scaleX(0)]"></div>
-							<div class="left"
-								init-with="p:[tr:scaleY(0)]"></div>
-							<div class="uploading"
-								init-with="p:[tr:scaleX(0)]"></div>
-						</div>
-					</a>
-				</li>
+				<stagger-children on-enter="[odd]:1000">
+					<li class="odd" init-with="p-op"
+						when-attach-list-init="t-enter"
+						on-enter="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
+						<a init-default
+							on-click="s:[attach-upload:public]">
+							<span ng-include="root.base_url + 'shared/templates/components/svg/ext/pdf-fill.html'"></span>
+							<span>vet-ethics-guide.pdf</span>
+							<div>
+								<div class="top"
+									init-with="p:[tr:scaleX(0)]"></div>
+								<div class="right"
+									init-with="p:[tr:scaleY(0)]"></div>
+								<div class="bot"
+									init-with="p:[tr:scaleX(0)]"></div>
+								<div class="left"
+									init-with="p:[tr:scaleY(0)]"></div>
+								<div class="uploading"
+									init-with="p:[tr:scaleX(0), op:1]"
+									when-attach-upload="p:[transform:scaleX(0):scaleX(1):250:easeOutSine, opacity:1:0:250:easeOutSine:delay-500]"></div>
+							</div>
+						</a>
+					</li>
+					<li class="odd" init-with="p-op"
+						when-attach-list-init="t-enter"
+						on-enter="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
+						<a>
+							<span ng-include="root.base_url + 'shared/templates/components/svg/ext/doc-fill.html'"></span>
+							<span>file.doc</span>
+							<div>
+								<div class="top"
+									init-with="p:[tr:scaleX(0)]"></div>
+								<div class="right"
+									init-with="p:[tr:scaleY(0)]"></div>
+								<div class="bot"
+									init-with="p:[tr:scaleX(0)]"></div>
+								<div class="left"
+									init-with="p:[tr:scaleY(0)]"></div>
+								<div class="uploading"
+									init-with="p:[tr:scaleX(0)]"></div>
+							</div>
+						</a>
+					</li>
+					<li class="odd" init-with="p-op"
+						when-attach-list-init="t-enter"
+						on-enter="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
+						<a>
+							<span ng-include="root.base_url + 'shared/templates/components/svg/ext/jpg-fill.html'"></span>
+							<span>image.jpg</span>
+							<div>
+								<div class="top"
+									init-with="p:[tr:scaleX(0)]"></div>
+								<div class="right"
+									init-with="p:[tr:scaleY(0)]"></div>
+								<div class="bot"
+									init-with="p:[tr:scaleX(0)]"></div>
+								<div class="left"
+									init-with="p:[tr:scaleY(0)]"></div>
+								<div class="uploading"
+									init-with="p:[tr:scaleX(0)]"></div>
+							</div>
+						</a>
+					</li>
+				</stagger-children>
 			</ul>
 		</div>
 	</div>
