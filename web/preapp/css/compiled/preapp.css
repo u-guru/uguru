@@ -4595,37 +4595,6 @@ a[class*="-container"]:hover .map-stadium-outside {
   top: 0;
   left: 0; }
 
-#hiw-stadium.active .stadium-small-cal-flag-5 {
-  animation: flag-rotate-2 200ms linear 1600ms 30 alternate;
-  transform-origin: bottom left; }
-#hiw-stadium.active .stadium-small-cal-flag-6 {
-  animation: flag-rotate 150ms linear 1600ms 30 alternate-reverse;
-  transform-origin: bottom left; }
-#hiw-stadium.active .stadium-small-cal-flag-10 {
-  animation: flag-rotate 200ms linear 1600ms 30 alternate-reverse;
-  transform-origin: top left; }
-#hiw-stadium.active .stadium-small-cal-flag-4 {
-  animation: flag-rotate-2 250ms linear 1600ms 30 alternate;
-  transform-origin: top left; }
-#hiw-stadium.active .stadium-small-cal-flag-8 {
-  animation: flag-rotate-2 150ms linear 1600ms 30 alternate;
-  transform-origin: top right; }
-#hiw-stadium.active .stadium-small-cal-flag-9,
-#hiw-stadium.active .stadium-small-cal-flag-7 {
-  animation: flag-rotate-2 450ms linear 1600ms 30 alternate;
-  transform-origin: center left; }
-#hiw-stadium.active .stadium-main-cal-sign-1 {
-  animation: sign-side-shake 500ms steps(9, start) 1600ms 15 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-main-cal-sign-3 {
-  animation: sign-side-shake 1s steps(9, start) 1600ms 15 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-main-cal-sign-2 {
-  animation: sign-vertical-shake 450ms steps(9, start) 1600ms 15 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-main-cal-sign-4 {
-  animation: sign-vertical-shake 550ms steps(9, start) 1600ms 15 alternate;
-  transform-origin: center center; }
 #hiw-stadium.active .stadium-small-cal-sign-5,
 #hiw-stadium.active .stadium-small-cal-sign-1 {
   animation: sign-vertical-shake 450ms steps(9, start) 1600ms 15 alternate;
