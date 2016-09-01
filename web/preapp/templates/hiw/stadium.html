@@ -5,6 +5,7 @@
 	<g class="sub1-stadium hiw-stadium-container" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
 		init-default
 		when-open-stadium="s:[open-stadium-details:public:delay-1750]"
+		when-open-stadium-details="s:[crowd-sign:public:delay-1600]"
 		when-balloon-enter="p:[transform:translateY(0%) translateZ(0px):translateY(20.2%) translateZ(0px):500:easeOutExpo]">
 		<g class="sub1-general-arena">
 			<path d="M19,240 C19,240 294.666667,286 432.5,286 C570.333333,286 846,240 846,240 L846,484.110419 L19,484.110419 L19,240 Z" class="stadium-outside" stroke="#2B3234" stroke-width="3" fill="#6F828F"></path>
@@ -236,22 +237,35 @@
 				<polygon class="stadium-small-cal-sign-4" stroke="#0648BB" stroke-linecap="round" stroke-linejoin="round" fill="#DEDEDE" points="718.999239 316.952019 702.257507 314 700.347377 324.832885 717.089109 327.784904 718.999239 316.952019 718.999239 316.952019"></polygon>
 				<polygon class="stadium-small-cal-sign-5" stroke="#0648BB" stroke-linecap="round" stroke-linejoin="round" fill="#DEDEDE" points="664.929049 293.789859 648.138347 291.130473 646.417568 301.995045 663.20827 304.654431 664.929049 293.789859 664.929049 293.789859"></polygon><polygon class="stadium-small-cal-flag-1" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="808.685934 324.924039 796 322.083778 797.736482 331.931856 808.685934 324.924039 808.685934 324.924039"
 					init-with="p:[tro:bottom left]"
-					when-open-stadium-details="a:[flag-rotate:set:(dur:300ms#func:linear#count:30#dir:alternate):in:delay-1600]"></polygon>
+					when-crowd-sign="a:[flag-rotate:set:(dur:300ms#func:linear#count:30#dir:alternate):in]"></polygon>
+					<!-- @jeselle 9-1-16 10:14 AM Updating to when crowd signs to get rid of the 1600ms delay -->
 				<polygon class="stadium-small-cal-flag-2" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="736.937516 261.781524 724 260.50846 726.923717 270.071508 736.937516 261.781524 736.937516 261.781524"
 					init-with="p:[tro:bottom left]"
-					when-open-stadium-details="a:[flag-rotate:set:(dur:300ms#func:linear#count:30#dir:alternate):in:delay-1600]"></polygon>
+					when-crowd-sign="a:[flag-rotate:set:(dur:300ms#func:linear#count:30#dir:alternate):in:delay-1600]"></polygon>
 				<polygon class="stadium-small-cal-flag-3" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="664.26168 301.621179 675.983554 296 676.506914 305.986295 664.26168 301.621179 664.26168 301.621179"
 					init-with="p:[tro:bottom right]"
 					when-open-stadium-details="a:[flag-rotate:set:(dur:500ms#func:linear#count:20#dir:alternate):in:delay-1600]"></polygon>
-				<polygon class="stadium-small-cal-flag-4" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="769.999714 263.291298 760.907311 254 757 263.205049 769.999714 263.291298 769.999714 263.291298"></polygon>
+				<polygon class="stadium-small-cal-flag-4" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="769.999714 263.291298 760.907311 254 757 263.205049 769.999714 263.291298 769.999714 263.291298"
+					init-with="p:[tro:left top]"
+					when-open-stadium-details="a:[flag-rotate-2:set:(dur:250ms#func:linear#aic:30#dir:alternate):in:delay-1600]"></polygon>
 				<polygon class="stadium-small-cal-flag-5" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="694.390115 324.461143 682 320.526038 682.871557 330.487985 694.390115 324.461143 694.390115 324.461143"
 					init-with="p:[tro:left bottom]"
-					when-open-stadium-details="a:[flag-rotate-2:set:(dur:500#runc#linear#aic:10#dir:alternate):in]"></polygon>
-				<polygon class="stadium-small-cal-flag-6" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="736 315.480169 724 310.480169 724 320.480169 736 315.480169 736 315.480169"></polygon>
-				<polygon class="stadium-small-cal-flag-7" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="822.999239 276.611367 813.746066 267.480169 810 276.752008 822.999239 276.611367 822.999239 276.611367"></polygon>
-				<polygon class="stadium-small-cal-flag-8" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="785.209609 268.331648 798.062768 266.383232 795.643549 276.086189 785.209609 268.331648 785.209609 268.331648"></polygon>
-				<polygon class="stadium-small-cal-flag-9" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="722.77733 290.890738 710 288.49494 712.079117 298.276416 722.77733 290.890738 722.77733 290.890738"></polygon>
-				<polygon class="stadium-small-cal-flag-10" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="784.974064 297.11458 775.255682 288.480169 772 297.935355 784.974064 297.11458 784.974064 297.11458"></polygon>
+					when-open-stadium-details="a:[flag-rotate-2:set:(dur:500#runc#linear#aic:10#dir:alternate):in:delay-1600]"></polygon>
+				<polygon class="stadium-small-cal-flag-6" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="736 315.480169 724 310.480169 724 320.480169 736 315.480169 736 315.480169"
+					init-with="p:[tro:left bottom]"
+					when-open-stadium-details="a:[flag-rotate:set:(dur:150ms#func:linear#aic:30#dir:alternate-reverse):in:delay-1600]"></polygon>
+				<polygon class="stadium-small-cal-flag-7" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="822.999239 276.611367 813.746066 267.480169 810 276.752008 822.999239 276.611367 822.999239 276.611367"
+					init-with="p:[tro:left center]"
+					when-open-stadium-details="a:[flag-rotate-2:set:(dur:450ms#func:linear#aic:30#dir:alternate):in:delay-1600]"></polygon>
+				<polygon class="stadium-small-cal-flag-8" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="785.209609 268.331648 798.062768 266.383232 795.643549 276.086189 785.209609 268.331648 785.209609 268.331648"
+					init-with="p:[tro:right top]"
+					when-open-stadium-details="a:[flag-rotate-2:set:(dur:150ms#func:linear#aic:30#dir:alternate):in:delay-1600]"></polygon>
+				<polygon class="stadium-small-cal-flag-9" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="722.77733 290.890738 710 288.49494 712.079117 298.276416 722.77733 290.890738 722.77733 290.890738"
+					init-with="p:[tro:left center]"
+					when-open-stadium-details="a:[flag-rotate-2:set:(dur:450ms#func:linear#aic:30#dir:alternate):in:delay-1600]"></polygon>
+				<polygon class="stadium-small-cal-flag-10" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="784.974064 297.11458 775.255682 288.480169 772 297.935355 784.974064 297.11458 784.974064 297.11458"
+					init-with="p:[tro:left top]"
+					when-open-stadium-details="a:[flag-rotate:set:(dur:200ms#func:linear#aic:30#dir:alternate-reverse):in:delay-1600]"></polygon>
 				<polygon class="stadium-small-cal-flag-11" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="634.456905 297.972609 622 294.254342 623.045285 304.199561 634.456905 297.972609 634.456905 297.972609"
 					init-with="p:[tro:bottom left]"
 					when-open-stadium-details="a:[flag-rotate:set:(dur:300ms#func:linear#count:30#dir:alternate):in:delay-1600]"></polygon>
@@ -259,9 +273,15 @@
 			<g class="fan-props-cal-main"
 				init-with="p-op"
 				when-open-stadium="a:[hiw-slideUp:set:(dur:1000ms#func:ease-in-out):in:delay-1750]">
-				<polygon class="stadium-main-cal-sign-1" stroke="#0648BB" fill="#DEDEDE" points="522 286 549 286 549 305 522 305 522 286"></polygon>
-				<polygon class="stadium-main-cal-sign-2" stroke="#0648BB" fill="#DEDEDE" points="590 310 617 310 617 329 590 329 590 310"></polygon>
-				<polygon class="stadium-main-cal-sign-3" stroke="#0648BB" fill="#DEDEDE" points="452 313 479 313 479 332 452 332 452 313"></polygon>
+				<polygon class="stadium-main-cal-sign-1" stroke="#0648BB" fill="#DEDEDE" points="522 286 549 286 549 305 522 305 522 286"
+					init-with="p:[tro:center center]"
+					when-open-stadium-details="a:[sign-side-shake:set:(dur:500ms#func:steps(9#start)#aic:15#dir:alternate):in:delay-1600]"></polygon>
+				<polygon class="stadium-main-cal-sign-2" stroke="#0648BB" fill="#DEDEDE" points="590 310 617 310 617 329 590 329 590 310"
+					init-with="p:[tro:center center]"
+					when-open-stadium-details="a:[sign-vertical-shake:set:(dur:1000ms#func:steps(9#start)#aic:15#dir:alternate):in:delay-1600]"></polygon>
+				<polygon class="stadium-main-cal-sign-3" stroke="#0648BB" fill="#DEDEDE" points="452 313 479 313 479 332 452 332 452 313"
+					init-with="p:[tro:center center]"
+					when-open-stadium-details="a:[sign-side-shake:set:(dur:1000ms#func:steps(9#start)#aic:15#dir:alternate):in:delay-1600]"></polygon>
 				<polygon class="stadium-main-cal-sign-4" stroke="#0648BB" fill="#DEDEDE" points="495 298 522 298 522 317 495 317 495 298"></polygon>
 
 				<polygon class="stadium-main-cal-flag-1" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="532 323.094379 548.879252 315 549.632878 329.380054 532 323.094379 532 323.094379 532 323.094379"
