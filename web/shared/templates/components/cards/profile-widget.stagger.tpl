@@ -1,8 +1,10 @@
-<div class="perspective-container full-xy flex-center p15xy">
+w<div class="perspective-container full-xy flex-center p15xy">
+
     <div class="pf-aside-widget"
         init-with="p:[background:rgba(99#112#116#0), t:background 700ms ease-in-out]"
         on-init="t-enter"
         on-enter="p:[background:rgba(99#112#116#0.3):delay-700]">
+
 
             <!-- Ex.1 Positive LINEAR (default) stagger every 500ms, linear [uncommented below]
                 <stagger-children on-enter="[draw-border-frame]:500">
@@ -29,7 +31,7 @@
             -->
 
             <!-- Ex 1. See reference above-->
-            <stagger-children on-enter="[draw-border-frame]:2000:-easeOutCirc">
+            <stagger-children on-enter="[draw-border-frame]:500">
                 <div class="top"
                     init-with="p:[tr:scale(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
@@ -133,6 +135,6 @@
                 init-with="p:[op:0, tro:center center, color:rgba(255#255#255#0)]"
                 on-init="t-enter"
                 on-enter="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500] | p:[color:rgba(255#255#255#1):delay-700, t:color 500ms ease-in-out]">Contact Guru</button>
-        </stagger-children>
-    </div>
+            </stagger-children>
+        </div>
 </div>
