@@ -1,6 +1,6 @@
 {
-    "activeIndex": 3,
 
+    "activeIndex": 3,
     "use_cases": [
         {
             "name": "Most Minimal #1:Verbose",
@@ -37,7 +37,7 @@
         },
         {
             "name": "Easings #1",
-            "example": "*:1250:easeInOutExpo",
+            "example": "*:10000:easeOutBounce",
             "description": "",
             "impt": "Duration + Time are Required for the easing to take effect",
             "complete": true

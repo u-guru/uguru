@@ -111,13 +111,16 @@
 
 
                                 <!-- @jeselle You can change the values of these below however you like. The stagger.json only impacts the stagger-children on-enter state. -->
+<<<<<<< HEAD
 
                                 <!-- Feel free to uncomment and it should still work -->
                                 <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" inspector-elem="on-enter" init-with="p:[opacity:0]">S</div>
+=======
+                                 <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">S</div>
+>>>>>>> 3b0562e682ee2b6b0eb3df2b979d244a763d9e5a
                                 <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">A</div>
-                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) skew(180deg) rotate(-1080deg):translateY(0px) scale(1) skew(0deg) rotate(0deg):1000:bouncePast easeInOutQuad linear linear]" init-with="p:[opacity:0]">M</div>
-                                <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">I</div>
-
+                                <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">M</div>
+                                <div class='m10x' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotateX(-1080deg):translateY(0px) scale(1) rotateX(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">I</div>
                                 <div class='m10x odd' on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0]">R</div>
 							<!-- </stagger-children> -->
                             <!-- <svg  viewBox="0 0 100 100">
@@ -152,6 +155,15 @@
         </div>
     </div>
 </div>
+
+<!--  Circles
+<svg width="978px" height="596px" viewBox="0 0 978 596">
+	<circle class="m10x odd" fill="#ADE215" cx="205" cy="298" r="56"  on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear, tro:center center]"></circle>
+	<circle class="m10x" fill="#FF96FF" cx="347" cy="298" r="56" on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear, tro:center center]"></circle>
+	<circle class="m10x odd" fill="#46CAFF" cx="489" cy="298" r="56" on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0, tro:center center]"></circle>
+	<circle class="m10x" fill="#FFD913" cx="631" cy="298" r="56" on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0, tro:center center]"></circle>
+	<circle class="m10x odd" fill="#FF7913" cx="773" cy="298" r="56" on-init="trigger:[on-enter:self]" on-enter="p:[opacity:1, transform:translateY(-500px) scale(0) rotate(-1080deg):translateY(0px) scale(1) rotate(0deg):1000:bouncePast easeInOutQuad linear]" init-with="p:[opacity:0, tro:center center]"></circle>
+</svg> -->
 
 <!--                     <div class='flex-wrap p15-grid full-x'>
 <div class='full-x flex-vertical-center perspective-container semibold txt-48'>
