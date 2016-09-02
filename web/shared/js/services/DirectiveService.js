@@ -116,7 +116,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
     function applyMappingDelayFuncToFutureChildren(state_name, options) {
       return function(children_arr, time_dict, selector) {
-
+        console.log(time_dict)
         var childCount = 0;
         for (var i = 0; i < children_arr.length; i++) {
           var iChild = children_arr[i]
@@ -135,9 +135,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             time_dict.values.push(i*Math.abs(time_dict.linearConst))
           }
         }
-        else if (time_dict.options.easing && time_dict.options.duration) {
+        else if (options.easing && options.duration) {
+          console.log(time_dict)
           var resultArr = TweenService.preComputeValues('time', childCount * 16, {'time':0}, {'time': 1},time_dict.options.easing, {}).cache;
-
+          console.log(resultArr)
           //@jeselle un-comment the line below
           // resultArr = resultArr.slice(1)
 
@@ -168,7 +169,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       //
         if (arg1.indexOf('[') > -1) {
           time = UtilitiesService.removeAllOccurrancesArr(arg1, ['[', ']', ' '])
-          var time_arr = time.split(',');
+          var time_arr = time.split(', ');
           timeDict.values = time_arr;
         } else
         //easing or there is a delay w/o easing
@@ -225,13 +226,15 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           }
           timeDict.valueFunc = applyMappingDelayFuncToFutureChildren(state_name, timeDict.options);
         }
-        timeDict.formattedValues = [];
-        if (timeDict.values && timeDict.values.length) {
+        // timeDict.formattedValues = [];
+        // console.log(timeDict.values);
+        // if (timeDict.values && timeDict.values.length) {
+        //   timeDict.values.forEach(function(val, i) {
 
-          timeDict.values.forEach(function(val, i) {
-            timeDict.formattedValues.push(val.toFixed(0));
-          })
-        }
+        //     timeDict.values[i] = val
+        //     console.log(val)
+        //   })
+        // }
 
       return timeDict
     }
