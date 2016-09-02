@@ -231,11 +231,17 @@
 				init-with="p:[op:0, tro:bottom center]"
 				when-open-stadium="a:[fan-props-cal-small:set:(dur:2000ms#func:linear):in:delay-1750]"
 				when-open-stadium-details="s:[crowd-sign:public:delay-1600]">
-				<polygon class="stadium-small-cal-sign-1" stroke="#0648BB" stroke-linecap="round" stroke-linejoin="round" fill="#DEDEDE" points="809.089109 250 792.347377 252.952019 794.257507 263.784904 810.999239 260.832885 809.089109 250 809.089109 250"></polygon>
+				<polygon class="stadium-small-cal-sign-1" stroke="#0648BB" stroke-linecap="round" stroke-linejoin="round" fill="#DEDEDE" points="809.089109 250 792.347377 252.952019 794.257507 263.784904 810.999239 260.832885 809.089109 250 809.089109 250"
+					on-init="p:[tro:center center]"
+					when-crowd-sign="a:[sign-vertical-shake:set:(dur:450ms#func:steps(9#start)#aic:15#dir:alternate):in]"></polygon>
 				<polygon class="stadium-small-cal-sign-2" stroke="#0648BB" stroke-linecap="round" stroke-linejoin="round" fill="#DEDEDE" points="756.20827 287.130473 739.417568 289.789859 741.138347 300.654431 757.929049 297.995045 756.20827 287.130473 756.20827 287.130473"></polygon>
-				<polygon class="stadium-small-cal-sign-3" stroke="#0648BB" stroke-linecap="round" stroke-linejoin="round" fill="#DEDEDE" points="793.173308 302.392452 776.173308 302.392452 776.173308 313.392452 793.173308 313.392452 793.173308 302.392452 793.173308 302.392452"></polygon>
+				<polygon class="stadium-small-cal-sign-3" stroke="#0648BB" stroke-linecap="round" stroke-linejoin="round" fill="#DEDEDE" points="793.173308 302.392452 776.173308 302.392452 776.173308 313.392452 793.173308 313.392452 793.173308 302.392452 793.173308 302.392452"
+					on-init="p:[tro:center center]"
+					when-crowd-sign="a:[sign-vertical-shake:set:(dur:750ms#func:steps(9#start)#aic:15#dir:alternate):in]"></polygon>
 				<polygon class="stadium-small-cal-sign-4" stroke="#0648BB" stroke-linecap="round" stroke-linejoin="round" fill="#DEDEDE" points="718.999239 316.952019 702.257507 314 700.347377 324.832885 717.089109 327.784904 718.999239 316.952019 718.999239 316.952019"></polygon>
-				<polygon class="stadium-small-cal-sign-5" stroke="#0648BB" stroke-linecap="round" stroke-linejoin="round" fill="#DEDEDE" points="664.929049 293.789859 648.138347 291.130473 646.417568 301.995045 663.20827 304.654431 664.929049 293.789859 664.929049 293.789859"></polygon><polygon class="stadium-small-cal-flag-1" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="808.685934 324.924039 796 322.083778 797.736482 331.931856 808.685934 324.924039 808.685934 324.924039"
+				<polygon class="stadium-small-cal-sign-5" stroke="#0648BB" stroke-linecap="round" stroke-linejoin="round" fill="#DEDEDE" points="664.929049 293.789859 648.138347 291.130473 646.417568 301.995045 663.20827 304.654431 664.929049 293.789859 664.929049 293.789859"
+					on-init="p:[tro:center center]"
+					when-crowd-sign="a:[sign-vertical-shake:set:(dur:450ms#func:steps(9#start)#aic:15#dir:alternate):in]"></polygon><polygon class="stadium-small-cal-flag-1" stroke="#C4CEE8" stroke-linecap="round" stroke-linejoin="round" fill="#0648BB" points="808.685934 324.924039 796 322.083778 797.736482 331.931856 808.685934 324.924039 808.685934 324.924039"
 					init-with="p:[tro:bottom left]"
 					when-crowd-sign="a:[flag-rotate:set:(dur:300ms#func:linear#count:30#dir:alternate):in]"></polygon>
 					<!-- @jeselle 9-1-16 10:14 AM Updating to when crowd signs to get rid of the 1600ms delay -->
