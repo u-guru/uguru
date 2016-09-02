@@ -4612,353 +4612,117 @@ a[class*="-container"]:hover .map-stadium-outside {
   top: 0;
   left: 0; }
 
-#hiw-stadium.active .stadium-small-cal-sign-5,
-#hiw-stadium.active .stadium-small-cal-sign-1 {
-  animation: sign-vertical-shake 450ms steps(9, start) 1600ms 15 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-small-cal-sign-3 {
-  animation: sign-vertical-shake 750ms steps(9, start) 1600ms 15 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-small-cal-sign-4 {
-  animation: sign-side-shake 1s steps(9, start) 1600ms 15 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-small-cal-sign-2 {
-  animation: sign-side-shake 500ms steps(9, start) 1600ms 15 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-small-crowd-white-30-cal {
-  animation: fadeIn 0.25s steps(2, start) 1600ms 30 alternate; }
-#hiw-stadium.active .stadium-small-crowd-white-60-cal {
-  animation: fadeIn 0.5s steps(2, start) 1600ms 30 alternate; }
-#hiw-stadium.active .stadium-main-crowd-white-1,
-#hiw-stadium.active .stadium-main-crowd-white-10,
-#hiw-stadium.active .stadium-main-crowd-white-20,
-#hiw-stadium.active .stadium-main-crowd-white-30,
-#hiw-stadium.active .stadium-main-crowd-white-40,
-#hiw-stadium.active .stadium-main-crowd-white-50,
-#hiw-stadium.active .stadium-main-crowd-white-60,
-#hiw-stadium.active .stadium-main-crowd-white-70 {
-  animation: crowd-rotate 0.25s steps(2, start) 1600ms 30 alternate;
-  transform-origin: bottom center; }
-#hiw-stadium.active .stadium-main-crowd-white-2,
-#hiw-stadium.active .stadium-main-crowd-white-11,
-#hiw-stadium.active .stadium-main-crowd-white-21,
-#hiw-stadium.active .stadium-main-crowd-white-31,
-#hiw-stadium.active .stadium-main-crowd-white-41,
-#hiw-stadium.active .stadium-main-crowd-white-51,
-#hiw-stadium.active .stadium-main-crowd-white-61,
-#hiw-stadium.active .stadium-main-crowd-white-71 {
-  animation: crowd-side-shake 0.25s steps(2, start) 1600ms 30 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-main-crowd-white-3,
-#hiw-stadium.active .stadium-main-crowd-white-12,
-#hiw-stadium.active .stadium-main-crowd-white-22,
-#hiw-stadium.active .stadium-main-crowd-white-32,
-#hiw-stadium.active .stadium-main-crowd-white-42,
-#hiw-stadium.active .stadium-main-crowd-white-52,
-#hiw-stadium.active .stadium-main-crowd-white-62,
-#hiw-stadium.active .stadium-main-crowd-white-72 {
-  animation: crowd-side-shake 0.5s ease 1600ms 30 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-main-crowd-white-23,
-#hiw-stadium.active .stadium-main-crowd-white-33,
-#hiw-stadium.active .stadium-main-crowd-white-53,
-#hiw-stadium.active .stadium-main-crowd-white-63 {
-  animation: crowd-jump 0.25s steps(2, start) 1600ms 30 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-main-crowd-white-4,
-#hiw-stadium.active .stadium-main-crowd-white-13,
-#hiw-stadium.active .stadium-main-crowd-white-43,
-#hiw-stadium.active .stadium-main-crowd-white-53,
-#hiw-stadium.active .stadium-main-crowd-white-9 {
-  animation: crowd-jump 0.25s ease 1600ms 30 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-main-crowd-white-14,
-#hiw-stadium.active .stadium-main-crowd-white-24,
-#hiw-stadium.active .stadium-main-crowd-white-34,
-#hiw-stadium.active .stadium-main-crowd-white-44,
-#hiw-stadium.active .stadium-main-crowd-white-54,
-#hiw-stadium.active .stadium-main-crowd-white-64 {
-  animation: crowd-side-shake 0.15s ease 1600ms 30 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-main-crowd-white-5,
-#hiw-stadium.active .stadium-main-crowd-white-15,
-#hiw-stadium.active .stadium-main-crowd-white-25,
-#hiw-stadium.active .stadium-main-crowd-white-35,
-#hiw-stadium.active .stadium-main-crowd-white-45,
-#hiw-stadium.active .stadium-main-crowd-white-55,
-#hiw-stadium.active .stadium-main-crowd-white-65 {
-  animation: crowd-side-wander 0.25s ease 1600ms 30 alternate;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-main-crowd-white-6,
-#hiw-stadium.active .stadium-main-crowd-white-16,
-#hiw-stadium.active .stadium-main-crowd-white-26,
-#hiw-stadium.active .stadium-main-crowd-white-36,
-#hiw-stadium.active .stadium-main-crowd-white-46,
-#hiw-stadium.active .stadium-main-crowd-white-56,
-#hiw-stadium.active .stadium-main-crowd-white-66 {
-  animation: crowd-side-wander 0.15s ease 1600ms 30 alternate-reverse;
-  transform-origin: center center; }
-#hiw-stadium.active .stadium-main-crowd-white-17 {
-  animation: fadeIn 0.25s steps(2, start) 1600ms 30 alternate; }
-#hiw-stadium.active .stadium-main-crowd-white-27 {
-  animation: fadeIn 0.15s steps(2, start) 1600ms 30 alternate; }
-#hiw-stadium.active .stadium-main-crowd-white-57 {
-  animation: fadeIn 0.3s steps(2, start) 1600ms 30 alternate; }
-#hiw-stadium.active .stadium-main-crowd-white-47 {
-  animation: fadeIn 0.5s steps(2, start) 1600ms 30 alternate; }
-#hiw-stadium.wild .stadium-main-cal-sign-4,
-#hiw-stadium.wild .stadium-small-away-sign-4 {
-  animation: sign-vertical-shake-wild 550ms steps(9, start) infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-small-cal-sign-5,
-#hiw-stadium.wild .stadium-small-cal-sign-1,
-#hiw-stadium.wild .stadium-small-away-sign-3 {
-  animation: sign-vertical-shake-wild 450ms steps(9, start) infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-small-cal-sign-3,
-#hiw-stadium.wild .stadium-small-away-sign-2 {
-  animation: sign-vertical-shake-wild 750ms steps(9, start) infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-small-cal-sign-4,
-#hiw-stadium.wild .stadium-small-away-sign-1 {
-  animation: sign-side-shake-wild 1s steps(9, start) infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-small-cal-sign-2,
-#hiw-stadium.wild .stadium-small-away-sign-5 {
-  animation: sign-side-shake-wild 250ms steps(9, start) infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-cal-sign-1,
-#hiw-stadium.wild .stadium-main-cal-sign-2,
-#hiw-stadium.wild .stadium-main-away-sign-2 {
-  animation: sign-vertical-shake-wild 250ms steps(9, start) infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-cal-sign-3 {
-  animation: sign-side-shake-wild 500ms ease-in-out infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-away-sign-1 {
-  animation: sign-side-shake-wild 750ms ease-in-out infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-cal-flag-1,
-#hiw-stadium.wild .stadium-main-away-flag-3 {
-  animation: flag-rotate-2-wild 150ms linear infinite alternate !important;
-  transform-origin: bottom right; }
-#hiw-stadium.wild .stadium-main-cal-flag-2 {
-  animation: flag-rotate-wild 50ms linear infinite alternate !important;
-  transform-origin: bottom left; }
-#hiw-stadium.wild .stadium-main-away-flag-1,
-#hiw-stadium.wild .stadium-small-away-flag-1 {
-  animation: flag-rotate-wild 175ms linear infinite alternate !important;
-  transform-origin: bottom right; }
-#hiw-stadium.wild .stadium-main-cal-flag-3,
-#hiw-stadium.wild .stadium-main-away-flag-2,
-#hiw-stadium.wild .stadium-small-away-flag-2 {
-  animation: flag-rotate-wild 150ms linear infinite alternate !important;
-  transform-origin: bottom left; }
-#hiw-stadium.wild .stadium-small-cal-flag-11,
-#hiw-stadium.wild .stadium-small-cal-flag-1,
-#hiw-stadium.wild .stadium-small-cal-flag-2,
-#hiw-stadium.wild .stadium-small-away-flag-3 {
-  animation: flag-rotate-wild 200ms linear infinite alternate !important;
-  transform-origin: bottom left; }
-#hiw-stadium.wild .stadium-small-cal-flag-3,
-#hiw-stadium.wild .stadium-small-away-flag-4 {
-  animation: flag-rotate-2-wild 250ms linear infinite alternate !important;
-  transform-origin: bottom right; }
-#hiw-stadium.wild .stadium-small-cal-flag-5,
-#hiw-stadium.wild .stadium-small-away-flag-5 {
-  animation: flag-rotate-2-wild 100ms linear infinite alternate !important;
-  transform-origin: bottom left; }
-#hiw-stadium.wild .stadium-small-cal-flag-6,
-#hiw-stadium.wild .stadium-small-away-flag-6 {
-  animation: flag-rotate-wild 50ms linear infinite alternate-reverse !important;
-  transform-origin: bottom left; }
-#hiw-stadium.wild .stadium-small-cal-flag-10,
-#hiw-stadium.wild .stadium-small-away-flag-7 {
-  animation: flag-rotate-wild 100ms linear infinite alternate-reverse !important;
-  transform-origin: top left; }
-#hiw-stadium.wild .stadium-small-cal-flag-4,
-#hiw-stadium.wild .stadium-small-away-flag-8 {
-  animation: flag-rotate-2-wild 150ms linear infinite alternate !important;
-  transform-origin: top left; }
-#hiw-stadium.wild .stadium-small-cal-flag-8,
-#hiw-stadium.wild .stadium-small-away-flag-9 {
-  animation: flag-rotate-2-wild 100ms linear infinite alternate !important;
-  transform-origin: top right; }
-#hiw-stadium.wild .stadium-small-cal-flag-9,
-#hiw-stadium.wild .stadium-small-cal-flag-7,
-#hiw-stadium.wild .stadium-small-away-flag-10 {
-  animation: flag-rotate-2-wild 250ms linear infinite alternate !important;
-  transform-origin: center left; }
-#hiw-stadium.wild .stadium-small-crowd-white-30-cal,
-#hiw-stadium.wild .stadium-small-crowd-white-100-away {
-  animation: fadeIn 0.15s steps(2, start) infinite alternate !important; }
-#hiw-stadium.wild .stadium-small-crowd-white-60-cal,
-#hiw-stadium.wild .stadium-small-crowd-white-60-away {
-  animation: fadeIn 0.05s steps(2, start) infinite alternate !important; }
-#hiw-stadium.wild .stadium-main-crowd-white-1,
-#hiw-stadium.wild .stadium-main-crowd-white-10,
-#hiw-stadium.wild .stadium-main-crowd-white-20,
-#hiw-stadium.wild .stadium-main-crowd-white-30,
-#hiw-stadium.wild .stadium-main-crowd-white-40,
-#hiw-stadium.wild .stadium-main-crowd-white-50,
-#hiw-stadium.wild .stadium-main-crowd-white-60,
-#hiw-stadium.wild .stadium-main-crowd-white-70 {
-  animation: crowd-rotate 0.15s steps(2, start) infinite alternate !important;
-  transform-origin: bottom center; }
-#hiw-stadium.wild .stadium-main-crowd-white-2,
-#hiw-stadium.wild .stadium-main-crowd-white-11,
-#hiw-stadium.wild .stadium-main-crowd-white-21,
-#hiw-stadium.wild .stadium-main-crowd-white-31,
-#hiw-stadium.wild .stadium-main-crowd-white-41,
-#hiw-stadium.wild .stadium-main-crowd-white-51,
-#hiw-stadium.wild .stadium-main-crowd-white-61,
-#hiw-stadium.wild .stadium-main-crowd-white-71 {
-  animation: crowd-side-shake 0.15s steps(2, start) infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-crowd-white-3,
-#hiw-stadium.wild .stadium-main-crowd-white-12,
-#hiw-stadium.wild .stadium-main-crowd-white-22,
-#hiw-stadium.wild .stadium-main-crowd-white-32,
-#hiw-stadium.wild .stadium-main-crowd-white-42,
-#hiw-stadium.wild .stadium-main-crowd-white-52,
-#hiw-stadium.wild .stadium-main-crowd-white-62,
-#hiw-stadium.wild .stadium-main-crowd-white-72 {
-  animation: crowd-side-shake 0.25s ease infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-crowd-white-23,
-#hiw-stadium.wild .stadium-main-crowd-white-33,
-#hiw-stadium.wild .stadium-main-crowd-white-53,
-#hiw-stadium.wild .stadium-main-crowd-white-63 {
-  animation: crowd-jump 0.15s steps(2, start) infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-crowd-white-4,
-#hiw-stadium.wild .stadium-main-crowd-white-13,
-#hiw-stadium.wild .stadium-main-crowd-white-43,
-#hiw-stadium.wild .stadium-main-crowd-white-53,
-#hiw-stadium.wild .stadium-main-crowd-white-9 {
-  animation: crowd-jump 0.15s ease infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-crowd-white-14,
-#hiw-stadium.wild .stadium-main-crowd-white-24,
-#hiw-stadium.wild .stadium-main-crowd-white-34,
-#hiw-stadium.wild .stadium-main-crowd-white-44,
-#hiw-stadium.wild .stadium-main-crowd-white-54,
-#hiw-stadium.wild .stadium-main-crowd-white-64 {
-  animation: crowd-side-shake 0.05s ease infinite alternate !important;
-  transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-crowd-white-5,
-#hiw-stadium.wild .stadium-main-crowd-white-15,
-#hiw-stadium.wild .stadium-main-crowd-white-25,
-#hiw-stadium.wild .stadium-main-crowd-white-35,
-#hiw-stadium.wild .stadium-main-crowd-white-45,
-#hiw-stadium.wild .stadium-main-crowd-white-55,
-#hiw-stadium.wild .stadium-main-crowd-white-65 {
+#hiw-stadium.active.wild .stadium-main-crowd-white-5,
+#hiw-stadium.active.wild .stadium-main-crowd-white-15,
+#hiw-stadium.active.wild .stadium-main-crowd-white-25,
+#hiw-stadium.active.wild .stadium-main-crowd-white-35,
+#hiw-stadium.active.wild .stadium-main-crowd-white-45,
+#hiw-stadium.active.wild .stadium-main-crowd-white-55,
+#hiw-stadium.active.wild .stadium-main-crowd-white-65 {
   animation: crowd-side-wander 0.15s ease infinite alternate !important;
   transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-crowd-white-6,
-#hiw-stadium.wild .stadium-main-crowd-white-16,
-#hiw-stadium.wild .stadium-main-crowd-white-26,
-#hiw-stadium.wild .stadium-main-crowd-white-36,
-#hiw-stadium.wild .stadium-main-crowd-white-46,
-#hiw-stadium.wild .stadium-main-crowd-white-56,
-#hiw-stadium.wild .stadium-main-crowd-white-66 {
+#hiw-stadium.active.wild .stadium-main-crowd-white-6,
+#hiw-stadium.active.wild .stadium-main-crowd-white-16,
+#hiw-stadium.active.wild .stadium-main-crowd-white-26,
+#hiw-stadium.active.wild .stadium-main-crowd-white-36,
+#hiw-stadium.active.wild .stadium-main-crowd-white-46,
+#hiw-stadium.active.wild .stadium-main-crowd-white-56,
+#hiw-stadium.active.wild .stadium-main-crowd-white-66 {
   animation: crowd-side-wander 0.1s ease infinite alternate-reverse !important;
   transform-origin: center center; }
-#hiw-stadium.wild .stadium-main-crowd-white-17 {
+#hiw-stadium.active.wild .stadium-main-crowd-white-17 {
   animation: fadeIn 0.15s steps(2, start) infinite alternate !important; }
-#hiw-stadium.wild .stadium-main-crowd-white-27 {
+#hiw-stadium.active.wild .stadium-main-crowd-white-27 {
   animation: fadeIn 0.1s steps(2, start) infinite alternate !important; }
-#hiw-stadium.wild .stadium-main-crowd-white-57 {
+#hiw-stadium.active.wild .stadium-main-crowd-white-57 {
   animation: fadeIn 0.15s steps(2, start) infinite alternate !important; }
-#hiw-stadium.wild .stadium-main-crowd-white-47 {
+#hiw-stadium.active.wild .stadium-main-crowd-white-47 {
   animation: fadeIn 0.25s steps(2, start) infinite alternate !important; }
-
-#hiw-sky-clouds.active {
+#hiw-stadium #hiw-sky-clouds.active {
   z-index: 3;
   opacity: 1; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-1 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-1 {
     animation: hiw-cloud-fall 200ms linear 1200ms 2, hiw-cloud-fall-end 200ms ease-out 3020ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-2 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-2 {
     animation: hiw-cloud-fall 400ms linear 1400ms 2, hiw-cloud-fall-end 400ms ease-out 3040ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-3 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-3 {
     animation: hiw-cloud-fall 600ms linear 1600ms 2, hiw-cloud-fall-end 600ms ease-out 3060ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-4 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-4 {
     animation: hiw-cloud-fall 800ms linear 1800ms 2, hiw-cloud-fall-end 800ms ease-out 3080ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-5 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-5 {
     animation: hiw-cloud-fall 1000ms linear 2000ms 2, hiw-cloud-fall-end 1000ms ease-out 3100ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-6 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-6 {
     animation: hiw-cloud-fall 1200ms linear 2200ms 2, hiw-cloud-fall-end 1200ms ease-out 3120ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-7 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-7 {
     animation: hiw-cloud-fall 1400ms linear 2400ms 2, hiw-cloud-fall-end 1400ms ease-out 3140ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-8 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-8 {
     animation: hiw-cloud-fall 1600ms linear 2600ms 2, hiw-cloud-fall-end 1600ms ease-out 3160ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-9 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-9 {
     animation: hiw-cloud-fall 1800ms linear 2800ms 2, hiw-cloud-fall-end 1800ms ease-out 3180ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-10 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-10 {
     animation: hiw-cloud-fall 2000 ms linear 2000 ms 2, hiw-cloud-fall-end 2000 ms ease-out 3100 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-11 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-11 {
     animation: hiw-cloud-fall 2200 ms linear 2100 ms 2, hiw-cloud-fall-end 2200 ms ease-out 3110 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-12 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-12 {
     animation: hiw-cloud-fall 2400 ms linear 2200 ms 2, hiw-cloud-fall-end 2400 ms ease-out 3120 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-13 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-13 {
     animation: hiw-cloud-fall 2600 ms linear 2300 ms 2, hiw-cloud-fall-end 2600 ms ease-out 3130 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-14 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-14 {
     animation: hiw-cloud-fall 2800 ms linear 2400 ms 2, hiw-cloud-fall-end 2800 ms ease-out 3140 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-15 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-15 {
     animation: hiw-cloud-fall 3000 ms linear 2500 ms 2, hiw-cloud-fall-end 3000 ms ease-out 3150 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-16 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-16 {
     animation: hiw-cloud-fall 3200 ms linear 2600 ms 2, hiw-cloud-fall-end 3200 ms ease-out 3160 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-17 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-17 {
     animation: hiw-cloud-fall 3400 ms linear 2700 ms 2, hiw-cloud-fall-end 3400 ms ease-out 3170 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-18 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-18 {
     animation: hiw-cloud-fall 3600 ms linear 2800 ms 2, hiw-cloud-fall-end 3600 ms ease-out 3180 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-19 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-19 {
     animation: hiw-cloud-fall 3800 ms linear 2900 ms 2, hiw-cloud-fall-end 3800 ms ease-out 3190 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-20 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-20 {
     animation: hiw-cloud-fall 4000 ms linear 3000 ms 2, hiw-cloud-fall-end 4000 ms ease-out 3200 ms forwards; }
-
-#hiw-sky-clouds.active {
+#hiw-stadium #hiw-sky-clouds.active {
   z-index: 3;
   opacity: 1; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-1 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-1 {
     animation: hiw-cloud-fall 200ms linear 1200ms 2, hiw-cloud-fall-end 200ms ease-out 3020ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-2 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-2 {
     animation: hiw-cloud-fall 400ms linear 1400ms 2, hiw-cloud-fall-end 400ms ease-out 3040ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-3 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-3 {
     animation: hiw-cloud-fall 600ms linear 1600ms 2, hiw-cloud-fall-end 600ms ease-out 3060ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-4 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-4 {
     animation: hiw-cloud-fall 800ms linear 1800ms 2, hiw-cloud-fall-end 800ms ease-out 3080ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-5 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-5 {
     animation: hiw-cloud-fall 1000ms linear 2000ms 2, hiw-cloud-fall-end 1000ms ease-out 3100ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-6 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-6 {
     animation: hiw-cloud-fall 1200ms linear 2200ms 2, hiw-cloud-fall-end 1200ms ease-out 3120ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-7 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-7 {
     animation: hiw-cloud-fall 1400ms linear 2400ms 2, hiw-cloud-fall-end 1400ms ease-out 3140ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-8 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-8 {
     animation: hiw-cloud-fall 1600ms linear 2600ms 2, hiw-cloud-fall-end 1600ms ease-out 3160ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-9 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-9 {
     animation: hiw-cloud-fall 1800ms linear 2800ms 2, hiw-cloud-fall-end 1800ms ease-out 3180ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-10 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-10 {
     animation: hiw-cloud-fall 2000 ms linear 2000 ms 2, hiw-cloud-fall-end 2000 ms ease-out 3100 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-11 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-11 {
     animation: hiw-cloud-fall 2200 ms linear 2100 ms 2, hiw-cloud-fall-end 2200 ms ease-out 3110 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-12 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-12 {
     animation: hiw-cloud-fall 2400 ms linear 2200 ms 2, hiw-cloud-fall-end 2400 ms ease-out 3120 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-13 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-13 {
     animation: hiw-cloud-fall 2600 ms linear 2300 ms 2, hiw-cloud-fall-end 2600 ms ease-out 3130 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-14 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-14 {
     animation: hiw-cloud-fall 2800 ms linear 2400 ms 2, hiw-cloud-fall-end 2800 ms ease-out 3140 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-15 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-15 {
     animation: hiw-cloud-fall 3000 ms linear 2500 ms 2, hiw-cloud-fall-end 3000 ms ease-out 3150 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-16 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-16 {
     animation: hiw-cloud-fall 3200 ms linear 2600 ms 2, hiw-cloud-fall-end 3200 ms ease-out 3160 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-17 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-17 {
     animation: hiw-cloud-fall 3400 ms linear 2700 ms 2, hiw-cloud-fall-end 3400 ms ease-out 3170 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-18 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-18 {
     animation: hiw-cloud-fall 3600 ms linear 2800 ms 2, hiw-cloud-fall-end 3600 ms ease-out 3180 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-19 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-19 {
     animation: hiw-cloud-fall 3800 ms linear 2900 ms 2, hiw-cloud-fall-end 3800 ms ease-out 3190 ms forwards; }
-  #hiw-sky-clouds.active .hiw-sky-cloud-20 {
+  #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-20 {
     animation: hiw-cloud-fall 4000 ms linear 3000 ms 2, hiw-cloud-fall-end 4000 ms ease-out 3200 ms forwards; }
 
 .projector-access .projector-access-content {

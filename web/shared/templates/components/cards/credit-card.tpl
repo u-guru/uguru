@@ -1,4 +1,4 @@
-<div class="perspective-container full-xy flex-center" types='flip, edit, short, mini' default-type="flip">
+<div class="perspective-container full-xy flex-center" types='flip, edit, short, mini' default-type="mini">
     <div ng-if='activeType === "flip"' class="credit-card-flip" tabindex
 		init-with="p-op"
 		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
@@ -24,26 +24,52 @@
                 <div class="credit-card-row">
                     <div class="credit-card-number-container">
                         <h4>Card Number</h4>
-						<div class="credit-card-number has-span"
-							init-with="p:[op:0, tro:center bottom]"
-							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
+						<div class="credit-card-number has-span">
 							<span>
-                                <span>&bull;</span>
-                                <span>&bull;</span>
-								<span>&bull;</span>
-								<span>&bull;</span>
+								<stagger-children on-enter="[cc-number]:800:easeInQuad">
+	                                <span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
 
-								<span>&bull;</span>
-								<span>&bull;</span>
-								<span>&bull;</span>
-								<span>&bull;</span>
 
-								<span>&bull;</span>
-								<span>&bull;</span>
-								<span>&bull;</span>
-								<span>&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+								</stagger-children>
                             </span>
-                            <span>1234</span>
+                            <span init-with="p:[op:0, tro:center center]"
+								when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]">1234</span>
                         </div>
                     </div>
                     <div class="credit-card-row">
@@ -106,16 +132,25 @@
                             <path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
                         </svg>
                     </div>
-                    <div class="credit-card-number has-span"
-						init-with="p:[op:0, tro:center bottom]"
-						when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
+                    <div class="credit-card-number has-span">
                         <span>
-							<span>&bull;</span>
-							<span>&bull;</span>
-							<span>&bull;</span>
-							<span>&bull;</span>
+							<stagger-children on-enter="[cc-edit-number]:+200">
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+							</stagger-children>
 						</span>
-						<span>1234</span>
+						<span init-with="p:[op:0, tro:center center]"
+							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-750]">1234</span>
                     </div>
                 </div>
             </div>
@@ -138,16 +173,25 @@
                             <path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
                         </svg>
                     </div>
-                    <div class="credit-card-number has-span"
-						init-with="p:[op:0, tro:center bottom]"
-						when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
+                    <div class="credit-card-number has-span">
 						<span>
-							<span>&bull;</span>
-							<span>&bull;</span>
-							<span>&bull;</span>
-							<span>&bull;</span>
+							<stagger-children on-enter="[cc-edit-number]:+200">
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+							</stagger-children>
 						</span>
-						<span>1234</span>
+						<span init-with="p:[op:0, tro:center center]"
+							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-750]">1234</span>
                     </div>
                 </div>
             </div>
@@ -170,16 +214,25 @@
                             <path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
                         </svg>
                     </div>
-                    <div class="credit-card-number has-span"
-						init-with="p:[op:0, tro:center bottom]"
-						when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
+                    <div class="credit-card-number has-span">
 						<span>
-							<span>&bull;</span>
-							<span>&bull;</span>
-							<span>&bull;</span>
-							<span>&bull;</span>
+							<stagger-children on-enter="[cc-edit-number]:+200">
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+							</stagger-children>
 						</span>
-						<span>1234</span>
+						<span init-with="p:[op:0, tro:center center]"
+							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-750]">1234</span>
                     </div>
                 </div>
             </div>
