@@ -26,21 +26,46 @@
                         <h4>Card Number</h4>
 						<div class="credit-card-number has-span">
 							<span>
-								<stagger-children on-enter="[cc-number]:5000:-easeOutCirc">
-	                                <span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
-	                                <span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
-									<span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
-									<span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
+								<stagger-children on-enter="[cc-number]:800:easeInQuad">
+	                                <span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
 
-									<span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
-									<span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
-									<span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
-									<span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
 
-									<span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
-									<span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
-									<span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
-									<span cc-number on-init="p:[op:0, tro:center center] | trigger:[on-enter:self]" on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
 								</stagger-children>
                             </span>
                             <span>1234</span>
