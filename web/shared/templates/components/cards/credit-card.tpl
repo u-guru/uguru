@@ -24,13 +24,24 @@
                 <div class="credit-card-row">
                     <div class="credit-card-number-container">
                         <h4>Card Number</h4>
-                        <div class="credit-card-number"
+						<div class="credit-card-number has-span"
 							init-with="p:[op:0, tro:center bottom]"
 							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
 							<span>
-                                &bull;&bull;&bull;&bull;
-                                &bull;&bull;&bull;&bull;
-                                &bull;&bull;&bull;&bull;
+                                <span>&bull;</span>
+                                <span>&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
+
+								<span>&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
+
+								<span>&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
                             </span>
                             <span>1234</span>
                         </div>
@@ -40,7 +51,7 @@
                             <h4>Valid Thru</h4>
                             <div class="credit-card-number"
 								init-with="p:[op:0, tro:center bottom]"
-								when-credi-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]">10/20</div>
+								when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]">10/20</div>
                         </div>
                         <div class="credit-card-default">
                             <svg viewBox="0 0 100 100">

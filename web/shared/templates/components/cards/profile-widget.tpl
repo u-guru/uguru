@@ -61,42 +61,46 @@
 				<h2 class="pf-school-name"
 					init-with="p-op"
 					when-pf-widget-init="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-150]">Ex'pression College for Digital Arts</h2>
-				<ul class="pf-rating rating-stars" data-rating="4" data-half="true">
-					<li init-with="p-op"
-						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-800]">
-						<svg viewBox="0 0 100 100">
-							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-						</svg>
-					</li>
-					<li init-with="p-op"
-						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-900]">
-						<svg viewBox="0 0 100 100">
-							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-						</svg>
-					</li>
-					<li init-with="p-op"
-						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1000]">
-						<svg viewBox="0 0 100 100">
-							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-						</svg>
-					</li>
-					<li init-with="p-op"
-						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1100]">
-						<svg viewBox="0 0 100 100">
-							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-						</svg>
-					</li>
-					<li init-with="p-op"
-						when-pf-widget-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1200]">
-						<svg viewBox="0 0 100 100">
-							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
-						</svg>
-					</li>
+				<ul class="pf-rating rating-stars" data-rating="4" data-half="true"
+					init-default
+					when-pf-widget-init="s:[pf-rating-init:public:delay-800]">
+					<stagger-children on-enter="*:[0, 100, 200, 300, 400]">
+						<li star init-with="p-op"
+							when-pf-rating-init="t:[on-enter:self]" on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in]">
+							<svg viewBox="0 0 100 100">
+								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+							</svg>
+						</li>
+						<li star init-with="p-op"
+							when-pf-rating-init="t:[on-enter:self]" on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in]">
+							<svg viewBox="0 0 100 100">
+								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+							</svg>
+						</li>
+						<li star init-with="p-op"
+							when-pf-rating-init="t:[on-enter:self]" on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in]">
+							<svg viewBox="0 0 100 100">
+								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+							</svg>
+						</li>
+						<li star init-with="p-op"
+							when-pf-rating-init="t:[on-enter:self]" on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in]">
+							<svg viewBox="0 0 100 100">
+								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+							</svg>
+						</li>
+						<li star init-with="p-op"
+							when-pf-rating-init="t:[on-enter:self]" on-enter="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in]">
+							<svg viewBox="0 0 100 100">
+								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+								<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>
+							</svg>
+						</li>
+					</stagger-children>
 				</ul>
 				<h3 class="pf-reviews"
 					init-with="p-op"
