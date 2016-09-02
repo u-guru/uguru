@@ -29,7 +29,7 @@
             -->
 
             <!-- Ex 1. See reference above-->
-            <stagger-children on-enter="[draw-border-frame]:2000:-easeOutCirc">
+			<stagger-children on-enter="[draw-border-frame]:500">
                 <div class="top"
                     init-with="p:[tr:scale(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"

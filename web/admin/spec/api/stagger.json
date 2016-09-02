@@ -8,8 +8,13 @@
             "description": "The most minimal case",
             "impt": "No easing is needed here since the time is already clarified. No global delay in this example",
             "complete": true,
-            "buggy": true,
-            "bug_notes": "@samir: jeselle and I last saw this not working but this needs confirmation"
+            "bug": true,
+            "bug_notes": "@samir: jeselle and I last saw this not working but this needs confirmation",
+			"bugs": {
+				"description": "",
+				"file": "",
+				"line": ""
+			}
         },
         {
             "name": "Most Minimal #2",
