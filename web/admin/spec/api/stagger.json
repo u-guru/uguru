@@ -49,7 +49,12 @@
             "example": "*:1000:bouncePast",
             "description": "An example of applying an easing with a defined definition",
             "impt": "Duration + Time are Required for the easing to take effect",
-            "complete": true
+            "complete": true,
+			"bugs": {
+				"description": "Used with child attribute, playing but not staggering",
+				"file": "/progress/rating.tpl",
+				"line": "3"
+			}
         },
         {
             "name": "Easings #1:negative",
