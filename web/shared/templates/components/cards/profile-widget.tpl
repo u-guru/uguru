@@ -29,7 +29,7 @@
             -->
 
             <!-- Ex 1. See reference above-->
-            <stagger-children on-enter="[draw-border-frame]:500">
+            <stagger-children on-enter="[draw-border-frame]:2000:-easeOutCirc">
                 <div class="top"
                     init-with="p:[tr:scale(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
@@ -133,6 +133,6 @@
                 init-with="p:[op:0, tro:center center, color:rgba(255#255#255#0)]"
                 on-init="t-enter"
                 on-enter="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500] | p:[color:rgba(255#255#255#1):delay-700, t:color 500ms ease-in-out]">Contact Guru</button>
-            </stagger-children>
-        </div>
+        </stagger-children>
+    </div>
 </div>
