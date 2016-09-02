@@ -4113,6 +4113,34 @@ fieldset.no-border * {
       font-family: OCR-A, monospace;
       font-size: 16px;
       font-weight: 400; }
+      .credit-card .credit-card-inside .credit-card-number.has-span {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex; }
+        .credit-card .credit-card-inside .credit-card-number.has-span > span {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-align-content: center;
+          align-content: center;
+          -webkit-justify-content: center;
+          justify-content: center; }
+          .credit-card .credit-card-inside .credit-card-number.has-span > span span {
+            margin-right: 2px; }
+            .credit-card .credit-card-inside .credit-card-number.has-span > span span:nth-child(4n) {
+              margin-right: 8px; }
     .credit-card .credit-card-inside .credit-card-default svg {
       display: block;
       height: 30px;

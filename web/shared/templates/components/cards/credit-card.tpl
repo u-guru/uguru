@@ -24,46 +24,24 @@
                 <div class="credit-card-row">
                     <div class="credit-card-number-container">
                         <h4>Card Number</h4>
-                        <div class="credit-card-number">
+						<div class="credit-card-number has-span"
+							init-with="p:[op:0, tro:center bottom]"
+							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
 							<span>
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+                                <span>&bull;</span>
+                                <span>&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
 
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
 
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
-								<span
-									init-with="p:[op:0, tro:center bottom]"
-									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
+								<span>&bull;</span>
                             </span>
                             <span>1234</span>
                         </div>
@@ -73,7 +51,7 @@
                             <h4>Valid Thru</h4>
                             <div class="credit-card-number"
 								init-with="p:[op:0, tro:center bottom]"
-								when-credi-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]">10/20</div>
+								when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]">10/20</div>
                         </div>
                         <div class="credit-card-default">
                             <svg viewBox="0 0 100 100">
@@ -128,10 +106,16 @@
                             <path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
                         </svg>
                     </div>
-                    <div class="credit-card-number"
+                    <div class="credit-card-number has-span"
 						init-with="p:[op:0, tro:center bottom]"
 						when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
-                        <span>&bull;&bull;&bull;&bull;</span><span>1234</span>
+                        <span>
+							<span>&bull;</span>
+							<span>&bull;</span>
+							<span>&bull;</span>
+							<span>&bull;</span>
+						</span>
+						<span>1234</span>
                     </div>
                 </div>
             </div>
@@ -154,10 +138,16 @@
                             <path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
                         </svg>
                     </div>
-                    <div class="credit-card-number"
+                    <div class="credit-card-number has-span"
 						init-with="p:[op:0, tro:center bottom]"
 						when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
-                        <span>&bull;&bull;&bull;&bull;</span><span>1234</span>
+						<span>
+							<span>&bull;</span>
+							<span>&bull;</span>
+							<span>&bull;</span>
+							<span>&bull;</span>
+						</span>
+						<span>1234</span>
                     </div>
                 </div>
             </div>
@@ -180,10 +170,16 @@
                             <path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
                         </svg>
                     </div>
-                    <div class="credit-card-number"
+                    <div class="credit-card-number has-span"
 						init-with="p:[op:0, tro:center bottom]"
 						when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
-                        <span>&bull;&bull;&bull;&bull;</span><span>1234</span>
+						<span>
+							<span>&bull;</span>
+							<span>&bull;</span>
+							<span>&bull;</span>
+							<span>&bull;</span>
+						</span>
+						<span>1234</span>
                     </div>
                 </div>
             </div>

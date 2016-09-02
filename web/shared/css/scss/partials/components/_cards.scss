@@ -843,6 +843,19 @@
 			font-family: OCR-A, monospace;
 			font-size: 16px;
 			font-weight: 400;
+			&.has-span {
+				@include flex;
+				> span {
+					@include flex;
+					@include flex-center;
+					span {
+						margin-right: 2px;
+						&:nth-child(4n) {
+							margin-right: 8px;
+						}
+					}
+				}
+			}
 		}
 		.credit-card-default {
 			svg {
