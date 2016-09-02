@@ -949,14 +949,19 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           continue;
         case (4):
             pObj.delay = processDuration(arg_arr[i], property, apply_default);
-
+          continue;
+        case (5):
+            pObj.iteration = processIterations(arg_arr[i], property, apply_default);
           continue;
       }
     }
 
 
     return pObj;
+  }
 
+  function processIterations(str, property, apply_default) {
+    console.log(str)
   }
 
   function processDuration(dur_str, prop, apply_default) {
