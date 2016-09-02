@@ -30,33 +30,31 @@
 
             <!-- Ex 1. See reference above-->
 
-			<stagger-children on-enter="[draw-border-frame]:500">
-
-                <div class="top"
-                    init-with="p:[tr:scale(0), tro:center center]"
+			<stagger-children on-enter="[draw-border-frame]:150">
+				<div class="top"
+					init-with="p:[tr:scaleX(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
-                    draw-border-frame
-                    on-enter="p:[tr:scale(1), t:transform 500ms ease-out]"></div>
-                <div class="left"
-                    init-with="p:[tr:scale(0), tro:left top]"
-                    on-init="t-enter"
-                    draw-border-frame
-                    on-enter="p:[tr:scale(1), t:transform 500ms ease-out]"></div>
-                <div class="right"
-                    init-with="p:[tr:scale(0), tro:right top]"
-                    on-init="t-enter"
-                    draw-border-frame
-                    on-enter="p:[tr:scale(1), t:transform 500ms ease-out]"></div>
-                <div class="bot-left"
-                    init-with="p:[tr:scale(0), tro:left center]"
-                    on-init="t-enter"
-                    draw-border-frame
-                    on-enter="p:[tr:scale(1), t:transform 500ms linear]"></div>
-                <div class="bot-right"
-                    init-with="p:[tr:scale(0), tro:right center]"
-                    on-init="t-enter"
-                    draw-border-frame
-                    on-enter="p:[tr:scale(1), t:transform 500ms linear]"></div>
+					border-frame
+					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart]"></div>
+				<div class="left"
+					init-with="p:[tr:scaleY(0), tro:left top]"
+                    on-init="trigger:[on-enter:self]"
+					draw-border-frame
+					on-enter="p:[transform:scaleY(0):scaleY(1):500:easeOutQuart]"></div>
+				<div class="right"
+					init-with="p:[tr:scaleY(0), tro:right top]"
+                    on-init="trigger:[on-enter:self]"
+					on-enter="p:[transform:scaleY(0):scaleY(1):500:easeOutQuart]"></div>
+				<div class="bot-left"
+					init-with="p:[tr:scaleX(0), tro:left center]"
+                    on-init="trigger:[on-enter:self]"
+					draw-border-frame
+					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart]"></div>
+				<div class="bot-right"
+					init-with="p:[tr:scaleX(0), tro:right center]"
+                    on-init="trigger:[on-enter:self]"
+					draw-border-frame
+					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart]"></div>
                 <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
                     init-with="p-op"
                     on-init="t-enter"
