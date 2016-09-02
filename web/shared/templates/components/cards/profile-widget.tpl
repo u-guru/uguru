@@ -20,15 +20,15 @@
 		<div class="bot-right"
 			init-with="p:[tr:scale(0), tro:right center]"
 			when-pf-widget-init="p:[transform:scale(0):scale(1):500:easeOutQuart]:delay-750"></div> -->
-		<stagger-children on-enter="*:[100, 200, 200, 750, 750]">
+		<stagger-children on-enter="[non-top]:+500">
 			<!-- @Samir Have the borders animate in-->
-			<div class="top border-line"
+			<div non-top class="top border-line"
 				init-with="p:[tr:scale(0), tro:center center]"
-				on-init="t-enter"
+				on-init="trigger:[on-enter:self]"
 				on-enter="p:[transform:scale(0):scale(1):500:easeOutQuart]"></div>
-			<div class="left border-line"
+			<div non-top class="left border-line"
 				init-with="p:[tr:scale(0), tro:left top]"
-				on-init="t-enter"
+				on-init="trigger:[on-enter:self]"
 				on-enter="p:[transform:scale(0):scale(1):500:easeOutQuart]"></div>
 			<div class="right border-line"
 				init-with="p:[tr:scale(0), tro:right top]"
@@ -42,6 +42,7 @@
 				init-with="p:[tr:scale(0), tro:right center]"
 				on-init="t-enter"
 				on-enter="p:[transform:scale(0):scale(1):500:easeOutQuart]"></div>
+
 			<span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
 				init-with="p-op"
 				when-pf-widget-init="p:[tro:center center] | a:[icon-enter:set:(dur:1000ms#func:ease-out):in]"></span>

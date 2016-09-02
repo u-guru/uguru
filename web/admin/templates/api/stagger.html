@@ -21,7 +21,7 @@
                 <aside class='bg-campus-10p full-y weight-500 txt-24 text-center relative overflow-auto no-scrollbar' style='min-width:15%;'>
                     <h1 class='weight-600 full-x bg-gold p15x-p10y'> Use Cases </h1>
                     <ul class="p15-grid">
-                        <li ng-repeat='use_case in stagger.data.use_cases' ng-click='stagger.updateActiveIndex($index)' ng-class="{'bg-smoke opacity-80p ng-disabled':!use_case.complete, 'bg-moola': use_case.complete && $index !== stagger.data.activeIndex, 'bg-white':$index === stagger.data.activeIndex}">
+                        <li ng-repeat='use_case in stagger.data.use_cases' ng-click='stagger.updateActiveIndex($index)' ng-class="{'bg-auburn':use_case.buggy, 'bg-smoke opacity-80p ng-disabled':!use_case.complete, 'bg-moola': use_case.complete && $index !== stagger.data.activeIndex && !use_case.buggy, 'bg-white':$index === stagger.data.activeIndex}">
                             <div ng-class="{'bg-shamrock':$index === stagger.data.activeIndex}" class="txt-1 bg bg-campus radius-2 p10y-p15x">{{use_case.name}}</div>
                         </li>
                     </ul>
