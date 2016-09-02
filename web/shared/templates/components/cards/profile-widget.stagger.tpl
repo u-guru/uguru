@@ -1,8 +1,10 @@
-<div class="perspective-container full-xy flex-center p15xy">
+w<div class="perspective-container full-xy flex-center p15xy">
+
     <div class="pf-aside-widget"
         init-with="p:[background:rgba(99#112#116#0), t:background 700ms ease-in-out]"
         on-init="t-enter"
         on-enter="p:[background:rgba(99#112#116#0.3):delay-700]">
+
 
             <!-- Ex.1 Positive LINEAR (default) stagger every 500ms, linear [uncommented below]
                 <stagger-children on-enter="[draw-border-frame]:500">

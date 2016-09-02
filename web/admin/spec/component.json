@@ -116,8 +116,8 @@
                 }
             },
 			"profile-widget": {
-                "filename": "profile-widget.tpl",
-				"versions": [],
+                "filename": "profile-widget.stagger.tpl",
+				"versions": ["stagger"],
                 "contact": "JO",
                 "status": {
                     "static": true,
@@ -691,7 +691,7 @@
 				"versions": ["JO-082916"],
                 "versionVars": {
                     "JO-082916": { "h2" : {"initWith": "p:[letter-spacing:15px]"}},
-					"JO-082916": { "popup-tour-guru" : {"initWith": "p:[transform:rotate(215deg) scale(0), tro:left bottom]"}},
+					"JO-082916": { "popup-tour-guru" : {"initWith": "p:[transform:rotate(215deg) scale(0), tro:left bottom]"}}
                 },
                 "contact": "JO",
                 "status": {
