@@ -24,13 +24,46 @@
                 <div class="credit-card-row">
                     <div class="credit-card-number-container">
                         <h4>Card Number</h4>
-                        <div class="credit-card-number"
-							init-with="p:[op:0, tro:center bottom]"
-							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
+                        <div class="credit-card-number">
 							<span>
-                                &bull;&bull;&bull;&bull;
-                                &bull;&bull;&bull;&bull;
-                                &bull;&bull;&bull;&bull;
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
+								<span
+									init-with="p:[op:0, tro:center bottom]"
+									when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">&bull;</span>
                             </span>
                             <span>1234</span>
                         </div>
