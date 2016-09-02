@@ -549,280 +549,277 @@ a[class*="-container"] {
 		// 	animation: sign-vertical-shake 550ms steps(9,start) 1600ms 15 alternate;
 		// 	transform-origin: center center;
 		// }
-		.stadium-small-cal-sign-5,
-		.stadium-small-cal-sign-1 {
-			animation: sign-vertical-shake 450ms steps(9,start) 1600ms 15 alternate;
-			transform-origin: center center;
-		}
-		.stadium-small-cal-sign-3 {
-			animation: sign-vertical-shake 750ms steps(9,start) 1600ms 15 alternate;
-			transform-origin: center center;
-		}
-		.stadium-small-cal-sign-4 {
-			animation: sign-side-shake 1s steps(9,start) 1600ms 15 alternate;
-			transform-origin: center center;
-		}
-		.stadium-small-cal-sign-2 {
-			animation: sign-side-shake 500ms steps(9,start) 1600ms 15 alternate;
-			transform-origin: center center;
-		}
-		.stadium-small-crowd-white-30-cal {
-			animation: fadeIn 0.25s steps(2,start) 1600ms 30 alternate;
-		}
-		.stadium-small-crowd-white-60-cal {
-			animation: fadeIn .5s steps(2,start) 1600ms 30 alternate;
-		}
-		.stadium-main-crowd-white-1,
-		.stadium-main-crowd-white-10,
-		.stadium-main-crowd-white-20,
-		.stadium-main-crowd-white-30,
-		.stadium-main-crowd-white-40,
-		.stadium-main-crowd-white-50,
-		.stadium-main-crowd-white-60,
-		.stadium-main-crowd-white-70 {
-			animation: crowd-rotate 0.25s steps(2,start) 1600ms 30 alternate;
-			transform-origin: bottom center;
-		}
-		.stadium-main-crowd-white-2,
-		.stadium-main-crowd-white-11,
-		.stadium-main-crowd-white-21,
-		.stadium-main-crowd-white-31,
-		.stadium-main-crowd-white-41,
-		.stadium-main-crowd-white-51,
-		.stadium-main-crowd-white-61,
-		.stadium-main-crowd-white-71 {
-			animation: crowd-side-shake 0.25s steps(2,start) 1600ms 30 alternate;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-3,
-		.stadium-main-crowd-white-12,
-		.stadium-main-crowd-white-22,
-		.stadium-main-crowd-white-32,
-		.stadium-main-crowd-white-42,
-		.stadium-main-crowd-white-52,
-		.stadium-main-crowd-white-62,
-		.stadium-main-crowd-white-72 {
-			animation: crowd-side-shake 0.5s ease 1600ms 30 alternate;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-23,
-		.stadium-main-crowd-white-33,
-		.stadium-main-crowd-white-53,
-		.stadium-main-crowd-white-63 {
-			animation: crowd-jump 0.25s steps(2,start) 1600ms 30 alternate;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-4,
-		.stadium-main-crowd-white-13,
-		.stadium-main-crowd-white-43,
-		.stadium-main-crowd-white-53,
-		.stadium-main-crowd-white-9 {
-			animation: crowd-jump 0.25s ease 1600ms 30 alternate;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-14,
-		.stadium-main-crowd-white-24,
-		.stadium-main-crowd-white-34,
-		.stadium-main-crowd-white-44,
-		.stadium-main-crowd-white-54,
-		.stadium-main-crowd-white-64 {
-			animation: crowd-side-shake 0.15s ease 1600ms 30 alternate;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-5,
-		.stadium-main-crowd-white-15,
-		.stadium-main-crowd-white-25,
-		.stadium-main-crowd-white-35,
-		.stadium-main-crowd-white-45,
-		.stadium-main-crowd-white-55,
-		.stadium-main-crowd-white-65 {
-			animation: crowd-side-wander 0.25s ease 1600ms 30 alternate;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-6,
-		.stadium-main-crowd-white-16,
-		.stadium-main-crowd-white-26,
-		.stadium-main-crowd-white-36,
-		.stadium-main-crowd-white-46,
-		.stadium-main-crowd-white-56,
-		.stadium-main-crowd-white-66 {
-			animation: crowd-side-wander 0.15s ease 1600ms 30 alternate-reverse;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-17 { animation: fadeIn .25s steps(2,start) 1600ms 30 alternate }
-		.stadium-main-crowd-white-27 { animation: fadeIn .15s steps(2,start) 1600ms 30 alternate }
-		.stadium-main-crowd-white-57 { animation: fadeIn .3s steps(2,start) 1600ms 30 alternate }
-		.stadium-main-crowd-white-47 { animation: fadeIn .5s steps(2,start) 1600ms 30 alternate }
-	}
+		// .stadium-small-cal-sign-5,
+		// .stadium-small-cal-sign-1 {
+		// 	animation: sign-vertical-shake 450ms steps(9,start) 1600ms 15 alternate;
+		// 	transform-origin: center center;
+		// }
+		//
+		// .stadium-small-cal-sign-3 {
+		// 	animation: sign-vertical-shake 750ms steps(9,start) 1600ms 15 alternate;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-small-cal-sign-4 {
+		// 	animation: sign-side-shake 1s steps(9,start) 1600ms 15 alternate;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-small-cal-sign-2 {
+		// 	animation: sign-side-shake 500ms steps(9,start) 1600ms 15 alternate;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-small-crowd-white-30-cal {
+		// 	animation: fadeIn 0.25s steps(2,start) 1600ms 30 alternate;
+		// }
+		// .stadium-small-crowd-white-60-cal {
+		// 	animation: fadeIn .5s steps(2,start) 1600ms 30 alternate;
+		// }
+		//
+		// .stadium-main-crowd-white-1,
+		// .stadium-main-crowd-white-10,
+		// .stadium-main-crowd-white-20,
+		// .stadium-main-crowd-white-30,
+		// .stadium-main-crowd-white-40,
+		// .stadium-main-crowd-white-50,
+		// .stadium-main-crowd-white-60,
+		// .stadium-main-crowd-white-70 {
+		// 	animation: crowd-rotate 0.25s steps(2,start) 1600ms 30 alternate;
+		// 	transform-origin: bottom center;
+		// }
+		// .stadium-main-crowd-white-2,
+		// .stadium-main-crowd-white-11,
+		// .stadium-main-crowd-white-21,
+		// .stadium-main-crowd-white-31,
+		// .stadium-main-crowd-white-41,
+		// .stadium-main-crowd-white-51,
+		// .stadium-main-crowd-white-61,
+		// .stadium-main-crowd-white-71 {
+		// 	animation: crowd-side-shake 0.25s steps(2,start) 1600ms 30 alternate;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-3,
+		// .stadium-main-crowd-white-12,
+		// .stadium-main-crowd-white-22,
+		// .stadium-main-crowd-white-32,
+		// .stadium-main-crowd-white-42,
+		// .stadium-main-crowd-white-52,
+		// .stadium-main-crowd-white-62,
+		// .stadium-main-crowd-white-72 {
+		// 	animation: crowd-side-shake 0.5s ease 1600ms 30 alternate;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-23,
+		// .stadium-main-crowd-white-33,
+		// .stadium-main-crowd-white-53,
+		// .stadium-main-crowd-white-63 {
+		// 	animation: crowd-jump 0.25s steps(2,start) 1600ms 30 alternate;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-4,
+		// .stadium-main-crowd-white-13,
+		// .stadium-main-crowd-white-43,
+		// .stadium-main-crowd-white-53,
+		// .stadium-main-crowd-white-9 {
+		// 	animation: crowd-jump 0.25s ease 1600ms 30 alternate;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-14,
+		// .stadium-main-crowd-white-24,
+		// .stadium-main-crowd-white-34,
+		// .stadium-main-crowd-white-44,
+		// .stadium-main-crowd-white-54,
+		// .stadium-main-crowd-white-64 {
+		// 	animation: crowd-side-shake 0.15s ease 1600ms 30 alternate;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-5,
+		// .stadium-main-crowd-white-15,
+		// .stadium-main-crowd-white-25,
+		// .stadium-main-crowd-white-35,
+		// .stadium-main-crowd-white-45,
+		// .stadium-main-crowd-white-55,
+		// .stadium-main-crowd-white-65 {
+		// 	animation: crowd-side-wander 0.25s ease 1600ms 30 alternate;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-6,
+		// .stadium-main-crowd-white-16,
+		// .stadium-main-crowd-white-26,
+		// .stadium-main-crowd-white-36,
+		// .stadium-main-crowd-white-46,
+		// .stadium-main-crowd-white-56,
+		// .stadium-main-crowd-white-66 {
+		// 	animation: crowd-side-wander 0.15s ease 1600ms 30 alternate-reverse;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-17 { animation: fadeIn .25s steps(2,start) 1600ms 30 alternate }
+		// .stadium-main-crowd-white-27 { animation: fadeIn .15s steps(2,start) 1600ms 30 alternate }
+		// .stadium-main-crowd-white-57 { animation: fadeIn .3s steps(2,start) 1600ms 30 alternate }
+	// 	.stadium-main-crowd-white-47 { animation: fadeIn .5s steps(2,start) 1600ms 30 alternate }
+	// }
 	&.wild {
-		.stadium-main-cal-sign-4,
-		.stadium-small-away-sign-4{
-			animation: sign-vertical-shake-wild 550ms steps(9,start) infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-small-cal-sign-5,
-		.stadium-small-cal-sign-1,
-		.stadium-small-away-sign-3{
-			animation: sign-vertical-shake-wild 450ms steps(9,start) infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-small-cal-sign-3,
-		.stadium-small-away-sign-2 {
-			animation: sign-vertical-shake-wild 750ms steps(9,start) infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-small-cal-sign-4,
-		.stadium-small-away-sign-1{
-			animation: sign-side-shake-wild 1s steps(9,start) infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-small-cal-sign-2,
-		.stadium-small-away-sign-5{
-			animation: sign-side-shake-wild 250ms steps(9,start) infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-main-cal-sign-1,
-		.stadium-main-cal-sign-2,
-		.stadium-main-away-sign-2{
-			animation: sign-vertical-shake-wild 250ms steps(9,start) infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-main-cal-sign-3 {
-			animation: sign-side-shake-wild 500ms ease-in-out infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-main-away-sign-1 {
-			animation: sign-side-shake-wild 750ms ease-in-out infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-main-cal-flag-1,
-		.stadium-main-away-flag-3{
-			animation: flag-rotate-2-wild 150ms linear infinite alternate!important;
-			transform-origin: bottom right;
-		}
-		.stadium-main-cal-flag-2 {
-			animation: flag-rotate-wild 50ms linear infinite alternate!important;
-			transform-origin: bottom left;
-		}
-		.stadium-main-away-flag-1,
-		.stadium-small-away-flag-1  {
-			animation: flag-rotate-wild 175ms linear infinite alternate!important;
-			transform-origin: bottom right;
-		}
-		.stadium-main-cal-flag-3,
-		.stadium-main-away-flag-2,
-		.stadium-small-away-flag-2  {
-			animation: flag-rotate-wild 150ms linear infinite alternate!important;
-			transform-origin: bottom left;
-		}
-		.stadium-small-cal-flag-11,
-		.stadium-small-cal-flag-1,
-		.stadium-small-cal-flag-2,
-		.stadium-small-away-flag-3  {
-			animation: flag-rotate-wild 200ms linear infinite alternate!important;
-			transform-origin: bottom left;
-		}
-		.stadium-small-cal-flag-3,
-		.stadium-small-away-flag-4  {
-			animation: flag-rotate-2-wild 250ms linear infinite alternate!important;
-			transform-origin: bottom right;
-		}
-		.stadium-small-cal-flag-5,
-		.stadium-small-away-flag-5  {
-			animation: flag-rotate-2-wild 100ms linear infinite alternate!important;
-			transform-origin: bottom left;
-		}
-		.stadium-small-cal-flag-6,
-		.stadium-small-away-flag-6  {
-			animation: flag-rotate-wild 50ms linear infinite alternate-reverse!important;
-			transform-origin: bottom left;
-		}
-		.stadium-small-cal-flag-10,
-		.stadium-small-away-flag-7  {
-			animation: flag-rotate-wild 100ms linear infinite alternate-reverse!important;
-			transform-origin: top left;
-		}
-		.stadium-small-cal-flag-4,
-		.stadium-small-away-flag-8  {
-			animation: flag-rotate-2-wild 150ms linear infinite alternate!important;
-			transform-origin: top left;
-		}
-		.stadium-small-cal-flag-8,
-		.stadium-small-away-flag-9 {
-			animation: flag-rotate-2-wild 100ms linear infinite alternate!important;
-			transform-origin: top right;
-		}
-		.stadium-small-cal-flag-9,
-		.stadium-small-cal-flag-7,
-		.stadium-small-away-flag-10 {
-			animation: flag-rotate-2-wild 250ms linear infinite alternate!important;
-			transform-origin: center left;
-		}
-		.stadium-small-crowd-white-30-cal,
-		.stadium-small-crowd-white-100-away {
-			animation: fadeIn 0.15s steps(2,start) infinite alternate!important;
-		}
-		.stadium-small-crowd-white-60-cal,
-		.stadium-small-crowd-white-60-away {
-			animation: fadeIn .05s steps(2,start) infinite alternate!important;
-		}
-		.stadium-main-crowd-white-1,
-		.stadium-main-crowd-white-10,
-		.stadium-main-crowd-white-20,
-		.stadium-main-crowd-white-30,
-		.stadium-main-crowd-white-40,
-		.stadium-main-crowd-white-50,
-		.stadium-main-crowd-white-60,
-		.stadium-main-crowd-white-70 {
-			animation: crowd-rotate 0.15s steps(2,start) infinite alternate!important;
-			transform-origin: bottom center;
-		}
-		.stadium-main-crowd-white-2,
-		.stadium-main-crowd-white-11,
-		.stadium-main-crowd-white-21,
-		.stadium-main-crowd-white-31,
-		.stadium-main-crowd-white-41,
-		.stadium-main-crowd-white-51,
-		.stadium-main-crowd-white-61,
-		.stadium-main-crowd-white-71 {
-			animation: crowd-side-shake 0.15s steps(2,start) infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-3,
-		.stadium-main-crowd-white-12,
-		.stadium-main-crowd-white-22,
-		.stadium-main-crowd-white-32,
-		.stadium-main-crowd-white-42,
-		.stadium-main-crowd-white-52,
-		.stadium-main-crowd-white-62,
-		.stadium-main-crowd-white-72 {
-			animation: crowd-side-shake 0.25s ease infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-23,
-		.stadium-main-crowd-white-33,
-		.stadium-main-crowd-white-53,
-		.stadium-main-crowd-white-63 {
-			animation: crowd-jump 0.15s steps(2,start) infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-4,
-		.stadium-main-crowd-white-13,
-		.stadium-main-crowd-white-43,
-		.stadium-main-crowd-white-53,
-		.stadium-main-crowd-white-9 {
-			animation: crowd-jump 0.15s ease infinite alternate!important;
-			transform-origin: center center;
-		}
-		.stadium-main-crowd-white-14,
-		.stadium-main-crowd-white-24,
-		.stadium-main-crowd-white-34,
-		.stadium-main-crowd-white-44,
-		.stadium-main-crowd-white-54,
-		.stadium-main-crowd-white-64 {
-			animation: crowd-side-shake 0.05s ease infinite alternate!important;
-			transform-origin: center center;
-		}
+		// .stadium-main-cal-sign-4,
+		// .stadium-small-away-sign-4{
+		// 	animation: sign-vertical-shake-wild 550ms steps(9,start) infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-small-cal-sign-5,
+		// .stadium-small-cal-sign-1,
+		// .stadium-small-away-sign-3{
+		// 	animation: sign-vertical-shake-wild 450ms steps(9,start) infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-small-cal-sign-4,
+		// .stadium-small-away-sign-1{
+		// 	animation: sign-side-shake-wild 1s steps(9,start) infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-small-cal-sign-2,
+		// .stadium-small-away-sign-5{
+		// 	animation: sign-side-shake-wild 250ms steps(9,start) infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-cal-sign-1,
+		// .stadium-main-cal-sign-2,
+		// .stadium-main-away-sign-2{
+		// 	animation: sign-vertical-shake-wild 250ms steps(9,start) infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-cal-sign-3 {
+		// 	animation: sign-side-shake-wild 500ms ease-in-out infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-away-sign-1 {
+		// 	animation: sign-side-shake-wild 750ms ease-in-out infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-cal-flag-1,
+		// .stadium-main-away-flag-3{
+		// 	animation: flag-rotate-2-wild 150ms linear infinite alternate!important;
+		// 	transform-origin: bottom right;
+		// }
+		// .stadium-main-cal-flag-2 {
+		// 	animation: flag-rotate-wild 50ms linear infinite alternate!important;
+		// 	transform-origin: bottom left;
+		// }
+		// .stadium-main-away-flag-1,
+		// .stadium-small-away-flag-1  {
+		// 	animation: flag-rotate-wild 175ms linear infinite alternate!important;
+		// 	transform-origin: bottom right;
+		// }
+		// .stadium-main-cal-flag-3,
+		// .stadium-main-away-flag-2,
+		// .stadium-small-away-flag-2  {
+		// 	animation: flag-rotate-wild 150ms linear infinite alternate!important;
+		// 	transform-origin: bottom left;
+		// }
+		// .stadium-small-cal-flag-11,
+		// .stadium-small-cal-flag-1,
+		// .stadium-small-cal-flag-2,
+		// .stadium-small-away-flag-3  {
+		// 	animation: flag-rotate-wild 200ms linear infinite alternate!important;
+		// 	transform-origin: bottom left;
+		// }
+		// .stadium-small-cal-flag-3,
+		// .stadium-small-away-flag-4  {
+		// 	animation: flag-rotate-2-wild 250ms linear infinite alternate!important;
+		// 	transform-origin: bottom right;
+		// }
+		// .stadium-small-cal-flag-5,
+		// .stadium-small-away-flag-5  {
+		// 	animation: flag-rotate-2-wild 100ms linear infinite alternate!important;
+		// 	transform-origin: bottom left;
+		// }
+		// .stadium-small-cal-flag-6,
+		// .stadium-small-away-flag-6  {
+		// 	animation: flag-rotate-wild 50ms linear infinite alternate-reverse!important;
+		// 	transform-origin: bottom left;
+		// }
+		// .stadium-small-cal-flag-10,
+		// .stadium-small-away-flag-7  {
+		// 	animation: flag-rotate-wild 100ms linear infinite alternate-reverse!important;
+		// 	transform-origin: top left;
+		// }
+		// .stadium-small-cal-flag-4,
+		// .stadium-small-away-flag-8  {
+		// 	animation: flag-rotate-2-wild 150ms linear infinite alternate!important;
+		// 	transform-origin: top left;
+		// }
+		// .stadium-small-cal-flag-8,
+		// .stadium-small-away-flag-9 {
+		// 	animation: flag-rotate-2-wild 100ms linear infinite alternate!important;
+		// 	transform-origin: top right;
+		// }
+		// .stadium-small-cal-flag-9,
+		// .stadium-small-cal-flag-7,
+		// .stadium-small-away-flag-10 {
+		// 	animation: flag-rotate-2-wild 250ms linear infinite alternate!important;
+		// 	transform-origin: center left;
+		// }
+		// .stadium-small-crowd-white-30-cal,
+		// .stadium-small-crowd-white-100-away {
+		// 	animation: fadeIn 0.15s steps(2,start) infinite alternate!important;
+		// }
+		// .stadium-small-crowd-white-60-cal,
+		// .stadium-small-crowd-white-60-away {
+		// 	animation: fadeIn .05s steps(2,start) infinite alternate!important;
+		// }
+		// .stadium-main-crowd-white-1,
+		// .stadium-main-crowd-white-10,
+		// .stadium-main-crowd-white-20,
+		// .stadium-main-crowd-white-30,
+		// .stadium-main-crowd-white-40,
+		// .stadium-main-crowd-white-50,
+		// .stadium-main-crowd-white-60,
+		// .stadium-main-crowd-white-70 {
+		// 	animation: crowd-rotate 0.15s steps(2,start) infinite alternate!important;
+		// 	transform-origin: bottom center;
+		// }
+		// .stadium-main-crowd-white-2,
+		// .stadium-main-crowd-white-11,
+		// .stadium-main-crowd-white-21,
+		// .stadium-main-crowd-white-31,
+		// .stadium-main-crowd-white-41,
+		// .stadium-main-crowd-white-51,
+		// .stadium-main-crowd-white-61,
+		// .stadium-main-crowd-white-71 {
+		// 	animation: crowd-side-shake 0.15s steps(2,start) infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-3,
+		// .stadium-main-crowd-white-12,
+		// .stadium-main-crowd-white-22,
+		// .stadium-main-crowd-white-32,
+		// .stadium-main-crowd-white-42,
+		// .stadium-main-crowd-white-52,
+		// .stadium-main-crowd-white-62,
+		// .stadium-main-crowd-white-72 {
+		// 	animation: crowd-side-shake 0.25s ease infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-23,
+		// .stadium-main-crowd-white-33,
+		// .stadium-main-crowd-white-53,
+		// .stadium-main-crowd-white-63 {
+		// 	animation: crowd-jump 0.15s steps(2,start) infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-4,
+		// .stadium-main-crowd-white-13,
+		// .stadium-main-crowd-white-43,
+		// .stadium-main-crowd-white-9 {
+		// 	animation: crowd-jump 0.15s ease infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+		// .stadium-main-crowd-white-14,
+		// .stadium-main-crowd-white-24,
+		// .stadium-main-crowd-white-34,
+		// .stadium-main-crowd-white-44,
+		// .stadium-main-crowd-white-54,
+		// .stadium-main-crowd-white-64 {
+		// 	animation: crowd-side-shake 0.05s ease infinite alternate!important;
+		// 	transform-origin: center center;
+		// }
+
 		.stadium-main-crowd-white-5,
 		.stadium-main-crowd-white-15,
 		.stadium-main-crowd-white-25,
@@ -1057,4 +1054,4 @@ a[class*="-container"] {
 			}
 		}
 	}
-}
+} }
