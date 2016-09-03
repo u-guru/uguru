@@ -433,9 +433,11 @@
 	</g>
 
 	<g class="ppl-fan-2"
-		init-with="p:[op:0, tro:right bottom]"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine] | a:[ppl-fan-cheer:set:(dur:500ms#func:ease-in-out#aic:4#ad:alternate-reverse):in:delay-1750]"
+		init-with="p:[op:0, tro:right bottom, tr:none]"
+		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine] | send:[fan-jump:public]"
+		when-fan-jump="p:[transform:translateY(0%):translateY(-10%):250:easeInOutBack:^:4+0:ar]"
 		when-hiw-micro-enter="a:[ppl-fan-2-push:set:(dur:500ms#func:cubic-bezier(0.8#0.1#0.5#0.93)#aic:2):in:delay-650, ppl-fan-1-push:set:(dur:500ms#func:ease-in-out#aic:2):in:delay-1150, ppl-fan-cheer:set:(dur:500ms#func:ease-in-out#aic:infinite#ad:alternate):in:delay-3500]">
+		 <!-- | a:[ppl-fan-cheer:set:(dur:500ms#func:ease-in-out#aic:4#ad:alternate-reverse):in:delay-1750] -->
 		<path d="M252.778802,267.92436 C249.110584,267.92436 246.875417,271.089841 246.875417,275.439655 C246.875417,275.900404 247.248928,276.273915 247.709677,276.273915 C248.170427,276.273915 248.543938,275.900404 248.543938,275.439655 C248.543938,271.911859 250.181384,269.592881 252.778802,269.592881 C255.253834,269.592881 256.393605,267.92436 252.778802,267.92436 L252.778802,267.92436 L252.778802,267.92436 Z" class="ppl-fan-2-arm-right" stroke="#2C4944" stroke-width="0.5" fill="#F9E9E1"></path>
 
 		<path d="M249.552995,271.246582 C249.552995,271.090026 249.306348,271.990967 249.115234,271.813721 C248.779493,271.502343 247.446289,271.521613 247.446289,271.246582 C247.446289,270.788374 249.552995,268.577199 249.552995,268.577199 C249.552995,268.577199 251.653406,267.570801 252.664307,267.570801 C253.650334,267.570801 256.786621,269.024414 256.786621,269.024414 C256.786621,269.024414 257.453748,270.048983 257.099121,270.649414 C256.973344,270.862373 255.543779,270.866535 255.543779,270.96875 C255.543779,272.250036 255.543779,277.810345 255.543779,277.810345 L249.552995,277.810345 L249.552995,271.246582 Z" class="ppl-fan-2-torso" stroke="#0648BB" stroke-width="0.5" fill="#F1F1F1"></path>
@@ -623,8 +625,8 @@
 		<path d="M216.285714,513.62069 C212.183028,513.62069 210,517.329779 210,521.905172" class="ppl-eating-arm-right" stroke="#A25681" stroke-width="2"></path>
 		<rect class="ppl-eating-face" stroke="#33534D" stroke-width="0.689655172" fill="#E9A07D" x="211.142857" y="504" width="9.14285714" height="9.0862069" rx="68.9655172"></rect>
 		<g class="ppl-eating-munching"
-			init-with="p:[tro:left bottom]"
-			when-hiw-people-enter="a:[ppl-eating-munching:set:(dur:2000ms#func:linear#aic:infinite#ad:alternate-reverse):in:delay-1200]">
+			init-with="p:[tro:left bottom, tr:rotate(30deg) translateX(0px)]"
+			when-hiw-people-enter="p:[transform:rotate(30deg) translateX(0px):rotate(0deg) translateX(-2px):800:easeOutQuint easeOutSine:^:200+1200:ar]">
 			<path d="M217.352539,513.679688 C221.455226,513.679688 226.324219,517.79243 222.537109,513.679688" class="ppl-eating-arm-left" stroke="#A25681" stroke-width="2"></path>
 			<g class="ppl-eating-pizza-slice"
 				init-with="p:[tro: center center]"
@@ -1197,15 +1199,18 @@
 		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-150">
 		<path d="M667.070442,417.798117 C667.274543,416.252759 666.170547,415 664.613515,415 L664.546485,415 C662.98546,415 661.72,416.259837 661.72,417.830594 L661.72,420.962509 C661.72,422.525803 662.381445,428.23241 663.895674,428.512452 L664.546485,428.632812 C666.07356,428.915229 667.625057,423.698857 667.293295,422.178994 C667.293295,422.178994 666.851191,420.279863 666.851191,419.912278 C666.851191,419.243979 667.070442,417.798117 667.070442,417.798117 Z" class="ppl-kite-hair-back" stroke="#2C4944" stroke-width="0.5" fill="#40484B"></path>
 		<path d="M662.24,424.051724 C666.290411,424.051724 665.259732,425.603448 662.24,425.603448 C659.351977,425.603448 657.82,428.270669 657.82,432.844828 C657.82,433.273324 657.470782,433.62069 657.04,433.62069 C656.609218,433.62069 656.26,433.273324 656.26,432.844828 C656.26,427.527264 658.256253,424.051724 662.24,424.051724 L662.24,424.051724 Z" class="ppl-kite-arm-right" stroke="#2C4944" stroke-width="0.5" fill="#996146"
-			init-with="p:[tro:left top]"
-			when-hiw-people-enter="a:[ppl-kite-fly:set:(dur:1500ms#func:ease-in-out#aic:infinite#ad:alternate):in]"></path>
+			init-with="p:[tro:left top, tr:rotate(-15deg)]"
+			when-hiw-people-enter="p:[transform:rotate(-15deg):rotate(15deg):1500:easeInOutExpo:^:200+150:ar]"></path>
+			<!-- "a:[ppl-kite-fly:set:(dur:1500ms#func:ease-in-out#aic:infinite#ad:alternate):in]" -->
 		<g class="ppl-kite-fly"
-			init-with="p:[tro:left bottom]"
-			when-hiw-people-enter="a:[ppl-kite-fly:set:(dur:2000ms#func:ease-in-out#aic:infinite#ad:alternate):in]">
+			init-with="p:[tro:left bottom, tr:rotate(-15deg)]"
+			when-hiw-people-enter="p:[transform:rotate(-15deg):rotate(15deg):2000:easeInOutQuad:^:200+0:ar]">
+			<!-- when-hiw-people-enter="a:[ppl-kite-fly:set:(dur:2000ms#func:ease-in-out#aic:infinite#ad:alternate):in]" -->
 			<path d="M702.744417,399.369075 C701.120421,403.109745 696.761499,412.417316 691.944336,416.563477 C685.840095,421.817432 674.833984,422.369141 674.833984,422.369141" class="ppl-kite-leash" stroke="#9A5BC5" stroke-linecap="round" stroke-linejoin="round"></path>
 			<g class="ppl-kite-diamond"
-				init-with="p:[tro:center bottom]"
-				when-hiw-people-enter="a:[ppl-kite-diamond:set:(dur:1500ms#func:ease-in-out#aic:infinite#ad:alternate):in]">
+				init-with="p:[tro:center bottom, tr:none]"
+				when-hiw-people-enter="p:[transform:translateY(0%):translateY(25%):1500:easeInOutSine:^:200+50:ar]">
+				<!-- "a:[ppl-kite-diamond:set:(dur:1500ms#func:ease-in-out#aic:infinite#ad:alternate):in]" -->
 				<polygon class="ppl-kite" stroke="#9A5BC5" fill="#B978E6" points="706.733812 370.804785 715.156986 383.251195 702.870838 398.291273 694.361357 380.32856"></polygon>
 				<path d="M705.440066,382.14101 L694.5,380.5 L705.440066,382.14101 L707.121094,371.397461 C707.121094,371.397461 706.391701,376.387176 705.525829,382.153874 L714.5,383.5 L705.525829,382.153874 C704.378563,389.794657 702.991697,398.799496 702.744417,399.369075 L705.440066,382.14101 L705.440066,382.14101 Z" class="ppl-kite-string" stroke="#9A5BC5" stroke-linecap="round" stroke-linejoin="round"></path>
 			</g>
