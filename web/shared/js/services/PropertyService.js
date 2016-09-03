@@ -104,6 +104,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     } else {
       previous_player.tweenConfig.easing[prop_args.property] = prop_args.ease;
     }
+    previous_player.control.iter[prop_args.property] = prop_args.iter;
     previous_player.tweenConfig.from[prop_args.property] = prop_args.start[prop_args.property];
     previous_player.tweenConfig.to[prop_args.property] = prop_args.end[prop_args.property];
     return previous_player;
@@ -410,6 +411,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
     var playerObj = {state: { time: 0, active: false, paused: false}, control: {iter: {}, time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
     playerObj.control.iter[args.property] = args.iter;
+    playerObj.control.iter[args.property].direction = args.direction;
     if (!previous_player) {
       playerObj.elem = elem;
       playerObj.tweenConfig = {
@@ -426,7 +428,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     } else {
 
         playerObj = combinePreviousWithNewProp(args, previous_player);
-        playerObj.control.iter[args.property] = args.iter;
+
     }
 
     if (args.duration !== playerObj.tweenConfig.duration) {
@@ -596,12 +598,41 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         }
         player.inspect && player.prefs.showLog && console.log('-----Animation successfully finished---')
         // playerObj.propDelays[args.property] = {offset: args.delay, duration: args.duration, start: args.start, end: args.end, ease:args.ease, cache:[]};
+        for (key in player.control.iter) {
+          var direction = player.control.iter[key].direction;
+          var count = player.control.iter[key].count;
+
+          if (direction.value === 'ar' && count && count >= 1) {
+            console.log(key, direction, count)
+            if (direction.current === 'f') {
+              player.control.iter[key].direction.current = 'r';
+              var tempStart = player.tweenConfig.to;
+              player.tweenConfig.to = player.tweenConfig.from;
+              player.tweenConfig.from = tempStart;
+              // player.tween = new Tweenable(player.tweenConfig).pause();
+            }
+
+            else if (direction.current === 'r') {
+              player.control.iter[key].direction.current = 'f';
+              var tempStart = player.tweenConfig.to;
+              player.tweenConfig.to = player.tweenConfig.from;
+              player.tweenConfig.from = tempStart;
+              // player.tween = new Tweenable(player.tweenConfig).pause();
+
+              console.log(player.tweenConfig.to, player.tweenConfig.from)
+            }
+          }
+        }
+
+
         player = player.init(player);
+
         var count = 0;
         var maxDelay = -1;
         for (key in playerObj.control.iter) {
           playerObj.control.iter[key].count -= 1;
           count += playerObj.control.iter[key].count;
+
           if (playerObj.control.iter[key].delay && playerObj.control.iter[key].delay > maxDelay) {
             maxDelay = playerObj.control.iter[key].delay;
           }
@@ -977,13 +1008,39 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
             pObj.delay = processDuration(arg_arr[i], property, apply_default);
           continue;
         case (5):
-
             pObj.iter = processIterations(arg_arr[i], property, apply_default);
+          continue;
+        case (6):
+
+            pObj.direction = processDirection(arg_arr[i], property, apply_default);
+
           continue;
       }
     }
     pObj.iter = pObj.iter || processIterations();
+    pObj.direction = pObj.direction || processDirection();
+
+    // pObj.iter.direction = pObj.direction
     return pObj;
+  }
+
+  function processDirection(str) {
+    if (!str || !str.length) {
+      str = 'f';
+      return {value: str, current: 'f'};
+    } else
+    if (str === 'f') {
+      return {value: 'f', current: 'f'};
+    } else
+    if (str === 'r') {
+      return {value: 'f', current: 'r'};
+    }
+    else if (str === 'ar') {
+      return {value: 'ar', current: 'f'};
+    }
+    else if (str === 'ra') {
+      return {value: 'ra', current: 'f'};
+    }
   }
 
   function processIterations(str, property, apply_default) {
