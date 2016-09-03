@@ -301,8 +301,10 @@
 		</g>
 	</a>
 	<g class="ppl-musician"
-		init-with="p:[op:0, tro:center bottom]"
-		when-hiw-people-enter="a:[ppl-musician-rock:set:(dur:500ms#func:linear#aic:infinite#ad:alternate):in:delay-1000] | p:[opacity:0:1:500:easeInOutSine]:delay-1000">
+		init-with="p:[op:0, tro:center bottom, tr:none]"
+		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1000"
+		when-hiw-details-enter="p:[transform:scaleY(1) rotate(0deg) translateZ(0):scaleY(1.1) rotate(-10deg) translateZ(0):500:linear linear:^:200+1000:ar]">
+		<!-- a:[ppl-musician-rock:set:(dur:500ms#func:linear#aic:infinite#ad:alternate):in:delay-1000] -->
 		<path d="M400,364.310345 C403.589851,364.310345 405.908203,368.318966 407.092773,370.952149" class="ppl-musician-arm-left" stroke="#1B2C4A" stroke-width="2"></path>
 		<path d="M403.5,367.342073 C403.5,365.54746 402.041273,364.092639 400.25,364.092639 L400.25,364.092639 C398.455075,364.092639 397,365.541126 397,367.342073 L397,371.92298 C397,373.717593 398.458727,375.172414 400.25,375.172414 L400.25,375.172414 C402.044925,375.172414 403.5,373.723927 403.5,371.92298 L403.5,367.342073 L403.5,367.342073 Z" class="ppl-musician-torso" stroke="#1B2B4A" stroke-width="0.689655172" fill="#0648BB"></path>
 		<path d="M401.5,375.471949 L401.5,383.61454 C401.5,384.379708 402.110933,385 402.889067,385 L402.110933,385 C402.878094,385 403.5,384.379758 403.5,383.617866 L403.5,373.153455 L403.5,372.368501 L397,372.368501 L397,373.153455 L397,383.617866 C397,384.381197 397.610933,385 398.389067,385 L397.610933,385 C398.378094,385 399,384.374838 399,383.61454 L399,375.471949 L401.5,375.471949 L401.5,375.471949 Z" class="ppl-musician-legs" stroke="#356977" stroke-width="0.689655172" fill="#55A4B7"></path>
@@ -316,11 +318,13 @@
 			<path d="M410.769949,366.876481 C410.930994,366.824003 411.088003,366.917567 411.117994,367.07186 L411.497178,369.02259 C411.528353,369.182972 411.415732,369.322513 411.247666,369.334121 L409.000621,369.48933 C408.831644,369.501001 408.668924,369.378055 408.638744,369.22279 L408.392704,367.957026 C408.361822,367.798148 408.468207,367.626528 408.628383,367.574333 L410.769949,366.876481 L410.769949,366.876481 Z" class="ppl-musician-guitar-head" stroke="#2B3234" stroke-width="0.5" fill="#C4A98E"></path>
 		</g>
 		<path d="M398.167969,364.551758 C394.578118,364.551758 398.277344,368.653927 397.092773,371.28711" class="ppl-musician-arm-right" stroke="#1B2C4A" stroke-width="2"
-			init-with="p:[tro:left top]"
-			when-hiw-people-enter="a:[ppl-musician-strum:set:(dur:250ms#func:ease-in-out#aic:infinite#ad:alternate):in]"></path>
+			init-with="p:[tro:left top, tr:none]"
+			when-hiw-people-enter="p:[transform:rotate(-10deg):rotate(10deg):250:easeInOutCirc:^:200+50:ar]"></path>
+			<!-- when-hiw-people-enter="a:[ppl-musician-strum:set:(dur:250ms#func:ease-in-out#aic:infinite#ad:alternate):in]" -->
 		<g class="ppl-musician-mohawk"
-			init-with="p:[tro:center bottom]"
-			when-hiw-people-enter="a:[ppl-musician-strum:set:(dur:500ms#func:ease-in-out#aic:infinite#ad:alternate):in]">
+			init-with="p:[tro:center bottom, tr:none]"
+			when-hiw-people-enter="p:[transform:rotate(-10deg):rotate(10deg):300:easeInOutQuad:^:200+0:ar]">
+			<!-- when-hiw-people-enter="a:[ppl-musician-strum:set:(dur:500ms#func:ease-in-out#aic:infinite#ad:alternate):in]"> -->
 			<path d="M404.5,358.997743 C404.5,356.789851 402.704644,355 400.5,355 L400.5,355 C398.290861,355 396.5,356.800634 396.5,358.997743 L396.5,359.79536 C396.5,362.003253 398.295356,363.793103 400.5,363.793103 L400.5,363.793103 C402.709139,363.793103 404.5,361.992469 404.5,359.79536 L404.5,358.997743 L404.5,358.997743 Z" class="ppl-musician-face" stroke="#33534D" stroke-width="0.689655172" fill="#F9ECE5"></path>
 			<path d="M399.799371,353.117188 C401.601311,353.117188 402.890763,353.513305 402.890763,355.378382 L402.890763,355.7987 C402.890763,357.048482 403.28315,356.874438 402.308841,357.458816 L402.060141,356.86551 C401.617911,355.810513 400.45301,355.391354 399.442987,355.937552 L396.629883,357.458816 C396.831388,355.792692 398.139206,353.117188 399.799371,353.117188 Z" class="ppl-musician-hair" stroke="#33534D" stroke-width="0.689655172" fill="#06573C"></path>
 		</g>
