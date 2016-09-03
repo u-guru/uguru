@@ -35,7 +35,7 @@
 					init-with="p:[tr:scaleX(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
 					border-frame
-					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:^:2+750:a]"></div>
+					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:^:2+750:ar]"></div>
 				<!-- <div class="left"
 					init-with="p:[tr:scaleY(0), tro:left top]"
                     on-init="trigger:[on-enter:self]"

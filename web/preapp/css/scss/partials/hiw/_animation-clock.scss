@@ -1,81 +1,31 @@
-#hiw-clock-tower.animate {
-	.tower, .clock {
-		opacity: 0;
-		animation: hiw-fadeIn 1500ms ease-in-out forwards;
-	}
-	.clock-tower-minute-hand {
-		transform-origin: bottom center;
-		animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
-	}
-	.clock-tower-hour-hand {
-		transform-origin: left center;
-		animation: 12000ms hiw-hour-hand 2000ms linear infinite forwards;
-	}
-	.night-sky-container {
-		.stars {
-			animation: 12000ms hiw-night-shift 2000ms linear infinite forwards;
-			g {
-				[class*="star-"] {
-					stroke-opacity: 0;
-					fill-opacity: 0;
-					animation: fadeInFill 12000ms ease-in-out infinite forwards;
-				}
-				@for $i from 1 through 183 {
-					.star-#{$i} {
-						animation-delay: #{(2000+($i*5))}ms;
-					}
-				}
-			}
-		}
-	}
-	.day-sky-container {
-		animation: 12000ms hiw-day-shift 2000ms linear infinite forwards;
-	}
-	.sunrise-sky-container {
-		animation: 12000ms hiw-sunrise-shift 2000ms linear infinite forwards;
-	}
-	.sunset-sky-container {
-		animation: 12000ms hiw-sunset-shift 2000ms linear infinite forwards;
-	}
-	.sun {
-		transform-origin: 50% 450px;
-		transform: rotate(20deg);
-		animation: 12000ms hiw-sun-rotate 2000ms linear infinite forwards;
-	}
-	.moon {
-		opacity: 0;
-		transform-origin: 50% 450px;
-		transform: rotate(20deg);
-		animation: 12000ms hiw-moon-rotate 1000ms linear infinite forwards;
-	}
-	.clouds {
-		g[class*="cloud-"] {
-			opacity: 0;
-			transform-origin: center center;
-			transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-			animation: 12000ms hiw-clouds 2000ms linear infinite forwards;
-		}
-		path[class*="-shape"], path[class*="-detail"] {
-			animation: hiw-cloud-hover 1000ms linear infinite alternate;
-		}
-		@for $i from 1 through 5 {
-			g.cloud-#{$i} {
-				animation-delay: #{(1500+($i*200))}ms;
-			}
-			path.cloud-#{$i}-shape, path.cloud-#{$i}-detail {
-				animation-delay: #{($i*200)}ms;
-	}
-		}
+.star-animate {
+	animation: fadeInFill 12000ms ease-in-out infinite forwards;
+}
+@for $i from 1 through 183 {
+	.star-#{$i} {
+		animation-delay: #{($i*5)}ms;
 	}
 }
 
-@keyframes hiw-cloud-hover {
-	0% {
-		transform: translateY(3px);
-	}
-	100% {
-		transform: translateY(-3px);
-	}
+@keyframes hiw-hour-hand {
+	0% { transform: rotateZ(0deg) }
+	8.33% { transform: rotateZ(30deg) }
+	16.66% { transform: rotateZ(60deg) }
+	24.99% { transform: rotateZ(90deg) }
+	33.32% { transform: rotateZ(120deg) }
+	41.65% { transform: rotateZ(150deg) }
+	49.98% { transform: rotateZ(180deg) }
+	58.31% { transform: rotateZ(210deg) }
+	66.64% { transform: rotateZ(240deg) }
+	74.97% { transform: rotateZ(270deg) }
+	83.3% { transform: rotateZ(300deg) }
+	91.63% { transform: rotateZ(330deg) }
+	100% { transform: rotateZ(360deg) }
+}
+
+@keyframes hiw-minute-hand {
+	0% { transform: rotateZ(0deg) }
+	100% { transform: rotateZ(360deg) }
 }
 
 /* http://goo.gl/8Wzkzj */
@@ -130,43 +80,19 @@
 }
 
 @keyframes hiw-sun-rotate {
-	0% {
-		transform: rotate(20deg);
-		opacity: 1;
-	}
-	8.33%, 16.66% {
-		opacity: 1;
-	}
-	24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97%, 83.3% {
-		opacity: 0;
-	}
-	91.63% {
-		opacity: 1;
-	}
-	100% {
-		transform: rotate(380deg);
-		opacity: 1;
-	}
+	0% { transform: rotate(20deg); opacity: 1;}
+	8.33%, 16.66% { opacity: 1;}
+	24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97%, 83.3% { opacity: 0;}
+	91.63% { opacity: 1;}
+	100% { transform: rotate(380deg); opacity: 1;}
 }
 
 @keyframes hiw-moon-rotate {
-	0% {
-		transform: rotate(40deg);
-		opacity: 0;
-	}
-	8.33%, 16.66%, 24.99%, 33.32%, 41.65% {
-		opacity: 0;
-	}
-	49.98%, 58.31%, 66.64%, 74.97%, 83.3% {
-		opacity: 1;
-	}
-	91.63% {
-		opacity: 0;
-	}
-	100% {
-		transform: rotate(420deg);
-		opacity: 0;
-	}
+	0% { transform: rotate(40deg); opacity: 0;}
+	8.33%, 16.66%, 24.99%, 33.32%, 41.65% { opacity: 0;}
+	49.98%, 58.31%, 66.64%, 74.97%, 83.3% { opacity: 1;}
+	91.63% { opacity: 0;}
+	100% { transform: rotate(420deg); opacity: 0;}
 }
 
 @keyframes hiw-bg-fadeOut {
@@ -216,57 +142,6 @@
 	}
 }
 
-@keyframes hiw-hour-hand {
-	0% {
-		transform: rotate(0deg);
-	}
-	8.33% {
-		transform: rotate(30deg);
-	}
-	16.66% {
-		transform: rotate(60deg);
-	}
-	24.99% {
-		transform: rotate(90deg);
-	}
-	33.32% {
-		transform: rotate(120deg);
-	}
-	41.65% {
-		transform: rotate(150deg);
-	}
-	49.98% {
-		transform: rotate(180deg);
-	}
-	58.31% {
-		transform: rotate(210deg);
-	}
-	66.64% {
-		transform: rotate(240deg);
-	}
-	74.97% {
-		transform: rotate(270deg);
-	}
-	83.3% {
-		transform: rotate(300deg);
-	}
-	91.63% {
-		transform: rotate(330deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
-@keyframes hiw-minute-hand {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
 @keyframes hiw-day-shift {
 	0%, 8.33%, 16.66% {
 		opacity: 1;
@@ -311,3 +186,83 @@
 		opacity: 1;
 	}
 }
+
+// #hiw-clock-tower.animate {
+// 	.tower, .clock {
+// 		opacity: 0;
+// 		animation: hiw-fadeIn 1500ms ease-in-out forwards;
+// 	}
+// 	.clock-tower-minute-hand {
+// 		transform-origin: bottom center;
+// 		animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards;
+// 	}
+// 	.clock-tower-hour-hand {
+// 		transform-origin: left center;
+// 		animation: 12000ms hiw-hour-hand 2000ms linear infinite forwards;
+// 	}
+// 	.night-sky-container {
+// 		.stars {
+// 			animation: 12000ms hiw-night-shift 2000ms linear infinite forwards;
+// 			g {
+// 				[class*="star-"] {
+// 					stroke-opacity: 0;
+// 					fill-opacity: 0;
+// 					animation: fadeInFill 12000ms ease-in-out infinite forwards;
+// 				}
+// 				@for $i from 1 through 183 {
+// 					.star-#{$i} {
+// 						animation-delay: #{(2000+($i*5))}ms;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// 	.day-sky-container {
+// 		animation: 12000ms hiw-day-shift 2000ms linear infinite forwards;
+// 	}
+// 	.sunrise-sky-container {
+// 		animation: 12000ms hiw-sunrise-shift 2000ms linear infinite forwards;
+// 	}
+// 	.sunset-sky-container {
+// 		animation: 12000ms hiw-sunset-shift 2000ms linear infinite forwards;
+// 	}
+// 	.sun {
+// 		transform-origin: 50% 450px;
+// 		transform: rotate(20deg);
+// 		animation: 12000ms hiw-sun-rotate 2000ms linear infinite forwards;
+// 	}
+// 	.moon {
+// 		opacity: 0;
+// 		transform-origin: 50% 450px;
+// 		transform: rotate(20deg);
+// 		animation: 12000ms hiw-moon-rotate 1000ms linear infinite forwards;
+// 	}
+// 	.clouds {
+// 		g[class*="cloud-"] {
+// 			opacity: 0;
+// 			transform-origin: center center;
+// 			transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+// 			animation: 12000ms hiw-clouds 2000ms linear infinite forwards;
+// 		}
+// 		path[class*="-shape"], path[class*="-detail"] {
+// 			animation: hiw-cloud-hover 1000ms linear infinite alternate;
+// 		}
+// 		@for $i from 1 through 5 {
+// 			g.cloud-#{$i} {
+// 				animation-delay: #{(1500+($i*200))}ms;
+// 			}
+// 			path.cloud-#{$i}-shape, path.cloud-#{$i}-detail {
+// 				animation-delay: #{($i*200)}ms;
+// 			}
+// 		}
+// 	}
+// }
+
+// @keyframes hiw-cloud-hover {
+// 	0% {
+// 		transform: translateY(3px);
+// 	}
+// 	100% {
+// 		transform: translateY(-3px);
+// 	}
+// }

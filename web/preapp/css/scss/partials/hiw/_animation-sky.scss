@@ -1,0 +1,84 @@
+@keyframes hiw-cloud-hover {
+	0% { transform: translateY(3px) translateZ(0); opacity: 1 }
+	100% { transform: translateY(-3px) translateZ(0); opacity: 1 }
+}
+
+@keyframes hiw-cloud-fall-end {
+	0% { transform: translate3d(0,-1000px,0); opacity: 1 }
+	100% { transform: translate3d(0,0,0); opacity: 1 }
+}
+
+@keyframes hiw-cloud-fall {
+	0% { transform: translate3d(0,-1000px,0); opacity: 1 }
+	100% { transform: translate3d(0,1000px,0); opacity: 1 }
+}
+
+@keyframes hiw-sky-balloon-gradient {
+	0% { transform: translate3d(0,-100%,0) }
+	100% { transform: translate3d(0,0,0) }
+}
+
+@keyframes hiw-basket-balloon-sway {
+	0% {transform: rotate(-5deg);}
+	100% {transform: rotate(5deg);}
+}
+
+@keyframes hiw-balloon-move-baking {
+	0% { transform: translate3d(-520%,-300%,0) }
+	80% { transform: translate3d(-208%,-250%,0) }
+	100% { transform: translate3d(0,0,0) }
+}
+
+@keyframes hiw-balloon-move-hh {
+	0% { transform: translate3d(-520%,-300%,0) }
+	75% { transform: translate3d(-208%,-225%,0) }
+	100% { transform: translate3d(0,0,0) }
+}
+
+@keyframes hiw-balloon-move-academic {
+	0% { transform: translate3d(-520%,-300%,0) }
+	70% { transform: translate3d(-208%,-200%,0) }
+	100% { transform: translate3d(0,0,0) }
+}
+
+@keyframes hiw-balloon-move-tech {
+	0% { transform: translate3d(-520%,-300%,0) }
+	65% { transform: translate3d(-208%,-200%,0) }
+	100% { transform: translate3d(0,0,0) }
+}
+
+@keyframes hiw-balloon-move-photo {
+	0% { transform: translate3d(-520%,-300%,0) }
+	60% { transform: translate3d(-208%,-200%,0) }
+	100% { transform: translate3d(0,0,0) }
+}
+
+@keyframes hiw-balloon-anticipation {
+	0% { transform: translate3d(0,0,0) }
+	100% { transform: translate3d(0,5%,0) }
+}
+
+@keyframes hiw-balloon-anticipation-reverse {
+	0% { transform: translate3d(0,5%,0) }
+	100% { transform: translate3d(0,0,0) }
+}
+
+@keyframes hiw-helicopter-translate {
+	0% { transform: translate3d(-100%,0,0) }
+	100% { transform: translate3d(0,0,0) }
+}
+
+@keyframes hiw-helicopter-spin-1 {
+	0% { transform: rotateY(0) translateZ(0) }
+	100% { transform: rotateY(1turn) translateZ(0) }
+}
+
+@keyframes hiw-helicopter-spin-2 {
+	0% { transform: rotateY(1turn) translateZ(0) }
+	100% { transform: rotateY(0) translateZ(0);}
+}
+
+@keyframes hiw-helicopter-rotate {
+	0% { transform: rotateZ(-0.5deg) translateZ(0) }
+	100% { transform: rotateZ(0.5deg) translateZ(0) }
+}
