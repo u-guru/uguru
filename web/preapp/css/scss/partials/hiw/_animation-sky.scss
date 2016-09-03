@@ -1,3 +1,14 @@
+// @for $i from 1 through 9 {
+// 	.hiw-sky-cloud-#{$i} {
+// 		animation: hiw-cloud-fall (#{($i*200)}ms) linear (#{($i*200)}ms) 2,hiw-cloud-fall-end (#{($i*200)}ms) ease-out (#{(($i*20) + 2000)}ms) forwards;
+// 	}
+// }
+// @for $i from 10 through 20 {
+// 	.hiw-sky-cloud-#{$i} {
+// 		animation: hiw-cloud-fall (#{($i*200)})ms linear (#{($i/2*200)})ms 2,hiw-cloud-fall-end (#{($i*200)})ms ease-out (#{(($i/2*20) + 2000)})ms forwards;
+// 	}
+// }
+
 @keyframes hiw-cloud-hover {
 	0% { transform: translateY(3px) translateZ(0); opacity: 1 }
 	100% { transform: translateY(-3px) translateZ(0); opacity: 1 }
