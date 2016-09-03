@@ -29,31 +29,33 @@
             -->
 
             <!-- Ex 1. See reference above-->
-			<stagger-children on-enter="[draw-border-frame]:+150">
-				<div class="top"
-					init-with="p:[tr:scaleX(0), tro:center center]"
+
+
+            <stagger-children on-enter="[draw-border-frame]:+150">
+                <div class="top"
+                    init-with="p:[tr:scaleX(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
-					border-frame
-					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:^:2+750]"></div>
-				<div class="left"
-					init-with="p:[tr:scaleY(0), tro:left top]"
+                    border-frame
+                    on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0]"></div>
+                <div class="left"
+                    init-with="p:[tr:scaleY(0), tro:left top]"
                     on-init="trigger:[on-enter:self]"
-					draw-border-frame
-					on-enter="p:[transform:scaleY(0):scaleY(1):500:easeOutQuart:^:3+750]"></div>
-				<div class="right"
-					init-with="p:[tr:scaleY(0), tro:right top]"
+                    draw-border-frame
+                    on-enter="p:[transform:scaleY(0):scaleY(1):500:easeOutQuart:0:3+750]"></div>
+                <div class="right"
+                    init-with="p:[tr:scaleY(0), tro:right top]"
                     on-init="trigger:[on-enter:self]"
-					on-enter="p:[transform:scaleY(0):scaleY(1):500:easeOutQuart:^:3+750]"></div>
-				<div class="bot-left"
-					init-with="p:[tr:scaleX(0), tro:left center]"
+                    on-enter="p:[transform:scaleY(0):scaleY(1):500:easeOutQuart:0:3+750]"></div>
+                <div class="bot-left"
+                    init-with="p:[tr:scaleX(0), tro:left center]"
                     on-init="trigger:[on-enter:self]"
-					draw-border-frame
-					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:^:3+750]"></div>
-				<div class="bot-right"
-					init-with="p:[tr:scaleX(0), tro:right center]"
+                    draw-border-frame
+                    on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div>
+                <div class="bot-right"
+                    init-with="p:[tr:scaleX(0), tro:right center]"
                     on-init="trigger:[on-enter:self]"
-					draw-border-frame
-					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div>
+                    draw-border-frame
+                    on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div>
                 <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
                     init-with="p-op"
                     on-init="t-enter"
@@ -128,10 +130,7 @@
                     on-init="t-enter"
                     on-enter="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-1100]"><span>72</span> reviews</h3>
             </div>
-            <button class="bg-moola normal"
-                init-with="p:[op:0, tro:center center, color:rgba(255#255#255#0)]"
-                on-init="t-enter"
-                on-enter="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500] | p:[color:rgba(255#255#255#1):delay-700, t:color 500ms ease-in-out]">Contact Guru</button>
+
         </stagger-children>
     </div>
 </div>
