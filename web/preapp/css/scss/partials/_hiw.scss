@@ -6,6 +6,15 @@
 @import 'hiw/animation-sky';
 
 // main
+#projector-hiw-map {
+	max-width: 900px;
+	max-height: 595px;
+	@media screen and (min-height: 900px) {
+	    max-width: 1080px;
+	    max-height: 715px;
+	}
+}
+
 .projector-slide .hiw-svg { width: 100%; height: 100% }
 
 .map-stadium, .map-library, .map-dorm, .map-clock-tower,
@@ -43,15 +52,6 @@ a[class*="-container"] {
 	}
 }
 
-// stadium transitions
-#hiw-sky-balloon, #hiw-stadium, #hiw-stadium-balloons {
-	position: absolute;
-	top: 0;
-	left: 0;
-	// #hiw-sky-gradient (?)
-	// transition: all 500ms ease-out 1s;
-}
-
 // other sections
 #hiw-clock-tower, #hiw-dorm, #hiw-library {
 	position: absolute;
@@ -59,6 +59,13 @@ a[class*="-container"] {
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+// stadium
+#hiw-sky-balloon, #hiw-stadium, #hiw-stadium-balloons {
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 // library
@@ -76,8 +83,8 @@ a[class*="-container"] {
 			transform-origin: center bottom;
 		}
 	}
-	#hiw-library-inside{
-		transition: all 100ms linear 1000ms;
+	#hiw-library-inside {
+		// transition: all 100ms linear 1000ms;
 		left: 0;
 	}
 	#hiw-library-outside-left, #hiw-library-outside-right {
@@ -88,9 +95,6 @@ a[class*="-container"] {
 		overflow: hidden;
 		svg {
 			width: 200%;
-			> g {
-				transition: transform 600ms cubic-bezier(.77,-0.22,.05,1.27);
-			}
 		}
 	}
 	#hiw-library-outside-left {
@@ -111,40 +115,6 @@ a[class*="-container"] {
 			}
 		}
 	}
-	&.animate {
-		#hiw-library-inside {
-			// z-index: 1000;
-		}
-		#hiw-library-outside-left, #hiw-library-outside-right {
-			svg {
-				> g {
-					transform: scaleX(0);
-				}
-			}
-		}
-	}
-	// #hiw-library-inside > g {
-	// 	transform: scaleY(0);
-	// 	transition: all 500ms cubic-bezier(.77,-0.22,.05,1);
-	// 	transition-delay: 0;
-	// }
-	// #hiw-library-outside > g {
-	// 	transform: scaleY(1);
-	// 	transition: all 500ms cubic-bezier(.77,0,.05,1.27);
-	// 	transition-delay: 400ms;
-	// }
-	// &.animate {
-	// 	#hiw-library-inside > g {
-	// 		transform: scaleY(1);
-	// 		transition: all 500ms cubic-bezier(.77,0,.05,1.27);
-	// 		transition-delay: 400ms;
-	// 	}
-	// 	#hiw-library-outside > g {
-	// 		transform: scaleY(0);
-	// 		transition: all 500ms cubic-bezier(.77,-0.22,.05,1);
-	// 		transition-delay: 0;
-	// 	}
-	// }
 }
 
 .hiw-balloon {

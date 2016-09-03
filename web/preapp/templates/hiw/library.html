@@ -8,7 +8,9 @@
 			<rect class="library-inside-roof" stroke="#5A473F" stroke-width="4" fill="#56493D" x="15" y="57" width="834" height="63"></rect>
 		</g>
 	</svg>
-	<svg id="hiw-library-inside" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMid slice">
+	<svg id="hiw-library-inside" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMid slice"
+		init-default
+		when-library-doors-open="p:[z-index:1000]:delay-600">
 		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<!-- <rect class="library-inside-back-main" stroke="#A4443C" stroke-width="4" fill="#F2655A" opacity="0.5" x="33.8194774" y="57" width="796.361045" height="393.5"></rect>
 			<rect class="library-inside-back-casing-lower" stroke="#5A473F" stroke-width="4" fill="#56493D" x="15" y="287.75" width="834" height="30.5"></rect>
@@ -60,7 +62,9 @@
 	</svg>
 	<div id="hiw-library-outside-left">
 		<svg id="hiw-library-outside" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMid slice">
-			<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+			<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+				init-default
+				when-library-doors-open="p:[transform:scaleX(1):scaleX(0):600:easeOutBack]">
 				<!-- <rect class="library-outside-back-main" stroke="#A4443C" stroke-width="4" fill="#F2655A" opacity="0.5" x="33.8194774" y="57" width="796.361045" height="393.5"></rect>
 				<rect class="library-outside-back-casing-lower" stroke="#5A473F" stroke-width="4" fill="#56493D" x="15" y="287.75" width="834" height="30.5"></rect>
 				<rect class="library-outside-roof" stroke="#5A473F" stroke-width="4" fill="#56493D" x="15" y="57" width="834" height="63"></rect> -->
@@ -84,13 +88,15 @@
 				<polygon class="library-outside-casing-upper-top" stroke="#9F7146" stroke-width="4" fill="#D4955B" points="63 119.411177 63 87 802 87 802 120.921053 783 151.25 85.463222 151.25"></polygon>
 				<polygon class="library-outside-casing-upper-bottom" stroke="#9F7146" stroke-width="4" fill="#BAA693" points="63 121 802 121 782.053981 151.5 85.0882617 151.5"></polygon>
 				<rect class="library-outside-casing-lower" stroke="#9F7146" stroke-width="4" fill="#D4955B" x="68" y="273" width="729" height="30.5"></rect>
-				<g class="library-outside-door">
+				<a class="library-outside-door"
+					init-default
+					on-click="s:[library-doors-open]">
 					<path d="M329,309 L536,309 L536,444 L329,444 L329,309 Z M344,324 L521,324 L521,441 L344,441 L344,324 Z" class="library-outside-door-casing" stroke="#A4443C" stroke-width="4" fill="#C45D49"></path>
 					<rect class="library-outside-door-main-border" stroke="#596B77" stroke-width="4" x="344" y="324" width="177" height="117"></rect>
 					<rect class="library-outside-door-handles" stroke="#596B77" stroke-width="4" fill="#8A9EA3" x="417.5" y="367" width="30" height="29"></rect>
 					<path d="M433,324.471774 L433,440.528226" class="library-outside-door-line" stroke="#596B77" stroke-width="4"></path>
 					<rect class="library-outside-door-steps" stroke="#A4443C" stroke-width="4" fill="#C45D49" x="268" y="444" width="329.5" height="38"></rect>
-				</g>
+				</a>
 				<g class="library-outside-column-outer-left">
 					<rect class="library-outside-column-outer-left-bottom" stroke="#9F7146" stroke-width="3" fill="#D4955B" x="79.5" y="458" width="30" height="14"></rect>
 					<rect class="library-outside-column-outer-left-main" stroke="#9F7146" stroke-width="3" fill="#BAA693" x="83" y="304" width="23" height="154"></rect>
@@ -124,7 +130,9 @@
 	</div>
 	<div id="hiw-library-outside-right">
 		<svg id="hiw-library-outside" class="hiw-svg" width="864px" height="572px" viewBox="0 0 864 572" preserveAspectRatio="xMidYMid slice">
-			<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+			<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+				init-default
+				when-library-doors-open="p:[transform:scaleX(1):scaleX(0):600:easeOutBack]">
 				<!-- <rect class="library-outside-back-main" stroke="#A4443C" stroke-width="4" fill="#F2655A" opacity="0.5" x="33.8194774" y="57" width="796.361045" height="393.5"></rect>
 				<rect class="library-outside-back-casing-lower" stroke="#5A473F" stroke-width="4" fill="#56493D" x="15" y="287.75" width="834" height="30.5"></rect>
 				<rect class="library-outside-roof" stroke="#5A473F" stroke-width="4" fill="#56493D" x="15" y="57" width="834" height="63"></rect> -->
@@ -148,13 +156,15 @@
 				<polygon class="library-outside-casing-upper-top" stroke="#9F7146" stroke-width="4" fill="#D4955B" points="63 119.411177 63 87 802 87 802 120.921053 783 151.25 85.463222 151.25"></polygon>
 				<polygon class="library-outside-casing-upper-bottom" stroke="#9F7146" stroke-width="4" fill="#BAA693" points="63 121 802 121 782.053981 151.5 85.0882617 151.5"></polygon>
 				<rect class="library-outside-casing-lower" stroke="#9F7146" stroke-width="4" fill="#D4955B" x="68" y="273" width="729" height="30.5"></rect>
-				<g class="library-outside-door">
+				<a class="library-outside-door"
+					init-default
+					on-click="s:[library-doors-open]">
 					<path d="M329,309 L536,309 L536,444 L329,444 L329,309 Z M344,324 L521,324 L521,441 L344,441 L344,324 Z" class="library-outside-door-casing" stroke="#A4443C" stroke-width="4" fill="#C45D49"></path>
 					<rect class="library-outside-door-main-border" stroke="#596B77" stroke-width="4" x="344" y="324" width="177" height="117"></rect>
 					<rect class="library-outside-door-handles" stroke="#596B77" stroke-width="4" fill="#8A9EA3" x="417.5" y="367" width="30" height="29"></rect>
 					<path d="M433,324.471774 L433,440.528226" class="library-outside-door-line" stroke="#596B77" stroke-width="4"></path>
 					<rect class="library-outside-door-steps" stroke="#A4443C" stroke-width="4" fill="#C45D49" x="268" y="444" width="329.5" height="38"></rect>
-				</g>
+				</a>
 				<g class="library-outside-column-outer-left">
 					<rect class="library-outside-column-outer-left-bottom" stroke="#9F7146" stroke-width="3" fill="#D4955B" x="79.5" y="458" width="30" height="14"></rect>
 					<rect class="library-outside-column-outer-left-main" stroke="#9F7146" stroke-width="3" fill="#BAA693" x="83" y="304" width="23" height="154"></rect>
