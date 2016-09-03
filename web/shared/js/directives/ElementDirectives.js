@@ -42,13 +42,13 @@ angular.module('uguru.shared.directives')
 
           var stagDict = DirectiveService.processStaggerArgs(attr)
           // console.log('its compiling', attr.onEnter)
-
+          console.log(stagDict)
 
           return {
             pre: function preLink(lScope, lElem, lAttr) {
               var parent = lElem.parent();
 
-              console.log(lElem[0])
+
               parent[0].removeChild(lElem[0])
                   transclude(lScope, function(clone, innerScope) {
 
@@ -64,6 +64,7 @@ angular.module('uguru.shared.directives')
                     // console.log(clonedChildrenWithAttr.length)
                     //go through each element
                     for (key in stagDict) {
+
                       var hasKey = key in stagDict && stagDict[key];
                       var stateTime = hasKey && 'time' in stagDict[key] && stagDict[key].time;
                       if (hasKey && stateTime && (!stateTime.values || !stateTime.values.length)) {
@@ -87,6 +88,10 @@ angular.module('uguru.shared.directives')
                             var selectorPrefs = stagDict[key].selector;
 
                             var matchesWithConstraints = DirectiveService.verifyStaggerChildSelector(selectorPrefs[0], iChild)
+                            if (key.indexOf('when') > -1) {
+                              console.log(stagDict[key], stagDict[key].time.values )
+
+                            }
                             if (matchesWithConstraints && stagDict[key].time.values && stagDict[key].time.values.length) {
 
                               var extensionValue = ':' + 'delay-' + stagDict[key].time.values.shift();

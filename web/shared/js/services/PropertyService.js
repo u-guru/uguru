@@ -84,6 +84,18 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     var args = processPropertyArgs(elem, property, arg_arr, state_name, apply_default);
     args.stateNameCamel = UtilitiesService.camelCase(state_name);
     args.stateName = state_name;
+    if (args.direction.current === 'r' && (args.direction.value === 'ar' || args.direction.current === 'r')) {
+      var tempEnd = {};
+      for (key in args.start) {
+        tempEnd[key] = args.start[key];
+      }
+      args.start = args.end;
+      args.end = tempEnd;
+      if (args.direction.value === 'ar') {
+        args.direction.value = 'a';
+      }
+
+    }
     args.player = initPlayerFromArgs(elem[0], args, previous_player);
 
 
@@ -602,8 +614,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           var direction = player.control.iter[key].direction;
           var count = player.control.iter[key].count;
 
-          if (direction.value === 'ar' && count && count >= 1) {
-            console.log(key, direction, count)
+          if (direction.value === 'a' && count && count >= 1) {
             if (direction.current === 'f') {
               player.control.iter[key].direction.current = 'r';
               var tempStart = player.tweenConfig.to;
@@ -1033,13 +1044,13 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       return {value: 'f', current: 'f'};
     } else
     if (str === 'r') {
-      return {value: 'f', current: 'r'};
+      return {value: 'r', current: 'r'};
+    }
+    else if (str === 'a') {
+      return {value: 'a', current: 'f'};
     }
     else if (str === 'ar') {
-      return {value: 'ar', current: 'f'};
-    }
-    else if (str === 'ra') {
-      return {value: 'ra', current: 'f'};
+      return {value: 'ar', current: 'r'};
     }
   }
 

@@ -29,19 +29,21 @@
             -->
 
             <!-- Ex 1. See reference above-->
-			<!-- @samir bug where alternate does not work -->
-			<stagger-children on-enter="[draw-border-frame]:+150">
+			<stagger-children on-enter="[border-frame]:+500" when-green-button-clicked="[border-frame]:1500" >
 				<div class="top"
-					init-with="p:[tr:scaleX(0), tro:center center]"
+                    init-with="p:[tr:scaleX(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
 					border-frame
-					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:^:20+750:ar]"></div>
-				<!-- <div class="left"
+					on-enter="p:[transform:scaleX(0):scaleX(1):1500:easeTo:^:1]"
+                    when-green-button-clicked="p:[transform:scaleX(0):scaleX(1):1500:easeTo:^:1:r]"
+                    ></div>
+				<div class="left"
 					init-with="p:[tr:scaleY(0), tro:left top]"
                     on-init="trigger:[on-enter:self]"
-					draw-border-frame
-					on-enter="p:[transform:scaleY(0):scaleY(1):500:easeOutQuart:^:3+750]:r"></div>
-				<div class="right"
+					border-frame
+					when-green-button-clicked="p:[transform:scaleY(0):scaleY(1):1500:easeTo:^:1]"></div>
+				<!--
+                <div class="right"
 					init-with="p:[tr:scaleY(0), tro:right top]"
                     on-init="trigger:[on-enter:self]"
 					on-enter="p:[transform:scaleY(0):scaleY(1):500:easeOutQuart:^:3+750]:r"></div>
@@ -132,6 +134,7 @@
             <button class="bg-moola normal"
                 init-with="p:[op:0, tro:center center, color:rgba(255#255#255#0)]"
                 on-init="t-enter"
+                on-click="s:[green-button-clicked:public]"
                 on-enter="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500] | p:[color:rgba(255#255#255#1):delay-700, t:color 500ms ease-in-out]">Contact Guru</button>
         </stagger-children>
     </div>
