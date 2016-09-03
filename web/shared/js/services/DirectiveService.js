@@ -68,7 +68,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           }
         })
       }
-
+      console.log(constraints.attrs, result, elem)
       return result;
     }
 
@@ -116,7 +116,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
     function applyMappingDelayFuncToFutureChildren(state_name, options) {
       return function(children_arr, time_dict, selector) {
-        console.log(time_dict)
         var childCount = 0;
         for (var i = 0; i < children_arr.length; i++) {
           var iChild = children_arr[i]
@@ -417,6 +416,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function initCustomStateWatcher(scope, element, type, args, attr_value) {
+
       if (!(type in scope.root.public.customStates)) {
               scope.root.public.customStates[type] = {};
       }
@@ -1162,25 +1162,41 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function triggerStateWithinScope(stateName, stateScope, delay, scope, elem) {
+        // if (stateName.indexOf('when-') > -1) {
+        //   console.log()
+        // }
         if (delay) {
+
           $timeout(function() {
-            dispatchTrigger(stateName, stateScope, elem);
+            dispatchTrigger(stateName, stateScope, elem, scope);
             $timeout(function() {
               scope.$apply();
             })
           }, delay)
         } else {
-          dispatchTrigger(stateName, stateScope, elem);
+          dispatchTrigger(stateName, stateScope, elem, scope);
 
           $timeout(function() {
               scope.$apply();
           })
         }
 
-        function dispatchTrigger(trig_name, trigger_scope, elem) {
+        function dispatchTrigger(trig_name, trigger_scope, elem, reg_scope) {
+          if (trigger_scope === 'self' && trig_name.indexOf('when-') > -1) {
+            trigger_type = 'when';
+            // trigger_msg = trig_name.replace('when-', '');
+            var triggerCamel = UtilitiesService.camelCase(trig_name);
+            console.log(elem[0].getAttribute(trig_name))
+            var elemArgs = parseArgs(elem[0].getAttribute(trig_name), trig_name, elem);
+
+            for (key in elemArgs) {
+
+              if ((argNames || supportedCommands).indexOf(key) > -1) {
+                activateArg(key, elemArgs[key], scope, elem);
+              }
+            }
+          } else
           if (trigger_scope === 'self') {
-            // console.log('dispatching', trig_name, 'on self');
-            // elem[0].classList.add(trig_name);
             triggerActionOnElem(trig_name, elem[0]);
           } else if (trigger_scope === 'parent') {
             triggerActionOnElem(trig_name, elem[0].parentNode);
@@ -1225,6 +1241,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       if (arg_dict.delay) {
         $timeout(function() {
           processMessageArr(arg_dict.messages, scope, elem);
+
         }, arg_dict.delay)
       } else {
         processMessageArr(arg_dict.messages, scope, elem);
