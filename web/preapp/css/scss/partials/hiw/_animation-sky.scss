@@ -14,7 +14,7 @@
 .cloud-fall-hover {
 	@for $i from 1 through 20 {
 		&:nth-child(#{$i}) {
-			animation: hiw-cloud-hover 1500ms linear (#{(($i*20)+200)}ms) infinite alternate forwards;
+			animation: hiw-cloud-hover 1500ms linear (-#{($i*100)}ms) infinite alternate forwards;
 		}
 	}
 }
