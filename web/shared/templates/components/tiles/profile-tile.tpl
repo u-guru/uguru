@@ -73,7 +73,7 @@
 				when-academic-tile-init="p:[transform:translateY(-100px) scaleY(3):translateY(0px) scaleY(1):1000:easeInOutCubic, opacity:0:1:250:easeOutSine:delay-250]">
 				<ul class="rating-stars" data-rating="4" data-half="true">
 					<li init-with="p-op"
-						when-academic-tile-init="a:[pf-bounceIn-rotate:set:(dur:500ms#func:ease-out):in:delay-1400]">
+						when-academic-tile-init="a:[bounceIn-rotate-subtle:set:(dur:500ms#func:ease-out):in:delay-1400]">
 						<svg viewBox="0 0 100 100">
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
 							<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14"></polygon>

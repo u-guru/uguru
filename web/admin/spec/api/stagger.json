@@ -51,7 +51,7 @@
             "impt": "Duration + Time are Required for the easing to take effect",
             "complete": true,
 			"bugs": {
-				"description": "Used with child attribute, playing but not staggering",
+				"description": "Child elements flash in and then re-animate in, causing a flicker",
 				"file": "/progress/rating.tpl",
 				"line": "3"
 			}

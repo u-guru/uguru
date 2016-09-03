@@ -36,7 +36,7 @@
                     init-with="p:[tr:scaleX(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
                     border-frame
-                    on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div>
+                    on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0]"></div>
                 <div class="left"
                     init-with="p:[tr:scaleY(0), tro:left top]"
                     on-init="trigger:[on-enter:self]"
@@ -130,10 +130,7 @@
                     on-init="t-enter"
                     on-enter="a:[fadeIn:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-1100]"><span>72</span> reviews</h3>
             </div>
-            <button class="bg-moola normal"
-                init-with="p:[op:0, tro:center center, color:rgba(255#255#255#0)]"
-                on-init="t-enter"
-                on-enter="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500] | p:[color:rgba(255#255#255#1):delay-700, t:color 500ms ease-in-out]">Contact Guru</button>
+
         </stagger-children>
     </div>
 </div>

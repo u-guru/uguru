@@ -294,7 +294,8 @@
 				when-hiw-enter="a:[hiw-hour-hand:set:(dur:12000ms#func:linear#aic:infinite):in]:delay-2000"></path>
 			<path d="M432.753497,286.613636 L432.753497,278.72028" class="map-clock-tower-minute-hand" stroke="#D5ECF1"
 				init-with="p:[tro:center bottom]"
-				when-hiw-enter="a:[hiw-minute-hand:set:(dur:2000ms#func:linear#aic:infinite):in]:delay-500"></path>
+				when-hiw-enter="p:[transform:rotate(0deg):rotate(360deg):2000:linear:^:400+0]"></path>
+				<!-- when-hiw-enter="a:[hiw-minute-hand:set:(dur:2000ms#func:linear#aic:infinite):in]:delay-500" -->
 			<rect class="map-clock-tower-invisible-container" x="269.248252" y="184" width="324.755245" height="215"></rect>
 		</g>
 	</a>
@@ -416,7 +417,8 @@
 	   <path d="M29.52,240.2 L29.52,249.546154 L29.52,240.2 L29.52,240.2 L29.52,240.2 L29.52,240.2 L29.52,240.2 L29.52,240.2 L29.52,240.2 Z M56.52,240.2 L56.52,249.546154 L56.52,240.2 L56.52,240.2 L56.52,240.2 L56.52,240.2 L56.52,240.2 L56.52,240.2 L56.52,240.2 Z" class="hd-dog-stand" stroke="#757575" stroke-linecap="round" stroke-linejoin="round"></path>
 		<g class="hd-dog"
 			init-with="p:[tro:center center]"
-			when-hiw-micro-enter="a:[food-shake:set:(dur:500ms#func:ease-in-out#aic:infinite#dir:alternate):in]">
+			when-hiw-micro-enter="p:[transform:rotate(0deg):rotate(-10deg):500:easeInOutSine:^:200+500]">
+			<!-- a:[food-shake:set:(dur:500ms#func:ease-in-out#aic:infinite#dir:alternate):in] NEEDS ALTERNATE -->
 		   <path d="M28.0198835,226.069472 L46.9613137,230.948141 L66.3640577,233.77495 C68.1614429,234.136145 69.3087897,235.80655 68.9265409,237.50674 C68.5443761,239.206556 66.7793426,240.292093 64.9801165,239.930528 L45.5773726,237.103718 L26.6359423,232.22505 C24.8385571,231.863855 23.6912103,230.19345 24.0734591,228.49326 C24.4556239,226.793444 26.2206574,225.707907 28.0198835,226.069472 L28.0198835,226.069472 Z" class="hd-dog-sausage" stroke="#CF7961" stroke-linecap="round" stroke-linejoin="round" fill="#EC8E75"></path>
 		   <path d="M28,227 C28,227 30.5456084,230.417125 33.6289417,231.025623 C36.712275,231.63412 37.25,228.825493 40.3333333,229.433991 C43.4166667,230.042488 42.8789417,232.851116 45.962275,233.459613 C49.0456084,234.068111 49.5833333,231.259484 52.6666667,231.867981 C55.75,232.476479 55.212275,235.285106 58.2956084,235.893604 C61.3789417,236.502101 65,234.301972 65,234.301972" class="hd-dog-mustard" stroke="#F6DB4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 		   <path d="M31.4965801,230.147746 C31.4965801,230.147746 41.6225686,233.9359 46.8590999,235.028533 C52.0956312,236.121165 62.9157679,236.703541 62.9157679,236.703541 C66.3286068,237.41565 68.5515407,240.503979 67.8805002,243.60304 C67.2096072,246.70142 63.251547,250.17607 44.4295814,246.248759 C25.6076157,242.321447 23.4312887,237.567533 24.1023293,234.468472 C24.7732223,231.370093 28.0805018,229.434962 31.4965801,230.147746 L31.4965801,230.147746 Z" class="hd-dog-bun" stroke="#F4D9A7" stroke-linecap="round" stroke-linejoin="round" fill="#FDE3B4"></path>
