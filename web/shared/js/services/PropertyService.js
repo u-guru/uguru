@@ -408,8 +408,8 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
   function initPlayerFromArgs(elem, args, previous_player) {
 
-    var playerObj = {state: { time: 0, active: false, paused: false}, control: {time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
-
+    var playerObj = {state: { time: 0, active: false, paused: false}, control: {iter: {}, time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
+    playerObj.control.iter[args.property] = args.iter;
     if (!previous_player) {
       playerObj.elem = elem;
       playerObj.tweenConfig = {
@@ -426,8 +426,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     } else {
 
         playerObj = combinePreviousWithNewProp(args, previous_player);
-
-
+        playerObj.control.iter[args.property] = args.iter;
     }
 
     if (args.duration !== playerObj.tweenConfig.duration) {
@@ -485,7 +484,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     function applyPropToElem(state, args, time) {
-
       if (!time) return;
 
       var skipArgs;
@@ -594,18 +592,45 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
             if (player.propDelays[key].cache && player.propDelays[key].cache.length && player.propDelays[key].cache[0] === null) {
               player.propDelays[key].cache.push(player.propDelays[key].cache.shift());
             }
-            console.log('resetting cache..', player.propDelays[key].cache)
           }
         }
         player.inspect && player.prefs.showLog && console.log('-----Animation successfully finished---')
         // playerObj.propDelays[args.property] = {offset: args.delay, duration: args.duration, start: args.start, end: args.end, ease:args.ease, cache:[]};
         player = player.init(player);
+        var count = 0;
+        var maxDelay = -1;
+        for (key in playerObj.control.iter) {
+          playerObj.control.iter[key].count -= 1;
+          count += playerObj.control.iter[key].count;
+          if (playerObj.control.iter[key].delay && playerObj.control.iter[key].delay > maxDelay) {
+            maxDelay = playerObj.control.iter[key].delay;
+          }
+        }
+        if (count > 0) {
+          if (maxDelay > 0) {
+            $timeout(function() {
+              player.play(player);
+            }, maxDelay)
+          } else {
+            player.play();
+          }
+        }
+        // if (player.control.iter)
+
       }
 
 
     function getPlayFunction(player) {
 
-      player.tween.setConfig(player.tweenConfig)
+      playerObj.tween.setConfig(playerObj.tweenConfig)
+      if (playerObj.control.iter) {
+        for (key in playerObj.control.iter) {
+          if (playerObj.control.iter[key].count <= 0) {
+            console.log('out of counts', key)
+            return;
+          }
+        }
+      }
 
       return function() {
         if (!player.state.time) {
@@ -797,7 +822,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
           property.active = true;
           player.skip = '';
           // property.time = playerObj.state.time || property.time;
-          playerObj.play();
+          // playerObj.play();
           // setPropPlayerFunctions();
         }
       }
@@ -823,6 +848,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
     playerObj.init = function(playerObj, skip) {
+
       playerObj.state.time = 0
       playerObj.state.active = false;
       playerObj.state.paused = false;
@@ -951,17 +977,30 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
             pObj.delay = processDuration(arg_arr[i], property, apply_default);
           continue;
         case (5):
-            pObj.iteration = processIterations(arg_arr[i], property, apply_default);
+
+            pObj.iter = processIterations(arg_arr[i], property, apply_default);
           continue;
       }
     }
-
-
+    pObj.iter = pObj.iter || processIterations();
     return pObj;
   }
 
   function processIterations(str, property, apply_default) {
-    console.log(str)
+    if (!str || !str.length)  return {count: 1, delay:0};
+    var iterSplit = str.split('+').filter(function(s, i) {return s && s.length });
+    iterSplit.forEach(function(s, i) {iterSplit[i] = parseInt(s)})
+    if (!iterSplit.length) {
+      iterSplit = [1, 0];
+    }
+    if (iterSplit.length === 1) {
+      iterSplit.push(0)
+    }
+    return {
+      count: iterSplit[0],
+      delay: iterSplit[1]
+    }
+
   }
 
   function processDuration(dur_str, prop, apply_default) {

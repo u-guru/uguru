@@ -1,10 +1,8 @@
-w<div class="perspective-container full-xy flex-center p15xy">
-
+<div class="perspective-container full-xy flex-center p15xy">
     <div class="pf-aside-widget"
         init-with="p:[background:rgba(99#112#116#0), t:background 700ms ease-in-out]"
         on-init="t-enter"
         on-enter="p:[background:rgba(99#112#116#0.3):delay-700]">
-
 
             <!-- Ex.1 Positive LINEAR (default) stagger every 500ms, linear [uncommented below]
                 <stagger-children on-enter="[draw-border-frame]:500">
@@ -31,32 +29,33 @@ w<div class="perspective-container full-xy flex-center p15xy">
             -->
 
             <!-- Ex 1. See reference above-->
-            <stagger-children on-enter="[draw-border-frame]:500">
+
+
+            <stagger-children on-enter="[draw-border-frame]:+150">
                 <div class="top"
-                    init-with="p:[tr:scale(0), tro:center center]"
+                    init-with="p:[tr:scaleX(0), tro:center center]"
+                    on-init="trigger:[on-enter:self]"
+                    border-frame
+                    on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div>
+                <div class="left"
+                    init-with="p:[tr:scaleY(0), tro:left top]"
                     on-init="trigger:[on-enter:self]"
                     draw-border-frame
-                    on-enter="p:[tr:scale(1), t:transform 500ms ease-out]:delay-150"></div>
-                <div class="left"
-                    init-with="p:[tr:scale(0), tro:left top]"
-                    on-init="t-enter"
-                    draw-border-frame
-                    on-enter="p:[tr:scale(1), t:transform 500ms ease-out]:delay-450"></div>
+                    on-enter="p:[transform:scaleY(0):scaleY(1):500:easeOutQuart:0:3+750]"></div>
                 <div class="right"
-                    init-with="p:[tr:scale(0), tro:right top]"
-                    on-init="t-enter"
-                    draw-border-frame
-                    on-enter="p:[tr:scale(1), t:transform 500ms ease-out]:delay-450"></div>
+                    init-with="p:[tr:scaleY(0), tro:right top]"
+                    on-init="trigger:[on-enter:self]"
+                    on-enter="p:[transform:scaleY(0):scaleY(1):500:easeOutQuart:0:3+750]"></div>
                 <div class="bot-left"
-                    init-with="p:[tr:scale(0), tro:left center]"
-                    on-init="t-enter"
+                    init-with="p:[tr:scaleX(0), tro:left center]"
+                    on-init="trigger:[on-enter:self]"
                     draw-border-frame
-                    on-enter="p:[tr:scale(1), t:transform 500ms linear]:delay-750"></div>
+                    on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div>
                 <div class="bot-right"
-                    init-with="p:[tr:scale(0), tro:right center]"
-                    on-init="t-enter"
+                    init-with="p:[tr:scaleX(0), tro:right center]"
+                    on-init="trigger:[on-enter:self]"
                     draw-border-frame
-                    on-enter="p:[tr:scale(1), t:transform 500ms linear]:delay-750"></div>
+                    on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div>
                 <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
                     init-with="p-op"
                     on-init="t-enter"
@@ -135,6 +134,6 @@ w<div class="perspective-container full-xy flex-center p15xy">
                 init-with="p:[op:0, tro:center center, color:rgba(255#255#255#0)]"
                 on-init="t-enter"
                 on-enter="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500] | p:[color:rgba(255#255#255#1):delay-700, t:color 500ms ease-in-out]">Contact Guru</button>
-            </stagger-children>
-        </div>
+        </stagger-children>
+    </div>
 </div>
