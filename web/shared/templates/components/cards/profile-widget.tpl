@@ -36,7 +36,7 @@
 					init-with="p:[tr:scaleX(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
 					border-frame
-					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:^:2+750:ar]"></div>
+					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:^:20+750:ar]"></div>
 				<!-- <div class="left"
 					init-with="p:[tr:scaleY(0), tro:left top]"
                     on-init="trigger:[on-enter:self]"
@@ -55,12 +55,12 @@
 					init-with="p:[tr:scaleX(0), tro:right center]"
                     on-init="trigger:[on-enter:self]"
 					draw-border-frame
-					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div>
+					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div> -->
                 <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
                     init-with="p-op"
                     on-init="t-enter"
                     draw-border-frame
-                    on-enter="p:[tro:center center] | a:[icon-enter:set:(dur:1000ms#func:ease-out):in]"></span> -->
+                    on-enter="p:[tro:center center] | a:[icon-enter:set:(dur:1000ms#func:ease-out):in]"></span>
             <div>
                 <h1 class="pf-name verified"
                     init-with="p-op"

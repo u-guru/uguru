@@ -291,7 +291,8 @@
 			<circle class="map-clock-tower-face" stroke="#2A4863" stroke-width="2" fill="#3A5E79" cx="432.377978" cy="285.861888" r="12.027972"></circle>
 			<path d="M438.767483,286.375874 L432.753497,286.375874" class="map-clock-tower-hour-hand" stroke="#D5ECF1"
 				init-with="p:[tro:left center]"
-				when-hiw-enter="a:[hiw-hour-hand:set:(dur:12000ms#func:linear#aic:infinite):in]:delay-2000"></path>
+				when-hiw-enter="p:[transform:rotate(0deg):rotate(360deg):24000:linear:^:400+2000:f]"></path>
+				<!-- when-hiw-enter="a:[hiw-hour-hand:set:(dur:12000ms#func:linear#aic:infinite):in]:delay-2000" -->
 			<path d="M432.753497,286.613636 L432.753497,278.72028" class="map-clock-tower-minute-hand" stroke="#D5ECF1"
 				init-with="p:[tro:center bottom]"
 				when-hiw-enter="p:[transform:rotate(0deg):rotate(360deg):2000:linear:^:400+0]"></path>
@@ -417,7 +418,7 @@
 	   <path d="M29.52,240.2 L29.52,249.546154 L29.52,240.2 L29.52,240.2 L29.52,240.2 L29.52,240.2 L29.52,240.2 L29.52,240.2 L29.52,240.2 Z M56.52,240.2 L56.52,249.546154 L56.52,240.2 L56.52,240.2 L56.52,240.2 L56.52,240.2 L56.52,240.2 L56.52,240.2 L56.52,240.2 Z" class="hd-dog-stand" stroke="#757575" stroke-linecap="round" stroke-linejoin="round"></path>
 		<g class="hd-dog"
 			init-with="p:[tro:center center]"
-			when-hiw-micro-enter="p:[transform:rotate(0deg):rotate(-10deg):500:easeInOutSine:^:200+500]">
+			when-hiw-micro-enter="p:[transform:rotate(0deg):rotate(-10deg):500:easeInOutSine:^:200+0:ar]">
 			<!-- a:[food-shake:set:(dur:500ms#func:ease-in-out#aic:infinite#dir:alternate):in] NEEDS ALTERNATE -->
 		   <path d="M28.0198835,226.069472 L46.9613137,230.948141 L66.3640577,233.77495 C68.1614429,234.136145 69.3087897,235.80655 68.9265409,237.50674 C68.5443761,239.206556 66.7793426,240.292093 64.9801165,239.930528 L45.5773726,237.103718 L26.6359423,232.22505 C24.8385571,231.863855 23.6912103,230.19345 24.0734591,228.49326 C24.4556239,226.793444 26.2206574,225.707907 28.0198835,226.069472 L28.0198835,226.069472 Z" class="hd-dog-sausage" stroke="#CF7961" stroke-linecap="round" stroke-linejoin="round" fill="#EC8E75"></path>
 		   <path d="M28,227 C28,227 30.5456084,230.417125 33.6289417,231.025623 C36.712275,231.63412 37.25,228.825493 40.3333333,229.433991 C43.4166667,230.042488 42.8789417,232.851116 45.962275,233.459613 C49.0456084,234.068111 49.5833333,231.259484 52.6666667,231.867981 C55.75,232.476479 55.212275,235.285106 58.2956084,235.893604 C61.3789417,236.502101 65,234.301972 65,234.301972" class="hd-dog-mustard" stroke="#F6DB4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -521,8 +522,8 @@
 		<path d="M107.851191,396.912278 C107.851191,396.243979 108.070442,394.798117 108.070442,394.798117 C108.274543,393.252759 107.170547,392 105.613515,392 L105.546485,392 C103.98546,392 102.72,393.259837 102.72,394.830594 L102.72,397.962509 C102.72,399.525803 103.970785,401.024423 105.485014,401.304465 L106.135826,401.424826 C107.662901,401.707242 108.625057,400.698857 108.293295,399.178994 C108.293295,399.178994 107.851191,397.279863 107.851191,396.912278 L107.851191,396.912278 Z" class="ppl-jeselle-hair-back" stroke="#2C4944" stroke-width="0.517241379" fill="#40484B"></path>
 		<g class="ppl-jeselle-dribble">
 			<g class="ppl-jeselle-wilson"
-				init-with="p:[tro:center center]"
-				when-hiw-details-enter="a:[ppl-jeselle-wilson:set:(dur:300ms#func:cubic-bezier(.63#.09#.75#.46)#aic:infinite#ad:alternate):in]">
+				init-with="p:[tr:none, tro:center center]"
+				when-hiw-details-enter="p:[transform:scaleY(1) translateY(0px):scaleY(0.7) translateY(15px):300:easeInQuad easeInQuad:^:200+0:ar]">
 				<circle class="ppl-jeselle-bball" stroke="#6E5248" stroke-width="0.5" fill="#E5753C" cx="98.5" cy="412.5" r="3.5"></circle>
 				<path d="M98,409.75 C98,409.75 97,410.333008 97,412.25 C97,414.166992 98,415.75 98,415.75 M95.5,412.25 C95.5,412.25 96.0830078,413.25 98,413.25 C99.9169922,413.25 101.5,412.25 101.5,412.25" class="ppl-jeselle-bball-lines" stroke="#6E5248" stroke-width="0.5"></path>
 			</g>
