@@ -29,12 +29,13 @@
             -->
 
             <!-- Ex 1. See reference above-->
+			<!-- @samir bug where alternate does not work -->
 			<stagger-children on-enter="[draw-border-frame]:+150">
 				<div class="top"
 					init-with="p:[tr:scaleX(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
 					border-frame
-					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:^:2+750:ar]"></div>
+					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:^:2+750:a]"></div>
 				<!-- <div class="left"
 					init-with="p:[tr:scaleY(0), tro:left top]"
                     on-init="trigger:[on-enter:self]"
