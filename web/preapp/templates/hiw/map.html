@@ -1,23 +1,20 @@
-<defs>
-	<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="night-sky-gradient">
-		<stop stop-color="#2A4863" offset="0%"></stop>
-		<stop stop-color="#141C5E" offset="100%"></stop>
-	</linearGradient>
-	<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="sunset-sky-gradient">
-		<stop stop-color="#141C5E" offset="0%"></stop>
-		<stop stop-color="#FF8D77" offset="100%"></stop>
-	</linearGradient>
-	<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="sunrise-sky-gradient">
-		<stop stop-color="#FFBDB1" offset="0%"></stop>
-		<stop stop-color="#F4E3F6" offset="100%"></stop>
-	</linearGradient>
-	<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="day-sky-gradient">
-		<stop stop-color="#B6E2F7" offset="0%"></stop>
-		<stop stop-color="#F4E3F6" offset="100%"></stop>
-	</linearGradient>
-</defs>
 <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-	<g class="day-sky-container">
+	<g class="night-sky-container">
+		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="286"></rect>
+	</g>
+	<g class="sunset-sky-container"
+		init-default
+		when-time-shift="a:[hiw-sunset-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="286"></rect>
+	</g>
+	<g class="sunrise-sky-container"
+		init-default
+		when-time-shift="a:[hiw-sunrise-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="286"></rect>
+	</g>
+	<g class="day-sky-container"
+		init-default
+		when-time-shift="a:[hiw-day-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
 		<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="286"></rect>
 	</g>
 	<rect class="map-terrain-main" fill="#8CD07E" x="0" y="194" width="864" height="378"></rect>

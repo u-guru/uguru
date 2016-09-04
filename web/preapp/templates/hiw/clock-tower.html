@@ -1,113 +1,44 @@
-<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-	<g init-with="p-op"
-		when-open-clock-tower="p:[opacity:0:1:500:easeOutExpo]">
-		<g class="sky-elements">
-			<g class="sun"
-				init-with="p:[tro:50% 450px, tr:rotate(20deg), op:0]"
-				when-time-shift="a:[hiw-sun-rotate:set:(dur:12000ms#func:linear#aic:infinite):in:delay-1000]">
-				<circle class="sun-face" stroke="#F6C64E" stroke-width="8" fill="#FDEB3E" cx="432.5" cy="55.5" r="40.5" stroke-opacity="0.5"></circle>
-			</g>
-			<g class="moon"
-				init-with="p:[op:0, tro:50% 450px, tr:rotate(20deg)]"
-				when-time-shift="a:[hiw-moon-rotate:set:(dur:12000ms#func:linear#aic:infinite):in]">
-				<circle class="moon-face" stroke="#DCE1B9" stroke-width="8" fill="#FFFDEE" cx="431.5" cy="53.5" r="40.5"></circle>
-				<path d="M447.5,44 C454.403559,44 460,38.4035594 460,31.5 C460,24.5964406 454.403559,19 447.5,19 C440.596441,19 435,24.5964406 435,31.5 C435,38.4035594 440.596441,44 447.5,44 Z M411,48 C413.761424,48 416,45.7614237 416,43 C416,40.2385763 413.761424,38 411,38 C408.238576,38 406,40.2385763 406,43 C406,45.7614237 408.238576,48 411,48 Z M435.5,76 C439.642136,76 443,72.6421356 443,68.5 C443,64.3578644 439.642136,61 435.5,61 C431.357864,61 428,64.3578644 428,68.5 C428,72.6421356 431.357864,76 435.5,76 Z" id="crater" stroke="#DCE1B9" stroke-width="8" fill="#FFFDEE"></path>
-			</g>
-			<g class="clouds">
-				<g class="cloud-1"
-					init-with="p:[op:0, tro:center center]"
-					when-hiw-enter="a:[hiw-clouds:set:(dur:12000ms#func:linear#count:infinite):in:delay-2000]">
-					<path d="M69.5,39 C75.2295717,39 80.6018602,40.432587 85.2307342,42.9361462 C92.0852446,26.5804257 109.098038,15 129,15 C148.524605,15 165.268565,26.1454413 172.36846,42.0109951 C189.363906,42.4418297 203,55.4795819 203,71.5 C203,87.7924001 188.89697,101 171.5,101 C165.10722,101 116.929688,105.671875 94.7070312,105.671875 C72.484375,105.671875 40.9703058,98 35,98 C23.954305,98 15,89.6142223 15,79.2698413 C15,68.9254602 23.954305,60.5396825 35,60.5396825 C36.3870213,60.5396825 37.7410652,60.6719106 39.0485431,60.9236406 C42.6195899,48.3023844 54.8998004,39 69.5,39 Z" class="cloud-1-shape" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF"
-						init-default
-						when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in:delay-200]"></path>
-					<path d="M53.9656835,42.8307928 C58.5498436,40.3924376 20.7817316,84.595701 53.965683,84.5957019 C67.0283203,74.7626941 82.3931675,41.4014282 85.2307342,42.9361462 C88.2253654,35.7905812 55.1572266,87.7988316 109,95.6425797 C145.296875,81.3046889 147.27832,36.3740237 172.36846,42.0109951 C174.26696,42.0591221 134.25,73.6750221 160.09375,89.3378932 C178.231445,99.2158203 201.360752,82.2506001 198.510596,86.6869207 C193.000822,95.2629835 182.965809,101 171.5,101 C165.10722,101 113.113281,110.160158 90.890625,110.160158 C68.6679687,110.160158 40.9703058,98 35,98 C23.954305,98 15,89.6142223 15,79.2698413 C15,74.1340146 17.2072096,69.4809778 20.7817316,66.0973014 C24.4068719,62.6657093 9,87.7441424 26.0390625,82.5 C32.1113281,69.2255858 31.6953125,60.923641 39.0485431,60.9236406 C41.2379773,53.1854586 46.7011891,46.6948416 53.9656835,42.8307928 Z" class="cloud-1-detail" fill="#FBFBFB"
-						init-default
-						when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in:delay-200]"></path>
-				</g>
-				<g class="cloud-2"
-					init-with="p:[op:0, tro:center center]"
-					when-hiw-enter="a:[hiw-clouds:set:(dur:12000ms#func:linear#count:infinite):in:delay-2000]">
-					<path d="M592.5,81 C598.229572,81 603.60186,82.432587 608.230734,84.9361462 C615.085245,68.5804257 632.098038,57 652,57 C671.524605,57 688.268565,68.1454413 695.36846,84.0109951 C712.363906,84.4418297 726,97.4795819 726,113.5 C726,129.7924 711.89697,143 694.5,143 C688.10722,143 639.929688,147.671875 617.707031,147.671875 C595.484375,147.671875 563.970306,140 558,140 C546.954305,140 538,131.614222 538,121.269841 C538,110.92546 546.954305,102.539683 558,102.539683 C559.387021,102.539683 560.741065,102.671911 562.048543,102.923641 C565.61959,90.3023844 577.8998,81 592.5,81 Z" class="cloud-2-shape" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF"
-						init-default
-						when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in]"></path>
-					<path d="M576.965684,84.8307928 C581.549844,82.3924376 543.781732,126.595701 576.965683,126.595702 C590.02832,116.762694 605.393167,83.4014282 608.230734,84.9361462 C611.225365,77.7905812 578.157227,129.798832 632,137.64258 C668.296875,123.304689 670.27832,78.3740237 695.36846,84.0109951 C697.26696,84.0591221 657.25,115.675022 683.09375,131.337893 C701.231445,141.21582 724.360752,124.2506 721.510596,128.686921 C716.000822,137.262983 705.965809,143 694.5,143 C688.10722,143 636.113281,152.160158 613.890625,152.160158 C591.667969,152.160158 563.970306,140 558,140 C546.954305,140 538,131.614222 538,121.269841 C538,116.134015 540.20721,111.480978 543.781732,108.097301 C547.406872,104.665709 532,129.744142 549.039062,124.5 C555.111328,111.225586 554.695312,102.923641 562.048543,102.923641 C564.237977,95.1854586 569.701189,88.6948416 576.965684,84.8307928 Z" class="cloud-2-detail" fill="#FBFBFB"
-						init-default
-						when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in]"></path>
-				</g>
-				<g class="cloud-3"
-					init-with="p:[op:0, tro:center center]"
-					when-hiw-enter="a:[hiw-clouds:set:(dur:12000ms#func:linear#count:infinite):in:delay-2000]">
-					<path d="M760.207447,194 C763.803667,194 767.175636,194.895367 770.080993,196.460091 C774.383292,186.237766 785.061535,179 797.553191,179 C809.807997,179 820.317504,185.965901 824.773821,195.881872 C835.441175,196.151144 844,204.299739 844,214.3125 C844,224.49525 835.148098,232.75 824.228723,232.75 C820.216234,232.75 789.977144,235.669922 776.028881,235.669922 C762.080618,235.669922 742.300511,230.875 738.553191,230.875 C731.620255,230.875 726,225.633889 726,219.168651 C726,212.703413 731.620255,207.462302 738.553191,207.462302 C739.423769,207.462302 740.273647,207.544944 741.094298,207.702275 C743.3357,199.81399 751.043492,194 760.207447,194 Z" class="cloud-3-shape" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF"
-						init-default
-						when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in:delay-140]"></path>
-					<path d="M750.457184,196.394246 C753.334476,194.870274 729.628959,222.497313 750.457184,222.497314 C758.656073,216.351684 768.299967,195.500893 770.080993,196.460091 C771.960602,191.994113 751.205068,224.49927 785,229.401612 C807.782081,220.440431 809.025754,192.358765 824.773821,195.881872 C825.965432,195.911951 800.848404,215.671889 817.069481,225.461183 C828.45378,231.634888 842.97111,221.031625 841.182182,223.804325 C837.72392,229.164365 831.425348,232.75 824.228723,232.75 C820.216234,232.75 787.58174,238.475099 773.633477,238.475099 C759.685214,238.475099 742.300511,230.875 738.553191,230.875 C731.620255,230.875 726,225.633889 726,219.168651 C726,215.958759 727.385376,213.050611 729.628959,210.935813 C731.904313,208.791068 722.234043,224.465089 732.928773,221.1875 C736.740089,212.890991 736.478973,207.702276 741.094298,207.702275 C742.468518,202.865912 745.897555,198.809276 750.457184,196.394246 Z" class="cloud-3-detail" fill="#FBFBFB"
-						init-default
-						when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in:delay-140]"></path>
-				</g>
-				<g class="cloud-4"
-					init-with="p:[op:0, tro:center center]"
-					when-hiw-enter="a:[hiw-clouds:set:(dur:12000ms#func:linear#count:infinite):in:delay-2000]">
-					<path d="M197.207447,182 C200.803667,182 204.175636,182.895367 207.080993,184.460091 C211.383292,174.237766 222.061535,167 234.553191,167 C246.807997,167 257.317504,173.965901 261.773821,183.881872 C272.441175,184.151144 281,192.299739 281,202.3125 C281,212.49525 272.148098,220.75 261.228723,220.75 C257.216234,220.75 226.977144,223.669922 213.028881,223.669922 C199.080618,223.669922 179.300511,218.875 175.553191,218.875 C168.620255,218.875 163,213.633889 163,207.168651 C163,200.703413 168.620255,195.462302 175.553191,195.462302 C176.423769,195.462302 177.273647,195.544944 178.094298,195.702275 C180.3357,187.81399 188.043492,182 197.207447,182 Z" class="cloud-4-shape" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF"
-						init-default
-						when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in:delay-270]"></path>
-					<path d="M187.457184,184.394246 C190.334476,182.870274 166.628959,210.497313 187.457184,210.497314 C195.656073,204.351684 205.299967,183.500893 207.080993,184.460091 C208.960602,179.994113 188.205068,212.49927 222,217.401612 C244.782081,208.440431 246.025754,180.358765 261.773821,183.881872 C262.965432,183.911951 237.848404,203.671889 254.069481,213.461183 C265.45378,219.634888 279.97111,209.031625 278.182182,211.804325 C274.72392,217.164365 268.425348,220.75 261.228723,220.75 C257.216234,220.75 224.58174,226.475099 210.633477,226.475099 C196.685214,226.475099 179.300511,218.875 175.553191,218.875 C168.620255,218.875 163,213.633889 163,207.168651 C163,203.958759 164.385376,201.050611 166.628959,198.935813 C168.904313,196.791068 159.234043,212.465089 169.928773,209.1875 C173.740089,200.890991 173.478973,195.702276 178.094298,195.702275 C179.468518,190.865912 182.897555,186.809276 187.457184,184.394246 Z" class="cloud-4-detail" fill="#FBFBFB"
-						init-default
-						when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in]:delay-270"></path>
-				</g>
-				<g class="cloud-5"
-					init-with="p:[op:0, tro:center center]"
-					when-hiw-enter="a:[hiw-clouds:set:(dur:12000ms#func:linear#count:infinite):in:delay-2000]">
-					<path d="M559.162234,243.25 C561.387015,243.25 563.473063,243.802143 565.270445,244.767056 C567.932036,238.463289 574.538068,234 582.265957,234 C589.84732,234 596.348964,238.295639 599.105838,244.410488 C605.705134,244.576539 611,249.601506 611,255.776042 C611,262.055404 605.523823,267.145833 598.768617,267.145833 C596.286314,267.145833 577.579081,268.946452 568.950071,268.946452 C560.321061,268.946452 548.084214,265.989583 545.765957,265.989583 C541.476938,265.989583 538,262.757565 538,258.770668 C538,254.783771 541.476938,251.551753 545.765957,251.551753 C546.304535,251.551753 546.830307,251.602716 547.337998,251.699736 C548.724628,246.835294 553.493008,243.25 559.162234,243.25 Z" class="cloud-5-shape" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#FFFFFF"
-						init-default
-						when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in]"></path>
-					<path d="M553.130292,244.726451 C554.910312,243.786669 540.245034,260.823343 553.130292,260.823343 C558.202486,257.033538 564.168624,244.17555 565.270445,244.767056 C566.433254,242.013036 553.592966,262.057883 574.5,265.080994 C588.593999,259.554932 589.36339,242.237905 599.105838,244.410488 C599.843022,244.429037 584.304521,256.614331 594.339594,262.651063 C601.382423,266.458181 610.363484,259.919502 609.256774,261.629334 C607.11734,264.934692 603.220766,267.145833 598.768617,267.145833 C596.286314,267.145833 576.097178,270.676311 567.468168,270.676311 C558.839158,270.676311 548.084214,265.989583 545.765957,265.989583 C541.476938,265.989583 538,262.757565 538,258.770668 C538,256.791235 538.857055,254.997877 540.245034,253.693752 C541.652668,252.371159 535.670213,262.036805 542.286444,260.015625 C544.644292,254.899445 544.482754,251.699737 547.337998,251.699736 C548.188151,248.717312 550.309504,246.21572 553.130292,244.726451 Z" class="cloud-5-detail" fill="#FBFBFB"
-						init-default
-						when-hiw-enter="a:[hiw-cloud-hover:set:(dur:1500ms#func:linear#aic:infinite#ad:alternate):in]"></path>
-				</g>
-			</g>
+<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+	init-with="p:[tro:center center, tr:scale(0.37) translateY(3.5%)]"
+	when-hiw-enter="s:[time-shift:public:delay-1000]"
+	when-open-clock-tower="p:[transform:scale(0.37) translateY(3.5%):scale(1) translateY(0%):1000:easeOutCirc]">
+	<g class="tower" stroke-width="3">
+		<polygon class="clock-tower-main" stroke="#CABEB2" fill="#FCEDDF" points="381 136 483 136 483 506 381 506"></polygon>
+		<g stroke="#947B62">
+			<path d="M222.5,507.5 L641.5,507.5" class="clock-tower-ground"
+				init-with="p:[tro:center center, tr:scaleX(0)]"></path>
+			<polygon class="clock-tower-step-lower" fill="#CABEB2" points="355 482 509 482 509 506 355 506"></polygon>
+			<polygon class="clock-tower-step-upper" fill="#CABEB2" points="370 458 494 458 494 482 370 482"></polygon>
+		</g>
+		<g stroke="#647275">
+			<polygon class="clock-tower-roof-inner" fill="#B2DAE5" points="381 135 432 57 483 135"></polygon>
+			<polygon class="clock-tower-roof-outer" fill="#D5ECF1" points="399 135 432 57 465 135"></polygon>
+			<rect class="clock-tower-molding-upper" fill="#B2DAE5" x="390" y="111" width="84" height="13"></rect>
+			<rect class="clock-tower-top" fill="#D5ECF1" x="380" y="123" width="104" height="100"></rect>
+		</g>
+		<g class="windows" stroke="#425459" fill="#577078">
+			<path d="M448,158.999531 C448,154.581512 451.590712,151 456,151 C460.418278,151 464,154.59057 464,158.999531 L464,198 L448,198 L448,158.999531 L448,158.999531 Z" class="clock-tower-window-right"></path>
+			<path d="M424,158.999531 C424,154.581512 427.590712,151 432,151 C436.418278,151 440,154.59057 440,158.999531 L440,198 L424,198 L424,158.999531 L424,158.999531 Z" class="clock-tower-window-center"></path>
+			<path d="M400,158.999531 C400,154.581512 403.590712,151 408,151 C412.418278,151 416,154.59057 416,158.999531 L416,198 L400,198 L400,158.999531 L400,158.999531 Z" class="clock-tower-window-left"></path>
+		</g>
+		<g stroke="#CABEB2" fill="#FCEDDF">
+			<rect class="clock-tower-column-right" x="463" y="135" width="20" height="63"></rect>
+			<rect class="clock-tower-column-left" x="381" y="135" width="20" height="63"></rect>
+		</g>
+		<g stroke="#647275" fill="#B2DAE5">
+			<rect class="clock-tower-molding-main-upper" x="372" y="135" width="120" height="13" rx="1.8"></rect>
+			<rect class="clock-tower-molding-main-lower" x="372" y="198" width="120" height="13" rx="1.8"></rect>
 		</g>
 	</g>
-	<g init-with="p:[tro:center center, tr:scale(0.37) translateY(3.5%)]"
-		when-hiw-enter="s:[time-shift:public:delay-1000]"
-		when-open-clock-tower="p:[transform:scale(0.37) translateY(3.5%):scale(1) translateY(0%):1000:easeOutCirc]">
-		<g class="tower" stroke-width="3">
-			<polygon class="clock-tower-main" stroke="#CABEB2" fill="#FCEDDF" points="381 136 483 136 483 506 381 506"></polygon>
-			<g stroke="#947B62">
-				<path d="M222.5,507.5 L641.5,507.5" class="clock-tower-ground"
-					init-with="p:[tro:center center, tr:scaleX(0)]"></path>
-				<polygon class="clock-tower-step-lower" fill="#CABEB2" points="355 482 509 482 509 506 355 506"></polygon>
-				<polygon class="clock-tower-step-upper" fill="#CABEB2" points="370 458 494 458 494 482 370 482"></polygon>
-			</g>
-			<g stroke="#647275">
-				<polygon class="clock-tower-roof-inner" fill="#B2DAE5" points="381 135 432 57 483 135"></polygon>
-				<polygon class="clock-tower-roof-outer" fill="#D5ECF1" points="399 135 432 57 465 135"></polygon>
-				<rect class="clock-tower-molding-upper" fill="#B2DAE5" x="390" y="111" width="84" height="13"></rect>
-				<rect class="clock-tower-top" fill="#D5ECF1" x="380" y="123" width="104" height="100"></rect>
-			</g>
-			<g class="windows" stroke="#425459" fill="#577078">
-				<path d="M448,158.999531 C448,154.581512 451.590712,151 456,151 C460.418278,151 464,154.59057 464,158.999531 L464,198 L448,198 L448,158.999531 L448,158.999531 Z" class="clock-tower-window-right"></path>
-				<path d="M424,158.999531 C424,154.581512 427.590712,151 432,151 C436.418278,151 440,154.59057 440,158.999531 L440,198 L424,198 L424,158.999531 L424,158.999531 Z" class="clock-tower-window-center"></path>
-				<path d="M400,158.999531 C400,154.581512 403.590712,151 408,151 C412.418278,151 416,154.59057 416,158.999531 L416,198 L400,198 L400,158.999531 L400,158.999531 Z" class="clock-tower-window-left"></path>
-			</g>
-			<g stroke="#CABEB2" fill="#FCEDDF">
-				<rect class="clock-tower-column-right" x="463" y="135" width="20" height="63"></rect>
-				<rect class="clock-tower-column-left" x="381" y="135" width="20" height="63"></rect>
-			</g>
-			<g stroke="#647275" fill="#B2DAE5">
-				<rect class="clock-tower-molding-main-upper" x="372" y="135" width="120" height="13" rx="1.8"></rect>
-				<rect class="clock-tower-molding-main-lower" x="372" y="198" width="120" height="13" rx="1.8"></rect>
-			</g>
-		</g>
-		<g class="clock">
-			<circle class="clock-tower-face" stroke="#2A4863" stroke-width="6" fill="#3A5E79" cx="432" cy="271" r="32"></circle>
-			<g stroke-width="3">
-				<path d="M449,273 L433,273" class="clock-tower-hour-hand" stroke="#D5ECF1"
-					init-with="p:[tro:left center]"
-					when-hiw-enter="a:[hiw-hour-hand:set:(dur:12000ms#func:linear#aic:infinite):in]:delay-2000"></path>
-				<path d="M433,273 L433,252" class="clock-tower-minute-hand" stroke="#D5ECF1"
-					init-with="p:[tro:center bottom]"
-					when-hiw-enter="a:[hiw-minute-hand:set:(dur:2000ms#func:linear#aic:infinite):in]:delay-500"></path>
-			</g>
+	<g class="clock">
+		<circle class="clock-tower-face" stroke="#2A4863" stroke-width="6" fill="#3A5E79" cx="432" cy="271" r="32"></circle>
+		<g stroke-width="3">
+			<path d="M449,273 L433,273" class="clock-tower-hour-hand" stroke="#D5ECF1"
+				init-with="p:[tro:left center]"
+				when-hiw-enter="a:[hiw-hour-hand:set:(dur:12000ms#func:linear#aic:infinite):in]:delay-2000"></path>
+			<path d="M433,273 L433,252" class="clock-tower-minute-hand" stroke="#D5ECF1"
+				init-with="p:[tro:center bottom]"
+				when-hiw-enter="a:[hiw-minute-hand:set:(dur:2000ms#func:linear#aic:infinite):in]:delay-500"></path>
 		</g>
 	</g>
 </g>

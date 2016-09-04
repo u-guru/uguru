@@ -1,15 +1,26 @@
-<defs>
-	<linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="day-sky-gradient-reverse">
-		<stop stop-color="#F4E3F6" offset="0%"></stop>
-		<stop stop-color="#B6E2F7" offset="100%"></stop>
-	</linearGradient>
-</defs>
 <g id="hiw-sky-balloon-gradient" class="day-sky-container"
 	init-with="p:[op:0, tr:translateY(-100%)]"
 	when-balloon-enter="s:[basket-init:public]:delay-2000"
 	when-basket-init="s:[basket-sway:public]:delay-2100"
-	when-balloon-select="p:[op:1, transform:translateY(-100%):translateY(0%):1000:easeOutSine]:delay-2500 | s:[cloud-fall:public:delay-1000]">
-	<rect class="day-sky" fill="url(#day-sky-gradient-reverse)" x="0" y="0" width="864" height="572"></rect>
+	when-balloon-select="p:[op:1, transform:translateY(-100%):translateY(0%):1000:linear]:delay-2500 | s:[cloud-fall:public:delay-1000]">
+	<g class="night-sky-container">
+		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="572"></rect>
+	</g>
+	<g class="sunset-sky-container"
+		init-default
+		when-time-shift="a:[hiw-sunset-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="572"></rect>
+	</g>
+	<g class="sunrise-sky-container"
+		init-default
+		when-time-shift="a:[hiw-sunrise-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="572"></rect>
+	</g>
+	<g class="day-sky-container"
+		init-default
+		when-time-shift="a:[hiw-day-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="572"></rect>
+	</g>
 </g>
 <g class="sub2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 	<g class="hiw-helicopter"
