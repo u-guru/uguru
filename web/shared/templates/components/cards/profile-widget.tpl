@@ -31,7 +31,7 @@
             <!-- Ex 1. See reference above-->
 
 
-			<stagger-children on-enter="[border-frame]:+500" when-green-button-clicked="[border-frame]:1500" >
+			<stagger-children on-enter="[border-frame]:+500" when-green-button-clicked="[border-frame]:2000" >
 				<div class="top"
                     init-with="p:[tr:scaleX(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
