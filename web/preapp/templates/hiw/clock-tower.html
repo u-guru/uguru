@@ -6,7 +6,8 @@
 		<polygon class="clock-tower-main" stroke="#CABEB2" fill="#FCEDDF" points="381 136 483 136 483 506 381 506"></polygon>
 		<g stroke="#947B62">
 			<path d="M222.5,507.5 L641.5,507.5" class="clock-tower-ground"
-				init-with="p:[tro:center center, tr:scaleX(0)]"></path>
+				init-with="p:[op:0, tro:center center, tr:scaleX(0)]"
+				when-open-clock-tower="p:[opacity:0:1:500:easeOutExpo, transform:scaleX(0):scaleX(1):500:easeOutExpo]"></path>
 			<polygon class="clock-tower-step-lower" fill="#CABEB2" points="355 482 509 482 509 506 355 506"></polygon>
 			<polygon class="clock-tower-step-upper" fill="#CABEB2" points="370 458 494 458 494 482 370 482"></polygon>
 		</g>

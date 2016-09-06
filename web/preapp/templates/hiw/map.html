@@ -3,21 +3,25 @@
 	<g class="night-sky-container"
 		init-default
 		when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
 		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<g class="sunset-sky-container"
 		init-default
 		when-time-shift="a:[hiw-sunset-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"></rect>
 		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<g class="sunrise-sky-container"
 		init-default
 		when-time-shift="a:[hiw-sunrise-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		<rect class="transition-sky" fill="#F4E3F6" x="0" y="0" width="864" height="286"></rect>
 		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<g class="day-sky-container"
 		init-default
 		when-time-shift="a:[hiw-day-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
 		<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<rect class="map-terrain-main" fill="#8CD07E" x="0" y="194" width="864" height="378"></rect>
