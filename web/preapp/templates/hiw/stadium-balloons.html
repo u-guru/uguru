@@ -1,28 +1,7 @@
-<g id="hiw-sky-balloon-gradient" class="day-sky-container"
-	init-with="p:[op:0, tr:translateY(-100%)]"
+<g class="sub2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+	init-default
 	when-balloon-enter="s:[basket-init:public]:delay-2000"
-	when-basket-init="s:[basket-sway:public]:delay-2100"
-	when-balloon-select="p:[op:1, transform:translateY(-100%):translateY(0%):1000:linear]:delay-2500 | s:[cloud-fall:public:delay-1000]">
-	<g class="night-sky-container">
-		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="572"></rect>
-	</g>
-	<g class="sunset-sky-container"
-		init-default
-		when-time-shift="a:[hiw-sunset-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
-		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="572"></rect>
-	</g>
-	<g class="sunrise-sky-container"
-		init-default
-		when-time-shift="a:[hiw-sunrise-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
-		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="572"></rect>
-	</g>
-	<g class="day-sky-container"
-		init-default
-		when-time-shift="a:[hiw-day-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
-		<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="572"></rect>
-	</g>
-</g>
-<g class="sub2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+	when-basket-init="s:[basket-sway:public]:delay-2100">
 	<g class="hiw-helicopter"
 		init-with="p:[op:0, tr:translateX(-100%)]"
 		when-balloon-enter="p:[op:1, transform:translateX(-100%):translateX(0%):4000:easeOutCirc]:delay-1000"

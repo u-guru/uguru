@@ -1,21 +1,24 @@
 <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-	<g class="night-sky-container">
-		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="286"></rect>
+	<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
+	<g class="night-sky-container"
+		init-default
+		when-time-shift="a:[hiw-night-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
+		<rect class="night-sky" fill="url(#night-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<g class="sunset-sky-container"
 		init-default
 		when-time-shift="a:[hiw-sunset-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
-		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="286"></rect>
+		<rect class="sunset-sky" fill="url(#sunset-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<g class="sunrise-sky-container"
 		init-default
 		when-time-shift="a:[hiw-sunrise-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
-		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="286"></rect>
+		<rect class="sunrise-sky" fill="url(#sunrise-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<g class="day-sky-container"
 		init-default
 		when-time-shift="a:[hiw-day-shift:set:(dur:12000ms#func:linear#count:infinite):in:delay-1000]">
-		<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="286"></rect>
+		<rect class="day-sky" fill="url(#day-sky-gradient)" x="0" y="0" width="864" height="286" opacity="0.25"></rect>
 	</g>
 	<rect class="map-terrain-main" fill="#8CD07E" x="0" y="194" width="864" height="378"></rect>
 	<rect class="clock-tower-base" fill="#D3B3A8" x="266" y="301" width="335" height="154"></rect>
@@ -185,7 +188,7 @@
 		when-hiw-people-enter="send:[gabri-people-enter:public]:delay-1500"
 		when-gabri-people-enter="p:[opacity:0:1:500:easeInOutSine] | a:[ppl-gabrielle-walk:set:(dur:3000ms#func:steps(5#start)):in] | s:[cross-building:public]:delay-3000">
 		<g init-default
-			when-cross-building="p:[transform:translateX(-50px):translateX(-225x):1500:easeOutSine]"
+			when-cross-building="p:[transform:translateX(-50px):translateX(-225px):1500:easeOutSine]"
 			when-hiw-people-enter="p:[op:0]:delay-6500 | send:[wrap-around:public]:delay-6700"
 			when-wrap-around="p:[op:1]">
 			<g init-default="p:[tro:center center]"
