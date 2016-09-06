@@ -59,24 +59,6 @@
 					"draw": ""
                 }
             },
-			"map-marker": {
-                "filename": "map-marker.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "FIXED &rarr; Check about toggling from the same element. Animations missing updates.",
-					"stagger": "window contents",
-					"draw": "window borders"
-                }
-            },
             "profile-card": {
                 "filename": "profile-card.tpl",
                 "types": ["single", "stack"],
@@ -130,24 +112,6 @@
                 "notes": {
                     "bugs": "",
 					"stagger": "rating",
-					"draw": ""
-                }
-            },
-			"request-card": {
-                "filename": "request-card.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "",
 					"draw": ""
                 }
             },
@@ -206,24 +170,6 @@
 					"draw": ""
                 }
             },
-			"timeline-icon": {
-                "filename": "timeline-icon.tpl",
-				"versions": [],
-                "contact": "JO",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "FIXED &rarr; Change onclick to onmouseenter. FIXED &rarr; Possible enhancement by adding bounce and spacing",
-					"stagger": "",
-					"draw": ""
-                }
-            },
             "university-card": {
                 "filename": "university-card.tpl",
                 "types": ["checkbox", "link"],
@@ -239,25 +185,6 @@
                 },
                 "notes": {
                     "bugs": "FIXED WITH HOVER &rarr; Link isn't showing up",
-					"stagger": "",
-					"draw": ""
-                }
-            },
-            "user-icon": {
-                "filename": "user-icon.tpl",
-                "types": ["24", "32", "36", "48", "64", "72", "84", "96", "128", "default"],
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
 					"stagger": "",
 					"draw": ""
                 }
@@ -278,24 +205,6 @@
                     "bugs": "FIXED &rarr; Change translate down to swing like the dropdown. Stagger.",
 					"stagger": "info (2)",
 					"draw": ""
-                }
-            },
-			"attachment-tile": {
-                "filename": "attachment-tile.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "FIXED &rarr; Combine doc outline into single simple path (instead of combined path)",
-					"stagger": "",
-					"draw": "icon (see attachment list)"
                 }
             },
 			"calendar-tile": {
@@ -491,6 +400,62 @@
                 }
             }
         },
+        "collections": {
+			"course-list": {
+                "filename": "course-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "items",
+					"draw": ""
+                }
+            },
+			"numbered-list": {
+                "filename": "numbered-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "items",
+					"draw": ""
+                }
+            },
+			"sidebar-list": {
+                "filename": "sidebar-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "items",
+					"draw": ""
+                }
+            }
+        },
         "containers": {
             "message-bubble": {
                 "filename": "message-bubble.tpl",
@@ -570,6 +535,43 @@
 					"draw": "icon"
                 }
             },
+			"timeline-icon": {
+                "filename": "timeline-icon.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "FIXED &rarr; Change onclick to onmouseenter. FIXED &rarr; Possible enhancement by adding bounce and spacing",
+					"stagger": "",
+					"draw": ""
+                }
+            },
+			"user-icon": {
+				"filename": "user-icon.tpl",
+				"types": ["24", "32", "36", "48", "64", "72", "84", "96", "128", "default"],
+				"versions": [],
+				"contact": "GW",
+				"status": {
+					"static": true,
+					"responsive": true,
+					"animated": true,
+					"cross-platform": false,
+					"complete" : false,
+					"performance": false
+				},
+				"notes": {
+					"bugs": "",
+					"stagger": "",
+					"draw": ""
+				}
+			},
 			"wallet": {
                 "filename": "wallet.tpl",
 				"versions": [],
@@ -796,7 +798,7 @@
 					"draw": ""
                 }
 			},
-			"ghost tag": {
+			"ghost-tag": {
 				"filename": "ghost.tpl",
 				"versions": [],
                 "contact": "GW",
@@ -815,7 +817,45 @@
                 }
 			}
         },
-        "collections": {
+		"map": {
+			"map-marker": {
+				"filename": "map-marker.tpl",
+				"versions": [],
+				"contact": "GW",
+				"status": {
+					"static": true,
+					"responsive": true,
+					"animated": true,
+					"cross-platform": false,
+					"complete" : false,
+					"performance": false
+				},
+				"notes": {
+					"bugs": "FIXED &rarr; Check about toggling from the same element. Animations missing updates.",
+					"stagger": "window contents",
+					"draw": "window borders"
+				}
+			},
+			"request-card": {
+                "filename": "request-card.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
+                }
+            }
+		},
+		"media": {
             "attachment-list": {
                 "filename": "attachment-list.tpl",
 				"types": ["student", "guru", "no-padding", "large-icons"],
@@ -835,8 +875,8 @@
 					"draw": "icons"
                 }
             },
-			"course-list": {
-                "filename": "course-list.tpl",
+			"attachment-tile": {
+                "filename": "attachment-tile.tpl",
 				"versions": [],
                 "contact": "GW",
                 "status": {
@@ -848,48 +888,12 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "",
-					"stagger": "items",
-					"draw": ""
-                }
-            },
-			"numbered-list": {
-                "filename": "numbered-list.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "items",
-					"draw": ""
-                }
-            },
-			"sidebar-list": {
-                "filename": "sidebar-list.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "items",
-					"draw": ""
+                    "bugs": "FIXED &rarr; Combine doc outline into single simple path (instead of combined path)",
+					"stagger": "",
+					"draw": "icon (see attachment list)"
                 }
             }
-        },
+		},
         "navigation": {
             "dropdown": {
                 "filename": "dropdown.tpl",
