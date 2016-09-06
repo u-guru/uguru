@@ -1,5 +1,6 @@
 #hiw-dorm {
 	[class*="-shade"] {
+		transform-origin: center top;
 		cursor: pointer;
 		backface-visibility: hidden;
 		&.shade-up {

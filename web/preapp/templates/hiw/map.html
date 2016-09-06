@@ -1,4 +1,9 @@
 <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+	<defs>
+		<clipPath id="map-dorm-window-shade">
+			<rect x="709.799" y="252.801171" width="74.1049177" height="104.344196"></rect>
+		</clipPath>
+	</defs>
 	<rect class="regular-sky" fill="#B6E2F7" x="0" y="0" width="864" height="286"></rect>
 	<g class="night-sky-container"
 		init-default
@@ -1082,35 +1087,92 @@
 			init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
 			when-hiw-enter="p:[transform:scaleY(0) translateZ(0):scaleY(1) translateZ(0):500:easeOutBack easeOutSine]:delay-1800">
 			<rect class="map-dorm-inside" fill="#94D8F2" x="709.799" y="252.801171" width="74.1049177" height="104.344196"></rect>
+			<g class="map-dorm-window-shade" clip-path="url(#map-dorm-window-shade)">
+				<rect class="map-dorm-window-1-2-fill" fill="#94D8F2" x="731.023846" y="300.462148" width="31.6552267" height="17.0638065"></rect>
+				<rect class="map-dorm-window-1-2-shade" fill="#696269" x="731.023846" y="300.462148" width="31.6552267" height="17.0638065"
+					init-with="p:[tr:translateY(-100%)]"
+					when-hiw-micro-enter="p:[transform:translateY(-100%):translateY(0%):500:easeInBack] | s:[window-1-2-up:public:delay-1500]"
+					when-window-1-2-up="p:[transform:translateY(0%):translateY(-100%):500:easeOutBack]"></rect>
+
+				<rect class="map-dorm-window-1-1-fill" fill="#94D8F2" x="713.263791" y="300.462148" width="10.3223565" height="17.0638065"></rect>
+				<rect class="map-dorm-window-1-1-shade" fill="#696269" x="713.263791" y="300.462148" width="10.3223565" height="17.0638065"
+					init-with="p:[tr:translateY(-100%)]"></rect>
+
+				<rect class="map-dorm-window-1-3-fill" fill="#94D8F2" x="769.920725" y="300.462148" width="10.3223565" height="17.0638065"></rect>
+				<rect class="map-dorm-window-1-3-shade" fill="#696269" x="769.920725" y="300.462148" width="10.3223565" height="17.0638065"
+					init-with="p:[tr:translateY(-100%)]"></rect>
+
+				<rect class="map-dorm-window-2-1-fill" fill="#94D8F2" x="713.719895" y="279.475627" width="16.859849" height="17.0638065"></rect>
+				<rect class="map-dorm-window-2-1-shade" fill="#696269" x="713.719895" y="279.475627" width="16.859849" height="17.0638065"
+					init-with="p:[tr:translateY(-100%)]"></rect>
+
+				<rect class="map-dorm-window-2-2-fill" fill="#94D8F2" x="738.421534" y="279.475627" width="16.859849" height="17.0638065"></rect>
+				<rect class="map-dorm-window-2-2-shade" fill="#696269" x="738.421534" y="279.475627" width="16.859849" height="17.0638065"
+					init-with="p:[tr:translateY(-100%)]"></rect>
+
+				<rect class="map-dorm-window-2-3-fill" fill="#94D8F2" x="762.927129" y="279.475627" width="16.859849" height="17.0638065"></rect>
+				<rect class="map-dorm-window-2-3-shade" fill="#696269" x="762.927129" y="279.475627" width="16.859849" height="17.0638065"
+					init-with="p:[tr:translateY(-100%)]"></rect>
+
+				<rect class="map-dorm-window-3-1-fill" fill="#94D8F2" x="713.719895" y="258.489106" width="16.859849" height="17.0638065"></rect>
+				<rect class="map-dorm-window-3-1-shade" fill="#696269" x="713.719895" y="258.489106" width="16.859849" height="17.0638065"
+					init-with="p:[tr:translateY(-100%)]"></rect>
+
+				<rect class="map-dorm-window-3-2-fill" fill="#94D8F2" x="738.421534" y="258.489106" width="16.859849" height="17.0638065"></rect>
+				<rect class="map-dorm-window-3-2-shade" fill="#696269" x="738.421534" y="258.489106" width="16.859849" height="17.0638065"
+					init-with="p:[tr:translateY(-100%)]"></rect>
+
+				<rect class="map-dorm-window-3-3-fill" fill="#94D8F2" x="762.927129" y="258.489106" width="16.859849" height="17.0638065"></rect>
+				<rect class="map-dorm-window-3-3-shade" fill="#696269" x="762.927129" y="258.489106" width="16.859849" height="17.0638065"
+					init-with="p:[tr:translateY(-100%)]"></rect>
+			</g>
 			<path d="M709.799,252.394451 L783.903918,252.394451 L783.903918,356.738647 L709.799,356.738647 L709.799,252.394451 L709.799,252.394451 Z M762.927129,258.082387 L779.786978,258.082387 L779.786978,275.146193 L762.927129,275.146193 L762.927129,258.082387 L762.927129,258.082387 Z M738.421534,258.082387 L755.281383,258.082387 L755.281383,275.146193 L738.421534,275.146193 L738.421534,258.082387 L738.421534,258.082387 Z M713.719895,258.082387 L730.579744,258.082387 L730.579744,275.146193 L713.719895,275.146193 L713.719895,258.082387 L713.719895,258.082387 Z M762.927129,279.068907 L779.786978,279.068907 L779.786978,296.132714 L762.927129,296.132714 L762.927129,279.068907 L762.927129,279.068907 Z M738.421534,279.068907 L755.281383,279.068907 L755.281383,296.132714 L738.421534,296.132714 L738.421534,279.068907 L738.421534,279.068907 Z M713.719895,279.068907 L730.579744,279.068907 L730.579744,296.132714 L713.719895,296.132714 L713.719895,279.068907 L713.719895,279.068907 Z M769.920725,300.055428 L780.243082,300.055428 L780.243082,317.119235 L769.920725,317.119235 L769.920725,300.055428 L769.920725,300.055428 Z M713.263791,300.055428 L723.586148,300.055428 L723.586148,317.119235 L713.263791,317.119235 L713.263791,300.055428 L713.263791,300.055428 Z M731.023846,300.055428 L762.679072,300.055428 L762.679072,317.119235 L731.023846,317.119235 L731.023846,300.055428 L731.023846,300.055428 Z" class="map-dorm-main" fill="#ADC5C6"></path>
 			<rect class="map-dorm-main-border" stroke="#7C8181" x="709.799" y="252.801171" width="74.1049177" height="104.344196"></rect>
-			<rect class="map-dorm-window-1-2-frame" stroke="#FFFFFF" x="731.023846" y="300.462148" width="31.6552267" height="17.0638065"></rect>
-			<path d="M731.571692,308.5 L762.131226,308.5" class="map-dorm-window-1-2-rail" stroke="#FFFFFF" opacity="0.5"></path>
-			<rect class="map-dorm-window-1-2-molding" stroke="#435365" fill="#5D6C6C" x="728.815341" y="315.760733" width="36.0722351" height="1.73610747"></rect>
-			<rect class="map-dorm-window-1-1-frame" stroke="#FFFFFF" x="713.263791" y="300.462148" width="10.3223565" height="17.0638065"></rect>
-			<path d="M713.442436,308.5 L723.407502,308.5" class="map-dorm-window-1-1-rail" stroke="#FFFFFF" opacity="0.5"></path>
-			<rect class="map-dorm-window-1-1-molding" stroke="#435365" fill="#5D6C6C" x="712.543627" y="315.760733" width="11.7626853" height="1.73610747"></rect>
-			<rect class="map-dorm-window-1-3-frame" stroke="#FFFFFF" x="769.920725" y="300.462148" width="10.3223565" height="17.0638065"></rect>
-			<path d="M770.099371,308.5 L780.064437,308.5" class="map-dorm-window-1-3-rail" stroke="#FFFFFF" opacity="0.5"></path>
-			<rect class="map-dorm-window-1-3-molding" stroke="#435365" fill="#5D6C6C" x="769.200561" y="315.760733" width="11.7626853" height="1.73610747"></rect>
-			<rect class="map-dorm-window-2-1-frame" stroke="#FFFFFF" x="713.719895" y="279.475627" width="16.859849" height="17.0638065"></rect>
-			<path d="M714.011683,287.5 L730.287957,287.5" class="map-dorm-window-2-1-rail" stroke="#FFFFFF" opacity="0.5"></path>
-			<rect class="map-dorm-window-2-1-molding" stroke="#435365" fill="#5D6C6C" x="712.543627" y="294.774212" width="19.2123861" height="1.73610747"></rect>
-			<rect class="map-dorm-window-2-2-frame" stroke="#FFFFFF" x="738.421534" y="279.475627" width="16.859849" height="17.0638065"></rect>
-			<path d="M738.713322,287.5 L754.989596,287.5" class="map-dorm-window-2-2-rail" stroke="#FFFFFF" opacity="0.5"></path>
-			<rect class="map-dorm-window-2-2-molding" stroke="#435365" fill="#5D6C6C" x="737.245266" y="294.774212" width="19.2123861" height="1.73610747"></rect>
-			<rect class="map-dorm-window-2-3-frame" stroke="#FFFFFF" x="762.927129" y="279.475627" width="16.859849" height="17.0638065"></rect>
-			<path d="M763.218916,287.5 L779.49519,287.5" class="map-dorm-window-2-3-rail" stroke="#FFFFFF" opacity="0.5"></path>
-			<rect class="map-dorm-window-2-3-molding" stroke="#435365" fill="#5D6C6C" x="761.75086" y="294.774212" width="19.2123861" height="1.73610747"></rect>
-			<rect class="map-dorm-window-3-1-frame" stroke="#FFFFFF" x="713.719895" y="258.489106" width="16.859849" height="17.0638065"></rect>
-			<path d="M714.011683,266.5 L730.287957,266.5" class="map-dorm-window-3-1-rail" stroke="#FFFFFF" opacity="0.5"></path>
-			<rect class="map-dorm-window-3-1-molding" stroke="#435365" fill="#5D6C6C" x="712.543627" y="273.787692" width="19.2123861" height="1.73610747"></rect>
-			<rect class="map-dorm-window-3-2-frame" stroke="#FFFFFF" x="738.421534" y="258.489106" width="16.859849" height="17.0638065"></rect>
-			<path d="M738.713322,266.5 L754.989596,266.5" class="map-dorm-window-3-2-rail" stroke="#FFFFFF" opacity="0.5"></path>
-			<rect class="map-dorm-window-3-2-molding" stroke="#435365" fill="#5D6C6C" x="737.245266" y="273.787692" width="19.2123861" height="1.73610747"></rect>
-			<rect class="map-dorm-window-3-3-frame" stroke="#FFFFFF" x="762.927129" y="258.489106" width="16.859849" height="17.0638065"></rect>
-			<path d="M763.218916,266.5 L779.49519,266.5" class="map-dorm-window-3-1-rail" stroke="#FFFFFF" opacity="0.5"></path>
-			<rect class="map-dorm-window-3-1-molding" stroke="#435365" fill="#5D6C6C" x="761.75086" y="273.787692" width="19.2123861" height="1.73610747"></rect>
+			<g class="map-dorm-window-1-2">
+				<rect class="map-dorm-window-1-2-frame" stroke="#FFFFFF" x="731.023846" y="300.462148" width="31.6552267" height="17.0638065"></rect>
+				<path d="M731.571692,308.5 L762.131226,308.5" class="map-dorm-window-1-2-rail" stroke="#FFFFFF" opacity="0.5"></path>
+				<rect class="map-dorm-window-1-2-molding" stroke="#435365" fill="#5D6C6C" x="728.815341" y="315.760733" width="36.0722351" height="1.73610747"></rect>
+			</g>
+			<g class="map-dorm-window-1-1">
+				<rect class="map-dorm-window-1-1-frame" stroke="#FFFFFF" x="713.263791" y="300.462148" width="10.3223565" height="17.0638065"></rect>
+				<path d="M713.442436,308.5 L723.407502,308.5" class="map-dorm-window-1-1-rail" stroke="#FFFFFF" opacity="0.5"></path>
+				<rect class="map-dorm-window-1-1-molding" stroke="#435365" fill="#5D6C6C" x="712.543627" y="315.760733" width="11.7626853" height="1.73610747"></rect>
+			</g>
+			<g class="map-dorm-window-1-3">
+				<rect class="map-dorm-window-1-3-frame" stroke="#FFFFFF" x="769.920725" y="300.462148" width="10.3223565" height="17.0638065"></rect>
+				<path d="M770.099371,308.5 L780.064437,308.5" class="map-dorm-window-1-3-rail" stroke="#FFFFFF" opacity="0.5"></path>
+				<rect class="map-dorm-window-1-3-molding" stroke="#435365" fill="#5D6C6C" x="769.200561" y="315.760733" width="11.7626853" height="1.73610747"></rect>
+			</g>
+			<g class="map-dorm-window-2-1">
+				<rect class="map-dorm-window-2-1-frame" stroke="#FFFFFF" x="713.719895" y="279.475627" width="16.859849" height="17.0638065"></rect>
+				<path d="M714.011683,287.5 L730.287957,287.5" class="map-dorm-window-2-1-rail" stroke="#FFFFFF" opacity="0.5"></path>
+				<rect class="map-dorm-window-2-1-molding" stroke="#435365" fill="#5D6C6C" x="712.543627" y="294.774212" width="19.2123861" height="1.73610747"></rect>
+			</g>
+			<g class="map-dorm-window-2-2">
+				<rect class="map-dorm-window-2-2-frame" stroke="#FFFFFF" x="738.421534" y="279.475627" width="16.859849" height="17.0638065"></rect>
+				<path d="M738.713322,287.5 L754.989596,287.5" class="map-dorm-window-2-2-rail" stroke="#FFFFFF" opacity="0.5"></path>
+				<rect class="map-dorm-window-2-2-molding" stroke="#435365" fill="#5D6C6C" x="737.245266" y="294.774212" width="19.2123861" height="1.73610747"></rect>
+			</g>
+			<g class="map-dorm-window-2-3">
+				<rect class="map-dorm-window-2-3-frame" stroke="#FFFFFF" x="762.927129" y="279.475627" width="16.859849" height="17.0638065"></rect>
+				<path d="M763.218916,287.5 L779.49519,287.5" class="map-dorm-window-2-3-rail" stroke="#FFFFFF" opacity="0.5"></path>
+				<rect class="map-dorm-window-2-3-molding" stroke="#435365" fill="#5D6C6C" x="761.75086" y="294.774212" width="19.2123861" height="1.73610747"></rect>
+			</g>
+			<g class="map-dorm-window-3-1">
+				<rect class="map-dorm-window-3-1-frame" stroke="#FFFFFF" x="713.719895" y="258.489106" width="16.859849" height="17.0638065"></rect>
+				<path d="M714.011683,266.5 L730.287957,266.5" class="map-dorm-window-3-1-rail" stroke="#FFFFFF" opacity="0.5"></path>
+				<rect class="map-dorm-window-3-1-molding" stroke="#435365" fill="#5D6C6C" x="712.543627" y="273.787692" width="19.2123861" height="1.73610747"></rect>
+			</g>
+			<g class="map-dorm-window-3-2">
+				<rect class="map-dorm-window-3-2-frame" stroke="#FFFFFF" x="738.421534" y="258.489106" width="16.859849" height="17.0638065"></rect>
+				<path d="M738.713322,266.5 L754.989596,266.5" class="map-dorm-window-3-2-rail" stroke="#FFFFFF" opacity="0.5"></path>
+				<rect class="map-dorm-window-3-2-molding" stroke="#435365" fill="#5D6C6C" x="737.245266" y="273.787692" width="19.2123861" height="1.73610747"></rect>
+			</g>
+			<g class="map-dorm-window-3-3">
+				<rect class="map-dorm-window-3-3-frame" stroke="#FFFFFF" x="762.927129" y="258.489106" width="16.859849" height="17.0638065"></rect>
+				<path d="M763.218916,266.5 L779.49519,266.5" class="map-dorm-window-3-1-rail" stroke="#FFFFFF" opacity="0.5"></path>
+				<rect class="map-dorm-window-3-3-molding" stroke="#435365" fill="#5D6C6C" x="761.75086" y="273.787692" width="19.2123861" height="1.73610747"></rect>
+			</g>
 			<rect class="map-dorm-column-right-top" stroke="#4D371C" fill="#D5C7B6" x="816.839437" y="328.313418" width="11.7626853" height="5.88407122"></rect>
 			<rect class="map-dorm-column-right-main" stroke="#4D371C" fill="#D5C7B6" x="818.407795" y="334.197489" width="8.62596925" height="22.9478777"></rect>
 			<rect class="map-dorm-column-right-molding-lower" stroke="#4D381C" fill="#96836B" x="818.015705" y="334.197489" width="9.41014827" height="1.96135707"></rect>

@@ -3980,6 +3980,7 @@
   83.3%, 91.63% ,100% {
     opacity: 1; } }
 #hiw-dorm [class*="-shade"] {
+  transform-origin: center top;
   cursor: pointer;
   backface-visibility: hidden; }
   #hiw-dorm [class*="-shade"].shade-up {
@@ -4615,6 +4616,9 @@
 .projector-slide .hiw-svg {
   width: 100%;
   height: 100%; }
+
+.map-dorm-window-shade rect {
+  transform-origin: center top; }
 
 .map-stadium, .map-library, .map-dorm, .map-clock-tower,
 #hiw-stadium, .hiw-balloon {
