@@ -37,12 +37,12 @@
 	transform-origin: center center;
 	transform: translate3d(0,100%,0) scaleX(0);
 }
+.map-stadium-outside {
+	transition: all 150ms ease-in-out;
+	transform: scaleY(1) translateZ(0);
+	transform-origin: 50% 85%;
+}
 a[class*="-container"] {
-	.map-stadium-outside {
-		transition: all 150ms ease-in-out;
-		transform: scaleY(1) translateZ(0);
-		transform-origin: 50% 85%;
-	}
 	&:hover {
 		.map-enter {
 			opacity: 1;
@@ -52,7 +52,7 @@ a[class*="-container"] {
 				animation: hiw-cloud-hover 1500ms linear 175ms infinite alternate;
 			}
 		}
-		.map-stadium-outside { transform: scaleY(0) translateZ(0) }
+		// .map-stadium-outside { transform: scaleY(0) translateZ(0) }
 	}
 }
 

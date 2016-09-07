@@ -3939,13 +3939,27 @@
     opacity: 1; }
   83.3%, 91.63%, 100% {
     opacity: 0; } }
-@keyframes hiw-night-shift-map {
+@keyframes hiw-evening-shift {
+  0%, 8.33%, 16.66% {
+    opacity: 0; }
+  24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97% {
+    opacity: 1; }
+  83.3%, 91.63%, 100% {
+    opacity: 0; } }
+@keyframes hiw-light-shift {
   0%, 8.33%, 16.66%, 24.99%, 33.32%, 41.65%, 49.98% {
     opacity: 1; }
   58.31%, 66.64%, 74.97% {
-    opacity: 0.75; }
+    opacity: 0; }
   83.3%, 91.63%, 100% {
     opacity: 1; } }
+@keyframes hiw-night-shift-map {
+  0%, 8.33%, 16.66%, 24.99%, 33.32%, 41.65%, 49.98% {
+    opacity: 0; }
+  58.31%, 66.64%, 74.97% {
+    opacity: 0.75; }
+  83.3%, 91.63%, 100% {
+    opacity: 0; } }
 @keyframes hiw-sunset-shift {
   0%, 8.33%, 16.66% {
     opacity: 0; }
@@ -4612,18 +4626,17 @@
   transform-origin: center center;
   transform: translate3d(0, 100%, 0) scaleX(0); }
 
-a[class*="-container"] .map-stadium-outside {
+.map-stadium-outside {
   transition: all 150ms ease-in-out;
   transform: scaleY(1) translateZ(0);
   transform-origin: 50% 85%; }
+
 a[class*="-container"]:hover .map-enter {
   opacity: 1;
   transform: translate3d(0, 0, 0) scaleX(1); }
   a[class*="-container"]:hover .map-enter g {
     transform: translateZ(0);
     animation: hiw-cloud-hover 1500ms linear 175ms infinite alternate; }
-a[class*="-container"]:hover .map-stadium-outside {
-  transform: scaleY(0) translateZ(0); }
 
 #hiw-clock-tower, #hiw-dorm, #hiw-library {
   position: absolute;
