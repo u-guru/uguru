@@ -25,20 +25,23 @@
 						"portal": {
 							"animation": "scaleXIn",
 							"easing": "",
-							"updated": true,
-							"notes": ""
+							"updated": false,
+							"complete": false,
+							"notes": {}
 						},
 						"logo": {
 							"animation": "bounceInUp",
 							"easing": "easeOutBack",
 							"updated": true,
-							"notes": ""
+							"complete": false,
+							"notes": {}
 						},
 						"guru": {
 							"animation": "bounceInUp",
 							"easing": "easeOutBack",
 							"updated": true,
-							"notes": ""
+							"complete": false,
+							"notes": {}
 						}
 					},
                     "onProgressStart": {
@@ -46,6 +49,7 @@
 							"animation": ["drawIn", "category color transition"],
 							"easing": "linear",
 							"updated": false,
+							"complete": false,
 							"notes": {
 								"GW": "May require a state for each color",
 								"JO": ""
@@ -53,7 +57,9 @@
 						},
 						"guru": {
 							"animation": "bounce 3x",
+							"easing": "",
 							"updated": false,
+							"complete": false,
 							"notes": {
 								"GW": "May require 3+ states -or- alternate, but check alternate first",
 								"JO": ""
@@ -62,15 +68,46 @@
 					},
 					"onProgressEnd": {
 						"guru": {
-							"animation": "bounceOutDown or easeInBack",
-							"updated": true
+							"animation": "bounceOutDown",
+							"easing": "easeInBack",
+							"updated": true,
+							"complete": false,
+							"notes": {}
 						},
-						"logo": "bounceOutDown or easeInBack",
-						"portal": "flipOpen"
+						"logo": {
+							"animation": "bounceOutDown",
+							"easing": "easeInBack",
+							"updated": true,
+							"complete": false,
+							"notes": {}
+						},
+						"portal": {
+							"animation": "flipOpen",
+							"easing": ["easeOutSine", "easeOutBack", "easeInBack"],
+							"updated": true,
+							"complete": false,
+							"notes": {}
+						}
 					},
 					"onWarpTransitionStart": {
-						"portal": "clip-path or scaleInUp",
-						"stars": "translateZIn",
+						"portal": {
+							"animation": ["clipPathIn", "scaleInUp"],
+							"easing": ["easeInBack", "easeInExpo"],
+							"updated": false,
+							"complete": false,
+							"notes": {
+								"GW": "scaleInUp in the case that clipPathIn isn't cross-platform. See codrops"
+							}
+						},
+						"stars": {
+							"animation": "translateZIn",
+							"easing": "linear",
+							"updated": false,
+							"complete": false,
+							"notes": {
+								"GW": "Check whether prop or class would work better in this case (see HIW clouds)"
+							}
+						},
 					}
                 }
             }
