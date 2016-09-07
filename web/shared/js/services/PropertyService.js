@@ -24,7 +24,59 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     getFrameAnimationFunc: getFrameAnimationFunc,
     defaultPropAnimations: defaultPropAnimations,
     detectPlaybarControlElem: detectPlaybarControlElem,
-    getPropJson: getPropJson
+    getPropJson: getPropJson,
+    parseAnimObjToPropArr: parseAnimObjToPropArr
+  }
+
+  function parseKeyframeCSS(css_str) {
+    var resultDict = {}
+    var removedBracketStr = css_str.split('{')[1].split('}')[0].trim();
+    var kvProps = removedBracketStr.split(';')
+    kvProps.forEach(function(kv, i) {kvProps[i] = kvProps[i].replace(': ', ':').replace(' :', ':').replace(' : ', ':').trim()})
+    kvProps = kvProps.filter(function(prop, i) {return prop && prop.length})
+    kvProps.forEach(function(kv, i) {
+      // resultDict[kv]
+      var kvSplit = kv.split(':');
+      resultDict[kvSplit[0].trim() + ""] = kvSplit[1].trim()
+    })
+    return resultDict;
+  }
+
+  function parseAnimObjToPropArr(css_rules) {
+    var keyFrames = [];
+    var propDictFrames = {};
+    for (var i = 0; i < css_rules.length; i++) {
+
+      var iRule = css_rules[i];
+      if (iRule.type !== 8) {
+        continue;
+      }
+      var percentInt = parseFloat(iRule.keyText.replace('%', ''))
+      var cssText = iRule.cssText;
+      var propArr = parseKeyframeCSS(iRule.cssText)
+      for (key in propArr) {
+        if (!(key in propDictFrames)) {
+          propDictFrames[key] = []
+        }
+        propDictFrames[key].push({prop: key, value: propArr[key], percent:percentInt});
+      }
+      keyFrames.unshift({percent: percentInt, props:propArr})
+      // console.log(iRule);
+    }
+
+    // for (property in css_rules) {
+    //   if ((property || property === 0) && css_rules[property].type === window.CSSRule.WEBKIT_KEYFRAME_RULE) {
+    //     keyFrames.push(css_rules[property]);
+    //   }
+    // }
+    // keyFrames.sort(function(kf_a, kf_b) {
+    //   return parseFloat(kf_b.keyText.replace("%", "")) - parseFloat(kf_b.keyText.replace("%", ""))
+    // }).reverse()
+    // keyFrames.forEach(function(kf, i) {
+    //   console.log(kf.keyText)
+    // })
+    // var resultDict =
+    return {rules: css_rules, props: propDictFrames, kf: keyFrames};
   }
 
   function detectPlaybarControlElem() {
