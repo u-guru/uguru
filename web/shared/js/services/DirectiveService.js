@@ -984,6 +984,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         //array case
         var stringPropArgs = processStrArrToObj(string_args);
         var hasPlayer = false;
+
         for (var i = 0; i < stringPropArgs.length; i++) {
           var parsedPropDict = {};
 
