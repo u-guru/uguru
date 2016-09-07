@@ -1,13 +1,13 @@
 <div class="absolute top-0 left-0 full-xy perspective-container">
-	<div class="loader-portal animate"
+	<div class="loader-portal states"
 		init-default
 		on-init="s:[portal-open:public]">
 		<div class="loader-portal-inside"
 			init-with="p-op"
 			when-portal-open="p:[opacity:0:1:50:easeOutSine]:delay-50">
 			<div class="portal"
-				init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(87deg)]"
-				when-portal-complete="p:[transform:translateY(37%) translateZ(25px) rotateX(87deg):translateY(-37.5%) translateZ(0px) rotateX(0deg):900:easeOutSine]:delay-1250">
+				init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]"
+				when-portal-complete="p:[transform:translateY(37%) translateZ(25px) rotateX(75deg):translateY(-37.5%) translateZ(0px) rotateX(0deg):900:easeOutSine easeOutSine easeOutSine]:delay-1250">
 				<div>
 					<svg width="200px" height="200px" viewBox="0 0 400 400">
 						<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
