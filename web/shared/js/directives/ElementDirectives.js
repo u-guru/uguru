@@ -77,7 +77,7 @@ angular.module('uguru.shared.directives')
                     for (var i = 0; i < clone.length; i++) {
                       var iChild = clone[i];
                       for (key in stagDict) {
-                          keyDashed = UtilitiesService.camelToDash(key);
+                          keyDashed = UtilitiesService.camelToDash(key).toLowerCase();
 
                           var hasAttribute = iChild.getAttribute && iChild.getAttribute(keyDashed);
                           if (hasAttribute && hasAttribute.length && stagDict[key].time) {
@@ -89,18 +89,28 @@ angular.module('uguru.shared.directives')
 
                             var matchesWithConstraints = DirectiveService.verifyStaggerChildSelector(selectorPrefs[0], iChild)
                             if (key.indexOf('when') > -1) {
-                              console.log(stagDict[key], stagDict[key].time.values )
-
+                              console.log(stagDict[key], stagDict[key].time.values)
                             }
                             if (matchesWithConstraints && stagDict[key].time.values && stagDict[key].time.values.length) {
+                              var delayVal = stagDict[key].time.values.shift();
+                              // console.log(delayVal)
+                              var extensionValue = '';
+                              if (keyAttr.indexOf('^') > -1 && delayVal > 0) {
+                                keyAttr = UtilitiesService.replaceAll(keyAttr, '^', 0);
+                              }
+                              if (delayVal > 0) {
+                                extensionValue = ':' + 'delay-' + delayVal
+                              }
 
-                              var extensionValue = ':' + 'delay-' + stagDict[key].time.values.shift();
+                              // iChild.removeAttribute(keyDashed);
                               iChild.setAttribute(keyDashed, keyAttr + extensionValue);
+
                             }
 
                           }
                         }
                         iChild.removeAttribute && iChild.removeAttribute('style')
+                        $compile(iChild)(innerScope)
                         clonedChildrenWithAttr.push(iChild);
                       }
 
@@ -564,7 +574,7 @@ angular.module('uguru.shared.directives')
     restrict: 'A',
     link: {
       pre: function(scope, element, attr) {
-
+        console.log(element[0])
         scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
         var elemArgs = DirectiveService.parseArgs(attr.onEnter, 'on-enter', element);
         var supportedCommands = DirectiveService.supportedCommands;

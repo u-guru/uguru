@@ -68,7 +68,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           }
         })
       }
-      console.log(constraints.attrs, result, elem)
       return result;
     }
 
@@ -422,6 +421,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
       var watchState = 'root.public.customStates.' + type + '.' + args.camel;
       scope.$watch(watchState, function(new_value, old_value) {
+
         if (new_value) {
           $timeout(function() {
             scope.root.public.customStates[type][args.camel] = false;
@@ -437,8 +437,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             }
           }
           var elemArgs = parseArgs(formattedAttrValue, args && args.dashed || type, element);
+
           for (key in elemArgs) {
             if ((argNames || supportedCommands).indexOf(key) > -1) {
+
               activateArg(key, elemArgs[key], scope, element);
             }
           }
@@ -568,6 +570,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         }, 1000)
       }, delay)
     }
+
+
 
     function activateArg(arg_type, arg_dict, scope, elem) {
       switch(arg_type) {
@@ -1003,12 +1007,27 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             //   parsedPropDict['default'] = true;
             // }
             processCustomArgsArray(type, key, value, string_args, parsedPropDict, custom_args, state_name, elem, hasPlayer);
-          }
-          propDict[base_dict_key].push(parsedPropDict);
-          if (parsedPropDict.animProp) {
-            hasPlayer = parsedPropDict.animProp.player;
+
           }
 
+          if (parsedPropDict.animProp) {
+            hasPlayer = parsedPropDict.animProp.player;
+            var baseDelay = base_dict.delay || 0;
+            var animPropDelay = parsedPropDict.animProp.delay;
+            if (!parsedPropDict.animProp.delay) {
+              var finalCheckDelay = string_args.split(']:');
+              if (finalCheckDelay.length > 1 && finalCheckDelay[1].indexOf('delay-') > -1) {
+                var delayStr = parseInt(finalCheckDelay[1].replace('delay-', ''));
+                parsedPropDict.animProp.delay = delayStr
+                // if ()
+              }
+            }
+            // if (base_dict.delay > 0 && parsedPropDict.animProp.delay === NaN) {
+            //   console.log('resolve the delay')
+            // }
+            // console.log(base_dict, string_args, base_dict, base_dict_key)
+          }
+          propDict[base_dict_key].push(parsedPropDict);
         }
       }
       //parseGeneralArgs
@@ -1238,12 +1257,15 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
   }
 
     function evalSendArgs(arg_dict, scope, elem) {
+      // var toDashed = UtilitiesService.camelToDash(msg_name).toLowerCase();
+
       if (arg_dict.delay) {
         $timeout(function() {
           processMessageArr(arg_dict.messages, scope, elem);
 
         }, arg_dict.delay)
       } else {
+
         processMessageArr(arg_dict.messages, scope, elem);
       }
     }
@@ -1285,6 +1307,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         delete indexMessageObj['delay'];
         var messageName = Object.keys(indexMessageObj)[0];
         var messageScope = indexMessageObj[messageName];
+        var messageDashedName = 'when-' + messageName;
+
+        // console.log(elem)
         sendMessageWithinScope(formatMessage(messageName), messageScope, dataDict, delay, scope, elem)
       }
 
@@ -1293,7 +1318,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       }
 
       function sendMessageWithinScope(msg_name, msg_scope, msg_data, delay, scope, elem) {
-        // console.log('sending..', msg_name, 'with scope', msg_scope, delay, scope.root.public.customStates);
+
+        // console.log('sending..', , 'with scope', msg_scope, delay, scope.root.public.customStates);
 
         if (delay) {
           $timeout(function() {
