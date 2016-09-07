@@ -6,10 +6,10 @@
         "splashLoader": {
             "rubric": {
                 "ui": {
-                    "static": false,
-                    "responsive": false,
+                    "static": true,
+                    "responsive": true,
                     "animated": false,
-                    "zero glitches": false,
+                    "glitch-free": false,
                     "cross-platform": false,
                     "verified" : false,
                     "analysis": false
@@ -21,8 +21,57 @@
                     }
                 },
                 "states": {
-                    "onEnter": "",
-                    "onProgressStart": ""
+                    "onEnter": {
+						"portal": {
+							"animation": "scaleXIn",
+							"easing": "",
+							"updated": true,
+							"notes": ""
+						},
+						"logo": {
+							"animation": "bounceInUp",
+							"easing": "easeOutBack",
+							"updated": true,
+							"notes": ""
+						},
+						"guru": {
+							"animation": "bounceInUp",
+							"easing": "easeOutBack",
+							"updated": true,
+							"notes": ""
+						}
+					},
+                    "onProgressStart": {
+						"ring": {
+							"animation": ["drawIn", "category color transition"],
+							"easing": "linear",
+							"updated": false,
+							"notes": {
+								"GW": "May require a state for each color",
+								"JO": ""
+							}
+						},
+						"guru": {
+							"animation": "bounce 3x",
+							"updated": false,
+							"notes": {
+								"GW": "May require 3+ states -or- alternate, but check alternate first",
+								"JO": ""
+							}
+						},
+					},
+					"onProgressEnd": {
+						"guru": {
+							"animation": "bounceOutDown or easeInBack",
+							"updated": true
+						},
+						"logo": "bounceOutDown or easeInBack",
+						"portal": "flipOpen"
+					},
+					"onWarpTransitionStart": {
+						"portal": "clip-path or scaleInUp",
+						"stars": "translateZIn",
+					}
                 }
             }
         }
