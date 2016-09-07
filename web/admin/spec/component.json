@@ -59,24 +59,6 @@
 					"draw": ""
                 }
             },
-			"map-marker": {
-                "filename": "map-marker.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "FIXED &rarr; Check about toggling from the same element. Animations missing updates.",
-					"stagger": "window contents",
-					"draw": "window borders"
-                }
-            },
             "profile-card": {
                 "filename": "profile-card.tpl",
                 "types": ["single", "stack"],
@@ -130,24 +112,6 @@
                 "notes": {
                     "bugs": "",
 					"stagger": "rating",
-					"draw": ""
-                }
-            },
-			"request-card": {
-                "filename": "request-card.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "",
 					"draw": ""
                 }
             },
@@ -206,24 +170,6 @@
 					"draw": ""
                 }
             },
-			"timeline-icon": {
-                "filename": "timeline-icon.tpl",
-				"versions": [],
-                "contact": "JO",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "FIXED &rarr; Change onclick to onmouseenter. FIXED &rarr; Possible enhancement by adding bounce and spacing",
-					"stagger": "",
-					"draw": ""
-                }
-            },
             "university-card": {
                 "filename": "university-card.tpl",
                 "types": ["checkbox", "link"],
@@ -243,9 +189,26 @@
 					"draw": ""
                 }
             },
-            "user-icon": {
-                "filename": "user-icon.tpl",
-                "types": ["24", "32", "36", "48", "64", "72", "84", "96", "128", "default"],
+			"album-tile": {
+                "filename": "album-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "FIXED &rarr; Change translate down to swing like the dropdown. Stagger.",
+					"stagger": "info (2)",
+					"draw": ""
+                }
+            },
+			"calendar-tile": {
+                "filename": "calendar-tile.tpl",
 				"versions": [],
                 "contact": "GW",
                 "status": {
@@ -259,6 +222,236 @@
                 "notes": {
                     "bugs": "",
 					"stagger": "",
+					"draw": ""
+                }
+            },
+            "category-tile": {
+                "filename": "category-tile.tpl",
+                "types": ["link-no-photo", "photo", "photo-price", "photo-price-moxie", "photo-price-crimson", "link-color", "link-square", "check-square"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "@samir Switcher is not working for this page only: onexits are being triggered, key being the first type. FIXED &rarr; Convert on-inits to a single state.",
+					"stagger": "",
+					"draw": "icon"
+                }
+            },
+			"credit-tile": {
+                "filename": "credit-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": "FIXED &rarr; CTA needs a longer ease-out",
+					"stagger": "",
+					"draw": "icon"
+                }
+            },
+			"feature-tile": {
+                "filename": "feature-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
+                }
+            },
+            "money-tile": {
+                "filename": "money-tile.tpl",
+                "types": ["fixed", "add"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
+                }
+            },
+            "pricing-tile": {
+                "filename": "pricing-tile.tpl",
+				"types": ["default", "alert"],
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "for": "FIXED &rarr; Check for flicker",
+					"stagger": "",
+					"draw": ""
+                }
+            },
+            "profile-cardlet": {
+                "filename": "profile-cardlet.tpl",
+				"types": ["default", "academic", "baking", "photo", "tech", "household"],
+				"versions": ["mobile"],
+				"versionVars": {
+                    "mobile": {"mobile": true}
+                },
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "Mobile has JSON error. FIXED &rarr; Take versions from profile. Tech borders are not applying easings.",
+					"stagger": "",
+					"draw": ""
+                }
+            },
+			"profile-tile": {
+				"filename": "profile-tile.tpl",
+				"types": ["academic", "baking", "photo", "tech", "household"],
+				"versions": ["mobile"],
+				"versionVars": {
+                    "mobile": {"mobile": true}
+                },
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "Mobile has JSON error. Academic could use opacity delay for icon-enter. FIXED &rarr; Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter",
+					"for": "When given the cycles, should go back to animate indiv hh bubbles",
+					"stagger": "rating",
+					"draw": ""
+                }
+            },
+			"ranking-tile": {
+                "filename": "ranking-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "cards",
+					"draw": "arrows, icons"
+                }
+            },
+			"record-tile": {
+                "filename": "record-tile.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
+                }
+            }
+        },
+        "collections": {
+			"course-list": {
+                "filename": "course-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "items",
+					"draw": ""
+                }
+            },
+			"numbered-list": {
+                "filename": "numbered-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "items",
+					"draw": ""
+                }
+            },
+			"sidebar-list": {
+                "filename": "sidebar-list.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "items",
 					"draw": ""
                 }
             }
@@ -342,6 +535,43 @@
 					"draw": "icon"
                 }
             },
+			"timeline-icon": {
+                "filename": "timeline-icon.tpl",
+				"versions": [],
+                "contact": "JO",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "FIXED &rarr; Change onclick to onmouseenter. FIXED &rarr; Possible enhancement by adding bounce and spacing",
+					"stagger": "",
+					"draw": ""
+                }
+            },
+			"user-icon": {
+				"filename": "user-icon.tpl",
+				"types": ["24", "32", "36", "48", "64", "72", "84", "96", "128", "default"],
+				"versions": [],
+				"contact": "GW",
+				"status": {
+					"static": true,
+					"responsive": true,
+					"animated": true,
+					"cross-platform": false,
+					"complete" : false,
+					"performance": false
+				},
+				"notes": {
+					"bugs": "",
+					"stagger": "",
+					"draw": ""
+				}
+			},
 			"wallet": {
                 "filename": "wallet.tpl",
 				"versions": [],
@@ -548,9 +778,84 @@
 					"stagger": "borders",
 					"draw": "borders"
                 }
+			},
+			"chip": {
+				"filename": "chip.tpl",
+				"types": ["span", "link", "image", "input"],
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
+                }
+			},
+			"ghost-tag": {
+				"filename": "ghost.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "",
+					"draw": "borders"
+                }
 			}
         },
-        "lists": {
+		"map": {
+			"map-marker": {
+				"filename": "map-marker.tpl",
+				"versions": [],
+				"contact": "GW",
+				"status": {
+					"static": true,
+					"responsive": true,
+					"animated": true,
+					"cross-platform": false,
+					"complete" : false,
+					"performance": false
+				},
+				"notes": {
+					"bugs": "FIXED &rarr; Check about toggling from the same element. Animations missing updates.",
+					"stagger": "window contents",
+					"draw": "window borders"
+				}
+			},
+			"request-card": {
+                "filename": "request-card.tpl",
+				"versions": [],
+                "contact": "GW",
+                "status": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "cross-platform": false,
+                    "complete" : false,
+                    "performance": false
+                },
+                "notes": {
+                    "bugs": "",
+					"stagger": "",
+					"draw": ""
+                }
+            }
+		},
+		"media": {
             "attachment-list": {
                 "filename": "attachment-list.tpl",
 				"types": ["student", "guru", "no-padding", "large-icons"],
@@ -570,8 +875,8 @@
 					"draw": "icons"
                 }
             },
-			"course-list": {
-                "filename": "course-list.tpl",
+			"attachment-tile": {
+                "filename": "attachment-tile.tpl",
 				"versions": [],
                 "contact": "GW",
                 "status": {
@@ -583,30 +888,12 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "",
-					"stagger": "items",
-					"draw": ""
-                }
-            },
-			"sidebar-list": {
-                "filename": "sidebar-list.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "items",
-					"draw": ""
+                    "bugs": "FIXED &rarr; Combine doc outline into single simple path (instead of combined path)",
+					"stagger": "",
+					"draw": "icon (see attachment list)"
                 }
             }
-        },
+		},
         "navigation": {
             "dropdown": {
                 "filename": "dropdown.tpl",
@@ -690,8 +977,7 @@
 				"types": ["default", "separate-header", "tour-guru"],
 				"versions": ["JO-082916"],
                 "versionVars": {
-                    "JO-082916": { "h2" : {"initWith": "p:[letter-spacing:15px]"}},
-					"JO-082916": { "popup-tour-guru" : {"initWith": "p:[transform:rotate(215deg) scale(0), tro:left bottom]"}}
+                    "JO-082916": { "h2" : {"initWith": "p:[letter-spacing:15px]"},"popup-tour-guru" : {"initWith": "p:[transform:rotate(215deg) scale(0), tro:left bottom]"}}
                 },
                 "contact": "JO",
                 "status": {
@@ -803,45 +1089,6 @@
                 }
 			}
 		},
-		"tags": {
-			"chip": {
-				"filename": "chip.tpl",
-				"types": ["span", "link", "image", "input"],
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "",
-					"draw": ""
-                }
-			},
-			"ghost": {
-				"filename": "ghost.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "",
-					"draw": "borders"
-                }
-			}
-		},
 		"text": {
 			"body": {
 				"filename": "body.tpl",
@@ -879,236 +1126,6 @@
 					"draw": ""
                 }
 			}
-		},
-		"tiles": {
-			"album-tile": {
-                "filename": "album-tile.tpl",
-				"versions": [],
-                "contact": "JO",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "FIXED &rarr; Change translate down to swing like the dropdown. Stagger.",
-					"stagger": "info (2)",
-					"draw": ""
-                }
-            },
-			"attachment-tile": {
-                "filename": "attachment-tile.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "FIXED &rarr; Combine doc outline into single simple path (instead of combined path)",
-					"stagger": "",
-					"draw": "icon (see attachment list)"
-                }
-            },
-			"calendar-tile": {
-                "filename": "calendar-tile.tpl",
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "",
-					"draw": ""
-                }
-            },
-            "category-tile": {
-                "filename": "category-tile.tpl",
-                "types": ["link-no-photo", "photo", "photo-price", "photo-price-moxie", "photo-price-crimson", "link-color", "link-square", "check-square"],
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "@samir Switcher is not working for this page only: onexits are being triggered, key being the first type. FIXED &rarr; Convert on-inits to a single state.",
-					"stagger": "",
-					"draw": "icon"
-                }
-            },
-			"credit-tile": {
-                "filename": "credit-tile.tpl",
-				"versions": [],
-                "contact": "JO",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "for": "FIXED &rarr; CTA needs a longer ease-out",
-					"stagger": "",
-					"draw": "icon"
-                }
-            },
-			"feature-tile": {
-                "filename": "feature-tile.tpl",
-				"versions": [],
-                "contact": "JO",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "",
-					"draw": ""
-                }
-            },
-            "money-tile": {
-                "filename": "money-tile.tpl",
-                "types": ["fixed", "add"],
-				"versions": [],
-                "contact": "GW",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "",
-					"draw": ""
-                }
-            },
-            "pricing-tile": {
-                "filename": "pricing-tile.tpl",
-				"types": ["default", "alert"],
-				"versions": [],
-                "contact": "JO",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "for": "FIXED &rarr; Check for flicker",
-					"stagger": "",
-					"draw": ""
-                }
-            },
-            "profile-cardlet": {
-                "filename": "profile-cardlet.tpl",
-				"types": ["default", "academic", "baking", "photo", "tech", "household"],
-				"versions": ["mobile"],
-				"versionVars": {
-                    "mobile": {"mobile": true}
-                },
-                "contact": "JO",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "Mobile has JSON error. FIXED &rarr; Take versions from profile. Tech borders are not applying easings.",
-					"stagger": "",
-					"draw": ""
-                }
-            },
-			"profile-tile": {
-				"filename": "profile-tile.tpl",
-				"types": ["academic", "baking", "photo", "tech", "household"],
-				"versions": ["mobile"],
-				"versionVars": {
-                    "mobile": {"mobile": true}
-                },
-                "contact": "JO",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "Mobile has JSON error. Academic could use opacity delay for icon-enter. FIXED &rarr; Add final four and have all of the tiles match to the profile external animations. Tech- Revisit translateZ on borders onmouseenter",
-					"for": "When given the cycles, should go back to animate indiv hh bubbles",
-					"stagger": "rating",
-					"draw": ""
-                }
-            },
-			"ranking-tile": {
-                "filename": "ranking-tile.tpl",
-				"versions": [],
-                "contact": "JO",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "cards",
-					"draw": "arrows, icons"
-                }
-            },
-			"record-tile": {
-                "filename": "record-tile.tpl",
-				"versions": [],
-                "contact": "JO",
-                "status": {
-                    "static": true,
-                    "responsive": true,
-                    "animated": true,
-                    "cross-platform": false,
-                    "complete" : false,
-                    "performance": false
-                },
-                "notes": {
-                    "bugs": "",
-					"stagger": "",
-					"draw": ""
-                }
-            }
-        }
+		}
     }
 }

@@ -17,6 +17,10 @@
 
 .projector-slide .hiw-svg { width: 100%; height: 100% }
 
+.map-dorm-window-shade rect {
+	transform-origin: center top;
+}
+
 .map-stadium, .map-library, .map-dorm, .map-clock-tower,
 #hiw-stadium, .hiw-balloon {
 	cursor: pointer;
