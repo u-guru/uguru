@@ -571,8 +571,8 @@ $animationDuration: 8s;
     transition: opacity .3s;
 }
 
-.loader-portal {
-    z-index:100000;
+.loader-portal-outer {
+    z-index: 100000;
 }
 
 
