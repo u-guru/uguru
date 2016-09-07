@@ -12,9 +12,11 @@
 					<svg width="200px" height="200px" viewBox="0 0 400 400">
 						<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
 							init-default
-							when-portal-hover="a:[l-progress:set:(dur:5000ms#func:linear):in:delay-250] | s:[portal-complete:public]:delay-3700"
+							when-portal-hover="p:[l-progress:0:1:6000:linear]:delay-250 | a:[l-progress:set:(dur:3000ms#func:linear):in:delay-250] | s:[portal-complete:public:delay-3250]"
+
 							when-portal-complete="p:[sdo:0, stroke:#F6C64E]"></circle>
-							<!-- when-portal-hover="p:[l-progress:0:1:6000:linear]:delay-250, a:[l-progress:set:(dur:3000ms#func:linear):in:delay-250] | s:[portal-complete:public:delay-3250]" -->
+							<!-- when-portal-hover="a:[l-progress:set:(dur:5000ms#func:linear):in:delay-250] | s:[portal-complete:public]:delay-3700" -->
+
 					</svg>
 				</div>
 				<div class="mask"></div>
