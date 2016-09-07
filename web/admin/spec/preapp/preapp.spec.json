@@ -106,7 +106,8 @@
 							"updated": false,
 							"complete": false,
 							"notes": {
-								"GW": "scaleInUp in the case that clipPathIn isn't cross-platform. See codrops"
+								"GW": "scaleInUp in the case that clipPathIn isn't cross-platform. See codrops",
+								"JO": "Try easeInOutBack or some -InOut- for a gravitating ease"
 							}
 						},
 						"stars": {
