@@ -80,66 +80,19 @@
 }
 
 @keyframes hiw-sun-rotate {
-	0% { transform: rotate(20deg); opacity: 1;}
-	8.33%, 16.66% { opacity: 1;}
-	24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97%, 83.3% { opacity: 0;}
-	91.63% { opacity: 1;}
-	100% { transform: rotate(380deg); opacity: 1;}
+	0% { transform: rotate(20deg); opacity: 1; }
+	8.33%, 16.66% { opacity: 1; }
+	24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97%, 83.3% { opacity: 0; }
+	91.63% { opacity: 1; }
+	100% { transform: rotate(380deg); opacity: 1; }
 }
 
 @keyframes hiw-moon-rotate {
-	0% { transform: rotate(40deg); opacity: 0;}
-	8.33%, 16.66%, 24.99%, 33.32%, 41.65% { opacity: 0;}
-	49.98%, 58.31%, 66.64%, 74.97%, 83.3% { opacity: 1;}
-	91.63% { opacity: 0;}
-	100% { transform: rotate(420deg); opacity: 0;}
-}
-
-@keyframes hiw-bg-fadeOut {
-	0% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
-}
-
-@keyframes hiw-fadeOut {
-	0% {
-		opacity: 1;
-		z-index: 1;
-	}
-	80% {
-		opacity: 1;
-	}
-	60% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		z-index: -1;
-	}
-}
-
-@keyframes hiw-fadeIn {
-	0% {
-		opacity: 0;
-	}
-	60% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-@keyframes hiw-scaleUp {
-	0% {
-		transform: scale(1);
-	}
-	100% {
-		transform: scale(3);
-	}
+	0% { transform: rotate(40deg); opacity: 0; }
+	8.33%, 16.66%, 24.99%, 33.32%, 41.65% { opacity: 0; }
+	49.98%, 58.31%, 66.64%, 74.97%, 83.3% { opacity: 1; }
+	91.63% { opacity: 0; }
+	100% { transform: rotate(420deg); opacity: 0; }
 }
 
 @keyframes hiw-day-shift {
@@ -163,6 +116,18 @@
 	}
 	83.3%, 91.63%, 100% {
 		opacity: 0;
+	}
+}
+
+@keyframes hiw-night-shift-map {
+	0%, 8.33%, 16.66%, 24.99%, 33.32%, 41.65%, 49.98% {
+		opacity: 1;
+	}
+	58.31%, 66.64%, 74.97% {
+		opacity: 0.75;
+	}
+	83.3%, 91.63%, 100% {
+		opacity: 1;
 	}
 }
 
