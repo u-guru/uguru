@@ -1,12 +1,42 @@
 angular.module('uguru.shared.directives.base.components', []);
 angular.module('uguru.shared.directives.base.components')
-    .directive("uInput", ["RootService", function(RootService) {
+
+    .directive("grid", ["CompService", "$compile", function(CompService, $compile) {
         return {
-            templateUrl: RootService.getBaseUrl() + 'shared/templates/components/base/input.tpl',
             restrict: 'E',
-            link: {
-                pre: function(scope, element, attr) {
-                    return
+            replace:true,
+            transclude:true,
+            priority: 100,
+            template: CompService.getCompTemplateType,
+            compile: function(element, attr, transclude) {
+
+                var dimArr = CompService.getAndParseDimensions(attr.d);
+                return {
+                    pre: function preLink(lScope, lElem, lAttr, transcludeFn) {
+
+                            transclude(lScope, function(clone, innerScope) {
+                                var childArr = [];
+                                for (var i = 0; i < clone.length; i++) {
+                                    if (clone[i].nodeType === 1) {
+                                        childArr.push(clone[i]);
+                                        console.log(clone[i])
+                                    }
+                                }
+                                for (var i = 0; i < dimArr.length; i++) {
+                                    console.log(i);
+                                    var iChild = childArr[i % childArr.length];
+                                    iChild.style.width= dimArr[childArr.length].width + '%';
+                                    iChild.style.height = dimArr[childArr.length].height + '%';
+                                    lElem.append(iChild.cloneNode(true))
+                                }
+                            })
+
+
+
+
+
+
+                    }
                 }
             }
         }

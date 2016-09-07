@@ -1,5 +1,30 @@
 {
 
     "name": "Preapp",
-    "description": "A splash-y first-time experience that informs college students of several u.guru value props over the course of the semester"
+    "description": "A splash-y first-time experience that informs college students of several u.guru value props over the course of the semester",
+    "views": {
+        "splashLoader": {
+            "rubric": {
+                "ui": {
+                    "static": false,
+                    "responsive": false,
+                    "animated": false,
+                    "zero glitches": false,
+                    "cross-platform": false,
+                    "verified" : false,
+                    "analysis": false
+                },
+                "functional": {
+                    "pre": {
+                        "debug": ["easing"],
+                        "components": ["text", "svg", "progress"]
+                    }
+                },
+                "states": {
+                    "onEnter": "",
+                    "onProgressStart": ""
+                }
+            }
+        }
+    }
 }
