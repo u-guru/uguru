@@ -15,9 +15,19 @@
                     "analysis": false
                 },
                 "functional": {
-                    "pre": {
-                        "debug": ["easing"],
-                        "components": ["text", "svg", "progress"]
+                    "animation": {
+                        "import": {"status": false},
+                        "export": {"status": false},
+                        "visual": {"status": false},
+                        "bounceJS + extended functionaility": {"status": false}
+                    },
+                    "HTML tools/API enhancements": {
+                        "components": ["svg", "letter/word"]
+                    },
+                    "If time": {
+                        "animation": "infinite",
+                        "user-story timeline": "dispatch events in the middle of a state",
+                        "interpolate": "Stagger anything"
                     }
                 },
                 "states": {
@@ -64,7 +74,7 @@
 								"GW": "May require 3+ states -or- alternate, but check alternate first",
 								"JO": ""
 							}
-						},
+						}
 					},
 					"onProgressEnd": {
 						"guru": {
@@ -107,7 +117,7 @@
 							"notes": {
 								"GW": "Check whether prop or class would work better in this case (see HIW clouds)"
 							}
-						},
+						}
 					}
                 }
             }
