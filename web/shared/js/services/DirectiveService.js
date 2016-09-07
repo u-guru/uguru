@@ -994,8 +994,17 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           if (type === 'prop' &&  customAnimNameOnly.indexOf(key) > -1) {
             var animObjIndex = customAnimNameOnly.indexOf(key);
             var animObj = customAnimations.custom[animObjIndex];
-            console.log(animObj.cssText);
-
+            var propFrames = PropertyService.parseAnimObjToPropArr(animObj.cssRules);
+            console.log('\n-----------------------\n**', animObj.name, '**\n');
+            for (key in propFrames.props) {
+              var frames = propFrames.props[key];
+              console.log(key, '-' , frames.length, 'frames')
+              for (var i = 0; i < propFrames.props[key].length; i++) {
+                var propObj = propFrames.props[key][i];
+                console.log('|' , propObj.percent + '%', propObj.prop, '==>' ,propObj.value)
+              }
+              console.log('\n------------------------\n')
+            }
           }
 
 
@@ -1346,7 +1355,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         }
         function activateScopedMessageState(msg_name, msg_data, env, scope) {
           var msgType = UtilitiesService.camelToDash(msg_name).toLowerCase().split('-')[0];
-          //
           if (!(msgType in scope.root.public.customStates)) {
             scope.root.public.customStates[msgType] = {};
           }
