@@ -29,9 +29,13 @@
             -->
 
             <!-- Ex 1. See reference above-->
+<<<<<<< HEAD
 
 
 			<stagger-children on-enter="[border-frame]:+500" when-green-button-clicked="[border-frame]:2000" >
+=======
+			<stagger-children on-enter="[border-frame]:+500" when-green-button-clicked="[border-frame]:1500" >
+>>>>>>> 845db2123f82f19d44a0895e98e5bb2378e2d2db
 				<div class="top"
                     init-with="p:[tr:scaleX(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
@@ -58,12 +62,12 @@
 					init-with="p:[tr:scaleX(0), tro:right center]"
                     on-init="trigger:[on-enter:self]"
 					draw-border-frame
-					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div>
+					on-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutQuart:0:3+750]"></div> -->
                 <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256');"
                     init-with="p-op"
                     on-init="t-enter"
                     draw-border-frame
-                    on-enter="p:[tro:center center] | a:[icon-enter:set:(dur:1000ms#func:ease-out):in]"></span> -->
+                    on-enter="p:[tro:center center] | a:[icon-enter:set:(dur:1000ms#func:ease-out):in]"></span>
             <div>
                 <h1 class="pf-name verified"
                     init-with="p-op"

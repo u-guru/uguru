@@ -1,0 +1,105 @@
+.cloud-fall {
+	@for $i from 1 through 9 {
+		&.hiw-sky-cloud-#{$i} {
+			animation: hiw-cloud-fall (#{($i*200)}ms) linear (#{($i*200)}ms) 2 forwards, hiw-cloud-fall-end (#{($i*200)}ms) ease-out (#{(($i*20) + 2000)}ms) forwards;
+		}
+	}
+	@for $i from 10 through 20 {
+		&.hiw-sky-cloud-#{$i} {
+			animation: hiw-cloud-fall (#{($i*200)}ms) linear (#{($i/2*200)}ms) 2 forwards, hiw-cloud-fall-end (#{($i*200)}ms) ease-out (#{(($i/2*20) + 2000)}ms) forwards;
+		}
+	}
+}
+
+.cloud-fall-hover {
+	@for $i from 1 through 20 {
+		&:nth-child(#{$i}) {
+			animation: hiw-cloud-hover 1500ms linear (-#{($i*100)}ms) infinite alternate forwards;
+		}
+	}
+}
+
+@keyframes hiw-cloud-hover {
+	0% { transform: translateY(3px); opacity: 1; }
+	100% { transform: translateY(-3px); opacity: 1; }
+}
+
+@keyframes hiw-cloud-fall-end {
+	0% { transform: translateY(-1000px); opacity: 1; }
+	100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes hiw-cloud-fall {
+	0% { transform: translateY(-1000px); opacity: 1; }
+	100% { transform: translateY(1000px); opacity: 1; }
+}
+
+@keyframes hiw-sky-balloon-gradient {
+	0% { transform: translateY(-100%); }
+	100% { transform: translateY(0); }
+}
+
+@keyframes hiw-basket-balloon-sway {
+	0% {transform: rotate(-5deg);}
+	100% {transform: rotate(5deg);}
+}
+
+@keyframes hiw-balloon-move-baking {
+	0% { transform: translate3d(-520%,-300%,0); }
+	80% { transform: translate3d(-208%,-250%,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes hiw-balloon-move-hh {
+	0% { transform: translate3d(-520%,-300%,0); }
+	75% { transform: translate3d(-208%,-225%,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes hiw-balloon-move-academic {
+	0% { transform: translate3d(-520%,-300%,0); }
+	70% { transform: translate3d(-208%,-200%,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes hiw-balloon-move-tech {
+	0% { transform: translate3d(-520%,-300%,0); }
+	65% { transform: translate3d(-208%,-200%,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes hiw-balloon-move-photo {
+	0% { transform: translate3d(-520%,-300%,0); }
+	60% { transform: translate3d(-208%,-200%,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes hiw-balloon-anticipation {
+	0% { transform: translate3d(0,0,0); }
+	100% { transform: translate3d(0,5%,0); }
+}
+
+@keyframes hiw-balloon-anticipation-reverse {
+	0% { transform: translate3d(0,5%,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes hiw-helicopter-translate {
+	0% { transform: translate3d(-100%,0,0); }
+	100% { transform: translate3d(0,0,0); }
+}
+
+@keyframes hiw-helicopter-spin-1 {
+	0% { transform: rotateY(0) translateZ(0); }
+	100% { transform: rotateY(1turn) translateZ(0); }
+}
+
+@keyframes hiw-helicopter-spin-2 {
+	0% { transform: rotateY(1turn) translateZ(0); }
+	100% { transform: rotateY(0) translateZ(0);}
+}
+
+@keyframes hiw-helicopter-rotate {
+	0% { transform: rotateZ(-0.5deg) translateZ(0); }
+	100% { transform: rotateZ(0.5deg) translateZ(0); }
+}

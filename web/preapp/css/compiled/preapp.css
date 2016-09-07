@@ -2994,76 +2994,6 @@
     -o-animation-delay: 2000ms;
     animation-delay: 2000ms; }
 
-/* http://goo.gl/v6Swa7 */
-@keyframes hiw-shade-bounceUp {
-  0% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  7.61% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -40.22, 0, 1); }
-  11.41% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -55.322, 0, 1); }
-  15.12% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -66.1, 0, 1); }
-  18.92% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -73.49, 0, 1); }
-  22.72% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -77.83, 0, 1); }
-  30.23% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -80.426, 0, 1); }
-  50.25% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -76.141, 0, 1); }
-  70.27% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -74.74, 0, 1); }
-  100% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -75, 0, 1); } }
-/* http://goo.gl/5f8E4Y */
-@keyframes hiw-shade-bounceDown {
-  0% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -75, 0, 1); }
-  7.61% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -34.78, 0, 1); }
-  11.41% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -19.678, 0, 1); }
-  15.12% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -8.9, 0, 1); }
-  18.92% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -1.51, 0, 1); }
-  22.72% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2.83, 0, 1); }
-  30.23% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 5.426, 0, 1); }
-  50.25% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1.141, 0, 1); }
-  70.27% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.26, 0, 1); }
-  100% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
-@keyframes hiw-sun-rotate {
-  0% {
-    transform: rotate(20deg);
-    opacity: 1; }
-  8.33%, 16.66% {
-    opacity: 1; }
-  24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97%, 83.3% {
-    opacity: 0; }
-  91.63% {
-    opacity: 1; }
-  100% {
-    transform: rotate(380deg);
-    opacity: 1; } }
-@keyframes hiw-moon-rotate {
-  0% {
-    transform: rotate(40deg);
-    opacity: 0; }
-  8.33%, 16.66%, 24.99%, 33.32%, 41.65% {
-    opacity: 0; }
-  49.98%, 58.31%, 66.64%, 74.97%, 83.3% {
-    opacity: 1; }
-  91.63% {
-    opacity: 0; }
-  100% {
-    transform: rotate(420deg);
-    opacity: 0; } }
 @keyframes food-shake {
   0% {
     transform: rotate(0deg); }
@@ -3136,112 +3066,11 @@
   100% {
     transform: translateY(0%);
     opacity: 1; } }
-@keyframes hiw--hover {
-  0% {
-    transform: translateY(3px) translateZ(0);
-    opacity: 1; }
-  100% {
-    transform: translateY(-3px) translateZ(0);
-    opacity: 1; } }
-@keyframes hiw-cloud-fall-end {
-  0% {
-    transform: translate3d(0, -1000px, 0);
-    opacity: 1; }
-  100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 1; } }
-@keyframes hiw-cloud-fall {
-  0% {
-    transform: translate3d(0, -1000px, 0);
-    opacity: 1; }
-  100% {
-    transform: translate3d(0, 1000px, 0);
-    opacity: 1; } }
-@keyframes hiw-sky-balloon-gradient {
-  0% {
-    transform: translate3d(0, -100%, 0); }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-@keyframes hiw-basket-balloon-sway {
-  0% {
-    transform: rotate(-5deg); }
-  100% {
-    transform: rotate(5deg); } }
-@keyframes hiw-balloon-move-baking {
-  0% {
-    transform: translate3d(-520%, -300%, 0); }
-  80% {
-    transform: translate3d(-208%, -250%, 0); }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-@keyframes hiw-balloon-move-hh {
-  0% {
-    transform: translate3d(-520%, -300%, 0); }
-  75% {
-    transform: translate3d(-208%, -225%, 0); }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-@keyframes hiw-balloon-move-academic {
-  0% {
-    transform: translate3d(-520%, -300%, 0); }
-  70% {
-    transform: translate3d(-208%, -200%, 0); }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-@keyframes hiw-balloon-move-tech {
-  0% {
-    transform: translate3d(-520%, -300%, 0); }
-  65% {
-    transform: translate3d(-208%, -200%, 0); }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-@keyframes hiw-balloon-move-photo {
-  0% {
-    transform: translate3d(-520%, -300%, 0); }
-  60% {
-    transform: translate3d(-208%, -200%, 0); }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-@keyframes hiw-balloon-anticipation {
-  0% {
-    transform: translate3d(0, 0, 0); }
-  100% {
-    transform: translate3d(0, 5%, 0); } }
-@keyframes hiw-balloon-anticipation-reverse {
-  0% {
-    transform: translate3d(0, 5%, 0); }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-@keyframes hiw-helicopter-translate {
-  0% {
-    transform: translate3d(-100%, 0, 0); }
-  100% {
-    transform: translate3d(0, 0, 0); } }
-@keyframes hiw-helicopter-spin-1 {
-  0% {
-    transform: rotateY(0) translateZ(0); }
-  100% {
-    transform: rotateY(1turn) translateZ(0); } }
-@keyframes hiw-helicopter-spin-2 {
-  0% {
-    transform: rotateY(1turn) translateZ(0); }
-  100% {
-    transform: rotateY(0) translateZ(0); } }
-@keyframes hiw-helicopter-rotate {
-  0% {
-    transform: rotateZ(-0.5deg) translateZ(0); }
-  100% {
-    transform: rotateZ(0.5deg) translateZ(0); } }
 @keyframes hiw-scaleUp {
   0% {
     transform: scaleY(0) translateZ(0); }
   100% {
     transform: scaleY(1) translateZ(0); } }
-@keyframes hiw-cloud-hover {
-  0% {
-    transform: translateY(3px) translateZ(0); }
-  100% {
-    transform: translateY(-3px) translateZ(0); } }
 /* http://goo.gl/bW9BQJ */
 @keyframes hiw-map-clouds {
   0% {
@@ -3267,6 +3096,697 @@
   100% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 1; } }
+@keyframes ppl-bald {
+  0% {
+    transform: translate3d(0, 0, 0); }
+  33% {
+    transform: translate3d(-200px, 0, 0); }
+  66% {
+    transform: translate3d(-200px, 20px, 0); }
+  100% {
+    transform: translate3d(0px, 20px, 0); } }
+@keyframes ppl-gabrielle-walk {
+  0% {
+    transform: translate3d(0, 0, 0); }
+  25% {
+    transform: translate3d(-20px, -10px, 0); }
+  50% {
+    transform: translate3d(-30px, -20px, 0); }
+  75% {
+    transform: translate3d(-40px, -10px, 0); }
+  100% {
+    transform: translate3d(-50px, 0px, 0); } }
+@keyframes ppl-musician-strum {
+  0% {
+    transform: rotate(-10deg) translateZ(0); }
+  100% {
+    transform: rotate(10deg) translateZ(0); } }
+@keyframes ppl-musician-rock {
+  0% {
+    transform: scaleY(1) rotate(0deg) translateZ(0); }
+  100% {
+    transform: scaleY(1.1) rotate(-10deg) translateZ(0); } }
+@keyframes ppl-jeselle-wilson {
+  0% {
+    transform: scaleY(1) translate3d(0, 0, 0); }
+  100% {
+    transform: scaleY(0.7) translate3d(0, 15px, 0); } }
+@keyframes ppl-jeselle-dribble {
+  0% {
+    transform: rotate(0) translateZ(0); }
+  100% {
+    transform: rotate(-15deg) translateZ(0); } }
+@keyframes ppl-eating-pizza-slice {
+  0%, 100% {
+    transform: scale(1) translateZ(0); }
+  8.33333% {
+    transform: scale(0.5) translateZ(0); }
+  16.66667% {
+    transform: scale(1) translateZ(0); } }
+@keyframes ppl-eating-shake {
+  0% {
+    transform: translate3d(-2%, 0, 0); }
+  100% {
+    transform: translate3d(2%, 0, 0); } }
+@keyframes ppl-eating-munching {
+  0% {
+    transform: rotate(30deg) translateX(0); }
+  50% {
+    transform: rotate(0) translateZ(0); }
+  100% {
+    transform: translate3d(-2px, 0, 0); } }
+@keyframes ppl-kite-diamond {
+  0% {
+    transform: translate3d(0, 0, 0); }
+  100% {
+    transform: translate3d(0, 25%, 0); } }
+@keyframes ppl-kite-fly {
+  0% {
+    transform: rotate(-15deg) translateZ(0); }
+  100% {
+    transform: rotate(15deg) translateZ(0); } }
+@keyframes ppl-wheelchair-move {
+  0%, 10%, 100% {
+    transform: translate3d(0, 0, 0); }
+  5% {
+    transform: translate3d(100%, 0, 0); } }
+@keyframes ppl-wheelchair-rotate {
+  0% {
+    transform: rotateZ(0); }
+  2% {
+    transform: rotateZ(-20deg); }
+  4% {
+    transform: rotateZ(20deg); }
+  6%, 100% {
+    transform: rotateZ(0); } }
+@keyframes fountain-water-burst-top {
+  0% {
+    transform: scaleX(0.8) translateZ(0); }
+  100% {
+    transform: scaleX(1) translateZ(0); } }
+@keyframes fountain-water-burst {
+  0%, 100% {
+    transform: rotate(-1deg) translateZ(0); }
+  50% {
+    transform: rotate(1deg) translateZ(0); } }
+@keyframes fountain-water-burst-bottom {
+  0% {
+    transform: scaleY(1) translateZ(0); }
+  100% {
+    transform: scaleY(2) translateZ(0); } }
+@keyframes fountain-water-drops-6 {
+  0% {
+    transform: translate3d(0, 0, 0) scaleY(0.2);
+    opacity: 1; }
+  99% {
+    opacity: 1; }
+  100% {
+    transform: translate3d(0, 28px, 0) scaleY(1);
+    opacity: 0; } }
+@keyframes fountain-water-drops-3 {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1; }
+  99% {
+    opacity: 1; }
+  100% {
+    transform: translate3d(0, 30px, 0);
+    opacity: 0; } }
+@keyframes fountain-water-drops-5 {
+  0% {
+    transform: translate3d(0, 0, 0) scaleX(0.5);
+    opacity: 1; }
+  99% {
+    transform: translate3d(0, 30px, 0) scaleX(1);
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@keyframes fountain-water-drops {
+  0% {
+    transform: translate3d(0, 0, 0) scaleX(0.5);
+    opacity: 1; }
+  99% {
+    transform: translate3d(0, 36px, 0) scaleX(1);
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@keyframes map-student-union-flag {
+  0% {
+    transform: scaleX(1) skewX(0deg) translate3d(0, 0, 0); }
+  100% {
+    transform: scaleX(0.5) skewX(-5deg) translate3d(0, 0, 0); } }
+.star-animate {
+  animation: fadeInFill 12000ms ease-in-out infinite forwards; }
+
+.star-1 {
+  animation-delay: 5ms; }
+
+.star-2 {
+  animation-delay: 10ms; }
+
+.star-3 {
+  animation-delay: 15ms; }
+
+.star-4 {
+  animation-delay: 20ms; }
+
+.star-5 {
+  animation-delay: 25ms; }
+
+.star-6 {
+  animation-delay: 30ms; }
+
+.star-7 {
+  animation-delay: 35ms; }
+
+.star-8 {
+  animation-delay: 40ms; }
+
+.star-9 {
+  animation-delay: 45ms; }
+
+.star-10 {
+  animation-delay: 50ms; }
+
+.star-11 {
+  animation-delay: 55ms; }
+
+.star-12 {
+  animation-delay: 60ms; }
+
+.star-13 {
+  animation-delay: 65ms; }
+
+.star-14 {
+  animation-delay: 70ms; }
+
+.star-15 {
+  animation-delay: 75ms; }
+
+.star-16 {
+  animation-delay: 80ms; }
+
+.star-17 {
+  animation-delay: 85ms; }
+
+.star-18 {
+  animation-delay: 90ms; }
+
+.star-19 {
+  animation-delay: 95ms; }
+
+.star-20 {
+  animation-delay: 100ms; }
+
+.star-21 {
+  animation-delay: 105ms; }
+
+.star-22 {
+  animation-delay: 110ms; }
+
+.star-23 {
+  animation-delay: 115ms; }
+
+.star-24 {
+  animation-delay: 120ms; }
+
+.star-25 {
+  animation-delay: 125ms; }
+
+.star-26 {
+  animation-delay: 130ms; }
+
+.star-27 {
+  animation-delay: 135ms; }
+
+.star-28 {
+  animation-delay: 140ms; }
+
+.star-29 {
+  animation-delay: 145ms; }
+
+.star-30 {
+  animation-delay: 150ms; }
+
+.star-31 {
+  animation-delay: 155ms; }
+
+.star-32 {
+  animation-delay: 160ms; }
+
+.star-33 {
+  animation-delay: 165ms; }
+
+.star-34 {
+  animation-delay: 170ms; }
+
+.star-35 {
+  animation-delay: 175ms; }
+
+.star-36 {
+  animation-delay: 180ms; }
+
+.star-37 {
+  animation-delay: 185ms; }
+
+.star-38 {
+  animation-delay: 190ms; }
+
+.star-39 {
+  animation-delay: 195ms; }
+
+.star-40 {
+  animation-delay: 200ms; }
+
+.star-41 {
+  animation-delay: 205ms; }
+
+.star-42 {
+  animation-delay: 210ms; }
+
+.star-43 {
+  animation-delay: 215ms; }
+
+.star-44 {
+  animation-delay: 220ms; }
+
+.star-45 {
+  animation-delay: 225ms; }
+
+.star-46 {
+  animation-delay: 230ms; }
+
+.star-47 {
+  animation-delay: 235ms; }
+
+.star-48 {
+  animation-delay: 240ms; }
+
+.star-49 {
+  animation-delay: 245ms; }
+
+.star-50 {
+  animation-delay: 250ms; }
+
+.star-51 {
+  animation-delay: 255ms; }
+
+.star-52 {
+  animation-delay: 260ms; }
+
+.star-53 {
+  animation-delay: 265ms; }
+
+.star-54 {
+  animation-delay: 270ms; }
+
+.star-55 {
+  animation-delay: 275ms; }
+
+.star-56 {
+  animation-delay: 280ms; }
+
+.star-57 {
+  animation-delay: 285ms; }
+
+.star-58 {
+  animation-delay: 290ms; }
+
+.star-59 {
+  animation-delay: 295ms; }
+
+.star-60 {
+  animation-delay: 300ms; }
+
+.star-61 {
+  animation-delay: 305ms; }
+
+.star-62 {
+  animation-delay: 310ms; }
+
+.star-63 {
+  animation-delay: 315ms; }
+
+.star-64 {
+  animation-delay: 320ms; }
+
+.star-65 {
+  animation-delay: 325ms; }
+
+.star-66 {
+  animation-delay: 330ms; }
+
+.star-67 {
+  animation-delay: 335ms; }
+
+.star-68 {
+  animation-delay: 340ms; }
+
+.star-69 {
+  animation-delay: 345ms; }
+
+.star-70 {
+  animation-delay: 350ms; }
+
+.star-71 {
+  animation-delay: 355ms; }
+
+.star-72 {
+  animation-delay: 360ms; }
+
+.star-73 {
+  animation-delay: 365ms; }
+
+.star-74 {
+  animation-delay: 370ms; }
+
+.star-75 {
+  animation-delay: 375ms; }
+
+.star-76 {
+  animation-delay: 380ms; }
+
+.star-77 {
+  animation-delay: 385ms; }
+
+.star-78 {
+  animation-delay: 390ms; }
+
+.star-79 {
+  animation-delay: 395ms; }
+
+.star-80 {
+  animation-delay: 400ms; }
+
+.star-81 {
+  animation-delay: 405ms; }
+
+.star-82 {
+  animation-delay: 410ms; }
+
+.star-83 {
+  animation-delay: 415ms; }
+
+.star-84 {
+  animation-delay: 420ms; }
+
+.star-85 {
+  animation-delay: 425ms; }
+
+.star-86 {
+  animation-delay: 430ms; }
+
+.star-87 {
+  animation-delay: 435ms; }
+
+.star-88 {
+  animation-delay: 440ms; }
+
+.star-89 {
+  animation-delay: 445ms; }
+
+.star-90 {
+  animation-delay: 450ms; }
+
+.star-91 {
+  animation-delay: 455ms; }
+
+.star-92 {
+  animation-delay: 460ms; }
+
+.star-93 {
+  animation-delay: 465ms; }
+
+.star-94 {
+  animation-delay: 470ms; }
+
+.star-95 {
+  animation-delay: 475ms; }
+
+.star-96 {
+  animation-delay: 480ms; }
+
+.star-97 {
+  animation-delay: 485ms; }
+
+.star-98 {
+  animation-delay: 490ms; }
+
+.star-99 {
+  animation-delay: 495ms; }
+
+.star-100 {
+  animation-delay: 500ms; }
+
+.star-101 {
+  animation-delay: 505ms; }
+
+.star-102 {
+  animation-delay: 510ms; }
+
+.star-103 {
+  animation-delay: 515ms; }
+
+.star-104 {
+  animation-delay: 520ms; }
+
+.star-105 {
+  animation-delay: 525ms; }
+
+.star-106 {
+  animation-delay: 530ms; }
+
+.star-107 {
+  animation-delay: 535ms; }
+
+.star-108 {
+  animation-delay: 540ms; }
+
+.star-109 {
+  animation-delay: 545ms; }
+
+.star-110 {
+  animation-delay: 550ms; }
+
+.star-111 {
+  animation-delay: 555ms; }
+
+.star-112 {
+  animation-delay: 560ms; }
+
+.star-113 {
+  animation-delay: 565ms; }
+
+.star-114 {
+  animation-delay: 570ms; }
+
+.star-115 {
+  animation-delay: 575ms; }
+
+.star-116 {
+  animation-delay: 580ms; }
+
+.star-117 {
+  animation-delay: 585ms; }
+
+.star-118 {
+  animation-delay: 590ms; }
+
+.star-119 {
+  animation-delay: 595ms; }
+
+.star-120 {
+  animation-delay: 600ms; }
+
+.star-121 {
+  animation-delay: 605ms; }
+
+.star-122 {
+  animation-delay: 610ms; }
+
+.star-123 {
+  animation-delay: 615ms; }
+
+.star-124 {
+  animation-delay: 620ms; }
+
+.star-125 {
+  animation-delay: 625ms; }
+
+.star-126 {
+  animation-delay: 630ms; }
+
+.star-127 {
+  animation-delay: 635ms; }
+
+.star-128 {
+  animation-delay: 640ms; }
+
+.star-129 {
+  animation-delay: 645ms; }
+
+.star-130 {
+  animation-delay: 650ms; }
+
+.star-131 {
+  animation-delay: 655ms; }
+
+.star-132 {
+  animation-delay: 660ms; }
+
+.star-133 {
+  animation-delay: 665ms; }
+
+.star-134 {
+  animation-delay: 670ms; }
+
+.star-135 {
+  animation-delay: 675ms; }
+
+.star-136 {
+  animation-delay: 680ms; }
+
+.star-137 {
+  animation-delay: 685ms; }
+
+.star-138 {
+  animation-delay: 690ms; }
+
+.star-139 {
+  animation-delay: 695ms; }
+
+.star-140 {
+  animation-delay: 700ms; }
+
+.star-141 {
+  animation-delay: 705ms; }
+
+.star-142 {
+  animation-delay: 710ms; }
+
+.star-143 {
+  animation-delay: 715ms; }
+
+.star-144 {
+  animation-delay: 720ms; }
+
+.star-145 {
+  animation-delay: 725ms; }
+
+.star-146 {
+  animation-delay: 730ms; }
+
+.star-147 {
+  animation-delay: 735ms; }
+
+.star-148 {
+  animation-delay: 740ms; }
+
+.star-149 {
+  animation-delay: 745ms; }
+
+.star-150 {
+  animation-delay: 750ms; }
+
+.star-151 {
+  animation-delay: 755ms; }
+
+.star-152 {
+  animation-delay: 760ms; }
+
+.star-153 {
+  animation-delay: 765ms; }
+
+.star-154 {
+  animation-delay: 770ms; }
+
+.star-155 {
+  animation-delay: 775ms; }
+
+.star-156 {
+  animation-delay: 780ms; }
+
+.star-157 {
+  animation-delay: 785ms; }
+
+.star-158 {
+  animation-delay: 790ms; }
+
+.star-159 {
+  animation-delay: 795ms; }
+
+.star-160 {
+  animation-delay: 800ms; }
+
+.star-161 {
+  animation-delay: 805ms; }
+
+.star-162 {
+  animation-delay: 810ms; }
+
+.star-163 {
+  animation-delay: 815ms; }
+
+.star-164 {
+  animation-delay: 820ms; }
+
+.star-165 {
+  animation-delay: 825ms; }
+
+.star-166 {
+  animation-delay: 830ms; }
+
+.star-167 {
+  animation-delay: 835ms; }
+
+.star-168 {
+  animation-delay: 840ms; }
+
+.star-169 {
+  animation-delay: 845ms; }
+
+.star-170 {
+  animation-delay: 850ms; }
+
+.star-171 {
+  animation-delay: 855ms; }
+
+.star-172 {
+  animation-delay: 860ms; }
+
+.star-173 {
+  animation-delay: 865ms; }
+
+.star-174 {
+  animation-delay: 870ms; }
+
+.star-175 {
+  animation-delay: 875ms; }
+
+.star-176 {
+  animation-delay: 880ms; }
+
+.star-177 {
+  animation-delay: 885ms; }
+
+.star-178 {
+  animation-delay: 890ms; }
+
+.star-179 {
+  animation-delay: 895ms; }
+
+.star-180 {
+  animation-delay: 900ms; }
+
+.star-181 {
+  animation-delay: 905ms; }
+
+.star-182 {
+  animation-delay: 910ms; }
+
+.star-183 {
+  animation-delay: 915ms; }
+
 @keyframes hiw-hour-hand {
   0% {
     transform: rotateZ(0deg); }
@@ -3299,6 +3819,218 @@
     transform: rotateZ(0deg); }
   100% {
     transform: rotateZ(360deg); } }
+/* http://goo.gl/8Wzkzj */
+@keyframes hiw-clouds {
+  0% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 0; }
+  0.36% {
+    transform: matrix3d(0.514, 0, 0, 0, 0, 0.514, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  0.72% {
+    transform: matrix3d(0.879, 0, 0, 0, 0, 0.879, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; }
+  1.08% {
+    transform: matrix3d(1.052, 0, 0, 0, 0, 1.052, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  1.43% {
+    transform: matrix3d(1.093, 0, 0, 0, 0, 1.093, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  2.36% {
+    transform: matrix3d(1.021, 0, 0, 0, 0, 1.021, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  3.29% {
+    transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  5.14% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  7% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  8.33% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  20.73% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  20.83% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  21.19% {
+    transform: matrix3d(0.486, 0, 0, 0, 0, 0.486, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  21.55% {
+    transform: matrix3d(0.121, 0, 0, 0, 0, 0.121, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 1; }
+  21.91% {
+    transform: matrix3d(-0.052, 0, 0, 0, 0, -0.052, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  22.27% {
+    transform: matrix3d(-0.093, 0, 0, 0, 0, -0.093, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  23.19% {
+    transform: matrix3d(-0.021, 0, 0, 0, 0, -0.021, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  24.12% {
+    transform: matrix3d(0.006, 0, 0, 0, 0, 0.006, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    opacity: 0; }
+  25.97% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  27.83% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  29.17% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  91.57% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  91.67% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  92.03% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  92.38% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  92.74% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  93.1% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  94.03% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  94.95% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  96.81% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  98.67% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
+@keyframes fadeInFill {
+  0%, 8.33%, 16.66%, 24.99%, 33.32%, 41.65%, 49.98% {
+    stroke-opacity: 0;
+    fill-opacity: 0; }
+  58.31%, 66.64%, 74.97% {
+    stroke-opacity: 1;
+    fill-opacity: 1; }
+  83.3%, 91.63%, 100% {
+    stroke-opacity: 0;
+    fill-opacity: 0; } }
+@keyframes hiw-sun-rotate {
+  0% {
+    transform: rotate(20deg);
+    opacity: 1; }
+  8.33%, 16.66% {
+    opacity: 1; }
+  24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97%, 83.3% {
+    opacity: 0; }
+  91.63% {
+    opacity: 1; }
+  100% {
+    transform: rotate(380deg);
+    opacity: 1; } }
+@keyframes hiw-moon-rotate {
+  0% {
+    transform: rotate(40deg);
+    opacity: 0; }
+  8.33%, 16.66%, 24.99%, 33.32%, 41.65% {
+    opacity: 0; }
+  49.98%, 58.31%, 66.64%, 74.97%, 83.3% {
+    opacity: 1; }
+  91.63% {
+    opacity: 0; }
+  100% {
+    transform: rotate(420deg);
+    opacity: 0; } }
+@keyframes hiw-bg-fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@keyframes hiw-fadeOut {
+  0% {
+    opacity: 1;
+    z-index: 1; }
+  80% {
+    opacity: 1; }
+  60% {
+    opacity: 1; }
+  100% {
+    opacity: 0;
+    z-index: -1; } }
+@keyframes hiw-fadeIn {
+  0% {
+    opacity: 0; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes hiw-scaleUp {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(3); } }
+@keyframes hiw-day-shift {
+  0%, 8.33%, 16.66% {
+    opacity: 1; }
+  24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97%, 83.3%, 91.63% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes hiw-night-shift {
+  0%, 8.33%, 16.66%, 24.99%, 33.32%, 41.65%, 49.98% {
+    opacity: 0; }
+  58.31%, 66.64%, 74.97% {
+    opacity: 1; }
+  83.3%, 91.63%, 100% {
+    opacity: 0; } }
+@keyframes hiw-sunset-shift {
+  0%, 8.33%, 16.66% {
+    opacity: 0; }
+  24.99%, 33.32%, 41.65%, 49.98% {
+    opacity: 1; }
+  58.31%, 66.64%, 74.97%, 83.3%, 91.63%, 100% {
+    opacity: 0; } }
+@keyframes hiw-sunrise-shift {
+  0%, 8.33%, 16.66%, 24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97% {
+    opacity: 0; }
+  83.3%, 91.63% ,100% {
+    opacity: 1; } }
+#hiw-dorm [class*="-shade"] {
+  cursor: pointer;
+  backface-visibility: hidden; }
+  #hiw-dorm [class*="-shade"].shade-up {
+    animation: hiw-shade-bounceUp 1000ms ease-in-out both; }
+  #hiw-dorm [class*="-shade"].shade-down {
+    animation: hiw-shade-bounceDown 800ms ease-in-out both; }
+
+/* http://goo.gl/v6Swa7 */
+@keyframes hiw-shade-bounceUp {
+  0% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  7.61% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -40.22, 0, 1); }
+  11.41% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -55.322, 0, 1); }
+  15.12% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -66.1, 0, 1); }
+  18.92% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -73.49, 0, 1); }
+  22.72% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -77.83, 0, 1); }
+  30.23% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -80.426, 0, 1); }
+  50.25% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -76.141, 0, 1); }
+  70.27% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -74.74, 0, 1); }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -75, 0, 1); } }
+/* http://goo.gl/5f8E4Y */
+@keyframes hiw-shade-bounceDown {
+  0% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -75, 0, 1); }
+  7.61% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -34.78, 0, 1); }
+  11.41% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -19.678, 0, 1); }
+  15.12% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -8.9, 0, 1); }
+  18.92% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -1.51, 0, 1); }
+  22.72% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2.83, 0, 1); }
+  30.23% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 5.426, 0, 1); }
+  50.25% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1.141, 0, 1); }
+  70.27% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.26, 0, 1); }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
 /* http://goo.gl/qJPvM5 */
 @keyframes cal-people {
   0% {
@@ -3624,11 +4356,6 @@
     transform: translate3d(0, -10%, 0); }
   100% {
     transform: translate3d(0, 10%, 0); } }
-@keyframes fadeIn {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
 @keyframes crowd-rotate {
   0% {
     transform: rotateZ(0deg) translateZ(0); }
@@ -3699,818 +4426,192 @@
     transform: rotateZ(0deg) skewX(0deg) translateZ(0); }
   100% {
     transform: rotateZ(40deg) skewX(10deg) translateZ(0); } }
-@keyframes ppl-bald {
-  0% {
-    transform: translate3d(0, 0, 0); }
-  33% {
-    transform: translate3d(-200px, 0, 0); }
-  66% {
-    transform: translate3d(-200px, 20px, 0); }
-  100% {
-    transform: translate3d(0px, 20px, 0); } }
-@keyframes ppl-gabrielle-walk {
-  0% {
-    transform: translate3d(0, 0, 0); }
-  25% {
-    transform: translate3d(-20px, -10px, 0); }
-  50% {
-    transform: translate3d(-30px, -20px, 0); }
-  75% {
-    transform: translate3d(-40px, -10px, 0); }
-  100% {
-    transform: translate3d(-50px, 0px, 0); } }
-@keyframes ppl-musician-strum {
-  0% {
-    transform: rotate(-10deg) translateZ(0); }
-  100% {
-    transform: rotate(10deg) translateZ(0); } }
-@keyframes ppl-musician-rock {
-  0% {
-    transform: scaleY(1) rotate(0deg) translateZ(0); }
-  100% {
-    transform: scaleY(1.1) rotate(-10deg) translateZ(0); } }
-@keyframes ppl-jeselle-wilson {
-  0% {
-    transform: scaleY(1) translate3d(0, 0, 0); }
-  100% {
-    transform: scaleY(0.7) translate3d(0, 15px, 0); } }
-@keyframes ppl-jeselle-dribble {
-  0% {
-    transform: rotate(0) translateZ(0); }
-  100% {
-    transform: rotate(-15deg) translateZ(0); } }
-@keyframes ppl-eating-pizza-slice {
-  0%, 100% {
-    transform: scale(1) translateZ(0); }
-  8.33333% {
-    transform: scale(0.5) translateZ(0); }
-  16.66667% {
-    transform: scale(1) translateZ(0); } }
-@keyframes ppl-eating-shake {
-  0% {
-    transform: translate3d(-2%, 0, 0); }
-  100% {
-    transform: translate3d(2%, 0, 0); } }
-@keyframes ppl-eating-munching {
-  0% {
-    transform: rotate(30deg) translateX(0); }
-  50% {
-    transform: rotate(0) translateZ(0); }
-  100% {
-    transform: translate3d(-2px, 0, 0); } }
-@keyframes ppl-kite-diamond {
-  0% {
-    transform: translate3d(0, 0, 0); }
-  100% {
-    transform: translate3d(0, 25%, 0); } }
-@keyframes ppl-kite-fly {
-  0% {
-    transform: rotate(-15deg) translateZ(0); }
-  100% {
-    transform: rotate(15deg) translateZ(0); } }
-@keyframes ppl-wheelchair-move {
-  0%, 10%, 100% {
-    transform: translate3d(0, 0, 0); }
-  5% {
-    transform: translate3d(100%, 0, 0); } }
-@keyframes ppl-wheelchair-rotate {
-  0% {
-    transform: rotateZ(0); }
-  2% {
-    transform: rotateZ(-20deg); }
-  4% {
-    transform: rotateZ(20deg); }
-  6%, 100% {
-    transform: rotateZ(0); } }
-@keyframes fountain-water-burst-top {
-  0% {
-    transform: scaleX(0.8) translateZ(0); }
-  100% {
-    transform: scaleX(1) translateZ(0); } }
-@keyframes fountain-water-burst {
-  0%, 100% {
-    transform: rotate(-1deg) translateZ(0); }
-  50% {
-    transform: rotate(1deg) translateZ(0); } }
-@keyframes fountain-water-burst-bottom {
-  0% {
-    transform: scaleY(1) translateZ(0); }
-  100% {
-    transform: scaleY(2) translateZ(0); } }
-@keyframes fountain-water-drops-6 {
-  0% {
-    transform: translate3d(0, 0, 0) scaleY(0.2);
-    opacity: 1; }
-  99% {
-    opacity: 1; }
-  100% {
-    transform: translate3d(0, 28px, 0) scaleY(1);
-    opacity: 0; } }
-@keyframes fountain-water-drops-3 {
-  0% {
-    transform: translate3d(0, 0, 0);
-    opacity: 1; }
-  99% {
-    opacity: 1; }
-  100% {
-    transform: translate3d(0, 30px, 0);
-    opacity: 0; } }
-@keyframes fountain-water-drops-5 {
-  0% {
-    transform: translate3d(0, 0, 0) scaleX(0.5);
-    opacity: 1; }
-  99% {
-    transform: translate3d(0, 30px, 0) scaleX(1);
-    opacity: 1; }
-  100% {
-    opacity: 0; } }
-@keyframes fountain-water-drops {
-  0% {
-    transform: translate3d(0, 0, 0) scaleX(0.5);
-    opacity: 1; }
-  99% {
-    transform: translate3d(0, 36px, 0) scaleX(1);
-    opacity: 1; }
-  100% {
-    opacity: 0; } }
-@keyframes map-student-union-flag {
-  0% {
-    transform: scaleX(1) skewX(0deg) translate3d(0, 0, 0); }
-  100% {
-    transform: scaleX(0.5) skewX(-5deg) translate3d(0, 0, 0); } }
-#hiw-clock-tower.animate .tower, #hiw-clock-tower.animate .clock {
-  opacity: 0;
-  animation: hiw-fadeIn 1500ms ease-in-out forwards; }
-#hiw-clock-tower.animate .clock-tower-minute-hand {
-  transform-origin: bottom center;
-  animation: 2000ms hiw-minute-hand ease-in 500ms infinite forwards; }
-#hiw-clock-tower.animate .clock-tower-hour-hand {
-  transform-origin: left center;
-  animation: 12000ms hiw-hour-hand 2000ms linear infinite forwards; }
-#hiw-clock-tower.animate .night-sky-container .stars {
-  animation: 12000ms hiw-night-shift 2000ms linear infinite forwards; }
-  #hiw-clock-tower.animate .night-sky-container .stars g [class*="star-"] {
-    stroke-opacity: 0;
-    fill-opacity: 0;
-    animation: fadeInFill 12000ms ease-in-out infinite forwards; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-1 {
-    animation-delay: 2005ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-2 {
-    animation-delay: 2010ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-3 {
-    animation-delay: 2015ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-4 {
-    animation-delay: 2020ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-5 {
-    animation-delay: 2025ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-6 {
-    animation-delay: 2030ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-7 {
-    animation-delay: 2035ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-8 {
-    animation-delay: 2040ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-9 {
-    animation-delay: 2045ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-10 {
-    animation-delay: 2050ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-11 {
-    animation-delay: 2055ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-12 {
-    animation-delay: 2060ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-13 {
-    animation-delay: 2065ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-14 {
-    animation-delay: 2070ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-15 {
-    animation-delay: 2075ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-16 {
-    animation-delay: 2080ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-17 {
-    animation-delay: 2085ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-18 {
-    animation-delay: 2090ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-19 {
-    animation-delay: 2095ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-20 {
-    animation-delay: 2100ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-21 {
-    animation-delay: 2105ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-22 {
-    animation-delay: 2110ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-23 {
-    animation-delay: 2115ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-24 {
-    animation-delay: 2120ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-25 {
-    animation-delay: 2125ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-26 {
-    animation-delay: 2130ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-27 {
-    animation-delay: 2135ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-28 {
-    animation-delay: 2140ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-29 {
-    animation-delay: 2145ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-30 {
-    animation-delay: 2150ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-31 {
-    animation-delay: 2155ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-32 {
-    animation-delay: 2160ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-33 {
-    animation-delay: 2165ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-34 {
-    animation-delay: 2170ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-35 {
-    animation-delay: 2175ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-36 {
-    animation-delay: 2180ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-37 {
-    animation-delay: 2185ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-38 {
-    animation-delay: 2190ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-39 {
-    animation-delay: 2195ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-40 {
-    animation-delay: 2200ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-41 {
-    animation-delay: 2205ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-42 {
-    animation-delay: 2210ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-43 {
-    animation-delay: 2215ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-44 {
-    animation-delay: 2220ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-45 {
-    animation-delay: 2225ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-46 {
-    animation-delay: 2230ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-47 {
-    animation-delay: 2235ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-48 {
-    animation-delay: 2240ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-49 {
-    animation-delay: 2245ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-50 {
-    animation-delay: 2250ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-51 {
-    animation-delay: 2255ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-52 {
-    animation-delay: 2260ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-53 {
-    animation-delay: 2265ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-54 {
-    animation-delay: 2270ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-55 {
-    animation-delay: 2275ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-56 {
-    animation-delay: 2280ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-57 {
-    animation-delay: 2285ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-58 {
-    animation-delay: 2290ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-59 {
-    animation-delay: 2295ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-60 {
-    animation-delay: 2300ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-61 {
-    animation-delay: 2305ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-62 {
-    animation-delay: 2310ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-63 {
-    animation-delay: 2315ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-64 {
-    animation-delay: 2320ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-65 {
-    animation-delay: 2325ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-66 {
-    animation-delay: 2330ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-67 {
-    animation-delay: 2335ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-68 {
-    animation-delay: 2340ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-69 {
-    animation-delay: 2345ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-70 {
-    animation-delay: 2350ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-71 {
-    animation-delay: 2355ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-72 {
-    animation-delay: 2360ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-73 {
-    animation-delay: 2365ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-74 {
-    animation-delay: 2370ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-75 {
-    animation-delay: 2375ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-76 {
-    animation-delay: 2380ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-77 {
-    animation-delay: 2385ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-78 {
-    animation-delay: 2390ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-79 {
-    animation-delay: 2395ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-80 {
-    animation-delay: 2400ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-81 {
-    animation-delay: 2405ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-82 {
-    animation-delay: 2410ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-83 {
-    animation-delay: 2415ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-84 {
-    animation-delay: 2420ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-85 {
-    animation-delay: 2425ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-86 {
-    animation-delay: 2430ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-87 {
-    animation-delay: 2435ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-88 {
-    animation-delay: 2440ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-89 {
-    animation-delay: 2445ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-90 {
-    animation-delay: 2450ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-91 {
-    animation-delay: 2455ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-92 {
-    animation-delay: 2460ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-93 {
-    animation-delay: 2465ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-94 {
-    animation-delay: 2470ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-95 {
-    animation-delay: 2475ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-96 {
-    animation-delay: 2480ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-97 {
-    animation-delay: 2485ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-98 {
-    animation-delay: 2490ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-99 {
-    animation-delay: 2495ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-100 {
-    animation-delay: 2500ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-101 {
-    animation-delay: 2505ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-102 {
-    animation-delay: 2510ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-103 {
-    animation-delay: 2515ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-104 {
-    animation-delay: 2520ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-105 {
-    animation-delay: 2525ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-106 {
-    animation-delay: 2530ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-107 {
-    animation-delay: 2535ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-108 {
-    animation-delay: 2540ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-109 {
-    animation-delay: 2545ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-110 {
-    animation-delay: 2550ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-111 {
-    animation-delay: 2555ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-112 {
-    animation-delay: 2560ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-113 {
-    animation-delay: 2565ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-114 {
-    animation-delay: 2570ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-115 {
-    animation-delay: 2575ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-116 {
-    animation-delay: 2580ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-117 {
-    animation-delay: 2585ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-118 {
-    animation-delay: 2590ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-119 {
-    animation-delay: 2595ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-120 {
-    animation-delay: 2600ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-121 {
-    animation-delay: 2605ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-122 {
-    animation-delay: 2610ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-123 {
-    animation-delay: 2615ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-124 {
-    animation-delay: 2620ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-125 {
-    animation-delay: 2625ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-126 {
-    animation-delay: 2630ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-127 {
-    animation-delay: 2635ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-128 {
-    animation-delay: 2640ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-129 {
-    animation-delay: 2645ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-130 {
-    animation-delay: 2650ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-131 {
-    animation-delay: 2655ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-132 {
-    animation-delay: 2660ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-133 {
-    animation-delay: 2665ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-134 {
-    animation-delay: 2670ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-135 {
-    animation-delay: 2675ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-136 {
-    animation-delay: 2680ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-137 {
-    animation-delay: 2685ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-138 {
-    animation-delay: 2690ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-139 {
-    animation-delay: 2695ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-140 {
-    animation-delay: 2700ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-141 {
-    animation-delay: 2705ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-142 {
-    animation-delay: 2710ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-143 {
-    animation-delay: 2715ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-144 {
-    animation-delay: 2720ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-145 {
-    animation-delay: 2725ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-146 {
-    animation-delay: 2730ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-147 {
-    animation-delay: 2735ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-148 {
-    animation-delay: 2740ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-149 {
-    animation-delay: 2745ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-150 {
-    animation-delay: 2750ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-151 {
-    animation-delay: 2755ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-152 {
-    animation-delay: 2760ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-153 {
-    animation-delay: 2765ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-154 {
-    animation-delay: 2770ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-155 {
-    animation-delay: 2775ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-156 {
-    animation-delay: 2780ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-157 {
-    animation-delay: 2785ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-158 {
-    animation-delay: 2790ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-159 {
-    animation-delay: 2795ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-160 {
-    animation-delay: 2800ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-161 {
-    animation-delay: 2805ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-162 {
-    animation-delay: 2810ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-163 {
-    animation-delay: 2815ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-164 {
-    animation-delay: 2820ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-165 {
-    animation-delay: 2825ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-166 {
-    animation-delay: 2830ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-167 {
-    animation-delay: 2835ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-168 {
-    animation-delay: 2840ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-169 {
-    animation-delay: 2845ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-170 {
-    animation-delay: 2850ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-171 {
-    animation-delay: 2855ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-172 {
-    animation-delay: 2860ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-173 {
-    animation-delay: 2865ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-174 {
-    animation-delay: 2870ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-175 {
-    animation-delay: 2875ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-176 {
-    animation-delay: 2880ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-177 {
-    animation-delay: 2885ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-178 {
-    animation-delay: 2890ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-179 {
-    animation-delay: 2895ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-180 {
-    animation-delay: 2900ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-181 {
-    animation-delay: 2905ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-182 {
-    animation-delay: 2910ms; }
-  #hiw-clock-tower.animate .night-sky-container .stars g .star-183 {
-    animation-delay: 2915ms; }
-#hiw-clock-tower.animate .day-sky-container {
-  animation: 12000ms hiw-day-shift 2000ms linear infinite forwards; }
-#hiw-clock-tower.animate .sunrise-sky-container {
-  animation: 12000ms hiw-sunrise-shift 2000ms linear infinite forwards; }
-#hiw-clock-tower.animate .sunset-sky-container {
-  animation: 12000ms hiw-sunset-shift 2000ms linear infinite forwards; }
-#hiw-clock-tower.animate .sun {
-  transform-origin: 50% 450px;
-  transform: rotate(20deg);
-  animation: 12000ms hiw-sun-rotate 2000ms linear infinite forwards; }
-#hiw-clock-tower.animate .moon {
-  opacity: 0;
-  transform-origin: 50% 450px;
-  transform: rotate(20deg);
-  animation: 12000ms hiw-moon-rotate 1000ms linear infinite forwards; }
-#hiw-clock-tower.animate .clouds g[class*="cloud-"] {
-  opacity: 0;
-  transform-origin: center center;
-  transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  animation: 12000ms hiw-clouds 2000ms linear infinite forwards; }
-#hiw-clock-tower.animate .clouds path[class*="-shape"], #hiw-clock-tower.animate .clouds path[class*="-detail"] {
-  animation: hiw-cloud-hover 1000ms linear infinite alternate; }
-#hiw-clock-tower.animate .clouds g.cloud-1 {
-  animation-delay: 1700ms; }
-#hiw-clock-tower.animate .clouds path.cloud-1-shape, #hiw-clock-tower.animate .clouds path.cloud-1-detail {
-  animation-delay: 200ms; }
-#hiw-clock-tower.animate .clouds g.cloud-2 {
-  animation-delay: 1900ms; }
-#hiw-clock-tower.animate .clouds path.cloud-2-shape, #hiw-clock-tower.animate .clouds path.cloud-2-detail {
-  animation-delay: 400ms; }
-#hiw-clock-tower.animate .clouds g.cloud-3 {
-  animation-delay: 2100ms; }
-#hiw-clock-tower.animate .clouds path.cloud-3-shape, #hiw-clock-tower.animate .clouds path.cloud-3-detail {
-  animation-delay: 600ms; }
-#hiw-clock-tower.animate .clouds g.cloud-4 {
-  animation-delay: 2300ms; }
-#hiw-clock-tower.animate .clouds path.cloud-4-shape, #hiw-clock-tower.animate .clouds path.cloud-4-detail {
-  animation-delay: 800ms; }
-#hiw-clock-tower.animate .clouds g.cloud-5 {
-  animation-delay: 2500ms; }
-#hiw-clock-tower.animate .clouds path.cloud-5-shape, #hiw-clock-tower.animate .clouds path.cloud-5-detail {
-  animation-delay: 1000ms; }
+.cloud-fall.hiw-sky-cloud-1 {
+  animation: hiw-cloud-fall 200ms linear 200ms 2 forwards, hiw-cloud-fall-end 200ms ease-out 2020ms forwards; }
+.cloud-fall.hiw-sky-cloud-2 {
+  animation: hiw-cloud-fall 400ms linear 400ms 2 forwards, hiw-cloud-fall-end 400ms ease-out 2040ms forwards; }
+.cloud-fall.hiw-sky-cloud-3 {
+  animation: hiw-cloud-fall 600ms linear 600ms 2 forwards, hiw-cloud-fall-end 600ms ease-out 2060ms forwards; }
+.cloud-fall.hiw-sky-cloud-4 {
+  animation: hiw-cloud-fall 800ms linear 800ms 2 forwards, hiw-cloud-fall-end 800ms ease-out 2080ms forwards; }
+.cloud-fall.hiw-sky-cloud-5 {
+  animation: hiw-cloud-fall 1000ms linear 1000ms 2 forwards, hiw-cloud-fall-end 1000ms ease-out 2100ms forwards; }
+.cloud-fall.hiw-sky-cloud-6 {
+  animation: hiw-cloud-fall 1200ms linear 1200ms 2 forwards, hiw-cloud-fall-end 1200ms ease-out 2120ms forwards; }
+.cloud-fall.hiw-sky-cloud-7 {
+  animation: hiw-cloud-fall 1400ms linear 1400ms 2 forwards, hiw-cloud-fall-end 1400ms ease-out 2140ms forwards; }
+.cloud-fall.hiw-sky-cloud-8 {
+  animation: hiw-cloud-fall 1600ms linear 1600ms 2 forwards, hiw-cloud-fall-end 1600ms ease-out 2160ms forwards; }
+.cloud-fall.hiw-sky-cloud-9 {
+  animation: hiw-cloud-fall 1800ms linear 1800ms 2 forwards, hiw-cloud-fall-end 1800ms ease-out 2180ms forwards; }
+.cloud-fall.hiw-sky-cloud-10 {
+  animation: hiw-cloud-fall 2000ms linear 1000ms 2 forwards, hiw-cloud-fall-end 2000ms ease-out 2100ms forwards; }
+.cloud-fall.hiw-sky-cloud-11 {
+  animation: hiw-cloud-fall 2200ms linear 1100ms 2 forwards, hiw-cloud-fall-end 2200ms ease-out 2110ms forwards; }
+.cloud-fall.hiw-sky-cloud-12 {
+  animation: hiw-cloud-fall 2400ms linear 1200ms 2 forwards, hiw-cloud-fall-end 2400ms ease-out 2120ms forwards; }
+.cloud-fall.hiw-sky-cloud-13 {
+  animation: hiw-cloud-fall 2600ms linear 1300ms 2 forwards, hiw-cloud-fall-end 2600ms ease-out 2130ms forwards; }
+.cloud-fall.hiw-sky-cloud-14 {
+  animation: hiw-cloud-fall 2800ms linear 1400ms 2 forwards, hiw-cloud-fall-end 2800ms ease-out 2140ms forwards; }
+.cloud-fall.hiw-sky-cloud-15 {
+  animation: hiw-cloud-fall 3000ms linear 1500ms 2 forwards, hiw-cloud-fall-end 3000ms ease-out 2150ms forwards; }
+.cloud-fall.hiw-sky-cloud-16 {
+  animation: hiw-cloud-fall 3200ms linear 1600ms 2 forwards, hiw-cloud-fall-end 3200ms ease-out 2160ms forwards; }
+.cloud-fall.hiw-sky-cloud-17 {
+  animation: hiw-cloud-fall 3400ms linear 1700ms 2 forwards, hiw-cloud-fall-end 3400ms ease-out 2170ms forwards; }
+.cloud-fall.hiw-sky-cloud-18 {
+  animation: hiw-cloud-fall 3600ms linear 1800ms 2 forwards, hiw-cloud-fall-end 3600ms ease-out 2180ms forwards; }
+.cloud-fall.hiw-sky-cloud-19 {
+  animation: hiw-cloud-fall 3800ms linear 1900ms 2 forwards, hiw-cloud-fall-end 3800ms ease-out 2190ms forwards; }
+.cloud-fall.hiw-sky-cloud-20 {
+  animation: hiw-cloud-fall 4000ms linear 2000ms 2 forwards, hiw-cloud-fall-end 4000ms ease-out 2200ms forwards; }
+
+.cloud-fall-hover:nth-child(1) {
+  animation: hiw-cloud-hover 1500ms linear -100ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(2) {
+  animation: hiw-cloud-hover 1500ms linear -200ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(3) {
+  animation: hiw-cloud-hover 1500ms linear -300ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(4) {
+  animation: hiw-cloud-hover 1500ms linear -400ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(5) {
+  animation: hiw-cloud-hover 1500ms linear -500ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(6) {
+  animation: hiw-cloud-hover 1500ms linear -600ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(7) {
+  animation: hiw-cloud-hover 1500ms linear -700ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(8) {
+  animation: hiw-cloud-hover 1500ms linear -800ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(9) {
+  animation: hiw-cloud-hover 1500ms linear -900ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(10) {
+  animation: hiw-cloud-hover 1500ms linear -1000ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(11) {
+  animation: hiw-cloud-hover 1500ms linear -1100ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(12) {
+  animation: hiw-cloud-hover 1500ms linear -1200ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(13) {
+  animation: hiw-cloud-hover 1500ms linear -1300ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(14) {
+  animation: hiw-cloud-hover 1500ms linear -1400ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(15) {
+  animation: hiw-cloud-hover 1500ms linear -1500ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(16) {
+  animation: hiw-cloud-hover 1500ms linear -1600ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(17) {
+  animation: hiw-cloud-hover 1500ms linear -1700ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(18) {
+  animation: hiw-cloud-hover 1500ms linear -1800ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(19) {
+  animation: hiw-cloud-hover 1500ms linear -1900ms infinite alternate forwards; }
+.cloud-fall-hover:nth-child(20) {
+  animation: hiw-cloud-hover 1500ms linear -2000ms infinite alternate forwards; }
 
 @keyframes hiw-cloud-hover {
   0% {
-    transform: translateY(3px); }
-  100% {
-    transform: translateY(-3px); } }
-/* http://goo.gl/8Wzkzj */
-@keyframes hiw-clouds {
-  0% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-    opacity: 0; }
-  0.36% {
-    transform: matrix3d(0.514, 0, 0, 0, 0, 0.514, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  0.72% {
-    transform: matrix3d(0.879, 0, 0, 0, 0, 0.879, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-    opacity: 1; }
-  1.08% {
-    transform: matrix3d(1.052, 0, 0, 0, 0, 1.052, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  1.43% {
-    transform: matrix3d(1.093, 0, 0, 0, 0, 1.093, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  2.36% {
-    transform: matrix3d(1.021, 0, 0, 0, 0, 1.021, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  3.29% {
-    transform: matrix3d(0.994, 0, 0, 0, 0, 0.994, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  5.14% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  7% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  8.33% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  20.73% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  20.83% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  21.19% {
-    transform: matrix3d(0.486, 0, 0, 0, 0, 0.486, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  21.55% {
-    transform: matrix3d(0.121, 0, 0, 0, 0, 0.121, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-    opacity: 1; }
-  21.91% {
-    transform: matrix3d(-0.052, 0, 0, 0, 0, -0.052, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  22.27% {
-    transform: matrix3d(-0.093, 0, 0, 0, 0, -0.093, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  23.19% {
-    transform: matrix3d(-0.021, 0, 0, 0, 0, -0.021, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  24.12% {
-    transform: matrix3d(0.006, 0, 0, 0, 0, 0.006, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-    opacity: 0; }
-  25.97% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  27.83% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  29.17% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  91.57% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  91.67% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  92.03% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  92.38% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  92.74% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  93.1% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  94.03% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  94.95% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  96.81% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  98.67% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  100% {
-    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
-@keyframes fadeInFill {
-  0%, 8.33%, 16.66%, 24.99%, 33.32%, 41.65%, 49.98% {
-    stroke-opacity: 0;
-    fill-opacity: 0; }
-  58.31%, 66.64%, 74.97% {
-    stroke-opacity: 1;
-    fill-opacity: 1; }
-  83.3%, 91.63%, 100% {
-    stroke-opacity: 0;
-    fill-opacity: 0; } }
-@keyframes hiw-sun-rotate {
-  0% {
-    transform: rotate(20deg);
-    opacity: 1; }
-  8.33%, 16.66% {
-    opacity: 1; }
-  24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97%, 83.3% {
-    opacity: 0; }
-  91.63% {
+    transform: translateY(3px);
     opacity: 1; }
   100% {
-    transform: rotate(380deg);
+    transform: translateY(-3px);
     opacity: 1; } }
-@keyframes hiw-moon-rotate {
+@keyframes hiw-cloud-fall-end {
   0% {
-    transform: rotate(40deg);
-    opacity: 0; }
-  8.33%, 16.66%, 24.99%, 33.32%, 41.65% {
-    opacity: 0; }
-  49.98%, 58.31%, 66.64%, 74.97%, 83.3% {
-    opacity: 1; }
-  91.63% {
-    opacity: 0; }
-  100% {
-    transform: rotate(420deg);
-    opacity: 0; } }
-@keyframes hiw-bg-fadeOut {
-  0% {
+    transform: translateY(-1000px);
     opacity: 1; }
   100% {
-    opacity: 0; } }
-@keyframes hiw-fadeOut {
+    transform: translateY(0);
+    opacity: 1; } }
+@keyframes hiw-cloud-fall {
   0% {
-    opacity: 1;
-    z-index: 1; }
+    transform: translateY(-1000px);
+    opacity: 1; }
+  100% {
+    transform: translateY(1000px);
+    opacity: 1; } }
+@keyframes hiw-sky-balloon-gradient {
+  0% {
+    transform: translateY(-100%); }
+  100% {
+    transform: translateY(0); } }
+@keyframes hiw-basket-balloon-sway {
+  0% {
+    transform: rotate(-5deg); }
+  100% {
+    transform: rotate(5deg); } }
+@keyframes hiw-balloon-move-baking {
+  0% {
+    transform: translate3d(-520%, -300%, 0); }
   80% {
-    opacity: 1; }
+    transform: translate3d(-208%, -250%, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes hiw-balloon-move-hh {
+  0% {
+    transform: translate3d(-520%, -300%, 0); }
+  75% {
+    transform: translate3d(-208%, -225%, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes hiw-balloon-move-academic {
+  0% {
+    transform: translate3d(-520%, -300%, 0); }
+  70% {
+    transform: translate3d(-208%, -200%, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes hiw-balloon-move-tech {
+  0% {
+    transform: translate3d(-520%, -300%, 0); }
+  65% {
+    transform: translate3d(-208%, -200%, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes hiw-balloon-move-photo {
+  0% {
+    transform: translate3d(-520%, -300%, 0); }
   60% {
-    opacity: 1; }
+    transform: translate3d(-208%, -200%, 0); }
   100% {
-    opacity: 0;
-    z-index: -1; } }
-@keyframes hiw-fadeIn {
+    transform: translate3d(0, 0, 0); } }
+@keyframes hiw-balloon-anticipation {
   0% {
-    opacity: 0; }
-  60% {
-    opacity: 0; }
+    transform: translate3d(0, 0, 0); }
   100% {
-    opacity: 1; } }
-@keyframes hiw-scaleUp {
+    transform: translate3d(0, 5%, 0); } }
+@keyframes hiw-balloon-anticipation-reverse {
   0% {
-    transform: scale(1); }
+    transform: translate3d(0, 5%, 0); }
   100% {
-    transform: scale(3); } }
-@keyframes hiw-hour-hand {
+    transform: translate3d(0, 0, 0); } }
+@keyframes hiw-helicopter-translate {
   0% {
-    transform: rotate(0deg); }
-  8.33% {
-    transform: rotate(30deg); }
-  16.66% {
-    transform: rotate(60deg); }
-  24.99% {
-    transform: rotate(90deg); }
-  33.32% {
-    transform: rotate(120deg); }
-  41.65% {
-    transform: rotate(150deg); }
-  49.98% {
-    transform: rotate(180deg); }
-  58.31% {
-    transform: rotate(210deg); }
-  66.64% {
-    transform: rotate(240deg); }
-  74.97% {
-    transform: rotate(270deg); }
-  83.3% {
-    transform: rotate(300deg); }
-  91.63% {
-    transform: rotate(330deg); }
+    transform: translate3d(-100%, 0, 0); }
   100% {
-    transform: rotate(360deg); } }
-@keyframes hiw-minute-hand {
+    transform: translate3d(0, 0, 0); } }
+@keyframes hiw-helicopter-spin-1 {
   0% {
-    transform: rotate(0deg); }
+    transform: rotateY(0) translateZ(0); }
   100% {
-    transform: rotate(360deg); } }
-@keyframes hiw-day-shift {
-  0%, 8.33%, 16.66% {
-    opacity: 1; }
-  24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97%, 83.3%, 91.63% {
-    opacity: 0; }
+    transform: rotateY(1turn) translateZ(0); } }
+@keyframes hiw-helicopter-spin-2 {
+  0% {
+    transform: rotateY(1turn) translateZ(0); }
   100% {
-    opacity: 1; } }
-@keyframes hiw-night-shift {
-  0%, 8.33%, 16.66%, 24.99%, 33.32%, 41.65%, 49.98% {
-    opacity: 0; }
-  58.31%, 66.64%, 74.97% {
-    opacity: 1; }
-  83.3%, 91.63%, 100% {
-    opacity: 0; } }
-@keyframes hiw-sunset-shift {
-  0%, 8.33%, 16.66% {
-    opacity: 0; }
-  24.99%, 33.32%, 41.65%, 49.98% {
-    opacity: 1; }
-  58.31%, 66.64%, 74.97%, 83.3%, 91.63%, 100% {
-    opacity: 0; } }
-@keyframes hiw-sunrise-shift {
-  0%, 8.33%, 16.66%, 24.99%, 33.32%, 41.65%, 49.98%, 58.31%, 66.64%, 74.97% {
-    opacity: 0; }
-  83.3%, 91.63% ,100% {
-    opacity: 1; } }
-#hiw-dorm [class*="-shade"] {
-  cursor: pointer;
-  backface-visibility: hidden; }
-  #hiw-dorm [class*="-shade"].shade-up {
-    animation: hiw-shade-bounceUp 1000ms ease-in-out both; }
-  #hiw-dorm [class*="-shade"].shade-down {
-    animation: hiw-shade-bounceDown 800ms ease-in-out both; }
+    transform: rotateY(0) translateZ(0); } }
+@keyframes hiw-helicopter-rotate {
+  0% {
+    transform: rotateZ(-0.5deg) translateZ(0); }
+  100% {
+    transform: rotateZ(0.5deg) translateZ(0); } }
+#projector-hiw-map {
+  max-width: 900px;
+  max-height: 595px; }
+  @media screen and (min-height: 900px) {
+    #projector-hiw-map {
+      max-width: 1080px;
+      max-height: 715px; } }
 
-/* http://goo.gl/v6Swa7 */
-@keyframes hiw-shade-bounceUp {
-  0% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  7.61% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -40.22, 0, 1); }
-  11.41% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -55.322, 0, 1); }
-  15.12% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -66.1, 0, 1); }
-  18.92% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -73.49, 0, 1); }
-  22.72% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -77.83, 0, 1); }
-  30.23% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -80.426, 0, 1); }
-  50.25% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -76.141, 0, 1); }
-  70.27% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -74.74, 0, 1); }
-  100% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -75, 0, 1); } }
-/* http://goo.gl/5f8E4Y */
-@keyframes hiw-shade-bounceDown {
-  0% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -75, 0, 1); }
-  7.61% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -34.78, 0, 1); }
-  11.41% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -19.678, 0, 1); }
-  15.12% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -8.9, 0, 1); }
-  18.92% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -1.51, 0, 1); }
-  22.72% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 2.83, 0, 1); }
-  30.23% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 5.426, 0, 1); }
-  50.25% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1.141, 0, 1); }
-  70.27% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -0.26, 0, 1); }
-  100% {
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
 .projector-slide .hiw-svg {
   width: 100%;
   height: 100%; }
@@ -4541,17 +4642,17 @@ a[class*="-container"]:hover .map-enter {
 a[class*="-container"]:hover .map-stadium-outside {
   transform: scaleY(0) translateZ(0); }
 
-#hiw-sky-balloon, #hiw-stadium, #hiw-stadium-balloons {
-  position: absolute;
-  top: 0;
-  left: 0; }
-
 #hiw-clock-tower, #hiw-dorm, #hiw-library {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%; }
+
+#hiw-sky-balloon, #hiw-stadium, #hiw-stadium-balloons {
+  position: absolute;
+  top: 0;
+  left: 0; }
 
 #hiw-library {
   perspective: 3000; }
@@ -4565,7 +4666,6 @@ a[class*="-container"]:hover .map-stadium-outside {
     #hiw-library svg > g {
       transform-origin: center bottom; }
   #hiw-library #hiw-library-inside {
-    transition: all 100ms linear 1000ms;
     left: 0; }
   #hiw-library #hiw-library-outside-left, #hiw-library #hiw-library-outside-right {
     position: absolute;
@@ -4575,8 +4675,6 @@ a[class*="-container"]:hover .map-stadium-outside {
     overflow: hidden; }
     #hiw-library #hiw-library-outside-left svg, #hiw-library #hiw-library-outside-right svg {
       width: 200%; }
-      #hiw-library #hiw-library-outside-left svg > g, #hiw-library #hiw-library-outside-right svg > g {
-        transition: transform 600ms cubic-bezier(0.77, -0.22, 0.05, 1.27); }
   #hiw-library #hiw-library-outside-left {
     left: 0; }
     #hiw-library #hiw-library-outside-left svg {
@@ -4589,8 +4687,6 @@ a[class*="-container"]:hover .map-stadium-outside {
       right: 0; }
       #hiw-library #hiw-library-outside-right svg > g {
         transform-origin: right center; }
-  #hiw-library.animate #hiw-library-outside-left svg > g, #hiw-library.animate #hiw-library-outside-right svg > g {
-    transform: scaleX(0); }
 
 .hiw-balloon ~ .hiw-balloon-hover {
   transition: all 150ms ease-in-out;

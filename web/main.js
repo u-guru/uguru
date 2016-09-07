@@ -63,10 +63,23 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       console.log($state.current.name);
     }
   })
-    .state('root.api', {
+  .state('root.api', {
     name: 'root.api',
     parent: 'root',
-    url:'/admin/api/property',
+    url:'/admin/api',
+    abstract:true,
+    template: '<ui-view/>'
+  })
+  .state('root.api.components', {
+    parent: 'root.api',
+    name: 'root.api.components',
+    url: '/components',
+    templateUrl: 'admin/templates/api/components.html'
+  })
+  .state('root.api.property', {
+    name: 'root.api.property',
+    parent: 'root.api',
+    url: '/property',
     templateUrl: 'admin/templates/api/property.html',
     controller: ['$scope', '$timeout', 'TweenService', '$compile', 'PropertyService', function($scope, $timeout, TweenService, $compile, PropertyService) {
       $scope.refreshEasing = function(easing) {
