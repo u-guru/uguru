@@ -1401,6 +1401,47 @@
 			<rect class="map-dorm-invisible-container" x="659" y="248" width="175.702918" height="116.321839"></rect>
 		</g>
 	</a>
+	<g class="ppl-bald"
+		init-with="p:[op:0, tro:center top]"
+		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-900 | send:[bald-walk:public]"
+		when-bald-walk="p:[transform:translateX(0px):translateX(-150px):3000:easeInOutExpo] | s:[bald-walk-down:public]:delay-3000"
+		when-bald-walk-down="p:[transform:translateX(-150px) translateY(0px) rotateY(0deg):translateX(150px) translateY(30px) rotateY(180deg):3000:easeInExpo easeInExpo easeInQuad] | s:[bald-walk-back:public]:delay-3000"
+		when-bald-walk-back="p:[transform:translateX(150px) translateY(30px) rotateY(180deg):translateX(0px) translateY(0px) rotateY(0deg):3000:easeInExpo easeInExpo easeInSine]">
+			<g class="left-arm"
+				init-with="p:[tro:right top]"
+				when-bald-walk="p:[transform:rotate(-15deg):rotate(5deg):400:easeInOutCubic:^:200+0:a]">
+	            <path d="M625.780273,360.327586 C625.780273,357.643111 625.644226,355.266793 626.337097,353.811714" class="forearm-l" stroke="#370E26" stroke-width="2"
+					init-with="p:[tro:center top]"
+					when-bald-walk="p:[transform:rotate(-10deg):rotate(10deg):1000:linear:^:200+0:a]"></path>
+	            <path d="M626.337097,353.811714 C626.787055,352.866771 627.586595,352.310345 629,352.310345" class="shoulder-l" stroke="#370E26" stroke-width="2"></path>
+			</g>
+			<g class="left-leg"
+				init-with="p:[tro:center top]"
+				when-bald-walk="p:[transform:rotate(-15deg):rotate(5deg):500:easeOutSine:^:200+0:a]">
+				<path d="M627.5,365.3125 L627.5,369.6875" class="calf-l" stroke="#FBE4D7" stroke-width="3"></path>
+	            <path d="M627.5,360.3125 L627.5,364.6875" class="thigh-l" stroke="#000" stroke-width="3"
+					init-with="p:[tro:center top]"
+					when-bald-walk="p:[transform:rotate(0deg):rotate(5deg):500:easeOutSine:^:200+0:a]"></path>
+			</g>
+			<g class="right-leg"
+				init-with="p:[tro:center top]"
+				when-bald-walk="p:[transform:rotate(15deg):rotate(-5deg):500:easeOutSine:^:200+0:a]">
+				<path d="M630.5,365.3125 L630.5,369.6875" class="calf-r" stroke="#FBE4D7" stroke-width="3"></path>
+	            <path d="M630.5,360.3125 L630.5,364.6875" class="thigh-r" stroke="#000" stroke-width="3"
+					init-with="p:[tro:center top]"
+					when-bald-walk="p:[transform:rotate(0deg):rotate(5deg):500:easeOutSine:^:200+0:a]"></path>
+			</g>
+            <path d="M629.25,352.092639 C627.455075,352.092639 626,353.541126 626,355.342073 L626,359.92298 C626,361.717593 632.5,361.723927 632.5,359.92298 L632.5,355.342073 C632.5,353.54746 631.041273,352.092639 629.25,352.092639 Z" class="torso" stroke="#55163B" stroke-width="0.5" fill="#AD377C"></path>
+			<g class="right-arm"
+				init-with="p:[tro:left top]"
+				when-bald-walk="p:[transform:rotate(5deg):rotate(-15deg):400:easeInOutCubic:^:200+0:a]">
+	            <path d="M633.612888,354.766894 C634.218596,357.022332 633.470621,359.843644 632.623775,361.708252" class="forearm-r" stroke="#370F26" stroke-width="2"
+					init-with="p:[tro:right top]"
+					when-bald-walk="p:[transform:rotate(-10deg):rotate(10deg):1000:linear:^:200+0:a]"></path>
+	            <path d="M631.013916,351.598877 C632.224123,352.252031 633.299737,353.600828 633.612888,354.766894" class="shoulder-r" stroke="#370F26" stroke-width="2"></path>
+			</g>
+            <path d="M633.5,346.997743 C633.5,344.789851 631.704644,343 629.5,343 L629.5,343 C627.290861,343 625.5,344.800634 625.5,346.997743 L625.5,347.79536 C625.5,350.003253 627.295356,351.793103 629.5,351.793103 L629.5,351.793103 C631.709139,351.793103 633.5,349.992469 633.5,347.79536 L633.5,346.997743 L633.5,346.997743 Z" class="head" stroke="#33534D" stroke-width="0.689655172" fill="#FBE4D7"></path>
+    </g>
 	<g class="map-fountain"
 		init-with="p:[transform:scaleY(0) translateZ(0), tro:center bottom]"
 		when-hiw-details-enter="p:[transform:scaleY(0) translateZ(0):scaleY(1) translateZ(0):500:easeOutBack easeOutSine]">
@@ -1450,7 +1491,7 @@
 	</g>
 	<g class="ppl-bsns"
 		init-with="p-op"
-		when-hiw-details-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1750">
+		when-hiw-details-enter="p:[opacity:0:1:500:easeInOutSine]:delay-1750]">
 		<path d="M795.5,403.327586 C795.5,398.899786 794.089851,395.310345 790.5,395.310345 C786.910149,395.310345 785,398.899786 785,403.327586" class="ppl-bsns-arms" stroke="#DFFEFF" stroke-width="2.06896552"></path>
 		<rect class="ppl-bsns-torso" stroke="#DFFEFF" stroke-width="0.689655172" fill="#D0FEFF" x="787" y="395.092639" width="6.5" height="11.0797751" rx="68.9655172"></rect>
 		<path d="M790.171429,395 L790,394 L789.828571,395 L789,395 L789.707317,395.707317 L789,399.833333 C789,399.833333 789.666667,401 790,401 C790.333333,401 791,399.833333 791,399.833333 L790.292683,395.707317 L791,395 L790.171429,395 L790.171429,395 Z" class="ppl-bsns-tie" fill="#000000"></path>
@@ -1460,30 +1501,37 @@
 	</g>
 	<g class="ppl-kite"
 		init-with="p-op"
-		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-150">
-		<path d="M667.070442,417.798117 C667.274543,416.252759 666.170547,415 664.613515,415 L664.546485,415 C662.98546,415 661.72,416.259837 661.72,417.830594 L661.72,420.962509 C661.72,422.525803 662.381445,428.23241 663.895674,428.512452 L664.546485,428.632812 C666.07356,428.915229 667.625057,423.698857 667.293295,422.178994 C667.293295,422.178994 666.851191,420.279863 666.851191,419.912278 C666.851191,419.243979 667.070442,417.798117 667.070442,417.798117 Z" class="ppl-kite-hair-back" stroke="#2C4944" stroke-width="0.5" fill="#40484B"></path>
-		<path d="M662.24,424.051724 C666.290411,424.051724 665.259732,425.603448 662.24,425.603448 C659.351977,425.603448 657.82,428.270669 657.82,432.844828 C657.82,433.273324 657.470782,433.62069 657.04,433.62069 C656.609218,433.62069 656.26,433.273324 656.26,432.844828 C656.26,427.527264 658.256253,424.051724 662.24,424.051724 L662.24,424.051724 Z" class="ppl-kite-arm-right" stroke="#2C4944" stroke-width="0.5" fill="#996146"
-			init-with="p:[tro:left top, tr:rotate(-15deg)]"
-			when-hiw-people-enter="p:[transform:rotate(-15deg):rotate(15deg):1500:easeInOutExpo:^:200+150:a]"></path>
-			<!-- "a:[ppl-kite-fly:set:(dur:1500ms#func:ease-in-out#aic:infinite#ad:alternate):in]" -->
-		<g class="ppl-kite-fly"
-			init-with="p:[tro:left bottom, tr:rotate(-15deg)]"
-			when-hiw-people-enter="p:[transform:rotate(-15deg):rotate(15deg):2000:easeInOutQuad:^:200+0:a]">
-			<!-- when-hiw-people-enter="a:[ppl-kite-fly:set:(dur:2000ms#func:ease-in-out#aic:infinite#ad:alternate):in]" -->
-			<path d="M702.744417,399.369075 C701.120421,403.109745 696.761499,412.417316 691.944336,416.563477 C685.840095,421.817432 674.833984,422.369141 674.833984,422.369141" class="ppl-kite-leash" stroke="#9A5BC5" stroke-linecap="round" stroke-linejoin="round"></path>
-			<g class="ppl-kite-diamond"
-				init-with="p:[tro:center bottom, tr:none]"
-				when-hiw-people-enter="p:[transform:translateY(0%):translateY(25%):1500:easeInOutSine:^:200+50:a]">
-				<!-- "a:[ppl-kite-diamond:set:(dur:1500ms#func:ease-in-out#aic:infinite#ad:alternate):in]" -->
-				<polygon class="ppl-kite" stroke="#9A5BC5" fill="#B978E6" points="706.733812 370.804785 715.156986 383.251195 702.870838 398.291273 694.361357 380.32856"></polygon>
-				<path d="M705.440066,382.14101 L694.5,380.5 L705.440066,382.14101 L707.121094,371.397461 C707.121094,371.397461 706.391701,376.387176 705.525829,382.153874 L714.5,383.5 L705.525829,382.153874 C704.378563,389.794657 702.991697,398.799496 702.744417,399.369075 L705.440066,382.14101 L705.440066,382.14101 Z" class="ppl-kite-string" stroke="#9A5BC5" stroke-linecap="round" stroke-linejoin="round"></path>
+		when-hiw-people-enter="p:[opacity:0:1:500:easeInOutSine]:delay-150 | s:[kite-fly:public]:delay-10000"
+		when-kite-fly="send:[run-after:public]:delay-6000"
+		when-run-after="p:[transform:translateX(0px):translateX(300px):4000:easeInOutCubic]:delay-5000">
+		<g init-with="p:[tro:center center]"
+			when-run-after="p:[transform:translateY(-1px) rotate(-2deg):translateY(1px) rotate(2deg):300:easeInOutQuad easeInOutQuad:^:200+0:a]:delay-5000">
+			<path d="M667.070442,417.798117 C667.274543,416.252759 666.170547,415 664.613515,415 L664.546485,415 C662.98546,415 661.72,416.259837 661.72,417.830594 L661.72,420.962509 C661.72,422.525803 662.381445,428.23241 663.895674,428.512452 L664.546485,428.632812 C666.07356,428.915229 667.625057,423.698857 667.293295,422.178994 C667.293295,422.178994 666.851191,420.279863 666.851191,419.912278 C666.851191,419.243979 667.070442,417.798117 667.070442,417.798117 Z" class="ppl-kite-hair-back" stroke="#2C4944" stroke-width="0.5" fill="#40484B"></path>
+			<path d="M662.24,424.051724 C666.290411,424.051724 665.259732,425.603448 662.24,425.603448 C659.351977,425.603448 657.82,428.270669 657.82,432.844828 C657.82,433.273324 657.470782,433.62069 657.04,433.62069 C656.609218,433.62069 656.26,433.273324 656.26,432.844828 C656.26,427.527264 658.256253,424.051724 662.24,424.051724 L662.24,424.051724 Z" class="ppl-kite-arm-right" stroke="#2C4944" stroke-width="0.5" fill="#996146"
+				init-with="p:[tro:left top, tr:rotate(-15deg)]"
+				when-hiw-people-enter="p:[transform:rotate(-15deg):rotate(15deg):1500:easeInOutExpo:^:10+150:a]"
+				when-kite-fly="p:[transform:rotateX(0deg):rotateX(180deg):1000:easeOutExpo]:delay-10000"></path>
+				<!-- "a:[ppl-kite-fly:set:(dur:1500ms#func:ease-in-out#aic:infinite#ad:alternate):in]" -->
+			<g class="ppl-kite-fly"
+				init-with="p:[tro:left bottom, tr:rotate(-15deg)]"
+				when-hiw-people-enter="p:[transform:rotate(-15deg):rotate(15deg):2000:easeInOutQuad:^:10+0:a]"
+				when-kite-fly="p:[transform:translateX(0px) translateY(0px) scale(1):translateX(200px) translateY(-100px) scale(4):3000:easeInOutCirc easeOutCirc easeOutExpo]:delay-10000">
+				<!-- when-hiw-people-enter="a:[ppl-kite-fly:set:(dur:2000ms#func:ease-in-out#aic:infinite#ad:alternate):in]" -->
+				<path d="M702.744417,399.369075 C701.120421,403.109745 696.761499,412.417316 691.944336,416.563477 C685.840095,421.817432 674.833984,422.369141 674.833984,422.369141" class="ppl-kite-leash" stroke="#9A5BC5" stroke-linecap="round" stroke-linejoin="round"></path>
+				<g class="ppl-kite-diamond"
+					init-with="p:[tro:center bottom, tr:none]"
+					when-hiw-people-enter="p:[transform:translateY(0%):translateY(25%):1500:easeInOutSine:^:10+50:a]">
+					<!-- "a:[ppl-kite-diamond:set:(dur:1500ms#func:ease-in-out#aic:infinite#ad:alternate):in]" -->
+					<polygon class="ppl-kite" stroke="#9A5BC5" fill="#B978E6" points="706.733812 370.804785 715.156986 383.251195 702.870838 398.291273 694.361357 380.32856"></polygon>
+					<path d="M705.440066,382.14101 L694.5,380.5 L705.440066,382.14101 L707.121094,371.397461 C707.121094,371.397461 706.391701,376.387176 705.525829,382.153874 L714.5,383.5 L705.525829,382.153874 C704.378563,389.794657 702.991697,398.799496 702.744417,399.369075 L705.440066,382.14101 L705.440066,382.14101 Z" class="ppl-kite-string" stroke="#9A5BC5" stroke-linecap="round" stroke-linejoin="round"></path>
+				</g>
 			</g>
+			<path d="M665.157716,426.766887 C661.722773,424.620496 663.419127,423.850736 665.980005,425.45095 C668.429187,426.981369 671.141789,425.531262 673.565724,421.652155 C673.792793,421.288769 674.273022,421.179244 674.638346,421.407524 C675.00367,421.635804 675.115748,422.115443 674.888679,422.478829 C672.070799,426.988379 668.536125,428.877951 665.157716,426.766887 L665.157716,426.766887 Z" class="ppl-kite-arm-left" stroke="#2C4944" stroke-width="0.5" fill="#996146"></path>
+			<path d="M663.8,435.471949 L663.8,443.962194 C663.8,444.535358 664.261619,445 664.84,445 L664.84,445 C665.414376,445 665.88,444.535601 665.88,443.969421 L665.88,433.153455 C665.88,433.153455 659.12,433.968548 659.12,434.376094 L659.12,443.959333 C659.12,444.534078 659.581619,445 660.16,445 L660.16,445 C660.734376,445 661.2,444.540442 661.2,443.962194 L661.2,435.471949 L663.8,435.471949 L663.8,435.471949 Z" class="ppl-kite-legs" stroke="#26403C" stroke-width="0.5" fill="#996146"></path>
+			<path d="M659.651066,433.088772 C659.643741,433.005599 659.64,432.921403 659.64,432.836338 L659.64,427.463198 C659.64,425.880871 660.920466,424.60988 662.5,424.60988 C664.07632,424.60988 665.36,425.887354 665.36,427.463198 L665.36,432.413793 L669,437.241379 L656.52,437.241379 L659.651066,433.088772 L659.651066,433.088772 Z" class="ppl-kite-torso" stroke="#637074" stroke-width="0.5" fill="#2BB3B8"></path>
+			<path d="M666.92,419.682039 C666.92,417.381885 665.05283,415.517241 662.76,415.517241 L662.76,415.517241 C660.462495,415.517241 658.6,417.382032 658.6,419.682039 L658.6,420.145547 C658.6,422.445701 660.46717,424.310345 662.76,424.310345 L662.76,424.310345 C665.057505,424.310345 666.92,422.445554 666.92,420.145547 L666.92,419.682039 L666.92,419.682039 Z" class="ppl-kite-face" stroke="#33534D" stroke-width="0.5" fill="#996146"></path>
+			<path d="M663.847703,416.42508 C665.213967,415.667601 665.057751,415.053543 663.482064,415.053543 L660.340319,415.053543 C658.772118,415.053543 657.413418,416.321362 657.305163,417.891303 L657.120911,420.563371 C657.012842,422.130623 657.562406,428.256302 658.89585,429.091605 L660.062246,429.822266 C660.549017,430.127192 660.835264,429.931295 660.700758,429.370514 C660.700758,429.370514 660.062247,420.867709 660.062246,419.565009 C660.062246,418.262308 663.847703,416.42508 663.847703,416.42508 Z" class="ppl-kite-hair-front" stroke="#2C4944" stroke-width="0.5" fill="#40484B"></path>
 		</g>
-		<path d="M665.157716,426.766887 C661.722773,424.620496 663.419127,423.850736 665.980005,425.45095 C668.429187,426.981369 671.141789,425.531262 673.565724,421.652155 C673.792793,421.288769 674.273022,421.179244 674.638346,421.407524 C675.00367,421.635804 675.115748,422.115443 674.888679,422.478829 C672.070799,426.988379 668.536125,428.877951 665.157716,426.766887 L665.157716,426.766887 Z" class="ppl-kite-arm-left" stroke="#2C4944" stroke-width="0.5" fill="#996146"></path>
-		<path d="M663.8,435.471949 L663.8,443.962194 C663.8,444.535358 664.261619,445 664.84,445 L664.84,445 C665.414376,445 665.88,444.535601 665.88,443.969421 L665.88,433.153455 C665.88,433.153455 659.12,433.968548 659.12,434.376094 L659.12,443.959333 C659.12,444.534078 659.581619,445 660.16,445 L660.16,445 C660.734376,445 661.2,444.540442 661.2,443.962194 L661.2,435.471949 L663.8,435.471949 L663.8,435.471949 Z" class="ppl-kite-legs" stroke="#26403C" stroke-width="0.5" fill="#996146"></path>
-		<path d="M659.651066,433.088772 C659.643741,433.005599 659.64,432.921403 659.64,432.836338 L659.64,427.463198 C659.64,425.880871 660.920466,424.60988 662.5,424.60988 C664.07632,424.60988 665.36,425.887354 665.36,427.463198 L665.36,432.413793 L669,437.241379 L656.52,437.241379 L659.651066,433.088772 L659.651066,433.088772 Z" class="ppl-kite-torso" stroke="#637074" stroke-width="0.5" fill="#2BB3B8"></path>
-		<path d="M666.92,419.682039 C666.92,417.381885 665.05283,415.517241 662.76,415.517241 L662.76,415.517241 C660.462495,415.517241 658.6,417.382032 658.6,419.682039 L658.6,420.145547 C658.6,422.445701 660.46717,424.310345 662.76,424.310345 L662.76,424.310345 C665.057505,424.310345 666.92,422.445554 666.92,420.145547 L666.92,419.682039 L666.92,419.682039 Z" class="ppl-kite-face" stroke="#33534D" stroke-width="0.5" fill="#996146"></path>
-		<path d="M663.847703,416.42508 C665.213967,415.667601 665.057751,415.053543 663.482064,415.053543 L660.340319,415.053543 C658.772118,415.053543 657.413418,416.321362 657.305163,417.891303 L657.120911,420.563371 C657.012842,422.130623 657.562406,428.256302 658.89585,429.091605 L660.062246,429.822266 C660.549017,430.127192 660.835264,429.931295 660.700758,429.370514 C660.700758,429.370514 660.062247,420.867709 660.062246,419.565009 C660.062246,418.262308 663.847703,416.42508 663.847703,416.42508 Z" class="ppl-kite-hair-front" stroke="#2C4944" stroke-width="0.5" fill="#40484B"></path>
 	</g>
 
 	<g class="pine-front-4"
