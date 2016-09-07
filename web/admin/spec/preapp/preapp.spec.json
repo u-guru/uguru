@@ -22,16 +22,49 @@
                 },
                 "states": {
                     "onEnter": {
-						"portal": "scaleXIn",
-						"logo": "bounceInUp or easeOutBack",
-						"guru": "bounceInUp or easeOutBack"
+						"portal": {
+							"animation": "scaleXIn",
+							"easing": "",
+							"updated": true,
+							"notes": ""
+						},
+						"logo": {
+							"animation": "bounceInUp",
+							"easing": "easeOutBack",
+							"updated": true,
+							"notes": ""
+						},
+						"guru": {
+							"animation": "bounceInUp",
+							"easing": "easeOutBack",
+							"updated": true,
+							"notes": ""
+						}
 					},
                     "onProgressStart": {
-						"ring": ["drawIn", "category color transition"],
-						"guru": "bounce 3x",
+						"ring": {
+							"animation": ["drawIn", "category color transition"],
+							"easing": "linear",
+							"updated": false,
+							"notes": {
+								"GW": "May require a state for each color",
+								"JO": ""
+							}
+						},
+						"guru": {
+							"animation": "bounce 3x",
+							"updated": false,
+							"notes": {
+								"GW": "May require 3+ states -or- alternate, but check alternate first",
+								"JO": ""
+							}
+						},
 					},
 					"onProgressEnd": {
-						"guru": "bounceOutDown or easeInBack",
+						"guru": {
+							"animation": "bounceOutDown or easeInBack",
+							"updated": true
+						},
 						"logo": "bounceOutDown or easeInBack",
 						"portal": "flipOpen"
 					},
