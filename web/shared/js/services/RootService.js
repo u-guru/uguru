@@ -10,6 +10,7 @@ function RootService($timeout, $state) {
     var docItems = [];
     var pauseElement;
     var setInspectableElem;
+    var animations = {custom: [], customNameOnly: []};
     var addElemToInspector;
     var getInspectorPreferences = function() {};
     initBaseUrlByEnv();
@@ -34,7 +35,33 @@ function RootService($timeout, $state) {
         setInspectableElements: setInspectableElements,
         addElemToInspector: addElemToInspector,
         setGetInspector: setGetInspector,
-        getInspectorPreferences: returnInspectorPreferences
+        getInspectorPreferences: returnInspectorPreferences,
+        getCustomEasingAnimations: getCustomEasingAnimations,
+        getCustomAnimations: getCustomAnimations
+    }
+
+    function getCustomAnimations() {
+      return animations;
+    }
+
+    function getCustomEasingAnimations(scope) {
+
+      scope.animations = animations;
+      return function() {
+        var ss = document.styleSheets;
+
+        for (var i = 0; i < ss.length; ++i) {
+          for (var j = 0; j < ss[i].cssRules.length; ++j) {
+              if (ss[i].cssRules[j].type == window.CSSRule.WEBKIT_KEYFRAMES_RULE) {
+
+                if (ss[i].cssRules[j].cssRules.length > 8) {
+                  scope.animations.custom.push(ss[i].cssRules[j])
+                  scope.animations.customNameOnly.push(ss[i].cssRules[j].name)
+                }
+              }
+            }
+        }
+      }
     }
 
     function setInspectableElements(func) {

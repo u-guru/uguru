@@ -27,6 +27,7 @@ angular.module('uguru.shared.controllers', [])
     root.inspector = {players:[], activePlayer: null, elements: [], preferences: {}};
     RootService.setGetInspector(getInspectorPrefs(root.inspector));
     RootService.setInspectableElements(pushElemPlayer(root.inspector));
+    RootService.getCustomEasingAnimations(root)()
   }
 ]);
 

@@ -911,6 +911,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
             prop_dict.custom = orig_str[i].replace(msg_name + ':', '');
 
+
         }
         return arg
       }
@@ -974,7 +975,8 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     //todo modularize
     function formatAndProcessArgs(type, string_args, base_dict, base_dict_key, custom_func, custom_args, state_name, elem) {
-
+      var customAnimations = RootService.getCustomAnimations();
+      var customAnimNameOnly = customAnimations.customNameOnly;
       var propDict = base_dict
       propDict.type = type;
       var generalArgs = '';
@@ -989,7 +991,12 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
           var key = kvPairSplit[0];
           var value = kvPairSplit[1];
+          if (type === 'prop' &&  customAnimNameOnly.indexOf(key) > -1) {
+            var animObjIndex = customAnimNameOnly.indexOf(key);
+            var animObj = customAnimations.custom[animObjIndex];
+            console.log(animObj.cssText);
 
+          }
 
 
           parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs, i);
@@ -999,6 +1006,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
 
             parsedPropDict = processGeneralArgsArray(type, kvPairSplit.splice(2), parsedPropDict, custom_args);
+
             // if (key in PropertyService.defaultPropAnimations) {
 
             //   if (!('custom' in parsedPropDict)) {
@@ -1031,6 +1039,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         }
       }
       //parseGeneralArgs
+
       processGeneralArgs(type, string_args, propDict, custom_args);
 
       return propDict
@@ -1039,6 +1048,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
     function processCustomArgsArray(type, split_key, split_value, orig_str, arg_dict, d_custom_args, state_name, elem, hasPlayer) {
       var hasDefault = 'default' in arg_dict;
+
       if (areCustomArgsPropertyAnimation(type, arg_dict)) {
 
         var startArgs = arg_dict[split_key];
@@ -1401,6 +1411,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function processAnimArr(anim_arr, scope, elem) {
+
       for (var i = 0; i < anim_arr.length; i++) {
         var indexAnimObj = anim_arr[i];
         var delay = indexAnimObj.delay || 0;
@@ -1463,8 +1474,10 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       function runOneAnimation(anim_name, anim_type, delay, scope, elem, custom_args) {
         var animStartCb;
         var animEndCb;
+        console.log(anim_name, anim_type, delay, scope, elem);
         if (animType === 'obj') {
           var animObj = AnimationService.getAnimationObjFromAnimationName(anim_name);
+          console.log(animObj)
           if (animObj) {
             if (custom_args.out) {
 
