@@ -24,10 +24,23 @@
                     "HTML tools/API enhancements": {
                         "components": ["svg", "letter/word"]
                     },
-                    "If time": {
-                        "animation": "infinite",
-                        "user-story timeline": "dispatch events in the middle of a state",
-                        "interpolate": "Stagger anything"
+                    "production": {
+                        "platforms": ["chrome", "firefox", "safari"],
+                        "compressed": ["live url"]
+                    },
+                    "docs/analysis/next-time": {
+                        "docs": {
+                            "admin api docs": {
+                                "view all+overview": "api/animations",
+                                "inspect easing": "api/animations/<easings>",
+                                "inspect one animation": "api/animations/<animation_name>"
+                            }
+                        },
+                        "features": {
+                            "animation": "infinite",
+                            "user-story timeline": "dispatch events in the middle of a state",
+                            "interpolate": "Stagger anything"
+                        }
                     }
                 },
                 "states": {
