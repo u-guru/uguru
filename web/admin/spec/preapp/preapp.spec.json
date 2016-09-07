@@ -6,10 +6,10 @@
         "splashLoader": {
             "rubric": {
                 "ui": {
-                    "static": false,
-                    "responsive": false,
+                    "static": true,
+                    "responsive": true,
                     "animated": false,
-                    "zero glitches": false,
+                    "glitch-free": false,
                     "cross-platform": false,
                     "verified" : false,
                     "analysis": false
@@ -21,8 +21,24 @@
                     }
                 },
                 "states": {
-                    "onEnter": "",
-                    "onProgressStart": ""
+                    "onEnter": {
+						"portal": "scaleXIn",
+						"logo": "bounceInUp or easeOutBack",
+						"guru": "bounceInUp or easeOutBack"
+					},
+                    "onProgressStart": {
+						"ring": ["drawIn", "category color transition"],
+						"guru": "bounce 3x",
+					},
+					"onProgressEnd": {
+						"guru": "bounceOutDown or easeInBack",
+						"logo": "bounceOutDown or easeInBack",
+						"portal": "flipOpen"
+					},
+					"onWarpTransitionStart": {
+						"portal": "clip-path or scaleInUp",
+						"stars": "translateZIn",
+					}
                 }
             }
         }
