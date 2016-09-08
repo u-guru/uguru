@@ -3,7 +3,7 @@
 		init-default
 		on-init="s:[portal-open:public]">
 		<div class="loader-portal-inside"
-			init-with="p:[tr:scale(1), tro:center bottom]"
+			init-with="p:[tr:scale(0), tro:50% 90%]"
 			when-portal-open="p:[transform:scale(0):scale(1):300:easeOutBack]:delay-150">
 			<div class="portal"
 				init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]"
@@ -80,7 +80,7 @@
 	     init-with="p:[op:0, -webkit-clip-path:circle(90px at 50% 50%)]"
 		 when-warp-start="p:[opacity:0:1:250]:delay-900 | s:[warp-open:public:delay-1250]"
 		 when-warp-open="p:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):500:easeOutSine] | s:[warp-transition:public]"
-		 when-warp-transition="p:[-webkit-clip-path:none]:delay-1000 | s:[warp-end:public:delay-2000]"
+		 when-warp-transition="p:[-webkit-clip-path:none]:delay-1000 | s:[warp-end:public:delay-1000]"
 		 when-portal-hover="s:[warp-speed:public:delay-2000]">
 	    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'"></div>
 	</div>
