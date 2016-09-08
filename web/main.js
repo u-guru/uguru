@@ -74,7 +74,14 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     parent: 'root.api',
     name: 'root.api.components',
     url: '/components',
-    templateUrl: 'admin/templates/api/components.html'
+    abstract: true,
+    template: '<ui-view/>'
+  })
+  .state('root.api.components.letter', {
+    parent: 'root.api.components',
+    name: 'root.api.components.letter',
+    url: '/letters',
+    templateUrl: 'admin/templates/api/letters.html'
   })
   .state('root.api.property', {
     name: 'root.api.property',

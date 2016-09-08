@@ -12,7 +12,7 @@ angular.module('uguru.shared.directives.base.components')
                     function (lScope, lElem, lAttr) {
                          transclude(lScope, function(clone, innerScope) {
                             lElem[0].innerHTML = clone[0].innerHTML;
-                            $compile(lElem)(innerScope);
+                            $compile(lElem)(lScope);
                         })
                     }
                 }
@@ -31,7 +31,7 @@ angular.module('uguru.shared.directives.base.components')
                     function (lScope, lElem, lAttr) {
                          transclude(lScope, function(clone, innerScope) {
                             lElem[0].innerHTML = clone[0].innerHTML;
-                            $compile(lElem)(innerScope);
+                            $compile(lElem.children())(lScope);
                         })
                     }
                 }
