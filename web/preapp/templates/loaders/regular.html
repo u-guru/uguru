@@ -7,7 +7,8 @@
 			when-portal-open="p:[transform:scale(0):scale(1):300:easeOutBack]:delay-150">
 			<div class="portal"
 				init-with="p:[tr:translateY(37%) translateZ(25px) rotateX(75deg)]"
-				when-portal-complete="p:[transform:translateY(37%) translateZ(25px) rotateX(75deg):translateY(-37.5%) translateZ(0px) rotateX(0deg):900:easeOutSine easeOutSine easeOutSine]:delay-3000 | s:[warp-start:public:delay-3000]">
+				when-portal-complete="p:[transform:translateY(37%) translateZ(25px) rotateX(75deg):translateY(-37.5%) translateZ(0px) rotateX(0deg):900:easeOutSine easeOutSine easeOutSine]:delay-3000 | s:[warp-start:public:delay-3000]"
+				when-warp-open="p:[scale(90px):scale(1500px)):500:easeInOutCirc]">
 				<div>
 					<svg width="200px" height="200px" viewBox="0 0 400 400">
 						<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
