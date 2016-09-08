@@ -683,9 +683,19 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Check to see if draw is working",
+                    "bugs": [
+						{
+							"bug": "Check to see if draw is working",
+							"fixed": true
+						}
+					],
 					"stagger": [],
-					"draw": "icon"
+					"draw": [
+						{
+							"element": "icon",
+							"complete": false
+						}
+					]
                 }
             },
 			"timeline-icon": {
@@ -701,7 +711,16 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Change onclick to onmouseenter. FIXED &rarr; Possible enhancement by adding bounce and spacing",
+					"bugs": [
+						{
+							"bug": "Change onClick to onMouseEnter",
+							"fixed": true
+						},
+						{
+							"bug": "Possible enhancement by adding bounce and spacing",
+							"fixed": true
+						}
+					],
 					"stagger": [],
 					"draw": []
                 }
@@ -738,7 +757,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "note": "Check for flash. Possibly convert on-inits to states",
+                    "note": {
+						"JO": "Check for flash. Possibly convert on-inits to states"
+					},
 					"stagger": [],
 					"draw": []
                 }
@@ -757,7 +778,12 @@
                 },
                 "notes": {
                     "bugs": [],
-					"stagger": "windows",
+					"stagger": [
+						{
+							"element": "windows",
+							"complete": false
+						}
+					],
 					"draw": []
                 }
             },
@@ -813,9 +839,24 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "@samir Needs binding for fake input + letter animation",
-					"stagger": "character counter",
-					"draw": "border"
+                    "bugs": [
+						{
+							"bug": "@samir Needs binding for fake input + letter animation",
+							"fixed": false
+						}
+					],
+					"stagger": [
+						{
+							"element": "character counter",
+							"fixed": false
+						}
+					],
+					"draw":  [
+						{
+							"element": "border",
+							"fixed": false
+						}
+					]
                 }
 			},
 			"button": {
@@ -833,7 +874,12 @@
                 },
                 "notes": {
                     "bugs": [],
-					"stagger": "borders",
+					"stagger": [
+						{
+							"element": "borders",
+							"fixed": false
+						}
+					],
 					"draw": []
                 }
 			},
@@ -851,8 +897,18 @@
                 },
                 "notes": {
                     "bugs": [],
-					"stagger": "borders",
-					"draw": "check"
+					"stagger": [
+						{
+							"element": "borders",
+							"fixed": false
+						}
+					],
+					"draw": [
+						{
+							"element": "checkmark",
+							"fixed": false
+						}
+					],
                 }
 			},
 			"number": {
@@ -888,7 +944,12 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": "circle"
+					"draw": [
+						{
+							"element": "circle",
+							"fixed": false
+						}
+					],
                 }
 			},
             "search": {
@@ -908,9 +969,19 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "@samir Clicking multiple times shouldn't retrigger opening",
+                    "bugs": [
+						{
+							"bug": "@samir Clicking multiple times shouldn't retrigger opening",
+							"fixed": false
+						}
+					],
 					"stagger": [],
-					"draw": "icon"
+					"draw": [
+						{
+							"element": "icon",
+							"complete": false
+						}
+					]
                 }
             },
 			"toggle": {
@@ -928,8 +999,18 @@
                 },
                 "notes": {
                     "bugs": "Could use retiming with delays",
-					"stagger": "borders",
-					"draw": "borders"
+					"stagger": [
+						{
+							"element": "borders",
+							"fixed": false
+						}
+					],
+					"draw": [
+						{
+							"element": "borders",
+							"fixed": false
+						}
+					]
                 }
 			},
 			"chip": {
@@ -966,7 +1047,12 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": "borders"
+					"draw": [
+						{
+							"element": "borders",
+							"fixed": false
+						}
+					]
                 }
 			}
         },
@@ -984,9 +1070,28 @@
 					"performance": false
 				},
 				"notes": {
-					"bugs": "FIXED &rarr; Check about toggling from the same element. Animations missing updates.",
-					"stagger": "window contents",
-					"draw": "window borders"
+					"bugs": [
+						{
+							"bug": "Check about toggling from the same element",
+							"fixed": false
+						},
+						{
+							"bug": "Animations missing updates",
+							"fixed": true
+						}
+					],
+					"stagger": [
+						{
+							"element": "window contents",
+							"complete": false
+						}
+					],
+					"draw": [
+						{
+							"element": "window borders",
+							"complete": false
+						}
+					]
 				}
 			},
 			"request-card": {
@@ -1023,9 +1128,21 @@
                     "performance": false
                 },
                 "notes": {
-                    "note": "Loading bar is only onclick for demo purposes",
-					"stagger": "items",
-					"draw": "icons"
+                    "note": {
+						"GW": "Loading bar is only onclick for demo purposes"
+					},
+					"stagger": [
+						{
+							"element": "items",
+							"complete": false
+						}
+					],
+					"draw": [
+						{
+							"element": "icons",
+							"complete": false
+						}
+					]
                 }
             },
 			"attachment-tile": {
@@ -1041,9 +1158,19 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Combine doc outline into single simple path (instead of combined path)",
+                    "bugs": [
+						{
+							"bug": "Combine doc outline into single simple path (instead of combined path)",
+							"fixed": false
+						}
+					],
 					"stagger": [],
-					"draw": "icon (see attachment list)"
+					"draw": [
+						{
+							"element": "icon (see attachment list)",
+							"complete": false
+						}
+					]
                 }
             }
 		},
@@ -1062,9 +1189,28 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": "FIXED &rarr; Color dropdown main link needs hover and static fixed",
-					"stagger": "borders, items",
-					"draw": "icon"
+                    "bugs": [
+						{
+							"bug": "Color dropdown main link needs hover and static fixed",
+							"fixed": true
+						}
+					],
+					"stagger": [
+						{
+							"element": "borders",
+							"complete": false
+						},
+						{
+							"element": "items",
+							"complete": false
+						}
+					],
+					"draw": [
+						{
+							"element": "icon",
+							"complete": false
+						}
+					]
                 }
             },
 			"social-bar": {
