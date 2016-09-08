@@ -83,11 +83,12 @@
 		<!-- when-transition-end="p:[opacity:1:0:250:easeOutSine]:delay-1000" -->
 	    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'"></div>
 		<div class="warp-items absolute full-xy top-0 left-0 perspective-container">
-			<div init-with="p:[transform:translateX(200px) rotateX(5deg) rotateY(45deg) rotate(15deg) scale(1), tro:left center]"
-				when-portal-complete="p:[transform:translateX(200px) rotateX(5deg) rotateY(45deg) rotate(15deg) scale(1):translateX(1000px) rotateX(5deg) rotateY(45deg) rotate(15deg) scale(0.2):10000:easeOutSine easeOutSine easeOutSine easeOutSine easeOutSine]">
+			<div class="absolute" init-with="p:[transform:rotate(-45deg) translateX(-500px), tro:center center, top:calc(50% - 200px), left:calc(50% - 200px), width:400px, height:400px]"
+				when-portal-complete="p:[transform:translateZ(0px) rotate(-45deg) translateX(-500px) scale(1):translateZ(-1000px) rotate(-45deg) translateX(-50px) scale(0):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]">
+				<!-- when-portal-complete="p:[transform:translateX(200px) rotateX(5deg) rotateY(45deg) rotate(15deg) scale(1):translateX(1000px) rotateX(5deg) rotateY(45deg) rotate(15deg) scale(0):10000:easeOutSine easeOutSine easeOutSine easeOutSine easeOutCubic]" -->
 				<svg class="hot-dougs" width="400px" height="400px" viewBox="0 0 800 800"
 					init-with="p:[tro:center center]"
-					when-portal-complete="a:[travel-shake:set:(dur:750ms#func:linear#aic:200):in]">
+					on-init="a:[travel-shake:set:(dur:150ms#func:linear#aic:200):in]">
 				    <g fill="none" fill-rule="evenodd">
 				            <path d="M56.494898,245.873874 L557.450235,245.873874 L617.685301,346.451811 C619.109927,349.558911 622.857393,352.965997 626.093707,354.07484 L732.549682,390.549349 C742.216813,393.861553 750.053571,404.834704 750.053571,415.020505 L750.053571,519.944308 L56.494898,519.944308 L56.494898,245.873874 Z" class="hd-truck" stroke="#824221" stroke-width="6.16496599" stroke-linecap="round" stroke-linejoin="round" fill="#E5753C"></path>
 				            <rect class="hd-order-window" stroke="#FFFFFF" stroke-width="6.16496599" stroke-linecap="round" stroke-linejoin="round" fill="#4A5E5E" x="106" y="246" width="262.011054" height="123.177723" rx="12.329932"></rect>
