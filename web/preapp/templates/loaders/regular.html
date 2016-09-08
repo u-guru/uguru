@@ -79,7 +79,7 @@
 
 	<div class="portal-transition"
 	     init-with="p:[op:0, -webkit-clip-path:circle(90px at 50% 50%)]"
-		 when-warp-start="p:[opacity:0:1:250]:delay-750 | s:[warp-open:public:delay-1250]"
+		 when-warp-start="p:[opacity:0:1:50:linear]:delay-750 | s:[warp-open:public:delay-1250]"
 		 when-warp-open="p:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):500:easeInOutCirc] | s:[warp-transition:public]"
 		 when-warp-transition="p:[-webkit-clip-path:none]:delay-1000">
 	    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'"></div>
