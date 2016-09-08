@@ -45,100 +45,215 @@
                 },
                 "states": {
                     "onEnter": {
-						"portal": {
-							"animation": "scaleXIn",
-							"easing": "",
-							"updated": false,
-							"complete": false,
-							"notes": {}
-						},
-						"logo": {
-							"animation": "bounceInUp",
-							"easing": "easeOutBack",
-							"updated": true,
-							"complete": false,
-							"notes": {}
-						},
-						"guru": {
-							"animation": "bounceInUp",
-							"easing": "easeOutBack",
-							"updated": true,
-							"complete": false,
-							"notes": {}
-						}
+						"order": 1,
+						"animations": [
+							{
+								"description": {
+									"element": "portal",
+									"animation": "scaleXIn",
+									"easing": "",
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "logo",
+									"animation": "bounceInUp",
+									"easing": "easeOutBack"
+								},
+								"timing": {
+									"order": 2,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": true,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "guru",
+									"animation": "bounceInUp",
+									"easing": "easeOutBack"
+								},
+								"timing": {
+									"order": 3,
+									"delay": "",
+									"duration": "",
+								},
+								"status": {
+									"updated": true,
+									"complete": false
+								},
+								"notes": {}
+							}
+						]
 					},
                     "onProgressStart": {
-						"ring": {
-							"animation": ["drawIn", "category color transition"],
-							"easing": "linear",
-							"updated": false,
-							"complete": false,
-							"notes": {
-								"GW": "May require a state for each color",
-								"JO": ""
+						"order": 2,
+						"animations": [
+							{
+								"description": {
+									"element": "ring",
+									"animation": ["drawIn", "category color transition"],
+									"easing": "linear"
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "May require a state for each color",
+									"JO": ""
+								}
+							},
+							{
+								"description": {
+									"element": "guru",
+									"animation": "bounce 3x",
+									"easing": ""
+								},
+								"timing": {
+									"order": 2,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "May require 3+ states -or- alternate, but check alternate first",
+									"JO": ""
+								}
 							}
-						},
-						"guru": {
-							"animation": "bounce 3x",
-							"easing": "",
-							"updated": false,
-							"complete": false,
-							"notes": {
-								"GW": "May require 3+ states -or- alternate, but check alternate first",
-								"JO": ""
-							}
-						}
+						]
 					},
 					"onProgressEnd": {
-						"guru": {
-							"animation": "bounceOutDown",
-							"easing": "easeInBack",
-							"updated": true,
-							"complete": false,
-							"notes": {}
-						},
-						"logo": {
-							"animation": "bounceOutDown",
-							"easing": "easeInBack",
-							"updated": true,
-							"complete": false,
-							"notes": {}
-						},
-						"portal": {
-							"animation": "flipOpen",
-							"easing": ["easeOutSine", "easeOutBack", "easeInBack"],
-							"updated": true,
-							"complete": false,
-							"notes": {}
-						}
+						"order": 3,
+						"animations": [
+							{
+								"description": {
+									"element": "guru",
+									"animation": "bounceOutDown",
+									"easing": "easeInBack"
+								},
+								"timing": {
+									"order": 2,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": true,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "logo",
+									"animation": "bounceOutDown",
+									"easing": "easeInBack"
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": true,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "portal",
+									"animation": "flipOpen",
+									"easing": ["easeOutSine", "easeOutBack", "easeInBack"]
+								},
+								"timing": {
+									"order": 3,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": true,
+									"complete": false
+								},
+								"notes": {}
+							}
+						]
 					},
 					"onWarpTransitionStart": {
-						"portal": {
-							"animation": ["clipPathIn", "scaleInUp"],
-							"easing": ["easeInBack", "easeInExpo"],
-							"updated": false,
-							"complete": false,
-							"notes": {
-								"GW": "scaleInUp in the case that clipPathIn isn't cross-platform. See codrops",
-								"JO": "Try easeInOutBack or some -InOut- for a gravitating ease"
-							}
-						},
-						"stars": {
-							"animation": "translateZIn",
-							"easing": "linear",
-							"updated": false,
-							"complete": false,
-							"notes": {
-								"GW": "Check whether prop or class would work better in this case (see HIW clouds)",
-								"JO": "Like the idea of them 'speeding up' as user goes through the portal. Would like a friction transform effect (ex.https://dribbble.com/shots/2535126-Light-Speed, https://dribbble.com/shots/2082444-Stone-Raiders-Light-Test) on either the stars or the chips/text flying through the stars"
-							},
-							"bugs": [
-								{
-									"bug": "Warp fadeIn/fadeOut not behaving as expected - fade is sometimes at the wrong times and you can see the edges",
-									"fixed": false
+						"order": 4,
+						"animations": [
+							{
+								"description": {
+									"element": "portal",
+									"animation": ["clipPathIn", "scaleInUp"],
+									"easing": ["easeInBack", "easeInExpo"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "scaleInUp in the case that clipPathIn isn't cross-platform. See codrops",
+									"JO": "Try easeInOutBack or some -InOut- for a gravitating ease"
 								}
-							]
-						}
+							},
+							{
+								"description": {
+									"element": "stars",
+									"animation": "translateZIn",
+									"easing": "linear"
+								},
+								"timing": {
+									"order": 2,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "Check whether prop or class would work better in this case (see HIW clouds)",
+									"JO": "Like the idea of them 'speeding up' as user goes through the portal. Would like a friction transform effect (ex.https://dribbble.com/shots/2535126-Light-Speed, https://dribbble.com/shots/2082444-Stone-Raiders-Light-Test) on either the stars or the chips/text flying through the stars"
+								},
+								"bugs": [
+									{
+										"bug": "Warp fadeIn/fadeOut not behaving as expected - fade is sometimes at the wrong times and you can see the edges",
+										"fixed": false
+									}
+								]
+							}
+						]
+					},
+					"onWarpTransitionEnd": {
+						"order": 5
 					}
                 }
             }
