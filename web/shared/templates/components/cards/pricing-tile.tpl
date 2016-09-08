@@ -15,7 +15,7 @@
 	<div class="pricing-tile alert" ng-if='activeType === "alert"'
 		init-with="p:[op:0, tro:center center]"
 		on-init="s:[pricing-tile-init:public]"
-		when-pricing-tile-init="a:[frame-enter:set:(dur:1000ms#func:linear):in]"
+		when-pricing-tile-init="a:[frame-enter:set:(dur:1000ms#func:linear):in]">
 		<h3>Our Fees</h3>
 		<h2	init-with="p-op"
 			when-pricing-tile-init="a:[fadeInDown:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-500]">&le; 5%</h2>

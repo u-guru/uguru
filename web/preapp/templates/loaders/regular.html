@@ -41,16 +41,21 @@
 	</div>
 
 	<div class="portal-transition"
-		init-with="p:[op:0, -webkit-clip-path:circle(90px at 50% 50%), tr:translateY(14.5%) translateZ(30px) rotateX(84deg)]"
+		init-with="p:[op:1]"
+		when-warp-start="s:[warp-open:public:delay-1250]"
+		when-warp-open="s:[warp-transition:public]"
+		when-warp-transition="s:[warp-end:public:delay-1000]"
+		when-portal-hover="s:[warp-speed:public:delay-2000]">
+		<!-- init-with="p:[op:0, -webkit-clip-path:circle(90px at 50% 50%), tr:translateY(14.5%) translateZ(30px) rotateX(84deg)]"
 		when-portal-complete="p:[transform:translateY(14.5%) translateZ(30px) rotateX(84deg):translateY(0%) translateZ(25px) rotateX(0deg):900:easeOutSine easeOutSine easeOutSine]:delay-3000"
 		when-warp-start="p:[opacity:0:1:250:easeOutSine] | s:[warp-open:public:delay-1250]"
 		when-warp-open="p:[-webkit-clip-path:circle(90px at 50% 50%):circle(1500px at 50% 50%):500:easeOutSine] | s:[warp-transition:public]"
 		when-warp-transition="p:[-webkit-clip-path:none]:delay-1000 | s:[warp-end:public:delay-1000]"
 		when-portal-hover="s:[warp-speed:public:delay-2000]"
-		when-transition-end="p:[opacity:1:0:250:easeOutSine]:delay-1000">
+		when-transition-end="p:[opacity:1:0:250:easeOutSine]:delay-1000"> -->
 	    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'"></div>
 		<div class="warp-items absolute full-xy top-0 left-0 perspective-container">
-			<div class="absolute"
+			<div class="warp-object absolute"
 				init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(15deg) rotateY(40deg) translateX(0px) scale(0.25)]"
 				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(15deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(15deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-1040">
 				<div class="course-card">
@@ -65,34 +70,145 @@
 				</div>
 			</div>
 
-			<!-- <div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(30deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(30deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(30deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3010"></div>
-			<div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(45deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(45deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(45deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-4060"></div>
-			<div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(90deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(90deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(90deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3270"></div>
-			<div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(135deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(135deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(135deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3000"></div>
-			<div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(180deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(180deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(180deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2420"></div> -->
+			<div class="warp-object absolute"
+			init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(135deg) rotateY(40deg) translateX(0px) scale(0.25)]"
+			when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(135deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(135deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3000">
+				<div class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');">
+					<svg width="240px" height="150px" viewBox="0 0 240 150">
+						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+					</svg>
+					<div class="category-tile-inside">
+						<div class="category-tile-icon">
+							<svg viewBox="0 0 100 100">
+								<path d="M36.6840131,24.07712 C36.6840131,24.07712 36.0504131,27.52832 35.1739331,29.56064 C35.0587331,29.82848 34.7313731,30.08672 34.3838531,30.36128 C33.7704131,30.84608 32.9428931,31.5008 32.7105731,32.67296 C32.5128131,33.67808 32.8862531,34.58048 33.7099331,35.0864 C34.1928131,35.38304 34.8446531,35.53952 35.5934531,35.53952 C36.7579331,35.53952 37.9924931,35.16224 38.7364931,34.5776 C41.1028931,32.72672 42.2596931,29.75744 43.0795331,27.09824 C43.1121731,26.99456 43.2782531,26.43488 43.2782531,26.43488 M46.5652931,31.76 L46.1668931,31.76 C45.0964931,31.76 44.2401731,32.6192 44.2401731,33.67808 L44.2401731,39.44 L46.2868931,39.44 M59.0664131,39.44 L61.0401731,39.44 L61.0401731,33.67808 C61.0401731,32.61152 60.1771331,31.76 59.1134531,31.76 L58.3742531,31.76 M46.2868931,39.44 L46.1899331,42.09824 C46.1899331,46.53248 41.2478531,50.93408 38.5982531,52.04864 C35.0308931,53.55104 34.3560131,58.08128 34.3300931,58.27328 L33.6830531,82.74848 C33.6830531,84.53888 35.1441731,86 36.9403331,86 L60.9000131,86 C62.6971331,86 64.1572931,84.53888 64.1572931,82.74368 L64.1544131,55.16768 C64.1294531,54.84128 63.8808131,51.88448 62.7969731,49.39232 C62.3908931,48.46016 61.7928131,47.42528 61.2148931,46.42496 C60.3124931,44.86208 59.3016131,43.11104 59.3016131,42.18944 C59.3016131,42.11264 59.2065731,41.02208 59.0664131,39.44 M58.3742531,31.76 C58.0843331,28.55744 57.8376131,25.85888 57.8376131,25.85888 L57.9470531,25.81184 C58.5739331,25.54304 60.3720131,25.59296 61.5633731,25.62464 C64.0094531,25.6928 66.2836931,25.75424 67.3819331,24.55232 C67.6862531,24.2192 68.0318531,23.63552 67.9502531,22.75712 L67.9492931,22.05056 L57.4881731,14 L40.4203331,14.18432 L34.8888131,14.18432 C33.3163331,14.18432 32.0376131,15.464 32.0376131,17.03744 L32.0376131,19.96448 C32.0376131,21.56768 33.3105731,22.17824 34.2398531,22.62368 L36.9614531,23.59712 L43.5556931,25.95488 L46.7352131,27.09248 L46.5652931,31.76 M46.2868931,39.44 L59.0664131,39.44 M58.3742531,31.76 L46.5652931,31.76"></path>
+							</svg>
+						</div>
+						<h1>Household</h1>
+						<div class="category-tile-border"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="warp-object width-128 height-128 absolute"
+				init-with="p:[top:calc(50% - 64px), left:calc(50% - 64px), tr:translateZ(-2000px) rotateZ(90deg) rotateY(40deg) scale(0.25)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(90deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(90deg) rotateY(40deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3270">
+				<div class="pf-thumb-128 pf-moola">
+					<div class="top"></div>
+					<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256);"></span>
+				</div>
+			</div>
+
+			<div class="warp-object absolute"
+			init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(45deg) rotateY(40deg) translateX(0px) scale(0.25)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(45deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(45deg) rotateY(40deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-4060">
+				<div class="student-card">
+					<svg viewBox="0 0 240 150">
+						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+					</svg>
+					<div class="school-id-inside">
+						<div class="school-id-top" style="background: #003262;">
+							<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"></span>
+						</div>
+						<div class="school-id-bottom">
+							<div>
+								<h1 class='lettercase'>Marco Polo</h1>
+								<h2>Cal Freshman</h2>
+								<h2>email@school.edu</h2>
+							</div>
+							<h3>
+								<span>SELECTED COURSES</span>
+								<span style="background: #003262;">9</span>
+								<a><span>Edit</span></a>
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="warp-object absolute"
+				init-with="p:[width:240px, height:288px, top:calc(50% - 144px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(30deg) rotateY(40deg) scale(0.25)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(30deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(30deg) rotateY(40deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3010">
+				<div class="pricing-tile alert">
+					<h3>Our Fees</h3>
+					<h2>&le; 5%</h2>
+					<span>Guaranteed Lowest</span>
+					<svg viewBox="0 0 150 200" preserveAspectRatio="none">
+						<path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
+					</svg>
+				</div>
+			</div>
+
+			<div class="warp-object absolute"
+				init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(180deg) rotateY(40deg) scale(0.25)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(180deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(180deg) rotateY(40deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2420">
+				<div class="credit-card-flip">
+					<div class="credit-card">
+						<svg width="240px" height="150px" viewBox="0 0 240 150">
+							<rect fill="none" x="0" y="0" width="240" height="150"></rect>
+						</svg>
+						<div class="credit-card-inside">
+							<div class="credit-card-row">
+								<div class="credit-card-logo">
+									<svg viewBox="0 0 173 56">
+										<path d="M125.303171,2.26822594 C122.544107,1.1835953 118.204787,-9.06250023e-07 112.799192,-9.06250023e-07 C99.0030731,-9.06250023e-07 89.2916783,7.33462425 89.2110692,17.8361474 C89.1232772,25.6033478 96.1410529,29.9362836 101.43172,32.5181675 C106.869239,35.1646982 108.696111,36.8582862 108.674563,39.2246805 C108.637051,42.8441066 104.334444,44.5025778 100.322348,44.5025778 C94.7355823,44.5025778 91.7674135,43.686112 87.1782846,41.6684915 L85.3833366,40.8081295 L83.4319592,52.9050733 C86.6858511,54.4103076 92.7179618,55.7168127 98.9783317,55.7854501 C113.640399,55.7854501 123.167431,48.5402132 123.279166,37.3259783 C123.329447,31.1661702 119.611055,26.4964322 111.558132,22.641564 C106.681683,20.1362986 103.688773,18.4762311 103.723092,15.9398395 C103.726284,13.6931616 106.251502,11.2892562 111.716955,11.2892562 C116.281343,11.2158301 119.585516,12.2669402 122.160217,13.3651387 L123.413248,13.9836735 L125.303171,2.26822594 M60.7321324,54.9841483 L69.4618527,0.941768156 L83.415997,0.941768156 L74.6870748,54.9841483 L60.7321324,54.9841483 M143.883956,35.8239365 C145.040416,32.7176948 149.442788,20.7189185 149.442788,20.7189185 C149.36138,20.8609819 150.592863,17.5879354 151.297594,15.5623338 L152.239363,20.2232925 C152.239363,20.2232925 154.91702,33.1223363 155.468513,35.8239365 L143.883956,35.8239365 L143.883956,35.8239365 L143.883956,35.8239365 Z M161.099175,0.996837703 L150.315121,0.996837703 C146.970245,0.996837703 144.466576,1.95297273 143.001247,5.47662562 L122.278337,55.0033029 L136.934817,55.0033029 C136.934817,55.0033029 139.325953,48.3406858 139.868667,46.8785495 C141.467281,46.8785495 155.708744,46.9064833 157.741529,46.9064833 C158.159738,48.7924157 159.440704,55.0033029 159.440704,55.0033029 L172.392423,55.0033029 L161.099175,0.996837703 L161.099175,0.996837703 L161.099175,0.996837703 Z M49.0254641,0.987260391 L35.3674183,37.8311816 L33.9044838,30.3417232 C31.359313,21.7125646 23.4364813,12.3595209 14.5742748,7.67302263 L27.0694752,54.9370598 L41.837691,54.9282806 L63.8128346,0.987260391 L49.0254641,0.987260391" fill="#FFFFFF"></path>
+										<path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
+									</svg>
+								</div>
+								<div class="credit-card-type">Debit</div>
+							</div>
+							<div class="credit-card-row">
+								<div class="credit-card-number-container">
+									<h4>Card Number</h4>
+									<div class="credit-card-number has-span">
+										<span>
+											<span>&bull;</span>
+											<span>&bull;</span>
+											<span>&bull;</span>
+											<span>&bull;</span>
+
+
+											<span>&bull;</span>
+											<span>&bull;</span>
+											<span>&bull;</span>
+											<span>&bull;</span>
+
+											<span>&bull;</span>
+											<span>&bull;</span>
+											<span>&bull;</span>
+											<span>&bull;</span>
+										</span>
+										<span>1234</span>
+									</div>
+								</div>
+								<div class="credit-card-row">
+									<div>
+										<h4>Valid Thru</h4>
+										<div class="credit-card-number">10/20</div>
+									</div>
+									<div class="credit-card-default">
+										<svg viewBox="0 0 100 100">
+											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
+										</svg>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 			<div class="warp-container truck-container absolute"
 				ng-include="'preapp/templates/loaders/props/truck.html'"
 				init-with="p:[transform:rotate(-45deg) translateX(-500px), tro:center center, top:calc(50% - 200px), left:calc(50% - 200px), width:400px, height:400px]"
-				when-portal-complete="p:[transform:translateZ(0px) rotate(-45deg) translateX(-500px) scale(1):translateZ(-1000px) rotate(-45deg) translateX(-50px) scale(0):750:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]">
+				when-portal-complete="p:[transform:translateZ(0px) rotate(-45deg) translateX(-500px) scale(1):translateZ(-1000px) rotate(-45deg) translateX(-50px) scale(0):750:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]">
 				<!-- when-portal-complete="p:[transform:translateX(200px) rotateX(5deg) rotateY(45deg) rotate(15deg) scale(1):translateX(1000px) rotateX(5deg) rotateY(45deg) rotate(15deg) scale(0):10000:easeOutSine easeOutSine easeOutSine easeOutSine easeOutCubic]" -->
 			</div>
 
 			<div class="warp-container pew-container absolute"
 				ng-include="'preapp/templates/loaders/props/pew.html'"
 				init-with="p:[transform:rotate(50deg) translateX(500px), tro:center center, top:calc(50% - 200px), left:calc(50% - 200px), width:400px, height:400px]"
-				when-portal-complete="p:[transform:translateZ(0px) rotate(50deg) translateX(500px) scale(1):translateZ(-1000px) rotate(40deg) translateX(50px) scale(0):950:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+700]">
+				when-portal-complete="p:[transform:translateZ(0px) rotate(50deg) translateX(500px) scale(1):translateZ(-1000px) rotate(40deg) translateX(50px) scale(0):950:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+700]">
 			</div>
 
 			<div class="warp-container rocket-container absolute"
@@ -102,11 +218,11 @@
 			</div>
 		</div>
 
-		<div class="portal-end full-xy absolute top-0 left-0 z-index-10 bg-slate"
+		<!-- <div class="portal-end full-xy absolute top-0 left-0 z-index-10 bg-slate"
 			init-with="p:[op:0, -webkit-clip-path:circle(0px at 50% 50%), t:-webkit-clip-path 750ms cubic-bezier(1#0#1#0)]"
 			when-warp-end="p:[opacity:0:1:250:easeOutSine] | s:[transition-start:public:delay-500]"
 			when-transition-start="p:[-webkit-clip-path:circle(1500px at 50% 50%)] | s:[transition-end:public]"
 			when-transition-end="p:[-webkit-clip-path:none]:delay-1000">
-		</div>
+		</div> -->
 	</div>
 </div>
