@@ -48,24 +48,35 @@
 		when-portal-hover="s:[warp-speed:public:delay-2000]">
 	    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'"></div>
 		<div class="warp-items absolute full-xy top-0 left-0 perspective-container">
-			<div class="warp-container truck-container absolute"
-				ng-include="'preapp/templates/loaders/props/truck.html'"
-				init-with="p:[transform:rotate(-45deg) translateX(-500px), tro:center center, top:calc(50% - 200px), left:calc(50% - 200px), width:400px, height:400px]"
-				when-portal-complete="p:[transform:translateZ(0px) rotate(-45deg) translateX(-500px) scale(1):translateZ(-1000px) rotate(-45deg) translateX(-50px) scale(0):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]">
-				<!-- when-portal-complete="p:[transform:translateX(200px) rotateX(5deg) rotateY(45deg) rotate(15deg) scale(1):translateX(1000px) rotateX(5deg) rotateY(45deg) rotate(15deg) scale(0):10000:easeOutSine easeOutSine easeOutSine easeOutSine easeOutCubic]" -->
+			<div class="absolute"
+				init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(15deg) rotateY(40deg) translateX(0px) scale(0.25)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(15deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(15deg) rotateY(40deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-1040">
+				<div class="course-card">
+					<svg width="240px" height="150px" viewBox="0 0 240 150">
+						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
+					</svg>
+					<div class="course-card-inside">
+						<h2 style="color: #003262;">BIO 1A</h2>
+						<h1 style="color: #003262;">Introduction to Biology</h1>
+					</div>
+					<div class="course-card-border" style="background: #003262;"></div>
+				</div>
 			</div>
-
-			<div class="warp-container pew-container absolute"
-				ng-include="'preapp/templates/loaders/props/pew.html'"
-				init-with="p:[transform:rotate(50deg) translateX(500px), tro:center center, top:calc(50% - 200px), left:calc(50% - 200px), width:400px, height:400px]"
-				when-portal-complete="p:[transform:translateZ(0px) rotate(50deg) translateX(500px) scale(1):translateZ(-1000px) rotate(40deg) translateX(50px) scale(0):700:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+700]">
-			</div>
-
-			<div class="warp-container rocket-container absolute"
-				ng-include="'preapp/templates/loaders/props/rocket.html'"
-				init-with="p:[transform:rotate(-130deg) translateX(1000px), tro:center center, top:calc(50% - 200px), left:calc(50% - 200px), width:400px, height:400px]">
-				<!-- when-portal-complete="p:[transform:translateZ(0px) rotate(90deg) translateX(500px) scale(1):translateZ(-1000px) rotate(40deg) translateX(50px) scale(0):700:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+700]" -->
-			</div>
+			<!-- <div class="width-64 height-24 bg-cerise round absolute"
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(30deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(30deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(30deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3010"></div>
+			<div class="width-64 height-24 bg-cerise round absolute"
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(45deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(45deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(45deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-4060"></div>
+			<div class="width-64 height-24 bg-cerise round absolute"
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(90deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(90deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(90deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3270"></div>
+			<div class="width-64 height-24 bg-cerise round absolute"
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(135deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(135deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(135deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3000"></div>
+			<div class="width-64 height-24 bg-cerise round absolute"
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(180deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(180deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(180deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2420"></div> -->
 		</div>
 	</div>
 
@@ -80,23 +91,23 @@
 	    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'"></div>
 		<div class="warp-items absolute full-xy top-0 left-0 perspective-container">
 			<div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotate(15deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotate(15deg) translateX(0px) scale(0.25):translateZ(0px) rotate(15deg) translateX(-1000px) scale(1):250:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-1040"></div>
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(15deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(15deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(15deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-1040"></div>
 			<div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotate(30deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotate(30deg) translateX(0px) scale(0.25):translateZ(0px) rotate(30deg) translateX(-1000px) scale(1):250:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3010"></div>
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(30deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(30deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(30deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3010"></div>
 			<div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotate(45deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotate(45deg) translateX(0px) scale(0.25):translateZ(0px) rotate(45deg) translateX(-1000px) scale(1):250:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-4060"></div>
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(45deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(45deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(45deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-4060"></div>
 			<div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotate(90deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotate(90deg) translateX(0px) scale(0.25):translateZ(0px) rotate(90deg) translateX(-1000px) scale(1):250:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3270"></div>
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(90deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(90deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(90deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3270"></div>
 			<div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotate(135deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotate(135deg) translateX(0px) scale(0.25):translateZ(0px) rotate(135deg) translateX(-1000px) scale(1):250:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3000"></div>
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(135deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(135deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(135deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3000"></div>
 			<div class="width-64 height-24 bg-cerise round absolute"
-				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotate(180deg)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotate(180deg) translateX(0px) scale(0.25):translateZ(0px) rotate(180deg) translateX(-1000px) scale(1):250:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2420"></div>
+				init-with="p:[top:calc(50% - 32px), left:calc(50% - 32px), tr:translateZ(-2000px) rotateZ(180deg)]"
+				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(180deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(180deg) translateX(-1500px) scale(1):1500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2420"></div>
 
 			<div class="warp-container truck-container absolute"
 				ng-include="'preapp/templates/loaders/props/truck.html'"
