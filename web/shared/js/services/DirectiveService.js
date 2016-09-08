@@ -992,21 +992,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
 
           var key = kvPairSplit[0];
           var value = kvPairSplit[1];
-          if (type === 'prop' &&  customAnimNameOnly.indexOf(key) > -1) {
-            var animObjIndex = customAnimNameOnly.indexOf(key);
-            var animObj = customAnimations.custom[animObjIndex];
-            var propFrames = PropertyService.parseAnimObjToPropArr(animObj.cssRules);
-            console.log('\n-----------------------\n**', animObj.name, '**\n');
-            for (key in propFrames.props) {
-              var frames = propFrames.props[key];
-              console.log(key, '-' , frames.length, 'frames')
-              for (var i = 0; i < propFrames.props[key].length; i++) {
-                var propObj = propFrames.props[key][i];
-                console.log('|' , propObj.percent + '%', propObj.prop, '==>' ,propObj.value)
-              }
-              console.log('\n------------------------\n')
-            }
-          }
+
 
 
           parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs, i);
@@ -1024,27 +1010,73 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             //   }
             //   parsedPropDict['default'] = true;
             // }
+
+            // if (type === 'prop' &&  customAnimNameOnly.indexOf(key) > -1) {
+            //   var animObjIndex = customAnimNameOnly.indexOf(key);
+            //   var animObj = customAnimations.custom[animObjIndex];
+            //   var propFrames = PropertyService.parseAnimObjToPropArr(animObj.cssRules);
+            //   console.log('\n-----------------------\n**', animObj.name, '**\n');
+            //   for (key in propFrames.props) {
+            //     var frames = propFrames.props[key];
+            //     console.log(key, '-' , frames.length, 'frames')
+            //     for (var i = 0; i < propFrames.props[key].length; i++) {
+            //       var propObj = propFrames.props[key][i];
+            //       console.log('|' , propObj.percent + '%', propObj.prop, '==>' ,propObj.value)
+            //     }
+            //     console.log('\n------------------------\n')
+            //   }
+            //   console.log(parsedPropDict);
+            // }
+
+
             processCustomArgsArray(type, key, value, string_args, parsedPropDict, custom_args, state_name, elem, hasPlayer);
 
           }
 
           if (parsedPropDict.animProp) {
-            hasPlayer = parsedPropDict.animProp.player;
-            var baseDelay = base_dict.delay || 0;
-            var animPropDelay = parsedPropDict.animProp.delay;
-            if (!parsedPropDict.animProp.delay) {
-              var finalCheckDelay = string_args.split(']:');
-              if (finalCheckDelay.length > 1 && finalCheckDelay[1].indexOf('delay-') > -1) {
-                var delayStr = parseInt(finalCheckDelay[1].replace('delay-', ''));
-                parsedPropDict.animProp.delay = delayStr
-                // if ()
+
+            if (type === 'prop' &&  customAnimNameOnly.indexOf(key) > -1) {
+
+              var animPropCopy = parsedPropDict.animProp
+              delete parsedPropDict['animProp']
+
+              var animObjIndex = customAnimNameOnly.indexOf(key);
+              var animObj = customAnimations.custom[animObjIndex];
+              var propFrames = PropertyService.parseAnimObjToPropArr(animObj.cssRules);
+              // console.log('\n-----------------------\n**', animObj.name, '**\n');
+              for (key in propFrames.props) {
+                propName = key;
+                valArr = propFrames.props[key]
+                console.log(propName, valArr)
+
               }
+              // console.log(propFrames.props)
+              // console.log(parsedPropDict);
+            } else {
+
+              hasPlayer = parsedPropDict.animProp.player;
+              var baseDelay = base_dict.delay || 0;
+              var animPropDelay = parsedPropDict.animProp.delay;
+              if (!parsedPropDict.animProp.delay) {
+                var finalCheckDelay = string_args.split(']:');
+                if (finalCheckDelay.length > 1 && finalCheckDelay[1].indexOf('delay-') > -1) {
+                  var delayStr = parseInt(finalCheckDelay[1].replace('delay-', ''));
+                  parsedPropDict.animProp.delay = delayStr;
+                  // if ()
+                }
+              }
+
             }
+
+
             // if (base_dict.delay > 0 && parsedPropDict.animProp.delay === NaN) {
             //   console.log('resolve the delay')
             // }
             // console.log(base_dict, string_args, base_dict, base_dict_key)
           }
+
+
+
           propDict[base_dict_key].push(parsedPropDict);
         }
       }
@@ -1483,10 +1515,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       function runOneAnimation(anim_name, anim_type, delay, scope, elem, custom_args) {
         var animStartCb;
         var animEndCb;
-        console.log(anim_name, anim_type, delay, scope, elem);
+
         if (animType === 'obj') {
           var animObj = AnimationService.getAnimationObjFromAnimationName(anim_name);
-          console.log(animObj)
           if (animObj) {
             if (custom_args.out) {
 

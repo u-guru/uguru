@@ -42,7 +42,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     return resultDict;
   }
 
-  function parseAnimObjToPropArr(css_rules) {
+  function parseAnimObjToPropArr(css_rules, debug) {
     var keyFrames = [];
     var propDictFrames = {};
     for (var i = 0; i < css_rules.length; i++) {
@@ -61,7 +61,16 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         propDictFrames[key].push({prop: key, value: propArr[key], percent:percentInt});
       }
       keyFrames.unshift({percent: percentInt, props:propArr})
-      // console.log(iRule);
+    }
+
+    for (key in keyFrames) {
+      var frames = keyFrames[key];
+      debug && console.log(key, '-' , frames.length, 'frames')
+      for (var i = 0; i < keyFrames[key].length; i++) {
+        var propObj = keyFrames[key][i];
+        debug && console.log('|' , propObj.percent + '%', propObj.prop, '==>' ,propObj.value)
+      }
+      debug && console.log('\n------------------------\n')
     }
 
     // for (property in css_rules) {
@@ -76,7 +85,7 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     //   console.log(kf.keyText)
     // })
     // var resultDict =
-    return {rules: css_rules, props: propDictFrames, kf: keyFrames};
+    return {orig: {rules: css_rules, kf: keyFrames}, props: propDictFrames};
   }
 
   function detectPlaybarControlElem() {
