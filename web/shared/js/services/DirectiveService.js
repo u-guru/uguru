@@ -994,7 +994,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
           var value = kvPairSplit[1];
 
 
-
           parsedPropDict[key] = custom_func(key, value, parsedPropDict, stringPropArgs, i);
 
 
@@ -1028,31 +1027,35 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             //   console.log(parsedPropDict);
             // }
 
-
             processCustomArgsArray(type, key, value, string_args, parsedPropDict, custom_args, state_name, elem, hasPlayer);
+            if (type === 'prop' &&  customAnimNameOnly.indexOf(key) > -1) {
+              var animPropCopy = parsedPropDict.animProp
+              var animObjIndex = customAnimNameOnly.indexOf(key);
+              var animObj = customAnimations.custom[animObjIndex];
+              var propFrames = PropertyService.parseAnimObjToPropArr(animObj.cssRules);
+              var stringsToAdd = [];
+              for (key in propFrames.props) {
+                var valArr = propFrames.props[key];
+                for (var j = 0; j < valArr.length - 1; j++) {
+                  var duration = animPropCopy.duration * (valArr[j + 1].percent - valArr[j].percent)/100;
+                  var delay = animPropCopy.delay + valArr[j].percent*10;
+                  var resultStr = key.replace('rgb', 'rgba') + ':' + valArr[j].value + ':' + valArr[j + 1].value + ':' + duration + ':' + animPropCopy.ease + ':' + delay;
+                  console.log(resultStr)
+                  stringsToAdd.push(resultStr);
+                }
+              }
+              stringsToAdd.forEach(function(prop, i) {
+                  stringPropArgs.push(prop);
+                // stringPropArgs
+              })
+              continue;
+            }
 
           }
 
           if (parsedPropDict.animProp) {
 
-            if (type === 'prop' &&  customAnimNameOnly.indexOf(key) > -1) {
 
-              var animPropCopy = parsedPropDict.animProp
-              delete parsedPropDict['animProp']
-
-              var animObjIndex = customAnimNameOnly.indexOf(key);
-              var animObj = customAnimations.custom[animObjIndex];
-              var propFrames = PropertyService.parseAnimObjToPropArr(animObj.cssRules);
-              // console.log('\n-----------------------\n**', animObj.name, '**\n');
-              for (key in propFrames.props) {
-                propName = key;
-                valArr = propFrames.props[key]
-                console.log(propName, valArr)
-
-              }
-              // console.log(propFrames.props)
-              // console.log(parsedPropDict);
-            } else {
 
               hasPlayer = parsedPropDict.animProp.player;
               var baseDelay = base_dict.delay || 0;
@@ -1065,8 +1068,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
                   // if ()
                 }
               }
-
-            }
 
 
             // if (base_dict.delay > 0 && parsedPropDict.animProp.delay === NaN) {
@@ -1094,12 +1095,14 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
       if (areCustomArgsPropertyAnimation(type, arg_dict)) {
 
         var startArgs = arg_dict[split_key];
-        var customArgs = arg_dict['custom']
-        var endArgs = split_value
+        var customArgs = arg_dict['custom'];
+        var endArgs = split_value;
 
 
         delete arg_dict['default'];
         delete arg_dict['custom'];
+        delete arg_dict['group']
+
 
         if ((orig_str.indexOf('rgba') > -1 || orig_str.indexOf(':#') > -1) && ('background' in arg_dict || 'background-color' in arg_dict ))  {
           var endArgsReconstruct = customArgs.split('):')
@@ -1126,20 +1129,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         customArgs && customArgs.split(':').filter(function(a) {return a.length}).forEach(function(a) {arg_arr.push(a)})
 
         arg_dict.animProp = PropertyService.getFrameAnimationFunc(elem, propName, arg_arr, state_name, hasDefault, hasPlayer);
-
+        console.log(arg_dict.animProp)
       }
-      if (arg_dict.default && type === 'prop' ) {
 
-        delete arg_dict['default'];
-        delete arg_dict['custom'];
-        // arg_dict.animProp
-        console.log(split_key, split_value, orig_str)
-        // var propName = split_key;
-        // propDict.animProp = PropertyService.getFrameAnimationFunc(propName, arg_arr, state_name, hasDefault);
-        // console.log(arg_dict, hasDefault)
-        // console.log(split_key, split_value, hasDefault);
-        // console.log('apply default arg to opacity', split_key, split_value, arg_dict, true)
-      }
 
       function areCustomArgsPropertyAnimation(type, arg_dict) {
         return type === 'prop' && 'custom' in arg_dict && arg_dict.custom.length && arg_dict.custom.split(':').length > 1

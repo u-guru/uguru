@@ -40,23 +40,31 @@ function CompService($timeout) {
         }
         items.forEach(function(i, index) {console.log(i)})
     }
-    console.log(items)
 
     // console.log(dim.rows, dim.columns);
     return items;
   }
 
 
-  function getCompTemplateType(element, attr) {
-    var base = "<div class='flex-wrap-center full-xy absolute'></div>"
-
-
-    return base;
+  function getCompTemplateType(element_type, type_elem) {
+    return function(element, attr) {
+      var defaultCompRoutes = {
+        'grid': "<div class='flex-wrap-center full-xy absolute'></div>",
+        'letter': "shared/templates/components/base/text/letter.tpl"
+      }
+      if (element_type && type_elem) {
+        return defaultCompRoutes[element_type + '.' + type_elem]
+      }
+      else if (element_type && !type_elem) {
+        return defaultCompRoutes[element_type]
+      }
+      return defaultCompRoutes[element_type]
+    }
   }
 
-  function getOptionSpec(name) {
+  // function getOptionSpec(name) {
 
-  }
+  // }
 
   function getBaseSpec(name) {
     return {

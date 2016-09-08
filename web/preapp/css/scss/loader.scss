@@ -357,10 +357,6 @@
 }
 
 /*-- WARP */
-$numberOfRings: 30; // sync with HTML
-$numberOfStripes: 24; // sync with HTML
-$animationDuration: 8s;
-
 .portal-up {
 	animation: warp-transition 2500ms ease-out forwards;
 }
@@ -386,46 +382,70 @@ $animationDuration: 8s;
 }
 
 .warp {
-	position: absolute;
-	width: 200px;
-	height: 200px;
-	top: 50%;
-	left: 50%;
-	margin-left: -100px;
-	margin-top: -100px;
-	transform-origin: center center;
-	transform: scale(1.5);
-	.ring {
+	@include flex;
+	@include flex-center;
+	-webkit-perspective: 5px;
+	perspective: 5px;
+	-webkit-perspective-origin: 50% 50%;
+	perspective-origin: 50% 50%;
+	position: relative;
+	.wrap {
 		position: absolute;
-		width: 200px;
-		height: 200px;
-		.stripe {
-			@include flex;
-			@include flex-center;
-			border-radius: 1000px;
+		width: 1000px;
+		height: 1000px;
+		left: -500px;
+		top: -500px;
+		transform-style: preserve-3d;
+		// opacity: 0;
+		// animation: warp-image 12s linear infinite forwards;
+		// &:nth-child(2) {
+		// 	animation-delay: 6s;
+		// }
+		.wall {
+			background: url(http://apod.nasa.gov/apod/image/0512/perseusCluster_crawford_f.jpg);
+			background-size: cover;
+			width: 100%;
+			height: 100%;
 			position: absolute;
-			height: 2px;
-			width: 20px;
-			left: 90px;
-			top: 99px;
-			background: #fff;
+		}
+
+		.wall-right {
+			transform: rotateY(90deg) translateZ(500px);
+		}
+
+		.wall-left {
+			transform: rotateY(-90deg) translateZ(500px);
+		}
+
+		.wall-top {
+			transform: rotateX(90deg) translateZ(500px);
+		}
+
+		.wall-bottom {
+			transform: rotateX(-90deg) translateZ(500px);
+		}
+
+		.wall-back {
+			transform: rotateX(180deg) translateZ(500px);
 		}
 	}
-	@for $i from 1 through $numberOfRings {
-		$nullbase1: $i - 1;
-		$timeOffset: $nullbase1 * ($animationDuration / $numberOfRings) * -1;
-		.ring-#{$i} {
-			animation: ring $animationDuration cubic-bezier(.98,.02,.97,.12) $timeOffset infinite;
-			@for $j from 1 through $numberOfStripes {
-				$nullBase2: $j - 1;
-				$degree: ((360 / $numberOfStripes) * $nullBase2) - (random() * 10);
-				$offset: 100 - (random() * 40);
-				.stripe-#{$j} {
-					transform: rotate(($degree)+deg) translate3d(($offset)+px, 0, 0) scaleX(($offset / 100));
-				}
-			}
-		}
-	}
+}
+
+@keyframes warp-image {
+  0%{
+    transform: translateZ(-500px);
+    opacity: 0;
+  }
+  25%{
+    opacity: 1;
+  }
+  75%{
+    opacity: 1;
+  }
+  100%{
+    transform: translateZ(500px);
+    opacity: 0;
+  }
 }
 
 @keyframes ring {

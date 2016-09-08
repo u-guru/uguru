@@ -1,13 +1,50 @@
 angular.module('uguru.shared.directives.base.components', []);
 angular.module('uguru.shared.directives.base.components')
-
+    .directive("letter", ["CompService", "$compile", function(CompService, $compile) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            templateUrl:CompService.getCompTemplateType('letter'),
+            compile: function(element, attr, transclude) {
+                return {
+                    pre:
+                    function (lScope, lElem, lAttr) {
+                         transclude(lScope, function(clone, innerScope) {
+                            lElem[0].innerHTML = clone[0].innerHTML;
+                            $compile(lElem)(innerScope);
+                        })
+                    }
+                }
+            }
+        }
+    }])
+    .directive("l", ["CompService", "$compile", function(CompService, $compile) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            templateUrl:CompService.getCompTemplateType('letter'),
+            compile: function(element, attr, transclude) {
+                return {
+                    pre:
+                    function (lScope, lElem, lAttr) {
+                         transclude(lScope, function(clone, innerScope) {
+                            lElem[0].innerHTML = clone[0].innerHTML;
+                            $compile(lElem)(innerScope);
+                        })
+                    }
+                }
+            }
+        }
+    }])
     .directive("grid", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
             replace:true,
             transclude:true,
             priority: 100,
-            template: CompService.getCompTemplateType,
+            template: CompService.getCompTemplateType('grid'),
             compile: function(element, attr, transclude) {
 
                 var dimArr = CompService.getAndParseDimensions(attr.d);
@@ -23,20 +60,22 @@ angular.module('uguru.shared.directives.base.components')
                                     }
                                 }
                                 for (var i = 0; i < dimArr.length; i++) {
-                                    console.log(i);
                                     var iChild = childArr[i % childArr.length];
                                     iChild.style.width= dimArr[childArr.length].width + '%';
                                     iChild.style.height = dimArr[childArr.length].height + '%';
-                                    lElem.append(iChild.cloneNode(true))
+                                    var cloneNode = iChild.cloneNode(true);
+                                    $compile(cloneNode)(innerScope);
+                                    lElem.append(cloneNode)
+
+                                    $compile(lScope)(lElem)
+
                                 }
+                                console.log('grid has transcluded')
                             })
-
-
-
-
-
+                            console.log('grid has compiled')
 
                     }
+
                 }
             }
         }
