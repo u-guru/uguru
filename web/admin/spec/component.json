@@ -70,9 +70,15 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "card number and bullets",
+							"type": "letter",
+							"description": "stamp effect",
+							"complete": false
+						},
+						{
+							"element": "valid thru date",
+							"type": "letter",
+							"description": "stamp effect",
 							"complete": false
 						}
 					]
@@ -101,9 +107,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "text",
+							"type": "line",
+							"description": "fadeInUp",
 							"complete": false
 						}
 					]
@@ -133,9 +139,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "Name and school",
+							"type": "line",
+							"description": "Stagger",
 							"complete": false
 						}
 					]
@@ -158,14 +164,7 @@
                     "bugs": [],
 					"stagger": [],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
 			"profile-widget": {
