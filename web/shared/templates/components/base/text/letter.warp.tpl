@@ -1,1 +1,1 @@
-<span></span>
+<span class="block"></span>
