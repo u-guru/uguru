@@ -42,6 +42,106 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("paragraph", ["CompService", "$compile", "UtilitiesService", function(CompService, $compile, UtilitiesService) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            templateUrl:CompService.getCompTemplateType('letter'),
+            compile: function(element, attr, transclude) {
+
+                return {
+                    pre:
+                        function (lScope, lElem, lAttr) {
+                            var tpl = lElem
+                            var delay = 0;
+                            if (!('keep' in attr)) {
+                                lElem = lElem.parent().html('');
+                            }
+                            if ('delay' in attr && attr.delay.length) {
+                                delay = parseInt(attr.delay);
+                            }
+
+                            transclude(lScope, function(clone, innerScope) {
+
+                                var words = clone[0].innerHTML;
+                                var wordArr = (words && words.length && words.split(' ')) || []
+                                var wordCloudDiv = '<div class="flex-wrap">'
+                                wordArr.forEach(function(wd, i) {wordCloudDiv += '<span>' + wd + '</span>&nbsp;'});
+                                wordCloudDiv += '</div>'
+                                wordCloudDiv = angular.element(wordCloudDiv);
+                                $compile(wordCloudDiv)(innerScope);
+
+
+
+                                lElem.css('visibility', 'hidden');
+                                lElem.append(wordCloudDiv);
+                                var uniqueSpans = lElem[0].firstChild.children
+                                var lineDict = {};
+                                for (var i = 0; i < uniqueSpans.length; i++) {
+                                    var iSpan = uniqueSpans[i];
+                                    var rectTop = parseInt(iSpan.getBoundingClientRect().top);
+                                    if (!(rectTop in lineDict)) {
+                                        lineDict[rectTop] = [];
+                                    }
+                                    lineDict[rectTop].push(iSpan.innerHTML)
+                                }
+                                var lineWordArr = [];
+                                wordCloudDiv.html('')
+                                lElem.css('visibility', 'visible');
+                                var index = 0;
+                                for (key in lineDict) {
+                                    var lineClone = tpl.clone();
+                                    var sentence = lineDict[key].join(" ")
+
+                                    lineClone.html('');
+
+                                    if (delay) {
+                                        CompService.applyDelayToWord(lineClone, delay * index);
+                                    }
+
+                                    lineClone[0].innerHTML = sentence
+
+                                    $compile(lineClone)(innerScope);
+                                    lElem.children().append(lineClone);
+                                    index++;
+                                }
+                                // console.log(lineWordArr)
+                                // var count = UtilitiesService.countAndSplitLines(clone[0])
+                                // lElem.remove(clone);
+                                // console.log(count)
+
+                                // console.log()
+                                // var textStr = clone[0];
+
+                                // $compile(lElem[0])(lScope);
+                                // for (var i = 0; i < textStr.length; i++) {
+                                //     var iChild = textStr[i]
+                                //     if (i < textStr.length - 1) {
+                                //         iChild += '&nbsp;';
+                                //     }
+                                //     var cloneLetter = tpl.clone();
+                                //     if (delay) {
+                                //         CompService.applyDelayToWord(cloneLetter, delay * i);
+                                //     }
+                                //     cloneLetter.html(iChild);
+                                //     $compile(cloneLetter)(innerScope)
+                                //     lElem.append(cloneLetter);
+                                // }
+
+                                // if ('keep' in attr ) {
+                                //     keepContainer = angular.element('<div></div>');
+                                //     lElem.parent().append(keepContainer);
+                                //     var children = lElem.contents();
+                                //     lElem.replaceWith(keepContainer)
+                                //     keepContainer.append(children);
+                                // }
+                            })
+                        }
+                    }
+                }
+            }
+    }])
     .directive("sentence", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
@@ -77,9 +177,13 @@ angular.module('uguru.shared.directives.base.components')
                                     $compile(cloneLetter)(innerScope)
                                     lElem.append(cloneLetter);
                                 }
-                                // cloneLetter.html(iChild);
-                                // $compile(cloneLetter)(innerScope)
-                                // lElem.append(cloneLetter);
+                                if ('keep' in attr ) {
+                                    keepContainer = angular.element('<div></div>');
+                                    lElem.parent().append(keepContainer);
+                                    var children = lElem.contents();
+                                    lElem.replaceWith(keepContainer)
+                                    keepContainer.append(children);
+                                }
                             })
                         }
                     }
