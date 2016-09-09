@@ -60,10 +60,13 @@ angular.module('uguru.shared.directives.base.components')
                         if ('delay' in attr && attr.delay.length) {
                             delay = parseInt(attr.delay);
                         }
+
                         transclude(lScope, function(clone, innerScope) {
                             var childArr = [];
                             var textStr = clone.html();
+
                             for (var i = 0; i < textStr.length; i++) {
+
                                 var iChild = textStr.charAt(i);
                                 if (iChild === ' ') {
                                     iChild += '&nbsp;';
@@ -75,6 +78,14 @@ angular.module('uguru.shared.directives.base.components')
                                 cloneLetter.html(iChild);
                                 $compile(cloneLetter)(innerScope)
                                 lElem.append(cloneLetter);
+                            }
+                            if ('keep' in attr ) {
+                                keepContainer = angular.element('<div></div>');
+                                lElem.parent().append(keepContainer);
+                                var children = lElem.contents();
+                                lElem.replaceWith(keepContainer)
+                                keepContainer.append(children);
+
                             }
                         })
                     }
