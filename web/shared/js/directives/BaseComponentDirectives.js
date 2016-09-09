@@ -42,7 +42,51 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive("word", ["CompService", "$compile", function(CompService, $compile) {
+    .directive("sentence", ["CompService", "$compile", function(CompService, $compile) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            templateUrl:CompService.getCompTemplateType('letter'),
+            compile: function(element, attr, transclude) {
+                return {
+                    pre:
+                        function (lScope, lElem, lAttr) {
+                            var tpl = lElem
+                            var delay = 0;
+                            if (!('keep' in attr)) {
+                                lElem = lElem.parent().html('');
+                            }
+                            if ('delay' in attr && attr.delay.length) {
+                                delay = parseInt(attr.delay);
+                            }
+                            transclude(lScope, function(clone, innerScope) {
+                                var wordArr = [];
+
+                                var textStr = clone.html().split(' ');
+                                for (var i = 0; i < textStr.length; i++) {
+                                    var iChild = textStr[i]
+                                    if (i < textStr.length - 1) {
+                                        iChild += '&nbsp;';
+                                    }
+                                    var cloneLetter = tpl.clone();
+                                    if (delay) {
+                                        CompService.applyDelayToWord(cloneLetter, delay * i);
+                                    }
+                                    cloneLetter.html(iChild);
+                                    $compile(cloneLetter)(innerScope)
+                                    lElem.append(cloneLetter);
+                                }
+                                // cloneLetter.html(iChild);
+                                // $compile(cloneLetter)(innerScope)
+                                // lElem.append(cloneLetter);
+                            })
+                        }
+                    }
+                }
+            }
+    }])
+.directive("word", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
             replace: true,
@@ -85,7 +129,6 @@ angular.module('uguru.shared.directives.base.components')
                                 var children = lElem.contents();
                                 lElem.replaceWith(keepContainer)
                                 keepContainer.append(children);
-
                             }
                         })
                     }
