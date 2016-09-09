@@ -1129,7 +1129,6 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
         customArgs && customArgs.split(':').filter(function(a) {return a.length}).forEach(function(a) {arg_arr.push(a)})
 
         arg_dict.animProp = PropertyService.getFrameAnimationFunc(elem, propName, arg_arr, state_name, hasDefault, hasPlayer);
-        console.log(arg_dict.animProp)
       }
 
 

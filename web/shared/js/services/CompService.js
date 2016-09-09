@@ -12,7 +12,18 @@ function CompService($timeout) {
     getBaseSpec: getBaseSpec,
     getOptions: getOptions,
     getCompTemplateType: getCompTemplateType,
-    getAndParseDimensions: getAndParseDimensions
+    getAndParseDimensions: getAndParseDimensions,
+    applyDelayToWord: applyDelayToWord
+  }
+
+  function applyDelayToWord(elem, delay) {
+    var elemAttr = elem[0].attributes;
+    for (var i = 0; i <  elemAttr.length; i++) {
+      var iValue = elemAttr[i].value;
+      if (iValue && iValue.indexOf('p:[') > -1) {
+        elemAttr[i].value = elemAttr[i].value + ':delay-' + delay;
+      }
+    }
   }
 
   function getAndParseDimensions(dim) {
@@ -54,7 +65,6 @@ function CompService($timeout) {
         'grid': "<div class='flex-wrap-center full-xy absolute'></div>",
         'letter': "shared/templates/components/base/text/letter." + type + "tpl"
       }
-      console.log(attr.type, defaultCompRoutes)
       if (element_type && type_elem) {
         return defaultCompRoutes[element_type + '.' + type_elem]
       }
