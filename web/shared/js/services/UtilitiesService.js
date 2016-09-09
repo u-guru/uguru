@@ -43,7 +43,32 @@ function UtilitiesService($rootScope, $compile, $timeout) {
         compileToAngular: compileToAngular,
         initSupport: initSupport,
         calcScrollOffset: calcScrollOffset,
-        addClassToElemDelay: addClassToElemDelay
+        addClassToElemDelay: addClassToElemDelay,
+        countAndSplitLines: countAndSplitLines
+    }
+
+    function countAndSplitLines(elem) {
+        var style = window.getComputedStyle(elem, null);
+          var height = parseInt(style.getPropertyValue("height"));
+          var font_size = parseInt(style.getPropertyValue("font-size"));
+          var line_height = parseInt(style.getPropertyValue("line-height"));
+          var box_sizing = style.getPropertyValue("box-sizing");
+
+          if(isNaN(line_height)) line_height = font_size * 1.2;
+
+          if(box_sizing=='border-box')
+          {
+            var padding_top = parseInt(style.getPropertyValue("padding-top"));
+            var padding_bottom = parseInt(style.getPropertyValue("padding-bottom"));
+            var border_top = parseInt(style.getPropertyValue("border-top-width"));
+            var border_bottom = parseInt(style.getPropertyValue("border-bottom-width"));
+            height = height - padding_top - padding_bottom - border_top - border_bottom
+          }
+          console.log(height / font_size)
+          var lines = height/(font_size);
+          console.log(elem.getBoundingClientRect().width, font_size)
+
+          return lines;
     }
 
     function addClassToElemDelay(elem, _class, delay) {
