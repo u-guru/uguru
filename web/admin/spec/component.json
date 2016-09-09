@@ -24,7 +24,21 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "short name",
+							"type": "letter",
+							"description": "fadeIn or bounceInUp",
+							"complete": false
+						},
+						{
+							"element": "course name",
+							"type": "line",
+							"description": "fadeInUp",
+							"complete": false
+						}
+					]
                 }
             },
             "credit-card": {
@@ -53,7 +67,21 @@
 							"complete": true
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "card number and bullets",
+							"type": "letter",
+							"description": "stamp effect",
+							"complete": false
+						},
+						{
+							"element": "valid thru date",
+							"type": "letter",
+							"description": "stamp effect",
+							"complete": false
+						}
+					]
                 }
             },
 			"faq-card": {
@@ -76,7 +104,15 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "fadeInUp",
+							"complete": false
+						}
+					]
                 }
             },
             "profile-card": {
@@ -100,7 +136,15 @@
 							"complete": true
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "Name and school",
+							"type": "line",
+							"description": "Stagger",
+							"complete": false
+						}
+					]
                 }
             },
             "profile-thumb": {
@@ -119,12 +163,13 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
             },
 			"profile-widget": {
                 "filename": "profile-widget.tpl",
-				"versions": ["stagger"],
+				"versions": ["stagger", "SM-090916"],
                 "contact": "JO",
                 "status": {
                     "static": true,
@@ -137,7 +182,15 @@
                 "notes": {
                     "bugs": [],
 					"stagger": "rating",
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						}
+					]
                 }
             },
             "student-card": {
@@ -161,7 +214,21 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						},
+						{
+							"element": "'Content can go here.'",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						}
+					]
                 }
             },
 			"team-card": {
@@ -184,7 +251,21 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "name",
+							"type": "letter",
+							"description": "fadeIn stagger",
+							"complete": false
+						},
+						{
+							"element": "line",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						}
+					]
                 }
             },
 			"timeline-card": {
@@ -213,7 +294,27 @@
 							"complete": true
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "header",
+							"type": "letter",
+							"description": "Slide in direction dependent",
+							"complete": false
+						},
+						{
+							"element": "description",
+							"type": "paragraph",
+							"description": "fadeInUp",
+							"complete": false
+						},
+						{
+							"element": "attribution",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						}
+					]
                 }
             },
             "university-card": {
@@ -241,7 +342,15 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": true
+						}
+					]
                 }
             },
 			"album-tile": {
@@ -257,6 +366,9 @@
                     "performance": false
                 },
                 "notes": {
+					"note": {
+						    "GW": "Try swingout for genre container"
+					},
                     "bugs": [
 						{
 							"bug": "Change translate down to swing like the dropdown",
@@ -269,7 +381,15 @@
 							"complete": true
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "platlist name",
+							"type": "letter",
+							"description": "down",
+							"complete": false
+						}
+					]
                 }
             },
 			"calendar-tile": {
@@ -287,7 +407,15 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": true
+						}
+					]
                 }
             },
             "category-tile": {
@@ -320,7 +448,8 @@
 							"element": "icon",
 							"complete": false
 						}
-					]
+					],
+					"lettering": []
                 }
             },
 			"credit-tile": {
@@ -345,6 +474,20 @@
 							"element": "icon",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "package",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "credits",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						}
 					]
                 }
             },
@@ -363,7 +506,21 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "header",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "description",
+							"type": "line",
+							"description": "",
+							"complete": false
+						}
+					]
                 }
             },
             "money-tile": {
@@ -382,7 +539,15 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
                 }
             },
             "pricing-tile": {
@@ -406,7 +571,15 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "Number in circle",
+							"type": "letter",
+							"description": "Countup",
+							"complete": false
+						}
+					]
                 }
             },
             "profile-cardlet": {
@@ -437,7 +610,15 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "Animated titles",
+							"type": "line",
+							"description": "Category specific",
+							"complete": false
+						}
+					]
                 }
             },
 			"profile-tile": {
@@ -484,7 +665,15 @@
 							"complete": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "Animated titles",
+							"type": "line",
+							"description": "Category specific",
+							"complete": false
+						}
+					]
                 }
             },
 			"ranking-tile": {
@@ -516,6 +705,20 @@
 							"element": "icons",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "Stats",
+							"type": "letter",
+							"description": "Countup",
+							"complete": false
+						},
+						{
+							"element": "titles",
+							"type": "word",
+							"description": "upward",
+							"complete": false
+						}
 					]
                 }
             },
@@ -532,9 +735,17 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ,
+                    "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "playlist name",
+							"type": "line",
+							"description": "bounceInUp",
+							"complete": true
+						}
+					]
                 }
             }
         },
@@ -559,7 +770,8 @@
 							"complete": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
             },
 			"numbered-list": {
@@ -582,7 +794,8 @@
 							"complete": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
             },
 			"sidebar-list": {
@@ -605,7 +818,8 @@
 							"complete": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
             }
         },
@@ -625,7 +839,8 @@
                 "notes": {
                     "note": "Upward motion enhancement",
 					"stagger": "bubbles",
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
             },
 			"projector": {
@@ -643,7 +858,8 @@
                 "notes": {
                     "note": "Revisit animation",
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
             },
             "ticket": {
@@ -665,7 +881,15 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
                 }
             }
         },
@@ -695,7 +919,8 @@
 							"element": "icon",
 							"complete": false
 						}
-					]
+					],
+					"lettering": []
                 }
             },
 			"timeline-icon": {
@@ -722,7 +947,15 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "letter",
+							"description": "bounce out direction dependent",
+							"complete": false
+						}
+					]
                 }
             },
 			"user-icon": {
@@ -741,7 +974,15 @@
 				"notes": {
 					"bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
 				}
 			},
 			"wallet": {
@@ -761,7 +1002,15 @@
 						"JO": "Check for flash. Possibly convert on-inits to states"
 					},
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "titles",
+							"type": "letter",
+							"description": "stagger in left",
+							"complete": false
+						}
+					]
                 }
             },
 			"window-small": {
@@ -784,7 +1033,8 @@
 							"complete": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
             },
 			"window": {
@@ -802,7 +1052,8 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
             }
         },
@@ -823,7 +1074,15 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "focused text",
+							"type": "letter",
+							"description": "typing with cursor",
+							"complete": false
+						}
+					]
                 }
 			},
 			"border": {
@@ -856,6 +1115,14 @@
 							"element": "border",
 							"fixed": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "focused text",
+							"type": "letter",
+							"description": "typing with cursor",
+							"complete": false
+						}
 					]
                 }
 			},
@@ -880,7 +1147,8 @@
 							"fixed": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
 			},
 			"checkbox": {
@@ -909,6 +1177,7 @@
 							"fixed": false
 						}
 					],
+					"lettering": []
                 }
 			},
 			"number": {
@@ -926,7 +1195,8 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
 			},
 			"radio": {
@@ -950,6 +1220,7 @@
 							"fixed": false
 						}
 					],
+					"lettering": []
                 }
 			},
             "search": {
@@ -981,6 +1252,14 @@
 							"element": "icon",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "focused text",
+							"type": "letter",
+							"description": "typing with cursor",
+							"complete": false
+						}
 					]
                 }
             },
@@ -1010,7 +1289,8 @@
 							"element": "borders",
 							"fixed": false
 						}
-					]
+					],
+					"lettering": []
                 }
 			},
 			"chip": {
@@ -1029,7 +1309,8 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
 			},
 			"ghost-tag": {
@@ -1052,7 +1333,8 @@
 							"element": "borders",
 							"fixed": false
 						}
-					]
+					],
+					"lettering": []
                 }
 			}
         },
@@ -1091,6 +1373,14 @@
 							"element": "window borders",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "message",
+							"type": "line",
+							"description": "stagger up",
+							"complete": false
+						}
 					]
 				}
 			},
@@ -1109,7 +1399,21 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "request type and title",
+							"type": "line",
+							"description": "stagger upwards",
+							"complete": false
+						},
+						{
+							"element": "Info and stat",
+							"type": "paragraph",
+							"description": "",
+							"complete": false
+						}
+					]
                 }
             }
 		},
@@ -1142,7 +1446,8 @@
 							"element": "icons",
 							"complete": false
 						}
-					]
+					],
+					"lettering": []
                 }
             },
 			"attachment-tile": {
@@ -1168,6 +1473,20 @@
 					"draw": [
 						{
 							"element": "icon (see attachment list)",
+							"complete": false
+						}
+					],
+					"lettering": [
+						{
+							"element": "title",
+							"type": "line",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "description",
+							"type": "paragraph",
+							"description": "",
 							"complete": false
 						}
 					]
@@ -1210,7 +1529,8 @@
 							"element": "icon",
 							"complete": false
 						}
-					]
+					],
+					"lettering": []
                 }
             },
 			"social-bar": {
@@ -1228,7 +1548,8 @@
                 "notes": {
                     "bugs": [],
 					"stagger": "links",
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
             },
             "tile-group": {
@@ -1247,7 +1568,8 @@
                 "notes": {
                     "bugs": [],
 					"stagger": "borders, items",
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
             }
         },
@@ -1268,7 +1590,8 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
 			},
 			"popup": {
@@ -1290,7 +1613,15 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": "circle"
+					"draw": "circle",
+					"lettering": [
+						{
+							"element": "Guru header",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"toast": {
@@ -1309,7 +1640,15 @@
                 "notes": {
                     "note": "Toast with any action should have a confirmation/success state",
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "text",
+							"type": "line",
+							"description": "fadeIn direction dependent",
+							"complete": false
+						}
+					]
                 }
 			},
 			"tooltip": {
@@ -1328,7 +1667,8 @@
                 "notes": {
                     "note": "Revisit when there is custom timing. Easings available are too snappy/stiff. Trying to find timing similar to cubic-bezier(.71,.06,.47,.63)",
 					"stagger": "borders",
-					"draw": []
+					"draw": [],
+					"lettering": []
                 }
 			}
 		},
@@ -1348,7 +1688,15 @@
                 "notes": {
                     "note": "",
 					"stagger": [],
-					"draw": "indicator (must be able to use decimals)"
+					"draw": "indicator (must be able to use decimals)",
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"numerical-progress": {
@@ -1364,9 +1712,19 @@
                     "performance": false
                 },
                 "notes": {
-                    "note": "@samir Should be binding so that it goes step to step in one direction.",
+                    "note": {
+						"GW": "@samir Should be binding so that it goes step to step in one direction."
+					},
 					"stagger": "steps",
-					"draw": "progress completion"
+					"draw": "progress completion",
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"rating": {
@@ -1383,8 +1741,21 @@
                 },
                 "notes": {
                     "bugs": [],
-					"stagger": "rating",
-					"draw": []
+					"stagger": [
+						{
+							"element": "rating",
+							"complete": true
+						}
+					],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"description": "",
+							"complete": false
+						}
+					]
                 }
 			}
 		},
@@ -1404,7 +1775,21 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "Three lines or less",
+							"type": "line",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "four lines or more",
+							"type": "paragraph",
+							"description": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"header": {
@@ -1421,8 +1806,21 @@
                 },
                 "notes": {
                     "bugs": [],
-					"stagger": "FINISHED &rarr; letters",
-					"draw": []
+					"stagger": [
+						{
+							"element": "letters",
+							"complete": true
+						}
+					],
+					"draw": [],
+					"lettering": [
+						{
+							"element": "header",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						}
+					]
                 }
 			}
 		}
