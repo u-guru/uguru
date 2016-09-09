@@ -29,13 +29,9 @@
             -->
 
             <!-- Ex 1. See reference above-->
-<<<<<<< HEAD
 
 
 			<stagger-children on-enter="[border-frame]:+500" when-green-button-clicked="[border-frame]:2000" >
-=======
-			<stagger-children on-enter="[border-frame]:+500" when-green-button-clicked="[border-frame]:1500" >
->>>>>>> 845db2123f82f19d44a0895e98e5bb2378e2d2db
 				<div class="top"
                     init-with="p:[tr:scaleX(0), tro:center center]"
                     on-init="trigger:[on-enter:self]"
