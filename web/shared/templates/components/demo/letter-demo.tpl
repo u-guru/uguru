@@ -91,6 +91,74 @@
 					</div>
 				</div>
 			</li>
+			<li class="flex-wrap">
+				<h3 class="txt-18 semibold m05bottom full-x">squishLeft</h3>
+				<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+					<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+						<word type='squishLeft' delay="50" >The quick brown fox jumps over the lazy dog.</word>
+					</div>
+				</div>
+			</li>
+			<li class="flex-wrap">
+				<h3 class="txt-18 semibold m05bottom full-x">squishBounce</h3>
+				<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+					<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+						<word type='squishBounce' delay="150" >The quick brown fox jumps over the lazy dog.</word>
+					</div>
+				</div>
+			</li>
+			<li class="flex-wrap">
+				<h3 class="txt-18 semibold m05bottom full-x">Problematic Kerning (PK): bubbly</h3>
+				<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+					<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+						<span>b</span>
+						<span>u</span>
+						<span>b</span>
+						<span>b</span>
+						<span>l</span>
+						<span>y</span>
+					</div>
+				</div>
+			</li>
+			<li class="flex-wrap">
+				<h3 class="txt-18 semibold m05bottom full-x">PK: milk</h3>
+				<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+					<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+						<span>m</span>
+						<span>i</span>
+						<span>l</span>
+						<span>k</span>
+					</div>
+				</div>
+			</li>
+			<li class="flex-wrap">
+				<h3 class="txt-18 semibold m05bottom full-x">PK: Awesome</h3>
+				<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+					<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+						<span>A</span>
+						<span>w</span>
+						<span>e</span>
+						<span>s</span>
+						<span>o</span>
+						<span>m</span>
+						<span>e</span>
+					</div>
+				</div>
+			</li>
+			<li class="flex-wrap">
+				<h3 class="txt-18 semibold m05bottom full-x">PK: Chicago</h3>
+				<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+					<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+						<span>C</span>
+						<span>h</span>
+						<span>i</span>
+						<span>c</span>
+						<span>a</span>
+						<span>g</span>
+						<span>o</span>
+					</div>
+				</div>
+			</li>
 		</ul>
 	</div>
 </div>
