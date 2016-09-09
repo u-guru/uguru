@@ -13,16 +13,8 @@
 					<svg width="200px" height="200px" viewBox="0 0 400 400">
 						<circle cx="200" cy="200" r="192" stroke="#55A4B7" stroke-width="16" fill="#2B3234" stroke-linecap="round" stroke-linejoin="round"
 							init-default
-
-							when-portal-hover="p:[l-progress:0:1:1000:linear:0] | s:[portal-complete:public:delay-3250]"
-							>
-
-
-							<!-- when-portal-hover="a:[l-progress:set:(dur:5000ms#func:linear):in:delay-250] | s:[portal-complete:public]:delay-3700"
-
-							when-portal-hover="p:[l-progress:0:1:5000:linear]:delay-250 | a:[l-progress:set:(dur:5000ms#func:linear):in:delay-250] | s:[portal-complete:public:delay-3700]"
-							-->
-
+							when-portal-hover="a:[l-progress:set:(dur:5000ms#func:linear):in:delay-250] | s:[portal-complete:public:delay-3700]">
+							<!-- p:[l-progress:0:1:1000:linear:0]:delay-250 -->
 					</svg>
 				</div>
 				<div class="mask"></div>
@@ -269,9 +261,9 @@
 
 
 			<div class="letter-container absolute top-0 left-0 full-xy flex-center perspective-container">
-				<svg class="center-xy opacity-50" width="700px" height="400px" viewBox="0 0 700 400">
+				<svg class="center-xy" width="700px" height="400px" viewBox="0 0 700 400">
 				    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-				        <g fill="#FFFFFF">
+				        <g fill="#ff0000">
 				            <path d="M66.576861,124.936074 L75.629951,118.829688 L68.732963,102.059334 C67.602549,99.203154 66.222254,96.298402 65.009716,93.642361 L65.208685,93.508155 C67.167356,95.660922 69.343528,98.028849 71.568271,100.146895 L84.683042,112.723301 L93.885359,106.51626 L77.779834,70.192327 L70.766176,74.923099 L78.761005,91.604308 C80.56128,95.239003 82.428658,98.973183 84.329588,102.757105 L84.130619,102.891311 C81.13536,99.845524 78.1401,96.799736 75.279047,93.952918 L61.563859,81.130141 L55.346077,85.324087 L62.097349,102.844085 C63.732207,106.662729 65.400617,110.531115 67.069026,114.399501 L66.870057,114.533707 C64.15706,111.369904 61.344579,108.273204 58.665134,105.159144 L46.193502,91.497577 L38.682422,96.563865 L66.576861,124.936074 L66.576861,124.936074 L66.576861,124.936074 Z"></path>
 				            <path d="M116.025582,94.80537 C119.179745,93.198244 122.136103,90.277773 123.909203,87.017449 L118.865334,83.594206 C117.540028,85.750954 116.022008,87.265159 114.043974,88.273018 C110.515588,90.07082 106.943667,89.668599 104.287443,86.173563 L120.165179,78.083453 C119.998687,77.36021 119.423604,75.835061 118.715379,74.445091 C115.038056,67.227938 108.490167,63.628278 100.952252,67.469037 C94.590465,70.710529 91.139224,79.135643 95.524772,87.742766 C99.992038,96.51027 108.434206,98.673369 116.025582,94.80537 L116.025582,94.80537 L116.025582,94.80537 L116.025582,94.80537 Z M101.591758,81.015145 C100.410278,77.374746 101.704271,74.627896 104.163449,73.374883 C107.317612,71.767756 109.662999,73.198965 111.161168,76.139287 L101.591758,81.015145 L101.591758,81.015145 L101.591758,81.015145 L101.591758,81.015145 Z"></path>
 				            <path d="M139.077791,84.33874 C140.926281,83.629172 142.219141,82.811546 142.964864,82.075408 L139.61287,76.35683 C139.207756,76.640876 138.983697,76.726884 138.647608,76.855897 C137.97543,77.113922 136.976201,76.854803 136.309637,75.118343 L124.418988,44.142145 L116.184809,47.30295 L127.946445,77.943059 C130.096653,83.544542 133.420294,86.51045 139.077791,84.33874 L139.077791,84.33874 L139.077791,84.33874 L139.077791,84.33874 Z"></path>
@@ -290,23 +282,27 @@
 				        </g>
 				    </g>
 				</svg>
-				<div style="font-size:60px; font-weight:900"
+				<div style="font-size: 60px; font-weight: 900"
 					on-init="s:[letter-open:public]">
-					<l type="warp" class="absolute width-72 height-72 flex-center"
-						init-with="p:[op:0, top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(-4000px) rotate(-31deg) translateX(-190px) translateY(-231px)]"
-						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-31deg) translateX(-190px) translateY(-231px):translateZ(0px) rotate(-31deg) translateX(-190px) translateY(-231px):500:easeInSine easeInSine easeInSine easeInSine]">W</l>
-					<l type="warp" class="absolute width-72 height-72 flex-center"
-						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]">e</l>
-					<l type="warp" class="absolute width-72 height-72 flex-center"
-						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]">l</l>
-					<l type="warp" class="absolute width-72 height-72 flex-center"
-						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]">c</l>
-					<l type="warp" class="absolute width-72 height-72 flex-center"
-						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]">o</l>
-					<l type="warp" class="absolute width-72 height-72 flex-center"
-						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]">m</l>
-					<l type="warp" class="absolute width-72 height-72 flex-center"
-						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]">e</l>
+					<l type="warp"
+						init-with="p:[op:0, top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]"
+						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-33deg) translateX(-180px) translateY(-239px):translateZ(0px) rotate(-33deg) translateX(-180px) translateY(-239px):500:easeInSine easeInSine easeInSine easeInSine]">W</l>
+					<l type="warp"
+						init-with="p:[op:0, top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]"
+						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-30deg) translateX(-151px) translateY(-230px):translateZ(0px) rotate(-30deg) translateX(-151px) translateY(-230px):500:easeInSine easeInSine easeInSine easeInSine]:delay-100">e</l>
+					<l type="warp"
+						init-with="p:[op:0, top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]"
+						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-21deg) translateX(-160px) translateY(-205px):translateZ(0px) rotate(-21deg) translateX(-160px) translateY(-205px):500:easeInSine easeInSine easeInSine easeInSine]:delay-200">l</l>
+					<l type="warp"
+						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]"
+						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-23deg) translateX(-129px) translateY(-208px):translateZ(0px) rotate(-23deg) translateX(-129px) translateY(-208px):500:easeInSine easeInSine easeInSine easeInSine]:delay-300">c</l>
+					<l type="warp"
+						init-with="p:[op:0, top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]"
+						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-12deg) translateX(-133px) translateY(-184px):translateZ(0px) rotate(-12deg) translateX(-133px) translateY(-184px):500:easeInSine easeInSine easeInSine easeInSine]:delay-300">o</l>
+					<l type="warp"
+						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(-0px) rotate(-23deg) translateX(-129px) translateY(-208px)]">m</l>
+					<!-- <l type="warp"
+						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(-0px) rotate(-23deg) translateX(-129px) translateY(-208px)]">e</l> -->
 				</div>
 			</div>
 		</div>
