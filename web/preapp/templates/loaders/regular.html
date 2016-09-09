@@ -312,4 +312,6 @@
 	</div>
 </div>
 
-<div class="absolute top-0 left-0 full-xy init-later" when-transition-end="t:[init:self]" ng-include="'preapp/templates/splash.madlib.html'"> </div>
+<div class="absolute top-0 left-0 full-xy" when-transition-end="t:[init:self]" init-with="p-op" on-init="p:[opacity:0:1:1000:easeOutSine]" init-later>
+    <div class="absolute top-0 left-0 full-xy flex-center" ng-include="'preapp/templates/splash.madlib.html'"></div>
+</div>
