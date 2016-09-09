@@ -1,1 +1,1 @@
-<span init-with="p:[opacity:0]" on-init="p:[transform:translateX(-1000px):translateX(0%):2500:easeTo, opacity:0:1:2500:bouncePast]"></span>
+<div></div>
