@@ -363,11 +363,20 @@ angular.module('uguru.shared.directives')
           }, function(new_classes, old_classes) {
             new_classes = new_classes || '';
             if (new_classes.indexOf('init-later') > -1) {
-              element[0].classList.remove('init-later');
+              var elemArgs = DirectiveService.parseArgs(attr.initLater, 'init-later', element);
+              var listenerArgs = DirectiveService.detectExternalStates(attr);
+
+              var supportedCommands = DirectiveService.supportedCommands;
               for (key in elemArgs) {
                 if (supportedCommands.indexOf(key) > -1) {
-                  DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                    DirectiveService.activateArg(key, elemArgs[key], scope, element);
                 }
+              }
+
+              for (key in listenerArgs) {
+                var type = listenerArgs[key].type
+                var _attr = listenerArgs[key].attr;
+                DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
               }
             }
           })
