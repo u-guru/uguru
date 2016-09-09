@@ -77,6 +77,19 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     abstract: true,
     template: '<ui-view/>'
   })
+  .state('root.api.states', {
+    parent: 'root.api',
+    name: 'root.api.states',
+    url: '/states',
+    abstract: true,
+    template: '<ui-view/>'
+  })
+  .state('root.api.states.initLater', {
+    parent: 'root.api.states',
+    name: 'root.api.states.initLater',
+    url: '/init-later',
+    templateUrl: 'admin/templates/api/states/init-later.html'
+  })
   .state('root.api.components.text', {
     parent: 'root.api.components',
     name: 'root.api.components.text',
