@@ -54,7 +54,6 @@ function CompService($timeout) {
         'grid': "<div class='flex-wrap-center full-xy absolute'></div>",
         'letter': "shared/templates/components/base/text/letter." + type + "tpl"
       }
-      console.log(attr.type, defaultCompRoutes)
       if (element_type && type_elem) {
         return defaultCompRoutes[element_type + '.' + type_elem]
       }

@@ -31,7 +31,30 @@ angular.module('uguru.shared.directives.base.components')
                     function (lScope, lElem, lAttr) {
                          transclude(lScope, function(clone, innerScope) {
                             lElem[0].innerHTML = clone[0].innerHTML;
-                            $compile(lElem.children())(lScope);
+                            $compile(lElem)(lScope);
+                        })
+                    }
+                }
+            }
+        }
+    }])
+    .directive("word", ["CompService", "$compile", function(CompService, $compile) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            templateUrl:CompService.getCompTemplateType('letter'),
+            compile: function(element, attr, transclude) {
+                return {
+                    pre:
+                    function (lScope, lElem, lAttr) {
+                         transclude(lScope, function(clone, innerScope) {
+                            var childArr = [];
+                            var textStr = clone[0].innerHTML;
+                            for (var i = 0; i < textStr.length; i++) {
+                                var iChild = textStr.charAt(i);
+                                console.log(lElem[0])
+                            }
                         })
                     }
                 }

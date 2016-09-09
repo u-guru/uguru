@@ -481,7 +481,6 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
 
 
   function initPlayerFromArgs(elem, args, previous_player) {
-    console.log(args)
     var playerObj = {state: { time: 0, active: false, paused: false}, control: {iter: {}, time: {duration: args.duration || previous_player.duration, sigfig: 1}}};
     playerObj.control.iter[args.property] = args.iter;
     playerObj.control.iter[args.property].direction = args.direction;
