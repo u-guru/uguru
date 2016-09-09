@@ -284,6 +284,20 @@
 	100% { stroke: $gold; stroke-dashoffset: 0; }
 }
 
+@keyframes l-progress-color {
+	0% { stroke: $shamrock; }
+	10% { stroke: $robin; }
+	20% { stroke: $azure; }
+	30% { stroke: $lake; }
+	40% { stroke: $cobalt; }
+	50% { stroke: $eggplant; }
+	60% { stroke: $cerise; }
+	70% { stroke: $crimson; }
+	80% { stroke: $auburn; }
+	90% { stroke: $orange; }
+	100% { stroke: $gold; }
+}
+
 @keyframes l-head-hover {
 	0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
 	52.15% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 3.516, 0, 1); }
