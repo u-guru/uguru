@@ -91,6 +91,14 @@
 					</div>
 				</div>
 			</li>
+			<li class="flex-wrap">
+				<h3 class="txt-18 semibold m05bottom full-x">squishLeft</h3>
+				<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+					<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+						<word type='squishLeft' delay="50" >The quick brown fox jumps over the lazy dog.</word>
+					</div>
+				</div>
+			</li>
 		</ul>
 	</div>
 </div>
