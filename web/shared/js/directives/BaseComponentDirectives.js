@@ -11,10 +11,12 @@ angular.module('uguru.shared.directives.base.components')
                     pre:
                     function (lScope, lElem, lAttr) {
                          transclude(lScope, function(clone, innerScope) {
-                            lElem[0].innerHTML = clone[0].innerHTML;
+                            // lElem[0].innerHTML = clone[0].innerHTML;
+                            lElem.html(clone.html())// = .innerHTML;
                             $compile(lElem)(lScope);
                         })
-                    }
+                    },
+                    post: angular.noop
                 }
             }
         }
@@ -30,10 +32,12 @@ angular.module('uguru.shared.directives.base.components')
                     pre:
                     function (lScope, lElem, lAttr) {
                          transclude(lScope, function(clone, innerScope) {
-                            lElem[0].innerHTML = clone[0].innerHTML;
+                            // lElem[0].innerHTML = clone[0].innerHTML;
+                            lElem.html(clone.html())
                             $compile(lElem)(lScope);
                         })
-                    }
+                    },
+                    post: angular.noop
                 }
             }
         }
@@ -58,9 +62,12 @@ angular.module('uguru.shared.directives.base.components')
                         }
                         transclude(lScope, function(clone, innerScope) {
                             var childArr = [];
-                            var textStr = clone[0].innerHTML;
+                            var textStr = clone.html();
                             for (var i = 0; i < textStr.length; i++) {
                                 var iChild = textStr.charAt(i);
+                                if (iChild === ' ') {
+                                    iChild += '&nbsp;';
+                                }
                                 var cloneLetter = tpl.clone();
                                 if (delay) {
                                     CompService.applyDelayToWord(cloneLetter, delay * i);
