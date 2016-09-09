@@ -1,18 +1,90 @@
-<div class="full-xy perspective-container">
+<div class="full-xy perspective-container overflow-auto">
 	<ul class="p15-grid">
 		<li>
-			<h3 class="txt-18 semibold m05bottom">fadeIn</h3>
-			<div class="radius-2 bg-white-10p p10y-p15x">
+			<h3 class="txt-18 semibold m05bottom">default</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
 				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
-					<sentence type='rotateBounce' delay="250" >The quick brown fox jumps over the lazy dog.</sentence>
+					<word delay="50">The quick brown fox jumps over the lazy dog.</word>
 				</div>
 			</div>
 		</li>
 		<li>
-			<h3 class="txt-18 semibold m05bottom">fadeIn</h3>
-			<div class="radius-2 bg-white-10p p10y-p15x">
+			<h3 class="txt-18 semibold m05bottom">typing</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
 				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
-					<word type='rotateBounce' delay="250" >The quick brown fox jumps over the lazy dog.</word>
+					<word type="typing" delay="50">The quick brown fox jumps over the lazy dog.</word>
+				</div>
+			</div>
+		</li>
+		<li>
+			<h3 class="txt-18 semibold m05bottom">rotateUp</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+					<word type="rotateUp" delay="50">The quick brown fox jumps over the lazy dog.</word>
+				</div>
+			</div>
+		</li>
+		<li>
+			<h3 class="txt-18 semibold m05bottom">fadeInUp</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+					<word type="fadeInUp" delay="50">The quick brown fox jumps over the lazy dog.</word>
+				</div>
+			</div>
+		</li>
+		<li>
+			<h3 class="txt-18 semibold m05bottom">fadeInDown</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+					<word type="fadeInDown" delay="50">The quick brown fox jumps over the lazy dog.</word>
+				</div>
+			</div>
+		</li>
+		<li>
+			<h3 class="txt-18 semibold m05bottom">fadeInLeft</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+					<word type="fadeInLeft" delay="50">The quick brown fox jumps over the lazy dog.</word>
+				</div>
+			</div>
+		</li>
+		<li>
+			<h3 class="txt-18 semibold m05bottom">fadeInRight</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+					<word type="fadeInRight" delay="50">The quick brown fox jumps over the lazy dog.</word>
+				</div>
+			</div>
+		</li>
+		<li>
+			<h3 class="txt-18 semibold m05bottom">backInUp</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+					<word type="backInUp" delay="50">The quick brown fox jumps over the lazy dog.</word>
+				</div>
+			</div>
+		</li>
+		<li>
+			<h3 class="txt-18 semibold m05bottom">backInDown</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+					<word type="backInDown" delay="50">The quick brown fox jumps over the lazy dog.</word>
+				</div>
+			</div>
+		</li>
+		<li>
+			<h3 class="txt-18 semibold m05bottom">backInLeft</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+					<word type="backInLeft" delay="50">The quick brown fox jumps over the lazy dog.</word>
+				</div>
+			</div>
+		</li>
+		<li>
+			<h3 class="txt-18 semibold m05bottom">backInRight</h3>
+			<div class="radius-2 bg-white-10p p10y-p15x overflow-hidden">
+				<div class='flex-center-vertical-wrap line-height-1-2 semibold'>
+					<word type="backInRight" delay="50">The quick brown fox jumps over the lazy dog.</word>
 				</div>
 			</div>
 		</li>
