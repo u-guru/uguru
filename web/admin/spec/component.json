@@ -185,9 +185,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
 							"complete": false
 						}
 					]
@@ -217,9 +217,15 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": false
+						},
+						{
+							"element": "'Content can go here.'",
+							"type": "line",
+							"description": "stagger",
 							"complete": false
 						}
 					]
@@ -248,9 +254,15 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "name",
+							"type": "letter",
+							"description": "fadeIn stagger",
+							"complete": false
+						},
+						{
+							"element": "line",
+							"type": "line",
+							"description": "stagger",
 							"complete": false
 						}
 					]
@@ -285,9 +297,21 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "header",
+							"type": "letter",
+							"description": "Slide in direction dependent",
+							"complete": false
+						},
+						{
+							"element": "description",
+							"type": "paragraph",
+							"description": "fadeInUp",
+							"complete": false
+						},
+						{
+							"element": "attribution",
+							"type": "line",
+							"description": "stagger",
 							"complete": false
 						}
 					]
@@ -321,10 +345,10 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": true
 						}
 					]
                 }
@@ -342,6 +366,9 @@
                     "performance": false
                 },
                 "notes": {
+					"note": {
+						    "GW": "Try swingout for genre container"
+					},
                     "bugs": [
 						{
 							"bug": "Change translate down to swing like the dropdown",
@@ -357,9 +384,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "platlist name",
+							"type": "letter",
+							"description": "down",
 							"complete": false
 						}
 					]
@@ -383,10 +410,10 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
+							"element": "text",
+							"type": "line",
+							"description": "stagger",
+							"complete": true
 						}
 					]
                 }
@@ -422,14 +449,7 @@
 							"complete": false
 						}
 					],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
 			"credit-tile": {
@@ -457,8 +477,14 @@
 					],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
+							"element": "package",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "credits",
+							"type": "letter",
 							"description": "",
 							"complete": false
 						}
@@ -483,8 +509,14 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
+							"element": "header",
+							"type": "letter",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "description",
+							"type": "line",
 							"description": "",
 							"complete": false
 						}
@@ -542,9 +574,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "Number in circle",
+							"type": "letter",
+							"description": "Countup",
 							"complete": false
 						}
 					]
@@ -581,9 +613,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "Animated titles",
+							"type": "line",
+							"description": "Category specific",
 							"complete": false
 						}
 					]
@@ -636,9 +668,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "Animated titles",
+							"type": "line",
+							"description": "Category specific",
 							"complete": false
 						}
 					]
@@ -676,9 +708,15 @@
 					],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "Stats",
+							"type": "letter",
+							"description": "Countup",
+							"complete": false
+						},
+						{
+							"element": "titles",
+							"type": "word",
+							"description": "upward",
 							"complete": false
 						}
 					]
@@ -702,10 +740,10 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
+							"element": "playlist name",
+							"type": "line",
+							"description": "bounceInUp",
+							"complete": true
 						}
 					]
                 }
@@ -733,14 +771,7 @@
 						}
 					],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
 			"numbered-list": {
@@ -764,14 +795,7 @@
 						}
 					],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
 			"sidebar-list": {
@@ -795,14 +819,7 @@
 						}
 					],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             }
         },
@@ -823,14 +840,7 @@
                     "note": "Upward motion enhancement",
 					"stagger": "bubbles",
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
 			"projector": {
@@ -849,14 +859,7 @@
                     "note": "Revisit animation",
 					"stagger": [],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
             "ticket": {
@@ -917,14 +920,7 @@
 							"complete": false
 						}
 					],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
 			"timeline-icon": {
@@ -954,9 +950,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "text",
+							"type": "letter",
+							"description": "bounce out direction dependent",
 							"complete": false
 						}
 					]
@@ -1009,9 +1005,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "titles",
+							"type": "letter",
+							"description": "stagger in left",
 							"complete": false
 						}
 					]
@@ -1038,14 +1034,7 @@
 						}
 					],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
 			"window": {
@@ -1064,14 +1053,7 @@
                     "bugs": [],
 					"stagger": [],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             }
         },
@@ -1095,9 +1077,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "focused text",
+							"type": "letter",
+							"description": "typing with cursor",
 							"complete": false
 						}
 					]
@@ -1136,9 +1118,9 @@
 					],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "focused text",
+							"type": "letter",
+							"description": "typing with cursor",
 							"complete": false
 						}
 					]
@@ -1166,14 +1148,7 @@
 						}
 					],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
 			},
 			"checkbox": {
@@ -1202,14 +1177,7 @@
 							"fixed": false
 						}
 					],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
 			},
 			"number": {
@@ -1228,14 +1196,7 @@
                     "bugs": [],
 					"stagger": [],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
 			},
 			"radio": {
@@ -1259,14 +1220,7 @@
 							"fixed": false
 						}
 					],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
 			},
             "search": {
@@ -1301,9 +1255,9 @@
 					],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "focused text",
+							"type": "letter",
+							"description": "typing with cursor",
 							"complete": false
 						}
 					]
@@ -1336,14 +1290,7 @@
 							"fixed": false
 						}
 					],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
 			},
 			"chip": {
@@ -1363,14 +1310,7 @@
                     "bugs": [],
 					"stagger": [],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
 			},
 			"ghost-tag": {
@@ -1394,14 +1334,7 @@
 							"fixed": false
 						}
 					],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
 			}
         },
@@ -1443,9 +1376,9 @@
 					],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "message",
+							"type": "line",
+							"description": "stagger up",
 							"complete": false
 						}
 					]
@@ -1469,8 +1402,14 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
+							"element": "request type and title",
+							"type": "line",
+							"description": "stagger upwards",
+							"complete": false
+						},
+						{
+							"element": "Info and stat",
+							"type": "paragraph",
 							"description": "",
 							"complete": false
 						}
@@ -1508,14 +1447,7 @@
 							"complete": false
 						}
 					],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
 			"attachment-tile": {
@@ -1546,8 +1478,14 @@
 					],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
+							"element": "title",
+							"type": "line",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "description",
+							"type": "paragraph",
 							"description": "",
 							"complete": false
 						}
@@ -1592,14 +1530,7 @@
 							"complete": false
 						}
 					],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
 			"social-bar": {
@@ -1618,14 +1549,7 @@
                     "bugs": [],
 					"stagger": "links",
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             },
             "tile-group": {
@@ -1645,14 +1569,7 @@
                     "bugs": [],
 					"stagger": "borders, items",
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
             }
         },
@@ -1674,14 +1591,7 @@
                     "bugs": [],
 					"stagger": [],
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
 			},
 			"popup": {
@@ -1706,8 +1616,8 @@
 					"draw": "circle",
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
+							"element": "Guru header",
+							"type": "letter",
 							"description": "",
 							"complete": false
 						}
@@ -1733,9 +1643,9 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
-							"description": "",
+							"element": "text",
+							"type": "line",
+							"description": "fadeIn direction dependent",
 							"complete": false
 						}
 					]
@@ -1758,14 +1668,7 @@
                     "note": "Revisit when there is custom timing. Easings available are too snappy/stiff. Trying to find timing similar to cubic-bezier(.71,.06,.47,.63)",
 					"stagger": "borders",
 					"draw": [],
-					"lettering": [
-						{
-							"element": "",
-							"type": "",
-							"description": "",
-							"complete": false
-						}
-					]
+					"lettering": []
                 }
 			}
 		},
@@ -1875,8 +1778,14 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
+							"element": "Three lines or less",
+							"type": "line",
+							"description": "",
+							"complete": false
+						},
+						{
+							"element": "four lines or more",
+							"type": "paragraph",
 							"description": "",
 							"complete": false
 						}
@@ -1906,8 +1815,8 @@
 					"draw": [],
 					"lettering": [
 						{
-							"element": "",
-							"type": "",
+							"element": "header",
+							"type": "letter",
 							"description": "",
 							"complete": false
 						}
