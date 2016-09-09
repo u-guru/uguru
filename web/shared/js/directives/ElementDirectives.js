@@ -361,6 +361,7 @@ angular.module('uguru.shared.directives')
           scope.$watch(function() {
             return element.attr('class');
           }, function(new_classes, old_classes) {
+            attr.$set('ngHide', false);
             new_classes = new_classes || '';
             if (new_classes.indexOf('init-later') > -1) {
               var elemArgs = DirectiveService.parseArgs(attr.initLater, 'init-later', element);
