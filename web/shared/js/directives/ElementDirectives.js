@@ -343,47 +343,85 @@ angular.module('uguru.shared.directives')
       }
     }
 }])
-.directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
-  return {
-    restrict: 'A',
-    priority: 999,
-    terminal: true,
-      link: {
-        pre: function(scope, element, attr) {
+.directive("initLater", ["CompService", "$compile", function(CompService, $compile) {
+      return {
+          restrict: 'A',
+          replace: true,
+          transclude: true,
+          priority:1,
+          compile: function(element, attr, transclude) {
+
+              return {
+                  pre:
+                  function (scope, lElem, lAttr) {
 
 
+                      scope.$watch(function() {
+                        return element.attr('class');
+                      }, function(new_classes) {
 
-          attr.$set('ngHide', true);
-          attr.$set('initLater', null);
-          $compile(element[0])(scope);
+                        if (new_classes && new_classes.indexOf('init') > -1) {
+                          console.log(new_classes)
 
+                          transclude(scope, function(clone, innerScope) {
+                              $compile(clone)(innerScope)
+                              lElem.append(clone)
+                              // lElem[0].innerHTML = clone[0].innerHTML;
+                              // lElem.html(clone.html())
+                              // $compile(lElem)(scope);
+                          })
 
-          scope.$watch(function() {
-            return element.attr('class');
-          }, function(new_classes, old_classes) {
-            new_classes = new_classes || '';
-            if (new_classes.indexOf('init-later') > -1) {
-              var elemArgs = DirectiveService.parseArgs(attr.initLater, 'init-later', element);
-              var listenerArgs = DirectiveService.detectExternalStates(attr);
+                        }
+                      })
 
-              var supportedCommands = DirectiveService.supportedCommands;
-              for (key in elemArgs) {
-                if (supportedCommands.indexOf(key) > -1) {
-                    DirectiveService.activateArg(key, elemArgs[key], scope, element);
-                }
+                  },
+                  post: angular.noop
               }
-
-              for (key in listenerArgs) {
-                var type = listenerArgs[key].type
-                var _attr = listenerArgs[key].attr;
-                DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
-              }
-            }
-          })
+          }
       }
-    }
-  }
 }])
+// .directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
+//   return {
+//     restrict: 'A',
+//     priority: 999,
+//     terminal: true,
+//       link: {
+//         pre: function(scope, element, attr) {
+
+
+
+//           attr.$set('ngHide', true);
+//           attr.$set('initLater', null);
+//           $compile(element[0])(scope);
+
+
+//           scope.$watch(function() {
+//             return element.attr('class');
+//           }, function(new_classes, old_classes) {
+//             attr.$set('ngHide', false);
+//             new_classes = new_classes || '';
+//             if (new_classes.indexOf('init-later') > -1) {
+//               var elemArgs = DirectiveService.parseArgs(attr.initLater, 'init-later', element);
+//               var listenerArgs = DirectiveService.detectExternalStates(attr);
+
+//               var supportedCommands = DirectiveService.supportedCommands;
+//               for (key in elemArgs) {
+//                 if (supportedCommands.indexOf(key) > -1) {
+//                     DirectiveService.activateArg(key, elemArgs[key], scope, element);
+//                 }
+//               }
+
+//               for (key in listenerArgs) {
+//                 var type = listenerArgs[key].type
+//                 var _attr = listenerArgs[key].attr;
+//                 DirectiveService.initCustomStateWatcher(scope, element,  type, _attr, attr[_attr.camel]);
+//               }
+//             }
+//           })
+//       }
+//     }
+//   }
+// }])
 // .directive('counter', ['$timeout', '$interval', function ($timeout, $interval) {
 //   return {
 //     restrict: 'A',
