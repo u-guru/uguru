@@ -6,53 +6,106 @@
         <ul class='flex-vertical-center p15-grid full-x ugrid-2'>
             <li class='text-right p15-grid'>
                 <span class='p15-grid bg-cerise weight-900'>
-                    <code>< letter >  a   <\ letter ></code>
+                    <code>&lt;letter&gt;a&lt;/letter&gt;</code>
                 </span>
             </li>
             <li class='text-left p15-grid'>
-                <letter>abc</letter>
+
+				<div class="flex">
+                	<letter>a</letter>
+				</div>
             </li>
         </ul>
         <ul class='flex-vertical-center p15-grid full-x ugrid-2'>
             <li class='text-right p15-grid'>
                 <span class='p15-grid bg-cerise weight-900'>
-                    <code>< letter <span class='bg-charcoal'>svg</span> >  a   <\ letter ></code>
+                    <code>&lt;letter <span class='bg-charcoal'>svg</span>&gt;a&lt;/letter&gt;</code>
                 </span>
             </li>
             <li class='text-left p15-grid'>
-                <letter>b</letter>
+                <div class="flex">
+					<letter>b</letter>
+				</div>
             </li>
         </ul>
         <ul class='flex-vertical-center p15-grid full-x ugrid-2'>
             <li class='text-right p15-grid'>
                 <span class='p15-grid bg-cerise weight-900'>
                     <code>
-                        < letter
-                        <span class='bg-charcoal'>type='rotate'</span>
-                        >  a
-                        <\ letter >
+                        &lt;letter <span class='bg-charcoal'>type='rotate'</span>&gt;a&lt;/letter&gt;
                     </code>
                 </span>
             </li>
             <li class='text-left p15-grid'>
-                <div> <letter type='rotate'>b</letter> </div>
+                <div class="flex"> <letter type='rotate'>b</letter> </div>
             </li>
         </ul>
+
+
+		<ul class='flex-vertical-center p15-grid full-x ugrid-2'>
+			<li class='text-right p15-grid'>
+				<span class='p15-grid bg-cerise weight-900'>
+					<code>
+						&lt;letter <span class='bg-charcoal'>type='rotateBounce'</span>&gt;a&lt;/letter&gt;
+					</code>
+				</span>
+			</li>
+			<li class='text-left p15-grid'>
+				<div class="flex"> <letter type='rotateBounce'>g</letter> </div>
+			</li>
+		</ul>
+
+
         <ul class='flex-vertical-center p15-grid full-x ugrid-2'>
             <li class='text-right p15-grid'>
-                <span class='p15-grid bg-cerise weight-900'>
+                <span class='p15-grid bg-cerise-50p txt-3 weight-900'>
                     <code>
                         < word
                         <span class='bg-charcoal'>type='rotate'</span>
+
                         >
                         <\ word >
                     </code>
                 </span>
             </li>
             <li class='text-left p15-grid'>
-                <div> <word>samir</word> </div>
+                <div class='flex-vertical-center'> <word type='rotateBounce'>samir</word> </div>
             </li>
         </ul>
+        <ul class='flex-vertical-center p15-grid full-x ugrid-2'>
+            <li class='text-right p15-grid'>
+                <span class='p15-grid bg-cerise-50p txt-3 weight-900'>
+                    <code>
+                        < word
+                        <span class='bg-charcoal'>type='rotate'</span>
+                        <span class='bg-charcoal'>keep</span>
+                        >
+                        <\ word >
+                    </code>
+                </span>
+            </li>
+            <li class='text-left p15-grid'>
+                <div class='flex-vertical-center'> <word type='rotateBounce' keep >samir</word> </div>
+            </li>
+        </ul>
+        <ul class='flex-vertical-center p15-grid full-x ugrid-2'>
+            <li class='text-right p15-grid'>
+                <span class='p15-grid bg-cerise-50p txt-3 weight-900'>
+                    <code>
+                        < word
+                        <span class='bg-charcoal'>type='rotate'</span>
+                        <span class='bg-charcoal'>keep</span>
+                        >
+                        <\ word >
+                    </code>
+                </span>
+            </li>
+            <li class='text-left p15-grid'>
+                <div class='flex-vertical-center'> <word type='rotateBounce' delay="100" >samir</word> </div>
+            </li>
+        </ul>
+
+
 
     </div>
 </div>
