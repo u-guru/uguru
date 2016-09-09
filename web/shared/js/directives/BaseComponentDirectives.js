@@ -106,36 +106,7 @@ angular.module('uguru.shared.directives.base.components')
                                     lElem.children().append(lineClone);
                                     index++;
                                 }
-                                // console.log(lineWordArr)
-                                // var count = UtilitiesService.countAndSplitLines(clone[0])
-                                // lElem.remove(clone);
-                                // console.log(count)
 
-                                // console.log()
-                                // var textStr = clone[0];
-
-                                // $compile(lElem[0])(lScope);
-                                // for (var i = 0; i < textStr.length; i++) {
-                                //     var iChild = textStr[i]
-                                //     if (i < textStr.length - 1) {
-                                //         iChild += '&nbsp;';
-                                //     }
-                                //     var cloneLetter = tpl.clone();
-                                //     if (delay) {
-                                //         CompService.applyDelayToWord(cloneLetter, delay * i);
-                                //     }
-                                //     cloneLetter.html(iChild);
-                                //     $compile(cloneLetter)(innerScope)
-                                //     lElem.append(cloneLetter);
-                                // }
-
-                                // if ('keep' in attr ) {
-                                //     keepContainer = angular.element('<div></div>');
-                                //     lElem.parent().append(keepContainer);
-                                //     var children = lElem.contents();
-                                //     lElem.replaceWith(keepContainer)
-                                //     keepContainer.append(children);
-                                // }
                             })
                         }
                     }

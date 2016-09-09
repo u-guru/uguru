@@ -1,7 +1,7 @@
 <ion-view id='splash-view' ng-controller='SplashController as splash'>
     <custom-states when="sidebar-icon-clicked">
     </custom-states>
-    <div class="loader-scale-out" ng-if='showScaleOutLoader'
+    <div class="loader-scale-out"
         init-with='p:[tr:scale(50), op:1, z-index:10]'
         on-init="t:[on-exit]"
         on-exit="p:[t:all 500ms ease, op:0, z-index:-100]"></div>
