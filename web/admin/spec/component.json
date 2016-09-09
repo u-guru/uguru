@@ -31,7 +31,7 @@
 							"type": "",
 							"complete": false
 						}
-					],
+					]
                 }
             },
             "credit-card": {
@@ -60,7 +60,14 @@
 							"complete": true
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"faq-card": {
@@ -83,7 +90,14 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
             "profile-card": {
@@ -107,7 +121,14 @@
 							"complete": true
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
             "profile-thumb": {
@@ -126,7 +147,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"profile-widget": {
@@ -144,7 +172,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": "rating",
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
             "student-card": {
@@ -168,7 +203,14 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"team-card": {
@@ -191,7 +233,14 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"timeline-card": {
@@ -220,7 +269,14 @@
 							"complete": true
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
             "university-card": {
@@ -248,7 +304,14 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"album-tile": {
@@ -276,7 +339,14 @@
 							"complete": true
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"calendar-tile": {
@@ -294,7 +364,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
             "category-tile": {
@@ -327,6 +404,13 @@
 							"element": "icon",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
 					]
                 }
             },
@@ -352,6 +436,13 @@
 							"element": "icon",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
 					]
                 }
             },
@@ -370,7 +461,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
             "money-tile": {
@@ -389,7 +487,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
             "pricing-tile": {
@@ -413,7 +518,14 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
             "profile-cardlet": {
@@ -444,7 +556,14 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"profile-tile": {
@@ -491,7 +610,14 @@
 							"complete": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"ranking-tile": {
@@ -523,6 +649,13 @@
 							"element": "icons",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
 					]
                 }
             },
@@ -539,9 +672,16 @@
                     "performance": false
                 },
                 "notes": {
-                    "bugs": ,
+                    "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             }
         },
@@ -566,7 +706,14 @@
 							"complete": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"numbered-list": {
@@ -589,7 +736,14 @@
 							"complete": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"sidebar-list": {
@@ -612,7 +766,14 @@
 							"complete": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             }
         },
@@ -632,7 +793,14 @@
                 "notes": {
                     "note": "Upward motion enhancement",
 					"stagger": "bubbles",
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"projector": {
@@ -650,7 +818,14 @@
                 "notes": {
                     "note": "Revisit animation",
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
             "ticket": {
@@ -672,7 +847,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             }
         },
@@ -702,6 +884,13 @@
 							"element": "icon",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
 					]
                 }
             },
@@ -729,7 +918,14 @@
 						}
 					],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"user-icon": {
@@ -748,7 +944,14 @@
 				"notes": {
 					"bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
 				}
 			},
 			"wallet": {
@@ -768,7 +971,14 @@
 						"JO": "Check for flash. Possibly convert on-inits to states"
 					},
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"window-small": {
@@ -791,7 +1001,14 @@
 							"complete": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
 			"window": {
@@ -809,7 +1026,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             }
         },
@@ -830,7 +1054,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"border": {
@@ -863,6 +1094,13 @@
 							"element": "border",
 							"fixed": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
 					]
                 }
 			},
@@ -887,7 +1125,14 @@
 							"fixed": false
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"checkbox": {
@@ -916,6 +1161,13 @@
 							"fixed": false
 						}
 					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"number": {
@@ -933,7 +1185,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"radio": {
@@ -957,6 +1216,13 @@
 							"fixed": false
 						}
 					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
             "search": {
@@ -988,6 +1254,13 @@
 							"element": "icon",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
 					]
                 }
             },
@@ -1017,6 +1290,13 @@
 							"element": "borders",
 							"fixed": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
 					]
                 }
 			},
@@ -1036,7 +1316,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"ghost-tag": {
@@ -1058,6 +1345,13 @@
 						{
 							"element": "borders",
 							"fixed": false
+						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
 						}
 					]
                 }
@@ -1098,6 +1392,13 @@
 							"element": "window borders",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
 					]
 				}
 			},
@@ -1116,7 +1417,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             }
 		},
@@ -1149,6 +1457,13 @@
 							"element": "icons",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
 					]
                 }
             },
@@ -1175,6 +1490,13 @@
 					"draw": [
 						{
 							"element": "icon (see attachment list)",
+							"complete": false
+						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
 							"complete": false
 						}
 					]
@@ -1217,6 +1539,13 @@
 							"element": "icon",
 							"complete": false
 						}
+					],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
 					]
                 }
             },
@@ -1235,7 +1564,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": "links",
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             },
             "tile-group": {
@@ -1254,7 +1590,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": "borders, items",
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
             }
         },
@@ -1275,7 +1618,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"popup": {
@@ -1297,7 +1647,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": "circle"
+					"draw": "circle",
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"toast": {
@@ -1316,7 +1673,14 @@
                 "notes": {
                     "note": "Toast with any action should have a confirmation/success state",
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"tooltip": {
@@ -1335,7 +1699,14 @@
                 "notes": {
                     "note": "Revisit when there is custom timing. Easings available are too snappy/stiff. Trying to find timing similar to cubic-bezier(.71,.06,.47,.63)",
 					"stagger": "borders",
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			}
 		},
@@ -1355,7 +1726,14 @@
                 "notes": {
                     "note": "",
 					"stagger": [],
-					"draw": "indicator (must be able to use decimals)"
+					"draw": "indicator (must be able to use decimals)",
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"numerical-progress": {
@@ -1375,7 +1753,14 @@
 						"GW": "@samir Should be binding so that it goes step to step in one direction."
 					},
 					"stagger": "steps",
-					"draw": "progress completion"
+					"draw": "progress completion",
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"rating": {
@@ -1398,7 +1783,14 @@
 							"complete": true
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			}
 		},
@@ -1418,7 +1810,14 @@
                 "notes": {
                     "bugs": [],
 					"stagger": [],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			},
 			"header": {
@@ -1441,7 +1840,14 @@
 							"complete": true
 						}
 					],
-					"draw": []
+					"draw": [],
+					"lettering": [
+						{
+							"element": "",
+							"type": "",
+							"complete": false
+						}
+					]
                 }
 			}
 		}
