@@ -60,7 +60,6 @@ function CompService($timeout) {
   function getCompTemplateType(element_type, type_elem) {
     return function(element, attr) {
       var type = (attr.type && (attr.type + '.')) || '';
-
       var defaultCompRoutes = {
         'grid': "<div class='flex-wrap-center full-xy absolute'></div>",
         'letter': "shared/templates/components/base/text/letter." + type + "tpl"

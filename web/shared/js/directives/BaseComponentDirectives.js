@@ -11,10 +11,12 @@ angular.module('uguru.shared.directives.base.components')
                     pre:
                     function (lScope, lElem, lAttr) {
                          transclude(lScope, function(clone, innerScope) {
-                            lElem[0].innerHTML = clone[0].innerHTML;
+                            // lElem[0].innerHTML = clone[0].innerHTML;
+                            lElem.html(clone.html())// = .innerHTML;
                             $compile(lElem)(lScope);
                         })
-                    }
+                    },
+                    post: angular.noop
                 }
             }
         }
@@ -30,15 +32,61 @@ angular.module('uguru.shared.directives.base.components')
                     pre:
                     function (lScope, lElem, lAttr) {
                          transclude(lScope, function(clone, innerScope) {
-                            lElem[0].innerHTML = clone[0].innerHTML;
+                            // lElem[0].innerHTML = clone[0].innerHTML;
+                            lElem.html(clone.html())
                             $compile(lElem)(lScope);
                         })
-                    }
+                    },
+                    post: angular.noop
                 }
             }
         }
     }])
-    .directive("word", ["CompService", "$compile", function(CompService, $compile) {
+    .directive("sentence", ["CompService", "$compile", function(CompService, $compile) {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            templateUrl:CompService.getCompTemplateType('letter'),
+            compile: function(element, attr, transclude) {
+                return {
+                    pre:
+                        function (lScope, lElem, lAttr) {
+                            var tpl = lElem
+                            var delay = 0;
+                            if (!('keep' in attr)) {
+                                lElem = lElem.parent().html('');
+                            }
+                            if ('delay' in attr && attr.delay.length) {
+                                delay = parseInt(attr.delay);
+                            }
+                            transclude(lScope, function(clone, innerScope) {
+                                var wordArr = [];
+
+                                var textStr = clone.html().split(' ');
+                                for (var i = 0; i < textStr.length; i++) {
+                                    var iChild = textStr[i]
+                                    if (i < textStr.length - 1) {
+                                        iChild += '&nbsp;';
+                                    }
+                                    var cloneLetter = tpl.clone();
+                                    if (delay) {
+                                        CompService.applyDelayToWord(cloneLetter, delay * i);
+                                    }
+                                    cloneLetter.html(iChild);
+                                    $compile(cloneLetter)(innerScope)
+                                    lElem.append(cloneLetter);
+                                }
+                                // cloneLetter.html(iChild);
+                                // $compile(cloneLetter)(innerScope)
+                                // lElem.append(cloneLetter);
+                            })
+                        }
+                    }
+                }
+            }
+    }])
+.directive("word", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',
             replace: true,
@@ -56,11 +104,17 @@ angular.module('uguru.shared.directives.base.components')
                         if ('delay' in attr && attr.delay.length) {
                             delay = parseInt(attr.delay);
                         }
+
                         transclude(lScope, function(clone, innerScope) {
                             var childArr = [];
-                            var textStr = clone[0].innerHTML;
+                            var textStr = clone.html();
+
                             for (var i = 0; i < textStr.length; i++) {
+
                                 var iChild = textStr.charAt(i);
+                                if (iChild === ' ') {
+                                    iChild += '&nbsp;';
+                                }
                                 var cloneLetter = tpl.clone();
                                 if (delay) {
                                     CompService.applyDelayToWord(cloneLetter, delay * i);
@@ -68,6 +122,13 @@ angular.module('uguru.shared.directives.base.components')
                                 cloneLetter.html(iChild);
                                 $compile(cloneLetter)(innerScope)
                                 lElem.append(cloneLetter);
+                            }
+                            if ('keep' in attr ) {
+                                keepContainer = angular.element('<div></div>');
+                                lElem.parent().append(keepContainer);
+                                var children = lElem.contents();
+                                lElem.replaceWith(keepContainer)
+                                keepContainer.append(children);
                             }
                         })
                     }
