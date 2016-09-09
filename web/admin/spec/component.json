@@ -1371,7 +1371,9 @@
                     "performance": false
                 },
                 "notes": {
-                    "note": "@samir Should be binding so that it goes step to step in one direction.",
+                    "note": {
+						"GW": "@samir Should be binding so that it goes step to step in one direction."
+					},
 					"stagger": "steps",
 					"draw": "progress completion"
                 }
@@ -1390,7 +1392,12 @@
                 },
                 "notes": {
                     "bugs": [],
-					"stagger": "rating",
+					"stagger": [
+						{
+							"element": "rating",
+							"complete": true
+						}
+					],
 					"draw": []
                 }
 			}
@@ -1428,7 +1435,12 @@
                 },
                 "notes": {
                     "bugs": [],
-					"stagger": "FINISHED &rarr; letters",
+					"stagger": [
+						{
+							"element": "letters",
+							"complete": true
+						}
+					],
 					"draw": []
                 }
 			}
