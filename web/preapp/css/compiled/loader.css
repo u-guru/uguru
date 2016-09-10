@@ -2292,6 +2292,29 @@
   100% {
     stroke: #F6C64E;
     stroke-dashoffset: 0; } }
+@keyframes l-progress-color {
+  0% {
+    stroke: #69B3A5; }
+  10% {
+    stroke: #2BB3B8; }
+  20% {
+    stroke: #55A4B7; }
+  30% {
+    stroke: #50A5DD; }
+  40% {
+    stroke: #7872e3; }
+  50% {
+    stroke: #9A5BC5; }
+  60% {
+    stroke: #e6389b; }
+  70% {
+    stroke: #d3242c; }
+  80% {
+    stroke: #F04F54; }
+  90% {
+    stroke: #E5753C; }
+  100% {
+    stroke: #F6C64E; } }
 @keyframes l-head-hover {
   0% {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
