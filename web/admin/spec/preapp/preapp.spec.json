@@ -257,6 +257,28 @@
 					}
                 }
             }
-        }
+        },
+		"splashHome": {
+			"rubric": {
+				"ui": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "glitch-free": false,
+                    "cross-platform": false,
+                    "verified" : false,
+                    "analysis": false
+                },
+				"bugs": [
+					{
+						"bug": "header doesn't show up at a certain height, check CSS",
+						"fixed": false
+					}
+				],
+				"states": {
+
+				}
+			}
+		}
     }
 }
