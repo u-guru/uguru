@@ -152,6 +152,7 @@ angular.module('uguru.shared.directives')
         });
 
         function getImptWheelAttr(e, elem_cmds) {
+          console.log(elem_cmds)
           var overrideX = elem_cmds.override && elem_cmds.override.indexOf('x') > -1;
           var overrideY = elem_cmds.override && elem_cmds.override.indexOf('y') > -1;
           var sendEvents = 'send' in elem_cmds
@@ -174,6 +175,7 @@ angular.module('uguru.shared.directives')
         }
 
         function applySendEvents(e, elem_cmds) {
+          console.log(elem_cmds)
           cmds = parseSendCommands(elem_cmds['send']);
           var offset = UtilitiesService.calcScrollOffset(e.target);
           for (var i = 0; i < cmds.length; i++) {
@@ -361,14 +363,10 @@ angular.module('uguru.shared.directives')
                       }, function(new_classes) {
 
                         if (new_classes && new_classes.indexOf('init') > -1) {
-                          console.log(new_classes)
 
                           transclude(scope, function(clone, innerScope) {
                               $compile(clone)(innerScope)
                               lElem.append(clone)
-                              // lElem[0].innerHTML = clone[0].innerHTML;
-                              // lElem.html(clone.html())
-                              // $compile(lElem)(scope);
                           })
 
                         }
@@ -380,6 +378,7 @@ angular.module('uguru.shared.directives')
           }
       }
 }])
+
 // .directive('initLater', ['DirectiveService', '$compile', function(DirectiveService, $compile) {
 //   return {
 //     restrict: 'A',

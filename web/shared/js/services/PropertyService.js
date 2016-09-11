@@ -178,8 +178,22 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
       previous_player.tweenConfig.easing[prop_args.property] = prop_args.ease;
     }
     previous_player.control.iter[prop_args.property] = prop_args.iter;
-    previous_player.tweenConfig.from[prop_args.property] = prop_args.start[prop_args.property];
-    previous_player.tweenConfig.to[prop_args.property] = prop_args.end[prop_args.property];
+    console.log()
+    if (prop_args.property in previous_player.tweenConfig.to && prop_args.property in previous_player.tweenConfig.from) {
+      // previous_player.tweenConfig.to[prop_args.property] = prop_args.end[prop_args.property];
+      // if (!prop_args.pr)
+      if (!previous_player.tweenConfig.inBetween) {
+        previous_player.tweenConfig.inBetween = {};
+        previous_player.tweenConfig.inBetween[prop_args.property] = [];
+      }
+      if (previous_player.tweenConfig.inBetween[prop_args.property]) {
+        previous_player.tweenConfig.inBetween[prop_args.property].push(prop_args);
+        previous_player.tweenConfig.to[prop_args.property] = prop_args.end[prop_args.property];
+      }
+    } else {
+      previous_player.tweenConfig.from[prop_args.property] = prop_args.start[prop_args.property];
+      previous_player.tweenConfig.to[prop_args.property] = prop_args.end[prop_args.property];
+    }
     return previous_player;
   }
 
@@ -504,10 +518,9 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     }
 
     if (args.duration !== playerObj.tweenConfig.duration) {
-      console.log('yo')
+
       args.delay = 0;
       playerObj.tweenConfig.duration = Math.max(playerObj.tweenConfig.duration, args.duration + args.delay || 0)
-      console.log(playerObj.tweenConfig.duration)
     }
 
     // playerObj.tween = new Tweenable();
@@ -517,7 +530,13 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
         playerObj.propDelays = {};
       }
       playerObj.propDelays[args.property] = {property: args.property, offset: args.delay, duration: args.duration, start: args.start, end: args.end, ease:args.ease, cache:[]};
-      TweenService.preComputeValues(args.property, args.duration, args.start, args.end, args.ease, playerObj.propDelays[args.property])
+
+      cacheResponse = TweenService.preComputeValues(args.property, args.duration, args.start, args.end, args.ease, playerObj.propDelays[args.property])
+      // console.log(playerObj.tweenConfig.inBetween)
+    }
+
+    if (playerObj.tweenConfig.inBetween && playerObj.tweenConfig.inBetween.length) {
+
     }
 
 

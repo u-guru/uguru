@@ -1038,7 +1038,7 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
                 var valArr = propFrames.props[key];
                 for (var j = 0; j < valArr.length - 1; j++) {
                   var duration = animPropCopy.duration * (valArr[j + 1].percent - valArr[j].percent)/100;
-                  var delay = animPropCopy.delay + valArr[j].percent*10;
+                  var delay = duration * j
                   var resultStr = key.replace('rgb', 'rgba') + ':' + valArr[j].value + ':' + valArr[j + 1].value + ':' + duration + ':' + animPropCopy.ease + ':' + delay;
                   console.log(resultStr)
                   stringsToAdd.push(resultStr);

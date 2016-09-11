@@ -92,6 +92,7 @@ function TweenService() {
     }
 
     function preComputeValues(property, duration, start, end, ease, result_arr) {
+
         result_arr.cache = [];
         var iterations = (duration/1000 * 60);//fps
         var startDict = {};
