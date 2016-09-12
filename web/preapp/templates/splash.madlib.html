@@ -17,9 +17,6 @@
 
 			when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 			when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"></div>
-			<!-- init-with="p-op"
-			when-madlib-init="t-enter"
-			on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]" -->
         	<!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop" viewBox="0 0 340 205"
 			init-with="p-op"
@@ -44,9 +41,11 @@
             </g>
         </svg>
         <svg class="coach-fill" viewBox="0 0 280 112"
-			init-default
-
-			when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
+			when-head-squash="t:[init:self]"
+			init-with="p-op"
+			on-init="p:[opacity:0:1:250:easeOutSine]"
+			init-later>
+			<!-- when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
 			when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 
 			when-category-dropdown-toggle-on="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
@@ -56,7 +55,7 @@
 			when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 
 			when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
-			when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]">
+			when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" -->
             <g fill="none">
                 <path d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
                     init-with="p-op"
@@ -80,7 +79,7 @@
     <div class="splash-adlib"
 		when-transition-start="t:[init:self]"
 		init-with="p-op"
-		on-init="p:[opacity:0:1:250:easeOutSine]:delay-1000"
+		on-init="p:[opacity:0:1:250:easeOutSine]:delay-500"
 		init-later>
 		<!-- eval-on-activate="activateMap()" -->
         <div class="splash-adlib-inside">
@@ -88,10 +87,6 @@
                 init-with="p-op"
 				when-madlib-init="t-enter"
                 on-enter="a:[adlib-header-smash:set:(dur:1000ms):in]">
-				<!-- when-warp-transition="t:[init:self]"
-				init-with="p-op"
-				on-init="p:[opacity:0:1:250:easeOutSine]:delay-1000"
-				init-later -->
                 <h1 class="adlib-header desktop" desktop>
                     <span init-with="p:[tr:translate3d(40px#0#0)]"
 						when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
@@ -239,7 +234,13 @@
 						on-enter="p:[tr:none, t:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.end}}</span>
                 </h1>
             </div>
-                    <!--         when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
+            <ul init-default
+				when-madlib-init="t:[on-enter:children:delay-2750]">
+				<li class='adlib-tag adlib-tag-1'
+                    init-with="p:[op:0, t:all 250ms ease-in-out]"
+                    on-enter="a:[portal-tag-1:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]"
+
+					when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
                     when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 
                     when-category-dropdown-toggle-on="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
@@ -251,22 +252,14 @@
                     when-university-dropdown-toggle-on="p:[op:0.1:delay-300, t:all 250ms ease-in-out]"
                     when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
 
-                    when-category-dropdown-click="t:[on-change:self]" -->
-            <ul init-default
-				when-madlib-init="t:[on-enter:children:delay-2750]">
-				<li class='adlib-tag adlib-tag-1'
-                    init-with="p:[op:0, t:all 250ms ease-in-out]"
-                    on-enter="a:[portal-tag-1:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]"
-
-
+                    when-category-dropdown-click="t:[on-change:self]
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
                             u
                             when-splash-one-one-click-inactive="tr:[clear:transform, duration:250, delay:0]"
                             when-splash-one-one-click-active="tr:[to:(#blank-1), duration:250, delay:0] | class:[active:add:delay-250]"
-							ng-click="madlib.tagClicked(0, 0, $event)"
-                            >
+							ng-click="madlib.tagClicked(0, 0, $event)">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -312,8 +305,7 @@
                             u
                             when-splash-one-two-click-inactive="tr:[clear:translate, duration:250, delay:0]|class:[active:remove:delay-250]"
                             when-splash-one-two-click-active="tr:[to:(#blank-1), duration:250, delay:0] | class:[active:add:delay-250]"
-                            ng-click="madlib.tagClicked(0, 1, $event)"
-                            >
+                            ng-click="madlib.tagClicked(0, 1, $event)">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
