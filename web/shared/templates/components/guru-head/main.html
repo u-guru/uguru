@@ -1,10 +1,10 @@
 <div class="perspective-container guru-head-switcher" init-default
-	when-category-dropdown-click="send:[^name-init:public, head-init:public]"
-	when-mobile-categories-exit="send:[^category.name-init:public, head-init:public]"
-	when-category-dropdown-toggle-on="send:[htilt-init:public]"
-	when-category-dropdown-toggle-off="send:[hreset-init:public]"
-	when-university-dropdown-toggle-on="send:[htilt-init:public]"
-	when-university-dropdown-toggle-off="send:[hreset-init:public]">
+	when-category-dropdown-click="s:[^name-init:public, head-init:public]"
+	when-mobile-categories-exit="s:[^category.name-init:public, head-init:public]"
+	when-category-dropdown-toggle-on="s:[htilt-init:public]"
+	when-category-dropdown-toggle-off="s:[hreset-init:public]"
+	when-university-dropdown-toggle-on="s:[htilt-init:public]"
+	when-university-dropdown-toggle-off="s:[hreset-init:public]">
 	<!-- <custom-states when="head-init, htilt-init, hreset-init">
 	</custom-states> -->
 	<svg class="default-head absolute top-0 left-0" viewBox="0 0 200 200"
@@ -52,7 +52,7 @@
 		</g>
 	</svg>
 	<svg class="aca-head absolute top-0 left-0" viewBox="0 0 200 200"
-		when-head-squash="t:[init:self]"
+		when-category-head-load="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		init-later>
@@ -232,7 +232,7 @@
 		</g>
 	</svg>
 	<svg class="bk-head absolute top-0 left-0" viewBox="0 0 200 200"
-		when-head-squash="t:[init:self]"
+		when-category-head-load="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		init-later>
@@ -394,7 +394,7 @@
 		</g>
 	</svg>
 	<svg class="ph-head absolute top-0 left-0" viewBox="0 0 200 200"
-		when-head-squash="t:[init:self]"
+		when-category-head-load="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		init-later>
@@ -551,7 +551,7 @@
 		</g>
 	</svg>
 	<svg class="tech-head absolute top-0 left-0" viewBox="0 0 200 200"
-		when-head-squash="t:[init:self]"
+		when-category-head-load="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		init-later>
@@ -708,7 +708,7 @@
 		</g>
 	</svg>
 	<svg class="hh-head absolute top-0 left-0" viewBox="0 0 200 200"
-		when-head-squash="t:[init:self]"
+		when-category-head-load="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		init-later>
