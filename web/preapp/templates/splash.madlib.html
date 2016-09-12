@@ -37,33 +37,31 @@
             </g>
         </svg>
         <svg class="coach-fill" viewBox="0 0 280 112"
+			when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
+			when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
+
+			when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
+			when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
+
+			when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-150"
+			when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
+
+			when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-150"
+			when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
+
 			when-head-squash="t:[init:self]"
 			init-with="p-op"
 			on-init="p:[opacity:0:1:250:easeOutSine]"
 			init-later>
-			<!-- when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
-			when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
-
-			when-category-dropdown-toggle-on="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
-			when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
-
-			when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
-			when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
-
-			when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
-			when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" -->
             <g fill="none">
                 <path d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
                     init-with="p-op"
-					when-madlib-init="t-enter"
-                    on-enter="a:[coach-click-2:set:(dur:150ms#func:ease-in):delay-6500:in]"></path>
+					when-madlib-init="p:[op:1, stroke-dashoffset:137:0:300:easeInExpo]:delay-6500"></path>
                 <path d="M37.0997894,99.9330039 L12.6336973,109.324657 L3.24204445,84.8585646" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
                     init-with="p-op"
-					when-madlib-init="t-enter"
-                    on-enter="a:[coach-click-1:set:(dur:150ms#func:ease-in):delay-6500:in]"></path>
-                <g init-with="p:[op:0, transform-origin:center center]"
-					when-madlib-init="t-enter"
-                    on-enter="a:[bounceIn-subtle:set:(dur:1000ms):delay-6500:in]">
+					when-madlib-init="p:[op:1, stroke-dashoffset:53:0:300:easeInExpo]:delay-6500"></path>
+                <g init-with="p:[op:0, tro:center center]"
+					when-madlib-init="a:[bounceIn-subtle:set:(dur:1000ms):in:delay-6500]">
                     <text transform="translate(187.228115, 32.099551) rotate(-15.000000) translate(-187.228115, -32.099551) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
                         <tspan x="146.128115" y="31.0995511">fill in</tspan>
                         <tspan x="99.7281154" y="71.0995511">the blanks</tspan>
@@ -85,78 +83,74 @@
                 on-enter="a:[adlib-header-smash:set:(dur:1000ms):in]">
                 <h1 class="adlib-header desktop" desktop>
                     <span init-with="p:[tr:translate3d(40px#0#0)]"
-						when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
-						when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
+						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-						when-category-dropdown-toggle-on="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
-						when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
+						when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-						when-university-dropdown-mouse-enter="p:[op:0.1:delay-300, t:all 250ms ease-in-out]"
-						when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-300"
+						when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-						when-university-dropdown-toggle-on="p:[op:0.1:delay-300, t:all 250ms ease-in-out]"
-						when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-300"
+						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
-						when-madlib-init="t-enter"
-						on-enter="p:[tr:translate3d(0#0#0), t:all 500ms ease-out]:delay-1250">{{madlib.category.tags_data.template.beginning}}</span>
+						when-madlib-init="p:[transform:translateX(40px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank"
-						when-category-dropdown-mouse-enter="p:[op:0.25:delay-250, t:all 250ms ease-in-out]"
-						when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
+						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-						when-category-dropdown-toggle-on="p:[op:0.25:delay-250, t:all 250ms ease-in-out]"
-						when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
+						when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-						when-university-dropdown-mouse-enter="p:[op:0.1:delay-250, t:all 250ms ease-in-out]"
-						when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-250"
+						when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-						when-university-dropdown-toggle-on="p:[op:0.1:delay-250, t:all 250ms ease-in-out]"
-						when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-250"
+						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
-						init-with="p:[background:rgba(64#72#75#0), tr:translate3d(0#0#0) scale(1.7)]"
-						when-madlib-init="t-enter"
-						on-enter="p:[background:rgba(64#72#75#.5), tr:none, t:all 500ms ease-out]:delay-1250">
+						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(0#0#0) scale(1.7)]"
+						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#.5):500:easeOutSine, transform:translateZ(0px) scale(1.7):translateZ(0px) scale(1):500:easeOutSine easeOutSine]:delay-1250">
                         <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                             <rect class="null" x="2" y="2" width="280" height="84" rx="16"
 								init-with="p:[stroke-dashoffset:-701, stroke-dasharray:701]"
-								when-madlib-init="t-enter"
-								on-enter="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-2000"></rect>
+								when-madlib-init="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-2000"></rect>
+								<!-- @samir animating multiple values of stroke-dasharray causes the animation to not render -->
+								<!-- when-madlib-init="p:[stroke-dashoffset:-701:0:750:easeOutCirc, stroke-dasharray:701#701:16#14:750:easeOutCirc]:delay-2000" -->
                         </svg>
                         <b id="blank-1-text"
 							init-with="p:[font-weight:600]"
-							when-madlib-init="t-enter"
-							on-enter="p:[font-weight:700, t:all 750ms ease-out]:delay-2000">{{madlib.category.tags_data.template.p1}}</b>
+							when-madlib-init="p:[font-weight:600:700:750:easeOutSine]:delay-2000">{{madlib.category.tags_data.template.p1}}</b>
                     </a>
                     <span init-with="p:[tr:translate3d(-40px#0#0)]"
-						when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
-						when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
+						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-						when-category-dropdown-toggle-on="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
-						when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
+						when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-						when-university-dropdown-mouse-enter="p:[op:0.1:delay-200, t:all 250ms ease-in-out]"
-						when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-200"
+						when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-						when-university-dropdown-toggle-on="p:[op:0.1:delay-200, t:all 250ms ease-in-out]"
-						when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-200"
+						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
-						when-madlib-init="t-enter"
-						on-enter="p:[tr:none, t:all 500ms ease-out]:delay-1250">{{madlib.category.tags_data.template.middle}}</span>
+						when-madlib-init="p:[transform:translateX(-40px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">{{madlib.category.tags_data.template.middle}}</span>
                     <a id="blank-2" class="tag-adlib blank"
-						when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
-						when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
+						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-						when-category-dropdown-toggle-on="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
-						when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
+						when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-						when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
-						when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-150"
+						when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-						when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
-						when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-150"
+						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
-						init-with="p:[background:rgba(64#72#75#0), tr:translate3d(-37.5px#0#0) scale(1.7)]"
-						when-madlib-init="t-enter"
-						on-enter="p:[background:rgba(64#72#75#.5), tr:none, t:all 500ms ease-out]:delay-1250">
+						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(-37.5px#0#0) scale(1.7)]"
+						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#.5):500:easeOutSine, transform:translateX(-37.5px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
                         <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                             <rect class="null" x="2" y="2" width="280" height="84" rx="16"
 								init-with="p:[stroke-dashoffset:-701, stroke-dasharray:701]"
@@ -165,54 +159,46 @@
                         </svg>
                         <b id="blank-2-text"
 							init-with="p:[font-weight:600]"
-							when-madlib-init="t-enter"
-							on-enter="p:[font-weight:700, t:all 750ms ease-out]:delay-2000">{{madlib.category.tags_data.template.p2}}</b>
+							when-madlib-init="p:[font-weight:600:700:750:easeOutSine]:delay-2000">{{madlib.category.tags_data.template.p2}}</b>
                     </a>
                     <span init-with="p:[tr:translate3d(-35px#0#0)]"
-						when-category-dropdown-mouse-enter="p:[op:0.25:delay-100, t:all 250ms ease-in-out]"
-						when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-100"
+						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-						when-category-dropdown-toggle-on="p:[op:0.25:delay-100, t:all 250ms ease-in-out]"
-						when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+						when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-100"
+						when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-						when-university-dropdown-mouse-enter="p:[op:0.1:delay-100, t:all 250ms ease-in-out]"
-						when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-100"
+						when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-						when-university-dropdown-toggle-on="p:[op:0.1:delay-100, t:all 250ms ease-in-out]"
-						when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+						when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-100"
+						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
-						when-madlib-init="t-enter"
-						on-enter="p:[tr:none, t:all 500ms ease-out]:delay-1250">{{madlib.category.tags_data.template.end}}</span>
+						when-madlib-init="p:[transform:translateX(-35px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">{{madlib.category.tags_data.template.end}}</span>
                 </h1>
 				<h1 class="adlib-header mobile" mobile>
 					<!-- ng-if="root.window.mobile" -->
                     <span init-with="p:[tr:translate3d(48px#0#0)]"
 						init-default
-						when-madlib-init="t-enter"
-						on-enter="p:[tr:translate3d(0#0#0), t:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.beginning}}</span>
+						when-madlib-init="p:[transform:translateX(48px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]delay-2500">{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank"
-						init-with="p:[background:rgba(64#72#75#0), tr:translate3d(0#0#0) scale(1.4)]"
-						when-madlib-init="t-enter"
-						on-enter="p:[background:rgba(64#72#75#.5), tr:none, t:all 500ms ease-out]:delay-2500">
+						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(0#0#0) scale(1.4)]"
+						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#0.5):500:easeOutSine, transform:translateZ(0px) scale(1.4):translateZ(0px) scale(1):500:easeOutSine]:delay-2500">
                         <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                             <rect x="2" y="2" width="256" height="72" rx="16"
 								init-with="p:[stroke-dashoffset:-701, stroke-dasharray:701]"
-								when-madlib-init="t-enter"
-								on-enter="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-3250"></rect>
+								when-madlib-init="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-3250"></rect>
                         </svg>
                         <b id="blank-1-text"
 							init-with="p:[font-weight:600]"
-							when-madlib-init="t-enter"
-							on-enter="p:[font-weight:700, t:all 750ms ease-out]:delay-3250">{{madlib.category.tags_data.template.p1}}</b>
+							when-madlib-init="p:[font-weight:600:700:750:easeOutSine]:delay-3250">{{madlib.category.tags_data.template.p1}}</b>
                     </a>
                     <span init-with="p:[tr:translate3d(-48px#0#0)]"
 						init-default
-						when-madlib-init="t-enter"
-						on-enter="p:[tr:none, t:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.middle}}</span>
+						when-madlib-init="p:[transform:translateX(-48px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-2500">{{madlib.category.tags_data.template.middle}}</span>
                     <a id="blank-2" class="tag-adlib blank"
-						init-with="p:[background:rgba(64#72#75#0), tr:translate3d(-2px#0#0) scale(1.4)]"
-						when-madlib-init="t-enter"
-						on-enter="p:[background:rgba(64#72#75#.5), tr:none, t:all 500ms ease-out]:delay-2500">
+						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(-2px#0#0) scale(1.4)]"
+						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#0.5):500:easeOutSine, transform:translateX(-2px) translateZ(0px) scale(1.4):translateX(0px) translateZ(0px) scale(1):500:easeOutSine easeOutSine easeOutSine]:delay-2500">
                         <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                             <rect x="2" y="2" width="256" height="72" rx="16"
 								init-with="p:[stroke-dashoffset:-701, stroke-dasharray:701]"
@@ -221,34 +207,31 @@
                         </svg>
                         <b id="blank-2-text"
 							init-with="p:[font-weight:600]"
-							when-madlib-init="t-enter"
-							on-enter="p:[font-weight:700, t:all 750ms ease-out]:delay-3250">{{madlib.category.tags_data.template.p2}}</b>
+							when-madlib-init="p:[font-weight:600:700:750:easeOutSine]:delay-3250">{{madlib.category.tags_data.template.p2}}</b>
                     </a>
                     <span init-with="p:[tr:translate3d(-23px#0#0)]"
 						init-default
-						when-madlib-init="t-enter"
-						on-enter="p:[tr:none, t:all 500ms ease-out]:delay-2500">{{madlib.category.tags_data.template.end}}</span>
+						when-madlib-init="p:[transform:translateX(-23px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine]:delay-2500">{{madlib.category.tags_data.template.end}}</span>
                 </h1>
             </div>
             <ul init-default
 				when-madlib-init="t:[on-enter:children:delay-2750]">
 				<li class='adlib-tag adlib-tag-1'
-                    init-with="p:[op:0, t:all 250ms ease-in-out]"
+                    init-with="p-op"
                     on-enter="a:[portal-tag-1:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]"
+					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
+					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-					when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
-                    when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
+					when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-                    when-category-dropdown-toggle-on="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
-                    when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-300"
+					when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-                    when-university-dropdown-mouse-enter="p:[op:0.1:delay-300, t:all 250ms ease-in-out]"
-                    when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-300"
+					when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
-                    when-university-dropdown-toggle-on="p:[op:0.1:delay-300, t:all 250ms ease-in-out]"
-                    when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
-
-                    when-category-dropdown-click="t:[on-change:self]
+                    when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]">
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
@@ -264,9 +247,7 @@
 	                        </svg>
 	                        <b><i>{{splash.category.options.one[0]}}</i></b>
 	                    </a>
-	                    <span class="tag-adlib ghost active-ghost"
-	                        on-both-blanks-filled-enter="fadeOut:animOut"
-	                        on-map-transition-enter="fadeOut:animOut">
+	                    <span class="tag-adlib ghost active-ghost">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -278,20 +259,20 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-2'
-					init-with="p:[op:0,t:all 250ms ease-in-out]"
+					init-with="p-op"
 					on-enter="a:[portal-tag-2:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-250"
 
-	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-250, t:all 250ms ease-in-out]"
-	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
+					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-category-dropdown-toggle-on="p:[op:0.25:delay-250, t:all 250ms ease-in-out]"
-	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
+					when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-mouse-enter="p:[op:0.1:delay-250, t:all 250ms ease-in-out]"
-	                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-250"
+					when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-250, t:all 250ms ease-in-out]"
-	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-250"
+					when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
@@ -310,9 +291,7 @@
 	                        </svg>
 	                        <b><i>{{splash.category.options.one[1]}}</i></b>
 	                    </a>
-	                    <span class="tag-adlib ghost active-ghost"
-	                        on-both-blanks-filled-enter="fadeOut:animOut"
-	                        on-map-transition-enter="fadeOut:animOut">
+	                    <span class="tag-adlib ghost active-ghost">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -324,20 +303,20 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-3'
-                    init-with="p:[op:0, t:all 250ms ease-in-out]"
+                    init-with="p-op"
                     on-enter="a:[portal-tag-3:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-450"
 
-	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
-	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
+					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-category-dropdown-toggle-on="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
-	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
+					when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-mouse-enter="p:[op:0.1:delay-200, t:all 250ms ease-in-out]"
-	                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-200"
+					when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-200, t:all 250ms ease-in-out]"
-	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-200"
+					when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
@@ -356,9 +335,7 @@
 	                        </svg>
 	                        <b><i>{{splash.category.options.one[2]}}</i></b>
 	                    </a>
-	                    <span class="tag-adlib ghost active-ghost"
-	                        on-both-blanks-filled-enter="fadeOut:animOut"
-	                        on-map-transition-enter="fadeOut:animOut">
+	                    <span class="tag-adlib ghost active-ghost">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -370,20 +347,20 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-4'
-                    init-with="p:[op:0, t:all 250ms ease-in-out]"
+                    init-with="p-op"
                     on-enter="a:[portal-tag-4:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-600"
 
-	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
-	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
+					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-category-dropdown-toggle-on="p:[op:0.25:delay-150, t:all 250ms ease-in-out]"
-	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
+					when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
-	                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-150"
+					when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
-	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-150"
+					when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
@@ -401,9 +378,7 @@
 	                        </svg>
 	                        <b><i>{{splash.category.options.one[3]}}</i></b>
 	                    </a>
-	                    <span class="tag-adlib ghost active-ghost"
-	                        on-both-blanks-filled-enter="fadeOut:animOut"
-	                        on-map-transition-enter="fadeOut:animOut">
+	                    <span class="tag-adlib ghost active-ghost">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -415,20 +390,20 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-5'
-                    init-with="p:[op:0, t:all 250ms ease-in-out]"
+                    init-with="p-op"
                     on-enter="a:[portal-tag-5:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-900"
 
-	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-350, t:all 250ms ease-in-out]"
-	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-350"
+					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-category-dropdown-toggle-on="p:[op:0.25:delay-350, t:all 250ms ease-in-out]"
-	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-350"
+					when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-mouse-enter="p:[op:0.1:delay-350, t:all 250ms ease-in-out]"
-	                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-350"
+					when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-350, t:all 250ms ease-in-out]"
-	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-350"
+					when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
@@ -447,9 +422,7 @@
 	                        </svg>
 	                        <b><i dynamic-data="{{splash.category.options.two[0]}}">{{splash.category.options.two[0]}}</i></b>
 	                    </a>
-	                    <span class="tag-adlib ghost active-ghost"
-	                        on-both-blanks-filled-enter="fadeOut:animOut"
-	                        on-map-transition-enter="fadeOut:animOut">
+	                    <span class="tag-adlib ghost active-ghost">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -461,20 +434,20 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-6'
-                    init-with="p:[op:0, t:all 250ms ease-in-out]"
+                    init-with="p-op"
                     on-enter="a:[portal-tag-6:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-1250"
 
-	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
-	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
+					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-category-dropdown-toggle-on="p:[op:0.25:delay-300, t:all 250ms ease-in-out]"
-	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
+					when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-mouse-enter="p:[op:0.1:delay-300, t:all 250ms ease-in-out]"
-	                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-300"
+					when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-300, t:all 250ms ease-in-out]"
-	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-300"
+					when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
@@ -493,9 +466,7 @@
 	                        </svg>
 	                        <b><i>{{splash.category.options.two[1]}}</i></b>
 	                    </a>
-	                    <span class="tag-adlib ghost active-ghost"
-	                        on-both-blanks-filled-enter="fadeOut:animOut"
-	                        on-map-transition-enter="fadeOut:animOut">
+	                    <span class="tag-adlib ghost active-ghost">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -507,20 +478,20 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-7'
-                    init-with="p:[op:0, t:all 250ms ease-in-out]"
+                    init-with="p-op"
                     on-enter="a:[portal-tag-7:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-1750"
 
-	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-250, t:all 250ms ease-in-out]"
-	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
+					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-category-dropdown-toggle-on="p:[op:0.25:delay-250, t:all 250ms ease-in-out]"
-	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
+					when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-mouse-enter="p:[op:0.1:delay-250, t:all 250ms ease-in-out]"
-	                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-250"
+					when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-250, t:all 250ms ease-in-out]"
-	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-250"
+					when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
@@ -539,9 +510,7 @@
 	                        </svg>
 	                        <b><i>{{splash.category.options.two[2]}}</i></b>
 	                    </a>
-	                    <span class="tag-adlib ghost active-ghost"
-	                        on-both-blanks-filled-enter="fadeOut:animOut"
-	                        on-map-transition-enter="fadeOut:animOut">
+	                    <span class="tag-adlib ghost active-ghost">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -553,20 +522,20 @@
 	            </li>
 
 				<li class='adlib-tag adlib-tag-8'
-                    init-with="p:[op:0, t:all 250ms ease-in-out]"
+                    init-with="p-op"
                     on-enter="a:[portal-tag-8:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-2000"
 
-	            	when-category-dropdown-mouse-enter="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
-	                when-category-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
+					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-category-dropdown-toggle-on="p:[op:0.25:delay-200, t:all 250ms ease-in-out]"
-	                when-category-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
+					when-category-dropdown-toggle-off="p:[opacity:0.25:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-mouse-enter="p:[op:0.1:delay-200, t:all 250ms ease-in-out]"
-	                when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-mouse-enter="p:[opacity:1:0.1:250:easeInOutSine]:delay-200"
+					when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
-	            	when-university-dropdown-toggle-on="p:[op:0.1:delay-200, t:all 250ms ease-in-out]"
-	                when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"
+					when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-200"
+					when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
@@ -575,12 +544,9 @@
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
                             u
-	                       when-splash-click-inactive="tr:[clear:translate, duration:250, delay:0]|class:[active:remove:delay-250]"
-                           when-splash-two-four-click-active="tr:[to:(#blank-2), duration:250, delay:0] | class:[active:add:delay-250]"
-                            ng-click="madlib.tagClicked(1, 3, $event)"
-                            >
-
-
+							when-splash-click-inactive="tr:[clear:translate, duration:250, delay:0]|class:[active:remove:delay-250]"
+							when-splash-two-four-click-active="tr:[to:(#blank-2), duration:250, delay:0] | class:[active:add:delay-250]"
+                        	ng-click="madlib.tagClicked(1, 3, $event)">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
@@ -589,9 +555,7 @@
 	                        </svg>
 	                        <b><i>{{splash.category.options.two[3]}}</i></b>
 	                    </a>
-	                    <span class="tag-adlib ghost active-ghost"
-	                        on-both-blanks-filled-enter="fadeOut:animOut"
-	                        on-map-transition-enter="fadeOut:animOut">
+	                    <span class="tag-adlib ghost active-ghost">
 	                        <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
 	                            <rect x="2" y="2" width="280" height="84" rx="16"></rect>
 	                        </svg>
