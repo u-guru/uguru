@@ -2,12 +2,15 @@
     class="splash-hero-content"
 	ng-controller='SplashMadlibController as madlib'>
 	<!-- on-init="s:[madlib-init:public]" -->
-	<!-- <custom-states when="madlib-init"></custom-states> -->
     <div class="splash-guru-head"
-		init-with="p:[tr:translateY(120px)]">
+		init-with="p:[tr:translateY(120px)]"
+		when-transition-end="send:[head-squash:public:delay-600]"
+		when-head-squash="p:[transform:translateY(120px):translateY(-30px):500:easeInBack] | s:[head-return:public]:delay-500"
+		when-head-return="p:[transform:translateY(-30px):translateY(0px):500:easeOutElastic] | s:[madlib-init:public:delay-2000]">
         <div class="splash-hero-guru splash-logo-guru"
 			ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"
 			init-with="p:[tr:scale(1)]"
+			when-head-squash="p:[transform:scale(1):scale(2):350:easeInOutBounce:^:2+0:a]"
 
 			when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 			when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
@@ -70,7 +73,11 @@
             </g>
         </svg>
     </div>
-    <div class="splash-adlib">
+    <div class="splash-adlib"
+		when-transition-start="t:[init:self]"
+		init-with="p-op"
+		on-init="p:[opacity:0:1:250:easeOutSine]:delay-1000"
+		init-later>
 		<!-- eval-on-activate="activateMap()" -->
         <div class="splash-adlib-inside">
             <div class="adlib-header-container relative"
