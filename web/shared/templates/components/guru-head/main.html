@@ -1,10 +1,10 @@
 <div class="perspective-container guru-head-switcher" init-default
-	when-category-dropdown-click="send:[^name-init:public, head-init:public]"
-	when-mobile-categories-exit="send:[^category.name-init:public, head-init:public]"
-	when-category-dropdown-toggle-on="send:[htilt-init:public]"
-	when-category-dropdown-toggle-off="send:[hreset-init:public]"
-	when-university-dropdown-toggle-on="send:[htilt-init:public]"
-	when-university-dropdown-toggle-off="send:[hreset-init:public]">
+	when-category-dropdown-click="s:[^name-init:public, head-init:public]"
+	when-mobile-categories-exit="s:[^category.name-init:public, head-init:public]"
+	when-category-dropdown-toggle-on="s:[htilt-init:public]"
+	when-category-dropdown-toggle-off="s:[hreset-init:public]"
+	when-university-dropdown-toggle-on="s:[htilt-init:public]"
+	when-university-dropdown-toggle-off="s:[hreset-init:public]">
 	<!-- <custom-states when="head-init, htilt-init, hreset-init">
 	</custom-states> -->
 	<svg class="default-head absolute top-0 left-0" viewBox="0 0 200 200"
@@ -17,7 +17,7 @@
 		when-household-init="t-exit"
 		when-htilt-init="p:[transform:rotate(0deg):rotate(-10deg):250:easeOutSine]"
 		when-hreset-init="p:[tr:rotate(0deg) translateY(0px)]"
-		on-exit="p:[opacity:1:0, transform:rotate(0deg) translateY(0px):rotate(30deg) translateY(50px):250:easeInSine]">
+		on-exit="p:[opacity:1:0:250:easeInSine, transform:rotate(0deg) translateY(0px):rotate(30deg) translateY(50px):250:easeInSine]">
 		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<path d="M61.0066708,114 C61.0066708,114 57.0066708,114 55.0066708,118 C53.0066708,122 53.9817687,128.312012 57.9768858,130.79248 C61.972003,133.272949 65.006671,130 65.0066708,130 C68.9783507,137.0625 76.4168292,156.488446 109.512697,154.99722 C135.632645,153.820313 147.647784,135.905274 147.006671,120 C147.006671,120 152.002276,122.307617 154.525714,118.708496 C157.049151,115.109375 158.006671,111 156.006671,107 C154.006671,103 151.006671,102 147.006671,104 C150.006671,91.0000006 132.006671,78 132.006671,78 C120.006671,82 108.006671,74 97.0066708,74 C86.0066708,74 57.0066708,80 61.0066708,114" class="face" stroke="#33534D" stroke-width="2" fill="#F9ECE5"></path>
 			<path d="M70,95 L92,96 L92,93 L72,89 L70,95 L70,95 L70,95 L70,95 L70,95 Z M134.752203,90.6040853 L112.923075,93.5177063 L112.661608,90.5291222 L132.236879,84.8012286 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 Z" class="eyebrows" stroke="#33534D" stroke-width="2" fill="#69B3A5"
@@ -52,7 +52,7 @@
 		</g>
 	</svg>
 	<svg class="aca-head absolute top-0 left-0" viewBox="0 0 200 200"
-		when-head-squash="t:[init:self]"
+		when-category-head-load="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		init-later>
@@ -95,7 +95,7 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[opacity:0:1:250:easeOutSine:800, transform:rotate(30deg) translateY(50px):rotate(0deg) translateY(0px):250:easeOutSine:650] | t:[on-enter:children]"
-					on-exit="p:[opacity:1:0, transform:rotate(0deg) translateY(0px):rotate(30deg) translateY(50px):250:easeInSine]">
+					on-exit="p:[opacity:1:0:250:easeInSine, transform:rotate(0deg) translateY(0px):rotate(30deg) translateY(50px):250:easeInSine]">
 					<path d="M61.0066708,114 C61.0066708,114 57.0066708,114 55.0066708,118 C53.0066708,122 53.9817687,128.312012 57.9768858,130.79248 C61.972003,133.272949 65.006671,130 65.0066708,130 C68.9783507,137.0625 76.4168292,156.488446 109.512697,154.99722 C135.632645,153.820313 147.647784,135.905274 147.006671,120 C147.006671,120 152.002276,122.307617 154.525714,118.708496 C157.049151,115.109375 158.006671,111 156.006671,107 C154.006671,103 151.006671,102 147.006671,104 C150.006671,91.0000006 132.006671,78 132.006671,78 C120.006671,82 108.006671,74 97.0066708,74 C86.0066708,74 57.0066708,80 61.0066708,114" class="face" stroke="#503349" stroke-width="2" fill="#F9ECE5"></path>
 					<path d="M70,95 L92,96 L92,93 L72,89 L70,95 L70,95 L70,95 L70,95 L70,95 Z M134.752203,90.6040853 L112.923075,93.5177063 L112.661608,90.5291222 L132.236879,84.8012286 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 Z" class="eyebrows" stroke="#503349" stroke-width="2"
 						init-with="p:[fill:#69B3A5]"
@@ -232,7 +232,7 @@
 		</g>
 	</svg>
 	<svg class="bk-head absolute top-0 left-0" viewBox="0 0 200 200"
-		when-head-squash="t:[init:self]"
+		when-category-head-load="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		init-later>
@@ -394,7 +394,7 @@
 		</g>
 	</svg>
 	<svg class="ph-head absolute top-0 left-0" viewBox="0 0 200 200"
-		when-head-squash="t:[init:self]"
+		when-category-head-load="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		init-later>
@@ -551,7 +551,7 @@
 		</g>
 	</svg>
 	<svg class="tech-head absolute top-0 left-0" viewBox="0 0 200 200"
-		when-head-squash="t:[init:self]"
+		when-category-head-load="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		init-later>
@@ -708,7 +708,7 @@
 		</g>
 	</svg>
 	<svg class="hh-head absolute top-0 left-0" viewBox="0 0 200 200"
-		when-head-squash="t:[init:self]"
+		when-category-head-load="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		init-later>
