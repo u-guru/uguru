@@ -15,9 +15,9 @@
 		when-photography-init="t-exit"
 		when-tech-init="t-exit"
 		when-household-init="t-exit"
-		when-htilt-init="p:[tr:rotate(-10deg), t:all 250ms ease-out]"
+		when-htilt-init="p:[transform:rotate(0deg):rotate(-10deg):250:easeOutSine]"
 		when-hreset-init="p:[tr:rotate(0deg) translateY(0px)]"
-		on-exit="p:[op:0, tr:rotate(30deg) translateY(50px), t:all 250ms ease-in]">
+		on-exit="p:[opacity:1:0, transform:rotate(0deg) translateY(0px):rotate(30deg) translateY(50px):250:easeInSine]">
 		<g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 			<path d="M61.0066708,114 C61.0066708,114 57.0066708,114 55.0066708,118 C53.0066708,122 53.9817687,128.312012 57.9768858,130.79248 C61.972003,133.272949 65.006671,130 65.0066708,130 C68.9783507,137.0625 76.4168292,156.488446 109.512697,154.99722 C135.632645,153.820313 147.647784,135.905274 147.006671,120 C147.006671,120 152.002276,122.307617 154.525714,118.708496 C157.049151,115.109375 158.006671,111 156.006671,107 C154.006671,103 151.006671,102 147.006671,104 C150.006671,91.0000006 132.006671,78 132.006671,78 C120.006671,82 108.006671,74 97.0066708,74 C86.0066708,74 57.0066708,80 61.0066708,114" class="face" stroke="#33534D" stroke-width="2" fill="#F9ECE5"></path>
 			<path d="M70,95 L92,96 L92,93 L72,89 L70,95 L70,95 L70,95 L70,95 L70,95 Z M134.752203,90.6040853 L112.923075,93.5177063 L112.661608,90.5291222 L132.236879,84.8012286 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 Z" class="eyebrows" stroke="#33534D" stroke-width="2" fill="#69B3A5"
@@ -39,11 +39,11 @@
 			<path d="M54.8920408,117.428579 C53.8157813,117.180105 52.7418726,117.851158 52.4933985,118.927417 C52.2449245,120.003677 52.9159771,121.077585 53.9922366,121.326059 C55.068496,121.574533 56.1424047,120.903481 56.3908788,119.827221 M154.716513,114.023602 C154.449293,115.095362 155.101502,116.180818 156.173261,116.448038 C157.24502,116.715257 158.330476,116.063049 158.597696,114.99129 C158.864915,113.919531 158.212707,112.834074 157.140948,112.566855" class="earrings-2" stroke="#33534D" stroke-linecap="round" stroke-linejoin="round"></path>
 			<path d="M111,140 C116,141 126,139 126,133" class="mouth" stroke="#33534D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 				init-with="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"
-				when-htilt-init="p:[tr:translateX(-10px) translateY(-2px) rotate(8deg), t:all 250ms ease-out]"
+				when-htilt-init="p:[transform:translateX(0px) translateY(0px) rotate(0deg):translateX(-10px) translateY(-2px) rotate(8deg):250:easeOutSine]"
 				when-hreset-init="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"></path>
 			<path d="M90.5288326,120.164053 C92.7258698,119.933136 94.3197243,117.964889 94.0888064,115.767852 C93.8578885,113.570815 91.7417349,111.688246 89.5880769,111.213356 C86.4999827,110.53242 84.5109385,110.741477 81.6319013,112.049584 C78.7528641,113.357691 76.1874123,117.649364 76.1874123,117.649364 L78.2593359,118.228857 C82.7309517,112.939577 85.9235743,114.615036 86.1326312,116.60408 C86.3635491,118.801117 88.3317955,120.394971 90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 Z M128.289054,115.838813 C130.486092,115.607895 132.079946,113.639649 131.849028,111.442611 C131.61811,109.245574 129.501957,107.363006 127.348299,106.888116 C124.260205,106.207179 122.27116,106.416236 119.392123,107.724344 C116.513086,109.032451 113.947634,113.324124 113.947634,113.324124 L116.019558,113.903616 C120.491173,108.614337 123.683796,110.289795 123.892853,112.278839 C124.123771,114.475876 126.092017,116.069731 128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 Z" class="eyes" fill="#33534D"
 				init-with="p:[op:1]"
-				when-htilt-init="p:[op:0, t:all 150ms ease-in-out]"
+				when-htilt-init="p:[opacity:1:0:150:easeInOut]"
 				when-hreset-init="p:[op:1]"></path>
 			<g class="circle-eyes" fill="#33534D">
 	            <circle class="eye-right" cx="128" cy="113" r="3.5"></circle>
@@ -67,7 +67,7 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2000 | anim:[prop-down:set:(dur:1000ms#func:linear):delay-1000:in, prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-2000:in]"
-					on-exit="p:[op:0, t:all 250ms ease-out]">
+					on-exit="p:[opacity:1:0:250:easeOutSine]">
 					<rect class="5-minus-bg" fill="#E9BAD5" x="39" y="66" width="10" height="10" rx="2"></rect>
 					<path d="M41.5,71 L46.5,71" class="5-minus-dash"></path>
 				</g>
@@ -79,14 +79,14 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2000 | anim:[prop-down:set:(dur:1000ms#func:linear):delay-1000:in, prop-hover:set:(dur:800ms#func:ease-in-out#count:infinite#dir:alternate):delay-2000:in]"
-					on-exit="p:[op:0, t:all 250ms ease-out]">
+					on-exit="p:[opacity:1:0:250:easeOutSine]">
 					<rect class="4-multiply-bg" fill="#E9BAD5" x="148" y="89" width="12" height="12" rx="2"></rect>
 					<path d="M156.12132,92.8786797 L151.87868,97.1213203" class="4-multiply-right"></path>
 					<path d="M156.12132,97.1213203 L151.87868,92.8786797" class="4-multiply-left"></path>
 				</g>
 			</g>
 			<g init-with="p:[tro:center center]"
-				when-htilt-init="p:[tr:rotate(-10deg), t:all 250ms ease-out]"
+				when-htilt-init="p:[transform:rotate(0deg):rotate(-10deg):250:easeOutSine]"
 				when-hreset-init="p:[tr:rotate(0deg) translateY(0px)]">
 				<g init-with="p:[op:0, tr:rotate(30deg) translateY(50px), tro:center center]"
 					when-academic-init="t-enter"
@@ -94,8 +94,8 @@
 					when-photography-init="t-exit"
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
-					on-enter="p:[op:1:delay-800, tr:rotate(0deg) translateY(0):delay-650, t:all 250ms ease-out] | t:[on-enter:children]"
-					on-exit="p:[op:0, tr:rotate(30deg) translateY(50px), t:all 250ms ease-in]">
+					on-enter="p:[opacity:0:1:250:easeOutSine:800, transform:rotate(30deg) translateY(50px):rotate(0deg) translateY(0px):250:easeOutSine:650] | t:[on-enter:children]"
+					on-exit="p:[opacity:1:0, transform:rotate(0deg) translateY(0px):rotate(30deg) translateY(50px):250:easeInSine]">
 					<path d="M61.0066708,114 C61.0066708,114 57.0066708,114 55.0066708,118 C53.0066708,122 53.9817687,128.312012 57.9768858,130.79248 C61.972003,133.272949 65.006671,130 65.0066708,130 C68.9783507,137.0625 76.4168292,156.488446 109.512697,154.99722 C135.632645,153.820313 147.647784,135.905274 147.006671,120 C147.006671,120 152.002276,122.307617 154.525714,118.708496 C157.049151,115.109375 158.006671,111 156.006671,107 C154.006671,103 151.006671,102 147.006671,104 C150.006671,91.0000006 132.006671,78 132.006671,78 C120.006671,82 108.006671,74 97.0066708,74 C86.0066708,74 57.0066708,80 61.0066708,114" class="face" stroke="#503349" stroke-width="2" fill="#F9ECE5"></path>
 					<path d="M70,95 L92,96 L92,93 L72,89 L70,95 L70,95 L70,95 L70,95 L70,95 Z M134.752203,90.6040853 L112.923075,93.5177063 L112.661608,90.5291222 L132.236879,84.8012286 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 Z" class="eyebrows" stroke="#503349" stroke-width="2"
 						init-with="p:[fill:#69B3A5]"
@@ -104,9 +104,9 @@
 						when-photography-init="t-exit"
 						when-tech-init="t-exit"
 						when-household-init="t-exit"
-						on-enter="p:[fill:#CA5497, t:all 1000ms cubic-bezier(0##.37##.24##1)]"
-						on-exit="p:[fill:#69B3A5, t:all 1000ms cubic-bezier(0##.37##.24##1)]"
-						when-category-dropdown-hover="p:[fill:^hex_color,t:all 300ms ease-in-out]"
+						on-enter="p:[fill:#69B3A5:#CA5497:1000:easeOutCubic]"
+						on-exit="p:[fill:#CA5497:#69B3A5:1000:easeOutCubic]"
+						when-category-dropdown-hover="p:[fill:#69B3A5:^hex_color:300:easeInOutSine]"
 						when-category-dropdown-mouse-leave="p:[fill:#CA5497]"
 						when-category-dropdown-toggle-off="p:[fill:#CA5497]"></path>
 					<path d="M55,96 C44.8095703,97.2685547 36.9628907,83 46.0712891,72.8300781 C46.0712892,78 50.0009767,83 55.9999994,83 C43.9804688,75.9570312 49.8095704,48.3339844 67.3525396,44.9365234 C63.5996099,52.453125 74.4423812,56 78,56 C78,56 79,48 86,46 C80,62 122,47 134,67 C134,67 135,74 132,78 C120,82 108,74 97,74 C86,74 57,80 61,114 C61,114 51,110 55,96 L55,96 L55,96 L55,96 Z M132,78 C132,78 150,91.0000006 147,104 C163,86.9999994 140.78,64 134,67 C134,67 135,74 132,78 L132,78 L132,78 L132,78 Z" class="hair-before" stroke="#33534D" stroke-width="2" fill="#69B3A5"
@@ -116,9 +116,9 @@
 						when-photography-init="t-exit"
 						when-tech-init="t-exit"
 						when-household-init="t-exit"
-						on-enter="p:[op:0, t:opacity 1000ms ease]"
-						on-exit="p:[op:1, t:opacity 1000ms ease]"
-						when-category-dropdown-hover="p:[fill:^hex_color,t:all 300ms ease-in-out]"
+						on-enter="p:[opacity:1:0:1000:linear]"
+						on-exit="p:[opacity:0:1:1000:linear]"
+						when-category-dropdown-hover="p:[fill:#33534D:^hex_color:300:easeInOutSine]"
 						when-category-dropdown-mouse-leave="p:[fill:#CA5497]"
 						when-category-dropdown-toggle-off="p:[fill:#CA5497]"></path>
 					<path d="M55,96 C44.8095703,97.2685547 36.9628907,83 46.0712891,72.8300781 C46.0712892,78 50.0009767,83 55.9999994,83 C43.9804688,75.9570312 49.8095704,48.3339844 67.3525396,44.9365234 C63.5996099,52.453125 74.4423812,56 78,56 C78,56 79,48 86,46 C80,62 122,47 134,67 C134,67 135,74 132,78 C120,82 108,74 97,74 C86,74 57,80 61,114 C61,114 51,110 55,96 L55,96 L55,96 L55,96 Z M132,78 C132,78 150,91.0000006 147,104 C163,86.9999994 140.78,64 134,67 C134,67 135,74 132,78 L132,78 L132,78 L132,78 Z" class="hair" stroke="#503349" stroke-width="2" fill="#CA5497"
@@ -128,8 +128,8 @@
 						when-photography-init="t-exit"
 						when-tech-init="t-exit"
 						when-household-init="t-exit"
-						on-enter="p:[fill:#CA5497, t:all 250ms ease-out]"
-						on-exit="p:[fill:#69B3A5, t:all 250ms ease-out]"></path>
+						on-enter="p:[fill:#69B3A5:#CA5497:250:easeOutSine]"
+						on-exit="p:[fill:#CA5497:#69B3A5:250:easeOutSine]"></path>
 					<path d="M129.027828,85.1185541 L131.156331,89.8041971 L152.717939,108.198245 L154.933298,104.343988 L133.371389,85.952143 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 L129.027828,85.1185541 Z M128,84 L129.434654,85.2492751 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 L128,84 Z M153.130382,108.193338 L154.207004,109.130159 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 L153.130382,108.193338 Z M154.875819,105.092884 L155.95181,106.029841 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 L154.875819,105.092884 Z M157.274708,106.453586 L158.240392,104.738223 C158.240392,104.738223 150.476086,97.9771809 150.386557,97.8992214 M154.43656,103.948342 L155.402243,102.23298 M131.14962,89.6046224 L133.312965,85.7618295 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 L131.14962,89.6046224 Z M156.240574,111.561597 L158.529172,107.579921 L156.616727,105.948602 L154.32813,109.930278 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 L156.240574,111.561597 Z" class="academic-pencil" stroke="#2B3234" stroke-width="2" fill="#F6C64E"
 						init-with="p-op"
 						when-academic-init="t-enter"
@@ -145,11 +145,11 @@
 					<path d="M54.8920408,117.428579 C53.8157813,117.180105 52.7418726,117.851158 52.4933985,118.927417 C52.2449245,120.003677 52.9159771,121.077585 53.9922366,121.326059 C55.068496,121.574533 56.1424047,120.903481 56.3908788,119.827221 M154.716513,114.023602 C154.449293,115.095362 155.101502,116.180818 156.173261,116.448038 C157.24502,116.715257 158.330476,116.063049 158.597696,114.99129 C158.864915,113.919531 158.212707,112.834074 157.140948,112.566855" class="earrings-2" stroke="#503349" stroke-linecap="round" stroke-linejoin="round"></path>
 					<path d="M111,140 C116,141 126,139 126,133" class="mouth" stroke="#503349" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 						init-with="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"
-						when-htilt-init="p:[tr:translateX(-10px) translateY(-2px) rotate(8deg), t:all 250ms ease-out]"
+						when-htilt-init="p:[transform:translateX(0px) translateY(0px) rotate(0deg):translateX(-10px) translateY(-2px) rotate(8deg):250:easeOutSine]"
 						when-hreset-init="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"></path>
 					<path d="M90.5288326,120.164053 C92.7258698,119.933136 94.3197243,117.964889 94.0888064,115.767852 C93.8578885,113.570815 91.7417349,111.688246 89.5880769,111.213356 C86.4999827,110.53242 84.5109385,110.741477 81.6319013,112.049584 C78.7528641,113.357691 76.1874123,117.649364 76.1874123,117.649364 L78.2593359,118.228857 C82.7309517,112.939577 85.9235743,114.615036 86.1326312,116.60408 C86.3635491,118.801117 88.3317955,120.394971 90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 L90.5288326,120.164053 Z M128.289054,115.838813 C130.486092,115.607895 132.079946,113.639649 131.849028,111.442611 C131.61811,109.245574 129.501957,107.363006 127.348299,106.888116 C124.260205,106.207179 122.27116,106.416236 119.392123,107.724344 C116.513086,109.032451 113.947634,113.324124 113.947634,113.324124 L116.019558,113.903616 C120.491173,108.614337 123.683796,110.289795 123.892853,112.278839 C124.123771,114.475876 126.092017,116.069731 128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 L128.289054,115.838813 Z" class="eyes" fill="#503349"
 						init-with="p:[op:1]"
-						when-htilt-init="p:[op:0, t:all 150ms ease-in-out]"
+						when-htilt-init="p:[opacity:1:0:150:easeInOut]"
 						when-hreset-init="p:[op:1]"></path>
 					<g class="circle-eyes" fill="#503349">
 			            <circle class="eye-right" cx="128" cy="113" r="3.5"></circle>
@@ -166,18 +166,18 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-1800 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1000:in, prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-1800:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<rect class="3-plus-bg" fill="#E9BAD5" x="141" y="44" width="14" height="14" rx="2"
 						init-with="p:[stroke-dasharray:56, stroke-dashoffset:56, tr:rotate(0deg),tro:center center]"
-						on-enter="p:[stroke-dashoffset:0:delay-1450, tr:rotate(360deg):delay-2000, t:all 500ms ease-out]"
+						on-enter="p:[stroke-dashoffset:56:0:500:easeOutSine:1450, transform:rotate(0deg):rotate(360deg):0:500:easeOutSine:2000]"
 						on-exit="p:[stroke-dashoffset:56, tr:rotate(0deg)]"></rect>
 					<path d="M148,47 L148,55" class="3-plus-y" stroke="#CA5497"
 						init-with="p:[stroke-dasharray:8, stroke-dashoffset:8]"
-						on-enter="p:[stroke-dashoffset:0:delay-1450, t:all 500ms ease-out]"
+						on-enter="p:[stroke-dashoffset:8:0:500:easeOutSine:1450]"
 						on-exit="p:[stroke-dashoffset:8]"></path>
 					<path d="M152,51 L144,51" class="3-plus-x"
 						init-with="p:[stroke-dasharray:8, stroke-dashoffset:8]"
-						on-enter="p:[stroke-dashoffset:0:delay-1000, t:all 500ms ease-out]"
+						on-enter="p:[stroke-dashoffset:8:0:500:easeOutSine:1000]"
 						on-exit="p:[stroke-dashoffset:8]"></path>
 				</g>
 				<g class="2-divide"
@@ -188,22 +188,22 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-1700 | anim:[prop-down:set:(dur:800ms#func:linear):delay-900:in, prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-2000:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<rect class="2-divide-bg" fill="#E9BAD5" x="148" y="145" width="28" height="28" rx="3"
 						init-with="p:[stroke-dasharray:112, stroke-dashoffset:-112, tr:rotate(-90deg),tro:center center]"
-						on-enter="p:[stroke-dashoffset:0:delay-1450, tr:rotate(0deg):delay-2000, t:all 500ms ease-out]"
+						on-enter="p:[stroke-dashoffset:112:0:500:easeOutSine:1450, transform:rotate(-90deg):rotate(0deg):500:easeOutSine:2000]"
 						on-exit="p:[stroke-dashoffset:-112, tr:rotate(-90deg)]"></rect>
 					<path d="M155,159 L169,159" class="2-divide-mid"
 						init-with="p:[stroke-dasharray:14, stroke-dashoffset:14]"
-						on-enter="p:[stroke-dashoffset:0, t:all 500ms ease-out 1250ms]"
+						on-enter="p:[stroke-dashoffset:14:0:500:easeOutSine:1250]"
 						on-exit="p:[stroke-dashoffset:14]"></path>
 					<circle class="2-divide-bot" fill="#CA5497" cx="162" cy="152.5" r="0.5"
 						init-with="p-op"
-						on-enter="p:[op:1, t:all 250ms ease 1000ms]"
+						on-enter="p:[opacity:0:1:250:linear:1000]"
 						on-exit="p-op"></circle>
 					<circle class="2-divide-top" fill="#CA5497" cx="162" cy="165.5" r="0.5"
 						init-with="p-op"
-						on-enter="p:[op:1, t:all 250ms ease 1000ms]"
+						on-enter="p:[opacity:0:1:250:linear:1000]"
 						on-exit="p-op"></circle>
 				</g>
 				<g class="1-equal"
@@ -214,18 +214,18 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-1700 | anim:[prop-down:set:(dur:800ms#func:linear):delay-900:in, prop-hover:set:(dur:800ms#func:ease-in-out#count:infinite#dir:alternate):delay-2000:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<rect class="1-equal-bg" fill="#E9BAD5" x="33" y="134" width="22" height="22" rx="3"
 						init-with="p:[stroke-dasharray:88, stroke-dashoffset:88, tr:rotate(90deg),tro:center center]"
-						on-enter="p:[stroke-dashoffset:0:delay-1450, tr:rotate(0deg):delay-1200, t:all 250ms ease-in-out]"
+						on-enter="p:[stroke-dashoffset:88:0::250:easeInOutSine:1450, transform:rotate(90deg):rotate(0deg):easeInOutSine:1200]"
 						on-exit="p:[stroke-dashoffset:88, tr:rotate(90deg)]"></rect>
 					<path d="M38.5,142 L49.5,142" class="1-equal-top"
 						init-with="p:[stroke-dasharray:11, stroke-dashoffset:11]"
-						on-enter="p:[stroke-dashoffset:0, t:all 500ms ease-out 1000ms]"
+						on-enter="p:[stroke-dashoffset:11:0:500:easeOutSine:1000]"
 						on-exit="p:[stroke-dashoffset:11]"></path>
 					<path d="M38.5,148 L49.5,148" class="1-equal-bot"
 						init-with="p:[stroke-dasharray:11, stroke-dashoffset:-11]"
-						on-enter="p:[stroke-dashoffset:0, t:all 500ms ease-out 1000ms]"
+						on-enter="p:[stroke-dashoffset:-11:0:500:easeOutSine:1000]"
 						on-exit="p:[stroke-dashoffset:-11]"></path>
 				</g>
 			</g>
@@ -246,7 +246,7 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2500 | anim:[prop-down:set:(dur:1000ms#func:linear):delay-1500:in, prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-2500:in]"
-					on-exit="p:[op:0, t:all 250ms ease-out]">
+					on-exit="p:[opacity:1:0:250:easeOutSine]">
 					<path d="M44,66 C46.7614237,66 49,68.2385763 49,71 C49,73.7614237 46.7614237,76 44,76 C41.2385763,76 39,73.7614237 39,71 C39,68.2385763 41.2385763,66 44,66 L44,66 Z" class="5-cookie-whole" stroke="#C99D61" fill="#F1C687"></path>
 					<path d="M43.7339217,73.1603806 C43.7700026,73.5036677 43.5209629,73.8112062 43.1776758,73.8472871 C42.8343888,73.883368 42.5268503,73.6343282 42.4907693,73.2910412 C42.4546884,72.9477541 42.7037282,72.6402156 43.0470152,72.6041347 C43.3903023,72.5680538 43.6978408,72.8170936 43.7339217,73.1603806 L43.7339217,73.1603806 L43.7339217,73.1603806 Z M46.6884921,71.8531746 C47.03367,71.8531746 47.3134921,72.1329966 47.3134921,72.4781746 C47.3134921,72.8233526 47.03367,73.1031746 46.6884921,73.1031746 C46.3433141,73.1031746 46.0634921,72.8233526 46.0634921,72.4781746 C46.0634921,72.1329966 46.3433141,71.8531746 46.6884921,71.8531746 L46.6884921,71.8531746 L46.6884921,71.8531746 Z M42.4478716,69.4487734 C42.7930495,69.4487734 43.0728716,69.7285955 43.0728716,70.0737734 C43.0728716,70.4189514 42.7930495,70.6987734 42.4478716,70.6987734 C42.1026936,70.6987734 41.8228716,70.4189514 41.8228716,70.0737734 C41.8228716,69.7285955 42.1026936,69.4487734 42.4478716,69.4487734 L42.4478716,69.4487734 L42.4478716,69.4487734 Z M45.4069264,67.5151515 C45.9090035,67.5151515 46.3160173,67.896727 46.3160173,68.3674242 C46.3160173,68.8381215 45.9090035,69.219697 45.4069264,69.219697 C44.9048494,69.219697 44.4978355,68.8381215 44.4978355,68.3674242 C44.4978355,67.896727 44.9048494,67.5151515 45.4069264,67.5151515 L45.4069264,67.5151515 L45.4069264,67.5151515 Z" class="5-chips" stroke="#623609" fill="#7D5329"></path>
 				</g>
@@ -258,22 +258,22 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2500 | anim:[prop-down:set:(dur:1000ms#func:linear):delay-1500:in, prop-hover:set:(dur:800ms#func:ease-in-out#count:infinite#dir:alternate):delay-2500:in]"
-					on-exit="p:[op:0, t:all 250ms ease-out]">
+					on-exit="p:[opacity:1:0:250:easeOutSine]">
 					<path d="M156,90 C159.313708,90 162,92.6862915 162,96 C162,99.3137085 159.313708,102 156,102 C152.686292,102 150,99.3137085 150,96 C150,92.6862915 152.686292,90 156,90 L156,90 Z" class="4-cookie-whole" stroke="#C99D61" fill="#F1C687"></path>
 					<path d="M155.680706,98.5924567 C155.724003,99.0044012 155.425155,99.3734474 155.013211,99.4167445 C154.601267,99.4600416 154.23222,99.1611939 154.188923,98.7492494 C154.145626,98.337305 154.444474,97.9682588 154.856418,97.9249617 C155.268363,97.8816646 155.637409,98.1805123 155.680706,98.5924567 L155.680706,98.5924567 L155.680706,98.5924567 Z M159.22619,97.0238095 C159.640404,97.0238095 159.97619,97.359596 159.97619,97.7738095 C159.97619,98.1880231 159.640404,98.5238095 159.22619,98.5238095 C158.811977,98.5238095 158.47619,98.1880231 158.47619,97.7738095 C158.47619,97.359596 158.811977,97.0238095 159.22619,97.0238095 L159.22619,97.0238095 L159.22619,97.0238095 Z M154.137446,94.1385281 C154.551659,94.1385281 154.887446,94.4743146 154.887446,94.8885281 C154.887446,95.3027417 154.551659,95.6385281 154.137446,95.6385281 C153.723232,95.6385281 153.387446,95.3027417 153.387446,94.8885281 C153.387446,94.4743146 153.723232,94.1385281 154.137446,94.1385281 L154.137446,94.1385281 L154.137446,94.1385281 Z M157.688312,91.8181818 C158.290804,91.8181818 158.779221,92.2760724 158.779221,92.8409091 C158.779221,93.4057458 158.290804,93.8636364 157.688312,93.8636364 C157.085819,93.8636364 156.597403,93.4057458 156.597403,92.8409091 C156.597403,92.2760724 157.085819,91.8181818 157.688312,91.8181818 L157.688312,91.8181818 L157.688312,91.8181818 Z" class="4-chips" stroke="#623609" fill="#7D5329"></path>
 				</g>
 			</g>
 			<g init-with="p:[tro:center center]"
-				when-htilt-init="p:[tr:rotate(-10deg), t:all 250ms ease-out]"
-				when-hreset-init="p:[tr:rotate(0deg) translateY(0px)]">
+				when-htilt-init="p:[transform:rotate(0deg):rotate(-10deg):250:easeOutSine]"
+				when-hreset-init="p:[transform:translateY(0px) rotate(-10deg):translateY(0px) rotate(0deg):250:easeOutSine easeOutSine]">
 				<g init-with="p:[op:0, tr:rotate(30deg) translateY(50px), tro:center center]"
 					when-baking-init="t-enter"
 					when-academic-init="t-exit"
 					when-photography-init="t-exit"
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
-					on-enter="p:[op:1:delay-800, tr:rotate(0deg) translateY(0):delay-650, t:all 250ms ease-out] | t:[on-enter:children]"
-					on-exit="p:[op:0, tr:rotate(30deg) translateY(50px), t:all 250ms ease-in]">
+					on-enter="p:[opacity:0:1:250:easeOutSine:800, transform:rotate(30deg) translateY(50px):rotate(0deg) translateY(0px):250:easeOutSine:650] | t:[on-enter:children]"
+					on-exit="p:[opacity:1:0:250:easeInSine, transform::rotate(0deg) translateY(0px):rotate(30deg) translateY(50px):250:easeInSine]">
 					<path d="M61,113 C61,113 57,113 55,117 C53,121 53.9750979,127.312012 57.970215,129.79248 C61.9653322,132.272949 65.0000002,129 65,129 C68.9716799,136.0625 76.4101584,155.488446 109.506026,153.99722 C135.625974,152.820313 147.641113,134.905274 147,119 C147,119 151.995605,121.307617 154.519043,117.708496 C157.04248,114.109375 158,110 156,106 C154,102 151,101 147,103 C150,90.0000006 132,77 132,77 C120,81 108,73 97,73 C86,73 57,79 61,113" class="face" stroke="#3E4137" stroke-width="2"  fill="#F9ECE5"></path>
 					<path d="M55,96 C44.8095703,97.2685547 36.9628907,83 46.0712891,72.8300781 C46.0712892,78 50.0009767,83 55.9999994,83 C43.9804688,75.9570312 49.8095704,48.3339844 67.3525396,44.9365234 C63.5996099,52.453125 74.4423812,56 78,56 C78,56 79,48 86,46 C80,62 122,47 134,67 C134,67 135,74 132,78 C120,82 108,74 97,74 C86,74 57,80 61,114 C61,114 51,110 55,96 L55,96 L55,96 L55,96 Z M132,78 C132,78 150,91.0000006 147,104 C163,86.9999994 140.78,64 134,67 C134,67 135,74 132,78 L132,78 L132,78 L132,78 Z" class="hair" stroke="#3E4137" stroke-width="2" fill="#E8C05C"
 						init-with="p:[fill:#69B3A5]"
@@ -282,9 +282,9 @@
 						when-photography-init="t-exit"
 						when-tech-init="t-exit"
 						when-household-init="t-exit"
-						on-enter="p:[fill:#E8C05C, t:all 250ms ease-out 400ms]"
-						on-exit="p:[fill:#69B3A5, t:all 250ms ease-out 400ms]"
-						when-category-dropdown-hover="p:[fill:^hex_color,t:all 300ms ease-in-out]"
+						on-enter="p:[fill:#69B3A5:#E8C05C:250:easeOutSine:400]"
+						on-exit="p:[fill:#E8C05C:#69B3A5:250:easeOutSine:400]"
+						when-category-dropdown-hover="p:[fill:#69B3A5:^hex_color:300:easeInOutSine]"
 						when-category-dropdown-mouse-leave="p:[fill:#E8C05C]"
 						when-category-dropdown-toggle-off="p:[fill:#E8C05C]"></path>
 					<path d="M103.574667,100.347451 C99.5891604,100.700595 98.2136606,102.933569 98.3857487,103.176455 C99.4389701,104.656062 100.262491,106.336058 100.791631,108.181043 C103.295147,116.913236 98.2459966,126.022376 89.5138811,128.526779 C80.7808023,131.030373 71.6716623,125.981222 69.1672601,117.249106 C67.5744394,111.693201 62.199641,112.00992 62.199641,112.00992 L62.0757398,108.645196 C62.0757398,108.645196 64.3423669,108.048822 66.9589013,106.320448 C69.7727831,104.460564 72.9707958,101.441588 73.5525427,100.878377 C75.4279684,99.0648959 77.7624199,97.6726953 80.4458954,96.9032938 C86.1323387,95.2722764 91.978569,96.8448642 96.0568783,100.551765 C96.234315,100.712963 97.5871447,98.2208686 103.344546,97.7171612 C108.659071,97.2522005 110.424095,99.4715182 110.570845,99.2819576 C113.943499,94.9231818 119.427835,92.359298 125.311111,92.978096 C128.087424,93.2698279 130.628163,94.2355046 132.790005,95.6957706 C133.460714,96.1494056 137.134381,98.5671879 140.228479,99.9101906 C143.105392,101.15795 145.441143,101.351669 145.441143,101.351669 L145.903402,104.686789 C145.903402,104.686789 140.555262,105.308207 139.951412,111.056296 C139.001374,120.090636 130.907398,126.644864 121.872249,125.695788 C112.837909,124.745749 106.283681,116.651773 107.232834,107.617511 C107.433556,105.708671 107.952838,103.911195 108.733128,102.271177 C108.860425,102.002097 107.11807,100.041901 103.13179,100.386198 L103.574667,100.347451 L103.574667,100.347451 L103.574667,100.347451 L103.574667,100.347451 L103.574667,100.347451 Z M86.70313,126.841647 C94.0409571,126.19967 99.4690164,119.730761 98.8270397,112.392934 C98.185063,105.055107 91.7161539,99.6270476 84.3783268,100.269024 C77.0404997,100.911001 71.6124404,107.37991 72.2544171,114.717737 C72.8963938,122.055564 79.3653029,127.483624 86.70313,126.841647 L86.70313,126.841647 L86.70313,126.841647 L86.70313,126.841647 L86.70313,126.841647 Z M124.347679,123.548176 C117.009852,124.190152 110.540942,118.762093 109.898966,111.424266 C109.256989,104.086439 114.685048,97.6175297 122.022875,96.975553 C129.360703,96.3335763 135.829612,101.761636 136.471588,109.099463 C137.113565,116.43729 131.685506,122.906199 124.347679,123.548176 L124.347679,123.548176 L124.347679,123.548176 L124.347679,123.548176 L124.347679,123.548176 Z" class="glasses" stroke="#3E4137"  fill="#3E4137"></path>
@@ -292,12 +292,12 @@
 					<path d="M54.8920408,116.428579 C53.8157813,116.180105 52.7418726,116.851158 52.4933985,117.927417 C52.2449245,119.003677 52.9159771,120.077585 53.9922366,120.326059 C55.068496,120.574533 56.1424047,119.903481 56.3908788,118.827221 M154.716513,113.023602 C154.449293,114.095362 155.101502,115.180818 156.173261,115.448038 C157.24502,115.715257 158.330476,115.063049 158.597696,113.99129 C158.864915,112.919531 158.212707,111.834074 157.140948,111.566855" class="earrings-2" stroke="#3E4137" stroke-width="2" ></path>
 					<path d="M111,139 C116,140 126,138 126,132" class="mouth" stroke="#3E4137" stroke-width="2"
 						init-with="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"
-						when-htilt-init="p:[tr:translateX(-10px) translateY(-2px) rotate(8deg), t:all 250ms ease-out]"
+						when-htilt-init="p:[transform:translateX(0px) translateY(0px) rotate(0deg):translateX(-10px) translateY(-2px) rotate(8deg):250:easeOutSine]"
 						when-hreset-init="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"></path>
 					<path d="M90.5288326,119.164053 C92.7258698,118.933135 94.3197243,116.964889 94.0888064,114.767852 C93.8578885,112.570815 91.7417349,110.688246 89.5880769,110.213356 C86.4999827,109.53242 84.5109385,109.741477 81.6319013,111.049584 C78.7528641,112.357691 76.1874123,116.649364 76.1874123,116.649364 L78.2593359,117.228857 C82.7309517,111.939577 85.9235743,113.615036 86.1326312,115.60408 C86.3635491,117.801117 88.3317955,119.394971 90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 Z M128.289054,114.838813 C130.486092,114.607895 132.079946,112.639649 131.849028,110.442612 C131.61811,108.245574 129.501957,106.363006 127.348299,105.888116 C124.260205,105.207179 122.27116,105.416236 119.392123,106.724344 C116.513086,108.032451 113.947634,112.324124 113.947634,112.324124 L116.019558,112.903616 C120.491173,107.614337 123.683796,109.289795 123.892853,111.278839 C124.123771,113.475876 126.092017,115.069731 128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 Z" class="eyes" fill="#3E4137"
 						init-with="p:[op:1]"
-						when-htilt-init="p:[op:0, t:all 150ms ease-in-out]"
-						when-hreset-init="p:[op:1]"></path>
+						when-htilt-init="p:[opacity:1:0:150:easeInOutSine]"
+						when-hreset-init="p:[opacity:0:1:150:easeInOutSine]"></path>
 					<g class="circle-eyes" fill="#3E4137">
 			            <circle class="eye-right" cx="128" cy="113" r="3.5"></circle>
 			            <circle class="eye-left" cx="90" cy="116" r="3.5"></circle>
@@ -310,9 +310,9 @@
 						when-photography-init="t-exit"
 						when-tech-init="t-exit"
 						when-household-init="t-exit"
-						on-enter="p:[fill:#E8C05C, t:all 250ms ease-out]"
-						on-exit="p:[fill:#69B3A5, t:all 250ms ease-out]"
-						when-category-dropdown-hover="p:[fill:^hex_color,t:all 300ms ease-in-out]"
+						on-enter="p:[fill:#69B3A5:#E8C05C:250:easeOutSine]"
+						on-exit="p:[fill:#E8C05C:#69B3A5:250:easeOutSine]"
+						when-category-dropdown-hover="p:[fill:#69B3A5:^hex_color:300:easeInOutSine]"
 						when-category-dropdown-mouse-leave="p:[fill:#E8C05C]"
 						when-category-dropdown-toggle-off="p:[fill:#E8C05C]"></path>
 					<g class="chef-hat"
@@ -338,7 +338,7 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):in]:delay-1500 | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 						when-baking-init="t-enter"
 						on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-100:in]">
@@ -354,7 +354,7 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1400:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 						when-baking-init="t-enter"
 						on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):in] | t:[on-enter:children]"
@@ -363,7 +363,7 @@
 						<circle class="2-cookie-whole" stroke="#C99D61" fill="#F1C687" cx="162" cy="159" r="14"
 							init-with="p-op"
 							when-baking-init="t-enter"
-							on-enter="p:[op:1:delay-2000, t:all 500ms linear]"
+							on-enter="p:[opacity:0:1:500:linear:2000]"
 							on-exit="p-op"></circle>
 						<path d="M157.254981,152.950934 C157.356007,151.989731 156.658696,151.128623 155.697492,151.027596 C154.736289,150.92657 153.875181,151.623881 153.774154,152.585085 C153.673128,153.546288 154.370439,154.407396 155.331643,154.508423 C156.292846,154.609449 157.153954,153.912138 157.254981,152.950934 L157.254981,152.950934 Z" class="2-cookie-wchip" stroke="#623609" fill="#7D5329"></path>
 						<path d="M170.027778,164.611111 C171.270418,164.611111 172.277778,163.603752 172.277778,162.361111 C172.277778,161.11847 171.270418,160.111111 170.027778,160.111111 C168.785137,160.111111 167.777778,161.11847 167.777778,162.361111 C167.777778,163.603752 168.785137,164.611111 170.027778,164.611111 L170.027778,164.611111 L170.027778,164.611111 Z M165.305556,154.333333 C166.272054,154.333333 167.055556,153.549832 167.055556,152.583333 C167.055556,151.616835 166.272054,150.833333 165.305556,150.833333 C164.339057,150.833333 163.555556,151.616835 163.555556,152.583333 C163.555556,153.549832 164.339057,154.333333 165.305556,154.333333 L165.305556,154.333333 L165.305556,154.333333 Z M161.472222,169.888889 C162.438721,169.888889 163.222222,169.105387 163.222222,168.138889 C163.222222,167.172391 162.438721,166.388889 161.472222,166.388889 C160.505724,166.388889 159.722222,167.172391 159.722222,168.138889 C159.722222,169.105387 160.505724,169.888889 161.472222,169.888889 L161.472222,169.888889 L161.472222,169.888889 Z M162.194444,160.944444 C163.160943,160.944444 163.944444,160.160943 163.944444,159.194444 C163.944444,158.227946 163.160943,157.444444 162.194444,157.444444 C161.227946,157.444444 160.444444,158.227946 160.444444,159.194444 C160.444444,160.160943 161.227946,160.944444 162.194444,160.944444 L162.194444,160.944444 L162.194444,160.944444 Z M154.916667,164.666667 C156.159307,164.666667 157.166667,163.659307 157.166667,162.416667 C157.166667,161.174026 156.159307,160.166667 154.916667,160.166667 C153.674026,160.166667 152.666667,161.174026 152.666667,162.416667 C152.666667,163.659307 153.674026,164.666667 154.916667,164.666667 L154.916667,164.666667 L154.916667,164.666667 Z" class="2-cookie-chips" stroke="#623609" fill="#7D5329"></path>
@@ -377,14 +377,14 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:ease-out):delay-1400:in, prop-hover:set:(dur:800ms#func:ease-in-out#count:infinite#dir:alternate):delay-2200:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 						<g
 						on-enter="anim:[prop-hover:set:(dur:800ms#func:ease-in-out#count:infinite#dir:alternate):in] | t:[on-enter:children]"
 						on-exit="anim:[fadeOut:set:(dur:1000ms#func:linear):out] | t:[on-exit:children]">
 							<path d="M45.9640425,134.174833 C45.3267493,134.059968 44.6703778,134 44,134 C37.9248678,134 33,138.924868 33,145 C33,151.075132 37.9248678,156 44,156 C50.0751322,156 55,151.075132 55,145 C55,144.732334 54.9904398,144.466901 54.9716421,144.204024 C54.5246608,144.693168 53.8814959,145 53.1666667,145 C51.8166373,145 50.7222222,143.905585 50.7222222,142.555556 C50.7222222,142.314651 50.7570709,142.081886 50.8220021,141.862026 C50.440868,142.107545 49.9870701,142.25 49.5,142.25 C48.1499706,142.25 47.0555556,141.155585 47.0555556,139.805556 C47.0555556,139.590841 47.0832389,139.382592 47.1352311,139.184184 C47.0586536,139.190976 46.9811208,139.194444 46.9027778,139.194444 C45.4683716,139.194444 44.3055556,138.031628 44.3055556,136.597222 C44.3055556,135.493843 44.9935993,134.551166 45.9640425,134.174833 L45.9640425,134.174833 Z" class="1-cookie-bit" stroke="#C99D61" fill="#F1C687"></path>
 							<path d="M44,156 C37.9248678,156 33,151.075132 33,145 C33,138.924868 37.9248678,134 44,134 C50.0751322,134 55,138.924868 55,145 C55,151.075132 50.0751322,156 44,156 L44,156 Z" class="1-cookie-whole" stroke="#C99D61" fill="#F1C687"
 								init-with="p-op"
-								on-enter="p:[op:1:delay-1500, t:all 300ms linear]"
+								on-enter="p:[opacity:0:1:300:linear:1500]"
 								on-exit="p-op"></path>
 							<path d="M47.7282294,140.247163 C47.6488514,139.491931 48.1967389,138.815346 48.9519704,138.735968 C49.7072019,138.65659 50.3837866,139.204478 50.4631646,139.959709 C50.5425426,140.714941 49.9946551,141.391526 49.2394236,141.470904 C48.4841921,141.550282 47.8076074,141.002394 47.7282294,140.247163 L47.7282294,140.247163 Z" class="1-cookie-wchip" stroke="#623609" fill="#7D5329"></path>
 							<path d="M36.5138889,144.694444 C35.7544974,144.694444 35.1388889,144.078836 35.1388889,143.319444 C35.1388889,142.560053 35.7544974,141.944444 36.5138889,141.944444 C37.2732804,141.944444 37.8888889,142.560053 37.8888889,143.319444 C37.8888889,144.078836 37.2732804,144.694444 36.5138889,144.694444 L36.5138889,144.694444 L36.5138889,144.694444 Z M48.9861111,151.555556 C48.2267196,151.555556 47.6111111,150.939947 47.6111111,150.180556 C47.6111111,149.421164 48.2267196,148.805556 48.9861111,148.805556 C49.7455026,148.805556 50.3611111,149.421164 50.3611111,150.180556 C50.3611111,150.939947 49.7455026,151.555556 48.9861111,151.555556 L48.9861111,151.555556 L48.9861111,151.555556 Z M45.9861111,146.555556 C45.2267196,146.555556 44.6111111,145.939947 44.6111111,145.180556 C44.6111111,144.421164 45.2267196,143.805556 45.9861111,143.805556 C46.7455026,143.805556 47.3611111,144.421164 47.3611111,145.180556 C47.3611111,145.939947 46.7455026,146.555556 45.9861111,146.555556 L45.9861111,146.555556 L45.9861111,146.555556 Z M42.3472222,140.527778 C41.3116883,140.527778 40.4722222,139.688312 40.4722222,138.652778 C40.4722222,137.617244 41.3116883,136.777778 42.3472222,136.777778 C43.3827561,136.777778 44.2222222,137.617244 44.2222222,138.652778 C44.2222222,139.688312 43.3827561,140.527778 42.3472222,140.527778 L42.3472222,140.527778 L42.3472222,140.527778 Z M39.3333333,152.666667 C38.2287638,152.666667 37.3333333,151.827201 37.3333333,150.791667 C37.3333333,149.756133 38.2287638,148.916667 39.3333333,148.916667 C40.4379028,148.916667 41.3333333,149.756133 41.3333333,150.791667 C41.3333333,151.827201 40.4379028,152.666667 39.3333333,152.666667 L39.3333333,152.666667 L39.3333333,152.666667 Z" class="1-cookie-chips" stroke="#623609" fill="#7D5329"></path>
@@ -408,7 +408,7 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2500 | anim:[prop-down:set:(dur:1000ms#func:linear):delay-1500:in, prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-2500:in]"
-					on-exit="p:[op:0, t:all 250ms ease-out]">
+					on-exit="p:[opacity:1:0:250:easeOutSine]">
 					<path d="M45,66 C45,66 45.9411765,69.0588235 46.9411765,70.0588235 C47.9411765,71.0588235 51,72 51,72 C51,72 47.9411765,72.9411765 46.9411765,73.9411765 C45.9411765,74.9411765 45,78 45,78 C45,78 44.0588235,74.9411765 43.0588235,73.9411765 C42.0588235,72.9411765 39,72 39,72 C39,72 42.0588235,71.0588235 43.0588235,70.0588235 C44.0588235,69.0588235 45,66 45,66 Z" class="5-flash-bg"
 						init-with="p:[tro:center center]"
 						when-photography-init="t-enter"
@@ -426,7 +426,7 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2500 | anim:[prop-down:set:(dur:1000ms#func:linear):delay-1500:in, prop-hover:set:(dur:800ms#func:ease-in-out#count:infinite#dir:alternate):delay-2500:in]"
-					on-exit="p:[op:0, t:all 250ms ease-out]">
+					on-exit="p:[opacity:1:0:250:easeOutSine]">
 					<path d="M153,89 C153,89 153.784314,91.5490196 154.617647,92.3823529 C155.45098,93.2156863 158,94 158,94 C158,94 155.45098,94.7843137 154.617647,95.6176471 C153.784314,96.4509804 153,99 153,99 C153,99 152.215686,96.4509804 151.382353,95.6176471 C150.54902,94.7843137 148,94 148,94 C148,94 150.54902,93.2156863 151.382353,92.3823529 C152.215686,91.5490196 153,89 153,89 Z" class="4-flash-bg"
 						init-with="p:[tro:center center]"
 						when-photography-init="t-enter"
@@ -438,7 +438,7 @@
 				</g>
 			</g>
 			<g init-with="p:[tro:center center]"
-				when-htilt-init="p:[tr:rotate(-10deg), t:all 250ms ease-out]"
+				when-htilt-init="p:[transform:rotate(0deg):rotate(-10deg):250:easeOutSine]"
 				when-hreset-init="p:[tr:rotate(0deg) translateY(0px)]">
 				<g init-with="p:[op:0, tr:rotate(30deg) translateY(50px), tro:center center]"
 					when-photography-init="t-enter"
@@ -446,13 +446,13 @@
 					when-baking-init="t-exit"
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
-					on-enter="p:[op:1:delay-800, tr:rotate(0deg) translateY(0):delay-650, t:all 250ms ease-out] | t:[on-enter:children]"
-					on-exit="p:[op:0, tr:rotate(30deg) translateY(50px), t:all 250ms ease-in] | t:[on-exit:children]">
+					on-enter="p:[opacity:0:1:250:easeOutSine:800, transform:rotate(30deg) translateY(50px):rotate(0deg) translateY(0px):250:easeOutSine:650] | t:[on-enter:children]"
+					on-exit="p:[opacity:1:0:250:easeInSine, transform:rotate(0deg) translateY(0px):rotate(30deg) translateY(50px):250:easeInSine] | t:[on-exit:children]">
 						<path d="M61.0066708,113 C61.0066708,113 57.0066708,113 55.0066708,117 C53.0066708,121 53.9817687,127.312012 57.9768858,129.79248 C61.972003,132.272949 65.006671,129 65.0066708,129 C68.9783507,136.0625 76.4168292,155.488446 109.512697,153.99722 C135.632645,152.820313 147.647784,134.905274 147.006671,119 C147.006671,119 152.002276,121.307617 154.525714,117.708496 C157.049151,114.109375 158.006671,110 156.006671,106 C154.006671,102 151.006671,101 147.006671,103 C150.006671,90.0000006 132.006671,77 132.006671,77 C120.006671,81 108.006671,73 97.0066708,73 C86.0066708,73 57.0066708,79 61.0066708,113" class="face" stroke="#3C4C3E" stroke-width="2" fill="#F9ECE5"></path>
 						<path d="M46.0712891,71.8300781 C46.0712892,77 50.0009767,82 55.9999994,82 C43.9804688,74.9570312 49.8095704,47.3339844 67.3525396,43.9365234 C63.5996099,51.453125 74.4423812,55 78,55 C78,55 79,47 86,45 C80,61 122,46 134,66 C134,66 135,73 132,77 C120,81 108,73 97,73 C86,73 57,79 61,113 C61,113 51,109 55,95 C44.8095703,96.2685547 36.9628907,82 46.0712891,71.8300781 L46.0712891,71.8300781 Z M132,77 C132,77 150,90.0000006 147,103 C163,85.9999994 140.78,63 134,66 C134,66 135,73 132,77 L132,77 L132,77 L132,77 L132,77 Z" class="hair" stroke="#3C4C3E" stroke-width="2" fill="#86A477"
 							init-with="p:[fill:#69B3A5]"
-							on-enter="p:[fill:#86A477, t:all 250ms ease-out]"
-							when-category-dropdown-hover="p:[fill:^hex_color,t:all 300ms ease-in-out]"
+							on-enter="p:[fill:#69B3A5:#86A477:250:easeOutSine]"
+							when-category-dropdown-hover="p:[fill:#86A477:^hex_color:300:easeInOutSine]"
 							when-category-dropdown-mouse-leave="p:[fill:#86A477]"
 							when-category-dropdown-toggle-off="p:[fill:#86A477]"></path>
 						<path d="M103.574667,100.347451 C99.5891604,100.700595 98.2136606,102.933569 98.3857487,103.176455 C99.4389701,104.656062 100.262491,106.336058 100.791631,108.181043 C103.295147,116.913236 98.2459966,126.022376 89.5138811,128.526779 C80.7808023,131.030373 71.6716623,125.981222 69.1672601,117.249106 C67.5744394,111.693201 62.199641,112.00992 62.199641,112.00992 L62.0757398,108.645196 C62.0757398,108.645196 64.3423669,108.048822 66.9589013,106.320448 C69.7727831,104.460564 72.9707958,101.441588 73.5525427,100.878377 C75.4279684,99.0648959 77.7624199,97.6726953 80.4458954,96.9032938 C86.1323387,95.2722764 91.978569,96.8448642 96.0568783,100.551765 C96.234315,100.712963 97.5871447,98.2208686 103.344546,97.7171612 C108.659071,97.2522005 110.424095,99.4715182 110.570845,99.2819576 C113.943499,94.9231818 119.427835,92.359298 125.311111,92.978096 C128.087424,93.2698279 130.628163,94.2355046 132.790005,95.6957706 C133.460714,96.1494056 137.134381,98.5671879 140.228479,99.9101906 C143.105392,101.15795 145.441143,101.351669 145.441143,101.351669 L145.903402,104.686789 C145.903402,104.686789 140.555262,105.308207 139.951412,111.056296 C139.001374,120.090636 130.907398,126.644864 121.872249,125.695788 C112.837909,124.745749 106.283681,116.651773 107.232834,107.617511 C107.433556,105.708671 107.952838,103.911195 108.733128,102.271177 C108.860425,102.002097 107.11807,100.041901 103.13179,100.386198 L103.574667,100.347451 L103.574667,100.347451 L103.574667,100.347451 L103.574667,100.347451 L103.574667,100.347451 L103.574667,100.347451 Z M86.70313,126.841647 C94.0409571,126.19967 99.4690164,119.730761 98.8270397,112.392934 C98.185063,105.055107 91.7161539,99.6270476 84.3783268,100.269024 C77.0404997,100.911001 71.6124404,107.37991 72.2544171,114.717737 C72.8963938,122.055564 79.3653029,127.483624 86.70313,126.841647 L86.70313,126.841647 L86.70313,126.841647 L86.70313,126.841647 L86.70313,126.841647 L86.70313,126.841647 Z M124.347679,123.548176 C117.009852,124.190152 110.540942,118.762093 109.898966,111.424266 C109.256989,104.086439 114.685048,97.6175297 122.022875,96.975553 C129.360703,96.3335763 135.829612,101.761636 136.471588,109.099463 C137.113565,116.43729 131.685506,122.906199 124.347679,123.548176 L124.347679,123.548176 L124.347679,123.548176 L124.347679,123.548176 L124.347679,123.548176 L124.347679,123.548176 Z" class="glasses" stroke="#3C4C3E" fill="#3C4C3E"></path>
@@ -460,11 +460,11 @@
 						<path d="M54.8920408,116.428579 C53.8157813,116.180105 52.7418726,116.851158 52.4933985,117.927417 C52.2449245,119.003677 52.9159771,120.077585 53.9922366,120.326059 C55.068496,120.574533 56.1424047,119.903481 56.3908788,118.827221 M154.716513,113.023602 C154.449293,114.095362 155.101502,115.180818 156.173261,115.448038 C157.24502,115.715257 158.330476,115.063049 158.597696,113.99129 C158.864915,112.919531 158.212707,111.834074 157.140948,111.566855" class="earrings-2" stroke="#3C4C3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 						<path d="M111,139 C116,140 126,138 126,132" class="mouth" stroke="#3C4C3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 							init-with="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"
-							when-htilt-init="p:[tr:translateX(-10px) translateY(-2px) rotate(8deg), t:all 250ms ease-out]"
+							when-htilt-init="p:[transform:translateX(0px) translateY(0px) rotate(0deg):translateX(-10px) translateY(-2px) rotate(8deg):250:easeOutSine]"
 							when-hreset-init="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"></path>
 						<path d="M90.5288326,119.164053 C92.7258698,118.933135 94.3197243,116.964889 94.0888064,114.767852 C93.8578885,112.570815 91.7417349,110.688246 89.5880769,110.213356 C86.4999827,109.53242 84.5109385,109.741477 81.6319013,111.049584 C78.7528641,112.357691 76.1874123,116.649364 76.1874123,116.649364 L78.2593359,117.228857 C82.7309517,111.939577 85.9235743,113.615036 86.1326312,115.60408 C86.3635491,117.801117 88.3317955,119.394971 90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 Z M128.289054,114.838813 C130.486092,114.607895 132.079946,112.639649 131.849028,110.442612 C131.61811,108.245574 129.501957,106.363006 127.348299,105.888116 C124.260205,105.207179 122.27116,105.416236 119.392123,106.724344 C116.513086,108.032451 113.947634,112.324124 113.947634,112.324124 L116.019558,112.903616 C120.491173,107.614337 123.683796,109.289795 123.892853,111.278839 C124.123771,113.475876 126.092017,115.069731 128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 Z" class="eyes" fill="#3C4C3E"
 							init-with="p:[op:1]"
-							when-htilt-init="p:[op:0, t:all 150ms ease-in-out]"
+							when-htilt-init="p:[opacity:1:0:150:easeInOut]"
 							when-hreset-init="p:[op:1]"></path>
 						<g class="circle-eyes" fill="#3C4C3E">
 				            <circle class="eye-right" cx="128" cy="113" r="3.5"></circle>
@@ -473,8 +473,8 @@
 						<path d="M70,95 L92,96 L92,93 L72,89 L70,95 L70,95 L70,95 L70,95 L70,95 Z M134.752203,90.6040853 L112.923075,93.5177063 L112.661608,90.5291222 L132.236879,84.8012286 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 Z" class="eyebrows" stroke="#3C4C3E"
 							stroke-width="2"
 							init-with="p:[fill:#69B3A5]"
-							on-enter="p:[fill:#86A477, t:all 1000ms cubic-bezier(0#.37#.24#1)]"
-							when-category-dropdown-hover="p:[fill:^hex_color,t:all 300ms ease-in-out]"
+							on-enter="p:[fill:#69B3A5:#86A477:1000:easeOutCubic]"
+							when-category-dropdown-hover="p:[fill:#86A477:^hex_color:300:easeInOutSine]"
 							when-category-dropdown-mouse-leave="p:[fill:#86A477]"
 							when-category-dropdown-toggle-off="p:[fill:#86A477]"></path>
 						<g class="cap"
@@ -507,7 +507,7 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2300 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1500:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 						on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-200:in] | t:[on-enter:children]">
 						<path d="M148.02,44 C148.02,44 149.121176,47.5788235 150.291176,48.7488235 C151.461176,49.9188235 155.04,51.02 155.04,51.02 C155.04,51.02 151.461176,52.1211764 150.291176,53.2911764 C149.121176,54.4611764 148.02,58.04 148.02,58.04 C148.02,58.04 146.918824,54.4611764 145.748824,53.2911764 C144.578824,52.1211764 141,51.02 141,51.02 C141,51.02 144.578824,49.9188235 145.748824,48.7488235 C146.918824,47.5788235 148.02,44 148.02,44 Z" class="3-flash-bg"
@@ -523,7 +523,7 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1500:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 						on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):in] | t:[on-enter:children]">
 						<path d="M162,145 C162,145 164.196078,152.137255 166.529412,154.470588 C168.862745,156.803922 176,159 176,159 C176,159 168.862745,161.196078 166.529412,163.529412 C164.196078,165.862745 162,173 162,173 C162,173 159.803922,165.862745 157.470588,163.529412 C155.137255,161.196078 148,159 148,159 C148,159 155.137255,156.803922 157.470588,154.470588 C159.803922,152.137255 162,145 162,145 Z" class="2-flash-bg"
@@ -539,7 +539,7 @@
 					when-tech-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1400:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 					on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-200:in] | t:[on-enter:children]">
 						<path d="M44,134 C44,134 45.7254902,139.607843 47.5588235,141.441176 C49.3921569,143.27451 55,145 55,145 C55,145 49.3921569,146.72549 47.5588235,148.558824 C45.7254902,150.392157 44,156 44,156 C44,156 42.2745098,150.392157 40.4411765,148.558824 C38.6078431,146.72549 33,145 33,145 C33,145 38.6078431,143.27451 40.4411765,141.441176 C42.2745098,139.607843 44,134 44,134 Z" class="1-flash-bg"
@@ -565,7 +565,7 @@
 					when-photography-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2500 | anim:[prop-down:set:(dur:1000ms#func:linear):delay-1500:in, prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-2500:in]"
-					on-exit="p:[op:0, t:all 250ms ease-out]">
+					on-exit="p:[opacity:1:0:250:easeOutSine]">
 					<path d="M49,66 L49,76 L39,76 L39,66 L49,66 L49,66 Z M39,68.3994856 L49,68.3994856 L39,68.3994856 L39,68.3994856 Z M40.1805556,67.446829 C40.2956149,67.446829 40.3888889,67.3388678 40.3888889,67.2056909 C40.3888889,67.0725139 40.2956149,66.9645527 40.1805556,66.9645527 C40.0654962,66.9645527 39.9722222,67.0725139 39.9722222,67.2056909 C39.9722222,67.3388678 40.0654962,67.446829 40.1805556,67.446829 L40.1805556,67.446829 Z M41.5694444,67.446829 C41.6845038,67.446829 41.7777778,67.3388678 41.7777778,67.2056909 C41.7777778,67.0725139 41.6845038,66.9645527 41.5694444,66.9645527 C41.4543851,66.9645527 41.3611111,67.0725139 41.3611111,67.2056909 C41.3611111,67.3388678 41.4543851,67.446829 41.5694444,67.446829 L41.5694444,67.446829 Z M42.9583333,67.446829 C43.0733927,67.446829 43.1666667,67.3388678 43.1666667,67.2056909 C43.1666667,67.0725139 43.0733927,66.9645527 42.9583333,66.9645527 C42.843274,66.9645527 42.75,67.0725139 42.75,67.2056909 C42.75,67.3388678 42.843274,67.446829 42.9583333,67.446829 L42.9583333,67.446829 Z" class="5-browser" stroke="#55A4B7" stroke-width="0.5" fill="#CDEFF7"
 						init-with="p-op"
 						when-tech-init="t-enter"
@@ -584,7 +584,7 @@
 					when-photography-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2500 | anim:[prop-down:set:(dur:1000ms#func:linear):delay-1500:in, prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-2500:in]"
-					on-exit="p:[op:0, t:all 250ms ease-out]">
+					on-exit="p:[opacity:1:0:250:easeOutSine]">
 					<path d="M162.4,89 L162.4,101 L148,101 L148,89 L162.4,89 L162.4,89 Z M148,91.8793827 L162.4,91.8793827 L148,91.8793827 L148,91.8793827 Z M155.7814,93.9959971 L154.647,98.4553171 L155.7814,93.9959971 L155.7814,93.9959971 Z M149.7,90.7361948 C149.865685,90.7361948 150,90.6066414 150,90.446829 C150,90.2870167 149.865685,90.1574632 149.7,90.1574632 C149.534315,90.1574632 149.4,90.2870167 149.4,90.446829 C149.4,90.6066414 149.534315,90.7361948 149.7,90.7361948 L149.7,90.7361948 Z M151.7,90.7361948 C151.865685,90.7361948 152,90.6066414 152,90.446829 C152,90.2870167 151.865685,90.1574632 151.7,90.1574632 C151.534315,90.1574632 151.4,90.2870167 151.4,90.446829 C151.4,90.6066414 151.534315,90.7361948 151.7,90.7361948 L151.7,90.7361948 Z M153.7,90.7361948 C153.865685,90.7361948 154,90.6066414 154,90.446829 C154,90.2870167 153.865685,90.1574632 153.7,90.1574632 C153.534315,90.1574632 153.4,90.2870167 153.4,90.446829 C153.4,90.6066414 153.534315,90.7361948 153.7,90.7361948 L153.7,90.7361948 Z" class="4-browser" stroke="#55A4B7" stroke-width="0.5" fill="#CDEFF7"
 						init-with="p-op"
 						when-tech-init="t-enter"
@@ -597,7 +597,7 @@
 				</g>
 			</g>
 			<g init-with="p:[tro:center center]"
-				when-htilt-init="p:[tr:rotate(-10deg), t:all 250ms ease-out]"
+				when-htilt-init="p:[transform:rotate(0deg):rotate(-10deg):250:easeOutSine]"
 				when-hreset-init="p:[tr:rotate(0deg) translateY(0px)]">
 				<g init-with="p:[op:0, tr:rotate(30deg) translateY(50px), tro:center center]"
 					when-tech-init="t-enter"
@@ -605,24 +605,24 @@
 					when-baking-init="t-exit"
 					when-photography-init="t-exit"
 					when-household-init="t-exit"
-					on-enter="p:[op:1:delay-800, tr:rotate(0deg) translateY(0):delay-650, t:all 250ms ease-out] | t:[on-enter:children]"
-					on-exit="p:[op:0, tr:rotate(30deg) translateY(50px), t:all 250ms ease-in] | t:[on-exit:children]">
+					on-enter="p:[opacity:0:1:250:easeOutSine:800, transform:rotate(30deg) translateY(50px):rotate(0deg) translateY(0):250:easeOutSine:650] | t:[on-enter:children]"
+					on-exit="p:[opacity:1:0:250:easeInSine, transform:rotate(0deg) translateY(0):rotate(30deg) translateY(50px):250:easeInSine] | t:[on-exit:children]">
 						<path d="M61,113 C61,113 57,113 55,117 C53,121 53.9750979,127.312012 57.970215,129.79248 C61.9653322,132.272949 65.0000002,129 65,129 C68.9716799,136.0625 76.4101584,155.488446 109.506026,153.99722 C135.625974,152.820313 147.641113,134.905274 147,119 C147,119 151.995605,121.307617 154.519043,117.708496 C157.04248,114.109375 158,110 156,106 C154,102 151,101 147,103 C150,90.0000006 132,77 132,77 C120,81 108,73 97,73 C86,73 57,79 61,113" class="face" stroke="#33494E" stroke-width="2" fill="#F9ECE5"></path>
 						<path d="M55,96 C44.8095703,97.2685547 36.9628907,83 46.0712891,72.8300781 C46.0712892,78 50.0009767,83 55.9999994,83 C43.9804688,75.9570312 49.8095704,48.3339844 67.3525396,44.9365234 C63.5996099,52.453125 74.4423812,56 78,56 C78,56 79,48 86,46 C80,62 122,47 134,67 C134,67 135,74 132,78 C120,82 108,74 97,74 C86,74 57,80 61,114 C61,114 51,110 55,96 L55,96 L55,96 L55,96 Z M132,78 C132,78 150,91.0000006 147,104 C163,86.9999994 140.78,64 134,67 C134,67 135,74 132,78 L132,78 L132,78 L132,78 Z" class="hair" stroke="#33494E" stroke-width="2" fill="#6799A5"
 							init-with="p:[fill:#69B3A5]"
-							on-enter="p:[fill:#6799A5, t:fill 250ms ease-out]"
-							when-category-dropdown-hover="p:[fill:^hex_color,t:all 300ms ease-in-out]"
+							on-enter="p:[fill:#69B3A5:#6799A5:250:easeOutSine]"
+							when-category-dropdown-hover="p:[fill:#6799A5:^hex_color:300:easeInOutSine]"
 							when-category-dropdown-mouse-leave="p:[fill:#6799A5]"
 							when-category-dropdown-toggle-off="p:[fill:#6799A5]"></path>
 						<path d="M60.5,129 C61.3284271,129 62,128.328427 62,127.5 C62,126.671573 61.3284271,126 60.5,126 C59.6715729,126 59,126.671573 59,127.5 C59,128.328427 59.6715729,129 60.5,129 L60.5,129 L60.5,129 L60.5,129 L60.5,129 L60.5,129 Z M151.223145,117.766357 C152.051572,117.766357 152.723145,117.094785 152.723145,116.266357 C152.723145,115.43793 152.051572,114.766357 151.223145,114.766357 C150.394717,114.766357 149.723145,115.43793 149.723145,116.266357 C149.723145,117.094785 150.394717,117.766357 151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 Z" class="earrings-1" stroke="#33494E" stroke-width="2" fill="#33534D"></path>
 						<path d="M54.8920408,116.428579 C53.8157813,116.180105 52.7418726,116.851158 52.4933985,117.927417 C52.2449245,119.003677 52.9159771,120.077585 53.9922366,120.326059 C55.068496,120.574533 56.1424047,119.903481 56.3908788,118.827221 M154.716513,113.023602 C154.449293,114.095362 155.101502,115.180818 156.173261,115.448038 C157.24502,115.715257 158.330476,115.063049 158.597696,113.99129 C158.864915,112.919531 158.212707,111.834074 157.140948,111.566855" class="earrings-2" stroke="#33494E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 						<path d="M111,139 C116,140 126,138 126,132" class="mouth" stroke="#33494E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 							init-with="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"
-							when-htilt-init="p:[tr:translateX(-10px) translateY(-2px) rotate(8deg), t:all 250ms ease-out]"
-							when-hreset-init="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"></path>
+							when-htilt-init="p:[transform:translateX(0px) translateY(0px) rotate(0deg):translateX(-10px) translateY(-2px) rotate(8deg):250:easeOutSine]"
+							when-hreset-init="p:[transform:translateX(-10px) translateY(-2px) rotate(8deg):translateX(0px) translateY(0px) rotate(0deg):250:easeOutSine, tro:center center]"></path>
 						<path d="M90.5288326,119.164053 C92.7258698,118.933135 94.3197243,116.964889 94.0888064,114.767852 C93.8578885,112.570815 91.7417349,110.688246 89.5880769,110.213356 C86.4999827,109.53242 84.5109385,109.741477 81.6319013,111.049584 C78.7528641,112.357691 76.1874123,116.649364 76.1874123,116.649364 L78.2593359,117.228857 C82.7309517,111.939577 85.9235743,113.615036 86.1326312,115.60408 C86.3635491,117.801117 88.3317955,119.394971 90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 Z M128.289054,114.838813 C130.486092,114.607895 132.079946,112.639649 131.849028,110.442612 C131.61811,108.245574 129.501957,106.363006 127.348299,105.888116 C124.260205,105.207179 122.27116,105.416236 119.392123,106.724344 C116.513086,108.032451 113.947634,112.324124 113.947634,112.324124 L116.019558,112.903616 C120.491173,107.614337 123.683796,109.289795 123.892853,111.278839 C124.123771,113.475876 126.092017,115.069731 128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 Z" class="eyes" fill="#33494E"
 							init-with="p:[op:1]"
-							when-htilt-init="p:[op:0, t:all 150ms ease-in-out]"
+							when-htilt-init="p:[opacity:1:0:150:easeInOut]"
 							when-hreset-init="p:[op:1]"></path>
 						<g class="circle-eyes" fill="#33494E">
 				            <circle class="eye-right" cx="128" cy="113" r="3.5"></circle>
@@ -631,8 +631,8 @@
 						<path d="M70,95 L92,96 L92,93 L72,89 L70,95 L70,95 L70,95 L70,95 L70,95 Z M134.752203,90.6040853 L112.923075,93.5177063 L112.661608,90.5291222 L132.236879,84.8012286 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 Z" class="eyebrows" stroke="#33494E"
 							stroke-width="2"
 							init-with="p:[fill:#69B3A5]"
-							on-enter="p:[fill:#6799A5, t:all 1000ms cubic-bezier(0#.37#.24#1)]"
-							when-category-dropdown-hover="p:[fill:^hex_color,t:all 300ms ease-in-out]"
+							on-enter="p:[fill:#69B3A5:#6799A5:1000:easeOutCubic]"
+							when-category-dropdown-hover="p:[fill:#6799A5:^hex_color:300:easeInOutSine]"
 							when-category-dropdown-mouse-leave="p:[fill:#6799A5]"
 							when-category-dropdown-toggle-off="p:[fill:#6799A5]"></path>
 						<g class="vr"
@@ -661,7 +661,7 @@
 					when-photography-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2300 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1500:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 						on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):in] | t:[on-enter:children]">
 						<path d="M159.125,44 L159.125,59 L141.625,59 L141.625,44 L159.125,44 L159.125,44 Z M141.625,47.5992284 L159.125,47.5992284 L141.625,47.5992284 L141.625,47.5992284 Z M144.065972,46.1702435 C144.267326,46.1702435 144.430556,46.0083017 144.430556,45.8085363 C144.430556,45.6087709 144.267326,45.446829 144.065972,45.446829 C143.864618,45.446829 143.701389,45.6087709 143.701389,45.8085363 C143.701389,46.0083017 143.864618,46.1702435 144.065972,46.1702435 L144.065972,46.1702435 Z M146.496528,46.1702435 C146.697882,46.1702435 146.861111,46.0083017 146.861111,45.8085363 C146.861111,45.6087709 146.697882,45.446829 146.496528,45.446829 C146.295174,45.446829 146.131944,45.6087709 146.131944,45.8085363 C146.131944,46.0083017 146.295174,46.1702435 146.496528,46.1702435 L146.496528,46.1702435 Z M148.927083,46.1702435 C149.128437,46.1702435 149.291667,46.0083017 149.291667,45.8085363 C149.291667,45.6087709 149.128437,45.446829 148.927083,45.446829 C148.72573,45.446829 148.5625,45.6087709 148.5625,45.8085363 C148.5625,46.0083017 148.72573,46.1702435 148.927083,46.1702435 L148.927083,46.1702435 Z M147.5625,53.6702435 C147.735089,53.6702435 147.875,53.5083017 147.875,53.3085363 C147.875,53.1087709 147.735089,52.946829 147.5625,52.946829 C147.389911,52.946829 147.25,53.1087709 147.25,53.3085363 C147.25,53.5083017 147.389911,53.6702435 147.5625,53.6702435 L147.5625,53.6702435 Z M150.012508,53.6702435 C150.185097,53.6702435 150.325008,53.5083017 150.325008,53.3085363 C150.325008,53.1087709 150.185097,52.946829 150.012508,52.946829 C149.839919,52.946829 149.700008,53.1087709 149.700008,53.3085363 C149.700008,53.5083017 149.839919,53.6702435 150.012508,53.6702435 L150.012508,53.6702435 Z M152.437492,53.6702435 C152.610081,53.6702435 152.749992,53.5083017 152.749992,53.3085363 C152.749992,53.1087709 152.610081,52.946829 152.437492,52.946829 C152.264903,52.946829 152.124992,53.1087709 152.124992,53.3085363 C152.124992,53.5083017 152.264903,53.6702435 152.437492,53.6702435 L152.437492,53.6702435 Z" class="3-browser" stroke="#55A4B7" stroke-width="0.5" fill="#CDEFF7"
@@ -678,7 +678,7 @@
 					when-photography-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1400:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 						on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):in] | t:[on-enter:children]">
 						<path d="M180.666667,145 L180.666667,173 L148,173 L148,145 L180.666667,145 L180.666667,145 Z M148,151.71856 L180.666667,151.71856 L148,151.71856 L148,151.71856 Z M165.65225,156.657327 L163.078843,167.062407 L165.65225,156.657327 L165.65225,156.657327 Z M151.856481,149.051121 C152.232342,149.051121 152.537037,148.74883 152.537037,148.375934 C152.537037,148.003039 152.232342,147.700748 151.856481,147.700748 C151.480621,147.700748 151.175926,148.003039 151.175926,148.375934 C151.175926,148.74883 151.480621,149.051121 151.856481,149.051121 L151.856481,149.051121 Z M156.393519,149.051121 C156.769379,149.051121 157.074074,148.74883 157.074074,148.375934 C157.074074,148.003039 156.769379,147.700748 156.393519,147.700748 C156.017658,147.700748 155.712963,148.003039 155.712963,148.375934 C155.712963,148.74883 156.017658,149.051121 156.393519,149.051121 L156.393519,149.051121 Z M160.930556,149.051121 C161.306416,149.051121 161.611111,148.74883 161.611111,148.375934 C161.611111,148.003039 161.306416,147.700748 160.930556,147.700748 C160.554695,147.700748 160.25,148.003039 160.25,148.375934 C160.25,148.74883 160.554695,149.051121 160.930556,149.051121 L160.930556,149.051121 Z" class="2-browser" stroke="#55A4B7" fill="#CDEFF7"
@@ -695,7 +695,7 @@
 					when-photography-init="t-exit"
 					when-household-init="t-exit"
 					on-enter="p:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1400:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 						on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):in] | t:[on-enter:children]">
 					<path d="M58.4736842,134 L58.4736842,155.834586 L33,155.834586 L33,134 L58.4736842,134 L58.4736842,134 Z M33,139.239178 L58.4736842,139.239178 L33,139.239178 L33,139.239178 Z M36.0073099,137.159091 C36.3004084,137.159091 36.5380117,136.923362 36.5380117,136.632576 C36.5380117,136.34179 36.3004084,136.106061 36.0073099,136.106061 C35.7142115,136.106061 35.4766082,136.34179 35.4766082,136.632576 C35.4766082,136.923362 35.7142115,137.159091 36.0073099,137.159091 L36.0073099,137.159091 Z M39.5453216,137.159091 C39.8384201,137.159091 40.0760234,136.923362 40.0760234,136.632576 C40.0760234,136.34179 39.8384201,136.106061 39.5453216,136.106061 C39.2522232,136.106061 39.0146199,136.34179 39.0146199,136.632576 C39.0146199,136.923362 39.2522232,137.159091 39.5453216,137.159091 L39.5453216,137.159091 Z M43.0833333,137.159091 C43.3764318,137.159091 43.6140351,136.923362 43.6140351,136.632576 C43.6140351,136.34179 43.3764318,136.106061 43.0833333,136.106061 C42.7902348,136.106061 42.5526316,136.34179 42.5526316,136.632576 C42.5526316,136.923362 42.7902348,137.159091 43.0833333,137.159091 L43.0833333,137.159091 Z" class="1-browser" stroke="#55A4B7" fill="#CDEFF7"
@@ -722,7 +722,7 @@
 					when-photography-init="t-exit"
 					when-tech-init="t-exit"
 					on-enter="p:[op:1]:delay-2500 | anim:[prop-down:set:(dur:1000ms#func:linear):delay-1500:in, prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-2500:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<path d="M43.3968049,66.0006956 C45.8678411,65.9575635 47.9059772,67.9257686 47.9491093,70.3968049 C47.9922414,72.8678411 46.0240362,74.9059772 43.553,74.9491093 C41.0819638,74.9922414 39.0438277,73.0240362 39.0006956,70.553 C38.9575635,68.0819638 40.9257686,66.0438277 43.3968049,66.0006956 L43.3968049,66.0006956 L43.3968049,66.0006956 L43.3968049,66.0006956 L43.3968049,66.0006956 L43.3968049,66.0006956 Z M44.8786876,70.9713836 C45.0408201,71.2987691 45.085495,71.8485123 44.8995543,72.1668357 L45.15946,71.6574862 C44.9876683,71.9798381 45.097149,72.0689801 45.4208619,71.9099191 L44.9208933,72.1874425 C45.2482788,72.0253101 45.798022,71.9806352 46.1163454,72.1665758 L45.6069959,71.9066701 C45.9293478,72.0784619 46.0184898,71.9689811 45.8594287,71.6452682 L46.1369522,72.1452369 C45.9748197,71.8178513 45.9301448,71.2681081 46.1160855,70.9497847 L45.8561798,71.4591342 C46.0279715,71.1367824 45.9184908,71.0476403 45.5947779,71.2067014 L46.0947465,70.929178 C45.767361,71.0913104 45.2176178,71.1359853 44.8992944,70.9500447 L45.4086439,71.2099504 C45.086292,71.0381586 44.99715,71.1476393 45.1562111,71.4713522 L44.8786876,70.9713836 L44.8786876,70.9713836 L44.8786876,70.9713836 L44.8786876,70.9713836 L44.8786876,70.9713836 L44.8786876,70.9713836 Z" class="5-bubble"
 						init-with="p:[tro:center center]"
 						on-enter="anim:[scale-jelly:set:(dur:1500ms#func:ease-in-out#count:infinite#dir:alternate):in]"></path>
@@ -735,14 +735,14 @@
 					when-photography-init="t-exit"
 					when-tech-init="t-exit"
 					on-enter="p:[op:1]:delay-2300 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1500:in, prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-2500:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<path d="M152.553,89.0006956 C150.081964,88.9575635 148.043828,90.9257686 148.000696,93.3968049 C147.957563,95.8678411 149.925769,97.9059772 152.396805,97.9491093 C154.867841,97.9922414 156.905977,96.0240362 156.949109,93.553 C156.992241,91.0819638 155.024036,89.0438277 152.553,89.0006956 L152.553,89.0006956 L152.553,89.0006956 L152.553,89.0006956 L152.553,89.0006956 Z M151.071117,93.9713836 C150.908985,94.2987691 150.86431,94.8485123 151.050251,95.1668357 L150.790345,94.6574862 C150.962137,94.9798381 150.852656,95.0689801 150.528943,94.9099191 L151.028912,95.1874425 C150.701526,95.0253101 150.151783,94.9806352 149.833459,95.1665758 L150.342809,94.9066701 C150.020457,95.0784619 149.931315,94.9689811 150.090376,94.6452682 L149.812853,95.1452369 C149.974985,94.8178513 150.01966,94.2681081 149.833719,93.9497847 L150.093625,94.4591342 C149.921833,94.1367824 150.031314,94.0476403 150.355027,94.2067014 L149.855058,93.929178 C150.182444,94.0913104 150.732187,94.1359853 151.05051,93.9500447 L150.541161,94.2099504 C150.863513,94.0381586 150.952655,94.1476393 150.793594,94.4713522 L151.071117,93.9713836 L151.071117,93.9713836 L151.071117,93.9713836 L151.071117,93.9713836 L151.071117,93.9713836 Z" class="4-bubble"
 						init-with="p:[tro:center center]"
 						on-enter="anim:[scale-jelly:set:(dur:1200ms#func:ease-in-out#count:infinite#dir:alternate):in]"></path>
 				</g>
 			</g>
 			<g init-with="p:[tro:center center]"
-				when-htilt-init="p:[tr:rotate(-10deg), t:all 250ms ease-out]"
+				when-htilt-init="p:[transform:rotate(0deg):rotate(-10deg):250:easeOutSine]"
 				when-hreset-init="p:[tr:rotate(0deg) translateY(0px)]">
 				<g init-with="p:[op:0, tr:rotate(30deg) translateY(50px), tro:center center]"
 					when-household-init="t-enter"
@@ -750,25 +750,25 @@
 					when-baking-init="t-exit"
 					when-photography-init="t-exit"
 					when-tech-init="t-exit"
-					on-enter="p:[op:1:delay-800, tr:rotate(0deg) translateY(0):delay-650, t:all 250ms ease-out] | t:[on-enter:children]"
-					on-exit="p:[op:0, tr:rotate(30deg) translateY(50px), t:all 250ms ease-in] | t:[on-exit:children]">
+					on-enter="p:[opacity:0:1:250:easeOutSine:800, transform:rotate(30deg) translateY(50px):rotate(0deg) translateY(0px):250:easeOutSine:650] | t:[on-enter:children]"
+					on-exit="p:[opacity:1:0:250:easeInSine, transform:rotate(0deg) translateY(0px):rotate(30deg) translateY(50px):250:easeInSine] | t:[on-exit:children]">
 					<path d="M61,113 C61,113 57,113 55,117 C53,121 53.9750979,127.312012 57.970215,129.79248 C61.9653322,132.272949 65.0000002,129 65,129 C68.9716799,136.0625 76.4101584,155.488446 109.506026,153.99722 C135.625974,152.820313 147.641113,134.905274 147,119 C147,119 151.995605,121.307617 154.519043,117.708496 C157.04248,114.109375 158,110 156,106 C154,102 151,101 147,103 C150,90.0000006 132,77 132,77 C120,81 108,73 97,73 C86,73 57,79 61,113" class="face" stroke="#393E56" stroke-width="2" fill="#F9ECE5"></path>
 					<path d="M61,113 C61,113 57,113 55,117 C53,121 53.9750979,127.312012 57.970215,129.79248 C61.9653322,132.272949 65.0000002,129 65,129 C68.9716799,136.0625 76.4101584,155.488446 109.506026,153.99722 C135.625974,152.820313 147.641113,134.905274 147,119 C147,119 151.995605,121.307617 154.519043,117.708496 C157.04248,114.109375 158,110 156,106 C154,102 151,101 147,103 C150,90.0000006 132,77 132,77 C120,81 108,73 97,73 C86,73 57,79 61,113" class="face" stroke="#33494E" stroke-width="2" fill="#F9ECE5"></path>
 					<path d="M55,96 C44.8095703,97.2685547 36.9628907,83 46.0712891,72.8300781 C46.0712892,78 50.0009767,83 55.9999994,83 C43.9804688,75.9570312 49.8095704,48.3339844 67.3525396,44.9365234 C63.5996099,52.453125 74.4423812,56 78,56 C78,56 79,48 86,46 C80,62 122,47 134,67 C134,67 135,74 132,78 C120,82 108,74 97,74 C86,74 57,80 61,114 C61,114 51,110 55,96 L55,96 L55,96 L55,96 Z M132,78 C132,78 150,91.0000006 147,104 C163,86.9999994 140.78,64 134,67 C134,67 135,74 132,78 L132,78 L132,78 L132,78 Z" class="hair" stroke="#393E56" stroke-width="2" fill="#8783D2"
 						init-with="p:[fill:#69B3A5]"
-						on-enter="p:[fill:#8783D2, t:all 250ms ease-out 400ms]"
-						when-category-dropdown-hover="p:[fill:^hex_color,t:all 300ms ease-in-out]"
+						on-enter="p:[fill:#69B3A5:#8783D2:250:easeOutSine:400]"
+						when-category-dropdown-hover="p:[fill:#8783D2:^hex_color:300:easeInOutSine]"
 						when-category-dropdown-mouse-leave="p:[fill:#8783D2]"
 						when-category-dropdown-toggle-off="p:[fill:#8783D2]"></path>
 					<path d="M60.5,129 C61.3284271,129 62,128.328427 62,127.5 C62,126.671573 61.3284271,126 60.5,126 C59.6715729,126 59,126.671573 59,127.5 C59,128.328427 59.6715729,129 60.5,129 L60.5,129 L60.5,129 L60.5,129 L60.5,129 L60.5,129 L60.5,129 Z M151.223145,117.766357 C152.051572,117.766357 152.723145,117.094785 152.723145,116.266357 C152.723145,115.43793 152.051572,114.766357 151.223145,114.766357 C150.394717,114.766357 149.723145,115.43793 149.723145,116.266357 C149.723145,117.094785 150.394717,117.766357 151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 L151.223145,117.766357 Z" class="earrings-1" stroke="#393E56" stroke-width="2" fill="#393E56"></path>
 					<path d="M54.8920408,116.428579 C53.8157813,116.180105 52.7418726,116.851158 52.4933985,117.927417 C52.2449245,119.003677 52.9159771,120.077585 53.9922366,120.326059 C55.068496,120.574533 56.1424047,119.903481 56.3908788,118.827221 M154.716513,113.023602 C154.449293,114.095362 155.101502,115.180818 156.173261,115.448038 C157.24502,115.715257 158.330476,115.063049 158.597696,113.99129 C158.864915,112.919531 158.212707,111.834074 157.140948,111.566855" class="earrings-2" stroke="#393E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 					<path d="M111,139 C116,140 126,138 126,132" class="mouth" stroke="#393E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 						init-with="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"
-						when-htilt-init="p:[tr:translateX(-10px) translateY(-2px) rotate(8deg), t:all 250ms ease-out]"
+						when-htilt-init="p:[transform:translateX(0px) translateY(0px) rotate(0deg):translateX(-10px) translateY(-2px) rotate(8deg):250:easeOutSine]"
 						when-hreset-init="p:[tr:translateX(0) translateY(0) rotate(0), tro:center center]"></path>
 					<path d="M90.5288326,119.164053 C92.7258698,118.933135 94.3197243,116.964889 94.0888064,114.767852 C93.8578885,112.570815 91.7417349,110.688246 89.5880769,110.213356 C86.4999827,109.53242 84.5109385,109.741477 81.6319013,111.049584 C78.7528641,112.357691 76.1874123,116.649364 76.1874123,116.649364 L78.2593359,117.228857 C82.7309517,111.939577 85.9235743,113.615036 86.1326312,115.60408 C86.3635491,117.801117 88.3317955,119.394971 90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 L90.5288326,119.164053 Z M128.289054,114.838813 C130.486092,114.607895 132.079946,112.639649 131.849028,110.442612 C131.61811,108.245574 129.501957,106.363006 127.348299,105.888116 C124.260205,105.207179 122.27116,105.416236 119.392123,106.724344 C116.513086,108.032451 113.947634,112.324124 113.947634,112.324124 L116.019558,112.903616 C120.491173,107.614337 123.683796,109.289795 123.892853,111.278839 C124.123771,113.475876 126.092017,115.069731 128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 L128.289054,114.838813 Z" class="eyes" fill="#393E56"
 						init-with="p:[op:1]"
-						when-htilt-init="p:[op:0, t:all 150ms ease-in-out]"
+						when-htilt-init="p:[opacity:1:0:150:easeInOut]"
 						when-hreset-init="p:[op:1]"></path>
 					<g class="circle-eyes" fill="#393E56">
 						<circle class="eye-right" cx="128" cy="113" r="3.5"></circle>
@@ -776,8 +776,8 @@
 					</g>
 					<path d="M70,95 L92,96 L92,93 L72,89 L70,95 L70,95 L70,95 L70,95 L70,95 Z M134.752203,90.6040853 L112.923075,93.5177063 L112.661608,90.5291222 L132.236879,84.8012286 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 L134.752203,90.6040853 Z" class="eyebrows" stroke="#393E56" stroke-width="2"
 						init-with="p:[fill:#69B3A5]"
-						on-enter="p:[fill:#8783D2, t:all 250ms ease-out 400ms]"
-						when-category-dropdown-hover="p:[fill:^hex_color,t:all 300ms ease-in-out]"
+						on-enter="p:[fill:#69B3A5:#8783D2:250:easeOutSine:400]"
+						when-category-dropdown-hover="p:[fill:#8783D2:^hex_color:300:easeInOutSine]"
 						when-category-dropdown-mouse-leave="p:[fill:#8783D2]"
 						when-category-dropdown-toggle-off="p:[fill:#8783D2]"></path>
 					<g class="goggle"
@@ -799,7 +799,7 @@
 					when-photography-init="t-exit"
 					when-tech-init="t-exit"
 					on-enter="p:[op:1]:delay-2300 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1500:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 						on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):delay-300:in] | t:[on-enter:children]">
 						<path d="M144.086046,56.8026751 C147.290775,58.9642921 151.641058,58.1186827 153.802675,54.9139538 C155.964292,51.7092248 155.118683,47.3589419 151.913954,45.1973249 C148.709225,43.0357079 144.358942,43.8813173 142.197325,47.0860462 C140.035708,50.2907752 140.881317,54.6410581 144.086046,56.8026751 L144.086046,56.8026751 L144.086046,56.8026751 L144.086046,56.8026751 L144.086046,56.8026751 Z M150.264411,51.5445851 C150.755989,51.2532432 151.282911,50.5701552 151.310171,49.9941829 L151.217205,50.8837504 C151.266457,50.3145468 151.486011,50.2908763 151.775152,50.7752965 L151.355718,49.9853295 C151.647059,50.4769073 152.330147,51.0038288 152.90612,51.031089 L152.016552,50.9381231 C152.585756,50.9873754 152.609426,51.2069294 152.125006,51.4960701 L152.914973,51.0766357 C152.423395,51.3679777 151.896474,52.0510657 151.869214,52.627038 L151.96218,51.7374705 C151.912927,52.3066741 151.693373,52.3303445 151.404233,51.8459244 L151.823667,52.6358913 C151.532325,52.1443136 150.849237,51.6173921 150.273265,51.5901318 L151.162832,51.6830978 C150.593629,51.6338455 150.569958,51.4142914 151.054378,51.1251507 L150.264411,51.5445851 L150.264411,51.5445851 L150.264411,51.5445851 L150.264411,51.5445851 L150.264411,51.5445851 Z" class="3-bubble"
@@ -816,7 +816,7 @@
 					when-photography-init="t-exit"
 					when-tech-init="t-exit"
 					on-enter="p:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1400:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 						on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):in] | t:[on-enter:children]">
 					<path d="M161.923215,145.002203 C169.748163,144.865618 176.202261,151.098267 176.338846,158.923215 C176.475431,166.748163 170.242781,173.202261 162.417833,173.338846 C154.592885,173.475431 148.138788,167.242781 148.002203,159.417833 C147.865618,151.592885 154.098267,145.138788 161.923215,145.002203 L161.923215,145.002203 L161.923215,145.002203 L161.923215,145.002203 L161.923215,145.002203 Z M167.215997,161.685731 C167.397961,162.201638 167.462522,163.059615 167.248798,163.564926 L167.055475,163.925818 C166.75971,164.388546 166.881711,164.500036 167.348964,164.192811 L167.692512,163.993416 C168.208419,163.811451 169.066396,163.74689 169.571707,163.960614 L169.932599,164.153937 C170.395326,164.449702 170.506816,164.327701 170.199592,163.860448 L170.000196,163.516901 C169.818232,163.000993 169.753671,162.143016 169.967395,161.637705 L170.160718,161.276813 C170.456483,160.814086 170.334481,160.702596 169.867229,161.00982 L169.523681,161.209216 C169.007774,161.39118 168.149797,161.455741 167.644486,161.242017 L167.283594,161.048694 C166.820866,160.752929 166.709376,160.874931 167.016601,161.342183 L167.215997,161.685731 L167.215997,161.685731 L167.215997,161.685731 L167.215997,161.685731 L167.215997,161.685731 Z" class="2-bubble" stroke-width="2"
@@ -832,7 +832,7 @@
 					when-photography-init="t-exit"
 					when-tech-init="t-exit"
 					on-enter="p:[op:1]:delay-2200 | anim:[prop-down:set:(dur:800ms#func:linear):delay-1400:in] | t:[on-enter:children]"
-					on-exit="p:[op:0, t:all 250ms ease-out] | t:[on-exit:children]">
+					on-exit="p:[opacity:1:0:250:easeOutSine] | t:[on-exit:children]">
 					<g
 						on-enter="anim:[prop-hover:set:(dur:1000ms#func:ease-in-out#count:infinite#dir:alternate):in] | t:[on-enter:children]">
 						<path d="M44.0746856,166.641745 C43.434264,169.303342 44.7003775,172.145325 47.2626482,173.395028 C50.2243694,174.839556 53.7963402,173.609628 55.2408682,170.647906 C56.6853962,167.686185 55.455468,164.114214 52.4937467,162.669686 C51.9874799,162.422764 51.463382,162.253987 50.9351269,162.158647 C51.1067843,161.881471 51.2661416,161.59304 51.4121276,161.293724 C53.7594856,156.480927 51.7608523,150.676475 46.9480553,148.329117 C42.1352582,145.981759 36.3308057,147.980392 33.9834478,152.793189 C31.6360898,157.605986 33.6347231,163.410439 38.4475201,165.757797 C40.2617619,166.642662 42.2169183,166.90996 44.0746856,166.641745 L44.0746856,166.641745 Z" class="1-bubble" stroke-width="2"
