@@ -318,7 +318,8 @@
 									"complete": false
 								},
 								"notes": {
-									"GW": "Needs SVG"
+									"GW": "Needs SVG",
+									"JO": "Bounces in with circle SVG reverberating"
 								}
 							},
 							{
@@ -326,6 +327,190 @@
 									"element": "sidebar content background",
 									"animation": ["slideInLeft"],
 									"easing": ["easeOutExpo"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "sidebar line separator",
+									"animation": ["drawIn"],
+									"easing": ["easeOutCubic"]
+								},
+								"timing": {
+									"order": 2,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "As soon as the reverberating settles, borderline on right draws downward"
+								}
+							},
+							{
+								"description": {
+									"element": "sidebar logo and links",
+									"animation": ["fadeInDown"],
+									"easing": ["easeOutSine"]
+								},
+								"timing": {
+									"order": 2.3,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "When the borderline begins to draw, the links fadeInDown"
+								}
+							},
+							{
+								"description": {
+									"element": "sidebar student card and getting started CTA",
+									"animation": ["bounceInDown stagger"],
+									"easing": ["easeOutSine"]
+								},
+								"timing": {
+									"order": 3,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "sidebar current page link is highlighted",
+									"animation": ["drawIn, color change"],
+									"easing": ["easeOutCubic"]
+								},
+								"timing": {
+									"order": 3,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "drawIn left"
+								}
+							}
+						]
+					},
+					"onCollapse": {
+						"order": 2,
+						"notes": "Occurs when a page has been selected"
+						"animations": [
+							{
+								"description": {
+									"element": "sidebar",
+									"animation": ["bounceOutRight"],
+									"easing": ["easeOutExpo", "easeOutElastic", "easeOutBack"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "Collapses all except page numbers and exit icon. Current page underline is still visible."
+								}
+							}
+						]
+					},
+					"onExit": {
+						"order": 3,
+						"notes": "Occurs when exiting from full view of sidebar"
+						"animations": [
+							{
+								"description": {
+									"element": "sidebar",
+									"animation": ["bounceOutRight"],
+									"easing": ["easeOutExpo", "easeOutElastic", "easeOutBack"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "Anticipates with a circular stretch, then bounceOutRight with everything"
+								}
+							},
+							{
+								"description": {
+									"element": "content background",
+									"animation": ["fadeOut"],
+									"easing": ["linear"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							}
+						]
+					},
+					,
+					"onExit": {
+						"order": 3,
+						"notes": "Occurs when exiting from collapsed view of sidebar"
+						"animations": [
+							{
+								"description": {
+									"element": "sidebar",
+									"animation": ["bounceOutRight"],
+									"easing": ["easeOutExpo", "easeOutElastic", "easeOutBack"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "BounceOutRight with everything"
+								}
+							},
+							{
+								"description": {
+									"element": "content",
+									"animation": ["fadeOut"],
+									"easing": ["linear"]
 								},
 								"timing": {
 									"order": 1,
