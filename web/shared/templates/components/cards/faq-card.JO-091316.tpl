@@ -39,8 +39,8 @@
 			when-faq-item-clicked="p:[max-height:0px:500px:500:easeOutSine]"
 			on-click="s:[faq-item-closed:public]"
 			when-faq-item-closed="p:[max-height:500px:0px:500:easeOutSine]">
-			<div init-with="p:[border:2px solid, border-color:rgba(255#255#255#0.3)]">
-				<p init-with="p-op"
+			<div init-with="p:[border:2px solid, border-color:rgba(255#255#255#0.3), background:rgba(255#255#255#0.1)]">
+				<p init-with="p:[op:0, color:#ffffff]"
 					when-faq-item-clicked="p:[opacity:0:1:150:easeOutSine]:delay-350"
 					when-faq-item-closed="p:[opacity:1:0:150:easeOutSine]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</div>
