@@ -1,9 +1,244 @@
-<div class="sidebar-scale"
+<div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
+	on-init="s:[sidebar-icon-clicked]">
+	<aside class="splash-sidebar desktop"
+		init-with="p:[width:300px, tr:translateX(-350px) translateZ(0px)]"
+		when-sidebar-icon-clicked="p:[transform:translateX(-350px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]"
+		when-faq-link-clicked="t-enter"
+		when-pricing-link-clicked="t-enter"
+		when-support-link-clicked="t-enter"
+		when-team-link-clicked="t-enter"
+		on-enter="p:[width:300px:48px:1000:easeOutExpo]">
+		<header>
+			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
+				init-default
+				when-faq-link-clicked="t-enter"
+				when-pricing-link-clicked="t-enter"
+				when-support-link-clicked="t-enter"
+				when-team-link-clicked="t-enter"
+				on-enter="p:[opacity:1:0:250:easeOutExpo, transform:translateY(0%) translateZ(0px):translateY(-100%) translateZ(0px):250:easeOutExpo easeOutExpo]"></a>
+			<a class="icon-round-stroke close"
+				init-default
+				on-click="s:[sidebar-close-clicked:public]"
+				when-faq-link-clicked="t-enter"
+				when-pricing-link-clicked="t-enter"
+				when-support-link-clicked="t-enter"
+				when-team-link-clicked="t-enter"
+				on-enter="p:[transform:translateX(0px) translateZ(0px):translateX(-249px) translateZ(0px):1000:easeOutExpo easeOutExpo]">
+				<svg viewBox="0 0 100 100">
+					<circle cx="50" cy="50" r="36"></circle>
+					<g>
+						<path d="M50,32 L50,68"></path>
+						<path d="M32,50 L68,50"></path>
+					</g>
+				</svg>
+			</a>
+		</header>
+		<nav>
+			<ul>
+				<li>
+					<a init-default
+						on-click="s:[faq-link-clicked:public]"
+						when-faq-link-clicked="t-enter"
+						on-enter="c:[active:add]">
+						<span></span>
+						<span>FAQ</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a init-default
+						on-click="s:[pricing-link-clicked:public]"
+						when-pricing-link-clicked="t-enter"
+						on-enter="c:[active:add]">
+						<span></span>
+						<span>Pricing</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a init-default
+						on-click="s:[support-link-clicked:public]"
+						when-support-link-clicked="t-enter"
+						on-enter="c:[active:add]">
+						<span></span>
+						<span>Support</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a init-default
+						on-click="s:[team-link-clicked:public]"
+						when-team-link-clicked="t-enter"
+						on-enter="c:[active:add]">
+						<span></span>
+						<span>Team</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a init-default
+						on-click="s:[login-link-clicked:public]"
+						when-login-link-clicked="t-enter"
+						on-enter="c:[active:add]">
+						<span></span>
+						<span>Login</span>
+						<hr/>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="splash-sidebar-round"
+			init-with="p:[tro:left center, tr:scaleX(0.5)]"
+			when-sidebar-icon-clicked="p:[transform:scaleX(0.5) translateZ(0px):scaleX(0) translateZ(0px):1000:easeOutBack easeOutBack]:delay-400">
+			<svg viewBox="0 0 50 100" preserveAspectRatio="none">
+			    <circle cx="0" cy="50" r="50" fill="#637074"></circle>
+			</svg>
+		</div>
+	</aside>
+
+	<aside class="splash-sidebar mobile">
+		<header>
+			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
+			<a class="icon-round-stroke close">
+				<svg viewBox="0 0 100 100">
+					<circle cx="50" cy="50" r="36"></circle>
+					<g>
+						<path d="M50,32 L50,68"></path>
+						<path d="M32,50 L68,50"></path>
+					</g>
+				</svg>
+			</a>
+		</header>
+		<nav>
+			<ul>
+				<li>
+					<a init-default
+						on-click="s:[faq-link-clicked:public]"
+						when-faq-link-clicked="t-enter"
+						on-enter="c:[active:add]">
+						<span></span>
+						<span>FAQ</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a init-default
+						on-click="s:[pricing-link-clicked:public]"
+						when-pricing-link-clicked="t-enter"
+						on-enter="c:[active:add]">
+						<span></span>
+						<span>Pricing</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a init-default
+						on-click="s:[support-link-clicked:public]"
+						when-support-link-clicked="t-enter"
+						on-enter="c:[active:add]">
+						<span></span>
+						<span>Support</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a init-default
+						on-click="s:[team-link-clicked:public]"
+						when-team-link-clicked="t-enter"
+						on-enter="c:[active:add]">
+						<span></span>
+						<span>Team</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a init-default
+						on-click="s:[login-link-clicked:public]"
+						when-login-link-clicked="t-enter"
+						on-enter="c:[active:add]">
+						<span></span>
+						<span>Login</span>
+						<hr/>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</aside>
+
+	<section class="splash-sidebar-content"
+		init-with="p:[z-index:-1]"
+		when-faq-link-clicked="t-enter"
+		when-pricing-link-clicked="t-enter"
+		when-support-link-clicked="t-enter"
+		when-team-link-clicked="t-enter"
+		on-enter="p:[z-index:10]">
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/faq.html'"
+			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
+			when-sidebar-icon-clicked=""
+			when-faq-link-clicked="t-enter"
+			when-pricing-link-clicked="t-exit"
+			when-support-link-clicked="t-exit"
+			when-team-link-clicked="t-exit"
+			on-enter="p:[op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/pricing.html'"
+			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
+			when-faq-link-clicked="t-exit"
+			when-pricing-link-clicked="t-enter"
+			when-support-link-clicked="t-exit"
+			when-team-link-clicked="t-exit"
+			on-enter="p:[op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/team.html'"
+			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
+			when-faq-link-clicked="t-exit"
+			when-pricing-link-clicked="t-exit"
+			when-support-link-clicked="t-exit"
+			when-team-link-clicked="t-enter"
+			on-enter="p:[op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+	</section>
+
+	<div class="splash-sidebar-borders">
+		<hr init-with="p:[op:0, tr:translateX(252px) translateZ(0px) scaleY(0), tro:center top]"
+			when-sidebar-icon-clicked="p:[op:1, transform:translateX(252px) translateZ(0px) scaleY(0):translateX(252px) translateZ(0px) scaleY(1):500:easeOutExpo easeOutExpo easeOutExpo]:delay-1000"
+			when-faq-link-clicked="t-enter"
+			when-pricing-link-clicked="t-enter"
+			when-support-link-clicked="t-enter"
+			when-team-link-clicked="t-enter"
+			on-enter="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"/>
+		<ul init-with="p:[z-index:-1]"
+			when-faq-link-clicked="t-enter"
+			when-pricing-link-clicked="t-enter"
+			when-support-link-clicked="t-enter"
+			when-team-link-clicked="t-enter"
+			on-enter="p:[z-index:11]">
+			<li init-default
+				when-faq-link-clicked="t-enter"
+				on-enter="c:[active:add]"><hr/></li>
+			<li init-default
+				when-pricing-link-clicked="t-enter"
+				on-enter="c:[active:add]"><hr/></li>
+			<li init-default
+				when-support-link-clicked="t-enter"
+				on-enter="c:[active:add]"><hr/></li>
+			<li init-default
+				when-team-link-clicked="t-enter"
+				on-enter="c:[active:add]"><hr/></li>
+			<li init-default
+				when-login-link-clicked="t-enter"
+				on-enter="c:[active:add]"><hr/></li>
+		</ul>
+	</div>
+</div>
+
+
+
+
+
+<div class="sidebar-scale" ng-if="false"
 	init-with="p:[tr:scale(0), op:1, display:block, background:#ffffff]"
 	when-sidebar-icon-clicked="t:[on-enter]"
 	on-enter="p:[tr:scale(1000), background:#40484b, op:1, display:block, t:all 1000ms ease-out] | t:[on-exit]"
 	on-exit="p:[tr:scale(0):delay-2000, background:#ffffff:delay-2000, op:0:delay-500, display:none:delay-2000, t:all 500ms ease-out]"></div>
-<div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar'
+<div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar' ng-if="false"
 	init-with="p-op"
  	when-sidebar-icon-clicked="p:[op:1:delay-500]"
 	when-sidebar-close-clicked="p-op">
@@ -16,8 +251,7 @@
             <div>
                 <header>
                     <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
-                    <!-- ng-click='page.sidebar.toggle()' -->
-                    <!-- <a class="icon-round-stroke close" ng-click="sidebar.close()" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"></a> -->
+
                     <a class="icon-round-stroke close" on-click="s:[sidebar-close-clicked:public]">
 						<svg viewBox="0 0 100 100">
 							<circle cx="50" cy="50" r="36"

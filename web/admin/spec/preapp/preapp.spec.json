@@ -448,7 +448,7 @@
 								"description": {
 									"element": "sidebar",
 									"animation": ["bounceOutRight"],
-									"easing": ["easeOutExpo", "easeOutElastic", "easeOutBack"]
+									"easing": ["easeInExpo", "easeInElastic", "easeInBack"]
 								},
 								"timing": {
 									"order": 1,
@@ -490,7 +490,7 @@
 								"description": {
 									"element": "sidebar",
 									"animation": ["bounceOutRight"],
-									"easing": ["easeOutExpo", "easeOutElastic", "easeOutBack"]
+									"easing": ["easeInExpo", "easeInElastic", "easeInBack"]
 								},
 								"timing": {
 									"order": 1,
