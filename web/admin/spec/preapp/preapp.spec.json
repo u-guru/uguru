@@ -51,7 +51,7 @@
 								"description": {
 									"element": "portal",
 									"animation": "scaleXIn",
-									"easing": "",
+									"easing": ""
 								},
 								"timing": {
 									"order": 1,
@@ -90,7 +90,7 @@
 								"timing": {
 									"order": 3,
 									"delay": "",
-									"duration": "",
+									"duration": ""
 								},
 								"status": {
 									"updated": true,
@@ -287,7 +287,7 @@
 				}
 			}
 		},
-		"splashHome": {
+		"splashSidebar": {
 			"rubric": {
 				"ui": {
                     "static": true,
@@ -417,7 +417,7 @@
 					},
 					"onCollapse": {
 						"order": 2,
-						"notes": "Occurs when a page has been selected"
+						"notes": "Occurs when a page has been selected",
 						"animations": [
 							{
 								"description": {
@@ -482,10 +482,9 @@
 							}
 						]
 					},
-					,
-					"onExit": {
+					"onExitCollapsed": {
 						"order": 3,
-						"notes": "Occurs when exiting from collapsed view of sidebar"
+						"notes": "Occurs when exiting from collapsed view of sidebar",
 						"animations": [
 							{
 								"description": {
