@@ -10,7 +10,7 @@
 		on-enter="p:[width:300px:48px:1000:easeOutExpo]">
 		<header>
 			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
-				init-default
+				init-with="p-op"
 				when-faq-link-clicked="t-enter"
 				when-pricing-link-clicked="t-enter"
 				when-support-link-clicked="t-enter"
@@ -35,56 +35,68 @@
 		</header>
 		<nav>
 			<ul>
-				<li>
-					<a init-default
-						on-click="s:[faq-link-clicked:public]"
-						when-faq-link-clicked="t-enter"
-						on-enter="c:[active:add]">
-						<span></span>
-						<span>FAQ</span>
-						<hr/>
-					</a>
-				</li>
-				<li>
-					<a init-default
-						on-click="s:[pricing-link-clicked:public]"
-						when-pricing-link-clicked="t-enter"
-						on-enter="c:[active:add]">
-						<span></span>
-						<span>Pricing</span>
-						<hr/>
-					</a>
-				</li>
-				<li>
-					<a init-default
-						on-click="s:[support-link-clicked:public]"
-						when-support-link-clicked="t-enter"
-						on-enter="c:[active:add]">
-						<span></span>
-						<span>Support</span>
-						<hr/>
-					</a>
-				</li>
-				<li>
-					<a init-default
-						on-click="s:[team-link-clicked:public]"
-						when-team-link-clicked="t-enter"
-						on-enter="c:[active:add]">
-						<span></span>
-						<span>Team</span>
-						<hr/>
-					</a>
-				</li>
-				<li>
-					<a init-default
-						on-click="s:[login-link-clicked:public]"
-						when-login-link-clicked="t-enter"
-						on-enter="c:[active:add]">
-						<span></span>
-						<span>Login</span>
-						<hr/>
-					</a>
-				</li>
+				<stagger-children on-enter="[sidebar-link]:150">
+					<li	sidebar-link init-with="p:[op:0, tr:translateY(-10px)]"
+						on-init="trigger:[on-enter:self]:delay-500"
+						on-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]">
+						<a init-default
+							on-click="s:[faq-link-clicked:public]"
+							when-faq-link-clicked="t-enter"
+							on-enter="c:[active:add]">
+							<span></span>
+							<span>FAQ</span>
+							<hr/>
+						</a>
+					</li>
+					<li	sidebar-link init-with="p:[op:0, tr:translateY(-10px)]"
+						on-init="trigger:[on-enter:self]:delay-500"
+						on-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]">
+						<a init-default
+							on-click="s:[pricing-link-clicked:public]"
+							when-pricing-link-clicked="t-enter"
+							on-enter="c:[active:add]">
+							<span></span>
+							<span>Pricing</span>
+							<hr/>
+						</a>
+					</li>
+					<li	sidebar-link init-with="p:[op:0, tr:translateY(-10px)]"
+						on-init="trigger:[on-enter:self]:delay-500"
+						on-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]">
+						<a init-default
+							on-click="s:[support-link-clicked:public]"
+							when-support-link-clicked="t-enter"
+							on-enter="c:[active:add]">
+							<span></span>
+							<span>Support</span>
+							<hr/>
+						</a>
+					</li>
+					<li	sidebar-link init-with="p:[op:0, tr:translateY(-10px)]"
+						on-init="trigger:[on-enter:self]:delay-500"
+						on-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]">
+						<a init-default
+							on-click="s:[team-link-clicked:public]"
+							when-team-link-clicked="t-enter"
+							on-enter="c:[active:add]">
+							<span></span>
+							<span>Team</span>
+							<hr/>
+						</a>
+					</li>
+					<li	sidebar-link init-with="p:[op:0, tr:translateY(-10px)]"
+						on-init="trigger:[on-enter:self]:delay-500"
+						on-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]">
+						<a init-default
+							on-click="s:[login-link-clicked:public]"
+							when-login-link-clicked="t-enter"
+							on-enter="c:[active:add]">
+							<span></span>
+							<span>Login</span>
+							<hr/>
+						</a>
+					</li>
+				</stagger-children>
 			</ul>
 		</nav>
 		<div class="splash-sidebar-round"
