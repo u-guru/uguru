@@ -8,7 +8,6 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba($slate, .95);
 	-webkit-perspective: 1000;
 	perspective: 1000;
 }
@@ -26,10 +25,16 @@
 	}
 }
 
+.splash-sidebar-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba($slate, .95);
+}
+
 .splash-sidebar {
-	// @include flex;
-	// @include flex-wrap;
-	// @include prefix(align-content, space-between, webkit);
 	height: 100%;
 	width: 100%;
 	background: lighten($slate, 15%);
@@ -103,6 +108,23 @@
 							background: white;
 						}
 					}
+				}
+			}
+		}
+	}
+	footer {
+		.student-card {
+			width: 100%;
+			max-width: 100%;
+			.school-id-inside {
+				position: static;
+				top: auto;
+				left: auto;
+				width: 100%;
+				max-width: 100%;
+				height: 150px;
+				.school-id-top, .school-id-bottom {
+					border-radius: 0!important;
 				}
 			}
 		}
@@ -182,6 +204,7 @@
 			width: 300px;
 		}
 		nav {
+			height: calc(100% - 268px);
 			ul {
 				li {
 					a {
