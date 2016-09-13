@@ -1,5 +1,16 @@
 <div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
 	on-init="s:[sidebar-icon-clicked]">
+
+	<div class="splash-sidebar-bg"
+		init-with="p:[op:0, tr:translateX(-100%) translateZ(0px)]"
+		when-sidebar-icon-clicked="p:[op:1, transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutSine easeOutSine]:delay-250">
+		<div class="splash-sidebar-round">
+			<svg viewBox="0 0 50 100" preserveAspectRatio="none">
+				<circle cx="0" cy="50" r="50" fill="#40484b" fill-opacity="0.95"></circle>
+			</svg>
+		</div>
+	</div>
+
 	<aside class="splash-sidebar desktop"
 		init-with="p:[width:300px, tr:translateX(-350px) translateZ(0px)]"
 		when-sidebar-icon-clicked="p:[transform:translateX(-350px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]"
@@ -99,6 +110,31 @@
 				</stagger-children>
 			</ul>
 		</nav>
+		<footer>
+			<div class="student-card"
+				init-with="p-op"
+				when-sidebar-icon-clicked="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+				<div class="school-id-inside">
+					<div class="school-id-top" style="background: #003262;">
+						<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
+							init-with="p-op"
+							when-student-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
+					</div>
+					<div class="school-id-bottom">
+						<div>
+							<h1 class='lettercase'
+								init-with="p:[op:0, tro:center top]"
+								when-student-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-150]">Marco Polo</h1>
+							<h2 init-with="p-op"
+								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">Cal Freshman</h2>
+							<h2 init-with="p-op"
+								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">email@school.edu</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="height-48 bg-shamrock txt-18">Get Started</button>
+		</footer>
 		<div class="splash-sidebar-round"
 			init-with="p:[tro:left center, tr:scaleX(0.5)]"
 			when-sidebar-icon-clicked="p:[transform:scaleX(0.5) translateZ(0px):scaleX(0) translateZ(0px):1000:easeOutBack easeOutBack]:delay-400">

@@ -2413,7 +2413,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(64, 72, 75, 0.95);
   -webkit-perspective: 1000;
   perspective: 1000; }
 
@@ -2427,6 +2426,14 @@
     display: block;
     width: 100%;
     height: 100%; }
+
+.splash-sidebar-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(64, 72, 75, 0.95); }
 
 .splash-sidebar {
   height: 100%;
@@ -2514,6 +2521,18 @@
           .splash-sidebar nav ul li a.active hr {
             transform: scaleX(1);
             background: white; }
+  .splash-sidebar footer .student-card {
+    width: 100%;
+    max-width: 100%; }
+    .splash-sidebar footer .student-card .school-id-inside {
+      position: static;
+      top: auto;
+      left: auto;
+      width: 100%;
+      max-width: 100%;
+      height: 150px; }
+      .splash-sidebar footer .student-card .school-id-inside .school-id-top, .splash-sidebar footer .student-card .school-id-inside .school-id-bottom {
+        border-radius: 0 !important; }
 
 .splash-sidebar-content {
   position: absolute;
@@ -2573,12 +2592,14 @@
       display: none; }
     .splash-sidebar header, .splash-sidebar nav {
       width: 300px; }
-    .splash-sidebar nav ul li a {
-      font-size: 36px; }
-      .splash-sidebar nav ul li a span:empty {
-        margin-right: 15px; }
-        .splash-sidebar nav ul li a span:empty:before {
-          font-size: 18px; }
+    .splash-sidebar nav {
+      height: calc(100% - 268px); }
+      .splash-sidebar nav ul li a {
+        font-size: 36px; }
+        .splash-sidebar nav ul li a span:empty {
+          margin-right: 15px; }
+          .splash-sidebar nav ul li a span:empty:before {
+            font-size: 18px; }
 
   .splash-sidebar-borders {
     display: block; }
