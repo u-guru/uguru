@@ -442,7 +442,7 @@
 					},
 					"onExit": {
 						"order": 3,
-						"notes": "Occurs when exiting from full view of sidebar"
+						"notes": "Occurs when exiting from full view of sidebar",
 						"animations": [
 							{
 								"description": {
@@ -508,6 +508,104 @@
 							{
 								"description": {
 									"element": "content",
+									"animation": ["fadeOut"],
+									"easing": ["linear"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							}
+						]
+					},
+					"onMouseEnter links": {
+						"order": "n/a",
+						"animations": [
+							{
+								"description": {
+									"element": "text underline",
+									"animation": ["drawIn"],
+									"easing": ["easeOutQuad"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+								}
+							},
+							{
+								"description": {
+									"element": "text, underline",
+									"animation": ["translateX"],
+									"easing": ["easeOutQuad"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "the whole link shifts right"
+								}
+							}
+						]
+					},
+					"onClick links": {
+						"order": "n/a",
+						"animations": [
+							{
+								"description": {
+									"element": "activated link text, activated link underline",
+									"animation": ["fadeIn accent color change"],
+									"easing": ["linear"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "deactivated link text",
+									"animation": ["fadeOut accent color change"],
+									"easing": ["linear"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							},
+							{
+								"description": {
+									"element": "deactivated link underline",
 									"animation": ["fadeOut"],
 									"easing": ["linear"]
 								},
