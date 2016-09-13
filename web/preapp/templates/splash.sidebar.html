@@ -1,9 +1,72 @@
-<div class="sidebar-scale"
+<div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container">
+	<aside class="splash-sidebar">
+		<header>
+			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
+			<a class="icon-round-stroke close" on-click="s:[sidebar-close-clicked:public]">
+				<svg viewBox="0 0 100 100">
+					<circle cx="50" cy="50" r="36"></circle>
+					<g>
+						<path d="M50,32 L50,68"></path>
+						<path d="M32,50 L68,50"></path>
+					</g>
+				</svg>
+			</a>
+		</header>
+		<nav>
+			<ul>
+				<li>
+					<a class="active">
+						<span></span>
+						<span>FAQ</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a>
+						<span></span>
+						<span>Pricing</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a>
+						<span></span>
+						<span>Support</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a>
+						<span></span>
+						<span>Team</span>
+						<hr/>
+					</a>
+				</li>
+				<li>
+					<a>
+						<span></span>
+						<span>Login</span>
+						<hr/>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</aside>
+	<!-- <section class="splash-sidebar-content">
+		<div class="full-xy bg-gold"></div>
+	</section> -->
+</div>
+
+
+
+
+
+<div class="sidebar-scale" ng-if="false"
 	init-with="p:[tr:scale(0), op:1, display:block, background:#ffffff]"
 	when-sidebar-icon-clicked="t:[on-enter]"
 	on-enter="p:[tr:scale(1000), background:#40484b, op:1, display:block, t:all 1000ms ease-out] | t:[on-exit]"
 	on-exit="p:[tr:scale(0):delay-2000, background:#ffffff:delay-2000, op:0:delay-500, display:none:delay-2000, t:all 500ms ease-out]"></div>
-<div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar'
+<div ng-controller='SplashSidebarController as sidebar' id='splash-sidebar' ng-if="false"
 	init-with="p-op"
  	when-sidebar-icon-clicked="p:[op:1:delay-500]"
 	when-sidebar-close-clicked="p-op">
@@ -16,8 +79,7 @@
             <div>
                 <header>
                     <a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
-                    <!-- ng-click='page.sidebar.toggle()' -->
-                    <!-- <a class="icon-round-stroke close" ng-click="sidebar.close()" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"></a> -->
+
                     <a class="icon-round-stroke close" on-click="s:[sidebar-close-clicked:public]">
 						<svg viewBox="0 0 100 100">
 							<circle cx="50" cy="50" r="36"

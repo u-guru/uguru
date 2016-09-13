@@ -1,5 +1,123 @@
 @import '../../../../../shared/css/scss/partials/mixin';
 
+.splash-sidebar-container {
+	@include flex;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba($slate, .95);
+	-webkit-perspective: 1000;
+	perspective: 1000;
+}
+.splash-sidebar {
+	// @include flex;
+	// @include flex-wrap;
+	// @include prefix(align-content, space-between, webkit);
+	height: 100%;
+	width: 100%;
+	background: lighten($slate, 15%);
+	header {
+		@include flex;
+		@include flex-center-vertical;
+		@include prefix(justify-content, space-between, webkit);
+		height: 50px;
+		width: 100%;
+		padding-right: 7px;
+		.splash-logo {
+			height: 50px!important;
+			margin: 5px;
+			width: inherit;
+			padding: 2px;
+		}
+	}
+	nav {
+		width: 100%;
+		ul {
+			counter-reset: li;
+			padding: 7.5px;
+			li {
+				padding: 7.5px;
+				a {
+					@include flex;
+					@include flex-center-vertical;
+					position: relative;
+					font-size: 36px;
+					font-weight: 600;
+					line-height: 1.2;
+					padding-bottom: 10px;
+					span {
+						display: block;
+						&:empty {
+							margin-right: 15px;
+							&:before {
+								content: "0" counter(li);
+								counter-increment: li;
+								font-size: 18px;
+							}
+						}
+					}
+					hr {
+						transform-origin: left center;
+						transform: scaleX(0);
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+						border: 0;
+						border-radius: 4px;
+						margin: 0;
+						padding: 0;
+						background: rgba(white, .5);
+					}
+					&.active {
+						hr {
+							transform: scaleX(1);
+							background: white;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.splash-sidebar-content {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+	.splash-sidebar {
+		width: 300px;
+	}
+	.splash-sidebar-content {
+		width: calc(100% - 50px);
+	}
+}
+@media screen and (min-width: 860px) {
+	.splash-sidebar {
+		header {
+			height: 70px;
+			.splash-logo {
+				padding: 0!important;
+				height: 100%!important;
+				margin: 0 15px!important;
+			}
+			.close {
+				margin-top: -10px;
+			}
+		}
+	}
+}
+
+
+
 // SIDEBAR
 .splash-sidebar-full {
 	@include flex;

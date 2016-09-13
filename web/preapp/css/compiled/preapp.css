@@ -2399,6 +2399,121 @@
       display: -moz-flex;
       display: -webkit-flex;
       display: flex; } }
+.splash-sidebar-container {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(64, 72, 75, 0.95);
+  -webkit-perspective: 1000;
+  perspective: 1000; }
+
+.splash-sidebar {
+  height: 100%;
+  width: 100%;
+  background: #637074; }
+  .splash-sidebar header {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+    padding-right: 7px; }
+    .splash-sidebar header .splash-logo {
+      height: 50px !important;
+      margin: 5px;
+      width: inherit;
+      padding: 2px; }
+  .splash-sidebar nav {
+    width: 100%; }
+    .splash-sidebar nav ul {
+      counter-reset: li;
+      padding: 7.5px; }
+      .splash-sidebar nav ul li {
+        padding: 7.5px; }
+        .splash-sidebar nav ul li a {
+          -ms-box-orient: horizontal;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -moz-flex;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-content: center;
+          align-content: center;
+          -webkit-align-items: center;
+          align-items: center;
+          position: relative;
+          font-size: 36px;
+          font-weight: 600;
+          line-height: 1.2;
+          padding-bottom: 10px; }
+          .splash-sidebar nav ul li a span {
+            display: block; }
+            .splash-sidebar nav ul li a span:empty {
+              margin-right: 15px; }
+              .splash-sidebar nav ul li a span:empty:before {
+                content: "0" counter(li);
+                counter-increment: li;
+                font-size: 18px; }
+          .splash-sidebar nav ul li a hr {
+            transform-origin: left center;
+            transform: scaleX(0);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            border: 0;
+            border-radius: 4px;
+            margin: 0;
+            padding: 0;
+            background: rgba(255, 255, 255, 0.5); }
+          .splash-sidebar nav ul li a.active hr {
+            transform: scaleX(1);
+            background: white; }
+
+.splash-sidebar-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%; }
+
+@media screen and (min-width: 768px) {
+  .splash-sidebar {
+    width: 300px; }
+
+  .splash-sidebar-content {
+    width: calc(100% - 50px); } }
+@media screen and (min-width: 860px) {
+  .splash-sidebar header {
+    height: 70px; }
+    .splash-sidebar header .splash-logo {
+      padding: 0 !important;
+      height: 100% !important;
+      margin: 0 15px !important; }
+    .splash-sidebar header .close {
+      margin-top: -10px; } }
 .splash-sidebar-full {
   -ms-box-orient: horizontal;
   display: -webkit-box;
