@@ -272,11 +272,74 @@
 				"bugs": [
 					{
 						"bug": "header doesn't show up at a certain height, check CSS",
+						"file": "splash.madlib.html",
+						"fixed": false
+					},
+					{
+						"bug": "animating multiple values of stroke-dasharray causes the animation to not render",
+						"file": "splash.madlib.html",
+						"line": 123,
 						"fixed": false
 					}
 				],
 				"states": {
 					"when-head-squash": "custom bounce easing"
+				}
+			}
+		},
+		"splashHome": {
+			"rubric": {
+				"ui": {
+                    "static": true,
+                    "responsive": true,
+                    "animated": true,
+                    "glitch-free": false,
+                    "cross-platform": false,
+                    "verified" : false,
+                    "analysis": false
+                },
+				"states": {
+					"onEnter": {
+						"order": 1,
+						"animations": [
+							{
+								"description": {
+									"element": "sidebar background",
+									"animation": ["bounceInLeft"],
+									"easing": ["easeOutExpo", "easeOutElastic", "easeOutBack"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "Needs SVG"
+								}
+							},
+							{
+								"description": {
+									"element": "sidebar content background",
+									"animation": ["slideInLeft"],
+									"easing": ["easeOutExpo"]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {}
+							}
+						]
+					}
 				}
 			}
 		}
