@@ -12,6 +12,20 @@
 	-webkit-perspective: 1000;
 	perspective: 1000;
 }
+
+.splash-sidebar-round {
+	position: absolute;
+	top: 0;
+	right: -50px;
+	width: 50px;
+	height: 100%;
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
 .splash-sidebar {
 	// @include flex;
 	// @include flex-wrap;
@@ -19,6 +33,9 @@
 	height: 100%;
 	width: 100%;
 	background: lighten($slate, 15%);
+	&.desktop {
+		display: none;
+	}
 	header {
 		@include flex;
 		@include flex-center-vertical;
@@ -39,29 +56,31 @@
 			counter-reset: li;
 			padding: 7.5px;
 			li {
+				@include flex;
 				padding: 7.5px;
 				a {
 					@include flex;
 					@include flex-center-vertical;
 					position: relative;
-					font-size: 36px;
+					font-size: 28px;
 					font-weight: 600;
 					line-height: 1.2;
 					padding-bottom: 10px;
 					span {
 						display: block;
 						&:empty {
-							margin-right: 15px;
+							margin-right: 10px;
 							&:before {
 								content: "0" counter(li);
 								counter-increment: li;
-								font-size: 18px;
+								font-size: 16px;
 							}
 						}
 					}
 					hr {
 						transform-origin: left center;
 						transform: scaleX(0);
+						transition: all 250ms cubic-bezier(.17,.67,.83,.67);
 						position: absolute;
 						bottom: 0;
 						left: 0;
@@ -72,6 +91,11 @@
 						margin: 0;
 						padding: 0;
 						background: rgba(white, .5);
+					}
+					&:hover, &:focus {
+						hr {
+							transform: scaleX(1);
+						}
 					}
 					&.active {
 						hr {
@@ -84,20 +108,102 @@
 		}
 	}
 }
+
 .splash-sidebar-content {
 	position: absolute;
 	top: 0;
 	right: 0;
 	width: 100%;
 	height: 100%;
+	> div:not(.splash-sidebar-round) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+	}
+}
+
+.splash-sidebar-borders {
+	display: none;
+	hr {
+		position: absolute;
+		z-index: 11;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		background: white;
+	}
+	> hr {
+		top: 0;
+		left: 47px;
+		height: 100%;
+		width: 2px;
+	}
+	> ul {
+		position: absolute;
+		top: 70px;
+		left: 47px;
+		padding: 7.5px 0;
+		li {
+			position: relative;
+			padding: 7.5px 0;
+			height: 68px;
+			width: 45px;
+			hr {
+				opacity: 0;
+				transition: all 250ms cubic-bezier(.17,.67,.83,.67);
+				bottom: 7.5px;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				border-radius: 0 4px 4px 0;
+			}
+			&.active {
+				hr {
+					opacity: 1;
+				}
+			}
+		}
+	}
 }
 
 @media screen and (min-width: 768px) {
 	.splash-sidebar {
 		width: 300px;
+		&.desktop {
+			display: block;
+		}
+		&.mobile {
+			display: none;
+		}
+		header, nav {
+			width: 300px;
+		}
+		nav {
+			ul {
+				li {
+					a {
+						font-size: 36px;
+						span {
+							&:empty {
+								margin-right: 15px;
+								&:before {
+									font-size: 18px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.splash-sidebar-borders {
+		display: block;
 	}
 	.splash-sidebar-content {
-		width: calc(100% - 50px);
+		width: calc(100% - 48px);
 	}
 }
 @media screen and (min-width: 860px) {
