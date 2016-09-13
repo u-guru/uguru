@@ -6,7 +6,7 @@
 		init-with="p:[tr:translateY(120px)]"
 		when-transition-end="s:[head-squash:public:delay-600]"
 		when-head-squash="p:[transform:translateY(120px):translateY(-30px):500:easeInBack] | s:[head-return:public]:delay-500"
-		when-head-return="p:[transform:translateY(-30px):translateY(0px):500:easeOutElastic] | s:[madlib-init:public:delay-2000, category-head-init:public:delay-2000]"
+		when-head-return="p:[transform:translateY(-30px):translateY(0px):500:easeOutElastic] | s:[madlib-init:public:delay-2000, nav-init:public:delay-2000, category-head-init:public:delay-2000]"
 		when-cateogory-head-init="s:[category-head-load:public:delay-2000]">
         <div class="splash-hero-guru splash-logo-guru"
 			ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"
