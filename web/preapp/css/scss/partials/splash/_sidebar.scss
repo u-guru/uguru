@@ -220,11 +220,28 @@
 		border: 0;
 		background: white;
 	}
-	> hr {
+	> div {
+		position: absolute;
+		z-index: 11;
 		top: 0;
 		left: 47px;
 		height: 100%;
 		width: 2px;
+		background: white;
+		hr {
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 2px;
+			background: white;
+			background: -moz-linear-gradient(top, $cerise 0%, $gold 10%, $moola 20%, $azure 30%, $cobalt 40%, #ffffff 50%);
+			background: -webkit-linear-gradient(top, $cerise 0%,$gold 10%,$moola 20%,$azure 30%,$cobalt 40%,#ffffff 50%);
+			background: linear-gradient(to bottom, $cerise 0%,$gold 10%,$moola 20%,$azure 30%,$cobalt 40%,#ffffff 50%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$cerise', endColorstr='#ffffff',GradientType=0 );
+			background-size: 200%;
+			background-position-x: 0%;
+			background-position-y: -100%;
+		}
 	}
 	> ul {
 		position: absolute;
