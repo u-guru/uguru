@@ -1,5 +1,6 @@
 <div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
-	on-init="s:[sidebar-icon-clicked]">
+	on-init="s:[sidebar-icon-clicked:public]">
+	<!-- faq-link-clicked:public:delay-5000 -->
 
 	<div class="splash-sidebar-bg"
 		init-with="p:[op:0, tr:translateX(-100%) translateZ(0px)]"
@@ -49,131 +50,152 @@
 		<nav>
 			<ul init-default
 				when-sidebar-icon-clicked="s:[sidebar-link-enter:public]:delay-750">
-					<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]">
-						<a init-default
-							on-click="s:[faq-link-clicked:public]">
-							<span></span>
-							<span>FAQ</span>
-							<hr init-default
-								when-faq-link-clicked="t-enter"
-								when-pricing-link-clicked="t-exit"
-								when-team-link-clicked="t-exit"
-								when-support-link-clicked="t-exit"
-								when-login-link-clicked="t-exit"
-								on-enter="p:[tr:scaleX(1), bg:white]"
-								on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
-							<span></span>
-						</a>
-					</li>
-					<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-150">
-						<a init-default
-							on-click="s:[pricing-link-clicked:public]">
-							<span></span>
-							<span>Pricing</span>
-							<hr init-default
-								when-faq-link-clicked="t-exit"
-								when-pricing-link-clicked="t-enter"
-								when-team-link-clicked="t-exit"
-								when-support-link-clicked="t-exit"
-								when-login-link-clicked="t-exit"
-								on-enter="p:[tr:scaleX(1), bg:white]"
-								on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
-							<span></span>
-						</a>
-					</li>
-					<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-300">
-						<a init-default
-							on-click="s:[team-link-clicked:public]">
-							<span></span>
-							<span>Team</span>
-							<hr init-default
-								when-faq-link-clicked="t-exit"
-								when-pricing-link-clicked="t-exit"
-								when-team-link-clicked="t-enter"
-								when-support-link-clicked="t-exit"
-								when-login-link-clicked="t-exit"
-								on-enter="p:[tr:scaleX(1), bg:white]"
-								on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
-							<span></span>
-						</a>
-					</li>
-					<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-450">
-						<a init-default
-							on-click="s:[support-link-clicked:public]">
-							<span></span>
-							<span>Support</span>
-							<hr init-default
-								when-faq-link-clicked="t-exit"
-								when-pricing-link-clicked="t-exit"
-								when-team-link-clicked="t-exit"
-								when-support-link-clicked="t-enter"
-								when-login-link-clicked="t-exit"
-								on-enter="p:[tr:scaleX(1), bg:white]"
-								on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
-							<span></span>
-						</a>
-					</li>
-					<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-600">
-						<a init-default
-							on-click="s:[login-link-clicked:public]">
-							<span></span>
-							<span>Get Started</span>
-							<hr init-default
-								when-faq-link-clicked="t-exit"
-								when-pricing-link-clicked="t-exit"
-								when-team-link-clicked="t-exit"
-								when-support-link-clicked="t-exit"
-								when-login-link-clicked="t-enter"
-								on-enter="p:[tr:scaleX(1), bg:white]"
-								on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
-							<span></span>
-						</a>
-					</li>
+				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]">
+					<a init-default
+						on-click="s:[faq-link-clicked:public]">
+						<span></span>
+						<span>FAQ</span>
+						<hr init-default
+							when-faq-link-clicked="t-enter"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+						<span></span>
+					</a>
+				</li>
+				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-150">
+					<a init-default
+						on-click="s:[pricing-link-clicked:public]">
+						<span></span>
+						<span>Pricing</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-enter"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+						<span></span>
+					</a>
+				</li>
+				<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-300">
+					<a init-default
+						on-click="s:[team-link-clicked:public]">
+						<span></span>
+						<span>Team</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-enter"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+						<span></span>
+					</a>
+				</li>
+				<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-450">
+					<a init-default
+						on-click="s:[support-link-clicked:public]">
+						<span></span>
+						<span>Support</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-enter"
+							when-login-link-clicked="t-exit"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+						<span></span>
+					</a>
+				</li>
+				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-600">
+					<a init-default
+						on-click="s:[login-link-clicked:public]">
+						<span></span>
+						<span>Get Started</span>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-enter"
+							on-enter="p:[tr:scaleX(1), bg:white]"
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+						<span></span>
+					</a>
+				</li>
 			</ul>
 		</nav>
 		<footer init-default
 			when-sidebar-link-enter="s:[student-id-enter:public]:delay-1000">
-			<div class="student-card"
-				init-with="p:[tr:translateY(30px) scaleX(0)]"
-				when-student-id-enter="p:[tro:center center, transform:translateY(30px) scaleX(0):translateY(0px) scaleX(1):500:easeOutQuad easeOutBounce]">
-				<div class="school-id-inside">
-					<div class="school-id-top" style="background: #003262;">
-						<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
-							init-with="p:[op:0, tro:center center]"
-							when-student-id-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-550]"></span>
-					</div>
-					<div class="school-id-bottom">
-						<div>
-							<h1 class='lettercase'
-								init-with="p:[op:0, tro:center top]"
-								when-student-id-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-600]">Marco Polo</h1>
-							<h2 init-with="p-op"
-								when-student-mcard-enter="p:[opacity:0:1:800:easeInSine]:delay-750">Cal Freshman</h2>
-							<h2 init-with="p-op"
-								when-student-mcard-enter="p:[opacity:0:1:700:easeInSine]:delay-900">email@school.edu</h2>
+			<div init-default
+				when-faq-link-clicked="t-exit"
+				when-pricing-link-clicked="t-exit"
+				when-team-link-clicked="t-exit"
+				when-support-link-clicked="t-exit"
+				on-exit="p:[transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):250:easeOutSine easeOutSine]">
+				<div class="student-card"
+					init-with="p:[tr:translateY(30px) scaleX(0)]"
+					when-student-id-enter="p:[tro:center center, transform:translateY(30px) scaleX(0):translateY(0px) scaleX(1):500:easeOutQuad easeOutBounce]">
+					<div class="school-id-inside">
+						<div class="school-id-top" style="background: #003262;">
+							<span class="user-icon" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"
+								init-with="p:[op:0, tro:center center]"
+								when-student-id-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-550]"></span>
+							<!-- if no photo exists yet -->
+							<!-- <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
+								init-with="p:[op:0, tro:center center]"
+								when-student-id-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-550]"></span> -->
 						</div>
-						<h3>
-							<span init-with="p-op"
-								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">SELECTED COURSES</span>
-							<span style="background: #003262;"
-								init-with="p:[op:0, tro:left center]"
-								when-student-card-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-350]">9</span>
-							<a init-with="p-op"
-								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150"><span>Edit</span></a>
-						</h3>
+						<div class="school-id-bottom">
+							<div>
+								<h1 class='lettercase'
+									init-with="p:[op:0, tro:center top]"
+									when-student-id-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-600]">Marco Polo</h1>
+								<h2 init-with="p-op"
+									when-student-mcard-enter="p:[opacity:0:1:800:easeInSine]:delay-750">Cal Freshman</h2>
+								<h2 init-with="p-op"
+									when-student-mcard-enter="p:[opacity:0:1:700:easeInSine]:delay-900">email@school.edu</h2>
+							</div>
+							<h3>
+								<span init-with="p-op"
+									when-student-id-enter="p:[opacity:0:1:800:easeInSine]:delay-150">SELECTED COURSES</span>
+								<span style="background: #003262;"
+									init-with="p:[op:0, tro:left center]"
+									when-student-id-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-350]">9</span>
+								<a init-with="p-op"
+									when-student-id-enter="p:[opacity:0:1:800:easeInSine]:delay-150"><span>Edit</span></a>
+							</h3>
+						</div>
 					</div>
 				</div>
+				<button class="height-48 bg-shamrock txt-18"
+					init-with="p:[op:0, tr:translateY(30px)]"
+					when-student-id-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeOutBack]:delay-600">Sign up/Login</button>
 			</div>
-			<!-- Student card is flickering and animating before the sidebar is finished -->
-			<button class="height-48 bg-shamrock txt-18"
-				init-with="p:[op:0, tr:translateY(30px)]"
-				when-student-id-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeOutBack]:delay-600">Sign up/Login</button>
+			<div class="collapsed"
+				init-with="p:[op:0, tr:rotate(-90deg) translateY(-48px) translateZ(0px)]"
+				when-faq-link-clicked="t-enter"
+				when-pricing-link-clicked="t-enter"
+				when-team-link-clicked="t-enter"
+				when-support-link-clicked="t-enter"
+				on-enter="p:[op:1, transform:rotate(-90deg) translateY(-48px) translateZ(0px):rotate(-90deg) translateY(0px) translateZ(0px):250:easeOutSine easeOutSine easeOutSine]:delay-250">
+				<button class="height-48 bg-shamrock txt-18">Sign up/Login</button>
+				<div class="guru-head" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"></div>
+			</div>
 		</footer>
+
 		<div class="splash-sidebar-round"
 			init-with="p:[tro:left center, tr:scaleX(0.5)]"
 			when-sidebar-icon-clicked="p:[transform:scaleX(0.5) translateZ(0px):scaleX(0) translateZ(0px):1000:easeOutBack easeOutBack]:delay-400">
@@ -290,9 +312,13 @@
 				when-student-mcard-enter="p:[opacity:0:1:500:easeOutSine, transform:translateY(30px) scaleX(0.2):translateY(0px) scaleX(1):800:easeOutElastic easeInOutBack]">
 				<div class="school-id-inside">
 					<div class="school-id-top" style="background: #003262;">
-						<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
+						<span class="user-icon" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"
 							init-with="p-op"
 							when-student-mcard-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
+						<!-- if no photo exists yet -->
+						<!-- <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
+							init-with="p-op"
+							when-student-mcard-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span> -->
 					</div>
 					<div class="school-id-bottom">
 						<div>
@@ -306,12 +332,12 @@
 						</div>
 						<h3>
 							<span init-with="p-op"
-								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">SELECTED COURSES</span>
+								when-student-mcard-enter="p:[opacity:0:1:800:easeInSine]:delay-150">SELECTED COURSES</span>
 							<span style="background: #003262;"
 								init-with="p:[op:0, tro:left center]"
-								when-student-card-init="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-350]">9</span>
+								when-student-mcard-enter="a:[bounceIn-rotate-subtle:set:(dur:1000ms#func:linear):in:delay-350]">9</span>
 							<a init-with="p-op"
-								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150"><span>Edit</span></a>
+								when-student-mcard-enter="p:[opacity:0:1:800:easeInSine]:delay-150"><span>Edit</span></a>
 						</h3>
 					</div>
 				</div>

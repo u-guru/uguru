@@ -139,6 +139,7 @@
 		}
 	}
 	footer {
+		position: relative;
 		.student-card {
 			width: 100%;
 			max-width: 100%;
@@ -152,9 +153,38 @@
 				.school-id-top, .school-id-bottom {
 					border-radius: 0!important;
 				}
+				.user-icon {
+					svg {
+						@include round;
+						background: mix($smoke, $campus);
+					}
+				}
 				.school-id-bottom {
 					background: white;
 				}
+			}
+		}
+		.collapsed {
+			@include flex;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			transform-origin: 24px 24px;
+			transform: rotate(-90deg) translateZ(0);
+			> div {
+				width: 48px;
+				height: 48px;
+				svg {
+					transform-origin: center center;
+					transform: rotate(90deg) translateZ(0);
+					display: block;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			button {
+				width: 200px;
 			}
 		}
 	}
@@ -308,6 +338,9 @@
 		}
 		footer {
 			width: 300px;
+			> div, button {
+				width: 300px;
+			}
 		}
 	}
 	.splash-sidebar-bg {

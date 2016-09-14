@@ -2551,20 +2551,50 @@
           .splash-sidebar nav ul li a.active hr {
             transform: scaleX(1);
             background: white; }
-  .splash-sidebar footer .student-card {
-    width: 100%;
-    max-width: 100%; }
-    .splash-sidebar footer .student-card .school-id-inside {
-      position: static;
-      top: auto;
-      left: auto;
+  .splash-sidebar footer {
+    position: relative; }
+    .splash-sidebar footer .student-card {
       width: 100%;
-      max-width: 100%;
-      height: 150px; }
-      .splash-sidebar footer .student-card .school-id-inside .school-id-top, .splash-sidebar footer .student-card .school-id-inside .school-id-bottom {
-        border-radius: 0 !important; }
-      .splash-sidebar footer .student-card .school-id-inside .school-id-bottom {
-        background: white; }
+      max-width: 100%; }
+      .splash-sidebar footer .student-card .school-id-inside {
+        position: static;
+        top: auto;
+        left: auto;
+        width: 100%;
+        max-width: 100%;
+        height: 150px; }
+        .splash-sidebar footer .student-card .school-id-inside .school-id-top, .splash-sidebar footer .student-card .school-id-inside .school-id-bottom {
+          border-radius: 0 !important; }
+        .splash-sidebar footer .student-card .school-id-inside .user-icon svg {
+          border-radius: 1000px;
+          background: #bec8ca; }
+        .splash-sidebar footer .student-card .school-id-inside .school-id-bottom {
+          background: white; }
+    .splash-sidebar footer .collapsed {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      transform-origin: 24px 24px;
+      transform: rotate(-90deg) translateZ(0); }
+      .splash-sidebar footer .collapsed > div {
+        width: 48px;
+        height: 48px; }
+        .splash-sidebar footer .collapsed > div svg {
+          transform-origin: center center;
+          transform: rotate(90deg) translateZ(0);
+          display: block;
+          width: 100%;
+          height: 100%; }
+      .splash-sidebar footer .collapsed button {
+        width: 200px; }
 
 .splash-sidebar-content {
   position: absolute;
@@ -2658,6 +2688,8 @@
       height: calc(100% - 268px); }
     .splash-sidebar footer {
       width: 300px; }
+      .splash-sidebar footer > div, .splash-sidebar footer button {
+        width: 300px; }
 
   .splash-sidebar-bg {
     display: block; }
