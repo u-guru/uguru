@@ -2554,6 +2554,8 @@
     width: 100%;
     height: 100%;
     overflow: auto; }
+  .splash-sidebar-content.desktop {
+    display: none; }
 
 .splash-sidebar-borders {
   display: none; }
@@ -2617,7 +2619,11 @@
     display: block; }
 
   .splash-sidebar-content {
-    width: calc(100% - 48px); } }
+    width: calc(100% - 48px); }
+    .splash-sidebar-content.desktop {
+      display: block; }
+    .splash-sidebar-content.mobile {
+      display: none; } }
 @media screen and (min-width: 860px) {
   .splash-sidebar header {
     height: 70px; }

@@ -153,6 +153,9 @@
 		height: 100%;
 		overflow: auto;
 	}
+	&.desktop {
+		display: none;
+	}
 }
 
 .splash-sidebar-borders {
@@ -240,6 +243,12 @@
 	}
 	.splash-sidebar-content {
 		width: calc(100% - 48px);
+		&.desktop {
+			display: block;
+		}
+		&.mobile {
+			display: none;
+		}
 	}
 }
 @media screen and (min-width: 860px) {

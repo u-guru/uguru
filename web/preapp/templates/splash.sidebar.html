@@ -1,7 +1,7 @@
 <div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
 	on-init="s:[sidebar-icon-clicked]">
 
-	<div class="splash-sidebar-bg"
+	<div class="splash-sidebar-bg" desktop
 		init-with="p:[op:0, tr:translateX(-100%) translateZ(0px)]"
 		when-sidebar-icon-clicked="p:[op:1, transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutSine easeOutSine]:delay-250">
 		<div class="splash-sidebar-round">
@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<aside class="splash-sidebar desktop"
+	<aside class="splash-sidebar desktop" desktop
 		init-with="p:[width:300px, tr:translateX(-350px) translateZ(0px)]"
 		when-sidebar-icon-clicked="p:[transform:translateX(-350px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]"
 		when-faq-link-clicked="t-enter"
@@ -132,7 +132,7 @@
 		</div>
 	</aside>
 
-	<aside class="splash-sidebar mobile"
+	<aside class="splash-sidebar mobile" mobile
 		init-with="p:[op:0, tr:translateY(-100%) translateZ(0px)]"
 		when-sidebar-icon-clicked="p:[opacity:0:1:500:easeOutSine, transform:translateY(-100%) translateZ(0px):translateY(0%) translateZ(0px):500:easeOutSine easeOutSine]:delay-250">
 		<header>
@@ -228,7 +228,7 @@
 		</footer>
 	</aside>
 
-	<section class="splash-sidebar-content"
+	<section class="splash-sidebar-content desktop" desktop
 		init-with="p:[z-index:-1]"
 		when-faq-link-clicked="t-enter"
 		when-pricing-link-clicked="t-enter"
@@ -259,7 +259,38 @@
 			on-enter="p:[op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
 	</section>
 
-	<div class="splash-sidebar-borders">
+	<section class="splash-sidebar-content mobile" mobile
+		init-with="p:[z-index:-1]"
+		when-faq-link-clicked="t-enter"
+		when-pricing-link-clicked="t-enter"
+		when-support-link-clicked="t-enter"
+		when-team-link-clicked="t-enter"
+		on-enter="p:[z-index:10]">
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/faq.html'"
+			init-with="p:[op:0, tr:translateY(100%) translateZ(0px)]"
+			when-sidebar-icon-clicked=""
+			when-faq-link-clicked="t-enter"
+			when-pricing-link-clicked="t-exit"
+			when-support-link-clicked="t-exit"
+			when-team-link-clicked="t-exit"
+			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/pricing.html'"
+			init-with="p:[op:0, tr:translateY(100%) translateZ(0px)]"
+			when-faq-link-clicked="t-exit"
+			when-pricing-link-clicked="t-enter"
+			when-support-link-clicked="t-exit"
+			when-team-link-clicked="t-exit"
+			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+		<div ng-include="root.base_url + 'preapp/templates/sidebar/team.html'"
+			init-with="p:[op:0, tr:translateY(100%) translateZ(0px)]"
+			when-faq-link-clicked="t-exit"
+			when-pricing-link-clicked="t-exit"
+			when-support-link-clicked="t-exit"
+			when-team-link-clicked="t-enter"
+			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+	</section>
+
+	<div class="splash-sidebar-borders" desktop>
 		<hr init-with="p:[op:0, tr:translateX(252px) translateZ(0px) scaleY(0), tro:center top]"
 			when-sidebar-icon-clicked="p:[op:1, transform:translateX(252px) translateZ(0px) scaleY(0):translateX(252px) translateZ(0px) scaleY(1):500:easeOutExpo easeOutExpo easeOutExpo]:delay-1000"
 			when-faq-link-clicked="t-enter"
