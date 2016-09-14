@@ -116,10 +116,12 @@
 					</li>
 			</ul>
 		</nav>
-		<footer>
+		<footer
+			init-default
+			when-sidebar-icon-clicked="s:[student-card-init:public]:delay-2000">
 			<div class="student-card"
 				init-with="p-op"
-				when-sidebar-icon-clicked="s:[student-card-init:public]:delay-1000 | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]:delay-1000">
+				when-sidebar-icon-clicked="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]:delay-1000">
 				<div class="school-id-inside">
 					<div class="school-id-top" style="background: #003262;">
 						<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
@@ -139,6 +141,7 @@
 					</div>
 				</div>
 			</div>
+			<!-- Student card is flickering and animating before the sidebar is finished -->
 			<button class="height-48 bg-shamrock txt-18"
 				init-with="p-op"
 				when-sidebar-icon-clicked="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-1000]">Get Started</button>
