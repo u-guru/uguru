@@ -132,7 +132,9 @@
 		</div>
 	</aside>
 
-	<aside class="splash-sidebar mobile">
+	<aside class="splash-sidebar mobile"
+		init-with="p:[op:0, tr:translateY(-100%) translateZ(0px)]"
+		when-sidebar-icon-clicked="p:[opacity:0:1:500:easeOutSine, transform:translateY(-100%) translateZ(0px):translateY(0%) translateZ(0px):500:easeOutSine easeOutSine]:delay-250">
 		<header>
 			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
 			<a class="icon-round-stroke close">
@@ -199,6 +201,31 @@
 				</li>
 			</ul>
 		</nav>
+		<footer>
+			<div class="student-card"
+				init-with="p-op"
+				when-sidebar-icon-clicked="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+				<div class="school-id-inside">
+					<div class="school-id-top" style="background: #003262;">
+						<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
+							init-with="p-op"
+							when-student-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
+					</div>
+					<div class="school-id-bottom">
+						<div>
+							<h1 class='lettercase'
+								init-with="p:[op:0, tro:center top]"
+								when-student-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-150]">Marco Polo</h1>
+							<h2 init-with="p-op"
+								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">Cal Freshman</h2>
+							<h2 init-with="p-op"
+								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">email@school.edu</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button class="height-48 bg-shamrock txt-18">Get Started</button>
+		</footer>
 	</aside>
 
 	<section class="splash-sidebar-content"
