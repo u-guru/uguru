@@ -55,7 +55,13 @@
 					<a init-default
 						on-click="s:[faq-link-clicked:public]">
 						<span></span>
-						<span>FAQ</span>
+						<span init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-exit="p:[opacity:1:0:250:easeOutSine, transform:translateX(0%) translateZ(0px):translateX(100%) translateZ(0px):500:easeOutSine easeOutSine]:delay-250">FAQ</span>
 						<hr init-default
 							when-faq-link-clicked="t-enter"
 							when-pricing-link-clicked="t-exit"
@@ -72,7 +78,13 @@
 					<a init-default
 						on-click="s:[pricing-link-clicked:public]">
 						<span></span>
-						<span>Pricing</span>
+						<span init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-exit="p:[opacity:1:0:250:easeOutSine, transform:translateX(0%) translateZ(0px):translateX(100%) translateZ(0px):500:easeOutSine easeOutSine]:delay-250">Pricing</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-enter"
@@ -89,7 +101,13 @@
 					<a init-default
 						on-click="s:[team-link-clicked:public]">
 						<span></span>
-						<span>Team</span>
+						<span init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-exit="p:[opacity:1:0:250:easeOutSine, transform:translateX(0%) translateZ(0px):translateX(100%) translateZ(0px):500:easeOutSine easeOutSine]:delay-250">Team</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
@@ -106,7 +124,13 @@
 					<a init-default
 						on-click="s:[support-link-clicked:public]">
 						<span></span>
-						<span>Support</span>
+						<span init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-exit="p:[opacity:1:0:250:easeOutSine, transform:translateX(0%) translateZ(0px):translateX(100%) translateZ(0px):500:easeOutSine easeOutSine]:delay-250">Support</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
@@ -123,7 +147,13 @@
 					<a init-default
 						on-click="s:[login-link-clicked:public]">
 						<span></span>
-						<span>Get Started</span>
+						<span init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-exit="p:[opacity:1:0:250:easeOutSine, transform:translateX(0%) translateZ(0px):translateX(100%) translateZ(0px):500:easeOutSine easeOutSine]:delay-250">Get Started</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
@@ -255,6 +285,15 @@
 							when-login-link-clicked="t-exit"
 							on-enter="p:[tr:scaleX(1), bg:white]"
 							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+						<hr init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-enter"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-enter="p:[tr:scaleX(1), background-position-x:-100%:-200%:500:easeOutSine] | s:[gradient-anim-end:public:delay-500]"
+							when-gradient-anim-end="p:[opacity:1:0:250:easeOutSine]"
+							on-exit="p:[tr:scaleX(0)]"/>
 					</a>
 				</li>
 				<li init-with="p:[op:0, tr:translateY(-10px)]"
@@ -395,21 +434,21 @@
 			when-pricing-link-clicked="t-exit"
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-exit"
-			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-500"></div>
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/pricing.html'"
 			init-with="p:[op:0, tr:translateY(100%) translateZ(0px)]"
 			when-faq-link-clicked="t-exit"
 			when-pricing-link-clicked="t-enter"
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-exit"
-			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-500"></div>
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/team.html'"
 			init-with="p:[op:0, tr:translateY(100%) translateZ(0px)]"
 			when-faq-link-clicked="t-exit"
 			when-pricing-link-clicked="t-exit"
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-enter"
-			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-500"></div>
 	</section>
 
 	<div class="splash-sidebar-borders">

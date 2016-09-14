@@ -2645,12 +2645,12 @@
       background-position-y: -100%; }
   .splash-sidebar-borders > ul {
     position: absolute;
-    top: 70px;
+    top: 60px;
     left: 47px;
     padding: 7.5px 0; }
     .splash-sidebar-borders > ul li {
       padding: 7.5px 0;
-      height: 68px;
+      height: 43px;
       width: 45px; }
       .splash-sidebar-borders > ul li div {
         position: relative;
@@ -2671,7 +2671,8 @@
     width: 100%; } }
 @media screen and (min-height: 600px) {
   .splash-sidebar nav {
-    margin-top: 0; }
+    margin-top: 0;
+    height: calc(100% - 248px); }
     .splash-sidebar nav ul {
       padding: 7.5px; }
       .splash-sidebar nav ul li {
@@ -2679,18 +2680,31 @@
         .splash-sidebar nav ul li a {
           font-size: 28px; }
           .splash-sidebar nav ul li a span:first-child:empty:before {
-            font-size: 16px; } }
+            font-size: 16px; }
+
+  .splash-sidebar-borders > ul {
+    top: 70px; }
+    .splash-sidebar-borders > ul li {
+      height: 53px; } }
 @media screen and (min-height: 680px) {
   .splash-sidebar nav ul li a {
     padding-bottom: 10px;
     font-size: 36px; }
-    .splash-sidebar nav ul li a:hover, .splash-sidebar nav ul li a:focus {
-      transform: translateX(10px); }
     .splash-sidebar nav ul li a span:first-child:empty {
       margin-right: 15px; }
       .splash-sidebar nav ul li a span:first-child:empty:before {
-        font-size: 18px; } }
-@media screen and (min-width: 768px) {
+        font-size: 18px; }
+
+  .splash-sidebar-borders > ul li {
+    height: 68px; } }
+@media screen and (orientation: landscape) {
+  .splash-sidebar-content {
+    width: calc(100% - 48px); }
+    .splash-sidebar-content.desktop {
+      display: block; }
+    .splash-sidebar-content.mobile {
+      display: none; }
+
   .splash-sidebar {
     width: 300px;
     height: 100%; }
@@ -2711,14 +2725,7 @@
     display: block; }
 
   .splash-sidebar-borders {
-    display: block; }
-
-  .splash-sidebar-content {
-    width: calc(100% - 48px); }
-    .splash-sidebar-content.desktop {
-      display: block; }
-    .splash-sidebar-content.mobile {
-      display: none; } }
+    display: block; } }
 @media screen and (min-width: 860px) {
   .splash-sidebar header {
     height: 70px; }

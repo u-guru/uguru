@@ -245,12 +245,12 @@
 	}
 	> ul {
 		position: absolute;
-		top: 70px;
+		top: 60px;
 		left: 47px;
 		padding: 7.5px 0;
 		li {
 			padding: 7.5px 0;
-			height: 68px;
+			height: 43px;
 			width: 45px;
 			div {
 				position: relative;
@@ -291,6 +291,7 @@
 	.splash-sidebar {
 		nav {
 			margin-top: 0;
+			height: calc(100% - 248px);
 			ul {
 				padding: 7.5px;
 				li {
@@ -309,6 +310,14 @@
 			}
 		}
 	}
+	.splash-sidebar-borders {
+		> ul {
+			top: 70px;
+			li {
+				height: 53px;
+			}
+		}
+	}
 }
 
 @media screen and (min-height: 680px) {
@@ -319,9 +328,6 @@
 					a {
 						padding-bottom: 10px;
 						font-size: 36px;
-						&:hover, &:focus {
-							transform: translateX(10px);
-						}
 						span {
 							&:first-child:empty {
 								margin-right: 15px;
@@ -335,9 +341,25 @@
 			}
 		}
 	}
+	.splash-sidebar-borders {
+		> ul {
+			li {
+				height: 68px;
+			}
+		}
+	}
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (orientation: landscape) {
+	.splash-sidebar-content {
+		width: calc(100% - 48px);
+		&.desktop {
+			display: block;
+		}
+		&.mobile {
+			display: none;
+		}
+	}
 	.splash-sidebar {
 		width: 300px;
 		height: 100%;
@@ -365,15 +387,6 @@
 	}
 	.splash-sidebar-borders {
 		display: block;
-	}
-	.splash-sidebar-content {
-		width: calc(100% - 48px);
-		&.desktop {
-			display: block;
-		}
-		&.mobile {
-			display: none;
-		}
 	}
 }
 
