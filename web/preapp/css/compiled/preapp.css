@@ -2546,7 +2546,8 @@
   top: 0;
   right: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
   .splash-sidebar-content > div:not(.splash-sidebar-round) {
     position: absolute;
     top: 0;
