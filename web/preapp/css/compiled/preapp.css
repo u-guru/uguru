@@ -2520,12 +2520,18 @@
           padding-bottom: 5px; }
           .splash-sidebar nav ul li a span {
             display: block; }
-            .splash-sidebar nav ul li a span:empty {
+            .splash-sidebar nav ul li a span:first-child:empty {
               margin-right: 10px; }
-              .splash-sidebar nav ul li a span:empty:before {
+              .splash-sidebar nav ul li a span:first-child:empty:before {
                 content: "0" counter(li);
                 counter-increment: li;
                 font-size: 14px; }
+            .splash-sidebar nav ul li a span:last-child:empty {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%; }
           .splash-sidebar nav ul li a hr {
             transform-origin: left center;
             transform: scaleX(0);
@@ -2541,7 +2547,7 @@
             padding: 0;
             background: rgba(255, 255, 255, 0.5); }
           .splash-sidebar nav ul li a:hover hr, .splash-sidebar nav ul li a:focus hr {
-            transform: scaleX(1); }
+            transform: scaleX(1) !important; }
           .splash-sidebar nav ul li a.active hr {
             transform: scaleX(1);
             background: white; }
@@ -2626,7 +2632,7 @@
         padding: 7.5px; }
         .splash-sidebar nav ul li a {
           font-size: 28px; }
-          .splash-sidebar nav ul li a span:empty:before {
+          .splash-sidebar nav ul li a span:first-child:empty:before {
             font-size: 16px; } }
 @media screen and (min-height: 680px) {
   .splash-sidebar nav ul li a {
@@ -2634,9 +2640,9 @@
     font-size: 36px; }
     .splash-sidebar nav ul li a:hover, .splash-sidebar nav ul li a:focus {
       transform: translateX(10px); }
-    .splash-sidebar nav ul li a span:empty {
+    .splash-sidebar nav ul li a span:first-child:empty {
       margin-right: 15px; }
-      .splash-sidebar nav ul li a span:empty:before {
+      .splash-sidebar nav ul li a span:first-child:empty:before {
         font-size: 18px; } }
 @media screen and (min-width: 768px) {
   .splash-sidebar {
