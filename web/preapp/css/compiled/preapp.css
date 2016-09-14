@@ -2413,6 +2413,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: auto;
   -webkit-perspective: 1000;
   perspective: 1000; }
 
@@ -2428,7 +2429,9 @@
     height: 100%; }
 
 .splash-sidebar-bg {
+  display: none;
   position: absolute;
+  z-index: 0;
   top: 0;
   left: 0;
   width: 100%;
@@ -2436,7 +2439,8 @@
   background: rgba(64, 72, 75, 0.95); }
 
 .splash-sidebar {
-  height: 100%;
+  position: relative;
+  z-index: 1;
   width: 100%;
   background: #637074; }
   .splash-sidebar.desktop {
@@ -2464,6 +2468,7 @@
       width: inherit;
       padding: 2px; }
   .splash-sidebar nav {
+    position: relative;
     width: 100%; }
     .splash-sidebar nav ul {
       counter-reset: li;
@@ -2493,7 +2498,7 @@
           font-size: 28px;
           font-weight: 600;
           line-height: 1.2;
-          padding-bottom: 10px; }
+          padding-bottom: 5px; }
           .splash-sidebar nav ul li a span {
             display: block; }
             .splash-sidebar nav ul li a span:empty {
@@ -2533,13 +2538,16 @@
       height: 150px; }
       .splash-sidebar footer .student-card .school-id-inside .school-id-top, .splash-sidebar footer .student-card .school-id-inside .school-id-bottom {
         border-radius: 0 !important; }
+      .splash-sidebar footer .student-card .school-id-inside .school-id-bottom {
+        background: white; }
 
 .splash-sidebar-content {
   position: absolute;
   top: 0;
   right: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
   .splash-sidebar-content > div:not(.splash-sidebar-round) {
     position: absolute;
     top: 0;
@@ -2547,6 +2555,8 @@
     width: 100%;
     height: 100%;
     overflow: auto; }
+  .splash-sidebar-content.desktop {
+    display: none; }
 
 .splash-sidebar-borders {
   display: none; }
@@ -2585,7 +2595,8 @@
 
 @media screen and (min-width: 768px) {
   .splash-sidebar {
-    width: 300px; }
+    width: 300px;
+    height: 100%; }
     .splash-sidebar.desktop {
       display: block; }
     .splash-sidebar.mobile {
@@ -2595,17 +2606,25 @@
     .splash-sidebar nav {
       height: calc(100% - 268px); }
       .splash-sidebar nav ul li a {
+        padding-bottom: 10px;
         font-size: 36px; }
         .splash-sidebar nav ul li a span:empty {
           margin-right: 15px; }
           .splash-sidebar nav ul li a span:empty:before {
             font-size: 18px; }
 
+  .splash-sidebar-bg {
+    display: block; }
+
   .splash-sidebar-borders {
     display: block; }
 
   .splash-sidebar-content {
-    width: calc(100% - 48px); } }
+    width: calc(100% - 48px); }
+    .splash-sidebar-content.desktop {
+      display: block; }
+    .splash-sidebar-content.mobile {
+      display: none; } }
 @media screen and (min-width: 860px) {
   .splash-sidebar header {
     height: 70px; }
