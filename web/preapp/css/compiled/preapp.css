@@ -2622,11 +2622,27 @@
     padding: 0;
     border: 0;
     background: white; }
-  .splash-sidebar-borders > hr {
+  .splash-sidebar-borders > div {
+    position: absolute;
+    z-index: 11;
     top: 0;
     left: 47px;
     height: 100%;
-    width: 2px; }
+    width: 2px;
+    background: white; }
+    .splash-sidebar-borders > div hr {
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 2px;
+      background: white;
+      background: -moz-linear-gradient(top, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
+      background: -webkit-linear-gradient(top, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
+      background: linear-gradient(to bottom, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$cerise', endColorstr='#ffffff',GradientType=0 );
+      background-size: 200%;
+      background-position-x: 0%;
+      background-position-y: -100%; }
   .splash-sidebar-borders > ul {
     position: absolute;
     top: 70px;
