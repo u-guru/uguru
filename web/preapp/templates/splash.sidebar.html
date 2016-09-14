@@ -1,7 +1,7 @@
 <div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
 	on-init="s:[sidebar-icon-clicked]">
 
-	<div class="splash-sidebar-bg" desktop
+	<div class="splash-sidebar-bg"
 		init-with="p:[op:0, tr:translateX(-100%) translateZ(0px)]"
 		when-sidebar-icon-clicked="p:[op:1, transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutSine easeOutSine]:delay-250">
 		<div class="splash-sidebar-round">
@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<aside class="splash-sidebar desktop" desktop
+	<aside class="splash-sidebar desktop"
 		init-with="p:[width:300px, tr:translateX(-350px) translateZ(0px)]"
 		when-sidebar-icon-clicked="p:[transform:translateX(-350px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]"
 		when-faq-link-clicked="t-enter"
@@ -49,8 +49,8 @@
 		<nav>
 			<ul init-default
 				when-sidebar-icon-clicked="s:[sidebar-link-enter:public]:delay-750">
-					<li init-with="p:[op:0, tr:translateY(-10px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]">
+					<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+						when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]">
 						<a init-default
 							on-click="s:[faq-link-clicked:public]"
 							when-faq-link-clicked="t-enter"
@@ -60,8 +60,8 @@
 							<hr/>
 						</a>
 					</li>
-					<li init-with="p:[op:0, tr:translateY(-10px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-150">
+					<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+						when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-150">
 						<a init-default
 							on-click="s:[pricing-link-clicked:public]"
 							when-pricing-link-clicked="t-enter"
@@ -71,8 +71,8 @@
 							<hr/>
 						</a>
 					</li>
-					<li	init-with="p:[op:0, tr:translateY(-10px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-300">
+					<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+						when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-300">
 						<a init-default
 							on-click="s:[team-link-clicked:public]"
 							when-team-link-clicked="t-enter"
@@ -82,8 +82,8 @@
 							<hr/>
 						</a>
 					</li>
-					<li	init-with="p:[op:0, tr:translateY(-10px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-450">
+					<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+						when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-450">
 						<a init-default
 							on-click="s:[support-link-clicked:public]"
 							when-support-link-clicked="t-enter"
@@ -93,8 +93,8 @@
 							<hr/>
 						</a>
 					</li>
-					<li init-with="p:[op:0, tr:translateY(-10px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-600">
+					<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
+						when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-600">
 						<a init-default
 							on-click="s:[login-link-clicked:public]"
 							when-login-link-clicked="t-enter"
@@ -151,7 +151,7 @@
 		</div>
 	</aside>
 
-	<aside class="splash-sidebar mobile" mobile
+	<aside class="splash-sidebar mobile"
 		init-with="p:[op:0, tr:translateY(-100%) translateZ(0px)]"
 		when-sidebar-icon-clicked="p:[opacity:0:1:500:easeOutSine, transform:translateY(-100%) translateZ(0px):translateY(0%) translateZ(0px):500:easeOutSine easeOutSine]:delay-250">
 		<header>
@@ -256,7 +256,7 @@
 		</footer>
 	</aside>
 
-	<section class="splash-sidebar-content desktop" desktop
+	<section class="splash-sidebar-content desktop"
 		init-with="p:[z-index:-1]"
 		when-faq-link-clicked="t-enter"
 		when-pricing-link-clicked="t-enter"
@@ -287,7 +287,7 @@
 			on-enter="p:[op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
 	</section>
 
-	<section class="splash-sidebar-content mobile" mobile
+	<section class="splash-sidebar-content mobile"
 		init-with="p:[z-index:-1]"
 		when-faq-link-clicked="t-enter"
 		when-pricing-link-clicked="t-enter"
@@ -318,7 +318,7 @@
 			on-enter="p:[op:1, transform:translateY(100%) translateZ(0px):translateY(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
 	</section>
 
-	<div class="splash-sidebar-borders" desktop>
+	<div class="splash-sidebar-borders">
 		<hr init-with="p:[op:0, tr:translateX(252px) translateZ(0px) scaleY(0), tro:center top]"
 			when-sidebar-icon-clicked="p:[op:1, transform:translateX(252px) translateZ(0px) scaleY(0):translateX(252px) translateZ(0px) scaleY(1):500:easeOutExpo easeOutExpo easeOutExpo]:delay-1000"
 			when-faq-link-clicked="t-enter"
@@ -334,19 +334,19 @@
 			on-enter="p:[z-index:11]">
 			<li init-default
 				when-faq-link-clicked="t-enter"
-				on-enter="c:[active:add]"><hr/></li>
+				on-enter="c:[active:add]"><div><hr/></div></li>
 			<li init-default
 				when-pricing-link-clicked="t-enter"
-				on-enter="c:[active:add]"><hr/></li>
+				on-enter="c:[active:add]"><div><hr/></div></li>
 			<li init-default
 				when-team-link-clicked="t-enter"
-				on-enter="c:[active:add]"><hr/></li>
+				on-enter="c:[active:add]"><div><hr/></div></li>
 			<li init-default
 				when-support-link-clicked="t-enter"
-				on-enter="c:[active:add]"><hr/></li>
+				on-enter="c:[active:add]"><div><hr/></div></li>
 			<li init-default
 				when-login-link-clicked="t-enter"
-				on-enter="c:[active:add]"><hr/></li>
+				on-enter="c:[active:add]"><div><hr/></div></li>
 		</ul>
 	</div>
 </div>

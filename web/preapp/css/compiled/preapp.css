@@ -2597,9 +2597,12 @@
     left: 47px;
     padding: 7.5px 0; }
     .splash-sidebar-borders > ul li {
-      position: relative;
+      padding: 7.5px 0;
       height: 68px;
       width: 45px; }
+      .splash-sidebar-borders > ul li div {
+        position: relative;
+        height: 100%; }
       .splash-sidebar-borders > ul li hr {
         opacity: 0;
         transition: all 250ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
@@ -2625,7 +2628,17 @@
           font-size: 28px; }
           .splash-sidebar nav ul li a span:empty:before {
             font-size: 16px; } }
-@media screen and (min-height: 768px) {
+@media screen and (min-height: 680px) {
+  .splash-sidebar nav ul li a {
+    padding-bottom: 10px;
+    font-size: 36px; }
+    .splash-sidebar nav ul li a:hover, .splash-sidebar nav ul li a:focus {
+      transform: translateX(10px); }
+    .splash-sidebar nav ul li a span:empty {
+      margin-right: 15px; }
+      .splash-sidebar nav ul li a span:empty:before {
+        font-size: 18px; } }
+@media screen and (min-width: 768px) {
   .splash-sidebar {
     width: 300px;
     height: 100%; }
@@ -2637,15 +2650,8 @@
       width: 300px; }
     .splash-sidebar nav {
       height: calc(100% - 268px); }
-      .splash-sidebar nav ul li a {
-        padding-bottom: 10px;
-        font-size: 36px; }
-        .splash-sidebar nav ul li a:hover, .splash-sidebar nav ul li a:focus {
-          transform: translateX(10px); }
-        .splash-sidebar nav ul li a span:empty {
-          margin-right: 15px; }
-          .splash-sidebar nav ul li a span:empty:before {
-            font-size: 18px; }
+    .splash-sidebar footer {
+      width: 300px; }
 
   .splash-sidebar-bg {
     display: block; }
