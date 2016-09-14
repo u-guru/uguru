@@ -52,6 +52,8 @@
 					<li init-with="p:[op:0, tr:translateY(-10px)]"
 						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]">
 						<a init-default
+							on-mouse-enter="p:[transform:translateX(10px)]"
+							on-mouse-leave="p:[transform:translateX(0px)]"
 							on-click="s:[faq-link-clicked:public]"
 							when-faq-link-clicked="t-enter"
 							on-enter="c:[active:add]">
@@ -63,6 +65,8 @@
 					<li init-with="p:[op:0, tr:translateY(-10px)]"
 						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-150">
 						<a init-default
+							on-mouse-enter="p:[transform:translateX(10px)]"
+							on-mouse-leave="p:[transform:translateX(0px)]"
 							on-click="s:[pricing-link-clicked:public]"
 							when-pricing-link-clicked="t-enter"
 							on-enter="c:[active:add]">
@@ -72,8 +76,10 @@
 						</a>
 					</li>
 					<li	init-with="p:[op:0, tr:translateY(-10px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-450">
+						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-300">
 						<a init-default
+							on-mouse-enter="p:[transform:translateX(10px)]"
+							on-mouse-leave="p:[transform:translateX(0px)]"
 							on-click="s:[team-link-clicked:public]"
 							when-team-link-clicked="t-enter"
 							on-enter="c:[active:add]">
@@ -83,8 +89,10 @@
 						</a>
 					</li>
 					<li	init-with="p:[op:0, tr:translateY(-10px)]"
-						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-300">
+						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-450">
 						<a init-default
+							on-mouse-enter="p:[transform:translateX(10px)]"
+							on-mouse-leave="p:[transform:translateX(0px)]"
 							on-click="s:[support-link-clicked:public]"
 							when-support-link-clicked="t-enter"
 							on-enter="c:[active:add]">
@@ -96,6 +104,8 @@
 					<li init-with="p:[op:0, tr:translateY(-10px)]"
 						when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-600">
 						<a init-default
+							on-mouse-enter="p:[transform:translateX(10px)]"
+							on-mouse-leave="p:[transform:translateX(0px)]"
 							on-click="s:[login-link-clicked:public]"
 							when-login-link-clicked="t-enter"
 							on-enter="c:[active:add]">
