@@ -116,35 +116,34 @@
 					</li>
 			</ul>
 		</nav>
-		<footer
-			init-default
-			when-sidebar-icon-clicked="s:[student-card-init:public]:delay-2000">
+		<footer init-default
+			when-sidebar-link-enter="s:[student-id-enter:public]:delay-1000">
 			<div class="student-card"
-				init-with="p-op"
-				when-sidebar-icon-clicked="a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]:delay-1000">
+				init-with="p:[tr:translateY(30px) scaleX(0)]"
+				when-student-id-enter="p:[tro:center center, transform:translateY(30px) scaleX(0):translateY(0px) scaleX(1):500:easeOutQuad easeOutBounce]">
 				<div class="school-id-inside">
 					<div class="school-id-top" style="background: #003262;">
 						<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
-							init-with="p-op"
-							when-student-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
+							init-with="p:[op:0, tro:center center]"
+							when-student-id-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-550]"></span>
 					</div>
 					<div class="school-id-bottom">
 						<div>
 							<h1 class='lettercase'
 								init-with="p:[op:0, tro:center top]"
-								when-student-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-150]">Marco Polo</h1>
+								when-student-id-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-600]">Marco Polo</h1>
 							<h2 init-with="p-op"
-								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">Cal Freshman</h2>
+								when-student-mcard-enter="p:[opacity:0:1:800:easeInSine]:delay-750">Cal Freshman</h2>
 							<h2 init-with="p-op"
-								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">email@school.edu</h2>
+								when-student-mcard-enter="p:[opacity:0:1:700:easeInSine]:delay-900">email@school.edu</h2>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- Student card is flickering and animating before the sidebar is finished -->
 			<button class="height-48 bg-shamrock txt-18"
-				init-with="p-op"
-				when-sidebar-icon-clicked="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-1000]">Get Started</button>
+				init-with="p:[op:0, tr:translateY(30px)]"
+				when-student-id-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeOutBack]:delay-600">Get Started</button>
 		</footer>
 		<div class="splash-sidebar-round"
 			init-with="p:[tro:left center, tr:scaleX(0.5)]"
@@ -171,8 +170,10 @@
 			</a>
 		</header>
 		<nav>
-			<ul>
-				<li>
+			<ul init-default
+				when-sidebar-icon-clicked="s:[sidebar-mlink-enter:public]:delay-750">
+				<li init-with="p:[op:0, tr:translateY(-10px)]"
+					when-sidebar-mlink-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]">
 					<a init-default
 						on-click="s:[faq-link-clicked:public]"
 						when-faq-link-clicked="t-enter"
@@ -182,7 +183,8 @@
 						<hr/>
 					</a>
 				</li>
-				<li>
+				<li init-with="p:[op:0, tr:translateY(-10px)]"
+					when-sidebar-mlink-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-150">
 					<a init-default
 						on-click="s:[pricing-link-clicked:public]"
 						when-pricing-link-clicked="t-enter"
@@ -192,7 +194,8 @@
 						<hr/>
 					</a>
 				</li>
-				<li>
+				<li init-with="p:[op:0, tr:translateY(-10px)]"
+					when-sidebar-mlink-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-300">
 					<a init-default
 						on-click="s:[support-link-clicked:public]"
 						when-support-link-clicked="t-enter"
@@ -202,7 +205,8 @@
 						<hr/>
 					</a>
 				</li>
-				<li>
+				<li init-with="p:[op:0, tr:translateY(-10px)]"
+					when-sidebar-mlink-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-450">
 					<a init-default
 						on-click="s:[team-link-clicked:public]"
 						when-team-link-clicked="t-enter"
@@ -212,7 +216,8 @@
 						<hr/>
 					</a>
 				</li>
-				<li>
+				<li init-with="p:[op:0, tr:translateY(-10px)]"
+					when-sidebar-mlink-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-600">
 					<a init-default
 						on-click="s:[login-link-clicked:public]"
 						when-login-link-clicked="t-enter"
@@ -224,30 +229,32 @@
 				</li>
 			</ul>
 		</nav>
-		<footer>
+		<footer init-default
+			when-sidebar-mlink-enter="s:[student-mcard-enter:public]:delay-1000">
 			<div class="student-card"
-				init-with="p-op"
-				when-sidebar-icon-clicked="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]">
+				init-with="p:[op:0, tr:translateY(30px) scaleX(0.2)]"
+				when-student-mcard-enter="p:[opacity:0:1:500:easeOutSine, transform:translateY(30px) scaleX(0.2):translateY(0px) scaleX(1):800:easeOutElastic easeInOutBack]">
 				<div class="school-id-inside">
 					<div class="school-id-top" style="background: #003262;">
 						<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
 							init-with="p-op"
-							when-student-card-init="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
+							when-student-mcard-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-450]"></span>
 					</div>
 					<div class="school-id-bottom">
 						<div>
 							<h1 class='lettercase'
 								init-with="p:[op:0, tro:center top]"
-								when-student-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-150]">Marco Polo</h1>
+								when-student-mcard-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in:delay-600]">Marco Polo</h1>
+							<h2 init-with="p-op">Cal Freshman</h2>
 							<h2 init-with="p-op"
-								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">Cal Freshman</h2>
-							<h2 init-with="p-op"
-								when-student-card-init="p:[opacity:0:1:800:easeInSine]:delay-150">email@school.edu</h2>
+								when-student-mcard-enter="p:[opacity:0:1:800:easeInSine]:delay-900">email@school.edu</h2>
 						</div>
 					</div>
 				</div>
 			</div>
-			<button class="height-48 bg-shamrock txt-18">Get Started</button>
+			<button class="height-48 bg-shamrock txt-18"
+				init-with="p:[op:0, tr:translateY(30px)]"
+				when-student-mcard-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeOutBack]:delay-200">Get Started</button>
 		</footer>
 	</aside>
 
