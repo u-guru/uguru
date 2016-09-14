@@ -185,14 +185,16 @@
 					when-student-id-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeOutBack]:delay-600">Sign up/Login</button>
 			</div>
 			<div class="collapsed"
-				init-with="p:[op:0, tr:rotate(-90deg) translateY(-48px) translateZ(0px)]"
+				init-with="p:[op:0, tr:rotate(-90deg) scaleY(0) translateZ(0px)]"
 				when-faq-link-clicked="t-enter"
 				when-pricing-link-clicked="t-enter"
 				when-team-link-clicked="t-enter"
 				when-support-link-clicked="t-enter"
-				on-enter="p:[op:1, transform:rotate(-90deg) translateY(-48px) translateZ(0px):rotate(-90deg) translateY(0px) translateZ(0px):250:easeOutSine easeOutSine easeOutSine]:delay-250">
+				on-enter="p:[op:1, transform:rotate(-90deg) scaleY(0) translateZ(0px):rotate(-90deg) scaleY(1) translateZ(0px):450:easeOutSine easeOutBounce easeOutSine]:delay-450 | send:[collapse-guru:public]:delay-650">
 				<button class="height-48 bg-shamrock txt-18">Sign up/Login</button>
-				<div class="guru-head" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"></div>
+				<div class="guru-head" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"
+					init-with="p:[op:0, tr:translateX(-20px)]"
+					when-collapse-guru="p:[op:1, transform:translateX(-20px):translateX(0px):250:easeOutBack]"></div>
 			</div>
 		</footer>
 
