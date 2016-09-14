@@ -2546,6 +2546,16 @@
             margin: 0;
             padding: 0;
             background: rgba(255, 255, 255, 0.5); }
+            .splash-sidebar nav ul li a hr:nth-of-type(2) {
+              transition: none !important;
+              background: white;
+              background: -moz-linear-gradient(left, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
+              background: -webkit-linear-gradient(left, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
+              background: linear-gradient(to right, #e6389b 0%, #F6C64E 10%, #81B566 20%, #55A4B7 30%, #7872e3 40%, #ffffff 50%);
+              filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6389b', endColorstr='#ffffff',GradientType=1 );
+              background-size: 200%;
+              background-position-x: -100%;
+              background-position-y: 0%; }
           .splash-sidebar nav ul li a:hover hr, .splash-sidebar nav ul li a:focus hr {
             transform: scaleX(1) !important; }
           .splash-sidebar nav ul li a.active hr {
