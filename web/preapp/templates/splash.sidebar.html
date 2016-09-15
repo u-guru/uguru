@@ -4,7 +4,7 @@
 
 	<div class="splash-sidebar-bg"
 		init-with="p:[op:0, tr:translateX(-100%) translateZ(0px)]"
-		when-sidebar-icon-clicked="p:[op:1, transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutSine easeOutSine]:delay-250">
+		when-sidebar-icon-clicked="p:[op:1, transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):800:easeOutSine easeOutSine]:delay-250">
 		<div class="splash-sidebar-round">
 			<svg viewBox="0 0 50 100" preserveAspectRatio="none">
 				<circle cx="0" cy="50" r="50" fill="#363d40" fill-opacity="0.95"></circle>
@@ -43,7 +43,7 @@
 			<ul init-default
 				when-sidebar-icon-clicked="s:[sidebar-link-enter:public]:delay-750">
 				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]">
+					when-sidebar-link-enter="p:[opacity:0:1:200:easeOutQuad, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]">
 					<a init-default
 						on-click="s:[faq-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
@@ -86,7 +86,7 @@
 					</a>
 				</li>
 				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-150">
+					when-sidebar-link-enter="p:[opacity:0:1:200:easeOutQuad, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-120">
 					<a init-default
 						on-click="s:[pricing-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
@@ -129,7 +129,7 @@
 					</a>
 				</li>
 				<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-300">
+					when-sidebar-link-enter="p:[opacity:0:1:200:easeOutQuad, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-240">
 					<a init-default
 						on-click="s:[team-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
@@ -172,7 +172,7 @@
 					</a>
 				</li>
 				<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-450">
+					when-sidebar-link-enter="p:[opacity:0:1:200:easeOutQuad, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-350">
 					<a init-default
 						on-click="s:[support-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
@@ -215,7 +215,7 @@
 					</a>
 				</li>
 				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-600">
+					when-sidebar-link-enter="p:[opacity:0:1:200:easeOutQuad, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-600">
 					<a init-default
 						on-click="s:[start-link-clicked:public]">
 						<span init-default
@@ -260,7 +260,7 @@
 			</ul>
 		</nav>
 		<footer init-default
-			when-sidebar-link-enter="s:[student-id-enter:public]:delay-1000">
+			when-sidebar-link-enter="s:[student-id-enter:public]:delay-800">
 			<div init-default
 				when-sidebar-expand="p:[transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):250:easeOutSine easeOutSine]:delay-450"
 				when-sidebar-collapse="p:[transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):250:easeOutSine easeOutSine]"
