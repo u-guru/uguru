@@ -47,9 +47,9 @@
 					<a init-default
 						on-click="s:[faq-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
-							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
-							when-sidebar-collapse="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
-							when-sidebar-link-clicked="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"
+							when-sidebar-collapse="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
 							when-faq-link-clicked="t-enter"
 							when-pricing-link-clicked="t-exit"
 							when-team-link-clicked="t-exit"
@@ -59,10 +59,11 @@
 							on-exit="p:[color:rgba(255#255#255#.5)]"></span>
 						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/sidebar/faq.html'"
 							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
-							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
-							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
-							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
-						<span init-default
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"
+							when-sidebar-expand="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"></span>
+						<span class="splash-sidebar-link-text"
+							init-default
 							when-faq-link-clicked="t-enter"
 							when-pricing-link-clicked="t-exit"
 							when-team-link-clicked="t-exit"
@@ -89,9 +90,9 @@
 					<a init-default
 						on-click="s:[pricing-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
-							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
-							when-sidebar-collapse="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
-							when-sidebar-link-clicked="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]:delay-150"
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"
+							when-sidebar-collapse="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]:delay-150"
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-enter"
 							when-team-link-clicked="t-exit"
@@ -101,10 +102,11 @@
 							on-exit="p:[color:rgba(255#255#255#.5)]"></span>
 						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/sidebar/pricing.html'"
 							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
-							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-750"
-							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
-							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
-						<span init-default
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-450"
+							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"></span>
+						<span class="splash-sidebar-link-text"
+							init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-enter"
 							when-team-link-clicked="t-exit"
@@ -131,9 +133,9 @@
 					<a init-default
 						on-click="s:[team-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
-							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
-							when-sidebar-collapse="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
-							when-sidebar-link-clicked="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]:delay-300"
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"
+							when-sidebar-collapse="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]:delay-300"
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
 							when-team-link-clicked="t-enter"
@@ -143,10 +145,11 @@
 							on-exit="p:[color:rgba(255#255#255#.5)]"></span>
 						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/sidebar/team.html'"
 							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
-							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-900"
-							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
-							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
-						<span init-default
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-600"
+							when-sidebar-expand="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"></span>
+						<span class="splash-sidebar-link-text"
+							init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
 							when-team-link-clicked="t-enter"
@@ -173,9 +176,9 @@
 					<a init-default
 						on-click="s:[support-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
-							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
-							when-sidebar-collapse="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
-							when-sidebar-link-clicked="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]:delay-450"
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"
+							when-sidebar-collapse="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]:delay-450"
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
 							when-team-link-clicked="t-exit"
@@ -185,10 +188,11 @@
 							on-exit="p:[color:rgba(255#255#255#.5)]"></span>
 						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/sidebar/support.html'"
 							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
-							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-1050"
-							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
-							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
-						<span init-default
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-750"
+							when-sidebar-expand="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"></span>
+						<span class="splash-sidebar-link-text"
+							init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
 							when-team-link-clicked="t-exit"
@@ -215,9 +219,9 @@
 					<a init-default
 						on-click="s:[start-link-clicked:public]">
 						<span init-default
-							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
-							when-sidebar-collapse="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
-							when-sidebar-link-clicked="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]:delay-600"
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"
+							when-sidebar-collapse="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]:delay-600"
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
 							when-team-link-clicked="t-exit"
@@ -227,10 +231,11 @@
 							on-exit="p:[color:rgba(255#255#255#.5)]"></span>
 						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/sidebar/get-started.html'"
 							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
-							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-1200"
-							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
-							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
-						<span init-default
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-900"
+							when-sidebar-expand="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-300"></span>
+						<span class="splash-sidebar-link-text"
+							init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
 							when-team-link-clicked="t-exit"
@@ -513,44 +518,44 @@
 		when-sidebar-link-clicked="p:[z-index:10]">
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/faq.html'"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
-			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"
-			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):1000:easeOutExpo easeOutExpo]"
+			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
 			when-faq-link-clicked="t-enter"
 			when-pricing-link-clicked="t-exit"
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-exit"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/pricing.html'"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
-			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"
-			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):1000:easeOutExpo easeOutExpo]"
+			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
 			when-faq-link-clicked="t-exit"
 			when-pricing-link-clicked="t-enter"
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-exit"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/team.html'"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
-			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"
-			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):1000:easeOutExpo easeOutExpo]"
+			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
 			when-faq-link-clicked="t-exit"
 			when-pricing-link-clicked="t-exit"
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-enter"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
 		<div class="bg-campus"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
-			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"
-			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):1000:easeOutExpo easeOutExpo]"
+			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
 			when-faq-link-clicked="t-exit"
 			when-pricing-link-clicked="t-exit"
 			when-support-link-clicked="t-enter"
 			when-team-link-clicked="t-exit"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
 	</section>
 
 	<section class="splash-sidebar-content mobile"
@@ -588,12 +593,12 @@
 
 	<div class="splash-sidebar-borders">
 		<div init-with="p:[op:0, tr:translateX(252px) translateZ(0px) scaleY(0), tro:center top]"
-			when-sidebar-icon-clicked="p:[op:1, transform:translateX(252px) translateZ(0px) scaleY(0):translateX(252px) translateZ(0px) scaleY(1):500:easeOutExpo easeOutExpo easeOutExpo]:delay-1000"
-			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]"
-			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):1000:easeOutExpo easeOutExpo]"
-			when-sidebar-link-clicked="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):1000:easeOutExpo easeOutExpo]">
+			when-sidebar-icon-clicked="p:[op:1, transform:translateX(252px) translateZ(0px) scaleY(0):translateX(252px) translateZ(0px) scaleY(1):500:easeOutExpo easeOutExpo easeOutExpo]:delay-500"
+			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-link-clicked="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]">
 			<hr init-with="p-op"
-				when-sidebar-link-clicked="p:[op:1, background-position-y:-100%:-200%:1000:easeOutCirc:^:2+0:a] | s:[gradient-border-fade:public:delay-2000]"
+				when-sidebar-link-clicked="p:[op:1, background-position-y:-100%:-200%:500:easeOutCirc:^:2+0:a] | s:[gradient-border-fade:public:delay-1000]"
 				when-gradient-border-fade="p:[opacity:1:0:250:easeOutSine] | s:[gradient-border-end:public:delay-250]"
 				when-gradient-border-end="p:[background-position-y:-100%]"/>
 		</div>
