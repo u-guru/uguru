@@ -78,6 +78,11 @@
 			width: inherit;
 			padding: 2px;
 		}
+		.home {
+			position: absolute;
+			right: 7.5px;
+			top: 19px;
+		}
 	}
 	nav {
 		position: relative;
@@ -127,7 +132,7 @@
 					hr {
 						transform-origin: left center;
 						transform: scaleX(0);
-						transition: all 250ms cubic-bezier(.17,.67,.83,.67);
+						transition: all 250ms ease-in-out;
 						position: absolute;
 						bottom: 0;
 						left: 0;
@@ -279,7 +284,7 @@
 			}
 			hr {
 				opacity: 0;
-				transition: all 250ms cubic-bezier(.17,.67,.83,.67);
+				transition: all 250ms ease-in-out;
 				bottom: 0;
 				left: 0;
 				width: 100%;
@@ -430,7 +435,7 @@
 				height: 100%!important;
 				margin: 0 15px!important;
 			}
-			.close {
+			.close, .home {
 				margin-top: -10px;
 			}
 		}
