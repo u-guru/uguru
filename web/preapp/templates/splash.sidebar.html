@@ -17,14 +17,14 @@
 		when-sidebar-icon-clicked="p:[transform:translateX(-350px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]">
 		<header>
 			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
-				init-with="p:[op:0]"
+				init-with="p-op"
 				when-sidebar-icon-clicked="p:[opacity:0:1:350:easeOutSine]:delay-500"
 				when-sidebar-link-clicked="p:[opacity:1:0:250:easeOutExpo, transform:translateY(0%) translateZ(0px):translateY(-100%) translateZ(0px):250:easeOutExpo easeOutExpo]"></a>
 			<a class="icon-round-stroke close"
 				init-with="p:[op:0, tr:rotate(-180deg), tro:center center]"
 				when-sidebar-icon-clicked="p:[opacity:0:1:350:easeOutSine, transform:rotate(-180deg):rotate(0deg):350:easeOutExpo]:delay-750"
 				on-click="s:[sidebar-close-clicked:public]"
-				when-sidebar-link-clicked="p:[transform:translateX(0px) translateZ(0px):translateX(-249px) translateZ(0px):1000:easeOutExpo easeOutExpo]">
+				when-sidebar-link-clicked="p:[transform:translateX(0px) translateZ(0px):translateX(-249px) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-500">
 				<svg viewBox="0 0 100 100">
 					<circle cx="50" cy="50" r="36"></circle>
 					<g>
@@ -41,7 +41,15 @@
 					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]">
 					<a init-default
 						on-click="s:[faq-link-clicked:public, sidebar-link-clicked:public]">
-						<span></span>
+						<span init-default
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
+							when-sidebar-collapse="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"></span>
+						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"
+							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
+							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
 						<span>FAQ</span>
 						<hr init-default
 							when-faq-link-clicked="t-enter"
@@ -50,7 +58,7 @@
 							when-support-link-clicked="t-exit"
 							when-login-link-clicked="t-exit"
 							on-enter="p:[tr:scaleX(1), bg:white]"
-							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
 						<span init-with="p:[z-index:-1]"
 							when-sidebar-link-clicked="p:[z-index:10]"
 							on-mouse-enter="s:[sidebar-expand:public]"
@@ -61,7 +69,15 @@
 					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-150">
 					<a init-default
 						on-click="s:[pricing-link-clicked:public, sidebar-link-clicked:public]">
-						<span></span>
+						<span init-default
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
+							when-sidebar-collapse="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]:delay-150"></span>
+						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"
+							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-750"
+							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
 						<span>Pricing</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
@@ -70,7 +86,7 @@
 							when-support-link-clicked="t-exit"
 							when-login-link-clicked="t-exit"
 							on-enter="p:[tr:scaleX(1), bg:white]"
-							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
 						<span init-with="p:[z-index:-1]"
 							when-sidebar-link-clicked="p:[z-index:10]"
 							on-mouse-enter="s:[sidebar-expand:public]"
@@ -81,7 +97,15 @@
 					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-300">
 					<a init-default
 						on-click="s:[team-link-clicked:public, sidebar-link-clicked:public]">
-						<span></span>
+						<span init-default
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
+							when-sidebar-collapse="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]:delay-300"></span>
+						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"
+							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-900"
+							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
 						<span>Team</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
@@ -90,7 +114,7 @@
 							when-support-link-clicked="t-exit"
 							when-login-link-clicked="t-exit"
 							on-enter="p:[tr:scaleX(1), bg:white]"
-							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
 						<span init-with="p:[z-index:-1]"
 							when-sidebar-link-clicked="p:[z-index:10]"
 							on-mouse-enter="s:[sidebar-expand:public]"
@@ -101,7 +125,15 @@
 					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-450">
 					<a init-default
 						on-click="s:[support-link-clicked:public, sidebar-link-clicked:public]">
-						<span></span>
+						<span init-default
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
+							when-sidebar-collapse="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]:delay-450"></span>
+						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"
+							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-1050"
+							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
 						<span>Support</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
@@ -110,7 +142,7 @@
 							when-support-link-clicked="t-enter"
 							when-login-link-clicked="t-exit"
 							on-enter="p:[tr:scaleX(1), bg:white]"
-							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
 						<span init-with="p:[z-index:-1]"
 							when-sidebar-link-clicked="p:[z-index:10]"
 							on-mouse-enter="s:[sidebar-expand:public]"
@@ -121,7 +153,15 @@
 					when-sidebar-link-enter="p:[opacity:0:1:250:easeOutSine, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):250:easeInOutQuad easeInOutQuad]:delay-600">
 					<a init-default
 						on-click="s:[login-link-clicked:public]">
-						<span></span>
+						<span init-default
+							when-sidebar-expand="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
+							when-sidebar-collapse="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-link-clicked="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]:delay-600"></span>
+						<span class="splash-sidebar-link-icon" ng-include="root.base_url + 'shared/templates/components/svg/main/plus-circle.html'"
+							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
+							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-1200"
+							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
 						<span>Get Started</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
@@ -130,7 +170,7 @@
 							when-support-link-clicked="t-exit"
 							when-login-link-clicked="t-enter"
 							on-enter="p:[tr:scaleX(1), bg:white]"
-							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
 						<span init-with="p:[z-index:-1]"
 							when-sidebar-link-clicked="p:[z-index:10]"
 							on-mouse-enter="s:[sidebar-expand:public]"
@@ -236,7 +276,7 @@
 							when-support-link-clicked="t-exit"
 							when-login-link-clicked="t-exit"
 							on-enter="p:[tr:scaleX(1), bg:white]"
-							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
 						<hr init-default
 							when-faq-link-clicked="t-enter"
 							when-pricing-link-clicked="t-exit"
@@ -261,7 +301,7 @@
 							when-support-link-clicked="t-exit"
 							when-login-link-clicked="t-exit"
 							on-enter="p:[tr:scaleX(1), bg:white]"
-							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-enter"
@@ -286,7 +326,7 @@
 							when-support-link-clicked="t-exit"
 							when-login-link-clicked="t-exit"
 							on-enter="p:[tr:scaleX(1), bg:white]"
-							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
@@ -311,7 +351,7 @@
 							when-support-link-clicked="t-enter"
 							when-login-link-clicked="t-exit"
 							on-enter="p:[tr:scaleX(1), bg:white]"
-							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
@@ -336,7 +376,7 @@
 							when-support-link-clicked="t-exit"
 							when-login-link-clicked="t-enter"
 							on-enter="p:[tr:scaleX(1), bg:white]"
-							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255%.5)]"/>
+							on-exit="p:[tr:scaleX(0), bg:rgba(255#255#255#.5)]"/>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
@@ -478,7 +518,7 @@
 						when-support-link-clicked="t-exit"
 						when-login-link-clicked="t-exit"
 						on-enter="p:[op:1, bg:white]"
-						on-exit="p:[op:0, bg:rgba(255#255#255%.5)]"/>
+						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"/>
 				</div>
 			</li>
 			<li>
@@ -490,7 +530,7 @@
 						when-support-link-clicked="t-exit"
 						when-login-link-clicked="t-exit"
 						on-enter="p:[op:1, bg:white]"
-						on-exit="p:[op:0, bg:rgba(255#255#255%.5)]"/>
+						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"/>
 				</div>
 			</li>
 			<li>
@@ -502,7 +542,7 @@
 						when-support-link-clicked="t-exit"
 						when-login-link-clicked="t-exit"
 						on-enter="p:[op:1, bg:white]"
-						on-exit="p:[op:0, bg:rgba(255#255#255%.5)]"/>
+						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"/>
 				</div>
 			</li>
 			<li>
@@ -514,7 +554,7 @@
 						when-support-link-clicked="t-enter"
 						when-login-link-clicked="t-exit"
 						on-enter="p:[op:1, bg:white]"
-						on-exit="p:[op:0, bg:rgba(255#255#255%.5)]"/>
+						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"/>
 				</div>
 			</li>
 			<li>
@@ -526,7 +566,7 @@
 						when-support-link-clicked="t-exit"
 						when-login-link-clicked="t-enter"
 						on-enter="p:[op:1, bg:white]"
-						on-exit="p:[op:0, bg:rgba(255#255#255%.5)]"/>
+						on-exit="p:[op:0, bg:rgba(255#255#255#.5)]"/>
 				</div>
 			</li>
 		</ul>
