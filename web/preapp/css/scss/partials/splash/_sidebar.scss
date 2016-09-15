@@ -19,20 +19,6 @@
 	}
 }
 
-.splash-sidebar-link-icon {
-	position: absolute;
-	top: 1px;
-	left: -12px;
-	width: 42px;
-	height: 42px;
-	svg {
-		* {
-			stroke: white;
-			stroke-width: 4px;
-		}
-	}
-}
-
 .splash-sidebar-round {
 	position: absolute;
 	top: 0;
@@ -124,9 +110,22 @@
 						&:last-child:empty {
 							position: absolute;
 							top: 0;
-							left: 0;
-							width: 100%;
+							left: -10px;
+							width: calc(100% + 10px);
 							height: 100%;
+						}
+						&.splash-sidebar-link-icon {
+							position: absolute;
+							top: 1px;
+							left: -12px;
+							width: 42px;
+							height: 42px;
+							svg {
+								* {
+									stroke: white;
+									stroke-width: 4px;
+								}
+							}
 						}
 					}
 					hr {
@@ -354,6 +353,9 @@
 					a {
 						padding-bottom: 10px;
 						font-size: 36px;
+						&:hover, &:focus {
+							transform: translateX(10px);
+						}
 						span {
 							&:first-child:empty {
 								&:before {
