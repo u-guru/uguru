@@ -50,7 +50,14 @@
 							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"
 							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
 							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
-						<span>FAQ</span>
+						<span init-default
+							when-faq-link-clicked="t-enter"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]">FAQ</span>
 						<hr init-default
 							when-faq-link-clicked="t-enter"
 							when-pricing-link-clicked="t-exit"
@@ -78,7 +85,14 @@
 							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-750"
 							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
 							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
-						<span>Pricing</span>
+						<span init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-enter"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]">Pricing</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-enter"
@@ -106,7 +120,14 @@
 							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-900"
 							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
 							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
-						<span>Team</span>
+						<span init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-enter"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]">Team</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
@@ -134,7 +155,14 @@
 							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-1050"
 							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
 							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
-						<span>Support</span>
+						<span init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-enter"
+							when-login-link-clicked="t-exit"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]">Support</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
@@ -162,7 +190,14 @@
 							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-1200"
 							when-sidebar-expand="p:[op:0:delay-1000, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):1000:easeInExpo easeInExpo]"
 							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-600"></span>
-						<span>Get Started</span>
+						<span init-default
+							when-faq-link-clicked="t-exit"
+							when-pricing-link-clicked="t-exit"
+							when-team-link-clicked="t-exit"
+							when-support-link-clicked="t-exit"
+							when-login-link-clicked="t-enter"
+							on-enter="p:[color:#69b3a5]"
+							on-exit="p:[color:rgba(255#255#255#.5)]">Get Started</span>
 						<hr init-default
 							when-faq-link-clicked="t-exit"
 							when-pricing-link-clicked="t-exit"
