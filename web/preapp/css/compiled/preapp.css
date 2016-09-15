@@ -2475,7 +2475,8 @@
     position: relative;
     width: 100%;
     margin-top: -10px;
-    height: calc(100% - 238px); }
+    margin-bottom: 10px;
+    height: calc(100% - 248px); }
     .splash-sidebar nav ul {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -2521,6 +2522,7 @@
           .splash-sidebar nav ul li a span {
             display: block; }
             .splash-sidebar nav ul li a span:first-child:empty {
+              min-width: 24px;
               margin-right: 10px; }
               .splash-sidebar nav ul li a span:first-child:empty:before {
                 content: "0" counter(li);
@@ -2556,11 +2558,8 @@
               background-size: 200%;
               background-position-x: -100%;
               background-position-y: 0%; }
-          .splash-sidebar nav ul li a:hover hr, .splash-sidebar nav ul li a:focus hr {
+          .splash-sidebar nav ul li a:hover hr:first-of-type, .splash-sidebar nav ul li a:focus hr:first-of-type {
             transform: scaleX(1) !important; }
-          .splash-sidebar nav ul li a.active hr {
-            transform: scaleX(1);
-            background: white; }
   .splash-sidebar footer {
     position: relative; }
     .splash-sidebar footer .student-card {
@@ -2682,7 +2681,7 @@
 @media screen and (min-height: 600px) {
   .splash-sidebar nav {
     margin-top: 0;
-    height: calc(100% - 248px); }
+    margin-bottom: 0; }
     .splash-sidebar nav ul {
       padding: 7.5px; }
       .splash-sidebar nav ul li {
@@ -2700,10 +2699,8 @@
   .splash-sidebar nav ul li a {
     padding-bottom: 10px;
     font-size: 36px; }
-    .splash-sidebar nav ul li a span:first-child:empty {
-      margin-right: 15px; }
-      .splash-sidebar nav ul li a span:first-child:empty:before {
-        font-size: 18px; }
+    .splash-sidebar nav ul li a span:first-child:empty:before {
+      font-size: 18px; }
 
   .splash-sidebar-borders > ul li {
     height: 68px; } }
@@ -2726,6 +2723,8 @@
       width: 300px; }
     .splash-sidebar nav {
       height: calc(100% - 268px); }
+      .splash-sidebar nav ul li a span:first-child:empty {
+        margin-right: 15px; }
     .splash-sidebar footer {
       width: 300px; }
       .splash-sidebar footer > div, .splash-sidebar footer button {
