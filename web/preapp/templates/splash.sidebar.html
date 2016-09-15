@@ -22,7 +22,7 @@
 				when-sidebar-link-clicked="p:[opacity:1:0:250:easeOutExpo, transform:translateY(0%) translateZ(0px):translateY(-100%) translateZ(0px):250:easeOutExpo easeOutExpo]"></a>
 			<a class="icon-round-stroke close"
 				init-with="p:[op:0, tr:rotate(-180deg), tro:center center]"
-				when-sidebar-icon-clicked="p:[opacity:0:1:350:easeOutSine, transform:rotate(-180deg):rotate(0deg):350:easeOutExpo]:delay-750"
+				when-sidebar-icon-clicked="p:[opacity:0:1:350:easeOutSine, transform:rotate(-180deg):rotate(0deg):350:easeInOutExpo]:delay-500"
 				on-click="s:[sidebar-close-clicked:public]">
 				<svg viewBox="0 0 100 100">
 					<circle cx="50" cy="50" r="36"></circle>
@@ -43,7 +43,7 @@
 			<ul init-default
 				when-sidebar-icon-clicked="s:[sidebar-link-enter:public]:delay-750">
 				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:200:easeOutQuad, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]">
+					when-sidebar-link-enter="p:[opacity:0:1:350:easeOutExpo, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]">
 					<a init-default
 						on-click="s:[faq-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
@@ -86,7 +86,7 @@
 					</a>
 				</li>
 				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:200:easeOutQuad, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-120">
+					when-sidebar-link-enter="p:[opacity:0:1:350:easeOutExpo, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-120">
 					<a init-default
 						on-click="s:[pricing-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
@@ -129,7 +129,7 @@
 					</a>
 				</li>
 				<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:200:easeOutQuad, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-240">
+					when-sidebar-link-enter="p:[opacity:0:1:350:easeOutExpo, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-240">
 					<a init-default
 						on-click="s:[team-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
@@ -172,7 +172,7 @@
 					</a>
 				</li>
 				<li	init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:200:easeOutQuad, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-350">
+					when-sidebar-link-enter="p:[opacity:0:1:350:easeOutExpo, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-350">
 					<a init-default
 						on-click="s:[support-link-clicked:public, sidebar-link-clicked:public]">
 						<span init-default
@@ -215,7 +215,7 @@
 					</a>
 				</li>
 				<li init-with="p:[op:0, tr:translateY(-10px) translateZ(0px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:200:easeOutQuad, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-600">
+					when-sidebar-link-enter="p:[opacity:0:1:350:easeOutExpo, transform:translateY(-10px) translateZ(0px):translateY(0px) translateZ(0px):200:easeInOutCubic easeInOutCubic]:delay-600">
 					<a init-default
 						on-click="s:[start-link-clicked:public]">
 						<span init-default
@@ -267,12 +267,12 @@
 				when-sidebar-link-clicked="p:[transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):250:easeOutSine easeOutSine]">
 				<div class="student-card"
 					init-with="p:[tr:translateY(30px) scaleX(0)]"
-					when-student-id-enter="p:[tro:center center, transform:translateY(30px) scaleX(0):translateY(0px) scaleX(1):500:easeOutQuad easeOutBounce]">
+					when-student-id-enter="p:[tro:center center, transform:translateY(30px) scaleX(0):translateY(0px) scaleX(1):450:easeOutQuad easeOutBounce]">
 					<div class="school-id-inside">
 						<div class="school-id-top" style="background: #003262;">
 							<span class="user-icon" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"
 								init-with="p:[op:0, tro:center center]"
-								when-student-id-enter="a:[icon-enter:set:(dur:1000ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-550]"></span>
+								when-student-id-enter="a:[icon-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in:delay-550]"></span>
 							<!-- if no photo exists yet -->
 							<!-- <span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"
 								init-with="p:[op:0, tro:center center]"
@@ -302,7 +302,7 @@
 				</div>
 				<button class="height-48 bg-shamrock txt-18"
 					init-with="p:[op:0, tr:translateY(30px)]"
-					when-student-id-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeOutBack]:delay-600">Sign up/Login</button>
+					when-student-id-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeInOutBack]:delay-200">Sign up/Login</button>
 			</div>
 			<div class="collapsed"
 				init-with="p:[op:0, tr:rotate(-90deg) scaleY(0) translateZ(0px)]"
