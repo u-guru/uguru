@@ -1,7 +1,6 @@
 
 angular.module('uguru.admin')
 .controller('AdminAnimationController', [
-
     '$scope',
     '$state',
     '$stateParams',

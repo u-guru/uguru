@@ -91,6 +91,7 @@ function TweenService() {
     }
 
     function preComputeValues(property, duration, start, end, ease, result_arr) {
+
         duration = parseInt(duration)
         result_arr.cache = [];
         var iterations = (duration/1000 * 60);//fps
@@ -99,6 +100,14 @@ function TweenService() {
         var endDict = {};
         endDict[property] = end;
         var t = new Tweenable();
+        var easeSplit = ease.split('|');
+        if (ease && ease.length && easeSplit.length === 4) {
+            easeSplit.forEach(function(val, i) {easeSplit[i] = parseFloat(val)});
+            console.log(easeSplit)
+            Tweenable.setBezierFunction('cb-function', easeSplit[0], easeSplit[1], easeSplit[2], easeSplit[3]);
+            ease = 'cb-function'
+        }
+
         if (typeof(start) !== 'object') {
             var tempStart = start;
             var start = {};
