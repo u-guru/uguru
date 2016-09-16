@@ -10,7 +10,8 @@ function TweenService() {
         getAllEasing: getAllEasing,
         getAllAnimatable: getAllAnimatable,
         getCubicBezierArrs: getAllAnimatable,
-        preComputeValues: preComputeValues
+        preComputeValues: preComputeValues,
+        getKeyframeValuesByProperty: getKeyframeValuesByProperty
     }
 
     function getAllEasing() {
@@ -45,6 +46,16 @@ function TweenService() {
         "easeInElastic",
         "easeOutElastic",
         "easeInOutElastic",
+        "elastic",
+        "bounce",
+        "bouncePast",
+        "swingFromTo",
+        "swingFrom",
+        "swingTo",
+        "easeFromTo",
+        "easeFrom",
+        "easeTo"
+        ]
 
         // "easeInElastic", // easings.net or https://github.com/ai/easings.net/blob/master/vendor/jquery.easing.js
         // "easeOutElastic",
@@ -54,22 +65,10 @@ function TweenService() {
         // "easeInOutBounce",
 
 
-		// "sway", // http://goo.gl/n3DjKQ
+        // "sway", // http://goo.gl/n3DjKQ
         // "hardSway", // http://goo.gl/xX8hna
 
         // deprecated
-        "elastic",
-        "bounce",
-        "bouncePast",
-
-        "swingFromTo",
-        "swingFrom",
-        "swingTo",
-        "easeFromTo",
-        "easeFrom",
-        "easeTo"
-
-        ]
     }
 
     function getCubicBezierArrs() {
@@ -92,6 +91,7 @@ function TweenService() {
     }
 
     function preComputeValues(property, duration, start, end, ease, result_arr) {
+        duration = parseInt(duration)
         result_arr.cache = [];
         var iterations = (duration/1000 * 60);//fps
         var startDict = {};
@@ -99,6 +99,16 @@ function TweenService() {
         var endDict = {};
         endDict[property] = end;
         var t = new Tweenable();
+        if (typeof(start) !== 'object') {
+            var tempStart = start;
+            var start = {};
+            start[property] = tempStart
+        }
+        if (typeof(end) !== 'object') {
+            var tempEnd = end;
+            var end = {};
+            end[property] = tempEnd
+        }
         t.tween({
           from: start,
           to:   end,
@@ -118,10 +128,23 @@ function TweenService() {
         // t.dispose();
     }
 
+    function getKeyframeValuesByProperty(property, start_val, end_val, duration, easeFunc, max_keyframe) {
+        if (!easeFunc) {
+            easeFunc = 'linear'
+        }
+        if (!max_keyframe) {
+            max_keyframe = 60;
+        }
+        duration = duration || 1000;
+        var vals = {start: {}, end:{}};
+        vals.start[property] = start_val;
+        vals.end[property] = end_val;
+        return getKeyframeValues(vals.start, vals.end, duration, easeFunc, max_keyframe);
+    }
+
     function getKeyframeValues(start_dict, end_dict, duration, easeFunc, kf_arr, max_keyframe) {
+        if (property)
         if (!max_keyframe) max_keyframe = 30;
-        //{ x: 0,  y: 50  }
-        //{ x: 10, y: -30 }
         var tweenable = new Tweenable();
         var kf_arr = kf_arr || [];
         duration = duration || 1000;

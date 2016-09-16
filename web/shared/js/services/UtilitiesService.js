@@ -44,7 +44,17 @@ function UtilitiesService($rootScope, $compile, $timeout) {
         initSupport: initSupport,
         calcScrollOffset: calcScrollOffset,
         addClassToElemDelay: addClassToElemDelay,
-        countAndSplitLines: countAndSplitLines
+        countAndSplitLines: countAndSplitLines,
+        constructImportUrlFromObj: constructImportUrlFromObj
+    }
+
+    function constructImportUrlFromObj(str, type) {
+        type = 'components'
+        ending = str.indexOf('.tpl') > -1 && '.tpl' || '.html';
+        str = str.replace('.tpl', '').replace('.html', '');
+        str = str.split('.').join('/').trim();
+        var resultUrl = 'shared/templates/' + type + '/' + str + ending;
+        return resultUrl;
     }
 
     function countAndSplitLines(elem) {

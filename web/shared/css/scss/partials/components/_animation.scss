@@ -9,6 +9,9 @@
 }
 
 @keyframes shake-opacity {
+  0% {
+    transform: translate(0, 0); opacity:1;
+  }
   10% {
     transform: translate(2px, 2px);
     opacity: 0.8; }
@@ -27,8 +30,10 @@
   90% {
     transform: translate(3px, -4px);
     opacity: 0.81; }
-  0%, 100% {
-    transform: translate(0, 0); opacity:1;} }
+  100% {
+    transform: translate(0, 0); opacity:1;
+  }
+}
 
 @keyframes input-swingUp {
   0% { transform: rotateX(90deg); }
