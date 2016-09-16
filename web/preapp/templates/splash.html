@@ -1,6 +1,8 @@
 <!-- <ion-view id='splash-view' ng-controller='SplashController as splash'></ion-view> -->
 
-<main class='splash-landing' ng-controller='SplashController as splash'>
+<main class='splash-landing' ng-controller='SplashController as splash'
+	init-default
+	when-head-return="s:[madlib-init:public:delay-2000, nav-init:public:delay-1000]">
 	<!-- eval-on-init="splash.activate()" -->
 	<section id='splash-home' class='splash-hero'>
 		<!-- Background change for category options -->
@@ -15,9 +17,8 @@
 		<!-- Nav -->
 		<div ng-if="splash.state.nav" ng-include src="root.base_url + 'preapp/templates/splash.nav.html'"
 			include-replace
-			when-search-university-clicked="p:[opacity:0.5, t:all 600ms ease-in-out]"
-			when-close-search-university="p:[opacity:1]"
-			init-later>
+			when-search-university-clicked="p:[op:0.5, t:all 600ms ease-in-out]"
+			when-close-search-university="p:[op:1]">
 		</div>
 
 		<!-- Powerups -->

@@ -6,18 +6,18 @@
 		init-with="p:[tr:translateY(120px)]"
 		when-transition-end="s:[head-squash:public:delay-600]"
 		when-head-squash="p:[transform:translateY(120px):translateY(-30px):500:easeInBack] | s:[head-return:public]:delay-500"
-		when-head-return="p:[transform:translateY(-30px):translateY(0px):500:easeOutElastic] | s:[madlib-init:public:delay-2000, nav-init:public:delay-2000, category-head-init:public:delay-2000]"
+		when-head-return="p:[transform:translateY(-30px):translateY(0px):500:easeOutElastic] | s:[category-head-init:public:delay-2000]"
 		when-cateogory-head-init="s:[category-head-load:public:delay-2000]">
         <div class="splash-hero-guru splash-logo-guru"
 			ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"
 			init-with="p:[tr:scale(1)]"
-			when-head-squash="p:[transform:scale(1):scale(2):350:easeInOutBounce:^:2+0:a]"
-
-			when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
+			when-head-squash="p:[transform:scale(1):scale(2):350:easeInOutBounce:^:2+0:a]">
+			<!-- when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 			when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 
 			when-university-dropdown-toggle-on="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
-			when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]"></div>
+			when-university-dropdown-toggle-off="p:[op:1, t:all 250ms ease-in-out]" -->
+		</div>
         	<!-- parallax-parent-ref="p1" parallax-child="0.4" -->
         <svg class="coach-help coach-help-desktop" viewBox="0 0 340 205"
 			init-with="p-op"
@@ -42,7 +42,11 @@
             </g>
         </svg>
         <svg class="coach-fill" viewBox="0 0 280 112"
-			when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
+			when-head-squash="t:[init:self]"
+			init-with="p-op"
+			on-init="p:[opacity:0:1:250:easeOutSine]"
+			init-later>
+			<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
 			when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 			when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
@@ -52,12 +56,7 @@
 			when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
 			when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-150"
-			when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
-
-			when-head-squash="t:[init:self]"
-			init-with="p-op"
-			on-init="p:[opacity:0:1:250:easeOutSine]"
-			init-later>
+			when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]" -->
             <g fill="none">
                 <path d="M120.543455,44.1654769 C120.543455,44.1654769 29.5163691,38.9274323 12.4796868,109.096741" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
                     init-with="p-op"
@@ -88,7 +87,9 @@
                 on-enter="a:[adlib-header-smash:set:(dur:1000ms):in]">
                 <h1 class="adlib-header desktop" desktop>
                     <span init-with="p:[tr:translate3d(40px#0#0)]"
-						when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
+						when-madlib-init="p:[transform:translateX(40px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
+						{{madlib.category.tags_data.template.beginning}}
+						<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
 						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 						when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
@@ -98,11 +99,12 @@
 						when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
 						when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-300"
-						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
-
-						when-madlib-init="p:[transform:translateX(40px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">{{madlib.category.tags_data.template.beginning}}</span>
+						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]" -->
+					</span>
                     <a id="blank-1" class="tag-adlib blank"
-						when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
+						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(0#0#0) scale(1.7)]"
+						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#.5):500:easeOutSine, transform:translateZ(0px) scale(1.7):translateZ(0px) scale(1):500:easeOutSine easeOutSine]:delay-1250">
+						<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
 						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 						when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
@@ -112,10 +114,7 @@
 						when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
 						when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-250"
-						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
-
-						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(0#0#0) scale(1.7)]"
-						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#.5):500:easeOutSine, transform:translateZ(0px) scale(1.7):translateZ(0px) scale(1):500:easeOutSine easeOutSine]:delay-1250">
+						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]" -->
                         <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                             <rect class="null" x="2" y="2" width="280" height="84" rx="16"
 								init-with="p:[stroke-dashoffset:-701, stroke-dasharray:701]"
@@ -128,7 +127,9 @@
 							when-madlib-init="p:[font-weight:600:700:750:easeOutSine]:delay-2000">{{madlib.category.tags_data.template.p1}}</b>
                     </a>
                     <span init-with="p:[tr:translate3d(-40px#0#0)]"
-						when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
+						when-madlib-init="p:[transform:translateX(-40px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
+						{{madlib.category.tags_data.template.middle}}
+						<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
 						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 						when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
@@ -138,11 +139,12 @@
 						when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
 						when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-200"
-						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
-
-						when-madlib-init="p:[transform:translateX(-40px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">{{madlib.category.tags_data.template.middle}}</span>
+						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]" -->
+					</span>
                     <a id="blank-2" class="tag-adlib blank"
-						when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
+						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(-37.5px#0#0) scale(1.7)]"
+						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#.5):500:easeOutSine, transform:translateX(-37.5px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
+						<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
 						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 						when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
@@ -152,10 +154,7 @@
 						when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
 						when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-150"
-						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
-
-						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(-37.5px#0#0) scale(1.7)]"
-						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#.5):500:easeOutSine, transform:translateX(-37.5px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
+						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]" -->
                         <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                             <rect class="null" x="2" y="2" width="280" height="84" rx="16"
 								init-with="p:[stroke-dashoffset:-701, stroke-dasharray:701]"
@@ -167,7 +166,9 @@
 							when-madlib-init="p:[font-weight:600:700:750:easeOutSine]:delay-2000">{{madlib.category.tags_data.template.p2}}</b>
                     </a>
                     <span init-with="p:[tr:translate3d(-35px#0#0)]"
-						when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-100"
+						when-madlib-init="p:[transform:translateX(-35px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
+						{{madlib.category.tags_data.template.end}}
+						<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-100"
 						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 						when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-100"
@@ -177,9 +178,8 @@
 						when-university-dropdown-mouse-leave="p:[opacity:0.1:1:250:easeInOutSine]"
 
 						when-university-dropdown-toggle-on="p:[opacity:1:0.1:250:easeInOutSine]:delay-100"
-						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
-
-						when-madlib-init="p:[transform:translateX(-35px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">{{madlib.category.tags_data.template.end}}</span>
+						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]" -->
+					</span>
                 </h1>
 				<h1 class="adlib-header mobile" mobile>
 					<!-- ng-if="root.window.mobile" -->
@@ -223,8 +223,8 @@
 				when-madlib-init="t:[on-enter:children:delay-2750]">
 				<li class='adlib-tag adlib-tag-1'
                     init-with="p-op"
-                    on-enter="a:[portal-tag-1:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]"
-					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
+                    on-enter="a:[portal-tag-1:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]">
+					<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
 					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
@@ -237,7 +237,7 @@
 					when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]"
 
                     when-category-dropdown-click="t:[on-change:self]"
-                    on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]">
+                    on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]" -->
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
                             u
@@ -265,9 +265,8 @@
 
 				<li class='adlib-tag adlib-tag-2'
 					init-with="p-op"
-					on-enter="a:[portal-tag-2:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-250"
-
-					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
+					on-enter="a:[portal-tag-2:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-250">
+					<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
 					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
@@ -281,7 +280,7 @@
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
-                    on-change="e:[madlib.updateOptionByIndex(splash.category, 1)]">
+                    on-change="e:[madlib.updateOptionByIndex(splash.category, 1)]" -->
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
                             u
@@ -309,9 +308,8 @@
 
 				<li class='adlib-tag adlib-tag-3'
                     init-with="p-op"
-                    on-enter="a:[portal-tag-3:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-450"
-
-					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
+                    on-enter="a:[portal-tag-3:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-450">
+					<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
 					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
@@ -325,7 +323,7 @@
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
-                    on-change="e:[madlib.updateOptionByIndex(splash.category, 2)]">
+                    on-change="e:[madlib.updateOptionByIndex(splash.category, 2)]" -->
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
                             u
@@ -353,9 +351,8 @@
 
 				<li class='adlib-tag adlib-tag-4'
                     init-with="p-op"
-                    on-enter="a:[portal-tag-4:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-600"
-
-					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
+                    on-enter="a:[portal-tag-4:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-600">
+					<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
 					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
@@ -369,7 +366,7 @@
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
-                    on-change="e:[madlib.updateOptionByIndex(splash.category, 3)]">
+                    on-change="e:[madlib.updateOptionByIndex(splash.category, 3)]" -->
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-1 tag-{{splash.category.bg_hex_color}}"
 							u
@@ -396,9 +393,8 @@
 
 				<li class='adlib-tag adlib-tag-5'
                     init-with="p-op"
-                    on-enter="a:[portal-tag-5:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-900"
-
-					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-350"
+                    on-enter="a:[portal-tag-5:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-900">
+					<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-350"
 					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-350"
@@ -412,7 +408,7 @@
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
-                    on-change="e:[madlib.updateOptionByIndex(splash.category, 4)]">
+                    on-change="e:[madlib.updateOptionByIndex(splash.category, 4)]" -->
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
 	                        u
@@ -440,9 +436,8 @@
 
 				<li class='adlib-tag adlib-tag-6'
                     init-with="p-op"
-                    on-enter="a:[portal-tag-6:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-1250"
-
-					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
+                    on-enter="a:[portal-tag-6:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-1250">
+					<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
 					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
@@ -456,7 +451,7 @@
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
-                    on-change="e:[madlib.updateOptionByIndex(splash.category, 5)]">
+                    on-change="e:[madlib.updateOptionByIndex(splash.category, 5)]" -->
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
                             u
@@ -484,9 +479,8 @@
 
 				<li class='adlib-tag adlib-tag-7'
                     init-with="p-op"
-                    on-enter="a:[portal-tag-7:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-1750"
-
-					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
+                    on-enter="a:[portal-tag-7:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-1750">
+					<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
 					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
@@ -500,7 +494,7 @@
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
-                    on-change="e:[madlib.updateOptionByIndex(splash.category, 6)]">
+                    on-change="e:[madlib.updateOptionByIndex(splash.category, 6)]" -->
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
 	                        u
@@ -528,9 +522,8 @@
 
 				<li class='adlib-tag adlib-tag-8'
                     init-with="p-op"
-                    on-enter="a:[portal-tag-8:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-2000"
-
-					when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
+                    on-enter="a:[portal-tag-8:set:(dur:2000ms#func:cubic-bezier(1##0##.5#1)):in]:delay-2000">
+					<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
 					when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
 					when-category-dropdown-toggle-on="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
@@ -544,8 +537,7 @@
 
                     when-category-dropdown-click="t:[on-change:self]"
                     on-exit="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in-out#dir:reverse):out:after:(trigger:on-change:self:delay-0)]"
-                    on-change="e:[madlib.updateOptionByIndex(splash.category, 7)]"
-                    type="splash" blank-num="2">
+                    on-change="e:[madlib.updateOptionByIndex(splash.category, 7)]" -->
                     <div class="tag-adlib-container">
 						<a class="tag-adlib adlib-2 tag-{{splash.category.bg_hex_color}}"
                             u
