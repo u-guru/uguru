@@ -301,9 +301,46 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
     }
 
+    function filterParentheticals(str) {
+      // console.log(filterParentheticals(str));
+      var strSplit = str.split('(');
+      if (strSplit.length > 1) {
+        var firstPortion  = strSplit.splice(0, 1).join(":").trim();
+        var parsedParenPortion = processParentheticals(strSplit).trim();
+        return firstPortion + parsedParenPortion
+
+      }
+      return str;
+
+      function processParentheticals(arr_parentheticals) {
+
+        var endTrimmings = arr_parentheticals.join('(').split(')') || [];
+        if (endTrimmings.length) {
+          endTrimmings = endTrimmings[endTrimmings.length - 1]
+        } else {
+          endTrimmings = '';
+        }
+        console.log(arr_parentheticals, endTrimmings)
+        var parenArgs = [];
+        console.log(arr_parentheticals)
+        arr_parentheticals.forEach(function(p_arg, i) {
+          var innerArg = p_arg.split(')')[0];
+          var innerArg = UtilitiesService.replaceAll(innerArg, ':', '|');
+          parenArgs.push(innerArg);
+        })
+        if (endTrimmings.length) {
+          parenArgs.push(endTrimmings);
+        }
+        // arr_parentheticals.join()
+        return parenArgs.join(':');
+      }
+
+    }
+
       function initStateObj(stateName, str, elem, kf, debug) {
 
         str = str && UtilitiesService.replaceAll(str, ', ', ',');
+        str = str && filterParentheticals(str)
         var stateArgs = str.split(',');
         var resultState = {duration: 0};
         var timeline = {events:[], props:{}, stateName: stateName};
