@@ -4,7 +4,8 @@
 
 	<div class="splash-sidebar-bg"
 		init-with="p:[op:0, tr:translateX(-100%) translateZ(0px)]"
-		when-sidebar-icon-clicked="p:[op:1, transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):800:easeOutSine easeOutSine]:delay-250">
+		when-sidebar-icon-clicked="p:[op:1, transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):800:easeOutSine easeOutSine]:delay-250"
+		when-sidebar-close-clicked="p:[opacity:1:0:100:easeOutSine, transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):400:easeOutBounce easeInOutBounce]:delay-450">
 		<div class="splash-sidebar-round">
 			<svg viewBox="0 0 50 100" preserveAspectRatio="none">
 				<circle cx="0" cy="50" r="50" fill="#363d40" fill-opacity="0.95"></circle>
@@ -14,7 +15,9 @@
 
 	<aside class="splash-sidebar desktop"
 		init-with="p:[tr:translateX(-350px) translateZ(0px)]"
-		when-sidebar-icon-clicked="p:[transform:translateX(-350px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]">
+		when-sidebar-icon-clicked="p:[transform:translateX(-350px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]"
+		when-sidebar-close-clicked="p:[opacity:1:0:100:easeOutSine:500, transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):400:easeOutBounce easeInOutBounce]:delay-750"
+		when-sidebar-col-close-clicked="p:[opacity:1:0:100:easeOutSine:500, transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):400:easeOutBack easeOutBack]">
 		<header>
 			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
 				init-with="p-op"
@@ -34,9 +37,9 @@
 			</a>
 			<a class="icon-round-stroke home"
 				ng-include="root.base_url + 'shared/templates/components/svg/sidebar/home.html'"
-				init-with="p-op"
-				on-click="s:[sidebar-close-clicked:public]"
-				when-sidebar-link-clicked="p:[op:1, transform:translateX(0px) translateZ(0px):translateX(-249px) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-500">
+				init-with="p:[op:0, z-index:-1]"
+				on-click="s:[sidebar-col-close-clicked:public]"
+				when-sidebar-link-clicked="p:[z-index:1, op:1, transform:translateX(0px) translateZ(0px):translateX(-249px) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-500">
 			</a>
 		</header>
 		<nav>
@@ -61,7 +64,7 @@
 							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
 							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-100"
 							when-sidebar-expand="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
-							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"></span>
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250]"></span>
 						<span class="splash-sidebar-link-text"
 							init-default
 							when-faq-link-clicked="t-enter"
@@ -318,7 +321,8 @@
 
 		<div class="splash-sidebar-round"
 			init-with="p:[tro:left center, tr:scaleX(0.5)]"
-			when-sidebar-icon-clicked="p:[transform:scaleX(0.5) translateZ(0px):scaleX(0) translateZ(0px):1000:easeOutBack easeOutBack]:delay-400">
+			when-sidebar-icon-clicked="p:[transform:scaleX(0.5) translateZ(0px):scaleX(0) translateZ(0px):1000:easeOutBack easeOutBack]:delay-400"
+			when-sidebar-close-clicked="p:[transform:scaleX(0) translateZ(0px):scaleX(0.5) translateZ(0px):1000:easeOutBack easeOutBack]:delay-500">
 			<svg viewBox="0 0 50 100" preserveAspectRatio="none">
 			    <circle cx="0" cy="50" r="50" fill="#2B3234"></circle>
 			</svg>
@@ -525,7 +529,8 @@
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-exit"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-col-close-clicked="p:[opacity:1:0:200:easeOutSine]:delay-500"></div>
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/pricing.html'"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
 			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
@@ -535,7 +540,8 @@
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-exit"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-col-close-clicked="p:[opacity:1:0:200:easeOutSine]:delay-500"></div>
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/team.html'"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
 			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
@@ -545,7 +551,8 @@
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-enter"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-col-close-clicked="p:[opacity:1:0:200:easeOutSine]:delay-500"></div>
 		<div class="bg-campus"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
 			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
@@ -555,7 +562,9 @@
 			when-support-link-clicked="t-enter"
 			when-team-link-clicked="t-exit"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-col-close-clicked="p:[opacity:1:0:200:easeOutSine]:delay-500"></div>
+			<!-- when-sidebar-col-close-clicked="p:[opacity:1:0:100:easeOutSine, transform:translateX(0px):translateX(-200px):1000:easeOutSine]:delay-500"-->
 	</section>
 
 	<section class="splash-sidebar-content mobile"
@@ -596,11 +605,15 @@
 			when-sidebar-icon-clicked="p:[op:1, transform:translateX(252px) translateZ(0px) scaleY(0):translateX(252px) translateZ(0px) scaleY(1):500:easeOutExpo easeOutExpo easeOutExpo]:delay-500"
 			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
 			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
-			when-sidebar-link-clicked="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]">
+			when-sidebar-link-clicked="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-close-clicked="p:[transform:translateX(252px) translateZ(0px) scaleY(1):translateX(252px) translateZ(0px) scaleY(0):350:easeOutExpo easeOutExpo easeOutBack]"
+			when-sidebar-col-close-clicked="p:[transform:translateX(0px) translateZ(0px) scaleY(1):translateX(0px) translateZ(0px) scaleY(0):350:easeOutExpo easeOutExpo easeOutBack]:delay-200">
 			<hr init-with="p-op"
 				when-sidebar-link-clicked="p:[op:1, background-position-y:-100%:-200%:500:easeOutCirc:^:2+0:a] | s:[gradient-border-fade:public:delay-1000]"
 				when-gradient-border-fade="p:[opacity:1:0:250:easeOutSine] | s:[gradient-border-end:public:delay-250]"
-				when-gradient-border-end="p:[background-position-y:-100%]"/>
+				when-gradient-border-end="p:[background-position-y:-100%]"
+				when-sidebar-close-clicked="p-op"
+				when-sidebar-col-close-clicked="p-op"/>
 		</div>
 		<ul init-with="p:[z-index:-1, display:none]"
 			when-sidebar-link-clicked="p:[z-index:11]">
