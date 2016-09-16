@@ -48,8 +48,6 @@ function TweenService() {
         "easeInElastic",
         "easeOutElastic",
         "easeInOutElastic",
-        "elastic",
-        "bounce",
         "bouncePast",
         "swingFromTo",
         "swingFrom",
