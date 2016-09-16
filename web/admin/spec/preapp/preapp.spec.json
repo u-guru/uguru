@@ -451,14 +451,16 @@
 									{
 										"bug": "Active underline is not going over modal",
 										"contact": "GW",
-										"fixed": false
+										"fixed": true
 									},
 									{
 										"bug": "Home icon rotates onHover",
+										"contact": "GW",
 										"fixed": true
 									},
 									{
 										"bug": "Back button needs rotation and to align-bottom with home icon",
+										"contact": "GW",
 										"fixed": true
 									}
 								]
@@ -500,9 +502,8 @@
 									{
 										"bug": "Both home and close button present on expand",
 										"contact": "JO",
-										"note": "Remove close button when-sidebar-link-clicked, op:0"
+										"note": "Remove close button when-sidebar-link-clicked, op:0",
 										"fixed": false
-									}
 									}
 								]
 							}
