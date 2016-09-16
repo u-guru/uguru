@@ -29,7 +29,6 @@ angular.module('uguru.shared.controllers')
         // for (var i = 0; i < afc.element.dom.length; i++) {
           afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.kf, true);
           afc.player = AnimationFrameService.getPlayer();
-          console.log(afc.stateObj)
           afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, true);
         // };
         // afc.player.enableDebugMode();
