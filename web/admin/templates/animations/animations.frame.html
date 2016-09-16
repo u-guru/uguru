@@ -1,6 +1,6 @@
 <div class='absolute top-0 left-0 full-xy' ng-controller='AnimationFrameController as afc'>
 	<!-- HEADER -->
-    <div class='full-x bg-campus-50p'>
+    <header class='full-x bg-campus-50p relative'>
         <h1 class='txt-center uppercase txt-28 weight-900 p15top-p15x'>{{afc.args.property}}</h1>
         <div>
             <ul class='flex full-x p15-grid txt-center'>
@@ -48,10 +48,13 @@
 				</ul>
 			</div>
         </div>
-    </div>
+		<!-- <a class="absolute right-0 bottom-0 flex-center svg-white svg-36-24 svg-stroke-8" ng-include="'shared/templates/components/svg/main/down.html'"
+			init-default
+			on-click="s:[keyframe-expand:public]"></a> -->
+    </header>
 
 	<!-- KEYFRAMES -->
-    <div class='absolute left-0 z-index-100 full-x bg-charcoal-90p' style='top: 171px'>
+    <div class='absolute left-0 z-index-9 full-x bg-charcoal-90p overflow-hidden' style='top: 171px'>
         <div class='flex-start full-x z-index-100 overflow-x no-scrollbar border-1-bottom' style='height:104px; border-color:rgba(255,255,255,.2)' ng-repeat='(prop, prop_obj) in afc.player.debug.props' ng-if='!result.skipPlot'>
             <div class='full-y width-10p overflow-hidden'>
                 <div class="full-xy bg-campus-10p">
@@ -68,11 +71,12 @@
 					</ul>
 				</div>
             </div>
-
             <ul class='flex-vertical-center width-90p full-y tile-border-side-light'>
                 <li ng-repeat='value_obj in prop_obj.values' class='full-y relative' style='width:{{value_obj.html.width * 1.25}}%;'>
                     <div class='full-xy top-0 left-0 flex-vertical-center absolute'>
-                        <span ng-repeat='point in value_obj.plot.values track by $index' ng-if='point' class='block round bg-white z-index-1000 absolute' style='left:{{(100/(value_obj.plot.values.length - 1))*$index}}%; bottom:{{100 * (point/(value_obj.plot.max - value_obj.plot.min))}}%; width:10px;height:10px;'></span>
+                        <span ng-repeat='point in value_obj.plot.values track by $index' ng-if='point'
+							class='block round border-2 border-white bg bg-charcoal z-index-1000 absolute'
+							style='left:{{(100/(value_obj.plot.values.length - 1))*$index}}%; bottom:{{100 * (point/(value_obj.plot.max - value_obj.plot.min))}}%; width:10px;height:10px;'></span>
                     </div>
                 </li>
             </ul>
@@ -80,22 +84,19 @@
     </div>
 
 	<!-- PLAYER -->
-    <div class='flex-stretch flex-wrap-center' style='height: calc(100% - 171px);' ng-if='afc.element.objUrl' >
-		<!-- STAGE OBJECT -->
-        <div class='perspective-container'>
-			<div ng-include="afc.element.objUrl" style='height:calc(250px); width:calc(250px)' id="anim-element"> </div>
-		</div>
-
-		<!-- PLAYBAR -->
-        <div class='absolute bottom-0 left-0 full-x flex-vertical-center'>
-            <div class='flex-vertical-center full-x'>
-                <div style='width:80%;'class='relative flex-vertical-center' ng-include="'admin/templates/animations/animations.frame.player.html'"></div>
-                <div class='p15-grid flex-wrap flex-right width-20p'>
-                    <div ng-if='afc.params.kf' class='p10y p20x m10xy relative weight-900 flex-right txt-smoke opacity-40p border-3 border-solid border-azure'>
-                        {{afc.params.kf}} fps
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class='flex-wrap-center perspective-container' style='height: calc(100% - 171px);' ng-if='afc.element.objUrl' >
+		<div ng-include="afc.element.objUrl" style='height:calc(250px); width:calc(250px)' id="anim-element"> </div>
     </div>
+
+	<!-- PLAYBAR -->
+	<div class='absolute bottom-0 left-0 full-x flex-vertical-center bg-charcoal-90p z-index-10'>
+		<div class='flex-vertical-center full-x'>
+			<div style='width:calc(100% - 120px);' class='relative flex-vertical-center' ng-include="'admin/templates/animations/animations.frame.player.html'"></div>
+			<div class='p15xy flex'>
+				<div ng-if='afc.params.kf' class='p10y-p15x relative weight-900 txt-smoke opacity-40p border-3 border-solid border-campus txt-20 radius-2'>
+					{{afc.params.kf}} fps
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
