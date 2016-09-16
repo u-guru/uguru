@@ -11,7 +11,9 @@ function TweenService() {
         getAllAnimatable: getAllAnimatable,
         getCubicBezierArrs: getAllAnimatable,
         preComputeValues: preComputeValues,
-        getKeyframeValuesByProperty: getKeyframeValuesByProperty
+        getKeyframeValuesByProperty: getKeyframeValuesByProperty,
+        animatableProps: animatableProps
+
     }
 
     function getAllEasing() {

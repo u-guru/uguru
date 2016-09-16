@@ -14,10 +14,13 @@
                 <h4 class='txt-24 uppercase weight-700 txt-azure txt-center full-x p10y border-2-bottom border-slate'> {{key}} </h4>
                 <div class='relative'>
                     <ul class='txt-24 full-y uppercase weight-500 txt-azure flex-wrap flex-vertical-center overflow-y flex-start'>
-                        <li ng-repeat='item in value.all' class='full-x flex-stretch m05y' ng-if='value.all.length' ng-click='aa.launchWindow(item)'>
+                        <li ng-if='aa.clickableKeys.indexOf(key) === -1' ng-repeat='item in value.all' class='full-x flex-stretch m05y' ng-if='value.all.length'>
                             {{item}}
                         </li>
-                        <li ng-if='!value.all.length' class='full-x m05y txt-left' ng-repeat='custom_anim in aa.customAnimations track by $index' ng-click='aa.launchWindow(custom_anim)'>
+                        <li ng-if='aa.clickableKeys.indexOf(key) === 0' class='full-x m05y txt-left' ng-repeat='custom_anim in aa.customAnimations track by $index' ng-click='aa.launchWindow(custom_anim)'>
+                            {{custom_anim}}
+                        </li>
+                        <li ng-if='aa.clickableKeys.indexOf(key) === 1' class='full-x m05y txt-left' ng-repeat='custom_anim in aa.animatableProps track by $index' ng-click='aa.launchWindow(custom_anim)'>
                             {{custom_anim}}
                         </li>
 
