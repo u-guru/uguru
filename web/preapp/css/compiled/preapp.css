@@ -5752,7 +5752,7 @@ a[class*="-container"]:hover .map-enter {
       max-width: 100%; }
 
 @media screen and (min-width: 768px) {
-  li {
+  .splash-faq > ul li {
     width: 50%; } }
 /* ---------- PRICING */
 #pricing {
