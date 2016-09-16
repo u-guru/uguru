@@ -271,6 +271,13 @@
 								"bugs": [
 									{
 										"bug": "W, and sometimes other letters, do not animate fully through. In particular the translateZ",
+										"context": [
+											{
+												"line": 132,
+												"state": "when-letter-open",
+												"syntax": "p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-33deg) translateX(-180px) translateY(-239px):translateZ(0px) rotate(-33deg) translateX(-180px) translateY(-239px):500:easeInSine easeInSine easeInSine easeInSine]"
+											}
+										],
 										"fixed": false
 									}
 								]
@@ -528,7 +535,7 @@
 										"bug": "Links aren't animating all the way through - first link on line 49 stops at translateY(-2.7906px)",
 										"contact": "SM",
 										"fixed": false
-									}
+									},
 									{
 										"bug": "Both home and close button present on expand",
 										"contact": "JO",
