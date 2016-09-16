@@ -500,6 +500,11 @@
 										"fixed": false
 									},
 									{
+										"bug": "Links aren't animating all the way through - first link on line 49 stops at translateY(-2.7906px)",
+										"contact": "SM",
+										"fixed": false
+									}
+									{
 										"bug": "Both home and close button present on expand",
 										"contact": "JO",
 										"note": "Remove close button when-sidebar-link-clicked, op:0",
