@@ -1,7 +1,7 @@
 <section class="splash-faq splash-modal">
 	<header>
-		<a class="icon-round-stroke splash-exit mobile" ng-include="root.base_url + 'shared/templates/components/svg/main/up-circle.html'"></a>
-		<a class="icon-round-stroke splash-exit desktop" ng-include="root.base_url + 'shared/templates/components/svg/main/up-circle.html'"></a>
+		<a class="splash-exit mobile" ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"></a>
+		<a class="splash-exit desktop icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/up-circle.html'"></a>
 		<h1>Frequently Asked Questions</h1>
 	</header>
 	<ul>
@@ -143,7 +143,3 @@
 		</li>
 	</ul>
 </section>
-
-<!-- <div class='full-y right-0 width-66 absolute top-0 left-0 sidebar-modal'  ng-controller="SplashFaqController as faq" id='splash-sidebar-faq' init-with="prop:[opacity:0]" when-faq-clicked="trigger:[on-enter] | send:[pricing-closed]" when-faq-closed="trigger:[on-exit]" on-exit="prop:[opacity:0]" on-enter="prop:[opacity:1]" >
-
-</div> -->
