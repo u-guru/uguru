@@ -4,7 +4,8 @@
 
 	<div class="splash-sidebar-bg"
 		init-with="p:[op:0, tr:translateX(-100%) translateZ(0px)]"
-		when-sidebar-icon-clicked="p:[op:1, transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):800:easeOutSine easeOutSine]:delay-250">
+		when-sidebar-icon-clicked="p:[op:1, transform:translateX(-100%) translateZ(0px):translateX(0%) translateZ(0px):800:easeOutSine easeOutSine]:delay-250"
+		when-sidebar-close-clicked="p:[opacity:1:0:100:easeOutSine, transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):400:easeOutBounce easeInOutBounce]:delay-450">
 		<div class="splash-sidebar-round">
 			<svg viewBox="0 0 50 100" preserveAspectRatio="none">
 				<circle cx="0" cy="50" r="50" fill="#363d40" fill-opacity="0.95"></circle>
@@ -14,7 +15,9 @@
 
 	<aside class="splash-sidebar desktop"
 		init-with="p:[tr:translateX(-350px) translateZ(0px)]"
-		when-sidebar-icon-clicked="p:[transform:translateX(-350px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]">
+		when-sidebar-icon-clicked="p:[transform:translateX(-350px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]"
+		when-sidebar-close-clicked="p:[opacity:1:0:100:easeOutSine:500, transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):400:easeOutBounce easeInOutBounce]:delay-750"
+		when-sidebar-col-close-clicked="p:[opacity:1:0:100:easeOutSine:500, transform:translateX(0%) translateZ(0px):translateX(-100%) translateZ(0px):400:easeOutBack easeOutBack]">
 		<header>
 			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"
 				init-with="p-op"
@@ -34,9 +37,9 @@
 			</a>
 			<a class="icon-round-stroke home"
 				ng-include="root.base_url + 'shared/templates/components/svg/sidebar/home.html'"
-				init-with="p-op"
-				on-click="s:[sidebar-close-clicked:public]"
-				when-sidebar-link-clicked="p:[op:1, transform:translateX(0px) translateZ(0px):translateX(-249px) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-500">
+				init-with="p:[op:0, z-index:-1]"
+				on-click="s:[sidebar-col-close-clicked:public]"
+				when-sidebar-link-clicked="p:[z-index:1, op:1, transform:translateX(0px) translateZ(0px):translateX(-249px) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-500">
 			</a>
 		</header>
 		<nav>
@@ -61,7 +64,7 @@
 							init-with="p:[op:0, tr:translateX(-200%) translateZ(0px)]"
 							when-sidebar-link-clicked="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-100"
 							when-sidebar-expand="p:[op:0:delay-500, transform:translateX(0%) translateZ(0px):translateX(-200%) translateZ(0px):500:easeInExpo easeInExpo]"
-							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250"></span>
+							when-sidebar-collapse="p:[op:1, transform:translateX(-200%) translateZ(0px):translateX(0%) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-250]"></span>
 						<span class="splash-sidebar-link-text"
 							init-default
 							when-faq-link-clicked="t-enter"
@@ -318,7 +321,8 @@
 
 		<div class="splash-sidebar-round"
 			init-with="p:[tro:left center, tr:scaleX(0.5)]"
-			when-sidebar-icon-clicked="p:[transform:scaleX(0.5) translateZ(0px):scaleX(0) translateZ(0px):1000:easeOutBack easeOutBack]:delay-400">
+			when-sidebar-icon-clicked="p:[transform:scaleX(0.5) translateZ(0px):scaleX(0) translateZ(0px):1000:easeOutBack easeOutBack]:delay-400"
+			when-sidebar-close-clicked="p:[transform:scaleX(0) translateZ(0px):scaleX(0.5) translateZ(0px):1000:easeOutBack easeOutBack]:delay-500">
 			<svg viewBox="0 0 50 100" preserveAspectRatio="none">
 			    <circle cx="0" cy="50" r="50" fill="#2B3234"></circle>
 			</svg>
@@ -327,10 +331,12 @@
 
 	<aside class="splash-sidebar mobile"
 		init-with="p:[op:0, tr:translateY(-100%) translateZ(0px)]"
-		when-sidebar-icon-clicked="p:[opacity:0:1:500:easeOutSine, transform:translateY(-100%) translateZ(0px):translateY(0%) translateZ(0px):500:easeOutSine easeOutSine]:delay-250">
+		when-sidebar-icon-clicked="p:[opacity:0:1:500:easeOutSine, transform:translateY(-100%) translateZ(0px):translateY(0%) translateZ(0px):250:easeOutSine easeOutSine]:delay-250"
+		when-sidebar-mclose-clicked="p:[opacity:1:0:400:easeOutSine, transform:translateY(0px):translateY(-30px):800:easeOutCirc]">
 		<header>
 			<a class="splash-logo svg-logo" ng-include="root.base_url + 'shared/templates/components/svg/logo/college.html'"></a>
-			<a class="icon-round-stroke close">
+			<a class="icon-round-stroke close"
+				on-click="s:[sidebar-mclose-clicked:public]">
 				<svg viewBox="0 0 100 100">
 					<circle cx="50" cy="50" r="36"></circle>
 					<g>
@@ -344,7 +350,8 @@
 			<ul init-default
 				when-sidebar-icon-clicked="s:[sidebar-link-enter:public]:delay-750">
 				<li init-with="p:[op:0, tr:translateY(-10px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]">
+					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]"
+					when-sidebar-mclose-clicked="p:[opacity:1:0:200:easeOutSine, transform:translateY(0px):translateY(-30px):400:easeOutCirc]:delay-500">
 					<a init-default
 						on-click="s:[faq-link-clicked:public, sidebar-link-clicked:public]">
 						<span></span>
@@ -369,7 +376,8 @@
 					</a>
 				</li>
 				<li init-with="p:[op:0, tr:translateY(-10px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-150">
+					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-150"
+					when-sidebar-mclose-clicked="p:[opacity:1:0:200:easeOutSine, transform:translateY(0px):translateY(-30px):400:easeOutCirc]:delay-450">
 					<a init-default
 						on-click="s:[pricing-link-clicked:public, sidebar-link-clicked:public]">
 						<span></span>
@@ -394,7 +402,8 @@
 					</a>
 				</li>
 				<li init-with="p:[op:0, tr:translateY(-10px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-300">
+					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-240"
+					when-sidebar-mclose-clicked="p:[opacity:1:0:200:easeOutSine, transform:translateY(0px):translateY(-30px):400:easeOutCirc]:delay-400">
 					<a init-default
 						on-click="s:[team-link-clicked:public, sidebar-link-clicked:public]">
 						<span></span>
@@ -419,7 +428,8 @@
 					</a>
 				</li>
 				<li init-with="p:[op:0, tr:translateY(-10px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-450">
+					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-450"
+					when-sidebar-mclose-clicked="p:[opacity:1:0:200:easeOutSine, transform:translateY(0px):translateY(-30px):400:easeOutCirc]:delay-300">
 					<a init-default
 						on-click="s:[support-link-clicked:public, sidebar-link-clicked:public]">
 						<span></span>
@@ -444,7 +454,8 @@
 					</a>
 				</li>
 				<li init-with="p:[op:0, tr:translateY(-10px)]"
-					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-600">
+					when-sidebar-link-enter="p:[opacity:0:1:150:easeOutSine, transform:translateY(-10px):translateY(0px):250:easeInOutQuad]:delay-600"
+					when-sidebar-mclose-clicked="p:[opacity:1:0:200:easeOutSine, transform:translateY(0px):translateY(-30px):400:easeOutCirc]:delay-150">
 					<a init-default
 						on-click="s:[start-link-clicked:public]">
 						<span></span>
@@ -474,7 +485,8 @@
 			when-sidebar-link-enter="s:[student-card-enter:public]:delay-1000">
 			<div class="student-card"
 				init-with="p:[op:0, tr:translateY(30px) scaleX(0.2)]"
-				when-student-card-enter="p:[opacity:0:1:500:easeOutSine, transform:translateY(30px) scaleX(0.2):translateY(0px) scaleX(1):800:easeOutElastic easeInOutBack]">
+				when-student-card-enter="p:[opacity:0:1:500:easeOutSine, transform:translateY(30px) scaleX(0.2):translateY(0px) scaleX(1):800:easeOutElastic easeInOutBack]"
+				when-sidebar-mclose-clicked="p:[tro:30% 50%, opacity:1:0:500:easeOutSine, transform:translateY(0px) scaleX(1):translateY(-30px) scaleX(0.2):800:easeOutCirc easeInOutBack]">
 				<div class="school-id-inside">
 					<div class="school-id-top" style="background: #003262;">
 						<span class="user-icon" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"
@@ -509,13 +521,15 @@
 			</div>
 			<button class="height-48 bg-shamrock txt-18"
 				init-with="p:[op:0, tr:translateY(30px)]"
-				when-student-card-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeOutBack]:delay-200">Sign up/Login</button>
+				when-student-card-enter="p:[opacity:0:1:200:easeOutSine, transform:translateY(30px):translateY(0px):200:easeOutBack]:delay-200"
+				when-sidebar-mclose-clicked="p:[tro:30% 50%, opacity:1:0:500:easeOutSine, transform:translateY(0px) scaleX(1):translateY(-30px) scaleX(0.2):800:easeOutCirc easeInOutBack]">Sign up/Login</button>
 		</footer>
 	</aside>
 
 	<section class="splash-sidebar-content desktop"
 		init-with="p:[z-index:-1]"
-		when-sidebar-link-clicked="p:[z-index:10]">
+		when-sidebar-link-clicked="p:[z-index:10]"
+	 	when-sidebar-col-close-clicked="p:[opacity:1:0:100:easeOutSine, transform:translateX(0px):translateX(-200px):450:easeInOutSine]:delay-500">
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/faq.html'"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
 			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
@@ -556,6 +570,7 @@
 			when-team-link-clicked="t-exit"
 			on-exit="p:[z-index:1]"
 			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
+			<!-- when-sidebar-col-close-clicked="p:[opacity:1:0:100:easeOutSine, transform:translateX(0px):translateX(-200px):1000:easeOutSine]:delay-500"-->
 	</section>
 
 	<section class="splash-sidebar-content mobile"
@@ -596,11 +611,15 @@
 			when-sidebar-icon-clicked="p:[op:1, transform:translateX(252px) translateZ(0px) scaleY(0):translateX(252px) translateZ(0px) scaleY(1):500:easeOutExpo easeOutExpo easeOutExpo]:delay-500"
 			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
 			when-sidebar-expand="p:[transform:translateX(0px) translateZ(0px):translateX(252px) translateZ(0px):500:easeOutExpo easeOutExpo]"
-			when-sidebar-link-clicked="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]">
+			when-sidebar-link-clicked="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
+			when-sidebar-close-clicked="p:[transform:translateX(252px) translateZ(0px) scaleY(1):translateX(252px) translateZ(0px) scaleY(0):350:easeOutExpo easeOutExpo easeOutBack]"
+			when-sidebar-col-close-clicked="p:[transform:translateX(0px) translateZ(0px) scaleY(1):translateX(0px) translateZ(0px) scaleY(0):350:easeOutExpo easeOutExpo easeOutBack]:delay-200">
 			<hr init-with="p-op"
 				when-sidebar-link-clicked="p:[op:1, background-position-y:-100%:-200%:500:easeOutCirc:^:2+0:a] | s:[gradient-border-fade:public:delay-1000]"
 				when-gradient-border-fade="p:[opacity:1:0:250:easeOutSine] | s:[gradient-border-end:public:delay-250]"
-				when-gradient-border-end="p:[background-position-y:-100%]"/>
+				when-gradient-border-end="p:[background-position-y:-100%]"
+				when-sidebar-close-clicked="p-op"
+				when-sidebar-col-close-clicked="p-op"/>
 		</div>
 		<ul init-with="p:[z-index:-1, display:none]"
 			when-sidebar-link-clicked="p:[z-index:11]">
