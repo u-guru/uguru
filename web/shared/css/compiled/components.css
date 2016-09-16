@@ -3887,6 +3887,7 @@ fieldset.no-border * {
       display: -webkit-flex;
       display: flex;
       justify-content: space-between;
+      overflow: hidden;
       padding: 7.5px; }
       .faq-card dt a h1 {
         padding: 7.5px;
@@ -3914,6 +3915,203 @@ fieldset.no-border * {
         padding: 7.5px;
         font-size: 16px;
         line-height: 1.2; }
+  .faq-card.ghost dt a {
+    border-width: 2px;
+    border-style: solid; }
+  .faq-card.ghost dd div {
+    background: none;
+    border-width: 2px;
+    border-top-width: 0px;
+    border-style: solid; }
+  .faq-card.ghost.txt-charcoal dt a h1 {
+    color: #2B3234; }
+  .faq-card.ghost.txt-charcoal dt a div span svg * {
+    stroke: #2B3234; }
+  .faq-card.ghost.txt-charcoal dd div p {
+    color: #2B3234; }
+  .faq-card.ghost.txt-slate dt a h1 {
+    color: #40484B; }
+  .faq-card.ghost.txt-slate dt a div span svg * {
+    stroke: #40484B; }
+  .faq-card.ghost.txt-slate dd div p {
+    color: #40484B; }
+  .faq-card.ghost.txt-white dt a h1 {
+    color: white; }
+  .faq-card.ghost.txt-white dt a div span svg * {
+    stroke: white; }
+  .faq-card.ghost.txt-white dd div p {
+    color: white; }
+  .faq-card.ghost.border-charcoal dt a {
+    border-color: rgba(43, 50, 52, 0.5) !important; }
+    .faq-card.ghost.border-charcoal dt a:hover, .faq-card.ghost.border-charcoal dt a:focus {
+      background: rgba(43, 50, 52, 0.1); }
+    .faq-card.ghost.border-charcoal dt a:active {
+      background: rgba(43, 50, 52, 0.2); }
+  .faq-card.ghost.border-charcoal dd div {
+    background: rgba(43, 50, 52, 0.1);
+    border-color: rgba(43, 50, 52, 0.5) !important; }
+  .faq-card.ghost.border-slate dt a {
+    border-color: rgba(64, 72, 75, 0.5) !important; }
+    .faq-card.ghost.border-slate dt a:hover, .faq-card.ghost.border-slate dt a:focus {
+      background: rgba(64, 72, 75, 0.1); }
+    .faq-card.ghost.border-slate dt a:active {
+      background: rgba(64, 72, 75, 0.2); }
+  .faq-card.ghost.border-slate dd div {
+    background: rgba(64, 72, 75, 0.1);
+    border-color: rgba(64, 72, 75, 0.5) !important; }
+  .faq-card.ghost.border-taupe dt a {
+    border-color: rgba(117, 117, 117, 0.5) !important; }
+    .faq-card.ghost.border-taupe dt a:hover, .faq-card.ghost.border-taupe dt a:focus {
+      background: rgba(117, 117, 117, 0.1); }
+    .faq-card.ghost.border-taupe dt a:active {
+      background: rgba(117, 117, 117, 0.2); }
+  .faq-card.ghost.border-taupe dd div {
+    background: rgba(117, 117, 117, 0.1);
+    border-color: rgba(117, 117, 117, 0.5) !important; }
+  .faq-card.ghost.border-rocket dt a {
+    border-color: rgba(105, 98, 105, 0.5) !important; }
+    .faq-card.ghost.border-rocket dt a:hover, .faq-card.ghost.border-rocket dt a:focus {
+      background: rgba(105, 98, 105, 0.1); }
+    .faq-card.ghost.border-rocket dt a:active {
+      background: rgba(105, 98, 105, 0.2); }
+  .faq-card.ghost.border-rocket dd div {
+    background: rgba(105, 98, 105, 0.1);
+    border-color: rgba(105, 98, 105, 0.5) !important; }
+  .faq-card.ghost.border-campus dt a {
+    border-color: rgba(138, 158, 163, 0.5) !important; }
+    .faq-card.ghost.border-campus dt a:hover, .faq-card.ghost.border-campus dt a:focus {
+      background: rgba(138, 158, 163, 0.1); }
+    .faq-card.ghost.border-campus dt a:active {
+      background: rgba(138, 158, 163, 0.2); }
+  .faq-card.ghost.border-campus dd div {
+    background: rgba(138, 158, 163, 0.1);
+    border-color: rgba(138, 158, 163, 0.5) !important; }
+  .faq-card.ghost.border-white dt a {
+    border-color: rgba(255, 255, 255, 0.5) !important; }
+    .faq-card.ghost.border-white dt a:hover, .faq-card.ghost.border-white dt a:focus {
+      background: rgba(255, 255, 255, 0.1); }
+    .faq-card.ghost.border-white dt a:active {
+      background: rgba(255, 255, 255, 0.2); }
+  .faq-card.ghost.border-white dd div {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5) !important; }
+  .faq-card.ghost.border-shamrock dt a {
+    border-color: rgba(105, 179, 165, 0.5) !important; }
+    .faq-card.ghost.border-shamrock dt a:hover, .faq-card.ghost.border-shamrock dt a:focus {
+      background: rgba(105, 179, 165, 0.1); }
+    .faq-card.ghost.border-shamrock dt a:active {
+      background: rgba(105, 179, 165, 0.2); }
+  .faq-card.ghost.border-shamrock dd div {
+    background: rgba(105, 179, 165, 0.1);
+    border-color: rgba(105, 179, 165, 0.5) !important; }
+  .faq-card.ghost.border-robin dt a {
+    border-color: rgba(43, 179, 184, 0.5) !important; }
+    .faq-card.ghost.border-robin dt a:hover, .faq-card.ghost.border-robin dt a:focus {
+      background: rgba(43, 179, 184, 0.1); }
+    .faq-card.ghost.border-robin dt a:active {
+      background: rgba(43, 179, 184, 0.2); }
+  .faq-card.ghost.border-robin dd div {
+    background: rgba(43, 179, 184, 0.1);
+    border-color: rgba(43, 179, 184, 0.5) !important; }
+  .faq-card.ghost.border-lake dt a {
+    border-color: rgba(80, 165, 221, 0.5) !important; }
+    .faq-card.ghost.border-lake dt a:hover, .faq-card.ghost.border-lake dt a:focus {
+      background: rgba(80, 165, 221, 0.1); }
+    .faq-card.ghost.border-lake dt a:active {
+      background: rgba(80, 165, 221, 0.2); }
+  .faq-card.ghost.border-lake dd div {
+    background: rgba(80, 165, 221, 0.1);
+    border-color: rgba(80, 165, 221, 0.5) !important; }
+  .faq-card.ghost.border-moxie dt a {
+    border-color: rgba(67, 203, 157, 0.5) !important; }
+    .faq-card.ghost.border-moxie dt a:hover, .faq-card.ghost.border-moxie dt a:focus {
+      background: rgba(67, 203, 157, 0.1); }
+    .faq-card.ghost.border-moxie dt a:active {
+      background: rgba(67, 203, 157, 0.2); }
+  .faq-card.ghost.border-moxie dd div {
+    background: rgba(67, 203, 157, 0.1);
+    border-color: rgba(67, 203, 157, 0.5) !important; }
+  .faq-card.ghost.border-crimson dt a {
+    border-color: rgba(211, 36, 44, 0.5) !important; }
+    .faq-card.ghost.border-crimson dt a:hover, .faq-card.ghost.border-crimson dt a:focus {
+      background: rgba(211, 36, 44, 0.1); }
+    .faq-card.ghost.border-crimson dt a:active {
+      background: rgba(211, 36, 44, 0.2); }
+  .faq-card.ghost.border-crimson dd div {
+    background: rgba(211, 36, 44, 0.1);
+    border-color: rgba(211, 36, 44, 0.5) !important; }
+  .faq-card.ghost.border-auburn dt a, .faq-card.ghost.border-delivery dt a {
+    border-color: rgba(240, 79, 84, 0.5) !important; }
+    .faq-card.ghost.border-auburn dt a:hover, .faq-card.ghost.border-auburn dt a:focus, .faq-card.ghost.border-delivery dt a:hover, .faq-card.ghost.border-delivery dt a:focus {
+      background: rgba(240, 79, 84, 0.1); }
+    .faq-card.ghost.border-auburn dt a:active, .faq-card.ghost.border-delivery dt a:active {
+      background: rgba(240, 79, 84, 0.2); }
+  .faq-card.ghost.border-auburn dd div, .faq-card.ghost.border-delivery dd div {
+    background: rgba(240, 79, 84, 0.1);
+    border-color: rgba(240, 79, 84, 0.5) !important; }
+  .faq-card.ghost.border-orange dt a, .faq-card.ghost.border-freelancing dt a {
+    border-color: rgba(229, 117, 60, 0.5) !important; }
+    .faq-card.ghost.border-orange dt a:hover, .faq-card.ghost.border-orange dt a:focus, .faq-card.ghost.border-freelancing dt a:hover, .faq-card.ghost.border-freelancing dt a:focus {
+      background: rgba(229, 117, 60, 0.1); }
+    .faq-card.ghost.border-orange dt a:active, .faq-card.ghost.border-freelancing dt a:active {
+      background: rgba(229, 117, 60, 0.2); }
+  .faq-card.ghost.border-orange dd div, .faq-card.ghost.border-freelancing dd div {
+    background: rgba(229, 117, 60, 0.1);
+    border-color: rgba(229, 117, 60, 0.5) !important; }
+  .faq-card.ghost.border-gold dt a, .faq-card.ghost.border-baking dt a {
+    border-color: rgba(246, 198, 78, 0.5) !important; }
+    .faq-card.ghost.border-gold dt a:hover, .faq-card.ghost.border-gold dt a:focus, .faq-card.ghost.border-baking dt a:hover, .faq-card.ghost.border-baking dt a:focus {
+      background: rgba(246, 198, 78, 0.1); }
+    .faq-card.ghost.border-gold dt a:active, .faq-card.ghost.border-baking dt a:active {
+      background: rgba(246, 198, 78, 0.2); }
+  .faq-card.ghost.border-gold dd div, .faq-card.ghost.border-baking dd div {
+    background: rgba(246, 198, 78, 0.1);
+    border-color: rgba(246, 198, 78, 0.5) !important; }
+  .faq-card.ghost.border-moola dt a, .faq-card.ghost.border-photography dt a {
+    border-color: rgba(129, 181, 102, 0.5) !important; }
+    .faq-card.ghost.border-moola dt a:hover, .faq-card.ghost.border-moola dt a:focus, .faq-card.ghost.border-photography dt a:hover, .faq-card.ghost.border-photography dt a:focus {
+      background: rgba(129, 181, 102, 0.1); }
+    .faq-card.ghost.border-moola dt a:active, .faq-card.ghost.border-photography dt a:active {
+      background: rgba(129, 181, 102, 0.2); }
+  .faq-card.ghost.border-moola dd div, .faq-card.ghost.border-photography dd div {
+    background: rgba(129, 181, 102, 0.1);
+    border-color: rgba(129, 181, 102, 0.5) !important; }
+  .faq-card.ghost.border-azure dt a, .faq-card.ghost.border-tech dt a {
+    border-color: rgba(85, 164, 183, 0.5) !important; }
+    .faq-card.ghost.border-azure dt a:hover, .faq-card.ghost.border-azure dt a:focus, .faq-card.ghost.border-tech dt a:hover, .faq-card.ghost.border-tech dt a:focus {
+      background: rgba(85, 164, 183, 0.1); }
+    .faq-card.ghost.border-azure dt a:active, .faq-card.ghost.border-tech dt a:active {
+      background: rgba(85, 164, 183, 0.2); }
+  .faq-card.ghost.border-azure dd div, .faq-card.ghost.border-tech dd div {
+    background: rgba(85, 164, 183, 0.1);
+    border-color: rgba(85, 164, 183, 0.5) !important; }
+  .faq-card.ghost.border-cobalt dt a, .faq-card.ghost.border-household dt a {
+    border-color: rgba(120, 114, 227, 0.5) !important; }
+    .faq-card.ghost.border-cobalt dt a:hover, .faq-card.ghost.border-cobalt dt a:focus, .faq-card.ghost.border-household dt a:hover, .faq-card.ghost.border-household dt a:focus {
+      background: rgba(120, 114, 227, 0.1); }
+    .faq-card.ghost.border-cobalt dt a:active, .faq-card.ghost.border-household dt a:active {
+      background: rgba(120, 114, 227, 0.2); }
+  .faq-card.ghost.border-cobalt dd div, .faq-card.ghost.border-household dd div {
+    background: rgba(120, 114, 227, 0.1);
+    border-color: rgba(120, 114, 227, 0.5) !important; }
+  .faq-card.ghost.border-eggplant dt a, .faq-card.ghost.border-athletic dt a {
+    border-color: rgba(154, 91, 197, 0.5) !important; }
+    .faq-card.ghost.border-eggplant dt a:hover, .faq-card.ghost.border-eggplant dt a:focus, .faq-card.ghost.border-athletic dt a:hover, .faq-card.ghost.border-athletic dt a:focus {
+      background: rgba(154, 91, 197, 0.1); }
+    .faq-card.ghost.border-eggplant dt a:active, .faq-card.ghost.border-athletic dt a:active {
+      background: rgba(154, 91, 197, 0.2); }
+  .faq-card.ghost.border-eggplant dd div, .faq-card.ghost.border-athletic dd div {
+    background: rgba(154, 91, 197, 0.1);
+    border-color: rgba(154, 91, 197, 0.5) !important; }
+  .faq-card.ghost.border-cerise dt a, .faq-card.ghost.border-academic dt a {
+    border-color: rgba(230, 56, 155, 0.5) !important; }
+    .faq-card.ghost.border-cerise dt a:hover, .faq-card.ghost.border-cerise dt a:focus, .faq-card.ghost.border-academic dt a:hover, .faq-card.ghost.border-academic dt a:focus {
+      background: rgba(230, 56, 155, 0.1); }
+    .faq-card.ghost.border-cerise dt a:active, .faq-card.ghost.border-academic dt a:active {
+      background: rgba(230, 56, 155, 0.2); }
+  .faq-card.ghost.border-cerise dd div, .faq-card.ghost.border-academic dd div {
+    background: rgba(230, 56, 155, 0.1);
+    border-color: rgba(230, 56, 155, 0.5) !important; }
 
 .pf-card-stack {
   position: relative; }

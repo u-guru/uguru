@@ -585,6 +585,7 @@
 		a {
 			@include flex;
 			justify-content: space-between;
+			overflow: hidden;
 			padding: 7.5px;
 			h1 {
 				padding: 7.5px;
@@ -620,6 +621,424 @@
 				padding: 7.5px;
 				font-size: 16px;
 				line-height: 1.2;
+			}
+		}
+	}
+	&.ghost {
+		dt {
+			a {
+				border-width: 2px;
+				border-style: solid;
+			}
+		}
+		dd {
+			div {
+				background: none;
+				border-width: 2px;
+				border-top-width: 0px;
+				border-style: solid;
+			}
+		}
+		&.txt-charcoal {
+			dt a {
+				h1 {
+					color: $charcoal;
+				}
+				div span svg * {
+					stroke: $charcoal;
+				}
+			}
+			dd div p {
+				color: $charcoal;
+			}
+		}
+		&.txt-slate {
+			dt a {
+				h1 {
+					color: $slate;
+				}
+				div span svg * {
+					stroke: $slate;
+				}
+			}
+			dd div p {
+				color: $slate;
+			}
+		}
+		&.txt-white {
+			dt a {
+				h1 {
+					color: white;
+				}
+				div span svg * {
+					stroke: white;
+				}
+			}
+			dd div p {
+				color: white;
+			}
+		}
+		&.border-charcoal {
+			dt {
+				a {
+					border-color: rgba($charcoal, .5)!important;
+					&:hover, &:focus {
+						background: rgba($charcoal, .1);
+					}
+					&:active {
+						background: rgba($charcoal, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($charcoal, .1);
+					border-color: rgba($charcoal, .5)!important;
+				}
+			}
+		}
+		&.border-slate {
+			dt {
+				a {
+					border-color: rgba($slate, .5)!important;
+					&:hover, &:focus {
+						background: rgba($slate, .1);
+					}
+					&:active {
+						background: rgba($slate, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($slate, .1);
+					border-color: rgba($slate, .5)!important;
+				}
+			}
+		}
+		&.border-taupe {
+			dt {
+				a {
+					border-color: rgba($taupe, .5)!important;
+					&:hover, &:focus {
+						background: rgba($taupe, .1);
+					}
+					&:active {
+						background: rgba($taupe, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($taupe, .1);
+					border-color: rgba($taupe, .5)!important;
+				}
+			}
+		}
+		&.border-rocket {
+			dt {
+				a {
+					border-color: rgba($rocket, .5)!important;
+					&:hover, &:focus {
+						background: rgba($rocket, .1);
+					}
+					&:active {
+						background: rgba($rocket, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($rocket, .1);
+					border-color: rgba($rocket, .5)!important;
+				}
+			}
+		}
+		&.border-campus {
+			dt {
+				a {
+					border-color: rgba($campus, .5)!important;
+					&:hover, &:focus {
+						background: rgba($campus, .1);
+					}
+					&:active {
+						background: rgba($campus, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($campus, .1);
+					border-color: rgba($campus, .5)!important;
+				}
+			}
+		}
+		&.border-white {
+			dt {
+				a {
+					border-color: rgba(white, .5)!important;
+					&:hover, &:focus {
+						background: rgba(white, .1);
+					}
+					&:active {
+						background: rgba(white, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba(white, .1);
+					border-color: rgba(white, .5)!important;
+				}
+			}
+		}
+
+		&.border-shamrock {
+			dt {
+				a {
+					border-color: rgba($shamrock, .5)!important;
+					&:hover, &:focus {
+						background: rgba($shamrock, .1);
+					}
+					&:active {
+						background: rgba($shamrock, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($shamrock, .1);
+					border-color: rgba($shamrock, .5)!important;
+				}
+			}
+		}
+		&.border-robin {
+			dt {
+				a {
+					border-color: rgba($robin, .5)!important;
+					&:hover, &:focus {
+						background: rgba($robin, .1);
+					}
+					&:active {
+						background: rgba($robin, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($robin, .1);
+					border-color: rgba($robin, .5)!important;
+				}
+			}
+		}
+		&.border-lake {
+			dt {
+				a {
+					border-color: rgba($lake, .5)!important;
+					&:hover, &:focus {
+						background: rgba($lake, .1);
+					}
+					&:active {
+						background: rgba($lake, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($lake, .1);
+					border-color: rgba($lake, .5)!important;
+				}
+			}
+		}
+		&.border-moxie {
+			dt {
+				a {
+					border-color: rgba($moxie, .5)!important;
+					&:hover, &:focus {
+						background: rgba($moxie, .1);
+					}
+					&:active {
+						background: rgba($moxie, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($moxie, .1);
+					border-color: rgba($moxie, .5)!important;
+				}
+			}
+		}
+		&.border-crimson {
+			dt {
+				a {
+					border-color: rgba($crimson, .5)!important;
+					&:hover, &:focus {
+						background: rgba($crimson, .1);
+					}
+					&:active {
+						background: rgba($crimson, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($crimson, .1);
+					border-color: rgba($crimson, .5)!important;
+				}
+			}
+		}
+
+		&.border-auburn, &.border-delivery {
+			dt {
+				a {
+					border-color: rgba($auburn, .5)!important;
+					&:hover, &:focus {
+						background: rgba($auburn, .1);
+					}
+					&:active {
+						background: rgba($auburn, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($auburn, .1);
+					border-color: rgba($auburn, .5)!important;
+				}
+			}
+		}
+		&.border-orange, &.border-freelancing {
+			dt {
+				a {
+					border-color: rgba($orange, .5)!important;
+					&:hover, &:focus {
+						background: rgba($orange, .1);
+					}
+					&:active {
+						background: rgba($orange, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($orange, .1);
+					border-color: rgba($orange, .5)!important;
+				}
+			}
+		}
+		&.border-gold, &.border-baking {
+			dt {
+				a {
+					border-color: rgba($gold, .5)!important;
+					&:hover, &:focus {
+						background: rgba($gold, .1);
+					}
+					&:active {
+						background: rgba($gold, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($gold, .1);
+					border-color: rgba($gold, .5)!important;
+				}
+			}
+		}
+		&.border-moola, &.border-photography {
+			dt {
+				a {
+					border-color: rgba($moola, .5)!important;
+					&:hover, &:focus {
+						background: rgba($moola, .1);
+					}
+					&:active {
+						background: rgba($moola, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($moola, .1);
+					border-color: rgba($moola, .5)!important;
+				}
+			}
+		}
+		&.border-azure, &.border-tech {
+			dt {
+				a {
+					border-color: rgba($azure, .5)!important;
+					&:hover, &:focus {
+						background: rgba($azure, .1);
+					}
+					&:active {
+						background: rgba($azure, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($azure, .1);
+					border-color: rgba($azure, .5)!important;
+				}
+			}
+		}
+		&.border-cobalt, &.border-household {
+			dt {
+				a {
+					border-color: rgba($cobalt, .5)!important;
+					&:hover, &:focus {
+						background: rgba($cobalt, .1);
+					}
+					&:active {
+						background: rgba($cobalt, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($cobalt, .1);
+					border-color: rgba($cobalt, .5)!important;
+				}
+			}
+		}
+		&.border-eggplant, &.border-athletic {
+			dt {
+				a {
+					border-color: rgba($eggplant, .5)!important;
+					&:hover, &:focus {
+						background: rgba($eggplant, .1);
+					}
+					&:active {
+						background: rgba($eggplant, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($eggplant, .1);
+					border-color: rgba($eggplant, .5)!important;
+				}
+			}
+		}
+		&.border-cerise, &.border-academic {
+			dt {
+				a {
+					border-color: rgba($cerise, .5)!important;
+					&:hover, &:focus {
+						background: rgba($cerise, .1);
+					}
+					&:active {
+						background: rgba($cerise, .2);
+					}
+				}
+			}
+			dd {
+				div {
+					background: rgba($cerise, .1);
+					border-color: rgba($cerise, .5)!important;
+				}
 			}
 		}
 	}
