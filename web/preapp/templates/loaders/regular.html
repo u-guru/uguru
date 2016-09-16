@@ -50,285 +50,31 @@
 		when-warp-end="s:[transition-start:public:delay-500]"
 		when-transition-start="s:[transition-end:public]">
 	    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'"></div>
-		<div class="warp-items absolute full-xy top-0 left-0 perspective-container"
+		<div class="warp-items"
 			when-portal-open="t:[init:self]"
 			init-with="p-op"
 			on-init="p:[opacity:0:1:250:easeOutSine]"
 			init-later>
-			<div class="warp-object absolute"
-				init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(15deg) rotateY(40deg) translateX(0px) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(15deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(15deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-1040">
-				<div class="course-card">
-					<svg width="240px" height="150px" viewBox="0 0 240 150">
-						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-					</svg>
-					<div class="course-card-inside">
-						<h2 style="color: #003262;">BIO 1A</h2>
-						<h1 style="color: #003262;">Introduction to Biology</h1>
-					</div>
-					<div class="course-card-border" style="background: #003262;"></div>
-				</div>
-			</div>
-
-			<div class="warp-object absolute"
-				init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(135deg) rotateY(40deg) translateX(0px) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(135deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(135deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3000">
-				<div class="category-tile bg-household" style="background-image: url('http://s.hswstatic.com/gif/quiz-cleaning-orig.jpg');">
-					<svg width="240px" height="150px" viewBox="0 0 240 150">
-						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-					</svg>
-					<div class="category-tile-inside">
-						<div class="category-tile-icon">
-							<svg viewBox="0 0 100 100">
-								<path d="M36.6840131,24.07712 C36.6840131,24.07712 36.0504131,27.52832 35.1739331,29.56064 C35.0587331,29.82848 34.7313731,30.08672 34.3838531,30.36128 C33.7704131,30.84608 32.9428931,31.5008 32.7105731,32.67296 C32.5128131,33.67808 32.8862531,34.58048 33.7099331,35.0864 C34.1928131,35.38304 34.8446531,35.53952 35.5934531,35.53952 C36.7579331,35.53952 37.9924931,35.16224 38.7364931,34.5776 C41.1028931,32.72672 42.2596931,29.75744 43.0795331,27.09824 C43.1121731,26.99456 43.2782531,26.43488 43.2782531,26.43488 M46.5652931,31.76 L46.1668931,31.76 C45.0964931,31.76 44.2401731,32.6192 44.2401731,33.67808 L44.2401731,39.44 L46.2868931,39.44 M59.0664131,39.44 L61.0401731,39.44 L61.0401731,33.67808 C61.0401731,32.61152 60.1771331,31.76 59.1134531,31.76 L58.3742531,31.76 M46.2868931,39.44 L46.1899331,42.09824 C46.1899331,46.53248 41.2478531,50.93408 38.5982531,52.04864 C35.0308931,53.55104 34.3560131,58.08128 34.3300931,58.27328 L33.6830531,82.74848 C33.6830531,84.53888 35.1441731,86 36.9403331,86 L60.9000131,86 C62.6971331,86 64.1572931,84.53888 64.1572931,82.74368 L64.1544131,55.16768 C64.1294531,54.84128 63.8808131,51.88448 62.7969731,49.39232 C62.3908931,48.46016 61.7928131,47.42528 61.2148931,46.42496 C60.3124931,44.86208 59.3016131,43.11104 59.3016131,42.18944 C59.3016131,42.11264 59.2065731,41.02208 59.0664131,39.44 M58.3742531,31.76 C58.0843331,28.55744 57.8376131,25.85888 57.8376131,25.85888 L57.9470531,25.81184 C58.5739331,25.54304 60.3720131,25.59296 61.5633731,25.62464 C64.0094531,25.6928 66.2836931,25.75424 67.3819331,24.55232 C67.6862531,24.2192 68.0318531,23.63552 67.9502531,22.75712 L67.9492931,22.05056 L57.4881731,14 L40.4203331,14.18432 L34.8888131,14.18432 C33.3163331,14.18432 32.0376131,15.464 32.0376131,17.03744 L32.0376131,19.96448 C32.0376131,21.56768 33.3105731,22.17824 34.2398531,22.62368 L36.9614531,23.59712 L43.5556931,25.95488 L46.7352131,27.09248 L46.5652931,31.76 M46.2868931,39.44 L59.0664131,39.44 M58.3742531,31.76 L46.5652931,31.76"></path>
-							</svg>
-						</div>
-						<h1>Household</h1>
-						<div class="category-tile-border"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="warp-object width-128 height-128 absolute"
-				init-with="p:[top:calc(50% - 64px), left:calc(50% - 64px), tr:translateZ(-2000px) rotateZ(90deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(90deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(90deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3270">
-				<div class="pf-thumb-128 pf-moola">
-					<div class="top"></div>
-					<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256);"></span>
-				</div>
-			</div>
-
-			<div class="warp-object absolute"
-			init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(45deg) rotateY(40deg) translateX(0px) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(45deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(45deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-4060">
-				<div class="student-card">
-					<svg viewBox="0 0 240 150">
-						<rect x="0" y="0" width="240" height="150" fill="none"></rect>
-					</svg>
-					<div class="school-id-inside">
-						<div class="school-id-top" style="background: #003262;">
-							<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"></span>
-						</div>
-						<div class="school-id-bottom">
-							<div>
-								<h1 class='lettercase'>Marco Polo</h1>
-								<h2>Cal Freshman</h2>
-								<h2>email@school.edu</h2>
-							</div>
-							<h3>
-								<span>SELECTED COURSES</span>
-								<span style="background: #003262;">9</span>
-								<a><span>Edit</span></a>
-							</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="warp-object absolute"
-				init-with="p:[width:240px, height:288px, top:calc(50% - 144px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(320deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(320deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(320deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3010">
-				<div class="pricing-tile alert">
-					<h3>Our Fees</h3>
-					<h2>&le; 5%</h2>
-					<span>Guaranteed Lowest</span>
-					<svg viewBox="0 0 150 200" preserveAspectRatio="none">
-						<path d="M0,0 L150,0 L150,50 L0,150 L0,0 Z"></path>
-					</svg>
-				</div>
-			</div>
-
-			<div class="warp-object absolute"
-				init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(180deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(180deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(180deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2420">
-				<div class="credit-card-flip">
-					<div class="credit-card">
-						<svg width="240px" height="150px" viewBox="0 0 240 150">
-							<rect fill="none" x="0" y="0" width="240" height="150"></rect>
-						</svg>
-						<div class="credit-card-inside">
-							<div class="credit-card-row">
-								<div class="credit-card-logo">
-									<svg viewBox="0 0 173 56">
-										<path d="M125.303171,2.26822594 C122.544107,1.1835953 118.204787,-9.06250023e-07 112.799192,-9.06250023e-07 C99.0030731,-9.06250023e-07 89.2916783,7.33462425 89.2110692,17.8361474 C89.1232772,25.6033478 96.1410529,29.9362836 101.43172,32.5181675 C106.869239,35.1646982 108.696111,36.8582862 108.674563,39.2246805 C108.637051,42.8441066 104.334444,44.5025778 100.322348,44.5025778 C94.7355823,44.5025778 91.7674135,43.686112 87.1782846,41.6684915 L85.3833366,40.8081295 L83.4319592,52.9050733 C86.6858511,54.4103076 92.7179618,55.7168127 98.9783317,55.7854501 C113.640399,55.7854501 123.167431,48.5402132 123.279166,37.3259783 C123.329447,31.1661702 119.611055,26.4964322 111.558132,22.641564 C106.681683,20.1362986 103.688773,18.4762311 103.723092,15.9398395 C103.726284,13.6931616 106.251502,11.2892562 111.716955,11.2892562 C116.281343,11.2158301 119.585516,12.2669402 122.160217,13.3651387 L123.413248,13.9836735 L125.303171,2.26822594 M60.7321324,54.9841483 L69.4618527,0.941768156 L83.415997,0.941768156 L74.6870748,54.9841483 L60.7321324,54.9841483 M143.883956,35.8239365 C145.040416,32.7176948 149.442788,20.7189185 149.442788,20.7189185 C149.36138,20.8609819 150.592863,17.5879354 151.297594,15.5623338 L152.239363,20.2232925 C152.239363,20.2232925 154.91702,33.1223363 155.468513,35.8239365 L143.883956,35.8239365 L143.883956,35.8239365 L143.883956,35.8239365 Z M161.099175,0.996837703 L150.315121,0.996837703 C146.970245,0.996837703 144.466576,1.95297273 143.001247,5.47662562 L122.278337,55.0033029 L136.934817,55.0033029 C136.934817,55.0033029 139.325953,48.3406858 139.868667,46.8785495 C141.467281,46.8785495 155.708744,46.9064833 157.741529,46.9064833 C158.159738,48.7924157 159.440704,55.0033029 159.440704,55.0033029 L172.392423,55.0033029 L161.099175,0.996837703 L161.099175,0.996837703 L161.099175,0.996837703 Z M49.0254641,0.987260391 L35.3674183,37.8311816 L33.9044838,30.3417232 C31.359313,21.7125646 23.4364813,12.3595209 14.5742748,7.67302263 L27.0694752,54.9370598 L41.837691,54.9282806 L63.8128346,0.987260391 L49.0254641,0.987260391" fill="#FFFFFF"></path>
-										<path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
-									</svg>
-								</div>
-								<div class="credit-card-type">Debit</div>
-							</div>
-							<div class="credit-card-row">
-								<div class="credit-card-number-container">
-									<h4>Card Number</h4>
-									<div class="credit-card-number has-span">
-										<span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-											<span>&bull;</span>
-										</span>
-										<span>1234</span>
-									</div>
-								</div>
-								<div class="credit-card-row">
-									<div>
-										<h4>Valid Thru</h4>
-										<div class="credit-card-number">10/20</div>
-									</div>
-									<div class="credit-card-default">
-										<svg viewBox="0 0 100 100">
-											<polygon points="50 68 28.8397309 79.1246118 32.8809827 55.5623059 15.7619654 38.8753882 39.4198655 35.4376941 50 14 60.5801345 35.4376941 84.2380346 38.8753882 67.1190173 55.5623059 71.1602691 79.1246118"></polygon>
-										</svg>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="warp-object absolute"
-				ng-include="'preapp/templates/loaders/props/people/gabri.html'"
-				init-with="p:[width:100px, height:100px, top:calc(50% - 50px), left:calc(50% - 50px), tr:translateZ(-2000px) rotateZ(192deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(192deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(192deg) rotateY(40deg) translateX(-1500px) scale(1):700:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-1805">
-			</div>
-
-			<div class="warp-object absolute"
-				ng-include="'preapp/templates/loaders/props/people/jeselle.html'"
-				init-with="p:[width:100px, height:100px, top:calc(50% - 50px), left:calc(50% - 50px), tr:translateZ(-2000px) rotateZ(103deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(103deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(103deg) rotateY(40deg) translateX(-1500px) scale(1):700:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2044">
-			</div>
-
-			<div class="warp-object absolute"
-				ng-include="'preapp/templates/loaders/props/people/musician.html'"
-				init-with="p:[width:100px, height:100px, top:calc(50% - 50px), left:calc(50% - 50px), tr:translateZ(-2000px) rotateZ(275deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(275deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(275deg) rotateY(40deg) translateX(-1500px) scale(1):7000:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3047">
-			</div>
-
-			<div class="warp-object absolute"
-				ng-include="'preapp/templates/loaders/props/people/fans.html'"
-				init-with="p:[width:100px, height:100px, top:calc(50% - 50px), left:calc(50% - 50px), tr:translateZ(-2000px) rotateZ(352deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(26deg) rotateY(352deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(352deg) rotateY(40deg) translateX(-1500px) scale(1):700:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2743">
-			</div>
-
-			<div class="warp-object absolute"
-				ng-include="'preapp/templates/loaders/props/people/b-dress.html'"
-				init-with="p:[width:100px, height:100px, top:calc(50% - 50px), left:calc(50% - 50px), tr:translateZ(-2000px) rotateZ(304deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(304deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(304deg) rotateY(40deg) translateX(-1500px) scale(1):700:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-1249">
-			</div>
-
-			<div class="warp-object absolute"
-				ng-include="'preapp/templates/loaders/props/people/bald.html'"
-				init-with="p:[width:100px, height:100px, top:calc(50% - 50px), left:calc(50% - 50px), tr:translateZ(-2000px) rotateZ(18deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(18deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(18deg) rotateY(40deg) translateX(-1500px) scale(1):700:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3045">
-			</div>
-
-			<div class="warp-object absolute"
-				ng-include="'preapp/templates/loaders/props/people/blond.html'"
-				init-with="p:[width:100px, height:100px, top:calc(50% - 50px), left:calc(50% - 50px), tr:translateZ(-2000px) rotateZ(204deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(204deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(204deg) rotateY(40deg) translateX(-1500px) scale(1):700:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2004">
-			</div>
-
-			<div class="warp-object absolute"
-				ng-include="'preapp/templates/loaders/props/people/chubby.html'"
-				init-with="p:[width:100px, height:100px, top:calc(50% - 50px), left:calc(50% - 50px), tr:translateZ(-2000px) rotateZ(199deg) rotateY(40deg) scale(0.25)]"
-				when-portal-complete="p:[transform:translateZ(-1000px) rotateZ(199deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(199deg) rotateY(40deg) translateX(-1500px) scale(1):700:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-1056">
-			</div>
-
-
-			<div class="warp-container truck-container absolute"
-				ng-include="'preapp/templates/loaders/props/truck.html'"
-				init-with="p:[transform:rotate(-45deg) translateX(-500px), tro:center center, top:calc(50% - 200px), left:calc(50% - 200px), width:400px, height:400px]"
-				when-portal-complete="p:[transform:translateZ(0px) rotate(-45deg) translateX(-500px) scale(1):translateZ(-1000px) rotate(-45deg) translateX(-50px) scale(0):750:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]">
-			</div>
-
-			<div class="warp-container pew-container absolute"
-				ng-include="'preapp/templates/loaders/props/pew.html'"
-				init-with="p:[transform:rotate(50deg) translateX(500px), tro:center center, top:calc(50% - 200px), left:calc(50% - 200px), width:400px, height:400px]"
-				when-portal-complete="p:[transform:translateZ(0px) rotate(50deg) translateX(500px) scale(1):translateZ(-1000px) rotate(40deg) translateX(50px) scale(0):950:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+700]">
-			</div>
-
-			<div class="warp-container rocket-container absolute"
-				ng-include="'preapp/templates/loaders/props/rocket.html'"
-				init-with="p:[transform:translateX(300px) translateY(-200px) rotate(-120deg), tro:center center, top:calc(50% - 200px), left:calc(50% - 200px), width:400px, height:400px]"
-				when-portal-complete="p:[transform:translateZ(0px) translateX(300px) translateY(-200px) rotate(-120deg) scale(1):translateZ(-1000px) translateX(0px) translateY(0px) rotate(-120deg) scale(0):1250:easeOutCirc easeOutCirc easeOutExpo easeOutCirc easeOutCirc:^:200+900]">
-			</div>
-
-
-			<div class="letter-container absolute top-0 left-0 full-xy flex-center perspective-container" ng-if="false">
-				<svg class="center-xy" width="700px" height="400px" viewBox="0 0 700 400">
-				    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-				        <g fill="#ff0000">
-				            <path d="M66.576861,124.936074 L75.629951,118.829688 L68.732963,102.059334 C67.602549,99.203154 66.222254,96.298402 65.009716,93.642361 L65.208685,93.508155 C67.167356,95.660922 69.343528,98.028849 71.568271,100.146895 L84.683042,112.723301 L93.885359,106.51626 L77.779834,70.192327 L70.766176,74.923099 L78.761005,91.604308 C80.56128,95.239003 82.428658,98.973183 84.329588,102.757105 L84.130619,102.891311 C81.13536,99.845524 78.1401,96.799736 75.279047,93.952918 L61.563859,81.130141 L55.346077,85.324087 L62.097349,102.844085 C63.732207,106.662729 65.400617,110.531115 67.069026,114.399501 L66.870057,114.533707 C64.15706,111.369904 61.344579,108.273204 58.665134,105.159144 L46.193502,91.497577 L38.682422,96.563865 L66.576861,124.936074 L66.576861,124.936074 L66.576861,124.936074 Z"></path>
-				            <path d="M116.025582,94.80537 C119.179745,93.198244 122.136103,90.277773 123.909203,87.017449 L118.865334,83.594206 C117.540028,85.750954 116.022008,87.265159 114.043974,88.273018 C110.515588,90.07082 106.943667,89.668599 104.287443,86.173563 L120.165179,78.083453 C119.998687,77.36021 119.423604,75.835061 118.715379,74.445091 C115.038056,67.227938 108.490167,63.628278 100.952252,67.469037 C94.590465,70.710529 91.139224,79.135643 95.524772,87.742766 C99.992038,96.51027 108.434206,98.673369 116.025582,94.80537 L116.025582,94.80537 L116.025582,94.80537 L116.025582,94.80537 Z M101.591758,81.015145 C100.410278,77.374746 101.704271,74.627896 104.163449,73.374883 C107.317612,71.767756 109.662999,73.198965 111.161168,76.139287 L101.591758,81.015145 L101.591758,81.015145 L101.591758,81.015145 L101.591758,81.015145 Z"></path>
-				            <path d="M139.077791,84.33874 C140.926281,83.629172 142.219141,82.811546 142.964864,82.075408 L139.61287,76.35683 C139.207756,76.640876 138.983697,76.726884 138.647608,76.855897 C137.97543,77.113922 136.976201,76.854803 136.309637,75.118343 L124.418988,44.142145 L116.184809,47.30295 L127.946445,77.943059 C130.096653,83.544542 133.420294,86.51045 139.077791,84.33874 L139.077791,84.33874 L139.077791,84.33874 L139.077791,84.33874 Z"></path>
-				            <path d="M159.504812,78.080063 C162.6193,77.186998 165.872906,75.255354 167.987871,71.964925 L163.055009,67.387276 C161.886206,68.970784 160.362871,70.406281 158.517249,70.935504 C154.826004,71.993952 151.205642,69.599086 149.783354,64.638975 C148.361065,59.678865 150.046868,55.76248 154.141843,54.588265 C155.468384,54.207886 156.770742,54.396202 158.485724,55.152798 L160.894214,48.532468 C158.247528,47.356436 155.172929,46.864868 151.654711,47.873701 C143.75314,50.13944 138.345513,57.619759 141.074323,67.13625 C143.803132,76.65274 151.545565,80.36234 159.504812,78.080063 L159.504812,78.080063 L159.504812,78.080063 L159.504812,78.080063 Z"></path>
-				            <path d="M183.870265,70.562072 C191.351996,70.038898 197.89743,63.867278 197.20684,53.991394 C196.516251,44.11551 189.175594,38.9149 181.693863,39.438074 C174.152279,39.965432 167.606845,46.137053 168.297434,56.012937 C168.988023,65.888821 176.328681,71.089431 183.870265,70.562072 L183.870265,70.562072 L183.870265,70.562072 Z M183.372204,63.439465 C179.72112,63.694773 177.695308,60.528374 177.335365,55.380943 C176.975421,50.233513 178.54084,46.81599 182.191925,46.560681 C185.783155,46.309558 187.868821,49.471772 188.228764,54.619202 C188.588707,59.766633 186.963435,63.188341 183.372204,63.439465 L183.372204,63.439465 L183.372204,63.439465 Z"></path>
-				            <path d="M206.508184,66.825621 L215.242348,65.598115 L212.444969,45.693726 C214.019655,43.53355 215.609116,42.340731 217.035102,42.140322 C219.530577,41.789606 220.843191,42.938102 221.444419,47.21606 L223.857681,64.387309 L232.591845,63.159802 L229.794466,43.255414 C231.428568,41.086887 232.958612,39.902418 234.444014,39.693659 C236.93949,39.342943 238.252104,40.491439 238.853332,44.769397 L241.266593,61.940645 L250.000758,60.713139 L247.428839,42.412985 C246.393391,35.04539 242.90679,30.930587 236.549269,31.824078 C232.627807,32.375203 230.211982,35.017132 227.973441,38.058273 C226.045469,35.11798 223.299482,33.686214 219.140356,34.270741 C215.27831,34.813516 212.956266,37.260496 210.862573,40.038921 L210.624908,40.072323 L209.496323,36.353197 L202.366393,37.355244 L206.508184,66.825621 L206.508184,66.825621 L206.508184,66.825621 Z"></path>
-				            <path d="M270.832749,61.774714 C274.372749,61.774714 278.332749,60.514714 281.392749,58.414714 L278.452749,53.074714 C276.292749,54.394714 274.252749,55.054714 272.032749,55.054714 C268.072749,55.054714 265.072749,53.074714 264.292749,48.754714 L282.112749,48.754714 C282.292749,48.034714 282.472749,46.414714 282.472749,44.854714 C282.472749,36.754714 278.272749,30.574714 269.812749,30.574714 C262.672749,30.574714 255.772749,36.514714 255.772749,46.174714 C255.772749,56.014714 262.312749,61.774714 270.832749,61.774714 L270.832749,61.774714 L270.832749,61.774714 Z M264.232749,42.934714 C264.832749,39.154714 267.232749,37.294714 269.992749,37.294714 C273.532749,37.294714 274.972749,39.634714 274.972749,42.934714 L264.232749,42.934714 L264.232749,42.934714 L264.232749,42.934714 Z"></path>
-				            <polygon points="309.027004 62.122134 317.858359 63.050347 321.169821 31.543894 331.850986 32.666529 332.628677 25.267286 302.434993 22.093802 301.657301 29.493045 312.338466 30.615681"></polygon>
-				            <path d="M345.515919,68.599699 C352.852026,70.159037 360.84503,66.030661 362.903355,56.347 C364.961681,46.663339 359.33887,39.640832 352.002763,38.081494 C344.607968,36.509682 336.614964,40.638058 334.556638,50.321719 C332.498312,60.00538 338.121123,67.027887 345.515919,68.599699 L345.515919,68.599699 L345.515919,68.599699 Z M347.000408,61.615726 C343.420388,60.854769 342.345831,57.252641 343.418655,52.205399 C344.491479,47.158157 346.938254,44.304511 350.518274,45.065468 C354.039605,45.81395 355.172851,49.428553 354.100027,54.475795 C353.027203,59.523036 350.52174,62.364208 347.000408,61.615726 L347.000408,61.615726 L347.000408,61.615726 Z"></path>
-				            <path d="M284.436332,218.680136 C307.866832,216.630233 319.120246,202.294883 316.448051,171.751554 L312.17742,122.938014 L292.373069,124.67067 L296.826727,175.576219 C298.388558,193.428028 293.067813,200.077063 282.886703,200.967795 C272.705593,201.858526 266.590024,196.210039 265.028193,178.35823 L260.574534,127.452681 L239.93338,129.258548 L244.204012,178.072088 C246.876207,208.615418 260.866366,220.742241 284.436332,218.680136 L284.436332,218.680136 L284.436332,218.680136 L284.436332,218.680136 Z"></path>
-				            <path d="M362.810103,198.89412 C362.163408,191.502356 356.37558,186.387334 349.262749,187.009626 C342.149919,187.631918 337.338236,193.674277 337.984931,201.066042 C338.619425,208.318339 344.407253,213.433361 351.520083,212.811069 C358.632913,212.188777 363.444597,206.146418 362.810103,198.89412 Z"></path>
-				            <path d="M408.619407,235.781946 C432.328841,233.707639 446.336702,221.942002 445.079917,207.576874 C443.993956,195.164288 434.198183,190.821521 417.183178,192.310141 L406.025797,193.286285 C398.355098,193.957384 395.419331,192.527813 395.114286,189.041132 C394.906855,186.670188 395.494375,185.353974 397.17323,183.661211 C400.326922,184.369042 403.152873,184.543408 405.663283,184.323775 C420.865214,182.993779 432.212703,174.552659 430.821697,158.653391 C430.50445,155.027243 429.235336,151.765441 427.797104,149.783248 L438.815017,148.819306 L437.509424,133.896309 L412.265851,136.104836 C409.099956,135.257538 405.285533,135.029117 401.38045,135.370768 C386.457453,136.676361 373.52177,146.240173 374.973785,162.836777 C375.68149,170.925878 380.717927,177.090381 385.892124,180.010532 L385.940931,180.568401 C381.746419,184.027138 378.826268,189.201336 379.265533,194.222157 C379.765807,199.940315 382.872399,203.322427 386.705978,205.376124 L386.754785,205.933993 C380.656538,210.121424 377.572516,215.028889 378.07279,220.747047 C379.146549,233.020165 392.441205,237.197355 408.619407,235.781946 L408.619407,235.781946 L408.619407,235.781946 Z M404.577323,171.911189 C399.1381,172.38706 394.751899,168.835829 394.080799,161.16513 C393.434104,153.773365 397.149206,149.653897 402.588429,149.178026 C408.027652,148.702156 412.413853,152.253387 413.048346,159.505684 C413.719446,167.176383 410.016546,171.435319 404.577323,171.911189 L404.577323,171.911189 L404.577323,171.911189 Z M410.704588,222.670317 C401.499749,223.475636 395.119154,221.22317 394.667687,216.062881 C394.448055,213.552471 395.520233,211.350646 397.835415,208.899537 C400.115698,209.262177 402.929447,209.297076 407.671333,208.882214 L414.784164,208.259922 C421.618059,207.662034 425.48129,208.448323 425.859546,212.771808 C426.274407,217.513695 419.909427,221.864998 410.704588,222.670317 L410.704588,222.670317 L410.704588,222.670317 Z"></path>
-				            <path d="M476.761681,201.853849 C486.245454,201.024126 492.282692,196.139358 497.530227,188.653519 L497.948629,188.616914 L500.324693,198.105935 L517.060764,196.641719 L511.008669,127.465959 L490.506982,129.259624 L494.509174,175.004884 C490.940494,180.79796 488.067443,183.297876 482.907154,183.749342 C476.910062,184.27402 473.979543,181.298107 473.113215,171.395932 L469.586893,131.089894 L449.085207,132.88356 L452.843362,175.839475 C454.356386,193.133415 461.699217,203.171644 476.761681,201.853849 L476.761681,201.853849 L476.761681,201.853849 L476.761681,201.853849 Z"></path>
-				            <path d="M535.05204,195.067686 L555.553727,193.274021 L552.039607,153.10745 C554.848235,143.445897 560.970886,139.5374 566.131174,139.085933 C569.059987,138.829695 571.188601,139.06507 573.760021,139.542774 L575.557606,121.537589 C573.531853,120.871611 571.112103,120.521172 567.207019,120.862823 C560.094189,121.485115 552.953415,126.606964 548.750115,136.390536 L548.192246,136.439343 L545.736016,124.42771 L528.999945,125.891926 L535.05204,195.067686 L535.05204,195.067686 L535.05204,195.067686 Z"></path>
-				            <path d="M611.487052,190.066906 C620.970825,189.237183 627.008063,184.352415 632.255598,176.866577 L632.673999,176.829971 L635.050064,186.318992 L651.786135,184.854776 L645.73404,115.679016 L625.232353,117.472681 L629.234545,163.217942 C625.665865,169.011017 622.792814,171.510933 617.632525,171.9624 C611.635433,172.487077 608.704914,169.511165 607.838586,159.608989 L604.312264,119.302952 L583.810578,121.096617 L587.568733,164.052532 C589.081757,181.346472 596.424588,191.384701 611.487052,190.066906 L611.487052,190.066906 L611.487052,190.066906 L611.487052,190.066906 Z"></path>
-				        </g>
-				    </g>
-				</svg>
-				<div style="font-size: 60px; font-weight: 900"
-					on-init="s:[letter-open:public]">
-					<l type="warp"
-						init-with="p:[op:0, top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]"
-						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-33deg) translateX(-180px) translateY(-239px):translateZ(0px) rotate(-33deg) translateX(-180px) translateY(-239px):500:easeInSine easeInSine easeInSine easeInSine]">W</l>
-					<l type="warp"
-						init-with="p:[op:0, top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]"
-						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-30deg) translateX(-151px) translateY(-230px):translateZ(0px) rotate(-30deg) translateX(-151px) translateY(-230px):500:easeInSine easeInSine easeInSine easeInSine]:delay-100">e</l>
-					<l type="warp"
-						init-with="p:[op:0, top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]"
-						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-21deg) translateX(-160px) translateY(-205px):translateZ(0px) rotate(-21deg) translateX(-160px) translateY(-205px):500:easeInSine easeInSine easeInSine easeInSine]:delay-200">l</l>
-					<l type="warp"
-						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]"
-						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-23deg) translateX(-129px) translateY(-208px):translateZ(0px) rotate(-23deg) translateX(-129px) translateY(-208px):500:easeInSine easeInSine easeInSine easeInSine]:delay-300">c</l>
-					<l type="warp"
-						init-with="p:[op:0, top:calc(50% - 36px), left:calc(50% - 36px), tro:center center]"
-						when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-12deg) translateX(-133px) translateY(-184px):translateZ(0px) rotate(-12deg) translateX(-133px) translateY(-184px):500:easeInSine easeInSine easeInSine easeInSine]:delay-300">o</l>
-					<l type="warp"
-						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(-0px) rotate(-23deg) translateX(-129px) translateY(-208px)]">m</l>
-					<l type="warp"
-						init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(-0px) rotate(-23deg) translateX(-129px) translateY(-208px)]">e</l>
-				</div>
-			</div>
+			<div ng-include="'preapp/templates/loaders/props/warp-objects.html'"></div>
 		</div>
 	</div>
 
-	<!-- <div class="portal-end full-xy absolute top-0 left-0 z-index-10 bg-slate"
+	<div class="portal-end"
 		init-with="p:[op:0, -webkit-clip-path:circle(0px at 50% 50%), t:-webkit-clip-path 750ms cubic-bezier(1#0#1#0)]"
 		when-warp-end="p:[opacity:0:1:250:easeOutSine] | s:[transition-start:public:delay-500]"
 		when-transition-start="p:[-webkit-clip-path:circle(1500px at 50% 50%)] | s:[transition-end:public]"
 		when-transition-end="p:[-webkit-clip-path:none]:delay-1000">
-	</div> -->
+	</div>
 </div>
 
-<div class="absolute top-0 left-0 full-xy z-index-1000"
+<div class="portal-page"
 	when-warp-transition="t:[init:self]"
 	init-with="p-op"
 	on-init="p:[opacity:0:1:250:easeOutSine]:delay-1000"
 	init-later>
-	<div class="absolute top-0 left-0 full-xy"
-		init-with="p:[-webkit-clip-path:circle(0px at 50% 50%), t:all 750ms cubic-bezier(1#0#1#0)]"
+	<div init-with="p:[-webkit-clip-path:circle(0px at 50% 50%), t:all 750ms cubic-bezier(1#0#1#0)]"
 		when-transition-start="p:[-webkit-clip-path:circle(1500px at 50% 50%)]"
 		when-transition-end="p:[-webkit-clip-path:none]:delay-1000">
-		<div class="full-xy flex-center bg-slate" ng-include="'preapp/templates/splash.html'"></div>
+		<div ng-include="'preapp/templates/splash.html'"></div>
 	</div>
 </div>
-
-<!--  s:[madlib-init:public:delay-4000] -->
