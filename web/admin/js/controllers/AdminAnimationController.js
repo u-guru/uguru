@@ -20,7 +20,7 @@ angular.module('uguru.admin')
                 $window.open('#/admin/api/animations/custom/'  + param + '?kf=60&v=1000,linear,250,-1,f&comp=svg.logo.guru-head');
             }
             if (aa.animatableProps.indexOf(param) > -1) {
-                $window.open('#/admin/api/animations/prop/'  + param + '?v=0,1,1000,easeTo,250,i,f&comp=svg.logo.guru-head');
+                $window.open('#/admin/api/animations/prop/'  + param + '?v=0,1,1000,linear,250,i,f&comp=svg.logo.guru-head');
             }
         }
 
