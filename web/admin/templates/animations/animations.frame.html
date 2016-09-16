@@ -1,43 +1,43 @@
-<div class='absolute top-0 left-0 flex-wrap-center full-xy' ng-controller='AnimationFrameController as afc'>
-    <div class='full-x flex-vertical-center flex-wrap bg-azure-20p p20xy' style='min-height:20%;'>
-        <h1 class='full-x text-center uppercase txt-7 weight-900'>
-            {{afc.args.property}}
-        </h1>
-        <div class='full-x p15-grid flex-vertical-center text-center'>
-            <ul class='width-50p flex-vertical-center'>
-                <li class='p20x p15-grid'>
-                    <div class='uppercase weight-700 opacity-50p txt-3'>Component</div>
-                    <div class='lowercase weight-700 opacity-90p m10y txt-7'>
+<div class='absolute top-0 left-0 full-xy' ng-controller='AnimationFrameController as afc'>
+    <div class='full-x flex-vertical-center flex-wrap bg-campus-50p'>
+        <h1 class='full-x text-center uppercase txt-28 weight-600 p15top-p15x'>{{afc.args.property}}</h1>
+        <div class='full-x flex txt-center'>
+            <ul class='flex-wrap width-60p p15-grid'>
+                <li>
+                    <div class='uppercase weight-700 opacity-50p txt-14'>Component</div>
+                    <div class='lowercase weight-700 opacity-90p txt-20'>
                         {{afc.params.comp.split('/').reverse()[0].split('.')[0]}}
                     </div>
                 </li>
-                <li class='p20x p15-grid'>
-                    <div class='uppercase weight-700 opacity-50p txt-3'>State</div>
-                    <div class='lowercase weight-700 opacity-90p m10y txt-7'>
+                <li>
+                    <div class='uppercase weight-700 opacity-50p txt-14'>State</div>
+                    <div class='lowercase weight-700 opacity-90p txt-20'>
                         {{afc.player.debug.states[0].stateName}}
                     </div>
                 </li>
-                <li class='p20x p15-grid'>
-                    <div class='uppercase weight-700 opacity-50p txt-3'>Total Streams</div>
-                    <div class='lowercase weight-700 opacity-90p m10y txt-7'>
+                <li>
+                    <div class='uppercase weight-700 opacity-50p txt-14'>Total Streams</div>
+                    <div class='lowercase weight-700 opacity-90p txt-20'>
                         {{afc.player.debug.totalStreams}}
                     </div>
                 </li>
-                <li class='p20x p15-grid'>
-                    <div class='uppercase weight-700 opacity-50p txt-3'>Properties</div>
-                    <div class='lowercase weight-700 opacity-90p m10y txt-7'>
-                        <span class='txt-4 m10x border-1 border-solid p20x p05y' ng-repeat='(prop, values) in afc.player.debug.props'>
-                            {{prop}}   ({{values.values.length}})
-                         </span>
+                <li>
+                    <div class='uppercase weight-700 opacity-50p txt-14'>Properties</div>
+                    <div class='full-x flex-center-wrap p05xy'>
+                        <div class="p05xy" ng-repeat='(prop, values) in afc.player.debug.props'>
+							<span class='block txt-14 lowercase weight-700 opacity-90p border-1 border-solid p05xy'>
+	                            {{prop}} ({{values.values.length}})
+	                        </span>
+						</div>
                     </div>
                 </li>
             </ul>
-            <ul class='width-50p flex-vertical-center'>
-                <li ng-repeat='(argName, value) in afc.args' class='p20x' ng-if='argName !== "property"'>
-                    <div class='uppercase weight-700 opacity-50p txt-3'>
+            <ul class='flex-wrap full-x p15-grid width-40p'>
+                <li class="width-33p" ng-repeat='(argName, value) in afc.args' ng-if='argName !== "property"'>
+                    <div class='uppercase weight-700 opacity-50p txt-14'>
                         {{argName}}
                     </div>
-                    <div class='lowercase weight-700 opacity-90p m10y txt-7' ng-init='value = afc.getDebugFormat(argName, value) || value'>
+                    <div class='lowercase weight-700 opacity-90p txt-20' ng-init='value = afc.getDebugFormat(argName, value) || value'>
                         <span>
                         {{value}}
                     </span>
