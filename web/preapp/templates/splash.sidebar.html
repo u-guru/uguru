@@ -26,7 +26,8 @@
 			<a class="icon-round-stroke close"
 				init-with="p:[op:0, tr:rotate(-180deg), tro:center center]"
 				when-sidebar-icon-clicked="p:[opacity:0:1:350:easeOutSine, transform:rotate(-180deg):rotate(0deg):350:easeInOutExpo]:delay-500"
-				on-click="s:[sidebar-close-clicked:public]">
+				on-click="s:[sidebar-close-clicked:public]"
+				when-sidebar-link-clicked="p:[op:0:delay-500]">
 				<svg viewBox="0 0 100 100">
 					<circle cx="50" cy="50" r="36"></circle>
 					<g>
@@ -39,7 +40,7 @@
 				ng-include="root.base_url + 'shared/templates/components/svg/sidebar/home.html'"
 				init-with="p:[op:0, z-index:-1]"
 				on-click="s:[sidebar-col-close-clicked:public]"
-				when-sidebar-link-clicked="p:[z-index:1, op:1, transform:translateX(0px) translateZ(0px):translateX(-249px) translateZ(0px):1000:easeOutExpo easeOutExpo]:delay-500">
+				when-sidebar-link-clicked="p:[z-index:1, op:1, transform:translateX(0px) translateZ(0px):translateX(-249px) translateZ(0px):500:easeOutExpo easeOutExpo]:delay-500">
 			</a>
 		</header>
 		<nav>
