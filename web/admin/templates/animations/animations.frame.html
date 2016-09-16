@@ -49,13 +49,15 @@
     <div class='z-index-100 full-x absolute left-0 bg-transparent' style='top:20%;'>
         <div class='flex-start border-2-bottom border-azure border-solid full-x z-index-100 overflow-x no-scrollbar' style='height:100px;'  ng-repeat='(prop, prop_obj) in afc.player.debug.props' ng-if='!result.skipPlot'>
             <div class='relative bg-azure full-y flex-wrap-center' style='width:10%;'>
-                <span class='weight-900 uppercase'> {{prop}} {{Object.keys(afc.player.debug.props[prop].skipPlot)}}</span>
+                <span class='weight-900 uppercase'> {{prop}} </span>
+                <div class='weight-700'> Max: {{prop_obj.values[0].plot.max}}</div>
+                <div class='weight-700'> Min: {{prop_obj.values[0].plot.min}}</div>
             </div>
 
             <ul class='flex-vertical-center overflow-x bg-transparent' style='width:90%;'>
                 <li ng-repeat='value_obj in prop_obj.values' class='full-y relative' style='width:{{value_obj.html.width * 1.25}}%;'>
                     <div class='full-xy top-0 left-0 border-2 flex-vertical-center absolute'>
-                        <span ng-repeat='point in value_obj.plot.values track by $index' ng-if='point' class='round bg-white z-index-1000 absolute p15-grid' style='left:{{(100/(value_obj.plot.values.length - 1))*$index}}%; bottom:{{point/value_obj.plot.max*100}}%; width:5px;height:5px;'>
+                        <span ng-repeat='point in value_obj.plot.values track by $index' ng-if='point' class='round bg-white z-index-1000 absolute p15-grid' style='left:{{(100/(value_obj.plot.values.length - 1))*$index}}%; bottom:{{100 * (point/(value_obj.plot.max - value_obj.plot.min))}}%; width:1px;height:5px;'>
                             &nbsp;
                         </span>
                     </div>

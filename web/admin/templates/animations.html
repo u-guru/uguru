@@ -1,4 +1,4 @@
-<div class='absolute top-0 left-0 full-xy flex-wrap flex-vertical-center flex-stretch flex-start bg-charcoal' data="animations">
+<div class='absolute top-0 left-0 full-xy flex-wrap flex-vertical-center flex-stretch flex-start bg-charcoal' data="animations" ng-controller='AdminAnimationController as aa'>
         <div class='flex-wrap-center full-x text-center bg-azure-20p full-x relative' style='height:25%;'>
             <div class='bg-azure-50p full-x'>
                 <h1 class='txt-64 uppercase p20y'>
@@ -14,9 +14,13 @@
                 <h4 class='txt-24 uppercase weight-700 txt-azure txt-center full-x p10y border-2-bottom border-slate'> {{key}} </h4>
                 <div class='relative'>
                     <ul class='txt-24 full-y uppercase weight-500 txt-azure flex-wrap flex-vertical-center overflow-y flex-start'>
-                        <li ng-repeat='item in value.all' class='full-x flex-stretch m05y'>
+                        <li ng-repeat='item in value.all' class='full-x flex-stretch m05y' ng-if='value.all.length' ng-click='aa.launchWindow(item)'>
                             {{item}}
                         </li>
+                        <li ng-if='!value.all.length' class='full-x m05y txt-left' ng-repeat='custom_anim in aa.customAnimations track by $index' ng-click='aa.launchWindow(custom_anim)'>
+                            {{custom_anim}}
+                        </li>
+
                     </ul>
                 </div>
             </div>

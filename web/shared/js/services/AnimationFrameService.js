@@ -113,7 +113,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           //starting
           if (player.tick.current === player.tick.start) {
             player.time = {start: window.performance.now(), delta: window.performance.now()};
-
+          }
+          if (player.tick.current <= 0) {
+            player.reset(player.schedule);
           }
           // player.tick = 0;
 
@@ -332,7 +334,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               applyAtT: getApplyPropertyFunc(elem, initPropObj.property)
             }
             if (debug) {
-              if (result.name === 'transform') {
+
+              if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
                 delete timeline.props['transform']
                 addIndependentTransformPropsToTimeline(result, timeline);
               } else {
@@ -428,8 +431,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               timeline.props[prop] = [];
             }
             var result = constructPropObjFromCustomBP(elem, prop, animDict, propBreakpoints[i], propBreakpoints[i + 1])
+
             if (debug) {
-              if (result.name === 'transform') {
+
+              if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
                 delete timeline.props['transform']
                 addIndependentTransformPropsToTimeline(result, timeline);
               } else {
