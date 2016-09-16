@@ -54,21 +54,19 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       });
     }
   })
-  .state('root.dev.scroll', {
-    name: 'root.dev.scroll',
-    parent: 'root.dev',
-    url:'/scroll',
-    templateUrl: 'admin/templates/scroll.html',
-    controller: function($state, $location, $timeout) {
-      console.log($state.current.name);
-    }
-  })
+
   .state('root.api', {
     name: 'root.api',
     parent: 'root',
     url:'/admin/api',
     abstract:true,
     template: '<ui-view/>'
+  })
+  .state('root.api.list', {
+    name: 'root.api.list',
+    parent: 'root.api',
+    url:'/list',
+    templateUrl: 'admin/templates/api.html'
   })
   .state('root.api.components', {
     parent: 'root.api',
@@ -77,18 +75,50 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     abstract: true,
     template: '<ui-view/>'
   })
+  .state('root.api.animations', {
+    parent: 'root.api',
+    name: 'root.api.animations',
+    url: '/animations',
+    abstract: true,
+    template: '<ui-view/>'
+  })
+  .state('root.api.animations.list', {
+    parent: 'root.api.animations',
+    name: 'root.api.animations.list',
+    url: '/list',
+    templateUrl: 'admin/templates/animations.html'
+  })
+  .state('root.api.animations.one', {
+    parent: 'root.api.animations',
+    name: 'root.api.animations.one',
+    url: '/{type}/{property}?{v}&{comp}&{kf}',
+    params: {
+      comp: 'svg.logo.guru-head',
+      kf: 60
+    },
+    templateUrl: 'admin/templates/animations/animations.frame.html'
+  })
   .state('root.api.states', {
     parent: 'root.api',
     name: 'root.api.states',
     url: '/states',
     abstract: true,
     template: '<ui-view/>'
-  })
-  .state('root.api.states.initLater', {
+})
+  .state('root.api.states.onKey', {
     parent: 'root.api.states',
-    name: 'root.api.states.initLater',
-    url: '/init-later',
-    templateUrl: 'admin/templates/api/states/init-later.html'
+    name: 'root.api.states.onKey',
+    url: '/on-key',
+    templateUrl: 'admin/templates/api/states/on-key.html'
+  })
+  .state('root.api.states.scroll', {
+    name: 'root.api.states.scroll',
+    parent: 'root.api.states',
+    url:'/scroll',
+    templateUrl: 'admin/templates/scroll.html',
+    controller: function($state, $location, $timeout) {
+      console.log($state.current.name);
+    }
   })
   .state('root.api.components.text', {
     parent: 'root.api.components',
@@ -458,6 +488,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   })
 
 
+  $urlRouterProvider.when("/admin/api/list", "/admin/api");
   $urlRouterProvider.otherwise('/');
 
 

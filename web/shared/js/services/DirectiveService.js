@@ -1028,28 +1028,28 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
             // }
 
             processCustomArgsArray(type, key, value, string_args, parsedPropDict, custom_args, state_name, elem, hasPlayer);
-            if (type === 'prop' &&  customAnimNameOnly.indexOf(key) > -1) {
-              var animPropCopy = parsedPropDict.animProp
-              var animObjIndex = customAnimNameOnly.indexOf(key);
-              var animObj = customAnimations.custom[animObjIndex];
-              var propFrames = PropertyService.parseAnimObjToPropArr(animObj.cssRules);
-              var stringsToAdd = [];
-              for (key in propFrames.props) {
-                var valArr = propFrames.props[key];
-                for (var j = 0; j < valArr.length - 1; j++) {
-                  var duration = animPropCopy.duration * (valArr[j + 1].percent - valArr[j].percent)/100;
-                  var delay = animPropCopy.delay + valArr[j].percent*10;
-                  var resultStr = key.replace('rgb', 'rgba') + ':' + valArr[j].value + ':' + valArr[j + 1].value + ':' + duration + ':' + animPropCopy.ease + ':' + delay;
-                  console.log(resultStr)
-                  stringsToAdd.push(resultStr);
-                }
-              }
-              stringsToAdd.forEach(function(prop, i) {
-                  stringPropArgs.push(prop);
-                // stringPropArgs
-              })
-              continue;
-            }
+            // if (type === 'prop' &&  customAnimNameOnly.indexOf(key) > -1) {
+            //   var animPropCopy = parsedPropDict.animProp
+            //   var animObjIndex = customAnimNameOnly.indexOf(key);
+            //   var animObj = customAnimations.custom[animObjIndex];
+            //   var propFrames = PropertyService.parseAnimObjToPropArr(animObj.cssRules);
+            //   var stringsToAdd = [];
+            //   for (key in propFrames.props) {
+            //     var valArr = propFrames.props[key];
+            //     for (var j = 0; j < valArr.length - 1; j++) {
+            //       var duration = animPropCopy.duration * (valArr[j + 1].percent - valArr[j].percent)/100;
+            //       var delay = duration * j
+            //       var resultStr = key.replace('rgb', 'rgba') + ':' + valArr[j].value + ':' + valArr[j + 1].value + ':' + duration + ':' + animPropCopy.ease + ':' + delay;
+            //       console.log(resultStr)
+            //       stringsToAdd.push(resultStr);
+            //     }
+            //   }
+            //   stringsToAdd.forEach(function(prop, i) {
+            //       stringPropArgs.push(prop);
+            //     // stringPropArgs
+            //   })
+            //   continue;
+            // }
 
           }
 

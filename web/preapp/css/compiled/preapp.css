@@ -2413,7 +2413,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   -webkit-perspective: 1000;
   perspective: 1000; }
   .splash-sidebar-container::-webkit-scrollbar {
@@ -5679,7 +5679,58 @@ a[class*="-container"]:hover .map-enter {
         .projector-courses .course-selected li a:hover > span svg, .projector-courses .course-selected li a:active > span svg {
           stroke: #40484B; }
 
-#faq .main {
+.splash-modal {
+  background: #40484B;
+  width: 100%;
+  height: 100%;
+  overflow: auto; }
+  .splash-modal header {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: calc(100% / 3);
+    background: #2B3234;
+    padding: 15px; }
+    .splash-modal header h1 {
+      font-weight: 600;
+      font-size: 28px;
+      text-align: center;
+      text-transform: capitalize; }
+    .splash-modal header .splash-exit {
+      position: absolute;
+      top: 0;
+      left: 0; }
+      .splash-modal header .splash-exit svg {
+        transform-origin: center center; }
+      .splash-modal header .splash-exit.desktop {
+        display: none; }
+        .splash-modal header .splash-exit.desktop svg {
+          transform: rotate(180deg); }
+      .splash-modal header .splash-exit.mobile svg {
+        transform: rotate(-90deg); }
+
+@media screen and (min-height: 680px) and (min-width: 768px) {
+  .splash-modal header {
+    height: 40%; }
+    .splash-modal header h1 {
+      font-size: 36px; }
+    .splash-modal header .splash-exit.desktop {
+      display: block; }
+    .splash-modal header .splash-exit.mobile {
+      display: none; } }
+.splash-faq > ul {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -5689,110 +5740,20 @@ a[class*="-container"]:hover .map-enter {
   display: flex;
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
-  flex-flow: row wrap; }
-#faq dl {
-  width: 100%;
-  margin-bottom: 0 !important; }
-  #faq dl dt {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-align-items: center;
-    align-items: center;
-    background: #696269;
-    border-radius: 2px 2px 0 0;
-    padding: 10px 15px;
-    font-size: 20px;
-    font-weight: 700; }
-    #faq dl dt .close-button {
-      display: block;
-      width: 40px;
-      height: 40px;
-      padding-left: 10px; }
-      #faq dl dt .close-button svg {
-        -webkit-transition: all 150ms ease-in-out;
-        -moz-transition: all 150ms ease-in-out;
-        -ms-transition: all 150ms ease-in-out;
-        -o-transition: all 150ms ease-in-out;
-        transition: all 150ms ease-in-out;
-        width: 100%;
-        height: 100%; }
-        #faq dl dt .close-button svg * {
-          stroke-width: 7px; }
-    #faq dl dt:not(.active) {
-      border-radius: 2px; }
-      #faq dl dt:not(.active) .close-button svg {
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg); }
-    #faq dl dt span {
-      display: block;
-      width: calc(100% - 40px); }
-  #faq dl dd {
-    -webkit-transition: all 150ms ease-in-out;
-    -moz-transition: all 150ms ease-in-out;
-    -ms-transition: all 150ms ease-in-out;
-    -o-transition: all 150ms ease-in-out;
-    transition: all 150ms ease-in-out;
-    -webkit-transform-origin: top center;
-    -moz-transform-origin: top center;
-    -ms-transform-origin: top center;
-    -o-transform-origin: top center;
-    transform-origin: top center;
-    background: white;
-    border: 2px solid #696269;
-    border-top: 0;
-    border-radius: 0 0 2px 2px;
-    padding: 10px 15px;
-    color: #40484B;
-    font-size: 16px;
-    font-weight: 600; }
-  #faq dl a {
-    display: block; }
-    #faq dl a:hover dt, #faq dl a:focus dt {
-      background: #b4b1b4;
-      color: #55555a; }
-      #faq dl a:hover dt .close-button svg, #faq dl a:focus dt .close-button svg {
-        -webkit-transform: rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        -o-transform: rotate(90deg);
-        transform: rotate(90deg); }
-        #faq dl a:hover dt .close-button svg *, #faq dl a:focus dt .close-button svg * {
-          stroke: #55555a; }
-      #faq dl a:hover dt.active .close-button svg, #faq dl a:focus dt.active .close-button svg {
-        -webkit-transform: rotate(135deg);
-        -moz-transform: rotate(135deg);
-        -ms-transform: rotate(135deg);
-        -o-transform: rotate(135deg);
-        transform: rotate(135deg); }
-    #faq dl a:hover + dd, #faq dl a:focus + dd {
-      border-color: #b4b1b4; }
-    #faq dl a:active dt {
-      background: #55555a;
-      color: white; }
-      #faq dl a:active dt .close-button svg * {
-        stroke: white; }
-    #faq dl a:active + dd {
-      border-color: #55555a; }
+  flex-flow: row wrap;
+  padding: 7.5px;
+  margin: 0 auto;
+  max-width: 1030px; }
+  .splash-faq > ul li {
+    width: 100%;
+    padding: 7.5px; }
+    .splash-faq > ul li .faq-card {
+      width: 100%;
+      max-width: 100%; }
 
 @media screen and (min-width: 768px) {
-  #faq .main {
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    padding: 15px; }
-  #faq dl {
-    width: 50%;
-    padding: 15px; } }
+  li {
+    width: 50%; } }
 /* ---------- PRICING */
 #pricing {
   width: 100%;

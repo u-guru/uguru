@@ -21,6 +21,23 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("data", ["$compile", 'XHRService', function($compile, XHRService) {
+        return {
+            restrict: 'A',
+            replace: true,
+            compile: function(lElem, lAttr) {
+                return {
+                    pre: function(scope, elem, attr) {
+                        var dataSets = ['api'];
+                        var callback = function(data) {scope[attr.data] = data; console.log(data); $compile(elem.contents())(scope)};
+                        XHRService.getJSONFile('get', 'admin/spec/' + attr.data + '.json', callback);
+
+                    },
+                    post: angular.noop
+                }
+            }
+        }
+    }])
     .directive("l", ["CompService", "$compile", function(CompService, $compile) {
         return {
             restrict: 'E',

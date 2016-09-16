@@ -11,6 +11,7 @@ function KeyboardService(Utilities, $timeout) {
     var deviceKeyboardOpen = false;
     var keyupNotRecent;
     var keydownNotRecent;
+    var keyboardCache = {};
     // function preventDefaultCutPaste() {
     //     document.body.oncopy = function() { alert('yo');return false; }
     //     document.body.oncut = function() { return false; }
@@ -133,6 +134,7 @@ function KeyboardService(Utilities, $timeout) {
         setDeviceKeyboardState:setDeviceKeyboardState,
         initOptionPressedAndReleasedFunction: initOptionPressedAndReleasedFunction,
         initCopyPasteFunctionCallbacks: initCopyPasteFunctionCallbacks,
-        initKeyboardKeydownFunc: initKeyboardKeydownFunc
+        initKeyboardKeydownFunc: initKeyboardKeydownFunc,
+        keyboardCache: keyboardCache
     }
 };
