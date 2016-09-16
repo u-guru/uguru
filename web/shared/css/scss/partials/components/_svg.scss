@@ -96,6 +96,15 @@
 			transform: scale(1);
 		}
 	}
+	&.no-rotate {
+		&:hover, &:focus {
+			svg {
+				g:not(.path) > path, .path {
+					transform: rotate(0deg);
+				}
+			}
+		}
+	}
 	&:active {
 		&:before {
 			background: lighten($slate, 15%);

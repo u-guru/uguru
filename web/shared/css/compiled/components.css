@@ -11,28 +11,28 @@
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
 @keyframes shake-opacity {
   0% {
-    transform: translateX(0) translateY(0);
+    transform: translate(0, 0);
     opacity: 1; }
   10% {
-    transform: translateX(2px) translateY(2px);
+    transform: translate(2px, 2px);
     opacity: 0.8; }
   20% {
-    transform: translateX(0px) translateY(0px);
+    transform: translate(0px, 0px);
     opacity: 0.47; }
   30% {
-    transform: translateX(0px) translateY(-4px);
+    transform: translate(0px, 4px);
     opacity: 0.3; }
   70% {
-    transform: translateX(1px) translateY(3px);
+    transform: translate(1px, 3px);
     opacity: 0.96; }
   80% {
-    transform: translateX(0px) translateY(-4px);
+    transform: translate(0px, -4px);
     opacity: 0.9; }
   90% {
-    transform: translateX(3px) translateY(-4px);
+    transform: translate(3px, -4px);
     opacity: 0.81; }
   100% {
-    transform: translateX(0) translateY(0);
+    transform: translate(0, 0);
     opacity: 1; } }
 @keyframes input-swingUp {
   0% {
@@ -14373,6 +14373,8 @@ input[type=range] {
       stroke: #40484B; }
     .icon-round-stroke:hover:before, .icon-round-stroke:focus:before {
       transform: scale(1); }
+  .icon-round-stroke.no-rotate:hover svg g:not(.path) > path, .icon-round-stroke.no-rotate:hover svg .path, .icon-round-stroke.no-rotate:focus svg g:not(.path) > path, .icon-round-stroke.no-rotate:focus svg .path {
+    transform: rotate(0deg); }
   .icon-round-stroke:active:before {
     background: #637074; }
   .icon-round-stroke:active svg circle {
