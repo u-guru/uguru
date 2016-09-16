@@ -519,7 +519,8 @@
 
 	<section class="splash-sidebar-content desktop"
 		init-with="p:[z-index:-1]"
-		when-sidebar-link-clicked="p:[z-index:10]">
+		when-sidebar-link-clicked="p:[z-index:10]"
+	 	when-sidebar-col-close-clicked="p:[opacity:1:0:100:easeOutSine, transform:translateX(0px):translateX(-200px):450:easeInOutSine]:delay-500">
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/faq.html'"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
 			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
@@ -529,8 +530,7 @@
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-exit"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
-			when-sidebar-col-close-clicked="p:[opacity:1:0:200:easeOutSine]:delay-500"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/pricing.html'"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
 			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
@@ -540,8 +540,7 @@
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-exit"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
-			when-sidebar-col-close-clicked="p:[opacity:1:0:200:easeOutSine]:delay-500"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
 		<div ng-include="root.base_url + 'preapp/templates/sidebar/team.html'"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
 			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
@@ -551,8 +550,7 @@
 			when-support-link-clicked="t-exit"
 			when-team-link-clicked="t-enter"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
-			when-sidebar-col-close-clicked="p:[opacity:1:0:200:easeOutSine]:delay-500"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
 		<div class="bg-campus"
 			init-with="p:[op:0, tr:translateX(252px) translateZ(0px)]"
 			when-sidebar-collapse="p:[transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
@@ -562,8 +560,7 @@
 			when-support-link-clicked="t-enter"
 			when-team-link-clicked="t-exit"
 			on-exit="p:[z-index:1]"
-			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"
-			when-sidebar-col-close-clicked="p:[opacity:1:0:200:easeOutSine]:delay-500"></div>
+			on-enter="p:[z-index:2, op:1, transform:translateX(252px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutExpo easeOutExpo]"></div>
 			<!-- when-sidebar-col-close-clicked="p:[opacity:1:0:100:easeOutSine, transform:translateX(0px):translateX(-200px):1000:easeOutSine]:delay-500"-->
 	</section>
 
