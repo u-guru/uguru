@@ -440,23 +440,26 @@
 								"bugs": [
 									{
 										"bug": "After onclick, the icon and the text link cross paths. Needs to be retimed and/or faded out",
+										"contact": "JO",
 										"fixed": false
 									},
 									{
 										"bug": "Get Started link isn't triggering",
+										"contact": "SM",
 										"fixed": false
 									},
 									{
 										"bug": "Active underline is not going over modal",
+										"contact": "GW",
 										"fixed": false
 									},
 									{
 										"bug": "Home icon rotates onHover",
-										"fixed": false
+										"fixed": true
 									},
 									{
 										"bug": "Back button needs rotation and to align-bottom with home icon",
-										"fixed": false
+										"fixed": true
 									}
 								]
 							}
@@ -486,20 +489,20 @@
 								},
 								"bugs": [
 									{
-										"bug": "Difficult to keep expanded based off of hovering over a link. Flickers and collapses back. Most apparent when trying to hover over multiple links",
-										"fixed": false
-									},
-									{
-										"bug": "Expanding and collapsing causes both icons to disappear on collapse view",
+										"bug": [
+											"Difficult to keep expanded based off of hovering over a link. Flickers and collapses back. Most apparent when trying to hover over multiple links",
+											"Expanding and collapsing causes both icons to disappear on collapse view",
+											"Mousing over from link to home button on expand causes both icons and numbers to disappear"
+										],
+										"contact": "SM",
 										"fixed": false
 									},
 									{
 										"bug": "Both home and close button present on expand",
+										"contact": "JO",
+										"note": "Remove close button when-sidebar-link-clicked, op:0"
 										"fixed": false
-									},
-									{
-										"bug": "Mousing over from link to home button on expand causes both icons and numbers to disappear",
-										"fixed": false
+									}
 									}
 								]
 							}
