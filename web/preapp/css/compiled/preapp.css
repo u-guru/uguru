@@ -5685,6 +5685,7 @@ a[class*="-container"]:hover .map-enter {
   height: 100%;
   overflow: auto; }
   .splash-modal header {
+    position: relative;
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -5709,17 +5710,46 @@ a[class*="-container"]:hover .map-enter {
       text-align: center;
       text-transform: capitalize; }
     .splash-modal header .splash-exit {
-      position: absolute;
-      top: 0;
-      left: 0; }
+      position: absolute; }
       .splash-modal header .splash-exit svg {
         transform-origin: center center; }
       .splash-modal header .splash-exit.desktop {
-        display: none; }
+        display: none;
+        width: 42px;
+        height: 42px;
+        top: 8px;
+        left: 8px; }
         .splash-modal header .splash-exit.desktop svg {
-          transform: rotate(180deg); }
-      .splash-modal header .splash-exit.mobile svg {
-        transform: rotate(-90deg); }
+          transform: rotate(-90deg); }
+      .splash-modal header .splash-exit.mobile {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        top: 0;
+        left: 0; }
+        .splash-modal header .splash-exit.mobile svg {
+          width: 36px;
+          height: 36px; }
+          .splash-modal header .splash-exit.mobile svg * {
+            stroke: white;
+            stroke-width: 6px; }
+    .splash-modal header + * {
+      margin: 0 auto;
+      max-width: 1030px; }
 
 @media screen and (min-height: 680px) and (min-width: 768px) {
   .splash-modal header {
@@ -5741,9 +5771,7 @@ a[class*="-container"]:hover .map-enter {
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  padding: 7.5px;
-  margin: 0 auto;
-  max-width: 1030px; }
+  padding: 7.5px; }
   .splash-faq > ul li {
     width: 100%;
     padding: 7.5px; }
@@ -5754,13 +5782,9 @@ a[class*="-container"]:hover .map-enter {
 @media screen and (min-width: 768px) {
   .splash-faq > ul li {
     width: 50%; } }
-/* ---------- PRICING */
-#pricing {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background: #40484B; }
-  #pricing header {
+.splash-pricing-props {
+  padding: 7.5px; }
+  .splash-pricing-props li {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -5768,71 +5792,29 @@ a[class*="-container"]:hover .map-enter {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    height: calc(100% / 3);
-    background: #69B3A5; }
-    #pricing header > h1 {
-      width: 100%;
-      font-size: 20px;
-      font-weight: 600;
-      color: white;
-      text-align: center;
-      text-transform: none; }
-    #pricing header ul {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      margin: -15px auto 0;
-      overflow-x: auto;
-      padding: 7.5px; }
-      #pricing header ul::-webkit-scrollbar {
-        display: none; }
-      #pricing header ul::-moz-scrollbar {
-        display: none; }
-      #pricing header ul li {
-        padding: 7.5px; }
-        #pricing header ul li .pricing-tile {
-          width: 270px;
-          border-color: #696269; }
-  #pricing > div {
-    padding: 15px;
-    width: 100%;
-    margin: auto; }
-    #pricing > div dl dt {
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.2; }
-    #pricing > div dl dd {
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1.2; }
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 7.5px; }
+    .splash-pricing-props li .pricing-tile {
+      width: 240px; }
+      .splash-pricing-props li .pricing-tile:not(.alert) {
+        border: 10px solid #2B3234; }
 
-@media screen and (max-width: 1070px) {
-  #pricing > header > ul {
-    width: 100%; }
-    #pricing > header > ul li:last-child {
-      padding-right: 15px; }
-  #pricing > div {
-    padding-top: 136px; } }
-@media screen and (min-width: 768px) {
-  #pricing > header > h1 {
-    padding: 30px;
-    font-size: 36px; }
-  #pricing > div {
-    padding: 165px 30px 15px;
-    max-width: 860px; }
-    #pricing > div dl dt {
-      font-size: 28px; }
-    #pricing > div dl dd {
-      font-size: 24px; } }
-@media screen and (min-width: 1070px) {
-  #pricing > header > ul {
+@media screen and (min-width: 780px) {
+  .splash-pricing-props {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-align-items: center;
