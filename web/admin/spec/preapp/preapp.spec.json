@@ -249,6 +249,31 @@
 										"fixed": false
 									}
 								]
+							},
+							{
+								"description": {
+									"element": "Welcome to U.Guru message",
+									"animation": "translate into place",
+									"easing": "easeOutSine"
+								},
+								"timing": {
+									"order": 2.8,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"JO": "Letters enter from center"
+								},
+								"bugs": [
+									{
+										"bug": "W, and sometimes other letters, do not animate fully through. In particular the translateZ",
+										"fixed": false
+									}
+								]
 							}
 						]
 					},
