@@ -1,11 +1,13 @@
 <div class="full-xy flex-center p15xy">
-	<div class="faq-card"
+	<div class="faq-card ghost border-cerise txt-white"
 		init-with="p-op"
 		on-init="s:[faq-item-init:public]"
+		on-mouse-enter="s:[ghost-hover:public]"
+		on-mouse-leave="s:[ghost-leave:public]"
+		on-click="s:[ghost-click:public]"
 		when-faq-item-init="a:[slideInUp-subtle:set:(dur:1000ms#func:linear):in]">
 		<dt>
-			<a class="bg bg-shamrock"
-				init-default
+			<a init-default
 				on-click="s:[faq-item-clicked:public]">
 				<h1 init-with="p-op"
 					when-faq-item-init="p:[opacity:0:1:250:easeOutQuart]:delay-250">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt?</h1>

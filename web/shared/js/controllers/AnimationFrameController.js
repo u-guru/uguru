@@ -30,6 +30,8 @@ angular.module('uguru.shared.controllers')
           afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.kf, true);
           afc.player = AnimationFrameService.getPlayer();
           afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, true);
+          console.log(afc.player)
+
         // };
         // afc.player.enableDebugMode();
         // console.log(afc.player.tick)

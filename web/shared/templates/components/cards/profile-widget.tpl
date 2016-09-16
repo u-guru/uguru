@@ -82,7 +82,7 @@
 		<div init-with="p:[op:0, tro:center center]"
 			when-pf-widget-init="a:[split-button:set:(dur:1200ms#func:linear):in:delay-500]">
 			<button class="bg-moola normal">
-				<span init-with="p:[op:0]"
+				<span init-with="p-op"
 					when-pf-widget-init="p:[opacity:0:1:500:easeInOutSine:delay-700]">Contact Guru</span>
 			</button>
 		</div>

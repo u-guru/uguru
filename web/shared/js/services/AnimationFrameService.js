@@ -155,8 +155,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         if (!player.debug) {
           player.debug = {states: [], props:{}}
         }
-        console.log(player.debug);
+
         player.debug.states.push(state);
+
         player.debug.selectedState = state;
         player.debug.totalStreams = 0;
         player.debug.elemPlayer = {
@@ -317,12 +318,13 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           } else {
             var iPropObj = initPropObj(iAnim);
+
             var offset = iPropObj.delay;
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
+
             if (!(iPropObj.property in timeline.props)) {
-              timeline.props[initPropObj.property] = [];
+              timeline.props[iPropObj.property] = [];
             }
-            timeline.props[initPropObj.property].push(timeline.events.length + 1);
 
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
             var result = {
@@ -331,16 +333,21 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               offset: iPropObj.delay,
               name: iPropObj.property,
               values: values,
-              applyAtT: getApplyPropertyFunc(elem, initPropObj.property)
+              applyAtT: getApplyPropertyFunc(elem, iPropObj.property)
             }
+
             if (debug) {
 
               if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
                 delete timeline.props['transform']
                 addIndependentTransformPropsToTimeline(result, timeline);
+                timeline.props[iPropObj.property].push(result);
               } else {
-                timeline.props[prop].push(result);
+                timeline.props[iPropObj.property].push(result);
               }
+
+              scaleTimelineValuesForPlot(timeline.props);
+
             }
             timeline.events.push(result);
           }
@@ -364,6 +371,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       function getApplyPropertyFunc(elem, prop) {
+        console.log(elem, prop)
         return function(value) {
           elem.style[prop] = value;
         }
@@ -470,7 +478,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           propStreams.forEach(function(stream, i) {
             stream.plot.max = plotStats.max;
             stream.plot.min = plotStats.min;
-            console.log(stream.plot.values);
           })
         }
       }
