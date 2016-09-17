@@ -270,12 +270,14 @@
 								},
 								"bugs": [
 									{
-										"bug": "W, and sometimes other letters, do not animate fully through. In particular the translateZ",
+										"bug": "Transform animating in conjuction with another propery, in this case opacity, is taking the duration of the first propery",
 										"context": [
 											{
-												"line": 132,
+												"file": "warp-objects.html",
+												"line": 5,
 												"state": "when-letter-open",
-												"syntax": "p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-33deg) translateX(-180px) translateY(-239px):translateZ(0px) rotate(-33deg) translateX(-180px) translateY(-239px):500:easeInSine easeInSine easeInSine easeInSine]"
+												"syntax": "p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-33deg) translateX(-180px) translateY(-239px):translateZ(0px) rotate(-33deg) translateX(-180px) translateY(-239px):500:easeInSine easeInSine easeInSine easeInSine]",
+												"note": "Further context commented out. For now, current workaround is adding a scale(0) on-init instead of opacity 0."
 											}
 										],
 										"fixed": false
