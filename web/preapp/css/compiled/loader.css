@@ -1981,14 +1981,14 @@
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 1; } }
 /*-- SHARED */
-.loader-portal-container, .states.loader-portal, .portal-transition, .portal-transition-container, .portal-end, .portal-page, .warp-items, .warp-letters {
+.loader-portal-outer, .loader-portal-container, .states.loader-portal, .portal-transition, .portal-transition-container, .portal-end, .portal-page, .warp-items, .warp-letters {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%; }
 
-.loader-portal-container, .portal-end, .warp-items, .warp-letters {
+.loader-portal-outer, .loader-portal-container, .portal-end, .warp-items, .warp-letters {
   -webkit-perspective: 1000;
   perspective: 1000; }
 
@@ -2010,6 +2010,9 @@
   justify-content: center; }
 
 /*-- CONTAINER */
+.loader-portal-outer {
+  z-index: 999; }
+
 .loader-portal-container {
   transition: all 300ms ease-in-out;
   overflow: hidden;
