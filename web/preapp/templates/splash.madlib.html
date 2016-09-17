@@ -83,7 +83,7 @@
             <div class="adlib-header-container relative"
                 init-with="p-op"
 				when-madlib-init="a:[adlib-header-smash:set:(dur:1000ms):in]">
-                <h1 class="adlib-header desktop" desktop>
+                <h1 class="adlib-header desktop">
                     <span init-with="p:[tr:translate3d(40px#0#0)]"
 						when-madlib-init="p:[transform:translateX(40px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
 						{{madlib.category.tags_data.template.beginning}}
@@ -179,7 +179,7 @@
 						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]" -->
 					</span>
                 </h1>
-				<h1 class="adlib-header mobile" mobile>
+				<h1 class="adlib-header mobile">
 					<!-- ng-if="root.window.mobile" -->
                     <span init-with="p:[tr:translate3d(48px#0#0)]"
 						init-default
