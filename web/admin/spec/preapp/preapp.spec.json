@@ -305,12 +305,14 @@
 					{
 						"bug": "header doesn't show up at a certain height, check CSS",
 						"file": "splash.madlib.html",
-						"fixed": false
+						"fixed": true
 					},
 					{
 						"bug": "animating multiple values of stroke-dasharray causes the animation to not render",
 						"file": "splash.madlib.html",
 						"line": 123,
+						"ideal": "p:[stroke-dashoffset:-701:0:750:easeOutExpo, stroke-dasharray:701#701:16#14:750:easeOutExpo]:delay-2000",
+						"workaround": "p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-2000",
 						"fixed": false
 					}
 				],
