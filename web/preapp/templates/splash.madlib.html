@@ -84,7 +84,7 @@
                 init-with="p-op"
 				when-madlib-init="a:[adlib-header-smash:set:(dur:800ms):in]">
                 <h1 class="adlib-header desktop">
-                    <span init-with="p:[tr:translate3d(40px#0#0)]"
+                    <span init-with="p:[tr:translateX(40px) translateZ(0px)]"
 						when-madlib-init="p:[transform:translateX(40px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
 						{{madlib.category.tags_data.template.beginning}}
 						<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-300"
@@ -100,7 +100,7 @@
 						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]" -->
 					</span>
                     <a id="blank-1" class="tag-adlib blank"
-						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(0#0#0) scale(1.7)]"
+						init-with="p:[bg:rgba(64#72#75#0), tr:translateZ(0px) scale(1.7)]"
 						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#.5):500:easeOutSine, transform:translateZ(0px) scale(1.7):translateZ(0px) scale(1):500:easeOutSine easeOutSine]:delay-1250">
 						<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-250"
 						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
@@ -116,7 +116,7 @@
                         <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                             <rect class="null" x="2" y="2" width="280" height="84" rx="16"
 								init-with="p:[stroke-dashoffset:-701, stroke-dasharray:701]"
-								when-madlib-init="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-2000"></rect>
+								when-madlib-init="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 500ms cubic-bezier(.17#.67#.12#1)]:delay-2000"></rect>
 								<!-- @samir animating multiple values of stroke-dasharray causes the animation to not render -->
 								<!-- when-madlib-init="p:[stroke-dashoffset:-701:0:750:easeOutCirc, stroke-dasharray:701#701:16#14:750:easeOutCirc]:delay-2000" -->
                         </svg>
@@ -124,7 +124,7 @@
 							init-with="p:[font-weight:600]"
 							when-madlib-init="p:[font-weight:600:700:750:easeOutSine]:delay-2000">{{madlib.category.tags_data.template.p1}}</b>
                     </a>
-                    <span init-with="p:[tr:translate3d(-40px#0#0)]"
+                    <span init-with="p:[tr:translateX(-40px) translateZ(0px)]"
 						when-madlib-init="p:[transform:translateX(-40px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
 						{{madlib.category.tags_data.template.middle}}
 						<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-200"
@@ -140,8 +140,8 @@
 						when-university-dropdown-toggle-off="p:[opacity:0.1:1:250:easeInOutSine]" -->
 					</span>
                     <a id="blank-2" class="tag-adlib blank"
-						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(-37.5px#0#0) scale(1.7)]"
-						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#.5):500:easeOutSine, transform:translateX(-37.5px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
+						init-with="p:[bg:rgba(64#72#75#0), tr:translateX(-37.5px) translateZ(0px) scale(1.7)]"
+						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#.5):500:easeOutSine, transform:translateX(-37.5px) translateZ(0px) scale(1.7):translateX(0px) translateZ(0px) scale(1):500:easeOutSine easeOutSine easeOutSine]:delay-1250">
 						<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-150"
 						when-category-dropdown-mouse-leave="p:[opacity:0.25:1:250:easeInOutSine]"
 
@@ -156,13 +156,13 @@
                         <svg class="desktop" width="142px" height="44px" viewBox="0 0 284 88">
                             <rect class="null" x="2" y="2" width="280" height="84" rx="16"
 								init-with="p:[stroke-dashoffset:-701, stroke-dasharray:701]"
-								when-madlib-init="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-2000"></rect>
+								when-madlib-init="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 500ms cubic-bezier(.17#.67#.12#1)]:delay-2000"></rect>
                         </svg>
                         <b id="blank-2-text"
 							init-with="p:[font-weight:600]"
 							when-madlib-init="p:[font-weight:600:700:750:easeOutSine]:delay-2000">{{madlib.category.tags_data.template.p2}}</b>
                     </a>
-                    <span init-with="p:[tr:translate3d(-35px#0#0)]"
+                    <span init-with="p:[tr:translateX(-35px) translateZ(0px)]"
 						when-madlib-init="p:[transform:translateX(-35px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">
 						{{madlib.category.tags_data.template.end}}
 						<!-- when-category-dropdown-mouse-enter="p:[opacity:1:0.25:250:easeInOutSine]:delay-100"
@@ -180,39 +180,39 @@
                 </h1>
 				<h1 class="adlib-header mobile">
 					<!-- ng-if="root.window.mobile" -->
-                    <span init-with="p:[tr:translate3d(48px#0#0)]"
+                    <span init-with="p:[tr:translateX(48px) translateZ(0px)]"
 						init-default
 						when-madlib-init="p:[transform:translateX(48px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">{{madlib.category.tags_data.template.beginning}}</span>
                     <a id="blank-1" class="tag-adlib blank"
-						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(0#0#0) scale(1.4)]"
-						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#0.5):500:easeOutSine, transform:translateZ(0px) scale(1.4):translateZ(0px) scale(1):500:easeOutSine]:delay-1250">
+						init-with="p:[bg:rgba(64#72#75#0), tr:translateZ(0px) scale(1.4)]"
+						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#0.5):500:easeOutSine, transform:translateZ(0px) scale(1.4):translateZ(0px) scale(1):500:easeOutSine easeOutSine]:delay-1250">
                         <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                             <rect x="2" y="2" width="256" height="72" rx="16"
 								init-with="p:[stroke-dashoffset:-701, stroke-dasharray:701]"
-								when-madlib-init="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-2000"></rect>
+								when-madlib-init="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 500ms cubic-bezier(.17#.67#.12#1)]:delay-2000"></rect>
                         </svg>
                         <b id="blank-1-text"
 							init-with="p:[font-weight:600]"
 							when-madlib-init="p:[font-weight:600:700:750:easeOutSine]:delay-2000">{{madlib.category.tags_data.template.p1}}</b>
                     </a>
-                    <span init-with="p:[tr:translate3d(-48px#0#0)]"
+                    <span init-with="p:[tr:translateX(-48px) translateZ(0px)]"
 						init-default
 						when-madlib-init="p:[transform:translateX(-48px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">{{madlib.category.tags_data.template.middle}}</span>
                     <a id="blank-2" class="tag-adlib blank"
-						init-with="p:[bg:rgba(64#72#75#0), tr:translate3d(-2px#0#0) scale(1.4)]"
+						init-with="p:[bg:rgba(64#72#75#0), tr:translateX(-2px) translateZ(0px) scale(1.4)]"
 						when-madlib-init="p:[background:rgba(64#72#75#0):rgba(64#72#75#0.5):500:easeOutSine, transform:translateX(-2px) translateZ(0px) scale(1.4):translateX(0px) translateZ(0px) scale(1):500:easeOutSine easeOutSine easeOutSine]:delay-1250">
                         <svg class="mobile" width="130px" height="38px" viewBox="0 0 260 76">
                             <rect x="2" y="2" width="256" height="72" rx="16"
 								init-with="p:[stroke-dashoffset:-701, stroke-dasharray:701]"
-								when-madlib-init="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 750ms cubic-bezier(.17#.67#.12#1)]:delay-2000"></rect>
+								when-madlib-init="p:[stroke-dashoffset:0, stroke-dasharray:16#14, t:all 500ms cubic-bezier(.17#.67#.12#1)]:delay-2000"></rect>
                         </svg>
                         <b id="blank-2-text"
 							init-with="p:[font-weight:600]"
 							when-madlib-init="p:[font-weight:600:700:750:easeOutSine]:delay-2000">{{madlib.category.tags_data.template.p2}}</b>
                     </a>
-                    <span init-with="p:[tr:translate3d(-23px#0#0)]"
+                    <span init-with="p:[tr:translateX(-23px) translateZ(0px)]"
 						init-default
-						when-madlib-init="p:[transform:translateX(-23px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine]:delay-1250">{{madlib.category.tags_data.template.end}}</span>
+						when-madlib-init="p:[transform:translateX(-23px) translateZ(0px):translateX(0px) translateZ(0px):500:easeOutSine easeOutSine]:delay-1250">{{madlib.category.tags_data.template.end}}</span>
                 </h1>
             </div>
             <ul init-default
