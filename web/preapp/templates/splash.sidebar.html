@@ -2,6 +2,8 @@
 	when-sidebar-init="t:[init:self]"
 	init-with="p-op"
 	on-init="p:[opacity:0:1:250:easeOutSine]"
+	when-sidebar-icon-clicked="p:[op:1]"
+	when-sidebar-close-clicked="p:[opacity:1:0:1000:easeOutSine]:delay-1000"
 	init-later>
 	<!-- faq-link-clicked:public:delay-5000 -->
 
