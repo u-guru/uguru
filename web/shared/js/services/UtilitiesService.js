@@ -74,9 +74,7 @@ function UtilitiesService($rootScope, $compile, $timeout) {
             var border_bottom = parseInt(style.getPropertyValue("border-bottom-width"));
             height = height - padding_top - padding_bottom - border_top - border_bottom
           }
-          console.log(height / font_size)
           var lines = height/(font_size);
-          console.log(elem.getBoundingClientRect().width, font_size)
 
           return lines;
     }
