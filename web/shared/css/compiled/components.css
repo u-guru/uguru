@@ -11,28 +11,28 @@
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
 @keyframes shake-opacity {
   0% {
-    transform: translateX(0) translateY(0);
+    transform: translate(0, 0);
     opacity: 1; }
   10% {
-    transform: translateX(2px) translateY(2px);
+    transform: translate(2px, 2px);
     opacity: 0.8; }
   20% {
-    transform: translateX(0px) translateY(0px);
+    transform: translate(0px, 0px);
     opacity: 0.47; }
   30% {
-    transform: translateX(0px) translateY(4px);
+    transform: translate(0px, 4px);
     opacity: 0.3; }
   70% {
-    transform: translateX(1px) translateY(3px);
+    transform: translate(1px, 3px);
     opacity: 0.96; }
   80% {
-    transform: translateX(0px) translateY(-4px);
+    transform: translate(0px, -4px);
     opacity: 0.9; }
   90% {
-    transform: translateX(3px) translateY(-4px);
+    transform: translate(3px, -4px);
     opacity: 0.81; }
   100% {
-    transform: translateX(0) translateY(0);
+    transform: translate(0, 0);
     opacity: 1; } }
 @keyframes input-swingUp {
   0% {
@@ -3896,7 +3896,8 @@ fieldset.no-border * {
         padding: 7.5px;
         font-size: 20px;
         font-weight: 600;
-        width: calc(100% - 24px - 15px); }
+        width: calc(100% - 24px - 15px);
+        text-align: left; }
       .faq-card dt a div {
         padding: 7.5px; }
         .faq-card dt a div span {
@@ -3917,7 +3918,8 @@ fieldset.no-border * {
         margin: 0 !important;
         padding: 7.5px;
         font-size: 16px;
-        line-height: 1.2; }
+        line-height: 1.2;
+        text-align: left; }
   .faq-card.ghost dt a {
     border-width: 2px;
     border-style: solid; }

@@ -1,7 +1,11 @@
 <section class="splash-team splash-modal">
 	<header>
-		<a class="splash-exit mobile" ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"></a>
-		<a class="splash-exit desktop icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/up-circle.html'"></a>
+		<a class="splash-exit mobile" ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
+			init-default
+			on-click="s:[modal-close:public, team-modal-close:public]"></a>
+		<a class="splash-exit desktop icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/up-circle.html'"
+			init-default
+			on-click="s:[modal-close:public, team-modal-close:public]"></a>
 		<h1>Team</h1>
 	</header>
 	<div>
