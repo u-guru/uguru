@@ -36,10 +36,12 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }[value]
       }
       if (arg_name === 'iter') {
-        return {
-          'i': 'infinite',
-          '-1': 'infinite'
-        }[value]
+
+        if (value === 'i' || value === '-1') {
+          return 'inf'
+        } else {
+          return value
+        }
       }
       if (arg_name === 'easingFunc' && value.indexOf('(') > -1) {
         return 'cb(' +  value + ')';
@@ -47,6 +49,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       if (arg_name === 'duration' || arg_name === 'delay') {
         return value + 'ms'
       }
+
     }
 
     // function initStatePlayer() {
@@ -129,6 +132,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       player.scheduleStream = function(player, state_obj, offset, debug) {
         var streams = state_obj.events;
         player.tick = {start: 0, end:0, current:0};
+        if (state_obj.customProps) {
+          player.customProps = state_obj.customProps
+        }
         var shallowCopyStreams = [];
         for (var i = 0; i < streams.length; i++) {
           var tick = {start:0, end: 0, current:0};
@@ -214,6 +220,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
               }
         })
+        $timeout(function() {
+          updatePlayerArgs(player, true);
+        })
+
         function getSectionObj(section, duration, offset) {
           section.html = {width: 0, left: 0}
           var totalAnimLength = duration;
@@ -234,6 +244,59 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
 
       }
+
+      function updatePlayerArgs(player, skip_first) {
+        if (!skip_first && player.customProps) {
+          if (['ar', 'a'].indexOf(player.customProps.direction.value) > -1) {
+            if (player.customProps.direction.current === 'f') {
+              player.customProps.direction.current = 'r';
+            } else {
+              player.customProps.direction.current = 'f';
+            }
+          }
+          if (!player.customProps.iter.infinite) {
+            player.customProps.iter.count.current = player.customProps.iter.count.current - 1;
+          }
+        }
+            player.debug.elemPlayer.time.elapsed = 0;
+            if (player.debug.elemPlayer.duration) {
+              player.debug.elemPlayer.duration.innerHTML = 0 + 'ms';
+            }
+            if (player.debug.elemPlayer.bar) {
+              player.debug.elemPlayer.bar.style.width = '0%';
+            }
+            if (player.debug.elemPlayer.ball) {
+              player.debug.elemPlayer.ball.style.left = '0%';
+            }
+            if (player.debug.elemPlayer.count) {
+              var iterVal;
+              if (!player.customProps) {
+                iterVal = player.schedule.streams[0].iter.count.current;
+              } else {
+                if (player.customProps.iter.infinite) {
+                  iterVal = 'i'
+                } else {
+                  iterVal = player.customProps.iter.count.current;
+                }
+              }
+              // if (iterVal.infinite) {
+              //   iterVal = 'i';
+              // } else {
+              //   iterVal = iterVal.current;
+              // }
+              player.debug.elemPlayer.count.innerHTML = getDebugFormat('iter',  iterVal);
+            }
+            if (player.debug.elemPlayer.direction) {
+              var direction;
+              if (!player.customProps) {
+                direction = player.schedule.streams[0].direction.current;
+              } else {
+                direction = player.customProps.direction.current;
+              }
+
+              player.debug.elemPlayer.direction.innerHTML = getDebugFormat('direction',  (direction + ''));
+            }
+        }
 
       player.stepForward = function(schedule) {
         time_delta = schedule.lastTimeDelta;
@@ -267,6 +330,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           var streamPopped = player.schedule.streams.shift();
           var streamDelay = 0;
           if (!stream.iter.infinite) {
+
             streamPopped.iter.count.current--;
           }
           if (streamPopped.iter.count.current >= 1) {
@@ -321,30 +385,13 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               } else {
                 stream.tick.current = stream.tick.start;
               }
-              console.log('switching to', stream.direction.current);
-
             // }
 
             player.schedule.streams.push(stream);
           })
         }
-        console.log(player.schedule.streams)
 
-        if (player.debug) {
-          player.debug.elemPlayer.time.elapsed = 0;
-          if (player.debug.elemPlayer.duration) {
-            player.debug.elemPlayer.duration.innerHTML = 0 + 'ms';
-          }
-          if (player.debug.elemPlayer.bar) {
-            player.debug.elemPlayer.bar.style.width = '0%';
-          }
-          if (player.debug.elemPlayer.ball) {
-            player.debug.elemPlayer.ball.style.left = '0%';
-          }
-          if (player.debug.elemPlayer.count) {
-            player.debug.elemPlayer.count.innerHTML = player.iter.count.current + '';
-          }
-        }
+        updatePlayerArgs(player);
         if (player.schedule.streams.length) {
 
           player.time = {start: window.performance.now(), delta: window.performance.now()};
@@ -373,21 +420,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             stream.time.elapsed = 0;
           }
         })
-        if (player.debug) {
-          player.debug.elemPlayer.time.elapsed = 0;
-          if (player.debug.elemPlayer.duration) {
-            player.debug.elemPlayer.duration.innerHTML = 0 + 'ms';
-          }
-          if (player.debug.elemPlayer.bar) {
-            player.debug.elemPlayer.bar.style.width = '0%';
-          }
-          if (player.debug.elemPlayer.ball) {
-            player.debug.elemPlayer.ball.style.left = '0%';
-          }
-          if (player.debug.elemPlayer.count) {
-            player.debug.elemPlayer.count.innerHTML = player.iter.count.current + '';
-          }
-        }
+
       }
 
 
@@ -606,8 +639,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         animDict.duration = parseInt(animArgs[1]);
         animDict.delay = parseInt(animArgs[3]) || 0;
         animDict.easingFunc = animArgs[2] || 'linear'
+
         animDict.iter = parseIteration(animArgs[4]) || parseIteration("1");
         animDict.direction = parseDirection(animArgs[5]) || parseDirection("f");
+        timeline.customProps = {iter: animDict.iter, direction:animDict.direction};
         for (var prop in custom_props) {
           var propValues = [];
 
@@ -794,6 +829,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         if (!prop.iter) {
 
           prop.iter = (iArg && parseIteration(iArg)) || parseIteration('1');
+
           continue
         }
         if (!prop.direction) {
@@ -815,6 +851,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       var inBetween = 0;
       var iterSplit = iter.split('+')
       var iterVal = iterSplit[0].trim();
+      console.log(iterVal)
       if (iterVal === 'i') {
         iObj.infinite = true;
       }
@@ -822,7 +859,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         iObj.btwn = parseFloat(iterSplit[1]);
       }
       if (!iObj.infinite) {
-        iObj.count.total = parseFloat(iObj.count);
+        iObj.count.total = parseFloat(iterVal);
         iObj.count.current = iObj.count.total;
       }
       return iObj
