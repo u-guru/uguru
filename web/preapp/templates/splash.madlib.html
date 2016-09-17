@@ -2,11 +2,12 @@
     class="splash-hero-content"
 	ng-controller='SplashMadlibController as madlib'>
 	<!-- on-init="s:[madlib-init:public]" -->
-    <div class="splash-guru-head"
+	<div class="splash-guru-head"
 		init-default
 		when-transition-end="s:[head-squash:public:delay-600]"
-		when-head-squash="a:[head-squash:set:(dur:2000ms#func:linear):in] | s:[madlib-init:public]:delay-2000"
-		when-madlib-init="s:[coach-fill-init:public:delay-2500]">
+		when-head-squash="a:[head-squash:set:(dur:2000ms#func:linear):in] | s:[head-return:public]:delay-500"
+		when-head-return="s:[category-head-init:public:delay-2000]"
+		when-madlib-init="s:[coach-fill-init:public:delay-2000]">
 		<!-- when-category-head-init="s:[category-head-load:public:delay-2000]" -->
         <div class="splash-hero-guru splash-logo-guru"
 			ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"
