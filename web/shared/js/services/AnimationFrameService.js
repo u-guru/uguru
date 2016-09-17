@@ -114,7 +114,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           //starting
           if (player.tick.current === player.tick.start) {
-            player.applyArgs(player.schedule.streams, player.debug);
+            // player.applyArgs(player.schedule.streams, player.debug);
             player.time = {start: window.performance.now(), delta: window.performance.now()};
 
           }
@@ -141,10 +141,20 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           tick.current = Math.round(tick.start);
           player.tick.start = Math.max(Math.round(totalDurationAndDelayTicks + globalOffsetTicks), player.tick.start);
           player.tick.current = player.tick.start;
-
-          shallowCopyStreams.push({applyProp:streams[i].applyAtT, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, tick:tick, values:streams[i].values.slice()});
+          var newStream = {applyProp:streams[i].applyAtT, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, tick:tick, values:streams[i].values.slice()}
+          shallowCopyStreams.push(newStream);
         }
+        // player.applyArgs(player.schedule.streams, player.debug);
+        shallowCopyStreams.forEach(function(stream, i) {
+          console.log(stream.name, stream.direction, stream.tick, player.tick)
+          if (['r', 'ra'].indexOf(stream.direction.value) > -1) {
+
+            stream.values.reverse();
+            stream.tick.current = -1 * (player.tick.current + stream.tick.current);
+          }
+        })
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
+
 
 
         if (debug) {
@@ -171,6 +181,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           ball: document.querySelector('[inspector-ball]'),
           bar: document.querySelector('[inspector-bar]'),
           duration: document.querySelector('[inspector-duration]'),
+          count: document.querySelector('[inspector-count]'),
+          direction: document.querySelector('[inspector-direction]'),
           time: {duration: state.duration, offset: state.offset, elapsed:0}
         }
         player.debug.states.forEach(function(state, i) {
@@ -261,7 +273,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
 
-            streamPopped.tick.current = streamPopped.tick.start;
+            // streamPopped.tick.current = streamPopped.tick.start;
             streamPopped.time.elapsed = 0;
 
             if (stream.iter.btwn > 0) {
@@ -272,24 +284,51 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               if (Math.abs(btwnChange) > minPlayerOffset) {
                 minPlayerOffset =   Math.abs(btwnChange);
               }
-              streamPopped.tick.current -= btwnChange;
+              // streamPopped.tick.current -= btwnChange;
+            }
+            if (['ra', 'a'].indexOf(streamPopped.direction.value) > -1) {
+              console.log(streamPopped.direction)
+              if (streamPopped.direction.current === 'f') {
+                streamPopped.direction.current = 'r';
+
+              } else {
+                streamPopped.direction.current = 'f';
+
+              }
+              streamPopped.values.reverse();
+
             }
 
             if (!(stream.name in playerPropCount)) {
               playerPropCount[stream.name] = [];
             }
-            if (['ra','a'].indexOf(streamPopped.direction.value) > -1) {
-              streamPopped.values.reverse();
-            }
+
             playerPropCount[stream.name].push(streamPopped);
           }
         });
 
+        // if (minPlayerOffset && player.debug) {
+        //     player.tick.current = player.tick.start + minPlayerOffset;
+        //   }
+        player.tick.current = player.tick.start;
+
         for (key in playerPropCount) {
           playerPropCount[key].forEach(function(stream, i) {
+            // if (['ra', 'a'].indexOf(stream.direction.value) > -1) {
+              if (stream.direction.current === 'r') {
+
+                stream.tick.current = -1 * (player.tick.current + stream.tick.start);
+              } else {
+                stream.tick.current = stream.tick.start;
+              }
+              console.log('switching to', stream.direction.current);
+
+            // }
+
             player.schedule.streams.push(stream);
           })
         }
+        console.log(player.schedule.streams)
 
         if (player.debug) {
           player.debug.elemPlayer.time.elapsed = 0;
@@ -307,7 +346,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           }
         }
         if (player.schedule.streams.length) {
-          player.tick.current = player.tick.start + minPlayerOffset;
+
           player.time = {start: window.performance.now(), delta: window.performance.now()};
           player.active = true;
 
