@@ -29,7 +29,7 @@ angular.module('uguru.shared.directives.base.components')
                 return {
                     pre: function(scope, elem, attr) {
                         var dataSets = ['api'];
-                        var callback = function(data) {scope[attr.data] = data; console.log(data); $compile(elem.contents())(scope)};
+                        var callback = function(data) {scope.$parent[attr.data] = data; console.log(data); $compile(elem.contents())(scope)};
                         XHRService.getJSONFile('get', 'admin/spec/' + attr.data + '.json', callback);
 
                     },
