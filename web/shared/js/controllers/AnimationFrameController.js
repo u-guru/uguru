@@ -24,6 +24,7 @@ angular.module('uguru.shared.controllers')
 
     $timeout(function() {
         $scope.$apply();
+
         var stateName = 'on-init'
         afc.element.dom = document.querySelectorAll('#anim-element')[0];
         // for (var i = 0; i < afc.element.dom.length; i++) {

@@ -116,6 +116,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           if (player.tick.current === player.tick.start) {
             player.applyArgs(player.schedule.streams, player.debug);
             player.time = {start: window.performance.now(), delta: window.performance.now()};
+
           }
           if (player.tick.current <= 0) {
             player.reset(player.schedule);
@@ -141,7 +142,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.tick.start = Math.max(Math.round(totalDurationAndDelayTicks + globalOffsetTicks), player.tick.start);
           player.tick.current = player.tick.start;
 
-          shallowCopyStreams.push({applyProp:streams[i].applyAtT, iter:streams[i].iter, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, tick:tick, values:streams[i].values.slice()});
+          shallowCopyStreams.push({applyProp:streams[i].applyAtT, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, tick:tick, values:streams[i].values.slice()});
         }
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
@@ -238,20 +239,100 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       player.applyArgs = function(streams) {
+        var propStreams = {};
         streams.forEach(function(stream, index) {
+          console.log(stream)
           if (['ra', 'r'].indexOf(stream.direction.current) > -1) {
-            console.log(player)
             stream.values.reverse();
           }
         });
       }
 
-      player.reset = function(schedule) {
+      player.updateArgs = function(player) {
+        var playerPropCount = {};
+        var minPlayerOffset = 0;
+        player.schedule.streams.slice().forEach(function(stream, i) {
+          var streamPopped = player.schedule.streams.shift();
+          var streamDelay = 0;
+          if (!stream.iter.infinite) {
+            streamPopped.iter.count.current--;
+          }
+          if (streamPopped.iter.count.current >= 1) {
+
+
+
+            streamPopped.tick.current = streamPopped.tick.start;
+            streamPopped.time.elapsed = 0;
+
+            if (stream.iter.btwn > 0) {
+
+              var tickLengthMS = 1000/60;
+              var currentBefore = streamPopped.tick.current;
+              var btwnChange = Math.ceil(streamPopped.iter.btwn/tickLengthMS);
+              if (Math.abs(btwnChange) > minPlayerOffset) {
+                minPlayerOffset =   Math.abs(btwnChange);
+              }
+              streamPopped.tick.current -= btwnChange;
+            }
+
+            if (!(stream.name in playerPropCount)) {
+              playerPropCount[stream.name] = [];
+            }
+            if (['ra','a'].indexOf(streamPopped.direction.value) > -1) {
+              streamPopped.values.reverse();
+            }
+            playerPropCount[stream.name].push(streamPopped);
+          }
+        });
+
+        for (key in playerPropCount) {
+          playerPropCount[key].forEach(function(stream, i) {
+            player.schedule.streams.push(stream);
+          })
+        }
+
+        if (player.debug) {
+          player.debug.elemPlayer.time.elapsed = 0;
+          if (player.debug.elemPlayer.duration) {
+            player.debug.elemPlayer.duration.innerHTML = 0 + 'ms';
+          }
+          if (player.debug.elemPlayer.bar) {
+            player.debug.elemPlayer.bar.style.width = '0%';
+          }
+          if (player.debug.elemPlayer.ball) {
+            player.debug.elemPlayer.ball.style.left = '0%';
+          }
+          if (player.debug.elemPlayer.count) {
+            player.debug.elemPlayer.count.innerHTML = player.iter.count.current + '';
+          }
+        }
+        if (player.schedule.streams.length) {
+          player.tick.current = player.tick.start + minPlayerOffset;
+          player.time = {start: window.performance.now(), delta: window.performance.now()};
+          player.active = true;
+
+        } else {
+          player.pause();
+          if (player.debug) {
+            var elem = document.querySelector('#pause-element')
+            angular.element(elem).triggerHandler('click');
+          }
+        }
+        // console.log(player.schedule.streams.length, minPlayerOffset);
+        // player.schedule.streams.filter(function(stream, i) {
+        //   return stream.iter.count > 0;
+        // })
+        // player.play();
+      }
+
+      player.reset = function(schedule, and_play) {
 
         player.tick.current = player.tick.start;
         schedule.streams.forEach(function(stream, i) {
-          stream.tick.current = stream.tick.start;
-          stream.time.elapsed = 0;
+          if (stream.iter.count.current >= 1) {
+            stream.tick.current = stream.tick.start;
+            stream.time.elapsed = 0;
+          }
         })
         if (player.debug) {
           player.debug.elemPlayer.time.elapsed = 0;
@@ -264,16 +345,21 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           if (player.debug.elemPlayer.ball) {
             player.debug.elemPlayer.ball.style.left = '0%';
           }
+          if (player.debug.elemPlayer.count) {
+            player.debug.elemPlayer.count.innerHTML = player.iter.count.current + '';
+          }
         }
       }
 
 
       function applyTickDeltaToStreams(player, schedule, time_delta, tick_delta, scale_delta) {
         if (!player.tick.current) {
-          player.pause();
+          // player.pause();
           player.active = false;
-          var elem = document.querySelector('#pause-element')
-          angular.element(elem).triggerHandler('click');
+
+
+          player.updateArgs(player)
+
           // player.reset(schedule);
           return;
         }
@@ -515,6 +601,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       function scaleTimelineValuesForPlot(props, direction) {
         for (var prop in props) {
           var propStreams = props[prop];
+          if (['r', 'ra'].indexOf(direction) > -1) {
+            propStreams.reverse();
+          }
           var plotStats = {max: 0, min: 100000000000};
           propStreams.forEach(function(stream, i) {
             stream.plot = {max: 0, min: 100000000000, duration: 0, values:[]};
@@ -610,7 +699,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             values: values,
             direction: anim_info.direction,
             iter:anim_info.iter,
-            applyAtT: getApplyPropertyFunc(elem, prop_name)
+            applyAtT: getApplyPropertyFunc(elem, prop_name),
+            property: prop_name
           }
 
           return result;
@@ -681,7 +771,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
     }
 
     function parseIteration(iter) {
-      var iObj = {infinite: false, count: 1, btwn:0}
+      var iObj = {infinite: false, count: {current: 1, total: 1}, btwn:0}
       iter = iter.replace('plus', '+');
       var inBetween = 0;
       var iterSplit = iter.split('+')
@@ -693,7 +783,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         iObj.btwn = parseFloat(iterSplit[1]);
       }
       if (!iObj.infinite) {
-        iObj.count = parseFloat(iObj.count);
+        iObj.count.total = parseFloat(iObj.count);
+        iObj.count.current = iObj.count.total;
       }
       return iObj
     }
