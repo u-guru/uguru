@@ -3,16 +3,16 @@
 	ng-controller='SplashMadlibController as madlib'>
 	<!-- on-init="s:[madlib-init:public]" -->
     <div class="splash-guru-head"
-		init-with="p:[tr:translateY(120px)]"
+		init-default
 		when-transition-end="s:[head-squash:public:delay-600]"
-		when-head-squash="p:[transform:translateY(120px):translateY(-30px):500:easeInBack] | s:[head-return:public]:delay-500"
-		when-head-return="p:[transform:translateY(-30px):translateY(0px):500:easeOutElastic] | s:[category-head-init:public:delay-2000]"
+		when-head-squash="a:[head-squash:set:(dur:2000ms#func:linear):in] | s:[head-return:public]:delay-500"
+		when-head-return="s:[category-head-init:public:delay-2000]"
 		when-madlib-init="s:[coach-fill-init:public:delay-2000]">
 		<!-- when-category-head-init="s:[category-head-load:public:delay-2000]" -->
         <div class="splash-hero-guru splash-logo-guru"
 			ng-include="root.base_url + 'shared/templates/components/guru-head/main.html'"
 			init-with="p:[tro:center center]"
-			when-head-squash="p:[transform:scale(1):scale(2):350:easeInOutBounce:^:2+0:a]">
+			when-head-squash="a:[head-return:set:(dur:2000ms#func:linear):in]">
 			<!-- when-university-dropdown-mouse-enter="p:[op:0.1:delay-150, t:all 250ms ease-in-out]"
 			when-university-dropdown-mouse-leave="p:[op:1, t:all 250ms ease-in-out]"
 
