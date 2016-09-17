@@ -110,8 +110,11 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           player.active = true;
 
+
+
           //starting
           if (player.tick.current === player.tick.start) {
+            player.applyArgs(player.schedule.streams, player.debug);
             player.time = {start: window.performance.now(), delta: window.performance.now()};
           }
           if (player.tick.current <= 0) {
@@ -137,12 +140,14 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           tick.current = Math.round(tick.start);
           player.tick.start = Math.max(Math.round(totalDurationAndDelayTicks + globalOffsetTicks), player.tick.start);
           player.tick.current = player.tick.start;
-          shallowCopyStreams.push({applyProp:streams[i].applyAtT, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, tick:tick, values:streams[i].values.slice()});
+
+          shallowCopyStreams.push({applyProp:streams[i].applyAtT, iter:streams[i].iter, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, tick:tick, values:streams[i].values.slice()});
         }
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
 
         if (debug) {
+
           enablePlayerDebugMode(player, state_obj)
         }
       }
@@ -230,6 +235,15 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
       player.jump = function(schedule, amount, is_reverse) {
         applyTickDeltaToStreams(player, amount);
+      }
+
+      player.applyArgs = function(streams) {
+        streams.forEach(function(stream, index) {
+          if (['ra', 'r'].indexOf(stream.direction.current) > -1) {
+            console.log(player)
+            stream.values.reverse();
+          }
+        });
       }
 
       player.reset = function(schedule) {
@@ -363,11 +377,14 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               timeline.props[iPropObj.property] = [];
             }
 
-            var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
+            // var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
+
             var result = {
               duration: iPropObj.duration,
               id: timeline.events.length + 1,
               offset: iPropObj.delay,
+              direction: iPropObj.direction,
+              iter: iPropObj.iter,
               name: iPropObj.property,
               values: values,
               applyAtT: getApplyPropertyFunc(elem, iPropObj.property)
@@ -383,7 +400,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 timeline.props[iPropObj.property].push(result);
               }
 
-              scaleTimelineValuesForPlot(timeline.props);
+              scaleTimelineValuesForPlot(timeline.props, result.direction.current);
 
             }
             timeline.events.push(result);
@@ -408,7 +425,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       function getApplyPropertyFunc(elem, prop) {
-        console.log(elem, prop)
         return function(value) {
           elem.style[prop] = value;
         }
@@ -458,15 +474,15 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       function addCustomAnimPropsToTimeline(elem, anim_str, custom_props, timeline, debug) {
-        console.log()
+
         var animArgs = anim_str.split(':');
+
         var animDict = {};
         animDict.duration = parseInt(animArgs[1]);
         animDict.delay = parseInt(animArgs[3]) || 0;
         animDict.easingFunc = animArgs[2] || 'linear'
-        animDict.iter = animArgs[4] || 1;
-        animDict.direction = parseDirection(animArgs[5]) || 'f';
-
+        animDict.iter = parseIteration(animArgs[4]) || parseIteration("1");
+        animDict.direction = parseDirection(animArgs[5]) || parseDirection("f");
         for (var prop in custom_props) {
           var propValues = [];
 
@@ -491,11 +507,12 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           }
         }
         if (debug) {
-          scaleTimelineValuesForPlot(timeline.props);
+          console.log(animDict.direction.current)
+          scaleTimelineValuesForPlot(timeline.props, animDict.direction.current);
         }
       }
 
-      function scaleTimelineValuesForPlot(props) {
+      function scaleTimelineValuesForPlot(props, direction) {
         for (var prop in props) {
           var propStreams = props[prop];
           var plotStats = {max: 0, min: 100000000000};
@@ -511,6 +528,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               }
               stream.plot.values.push(scaled_value);
             })
+            if (['r', 'ra'].indexOf(direction) > -1) {
+              stream.plot.values.reverse();
+            }
           })
           propStreams.forEach(function(stream, i) {
             stream.plot.max = plotStats.max;
@@ -549,7 +569,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               transformSingleProp[key] = result[key];
             }
             transformSingleProp['values'] = values;
-            console.log(result)
             transformSingleProp.name = propNames[i]
             transformSingleProp.applyAtT = null;
             transformSingleProp.skipPlot = false;
@@ -581,14 +600,16 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         function constructPropObjFromCustomBP(elem, prop_name, anim_info, bp_start, bp_end) {
           var bpDeltaDuration = ((bp_end.percent - bp_start.percent)/100.0) * anim_info.duration;
           var bpDeltaDelay = (bp_start.percent/100.0) * anim_info.duration + anim_info.delay;
-
           var values = TweenService.preComputeValues(prop_name, bpDeltaDuration, bp_start.value, bp_end.value, 'linear', {cache:[]}).cache;
+
           var result = {
             offset: bpDeltaDelay,
             duration: bpDeltaDuration,
             name: prop_name,
             easingFunc: anim_info.easingFunc,
             values: values,
+            direction: anim_info.direction,
+            iter:anim_info.iter,
             applyAtT: getApplyPropertyFunc(elem, prop_name)
           }
 
@@ -604,6 +625,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
     */
 
     function initPropObj(str) {
+
       var strArgs = str.split(':');
       var strArgLength = strArgs.length;
       if (strArgLength < 8) {
@@ -641,14 +663,16 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           continue
         }
         if (!prop.iter) {
-          prop.iter = (iArg && parseInt(iArg)) || 1;
+
+          prop.iter = (iArg && parseIteration(iArg)) || parseIteration('1');
           continue
         }
         if (!prop.direction) {
-          prop.direction = iArg && parseDirection(iArg) || 'f';
+          prop.direction = iArg && parseDirection(iArg) || parseDirection('f');
           continue
         }
       }
+      console.log(str, prop)
       return prop
     }
 
@@ -656,10 +680,31 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       return parseInt(str_ms);
     }
 
-    function parseDirection(direction) {
+    function parseIteration(iter) {
+      var iObj = {infinite: false, count: 1, btwn:0}
+      iter = iter.replace('plus', '+');
+      var inBetween = 0;
+      var iterSplit = iter.split('+')
+      var iterVal = iterSplit[0].trim();
+      if (iterVal === 'i') {
+        iObj.infinite = true;
+      }
+      if (iter.indexOf('+') > -1 && iterSplit.length > 1) {
+        iObj.btwn = parseFloat(iterSplit[1]);
+      }
+      if (!iObj.infinite) {
+        iObj.count = parseFloat(iObj.count);
+      }
+      return iObj
+    }
 
-      if (!(direction in propOptions.direction)) return 'f';
-      return direction;
+    function parseDirection(direction) {
+      var directionIndex = propOptions.direction.indexOf(direction);
+      if (directionIndex === -1) {
+        direction = 'f';
+      };
+      var dObj = {current: propOptions.firstDirection[directionIndex], value: direction}
+      return dObj;
     }
 
     function getArrProperties(property, start, end, duration) {
@@ -669,6 +714,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
     function getPropOptions() {
       return {
         direction: ['f', 'a', 'r', 'ra'],
+        firstDirection: ['f', 'f', 'r', 'r'],
         debug: {}
       }
     }
