@@ -212,6 +212,7 @@
 .warp-object {
 	display: none;
 	position: absolute;
+	z-index: 3;
 }
 .warp-person {
 	width: 100px;
@@ -226,11 +227,13 @@
 	left: calc(50% - 200px);
 	width: 400px;
 	height: 400px;
+	z-index: 4;
 }
 .warp-letters {
 	transform-origin: center center;
 	transform: scale(0.5);
 	position: absolute;
+	z-index: 2;
 	top: 50%;
 	left: 50%;
 	width: 1920px;
