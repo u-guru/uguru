@@ -240,6 +240,20 @@
 	height: 1080px;
 	margin-top: -540px;
 	margin-left: -960px;
+	font-weight: 900;
+	> div {
+		&:nth-child(1) {
+			font-size: 60px;
+		}
+		&:nth-child(2) {
+			font-size: 140px;
+		}
+		span {
+			top: calc(50% - 36px);
+			left: calc(50% - 36px);
+			transform-origin: center center;
+		}
+	}
 }
 
 @media screen and (min-width: 768px) {

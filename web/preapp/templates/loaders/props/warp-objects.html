@@ -1,82 +1,91 @@
 <div class="warp-letters">
-	<div style="font-size: 60px; font-weight: 900"
-		on-init="send:[letter-open:public]">
+	<div init-default
+		when-warp-open="send:[letter-open:public]:delay-600">
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center,transform:translateZ(0px) rotate(-33deg) translateX(-180px) translateY(-239px)]">W</l>
-			<!-- when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-33deg) translateX(-180px) translateY(-239px):translateZ(0px) rotate(-33deg) translateX(-180px) translateY(-239px):500:easeInSine easeInSine easeInSine easeInSine]" -->
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-letter-open="p:[transform:translateZ(-4000px) rotate(-33deg) translateX(-180px) translateY(-239px) scale(0):translateZ(0px) rotate(-33deg) translateX(-180px) translateY(-239px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]">W</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(0px) rotate(-30deg) translateX(-151px) translateY(-230px)]">e</l>
-			<!-- when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-30deg) translateX(-151px) translateY(-230px):translateZ(0px) rotate(-30deg) translateX(-151px) translateY(-230px):500:easeInSine easeInSine easeInSine easeInSine]:delay-100" -->
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-letter-open="p:[transform:translateZ(-4000px) rotate(-30deg) translateX(-151px) translateY(-230px) scale(0):translateZ(0px) rotate(-30deg) translateX(-151px) translateY(-230px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-50">e</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(0px) rotate(-21deg) translateX(-160px) translateY(-205px)]">l</l>
-			<!-- when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-21deg) translateX(-160px) translateY(-205px):translateZ(0px) rotate(-21deg) translateX(-160px) translateY(-205px):500:easeInSine easeInSine easeInSine easeInSine]:delay-200" -->
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-letter-open="p:[transform:translateZ(-4000px) rotate(-21deg) translateX(-160px) translateY(-205px) scale(0):translateZ(0px) rotate(-21deg) translateX(-160px) translateY(-205px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-150">l</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(0px) rotate(-16deg) translateX(-151px) translateY(-194px)]">c</l>
-			<!-- when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-23deg) translateX(-129px) translateY(-208px):translateZ(0px) rotate(-23deg) translateX(-129px) translateY(-208px):500:easeInSine easeInSine easeInSine easeInSine]:delay-300" -->
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-letter-open="p:[transform:translateZ(-4000px) rotate(-23deg) translateX(-129px) translateY(-208px) scale(0):translateZ(0px) rotate(-23deg) translateX(-129px) translateY(-208px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-200">c</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(0px) rotate(-7deg) translateX(-146px) translateY(-172px)]">o</l>
-			<!--when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-12deg) translateX(-133px) translateY(-184px):translateZ(0px) rotate(-12deg) translateX(-133px) translateY(-184px):500:easeInSine easeInSine easeInSine easeInSine]:delay-400"  -->
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-letter-open="p:[transform:translateZ(-4000px) rotate(-12deg) translateX(-133px) translateY(-184px) scale(0):translateZ(0px) rotate(-12deg) translateX(-133px) translateY(-184px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-250">o</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(0px) rotate(-4deg) translateX(-112px) translateY(-168px)]">m</l>
-			<!-- when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-12deg) translateX(-133px) translateY(-184px):translateZ(0px) rotate(-8deg) translateX(-99px) translateY(-175px):500:easeInSine easeInSine easeInSine easeInSine]:delay-500" -->
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-letter-open="p:[transform:translateZ(-4000px) rotate(-12deg) translateX(-133px) translateY(-184px) scale(0):translateZ(0px) rotate(-8deg) translateX(-99px) translateY(-175px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-300">m</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(0px) rotate(0deg) translateX(-81px) translateY(-160px)]">e</l>
-			<!-- when-letter-open="p:[opacity:0:1:250:easeInSine, transform:translateZ(-4000px) rotate(-12deg) translateX(-133px) translateY(-184px):translateZ(0px) rotate(0deg) translateX(-81px) translateY(-160px):500:easeInSine easeInSine easeInSine easeInSine]:delay-600" -->
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-letter-open="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0):translateZ(0px) rotate(0deg) translateX(-81px) translateY(-160px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-370">e</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(0px) rotate(9deg) translateX(-57px) translateY(-152px)]">T</l>
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-letter-open="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0):translateZ(0px) rotate(9deg) translateX(-57px) translateY(-152px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-500">T</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, tr:translateZ(0px) rotate(11deg) translateX(-29px) translateY(-149px)]">o</l>
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-letter-open="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0):translateZ(0px) rotate(11deg) translateX(-29px) translateY(-149px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-600">o</l>
 	</div>
-	<div style="font-size: 140px; font-weight: 900">
+	<div init-default
+		when-letter-open="s:[logo-open:public]:delay-700">
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, transform:translateZ(0px) rotate(-5deg) translateX(-68px) translateY(-38px)]">U</l>
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-logo-open="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0):translateZ(0px) rotate(-5deg) translateX(-68px) translateY(-38px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]">U</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, transform:translateZ(0px) rotate(0deg) translateX(0px) translateY(-36px)]">.</l>
+            init-with="p:[transform:translateZ(-4000px) translateY(-36px) scale(0)]"
+            when-warp-open="p:[transform:translateZ(-4000px) translateY(-36px) scale(0):translateZ(0px) translateY(-36px) scale(1):750:easeInQuad easeInQuad easeInQuad]:delay-250">.</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, transform:translateZ(0px) rotate(-5deg) translateX(59px) translateY(-38px)]">g</l>
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-logo-open="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0):translateZ(0px) rotate(-5deg) translateX(59px) translateY(-38px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-100">g</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, transform:translateZ(0px) rotate(-5deg) translateX(137px) translateY(-38px)]">u</l>
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-logo-open="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0):translateZ(0px) rotate(-5deg) translateX(137px) translateY(-38px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-200">u</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, transform:translateZ(0px) rotate(-5deg) translateX(204px) translateY(-39px)]">r</l>
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-logo-open="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0):translateZ(0px) rotate(-5deg) translateX(204px) translateY(-39px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-300">r</l>
 		<l type="warp"
-			init-with="p:[top:calc(50% - 36px), left:calc(50% - 36px), tro:center center, transform:translateZ(0px) rotate(-4deg) translateX(272px) translateY(-43px)]">u</l>
+			init-with="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0)]"
+			when-logo-open="p:[transform:translateZ(-4000px) rotate(0deg) translateX(0px) translateY(-36px) scale(0):translateZ(0px) rotate(-4deg) translateX(272px) translateY(-43px) scale(1):750:easeInQuad easeInQuad easeInQuad easeInQuad easeInExpo]:delay-400">u</l>
 	</div>
 </div>
 
 <div class="warp-object"
 	ng-include="'preapp/templates/loaders/props/components/warp-objects.html'"
 	init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(15deg) rotateY(40deg) translateX(0px) scale(0.25)]"
-	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(15deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(15deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-1040">
+	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(15deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(15deg) rotateY(40deg) translateX(-1500px) scale(1):750:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-1040">
 </div>
 
 <div class="warp-object"
 	ng-include="'preapp/templates/loaders/props/components/category-card.html'"
 	init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(135deg) rotateY(40deg) translateX(0px) scale(0.25)]"
-	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(135deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(135deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3000">
+	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(135deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(135deg) rotateY(40deg) translateX(-1500px) scale(1):750:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3000">
 </div>
 
 <div class="warp-object width-128 height-128 absolute"
 	ng-include="'preapp/templates/loaders/props/components/profile-thumb.html'"
 	init-with="p:[top:calc(50% - 64px), left:calc(50% - 64px), tr:translateZ(-2000px) rotateZ(90deg) rotateY(40deg) scale(0.25)]"
-	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(90deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(90deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3270">
+	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(90deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(90deg) rotateY(40deg) translateX(-1500px) scale(1):750:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3270">
 </div>
 
 <div class="warp-object"
 	ng-include="'preapp/templates/loaders/props/components/student-card.html'"
 	init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(45deg) rotateY(40deg) translateX(0px) scale(0.25)]"
-	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(45deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(45deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-4060">
+	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(45deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(45deg) rotateY(40deg) translateX(-1500px) scale(1):750:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-4060">
 </div>
 
 <div class="warp-object"
 	ng-include="'preapp/templates/loaders/props/components/pricing-tile.html'"
 	init-with="p:[width:240px, height:288px, top:calc(50% - 144px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(320deg) rotateY(40deg) scale(0.25)]"
-	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(320deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(320deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3010">
+	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(320deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(320deg) rotateY(40deg) translateX(-1500px) scale(1):750:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-3010">
 </div>
 
 <div class="warp-object"
 	ng-include="'preapp/templates/loaders/props/components/credit-card.html'"
 	init-with="p:[width:240px, height:150px, top:calc(50% - 75px), left:calc(50% - 120px), tr:translateZ(-2000px) rotateZ(180deg) rotateY(40deg) scale(0.25)]"
-	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(180deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(180deg) rotateY(40deg) translateX(-1500px) scale(1):500:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2420">
+	when-warp-objects-init="p:[transform:translateZ(-1000px) rotateZ(180deg) rotateY(40deg) translateX(0px) scale(0.25):translateZ(0px) rotateZ(180deg) rotateY(40deg) translateX(-1500px) scale(1):750:easeOutCirc easeOutCirc easeOutCirc easeOutCirc easeOutCirc:^:200+500]:delay-2420">
 </div>
 
 <div class="warp-object warp-person"
