@@ -39,29 +39,32 @@
 		</div>
 	</div>
 
-	<div class="portal-transition-container"
+	<div class="portal-transition-container">
+	<!-- <div class="portal-transition-container"
 		when-warp-objects-container-init="t:[init:self]"
 		init-with="p-op"
 		on-init="p:[opacity:0:1:250:easeOutSine]"
 		when-transition-end="p:[opacity:1:0:250:easeOutSine]:delay-2000"
-		init-later>
+		init-later> -->
 		<div style="display:none"
 			init-default
 			when-warp-start="s:[warp-open:public:delay-1250]"
 			when-warp-open="s:[warp-transition:public:delay-1000]"
-			when-warp-transition="s:[warp-end:public:delay-1000]"
 			when-portal-hover="s:[warp-speed:public]"
 			when-warp-end="s:[transition-start:public:delay-500]"
 			when-transition-start="s:[transition-end:public]">
 		</div>
-		<div class="portal-transition-container"
+		<!-- when-warp-transition="s:[warp-end:public:delay-1000]" -->
+		<div class="portal-transition-container">
+		<!-- <div class="portal-transition-container"
 			init-with="p:[op:0, tr:translateY(14.5%) translateZ(30px) rotateX(84deg)]"
 			when-warp-start="p:[opacity:0:1:250:easeOutSine]"
-			when-portal-complete="p:[transform:translateY(14.5%) translateZ(30px) rotateX(84deg):translateY(0%) translateZ(25px) rotateX(0deg):900:easeOutSine easeOutSine easeOutSine]:delay-2000">
-			<div class="portal-transition"
+			when-portal-complete="p:[transform:translateY(14.5%) translateZ(30px) rotateX(84deg):translateY(0%) translateZ(25px) rotateX(0deg):900:easeOutSine easeOutSine easeOutSine]:delay-2000"> -->
+			<div class="portal-transition">
+			<!-- <div class="portal-transition"
 				init-with="p:[-webkit-clip-path:circle(90px at 50% 50%), t:all 750ms cubic-bezier(1#0#1#0)]"
 				when-warp-open="p:[-webkit-clip-path:circle(1500px at 50% 50%)]"
-				when-warp-transition="p:[-webkit-clip-path:none]">
+				when-warp-transition="p:[-webkit-clip-path:none]"> -->
 			    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'"></div>
 				<div class="warp-items">
 					<div ng-include="'preapp/templates/loaders/props/warp-objects.html'"></div>
@@ -71,7 +74,7 @@
 	</div>
 </div>
 
-<div class="portal-page"
+<!-- <div class="portal-page"
 	when-page-init="t:[init:self]"
 	init-with="p-op"
 	on-init="p:[opacity:0:1:250:easeOutSine]"
@@ -81,4 +84,4 @@
 		when-transition-end="p:[-webkit-clip-path:none]:delay-1000">
 		<div ng-include="'preapp/templates/splash.html'"></div>
 	</div>
-</div>
+</div> -->

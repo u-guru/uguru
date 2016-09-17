@@ -1981,7 +1981,7 @@
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     opacity: 1; } }
 /*-- SHARED */
-.loader-portal-outer, .loader-portal-container, .states.loader-portal, .portal-transition, .portal-transition-container, .portal-end, .portal-page, .warp-items, .warp-letters {
+.loader-portal-outer, .loader-portal-container, .states.loader-portal, .portal-transition, .portal-transition-container, .portal-end, .portal-page, .warp-items {
   position: absolute;
   top: 0;
   left: 0;
@@ -2184,9 +2184,23 @@
   width: 400px;
   height: 400px; }
 
+.warp-letters {
+  transform-origin: center center;
+  transform: scale(0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1920px;
+  height: 1080px;
+  margin-top: -540px;
+  margin-left: -960px; }
+
 @media screen and (min-width: 768px) {
   .warp-object {
-    display: block !important; } }
+    display: block !important; }
+
+  .warp-letters {
+    transform: none !important; } }
 /*-- ANIMATIONS */
 @keyframes travel-shake {
   0% {
