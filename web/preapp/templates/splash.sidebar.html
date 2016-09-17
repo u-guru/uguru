@@ -1,4 +1,8 @@
-<div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container">
+<div ng-controller='SplashSidebarController as sidebar' class="splash-sidebar-container"
+	when-sidebar-init="t:[init:self]"
+	init-with="p-op"
+	on-init="p:[opacity:0:1:250:easeOutSine]"
+	init-later>
 	<!-- faq-link-clicked:public:delay-5000 -->
 
 	<div class="splash-sidebar-bg"
