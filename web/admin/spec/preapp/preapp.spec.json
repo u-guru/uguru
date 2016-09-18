@@ -740,6 +740,58 @@
 					}
 				}
 			}
+		},
+		"splashModal": {
+			"brainstorming": {
+				"animations": {
+					"onEnter": "top-down, begin header animation",
+					"whileHeaderAnimating": "content fadeInUp to half opacity",
+					"whenHeaderAnimated": "content fadeIn to 100%"
+				},
+				"headers": {
+					"faq": "classroom",
+					"pricing": "store with sale + 'make it rain'",
+					"team": "bridge with lights"
+				}
+			},
+			"rubric": {
+				"ui": {
+                    "static": false,
+                    "responsive": true,
+                    "animated": true,
+                    "glitch-free": false,
+                    "cross-platform": false,
+                    "verified" : false,
+                    "analysis": false
+                },
+				"states": {
+					"onEnter": {
+						"order": 1,
+						"animations": [
+							{
+								"description": {
+									"element": "",
+									"animation": [""],
+									"easing": [""]
+								},
+								"timing": {
+									"order": 1,
+									"delay": "",
+									"duration": ""
+								},
+								"status": {
+									"updated": false,
+									"complete": false
+								},
+								"notes": {
+									"GW": "",
+									"JO": ""
+								}
+							}
+						]
+					},
+				}
+			}
 		}
     }
 }
