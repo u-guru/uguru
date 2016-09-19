@@ -50,7 +50,7 @@
 			when-warp-start="s:[warp-open:public:delay-1250]"
 			when-warp-open="s:[warp-transition:public:delay-1000]"
 			when-warp-transition="s:[warp-end:public:delay-700]"
-			when-portal-hover="s:[warp-speed:public]"
+			when-warp-objects-init="s:[warp-speed:public:delay-1500]"
 			when-warp-end="s:[transition-start:public:delay-500]"
 			when-transition-start="s:[transition-end:public]">
 		</div>
@@ -64,7 +64,7 @@
 				init-with="p:[-webkit-clip-path:circle(90px at 50% 50%), t:all 750ms cubic-bezier(1#0#1#0)]"
 				when-warp-open="p:[-webkit-clip-path:circle(1500px at 50% 50%)]"
 				when-warp-transition="p:[-webkit-clip-path:none]">
-			    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'"></div>
+			    <div class="warp" ng-include="'preapp/templates/loaders/warp.html'" style="background: #16293A;"></div>
 				<div class="warp-items">
 					<div ng-include="'preapp/templates/loaders/props/warp-objects.html'"></div>
 				</div>

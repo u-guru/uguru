@@ -206,7 +206,7 @@
 	}
 }
 
-@media screen and (min-height: 736px) {
+@media screen and (min-height: 680px) {
 	.coach-fill {
 		right: -100px;
 		width: 140px;
@@ -292,15 +292,20 @@
 			.splash-mobile-cta {
 				display: none;
 			}
+			.tag-adlib {
+			    width: 142px!important;
+			    height: 44px!important;
+			    font-size: 24px!important;
+			}
 			ul {
-				max-width: calc(160px * 4 + 30px);
+				max-width: calc(172px * 4 + 30px);
 				height: 136px;
 				padding: 15px;
 				margin: 0 auto 15px;
 				flex-direction: row;
 				li {
 					width: 25%;
-					max-width: 160px;
+					max-width: 172px;
 					padding: 15px;
 					&:nth-child(7), &:nth-child(8) {
 						display: block;
