@@ -10,28 +10,28 @@
 
 @keyframes shake-opacity {
   0% {
-    transform: translate(0, 0); opacity:1;
+    transform: translateX(0) translateY(0); opacity:1;
   }
   10% {
-    transform: translate(2px, 2px);
+    transform: translateX(2px) translateY(2px);
     opacity: 0.8; }
   20% {
-    transform: translate(0px, 0px);
+    transform: translateX(0px) translateY(0px);
     opacity: 0.47; }
   30% {
-    transform: translate(0px, 4px);
+    transform: translateX(0px) translateY(4px);
     opacity: 0.3; }
   70% {
-    transform: translate(1px, 3px);
+    transform: translateX(1px) translateY(3px);
     opacity: 0.96; }
   80% {
-    transform: translate(0px, -4px);
+    transform: translateX(0px) translateY(-4px);
     opacity: 0.9; }
   90% {
-    transform: translate(3px, -4px);
+    transform: translateX(3px) translateY(-4px);
     opacity: 0.81; }
   100% {
-    transform: translate(0, 0); opacity:1;
+    transform: translateX(0) translateY(0); opacity:1;
   }
 }
 

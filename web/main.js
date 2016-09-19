@@ -54,7 +54,12 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
       });
     }
   })
-
+  .state('root.home', {
+    name: 'root.home',
+    parent: 'root',
+    url:'/',
+    templateUrl: 'preapp/templates/loaders/regular.html'
+  })
   .state('root.api', {
     name: 'root.api',
     parent: 'root',
@@ -91,7 +96,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.api.animations.one', {
     parent: 'root.api.animations',
     name: 'root.api.animations.one',
-    url: '/{type}/{property}?{v}&{comp}&{kf}',
+    url: '/{type}/{property}?{comp}&{selector}',
     params: {
       comp: 'svg.logo.guru-head',
       kf: 60

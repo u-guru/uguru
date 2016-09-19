@@ -1,0 +1,386 @@
+<inspector-gadget  load="components|course"  selector="[inspector-elem]"  default-state="on-init" auto-play="true" start-at=""> </inspector-gadget>
+<!--  -->
+<div class='full-xy absolute top-0 left-0 overflow-hidden' ng-controller='AdminPropertyController as apc'>
+    <div class='flex full-x relative' style='height:70%;'>
+        <div class='flex-wrap-center fix-abs relative full-x' id='player-stage'>
+
+        </div>
+        <aside class='relative' ng-if="!apc.settings.showKFBar">
+            <div class='bg-lake absolute full-xy top-0 left-0 overflow-auto' ng-if='apc.settings.showAnimProps'>
+                <div class="p15xy">
+                    <fieldset class="search-bar"
+                        init-with="p:[op:0, width:48px, t:width 250ms cubic-bezier(.6#0#.1#1.3)#opacity 250ms ease-out]"
+                        on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in] | p:[width:100%]:delay-1000 | s:[search-bar-init:public]"
+                        on-click="s:[search-bar-clicked:public]"
+                        on-exit="p-op">
+                        <div>
+                            <label for="search-bar"
+                                init-default>
+                                <svg viewBox="0 0 100 100">
+                                    <path d="M62.994485,62.994485 L85.6624699,85.6624699"
+                                        init-with="p:[sda:32.06, sdo:32.06, t:stroke-dashoffset 200ms ease-out]"
+                                        when-search-bar-init="p:[sdo:0:delay-750]"></path>
+                                    <circle cx="42.5" cy="42.5" r="28.5"
+                                        init-with="p:[sda:179.07, sdo:179.07, t:stroke-dashoffset 250ms ease-out]"
+                                        when-search-bar-init="p:[sdo:0:delay-500]"></circle>
+                                </svg>
+                            </label>
+
+                            <input id="search-bar" class='txt-charcoal' placeholder="Filter" value=""
+                                init-with="p-op"
+                                ng-model="addProp.searchText"
+                                when-search-bar-clicked="p:[op:1:delay-250, t:all 250ms ease-out]"/>
+                        </div>
+                    </fieldset>
+                </div>
+                <ul class='flex-wrap-start full-x p15-grid ugrid-3' ng-if='addProp.searchText.length'>
+                    <li ng-repeat='prop in apc.animProperties | filter:addProp.searchText:strict track by $index'>
+                        <div class='weight-600 txt-16 radius-2 p05xy bg-white txt-lake'>{{prop}}</div>
+                    </li>
+                </ul>
+                <ul class='flex-space-between p15-grid full-x'>
+                    <li>
+                        <div class='txt-2 weight-600'> Property Name </div>
+                    </li>
+                    <li>
+                        <div class='txt-2 weight-600'> Start Value </div>
+                    </li>
+                    <li>
+                        <div class='txt-2 weight-600'> End Value </div>
+                    </li>
+                    <li>
+                        <div class='txt-2 weight-600'> Duration </div>
+                    </li>
+                    <li>
+                        <div class='txt-2 weight-600'> Ease Function </div>
+                    </li>
+                </ul>
+            </div>
+            <div class='bg-moxie full-xy overflow-auto' ng-if='!apc.settings.showAnimProps'>
+                <div class='full-x weight-600 txt-20 ugrid-2'>
+					<!-- ugrid-{{apc.properties.length + 1}} -->
+                    <span ng-class='{"bg-white-25p": apc.activeIndex === $index}' class='p15x-p10y' ng-click='apc.activeIndex = $index' ng-repeat='property in apc.properties'>{{property.animation.name}} </span>
+                    <a class='bg bg-charcoal reverse p15x-p10y' ng-click='apc.settings.showAnimProps = !apc.settings.showAnimProps'>+ Add new property</a>
+                </div>
+                <div ng-repeat='property in apc.properties' ng-show="apc.activeIndex === $index">
+                    <div>
+                        <div ng-if='property.showExport' class='full-xy absolute top-0 left-0'>
+                            <textarea class='full-x txt-16 source-code p15xy overflow-auto' style="height:calc(100% - 64px)">{{property.animation.obj.cssText}}</textarea>
+                            <button ng-click='property.showExport = !property.showExport' class='bg-rocket'>Close</button>
+                        </div>
+                        <ul class='p15-grid' ng-show='!property.showExport'>
+                            <li class="flex full-x" ng-repeat='kf_rule in property.animation.keyframes track by $index'>
+								<div class="width-25p flex">
+									<span class='bg-slate txt-white height-48 radius-2-left' style="width:calc(100% - 48px)">
+										<span class="flex-center-vertical full-xy semibold txt-20 p10x">{{kf_rule.percent.str}}</span>
+									</span>
+									<a class="bg bg-crimson reverse height-48 width-48 radius-2-right txt-36 semibold" ng-click='apc.removeKF(apc.property, kf_rule.percent.str)'>
+										<span class="full-xy flex-center">&times;</span>
+									</a>
+								</div>
+								<div class='width-75p p15left' ng-repeat='property in kf_rule.properties'>
+									<span class="height-48 flex-center-vertical p10x bg-charcoal-50p txt-20 semibold radius-2 relative" >
+										{{property.name}}: {{property.value}}
+                                        <span ng-if='property.name === "fill"' on-click="p:[animation:{{property.animation.str}}]" style='background-color:{{property.value}}' class='top-0 right-0 absolute width-48 height-48'></span>
+                                        <!-- <span ng-if='property.value.split("rotate").length > 1'>
+                                            {{property.value}}
+                                        </span> -->
+									</span>
+
+								</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <div class='relative' style='height:30%;'>
+        <ul class='flex p15-grid absolute left-0' style="top:-78px">
+            <li>
+				<span class='svg-48-36 svg-stroke-6 radius-2 bg bg-moxie' ng-click='apc.gPlayer.viewSettings = !apc.gPlayer.viewSettings' ng-include='"shared/templates/components/svg/main/settings.html"'></span>
+			</li>
+			<li ng-if='!apc.gPlayer.active'>
+	            <span class='svg-48-36 svg-stroke-6 radius-2 bg bg-moxie' ng-click="apc.gPlayer.play(apc.properties)" ng-include='"shared/templates/components/svg/main/play.html"'></span>
+			</li>
+			<li ng-if='apc.gPlayer.active'>
+	            <span class='svg-48-36 svg-stroke-6 radius-2 bg bg-moxie' ng-click="apc.gPlayer.pause(apc.properties)" ng-include='"shared/templates/components/svg/main/pause.html"'></span>
+			</li>
+            <li>
+                <span class='svg-48-36 svg-stroke-6 radius-2 bg bg-moxie' ng-click="apc.gPlayer.resetAll(apc.properties)" ng-include='"shared/templates/components/svg/main/sync.html"'></span>
+            </li>
+
+            <li>
+                <span class='svg-48-36 svg-stroke-6 radius-2 bg bg-moxie' ng-click="apc.gPlayer.stepForward(apc.properties, '+')" ng-include='"shared/templates/components/svg/main/skip.html"'></span>
+            </li>
+
+        </ul>
+        <ul class='flex p15-grid absolute right-0' style="top:-78px">
+            <li >
+                <span class='svg-48-36 svg-stroke-6 radius-2 bg bg-moxie weight-900' ng-click="show" ng-click='apc.settings.showKFBar = !apc.settings.showKFBar'>KF</span>
+            </li>
+        </ul>
+        <div class="bg-slate-50p full-xy overflow-auto">
+            <div class="flex-stretch" style='height: 100px' ng-hide='!apc.showAllChildren'>
+				<div ng-if='apc.activeComponent.name' class='full-y' style="width: 160px">
+					<div class="full-y weight-600 txt-18 txt-white bg-robin p15xy">
+						{{apc.elements.length}} animated<br/>{{apc.activeComponent.name}} elements
+					</div>
+				</div>
+				<ul class='full-x flex-stretch overflow-x no-scrollbar component-container'>
+	                <li ng-repeat='element in apc.elements' ng-if='!apc.activeElement' ng-class="{'bg-slate': $index % 2 === 1}" class="relative" style="height:100px">
+	                    <div class='element-wrapper full-y flex-wrap-center fix-abs'>
+							{{apc.element.attrs.length}}
+						</div>
+	                </li>
+	            </ul>
+			</div>
+			<div class="flex-stretch" style='height: 100px' ng-hide='!apc.showAllElems'>
+				<div class='full-y' style="width: 160px">
+					<div class="full-y weight-600 txt-18 txt-white bg-moxie p15xy">
+						all components
+					</div>
+				</div>
+	            <ul class='full-x flex-stretch overflow-x no-scrollbar component-container' style='height:100px'>
+	                <li init-with="p:[opacity:0]" on-init="p:[opacity:1:elastic:250ms:d-500ms]:delay-500" ng-click='apc.switchComponent($index, comp)' ng-repeat='comp in apc.components' ng-class="{'bg-slate': $index % 2 === 1}" class='relative element-wrapper' style='width:200px; height:100px;' ng-if='!comp.active'>
+	                    <span style='transform:scale(1)!important;' class='absolute block top-0 left-0 z-index-10 p05xy'>
+							<span class="weight-600 bg-moxie-90p txt-1 block radius-2" style="padding: 2px 5px;">{{comp.name}}</span>
+						</span>
+						<div class="full-xy overflow-hidden flex-center">
+	                    	<div class='fix-abs flex-center overflow-hidden opacity-80p {{comp.name}}-component {{comp.name}}-component-{{$index}}' ng-include='comp.url + ""' style="min-width: 500px; min-height: 500px;"> </div>
+						</div>
+	                </li>
+	            </ul>
+			</div>
+            <ul class='full-x bg-charcoal'>
+                <li class='full-x flex-wrap-stretch bg-campus-25p'>
+					<!-- ng-class="{'bg-slate':$index % 2 === 1, 'bg-campus-25p':$index % 2 === 0}" -->
+					<div class="width-10p flex-wrap-start bg-gold">
+						<a class='block text-center bg bg-gold left-0 top-0 full-x txt-4 p05xy z-index-100' ng-click='apc.showAllElems = !apc.showAllElems'>
+							<span class='weight-600'>view: </span>
+							<span class='weight-700'>{{apc.activeComponent.name || 'component'}}</span>
+						</a>
+						<div class='fix-abs flex-center overflow-hidden full-x' style='height: 200px;' id='global-player-elem-container'>
+						</div>
+					</div>
+                    <div class='flex-wrap-start relative width-20p'>
+						<button class='height-36 txt-18 radius-2 bg bg-robin m15top-m15x' ng-click='apc.showAllChildren = !apc.showAllChildren'>{{apc.elements.length}} total animated components </button>
+						<div class='height-36 txt-18 full-x flex-center radius-2 bg-campus semibold m15top-m15x'> {{apc.gPlayer.states.length}} states </div>
+						<ul class='full-x flex-wrap-start p15-grid'>
+							<li ng-repeat='state in apc.gPlayer.states'>
+								<button ng-click='apc.activateState(state)' class="bg bg-lake radius-2 normal height-36 txt-18">
+									{{state.name}}{{' | ' + state.parseArgs.prop}}
+								</button>
+							</li>
+						</ul>
+                    </div>
+                    <div class='width-70p relative'>
+						<div class='full-x' ng-repeat='property in apc.properties'>
+                        <div class="relative flex-wrap-center height-48 overflow-hidden m15top full-x" >
+	                        <div class='absolute' style='width:90%; right:5%;'>
+	                            <svg ng-mousedown='property.addKeyFrame($event)' ng-mouseover="apc.showPercentage($event, animation)" class='full-x relative' viewBox="0 0 200 1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+	                                <rect class='property-playbar-{{$index}}' rx="0.5"  width="200" height="1" fill="white"></rect>
+	                                <rect rx="0.5"  width="200" height="1" style='opacity:0.2' fill="#F1F1F1"></rect>
+	                            </svg>
+	                        </div>
+	                        <div class='absolute' style='width:calc(95%); top:2%; height:50px;'>
+	                            <svg viewBox="0 0 100 100" class='absolute left-0 top-0'>
+	                                <a ng-click='property.player.play(property)'>
+	                                    <rect class='property-playball-{{$index}} absolute left-0' rx="10" width="4" x="0" height="4" fill="#F04F54"> </rect>
+	                                </a>
+	                                <g>
+	                                    <rect ng-if='kf_rule' ng-show="!property.player.active" ng-repeat='kf_rule in property.animation.keyframes' class='absolute' rx="10" width="1" y="1.5" kf-x="kf_rule.percent.str" height="1" fill="#F04F54"> </rect>
+	                                </g>
+	                            </svg>
+	                        </div>
+						</div>
+						<div class="flex-center-vertical-space-between full-x">
+							<div class="flex p15xy">
+								<ul class="flex radius-2 overflow-hidden tile-border-side-light small">
+									<li>
+										<a class='height-36 flex-center-vertical bg bg-gold radius-2-left semibold txt-20 p10x'>{{property.name}}</a>
+									</li>
+                                    <li>
+		                                <a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='property.player.stepBack(property, 100, "-")'>
+		                                    <svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style='transform:rotate(180deg)'>
+		                                        <path d="M68.3635106,20.0921155 C68.3635106,16.727533 71.0974015,14 74.454538,14 L74.454538,14 C77.8185196,14 80.5455654,16.7345657 80.5455654,20.0921155 L80.5455654,79.9078845 C80.5455654,83.272467 77.8116745,86 74.454538,86 L74.454538,86 C71.0905565,86 68.3635106,83.2654343 68.3635106,79.9078845 L68.3635106,20.0921155 Z M65.6106483,47.0463201 C66.5720751,47.8852207 67.3635106,48.7075094 67.3635106,50.0226176 C67.3635106,51.3349572 66.8005882,52.132328 65.6106483,52.9961465 L23.5085114,85.7243441 C22.8090385,86.2005517 20.0362277,86.4054318 20,83.3433062 L20,16.6991604 C20.0027867,13.8668327 22.5359376,13.6425721 23.5085114,14.3208911 L65.6106483,47.0463201 Z" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+		                                    </svg>
+		                                </a>
+		                            </li>
+		                            <li ng-if='!property.player.active'>
+										<a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='property.player.play(property)' when-show-play="p:[opacity:1, scale(1)]" ng-include='"shared/templates/components/svg/main/play-basic.html"' ></a>
+									</li>
+									<li ng-if='property.player.active'>
+										<a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='property.player.pause(property)' when-show-pause="p:[opacity:1, scale(1)]:easeIntQuint"  ng-include='"shared/templates/components/svg/main/pause.html"'></a>
+									</li>
+		                            <li>
+		                                <a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='property.player.stepForward(property, property.settings.stepSpeed.slow, "+")' ng-include='"shared/templates/components/svg/main/skip.html"'></a>
+		                            </li>
+		                            <li>
+		                                <a class='svg-36-24 svg-stroke-9 bg bg-campus ugrid-2' ng-click='property.player.stepForward(property, property.settings.stepSpeed.fast, "+")' ng-include='"shared/templates/components/svg/main/fast-forward.html"'></a>
+		                            </li>
+									<li>
+										<a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='property.player.resetAnim(property)' ng-include='"shared/templates/components/svg/main/sync.html"'></a>
+									</li>
+                                    <li>
+                                         <a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='playAnimation()' ng-include='"shared/templates/components/svg/main/mute.html"'></a>
+                                    </li>
+                                    <li>
+                                        <a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='property.player.showMore = !property.player.showMore' ng-include='"shared/templates/components/svg/main/share.html"'></a>
+                                    </li>
+                                    <li>
+                                        <a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='playAnimation()'>
+                                            <svg viewBox="0 0 100 100" style="transform-origin: center center; transform: rotate(90deg)">
+                                                <path d="M27,38 L51,14 L75,38 M51,14 L51,86" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                         <a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='playAnimation()' ng-include='"shared/templates/components/svg/main/mute.html"'></a>
+                                    </li>
+                                    <li>
+                                        <a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='property.player.showMore = !property.player.showMore' ng-include='"shared/templates/components/svg/main/share.html"'></a>
+                                    </li>
+                                    <li>
+                                        <a class='svg-36-24 svg-stroke-9 bg bg-campus' ng-click='playAnimation()'>
+                                            <svg viewBox="0 0 100 100" style="transform-origin: center center; transform: rotate(90deg)">
+                                                <path d="M27,38 L51,14 L75,38 M51,14 L51,86" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <span class='weight-600 bg-campus height-36 flex-center-vertical p10x txt-20' ng-click='property.player.editDuration'>{{property.animation.duration}}</span>
+                                    </li>
+                                    <li>
+                                        <span class='weight-600 bg-campus height-36 flex-center-vertical p10x txt-20' ng-click='player.showEasings()'>{{property.animation.ease}}</span>
+                                    </li>
+								</ul>
+								<div class="p15left">
+									<a class='weight-600 txt-20 bg bg-campus radius-2 p10x height-36 flex-center-vertical' ng-click='playAnimation()'>{{property.animation.name}}</a>
+								</div>
+							</div>
+							<div class='weight-900 p15x'>
+								{{property.player.timer.display.s}}/{{property.player.timer.durationDisplay.s}}
+							</div>
+						</div>
+
+                    <ul class='p15-grid ugrid-5 full-x txt-16 semibold relative z-index-100' style="margin-top: -15px" ng-if='property.player.showMore'>
+                        <li>
+							<span class="flex radius-2 overflow-hidden">
+								<span class="bg-campus height-36 p10x flex-center-vertical">duration:</span>
+								<span class="bg-white txt-slate p10x flex-center-vertical">{{property.settings.duration.display}}</span>
+							</span>
+                            <div class="m20top">
+								<input max="{{property.settings.duration.range.max}}" step="{{property.settings.duration.range.step}}" min="{{property.settings.duration.range.min}}" ng-change="property.settings.update('duration', property.settings.duration.val)" type='range' size="2" ng-model="property.settings.duration.val"/>
+							</div>
+                        </li>
+                        <li>
+							<div class="flex-space-between">
+								<span class="flex radius-2 overflow-hidden">
+									<span class="bg-campus height-36 p10x flex-center-vertical">repetition:</span>
+									<span class="bg-white txt-slate p10x flex-center-vertical">{{property.animation.iterationCount}}</span>
+								</span>
+								<span ng-class="{'opacity-20p': property.player.iterationCount !== 'infinite'}" class='height-36 flex-center radius-2 border-2 border-white border-solid txt-white p10x'>Infinite</span>
+							</div>
+							<div class="m20top">
+                            	<input ng-change="property.player.update('iterationCount')" type='range' size="2" ng-model="property.player.iterationCount"/>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="flex radius-2 overflow-hidden">
+                                <span class="bg-campus height-36 p10x flex-center-vertical">delay:</span>
+                                <span class="bg-white txt-slate p10x flex-center-vertical">{{property.settings.delay.display}}</span>
+                            </span>
+                            <div class="m20top">
+                                <input max="{{property.settings.delay.range.max}}" step="{{property.settings.delay.range.step}}" min="{{property.settings.delay.range.min}}" ng-change="property.settings.update('delay', property.settings.delay.val)" type='range' size="2" ng-model="property.settings.delay.val"/>
+                            </div>
+                        </li>
+                        <li>
+							<span class="flex radius-2 overflow-hidden">
+								<span class="bg-campus height-36 p10x flex-center-vertical">fill-mode:</span>
+								<span class="bg-white txt-slate p10x flex-center-vertical">{{property.animation.fillMode}}</span>
+							</span>
+							<div class="m20top">
+                            	<input ng-change="property.player.update('fillMode')" type='range' size="2" ng-model="property.player.delay"/>
+							</div>
+                        </li>
+                        <li>
+                            <span class="flex radius-2 overflow-hidden">
+                                <span class="bg-campus height-36 p10x flex-center-vertical">fast step-speed:</span>
+                                <span class="bg-white txt-slate p10x flex-center-vertical">{{property.settings.stepSpeed.fast}}ms</span>
+                            </span>
+                            <div class="m20top">
+                                <input type='range' max="{{property.settings.stepSpeed.fastRange.max}}" min="{{property.settings.stepSpeed.fastRange.min}}" size="2" ng-model="property.settings.stepSpeed.fast"/>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="flex radius-2 overflow-hidden">
+                                <span class="bg-campus height-36 p10x flex-center-vertical">slow step-speed:</span>
+                                <span class="bg-white txt-slate p10x flex-center-vertical">{{property.settings.stepSpeed.slow}}ms</span>
+                            </span>
+                            <div class="m20top">
+                                <input type='range' max="{{property.settings.stepSpeed.slowRange.max}}" min="{{property.settings.stepSpeed.slowRange.min}}" size="2" ng-model="property.settings.stepSpeed.slow"/>
+                            </div>
+                        </li>
+                        <li>
+							<span class="flex radius-2 overflow-hidden">
+								<span class="bg-campus height-36 p10x flex-center-vertical">direction:</span>
+								<span class="bg-white txt-slate p10x flex-center-vertical">{{property.animation.direction}}</span>
+							</span>
+							<div class="m20top">
+                            	<input ng-change="property.player.update('direction')" type='range' size="2" ng-model="property.player.delay"/>
+							</div>
+                        </li>
+                        <li>
+							<span class="flex radius-2 overflow-hidden">
+								<span class="bg-campus height-36 p10x flex-center-vertical">name:</span>
+								<input class="bg-white txt-slate p10x flex-center-vertical" ng-change="property.player.update('name')" ng-model="property.player.name" placeholder="{{property.animation.name}}"/>
+								<!-- <span class="bg-white txt-slate p10x flex-center-vertical">{{property.animation.name}}</span> -->
+							</span>
+                        </li>
+                        <li>
+							<button ng-click='property.showExport = !property.showExport' class='radius-2 bg-moxie'>Export</button>
+						</li>
+                        <li>
+							<div class="checkbox-container bg-moxie"
+								init-default
+								on-init="s:[checkbox-load:public]"
+								when-checkbox-load="s:[checkbox-enter:public:delay-550]">
+								<div>
+									<input type="checkbox" ng-model="property.settings.resetAtEnd" id="checkbox-item"/>
+									<span init-with="p:[background:rgba(64#72#75#0), t:background 250ms ease-out]"
+										when-checkbox-enter="p:[background:rgba(64#72#75#1)]">
+										<svg viewBox="0 0 32 32">
+											<line class="line-1" x1="1.25" y1="1.25" x2="30.75" y2="1.25"
+												init-with="p:[sda:29.5, sdo:29.5, t:all 250ms ease-out]"
+												when-checkbox-load="p:[sdo:0]"/>
+											<line class="line-2" x1="30.75" y1="1.25" x2="30.75" y2="30.75"
+												init-with="p:[sda:29.5, sdo:29.5, t:all 250ms ease-out]"
+												when-checkbox-load="p:[sdo:0:delay-150]"/>
+											<line class="line-3" x1="30.75" y1="30.75" x2="1.25" y2="30.75"
+												init-with="p:[sda:29.5, sdo:29.5, t:all 250ms ease-out]"
+												when-checkbox-load="p:[sdo:0:delay-300]"/>
+											<line class="line-4" x1="1.25" y1="30.75" x2="1.25" y2="1.25"
+												init-with="p:[sda:29.5, sdo:29.5, t:all 250ms ease-out]"
+												when-checkbox-load="p:[sdo:0:delay-450]"/>
+											<circle cx="12.3901367" cy="22.03125" r="32"></circle>
+											<polyline class="check-under" points="7.24 17.0305882 12.3929412 22.1835294 24.76 9.81647059"
+												init-with="p:[op:0, t:opacity 250ms ease-out]"
+												when-checkbox-enter="p:[op:1]"></polyline>
+											<polyline class="check-stroke" points="7.24 17.0305882 12.3929412 22.1835294 24.76 9.81647059"></polyline>
+										</svg>
+										<span></span>
+									</span>
+								</div>
+								<label for="checkbox-item" init-with="p-op"
+									when-checkbox-enter="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">Auto Reset At End</label>
+							</div>
+                        </li>
+                    </ul>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

@@ -3,8 +3,8 @@
 		init-with="p-op"
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
 		<div class="top"
-			init-with="p-op"
-			on-init="a:[fadeInDown:set:(dur:400ms#func:linear):in]"></div>
+			init-with="p:[transform:scaleY(0), tro:center top]"
+			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=72);"
 			init-with="p-op"
 			on-init="a:[icon-enter:set:(dur:1000ms#func:linear):in:delay-150] | p:[tro:center top]"></span>
@@ -14,8 +14,8 @@
 		init-with="p-op"
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
 		<div class="top"
-			init-with="p-op"
-			on-init="a:[fadeInDown:set:(dur:400ms#func:linear):in]"></div>
+			init-with="p:[transform:scaleY(0), tro:center top]"
+			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=96);"
 			init-with="p-op"
 			on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-150] | p:[tro:center top]"></span>
@@ -25,8 +25,8 @@
 		init-with="p-op"
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
 		<div class="top"
-			init-with="p-op"
-			on-init="a:[fadeInDown:set:(dur:400ms#func:linear):in]"></div>
+			init-with="p:[transform:scaleY(0), tro:center top]"
+			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=128);"
 			init-with="p-op"
 			on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-150] | p:[tro:center top]"></span>
@@ -36,8 +36,8 @@
 		init-with="p-op"
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
 		<div class="top"
-			init-with="p-op"
-			on-init="a:[fadeInDown:set:(dur:400ms#func:linear):in]"></div>
+			init-with="p:[transform:scaleY(0), tro:center top]"
+			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=144);"
 			init-with="p-op"
 			on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>
@@ -47,8 +47,8 @@
 		init-with="p-op"
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
 		<div class="top"
-			init-with="p-op"
-			on-init="a:[fadeInDown:set:(dur:400ms#func:linear):in]"></div>
+			init-with="p:[transform:scaleY(0), tro:center top]"
+			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=192);"
 			init-with="p-op"
 			on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>
@@ -58,8 +58,8 @@
 		init-with="p-op"
 		on-init="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]">
 		<div class="top"
-			init-with="p-op"
-			on-init="a:[fadeInDown:set:(dur:400ms#func:linear):in]"></div>
+			init-with="p:[transform:scaleY(0), tro:center top]"
+			on-init="p:[transform:scaleY(0):scaleY(1):450:easeOutBack]:delay-50"></div>
 		<span class="user-icon" style="background-image: url(https://en.gravatar.com/userimage/5102999/c223080350b67306f21725b6cf57920a.jpg?size=256);"
 			init-with="p-op"
 			on-init="a:[icon-rotate-enter:set:(dur:1000ms#func:linear):in:delay-150]"></span>

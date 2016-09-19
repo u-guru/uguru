@@ -7,7 +7,9 @@ angular.module('uguru.shared.controllers', [])
   '$state',
   '$timeout',
   'RootService',
-  function($scope, $state, $timeout, RootService) {
+  'XHRService',
+  '$compile',
+  function($scope, $state, $timeout, RootService, XHRService, $compile) {
     var root = this;
     root.window = getBodyDimensions();
     root.base_url = RootService.getBaseUrl();
@@ -19,7 +21,8 @@ angular.module('uguru.shared.controllers', [])
     root.animStatus = {off: false};
     root.inspectAnimations = [];
     root.inspectElements = [];
-    root.public = {customStates: []};
+    root.public = {customStates: [], customShortcuts: {}};
+    RootService.customShortcuts.getAnimProps = function () {return root.public.customShortcuts};
     root.pauseElement = pauseElement(root);
     RootService.setPauseElementFunc(root.pauseElement);
     root.animationCounter = 0;
@@ -27,7 +30,22 @@ angular.module('uguru.shared.controllers', [])
     root.inspector = {players:[], activePlayer: null, elements: [], preferences: {}};
     RootService.setGetInspector(getInspectorPrefs(root.inspector));
     RootService.setInspectableElements(pushElemPlayer(root.inspector));
-    RootService.getCustomEasingAnimations(root)()
+    RootService.getCustomEasingAnimations(root)();
+    $timeout(function() {
+      $scope.$apply();
+      registerAnimationShortcuts();
+
+    })
+
+    function registerAnimationShortcuts() {
+      if (root.local) {
+        var dataSets = ['api'];
+        var callback = function(data) {root.data = {animations: {}}; root.data.animations = data;};
+        XHRService.getJSONFile('get', 'admin/spec/animations.json', callback);
+      }
+    }
+
+
   }
 ]);
 
@@ -44,6 +62,7 @@ function getInspectorPrefs(r_inspector) {
     return r_inspector.preferences;
   }
 }
+
 
 
 function pauseElement(scope) {

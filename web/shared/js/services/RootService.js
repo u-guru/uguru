@@ -12,6 +12,7 @@ function RootService($timeout, $state) {
     var setInspectableElem;
     var animations = {custom: [], customNameOnly: []};
     var addElemToInspector;
+    var customShortcuts = {animProps: {}};
     var getInspectorPreferences = function() {};
     initBaseUrlByEnv();
     return {
@@ -37,7 +38,14 @@ function RootService($timeout, $state) {
         setGetInspector: setGetInspector,
         getInspectorPreferences: returnInspectorPreferences,
         getCustomEasingAnimations: getCustomEasingAnimations,
-        getCustomAnimations: getCustomAnimations
+        getCustomAnimations: getCustomAnimations,
+        getAnimShortcuts: getAnimShortcuts,
+        customShortcuts: customShortcuts
+    }
+
+    function getAnimShortcuts(prop) {
+      var rootShortcuts = customShortcuts.getAnimProps();
+      return rootShortcuts[prop];
     }
 
     function getCustomAnimations() {

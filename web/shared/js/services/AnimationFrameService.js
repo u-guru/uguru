@@ -17,11 +17,17 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
     var init = {state: state.init}
     var propOptions = getPropOptions();
     var cache = {states: [], elements: [], properties: []};
+    var animUrlShortcuts = getanimUrlShortcuts(RootService);
+    var animPropShortcuts
+    $timeout(function() {
+      animPropShortcuts = RootService.getAnimShortcuts('animProps');
+    })
 
     return {
       init:init,
       getDebugFormat: getDebugFormat,
-      getPlayer: getRAFPlayer
+      getPlayer: getRAFPlayer,
+      animUrlShortcuts:animUrlShortcuts
     };
 
 
@@ -122,7 +128,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           }
           if (player.tick.current <= 0) {
-            player.reset(player.schedule);
+            player.reset(player);
           }
           // player.tick = 0;
 
@@ -132,8 +138,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       player.scheduleStream = function(player, state_obj, offset, debug) {
         var streams = state_obj.events;
         player.tick = {start: 0, end:0, current:0};
-        if (state_obj.customProps) {
-          player.customProps = state_obj.customProps
+        if (debug && state_obj.playerProps) {
+          player.playerProps = state_obj.playerProps
+          player.playerProps.iter.count.current = player.playerProps.iter.count.current + 0;
         }
         var shallowCopyStreams = [];
         for (var i = 0; i < streams.length; i++) {
@@ -149,16 +156,11 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.tick.current = player.tick.start;
           var newStream = {applyProp:streams[i].applyAtT, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, tick:tick, values:streams[i].values.slice()}
           shallowCopyStreams.push(newStream);
-        }
-        // player.applyArgs(player.schedule.streams, player.debug);
-        shallowCopyStreams.forEach(function(stream, i) {
-          console.log(stream.name, stream.direction, stream.tick, player.tick)
-          if (['r', 'ra'].indexOf(stream.direction.value) > -1) {
+          if (newStream.direction.current === 'r') {
 
-            stream.values.reverse();
-            stream.tick.current = -1 * (player.tick.current + stream.tick.current);
+            newStream.values.reverse();
           }
-        })
+        }
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
 
@@ -193,7 +195,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
         player.debug.states.forEach(function(state, i) {
             var props = state.props;
-            console.log(state.props)
               for (prop in props) {
                 player.debug.totalStreams += props[prop].length;
                 if (! (prop in player.debug.props)){
@@ -203,6 +204,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   player.debug.props[prop].easingFunc = 'linear'
                 }
                 if (!('iter' in player.debug.props[prop])) {
+
                   player.debug.props[prop].iter = 1
                 }
                 if (!('direction' in player.debug.props[prop])) {
@@ -246,21 +248,19 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       function updatePlayerArgs(player, skip_first) {
-        if (!skip_first && player.customProps) {
-          if (['ar', 'a'].indexOf(player.customProps.direction.value) > -1) {
-            if (player.customProps.direction.current === 'f') {
-              player.customProps.direction.current = 'r';
-            } else {
-              player.customProps.direction.current = 'f';
-            }
+        if (!skip_first && player.playerProps) {
+
+          if (!player.playerProps.iter.infinite) {
+            player.playerProps.iter.count.current = player.playerProps.iter.count.current - 1;
+          } else {
+            player.playerProps.iter.count.current = player.playerProps.iter.count.current + 1;
           }
-          if (!player.customProps.iter.infinite) {
-            player.customProps.iter.count.current = player.customProps.iter.count.current - 1;
-          }
+
         }
             player.debug.elemPlayer.time.elapsed = 0;
             if (player.debug.elemPlayer.duration) {
-              player.debug.elemPlayer.duration.innerHTML = 0 + 'ms';
+
+              player.debug.elemPlayer.duration.innerHTML = 0 + '';
             }
             if (player.debug.elemPlayer.bar) {
               player.debug.elemPlayer.bar.style.width = '0%';
@@ -270,31 +270,35 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             }
             if (player.debug.elemPlayer.count) {
               var iterVal;
-              if (!player.customProps) {
+              if (!player.playerProps) {
                 iterVal = player.schedule.streams[0].iter.count.current;
               } else {
-                if (player.customProps.iter.infinite) {
-                  iterVal = 'i'
+                if (player.playerProps.iter.infinite) {
+                  iterVal = getDebugFormat('iter', 'i') + '&nbsp;&nbsp;|&nbsp;&nbsp;' + player.playerProps.iter.count.current;
                 } else {
-                  iterVal = player.customProps.iter.count.current;
+                  iterVal = player.playerProps.iter.count.current;
                 }
               }
-              // if (iterVal.infinite) {
-              //   iterVal = 'i';
-              // } else {
-              //   iterVal = iterVal.current;
-              // }
-              player.debug.elemPlayer.count.innerHTML = getDebugFormat('iter',  iterVal);
+              player.debug.elemPlayer.count.innerHTML = iterVal;
             }
             if (player.debug.elemPlayer.direction) {
               var direction;
-              if (!player.customProps) {
+              if (!player.playerProps) {
                 direction = player.schedule.streams[0].direction.current;
               } else {
-                direction = player.customProps.direction.current;
+                direction = player.playerProps.direction.current;
               }
 
               player.debug.elemPlayer.direction.innerHTML = getDebugFormat('direction',  (direction + ''));
+            }
+            if (!skip_first && player.playerProps) {
+              if (['ra', 'a'].indexOf(player.playerProps.direction.value) > -1) {
+                if (player.playerProps.direction.current === 'f') {
+                  player.playerProps.direction.current = 'r';
+                } else {
+                  player.playerProps.direction.current = 'f';
+                }
+              }
             }
         }
 
@@ -316,7 +320,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       player.applyArgs = function(streams) {
         var propStreams = {};
         streams.forEach(function(stream, index) {
-          console.log(stream)
           if (['ra', 'r'].indexOf(stream.direction.current) > -1) {
             stream.values.reverse();
           }
@@ -326,18 +329,15 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       player.updateArgs = function(player) {
         var playerPropCount = {};
         var minPlayerOffset = 0;
+        var streamCache = [];
         player.schedule.streams.slice().forEach(function(stream, i) {
           var streamPopped = player.schedule.streams.shift();
           var streamDelay = 0;
           if (!stream.iter.infinite) {
-
             streamPopped.iter.count.current--;
           }
           if (streamPopped.iter.count.current >= 1) {
 
-
-
-            // streamPopped.tick.current = streamPopped.tick.start;
             streamPopped.time.elapsed = 0;
 
             if (stream.iter.btwn > 0) {
@@ -351,15 +351,14 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               // streamPopped.tick.current -= btwnChange;
             }
             if (['ra', 'a'].indexOf(streamPopped.direction.value) > -1) {
-              console.log(streamPopped.direction)
+
               if (streamPopped.direction.current === 'f') {
                 streamPopped.direction.current = 'r';
 
               } else {
                 streamPopped.direction.current = 'f';
-
               }
-              streamPopped.values.reverse();
+
 
             }
 
@@ -368,24 +367,41 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             }
 
             playerPropCount[stream.name].push(streamPopped);
+          } else {
+            streamCache.push(streamPopped);
           }
         });
 
         // if (minPlayerOffset && player.debug) {
         //     player.tick.current = player.tick.start + minPlayerOffset;
         //   }
-        player.tick.current = player.tick.start;
+        player.tick.current = player.tick.start + minPlayerOffset;
 
         for (key in playerPropCount) {
           playerPropCount[key].forEach(function(stream, i) {
-            // if (['ra', 'a'].indexOf(stream.direction.value) > -1) {
-              if (stream.direction.current === 'r') {
+            if (['ra', 'a'].indexOf(stream.direction.value) > -1) {
+              if (stream.direction.value === 'ra') {
+                if (stream.direction.current === 'r') {
+                  stream.tick.current = -1 * (player.tick.current + stream.tick.start);
 
-                stream.tick.current = -1 * (player.tick.current + stream.tick.start);
-              } else {
-                stream.tick.current = stream.tick.start;
+                } else {
+                  stream.tick.current = stream.tick.start;
+                  stream.values.reverse();
+                }
+
               }
-            // }
+              if (stream.direction.value === 'a') {
+                if (stream.direction.current === 'f') {
+                  stream.tick.current = -1 * (player.tick.current + stream.tick.start);
+                } else {
+                  stream.tick.current = stream.tick.start;
+                  stream.values.reverse();
+                }
+              }
+            } else {
+              stream.tick.current = stream.tick.start;
+            }
+
 
             player.schedule.streams.push(stream);
           })
@@ -399,33 +415,55 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         } else {
           player.pause();
+          player.schedule.streams = streamCache
           if (player.debug) {
             var elem = document.querySelector('#pause-element')
             angular.element(elem).triggerHandler('click');
           }
         }
-        // console.log(player.schedule.streams.length, minPlayerOffset);
-        // player.schedule.streams.filter(function(stream, i) {
-        //   return stream.iter.count > 0;
-        // })
-        // player.play();
+
       }
 
-      player.reset = function(schedule, and_play) {
-
+      player.reset = function(player, and_play) {
+        var schedule = player.schedule;
         player.tick.current = player.tick.start;
-        schedule.streams.forEach(function(stream, i) {
-          if (stream.iter.count.current >= 1) {
-            stream.tick.current = stream.tick.start;
-            stream.time.elapsed = 0;
-          }
-        })
+        if (player.playerProps) {
+          player.playerProps.iter.count.current = player.playerProps.iter.count.total + 1;
 
+        }
+
+        player.schedule.streams.forEach(function(stream, i) {
+
+            stream.time.elapsed = 0;
+
+            // set back to original
+            stream.tick.current = stream.tick.start;
+
+            stream.iter.count.current = stream.iter.count.total + 1;
+            if (['ra', 'r'].indexOf(stream.direction.value) > -1) {
+              stream.direction.current = 'r';
+            } else {
+              stream.direction.current = 'f';
+            }
+        })
+        // if (player)
+        player.animFunc = exec_anim_func(player, player.rAF);
+        // if (player.playerProps && ['ra', 'a'].indexOf(player.playerProps.direction.value) > -1) {
+        //   if (player.playerProps.direction.current === 'ra') {
+        //     player.playerProps.direction.current = 'r';
+        //   }
+        // }
+        player.updateArgs(player)
+        updatePlayerArgs(player, true)
+
+
+        // player.stepForward(player.schedule)
+        player.active = false;
       }
 
 
       function applyTickDeltaToStreams(player, schedule, time_delta, tick_delta, scale_delta) {
-        if (!player.tick.current) {
+        if (player.tick.current < 0) {
           // player.pause();
           player.active = false;
 
@@ -475,12 +513,27 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
     function filterParentheticals(str) {
       // console.log(filterParentheticals(str));
+      var firstPortion = '';
+      var checkForSinglePropStr = str.split(':');
+
+      if (checkForSinglePropStr.length > 6) {
+        firstPortion = checkForSinglePropStr.splice(0,3);
+        str = checkForSinglePropStr.join(':')
+      } else {
+        firstPortion = checkForSinglePropStr.splice(0,1);
+        str = checkForSinglePropStr.join(':')
+      }
       var strSplit = str.split('(');
       if (strSplit.length > 1) {
-        var firstPortion  = strSplit.splice(0, 1).join(":").trim();
-        var parsedParenPortion = processParentheticals(strSplit).trim();
-        return firstPortion + parsedParenPortion
 
+        firstPortion = firstPortion.join(':') + ':' + strSplit.splice(0, 1).join(":").trim();
+
+        var parsedParenPortion = processParentheticals(strSplit).trim();
+        var result = UtilitiesService.replaceAll(firstPortion + parsedParenPortion, '::', ':');
+        return result
+      } else {
+        console.log(str, firstPortion)
+        str = firstPortion.join(':') + ':' +  str;
       }
       return str;
 
@@ -492,9 +545,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         } else {
           endTrimmings = '';
         }
-        console.log(arr_parentheticals, endTrimmings)
         var parenArgs = [];
-        console.log(arr_parentheticals)
         arr_parentheticals.forEach(function(p_arg, i) {
           var innerArg = p_arg.split(')')[0];
           var innerArg = UtilitiesService.replaceAll(innerArg, ':', '|');
@@ -509,25 +560,61 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
     }
 
-      function initStateObj(stateName, str, elem, kf, debug) {
+      function replaceShortcutSyntax(str) {
+        var strSplit = str.split(':');
+        if (strSplit.length <= 5) return str;
 
+        var firstArgs = strSplit.splice(0,3);
+        var formattedArgs = checkAndParseTransform(firstArgs[0], firstArgs[1], firstArgs[2]);
+        var formattedArgs = checkAndParseShortcuts(formattedArgs[0], formattedArgs[1], formattedArgs[2]);
+        var result = formattedArgs.join(':') + ':' + strSplit.join(':');
+
+        return result;
+
+        function checkAndParseTransform(prop, start, end) {
+          return animUrlShortcuts.func.transform(prop,start,end);
+        }
+        function checkAndParseShortcuts(prop, start, end) {
+          var start = animUrlShortcuts.func.valueStrMatch(start);
+          var end = animUrlShortcuts.func.valueStrMatch(end);
+          console.log('checking', start, end)
+          return [prop, start, end];
+        }
+
+      }
+
+      function initStateObj(stateName, str, elem, kf, debug) {
         str = str && UtilitiesService.replaceAll(str, ', ', ',');
-        str = str && filterParentheticals(str)
+
         var stateArgs = str.split(',');
+
         var resultState = {duration: 0};
         var timeline = {events:[], props:{}, stateName: stateName};
         for (var i = 0; i < stateArgs.length; i++) {
           var iAnim = stateArgs[i];
+
+
+          // iAnim = iAnim && filterParentheticals(iAnim)
+
           var isCustomAnim = isCustomAnimation(iAnim);
 
           if (isCustomAnim) {
 
+            // iAnim = iAnim && filterParentheticals(iAnim)
+            iAnim = iAnim && replaceShortcutSyntax(iAnim);
             addCustomAnimPropsToTimeline(elem, iAnim, isCustomAnim, timeline, debug)
 
 
           } else {
+            iAnim = iAnim && filterParentheticals(iAnim)
+            iAnim = iAnim && replaceShortcutSyntax(iAnim);
             var iPropObj = initPropObj(iAnim);
 
+            timeline.playerProps = {
+              direction: iPropObj.direction,
+              iter: JSON.parse(JSON.stringify(iPropObj.iter)),
+              duration: iPropObj.duration
+            }
             var offset = iPropObj.delay;
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
@@ -551,9 +638,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             if (debug) {
 
               if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
-                delete timeline.props['transform']
+                delete timeline.props['transform'];
                 addIndependentTransformPropsToTimeline(result, timeline);
-                timeline.props[iPropObj.property].push(result);
+
+                // timeline.props[iPropObj.property].push(result);
               } else {
                 timeline.props[iPropObj.property].push(result);
               }
@@ -572,13 +660,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
 
         return timeline;
-        // timeline.events.forEach(function(e, i) {
-        //   console.log(e.offset, e.duration, e.values.length)
-        // })
 
-
-        // #2, for each property get propertyObj
-        // #3, getPropertyName
 
       }
 
@@ -621,11 +703,14 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           return false;
         }
         var animName = animStrArgs[0].trim();
+
         var allCustomAnimations = RootService.getCustomAnimations();
         var customAnimationNames = allCustomAnimations.customNameOnly;
         var customAnimIndex = customAnimationNames.indexOf(animName);
+
         if (customAnimIndex >= 0) {
           var customAnimObj = allCustomAnimations.custom[customAnimIndex];
+
           return PropertyService.parseAnimObjToPropArr(customAnimObj.cssRules).props;
         }
         return;
@@ -636,13 +721,14 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         var animArgs = anim_str.split(':');
 
         var animDict = {};
+        console.log(animArgs)
         animDict.duration = parseInt(animArgs[1]);
         animDict.delay = parseInt(animArgs[3]) || 0;
         animDict.easingFunc = animArgs[2] || 'linear'
 
         animDict.iter = parseIteration(animArgs[4]) || parseIteration("1");
         animDict.direction = parseDirection(animArgs[5]) || parseDirection("f");
-        timeline.customProps = {iter: animDict.iter, direction:animDict.direction};
+        timeline.playerProps = {iter: animDict.iter, direction:animDict.direction, duration: animDict.duration};
         for (var prop in custom_props) {
           var propValues = [];
 
@@ -783,13 +869,19 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
 
 
+    function checkAndReplaceShortcuts(str, type) {
+      if (str in animPropShortcuts[type]) {
+        str = animPropShortcuts[type][str];
+      }
+      return str;
+    }
 
     /*** Init Obj functions
     ****
     */
 
     function initPropObj(str) {
-
+      console.log(animPropShortcuts)
       var strArgs = str.split(':');
       var strArgLength = strArgs.length;
       if (strArgLength < 8) {
@@ -801,48 +893,91 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       var prop = {};
       for (var i = 0; i < strArgLength; i++)  {
         var iArg = strArgs.shift();
+
         if (!prop.property)  {
-          prop.property = iArg || 'transform'
+          prop.property = checkAndReplaceShortcuts(iArg, 'name') || 'transform'
 
           continue;
         }
         if (!prop.start) {
-          prop.start = iArg || 0;
+          prop.start = checkAndReplaceShortcuts(iArg, 'start') || 0;
           continue
         }
         if (!prop.end) {
-          prop.end = iArg || 1;
+          prop.end = checkAndReplaceShortcuts(iArg, 'end') || 1;
           continue
         }
         if (!prop.duration) {
-          prop.duration = parseMSValue(iArg) || 1000;
+          prop.duration = parseMSValue(checkAndReplaceShortcuts(iArg, 'duration')) || 1000;
           continue
         }
         if (!prop.easingFunc) {
-          prop.easingFunc = iArg || 1000;
+          prop.easingFunc = checkAndReplaceShortcuts(iArg, 'easingFunc') || 1000;
           continue
         }
-        if (!prop.delay) {
-          prop.delay = parseMSValue(iArg) || 0;
+        if (!('delay' in prop)) {
+          prop.delay = parseMSValue(checkAndReplaceShortcuts(iArg, 'delay')) || 0;
           continue
         }
         if (!prop.iter) {
 
-          prop.iter = (iArg && parseIteration(iArg)) || parseIteration('1');
+          prop.iter = iArg && parseIteration(checkAndReplaceShortcuts(iArg, 'iter')) || parseIteration('1');
 
           continue
         }
         if (!prop.direction) {
-          prop.direction = iArg && parseDirection(iArg) || parseDirection('f');
+          prop.direction = iArg && parseDirection(checkAndReplaceShortcuts(iArg, 'direction')) || parseDirection('f');
           continue
         }
       }
-      console.log(str, prop)
       return prop
     }
 
     function parseMSValue(str_ms) {
       return parseInt(str_ms);
+    }
+
+    function getanimUrlShortcuts(root_service) {
+      return {
+        func: {
+          transform: mapTransformPropToStartEnd,
+          valueStrMatch: mapPropValueAndReplace
+        }
+      }
+
+      function mapPropValueAndReplace(val) {
+        var defaultReplaceDict = getDefaultReplaceDict(val)
+
+        for (var key in defaultReplaceDict) {
+          var iMatch = (val + ':').indexOf(key);
+          if (iMatch > -1) {
+            var valWithoutMatch = (val + ':').split(key)
+            val = valWithoutMatch[0] + defaultReplaceDict[key] + valWithoutMatch[1];
+
+            if (val.length) {
+              break;
+            }
+
+          }
+        }
+        return val.split(':').join('');
+      }
+
+      function mapTransformPropToStartEnd(prop, start, end) {
+        var defaultTransformProps = ['translateX', 'translateY', 'translateZ', 'scaleX', 'scaleY', 'rotate', 'skewX', 'skewY', 'scaleZ', 'rotateX', 'rotateY', 'rotateZ', 'perspective', 'rotate3d'];
+        var isTransformProp = defaultTransformProps.indexOf(prop);
+        if (isTransformProp > -1) {
+          return ['transform', prop + '(' + start + ')', prop + '(' + end + ')'];
+        }
+        return [prop, start, end];
+      }
+    }
+
+    function getDefaultReplaceDict() {
+      return {
+        'p:': '%:',
+        'p):': '%):'
+      }
     }
 
     function parseIteration(iter) {
@@ -851,7 +986,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       var inBetween = 0;
       var iterSplit = iter.split('+')
       var iterVal = iterSplit[0].trim();
-      console.log(iterVal)
       if (iterVal === 'i') {
         iObj.infinite = true;
       }
