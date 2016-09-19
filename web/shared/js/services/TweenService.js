@@ -187,7 +187,22 @@ function TweenService() {
 
 
 var animatableProps =
-["-webkit-text-fill-color",
+[
+"translateX",
+"translateY",
+"translateZ",
+"scaleX",
+"scaleY",
+"rotate",
+"skewX",
+"skewY",
+"scaleZ",
+"rotateX",
+"rotateY",
+"rotateZ",
+"perspective",
+"rotate3d",
+"-webkit-text-fill-color",
 "-webkit-text-stroke",
 "-webkit-text-stroke-color",
 "-webkit-touch-callout",

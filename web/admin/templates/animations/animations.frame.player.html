@@ -11,7 +11,7 @@
             <span ng-click="afc.player.play()" class='flex-center svg-32 svg-stroke-6 radius-2 stroke-white' on-click="p:[display:none]|s:[play-click:public]" init-with="p:[display:block]" when-paused-click="p:[display:block]"  ng-class="{'opacity-50p':player.state.active}"  ng-include='"shared/templates/components/svg/main/play.html"'></span>
             <span ng-click='afc.player.pause()' id='pause-element' class='flex-center svg-32 svg-stroke-6 radius-2 stroke-white' init-with="p:[display:none]" when-play-click="p:[display:block]" on-click="p:[display:none]|s:[paused-click:public]"  ng-include='"shared/templates/components/svg/main/pause.html"'></span>
         </li>
-        <li ng-click='afc.player.reset(afc.player.schedule)'>
+        <li ng-click='afc.player.reset(afc.player)'>
             <span class='flex-center svg-32 svg-stroke-6 radius-2 stroke-white' ng-include='"shared/templates/components/svg/main/sync.html"'></span>
         </li>
         <li ng-click='afc.player.stepForward(afc.player.schedule)'>
@@ -23,7 +23,7 @@
             </span>
         </li>
         <li class='flex-vertical-center'>
-            <span class='block txt-center relative p15x-p10y weight-900 txt-white txt-20 bg-campus-50p radius-2 width-64' inspector-count>
+            <span class='block txt-center relative p15x-p10y weight-900 txt-white txt-20 bg-campus-50p radius-2 width-96' inspector-count>
 
             </span>
         </li>

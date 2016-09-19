@@ -3,21 +3,46 @@
     "description": "Animation properties/specs",
     "base_url": "admin/spec/api",
     "sections":{
-        "groupings": {
-            "allTransforms": {
-                "values": {
-                    "translateY": "-1000%",
-                    "translateZ":"500px",
-                    "scaleX": 0.5,
-                    "scaleY": 0.5,
-                    "skewX":"0deg",
-                    "skewY":"0deg"
-                }
-            },
-            "scaledFlick": {
-                "values": {
-                    "defaultOnly": ["translateX", "translateY", "translateZ", "opacity"]
-                }
+        "shortcuts": {
+            "hide": true,
+            "types": {
+                "defaults": {
+                    "start": {
+                        "default": 0,
+                        "0p": ["translateX", "translateY", "translateZ"],
+                        "0deg": ["rotate", "rotate3d", "rotateX", "rotateY", "rotateZ"]
+                    },
+                    "end": {
+                        "default": 1,
+                        "100p": ["translateX", "translateY", "translateZ"],
+                        "180deg": ["rotate", "rotate3d", "rotateX", "rotateY", "rotateZ"]
+                    },
+                    "duration": {
+                        "default": 1000
+                    },
+                    "easingFunc": {
+                        "default": "easeInCirc",
+                        "bouncePast": ["translateX", "translateY"]
+                    },
+                    "delay": {
+                        "default": 0
+                    },
+                    "iter": {
+                        "default": 1
+                    },
+                    "direction": {
+                        "default": "f"
+                    }
+                },
+                "args": {
+                    "easingFunc": {
+                        "cbSineOut": "cubic-bezier(0.39, 0.575, 0.565, 1);"
+                    },
+                    "duration": {
+                        "fast": 500
+                    }
+                },
+                "animations": {}
             }
         },
         "defaults": {

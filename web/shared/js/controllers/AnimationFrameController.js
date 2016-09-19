@@ -12,11 +12,12 @@ angular.module('uguru.shared.controllers')
   'AnimationFrameService',
   function($scope, $state, $timeout, $stateParams, UtilitiesService, $compile, AnimationFrameService) {
     var afc = this;
-    afc.service = AnimationFrameService;
 
+    afc.service = AnimationFrameService;
     afc.args = {}
     afc.params = {formatted: '', raw: ''}
     afc.params.raw = constructStateStrFromParams($stateParams);
+    console.log(afc.params.raw)
     afc.params.comp = afc.element.objUrl.split('/').splice(afc.element.objUrl.split('/').length - $stateParams.comp.split('.').length).join('/')
     afc.params.kf = $stateParams.kf && parseInt($stateParams.kf) || 60
     afc.params.formatted = 'p:[' + afc.params.raw + ']';
