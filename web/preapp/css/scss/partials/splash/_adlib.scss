@@ -1,5 +1,4 @@
 @import '../../../../../shared/css/scss/partials/mixin';
-@import 'responsive';
 
 .adlib-header-container {
 	position: relative;
@@ -34,6 +33,7 @@
 	position: relative;
 	z-index: 3;
 	width: 100%;
+	margin-top: -20px;
 	&.pane {
 		background: $slate;
 		margin-bottom: 0;
@@ -47,12 +47,13 @@
 	}
 	.splash-adlib {
 		width: 100%;
+		margin-top: -10px;
 		h1 {
-			@include flex;
 			@include flex-wrap;
 			@include flex-center;
-			font-size: 28px;
+			font-size: 24px;
 			font-weight: 600;
+			line-height: 1.75;
 			a {
 				margin: 0 15px;
 			}
@@ -73,9 +74,11 @@
 			@include flex;
 			@include flex-wrap;
 			@include flex-center;
-			margin: 15px auto;
+			flex-direction: column;
 			padding: 7.5px;
 			width: 100%;
+			height: 150px;
+			margin: -10px 0 5px;
 			li {
 				width: 143px;
 				padding: 7.5px;
@@ -96,23 +99,26 @@
 }
 
 .splash-guru-head {
-	width: 150px;
+	width: 100px;
 	position: relative;
+	margin-top: 20px;
+	margin-bottom: 10px;
 	> svg {
 		position: absolute;
 	}
 	.splash-hero-guru {
 		position: relative;
-		width: 150px;
-		height: 150px;
+		width: 100px;
+		height: 100px;
+		margin-bottom: -5px;
 		.guru-head-switcher {
 			position: absolute;
 			top: 50%;
-			margin-top: -100px;
 			left: 50%;
-			margin-left: -100px;
-			width: 200px;
-			height: 200px;
+			margin-top: -60px;
+			margin-left: -60px;
+			width: 120px;
+			height: 120px;
 		}
 	}
 	.coach-help {
@@ -131,9 +137,9 @@
 }
 
 .coach-fill {
-	top: 115px;
-	right: -100px;
-	width: 140px;
+	top: 55px;
+	right: -80px;
+	width: 105px;
 	path {
 		&:nth-child(1) {
 			stroke-dasharray: 137;
@@ -144,30 +150,18 @@
 	}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-height: 480px) {
+	.coach-fill {
+		top: 75px;
+	}
 	.splash-hero-content {
 		.splash-adlib {
-			h1 {
-				line-height: 2;
-			}
 			ul {
-				margin: -10px 0 5px;
-				flex-direction: column;
-				height: 250px;
+				height: 170px;
 			}
 		}
 	}
-}
-
-@media screen and (max-height: 736px) and (max-width: 414px) {
-	.coach-fill {
-		top: 85px;
-		right: -80px;
-		width: 105px;
-	}
 	.splash-guru-head {
-		margin-top: 20px;
-		margin-bottom: 10px;
 		width: 120px;
 		.splash-hero-guru {
 			width: 120px;
@@ -182,47 +176,140 @@
 	}
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (min-height: 568px) {
+	.coach-fill {
+		top: 85px;
+	}
 	.splash-hero-content {
 		.splash-adlib {
+			margin-top: 0;
 			ul {
+				height: 220px;
+			}
+		}
+		.splash-guru-head {
+			margin-bottom: 0;
+		}
+	}
+}
+
+@media screen and (min-height: 736px) {
+	.coach-fill {
+		right: -100px;
+		width: 140px;
+	}
+	.splash-guru-head {
+		margin-top: 0;
+		width: 150px;
+		.splash-hero-guru {
+			width: 150px;
+			height: 150px;
+			.guru-head-switcher {
+				margin-top: -100px;
+				margin-left: -100px;
+				width: 200px;
 				height: 200px;
 			}
 		}
 	}
 }
-@media screen and (max-height: 568px) {
-	.coach-fill {
-		top: 75px;
-	}
-	.splash-hero-content {
-		margin-top: -20px;
-		.splash-guru-head {
-			margin-top: 0;
-			margin-bottom: -5px;
-		}
-		.splash-adlib {
-			ul {
-				height: 150px;
-			}
-		}
-	}
-}
 
-@media screen and (max-width: 360px) {
+@media screen and (min-width: 320px) {
 	.splash-hero-content {
 		.splash-adlib {
 			h1 {
-				font-size: 24px;
+				line-height: 2;
 			}
 		}
 	}
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 360px) {
 	.splash-hero-content {
-		.splash-adlib h1 {
-			line-height: 1.75!important;
+		.splash-adlib {
+			h1 {
+				line-height: 2;
+			}
+		}
+	}
+}
+
+.adlib-header {
+	&.mobile {
+		margin-top: 0;
+		display: none;
+	}
+	&.tiny {
+		@include flex;
+	}
+	&.desktop {
+		display: none;
+	}
+	@media screen and (min-width: 320px) {
+		&.mobile {
+			@include flex;
+		}
+		&.tiny {
+			display: none;
+		}
+	}
+	@media screen and (min-width: 768px) {
+		&.mobile {
+			display: none;
+		}
+		&.tiny {
+			display: none;
+		}
+		&.desktop {
+			@include flex;
+		}
+	}
+}
+
+
+@media screen and (min-width: 768px) {
+	.splash-hero-content {
+		.coach-help {
+			&.coach-help-desktop {
+				display: block!important;
+				&.hide {
+					display: none!important;
+				}
+			}
+			&.coach-help-mobile {
+				display: none!important;
+			}
+		}
+		.splash-guru-head {
+			.coach-fill {
+				top: 80px;
+				right: -180px;
+			}
+		}
+		.splash-adlib {
+			h1 {
+				font-size: 40px;
+			}
+			.splash-mobile-cta {
+				display: none;
+			}
+			ul {
+				max-width: calc(172px * 4 + 30px);
+				padding: 15px;
+				margin: 0 auto 15px;
+				flex-direction: row;
+				li {
+					width: 25%;
+					max-width: 172px;
+					padding: 15px;
+					&:nth-child(7), &:nth-child(8) {
+						display: block;
+					}
+				}
+			}
+		}
+		.adlib-header-container {
+			max-width: none;
 		}
 	}
 }

@@ -49,17 +49,17 @@ a.chip, input.chip {
 	@include flex;
 	@include flex-center;
 	position: relative;
-	width: 130px;
-	height: 38px;
+	width: 96px;
+	height: 28px;
+	font-size: 16px;
 	padding: 0;
 	border-radius: 8px;
-	font-size: 20px;
 	font-weight: 600;
 	background: rgba($slate, .5);
-	@media screen and (max-width: 320px) {
-		width: 96px;
-		height: 28px;
-		font-size: 16px;
+	@media screen and (min-width: 320px) {
+		width: 130px;
+		height: 38px;
+		font-size: 20px;
 	}
 	svg {
 		@include prefix(transition, all 150ms ease-in-out, webkit moz ms o);

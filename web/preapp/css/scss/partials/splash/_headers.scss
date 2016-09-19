@@ -4,22 +4,6 @@
 	transform-origin: left center;
 }
 
-.sidebar-scale {
-	position: fixed;
-	top: 30px;
-	right: 50%;
-	margin-right: -5px;
-	width: 10px;
-	height: 10px;
-	border-radius: 100%;
-	z-index: 99999;
-	@media screen and (min-width: 860px) {
-		top: 30px;
-		right: 30px;
-		margin: 0;
-	}
-}
-
 .powerups-scale {
 	position: fixed;
 	top: 30px;
@@ -33,19 +17,6 @@
 		right: 90px;
 		margin: 0;
 	}
-}
-
-.loader-scale-out {
-	transform-origin: center center;
-	position: fixed;
-	top: calc(50% - 100px);
-	left: calc(50% - 100px);
-	height: 200px;
-	width: 200px;
-	border: 8px solid $gold;
-	background: $charcoal;
-	border-radius: 100%;
-	z-index: 99999;
 }
 
 .splash-up-circle {
@@ -645,6 +616,22 @@
 }
 // end bose scale hover
 
+
+.splash-hero-pennant {
+	position: absolute;
+	bottom: -65px;
+	left: 0;
+	z-index: 10;
+	padding: 15px;
+	svg {
+		width: 75px;
+		@media screen and (min-height: 568px) {
+			width: 110px;
+		}
+	}
+}
+
+
 @media screen and (min-width: 860px) {
 	.powerups-link {
 		right: 67px;
@@ -707,6 +694,7 @@
 		height: 70px!important;
 	}
 }
+
 @media screen and (min-width: 768px) {
 	#splash-hero-nav-mobile {
 		display: none!important;
