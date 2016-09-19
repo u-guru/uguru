@@ -414,8 +414,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.active = true;
 
         } else {
-          player.pause();
+
           player.schedule.streams = streamCache
+          player.active = false;
           if (player.debug) {
             var elem = document.querySelector('#pause-element')
             angular.element(elem).triggerHandler('click');
@@ -463,15 +464,13 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
       function applyTickDeltaToStreams(player, schedule, time_delta, tick_delta, scale_delta) {
-        if (player.tick.current < 0) {
-          // player.pause();
-          player.active = false;
+        if (player.tick.current === 0) {
+          // if (player.schedule.streams.length) {
+            player.updateArgs(player)
+          // }
 
 
-          player.updateArgs(player)
-
-          // player.reset(schedule);
-          return;
+          return
         }
         schedule.streams.forEach(function(stream, i) {
           if (stream.tick.current >= 0 && stream.tick.current <= stream.values.length) {
