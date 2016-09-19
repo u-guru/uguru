@@ -31,12 +31,10 @@ angular.module('uguru.shared.controllers')
         var stateName = 'on-init'
         afc.element.dom = document.querySelectorAll('#anim-element')[0];
         // for (var i = 0; i < afc.element.dom.length; i++) {
-          afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.kf, true);
+          afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.kf, $scope);
           afc.player = AnimationFrameService.getPlayer();
-          afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, true);
-          afc.player.schedule.streams.forEach(function(stream, i) {
-            stream.applyProp(stream.values[0]);
-          })
+          afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, $scope);
+
 
         // };
         // afc.player.enableDebugMode();

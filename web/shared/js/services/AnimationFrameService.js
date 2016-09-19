@@ -97,7 +97,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           // player.debug.status.update(player.tick.current);
           // player.active = false;
         } else {
-          console.log(player.tick.current)
           player.pause();
         }
       }
@@ -137,7 +136,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
 
       player.scheduleStream = function(player, state_obj, offset, debug) {
-        console.log('scheduling streams')
         var streams = state_obj.events;
         player.tick = {start: 0, end:0, current:0};
         if (debug && state_obj.playerProps) {
@@ -158,6 +156,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.tick.current = player.tick.start;
           var newStream = {applyProp:streams[i].applyAtT, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, tick:tick, values:streams[i].values.slice()}
           shallowCopyStreams.push(newStream);
+          if (newStream.direction.current === 'r') {
+
+            newStream.values.reverse();
+          }
         }
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
@@ -249,7 +251,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         if (!skip_first && player.playerProps) {
 
           if (!player.playerProps.iter.infinite) {
-            console.log('decremented', player.playerProps.iter.count.current + "")
             player.playerProps.iter.count.current = player.playerProps.iter.count.current - 1;
           } else {
             player.playerProps.iter.count.current = player.playerProps.iter.count.current + 1;
@@ -319,7 +320,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       player.applyArgs = function(streams) {
         var propStreams = {};
         streams.forEach(function(stream, index) {
-          console.log(stream)
           if (['ra', 'r'].indexOf(stream.direction.current) > -1) {
             stream.values.reverse();
           }
@@ -338,9 +338,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           }
           if (streamPopped.iter.count.current >= 1) {
 
-
-
-            // streamPopped.tick.current = streamPopped.tick.start;
             streamPopped.time.elapsed = 0;
 
             if (stream.iter.btwn > 0) {
@@ -354,14 +351,14 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               // streamPopped.tick.current -= btwnChange;
             }
             if (['ra', 'a'].indexOf(streamPopped.direction.value) > -1) {
-              console.log(streamPopped.direction)
+
               if (streamPopped.direction.current === 'f') {
                 streamPopped.direction.current = 'r';
 
               } else {
                 streamPopped.direction.current = 'f';
               }
-              streamPopped.values.reverse();
+
 
             }
 
@@ -383,13 +380,28 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         for (key in playerPropCount) {
           playerPropCount[key].forEach(function(stream, i) {
             if (['ra', 'a'].indexOf(stream.direction.value) > -1) {
+              if (stream.direction.value === 'ra') {
+                if (stream.direction.current === 'r') {
+                  stream.tick.current = -1 * (player.tick.current + stream.tick.start);
 
-              if (stream.direction.current === 'r') {
-                stream.tick.current = -1 * (player.tick.current + stream.tick.start);
-              } else {
-                stream.tick.current = stream.tick.start;
+                } else {
+                  stream.tick.current = stream.tick.start;
+                  stream.values.reverse();
+                }
+
               }
+              if (stream.direction.value === 'a') {
+                if (stream.direction.current === 'f') {
+                  stream.tick.current = -1 * (player.tick.current + stream.tick.start);
+                } else {
+                  stream.tick.current = stream.tick.start;
+                  stream.values.reverse();
+                }
+              }
+            } else {
+              stream.tick.current = stream.tick.start;
             }
+
 
             player.schedule.streams.push(stream);
           })
@@ -451,7 +463,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
       function applyTickDeltaToStreams(player, schedule, time_delta, tick_delta, scale_delta) {
-        if (!player.tick.current) {
+        if (player.tick.current < 0) {
           // player.pause();
           player.active = false;
 
@@ -974,7 +986,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       var inBetween = 0;
       var iterSplit = iter.split('+')
       var iterVal = iterSplit[0].trim();
-      console.log(iterVal)
       if (iterVal === 'i') {
         iObj.infinite = true;
       }
