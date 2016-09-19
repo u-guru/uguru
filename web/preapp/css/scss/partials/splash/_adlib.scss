@@ -70,6 +70,13 @@
 				visibility: hidden;
 			}
 		}
+		.tag-adlib {
+			@media screen and (min-width: 320px) {
+				width: 96px;
+				height: 28px;
+				font-size: 16px;
+			}
+		}
 		ul {
 			@include flex;
 			@include flex-wrap;
@@ -80,15 +87,10 @@
 			height: 150px;
 			margin: -10px 0 5px;
 			li {
-				width: 143px;
+				width: 111px;
 				padding: 7.5px;
-				@media screen and (max-width: 320px) {
-					width: 111px;
-				}
-				@media screen and (max-height: 568px) {
-					&:nth-child(4), &:nth-child(8) {
-						display: none;
-					}
+				&:nth-child(4), &:nth-child(8) {
+					display: none;
 				}
 				a[class*="translate-blank"] {
 					animation: none!important;
@@ -183,8 +185,19 @@
 	.splash-hero-content {
 		.splash-adlib {
 			margin-top: 0;
+			.tag-adlib {
+				width: 130px;
+				height: 38px;
+				font-size: 20px;
+			}
 			ul {
-				height: 220px;
+				height: 250px;
+				li {
+					width: 143px;
+					&:nth-child(4), &:nth-child(8) {
+						display: block;
+					}
+				}
 			}
 		}
 		.splash-guru-head {
@@ -218,7 +231,7 @@
 	.splash-hero-content {
 		.splash-adlib {
 			h1 {
-				line-height: 2;
+				line-height: 1.8;
 			}
 		}
 	}
@@ -237,27 +250,13 @@
 .adlib-header {
 	&.mobile {
 		margin-top: 0;
-		display: none;
-	}
-	&.tiny {
 		@include flex;
 	}
 	&.desktop {
 		display: none;
 	}
-	@media screen and (min-width: 320px) {
-		&.mobile {
-			@include flex;
-		}
-		&.tiny {
-			display: none;
-		}
-	}
 	@media screen and (min-width: 768px) {
 		&.mobile {
-			display: none;
-		}
-		&.tiny {
 			display: none;
 		}
 		&.desktop {
@@ -294,13 +293,14 @@
 				display: none;
 			}
 			ul {
-				max-width: calc(172px * 4 + 30px);
+				max-width: calc(160px * 4 + 30px);
+				height: 136px;
 				padding: 15px;
 				margin: 0 auto 15px;
 				flex-direction: row;
 				li {
 					width: 25%;
-					max-width: 172px;
+					max-width: 160px;
 					padding: 15px;
 					&:nth-child(7), &:nth-child(8) {
 						display: block;
