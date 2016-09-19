@@ -17,9 +17,12 @@
         <li ng-click='afc.player.stepForward(afc.player.schedule)'>
             <span class='flex-center svg-32 svg-stroke-6 radius-2 bg stroke-white' ng-include='"shared/templates/components/svg/main/skip.html"'></span>
         </li>
-        <li class='flex-vertical-center'>
-            <span class='block txt-center relative p15x-p10y weight-900 txt-white txt-20 bg-campus-50p radius-2 width-128' inspector-duration>
-                0/{{Math.toFixed(afc.player.debug.states[0].duration) + 'ms'}}
+        <li class='flex-vertical-center block txt-center weight-900 bg-campus-50p radius-2' style='width:150px !important'>
+            <span inspector-duration class='width-128'>
+                0
+            </span>
+            <span class='width-64 txt-1 opacity-60p'>
+                /&nbsp;&nbsp;{{afc.player.playerProps.duration}}ms
             </span>
         </li>
         <li class='flex-vertical-center'>
@@ -41,31 +44,6 @@
             <div class='absolute z-index-3 round bg-smoke' style='left:0; top:9px; width:15px; height: 15px' inspector-ball> </div>
         </div>
 
-        <!-- <div class='full-x flex-end'>
-            <div ng-if='player.prefs.speed' class='txt-2 m10x' style='margin-top:-5px;'>
-                <span class='weight-900 opacity-70p'>
-                    Step Size:
-                </span>
-                <span class='weight-900'>
-                    {{player.prefs.stepSize}}ms
-                </span>
-            </div>
-            <div ng-if='player.prefs.speed' class='txt-2 m10x' style='margin-top:-5px;'>
-                <span class='weight-900 opacity-70p'>
-                    Auto Play:
-                </span>
-                <span class='weight-900'>
-                    {{player.prefs.autoPlay}}
-                </span>
-            </div>
-            <div ng-if='player.prefs.speed' class='txt-2 m10x' style='margin-top:-5px;'>
-                <span class='weight-900 opacity-70p'>
-                    Logging:
-                </span>
-                <span class='weight-900'>
-                    {{player.prefs.showLog}}
-                </span>
-            </div>
-        </div> -->
+
     </div>
 </div>

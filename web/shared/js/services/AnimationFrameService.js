@@ -17,13 +17,17 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
     var init = {state: state.init}
     var propOptions = getPropOptions();
     var cache = {states: [], elements: [], properties: []};
-    var animShortcuts = getAnimShortcuts(RootService);
+    var animUrlShortcuts = getanimUrlShortcuts(RootService);
+    var animPropShortcuts
+    $timeout(function() {
+      animPropShortcuts = RootService.getAnimShortcuts('animProps');
+    })
 
     return {
       init:init,
       getDebugFormat: getDebugFormat,
       getPlayer: getRAFPlayer,
-      animShortcuts:animShortcuts
+      animUrlShortcuts:animUrlShortcuts
     };
 
 
@@ -155,15 +159,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           var newStream = {applyProp:streams[i].applyAtT, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset, tick:tick, values:streams[i].values.slice()}
           shallowCopyStreams.push(newStream);
         }
-        // player.applyArgs(player.schedule.streams, player.debug);
-        shallowCopyStreams.forEach(function(stream, i) {
-          console.log(stream.name, stream.direction, stream.tick, player.tick)
-          // if (['r', 'ra'].indexOf(stream.direction.value) > -1) {
-
-          //   stream.values.reverse();
-          //   stream.tick.current = -1 * (player.tick.current + stream.tick.current);
-          // }
-        })
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
 
 
@@ -263,7 +258,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
             player.debug.elemPlayer.time.elapsed = 0;
             if (player.debug.elemPlayer.duration) {
-              player.debug.elemPlayer.duration.innerHTML = 0 + 'ms';
+
+              player.debug.elemPlayer.duration.innerHTML = 0 + '';
             }
             if (player.debug.elemPlayer.bar) {
               player.debug.elemPlayer.bar.style.width = '0%';
@@ -507,8 +503,12 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       // console.log(filterParentheticals(str));
       var firstPortion = '';
       var checkForSinglePropStr = str.split(':');
-      if (checkForSinglePropStr.length > 5) {
+
+      if (checkForSinglePropStr.length > 6) {
         firstPortion = checkForSinglePropStr.splice(0,3);
+        str = checkForSinglePropStr.join(':')
+      } else {
+        firstPortion = checkForSinglePropStr.splice(0,1);
         str = checkForSinglePropStr.join(':')
       }
       var strSplit = str.split('(');
@@ -520,6 +520,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         var result = UtilitiesService.replaceAll(firstPortion + parsedParenPortion, '::', ':');
         return result
       } else {
+        console.log(str, firstPortion)
         str = firstPortion.join(':') + ':' +  str;
       }
       return str;
@@ -559,11 +560,11 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         return result;
 
         function checkAndParseTransform(prop, start, end) {
-          return animShortcuts.func.transform(prop,start,end);
+          return animUrlShortcuts.func.transform(prop,start,end);
         }
         function checkAndParseShortcuts(prop, start, end) {
-          var start = animShortcuts.func.valueStrMatch(start);
-          var end = animShortcuts.func.valueStrMatch(end);
+          var start = animUrlShortcuts.func.valueStrMatch(start);
+          var end = animUrlShortcuts.func.valueStrMatch(end);
           console.log('checking', start, end)
           return [prop, start, end];
         }
@@ -571,27 +572,36 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       function initStateObj(stateName, str, elem, kf, debug) {
-
         str = str && UtilitiesService.replaceAll(str, ', ', ',');
-        str = str && filterParentheticals(str)
-        str = str && replaceShortcutSyntax(str);
+
         var stateArgs = str.split(',');
+
         var resultState = {duration: 0};
         var timeline = {events:[], props:{}, stateName: stateName};
         for (var i = 0; i < stateArgs.length; i++) {
           var iAnim = stateArgs[i];
+
+
+          // iAnim = iAnim && filterParentheticals(iAnim)
+
           var isCustomAnim = isCustomAnimation(iAnim);
 
           if (isCustomAnim) {
 
+            // iAnim = iAnim && filterParentheticals(iAnim)
+            iAnim = iAnim && replaceShortcutSyntax(iAnim);
             addCustomAnimPropsToTimeline(elem, iAnim, isCustomAnim, timeline, debug)
 
 
           } else {
+            iAnim = iAnim && filterParentheticals(iAnim)
+            iAnim = iAnim && replaceShortcutSyntax(iAnim);
             var iPropObj = initPropObj(iAnim);
+
             timeline.playerProps = {
               direction: iPropObj.direction,
-              iter: JSON.parse(JSON.stringify(iPropObj.iter))
+              iter: JSON.parse(JSON.stringify(iPropObj.iter)),
+              duration: iPropObj.duration
             }
             var offset = iPropObj.delay;
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
@@ -681,11 +691,14 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           return false;
         }
         var animName = animStrArgs[0].trim();
+
         var allCustomAnimations = RootService.getCustomAnimations();
         var customAnimationNames = allCustomAnimations.customNameOnly;
         var customAnimIndex = customAnimationNames.indexOf(animName);
+
         if (customAnimIndex >= 0) {
           var customAnimObj = allCustomAnimations.custom[customAnimIndex];
+
           return PropertyService.parseAnimObjToPropArr(customAnimObj.cssRules).props;
         }
         return;
@@ -696,13 +709,14 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         var animArgs = anim_str.split(':');
 
         var animDict = {};
+        console.log(animArgs)
         animDict.duration = parseInt(animArgs[1]);
         animDict.delay = parseInt(animArgs[3]) || 0;
         animDict.easingFunc = animArgs[2] || 'linear'
 
         animDict.iter = parseIteration(animArgs[4]) || parseIteration("1");
         animDict.direction = parseDirection(animArgs[5]) || parseDirection("f");
-        timeline.playerProps = {iter: animDict.iter, direction:animDict.direction};
+        timeline.playerProps = {iter: animDict.iter, direction:animDict.direction, duration: animDict.duration};
         for (var prop in custom_props) {
           var propValues = [];
 
@@ -843,13 +857,19 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
 
 
+    function checkAndReplaceShortcuts(str, type) {
+      if (str in animPropShortcuts[type]) {
+        str = animPropShortcuts[type][str];
+      }
+      return str;
+    }
 
     /*** Init Obj functions
     ****
     */
 
     function initPropObj(str) {
-
+      console.log(animPropShortcuts)
       var strArgs = str.split(':');
       var strArgLength = strArgs.length;
       if (strArgLength < 8) {
@@ -863,39 +883,38 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         var iArg = strArgs.shift();
 
         if (!prop.property)  {
-          prop.property = iArg || 'transform'
+          prop.property = checkAndReplaceShortcuts(iArg, 'name') || 'transform'
 
           continue;
         }
         if (!prop.start) {
-          prop.start = iArg || 0;
+          prop.start = checkAndReplaceShortcuts(iArg, 'start') || 0;
           continue
         }
         if (!prop.end) {
-          prop.end = iArg || 1;
+          prop.end = checkAndReplaceShortcuts(iArg, 'end') || 1;
           continue
         }
         if (!prop.duration) {
-          prop.duration = parseMSValue(iArg) || 1000;
+          prop.duration = parseMSValue(checkAndReplaceShortcuts(iArg, 'duration')) || 1000;
           continue
         }
         if (!prop.easingFunc) {
-          prop.easingFunc = iArg || 1000;
+          prop.easingFunc = checkAndReplaceShortcuts(iArg, 'easingFunc') || 1000;
           continue
         }
         if (!('delay' in prop)) {
-          prop.delay = parseMSValue(iArg) || 0;
-          console.log(prop)
+          prop.delay = parseMSValue(checkAndReplaceShortcuts(iArg, 'delay')) || 0;
           continue
         }
         if (!prop.iter) {
 
-          prop.iter = (iArg && parseIteration(iArg)) || parseIteration('1');
+          prop.iter = iArg && parseIteration(checkAndReplaceShortcuts(iArg, 'iter')) || parseIteration('1');
 
           continue
         }
         if (!prop.direction) {
-          prop.direction = iArg && parseDirection(iArg) || parseDirection('f');
+          prop.direction = iArg && parseDirection(checkAndReplaceShortcuts(iArg, 'direction')) || parseDirection('f');
           continue
         }
       }
@@ -906,7 +925,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       return parseInt(str_ms);
     }
 
-    function getAnimShortcuts(root_service) {
+    function getanimUrlShortcuts(root_service) {
       return {
         func: {
           transform: mapTransformPropToStartEnd,

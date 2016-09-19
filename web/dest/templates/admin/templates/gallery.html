@@ -1,0 +1,26 @@
+<div class='bg-charcoal full-xy p15-grid absolute'>
+    <header class='full-x p15-grid flex-wrap-center'>
+        <h1 class='txt-32'>
+            Component Gallery
+        </h1>
+    </header>
+    <div class='flex-vertical-center full-xy'>
+        <ul class='full-x p15-grid ugrid-3 p15-grid'>
+            <li ng-repeat='(key, val) in admin.gallery.components.dir track by $index' class='flex-wrap-center'>
+                <a>
+                    <div class='p15-grid text-center flex-wrap-center'>
+                        <h1 class='txt-5 text-center full-x weight-900'>{{key}}</h1>
+                        <div class='txt-1'>
+                            Browser Url <br>
+                            {{comp.url}}
+                        </div>
+                        <div class='txt-1'>
+                            File Path: <br>
+                            {{comp.file_path}}
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

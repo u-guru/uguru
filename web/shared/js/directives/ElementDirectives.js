@@ -951,6 +951,24 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+.directive('animPropShortcut', ['$timeout', 'AnimationFrameService', function ($timeout, AnimationFrameService) {
+  return {
+    restrict: 'E',
+    priority: 10,
+    link : function(scope, element, attr) {
+
+        if ('replace' in attr && 'with' in attr && 'arg' in attr) {
+          if (!scope.root.public.customShortcuts.animProps) {
+            scope.root.public.customShortcuts.animProps = {name: {}, start: {}, end: {}, duration: {}, easingFunc: {}, delay: {}, iter: {}, direction:{}};
+          }
+
+          if (['start', 'end', 'duration', 'easingFunc', 'delay', 'iter', 'direction'].indexOf(attr.arg) === -1) return;
+
+          scope.root.public.customShortcuts.animProps[attr.arg][attr.replace] = attr.with;
+        }
+    }
+  }
+}])
 .directive('propShortcut', ['$timeout', 'DirectiveService', 'UtilitiesService', function ($timeout, DirectiveService, UtilitiesService) {
   return {
     restrict: 'E',

@@ -21,7 +21,8 @@ angular.module('uguru.shared.controllers', [])
     root.animStatus = {off: false};
     root.inspectAnimations = [];
     root.inspectElements = [];
-    root.public = {customStates: []};
+    root.public = {customStates: [], customShortcuts: {}};
+    RootService.customShortcuts.getAnimProps = function () {return root.public.customShortcuts};
     root.pauseElement = pauseElement(root);
     RootService.setPauseElementFunc(root.pauseElement);
     root.animationCounter = 0;
@@ -33,6 +34,7 @@ angular.module('uguru.shared.controllers', [])
     $timeout(function() {
       $scope.$apply();
       registerAnimationShortcuts();
+
     })
 
     function registerAnimationShortcuts() {

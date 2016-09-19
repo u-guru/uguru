@@ -10,20 +10,22 @@ angular.module('uguru.shared.controllers')
   'UtilitiesService',
   '$compile',
   'AnimationFrameService',
-  function($scope, $state, $timeout, $stateParams, UtilitiesService, $compile, AnimationFrameService) {
+  'RootService',
+  function($scope, $state, $timeout, $stateParams, UtilitiesService, $compile, AnimationFrameService, RootService) {
     var afc = this;
 
     afc.service = AnimationFrameService;
     afc.args = {}
     afc.params = {formatted: '', raw: ''}
     afc.params.raw = constructStateStrFromParams($stateParams);
-    console.log(afc.params.raw)
     afc.params.comp = afc.element.objUrl.split('/').splice(afc.element.objUrl.split('/').length - $stateParams.comp.split('.').length).join('/')
     afc.params.kf = $stateParams.kf && parseInt($stateParams.kf) || 60
     afc.params.formatted = 'p:[' + afc.params.raw + ']';
-    afc.getDebugFormat = AnimationFrameService.getDebugFormat
+    afc.getDebugFormat = AnimationFrameService.getDebugFormat;
+
 
     $timeout(function() {
+
         $scope.$apply();
 
         var stateName = 'on-init'
@@ -44,24 +46,32 @@ angular.module('uguru.shared.controllers')
         // player.play(player, afc.stateObj.events);
 
         // $compile(afc.element.dom)($scope)
-    })
+    }, 250)
 
     function constructStateStrFromParams(params) {
-        var resultStr = "";
-        var paramValues = params.v.split(',')
-        paramValues.unshift(params.property)
-        afc.element = {objUrl: UtilitiesService.constructImportUrlFromObj(params.comp)};
+      var animationShortcuts = RootService.customShortcuts.animProps;
+      console.log(animationShortcuts)
+        var propArgs = params.property.split('+');
         var argNames = ['property', 'start', 'end', 'duration', 'easingFunc', 'delay', 'iter', 'direction']
-        if (params.type !== 'prop') {
-          argNames = ['property', 'duration', 'easing', 'delay', 'iter', 'direction']
-        }
+        propArgs.forEach(function(prop_anim, i) {
+          propArgs[i] = UtilitiesService.replaceAll(prop_anim, ',', ':');
+          if (!i && propArgs[i].split(':').length > 5) {
+              propArgs[i].split(':').forEach(function(arg, arg_index) {
+                afc.args[argNames[arg_index]] = arg
 
-        paramValues.forEach(function(p, i) {
-
-            resultStr += p + (i < paramValues.length - 1 && ':' || '')
-            afc.args[argNames[i]] = p;
+                if (argNames[arg_index] in animationShortcuts && arg in animationShortcuts[argNames[arg_index]]) {
+                    afc.args[argNames[arg_index]] = animationShortcuts[argNames[arg_index]][arg]
+                }
+              })
+          }
         })
-        return resultStr;
+
+
+
+        afc.element = {objUrl: UtilitiesService.constructImportUrlFromObj(params.comp)};
+
+
+        return propArgs.join(',');
     }
 
   }

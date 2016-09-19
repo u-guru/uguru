@@ -1,9 +1,13 @@
-<div class="perspective-container full-xy flex-center" types='flip, edit, short, mini' default-type="short">
+<div class="perspective-container full-xy flex-center" types='flip, edit, short, mini' default-type="mini">
     <div ng-if='activeType === "flip"' class="credit-card-flip" tabindex
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]">
-        <div class="credit-card">
+		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
+		on-mouse-enter="s:[flip-enter:public]"
+		on-mouse-leave="s:[flip-leave:public]">
+        <div class="credit-card"
+			init-default
+			when-flip-enter="p:[transform:rotateY(0deg):rotateX(180deg):300:easeInOutSine]"
+			when-flip-leave="p:[transform:rotateY(180deg):rotateX(0deg):300:easeInOutSine]">
             <svg width="240px" height="150px" viewBox="0 0 240 150">
                 <rect fill="none" x="0" y="0" width="240" height="150"></rect>
             </svg>
@@ -20,16 +24,52 @@
                 <div class="credit-card-row">
                     <div class="credit-card-number-container">
                         <h4>Card Number</h4>
-                        <div class="credit-card-number"
-							init-with="p:[op:0, tro:center bottom]"
-							on-init="t-enter"
-							on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
+						<div class="credit-card-number has-span">
 							<span>
-                                &bull;&bull;&bull;&bull;
-                                &bull;&bull;&bull;&bull;
-                                &bull;&bull;&bull;&bull;
+								<stagger-children on-enter="[cc-number]:800:easeInQuad">
+	                                <span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+
+
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+									<span cc-number init-with="p:[tr:scale(0), tro:center center]"
+										on-init="trigger:[on-enter:self]"
+										on-enter="p:[transform:scale(0):scale(1):1000:bouncePast]">&bull;</span>
+								</stagger-children>
                             </span>
-                            <span>1234</span>
+                            <span init-with="p:[op:0, tro:center center]"
+								when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-1500]">1234</span>
                         </div>
                     </div>
                     <div class="credit-card-row">
@@ -37,8 +77,7 @@
                             <h4>Valid Thru</h4>
                             <div class="credit-card-number"
 								init-with="p:[op:0, tro:center bottom]"
-								on-init="t-enter"
-								on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]">10/20</div>
+								when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]">10/20</div>
                         </div>
                         <div class="credit-card-default">
                             <svg viewBox="0 0 100 100">
@@ -49,17 +88,26 @@
                 </div>
             </div>
         </div>
-        <div class="credit-card-back">
+        <div class="credit-card-back"
+			init-with="p:[tr:rotateY(180deg)]"
+			when-flip-enter="p:[transform:rotateY(180deg):rotateX(0deg):300:easeInOutSine]"
+			when-flip-leave="p:[transform:rotateY(0deg):rotateX(180deg):300:easeInOutSine]">
             <svg width="240px" height="150px" viewBox="0 0 240 150">
                 <rect fill="none" x="0" y="0" width="240" height="150"></rect>
             </svg>
             <div></div>
             <ul>
                 <li>
-                    <button class="remove">Remove</button>
+                    <button class="remove"
+						init-with="p-op"
+						when-flip-enter="p:[opacity:0:1:250:easeOutSine]:delay-300"
+						when-flip-leave="p:[opacity:1:0:250:easeOutSine]">Remove</button>
                 </li>
                 <li>
-                    <button class="default">Set Default</button>
+                    <button class="default"
+						init-with="p-op"
+						when-flip-enter="p:[opacity:0:1:250:easeOutSine]:delay-300"
+						when-flip-leave="p:[opacity:1:0:250:easeOutSine]">Set Default</button>
                 </li>
             </ul>
         </div>
@@ -67,14 +115,14 @@
 
     <div ng-if='activeType === "edit"' class="credit-card edit"
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
-		on-mouse-enter="send:[logo-wiggle:public]">
+		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]">
             <svg width="240px" height="75px" viewBox="0 0 240 75">
                 <rect fill="none" x="0" y="0" width="240" height="75"></rect>
             </svg>
             <div class="credit-card-inside">
-                <a class="edit">Edit</a>
+                <a class="edit"
+					init-default
+					on-mouse-enter="send:[logo-wiggle:public]">Edit</a>
                 <div class="flex">
                     <div class="credit-card-logo"
 						init-default
@@ -84,20 +132,33 @@
                             <path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
                         </svg>
                     </div>
-                    <div class="credit-card-number"
-						init-with="p:[op:0, tro:center bottom]"
-						on-init="t-enter"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
-                        <span>&bull;&bull;&bull;&bull;</span><span>1234</span>
+                    <div class="credit-card-number has-span">
+                        <span>
+							<stagger-children on-enter="[cc-edit-number]:+200">
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+							</stagger-children>
+						</span>
+						<span init-with="p:[op:0, tro:center center]"
+							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-750]">1234</span>
                     </div>
                 </div>
             </div>
         </div>
 
-	<div ng-if='activeType === "short"' class="credit-card short"
+	<a ng-if='activeType === "short"' class="credit-card short"
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
+		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
 		on-mouse-enter="send:[logo-wiggle:public]">
             <svg width="240px" height="50px" viewBox="0 0 240 50">
                 <rect fill="none" x="0" y="0" width="240" height="50"></rect>
@@ -112,20 +173,33 @@
                             <path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
                         </svg>
                     </div>
-                    <div class="credit-card-number"
-						init-with="p:[op:0, tro:center bottom]"
-						on-init="t-enter"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
-                        <span>&bull;&bull;&bull;&bull;</span><span>1234</span>
+                    <div class="credit-card-number has-span">
+						<span>
+							<stagger-children on-enter="[cc-edit-number]:+200">
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+							</stagger-children>
+						</span>
+						<span init-with="p:[op:0, tro:center center]"
+							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-750]">1234</span>
                     </div>
                 </div>
             </div>
-        </div>
+    </a>
 
-    <div ng-if='activeType === "mini"' class="credit-card x-short"
+    <a ng-if='activeType === "mini"' class="credit-card x-short"
 		init-with="p-op"
-		on-init="t-enter"
-		on-enter="a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
+		on-init="s:[credit-card-init:public] | a:[scoop-enter:set:(dur:1000ms#func:ease-out):in]"
 		on-mouse-enter="send:[logo-wiggle:public]">
             <svg width="240px" height="36px" viewBox="0 0 240 36">
                 <rect fill="none" x="0" y="0" width="240" height="36"></rect>
@@ -140,13 +214,27 @@
                             <path d="M22.6886528,0.950547359 L0.185958969,0.950547359 L-5.15624997e-07,2.07029481 C17.5105192,6.5468903 29.0958749,17.3524931 33.9044838,30.3417232 L29.0144677,5.51014622 C28.1708661,2.08545889 25.7190741,1.07026377 22.6886528,0.950547359" fill="#FCA700"></path>
                         </svg>
                     </div>
-                    <div class="credit-card-number"
-						init-with="p:[op:0, tro:center bottom]"
-						on-init="t-enter"
-						on-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-in):in:delay-150]">
-                        <span>&bull;&bull;&bull;&bull;</span><span>1234</span>
+                    <div class="credit-card-number has-span">
+						<span>
+							<stagger-children on-enter="[cc-edit-number]:+200">
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+								<span cc-edit-number init-with="p:[op:0, tro:center center]"
+									on-init="trigger:[on-enter:self]"
+									on-enter="p:[opacity:0:1:1000:easeOutSine]">&bull;</span>
+							</stagger-children>
+						</span>
+						<span init-with="p:[op:0, tro:center center]"
+							when-credit-card-init="a:[bounceIn-subtle:set:(dur:1000ms#func:ease-out):in:delay-750]">1234</span>
                     </div>
                 </div>
             </div>
-    </div>
+    </a>
 </div>

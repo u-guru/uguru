@@ -23,12 +23,12 @@ angular.module('uguru.admin')
             if (aa.animatableProps.indexOf(param) > -1) {
                 var paramDict = getShortcuts(param);
 
-                $window.open('#/admin/api/animations/prop/'  + constructAnimUrlPortion(paramDict) + '&comp=svg.logo.guru-head');
+                $window.open('#/admin/api/animations/prop/'  + constructAnimUrlPortion(paramDict) + '?comp=svg.logo.guru-head');
             }
         }
 
         function constructAnimUrlPortion(dict) {
-            return dict.name + '?v=' + dict.start +
+            return dict.name + ':' + dict.start +
                     ',' + dict.end + ',' + dict.duration + ',' + dict.easingFunc + ',' +
                     dict.delay + ',' + dict.iter + ',' + dict.direction;
         }
@@ -87,10 +87,6 @@ angular.module('uguru.admin')
                 aa.animShortcuts = parseShortcuts(aa.dataAnim.sections.shortcuts);
                 delete aa.dataAnim.sections.shortcuts
             }
-            console.log('#/admin/api/animations/prop/'  + constructAnimUrlPortion(getShortcuts('opacity')) + '&comp=svg.logo.guru-head')
-
-
-
         })
 
         function processCustomAnimations(animations) {
