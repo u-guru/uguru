@@ -38,7 +38,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           'f': 'forward',
           'r': 'reverse',
           'a': 'alternate',
-          'ra': 'reverse alternate'
+          'ar': 'reverse alternate'
         }[value]
       }
       if (arg_name === 'iter') {
@@ -115,6 +115,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           if (!player.animFunc) {
             player.animFunc = exec_anim_func(player, player.rAF);
+          }
+          if (player.needsReset) {
+            player.needsReset = false;
+            player.reset(player);
           }
 
           player.active = true;
@@ -292,7 +296,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               player.debug.elemPlayer.direction.innerHTML = getDebugFormat('direction',  (direction + ''));
             }
             if (!skip_first && player.playerProps) {
-              if (['ra', 'a'].indexOf(player.playerProps.direction.value) > -1) {
+              if (['ar', 'a'].indexOf(player.playerProps.direction.value) > -1) {
                 if (player.playerProps.direction.current === 'f') {
                   player.playerProps.direction.current = 'r';
                 } else {
@@ -320,7 +324,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       player.applyArgs = function(streams) {
         var propStreams = {};
         streams.forEach(function(stream, index) {
-          if (['ra', 'r'].indexOf(stream.direction.current) > -1) {
+          if (['ar', 'r'].indexOf(stream.direction.current) > -1) {
             stream.values.reverse();
           }
         });
@@ -350,7 +354,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               }
               // streamPopped.tick.current -= btwnChange;
             }
-            if (['ra', 'a'].indexOf(streamPopped.direction.value) > -1) {
+            if (['ar', 'a'].indexOf(streamPopped.direction.value) > -1) {
 
               if (streamPopped.direction.current === 'f') {
                 streamPopped.direction.current = 'r';
@@ -379,8 +383,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         for (key in playerPropCount) {
           playerPropCount[key].forEach(function(stream, i) {
-            if (['ra', 'a'].indexOf(stream.direction.value) > -1) {
-              if (stream.direction.value === 'ra') {
+            if (['ar', 'a'].indexOf(stream.direction.value) > -1) {
+              if (stream.direction.value === 'ar') {
                 if (stream.direction.current === 'r') {
                   stream.tick.current = -1 * (player.tick.current + stream.tick.start);
 
@@ -420,6 +424,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           if (player.debug) {
             var elem = document.querySelector('#pause-element')
             angular.element(elem).triggerHandler('click');
+            player.needsReset = true;
           }
         }
 
@@ -441,7 +446,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             stream.tick.current = stream.tick.start;
 
             stream.iter.count.current = stream.iter.count.total + 1;
-            if (['ra', 'r'].indexOf(stream.direction.value) > -1) {
+            if (['ar', 'r'].indexOf(stream.direction.value) > -1) {
               stream.direction.current = 'r';
             } else {
               stream.direction.current = 'f';
@@ -449,8 +454,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         })
         // if (player)
         player.animFunc = exec_anim_func(player, player.rAF);
-        // if (player.playerProps && ['ra', 'a'].indexOf(player.playerProps.direction.value) > -1) {
-        //   if (player.playerProps.direction.current === 'ra') {
+        // if (player.playerProps && ['ar', 'a'].indexOf(player.playerProps.direction.value) > -1) {
+        //   if (player.playerProps.direction.current === 'ar') {
         //     player.playerProps.direction.current = 'r';
         //   }
         // }
@@ -760,7 +765,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       function scaleTimelineValuesForPlot(props, direction) {
         for (var prop in props) {
           var propStreams = props[prop];
-          if (['r', 'ra'].indexOf(direction) > -1) {
+          if (['r', 'ar'].indexOf(direction) > -1) {
             propStreams.reverse();
           }
           var plotStats = {max: 0, min: 100000000000};
@@ -776,7 +781,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               }
               stream.plot.values.push(scaled_value);
             })
-            if (['r', 'ra'].indexOf(direction) > -1) {
+            if (['r', 'ar'].indexOf(direction) > -1) {
               stream.plot.values.reverse();
             }
           })
@@ -1013,7 +1018,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
     function getPropOptions() {
       return {
-        direction: ['f', 'a', 'r', 'ra'],
+        direction: ['f', 'a', 'r', 'ar'],
         firstDirection: ['f', 'f', 'r', 'r'],
         debug: {}
       }
