@@ -50,12 +50,12 @@
 			when-warp-start="s:[warp-open:public:delay-1250]"
 			when-warp-open="s:[warp-transition:public:delay-1000]"
 			when-warp-transition="s:[warp-end:public:delay-700]"
-			when-portal-hover="s:[warp-speed:public]"
+			when-warp-objects-init="s:[warp-speed:public:delay-1500]"
 			when-warp-end="s:[transition-start:public:delay-500]"
 			when-transition-start="s:[transition-end:public]">
 		</div>
 
-		<div class="portal-transition-container"
+		<div class="portal-transition-container" style="background: #16293A;"
 			init-with="p:[width:200px, height:200px, left:50%, top:50%, margin-left:-100px, margin-top:-100px, border-radius:100%, op:0, tr:translateY(20.5%) translateZ(25px) rotateX(84deg)]"
 			when-warp-start="p:[opacity:0:1:250:easeOutSine]"
 			when-portal-complete="p:[transform:translateY(71.5%) translateZ(25px) rotateX(84deg):translateY(0%) translateZ(25px) rotateX(0deg):650:easeOutCirc easeOutCubic easeOutSine]:delay-2000"

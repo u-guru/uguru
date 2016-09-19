@@ -1705,7 +1705,7 @@
           display: block; }
   .splash-hero-content .splash-guru-head {
     margin-bottom: 0; } }
-@media screen and (min-height: 736px) {
+@media screen and (min-height: 680px) {
   .coach-fill {
     right: -100px;
     width: 140px; }
@@ -1764,15 +1764,19 @@
     font-size: 40px; }
   .splash-hero-content .splash-adlib .splash-mobile-cta {
     display: none; }
+  .splash-hero-content .splash-adlib .tag-adlib {
+    width: 142px !important;
+    height: 44px !important;
+    font-size: 24px !important; }
   .splash-hero-content .splash-adlib ul {
-    max-width: calc(160px * 4 + 30px);
+    max-width: calc(172px * 4 + 30px);
     height: 136px;
     padding: 15px;
     margin: 0 auto 15px;
     flex-direction: row; }
     .splash-hero-content .splash-adlib ul li {
       width: 25%;
-      max-width: 160px;
+      max-width: 172px;
       padding: 15px; }
       .splash-hero-content .splash-adlib ul li:nth-child(7), .splash-hero-content .splash-adlib ul li:nth-child(8) {
         display: block; }
@@ -1780,6 +1784,12 @@
     max-width: none; } }
 .impact-label {
   transform-origin: left center; }
+
+.splash-header-container + .splash-hero-skip {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 10; }
 
 .powerups-scale {
   position: fixed;

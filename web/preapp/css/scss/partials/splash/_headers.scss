@@ -4,6 +4,15 @@
 	transform-origin: left center;
 }
 
+.splash-header-container {
+	+ .splash-hero-skip {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		z-index: 10;
+	}
+}
+
 .powerups-scale {
 	position: fixed;
 	top: 30px;
