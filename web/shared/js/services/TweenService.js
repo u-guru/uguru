@@ -100,12 +100,25 @@ function TweenService() {
         var endDict = {};
         endDict[property] = end;
         var t = new Tweenable();
-        var easeSplit = ease.split('|');
-        if (ease && ease.length && easeSplit.length === 4) {
-            easeSplit.forEach(function(val, i) {easeSplit[i] = parseFloat(val)});
-            console.log(easeSplit)
-            Tweenable.setBezierFunction('cb-function', easeSplit[0], easeSplit[1], easeSplit[2], easeSplit[3]);
-            ease = 'cb-function'
+
+        if (ease.indexOf('|') > -1) {
+            var easeSplit = ease.split('|');
+            if (ease && ease.length && easeSplit.length === 4) {
+                easeSplit.forEach(function(val, i) {easeSplit[i] = parseFloat(val)});
+                console.log(easeSplit)
+                Tweenable.setBezierFunction('cb-function', easeSplit[0], easeSplit[1], easeSplit[2], easeSplit[3]);
+                ease = 'cb-function'
+            }
+        }
+        if (ease.indexOf(',') > -1) {
+            ease = ease.replace('(', '').replace(')', '');
+            var easeSplit = ease.split(',');
+            if (ease && ease.length && easeSplit.length === 4) {
+                easeSplit.forEach(function(val, i) {easeSplit[i] = parseFloat(val)});
+                console.log(easeSplit)
+                Tweenable.setBezierFunction('cb-function', easeSplit[0], easeSplit[1], easeSplit[2], easeSplit[3]);
+                ease = 'cb-function'
+            }
         }
 
         if (typeof(start) !== 'object') {
@@ -187,7 +200,22 @@ function TweenService() {
 
 
 var animatableProps =
-["-webkit-text-fill-color",
+[
+"translateX",
+"translateY",
+"translateZ",
+"scaleX",
+"scaleY",
+"rotate",
+"skewX",
+"skewY",
+"scaleZ",
+"rotateX",
+"rotateY",
+"rotateZ",
+"perspective",
+"rotate3d",
+"-webkit-text-fill-color",
 "-webkit-text-stroke",
 "-webkit-text-stroke-color",
 "-webkit-touch-callout",

@@ -1,8 +1,8 @@
 <div class="perspective-container full-xy flex-center p15xy">
 	<article class="timeline-card timeline-tutorial timeline-left"
-		init-with="p-op"
+		init-with="p:[op:0, tro:left top]"
 		on-init="s:[timeline-card-init:public]"
-		when-timeline-card-init="a:[bounceInRight-subtle:set:(dur:1000ms#func:linear):in]">
+		when-timeline-card-init="a:[bounceInLeft-subtle:set:(dur:1000ms#func:linear):in]">
 		<header>
 			<a>
 				<span class="block" init-with="p-op"
@@ -11,8 +11,8 @@
 		</header>
 		<figure>
 			<img class="post-banner" src='https://d13yacurqjgara.cloudfront.net/users/802553/screenshots/2874479/meter_maid.gif' alt=''
-				init-with="p:[op:0, t:opacity 500ms ease-out]"
-				when-timeline-card-init="p:[op:1:delay-1000]"/>
+				init-with="p:[transform:scaleY(0) skewX(15deg), tro:center top]"
+				when-timeline-card-init="p:[transform:scaleY(0) skewX(15deg):scaleY(1) skewX(0deg):500:easeInOutBack easeOutExpo]:delay-500"/>
 		</figure>
 		<section class="overflow-hidden">
 			<p init-with="p-op"

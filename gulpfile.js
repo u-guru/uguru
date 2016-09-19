@@ -167,8 +167,9 @@ gulp.task('compile-js', function(done) {
       'preapp/js/*.js',
 
       //admin/service
-      'admin/js/AdminAnimToolService.js',
-      'admin/js/**/*.js',
+      'admin/js/services/AdminAnimToolService.js',
+      'admin/js/services/*.js',
+      'admin/js/controllers/*.js',
       //shared ctrl
       'shared/js/controllers/RootController.js',
       'shared/js/controllers/*.js',
@@ -198,9 +199,13 @@ gulp.task('compile-temp',function(done){
           '!*master.index.html',
           '!*index.html',
           '!dest/**/*',
-          '**/*html',
-          '**/*tpl',
-          '**/*svg'], { cwd: targetPath })
+          'shared/**/*html',
+          'preapp/**/*html',
+          'shared/**/*tpl',
+          'preapp/**/*tpl',
+          'shared/**/*svg',
+          'preapp/**/*svg'
+          ], { cwd: targetPath })
       .pipe(debug())
       .pipe(plugins.angularTemplatecache('templates.js', {
         root: '/static/remote/templates/',

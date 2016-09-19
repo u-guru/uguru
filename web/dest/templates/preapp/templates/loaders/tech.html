@@ -1,7 +1,7 @@
 <div class='loader-portal-outside absolute full-xy top-0 left-0' id='splash-preapp-loader'>
     <div class="loader-portal-container activate"
 		elem-states="[portal-academic, portal-baking, portal-photo, portal-tech, portal-household]"
-		on-activate="null:inject.loader-portal|on-loader-begin-enter, null:inject.guru-tech|on-loader-tech-enter"
+		on-activate="null:inject.loader-portal|on-loader-begin-enter, null:inject.guru-tech|on-loader-photo-tech"
 		on-portal-academic-enter="academic"
 		on-portal-baking-enter="baking"
 		on-portal-photo-enter="photo"
@@ -43,16 +43,16 @@
                 on-loader-academic-enter="null:inject.loader-portal-container|on-portal-academic-enter"></div>
             <div class="guru academic guru-academic" ng-include="'preapp/templates/loaders/guru/academic.html'"
                 elem-states="[loader-academic]"
-                on-loader-academic-enter="null:inject.academic-anim|on-loader-academic-anim-enter"></div>
+                on-loader-academic-enter="null:inject.academic-anim|on-loader-academic-anim-enter"></div> -->
 
-            <div class="guru-baking"
+            <!-- <div class="guru-baking"
                 elem-states="[loader-baking]"
                 on-loader-baking-enter="null:inject.loader-portal-container|on-portal-baking-enter"></div>
             <div class="guru baking guru-baking" ng-include="'preapp/templates/loaders/guru/baking.html'"
                 elem-states="[loader-baking]"
-                on-loader-baking-enter="null:inject.baking-anim|on-loader-baking-anim-enter"></div>
+                on-loader-baking-enter="null:inject.baking-anim|on-loader-baking-anim-enter"></div> -->
 
-            <div class="guru-photo"
+            <!-- <div class="guru-photo"
                 elem-states="[loader-photo]"
                 on-loader-photo-enter="null:inject.loader-portal-container|on-portal-photo-enter"></div>
             <div class="guru photo guru-photo" ng-include="'preapp/templates/loaders/guru/photo.html'"
