@@ -333,7 +333,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         player.schedule.streams.slice().forEach(function(stream, i) {
           var streamPopped = player.schedule.streams.shift();
           var streamDelay = 0;
-          console.log(streamPopped.direction)
           if (!stream.iter.infinite) {
             streamPopped.iter.count.current--;
           }
@@ -464,7 +463,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
       function applyTickDeltaToStreams(player, schedule, time_delta, tick_delta, scale_delta) {
-        if (!player.tick.current) {
+        if (player.tick.current < 0) {
           // player.pause();
           player.active = false;
 
