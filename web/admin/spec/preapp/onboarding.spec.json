@@ -1,0 +1,42 @@
+{
+    "name": "Onboarding",
+    "description": "",
+    "views": {
+		"general": {
+			"static": [
+				"On desktop, change guru head to tour guru w/body and move to left side of projector",
+				"Adjust projector static to scale evenly",
+				"Resize projector to fit onboarding navigation underneath"
+			]
+		},
+        "access": {
+			"static": [
+				"Convert input to look more like our border inputs",
+				"Keep buttons on one line"
+			]
+		},
+		"account": {
+			"static": [
+				"Reformat inputs to make a one-at-a-time form",
+				"Give buttons color, i.e. Fscebook blue"
+			]
+		},
+		"demographic": {
+			"static": [
+				"Leave as circles for now but look for better alternative",
+				"3x2 instead of 2x4"
+			]
+		},
+		"universitySearch": {
+			"static": [
+				"Replace border inputs with updated"
+			]
+		},
+		"courseSearch": {
+			"static": [
+				"Use student card instead of backpack",
+				"Replace border inputs with updated"
+			]
+		}
+    }
+}
