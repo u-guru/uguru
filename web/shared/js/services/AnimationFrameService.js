@@ -743,7 +743,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             if (iStreamSplit.length === 5) {
               stream += ':0:1:f';
               stateNameStrSplit.push(stream);
-              console.log(stream)
             }
           })
 
