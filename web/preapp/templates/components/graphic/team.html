@@ -725,9 +725,6 @@
 		<g class="bay-bridge"
 			init-default
 			when-bridge-enter="s:[pier-1-enter:public]">
-			<path d="M101.230469,177 C88.4443359,177 16.5,177.0008 16.5,177.0008" class="pier-cable-tunnel" stroke="#808389" stroke-width="3" stroke-linecap="square"
-				init-with="p:[tro:left center, tr:scaleX(0)]"
-				when-pier-1-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutSine]"></path>
 			<g class="pier-1">
 				<g stroke="#808389" stroke-width="3">
 					<path d="M209,51.9942021 C209,50.3405499 210.337656,49 212.001482,49 L257.998518,49 C259.656191,49 261,50.343312 261,51.9942021 L261,69 L209,69 L209,51.9942021 L209,51.9942021 Z" class="pier-1-deck" fill="#808389"
@@ -737,28 +734,28 @@
 						init-with="p:[tro:center bottom, tr:scaleY(0)]"
 						when-pier-1-enter="p:[transform:scaleY(0):scaleY(1):750:easeOutBack]:delay-500"></rect>
 					<path d="M210,69 L260,107.333333" class="pier-1-iron-left-1"
-						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						init-with="p:[op:0, sda:-63.004, sdo:63.004]"
 						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-1250"></path>
 					<path d="M260,69 L210,107.333333" class="pier-1-iron-right-1"
-						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						init-with="p:[op:0, sda:-63.004, sdo:63.004]"
 						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-1250"></path>
 					<path d="M210,107.333333 L260,145.666667" class="pier-1-iron-left-2"
-						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						init-with="p:[op:0, sda:-63.004, sdo:63.004]"
 						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-1000"></path>
 					<path d="M260,107.333333 L210,145.666667" class="pier-1-iron-right-2"
-						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						init-with="p:[op:0, sda:-63.004, sdo:63.004]"
 						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-1000"></path>
 					<path d="M210,145.666667 L260,184" class="pier-1-iron-left-3"
-						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						init-with="p:[op:0, sda:-63.004, sdo:63.004]"
 						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-750"></path>
 					<path d="M260,145.666667 L210,184" class="pier-1-iron-right-3"
-						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						init-with="p:[op:0, sda:-63.004, sdo:63.004]"
 						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-750"></path>
 					<path d="M210,195 L260,233.333333" class="pier-1-iron-left-4"
-						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						init-with="p:[op:0, sda:-63.004, sdo:63.004]"
 						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-500"></path>
 					<path d="M260,195 L210,233.333333" class="pier-1-iron-right-4"
-						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						init-with="p:[op:0, sda:-63.004, sdo:63.004]"
 						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-500"></path>
 					<rect class="pier-1-bed" fill="#808389" x="205" y="234" width="60" height="18.5" rx="3"
 						init-with="p:[tro:center bottom, tr:scaleY(0)]"
@@ -767,12 +764,16 @@
 						when-pier-1-enter="p:[transform:scaleX(0):scaleX(1):750:easeInSine]">
 						<polyline class="pier-tunnel" stroke="#808389" stroke-width="3" fill="#808389" points="101.230469 184 16.5 184 16.5 194 101.230469 194"></polyline>
 						<polyline class="pier-1-road-left" fill="#808389" points="235 184 100 184 100 194 235 194"></polyline>
-						</g>
+					</g>
 					<rect class="pier-1-road-right" fill="#808389" x="235" y="184" width="135" height="10"
 						init-with="p:[tro:left center, tr:scaleX(0)]"
 						when-pier-1-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutSine]:delay-750"></rect>
+					<path d="M101.230469,177 C88.4443359,177 16.5,177.0008 16.5,177.0008" class="pier-cable-tunnel" stroke="#808389" stroke-width="3" stroke-linecap="square"
+						init-with="p:[op:0, sda:84.73, sdo:-84.73]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:-84.73:0:500:easeInSine]"></path>
 					<path d="M100,177 C200.649476,177 209,70.5 209,70.5" class="pier-1-cable-left"
-						init-with="p-op"></path>
+						init-with="p:[op:0, sda:168.469, sdo:168.469]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:168.469:0:1000:easeOutSine]:delay-500"></path>
 					<path d="M100,177 L100,184" class="pier-1-left-9"
 						init-with="p-op"></path>
 					<path d="M112,177 L112,184" class="pier-1-left-8"
@@ -792,7 +793,8 @@
 					<path d="M196,117 L196,184" class="pier-1-left-1"
 						init-with="p-op"></path>
 					<path d="M370,177 C269.350524,177 261,70.5 261,70.5" class="pier-1-cable-right"
-						init-with="p-op"></path>
+						init-with="p:[op:0, sda:168.469, sdo:-168.469]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:-168.469:0:1000:easeOutSine]:delay-1500"></path>
 					<path d="M370,177 L370,184" class="pier-1-right-9"
 						init-with="p-op"></path>
 					<path d="M358,177 L358,184" class="pier-1-right-8"
