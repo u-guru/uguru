@@ -67,8 +67,8 @@
 						<!-- ng-class="{'bg-slate': $index % 2 === 1, 'bg-charcoal': $index % 2 === 0}" -->
 
 						<!-- description -->
-                        <div class='absolute top-0 left-0 full-x p15xy z-index-100'  ng-if='section.offset !== section.duration'>
-							<div class="bg-campus-10p flex-center p05xy radius-2">
+                        <div class='absolute top-0 left-0 full-x p15xy z-index-100' ng-if='section.offset !== section.duration'>
+							<div class="bg-campus-10p flex-center-vertical p05xy radius-2">
 	                            <span ng-if='section.direction === "forward"' class="svg-24">
 	                                <svg viewBox="0 0 100 100">
 	                                    <path d="M32,86 L68,50 L32,14" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
@@ -102,12 +102,19 @@
                         </div>
 
 						<!-- frame circles -->
-                        <div class='full-xy height-90p' ng-if='section.offset !== section.duration'>
+                        <div class='relative full-xy' ng-if='section.offset !== section.duration'>
                             <span ng-repeat='point in section.values track by $index'
                                 class='block round border-2 border-white bg bg-charcoal z-index-1000 absolute'
-                                style='left:{{point.left}}; bottom:{{point.bottom}};width:4px;height:4px;'>
+                                style='left:{{point.left}}; bottom:{{point.bottom}}; width:4px; height:4px;'>
                             </span>
                         </div>
+
+						<!-- iteration delay -->
+						<div class="p15y-p15right full-y" ng-if='section.offset !== section.duration'>
+							<div class="bg-gold txt-14 semibold txt-charcoal p05xy radius-2 full-y flex-center">
+								{{section.transition}}ms
+							</div>
+						</div>
                     </li>
                 </ul>
             </div>
