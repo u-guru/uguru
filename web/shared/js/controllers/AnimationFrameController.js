@@ -18,10 +18,13 @@ angular.module('uguru.shared.controllers')
     afc.args = {}
     afc.params = {formatted: '', raw: ''}
     afc.params.raw = constructStateStrFromParams($stateParams);
-    afc.params.comp = afc.element.objUrl.split('/').splice(afc.element.objUrl.split('/').length - $stateParams.comp.split('.').length).join('/')
+
+    // afc.params.template = afc.element.objUrl.split('/').splice(afc.element.objUrl.split('/').length - $stateParams.comp.split('.').length).join('/')
+    afc.params.template = afc.element.objUrl;
     afc.params.kf = $stateParams.kf && parseInt($stateParams.kf) || 60
     afc.params.formatted = 'p:[' + afc.params.raw + ']';
     afc.getDebugFormat = AnimationFrameService.getDebugFormat;
+    console.log('ay', $stateParams.temp)
 
 
     $timeout(function() {
@@ -29,22 +32,29 @@ angular.module('uguru.shared.controllers')
         $scope.$apply();
 
         var stateName = 'on-init'
-        afc.element.dom = document.querySelectorAll('#anim-element')[0];
+        if (!$stateParams.select) {
+          $stateParams.select = '*'
+        }
+
+        var animContainer = document.querySelector('#anim-element');
+        afc.element.dom = animContainer.querySelector($stateParams.select);
+        var domCoords = afc.element.dom.getBoundingClientRect();
+
+
+
+
+        var width = Math.max(domCoords.width, 50) + 'px';
+        var height = Math.max(domCoords.height, 50) + 'px';
+
+        afc.element.dom.style.width = width;
+        afc.element.dom.style.height = height;
+        animContainer.innerHTML = ''
+        animContainer.appendChild(afc.element.dom);
         // for (var i = 0; i < afc.element.dom.length; i++) {
           afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.kf, $scope);
           afc.player = AnimationFrameService.getPlayer();
           afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, $scope);
-          $timeout(function() {
-            // afc.player.schedule.streams.forEach(function(stream, i) {
-            //   if (stream.direction.current === 'r') {
 
-            //     stream.applyProp(stream.values[0]);
-
-            //   } else {
-            //     stream.applyProp(stream.values[0]);
-            //   }
-            // })
-          })
 
         // };
         // afc.player.enableDebugMode();
@@ -73,9 +83,13 @@ angular.module('uguru.shared.controllers')
           }
         })
 
+        var urlSplit = params.template.split(':');
+        var dir = urlSplit[0];
 
-
-        afc.element = {objUrl: UtilitiesService.constructImportUrlFromObj(params.comp)};
+        var isHtml = params.template.indexOf('.html') > -1
+        var ext = isHtml && '.html' || '.tpl';
+        urlString = dir + '/templates/' + urlSplit[1].split('.').join("/").replace('/html', '').replace('/tpl', '') + ext;
+        afc.element = {objUrl:urlString};
 
 
         return propArgs.join(',');
