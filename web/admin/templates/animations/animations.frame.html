@@ -2,9 +2,9 @@
 	<!-- HEADER -->
 
     <header class='full-x bg-campus-50p relative overflow-visible'>
-        <h1 class='txt-center uppercase txt-28 weight-900 p15top-p15x'>{{afc.args.property}}</h1>
+        <h1 class='txt-center uppercase txt-28 weight-900 p15top-p15x' ng-if='afc.args.property || afc.args.stateName'>{{afc.args.property || afc.args.stateName}}</h1>
         <div>
-            <ul class='flex full-x p15-grid txt-center'>
+            <ul class='flex full-x p15-grid txt-center' ng-if="afc.player.debug.showHeader">
                 <li class="full-x">
                     <div class="bg-campus-50p radius-2 p05xy">
 						<h2 class='uppercase weight-700 opacity-50p txt-14'>Component</h2>
@@ -41,9 +41,13 @@
 			<div style="margin-top: -15px">
 				<ul class='flex-wrap-center-vertical p15-grid'>
 					<li><h2 class='uppercase weight-700 opacity-50p txt-14'>Properties</h2></li>
-					<li ng-repeat='(prop, values) in afc.player.debug.props'>
+                    <li ng-click='afc.player.debug.toggleAllPlots()'>
+                        <span class='chip bg-auburn-50p' ng-if='afc.player.debug.propArr[0].show'> hide </span>
+                        <span class='chip bg-azure-50p' ng-if='!afc.player.debug.propArr[0].show'> show </span>
+                    </li>
+					<li ng-repeat='prop_dict in afc.player.debug.propArr' ng-click='prop_dict.show = !prop_dict.show'>
 						<span class='chip bg-campus'>
-							{{prop}} ({{values.values.length}})
+							{{prop_dict.name}} ({{prop_dict.streams.length}})
 						</span>
 					</li>
 				</ul>
@@ -53,15 +57,15 @@
     </header>
 
 	<!-- KEYFRAMES -->
-	<div class='absolute left-0 z-index-9 full-x bg-charcoal-90p z-index-100' style='top: 171px'>
-        <div class='flex-start full-x z-index-100 overflow-x no-scrollbar border-1-bottom height-150' style='border-color:rgba(255,255,255,.2)' ng-repeat='(prop, prop_obj) in afc.player.debug.props' ng-if='!result.skipPlot'>
+	<div class='absolute left-0 z-index-9 full-x bg-charcoal-90p z-index-100' style='top: 100px'>
+        <div class='flex-start full-x z-index-100 overflow-x no-scrollbar border-1-bottom height-150' style='border-color:rgba(255,255,255,.2)' ng-if='prop_dict.show' ng-repeat='prop_dict in afc.player.debug.propArr'>
             <div class='overflow-hidden absolute z-index-100 height-150 width-150'>
-                <div class="full-xy bg-campus-25p flex-center">
-					<h2 class='weight-900 p10y-p15x txt-20 {{prop}}'> {{prop}} </h2>
+                <div class="full-xy flex-center" ng-class="{'bg-campus-25p': !prop_dict.show, 'bg-campus':prop_dict.show}" ng-click='prop_dict.show = !prop_dict.show'>
+					<h2 class='weight-900 p10y-p15x txt-20 {{prop}}'> {{prop_dict.name}} </h2>
 				</div>
             </div>
-            <div ng-repeat='property_row in prop_obj' class='full-xy'>
-                <ul class='absolute flex-vertical-center full-y tile-border-side-light height-150' style='left:150px; width:calc(100% - 150px);' ng-repeat='stream in property_row track by $index'>
+            <div  class='full-xy'>
+                <ul class='absolute flex-vertical-center full-y tile-border-side-light height-150' style='left:150px; width:calc(100% - 150px);'  ng-repeat='stream in prop_dict.streams track by $index'>
                     <!-- {{prop_obj}} -->
                     <li class='relative full-xy flex-center' ng-repeat='section in stream.plot.sections track by $index' style='width:{{section.html.total.width.percent}}% !important;'>
 						<!-- ng-class="{'bg-slate': $index % 2 === 1, 'bg-charcoal': $index % 2 === 0}" -->
