@@ -16,7 +16,7 @@
             <div class='relative'>
                 <ul class='txt-24 full-y uppercase weight-500 txt-azure flex-wrap flex-vertical-center overflow-y no-scrollbar flex-start'>
                     <li ng-if='aa.clickableKeys.indexOf(key) === -1' ng-repeat='item in value.all' class='full-x flex-stretch m05y' ng-if='value.all.length'>
-                            {{item}}
+                        {{item}}
                     </li>
                     <li ng-if='aa.clickableKeys.indexOf(key) === 0' class='full-x m05y txt-left' ng-repeat='custom_anim in aa.customAnimations track by $index' ng-click='aa.launchWindow(custom_anim)'>
                         {{custom_anim}}
