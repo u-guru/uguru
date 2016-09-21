@@ -33,18 +33,17 @@ angular.module('uguru.shared.controllers')
         // for (var i = 0; i < afc.element.dom.length; i++) {
           afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.kf, $scope);
           afc.player = AnimationFrameService.getPlayer();
-          afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, $scope);
+          afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, $scope);
           $timeout(function() {
-            afc.player.schedule.streams.forEach(function(stream, i) {
-              if (stream.direction.current === 'r') {
-                console.log(stream.values[0]);
-                stream.applyProp(stream.values[0]);
+            // afc.player.schedule.streams.forEach(function(stream, i) {
+            //   if (stream.direction.current === 'r') {
 
-              } else {
-                stream.applyProp(stream.values[0]);
-              }
+            //     stream.applyProp(stream.values[0]);
 
-            })
+            //   } else {
+            //     stream.applyProp(stream.values[0]);
+            //   }
+            // })
           })
 
         // };
@@ -55,11 +54,10 @@ angular.module('uguru.shared.controllers')
         // player.play(player, afc.stateObj.events);
 
         // $compile(afc.element.dom)($scope)
-    }, 250)
+    })
 
     function constructStateStrFromParams(params) {
       var animationShortcuts = RootService.customShortcuts.animProps;
-      console.log(animationShortcuts)
         var propArgs = params.property.split('+');
         var argNames = ['property', 'start', 'end', 'duration', 'easingFunc', 'delay', 'iter', 'direction']
         propArgs.forEach(function(prop_anim, i) {
