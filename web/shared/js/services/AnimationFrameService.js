@@ -284,8 +284,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
       function enablePlayerDebugMode(player, state) {
         if (!player.debug) {
-          player.debug = {states: [], props:{}}
+          player.debug = {states: [], props:{}, defaults: {showAll:true}}
         }
+
 
         player.debug.states.push(state);
 
@@ -300,6 +301,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           direction: document.querySelector('[inspector-direction]'),
           time: {duration: state.duration, offset: state.offset, elapsed:0}
         }
+        player.debug.propArr = [];
+
         player.debug.states.forEach(function(state, i) {
             var props = state.props;
               for (prop in props) {
@@ -321,9 +324,12 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 for (var j = 0; j < arraySections.length; j++) {
                   player.debug.props[prop].values.push(getSectionObj(arraySections[j], state.duration, state.offset));
                 }
-
+              }
+              for (prop in props) {
+                player.debug.propArr.push({name: props[prop][0].name, streams: props[prop], show:player.debug.defaults.showAll});
               }
         })
+        player.debug.toggleAllPlots = toggleAllPlots(player.debug.propArr);
         $timeout(function() {
           updatePlayerArgs(player, true);
         })
@@ -344,6 +350,16 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             player.debug.elemPlayer.ball.style.left = percent + '%';
             player.debug.elemPlayer.duration.innerHTML = parseInt((player.debug.elemPlayer.time.duration + player.debug.elemPlayer.time.offset) * percent/100.0) + 'ms';
 
+          }
+        }
+
+        function toggleAllPlots(plot_arr) {
+          return function() {
+            var val = plot_arr[0].show;
+            console.log(val);
+            plot_arr.forEach(function(p_dict, i) {
+              plot_arr[i].show = !val;
+            })
           }
         }
 
@@ -881,18 +897,12 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       function scaleTimelineValuesForPlot(props, direction) {
-        console.log(props)
         for (var prop in props) {
 
           var propStreams = props[prop];
 
-
-          // if (['r', 'ar'].indexOf(direction.current) > -1) {
-          //   propStreams.reverse();
-          // }
-
           var plotStats = {max: 0, min: 100000000000};
-          console.log(propStreams[0])
+
           propStreams.forEach(function(stream, i) {
 
             stream.plot = {max: 0, min: 100000000000, duration: 0, values:[], sections:[]};
