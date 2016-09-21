@@ -21,7 +21,8 @@ angular.module('uguru.shared.controllers')
 
     // afc.params.template = afc.element.objUrl.split('/').splice(afc.element.objUrl.split('/').length - $stateParams.comp.split('.').length).join('/')
     afc.params.template = afc.element.objUrl;
-    afc.params.kf = $stateParams.kf && parseInt($stateParams.kf) || 60
+    afc.params.defaults = {kf: getKFFromParams($stateParams), hidePlot: $stateParams.hidePlot === "true", stateName: $stateParams.state};
+    console.log(afc.params.defaults, $stateParams.hidePlot)
     afc.params.formatted = 'p:[' + afc.params.raw + ']';
     afc.getDebugFormat = AnimationFrameService.getDebugFormat;
 
@@ -29,7 +30,7 @@ angular.module('uguru.shared.controllers')
 
         $scope.$apply();
 
-        var stateName = 'on-init'
+        var stateName = $stateParams.state || 'on-init'
         if (!$stateParams.select) {
           $stateParams.select = '*'
         }
@@ -41,9 +42,9 @@ angular.module('uguru.shared.controllers')
         animContainer.innerHTML = ''
         appendParentWithComputedHeight(animContainer, afc.element.dom)
         // for (var i = 0; i < afc.element.dom.length; i++) {
-          afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.kf, $scope);
+          afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.defaults);
           afc.player = AnimationFrameService.getPlayer();
-          afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, $scope);
+          afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, afc.params.defaults);
 
     })
     function isSVGElement(name) {
@@ -52,6 +53,10 @@ angular.module('uguru.shared.controllers')
     function getSVGParent(elem) {
       if (isSVGElement(elem.nodeName.toLowerCase()) && elem.nodeName === 'svg') return elem;
       return getSVGParent(elem.parentNode)
+    }
+
+    function getKFFromParams(params) {
+      return params.kf && parseInt(params.kf) || 60
     }
 
     function appendParentWithComputedHeight(container, element) {
