@@ -1,5 +1,6 @@
 <section class="splash-team splash-modal">
 	<header>
+		<div ng-include="root.base_url + 'preapp/templates/components/graphic/team.html'"></div>
 		<a class="splash-exit mobile" ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
 			init-default
 			on-click="s:[modal-close:public, team-modal-close:public]"></a>
@@ -9,7 +10,7 @@
 		<h1>Team</h1>
 	</header>
 	<div>
-		<ul class="p15-grid flex-cener-wrap">
+		<ul>
 			<li>
 				<div class="team-card-container team-gabrie"
 					init-default

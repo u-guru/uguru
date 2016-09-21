@@ -12,7 +12,16 @@
 		height: calc(100% / 3);
 		background: $charcoal;
 		padding: 15px;
+		div {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: auto;
+		}
 		h1 {
+			position: relative;
+			z-index: 10;
 			font-weight: 600;
 			font-size: 28px;
 			text-align: center;
