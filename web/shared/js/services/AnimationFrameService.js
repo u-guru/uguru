@@ -146,8 +146,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           tick.direction = stream.direction;
           tick.offset = stream.offset;
 
-          console.log(stream.iter.count.total)
-
           tick.end = Math.ceil(calcTickLength(tick.cycle.c_duration));
           return tick;
         }
@@ -463,98 +461,98 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         player.active = false;
       }
 
-      player.updateArgs = function(player) {
-        var playerPropCount = {};
-        var minPlayerOffset = 0;
-        var streamCache = [];
-        player.schedule.streams.slice().forEach(function(stream, i) {
-          var streamPopped = player.schedule.streams.shift();
-          var streamDelay = 0;
-          if (!stream.iter.infinite) {
-            streamPopped.iter.count.current--;
-          }
-          if (streamPopped.iter.count.current >= 1) {
+      // player.updateArgs = function(player) {
+      //   var playerPropCount = {};
+      //   var minPlayerOffset = 0;
+      //   var streamCache = [];
+      //   player.schedule.streams.slice().forEach(function(stream, i) {
+      //     var streamPopped = player.schedule.streams.shift();
+      //     var streamDelay = 0;
+      //     if (!stream.iter.infinite) {
+      //       streamPopped.iter.count.current--;
+      //     }
+      //     if (streamPopped.iter.count.current >= 1) {
 
-            streamPopped.time.elapsed = 0;
+      //       streamPopped.time.elapsed = 0;
 
-            if (stream.iter.btwn > 0) {
+      //       if (stream.iter.btwn > 0) {
 
-              var tickLengthMS = 1000/60;
-              var currentBefore = streamPopped.tick.current;
-              var btwnChange = Math.ceil(streamPopped.iter.btwn/tickLengthMS);
-              if (Math.abs(btwnChange) > minPlayerOffset) {
-                minPlayerOffset =   Math.abs(btwnChange);
-              }
-              // streamPopped.tick.current -= btwnChange;
-            }
-            if (['ar', 'a'].indexOf(streamPopped.direction.value) > -1) {
+      //         var tickLengthMS = 1000/60;
+      //         var currentBefore = streamPopped.tick.current;
+      //         var btwnChange = Math.ceil(streamPopped.iter.btwn/tickLengthMS);
+      //         if (Math.abs(btwnChange) > minPlayerOffset) {
+      //           minPlayerOffset =   Math.abs(btwnChange);
+      //         }
+      //         // streamPopped.tick.current -= btwnChange;
+      //       }
+      //       if (['ar', 'a'].indexOf(streamPopped.direction.value) > -1) {
 
-              if (streamPopped.direction.current === 'f') {
-                streamPopped.direction.current = 'r';
+      //         if (streamPopped.direction.current === 'f') {
+      //           streamPopped.direction.current = 'r';
 
-              } else {
-                streamPopped.direction.current = 'f';
-              }
-
-
-            }
-
-            if (!(stream.name in playerPropCount)) {
-              playerPropCount[stream.name] = [];
-            }
-
-            playerPropCount[stream.name].push(streamPopped);
-          } else {
-            streamCache.push(streamPopped);
-          }
-        });
+      //         } else {
+      //           streamPopped.direction.current = 'f';
+      //         }
 
 
-        // player.tick.current = player.tick.start + minPlayerOffset;
-        console.log('player tick', playerPropCount)
-        for (key in playerPropCount) {
-          playerPropCount[key].forEach(function(stream, i) {
-            if (['ar', 'a'].indexOf(stream.direction.value) > -1) {
-              if (stream.direction.value === 'ar') {
-                if (stream.direction.current === 'r') {
-                  stream.tick.current = -1 * (player.tick.current + stream.tick.start);
+      //       }
 
-                } else {
-                  stream.tick.current = stream.tick.start;
-                  stream.values.reverse();
-                }
+      //       if (!(stream.name in playerPropCount)) {
+      //         playerPropCount[stream.name] = [];
+      //       }
 
-              }
-              if (stream.direction.value === 'a') {
-                if (stream.direction.current === 'f') {
-                  stream.tick.current = -1 * (player.tick.current + stream.tick.start);
-                } else {
-                  stream.tick.current = stream.tick.start;
-                  stream.values.reverse();
-                }
-              }
-            } else {
-              stream.tick.current = stream.tick.start;
-            }
+      //       playerPropCount[stream.name].push(streamPopped);
+      //     } else {
+      //       streamCache.push(streamPopped);
+      //     }
+      //   });
 
 
-            player.schedule.streams.push(stream);
-          })
-        }
+      //   // player.tick.current = player.tick.start + minPlayerOffset;
+      //   console.log('player tick', playerPropCount)
+      //   for (key in playerPropCount) {
+      //     playerPropCount[key].forEach(function(stream, i) {
+      //       if (['ar', 'a'].indexOf(stream.direction.value) > -1) {
+      //         if (stream.direction.value === 'ar') {
+      //           if (stream.direction.current === 'r') {
+      //             stream.tick.current = -1 * (player.tick.current + stream.tick.start);
 
-        updatePlayerArgs(player);
-        if (player.schedule.streams.length) {
+      //           } else {
+      //             stream.tick.current = stream.tick.start;
+      //             stream.values.reverse();
+      //           }
 
-          player.time = {start: window.performance.now(), delta: window.performance.now()};
-          player.active = true;
+      //         }
+      //         if (stream.direction.value === 'a') {
+      //           if (stream.direction.current === 'f') {
+      //             stream.tick.current = -1 * (player.tick.current + stream.tick.start);
+      //           } else {
+      //             stream.tick.current = stream.tick.start;
+      //             stream.values.reverse();
+      //           }
+      //         }
+      //       } else {
+      //         stream.tick.current = stream.tick.start;
+      //       }
 
-        } else {
-          player.schedule.streams = streamCache
-          player.onStreamsComplete(player);
 
-        }
+      //       player.schedule.streams.push(stream);
+      //     })
+      //   }
 
-      }
+      //   updatePlayerArgs(player);
+      //   if (player.schedule.streams.length) {
+
+      //     player.time = {start: window.performance.now(), delta: window.performance.now()};
+      //     player.active = true;
+
+      //   } else {
+      //     player.schedule.streams = streamCache
+      //     player.onStreamsComplete(player);
+
+      //   }
+
+      // }
 
       function onStreamsComplete(player) {
           console.log('streams are complete')
@@ -883,80 +881,80 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
       function scaleTimelineValuesForPlot(props, direction) {
+        console.log(props)
         for (var prop in props) {
 
           var propStreams = props[prop];
 
 
-          if (['r', 'ar'].indexOf(direction.current) > -1) {
-            propStreams.reverse();
-          }
+          // if (['r', 'ar'].indexOf(direction.current) > -1) {
+          //   propStreams.reverse();
+          // }
 
           var plotStats = {max: 0, min: 100000000000};
-
+          console.log(propStreams[0])
           propStreams.forEach(function(stream, i) {
 
             stream.plot = {max: 0, min: 100000000000, duration: 0, values:[], sections:[]};
             var streamTick = initStreamTick(stream)
             stream.values = stream.values.slice(0, stream.values.length - 1);
             streamDuration = streamTick.cycle.c_duration * streamTick.cycle.repeats + stream.offset;
-            console.log(streamDuration)
             streamAllValues = [];
             var maxVal = 0;
             var streamSections = [];
             if (stream.offset) {
-              stream.plot.sections.push({transition: stream.offset, offset: stream.offset, duration: stream.offset})
+              stream.plot.sections.push({transition: stream.offset, html:{}, values:[], offset: stream.offset, duration: stream.offset})
             }
             for (var i = 0; i < streamTick.cycle.repeats; i++) {
               var directionDict = {'f': 'forward', 'r':'reverse'};
-              var section = {values: [], cycleIndex:i + 1, direction: directionDict[streamTick.direction.current], start: stream.values[0], end: stream.values[stream.values.length - 1], duration:stream.duration + stream.iter.btwn, transition:stream.iter.btwn};
+              var section = {html:{}, scaledValues:[], values: [], cycleIndex:i + 1, direction: directionDict[streamTick.direction.current], start: stream.values[0], end: stream.values[stream.values.length - 1], duration:stream.duration + stream.iter.btwn, transition:stream.iter.btwn};
+
+
               var sectionMax = 0;
               var sectionMin = stream.values[0];
-              stream.values.forEach(function(value, i) {
-                maxVal = Math.max(maxVal, parseInt(value));
-                sectionMax = Math.max(sectionMax, parseInt(value));
-                streamAllValues.push(value);
-                section.values.push(value);
+              stream.values.forEach(function(value, j) {
+                var scaled_value = parseFloat(getArrayOfDecimals(value)[0]);
+
+
+                maxVal = Math.max(maxVal, scaled_value);
+                sectionMax = Math.max(sectionMax, scaled_value);
+                section.values.push({value: scaled_value});
               });
               section.max = sectionMax;
               stream.plot.sections.push(section);
               streamTick.cycle.increment();
             }
-            var maxVal = 0;
-            for (i = 0; i < stream.plot.sections.length; i++) {
-              var iSection = stream.plot.sections[i];
-              iSection.html = {};
-              var ratioWidthDuration = parseInt(10000*(iSection.duration/streamDuration))/100;
-              iSection.html.total = {width: {percent: ratioWidthDuration}};
-              iSection.scaledValues = [];
-              iSection.values && iSection.values.forEach(function(s_value, j) {
-                var scaled_value = parseFloat(getArrayOfDecimals(s_value)[0]);
-                maxVal = Math.max(maxVal, scaled_value);
-              });
-              console.log(maxVal)
-              iSection.values && iSection.values.forEach(function(s_value, j) {
-                var scaled_value = parseFloat(getArrayOfDecimals(s_value)[0]);
+            stream.plot.sections.forEach(function(section, k) {
+              var ratioWidthDuration = parseInt(10000*(section.duration/streamDuration))/100;
+              section.html.total = {width: {percent: ratioWidthDuration}};
+              if (!section.values.length) {
+                section.delayOnly = true;
+                return
+              }
+
+              section.values.forEach(function(value_dict, j) {
+                  value_dict.left = (j/section.values.length) * 100 + '%';
+                  value_dict.bottom = (value_dict.value)/section.max*100 + '%';
+              })
+            });
+            // for (i = 0; i < stream.plot.sections.length; i++) {
 
 
-                var leftPercent = (j/iSection.values.length) * 100;
-                iSection.scaledValues.push({val: scaled_value, left: leftPercent});
-              });
-              iSection.max = maxVal;
-              console.log(iSection.scaledValues)
-            }
-            // streamAllValues.forEach(function(s_value, j) {
-            //   var scaled_value = parseFloat(getArrayOfDecimals(s_value)[0]);
-            //   if (scaled_value >= plotStats.max) {
-            //     plotStats.max = scaled_value
-            //   }
-            //   if (scaled_value <= plotStats.min) {
-            //     plotStats.min = scaled_value;
-            //   }
-            //   stream.plot.values.push(scaled_value);
-            // })
-            // if (['r', 'ar'].indexOf(direction) > -1) {
-            //   stream.plot.values.reverse();
+            //   // iSection.html.total = {width: {percent: ratioWidthDuration}};
+            //   iSection.scaledValues = [];
+            //   iSection.values && iSection.values.forEach(function(s_value, j) {
+            //     var scaled_value = parseFloat(getArrayOfDecimals(s_value)[0]);
+            //   });
+            //   iSection.values && iSection.values.forEach(function(s_value, j) {
+
+            //     maxVal = Math.max(maxVal, scaled_value);
+            //     var leftPercent = (j/iSection.values.length) * 100;
+            //     iSection.scaledValues.push({val: scaled_value, left: leftPercent});
+            //   });
+            //   iSection.max = maxVal;
             // }
+
+
           })
           propStreams.forEach(function(stream, i) {
             stream.plot.max = plotStats.max;
