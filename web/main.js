@@ -96,9 +96,10 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.api.animations.one', {
     parent: 'root.api.animations',
     name: 'root.api.animations.one',
-    url: '/{type}/{property}?{template}&{select}',
+    url: '/{type}/{property}?{template}&{select}&{state}&{hidePlot}',
     params: {
-      kf: 60
+      kf: 60,
+      hidePlot: false,
     },
     templateUrl: 'admin/templates/animations/animations.frame.html'
   })

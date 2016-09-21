@@ -273,7 +273,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         if (debug) {
 
-          enablePlayerDebugMode(player, state_obj)
+          enablePlayerDebugMode(player, state_obj, debug)
         }
         return player;
       }
@@ -282,10 +282,17 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       }
 
 
-      function enablePlayerDebugMode(player, state) {
+      function enablePlayerDebugMode(player, state, defaults) {
+
+
         if (!player.debug) {
-          player.debug = {states: [], props:{}, defaults: {showAll:true}}
+          player.debug = {states: [], props:{}, defaults: defaults}
         }
+
+        player.debug.stateName = defaults.stateName;
+        player.debug.defaults.showAll = !defaults.hidePlot;
+        delete player.debug.defaults['hidePlot'];
+
 
 
         player.debug.states.push(state);
@@ -329,7 +336,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 player.debug.propArr.push({name: props[prop][0].name, streams: props[prop], show:player.debug.defaults.showAll});
               }
         })
-        player.debug.toggleAllPlots = toggleAllPlots(player.debug.propArr);
+          player.debug.toggleAllPlots = toggleAllPlots(player.debug.propArr);
         $timeout(function() {
           updatePlayerArgs(player, true);
         })
@@ -722,9 +729,46 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
       }
 
-      function initStateObj(stateName, str, elem, kf, debug) {
-        str = str && UtilitiesService.replaceAll(str, ', ', ',');
-        var stateArgs = filterTransformAndShortcutStr(str.split(','));
+      function initStateObj(stateName, str, elem, debug) {
+
+        kf = debug && debug.kf || 60
+        str = str && UtilitiesService.replaceAll(str, ', ', ',') || '';
+
+        if (debug.stateName) {
+          var stateNameStr = elem.getAttribute(stateName);
+          var stateNameStr = stateNameStr.split('[')[1].split('|')[0].split(']')[0].trim()
+          var stateNameStrSplit = [];
+          stateNameStr.split(',').forEach(function(stream, i) {
+            var iStreamSplit = stream.split(':');
+            if (iStreamSplit.length === 5) {
+              stream += ':0:1:f';
+              stateNameStrSplit.push(stream);
+              console.log(stream)
+            }
+          })
+
+        } else {
+          var stateNameStr = str
+          var stateNameStrSplit = str.split(',');
+        }
+
+
+
+        var stateArgs = filterTransformAndShortcutStr(stateNameStrSplit);
+
+        // var stateNameArgs =  filterTransformAndShortcutStr()
+        // stateNameStr.forEach(function(stream, i) {
+        //   var sSplit = stream.split(':');
+
+        //   if (sSplit.length === '5') {
+        //     stateArgs.push(stream + ':0:1:f')
+        //   }
+        // })
+        // stateNameArgs.forEach(function(stream, i) {
+        //   console.log(stream);
+        //   stateArgs.push(stream + ':0:1:f')
+        // })
+
 
         var resultState = {duration: 0};
         var timeline = {events:[], props:{}, stateName: stateName};
