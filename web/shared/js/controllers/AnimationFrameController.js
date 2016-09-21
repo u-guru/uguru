@@ -11,7 +11,8 @@ angular.module('uguru.shared.controllers')
   '$compile',
   'AnimationFrameService',
   'RootService',
-  function($scope, $state, $timeout, $stateParams, UtilitiesService, $compile, AnimationFrameService, RootService) {
+  'ElementService',
+  function($scope, $state, $timeout, $stateParams, UtilitiesService, $compile, AnimationFrameService, RootService, ElementService) {
     var afc = this;
 
     afc.service = AnimationFrameService;
@@ -22,7 +23,6 @@ angular.module('uguru.shared.controllers')
     // afc.params.template = afc.element.objUrl.split('/').splice(afc.element.objUrl.split('/').length - $stateParams.comp.split('.').length).join('/')
     afc.params.template = afc.element.objUrl;
     afc.params.defaults = {kf: getKFFromParams($stateParams), hidePlot: $stateParams.hidePlot === "true", stateName: $stateParams.state};
-    console.log(afc.params.defaults, $stateParams.hidePlot)
     afc.params.formatted = 'p:[' + afc.params.raw + ']';
     afc.getDebugFormat = AnimationFrameService.getDebugFormat;
 
@@ -47,25 +47,22 @@ angular.module('uguru.shared.controllers')
           afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, afc.params.defaults);
 
     })
-    function isSVGElement(name) {
-      return ['path', 'g', 'rect', 'svg', 'polygon', 'line', 'circle'].indexOf(name) > -1;
-    }
-    function getSVGParent(elem) {
-      if (isSVGElement(elem.nodeName.toLowerCase()) && elem.nodeName === 'svg') return elem;
-      return getSVGParent(elem.parentNode)
-    }
+
 
     function getKFFromParams(params) {
       return params.kf && parseInt(params.kf) || 60
     }
 
     function appendParentWithComputedHeight(container, element) {
-      element.nodeName
-      var hasBounds = true;
-      var isSvg = isSVGElement(element.nodeName.toLowerCase());
-      if (isSvg) {
-        element = getSVGParent(element).parentNode;
+      $timeout(function() {
+        var _window = $scope.root.window;
+        element = ElementService.scaleSvgCSS(element, _window, true, true).parentNode;
+      })
 
+      var hasBounds = true;
+      var isSvg = ElementService.isSVGElement(element.nodeName.toLowerCase());
+      if (isSvg) {
+        element = ElementService.getSVGParent(element)
       }
 
       while (hasBounds) {
@@ -81,7 +78,7 @@ angular.module('uguru.shared.controllers')
         }
 
       }
-      element.classList.add('full-xy')
+      element.classList.add('full-xy', 'absolute', 'flex-vertical-center', 'bottom-0')
       return element
     }
 
