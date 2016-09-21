@@ -35,15 +35,6 @@ angular.module('uguru.shared.controllers')
           afc.player.schedule.streams.forEach(function(stream, i) {
             stream.applyProp(stream.values[0]);
           })
-
-        // };
-        // afc.player.enableDebugMode();
-        // console.log(afc.player.tick)
-        // afc.player.play();
-        // console.log(afc.player.tick)
-        // player.play(player, afc.stateObj.events);
-
-        // $compile(afc.element.dom)($scope)
     })
 
     function constructStateStrFromParams(params) {

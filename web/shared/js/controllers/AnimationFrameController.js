@@ -24,8 +24,6 @@ angular.module('uguru.shared.controllers')
     afc.params.kf = $stateParams.kf && parseInt($stateParams.kf) || 60
     afc.params.formatted = 'p:[' + afc.params.raw + ']';
     afc.getDebugFormat = AnimationFrameService.getDebugFormat;
-    console.log('ay', $stateParams.temp)
-
 
     $timeout(function() {
 
@@ -37,34 +35,50 @@ angular.module('uguru.shared.controllers')
         }
 
         var animContainer = document.querySelector('#anim-element');
+        animContainer.classList.add('absolute', 'full-xy', 'bottom-0', 'flex-wrap-center')
         afc.element.dom = animContainer.querySelector($stateParams.select);
-        var domCoords = afc.element.dom.getBoundingClientRect();
-
-
-
-
-        var width = Math.max(domCoords.width, 50) + 'px';
-        var height = Math.max(domCoords.height, 50) + 'px';
-
-        afc.element.dom.style.width = width;
-        afc.element.dom.style.height = height;
+        // var domCoords = afc.element.dom.getBoundingClientRect();
         animContainer.innerHTML = ''
-        animContainer.appendChild(afc.element.dom);
+        appendParentWithComputedHeight(animContainer, afc.element.dom)
         // for (var i = 0; i < afc.element.dom.length; i++) {
           afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.kf, $scope);
           afc.player = AnimationFrameService.getPlayer();
           afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, $scope);
 
-
-        // };
-        // afc.player.enableDebugMode();
-        // console.log(afc.player.tick)
-        // afc.player.play();
-        // console.log(afc.player.tick)
-        // player.play(player, afc.stateObj.events);
-
-        // $compile(afc.element.dom)($scope)
     })
+    function isSVGElement(name) {
+      return ['path', 'g', 'rect', 'svg', 'polygon', 'line', 'circle'].indexOf(name) > -1;
+    }
+    function getSVGParent(elem) {
+      if (isSVGElement(elem.nodeName.toLowerCase()) && elem.nodeName === 'svg') return elem;
+      return getSVGParent(elem.parentNode)
+    }
+
+    function appendParentWithComputedHeight(container, element) {
+      element.nodeName
+      var hasBounds = true;
+      var isSvg = isSVGElement(element.nodeName.toLowerCase());
+      if (isSvg) {
+        element = getSVGParent(element).parentNode;
+
+      }
+
+      while (hasBounds) {
+        container.appendChild(element);
+        var style = window.getComputedStyle(element);
+        if (style.height && style.width) {
+          hasBounds = false;
+
+          break;
+        } else {
+          container.innerHTML = '';
+          element = element.parentNode;
+        }
+
+      }
+      element.classList.add('full-xy')
+      return element
+    }
 
     function constructStateStrFromParams(params) {
       var animationShortcuts = RootService.customShortcuts.animProps;
