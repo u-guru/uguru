@@ -17,23 +17,17 @@
         <li ng-click='afc.player.stepForward(afc.player.schedule)'>
             <span class='flex-center svg-32 svg-stroke-6 radius-2 bg stroke-white' ng-include='"shared/templates/components/svg/main/skip.html"'></span>
         </li>
-        <li class='flex-vertical-center block txt-center weight-900 bg-campus-50p radius-2' style='width:150px !important'>
-            <span inspector-duration class='width-128'>
-                0
-            </span>
-            <span class='width-64 txt-1 opacity-60p'>
-                /&nbsp;&nbsp;{{afc.player.playerProps.duration}}ms
-            </span>
+        <li class='flex-vertical-center' style='width:150px !important'>
+			<span class='block txt-center relative p15x-p10y weight-900 txt-white txt-20 bg-campus-50p radius-2 width-128'>
+	            <span inspector-duration>0</span>
+	            <span class='txt-1 opacity-60p'>/&nbsp;&nbsp;{{afc.player.playerProps.duration}}ms</span>
+			</span>
         </li>
         <li class='flex-vertical-center'>
-            <span class='block txt-center relative p15x-p10y weight-900 txt-white txt-20 bg-campus-50p radius-2 width-96' inspector-count>
-
-            </span>
+            <span class='block txt-center relative p15x-p10y weight-900 txt-white txt-20 bg-campus-50p radius-2 width-64' inspector-count></span>
         </li>
         <li class='flex-vertical-center'>
-            <span class='block txt-center relative p15x-p10y weight-900 txt-white txt-20 bg-campus-50p radius-2 width-128' inspector-direction>
-
-            </span>
+            <span class='block txt-center relative p15x-p10y weight-900 txt-white txt-20 bg-campus-50p radius-2 width-128' inspector-direction></span>
         </li>
     </ul>
 

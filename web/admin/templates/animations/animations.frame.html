@@ -1,6 +1,5 @@
 <div class='absolute top-0 left-0 full-xy' ng-controller='AnimationFrameController as afc'>
 	<!-- HEADER -->
-
     <header class='full-x bg-campus-50p relative overflow-visible'>
         <h1 class='txt-center uppercase txt-28 weight-900 p15top-p15x'>{{afc.args.property}}</h1>
         <div>
@@ -54,56 +53,62 @@
 
 	<!-- KEYFRAMES -->
     <div class='absolute left-0 z-index-9 full-x bg-charcoal-90p z-index-100' style='top: 171px'>
-        <div class='flex-start full-x z-index-100 overflow-x no-scrollbar border-1-bottom' style='height:150px; border-color:rgba(255,255,255,.2)' ng-repeat='(prop, prop_obj) in afc.player.debug.props' ng-if='!result.skipPlot'>
-            <div class='full-y overflow-hidden absolute z-index-100'>
-                <div class="full-xy bg-transparent">
-					<h2 class='weight-900 p10y-p15x bg-azure-50p txt-20 {{prop}}'> {{prop}} </h2>
+        <div class='flex-start full-x z-index-100 overflow-x no-scrollbar border-1-bottom height-150' style='border-color:rgba(255,255,255,.2)' ng-repeat='(prop, prop_obj) in afc.player.debug.props' ng-if='!result.skipPlot'>
+            <div class='overflow-hidden absolute z-index-100 height-150 width-150'>
+                <div class="full-xy bg-campus-25p flex-center">
+					<h2 class='weight-900 p10y-p15x txt-20 {{prop}}'> {{prop}} </h2>
 				</div>
             </div>
             <div ng-repeat='property_row in prop_obj' class='full-xy'>
-                <ul class='absolute flex-vertical-center full-xy tile-border-side-light width-90p p15-grid' style='left:10%; max-height:150px' ng-repeat='stream in property_row track by $index'>
+                <ul class='absolute flex-vertical-center full-y tile-border-side-light height-150' style='left:150px; width:calc(100% - 150px);' ng-repeat='stream in property_row track by $index'>
                     <!-- {{prop_obj}} -->
-                    <li class='relative full-y flex-wrap-center' ng-repeat='section in stream.plot.sections track by $index'  ng-class="{'bg-slate': $index % 2 === 1, 'bg-charcoal': $index % 2 === 0}" style='width:{{section.html.total.width.percent}}% !important;'>
-                        <div class='header full-x width-50p p15-grid top-0 absolute p10y height-10p bg-azure z-index-100'  ng-if='section.offset !== section.duration' style='height:10%;'>
-                            <span class='absolute top-0 left-0' ng-if='section.direction === "forward"'>
-                                <svg class='absolute top-0 left-0' stroke="white" style='height:20px; width:20px;' viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <path d="M32,86 L68,50 L32,14" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
-                                </svg>
-                            </span>
-                            <span class='absolute top-0 left-0' ng-if='section.direction !== "forward"'>
-                                <svg class='absolute top-0 left-0' stroke="white" style='height:20px; width:20px; transform:rotate(180deg)' viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <path d="M32,86 L68,50 L32,14" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
-                                </svg>
-                            </span>
-                            <span class='txt-1 weight-900'>
-                                {{section.start}}, {{section.end}}
-                            </span>
-                            <span class='txt-1 weight-900'>
-                                btwn: {{section.transition}}
-                            </span>
-                            <span class='txt-1 weight-900'>
-                                {{section.duration}}ms
-                            </span>
+                    <li class='relative full-xy flex-center' ng-repeat='section in stream.plot.sections track by $index'>
+						<!-- style='width:{{section.html.total.width.percent}}% !important;' -->
+						<!-- ng-class="{'bg-slate': $index % 2 === 1, 'bg-charcoal': $index % 2 === 0}" -->
 
+						<!-- description -->
+                        <div class='absolute top-0 left-0 full-x p15xy z-index-100'  ng-if='section.offset !== section.duration'>
+							<div class="bg-campus-10p flex-center p05xy radius-2">
+	                            <span ng-if='section.direction === "forward"' class="svg-24">
+	                                <svg viewBox="0 0 100 100">
+	                                    <path d="M32,86 L68,50 L32,14" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+	                                </svg>
+	                            </span>
+	                            <span ng-if='section.direction !== "forward"' class="svg-24">
+	                                <svg viewBox="0 0 100 100">
+	                                    <path d="M68,86 L32,50 L68,14" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+	                                </svg>
+	                            </span>
+	                            <span>
+									<span class='txt-1 semibold'>
+		                                {{section.start}}, {{section.end}}
+		                            </span>
+									<br/>
+		                            <span class='txt-1 semibold'>
+		                                btwn: {{section.transition}}
+		                            </span>
+		                            <span class='txt-1 semibold'>
+		                                {{section.duration}}ms
+		                            </span>
+								</span>
+							</div>
                         </div>
-                        <div class='full-xy absolute flex-vertical-center bg-gold txt-charcoal weight-900 top-0 txt-5 left-0 p05y z-index-100'  ng-if='section.offset === section.duration'>
-                            <span class='full-x flex-wrap-center text-center'>
+
+						<!-- delay -->
+                        <div class='full-xy relative z-index-100 p15xy' ng-if='section.offset === section.duration'>
+                            <span class='full-xy flex-vertical-center bg-gold txt-charcoal weight-900 txt-4 p05y radius-2'>
                                 {{section.offset}}ms delay
                             </span>
                         </div>
 
-                        <div class='full-xy absolute' style='height:90% !important'>
-                            <div class='relative full-xy'>
-                                <span  ng-repeat='point in section.values track by $index'
-                                    class='block round border-2 border-white bg bg-charcoal z-index-1000 absolute'
-                                    style='left:{{point.left}}; bottom:{{point.bottom}};width:4px;height:4px;'>
-                                </span>
-                            </div>
-
+						<!-- frame circles -->
+                        <div class='full-xy height-90p' ng-if='section.offset !== section.duration'>
+                            <span ng-repeat='point in section.values track by $index'
+                                class='block round border-2 border-white bg bg-charcoal z-index-1000 absolute'
+                                style='left:{{point.left}}; bottom:{{point.bottom}};width:4px;height:4px;'>
+                            </span>
                         </div>
-
                     </li>
-
                 </ul>
             </div>
         </div>
