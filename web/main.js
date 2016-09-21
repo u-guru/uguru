@@ -96,9 +96,8 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.api.animations.one', {
     parent: 'root.api.animations',
     name: 'root.api.animations.one',
-    url: '/{type}/{property}?{comp}&{selector}',
+    url: '/{type}/{property}?{template}&{select}',
     params: {
-      comp: 'svg.logo.guru-head',
       kf: 60
     },
     templateUrl: 'admin/templates/animations/animations.frame.html'

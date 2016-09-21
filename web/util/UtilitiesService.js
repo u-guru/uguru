@@ -49,11 +49,11 @@ function UtilitiesService($rootScope, $compile, $timeout) {
     }
 
     function constructImportUrlFromObj(str, type) {
-        type = 'components'
+        console.log(str, type)
         ending = str.indexOf('.tpl') > -1 && '.tpl' || '.html';
         str = str.replace('.tpl', '').replace('.html', '');
         str = str.split('.').join('/').trim();
-        var resultUrl = 'shared/templates/' + type + '/' + str + ending;
+        var resultUrl = 'shared/templates/' + str + ending;
         return resultUrl;
     }
 
