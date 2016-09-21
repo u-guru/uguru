@@ -722,42 +722,55 @@
 					init-with="p:[transform:scaleY(0) translateZ(0), tro:bottom center]"></path>
 			</g>
 		</g>
-		<g class="bay-bridge">
-			<polyline class="pier-tunnel" stroke="#808389" stroke-width="3" fill="#808389" points="101.230469 184 16.5 184 16.5 194 101.230469 194"
-				init-with="p:[tro:left center, tr:scaleX(0)]"
-				when-bridge-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutSine]"></polyline>
+		<g class="bay-bridge"
+			init-default
+			when-bridge-enter="s:[pier-1-enter:public]">
 			<path d="M101.230469,177 C88.4443359,177 16.5,177.0008 16.5,177.0008" class="pier-cable-tunnel" stroke="#808389" stroke-width="3" stroke-linecap="square"
 				init-with="p:[tro:left center, tr:scaleX(0)]"
-				when-bridge-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutSine]"></path>
-	        <g class="pier-1">
+				when-pier-1-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutSine]"></path>
+			<g class="pier-1">
 				<g stroke="#808389" stroke-width="3">
 					<path d="M209,51.9942021 C209,50.3405499 210.337656,49 212.001482,49 L257.998518,49 C259.656191,49 261,50.343312 261,51.9942021 L261,69 L209,69 L209,51.9942021 L209,51.9942021 Z" class="pier-1-deck" fill="#808389"
-						init-with="p-op"></path>
+						init-with="p:[tro:center top, tr:scaleY(0)]"
+						when-pier-1-enter="p:[transform:scaleY(0):scaleY(1):250:easeOutBack]:delay-1250"></path>
 					<rect class="pier-1-beam" x="209" y="49" width="52" height="185" rx="3"
-						init-with="p-op"></rect>
+						init-with="p:[tro:center bottom, tr:scaleY(0)]"
+						when-pier-1-enter="p:[transform:scaleY(0):scaleY(1):750:easeOutBack]:delay-500"></rect>
 					<path d="M210,69 L260,107.333333" class="pier-1-iron-left-1"
-						init-with="p-op"></path>
+						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-1250"></path>
 					<path d="M260,69 L210,107.333333" class="pier-1-iron-right-1"
-						init-with="p-op"></path>
+						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-1250"></path>
 					<path d="M210,107.333333 L260,145.666667" class="pier-1-iron-left-2"
-						init-with="p-op"></path>
+						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-1000"></path>
 					<path d="M260,107.333333 L210,145.666667" class="pier-1-iron-right-2"
-						init-with="p-op"></path>
+						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-1000"></path>
 					<path d="M210,145.666667 L260,184" class="pier-1-iron-left-3"
-						init-with="p-op"></path>
+						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-750"></path>
 					<path d="M260,145.666667 L210,184" class="pier-1-iron-right-3"
-						init-with="p-op"></path>
+						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-750"></path>
 					<path d="M210,195 L260,233.333333" class="pier-1-iron-left-4"
-						init-with="p-op"></path>
+						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-500"></path>
 					<path d="M260,195 L210,233.333333" class="pier-1-iron-right-4"
-						init-with="p-op"></path>
+						init-with="p:[sdo:-63.1, sda:63.1, op:0]"
+						when-pier-1-enter="p:[op:1, stroke-dashoffset:-63.1:0:250:easeOutSine]:delay-500"></path>
 					<rect class="pier-1-bed" fill="#808389" x="205" y="234" width="60" height="18.5" rx="3"
-						init-with="p-op"></rect>
-					<polyline class="pier-1-road-left" fill="#808389" points="235 184 100 184 100 194 235 194"
-						init-with="p:[tro:left center, tr:scaleX(0)]"
-						when-bridge-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutSine]:delay-250"></polyline>
+						init-with="p:[tro:center bottom, tr:scaleY(0)]"
+						when-pier-1-enter="p:[transform:scaleY(0):scaleY(1):250:easeOutBack]:delay-250"></rect>
+					<g init-with="p:[tro:left center, tr:scaleX(0)]"
+						when-pier-1-enter="p:[transform:scaleX(0):scaleX(1):750:easeInSine]">
+						<polyline class="pier-tunnel" stroke="#808389" stroke-width="3" fill="#808389" points="101.230469 184 16.5 184 16.5 194 101.230469 194"></polyline>
+						<polyline class="pier-1-road-left" fill="#808389" points="235 184 100 184 100 194 235 194"></polyline>
+						</g>
 					<rect class="pier-1-road-right" fill="#808389" x="235" y="184" width="135" height="10"
-						init-with="p-op"></rect>
+						init-with="p:[tro:left center, tr:scaleX(0)]"
+						when-pier-1-enter="p:[transform:scaleX(0):scaleX(1):500:easeOutSine]:delay-750"></rect>
 					<path d="M100,177 C200.649476,177 209,70.5 209,70.5" class="pier-1-cable-left"
 						init-with="p-op"></path>
 					<path d="M100,177 L100,184" class="pier-1-left-9"
@@ -1128,329 +1141,329 @@
 				</g>
 				<g init-with="p-op">
 					<g class="pier-1-gold-glow-left-9-3">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-163"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-163"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-9-2">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-165"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-165"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-9-1">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-167"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-167"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-8-3">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-169"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-169"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-8-2">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-171"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-171"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-8-1">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-173"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-173"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-7-4">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-175"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-175"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-7-3">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-177"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-177"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-7-2">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-179"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-179"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-7-1">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-181"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-181"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-6-5">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-183"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-183"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-6-4">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-185"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-185"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-6-3">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-187"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-187"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-6-2">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-189"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-189"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-6-1">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-191"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-191"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-5-6">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-193"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-193"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-5-5">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-195"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-195"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-5-4">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-197"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-197"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-5-3">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-199"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-199"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-5-2">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-201"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-201"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-5-1">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-203"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-203"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-4-9">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-205"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-205"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-4-8">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-207"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-207"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-4-7">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-209"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-209"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-4-6">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-211"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-211"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-4-5">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-213"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-213"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-4-4">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-215"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-215"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-4-3">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-217"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-217"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-4-2">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-219"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-219"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-4-1">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-221"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-221"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-12">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-223"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-223"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-11">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-225"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-225"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-10">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-227"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-227"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-9">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-229"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-229"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-8">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-231"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-231"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-7">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-233"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-233"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-6">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-235"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-235"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-5">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-237"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-237"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-4">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-239"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-239"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-3">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-241"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-241"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-2">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-243"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-243"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-3-1">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-245"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-245"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-16">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-247"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-247"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-15">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-249"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-249"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-14">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-251"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-251"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-13">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-253"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-253"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-12">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-255"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-255"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-11">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-257"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-257"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-10">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-259"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-259"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-9">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-261"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-261"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-8">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-263"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-263"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-7">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-265"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-265"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-6">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-267"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-267"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-5">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-269"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-269"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-4">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-271"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-271"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-3">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-273"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-273"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-2">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-275"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-275"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-2-1">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-277"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-277"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-23">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-279"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-279"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-22">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-281"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-281"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-21">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-283"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-283"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-20">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-285"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-285"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-19">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-287"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-287"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-18">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-289"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-289"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-17">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-291"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-291"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-16">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-293"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-293"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-15">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-295"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-295"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-14">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-297"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-297"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-13">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-299"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-299"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-12">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-301"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-301"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-11">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-303"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-303"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-10">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-305"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-305"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-9">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-307"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-307"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-8">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-309"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-309"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-7">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-311"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-311"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-6">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-313"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-313"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-5">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-315"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-315"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-4">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-317"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-317"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-3">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-319"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-319"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-2">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-321"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-321"></use>
-			        </g>
-			        <g class="pier-1-gold-glow-left-1-1">
-			            <use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-323"></use>
-			            <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-323"></use>
-			        </g>
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-163"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-163"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-9-2">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-165"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-165"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-9-1">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-167"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-167"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-8-3">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-169"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-169"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-8-2">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-171"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-171"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-8-1">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-173"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-173"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-7-4">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-175"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-175"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-7-3">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-177"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-177"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-7-2">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-179"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-179"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-7-1">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-181"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-181"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-6-5">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-183"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-183"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-6-4">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-185"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-185"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-6-3">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-187"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-187"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-6-2">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-189"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-189"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-6-1">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-191"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-191"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-5-6">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-193"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-193"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-5-5">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-195"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-195"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-5-4">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-197"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-197"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-5-3">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-199"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-199"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-5-2">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-201"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-201"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-5-1">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-203"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-203"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-4-9">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-205"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-205"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-4-8">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-207"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-207"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-4-7">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-209"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-209"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-4-6">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-211"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-211"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-4-5">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-213"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-213"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-4-4">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-215"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-215"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-4-3">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-217"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-217"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-4-2">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-219"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-219"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-4-1">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-221"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-221"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-12">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-223"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-223"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-11">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-225"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-225"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-10">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-227"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-227"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-9">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-229"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-229"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-8">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-231"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-231"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-7">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-233"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-233"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-6">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-235"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-235"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-5">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-237"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-237"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-4">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-239"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-239"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-3">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-241"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-241"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-2">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-243"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-243"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-3-1">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-245"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-245"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-16">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-247"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-247"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-15">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-249"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-249"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-14">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-251"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-251"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-13">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-253"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-253"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-12">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-255"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-255"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-11">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-257"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-257"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-10">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-259"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-259"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-9">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-261"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-261"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-8">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-263"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-263"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-7">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-265"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-265"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-6">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-267"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-267"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-5">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-269"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-269"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-4">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-271"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-271"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-3">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-273"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-273"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-2">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-275"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-275"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-2-1">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-277"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-277"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-23">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-279"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-279"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-22">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-281"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-281"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-21">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-283"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-283"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-20">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-285"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-285"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-19">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-287"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-287"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-18">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-289"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-289"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-17">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-291"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-291"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-16">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-293"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-293"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-15">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-295"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-295"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-14">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-297"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-297"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-13">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-299"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-299"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-12">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-301"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-301"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-11">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-303"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-303"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-10">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-305"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-305"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-9">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-307"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-307"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-8">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-309"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-309"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-7">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-311"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-311"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-6">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-313"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-313"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-5">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-315"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-315"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-4">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-317"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-317"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-3">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-319"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-319"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-2">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-321"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-321"></use>
+					</g>
+					<g class="pier-1-gold-glow-left-1-1">
+						<use fill="black" fill-opacity="1" filter="url(#gold-glow)" xlink:href="#path-323"></use>
+						<use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-323"></use>
+					</g>
 				</g>
 				<g stroke="#FFFFFF" stroke-width="4"
 					init-with="p-op">
