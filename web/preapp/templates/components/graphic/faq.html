@@ -1,5 +1,10 @@
 <svg viewBox="0 0 1280 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	on-init="s:[board-enter:public]">
+	<defs>
+    <clipPath id="fish-bowl-clip">
+        <path d="M1174.40833,163.983721 C1179.72248,169.396381 1183,176.815438 1183,185 C1183,201.568542 1169.56854,215 1153,215 C1136.43146,215 1123,201.568542 1123,185 C1123,176.815428 1126.27753,169.396363 1131.59169,163.983702 C1129.02142,163.776488 1127,161.619342 1127,159 C1127,156.238576 1129.23925,154 1131.99767,154 L1153,154 L1174.00233,154 C1176.76247,154 1179,156.244195 1179,159 C1179,161.624598 1176.97716,163.776877 1174.40833,163.983721 L1174.40833,163.983721 Z" class="fish-bowl" stroke="#B7C6E2" stroke-width="2"></path>
+    </clipPath>
+</defs>
     <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
 		<g class="left-props"
 			init-with="p:[op:0, tr:translateX(-100%) rotate(-15deg), tro:center center]"
@@ -63,14 +68,23 @@
 			init-with="p:[op:0, tr:translateX(100%) rotate(15deg), tro:center center]"
 			when-board-enter="s:[r-props-enter:public]:delay-500"
 			when-r-props-enter="p:[opacity:0:0.3:250:linear, transform:translateX(100%) rotate(15deg):translateX(0%) rotate(0deg):500:easeOutBack easeOutExpo]">
-			<g class="fish">
-	            <path d="M1153,215 C1169.56854,215 1183,201.568542 1183,185 C1183,168.431458 1178.39062,189.8125 1153.4082,184.220703 C1128.42578,178.628906 1123,168.431458 1123,185 C1123,201.568542 1136.43146,215 1153,215 Z" class="fish-water" stroke="#B7C6E2" stroke-width="2" fill="#1A1B42"
-					init-with="p:[tro:center bottom]"
-					when-r-props-enter="p:[transform:rotateY(0deg):rotatateY(180deg):500:easeInOutBounce:^:200+250:a]"></path>
-	            <path d="M1174.40833,163.983721 C1179.72248,169.396381 1183,176.815438 1183,185 C1183,201.568542 1169.56854,215 1153,215 C1136.43146,215 1123,201.568542 1123,185 C1123,176.815428 1126.27753,169.396363 1131.59169,163.983702 C1129.02142,163.776488 1127,161.619342 1127,159 C1127,156.238576 1129.23925,154 1131.99767,154 L1153,154 L1174.00233,154 C1176.76247,154 1179,156.244195 1179,159 C1179,161.624598 1176.97716,163.776877 1174.40833,163.983721 L1174.40833,163.983721 Z" class="fish-bowl" stroke="#B7C6E2" stroke-width="2" ></path>
+				<g class="fish">
+					<g clip-path="url(#fish-bowl-clip)">
+			            <path d="M1153,215 C1169.56854,215 1183,201.568542 1183,185 C1183,168.431458 1178.39062,189.8125 1153.4082,184.220703 C1128.42578,178.628906 1123,168.431458 1123,185 C1123,201.568542 1136.43146,215 1153,215 Z" class="fish-water" stroke="#B7C6E2" stroke-width="2" fill="#1A1B42"
+							init-with="p:[tr:scaleX(1), tro:center top]"
+							when-r-props-enter="p:[transform:scaleX(1):scaleX(1.2):1800:easeOutQuad:^:200+0:a]:delay-50"></path>
+						<g init-with="p:[tro:20% 50%]"
+							when-r-props-enter="p:[transform:rotateY(0deg):rotateY(45deg):3000:easeInOutCirc:^:100+0:a]">
+				            <path d="M1163,194 C1163,194 1161,196.25 1161,198.5 C1161,200.75 1163,203 1163,203 L1156,198.5 L1163,194 Z" class="fish-tail" stroke="#FDF27E" fill="#D8C964"
+								init-with="p:[tro:center center]"
+								when-r-props-enter="p:[transform:translateX(12px) rotate(0deg):translateX(-12px) rotate(10deg):1500:easeInOutQuad easeInOutQuad:^:100+0:a]"></path>
+				            <path d="M1149,205 C1153.97056,205 1158,199 1158,199 C1158,199 1153.97056,193 1149,193 C1144.02944,193 1142.63604,196 1142.63604,196 C1141.18019,197.656854 1141.09928,200.406733 1142.63604,202 C1142.63604,202 1144.02944,205 1149,205 Z" class="fish-body" stroke="#FDF27E" fill="#D8C964"
+								init-with="p:[tro:center center]"
+								when-r-props-enter="p:[transform:translateX(15px) rotate(0deg):translateX(-10px) rotate(10deg):1500:easeInOutQuad easeInOutQuad:^:100+0:a]"></path>
+						</g>
+				</g>
+	            <path d="M1174.40833,163.983721 C1179.72248,169.396381 1183,176.815438 1183,185 C1183,201.568542 1169.56854,215 1153,215 C1136.43146,215 1123,201.568542 1123,185 C1123,176.815428 1126.27753,169.396363 1131.59169,163.983702 C1129.02142,163.776488 1127,161.619342 1127,159 C1127,156.238576 1129.23925,154 1131.99767,154 L1153,154 L1174.00233,154 C1176.76247,154 1179,156.244195 1179,159 C1179,161.624598 1176.97716,163.776877 1174.40833,163.983721 L1174.40833,163.983721 Z" class="fish-bowl" stroke="#B7C6E2" stroke-width="2"></path>
 	            <path d="M1131.46809,164 L1174.53191,164" class="fish-line" stroke="#B7C6E2" stroke-width="2" ></path>
-	            <path d="M1163,194 C1163,194 1161,196.25 1161,198.5 C1161,200.75 1163,203 1163,203 L1156,198.5 L1163,194 Z" class="fish-tail" stroke="#FDF27E" fill="#D8C964"></path>
-	            <path d="M1149,205 C1153.97056,205 1158,199 1158,199 C1158,199 1153.97056,193 1149,193 C1144.02944,193 1142.63604,196 1142.63604,196 C1141.18019,197.656854 1141.09928,200.406733 1142.63604,202 C1142.63604,202 1144.02944,205 1149,205 Z" class="fish-body" stroke="#FDF27E" fill="#D8C964"></path>
 			</g>
 			<g class="apple">
 	            <path d="M1011,183.304689 C1008.32877,183.304689 1007.79874,182 1005.0421,182 C998.388753,182 994,184.525102 994,193.477307 C994,202.429512 999.393838,213 1006.04719,213 C1007.81347,213 1009.48837,212.250117 1011,210.98811 C1012.51127,212.250117 1014.18617,213 1015.95245,213 C1022.6058,213 1028,202.429512 1028,193.477307 C1028,184.525102 1023.35961,182 1016.70626,182 C1014.35045,182 1013.67123,183.304689 1011,183.304689 Z" class="apple-fruit" stroke="#F25A5B" stroke-width="2" fill="#800304"></path>
@@ -105,7 +119,8 @@
             <rect class="shelf" fill="#B79762" x="361" y="207" width="560" height="20" rx="3.2"></rect>
             <rect class="chalk" stroke="#E3DDDD" fill="#FFFFFF" x="671" y="199" width="30" height="8" rx="4"
 				init-with="p:[op:0, tro:center top]"
-				when-board-enter="a:[bounceInDown-subtle:set:(dur:500ms#func:linear):in:delay-250]"></rect>
+				when-board-enter="a:[bounceInDown-subtle:set:(dur:500ms#func:linear):in:delay-250]"
+				when-r-props-enter="p:[transform:rotate(-5deg):rotate(5deg):750:easeInOutBack:^:200+0:a, tro:center center]"></rect>
 			<g class="eraser"
 				init-with="p:[op:0, tro:center top]"
 				when-board-enter="a:[bounceInDown-subtle:set:(dur:500ms#func:linear):in:delay-150]">
