@@ -27,14 +27,17 @@
 	            <path d="M214.5,112 L240.5,112" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
 	            <path d="M202.958369,95.0416306 C216.236195,108.319456 237.763805,108.319456 251.041631,95.0416306 C264.319456,81.7638046 264.319456,60.2361954 251.041631,46.9583694" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
 	            <path d="M253.870058,44.1299423 L200.129942,97.8700577" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
-	            <circle class="globe" stroke="#BCBBC9" stroke-width="2" fill="#2F3940" cx="227" cy="71" r="28"></circle>
-	            <path d="M246.79899,51.2010101 L207.20101,90.7989899" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
-	            <path d="M246.79899,51.2010101 C241.849242,46.2512627 227,51.2010101 217.100505,61.1005051 C207.20101,71 202.251263,85.8492424 207.20101,90.7989899" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
-	            <path d="M246.79899,51.2010101 C251.748737,56.1507576 246.79899,71 236.899495,80.8994949 C227,90.7989899 212.150758,95.7487373 207.20101,90.7989899" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
-	            <path d="M246.79899,90.7989899 L207.20101,51.2010101" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
-	            <path d="M253.870058,78.0710678 L219.928932,44.1299423" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
-	            <path d="M234.071068,97.8700577 L200.129942,63.9289322" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
-	            <circle class="globe" stroke="#BCBBC9" stroke-width="2" cx="227" cy="71" r="28"></circle>
+				<g init-with="p:[tro:center center]"
+					when-l-props-enter="p:[transform:rotate(360deg):rotate(0deg):1500:easeInOutSine:^:20+300:a]">
+		            <circle class="globe" stroke="#BCBBC9" stroke-width="2" fill="#2F3940" cx="227" cy="71" r="28"></circle>
+		            <path d="M246.79899,51.2010101 L207.20101,90.7989899" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
+		            <path d="M246.79899,51.2010101 C241.849242,46.2512627 227,51.2010101 217.100505,61.1005051 C207.20101,71 202.251263,85.8492424 207.20101,90.7989899" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
+		            <path d="M246.79899,51.2010101 C251.748737,56.1507576 246.79899,71 236.899495,80.8994949 C227,90.7989899 212.150758,95.7487373 207.20101,90.7989899" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
+		            <path d="M246.79899,90.7989899 L207.20101,51.2010101" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
+		            <path d="M253.870058,78.0710678 L219.928932,44.1299423" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
+		            <path d="M234.071068,97.8700577 L200.129942,63.9289322" class="globe" stroke="#BCBBC9" stroke-width="2" ></path>
+		            <circle class="globe" stroke="#BCBBC9" stroke-width="2" cx="227" cy="71" r="28"></circle>
+				</g>
 			</g>
 			<g class="maroon">
 	            <rect class="maroon-book" stroke="#CA94A2" fill="#623742" x="42" y="55" width="15" height="60"></rect>
@@ -68,20 +71,22 @@
 			init-with="p:[op:0, tr:translateX(100%) rotate(15deg), tro:center center]"
 			when-board-enter="s:[r-props-enter:public]:delay-500"
 			when-r-props-enter="p:[opacity:0:0.3:250:linear, transform:translateX(100%) rotate(15deg):translateX(0%) rotate(0deg):500:easeOutBack easeOutExpo]">
-				<g class="fish">
-					<g clip-path="url(#fish-bowl-clip)">
-			            <path d="M1153,215 C1169.56854,215 1183,201.568542 1183,185 C1183,168.431458 1178.39062,189.8125 1153.4082,184.220703 C1128.42578,178.628906 1123,168.431458 1123,185 C1123,201.568542 1136.43146,215 1153,215 Z" class="fish-water" stroke="#B7C6E2" stroke-width="2" fill="#1A1B42"
-							init-with="p:[tr:scaleX(1), tro:center top]"
-							when-r-props-enter="p:[transform:scaleX(1):scaleX(1.2):1800:easeOutQuad:^:200+0:a]:delay-50"></path>
-						<g init-with="p:[tro:20% 50%]"
-							when-r-props-enter="p:[transform:rotateY(0deg):rotateY(45deg):3000:easeInOutCirc:^:100+0:a]">
-				            <path d="M1163,194 C1163,194 1161,196.25 1161,198.5 C1161,200.75 1163,203 1163,203 L1156,198.5 L1163,194 Z" class="fish-tail" stroke="#FDF27E" fill="#D8C964"
-								init-with="p:[tro:center center]"
-								when-r-props-enter="p:[transform:translateX(12px) rotate(0deg):translateX(-12px) rotate(10deg):1500:easeInOutQuad easeInOutQuad:^:100+0:a]"></path>
-				            <path d="M1149,205 C1153.97056,205 1158,199 1158,199 C1158,199 1153.97056,193 1149,193 C1144.02944,193 1142.63604,196 1142.63604,196 C1141.18019,197.656854 1141.09928,200.406733 1142.63604,202 C1142.63604,202 1144.02944,205 1149,205 Z" class="fish-body" stroke="#FDF27E" fill="#D8C964"
-								init-with="p:[tro:center center]"
-								when-r-props-enter="p:[transform:translateX(15px) rotate(0deg):translateX(-10px) rotate(10deg):1500:easeInOutQuad easeInOutQuad:^:100+0:a]"></path>
-						</g>
+			<g class="fish"
+				init-with="p:[op:0, tr:translateX(50%)]"
+				when-r-props-enter="p:[opacity:0:1:250:easeOutSine:delay-250, transform:translateX(50%):translateX(0%):500:easeOutCubic]:delay-200">
+				<g clip-path="url(#fish-bowl-clip)">
+		            <path d="M1153,215 C1169.56854,215 1183,201.568542 1183,185 C1183,168.431458 1178.39062,189.8125 1153.4082,184.220703 C1128.42578,178.628906 1123,168.431458 1123,185 C1123,201.568542 1136.43146,215 1153,215 Z" class="fish-water" stroke="#B7C6E2" stroke-width="2" fill="#1A1B42"
+						init-with="p:[tr:scaleX(1), tro:center top]"
+						when-r-props-enter="p:[transform:scaleX(1):scaleX(1.2):1800:easeOutQuad:^:200+0:a]:delay-50"></path>
+					<g init-with="p:[tro:20% 50%]"
+						when-r-props-enter="p:[transform:rotateY(0deg):rotateY(45deg):3000:easeInOutCirc:^:100+0:a]">
+			            <path d="M1163,194 C1163,194 1161,196.25 1161,198.5 C1161,200.75 1163,203 1163,203 L1156,198.5 L1163,194 Z" class="fish-tail" stroke="#FDF27E" fill="#D8C964"
+							init-with="p:[tro:center center]"
+							when-r-props-enter="p:[transform:translateX(12px) rotate(0deg):translateX(-12px) rotate(10deg):1500:easeInOutQuad easeInOutQuad:^:100+0:a]"></path>
+			            <path d="M1149,205 C1153.97056,205 1158,199 1158,199 C1158,199 1153.97056,193 1149,193 C1144.02944,193 1142.63604,196 1142.63604,196 C1141.18019,197.656854 1141.09928,200.406733 1142.63604,202 C1142.63604,202 1144.02944,205 1149,205 Z" class="fish-body" stroke="#FDF27E" fill="#D8C964"
+							init-with="p:[tro:center center]"
+							when-r-props-enter="p:[transform:translateX(15px) rotate(0deg):translateX(-10px) rotate(10deg):1500:easeInOutQuad easeInOutQuad:^:100+0:a]"></path>
+					</g>
 				</g>
 	            <path d="M1174.40833,163.983721 C1179.72248,169.396381 1183,176.815438 1183,185 C1183,201.568542 1169.56854,215 1153,215 C1136.43146,215 1123,201.568542 1123,185 C1123,176.815428 1126.27753,169.396363 1131.59169,163.983702 C1129.02142,163.776488 1127,161.619342 1127,159 C1127,156.238576 1129.23925,154 1131.99767,154 L1153,154 L1174.00233,154 C1176.76247,154 1179,156.244195 1179,159 C1179,161.624598 1176.97716,163.776877 1174.40833,163.983721 L1174.40833,163.983721 Z" class="fish-bowl" stroke="#B7C6E2" stroke-width="2"></path>
 	            <path d="M1131.46809,164 L1174.53191,164" class="fish-line" stroke="#B7C6E2" stroke-width="2" ></path>
@@ -94,13 +99,13 @@
 	            <path d="M998,191.412138 L998,184.755488 C998,183.785959 998.790553,183 999.751364,183 L1000.06403,183 C1001.03129,183 1001.8154,183.778807 1001.8154,184.753934 L1001.8154,189.717196 C1001.8154,191.100328 1004.28236,191.332176 1004.28236,191.332176 C1004.82248,191.429287 1005.10642,191.929727 1004.91618,192.450987 L1004.72089,192.986092 C1004.53082,193.506883 1003.93844,193.957371 1003.38037,193.973827 C1003.38037,193.973827 998,194.527015 998,191.412138 Z" class="apple-worm" stroke="#CC619E" fill="#E8B8D4"></path>
 	            <path d="M1000.0059,185.3626 C999.720186,185.367027 999.611061,185.49398 999.622111,185.509125 C999.689776,185.601407 999.740076,185.70464 999.768581,185.816452 C999.903433,186.345651 999.498313,186.865875 998.86371,186.978397 C998.229043,187.090868 997.605218,186.75305 997.470304,186.223852 C997.384508,185.887147 997,185.883639 997,185.883639 L997.007939,185.683218 C997.007939,185.683218 997.172398,185.657201 997.367426,185.565382 C997.57717,185.46657 997.820058,185.300488 997.864311,185.269443 C998.006963,185.16949 998.180219,185.096472 998.375239,185.061906 C998.788499,184.988623 999.19718,185.106337 999.469269,185.343513 C999.481107,185.353827 999.589908,185.211385 1000.00261,185.205372 C1000.38356,185.199822 1000.49825,185.339009 1000.50965,185.328356 C1000.77166,185.083399 1001.17517,184.953853 1001.59124,185.015054 C1001.78758,185.043918 1001.96379,185.111845 1002.11053,185.207582 C1002.15606,185.237319 1002.40574,185.396225 1002.61949,185.488867 C1002.81824,185.574949 1002.98369,185.59616 1002.98369,185.59616 L1003,185.796228 C1003,185.796228 1002.61587,185.810933 1002.54421,186.149933 C1002.4315,186.682738 1001.82219,187.038521 1001.1832,186.944606 C1000.54428,186.850636 1000.11765,186.34253 1000.2303,185.809726 C1000.25411,185.697151 1000.30006,185.592516 1000.36383,185.498319 C1000.37424,185.482861 1000.25987,185.359164 999.974149,185.363062 M998.671854,186.866605 C999.197839,186.858942 999.616799,186.497155 999.607625,186.058531 C999.598452,185.619907 999.16462,185.270543 998.638635,185.278206 C998.112649,185.285869 997.69369,185.647656 997.702863,186.08628 C997.712037,186.524904 998.145868,186.874268 998.671854,186.866605 L998.671854,186.866605 Z M1001.37027,186.827293 C1000.84428,186.834956 1000.41045,186.485593 1000.40128,186.046968 C1000.3921,185.608344 1000.81106,185.246557 1001.33705,185.238894 C1001.86303,185.231232 1002.29686,185.580595 1002.30604,186.019219 C1002.31521,186.457843 1001.89625,186.81963 1001.37027,186.827293 L1001.37027,186.827293 L1001.37027,186.827293 Z M1001.49203,186.12281 C1001.56539,186.121742 1001.62382,186.07124 1001.62254,186.010011 C1001.62126,185.948782 1001.56075,185.900013 1001.48739,185.901082 C1001.41403,185.90215 1001.3556,185.952653 1001.35688,186.013881 C1001.35816,186.07511 1001.41867,186.123879 1001.49203,186.12281 L1001.49203,186.12281 Z M998.835007,186.12281 C998.908368,186.121742 998.9668,186.07124 998.96552,186.010011 C998.964239,185.948782 998.90373,185.900013 998.83037,185.901082 C998.757009,185.90215 998.698577,185.952653 998.699858,186.013881 C998.701138,186.07511 998.761647,186.123879 998.835007,186.12281 L998.835007,186.12281 Z" class="apple-glasses" stroke="#40484B" stroke-width="0.5" fill="#40484B"></path>
 			</g>
-			<g class="saqua">
+			<g class="sbooks"
+				init-with="p:[op:0, tro:center center, tr:translateX(50%) rotate(15deg)]"
+				when-r-props-enter="p:[opacity:0:1:250:easeOutSine:delay-250, transform:translateX(50%) rotate(15deg):translateX(0%) rotate(0deg):300:easeOutCubic easeOutExpo]:delay-250">
 	            <polygon class="saqua" stroke="#749E94" fill="#94CABE" points="1232 197 1232 212 1176 212 1176 197"></polygon>
 	            <polygon class="saqua" stroke="#749E94" fill="#749E95" points="1221 197 1221 212 1194 212 1194 197"></polygon>
 	            <path d="M1226.5,197.5 L1226.5,211.5" class="saqua" stroke="#749E94" ></path>
 	            <polygon class="saqua" stroke="#40484B" fill="#40484B" opacity="0.300000012" points="1232 205 1232 212.5 1176 212.5 1176 205"></polygon>
-			</g>
-			<g class="smaroon">
 	            <polygon class="smaroon" stroke="#CA94A2" fill="#623742" points="1229 185 1229 196.25 1178 196.25 1178 185"></polygon>
 	            <polygon class="smaroon" stroke="#CA94A2" fill="#CA94A1" points="1226.45 185 1226.45 196.25 1218.8 196.25 1218.8 185"></polygon>
 	            <path d="M1214.975,185.375 L1214.975,195.875" class="smaroon" stroke="#CA94A2" ></path>
