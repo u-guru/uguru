@@ -22,7 +22,7 @@ angular.module('uguru.shared.controllers')
 
     // afc.params.template = afc.element.objUrl.split('/').splice(afc.element.objUrl.split('/').length - $stateParams.comp.split('.').length).join('/')
     afc.params.template = afc.element.objUrl;
-    afc.params.defaults = {kf: getKFFromParams($stateParams), hidePlot: $stateParams.hidePlot === "true", stateName: $stateParams.state};
+    afc.params.defaults = {kf: getKFFromParams($stateParams),  toolbar:{}, hidePlot: $stateParams.hidePlot === "true", stateName: $stateParams.state};
     afc.params.formatted = 'p:[' + afc.params.raw + ']';
     afc.getDebugFormat = AnimationFrameService.getDebugFormat;
 
@@ -31,22 +31,29 @@ angular.module('uguru.shared.controllers')
         $scope.$apply();
 
         var stateName = $stateParams.state || 'on-init'
-        if (!$stateParams.select) {
-          $stateParams.select = '*'
-        }
 
-        var animContainer = document.querySelector('#anim-element');
+
+        var animContainer = document.querySelector('#anim-element:first-child');
+        console.log(animContainer)
         animContainer.classList.add('absolute', 'full-xy', 'bottom-0', 'flex-wrap-center')
         afc.element.dom = animContainer.querySelector($stateParams.select);
-        // var domCoords = afc.element.dom.getBoundingClientRect();
-        animContainer.innerHTML = ''
-        appendParentWithComputedHeight(animContainer, afc.element.dom)
-        // for (var i = 0; i < afc.element.dom.length; i++) {
-          afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.defaults);
-          afc.player = AnimationFrameService.getPlayer();
-          afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, afc.params.defaults);
+        if (!$stateParams.select) {
+          afc.element.dom = animContainer.firstChild;
+        }
 
-    })
+
+
+
+        animContainer.innerHTML = ''
+
+        appendParentWithComputedHeight(animContainer, afc.element.dom);
+
+
+
+        afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.defaults);
+        afc.player = AnimationFrameService.getPlayer();
+        afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, afc.params.defaults);
+    }, 100)
 
 
     function getKFFromParams(params) {
@@ -54,16 +61,20 @@ angular.module('uguru.shared.controllers')
     }
 
     function appendParentWithComputedHeight(container, element) {
-      $timeout(function() {
+
         var _window = $scope.root.window;
-        element = ElementService.scaleSvgCSS(element, _window, true, true).parentNode;
-      })
+
+
+
 
       var hasBounds = true;
       var isSvg = ElementService.isSVGElement(element.nodeName.toLowerCase());
+      console.log(element)
       if (isSvg) {
         element = ElementService.getSVGParent(element)
+        element = ElementService.scaleSvgCSS(element, _window, true, true);
       }
+
 
       while (hasBounds) {
         container.appendChild(element);
@@ -78,9 +89,26 @@ angular.module('uguru.shared.controllers')
         }
 
       }
+      console.log(element)
+
       element.classList.add('full-xy', 'absolute', 'flex-vertical-center', 'bottom-0')
+      var cloneElemContainer = document.querySelector('#focused-element')
+      if (cloneElemContainer) {
+
+
+
+              var isSvg = ElementService.isSVGElement(afc.element.dom.nodeName.toLowerCase());
+              if (isSvg) {
+                // console.log(clonedElem.paren)
+                clonedElem = ElementService.getSVGParent(afc.element.dom);
+                var clonedElem = clonedElem.cloneNode(true);
+              }
+              cloneElemContainer.appendChild(clonedElem);
+        }
       return element
     }
+
+
 
     function constructStateStrFromParams(params) {
       var animationShortcuts = RootService.customShortcuts.animProps;
@@ -99,13 +127,17 @@ angular.module('uguru.shared.controllers')
           }
         })
 
-        var urlSplit = params.template.split(':');
-        var dir = urlSplit[0];
 
-        var isHtml = params.template.indexOf('.html') > -1
-        var ext = isHtml && '.html' || '.tpl';
-        urlString = dir + '/templates/' + urlSplit[1].split('.').join("/").replace('/html', '').replace('/tpl', '') + ext;
-        afc.element = {objUrl:urlString};
+        if (params.template) {
+          var urlSplit = params.template.split(':');
+          var dir = urlSplit[0];
+
+          var isHtml = params.template.indexOf('.html') > -1
+          var ext = isHtml && '.html' || '.tpl';
+          urlString = dir + '/templates/' + urlSplit[1].split('.').join("/").replace('/html', '').replace('/tpl', '') + ext;
+          afc.element = {objUrl:urlString};
+        }
+
 
 
         return propArgs.join(',');
