@@ -1,5 +1,6 @@
 <section class="splash-faq splash-modal">
 	<header>
+		<div ng-include="root.base_url + 'preapp/templates/components/graphic/faq.html'"></div>
 		<a class="splash-exit mobile" ng-include="root.base_url + 'shared/templates/components/svg/main/down.html'"
 			init-default
 			on-click="s:[modal-close:public, faq-modal-close:public]"></a>
