@@ -110,6 +110,19 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     abstract: true,
     template: '<ui-view/>'
 })
+  .state('root.api.svg', {
+    parent: 'root.api',
+    name: 'root.api.svg',
+    url: '/svg',
+    abstract: true,
+    template: '<ui-view/>'
+  })
+  .state('root.api.svg.demo', {
+    parent: 'root.api.svg',
+    name: 'root.api.svg.demo',
+    url: '/demo',
+    templateUrl: 'admin/templates/api/svg.demo.html'
+  })
   .state('root.api.states.onKey', {
     parent: 'root.api.states',
     name: 'root.api.states.onKey',

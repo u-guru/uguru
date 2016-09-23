@@ -478,6 +478,9 @@ function DirectiveService($ionicViewSwitcher, $timeout, $state, UtilitiesService
     }
 
     function parseArgs(string_args, state_name, elem) {
+      if (window.location.href.indexOf('/admin/api/animations/prop/') > -1 && !elem[0].hasAttribute('player-control')) {
+        return {};
+      }
       string_args = UtilitiesService.replaceAll(string_args, ', ',  ',');
       string_args = UtilitiesService.replaceAll(string_args, '| ',  '| ');
       string_args = UtilitiesService.replaceAll(string_args, ' | ',  ' | ');
