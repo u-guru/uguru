@@ -18,7 +18,7 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
     //1. [x] Remove the id for page, keep fill/fill-rule
     //2. [x] Remove extraneous groups entirely
     //2.5 [x] // 1. Clarify global attributes + attribute values for the list [stroke-linecap] to applied group after the defs, strip any child that has itbefore tranversing global <g>, apply all necessary attributes clarified
-    //3. Go in order sequentially and create a group of the first child's attributes, for all subsequent siblings w/ same attributes, strip
+    //3. [x] Go in order sequentially and create a group of the first child's attributes, for all subsequent siblings w/ same attributes, strip
     //4. Replace all <uses> that reference, <path> in defs with
     //5. //3. [ ] Filter & replace all <use> Within the first group, sort all def references aside from filter for all types of elements, look if they exist in the defs, if so, replace.
     //-- Wrapup
@@ -47,7 +47,7 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
     }
 
     var globalAttr = {
-        'g': [{'stroke-linecap': 'round'}]
+        'g': [{'stroke-linecap': 'round', 'stroke-linejoin': 'round'}]
     }
 
     var cache = {
