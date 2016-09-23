@@ -254,7 +254,7 @@
 				</g>
 				<rect class="pier-1-bed" fill="#808389" x="205" y="234" width="60" height="18.5" rx="3"
 					init-with="p:[tro:center bottom, tr:scaleY(0)]"
-					when-pier-1-enter="p:[transform:scaleY(0):scaleY(1):250:easeOutBack]:delay-250"></rect>
+					when-pier-1-enter="p:[transform:scaleY(0):scaleY(1):100:easeOutBack]:delay-100"></rect>
 				<g init-with="p:[tro:left center, tr:scaleX(0)]"
 					when-pier-1-enter="p:[transform:scaleX(0):scaleX(1):750:easeInSine]">
 					<polyline class="pier-tunnel" stroke="#808389" stroke-width="3" fill="#808389" points="101.230469 184 16.5 184 16.5 194 101.230469 194"></polyline>
@@ -337,7 +337,7 @@
 			</g>
 	        <g class="pier-2" stroke="#808389" stroke-width="3"
 				init-default
-				when-pier-1-enter="s:[pier-2-enter:public:delay-750]">
+				when-pier-1-enter="s:[pier-2-enter:public:delay-500]">
 				<path d="M479,51.9942021 C479,50.3405499 480.337656,49 482.001482,49 L527.998518,49 C529.656191,49 531,50.343312 531,51.9942021 L531,69 L479,69 L479,51.9942021 L479,51.9942021 Z" class="pier-2-deck" fill="#808389"
 					init-with="p:[tro:center top, tr:scaleY(0)]"
 					when-pier-2-enter="p:[transform:scaleY(0):scaleY(1):250:easeOutBack]:delay-1250"></path>
@@ -372,7 +372,7 @@
 				</g>
 				<rect class="pier-2-bed" fill="#808389" x="475" y="234" width="60" height="18.5" rx="3"
 					init-with="p:[tro:center bottom, tr:scaleY(0)]"
-					when-pier-2-enter="p:[transform:scaleY(0):scaleY(1):250:easeOutBack]:delay-250"></rect>
+					when-pier-2-enter="p:[transform:scaleY(0):scaleY(1):100:easeOutBack]:delay-100"></rect>
 				<polyline class="pier-2-road-left" fill="#808389" points="505 184 370 184 370 194 505 194"
 					init-with="p:[tro:left center, tr:scaleX(0)]"
 				   when-pier-2-enter="p:[transform:scaleX(0):scaleX(1):750:easeInSine]"></polyline>
@@ -450,7 +450,7 @@
 			</g>
 	        <g class="pier-3" stroke="#808389" stroke-width="3"
 				init-default
-				when-pier-2-enter="s:[pier-3-enter:public:delay-1000]">
+				when-pier-2-enter="s:[pier-3-enter:public:delay-850]">
 				<path d="M749,51.9942021 C749,50.3405499 750.337656,49 752.001482,49 L797.998518,49 C799.656191,49 801,50.343312 801,51.9942021 L801,69 L749,69 L749,51.9942021 L749,51.9942021 Z" class="pier-3-deck" fill="#808389"
 					init-with="p:[tro:center top, tr:scaleY(0)]"
 					when-pier-3-enter="p:[transform:scaleY(0):scaleY(1):250:easeOutBack]:delay-1250"></path>
@@ -485,7 +485,7 @@
 				</g>
 				<rect class="pier-3-bed" fill="#808389" x="745" y="234" width="60" height="18.5" rx="3"
 					init-with="p:[tro:center bottom, tr:scaleY(0)]"
-					when-pier-3-enter="p:[transform:scaleY(0):scaleY(1):250:easeOutBack]:delay-250"></rect>
+					when-pier-3-enter="p:[transform:scaleY(0):scaleY(1):100:easeOutBack]:delay-100"></rect>
 				<polyline class="pier-3-road-left" fill="#808389" points="775 184 640 184 640 194 775 194"
 					init-with="p:[tro:left center, tr:scaleX(0)]"
 				   when-pier-3-enter="p:[transform:scaleX(0):scaleX(1):750:easeInSine]"></polyline>
@@ -598,7 +598,7 @@
 				</g>
 				<rect class="pier-4-bed" fill="#808389" x="1015" y="234" width="60" height="18.5" rx="3"
 					init-with="p:[tro:center bottom, tr:scaleY(0)]"
-					when-pier-4-enter="p:[transform:scaleY(0):scaleY(1):250:easeOutBack]:delay-250"></rect>
+					when-pier-4-enter="p:[transform:scaleY(0):scaleY(1):100:easeOutBack]:delay-100"></rect>
 				<polyline class="pier-4-road-left" fill="#808389" points="1045 184 910 184 910 194 1045 194"
 					init-with="p:[tro:left center, tr:scaleX(0)]"
 					when-pier-4-enter="p:[transform:scaleX(0):scaleX(1):750:easeInSine]"></polyline>
@@ -718,7 +718,7 @@
 		</g>
         <g class="pier"
 			init-default
-			when-pier-5-left-enter="s:[ferry-enter:public]">
+			when-pier-4-left-enter="s:[ferry-enter:public]:delay-500">
 			<g class="flag"
 				init-with="p:[op:0, tro:20% 80%, tr:rotate(90deg)]"
 				when-ferry-clock-enter="p:[opacity:0:1:500:easeOutSine, transform:rotate(90deg):rotate(0deg):500:easeOutCirc]:delay-700 | s:[flag-wave:public]:delay-700"
