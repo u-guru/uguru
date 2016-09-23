@@ -565,9 +565,9 @@
 // projector slide
 .projector-slide {
 	position: relative;
-	width: 90%!important;
-	height: 80%;
+		width: 90%!important;
 	max-width: 900px;
+	height: 80%;
 	max-height: 600px;
 	@media screen and (min-height: 900px) {
 		max-width: 1080px;
@@ -670,6 +670,15 @@
 		left: 50%;
 		margin-left: -30.5px;
 	}
+}
+.projector-guru-body {
+	position: absolute;
+	top: 50%;
+	margin-top: -225px;
+	left: -50px;
+	z-index: 10;
+	width: 300px;
+	height: 450px;
 }
 
 // postits
