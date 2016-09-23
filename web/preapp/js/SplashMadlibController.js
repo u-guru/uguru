@@ -8,10 +8,9 @@ angular.module('uguru.preApp')
   'CategoryService',
   'UniversityService',
   'ContentService',
-  'SpecService',
   'RootService',
   'UtilitiesService',
-  function($scope, $state, $timeout, CategoryService, UniversityService, ContentService, SpecService, RootService, UtilitiesService) {
+  function($scope, $state, $timeout, CategoryService, UniversityService, ContentService, RootService, UtilitiesService) {
     var madlib = this;
 
 

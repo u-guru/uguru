@@ -5,14 +5,12 @@ angular.module('uguru.preApp')
   '$scope',
   '$state',
   '$timeout',
-  'SpecService',
-  function($scope, $state, $timeout, SpecService) {
+  function($scope, $state, $timeout) {
     var sidebar = this;
 
     sidebar.close = sidebarCloseFunc;
     sidebar.activate = true;
 
-    SpecService.initSpec('sidebar', $scope);
 
     function sidebarCloseFunc() {
         var splashSidebarParent = document.querySelector('#splash-sidebar')

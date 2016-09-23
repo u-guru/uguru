@@ -103,11 +103,10 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       var player = {rAF: frame, schedule:{upcoming:[], streams:[], status:{direction: 'f', iter:1, fps:60}, queued:[]}, tick:0, activeStreamIDs:[]};
       player.pause = function(player) {
         return function() {
-          console.log('pausing...')
           player.rAF.cancel(player.rAF_id);
           player.rAF_id  = 0;
         };
-      }(player)
+      }(player);
       player.play = function() {
 
           if (!player.animFunc) {
@@ -799,7 +798,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               timeline.props[prop] = [];
             }
             timeline.props[propNames[i]].push(transformSingleProp);
-        })
+        });
         // for (prop in result[props])
         // console.log(timeline.events)
 
