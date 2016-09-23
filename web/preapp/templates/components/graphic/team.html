@@ -816,8 +816,8 @@
 					<path d="M148,168 L148,184" class="pier-1-left-5"
 						init-with="p:[op:0, sda:16, sdo:-16, t:stroke-dasharray 300ms ease-out, tro:center center, tr:rotate(180deg)]"
 						when-pier-1-left-lights="p:[op:1, sda:1#3, stroke-dashoffset:-16:0:300:easeOutCirc]:delay-350 | s:[pier-1-left-5-exit:public]:delay-650"
-						when-pier-1-left-5-exit="p:[op:1, sda:16#16, stroke-dashoffset:0:-16:300:easeOutCirc] | s:[pier-1-left-5-enter:public:delay-650]"
-						when-pier-1-left-5-enter="p:[op:1, sda:1#3, stroke-dashoffset:-16:0:300:easeOutCirc] | s:[pier-1-left-5-exit:public:delay-650]"></path>
+						when-pier-1-left-5-exit="p:[op:1, sda:16#16, stroke-dashoffset:0:-16:300:easeOutCirc] | s:[pier-1-left-5-enter:public:delay-550]"
+						when-pier-1-left-5-enter="p:[op:1, sda:1#3, stroke-dashoffset:-16:0:300:easeOutCirc] | s:[pier-1-left-5-exit:public:delay-550]"></path>
 
 					<path d="M160,161 L160,184" class="pier-1-left-4"
 						init-with="p:[op:0, sda:23, sdo:-23, t:stroke-dasharray 350ms ease-out, tro:center center, tr:rotate(180deg)]"
@@ -848,28 +848,52 @@
 					when-pier-1-right-enter="s:[pier-1-right-lights:public:delay-500]">
 					<path d="M370,177 L370,184" class="pier-1-right-9"
 						init-with="p:[op:0, sda:7, sdo:-7, t:stroke-dasharray 250ms ease-out, tro:center center, tr:rotate(180deg)]"
-						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:7:0:250:easeOutCirc]:delay-750"></path>
+						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:7:0:250:easeOutCirc]:delay-750 | s:[pier-1-right-9-exit:public]:delay-1000"
+						when-pier-1-right-9-exit="p:[op:1, sda:7#7, stroke-dashoffset:0:-7:250:easeOutCirc] | s:[pier-1-right-9-enter:public:delay-500]"
+						when-pier-1-right-9-enter="p:[op:1, sda:1#3, stroke-dashoffset:-7:0:250:easeOutCirc] | s:[pier-1-right-9-exit:public:delay-500]"></path>
+
 					<path d="M358,177 L358,184" class="pier-1-right-8"
 						init-with="p:[op:0, sda:7, sdo:-7, t:stroke-dasharray 250ms ease-out, tro:center center, tr:rotate(180deg)]"
-						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:7:0:250:easeOutCirc]:delay-650"></path>
+						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:7:0:250:easeOutCirc]:delay-650 | s:[pier-1-right-8-exit:public]:delay-900"
+						when-pier-1-right-8-exit="p:[op:1, sda:7#7, stroke-dashoffset:0:-7:250:easeOutCirc] | s:[pier-1-right-8-enter:public:delay-500]"
+						when-pier-1-right-8-enter="p:[op:1, sda:1#3, stroke-dashoffset:-7:0:250:easeOutCirc] | s:[pier-1-right-8-exit:public:delay-500]"></path>
+
 					<path d="M346,176 L346,184" class="pier-1-right-7"
 						init-with="p:[op:0, sda:8, sdo:-8, t:stroke-dasharray 250ms ease-out, tro:center center, tr:rotate(180deg)]"
-						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:8:0:250:easeOutCirc]:delay-550"></path>
+						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:8:0:250:easeOutCirc]:delay-550 | s:[pier-1-left-7-exit:public]:delay-800"
+						when-pier-1-left-7-exit="p:[op:1, sda:8#8, stroke-dashoffset:0:-8:250:easeOutCirc] | s:[pier-1-left-7-enter:public:delay-500]"
+						when-pier-1-left-7-enter="p:[op:1, sda:1#3, stroke-dashoffset:-8:0:250:easeOutCirc] | s:[pier-1-left-7-exit:public:delay-500]"></path>
+
 					<path d="M334,173 L334,184" class="pier-1-right-6"
 						init-with="p:[op:0, sda:11, sdo:-11, t:stroke-dasharray 300ms ease-out, tro:center center, tr:rotate(180deg)]"
-						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:11:0:300:easeOutCirc]:delay-450"></path>
+						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:11:0:300:easeOutCirc]:delay-450 | s:[pier-1-left-6-exit:public]:delay-750"
+						when-pier-1-left-6-exit="p:[op:1, sda:11#11, stroke-dashoffset:0:-11:300:easeOutCirc] | s:[pier-1-left-6-enter:public:delay-550]"
+						when-pier-1-left-6-enter="p:[op:1, sda:1#3, stroke-dashoffset:-11:0:300:easeOutCirc] | s:[pier-1-left-6-exit:public:delay-550]"></path>
+
 					<path d="M322,168 L322,184" class="pier-1-right-5"
 						init-with="p:[op:0, sda:16, sdo:-16, t:stroke-dasharray 300ms ease-out, tro:center center, tr:rotate(180deg)]"
-						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:16:0:300:easeOutCirc]:delay-350"></path>
+						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:16:0:300:easeOutCirc]:delay-350 | s:[pier-1-left-5-exit:public]:delay-650"
+						when-pier-1-right-5-exit="p:[op:1, sda:16#16, stroke-dashoffset:0:-16:300:easeOutCirc] | s:[pier-1-right-5-enter:public:delay-550]"
+						when-pier-1-right-5-enter="p:[op:1, sda:1#3, stroke-dashoffset:-16:0:300:easeOutCirc] | s:[pier-1-right-5-exit:public:delay-550]"></path>
+
 					<path d="M310,161 L310,184" class="pier-1-right-4"
 						init-with="p:[op:0, sda:23, sdo:-23, t:stroke-dasharray 350ms ease-out, tro:center center, tr:rotate(180deg)]"
-						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:23:0:350:easeOutCirc]:delay-250"></path>
+						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:23:0:350:easeOutCirc]:delay-250 | s:[pier-1-left-4-exit:public]:delay-600"
+						when-pier-1-right-4-exit="p:[op:1, sda:23#23, stroke-dashoffset:0:-23:350:easeOutCirc] | s:[pier-1-right-4-enter:public:delay-600]"
+						when-pier-1-right-4-enter="p:[op:1, sda:1#3, stroke-dashoffset:-23:0:350:easeOutCirc] | s:[pier-1-right-4-exit:public:delay-600]"></path>
+
 					<path d="M298,151 L298,184" class="pier-1-right-3"
 						init-with="p:[op:0, sda:33, sdo:-33, t:stroke-dasharray 400ms ease-out, tro:center center, tr:rotate(180deg)]"
-						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:33:0:400:easeOutCirc]:delay-150"></path>
+						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:33:0:400:easeOutCirc]:delay-150 | s:[pier-1-right-3-exit:public]:delay-550"
+						when-pier-1-right-3-exit="p:[op:1, sda:33#33, stroke-dashoffset:0:-33:400:easeOutCirc] | s:[pier-1-right-3-enter:public:delay-650]"
+						when-pier-1-right-3-enter="p:[op:1, sda:1#3, stroke-dashoffset:-33:0:400:easeOutCirc] | s:[pier-1-right-3-exit:public:delay-650]"></path>
+
 					<path d="M286,137 L286,184" class="pier-1-right-2"
 						init-with="p:[op:1, sda:47, sdo:-47, t:stroke-dasharray 450ms ease-out, tro:center center, tr:rotate(180deg)]"
-						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:47:0:450:easeOutCirc]:delay-50"></path>
+						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:47:0:450:easeOutCirc]:delay-50 | s:[pier-1-right-2-exit:public]:delay-500"
+						when-pier-1-right-2-exit="p:[op:1, sda:47#47, stroke-dashoffset:0:-47:450:easeOutCirc] | s:[pier-1-right-2-enter:public:delay-700]"
+						when-pier-1-right-2-enter="p:[op:1, sda:1#3, stroke-dashoffset:-47:0:450:easeOutCirc] | s:[pier-1-right-2-exit:public:delay-700]"></path>
+
 					<path d="M274,117 L274,184" class="pier-1-right-1"
 						init-with="p:[op:1, sda:67, sdo:-67, t:stroke-dasharray 550ms ease-out, tro:center center, tr:rotate(180deg)]"
 						when-pier-1-right-lights="p:[op:1, sda:1#3, stroke-dashoffset:67:0:550:easeOutCirc]"></path>
