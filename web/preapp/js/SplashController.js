@@ -8,9 +8,8 @@ angular.module('uguru.preApp', ['ionic'])
   '$rootScope',
   'CategoryService',
   'UniversityService',
-  'SpecService',
   'ContentService',
-  function($scope, $state, $timeout, $rootScope, CategoryService, UniversityService, SpecService, ContentService) {
+  function($scope, $state, $timeout, $rootScope, CategoryService, UniversityService, ContentService) {
     // Listen for the event.
     var splash = this;
     splash.state = {};
