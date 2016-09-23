@@ -213,25 +213,70 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
         }
 
         var groupElemToIgnore = ['id', 'class', 'd'];
+
         getUniqueChildDict(firstG, groupElemToIgnore);
 
         function getUniqueChildDict(elem, ignore_attr) {
             var children = elem.children;
+
             var childrenLength = children.length;
             var childDict = {};
-            var deadEnd = true;
+            var currentChunkStr = constructUniqueIDString(children[0], ignore_attr);
             var uniqueStr;
+            var currentChunkArr = [];
+            var groupChunks = [];
             for (var i = 0; i < childrenLength; i++) {
                 var iChild = children[i];
-                if (deadEnd) {
-                    uniqueStr = constructUniqueIDString(iChild, ignore_attr)
-                    if (!uniqueStr.length) {
-
-                    }
+                uniqueStr = constructUniqueIDString(iChild, ignore_attr)
+                if (uniqueStr !== currentChunkStr) {
+                    groupChunks.push({elems: currentChunkArr.slice(), attrStr: currentChunkStr + ""});
+                    currentChunkStr = uniqueStr;
+                    currentChunkArr = [{elem: iChild, attrStr: currentChunkStr + ""}];
+                    continue;
+                } else {
+                    currentChunkArr.push({elem: iChild, attrStr: currentChunkStr + ""});
                 }
             };
 
+            var stripAttr = [];
+            globalAttr['g'].forEach(function(kv, i) {for (k in kv) {stripAttr.push(k)}});
+            var elemToAppend = [];
+            for (var i = 0; i < groupChunks.length; i++) {
+                iChunk = groupChunks[i];
+                var g = document.createElementNS('http://www.w3.org/2000/svg',"g");
+                var attrStrSplit = iChunk.attrStr.split(',');
+                attrStrSplit.forEach(function(attr, i) {
+                    var attrSplit = attr.split('|');
+                    var key = attrSplit[0];
+                    if (!key.length) return;
+                    if (stripAttr.indexOf(key) > -1) {
+                        return;
+                    } else {
+                        var value = attrSplit[1]
+                        g.setAttribute(key, value);
+                    }
+                })
+                if (iChunk.elems && iChunk.elems.length) {
+                    iChunk.elems.forEach(function(e, i) {
+                        attrStr = e.attrStr.split(',');
+                        attrStr.forEach(function(attr_str, j) {
+                            var kv = attr_str.split('|');
+                            if (kv.length > 1) {
+                                e.elem.removeAttribute(kv[0]);
+                            }
+                        })
+                        g.appendChild(e.elem);
+                    })
+                }
+                elemToAppend.push(g);
+            }
+            firstG.innerHTML = '';
+            elemToAppend.forEach(function(elem, i) {
+                firstG.appendChild(elem);
+            })
+
             function constructUniqueIDString(elem, ignore_attr) {
+
                 var attrLength = elem.attributes.length;
                 var resultStr = '';
                 for (var i = 0; i < attrLength; i++) {
@@ -244,7 +289,6 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
                 return resultStr.substring(0, resultStr.length - 1).trim();
             }
         }
-        console.log(elem)
 
         return elem;
     }
