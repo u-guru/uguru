@@ -2,7 +2,6 @@
 	<!-- HEADER -->
 
     <header class='full-x bg-campus-50p relative overflow-visible'>
-        <h1 class='txt-center uppercase txt-28 weight-900 p15top-p15x' ng-if='afc.args.property || afc.player.debug.stateName'>{{afc.player.debug.stateName || afc.args.property}}</h1>
         <div>
             <ul class='flex full-x p15-grid txt-center' ng-if="afc.player.debug.showHeader">
                 <li class="full-x">
@@ -38,8 +37,12 @@
 					</div>
                 </li>
             </ul>
-			<div style="margin-top: -15px">
+			<div style="margin-top: -15px" class='relative ugrid-2'>
 				<ul class='flex-wrap-center-vertical p15-grid'>
+                    <li><h2 class='uppercase weight-700 opacity-50p txt-14'>State</h2></li>
+                    <li>
+                        <span class='chip bg-campus'>{{afc.player.debug.stateName}}</span>
+                    </li>
 					<li><h2 class='uppercase weight-700 opacity-50p txt-14'>Properties</h2></li>
                     <li ng-click='afc.player.debug.toggleAllPlots()'>
                         <span class='chip bg-auburn-50p' ng-if='afc.player.debug.propArr[0].show'> hide </span>
@@ -50,6 +53,12 @@
 							{{prop_dict.name}} ({{prop_dict.streams.length}})
 						</span>
 					</li>
+                    <li>
+                        <h2 class='uppercase weight-700 opacity-50p txt-14'>Element</h2>
+                    </li>
+                    <li>
+                        <!-- <span id='focused-element'></span> -->
+                    </li>
 				</ul>
 			</div>
         </div>

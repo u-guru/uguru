@@ -13,6 +13,7 @@ function ElementService($timeout, $state) {
       }
 
       function scaleSvgCSS(svg_elem, _window, absolute) {
+        console.log('element', svg_elem);
         var viewBStr = svg_elem.getAttribute('viewBox');
         var viewBStrSplit = viewBStr.split(' ');
 
@@ -29,6 +30,7 @@ function ElementService($timeout, $state) {
           svg_elem.classList.add('absolute');
           svg_elem.style.left = _window.width * 0.4  + 'px';
         }
+
 
         return svg_elem;
       }

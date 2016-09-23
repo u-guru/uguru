@@ -21,6 +21,36 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    angular.module('uguru.shared.directives.base.components')
+    .directive("render", ["AdminSVGRenderService", "$compile", function(AdminSVGRenderService, $compile) {
+        return {
+            restrict: 'E',
+            templateUrl:function(element, attr) {
+                var srcSplit = attr.src.split('.');
+                var ending = '.' + srcSplit[srcSplit.length - 1];
+                return srcSplit.slice(0, srcSplit.length - 1).join('/') + ending;
+            },
+            transclude:true,
+            terminal:true,
+            compile: function(element, attr, transclude) {
+                elem = AdminSVGRenderService.parseRawSVG(element.children());
+                element.parent().contents(elem);
+                console.log(element.children()[0])
+                // return {
+                //     pre:function (lScope, lElem, lAttr) {
+
+                //          transclude(lScope, function(clone, innerScope) {
+                //             lElem.contents(clone);
+                //             // lElem[0].innerHTML = clone[0].innerHTML;
+                //             // lElem.html(clone.html())// = .innerHTML;
+                //             // $compile(lElem)(lScope);
+                //         })
+                //     },
+                //     post: angular.noop
+                // }
+            }
+        }
+    }])
     .directive("data", ["$compile", 'XHRService', function($compile, XHRService) {
         return {
             restrict: 'A',
