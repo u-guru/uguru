@@ -45,7 +45,18 @@ function UtilitiesService($rootScope, $compile, $timeout) {
         calcScrollOffset: calcScrollOffset,
         addClassToElemDelay: addClassToElemDelay,
         countAndSplitLines: countAndSplitLines,
-        constructImportUrlFromObj: constructImportUrlFromObj
+        constructImportUrlFromObj: constructImportUrlFromObj,
+        getArrayOfDecimals: getArrayOfDecimals
+    }
+
+    function getArrayOfDecimals(value) {
+          var r = /[\d*\.?\d-*]+/g;
+          var m;
+          var resultArr = [];
+          while ((m = r.exec(value)) != null) {
+            resultArr.push(m[0]);
+          }
+          return resultArr
     }
 
     function constructImportUrlFromObj(str, type) {

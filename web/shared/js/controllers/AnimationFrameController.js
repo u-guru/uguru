@@ -20,7 +20,7 @@ angular.module('uguru.shared.controllers')
     afc.params = {formatted: '', raw: ''}
     afc.params.raw = constructStateStrFromParams($stateParams);
 
-    // afc.params.template = afc.element.objUrl.split('/').splice(afc.element.objUrl.split('/').length - $stateParams.comp.split('.').length).join('/')
+
     afc.params.template = afc.element.objUrl;
     afc.params.defaults = {kf: getKFFromParams($stateParams),  toolbar:{}, hidePlot: $stateParams.hidePlot === "true", stateName: $stateParams.state};
     afc.params.formatted = 'p:[' + afc.params.raw + ']';
@@ -33,20 +33,30 @@ angular.module('uguru.shared.controllers')
         var stateName = $stateParams.state || 'on-init'
 
 
-        var animContainer = document.querySelector('#anim-element:first-child');
-        console.log(animContainer)
+        var animContainer = document.querySelector('#anim-element');
+
         animContainer.classList.add('absolute', 'full-xy', 'bottom-0', 'flex-wrap-center')
         afc.element.dom = animContainer.querySelector($stateParams.select);
-        if (!$stateParams.select) {
-          afc.element.dom = animContainer.firstChild;
+
+        if (ElementService.isSVGElement(afc.element.dom.nodeName)) {
+
+
+          // var parentSVG = ElementService.getSVGParent(afc.element.dom);
+          var parentSVG = afc.element.dom.nearestViewportElement;
+          parentSVG.style.height = $scope.root.window.height/2 + 'px';
+          parentSVG.style.width = $scope.root.window.width/2 + 'px';
+          animContainer.innerHTML = '';
+          animContainer.appendChild(parentSVG)
+          console.log(animContainer)
         }
 
 
 
 
-        animContainer.innerHTML = ''
 
-        appendParentWithComputedHeight(animContainer, afc.element.dom);
+        animContainer.innerHTML = ''
+        animContainer.appendChild(afc.element.dom)
+        // appendParentWithComputedHeight(animContainer, afc.element.dom);
 
 
 
@@ -126,7 +136,7 @@ angular.module('uguru.shared.controllers')
               })
           }
         })
-
+        console.log($stateParams)
 
         if (params.template) {
           var urlSplit = params.template.split(':');

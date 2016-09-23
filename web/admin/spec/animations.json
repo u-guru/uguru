@@ -46,6 +46,7 @@
             }
         },
         "property options": {
+            "hide": true,
             "all": ["name", "start", "end", "easing func", "delay", "iterations", "direction"],
             "special":{
                 "all": ["reverse", "at t=X"]

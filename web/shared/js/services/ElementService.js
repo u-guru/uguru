@@ -36,6 +36,7 @@ function ElementService($timeout, $state) {
       }
 
       function isSVGElement(name) {
+        name = name.toLowerCase();
         return ['path', 'g', 'rect', 'svg', 'polygon', 'line', 'circle'].indexOf(name) > -1;
       }
       function getSVGParent(elem) {

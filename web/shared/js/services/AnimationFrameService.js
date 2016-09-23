@@ -736,6 +736,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         if (debug.stateName) {
           var stateNameStr = elem.getAttribute(stateName);
+          console.log(stateNameStr)
           var stateNameStr = stateNameStr.split('[')[1].split('|')[0].split(']')[0].trim()
           var stateNameStrSplit = [];
           stateNameStr.split(',').forEach(function(stream, i) {
@@ -798,6 +799,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               duration: iPropObj.duration
             }
             var offset = iPropObj.delay;
+            console.log(iPropObj)
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
             if (!(iPropObj.property in timeline.props)) {
