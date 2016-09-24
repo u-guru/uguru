@@ -186,10 +186,10 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
             }
         })
 
-        var ordering_arr = ['filter,path,circle,rect', 'id'];
+        var ordering_arr = ['filter,path,circle,rect,text', 'id'];
 
         _def.childNodes.forEach(function(child, i) {
-            var nodeName = child.nodeName.toLowerCase().replace('#', '');
+            var nodeName = child.nodeName.toLowerCase()
             if (ordering_arr[0].split(',').indexOf(nodeName) === -1) {
                 ordering_arr[0] = ordering_arr[0] + ',' + nodeName;
             }
@@ -224,7 +224,7 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
             })
         }
 
-        var groupElemToIgnore = ['id', 'class', 'd', 'points', 'x', 'y', 'width', 'height', 'cx', 'cy', 'r', 'rx', 'cr'];
+        var groupElemToIgnore = ['id', 'class', 'd', 'transform', 'points', 'x', 'y', 'width', 'height', 'cx', 'cy', 'r', 'rx', 'cr'];
         if (firstG.children.length > 1 && elemChildrenHasConsecutiveUniquePatterns(firstG, groupElemToIgnore)) {
 
             getUniqueChildDict(firstG, groupElemToIgnore);
