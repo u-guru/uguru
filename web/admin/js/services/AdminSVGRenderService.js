@@ -224,7 +224,7 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
             })
         }
 
-        var groupElemToIgnore = ['id', 'class', 'd'];
+        var groupElemToIgnore = ['id', 'class', 'd', 'points'];
         if (firstG.children.length > 1 && elemChildrenHasConsecutiveUniquePatterns(firstG, groupElemToIgnore)) {
 
             getUniqueChildDict(firstG, groupElemToIgnore);
