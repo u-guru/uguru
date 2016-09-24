@@ -275,7 +275,6 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
                 iChunk = groupChunks[i];
                 var g = document.createElementNS('http://www.w3.org/2000/svg',"g");
                 var attrStrSplit = iChunk.attrStr.split(',');
-                console.log(attrStrSplit);
                 attrStrSplit.forEach(function(attr, i) {
                     var attrSplit = attr.split('|');
                     var key = attrSplit[0];
