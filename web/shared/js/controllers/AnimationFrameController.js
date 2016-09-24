@@ -136,7 +136,6 @@ angular.module('uguru.shared.controllers')
               })
           }
         })
-        console.log($stateParams)
 
         if (params.template) {
           var urlSplit = params.template.split(':');

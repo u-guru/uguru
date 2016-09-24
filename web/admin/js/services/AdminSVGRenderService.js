@@ -275,6 +275,7 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
                 iChunk = groupChunks[i];
                 var g = document.createElementNS('http://www.w3.org/2000/svg',"g");
                 var attrStrSplit = iChunk.attrStr.split(',');
+                console.log(attrStrSplit);
                 attrStrSplit.forEach(function(attr, i) {
                     var attrSplit = attr.split('|');
                     var key = attrSplit[0];
@@ -283,7 +284,9 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
                         return;
                     } else {
                         var value = attrSplit[1]
-                        g.setAttribute(key, value);
+                        if (key && value && key.length && value.length) {
+                            g.setAttribute(key, value);
+                        }
                     }
                 })
                 if (iChunk.elems && iChunk.elems.length) {
