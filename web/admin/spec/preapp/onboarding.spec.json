@@ -4,21 +4,15 @@
     "views": {
 		"general": {
 			"static": [
-				"On desktop, change guru head to tour guru w/body and move to left side of projector",
+				"On desktop, change guru head to tour guru w/body and move to left side of projector --> fit together",
 				"Adjust projector static to scale evenly",
-				"Resize projector to fit onboarding navigation underneath"
+				"Resize projector to fit onboarding navigation underneath",
+				"Revamp student card, w/ spec animations"
 			]
 		},
-        "access": {
+		"universitySearch": {
 			"static": [
-				"Convert input to look more like our border inputs",
-				"Keep buttons on one line"
-			]
-		},
-		"account": {
-			"static": [
-				"Reformat inputs to make a one-at-a-time form",
-				"Give buttons color, i.e. Fscebook blue"
+				"Replace border inputs with updated"
 			]
 		},
 		"demographic": {
@@ -27,16 +21,44 @@
 				"3x2 instead of 2x4"
 			]
 		},
-		"universitySearch": {
-			"static": [
-				"Replace border inputs with updated"
-			]
-		},
 		"courseSearch": {
 			"static": [
 				"Use student card instead of backpack",
 				"Replace border inputs with updated"
 			]
+		},
+		"account": {
+			"static": [
+				"Reformat inputs to make a one-at-a-time form",
+				"Give buttons color, i.e. Fscebook blue"
+			]
+		},
+        "access": {
+			"static": [
+				"Convert input to look more like our border inputs",
+				"Keep buttons on one line"
+			]
 		}
-    }
+    },
+	"deliverables": {
+		"Revamping layout": [
+			"Resize and position guru to hold card. 240x150",
+			"Placeholder guru to balance out layout"
+		],
+		"Revamp student card": [
+			"Default colors when school isn't selected",
+			"Rearrange info to correspond with views. Add access",
+			"Spec base animation, then view animations"
+		]
+	},
+	"moodboard": {
+		"animations": [
+			"https://onlycoin.com/",
+			"https://dribbble.com/shots/2416409-The-Santa-s-App-OnBoarding",
+			"https://dribbble.com/shots/2663323-Zing-Play-Onboarding-Screens-Animated-version",
+			"https://dribbble.com/shots/2801646-Onboarding-GIFs",
+			"https://dribbble.com/shots/2458194-Snapseed-RAW-Photo-Editing",
+			"https://dribbble.com/shots/2308138-Google-Keep-Warm-Welcome"
+		]
+	}
 }
