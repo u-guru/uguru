@@ -5170,18 +5170,18 @@ a.credit-card {
       height: 100%;
       border-radius: 10px;
       background-repeat: no-repeat;
-      background-position: -50% 50%;
-      background-size: 240px 240px; }
+      background-position: -120px 50%;
+      background-size: 240px 240px;
+      opacity: 0.25; }
     .student-card .school-id-inside .school-id-top {
-      position: relative;
       height: 30%;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       background-color: #8A9EA3; }
       .student-card .school-id-inside .school-id-top .user-icon {
-        z-index: 9;
         position: absolute;
-        bottom: -32px;
+        z-index: 10;
+        top: calc(30% - 32px);
         left: 15px;
         width: 64px;
         height: 64px;
@@ -5199,8 +5199,6 @@ a.credit-card {
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
-      position: relative;
-      z-index: 1;
       height: 70%;
       background: white;
       border-bottom-left-radius: 10px;
@@ -5208,6 +5206,9 @@ a.credit-card {
       padding: 10px 15px;
       text-align: right;
       line-height: 1.1; }
+      .student-card .school-id-inside .school-id-bottom > div {
+        position: relative;
+        z-index: 10; }
       .student-card .school-id-inside .school-id-bottom * {
         color: #40484B; }
       .student-card .school-id-inside .school-id-bottom h1, .student-card .school-id-inside .school-id-bottom h2 {
