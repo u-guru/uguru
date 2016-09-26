@@ -5163,27 +5163,31 @@ a.credit-card {
     height: 100%; }
     .student-card .school-id-inside .school-id-bg {
       position: absolute;
-      z-index: 0;
+      z-index: 10;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      border-radius: 10px; }
+      border-radius: 10px;
+      background-repeat: no-repeat;
+      background-position: -50% 50%;
+      background-size: 240px 240px; }
     .student-card .school-id-inside .school-id-top {
       position: relative;
-      z-index: 10;
       height: 30%;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
-      background-color: #69B3A5; }
+      background-color: #8A9EA3; }
       .student-card .school-id-inside .school-id-top .user-icon {
+        z-index: 9;
         position: absolute;
         bottom: -32px;
         left: 15px;
         width: 64px;
         height: 64px;
         border-width: 2px;
-        background-color: white; }
+        background-color: white;
+        border-color: #8A9EA3; }
     .student-card .school-id-inside .school-id-bottom {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -5198,7 +5202,7 @@ a.credit-card {
       position: relative;
       z-index: 1;
       height: 70%;
-      background: rgba(255, 255, 255, 0.8);
+      background: white;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
       padding: 10px 15px;
@@ -5261,7 +5265,7 @@ a.credit-card {
           justify-content: center;
           width: 25px;
           height: 24px;
-          background: #69B3A5;
+          background: #8A9EA3;
           color: white;
           font-size: 12px;
           margin: 0 10px; }
@@ -14761,9 +14765,13 @@ input[type=range] {
 .projector-slide {
   position: relative;
   width: 90% !important;
-  max-width: 900px;
   height: 80%;
-  max-height: 600px; }
+  max-width: 750px;
+  max-height: 500px; }
+  @media screen and (min-height: 750px) {
+    .projector-slide {
+      max-width: 900px;
+      max-height: 600px; } }
   @media screen and (min-height: 900px) {
     .projector-slide {
       max-width: 1080px;
@@ -14870,8 +14878,9 @@ input[type=range] {
 .projector-guru-body {
   position: absolute;
   top: 50%;
-  margin-top: -225px;
-  left: -50px;
+  margin-top: -200px;
+  left: -25%;
+  margin-left: 60px;
   z-index: 10;
   width: 300px;
   height: 450px; }
