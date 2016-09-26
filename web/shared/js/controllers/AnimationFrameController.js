@@ -27,14 +27,9 @@ angular.module('uguru.shared.controllers')
     afc.getDebugFormat = AnimationFrameService.getDebugFormat;
 
     $timeout(function() {
-
         $scope.$apply();
-
         var stateName = $stateParams.state || 'on-init'
-
-
         var animContainer = document.querySelector('#anim-element');
-
         animContainer.classList.add('absolute', 'full-xy', 'bottom-0', 'flex-wrap-center')
         afc.element.dom = animContainer.querySelector($stateParams.select);
 
@@ -136,7 +131,6 @@ angular.module('uguru.shared.controllers')
               })
           }
         })
-        console.log($stateParams)
 
         if (params.template) {
           var urlSplit = params.template.split(':');

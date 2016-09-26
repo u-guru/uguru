@@ -65,6 +65,7 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
         var elemChildren = elem.childNodes;
         var elemOrder = ordering_arr[0].split(',');
         var elemDict = {};
+
         elemOrder.forEach(function(elem_type, i) {
             elemDict[elem_type] = [];
             for (var j = 0; j < elemChildren.length; j++) {
@@ -107,11 +108,16 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
 
     function parseSVG(elem) {
         _elem = elem[0];
+        _def = _elem.querySelector('defs');
+        if (!_def) {
+
+            _elem.appendChild(document.createElementNS('http://www.w3.org/2000/svg',"def"));
+        }
         var attr = _elem.attributes;
         var ns = _elem.getAttribute('xmlns');
         var uniqueGIDs = ['white', 'glow'];
         var allFilters = _elem.querySelectorAll('filter');
-        var defParent = allFilters[0].parentNode;
+        // var defParent = allFilters[0].parentNode;
         var allUses = _elem.querySelectorAll('use');
         var allGs = _elem.querySelectorAll('g');
 
@@ -162,7 +168,7 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
                 filter.setAttribute('id', 'filter-' + (cache.filter.elem.length + 1));
                 cache.filter.elem.push(filter);
             } else {
-                defParent.removeChild(filter);
+                _def.removeChild(filter);
             }
         })
 
@@ -180,9 +186,15 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
             }
         })
 
-        _def = _elem.querySelector('defs');
+        var ordering_arr = ['filter,path,circle,rect,text', 'id'];
 
-        var ordering_arr = ['filter,path', 'id'];
+        _def.childNodes.forEach(function(child, i) {
+            var nodeName = child.nodeName.toLowerCase()
+            if (ordering_arr[0].split(',').indexOf(nodeName) === -1) {
+                ordering_arr[0] = ordering_arr[0] + ',' + nodeName;
+            }
+        })
+        console.log(ordering_arr);
         orderChildrenByType(_def, ordering_arr)
 
         var firstG = _elem.querySelector('g');
@@ -201,7 +213,7 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
                 firstG.removeAttributeNS(null, attr_rm);
             })
         }
-        if (firstG.children.length === 1 && firstG.children[0].nodeName.toLowerCase() === 'g') {
+        if (firstG.children.length === 1 && firstG.children[0].attributes.length === 1 && firstG.children[0].nodeName.toLowerCase() === 'g') {
             firstG.innerHTML = firstG.children[0].innerHTML;
         }
         for (elem_type in globalAttr) {
@@ -212,23 +224,41 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
             })
         }
 
-        var groupElemToIgnore = ['id', 'class', 'd'];
+        var groupElemToIgnore = ['id', 'class', 'd', 'transform', 'points', 'x', 'y', 'width', 'height', 'cx', 'cy', 'r', 'rx', 'cr'];
+        if (firstG.children.length > 1 && elemChildrenHasConsecutiveUniquePatterns(firstG, groupElemToIgnore)) {
 
-        getUniqueChildDict(firstG, groupElemToIgnore);
+            getUniqueChildDict(firstG, groupElemToIgnore);
+        } else {
+            firstG.children[0].removeAttribute('id')
+        }
+
+        function elemChildrenHasConsecutiveUniquePatterns(elem, ignore_attr) {
+            for (var i = 0; i < elem.children.length - 1; i++) {
+                var uniquePattern = constructUniqueIDString(elem.children[i], ignore_attr);
+                var nextUniquePattern = constructUniqueIDString(elem.children[i + 1], ignore_attr);
+                if (uniquePattern === nextUniquePattern) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         function getUniqueChildDict(elem, ignore_attr) {
             var children = elem.children;
-
             var childrenLength = children.length;
             var childDict = {};
             var currentChunkStr = constructUniqueIDString(children[0], ignore_attr);
             var uniqueStr;
             var currentChunkArr = [];
             var groupChunks = [];
+
             for (var i = 0; i < childrenLength; i++) {
                 var iChild = children[i];
+
                 uniqueStr = constructUniqueIDString(iChild, ignore_attr)
-                if (uniqueStr !== currentChunkStr) {
+
+                if (uniqueStr.length && uniqueStr !== currentChunkStr) {
                     groupChunks.push({elems: currentChunkArr.slice(), attrStr: currentChunkStr + ""});
                     currentChunkStr = uniqueStr;
                     currentChunkArr = [{elem: iChild, attrStr: currentChunkStr + ""}];
@@ -253,7 +283,9 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
                         return;
                     } else {
                         var value = attrSplit[1]
-                        g.setAttribute(key, value);
+                        if (key && value && key.length && value.length) {
+                            g.setAttribute(key, value);
+                        }
                     }
                 })
                 if (iChunk.elems && iChunk.elems.length) {
@@ -274,20 +306,19 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
             elemToAppend.forEach(function(elem, i) {
                 firstG.appendChild(elem);
             })
+        }
+        function constructUniqueIDString(elem, ignore_attr) {
 
-            function constructUniqueIDString(elem, ignore_attr) {
-
-                var attrLength = elem.attributes.length;
-                var resultStr = '';
-                for (var i = 0; i < attrLength; i++) {
-                    var attr = elem.attributes[i];
-                    var attrD = {name: attr.name, value: attr.value};
-                    if (ignore_attr.indexOf(attrD.name.toLowerCase()) === -1) {
-                        resultStr += attrD.name + '|' + attrD.value + ',';
-                    }
+            var attrLength = elem.attributes.length;
+            var resultStr = '';
+            for (var i = 0; i < attrLength; i++) {
+                var attr = elem.attributes[i];
+                var attrD = {name: attr.name, value: attr.value};
+                if (ignore_attr.indexOf(attrD.name.toLowerCase()) === -1) {
+                    resultStr += attrD.name + '|' + attrD.value + ',';
                 }
-                return resultStr.substring(0, resultStr.length - 1).trim();
             }
+            return resultStr.substring(0, resultStr.length - 1).trim();
         }
 
         return elem;
