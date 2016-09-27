@@ -21,6 +21,28 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
+    .directive("chart", ["$compile", "SVGService", function($compile, SVGService) {
+        return {
+            restrict: 'E',
+            replace: true,
+            templateUrl: 'shared/templates/components/base/grid/chart.tpl',
+            scope: {stream:'=cData'},
+            compile: function(lElem, attr, transclude) {
+                return {
+                    pre: function(scope, elem, attr) {
+
+                        scope.chart = scope.stream.plot;
+                        scope.chartReady = true;
+                        for (vb in scope.chart.vb) {
+                            vb = scope.chart.vb[vb].toFixed(2)
+                        }
+                        $compile(elem)(scope);
+
+                    }
+                }
+            }
+        }
+    }])
     angular.module('uguru.shared.directives.base.components')
     .directive("render", ["AdminSVGRenderService", "$compile", function(AdminSVGRenderService, $compile) {
         return {

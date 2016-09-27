@@ -11,7 +11,7 @@
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
 @keyframes shake-opacity {
   0% {
-    transform: translateX(0) translateY(0);
+    transform: translateX(0px) translateY(0px);
     opacity: 1; }
   10% {
     transform: translateX(2px) translateY(2px);

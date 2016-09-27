@@ -6,10 +6,11 @@ angular.module('uguru.shared.services')
     'TweenService',
     'PropertyService',
     'RootService',
+    '$interval',
     AnimationFrameService
         ]);
 
-function AnimationFrameService($timeout, $state, UtilitiesService, TweenService, PropertyService, RootService) {
+function AnimationFrameService($timeout, $state, UtilitiesService, TweenService, PropertyService, RootService, $interval) {
     // https://developer.chrome.com/devtools/docs/demos/too-much-layout/index
     var player = initRAFPlayer();
     // var statePlayer = initStatePlayer();
@@ -228,11 +229,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             player.time = {start: window.performance.now(), delta: window.performance.now()};
 
           }
-          if (player.tick.current <= 0) {
-            player.reset(player);
-          }
-          // player.tick = 0;
-
           player.rAF_id = player.rAF.request(player.animFunc);
         }
 
@@ -253,7 +249,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           var durationOnlyTicks = calculateStreamTickLength(streams[i], 0, 60, true);
           var delayOnlyTicks = calculateStreamTickLength({duration:0, offset:streams[i].offset})
 
-          var newStream = {applyProp:streams[i].applyAtT, duration:streams[i].duration, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset,  values:streams[i].values.splice(0,streams[i].values.length -1)}
+          var newStream = {applyProp:streams[i].applyAtT, childProps:streams[i].childProps, duration:streams[i].duration, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset,  values:streams[i].values.splice(0,streams[i].values.length -1)}
           newStream.tick = initStreamTick(newStream);
 
           newStream.time.total = newStream.tick.duration.ms + newStream.offset;
@@ -264,7 +260,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           player.playerProps.duration = Math.max(Math.round(newStream.time.total), player.playerProps.duration)
 
         }
-        player.tick.start = calcTickLength(player.playerProps.duration)
+        player.tick.start = Math.round(calcTickLength(player.playerProps.duration));
+
         state_obj.duration = player.playerProps.duration;
         player.tick.current = player.tick.start;
         player.schedule.streams.push.apply(player.schedule.streams, shallowCopyStreams);
@@ -281,6 +278,17 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         return player.schedule;
       }
 
+      player.togglePropStreams = function(player, prop_name) {
+        player.schedule.streams.forEach(function(stream, i) {
+          console.log(stream.name, stream)
+        });
+        if (player.debug) {
+          player.debug.propArr.forEach(function(prop) {
+            console.log(prop)
+          })
+        }
+      }
+
 
       function enablePlayerDebugMode(player, state, defaults) {
 
@@ -291,6 +299,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         player.debug.stateName = defaults.stateName;
         player.debug.defaults.showAll = !defaults.hidePlot;
+        player.debug.defaults.autoPlay = defaults.autoPlay;
+
+        player.debug.defaults.startAt = defaults.startAt && parseStartAt(defaults.startAt, state.duration);
         delete player.debug.defaults['hidePlot'];
 
 
@@ -333,12 +344,38 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 }
               }
               for (prop in props) {
-                player.debug.propArr.push({name: props[prop][0].name, streams: props[prop], show:player.debug.defaults.showAll});
+                var totalDuration = 0;
+                for (stream in props[prop]) {
+                  totalDuration += props[prop][stream].duration;
+                };
+                player.debug.propArr.push({name: props[prop][0].name, duration:totalDuration, streams: props[prop], show:player.debug.defaults.showAll});
               }
         })
-          player.debug.toggleAllPlots = toggleAllPlots(player.debug.propArr);
+        player.debug.toggleAllPlots = toggleAllPlots(player.debug.propArr);
         $timeout(function() {
           updatePlayerArgs(player, true);
+          var delay = 500;
+          if (player.debug.defaults.startAt) {
+            delay += (player.debug.defaults.startAt.percent * state.duration)/player.debug.defaults.startAt.speed
+            player.play(player.schedule)
+            player.pause();
+            $timeout(function() {
+              player.jump(player, player.debug.defaults.startAt.percent, player.debug.defaults.startAt.speed)
+            }, 250)
+            console.log(delay)
+          }
+
+          $timeout(function() {
+              if (player.debug.defaults.startAt) {
+                player.active = false;
+              }
+
+              $timeout(function() {
+                if (player.debug.defaults.autoPlay) {
+                  player.play(player.schedule);
+                }
+              }, 500)
+          }, 1000 + delay)
         })
 
         function getSectionObj(section, duration, offset) {
@@ -348,6 +385,28 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           section.html.left = 10 + (parseInt((section.offset)/(totalAnimLength) * 10000)/100);
           return section;
         }
+
+
+        function parseStartAt(start_str, duration) {
+          duration = duration || 1000;
+          var percent = 0.5;
+          var speed = 20;
+          var skip = start_str.indexOf(':skip') > -1;
+          var hasMilli = start_str.indexOf('ms') > -1;
+          var hasPercent = start_str.indexOf('%') > -1;
+
+          if (hasMilli || !hasPercent) {
+            percent =  parseInt(start_str.split('ms').join(""))/duration
+          } else {
+            percent = parseInt(start_str)/100;
+          }
+          var resultDict = {
+            speed: speed,
+            percent: percent
+          }
+          return resultDict;
+        }
+
         function getElemPlayerElemFunc(player) {
           return function(tick, time_delta) {
 
@@ -442,8 +501,46 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         applyTickDeltaToStreams(player, schedule, time_delta * -1, -1);
       }
 
-      player.jump = function(schedule, amount, is_reverse) {
-        applyTickDeltaToStreams(player, amount);
+      player.jump = function(player, percent, speed) {
+        var intervalLength = (1000/60)/speed;
+        var playerTickDelta = player.tick.current + Math.round(player.tick.start*percent) - player.tick.start;
+        var playerStepFunc;
+        //stepping forward
+        if (playerTickDelta > 0) {
+          playerStepFunc = player.stepForward;
+        }
+        else {
+          playerStepFunc = player.stepBack;
+        }
+        var count = Math.abs(playerTickDelta);
+        player.jumpInterval = $interval(function() {
+          count--;
+          playerStepFunc(player.schedule);
+          if (count < 0) {
+            $interval.cancel(player.jumpInterval);
+          }
+        }, intervalLength)
+      }
+
+      player.jumpFromClick = function(player, $event) {
+
+
+        var playerBarElem = getHrParent($event.target);
+        var playerBarCoords = playerBarElem.getBoundingClientRect();
+        var delta = Math.abs($event.layerX - $event.offsetX);
+        var xOffset = $event.offsetX - delta;
+        var percentPlayer = xOffset/playerBarCoords.width;
+
+        player.jump(player, percentPlayer, (player.debug && player.debug.defaults.speed) || 5);
+        // -1 * (playerTickDelta - player.tick.current)
+        // console.log(player.tick.current, )
+
+        function getHrParent(elem) {
+          if (['hr'].indexOf(elem.nodeName.toLowerCase()) > -1) {
+            elem = elem.parentNode;
+          }
+          return elem;
+        }
       }
 
       player.applyArgs = function(streams) {
@@ -479,103 +576,11 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         })
 
         player.animFunc = exec_anim_func(player, player.rAF);
-        // player.updateArgs(player)
         updatePlayerArgs(player, true)
         player.active = false;
       }
 
-      // player.updateArgs = function(player) {
-      //   var playerPropCount = {};
-      //   var minPlayerOffset = 0;
-      //   var streamCache = [];
-      //   player.schedule.streams.slice().forEach(function(stream, i) {
-      //     var streamPopped = player.schedule.streams.shift();
-      //     var streamDelay = 0;
-      //     if (!stream.iter.infinite) {
-      //       streamPopped.iter.count.current--;
-      //     }
-      //     if (streamPopped.iter.count.current >= 1) {
 
-      //       streamPopped.time.elapsed = 0;
-
-      //       if (stream.iter.btwn > 0) {
-
-      //         var tickLengthMS = 1000/60;
-      //         var currentBefore = streamPopped.tick.current;
-      //         var btwnChange = Math.ceil(streamPopped.iter.btwn/tickLengthMS);
-      //         if (Math.abs(btwnChange) > minPlayerOffset) {
-      //           minPlayerOffset =   Math.abs(btwnChange);
-      //         }
-      //         // streamPopped.tick.current -= btwnChange;
-      //       }
-      //       if (['ar', 'a'].indexOf(streamPopped.direction.value) > -1) {
-
-      //         if (streamPopped.direction.current === 'f') {
-      //           streamPopped.direction.current = 'r';
-
-      //         } else {
-      //           streamPopped.direction.current = 'f';
-      //         }
-
-
-      //       }
-
-      //       if (!(stream.name in playerPropCount)) {
-      //         playerPropCount[stream.name] = [];
-      //       }
-
-      //       playerPropCount[stream.name].push(streamPopped);
-      //     } else {
-      //       streamCache.push(streamPopped);
-      //     }
-      //   });
-
-
-      //   // player.tick.current = player.tick.start + minPlayerOffset;
-      //   console.log('player tick', playerPropCount)
-      //   for (key in playerPropCount) {
-      //     playerPropCount[key].forEach(function(stream, i) {
-      //       if (['ar', 'a'].indexOf(stream.direction.value) > -1) {
-      //         if (stream.direction.value === 'ar') {
-      //           if (stream.direction.current === 'r') {
-      //             stream.tick.current = -1 * (player.tick.current + stream.tick.start);
-
-      //           } else {
-      //             stream.tick.current = stream.tick.start;
-      //             stream.values.reverse();
-      //           }
-
-      //         }
-      //         if (stream.direction.value === 'a') {
-      //           if (stream.direction.current === 'f') {
-      //             stream.tick.current = -1 * (player.tick.current + stream.tick.start);
-      //           } else {
-      //             stream.tick.current = stream.tick.start;
-      //             stream.values.reverse();
-      //           }
-      //         }
-      //       } else {
-      //         stream.tick.current = stream.tick.start;
-      //       }
-
-
-      //       player.schedule.streams.push(stream);
-      //     })
-      //   }
-
-      //   updatePlayerArgs(player);
-      //   if (player.schedule.streams.length) {
-
-      //     player.time = {start: window.performance.now(), delta: window.performance.now()};
-      //     player.active = true;
-
-      //   } else {
-      //     player.schedule.streams = streamCache
-      //     player.onStreamsComplete(player);
-
-      //   }
-
-      // }
 
       function onStreamsComplete(player) {
           console.log('streams are complete')
@@ -595,12 +600,13 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           if (stream.tick.current <= stream.tick.end) {
             if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
+              // console.log(stream.tick.current, stream.values[stream.tick.current])
             }
             stream.tick.current += tick_delta;
             stream.time.elapsed += time_delta;
           }
 
-          if (stream.tick.current === stream.tick.end) {
+          if (stream.tick.current > stream.tick.end) {
 
             if (tick_delta > 0) {
               stream.tick.cycle.increment();
@@ -617,7 +623,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
 
-        player.tick.current -= (tick_delta);
+
+
         if (player.debug) {
           player.debug.elemPlayer.update(player.tick, schedule.lastTimeDelta)
         }
@@ -631,6 +638,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             player.pause();
             return;
         }
+        player.tick.current -= (tick_delta);
 
 
       }
@@ -708,6 +716,109 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
     }
 
+      function decomposeMatrixStr(str) {
+        var dMatrix = dynamics.initMatrixFromTransform(str);
+        var args = ['rotate', 'translate', 'scale', 'skew'];
+        var results = [];
+        results.push(parseTranslate(dMatrix.translate))
+        results.push(parseScale(dMatrix.scale));
+        var dMatrix = dynamics.initMatrixFromTransform(str, true);
+        results.push(parseRotate(dMatrix.rotate))
+
+
+        // console.log(dMatrix.quaternion[3]*(180/Math.PI), dMatrix.quaternion[2]*(180/Math.PI))
+        function parseTranslate(arr) {
+          var values = ['X', 'Y', 'Z'];
+          var results = [];
+          arr.forEach(function(val, i) {
+            if (val) {
+              results.push('translate' + values[i] + '(' + val +  'px)');
+            }
+          })
+          if (results.length) {
+            return results.join(" ");
+          }
+        }
+
+
+
+        function parseSkew(arr) {
+          var values = ['X', 'Y', 'Z'];
+          var results = [];
+          arr.forEach(function(val, i) {
+            if (val) {
+              results.push('skew' + values[i] + '(' + val*(180/Math.PI) +  'deg)');
+            }
+          })
+          if (results.length) {
+            return results.join(" ");
+          }
+        }
+
+        function parseRotate(arr) {
+          var values = ['', '', ''];
+          var results = [];
+          if (arr[2]) {
+            results.push('rotate(' + arr[2] * (180/Math.PI) + 'deg)');
+            return results.join(" ")
+          } else {
+            arr.forEach(function(val, i) {
+              if (val > 0 || (val + "").length) {
+                results.push('rotate' + values[i] + '(' + (val*(180/Math.PI)).toFixed(4) +  'deg)');
+              }
+            })
+            if (results.length) {
+              return results.slice(1,2).join(" ").trim();
+            }
+          }
+
+
+        }
+
+        function parseScale(arr) {
+          var values = ['X', 'Y', 'Z'];
+          var results = [];
+          arr.forEach(function(val, i) {
+            if (val || (val + "").length) {
+              // if (values[i] === 'Z' && val === 1) return;
+              results.push('scale' + values[i] + '(' + val.toFixed(4) +  ')');
+            }
+          })
+          if (results.length) {
+            return results.join(" ");
+          }
+        }
+        if (results.length) return results.join(" ")
+        return str;
+      }
+
+      function condenseStartEndValues(prop) {
+
+        var count = 0;
+        if (prop.property === 'transform') {
+          var startSplit = prop.start.trim().split(' ')
+          var endSplit = prop.end.trim().split(' ')
+
+          startSplit.forEach(function(start_arg, i) {
+            if (startSplit[i] === endSplit[i]) {
+
+              startSplit[i] = "";
+              endSplit[i] = "";
+            } else {
+              count += 1;
+            }
+          });
+          startSplit = startSplit.filter(function(start_arg, i) {return start_arg && start_arg.length})
+          endSplit = endSplit.filter(function(end_arg, i) {return end_arg && end_arg.length})
+          if (count && (startSplit.length && endSplit.length)) {
+            prop.start = startSplit.join(" ").trim();
+            prop.end = endSplit.join(" ").trim();
+          }
+
+        }
+
+      }
+
       function replaceShortcutSyntax(str) {
         var strSplit = str.split(':');
         if (strSplit.length <= 5) return str;
@@ -720,11 +831,18 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         return result;
 
         function checkAndParseTransform(prop, start, end) {
+          if (start.indexOf('matrix3d') > -1) {
+            start = decomposeMatrixStr(start);
+          }
+          if (end.indexOf('matrix3d') > -1) {
+            end = decomposeMatrixStr(end);
+          }
           return animUrlShortcuts.func.transform(prop,start,end);
         }
         function checkAndParseShortcuts(prop, start, end) {
           var start = animUrlShortcuts.func.valueStrMatch(start);
           var end = animUrlShortcuts.func.valueStrMatch(end);
+
           return [prop, start, end];
         }
       }
@@ -736,7 +854,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
         if (debug.stateName) {
           var stateNameStr = elem.getAttribute(stateName);
-          console.log(stateNameStr)
           var stateNameStr = stateNameStr.split('[')[1].split('|')[0].split(']')[0].trim()
           var stateNameStrSplit = [];
           stateNameStr.split(',').forEach(function(stream, i) {
@@ -746,7 +863,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               stateNameStrSplit.push(stream);
             }
           })
-
         } else {
           var stateNameStr = str
           var stateNameStrSplit = str.split(',');
@@ -755,19 +871,8 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
         var stateArgs = filterTransformAndShortcutStr(stateNameStrSplit);
+        stateArgs = splitCustomAnimationsIntoStreams(stateArgs);
 
-        // var stateNameArgs =  filterTransformAndShortcutStr()
-        // stateNameStr.forEach(function(stream, i) {
-        //   var sSplit = stream.split(':');
-
-        //   if (sSplit.length === '5') {
-        //     stateArgs.push(stream + ':0:1:f')
-        //   }
-        // })
-        // stateNameArgs.forEach(function(stream, i) {
-        //   console.log(stream);
-        //   stateArgs.push(stream + ':0:1:f')
-        // })
 
 
         var resultState = {duration: 0};
@@ -778,20 +883,28 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
           // iAnim = iAnim && filterParentheticals(iAnim)
 
-          var isCustomAnim = isCustomAnimation(iAnim);
+          // var isCustomAnim = isCustomAnimation(iAnim);
 
-          if (isCustomAnim) {
+          // if (isCustomAnim) {
 
-            // iAnim = iAnim && filterParentheticals(iAnim)
-            iAnim = iAnim && replaceShortcutSyntax(iAnim);
-            addCustomAnimPropsToTimeline(elem, iAnim, isCustomAnim, timeline, debug)
+          //   // iAnim = iAnim && filterParentheticals(iAnim)
+          //   iAnim = iAnim && replaceShortcutSyntax(iAnim);
+
+          //   addCustomAnimPropsToTimeline(elem, iAnim, isCustomAnim, timeline, debug)
 
 
-          } else {
+          // } else {
             iAnim = iAnim && filterParentheticals(iAnim)
             iAnim = iAnim && replaceShortcutSyntax(iAnim);
 
+
             var iPropObj = initPropObj(iAnim);
+
+            // condenseStartEndValues(iPropObj)
+            // console.log(iPropObj.property, iPropObj.start, iPropObj.end)
+            // if (iPropObj.start === iPropObj.end) {
+            //   continue;
+            // }
 
             timeline.playerProps = {
               direction: iPropObj.direction,
@@ -799,7 +912,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               duration: iPropObj.duration
             }
             var offset = iPropObj.delay;
-            console.log(iPropObj)
+
             var values = TweenService.preComputeValues(iPropObj.property, iPropObj.duration, iPropObj.start, iPropObj.end, iPropObj.easingFunc, {cache:[]}, kf).cache;
 
             if (!(iPropObj.property in timeline.props)) {
@@ -836,12 +949,12 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 timeline.props[iPropObj.property].push(result);
               }
 
-              scaleTimelineValuesForPlot(timeline.props, result.direction);
 
             }
             timeline.events.push(result);
-          }
+          // }
         }
+        debug &&scaleTimelineValuesForPlot(player, timeline.props, null,  debug);
         normalizeStateDurationAndDelay(timeline);
         if (debug) {
           cache.states.push(timeline);
@@ -899,55 +1012,58 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         return;
       }
 
-      function addCustomAnimPropsToTimeline(elem, anim_str, custom_props, timeline, debug) {
+      // function addCustomAnimPropsToTimeline(elem, anim_str, custom_props, timeline, debug) {
 
-        var animArgs = anim_str.split(':');
+      //   var animArgs = anim_str.split(':');
 
-        var animDict = {};
+      //   var animDict = {};
 
-        animDict.duration = parseInt(animArgs[1]);
-        animDict.delay = parseInt(animArgs[3]) || 0;
-        animDict.easingFunc = animArgs[2] || 'linear'
+      //   animDict.duration = parseInt(animArgs[1]);
+      //   animDict.delay = parseInt(animArgs[3]) || 0;
+      //   animDict.easingFunc = animArgs[2] || 'linear'
 
-        animDict.iter = parseIteration(animArgs[4]) || parseIteration("1");
-        animDict.direction = parseDirection(animArgs[5]) || parseDirection("f");
-        timeline.playerProps = {iter: animDict.iter, direction:animDict.direction, duration: animDict.duration};
-        for (var prop in custom_props) {
-          var propValues = [];
+      //   animDict.iter = parseIteration(animArgs[4]) || parseIteration("1");
+      //   animDict.direction = parseDirection(animArgs[5]) || parseDirection("f");
+      //   timeline.playerProps = {iter: animDict.iter, direction:animDict.direction, duration: animDict.duration};
 
-          var propBreakpoints = custom_props[prop].sort(function(bp1, bp2) {return bp1.percent - bp2.percent });
-          for (var i = 0; i < propBreakpoints.length - 1; i++) {
-            if (!(prop in timeline.props)) {
-              timeline.props[prop] = [];
-            }
-            var result = constructPropObjFromCustomBP(elem, prop, animDict, propBreakpoints[i], propBreakpoints[i + 1])
+      //   for (var prop in custom_props) {
 
-            if (debug) {
+      //     var propValues = [];
 
-              if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
-                delete timeline.props['transform']
-                addIndependentTransformPropsToTimeline(result, timeline);
-              } else {
-                timeline.props[prop].push(result);
-              }
+      //     var propBreakpoints = custom_props[prop].sort(function(bp1, bp2) {return bp1.percent - bp2.percent });
+      //     for (var i = 0; i < propBreakpoints.length - 1; i++) {
+      //       if (!(prop in timeline.props)) {
+      //         timeline.props[prop] = [];
+      //       }
+      //       var result = constructPropObjFromCustomBP(elem, prop, animDict, propBreakpoints[i], propBreakpoints[i + 1])
 
-            }
-            timeline.events.push(result);
-          }
-        }
-        if (debug) {
-          console.log(animDict.direction.current)
-          scaleTimelineValuesForPlot(timeline.props, animDict.direction);
-        }
-      }
+      //       if (debug) {
 
-      function scaleTimelineValuesForPlot(props, direction) {
+      //         if (result.name === 'transform' && result.values[0].indexOf('matrix3d') === -1) {
+      //           delete timeline.props['transform']
+      //           addIndependentTransformPropsToTimeline(result, timeline);
+      //         } else {
+      //           timeline.props[prop].push(result);
+      //         }
+
+      //       }
+      //       timeline.events.push(result);
+      //     }
+      //   }
+      //   if (debug) {
+      //     console.log(animDict)
+      //     scaleTimelineValuesForPlot(timeline.props, animDict.direction);
+      //   }
+      // }
+
+      function scaleTimelineValuesForPlot(player, props, direction, debug) {
+
         for (var prop in props) {
 
           var propStreams = props[prop];
-
           var plotStats = {max: 0, min: 100000000000};
-
+          var totalDuration = 0;
+          propStreams.forEach(function(stream, i) {totalDuration += stream.duration});
           propStreams.forEach(function(stream, i) {
 
             stream.plot = {max: 0, min: 100000000000, duration: 0, values:[], sections:[]};
@@ -957,64 +1073,92 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             streamAllValues = [];
             var maxVal = 0;
             var streamSections = [];
-            if (stream.offset) {
-              stream.plot.sections.push({transition: stream.offset, html:{}, values:[], offset: stream.offset, duration: stream.offset})
-            }
+            var ratioWidthDuration = stream.duration/2000;
+
+
+            stream.plot.html = {width: (ratioWidthDuration*RootService.viewPortSize.width).toFixed(2) + 'px'};
+
             for (var i = 0; i < streamTick.cycle.repeats; i++) {
               var directionDict = {'f': 'forward', 'r':'reverse'};
-              var section = {html:{}, scaledValues:[], values: [], cycleIndex:i + 1, direction: directionDict[streamTick.direction.current], start: stream.values[0], end: stream.values[stream.values.length - 1], duration:stream.duration + stream.iter.btwn, transition:stream.iter.btwn};
+              var section = {html:{}, pathValues:[], scaledValues:[], values: [], cycleIndex:i + 1, direction: directionDict[streamTick.direction.current], start: stream.values[0], end: stream.values[stream.values.length - 1], duration:stream.duration, btwn:stream.iter.btwn};
 
 
               var sectionMax = 0;
               var sectionMin = stream.values[0];
               stream.values.forEach(function(value, j) {
                 var scaled_value = parseFloat(getArrayOfDecimals(value)[0]);
-
-
                 maxVal = Math.max(maxVal, scaled_value);
-                sectionMax = Math.max(sectionMax, scaled_value);
+                plotStats.max = Math.max(plotStats.max, scaled_value);
+                plotStats.min = Math.min(plotStats.min, scaled_value);
+                stream.plot.values.push(scaled_value);
+
                 section.values.push({value: scaled_value});
+                section.pathValues.push(scaled_value)
               });
-              section.max = sectionMax;
-              stream.plot.sections.push(section);
               streamTick.cycle.increment();
             }
-            stream.plot.sections.forEach(function(section, k) {
-              var ratioWidthDuration = parseInt(10000*(section.duration/streamDuration))/100;
-              section.html.total = {width: {percent: ratioWidthDuration}};
-              if (!section.values.length) {
-                section.delayOnly = true;
-                return
-              }
-
-              section.values.forEach(function(value_dict, j) {
-                  value_dict.left = (j/section.values.length) * 100 + '%';
-                  value_dict.bottom = (value_dict.value)/section.max*100 + '%';
-              })
-            });
-            // for (i = 0; i < stream.plot.sections.length; i++) {
-
-
-            //   // iSection.html.total = {width: {percent: ratioWidthDuration}};
-            //   iSection.scaledValues = [];
-            //   iSection.values && iSection.values.forEach(function(s_value, j) {
-            //     var scaled_value = parseFloat(getArrayOfDecimals(s_value)[0]);
-            //   });
-            //   iSection.values && iSection.values.forEach(function(s_value, j) {
-
-            //     maxVal = Math.max(maxVal, scaled_value);
-            //     var leftPercent = (j/iSection.values.length) * 100;
-            //     iSection.scaledValues.push({val: scaled_value, left: leftPercent});
-            //   });
-            //   iSection.max = maxVal;
-            // }
-
-
           })
           propStreams.forEach(function(stream, i) {
+            if (!debug.chartOptions) {
+              debug.chartOptions = {buffer: 10, height:150};
+              debug.chartOptions.height -= debug.chartOptions.buffer;
+            }
+            stream.plot.height = debug.chartOptions.height;
             stream.plot.max = plotStats.max;
             stream.plot.min = plotStats.min;
+            stream.plot.range = Math.abs(stream.plot.max - stream.plot.min);
+            var vbMax = stream.plot.max/stream.plot.range * debug.chartOptions.height;
+            var vbMin = stream.plot.min/stream.plot.range * debug.chartOptions.height;
+            stream.plot.vb = {y1: debug.chartOptions.height-vbMax, y2: debug.chartOptions.height-vbMin, x1: 0,x2: stream.duration};
+
+            console.log(stream.name, stream.plot.vb)
+            stream.plot.path = constructBezierStream(stream, null, debug );
           })
+        }
+      }
+
+
+      function constructBezierStream(stream, start, debug) {
+
+        var options = debug && debug.chartOptions || {height:150, width:stream.duration};
+        values = stream.plot.values
+        var max = stream.plot.max;
+        var min = stream.plot.min;
+        var range = Math.abs(max - min);
+        var scaleXFactor = stream.duration/values.length;
+        var bzStreams = []
+        var bzPointArr = [];
+        var startIndex = 0;
+        var startStr = start;
+        if (!startStr) {
+          startIndex = 1;
+          var firstValue = normalizeValue(values.slice(0,1), range, options.height)
+          startStr = "M0 " + firstValue + ", "
+          bzPointArr.push([{x:0, y:firstValue}]);
+          bzStreams.push(startStr)
+        }
+        values.slice(1, values.length-2).forEach(function(y1, x1) {
+          var x1 = x1 + 1;
+
+          var bzPoints = [ {x: x1, y: normalizeValue(y1, range, options.height)}, {x: x1 + 1, y: normalizeValue(values[x1 + 1], range, options.height)}, {x: x1 + 2, y: normalizeValue(values[x1 + 2], range, options.height)} ];
+          bzPoints.forEach(function(point, i) {
+            point.x = (point.x * scaleXFactor).toFixed(2);
+          })
+          var bzString = formatBZCurve(bzPoints[0], bzPoints[1], bzPoints[2], ",");
+          bzPointArr.push(bzPoints)
+          bzStreams.push(bzString);
+        })
+
+        bzPath = bzStreams.join(" ");
+        return {points: bzPointArr, path: bzPath}
+
+        function formatBZCurve(p1, p2, p3, delimiter) {
+          delimiter = delimiter || ','
+          return "C" + p1.x + " " + p1.y + delimiter + p2.x + " " + p2.y + delimiter + p3.x + " " + p3.y
+        }
+        function normalizeValue(val, range, height, padding) {
+          if (!padding) padding = 10;
+          return ((height + padding) - (val/range) * (height+padding)).toFixed(2)
         }
       }
 
@@ -1028,12 +1172,78 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           return resultArr
         }
 
+      function splitCustomAnimationsIntoStreams(state_args) {
+        var customArgs = [];
+        var stateArgsCopy = state_args.slice();
+        stateArgsCopy.forEach(function(state_str, i) {
+          result = isCustomAnimation(state_str)
+
+          if (result) {
+            state_args.splice(i, 1)
+            var argSplit = state_str.split(':').splice(1);
+            argSplit.forEach(function(arg, i) {var hasInt = parseInt(argSplit[i]); if (hasInt || hasInt > -1) {argSplit[i] = hasInt } });
+            customArgs.push({propDict: result, args: argSplit});
+          }
+        })
+        if (customArgs.length) {
+          var uniquePropStreams = [];
+          customArgs.forEach(function(c_anim_dict, index) {
+            var genDuration = c_anim_dict.args[0];
+            var genDelay = c_anim_dict.args[2];
+            for (prop in c_anim_dict.propDict) {
+              var propStreams = c_anim_dict.propDict[prop];
+              if (propStreams.length) {
+                var accumulatedDelay =
+                propStreams.forEach(function(_prop, stream_index) {
+                  if (stream_index === 0 || stream_index === propStreams.length) return;
+                  var genArgsCopy = c_anim_dict.args.slice();
+                  var duration = genArgsCopy[0]
+                  var deltaPercent = (propStreams[stream_index].percent - propStreams[stream_index - 1].percent)
+                  var delay = (_prop.percent/100.0) * genDuration;
+                  var startVal = propStreams[stream_index - 1].value;
+                  var endVal = _prop.value;
+                  deltaPercent = deltaPercent/100;
+                  genArgsCopy[0] = deltaPercent*duration;
+                  genArgsCopy[2] = delay - genArgsCopy[0];
+                  uniquePropStreams.push(_prop.prop + ':' + startVal + ':' + endVal + ':' + genArgsCopy.join(":"));
+                  // console.log(c_anim_dict.args[0], deltaPercent, _prop)
+                })
+              }
+            }
+          })
+          uniquePropStreams.forEach(function(stream, i) {
+            state_args.push(stream)
+          })
+        }
+        function calculateDelayForPropStreamsBefore(prop_arr, duration, percent) {
+          if (!prop_arr || !prop_arr.length) {
+            return 0;
+          }
+          if (prop_arr && prop_arr.length) {
+            var sumPercent = 0;
+            prop_arr.forEach(function(prop, i) {
+              sumPercent += prop.percent
+            })
+            console.log(sumPercent)
+          }
+          return 0;
+        }
+        return state_args;
+      }
+
       function filterTransformAndShortcutStr(state_args) {
+
         var defaultTransformProps = ['translateX', 'translateY', 'translateZ', 'scaleX', 'scaleY', 'rotate', 'skewX', 'skewY', 'scaleZ', 'rotateX', 'rotateY', 'rotateZ', 'perspective', 'rotate3d'];
         var transform_state_arg = [];
         var state_args_final = [];
         state_args.slice().forEach(function(state_prop, i) {
-          state_prop = UtilitiesService.replaceAll(state_prop, 'p:', '%:');
+          var statePropSplit = state_prop.split('p:');
+          statePropSplit.forEach(function(str, i) {
+            if (parseInt(str.charAt(str.length - 1))) {
+              statePropSplit[i] = state_prop + '%:'
+            }
+          })
+          state_prop = statePropSplit.join("p:");
           var propName = state_prop.split(':')[0].trim();
           if (defaultTransformProps.indexOf(propName) > -1) {
             transform_state_arg.push(state_prop)
@@ -1055,12 +1265,14 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             resultTransformDict.delay.push(splitArgs[5]);
             resultTransformDict.iter.push(splitArgs[6]);
             resultTransformDict.direction.push(splitArgs[7]);
+            console.log(splitArgs)
           })
 
           single_transform_str = formatTransformStrFromTransformProps(resultTransformDict);
+
           state_args_final.unshift(single_transform_str);
         }
-
+        console.log(state_args_final)
         return state_args_final
       }
 
@@ -1279,9 +1491,13 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       function mapTransformPropToStartEnd(prop, start, end) {
         var defaultTransformProps = ['translateX', 'translateY', 'translateZ', 'scaleX', 'scaleY', 'rotate', 'skewX', 'skewY', 'scaleZ', 'rotateX', 'rotateY', 'rotateZ', 'perspective', 'rotate3d'];
         var isTransformProp = defaultTransformProps.indexOf(prop);
+
         if (isTransformProp > -1) {
           return ['transform', prop + '(' + start + ')', prop + '(' + end + ')'];
         }
+
+
+
         return [prop, start, end];
       }
     }

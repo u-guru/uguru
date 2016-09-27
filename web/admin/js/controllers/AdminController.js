@@ -2798,6 +2798,7 @@ angular.module('uguru.admin')
         }
 
         function getDMatrixString(d_matrix, transform_str, perspective) {
+            console.log(d_matrix)
             transform_str = transform_str + " ";
             var result = "";
 

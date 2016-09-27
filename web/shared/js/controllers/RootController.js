@@ -25,6 +25,7 @@ angular.module('uguru.shared.controllers', [])
     RootService.customShortcuts.getAnimProps = function () {return root.public.customShortcuts};
     root.pauseElement = pauseElement(root);
     RootService.setPauseElementFunc(root.pauseElement);
+    RootService.viewPortSize = root.window;
     root.animationCounter = 0;
     root.transitionCounter = 0;
     root.inspector = {players:[], activePlayer: null, elements: [], preferences: {}};

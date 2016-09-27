@@ -17,7 +17,9 @@ angular.module('uguru.admin')
         aa.clickableKeys = ['custom easing', 'animatable properties'];
         aa.hiddenKeys = ['defaults', 'property options']
         aa.launchWindow = function(param) {
+
             if (aa.customAnimations.indexOf(param) > -1) {
+
                 $window.open('#/admin/api/animations/custom/'  + param + '?kf=60&v=1000,linear,250,-1,f&comp=svg.logo.guru-head');
             }
             if (aa.animatableProps.indexOf(param) > -1) {
@@ -83,6 +85,7 @@ angular.module('uguru.admin')
 
         $timeout(function() {
             aa.dataAnim = $scope.$parent.animations;
+            console.log($scope.root)
             if (Object.keys(aa.dataAnim) && aa.dataAnim.sections.shortcuts) {
                 aa.animShortcuts = parseShortcuts(aa.dataAnim.sections.shortcuts);
                 delete aa.dataAnim.sections.shortcuts

@@ -956,15 +956,20 @@ angular.module('uguru.shared.directives')
     restrict: 'E',
     priority: 10,
     link : function(scope, element, attr) {
-
-        if ('replace' in attr && 'with' in attr && 'arg' in attr) {
-          if (!scope.root.public.customShortcuts.animProps) {
-            scope.root.public.customShortcuts.animProps = {name: {}, start: {}, end: {}, duration: {}, easingFunc: {}, delay: {}, iter: {}, direction:{}};
-          }
-
-          if (['start', 'end', 'duration', 'easingFunc', 'delay', 'iter', 'direction'].indexOf(attr.arg) === -1) return;
-
+      var defaultArr = ['stream', 'default', 'custom', 'name', 'start', 'end', 'duration', 'easingFunc', 'delay', 'iter', 'direction'];
+        if (!scope.root.public.customShortcuts.animProps) {
+          scope.root.public.customShortcuts.animProps = {};
+          defaultArr.forEach(function(name, i) {
+            scope.root.public.customShortcuts.animProps[name] = {};
+          })
+        }
+        //if not Arg
+        if (!attr.arg || ('arg' in attr && defaultArr.indexOf(attr.arg.toLowerCase()) === -1)) return;
+        if ('replace' in attr && 'with' in attr) {
           scope.root.public.customShortcuts.animProps[attr.arg][attr.replace] = attr.with;
+        }
+        if ('for' in attr && 'setDefault' in attr) {
+          scope.root.public.customShortcuts.animProps[attr.arg][attr.for] = attr.setDefault;
         }
     }
   }

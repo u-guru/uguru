@@ -54,14 +54,27 @@
         <prop-shortcut replace="animation-delay" with="start"/>
 
         <!--Most general-->
-        <!--
-			Since p -> prop is defined already (since rendered top-to-bottom), this would work too:
-        	<command-shortcut replace="p:[op:0, z-index:-1000]" with="backstage"/>
+        <!-- Full animation "stream" shortcuts/>
+        -->
+        <anim-prop-shortcut arg="stream" replace="bounceJSDemo" with="bounceIn-rotate-subtle-small:1500,linear,0,1,f"/>
+        <anim-prop-shortcut arg="stream" replace="default-transX" with="translateX:50%:-50%:1000:bouncePast:0:1:f"/>
+        <anim-prop-shortcut arg="stream" replace="importAnimCSSDemo" with="input-swingUp:1500,linear,0,1,f"/>
+
+        <anim-prop-shortcut arg="stream" replace="bounceScaleXY" with="scaleX:0:1:fast:easeOutElastic:0:1:f,scaleY:0:1:fast:easeOutElastic:0:1:f"/>
+        <anim-prop-shortcut arg="stream" replace="default-transXY" with="translateX:50%:-50%:1000:bouncePast:0:1:f,translateY:50%:-50%:1000:bouncePast:0:1:f"/>
+        <anim-prop-shortcut arg="stream" replace="shakeOpacity-Reg" with="shake-opacity:1000,easeInOutElastic,0,1,f"/>
+
+        <!-- Full animation [name, duration, default]/>
         -->
 
         <anim-prop-shortcut arg="duration" replace="fast" with="250"/>
+        <anim-prop-shortcut arg="name" replace="trX" with="translateX"/>
         <anim-prop-shortcut arg="duration" replace="slow" with="2000"/>
         <anim-prop-shortcut arg="easingFunc" replace="cbOne" with="(0.075, 0.82, 0.165, 1)"/>
+
+
+
+        <anim-prop-shortcut arg="default" for="translateX" set-default="-100%:100%:1000:bouncePast:0:1:f"/>
 
         <cmd-shortcut replace="prop:[op:0, z-index:-1000]" with="backstage"/>
 		<cmd-shortcut replace="prop:[op:0]" with="p-op"/>

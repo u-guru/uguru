@@ -21,6 +21,7 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
     //3. [x] Go in order sequentially and create a group of the first child's attributes, for all subsequent siblings w/ same attributes, strip
     //4. Replace all <uses> that reference, <path> in defs with
     //5. //3. [ ] Filter & replace all <use> Within the first group, sort all def references aside from filter for all types of elements, look if they exist in the defs, if so, replace.
+    //6. Pricing checkout prefixes
     //-- Wrapup
     // -- Export the new svg file
     // 1. Figure out simple exportable means
@@ -28,6 +29,7 @@ function AdminSVGRenderService($state, $timeout, $localstorage, UtilitiesService
     // 3. clarify your prefix
     // 4. Optimize defs + path repititions based on their D;
     // 5. Element g-global = "stroke-linecap:round"
+    // 6. removing the comments
     //sort paths by the id number
     //eliminate un-necessary
     //Any ids with the page in it
