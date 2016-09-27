@@ -243,19 +243,19 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
         var shallowCopyStreams = [];
         for (var i = 0; i < streams.length; i++) {
-
+          console.log(streams[i])
           var globalOffsetTicks = calculateStreamTickLength({duration: 0, offset:offset});
           var totalDurationAndDelayTicks = calculateStreamTickLength(streams[i]);
           var durationOnlyTicks = calculateStreamTickLength(streams[i], 0, 60, true);
           var delayOnlyTicks = calculateStreamTickLength({duration:0, offset:streams[i].offset})
 
-          var newStream = {applyProp:streams[i].applyAtT, childProps:streams[i].childProps, duration:streams[i].duration, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset,  values:streams[i].values.splice(0,streams[i].values.length -1)}
+          var newStream = {applyProp:streams[i].applyAtT, childProps:streams[i].childProps, easing:streams[i].ease, duration:streams[i].duration, iter:streams[i].iter, name:streams[i].property || streams[i].name, direction: streams[i].direction, time: {total: streams[i].duration, elapsed: 0}, offset: streams[i].offset,  values:streams[i].values.splice(0,streams[i].values.length -1)}
           newStream.tick = initStreamTick(newStream);
 
           newStream.time.total = newStream.tick.duration.ms + newStream.offset;
 
           newStream.tick.init(newStream);
-
+          console.log(newStream.tick)
           shallowCopyStreams.push(newStream);
           player.playerProps.duration = Math.max(Math.round(newStream.time.total), player.playerProps.duration)
 
@@ -932,6 +932,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
               iter: iPropObj.iter,
               name: iPropObj.property,
               values: values,
+              easing: iPropObj.easingFunc,
               applyAtT: getApplyPropertyFunc(elem, iPropObj.property)
             }
 

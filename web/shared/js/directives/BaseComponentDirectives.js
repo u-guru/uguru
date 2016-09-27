@@ -12,6 +12,7 @@ angular.module('uguru.shared.directives.base.components')
                     function (lScope, lElem, lAttr) {
                          transclude(lScope, function(clone, innerScope) {
                             // lElem[0].innerHTML = clone[0].innerHTML;
+
                             lElem.html(clone.html())// = .innerHTML;
                             $compile(lElem)(lScope);
                         })
@@ -30,7 +31,7 @@ angular.module('uguru.shared.directives.base.components')
             compile: function(lElem, attr, transclude) {
                 return {
                     pre: function(scope, elem, attr) {
-
+                        scope.stream.showProps = false;
                         scope.chart = scope.stream.plot;
                         scope.chartReady = true;
                         for (vb in scope.chart.vb) {
