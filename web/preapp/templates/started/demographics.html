@@ -1,105 +1,196 @@
 <ion-view class="flex-center">
-	<projector class="projector-demo"
-		init-with="tr:[translateY:-200%] | p:[t:transform 250ms ease-in-out]"
-		on-init="tr:[translateY:0%]">
-        <div class="projector-guru">
-            <div class="guru-head" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"></div>
-            <svg class="coach active" width="114px" height="98px" viewBox="0 0 228 196">
-                 <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
-                <text transform="translate(116.193148, 94.776332) rotate(24.000000) translate(-116.193148, -94.776332) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF" ng-if='!user.demographic'>
-                    <tspan x="48.6931477" y="93.7763318">who are</tspan>
-                    <tspan x="76.2331477" y="133.776332">you?</tspan>
-                </text>
-                <text transform="translate(116.193148, 94.776332) rotate(24.000000) translate(-116.193148, -94.776332) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF" ng-if='user.demographic && user.demographic.name !== "College Student"'>
-                    <tspan x="48.6931477" y="93.7763318">nice! you</tspan>
-                    <tspan x="76.2331477" y="133.776332">are a ...</tspan>
-                </text>
-            </svg>
-        </div>
-        <div class="splash-demographic-content">
-            <ul class="demo-2 active">
+	<!-- INSTRUCTIONS
+		- All the SVG components are in /started/components/ so that scrolling through the content is easier without long paths.
+		- The tour guru is temporarily included inside of each projector screen for now - when we're done and connecting everything, I'll put him outside of the projector.
+			- The tour guru is comprised of three parts - the guru body, the student card, and the guru hands.
+			- Put whatever should show up on top of the card into .guru-hands and everything else into .guru-body.
+		- when-next-demo is activated onClick from college tile, and activates the next section of demographic.
+	-->
+	<projector class="projector-demo projector-splash">
+		<div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"></div>
+		<h1 class="projector-splash-header">Demographic</h1>
+        <div class="projector-demo-grids">
+			<ul class="projector-demo-grid"
+				init-with="p:[op:1, z-index:10]"
+				when-next-demo="p:[op:0, z-index:-1]">
 				<li>
-					<a class="demo-freshman opacity-0 animated bounceIn">
-						<span>Freshman</span>
+					<a class="demographic-tile high-school">
+						<svg width="180px" height="180px" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
+						<div>
+							<div class="borders">
+								<div></div><div></div><div></div><div></div>
+								<div class="border-bottom"></div>
+							</div>
+							<div>
+								<div ng-include="root.base_url + 'preapp/templates/started/components/high-school.html'"></div>
+								<h1>High School</h1>
+							</div>
+						</div>
 					</a>
 				</li>
 				<li>
-					<a class="demo-sophomore opacity-0 animated bounceIn">
-						<span>Sophomore</span>
+					<a class="demographic-tile college"
+						init-default
+						on-click="s:[next-demo:public]">
+						<svg width="180px" height="180px" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
+						<div>
+							<div class="borders">
+								<div></div><div></div><div></div><div></div>
+								<div class="border-bottom"></div>
+							</div>
+							<div>
+								<div ng-include="root.base_url + 'preapp/templates/started/components/college.html'"></div>
+								<h1>College</h1>
+							</div>
+						</div>
 					</a>
 				</li>
 				<li>
-					<a class="demo-jr opacity-0 animated bounceIn">
-						<span>Junior</span>
+					<a class="demographic-tile alumni">
+						<svg width="180px" height="180px" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
+						<div>
+							<div class="borders">
+								<div></div><div></div><div></div><div></div>
+								<div class="border-bottom"></div>
+							</div>
+							<div>
+								<div ng-include="root.base_url + 'preapp/templates/started/components/alumni.html'"></div>
+								<h1>Alumni</h1>
+							</div>
+						</div>
 					</a>
 				</li>
 				<li>
-					<a class="demo-sr opacity-0 animated bounceIn">
-						<span>Senior</span>
+					<a class="demographic-tile parent">
+						<svg width="180px" height="180px" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
+						<div>
+							<div class="borders">
+								<div></div><div></div><div></div><div></div>
+								<div class="border-bottom"></div>
+							</div>
+							<div>
+								<div ng-include="root.base_url + 'preapp/templates/started/components/parent.html'"></div>
+								<h1>Parent</h1>
+							</div>
+						</div>
 					</a>
 				</li>
 				<li>
-					<a class="demo-postgrad opacity-0 animated bounceIn">
-						<span>Postgrad</span>
+					<a class="demographic-tile professor">
+						<svg width="180px" height="180px" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
+						<div>
+							<div class="borders">
+								<div></div><div></div><div></div><div></div>
+								<div class="border-bottom"></div>
+							</div>
+							<div>
+								<div ng-include="root.base_url + 'preapp/templates/started/components/professor.html'"></div>
+								<h1>Professor</h1>
+							</div>
+						</div>
 					</a>
 				</li>
 			</ul>
-			<ul class="demo-1">
+			<ul class="projector-demo-grid"
+				init-with="p:[op:0, z-index:-1]"
+				when-next-demo="p:[op:1, z-index:10]">
 				<li>
-					<a class="demo-college opacity-0 animated bounceIn">
-						<span>College</span>
+					<a class="demographic-tile freshman">
+						<svg width="180px" height="180px" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
+						<div>
+							<div class="borders">
+								<div></div><div></div><div></div><div></div>
+								<div class="border-bottom"></div>
+							</div>
+							<div>
+								<div ng-include="root.base_url + 'preapp/templates/started/components/freshman.html'"></div>
+								<h1>Freshman</h1>
+							</div>
+						</div>
 					</a>
 				</li>
 				<li>
-					<a class="demo-alum opacity-0 animated bounceIn">
-						<span>Pro or Alum</span>
+					<a class="demographic-tile sophomore">
+						<svg width="180px" height="180px" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
+						<div>
+							<div class="borders">
+								<div></div><div></div><div></div><div></div>
+								<div class="border-bottom"></div>
+							</div>
+							<div>
+								<div ng-include="root.base_url + 'preapp/templates/started/components/sophomore.html'"></div>
+								<h1>Sophomore</h1>
+							</div>
+						</div>
 					</a>
 				</li>
 				<li>
-					<a class="demo-hs opacity-0 animated bounceIn">
-						<span>High School</span>
+					<a class="demographic-tile junior">
+						<svg width="180px" height="180px" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
+						<div>
+							<div class="borders">
+								<div></div><div></div><div></div><div></div>
+								<div class="border-bottom"></div>
+							</div>
+							<div>
+								<div ng-include="root.base_url + 'preapp/templates/started/components/junior.html'"></div>
+								<h1>Junior</h1>
+							</div>
+						</div>
 					</a>
 				</li>
 				<li>
-					<a class="demo-parent opacity-0 animated bounceIn">
-						<span>Parent</span>
+					<a class="demographic-tile senior">
+						<svg width="180px" height="180px" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
+						<div>
+							<div class="borders">
+								<div></div><div></div><div></div><div></div>
+								<div class="border-bottom"></div>
+							</div>
+							<div>
+								<div ng-include="root.base_url + 'preapp/templates/started/components/senior.html'"></div>
+								<h1>Senior</h1>
+							</div>
+						</div>
 					</a>
 				</li>
 				<li>
-					<a class="demo-other opacity-0 animated bounceIn">
-						<span>Other</span>
+					<a class="demographic-tile graduate">
+						<svg width="180px" height="180px" viewBox="0 0 100 100">
+							<rect x="0" y="0" width="100" height="100"></rect>
+						</svg>
+						<div>
+							<div class="borders">
+								<div></div><div></div><div></div><div></div>
+								<div class="border-bottom"></div>
+							</div>
+							<div>
+								<div ng-include="root.base_url + 'preapp/templates/started/components/graduate.html'"></div>
+								<h1>Graduate</h1>
+							</div>
+						</div>
 					</a>
 				</li>
 			</ul>
-            <div class='info-demographic-button flex-wrap-center ugrid-3 absolute bottom-0 full-x left-0'>
-                <button class="btn-ghost bg-white">Back</button>
-            </div>
-
-            <!-- <ul class="demo-2" ng-class="{'active': !user.demographic}">
-                <li ng-repeat='demographic in demographics' ng-click='saveDemographic(demographic)'>
-                    <a class="demo-{{demographic.class}} opacity-0 animated bounceIn">
-                        <span>{{demographic.name}}</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="demo-1" ng-class="{'active': user.demographic && user.demographic.name === 'College Student'}">
-                <li ng-repeat='student_type in user.demographic.type' ng-click='saveDemographic(student_type)'>
-                    <a class="demo-{{student_type.class}} opacity-0 animated bounceIn">
-                        <span>{{student_type.name}}</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class='demo-3' ng-class="{'active': user.demographic && user.demographic.name !== 'College Student'}">
-                <li>
-                    <a class="demo-{{user.demographic.class}} opacity-0 animated bounceIn">
-                        <span>{{user.demographic.name}}</span>
-                    </a>
-                </li>
-            </ul> -->
-            <!-- <div class='info-demographic-button flex-wrap-center ugrid-3 absolute bottom-0 full-x left-0'>
-                <button class="btn-ghost bg-white hide" ng-class='{"show": user.demographic && user.demographic.name === "College Student"}' ng-click='clearDemographic()'>Back</button>
-                <button class="btn-ghost bg-white hide" ng-class='{"show": user.demographic && user.demographic.name !== "College Student"}' ng-click='clearDemographic()'>Edit</button>
-            </div> -->
-        </div>
+		</div>
+		<button class="btn-ghost-round">Next</button>
 	</projector>
 </ion-view>

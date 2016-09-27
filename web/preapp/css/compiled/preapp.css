@@ -5028,6 +5028,49 @@ a[class*="-container"]:hover .map-enter {
   #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-20 {
     animation: hiw-cloud-fall 4000 ms linear 3000 ms 2, hiw-cloud-fall-end 4000 ms ease-out 3200 ms forwards; }
 
+.projector-splash .projector-content {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center; }
+.projector-splash .projector-splash-header {
+  font-size: 48px;
+  font-weight: 700;
+  width: 100%;
+  text-align: center; }
+
+.projector-guru-body {
+  position: absolute;
+  top: 50%;
+  margin-top: -200px;
+  left: -145px;
+  z-index: 10;
+  width: 300px;
+  height: 450px; }
+  .projector-guru-body .student-card {
+    position: absolute;
+    bottom: 103px;
+    left: 50%;
+    margin-left: -120px; }
+  .projector-guru-body .guru-hands {
+    position: absolute;
+    top: 0;
+    left: 0; }
+
 .projector-access .projector-access-content {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -5162,7 +5205,7 @@ a[class*="-container"]:hover .map-enter {
       display: none; }
     .projector-access .projector-access-content .projector-access-code + div .projector-access-bubble.desktop {
       display: block; } }
-.projector-demo {
+.projector-demo-grids {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -5179,20 +5222,8 @@ a[class*="-container"]:hover .map-enter {
   -webkit-justify-content: center;
   justify-content: center;
   position: relative;
-  padding: 15px;
-  height: 100%; }
-  .projector-demo ul {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  width: 100%; }
+  .projector-demo-grids .projector-demo-grid {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -5200,9 +5231,6 @@ a[class*="-container"]:hover .map-enter {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-align-items: center;
@@ -5211,124 +5239,16 @@ a[class*="-container"]:hover .map-enter {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    margin-top: 20px !important;
-    padding: 7.5px;
-    width: 100%; }
-    .projector-demo ul:not(.active) {
-      filter: alpha(opacity=0);
-      opacity: 0;
-      z-index: -10; }
-    .projector-demo ul li {
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    max-width: 600px;
+    padding: 7.5px; }
+    .projector-demo-grids .projector-demo-grid li {
       padding: 7.5px; }
-      .projector-demo ul li a {
-        border-radius: 1000px;
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        text-align: center;
-        width: 100px;
-        height: 100px;
-        border: 2px solid white;
-        font-size: 16px !important;
-        padding: 15px; }
-        .projector-demo ul li a.demo-freshman {
-          background: rgba(80, 165, 221, 0.5); }
-          .projector-demo ul li a.demo-freshman:hover, .projector-demo ul li a.demo-freshman:focus {
-            background: #50A5DD; }
-          .projector-demo ul li a.demo-freshman:active {
-            background: #6f7d82; }
-        .projector-demo ul li a.demo-sophomore {
-          background: rgba(86, 169, 207, 0.5); }
-          .projector-demo ul li a.demo-sophomore:hover, .projector-demo ul li a.demo-sophomore:focus {
-            background: #56a9cf; }
-          .projector-demo ul li a.demo-sophomore:active {
-            background: #6f7d82; }
-        .projector-demo ul li a.demo-jr {
-          background: rgba(93, 172, 193, 0.5); }
-          .projector-demo ul li a.demo-jr:hover, .projector-demo ul li a.demo-jr:focus {
-            background: #5dacc1; }
-          .projector-demo ul li a.demo-jr:active {
-            background: #6f7d82; }
-        .projector-demo ul li a.demo-sr {
-          background: rgba(99, 176, 179, 0.5); }
-          .projector-demo ul li a.demo-sr:hover, .projector-demo ul li a.demo-sr:focus {
-            background: #63b0b3; }
-          .projector-demo ul li a.demo-sr:active {
-            background: #6f7d82; }
-        .projector-demo ul li a.demo-postgrad {
-          background: rgba(105, 179, 165, 0.5); }
-          .projector-demo ul li a.demo-postgrad:hover, .projector-demo ul li a.demo-postgrad:focus {
-            background: #69B3A5; }
-          .projector-demo ul li a.demo-postgrad:active {
-            background: #6f7d82; }
-        .projector-demo ul li a.demo-college {
-          background: rgba(231, 75, 164, 0.5); }
-          .projector-demo ul li a.demo-college:hover, .projector-demo ul li a.demo-college:focus {
-            background: #e74ba4; }
-          .projector-demo ul li a.demo-college:active {
-            background: #6f7d82; }
-        .projector-demo ul li a.demo-alum {
-          background: rgba(132, 127, 228, 0.5); }
-          .projector-demo ul li a.demo-alum:hover, .projector-demo ul li a.demo-alum:focus {
-            background: #847fe4; }
-          .projector-demo ul li a.demo-alum:active {
-            background: #6f7d82; }
-        .projector-demo ul li a.demo-hs {
-          background: rgba(230, 129, 78, 0.5); }
-          .projector-demo ul li a.demo-hs:hover, .projector-demo ul li a.demo-hs:focus {
-            background: #e6814e; }
-          .projector-demo ul li a.demo-hs:active {
-            background: #6f7d82; }
-        .projector-demo ul li a.demo-parent {
-          background: rgba(43, 179, 184, 0.5); }
-          .projector-demo ul li a.demo-parent:hover, .projector-demo ul li a.demo-parent:focus {
-            background: #2bb3b8; }
-          .projector-demo ul li a.demo-parent:active {
-            background: #6f7d82; }
-        .projector-demo ul li a.demo-other {
-          background: rgba(99, 112, 116, 0.5); }
-          .projector-demo ul li a.demo-other:hover, .projector-demo ul li a.demo-other:focus {
-            background: #637074; }
-          .projector-demo ul li a.demo-other:active {
-            background: #6f7d82; }
-    .projector-demo ul.demo-3 {
-      margin-top: 0 !important; }
-      .projector-demo ul.demo-3 li a {
-        width: 200px;
-        height: 200px;
-        font-size: 24px !important; }
-  .projector-demo .info-demographic-button {
-    padding-bottom: 15px; }
+    .projector-demo-grids .projector-demo-grid + ul {
+      position: absolute; }
 
-@media screen and (min-width: 768px) {
-  .projector-demo ul {
-    margin-top: 60px !important;
-    max-width: 100% !important; }
-    .projector-demo ul li {
-      padding: 15px; }
-      .projector-demo ul li a {
-        width: 150px;
-        height: 150px;
-        font-size: 20px !important; }
-    .projector-demo ul.demo-3 {
-      margin-top: 0 !important; }
-      .projector-demo ul.demo-3 li a {
-        width: 200px;
-        height: 200px;
-        padding: 15px;
-        font-size: 24px !important; } }
 .projector-account .projector-account-switch-desktop {
   display: none; }
 .projector-account .projector-account-content {

@@ -1,0 +1,36 @@
+@import '../../../../../shared/css/scss/partials/mixin';
+
+.projector-splash {
+	.projector-content {
+		@include flex;
+		@include flex-wrap;
+		@include flex-center;
+	}
+	.projector-splash-header {
+		font-size: 48px;
+		font-weight: 700;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.projector-guru-body {
+	position: absolute;
+	top: 50%;
+	margin-top: -200px;
+	left: -145px;
+	z-index: 10;
+	width: 300px;
+	height: 450px;
+	.student-card {
+		position: absolute;
+		bottom: 103px;
+		left: 50%;
+		margin-left: -120px;
+	}
+	.guru-hands {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
