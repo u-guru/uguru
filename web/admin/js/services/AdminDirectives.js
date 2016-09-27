@@ -37,7 +37,7 @@ angular.module('uguru.admin')
             scope.section = attr.section;
             scope.name = attr.name;
             scope.version = attr.version
-
+            console.log('this should work')
             var callback = function(response) {
                 // console.log();
                 scope.metadata = response["dir"][scope.section][scope.name];
@@ -162,7 +162,9 @@ angular.module('uguru.admin')
         return {
             restrict: 'A',
             replace: false,
+
             link: function(scope, element, attr) {
+                console.log(scope.types, 'yo')
                 scope.types = UtilitiesService.replaceAll(attr.types, ', ', ',').split(',');
                 scope.activateType = function(type) {
                     var onExitElems = element[0].querySelectorAll('[on-exit][ng-if]');

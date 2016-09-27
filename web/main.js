@@ -96,7 +96,7 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
   .state('root.api.animations.one', {
     parent: 'root.api.animations',
     name: 'root.api.animations.one',
-    url: '/{type}/{property}?{template}&{select}&{state}&{hidePlot}',
+    url: '/{type}/{property}?{template}&{bounds}&{select}&{state}&{hidePlot}&{autoPlay}&{startAt}',
     params: {
       kf: 60,
       hidePlot: false,
@@ -215,35 +215,35 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     templateUrl: 'preapp/templates/splash.html',
     controller: 'SplashMadlibController'
   })
-  .state('root.dev.components', {
-    name: 'root.dev.components',
-    parent: 'root.dev',
-    url:'/components',
-    abstract: true,
-    template: '<ui-view class="flex-wrap-center ugrid-2 full-xy"><div class="flex-vertical-center full-y bg-shamrock"></div><div class="flex-vertical-center full-y bg-azure"></div></ui-view>',
-    controller: function($state, $location, $timeout) {
-      console.log($state.current.name);
-    }
-  })
-  .state('root.dev.components.base', {
-    name: 'root.dev.components.base',
-    parent: 'root.dev.components',
-    url:'/base',
-    template: '<ui-view class="flex-wrap-center ugrid-2 full-xy"><div class="flex-vertical-center full-y bg-shamrock">Base Components</div><div class="flex-vertical-center full-y bg-azure"></div></ui-view>',
-    controller: function($state, $location, $timeout) {
-      console.log($state.current.name);
-    }
-  })
-  .state('root.dev.components.base.component', {
-    name: 'root.dev.components.base.component',
-    parent: 'root.dev.components.base',
-    url:'/:cName',
-    templateUrl: 'admin/templates/components/index.html',
-    controller: function($scope, $stateParams) {
-       var componentName = $stateParams.cName
-       $scope.component = {name: componentName, templateUrl: 'shared/templates/components/base/grid/' + $stateParams.cName.replace('-', '.') + '.html'}
-    }
-  })
+  // .state('root.dev.components', {
+  //   name: 'root.dev.components',
+  //   parent: 'root.dev',
+  //   url:'/components',
+  //   abstract: true,
+  //   template: '<ui-view class="flex-wrap-center ugrid-2 full-xy"><div class="flex-vertical-center full-y bg-shamrock"></div><div class="flex-vertical-center full-y bg-azure"></div></ui-view>',
+  //   controller: function($state, $location, $timeout) {
+  //     console.log($state.current.name);
+  //   }
+  // })
+  // .state('root.dev.components.base', {
+  //   name: 'root.dev.components.base',
+  //   parent: 'root.dev.components',
+  //   url:'/base',
+  //   template: '<ui-view class="flex-wrap-center ugrid-2 full-xy"><div class="flex-vertical-center full-y bg-shamrock">Base Components</div><div class="flex-vertical-center full-y bg-azure"></div></ui-view>',
+  //   controller: function($state, $location, $timeout) {
+  //     console.log($state.current.name);
+  //   }
+  // })
+  // .state('root.dev.components.base.component', {
+  //   name: 'root.dev.components.base.component',
+  //   parent: 'root.dev.components.base',
+  //   url:'/:cName',
+  //   templateUrl: 'admin/templates/components/index.html',
+  //   controller: function($scope, $stateParams) {
+  //      var componentName = $stateParams.cName
+  //      $scope.component = {name: componentName, templateUrl: 'shared/templates/components/base/grid/' + $stateParams.cName.replace('-', '.') + '.html'}
+  //   }
+  // })
 
   .state('root.dev-splash', {
     parent: 'root',
@@ -439,14 +439,15 @@ angular.module('uguru', ['ionic', 'restangular', 'ngAnimate', 'uguru.preApp',
     url:'/svg-test',
     templateUrl: 'shared/templates/svg-test.html'
   })
-  .state('root.components', {
-    url:'/dev/components',
-    templateUrl: 'admin/templates/components/index.tpl'
-  })
+  // .state('root.components', {
+  //   url:'/dev/components',
+  //   templateUrl: 'admin/templates/components/index.tpl'
+  // })
   .state('root.single-components', {
     url: '/dev/components/:section/:name',
     templateProvider: function($stateParams) {
-      return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + $stateParams.name + ".tpl'" + '"/> </div>'
+      console.log($stateParams)
+      return '<div ng-include="' + "'shared/templates/components/" + $stateParams.section + "/" + $stateParams.name + ".tpl'" + '"> </div>'
     }
   })
   .state('root.single-components-version', {

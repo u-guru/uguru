@@ -9,6 +9,7 @@ function RootService($timeout, $state) {
     var base_url = '';
     var docItems = [];
     var pauseElement;
+    var viewportSize;
     var setInspectableElem;
     var animations = {custom: [], customNameOnly: []};
     var addElemToInspector;
@@ -2577,11 +2578,15 @@ function RootService($timeout, $state) {
     return addTimeout(fn, delay * slowRatio);
   };
 
-  dynamics.initMatrixFromTransform = function(transform, cb) {
-    var matrix = Matrix.fromTransform(Matrix.matrixForTransform(transform)).decompose();
-    setTimeout(function() {
-            cb && cb(matrix);
-    }, 250)
+  dynamics.initMatrixFromTransform = function(transform, inverse) {
+    if (!inverse) {
+      var matrix = Matrix.fromTransform(Matrix.matrixForTransform(transform)).decompose();
+    } else {
+      var matrix = Matrix.fromTransform(Matrix.matrixForTransform(transform)).inverse().decompose();
+    }
+    // setTimeout(function() {
+    //         cb && cb(matrix);
+    // }, 250)
     return matrix;
   }
 

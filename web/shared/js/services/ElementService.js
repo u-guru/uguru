@@ -9,7 +9,42 @@ function ElementService($timeout, $state) {
       return {
         scaleSvgCSS:scaleSvgCSS,
         isSVGElement: isSVGElement,
-        getSVGParent: getSVGParent
+        getSVGParent: getSVGParent,
+        isSVG: isSVG,
+        formatElement: formatElement,
+        createBlind: createBlind
+      }
+
+      function formatElement(elem, _type, _window) {
+        if (_type === 'player') {
+          //svg
+          if (elem.viewBox) {
+            var ratio = elem.viewBox.baseVal.width/elem.viewBox.baseVal.height;
+            elem.style.height = _window.height*0.5 * (1/ratio);
+            elem.style.width = _window.width*0.5 * (1/ratio);
+
+            return elem
+
+
+          } else if (isSVG(elem)) {
+            svgElem = getSVGParent(elem)
+            var ratio = svgElem.viewBox.baseVal.width/svgElem.viewBox.baseVal.height;
+            var svgClone = svgElem.cloneNode(true);
+            svgClone.innerHTML = '';
+            svgClone.appendChild(elem.cloneNode(true));
+            svgClone.style.height = _window.height/0.5;
+            svgClone.style.width = _window.width/0.5;
+            return svgClone
+          }
+        }
+        return elem
+      }
+
+      function createBlind(elem) {
+        console.log(elem)
+        var elemParent = getSVGParent(elem)
+
+        // elem.parentNode.appendChild(blindElem);
       }
 
       function scaleSvgCSS(svg_elem, _window, absolute) {
@@ -32,7 +67,13 @@ function ElementService($timeout, $state) {
         }
 
 
+
         return svg_elem;
+      }
+
+      function isSVG(elem) {
+        name = elem.nodeName.toLowerCase();
+        return ['path', 'g', 'rect', 'svg', 'polygon', 'line', 'circle'].indexOf(name) > -1;
       }
 
       function isSVGElement(name) {

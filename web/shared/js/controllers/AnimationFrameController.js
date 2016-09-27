@@ -22,45 +22,58 @@ angular.module('uguru.shared.controllers')
 
 
     afc.params.template = afc.element.objUrl;
-    afc.params.defaults = {kf: getKFFromParams($stateParams),  toolbar:{}, hidePlot: $stateParams.hidePlot === "true", stateName: $stateParams.state};
+    afc.params.defaults = {kf: getKFFromParams($stateParams), startAt:$stateParams.startAt && $stateParams.startAt.replace('p', '%'), autoPlay:$stateParams.autoPlay === 'true',  toolbar:{}, hidePlot: $stateParams.hidePlot === "true", stateName: $stateParams.state};
+    console.log(afc.params.defaults)
     afc.params.formatted = 'p:[' + afc.params.raw + ']';
     afc.getDebugFormat = AnimationFrameService.getDebugFormat;
 
     $timeout(function() {
         $scope.$apply();
-        var stateName = $stateParams.state || 'on-init'
+
+        var stateName = $stateParams.state || ''
         var animContainer = document.querySelector('#anim-element');
+        var navBarElemContainer = document.querySelector('#focused-element');
         animContainer.classList.add('absolute', 'full-xy', 'bottom-0', 'flex-wrap-center')
-        afc.element.dom = animContainer.querySelector($stateParams.select);
 
-        if (ElementService.isSVGElement(afc.element.dom.nodeName)) {
+        afc.element.dom = getDomElementWithBounds(animContainer, $stateParams)
 
 
-          // var parentSVG = ElementService.getSVGParent(afc.element.dom);
-          var parentSVG = afc.element.dom.nearestViewportElement;
-          parentSVG.style.height = $scope.root.window.height/2 + 'px';
-          parentSVG.style.width = $scope.root.window.width/2 + 'px';
-          animContainer.innerHTML = '';
-          animContainer.appendChild(parentSVG)
-          console.log(animContainer)
+        afc.element.dom = ElementService.formatElement(afc.element.dom, 'player', $scope.root.window);
+
+        var domRef = afc.element.dom
+        animContainer.innerHTML = '';
+
+        animContainer.appendChild(afc.element.dom);
+
+
+        if (!$stateParams.state) {
+          afc.params.raw =constructStateStrFromParams($stateParams);
         }
 
 
+        // addBlindToElem(afc.element.dom);
 
+        // append to element container
+        // var clonedElem = afc.element.dom.cloneNode(true);
+        // clonedElem.classList.add('absolute', 'full-xy');
+        // navBarElemContainer.appendChild(clonedElem);
+        // clonedElem.style.height = 'calc(100%)';
+        // clonedElem.style.width = 'calc(100%)';
 
-
-        animContainer.innerHTML = ''
-        animContainer.appendChild(afc.element.dom)
-        // appendParentWithComputedHeight(animContainer, afc.element.dom);
-
-
+        afc.element.dom = domRef;
 
         afc.stateObj = afc.service.init.state(stateName, afc.params.raw, afc.element.dom, afc.params.defaults);
         afc.player = AnimationFrameService.getPlayer();
         afc.player = afc.player.scheduleStream(afc.player, afc.stateObj, afc.stateObj.offset, afc.params.defaults);
+
     }, 100)
 
 
+    function addBlindToElem(elem) {
+      ElementService.createBlind(elem);
+
+      // animContainer.appendChild()
+    }
     function getKFFromParams(params) {
       return params.kf && parseInt(params.kf) || 60
     }
@@ -117,7 +130,11 @@ angular.module('uguru.shared.controllers')
 
     function constructStateStrFromParams(params) {
       var animationShortcuts = RootService.customShortcuts.animProps;
-        var propArgs = params.property.split('+');
+        if (params.property) {
+          var propArgs = params.property.split('+');
+        } else {
+          var propArgs = ['transformX:-50p,50p,1000,bouncePast,0,1,f', 'transformY:-50p,50p,1000,bouncePast,0,1,f'];
+        }
         var argNames = ['property', 'start', 'end', 'duration', 'easingFunc', 'delay', 'iter', 'direction']
         propArgs.forEach(function(prop_anim, i) {
           propArgs[i] = UtilitiesService.replaceAll(prop_anim, ',', ':');
@@ -146,6 +163,21 @@ angular.module('uguru.shared.controllers')
 
         return propArgs.join(',');
     }
+
+    function getDomElementWithBounds(elem, params) {
+        var bounds = (params.bounds || '');
+        var selector = params.select || ''
+        console.log(bounds, selector, elem)
+        if (selector.length && bounds.length) {
+          elem = elem.querySelector(bounds + ' ' + selector);
+
+        } else if (selector) {
+          elem = elem.querySelector(selector);
+        } else {
+          elem = animContainer.firstChild;
+        }
+        return elem
+      }
 
   }
 
