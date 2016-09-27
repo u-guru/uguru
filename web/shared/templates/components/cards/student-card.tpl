@@ -48,7 +48,7 @@
 		</div>
 	</div>
 
-	<!-- ng-if='activeType === "checkbox"' -->
+	<!-- ng-if='activeType === "flip"' -->
 	<div class="student-card"
 		init-with="p-op"
 		on-init="s:[student-card-init:public] | a:[scoop-enter:set:(dur:800ms#func:cubic-bezier(0#0.2#0.3#1)):in]"
