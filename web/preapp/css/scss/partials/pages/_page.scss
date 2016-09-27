@@ -38,9 +38,6 @@
 				height: 42px;
 				top: 8px;
 				left: 8px;
-				svg {
-					transform: rotate(-90deg);
-				}
 			}
 			&.mobile {
 				@include flex;

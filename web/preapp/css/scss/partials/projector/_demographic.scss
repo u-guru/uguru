@@ -1,5 +1,9 @@
 @import '../../../../../shared/css/scss/partials/mixin';
 
+.projector-demo {
+	text-align: center;
+}
+
 .projector-demo-grids {
 	@include flex;
 	@include flex-center;

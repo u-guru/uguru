@@ -5039,6 +5039,28 @@ a[class*="-container"]:hover .map-enter {
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start; }
+.projector-splash .projector-splash-container {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  height: calc(100% - 80px); }
+.projector-splash .projector-splash-header {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -5046,14 +5068,43 @@ a[class*="-container"]:hover .map-enter {
   -webkit-align-content: center;
   align-content: center;
   -webkit-justify-content: center;
-  justify-content: center; }
-.projector-splash .projector-splash-header {
-  font-size: 48px;
-  font-weight: 700;
+  justify-content: center;
   width: 100%;
-  text-align: center; }
+  text-align: center;
+  height: 50px; }
+  .projector-splash .projector-splash-header h1 {
+    font-size: 20px;
+    font-weight: 700; }
+  .projector-splash .projector-splash-header .projector-splash-back {
+    position: absolute;
+    top: 4px;
+    left: 4px; }
+  .projector-splash .projector-splash-header .projector-splash-next {
+    position: absolute;
+    top: 4px;
+    right: 4px; }
+.projector-splash .student-card-mobile {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  align-self: flex-end;
+  width: 100%;
+  padding: 15px; }
 
 .projector-guru-body {
+  display: none;
   position: absolute;
   top: 50%;
   margin-top: -200px;
@@ -5071,6 +5122,22 @@ a[class*="-container"]:hover .map-enter {
     top: 0;
     left: 0; }
 
+@media screen and (min-width: 768px) {
+  .projector-splash .projector-content, .projector-splash .projector-splash-container {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center; }
+  .projector-splash .projector-splash-header h1 {
+    font-size: 48px; }
+  .projector-splash .projector-guru-body {
+    display: block; }
+  .projector-splash .student-card-mobile {
+    display: none; } }
 .projector-access .projector-access-content {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -5205,6 +5272,9 @@ a[class*="-container"]:hover .map-enter {
       display: none; }
     .projector-access .projector-access-content .projector-access-code + div .projector-access-bubble.desktop {
       display: block; } }
+.projector-demo {
+  text-align: center; }
+
 .projector-demo-grids {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -5749,8 +5819,6 @@ a[class*="-container"]:hover .map-enter {
         height: 42px;
         top: 8px;
         left: 8px; }
-        .splash-modal header .splash-exit.desktop svg {
-          transform: rotate(-90deg); }
       .splash-modal header .splash-exit.mobile {
         -ms-box-orient: horizontal;
         display: -webkit-box;

@@ -4,17 +4,47 @@
 	.projector-content {
 		@include flex;
 		@include flex-wrap;
-		@include flex-center;
+		justify-content: center;
+		align-items: flex-start;
+	}
+	.projector-splash-container {
+		@include flex;
+		@include flex-wrap;
+		height: calc(100% - 80px);
 	}
 	.projector-splash-header {
-		font-size: 48px;
-		font-weight: 700;
+		@include flex;
+		@include flex-center;
 		width: 100%;
 		text-align: center;
+		height: 50px;
+		// background: rgba(white, .1);
+		h1 {
+			font-size: 20px;
+			font-weight: 700;
+		}
+		.projector-splash-back {
+			position: absolute;
+			top: 4px;
+			left: 4px;
+		}
+		.projector-splash-next {
+			position: absolute;
+			top: 4px;
+			right: 4px;
+		}
+	}
+	.student-card-mobile {
+		@include flex;
+		@include flex-center;
+		align-self: flex-end;
+		width: 100%;
+		padding: 15px;
 	}
 }
 
 .projector-guru-body {
+	display: none;
 	position: absolute;
 	top: 50%;
 	margin-top: -200px;
@@ -32,5 +62,24 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.projector-splash {
+		.projector-content, .projector-splash-container {
+			@include flex-center;
+		}
+		.projector-splash-header {
+			h1 {
+				font-size: 48px;
+			}
+		}
+		.projector-guru-body {
+			display: block;
+		}
+		.student-card-mobile {
+			display: none;
+		}
 	}
 }
