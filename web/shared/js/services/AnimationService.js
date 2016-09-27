@@ -2585,10 +2585,9 @@ function AnimationService($ionicViewSwitcher, $timeout, $state, RootService) {
   };
 
   dynamics.initMatrixFromTransform = function(transform, cb) {
+
     var matrix = Matrix.fromTransform(Matrix.matrixForTransform(transform)).decompose();
-    setTimeout(function() {
-            cb && cb(matrix);
-    }, 250)
+
     return matrix;
   }
 

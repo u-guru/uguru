@@ -16,11 +16,18 @@ function SVGService(AnimationService) {
     convertPolyToPath: convertPolyToPath,
     getShapeWidthHeight: getShapeWidthHeight,
     generateCSSObjFromPath: generateCSSObjFromPath,
-    svgShapeToPath: svgShapeToPath
+    svgShapeToPath: svgShapeToPath,
+    initSVGElem: initSVGElem
   }
 
   //step two
   //addEventToCalendar
+
+  function initSVGElem(x, x2, y, y2) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg',"svg");
+    svg.setAttributeNS('http://www.w3.org/2000/svg', 'viewBox', [x, y, x2, y2].join(" "));
+    return svg
+  }
 
   function generateCSSObjFromPath(anim_name, path, shape_offset, rotate) {
     var numKeyframes = 60;

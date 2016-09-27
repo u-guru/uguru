@@ -25,8 +25,85 @@ function PropertyService($timeout, $state, UtilitiesService, TweenService, RootS
     defaultPropAnimations: defaultPropAnimations,
     detectPlaybarControlElem: detectPlaybarControlElem,
     getPropJson: getPropJson,
-    parseAnimObjToPropArr: parseAnimObjToPropArr
+    parseAnimObjToPropArr: parseAnimObjToPropArr,
+    getDMatrixString: getDMatrixString
   }
+
+  function getDMatrixString(d_matrix, transform_str, perspective) {
+            transform_str = transform_str + " ";
+            var result = "";
+
+            var defaults = {"scaleX": 1, "scaleY": 1, "scaleZ": 1};
+            var count =0;
+
+            if (d_matrix.skew[0] || transform_str.split('skewX').length > 1) {
+                result += "skewX(" + parseFloat(d_matrix.skew[0], 10).toFixed(4) + 'deg) '
+                count++;
+            }
+            if (d_matrix.skew[1] || transform_str.split('skewY').length > 1) {
+                result += "skewY(" + parseFloat(d_matrix.skew[1], 10).toFixed(4) + 'deg) ';
+                count++;
+            }
+            if (d_matrix.rotate[0] || transform_str.split('rotateX').length > 1) {
+                result += "rotateX(" + parseFloat(d_matrix.rotate[0], 10).toFixed(4) + 'deg) ';
+                count++;
+            }
+
+            if (d_matrix.rotate[1] || transform_str.split('rotateY').length > 1) {
+                result += "rotateY(" + parseFloat(d_matrix.rotate[1], 10).toFixed(4) + "deg) ";
+                count++;
+            }
+            if (d_matrix.rotate[2] || transform_str.split('rotateZ').length > 1) {
+                result += "rotateZ(" + parseFloat(d_matrix.rotate[2], 10).toFixed(4) + "deg) ";
+                count++;
+            }
+            if (d_matrix.translate[0] || transform_str.split('translateX').length > 1) {
+                result += "translateX(" + parseFloat(d_matrix.translate[0], 10).toFixed(4) + "%) ";
+                count++;
+            }
+            if (d_matrix.translate[1] || transform_str.split('translateY').length > 1) {
+                result += "translateY(" + parseFloat(d_matrix.translate[1], 10).toFixed(4) + "%) ";
+                count++;
+            }
+            if (d_matrix.translate[2] || transform_str.split('translateZ').length > 1) {
+                result += "translateZ(" + parseFloat(d_matrix.translate[2], 10).toFixed(4) + "px) ";
+                count++;
+            }
+            if (d_matrix.scale[0] !== 1 && transform_str.split('scaleX').length > 1) {
+                result += "scaleX(" + parseFloat(d_matrix.scale[0], 10).toFixed(4) + ") ";
+                count++;
+            }
+            if (d_matrix.scale[1] !== 1 && transform_str.split('scaleY').length > 1) {
+                result += "scaleY(" + parseFloat(d_matrix.scale[1], 10).toFixed(4) + ") ";
+                count++;
+            }
+            if (d_matrix.scale[2] !== 1 &&  transform_str.split('scaleZ').length > 1) {
+                result += "scaleZ(" + parseFloat(d_matrix.scale[1], 10).toFixed(4) + ") ";
+                count++;
+            }
+            if (transform_str.split('scale(').length > 1) {
+                result += "scaleX(" + parseFloat(d_matrix.scale[0], 10).toFixed(4) + ") scaleY(" + parseFloat(d_matrix.scale[1], 10).toFixed(4) + ") ";
+                count++;
+            }
+            if (transform_str.split('scale3d(').length > 1) {
+                result += "scale3d(" + parseFloat(d_matrix.scale[0], 10).toFixed(4) + ", " + parseFloat(d_matrix.scale[1], 10).toFixed(4) + ", " + parseFloat(d_matrix.scale[1], 10).toFixed(4) +  ") ";
+                count++;
+            }
+            if (perspective && perspective.length) {
+                result += "perspective(" + perspective + ') '
+                count++;
+            }
+            if (transform_str.split('rotate(').length > 1) {
+                var rotateValue = transform_str.split('rotate(')[1].split(')')[0];
+                console.log('rotateValue discovered... hacking..');
+                result += "rotate(" + rotateValue +") ";
+                count++;
+            }
+            if (count) {
+                return result
+            }
+
+        }
 
   function parseKeyframeCSS(css_str) {
     var resultDict = {}

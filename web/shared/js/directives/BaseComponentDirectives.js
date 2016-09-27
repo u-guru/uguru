@@ -12,11 +12,34 @@ angular.module('uguru.shared.directives.base.components')
                     function (lScope, lElem, lAttr) {
                          transclude(lScope, function(clone, innerScope) {
                             // lElem[0].innerHTML = clone[0].innerHTML;
+
                             lElem.html(clone.html())// = .innerHTML;
                             $compile(lElem)(lScope);
                         })
                     },
                     post: angular.noop
+                }
+            }
+        }
+    }])
+    .directive("chart", ["$compile", "SVGService", function($compile, SVGService) {
+        return {
+            restrict: 'E',
+            replace: true,
+            templateUrl: 'shared/templates/components/base/grid/chart.tpl',
+            scope: {stream:'=cData'},
+            compile: function(lElem, attr, transclude) {
+                return {
+                    pre: function(scope, elem, attr) {
+                        scope.stream.showProps = false;
+                        scope.chart = scope.stream.plot;
+                        scope.chartReady = true;
+                        for (vb in scope.chart.vb) {
+                            vb = scope.chart.vb[vb].toFixed(2)
+                        }
+                        $compile(elem)(scope);
+
+                    }
                 }
             }
         }
