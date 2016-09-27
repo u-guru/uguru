@@ -3471,8 +3471,8 @@ fieldset.no-border * {
   display: block; }
   .demographic-tile > svg {
     display: block;
-    max-width: 120px;
-    max-height: 120px; }
+    max-width: 96px;
+    max-height: 96px; }
     .demographic-tile > svg rect {
       fill: none; }
   .demographic-tile > div {
@@ -3517,7 +3517,7 @@ fieldset.no-border * {
       -webkit-justify-content: center;
       justify-content: center; }
       .demographic-tile > div div svg {
-        height: 60px;
+        height: 48px;
         width: auto; }
       .demographic-tile > div div h1 {
         width: 100%;

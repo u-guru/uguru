@@ -6,8 +6,8 @@
 	display: block;
 	> svg {
 		display: block;
-		max-width: 120px;
-		max-height: 120px;
+		max-width: 96px;
+		max-height: 96px;
 		rect {
 			fill: none;
 		}
@@ -26,7 +26,7 @@
 			@include flex-wrap;
 			@include flex-center;
 			svg {
-				height: 60px;
+				height: 48px;
 				width: auto;
 			}
 			h1 {
