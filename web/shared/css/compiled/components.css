@@ -3466,6 +3466,121 @@ fieldset.no-border * {
             width: 30px;
             height: 15px; }
 
+.demographic-tile {
+  position: relative;
+  display: block; }
+  .demographic-tile svg {
+    display: block; }
+    .demographic-tile svg rect {
+      fill: none; }
+  .demographic-tile > div {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: slate; }
+    .demographic-tile > div div {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center; }
+      .demographic-tile > div div svg {
+        height: 100px;
+        width: auto; }
+      .demographic-tile > div div h1 {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center; }
+    .demographic-tile > div .borders {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+      .demographic-tile > div .borders > div:empty {
+        position: absolute; }
+        .demographic-tile > div .borders > div:empty:not(.border-bottom) {
+          border-radius: 2px;
+          background: white; }
+        .demographic-tile > div .borders > div:empty:nth-child(1) {
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 2px; }
+        .demographic-tile > div .borders > div:empty:nth-child(2) {
+          top: 0;
+          right: 0;
+          width: 2px;
+          height: 100%; }
+        .demographic-tile > div .borders > div:empty:nth-child(3) {
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 2px; }
+        .demographic-tile > div .borders > div:empty:nth-child(4) {
+          bottom: 0;
+          left: 0;
+          width: 2px;
+          height: 100%; }
+        .demographic-tile > div .borders > div:empty.border-bottom {
+          bottom: 2px;
+          left: 2px;
+          width: calc(100% - 4px);
+          height: 5px; }
+  .demographic-tile .border-bottom {
+    background: #69B3A5; }
+  .demographic-tile.high-school .border-bottom {
+    background: #ef8f5f; }
+  .demographic-tile.college .border-bottom {
+    background: #6fbfdf; }
+  .demographic-tile.alumni .border-bottom {
+    background: #908bdb; }
+  .demographic-tile.parent .border-bottom {
+    background: #a17abc; }
+  .demographic-tile.professor .border-bottom {
+    background: #71a6b3; }
+  .demographic-tile.freshman .border-bottom {
+    background: #5f9ac1; }
+  .demographic-tile.sophomore .border-bottom {
+    background: #7cc2e3; }
+  .demographic-tile.junior .border-bottom {
+    background: #3e94ac; }
+  .demographic-tile.senior .border-bottom {
+    background: #517b7e; }
+  .demographic-tile.graduate .border-bottom {
+    background: #276a62; }
+
 .card-house .team-card-container .team-card .team-link {
   top: auto !important;
   margin-top: -38px !important;
@@ -4387,10 +4502,10 @@ fieldset.no-border * {
   .credit-card-back div {
     display: block;
     position: absolute;
-    top: 30px;
+    top: 15px;
     left: 0;
     width: 100%;
-    height: 36px;
+    height: 35px;
     background: #2B3234; }
   .credit-card-back ul {
     -ms-box-orient: horizontal;
@@ -4452,7 +4567,6 @@ a.credit-card {
 
 .university-card {
   position: relative;
-  margin: 0 auto;
   border-radius: 10px;
   overflow: hidden;
   transform-origin: center center;
@@ -4520,107 +4634,36 @@ a.credit-card {
     width: 100%;
     height: 100%;
     cursor: pointer; }
-  .university-card .school-card-inside {
+  .university-card .school-card-container, .university-card .school-card-inside {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; }
-    .university-card .school-card-inside .school-card-border {
-      opacity: 0;
-      transition: all 150ms ease-in-out;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 6;
-      width: 100%;
+  .university-card .school-card-container {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    overflow: hidden; }
+    .university-card .school-card-container .school-card-color {
+      background: #8A9EA3;
+      width: 35px;
       height: 100%;
-      border-width: 2px;
-      border-style: solid;
-      border-radius: 10px; }
-    .university-card .school-card-inside .school-card-top {
-      position: relative;
-      z-index: 3;
-      height: calc(100% / 3);
-      background-color: #40484B;
-      border-radius: 10px 10px 0 0; }
-      .university-card .school-card-inside .school-card-top .school-card-icon {
-        border-radius: 1000px;
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
+      border-radius: 10px 0 0 10px; }
+      .university-card .school-card-container .school-card-color .user-icon {
         position: absolute;
-        left: 50%;
-        margin-left: -32px;
-        z-index: 5;
-        top: 15px;
-        width: 64px;
-        height: 64px;
-        background-position: center;
-        background-size: cover;
-        background-color: white;
-        border: 3px solid #40484B; }
-        .university-card .school-card-inside .school-card-top .school-card-icon .school-card-icon-bg {
-          opacity: 0;
-          border-radius: 1000px;
-          transition: all 150ms ease-in-out;
-          display: block;
-          position: absolute;
-          z-index: 6;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%; }
-        .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state {
-          opacity: 0;
-          transition: all 150ms ease-in-out;
-          position: absolute;
-          z-index: 7;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%; }
-          .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg {
-            border-radius: 1000px;
-            transition: all 150ms ease-in-out;
-            display: block;
-            width: 100%;
-            height: 100%;
-            padding: 15px; }
-            .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg path {
-              fill: none;
-              stroke: white;
-              stroke-width: 10px;
-              stroke-linecap: round;
-              stroke-linejoin: round; }
-          .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state:last-child svg {
-            opacity: 0;
-            transform: rotate(45deg); }
-      .university-card .school-card-inside .school-card-top:after {
-        opacity: 0;
-        transition: all 150ms ease-in-out;
-        content: "";
-        position: absolute;
-        z-index: 4;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: 10px 10px 0 0; }
-    .university-card .school-card-inside .school-card-main {
+        z-index: 10;
+        top: 50%;
+        margin-top: -20px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+        border-width: 2px; }
+    .university-card .school-card-container .school-card-info {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -4631,6 +4674,53 @@ a.credit-card {
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-align-items: center;
+      align-items: center;
+      background: white;
+      height: 100%;
+      width: calc(100% - 35px);
+      padding-left: 35px;
+      padding-right: 15px;
+      border-radius: 0 10px 10px 0;
+      color: #40484B; }
+      .university-card .school-card-container .school-card-info h1 {
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600; }
+        .university-card .school-card-container .school-card-info h1 + h2 {
+          margin-top: 0;
+          width: 100%;
+          font-size: 14px;
+          font-weight: 400; }
+  .university-card .school-card-inside .school-card-border {
+    opacity: 0;
+    transition: all 150ms ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    width: 100%;
+    height: 100%;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px; }
+  .university-card .school-card-inside .school-card-top {
+    position: relative;
+    z-index: 3;
+    height: 30%;
+    background-color: #8A9EA3;
+    border-radius: 10px 10px 0 0; }
+    .university-card .school-card-inside .school-card-top .school-card-icon {
+      border-radius: 1000px;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
       -webkit-flex-direction: row;
       flex-direction: row;
       -webkit-align-items: center;
@@ -4639,50 +4729,153 @@ a.credit-card {
       align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
-      position: relative;
-      height: calc(100% / 3 * 2);
-      background: white;
-      border-radius: 0 0 10px 10px;
-      overflow: hidden;
-      color: #40484B; }
-      .university-card .school-card-inside .school-card-main .school-card-map {
-        opacity: .2;
-        position: absolute;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        -moz-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        -o-transform: translateX(-50%);
-        transform: translateX(-50%);
-        bottom: 0;
-        z-index: 2;
-        width: 100%;
-        height: 171%;
-        border-radius: 0 0 10px 10px;
-        overflow: hidden; }
-        .university-card .school-card-inside .school-card-main .school-card-map img {
-          display: block;
-          width: 100%; }
-      .university-card .school-card-inside .school-card-main .school-card-color {
-        opacity: .1;
+      position: absolute;
+      left: 50%;
+      margin-left: -32px;
+      z-index: 5;
+      bottom: -32px;
+      width: 64px;
+      height: 64px;
+      background-position: center;
+      background-size: cover;
+      background-color: white;
+      border: 3px solid #8A9EA3; }
+      .university-card .school-card-inside .school-card-top .school-card-icon .school-card-icon-bg {
+        opacity: 0;
+        border-radius: 1000px;
         transition: all 150ms ease-in-out;
+        display: block;
         position: absolute;
-        z-index: 1;
+        z-index: 6;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
-        border-radius: 0 0 10px 10px;
-        overflow: hidden; }
-      .university-card .school-card-inside .school-card-main .school-card-info {
-        position: relative;
-        z-index: 4;
-        padding-top: 30px; }
-      .university-card .school-card-inside .school-card-main .school-card-footer {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+        height: 100%; }
+      .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state {
         opacity: 0;
+        transition: all 150ms ease-in-out;
+        position: absolute;
+        z-index: 7;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+        .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg {
+          border-radius: 1000px;
+          transition: all 150ms ease-in-out;
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: 15px; }
+          .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg path {
+            fill: none;
+            stroke: white;
+            stroke-width: 10px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
+        .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state:last-child svg {
+          opacity: 0;
+          transform: rotate(45deg); }
+    .university-card .school-card-inside .school-card-top:after {
+      opacity: 0;
+      transition: all 150ms ease-in-out;
+      content: "";
+      position: absolute;
+      z-index: 4;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 10px 10px 0 0; }
+  .university-card .school-card-inside .school-card-main {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: relative;
+    height: 70%;
+    background: white;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    color: #40484B; }
+    .university-card .school-card-inside .school-card-main .school-card-map {
+      opacity: .2;
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+      bottom: 0;
+      z-index: 2;
+      width: 100%;
+      height: 171%;
+      border-radius: 0 0 10px 10px;
+      overflow: hidden; }
+      .university-card .school-card-inside .school-card-main .school-card-map img {
+        display: block;
+        width: 100%; }
+    .university-card .school-card-inside .school-card-main .school-card-color {
+      opacity: .1;
+      transition: all 150ms ease-in-out;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0 0 10px 10px;
+      overflow: hidden; }
+    .university-card .school-card-inside .school-card-main .school-card-info {
+      position: relative;
+      z-index: 4;
+      padding-top: 30px; }
+    .university-card .school-card-inside .school-card-main .school-card-footer {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      transition: all 150ms ease-in-out;
+      align-self: flex-end;
+      position: relative;
+      z-index: 4;
+      height: 36px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 0 0 10px 10px;
+      color: white; }
+      .university-card .school-card-inside .school-card-main .school-card-footer li {
         -ms-box-orient: horizontal;
         display: -webkit-box;
         display: -moz-box;
@@ -4698,73 +4891,48 @@ a.credit-card {
         align-content: center;
         -webkit-justify-content: center;
         justify-content: center;
-        transition: all 150ms ease-in-out;
-        align-self: flex-end;
-        position: relative;
-        z-index: 4;
-        height: 36px;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.4);
-        border-radius: 0 0 10px 10px;
-        color: white; }
-        .university-card .school-card-inside .school-card-main .school-card-footer li {
-          -ms-box-orient: horizontal;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -moz-flex;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
-          -webkit-align-content: center;
-          align-content: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          width: calc(100% / 3);
-          font-size: 16px;
-          font-weight: 600;
-          text-align: center; }
-          .university-card .school-card-inside .school-card-main .school-card-footer li span {
-            display: block; }
-          .university-card .school-card-inside .school-card-main .school-card-footer li svg {
-            display: block;
-            margin-right: 5px;
-            width: 28px;
-            height: 28px; }
-            .university-card .school-card-inside .school-card-main .school-card-footer li svg path {
-              fill: none;
-              stroke: white;
-              stroke-width: 5px;
-              stroke-linecap: round;
-              stroke-linejoin: round; }
-      .university-card .school-card-inside .school-card-main h1, .university-card .school-card-inside .school-card-main h2 {
-        transition: all 150ms ease-in-out;
-        text-align: center;
-        margin: 0 !important; }
-      .university-card .school-card-inside .school-card-main h1 {
-        font-size: 24px;
-        font-weight: 700; }
-        .university-card .school-card-inside .school-card-main h1:first-letter {
-          text-transform: uppercase; }
-        .university-card .school-card-inside .school-card-main h1 + h1 {
-          position: absolute;
-          top: 30px;
-          color: rgba(43, 50, 52, 0.4);
-          width: 100%; }
-      .university-card .school-card-inside .school-card-main.no-footer .school-card-info {
-        padding-top: 15px; }
-      .university-card .school-card-inside .school-card-main.no-footer h1 + h1 {
-        top: 15px; }
-      .university-card .school-card-inside .school-card-main h2 {
+        width: calc(100% / 3);
         font-size: 16px;
-        font-weight: 600; }
-        .university-card .school-card-inside .school-card-main h2 span:first-child {
-          text-transform: capitalize; }
-        .university-card .school-card-inside .school-card-main h2 span:last-child {
-          text-transform: uppercase; }
+        font-weight: 600;
+        text-align: center; }
+        .university-card .school-card-inside .school-card-main .school-card-footer li span {
+          display: block; }
+        .university-card .school-card-inside .school-card-main .school-card-footer li svg {
+          display: block;
+          margin-right: 5px;
+          width: 28px;
+          height: 28px; }
+          .university-card .school-card-inside .school-card-main .school-card-footer li svg path {
+            fill: none;
+            stroke: white;
+            stroke-width: 5px;
+            stroke-linecap: round;
+            stroke-linejoin: round; }
+    .university-card .school-card-inside .school-card-main h1, .university-card .school-card-inside .school-card-main h2 {
+      transition: all 150ms ease-in-out;
+      text-align: center;
+      margin: 0 !important; }
+    .university-card .school-card-inside .school-card-main h1 {
+      font-size: 24px;
+      font-weight: 700; }
+      .university-card .school-card-inside .school-card-main h1:first-letter {
+        text-transform: uppercase; }
+      .university-card .school-card-inside .school-card-main h1 + h1 {
+        position: absolute;
+        top: 30px;
+        color: rgba(43, 50, 52, 0.4);
+        width: 100%; }
+    .university-card .school-card-inside .school-card-main.no-footer .school-card-info {
+      padding-top: 15px; }
+    .university-card .school-card-inside .school-card-main.no-footer h1 + h1 {
+      top: 15px; }
+    .university-card .school-card-inside .school-card-main h2 {
+      font-size: 16px;
+      font-weight: 600; }
+      .university-card .school-card-inside .school-card-main h2 span:first-child {
+        text-transform: capitalize; }
+      .university-card .school-card-inside .school-card-main h2 span:last-child {
+        text-transform: uppercase; }
   .university-card input:hover + .school-card-inside .school-card-top .school-card-icon .school-card-icon-bg {
     opacity: .7; }
   .university-card input:hover + .school-card-inside .school-card-top .school-card-icon .school-card-state {
@@ -4779,6 +4947,23 @@ a.credit-card {
     opacity: .7; }
   .university-card input:checked + .school-card-inside .school-card-top .school-card-icon .school-card-state {
     opacity: 1; }
+  .university-card.mini .rect {
+    width: 100%;
+    max-width: 144px;
+    height: auto; }
+  .university-card.mini .school-card-inside .school-card-top .school-card-icon {
+    left: 50%;
+    margin-left: -19px;
+    bottom: -19px;
+    width: 38px;
+    height: 38px;
+    border: 2px solid #8A9EA3; }
+  .university-card.mini .school-card-inside .school-card-main .school-card-info {
+    padding-top: 9px; }
+  .university-card.mini .school-card-inside .school-card-main h1 {
+    font-size: 14px; }
+  .university-card.mini .school-card-inside .school-card-main h2 {
+    font-size: 9px; }
 
 .pf-card {
   width: 100%;
@@ -5091,104 +5276,47 @@ a.credit-card {
   position: relative;
   width: 100%;
   max-width: 240px;
-  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
-  .student-card.with-hover {
-    transform-origin: center center;
-    transition: all 150ms ease-in; }
-    .student-card.with-hover:hover, .student-card.with-hover:focus {
-      transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2);
-      transform: translateZ(20px); }
-    .student-card.with-hover:active {
-      transition: all 150ms ease-in;
-      transform: translateZ(-20px); }
-    .student-card.with-hover .school-id-hover {
-      opacity: 0;
-      transition: all 150ms ease-in-out;
-      position: absolute;
-      z-index: 10;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%; }
-      .student-card.with-hover .school-id-hover:hover, .student-card.with-hover .school-id-hover:focus {
-        opacity: 1; }
-      .student-card.with-hover .school-id-hover > span {
-        opacity: .95;
-        display: block;
-        z-index: 1;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 10px; }
-      .student-card.with-hover .school-id-hover > div {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-flow: row wrap;
-        -webkit-flex-flow: row wrap;
-        flex-flow: row wrap;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        height: 100%;
-        padding: 15px;
-        font-size: 18px;
-        font-weight: 600;
-        color: white; }
   .student-card > svg {
     display: block;
     width: 100%;
     max-width: 100%;
     height: auto; }
-  .student-card .school-id-inside {
+  .student-card .school-id-front, .student-card .school-id-back, .student-card .school-id-inside, .student-card .school-id-list, .student-card .school-id-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; }
-    .student-card .school-id-inside .school-id-bg {
-      position: absolute;
-      z-index: 10;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      background-repeat: no-repeat;
-      background-position: -120px 50%;
-      background-size: 240px 240px;
-      opacity: 0.25; }
-    .student-card .school-id-inside .school-id-top {
-      height: 30%;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      background-color: #8A9EA3; }
-      .student-card .school-id-inside .school-id-top .user-icon {
-        position: absolute;
-        z-index: 10;
-        top: calc(30% - 32px);
-        left: 15px;
-        width: 64px;
-        height: 64px;
-        border-width: 2px;
-        background-color: white;
-        border-color: #8A9EA3; }
-    .student-card .school-id-inside .school-id-bottom {
+    height: 100%;
+    backface-visibility: hidden; }
+  .student-card .school-id-bg {
+    z-index: 10;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: -120px 50%;
+    background-size: 240px 240px;
+    opacity: 0.15; }
+  .student-card .school-id-courses {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 !important; }
+    .student-card .school-id-courses > span:first-child {
+      display: block;
+      white-space: nowrap; }
+    .student-card .school-id-courses > span:nth-child(2) {
+      border-radius: 1000px;
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -5196,59 +5324,100 @@ a.credit-card {
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      height: 70%;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      width: 25px;
+      height: 24px;
+      background: #8A9EA3;
+      color: white;
+      font-size: 12px;
+      margin: 0 10px; }
+    .student-card .school-id-courses a {
+      display: block;
+      color: #40484B;
+      font-size: 14px; }
+      .student-card .school-id-courses a span {
+        opacity: 0.5; }
+      .student-card .school-id-courses a:hover span, .student-card .school-id-courses a:focus span {
+        opacity: 0.75; }
+      .student-card .school-id-courses a:active span {
+        opacity: 1; }
+  .student-card .school-id-email {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600; }
+  .student-card .school-id-pw {
+    width: 100%;
+    line-height: 0.3; }
+  .student-card .school-id-access {
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Source Code Pro", monospace !important; }
+    .student-card .school-id-access div:empty {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: #40484B;
+      border-radius: 2px;
+      opacity: 0.2; }
+    .student-card .school-id-access span {
+      position: relative;
+      z-index: 2;
+      display: block;
+      padding: 5px;
+      text-align: center; }
+  .student-card .school-id-list {
+    height: 100%;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    overflow: hidden; }
+    .student-card .school-id-list .school-id-color {
+      background: #8A9EA3;
+      width: 35px;
+      height: 100%;
+      border-radius: 10px 0 0 10px; }
+      .student-card .school-id-list .school-id-color .user-icon {
+        position: absolute;
+        z-index: 10;
+        top: 50%;
+        margin-top: -20px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+        border-width: 2px; }
+    .student-card .school-id-list ul {
       background: white;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      padding: 10px 15px;
-      text-align: right;
-      line-height: 1.1; }
-      .student-card .school-id-inside .school-id-bottom > div {
-        position: relative;
-        z-index: 10; }
-      .student-card .school-id-inside .school-id-bottom * {
-        color: #40484B; }
-      .student-card .school-id-inside .school-id-bottom h1, .student-card .school-id-inside .school-id-bottom h2 {
+      height: 100%;
+      width: calc(100% - 35px);
+      overflow: auto;
+      border-radius: 0 10px 10px 0;
+      color: #40484B; }
+      .student-card .school-id-list ul::-webkit-scrollbar {
+        display: none; }
+      .student-card .school-id-list ul::-moz-scrollbar {
+        display: none; }
+      .student-card .school-id-list ul li {
         width: 100%;
-        margin: 0 !important; }
-      .student-card .school-id-inside .school-id-bottom h1 {
-        font-size: 20px;
-        font-weight: 600; }
-      .student-card .school-id-inside .school-id-bottom h2 {
-        font-size: 14px;
-        font-weight: 600; }
-        .student-card .school-id-inside .school-id-bottom h2 + h2 {
-          font-weight: 400; }
-      .student-card .school-id-inside .school-id-bottom h3 {
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        align-content: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        align-self: flex-end;
-        width: 100%;
-        font-size: 16px;
-        font-weight: 600;
-        margin: 0 !important; }
-        .student-card .school-id-inside .school-id-bottom h3 > span:first-child {
-          display: block;
-          white-space: nowrap;
-          width: 150px; }
-        .student-card .school-id-inside .school-id-bottom h3 > span:nth-child(2) {
-          border-radius: 1000px;
+        height: 100%;
+        padding-left: 35px;
+        padding-right: 15px; }
+        .student-card .school-id-list ul li > div {
           -ms-box-orient: horizontal;
           display: -webkit-box;
           display: -moz-box;
@@ -5256,33 +5425,130 @@ a.credit-card {
           display: -moz-flex;
           display: -webkit-flex;
           display: flex;
-          -webkit-flex-direction: row;
-          flex-direction: row;
-          -webkit-align-items: center;
-          align-items: center;
+          -ms-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
           -webkit-align-content: center;
           align-content: center;
-          -webkit-justify-content: center;
-          justify-content: center;
-          width: 25px;
-          height: 24px;
-          background: #8A9EA3;
-          color: white;
-          font-size: 12px;
-          margin: 0 10px; }
-        .student-card .school-id-inside .school-id-bottom h3 a {
-          display: block;
-          width: 26px;
-          font-size: 14px; }
-          .student-card .school-id-inside .school-id-bottom h3 a span {
-            opacity: 0.5; }
-          .student-card .school-id-inside .school-id-bottom h3 a:hover span, .student-card .school-id-inside .school-id-bottom h3 a:focus span {
-            opacity: 0.75; }
-          .student-card .school-id-inside .school-id-bottom h3 a:active span {
-            opacity: 1; }
-      .student-card .school-id-inside .school-id-bottom > div {
-        align-self: flex-start;
+          -webkit-align-items: center;
+          align-items: center;
+          width: 100%;
+          height: 100%; }
+        .student-card .school-id-list ul li .school-id-name h1 {
+          width: 100%;
+          font-size: 20px;
+          font-weight: 600; }
+        .student-card .school-id-list ul li .school-id-access div:empty {
+          border-radius: 8px; }
+        .student-card .school-id-list ul li .school-id-details h2 {
+          width: 100%;
+          font-size: 14px;
+          font-weight: 600; }
+          .student-card .school-id-list ul li .school-id-details h2 + h2 {
+            margin-top: 0;
+            font-weight: 400; }
+  .student-card .school-id-back {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    align-content: space-between;
+    transform: rotateY(180deg);
+    background: white;
+    border-radius: 10px; }
+    .student-card .school-id-back * {
+      color: #40484B; }
+    .student-card .school-id-back .school-id-bar {
+      display: block;
+      margin-top: 15px;
+      width: 100%;
+      height: 35px;
+      background: #2B3234; }
+    .student-card .school-id-back .school-id-info ul {
+      -ms-box-orient: horizontal;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      width: 100%;
+      padding: 7.5px; }
+      .student-card .school-id-back .school-id-info ul li {
+        padding: 7.5px;
         width: 100%; }
+    .student-card .school-id-back .school-id-info .school-id-bar-code {
+      padding: 0 15px 15px; }
+      .student-card .school-id-back .school-id-info .school-id-bar-code svg {
+        width: 100%;
+        height: auto; }
+  .student-card .school-id-top {
+    height: 30%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #8A9EA3; }
+    .student-card .school-id-top .user-icon {
+      position: absolute;
+      z-index: 10;
+      top: calc(30% - 32px);
+      left: 15px;
+      width: 64px;
+      height: 64px;
+      border-width: 2px;
+      background-color: white;
+      border-color: #8A9EA3; }
+  .student-card .school-id-bottom {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: 70%;
+    background: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px 15px;
+    text-align: right;
+    line-height: 1.1; }
+    .student-card .school-id-bottom > * {
+      align-self: flex-start;
+      position: relative;
+      z-index: 10;
+      width: 100%; }
+    .student-card .school-id-bottom * {
+      color: #40484B; }
+    .student-card .school-id-bottom h1, .student-card .school-id-bottom h2 {
+      width: 100%;
+      margin: 0 !important; }
+    .student-card .school-id-bottom h1 {
+      font-size: 20px;
+      font-weight: 600; }
+    .student-card .school-id-bottom h2 {
+      font-size: 14px;
+      font-weight: 600; }
+      .student-card .school-id-bottom h2 + h2 {
+        font-weight: 400; }
+    .student-card .school-id-bottom .school-id-courses {
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      align-self: flex-end; }
 
 .pf-card-outline {
   position: relative;
@@ -5452,6 +5718,49 @@ a.credit-card {
       margin: 0;
       font-size: 24px;
       font-weight: 600; }
+  .course-card.short .course-card-border {
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    border-radius: 2px 0 0 2px; }
+  .course-card.short .course-card-inside {
+    justify-content: flex-start;
+    text-align: left;
+    padding-right: 47px; }
+    .course-card.short .course-card-inside h2 {
+      width: 100%;
+      font-size: 10px;
+      margin-bottom: 0;
+      line-height: 1; }
+    .course-card.short .course-card-inside h1 {
+      width: 100%;
+      font-size: 16px; }
+  .course-card.mini > svg {
+    width: 100%;
+    max-width: 144px;
+    height: auto; }
+  .course-card.mini .course-card-border {
+    height: 3px; }
+  .course-card.mini .course-card-inside h2 {
+    font-size: 8px;
+    margin-bottom: 3px; }
+  .course-card.mini .course-card-inside h1 {
+    font-size: 14px; }
+  .course-card.tiny .course-card-border {
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    border-radius: 2px 0 0 2px; }
+  .course-card.tiny .course-card-inside {
+    position: static;
+    width: auto;
+    height: auto;
+    background: white;
+    padding-right: 47px; }
+    .course-card.tiny .course-card-inside h2 {
+      margin-bottom: 0; }
   .course-card .course-card-hover {
     transition: all 150ms ease-in-out;
     display: none;

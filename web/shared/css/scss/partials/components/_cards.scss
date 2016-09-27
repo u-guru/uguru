@@ -1,5 +1,141 @@
 @import '../mixin';
 
+// demogrpahic tile
+.demographic-tile {
+	position: relative;
+	display: block;
+	svg {
+		display: block;
+		rect {
+			fill: none;
+		}
+	}
+	> div {
+		@include flex;
+		@include flex-center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: slate;
+		div {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center;
+			svg {
+				height: 100px;
+				width: auto;
+			}
+			h1 {
+				width: 100%;
+				font-size: 20px;
+				font-weight: 600;
+				text-align: center;
+			}
+		}
+		.borders {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			> div:empty {
+				position: absolute;
+				&:not(.border-bottom) {
+					border-radius: 2px;
+					background: white;
+				}
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 2px;
+				}
+				&:nth-child(2) {
+					top: 0;
+					right: 0;
+					width: 2px;
+					height: 100%;
+				}
+				&:nth-child(3) {
+					bottom: 0;
+					right: 0;
+					width: 100%;
+					height: 2px;
+				}
+				&:nth-child(4) {
+					bottom: 0;
+					left: 0;
+					width: 2px;
+					height: 100%;
+				}
+				&.border-bottom {
+					bottom: 2px;
+					left: 2px;
+					width: calc(100% - 4px);
+					height: 5px;
+				}
+			}
+		}
+	}
+	.border-bottom {
+		background: $shamrock;
+	}
+
+	&.high-school {
+		.border-bottom {
+			background: #ef8f5f;
+		}
+	}
+	&.college {
+		.border-bottom {
+			background: #6fbfdf;
+		}
+	}
+	&.alumni {
+		.border-bottom {
+			background: desaturate(mix(white, $cobalt, 10%), 15%);
+		}
+	}
+	&.parent {
+		.border-bottom {
+			background: desaturate(mix(white, $eggplant, 10%), 15%);
+		}
+	}
+	&.professor {
+		.border-bottom {
+			background: desaturate(mix(white, $azure, 10%), 10%);
+		}
+	}
+
+	&.freshman {
+		.border-bottom {
+			background: #5f9ac1;
+		}
+	}
+	&.sophomore {
+		.border-bottom {
+			background: #7cc2e3;
+		}
+	}
+	&.junior {
+		.border-bottom {
+			background: #3e94ac;
+		}
+	}
+	&.senior {
+		.border-bottom {
+			background: #517b7e;
+		}
+	}
+	&.graduate {
+		.border-bottom {
+			background: #276a62;
+		}
+	}
+}
+
 // team card
 .card-house {
 	.team-card-container {
@@ -1337,10 +1473,10 @@
 	div {
 		display: block;
 		position: absolute;
-		top: 30px;
+		top: 15px;
 		left: 0;
 		width: 100%;
-		height: 36px;
+		height: 35px;
 		background: $charcoal;
 	}
 	ul {
@@ -1412,7 +1548,7 @@ a.credit-card {
 // university card
 .university-card {
 	position: relative;
-	margin: 0 auto;
+	// margin: 0 auto;
 	border-radius: 10px;
 	overflow: hidden;
 	transform-origin: center center;
@@ -1475,12 +1611,57 @@ a.credit-card {
 		height: 100%;
 		cursor: pointer;
 	}
-	.school-card-inside {
+	.school-card-container, .school-card-inside {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
+	}
+	.school-card-container {
+		@include flex;
+		overflow: hidden;
+		.school-card-color {
+			background: $campus;
+			width: 35px;
+			height: 100%;
+			border-radius: 10px 0 0 10px;
+			.user-icon {
+				position: absolute;
+				z-index: 10;
+				top: 50%;
+				margin-top: -20px;
+				left: 15px;
+				width: 40px;
+				height: 40px;
+				border-width: 2px;
+			}
+		}
+		.school-card-info {
+			@include flex;
+			@include flex-wrap;
+			@include flex-center-vertical;
+			background: white;
+			height: 100%;
+			width: calc(100% - 35px);
+			padding-left: 35px;
+			padding-right: 15px;
+			border-radius: 0 10px 10px 0;
+			color: $slate;
+			h1 {
+				width: 100%;
+				font-size: 18px;
+				font-weight: 600;
+				+ h2 {
+					margin-top: 0;
+					width: 100%;
+					font-size: 14px;
+					font-weight: 400;
+				}
+			}
+		}
+	}
+	.school-card-inside {
 		.school-card-border {
 			opacity: 0;
 			transition: all 150ms ease-in-out;
@@ -1497,8 +1678,8 @@ a.credit-card {
 		.school-card-top {
 			position: relative;
 			z-index: 3;
-			height: calc(100% / 3);
-			background-color: $slate;
+			height: 30%;
+			background-color: $campus;
 			border-radius: 10px 10px 0 0;
 			.school-card-icon {
 				@include round;
@@ -1508,13 +1689,13 @@ a.credit-card {
 				left: 50%;
 				margin-left: -32px;
 				z-index: 5;
-				top: 15px;
+				bottom: -32px;
 				width: 64px;
 				height: 64px;
 				background-position: center;
 				background-size: cover;
 				background-color: white;
-				border: 3px solid $slate;
+				border: 3px solid $campus;
 				.school-card-icon-bg {
 					opacity: 0;
 					@include round;
@@ -1565,7 +1746,7 @@ a.credit-card {
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background: rgba(white,.8);
+				background: white;
 				border-radius: 10px 10px 0 0;
 			}
 		}
@@ -1574,7 +1755,7 @@ a.credit-card {
 			@include flex-wrap;
 			@include flex-center;
 			position: relative;
-			height: calc(100% / 3 * 2);
+			height: 70%;
 			background: white;
 			border-radius: 0 0 10px 10px;
 			overflow: hidden;
@@ -1726,6 +1907,36 @@ a.credit-card {
 				}
 				.school-card-state {
 					opacity: 1;
+				}
+			}
+		}
+	}
+	&.mini {
+		.rect {
+			width: 100%;
+			max-width: 144px;
+			height: auto;
+		}
+		.school-card-inside {
+			.school-card-top {
+				.school-card-icon {
+					left: 50%;
+					margin-left: -19px;
+					bottom: -19px;
+					width: 38px;
+					height: 38px;
+					border: 2px solid $campus;
+				}
+			}
+			.school-card-main {
+				.school-card-info {
+					padding-top: 9px;
+				}
+				h1 {
+					font-size: 14px;
+				}
+				h2 {
+					font-size: 9px;
 				}
 			}
 		}
@@ -2269,177 +2480,316 @@ a.credit-card {
 	position: relative;
 	width: 100%;
 	max-width: 240px;
-	@include prefix(transform-style, preserve-3d, webkit);
-	&.with-hover {
-		transform-origin: center center;
-		transition: all 150ms ease-in;
-		&:hover, &:focus {
-			transition: all 600ms cubic-bezier(.6,0,.1,2);
-			transform: translateZ(20px);
-		}
-		&:active {
-			transition: all 150ms ease-in;
-			transform: translateZ(-20px);
-		}
-		.school-id-hover {
-			opacity: 0;
-			transition: all 150ms ease-in-out;
-			position: absolute;
-			z-index: 10;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			&:hover, &:focus {
-				opacity: 1;
-			}
-			> span {
-				opacity: .95;
-				display: block;
-				z-index: 1;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				border-radius: 10px;
-			}
-			> div {
-				@include flex;
-				@include flex-wrap;
-				@include flex-center;
-				position: relative;
-				z-index: 2;
-				width: 100%;
-				height: 100%;
-				padding: 15px;
-				font-size: 18px;
-				font-weight: 600;
-				color: white;
-			}
-		}
-	}
+	transform-style: preserve-3d;
+	// &.with-hover {
+	// 	transform-origin: center center;
+	// 	transition: all 150ms ease-in;
+	// 	&:hover, &:focus {
+	// 		transition: all 600ms cubic-bezier(.6,0,.1,2);
+	// 		transform: translateZ(20px);
+	// 	}
+	// 	&:active {
+	// 		transition: all 150ms ease-in;
+	// 		transform: translateZ(-20px);
+	// 	}
+	// 	.school-id-hover {
+	// 		opacity: 0;
+	// 		transition: all 150ms ease-in-out;
+	// 		position: absolute;
+	// 		z-index: 10;
+	// 		top: 0;
+	// 		left: 0;
+	// 		width: 100%;
+	// 		height: 100%;
+	// 		&:hover, &:focus {
+	// 			opacity: 1;
+	// 		}
+	// 		> span {
+	// 			opacity: .95;
+	// 			display: block;
+	// 			z-index: 1;
+	// 			position: absolute;
+	// 			top: 0;
+	// 			left: 0;
+	// 			width: 100%;
+	// 			height: 100%;
+	// 			border-radius: 10px;
+	// 		}
+	// 		> div {
+	// 			@include flex;
+	// 			@include flex-wrap;
+	// 			@include flex-center;
+	// 			position: relative;
+	// 			z-index: 2;
+	// 			width: 100%;
+	// 			height: 100%;
+	// 			padding: 15px;
+	// 			font-size: 18px;
+	// 			font-weight: 600;
+	// 			color: white;
+	// 		}
+	// 	}
+	// }
 	> svg {
 		display: block;
 		width: 100%;
 		max-width: 100%;
 		height: auto;
 	}
-	.school-id-inside {
+	.school-id-front, .school-id-back, .school-id-inside, .school-id-list, .school-id-bg {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		.school-id-bg {
+		backface-visibility: hidden;
+	}
+	.school-id-bg {
+		z-index: 10;
+		border-radius: 10px;
+		background-repeat: no-repeat;
+		background-position: -120px 50%;
+		background-size: 240px 240px;
+		opacity: 0.15;
+	}
+	.school-id-courses {
+		@include flex;
+		@include flex-center-vertical;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 600;
+		margin: 0!important;
+		> span:first-child {
+			display: block;
+			white-space: nowrap;
+			// width: 150px;
+		}
+		> span:nth-child(2) {
+			@include round;
+			@include flex;
+			@include flex-center;
+			width: 25px;
+			height: 24px;
+			background: $campus;
+			color: white;
+			font-size: 12px;
+			margin: 0 10px;
+		}
+		a {
+			display: block;
+			color: $slate;
+			// width: 26px;
+			font-size: 14px;
+			span {
+				opacity: 0.5;
+			}
+			&:hover, &:focus {
+				span {
+					opacity: 0.75;
+				}
+			}
+			&:active {
+				span {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.school-id-email {
+		width: 100%;
+		font-size: 14px;
+		font-weight: 600;
+	}
+	.school-id-pw {
+		width: 100%;
+		line-height: 0.3;
+	}
+	.school-id-access {
+		position: relative;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 400;
+		font-family: "Source Code Pro", monospace!important;
+		div:empty {
 			position: absolute;
-			z-index: 10;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
-			border-radius: 10px;
-			background-repeat: no-repeat;
-			background-position: -120px 50%;
-			background-size: 240px 240px;
-			opacity: 0.25;
+			z-index: 1;
+			background: $slate;
+			border-radius: 2px;
+			opacity: 0.2;
 		}
-		.school-id-top {
-			height: 30%;
-			border-top-left-radius: 10px;
-			border-top-right-radius: 10px;
-			background-color: $campus;
+		span {
+			position: relative;
+			z-index: 2;
+			display: block;
+			padding: 5px;
+			text-align: center;
+		}
+	}
+	.school-id-list {
+		height: 100%;
+		@include flex;
+		overflow: hidden;
+		.school-id-color {
+			background: $campus;
+			width: 35px;
+			height: 100%;
+			border-radius: 10px 0 0 10px;
 			.user-icon {
 				position: absolute;
 				z-index: 10;
-				top: calc(30% - 32px);
+				top: 50%;
+				margin-top: -20px;
 				left: 15px;
-				width: 64px;
-				height: 64px;
+				width: 40px;
+				height: 40px;
 				border-width: 2px;
-				background-color: white;
-				border-color: $campus;
 			}
 		}
-		.school-id-bottom {
-			@include flex;
-			@include flex-wrap;
-			height: 70%;
+		ul {
 			background: white;
-			border-bottom-left-radius: 10px;
-			border-bottom-right-radius: 10px;
-			padding: 10px 15px;
-			text-align: right;
-			line-height: 1.1;
-			> div {
-				position: relative;
-				z-index: 10;
+			height: 100%;
+			width: calc(100% - 35px);
+			overflow: auto;
+			border-radius: 0 10px 10px 0;
+			color: $slate;
+			&::-webkit-scrollbar {
+				display: none;
 			}
-			* {
-				color: $slate;
+			&::-moz-scrollbar {
+				display: none;
 			}
-			h1, h2 {
+			li {
 				width: 100%;
-				margin: 0!important;
-			}
-			h1 {
-				font-size: 20px;
-				font-weight: 600;
-			}
-			h2 {
-				font-size: 14px;
-				font-weight: 600;
-				+ h2 {
-					font-weight: 400;
-				}
-			}
-			h3 {
-				@include flex;
-				@include flex-center;
-				align-self: flex-end;
-				width: 100%;
-				font-size: 16px;
-				font-weight: 600;
-				margin: 0!important;
-				> span:first-child {
-					display: block;
-					white-space: nowrap;
-					width: 150px;
-				}
-				> span:nth-child(2) {
-					@include round;
+				height: 100%;
+				padding-left: 35px;
+				padding-right: 15px;
+				> div {
 					@include flex;
-					@include flex-center;
-					width: 25px;
-					height: 24px;
-					background: $campus;
-					color: white;
-					font-size: 12px;
-					margin: 0 10px;
+					@include flex-wrap;
+					@include flex-center-vertical;
+					width: 100%;
+					height: 100%;
 				}
-				a {
-					display: block;
-					width: 26px;
-					font-size: 14px;
-					span {
-						opacity: 0.5;
+				.school-id-name {
+					h1 {
+						width: 100%;
+						font-size: 20px;
+						font-weight: 600;
 					}
-					&:hover, &:focus {
-						span {
-							opacity: 0.75;
-						}
+				}
+				.school-id-access {
+					div:empty {
+						border-radius: 8px;
 					}
-					&:active {
-						span {
-							opacity: 1;
+				}
+				.school-id-details {
+					h2 {
+						width: 100%;
+						font-size: 14px;
+						font-weight: 600;
+						+ h2 {
+							margin-top: 0;
+							font-weight: 400;
 						}
 					}
 				}
 			}
-			> div {
-				align-self: flex-start;
+		}
+	}
+	.school-id-back {
+		@include flex;
+		@include flex-wrap;
+		align-content: space-between;
+		transform: rotateY(180deg);
+		background: white;
+		border-radius: 10px;
+		* {
+			color: $slate;
+		}
+		.school-id-bar {
+			display: block;
+			margin-top: 15px;
+			width: 100%;
+			height: 35px;
+			background: $charcoal;
+		}
+		.school-id-info {
+			ul {
+				@include flex;
 				width: 100%;
+				padding: 7.5px;
+				li {
+					padding: 7.5px;
+					width: 100%;
+				}
 			}
+			.school-id-bar-code {
+				padding: 0 15px 15px;
+				svg {
+					width: 100%;
+					height: auto;
+				}
+			}
+		}
+	}
+	.school-id-top {
+		height: 30%;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		background-color: $campus;
+		.user-icon {
+			position: absolute;
+			z-index: 10;
+			top: calc(30% - 32px);
+			left: 15px;
+			width: 64px;
+			height: 64px;
+			border-width: 2px;
+			background-color: white;
+			border-color: $campus;
+		}
+	}
+	.school-id-bottom {
+		@include flex;
+		@include flex-wrap;
+		height: 70%;
+		background: white;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		padding: 10px 15px;
+		text-align: right;
+		line-height: 1.1;
+		> * {
+			align-self: flex-start;
+			position: relative;
+			z-index: 10;
+			width: 100%;
+		}
+		* {
+			color: $slate;
+		}
+		h1, h2 {
+			width: 100%;
+			margin: 0!important;
+		}
+		h1 {
+			font-size: 20px;
+			font-weight: 600;
+		}
+		h2 {
+			font-size: 14px;
+			font-weight: 600;
+			+ h2 {
+				font-weight: 400;
+			}
+		}
+		.school-id-courses {
+			@include flex-center;
+			align-self: flex-end;
 		}
 	}
 }
@@ -2603,6 +2953,68 @@ a.credit-card {
 			margin: 0;
 			font-size: 24px;
 			font-weight: 600;
+		}
+	}
+	&.short {
+		.course-card-border {
+			top: 0;
+			left: 0;
+			width: 5px;
+			height: 100%;
+			border-radius: 2px 0 0 2px;
+		}
+		.course-card-inside {
+			justify-content: flex-start;
+			text-align: left;
+			padding-right: 47px;
+			h2 {
+				width: 100%;
+				font-size: 10px;
+				margin-bottom: 0;
+				line-height: 1;
+			}
+			h1 {
+				width: 100%;
+				font-size: 16px;
+			}
+		}
+	}
+	&.mini {
+		> svg {
+			width: 100%;
+			max-width: 144px;
+			height: auto;
+		}
+		.course-card-border {
+			height: 3px;
+		}
+		.course-card-inside {
+			h2 {
+				font-size: 8px;
+				margin-bottom: 3px;
+			}
+			h1 {
+				font-size: 14px;
+			}
+		}
+	}
+	&.tiny {
+		.course-card-border {
+			top: 0;
+			left: 0;
+			width: 5px;
+			height: 100%;
+			border-radius: 2px 0 0 2px;
+		}
+		.course-card-inside {
+			position: static;
+			width: auto;
+			height: auto;
+			background: white;
+			padding-right: 47px;
+			h2 {
+				margin-bottom: 0;
+			}
 		}
 	}
 	.course-card-hover {
