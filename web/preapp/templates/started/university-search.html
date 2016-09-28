@@ -1,4 +1,43 @@
-<div id='university-search' class="absolute full-xy top-0 left-0 flex-center bg-charcoal"
+<ion-view class="flex-center">
+	<projector class="projector-access projector-splash">
+		<div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"></div>
+		<div class="projector-splash-container">
+			<header class="projector-splash-header">
+				<a class="projector-splash-back icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"></a>
+				<h1>Search Universities</h1>
+				<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
+			</header>
+			<div>
+				<svg class="echo-loader" width="300px" height="300px" viewBox="0 0 300 300"
+					init-default
+					on-init="s:[search-school-init:public]">
+                    <g fill="none">
+						<g init-with="prop:[tro:center center]"
+							when-search-school-init="a:[ping:set:(dur:1500ms#func:ease-in-out#count:infinite):in:delay-1500]">
+	                        <circle class="echo-loader-echo" stroke="#69B3A5" fill-opacity="0.2" fill="#69B3A5" cx="150" cy="150" r="50"
+								init-default
+								when-search-school-init="a:[echo-loader-main:set:(dur:5000ms#func:ease#count:infinite):in:delay-500]"
+								when-search-school-complete="p:[sdo:0, stroke:rgb(247#205#88)]:delay-3000"></circle>
+						</g>
+                        <circle class="echo-loader-track" stroke-opacity="0.4" stroke="#FFFFFF" stroke-width="2" fill="#40484B" cx="150" cy="150" r="100"></circle>
+                        <path d="M150,250 C205.228475,250 250,205.228475 250,150 C250,94.771525 205.228475,50 150,50 C94.771525,50 50,94.771525 50,150 C50,205.228475 94.771525,250 150,250 L150,250 Z" class="echo-loader-main" stroke="#69B3A5" stroke-width="2"
+							init-with="p:[sda:629, sdo:629]"
+							when-search-school-init="a:[echo-loader-main:set:(dur:5000ms#func:ease#count:1):in:delay-1500] | s:[search-school-complete:public]:delay-3500"
+							when-search-school-complete="p:[sdo:0, stroke:rgb(247#205#88)]:delay-3000"></path>
+                        <text class="echo-loader-number" font-family="Source Sans Pro" font-size="48" font-weight="600" fill="#FFFFFF" text-anchor="middle">
+                            <tspan x="150" y="149">0</tspan>
+                        </text>
+                        <text class="echo-loader-label" font-family="Source Sans Pro" font-size="20" font-weight="normal" fill="#FFFFFF" text-anchor="middle">
+                            <tspan x="150" y="176">schools found</tspan>
+                        </text>
+                    </g>
+                </svg>
+			</div>
+		</div>
+	</projector>
+</ion-view>
+
+<div id='university-search' class="absolute full-xy top-0 left-0 flex-center bg-charcoal" ng-if="false"
 	init-with="prop:[opacity:1, z-index:-1000, t:all 600ms ease-in-out]"
 	when-search-university-clicked="prop:[opacity:1:delay-600, z-index:1000] | send:[search-university-projector-init:public:delay-1600]"
 	when-close-search-university="prop:[opacity:1:delay-600, z-index:-1000]">

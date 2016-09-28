@@ -159,7 +159,7 @@
 					span:empty {
 						transform: none;
 						&:nth-child(5) {
-							transition-delay: 0;
+							transition-delay: 0ms;
 						}
 						&:nth-child(6) {
 							transition-delay: 300ms;
@@ -168,7 +168,7 @@
 							transition-delay: 450ms;
 						}
 						&:nth-child(8) {
-							transition-delay: 750ms;
+							transition-delay: 650ms;
 						}
 					}
 				}
