@@ -15,10 +15,11 @@
 	}
 	.projector-splash-header {
 		@include flex;
+		@include flex-wrap;
 		@include flex-center;
 		width: 100%;
 		text-align: center;
-		height: 50px;
+		min-height: 50px;
 		// background: rgba(white, .1);
 		h1 {
 			font-size: 20px;
