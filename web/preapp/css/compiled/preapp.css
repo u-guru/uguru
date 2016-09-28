@@ -5330,10 +5330,8 @@ a[class*="-container"]:hover .map-enter {
 @media screen and (min-height: 480px) {
   .projector-demo-grid li {
     width: auto; }
-    .projector-demo-grid li .demographic-tile > div {
-      width: auto; }
-      .projector-demo-grid li .demographic-tile > div > div:not(.borders) {
-        width: 100%; } }
+    .projector-demo-grid li .demographic-tile > div > div:not(.borders) {
+      width: 100%; } }
 @media screen and (min-height: 580px) {
   .projector-demo-grid {
     margin-top: 0; } }
