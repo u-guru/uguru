@@ -615,6 +615,7 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+
 .directive('onEnter', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',
@@ -744,6 +745,44 @@ angular.module('uguru.shared.directives')
         var supportedCommands = DirectiveService.supportedCommands;
         element.on('click', function () {
           console.log('click activated');
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+        });
+      }
+    }
+  }
+}])
+.directive('onBlur', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
+        var elemArgs = DirectiveService.parseArgs(attr.onBlur, 'on-blur', element);
+        var supportedCommands = DirectiveService.supportedCommands;
+        element.on('blur', function () {
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+        });
+      }
+    }
+  }
+}])
+.directive('onFocus', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
+        var elemArgs = DirectiveService.parseArgs(attr.onFocus, 'on-focus', element);
+        var supportedCommands = DirectiveService.supportedCommands;
+        element.on('focus', function () {
             for (key in elemArgs) {
               if (supportedCommands.indexOf(key) > -1) {
                 DirectiveService.activateArg(key, elemArgs[key], scope, element);

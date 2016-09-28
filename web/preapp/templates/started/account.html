@@ -21,6 +21,8 @@
 							<div class="input-border">
 								<input class="input-border light" type="email" required placeholder=""
 									init-default
+									on-focus="p:[opacity:0.5, color:pink]"
+									on-blur="p:[opacity:0.25]"
 									on-click="s:[input-clicked:public]"/>
 								<label>
 									<svg class="input-icon email-icon" viewBox="0 0 100 100">
