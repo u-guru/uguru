@@ -121,7 +121,8 @@
 			"animations": {
 				"onEnter": [
 					"Projector slideInleft",
-					"Access input slideInDown or similar onEnter based on layout"
+					"Access input slideInDown or similar onEnter based on layout",
+					"Text header bounceInDown. Speech bubble rotateInUp with the heart draw"
 				],
 				"onComplete": [
 					"Access code jumps and fadeOut to student card",
