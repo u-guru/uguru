@@ -9,20 +9,36 @@
 	@include flex-center;
 	position: relative;
 	width: 100%;
-	.projector-demo-grid {
-		@include flex;
-		@include flex-center;
-		@include flex-wrap;
-		max-width: 600px;
+}
+.projector-demo-grid {
+	@include flex;
+	@include flex-center;
+	@include flex-wrap;
+	max-width: 600px;
+	padding: 7.5px;
+	margin-top: -10px;
+	li {
 		padding: 7.5px;
+		width: 50%;
+	}
+	+ ul {
+		position: absolute;
+	}
+}
+
+@media screen and (min-height: 480px) {
+	.projector-demo-grid {
 		li {
-			padding: 7.5px;
-		}
-		+ ul {
-			position: absolute;
+			width: auto;
 		}
 	}
 }
+
+ @media screen and (min-height: 580px) {
+	 .projector-demo-grid {
+ 		margin-top: 0;
+ 	}
+ }
 
 // .projector-demo {
 // 	@include flex;

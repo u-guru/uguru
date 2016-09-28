@@ -5039,8 +5039,7 @@ a[class*="-container"]:hover .map-enter {
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  justify-content: center;
-  align-items: flex-start; }
+  justify-content: center; }
 .projector-splash .projector-splash-container {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -5052,6 +5051,8 @@ a[class*="-container"]:hover .map-enter {
   -ms-flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
+  align-content: flex-start;
+  align-items: flex-start;
   height: calc(100% - 80px); }
 .projector-splash .projector-splash-header {
   -ms-box-orient: horizontal;
@@ -5109,7 +5110,7 @@ a[class*="-container"]:hover .map-enter {
   top: 50%;
   margin-top: -200px;
   left: -145px;
-  z-index: 10;
+  z-index: 100;
   width: 300px;
   height: 450px; }
   .projector-guru-body .student-card {
@@ -5293,32 +5294,41 @@ a[class*="-container"]:hover .map-enter {
   justify-content: center;
   position: relative;
   width: 100%; }
-  .projector-demo-grids .projector-demo-grid {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -ms-flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    max-width: 600px;
-    padding: 7.5px; }
-    .projector-demo-grids .projector-demo-grid li {
-      padding: 7.5px; }
-    .projector-demo-grids .projector-demo-grid + ul {
-      position: absolute; }
 
+.projector-demo-grid {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  max-width: 600px;
+  padding: 7.5px;
+  margin-top: -10px; }
+  .projector-demo-grid li {
+    padding: 7.5px;
+    width: 50%; }
+  .projector-demo-grid + ul {
+    position: absolute; }
+
+@media screen and (min-height: 480px) {
+  .projector-demo-grid li {
+    width: auto; } }
+@media screen and (min-height: 580px) {
+  .projector-demo-grid {
+    margin-top: 0; } }
 .projector-account .projector-account-switch-desktop {
   display: none; }
 .projector-account .projector-account-content {

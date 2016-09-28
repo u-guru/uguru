@@ -5,11 +5,12 @@
 		@include flex;
 		@include flex-wrap;
 		justify-content: center;
-		align-items: flex-start;
 	}
 	.projector-splash-container {
 		@include flex;
 		@include flex-wrap;
+		align-content: flex-start;
+		align-items: flex-start;
 		height: calc(100% - 80px);
 	}
 	.projector-splash-header {
@@ -49,7 +50,7 @@
 	top: 50%;
 	margin-top: -200px;
 	left: -145px;
-	z-index: 10;
+	z-index: 100;
 	width: 300px;
 	height: 450px;
 	.student-card {

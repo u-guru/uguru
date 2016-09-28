@@ -3466,11 +3466,17 @@ fieldset.no-border * {
             width: 30px;
             height: 15px; }
 
+.card-container {
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  transform-style: preserve-3d; }
+
 .demographic-tile {
   position: relative;
-  display: block; }
+  display: block;
+  transition: all 150ms ease-in; }
   .demographic-tile > svg {
-    display: block;
+    display: none;
     max-width: 96px;
     max-height: 96px; }
     .demographic-tile > svg rect {
@@ -3491,13 +3497,10 @@ fieldset.no-border * {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: slate; }
-    .demographic-tile > div div {
+    position: relative;
+    background: rgba(64, 72, 75, 0.95);
+    border-radius: 2px; }
+    .demographic-tile > div > div:not(.borders) {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -3505,25 +3508,20 @@ fieldset.no-border * {
       display: -moz-flex;
       display: -webkit-flex;
       display: flex;
-      -ms-flex-flow: row wrap;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
       -webkit-align-content: center;
       align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center; }
-      .demographic-tile > div div svg {
-        height: 48px;
-        width: auto; }
-      .demographic-tile > div div h1 {
-        width: 100%;
-        font-size: 16px;
-        font-weight: 600;
-        text-align: center; }
+      -webkit-align-items: center;
+      align-items: center;
+      padding: 5px; }
+      .demographic-tile > div > div:not(.borders) > div {
+        padding: 5px; }
+      .demographic-tile > div > div:not(.borders) svg {
+        height: auto;
+        width: 36px; }
+      .demographic-tile > div > div:not(.borders) h1 {
+        padding-right: 5px;
+        font-size: 14px;
+        font-weight: 600; }
     .demographic-tile > div .borders {
       position: absolute;
       top: 0;
@@ -3556,47 +3554,148 @@ fieldset.no-border * {
           width: 2px;
           height: 100%; }
         .demographic-tile > div .borders > div:empty.border-bottom {
-          bottom: 2px;
+          top: 2px;
           left: 2px;
-          width: calc(100% - 4px);
-          height: 5px; }
+          width: 5px;
+          height: calc(100% - 4px); }
+  .demographic-tile * {
+    transition: all 150ms ease-in; }
+  .demographic-tile:hover, .demographic-tile:focus {
+    transform: translateZ(20px);
+    transition: all 600ms cubic-bezier(0.6, 0, 0.1, 2); }
+    .demographic-tile:hover *, .demographic-tile:focus * {
+      transition: all 600ms ease-out; }
+    .demographic-tile:hover > div, .demographic-tile:focus > div {
+      background: rgba(105, 179, 165, 0.1); }
+  .demographic-tile:active {
+    transform: translateZ(-20px);
+    transition: all 150ms ease-in; }
+    .demographic-tile:active * {
+      transition: all 150ms ease-in; }
+    .demographic-tile:active > div {
+      background: rgba(99, 112, 116, 0.95) !important; }
   .demographic-tile .border-bottom {
     background: #69B3A5; }
   .demographic-tile.high-school .border-bottom {
-    background: #ef8f5f; }
+    background: #f49261; }
+  .demographic-tile.high-school:hover > div, .demographic-tile.high-school:focus > div {
+    background: rgba(244, 146, 97, 0.2); }
+  .demographic-tile.high-school:active > div svg circle {
+    stroke: #f49261; }
+  .demographic-tile.high-school:active > div .borders > div:empty:not(.border-bottom) {
+    background: #f49261; }
   .demographic-tile.college .border-bottom {
-    background: #6fbfdf; }
+    background: #7bbbe5; }
+  .demographic-tile.college:hover > div, .demographic-tile.college:focus > div {
+    background: rgba(123, 187, 229, 0.2); }
+  .demographic-tile.college:active > div svg circle {
+    stroke: #7bbbe5; }
+  .demographic-tile.college:active > div .borders > div:empty:not(.border-bottom) {
+    background: #7bbbe5; }
   .demographic-tile.alumni .border-bottom {
+    background: #908bdb; }
+  .demographic-tile.alumni:hover > div, .demographic-tile.alumni:focus > div {
+    background: rgba(144, 139, 219, 0.2); }
+  .demographic-tile.alumni:active > div svg circle {
+    stroke: #908bdb; }
+  .demographic-tile.alumni:active > div .borders > div:empty:not(.border-bottom) {
     background: #908bdb; }
   .demographic-tile.parent .border-bottom {
     background: #a17abc; }
+  .demographic-tile.parent:hover > div, .demographic-tile.parent:focus > div {
+    background: rgba(161, 122, 188, 0.2); }
+  .demographic-tile.parent:active > div svg circle {
+    stroke: #a17abc; }
+  .demographic-tile.parent:active > div .borders > div:empty:not(.border-bottom) {
+    background: #a17abc; }
   .demographic-tile.professor .border-bottom {
-    background: #71a6b3; }
+    background: #79b7c6; }
+  .demographic-tile.professor:hover > div, .demographic-tile.professor:focus > div {
+    background: rgba(121, 183, 198, 0.2); }
+  .demographic-tile.professor:active > div svg circle {
+    stroke: #79b7c6; }
+  .demographic-tile.professor:active > div .borders > div:empty:not(.border-bottom) {
+    background: #79b7c6; }
   .demographic-tile.freshman .border-bottom {
+    background: #5f9ac1; }
+  .demographic-tile.freshman:hover > div, .demographic-tile.freshman:focus > div {
+    background: rgba(95, 154, 193, 0.2); }
+  .demographic-tile.freshman:active > div .borders > div:empty:not(.border-bottom) {
     background: #5f9ac1; }
   .demographic-tile.sophomore .border-bottom {
     background: #7cc2e3; }
+  .demographic-tile.sophomore:hover > div, .demographic-tile.sophomore:focus > div {
+    background: rgba(124, 194, 227, 0.2); }
+  .demographic-tile.sophomore:active > div .borders > div:empty:not(.border-bottom) {
+    background: #7cc2e3; }
   .demographic-tile.junior .border-bottom {
+    background: #3e94ac; }
+  .demographic-tile.junior:hover > div, .demographic-tile.junior:focus > div {
+    background: rgba(62, 148, 172, 0.2); }
+  .demographic-tile.junior:active > div .borders > div:empty:not(.border-bottom) {
     background: #3e94ac; }
   .demographic-tile.senior .border-bottom {
     background: #517b7e; }
+  .demographic-tile.senior:hover > div, .demographic-tile.senior:focus > div {
+    background: rgba(81, 123, 126, 0.2); }
+  .demographic-tile.senior:active > div .borders > div:empty:not(.border-bottom) {
+    background: #517b7e; }
   .demographic-tile.graduate .border-bottom {
     background: #276a62; }
+  .demographic-tile.graduate:hover > div, .demographic-tile.graduate:focus > div {
+    background: rgba(39, 106, 98, 0.2); }
+  .demographic-tile.graduate:active > div .borders > div:empty:not(.border-bottom) {
+    background: #276a62; }
+  @media screen and (min-height: 480px) {
+    .demographic-tile > svg {
+      display: block; }
+    .demographic-tile > div:not(.borders) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+      .demographic-tile > div:not(.borders) > div {
+        -ms-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        padding: 0; }
+        .demographic-tile > div:not(.borders) > div > div, .demographic-tile > div:not(.borders) > div h1 {
+          padding: 0 !important; }
+        .demographic-tile > div:not(.borders) > div svg {
+          height: 48px;
+          width: auto; }
+        .demographic-tile > div:not(.borders) > div h1 {
+          width: 100%;
+          text-align: center; }
+      .demographic-tile > div:not(.borders) .borders > div:empty.border-bottom {
+        bottom: 2px;
+        left: 2px;
+        width: calc(100% - 4px);
+        height: 5px; } }
   @media screen and (min-width: 480px) {
     .demographic-tile > svg {
       max-width: 150px;
       max-height: 150px; }
-    .demographic-tile > div div svg {
+    .demographic-tile > div:not(.borders) div svg {
       height: 80px; }
-    .demographic-tile > div div h1 {
+    .demographic-tile > div:not(.borders) div h1 {
       font-size: 18px; } }
   @media screen and (min-width: 768px) and (min-height: 768px) {
     .demographic-tile > svg {
       max-width: none;
       max-height: none; }
-    .demographic-tile > div div svg {
+    .demographic-tile > div:not(.borders) div svg {
       height: 100px; }
-    .demographic-tile > div div h1 {
+    .demographic-tile > div:not(.borders) div h1 {
       font-size: 20px; } }
 
 .card-house .team-card-container .team-card .team-link {
@@ -3610,7 +3709,9 @@ fieldset.no-border * {
 .team-card-container {
   padding-left: 55px;
   padding-right: 55px;
-  position: relative; }
+  position: relative;
+  -webkit-perspective: 1000;
+  perspective: 1000; }
   .team-card-container a {
     display: block;
     position: absolute;
@@ -4770,6 +4871,21 @@ a.credit-card {
         width: 100%;
         height: 100%; }
       .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state {
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-align-content: center;
+        align-content: center;
+        -webkit-justify-content: center;
+        justify-content: center;
         opacity: 0;
         transition: all 150ms ease-in-out;
         position: absolute;
@@ -4782,9 +4898,8 @@ a.credit-card {
           border-radius: 1000px;
           transition: all 150ms ease-in-out;
           display: block;
-          width: 100%;
-          height: 100%;
-          padding: 15px; }
+          width: 50%;
+          height: 50%; }
           .university-card .school-card-inside .school-card-top .school-card-icon .school-card-state svg path {
             fill: none;
             stroke: white;
@@ -14716,21 +14831,52 @@ input[type=range] {
   .icon-round-stroke:active svg path, .icon-round-stroke:active svg polyline {
     stroke: white; }
 
+.projector-container {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  padding: 15px; }
+
+.projector-slide {
+  width: 100% !important;
+  height: 95%;
+  max-width: 750px; }
+
+@media screen and (orientation: landscape) {
+  .projector-slide {
+    max-height: 500px; } }
+@media screen and (orientation: landscape) and (min-height: 750px) {
+  .projector-slide {
+    max-height: 600px; } }
+@media screen and (orientation: landscape) and (min-height: 900px) {
+  .projector-slide {
+    max-height: 720px; } }
+@media screen and (min-height: 750px) {
+  .projector-slide {
+    max-width: 900px; } }
+@media screen and (min-height: 900px) {
+  .projector-slide {
+    max-width: 1080px; } }
 .projector-slide {
   position: relative;
-  width: 90% !important;
-  height: 80%;
-  max-width: 750px;
-  max-height: 500px;
   transition: all 150ms ease-out; }
-  @media screen and (min-height: 750px) {
-    .projector-slide {
-      max-width: 900px;
-      max-height: 600px; } }
-  @media screen and (min-height: 900px) {
-    .projector-slide {
-      max-width: 1080px;
-      max-height: 720px; } }
   .projector-slide .projector-top {
     position: absolute;
     top: .2%;
