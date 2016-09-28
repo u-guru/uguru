@@ -6,7 +6,7 @@
 	transform-style: preserve-3d;
 }
 
-// demogrpahic tile
+// demographic tile
 .demographic-tile {
 	position: relative;
 	display: block;
@@ -25,6 +25,7 @@
 		position: relative;
 		background: rgba($slate, .95);
 		border-radius: 2px;
+		min-height: 46px;
 		> div:not(.borders) {
 			@include flex;
 			@include flex-center-vertical;
@@ -38,7 +39,7 @@
 			}
 			h1 {
 				padding-right: 5px;
-				font-size: 14px;
+				font-size: 12px;
 				font-weight: 600;
 			}
 		}
@@ -374,6 +375,7 @@
 				}
 				h1 {
 					width: 100%;
+					font-size: 14px;
 					text-align: center;
 				}
 			}

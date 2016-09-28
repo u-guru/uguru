@@ -5320,12 +5320,18 @@ a[class*="-container"]:hover .map-enter {
   .projector-demo-grid li {
     padding: 7.5px;
     width: 50%; }
+    .projector-demo-grid li .demographic-tile > div > div:not(.borders) {
+      width: 100%; }
+      .projector-demo-grid li .demographic-tile > div > div:not(.borders) > div {
+        padding-right: 0; }
   .projector-demo-grid + ul {
     position: absolute; }
 
 @media screen and (min-height: 480px) {
   .projector-demo-grid li {
-    width: auto; } }
+    width: auto; }
+    .projector-demo-grid li .demographic-tile > div > div:not(.borders) {
+      width: 100%; } }
 @media screen and (min-height: 580px) {
   .projector-demo-grid {
     margin-top: 0; } }
