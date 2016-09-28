@@ -351,6 +351,9 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                 player.debug.propArr.push({name: props[prop][0].name, duration:totalDuration, streams: props[prop], show:player.debug.defaults.showAll});
               }
         })
+
+
+
         player.debug.toggleAllPlots = toggleAllPlots(player.debug.propArr);
         $timeout(function() {
           updatePlayerArgs(player, true);
@@ -375,8 +378,58 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
                   player.play(player.schedule);
                 }
               }, 500)
-          }, 1000 + delay)
+          }, 1000 + delay);
+          player.debug.propStreamValueUpdate = {};
+          $timeout(function() {
+            var elem_arr = [];
+            player.debug.propArr.forEach(function(propDict, i) {
+              var name = propDict.name;
+              var propStreamValue = document.querySelector('#' + name + '-value');
+              var propStreamPlotCircle = document.querySelectorAll('.' + name + '-plot-ball');
+              propStreamValue && elem_arr.push(propStreamValue);
+              if (propStreamPlotCircle && propStreamPlotCircle.length) {
+                propStreamPlotCircle.forEach(function(elem, i) {elem_arr.push(elem)});
+              }
+              var isTransform = false;
+              ['rotate', 'scale', 'translate', 'skew'].forEach(function(t_type, i) {
+                if (name.indexOf(t_type) > -1) {
+                  isTransform = true;
+                  name = 'transform'
+                }
+              })
+              player.debug.propStreamValueUpdate[name] =  updatePropStreamPlotValue(player, elem_arr);
+            });
+          }, 1000)
         })
+
+        function updatePropStreamPlotValue(player, elem_arr) {
+          return function(prop_name, value, tick, cycle_index) {
+            cycle_index = cycle_index || 0
+            elem_arr.forEach(function(elem) {
+
+              if (elem.nodeName.toLowerCase() !== 'circle') {
+
+                elem.innerHTML = value;
+              } else {
+                player.debug.propArr.forEach(function(prop_dict, i) {
+                  // if (prop_dict.name === 'scaleX' || prop_dict.name === 'scaleY') {
+
+                    elem.setAttribute('cx', (prop_dict.streams[0].plot.values.length *cycle_index) +  tick * prop_dict.streams[0].duration/prop_dict.streams[0].plot.values.length);
+                    elem.setAttribute('cy', normalizeValue(prop_dict.streams[0].plot.values[tick] , prop_dict.streams[0].plot.range , 150));
+                  //
+                })
+
+
+
+              }
+
+            })
+            function normalizeValue(val, range, height, padding) {
+              if (!padding) padding = 10;
+              return ((height) - (val/range) * (height)).toFixed(1)
+            }
+          }
+        }
 
         function getSectionObj(section, duration, offset) {
           section.html = {width: 0, left: 0}
@@ -443,6 +496,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           }
 
         }
+
             player.debug.elemPlayer.time.elapsed = 0;
             if (player.debug.elemPlayer.duration) {
 
@@ -600,6 +654,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           if (stream.tick.current <= stream.tick.end) {
             if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
+              player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
               // console.log(stream.tick.current, stream.values[stream.tick.current])
             }
             stream.tick.current += tick_delta;
@@ -626,7 +681,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
 
         if (player.debug) {
-          player.debug.elemPlayer.update(player.tick, schedule.lastTimeDelta)
+          player.debug.elemPlayer.update(player.tick, schedule.lastTimeDelta);
         }
         if (player.tick.current === 0) {
             player.active = false;
@@ -968,7 +1023,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
 
       }
 
-      function getApplyPropertyFunc(elem, prop) {
+      function getApplyPropertyFunc(elem, prop, debug) {
         return function(value) {
           elem.style[prop] = value;
         }
@@ -1060,7 +1115,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
       function scaleTimelineValuesForPlot(player, props, direction, debug) {
 
         for (var prop in props) {
-
           var propStreams = props[prop];
           var plotStats = {max: 0, min: 100000000000};
           var totalDuration = 0;
@@ -1112,7 +1166,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
             var vbMin = stream.plot.min/stream.plot.range * debug.chartOptions.height;
             stream.plot.vb = {y1: debug.chartOptions.height-vbMax, y2: debug.chartOptions.height-vbMin, x1: 0,x2: stream.duration};
 
-            console.log(stream.name, stream.plot.vb)
+
             stream.plot.path = constructBezierStream(stream, null, debug );
           })
         }
@@ -1159,7 +1213,7 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
         }
         function normalizeValue(val, range, height, padding) {
           if (!padding) padding = 10;
-          return ((height + padding) - (val/range) * (height+padding)).toFixed(2)
+          return ((height) - (val/range) * (height)).toFixed(1)
         }
       }
 

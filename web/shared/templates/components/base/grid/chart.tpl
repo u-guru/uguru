@@ -1,11 +1,13 @@
-<div class='absolute full-xy top-0 left-0' style='width:{{stream.html.width}}' on-hold="stream.showProps = true" on-release="stream.showProps = false;">
+<div class='absolute full-xy top-0 left-0' style='width:{{stream.html.width}}' ng-mouseenter="player.focusStream(stream)" ng-mouseleave="stream.showProps = false;">
 
-    <div class='absolute full-xy bottom-0'>
+    <div class='absolute full-xy bottom-0' ng-mouseenter="onMouseEnter($event)" ng-mouseleave="chart.mouseEntered = false;">
         <svg ng-if='chartReady && chart.vb' ng-attr-view_Box='{{[chart.vb.x1,chart.vb.y1,chart.vb.x2, chart.vb.y2].join(" ")}}'  ng-attr-width="{{chart.html.width.replace('px', '')}}" ng-attr-height="{{chart.height}}" fill="transparent">
-            <path stroke="white" stroke-linecap="round" stroke-width="2" stroke-linejoin="round" ng-attr-d="{{chart.path.path}}">
+            <path stroke="white" class='absolute' stroke-linecap="round" stroke-width="5" stroke-linejoin="round" ng-attr-d="{{chart.path.path}}"/>
+            <circle r="10" cx="0" id='main-circle-{{stream.id}}' class='{{stream.name}}-plot-ball' cy="{{chart.path.points[1][0].y}}" fill="red"/>
+            <circle ng-repeat='point in chart.path.points' r="10" fill="white" ng-mouseleave="chart.onMousePointLeave(point, $event)" ng-mousedown="chart.onMousePointDown(point, $event)" on-release="chart.onMousePointUp(point, $event)" ng-mouseenter="chart.onMousePointEnter(point, $event)" ng-if='chart.mouseEntered && $index > 0' ng-attr-cx="{{point[0].x}}" class='{{stream.name}}-plot-ball z-index-100' ng-attr-cy="{{point[0].y}}" fill="red"/>
         </svg>
     </div>
-    <div chart-overlay  class='z-index-100 absolute top-0 left-0 full-xy bg-azure-80p weight-700 txt-2' ng-show='stream.showProps'>
+    <div chart-overlay  class='z-index-100 absolute top-0 left-0 full-x bg-azure-80p weight-700 txt-2' ng-show='stream.showProps'>
         <div class='full-x'>Stream Count: #{{stream.id}} </div>
         <div class='full-x'> {{stream.duration}} </div>
         <div class='full-x'>

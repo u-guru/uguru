@@ -615,6 +615,7 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+
 .directive('onEnter', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
   return {
     restrict: 'A',
@@ -640,6 +641,8 @@ angular.module('uguru.shared.directives')
     }
   }
 }])
+
+
 .directive('onChange', ['$timeout', 'DirectiveService', '$parse', '$compile', function ($timeout, DirectiveService, $parse, $compile) {
   return {
     restrict: 'A',
@@ -747,6 +750,104 @@ angular.module('uguru.shared.directives')
             for (key in elemArgs) {
               if (supportedCommands.indexOf(key) > -1) {
                 DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+        });
+      }
+    }
+  }
+}])
+.directive('onBlur', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
+        var elemArgs = DirectiveService.parseArgs(attr.onBlur, 'on-blur', element);
+        var supportedCommands = DirectiveService.supportedCommands;
+        element.on('blur', function () {
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+        });
+      }
+    }
+  }
+}])
+.directive('onFocus', ['$timeout', 'DirectiveService', function ($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        scope.root && scope.root.inspect && scope.root.pauseElement(element, attr);
+        var elemArgs = DirectiveService.parseArgs(attr.onFocus, 'on-focus', element);
+        var supportedCommands = DirectiveService.supportedCommands;
+        element.on('focus', function () {
+            for (key in elemArgs) {
+              if (supportedCommands.indexOf(key) > -1) {
+                DirectiveService.activateArg(key, elemArgs[key], scope, element);
+              }
+            }
+        });
+      }
+    }
+  }
+}])
+.directive('onValid', ['$timeout', 'DirectiveService', function($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        if (!attr.onValid || !attr.onValid.length) return;
+        var stringValidArgsSplit = attr.onValid.split(':]')
+        var parseArgStr = stringValidArgsSplit[0] + ':]';
+        var evalFuncStr = stringValidArgsSplit[1];
+        var elemArgs = DirectiveService.parseArgs(parseArgStr, 'on-valid', element);
+
+        scope.$watch(function() {
+          return element.attr('class');
+        }, function(new_classes, old_classes) {
+
+
+            if (new_classes && new_classes.indexOf('on-valid') > -1) {
+              var func = $parse(evalFuncStr);
+              if (func(scope) || func === 'true') {
+                for (key in elemArgs) {
+                  if (supportedCommands.indexOf(key) > -1) {
+                    DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                  }
+                }
+              }
+            }
+        });
+      }
+    }
+  }
+}])
+.directive('onInvalid', ['$timeout', 'DirectiveService', function($timeout, DirectiveService) {
+  return {
+    restrict: 'A',
+    link: {
+      pre: function(scope, element, attr) {
+        if (!attr.onInvalid || !attr.onInvalid.length) return;
+        var stringInValidArgsSplit = attr.onInvalid.split(':]')
+        var parseArgStr = stringInValidArgsSplit[0] + ':]';
+        var evalFuncStr = stringInValidArgsSplit[1];
+        var elemArgs = DirectiveService.parseArgs(parseArgStr, 'on-invalid', element);
+
+        scope.$watch(function() {
+          return element.attr('class');
+        }, function(new_classes, old_classes) {
+            if (new_classes && new_classes.indexOf('on-invalid') > -1) {
+              var func = $parse(evalFuncStr);
+              if (!func(scope) || func === 'false') {
+                for (key in elemArgs) {
+                  if (supportedCommands.indexOf(key) > -1) {
+                    DirectiveService.activateArg(key, elemArgs[key], scope, element);
+                  }
+                }
               }
             }
         });

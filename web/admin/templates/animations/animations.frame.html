@@ -39,11 +39,11 @@
             </ul>
 
 				<ul class='flex-wrap-center-vertical p15-grid full-x'>
-                    <li>
+                    <!-- <li>
                         <h2 class='uppercase weight-700 opacity-50p txt-14'>Element</h2>
                     </li>
                     <li class='relative flex-wrap-center p20xy round bg-charcoal' id='focused-element'>
-                    </li>
+                    </li> -->
                     <li ng-if='afc.player.debug.stateName'><h2 class='uppercase weight-700 opacity-50p txt-14'>State</h2></li>
                     <li ng-if='afc.player.debug.stateName'>
                         <span class='chip bg-campus'>{{afc.player.debug.stateName}}</span>
@@ -65,15 +65,15 @@
     </header>
 
 	<!-- KEYFRAMES -->
-	<div class='absolute left-0 z-index-9 full-x bg-charcoal-90p z-index-100' style='top: 100px'>
+	<div class='absolute left-0 z-index-9 full-x bg-charcoal-20p z-index-100' style='top: 100px'>
         <div class='flex-start full-x overflow-x z-index-100 overflow-x no-scrollbar border-1-bottom height-150' style='border-color:rgba(255,255,255,.2)' ng-if='prop_dict.show' ng-repeat='prop_dict in afc.player.debug.propArr'>
-            <div class='overflow-hidden absolute z-index-100 height-150 width-150'>
-                <div class="full-xy flex-center" ng-class="{'bg-campus-25p': !prop_dict.show, 'bg-campus':prop_dict.show}" ng-click='prop_dict.show = !prop_dict.show'>
-					<h2 class='weight-900 p10y-p15x txt-20 {{prop}}'> {{prop_dict.name}} {{prop_dict.duration}} </h2>
+            <div class='overflow-hidden absolute left-0 z-index-100 height-150 width-150' style='height:15px;'>
+                <div class="full-x flex-center bg-campus-50p" ng-click='prop_dict.show = !prop_dict.show'>
+					<h2 class='weight-500 p10y-p15x txt-20 {{prop}}'> {{prop_dict.name}}: <span class='weight-900' id='{{prop_dict.name + "-value"}}'>{{prop_dict.streams[0].plot.values[0]}}</span></h2>
 				</div>
             </div>
             <div class='full-xy relative overflow-auto'>
-                <ul class='full-y flex-vertical-center p15-grid absolute overflow-auto' style='left:150px;'>
+                <ul class='full-y flex-vertical-center p15-grid absolute overflow-auto'>
                     <li class='full-y border-2-right border-slate border-solid flex-wrap-center relative txt-1'  style='width:{{stream.plot.html.width}} !important;' ng-repeat='stream in prop_dict.streams track by $index'>
                         <chart c-data="stream">
                         </chart>
