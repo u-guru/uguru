@@ -3495,7 +3495,8 @@ fieldset.no-border * {
     align-items: center;
     position: relative;
     background: rgba(64, 72, 75, 0.95);
-    border-radius: 2px; }
+    border-radius: 2px;
+    min-height: 46px; }
     .demographic-tile > div > div:not(.borders) {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -3516,7 +3517,7 @@ fieldset.no-border * {
         width: 36px; }
       .demographic-tile > div > div:not(.borders) h1 {
         padding-right: 5px;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 600; }
     .demographic-tile > div .borders {
       position: absolute;
@@ -3679,6 +3680,7 @@ fieldset.no-border * {
           width: auto; }
         .demographic-tile > div:not(.borders) > div h1 {
           width: 100%;
+          font-size: 14px;
           text-align: center; }
       .demographic-tile > div:not(.borders) .borders > div:empty.border-bottom {
         width: calc(100% - 4px);

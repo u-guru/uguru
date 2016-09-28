@@ -20,6 +20,16 @@
 	li {
 		padding: 7.5px;
 		width: 50%;
+		.demographic-tile {
+			> div {
+				> div:not(.borders) {
+					width: 100%;
+					> div {
+						padding-right: 0;
+					}
+				}
+			}
+		}
 	}
 	+ ul {
 		position: absolute;
@@ -30,6 +40,14 @@
 	.projector-demo-grid {
 		li {
 			width: auto;
+			.demographic-tile {
+				> div {
+					width: auto;
+					> div:not(.borders) {
+						width: 100%;
+					}
+				}
+			}
 		}
 	}
 }
