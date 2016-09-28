@@ -5,59 +5,49 @@
 			on-init="s:[card-flip:public]"></div>
 		<div class="projector-splash-container"
 			init-default
-			on-init="s:[promo-header:public]:delay-500"
-			when-promo-header="s:[promo-input-enter:public]:delay-700">
+			on-init="s:[promo-header:public]:delay-250"
+			when-promo-header="s:[promo-input-enter:public]:delay-500">
 			<header class="projector-splash-header">
 				<a class="projector-splash-back icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"></a>
-				<div class="projector-access-heart" ng-include="root.base_url + 'shared/templates/components/svg/other/message-heart.html'"
-					init-with="p:[op:0, tro:center bottom, tr:rotate(-60deg) translateY(30px)]"
-					when-promo-header="p:[opacity:1, transform:rotate(-60deg) translateY(30px):rotate(0deg) translateY(0px):500:easeOutExpo bouncePast]:delay-250"></div>
 				<h1 init-with="p-op"
-					when-promo-header="a:[bounceInDown-subtle:set:(dur:1000ms#func:linear):in]">Promo Code</h1>
+					when-promo-header="a:[bounceInDown-subtle:set:(dur:1000ms#func:linear):in]">Access</h1>
 				<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
 			</header>
 			<div class="projector-access-content">
-				<ul>
-					<li init-default
-						on-mouse-enter="s:[promo-hover:public]"
-						on-click="s:[promo-click:public]"
-						on-mouse-leave="s:[promo-default:public]">
-						<fieldset init-with="p:[tro:center bottom, tr:rotateX(90deg)]"
-							when-promo-input-enter="p:[transform:rotateX(90deg):rotateX(0deg):450:easeOutBounce]">
-							<span init-default
-							 when-promo-hover="p:[background:#003262, op:0.3]"
- 							 when-promo-click="p:[background:#003262, op:1]"
- 							 when-promo-default="p:[background:#ffffff, op:1]"></span>
-							<span init-default
-							 when-promo-hover="p:[background:#003262, op:0.3]:delay-50"
- 							 when-promo-click="p:[background:#003262, op:1]:delay-50"
- 							 when-promo-default="p:[background:#ffffff, op:1]"></span>
-							<span init-default
-							 when-promo-hover="p:[background:#003262, op:0.3]:delay-100"
- 							 when-promo-click="p:[background:#003262, op:1]:delay-100"
- 							 when-promo-default="p:[background:#ffffff, op:1]"></span>
-							<span init-default
-							 when-promo-hover="p:[background:#003262, op:0.3]:delay-150"
- 							 when-promo-click="p:[background:#003262, op:1]:delay-150"
- 							 when-promo-default="p:[background:#ffffff, op:1]"></span>
-							<input type="text" placeholder="Enter Promo Code"/>
-						</fieldset>
+				<div>
+					<div class="projector-access-heart" ng-include="root.base_url + 'shared/templates/components/svg/other/message-heart.html'"
+						init-with="p:[op:0, tro:center bottom, tr:rotate(-60deg) translateY(30px)]"
+						when-promo-header="p:[opacity:1, transform:rotate(-60deg) translateY(30px):rotate(0deg) translateY(15px):500:easeOutExpo bouncePast]:delay-250"
+						when-promo-input-form="p:[transform:translateY(15px):translateY(0px):250:easeOutSine]"></div>
+					<fieldset init-with="p:[op:0, tro:center bottom, tr:rotateX(90deg)]"
+						when-promo-input-enter="p:[op:1, transform:rotateX(90deg):rotateX(0deg):450:easeOutBounce] | s:[promo-input-form:public:delay-450]">
+						<input type="text" placeholder="Promo Code"/>
+						<div>
+							<span init-with="p:[tr:scaleX(0)]"
+								when-promo-input-form="p:[transform:scaleX(0):scaleX(1):300:easeOutSine]"></span>
+							<span init-with="p:[tr:scaleY(0)]"
+								when-promo-input-form="p:[transform:scaleY(0):scaleY(1):150:easeOutSine]:delay-300"></span>
+							<span init-with="p:[tr:scaleX(0)]"
+								when-promo-input-form="p:[transform:scaleX(0):scaleX(1):300:easeOutSine]:delay-450"></span>
+							<span init-with="p:[tr:scaleY(0)]"
+								when-promo-input-form="p:[transform:scaleY(0):scaleY(1):150:easeOutSine]:delay-750"></span>
+							<span style="background: #FDB515;"></span><span style="background: #FDB515;"></span>
+							<span style="background: #FDB515;"></span><span style="background: #FDB515;"></span>
+							<div><div style="background: #003262;"></div></div>
+						</div>
+					</fieldset>
+				</div>
+				<ul init-with="p:[tr:translateY(-30px)]"
+					when-promo-input-form="p:[transform:translateY(-30px):translateY(0px):250:easeOutSine]">
+					<li init-with="p-op"
+						when-promo-input-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-450">
+						<button class="btn-ghost-round">Activate</button>
 					</li>
-					<li>
-						<button class="btn-default bg-moxie radius-2 normal p15x caps txt-20"
-							init-with="p:[tro:center bottom, tr:rotateX(90deg)]"
-							when-promo-input-enter="p:[transform:rotateX(90deg):rotateX(0deg):200:easeOutExpo]:delay-100">
-							<span></span><span></span>
-							<span></span><span></span>
-							<span></span>
-							<span>Activate</span>
-						</button>
+					<li init-with="p-op"
+						when-promo-input-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-900">
+						<button class="btn-ghost-round skip">Skip</button>
 					</li>
 				</ul>
-				<div init-with="p-op"
-					when-promo-input-enter="p:[op:1]">
-					<a>Skip</a>
-				</div>
 			</div>
 			<div class="student-card-mobile" ng-include="root.base_url + 'preapp/templates/started/components/student-card-mobile.html'"></div>
 		</div>

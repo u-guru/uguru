@@ -5028,6 +5028,9 @@ a[class*="-container"]:hover .map-enter {
   #hiw-stadium #hiw-sky-clouds.active .hiw-sky-cloud-20 {
     animation: hiw-cloud-fall 4000 ms linear 3000 ms 2, hiw-cloud-fall-end 4000 ms ease-out 3200 ms forwards; }
 
+.projector-splash .btn-ghost-round {
+  font-size: 18px;
+  letter-spacing: 0; }
 .projector-splash .projector-content {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -5149,55 +5152,41 @@ a[class*="-container"]:hover .map-enter {
 .projector-access-heart {
   display: none;
   width: 100%;
-  height: 52px;
-  margin-top: 15px; }
+  height: 103px; }
   .projector-access-heart svg {
     display: block;
     margin: 0 auto;
     height: 100%; }
 
+@media screen and (min-width: 768px) {
+  .projector-access .projector-splash-header {
+    min-height: auto; }
+    .projector-access .projector-splash-header h1 {
+      display: none; } }
 .projector-access-content {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-justify-content: center;
-  justify-content: center;
   width: 100%;
-  max-width: 600px;
-  margin-top: -10px; }
-  .projector-access-content > ul {
-    padding: 7.5px; }
-    .projector-access-content > ul li {
-      -ms-box-orient: horizontal;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      flex-direction: row;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-align-content: center;
-      align-content: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      padding: 7.5px; }
+  max-width: 600px; }
   .projector-access-content > div {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 15px; }
+  .projector-access-content > ul {
     -ms-box-orient: horizontal;
     display: -webkit-box;
     display: -moz-box;
@@ -5213,37 +5202,75 @@ a[class*="-container"]:hover .map-enter {
     align-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    padding: 0;
-    width: 100%; }
+    padding: 7.5px; }
+    .projector-access-content > ul li {
+      padding: 7.5px; }
+  .projector-access-content .btn-ghost-round.skip {
+    opacity: 0.5; }
+    .projector-access-content .btn-ghost-round.skip:hover, .projector-access-content .btn-ghost-round.skip:focus {
+      opacity: 1; }
   .projector-access-content fieldset {
     position: relative;
     height: 64px;
-    width: 100%; }
-    .projector-access-content fieldset > span:empty {
+    width: 100%;
+    margin-top: 15px; }
+    .projector-access-content fieldset > div > div {
+      transition: all 300ms ease-out;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0; }
+      .projector-access-content fieldset > div > div div {
+        opacity: 0.25;
+        width: 100%;
+        height: 100%; }
+    .projector-access-content fieldset > div span:empty {
       display: block;
       position: absolute;
       border-radius: 2px;
-      background: white; }
-      .projector-access-content fieldset > span:empty:nth-child(1) {
+      background: white;
+      z-index: 1; }
+      .projector-access-content fieldset > div span:empty:nth-child(1), .projector-access-content fieldset > div span:empty:nth-child(5) {
         top: 0;
         left: 0;
         width: 100%;
-        height: 2px; }
-      .projector-access-content fieldset > span:empty:nth-child(2) {
+        height: 2px;
+        transform-origin: left center; }
+      .projector-access-content fieldset > div span:empty:nth-child(2), .projector-access-content fieldset > div span:empty:nth-child(6) {
         top: 0;
         right: 0;
         width: 2px;
-        height: 100%; }
-      .projector-access-content fieldset > span:empty:nth-child(3) {
+        height: 100%;
+        transform-origin: center top; }
+      .projector-access-content fieldset > div span:empty:nth-child(3), .projector-access-content fieldset > div span:empty:nth-child(7) {
         bottom: 0;
         right: 0;
         width: 100%;
-        height: 2px; }
-      .projector-access-content fieldset > span:empty:nth-child(4) {
+        height: 2px;
+        transform-origin: right center; }
+      .projector-access-content fieldset > div span:empty:nth-child(4), .projector-access-content fieldset > div span:empty:nth-child(8) {
         bottom: 0;
         left: 0;
         width: 2px;
-        height: 100%; }
+        height: 100%;
+        transform-origin: center bottom; }
+      .projector-access-content fieldset > div span:empty:nth-child(5), .projector-access-content fieldset > div span:empty:nth-child(7) {
+        transform: scaleX(0);
+        transition: all 300ms ease-out; }
+      .projector-access-content fieldset > div span:empty:nth-child(6), .projector-access-content fieldset > div span:empty:nth-child(8) {
+        transform: scaleY(0);
+        transition: all 150ms ease-out; }
+      .projector-access-content fieldset > div span:empty:nth-child(5) {
+        transition-delay: 600ms; }
+      .projector-access-content fieldset > div span:empty:nth-child(6) {
+        transition-delay: 450ms; }
+      .projector-access-content fieldset > div span:empty:nth-child(7) {
+        transition-delay: 150ms; }
+      .projector-access-content fieldset > div span:empty:nth-child(8) {
+        transition-delay: 0; }
     .projector-access-content fieldset input {
       -ms-box-orient: horizontal;
       display: -webkit-box;
@@ -5256,59 +5283,68 @@ a[class*="-container"]:hover .map-enter {
       align-content: center;
       -webkit-align-items: center;
       align-items: center;
+      position: relative;
+      z-index: 2;
       font-family: "Source Code Pro", monospace !important;
       background: none;
       height: 64px;
+      font-size: 28px;
+      font-weight: 700;
       padding-left: 15px;
       padding-right: 15px;
-      font-size: 20px;
-      font-weight: 600;
       line-height: 1;
-      color: white; }
+      color: white;
+      text-align: center; }
       .projector-access-content fieldset input::-webkit-input-placeholder {
-        font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+        font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+        font-size: 28px;
+        font-weight: 700; }
       .projector-access-content fieldset input:-moz-placeholder {
-        font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+        font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+        font-size: 28px;
+        font-weight: 700; }
       .projector-access-content fieldset input::-moz-placeholder {
-        font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
+        font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+        font-size: 28px;
+        font-weight: 700; }
       .projector-access-content fieldset input:-ms-input-placeholder {
-        font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important; }
-  .projector-access-content button {
-    height: 56px; }
+        font-family: "Source Sans Pro", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif !important;
+        font-size: 28px;
+        font-weight: 700; }
+      .projector-access-content fieldset input:hover + div > div {
+        opacity: 1; }
+      .projector-access-content fieldset input:focus + div > div {
+        opacity: 1; }
+      .projector-access-content fieldset input:focus + div span:empty {
+        transform: none; }
+        .projector-access-content fieldset input:focus + div span:empty:nth-child(5) {
+          transition-delay: 0; }
+        .projector-access-content fieldset input:focus + div span:empty:nth-child(6) {
+          transition-delay: 300ms; }
+        .projector-access-content fieldset input:focus + div span:empty:nth-child(7) {
+          transition-delay: 450ms; }
+        .projector-access-content fieldset input:focus + div span:empty:nth-child(8) {
+          transition-delay: 750ms; }
 
 @media screen and (min-height: 480px) {
   .projector-access-heart {
-    display: block; }
-
-  .projector-access-content {
-    margin-top: 15px; } }
-@media screen and (min-height: 600px) and (min-width: 375px) {
-  .projector-access-heart {
-    height: 103px; }
-
-  .projector-access-content > div {
-    padding: 15px; } }
+    display: block; } }
 @media screen and (min-width: 520px) {
-  .projector-access-content > ul {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center; }
   .projector-access-content fieldset {
-    min-width: 300px; }
-  .projector-access-content button {
-    height: 64px; } }
+    height: 72px;
+    max-width: 400px; }
+    .projector-access-content fieldset input {
+      height: 72px;
+      font-size: 48px;
+      font-weight: 700; }
+      .projector-access-content fieldset input::-webkit-input-placeholder {
+        font-size: 48px; }
+      .projector-access-content fieldset input:-moz-placeholder {
+        font-size: 48px; }
+      .projector-access-content fieldset input::-moz-placeholder {
+        font-size: 48px; }
+      .projector-access-content fieldset input:-ms-input-placeholder {
+        font-size: 48px; } }
 .projector-demo {
   text-align: center; }
 
@@ -5443,20 +5479,17 @@ a[class*="-container"]:hover .map-enter {
     padding: 7.5px; }
     .projector-account-form .projector-account-btn li {
       padding: 7.5px; }
-    .projector-account-form .projector-account-btn .btn-ghost-round {
-      font-size: 18px;
-      letter-spacing: 0; }
-      .projector-account-form .projector-account-btn .btn-ghost-round.fb {
-        color: #768bb7;
-        border-color: #768bb7; }
-        .projector-account-form .projector-account-btn .btn-ghost-round.fb:hover, .projector-account-form .projector-account-btn .btn-ghost-round.fb:focus {
-          border-color: #3b5998;
-          background: #3b5998;
-          color: white; }
-        .projector-account-form .projector-account-btn .btn-ghost-round.fb:active {
-          border-color: #9daccc;
-          background: #9daccc;
-          color: #3e5172; }
+    .projector-account-form .projector-account-btn .btn-ghost-round.fb {
+      color: #768bb7;
+      border-color: #768bb7; }
+      .projector-account-form .projector-account-btn .btn-ghost-round.fb:hover, .projector-account-form .projector-account-btn .btn-ghost-round.fb:focus {
+        border-color: #3b5998;
+        background: #3b5998;
+        color: white; }
+      .projector-account-form .projector-account-btn .btn-ghost-round.fb:active {
+        border-color: #9daccc;
+        background: #9daccc;
+        color: #3e5172; }
 
 .echo-loader * {
   transform-origin: center center; }
