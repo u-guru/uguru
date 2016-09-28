@@ -3643,7 +3643,7 @@ fieldset.no-border * {
     background: rgba(39, 106, 98, 0.2); }
   .demographic-tile.graduate:active > div .borders > div:empty:not(.border-bottom) {
     background: #276a62; }
-  @media screen and (min-height: 480px) {
+  @media screen and (min-height: 590px) {
     .demographic-tile > svg {
       display: block; }
     .demographic-tile > div:not(.borders) {
