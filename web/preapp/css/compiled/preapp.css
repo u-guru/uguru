@@ -5318,13 +5318,13 @@ a[class*="-container"]:hover .map-enter {
       .projector-access-content fieldset input:focus + div span:empty {
         transform: none; }
         .projector-access-content fieldset input:focus + div span:empty:nth-child(5) {
-          transition-delay: 0; }
+          transition-delay: 0ms; }
         .projector-access-content fieldset input:focus + div span:empty:nth-child(6) {
           transition-delay: 300ms; }
         .projector-access-content fieldset input:focus + div span:empty:nth-child(7) {
           transition-delay: 450ms; }
         .projector-access-content fieldset input:focus + div span:empty:nth-child(8) {
-          transition-delay: 750ms; }
+          transition-delay: 650ms; }
 
 @media screen and (min-height: 480px) {
   .projector-access-heart {
