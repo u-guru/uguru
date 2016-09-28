@@ -12,7 +12,7 @@
 		align-content: flex-start;
 		align-items: flex-start;
 		justify-content: center;
-		height: calc(100% - 80px);
+		height: 100%;
 		width: 100%;
 	}
 	.projector-splash-header {
@@ -39,9 +39,11 @@
 		}
 	}
 	.student-card-mobile {
+		position: absolute;
+		bottom: 0;
+		left: 0;
 		@include flex;
 		@include flex-center;
-		align-self: flex-end;
 		width: 100%;
 		padding: 15px;
 	}
