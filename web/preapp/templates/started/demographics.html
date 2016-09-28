@@ -12,9 +12,12 @@
 					init-with="p:[op:1, z-index:10]"
 					on-init="s:[demo-card-enter:public]:delay-500"
 					when-next-demo="p:[op:0, z-index:-1]">
-					<li class="card-container" init-with="p:[op:0, tro:center center]"
-						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">
-						<a class="demographic-tile high-school">
+					<li init-with="p:[op:0, tro:center center]"
+						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]"
+						on-click="p:[transform:translateY(50px):translateY(-50px):200:easeInExpo:^:2+0:a] | s:[hs-click:public]">
+						<a class="demographic-tile high-school"
+							init-with="p:[tro:center center]"
+							when-hs-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-100px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -33,7 +36,7 @@
 								</div>
 								<div>
 									<div ng-include="root.base_url + 'preapp/templates/started/components/high-school.html'"></div>
-									<h1>High School</h1>
+									<h1>High&nbsp;School</h1>
 								</div>
 							</div>
 						</a>
@@ -68,9 +71,12 @@
 							</div>
 						</a>
 					</li>
-					<li class="card-container" init-with="p:[op:0, tro:center center]"
-						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-200]">
-						<a class="demographic-tile alumni">
+					<li init-with="p:[op:0, tro:center center]"
+						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-200]"
+						on-click="p:[transform:translateY(30px):translateY(-150px):200:easeInExpo:^:2+0:a] | s:[alumni-click:public]">
+						<a class="demographic-tile alumni"
+							init-with="p:[tro:center center]"
+							when-alumni-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-500px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -96,9 +102,12 @@
 							</div>
 						</a>
 					</li>
-					<li class="card-container" init-with="p:[op:0, tro:center center]"
-						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-300]">
-						<a class="demographic-tile parent">
+					<li init-with="p:[op:0, tro:center center]"
+						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-300]"
+						on-click="p:[transform:translateY(0px):translateY(-150px):200:easeInExpo:^:2+0:a] | s:[parent-click:public]">
+						<a class="demographic-tile parent"
+							init-with="p:[tro:center center]"
+							when-parent-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-200px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -124,9 +133,12 @@
 							</div>
 						</a>
 					</li>
-					<li class="card-container" init-with="p:[op:0, tro:center center]"
-						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-400]">
-						<a class="demographic-tile professor">
+					<li init-with="p:[op:0, tro:center center]"
+						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-400]"
+						on-click="p:[transform:translateY(0px):translateY(-100px):200:easeInExpo:^:2+0:a] | s:[professor-click:public]">
+						<a class="demographic-tile professor"
+							init-with="p:[tro:center center]"
+							when-professor-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-400px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -156,9 +168,12 @@
 				<ul class="projector-demo-grid"
 					init-with="p:[op:0, z-index:-1]"
 					when-next-demo="p:[op:1, z-index:10]">
-					<li class="card-container" init-with="p:[op:0, tro:center center]"
-						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]">
-						<a class="demographic-tile freshman">
+					<li init-with="p:[op:0, tro:center center]"
+						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]"
+						on-click="p:[transform:translateY(50px):translateY(-50px):200:easeInExpo:^:2+0:a] | s:[freshman-click:public]">
+						<a class="demographic-tile freshman"
+							init-with="p:[tro:center center]"
+							when-freshman-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-100px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -184,9 +199,12 @@
 							</div>
 						</a>
 					</li>
-					<li class="card-container" init-with="p:[op:0, tro:center center]"
-						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-100]">
-						<a class="demographic-tile sophomore">
+					<li init-with="p:[op:0, tro:center center]"
+						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-100]"
+						on-click="p:[transform:translateY(50px):translateY(-50px):200:easeInExpo:^:2+0:a] | s:[sophomore-click:public]">
+						<a class="demographic-tile sophomore"
+							init-with="p:[tro:center center]"
+							when-sophomore-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-300px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -212,9 +230,12 @@
 							</div>
 						</a>
 					</li>
-					<li class="card-container" init-with="p:[op:0, tro:center center]"
-						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-200]">
-						<a class="demographic-tile junior">
+					<li init-with="p:[op:0, tro:center center]"
+						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-200]"
+						on-click="p:[transform:translateY(30px):translateY(-150px):200:easeInExpo:^:2+0:a] | s:[junior-click:public]">
+						<a class="demographic-tile junior"
+							init-with="p:[tro:center center]"
+							when-junior-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-500px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -240,9 +261,12 @@
 							</div>
 						</a>
 					</li>
-					<li class="card-container" init-with="p:[op:0, tro:center center]"
-						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-300]">
-						<a class="demographic-tile senior">
+					<li init-with="p:[op:0, tro:center center]"
+						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-300]"
+						on-click="p:[transform:translateY(0px):translateY(-150px):200:easeInExpo:^:2+0:a] | s:[senior-click:public]">
+						<a class="demographic-tile senior"
+							init-with="p:[tro:center center]"
+							when-senior-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-200px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
@@ -268,9 +292,12 @@
 							</div>
 						</a>
 					</li>
-					<li class="card-container" init-with="p:[op:0, tro:center center]"
-						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-400]">
-						<a class="demographic-tile graduate">
+					<li init-with="p:[op:0, tro:center center]"
+						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-400]"
+						on-click="p:[transform:translateY(0px):translateY(-100px):200:easeInExpo:^:2+0:a] | s:[graduate-click:public]">
+						<a class="demographic-tile graduate"
+							init-with="p:[tro:center center]"
+							when-graduate-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-400px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
