@@ -3489,14 +3489,10 @@ fieldset.no-border * {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    align-items: center;
     -webkit-align-content: center;
     align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
     position: relative;
     background: rgba(64, 72, 75, 0.95);
     border-radius: 2px; }
@@ -3514,7 +3510,7 @@ fieldset.no-border * {
       align-items: center;
       padding: 5px; }
       .demographic-tile > div > div:not(.borders) > div {
-        padding: 5px; }
+        padding: 0 5px; }
       .demographic-tile > div > div:not(.borders) svg {
         height: auto;
         width: 36px; }
@@ -3554,7 +3550,7 @@ fieldset.no-border * {
           width: 2px;
           height: 100%; }
         .demographic-tile > div .borders > div:empty.border-bottom {
-          top: 2px;
+          bottom: 2px;
           left: 2px;
           width: 5px;
           height: calc(100% - 4px); }
@@ -3650,6 +3646,14 @@ fieldset.no-border * {
     .demographic-tile > svg {
       display: block; }
     .demographic-tile > div:not(.borders) {
+      -webkit-flex-direction: row;
+      flex-direction: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -webkit-justify-content: center;
+      justify-content: center;
       position: absolute;
       top: 0;
       left: 0;
@@ -3677,8 +3681,6 @@ fieldset.no-border * {
           width: 100%;
           text-align: center; }
       .demographic-tile > div:not(.borders) .borders > div:empty.border-bottom {
-        bottom: 2px;
-        left: 2px;
         width: calc(100% - 4px);
         height: 5px; } }
   @media screen and (min-width: 480px) {

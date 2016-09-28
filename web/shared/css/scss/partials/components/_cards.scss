@@ -21,7 +21,7 @@
 	}
 	> div {
 		@include flex;
-		@include flex-center;
+		@include flex-center-vertical;
 		position: relative;
 		background: rgba($slate, .95);
 		border-radius: 2px;
@@ -30,7 +30,7 @@
 			@include flex-center-vertical;
 			padding: 5px;
 			> div {
-				padding: 5px;
+				padding: 0 5px;
 			}
 			svg {
 				height: auto;
@@ -79,7 +79,7 @@
 					height: 100%;
 				}
 				&.border-bottom {
-					top: 2px;
+					bottom: 2px;
 					left: 2px;
 					width: 5px;
 					height: calc(100% - 4px);
@@ -355,6 +355,7 @@
 			display: block;
 		}
 		> div:not(.borders) {
+			@include flex-center;
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -379,8 +380,6 @@
 			.borders {
 				> div:empty {
 					&.border-bottom {
-						bottom: 2px;
-						left: 2px;
 						width: calc(100% - 4px);
 						height: 5px;
 					}
