@@ -96,12 +96,14 @@ gulp.task('sass',function(done){
 gulp.task('compile-css', function(done) {
 
   var cssStream = gulp.src([
-      '!preapp/css/compiled/loader.css',
-      '!shared/css/ionic.app.min.backup.css',
-      '!preapp/css/loader.css',
-      'shared/**/*.css',
-      'preapp/**/*.css',
-      'admin/**/*.css'
+      'shared/css/ionic.app.min.css',
+       'shared/css/compiled/style.css',
+       'shared/css/compiled/utility.css',
+       'shared/css/compiled/components.css',
+       'shared/css/compiled/animation.css',
+       'shared/css/compiled/profile.css',
+       'preapp/css/compiled/preapp.css',
+       'admin/css/compiled/admin.css'
     ],{cwd: targetPath})
   .pipe(debug())
   .pipe(plugins.changed('../web'));
@@ -112,7 +114,7 @@ gulp.task('compile-css', function(done) {
   .pipe(plugins.if(build, plugins.stripCssComments()))
   .pipe(minifyCSS({keepSpecialComments : 0}))
   .pipe(plugins.if(build, plugins.rev()))
-  .pipe(plugins.concat('app_version.css'))
+  .pipe(plugins.concat('app.css'))
   // .pipe(uncss({
   //     html: ['dest/templates/**/*html']
   // }))
@@ -154,6 +156,7 @@ gulp.task('compile-js', function(done) {
       'shared/js/lib/ionic.bundle.min.js',
       'shared/js/lib/restangular.min.js',
       'shared/js/lib/lodash.min.js',
+      'shared/js/lib/*',
       //directive
       'shared/js/AnimationDirectives.js',
       'shared/js/directives/*.js',
@@ -165,6 +168,7 @@ gulp.task('compile-js', function(done) {
       //prepapp ctrl
       'preapp/js/SplashController.js',
       'preapp/js/*.js',
+      'preapp/js/started/*.js',
 
       //admin/service
       'admin/js/services/AdminAnimToolService.js',
@@ -193,22 +197,21 @@ gulp.task('compile-temp',function(done){
 
     var templateStream = gulp
         .src([
-          // 'shared/templates/root.html',
-          // 'admin/templates/**/*.html',
-          // 'preapp/templates/**/*.html',
           '!*master.index.html',
           '!*index.html',
           '!dest/**/*',
-          'shared/**/*html',
-          'preapp/**/*html',
-          'shared/**/*tpl',
-          'preapp/**/*tpl',
-          'shared/**/*svg',
-          'preapp/**/*svg'
+          '!archived/**/*',
+          '!deprecate/**/*',
+          '**/*html',
+          '**/*html',
+          '**/*tpl',
+          '**/*tpl',
+          '**/*svg',
+          '**/*svg'
           ], { cwd: targetPath })
       .pipe(debug())
       .pipe(plugins.angularTemplatecache('templates.js', {
-        root: '/static/remote/templates/',
+        root: '/',
         module: 'uguru',
         htmlmin: build && minifyConfig
       }));
@@ -250,6 +253,9 @@ gulp.task('watchers', function() {
   //   .on('change', plugins.livereload.changed)
   //   .on('error', errorHandler);
 });
+
+
+
 gulp.task('copyTo', function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
@@ -265,13 +271,13 @@ gulp.task('copyTo', function(){
 
 gulp.task('default', function(done) {
   runSequence(
-    'clean',
-    'sass',
+    // 'clean',
+    // 'sass',
     'compile-css',
     'compile-temp',
     // 'jsHint',
     'compile-js',
-    'copyTo',
+    // 'copyTo',
     // 'index',
     // build ? 'noop' : 'watchers',
     // build ? 'noop' : 'serve',

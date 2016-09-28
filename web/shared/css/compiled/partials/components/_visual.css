@@ -372,8 +372,12 @@
   position: relative;
   width: 90% !important;
   height: 80%;
-  max-width: 900px;
-  max-height: 600px; }
+  max-width: 750px;
+  max-height: 500px; }
+  @media screen and (min-height: 750px) {
+    .projector-slide {
+      max-width: 900px;
+      max-height: 600px; } }
   @media screen and (min-height: 900px) {
     .projector-slide {
       max-width: 1080px;
@@ -476,6 +480,16 @@
     bottom: -20px;
     left: 50%;
     margin-left: -30.5px; }
+
+.projector-guru-body {
+  position: absolute;
+  top: 50%;
+  margin-top: -200px;
+  left: -25%;
+  margin-left: 60px;
+  z-index: 10;
+  width: 300px;
+  height: 450px; }
 
 .postit {
   position: relative;
