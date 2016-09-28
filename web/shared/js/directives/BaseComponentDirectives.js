@@ -22,7 +22,7 @@ angular.module('uguru.shared.directives.base.components')
             }
         }
     }])
-    .directive("chart", ["$compile", "SVGService", function($compile, SVGService) {
+    .directive("chart", ["$compile", "SVGService", "$timeout", function($compile, SVGService, $timeout) {
         return {
             restrict: 'E',
             replace: true,
@@ -31,12 +31,48 @@ angular.module('uguru.shared.directives.base.components')
             compile: function(lElem, attr, transclude) {
                 return {
                     pre: function(scope, elem, attr) {
+                        scope.onMouseEnter = function($event) {
+
+                            if (scope.chart.mouseEntered) {
+                                scope.chart.mouseEnterPending = false;
+                                return
+                            }
+                            scope.chart.mouseEnterPending = true;
+                            $timeout(function() {
+                                if (!scope.chart.mouseEntered && scope.chart.mouseEnterPending) {
+                                    scope.chart.mouseEntered = true;
+                                }
+                            }, 500)
+                        }
+
+
+
+
                         scope.stream.showProps = false;
                         scope.chart = scope.stream.plot;
+                        scope.chart.mouseEntered = false;
+                        scope.chart.mouseEnteredPoint = null;
+                        scope.chart.focusedPoints = [];
+                        scope.chart.onMousePointEnter = function(point, $event) {
+                            console.log('entering...', point, $event);
+                        }
+                        // scope.chart.onMousePointLeave = function(point, $event) {
+                        //     console.log('leaving...', point, $event.type);
+                        // }
+
+                        scope.chart.onMousePointDown = function(point, $event) {
+                            console.log('pressing...', point, $event);
+                        }
+
+                        scope.chart.onMousePointUp = function(point, $event) {
+                            console.log('unpressing...', point, $event);
+                        }
                         scope.chartReady = true;
                         for (vb in scope.chart.vb) {
                             vb = scope.chart.vb[vb].toFixed(2)
                         }
+                        scope.chart.mouseEntered = false;
+                        scope.chart.mouseEnterPending = false;
                         $compile(elem)(scope);
 
                     }

@@ -654,7 +654,6 @@ function AnimationFrameService($timeout, $state, UtilitiesService, TweenService,
           if (stream.tick.current <= stream.tick.end) {
             if (stream.tick.current < stream.values.length && stream.tick.current >= 0) {
               stream.applyProp && stream.applyProp(stream.values[stream.tick.current]);
-              console.log(stream.values)
               player.debug && player.debug.propStreamValueUpdate[stream.name](stream.name, stream.values[stream.tick.current], stream.tick.current, stream.tick.cycleIndex)
               // console.log(stream.tick.current, stream.values[stream.tick.current])
             }
