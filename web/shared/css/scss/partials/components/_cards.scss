@@ -1,11 +1,18 @@
 @import '../mixin';
 
+.card-container {
+	-webkit-perspective: 1000;
+	perspective: 1000;
+	transform-style: preserve-3d;
+}
+
 // demogrpahic tile
 .demographic-tile {
 	position: relative;
 	display: block;
+	transition: all 150ms ease-in;
 	> svg {
-		display: block;
+		display: none;
 		max-width: 96px;
 		max-height: 96px;
 		rect {
@@ -14,26 +21,25 @@
 	}
 	> div {
 		@include flex;
-		@include flex-center;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: slate;
-		div {
+		@include flex-center-vertical;
+		position: relative;
+		background: rgba($slate, .95);
+		border-radius: 2px;
+		> div:not(.borders) {
 			@include flex;
-			@include flex-wrap;
-			@include flex-center;
+			@include flex-center-vertical;
+			padding: 5px;
+			> div {
+				padding: 0 5px;
+			}
 			svg {
-				height: 48px;
-				width: auto;
+				height: auto;
+				width: 36px;
 			}
 			h1 {
-				width: 100%;
-				font-size: 16px;
+				padding-right: 5px;
+				font-size: 14px;
 				font-weight: 600;
-				text-align: center;
 			}
 		}
 		.borders {
@@ -75,10 +81,33 @@
 				&.border-bottom {
 					bottom: 2px;
 					left: 2px;
-					width: calc(100% - 4px);
-					height: 5px;
+					width: 5px;
+					height: calc(100% - 4px);
 				}
 			}
+		}
+	}
+	* {
+		transition: all 150ms ease-in;
+	}
+	&:hover, &:focus {
+		transform: translateZ(20px);
+		transition: all 600ms cubic-bezier(.6,0,.1,2);
+		* {
+			transition: all 600ms ease-out;
+		}
+		> div {
+			background: rgba($shamrock, .1);
+		}
+	}
+	&:active {
+		transform: translateZ(-20px);
+		transition: all 150ms ease-in;
+		* {
+			transition: all 150ms ease-in;
+		}
+		> div {
+			background: rgba(lighten($slate, 15%), .95)!important;
 		}
 	}
 	.border-bottom {
@@ -87,27 +116,132 @@
 
 	&.high-school {
 		.border-bottom {
-			background: #ef8f5f;
+			background: saturate(lighten($orange, 10%), 10%);
+		}
+		&:hover, &:focus {
+			> div {
+				background: rgba(saturate(lighten($orange, 10%), 10%), .2);
+			}
+		}
+		&:active {
+			> div {
+				svg {
+					circle {
+						stroke: saturate(lighten($orange, 10%), 10%);
+					}
+				}
+				.borders {
+					> div:empty {
+						&:not(.border-bottom) {
+							background: saturate(lighten($orange, 10%), 10%);
+						}
+					}
+				}
+			}
 		}
 	}
 	&.college {
 		.border-bottom {
-			background: #6fbfdf;
+			background: lighten($lake, 10%);
+		}
+		&:hover, &:focus {
+			> div {
+				background: rgba(lighten($lake, 10%), .2);
+			}
+		}
+		&:active {
+			> div {
+				svg {
+					circle {
+						stroke: lighten($lake, 10%);
+					}
+				}
+				.borders {
+					> div:empty {
+						&:not(.border-bottom) {
+							background: lighten($lake, 10%);
+						}
+					}
+				}
+			}
 		}
 	}
 	&.alumni {
 		.border-bottom {
 			background: desaturate(mix(white, $cobalt, 10%), 15%);
 		}
+		&:hover, &:focus {
+			> div {
+				background: rgba(desaturate(mix(white, $cobalt, 10%), 15%), .2);
+			}
+		}
+		&:active {
+			> div {
+				svg {
+					circle {
+						stroke: desaturate(mix(white, $cobalt, 10%), 15%);
+					}
+				}
+				.borders {
+					> div:empty {
+						&:not(.border-bottom) {
+							background: desaturate(mix(white, $cobalt, 10%), 15%);
+						}
+					}
+				}
+			}
+		}
 	}
 	&.parent {
 		.border-bottom {
 			background: desaturate(mix(white, $eggplant, 10%), 15%);
 		}
+		&:hover, &:focus {
+			> div {
+				background: rgba(desaturate(mix(white, $eggplant, 10%), 15%), .2);
+			}
+		}
+		&:active {
+			> div {
+				svg {
+					circle {
+						stroke: desaturate(mix(white, $eggplant, 10%), 15%);
+					}
+				}
+				.borders {
+					> div:empty {
+						&:not(.border-bottom) {
+							background: desaturate(mix(white, $eggplant, 10%), 15%);
+						}
+					}
+				}
+			}
+		}
 	}
 	&.professor {
 		.border-bottom {
-			background: desaturate(mix(white, $azure, 10%), 10%);
+			background: lighten($azure, 10%);
+		}
+		&:hover, &:focus {
+			> div {
+				background: rgba(lighten($azure, 10%), .2);
+			}
+		}
+		&:active {
+			> div {
+				svg {
+					circle {
+						stroke: lighten($azure, 10%);
+					}
+				}
+				.borders {
+					> div:empty {
+						&:not(.border-bottom) {
+							background: lighten($azure, 10%);
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -115,25 +249,142 @@
 		.border-bottom {
 			background: #5f9ac1;
 		}
+		&:hover, &:focus {
+			> div {
+				background: rgba(#5f9ac1, .2);
+			}
+		}
+		&:active {
+			> div {
+				.borders {
+					> div:empty {
+						&:not(.border-bottom) {
+							background: #5f9ac1;
+						}
+					}
+				}
+			}
+		}
 	}
 	&.sophomore {
 		.border-bottom {
 			background: #7cc2e3;
+		}
+		&:hover, &:focus {
+			> div {
+				background: rgba(#7cc2e3, .2);
+			}
+		}
+		&:active {
+			> div {
+				.borders {
+					> div:empty {
+						&:not(.border-bottom) {
+							background: #7cc2e3;
+						}
+					}
+				}
+			}
 		}
 	}
 	&.junior {
 		.border-bottom {
 			background: #3e94ac;
 		}
+		&:hover, &:focus {
+			> div {
+				background: rgba(#3e94ac, .2);
+			}
+		}
+		&:active {
+			> div {
+				.borders {
+					> div:empty {
+						&:not(.border-bottom) {
+							background: #3e94ac;
+						}
+					}
+				}
+			}
+		}
 	}
 	&.senior {
 		.border-bottom {
 			background: #517b7e;
 		}
+		&:hover, &:focus {
+			> div {
+				background: rgba(#517b7e, .2);
+			}
+		}
+		&:active {
+			> div {
+				.borders {
+					> div:empty {
+						&:not(.border-bottom) {
+							background: #517b7e;
+						}
+					}
+				}
+			}
+		}
 	}
 	&.graduate {
 		.border-bottom {
 			background: #276a62;
+		}
+		&:hover, &:focus {
+			> div {
+				background: rgba(#276a62, .2);
+			}
+		}
+		&:active {
+			> div {
+				.borders {
+					> div:empty {
+						&:not(.border-bottom) {
+							background: #276a62;
+						}
+					}
+				}
+			}
+		}
+	}
+	@media screen and (min-height: 480px) {
+		> svg {
+			display: block;
+		}
+		> div:not(.borders) {
+			@include flex-center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			> div {
+				@include flex-wrap;
+				@include flex-center;
+				padding: 0;
+				> div, h1 {
+					padding: 0!important;
+				}
+				svg {
+					height: 48px;
+					width: auto;
+				}
+				h1 {
+					width: 100%;
+					text-align: center;
+				}
+			}
+			.borders {
+				> div:empty {
+					&.border-bottom {
+						width: calc(100% - 4px);
+						height: 5px;
+					}
+				}
+			}
 		}
 	}
 	@media screen and (min-width: 480px) {
@@ -141,7 +392,7 @@
 			max-width: 150px;
 			max-height: 150px;
 		}
-		> div {
+		> div:not(.borders) {
 			div {
 				svg {
 					height: 80px;
@@ -157,7 +408,7 @@
 			max-width: none;
 			max-height: none;
 		}
-		> div {
+		> div:not(.borders) {
 			div {
 				svg {
 					height: 100px;
@@ -190,6 +441,8 @@
 	padding-left: 55px;
 	padding-right: 55px;
 	position: relative;
+	-webkit-perspective: 1000;
+	perspective: 1000;
 	a {
 		display: block;
 		position: absolute;
@@ -1743,6 +1996,8 @@ a.credit-card {
 					height: 100%;
 				}
 				.school-card-state {
+					@include flex;
+					@include flex-center;
 					opacity: 0;
 					transition: all 150ms ease-in-out;
 					position: absolute;
@@ -1755,9 +2010,8 @@ a.credit-card {
 						@include round;
 						transition: all 150ms ease-in-out;
 						display: block;
-						width: 100%;
-						height: 100%;
-						padding: 15px;
+						width: 50%;
+						height: 50%;
 						path {
 							@include svg-stroke(white, 10);
 						}
