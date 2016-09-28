@@ -266,7 +266,7 @@ gulp.task('copyTo', function(){
 gulp.task('default', function(done) {
   runSequence(
     // 'clean',
-    'sass',
+    // 'sass',
     'compile-css',
     'compile-temp',
     // 'jsHint',
