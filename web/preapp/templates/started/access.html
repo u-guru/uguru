@@ -1,24 +1,33 @@
 <ion-view class="flex-center">
 	<projector class="projector-access projector-splash">
 		<div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"></div>
-		<div class="projector-splash-container">
+		<div class="projector-splash-container"
+			init-default
+			on-init="s:[promo-header:public]:delay-500"
+			when-promo-header="s:[promo-input-enter:public]:delay-750">
 			<header class="projector-splash-header">
 				<a class="projector-splash-back icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"></a>
-				<div class="projector-access-heart" ng-include="root.base_url + 'shared/templates/components/svg/other/message-heart.html'"></div>
-				<h1>Promo Code</h1>
+				<div class="projector-access-heart" ng-include="root.base_url + 'shared/templates/components/svg/other/message-heart.html'"
+					init-with="p:[op:0, tro:center bottom, tr:rotate(-60deg) translateY(30px)]"
+					when-promo-header="p:[opacity:1, transform:rotate(-60deg) translateY(30px):rotate(0deg) translateY(0px):500:easeOutExpo bouncePast]:delay-250"></div>
+				<h1 init-with="p-op"
+					when-promo-header="a:[bounceInDown-subtle:set:(dur:1000ms#func:linear):in]">Promo Code</h1>
 				<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
 			</header>
 			<div class="projector-access-content">
 				<ul>
 					<li>
-						<fieldset>
+						<fieldset init-with="p:[tro:center bottom, tr:rotateX(90deg)]"
+							when-promo-input-enter="p:[transform:rotateX(90deg):rotateX(0deg):750:easeOutBounce]">
 							<span></span><span></span>
 							<span></span><span></span>
 							<input type="text" placeholder="Enter Promo Code"/>
 						</fieldset>
 					</li>
 					<li>
-						<button class="btn-default bg-moxie radius-2 normal p15x caps txt-20">
+						<button class="btn-default bg-moxie radius-2 normal p15x caps txt-20"
+							init-with="p-op"
+							when-promo-input-enter="p:[opacity:0:1:300:linear]">
 							<span></span><span></span>
 							<span></span><span></span>
 							<span></span>
@@ -26,7 +35,8 @@
 						</button>
 					</li>
 				</ul>
-				<div>
+				<div init-with="p-op"
+					when-promo-input-enter="p:[op:1]:delay-250">
 					<a>Skip</a>
 				</div>
 			</div>
