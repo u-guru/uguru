@@ -1,9 +1,9 @@
-<div class="projector-container"
-	init-with="p-op"
-	on-init="a:[bounceInDown-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]">
-	<div class="projector-slide"
-		init-default
-		on-init="a:[projector-swing:set:(dur:3000ms#func:ease-out#delay:-500ms):in]">
+<div class="projector-container">
+	<!-- init-with="p-op"
+	on-init="a:[bounceInDown-subtle:set:(dur:1000ms#func:ease-out):in:delay-250]" -->
+	<div class="projector-slide">
+		<!-- init-default
+		on-init="a:[projector-swing:set:(dur:3000ms#func:ease-out#delay:-500ms):in]" -->
 	    <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
 	        <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
 	    </svg>

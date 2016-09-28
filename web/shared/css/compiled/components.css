@@ -3643,10 +3643,8 @@ fieldset.no-border * {
     background: rgba(39, 106, 98, 0.2); }
   .demographic-tile.graduate:active > div .borders > div:empty:not(.border-bottom) {
     background: #276a62; }
-  @media screen and (min-height: 480px) {
-    .demographic-tile > svg {
-      display: block; }
-    .demographic-tile > div:not(.borders) {
+  @media screen and (min-height: 480px) and (min-width: 320px) {
+    .demographic-tile > div {
       -webkit-flex-direction: row;
       flex-direction: row;
       -webkit-align-items: center;
@@ -3655,12 +3653,8 @@ fieldset.no-border * {
       align-content: center;
       -webkit-justify-content: center;
       justify-content: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%; }
-      .demographic-tile > div:not(.borders) > div {
+      padding: 5px 0 10px; }
+      .demographic-tile > div > div:not(.borders) {
         -ms-flex-flow: row wrap;
         -webkit-flex-flow: row wrap;
         flex-flow: row wrap;
@@ -3673,33 +3667,51 @@ fieldset.no-border * {
         -webkit-justify-content: center;
         justify-content: center;
         padding: 0; }
-        .demographic-tile > div:not(.borders) > div > div, .demographic-tile > div:not(.borders) > div h1 {
+        .demographic-tile > div > div:not(.borders) > div, .demographic-tile > div > div:not(.borders) h1 {
           padding: 0 !important; }
-        .demographic-tile > div:not(.borders) > div svg {
+        .demographic-tile > div > div:not(.borders) svg {
           height: 48px;
           width: auto; }
-        .demographic-tile > div:not(.borders) > div h1 {
+        .demographic-tile > div > div:not(.borders) h1 {
           width: 100%;
           font-size: 14px;
           text-align: center; }
-      .demographic-tile > div:not(.borders) .borders > div:empty.border-bottom {
+      .demographic-tile > div .borders > div:empty.border-bottom {
         width: calc(100% - 4px);
         height: 5px; } }
-  @media screen and (min-width: 480px) {
+  @media screen and (min-height: 530px) and (min-width: 340px) {
+    .demographic-tile > svg {
+      display: block; }
+    .demographic-tile > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0; } }
+  @media screen and (min-height: 620px), screen and (min-width: 530px) {
+    .demographic-tile > svg {
+      max-width: 120px;
+      max-height: 120px; }
+    .demographic-tile > div div:not(.borders) svg {
+      height: 70px; }
+    .demographic-tile > div div:not(.borders) h1 {
+      font-size: 18px; } }
+  @media screen and (min-height: 730px), screen and (min-width: 600px) {
     .demographic-tile > svg {
       max-width: 150px;
       max-height: 150px; }
-    .demographic-tile > div:not(.borders) div svg {
+    .demographic-tile > div div:not(.borders) svg {
       height: 80px; }
-    .demographic-tile > div:not(.borders) div h1 {
+    .demographic-tile > div div:not(.borders) h1 {
       font-size: 18px; } }
   @media screen and (min-width: 768px) and (min-height: 768px) {
     .demographic-tile > svg {
       max-width: none;
       max-height: none; }
-    .demographic-tile > div:not(.borders) div svg {
+    .demographic-tile > div div:not(.borders) svg {
       height: 100px; }
-    .demographic-tile > div:not(.borders) div h1 {
+    .demographic-tile > div div:not(.borders) h1 {
       font-size: 20px; } }
 
 .card-house .team-card-container .team-card .team-link {

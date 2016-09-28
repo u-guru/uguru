@@ -1,6 +1,10 @@
 @import '../../../../../shared/css/scss/partials/mixin';
 
 .projector-splash {
+	.btn-ghost-round {
+		font-size: 18px;
+		letter-spacing: 0;
+	}
 	.projector-content {
 		@include flex;
 		@include flex-wrap;
@@ -11,14 +15,17 @@
 		@include flex-wrap;
 		align-content: flex-start;
 		align-items: flex-start;
-		height: calc(100% - 80px);
+		justify-content: center;
+		height: 100%;
+		width: 100%;
 	}
 	.projector-splash-header {
 		@include flex;
+		@include flex-wrap;
 		@include flex-center;
 		width: 100%;
 		text-align: center;
-		height: 50px;
+		min-height: 50px;
 		// background: rgba(white, .1);
 		h1 {
 			font-size: 20px;
@@ -36,9 +43,11 @@
 		}
 	}
 	.student-card-mobile {
+		position: absolute;
+		bottom: 0;
+		left: 0;
 		@include flex;
 		@include flex-center;
-		align-self: flex-end;
 		width: 100%;
 		padding: 15px;
 	}

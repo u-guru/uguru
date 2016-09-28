@@ -1,6 +1,59 @@
 <ion-view class="flex-center">
+	<projector class="projector-access projector-splash">
+		<div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"
+			init-default
+			on-init="s:[card-flip:public]"></div>
+		<div class="projector-splash-container"
+			init-default
+			on-init="s:[promo-header:public]:delay-250"
+			when-promo-header="s:[promo-input-enter:public]:delay-500">
+			<header class="projector-splash-header">
+				<a class="projector-splash-back icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"></a>
+				<h1 init-with="p-op"
+					when-promo-header="a:[bounceInDown-subtle:set:(dur:1000ms#func:linear):in]">Access</h1>
+				<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
+			</header>
+			<div class="projector-access-content">
+				<div>
+					<div class="projector-access-heart" ng-include="root.base_url + 'shared/templates/components/svg/other/message-heart.html'"
+						init-with="p:[op:0, tro:center bottom, tr:rotate(-60deg) translateY(30px)]"
+						when-promo-header="p:[opacity:1, transform:rotate(-60deg) translateY(30px):rotate(0deg) translateY(15px):500:easeOutExpo bouncePast]:delay-250"
+						when-promo-input-form="p:[transform:translateY(15px):translateY(0px):250:easeOutSine]"></div>
+					<fieldset init-with="p:[op:0, tro:center bottom, tr:rotateX(90deg)]"
+						when-promo-input-enter="p:[op:1, transform:rotateX(90deg):rotateX(0deg):450:easeOutBounce] | s:[promo-input-form:public:delay-450]">
+						<input type="text" placeholder="Promo Code"/>
+						<div>
+							<span init-with="p:[tr:scaleX(0)]"
+								when-promo-input-form="p:[transform:scaleX(0):scaleX(1):300:easeOutSine]"></span>
+							<span init-with="p:[tr:scaleY(0)]"
+								when-promo-input-form="p:[transform:scaleY(0):scaleY(1):150:easeOutSine]:delay-300"></span>
+							<span init-with="p:[tr:scaleX(0)]"
+								when-promo-input-form="p:[transform:scaleX(0):scaleX(1):300:easeOutSine]:delay-450"></span>
+							<span init-with="p:[tr:scaleY(0)]"
+								when-promo-input-form="p:[transform:scaleY(0):scaleY(1):150:easeOutSine]:delay-750"></span>
+							<span style="background: #FDB515;"></span><span style="background: #FDB515;"></span>
+							<span style="background: #FDB515;"></span><span style="background: #FDB515;"></span>
+							<div><div style="background: #003262;"></div></div>
+						</div>
+					</fieldset>
+				</div>
+				<ul init-with="p:[tr:translateY(-30px)]"
+					when-promo-input-form="p:[transform:translateY(-30px):translateY(0px):250:easeOutSine]">
+					<li init-with="p-op"
+						when-promo-input-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-450">
+						<button class="btn-ghost-round">Activate</button>
+					</li>
+					<li init-with="p-op"
+						when-promo-input-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:linear):in]:delay-900">
+						<button class="btn-ghost-round skip">Skip</button>
+					</li>
+				</ul>
+			</div>
+			<div class="student-card-mobile" ng-include="root.base_url + 'preapp/templates/started/components/student-card-mobile.html'"></div>
+		</div>
+	</projector>
     <!-- ng-controller='AccessController' -->
-    <div class="projector-slide">
+    <!-- <div class="projector-slide">
         <svg class="projector-line" width="2px" height="196px" viewBox="0 0 4 392">
             <path d="M2,2 L2,392" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.6" stroke-linejoin="round" stroke-dasharray="16,14"></path>
         </svg>
@@ -44,5 +97,5 @@
         <svg class="projector-handle" width="61px" height="24px" viewBox="0 0 122 48">
             <path d="M116.813759,2 L119.407837,16.1511345 C121.400182,27.0197169 114.265024,37.7105153 103.431627,39.9081948 C103.431627,39.9081948 77.5373297,46 60.9999232,46 C44.4625167,46 18.5495835,39.9045365 18.5495835,39.9045365 C7.74411375,37.6544772 0.597741646,27.0302069 2.59200971,16.1511345 L5.18608711,2" fill="none" stroke-width="4" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
-    </div>
+    </div> -->
 </ion-view>

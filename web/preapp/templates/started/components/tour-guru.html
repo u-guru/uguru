@@ -51,7 +51,9 @@
 	<svg viewBox="0 0 240 150">
 		<rect x="0" y="0" width="240" height="150" fill="none"></rect>
 	</svg>
-	<div class="school-id-front">
+	<div class="school-id-front"
+		init-default
+		when-card-flip="p:[transform:rotateY(0deg):rotateX(180deg):300:easeInOutSine]">
 		<div class="school-id-bg" style="background-image: url('/shared/images/uc-berkeley.svg')"></div>
 		<div class="school-id-top" style="background: #003262;">
 			<span class="user-icon" style="background-color:transparent; border-color: #003262; background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/marcogomes/128.jpg');"></span>
@@ -79,7 +81,8 @@
 		</div>
 	</div>
 	<div class="school-id-back"
-		init-with="p:[tr:rotateY(180deg)]">
+		init-with="p:[tr:rotateY(180deg)]"
+		when-card-flip="p:[transform:rotateY(180deg):rotateX(0deg):300:easeInOutSine]">
 		<div class="school-id-bar"></div>
 		<div class="school-id-info">
 			<ul>
