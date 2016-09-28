@@ -4,7 +4,7 @@
 		<div class="projector-splash-container"
 			init-default
 			on-init="s:[promo-header:public]:delay-500"
-			when-promo-header="s:[promo-input-enter:public]:delay-750">
+			when-promo-header="s:[promo-input-enter:public]:delay-700">
 			<header class="projector-splash-header">
 				<a class="projector-splash-back icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"></a>
 				<div class="projector-access-heart" ng-include="root.base_url + 'shared/templates/components/svg/other/message-heart.html'"
@@ -16,18 +16,35 @@
 			</header>
 			<div class="projector-access-content">
 				<ul>
-					<li>
+					<li init-default
+						on-mouse-enter="s:[promo-hover:public]"
+						on-click="s:[promo-click:public]"
+						on-mouse-leave="s:[promo-default:public]">
 						<fieldset init-with="p:[tro:center bottom, tr:rotateX(90deg)]"
-							when-promo-input-enter="p:[transform:rotateX(90deg):rotateX(0deg):750:easeOutBounce]">
-							<span></span><span></span>
-							<span></span><span></span>
+							when-promo-input-enter="p:[transform:rotateX(90deg):rotateX(0deg):450:easeOutBounce]">
+							<span init-default
+							 when-promo-hover="p:[background:#003262, op:0.3]"
+ 							 when-promo-click="p:[background:#003262, op:1]"
+ 							 when-promo-default="p:[background:#ffffff, op:1]"></span>
+							<span init-default
+							 when-promo-hover="p:[background:#003262, op:0.3]:delay-50"
+ 							 when-promo-click="p:[background:#003262, op:1]:delay-50"
+ 							 when-promo-default="p:[background:#ffffff, op:1]"></span>
+							<span init-default
+							 when-promo-hover="p:[background:#003262, op:0.3]:delay-100"
+ 							 when-promo-click="p:[background:#003262, op:1]:delay-100"
+ 							 when-promo-default="p:[background:#ffffff, op:1]"></span>
+							<span init-default
+							 when-promo-hover="p:[background:#003262, op:0.3]:delay-150"
+ 							 when-promo-click="p:[background:#003262, op:1]:delay-150"
+ 							 when-promo-default="p:[background:#ffffff, op:1]"></span>
 							<input type="text" placeholder="Enter Promo Code"/>
 						</fieldset>
 					</li>
 					<li>
 						<button class="btn-default bg-moxie radius-2 normal p15x caps txt-20"
-							init-with="p-op"
-							when-promo-input-enter="p:[opacity:0:1:300:linear]">
+							init-with="p:[tro:center bottom, tr:rotateX(90deg)]"
+							when-promo-input-enter="p:[transform:rotateX(90deg):rotateX(0deg):200:easeOutExpo]:delay-100">
 							<span></span><span></span>
 							<span></span><span></span>
 							<span></span>
@@ -36,7 +53,7 @@
 					</li>
 				</ul>
 				<div init-with="p-op"
-					when-promo-input-enter="p:[op:1]:delay-250">
+					when-promo-input-enter="p:[op:1]">
 					<a>Skip</a>
 				</div>
 			</div>
