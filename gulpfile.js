@@ -193,9 +193,9 @@ gulp.task('compile-temp',function(done){
 
     var templateStream = gulp
         .src([
-          // 'shared/templates/root.html',
-          // 'admin/templates/**/*.html',
-          // 'preapp/templates/**/*.html',
+          'shared/templates/root.html',
+          'admin/templates/**/*.html',
+          'preapp/templates/**/*.html',
           '!*master.index.html',
           '!*index.html',
           '!dest/**/*',
@@ -265,13 +265,13 @@ gulp.task('copyTo', function(){
 
 gulp.task('default', function(done) {
   runSequence(
-    'clean',
+    // 'clean',
     'sass',
     'compile-css',
     'compile-temp',
     // 'jsHint',
     'compile-js',
-    'copyTo',
+    // 'copyTo',
     // 'index',
     // build ? 'noop' : 'watchers',
     // build ? 'noop' : 'serve',

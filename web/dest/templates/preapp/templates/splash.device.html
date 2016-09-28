@@ -1,0 +1,204 @@
+<div id="splash-device-container" class="splash-device-container" desktop
+	ng-controller='SplashDeviceController as device'
+	on-init="s:[device-init:public]">
+	<custom-states when="device-init"></custom-states>
+    <div class="splash-device splash-device-iphone">
+        <div class="splash-device-svg iphone-device"
+			init-with="p:[op:0, tr:rotateZ(30deg) rotateY(-90deg), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)]"
+			when-university-dropdown-toggle-on="t-enter"
+			on-enter="p:[op:1, tr:rotateZ(0deg) rotateY(0deg)]">
+            <!-- http://codepen.io/teamuguru/pen/3f4edcf309f72f85bb19f7a780aef8bd?editors=0100 -->
+			<!-- <svg class="iphone-center" viewBox="0 0 318 651"
+				init-with="p-op"
+				when-university-dropdown-mouse-leave="p:[op:0.2:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-toggle-on="p:[op:1:delay-50, t:all 250ms ease-in-out]"
+				when-university-dropdown-toggle-off="p:[op:0.2:delay-50, t:all 250ms ease-in-out]">
+			    <g fill="#2b2324" fill-rule="evenodd" stroke-width="3" stroke="#F0E0D0" stroke-linecap="round" stroke-linejoin="round">
+		            <path d="M159.5,650 L41.9985987,650 C19.9162684,650 2,632.091135 2,609.999431 L2,42.0005693 C2,19.9012788 19.9079826,2 41.9985987,2 L159.5,2 L276.628381,2 C298.648868,2 316.5,19.9012788 316.5,42.0005693 L316.5,609.999431 C316.5,632.091135 298.640609,650 276.628381,650 L159.5,650" class="school-color" style="fill:#003057"
+						init-default
+						when-university-dropdown-hover="p:[fill:^school_color_dark:delay-150, t:all 250ms ease-out]"></path>
+		            <polygon class="screen" fill="#2B2324" points="21 573 21 80 297 80 297 573"></polygon>
+		            <path d="M159,636 C145.192881,636 134,624.807119 134,611 C134,597.192881 145.192881,586 159,586 C172.807119,586 184,597.192881 184,611 C184,624.807119 172.807119,636 159,636" class="home-btn" fill="#2B2324"></path>
+			    </g>
+			</svg> -->
+
+            <svg class="iphone-left" viewBox="0 0 159 651"
+				init-with="p:[op:0, tr:translate3d(0#-30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)#opacity 750ms ease]"
+				when-university-dropdown-toggle-on="p:[op:1, tr:none]"
+				when-university-dropdown-toggle-off="p:[op:0.2]">
+				<g fill="#2b2324" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+					<!-- school color specific -->
+					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" style="fill:#003057" class="school-color"
+						init-with="p:[sop:0, sda:929, sdo:929, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="p:[sop:1, sdo:0]:delay-1900"
+						when-university-dropdown-hover="p:[fill:^school_color_dark:delay-150, t:all 250ms ease-out]"></path>
+					<path d="M159.5,2 L41.9985987,2 C19.9079826,2 2,19.9012788 2,42.0005693 L2,609.999431 C2,632.091135 19.9162684,650 41.9985987,650 L159.5,650" class="default-color" init-with="p-op"></path>
+					<polyline class="screen-left" points="159 80 21 80 21 573 159 573"
+						init-with="p:[sda:789, sdo:879, sop:0, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="p:[sdo:0, sop:1]:delay-2050"></polyline>
+					<path d="M159,586 C145.192881,586 134,597.192881 134,611 C134,624.807119 145.192881,636 159,636" class="home-btn-left"
+						init-with="p:[sda:79, sdo:79, sop:0, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="p:[sdo:0, sop:1]:delay-2150"></path>
+				</g>
+			</svg>
+
+			<svg class="iphone-right" viewBox="0 0 159 651"
+				init-with="p:[op:0, tr:translate3d(0#30%#0), t:transform 750ms cubic-bezier(.2#.79#.11#1.97)#opacity 750ms ease]"
+				when-university-dropdown-toggle-on="p:[op:1, tr:none]"
+				when-university-dropdown-toggle-off="p:[op:0.2]">
+				<g fill="#2b2324" fill-rule="evenodd" stroke="#F0E0D0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+					<!-- school color specific -->
+					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="school-color" style="fill:#003057"
+						init-with="p:[sop:0, sda:929, sdo:929, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="p:[sop:1, sdo:0]:delay-1900"
+						when-university-dropdown-hover="p:[fill:^school_color_dark:delay-150, t:all 250ms ease-out]"></path>
+					<path d="M0,2 L117.501401,2 C139.592017,2 157.5,19.9012788 157.5,42.0005693 L157.5,609.999431 C157.5,632.091135 139.583732,650 117.501401,650 L0,650" class="default-color" init-with="p-op"></path>
+					<polyline class="screen-right" points="0 80 138 80 138 573 0 573"
+						init-with="p:[sda:789, sdo:879, sop:0, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="p:[sdo:0, sop:1]:delay-2050"></polyline>
+					<path d="M0,586 C13.8071187,586 25,597.192881 25,611 C25,624.807119 13.8071187,636 0,636" class="home-btn-right"
+						init-with="p:[sda:79, sdo:79, sop:0, t:stroke-dashoffset 750ms cubic-bezier(.89#.01#1#.12)]"
+						when-device-init="t-enter"
+						on-enter="p:[sdo:0, sop:1]:delay-2150"></path>
+				</g>
+			</svg>
+
+			<svg class="sheen" width="275px" height="493px" viewBox="0 0 275 493">
+				<path d="M126.105593,-284.632628 L-361.549102,340.662617 L-427.177151,289.34977 L60.4775445,-335.945475 L126.105593,-284.632628 L126.105593,-284.632628 L126.105593,-284.632628 Z M192.493543,-232.764677 L-295.356199,392.378181 L-337.538971,359.382791 L150.31077,-265.760066 L192.493543,-232.764677 L192.493543,-232.764677 L192.493543,-232.764677 Z M48.5411353,-345.232624 L-439.562167,279.712131 L-451.26608,270.529436 L36.8372219,-354.415319 L48.5411353,-345.232624 L48.5411353,-345.232624 L48.5411353,-345.232624 Z" fill="#FFFFFF"
+					init-with="p:[tr:translate3d(-10px#-10px#0), t:250ms cubic-bezier(.6#.19#1#.61)]"
+					when-device-init="t-enter"
+					on-enter="p:[tr:translate3d(625px#1018px#0)]:delay-4900"
+					when-category-dropdown-toggle-on="p:[tr:translate3d(-10px#-10px#0):delay-50, t:0ms]"
+					when-category-dropdown-toggle-off="p:[tr:translate3d(625px#1018px#0):delay-150, t:250ms cubic-bezier(.6#.19#1#.61)]"></path>
+			</svg>
+        </div>
+        <div class="splash-device-content"
+			init-with="p:[op:0, t:opacity 250ms ease-in-out]"
+			when-university-dropdown-toggle-on="p:[op:1]"
+			when-university-dropdown-toggle-off="p:[op:0, t:opacity 25ms ease-out]">
+			<div class="splash-device-profile mobile" init-later>
+				<div class="absolute full-xy" ng-include="root.base_url + 'shared/templates/guru.profile.html'"
+					init-with="p:[op:0, z-index:-1, t:opacity 250ms ease-in-out]"
+					when-university-dropdown-toggle-on="p:[op:1:delay-500, z-index:99]"
+					when-university-dropdown-toggle-off="p:[op:0, z-index:-1:delay-50, t:opacity 50ms ease-out]"></div>
+			</div>
+            <div class="splash-device-search" init-later>
+                <!-- on-init="op:0" -->
+                <div class="splash-device-search-inside">
+                    <div class="splash-device-found">
+                        <svg class="echo-loader-small" width="200px" height="200px" viewBox="0 0 200 200">
+                            <g fill="none" fill-rule="evenodd">
+                                <ellipse class="echo-loader-echo" stroke="#69B3A5" fill-opacity="0.2" fill="#69B3A5" cx="100.5" cy="100.5" rx="27.5" ry="27.5"></ellipse>
+                                <circle class="echo-loader-track" stroke-opacity="0.4" stroke="#FFFFFF" stroke-width="2" fill="#40484B" cx="100" cy="100" r="55"></circle>
+                                <path d="M100,155 C130.375661,155 155,130.375661 155,100 C155,69.6243387 130.375661,45 100,45 C69.6243387,45 45,69.6243387 45,100 C45,130.375661 69.6243387,155 100,155 L100,155 L100,155 L100,155 L100,155 Z" class="echo-loader-main" stroke="#69B3A5" stroke-width="2"></path>
+                                <text class="echo-loader-numver" fill="#FFFFFF" font-family="Source Sans Pro" font-size="39" font-weight="bold" text-anchor="middle">
+                                    <tspan x="100" y="101">0</tspan>
+                                </text>
+                                <text class="echo-loader-label" fill="#FFFFFF" font-family="Source Sans Pro" font-size="16" font-weight="normal" text-anchor="middle">
+                                    <tspan x="100" y="121">gurus found</tspan>
+                                </text>
+                            </g>
+                        </svg>
+
+                    </div>
+                    <ul class="splash-device-search-gurus">
+                        <!-- on-init="op:0" -->
+                        <li>
+                            <div>
+                                <a class="marker-guru bg-academic">
+                                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
+                                    <span class="marker-guru-course">BIO 1A</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a class="marker-guru bg-academic">
+                                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
+                                    <span class="marker-guru-course">BIO 1A</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a class="marker-guru bg-academic">
+                                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
+                                    <span class="marker-guru-course">BIO 1A</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a class="marker-guru bg-academic">
+                                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
+                                    <span class="marker-guru-course">BIO 1A</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a class="marker-guru bg-academic">
+                                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
+                                    <span class="marker-guru-course">BIO 1A</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a class="marker-guru bg-academic">
+                                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
+                                    <span class="marker-guru-course">BIO 1A</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a class="marker-guru bg-academic">
+                                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
+                                    <span class="marker-guru-course">BIO 1A</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a class="marker-guru bg-academic">
+                                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
+                                    <span class="marker-guru-course">BIO 1A</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a class="marker-guru bg-academic">
+                                    <span class="user-icon" style="background-image: url('http://en.gravatar.com/userimage/5102999/8d85d1b0830237f7baa8d92405449db7.jpg?size=800')"></span>
+                                    <span class="marker-guru-course">BIO 1A</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <svg class="coach-click" viewBox="0 0 212 75" init-with="p-op">
+                <!-- class="parallax-auto" parallax-parent-ref="p1" parallax-child="0.2" -->
+                <g fill="none">
+                    <path class="coach-click-path-1" d="M126.402476,42.2902799 C126.402476,42.2902799 41.4492178,9.17968707 3.56286124,70.6500409" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path class="coach-click-path-2" d="M29.8097207,69.5428392 L3.63890408,70.9143936 L2.26734969,44.7435769" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <g>
+                        <text transform="translate(172.576620, 31.576620) rotate(7) translate(-172.576620, -31.576620)" font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF">
+                            <tspan x="134.07662" y="30.5766198">click</tspan>
+                            <tspan x="135.91662" y="70.5766198"> me!</tspan>
+                        </text>
+                    </g>
+                </g>
+            </svg>
+            <div class="splash-device-button" init-with="p-op">
+                <button id='desktop-find-guru-button' class="button-find-guru splash-desktop-cta">Find My Guru</button>
+            </div>
+        </div>
+    </div>
+</div>

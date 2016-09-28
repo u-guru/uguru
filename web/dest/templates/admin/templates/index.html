@@ -1,0 +1,121 @@
+<div class='bg-charcoal flex-wrap-center full-xy' ng-controller="AdminDevController as admin">
+    <div class='bg-azure-50p txt-center flex-vertical-center flex-wrap weight-900 full-x capital' style='height:15%;'>
+        <div class='full-x m20y txt-36'>
+            {{admin.today.release}}
+        </div>
+        <div class='txt-24 opacity-50p full-x'>
+        {{admin.calendarDates[0].month.name}} {{admin.calendarDates[0].date}} - {{admin.calendarDates[7].date}}
+        </div>
+    </div>
+    <div class='ugrid bg-transparent flex-stretch relative flex-wrap flex-vertical-center full-x' style='height:50%; align-content:stretch;'>
+        <div class='flex-wrap-vertical flex-stretch absolute full-xy top-0 left-0'>
+            <ul class='grid full-x flex-stretch relative no-scrollbar overflow-x' style='align-content:stretch'>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center bg-azure-20p text-center ' style='min-width:15%;' ng-repeat='date in (admin.calendarDates || []) track by $index' ng-class="{'txt-white opacity-1 border-3 border-smoke':  $index === 0, 'opacity-80p border-1-right border-slate': $index > 0}">
+                    <div class='full-x weight-900'>
+                        {{date.day.name}}
+                    </div>
+                    <h1 class='flex-center full-x relative weight-900 txt-48' ng-class="{'txt-smoke opacity-80p': $index > 0, 'txt-azure': $index === 0}">
+                        {{date.date}}
+                    </h1>
+                </li>
+            </ul>
+            <ul class='grid flex-stretch flex-wrap-center full-x no-scrollbar bg-charcoal overflow-y' style='align-content:stretch' ng-if='admin.today'>
+                <li class='full-x weight-500 txt-24 ugrid-2 flex-wrap-center text-center overflow-visible relative' style="align-self:stretch" ng-repeat='section in (admin.today.daySections || []) track by $index' ng-class='{"bg-azure-20p" :!($index % 2)}'>
+                    <div class='flex-wrap flex-right' style='width:20%;'>
+                        <div class='weight-900 txt-24 txt-white full-x text-right m20y' ng-bind-html="section['name']"></div>
+                        <div class='weight-900 opacity-50p m20bottom text-right' ng-bind-html="section['time_desc']"></div>
+                    </div>
+                    <div class='text-left p20x m20left border-left border-slate border-solid' style='padding-left:05%'>
+                        <h4 class='weight-500 txt-5 m20y' ng-bind-html="section.description"> </h4>
+                        <ul class='weight-500 opacity-80p m20y txt-3'>
+                            <li ng-repeat='item in (section.items || []) track by $index' class='m10y'>
+                                {{$index + 1}}. [ ] {{item}}
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </li>
+            </ul>
+            <ul class='grid flex-stretch flex-wrap-center full-x no-scrollbar bg-charcoal' style='align-content:stretch'>
+                <ul class='grid full-x flex-stretch relative no-scrollbar overflow-x'>
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <div class='relative full-x' style='height:40%;'>
+        <ul class='full-x flex-vertical-center p15-grid ugrid-4'>
+            <li on-click="s:[show-comp-gallery] | p:[position: fixed, transform:scale(0.25):scale(1):250:easeInOutElastic, background:rgba(200, 54, 54, 0.5):rgba(255,255,255,1):1500:elastic, width:10%:100%:1500:bounce, height:10%:100%:1500:bounce]">
+                Components
+                <div ng-include="'admin/templates/gallery.html'" class='fixed full-xy left-0' when-show-comp-gallery="p:[opacity:0:1:50:easeOutQuint, transform:scale(0) translateY(-1000%) rotate(-1080deg):scale(1) translateY(0%) rotate(0deg):1000:easeInOutElastic bouncePast linear, top:-100%:-20%:1000:elastic, z-index:1000]"  on-click="p:[transform:scale(1):scale(0):2000:easeInQuint]" init-with="p:[opacity:0]">
+                </div>
+            </li>
+            <li>
+                Properties
+            </li>
+            <li>
+                API
+            </li>
+        </ul>
+    </div>
+</div>
+
+        <!-- <div class='full-x flex-vertical-center flex-stretch relative' style='height:calc(85%/{{admin.sections}});'>
+            <ul class='flex-stretch grid full-x flex-stretch overflow-x no-scrollbar'>
+                <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
+                    <h1 class='full-xy flex-center weight-900 bg-cerise absolute'>
+                        Samples
+                    </h1>
+                </li>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center text-center border-1-right border-slate' style='min-width:15%;' ng-repeat='url in admin.examples' ng-click='admin.openInNewWindow("http://" + url.domain + "." + url.tld)'>
+                    <div class='full-x p20x'>
+                        <h1 class='weight-700 uppercase txt-smoke opacity-80p'> {{url.domain}} </h1>
+                    </div>
+                    <div class='full-x'>
+                        <p class='weight-300 opacity-50'> {{url.tld}} </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class='full-x flex-vertical-center flex-stretch relative' style='height:calc(85%/{{admin.sections}})'>
+            <ul class='grid full-x flex-stretch overflow-x no-scrollbar'>
+                 <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
+                    <h1 class='full-xy flex-center weight-900 bg-azure absolute'>
+                        Asset Guide
+                    </h1>
+                </li>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center text-center border-1-right border-slate' style='min-width:15%;' ng-repeat='asset in admin.assets' ng-click='admin.openInNewWindow("http://" + url.domain + "." + url.tld)'>
+                    <div class='full-x p20x'>
+                        <h1 class='weight-700 uppercase txt-smoke opacity-80p'> {{asset.name}} </h1>
+                    </div>
+                    <div class='full-x m20y'>
+                        <span class='p10x p05y uppercase txt-3 border-solid border-1 border-azure weight-300 opacity-50' ng-repeat='tag in asset.tags'> {{tag}} </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class='full-x flex-vertical-center flex-stretch relative' style='height:calc(85%/{{admin.sections}})'>
+            <ul class='grid full-x flex-stretch overflow-x no-scrollbar'>
+                 <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
+                    <h1 class='full-xy flex-center weight-900 bg-shamrock absolute'>
+                        Projects
+                    </h1>
+                </li>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center text-center border-1-right border-slate' style='min-width:15%;' ng-repeat='url in admin.examples'>
+                </li>
+            </ul>
+        </div>
+        <div class='full-x flex-vertical-center flex-stretch relative' style='height:calc(85%/{{admin.sections}})'>
+            <ul class='grid full-x flex-stretch overflow-x no-scrollbar'>
+                 <li class='lc-header full-y weight-500 txt-24 flex-wrap-center text-center relative border-1-right border-slate' style='min-width:15%;'>
+                    <h1 class='full-xy flex-center weight-900 bg-auburn absolute'>
+                        Goals & Targets
+                    </h1>
+                </li>
+                <li class='p20y lc-header weight-500 txt-24 flex-wrap-center text-center border-1-right border-slate' style='min-width:15%;' ng-repeat='url in admin.examples'>
+                </li>
+            </ul>
+        </div>
+ -->
+    </div>
+<!-- </div> -->
