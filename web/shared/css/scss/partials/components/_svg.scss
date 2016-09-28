@@ -73,22 +73,22 @@
 		width: auto;
 		position: relative;
 		z-index: 10;
-		g, circle, path {
+		g, circle, path, polyline {
 			transition: all 300ms cubic-bezier(.77,0,.05,1);
 			transition: all 300ms cubic-bezier(.77,0,.05,1.27);
 			@include svg-stroke(white, 4);
 		}
-		g:not(.path) > path, .path {
+		g:not(.path) > path, g:not(.path) > polyline, .path {
 			transform: rotate(0deg);
 		}
 	}
 	&:hover, &:focus {
 		background: none;
 		svg {
-			g:not(.path) > path, .path {
+			g:not(.path) > path, g:not(.path) > polyline, .path {
 				transform: rotate(180deg);
 			}
-			path {
+			path, polyline {
 				stroke: $slate;
 			}
 		}
@@ -99,7 +99,7 @@
 	&.no-rotate {
 		&:hover, &:focus {
 			svg {
-				g:not(.path) > path, .path {
+				g:not(.path) > path, g:not(.path) > polyline, .path {
 					transform: rotate(0deg);
 				}
 			}
@@ -113,19 +113,19 @@
 			circle {
 				stroke: lighten($slate, 15%);
 			}
-			path {
+			path, polyline {
 				stroke: white;
 			}
 		}
 	}
-	&.close {
-		svg {
-			transform: rotate(225deg);
-		}
-		&:hover, &:focus {
-			svg {
-				transform: rotate(45deg);
-			}
-		}
-	}
+	// &.close {
+	// 	svg {
+	// 		transform: rotate(225deg);
+	// 	}
+	// 	&:hover, &:focus {
+	// 		svg {
+	// 			transform: rotate(45deg);
+	// 		}
+	// 	}
+	// }
 }

@@ -1,105 +1,343 @@
 <ion-view class="flex-center">
-	<projector class="projector-demo"
-		init-with="tr:[translateY:-200%] | p:[t:transform 250ms ease-in-out]"
-		on-init="tr:[translateY:0%]">
-        <div class="projector-guru">
-            <div class="guru-head" ng-include="root.base_url + 'shared/templates/components/svg/logo/guru-head.html'"></div>
-            <svg class="coach active" width="114px" height="98px" viewBox="0 0 228 196">
-                 <path d="M48.386161,159.590945 C48.3861609,159.590943 47.5065944,177.922187 23.5796634,188.938294 C63.1658208,201.858782 77.415256,186.935364 86.5812235,178.667782 C146.539697,198.23757 207.421447,176.150125 222.564419,129.334091 C237.707391,82.518058 201.37725,28.7017162 141.418777,9.13192771 C81.4603034,-10.4378608 20.578553,11.6495847 5.43558085,58.4656181 C-6.12740226,94.2137525 12.3218247,134.043527 48.386161,159.590945 L48.386161,159.590945 L48.386161,159.590945 Z" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" fill="#40484B"></path>
-                <text transform="translate(116.193148, 94.776332) rotate(24.000000) translate(-116.193148, -94.776332) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF" ng-if='!user.demographic'>
-                    <tspan x="48.6931477" y="93.7763318">who are</tspan>
-                    <tspan x="76.2331477" y="133.776332">you?</tspan>
-                </text>
-                <text transform="translate(116.193148, 94.776332) rotate(24.000000) translate(-116.193148, -94.776332) " font-family="Source Sans Pro" font-size="40" font-weight="normal" line-spacing="40" fill="#FFFFFF" ng-if='user.demographic && user.demographic.name !== "College Student"'>
-                    <tspan x="48.6931477" y="93.7763318">nice! you</tspan>
-                    <tspan x="76.2331477" y="133.776332">are a ...</tspan>
-                </text>
-            </svg>
-        </div>
-        <div class="splash-demographic-content">
-            <ul class="demo-2 active">
-				<li>
-					<a class="demo-freshman opacity-0 animated bounceIn">
-						<span>Freshman</span>
-					</a>
-				</li>
-				<li>
-					<a class="demo-sophomore opacity-0 animated bounceIn">
-						<span>Sophomore</span>
-					</a>
-				</li>
-				<li>
-					<a class="demo-jr opacity-0 animated bounceIn">
-						<span>Junior</span>
-					</a>
-				</li>
-				<li>
-					<a class="demo-sr opacity-0 animated bounceIn">
-						<span>Senior</span>
-					</a>
-				</li>
-				<li>
-					<a class="demo-postgrad opacity-0 animated bounceIn">
-						<span>Postgrad</span>
-					</a>
-				</li>
-			</ul>
-			<ul class="demo-1">
-				<li>
-					<a class="demo-college opacity-0 animated bounceIn">
-						<span>College</span>
-					</a>
-				</li>
-				<li>
-					<a class="demo-alum opacity-0 animated bounceIn">
-						<span>Pro or Alum</span>
-					</a>
-				</li>
-				<li>
-					<a class="demo-hs opacity-0 animated bounceIn">
-						<span>High School</span>
-					</a>
-				</li>
-				<li>
-					<a class="demo-parent opacity-0 animated bounceIn">
-						<span>Parent</span>
-					</a>
-				</li>
-				<li>
-					<a class="demo-other opacity-0 animated bounceIn">
-						<span>Other</span>
-					</a>
-				</li>
-			</ul>
-            <div class='info-demographic-button flex-wrap-center ugrid-3 absolute bottom-0 full-x left-0'>
-                <button class="btn-ghost bg-white">Back</button>
-            </div>
-
-            <!-- <ul class="demo-2" ng-class="{'active': !user.demographic}">
-                <li ng-repeat='demographic in demographics' ng-click='saveDemographic(demographic)'>
-                    <a class="demo-{{demographic.class}} opacity-0 animated bounceIn">
-                        <span>{{demographic.name}}</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="demo-1" ng-class="{'active': user.demographic && user.demographic.name === 'College Student'}">
-                <li ng-repeat='student_type in user.demographic.type' ng-click='saveDemographic(student_type)'>
-                    <a class="demo-{{student_type.class}} opacity-0 animated bounceIn">
-                        <span>{{student_type.name}}</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class='demo-3' ng-class="{'active': user.demographic && user.demographic.name !== 'College Student'}">
-                <li>
-                    <a class="demo-{{user.demographic.class}} opacity-0 animated bounceIn">
-                        <span>{{user.demographic.name}}</span>
-                    </a>
-                </li>
-            </ul> -->
-            <!-- <div class='info-demographic-button flex-wrap-center ugrid-3 absolute bottom-0 full-x left-0'>
-                <button class="btn-ghost bg-white hide" ng-class='{"show": user.demographic && user.demographic.name === "College Student"}' ng-click='clearDemographic()'>Back</button>
-                <button class="btn-ghost bg-white hide" ng-class='{"show": user.demographic && user.demographic.name !== "College Student"}' ng-click='clearDemographic()'>Edit</button>
-            </div> -->
-        </div>
+	<projector class="projector-demo projector-splash">
+		<div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"
+			init-with="p:[z-index:100]"
+			when-guru-below="p:[z-index:10]"
+			when-guru-above="p:[z-index:100]"></div>
+		<div class="projector-splash-container">
+			<header class="projector-splash-header">
+				<a class="projector-splash-back icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"></a>
+				<h1>Demographic</h1>
+				<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
+			</header>
+	        <div class="projector-demo-grids">
+				<ul class="projector-demo-grid"
+					init-with="p:[op:1, z-index:10]"
+					on-init="s:[demo-card-enter:public]:delay-500"
+					when-next-demo="p:[op:0, z-index:-1]">
+					<li init-with="p:[op:0, tro:center center]"
+						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]"
+						when-hs-click="p:[transform:translateY(50px):translateY(-50px):200:easeInExpo:^:2+0:a]">
+						<a class="demographic-tile high-school"
+							init-default
+							on-click="s:[hs-click:public, guru-below:public]">
+							<svg width="180px" height="180px" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div init-with="p:[tro:center center]"
+								when-hs-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-100px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+								<div class="borders">
+									<div init-with="p:[tr:scaleX(0), tro:center center]"
+										when-demo-card-enter="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleY(0), tro:center top]"
+										when-demo-card-enter="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleX(0), tro:center center]"
+										when-demo-card-enter="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleY(0), tro:center bottom]"
+										when-demo-card-enter="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+									<div class="border-bottom" init-with="p-op"
+										when-demo-card-enter="p:[opacity:0:1:700:easeOutSine]:delay-800"></div>
+								</div>
+								<div>
+									<div ng-include="root.base_url + 'preapp/templates/started/components/high-school.html'"></div>
+									<h1>High&nbsp;School</h1>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="card-container" init-with="p:[op:0, tro:center center]"
+						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-100]">
+						<a class="demographic-tile college"
+							init-default
+							on-click="s:[next-demo:public]">
+							<svg width="180px" height="180px" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div>
+								<div class="borders"
+									init-default
+									when-demo-card-enter="s:[college-border:public]:delay-100">
+										<div init-with="p:[tr:scaleX(0), tro:center center]"
+											when-college-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-college-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleX(0), tro:center center]"
+											when-college-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center bottom]"
+											when-college-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+										<div class="border-bottom" init-with="p-op"
+											when-college-border="p:[opacity:0:1:700:easeOutSine]:delay-800"></div>
+								</div>
+								<div>
+									<div ng-include="root.base_url + 'preapp/templates/started/components/college.html'"></div>
+									<h1>College</h1>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li init-with="p:[op:0, tro:center center]"
+						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-200]"
+						when-alumni-click="p:[transform:translateY(30px):translateY(-150px):200:easeInExpo:^:2+0:a]">
+						<a class="demographic-tile alumni"
+							init-default
+							on-click="s:[alumni-click:public, guru-below:public]">
+							<svg width="180px" height="180px" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div init-with="p:[tro:center center]"
+								when-alumni-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-500px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+								<div class="borders"
+									init-default
+									when-college-border="s:[alumni-border:public]:delay-100">
+									<div init-with="p:[tr:scaleX(0), tro:center center]"
+										when-alumni-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleY(0), tro:center top]"
+										when-alumni-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleX(0), tro:center center]"
+										when-alumni-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleY(0), tro:center bottom]"
+										when-alumni-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+									<div class="border-bottom" init-with="p-op"
+										when-alumni-border="p:[opacity:0:1:700:easeOutSine]:delay-800"></div>
+								</div>
+								<div>
+									<div ng-include="root.base_url + 'preapp/templates/started/components/alumni.html'"></div>
+									<h1>Alumni</h1>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li init-with="p:[op:0, tro:center center]"
+						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-300]"
+						when-parent-click="p:[transform:translateY(0px):translateY(-150px):200:easeInExpo:^:2+0:a]">
+						<a class="demographic-tile parent"
+							init-default
+							on-click="s:[parent-click:public, guru-below:public]">
+							<svg width="180px" height="180px" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div init-with="p:[tro:center center]"
+								when-parent-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-200px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+								<div class="borders"
+									init-default
+									when-alumni-border="s:[parent-border:public]:delay-100">
+									<div init-with="p:[tr:scaleX(0), tro:center center]"
+										when-parent-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleY(0), tro:center top]"
+										when-parent-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleX(0), tro:center center]"
+										when-parent-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleY(0), tro:center bottom]"
+										when-parent-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+									<div class="border-bottom" init-with="p-op"
+										when-parent-border="p:[opacity:0:1:700:easeOutSine]:delay-800"></div>
+								</div>
+								<div>
+									<div ng-include="root.base_url + 'preapp/templates/started/components/parent.html'"></div>
+									<h1>Parent</h1>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li init-with="p:[op:0, tro:center center]"
+						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-400]"
+						when-professor-click="p:[transform:translateY(0px):translateY(-100px):200:easeInExpo:^:2+0:a]">
+						<a class="demographic-tile professor"
+							init-default
+							on-click="s:[professor-click:public, guru-below:public]">
+							<svg width="180px" height="180px" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div init-with="p:[tro:center center]"
+								when-professor-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-400px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+								<div class="borders"
+								init-default
+								when-parent-border="s:[professor-border:public]:delay-100">
+									<div init-with="p:[tr:scaleX(0), tro:center center]"
+										when-professor-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleY(0), tro:center top]"
+										when-professor-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleX(0), tro:center center]"
+										when-professor-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleY(0), tro:center bottom]"
+										when-professor-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+									<div class="border-bottom" init-with="p-op"
+										when-professor-border="p:[opacity:0:1:700:easeOutSine]:delay-800"></div>
+								</div>
+								<div>
+									<div ng-include="root.base_url + 'preapp/templates/started/components/professor.html'"></div>
+									<h1>Professor</h1>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+				<ul class="projector-demo-grid"
+					init-with="p:[op:0, z-index:-1]"
+					when-next-demo="p:[op:1, z-index:10]">
+					<li init-with="p:[op:0, tro:center center]"
+						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]"
+						when-freshman-click="p:[transform:translateY(50px):translateY(-50px):200:easeInExpo:^:2+0:a]">
+						<a class="demographic-tile freshman"
+							init-default
+							on-click="s:[freshman-click:public, guru-below:public]">
+							<svg width="180px" height="180px" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div init-with="p:[tro:center center]"
+								when-freshman-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-100px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+								<div class="borders"
+									init-default
+									when-next-demo="s:[freshman-border:public]">
+										<div init-with="p:[tr:scaleX(0), tro:center center]"
+											when-freshman-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-freshman-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleX(0), tro:center center]"
+											when-freshman-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center bottom]"
+											when-freshman-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+										<div class="border-bottom" init-with="p-op"
+											when-freshman-border="p:[opacity:0:1:700:easeOutSine]:delay-800"></div>
+								</div>
+								<div>
+									<div ng-include="root.base_url + 'preapp/templates/started/components/freshman.html'"></div>
+									<h1>Freshman</h1>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li init-with="p:[op:0, tro:center center]"
+						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-100]"
+						when-sophomore-click="p:[transform:translateY(50px):translateY(-50px):200:easeInExpo:^:2+0:a]">
+						<a class="demographic-tile sophomore"
+							init-default
+							on-click="s:[sophomore-click:public, guru-below:public]">
+							<svg width="180px" height="180px" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div init-with="p:[tro:center center]"
+								when-sophomore-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-300px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+								<div class="borders"
+									init-default
+									when-freshman-border="s:[sophomore-border:public]:delay-100">
+										<div init-with="p:[tr:scaleX(0), tro:center center]"
+											when-sophomore-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-sophomore-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleX(0), tro:center center]"
+											when-sophomore-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center bottom]"
+											when-sophomore-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+										<div class="border-bottom" init-with="p-op"
+											when-sophomore-border="p:[opacity:0:1:700:easeOutSine]:delay-800"></div>
+								</div>
+								<div>
+									<div ng-include="root.base_url + 'preapp/templates/started/components/sophomore.html'"></div>
+									<h1>Sophomore</h1>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li init-with="p:[op:0, tro:center center]"
+						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-200]"
+						when-junior-click="p:[transform:translateY(30px):translateY(-150px):200:easeInExpo:^:2+0:a]">
+						<a class="demographic-tile junior"
+							init-default
+							on-click="s:[junior-click:public, guru-below:public]">
+							<svg width="180px" height="180px" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div init-with="p:[tro:center center]"
+								when-junior-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-500px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+								<div class="borders"
+									init-default
+									when-sophomore-border="s:[junior-border:public]:delay-100">
+										<div init-with="p:[tr:scaleX(0), tro:center center]"
+											when-junior-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-junior-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleX(0), tro:center center]"
+											when-junior-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center bottom]"
+											when-junior-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+										<div class="border-bottom" init-with="p-op"
+											when-junior-border="p:[opacity:0:1:700:easeOutSine]:delay-800"></div>
+								</div>
+								<div>
+									<div ng-include="root.base_url + 'preapp/templates/started/components/junior.html'"></div>
+									<h1>Junior</h1>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li init-with="p:[op:0, tro:center center]"
+						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-300]"
+						when-senior-click="p:[transform:translateY(0px):translateY(-150px):200:easeInExpo:^:2+0:a]">
+						<a class="demographic-tile senior"
+							init-default
+							on-click="s:[senior-click:public, guru-below:public]">
+							<svg width="180px" height="180px" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div init-with="p:[tro:center center]"
+								when-senior-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-200px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+								<div class="borders"
+									init-default
+									when-junior-border="s:[senior-border:public]:delay-100">
+										<div init-with="p:[tr:scaleX(0), tro:center center]"
+											when-senior-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center top]"
+											when-senior-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleX(0), tro:center center]"
+											when-senior-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+										<div init-with="p:[tr:scaleY(0), tro:center bottom]"
+											when-senior-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+										<div class="border-bottom" init-with="p-op"
+											when-senior-border="p:[opacity:0:1:700:easeOutSine]:delay-800"></div>
+								</div>
+								<div>
+									<div ng-include="root.base_url + 'preapp/templates/started/components/senior.html'"></div>
+									<h1>Senior</h1>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li init-with="p:[op:0, tro:center center]"
+						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-400]"
+						when-graduate-click="p:[transform:translateY(0px):translateY(-100px):200:easeInExpo:^:2+0:a]">
+						<a class="demographic-tile graduate"
+							init-default
+							on-click="s:[graduate-click:public, guru-below:public]">
+							<svg width="180px" height="180px" viewBox="0 0 100 100">
+								<rect x="0" y="0" width="100" height="100"></rect>
+							</svg>
+							<div init-with="p:[tro:center center]"
+								when-graduate-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-400px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+								<div class="borders"
+									init-default
+									when-senior-border="s:[grad-border:public]:delay-100">
+									<div init-with="p:[tr:scaleX(0), tro:center center]"
+										when-grad-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleY(0), tro:center top]"
+										when-grad-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleX(0), tro:center center]"
+										when-grad-border="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
+									<div init-with="p:[tr:scaleY(0), tro:center bottom]"
+										when-grad-border="p:[transform:scaleY(0):scaleY(1):1000:easeOutCubic]"></div>
+									<div class="border-bottom" init-with="p-op"
+										when-grad-border="p:[opacity:0:1:700:easeOutSine]:delay-800"></div>
+								</div>
+								<div>
+									<div ng-include="root.base_url + 'preapp/templates/started/components/graduate.html'"></div>
+									<h1>Graduate</h1>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="student-card-mobile" ng-include="root.base_url + 'preapp/templates/started/components/student-card-mobile.html'"></div>
 	</projector>
 </ion-view>
