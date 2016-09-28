@@ -5053,7 +5053,9 @@ a[class*="-container"]:hover .map-enter {
   flex-flow: row wrap;
   align-content: flex-start;
   align-items: flex-start;
-  height: calc(100% - 80px); }
+  justify-content: center;
+  height: calc(100% - 80px);
+  width: 100%; }
 .projector-splash .projector-splash-header {
   -ms-box-orient: horizontal;
   display: -webkit-box;
@@ -5331,13 +5333,92 @@ a[class*="-container"]:hover .map-enter {
 @media screen and (min-height: 580px) {
   .projector-demo-grid {
     margin-top: 0; } }
+.projector-account header button {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  height: 42px;
+  font-size: 16px;
+  padding: 0 20px; }
+.projector-account .projector-splash-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
 .projector-account-form {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   width: 100%; }
-  .projector-account-form form {
-    width: 100%; }
-  .projector-account-form ul {
+  .projector-account-form .projector-account-input {
     width: 100%;
-    max-width: 450px; }
+    max-width: 450px;
+    padding: 0.5px 7.5px 2px; }
+    .projector-account-form .projector-account-input li {
+      padding: 12.5px 7.5px; }
+  .projector-account-form .projector-account-btn {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 450px;
+    padding: 7.5px; }
+    .projector-account-form .projector-account-btn li {
+      padding: 7.5px; }
+    .projector-account-form .projector-account-btn .btn-ghost-round {
+      font-size: 18px;
+      letter-spacing: 0; }
+      .projector-account-form .projector-account-btn .btn-ghost-round.fb {
+        color: #768bb7;
+        border-color: #768bb7; }
+        .projector-account-form .projector-account-btn .btn-ghost-round.fb:hover, .projector-account-form .projector-account-btn .btn-ghost-round.fb:focus {
+          border-color: #3b5998;
+          background: #3b5998;
+          color: white; }
+        .projector-account-form .projector-account-btn .btn-ghost-round.fb:active {
+          border-color: #9daccc;
+          background: #9daccc;
+          color: #3e5172; }
 
 .echo-loader * {
   transform-origin: center center; }

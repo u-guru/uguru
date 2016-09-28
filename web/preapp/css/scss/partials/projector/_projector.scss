@@ -11,7 +11,9 @@
 		@include flex-wrap;
 		align-content: flex-start;
 		align-items: flex-start;
+		justify-content: center;
 		height: calc(100% - 80px);
+		width: 100%;
 	}
 	.projector-splash-header {
 		@include flex;
