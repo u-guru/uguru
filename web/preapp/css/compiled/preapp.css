@@ -5325,7 +5325,7 @@ a[class*="-container"]:hover .map-enter {
   .projector-demo-grid + ul {
     position: absolute; }
 
-@media screen and (min-height: 480px) {
+@media screen and (min-height: 530px) {
   .projector-demo-grid li {
     width: auto; }
     .projector-demo-grid li .demographic-tile > div > div:not(.borders) {
