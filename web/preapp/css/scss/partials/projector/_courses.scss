@@ -24,7 +24,7 @@
 				}
 			}
 		}
-		&.desktop {
+		&.desktop, &.large {
 			display: none;
 			@include flex-center;
 			@include flex-wrap;
@@ -32,28 +32,10 @@
 	}
 }
 
-@media screen and (max-height: 460px) {
-	.projector-courses-search {
-		> ul {
-			// &.tiny {
-			// 	> li {
-			// 		display: block!important;
-			// 	}
-			// }
-		}
-	}
-}
-
 @media screen and (max-height: 540px) {
 	.projector-courses-search {
-		> ul {
-			&.mobile {
-				li {
-					width: 50%;
-				}
-			}
-		}
 		.course-card.short {
+			width: 100%;
 			> svg {
 				display: none;
 			}
@@ -69,6 +51,18 @@
 				h2 {
 					margin-bottom: 0;
 					font-size: 14px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-height: 540px) {
+	.projector-courses-search {
+		> ul {
+			&.mobile {
+				> li {
+					width: 100%;
 				}
 			}
 		}
@@ -98,13 +92,26 @@
 	}
 }
 
-@media screen and (min-width: 414px) and (min-height: 690px), screen and (min-height: 720px) {
+@media screen and (min-width: 385px) and (min-height: 650px) {
+	.projector-courses-search {
+		> ul {
+			&.large {
+				@include flex;
+			}
+			&.mobile, &.desktop {
+				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
 	.projector-courses-search {
 		> ul {
 			&.desktop {
 				@include flex;
 			}
-			&.mobile, &.tiny {
+			&.mobile, &.large {
 				display: none;
 			}
 		}

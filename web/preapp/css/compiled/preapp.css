@@ -5571,7 +5571,7 @@ a[class*="-container"]:hover .map-enter {
           display: -moz-flex;
           display: -webkit-flex;
           display: flex; }
-    .projector-courses-search > ul.desktop {
+    .projector-courses-search > ul.desktop, .projector-courses-search > ul.large {
       display: none;
       -webkit-flex-direction: row;
       flex-direction: row;
@@ -5586,21 +5586,24 @@ a[class*="-container"]:hover .map-enter {
       flex-flow: row wrap; }
 
 @media screen and (max-height: 540px) {
-  .projector-courses-search > ul.mobile li {
-    width: 50%; }
-  .projector-courses-search .course-card.short > svg {
-    display: none; }
-  .projector-courses-search .course-card.short .course-card-inside {
-    position: static;
-    width: 100%;
-    height: auto;
-    background: white;
-    padding-right: 47px; }
-    .projector-courses-search .course-card.short .course-card-inside h1 {
+  .projector-courses-search .course-card.short {
+    width: 100%; }
+    .projector-courses-search .course-card.short > svg {
       display: none; }
-    .projector-courses-search .course-card.short .course-card-inside h2 {
-      margin-bottom: 0;
-      font-size: 14px; } }
+    .projector-courses-search .course-card.short .course-card-inside {
+      position: static;
+      width: 100%;
+      height: auto;
+      background: white;
+      padding-right: 47px; }
+      .projector-courses-search .course-card.short .course-card-inside h1 {
+        display: none; }
+      .projector-courses-search .course-card.short .course-card-inside h2 {
+        margin-bottom: 0;
+        font-size: 14px; } }
+@media screen and (min-height: 540px) {
+  .projector-courses-search > ul.mobile > li {
+    width: 100%; } }
 @media screen and (min-height: 660px) {
   .projector-courses-search > ul.mobile > li {
     -ms-box-orient: horizontal !important;
@@ -5615,7 +5618,18 @@ a[class*="-container"]:hover .map-enter {
     min-height: auto; }
     .projector-courses .projector-splash-header h1 {
       display: none; } }
-@media screen and (min-width: 414px) and (min-height: 690px), screen and (min-height: 720px) {
+@media screen and (min-width: 385px) and (min-height: 650px) {
+  .projector-courses-search > ul.large {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; }
+  .projector-courses-search > ul.mobile, .projector-courses-search > ul.desktop {
+    display: none; } }
+@media screen and (min-width: 768px) {
   .projector-courses-search > ul.desktop {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -5624,7 +5638,7 @@ a[class*="-container"]:hover .map-enter {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex; }
-  .projector-courses-search > ul.mobile, .projector-courses-search > ul.tiny {
+  .projector-courses-search > ul.mobile, .projector-courses-search > ul.large {
     display: none; } }
 @media screen and (min-width: 768px) and (min-height: 900px) {
   .projector-courses-search {
