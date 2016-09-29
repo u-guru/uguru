@@ -2134,17 +2134,17 @@ fieldset.with-icon input {
   fieldset.with-icon input + label {
     width: calc(100% - 34px) !important;
     left: 34px !important; }
-  fieldset.with-icon input.light ~ .input-icon svg * {
+  fieldset.with-icon input.light ~ .input-icon svg g {
     stroke: rgba(255, 255, 255, 0.2); }
-  fieldset.with-icon input.light:hover ~ .input-icon svg * {
+  fieldset.with-icon input.light:hover ~ .input-icon svg g {
     stroke: rgba(255, 255, 255, 0.4); }
-  fieldset.with-icon input.light:focus ~ .input-icon svg * {
+  fieldset.with-icon input.light:focus ~ .input-icon svg g {
     stroke: white; }
-  fieldset.with-icon input.dark ~ .input-icon svg * {
+  fieldset.with-icon input.dark ~ .input-icon svg g {
     stroke: rgba(64, 72, 75, 0.2); }
-  fieldset.with-icon input.dark:hover ~ .input-icon svg * {
+  fieldset.with-icon input.dark:hover ~ .input-icon svg g {
     stroke: rgba(64, 72, 75, 0.4); }
-  fieldset.with-icon input.dark:focus ~ .input-icon svg * {
+  fieldset.with-icon input.dark:focus ~ .input-icon svg g {
     stroke: #40484B; }
 @media screen and (min-width: 768px) {
   fieldset.large {
@@ -2219,30 +2219,6 @@ div.input-border {
       transition: all 150ms ease-in-out;
       font-weight: 400;
       font-size: 16px; }
-    div.input-border input.input-border:focus::selection {
-      background: white;
-      color: #40484B; }
-    div.input-border input.input-border:focus::-moz-selection {
-      background: white;
-      color: #40484B; }
-    div.input-border input.input-border.light {
-      color: white; }
-      div.input-border input.input-border.light::-webkit-input-placeholder {
-        color: rgba(255, 255, 255, 0.2); }
-      div.input-border input.input-border.light:-moz-placeholder {
-        color: rgba(255, 255, 255, 0.2); }
-      div.input-border input.input-border.light::-moz-placeholder {
-        color: rgba(255, 255, 255, 0.2); }
-      div.input-border input.input-border.light:-ms-input-placeholder {
-        color: rgba(255, 255, 255, 0.2); }
-      div.input-border input.input-border.light:focus::-webkit-input-placeholder {
-        color: white; }
-      div.input-border input.input-border.light:focus:-moz-placeholder {
-        color: white; }
-      div.input-border input.input-border.light:focus::-moz-placeholder {
-        color: white; }
-      div.input-border input.input-border.light:focus:-ms-input-placeholder {
-        color: white; }
     div.input-border input.input-border + label:not(:empty) {
       position: absolute;
       top: 0;
@@ -2257,13 +2233,9 @@ div.input-border {
         left: 0;
         width: 100%;
         height: 2px;
-        background: rgba(255, 255, 255, 0.2);
         border-radius: 1000px;
         transform-origin: left center;
         transition: all 300ms ease-in-out; }
-      div.input-border input.input-border + label:not(:empty):before {
-        background: white;
-        transform: scaleX(0); }
       div.input-border input.input-border + label:not(:empty) .input-icon {
         width: 24px;
         height: 24px;
@@ -2271,27 +2243,29 @@ div.input-border {
         z-index: 3;
         top: 13px;
         left: 13px; }
-        div.input-border input.input-border + label:not(:empty) .input-icon * {
-          stroke-width: 8px;
+        div.input-border input.input-border + label:not(:empty) .input-icon g {
           stroke: #637074; }
+        div.input-border input.input-border + label:not(:empty) .input-icon * {
+          stroke-width: 8px; }
         div.input-border input.input-border + label:not(:empty) .input-icon .template {
           stroke-dasharray: 220.3; }
         div.input-border input.input-border + label:not(:empty) .input-icon .success-1 {
-          stroke-dasharray: 19.8;
-          opacity: 0; }
+          stroke-dasharray: 19.9;
+          transition: stroke-dashoffset 125ms ease-out, stroke 125ms ease-out; }
         div.input-border input.input-border + label:not(:empty) .input-icon .success-2 {
-          stroke-dasharray: 50.2;
-          opacity: 0; }
+          stroke-dasharray: 50.3;
+          transition: stroke-dashoffset 250ms cubic-bezier(0.17, 0.67, 0.78, 1.37), stroke 125ms ease-out; }
         div.input-border input.input-border + label:not(:empty) .input-icon .error-1, div.input-border input.input-border + label:not(:empty) .input-icon .error-2 {
-          stroke: #d3242c;
           stroke-dasharray: 39.6;
-          opacity: 0; }
+          transition: stroke-dashoffset 175ms ease-out, stroke 125ms ease-out; }
         div.input-border input.input-border + label:not(:empty) .input-icon .email {
           transform-origin: center center;
-          stroke-dasharray: 365.6; }
+          stroke-dasharray: 365.6;
+          transition: stroke-dashoffset 500ms ease-out, transform 250ms ease-out, stroke 125ms ease-out; }
         div.input-border input.input-border + label:not(:empty) .input-icon .name {
           transform-origin: center center;
-          stroke-dasharray: 365.6; }
+          stroke-dasharray: 365.6;
+          transition: stroke-dashoffset 500ms ease-out, transform 250ms ease-out, stroke 125ms ease-out; }
         div.input-border input.input-border + label:not(:empty) .input-icon.email-icon .name {
           opacity: 0; }
         div.input-border input.input-border + label:not(:empty) .input-icon.name-icon .email {
@@ -2318,13 +2292,13 @@ div.input-border {
             left: -1px;
             width: calc(100% + 2px);
             height: 2px;
-            border-radius: 1000px;
-            background: white; }
+            border-radius: 1000px; }
         div.input-border input.input-border + label:not(:empty) .input span:last-child {
           margin-left: 2px; }
           div.input-border input.input-border + label:not(:empty) .input span:last-child:after {
             display: none !important; }
       div.input-border input.input-border + label:not(:empty) a {
+        opacity: 0;
         transition: all 150ms ease-in-out;
         transform-origin: center center;
         display: block;
@@ -2334,27 +2308,17 @@ div.input-border {
         z-index: 4;
         top: 13px;
         right: 13px;
-        cursor: pointer;
-        opacity: 0.75; }
+        cursor: pointer; }
         div.input-border input.input-border + label:not(:empty) a svg {
           transform-origin: center center;
-          transform: rotate(45deg);
+          transform: rotate(-45deg);
           display: block;
           width: 100%;
           height: 100%; }
           div.input-border input.input-border + label:not(:empty) a svg * {
             stroke-width: 8px; }
-          div.input-border input.input-border + label:not(:empty) a svg circle {
-            stroke: white;
-            fill: white; }
-          div.input-border input.input-border + label:not(:empty) a svg path {
-            stroke: #40484B; }
         div.input-border input.input-border + label:not(:empty) a:hover, div.input-border input.input-border + label:not(:empty) a:focus {
           opacity: 1 !important; }
-        div.input-border input.input-border + label:not(:empty) a:active svg circle {
-          fill: rgba(255, 255, 255, 0.2); }
-        div.input-border input.input-border + label:not(:empty) a:active svg path {
-          stroke: white; }
       div.input-border input.input-border + label:not(:empty) > div {
         position: absolute;
         z-index: 2;
@@ -2362,7 +2326,6 @@ div.input-border {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.2);
         border-radius: 2px;
         transform: rotateX(90deg);
         transition: all 300ms linear;
@@ -2379,8 +2342,7 @@ div.input-border {
           width: 100%;
           height: 100%;
           opacity: 0;
-          transform: scaleX(0);
-          background: white; }
+          transform: scaleX(0); }
         div.input-border input.input-border + label:not(:empty) > div > div:nth-child(1) {
           top: 0;
           left: 0;
@@ -2413,15 +2375,72 @@ div.input-border {
         div.input-border input.input-border + label:not(:empty) > div > div:nth-child(4) div:nth-child(1), div.input-border input.input-border + label:not(:empty) > div > div:nth-child(4) div:nth-child(2) {
           transform-origin: center top;
           transition: all 100ms ease-in-out 400ms; }
-    div.input-border input.input-border:focus + label:not(:empty) .label {
+    div.input-border input.input-border.light {
+      color: white; }
+      div.input-border input.input-border.light::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light:-moz-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light::-moz-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light:-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light + label:not(:empty):before, div.input-border input.input-border.light + label:not(:empty):after {
+        background: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light + label:not(:empty):before {
+        transform: scaleX(0); }
+      div.input-border input.input-border.light + label:not(:empty) .input span:after {
+        background: white; }
+      div.input-border input.input-border.light + label:not(:empty) a svg circle {
+        stroke: white;
+        fill: white; }
+      div.input-border input.input-border.light + label:not(:empty) a svg path {
+        stroke: #40484B; }
+      div.input-border input.input-border.light + label:not(:empty) a:active svg circle {
+        fill: rgba(255, 255, 255, 0.2); }
+      div.input-border input.input-border.light + label:not(:empty) a:active svg path {
+        stroke: white; }
+      div.input-border input.input-border.light + label:not(:empty) > div {
+        background: rgba(255, 255, 255, 0.2); }
+        div.input-border input.input-border.light + label:not(:empty) > div > div div:nth-child(1), div.input-border input.input-border.light + label:not(:empty) > div > div div:nth-child(2) {
+          background: white; }
+      div.input-border input.input-border.light:hover + label:not(:empty) .input-icon g {
+        stroke: rgba(255, 255, 255, 0.5); }
+      div.input-border input.input-border.light:focus::-webkit-input-placeholder, div.input-border input.input-border.light.focus::-webkit-input-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus:-moz-placeholder, div.input-border input.input-border.light.focus:-moz-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus::-moz-placeholder, div.input-border input.input-border.light.focus::-moz-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus:-ms-input-placeholder, div.input-border input.input-border.light.focus:-ms-input-placeholder {
+        color: white; }
+      div.input-border input.input-border.light:focus::selection, div.input-border input.input-border.light.focus::selection {
+        background: white;
+        color: #40484B; }
+      div.input-border input.input-border.light:focus::-moz-selection, div.input-border input.input-border.light.focus::-moz-selection {
+        background: white;
+        color: #40484B; }
+      div.input-border input.input-border.light:focus + label:not(:empty) .input-icon g, div.input-border input.input-border.light.focus + label:not(:empty) .input-icon g {
+        stroke: white; }
+    div.input-border input.input-border:hover + label:not(:empty):before {
+      transform: none; }
+    div.input-border input.input-border:hover + label:not(:empty) a {
+      opacity: 0.75; }
+      div.input-border input.input-border:hover + label:not(:empty) a svg {
+        transform: none; }
+    div.input-border input.input-border:focus + label:not(:empty):before, div.input-border input.input-border.focus + label:not(:empty):before {
+      transform: none; }
+    div.input-border input.input-border:focus + label:not(:empty) .label, div.input-border input.input-border.focus + label:not(:empty) .label {
       transform: translateY(-36px);
       font-size: 12px; }
-    div.input-border input.input-border:focus + label:not(:empty) .input-icon * {
-      stroke: white; }
-    div.input-border input.input-border:focus + label:not(:empty) > div {
+    div.input-border input.input-border:focus + label:not(:empty) a, div.input-border input.input-border.focus + label:not(:empty) a {
+      opacity: 0.75; }
+      div.input-border input.input-border:focus + label:not(:empty) a svg, div.input-border input.input-border.focus + label:not(:empty) a svg {
+        transform: none; }
+    div.input-border input.input-border:focus + label:not(:empty) > div, div.input-border input.input-border.focus + label:not(:empty) > div {
       transform: rotateX(0);
       opacity: 1; }
-      div.input-border input.input-border:focus + label:not(:empty) > div > div div:nth-child(2), div.input-border input.input-border:focus + label:not(:empty) > div > div div:nth-child(2) {
+      div.input-border input.input-border:focus + label:not(:empty) > div > div div:nth-child(1), div.input-border input.input-border.focus + label:not(:empty) > div > div div:nth-child(1) {
         opacity: 1;
         transform: scaleX(1); }
 
@@ -3697,7 +3716,7 @@ fieldset.no-border * {
       height: 70px; }
     .demographic-tile > div div:not(.borders) h1 {
       font-size: 18px; } }
-  @media screen and (min-height: 730px), screen and (min-width: 600px) {
+  @media screen and (min-height: 730px), screen and (min-width: 700px) {
     .demographic-tile > svg {
       max-width: 150px;
       max-height: 150px; }
