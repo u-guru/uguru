@@ -345,6 +345,39 @@ angular.module('uguru.shared.directives')
       }
     }
 }])
+.directive("u", ["CompService", "$compile", function(CompService, $compile) {
+      return {
+          restrict: 'A',
+          replace: true,
+          transclude: true,
+          priority:100,
+          compile: function(element, attr, transclude) {
+              for (key in attr) {console.log(key, attr)}
+              return {
+                  pre:
+                  function (scope, lElem, lAttr) {
+
+
+                      scope.$watch(function() {
+                        return element.attr('class');
+                      }, function(new_classes) {
+
+                        if (new_classes && new_classes.indexOf('init') > -1) {
+
+                          transclude(scope, function(clone, innerScope) {
+                              $compile(clone)(innerScope)
+                              lElem.append(clone)
+                          })
+
+                        }
+                      })
+
+                  },
+                  post: angular.noop
+              }
+          }
+      }
+}])
 .directive("initLater", ["CompService", "$compile", function(CompService, $compile) {
       return {
           restrict: 'A',

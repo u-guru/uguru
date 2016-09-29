@@ -61,7 +61,7 @@ angular.module('uguru.shared.directives.base.components')
                             console.log('unpressing...', point, $event);
                         }
                         scope.chart.onMouseEnter = function(stream, $event) {
-                            console.log(scope.player)
+
                             scope.player.focusStream(scope.player, stream);
                             scope.chart.showDetails = true;
                             if (scope.chart.mouseEntered) {
@@ -77,7 +77,6 @@ angular.module('uguru.shared.directives.base.components')
                         }
 
                         scope.chart.onMouseLeave = function(stream, $event) {
-                            console.log('mouse is leaving')
                             scope.chart.showDetails = false;
                             scope.player.unFocusStream(scope.player, stream)
                         }

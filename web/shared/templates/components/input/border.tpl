@@ -1,4 +1,9 @@
-<div class="full-xy flex-center p15xy" types='light, dark, search-light, search-dark, large-light, large-dark, search-large-light, search-large-dark' default-type="light" reference="https://codepen.io/teamuguru/pen/0dd0f5b893950ead5db6bc302daf956f?editors=1100, http://codepen.io/teamuguru/pen/553314ac263ad7c0cd070bdf53969aa1?editors=1100, http://codepen.io/teamuguru/pen/e73453ab175045bd429577c423c2cb47?editors=1100">
+<div class="full-xy flex-center p15xy" types='light, dark, search-light, search-dark, large-light, large-dark, search-large-light, search-large-dark' default-type="light" reference="https://codepen.io/teamuguru/pen/0dd0f5b893950ead5db6bc302daf956f?editors=1100, http://codepen.io/teamuguru/pen/553314ac263ad7c0cd070bdf53969aa1?editors=1100, http://codepen.io/teamuguru/pen/e73453ab175045bd429577c423c2cb47?editors=1100" ng-init="activeType = 'dark'; types=['dark', 'light']">
+	<div class='absolute bottom-0 left-0 p15-grid'>
+		<ul>
+			<li ng-repeat='type in types'></li>
+		</ul>
+	</div>
 	<div class="full-x" style="max-width:400px" ng-if='activeType === "light"'>
 		<div class="input-border">
 			<input class="input-border light" type="email" required placeholder=""
