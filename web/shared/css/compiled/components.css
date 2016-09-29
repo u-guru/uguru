@@ -2243,8 +2243,6 @@ div.input-border {
         z-index: 3;
         top: 13px;
         left: 13px; }
-        div.input-border input.input-border + label:not(:empty) .input-icon g {
-          stroke: #637074; }
         div.input-border input.input-border + label:not(:empty) .input-icon * {
           stroke-width: 8px; }
         div.input-border input.input-border + label:not(:empty) .input-icon .template {
@@ -2389,8 +2387,12 @@ div.input-border {
         background: rgba(255, 255, 255, 0.2); }
       div.input-border input.input-border.light + label:not(:empty):before {
         transform: scaleX(0); }
+      div.input-border input.input-border.light + label:not(:empty) .label {
+        color: white; }
       div.input-border input.input-border.light + label:not(:empty) .input span:after {
         background: white; }
+      div.input-border input.input-border.light + label:not(:empty) .input-icon g {
+        stroke: #637074; }
       div.input-border input.input-border.light + label:not(:empty) a svg circle {
         stroke: white;
         fill: white; }
@@ -2422,6 +2424,57 @@ div.input-border {
         color: #40484B; }
       div.input-border input.input-border.light:focus + label:not(:empty) .input-icon g, div.input-border input.input-border.light.focus + label:not(:empty) .input-icon g {
         stroke: white; }
+    div.input-border input.input-border.dark {
+      color: #40484B; }
+      div.input-border input.input-border.dark::-webkit-input-placeholder {
+        color: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark:-moz-placeholder {
+        color: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark::-moz-placeholder {
+        color: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark:-ms-input-placeholder {
+        color: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark + label:not(:empty):before, div.input-border input.input-border.dark + label:not(:empty):after {
+        background: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark + label:not(:empty):before {
+        transform: scaleX(0); }
+      div.input-border input.input-border.dark + label:not(:empty) .label {
+        color: #40484B; }
+      div.input-border input.input-border.dark + label:not(:empty) .input span:after {
+        background: #40484B; }
+      div.input-border input.input-border.dark + label:not(:empty) .input-icon g {
+        stroke: #89969b; }
+      div.input-border input.input-border.dark + label:not(:empty) a svg circle {
+        stroke: #40484B;
+        fill: #40484B; }
+      div.input-border input.input-border.dark + label:not(:empty) a svg path {
+        stroke: white; }
+      div.input-border input.input-border.dark + label:not(:empty) a:active svg circle {
+        fill: rgba(64, 72, 75, 0.2); }
+      div.input-border input.input-border.dark + label:not(:empty) a:active svg path {
+        stroke: #40484B; }
+      div.input-border input.input-border.dark + label:not(:empty) > div {
+        background: rgba(64, 72, 75, 0.2); }
+        div.input-border input.input-border.dark + label:not(:empty) > div > div div:nth-child(1), div.input-border input.input-border.dark + label:not(:empty) > div > div div:nth-child(2) {
+          background: #40484B; }
+      div.input-border input.input-border.dark:hover + label:not(:empty) .input-icon g {
+        stroke: #637074; }
+      div.input-border input.input-border.dark:focus::-webkit-input-placeholder, div.input-border input.input-border.dark.focus::-webkit-input-placeholder {
+        color: #40484B; }
+      div.input-border input.input-border.dark:focus:-moz-placeholder, div.input-border input.input-border.dark.focus:-moz-placeholder {
+        color: #40484B; }
+      div.input-border input.input-border.dark:focus::-moz-placeholder, div.input-border input.input-border.dark.focus::-moz-placeholder {
+        color: #40484B; }
+      div.input-border input.input-border.dark:focus:-ms-input-placeholder, div.input-border input.input-border.dark.focus:-ms-input-placeholder {
+        color: #40484B; }
+      div.input-border input.input-border.dark:focus::selection, div.input-border input.input-border.dark.focus::selection {
+        background: #40484B;
+        color: white; }
+      div.input-border input.input-border.dark:focus::-moz-selection, div.input-border input.input-border.dark.focus::-moz-selection {
+        background: #40484B;
+        color: white; }
+      div.input-border input.input-border.dark:focus + label:not(:empty) .input-icon g, div.input-border input.input-border.dark.focus + label:not(:empty) .input-icon g {
+        stroke: #40484B; }
     div.input-border input.input-border:hover + label:not(:empty):before {
       transform: none; }
     div.input-border input.input-border:hover + label:not(:empty) a {

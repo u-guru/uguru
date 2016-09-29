@@ -419,9 +419,6 @@ div.input-border {
 				z-index: 3;
 				top: 13px;
 				left: 13px;
-				g {
-					stroke: lighten($slate, 15%);
-				}
 				* {
 					stroke-width: 8px;
 				}
@@ -603,11 +600,19 @@ div.input-border {
 				&:before {
 					transform: scaleX(0);
 				}
+				.label {
+					color: white;
+				}
 				.input {
 					span {
 						&:after {
 							background: white;
 						}
+					}
+				}
+				.input-icon {
+					g {
+						stroke: lighten($slate, 15%);
 					}
 				}
 				a {
@@ -665,6 +670,93 @@ div.input-border {
 					.input-icon {
 						g {
 							stroke: white;
+						}
+					}
+				}
+			}
+		}
+		&.dark {
+			color: $slate;
+			@include placeholder {
+				color: rgba($slate, .2);
+			}
+			+ label:not(:empty) {
+				&:before, &:after {
+					background: rgba($slate, .2);
+				}
+				&:before {
+					transform: scaleX(0);
+				}
+				.label {
+					color: $slate;
+				}
+				.input {
+					span {
+						&:after {
+							background: $slate;
+						}
+					}
+				}
+				.input-icon {
+					g {
+						stroke: lighten($slate, 30%);
+					}
+				}
+				a {
+					svg {
+						circle {
+							stroke: $slate;
+							fill: $slate;
+						}
+						path {
+							stroke: white;
+						}
+					}
+					&:active {
+						svg {
+							circle {
+								fill: rgba($slate, .2);
+							}
+							path {
+								stroke: $slate;
+							}
+						}
+					}
+				}
+				> div {
+					background: rgba($slate, .2);
+					> div {
+						div:nth-child(1), div:nth-child(2) {
+							background: $slate;
+						}
+					}
+				}
+			}
+			&:hover {
+				+ label:not(:empty) {
+					.input-icon {
+						g {
+							stroke: lighten($slate, 15%);
+						}
+					}
+				}
+			}
+			&:focus, &.focus {
+				@include placeholder {
+					color: $slate;
+				}
+				&::selection {
+					background: $slate;
+					color: white;
+				}
+				&::-moz-selection {
+					background: $slate;
+					color: white;
+				}
+				+ label:not(:empty) {
+					.input-icon {
+						g {
+							stroke: $slate;
 						}
 					}
 				}
