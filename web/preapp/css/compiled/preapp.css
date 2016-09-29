@@ -5159,11 +5159,6 @@ a[class*="-container"]:hover .map-enter {
     margin: 0 auto;
     height: 100%; }
 
-@media screen and (min-width: 768px) {
-  .projector-access .projector-splash-header {
-    min-height: auto; }
-    .projector-access .projector-splash-header h1 {
-      display: none; } }
 .projector-access-content {
   width: 100%;
   max-width: 600px; }
@@ -5327,6 +5322,9 @@ a[class*="-container"]:hover .map-enter {
         .projector-access-content fieldset input:focus + div span:empty:nth-child(8) {
           transition-delay: 650ms; }
 
+.projector-access .desktop {
+  display: none; }
+
 @media screen and (min-height: 480px) {
   .projector-access-heart {
     display: block; } }
@@ -5346,17 +5344,25 @@ a[class*="-container"]:hover .map-enter {
         font-size: 48px; }
       .projector-access-content fieldset input:-ms-input-placeholder {
         font-size: 48px; } }
+@media screen and (min-width: 768px) {
+  .projector-access .desktop {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; }
+  .projector-access .mobile {
+    display: none; }
+  .projector-access .projector-splash-header {
+    min-height: auto; }
+    .projector-access .projector-splash-header h1 {
+      display: none; } }
 .projector-demo {
   text-align: center; }
 
 .projector-demo-grids {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
   -webkit-align-items: center;
@@ -5367,6 +5373,16 @@ a[class*="-container"]:hover .map-enter {
   justify-content: center;
   position: relative;
   width: 100%; }
+  .projector-demo-grids.desktop {
+    display: none; }
+  .projector-demo-grids.mobile {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; }
 
 .projector-demo-grid {
   -ms-box-orient: horizontal;
@@ -5408,6 +5424,17 @@ a[class*="-container"]:hover .map-enter {
 @media screen and (min-height: 580px) {
   .projector-demo-grid {
     margin-top: 0; } }
+@media screen and (min-width: 768px) {
+  .projector-demo-grids.desktop {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex; }
+  .projector-demo-grids.mobile {
+    display: none; } }
 .projector-account header button {
   -ms-box-orient: horizontal;
   display: -webkit-box;
