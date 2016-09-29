@@ -75,7 +75,7 @@
             <div class='full-xy relative overflow-auto'>
                 <ul class='full-y flex-vertical-center p15-grid absolute overflow-auto'>
                     <li class='full-y border-2-right border-slate border-solid flex-wrap-center relative txt-1'  style='width:{{stream.plot.html.width}} !important;' ng-repeat='stream in prop_dict.streams track by $index'>
-                        <chart c-data="stream">
+                        <chart c-data="stream" player='afc.player'>
                         </chart>
                     </li>
                 </ul>
