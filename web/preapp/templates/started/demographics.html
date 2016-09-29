@@ -348,15 +348,14 @@
 					when-next-demo="p:[op:0, z-index:-1]">
 					<li init-with="p:[op:0, tro:center center]"
 						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]"
-						when-hs-click="p:[transform:translateY(50px):translateY(-50px):200:easeInExpo:^:2+0:a]">
+						when-hs-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(350px) scale(0):500:easeInOutBack easeInBack]">
 						<a class="demographic-tile high-school"
 							init-default
 							on-click="s:[hs-click:public, guru-below:public]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div init-with="p:[tro:center center]"
-								when-hs-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-100px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+							<div>
 								<div class="borders">
 									<div init-with="p:[tr:scaleX(0), tro:center center]"
 										when-demo-card-enter="p:[transform:scaleX(0):scaleX(1):800:easeOutCubic]"></div>
@@ -408,15 +407,14 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-200]"
-						when-alumni-click="p:[transform:translateY(30px):translateY(-150px):200:easeInExpo:^:2+0:a]">
+						when-alumni-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(250px) scale(0):500:easeInOutBack easeInBack]">
 						<a class="demographic-tile alumni"
 							init-default
 							on-click="s:[alumni-click:public, guru-below:public]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div init-with="p:[tro:center center]"
-								when-alumni-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-500px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+							<div>
 								<div class="borders"
 									init-default
 									when-college-border="s:[alumni-border:public]:delay-100">
@@ -440,15 +438,14 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-300]"
-						when-parent-click="p:[transform:translateY(0px):translateY(-150px):200:easeInExpo:^:2+0:a]">
+						when-parent-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(250px) scale(0):500:easeInOutBack easeInBack]">
 						<a class="demographic-tile parent"
 							init-default
 							on-click="s:[parent-click:public, guru-below:public]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div init-with="p:[tro:center center]"
-								when-parent-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-200px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+							<div>
 								<div class="borders"
 									init-default
 									when-alumni-border="s:[parent-border:public]:delay-100">
@@ -472,15 +469,14 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-demo-card-enter="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-400]"
-						when-professor-click="p:[transform:translateY(0px):translateY(-100px):200:easeInExpo:^:2+0:a]">
+						when-professor-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(100px) scale(0):500:easeInOutBack easeInBack]">
 						<a class="demographic-tile professor"
 							init-default
 							on-click="s:[professor-click:public, guru-below:public]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div init-with="p:[tro:center center]"
-								when-professor-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-400px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+							<div>
 								<div class="borders"
 								init-default
 								when-parent-border="s:[professor-border:public]:delay-100">
@@ -508,15 +504,14 @@
 					when-next-demo="p:[op:1, z-index:10]">
 					<li init-with="p:[op:0, tro:center center]"
 						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in]"
-						when-freshman-click="p:[transform:translateY(50px):translateY(-50px):200:easeInExpo:^:2+0:a]">
+						when-freshman-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(350px) scale(0):500:easeInOutBack easeInBack]">
 						<a class="demographic-tile freshman"
 							init-default
 							on-click="s:[freshman-click:public, guru-below:public]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div init-with="p:[tro:center center]"
-								when-freshman-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-100px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+							<div>
 								<div class="borders"
 									init-default
 									when-next-demo="s:[freshman-border:public]">
@@ -540,15 +535,14 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-100]"
-						when-sophomore-click="p:[transform:translateY(50px):translateY(-50px):200:easeInExpo:^:2+0:a]">
+						when-sophomore-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(350px) scale(0):500:easeInOutBack easeInBack]">
 						<a class="demographic-tile sophomore"
 							init-default
 							on-click="s:[sophomore-click:public, guru-below:public]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div init-with="p:[tro:center center]"
-								when-sophomore-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-300px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+							<div>
 								<div class="borders"
 									init-default
 									when-freshman-border="s:[sophomore-border:public]:delay-100">
@@ -572,15 +566,14 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-200]"
-						when-junior-click="p:[transform:translateY(30px):translateY(-150px):200:easeInExpo:^:2+0:a]">
+						when-junior-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(250px) scale(0):500:easeInOutBack easeInBack]">
 						<a class="demographic-tile junior"
 							init-default
 							on-click="s:[junior-click:public, guru-below:public]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div init-with="p:[tro:center center]"
-								when-junior-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-500px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+							<div>
 								<div class="borders"
 									init-default
 									when-sophomore-border="s:[junior-border:public]:delay-100">
@@ -604,15 +597,14 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-300]"
-						when-senior-click="p:[transform:translateY(0px):translateY(-150px):200:easeInExpo:^:2+0:a]">
+						when-senior-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(250px) scale(0):500:easeInOutBack easeInBack]">
 						<a class="demographic-tile senior"
 							init-default
 							on-click="s:[senior-click:public, guru-below:public]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div init-with="p:[tro:center center]"
-								when-senior-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-200px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+							<div>
 								<div class="borders"
 									init-default
 									when-junior-border="s:[senior-border:public]:delay-100">
@@ -636,15 +628,14 @@
 					</li>
 					<li init-with="p:[op:0, tro:center center]"
 						when-next-demo="a:[bounceIn-subtle:set:(dur:1000ms#func:cubic-bezier(.8#.1#1#.05)):in:delay-400]"
-						when-graduate-click="p:[transform:translateY(0px):translateY(-100px):200:easeInExpo:^:2+0:a]">
+						when-graduate-click="p:[tro:center bottom, transform:translateY(0px) scale(1):translateY(100px) scale(0):500:easeInOutBack easeInBack]">
 						<a class="demographic-tile graduate"
 							init-default
 							on-click="s:[graduate-click:public, guru-below:public]">
 							<svg width="180px" height="180px" viewBox="0 0 100 100">
 								<rect x="0" y="0" width="100" height="100"></rect>
 							</svg>
-							<div init-with="p:[tro:center center]"
-								when-graduate-click="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-400px) rotate(-30deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+							<div>
 								<div class="borders"
 									init-default
 									when-senior-border="s:[grad-border:public]:delay-100">
