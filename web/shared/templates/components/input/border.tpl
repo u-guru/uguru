@@ -1,4 +1,4 @@
-<div class="full-xy flex-center-wrap p15xy" types='light, dark, large-light, large-dark' default-type="light" reference="https://codepen.io/teamuguru/pen/0dd0f5b893950ead5db6bc302daf956f?editors=1100, http://codepen.io/teamuguru/pen/553314ac263ad7c0cd070bdf53969aa1?editors=1100, http://codepen.io/teamuguru/pen/e73453ab175045bd429577c423c2cb47?editors=1100">
+<div class="full-xy flex-center-wrap p15xy" types='light, dark, large-light, large-dark, light-search, dark-search, large-light-search, large-dark-search' default-type="light" reference="https://codepen.io/teamuguru/pen/0dd0f5b893950ead5db6bc302daf956f?editors=1100, http://codepen.io/teamuguru/pen/553314ac263ad7c0cd070bdf53969aa1?editors=1100, http://codepen.io/teamuguru/pen/e73453ab175045bd429577c423c2cb47?editors=1100">
 	<div class="p30xy radius-2 bg-slate full-x" style="max-width:460px">
 		<!--  ng-if='activeType === "light"' -->
 		<div class="input-border"
@@ -84,10 +84,7 @@
 					</div>
 				</div>
 				<a>
-					<svg viewBox="0 0 100 100"
-						init-with="p:[tr:rotate(-45deg)]"
-						when-input-hover="p:[transform:rotate(-45deg):rotate(0deg):250:easeOutBack]"
-						when-input-leave="p:[transform:rotate(0):rotate(-45deg):250:easeOutBack]">
+					<svg viewBox="0 0 100 100">
 						<circle cx="50" cy="50" r="36"
 							init-default
 							when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
@@ -191,10 +188,7 @@
 					</div>
 				</div>
 				<a>
-					<svg viewBox="0 0 100 100"
-						init-with="p:[tr:rotate(-45deg)]"
-						when-input-hover="p:[transform:rotate(-45deg):rotate(0deg):250:easeOutBack]"
-						when-input-leave="p:[transform:rotate(0):rotate(-45deg):250:easeOutBack]">
+					<svg viewBox="0 0 100 100">
 						<circle cx="50" cy="50" r="36"
 							init-default
 							when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
@@ -298,10 +292,7 @@
 					</div>
 				</div>
 				<a>
-					<svg viewBox="0 0 100 100"
-						init-with="p:[tr:rotate(-45deg)]"
-						when-input-hover="p:[transform:rotate(-45deg):rotate(0deg):250:easeOutBack]"
-						when-input-leave="p:[transform:rotate(0):rotate(-45deg):250:easeOutBack]">
+					<svg viewBox="0 0 100 100">
 						<circle cx="50" cy="50" r="36"
 							init-default
 							when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
@@ -405,10 +396,7 @@
 					</div>
 				</div>
 				<a>
-					<svg viewBox="0 0 100 100"
-						init-with="p:[tr:rotate(-45deg)]"
-						when-input-hover="p:[transform:rotate(-45deg):rotate(0deg):250:easeOutBack]"
-						when-input-leave="p:[transform:rotate(0):rotate(-45deg):250:easeOutBack]">
+					<svg viewBox="0 0 100 100">
 						<circle cx="50" cy="50" r="36"
 							init-default
 							when-input-valid="p:[s:#43cb9d, f:#43cb9d]:delay-500"
@@ -421,6 +409,164 @@
 							init-default
 							when-input-valid="p:[s:white]:delay-500"
 							when-input-invalid="p:[s:white]:delay-500"></path>
+					</svg>
+				</a>
+			</label>
+		</div>
+	</div>
+
+	<div class="p30xy radius-2 bg-slate full-x" style="max-width:460px">
+		<!--  ng-if='activeType === "light-search"' -->
+		<div class="input-border">
+			<input class="input-border light" type="email" required placeholder=""
+				init-default
+				on-valid="s:[input-valid:public]"
+				on-invalid="s:[input-invalid:public]"
+				on-focus="s:[input-focus:public]"
+				on-blur="s:[input-blur:public]"
+				on-mouse-enter="s:[input-hover:public]"
+				on-mouse-leave="s:[input-leave:public]"/>
+			<label>
+				<svg class="input-icon" viewBox="0 0 100 100">
+					<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M62.994485,62.994485 L85.6624699,85.6624699"></path>
+				        <circle cx="42.5" cy="42.5" r="28.5"></circle>
+					</g>
+				</svg>
+				<span class="label">Border light</span>
+				<span class="input"
+					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+				<div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+				</div>
+				<a>
+					<svg viewBox="0 0 100 100">
+						<circle cx="50" cy="50" r="36"></circle>
+						<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"></path>
+						<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"></path>
+					</svg>
+				</a>
+			</label>
+		</div>
+	</div>
+
+	<div class="p30xy radius-2 bg-white full-x" style="max-width:460px">
+		<!--  ng-if='activeType === "dark-search"' -->
+		<div class="input-border"
+			init-default
+			when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
+			<input class="input-border dark" type="email" required placeholder=""
+				init-default
+				on-valid="s:[input-valid:public]"
+				on-invalid="s:[input-invalid:public]"
+				on-focus="s:[input-focus:public]"
+				on-blur="s:[input-blur:public]"
+				on-mouse-enter="s:[input-hover:public]"
+				on-mouse-leave="s:[input-leave:public]"/>
+			<label>
+				<svg class="input-icon" viewBox="0 0 100 100">
+					<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M62.994485,62.994485 L85.6624699,85.6624699"></path>
+				        <circle cx="42.5" cy="42.5" r="28.5"></circle>
+					</g>
+				</svg>
+				<span class="label">Border light</span>
+				<span class="input"
+					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+				<div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+				</div>
+				<a>
+					<svg viewBox="0 0 100 100">
+						<circle cx="50" cy="50" r="36"></circle>
+						<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"></path>
+						<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"></path>
+					</svg>
+				</a>
+			</label>
+		</div>
+	</div>
+
+	<div class="p30xy radius-2 bg-slate full-x" style="max-width:860px">
+		<!-- ng-if='activeType === "large-light-search"' -->
+		<div class="input-border large"
+			init-default
+			when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
+			<input class="input-border light" type="email" required placeholder=""
+				init-default
+				on-valid="s:[input-valid:public]"
+				on-invalid="s:[input-invalid:public]"
+				on-focus="s:[input-focus:public]"
+				on-blur="s:[input-blur:public]"
+				on-mouse-enter="s:[input-hover:public]"
+				on-mouse-leave="s:[input-leave:public]"/>
+			<label>
+				<svg class="input-icon" viewBox="0 0 100 100">
+					<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M62.994485,62.994485 L85.6624699,85.6624699"></path>
+				        <circle cx="42.5" cy="42.5" r="28.5"></circle>
+					</g>
+				</svg>
+				<span class="label">Border light</span>
+				<span class="input"
+					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+				<div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+				</div>
+				<a>
+					<svg viewBox="0 0 100 100">
+						<circle cx="50" cy="50" r="36"></circle>
+						<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"></path>
+						<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"></path>
+					</svg>
+				</a>
+			</label>
+		</div>
+	</div>
+
+	<div class="p30xy radius-2 bg-white full-x" style="max-width:860px">
+		<!-- ng-if='activeType === "large-light-search"' -->
+		<div class="input-border large"
+			init-default
+			when-input-invalid="p:[transform:translateY(0px):translateY(10px):100:linear:^:6:a]">
+			<input class="input-border dark" type="email" required placeholder=""
+				init-default
+				on-valid="s:[input-valid:public]"
+				on-invalid="s:[input-invalid:public]"
+				on-focus="s:[input-focus:public]"
+				on-blur="s:[input-blur:public]"
+				on-mouse-enter="s:[input-hover:public]"
+				on-mouse-leave="s:[input-leave:public]"/>
+			<label>
+				<svg class="input-icon" viewBox="0 0 100 100">
+					<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M62.994485,62.994485 L85.6624699,85.6624699"></path>
+				        <circle cx="42.5" cy="42.5" r="28.5"></circle>
+					</g>
+				</svg>
+				<span class="label">Border light</span>
+				<span class="input"
+					init-with="p-op">Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet|</span>
+				<div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+					<div><div></div><div></div></div>
+				</div>
+				<a>
+					<svg viewBox="0 0 100 100">
+						<circle cx="50" cy="50" r="36"></circle>
+						<path d="M62.7279221,37.2720779 L37.2720779,62.7279221"></path>
+						<path d="M37.2720779,37.2720779 L62.7279221,62.7279221"></path>
 					</svg>
 				</a>
 			</label>

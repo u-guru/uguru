@@ -506,6 +506,7 @@ div.input-border {
 				cursor: pointer;
 				svg {
 					transform-origin: center center;
+					transform: rotate(-45deg);
 					display: block;
 					width: 100%;
 					height: 100%;
@@ -785,6 +786,9 @@ div.input-border {
 				}
 				a {
 					opacity: 0.75;
+					svg {
+						transform: none;
+					}
 				}
 				> div {
 					transform: rotateX(0);

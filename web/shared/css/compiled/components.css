@@ -2309,6 +2309,7 @@ div.input-border {
         cursor: pointer; }
         div.input-border input.input-border + label:not(:empty) a svg {
           transform-origin: center center;
+          transform: rotate(-45deg);
           display: block;
           width: 100%;
           height: 100%; }
@@ -2487,6 +2488,8 @@ div.input-border {
       font-size: 12px; }
     div.input-border input.input-border:focus + label:not(:empty) a {
       opacity: 0.75; }
+      div.input-border input.input-border:focus + label:not(:empty) a svg {
+        transform: none; }
     div.input-border input.input-border:focus + label:not(:empty) > div {
       transform: rotateX(0);
       opacity: 1; }
