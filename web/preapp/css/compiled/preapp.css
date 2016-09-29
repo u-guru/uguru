@@ -5533,7 +5533,7 @@ a[class*="-container"]:hover .map-enter {
     padding: 7.5px; }
     .projector-courses-search > ul > li {
       padding: 7.5px; }
-    .projector-courses-search > ul.tiny {
+    .projector-courses-search > ul.mobile {
       -ms-box-orient: horizontal;
       display: -webkit-box;
       display: -moz-box;
@@ -5552,15 +5552,9 @@ a[class*="-container"]:hover .map-enter {
       -ms-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap; }
-      .projector-courses-search > ul.tiny > li {
-        display: none;
-        width: 50%; }
-        .projector-courses-search > ul.tiny > li:nth-child(1), .projector-courses-search > ul.tiny > li:nth-child(2), .projector-courses-search > ul.tiny > li:nth-child(3), .projector-courses-search > ul.tiny > li:nth-child(4) {
-          display: block; }
-    .projector-courses-search > ul.mobile {
-      display: none; }
       .projector-courses-search > ul.mobile > li {
         display: none;
+        width: 50%;
         -webkit-flex-direction: row;
         flex-direction: row;
         -webkit-align-items: center;
@@ -5591,14 +5585,22 @@ a[class*="-container"]:hover .map-enter {
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap; }
 
-@media screen and (min-height: 460px) {
-  .projector-courses-search > ul.tiny > li {
-    display: block !important; } }
-@media screen and (min-height: 540px) {
-  .projector-courses-search > ul.tiny {
+@media screen and (max-height: 540px) {
+  .projector-courses-search > ul.mobile li {
+    width: 50%; }
+  .projector-courses-search .course-card.short > svg {
     display: none; }
-  .projector-courses-search > ul.mobile {
-    display: block; } }
+  .projector-courses-search .course-card.short .course-card-inside {
+    position: static;
+    width: 100%;
+    height: auto;
+    background: white;
+    padding-right: 47px; }
+    .projector-courses-search .course-card.short .course-card-inside h1 {
+      display: none; }
+    .projector-courses-search .course-card.short .course-card-inside h2 {
+      margin-bottom: 0;
+      font-size: 14px; } }
 @media screen and (min-height: 660px) {
   .projector-courses-search > ul.mobile > li {
     -ms-box-orient: horizontal !important;
