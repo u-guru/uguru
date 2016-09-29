@@ -27,23 +27,11 @@ angular.module('uguru.shared.directives.base.components')
             restrict: 'E',
             replace: true,
             templateUrl: 'shared/templates/components/base/grid/chart.tpl',
-            scope: {stream:'=cData'},
+            scope: {stream:'=cData', player: '=player'},
             compile: function(lElem, attr, transclude) {
                 return {
                     pre: function(scope, elem, attr) {
-                        scope.onMouseEnter = function($event) {
 
-                            if (scope.chart.mouseEntered) {
-                                scope.chart.mouseEnterPending = false;
-                                return
-                            }
-                            scope.chart.mouseEnterPending = true;
-                            $timeout(function() {
-                                if (!scope.chart.mouseEntered && scope.chart.mouseEnterPending) {
-                                    scope.chart.mouseEntered = true;
-                                }
-                            }, 500)
-                        }
 
 
 
@@ -53,19 +41,45 @@ angular.module('uguru.shared.directives.base.components')
                         scope.chart.mouseEntered = false;
                         scope.chart.mouseEnteredPoint = null;
                         scope.chart.focusedPoints = [];
-                        scope.chart.onMousePointEnter = function(point, $event) {
+                        scope.chart.showDetails = false;
+                        scope.chart.lastPointHovered = null;
+                        scope.chart.lastPointHoveredIndex = 0;
+                        scope.chart.onMousePointEnter = function(index, point, $event) {
                             console.log('entering...', point, $event);
+                            scope.chart.lastPointHovered = point;
+                            scope.chart.lastPointHoveredIndex = index;
                         }
                         // scope.chart.onMousePointLeave = function(point, $event) {
                         //     console.log('leaving...', point, $event.type);
                         // }
 
                         scope.chart.onMousePointDown = function(point, $event) {
-                            console.log('pressing...', point, $event);
+
                         }
 
                         scope.chart.onMousePointUp = function(point, $event) {
                             console.log('unpressing...', point, $event);
+                        }
+                        scope.chart.onMouseEnter = function(stream, $event) {
+                            console.log(scope.player)
+                            scope.player.focusStream(scope.player, stream);
+                            scope.chart.showDetails = true;
+                            if (scope.chart.mouseEntered) {
+                                scope.chart.mouseEnterPending = false;
+                                return
+                            }
+                            scope.chart.mouseEnterPending = true;
+                            $timeout(function() {
+                                if (!scope.chart.mouseEntered && scope.chart.mouseEnterPending) {
+                                    scope.chart.mouseEntered = true;
+                                }
+                            } )
+                        }
+
+                        scope.chart.onMouseLeave = function(stream, $event) {
+                            console.log('mouse is leaving')
+                            scope.chart.showDetails = false;
+                            scope.player.unFocusStream(scope.player, stream)
                         }
                         scope.chartReady = true;
                         for (vb in scope.chart.vb) {
