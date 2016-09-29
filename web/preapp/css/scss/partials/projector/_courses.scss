@@ -11,29 +11,20 @@
 		> li {
 			padding: 7.5px;
 		}
-		&.tiny {
+		&.mobile {
 			@include flex;
 			@include flex-center;
 			@include flex-wrap;
 			> li {
 				display: none;
 				width: 50%;
-				&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
-					display: block;
-				}
-			}
-		}
-		&.mobile {
-			display: none;
-			> li {
-				display: none;
 				@include flex-center;
 				&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
 					@include flex;
 				}
 			}
 		}
-		&.desktop {
+		&.desktop, &.large {
 			display: none;
 			@include flex-center;
 			@include flex-wrap;
@@ -41,12 +32,25 @@
 	}
 }
 
-@media screen and (min-height: 460px) {
+@media screen and (max-height: 540px) {
 	.projector-courses-search {
-		> ul {
-			&.tiny {
-				> li {
-					display: block!important;
+		.course-card.short {
+			width: 100%;
+			> svg {
+				display: none;
+			}
+			.course-card-inside {
+				position: static;
+				width: 100%;
+				height: auto;
+				background: white;
+				padding-right: 47px;
+				h1 {
+					display: none;
+				}
+				h2 {
+					margin-bottom: 0;
+					font-size: 14px;
 				}
 			}
 		}
@@ -56,11 +60,10 @@
 @media screen and (min-height: 540px) {
 	.projector-courses-search {
 		> ul {
-			&.tiny {
-				display: none;
-			}
 			&.mobile {
-				display: block;
+				> li {
+					width: 100%;
+				}
 			}
 		}
 	}
@@ -89,13 +92,26 @@
 	}
 }
 
-@media screen and (min-width: 414px) and (min-height: 690px), screen and (min-height: 720px) {
+@media screen and (min-width: 385px) and (min-height: 650px) {
+	.projector-courses-search {
+		> ul {
+			&.large {
+				@include flex;
+			}
+			&.mobile, &.desktop {
+				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
 	.projector-courses-search {
 		> ul {
 			&.desktop {
 				@include flex;
 			}
-			&.mobile, &.tiny {
+			&.mobile, &.large {
 				display: none;
 			}
 		}
