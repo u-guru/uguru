@@ -5567,7 +5567,7 @@ a[class*="-container"]:hover .map-enter {
 @media screen and (min-height: 460px) {
   .projector-courses-search > ul.tiny > li {
     display: block !important; } }
-@media screen and (min-height: 568px) {
+@media screen and (min-height: 540px) {
   .projector-courses-search > ul.tiny {
     display: none; }
   .projector-courses-search > ul.mobile {
@@ -5586,7 +5586,7 @@ a[class*="-container"]:hover .map-enter {
     min-height: auto; }
     .projector-courses .projector-splash-header h1 {
       display: none; } }
-@media screen and (min-width: 414px) and (min-height: 690px) {
+@media screen and (min-width: 414px) and (min-height: 690px), screen and (min-height: 720px) {
   .projector-courses-search > ul.desktop {
     -ms-box-orient: horizontal;
     display: -webkit-box;
@@ -5597,6 +5597,20 @@ a[class*="-container"]:hover .map-enter {
     display: flex; }
   .projector-courses-search > ul.mobile, .projector-courses-search > ul.tiny {
     display: none; } }
+@media screen and (min-width: 768px) and (min-height: 900px) {
+  .projector-courses-search {
+    max-width: 780px; }
+    .projector-courses-search .course-card.mini > svg {
+      width: auto;
+      max-width: none;
+      height: auto; }
+    .projector-courses-search .course-card.mini .course-card-border {
+      height: 5px; }
+    .projector-courses-search .course-card.mini .course-card-inside h2 {
+      font-size: 14px;
+      margin-bottom: 5px; }
+    .projector-courses-search .course-card.mini .course-card-inside h1 {
+      font-size: 24px; } }
 .splash-modal {
   background: #40484B;
   width: 100%;

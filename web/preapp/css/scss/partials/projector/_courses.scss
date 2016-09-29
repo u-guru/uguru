@@ -53,7 +53,7 @@
 	}
 }
 
-@media screen and (min-height: 568px) {
+@media screen and (min-height: 540px) {
 	.projector-courses-search {
 		> ul {
 			&.tiny {
@@ -88,7 +88,8 @@
 		}
 	}
 }
-@media screen and (min-width: 414px) and (min-height: 690px) {
+
+@media screen and (min-width: 414px) and (min-height: 690px), screen and (min-height: 720px) {
 	.projector-courses-search {
 		> ul {
 			&.desktop {
@@ -96,6 +97,33 @@
 			}
 			&.mobile, &.tiny {
 				display: none;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) and (min-height: 900px) {
+	.projector-courses-search {
+		max-width: 780px;
+		.course-card {
+			&.mini {
+				> svg {
+					width: auto;
+					max-width: none;
+					height: auto;
+				}
+				.course-card-border {
+					height: 5px;
+				}
+				.course-card-inside {
+					h2 {
+						font-size: 14px;
+						margin-bottom: 5px;
+					}
+					h1 {
+						font-size: 24px;
+					}
+				}
 			}
 		}
 	}
