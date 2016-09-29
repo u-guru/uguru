@@ -1,13 +1,16 @@
 <ion-view class="flex-center">
 	<projector class="projector-access projector-splash">
-		<div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"></div>
+		<div class="projector-guru-body" ng-include="root.base_url + 'preapp/templates/started/components/tour-guru.html'"
+			init-with="p:[z-index:100]"
+			when-school-select="p:[z-index:1]"></div>
 		<div class="projector-splash-container">
 			<header class="projector-splash-header">
 				<a class="projector-splash-back icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/left-circle.html'"></a>
 				<h1>Search Universities</h1>
 				<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
 			</header>
-			<div class="absolute top-0 left-0 full-xy flex-center bg-slate"
+
+			<!-- <div class="absolute top-0 left-0 full-xy flex-center bg-slate"
 				init-with="p:[z-index:2]"
 				when-search-school-complete="p:[z-index:-1:delay-500, opacity:1:0:500:easeOutSine]:delay-2000">
 				<svg class="echo-loader" width="300px" height="300px" viewBox="0 0 300 300"
@@ -44,14 +47,22 @@
                         </text>
                     </g>
                 </svg>
-			</div>
+			</div> -->
+
 			<div class="map absolute top-0 left-0 full-xy">
 				<div class="full-xy" style="background: #40484b url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg') center center / cover; background-blend-mode: screen;"></div>
 			</div>
+
 			<div class="absolute top-0 left-0 full-xy"
 				init-with="p-op"
-				when-search-school-complete="p:[opacity:0:1:500:easeInSine]:delay-2500">
-				<div class="relative">
+				when-search-school-complete="p:[opacity:0:1:500:easeInSine]:delay-2500"
+				on-init="s:[search-school-complete:public]">
+				<!-- <div class="map absolute top-0 left-0 full-xy z-index-1">
+					<div class="full-xy" style="background: #40484b url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg') center center / cover; background-blend-mode: screen;"></div>
+				</div> -->
+				<div class="relative"
+					init-with="p:[z-index:2]"
+					when-school-select="p:[z-index:100]">
 					<div class="projector-school-search-form">
 	                    <!-- ng-controller="AddUniversityCtrl" -->
 	                    <div class="p15xy max-1030">
@@ -77,13 +88,14 @@
 							init-default
 							when-search-school-complete="s:[university-card-init:public]:delay-2000">
 							<li init-default
-								when-school-select="p:[transform:translateY(50px):translateY(-20px):200:easeInExpo:^:2+0:a] | send:[school-exit:public]:delay-250"
+								when-school-select="p:[transform:translateY(150px):translateY(-20px):200:easeInExpo:^:2+0:a] | send:[school-exit:public]:delay-250"
+								when-school-exit="p:[tro:center center, transform:translateY(150px) scale(1):translateY(-100px) scale(0.7):500:easeInOutBack easeInOutBack]:delay-250"
 								when-school-2-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
 								when-school-3-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]"
 								when-school-4-exit="p:[transform:translateY(0px):translateY(100px):500:easeOutQuad, opacity:1:0:300:easeOutQuad]">
-								<div class="card-container"
+								<div class="card-container relative"
 									init-with="p:[tro:center center]"
-									when-school-select="p:[transform:translateX(0px) rotate(0deg) scale(1):translateX(-100px) rotate(-60deg) scale(0):350:easeInOutExpo easeInExpo easeInBack]">
+									when-school-select="p:[transform:translateX(0px) rotate(60deg) scale(1):translateX(-175px) rotate(0deg) scale(1.5):350:easeInOutExpo easeInExpo easeInBack]">
 									<div class="university-card mini"
 										init-with="p-op"
 										when-university-card-init="a:[scoop-enter:set:(dur:800ms#func:linear):in:delay-200]">
