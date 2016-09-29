@@ -7,8 +7,8 @@
 				<h1>Search Universities</h1>
 				<a class="projector-splash-next icon-round-stroke no-rotate" ng-include="root.base_url + 'shared/templates/components/svg/main/right-circle.html'"></a>
 			</header>
-			<div class="absolute top-0 left-0 full-xy flex-center"
-				init-default
+			<div class="absolute top-0 left-0 full-xy flex-center bg-slate"
+				init-with="p:[z-index:2]"
 				when-search-school-complete="p:[z-index:-1:delay-500, opacity:1:0:500:easeOutSine]:delay-2000">
 				<svg class="echo-loader" width="300px" height="300px" viewBox="0 0 300 300"
 					init-default
@@ -35,13 +35,13 @@
                     </g>
                 </svg>
 			</div>
+			<div class="map absolute top-0 left-0 full-xy">
+				<div class="full-xy" style="background: #40484b url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg') center center / cover; background-blend-mode: screen;"></div>
+			</div>
 			<div class="absolute top-0 left-0 full-xy"
-				init-with="p:[op:0, z-index:-1]"
-				when-search-school-complete="p:[z-index:1, opacity:0:1:500:easeInSine]:delay-2500">
-				<div class="map absolute top-0 left-0 full-xy z-index-1">
-					<div class="full-xy" style="background: #40484b url('http://legato.travel/wp-content/uploads/2015/02/world-map-background-dark.jpg') center center / cover; background-blend-mode: screen;"></div>
-				</div>
-				<div class="relative z-index-2">
+				init-with="p-op"
+				when-search-school-complete="p:[opacity:0:1:500:easeInSine]:delay-2500">
+				<div class="relative">
 					<div class="projector-school-search-form">
 	                    <!-- ng-controller="AddUniversityCtrl" -->
 	                    <div class="p15xy max-1030">
