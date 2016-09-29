@@ -373,7 +373,7 @@ div.input-border {
 	font-size: 18px;
 	font-weight: 400;
 	width: 100%;
-	max-width: 400px;
+	// max-width: 400px;
 	min-height: 50px;
 	* {
 		transition: all 150ms ease-in-out;
@@ -814,17 +814,6 @@ div.input-border {
 			}
 		}
 	}
-	@media screen and (max-height: 480px) {
-		input.input-border {
-			&:focus {
-				+ label:not(:empty) {
-					.label {
-						opacity: 0;
-					}
-				}
-			}
-		}
-	}
 	@media screen and (min-width: 768px) {
 		&.large {
 			min-height: 70px;
@@ -864,6 +853,33 @@ div.input-border {
 						.label {
 							opacity: 0;
 						}
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (max-height: 480px) {
+	div.input-border {
+		min-height: 35px;
+		input.input-border {
+			padding-top: 5px;
+			padding-bottom: 15px;
+			+ label:not(:empty) {
+				> span {
+					top: 5px;
+				}
+				.input-icon, a {
+					top: 5px;
+				}
+				.borders {
+					display: none;
+				}
+			}
+			&:focus {
+				+ label:not(:empty) {
+					.label {
+						opacity: 0;
 					}
 				}
 			}

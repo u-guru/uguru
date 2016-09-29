@@ -5029,7 +5029,6 @@ a[class*="-container"]:hover .map-enter {
     animation: hiw-cloud-fall 4000 ms linear 3000 ms 2, hiw-cloud-fall-end 4000 ms ease-out 3200 ms forwards; }
 
 .projector-splash .btn-ghost-round {
-  font-size: 18px;
   letter-spacing: 0; }
 .projector-splash .projector-content {
   -ms-box-orient: horizontal;
@@ -5201,10 +5200,6 @@ a[class*="-container"]:hover .map-enter {
     padding: 7.5px; }
     .projector-access-content > ul li {
       padding: 7.5px; }
-  .projector-access-content .btn-ghost-round.skip {
-    opacity: 0.5; }
-    .projector-access-content .btn-ghost-round.skip:hover, .projector-access-content .btn-ghost-round.skip:focus {
-      opacity: 1; }
   .projector-access-content fieldset {
     position: relative;
     height: 64px;
@@ -5436,23 +5431,11 @@ a[class*="-container"]:hover .map-enter {
   .projector-demo-grids.mobile {
     display: none; } }
 .projector-account header button {
-  -ms-box-orient: horizontal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-content: center;
-  align-content: center;
-  -webkit-align-items: center;
-  align-items: center;
   position: absolute;
   top: 9px;
   right: 9px;
-  height: 42px;
   font-size: 16px;
-  padding: 0 20px; }
+  padding: 6px 20px; }
 .projector-account .projector-splash-container {
   position: absolute;
   top: 0;
@@ -5479,37 +5462,53 @@ a[class*="-container"]:hover .map-enter {
   align-content: center;
   -webkit-justify-content: center;
   justify-content: center;
-  width: 100%; }
+  width: 100%;
+  max-width: 450px; }
   .projector-account-form .projector-account-input {
+    margin-top: -15px;
     width: 100%;
-    max-width: 450px;
     padding: 7.5px; }
     .projector-account-form .projector-account-input li {
       padding: 7.5px; }
+    .projector-account-form .projector-account-input p {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.2; }
   .projector-account-form .projector-account-btn {
     width: 100%;
-    max-width: 450px;
-    padding: 7.5px; }
+    padding: 7.5px;
+    margin-top: -15px; }
     .projector-account-form .projector-account-btn li {
       padding: 7.5px;
       text-align: center; }
-    .projector-account-form .projector-account-btn .btn-ghost-round.fb {
-      color: #768bb7;
-      border-color: #768bb7; }
-      .projector-account-form .projector-account-btn .btn-ghost-round.fb:hover, .projector-account-form .projector-account-btn .btn-ghost-round.fb:focus {
-        border-color: #3b5998;
-        background: #3b5998;
-        color: white; }
-      .projector-account-form .projector-account-btn .btn-ghost-round.fb:active {
-        border-color: #9daccc;
-        background: #9daccc;
-        color: #3e5172; }
+    .projector-account-form .projector-account-btn .btn-ghost-round {
+      font-size: 16px;
+      padding: 6px 20px; }
+      .projector-account-form .projector-account-btn .btn-ghost-round.fb {
+        color: #768bb7;
+        border-color: #768bb7; }
+        .projector-account-form .projector-account-btn .btn-ghost-round.fb:hover, .projector-account-form .projector-account-btn .btn-ghost-round.fb:focus {
+          border-color: #3b5998;
+          background: #3b5998;
+          color: white; }
+        .projector-account-form .projector-account-btn .btn-ghost-round.fb:active {
+          border-color: #9daccc;
+          background: #9daccc;
+          color: #3e5172; }
 
 @media screen and (min-height: 480px) {
   .projector-account-form .projector-account-input {
+    margin-top: 0;
     padding: 0.5px 7.5px 2px; }
     .projector-account-form .projector-account-input li {
-      padding: 12.5px 7.5px; } }
+      padding: 12.5px 7.5px; }
+  .projector-account-form .projector-account-btn {
+    margin-top: 0; } }
+@media screen and (min-height: 560px) and (min-width: 350px) {
+  .projector-account-form .projector-account-btn .btn-ghost-round {
+    font-size: 18px;
+    padding: 10px 30px; } }
 @media screen and (min-width: 768px) {
   .projector-account-form .projector-account-btn {
     -ms-box-orient: horizontal;
@@ -5519,6 +5518,9 @@ a[class*="-container"]:hover .map-enter {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-align-items: center;
